@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content padding class="lyrics-content">
+    <!--
+        We may need to use
+        https://ionicframework.com/docs/native/native-audio
+        to deal with audio isses on older versions of Android
+    -->
   <audio controls #audioElem [src]="currentSong.audioURL" autoplay="true"
       (timeupdate)="onAudioTimeUpdate(audioElem)"></audio>
   <!--<div class="button-container">

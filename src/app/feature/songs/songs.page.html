@@ -3,9 +3,9 @@
     <ion-title>songs</ion-title>
   </ion-toolbar>
 </ion-header>
-<p *ngFor="let song of songList; index as i" [routerLink]="['/songs/song/', i]">
-  {{song.songTitle}}
-</p>
 <ion-content>
-
+  <ion-item *ngFor="let song of songList; index as i">
+    <ion-icon name="musical-notes-outline"></ion-icon>
+    <ion-label [routerLink]="['/songs/song/', i]">{{song.songTitle}}</ion-label>
+  </ion-item>
 </ion-content>
