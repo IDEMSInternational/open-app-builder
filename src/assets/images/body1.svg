@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="345"
+   height="417"
+   viewBox="0 0 345 417"
+   fill="none"
+   version="1.1"
+   id="svg38"
+   sodipodi:docname="body1.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata44">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs42" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1224"
+     inkscape:window-height="958"
+     id="namedview40"
+     showgrid="false"
+     inkscape:zoom="3.2014811"
+     inkscape:cx="184.6595"
+     inkscape:cy="77.055783"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg38" />
+  <circle
+     cx="173.5"
+     cy="171.5"
+     r="171.5"
+     fill="#13A0CE"
+     id="circle2" />
+  <path
+     d="M125 134C127.5 129.333 135.4 121.8 147 129"
+     stroke="black"
+     stroke-width="3"
+     id="path4" />
+  <path
+     d="M220 134C217.5 129.32 209.6 121.766 198 128.986"
+     stroke="black"
+     stroke-width="3"
+     id="path6" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M168 166C168 152.193 156.807 141 143 141C129.193 141 118 152.193 118 166H168Z"
+     fill="#FFFCFE"
+     id="path8" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M133 166H154C154 159.925 149.299 155 143.5 155C137.701 155 133 159.925 133 166Z"
+     fill="#0D4465"
+     id="path10" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M204 187C204 195.837 190.569 203 174 203C157.431 203 144 195.837 144 187H204Z"
+     fill="#0A3F61"
+     id="path12" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M229 166C229 152.193 217.807 141 204 141C190.193 141 179 152.193 179 166H229Z"
+     fill="#FFFCFE"
+     id="path14" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M194 166H215C215 159.925 210.299 155 204.5 155C198.701 155 194 159.925 194 166Z"
+     fill="#043C5D"
+     id="path16" />
+  <ellipse
+     cx="104"
+     cy="185.5"
+     rx="16"
+     ry="5.5"
+     fill="#72BFE3"
+     id="ellipse18" />
+  <ellipse
+     cx="240"
+     cy="185.5"
+     rx="16"
+     ry="5.5"
+     fill="#77BDDE"
+     id="ellipse20" />
+  <path
+     d="M149.5 416L158 341.128L129 336L139 416H149.5Z"
+     fill="#13A0CE"
+     stroke="#13A0CE"
+     id="path22" />
+  <path
+     d="M132 363H156L150 416.5H137.5L132 363Z"
+     fill="#554FA2"
+     id="path24" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M108 417H149C149 405.402 139.822 396 128.5 396C117.178 396 108 405.402 108 417Z"
+     fill="#504947"
+     id="path26" />
+  <path
+     d="M 198.5,417 190,342.128 219,337 209,417 Z"
+     id="path28"
+     inkscape:connector-curvature="0"
+     style="fill:#13a0ce;stroke:#13a0ce" />
+  <path
+     d="m 216,364 h -24 l 6,53.5 h 12.5 z"
+     id="path30"
+     inkscape:connector-curvature="0"
+     style="fill:#554fa2" />
+  <path
+     d="m 240,418 h -41 c 0,-11.598 9.178,-21 20.5,-21 11.322,0 20.5,9.402 20.5,21 z"
+     id="path32"
+     inkscape:connector-curvature="0"
+     style="clip-rule:evenodd;fill:#504947;fill-rule:evenodd" />
+  <path
+     d="M2.50004 343.5C4.10004 335.1 8.16671 327.667 10 325L22 326.5C23.1667 327 25.9 329.3 27.5 334.5C29.1 339.7 28.8333 348.333 28.5 352C28.3333 352.333 28 353.2 28 354C28 355 25.5 354.5 24.5 354.5C23.7 354.5 24.1667 351.5 24.5 350C24 349.667 22.8 349.1 22 349.5C21 350 21 354.5 21 357.5C21 359.9 19.6667 365.167 19 367.5C18 367.833 15.7 368.3 14.5 367.5C13.3 366.7 14.3333 359.5 15 356C15 354.833 14.7 353.1 13.5 355.5C12.3 357.9 11.3333 364.5 11 367.5C9.33333 369 6 371 6 367C6 363 7.33333 357 8 354.5H5C5.16667 357.167 5.1 362.9 3.5 364.5C1.9 366.1 0.833361 365.167 0.500042 364.5C4.20511e-05 355 0.500042 354 2.50004 343.5Z"
+     fill="#9ECBE8"
+     id="path34" />
+  <path
+     d="M10.5 325C8.90002 298.2 25 276.5 33 269L41 271L40.5 279C24.9 289.8 21.6667 315.333 22.5 326.5L10.5 325Z"
+     fill="#13A0CE"
+     id="path36" />
+</svg>
