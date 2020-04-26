@@ -5,7 +5,7 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -30,6 +30,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@ionic/cli": "^6.6.0",
     "@angular-devkit/build-angular": "~0.803.20",
     "@angular/cli": "~8.3.23",
     "@angular/compiler": "~8.2.14",
