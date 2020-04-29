@@ -14,9 +14,15 @@ By using Cordova we can support Android 4.4 Kitkat and above. (API Level 19, Oct
 
 ## Developer Setup
 
+## Prequisites 
+1. Download and Install Node from - https://nodejs.org/en/download/
+2. Doownload and Install Yarn from  - https://classic.yarnpkg.com/en/docs/install/#windows-stable
+
+## After the prequisites are installed 
 1. Clone this repository
-2. Run ```yarn install``` or ```npm install```
-3. To view in a web browser run ```yarn start``` or ```npm start```
+2. Run powershell and change the directory to the your repository
+3. Run ```yarn install``` or ```npm install```
+4. To view in a web browser run ```yarn start``` or ```npm start```
 
 ## Building / Running app on Android
 
