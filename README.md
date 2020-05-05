@@ -16,7 +16,10 @@ By using Cordova we can support Android 4.4 Kitkat and above. (API Level 19, Oct
 
 ## Prequisites 
 1. Download and Install Node from - https://nodejs.org/en/download/
-2. Doownload and Install Yarn from  - https://classic.yarnpkg.com/en/docs/install/#windows-stable
+2. Download and Install Yarn from  - https://classic.yarnpkg.com/en/docs/install/#windows-stable
+3. Install angular CLI - yarn global add @angular/cli
+4. Install ionic CLI - - yarn global add @ionic/cli
+5. Download and install Android Studio - https://developer.android.com/studio
 
 ## After the prequisites are installed 
 1. Clone this repository
