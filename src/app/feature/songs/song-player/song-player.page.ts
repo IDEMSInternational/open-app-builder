@@ -69,7 +69,7 @@ export class SongPlayerPage implements OnInit {
   }
 
   onAudioTimeUpdate(elem: HTMLAudioElement) {
-    this.audioVC.nativeElement.playbackRate = 0.7;
+    this.audioVC.nativeElement.playbackRate = 1;
     var audioCurrentTimeSec = elem.currentTime;
     this.currentMinutes = Math.floor(audioCurrentTimeSec / 60);
     this.currentSeconds = audioCurrentTimeSec - this.currentMinutes * 60;
