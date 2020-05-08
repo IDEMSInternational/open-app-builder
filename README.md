@@ -1,6 +1,6 @@
 # Parenting App UI
 
-## Intro
+## Introduction
 
 This is the main frontend repository for the parenting app.
 
