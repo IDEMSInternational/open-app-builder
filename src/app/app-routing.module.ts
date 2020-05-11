@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'goals',
     loadChildren: () => import('./feature/goals/goals.module').then( m => m.GoalsPageModule)
+  },
+  {
+    path: 'stories',
+    loadChildren: () => import('./feature/stories/stories.module').then( m => m.StoriesPageModule)
   }
 ];
 
