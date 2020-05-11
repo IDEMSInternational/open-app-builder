@@ -1,90 +1,89 @@
 import { Song } from '../song.model';
-
 export const Zum_Gali_Gali: Song = {
     songTitle: "Zum Gali Gali",
     audioURL: "assets/audio/Zum_Gali_Gali.mp3",
     lyrics: [
         {
-            "lyric": "Zum gali gali gali\nZum gali gali",
+            "lyric": "Zum gali gali gali Zum gali gali",
             "startTimeMinute": "0",
             "startTimeSecond": "0",
             "endTimeMinute": "0",
-            "endTimeSecond": "3"
+            "endTimeSecond": "4.4"
         },
         {
             "lyric": "Zum gali gali gali   zuuum ",
             "startTimeMinute": "0",
-            "startTimeSecond": "3",
+            "startTimeSecond": "4.5",
             "endTimeMinute": "0",
-            "endTimeSecond": "6"
+            "endTimeSecond": "7"
         },
         {
             "lyric": "Zum gali gali gali     Zum gali gali gali   ",
             "startTimeMinute": "0",
-            "startTimeSecond": "6",
+            "startTimeSecond": "7",
             "endTimeMinute": "0",
-            "endTimeSecond": "11"
+            "endTimeSecond": "12.2"
         },
         {
             "lyric": "Zum gali gali gali   zuuum",
             "startTimeMinute": "0",
-            "startTimeSecond": "11",
+            "startTimeSecond": "12.2",
             "endTimeMinute": "0",
-            "endTimeSecond": "15"
+            "endTimeSecond": "15.1"
         },
         {
-            "lyric": "Dade dum dum dum Dade duummm  Dade dum dum dum Dade duummm",
+            "lyric": "Dari rum dum dum Dari ruummm  Dari rum dum dum Dari ruummm",
             "startTimeMinute": "0",
-            "startTimeSecond": "15",
+            "startTimeSecond": "15.7",
             "endTimeMinute": "0",
-            "endTimeSecond": "22"
+            "endTimeSecond": "23.9"
         },
         {
-            "lyric": "Dade dum dum dum Dade duummm  Dade dum dum dum Dade duummm",
+            "lyric": "Dari rum dum dum Dari ruummm  Dari rum dum dum Dari ruummm",
             "startTimeMinute": "0",
-            "startTimeSecond": "22",
+            "startTimeSecond": "23.9",
             "endTimeMinute": "0",
-            "endTimeSecond": "30"
+            "endTimeSecond": "31.7"
         },
         {
             "lyric": "Zum gali gali gali     Zum gali gali gali   ",
             "startTimeMinute": "0",
-            "startTimeSecond": "30",
+            "startTimeSecond": "31.7",
             "endTimeMinute": "0",
-            "endTimeSecond": "35"
+            "endTimeSecond": "36"
         },
         {
             "lyric": "Zum gali gali gali   Zuuum ",
             "startTimeMinute": "0",
-            "startTimeSecond": "35",
+            "startTimeSecond": "36",
             "endTimeMinute": "0",
-            "endTimeSecond": "38"
+            "endTimeSecond": "39.2"
         },
         {
             "lyric": "Zum gali gali gali     Zum gali gali gali",
             "startTimeMinute": "0",
-            "startTimeSecond": "38",
+            "startTimeSecond": "39.2",
             "endTimeMinute": "0",
-            "endTimeSecond": "42"
+            "endTimeSecond": "43.7"
         },
         {
             "lyric": "Zum gali gali gali   Zuuum  ",
             "startTimeMinute": "0",
-            "startTimeSecond": "42",
+            "startTimeSecond": "43.7",
             "endTimeMinute": "0",
-            "endTimeSecond": "45"
+            "endTimeSecond": "47"
         },
         {
-            "lyric": "Dade dum dum dum Dade duummm  Dade dum dum dum Dade duummm",
+            "lyric": "Dari rum dum dum Dari ruummm  Dari rum dum dum Dari ruummm",
             "startTimeMinute": "0",
-            "startTimeSecond": "45",
+            "startTimeSecond": "47",
             "endTimeMinute": "0",
-            "endTimeSecond": "53"
+            "endTimeSecond": "55"
         },
         {
-            "lyric": "Dade dum dum dum Dade duummm  Dade dum dum dum Dade duummm",
+            "lyric": "Dari rum dum dum Dari ruummm  Dari rum dum dum Dari ruummm",
             "startTimeMinute": "0",
-            "startTimeSecond": "53",
+            "startTimeSecond": "55",
             "endTimeMinute": "1",
             "endTimeSecond": "4"
         }

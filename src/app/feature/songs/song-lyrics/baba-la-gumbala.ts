@@ -1,5 +1,4 @@
 import { Song } from '../song.model';
-
 export const Baba_La_Gumbala: Song = {
     songTitle: "Baba La Gumbala",
     audioURL: "assets/audio/Baba_La_Gumbala.mp3",
@@ -9,112 +8,113 @@ export const Baba_La_Gumbala: Song = {
             "startTimeMinute": "0",
             "startTimeSecond": "0",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.03"
+            "endTimeSecond": "3"
+            
         },
         {
             "lyric": "Baba la gumbala gumbala havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.04",
+            "startTimeSecond": "4",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.06"
+            "endTimeSecond": "6"
         },
         {
             "lyric": "Baba la gumbala gumbala havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.08",
+            "startTimeSecond": "8",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.1"
+            "endTimeSecond": "10"
         },
         {
             "lyric": "Baba la gumbala gumbala havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.11",
+            "startTimeSecond": "11",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.13"
+            "endTimeSecond": "13"
         },
         {
-            "lyric": "Ha na na na na havise",
+            "lyric": "Ha nana nana havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.15",
+            "startTimeSecond": "15",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.17"
+            "endTimeSecond": "17"
         },
         {
-            "lyric": "Ha na na na na havise",
+            "lyric": "Ha nana nana havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.18",
+            "startTimeSecond": "18",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.2"
+            "endTimeSecond": "20"
         },
         {
-            "lyric": "Ha na na na na havise",
+            "lyric": "Ha nana nana havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.22",
+            "startTimeSecond": "22",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.24"
+            "endTimeSecond": "24"
         },
         {
-            "lyric": "Ha na na na na havise",
+            "lyric": "Ha nana nana havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.25",
+            "startTimeSecond": "25",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.27"
-        },
-        {
-            "lyric": "Havise",
-            "startTimeMinute": "0",
-            "startTimeSecond": "0.28",
-            "endTimeMinute": "0",
-            "endTimeSecond": "0.28"
+            "endTimeSecond": "27"
         },
         {
             "lyric": "Havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.29",
+            "startTimeSecond": "29",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.29"
+            "endTimeSecond": "29.1"
         },
         {
             "lyric": "Havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.3",
+            "startTimeSecond": "29.1",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.3"
+            "endTimeSecond": "29.59"
         },
         {
             "lyric": "Havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.31",
+            "startTimeSecond": "30.1",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.31"
+            "endTimeSecond": "30.59"
         },
         {
             "lyric": "Havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.32",
+            "startTimeSecond": "31.1",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.32"
+            "endTimeSecond": "31.59"
         },
         {
             "lyric": "Havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.33",
+            "startTimeSecond": "32.1",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.33"
+            "endTimeSecond": "32.59"
         },
         {
             "lyric": "Havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.34",
+            "startTimeSecond": "33.1",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.34"
+            "endTimeSecond": "33.59"
         },
         {
             "lyric": "Havise",
             "startTimeMinute": "0",
-            "startTimeSecond": "0.35",
+            "startTimeSecond": "34.1",
             "endTimeMinute": "0",
-            "endTimeSecond": "0.38"
+            "endTimeSecond": "34.59"
+        },
+        {
+            "lyric": "Havise",
+            "startTimeMinute": "0",
+            "startTimeSecond": "35",
+            "endTimeMinute": "0",
+            "endTimeSecond": "38"
         }
     ]
 };
