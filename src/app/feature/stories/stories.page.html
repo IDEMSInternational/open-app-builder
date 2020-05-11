@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Stories</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item *ngFor="let story of storyList;">
+    <ion-label [routerLink]="['/stories/story/', story.id]">{{story.name}}</ion-label>
+  </ion-item>
+</ion-content>

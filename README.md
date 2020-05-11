@@ -1,6 +1,6 @@
 # Parenting App UI
 
-## Intro
+## Introduction
 
 This is the main frontend repository for the parenting app.
 
@@ -84,3 +84,4 @@ from a command line within the parenting-app-ui folder run
 5. Now to run the parenting app on your device, cd into the parenting-app-ui folder and run
 ```ionic cordova run android```
 
+I'm sure this wont cause problems later
