@@ -8,5 +8,6 @@ export const medicationRoutineStory: Story = {
         { imageSrc: "assets/images/stories/Routine-for-medication/1.jpg" },
         { imageSrc: "assets/images/stories/Routine-for-medication/2.jpg" },
         { imageSrc: "assets/images/stories/Routine-for-medication/3.jpg" }
-    ]
+    ],
+    narrationAudioSrc: "assets/audio/stories/medication_routine.mp3"
 };
