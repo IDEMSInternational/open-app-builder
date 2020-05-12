@@ -1,7 +1,8 @@
 export interface AudioPlayer {
     play(): void;
     pause(): void;
-    getCurrentPosition(): Promise<any>;
+    stop(): void;
+    getCurrentPosition(): Promise<number>;
 }
 
 export class HTML5AudioPlayer implements AudioPlayer {
@@ -17,6 +18,11 @@ export class HTML5AudioPlayer implements AudioPlayer {
 
     pause(): void {
         this.htmlAudioElement.pause();
+    }
+
+    stop(): void {
+        this.htmlAudioElement.pause();
+        this.htmlAudioElement.currentTime = 0;
     }
 
     getCurrentPosition(): Promise<any> {
@@ -49,6 +55,10 @@ export class IonicNativeAudioPlayer implements AudioPlayer {
 
     pause(): void {
         this.ionicMediaObj.pause();
+    }
+
+    stop(): void {
+        this.ionicMediaObj.stop();
     }
 
     getCurrentPosition(): Promise<any> {
