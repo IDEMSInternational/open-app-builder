@@ -4,6 +4,7 @@ import { medicationRoutineStory } from './story-data/medication-routine-story';
 import { puttingOutFireStory } from './story-data/putting-out-fire-story';
 import { Story } from './story.model';
 import { breadAndBullyStory } from './story-data/bread-and-bully-story';
+import { bibiSaraStory } from './story-data/bibi-sara-story';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class StoryService {
   constructor() { }
 
   getStoryList(): Observable<Story[]> {
-    return of([medicationRoutineStory, puttingOutFireStory, breadAndBullyStory]);
+    return of([medicationRoutineStory, puttingOutFireStory, breadAndBullyStory, bibiSaraStory]);
   }
 }
