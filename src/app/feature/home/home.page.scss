@@ -42,6 +42,28 @@
   animation: side-to-side infinite 180s;
 }
 
+#click-here-for-activities {
+  animation: fade-in 1 5s;
+  color: white;
+  position: absolute;
+  left: 80px;
+  bottom: 100px;
+  text-shadow:  2px 2px #222222;
+  font-size: 40px;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes side-to-side {
   0% {
     left: 0px;
