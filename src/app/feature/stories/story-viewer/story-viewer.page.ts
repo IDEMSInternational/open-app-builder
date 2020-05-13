@@ -42,6 +42,7 @@ export class StoryViewerPage implements OnInit {
                 if (this.currentSlideIndex + 1 < this.currentStory.panels.length) {
                   let currentPanel = this.currentStory.panels[this.currentSlideIndex];
                   let nextPanel = this.currentStory.panels[this.currentSlideIndex + 1];
+                  // If story has audio but no panel start time then 3.5 seconds per panel default
                   if (!nextPanel.audioStartTimeSeconds) {
                     nextPanel.audioStartTimeSeconds = 3.5 * this.currentSlideIndex;
                   }
@@ -51,7 +52,7 @@ export class StoryViewerPage implements OnInit {
                   }
                 }
               });
-            }, 1000);
+            }, 500);
           }
         });
       }
