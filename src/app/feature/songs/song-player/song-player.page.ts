@@ -9,7 +9,7 @@ import { Song } from '../song.model';
   styleUrls: ['./song-player.page.scss'],
 })
 export class SongPlayerPage implements OnInit {
-  
+
   currentSong: Song;
 
   currentMinutes: number = 0;
@@ -25,11 +25,11 @@ export class SongPlayerPage implements OnInit {
   lyricPerson1Color: string = "white";
   lyricPerson2Color: string = "white";
 
-  @ViewChild("audioElem", { static: false }) audioVC: { nativeElement: HTMLAudioElement};
+  @ViewChild("audioElem", { static: false }) audioVC: { nativeElement: HTMLAudioElement };
 
   paused: boolean = false;
 
-  constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute,
     private songService: SongService, private router: Router) {
     this.route.params.subscribe(params => {
       if (params["id"]) {
@@ -41,15 +41,15 @@ export class SongPlayerPage implements OnInit {
     });
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-          this.audioVC.nativeElement.pause();
-          this.audioVC.nativeElement.currentTime = 0;
+        this.audioVC.nativeElement.pause();
+        this.audioVC.nativeElement.currentTime = 0;
       }
-  });
-    
+    });
+
   }
 
   ngOnInit(): void {
-    
+
   }
 
   toggleAudio() {
@@ -82,19 +82,19 @@ export class SongPlayerPage implements OnInit {
           this.hasInstructions = true;
           this.lyricLinesInstructions = newLines;
         } else
-        if (lyric.person === "2") {
-          this.hasTwoPeople = true;
-          if (newLines[0] && newLines[0] !== this.lyricLinesPerson2[0]) {
-            this.lyricPerson2Color = this.pickRandom(["lightpink", "pink", "darkred", "black", "white"]);
+          if (lyric.person === "2") {
+            this.hasTwoPeople = true;
+            if (newLines[0] && newLines[0] !== this.lyricLinesPerson2[0]) {
+              this.lyricPerson2Color = this.pickRandom(["lightpink", "pink", "darkred", "black", "white"]);
+            }
+            this.lyricLinesPerson2 = newLines;
+          } else {
+            var newLines = lyric.lyric.split("\n");
+            if (newLines[0] && newLines[0] !== this.lyricLinesPerson1[0]) {
+              this.lyricPerson1Color = this.pickRandom(["skyblue", "cyan", "blue", "lightblue", "teal", "black", "white"]);
+            }
+            this.lyricLinesPerson1 = newLines;
           }
-          this.lyricLinesPerson2 = newLines;
-        } else {
-          var newLines = lyric.lyric.split("\n");
-          if (newLines[0] && newLines[0] !== this.lyricLinesPerson1[0]) {
-            this.lyricPerson1Color = this.pickRandom(["skyblue", "cyan", "blue", "lightblue", "teal", "black", "white"]);
-          }
-          this.lyricLinesPerson1 = newLines;
-        }
       }
     }
   }
