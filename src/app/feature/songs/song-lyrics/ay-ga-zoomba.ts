@@ -1,4 +1,5 @@
 import { Song } from '../song.model';
+
 export const Ay_Gazoomba: Song = {
     songTitle: "Ay Gazoomba",
     audioURL: "assets/audio/Ay_Ga_Zoomba.mp3",
@@ -13,19 +14,19 @@ export const Ay_Gazoomba: Song = {
         {
             "lyric": "AY GAZOOMBA\nZOOMBA\nZOOMBA\nAY GAZOOMBA\nZOOMBA\nHEY!\n",
             "startTimeMinute": "0",
-            "startTimeSecond": "5",
+            "startTimeSecond": "4",
             "endTimeMinute": "0",
             "endTimeSecond": "9"
         },
         {
-            "lyric": "AY GAZOOooooo\nBA\nZOOMBA\nZOOMBA\n",
+            "lyric": "AY GAZOOOOOO\nBA\nZOOMBA\nZOOMBA\n",
             "startTimeMinute": "0",
             "startTimeSecond": "10",
             "endTimeMinute": "0",
             "endTimeSecond": "14"
         },
         {
-            "lyric": "AY GAZOOOOOO\nBA\nZOOMBA\nZOOMBA",
+            "lyric": "AY GAZOOOOOOBA\nZOOMBA\nZOOMBA\nHEY!\n",
             "startTimeMinute": "0",
             "startTimeSecond": "15",
             "endTimeMinute": "0",
@@ -46,7 +47,7 @@ export const Ay_Gazoomba: Song = {
             "endTimeSecond": "34"
         },
         {
-            "lyric": "AY GAZOOOMBA\nZOOMBA\nZOOOMBA ZOOMBA\nAY GAZOOMBA\nZOOMBA\nHEY!\n(twice",
+            "lyric": "AY GAZOOOMBA\nZOOMBA\nZOOOMBA ZOOMBA\nAY GAZOOMBA\nZOOMBA\nHEY!\n(twice)",
             "startTimeMinute": "0",
             "startTimeSecond": "35",
             "endTimeMinute": "0",
@@ -60,7 +61,7 @@ export const Ay_Gazoomba: Song = {
             "endTimeSecond": "49"
         },
         {
-            "lyric": "AY GAZOOMBA\nZOOMBA ZOOMBA\nAY GAZOOMBA\nZOOMBA\nHEY\n ",
+            "lyric": "AY GAZOOMBA\nZOOMBA ZOOMBA\nAY GAZOOMBA\nZOOMBA\nHEY\n(Faster!) ",
             "startTimeMinute": "0",
             "startTimeSecond": "50",
             "endTimeMinute": "0",
