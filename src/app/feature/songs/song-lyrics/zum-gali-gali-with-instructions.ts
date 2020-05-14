@@ -1,10 +1,11 @@
 import { Song } from '../song.model';
+
 export const Zum_Gali_Gali_Instructions: Song = {
     songTitle: "Zum Gali Gali (with Instructions)",
     audioURL: "assets/audio/Zum_Gali_Gali_Instructions.mp3",
     lyrics: [
         {
-            "lyric": "One play with the words in sounds",
+            "lyric": "One: Play with the words and sounds",
             "person": "1",
             "isInstructions": "TRUE",
             "startTimeMinute": "0",
@@ -17,7 +18,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "person": "2",
             "isInstructions": "FALSE",
             "startTimeMinute": "0",
-            "startTimeSecond": "5",
+            "startTimeSecond": "5.2",
             "endTimeMinute": "0",
             "endTimeSecond": "6"
         },
@@ -76,7 +77,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "16.7"
         },
         {
-            "lyric": "Zum Gali Gali Zum",
+            "lyric": "Zum Gali Gali Gali Zum",
             "person": "1",
             "isInstructions": "FALSE",
             "startTimeMinute": "0",
@@ -193,7 +194,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "34"
         },
         {
-            "lyric": " 2 you sing  they sing",
+            "lyric": "Two: You sing  they sing",
             "person": "1",
             "isInstructions": "TRUE",
             "startTimeMinute": "0",
@@ -202,7 +203,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "39"
         },
         {
-            "lyric": " Zum Gali Gali      Zum Gali Gali",
+            "lyric": " Zum Gali Gali Gali   Zum Gali Gali",
             "person": "2",
             "isInstructions": "FALSE",
             "startTimeMinute": "0",
@@ -211,7 +212,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "43"
         },
         {
-            "lyric": "Zum Gali Gali       Zum Gali Gali",
+            "lyric": "Zum Gali Gali Gali    Zum Gali Gali",
             "person": "1",
             "isInstructions": "FALSE",
             "startTimeMinute": "0",
@@ -220,7 +221,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "48"
         },
         {
-            "lyric": "Zum Gali Gali       Zum",
+            "lyric": "Zum Gali Gali  Gali    Zum",
             "person": "2",
             "isInstructions": "FALSE",
             "startTimeMinute": "0",
@@ -229,7 +230,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "51"
         },
         {
-            "lyric": "Zum Gali Gali          Zum",
+            "lyric": "Zum Gali Gali  Gali      Zum",
             "person": "1",
             "isInstructions": "FALSE",
             "startTimeMinute": "0",
@@ -238,7 +239,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "54"
         },
         {
-            "lyric": "Dari Rum Dum Dum Dari Dum",
+            "lyric": "Dari Rum Dum Dum Dari Rum",
             "person": "2",
             "isInstructions": "FALSE",
             "startTimeMinute": "0",
@@ -247,7 +248,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "58"
         },
         {
-            "lyric": "Dari Rum Dum Dum Dari Dum ",
+            "lyric": "Dari Rum Dum Dum Dari Rum ",
             "person": "1",
             "isInstructions": "FALSE",
             "startTimeMinute": "0",
@@ -256,7 +257,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "3"
         },
         {
-            "lyric": "Dari Rum Dum Dum Dari Dum",
+            "lyric": "Dari Rum Dum Dum Dari Rum",
             "person": "2",
             "isInstructions": "FALSE",
             "startTimeMinute": "1",
@@ -265,7 +266,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "7"
         },
         {
-            "lyric": "Dari Rum Dum Dum Dari Dum ",
+            "lyric": "Dari Rum Dum Dum Dari Rum ",
             "person": "1",
             "isInstructions": "FALSE",
             "startTimeMinute": "1",
@@ -292,7 +293,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "26.7"
         },
         {
-            "lyric": "Dari Rum Dum Dum Dari Dum                   Dari  Rum Dum Dum    Dari Rum",
+            "lyric": "Dari Rum Dum Dum Dari Rum                   Dari  Rum Dum Dum    Dari Rum",
             "person": "2",
             "isInstructions": "FALSE",
             "startTimeMinute": "1",
@@ -301,7 +302,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "34"
         },
         {
-            "lyric": "Dari Rum Dum Dum Dari Rum                Dari Rum Dum Dum Dari Dum",
+            "lyric": "Dari Rum Dum Dum Dari Rum                Dari Rum Dum Dum Dari Rum",
             "person": "1",
             "isInstructions": "FALSE",
             "startTimeMinute": "1",
@@ -310,7 +311,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "endTimeSecond": "43.5"
         },
         {
-            "lyric": "Three Add funny actions",
+            "lyric": "Three: Add fun actions",
             "person": "1",
             "isInstructions": "TRUE",
             "startTimeMinute": "1",
@@ -330,7 +331,7 @@ export const Zum_Gali_Gali_Instructions: Song = {
             "danceMove": "digging"
         },
         {
-            "lyric": "Four Singing all together",
+            "lyric": "Four :Singing all together",
             "person": "1",
             "isInstructions": "TRUE",
             "startTimeMinute": "1",
