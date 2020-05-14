@@ -24,6 +24,7 @@ export class StoryViewerPage implements OnInit {
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
   audioPlayer: AudioPlayer;
   audioInterval: any;
+  paused: boolean = true;
 
   constructor(private route: ActivatedRoute, private storyService: StoryService,
     private audioService: AudioService, private router: Router) {
@@ -36,9 +37,9 @@ export class StoryViewerPage implements OnInit {
           if (this.currentStory.narrationAudioSrc) {
             this.audioPlayer = this.audioService.createPlayer(this.currentStory.narrationAudioSrc);
             this.audioPlayer.play();
+            this.paused = false;
             this.audioInterval = setInterval(() => {
               this.audioPlayer.getCurrentPosition().then((audioPosSec) => {
-                console.log("pos", audioPosSec);
                 if (this.currentSlideIndex + 1 < this.currentStory.panels.length) {
                   let currentPanel = this.currentStory.panels[this.currentSlideIndex];
                   let nextPanel = this.currentStory.panels[this.currentSlideIndex + 1];
@@ -60,6 +61,7 @@ export class StoryViewerPage implements OnInit {
         if (event instanceof NavigationStart) {
           if (this.audioPlayer) {
             this.audioPlayer.stop();
+            this.paused = true;
             delete this.audioPlayer;
           }
           clearInterval(this.audioInterval);
@@ -67,6 +69,16 @@ export class StoryViewerPage implements OnInit {
       });
     });
     
+  }
+
+  toggleAudio() {
+    if (this.paused) {
+      this.audioPlayer.play();
+      this.paused = false;
+    } else {
+      this.audioPlayer.pause();
+      this.paused = true;
+    }
   }
 
   ngOnInit(): void {
