@@ -1,4 +1,5 @@
 import { Song } from '../song.model';
+
 export const Zum_Gali_Gali: Song = {
     songTitle: "Zum Gali Gali",
     audioURL: "assets/audio/Zum_Gali_Gali.mp3",
