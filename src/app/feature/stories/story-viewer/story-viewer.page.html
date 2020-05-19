@@ -8,9 +8,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide *ngFor="let panel of currentStory.panels">
-      <img [src]="panel.imageSrc">
+  <div *ngIf="audioPlayer" class="button-container">
+    <ion-button shape="round" (click)="toggleAudio()">
+        <ion-icon name="{{paused ? 'play' : 'pause'}}"></ion-icon>
+    </ion-button>
+  </div>
+  <ion-slides id="slides" #slides pager="true" [options]="slideOpts">
+    <ion-slide class="ion-slide" *ngFor="let panel of currentStory.panels">
+      <img class="story-panel-img" [src]="panel.imageSrc">
     </ion-slide>
   </ion-slides>
+  <h1 class="swipe-left" *ngIf="!audioPlayer">Swipe left to continue...</h1>
 </ion-content>
