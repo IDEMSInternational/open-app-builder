@@ -16,7 +16,7 @@ export interface StoryPanel {
 }
 
 export interface StoryOption {
-    type: "choice" | "random";
+    type: "next" | "choice" | "random";
     nextPanelId: string;
     optionDescription?: string; // e.g Option A: Tell Amani it's grandma's hospital
     optionButtonType?: "yes" | "no" | "optionA" | "optionB";

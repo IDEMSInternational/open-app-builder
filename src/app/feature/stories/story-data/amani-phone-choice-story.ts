@@ -6,9 +6,16 @@ export const amaniPhoneStory: Story = {
     hasChoices: true,
     panels: [
         {
-            imageSrc: "assets/images/stories/amani-phone/0.jpg"
+            imageSrc: "assets/images/stories/amani-phone/0.jpg",
+            nextPanelOptions: [
+                {
+                    type: "next",
+                    nextPanelId: "phone-ringing"
+                }
+            ]
         },
         {
+            id: "phone-ringing",
             imageSrc: "assets/images/stories/amani-phone/1.jpg",
             nextPanelOptions: [
                 {
