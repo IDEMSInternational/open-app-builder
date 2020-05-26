@@ -7,6 +7,7 @@ import { breadAndBullyStory } from './story-data/bread-and-bully-story';
 import { bibiSaraStory } from './story-data/bibi-sara-story';
 import { whatsappNegative } from './story-data/whatsapp-negative';
 import { amaniPhoneStory } from './story-data/amani-phone-choice-story';
+import { stuckInsideActivitiesStory } from './story-data/stuck-inside-activities';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,6 @@ export class StoryService {
 
   getStoryList(): Observable<Story[]> {
     return of([medicationRoutineStory, puttingOutFireStory, breadAndBullyStory, 
-      bibiSaraStory, whatsappNegative, amaniPhoneStory]);
+      bibiSaraStory, whatsappNegative, amaniPhoneStory, stuckInsideActivitiesStory]);
   }
 }
