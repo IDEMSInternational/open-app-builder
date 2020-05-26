@@ -116,8 +116,16 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
   }
 
   storyOptionClicked(option: StoryOption): void {
-    console.log("You picked ", option);
-    this.goToPanelId(option.nextPanelId);
+    if (option.type === "random") {
+      const currentPanel = this.currentStory.panels[this.currentSlideIndex];
+      const nextOptions = currentPanel.nextPanelOptions;
+      const randomOption = nextOptions[Math.floor(Math.random() * nextOptions.length)];
+      console.log("Random option", randomOption);
+      this.goToPanelId(randomOption.nextPanelId);
+    } else {
+      console.log("You picked ", option);
+      this.goToPanelId(option.nextPanelId);
+    }
   }
 
   goToPanelId(id: string) {
@@ -126,19 +134,6 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
       this.goToSlide(nextSlideIndex);
     } else {
       console.log("No story panel with id ", id);
-    }
-  }
-
-  nextClicked(): void {
-    console.log("Next clicked?");
-    const currentPanel = this.currentStory.panels[this.currentSlideIndex];
-    const nextOptions = currentPanel.nextPanelOptions;
-    if (nextOptions && nextOptions.length > 0 && nextOptions[0].type === "random") {
-        const randomIndex = Math.floor(Math.random() * nextOptions.length);
-        const randomChoice = nextOptions[randomIndex];
-        this.goToPanelId(randomChoice.nextPanelId);
-    } else {
-      this.goToSlide(this.currentSlideIndex + 1);
     }
   }
 

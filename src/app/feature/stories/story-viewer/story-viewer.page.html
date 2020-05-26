@@ -22,15 +22,14 @@
   <div *ngIf="currentStory.hasChoices">
     <div *ngIf="currentStory.panels[currentSlideIndex].nextPanelOptions">
       <h1>{{currentStory.panels[currentSlideIndex].nextPanelQuestion}}</h1>
-      <div *ngFor="let option of currentStory.panels[currentSlideIndex].nextPanelOptions">
-        <ion-button *ngIf="option.type === 'choice'" (click)="storyOptionClicked(option)">{{option.optionButtonType}}
-        </ion-button>
+      <div class="option-container" *ngFor="let option of currentStory.panels[currentSlideIndex].nextPanelOptions; index as i">
+        <ion-button *ngIf="option.type !== 'choice' && i == 0" (click)="storyOptionClicked(option)">Next</ion-button>
+        <ion-button *ngIf="option.type === 'choice'" (click)="storyOptionClicked(option)">{{option.optionButtonType}}</ion-button>
+        <h2>{{option.optionDescription}}</h2>
       </div>
-      <ion-button *ngIf="currentStory.panels[currentSlideIndex].nextPanelOptions[0].type !== 'choice'"
-        (click)="nextClicked()">Next</ion-button>
     </div>
     <div *ngIf="!currentStory.panels[currentSlideIndex].nextPanelOptions">
-      The End.
+      {{currentStory.panels[currentSlideIndex].conclusion}}
       <ion-button (click)="tryAgainClicked()">Try Again?</ion-button>
     </div>
   </div>
