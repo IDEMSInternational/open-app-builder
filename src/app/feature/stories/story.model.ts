@@ -11,8 +11,11 @@ export interface StoryPanel {
     imageSrc: string;
     audioStartTimeSeconds?: number;
     audioEndTimeSeconds?: number;
+    currentPanelDescription?: string;
     nextPanelQuestion?: string; // e.g Should she pick up the phone?
     nextPanelOptions?: StoryOption[];
+    conclusion?: string;
+    goodEnding?: boolean;
 }
 
 export interface StoryOption {

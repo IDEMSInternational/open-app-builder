@@ -21,3 +21,12 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.option-container {
+    display: flex;
+    flex-direction: row;
+
+    ion-button {
+        max-width: 200px;
+    }
+}
