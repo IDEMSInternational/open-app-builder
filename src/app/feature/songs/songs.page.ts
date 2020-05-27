@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from './song.model';
 import { SongService } from './song.service';
+import { AudioRecordingService } from 'src/app/shared/services/audio/audio.recording.service';
 
 @Component({
   selector: 'plh-songs',
@@ -11,10 +12,11 @@ export class SongsPage implements OnInit {
 
   songList: Song[];
 
-  constructor(private songService: SongService) { 
+  constructor(private songService: SongService, private audioRecordingService: AudioRecordingService) {
     songService.getSongList().subscribe((songs) => {
       this.songList = songs;
     });
+    this.audioRecordingService.recordAudioTest();
   }
 
   ngOnInit() {
