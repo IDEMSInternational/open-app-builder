@@ -59,7 +59,8 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.3",
+    "@types/swiper": "~4.2.0"
   },
   "description": "An Ionic project",
   "cordova": {
