@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AudioPlayer, IonicNativeAudioPlayer, HTML5AudioPlayer } from './audio.player';
+import { AudioPlayer, HTML5AudioPlayer } from './audio.player';
+import { IonicNativeAudioPlayer } from './ionic.audio.player';
 
 @Injectable({
   providedIn: 'root'
