@@ -15,8 +15,9 @@ If you know how to make your changes in code please submit a pull request and me
 # Derivatives and Certification
 You may create your own derivatives of this app using content from within the app. However all official organisation branding and trademarks must be removed unless you receive approval and certification from those organisations. These organisations include:
 - Parenting For Lifelong Health
-- Oxford University
 - Clowns Without Borders
+- University of Cape Town
+- Oxford University
 - WHO
 - Unicef
 - CDC
