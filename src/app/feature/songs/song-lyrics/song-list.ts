@@ -9,6 +9,7 @@ import { Oh_Ram_Sam_Sam_Instructions } from './oh-ram-sam-sam-with-instructions'
 import { Zum_Gali_Gali } from './zum-gali-gali';
 import { Zum_Gali_Gali_Instructions } from './zum-gali-gali-with-instructions';
 import { Song } from '../song.model';
+import { oneIWant } from './one-i-want';
 
 
 export const songList: Song[] = [
@@ -21,5 +22,6 @@ export const songList: Song[] = [
     Oh_Ram_Sam_Sam,
     Oh_Ram_Sam_Sam_Instructions,
     Zum_Gali_Gali,
-    Zum_Gali_Gali_Instructions
+    Zum_Gali_Gali_Instructions,
+    oneIWant
 ];
