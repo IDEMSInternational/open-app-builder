@@ -967,6 +967,13 @@
   dependencies:
     "@types/cordova" latest
 
+"@ionic-native/media@^5.25.0":
+  version "5.25.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/media/-/media-5.25.0.tgz#ccd941ed74d71a0148e4e423f5b1701c18aff0e1"
+  integrity sha512-TJ/ds4dQrJAnOLCkZRRquHFrbJAvKDIw5i+oj1l0Ud5Uobgmua/3HW+uA5BES4suJ9x3m7R//6TfD5XkmyyqkQ==
+  dependencies:
+    "@types/cordova" latest
+
 "@ionic-native/splash-screen@^5.0.0":
   version "5.24.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-5.24.0.tgz#4c37dcd92a993a22b43d76af259d4ac4faffde55"
@@ -1270,6 +1277,11 @@
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
   integrity sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==
+
+"@types/swiper@~4.2.0":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@types/swiper/-/swiper-4.2.4.tgz#85f5f20146bb3b32697b1deb7baec15103b5454e"
+  integrity sha512-rmubFmusxs4M6mXVJWuLI7OgogXFqFBtRx434QljiaeL9tWSRP+HGWbgxY+zaSimJyUGPkF9OH10uKNDbc45NA==
 
 "@types/webpack-sources@^0.1.5":
   version "0.1.7"
@@ -2758,6 +2770,11 @@ cordova-plugin-ionic-webview@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-4.2.0.tgz#18f0e74061cbe5d399feeedb612a1eac9ddf6942"
   integrity sha512-6sQDV0iJel8DW+fWppuR/qEePiEU2HtlpPEYzxcGwaiBLLq8bVh30izJ9DgT8ozjF9nmF2tUxxzB0dN7U7jj+w==
+
+cordova-plugin-media@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-media/-/cordova-plugin-media-5.0.3.tgz#366188bd4f8472651c1e8304be649af6333b0e36"
+  integrity sha512-UQPFlpk1zL4BY44zGi8RVmYCvcKBCN4Dyf8ovxqGYCC8zR1yhbTRWYDdO9vJdERwbfgWV7+z7FMWiSUfqWm9bQ==
 
 cordova-plugin-splashscreen@^5.0.2:
   version "5.0.3"
