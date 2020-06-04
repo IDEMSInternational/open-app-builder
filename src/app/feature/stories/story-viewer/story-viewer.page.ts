@@ -1,25 +1,27 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Story } from '../story.model';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Story, StoryOption } from '../story.model';
 import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 import { StoryService } from '../story.service';
 import { AudioService } from 'src/app/shared/services/audio/audio.service';
 import { IonSlides } from '@ionic/angular';
 import { AudioPlayer } from 'src/app/shared/services/audio/audio.player';
+import Swiper, { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'plh-story-viewer',
   templateUrl: './story-viewer.page.html',
   styleUrls: ['./story-viewer.page.scss'],
 })
-export class StoryViewerPage implements OnInit {
+export class StoryViewerPage implements OnInit, AfterViewInit {
 
-  slideOpts = {
+  slideOpts: SwiperOptions = {
     initialSlide: 0,
     speed: 400
   };
 
   currentStory: Story;
   currentSlideIndex: number = 0;
+  panelIdToIndex: { [id: string]: number } = {};
 
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
   audioPlayer: AudioPlayer;
@@ -34,7 +36,17 @@ export class StoryViewerPage implements OnInit {
         var id = params["id"];
         this.storyService.getStoryList().subscribe((storyList) => {
           this.currentStory = storyList.find((story) => story.id === id);
-          if (this.currentStory.narrationAudioSrc) {
+
+          // Store the index for panels with id's so we can find it fast later
+          this.currentStory.panels.forEach((panel, index) => {
+            if (panel.id) {
+              this.panelIdToIndex[panel.id] = index;
+            }
+          });
+
+          // Play narration and autoplay slides (if narration available)
+          if (this.currentStory.narrationAudioSrc && !this.currentStory.hasChoices) {
+            this.slideOpts.allowTouchMove = false;
             this.audioPlayer = this.audioService.createPlayer(this.currentStory.narrationAudioSrc);
             this.audioPlayer.play();
             this.paused = false;
@@ -48,8 +60,7 @@ export class StoryViewerPage implements OnInit {
                     nextPanel.audioStartTimeSeconds = 3.5 * this.currentSlideIndex;
                   }
                   if (audioPosSec > nextPanel.audioStartTimeSeconds) {
-                    this.currentSlideIndex++;
-                    this.slides.slideTo(this.currentSlideIndex);
+                    this.goToSlide(this.currentSlideIndex + 1);
                   }
                 }
               });
@@ -57,6 +68,7 @@ export class StoryViewerPage implements OnInit {
           }
         });
       }
+      
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationStart) {
           if (this.audioPlayer) {
@@ -70,6 +82,13 @@ export class StoryViewerPage implements OnInit {
     });
     
   }
+  ngAfterViewInit(): void {
+    this.slides.getSwiper().then((swiper: Swiper) => {
+      swiper.on("slideChangeTransitionEnd", () => {
+        this.currentSlideIndex = swiper.activeIndex;
+      });
+    });
+  }
 
   toggleAudio() {
     if (this.paused) {
@@ -82,6 +101,44 @@ export class StoryViewerPage implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  goToSlide(index: number, speed?: number) {
+    this.slides.slideTo(index, speed);
+    this.currentSlideIndex = index;
+    const currentPanel = this.currentStory.panels[this.currentSlideIndex];
+    const nextOptions = currentPanel.nextPanelOptions;
+    /* if (nextOptions && nextOptions.length > 0 && nextOptions[0].type === "choice") {
+      this.showNextButton = false;
+    } else {
+      this.showNextButton = true;
+    } */
+  }
+
+  storyOptionClicked(option: StoryOption): void {
+    if (option.type === "random") {
+      const currentPanel = this.currentStory.panels[this.currentSlideIndex];
+      const nextOptions = currentPanel.nextPanelOptions;
+      const randomOption = nextOptions[Math.floor(Math.random() * nextOptions.length)];
+      console.log("Random option", randomOption);
+      this.goToPanelId(randomOption.nextPanelId);
+    } else {
+      console.log("You picked ", option);
+      this.goToPanelId(option.nextPanelId);
+    }
+  }
+
+  goToPanelId(id: string) {
+    if (this.panelIdToIndex[id]) {
+      const nextSlideIndex = this.panelIdToIndex[id];
+      this.goToSlide(nextSlideIndex);
+    } else {
+      console.log("No story panel with id ", id);
+    }
+  }
+
+  tryAgainClicked(): void {
+    this.goToSlide(0);
   }
 
 }
