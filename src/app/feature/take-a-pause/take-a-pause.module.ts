@@ -8,6 +8,7 @@ import { TakeAPausePageRoutingModule } from './take-a-pause-routing.module';
 
 import { TakeAPausePage } from './take-a-pause.page';
 import { PauseStep0Component } from './pause-step0/pause-step0.component';
+import { PauseStep2Component } from '../pause-step2/pause-step2.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { PauseStep0Component } from './pause-step0/pause-step0.component';
   ],
   declarations: [
     TakeAPausePage,
-    PauseStep0Component
+    PauseStep0Component,
+    PauseStep2Component
   ]
 })
 export class TakeAPausePageModule {}
