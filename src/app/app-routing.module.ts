@@ -25,11 +25,19 @@ const routes: Routes = [
   },
   {
     path: 'stories',
+
     loadChildren: () => import('./feature/stories/stories.module').then(m => m.StoriesPageModule)
   },
   {
     path: 'take-a-pause',
     loadChildren: () => import('./feature/take-a-pause/take-a-pause.module').then(m => m.TakeAPausePageModule)
+
+    loadChildren: () => import('./feature/stories/stories.module').then( m => m.StoriesPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./feature/about/about.module').then( m => m.AboutPageModule)
+
   }
 
 ];
