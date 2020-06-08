@@ -13,10 +13,7 @@ import { PauseStep2Component } from './pause-step2/pause-step2.component';
 import { PauseStep3Component } from './pause-step3/pause-step3.component';
 import { PauseStep5Component } from './pause-step5/pause-step5.component';
 import { PauseThinkComponent } from './pause-think/pause-think.component';
-
-
-
-
+import { PauseFeelComponent } from './pause-feel/pause-feel.component';
 
 @NgModule({
   imports: [
@@ -32,7 +29,8 @@ import { PauseThinkComponent } from './pause-think/pause-think.component';
     PauseStep2Component,
      PauseStep3Component,
     PauseStep5Component, 
-    PauseThinkComponent
+    PauseThinkComponent,
+    PauseFeelComponent
   ]
 })
 export class TakeAPausePageModule {}
