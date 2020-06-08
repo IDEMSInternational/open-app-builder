@@ -36,6 +36,10 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
         var id = params["id"];
         this.storyService.getStoryList().subscribe((storyList) => {
           this.currentStory = storyList.find((story) => story.id === id);
+          this.currentStory.panels[0] = {
+            imageSrc: null,
+            conclusion: "Take a moment to reflect on how that went"
+          };
 
           // Store the index for panels with id's so we can find it fast later
           this.currentStory.panels.forEach((panel, index) => {
@@ -68,7 +72,7 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
           }
         });
       }
-      
+
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationStart) {
           if (this.audioPlayer) {
@@ -80,14 +84,16 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
         }
       });
     });
-    
+
   }
   ngAfterViewInit(): void {
-    this.slides.getSwiper().then((swiper: Swiper) => {
-      swiper.on("slideChangeTransitionEnd", () => {
-        this.currentSlideIndex = swiper.activeIndex;
+    if (this.slides) {
+      this.slides.getSwiper().then((swiper: Swiper) => {
+        swiper.on("slideChangeTransitionEnd", () => {
+          this.currentSlideIndex = swiper.activeIndex;
+        });
       });
-    });
+    }
   }
 
   toggleAudio() {
