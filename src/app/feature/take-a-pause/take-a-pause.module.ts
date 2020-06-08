@@ -8,6 +8,7 @@ import { TakeAPausePageRoutingModule } from './take-a-pause-routing.module';
 
 import { TakeAPausePage } from './take-a-pause.page';
 import { PauseStep0Component } from './pause-step0/pause-step0.component';
+import { PauseStep1Component } from './pause-step1/pause-step1.component';
 
 import { PauseStep2Component } from '../pause-step2/pause-step2.component';
 
@@ -29,6 +30,10 @@ import { PauseStep5Component } from './pause-step5/pause-step5.component';
   declarations: [
     TakeAPausePage,
 
+    PauseStep0Component, 
+    PauseStep1Component,
+
+
     PauseStep0Component,
     PauseStep2Component,
 
@@ -38,6 +43,7 @@ import { PauseStep5Component } from './pause-step5/pause-step5.component';
     
 
     PauseStep5Component
+
 
 
   ]
