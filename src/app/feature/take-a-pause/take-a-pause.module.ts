@@ -14,6 +14,7 @@ import { PauseStep3Component } from './pause-step3/pause-step3.component';
 import { PauseStep5Component } from './pause-step5/pause-step5.component';
 import { PauseThinkComponent } from './pause-think/pause-think.component';
 import { PauseFeelComponent } from './pause-feel/pause-feel.component';
+import { PauseStep4Component } from './pause-step4/pause-step4.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { PauseFeelComponent } from './pause-feel/pause-feel.component';
     PauseStep0Component, 
     PauseStep1Component,
     PauseStep2Component,
-     PauseStep3Component,
+    PauseStep3Component,
+    PauseStep4Component,
     PauseStep5Component, 
     PauseThinkComponent,
     PauseFeelComponent
