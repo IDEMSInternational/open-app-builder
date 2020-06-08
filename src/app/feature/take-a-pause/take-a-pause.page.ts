@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TakeAPausePage implements OnInit {
 
-  currentStep = 0;
+  currentStep = 2;
 
   constructor() { }
 
