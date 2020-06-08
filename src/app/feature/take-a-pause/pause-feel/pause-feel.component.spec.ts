@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PauseFeelComponentComponent } from './pause-feel-component.component';
+import { PauseFeelComponent } from './pause-feel.component';
 
-describe('PauseFeelComponentComponent', () => {
-  let component: PauseFeelComponentComponent;
-  let fixture: ComponentFixture<PauseFeelComponentComponent>;
+describe('PauseFeelComponent', () => {
+  let component: PauseFeelComponent;
+  let fixture: ComponentFixture<PauseFeelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PauseFeelComponentComponent ],
+      declarations: [ PauseFeelComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PauseFeelComponentComponent);
+    fixture = TestBed.createComponent(PauseFeelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
