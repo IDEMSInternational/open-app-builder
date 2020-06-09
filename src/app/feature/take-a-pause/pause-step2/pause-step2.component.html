@@ -1,18 +1,6 @@
 <p>
   Take a Pause Body Scanner
 </p>
-<plh-pause-body-scanner></plh-pause-body-scanner>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<plh-pause-step5></plh-pause-step5>
+<plh-pause-think *ngIf="audioTime < 37"></plh-pause-think>
+<plh-pause-feel *ngIf="audioTime > 37 && audioTime < 58"></plh-pause-feel>
+<plh-pause-body-scanner *ngIf="audioTime > 58"></plh-pause-body-scanner>
