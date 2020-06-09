@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'plh-reflect-animation',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reflect-animation.component.scss'],
 })
 export class ReflectAnimationComponent implements OnInit {
+
+  @Input()
+  progress: number = 0;
 
   constructor() { }
 
