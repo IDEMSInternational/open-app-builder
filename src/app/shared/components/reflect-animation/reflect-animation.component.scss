@@ -1,0 +1,51 @@
+.anim-container {
+    width: 150px;
+    height: 171px;
+    position: relative;
+}
+
+.layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.torso {
+    z-index: 2;
+}
+
+.eyes {
+    z-index: 3;
+    animation: thinking-eyes 3s infinite;
+}
+
+.front-arm {
+    z-index: 4;
+}
+
+@keyframes thinking-eyes {
+    0% {
+        left: 0px;
+    }
+    45% {
+        left: 0px;
+    }
+    50% {
+        left: 8px;
+    }
+    94% {
+        left: 8px;
+    }
+    99% {
+        left: 0px;
+    }
+}
+
+.progress-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 20px;
+    max-width: 200px;
+}
