@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'plh-pause-step2',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pause-step2.component.scss'],
 })
 export class PauseStep2Component implements OnInit {
+
+  @Input()
+  audioTime: number = 0;
 
   constructor() { }
 
