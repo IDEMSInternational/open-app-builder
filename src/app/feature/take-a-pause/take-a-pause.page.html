@@ -13,7 +13,9 @@
 <plh-pause-step4 *ngIf="currentStep == 4"></plh-pause-step4>
 <plh-pause-step5 *ngIf="currentStep == 5"></plh-pause-step5>
 </ion-content>
-<p>{{audioTime}}</p>
+<div class="progress-container">
+  <ion-progress-bar [value]="audioTime / audioLength"></ion-progress-bar>
+</div>
 <div class="button-container">
   <ion-button shape="round" (click)="toggleAudio()">
       <ion-icon name="{{isPlaying ? 'pause' : 'play'}}"></ion-icon>
