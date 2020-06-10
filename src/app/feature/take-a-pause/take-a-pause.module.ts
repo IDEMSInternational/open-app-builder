@@ -11,10 +11,11 @@ import { PauseStep0Component } from './pause-step0/pause-step0.component';
 import { PauseStep1Component } from './pause-step1/pause-step1.component';
 import { PauseStep2Component } from './pause-step2/pause-step2.component';
 import { PauseStep3Component } from './pause-step3/pause-step3.component';
+import { PauseStep4Component } from './pause-step4/pause-step4.component';
 import { PauseStep5Component } from './pause-step5/pause-step5.component';
 import { PauseThinkComponent } from './pause-think/pause-think.component';
 import { PauseFeelComponent } from './pause-feel/pause-feel.component';
-import { PauseStep4Component } from './pause-step4/pause-step4.component';
+
 import { PauseBodyScannerComponent } from './pause-body-scanner/pause-body-scanner.component';
 
 @NgModule({
