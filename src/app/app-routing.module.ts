@@ -30,8 +30,11 @@ const routes: Routes = [
   {
     path: 'take-a-pause',
     loadChildren: () => import('./feature/take-a-pause/take-a-pause.module').then(m => m.TakeAPausePageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./feature/about/about.module').then( m => m.AboutPageModule)
   }
-
 ];
 
 @NgModule({
