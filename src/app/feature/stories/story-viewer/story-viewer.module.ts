@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { StoryViewerPageRoutingModule } from './story-viewer-routing.module';
 
 import { StoryViewerPage } from './story-viewer.page';
+import { ReflectAnimationComponent } from 'src/app/shared/components/reflect-animation/reflect-animation.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { StoryViewerPage } from './story-viewer.page';
     IonicModule,
     StoryViewerPageRoutingModule
   ],
-  declarations: [StoryViewerPage]
+  declarations: [StoryViewerPage, ReflectAnimationComponent]
 })
 export class StoryViewerPageModule {}

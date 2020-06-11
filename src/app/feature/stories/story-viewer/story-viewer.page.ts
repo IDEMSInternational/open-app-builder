@@ -28,6 +28,12 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
   audioInterval: any;
   paused: boolean = true;
 
+  reflectionProgress = 0;
+  reflectionInterval: any;
+  reflectionStartTime: number;
+  showReflection: boolean = false;
+  reflectionDurationSeconds = 10;
+
   constructor(private route: ActivatedRoute, private storyService: StoryService,
     private audioService: AudioService, private router: Router) {
     this.route.params.subscribe(params => {
@@ -68,7 +74,7 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
           }
         });
       }
-      
+
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationStart) {
           if (this.audioPlayer) {
@@ -80,14 +86,16 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
         }
       });
     });
-    
+
   }
   ngAfterViewInit(): void {
-    this.slides.getSwiper().then((swiper: Swiper) => {
-      swiper.on("slideChangeTransitionEnd", () => {
-        this.currentSlideIndex = swiper.activeIndex;
+    if (this.slides) {
+      this.slides.getSwiper().then((swiper: Swiper) => {
+        swiper.on("slideChangeTransitionEnd", () => {
+          this.currentSlideIndex = swiper.activeIndex;
+        });
       });
-    });
+    }
   }
 
   toggleAudio() {
@@ -107,12 +115,7 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
     this.slides.slideTo(index, speed);
     this.currentSlideIndex = index;
     const currentPanel = this.currentStory.panels[this.currentSlideIndex];
-    const nextOptions = currentPanel.nextPanelOptions;
-    /* if (nextOptions && nextOptions.length > 0 && nextOptions[0].type === "choice") {
-      this.showNextButton = false;
-    } else {
-      this.showNextButton = true;
-    } */
+    this.showReflection = false;
   }
 
   storyOptionClicked(option: StoryOption): void {
@@ -138,7 +141,24 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
   }
 
   tryAgainClicked(): void {
-    this.goToSlide(0);
+    this.showReflection = false;
+    setTimeout(() => {
+      this.goToSlide(0);
+    });
+  }
+
+  endOfStoryNext(): void {
+    this.showReflection = true;
+    this.reflectionProgress = 0;
+    this.reflectionStartTime = new Date().getTime();
+    clearInterval(this.reflectionInterval);
+    this.reflectionInterval = setInterval(() => {
+      let timePassed = new Date().getTime() - this.reflectionStartTime;
+      this.reflectionProgress = timePassed / (this.reflectionDurationSeconds * 1000);
+      if (this.reflectionProgress > 1) {
+        clearInterval(this.reflectionInterval);
+      }
+    }, 200);
   }
 
 }
