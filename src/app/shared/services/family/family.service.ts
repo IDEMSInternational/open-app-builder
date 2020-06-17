@@ -15,6 +15,7 @@ export class FamilyService {
       existingFamilyMembers = JSON.parse(localStorage.getItem("familyMembers"));
     }
     existingFamilyMembers.push(member);
+    localStorage.setItem("familyMembers", JSON.stringify(existingFamilyMembers));
   }
 
   getFamilyMembers(): FamilyMember[] {
