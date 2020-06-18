@@ -40,8 +40,8 @@ export class TakeAPausePage implements OnInit {
   ngOnInit() {
     this.audioPlayer = this.audioService.createPlayer("assets/audio/take-a-pause/take_a_pause_anna2.mp3");
     this.audioPlayer.setPlaybackRate(1);
-    this.audioPlayer.play();
-    this.isPlaying = true;
+    this.audioPlayer.pause();
+    this.isPlaying = false;
     setInterval(() => {
       this.audioPlayer.getCurrentPosition().then((currentPos) => {
         this.audioTime = currentPos;
