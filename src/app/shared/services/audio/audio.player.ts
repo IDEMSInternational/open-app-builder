@@ -3,6 +3,7 @@ export interface AudioPlayer {
     pause(): void;
     stop(): void;
     getCurrentPosition(): Promise<number>;
+    setPlaybackRate(speed: number);
 }
 
 export class HTML5AudioPlayer implements AudioPlayer {
@@ -29,6 +30,10 @@ export class HTML5AudioPlayer implements AudioPlayer {
         return new Promise((resolve, reject) => {
             resolve(this.htmlAudioElement.currentTime);
         });
+    }
+
+    setPlaybackRate(speed: number) {
+        this.htmlAudioElement.playbackRate = speed;
     }
 
 }
