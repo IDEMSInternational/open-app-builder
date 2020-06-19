@@ -38,4 +38,8 @@ export class IonicNativeAudioPlayer implements AudioPlayer {
         });
     }
 
+    setPlaybackRate(speed: number) {
+        this.ionicMediaObj.setRate(speed);
+    }
+
 }
