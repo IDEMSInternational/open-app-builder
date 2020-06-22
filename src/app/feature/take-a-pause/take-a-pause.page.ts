@@ -59,7 +59,7 @@ export class TakeAPausePage implements OnInit {
         this.audioPlayer.stop();
         this.isPlaying = false;
       }
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd && event.url.includes("take-a-pause")) {
         this.audioPlayer.stop();
         this.audioPlayer.play();
         this.isPlaying = true;
