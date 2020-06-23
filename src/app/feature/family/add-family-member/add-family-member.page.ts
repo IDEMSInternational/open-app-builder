@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { FamilyService } from 'src/app/shared/services/family/family.service';
+import { FamilyMember } from 'src/app/shared/model/family.model';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'plh-add-family-member',
+  templateUrl: './add-family-member.page.html',
+  styleUrls: ['./add-family-member.page.scss'],
+})
+export class AddFamilyMemberPage implements OnInit {
+
+  newMember: FamilyMember = {
+    name: "",
+    ageRange: "adult",
+    avatarProperties: {
+       bodyColor: "#00A1CD"
+    }
+  };
+
+  constructor(private familyService: FamilyService, private router: Router) { }
+
+  ngOnInit() {
+  }
+
+  onSubmit() {
+    this.familyService.addFamilyMember(this.newMember);
+    this.router.navigateByUrl('/family');
+  }
+
+  onColorChange($event: {color: string}) {
+    this.newMember.avatarProperties.bodyColor = $event.color;
+  }
+
+}

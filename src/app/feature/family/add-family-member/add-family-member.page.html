@@ -1,23 +1,45 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>My Family</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Family Member</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-button [routerLink]="['add-family-member']">
-  <ion-icon name="add-outline"></ion-icon>
-  Add Family Member
-</ion-button>
-<div class="family-members">
-  <div *ngFor="let familyMember of familyMembers" class="family-member">
-    <p>{{familyMember.name}}, {{familyMember.age}}</p>
+<h1>Add a member of your family</h1>
+<form (ngSubmit)="onSubmit($event)">
+  <ion-item>
+    <ion-label>Name:</ion-label>
+    <ion-input name="name" [(ngModel)]="newMember.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Age Range:</ion-label>
+    <ion-select name="ageRange" [(ngModel)]="newMember.ageRange">
+      <ion-select-option value="baby">Baby</ion-select-option>
+      <ion-select-option value="child">Child</ion-select-option>
+      <ion-select-option value="teen">Teen</ion-select-option>
+      <ion-select-option value="adult">Adult</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Age:</ion-label>
+    <ion-input name="age" [(ngModel)]="newMember.age" type="number"></ion-input>
+  </ion-item>
+  <ion-button
+        ionicColorPicker
+        [colors]="['#C0392B', '#E74C3C', '#9B59B6', '#8E44AD', '#2980B9', '#3498DB', '#1ABC9C', '#16A085', '#27AE60', '#2ECC71']"
+        (colorChange)="onColorChange($event)">
+    Change Color
+    </ion-button>
+  <ion-item>
     <div class="blob-container">
       <svg width="186" height="219" viewBox="0 0 186 219" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="child_blob">
         <g id="Group">
         <path id="main_body" fill-rule="evenodd" clip-rule="evenodd" d="M87.838 176.919C88.5407 177.059 89.2304 177.156 89.906 177.208C92.0197 177.371 94.2598 177.209 96.5992 176.75L101.214 204.919L108.441 204.801L113.053 169.799C123.159 163.608 133.86 153.974 143.655 142.455C147.375 142.342 151.769 141.779 155.185 140.002C158.818 138.113 163.921 134.564 168.033 131.559C170.108 130.043 171.962 128.642 173.298 127.62C173.966 127.108 174.505 126.691 174.877 126.402C175.064 126.257 175.208 126.144 175.307 126.067L175.419 125.979L175.459 125.948C175.459 125.948 175.459 125.948 174.222 124.376L172.985 122.805L172.95 122.832L172.842 122.917C172.746 122.991 172.605 123.102 172.422 123.244C172.057 123.528 171.526 123.939 170.867 124.443C169.548 125.452 167.718 126.835 165.673 128.33C161.546 131.345 156.669 134.722 153.34 136.454C151.616 137.35 149.447 137.884 147.182 138.176C164.165 116.926 177.711 90.3181 179.391 67.1027C182.918 18.3659 147.45 4.16386 102.68 0.716652C57.9095 -2.7293 20.8612 4.89855 17.3338 53.6353C15.6752 76.5511 25.6766 104.779 39.5346 128.473C35.9184 127.034 32.2752 125.176 29.8753 122.952C26.6748 119.985 22.289 114.866 18.6489 110.409C16.8416 108.196 15.2395 106.173 14.0892 104.703C13.5142 103.969 13.0525 103.373 12.7351 102.961C12.5763 102.755 12.4537 102.595 12.371 102.488L12.2774 102.365L12.2466 102.325L10.6558 103.537C9.06508 104.749 9.0658 104.75 9.0658 104.75L9.09913 104.794L9.19616 104.921C9.2812 105.032 9.40631 105.195 9.56763 105.404C9.89024 105.822 10.3578 106.426 10.9392 107.169C12.1018 108.654 13.7217 110.699 15.5508 112.939C19.1834 117.387 23.7276 122.708 27.1562 125.886C30.7937 129.257 36.3968 131.679 40.8716 133.238C41.5417 133.471 42.1932 133.687 42.8169 133.887C51.3626 147.489 61.0526 159.227 70.2588 167.049L76.6353 206.561L83.8626 206.46L87.838 176.919Z" 
-        [attr.fill]="familyMember.avatarProperties.bodyColor ? familyMember.avatarProperties.bodyColor : '#00A1CD'"/>
+        [attr.fill]="newMember.avatarProperties.bodyColor"/>
         <path id="Vector" d="M108.927 67.3707C109.494 59.5387 103.797 52.7157 96.2031 52.1313C88.6091 51.5469 81.9937 57.4215 81.4266 65.2539" fill="white"/>
         <path id="Vector_2" d="M73.3376 64.6311C73.9043 56.7991 68.2077 49.976 60.6136 49.3912C53.0196 48.8068 46.4038 54.6818 45.8372 62.5138" fill="white"/>
         <path id="Vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M108.694 48.2366C108.694 48.2374 108.694 48.2382 107.298 48.7855C105.901 49.3328 105.902 49.3335 105.902 49.3342L105.902 49.3354L105.903 49.3372L105.901 49.3322C105.898 49.3242 105.891 49.3085 105.881 49.2859C105.862 49.2407 105.829 49.1678 105.783 49.0725C105.69 48.8814 105.545 48.6031 105.344 48.2773C104.937 47.6191 104.323 46.804 103.484 46.1155C102.654 45.4342 101.616 44.8858 100.326 44.7131C99.0382 44.5408 97.3849 44.7275 95.2968 45.698L94.0323 42.9775C96.5503 41.8072 98.7793 41.4794 100.724 41.7396C102.666 41.9995 104.211 42.8307 105.387 43.7966C106.555 44.7552 107.373 45.8548 107.895 46.6996C108.158 47.1253 108.352 47.4955 108.483 47.7651C108.548 47.9001 108.598 48.0106 108.633 48.0912C108.651 48.1314 108.664 48.1643 108.675 48.189L108.687 48.2199L108.691 48.2307L108.693 48.2349L108.694 48.2366Z" fill="black" fill-opacity="0.58"/>
@@ -46,6 +68,7 @@
         </svg>
         
     </div>
-  </div>
-</div>
+  </ion-item>
+  <ion-button type="submit" color="primary" expand="block" [disabled]="newMember.name.length < 1">Add</ion-button>
+</form>
 </ion-content>

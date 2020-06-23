@@ -2,7 +2,7 @@ export interface FamilyMember {
     name: string;
     age?: number; // Age in years
     ageRange: "baby" | "child" | "teen" | "adult";
-    avatarProperties?: AvatarProperties;
+    avatarProperties: AvatarProperties;
 }
 
 export interface AvatarProperties {
