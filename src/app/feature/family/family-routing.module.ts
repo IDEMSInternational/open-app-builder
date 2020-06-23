@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: FamilyPage
+  },
+  {
+    path: 'add-family-member',
+    loadChildren: () => import('./add-family-member/add-family-member.module').then( m => m.AddFamilyMemberPageModule)
   }
+
 ];
 
 @NgModule({

@@ -12,11 +12,6 @@ export class FamilyPage implements OnInit {
   familyMembers: FamilyMember[];
 
   constructor(private familyService: FamilyService) {
-    this.familyService.addFamilyMember({
-      name: "Michael",
-      ageRange: "adult",
-      age: 26
-    });
   }
 
   ngOnInit() {
