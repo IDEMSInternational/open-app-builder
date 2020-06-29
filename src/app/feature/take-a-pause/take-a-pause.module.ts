@@ -17,6 +17,7 @@ import { PauseThinkComponent } from './pause-think/pause-think.component';
 import { PauseFeelComponent } from './pause-feel/pause-feel.component';
 
 import { PauseBodyScannerComponent } from './pause-body-scanner/pause-body-scanner.component';
+import { BreathingAnimComponent } from './breathing-anim/breathing-anim.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { PauseBodyScannerComponent } from './pause-body-scanner/pause-body-scann
     PauseStep5Component, 
     PauseThinkComponent,
     PauseFeelComponent,
-    PauseBodyScannerComponent
+    PauseBodyScannerComponent,
+    BreathingAnimComponent
   ]
 })
 export class TakeAPausePageModule {}
