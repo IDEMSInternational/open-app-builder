@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/shared/services/audio/audio.service';
 import { AudioPlayer } from 'src/app/shared/services/audio/audio.player';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'plh-take-a-pause',
@@ -35,7 +36,7 @@ export class TakeAPausePage implements OnInit {
     "Step 5: Reflecting"
   ];
 
-  constructor(private audioService: AudioService) { }
+  constructor(private audioService: AudioService, private router: Router) { }
 
   ngOnInit() {
     this.audioPlayer = this.audioService.createPlayer("assets/audio/take-a-pause/take_a_pause_anna2.mp3");
@@ -53,7 +54,20 @@ export class TakeAPausePage implements OnInit {
         }
       });
     }, 300);
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.audioPlayer.stop();
+        this.isPlaying = false;
+      }
+      if (event instanceof NavigationEnd && event.url.includes("take-a-pause")) {
+        this.audioPlayer.stop();
+        this.audioPlayer.play();
+        this.isPlaying = true;
+      }
+    });
   }
+
+  
 
   toggleAudio() {
     if (this.isPlaying) {
