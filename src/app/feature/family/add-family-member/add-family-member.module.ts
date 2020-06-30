@@ -9,7 +9,7 @@ import { AddFamilyMemberPageRoutingModule } from './add-family-member-routing.mo
 import { AddFamilyMemberPage } from './add-family-member.page';
 
 import { IonicColorPickerModule } from 'ionic-color-picker';
-import { Blob1Component } from 'src/app/shared/components/blob1/blob1.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -17,8 +17,9 @@ import { Blob1Component } from 'src/app/shared/components/blob1/blob1.component'
     FormsModule,
     IonicModule,
     AddFamilyMemberPageRoutingModule,
-    IonicColorPickerModule
+    IonicColorPickerModule,
+    SharedModule
   ],
-  declarations: [AddFamilyMemberPage, Blob1Component]
+  declarations: [AddFamilyMemberPage]
 })
 export class AddFamilyMemberPageModule {}
