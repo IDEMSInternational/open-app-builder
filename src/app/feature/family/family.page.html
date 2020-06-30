@@ -11,8 +11,8 @@
 </ion-button>
 <div class="family-members">
   <div *ngFor="let familyMember of familyMembers" class="family-member">
-    <p>{{familyMember.name}}, {{familyMember.age}}</p>
-    <plh-blob1></plh-blob1>
+    <p>{{familyMember.name}}, {{familyMember.ageRange}}</p>
+    <plh-blob1 [bodyColor]="familyMember.avatarProperties.bodyColor ? familyMember.avatarProperties.bodyColor : 'blue'"></plh-blob1>
   </div>
 </div>
 </ion-content>

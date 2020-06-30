@@ -34,7 +34,7 @@
     Change Color
     </ion-button>
   <ion-item>
-    <plh-blob1></plh-blob1>
+    <plh-blob1 [bodyColor]="newMember.avatarProperties.bodyColor"></plh-blob1>
   </ion-item>
   <ion-button type="submit" color="primary" expand="block" [disabled]="newMember.name.length < 1">Add</ion-button>
 </form>
