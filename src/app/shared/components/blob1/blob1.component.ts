@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'plh-blob1',
@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Blob1Component implements OnInit {
 
+  @Input()
+  bodyColor = "#00A1CD";
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }
