@@ -7,15 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { FamilyPageRoutingModule } from './family-routing.module';
 
 import { FamilyPage } from './family.page';
-import { Blob1Component } from 'src/app/shared/components/blob1/blob1.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FamilyPageRoutingModule
+    FamilyPageRoutingModule,
+    SharedModule
   ],
-  declarations: [FamilyPage, Blob1Component]
+  declarations: [FamilyPage]
 })
 export class FamilyPageModule {}
