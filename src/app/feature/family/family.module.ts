@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FamilyPageRoutingModule } from './family-routing.module';
 
 import { FamilyPage } from './family.page';
+import { Blob1Component } from 'src/app/shared/components/blob1/blob1.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { FamilyPage } from './family.page';
     IonicModule,
     FamilyPageRoutingModule
   ],
-  declarations: [FamilyPage]
+  declarations: [FamilyPage, Blob1Component]
 })
 export class FamilyPageModule {}
