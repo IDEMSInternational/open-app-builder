@@ -1,3 +1,44 @@
 img {
     max-height: 300px;
 }
+
+#bubble_1 {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+}
+
+#bubble_2 {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+}
+
+#bubble_3 {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+}
+
+#bubble_4 {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 0;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
