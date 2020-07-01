@@ -4625,6 +4625,11 @@ invert-kv@^2.0.0:
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
 
+ionic-color-picker@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ionic-color-picker/-/ionic-color-picker-1.0.3.tgz#2e6b1d751f802a385f1b280ab3a6ad9220e469a4"
+  integrity sha512-j2vEzW8Y2mWYhipYjX2QDan43dMDqFAsRuJAa/xjTUydppsa1rZuhSwXfGpNbE5BPDHT+NeqNkiw0vbybwJL+A==
+
 ionicons@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-5.0.1.tgz#fb48475b042b04b3ed2ba9876800687917d4603d"
