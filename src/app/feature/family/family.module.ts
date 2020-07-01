@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { FamilyPageRoutingModule } from './family-routing.module';
 
 import { FamilyPage } from './family.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FamilyPageRoutingModule
+    FamilyPageRoutingModule,
+    SharedModule
   ],
   declarations: [FamilyPage]
 })
