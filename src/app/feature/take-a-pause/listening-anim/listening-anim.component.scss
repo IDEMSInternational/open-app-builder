@@ -1,0 +1,21 @@
+$noteAnimDuration: 2s;
+
+#note_1 {
+    transform: translate(0px, 20px);
+    animation: move-up-down $noteAnimDuration infinite;
+}
+
+#note_2 {
+    transform: translate(0px, 20px);
+    animation: move-up-down $noteAnimDuration infinite;
+    animation-direction: reverse;
+}
+
+@keyframes move-up-down {
+    0%{
+        transform: translate(0px, 20px);
+    }
+    50%{
+        transform: translate(0px, -20px);
+    }
+}
