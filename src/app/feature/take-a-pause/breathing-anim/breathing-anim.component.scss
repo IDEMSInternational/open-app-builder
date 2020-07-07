@@ -17,6 +17,7 @@
     z-index: 3;
     top: 80px;
     left: 50px;
+    animation: mouth-breathing 4s infinite;
 }
 
 .left-arm {
@@ -45,12 +46,21 @@
     animation: breath-down 4s infinite;
 }
 
+@keyframes mouth-breathing {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(0.4, 0.8);
+    }
+}
+
 @keyframes yourAnimation {
     0.0%{
         transform: rotate(0deg);
     }
     65.8%{
-        transform: rotate(45deg);
+        transform: rotate(10deg);
     }
 }
 
