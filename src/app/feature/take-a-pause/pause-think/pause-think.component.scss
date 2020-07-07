@@ -36,10 +36,16 @@ img {
 
 #left_eye {
     opacity: 1;
+    animation-name: blinking;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 #right_eye {
-    opacity: 0;
+    opacity: 1;
+    animation-name: blinking;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes fade-in {
@@ -47,6 +53,24 @@ img {
         opacity: 0;
     }
     50% {
+        opacity: 1;
+    }
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    51% {
+        opacity: 0;
+    }
+    59% {
+        opacity: 1;
+    }
+    60% {
         opacity: 1;
     }
 }
