@@ -5,6 +5,7 @@ import { TakeAPausePage } from './take-a-pause.page';
 import { PauseThinkComponent } from './pause-think/pause-think.component';
 import { ListeningAnimComponent } from './listening-anim/listening-anim.component';
 import { StressedAnimComponent } from './stressed-anim/stressed-anim.component';
+import { BreathingAnimComponent } from './breathing-anim/breathing-anim.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'stressed',
     component: StressedAnimComponent
+  },
+  {
+    path: 'breathing',
+    component: BreathingAnimComponent
   }
 ];
 
