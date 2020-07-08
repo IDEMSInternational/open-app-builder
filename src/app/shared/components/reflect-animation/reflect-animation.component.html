@@ -4,5 +4,5 @@
   <img class="layer eyes" src="assets/images/reflect-anim/Eyes_In_Frame.svg">
 </div>
 <div class="progress-container">
-  <ion-progress-bar [value]="progress"></ion-progress-bar>
+  <ion-progress-bar *ngIf="progress > 0" [value]="progress"></ion-progress-bar>
 </div>

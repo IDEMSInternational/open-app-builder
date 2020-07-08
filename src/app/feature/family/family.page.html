@@ -12,7 +12,7 @@
 <div class="family-members">
   <div *ngFor="let familyMember of familyMembers" class="family-member">
     <p>{{familyMember.name}}, {{familyMember.ageRange}}</p>
-    <plh-blob1 [bodyColor]="familyMember.avatarProperties.bodyColor ? familyMember.avatarProperties.bodyColor : 'blue'"></plh-blob1>
+    <plh-blob [ageRange]="familyMember.ageRange" [bodyColor]="familyMember.avatarProperties.bodyColor"></plh-blob>
   </div>
 </div>
 </ion-content>

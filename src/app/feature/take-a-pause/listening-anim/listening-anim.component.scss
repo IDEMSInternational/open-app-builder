@@ -1,0 +1,47 @@
+$noteAnimDuration: 2s;
+
+svg {
+    max-width: 280px;
+}
+
+#note_1 {
+    transform: translate(0px, 10px);
+    animation: move-up-down $noteAnimDuration infinite;
+}
+
+#note_2 {
+    transform: translate(0px, 10px);
+    animation: move-up-down $noteAnimDuration infinite;
+    animation-direction: reverse;
+}
+
+#note_3 {
+    transform: translate(0px, 10px);
+    animation: move-up-down $noteAnimDuration infinite;
+}
+
+#note_4 {
+    transform: translate(0px, 10px);
+    animation: move-up-down $noteAnimDuration infinite;
+    animation-direction: reverse;
+}
+
+#note_5 {
+    transform: translate(0px, 10px);
+    animation: move-up-down $noteAnimDuration infinite;
+}
+
+#note_6 {
+    transform: translate(0px, 10px);
+    animation: move-up-down $noteAnimDuration infinite;
+    animation-direction: reverse;
+}
+
+@keyframes move-up-down {
+    0%{
+        transform: translate(0px, 10px);
+    }
+    50%{
+        transform: translate(0px, -10px);
+    }
+}

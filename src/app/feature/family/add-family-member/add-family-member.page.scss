@@ -1,0 +1,12 @@
+.color-options {
+    display: flex;
+    flex-direction: row;
+}
+
+.color-option {
+    width: 20px;
+    height: 20px;
+    border-radius: 40px;
+    background-color: grey;
+    margin: 20px;
+}

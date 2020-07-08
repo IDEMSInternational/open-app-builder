@@ -18,13 +18,17 @@ import { PauseFeelComponent } from './pause-feel/pause-feel.component';
 
 import { PauseBodyScannerComponent } from './pause-body-scanner/pause-body-scanner.component';
 import { BreathingAnimComponent } from './breathing-anim/breathing-anim.component';
+import { ListeningAnimComponent } from './listening-anim/listening-anim.component';
+import { StressedAnimComponent } from './stressed-anim/stressed-anim.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TakeAPausePageRoutingModule
+    TakeAPausePageRoutingModule,
+    SharedModule
   ],
   declarations: [
     TakeAPausePage,
@@ -37,7 +41,9 @@ import { BreathingAnimComponent } from './breathing-anim/breathing-anim.componen
     PauseThinkComponent,
     PauseFeelComponent,
     PauseBodyScannerComponent,
-    BreathingAnimComponent
+    BreathingAnimComponent,
+    ListeningAnimComponent,
+    StressedAnimComponent
   ]
 })
 export class TakeAPausePageModule {}

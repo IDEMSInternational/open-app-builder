@@ -21,11 +21,11 @@ export class TakeAPausePage implements OnInit {
     0, // Step 0
     7, // Step 1
     30, // Step 2
-    75, // 1:15, Step 3
-    109, // 1:49, Step 4
-    120, // 2:00, Step 5
+    77, // 1:15, Step 3
+    111, // 1:49, Step 4
+    122, // 2:00, Step 5
   ];
-  audioLength = 133; // 2:13
+  audioLength = 134; // 2:13
 
   stepTitles = [
     "Let's take a minute to take a pause",
@@ -39,7 +39,7 @@ export class TakeAPausePage implements OnInit {
   constructor(private audioService: AudioService, private router: Router) { }
 
   ngOnInit() {
-    this.audioPlayer = this.audioService.createPlayer("assets/audio/take-a-pause/take_a_pause_anna2.mp3");
+    this.audioPlayer = this.audioService.createPlayer("assets/audio/take-a-pause/take_a_pause_anna3a.mp3");
     this.audioPlayer.setPlaybackRate(1);
     this.audioPlayer.play();
     this.isPlaying = true;
@@ -59,7 +59,7 @@ export class TakeAPausePage implements OnInit {
         this.audioPlayer.stop();
         this.isPlaying = false;
       }
-      if (event instanceof NavigationEnd && event.url.includes("take-a-pause")) {
+      if (event instanceof NavigationEnd && event.url === "/take-a-pause") {
         this.audioPlayer.stop();
         this.audioPlayer.play();
         this.isPlaying = true;
