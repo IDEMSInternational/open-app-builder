@@ -1,7 +1,9 @@
+export type FamilyMemberAgeRange = "baby" | "child" | "teen" | "adult";
+
 export interface FamilyMember {
     name: string;
     age?: number; // Age in years
-    ageRange: "baby" | "child" | "teen" | "adult";
+    ageRange: FamilyMemberAgeRange;
     avatarProperties: AvatarProperties;
 }
 

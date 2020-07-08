@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -8,7 +8,6 @@ import { AddFamilyMemberPageRoutingModule } from './add-family-member-routing.mo
 
 import { AddFamilyMemberPage } from './add-family-member.page';
 
-import { IonicColorPickerModule } from 'ionic-color-picker';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     IonicModule,
     AddFamilyMemberPageRoutingModule,
-    IonicColorPickerModule,
     SharedModule
   ],
   declarations: [AddFamilyMemberPage]
