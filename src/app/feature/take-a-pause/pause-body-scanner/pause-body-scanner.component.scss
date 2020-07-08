@@ -1,5 +1,5 @@
 .anim-container {
-    width: 150px;
+    width: 180px;
     position: relative;
 }
 
@@ -30,15 +30,15 @@
         top: 0px;
     }
     25% {
-        top: 50px;
+        top: 70px;
     }
     50% {
-        top: 130px;
+        top: 230px;
     }
     75%{
-        top: 50px;  
-      }
-      100%{
+        top: 70px;  
+    }
+    100% {
         top: 0px;  
-      }      
+    }      
 }

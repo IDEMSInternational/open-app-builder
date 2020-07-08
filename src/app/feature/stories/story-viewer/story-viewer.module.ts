@@ -16,6 +16,6 @@ import { ReflectAnimationComponent } from 'src/app/shared/components/reflect-ani
     IonicModule,
     StoryViewerPageRoutingModule
   ],
-  declarations: [StoryViewerPage, ReflectAnimationComponent]
+  declarations: [StoryViewerPage]
 })
 export class StoryViewerPageModule {}
