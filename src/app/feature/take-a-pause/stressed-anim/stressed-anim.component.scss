@@ -1,0 +1,37 @@
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#r-steam {
+    opacity: 1;
+    animation-name: move-right;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move-right {
+    0%{
+        transform: translate(0px, 0px);
+    }
+    100%{
+        transform: translate(50px, 0px);
+    }
+}
+
+#l-steam {
+    
+    opacity: 1;
+    animation-name: move-left;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move-left {
+    0%{
+        transform: translate(0px, 0px);
+    }
+    100%{
+        transform: translate(-50px, 0px);
+    }
+}
