@@ -1,0 +1,88 @@
+.anim-container {
+    width: 150px;
+    position: relative;
+}
+
+.layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.torso {
+    z-index: 2;
+}
+
+.mouth {
+    z-index: 3;
+    top: 80px;
+    left: 50px;
+    animation: mouth-breathing 4s infinite;
+}
+
+.left-arm {
+    z-index: 4;
+    top: 130px;
+    width: 80px;
+    left: 15px;
+    transform-origin: 7px 28px;
+    animation: yourAnimation 4s infinite;
+}
+
+.right-arm {
+    z-index: 4;
+    top: 130px;
+    width: 60px;
+    left: 75px;
+    transform-origin: 78px 7px;
+    animation: yourAnimation 4s infinite;
+}
+
+.breath {
+    z-index: 5;
+    left: 50px;
+    top: 90px;
+    opacity: 0.6;
+    animation: breath-down 4s infinite;
+}
+
+@keyframes mouth-breathing {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(0.4, 0.8);
+    }
+}
+
+@keyframes yourAnimation {
+    0.0%{
+        transform: rotate(0deg);
+    }
+    65.8%{
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes rotate-right-arm {
+
+}
+
+@keyframes breath-down {
+    0%{
+        opacity: 0.7;
+        transform: translate(0px, 0px);
+    }
+    80%{
+        opacity: 0;
+        transform: translate(0px, 40px);
+    }
+    81%{
+        opacity: 0;
+        transform: translate(0px, 0px);
+    }
+    100%{
+        opacity: 0.7;
+    }
+}
+

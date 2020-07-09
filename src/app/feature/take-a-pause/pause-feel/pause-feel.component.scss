@@ -1,0 +1,31 @@
+.anim-container {
+    width: 180px;
+    position: relative;
+}
+
+.layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.torso {
+    z-index: 2;
+}
+
+.heart {
+    z-index: 3;
+    opacity: 0.5;
+    animation: heart-beating 3s infinite;
+}
+
+@keyframes heart-beating {
+    0% {
+        opacity: 0.5;
+        transform: scale(1, 1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1, 1.1);
+    }
+}

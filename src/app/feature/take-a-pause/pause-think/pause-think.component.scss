@@ -1,0 +1,77 @@
+svg {
+    max-height: 340px;
+    max-width: 100%;
+}
+
+#bubble_1 {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+}
+
+#bubble_2 {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+}
+
+#bubble_3 {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+}
+
+#bubble_4 {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 0;
+}
+
+#left_eye {
+    opacity: 1;
+    animation-name: blinking;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+#right_eye {
+    opacity: 1;
+    animation-name: blinking;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    51% {
+        opacity: 0;
+    }
+    59% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+}

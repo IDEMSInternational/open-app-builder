@@ -1,5 +1,21 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="main-side-menu" contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>PLH App</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="clickOnMenuItem('home')">Home</ion-item>
+        <ion-item>Progress</ion-item>
+        <ion-item (click)="clickOnMenuItem('activities')">Fun Activities</ion-item>
+        <ion-item (click)="clickOnMenuItem('family')">My Family</ion-item>
+        <ion-item (click)="clickOnMenuItem('about')">About PLH App</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="home">

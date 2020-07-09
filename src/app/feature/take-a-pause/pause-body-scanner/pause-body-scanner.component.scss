@@ -1,0 +1,44 @@
+.anim-container {
+    width: 180px;
+    position: relative;
+}
+
+.layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.torso {
+    z-index: 2;
+}
+
+.scanner-fg {
+    z-index: 3;
+    animation: scanner-up-down 3s infinite;
+
+}
+
+.scanner-bg {
+    z-index: 1;
+    animation: scanner-up-down 3s infinite;
+
+}
+
+@keyframes scanner-up-down {
+    0% {
+        top: 0px;
+    }
+    25% {
+        top: 70px;
+    }
+    50% {
+        top: 230px;
+    }
+    75%{
+        top: 70px;  
+    }
+    100% {
+        top: 0px;  
+    }      
+}

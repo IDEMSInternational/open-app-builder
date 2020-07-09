@@ -1,0 +1,5 @@
+<div class="container">
+  <plh-pause-think *ngIf="audioTime < 40"></plh-pause-think>
+  <plh-pause-feel *ngIf="audioTime > 40 && audioTime < 60"></plh-pause-feel>
+  <plh-pause-body-scanner *ngIf="audioTime > 60"></plh-pause-body-scanner>
+</div>
