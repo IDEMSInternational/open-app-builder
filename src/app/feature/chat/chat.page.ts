@@ -7,7 +7,7 @@ import {
 } from "./message.model";
 import { AnimationOptions } from "ngx-lottie";
 import { IonContent } from "@ionic/angular";
-import { ChatService, IRapidProMessage } from './chat.service';
+import { ChatService, IRapidProMessage } from './chat-service/chat.service';
 
 @Component({
   selector: "app-chat",
@@ -43,32 +43,18 @@ export class ChatPage implements OnInit {
   constructor(
     private chatService: ChatService,
     private cd: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit() {
-    if (!window["cordova"]) {
-      mockMessageGenerator((msg) => {
-        if (
-          msg.sender === "user" &&
-          msg.responseOptions &&
-          msg.responseOptions[0] &&
-          msg.responseOptions[0].customAction
-        ) {
-          this.doCustomResponseAction(msg.responseOptions[0].customAction);
-        }
-        this.onReceiveMessage(msg);
+    this.chatService.messageSubject
+      .asObservable()
+      .subscribe((msg) => {
+        this.onReceiveRapidProMessage(msg);
       });
-    } else {
-      this.chatService.messageSubject
-        .asObservable()
-        .subscribe((msg) => {
-          this.onReceiveRapidProMessage(msg);
-        });
-      setTimeout(() => {
-        this.chatService.sendRapidproMessage("start_demo");
-        this.botBlobState = "still";
-      }, 3000);
-    }
+    setTimeout(() => {
+      this.chatService.sendRapidproMessage("start_demo");
+      this.botBlobState = "still";
+    }, 3000);
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
