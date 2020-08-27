@@ -1,0 +1,13 @@
+#left_arm_pan {
+    animation: spin 3s infinite;
+    transform-origin: 200px 200px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
