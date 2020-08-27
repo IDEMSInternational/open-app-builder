@@ -1,19 +1,22 @@
 declare namespace RapidProFlowExport {
 
     export interface Action {
-        quick_replies: string[];
-        text: string;
-        type: "send_msg";
+        type: "enter_flow" | "send_msg" | "set_contact_field";
         uuid: string;
-        groups: Group[];
-        body: string;
-        headers: Headers;
-        method: string;
-        result_name: string;
-        url: string;
-        addresses: string[];
-        subject: string;
-        attachments: any[];
+        quick_replies?: string[];
+        text?: string;
+        groups?: Group[];
+        body?: string;
+        headers?: Headers;
+        method?: string;
+        result_name?: string;
+        url?: string;
+        addresses?: string[];
+        subject?: string;
+        attachments?: any[];
+        field?: { key: string, name: string };
+        value?: string;
+        flow?: { uuid: string; name: string; }
     }
 
     export interface Exit {

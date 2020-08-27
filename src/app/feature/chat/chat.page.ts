@@ -149,9 +149,7 @@ export class ChatPage implements OnInit {
   }
 
   sendCustomOption(text: string) {
-    if (window["cordova"]) {
-      this.chatService.sendRapidproMessage(text);
-    }
+    this.chatService.sendRapidproMessage(text);
     this.onReceiveMessage({
       text: text,
       sender: "user",
