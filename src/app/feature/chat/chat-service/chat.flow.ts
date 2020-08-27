@@ -4,6 +4,7 @@ import { IRapidProMessage } from './chat.service';
 export interface ChatFlow {
     sendMessage(msg: string): Observable<any>;
     messageSubject: Subject<IRapidProMessage>;
+    nextFlowIdSubject: Subject<string>;
 }
 
 export class RapidProOfflineFlow implements ChatFlow {
@@ -11,7 +12,12 @@ export class RapidProOfflineFlow implements ChatFlow {
     flowObject: RapidProFlowExport.Flow;
     nodesById: { [nodeUUID: string]: RapidProFlowExport.Node } = {};
     currentNode: RapidProFlowExport.Node;
-    incomingSubject: Subject<string> = new Subject();
+    incomingMsgCallback: (msg: string) => any;
+    incomingMsg: string;
+
+    contactFields: { [field: string]: string } = {};
+
+    nextFlowIdSubject: Subject<string> = new Subject();
 
     constructor(public messageSubject: Subject<IRapidProMessage>, exportObject: RapidProFlowExport.RootObject) {
         console.log("Export object!", exportObject);
@@ -26,17 +32,23 @@ export class RapidProOfflineFlow implements ChatFlow {
         this.currentNode = node;
         console.log("Entered node ", node.uuid, node);
         for (let action of node.actions) {
-            if (action.type === "send_msg" && action.text) {
-                let text = action.text;
+            if (action.type === "enter_flow") {
+                let text = "Next flow " + action.flow.name;
                 this.messageSubject.next({
                     message: text,
                     body: text,
-                    message_id: this.flowObject.nodes[0].actions[0].uuid,
+                    message_id: action.uuid,
                     title: this.flowObject.name,
                     type: "rapidpro",
                     wasTapped: false,
-                    quick_replies: action.quick_replies ? JSON.stringify(action.quick_replies) : "[]"
+                    quick_replies: "['Start Next Flow', 'Stop for now']"
                 });
+            }
+            if (action.type === "send_msg" && action.text) {
+                this.doSendMessageAction(action);
+            }
+            if (action.type === "set_contact_field") {
+                this.doSetContactFieldAction(action);
             }
         }
         if (!node.router) {
@@ -45,29 +57,62 @@ export class RapidProOfflineFlow implements ChatFlow {
             }
         } else {
             console.log("Router here?");
-            this.incomingSubject.subscribe((incomingMsg) => {
-                this.incomingSubject = new Subject();
-                let matchingCategoryId: string;
-                for (let routerCase of node.router.cases) {
-                    debugger;
-                    let caseResultCatId;
-                    if (routerCase.type === "has_any_word") {
-                        caseResultCatId = this.matchCategoryIdForHasAnyWordCase(routerCase, incomingMsg);
-                    } else if (routerCase.type === "has_number_between") {
-                        //
-                    }
-                    if (caseResultCatId) {
-                        matchingCategoryId = caseResultCatId;
-                        break;
-                    }
-                }
-                if (matchingCategoryId) {
-                    let exit = node.exits.find((exit) => exit.uuid === matchingCategoryId);
-                    this.enterNode(this.getNodeById(exit.destination_uuid), incomingMsg);
-                } else {
-                    console.warn("Nothing matches :(");
-                }
-            });
+            if (node.router.type === "switch" && node.router.operand === "@child.run.status") {
+                this.useRouter(node, lastUserMsg);
+                return;
+            }
+            let msgResponseFunc = (incomingMsg: string) => {
+                this.incomingMsg = null;
+                this.useRouter(node, incomingMsg);
+            };
+            console.log("Setting of callback");
+            this.incomingMsgCallback = msgResponseFunc;
+        }
+    }
+
+    private useRouter(node: RapidProFlowExport.Node, incomingMsg: string) {
+        let matchingCategoryId: string;
+        for (let routerCase of node.router.cases) {
+            let caseResultCatId: string;
+            if (node.router.operand === "@child.run.status" && routerCase.arguments && routerCase.arguments[0] === "completed") {
+                caseResultCatId = routerCase.category_uuid;
+            }
+            if (routerCase.type === "has_any_word") {
+                caseResultCatId = this.matchCategoryIdForHasAnyWordCase(routerCase, incomingMsg);
+            }
+            if (routerCase.type === "has_number_between") {
+                caseResultCatId = routerCase.category_uuid;
+            }
+            if (caseResultCatId) {
+                matchingCategoryId = caseResultCatId;
+                break;
+            }
+        }
+        if (matchingCategoryId) {
+            let matchingCategory = node.router.categories.find((cat) => cat.uuid === matchingCategoryId);
+            let matchingExit = node.exits.find((exit) => exit.uuid === matchingCategory.exit_uuid);
+            this.enterNode(this.getNodeById(matchingExit.destination_uuid), incomingMsg);
+        } else {
+            console.warn("Nothing matches :(");
+        }
+    }
+
+    private doSendMessageAction(action: RapidProFlowExport.Action) {
+        let text = action.text;
+        this.messageSubject.next({
+            message: text,
+            body: text,
+            message_id: action.uuid,
+            title: this.flowObject.name,
+            type: "rapidpro",
+            wasTapped: false,
+            quick_replies: action.quick_replies ? JSON.stringify(action.quick_replies) : "[]"
+        });
+    }
+
+    private doSetContactFieldAction(action: RapidProFlowExport.Action) {
+        if (action.field && action.field.key) {
+            this.contactFields[action.field.key] = action.value;
         }
     }
 
@@ -88,7 +133,11 @@ export class RapidProOfflineFlow implements ChatFlow {
     }
 
     public sendMessage(msg: string) {
-        this.incomingSubject.next(msg);
+        this.incomingMsg = msg;
+        if (this.incomingMsgCallback) {
+            this.incomingMsgCallback(msg);
+            console.log("Calling of callback");
+        }
         return of(true);
     }
 

@@ -48,10 +48,6 @@ export class ChatService {
     }
   }
 
-  private respondUsingFlow() {
-
-  }
-
   private respondToUserWithMessage(msg: IRapidProMessage) {
     setTimeout(() => {
       this.messageSubject.next(msg);
