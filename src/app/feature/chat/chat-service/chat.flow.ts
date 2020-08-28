@@ -73,18 +73,24 @@ export class RapidProOfflineFlow implements ChatFlow {
     private useRouter(node: RapidProFlowExport.Node, incomingMsg: string) {
         let matchingCategoryId: string;
         for (let routerCase of node.router.cases) {
-            let caseResultCatId: string;
-            if (node.router.operand === "@child.run.status" && routerCase.arguments && routerCase.arguments[0] === "completed") {
+            let matchesCase: boolean = false;
+            /* if (node.router.operand === "@child.run.status" && routerCase.arguments && routerCase.arguments[0] === "completed") {
                 caseResultCatId = routerCase.category_uuid;
-            }
+            } */
             if (routerCase.type === "has_any_word") {
-                caseResultCatId = this.matchCategoryIdForHasAnyWordCase(routerCase, incomingMsg);
+                matchesCase = this.matchHasAnyWordCase(routerCase, incomingMsg);
             }
             if (routerCase.type === "has_number_between") {
-                caseResultCatId = routerCase.category_uuid;
+                matchesCase = this.matchHasNumberBetweenCase(routerCase, incomingMsg);
             }
-            if (caseResultCatId) {
-                matchingCategoryId = caseResultCatId;
+            if (routerCase.type === "has_number_lt") {
+                matchesCase = this.matchHasNumberLessThanCase(routerCase, incomingMsg);
+            }
+            if (routerCase.type === "has_number_gt") {
+                matchesCase = this.matchHasNumberGreaterThanCase(routerCase, incomingMsg);
+            }
+            if (matchesCase) {
+                matchingCategoryId = routerCase.category_uuid;
                 break;
             }
         }
@@ -94,6 +100,41 @@ export class RapidProOfflineFlow implements ChatFlow {
             this.enterNode(this.getNodeById(matchingExit.destination_uuid), incomingMsg);
         } else {
             console.warn("Nothing matches :(");
+        }
+    }
+
+    private matchHasNumberGreaterThanCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): boolean {
+        let min = Number.parseFloat(routerCase.arguments[0]);
+        let inputNumber = Number.parseFloat(incomingMsg);
+        return (min !== NaN && inputNumber !== NaN && inputNumber > min);
+    }
+
+    private matchHasNumberLessThanCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): boolean {
+        let max = Number.parseFloat(routerCase.arguments[0]);
+        let inputNumber = Number.parseFloat(incomingMsg);
+        return (max !== NaN && inputNumber !== NaN && inputNumber < max);
+    }
+
+    private matchHasNumberBetweenCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): boolean {
+        let rangeNumbers = routerCase.arguments.map((arg) => Number.parseFloat(arg)).sort();
+        let inputNumber = Number.parseFloat(incomingMsg);
+        if (rangeNumbers[0] !== NaN && rangeNumbers[1] !== NaN && inputNumber !== NaN) {
+            if (inputNumber > rangeNumbers[0] && inputNumber < rangeNumbers[1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private matchHasAnyWordCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): boolean {
+        let matchStrings = [];
+        for (let arg of routerCase.arguments) {
+            matchStrings = matchStrings.concat(arg.toLowerCase().split(" "));
+        }
+        for (let matchString of matchStrings) {
+            if (incomingMsg.toLowerCase() === matchString) {
+                return true;
+            }
         }
     }
 
@@ -116,17 +157,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
     }
 
-    private matchCategoryIdForHasAnyWordCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): string {
-        let matchStrings = [];
-        for (let arg of routerCase.arguments) {
-            matchStrings = matchStrings.concat(arg.toLowerCase().split(" "));
-        }
-        for (let matchString of matchStrings) {
-            if (incomingMsg.toLowerCase() === matchString) {
-                return routerCase.category_uuid;
-            }
-        }
-    }
+    
 
     private getNodeById(uuid: string) {
         return this.nodesById[uuid];
