@@ -22,7 +22,8 @@ import { StressedMultiHandAnimComponent } from './components/stressed-multi-hand
   exports: [
     BlobComponent,
     Blob1Component,
-    ReflectAnimationComponent
+    ReflectAnimationComponent,
+    StressedMultiHandAnimComponent
   ]
 })
 export class SharedModule { }
