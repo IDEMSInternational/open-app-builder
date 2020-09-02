@@ -15,6 +15,9 @@
   </div>
   <ion-content #messagesContent class="bot-messages">
     <div class="messages">
+      <div class="msg-container bot-msg">
+        <plh-stressed-multi-hand-anim></plh-stressed-multi-hand-anim>
+      </div>
       <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
       <div *ngFor="let msg of messages"
         [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'">
