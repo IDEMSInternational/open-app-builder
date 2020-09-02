@@ -1,13 +1,79 @@
 #left_arm_pan {
-    animation: spin 3s infinite;
-    transform-origin: 200px 200px;
+    animation: wave 1.7s infinite;
+    transform-origin: 104px 131px;
+    transform: rotate(-20deg);
+    animation-direction: reverse;
 }
 
-@keyframes spin {
-    from {
+#left_arm_broom {
+    animation: wave 1.7s infinite;
+    transform-origin: 104px 140px;
+    transform: rotate(-20deg);
+    animation-direction: reverse;
+}
+
+#left_arm_phone {
+    animation: wave 1.7s infinite;
+    transform-origin: 111px 139px;
+    transform: rotate(-20deg);
+    animation-direction: reverse;
+}
+
+#right_arm_paper {
+    animation: wave-right2 1.7s infinite;
+    transform-origin: 210px 139px;
+    animation-direction: reverse;
+}
+
+#right_arm_bag {
+    animation: wave-right1 1.7s infinite;
+    transform-origin: 220px 142px;
+    animation-direction: normal;
+}
+
+
+#right_arm_with_iron {
+    animation: wave-right1 1.7s infinite;
+    transform-origin: 218px 131px;
+    animation-direction: reverse;
+}
+
+
+
+@keyframes wave {
+    0% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+    99% {
+        transform: rotate(-20deg);
+    }
+}
+
+
+@keyframes wave-right1 {
+    0% {
         transform: rotate(0deg);
     }
-    to {
-        transform: rotate(359deg);
+    50% {
+        transform: rotate(-40deg);
+    }
+    99% {
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes wave-right2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-60deg);
+    }
+    99% {
+        transform: rotate(0deg);
     }
 }
