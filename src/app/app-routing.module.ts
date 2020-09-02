@@ -40,11 +40,14 @@ const routes: Routes = [
     path: 'family',
     loadChildren: () => import('./feature/family/family.module').then( m => m.FamilyPageModule)
   },
-  { // http://localhost:4200/#/stressed-anim
-    path: 'stressed-anim',
+  { // http://localhost:4200/#/stressed-hands-anim
+    path: 'stressed-hands-anim',
     component: StressedMultiHandAnimComponent
+  },
+  {
+    path: "chat",
+    loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
   }
-
 ];
 
 @NgModule({

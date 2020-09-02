@@ -27,6 +27,8 @@
     "cordova-android": "8.1.0",
     "cordova-plugin-media": "^5.0.3",
     "core-js": "^2.5.4",
+    "lottie-web": "^5.7.3",
+    "ngx-lottie": "^6.4.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
