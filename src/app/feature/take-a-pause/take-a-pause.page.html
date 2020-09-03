@@ -1,23 +1,28 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Take a Pause</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<h1>{{stepTitles[currentStep]}}</h1>
-<plh-pause-step0 *ngIf="currentStep == 0"></plh-pause-step0>
-<plh-pause-step1 *ngIf="currentStep == 1" [audioTime]="audioTime"></plh-pause-step1>
-<plh-pause-step2 *ngIf="currentStep == 2" [audioTime]="audioTime"></plh-pause-step2>
-<plh-pause-step3 *ngIf="currentStep == 3"></plh-pause-step3>
-<plh-pause-step4 *ngIf="currentStep == 4"></plh-pause-step4>
-<plh-pause-step5 *ngIf="currentStep == 5"></plh-pause-step5>
+  <div class="main-content">
+    <h1>{{stepTitles[currentStep]}}</h1>
+    <plh-pause-step0 *ngIf="currentStep == 0"></plh-pause-step0>
+    <plh-pause-step1 *ngIf="currentStep == 1" [audioTime]="audioTime"></plh-pause-step1>
+    <plh-pause-step2 *ngIf="currentStep == 2" [audioTime]="audioTime"></plh-pause-step2>
+    <plh-pause-step3 *ngIf="currentStep == 3"></plh-pause-step3>
+    <plh-pause-step4 *ngIf="currentStep == 4"></plh-pause-step4>
+    <plh-pause-step5 *ngIf="currentStep == 5"></plh-pause-step5>
+  </div>
 </ion-content>
 <div class="progress-container">
   <ion-progress-bar [value]="audioTime / audioLength"></ion-progress-bar>
 </div>
 <div class="button-container">
   <ion-button shape="round" (click)="toggleAudio()">
-      <ion-icon name="{{isPlaying ? 'pause' : 'play'}}"></ion-icon>
+    <ion-icon name="{{isPlaying ? 'pause' : 'play'}}"></ion-icon>
   </ion-button>
 </div>

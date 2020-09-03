@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'plh-add-family-member',
   templateUrl: './add-family-member.page.html',
-  styleUrls: ['./add-family-member.page.scss'],
+  styleUrls: ['./add-family-member.page.scss']
 })
 export class AddFamilyMemberPage implements OnInit {
 
@@ -18,6 +18,8 @@ export class AddFamilyMemberPage implements OnInit {
     }
   };
 
+  colorOptions = ["#00A1CD", "#36D0AB", "#D85277"];
+
   constructor(private familyService: FamilyService, private router: Router) { }
 
   ngOnInit() {
@@ -28,8 +30,8 @@ export class AddFamilyMemberPage implements OnInit {
     this.router.navigateByUrl('/family');
   }
 
-  onColorChange($event: {color: string}) {
-    this.newMember.avatarProperties.bodyColor = $event.color;
+  onColorChange(color: string) {
+    this.newMember.avatarProperties.bodyColor = color;
   }
 
 }

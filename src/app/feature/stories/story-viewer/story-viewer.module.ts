@@ -8,14 +8,16 @@ import { StoryViewerPageRoutingModule } from './story-viewer-routing.module';
 
 import { StoryViewerPage } from './story-viewer.page';
 import { ReflectAnimationComponent } from 'src/app/shared/components/reflect-animation/reflect-animation.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    StoryViewerPageRoutingModule
+    StoryViewerPageRoutingModule,
+    SharedModule
   ],
-  declarations: [StoryViewerPage, ReflectAnimationComponent]
+  declarations: [StoryViewerPage]
 })
 export class StoryViewerPageModule {}

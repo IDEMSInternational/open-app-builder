@@ -9,7 +9,7 @@
 
 <ion-content>
 <h1>Add a member of your family</h1>
-<form (ngSubmit)="onSubmit($event)">
+<form (ngSubmit)="onSubmit()">
   <ion-item>
     <ion-label>Name:</ion-label>
     <ion-input name="name" [(ngModel)]="newMember.name"></ion-input>
@@ -27,12 +27,13 @@
     <ion-label>Age:</ion-label>
     <ion-input name="age" [(ngModel)]="newMember.age" type="number"></ion-input>
   </ion-item>
-  <ion-button
-        ionicColorPicker
-        [colors]="['#C0392B', '#E74C3C', '#9B59B6', '#8E44AD', '#2980B9', '#3498DB', '#1ABC9C', '#16A085', '#27AE60', '#2ECC71']"
-        (colorChange)="onColorChange($event)">
-    Change Color
-    </ion-button>
+  <ion-item>
+    <ion-label>Color:</ion-label>
+    <div class="color-options">
+      <div *ngFor="let color of colorOptions" class="color-option" [style.backgroundColor]="color" (click)="onColorChange(color)"></div>
+    </div>
+  </ion-item>
+  
   <ion-item>
     <plh-blob1 [bodyColor]="newMember.avatarProperties.bodyColor"></plh-blob1>
   </ion-item>

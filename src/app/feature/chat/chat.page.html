@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
+    <ng-lottie containerClass="bot-lottie" [options]="botAnimOptions">
+    </ng-lottie>
+    <img *ngIf="false" class="still-bot-blob" src="assets/img/coffee_bot_blob1.png">
+  </div>
+  <ion-content #messagesContent class="bot-messages">
+    <div class="messages">
+      <div class="msg-container bot-msg">
+        <plh-stressed-multi-hand-anim></plh-stressed-multi-hand-anim>
+      </div>
+      <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
+      <div *ngFor="let msg of messages"
+        [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'">
+        <div *ngIf="msg.sender === 'bot'">
+          <svg width="15" height="20" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 20V0L0 10L15 20Z" fill="grey" />
+          </svg>
+        </div>
+        <div class="msg-bubble">
+          {{msg.text}}
+        </div>
+        <div *ngIf="msg.sender === 'user'" class="arrow">
+          <svg width="15" height="20" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 20V0L15 10L0 20Z" fill="darkcyan" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div style="display: block; height: 100px"></div>
+  </ion-content>
+  <ion-content [hidden]="showingAllMessages" class="response-options">
+    <div *ngFor="let option of responseOptions" class="response-option" (click)="selectResponseOption(option)">
+      {{option.text}}
+    </div>
+    <form *ngIf="messages.length > 0 && messages[messages.length - 1].sender === 'bot'"
+      (ngSubmit)="onInputSubmit($event)">
+      <input [(ngModel)]="inputValue" class="response-option" name="text-response" placeholder="Type other response...">
+    </form>
+  </ion-content>
+  <img [hidden]="showingAllMessages" class="user-blob" src="assets/images/waving_you_blob1.svg">
+  <div *ngIf="!showingAllMessages" class="show-all-button" (click)="toggleShowAllMessages()">
+    Show All Messages
+  </div>
+  <div *ngIf="showingAllMessages" class="show-all-button" (click)="toggleShowAllMessages()">
+    Show Recent Messages
+  </div>
+</ion-content>
