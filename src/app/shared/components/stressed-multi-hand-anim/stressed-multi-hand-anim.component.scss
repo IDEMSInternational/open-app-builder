@@ -1,0 +1,84 @@
+#left_arm_pan {
+    animation: wave 1.7s infinite;
+    transform-origin: 104px 131px;
+    transform: rotate(-20deg);
+    animation-direction: alternate;
+    opacity: 0.6;
+}
+
+#left_arm_broom {
+    animation: wave 4s infinite;
+    transform-origin: 104px 140px;
+    transform: rotate(-20deg);
+    animation-direction: alternate-reverse;
+    opacity: 0.6;
+}
+
+#left_arm_phone {
+    animation: wave 1.7s infinite;
+    transform-origin: 111px 139px;
+    transform: rotate(-20deg);
+    animation-direction: reverse;
+}
+
+#right_arm_paper {
+    animation: wave-right2 3s infinite;
+    transform-origin: 210px 139px;
+    animation-direction: normal;
+    transform: rotate(-40deg);
+}
+
+#right_arm_bag {
+    animation: wave-right1 1s infinite;
+    transform-origin: 220px 142px;
+    animation-direction: reverse;
+    opacity: 0.6;
+}
+
+
+#right_arm_with_iron {
+    animation: wave-right1 1s infinite;
+    transform-origin: 218px 131px;
+    animation-direction: alternate-reverse;
+    opacity: 0.6;
+}
+
+
+
+@keyframes wave {
+    0% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+    99% {
+        transform: rotate(-20deg);
+    }
+}
+
+
+@keyframes wave-right1 {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-40deg);
+    }
+    99% {
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes wave-right2 {
+    0% {
+        transform: rotate(-40deg);
+    }
+    50% {
+        transform: rotate(130deg);
+    }
+    99% {
+        transform: rotate(-40deg);
+    }
+}
