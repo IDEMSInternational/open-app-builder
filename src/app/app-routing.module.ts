@@ -47,7 +47,19 @@ const routes: Routes = [
   {
     path: "chat",
     loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
+  },  {
+    path: 'toolbox',
+    loadChildren: () => import('./feature/toolbox/toolbox.module').then( m => m.ToolboxPageModule)
+  },
+  {
+    path: 'gallery',
+    loadChildren: () => import('./feature/gallery/gallery.module').then( m => m.GalleryPageModule)
+  },
+  {
+    path: 'calendar',
+    loadChildren: () => import('./feature/calendar/calendar.module').then( m => m.CalendarPageModule)
   }
+
 ];
 
 @NgModule({
