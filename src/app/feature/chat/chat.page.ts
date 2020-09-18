@@ -8,6 +8,7 @@ import {
 import { AnimationOptions } from "ngx-lottie";
 import { IonContent } from "@ionic/angular";
 import { ChatService, IRapidProMessage } from './chat-service/chat.service';
+import { NotificationService } from 'src/app/shared/services/notification/notification.service';
 
 @Component({
   selector: "app-chat",
@@ -41,18 +42,19 @@ export class ChatPage implements OnInit {
   showingAllMessages = false;
 
   constructor(
-    private chatService: ChatService,
-    private cd: ChangeDetectorRef
+    private chatService2: ChatService,
+    private cd: ChangeDetectorRef,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
-    this.chatService.messageSubject
+    this.notificationService.messages$
       .asObservable()
       .subscribe((msg) => {
         this.onReceiveRapidProMessage(msg);
       });
     setTimeout(() => {
-      this.chatService.sendRapidproMessage("start_demo");
+      this.notificationService.sendRapidproMessage("plh_simulation");
       this.botBlobState = "still";
     }, 3000);
   }
@@ -149,7 +151,7 @@ export class ChatPage implements OnInit {
   }
 
   sendCustomOption(text: string) {
-    this.chatService.sendRapidproMessage(text);
+    this.notificationService.sendRapidproMessage(text);
     this.onReceiveMessage({
       text: text,
       sender: "user",
@@ -161,7 +163,7 @@ export class ChatPage implements OnInit {
     if (option.customAction) {
       this.doCustomResponseAction(option.customAction);
     }
-    this.chatService.sendRapidproMessage(option.text);
+    this.notificationService.sendRapidproMessage(option.text);
     this.onReceiveMessage({
       text: option.text,
       sender: "user",
