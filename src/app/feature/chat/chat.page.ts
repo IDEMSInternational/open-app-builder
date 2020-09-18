@@ -35,7 +35,7 @@ export class ChatPage implements OnInit {
 
   // Used for getting estimates of number of messages sent automatically
   autoReplyEnabled: boolean = true;
-  autoReplyDelay = 200;
+  autoReplyDelay = 500;
   autoReplyWord = "N";
 
   messagesSent: number = 0;
@@ -96,13 +96,15 @@ export class ChatPage implements OnInit {
         );
         if (this.autoReplyEnabled) {
           if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
-
+            this.debugMsg = "flow is stuck";
           } else {
             setTimeout(() => {
-              if (chatMsg.responseOptions.length === 0) {
-                this.sendCustomOption(this.autoReplyWord);
-              } else {
+              this.debugMsg = "";
+              if (chatMsg.responseOptions || chatMsg.responseOptions.length > 0) {
                 this.selectResponseOption(chatMsg.responseOptions[0]);
+              } else {
+                this.debugMsg = "auto reply: N";
+                this.sendCustomOption(this.autoReplyWord);
               }
             }, this.autoReplyDelay);
           }
