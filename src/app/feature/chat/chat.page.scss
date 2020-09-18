@@ -1,0 +1,151 @@
+.messages {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bot-messages {
+  max-height: 70vh;
+}
+
+.bot-blob {
+  width: 50vw;
+  position: absolute;
+  left: -25vw;
+  top: 20px;
+  padding: 5px;
+  // background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 40px;
+  z-index: 10;
+  animation: shrink 4s 1;
+
+  .bot-lottie {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 12;
+  }
+
+  .still-bot-blob {
+    width: 30vw;
+    position: absolute;
+    left: 49.7vw;
+    top: 3.8vw;
+    z-index: 11;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    left: -75vw;
+    width: 150vw;
+  }
+  50% {
+    left: -75vw;
+    width: 150vw;
+  }
+  100% {
+    left: -25vw;
+    width: 50vw;
+  }
+}
+
+.msg-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 90vw;
+
+  &:nth-child(1) {
+    max-width: calc(75vw - 50px);
+    position: relative;
+    left: 20vw;
+  }
+
+  .msg-bubble {
+    background-color: grey;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+
+  &.bot-msg .msg-bubble {
+    background-color: grey;
+  }
+
+  &.user-msg .msg-bubble {
+    background-color: darkcyan;
+  }
+
+  &.user-msg {
+    justify-content: flex-end;
+  }
+
+  .arrow {
+    margin: 0px;
+  }
+}
+
+.response-options {
+  position: absolute;
+  z-index: 2;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+  max-height: 40vh;
+}
+
+.response-option {
+  color: darkcyan;
+  border-color: darkcyan;
+  background-color: transparent;
+  padding: 15px;
+  font-size: 20px;
+  margin: 20px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 3px;
+  width: calc(100vw - 100px);
+}
+
+.user-blob {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+ion-content {
+  --ion-background-color: #eeeeee;
+}
+
+.custom-input {
+  color: darkcyan;
+  border-color: darkcyan;
+  background-color: transparent;
+  padding: 15px;
+  font-size: 20px;
+  margin: 20px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 3px;
+  width: calc(100vw - 100px);
+}
+
+.show-all-button {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  z-index: 20;
+  color: #333333;
+  border-color: #333333;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  display: inline;
+  padding: 8px;
+  opacity: 0.8;
+}

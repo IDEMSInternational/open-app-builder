@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { StressedMultiHandAnimComponent } from './shared/components/stressed-multi-hand-anim/stressed-multi-hand-anim.component';
 
 const routes: Routes = [
   {
@@ -34,11 +35,19 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./feature/about/about.module').then( m => m.AboutPageModule)
-  },  {
+  },
+  {
     path: 'family',
     loadChildren: () => import('./feature/family/family.module').then( m => m.FamilyPageModule)
+  },
+  { // http://localhost:4200/#/stressed-hands-anim
+    path: 'stressed-hands-anim',
+    component: StressedMultiHandAnimComponent
+  },
+  {
+    path: "chat",
+    loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
   }
-
 ];
 
 @NgModule({
