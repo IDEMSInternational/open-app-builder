@@ -15,8 +15,9 @@
   </div>
   <ion-content #messagesContent class="bot-messages">
     <div class="messages">
-      <div class="msg-container bot-msg">
-        <plh-stressed-multi-hand-anim></plh-stressed-multi-hand-anim>
+      <div *ngIf="autoReplyEnabled" class="msg-container bot-msg">
+        <h1>Messages Sent {{messagesSent}}</h1>
+        <h1>Messages Received {{messagesReceived}}</h1>
       </div>
       <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
       <div *ngFor="let msg of messages"
@@ -54,4 +55,5 @@
   <div *ngIf="showingAllMessages" class="show-all-button" (click)="toggleShowAllMessages()">
     Show Recent Messages
   </div>
+
 </ion-content>
