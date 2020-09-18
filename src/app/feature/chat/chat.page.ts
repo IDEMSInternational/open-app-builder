@@ -33,6 +33,14 @@ export class ChatPage implements OnInit {
     path: "/assets/lottie-animations/Walk_In_Entrance_Pass_v2.json",
   };
 
+  // Used for getting estimates of number of messages sent automatically
+  autoReplyEnabled: boolean = true;
+  autoReplyDelay = 200;
+  autoReplyWord = "Continue";
+
+  messagesSent: number = 0;
+  messagesReceived: number = 0;
+
   @ViewChild("messagesContent", { static: false })
   private messagesContent: IonContent;
   scrollingInterval: any;
@@ -60,6 +68,7 @@ export class ChatPage implements OnInit {
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
+    this.messagesReceived += 1;
     let chatMsg: ChatMessage = {
       sender: "bot",
       text: rapidMsg.body,
@@ -80,6 +89,15 @@ export class ChatPage implements OnInit {
             return responseOption;
           }
         );
+        if (this.autoReplyEnabled) {
+          setTimeout(() => {
+            if (chatMsg.responseOptions.length === 0) {
+              this.sendCustomOption(this.autoReplyWord);
+            } else {
+              this.selectResponseOption(chatMsg.responseOptions[0]);
+            }
+          }, this.autoReplyDelay);
+        }
       } catch (ex) {
         console.log("Error parsing quick replies", ex);
       }
@@ -152,6 +170,7 @@ export class ChatPage implements OnInit {
 
   sendCustomOption(text: string) {
     this.notificationService.sendRapidproMessage(text);
+    this.messagesSent += 1;
     this.onReceiveMessage({
       text: text,
       sender: "user",
@@ -164,6 +183,7 @@ export class ChatPage implements OnInit {
       this.doCustomResponseAction(option.customAction);
     }
     this.notificationService.sendRapidproMessage(option.text);
+    this.messagesSent += 1;
     this.onReceiveMessage({
       text: option.text,
       sender: "user",
