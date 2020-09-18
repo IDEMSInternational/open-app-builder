@@ -46,7 +46,11 @@ C:\Gradle\gradle-6.3\bin
 %ANDROID_HOME%\platform-tools
 ```
 6. Open Android studio, now open Tools > SDK Manager and install the Android SDK packages required by Cordova (these are listed here: https://cordova.apache.org/docs/en/latest/guide/platforms/android/#adding-sdk-packages)
-7. Now from a command line within the parenting-app-ui folder run 
+7. Add the android platform locally (using cordova-android 9.0.0)
+   ```
+   ionic cordova platform add android@9.0.0
+   ```
+8. Now from a command line within the parenting-app-ui folder run 
 ```ionic build``` and then ```ionic cordova build android``` and you should be able to build an APK (Android App Package file) which can be installed on a device.
 
 ### Setting up Building for Android (on Linux or MacOS)
