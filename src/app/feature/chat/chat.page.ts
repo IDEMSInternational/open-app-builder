@@ -35,7 +35,7 @@ export class ChatPage implements OnInit {
   // Used for getting estimates of number of messages sent automatically
   autoReplyEnabled: boolean = true;
   autoReplyDelay = 200;
-  autoReplyWord = "Continue";
+  autoReplyWord = "N";
 
   messagesSent: number = 0;
   messagesReceived: number = 0;
