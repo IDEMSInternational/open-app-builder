@@ -36,7 +36,6 @@ export class RapidProOfflineFlow implements ChatFlow {
                 let text = "Next flow " + action.flow.name;
                 this.messageSubject.next({
                     message: text,
-                    body: text,
                     message_id: action.uuid,
                     title: this.flowObject.name,
                     type: "rapidpro",
@@ -142,7 +141,6 @@ export class RapidProOfflineFlow implements ChatFlow {
         let text = action.text;
         this.messageSubject.next({
             message: text,
-            body: text,
             message_id: action.uuid,
             title: this.flowObject.name,
             type: "rapidpro",

@@ -42,6 +42,8 @@ export class ChatPage implements OnInit {
   messagesReceived: number = 0;
   debugMsg: string = "";
 
+  triggerMessage: string = "plh_simulation";
+
   @ViewChild("messagesContent", { static: false })
   private messagesContent: IonContent;
   scrollingInterval: any;
@@ -51,7 +53,6 @@ export class ChatPage implements OnInit {
   showingAllMessages = false;
 
   constructor(
-    private chatService2: ChatService,
     private cd: ChangeDetectorRef,
     private notificationService: NotificationService
   ) { }
@@ -59,11 +60,14 @@ export class ChatPage implements OnInit {
   ngOnInit() {
     this.notificationService.messages$
       .asObservable()
-      .subscribe((msg) => {
-        this.onReceiveRapidProMessage(msg);
+      .subscribe((messages) => {
+        console.log("from rapid pro ", messages);
+        if (messages.length > 0) {
+          this.onReceiveRapidProMessage(messages[messages.length - 1]);
+        }
       });
     setTimeout(() => {
-      this.notificationService.sendRapidproMessage("plh_simulation");
+      this.notificationService.sendRapidproMessage(this.triggerMessage);
       this.botBlobState = "still";
     }, 3000);
   }
@@ -72,7 +76,7 @@ export class ChatPage implements OnInit {
     this.messagesReceived += 1;
     let chatMsg: ChatMessage = {
       sender: "bot",
-      text: rapidMsg.body,
+      text: rapidMsg.message,
     };
     if (rapidMsg.quick_replies) {
       try {
