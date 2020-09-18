@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 import { HTTP } from "@ionic-native/http/ngx";
 import { Device } from "@ionic-native/device/ngx";
-import { Subject } from "rxjs";
+import { Subject, BehaviorSubject } from "rxjs";
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NotificationService {
   token: string;
-  public messages$: Subject<IRapidProMessage> = new Subject();
+  public messages$: BehaviorSubject<IRapidProMessage[]> = new BehaviorSubject([]);
   constructor(
     private firebase: FirebaseX,
     private device: Device,
@@ -37,16 +37,16 @@ export class NotificationService {
     this.firebase
       .onTokenRefresh()
       .subscribe((token: string) => console.log(`Got a new token ${token}`));
+    this.firebase.onMessageReceived().subscribe((msg) => {
+      this.handleNotification(msg);
+    });
   }
 
   handleNotification(message: IRapidProMessage) {
     console.log("message received", message);
-    // alert(`Message Received: ${message.message}`);
-    setTimeout(() => {
-      if (message) {
-        this.messages$.next(message);
-      }
-    });
+    let newMessages = this.messages$.value;
+    newMessages.push(message);
+    this.messages$.next(newMessages);
   }
   /**
    * Send a message to rapidpro servers
@@ -74,7 +74,11 @@ export class NotificationService {
     const { contactRegisterUrl } = environment.rapidPro;
     const urn = this.device.uuid;
     const name = `app-${urn}`;
-    const data: IRapidProRegistrationData = { urn, token, name };
+    const data: IRapidProRegistrationData = {
+      urn: urn,
+      fcm_token: token,
+      name: name
+    };
     try {
       const res = await this.http.post(contactRegisterUrl, data, {});
       console.log("token registered", res);
@@ -92,7 +96,7 @@ interface IRapidProMessageData {
 
 interface IRapidProRegistrationData {
   urn: string; // rapidpro contact identifier
-  token: string;
+  fcm_token: string;
   name?: string;
 }
 
