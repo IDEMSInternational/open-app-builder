@@ -40,6 +40,7 @@ export class ChatPage implements OnInit {
 
   messagesSent: number = 0;
   messagesReceived: number = 0;
+  debugMsg: string = "";
 
   @ViewChild("messagesContent", { static: false })
   private messagesContent: IonContent;
@@ -90,13 +91,18 @@ export class ChatPage implements OnInit {
           }
         );
         if (this.autoReplyEnabled) {
-          setTimeout(() => {
-            if (chatMsg.responseOptions.length === 0) {
-              this.sendCustomOption(this.autoReplyWord);
-            } else {
-              this.selectResponseOption(chatMsg.responseOptions[0]);
-            }
-          }, this.autoReplyDelay);
+          if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
+
+          } else {
+            setTimeout(() => {
+              if (chatMsg.responseOptions.length === 0) {
+                this.sendCustomOption(this.autoReplyWord);
+              } else {
+                this.selectResponseOption(chatMsg.responseOptions[0]);
+              }
+            }, this.autoReplyDelay);
+          }
+          
         }
       } catch (ex) {
         console.log("Error parsing quick replies", ex);
