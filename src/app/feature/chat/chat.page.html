@@ -18,6 +18,7 @@
       <div *ngIf="autoReplyEnabled" class="msg-container bot-msg">
         <h1>Messages Sent {{messagesSent}}</h1>
         <h1>Messages Received {{messagesReceived}}</h1>
+        <h1>{{debugMsg}}</h1>
       </div>
       <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
       <div *ngFor="let msg of messages"
