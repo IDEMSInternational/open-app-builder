@@ -42,6 +42,8 @@ export class ChatPage implements OnInit {
   messagesReceived: number = 0;
   debugMsg: string = "";
 
+  sentResponsesByMessage: { [messageText: string]: string[] } = {};
+
   triggerMessage: string = "plh_simulation";
 
   @ViewChild("messagesContent", { static: false })
@@ -100,8 +102,26 @@ export class ChatPage implements OnInit {
           } else {
             setTimeout(() => {
               this.debugMsg = "";
-              if (chatMsg.responseOptions || chatMsg.responseOptions.length > 0) {
-                this.selectResponseOption(chatMsg.responseOptions[0]);
+              if (chatMsg.responseOptions && chatMsg.responseOptions.length > 0) {
+                let responseOption = chatMsg.responseOptions[0];
+                if (!this.sentResponsesByMessage[chatMsg.text]) {
+                  this.sentResponsesByMessage[chatMsg.text] = [];
+                } else {
+                  let unusedResponses = chatMsg.responseOptions
+                    .filter((option) => this.sentResponsesByMessage[chatMsg.text].indexOf(option.text) < 0);
+                  if (unusedResponses.length < 1) {
+                    const responseIndex = Math.floor(Math.random() * chatMsg.responseOptions.length);
+                    if (chatMsg.responseOptions[responseIndex]) {
+                      responseOption = chatMsg.responseOptions[responseIndex];
+                    } else {
+                      responseOption = chatMsg.responseOptions[0];
+                    }
+                  } else {
+                    responseOption = unusedResponses[0];
+                  }
+                }
+                this.sentResponsesByMessage[chatMsg.text].push(responseOption.text);
+                this.selectResponseOption(responseOption);
               } else {
                 this.debugMsg = "auto reply: N";
                 this.sendCustomOption(this.autoReplyWord);
