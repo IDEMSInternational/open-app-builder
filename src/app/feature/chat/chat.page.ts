@@ -37,10 +37,12 @@ export class ChatPage implements OnInit {
   autoReplyEnabled: boolean = true;
   autoReplyDelay = 500;
   autoReplyWord = "N";
+  autoRepeatPhrase = "Repeat simulation";
+  autoEndPhrase = "THE END";
 
   messagesSent: number = 0;
   messagesReceived: number = 0;
-  debugMsg: string = "";
+  debugMsg: string = "testing???";
 
   sentResponsesByMessage: { [messageText: string]: string[] } = {};
 
@@ -78,7 +80,7 @@ export class ChatPage implements OnInit {
     this.messagesReceived += 1;
     let chatMsg: ChatMessage = {
       sender: "bot",
-      text: rapidMsg.message,
+      text: rapidMsg.message
     };
     if (rapidMsg.quick_replies) {
       try {
@@ -96,43 +98,48 @@ export class ChatPage implements OnInit {
             return responseOption;
           }
         );
-        if (this.autoReplyEnabled) {
-          if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
-            this.debugMsg = "flow is stuck";
-          } else {
-            setTimeout(() => {
-              this.debugMsg = "";
-              if (chatMsg.responseOptions && chatMsg.responseOptions.length > 0) {
-                let responseOption = chatMsg.responseOptions[0];
-                if (!this.sentResponsesByMessage[chatMsg.text]) {
-                  this.sentResponsesByMessage[chatMsg.text] = [];
-                } else {
-                  let unusedResponses = chatMsg.responseOptions
-                    .filter((option) => this.sentResponsesByMessage[chatMsg.text].indexOf(option.text) < 0);
-                  if (unusedResponses.length < 1) {
-                    const responseIndex = Math.floor(Math.random() * chatMsg.responseOptions.length);
-                    if (chatMsg.responseOptions[responseIndex]) {
-                      responseOption = chatMsg.responseOptions[responseIndex];
-                    } else {
-                      responseOption = chatMsg.responseOptions[0];
-                    }
-                  } else {
-                    responseOption = unusedResponses[0];
-                  }
-                }
-                this.sentResponsesByMessage[chatMsg.text].push(responseOption.text);
-                this.selectResponseOption(responseOption);
-              } else {
-                this.debugMsg = "auto reply: N";
-                this.sendCustomOption(this.autoReplyWord);
-              }
-            }, this.autoReplyDelay);
-          }
-          
-        }
       } catch (ex) {
         console.log("Error parsing quick replies", ex);
       }
+    }
+    if (this.autoReplyEnabled) {
+      setTimeout(() => {
+        if (rapidMsg.message.toLowerCase().indexOf(this.autoEndPhrase.toLowerCase()) > -1) {
+          this.debugMsg = "THE END!!";
+        } else if (rapidMsg.message.toLowerCase().indexOf(this.autoRepeatPhrase.toLowerCase()) > -1) {
+          this.debugMsg = "repeating...";
+          this.notificationService.sendRapidproMessage(this.triggerMessage);
+        } else if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
+          this.debugMsg = "flow is stuck. repeating...";
+          this.notificationService.sendRapidproMessage(this.triggerMessage);
+        } else {
+          this.debugMsg = "";
+          if (chatMsg.responseOptions && chatMsg.responseOptions.length > 0) {
+            let responseOption = chatMsg.responseOptions[0];
+            if (!this.sentResponsesByMessage[chatMsg.text]) {
+              this.sentResponsesByMessage[chatMsg.text] = [];
+            } else {
+              let unusedResponses = chatMsg.responseOptions
+                .filter((option) => this.sentResponsesByMessage[chatMsg.text].indexOf(option.text) < 0);
+              if (unusedResponses.length < 1) {
+                const responseIndex = Math.floor(Math.random() * chatMsg.responseOptions.length);
+                if (chatMsg.responseOptions[responseIndex]) {
+                  responseOption = chatMsg.responseOptions[responseIndex];
+                } else {
+                  responseOption = chatMsg.responseOptions[0];
+                }
+              } else {
+                responseOption = unusedResponses[0];
+              }
+            }
+            this.sentResponsesByMessage[chatMsg.text].push(responseOption.text);
+            this.selectResponseOption(responseOption);
+          } else {
+            this.debugMsg = "auto reply: N";
+            this.sendCustomOption(this.autoReplyWord);
+          }
+        }
+      }, this.autoReplyDelay);
     }
     setTimeout(() => {
       this.onReceiveMessage(chatMsg);
@@ -230,5 +237,9 @@ export class ChatPage implements OnInit {
       this.messages = this.allMessages;
       this.showingAllMessages = true;
     }
+  }
+
+  stringify(obj: any) {
+    return JSON.stringify(obj);
   }
 }
