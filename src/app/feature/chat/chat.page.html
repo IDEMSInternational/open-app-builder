@@ -8,17 +8,18 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
+  <div *ngIf="false && botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
     <ng-lottie containerClass="bot-lottie" [options]="botAnimOptions">
     </ng-lottie>
     <img *ngIf="false" class="still-bot-blob" src="assets/img/coffee_bot_blob1.png">
   </div>
   <ion-content #messagesContent class="bot-messages">
     <div class="messages">
-      <div *ngIf="autoReplyEnabled" class="msg-container bot-msg">
-        <h1>Messages Sent {{messagesSent}}</h1>
-        <h1>Messages Received {{messagesReceived}}</h1>
-        <h1>{{debugMsg}}</h1>
+      <div *ngIf="autoReplyEnabled" class="auto-reply-container">
+        <p>Messages Sent {{messagesSent}}</p>
+        <p>Messages Received {{messagesReceived}}</p>
+        <p>{{debugMsg}}</p>
+        <p>{{stringify(messages[messages.length - 1])}}</p>
       </div>
       <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
       <div *ngFor="let msg of messages"
