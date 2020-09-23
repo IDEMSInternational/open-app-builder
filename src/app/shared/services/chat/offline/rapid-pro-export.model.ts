@@ -1,7 +1,9 @@
 declare namespace RapidProFlowExport {
 
+    export type ActionType = "enter_flow" | "send_msg" | "set_contact_field";
+
     export interface Action {
-        type: "enter_flow" | "send_msg" | "set_contact_field";
+        type: ActionType;
         uuid: string;
         quick_replies?: string[];
         text?: string;
@@ -23,11 +25,13 @@ declare namespace RapidProFlowExport {
         destination_uuid: string;
         uuid: string;
     }
+
+    export type RouterCaseType = "has_any_word" | "has_number_between" | "has_number_lt" | "has_number_gt";
     
     export interface Case {
         arguments: string[];
         category_uuid: string;
-        type: "has_any_word" | "has_number_between" | "has_number_lt" | "has_number_gt" ;
+        type: RouterCaseType;
         uuid: string;
     }
     
