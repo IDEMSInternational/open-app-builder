@@ -1,0 +1,13 @@
+{
+  "appId": "international.idems.plh.teens_app1",
+  "appName": "Parenting for Lifelong Health",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3000
+    }
+  },
+  "allowNavigation": ["example.org", "*.example.org", "192.0.2.1"]
+}
