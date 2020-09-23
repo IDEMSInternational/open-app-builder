@@ -1,7 +1,7 @@
 {
   "name": "parenting-app-ui",
   "integrations": {
-    "cordova": {}
+    "capacitor": {}
   },
   "type": "angular"
 }
