@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
-import { AudioPlayer, HTML5AudioPlayer } from './audio.player';
-import { IonicNativeAudioPlayer } from './ionic.audio.player';
+import { Injectable } from "@angular/core";
+import { AudioPlayer, HTML5AudioPlayer } from "./audio.player";
+import { IonicNativeAudioPlayer } from "./ionic.audio.player";
+import { Capacitor } from "@capacitor/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AudioService {
-
-  constructor() { }
+  constructor() {}
 
   createPlayer(src: string): AudioPlayer {
-    if (window.hasOwnProperty("cordova")) {
+    if (Capacitor.isNative) {
       return new IonicNativeAudioPlayer(src);
     } else {
       return new HTML5AudioPlayer(src);
