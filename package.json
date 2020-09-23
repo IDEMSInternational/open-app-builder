@@ -19,12 +19,16 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@capacitor/android": "^2.4.1",
+    "@capacitor/cli": "^2.4.1",
+    "@capacitor/core": "^2.4.1",
     "@ionic-native/core": "^5.0.7",
+    "@ionic-native/device": "^5.28.0",
+    "@ionic-native/http": "^5.28.0",
     "@ionic-native/media": "^5.25.0",
-    "@ionic-native/splash-screen": "^5.0.0",
-    "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
-    "cordova-android": "8.1.0",
+    "cordova-android": "^9.0.0",
+    "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-media": "^5.0.3",
     "core-js": "^2.5.4",
     "lottie-web": "^5.7.3",
@@ -46,12 +50,13 @@
     "@types/node": "~8.9.4",
     "@types/swiper": "~4.2.0",
     "codelyzer": "^5.0.0",
+    "cordova-plugin-advanced-http": "^3.0.1",
+    "cordova-plugin-androidx": "^2.0.0",
+    "cordova-plugin-androidx-adapter": "^1.1.1",
     "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-ionic-keyboard": "^2.2.0",
-    "cordova-plugin-ionic-webview": "^4.2.0",
-    "cordova-plugin-splashscreen": "^5.0.2",
-    "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-support-android-plugin": "^1.0.2",
+    "cordova-support-google-services": "^1.4.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -64,18 +69,15 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "An Ionic project",
+  "description": "",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-statusbar": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {
-        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      },
-      "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-media": {}
+      "cordova-plugin-media": {},
+      "cordova-plugin-advanced-http": {},
+      "cordova-plugin-androidx": {},
+      "cordova-plugin-androidx-adapter": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "android"

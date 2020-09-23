@@ -70,7 +70,6 @@ interface IRapidProRegistrationData {
 }
 
 export interface IRapidProMessage {
-  body: string;
   message: string;
   message_id: string;
   title: string;
@@ -80,7 +79,6 @@ export interface IRapidProMessage {
 }
 
 export const MOCK_RAPIDPRO_MESSAGE: IRapidProMessage = {
-  body: "Hello from Rapidpro",
   message: "Hello from Rapidpro",
   message_id: "5",
   title: "Firebase Cloud Messaging - Tips Demo App",
