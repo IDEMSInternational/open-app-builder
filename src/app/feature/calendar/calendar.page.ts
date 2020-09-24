@@ -43,8 +43,11 @@ export class CalendarPage implements OnInit, OnDestroy {
     await this.localNotificationService.scheduleNotification();
     const event: IDBEvent = {
       topic: "DB",
-      subtopic: "calendar",
-      payload: { data: { name: "test_event" }, operation: "CREATE" },
+      payload: {
+        data: { name: "test_event" },
+        operation: "CREATE",
+        tableId: "calendar",
+      },
     };
     this.eventService.publish(event).subscribe(() => this.loadCalendar());
   }
