@@ -1,12 +1,3 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Chat</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div *ngIf="false && botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
     <ng-lottie containerClass="bot-lottie" [options]="botAnimOptions">
