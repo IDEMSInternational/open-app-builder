@@ -30,10 +30,15 @@ export class CalendarPage implements OnInit, OnDestroy {
     console.log("rows", rows);
   }
 
+  /**
+   * Set up and tear down event listeners (currently unused)
+   */
   private _addEventListeners() {}
 
   private _removeEventListeners() {
-    this.listeners$.unsubscribe();
+    if (this.listeners$) {
+      this.listeners$.unsubscribe();
+    }
   }
 
   /**
