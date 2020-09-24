@@ -95,9 +95,11 @@ function _randomId() {
  * @param eventId - automatically populated for tracking responses to a specific event
  */
 interface IEvent {
+  // topic -> eventType
+  // subtopic -> topic (optional)
   topic: ITopic;
   subtopic?: any;
-  payload: any;
+  payload?: any;
   eventId?: string;
 }
 interface IEventResponse {

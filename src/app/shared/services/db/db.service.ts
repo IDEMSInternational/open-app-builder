@@ -71,18 +71,18 @@ export class DbService {
   }
   private _addEventListeners() {
     this.eventService.all("DB").subscribe(async (e) => {
-      const { subtopic, payload, eventId } = e as IDBEvent;
-      const { id, data, operation } = payload;
+      const { payload, eventId } = e as IDBEvent;
+      const { id, data, operation, tableId } = payload;
       let res: any;
       switch (operation) {
         case "CREATE":
-          res = await db.table(subtopic).add(data);
+          res = await db.table(tableId).add(data);
           break;
         case "UPDATE":
-          res = await db.table(subtopic).update(id, data);
+          res = await db.table(tableId).update(id, data);
           break;
         case "DELETE":
-          res = await db.table(subtopic).delete(id);
+          res = await db.table(tableId).delete(id);
           break;
       }
       return this.eventService.respond(eventId, res);
@@ -91,9 +91,9 @@ export class DbService {
 }
 export interface IDBEvent {
   topic: "DB";
-  subtopic: keyof typeof DB_TABLES;
   payload: {
     id?: string;
+    tableId: keyof typeof DB_TABLES;
     operation: "CREATE" | "UPDATE" | "DELETE";
     data: any;
   };
