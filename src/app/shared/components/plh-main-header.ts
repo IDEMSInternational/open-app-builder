@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
   template: `<ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="#/home" icon="home"></ion-back-button>
+        <ion-back-button defaultHref="/" icon="home"></ion-back-button>
       </ion-buttons>
       <ion-title style="text-align: center">
         <ion-icon
