@@ -1,12 +1,33 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="#/home"></ion-back-button>
+      <ion-back-button defaultHref="#/home" icon="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Gallery</ion-title>
+    <ion-title style="text-align: center">
+      <ion-icon
+        src="assets/images/star.svg"
+        style="margin: -1px 8px"
+      ></ion-icon>
+      <span>STARS</span>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <p>This will contain photos added to the users family gallery!</p>
+<ion-content class="ion-padding background-secondary">
+  <h1>My Gallery</h1>
+  <div class="photo-frames-container">
+    <div
+      *ngFor="let frame of photoFrames, index as i"
+      class="photo-frame-outer"
+      (click)="takePhoto(frame,i)"
+    >
+      <div class="photo-frame-inner">
+        <div class="photo-frame-title" *ngIf="!frame.src">{{frame.title}}</div>
+        <img class="photo-frame-image" *ngIf="frame.src" [src]="frame.src" />
+      </div>
+    </div>
+  </div>
 </ion-content>
