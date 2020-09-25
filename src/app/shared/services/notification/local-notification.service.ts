@@ -1,5 +1,11 @@
 import { Injectable } from "@angular/core";
-import { LocalNotificationScheduleResult, Plugins } from "@capacitor/core";
+import {
+  LocalNotification,
+  LocalNotificationAction,
+  Plugins,
+  Capacitor,
+} from "@capacitor/core";
+import { generateRandomId } from "../utils";
 const { LocalNotifications } = Plugins;
 
 @Injectable({
@@ -9,6 +15,8 @@ const { LocalNotifications } = Plugins;
  * https://capacitorjs.com/docs/apis/local-notifications
  * NOTE - custom icons
  * These need to be registered in advance as android assets (see link above)
+ *
+ * Note - local notificaitons always display in a banner (even in foreground mode)
  *
  */
 export class LocalNotificationService {
@@ -21,46 +29,108 @@ export class LocalNotificationService {
     const { granted } = await LocalNotifications.requestPermission();
     if (granted) {
       this.enabled = true;
+      if (Capacitor.isNative) {
+        await LocalNotifications.registerActionTypes({
+          types: Object.values(NOTIFICATION_ACTIONS),
+        });
+      }
+      console.log("notifications are enabled");
       this._addListeners();
     } else {
+      this._addListeners();
       // can still add listeners locally
     }
   }
 
+  /**
+   * Schedule a local notification
+   * @param options - Supports full notification options,
+   * with a minimum of schedule required and a named action type
+   * see full scheduling options in type interface
+   * see named actions below for configurations
+   */
   async scheduleNotification(
-    callback = (notifications: LocalNotificationScheduleResult) => null
+    options: Partial<LocalNotification> & {
+      schedule: LocalNotification["schedule"];
+    }
   ) {
     const result = await LocalNotifications.schedule({
       notifications: [
         {
-          title: "Title",
-          body: "Body",
-          id: 1,
-          // see full scheduling options in type interface
-          schedule: { at: new Date(Date.now() + 1000 * 5) },
-          sound: null,
-          attachments: null,
-          actionTypeId: "",
-          extra: null,
+          ...NOTIFICATION_DEFAULTS,
+          ...options,
         },
       ],
     });
-    callback(result);
     console.log("scheduled notifications", result);
     return result;
   }
 
   async _addListeners() {
-    LocalNotifications.removeAllListeners();
+    // LocalNotifications.removeAllListeners();
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
-      (action) => console.log("action", action)
+      (action) => console.log("[NOTIFICATION ACTION]", action)
       // TODO emit event for action to other listeners?
       // good to have default as can only ever have 1 listener for each type
     );
+    // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
     LocalNotifications.addListener(
       "localNotificationReceived",
-      (notification) => console.log("notification", notification)
+      (notification) => console.log(["NOTIFICATION RECEIVED"], notification)
     );
   }
 }
+
+// Explicitly list actions here to enforce strict typing later
+type IActionTypeId = "action_1" | "action_2";
+
+/**
+ * More fine-grained control to notifications can be set through the use of registered
+ * actions.
+ * Note, these might not be fully functional at the moment
+ * https://forum.ionicframework.com/t/push-notifications-background-handler/188578
+ * https://forum.ionicframework.com/t/android-capacitor-local-notification-clear-dismiss-button/184896/2
+ * Could possibly consider: https://github.com/katzer/cordova-plugin-local-notifications
+ */
+const NOTIFICATION_ACTIONS: {
+  [key in IActionTypeId]: LocalNotificationAction;
+} = {
+  action_1: {
+    title: "Test 1",
+    id: "action_1",
+    requiresAuthentication: false,
+    foreground: true,
+    destructive: true,
+    input: true,
+    inputButtonTitle: "input",
+    inputPlaceholder: "some text",
+  },
+  action_2: {
+    title: "Test 1",
+    id: "action_1",
+    requiresAuthentication: false,
+    foreground: false,
+    destructive: false,
+    input: false,
+    inputButtonTitle: "input",
+    inputPlaceholder: "some text",
+  },
+};
+
+/**
+ * Default settings used where otherwise not specified
+ */
+const NOTIFICATION_DEFAULTS: LocalNotification & {
+  actionTypeId: IActionTypeId;
+} = {
+  id: new Date().getUTCMilliseconds(),
+  title: "PLH Teens",
+  body: "You have a new message waiting for you",
+  sound: null,
+  attachments: null,
+  actionTypeId: "action_1",
+  extra: null,
+  // Note, we don't want android to remove notification as we will handle in db
+  autoCancel: false,
+};
