@@ -4,9 +4,9 @@ export const environment = {
   production: true,
   rapidPro: {
     receiveUrl:
-      "https://rapidpro.idems.international/c/fcm/af89b1b8-e8b7-4e4b-b478-817849dd7982/receive",
+      "https://rapidpro.idems.international/c/fcm/a459e9bf-6462-41fe-9bde-98dbed64e687/receive",
     contactRegisterUrl:
-      "https://rapidpro.idems.international/c/fcm/af89b1b8-e8b7-4e4b-b478-817849dd7982/register",
+      "https://rapidpro.idems.international/c/fcm/a459e9bf-6462-41fe-9bde-98dbed64e687/register",
   },
   FIREBASE_CONFIG,
 };
