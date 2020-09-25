@@ -12,6 +12,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "version": "ts-node --project tsconfig.scripts.json scripts/version.ts",
+    "icon": "ts-node --project tsconfig.scripts.json scripts/icon.ts",
     "populate-netlify-secrets": "echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.prod.ts && echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts"
   },
   "private": true,
@@ -82,6 +83,8 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3",
+    "sharp": "0.26.1",
+    "@types/sharp": "0.26.0",
     "@angular-devkit/architect": "<0.900 || ^0.900.0-0 || ^9.0.0-0",
     "firebase-tools": "^7.12.0",
     "fuzzy": "^0.1.3",
