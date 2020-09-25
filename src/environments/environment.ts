@@ -1,7 +1,3 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 import FIREBASE_CONFIG from "./firebaseConfig";
 
 export const environment = {
@@ -14,6 +10,10 @@ export const environment = {
   },
   FIREBASE_CONFIG,
 };
+
+// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
 
 /*
  * For easier debugging in development mode, you can import the following file
