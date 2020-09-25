@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "version": "ts-node --project tsconfig.scripts.json scripts/version.ts"
+    "version": "ts-node --project tsconfig.scripts.json scripts/version.ts",
+    "icon": "ts-node --project tsconfig.scripts.json scripts/icon.ts"
   },
   "private": true,
   "dependencies": {
@@ -73,7 +74,9 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.3",
+    "sharp": "0.26.1",
+    "@types/sharp": "0.26.0"
   },
   "description": "",
   "cordova": {
