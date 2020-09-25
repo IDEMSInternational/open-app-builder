@@ -1,4 +1,4 @@
-import FIREBASE_CONFIG from "./firebaseConfig";
+import { firebaseConfig } from "./firebaseConfig";
 
 export const environment = {
   production: false,
@@ -8,7 +8,7 @@ export const environment = {
     contactRegisterUrl:
       "https://rapidpro.idems.international/c/fcm/a459e9bf-6462-41fe-9bde-98dbed64e687/register",
   },
-  FIREBASE_CONFIG,
+  firebaseConfig,
 };
 
 // This file can be replaced during build by using the `fileReplacements` array.
