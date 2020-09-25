@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Subject, of, concat, Observable, from } from "rxjs";
 import { filter, first } from "rxjs/operators";
+import { generateRandomId } from "../utils";
 
 @Injectable({
   providedIn: "root",
@@ -72,7 +73,7 @@ export class EventService {
    * TODO - allow passing variable to subscribe to all responses
    */
   publish(event: IEvent) {
-    event.eventId = event.eventId || _randomId();
+    event.eventId = event.eventId || generateRandomId();
     console.debug("[event]", event);
     this.history[event.topic].push(event);
     const response = this.responses.pipe(
@@ -82,9 +83,6 @@ export class EventService {
     this.events[event.topic].next(event);
     return response;
   }
-}
-function _randomId() {
-  return Math.random().toString(36).substring(2);
 }
 
 /**
