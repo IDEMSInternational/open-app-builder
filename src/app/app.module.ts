@@ -35,7 +35,7 @@ const introModules = [
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    AngularFireModule.initializeApp(environment.FIREBASE_CONFIG),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     ...introModules,
   ],

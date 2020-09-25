@@ -1,7 +1,7 @@
 /**
  * Copy this file to `firebaseConfig.ts` and populate with own firebase config
  */
-export default {
+export const firebaseConfig = {
   apiKey: "",
   authDomain: "",
   databaseURL: "",
