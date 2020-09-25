@@ -24,6 +24,9 @@
     "@capacitor/android": "^2.4.1",
     "@capacitor/cli": "^2.4.1",
     "@capacitor/core": "^2.4.1",
+    "@fullcalendar/angular": "^5.3.1",
+    "@fullcalendar/daygrid": "^5.3.2",
+    "@fullcalendar/interaction": "^5.3.1",
     "@ionic-native/core": "^5.0.7",
     "@ionic-native/device": "^5.28.0",
     "@ionic-native/http": "^5.28.0",
@@ -37,12 +40,12 @@
     "core-js": "^2.5.4",
     "dexie": "^3.0.2",
     "dexie-observable": "^3.0.0-beta.9",
+    "firebase": ">= 5.5.7 <8",
     "lottie-web": "^5.7.3",
     "ngx-lottie": "^6.4.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1",
-    "firebase": ">= 5.5.7 <8"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.20",
