@@ -1,6 +1,6 @@
 {
-  "appId": "international.idems.plh.teens_app1",
-  "appName": "Parenting for Lifelong Health",
+  "appId": "international.idems.plh_teens",
+  "appName": "PLH Teens",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
@@ -9,7 +9,7 @@
       "launchShowDuration": 3000
     },
     "CapacitorFirebaseAuth": {
-      "providers": ["google.com", "twitter.com", "facebook.com", "phone"],
+      "providers": ["google.com"],
       "languageCode": "en",
       "nativeAuth": false,
       "permissions": {
@@ -17,5 +17,5 @@
       }
     }
   },
-  "allowNavigation": ["example.org", "*.example.org", "192.0.2.1"]
+  "allowNavigation": []
 }
