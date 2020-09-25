@@ -14,11 +14,11 @@ const iconSizeMap = {
 
 async function resizeIcons() {
     for (let folderName of Object.keys(iconSizeMap)) {
-        console.log(`Resizing icon for ${folderName}, ${iconSizeMap[folderName]} x ${iconSizeMap[folderName]}`);
-        await sharp("./resources/icon.png").resize(iconSizeMap[folderName], iconSizeMap[folderName])
-            .toFile(path.join("./android/app/src/main/res", folderName, "ic_launcher.png"));
-        await sharp("./resources/icon.png").resize(iconSizeMap[folderName], iconSizeMap[folderName])
-            .toFile(path.join("./android/app/src/main/res", folderName, "ic_launcher_round.png"));
+        for (let fileName of ["ic_launcher_foreground.png", "ic_launcher_round.png", "ic_launcher.png"]) {
+            console.log(`Resizing ${fileName} for ${folderName}, ${iconSizeMap[folderName]} x ${iconSizeMap[folderName]}`);
+            await sharp(path.join("./resources", fileName)).resize(iconSizeMap[folderName], iconSizeMap[folderName])
+            .toFile(path.join("./android/app/src/main/res", folderName, fileName));
+        }
     }
 }
 
