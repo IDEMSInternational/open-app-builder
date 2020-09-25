@@ -1,8 +1,10 @@
 <ion-content>
-  <div *ngIf="false && botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
-    <ng-lottie containerClass="bot-lottie" [options]="botAnimOptions">
+  <div *ngIf="botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
+    <ng-lottie *ngIf="character === 'guide'" containerClass="bot-lottie" [options]="botAnimOptions">
     </ng-lottie>
-    <img *ngIf="false" class="still-bot-blob" src="assets/img/coffee_bot_blob1.png">
+    <div *ngIf="character === 'egg'" style="padding-left: 50%">
+      <img src="assets/images/egg_character1.svg">
+    </div>
   </div>
   <ion-content #messagesContent class="bot-messages">
     <div class="messages">

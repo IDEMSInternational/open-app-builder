@@ -7,10 +7,12 @@
     "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build --prod",
+    "build-netlify": "npm run populate-netlify-secrets && npm run build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "version": "ts-node --project tsconfig.scripts.json scripts/version.ts"
+    "version": "ts-node --project tsconfig.scripts.json scripts/version.ts",
+    "populate-netlify-secrets": "echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.prod.ts && echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts"
   },
   "private": true,
   "dependencies": {
