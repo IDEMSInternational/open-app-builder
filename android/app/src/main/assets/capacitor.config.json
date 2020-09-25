@@ -7,6 +7,14 @@
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 3000
+    },
+    "CapacitorFirebaseAuth": {
+      "providers": ["google.com", "twitter.com", "facebook.com", "phone"],
+      "languageCode": "en",
+      "nativeAuth": false,
+      "permissions": {
+        "google": ["profile"]
+      }
     }
   },
   "allowNavigation": ["example.org", "*.example.org", "192.0.2.1"]
