@@ -34,3 +34,7 @@ google-services.json
 
 resources/android
 resources/ios
+yarn.lock
+src/environments/firebaseConfig.ts
+**/*.jks
+.firebase
