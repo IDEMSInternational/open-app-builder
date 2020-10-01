@@ -1,22 +1,18 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Chat</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div *ngIf="botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
-    <ng-lottie containerClass="bot-lottie" [options]="botAnimOptions">
+    <ng-lottie *ngIf="character === 'guide'" containerClass="bot-lottie" [options]="botAnimOptions">
     </ng-lottie>
-    <img *ngIf="false" class="still-bot-blob" src="assets/img/coffee_bot_blob1.png">
+    <div *ngIf="character === 'egg'" style="padding-left: 50%">
+      <img src="assets/images/egg_character1.svg">
+    </div>
   </div>
   <ion-content #messagesContent class="bot-messages">
     <div class="messages">
-      <div class="msg-container bot-msg">
-        <plh-stressed-multi-hand-anim></plh-stressed-multi-hand-anim>
+      <div *ngIf="autoReplyEnabled" class="auto-reply-container">
+        <p>Messages Sent {{messagesSent}}</p>
+        <p>Messages Received {{messagesReceived}}</p>
+        <p>{{debugMsg}}</p>
+        <p>{{stringify(messages[messages.length - 1])}}</p>
       </div>
       <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
       <div *ngFor="let msg of messages"
@@ -54,4 +50,5 @@
   <div *ngIf="showingAllMessages" class="show-all-button" (click)="toggleShowAllMessages()">
     Show Recent Messages
   </div>
+
 </ion-content>

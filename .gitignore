@@ -29,3 +29,12 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+yarn.lock.json
+google-services.json
+
+resources/android
+resources/ios
+yarn.lock
+src/environments/firebaseConfig.ts
+**/*.jks
+.firebase

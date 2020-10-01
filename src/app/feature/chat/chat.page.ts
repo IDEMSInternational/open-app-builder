@@ -8,6 +8,9 @@ import {
 import { AnimationOptions } from "ngx-lottie";
 import { IonContent } from "@ionic/angular";
 import { ChatService, IRapidProMessage } from './chat-service/chat.service';
+import { NotificationService } from 'src/app/shared/services/notification/notification.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IfStmt } from '@angular/compiler';
 
 @Component({
   selector: "app-chat",
@@ -25,12 +28,27 @@ export class ChatPage implements OnInit {
     | "talking"
     | "run-in"
     | "still"
-    | "absent";
+    | "absent" = "walking-in";
   backgroundBlobVisible: boolean = false;
   botAnimOptions: AnimationOptions = {
     loop: false,
     path: "/assets/lottie-animations/Walk_In_Entrance_Pass_v2.json",
   };
+
+  // Used for getting estimates of number of messages sent automatically
+  autoReplyEnabled: boolean = false;
+  autoReplyDelay = 500;
+  autoReplyWord = "N";
+  autoRepeatPhrase = "Repeat simulation";
+  autoEndPhrase = "THE END";
+
+  messagesSent: number = 0;
+  messagesReceived: number = 0;
+  debugMsg: string = "testing???";
+
+  sentResponsesByMessage: { [messageText: string]: string[] } = {};
+
+  triggerMessage: string = "plh_simulation";
 
   @ViewChild("messagesContent", { static: false })
   private messagesContent: IonContent;
@@ -40,27 +58,42 @@ export class ChatPage implements OnInit {
 
   showingAllMessages = false;
 
+  character: "guide" | "egg" = "guide";
+
   constructor(
-    private chatService: ChatService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private notificationService: NotificationService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.chatService.messageSubject
+    this.route.queryParams.subscribe(params => {
+      if(params["character"] && params["character"] === "egg") {
+        this.character = "egg";
+      } else {
+        this.character = "guide";
+      }
+      setTimeout(() => {
+        let triggerMessage = this.character === "guide" ? "guide" : "chat";
+        this.notificationService.sendRapidproMessage(triggerMessage);
+        this.botBlobState = "still";
+      }, 3000);
+    });
+    this.notificationService.messages$
       .asObservable()
-      .subscribe((msg) => {
-        this.onReceiveRapidProMessage(msg);
+      .subscribe((messages) => {
+        console.log("from rapid pro ", messages);
+        if (messages.length > 0) {
+          this.onReceiveRapidProMessage(messages[messages.length - 1]);
+        }
       });
-    setTimeout(() => {
-      this.chatService.sendRapidproMessage("start_demo");
-      this.botBlobState = "still";
-    }, 3000);
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
+    this.messagesReceived += 1;
     let chatMsg: ChatMessage = {
       sender: "bot",
-      text: rapidMsg.body,
+      text: rapidMsg.message
     };
     if (rapidMsg.quick_replies) {
       try {
@@ -81,6 +114,45 @@ export class ChatPage implements OnInit {
       } catch (ex) {
         console.log("Error parsing quick replies", ex);
       }
+    }
+    if (this.autoReplyEnabled) {
+      setTimeout(() => {
+        if (rapidMsg.message.toLowerCase().indexOf(this.autoEndPhrase.toLowerCase()) > -1) {
+          this.debugMsg = "THE END!!";
+        } else if (rapidMsg.message.toLowerCase().indexOf(this.autoRepeatPhrase.toLowerCase()) > -1) {
+          this.debugMsg = "repeating...";
+          this.notificationService.sendRapidproMessage(this.triggerMessage);
+        } else if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
+          this.debugMsg = "flow is stuck. repeating...";
+          this.notificationService.sendRapidproMessage(this.triggerMessage);
+        } else {
+          this.debugMsg = "";
+          if (chatMsg.responseOptions && chatMsg.responseOptions.length > 0) {
+            let responseOption = chatMsg.responseOptions[0];
+            if (!this.sentResponsesByMessage[chatMsg.text]) {
+              this.sentResponsesByMessage[chatMsg.text] = [];
+            } else {
+              let unusedResponses = chatMsg.responseOptions
+                .filter((option) => this.sentResponsesByMessage[chatMsg.text].indexOf(option.text) < 0);
+              if (unusedResponses.length < 1) {
+                const responseIndex = Math.floor(Math.random() * chatMsg.responseOptions.length);
+                if (chatMsg.responseOptions[responseIndex]) {
+                  responseOption = chatMsg.responseOptions[responseIndex];
+                } else {
+                  responseOption = chatMsg.responseOptions[0];
+                }
+              } else {
+                responseOption = unusedResponses[0];
+              }
+            }
+            this.sentResponsesByMessage[chatMsg.text].push(responseOption.text);
+            this.selectResponseOption(responseOption);
+          } else {
+            this.debugMsg = "auto reply: N";
+            this.sendCustomOption(this.autoReplyWord);
+          }
+        }
+      }, this.autoReplyDelay);
     }
     setTimeout(() => {
       this.onReceiveMessage(chatMsg);
@@ -149,7 +221,8 @@ export class ChatPage implements OnInit {
   }
 
   sendCustomOption(text: string) {
-    this.chatService.sendRapidproMessage(text);
+    this.notificationService.sendRapidproMessage(text);
+    this.messagesSent += 1;
     this.onReceiveMessage({
       text: text,
       sender: "user",
@@ -161,7 +234,8 @@ export class ChatPage implements OnInit {
     if (option.customAction) {
       this.doCustomResponseAction(option.customAction);
     }
-    this.chatService.sendRapidproMessage(option.text);
+    this.notificationService.sendRapidproMessage(option.text);
+    this.messagesSent += 1;
     this.onReceiveMessage({
       text: option.text,
       sender: "user",
@@ -176,5 +250,9 @@ export class ChatPage implements OnInit {
       this.messages = this.allMessages;
       this.showingAllMessages = true;
     }
+  }
+
+  stringify(obj: any) {
+    return JSON.stringify(obj);
   }
 }
