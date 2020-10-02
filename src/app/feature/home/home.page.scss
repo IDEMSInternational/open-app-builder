@@ -43,3 +43,32 @@
     height: calc(100vh - 138px);
   }
 }
+
+#guide_left_arm_group {
+  transform: rotate(0deg);
+  transform-origin: 130px 347px;
+
+  &.waving {
+    animation-name: left-arm-waving-attention;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+  }
+}
+
+@keyframes left-arm-waving-attention {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-7deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-7deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
