@@ -1,5 +1,6 @@
 import { Subject, Observable, of } from 'rxjs';
 import { IRapidProMessage } from './chat.service';
+import { RapidProFlowExport } from './rapid-pro-export.model';
 
 export interface ChatFlow {
     sendMessage(msg: string): Observable<any>;
