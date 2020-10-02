@@ -50,7 +50,7 @@ export class ChatPage implements OnInit {
 
   triggerMessage: string = "plh_simulation";
 
-  @ViewChild("messagesContent", { static: false })
+  @ViewChild("messagesContent")
   private messagesContent: IonContent;
   scrollingInterval: any;
 
