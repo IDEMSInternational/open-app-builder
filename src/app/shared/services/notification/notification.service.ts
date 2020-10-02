@@ -1,18 +1,26 @@
 import { Injectable } from "@angular/core";
-import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 import { HTTP } from "@ionic-native/http/ngx";
 import { Device } from "@ionic-native/device/ngx";
 import { Subject, BehaviorSubject } from "rxjs";
-import { environment } from 'src/environments/environment';
+import { environment } from "src/environments/environment";
+import {
+  Plugins,
+  PushNotification,
+  PushNotificationToken,
+  PushNotificationActionPerformed,
+} from "@capacitor/core";
+
+const { PushNotifications } = Plugins;
 
 @Injectable({
   providedIn: "root",
 })
 export class NotificationService {
   token: string;
-  public messages$: BehaviorSubject<IRapidProMessage[]> = new BehaviorSubject([]);
+  public messages$: BehaviorSubject<IRapidProMessage[]> = new BehaviorSubject(
+    []
+  );
   constructor(
-    private firebase: FirebaseX,
     private device: Device,
     private http: HTTP
   ) {
@@ -26,25 +34,46 @@ export class NotificationService {
    * Subscribe to messages.
    */
   public init() {
-    this.firebase
-      .getToken()
-      .then((token) => {
-        this.token = token;
-        console.log(`The token is ${token}`);
-        this.registerRapidproToken(token);
-      }) // save the token server-side and use it to push notifications to this device
-      .catch((error) => console.error("Error getting token", error));
-    this.firebase
-      .onTokenRefresh()
-      .subscribe((token: string) => console.log(`Got a new token ${token}`));
-    this.firebase.onMessageReceived().subscribe((msg) => {
-      this.handleNotification(msg);
+    PushNotifications.requestPermission().then((result) => {
+      if (result.granted) {
+        // Register with Apple / Google to receive push via APNS/FCM
+        PushNotifications.register();
+      } else {
+        // Show some error
+      }
     });
+    PushNotifications.addListener(
+      "registration",
+      (token: PushNotificationToken) => {
+        this.token = token.value;
+        console.log(`The token is ${token.value}`);
+        this.registerRapidproToken(token.value);
+      }
+    );
+
+    PushNotifications.addListener("registrationError", (error: any) => {
+      console.error("Error on registration: " + JSON.stringify(error));
+    });
+
+    PushNotifications.addListener(
+      "pushNotificationReceived",
+      (notification: PushNotification) => {
+        console.log("Push received: " + JSON.stringify(notification));
+        this.handleNotification(notification.data);
+      }
+    );
+
+    PushNotifications.addListener(
+      "pushNotificationActionPerformed",
+      (notification: PushNotificationActionPerformed) => {
+        alert("Push action performed: " + JSON.stringify(notification));
+      }
+    );
   }
 
   handleNotification(message: IRapidProMessage) {
     console.log("message received", message);
-    let newMessages = this.messages$.value;
+    const newMessages = this.messages$.value;
     newMessages.push(message);
     this.messages$.next(newMessages);
   }
@@ -75,9 +104,9 @@ export class NotificationService {
     const urn = this.device.uuid;
     const name = `app-${urn}`;
     const data: IRapidProRegistrationData = {
-      urn: urn,
+      urn,
       fcm_token: token,
-      name: name
+      name,
     };
     try {
       const res = await this.http.post(contactRegisterUrl, data, {});

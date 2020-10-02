@@ -1,0 +1,15 @@
+<ion-content class="ion-padding background-secondary content">
+  <h1>My Gallery</h1>
+  <div class="photo-frames-container">
+    <div
+      *ngFor="let frame of photoFrames, index as i"
+      class="photo-frame-outer"
+      (click)="takePhoto(frame,i)"
+    >
+      <div class="photo-frame-inner">
+        <div class="photo-frame-title" *ngIf="!frame.src">{{frame.title}}</div>
+        <img class="photo-frame-image" *ngIf="frame.src" [src]="frame.src" />
+      </div>
+    </div>
+  </div>
+</ion-content>

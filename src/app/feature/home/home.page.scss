@@ -1,99 +1,74 @@
-#container {
-  text-align: center;
-
+.bg-wall {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background-image: url("~/assets/images/home/home_background1.png");
-  background-position: -20px -60px;
-  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+  background-color: #F3D668;
+  height: 459px;
+  width: 100vw;
+}
+
+.container {
+  position: absolute;
+  background-color: #F8C911;
+  width: 100vw;
   height: 100%;
+  overflow: hidden;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
-#sun {
-  animation: rotate infinite 30s;
+.center-container {
+  width: 100vw;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   z-index: 2;
 }
 
-#clouds {
-  position: absolute;
-  top: 40px;
-  z-index: 3;
-  animation: side-to-side infinite 180s;
-}
-
-#click-here-for-activities {
-  animation: fade-in 1 5s;
-  color: white;
-  position: absolute;
-  left: 80px;
-  bottom: 80px;
-  text-shadow:  4px 4px 5px #222222;
-  font-size: 40px;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  60% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes side-to-side {
-  0% {
-    left: 0px;
-  }
-  20% {
-    left: 400px;
-  }
-  40% {
-    left: -400px;
-  }
-  100% {
-    left: 1px;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
-ion-buttons {
-  padding-left: 10px;
+.room-img {
+  display: block;
+  width: 472px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .home-item-icon {
   max-width: 200px;
   width: 35vw;
   padding: 10px;
+}
+
+@media only screen and (max-width: 400px) {
+  .room-img {
+    width: unset;
+    height: calc(100vh - 138px);
+  }
+}
+
+#guide_left_arm_group {
+  transform: rotate(0deg);
+  transform-origin: 130px 347px;
+
+  &.waving {
+    animation-name: left-arm-waving-attention;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+  }
+}
+
+@keyframes left-arm-waving-attention {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-7deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-7deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
 }

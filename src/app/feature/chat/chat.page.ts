@@ -9,6 +9,8 @@ import { AnimationOptions } from "ngx-lottie";
 import { IonContent } from "@ionic/angular";
 import { ChatService, IRapidProMessage } from './chat-service/chat.service';
 import { NotificationService } from 'src/app/shared/services/notification/notification.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IfStmt } from '@angular/compiler';
 
 @Component({
   selector: "app-chat",
@@ -26,7 +28,7 @@ export class ChatPage implements OnInit {
     | "talking"
     | "run-in"
     | "still"
-    | "absent";
+    | "absent" = "walking-in";
   backgroundBlobVisible: boolean = false;
   botAnimOptions: AnimationOptions = {
     loop: false,
@@ -34,7 +36,7 @@ export class ChatPage implements OnInit {
   };
 
   // Used for getting estimates of number of messages sent automatically
-  autoReplyEnabled: boolean = true;
+  autoReplyEnabled: boolean = false;
   autoReplyDelay = 500;
   autoReplyWord = "N";
   autoRepeatPhrase = "Repeat simulation";
@@ -48,7 +50,7 @@ export class ChatPage implements OnInit {
 
   triggerMessage: string = "plh_simulation";
 
-  @ViewChild("messagesContent", { static: false })
+  @ViewChild("messagesContent")
   private messagesContent: IonContent;
   scrollingInterval: any;
 
@@ -56,12 +58,27 @@ export class ChatPage implements OnInit {
 
   showingAllMessages = false;
 
+  character: "guide" | "egg" = "guide";
+
   constructor(
     private cd: ChangeDetectorRef,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if(params["character"] && params["character"] === "egg") {
+        this.character = "egg";
+      } else {
+        this.character = "guide";
+      }
+      setTimeout(() => {
+        let triggerMessage = this.character === "guide" ? "guide" : "chat";
+        this.notificationService.sendRapidproMessage(triggerMessage);
+        this.botBlobState = "still";
+      }, 3000);
+    });
     this.notificationService.messages$
       .asObservable()
       .subscribe((messages) => {
@@ -70,10 +87,6 @@ export class ChatPage implements OnInit {
           this.onReceiveRapidProMessage(messages[messages.length - 1]);
         }
       });
-    setTimeout(() => {
-      this.notificationService.sendRapidproMessage(this.triggerMessage);
-      this.botBlobState = "still";
-    }, 3000);
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {

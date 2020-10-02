@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "plh-teens-app1": {
+      "hosting": {
+        "app": [
+          "plh-teens-app1"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "plh-teens-app1"
+  }
+}
