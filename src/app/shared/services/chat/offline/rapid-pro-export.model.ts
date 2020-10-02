@@ -1,4 +1,4 @@
-declare namespace RapidProFlowExport {
+export namespace RapidProFlowExport {
 
     export type ActionType = "enter_flow" | "send_msg" | "set_contact_field";
 
