@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ChatFlow, RapidProOfflineFlow } from './chat.flow';
 import { HttpClient } from '@angular/common/http';
+import { RapidProFlowExport } from './rapid-pro-export.model';
 
 @Injectable({
   providedIn: "root"

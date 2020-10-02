@@ -23,7 +23,7 @@ export class StoryViewerPage implements OnInit, AfterViewInit {
   currentSlideIndex: number = 0;
   panelIdToIndex: { [id: string]: number } = {};
 
-  @ViewChild(IonSlides, { static: false }) slides: IonSlides;
+  @ViewChild(IonSlides) slides: IonSlides;
   audioPlayer: AudioPlayer;
   audioInterval: any;
   paused: boolean = true;
