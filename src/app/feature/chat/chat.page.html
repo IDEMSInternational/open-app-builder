@@ -1,4 +1,4 @@
-<ion-content>
+<div class="container">
   <div *ngIf="botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
     <ng-lottie *ngIf="character === 'guide'" containerClass="bot-lottie" [options]="botAnimOptions">
     </ng-lottie>
@@ -6,7 +6,7 @@
       <img src="assets/images/egg_character1.svg">
     </div>
   </div>
-  <ion-content #messagesContent class="bot-messages">
+  <div #messagesContent class="bot-messages">
     <div class="messages">
       <div *ngIf="autoReplyEnabled" class="auto-reply-container">
         <p>Messages Sent {{messagesSent}}</p>
@@ -14,9 +14,10 @@
         <p>{{debugMsg}}</p>
         <p>{{stringify(messages[messages.length - 1])}}</p>
       </div>
-      <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
-      <div *ngFor="let msg of messages"
+      <div *ngFor="let msg of messages; index as i"
         [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'">
+        <div *ngIf="msg.sender === 'bot' && i === 0">
+        </div>
         <div *ngIf="msg.sender === 'bot'">
           <svg width="15" height="20" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15 20V0L0 10L15 20Z" fill="grey" />
@@ -33,8 +34,8 @@
       </div>
     </div>
     <div style="display: block; height: 100px"></div>
-  </ion-content>
-  <ion-content [hidden]="showingAllMessages" class="response-options">
+  </div>
+  <div [hidden]="showingAllMessages" class="response-options">
     <div *ngFor="let option of responseOptions" class="response-option" (click)="selectResponseOption(option)">
       {{option.text}}
     </div>
@@ -42,13 +43,5 @@
       (ngSubmit)="onInputSubmit($event)">
       <input [(ngModel)]="inputValue" class="response-option" name="text-response" placeholder="Type other response...">
     </form>
-  </ion-content>
-  <img [hidden]="showingAllMessages" class="user-blob" src="assets/images/waving_you_blob1.svg">
-  <div *ngIf="!showingAllMessages" class="show-all-button" (click)="toggleShowAllMessages()">
-    Show All Messages
   </div>
-  <div *ngIf="showingAllMessages" class="show-all-button" (click)="toggleShowAllMessages()">
-    Show Recent Messages
-  </div>
-
-</ion-content>
+</div>
