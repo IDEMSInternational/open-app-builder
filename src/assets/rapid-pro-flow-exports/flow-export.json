@@ -1,0 +1,708 @@
+{
+    "campaigns": [],
+    "fields": [],
+    "flows": [
+        {
+            "name": "Emo_check",
+            "uuid": "4cd8286e-2426-45df-9ecc-b00923b548a2",
+            "spec_version": "v1",
+            "language": "english",
+            "type": "type",
+            "nodes": [
+                {
+                    "uuid": "116c7791-e3e9-4bea-959b-280b60da24d3",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "Welcome! How are you feeling today?",
+                            "type": "send_msg",
+                            "quick_replies": [
+                                "Happy",
+                                "Neutral",
+                                "Sad"
+                            ],
+                            "uuid": "cd139d77-2da2-4ef6-ba5b-a048f4fd2a17"
+                        }
+                    ],
+                    "exits": []
+                },
+                {
+                    "uuid": "4dd3a623-8649-4d06-a41c-8dc3cc7e6964",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "Great to hear you are doing well! Why don’t you go talk to Elder? ",
+                            "type": "send_msg",
+                            "quick_replies": [
+                                "Chat to Elder"
+                            ],
+                            "uuid": "01587214-b9e6-4e97-81a2-20f40f225ae9"
+                        }
+                    ],
+                    "exits": []
+                },
+                {
+                    "uuid": "fd5dcf1f-d1da-4086-bd83-9320d812b1f0",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Happy"
+                                ],
+                                "category_uuid": "e77cadf7-a8ae-4ddb-9730-efc3c32f8e05",
+                                "type": "has_any_word",
+                                "uuid": "460f2ef9-60a7-4350-9ba4-e55d05877d4b"
+                            },
+                            {
+                                "arguments": [
+                                    "Neutral"
+                                ],
+                                "category_uuid": "359079a7-aba3-48fe-91d6-2e486e38df55",
+                                "type": "has_any_word",
+                                "uuid": "6e817940-3bc5-4cf1-9bf7-4d4517a8f211"
+                            },
+                            {
+                                "arguments": [
+                                    "Sad"
+                                ],
+                                "category_uuid": "849d4a72-ed0a-467f-929a-72589d105945",
+                                "type": "has_any_word",
+                                "uuid": "1180fdbc-6be0-4732-8494-eeee29e6bb05"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "32970709-f987-4bec-b3d5-406b576b17d7",
+                                "name": "Happy",
+                                "uuid": "e77cadf7-a8ae-4ddb-9730-efc3c32f8e05"
+                            },
+                            {
+                                "exit_uuid": "4dd3a623-8649-4d06-a41c-8dc3cc7e6964",
+                                "name": "Neutral",
+                                "uuid": "359079a7-aba3-48fe-91d6-2e486e38df55"
+                            },
+                            {
+                                "exit_uuid": "4dd3a623-8649-4d06-a41c-8dc3cc7e6964",
+                                "name": "Sad",
+                                "uuid": "849d4a72-ed0a-467f-929a-72589d105945"
+                            }
+                        ],
+                        "operand": "@input.text",
+                        "wait": {
+                            "type": "msg"
+                        }
+                    },
+                    "exits": [
+                        {
+                            "uuid": "32970709-f987-4bec-b3d5-406b576b17d7",
+                            "destination_uuid": "4dd3a623-8649-4d06-a41c-8dc3cc7e6964"
+                        },
+                        {
+                            "uuid": "32970709-f987-4bec-b3d5-406b576b17d7",
+                            "destination_uuid": "4dd3a623-8649-4d06-a41c-8dc3cc7e6964"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "94ebabc1-0b03-467f-9ac7-ca28514ea1a4",
+                    "actions": [
+                        {
+                            "flow": {
+                                "name": "1on1_intro",
+                                "uuid": "ec4a7285-0306-4277-a877-cf389fb6c9e2"
+                            },
+                            "type": "enter_flow",
+                            "uuid": "c961a925-bc51-40c3-a963-76a5e4232dbb"
+                        }
+                    ],
+                    "exits": []
+                },
+                {
+                    "uuid": "dfcc0a81-85b2-4222-b640-a2ddbd3d8935",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Chat to Elder"
+                                ],
+                                "category_uuid": "8f79fee1-0357-4641-a8bd-c6fdb1270731",
+                                "type": "has_any_word",
+                                "uuid": "dbfbf459-afd3-418e-b1a4-2e4468eb60e6"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "b0e21712-bcb0-4e96-ac9d-02f48deadaf8",
+                                "name": "Chat to Elder",
+                                "uuid": "8f79fee1-0357-4641-a8bd-c6fdb1270731"
+                            }
+                        ],
+                        "operand": "@input.text",
+                        "wait": {
+                            "type": "msg"
+                        }
+                    },
+                    "exits": [
+                        {
+                            "uuid": "b0e21712-bcb0-4e96-ac9d-02f48deadaf8",
+                            "destination_uuid": "94ebabc1-0b03-467f-9ac7-ca28514ea1a4"
+                        },
+                        {
+                            "uuid": "b0e21712-bcb0-4e96-ac9d-02f48deadaf8",
+                            "destination_uuid": "94ebabc1-0b03-467f-9ac7-ca28514ea1a4"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "247de76d-7f5c-4f8e-974e-51e866c10ab4",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "I know life can be hard sometimes. Whatever you are feeling, it’s great that you are here! Why don’t you go chat to Friend?",
+                            "type": "send_msg",
+                            "quick_replies": [
+                                "Chat to Friend"
+                            ],
+                            "uuid": "b0b7b7f9-4149-41ae-aba2-8393e3c99fe0"
+                        }
+                    ],
+                    "exits": []
+                },
+                {
+                    "uuid": "2962ffb6-8c06-49cf-8736-338decb4e425",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Happy"
+                                ],
+                                "category_uuid": "6b0210c0-9edb-4011-8ca0-42d08de57aae",
+                                "type": "has_any_word",
+                                "uuid": "7d8c5bc2-3579-4d47-be33-b6b4a545a177"
+                            },
+                            {
+                                "arguments": [
+                                    "Neutral"
+                                ],
+                                "category_uuid": "54525e81-f945-4979-bb72-b66c55b6ecb5",
+                                "type": "has_any_word",
+                                "uuid": "03a435a8-001d-4ce4-9cad-9be887dd63bd"
+                            },
+                            {
+                                "arguments": [
+                                    "Sad"
+                                ],
+                                "category_uuid": "353ae2bf-5e8b-4e47-9089-7082dc75cbad",
+                                "type": "has_any_word",
+                                "uuid": "19e61e56-337e-4394-b673-efdf20d39376"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "247de76d-7f5c-4f8e-974e-51e866c10ab4",
+                                "name": "Happy",
+                                "uuid": "6b0210c0-9edb-4011-8ca0-42d08de57aae"
+                            },
+                            {
+                                "exit_uuid": "247de76d-7f5c-4f8e-974e-51e866c10ab4",
+                                "name": "Neutral",
+                                "uuid": "54525e81-f945-4979-bb72-b66c55b6ecb5"
+                            },
+                            {
+                                "exit_uuid": "247de76d-7f5c-4f8e-974e-51e866c10ab4",
+                                "name": "Sad",
+                                "uuid": "353ae2bf-5e8b-4e47-9089-7082dc75cbad"
+                            }
+                        ],
+                        "operand": "@input.text",
+                        "wait": {
+                            "type": "msg"
+                        }
+                    },
+                    "exits": [
+                        {
+                            "uuid": "8c637fef-f6b7-41ee-aa61-caa5fb652f2f",
+                            "destination_uuid": "247de76d-7f5c-4f8e-974e-51e866c10ab4"
+                        },
+                        {
+                            "uuid": "8c637fef-f6b7-41ee-aa61-caa5fb652f2f",
+                            "destination_uuid": "247de76d-7f5c-4f8e-974e-51e866c10ab4"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "a2e776cc-85bd-43a8-bb54-6d80a70d10e4",
+                    "actions": [
+                        {
+                            "flow": {
+                                "name": "Friend_calm",
+                                "uuid": "b95be38f-a61d-45c6-a7b7-0ae86d754b6d"
+                            },
+                            "type": "enter_flow",
+                            "uuid": "0096c93a-430f-4af6-a70d-491159a3ca41"
+                        }
+                    ],
+                    "exits": []
+                },
+                {
+                    "uuid": "95ca5afd-03dd-4d03-9864-b65ec9e54b25",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Chat to Friend"
+                                ],
+                                "category_uuid": "f1d797e8-3556-44d4-90b9-34756dcd3ab0",
+                                "type": "has_any_word",
+                                "uuid": "1fec3294-3086-47da-8254-d4aff80cb48f"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "003b6a98-f721-4080-bc32-bd55b053289c",
+                                "name": "Chat to Friend",
+                                "uuid": "f1d797e8-3556-44d4-90b9-34756dcd3ab0"
+                            }
+                        ],
+                        "operand": "@input.text",
+                        "wait": {
+                            "type": "msg"
+                        }
+                    },
+                    "exits": [
+                        {
+                            "uuid": "003b6a98-f721-4080-bc32-bd55b053289c",
+                            "destination_uuid": "a2e776cc-85bd-43a8-bb54-6d80a70d10e4"
+                        },
+                        {
+                            "uuid": "003b6a98-f721-4080-bc32-bd55b053289c",
+                            "destination_uuid": "a2e776cc-85bd-43a8-bb54-6d80a70d10e4"
+                        }
+                    ]
+                }
+            ],
+            "_ui": null,
+            "revision": 0,
+            "expire_after_minutes": 60,
+            "metadata": {
+                "revision": 0
+            },
+            "localization": null
+        },
+        {
+            "name": "Friend_calm",
+            "uuid": "af211e5a-6f77-496b-8d19-fc11e8fae836",
+            "spec_version": "v1",
+            "language": "english",
+            "type": "type",
+            "nodes": [
+                {
+                    "uuid": "c5908790-091e-4a62-8f78-c302339c7c04",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "Hi my friend, it’s really good to see you.",
+                            "type": "send_msg",
+                            "quick_replies": [],
+                            "uuid": "03497286-d3ce-4eea-911a-21d153b91626"
+                        }
+                    ],
+                    "exits": [
+                        {
+                            "uuid": "1dd30d59-c3db-4f52-9e9e-86bea4fbae13",
+                            "destination_uuid": "a481c0fd-349b-464b-a38a-7cfba462859a"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "b06389d3-a4ee-4bff-876d-fe3a50d2a798",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "You don’t look too happy today? ",
+                            "type": "send_msg",
+                            "quick_replies": [],
+                            "uuid": "75177504-ee91-4e0d-b7a2-7f585a9b559f"
+                        }
+                    ],
+                    "exits": [
+                        {
+                            "uuid": "e4063d69-2e42-4ee6-af55-97dbe514c182",
+                            "destination_uuid": "a481c0fd-349b-464b-a38a-7cfba462859a"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "dc10ebb5-efd3-4722-a830-c9f8a7de9391",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Sad"
+                                ],
+                                "category_uuid": "c8cf4fd6-bd01-4b1a-876a-d000eb2ab4c2",
+                                "type": "has_any_word",
+                                "uuid": "d690fc70-2fed-41b3-a358-565479c1983b"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "b06389d3-a4ee-4bff-876d-fe3a50d2a798",
+                                "name": "Sad",
+                                "uuid": "c8cf4fd6-bd01-4b1a-876a-d000eb2ab4c2"
+                            }
+                        ],
+                        "operand": "@field.emo_check"
+                    },
+                    "exits": [
+                        {
+                            "uuid": "0c8dce4e-6a29-49e4-81ee-5a83315ff271",
+                            "destination_uuid": "b06389d3-a4ee-4bff-876d-fe3a50d2a798"
+                        },
+                        {
+                            "uuid": "0c8dce4e-6a29-49e4-81ee-5a83315ff271",
+                            "destination_uuid": "b06389d3-a4ee-4bff-876d-fe3a50d2a798"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "65b07525-18a9-40fe-9c5b-b168ebcdb23b",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "You look  happy today!",
+                            "type": "send_msg",
+                            "quick_replies": [],
+                            "uuid": "0ab3f4f1-74cb-406c-8ad2-67cf82c96c8b"
+                        }
+                    ],
+                    "exits": [
+                        {
+                            "uuid": "8fa057f9-dfc6-426a-8b09-4d7a9723bde9",
+                            "destination_uuid": "a481c0fd-349b-464b-a38a-7cfba462859a"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "1ddd09e7-03b4-4907-b3ac-42f8b7326f0d",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Happy"
+                                ],
+                                "category_uuid": "a6cd1af7-34ba-4db5-87f2-6d7e8df02fdc",
+                                "type": "has_any_word",
+                                "uuid": "5561532e-4130-4778-a771-3cedff067ae1"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "65b07525-18a9-40fe-9c5b-b168ebcdb23b",
+                                "name": "Happy",
+                                "uuid": "a6cd1af7-34ba-4db5-87f2-6d7e8df02fdc"
+                            }
+                        ],
+                        "operand": "@field.emo_check"
+                    },
+                    "exits": [
+                        {
+                            "uuid": "34e6148e-0547-424e-9a7a-8ed5caeb5814",
+                            "destination_uuid": "65b07525-18a9-40fe-9c5b-b168ebcdb23b"
+                        },
+                        {
+                            "uuid": "34e6148e-0547-424e-9a7a-8ed5caeb5814",
+                            "destination_uuid": "65b07525-18a9-40fe-9c5b-b168ebcdb23b"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "a481c0fd-349b-464b-a38a-7cfba462859a",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "Do you have 30 seconds? Let’s take a quick pause together. It may help you feel more relaxed and peaceful. ",
+                            "type": "send_msg",
+                            "quick_replies": [
+                                "Yes",
+                                "No"
+                            ],
+                            "uuid": "650818aa-641b-4214-a55e-3cb95b71cd89"
+                        }
+                    ],
+                    "exits": [
+                        {
+                            "uuid": "fd26bf38-adc9-4223-8390-bf9e3a656953",
+                            "destination_uuid": "2cdc86ee-3df7-428b-bdfc-805436af5812"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "cfd4040f-6005-420d-85a2-6c5ce863d64e",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "Sit down, close your eyes and listen to your breath as it goes in and out. Notice how you feel. When you are ready open your eyes again. Try this whenever you are feeling stressed and you need a break to reconnect.",
+                            "type": "send_msg",
+                            "quick_replies": [],
+                            "uuid": "2687dc2a-5e08-4c51-9771-57ceef330d32"
+                        }
+                    ],
+                    "exits": [
+                        {
+                            "uuid": "08dce0cb-0430-4a8f-9d8f-e19aab754e52",
+                            "destination_uuid": "9fb9c1c4-eb2e-4c4c-b592-c6c4caa269f3"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "be481ea0-806b-43ca-b7c3-fb0e80d9bf43",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Yes"
+                                ],
+                                "category_uuid": "3aff4a71-1711-4635-8000-99c792837a59",
+                                "type": "has_any_word",
+                                "uuid": "ced09cba-e7cb-427f-918e-12e6abed7b0c"
+                            },
+                            {
+                                "arguments": [
+                                    "No"
+                                ],
+                                "category_uuid": "aaaf8110-31f1-44a7-8e16-73e285af0531",
+                                "type": "has_any_word",
+                                "uuid": "3c842bfa-c1cb-48c4-82f5-938904b5c21f"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "a6942c58-7571-42f3-a0d7-26179c749994",
+                                "name": "Yes",
+                                "uuid": "3aff4a71-1711-4635-8000-99c792837a59"
+                            },
+                            {
+                                "exit_uuid": "cfd4040f-6005-420d-85a2-6c5ce863d64e",
+                                "name": "No",
+                                "uuid": "aaaf8110-31f1-44a7-8e16-73e285af0531"
+                            }
+                        ],
+                        "operand": "@input.text",
+                        "wait": {
+                            "type": "msg"
+                        }
+                    },
+                    "exits": [
+                        {
+                            "uuid": "a6942c58-7571-42f3-a0d7-26179c749994",
+                            "destination_uuid": "cfd4040f-6005-420d-85a2-6c5ce863d64e"
+                        },
+                        {
+                            "uuid": "a6942c58-7571-42f3-a0d7-26179c749994",
+                            "destination_uuid": "cfd4040f-6005-420d-85a2-6c5ce863d64e"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "9fb9c1c4-eb2e-4c4c-b592-c6c4caa269f3",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "Well done for taking a pause. You can really be proud of yourself, I know how hard you work to look after your family!",
+                            "type": "send_msg",
+                            "quick_replies": [],
+                            "uuid": "1e790ad6-62b3-4d5a-b850-0dadccc3b2c6"
+                        }
+                    ],
+                    "exits": [
+                        {
+                            "uuid": "e119f288-463c-4426-af99-ece069ba3333",
+                            "destination_uuid": "2cdc86ee-3df7-428b-bdfc-805436af5812"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "2cdc86ee-3df7-428b-bdfc-805436af5812",
+                    "actions": [
+                        {
+                            "attachments": [],
+                            "text": "I just saw Elder down the road. He may have some other helpful ideas for you!",
+                            "type": "send_msg",
+                            "quick_replies": [
+                                "Chat to Elder",
+                                "Relaxation activity"
+                            ],
+                            "uuid": "01f43413-5206-4c27-84bc-0450390f0fb4"
+                        }
+                    ],
+                    "exits": []
+                },
+                {
+                    "uuid": "443cfa2c-a4de-40cc-90ad-56c8f39327fa",
+                    "actions": [
+                        {
+                            "flow": {
+                                "name": "1on1_intro",
+                                "uuid": "767140b5-95a5-4bd6-a1b6-577655de807e"
+                            },
+                            "type": "enter_flow",
+                            "uuid": "8e525e57-3145-449c-9e56-2b01f91bf5d7"
+                        }
+                    ],
+                    "exits": []
+                },
+                {
+                    "uuid": "6bf42064-6af4-4f86-a05d-5e16831f8ff4",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Chat to Elder"
+                                ],
+                                "category_uuid": "685df2b9-6c5f-4058-b506-a69004285607",
+                                "type": "has_any_word",
+                                "uuid": "d5d21a50-2a58-4471-9e6b-553463964909"
+                            },
+                            {
+                                "arguments": [
+                                    "Relaxation activity"
+                                ],
+                                "category_uuid": "b54cabea-264d-4839-84ea-44b30ef48551",
+                                "type": "has_any_word",
+                                "uuid": "d0f67d9a-77c3-4c5d-944d-9a5ae867e27b"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "443cfa2c-a4de-40cc-90ad-56c8f39327fa",
+                                "name": "Chat to Elder",
+                                "uuid": "685df2b9-6c5f-4058-b506-a69004285607"
+                            },
+                            {
+                                "exit_uuid": "443cfa2c-a4de-40cc-90ad-56c8f39327fa",
+                                "name": "Relaxation activity",
+                                "uuid": "b54cabea-264d-4839-84ea-44b30ef48551"
+                            }
+                        ],
+                        "operand": "@input.text",
+                        "wait": {
+                            "type": "msg"
+                        }
+                    },
+                    "exits": [
+                        {
+                            "uuid": "3afd8b9e-8eab-4dca-8363-5fd90a2d47cc",
+                            "destination_uuid": "443cfa2c-a4de-40cc-90ad-56c8f39327fa"
+                        },
+                        {
+                            "uuid": "3afd8b9e-8eab-4dca-8363-5fd90a2d47cc",
+                            "destination_uuid": "443cfa2c-a4de-40cc-90ad-56c8f39327fa"
+                        }
+                    ]
+                },
+                {
+                    "uuid": "c2cbc691-28ba-494b-b2af-9331f2d9d01b",
+                    "actions": [
+                        {
+                            "flow": {
+                                "name": "Take a Pause",
+                                "uuid": "fa0de45b-e88d-4bc2-bdb1-3d92d5fd7096"
+                            },
+                            "type": "enter_flow",
+                            "uuid": "2fedfa89-2466-4f83-8b89-acb38b88f6da"
+                        }
+                    ],
+                    "exits": []
+                },
+                {
+                    "uuid": "f5839a50-4c3a-43d8-bef9-bc6e11a85bae",
+                    "actions": [],
+                    "router": {
+                        "type": "switch",
+                        "default_category_uuid": null,
+                        "cases": [
+                            {
+                                "arguments": [
+                                    "Chat to Elder"
+                                ],
+                                "category_uuid": "12916dd9-274f-470f-852d-594a6a73dbc7",
+                                "type": "has_any_word",
+                                "uuid": "3566b4f2-6fc8-42e8-856e-cc6ddc34ec4f"
+                            },
+                            {
+                                "arguments": [
+                                    "Relaxation activity"
+                                ],
+                                "category_uuid": "363bde74-16df-41c0-a64f-f8eff3282347",
+                                "type": "has_any_word",
+                                "uuid": "abca20ee-c3bf-4c61-a92f-01992877f447"
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "exit_uuid": "c2cbc691-28ba-494b-b2af-9331f2d9d01b",
+                                "name": "Chat to Elder",
+                                "uuid": "12916dd9-274f-470f-852d-594a6a73dbc7"
+                            },
+                            {
+                                "exit_uuid": "c2cbc691-28ba-494b-b2af-9331f2d9d01b",
+                                "name": "Relaxation activity",
+                                "uuid": "363bde74-16df-41c0-a64f-f8eff3282347"
+                            }
+                        ],
+                        "operand": "@input.text",
+                        "wait": {
+                            "type": "msg"
+                        }
+                    },
+                    "exits": [
+                        {
+                            "uuid": "f7b51e75-a713-402c-8bc2-61c89051f6c6",
+                            "destination_uuid": "c2cbc691-28ba-494b-b2af-9331f2d9d01b"
+                        },
+                        {
+                            "uuid": "f7b51e75-a713-402c-8bc2-61c89051f6c6",
+                            "destination_uuid": "c2cbc691-28ba-494b-b2af-9331f2d9d01b"
+                        }
+                    ]
+                }
+            ],
+            "_ui": null,
+            "revision": 0,
+            "expire_after_minutes": 60,
+            "metadata": {
+                "revision": 0
+            },
+            "localization": null
+        }
+    ],
+    "groups": [],
+    "site": "",
+    "triggers": [],
+    "version": "0.1"
+}
