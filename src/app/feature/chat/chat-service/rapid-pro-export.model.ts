@@ -1,7 +1,9 @@
 export namespace RapidProFlowExport {
 
+    export type ActionType = "enter_flow" | "send_msg" | "set_contact_field";
+
     export interface Action {
-        type: "enter_flow" | "send_msg" | "set_contact_field";
+        type: ActionType;
         uuid: string;
         quick_replies?: string[];
         text?: string;
@@ -23,26 +25,32 @@ export namespace RapidProFlowExport {
         destination_uuid: string;
         uuid: string;
     }
-    
-    export interface Case {
+
+    export type RouterCaseType = "has_any_word" | "has_number_between" | "has_number_lt" | "has_number_gt";
+
+    export interface RouterCase {
         arguments: string[];
         category_uuid: string;
-        type: "has_any_word" | "has_number_between" | "has_number_lt" | "has_number_gt" ;
+        type: RouterCaseType;
         uuid: string;
     }
-    
+
     export interface Wait {
-        type: string;
+        type: "msg";
+        timeout?: {
+            category_uuid?: string,
+            seconds?: string
+        }
     }
 
     export interface Router {
-        cases: Case[];
+        cases: RouterCase[];
         categories: Category[];
-        default_category_uuid: string;
-        operand: string;
-        result_name: string;
-        type: string;
-        wait: Wait;
+        default_category_uuid?: string;
+        operand?: string;
+        result_name?: string;
+        type: "switch" | string;
+        wait?: Wait;
     }
 
     export interface Localization {
@@ -73,7 +81,8 @@ export namespace RapidProFlowExport {
         actions: Action[];
         exits: Exit[];
         uuid: string;
-        router: Router;
+        router?: Router;
+        rowNumber?: number;
     }
 
     export interface Flow {
