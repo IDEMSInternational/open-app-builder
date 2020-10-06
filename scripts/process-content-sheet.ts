@@ -18,6 +18,7 @@ if (!fs.existsSync(outputFolderPath)) {
 }
 
 interface ConversationExcelRow {
+    _RowNumber: number;
     Type: 'Start_new_flow' | 'Send_message',
     From?: number | string,
     Condition?: string,
@@ -83,8 +84,9 @@ function getFromNodes(row: ConversationExcelRow, rows: ConversationExcelRow[]) {
         .filter((node) => node !== undefined);
 }
 
-function getRoutersFromRow(row: ConversationExcelRow, rows: ConversationExcelRow[], nodesById: { [nodeId: string]: RapidProFlowExport.Node }) {
-    const fromRowsThatExitToRouterNodes = getFromRows(row, rows)
+function getRoutersFromRow(currentRow: ConversationExcelRow, rows: ConversationExcelRow[], nodesById: { [nodeId: string]: RapidProFlowExport.Node }) {
+    const fromRowsThatExitToRouterNodes = getFromRows(currentRow, rows)
+        .filter((row) => rows.indexOf(row) !== rows.indexOf(currentRow) - 1) // Don't want to look at things from the previous row
         .filter((row) => row && row.rapidProNode && row.rapidProNode.exits.length > 0 && row.rapidProNode.exits[0].destination_uuid)
         .map((row) => nodesById[row.rapidProNode.exits[0].destination_uuid])
         .filter((node) => node.router !== undefined);
@@ -99,7 +101,7 @@ function attachToUnattachedCategories(routerNode: RapidProFlowExport.Node, newEx
         .filter((category) => !category.exit_uuid);
     routerNode.exits.push(newExit);
     routerCategoriesWithoutExits.forEach((category) => {
-        category.exit_uuid = newExit.destination_uuid;
+        category.exit_uuid = newExit.uuid;
     });
 }
 
