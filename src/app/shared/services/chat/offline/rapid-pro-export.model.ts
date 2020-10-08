@@ -27,26 +27,30 @@ export namespace RapidProFlowExport {
     }
 
     export type RouterCaseType = "has_any_word" | "has_number_between" | "has_number_lt" | "has_number_gt";
-    
-    export interface Case {
+
+    export interface RouterCase {
         arguments: string[];
         category_uuid: string;
         type: RouterCaseType;
         uuid: string;
     }
-    
+
     export interface Wait {
-        type: string;
+        type: "msg";
+        timeout?: {
+            category_uuid?: string,
+            seconds?: string
+        }
     }
 
     export interface Router {
-        cases: Case[];
+        cases: RouterCase[];
         categories: Category[];
-        default_category_uuid: string;
-        operand: string;
-        result_name: string;
-        type: string;
-        wait: Wait;
+        default_category_uuid?: string;
+        operand?: string;
+        result_name?: string;
+        type: "switch" | string;
+        wait?: Wait;
     }
 
     export interface Localization {
@@ -77,7 +81,8 @@ export namespace RapidProFlowExport {
         actions: Action[];
         exits: Exit[];
         uuid: string;
-        router: Router;
+        router?: Router;
+        rowNumber?: number;
     }
 
     export interface Flow {
