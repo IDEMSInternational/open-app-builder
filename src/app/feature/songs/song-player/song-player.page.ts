@@ -25,7 +25,7 @@ export class SongPlayerPage implements OnInit {
   lyricPerson1Color: string = "white";
   lyricPerson2Color: string = "white";
 
-  @ViewChild("audioElem", { static: false }) audioVC: { nativeElement: HTMLAudioElement };
+  @ViewChild("audioElem") audioVC: { nativeElement: HTMLAudioElement };
 
   paused: boolean = false;
 
