@@ -1,37 +1,29 @@
-<ion-app>
-  <ion-menu side="start" menuId="main-side-menu" contentId="main-content">
+<ion-app *ngIf="skipTutorial">
+  <ion-menu #menu side="start" menuId="main-side-menu" contentId="main-content">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>PLH App</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list>
-        <ion-item (click)="clickOnMenuItem('home')">Home</ion-item>
-        <ion-item>Progress</ion-item>
-        <ion-item (click)="clickOnMenuItem('activities')">Fun Activities</ion-item>
-        <ion-item (click)="clickOnMenuItem('family')">My Family</ion-item>
-        <ion-item (click)="clickOnMenuItem('about')">About PLH App</ion-item>
+      <ion-list
+        style="height: 100%; display: flex; flex-direction: column"
+        (click)="menu.close()"
+      >
+        <ion-item routerLink="/">Home</ion-item>
+        <!-- <ion-item>Progress</ion-item> -->
+        <ion-item routerLink="activities">Fun Activities</ion-item>
+        <!-- <ion-item routerLink="family">My Family</ion-item> -->
+        <ion-item routerLink="about">About PLH App</ion-item>
+        <div style="flex: 1"></div>
+        <ion-item routerLink="privacy">Privacy Policy</ion-item>
+        <ion-item routerLink="app-terms">App Terms</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
-  <ion-router-outlet id="main-content"></ion-router-outlet>
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="home">
-        <ion-icon name="home"></ion-icon>
-        <ion-label>Home</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="goals">
-        <ion-icon name="star"></ion-icon>
-        <ion-label>Goals</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="activities">
-        <ion-icon name="football-outline"></ion-icon>
-        <ion-label>Activities</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+  <!-- Sit global header above main content view -->
+  <plh-main-header></plh-main-header>
+  <div class="route-container">
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </div>
 </ion-app>
