@@ -136,19 +136,19 @@ export class RapidProOfflineFlow implements ChatFlow {
         this.enterNode(this.getNodeById(matchingExit.destination_uuid));
     }
 
-    private matchHasNumberGreaterThanCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): boolean {
+    private matchHasNumberGreaterThanCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
         let min = Number.parseFloat(routerCase.arguments[0]);
         let inputNumber = Number.parseFloat(incomingMsg);
         return (min !== NaN && inputNumber !== NaN && inputNumber > min);
     }
 
-    private matchHasNumberLessThanCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): boolean {
+    private matchHasNumberLessThanCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
         let max = Number.parseFloat(routerCase.arguments[0]);
         let inputNumber = Number.parseFloat(incomingMsg);
         return (max !== NaN && inputNumber !== NaN && inputNumber < max);
     }
 
-    private matchHasNumberBetweenCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): boolean {
+    private matchHasNumberBetweenCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
         let rangeNumbers = routerCase.arguments.map((arg) => Number.parseFloat(arg)).sort((a, b) => a - b);
         let inputNumber = Number.parseFloat(incomingMsg);
         if (rangeNumbers[0] !== NaN && rangeNumbers[1] !== NaN && inputNumber !== NaN) {
@@ -159,7 +159,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         return false;
     }
 
-    private matchHasAnyWordCase(routerCase: RapidProFlowExport.Case, incomingMsg: string): boolean {
+    private matchHasAnyWordCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
         let matchStrings = [];
         for (let arg of routerCase.arguments) {
             matchStrings = matchStrings.concat(arg.toLowerCase().split(" "));
