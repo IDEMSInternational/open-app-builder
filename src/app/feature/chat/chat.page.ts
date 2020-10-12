@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IfStmt } from '@angular/compiler';
 import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/shared/services/chat/chat-msg.model';
 import { OfflineChatService } from 'src/app/shared/services/chat/offline/offline-chat.service';
+import { OnlineChatService } from 'src/app/shared/services/chat/online/online-chat.service';
 
 @Component({
   selector: "app-chat",
@@ -56,7 +57,7 @@ export class ChatPage implements OnInit {
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private chatService: OfflineChatService
+    private chatService: OnlineChatService
   ) {
   }
 
