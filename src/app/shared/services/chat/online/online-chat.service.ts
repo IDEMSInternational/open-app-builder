@@ -7,7 +7,7 @@ import { ChatService } from '../chat.service';
 @Injectable({
   providedIn: 'root'
 })
-export class OnlineChatServiceService implements ChatService {
+export class OnlineChatService implements ChatService {
 
   public messages$: BehaviorSubject<ChatMessage[]> = new BehaviorSubject([]);
 
