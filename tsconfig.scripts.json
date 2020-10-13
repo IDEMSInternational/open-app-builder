@@ -10,6 +10,6 @@
   },
   "include": [
     "scripts/*",
-    "src/app/feature/chat/chat-service/rapid-pro-export.model.ts"
+    "src/app/shared/chat/chat-service/rapid-pro-export.model.ts"
   ]
 }
