@@ -14,7 +14,7 @@
     "version": "ts-node --project tsconfig.scripts.json scripts/version.ts",
     "icon": "ts-node --project tsconfig.scripts.json scripts/icon.ts",
     "populate-netlify-secrets": "echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.prod.ts && echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts",
-    "process-content-sheet": "ts-node --project tsconfig.scripts.json scripts/process-content-sheet.ts",
+    "process-content-spreadsheet": "ts-node --project tsconfig.scripts.json scripts/plh-spreadsheet/process-content-spreadsheet.ts",
     "test-scripts": "jasmine-ts --project tsconfig.scripts.json --config=scripts.jasmine.json"
   },
   "private": true,
