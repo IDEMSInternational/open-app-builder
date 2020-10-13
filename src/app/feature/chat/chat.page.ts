@@ -1,16 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from "@angular/core";
-import {
-  ChatMessage,
-  ChatResponseOption,
-  ResponseCustomAction,
-  mockMessageGenerator,
-} from "./message.model";
 import { AnimationOptions } from "ngx-lottie";
 import { IonContent } from "@ionic/angular";
-import { ChatService, IRapidProMessage } from './chat-service/chat.service';
-import { NotificationService } from 'src/app/shared/services/notification/notification.service';
+import { IRapidProMessage, NotificationService } from 'src/app/shared/services/notification/notification.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IfStmt } from '@angular/compiler';
+import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/shared/services/chat/chat-msg.model';
+import { OfflineChatService } from 'src/app/shared/services/chat/offline/offline-chat.service';
+import { OnlineChatService } from 'src/app/shared/services/chat/online/online-chat.service';
 
 @Component({
   selector: "app-chat",
@@ -50,21 +46,20 @@ export class ChatPage implements OnInit {
 
   triggerMessage: string = "plh_simulation";
 
-  @ViewChild("messagesContent")
-  private messagesContent: IonContent;
   scrollingInterval: any;
 
   inputValue: string = "";
 
-  showingAllMessages = false;
+  showingAllMessages = true;
 
   character: "guide" | "egg" = "guide";
 
   constructor(
     private cd: ChangeDetectorRef,
-    private notificationService: NotificationService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private chatService: OnlineChatService
+  ) {
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -73,18 +68,13 @@ export class ChatPage implements OnInit {
       } else {
         this.character = "guide";
       }
-      setTimeout(() => {
-        let triggerMessage = this.character === "guide" ? "guide" : "chat";
-        this.notificationService.sendRapidproMessage(triggerMessage);
-        this.botBlobState = "still";
-      }, 3000);
     });
-    this.notificationService.messages$
+    this.chatService.messages$
       .asObservable()
       .subscribe((messages) => {
-        console.log("from rapid pro ", messages);
+        console.log("from chat service ", messages);
         if (messages.length > 0) {
-          this.onReceiveRapidProMessage(messages[messages.length - 1]);
+          this.onNewMessage(messages[messages.length - 1]);
         }
       });
   }
@@ -121,10 +111,16 @@ export class ChatPage implements OnInit {
           this.debugMsg = "THE END!!";
         } else if (rapidMsg.message.toLowerCase().indexOf(this.autoRepeatPhrase.toLowerCase()) > -1) {
           this.debugMsg = "repeating...";
-          this.notificationService.sendRapidproMessage(this.triggerMessage);
+          this.chatService.sendMessage({
+            sender: "user",
+            text: this.triggerMessage
+          });
         } else if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
           this.debugMsg = "flow is stuck. repeating...";
-          this.notificationService.sendRapidproMessage(this.triggerMessage);
+          this.chatService.sendMessage({
+            sender: "user",
+            text: this.triggerMessage
+          });
         } else {
           this.debugMsg = "";
           if (chatMsg.responseOptions && chatMsg.responseOptions.length > 0) {
@@ -155,11 +151,11 @@ export class ChatPage implements OnInit {
       }, this.autoReplyDelay);
     }
     setTimeout(() => {
-      this.onReceiveMessage(chatMsg);
+      this.onNewMessage(chatMsg);
     });
   }
 
-  onReceiveMessage(message: ChatMessage) {
+  onNewMessage(message: ChatMessage) {
     console.log(
       "Got to the bit where I do something with the messages!",
       message
@@ -186,7 +182,6 @@ export class ChatPage implements OnInit {
     } else {
       this.messages = this.allMessages.slice(this.allMessages.length - 2);
     }
-    this.messagesContent.scrollToBottom(2000);
     this.cd.detectChanges();
   }
 
@@ -221,12 +216,15 @@ export class ChatPage implements OnInit {
   }
 
   sendCustomOption(text: string) {
-    this.notificationService.sendRapidproMessage(text);
-    this.messagesSent += 1;
-    this.onReceiveMessage({
+    this.onNewMessage({
       text: text,
       sender: "user",
     });
+    this.chatService.sendMessage({
+      sender: "user",
+      text: text
+    });
+    this.messagesSent += 1;
   }
 
   selectResponseOption(option: ChatResponseOption) {
@@ -234,12 +232,16 @@ export class ChatPage implements OnInit {
     if (option.customAction) {
       this.doCustomResponseAction(option.customAction);
     }
-    this.notificationService.sendRapidproMessage(option.text);
-    this.messagesSent += 1;
-    this.onReceiveMessage({
+    this.onNewMessage({
       text: option.text,
       sender: "user",
     });
+    this.chatService.sendMessage({
+      sender: "user",
+      text: option.text
+    });
+    this.messagesSent += 1;
+    
   }
 
   toggleShowAllMessages() {
