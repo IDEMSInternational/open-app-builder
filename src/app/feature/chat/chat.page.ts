@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef, ViewChild, OnDestroy } from "@angular/core";
 import { AnimationOptions } from "ngx-lottie";
 import { IonContent } from "@ionic/angular";
 import { IRapidProMessage, NotificationService } from 'src/app/shared/services/notification/notification.service';
@@ -7,13 +7,14 @@ import { IfStmt } from '@angular/compiler';
 import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/shared/services/chat/chat-msg.model';
 import { OfflineChatService } from 'src/app/shared/services/chat/offline/offline-chat.service';
 import { OnlineChatService } from 'src/app/shared/services/chat/online/online-chat.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: "app-chat",
   templateUrl: "./chat.page.html",
   styleUrls: ["./chat.page.scss"],
 })
-export class ChatPage implements OnInit {
+export class ChatPage implements OnInit, OnDestroy {
   messages: ChatMessage[] = [];
   allMessages: ChatMessage[] = [];
   responseOptions: ChatResponseOption[] = [];
@@ -53,6 +54,7 @@ export class ChatPage implements OnInit {
   showingAllMessages = true;
 
   character: "guide" | "egg" = "guide";
+  messageSubscription: Subscription;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -68,8 +70,9 @@ export class ChatPage implements OnInit {
       } else {
         this.character = "guide";
       }
+      this.sendCustomOption(this.character === "guide" ? "guide" : "chat");
     });
-    this.chatService.messages$
+    this.messageSubscription = this.chatService.messages$
       .asObservable()
       .subscribe((messages) => {
         console.log("from chat service ", messages);
@@ -77,6 +80,10 @@ export class ChatPage implements OnInit {
           this.onNewMessage(messages[messages.length - 1]);
         }
       });
+  }
+
+  ngOnDestroy() {
+    this.messageSubscription.unsubscribe();
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
