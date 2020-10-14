@@ -10,19 +10,21 @@ import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service'
 })
 export class ToolboxPage implements OnInit {
 
-  toolboxTopics: ToolboxTopicMetadata[] = [];
+  toolboxTopicMetadatas: ToolboxTopicMetadata[] = [];
 
   constructor(private toolboxService: ToolboxService, private router: Router) {
     this.toolboxService.getTopicMetadatas().subscribe((topics) => {
-      this.toolboxTopics = topics;
+      this.toolboxTopicMetadatas = topics;
     });
   }
 
   ngOnInit() {
   }
 
-  onClickTopic(type: ToolboxTopicType) {
-    this.router.navigateByUrl("/toolbox/topic/" + type);
+  onClickTopic(topicMetadata: ToolboxTopicMetadata) {
+    if (topicMetadata.unlocked) {
+      this.router.navigateByUrl("/toolbox/topic/" + topicMetadata.type);
+    }
   }
 
 }
