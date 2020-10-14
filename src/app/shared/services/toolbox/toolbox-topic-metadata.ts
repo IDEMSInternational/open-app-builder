@@ -1,6 +1,6 @@
-import { ToolboxTopic } from './toolbox.model';
+import { ToolboxTopicMetadata } from './toolbox.model';
 
-export const toolboxTopicNames: ToolboxTopic[] = [
+export const toolboxTopicNames: ToolboxTopicMetadata[] = [
     {
         type: "ONE_ON_ONE_TIME",
         languageCode: "en",

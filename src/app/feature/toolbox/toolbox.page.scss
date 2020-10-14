@@ -1,0 +1,17 @@
+.toolbox-button {
+
+    border-radius: 20px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.384);
+    padding: 20px;
+    margin: 14px;
+
+    .toolbox-button-label {
+        color: white;
+        font-size: 24px;
+    }
+
+}
+
+ion-content {
+    --ion-background-color:#F3D668; 
+}
