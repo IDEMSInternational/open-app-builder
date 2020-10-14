@@ -7,18 +7,20 @@ export type ToolboxTopicType = "ONE_ON_ONE_TIME"
     | "PROBLEM_SOLVING"
     | "RISK_MAPPING_AND_DEALING_WITH_CRISIS"
 
-export interface ToolboxTopic {
+export interface ToolboxTopicMetadata {
     type: ToolboxTopicType,
     languageCode: string,
     name: string,
     unlocked?: boolean,
     buttonColor?: string,
-    pages?: ToolboxPage[]
 }
 
-export type ToolboxContentType = ""
+export type ToolboxTopic = {
+    metadata: ToolboxTopicMetadata,
+    contentSections: ToolboxSection[]
+}
 
-export interface ToolboxPage {
+export interface ToolboxSection {
     title: string,
     elements: ToolboxElement[]
 }
