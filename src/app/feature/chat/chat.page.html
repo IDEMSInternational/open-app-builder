@@ -35,11 +35,11 @@
     </div>
     <div style="display: block; height: 100px"></div>
   </div>
-  <div [hidden]="showingAllMessages" class="response-options">
+  <div class="response-options">
     <div *ngFor="let option of responseOptions" class="response-option" (click)="selectResponseOption(option)">
       {{option.text}}
     </div>
-    <form *ngIf="messages.length > 0 && messages[messages.length - 1].sender === 'bot'"
+    <form *ngIf="true"
       (ngSubmit)="onInputSubmit($event)">
       <input [(ngModel)]="inputValue" class="response-option" name="text-response" placeholder="Type other response...">
     </form>
