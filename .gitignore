@@ -38,3 +38,8 @@ yarn.lock
 src/environments/firebaseConfig.ts
 **/*.jks
 .firebase
+
+/scripts/input
+/scripts/output
+/scripts/plh-spreadsheet/input
+/scripts/plh-spreadsheet/output
