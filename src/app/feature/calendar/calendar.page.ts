@@ -30,9 +30,6 @@ export class CalendarPage implements OnInit, OnDestroy, AfterViewInit {
     contentHeight: "100%",
     viewHeight: "100%",
     headerToolbar: { start: "title", center: "", end: "prev,next" },
-    dateClick: (d) => {
-      console.log("date clicked", d);
-    },
     events: [
       {
         id: "a",
