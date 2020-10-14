@@ -15,11 +15,10 @@ export class OnlineChatService implements ChatService {
   constructor(private notificationService: NotificationService, private toolboxService: ToolboxService) {
     this.notificationService.messages$.subscribe((messages) => {
       let lastMessage = messages[messages.length - 1];
-      if (!this.isVisibleMessage(lastMessage)) {
+      if (this.isControlMessage(lastMessage)) {
         this.executeControlMessage(lastMessage);
       }
       let chatMessages = messages
-        .filter(this.isVisibleMessage)
         .map(this.convertFromRapidProMsg);
       this.messages$.next(chatMessages);
     },
@@ -32,12 +31,12 @@ export class OnlineChatService implements ChatService {
     return from(this.notificationService.sendRapidproMessage(message.text));
   }
 
-  private isVisibleMessage(rpMsg: IRapidProMessage): boolean {
-    return rpMsg.message.indexOf("UNLOCK_TOPIC,") < -1;
+  private isControlMessage(rpMsg: IRapidProMessage): boolean {
+    return rpMsg.message.indexOf("UNLOCK_TOPIC,") > -1;
   }
 
   private executeControlMessage(rpMsg: IRapidProMessage) {
-    if (rpMsg.message.indexOf("UNLOCK_TOPIC,") < -1) {
+    if (rpMsg.message.indexOf("UNLOCK_TOPIC,") > -1) {
       let topicTypeString = rpMsg.message.split(",")[1];
       this.toolboxService.getTopicMetadatas().subscribe((topicMetadatas) => {
         let topicMetadata = topicMetadatas.find((tmd) => tmd.type === topicTypeString);
