@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { oneOnOneTimeElements } from './one-one-one-time';
 import { toolboxTopicNames } from './toolbox-topic-metadata';
-import { ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from './toolbox.model';
+import { ToolboxElement, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from './toolbox.model';
 
 const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
 
@@ -25,6 +26,18 @@ export class ToolboxService {
     let topicMetadata: ToolboxTopicMetadata = toolboxTopicNames
       .map((topicMetadata) => ({ ...topicMetadata, unlocked: false }))
       .find((topicMetadata) => topicMetadata.type === type)
+    if (topicMetadata.type === "ONE_ON_ONE_TIME") {
+      
+      return of({
+        metadata: topicMetadata,
+        contentSections: [
+          {
+            title: "One on One Time Tips",
+            elements: oneOnOneTimeElements
+          }
+        ]
+      });
+    }
     return of({
       metadata: topicMetadata,
       contentSections: []

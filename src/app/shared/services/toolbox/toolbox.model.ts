@@ -44,7 +44,9 @@ export type ToolboxTextElement = {
     text: string
 }
 
-export type ToolboxElement = ToolboxListElement | ToolboxCoreTipElement | ToolboxTextElement
+export type ToolboxElementType = "LIST" | "CORE_TIP" | "TEXT"
+
+export type ToolboxElement = { type: ToolboxElementType } & ToolboxListElement | ToolboxCoreTipElement | ToolboxTextElement
 
 export interface ToolboxExport {
     topics: ToolboxTopic[]
