@@ -1,7 +1,7 @@
 import { Dictionary } from '@fullcalendar/angular';
-import { toolboxTopicNames } from 'src/app/shared/services/toolbox/toolbox-topic-metadata';
-import { ToolboxExport, ToolboxSection, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from '../../src/app/shared/services/toolbox/toolbox.model';
-import { ToolboxExcelSheet } from './plh-spreadsheet.model';
+import { toolboxTopicNames } from '../../src/app/shared/services/toolbox/toolbox-topic-metadata';
+import { ToolboxElement, ToolboxExport, ToolboxSection, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from '../../src/app/shared/services/toolbox/toolbox.model';
+import { ToolboxExcelRow, ToolboxExcelSheet } from './plh-spreadsheet.model';
 
 export class ToolboxTranslator {
 
@@ -20,6 +20,7 @@ export class ToolboxTranslator {
                         contentSections: []
                     }
                 }
+                topicByType[topicMetadata.type].contentSections.push(this.sheetToContentSection(sheet));
             }
         }
         let topicTypes: ToolboxTopicType[] = Object.keys(topicByType) as ToolboxTopicType[];
@@ -29,9 +30,75 @@ export class ToolboxTranslator {
     }
 
     public sheetToContentSection(sheet: ToolboxExcelSheet): ToolboxSection {
+        let elements: ToolboxElement[] = [];
+        let title = sheet.sheetName;
+        let listElement: ToolboxElement;
+        for (let row of sheet.rows) {
+            switch (row.Type) {
+                case "Title": {
+                    title = row.MessageText;
+                    break;
+                }
+                case "Core_tip": {
+                    elements.push({
+                        type: "CORE_TIP",
+                        text: row.MessageText
+                    });
+                    break;
+                }
+                case "List_intro": {
+                    listElement = this.createEmptyList();
+                    listElement.intro = row.MessageText;
+                    break;
+                }
+                case "End_list": {
+                    if (listElement) {
+                        listElement.items = listElement.items
+                            .filter((item) => item.body.length > 0 || item.heading.length > 0)
+                        elements.push(listElement);
+                    }
+                    listElement = null;
+                    break;
+                }
+                case "List_item": {
+                    if (!listElement) {
+                        listElement = this.createEmptyList();
+                    }
+                    listElement.items.push({
+                        heading: row.MessageText,
+                        body: ""
+                    });
+                    break;
+                }
+                case "Text":
+                default: {
+                    if (listElement) {
+                        const lastItem = listElement.items[listElement.items.length - 1];
+                        if (lastItem.body.length > 0) {
+                            lastItem.body += "\n";
+                        }
+                        lastItem.body += row.MessageText;
+                    } else {
+                        elements.push({
+                            type: "TEXT",
+                            text: row.MessageText
+                        });
+                    }
+                }
+            }
+        }
         return {
-            elements: [],
+            elements: elements,
             title: sheet.sheetName
+        };
+    }
+
+    private createEmptyList(): ToolboxElement {
+        return {
+            type: "LIST",
+            intro: "",
+            items: [
+            ]
         };
     }
 
