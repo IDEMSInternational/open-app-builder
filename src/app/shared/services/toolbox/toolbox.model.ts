@@ -25,28 +25,17 @@ export interface ToolboxSection {
     elements: ToolboxElement[]
 }
 
-export type ToolboxListElement = {
-    type: "LIST",
-    intro: string,
-    items: {
+export type ToolboxElementType = "LIST" | "CORE_TIP" | "TEXT"
+
+export type ToolboxElement = {
+    type: ToolboxElementType,
+    intro?: string,
+    text?: string,
+    items?: {
         heading: string,
         body: string
     }[]
 }
-
-export type ToolboxCoreTipElement = {
-    type: "CORE_TIP",
-    text: string
-}
-
-export type ToolboxTextElement = {
-    type: "TEXT",
-    text: string
-}
-
-export type ToolboxElementType = "LIST" | "CORE_TIP" | "TEXT"
-
-export type ToolboxElement = { type: ToolboxElementType } & ToolboxListElement | ToolboxCoreTipElement | ToolboxTextElement
 
 export interface ToolboxExport {
     topics: ToolboxTopic[]
