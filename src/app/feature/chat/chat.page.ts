@@ -70,7 +70,9 @@ export class ChatPage implements OnInit, OnDestroy {
       } else {
         this.character = "guide";
       }
-      this.sendCustomOption(this.character === "guide" ? "guide" : "chat");
+      setTimeout(() => {
+        this.sendCustomOption(this.character === "guide" ? "guide" : "chat");
+      }, 500);
     });
     this.messageSubscription = this.chatService.messages$
       .asObservable()
