@@ -1,13 +1,46 @@
+import { Dictionary } from '@fullcalendar/angular';
+import { toolboxTopicNames } from 'src/app/shared/services/toolbox/toolbox-topic-metadata';
+import { ToolboxExport, ToolboxSection, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from '../../src/app/shared/services/toolbox/toolbox.model';
 import { ToolboxExcelSheet } from './plh-spreadsheet.model';
-import { ToolboxContent } from './toolbox-content.model';
 
 export class ToolboxTranslator {
 
-    public from(toolboxSheets: ToolboxExcelSheet[]): ToolboxContent {
-        return {};
+    private getTopicMetadata(id: string): ToolboxTopicMetadata {
+        return toolboxTopicNames.find((topicMetadata) => topicMetadata.type === id);
     }
-    
-    public to(toolboxContent: ToolboxContent): ToolboxExcelSheet[] {
+
+    public from(toolboxSheets: ToolboxExcelSheet[]): ToolboxExport {
+        let topicByType: { [type: string]: ToolboxTopic } = {};
+        for (let sheet of toolboxSheets) {
+            let topicMetadata = this.getTopicMetadata(sheet.topicId);
+            if (topicMetadata) {
+                if (!topicByType[topicMetadata.type]) {
+                    topicByType[topicMetadata.type] = {
+                        metadata: topicMetadata,
+                        contentSections: []
+                    }
+                }
+            }
+        }
+        let topicTypes: ToolboxTopicType[] = Object.keys(topicByType) as ToolboxTopicType[];
+        return {
+            topics: topicTypes.map((type) => topicByType[type])
+        };
+    }
+
+    public sheetToContentSection(sheet: ToolboxExcelSheet): ToolboxSection {
+        let topic: ToolboxTopic = {
+            metadata: metadata,
+            contentSections: []
+        };
+        for (let row of sheet.rows) {
+            switch (row.Type) {
+                case "Title": 
+            }
+        }
+    }
+
+    public to(toolboxExport: ToolboxExport): ToolboxExcelSheet[] {
         return [];
     }
 
