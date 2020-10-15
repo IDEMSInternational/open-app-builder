@@ -29,15 +29,10 @@ export class ToolboxTranslator {
     }
 
     public sheetToContentSection(sheet: ToolboxExcelSheet): ToolboxSection {
-        let topic: ToolboxTopic = {
-            metadata: metadata,
-            contentSections: []
+        return {
+            elements: [],
+            title: sheet.sheetName
         };
-        for (let row of sheet.rows) {
-            switch (row.Type) {
-                case "Title": 
-            }
-        }
     }
 
     public to(toolboxExport: ToolboxExport): ToolboxExcelSheet[] {
