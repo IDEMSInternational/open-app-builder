@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { oneOnOneTimeElements } from './one-one-one-time';
 import { toolboxTopicNames } from './toolbox-topic-metadata';
-import { ToolboxElement, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from './toolbox.model';
+import { ToolboxElement, ToolboxExport, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from './toolbox.model';
 
 const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
 
@@ -12,9 +14,9 @@ const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
 })
 export class ToolboxService {
 
-  
 
-  constructor(private localStorageService: LocalStorageService) { }
+
+  constructor(private localStorageService: LocalStorageService, private http: HttpClient) { }
 
   getTopicMetadatas(): Observable<ToolboxTopicMetadata[]> {
     let toolboxTopicMetadatas: ToolboxTopicMetadata[] = toolboxTopicNames
@@ -22,26 +24,24 @@ export class ToolboxService {
     return of(toolboxTopicMetadatas);
   }
 
-  getTopic(type: ToolboxTopicType): Observable<ToolboxTopic> {
+  public getTopic(type: ToolboxTopicType): Observable<ToolboxTopic> {
     let topicMetadata: ToolboxTopicMetadata = toolboxTopicNames
       .map((topicMetadata) => ({ ...topicMetadata, unlocked: false }))
-      .find((topicMetadata) => topicMetadata.type === type)
-    if (topicMetadata.type === "ONE_ON_ONE_TIME") {
-      
-      return of({
-        metadata: topicMetadata,
-        contentSections: [
-          {
-            title: "One on One Time Tips",
-            elements: oneOnOneTimeElements
-          }
-        ]
-      });
-    }
-    return of({
-      metadata: topicMetadata,
-      contentSections: []
-    });
+      .find((topicMetadata) => topicMetadata.type === type);
+
+    return this.http.get("assets/sheet-content/toolbox-export.json").pipe(map((exportObject: ToolboxExport) => {
+      console.log("Toolbox export", exportObject);
+      let exportTopic = exportObject.topics.find((topic) => topic.metadata.type === topicMetadata.type);
+      if (exportTopic) {
+        exportTopic.metadata = topicMetadata;
+        return exportTopic;
+      } else {
+        return {
+          metadata: topicMetadata,
+          contentSections: []
+        };
+      }
+    }));
   }
 
   isTopicUnlocked(type: ToolboxTopicType) {

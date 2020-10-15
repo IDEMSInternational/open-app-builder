@@ -89,7 +89,7 @@ export class ToolboxTranslator {
         }
         return {
             elements: elements,
-            title: sheet.sheetName
+            title: title
         };
     }
 
