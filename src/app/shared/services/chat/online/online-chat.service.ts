@@ -14,17 +14,21 @@ export class OnlineChatService implements ChatService {
 
   constructor(private notificationService: NotificationService, private toolboxService: ToolboxService) {
     this.notificationService.messages$.subscribe((messages) => {
-      let lastMessage = messages[messages.length - 1];
-      if (this.isControlMessage(lastMessage)) {
-        this.executeControlMessage(lastMessage);
+      if (messages.length > 0) {
+        let lastMessage = messages[messages.length - 1];
+        if (this.isControlMessage(lastMessage)) {
+          this.executeControlMessage(lastMessage);
+        } else {
+          let chatMessages = messages
+            .filter((rpMsg) => !this.isControlMessage(rpMsg))
+            .map(this.convertFromRapidProMsg);
+          this.messages$.next(chatMessages);
+        }
       }
-      let chatMessages = messages
-        .map(this.convertFromRapidProMsg);
-      this.messages$.next(chatMessages);
     },
-    (err) => {
-      this.messages$.error(err);
-    });
+      (err) => {
+        this.messages$.error(err);
+      });
   }
 
   public sendMessage(message: ChatMessage): Observable<any> {
