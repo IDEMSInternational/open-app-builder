@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FullCalendarModule } from '@fullcalendar/angular';
 import { IonicModule } from '@ionic/angular';
 
-import { CalendarPage } from './calendar.page';
+import { ToolboxTopicPage } from './toolbox-topic.page';
 
-describe('CalendarPage', () => {
-  let component: CalendarPage;
-  let fixture: ComponentFixture<CalendarPage>;
+describe('ToolboxTopicPage', () => {
+  let component: ToolboxTopicPage;
+  let fixture: ComponentFixture<ToolboxTopicPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalendarPage ],
-      imports: [IonicModule.forRoot(), FullCalendarModule]
+      declarations: [ ToolboxTopicPage ],
+      imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CalendarPage);
+    fixture = TestBed.createComponent(ToolboxTopicPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

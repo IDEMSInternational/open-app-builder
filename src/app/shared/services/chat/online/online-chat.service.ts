@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, from, throwError } from 'rxjs';
 import { IRapidProMessage, NotificationService } from '../../notification/notification.service';
+import { ToolboxService } from '../../toolbox/toolbox.service';
 import { ChatMessage } from '../chat-msg.model';
 import { ChatService } from '../chat.service';
 
@@ -11,18 +12,43 @@ export class OnlineChatService implements ChatService {
 
   public messages$: BehaviorSubject<ChatMessage[]> = new BehaviorSubject([]);
 
-  constructor(private notificationService: NotificationService) {
+  constructor(private notificationService: NotificationService, private toolboxService: ToolboxService) {
     this.notificationService.messages$.subscribe((messages) => {
-      let chatMessages = messages.map(this.convertFromRapidProMsg);
-      this.messages$.next(chatMessages);
+      if (messages.length > 0) {
+        let lastMessage = messages[messages.length - 1];
+        if (this.isControlMessage(lastMessage)) {
+          this.executeControlMessage(lastMessage);
+        } else {
+          let chatMessages = messages
+            .filter((rpMsg) => !this.isControlMessage(rpMsg))
+            .map(this.convertFromRapidProMsg);
+          this.messages$.next(chatMessages);
+        }
+      }
     },
-    (err) => {
-      this.messages$.error(err);
-    });
+      (err) => {
+        this.messages$.error(err);
+      });
   }
 
   public sendMessage(message: ChatMessage): Observable<any> {
     return from(this.notificationService.sendRapidproMessage(message.text));
+  }
+
+  private isControlMessage(rpMsg: IRapidProMessage): boolean {
+    return rpMsg.message.indexOf("UNLOCK_TOPIC,") > -1;
+  }
+
+  private executeControlMessage(rpMsg: IRapidProMessage) {
+    if (rpMsg.message.indexOf("UNLOCK_TOPIC,") > -1) {
+      let topicTypeString = rpMsg.message.split(",")[1];
+      this.toolboxService.getTopicMetadatas().subscribe((topicMetadatas) => {
+        let topicMetadata = topicMetadatas.find((tmd) => tmd.type === topicTypeString);
+        if (topicMetadata) {
+          this.toolboxService.unlockTopic(topicMetadata.type);
+        }
+      });
+    }
   }
 
   private convertFromRapidProMsg(rpMsg: IRapidProMessage): ChatMessage {

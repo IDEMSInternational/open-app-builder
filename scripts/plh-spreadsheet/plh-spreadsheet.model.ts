@@ -4,11 +4,13 @@ export interface ContentIndexRow {
     Sheet_Name: string,
     Content_Type: "Conversation" | "Toolbox",
     Character?: "Friend" | "Guide",
-    Entry_Condition?: string
+    Entry_Condition?: string,
+    Topic_Id?: string
 }
 
 export interface ToolboxExcelSheet {
     sheetName: string,
+    topicId: string,
     rows: ToolboxExcelRow[]
 }
 

@@ -46,7 +46,7 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
     console.log("Content list", contentList);
 
     const conversationSheets: ConversationExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Content_Type === "Conversation")
+        .filter((contentListItem) => contentListItem.Content_Type.trim() === "Conversation")
         .filter((contentListItem) => workbook.Sheets[contentListItem.Sheet_Name])
         .map((contentListItem) => {
             const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Sheet_Name]);
@@ -55,7 +55,7 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
                 rows: rows
             };
         });
-    console.log("Conversation Sheets: ", conversationSheets);
+    console.log("Conversation Sheets: ", JSON.stringify(conversationSheets));
 
     const conversationTranslator = new ConversationTranslator();
     const rapidProExportObject = conversationTranslator.from(conversationSheets);
@@ -66,12 +66,13 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
 
     
     const toolboxSheets: ToolboxExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Content_Type === "Toolbox")
+        .filter((contentListItem) => contentListItem.Content_Type.trim() === "Toolbox")
         .filter((contentListItem) => workbook.Sheets[contentListItem.Sheet_Name])
         .map((contentListItem) => {
             const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Sheet_Name]);
             return {
                 sheetName: contentListItem.Sheet_Name,
+                topicId: contentListItem.Topic_Id,
                 rows: rows
             };
         });
