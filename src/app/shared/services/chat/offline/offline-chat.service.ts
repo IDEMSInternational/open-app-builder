@@ -30,38 +30,43 @@ export class OfflineChatService implements ChatService {
   ) {
     this.messages$ = new BehaviorSubject([]);
     this.flowStatus$ = new BehaviorSubject([]);
+    this.flowStatus$.subscribe((events) => {
+      if (events.length > 0) {
+        let latest = events[events.length - 1];
+        if (latest.status === "start") {
+          this.currentFlow = this.flowsById[latest.flowId];
+        }
+      }
+    });
+  }
+
+  public init() {
     this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_1.json")
       .subscribe(() => {
         console.log(`Loaded ${Object.keys(this.flowsById).length} flows`);
-        this.flowStatus$.subscribe((events) => {
-          if (events.length > 0) {
-            let latest = events[events.length - 1];
-            if (latest.status === "start") {
-              this.currentFlow = this.flowsById[latest.flowId];
-            }
-          }
-        });
-
-        // Start by publishing flow status change event
-        let initFlowId = Object.keys(this.flowsById).find((id) => this.flowsById[id].name.indexOf("parent") > -1);
-        if (!initFlowId) {
-          initFlowId = Object.keys(this.flowsById)[0];
-        }
-        this.flowStatus$.next([
-          {
-            flowId: initFlowId,
-            status: "start"
-          }
-        ]);
+        this.startFlowByName("parent");
       });
+  }
+
+  public startFlowByName(flowName: string) {
+    // Start by publishing flow status change event
+    let initFlowId = Object.keys(this.flowsById).find((id) => this.flowsById[id].name.indexOf(flowName) > -1);
+    if (!initFlowId) {
+      initFlowId = Object.keys(this.flowsById)[0];
+    }
+    this.flowStatus$.next([
+      {
+        flowId: initFlowId,
+        status: "start"
+      }
+    ]);
   }
 
   public sendMessage(message: ChatMessage): Observable<any> {
     return this.currentFlow.sendMessage(message);
   }
 
-
-  private loadExportFile(exportFileUrl: string): Observable<RapidProFlowExport.RootObject> {
+  public loadExportFile(exportFileUrl: string): Observable<RapidProFlowExport.RootObject> {
     let request = this.http.get(exportFileUrl).pipe(map((res: RapidProFlowExport.RootObject) => {
       if (res.flows && res.flows.length > 0) {
         for (let flow of res.flows) {
@@ -82,7 +87,7 @@ export class OfflineChatService implements ChatService {
     return request;
   }
 
-  private getFlowById(flowId: string): Observable<RapidProOfflineFlow> {
+  public getFlowById(flowId: string): Observable<RapidProOfflineFlow> {
     if (this.flowsById[flowId]) {
       return of(this.flowsById[flowId]);
     } else {

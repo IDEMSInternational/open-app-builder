@@ -115,11 +115,7 @@ export namespace RapidProFlowExport {
     export interface UINodeData {
         type: string;
         position: Position;
-        config: Config;
-    }
-
-    export interface Nodes {
-        NODE_UUID_KEY: UINodeData;
+        config?: Config;
     }
 
     export interface Stickies {
@@ -127,7 +123,7 @@ export namespace RapidProFlowExport {
 
     export interface Ui {
         nodes: { [nodeId: string]: UINodeData };
-        stickies: Stickies;
+        stickies?: Stickies;
     }
 
     export interface RootObject {
