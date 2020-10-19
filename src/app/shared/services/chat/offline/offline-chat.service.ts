@@ -62,6 +62,15 @@ export class OfflineChatService implements ChatService {
     ]);
   }
 
+  public startFlowById(flowId: string) {
+    this.flowStatus$.next([
+      {
+        flowId: flowId,
+        status: "start"
+      }
+    ]);
+  }
+
   public sendMessage(message: ChatMessage): Observable<any> {
     return this.currentFlow.sendMessage(message);
   }
