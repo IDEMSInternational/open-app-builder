@@ -1,32 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'plh-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'plh-home-indoor-blobs',
+  templateUrl: './home-indoor-blobs.component.html',
+  styleUrls: ['./home-indoor-blobs.component.scss'],
 })
-export class HomePage implements OnInit {
-
-  homeScreenOption: "indoors-blobs" | "buttons" = "indoors-blobs";
+export class HomeIndoorBlobsComponent implements OnInit {
 
   guideHasNotification: boolean = true;
 
-  constructor(private menuController: MenuController, private router: Router, private route: ActivatedRoute) {}
+  constructor(private menuController: MenuController, private router: Router) {}
   
   idClickListeners: { [id: string]: Function } = {};
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((paramMap) => {
-      if (paramMap["homeOption"]) {
-        if (paramMap["homeOption"] === "buttons") {
-          this.homeScreenOption = "buttons";
-        } else {
-          this.homeScreenOption = "indoors-blobs";
-        }
-      }
-    });
     Object.keys(this.idClickListeners).forEach((id) => {
       document.getElementById(id).addEventListener("click", () => this.idClickListeners[id]());
     });
