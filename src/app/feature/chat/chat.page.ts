@@ -8,6 +8,8 @@ import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/s
 import { OfflineChatService } from 'src/app/shared/services/chat/offline/offline-chat.service';
 import { OnlineChatService } from 'src/app/shared/services/chat/online/online-chat.service';
 import { Subscription } from 'rxjs';
+import { ChatService } from 'src/app/shared/services/chat/chat.service';
+import { ChatTriggerPhrase } from 'src/app/shared/services/chat/chat.triggers';
 
 @Component({
   selector: "app-chat",
@@ -59,19 +61,21 @@ export class ChatPage implements OnInit, OnDestroy {
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private chatService: OnlineChatService
+    private chatService: ChatService
   ) {
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
+      let triggerPhrase = ChatTriggerPhrase.GUIDE_START;
       if(params["character"] && params["character"] === "egg") {
         this.character = "egg";
+        triggerPhrase = ChatTriggerPhrase.EGG_CHARACTER_START;
       } else {
         this.character = "guide";
       }
       setTimeout(() => {
-        this.sendCustomOption(this.character === "guide" ? "guide" : "chat");
+        this.chatService.runTrigger({phrase: triggerPhrase}).subscribe();
       }, 500);
     });
     this.messageSubscription = this.chatService.messages$

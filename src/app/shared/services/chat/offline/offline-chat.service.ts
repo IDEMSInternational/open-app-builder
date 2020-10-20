@@ -4,6 +4,7 @@ import { Observable, throwError, Subject, of, forkJoin, BehaviorSubject } from '
 import { map } from 'rxjs/operators';
 import { ChatMessage } from '../chat-msg.model';
 import { ChatService } from '../chat.service';
+import { ChatTrigger, triggersByPhrase } from '../chat.triggers';
 import { RapidProOfflineFlow } from './chat.flow';
 import { RapidProFlowExport } from './rapid-pro-export.model';
 
@@ -41,16 +42,22 @@ export class OfflineChatService implements ChatService {
   }
 
   public init() {
-    this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_1.json")
-      .subscribe(() => {
-        console.log(`Loaded ${Object.keys(this.flowsById).length} flows`);
-        this.startFlowByName("parent");
-      });
+    return this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_1.json")
+  }
+
+  public runTrigger(trigger: ChatTrigger) {
+    return this.flowsLoaded().pipe(map(() => {
+      let flowNameToStart = triggersByPhrase.get(trigger.phrase).flowNameToStart;
+      if (flowNameToStart) {
+        this.startFlowByName(flowNameToStart);
+      }
+    }))
   }
 
   public startFlowByName(flowName: string) {
     // Start by publishing flow status change event
     let initFlowId = Object.keys(this.flowsById).find((id) => this.flowsById[id].name.indexOf(flowName) > -1);
+    console.log("flow name ", flowName, " flow id", initFlowId);
     if (!initFlowId) {
       initFlowId = Object.keys(this.flowsById)[0];
     }
@@ -72,7 +79,7 @@ export class OfflineChatService implements ChatService {
   }
 
   public sendMessage(message: ChatMessage): Observable<any> {
-    return this.currentFlow.sendMessage(message);
+    return this.flowsLoaded().pipe(map(() => this.currentFlow.sendMessage(message)));
   }
 
   public loadExportFile(exportFileUrl: string): Observable<RapidProFlowExport.RootObject> {
@@ -107,6 +114,18 @@ export class OfflineChatService implements ChatService {
       } else {
         return throwError("No flow found for id " + flowId);
       }
+    }
+  }
+
+  private flowsLoaded(): Observable<any> {
+    if (Object.keys(this.flowsById).length < 1) {
+      if (this.inflightRequests.length > 0) {
+        return forkJoin(this.inflightRequests)
+      } else {
+        return throwError("No flow exports loaded");
+      }
+    } else {
+      return of({});
     }
   }
 

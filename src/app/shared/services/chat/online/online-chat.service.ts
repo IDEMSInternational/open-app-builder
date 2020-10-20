@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, from, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, from, throwError, of } from 'rxjs';
 import { IRapidProMessage, NotificationService } from '../../notification/notification.service';
 import { ToolboxService } from '../../toolbox/toolbox.service';
 import { ChatMessage } from '../chat-msg.model';
 import { ChatService } from '../chat.service';
+import { ChatTrigger } from '../chat.triggers';
+import { Capacitor } from "@capacitor/core";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,18 @@ export class OnlineChatService implements ChatService {
       (err) => {
         this.messages$.error(err);
       });
+  }
+
+  public init(): Observable<any> {
+    if (Capacitor.isNative) {
+      return of(this.notificationService.init());
+    } else {
+      return of({});
+    }
+  }
+
+  public runTrigger(trigger: ChatTrigger): Observable<any> {
+    return from(this.notificationService.sendRapidproMessage(trigger.phrase));
   }
 
   public sendMessage(message: ChatMessage): Observable<any> {
