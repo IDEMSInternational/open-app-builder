@@ -1,5 +1,6 @@
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { ChatMessage, ChatResponseOption } from '../chat-msg.model';
+import { convertRapidProAttachments } from '../message.converter';
 import { FlowStatusChange } from './offline-chat.service';
 import { RapidProFlowExport } from './rapid-pro-export.model';
 
@@ -115,8 +116,10 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
         if (matchingCategoryId) {
             this.exitUsingCategoryId(node, matchingCategoryId);
+        } else if (node.router.default_category_uuid) {
+            this.exitUsingCategoryId(node, node.router.default_category_uuid);
         } else {
-            console.warn("Nothing matches :(");
+            console.warn("Nothing matches for node ", node.uuid);
         }
     }
 
@@ -194,8 +197,9 @@ export class RapidProOfflineFlow implements ChatFlow {
         messages.push({
             sender: "bot",
             text: text,
-            responseOptions: responseOptions
-        })
+            responseOptions: responseOptions,
+            attachments: convertRapidProAttachments(action.attachments)
+        });
         this.messages$.next(messages);
     }
 

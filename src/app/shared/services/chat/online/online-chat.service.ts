@@ -6,6 +6,7 @@ import { ChatMessage } from '../chat-msg.model';
 import { ChatService } from '../chat.service';
 import { ChatTrigger } from '../chat.triggers';
 import { Capacitor } from "@capacitor/core";
+import { convertFromRapidProMsg } from '../message.converter';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class OnlineChatService implements ChatService {
         } else {
           let chatMessages = messages
             .filter((rpMsg) => !this.isControlMessage(rpMsg))
-            .map(this.convertFromRapidProMsg);
+            .map(convertFromRapidProMsg);
           this.messages$.next(chatMessages);
         }
       }
@@ -63,25 +64,6 @@ export class OnlineChatService implements ChatService {
         }
       });
     }
-  }
-
-  private convertFromRapidProMsg(rpMsg: IRapidProMessage): ChatMessage {
-    let quickReplies: string[] = [];
-    if (Array.isArray(rpMsg.quick_replies)) {
-      quickReplies = rpMsg.quick_replies
-    } else {
-      try {
-        quickReplies = JSON.parse(rpMsg.quick_replies);
-      } catch (ex) {
-        quickReplies = [];
-      }
-    }
-    return {
-      text: rpMsg.message,
-      sender: "bot",
-      dateReceived: new Date(),
-      responseOptions: quickReplies.map((choice) => ({ text: choice }))
-    };
   }
 
 }
