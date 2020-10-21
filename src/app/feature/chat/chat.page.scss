@@ -53,16 +53,13 @@
 }
 
 .msg-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-  width: 90vw;
 
-  &:nth-child(1) {
-    max-width: calc(75vw - 50px);
-    position: relative;
-    left: 20vw;
+  margin-bottom: 20px;
+
+  .msg-bubble-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .msg-bubble {
@@ -101,8 +98,8 @@
 }
 
 .response-option {
-  color: #0D4060;
-  border-color: #0D4060;
+  color: #0d4060;
+  border-color: #0d4060;
   background-color: transparent;
   padding: 7px;
   font-size: 14px;
