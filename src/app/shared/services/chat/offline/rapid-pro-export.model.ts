@@ -1,6 +1,6 @@
 export namespace RapidProFlowExport {
 
-    export type ActionType = "enter_flow" | "send_msg" | "set_contact_field";
+    export type ActionType = "enter_flow" | "send_msg" | "set_contact_field" | "set_contact_name";
 
     export interface Action {
         type: ActionType;
@@ -19,6 +19,7 @@ export namespace RapidProFlowExport {
         field?: { key: string, name: string };
         value?: string;
         flow?: { uuid: string; name: string; }
+        name?: string;
     }
 
     export interface Exit {
