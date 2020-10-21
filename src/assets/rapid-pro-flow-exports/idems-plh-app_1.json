@@ -176,7 +176,7 @@
               "attachments": [],
               "text": "This is the first child flow. Are you awesome?",
               "type": "send_msg",
-              "quick_replies": [],
+              "quick_replies": ["Yes", "No"],
               "uuid": "c85c4aeb-4737-49fa-8ed5-521d7b93ce7c"
             }
           ],

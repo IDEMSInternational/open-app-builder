@@ -68,24 +68,25 @@ export class ChatPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       let triggerPhrase = ChatTriggerPhrase.GUIDE_START;
-      if(params["character"] && params["character"] === "egg") {
+      if (params["character"] && params["character"] === "egg") {
         this.character = "egg";
         triggerPhrase = ChatTriggerPhrase.EGG_CHARACTER_START;
       } else {
         this.character = "guide";
       }
-      setTimeout(() => {
-        this.chatService.runTrigger({phrase: triggerPhrase}).subscribe();
-      }, 500);
-    });
-    this.messageSubscription = this.chatService.messages$
-      .asObservable()
-      .subscribe((messages) => {
-        console.log("from chat service ", messages);
-        if (messages.length > 0) {
-          this.onNewMessage(messages[messages.length - 1]);
-        }
+      this.messages = [];
+      this.messageSubscription = this.chatService.messages$
+        .asObservable()
+        .subscribe((messages) => {
+          console.log("from chat service ", messages);
+          if (messages.length > 0) {
+            this.onNewMessage(messages[messages.length - 1]);
+          }
+        });
+      this.chatService.runTrigger({ phrase: triggerPhrase }).subscribe(() => {
+        console.log("Ran trigger ", triggerPhrase);
       });
+    });
   }
 
   ngOnDestroy() {
@@ -254,7 +255,7 @@ export class ChatPage implements OnInit, OnDestroy {
       text: option.text
     });
     this.messagesSent += 1;
-    
+
   }
 
   toggleShowAllMessages() {
