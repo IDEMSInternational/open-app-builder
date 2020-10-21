@@ -22,6 +22,8 @@ export class RapidProOfflineFlow implements ChatFlow {
     flowStepDelay = 200;
     sendMessageDelay = 1000;
 
+    flowResults: { [resultName: string]: string } = {};
+
     constructor(protected flowObject: RapidProFlowExport.Flow, public messages$: BehaviorSubject<ChatMessage[]>,
         public flowStatus$: BehaviorSubject<FlowStatusChange[]>, public contactFields: { [field: string]: string }) {
         console.log("Export object!", flowObject);
@@ -75,6 +77,9 @@ export class RapidProOfflineFlow implements ChatFlow {
             if (action.type === "set_contact_field") {
                 this.doSetContactFieldAction(action);
             }
+            if (action.type === "set_contact_name") {
+                this.doSetContactNameAction(action);
+            }
         }
         await this.wait();
         if (!node.router) {
@@ -109,6 +114,9 @@ export class RapidProOfflineFlow implements ChatFlow {
     }
 
     private useUserInputRouter(node: RapidProFlowExport.Node, incomingMsg: string) {
+        if (node.router.result_name) {
+            this.flowResults[node.router.result_name] = incomingMsg;
+        }
         let matchingCategoryId: string;
         for (let routerCase of node.router.cases) {
             let matchesCase: boolean = false;
@@ -197,8 +205,30 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
     }
 
+    private parseMessageTemplate(template: string): string {
+        let output: string = "" + template;
+
+        let regexResult: RegExpExecArray;
+        // Match Contact fields
+        let contactFieldRegex = /@contact\.([\S]*)/gm;
+        while ((regexResult = contactFieldRegex.exec(template)) !== null) {
+            let fullMatch = regexResult[0];
+            let fieldName = regexResult[1];
+            output = output.replace(fullMatch, this.contactFields[fieldName]);
+        }
+
+        // Match Result fields
+        let resultFieldRegex = /@results\.([\S]*)/gm;
+        while ((regexResult = resultFieldRegex.exec(template)) !== null) {
+            let fullMatch = regexResult[0];
+            let fieldName = regexResult[1];
+            output = output.replace(fullMatch, this.flowResults[fieldName]);
+        }
+
+        return output;
+    }
+
     private doSendMessageAction(action: RapidProFlowExport.Action) {
-        let text = action.text;
         let responseOptions: ChatResponseOption[] = [];
         if (action.quick_replies) {
             responseOptions = action.quick_replies.map((quickReply) => ({
@@ -206,6 +236,7 @@ export class RapidProOfflineFlow implements ChatFlow {
             }));
         }
         let messages = this.messages$.getValue();
+        let text = this.parseMessageTemplate(action.text);
         let newMessage: ChatMessage = {
             sender: "bot",
             text: text,
@@ -217,9 +248,15 @@ export class RapidProOfflineFlow implements ChatFlow {
         this.messages$.next(messages);
     }
 
+    private doSetContactNameAction(action: RapidProFlowExport.Action) {
+        if (action.name) {
+            this.contactFields["name"] = this.parseMessageTemplate(action.name);
+        }
+    }
+
     private doSetContactFieldAction(action: RapidProFlowExport.Action) {
         if (action.field && action.field.key) {
-            this.contactFields[action.field.key] = action.value;
+            this.contactFields[action.field.key] = this.parseMessageTemplate(action.value);
             console.log("Contact field update ", action.field.key, action.value);
         }
     }
