@@ -10,6 +10,7 @@ import { RapidProFlowExport } from './rapid-pro-export.model';
 
 export type FlowStatusChange = {
   flowId: string;
+  flowName: string;
   status: "start" | "completed" | "expired";
 }
 
@@ -32,22 +33,27 @@ export class OfflineChatService implements ChatService {
     this.messages$ = new BehaviorSubject([]);
     this.flowStatus$ = new BehaviorSubject([]);
     this.flowStatus$.subscribe((events) => {
+      console.log("Flow status change", events);
       if (events.length > 0) {
-        let latest = events[events.length - 1];
+        let latest = events[events.length - 1]; 
         if (latest.status === "start") {
           this.currentFlow = this.flowsById[latest.flowId];
+          this.currentFlow.start();
         }
       }
     });
   }
 
   public init() {
-    return this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_1.json")
+    return this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_1.json");
   }
 
   public runTrigger(trigger: ChatTrigger) {
     return this.flowsLoaded().pipe(map(() => {
       let flowNameToStart = triggersByPhrase.get(trigger.phrase).flowNameToStart;
+      Object.keys(this.flowsById).forEach((flowId) => {
+        this.flowsById[flowId].reset();
+      });
       if (flowNameToStart) {
         this.startFlowByName(flowNameToStart);
       }
@@ -61,25 +67,31 @@ export class OfflineChatService implements ChatService {
     if (!initFlowId) {
       initFlowId = Object.keys(this.flowsById)[0];
     }
-    this.flowStatus$.next([
+    let statusChanges = this.flowStatus$.getValue();
+    this.flowStatus$.next(statusChanges.concat([
       {
         flowId: initFlowId,
+        flowName: this.flowsById[initFlowId].name,
         status: "start"
       }
-    ]);
+    ]));
   }
 
   public startFlowById(flowId: string) {
-    this.flowStatus$.next([
+    let startingFlow = this.flowsById[flowId];
+    let statusChanges = this.flowStatus$.getValue();
+    this.flowStatus$.next(statusChanges.concat([
       {
         flowId: flowId,
+        flowName: startingFlow.name,
         status: "start"
       }
-    ]);
+    ]));
   }
 
   public sendMessage(message: ChatMessage): Observable<any> {
-    return this.flowsLoaded().pipe(map(() => this.currentFlow.sendMessage(message)));
+      console.log("Sending message to current flow ", message, this.currentFlow.name);
+      return this.currentFlow.sendMessage(message);
   }
 
   public loadExportFile(exportFileUrl: string): Observable<RapidProFlowExport.RootObject> {
