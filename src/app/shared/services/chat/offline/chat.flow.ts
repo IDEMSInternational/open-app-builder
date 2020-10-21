@@ -1,4 +1,5 @@
 import { Observable, of, BehaviorSubject } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { ChatMessage, ChatResponseOption } from '../chat-msg.model';
 import { convertRapidProAttachments } from '../message.converter';
 import { FlowStatusChange } from './offline-chat.service';
@@ -17,6 +18,9 @@ export class RapidProOfflineFlow implements ChatFlow {
     currentNode: RapidProFlowExport.Node;
     childFlowId: string = null;
     running = false;
+
+    flowStepDelay = 200;
+    sendMessageDelay = 1000;
 
     constructor(protected flowObject: RapidProFlowExport.Flow, public messages$: BehaviorSubject<ChatMessage[]>,
         public flowStatus$: BehaviorSubject<FlowStatusChange[]>, public contactFields: { [field: string]: string }) {
@@ -40,7 +44,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         this.running = false;
     }
 
-    private enterNode(node: RapidProFlowExport.Node) {
+    private async enterNode(node: RapidProFlowExport.Node) {
         this.currentNode = node;
         console.log("Entered node id ", node.uuid, node);
         for (let action of node.actions) {
@@ -65,17 +69,19 @@ export class RapidProOfflineFlow implements ChatFlow {
                 }
             }
             if (action.type === "send_msg" && action.text) {
+                await this.wait(this.sendMessageDelay);
                 this.doSendMessageAction(action);
             }
             if (action.type === "set_contact_field") {
                 this.doSetContactFieldAction(action);
             }
         }
+        await this.wait();
         if (!node.router) {
             let firstExitWithDestination = node.exits
                 .filter((exit) => exit.destination_uuid)[0];
             if (firstExitWithDestination) {
-                console.log("Entered node by exiting from node with no router")
+                console.log("Entered node by exiting from node with no router");
                 this.enterNode(this.getNodeById(firstExitWithDestination.destination_uuid));
             } else {
                 console.log("This should be flow completion")
@@ -94,6 +100,12 @@ export class RapidProOfflineFlow implements ChatFlow {
                 this.useRouter(node);
             }
         }
+    }
+
+    private wait(delay = this.flowStepDelay): Promise<any> {
+        return new Promise((resolve, reject) => {
+            setTimeout(resolve, delay);
+        });
     }
 
     private useUserInputRouter(node: RapidProFlowExport.Node, incomingMsg: string) {
@@ -194,12 +206,14 @@ export class RapidProOfflineFlow implements ChatFlow {
             }));
         }
         let messages = this.messages$.getValue();
-        messages.push({
+        let newMessage: ChatMessage = {
             sender: "bot",
             text: text,
             responseOptions: responseOptions,
             attachments: convertRapidProAttachments(action.attachments)
-        });
+        };
+        console.warn("NEW MESSAGE ", newMessage);
+        messages.push(newMessage);
         this.messages$.next(messages);
     }
 
@@ -216,7 +230,7 @@ export class RapidProOfflineFlow implements ChatFlow {
 
     public sendMessage(msg: ChatMessage) {
         if (this.currentNode && this.currentNode.router && this.currentNode.router.operand === "@input.text") {
-            this.useUserInputRouter(this.currentNode, msg.text);
+            setTimeout(() => this.useUserInputRouter(this.currentNode, msg.text), 1000);
         }
         return of(true);
     }
