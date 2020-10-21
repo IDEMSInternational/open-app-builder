@@ -11,5 +11,5 @@ export enum ChatTriggerPhrase {
 export const triggersByPhrase: Map<ChatTriggerPhrase, ChatTrigger> = new Map();
 triggersByPhrase.set(ChatTriggerPhrase.GUIDE_START, {
     phrase: ChatTriggerPhrase.GUIDE_START,
-    flowNameToStart: "parent"
+    flowNameToStart: "welcome"
 });

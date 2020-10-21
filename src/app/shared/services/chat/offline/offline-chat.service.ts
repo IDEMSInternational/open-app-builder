@@ -45,7 +45,7 @@ export class OfflineChatService implements ChatService {
   }
 
   public init() {
-    return this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_1.json");
+    return this.loadExportFile("assets/rapid-pro-flow-exports/plh-playground.json");
   }
 
   public runTrigger(trigger: ChatTrigger) {
