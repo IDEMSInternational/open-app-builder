@@ -5,6 +5,7 @@ export interface IRapidProMessage {
     type: string;
     wasTapped: boolean; // informs whether message received in app foreground or background
     quick_replies?: string; // string with JSON array. e.g "["English","Malay"]"
+    attachments?: string[];
 }
 
 export interface ChatMessage {
@@ -12,6 +13,12 @@ export interface ChatMessage {
     text: string;
     dateReceived?: Date;
     responseOptions?: ChatResponseOption[];
+    attachments?: ChatAttachment[];
+}
+
+export interface ChatAttachment {
+    type: "image" | "video" | "audio" | "other",
+    url?: string,
 }
 
 export interface ChatResponseOption {
