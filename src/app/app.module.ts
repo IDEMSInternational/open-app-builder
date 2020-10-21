@@ -46,7 +46,7 @@ const introModules = [
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: ChatService, useClass: OnlineChatService },
+    { provide: ChatService, useClass: OfflineChatService },
     HTTP,
     Device,
   ],
