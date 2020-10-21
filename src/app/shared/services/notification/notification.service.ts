@@ -16,6 +16,7 @@ const { PushNotifications } = Plugins;
   providedIn: "root",
 })
 export class NotificationService {
+  initalized = false;
   token: string;
   public messages$: BehaviorSubject<IRapidProMessage[]> = new BehaviorSubject(
     []
@@ -34,41 +35,44 @@ export class NotificationService {
    * Subscribe to messages.
    */
   public init() {
-    PushNotifications.requestPermission().then((result) => {
-      if (result.granted) {
-        // Register with Apple / Google to receive push via APNS/FCM
-        PushNotifications.register();
-      } else {
-        // Show some error
-      }
-    });
-    PushNotifications.addListener(
-      "registration",
-      (token: PushNotificationToken) => {
-        this.token = token.value;
-        console.log(`The token is ${token.value}`);
-        this.registerRapidproToken(token.value);
-      }
-    );
+    if (!this.initalized) {
+      PushNotifications.requestPermission().then((result) => {
+        if (result.granted) {
+          // Register with Apple / Google to receive push via APNS/FCM
+          PushNotifications.register();
+        } else {
+          // Show some error
+        }
+      });
+      PushNotifications.addListener(
+        "registration",
+        (token: PushNotificationToken) => {
+          this.token = token.value;
+          console.log(`The token is ${token.value}`);
+          this.registerRapidproToken(token.value);
+        }
+      );
 
-    PushNotifications.addListener("registrationError", (error: any) => {
-      console.error("Error on registration: " + JSON.stringify(error));
-    });
+      PushNotifications.addListener("registrationError", (error: any) => {
+        console.error("Error on registration: " + JSON.stringify(error));
+      });
 
-    PushNotifications.addListener(
-      "pushNotificationReceived",
-      (notification: PushNotification) => {
-        console.log("Push received: " + JSON.stringify(notification));
-        this.handleNotification(notification.data);
-      }
-    );
+      PushNotifications.addListener(
+        "pushNotificationReceived",
+        (notification: PushNotification) => {
+          console.log("Push received: " + JSON.stringify(notification));
+          this.handleNotification(notification.data);
+        }
+      );
 
-    PushNotifications.addListener(
-      "pushNotificationActionPerformed",
-      (notification: PushNotificationActionPerformed) => {
-        alert("Push action performed: " + JSON.stringify(notification));
-      }
-    );
+      PushNotifications.addListener(
+        "pushNotificationActionPerformed",
+        (notification: PushNotificationActionPerformed) => {
+          alert("Push action performed: " + JSON.stringify(notification));
+        }
+      );
+      this.initalized = true;
+    }
   }
 
   handleNotification(message: IRapidProMessage) {
