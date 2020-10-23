@@ -18,6 +18,10 @@ import { environment } from "src/environments/environment";
 import { IntroTutorialPageModule } from "./feature/intro-tutorial/intro-tutorial.module";
 import { PrivacyPageModule } from "./feature/privacy/privacy.module";
 import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
+import { ChatService } from './shared/services/chat/chat.service';
+import { OfflineChatService } from './shared/services/chat/offline/offline-chat.service';
+import { OnlineChatService } from './shared/services/chat/online/online-chat.service';
+import { FormsModule } from '@angular/forms';
 
 const introModules = [
   IntroTutorialPageModule,
@@ -37,10 +41,12 @@ const introModules = [
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    FormsModule,
     ...introModules,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: ChatService, useClass: OnlineChatService },
     HTTP,
     Device,
   ],

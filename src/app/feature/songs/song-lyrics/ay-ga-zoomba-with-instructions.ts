@@ -2,7 +2,7 @@ import { Song } from '../song.model';
 
 export const Ay_Ga_Zoomba_Instructions: Song = {
     songTitle: "Ay Ga Zoomba (with Instructions)",
-    audioURL: "assets/audio/Ay_Ga_Zoomba_Instructions.mp3",
+    audioURL: "assets/audio/songs/Ay_Ga_Zoomba_Instructions.mp3",
     lyrics: [
         {
             "lyric": "One: Play with the words and sounds ",

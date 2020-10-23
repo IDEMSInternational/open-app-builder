@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef, ViewChild, OnDestroy } from "@angular/core";
 import { AnimationOptions } from "ngx-lottie";
 import { IonContent } from "@ionic/angular";
 import { IRapidProMessage, NotificationService } from 'src/app/shared/services/notification/notification.service';
@@ -7,13 +7,16 @@ import { IfStmt } from '@angular/compiler';
 import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/shared/services/chat/chat-msg.model';
 import { OfflineChatService } from 'src/app/shared/services/chat/offline/offline-chat.service';
 import { OnlineChatService } from 'src/app/shared/services/chat/online/online-chat.service';
+import { Subscription } from 'rxjs';
+import { ChatService } from 'src/app/shared/services/chat/chat.service';
+import { ChatTriggerPhrase } from 'src/app/shared/services/chat/chat.triggers';
 
 @Component({
   selector: "app-chat",
   templateUrl: "./chat.page.html",
   styleUrls: ["./chat.page.scss"],
 })
-export class ChatPage implements OnInit {
+export class ChatPage implements OnInit, OnDestroy {
   messages: ChatMessage[] = [];
   allMessages: ChatMessage[] = [];
   responseOptions: ChatResponseOption[] = [];
@@ -53,30 +56,41 @@ export class ChatPage implements OnInit {
   showingAllMessages = true;
 
   character: "guide" | "egg" = "guide";
+  messageSubscription: Subscription;
 
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private chatService: OnlineChatService
+    private chatService: ChatService
   ) {
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      if(params["character"] && params["character"] === "egg") {
+      let triggerPhrase = ChatTriggerPhrase.GUIDE_START;
+      if (params["character"] && params["character"] === "egg") {
         this.character = "egg";
+        triggerPhrase = ChatTriggerPhrase.EGG_CHARACTER_START;
       } else {
         this.character = "guide";
       }
-    });
-    this.chatService.messages$
-      .asObservable()
-      .subscribe((messages) => {
-        console.log("from chat service ", messages);
-        if (messages.length > 0) {
-          this.onNewMessage(messages[messages.length - 1]);
-        }
+      this.messages = [];
+      this.messageSubscription = this.chatService.messages$
+        .asObservable()
+        .subscribe((messages) => {
+          console.log("from chat service ", messages);
+          if (messages.length > 0) {
+            this.onNewMessage(messages[messages.length - 1]);
+          }
+        });
+      this.chatService.runTrigger({ phrase: triggerPhrase }).subscribe(() => {
+        console.log("Ran trigger ", triggerPhrase);
       });
+    });
+  }
+
+  ngOnDestroy() {
+    this.messageSubscription.unsubscribe();
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
@@ -241,7 +255,7 @@ export class ChatPage implements OnInit {
       text: option.text
     });
     this.messagesSent += 1;
-    
+
   }
 
   toggleShowAllMessages() {

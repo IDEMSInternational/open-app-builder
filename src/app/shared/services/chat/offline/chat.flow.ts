@@ -1,5 +1,6 @@
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { ChatMessage, ChatResponseOption } from '../chat-msg.model';
+import { convertRapidProAttachments } from '../message.converter';
 import { FlowStatusChange } from './offline-chat.service';
 import { RapidProFlowExport } from './rapid-pro-export.model';
 
@@ -15,6 +16,7 @@ export class RapidProOfflineFlow implements ChatFlow {
     nodesById: { [nodeUUID: string]: RapidProFlowExport.Node } = {};
     currentNode: RapidProFlowExport.Node;
     childFlowId: string = null;
+    running = false;
 
     constructor(protected flowObject: RapidProFlowExport.Flow, public messages$: BehaviorSubject<ChatMessage[]>,
         public flowStatus$: BehaviorSubject<FlowStatusChange[]>, public contactFields: { [field: string]: string }) {
@@ -23,20 +25,24 @@ export class RapidProOfflineFlow implements ChatFlow {
         this.flowObject.nodes.forEach((node) => {
             this.nodesById[node.uuid] = node;
         });
-        this.flowStatus$.subscribe((flowStatusChanges) => {
-            if (flowStatusChanges.length > 0) {
-                let latest = flowStatusChanges[flowStatusChanges.length - 1];
-                if (this.flowObject.uuid === latest.flowId && latest.status === "start") {
-                    console.log("Entered node by status change sub");
-                    this.enterNode(this.flowObject.nodes[0]);
-                }
-            }
-        });
+    }
+
+    public start() {
+        if (!this.running) {
+            this.running = true;
+            this.enterNode(this.flowObject.nodes[0]);
+        } else {
+            console.warn("Attempted to start flow that is already running ", this.flowObject.name, this.flowObject.uuid);
+        }
+    }
+
+    public reset() {
+        this.running = false;
     }
 
     private enterNode(node: RapidProFlowExport.Node) {
         this.currentNode = node;
-        console.log("Entered node ", node.uuid, node);
+        console.log("Entered node id ", node.uuid, node);
         for (let action of node.actions) {
             if (action.type === "enter_flow") {
                 if (action.flow) {
@@ -47,8 +53,10 @@ export class RapidProOfflineFlow implements ChatFlow {
                         if (latest.flowId !== action.flow.uuid) {
                             flowEvents.push({
                                 flowId: action.flow.uuid,
+                                flowName: action.flow.name,
                                 status: "start"
                             });
+                            console.log("Next on BS: child flow");
                             this.flowStatus$.next(flowEvents);
                         }
                     }
@@ -70,11 +78,14 @@ export class RapidProOfflineFlow implements ChatFlow {
                 console.log("Entered node by exiting from node with no router")
                 this.enterNode(this.getNodeById(firstExitWithDestination.destination_uuid));
             } else {
+                console.log("This should be flow completion")
                 let flowEvents = this.flowStatus$.getValue();
                 flowEvents.push({
                     flowId: this.flowObject.uuid,
+                    flowName: this.flowObject.name,
                     status: "completed"
                 });
+                this.running = false;
                 this.flowStatus$.next(flowEvents);
             }
         } else {
@@ -105,19 +116,22 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
         if (matchingCategoryId) {
             this.exitUsingCategoryId(node, matchingCategoryId);
+        } else if (node.router.default_category_uuid) {
+            this.exitUsingCategoryId(node, node.router.default_category_uuid);
         } else {
-            console.warn("Nothing matches :(");
+            console.warn("Nothing matches for node ", node.uuid);
         }
     }
 
     private useRouter(node: RapidProFlowExport.Node) {
         if (node.router.operand === "@child.run.status") {
             for (let routerCase of node.router.cases) {
-                if (routerCase.arguments && routerCase.arguments[0]) {
+                if (routerCase.arguments && routerCase.arguments[0] === "completed") {
                     let subscription = this.flowStatus$.subscribe((flowEvents) => {
                         if (flowEvents.length > 0) {
                             let latest = flowEvents[flowEvents.length - 1];
-                            if (latest.status === routerCase.arguments[0] && latest.flowId === this.childFlowId) {
+                            if (latest.status === "completed" && latest.flowId === this.childFlowId) {
+                                console.log("Returning to parent flow after subflow completion");
                                 subscription.unsubscribe();
                                 this.childFlowId = null;
                                 this.exitUsingCategoryId(node, routerCase.category_uuid);
@@ -183,8 +197,9 @@ export class RapidProOfflineFlow implements ChatFlow {
         messages.push({
             sender: "bot",
             text: text,
-            responseOptions: responseOptions
-        })
+            responseOptions: responseOptions,
+            attachments: convertRapidProAttachments(action.attachments)
+        });
         this.messages$.next(messages);
     }
 
@@ -200,7 +215,9 @@ export class RapidProOfflineFlow implements ChatFlow {
     }
 
     public sendMessage(msg: ChatMessage) {
-        this.useUserInputRouter(this.currentNode, msg.text);
+        if (this.currentNode && this.currentNode.router && this.currentNode.router.operand === "@input.text") {
+            this.useUserInputRouter(this.currentNode, msg.text);
+        }
         return of(true);
     }
 
