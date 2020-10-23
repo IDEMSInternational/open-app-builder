@@ -22,10 +22,12 @@ export class OnlineChatService implements ChatService {
         if (this.isControlMessage(lastMessage)) {
           this.executeControlMessage(lastMessage);
         } else {
-          let chatMessages = messages
+          let chatMessagesPromises: Promise<ChatMessage>[] = messages
             .filter((rpMsg) => !this.isControlMessage(rpMsg))
             .map(convertFromRapidProMsg);
-          this.messages$.next(chatMessages);
+          Promise.all(chatMessagesPromises).then((chatMessages) => {
+            this.messages$.next(chatMessages);
+          });
         }
       }
     },
