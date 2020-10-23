@@ -2,6 +2,7 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { ChatMessage, ChatResponseOption } from '../chat-msg.model';
 import { convertRapidProAttachments } from '../message.converter';
+import { ContactFieldService } from './contact-field.service';
 import { FlowStatusChange } from './offline-chat.service';
 import { RapidProFlowExport } from './rapid-pro-export.model';
 
@@ -25,7 +26,7 @@ export class RapidProOfflineFlow implements ChatFlow {
     flowResults: { [resultName: string]: string } = {};
 
     constructor(protected flowObject: RapidProFlowExport.Flow, public messages$: BehaviorSubject<ChatMessage[]>,
-        public flowStatus$: BehaviorSubject<FlowStatusChange[]>, public contactFields: { [field: string]: string }) {
+        public flowStatus$: BehaviorSubject<FlowStatusChange[]>, public contactFieldService: ContactFieldService) {
         console.log("Export object!", flowObject);
         this.name = flowObject.name;
         this.flowObject.nodes.forEach((node) => {
@@ -205,7 +206,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
     }
 
-    private parseMessageTemplate(template: string): string {
+    private async parseMessageTemplate(template: string): Promise<string> {
         let output: string = "" + template;
 
         let regexResult: RegExpExecArray;
@@ -214,7 +215,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         while ((regexResult = contactFieldRegex.exec(template)) !== null) {
             let fullMatch = regexResult[0];
             let fieldName = regexResult[1];
-            output = output.replace(fullMatch, this.contactFields[fieldName]);
+            output = output.replace(fullMatch, await this.contactFieldService.getContactField(fieldName));
         }
 
         // Match Result fields
@@ -228,37 +229,36 @@ export class RapidProOfflineFlow implements ChatFlow {
         return output;
     }
 
-    private doSendMessageAction(action: RapidProFlowExport.Action) {
+    private async doSendMessageAction(action: RapidProFlowExport.Action) {
         let responseOptions: ChatResponseOption[] = [];
         if (action.quick_replies) {
             responseOptions = action.quick_replies.map((quickReply) => ({
                 text: quickReply
             }));
         }
-        let messages = this.messages$.getValue();
-        let text = this.parseMessageTemplate(action.text);
-        convertRapidProAttachments(action.attachments).then((attachments) => {
-            let newMessage: ChatMessage = {
-                sender: "bot",
-                text: text,
-                responseOptions: responseOptions,
-                attachments: attachments
-            };
-            messages.push(newMessage);
-            this.messages$.next(messages);
-        });
+        const messages = this.messages$.getValue();
+        const text = await this.parseMessageTemplate(action.text);
+        const attachments = await convertRapidProAttachments(action.attachments);
+        const newMessage: ChatMessage = {
+            sender: "bot",
+            text: text,
+            responseOptions: responseOptions,
+            attachments: attachments
+        };
+        messages.push(newMessage);
+        this.messages$.next(messages);
     }
 
-    private doSetContactNameAction(action: RapidProFlowExport.Action) {
+    private async doSetContactNameAction(action: RapidProFlowExport.Action) {
         if (action.name) {
-            this.contactFields["name"] = this.parseMessageTemplate(action.name);
+            const nameParsed = await this.parseMessageTemplate(action.name);
+            this.contactFieldService.setContactField("name", nameParsed);
         }
     }
 
     private doSetContactFieldAction(action: RapidProFlowExport.Action) {
         if (action.field && action.field.key) {
-            this.contactFields[action.field.key] = this.parseMessageTemplate(action.value);
-            console.log("Contact field update ", action.field.key, action.value);
+            this.contactFieldService.setContactField(action.field.key, action.value);
         }
     }
 
