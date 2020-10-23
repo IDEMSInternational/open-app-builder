@@ -23,22 +23,22 @@ export class ChatService {
     public init(offline = true): Observable<any> {
         this.offline = offline;
         if (offline) {
+            this.messages$ = this.offlineChatService.messages$;
             if (this.offlineInitialized) {
                 return of({});
             } else {
                 return this.offlineChatService.init().pipe(map(() => {
                     this.offlineInitialized = true;
-                    this.messages$ = this.offlineChatService.messages$;
                     return {};
                 }));
             }
         } else {
+            this.messages$ = this.onlineChatService.messages$;
             if (this.onlineInitialized) {
                 return of({});
             } else {
                 return this.onlineChatService.init().pipe(map(() => {
                     this.onlineInitialized = true;
-                    this.messages$ = this.onlineChatService.messages$;
                     return;
                 }));
             }

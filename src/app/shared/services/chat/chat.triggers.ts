@@ -13,3 +13,8 @@ triggersByPhrase.set(ChatTriggerPhrase.GUIDE_START, {
     phrase: ChatTriggerPhrase.GUIDE_START,
     flowNameToStart: "welcome"
 });
+
+triggersByPhrase.set(ChatTriggerPhrase.EGG_CHARACTER_START, {
+    phrase: ChatTriggerPhrase.EGG_CHARACTER_START,
+    flowNameToStart: "welcome"
+});

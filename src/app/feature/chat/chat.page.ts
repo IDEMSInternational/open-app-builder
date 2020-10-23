@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, ViewChild, OnDestroy } from "@ang
 import { AnimationOptions } from "ngx-lottie";
 import { IonContent } from "@ionic/angular";
 import { IRapidProMessage, NotificationService } from 'src/app/shared/services/notification/notification.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { IfStmt } from '@angular/compiler';
 import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/shared/services/chat/chat-msg.model';
 import { OfflineChatService } from 'src/app/shared/services/chat/offline/offline-chat.service';
@@ -61,31 +61,38 @@ export class ChatPage implements OnInit, OnDestroy {
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
+    console.log("NG INIT");
+    let triggerPhrase = ChatTriggerPhrase.GUIDE_START;
     this.route.queryParams.subscribe(params => {
-      let triggerPhrase = ChatTriggerPhrase.GUIDE_START;
       if (params["character"] && params["character"] === "egg") {
         this.character = "egg";
         triggerPhrase = ChatTriggerPhrase.EGG_CHARACTER_START;
       } else {
         this.character = "guide";
       }
+      this.allMessages = [];
       this.messages = [];
-      this.messageSubscription = this.chatService.messages$
-        .asObservable()
-        .subscribe((messages) => {
-          console.log("from chat service ", messages);
-          if (messages.length > 0) {
-            this.onNewMessage(messages[messages.length - 1]);
-          }
+        this.messageSubscription = this.chatService.messages$
+          .asObservable()
+          .subscribe((messages) => {
+            console.log("from chat service ", messages);
+            if (messages.length > 0) {
+              this.onNewMessage(messages[messages.length - 1]);
+            }
+          });
+        this.chatService.runTrigger({ phrase: triggerPhrase }).subscribe(() => {
+          console.log("Ran trigger ", triggerPhrase);
         });
-      this.chatService.runTrigger({ phrase: triggerPhrase }).subscribe(() => {
-        console.log("Ran trigger ", triggerPhrase);
-      });
+    });
+    this.router.events.subscribe((event) => {
+      this.allMessages = [];
+      this.messages = [];
     });
   }
 
