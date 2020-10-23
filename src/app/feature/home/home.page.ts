@@ -18,6 +18,11 @@ export class HomePage implements OnInit {
   idClickListeners: { [id: string]: Function } = {};
 
   ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (localStorage.getItem("home_screen.use_button_version") === "true") {
+        this.homeScreenOption = "buttons";
+      }
+    });
     this.route.queryParams.subscribe((paramMap) => {
       if (paramMap["homeOption"]) {
         if (paramMap["homeOption"] === "buttons") {
