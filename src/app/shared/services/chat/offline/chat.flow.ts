@@ -1,10 +1,10 @@
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { ChatMessage, ChatResponseOption } from '../chat-msg.model';
 import { convertRapidProAttachments } from '../message.converter';
 import { ContactFieldService } from './contact-field.service';
 import { FlowStatusChange } from './offline-chat.service';
 import { RapidProFlowExport } from './rapid-pro-export.model';
+import { matchesCase } from './router-case-matchers';
 
 export interface ChatFlow {
     sendMessage(msg: ChatMessage): Observable<any>;
@@ -120,17 +120,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
         let matchingCategoryId: string;
         for (let routerCase of node.router.cases) {
-            let matchesCase: boolean = false;
-            if (routerCase.type === "has_any_word") {
-                matchesCase = this.matchHasAnyWordCase(routerCase, incomingMsg);
-            } else if (routerCase.type === "has_number_between") {
-                matchesCase = this.matchHasNumberBetweenCase(routerCase, incomingMsg);
-            } else if (routerCase.type === "has_number_lt") {
-                matchesCase = this.matchHasNumberLessThanCase(routerCase, incomingMsg);
-            } else if (routerCase.type === "has_number_gt") {
-                matchesCase = this.matchHasNumberGreaterThanCase(routerCase, incomingMsg);
-            }
-            if (matchesCase) {
+            if (matchesCase(routerCase, incomingMsg)) {
                 matchingCategoryId = routerCase.category_uuid;
                 break;
             }
@@ -169,41 +159,6 @@ export class RapidProOfflineFlow implements ChatFlow {
         let matchingExit = node.exits.find((exit) => exit.uuid === matchingCategory.exit_uuid);
         console.log("Entered node via router category ", matchingCategory);
         this.enterNode(this.getNodeById(matchingExit.destination_uuid));
-    }
-
-    private matchHasNumberGreaterThanCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
-        let min = Number.parseFloat(routerCase.arguments[0]);
-        let inputNumber = Number.parseFloat(incomingMsg);
-        return (min !== NaN && inputNumber !== NaN && inputNumber > min);
-    }
-
-    private matchHasNumberLessThanCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
-        let max = Number.parseFloat(routerCase.arguments[0]);
-        let inputNumber = Number.parseFloat(incomingMsg);
-        return (max !== NaN && inputNumber !== NaN && inputNumber < max);
-    }
-
-    private matchHasNumberBetweenCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
-        let rangeNumbers = routerCase.arguments.map((arg) => Number.parseFloat(arg)).sort((a, b) => a - b);
-        let inputNumber = Number.parseFloat(incomingMsg);
-        if (rangeNumbers[0] !== NaN && rangeNumbers[1] !== NaN && inputNumber !== NaN) {
-            if (inputNumber > rangeNumbers[0] && inputNumber < rangeNumbers[1]) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private matchHasAnyWordCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
-        let matchStrings = [];
-        for (let arg of routerCase.arguments) {
-            matchStrings = matchStrings.concat(arg.toLowerCase().split(" "));
-        }
-        for (let matchString of matchStrings) {
-            if (incomingMsg.toLowerCase() === matchString) {
-                return true;
-            }
-        }
     }
 
     private async parseMessageTemplate(template: string): Promise<string> {
