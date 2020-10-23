@@ -6,6 +6,7 @@ import { ChatMessage } from '../chat-msg.model';
 import { ChatService } from '../chat.service';
 import { ChatTrigger, triggersByPhrase } from '../chat.triggers';
 import { RapidProOfflineFlow } from './chat.flow';
+import { ContactFieldService } from './contact-field.service';
 import { RapidProFlowExport } from './rapid-pro-export.model';
 
 export type FlowStatusChange = {
@@ -21,7 +22,6 @@ export class OfflineChatService {
 
   private inflightRequests: Observable<any>[] = [];
   private flowsById: { [flowId: string]: RapidProOfflineFlow } = {};
-  private contactFields: { [field: string]: string } = {};
   private currentFlow: RapidProOfflineFlow;
 
   public messages$: BehaviorSubject<ChatMessage[]>;
@@ -29,6 +29,7 @@ export class OfflineChatService {
 
   constructor(
     protected http: HttpClient,
+    protected contactFieldService: ContactFieldService
   ) {
     this.messages$ = new BehaviorSubject([]);
     this.flowStatus$ = new BehaviorSubject([]);
@@ -102,7 +103,7 @@ export class OfflineChatService {
             flow,
             this.messages$,
             this.flowStatus$,
-            this.contactFields
+            this.contactFieldService
           );
         }
       } else {
