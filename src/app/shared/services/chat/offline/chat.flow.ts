@@ -237,15 +237,16 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
         let messages = this.messages$.getValue();
         let text = this.parseMessageTemplate(action.text);
-        let newMessage: ChatMessage = {
-            sender: "bot",
-            text: text,
-            responseOptions: responseOptions,
-            attachments: convertRapidProAttachments(action.attachments)
-        };
-        console.warn("NEW MESSAGE ", newMessage);
-        messages.push(newMessage);
-        this.messages$.next(messages);
+        convertRapidProAttachments(action.attachments).then((attachments) => {
+            let newMessage: ChatMessage = {
+                sender: "bot",
+                text: text,
+                responseOptions: responseOptions,
+                attachments: attachments
+            };
+            messages.push(newMessage);
+            this.messages$.next(messages);
+        });
     }
 
     private doSetContactNameAction(action: RapidProFlowExport.Action) {
