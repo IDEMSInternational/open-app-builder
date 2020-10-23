@@ -11,7 +11,7 @@ import { convertFromRapidProMsg } from '../message.converter';
 @Injectable({
   providedIn: 'root'
 })
-export class OnlineChatService implements ChatService {
+export class OnlineChatService {
 
   public messages$: BehaviorSubject<ChatMessage[]> = new BehaviorSubject([]);
 

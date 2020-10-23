@@ -17,7 +17,7 @@ export type FlowStatusChange = {
 @Injectable({
   providedIn: 'root'
 })
-export class OfflineChatService implements ChatService {
+export class OfflineChatService {
 
   private inflightRequests: Observable<any>[] = [];
   private flowsById: { [flowId: string]: RapidProOfflineFlow } = {};
