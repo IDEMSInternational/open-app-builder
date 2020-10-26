@@ -61,7 +61,8 @@ export class ChatPage implements OnInit, OnDestroy {
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private router: Router
   ) {
   }
 
@@ -85,6 +86,10 @@ export class ChatPage implements OnInit, OnDestroy {
         });
       this.chatService.runTrigger({ phrase: triggerPhrase }).subscribe(() => {
         console.log("Ran trigger ", triggerPhrase);
+      });
+      this.router.events.subscribe((event) => {
+        this.allMessages = [];
+        this.messages = [];
       });
     });
   }
