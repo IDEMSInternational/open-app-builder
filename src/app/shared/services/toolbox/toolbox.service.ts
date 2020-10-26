@@ -16,7 +16,9 @@ export class ToolboxService {
 
 
 
-  constructor(private localStorageService: LocalStorageService, private http: HttpClient) { }
+  constructor(private localStorageService: LocalStorageService, private http: HttpClient) {
+    localStorageService.setJSON(UNLOCKED_TOPICS_LS_KEY, {"ONE_ON_ONE_TIME":true});
+  }
 
   getTopicMetadatas(): Observable<ToolboxTopicMetadata[]> {
     let toolboxTopicMetadatas: ToolboxTopicMetadata[] = toolboxTopicNames
