@@ -10,6 +10,7 @@ import { OnlineChatService } from 'src/app/shared/services/chat/online/online-ch
 import { Subscription } from 'rxjs';
 import { ChatService } from 'src/app/shared/services/chat/chat.service';
 import { ChatTriggerPhrase } from 'src/app/shared/services/chat/chat.triggers';
+import { ChatActionService } from 'src/app/shared/services/chat/common/chat-action.service';
 
 @Component({
   selector: "app-chat",
@@ -62,7 +63,8 @@ export class ChatPage implements OnInit, OnDestroy {
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
     private chatService: ChatService,
-    private router: Router
+    private router: Router,
+    private chatActionService: ChatActionService
   ) {
   }
 
@@ -83,7 +85,13 @@ export class ChatPage implements OnInit, OnDestroy {
           .subscribe((messages) => {
             console.log("from chat service ", messages);
             if (messages.length > 0) {
-              this.onNewMessage(messages[messages.length - 1]);
+              const latestMessage = messages[messages.length - 1];
+              if (latestMessage.actions && latestMessage.actions.length > 0) {
+                for (let action of latestMessage.actions) {
+                  this.chatActionService.executeChatAction(action);
+                }
+              }
+              this.onNewMessage(latestMessage);
             }
           });
         this.chatService.runTrigger({ phrase: triggerPhrase }).subscribe(() => {

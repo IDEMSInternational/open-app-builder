@@ -15,7 +15,7 @@ export namespace RapidProFlowExport {
         url?: string;
         addresses?: string[];
         subject?: string;
-        attachments?: any[];
+        attachments?: string[];
         field?: { key: string, name: string };
         value?: string;
         flow?: { uuid: string; name: string; }
