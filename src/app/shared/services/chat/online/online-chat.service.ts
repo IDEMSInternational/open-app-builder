@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, from, throwError, of } from 'rxjs';
+import { BehaviorSubject, Observable, from, throwError, of, Subscription } from 'rxjs';
 import { IRapidProMessage, NotificationService } from '../../notification/notification.service';
 import { ToolboxService } from '../../toolbox/toolbox.service';
 import { ChatMessage } from '../chat-msg.model';
@@ -14,38 +14,35 @@ import { convertFromRapidProMsg } from '../message.converter';
 export class OnlineChatService {
 
   public messages$: BehaviorSubject<ChatMessage[]> = new BehaviorSubject([]);
+  subscription: Subscription;
 
   constructor(private notificationService: NotificationService, private toolboxService: ToolboxService) {
-    this.notificationService.messages$.subscribe((messages) => {
-      if (messages.length > 0) {
-        let lastMessage = messages[messages.length - 1];
-        if (this.isControlMessage(lastMessage)) {
-          this.executeControlMessage(lastMessage);
-        } else {
-          let chatMessagesPromises: Promise<ChatMessage>[] = messages
-            .filter((rpMsg) => !this.isControlMessage(rpMsg))
-            .map(convertFromRapidProMsg);
-          Promise.all(chatMessagesPromises).then((chatMessages) => {
-            this.messages$.next(chatMessages);
-          });
-        }
-      }
-    },
-      (err) => {
-        this.messages$.error(err);
-      });
   }
 
-  public init(): Observable<any> {
+  public async init(): Promise<any> {
     if (Capacitor.isNative) {
-      return of(this.notificationService.init());
+      await this.notificationService.init();
     } else {
       return of({});
     }
   }
 
-  public runTrigger(trigger: ChatTrigger): Observable<any> {
-    return from(this.notificationService.sendRapidproMessage(trigger.phrase));
+  public runTrigger(trigger: ChatTrigger): Observable<BehaviorSubject<ChatMessage[]>> {
+    this.messages$.complete();
+    this.messages$ = new BehaviorSubject([]);
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    this.subscription = this.notificationService.messages$.subscribe((rpMsg) => {
+      convertFromRapidProMsg(rpMsg).then((chatMessage) => {
+        this.messages$.next(this.messages$.getValue().concat([chatMessage]))
+      })
+    }, (err) => {
+      this.messages$.error(err);
+    });
+    return from(this.notificationService.sendRapidproMessage(trigger.phrase).then(() => {
+      return this.messages$;
+    }));
   }
 
   public sendMessage(message: ChatMessage): Observable<any> {

@@ -49,15 +49,18 @@ export class OfflineChatService {
     return this.loadExportFile("assets/rapid-pro-flow-exports/plh-playground.json");
   }
 
-  public runTrigger(trigger: ChatTrigger) {
+  public runTrigger(trigger: ChatTrigger): Observable<BehaviorSubject<ChatMessage[]>> {
     return this.flowsLoaded().pipe(map(() => {
+      this.messages$ = new BehaviorSubject([]);
       let flowNameToStart = triggersByPhrase.get(trigger.phrase).flowNameToStart;
       Object.keys(this.flowsById).forEach((flowId) => {
+        this.flowsById[flowId].messages$ = this.messages$;
         this.flowsById[flowId].reset();
       });
       if (flowNameToStart) {
         this.startFlowByName(flowNameToStart);
       }
+      return this.messages$;
     }))
   }
 
