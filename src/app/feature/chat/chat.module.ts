@@ -11,6 +11,8 @@ import { ChatPage } from "./chat.page";
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ChatActionComponent } from './chat-action/chat-action.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -27,7 +29,7 @@ export function lottiePlayerFactory() {
     ChatPageRoutingModule,
     LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true })
   ],
-  declarations: [ChatPage],
+  declarations: [ChatPage, ChatActionComponent],
   providers: [],
 })
 export class ChatPageModule {}

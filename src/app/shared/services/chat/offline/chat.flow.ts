@@ -1,6 +1,6 @@
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { ChatMessage, ChatResponseOption } from '../chat-msg.model';
-import { convertRapidProAttachments } from '../message.converter';
+import { ChatMessage, ChatResponseOption, IRapidProMessage } from '../chat-msg.model';
+import { convertFromRapidProMsg, convertRapidProAttachments } from '../message.converter';
 import { ContactFieldService } from './contact-field.service';
 import { FlowStatusChange } from './offline-chat.service';
 import { RapidProFlowExport } from './rapid-pro-export.model';
@@ -185,21 +185,18 @@ export class RapidProOfflineFlow implements ChatFlow {
     }
 
     private async doSendMessageAction(action: RapidProFlowExport.Action) {
-        let responseOptions: ChatResponseOption[] = [];
-        if (action.quick_replies) {
-            responseOptions = action.quick_replies.map((quickReply) => ({
-                text: quickReply
-            }));
-        }
         const messages = this.messages$.getValue();
         const text = await this.parseMessageTemplate(action.text);
-        const attachments = await convertRapidProAttachments(action.attachments);
-        const newMessage: ChatMessage = {
-            sender: "bot",
-            text: text,
-            responseOptions: responseOptions,
-            attachments: attachments
+        const rapidProMessage: IRapidProMessage = {
+            message: text,
+            message_id: action.uuid,
+            title: "",
+            type: "rapidpro",
+            quick_replies: JSON.stringify(action.quick_replies ? action.quick_replies : []),
+            attachments: action.attachments,
+            wasTapped: false
         };
+        const newMessage = await convertFromRapidProMsg(rapidProMessage);
         messages.push(newMessage);
         this.messages$.next(messages);
     }
