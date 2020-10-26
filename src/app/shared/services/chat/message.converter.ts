@@ -30,8 +30,18 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
 }
 
 export function getActionsFromURLS(urlPartsList: URLParts[]): ChatAction[] {
-  return urlPartsList
-    .filter((urlParts) => urlParts.path.startsWith("/chat/action") && urlParts.query && urlParts.query.length > 0)
+  let matchingOurDomain = urlPartsList
+    .filter((urlParts) => environment.domains.indexOf(urlParts.domain) > -1);
+  let navigationActions: ChatAction[] = matchingOurDomain
+    .filter((urlParts) => urlParts.fragment && urlParts.fragment.indexOf("goto") > -1)
+    .map((urlParts) => ({
+      executed: false,
+      type: ChatActionType.NAVIGATE,
+      params: urlParts as any
+    }));
+
+  let imperitiveActions = urlPartsList
+    .filter((urlParts) => urlParts.path && urlParts.path.toLowerCase().startsWith("/chat/action"))
     .map((urlParts) => queryStringToObject(urlParts.query))
     .filter((paramMap) => paramMap.type && ChatActionType[paramMap.type])
     .map((paramMap) => ({
@@ -39,6 +49,7 @@ export function getActionsFromURLS(urlPartsList: URLParts[]): ChatAction[] {
       type: paramMap.type as ChatActionType,
       params: paramMap
     }));
+  return [].concat(imperitiveActions, navigationActions);
 }
 
 export function queryStringToObject(queryString: string): { [key: string]: string } {
