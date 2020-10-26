@@ -17,10 +17,8 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
   }
   let attachments = await convertRapidProAttachments(rpMsg.attachments);
   let urlPartsList = getURLSInText(rpMsg.message);
-  console.log("Url parts list", urlPartsList);
   let text = removeHiddenURLs(rpMsg.message, urlPartsList);
   let actions = getActionsFromURLS(urlPartsList);
-  console.log("Actions", actions);
   return {
     text: text,
     sender: "bot",

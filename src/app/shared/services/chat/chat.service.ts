@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Capacitor } from '@capacitor/core';
+import { BehaviorSubject, forkJoin, from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ChatMessage } from './chat-msg.model';
 import { ChatTrigger } from './chat.triggers';
@@ -23,7 +24,6 @@ export class ChatService {
     public init(offline = true): Observable<any> {
         this.offline = offline;
         if (offline) {
-            this.messages$ = this.offlineChatService.messages$;
             if (this.offlineInitialized) {
                 return of({});
             } else {
@@ -33,11 +33,10 @@ export class ChatService {
                 }));
             }
         } else {
-            this.messages$ = this.onlineChatService.messages$;
             if (this.onlineInitialized) {
                 return of({});
             } else {
-                return this.onlineChatService.init().pipe(map(() => {
+                return from(this.onlineChatService.init()).pipe(map(() => {
                     this.onlineInitialized = true;
                     return;
                 }));
@@ -45,7 +44,7 @@ export class ChatService {
         }
     }
 
-    public runTrigger(trigger: ChatTrigger): Observable<any> {
+    public runTrigger(trigger: ChatTrigger): Observable<BehaviorSubject<ChatMessage[]>> {
         if (this.offline) {
             return this.offlineChatService.runTrigger(trigger)
         } else {
@@ -65,6 +64,6 @@ export class ChatService {
         return this.offline;
     }
 
-    public messages$: BehaviorSubject<ChatMessage[]>;
+    
 
 }
