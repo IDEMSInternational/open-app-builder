@@ -101,6 +101,9 @@ export class ChatPage implements OnInit, OnDestroy {
     this.router.events.subscribe((event) => {
       this.allMessages = [];
       this.messages = [];
+      this.chatService.runTrigger({ phrase: triggerPhrase }).subscribe(() => {
+        console.log("Ran trigger ", triggerPhrase);
+      });
     });
   }
 
