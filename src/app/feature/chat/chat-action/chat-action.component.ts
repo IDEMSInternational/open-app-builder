@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChatActionService } from 'src/app/shared/services/chat/common/chat-action.service';
-import { ChatActionType } from 'src/app/shared/services/chat/common/chat-actions';
+import { ChatAction, ChatActionType } from 'src/app/shared/services/chat/common/chat-actions';
 
 @Component({
   selector: 'plh-chat-action',
@@ -20,7 +20,12 @@ export class ChatActionComponent implements OnInit {
       this.params = params;
       if (params.type && ChatActionType[params.type]) {
         this.actionType = params.type;
-        this.chatActionService.executeChatAction(params.type, params).then(() => {
+        const action: ChatAction = {
+          type: params.type,
+          executed: false,
+          params: params
+        };
+        this.chatActionService.executeChatAction(action).then(() => {
           this.executionStatus = "success";
         }, (err) => {
           this.executionStatus = "failure";
