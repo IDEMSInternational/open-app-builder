@@ -1,6 +1,7 @@
 export enum ChatActionType {
     UNLOCK_TOOLBOX_TOPIC = "UNLOCK_TOOLBOX_TOPIC",
-    NAVIGATE = "NAVIGATE"
+    NAVIGATE = "NAVIGATE",
+    FINISH_WELCOME = "FINISH_WELCOME"
 }
 
 export interface ChatAction {
