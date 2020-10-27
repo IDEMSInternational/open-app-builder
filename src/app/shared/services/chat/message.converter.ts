@@ -15,8 +15,10 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
       quickReplies = [];
     }
   }
-  let attachments = await convertRapidProAttachments(rpMsg.attachments);
   let urlPartsList = getURLSInText(rpMsg.message);
+  let attachmentStrings = rpMsg.attachments ? rpMsg.attachments : [];
+  attachmentStrings = attachmentStrings.concat(urlsToAttachmentStrings(urlPartsList));
+  let attachments = await convertRapidProAttachments(attachmentStrings);
   let text = removeHiddenURLs(rpMsg.message, urlPartsList);
   let actions = getActionsFromURLS(urlPartsList);
   return {
@@ -27,6 +29,23 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
     attachments: attachments,
     actions: actions
   };
+}
+
+export function urlsToAttachmentStrings(urlPartsList: URLParts[]): string[] {
+  return urlPartsList
+    .filter((urlParts) => urlParts.path.startsWith("/media/attachments/"))
+    .map((urlParts) => {
+      let fileExtensionRegex = /\.[a-z0-9]*$/m;
+      switch (fileExtensionRegex.exec(urlParts.path)[0]) {
+        case ".mp3":
+        case ".ogg": return "audio:" + urlParts.url;
+        case ".mp4":
+        case ".avi":
+        case ".mkv":
+        case ".webm": return "video:" + urlParts.url;
+        default: return "image:" + urlParts.url;
+      }
+    });
 }
 
 export function getActionsFromURLS(urlPartsList: URLParts[]): ChatAction[] {
@@ -72,6 +91,9 @@ export function removeHiddenURLs(text: string, urlPartsList: URLParts[]) {
 }
 
 export function isHiddenURL(urlParts: URLParts): boolean {
+  if (urlParts.path.startsWith("/media/attachments/")) {
+    return true;
+  }
   if (environment.domains.indexOf(urlParts.domain.toLowerCase()) > -1) {
     for (let hiddenPath of environment.chatHiddenPaths) {
       if (urlParts.path.startsWith(hiddenPath)) {
