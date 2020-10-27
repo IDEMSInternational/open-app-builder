@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Use Button Home Screen</ion-label>
+    <ion-toggle [(ngModel)]="useButtonHomeScreen" (ngModelChange)="toggleButtonHomeScreen()"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Use Offline Chat</ion-label>
+    <ion-toggle [(ngModel)]="offlineChatEnabled" (ngModelChange)="toggleOfflineChat()"></ion-toggle>
+  </ion-item>
+
+</ion-content>
