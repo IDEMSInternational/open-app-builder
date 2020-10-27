@@ -84,6 +84,10 @@ export class ChatPage {
         this.character = "guide";
       }
 
+      if (params.trigger && ChatTriggerPhrase[params.trigger]) {
+        triggerPhrase = params.trigger;
+      }
+
       if (this.messageSubscription) {
         this.messageSubscription.unsubscribe();
       }

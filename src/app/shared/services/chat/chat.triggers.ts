@@ -6,6 +6,7 @@ export interface ChatTrigger {
 export enum ChatTriggerPhrase {
     GUIDE_START = "guide",
     EGG_CHARACTER_START = "chat"
+    WELCOME = "welcome"
 }
 
 export const triggersByPhrase: Map<ChatTriggerPhrase, ChatTrigger> = new Map();
