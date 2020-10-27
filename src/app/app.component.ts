@@ -34,7 +34,7 @@ export class AppComponent {
       this.dbService.init();
       this.menuController.enable(true, "main-side-menu");
 
-      this.chatService.init().subscribe();
+      this.chatService.init(!Capacitor.isNative).subscribe();
       if (Capacitor.isNative) {
         SplashScreen.hide();
         this.notifications.init();

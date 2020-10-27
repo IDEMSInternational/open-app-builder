@@ -17,10 +17,9 @@ const { PushNotifications } = Plugins;
 })
 export class NotificationService {
   initalized = false;
+  initializing = false;
   token: string;
-  public messages$: BehaviorSubject<IRapidProMessage[]> = new BehaviorSubject(
-    []
-  );
+  public messages$: Subject<IRapidProMessage> = new Subject();
   constructor(
     private device: Device,
     private http: HTTP
@@ -34,16 +33,16 @@ export class NotificationService {
    * Obtain push notification token and provide to RapidPro for messaging.
    * Subscribe to messages.
    */
-  public init() {
-    if (!this.initalized) {
-      PushNotifications.requestPermission().then((result) => {
-        if (result.granted) {
-          // Register with Apple / Google to receive push via APNS/FCM
-          PushNotifications.register();
-        } else {
-          // Show some error
-        }
-      });
+  public async init() {
+    if (!this.initalized && !this.initializing) {
+      this.initializing = true;
+      let result = await PushNotifications.requestPermission();
+      if (result.granted) {
+        // Register with Apple / Google to receive push via APNS/FCM
+        PushNotifications.register();
+      } else {
+        // Show some error
+      }
       PushNotifications.addListener(
         "registration",
         (token: PushNotificationToken) => {
@@ -71,15 +70,14 @@ export class NotificationService {
           alert("Push action performed: " + JSON.stringify(notification));
         }
       );
+      this.initializing = false;
       this.initalized = true;
     }
   }
 
   handleNotification(message: IRapidProMessage) {
     console.log("message received", message);
-    const newMessages = this.messages$.value;
-    newMessages.push(message);
-    this.messages$.next(newMessages);
+    this.messages$.next(message);
   }
   /**
    * Send a message to rapidpro servers
@@ -139,8 +137,9 @@ export interface IRapidProMessage {
   message_id: string;
   title: string;
   type: string;
-  wasTapped: boolean; // informs whether message received in app foreground or background
+  wasTapped?: boolean; // informs whether message received in app foreground or background
   quick_replies?: string; // string with JSON array. e.g "["English","Malay"]"
+  attachments?: string[];
 }
 
 export const MOCK_RAPIDPRO_MESSAGE: IRapidProMessage = {
