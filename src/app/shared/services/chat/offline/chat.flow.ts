@@ -114,9 +114,14 @@ export class RapidProOfflineFlow implements ChatFlow {
         });
     }
 
+    private convertToVariableName(name: string) {
+        return name.toLowerCase().replace(" ", "_");
+    }
+
     private useUserInputRouter(node: RapidProFlowExport.Node, incomingMsg: string) {
         if (node.router.result_name) {
-            this.flowResults[node.router.result_name] = incomingMsg;
+            const fieldName = this.convertToVariableName(node.router.result_name);
+            this.flowResults[fieldName] = incomingMsg;
         }
         let matchingCategoryId: string;
         for (let routerCase of node.router.cases) {
@@ -166,7 +171,7 @@ export class RapidProOfflineFlow implements ChatFlow {
 
         let regexResult: RegExpExecArray;
         // Match Contact fields
-        let contactFieldRegex = /@contact\.([\S]*)/gm;
+        let contactFieldRegex = /@contact\.([0-9a-zA-Z\_]*)/gm;
         while ((regexResult = contactFieldRegex.exec(template)) !== null) {
             let fullMatch = regexResult[0];
             let fieldName = regexResult[1];
@@ -174,7 +179,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
 
         // Match Result fields
-        let resultFieldRegex = /@results\.([\S]*)/gm;
+        let resultFieldRegex = /@results\.([0-9a-zA-Z\_]*)/gm;
         while ((regexResult = resultFieldRegex.exec(template)) !== null) {
             let fullMatch = regexResult[0];
             let fieldName = regexResult[1];
@@ -208,9 +213,10 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
     }
 
-    private doSetContactFieldAction(action: RapidProFlowExport.Action) {
+    private async doSetContactFieldAction(action: RapidProFlowExport.Action) {
         if (action.field && action.field.key) {
-            this.contactFieldService.setContactField(action.field.key, action.value);
+            const valueParsed = await this.parseMessageTemplate(action.value);
+            this.contactFieldService.setContactField(action.field.key, valueParsed);
         }
     }
 
