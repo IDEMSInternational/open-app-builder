@@ -8,6 +8,7 @@ import { NotificationService } from "./shared/services/notification/notification
 import { DbService } from "./shared/services/db/db.service";
 import { IntroTutorialPage } from "./feature/intro-tutorial/intro-tutorial.page";
 import { ChatService } from './shared/services/chat/chat.service';
+import { LocalStorageService } from './shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: "app-root",
@@ -24,6 +25,7 @@ export class AppComponent {
     private dbService: DbService,
     private modalCtrl: ModalController,
     private chatService: ChatService,
+    private localStorageService: LocalStorageService
   ) {
     this.initializeApp();
   }
@@ -40,6 +42,7 @@ export class AppComponent {
         this.notifications.init();
       }
     });
+    this.localStorageService.setBoolean("welcome_skipped", false);
   }
 
   async showTutorial() {

@@ -50,4 +50,5 @@
       <input [(ngModel)]="inputValue" class="response-option" name="text-response" placeholder="Type other response...">
     </form>
   </div>
+  <ion-button *ngIf="triggerPhrase === 'welcome'" class="skip-button" (click)="skipWelcome()">Skip</ion-button>
 </div>
