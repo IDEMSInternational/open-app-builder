@@ -1,22 +1,21 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, OnDestroy } from "@angular/core";
+import { Component, ChangeDetectorRef } from "@angular/core";
 import { AnimationOptions } from "ngx-lottie";
-import { IonContent } from "@ionic/angular";
-import { IRapidProMessage, NotificationService } from 'src/app/shared/services/notification/notification.service';
+import { IRapidProMessage } from 'src/app/shared/services/notification/notification.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IfStmt } from '@angular/compiler';
 import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/shared/services/chat/chat-msg.model';
-import { OfflineChatService } from 'src/app/shared/services/chat/offline/offline-chat.service';
-import { OnlineChatService } from 'src/app/shared/services/chat/online/online-chat.service';
 import { Subscription } from 'rxjs';
 import { ChatService } from 'src/app/shared/services/chat/chat.service';
 import { ChatTriggerPhrase } from 'src/app/shared/services/chat/chat.triggers';
+import { ChatActionService } from 'src/app/shared/services/chat/common/chat-action.service';
+import { first } from 'rxjs/operators';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: "app-chat",
   templateUrl: "./chat.page.html",
   styleUrls: ["./chat.page.scss"],
 })
-export class ChatPage implements OnInit, OnDestroy {
+export class ChatPage {
   messages: ChatMessage[] = [];
   allMessages: ChatMessage[] = [];
   responseOptions: ChatResponseOption[] = [];
@@ -47,7 +46,7 @@ export class ChatPage implements OnInit, OnDestroy {
 
   sentResponsesByMessage: { [messageText: string]: string[] } = {};
 
-  triggerMessage: string = "plh_simulation";
+  triggerPhrase: ChatTriggerPhrase = ChatTriggerPhrase.GUIDE_START;
 
   scrollingInterval: any;
 
@@ -61,36 +60,61 @@ export class ChatPage implements OnInit, OnDestroy {
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private router: Router,
+    private chatActionService: ChatActionService,
+    private localStorageService: LocalStorageService
   ) {
   }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      let triggerPhrase = ChatTriggerPhrase.GUIDE_START;
+  ionViewDidEnter() {
+    console.log("ion did enter");
+    this.allMessages = [];
+    this.messages = [];
+    this.cd.detectChanges();
+
+    this.route.queryParams.pipe(first()).subscribe(params => {
       if (params["character"] && params["character"] === "egg") {
         this.character = "egg";
-        triggerPhrase = ChatTriggerPhrase.EGG_CHARACTER_START;
+        this.triggerPhrase = ChatTriggerPhrase.EGG_CHARACTER_START;
       } else {
+        this.triggerPhrase = ChatTriggerPhrase.GUIDE_START;
         this.character = "guide";
       }
-      this.messages = [];
-      this.messageSubscription = this.chatService.messages$
+
+      if (params.trigger) {
+        this.triggerPhrase = params.trigger;
+      }
+
+      if (this.messageSubscription) {
+        this.messageSubscription.unsubscribe();
+      }
+      this.chatService.runTrigger({ phrase: this.triggerPhrase }).subscribe((messages$) => {
+        console.log("Ran trigger ", this.triggerPhrase);
+        this.messageSubscription = messages$
         .asObservable()
         .subscribe((messages) => {
           console.log("from chat service ", messages);
           if (messages.length > 0) {
-            this.onNewMessage(messages[messages.length - 1]);
+            const latestMessage = messages[messages.length - 1];
+            if (latestMessage.actions && latestMessage.actions.length > 0) {
+              for (let action of latestMessage.actions) {
+                this.chatActionService.executeChatAction(action);
+              }
+            }
+            this.onNewMessage(latestMessage);
           }
         });
-      this.chatService.runTrigger({ phrase: triggerPhrase }).subscribe(() => {
-        console.log("Ran trigger ", triggerPhrase);
       });
     });
   }
 
-  ngOnDestroy() {
+  ionViewDidLeave() {
+    console.log("ion leave");
     this.messageSubscription.unsubscribe();
+    this.allMessages = [];
+    this.messages = [];
+    this.cd.detectChanges();
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
@@ -127,13 +151,13 @@ export class ChatPage implements OnInit, OnDestroy {
           this.debugMsg = "repeating...";
           this.chatService.sendMessage({
             sender: "user",
-            text: this.triggerMessage
+            text: this.triggerPhrase
           });
         } else if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
           this.debugMsg = "flow is stuck. repeating...";
           this.chatService.sendMessage({
             sender: "user",
-            text: this.triggerMessage
+            text: this.triggerPhrase
           });
         } else {
           this.debugMsg = "";
@@ -270,5 +294,10 @@ export class ChatPage implements OnInit, OnDestroy {
 
   stringify(obj: any) {
     return JSON.stringify(obj);
+  }
+
+  skipWelcome() {
+    this.localStorageService.setBoolean("welcome_skipped", true);
+    this.router.navigateByUrl("/home");
   }
 }

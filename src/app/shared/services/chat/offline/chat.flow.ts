@@ -1,8 +1,10 @@
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { ChatMessage, ChatResponseOption } from '../chat-msg.model';
-import { convertRapidProAttachments } from '../message.converter';
+import { ChatMessage, ChatResponseOption, IRapidProMessage } from '../chat-msg.model';
+import { convertFromRapidProMsg, convertRapidProAttachments } from '../message.converter';
+import { ContactFieldService } from './contact-field.service';
 import { FlowStatusChange } from './offline-chat.service';
 import { RapidProFlowExport } from './rapid-pro-export.model';
+import { matchesCase } from './router-case-matchers';
 
 export interface ChatFlow {
     sendMessage(msg: ChatMessage): Observable<any>;
@@ -18,8 +20,13 @@ export class RapidProOfflineFlow implements ChatFlow {
     childFlowId: string = null;
     running = false;
 
+    flowStepDelay = 200;
+    sendMessageDelay = 1000;
+
+    flowResults: { [resultName: string]: string } = {};
+
     constructor(protected flowObject: RapidProFlowExport.Flow, public messages$: BehaviorSubject<ChatMessage[]>,
-        public flowStatus$: BehaviorSubject<FlowStatusChange[]>, public contactFields: { [field: string]: string }) {
+        public flowStatus$: BehaviorSubject<FlowStatusChange[]>, public contactFieldService: ContactFieldService) {
         console.log("Export object!", flowObject);
         this.name = flowObject.name;
         this.flowObject.nodes.forEach((node) => {
@@ -40,7 +47,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         this.running = false;
     }
 
-    private enterNode(node: RapidProFlowExport.Node) {
+    private async enterNode(node: RapidProFlowExport.Node) {
         this.currentNode = node;
         console.log("Entered node id ", node.uuid, node);
         for (let action of node.actions) {
@@ -65,17 +72,22 @@ export class RapidProOfflineFlow implements ChatFlow {
                 }
             }
             if (action.type === "send_msg" && action.text) {
+                await this.wait(this.sendMessageDelay);
                 this.doSendMessageAction(action);
             }
             if (action.type === "set_contact_field") {
                 this.doSetContactFieldAction(action);
             }
+            if (action.type === "set_contact_name") {
+                this.doSetContactNameAction(action);
+            }
         }
+        await this.wait();
         if (!node.router) {
             let firstExitWithDestination = node.exits
                 .filter((exit) => exit.destination_uuid)[0];
             if (firstExitWithDestination) {
-                console.log("Entered node by exiting from node with no router")
+                console.log("Entered node by exiting from node with no router");
                 this.enterNode(this.getNodeById(firstExitWithDestination.destination_uuid));
             } else {
                 console.log("This should be flow completion")
@@ -96,20 +108,24 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
     }
 
+    private wait(delay = this.flowStepDelay): Promise<any> {
+        return new Promise((resolve, reject) => {
+            setTimeout(resolve, delay);
+        });
+    }
+
+    private convertToVariableName(name: string) {
+        return name.toLowerCase().replace(" ", "_");
+    }
+
     private useUserInputRouter(node: RapidProFlowExport.Node, incomingMsg: string) {
+        if (node.router.result_name) {
+            const fieldName = this.convertToVariableName(node.router.result_name);
+            this.flowResults[fieldName] = incomingMsg;
+        }
         let matchingCategoryId: string;
         for (let routerCase of node.router.cases) {
-            let matchesCase: boolean = false;
-            if (routerCase.type === "has_any_word") {
-                matchesCase = this.matchHasAnyWordCase(routerCase, incomingMsg);
-            } else if (routerCase.type === "has_number_between") {
-                matchesCase = this.matchHasNumberBetweenCase(routerCase, incomingMsg);
-            } else if (routerCase.type === "has_number_lt") {
-                matchesCase = this.matchHasNumberLessThanCase(routerCase, incomingMsg);
-            } else if (routerCase.type === "has_number_gt") {
-                matchesCase = this.matchHasNumberGreaterThanCase(routerCase, incomingMsg);
-            }
-            if (matchesCase) {
+            if (matchesCase(routerCase, incomingMsg)) {
                 matchingCategoryId = routerCase.category_uuid;
                 break;
             }
@@ -150,63 +166,57 @@ export class RapidProOfflineFlow implements ChatFlow {
         this.enterNode(this.getNodeById(matchingExit.destination_uuid));
     }
 
-    private matchHasNumberGreaterThanCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
-        let min = Number.parseFloat(routerCase.arguments[0]);
-        let inputNumber = Number.parseFloat(incomingMsg);
-        return (min !== NaN && inputNumber !== NaN && inputNumber > min);
+    private async parseMessageTemplate(template: string): Promise<string> {
+        let output: string = "" + template;
+
+        let regexResult: RegExpExecArray;
+        // Match Contact fields
+        let contactFieldRegex = /@contact\.([0-9a-zA-Z\_]*)/gm;
+        while ((regexResult = contactFieldRegex.exec(template)) !== null) {
+            let fullMatch = regexResult[0];
+            let fieldName = regexResult[1];
+            output = output.replace(fullMatch, await this.contactFieldService.getContactField(fieldName));
+        }
+
+        // Match Result fields
+        let resultFieldRegex = /@results\.([0-9a-zA-Z\_]*)/gm;
+        while ((regexResult = resultFieldRegex.exec(template)) !== null) {
+            let fullMatch = regexResult[0];
+            let fieldName = regexResult[1];
+            output = output.replace(fullMatch, this.flowResults[fieldName]);
+        }
+
+        return output;
     }
 
-    private matchHasNumberLessThanCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
-        let max = Number.parseFloat(routerCase.arguments[0]);
-        let inputNumber = Number.parseFloat(incomingMsg);
-        return (max !== NaN && inputNumber !== NaN && inputNumber < max);
-    }
-
-    private matchHasNumberBetweenCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
-        let rangeNumbers = routerCase.arguments.map((arg) => Number.parseFloat(arg)).sort((a, b) => a - b);
-        let inputNumber = Number.parseFloat(incomingMsg);
-        if (rangeNumbers[0] !== NaN && rangeNumbers[1] !== NaN && inputNumber !== NaN) {
-            if (inputNumber > rangeNumbers[0] && inputNumber < rangeNumbers[1]) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private matchHasAnyWordCase(routerCase: RapidProFlowExport.RouterCase, incomingMsg: string): boolean {
-        let matchStrings = [];
-        for (let arg of routerCase.arguments) {
-            matchStrings = matchStrings.concat(arg.toLowerCase().split(" "));
-        }
-        for (let matchString of matchStrings) {
-            if (incomingMsg.toLowerCase() === matchString) {
-                return true;
-            }
-        }
-    }
-
-    private doSendMessageAction(action: RapidProFlowExport.Action) {
-        let text = action.text;
-        let responseOptions: ChatResponseOption[] = [];
-        if (action.quick_replies) {
-            responseOptions = action.quick_replies.map((quickReply) => ({
-                text: quickReply
-            }));
-        }
-        let messages = this.messages$.getValue();
-        messages.push({
-            sender: "bot",
-            text: text,
-            responseOptions: responseOptions,
-            attachments: convertRapidProAttachments(action.attachments)
-        });
+    private async doSendMessageAction(action: RapidProFlowExport.Action) {
+        const messages = this.messages$.getValue();
+        const text = await this.parseMessageTemplate(action.text);
+        const rapidProMessage: IRapidProMessage = {
+            message: text,
+            message_id: action.uuid,
+            title: "",
+            type: "rapidpro",
+            quick_replies: JSON.stringify(action.quick_replies ? action.quick_replies : []),
+            attachments: action.attachments,
+            wasTapped: false
+        };
+        const newMessage = await convertFromRapidProMsg(rapidProMessage);
+        messages.push(newMessage);
         this.messages$.next(messages);
     }
 
-    private doSetContactFieldAction(action: RapidProFlowExport.Action) {
+    private async doSetContactNameAction(action: RapidProFlowExport.Action) {
+        if (action.name) {
+            const nameParsed = await this.parseMessageTemplate(action.name);
+            this.contactFieldService.setContactField("name", nameParsed);
+        }
+    }
+
+    private async doSetContactFieldAction(action: RapidProFlowExport.Action) {
         if (action.field && action.field.key) {
-            this.contactFields[action.field.key] = action.value;
-            console.log("Contact field update ", action.field.key, action.value);
+            const valueParsed = await this.parseMessageTemplate(action.value);
+            this.contactFieldService.setContactField(action.field.key, valueParsed);
         }
     }
 
@@ -216,7 +226,7 @@ export class RapidProOfflineFlow implements ChatFlow {
 
     public sendMessage(msg: ChatMessage) {
         if (this.currentNode && this.currentNode.router && this.currentNode.router.operand === "@input.text") {
-            this.useUserInputRouter(this.currentNode, msg.text);
+            setTimeout(() => this.useUserInputRouter(this.currentNode, msg.text), 1000);
         }
         return of(true);
     }

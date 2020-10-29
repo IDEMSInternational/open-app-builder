@@ -6,6 +6,7 @@ import { ChatMessage } from '../chat-msg.model';
 import { ChatService } from '../chat.service';
 import { ChatTrigger, triggersByPhrase } from '../chat.triggers';
 import { RapidProOfflineFlow } from './chat.flow';
+import { ContactFieldService } from './contact-field.service';
 import { RapidProFlowExport } from './rapid-pro-export.model';
 
 export type FlowStatusChange = {
@@ -17,11 +18,10 @@ export type FlowStatusChange = {
 @Injectable({
   providedIn: 'root'
 })
-export class OfflineChatService implements ChatService {
+export class OfflineChatService {
 
   private inflightRequests: Observable<any>[] = [];
   private flowsById: { [flowId: string]: RapidProOfflineFlow } = {};
-  private contactFields: { [field: string]: string } = {};
   private currentFlow: RapidProOfflineFlow;
 
   public messages$: BehaviorSubject<ChatMessage[]>;
@@ -29,6 +29,7 @@ export class OfflineChatService implements ChatService {
 
   constructor(
     protected http: HttpClient,
+    protected contactFieldService: ContactFieldService
   ) {
     this.messages$ = new BehaviorSubject([]);
     this.flowStatus$ = new BehaviorSubject([]);
@@ -45,18 +46,21 @@ export class OfflineChatService implements ChatService {
   }
 
   public init() {
-    return this.loadExportFile("assets/rapid-pro-flow-exports/plh-playground.json");
+    return this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_2.json");
   }
 
-  public runTrigger(trigger: ChatTrigger) {
+  public runTrigger(trigger: ChatTrigger): Observable<BehaviorSubject<ChatMessage[]>> {
     return this.flowsLoaded().pipe(map(() => {
+      this.messages$ = new BehaviorSubject([]);
       let flowNameToStart = triggersByPhrase.get(trigger.phrase).flowNameToStart;
       Object.keys(this.flowsById).forEach((flowId) => {
+        this.flowsById[flowId].messages$ = this.messages$;
         this.flowsById[flowId].reset();
       });
       if (flowNameToStart) {
         this.startFlowByName(flowNameToStart);
       }
+      return this.messages$;
     }))
   }
 
@@ -102,7 +106,7 @@ export class OfflineChatService implements ChatService {
             flow,
             this.messages$,
             this.flowStatus$,
-            this.contactFields
+            this.contactFieldService
           );
         }
       } else {
