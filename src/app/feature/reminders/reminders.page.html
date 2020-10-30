@@ -20,7 +20,7 @@
           <ng-lottie *ngIf="entry.reminder.completeAnimInProgress" containerClass="tick-lottie" [options]="tickAnimOptions"
           (complete)="tickAnimationComplete(entry.reminder)">
           </ng-lottie>
-          <img *ngIf="entry.reminder.complete" class="complete-indicator" src="assets/images/done_tick.svg">
+          <img *ngIf="entry.reminder.complete" class="complete-indicator" src="assets/images/done_tick.svg" (click)="onUncompleteClicked(entry.reminder)">
           <div *ngIf="!entry.reminder.complete && !entry.reminder.completeAnimInProgress" class="not-complete-indicator" (click)="onCompleteClicked(entry.reminder)">
           </div>
           <ion-reorder>

@@ -151,7 +151,9 @@ export class RemindersPage implements OnInit {
   }
 
   onUncompleteClicked(reminder: Reminder) {
-
+    console.log("Uncomplete clicked ", reminder);
+    reminder.complete = false;
+    this.remindersService.updateReminder(reminder);
   }
 
   tickAnimationComplete(reminder: Reminder) {
