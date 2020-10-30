@@ -16,13 +16,19 @@
     <ion-list-header>Today</ion-list-header>
     <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
       <div *ngFor="let entry of reorderEntries">
-        <ion-reorder *ngIf="entry.reminder">
-          <ion-item>
+        <ion-item *ngIf="entry.reminder">
+          <ng-lottie *ngIf="entry.reminder.completeAnimInProgress" containerClass="tick-lottie" [options]="tickAnimOptions"
+          (complete)="tickAnimationComplete(entry.reminder)">
+          </ng-lottie>
+          <img *ngIf="entry.reminder.complete" class="complete-indicator" src="assets/images/done_tick.svg">
+          <div *ngIf="!entry.reminder.complete && !entry.reminder.completeAnimInProgress" class="not-complete-indicator" (click)="onCompleteClicked(entry.reminder)">
+          </div>
+          <ion-reorder>
             <ion-label>
               {{entry.reminder.what}}
             </ion-label>
-          </ion-item>
-        </ion-reorder>
+          </ion-reorder>
+        </ion-item>
         <ion-list-header *ngIf="entry.label">{{entry.label}}</ion-list-header>
       </div>
     </ion-reorder-group>

@@ -1,3 +1,18 @@
 ion-list-header {
     font-size: 30px;
 }
+
+.not-complete-indicator {
+    border-radius: 20px;
+    border-color: grey;
+    border-width: 2px; 
+    border-style: solid;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+.tick-lottie {
+    width: 40px;
+    height: 40px;
+}

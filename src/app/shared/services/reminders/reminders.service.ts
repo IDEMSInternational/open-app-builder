@@ -13,37 +13,39 @@ export class RemindersService {
   private reminders$: BehaviorSubject<Reminder[]>;
 
   constructor(private localStorageService: LocalStorageService) {
-    let mockReminders: Reminder[] = [
-      {
-        id: "1",
-        what: "Praise my child",
-        whenEpoch: new Date().getTime() - 1000 * 60 * 5,
-        recurranceTimeMs: (1000 * 60 * 24),
-        complete: false
-      },
-      {
-        id: "2",
-        what: "Spend one on one time with my child",
-        whenEpoch: new Date().getTime() + (1000 * 3600 * 24),
-        recurranceTimeMs: (1000 * 60 * 24),
-        complete: false
-      },
-      {
-        id: "3",
-        what: "Eat donuts",
-        whenEpoch: new Date().getTime() + (1000 * 3600 * 36),
-        recurranceTimeMs: (1000 * 60 * 24),
-        complete: false
-      },
-      {
-        id: "4",
-        what: "Have heart attack",
-        whenEpoch: new Date().getTime() + (1000 * 3600 * 48),
-        recurranceTimeMs: (1000 * 60 * 24),
-        complete: false
-      }
-    ];
-    this.localStorageService.setJSON(RemindersService.LIST_LS_KEY, mockReminders);
+    if (!this.localStorageService.getJSON(RemindersService.LIST_LS_KEY)) {
+      let mockReminders: Reminder[] = [
+        {
+          id: "1",
+          what: "Praise my child",
+          whenEpoch: new Date().getTime() - 1000 * 60 * 5,
+          recurranceTimeMs: (1000 * 60 * 24),
+          complete: false
+        },
+        {
+          id: "2",
+          what: "Spend one on one time with my child",
+          whenEpoch: new Date().getTime() + (1000 * 3600 * 24),
+          recurranceTimeMs: (1000 * 60 * 24),
+          complete: false
+        },
+        {
+          id: "3",
+          what: "Eat donuts",
+          whenEpoch: new Date().getTime() + (1000 * 3600 * 36),
+          recurranceTimeMs: (1000 * 60 * 24),
+          complete: false
+        },
+        {
+          id: "4",
+          what: "Have heart attack",
+          whenEpoch: new Date().getTime() + (1000 * 3600 * 48),
+          recurranceTimeMs: (1000 * 60 * 24),
+          complete: false
+        }
+      ];
+      this.localStorageService.setJSON(RemindersService.LIST_LS_KEY, mockReminders);
+    }
     this.initaliseSubject();
   }
 

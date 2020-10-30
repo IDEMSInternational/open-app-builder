@@ -3,6 +3,7 @@ import { IonReorderGroup } from '@ionic/angular';
 import { Reminder } from 'src/app/shared/model/reminder.model';
 import { RemindersService } from 'src/app/shared/services/reminders/reminders.service';
 import { ItemReorderEventDetail } from '@ionic/core';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'plh-reminders',
@@ -21,6 +22,11 @@ export class RemindersPage implements OnInit {
 
   tomorrowIndex: number;
   laterIndex: number;
+
+  tickAnimOptions: AnimationOptions = {
+    loop: false,
+    path: "/assets/lottie-animations/972-done.json",
+  };
 
   constructor(private remindersService: RemindersService) {
     this.remindersService.getReminders().subscribe((reminders) => {
@@ -143,6 +149,17 @@ export class RemindersPage implements OnInit {
       whenEpoch: new Date().getTime(),
       complete: true
     });
+  }
+
+  onCompleteClicked(reminder: Reminder) {
+    console.log("On reminder complete", reminder);
+    reminder.completeAnimInProgress = true;
+  }
+
+  tickAnimationComplete(reminder: Reminder) {
+    reminder.completeAnimInProgress = false;
+    reminder.complete = true;
+    this.remindersService.updateReminder(reminder);
   }
 
 }
