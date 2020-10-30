@@ -10,6 +10,7 @@ import { RemindersPage } from './reminders.page';
 
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
+import { CreateReminderComponent } from './create-reminder/create-reminder.component';
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -23,8 +24,8 @@ export function lottiePlayerFactory() {
     FormsModule,
     IonicModule,
     RemindersPageRoutingModule,
-    LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true })
+    LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),
   ],
-  declarations: [RemindersPage]
+  declarations: [RemindersPage, CreateReminderComponent]
 })
 export class RemindersPageModule {}

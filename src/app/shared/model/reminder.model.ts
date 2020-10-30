@@ -4,4 +4,5 @@ export interface Reminder {
     whenEpoch: number;
     recurranceTimeMs?: number;
     complete: boolean;
+    completeAnimInProgress?: boolean;
 }
