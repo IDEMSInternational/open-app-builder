@@ -36,22 +36,23 @@ main();
 
 export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: string[]) {
     console.log("Sheet names", workbook.SheetNames);
+    let contentListSheetName: string = "==Content_List=="
 
-    if (!workbook.Sheets["Content_List"]) {
+    if (!workbook.Sheets[contentListSheetName]) {
         console.error("No content list sheet!");
         return;
     }
-    const contentList: ContentIndexRow[] = xlsx.utils.sheet_to_json(workbook.Sheets["Content_List"]);
+    const contentList: ContentIndexRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListSheetName]);
     
     console.log("Content list", contentList);
 
     const conversationSheets: ConversationExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Content_Type === "Conversation")
-        .filter((contentListItem) => workbook.Sheets[contentListItem.Sheet_Name])
+        .filter((contentListItem) => contentListItem.Flow_Type === "Conversation")
+        .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
         .map((contentListItem) => {
-            const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Sheet_Name]);
+            const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
             return {
-                sheetName: contentListItem.Sheet_Name,
+                sheetName: contentListItem.Flow_Name,
                 rows: rows
             };
         });
@@ -66,12 +67,12 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
 
     
     const toolboxSheets: ToolboxExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Content_Type === "Toolbox")
-        .filter((contentListItem) => workbook.Sheets[contentListItem.Sheet_Name])
+        .filter((contentListItem) => contentListItem.Flow_Type === "Toolbox")
+        .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
         .map((contentListItem) => {
-            const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Sheet_Name]);
+            const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
             return {
-                sheetName: contentListItem.Sheet_Name,
+                sheetName: contentListItem.Flow_Name,
                 rows: rows
             };
         });
