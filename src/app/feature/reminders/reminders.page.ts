@@ -5,6 +5,12 @@ import { RemindersService } from 'src/app/shared/services/reminders/reminders.se
 import { ItemReorderEventDetail } from '@ionic/core';
 import { AnimationOptions } from 'ngx-lottie';
 
+type ReorderEntry = {
+  type: "reminder" | "header",
+  label?: string,
+  reminder?: Reminder
+};
+
 @Component({
   selector: 'plh-reminders',
   templateUrl: './reminders.page.html',
@@ -14,14 +20,17 @@ export class RemindersPage implements OnInit {
 
   @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
 
-  reorderEntries: {
-    type: "reminder" | "header",
-    label?: string,
-    reminder?: Reminder
-  }[] = [];
+  reorderEntries: ReorderEntry[] = [];
 
-  tomorrowIndex: number;
-  laterIndex: number;
+  tomorrowHeaderEntry: ReorderEntry = {
+    type: "header",
+    label: "Tomorrow"
+  };
+
+  laterHeaderEntry: ReorderEntry = {
+    type: "header",
+    label: "Later"
+  };
 
   tickAnimOptions: AnimationOptions = {
     loop: false,
@@ -32,35 +41,17 @@ export class RemindersPage implements OnInit {
     this.remindersService.getReminders().subscribe((reminders) => {
       console.log("Reminders ", reminders);
       reminders.forEach((r) => console.log("r", r, new Date(r.whenEpoch)));
-      let reorderEntries = [];
-      let hadTomorrow = false;
-      let hadLater = false;
-      this.tomorrowIndex = reminders.length + 3;
-      this.laterIndex = reminders.length + 4;
-      for (let i = 0; i < reminders.length; i++) {
-        let reminder = reminders[i];
-        if (this.forTomorrow(reminder) && !hadTomorrow) {
-          hadTomorrow = true;
-          reorderEntries.push({
-            type: "header",
-            label: "Tomorrow"
-          });
-          this.tomorrowIndex = i;
-        }
-        if (this.forLater(reminder) && !hadLater) {
-          hadLater = true;
-          reorderEntries.push({
-            type: "header",
-            label: "Later"
-          });
-          this.laterIndex = i;
-        }
-        reorderEntries.push({
-          type: "reminder",
-          reminder: reminder
-        });
-      }
-      this.reorderEntries = [].concat(reorderEntries);
+      let sortedReminders = reminders.sort((a, b) => a.whenEpoch = b.whenEpoch);
+      let todayEntries: ReorderEntry[] = sortedReminders
+        .filter((r) => this.forToday(r))
+        .map((r) => ({ type: "reminder", reminder: r }));
+      let tomorrowEntries: ReorderEntry[] = sortedReminders
+        .filter((r) => this.forTomorrow(r))
+        .map((r) => ({ type: "reminder", reminder: r }));
+      let laterEntries: ReorderEntry[] = sortedReminders
+        .filter((r) => this.forLater(r))
+        .map((r) => ({ type: "reminder", reminder: r }));
+      this.reorderEntries = [].concat(todayEntries, this.tomorrowHeaderEntry, tomorrowEntries, this.laterHeaderEntry, laterEntries);
     });
   }
 
@@ -112,16 +103,19 @@ export class RemindersPage implements OnInit {
     // when the drag started and ended, respectively
     console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
 
+    let tomorrowIndex = this.reorderEntries.indexOf(this.tomorrowHeaderEntry);
+    let laterIndex = this.reorderEntries.indexOf(this.laterHeaderEntry);
+
     let entry = this.reorderEntries[ev.detail.from];
     if (entry.type === "reminder") {
       let updatedReminder: Reminder;
-      if (ev.detail.to < this.tomorrowIndex) {
+      if (ev.detail.to < tomorrowIndex) {
         updatedReminder = this.moveToToday(entry.reminder);
       }
-      if (ev.detail.to > this.tomorrowIndex && ev.detail.to < this.laterIndex) {
+      if (ev.detail.to > tomorrowIndex && ev.detail.to < laterIndex) {
         updatedReminder = this.moveToTomorrow(entry.reminder);
       }
-      if (ev.detail.to > this.laterIndex) {
+      if (ev.detail.to > laterIndex) {
         updatedReminder = this.moveToLater(entry.reminder);
       }
       if (updatedReminder) {
@@ -147,13 +141,17 @@ export class RemindersPage implements OnInit {
       id: null,
       what: "Bubbles " + Math.round(Math.random()),
       whenEpoch: new Date().getTime(),
-      complete: true
+      complete: false
     });
   }
 
   onCompleteClicked(reminder: Reminder) {
     console.log("On reminder complete", reminder);
     reminder.completeAnimInProgress = true;
+  }
+
+  onUncompleteClicked(reminder: Reminder) {
+
   }
 
   tickAnimationComplete(reminder: Reminder) {
