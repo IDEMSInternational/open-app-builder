@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ReminderCrudPage } from './reminder-crud.page';
+import { CreateReminderComponent } from './create-reminder.component';
 
-describe('ReminderCrudPage', () => {
-  let component: ReminderCrudPage;
-  let fixture: ComponentFixture<ReminderCrudPage>;
+describe('CreateReminderComponent', () => {
+  let component: CreateReminderComponent;
+  let fixture: ComponentFixture<CreateReminderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReminderCrudPage ],
+      declarations: [ CreateReminderComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ReminderCrudPage);
+    fixture = TestBed.createComponent(CreateReminderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

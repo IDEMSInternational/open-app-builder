@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CreateReminderComponent } from './create-reminder/create-reminder.component';
 
 import { RemindersPage } from './reminders.page';
 
@@ -9,8 +10,8 @@ const routes: Routes = [
     component: RemindersPage
   },
   {
-    path: 'reminder-crud',
-    loadChildren: () => import('./reminder-crud/reminder-crud.module').then( m => m.ReminderCrudPageModule)
+    path: 'create',
+    component: CreateReminderComponent
   }
 ];
 

@@ -4,6 +4,7 @@ import { Reminder } from 'src/app/shared/model/reminder.model';
 import { RemindersService } from 'src/app/shared/services/reminders/reminders.service';
 import { ItemReorderEventDetail } from '@ionic/core';
 import { AnimationOptions } from 'ngx-lottie';
+import { Router } from '@angular/router';
 
 type ReorderEntry = {
   type: "reminder" | "header",
@@ -37,10 +38,9 @@ export class RemindersPage implements OnInit {
     path: "/assets/lottie-animations/972-done.json",
   };
 
-  constructor(private remindersService: RemindersService) {
+  constructor(private remindersService: RemindersService, private router: Router) {
     this.remindersService.getReminders().subscribe((reminders) => {
       console.log("Reminders ", reminders);
-      reminders.forEach((r) => console.log("r", r, new Date(r.whenEpoch)));
       let sortedReminders = reminders.sort((a, b) => a.whenEpoch = b.whenEpoch);
       let todayEntries: ReorderEntry[] = sortedReminders
         .filter((r) => this.forToday(r))
@@ -137,12 +137,7 @@ export class RemindersPage implements OnInit {
   }
 
   onAddClicked() {
-    this.remindersService.createReminder({
-      id: null,
-      what: "Bubbles " + Math.round(Math.random()),
-      whenEpoch: new Date().getTime(),
-      complete: false
-    });
+    this.router.navigateByUrl("/reminders/create");
   }
 
   onCompleteClicked(reminder: Reminder) {
