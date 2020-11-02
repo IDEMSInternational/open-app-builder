@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Reminder</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>When</ion-label>
+    <ion-datetime [value]="toDateString(newReminder.whenEpoch)" display-timezone="utc" (ionChange)="dateChanged($event)"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>What</ion-label>
+    <ion-select [(ngModel)]="newReminder.what" okText="Okay" cancelText="Dismiss">
+      <ion-select-option *ngFor="let option of whatOptions" [value]="">{{option}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button (click)="onCreateClick()">Create Reminder</ion-button>
+  <ion-button color="light" (click)="onCancelClick()">Cancel</ion-button>
+</ion-content>
