@@ -29,7 +29,7 @@ export class HomePage implements OnInit {
       if (this.shouldRedirectToWelcome()) {
         this.homeScreenOption = "empty";
       } else {
-        this.homeScreenOption = "indoors-blobs";
+        this.homeScreenOption = "buttons";
         if (paramMap["homeOption"]) {
           if (paramMap["homeOption"] === "buttons") {
             this.homeScreenOption = "buttons";
