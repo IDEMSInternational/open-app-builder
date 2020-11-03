@@ -6,6 +6,8 @@ import { HomePage } from "./home.page";
 
 import { HomePageRoutingModule } from "./home-routing.module";
 import { SharedModule } from "src/app/shared/shared.module";
+import { HomeIndoorBlobsComponent } from './home-indoor-blobs/home-indoor-blobs.component';
+import { HomeButtonsComponent } from './home-buttons/home-buttons.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,10 @@ import { SharedModule } from "src/app/shared/shared.module";
     HomePageRoutingModule,
     SharedModule,
   ],
-  declarations: [HomePage],
+  declarations: [
+    HomePage,
+    HomeIndoorBlobsComponent,
+    HomeButtonsComponent
+  ],
 })
 export class HomePageModule {}

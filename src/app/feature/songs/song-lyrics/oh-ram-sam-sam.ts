@@ -2,7 +2,7 @@ import { Song } from '../song.model';
 
 export const Oh_Ram_Sam_Sam: Song = {
     songTitle: "Oh Ram Sam Sam",
-    audioURL: "assets/audio/Oh_Ram_Sam_Sam.mp3",
+    audioURL: "assets/audio/songs/Oh_Ram_Sam_Sam.mp3",
     lyrics: [
         {
             "lyric": "Oh Ram Sam Sam\nOh Ram Sam Sam",

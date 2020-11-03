@@ -98,7 +98,15 @@ const routes: Routes = [
       import("./feature/app-terms/app-terms.module").then(
         (m) => m.AppTermsPageModule
       ),
+  },  {
+    path: 'settings',
+    loadChildren: () => import('./feature/settings/settings.module').then( m => m.SettingsPageModule)
   },
+  {
+    path: 'reminders',
+    loadChildren: () => import('./feature/reminders/reminders.module').then( m => m.RemindersPageModule)
+  },
+
 ];
 
 @NgModule({

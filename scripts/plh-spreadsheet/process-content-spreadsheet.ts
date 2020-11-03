@@ -56,7 +56,7 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
                 rows: rows
             };
         });
-    console.log("Conversation Sheets: ", conversationSheets);
+    console.log("Conversation Sheets: ", JSON.stringify(conversationSheets));
 
     const conversationTranslator = new ConversationTranslator();
     const rapidProExportObject = conversationTranslator.from(conversationSheets);
@@ -73,6 +73,7 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
             const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
             return {
                 sheetName: contentListItem.Flow_Name,
+                topicId: contentListItem.Topic_Id,
                 rows: rows
             };
         });

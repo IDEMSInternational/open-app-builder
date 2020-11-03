@@ -1,17 +1,27 @@
+import { ChatAction } from './common/chat-actions';
+
 export interface IRapidProMessage {
     message: string;
     message_id: string;
     title: string;
     type: string;
-    wasTapped: boolean; // informs whether message received in app foreground or background
+    wasTapped?: boolean; // informs whether message received in app foreground or background
     quick_replies?: string; // string with JSON array. e.g "["English","Malay"]"
+    attachments?: string[];
 }
 
 export interface ChatMessage {
     sender: "user" | "bot";
     text: string;
     dateReceived?: Date;
+    actions?: ChatAction[];
     responseOptions?: ChatResponseOption[];
+    attachments?: ChatAttachment[];
+}
+
+export interface ChatAttachment {
+    type: "image" | "video" | "audio" | "other",
+    url?: string,
 }
 
 export interface ChatResponseOption {
