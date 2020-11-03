@@ -2,7 +2,7 @@ import { Song } from '../song.model';
 
 export const Bella_Mama_Instructions: Song = {
     songTitle: "Bella Mama (with Instructions)",
-    audioURL: "assets/audio/Bella_Mama_Instructions.mp3",
+    audioURL: "assets/audio/songs/Bella_Mama_Instructions.mp3",
     lyrics: [
         {
             "lyric": "One: Play with the words and sounds.",

@@ -2,7 +2,7 @@ import { Song } from '../song.model';
 
 export const Baba_La_Gumbala: Song = {
     songTitle: "Baba La Gumbala",
-    audioURL: "assets/audio/Baba_La_Gumbala.mp3",
+    audioURL: "assets/audio/songs/Baba_La_Gumbala.mp3",
     lyrics: [
         {
             "lyric": "Baba la gumbala gumbala havise",

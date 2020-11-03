@@ -18,6 +18,7 @@ import { environment } from "src/environments/environment";
 import { IntroTutorialPageModule } from "./feature/intro-tutorial/intro-tutorial.module";
 import { PrivacyPageModule } from "./feature/privacy/privacy.module";
 import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
+import { FormsModule } from '@angular/forms';
 
 const introModules = [
   IntroTutorialPageModule,
@@ -37,6 +38,7 @@ const introModules = [
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    FormsModule,
     ...introModules,
   ],
   providers: [

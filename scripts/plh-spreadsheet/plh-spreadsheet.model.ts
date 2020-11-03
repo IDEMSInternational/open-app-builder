@@ -11,11 +11,13 @@ export interface ContentIndexRow {
     Second_Character?: string,
     Entry_Condition?: string,
     Output?: string,
-    Comment_Suggestion?: string
+    Comment_Suggestion?: string,
+    Topic_Id?: string
 }
 
 export interface ToolboxExcelSheet {
     sheetName: string,
+    topicId: string,
     rows: ToolboxExcelRow[]
 }
 

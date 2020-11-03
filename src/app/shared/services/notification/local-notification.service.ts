@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from '@angular/router';
 import {
   LocalNotification,
   LocalNotificationAction,
@@ -21,7 +22,7 @@ const { LocalNotifications } = Plugins;
  */
 export class LocalNotificationService {
   enabled = false;
-  constructor() {
+  constructor(private router: Router) {
     this.init();
     this._addListeners();
   }
@@ -70,7 +71,12 @@ export class LocalNotificationService {
     // LocalNotifications.removeAllListeners();
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
-      (action) => console.log("[NOTIFICATION ACTION]", action)
+      (action) => {
+        console.log("[NOTIFICATION ACTION]", action)
+        if (action.notification.extra && action.notification.extra.openPath) {
+          this.router.navigateByUrl(action.notification.extra.openPath);
+        }
+      }
       // TODO emit event for action to other listeners?
       // good to have default as can only ever have 1 listener for each type
     );

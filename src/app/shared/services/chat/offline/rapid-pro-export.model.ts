@@ -1,6 +1,6 @@
 export namespace RapidProFlowExport {
 
-    export type ActionType = "enter_flow" | "send_msg" | "set_contact_field";
+    export type ActionType = "enter_flow" | "send_msg" | "set_contact_field" | "set_contact_name";
 
     export interface Action {
         type: ActionType;
@@ -15,10 +15,11 @@ export namespace RapidProFlowExport {
         url?: string;
         addresses?: string[];
         subject?: string;
-        attachments?: any[];
+        attachments?: string[];
         field?: { key: string, name: string };
         value?: string;
         flow?: { uuid: string; name: string; }
+        name?: string;
     }
 
     export interface Exit {
@@ -115,11 +116,7 @@ export namespace RapidProFlowExport {
     export interface UINodeData {
         type: string;
         position: Position;
-        config: Config;
-    }
-
-    export interface Nodes {
-        NODE_UUID_KEY: UINodeData;
+        config?: Config;
     }
 
     export interface Stickies {
@@ -127,7 +124,7 @@ export namespace RapidProFlowExport {
 
     export interface Ui {
         nodes: { [nodeId: string]: UINodeData };
-        stickies: Stickies;
+        stickies?: Stickies;
     }
 
     export interface RootObject {

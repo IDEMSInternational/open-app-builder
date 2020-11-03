@@ -7,6 +7,8 @@ const { SplashScreen } = Plugins;
 import { NotificationService } from "./shared/services/notification/notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { IntroTutorialPage } from "./feature/intro-tutorial/intro-tutorial.page";
+import { ChatService } from './shared/services/chat/chat.service';
+import { LocalStorageService } from './shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: "app-root",
@@ -21,7 +23,9 @@ export class AppComponent {
     private router: Router,
     private notifications: NotificationService,
     private dbService: DbService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private chatService: ChatService,
+    private localStorageService: LocalStorageService
   ) {
     this.initializeApp();
   }
@@ -32,11 +36,13 @@ export class AppComponent {
       this.dbService.init();
       this.menuController.enable(true, "main-side-menu");
 
+      this.chatService.init(!Capacitor.isNative).subscribe();
       if (Capacitor.isNative) {
         SplashScreen.hide();
         this.notifications.init();
       }
     });
+    this.localStorageService.setBoolean("welcome_skipped", false);
   }
 
   async showTutorial() {
