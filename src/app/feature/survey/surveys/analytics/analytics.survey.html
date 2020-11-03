@@ -1,7 +1,7 @@
 <ion-content fullscreen class="ion-padding" scroll-y="false">
   <ion-slides #slides>
     <!-- Privacy Consent Slide -->
-    <ion-slide>
+    <ion-slide *ngIf="!formGroup.value.analyticsConsent">
       <div class="slide">
         <img src="assets/images/privacy-policy.svg" />
         <p>
@@ -39,7 +39,7 @@
           aria-label="privacy-consent-true"
           expand="block"
           fill="clear"
-          (click)="close()"
+          (click)="dismiss()"
         >
           Skip for now
         </ion-button>
