@@ -1,10 +1,17 @@
 import { RapidProFlowExport } from 'src/app/shared/services/chat/offline/rapid-pro-export.model';
 
 export interface ContentIndexRow {
-    Sheet_Name: string,
-    Content_Type: "Conversation" | "Toolbox",
+    //Removed these as adapting to the format used by Ohad.
+    //Sheet_Name: string,
+    //Content_Type: "Conversation" | "Toolbox",
+    Flow_Type: "Conversation" | "Toolbox",
+    Module?: string,
+    Flow_Name: string,
     Character?: "Friend" | "Guide",
+    Second_Character?: string,
     Entry_Condition?: string,
+    Output?: string,
+    Comment_Suggestion?: string,
     Topic_Id?: string
 }
 
@@ -26,13 +33,15 @@ export interface ConversationExcelSheet {
 }
 
 export interface ConversationExcelRow {
-    Type: 'Start_new_flow' | 'Send_message',
-    From?: number | string,
+    Row_ID?: string,
+    Type: 'Start_new_flow' | 'Send_message' | 'Go_to',
+    From?: string,
     Condition?: string,
     Condition_Var?: string,
     MessageText: string,
     Media?: string,
     Default_Choice?: string,
+    Save_name?: string,
     Choice_1?: string,
     Choice_2?: string,
     Choice_3?: string,
@@ -43,6 +52,13 @@ export interface ConversationExcelRow {
     Choice_8?: string,
     Choice_9?: string,
     Choice_10?: string,
-    NodeUUID?: string,
+    Choice_11?: string,
+    Choice_12?: string,
+    Condition_Type?: RapidProFlowExport.RouterCaseType,
+    // This is the UUID of the Node first created for this row, which is used to set how nodes go into this node.
+    // This is set once.
+    NodeUUIDForExit?: string,
+    // This is the node to refer to when this row is mentioned as a from in another row.
+    // This is updated e.g. when looping through from nodes.
     _rapidProNode?: RapidProFlowExport.Node
 }
