@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 import {
   LocalNotification,
   LocalNotificationAction,
   Plugins,
   Capacitor,
 } from "@capacitor/core";
-import { generateRandomId } from "../utils";
 const { LocalNotifications } = Plugins;
 
 @Injectable({
@@ -72,7 +71,7 @@ export class LocalNotificationService {
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
       (action) => {
-        console.log("[NOTIFICATION ACTION]", action)
+        console.log("[NOTIFICATION ACTION]", action);
         if (action.notification.extra && action.notification.extra.openPath) {
           this.router.navigateByUrl(action.notification.extra.openPath);
         }
