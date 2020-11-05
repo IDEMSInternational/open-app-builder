@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
+import { Component, OnInit } from "@angular/core";
+import { MenuController } from "@ionic/angular";
+import { ActivatedRoute, Router } from "@angular/router";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 @Component({
-  selector: 'plh-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: "plh-home",
+  templateUrl: "home.page.html",
+  styleUrls: ["home.page.scss"],
 })
 export class HomePage implements OnInit {
-
   homeScreenOption: "indoors-blobs" | "buttons" | "empty" = "empty";
 
   guideHasNotification: boolean = true;
 
-  constructor(private menuController: MenuController, private router: Router, private route: ActivatedRoute,
-    private localStorageService: LocalStorageService) { }
+  constructor(
+    private menuController: MenuController,
+    private router: Router,
+    private route: ActivatedRoute,
+    private localStorageService: LocalStorageService
+  ) {}
 
   idClickListeners: { [id: string]: Function } = {};
 
@@ -41,7 +44,9 @@ export class HomePage implements OnInit {
     });
 
     Object.keys(this.idClickListeners).forEach((id) => {
-      document.getElementById(id).addEventListener("click", () => this.idClickListeners[id]());
+      document
+        .getElementById(id)
+        .addEventListener("click", () => this.idClickListeners[id]());
     });
   }
 
@@ -53,11 +58,14 @@ export class HomePage implements OnInit {
   }
 
   shouldRedirectToWelcome() {
-    return !(this.localStorageService.getBoolean("welcome_finished") || this.localStorageService.getBoolean("welcome_skipped"));
+    return !(
+      this.localStorageService.getBoolean("welcome_finished") ||
+      this.localStorageService.getBoolean("welcome_skipped")
+    );
   }
 
   toggleMenu() {
-    this.menuController.toggle('main-side-menu');
+    this.menuController.toggle("main-side-menu");
   }
 
   goToPage(url: string) {
@@ -65,11 +73,10 @@ export class HomePage implements OnInit {
   }
 
   openChat() {
-    this.router.navigateByUrl("/chat?character=egg")
+    this.router.navigateByUrl("/chat?character=egg");
   }
 
   openGuide() {
-    this.router.navigateByUrl("/chat?character=guide")
+    this.router.navigateByUrl("/chat?character=guide");
   }
-
 }
