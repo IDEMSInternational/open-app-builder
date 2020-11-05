@@ -1,18 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CreateReminderComponent } from './create-reminder/create-reminder.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { RemindersPage } from './reminders.page';
+import { RemindersPage } from "./components/reminders.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: RemindersPage
+    path: "",
+    component: RemindersPage,
   },
-  {
-    path: 'create',
-    component: CreateReminderComponent
-  }
 ];
 
 @NgModule({
