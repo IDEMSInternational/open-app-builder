@@ -15,16 +15,12 @@ import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
 
 import { environment } from "src/environments/environment";
-import { IntroTutorialPageModule } from "./feature/intro-tutorial/intro-tutorial.module";
 import { PrivacyPageModule } from "./feature/privacy/privacy.module";
 import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from "@angular/forms";
+import { SurveyModule } from "./feature/survey/survey.module";
 
-const introModules = [
-  IntroTutorialPageModule,
-  AppTermsPageModule,
-  PrivacyPageModule,
-];
+const introModules = [AppTermsPageModule, PrivacyPageModule];
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +36,7 @@ const introModules = [
     AngularFireAuthModule,
     FormsModule,
     ...introModules,
+    SurveyModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
