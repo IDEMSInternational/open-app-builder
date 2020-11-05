@@ -1,5 +1,23 @@
 <ion-content fullscreen class="ion-padding" scroll-y="false">
   <ion-slides #slides>
+    <ion-slide>
+      <div class="slide">
+        <h1>Bringing up teenagers is hard</h1>
+        <ion-button button (click)="showNextSlide()"> Next </ion-button>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide">
+        <h1>Slogans</h1>
+        <ion-button button (click)="showNextSlide()"> Next </ion-button>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide">
+        <h1>Replace with images</h1>
+        <ion-button button (click)="showNextSlide()"> Next </ion-button>
+      </div>
+    </ion-slide>
     <!-- Privacy Consent Slide -->
     <ion-slide *ngIf="!formGroup.value.analyticsConsent">
       <div class="slide">

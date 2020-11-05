@@ -26,6 +26,10 @@ export class AnalyticsSurveyComponent implements OnInit {
     this.formGroup = this.fb.group(this.survey.surveyCustomForm);
   }
 
+  showNextSlide() {
+    this.slides.slideNext();
+  }
+
   setPrivacyConsent(analyticsConsent: boolean) {
     this.slides.slideNext();
     // wait before patch as this will also remove the slide
