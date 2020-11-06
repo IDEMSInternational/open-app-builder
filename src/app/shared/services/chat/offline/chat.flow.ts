@@ -102,7 +102,7 @@ export class RapidProOfflineFlow implements ChatFlow {
             }
         } else {
             console.log("Router here?");
-            if (node.router.operand.indexOf("@input.") < 0) {
+            if (!(node.router.operand && node.router.operand.indexOf("@input.") > -1)) {
                 await this.useRouter(node);
             }
         }
