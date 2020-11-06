@@ -12,7 +12,7 @@ export enum ChatTriggerPhrase {
 export const triggersByPhrase: Map<ChatTriggerPhrase, ChatTrigger> = new Map();
 triggersByPhrase.set(ChatTriggerPhrase.GUIDE_START, {
     phrase: ChatTriggerPhrase.GUIDE_START,
-    flowNameToStart: "Emo_check"
+    flowNameToStart: "PLH App Welcome"
 });
 
 triggersByPhrase.set(ChatTriggerPhrase.EGG_CHARACTER_START, {
