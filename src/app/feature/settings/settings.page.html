@@ -16,5 +16,11 @@
   <ion-item>
     <ion-button (click)="openWelcomeFlow()">Open Welcome Flow</ion-button>
   </ion-item>
+  <ion-item>
+    <ion-label>Theme</ion-label>
+    <ion-select [value]="currentThemeName" okText="Okay" cancelText="Dismiss" (ionChange)="selectThemeName($event.detail.value)">
+      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}">{{themeName}}</ion-select-option>
+    </ion-select>
+  </ion-item>
 
 </ion-content>
