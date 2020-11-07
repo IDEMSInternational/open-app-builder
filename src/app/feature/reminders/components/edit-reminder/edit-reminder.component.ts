@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AlertController, ModalController } from "@ionic/angular";
 import {
@@ -16,68 +16,83 @@ import { RemindersService } from "src/app/feature/reminders/services/reminders.s
   styleUrls: ["./edit-reminder.component.scss"],
 })
 export class EditReminderComponent implements OnInit {
+  /**
+   * The required formgroup element is passed from the reminders page
+   * It contains all fields specified by the IReminder interface
+   */
   @Input() reminderForm: FormGroup;
   reminderTypes = REMINDER_TYPES;
   reminderTimes = REMINDER_TIMES;
 
   constructor(
-    private remindersService: RemindersService,
-    private router: Router,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController
   ) {}
 
   get reminder() {
-    return this.reminderForm.value;
+    return this.reminderForm.value as IReminder;
   }
 
   ngOnInit() {
     console.log("form", this.reminderForm);
     console.log("reminder", this.reminder);
+    console.log("reminderTypes", this.reminderTypes);
   }
 
+  /**
+   * Close the editor, providing the current reminder for saving where provided.
+   * Additinoally checks for changes if called without reminder, prompting the
+   * user to confirm if they want to save any available changes before dismiss
+   */
   async dismiss(reminder?: IReminder) {
-    if (reminder) {
-      this.modalCtrl.dismiss(reminder);
-    } else {
-      // close button clicked - TODO check if reminder changed
-      // and if user wants to save changes
-      if (this.reminderForm.valid && this.reminderForm.touched) {
-        const shouldSave = await this.promptSave();
-        if (!shouldSave) {
-          this.modalCtrl.dismiss();
-        }
+    console.log("dismiss", reminder, this.reminderForm);
+    if (!reminder && this.reminderForm.valid && this.reminderForm.touched) {
+      // close button clicked, reminder edited and valid - check if user wants to save
+      const shouldSave = await this.promptShouldSave();
+      if (!shouldSave) {
+        this.modalCtrl.dismiss();
       }
-      this.modalCtrl.dismiss(reminder);
     }
+    this.modalCtrl.dismiss(reminder);
   }
-  private async promptSave(): Promise<boolean> {
-    const alert = await this.alertCtrl.create({ header: "Save Reminder?" });
-    const { data } = await alert.onDidDismiss();
-    console.log("shouldSave?");
-    return data === "true";
+  private async promptShouldSave(): Promise<boolean> {
+    const alert = await this.alertCtrl.create({
+      header: "Save Reminder?",
+      message:
+        "Would you like to save the changes you have made to this reminder?",
+      buttons: [
+        {
+          text: "Do not save",
+          cssClass: "alert-cancel-button",
+          role: "cancel",
+        },
+        {
+          text: "Save Changes",
+          cssClass: "alert-save-button",
+          role: "save",
+        },
+      ],
+    });
+    await alert.present();
+    const { role } = await alert.onDidDismiss();
+    return role === "save";
   }
 
-  reminderTypeChanged(meta: IReminderTypeMeta) {
-    console.log("reminder type changed", meta);
-    if (meta.type === "custom") {
-      // TODO - show custom
-    }
-  }
+  /**
+   * Generate a fixed timestamp from textual representation
+   * (e.g. 'today', 'tomorrow' etc.)
+   */
   reminderTimeChanged(time: typeof REMINDER_TIMES.custom) {
     console.log("reminder time changed", time);
   }
-  customReminderChange(label: string | number) {
-    console.log("custom reminder change", label);
-  }
-
-  onCreateClick() {
-    this.remindersService.createReminder(this.reminder as IReminder);
-    this.router.navigateByUrl("/reminders");
-  }
-
-  onCancelClick() {
-    this.router.navigateByUrl("/reminders");
+  /**
+   * Manually patch the form when custom label changed
+   */
+  customReminderChange(label: string) {
+    const patch: Partial<IReminder> = {
+      data: { ...this.reminder.data, customLabel: label },
+    };
+    this.reminderForm.patchValue(patch);
   }
 
   dateChanged($event: CustomEvent<{ value: string }>) {

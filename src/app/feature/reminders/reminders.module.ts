@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { IonicModule } from "@ionic/angular";
 
@@ -23,6 +23,7 @@ export function lottiePlayerFactory() {
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     RemindersPageRoutingModule,
     LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),

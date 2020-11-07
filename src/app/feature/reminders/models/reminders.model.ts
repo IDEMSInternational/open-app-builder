@@ -1,4 +1,5 @@
 import { FormControl, Validators } from "@angular/forms";
+import { IDBDoc } from "src/app/shared/services/db/db.service";
 
 /******************************************************************************************
  * Reminder templates
@@ -17,6 +18,7 @@ export const REMINDER_FORM_TEMPLATE: {
 } = {
   _created: new FormControl(new Date().toISOString()),
   _modified: new FormControl(new Date().toISOString()),
+  id: new FormControl(null),
   complete: new FormControl(false),
   data: new FormControl({}),
   due: new FormControl(null, Validators.required),
@@ -45,7 +47,7 @@ export const REMINDER_TYPES: {
   },
   custom: {
     type: "custom",
-    label: null,
+    label: "Other",
     group: "",
   },
 };
@@ -91,7 +93,7 @@ export const REPEAT_DURATIONS = {
 /******************************************************************************************
  * Typings
  ******************************************************************************************/
-export interface IReminder {
+export interface IReminder extends IDBDoc {
   _created: ISODateString;
   _modified: ISODateString;
   /**

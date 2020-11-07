@@ -7,66 +7,72 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding container">
-  <ion-item>
-    <ion-label>Remind me to...</ion-label>
-    <ion-select
-      [value]="reminderTypes[reminder.type]"
-      okText="Okay"
-      cancelText="Cancel"
-      #reminderType
-      (ionChange)="reminderTypeChanged(reminderType.value)"
-    >
-      <ion-select-option
-        *ngFor="let type of reminderTypes | objectValues"
-        [value]="type"
-        >{{ type.label }}</ion-select-option
+  <form [formGroup]="reminderForm">
+    <ion-item>
+      <ion-label>Remind me to...</ion-label>
+      <ion-select
+        formControlName="type"
+        okText="Okay"
+        cancelText="Cancel"
+        #reminderType
       >
-    </ion-select>
-  </ion-item>
-  <ion-item *ngIf="reminderType.value && reminderType.value.type == 'custom'">
-    <ion-label></ion-label>
-    <ion-input
-      style="text-align: right"
-      slot="end"
-      type="text"
-      autofocus
-      #customReminderType
-      placeholder="Type reminder name here..."
-      (ionChange)="customReminderChange(customReminderType.value)"
-      debounce="500"
-    ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>When</ion-label>
-    <ion-select
-      [value]="reminder.type"
-      okText="Okay"
-      cancelText="Cancel"
-      #reminderTime
-      (ionChange)="reminderTimeChanged(reminderTime.value)"
-    >
-      <ion-select-option
-        *ngFor="let time of reminderTimes | objectValues"
-        [value]="time.value"
-        >{{ time.label }}</ion-select-option
+        <ion-select-option
+          *ngFor="let reminderType of reminderTypes | objectValues"
+          [value]="reminderType.type"
+          >{{ reminderType.label }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="reminder.type == 'custom'">
+      <ion-label></ion-label>
+      <ion-input
+        style="text-align: right"
+        slot="end"
+        type="text"
+        autofocus
+        #customReminderType
+        placeholder="Type reminder name here..."
+        [value]="reminder.data.customLabel"
+        (ionChange)="customReminderChange(customReminderType.value)"
+        debounce="500"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>When</ion-label>
+      <ion-select
+        [value]="reminder.type"
+        okText="Okay"
+        cancelText="Cancel"
+        #reminderTime
+        (ionChange)="reminderTimeChanged(reminderTime.value)"
       >
-    </ion-select>
-  </ion-item>
-  <ion-item *ngIf="reminderTime.value && reminderTime.value == 'custom'">
-    <ion-label></ion-label>
-    <ion-datetime
-      placeholder="Set custom reminder"
-      [value]="reminder.due"
-      display-timezone="utc"
-      (ionChange)="dateChanged($event)"
-    ></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label></ion-label>
-    <ion-select> </ion-select>
-  </ion-item>
-  <p>I will remind you [date] at [time]</p>
+        <ion-select-option
+          *ngFor="let time of reminderTimes | objectValues"
+          [value]="time.value"
+          >{{ time.label }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="reminderTime.value && reminderTime.value == 'custom'">
+      <ion-label></ion-label>
+      <ion-datetime
+        placeholder="Set custom reminder"
+        [value]="reminder.due"
+        display-timezone="utc"
+        (ionChange)="dateChanged($event)"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label></ion-label>
+      <ion-select> </ion-select>
+    </ion-item>
+    <p>I will remind you [date] at [time]</p>
 
-  <ion-button (click)="onCreateClick()">Create Reminder</ion-button>
-  <ion-button color="light" (click)="onCancelClick()">Cancel</ion-button>
+    <ion-button
+      style="float: right"
+      (click)="dismiss(reminder)"
+      [disabled]="!reminderForm.valid"
+      >Save Reminder</ion-button
+    >
+  </form>
 </ion-content>
