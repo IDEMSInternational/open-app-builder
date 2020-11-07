@@ -1,14 +1,13 @@
-import { IDBDoc } from "src/app/shared/services/db/db.service";
-import { IReminder, REMINDER_TYPES, REPEAT_DURATIONS } from "./reminders.model";
+import { IReminder, REMINDER_TYPES } from "./reminders.model";
 import * as Utils from "src/app/shared/utils";
 
 /**
  * Generate a dynamic set of mock data to use while testing reminders
  * This is more useful than static data when testing different time periods
  */
-function generateMock(items: number) {
+export const REMINDERS_MOCK = (items: number) => {
   return new Array(items).fill(0).map((_, i) => {
-    const reminder: IReminder & IDBDoc = {
+    const reminder: IReminder = {
       id: i,
       _created: new Date().toISOString(),
       _modified: new Date().toISOString(),
@@ -26,6 +25,4 @@ function generateMock(items: number) {
     }
     return reminder;
   });
-}
-const REMINDERS_MOCK: (IReminder & IDBDoc)[] = generateMock(10);
-export default REMINDERS_MOCK;
+};

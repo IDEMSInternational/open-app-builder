@@ -30,16 +30,9 @@ export class RemindersService {
     return this.reminders$.asObservable();
   }
 
-  updateReminder(reminder: IReminder) {
-    // let reminders: IReminder[] = this.reminders$.getValue().map((r) => {
-    //   if (r.id === reminder.id) {
-    //     return reminder;
-    //   }
-    //   return r;
-    // });
-    // this.reminders$.next(reminders);
-    // return of();
-    return;
+  async updateReminder(reminder: IReminder) {
+    await this.dbService.table("reminders").put(reminder);
+    this.loadDBReminders();
   }
 
   deleteReminder(reminder: IReminder) {}

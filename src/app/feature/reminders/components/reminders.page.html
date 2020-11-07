@@ -5,44 +5,40 @@
 </ion-header>
 
 <ion-content class="ion-padding container">
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="add" (click)="openReminderEditor()"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
   <ion-list>
     <div *ngIf="remindersByTime[0].reminders.length > 0">
       You have {{remindersByTime[0].reminders.length}} past reminders
     </div>
-    <ng-template ngFor let-group [ngForOf]="remindersByTime">
+    <ng-template ngFor let-group [ngForOf]="remindersByTime" trackBy:trackById>
       <div *ngIf="!group.hide" class="reminder-group-container">
         <ion-list-header>{{group.label}}</ion-list-header>
         <p class="no-reminders-message" *ngIf="group.reminders.length===0">
           You have no reminders for {{group.label.toLowerCase()}}
         </p>
         <ion-item
+          [attr.data-reminder-id]="reminder.id"
           *ngFor="let reminder of group.reminders"
           class="reminder-item"
-          (click)="openReminderEditor(reminder)"
+          (click)="openReminderEditor($event,reminder)"
         >
           <div class="tick-container">
             <ng-lottie
-              *ngIf="reminder.completeAnimInProgress"
+              *ngIf="activeAnimations[reminder.id]"
               containerClass="tick-lottie"
               [options]="tickAnimOptions"
               (complete)="tickAnimationComplete(reminder)"
             >
             </ng-lottie>
             <img
-              *ngIf="reminder.complete"
+              *ngIf="reminder.complete  && !activeAnimations[reminder.id]"
               class="complete-indicator"
               src="assets/images/done_tick.svg"
-              (click)="onUncompleteClicked(reminder)"
+              (click)="toggleReminderComplete($event,reminder)"
             />
             <div
-              *ngIf="!reminder.complete && !reminder.completeAnimInProgress"
+              *ngIf="!reminder.complete && !activeAnimations[reminder.id]"
               class="not-complete-indicator"
-              (click)="onCompleteClicked(reminder)"
+              (click)="toggleReminderComplete($event,reminder)"
             ></div>
           </div>
           <div class="reminder-label">{{reminder.typeMeta.label}}</div>
@@ -53,4 +49,9 @@
       You have {{remindersByTime[4].reminders.length}} later reminders
     </div>
   </ion-list>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add" (click)="openReminderEditor($event)"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
