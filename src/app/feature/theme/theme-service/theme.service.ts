@@ -67,7 +67,12 @@ export class ThemeService {
   public updateTheme(theme: AppTheme) {
     let themeMap = this.getThemeMap();
     themeMap[theme.name] = theme;
-    this.ipcService.send(ThemeService.THEME_UPDATE_CHANNEL, { theme: theme });
+    this.localStorageService.setJSON("themes", themeMap);
+    if (theme.name === this.currentTheme.name) {
+      this.currentTheme = theme;
+      this.localStorageService.setJSON("currentTheme", theme);
+    }
+    this.ipcService.send(ThemeService.THEME_UPDATE_CHANNEL, theme.name);
   }
 
   public deleteTheme(theme: AppTheme) {
@@ -81,19 +86,29 @@ export class ThemeService {
   private applyCSSVariablesForTheme(theme: AppTheme) {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     let colorNames = Object.keys(theme.colors);
+    let unchangedCount = 0;
     for (let colorName of colorNames) {
-      const colorObj = theme.colors[colorName];
+      const colorObj: ThemeColor = theme.colors[colorName];
       let value = colorObj.lightValue;
+      let cssVarName;
       if (prefersDark) {
         value = colorObj.darkValue;
       }
-      if (ionColorNames.indexOf(colorName as any) > -1) {
-        console.log("Setting CSS variable ", `--ion-color-${colorName}`, value);
-        document.body.style.setProperty(`--ion-color-${colorName}`, value);
+      if (colorObj.cssVarName) {
+        cssVarName = colorObj.cssVarName;
+      } else if (ionColorNames.indexOf(colorName as any) > -1) {
+        cssVarName = `--ion-color-${colorName}`;
       } else {
-        document.body.style.setProperty(`--theme-color-${colorName}`, value);
+        cssVarName = `--theme-color-${colorName}`;
+      }
+      if (document.body.style.getPropertyValue(cssVarName) !== value) {
+        console.log("Setting CSS variable ", cssVarName, value);
+        document.body.style.setProperty(cssVarName, value);
+      } else {
+        unchangedCount++;
       }
     }
+    console.log(`${unchangedCount} colors unchanged by theme update`);
   }
 
 }

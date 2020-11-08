@@ -51,6 +51,7 @@
     "jasmine-ts": "^0.3.0",
     "karma-typescript": "^5.2.0",
     "lottie-web": "^5.7.3",
+    "ngx-color": "^6.1.0",
     "ngx-lottie": "^6.4.0",
     "rxjs": "~6.5.1",
     "tslib": "^2.0.0",

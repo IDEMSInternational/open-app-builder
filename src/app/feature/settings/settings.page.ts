@@ -45,6 +45,7 @@ export class SettingsPage implements OnInit {
   }
 
   selectThemeName(themeName: string) {
+    this.currentThemeName = themeName;
     this.themeService.setCurrentTheme(themeName);
   }
 
