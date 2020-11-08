@@ -19,9 +19,12 @@ export interface ThemeColors {
     dark?: ThemeColor;
     medium?: ThemeColor;
     light?: ThemeColor;
+    background?: ThemeColor;
+    itemBackground?: ThemeColor;
 }
 
 export interface ThemeColor {
+    id?: keyof ThemeColors;
     name: string;
     cssVarName?: string;
     lightValue?: string;

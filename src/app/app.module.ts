@@ -19,6 +19,8 @@ import { IntroTutorialPageModule } from "./feature/intro-tutorial/intro-tutorial
 import { PrivacyPageModule } from "./feature/privacy/privacy.module";
 import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
 import { FormsModule } from '@angular/forms';
+import { ThemeEditorComponent } from './feature/theme/theme-editor/theme-editor.component';
+import { ColorSketchModule } from 'ngx-color/sketch';
 
 const introModules = [
   IntroTutorialPageModule,
@@ -27,7 +29,7 @@ const introModules = [
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ThemeEditorComponent],
 
   entryComponents: [],
   imports: [
@@ -39,7 +41,8 @@ const introModules = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FormsModule,
-    ...introModules,
+    ColorSketchModule,
+    ...introModules
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

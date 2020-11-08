@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Theme Editor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Theme to Edit</ion-label>
+    <ion-select [value]="currentTheme.name" okText="Okay" cancelText="Dismiss"
+      (ionChange)="selectThemeName($event.detail.value)">
+      <ion-select-option *ngFor="let theme of themes" value="{{theme.name}}">{{theme.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-list>
+    <ion-list-header class="colors-header">
+      Colors
+    </ion-list-header>
+    <ion-item *ngFor="let color of colors" >
+      <div class="color-summary" (click)="toggleExpanded(color)">
+        <ion-label>{{color.name}}</ion-label>
+        <div class="color-circle light" [ngStyle]="{'background-color': color.lightValue}"></div>
+        <div class="color-circle dark" [ngStyle]="{'background-color': color.darkValue}"></div>
+      </div>
+      <div class="color-pickers" *ngIf="color.expanded">
+        <ion-label>Select Light Color</ion-label>
+        <color-sketch class="color-picker" [color]="color.lightValue"
+          (onChangeComplete)="changeColorComplete($event, color, true)"></color-sketch>
+        <ion-label>Select Dark Color</ion-label>
+        <color-sketch class="color-picker" [color]="color.darkValue"
+          (onChangeComplete)="changeColorComplete($event, color, false)"></color-sketch>
+      </div>
+    </ion-item>
+    
+  </ion-list>
+
+
+</ion-content>

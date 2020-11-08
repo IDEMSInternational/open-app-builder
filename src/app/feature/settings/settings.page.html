@@ -22,5 +22,8 @@
       <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}">{{themeName}}</ion-select-option>
     </ion-select>
   </ion-item>
+  <ion-item>
+    <ion-label [routerLink]="['/theme-editor']">Theme Editor</ion-label>
+  </ion-item>
 
 </ion-content>

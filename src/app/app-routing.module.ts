@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { ThemeEditorComponent } from './feature/theme/theme-editor/theme-editor.component';
 import { StressedMultiHandAnimComponent } from "./shared/components/stressed-multi-hand-anim/stressed-multi-hand-anim.component";
 
 const routes: Routes = [
@@ -98,11 +99,15 @@ const routes: Routes = [
       import("./feature/app-terms/app-terms.module").then(
         (m) => m.AppTermsPageModule
       ),
-  },  {
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./feature/settings/settings.module').then( m => m.SettingsPageModule)
   },
-
+  {
+    path: 'theme-editor',
+    component: ThemeEditorComponent
+  }
 ];
 
 @NgModule({
