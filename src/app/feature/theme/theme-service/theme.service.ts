@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IpcService } from 'src/app/shared/services/ipc/ipc.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { BUILT_IN_THEMES, DEFAULT_THEME, THEME_2 } from '../built-in-themes';
-import { AppTheme, ionColorNames, ThemeColor } from '../theme.model';
+import { AppTheme, colorIdToCSSVarName, ionColorNames, ThemeColor, ThemeColors } from '../theme.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,10 @@ export class ThemeService {
       themes = themeMap;
     }
     return themes;
+  }
+
+  public getDefaultTheme(): AppTheme {
+    return DEFAULT_THEME;
   }
 
   public getCurrentTheme(): AppTheme {
@@ -85,21 +89,14 @@ export class ThemeService {
 
   private applyCSSVariablesForTheme(theme: AppTheme) {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    let colorNames = Object.keys(theme.colors);
+    let colorId = Object.keys(theme.colors) as (keyof ThemeColors)[];
     let unchangedCount = 0;
-    for (let colorName of colorNames) {
+    for (let colorName of colorId) {
       const colorObj: ThemeColor = theme.colors[colorName];
       let value = colorObj.lightValue;
-      let cssVarName;
+      let cssVarName = colorIdToCSSVarName(colorName);
       if (prefersDark) {
         value = colorObj.darkValue;
-      }
-      if (colorObj.cssVarName) {
-        cssVarName = colorObj.cssVarName;
-      } else if (ionColorNames.indexOf(colorName as any) > -1) {
-        cssVarName = `--ion-color-${colorName}`;
-      } else {
-        cssVarName = `--theme-color-${colorName}`;
       }
       if (document.body.style.getPropertyValue(cssVarName) !== value) {
         console.log("Setting CSS variable ", cssVarName, value);

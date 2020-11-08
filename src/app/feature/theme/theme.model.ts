@@ -1,8 +1,13 @@
 export interface AppTheme {
     name: string;
+    schemaVersion: number,
     author?: string;
     colors?: ThemeColors;
-    otherVariables?: ThemeVariable[];
+    booleans?: ThemeBooleans;
+}
+
+export interface ThemeBooleans {
+    showCharacterInChat: boolean;
 }
 
 export const ionColorNames: (keyof ThemeColors)[] = ["primary", "secondary", "tertiary", "success",
@@ -23,18 +28,21 @@ export interface ThemeColors {
     itemBackground?: ThemeColor;
 }
 
+export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
+    if (ionColorNames.indexOf(colorId) > -1) {
+        return "--ion-color-" + colorId;
+    } else {
+        switch (colorId) {
+            case "itemBackground": return "--ion-item-background";
+            default: return "--theme-var-" + colorId;
+        }
+    }
+}
+
 export interface ThemeColor {
     id?: keyof ThemeColors;
     name: string;
-    cssVarName?: string;
     lightValue?: string;
     darkValue?: string;
     description?: string;
-}
-
-export interface ThemeVariable {
-    name: string;
-    description?: string;
-    type: "boolean" | "number";
-    value: string;
 }
