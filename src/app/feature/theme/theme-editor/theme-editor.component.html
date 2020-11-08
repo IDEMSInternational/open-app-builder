@@ -16,22 +16,26 @@
     <ion-list-header class="colors-header">
       Colors
     </ion-list-header>
-    <ion-item *ngFor="let color of colors" >
+    <ion-item *ngFor="let color of colors">
       <div class="color-summary" (click)="toggleExpanded(color)">
         <ion-label>{{color.name}}</ion-label>
         <div class="color-circle light" [ngStyle]="{'background-color': color.lightValue}"></div>
         <div class="color-circle dark" [ngStyle]="{'background-color': color.darkValue}"></div>
       </div>
       <div class="color-pickers" *ngIf="color.expanded">
-        <ion-label>Select Light Color</ion-label>
-        <color-sketch class="color-picker" [color]="color.lightValue"
-          (onChangeComplete)="changeColorComplete($event, color, true)"></color-sketch>
-        <ion-label>Select Dark Color</ion-label>
-        <color-sketch class="color-picker" [color]="color.darkValue"
-          (onChangeComplete)="changeColorComplete($event, color, false)"></color-sketch>
+        <div class="color-picker">
+          <ion-label>Select Light Color</ion-label>
+          <color-sketch [color]="color.lightValue"
+            (onChangeComplete)="changeColorComplete($event, color, true)"></color-sketch>
+        </div>
+        <div class="color-picker">
+          <ion-label>Select Dark Color</ion-label>
+          <color-sketch [color]="color.darkValue"
+            (onChangeComplete)="changeColorComplete($event, color, false)"></color-sketch>
+        </div>
       </div>
     </ion-item>
-    
+
   </ion-list>
 
 

@@ -6,7 +6,7 @@ export interface AppTheme {
 }
 
 export const ionColorNames: (keyof ThemeColors)[] = ["primary", "secondary", "tertiary", "success",
-    "warning", "danger", "dark", "medium", "light"];
+    "warning", "danger", "dark", "medium", "light", "background"];
 
 export interface ThemeColors {
     // Ionic Colors
