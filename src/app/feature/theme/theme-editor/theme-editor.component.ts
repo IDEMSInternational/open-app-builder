@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../theme-service/theme.service';
-import { AppTheme, ThemeColor } from '../theme.model';
+import { AppTheme, ThemeBooleans, ThemeColor } from '../theme.model';
 import { ColorEvent } from 'ngx-color';
 
 @Component({
@@ -56,6 +56,15 @@ export class ThemeEditorComponent {
   onColorSectionClick(event, color: ThemeColor) {
     console.log("Color section click", event, color);
     this.selectedColor = color;
+  }
+
+  public keys(obj) {
+    return Object.keys(obj);
+  }
+
+  toggleBoolean(varName) {
+    this.currentTheme[]
+    this.themeService.updateTheme(this.currentTheme);
   }
 
 }

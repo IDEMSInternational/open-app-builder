@@ -2,6 +2,7 @@ import { AppTheme } from './theme.model';
 
 export const DEFAULT_THEME: AppTheme = {
     name: "PLH Teens Default",
+    schemaVersion: 1,
     colors: {
         primary: {
             id: "primary",
@@ -66,7 +67,6 @@ export const DEFAULT_THEME: AppTheme = {
         itemBackground: {
             id: "itemBackground",
             name: "Item Background",
-            cssVarName: "--ion-item-background",
             lightValue: "#eee",
             darkValue: "#222"
         }
@@ -75,6 +75,7 @@ export const DEFAULT_THEME: AppTheme = {
 
 export const THEME_2: AppTheme = {
     name: "PLH Teens 2",
+    schemaVersion: 1,
     colors: {
         primary: {
             name: "Primary",
@@ -124,14 +125,12 @@ export const THEME_2: AppTheme = {
         background: {
             id: "background",
             name: "Background",
-            cssVarName: "--ion-color-background",
             lightValue: "#eee",
             darkValue: "#222"
         },
         itemBackground: {
             id: "itemBackground",
             name: "Item Background",
-            cssVarName: "--ion-item-background",
             lightValue: "#eee",
             darkValue: "#222"
         }
