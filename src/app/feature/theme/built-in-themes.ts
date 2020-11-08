@@ -124,6 +124,7 @@ export const THEME_2: AppTheme = {
         background: {
             id: "background",
             name: "Background",
+            cssVarName: "--ion-color-background",
             lightValue: "#eee",
             darkValue: "#222"
         },
