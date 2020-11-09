@@ -102,8 +102,8 @@ export class RapidProOfflineFlow implements ChatFlow {
             }
         } else {
             console.log("Router here?");
-            if (node.router.operand.indexOf("@input.") < 0) {
-                this.useRouter(node);
+            if (!(node.router.operand && node.router.operand.indexOf("@input.") > -1)) {
+                await this.useRouter(node);
             }
         }
     }
@@ -139,24 +139,77 @@ export class RapidProOfflineFlow implements ChatFlow {
         }
     }
 
-    private useRouter(node: RapidProFlowExport.Node) {
-        if (node.router.operand === "@child.run.status") {
-            for (let routerCase of node.router.cases) {
-                if (routerCase.arguments && routerCase.arguments[0] === "completed") {
-                    let subscription = this.flowStatus$.subscribe((flowEvents) => {
-                        if (flowEvents.length > 0) {
-                            let latest = flowEvents[flowEvents.length - 1];
-                            if (latest.status === "completed" && latest.flowId === this.childFlowId) {
-                                console.log("Returning to parent flow after subflow completion");
-                                subscription.unsubscribe();
-                                this.childFlowId = null;
-                                this.exitUsingCategoryId(node, routerCase.category_uuid);
-                            }
-                        }
-                    });
-                }
+    private useSwitchRouter(node: RapidProFlowExport.Node, operandValue: string) {
+        let matchingCategoryId: string;
+        for (let routerCase of node.router.cases) {
+            if (matchesCase(routerCase, operandValue)) {
+                matchingCategoryId = routerCase.category_uuid;
+                break;
             }
         }
+        if (matchingCategoryId) {
+            this.exitUsingCategoryId(node, matchingCategoryId);
+        } else if (node.router.default_category_uuid) {
+            this.exitUsingCategoryId(node, node.router.default_category_uuid);
+        } else {
+            console.warn("Nothing matches for node ", node.uuid);
+        }
+    }
+
+    private async useRouter(node: RapidProFlowExport.Node) {
+        if (node.router.type === "random") {
+            this.exitAtRandom(node);
+        } else {
+            if (node.router.operand === "@child.run.status") {
+                this.setupSubflowCompletionSubscription(node);
+            } else {
+                let variableValue = await this.parseMessageTemplate(node.router.operand);
+                if (variableValue.startsWith("@")) {
+                    console.warn("Switch router operand starts with @ ", node.router.operand,
+                        "This is likely a mistake and this operand type isn't supported");
+                }
+                this.useSwitchRouter(node, variableValue);
+            }
+        }
+
+    }
+
+    private setupSubflowCompletionSubscription(node: RapidProFlowExport.Node) {
+        for (let routerCase of node.router.cases) {
+            if (routerCase.arguments && routerCase.arguments[0] === "completed") {
+                let subscription = this.flowStatus$.subscribe((flowEvents) => {
+                    if (flowEvents.length > 0) {
+                        let latest = flowEvents[flowEvents.length - 1];
+                        if (latest.status === "completed" && latest.flowId === this.childFlowId) {
+                            console.log("Returning to parent flow after subflow completion");
+                            subscription.unsubscribe();
+                            this.childFlowId = null;
+                            this.exitUsingCategoryId(node, routerCase.category_uuid);
+                        }
+                    }
+                });
+            }
+        }
+
+    }
+
+    private exitAtRandom(node: RapidProFlowExport.Node) {
+        let randomIndex = this.getRandomInt(0, node.router.categories.length - 1);
+        let randomCategory = node.router.categories[randomIndex];
+        this.exitUsingCategoryId(node, randomCategory.uuid);
+    }
+
+    /**
+     * Returns a random integer between min (inclusive) and max (inclusive).
+     * The value is no lower than min (or the next integer greater than min
+     * if min isn't an integer) and no greater than max (or the next integer
+     * lower than max if max isn't an integer).
+     * Using Math.round() will give you a non-uniform distribution!
+    */
+    private getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     private exitUsingCategoryId(node: RapidProFlowExport.Node, matchingCategoryId: string) {
@@ -170,8 +223,16 @@ export class RapidProOfflineFlow implements ChatFlow {
         let output: string = "" + template;
 
         let regexResult: RegExpExecArray;
-        // Match Contact fields
-        let contactFieldRegex = /@contact\.([0-9a-zA-Z\_]*)/gm;
+        // Match Rapid Pro Contact fixed variables
+        let contactVaraibleRegex = /@contact\.([0-9a-zA-Z\_]*)/gm;
+        while ((regexResult = contactVaraibleRegex.exec(template)) !== null) {
+            let fullMatch = regexResult[0];
+            let fieldName = regexResult[1];
+            output = output.replace(fullMatch, await this.contactFieldService.getContactField(fieldName));
+        }
+
+        // Match Rapid Pro Contact fields
+        let contactFieldRegex = /@fields\.([0-9a-zA-Z\_]*)/gm;
         while ((regexResult = contactFieldRegex.exec(template)) !== null) {
             let fullMatch = regexResult[0];
             let fieldName = regexResult[1];
