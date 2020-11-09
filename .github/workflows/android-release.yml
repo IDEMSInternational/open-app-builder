@@ -34,7 +34,7 @@ jobs:
       - name: "Build Android project"
         uses: vgaidarji/android-github-actions-build@v1.0.1
         with:
-          args: "./gradlew assemble"
+          args: "cd android && ./gradlew assemble"
       - name: Get Package version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
