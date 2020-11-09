@@ -23,11 +23,10 @@
         >
       </ion-select>
     </ion-item>
-    <ion-item *ngIf="reminder.type == 'custom'">
-      <ion-label></ion-label>
+    <ion-item>
       <ion-input
+        *ngIf="reminder.type == 'custom'"
         style="text-align: right"
-        slot="end"
         type="text"
         autofocus
         #customReminderType
@@ -39,34 +38,25 @@
     </ion-item>
     <ion-item>
       <ion-label>When</ion-label>
-      <ion-select
-        [value]="reminder.type"
-        okText="Okay"
-        cancelText="Cancel"
-        #reminderTime
-        (ionChange)="reminderTimeChanged(reminderTime.value)"
-      >
+      <ion-input
+        style="text-align: right"
+        slot="end"
+        type="date"
+        [value]="reminder.due | isoDateToDateInput"
+        #dueDate
+        (ionChange)="dueDateChanged(dueDate.value)"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Repeat</ion-label>
+      <ion-select formControlName="repeat">
         <ion-select-option
-          *ngFor="let time of reminderTimes | objectValues"
-          [value]="time.value"
-          >{{ time.label }}</ion-select-option
+          *ngFor="let duration of repeatDurations | objectValues"
+          [value]="duration.value"
+          >{{ duration.label }}</ion-select-option
         >
       </ion-select>
     </ion-item>
-    <ion-item *ngIf="reminderTime.value && reminderTime.value == 'custom'">
-      <ion-label></ion-label>
-      <ion-datetime
-        placeholder="Set custom reminder"
-        [value]="reminder.due"
-        display-timezone="utc"
-        (ionChange)="dateChanged($event)"
-      ></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label></ion-label>
-      <ion-select> </ion-select>
-    </ion-item>
-    <p>I will remind you [date] at [time]</p>
 
     <ion-button
       style="float: right"
