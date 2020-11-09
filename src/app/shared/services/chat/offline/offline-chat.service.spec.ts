@@ -6,7 +6,7 @@ import { ChatMessage } from '../chat-msg.model';
 import { testFlowExport1 } from './test-flow-exports/test-export1';
 import { skip } from 'rxjs/operators';
 
-fdescribe('OfflineChatService', () => {
+describe('OfflineChatService', () => {
 
   let service: OfflineChatService;
   let httpTestingController: HttpTestingController;
