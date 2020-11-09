@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, of } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { IReminder } from "../models/reminders.model";
 import { DbService } from "src/app/shared/services/db/db.service";
 
@@ -7,8 +7,6 @@ import { DbService } from "src/app/shared/services/db/db.service";
   providedIn: "root",
 })
 export class RemindersService {
-  static LIST_LS_KEY = "reminders_list";
-
   public reminders$ = new BehaviorSubject<IReminder[]>([]);
 
   constructor(private dbService: DbService) {
@@ -21,16 +19,12 @@ export class RemindersService {
     this.reminders$.next(reminders);
   }
 
-  async createReminder(reminder: IReminder) {
-    await this.dbService.table("reminders").put(reminder);
-    return this.loadDBReminders();
-  }
-
-  getReminders(): Observable<IReminder[]> {
-    return this.reminders$.asObservable();
-  }
-
-  async updateReminder(reminder: IReminder) {
+  async setReminder(reminder: IReminder) {
+    // reminder form populates an empty placeholder id, which has to be removed
+    // to allow the db to populate
+    if (reminder.id === null) {
+      delete reminder.id;
+    }
     await this.dbService.table("reminders").put(reminder);
     this.loadDBReminders();
   }
