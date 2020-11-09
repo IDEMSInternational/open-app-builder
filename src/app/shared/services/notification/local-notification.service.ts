@@ -5,6 +5,7 @@ import {
   LocalNotificationAction,
   Plugins,
   Capacitor,
+  LocalNotificationPendingList,
 } from "@capacitor/core";
 const { LocalNotifications } = Plugins;
 
@@ -64,6 +65,14 @@ export class LocalNotificationService {
     });
     console.log("scheduled notifications", result);
     return result;
+  }
+
+  /**
+   *
+   * @example this.removeNotifications({notifications:[{id:"103"}]})
+   */
+  removeNotifications(notifications: LocalNotificationPendingList) {
+    return LocalNotifications.cancel(notifications);
   }
 
   async _addListeners() {
