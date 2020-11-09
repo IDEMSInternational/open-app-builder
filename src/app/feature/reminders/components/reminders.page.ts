@@ -40,7 +40,6 @@ export class RemindersPage implements OnInit, OnDestroy {
         const remindersByTime = REMINDERS_TEMPLATE();
         for (const reminder of reminders) {
           const period = this.getTimePeriod(reminder.due);
-          console.log(reminder.id, period);
           remindersByTime[period].reminders.push({
             ...reminder,
             // populate full type label and meta data
@@ -109,25 +108,28 @@ export class RemindersPage implements OnInit, OnDestroy {
     await modal.present();
     const { data } = await modal.onDidDismiss();
     if (data) {
-      this.updateReminder(data as IReminderWithMeta);
+      this.setReminder(data as IReminderWithMeta);
     }
   }
 
+  /**
+   * When a reminder complete status is toggled update the database and trigger any animations
+   * NOTE - the update triggers a full db fetch/re-render so any other in-progress animations
+   * will be restarted if a new reminder checked (minor bug/limitation)
+   */
   async toggleReminderComplete(e: Event, reminder: IReminderWithMeta & IDBDoc) {
     e.stopImmediatePropagation();
-    await this.updateReminder({ ...reminder, complete: !reminder.complete });
+    await this.setReminder({ ...reminder, complete: !reminder.complete });
     if (!reminder.complete) {
-      console.log("start animation");
       this.activeAnimations[reminder.id] = true;
     }
   }
 
   tickAnimationComplete(reminder: IReminderWithMeta & IDBDoc) {
-    console.log("stop animation");
     this.activeAnimations[reminder.id] = false;
   }
 
-  updateReminder(reminderWithMeta: IReminderWithMeta) {
+  setReminder(reminderWithMeta: IReminderWithMeta) {
     console.log("update reminder", reminderWithMeta);
     // remove metadata
     delete reminderWithMeta.typeMeta;
@@ -135,7 +137,7 @@ export class RemindersPage implements OnInit, OnDestroy {
       ...reminderWithMeta,
       _modified: new Date().toISOString(),
     };
-    return this.remindersService.updateReminder(reminder);
+    return this.remindersService.setReminder(reminder);
   }
 }
 
