@@ -39,7 +39,6 @@ export class EditReminderComponent {
    * user to confirm if they want to save any available changes before dismiss
    */
   async dismiss(reminder?: IReminder) {
-    console.log("dismiss", reminder, this.reminderForm);
     if (!reminder && this.reminderForm.valid && this.reminderForm.touched) {
       // close button clicked, reminder edited and valid - check if user wants to save
       const shouldSave = await this.promptShouldSave();
@@ -77,7 +76,7 @@ export class EditReminderComponent {
    * values and specify a default time of 9am
    * @param value - date-input formatted value, e.g. 2020-11-09
    */
-  dueDateChanged(value: string) {
+  dueDateChanged(value: any) {
     const parsedDate = parseISO(value);
     parsedDate.setHours(9);
     this.setFormValues({ due: parsedDate.toISOString() });
