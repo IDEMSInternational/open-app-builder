@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { RemindersService } from '../../reminders/reminders.service';
+import { RemindersService } from 'src/app/feature/reminders/services/reminders.service';
 import { ToolboxService } from '../../toolbox/toolbox.service';
 
 import { ChatActionService } from './chat-action.service';
@@ -15,7 +15,7 @@ describe('ChatActionService', () => {
 
   beforeEach(() => {
     jasmine.clock().install();
-    mockRemindersService = jasmine.createSpyObj("RemindersService", ["createReminder"]);
+    mockRemindersService = jasmine.createSpyObj("RemindersService", ["setReminder"]);
     mockToolboxService = jasmine.createSpyObj("ToolboxService", ["unlockTopic"]);
     mockRouter = jasmine.createSpyObj("Router", ["navigateByUrl"]);
 
@@ -115,7 +115,7 @@ describe('ChatActionService', () => {
         repeats: null,
         notifications: [],
       };
-      expect(mockRemindersService.createReminder).toHaveBeenCalledWith(expectedReminder);
+      expect(mockRemindersService.setReminder).toHaveBeenCalledWith(expectedReminder);
     });
 
     it('can create a reminder using due date parameter', () => {
@@ -141,7 +141,7 @@ describe('ChatActionService', () => {
         repeats: null,
         notifications: [],
       };
-      expect(mockRemindersService.createReminder).toHaveBeenCalledWith(expectedReminder);
+      expect(mockRemindersService.setReminder).toHaveBeenCalledWith(expectedReminder);
     });
 
   });
