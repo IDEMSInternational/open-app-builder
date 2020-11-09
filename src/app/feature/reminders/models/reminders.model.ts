@@ -2,6 +2,44 @@ import { FormControl, Validators } from "@angular/forms";
 import { IDBDoc } from "src/app/shared/services/db/db.service";
 
 /******************************************************************************************
+ * Typings
+ ******************************************************************************************/
+export interface IReminder extends IDBDoc {
+  _created: ISODateString;
+  _modified: ISODateString;
+  /**
+   * ID for lookup against fix set of reminder types
+   */
+  type: IReminderType;
+  /**
+   * Date reminder is set as due, in date.toISOString() format
+   */
+  due: ISODateString;
+  /**
+   * Additional metadata to pass to a reminder
+   */
+  data: IReminderData;
+  complete: boolean;
+  repeat: IRepeatString;
+  notify: boolean;
+  notifications: any[];
+}
+
+interface IReminderData {
+  customLabel?: string;
+}
+
+export interface IReminderTypeMeta {
+  type: IReminderType;
+  label: string;
+  group: string;
+}
+export type IReminderType = "praise_child" | "one_on_one_time" | "custom";
+
+type IRepeatString = keyof typeof REPEAT_DURATIONS;
+type ISODateString = string;
+
+/******************************************************************************************
  * Reminder templates
  ******************************************************************************************/
 
@@ -18,13 +56,13 @@ export const REMINDER_FORM_TEMPLATE: {
 } = {
   _created: new FormControl(new Date().toISOString()),
   _modified: new FormControl(new Date().toISOString()),
-  id: new FormControl(null),
+  id: new FormControl(undefined),
   complete: new FormControl(false),
   data: new FormControl({}),
   due: new FormControl(null, Validators.required),
   notify: new FormControl(false),
   notifications: new FormControl([]),
-  repeats: new FormControl(null),
+  repeat: new FormControl("never"),
   type: new FormControl(null, Validators.required),
 };
 
@@ -52,6 +90,9 @@ export const REMINDER_TYPES: {
   },
 };
 
+/**
+ * Note - currently not used, preferring instead to use a calendar date picker
+ */
 export const REMINDER_TIMES = {
   one_hour: {
     label: "In One Hour",
@@ -72,6 +113,10 @@ export const REMINDER_TIMES = {
 };
 
 export const REPEAT_DURATIONS = {
+  never: {
+    label: "Do not repeat",
+    value: "never",
+  },
   daily: {
     label: "Daily",
     value: "daily",
@@ -84,46 +129,4 @@ export const REPEAT_DURATIONS = {
     label: "Monthly",
     value: "monthly",
   },
-  custom: {
-    label: "Custom",
-    value: "custom",
-  },
 };
-
-/******************************************************************************************
- * Typings
- ******************************************************************************************/
-export interface IReminder extends IDBDoc {
-  _created: ISODateString;
-  _modified: ISODateString;
-  /**
-   * ID for lookup against fix set of reminder types
-   */
-  type: IReminderType;
-  /**
-   * Date reminder is set as due, in date.toISOString() format
-   */
-  due: ISODateString;
-  /**
-   * Additional metadata to pass to a reminder
-   */
-  data: IReminderData;
-  complete: boolean;
-  repeats: IRepeatString;
-  notify: boolean;
-  notifications: any[];
-}
-
-interface IReminderData {
-  customLabel?: string;
-}
-
-export interface IReminderTypeMeta {
-  type: IReminderType;
-  label: string;
-  group: string;
-}
-export type IReminderType = "praise_child" | "one_on_one_time" | "custom";
-
-type IRepeatString = "daily" | "weekly" | "monthly" | "custom";
-type ISODateString = string;

@@ -1,21 +1,20 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
 import { AlertController, ModalController } from "@ionic/angular";
+import { parseISO } from "date-fns";
 import {
   IReminder,
   REMINDER_TYPES,
-  IReminderTypeMeta,
   REMINDER_TIMES,
+  REPEAT_DURATIONS,
 } from "src/app/feature/reminders/models/reminders.model";
-import { RemindersService } from "src/app/feature/reminders/services/reminders.service";
 
 @Component({
   selector: "plh-edit-reminder",
   templateUrl: "./edit-reminder.component.html",
   styleUrls: ["./edit-reminder.component.scss"],
 })
-export class EditReminderComponent implements OnInit {
+export class EditReminderComponent {
   /**
    * The required formgroup element is passed from the reminders page
    * It contains all fields specified by the IReminder interface
@@ -23,6 +22,7 @@ export class EditReminderComponent implements OnInit {
   @Input() reminderForm: FormGroup;
   reminderTypes = REMINDER_TYPES;
   reminderTimes = REMINDER_TIMES;
+  repeatDurations = REPEAT_DURATIONS;
 
   constructor(
     private modalCtrl: ModalController,
@@ -31,12 +31,6 @@ export class EditReminderComponent implements OnInit {
 
   get reminder() {
     return this.reminderForm.value as IReminder;
-  }
-
-  ngOnInit() {
-    console.log("form", this.reminderForm);
-    console.log("reminder", this.reminder);
-    console.log("reminderTypes", this.reminderTypes);
   }
 
   /**
@@ -79,29 +73,28 @@ export class EditReminderComponent implements OnInit {
   }
 
   /**
-   * Generate a fixed timestamp from textual representation
-   * (e.g. 'today', 'tomorrow' etc.)
+   * When date input changed create a new date object from the picker
+   * values and specify a default time of 9am
+   * @param value - date-input formatted value, e.g. 2020-11-09
    */
-  reminderTimeChanged(time: typeof REMINDER_TIMES.custom) {
-    console.log("reminder time changed", time);
+  dueDateChanged(value: string) {
+    const parsedDate = parseISO(value);
+    parsedDate.setHours(9);
+    this.setFormValues({ due: parsedDate.toISOString() });
   }
   /**
    * Manually patch the form when custom label changed
    */
-  customReminderChange(label: string) {
-    const patch: Partial<IReminder> = {
-      data: { ...this.reminder.data, customLabel: label },
-    };
-    this.reminderForm.patchValue(patch);
+  customReminderChange(label: any) {
+    this.setFormValues({ data: { ...this.reminder.data, customLabel: label } });
   }
 
-  dateChanged($event: CustomEvent<{ value: string }>) {
-    console.log("date changed ", $event);
-    const { value } = $event.detail;
-    this.reminder.due = new Date(value).toISOString();
-  }
-
-  toDateString(epoch: number) {
-    return new Date(epoch).toString();
+  /**
+   * Type-safe way to call form patchValue function to update a subset of values
+   * and mark form as edited (by default programatic updates are not recorded as form changes)
+   */
+  private setFormValues(values: Partial<IReminder>) {
+    this.reminderForm.markAsTouched();
+    this.reminderForm.patchValue(values);
   }
 }
