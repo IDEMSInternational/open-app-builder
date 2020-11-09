@@ -23,9 +23,8 @@
         >
       </ion-select>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="reminder.type == 'custom'">
       <ion-input
-        *ngIf="reminder.type == 'custom'"
         style="text-align: right"
         type="text"
         autofocus
