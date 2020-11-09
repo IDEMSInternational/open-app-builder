@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 import {
   LocalNotification,
   LocalNotificationAction,
   Plugins,
   Capacitor,
+  LocalNotificationPendingList,
 } from "@capacitor/core";
-import { generateRandomId } from "../utils";
 const { LocalNotifications } = Plugins;
 
 @Injectable({
@@ -67,12 +67,20 @@ export class LocalNotificationService {
     return result;
   }
 
+  /**
+   *
+   * @example this.removeNotifications({notifications:[{id:"103"}]})
+   */
+  removeNotifications(notifications: LocalNotificationPendingList) {
+    return LocalNotifications.cancel(notifications);
+  }
+
   async _addListeners() {
     // LocalNotifications.removeAllListeners();
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
       (action) => {
-        console.log("[NOTIFICATION ACTION]", action)
+        console.log("[NOTIFICATION ACTION]", action);
         if (action.notification.extra && action.notification.extra.openPath) {
           this.router.navigateByUrl(action.notification.extra.openPath);
         }

@@ -6,11 +6,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from "@angular/core";
-import {
-  Calendar,
-  CalendarOptions,
-  FullCalendarComponent,
-} from "@fullcalendar/angular";
+import { CalendarOptions, FullCalendarComponent } from "@fullcalendar/angular";
 import { Subscription } from "rxjs";
 import { DbService, IDBEvent } from "src/app/shared/services/db/db.service";
 import { EventService } from "src/app/shared/services/event/event.service";
