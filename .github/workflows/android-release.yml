@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Populate Firebase Config
-        run: echo ${{ secrets. }} > src/environments/firebaseConfig.ts
+        run: echo ${{ secrets.FIREBASE_TS_CONFIG }} > src/environments/firebaseConfig.ts
       - name: npm run build
         run: npm run build
       - name: npx cap sync
