@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { RemindersService } from 'src/app/feature/reminders/services/reminders.service';
 import { LocalStorageService } from '../../local-storage/local-storage.service';
-import { RemindersService } from '../../reminders/reminders.service';
 import { toolboxTopicNames } from '../../toolbox/toolbox-topic-metadata';
 import { ToolboxTopicType } from '../../toolbox/toolbox.model';
 import { ToolboxService } from '../../toolbox/toolbox.service';
@@ -54,7 +54,7 @@ export class ChatActionService {
       repeats: null,
       notifications: [],
     };
-    this.remindersService.createReminder(reminder as any);
+    this.remindersService.setReminder(reminder as any);
   }
 
   private navigate(urlParts: URLParts) {
