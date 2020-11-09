@@ -31,9 +31,10 @@ jobs:
         run: npm run build
       - name: npx cap sync
         run: npx cap sync
-      - name: Gradle Assemble Android
-        working-directory: android
-        run: ./gradlew assemble
+      - name: "Build Android project"
+        uses: vgaidarji/android-github-actions-build@v1.0.1
+        with:
+          args: "./gradlew assemble"
       - name: Get Package version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
