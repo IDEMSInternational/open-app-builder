@@ -13,10 +13,8 @@
           "uuid": "93fff404-101d-4d37-984e-a77e7cb66274",
           "actions": [
             {
-              "attachments": [
-                "image/png:https://rapidpro.idems.international/media/attachments/39/9443/steps/4f21c5d8-79dc-424a-a59f-a61c2fb22a7a.png"
-              ],
-              "text": "Yo!!!!\nTaking care of teens is hard, and nobody is doing this perfectly. Take a moment to praise yourself for keeping it up. \nYou are a real star!",
+              "attachments": [],
+              "text": "Taking care of teens is hard, and nobody is doing this perfectly. Take a moment to praise yourself for keeping it up. \nYou are a real star!",
               "type": "send_msg",
               "quick_replies": [],
               "uuid": "51297a01-839c-48aa-b975-46c9ad70e45f"
