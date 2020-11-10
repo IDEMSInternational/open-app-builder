@@ -89,7 +89,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: $SIGNED_RELEASE_FILE
+          asset_path: android/app/build/outputs/bundle/release/app-release.aab
           asset_name: app-release.aab
           asset_content_type: application/zip
       - name: Upload Debug APK
