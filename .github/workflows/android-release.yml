@@ -31,6 +31,10 @@ jobs:
       - name: Get Package version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
+      - name: Install Tree
+        run: apt-get install tree
+      - name: Tree 1
+        run: tree -a
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -67,8 +71,8 @@ jobs:
         run: ./gradlew --no-daemon assemble
       - name: List Android Files
         run: ls -l android
-      - name: Tree
-        run: apt-get install tree && tree -a
+      - name: Tree 2
+        run: tree -a
       - name: Upload Debug APK
         uses: actions/upload-release-asset@v1
         env:
