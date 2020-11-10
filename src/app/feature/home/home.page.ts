@@ -20,34 +20,7 @@ export class HomePage implements OnInit {
     private localStorageService: LocalStorageService
   ) {}
 
-  idClickListeners: { [id: string]: Function } = {};
-
   ngOnInit(): void {
-    this.router.events.subscribe((event) => {
-      if (localStorage.getItem("home_screen.use_button_version") === "true") {
-        this.homeScreenOption = "buttons";
-      }
-    });
-    this.route.queryParams.subscribe((paramMap) => {
-      if (this.shouldRedirectToWelcome()) {
-        this.homeScreenOption = "empty";
-      } else {
-        this.homeScreenOption = "buttons";
-        if (paramMap["homeOption"]) {
-          if (paramMap["homeOption"] === "buttons") {
-            this.homeScreenOption = "buttons";
-          } else {
-            this.homeScreenOption = "indoors-blobs";
-          }
-        }
-      }
-    });
-
-    Object.keys(this.idClickListeners).forEach((id) => {
-      document
-        .getElementById(id)
-        .addEventListener("click", () => this.idClickListeners[id]());
-    });
   }
 
   ionViewWillEnter() {
@@ -55,13 +28,15 @@ export class HomePage implements OnInit {
       this.homeScreenOption = "empty";
       this.router.navigateByUrl("/chat?trigger=welcome");
     }
+    if (this.localStorageService.getBoolean("home_screen.use_button_version")) {
+      this.homeScreenOption = "buttons";
+    } else {
+      this.homeScreenOption = "indoors-blobs";
+    }
   }
 
   shouldRedirectToWelcome() {
-    return !(
-      this.localStorageService.getBoolean("welcome_finished") ||
-      this.localStorageService.getBoolean("welcome_skipped")
-    );
+    return false;
   }
 
   toggleMenu() {
