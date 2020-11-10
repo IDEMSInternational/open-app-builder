@@ -33,7 +33,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(async () => {
       await this.surveyService.runSurvey("analytics");
-      await this.surveyService.runSurvey("welcome");
+      
       this.skipTutorial = true;
       this.dbService.init();
       this.menuController.enable(true, "main-side-menu");
