@@ -44,7 +44,6 @@ export class AppComponent {
         this.notifications.init();
       }
     });
-    this.localStorageService.setBoolean("welcome_skipped", false);
   }
 
   clickOnMenuItem(id: string) {
