@@ -44,4 +44,8 @@ export class LocalStorageService {
     }
     return result === "true";
   }
+
+  clear() {
+    localStorage.clear();
+  }
 }
