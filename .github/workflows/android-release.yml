@@ -65,14 +65,10 @@ jobs:
       - name: Build Android
         working-directory: android
         run: ./gradlew --no-daemon assemble
-      - name: Sign Android Release 
-        uses: r0adkll/sign-android-release@v1
-        with:
-          releaseDirectory: ./android/app/release
-          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+      - name: List Android Files
+        run: ls -l android
+      - name: Tree
+        run: apt-get install tree && tree -a
       - name: Upload Debug APK
         uses: actions/upload-release-asset@v1
         env:
@@ -82,6 +78,23 @@ jobs:
           asset_path: ./android/app/build/outputs/apk/debug/app-debug.apk
           asset_name: app-debug.apk
           asset_content_type: application/zip
+      - name: Upload unsigned AAB
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./android/app/release/app-release.aab
+          asset_name: app-release-unsigned.aab
+          asset_content_type: application/zip
+      - name: Sign Android Release 
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: ./android/app/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
       - name: Upload Signed App Bundle
         uses: actions/upload-release-asset@v1
         env:
