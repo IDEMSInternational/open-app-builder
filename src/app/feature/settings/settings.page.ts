@@ -1,7 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatService } from 'src/app/shared/services/chat/chat.service';
+import { DbService } from 'src/app/shared/services/db/db.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
+import { SurveyService } from '../survey/survey.service';
 
 @Component({
   selector: 'plh-settings',
@@ -14,7 +16,8 @@ export class SettingsPage implements OnInit {
 
   public useButtonHomeScreen = false;
 
-  constructor(private chatService: ChatService, private localStorageService: LocalStorageService, private router: Router) { }
+  constructor(private chatService: ChatService, private localStorageService: LocalStorageService,
+    private router: Router, private surveyService: SurveyService, private dbService: DbService) { }
 
   toggleButtonHomeScreen() {
     this.localStorageService.setBoolean("home_screen.use_button_version", this.useButtonHomeScreen);
@@ -33,6 +36,15 @@ export class SettingsPage implements OnInit {
     this.localStorageService.setBoolean("weclome_skipped", false);
     this.localStorageService.setBoolean("weclome_finished", false);
     this.router.navigateByUrl("/chat?trigger=welcome");
+  }
+
+  openWelcomeSurvey() {
+    this.surveyService.runSurvey("welcome");
+  }
+
+  resetApp() {
+    this.localStorageService.clear();
+    this.dbService.db.delete();
   }
 
 }
