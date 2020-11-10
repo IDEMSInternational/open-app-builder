@@ -32,7 +32,7 @@ jobs:
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
       - name: Install Tree
-        run: apt-get install tree
+        run: sudo apt-get install tree
       - name: Tree 1
         run: tree -a
       - name: Create Release
