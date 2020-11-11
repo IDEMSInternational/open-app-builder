@@ -27,7 +27,7 @@ export namespace RapidProFlowExport {
         uuid: string;
     }
 
-    export type RouterCaseType = "has_only_phrase" | "has_any_word" | "has_number_between" | "has_number_lt" | "has_number_gt";
+    export type RouterCaseType = "has_any_word" | "has_all_words" | "has_only_phrase" | "has_phrase" | "has_number_between" | "has_number_lt" | "has_number_gt" | "has_only_text";
 
     export interface RouterCase {
         arguments: string[];

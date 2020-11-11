@@ -11,7 +11,7 @@ const routes: Routes = [
     component: ChatPage
   },
   {
-    path: 'action',
+    path: 'action/:actionType',
     component: ChatActionComponent
   }
 ];

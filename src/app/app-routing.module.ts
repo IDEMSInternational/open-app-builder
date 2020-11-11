@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
-import { ThemeEditorComponent } from './feature/theme/theme-editor/theme-editor.component';
+import { ThemeEditorComponent } from 'src/app/feature/theme/theme-editor/theme-editor.component';
 import { StressedMultiHandAnimComponent } from "./shared/components/stressed-multi-hand-anim/stressed-multi-hand-anim.component";
 
 const routes: Routes = [
@@ -107,7 +107,14 @@ const routes: Routes = [
   {
     path: 'theme-editor',
     component: ThemeEditorComponent
-  }
+  },
+  {
+    path: "reminders",
+    loadChildren: () =>
+      import("./feature/reminders/reminders.module").then(
+        (m) => m.RemindersPageModule
+      ),
+  },
 ];
 
 @NgModule({

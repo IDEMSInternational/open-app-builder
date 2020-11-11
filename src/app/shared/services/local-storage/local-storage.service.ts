@@ -57,4 +57,7 @@ export class LocalStorageService {
     this.setString(key, "" + value);
   }
 
+  clear() {
+    localStorage.clear();
+  }
 }

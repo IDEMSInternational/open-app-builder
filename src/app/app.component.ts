@@ -1,15 +1,14 @@
 import { Component } from "@angular/core";
 
-import { Platform, MenuController, ModalController } from "@ionic/angular";
+import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
-import { Plugins, StatusBarStyle, Capacitor } from "@capacitor/core";
+import { Plugins, Capacitor } from "@capacitor/core";
 const { SplashScreen } = Plugins;
 import { NotificationService } from "./shared/services/notification/notification.service";
 import { DbService } from "./shared/services/db/db.service";
-import { IntroTutorialPage } from "./feature/intro-tutorial/intro-tutorial.page";
-import { ChatService } from './shared/services/chat/chat.service';
-import { LocalStorageService } from './shared/services/local-storage/local-storage.service';
 import { ThemeService } from './feature/theme/theme-service/theme.service';
+import { ChatService } from "./shared/services/chat/chat.service";
+import { SurveyService } from "./feature/survey/survey.service";
 
 @Component({
   selector: "app-root",
@@ -24,18 +23,19 @@ export class AppComponent {
     private router: Router,
     private notifications: NotificationService,
     private dbService: DbService,
-    private modalCtrl: ModalController,
     private chatService: ChatService,
-    private localStorageService: LocalStorageService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private surveyService: SurveyService
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.themeService.init();
-    this.platform.ready().then(() => {
-      this.showTutorial();
+    this.platform.ready().then(async () => {
+      await this.surveyService.runSurvey("analytics");
+      
+      this.skipTutorial = true;
       this.dbService.init();
       this.menuController.enable(true, "main-side-menu");
 
@@ -45,26 +45,6 @@ export class AppComponent {
         this.notifications.init();
       }
     });
-    this.localStorageService.setBoolean("welcome_skipped", false);
-  }
-
-  async showTutorial() {
-    // skip tutorial if already seen, or viewing policy pages direct (e.g. google bot)
-    this.skipTutorial =
-      ["/privacy", "/app-terms"].includes(location.pathname) ||
-      localStorage.getItem("tutorialComplete")
-        ? true
-        : false;
-    if (!this.skipTutorial) {
-      const modal = await this.modalCtrl.create({
-        component: IntroTutorialPage,
-        backdropDismiss: false,
-        componentProps: { isModal: true },
-      });
-      await modal.present();
-      await modal.onDidDismiss();
-      this.skipTutorial = true;
-    }
   }
 
   clickOnMenuItem(id: string) {
