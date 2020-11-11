@@ -15,14 +15,17 @@ export class ThemeService {
 
   constructor(private ipcService: IpcService, private localStorageService: LocalStorageService) {
 
-    this.currentTheme = this.getCurrentTheme();
-
     // Listens on IPC for updates to current theme
     this.ipcService.listen(ThemeService.THEME_UPDATE_CHANNEL).subscribe((themeName: string) => {
         let themeMap = this.getThemeMap();
         this.applyCSSVariablesForTheme(themeMap[themeName]);
         this.currentTheme = themeMap[themeName];
     });
+  }
+
+  init() {
+    this.currentTheme = this.getCurrentTheme();
+    this.applyCSSVariablesForTheme(this.currentTheme);
   }
 
   private getThemeMap(): { [themeName: string]: AppTheme } {
@@ -44,6 +47,9 @@ export class ThemeService {
     let themeMap = this.getThemeMap();
     let currentThemeName = this.localStorageService.getString("currentThemeName");
     this.currentTheme = themeMap[currentThemeName];
+    console.log("Theme map ", themeMap);
+    console.log("Current theme name ", currentThemeName);
+    console.log("Current theme ... ", this.currentTheme);
     if (!this.currentTheme) {
       this.currentTheme = DEFAULT_THEME;
     }
