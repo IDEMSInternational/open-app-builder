@@ -15,18 +15,14 @@ import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
 
 import { environment } from "src/environments/environment";
-import { IntroTutorialPageModule } from "./feature/intro-tutorial/intro-tutorial.module";
 import { PrivacyPageModule } from "./feature/privacy/privacy.module";
 import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
-import { FormsModule } from '@angular/forms';
-import { ThemeEditorComponent } from './feature/theme/theme-editor/theme-editor.component';
+import { ThemeEditorComponent } from 'src/app/feature/theme/theme-editor/theme-editor.component';
 import { ColorSketchModule } from 'ngx-color/sketch';
+import { FormsModule } from "@angular/forms";
+import { SurveyModule } from "src/app/feature/survey/survey.module";
 
-const introModules = [
-  IntroTutorialPageModule,
-  AppTermsPageModule,
-  PrivacyPageModule,
-];
+const introModules = [AppTermsPageModule, PrivacyPageModule];
 
 @NgModule({
   declarations: [AppComponent, ThemeEditorComponent],
@@ -42,7 +38,8 @@ const introModules = [
     AngularFireAuthModule,
     FormsModule,
     ColorSketchModule,
-    ...introModules
+    ...introModules,
+    SurveyModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

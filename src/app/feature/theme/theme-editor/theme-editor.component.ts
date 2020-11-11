@@ -62,7 +62,7 @@ export class ThemeEditorComponent {
     return obj ? Object.keys(obj) : [];
   }
 
-  toggleBoolean(varName) {
+  toggleBoolean(varName: string) {
     this.currentTheme.booleans[varName] = !this.currentTheme.booleans[varName];
     this.themeService.updateTheme(this.currentTheme);
   }

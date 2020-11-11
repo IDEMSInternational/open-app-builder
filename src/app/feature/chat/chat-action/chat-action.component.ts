@@ -11,41 +11,40 @@ import { ChatAction, ChatActionType } from 'src/app/shared/services/chat/common/
 export class ChatActionComponent implements OnInit {
 
   actionType: string;
-  params: any;
+  actionJSON: string;
   executionStatus: "in_progress" | "success" | "failure" = "in_progress";
   debugMsg: string;
 
   constructor(private chatActionService: ChatActionService, private route: ActivatedRoute) {
-    this.route.queryParams.subscribe((params) => {
-      this.params = params;
-      if (params.type && ChatActionType[params.type]) {
-        this.actionType = params.type;
-        const action: ChatAction = {
-          type: params.type,
-          executed: false,
-          params: params
-        };
+    this.getActionFromParams()
+      .then((action) => {
+        this.actionType = action.type;
+        this.actionJSON = JSON.stringify(action);
         this.chatActionService.executeChatAction(action).then(() => {
           this.executionStatus = "success";
         }, (err) => {
           this.executionStatus = "failure";
           this.debugMsg = "Failed: " + err;
         });
-      } else {
-        if (params.type) {
-          this.debugMsg = "No chat action with type " + params.type;
-        } else {
-          this.debugMsg = "No chat action type provided."
-        }
-        
-      }
-    });
+      }, (err) => {
+        this.debugMsg = "Failed to create action: " + err;
+      });
   }
 
-  ngOnInit() {}
-
-  stringify(obj: any) {
-    return JSON.stringify(obj);
+  async getActionFromParams(): Promise<ChatAction> {
+    const actionType = this.route.snapshot.paramMap.get("actionType");
+    if (actionType && ChatActionType[actionType]) {
+      const action: ChatAction = {
+        type: actionType as ChatActionType,
+        executed: false,
+        params: this.route.snapshot.queryParams
+      };
+      return action;
+    } else {
+      throw "No chat action with type " + actionType;
+    }
   }
+
+  ngOnInit() { }
 
 }

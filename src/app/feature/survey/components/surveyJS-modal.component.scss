@@ -1,0 +1,13 @@
+.survey-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#surveyElement {
+  overflow: auto;
+  flex: 1;
+}
+// Hide end of survey thank-you page
+.sv-root-modern .sv-completedpage {
+  display: none;
+}
