@@ -21,6 +21,10 @@ export class ThemeService {
         this.applyCSSVariablesForTheme(themeMap[themeName]);
         this.currentTheme = themeMap[themeName];
     });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      this.applyCSSVariablesForTheme(this.currentTheme);
+    });
   }
 
   init() {
@@ -47,9 +51,6 @@ export class ThemeService {
     let themeMap = this.getThemeMap();
     let currentThemeName = this.localStorageService.getString("currentThemeName");
     this.currentTheme = themeMap[currentThemeName];
-    console.log("Theme map ", themeMap);
-    console.log("Current theme name ", currentThemeName);
-    console.log("Current theme ... ", this.currentTheme);
     if (!this.currentTheme) {
       this.currentTheme = DEFAULT_THEME;
     }
@@ -94,7 +95,7 @@ export class ThemeService {
   }
 
   private applyCSSVariablesForTheme(theme: AppTheme) {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     let colorId = Object.keys(theme.colors) as (keyof ThemeColors)[];
     let unchangedCount = 0;
     for (let colorName of colorId) {
