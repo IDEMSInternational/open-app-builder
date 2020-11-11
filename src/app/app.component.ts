@@ -9,6 +9,7 @@ import { DbService } from "./shared/services/db/db.service";
 import { IntroTutorialPage } from "./feature/intro-tutorial/intro-tutorial.page";
 import { ChatService } from './shared/services/chat/chat.service';
 import { LocalStorageService } from './shared/services/local-storage/local-storage.service';
+import { ThemeService } from './feature/theme/theme-service/theme.service';
 
 @Component({
   selector: "app-root",
@@ -25,12 +26,14 @@ export class AppComponent {
     private dbService: DbService,
     private modalCtrl: ModalController,
     private chatService: ChatService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private themeService: ThemeService
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
+    this.themeService.init();
     this.platform.ready().then(() => {
       this.showTutorial();
       this.dbService.init();
