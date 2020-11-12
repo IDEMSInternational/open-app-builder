@@ -10,7 +10,7 @@ export const environment = {
   },
   firebaseConfig,
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
-  chatHiddenPaths: ["/chat/action"]
+  chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"]
 };
 
 // This file can be replaced during build by using the `fileReplacements` array.

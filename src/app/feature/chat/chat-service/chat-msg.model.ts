@@ -17,7 +17,28 @@ export interface ChatMessage {
     actions?: ChatAction[];
     responseOptions?: ChatResponseOption[];
     attachments?: ChatAttachment[];
+    
+    // Configurable by /chat/msg-info
+    isStory?: boolean;
+    character?: CharacterId
 }
+
+export type CharacterId = "Guide" | "Neighbour";
+export const characterIds = ["Guide", "Neighbour"];
+
+export const appCustomFields: {
+    key: keyof ChatMessage,
+    type: "string" | "boolean" | "float" | "integer"
+}[] = [
+    {
+        key: "character",
+        type: "string"
+    },
+    {
+        key: "isStory",
+        type: "boolean"
+    }
+];
 
 export interface ChatAttachment {
     type: "image" | "video" | "audio" | "other",

@@ -1,4 +1,4 @@
-import { RapidProFlowExport } from 'src/app/shared/services/chat/offline/rapid-pro-export.model';
+import { RapidProFlowExport } from 'src/app/feature/chat/chat-service/offline/rapid-pro-export.model';
 
 export interface ContentIndexRow {
     //Removed these as adapting to the format used by Ohad.
