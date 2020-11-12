@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Subject, of, concat, Observable, from } from "rxjs";
 import { filter, first } from "rxjs/operators";
-import { generateRandomId } from "../utils";
+import { generateRandomId } from "src/app/shared/utils";
 
 @Injectable({
   providedIn: "root",
