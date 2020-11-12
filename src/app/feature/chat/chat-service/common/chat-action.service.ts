@@ -58,10 +58,12 @@ export class ChatActionService {
   }
 
   private navigate(urlParts: URLParts) {
-    console.log("NAVIGATE??", urlParts);
     let url = urlParts.path;
     if (urlParts.query) {
       url += "?" + urlParts.query;
+    }
+    if (urlParts.fragment) {
+      url += "#" + urlParts.fragment;
     }
     this.router.navigateByUrl(url);
   }
