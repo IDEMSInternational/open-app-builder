@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChatService } from 'src/app/shared/services/chat/chat.service';
+import { ChatService } from 'src/app/feature/chat/chat-service/chat.service';
 import { DbService } from 'src/app/shared/services/db/db.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { ThemeService } from 'src/app/feature/theme/theme-service/theme.service';
