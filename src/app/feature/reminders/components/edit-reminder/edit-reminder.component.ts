@@ -87,6 +87,30 @@ export class EditReminderComponent {
   customReminderChange(label: any) {
     this.setFormValues({ data: { ...this.reminder.data, customLabel: label } });
   }
+  async promptReminderDelete(reminder: IReminder) {
+    const alert = await this.alertCtrl.create({
+      header: "Delete Reminder?",
+      message: "Are you sure you would like to delete this reminder?",
+      buttons: [
+        {
+          text: "Cancel",
+          cssClass: "alert-cancel-button",
+          role: "cancel",
+        },
+        {
+          text: "Delete",
+          cssClass: "alert-delete-button",
+          role: "delete",
+        },
+      ],
+    });
+    await alert.present();
+    const { role } = await alert.onDidDismiss();
+    // handle deletion in the parent page
+    if (role === "delete") {
+      await this.modalCtrl.dismiss(reminder, "delete");
+    }
+  }
 
   /**
    * Type-safe way to call form patchValue function to update a subset of values

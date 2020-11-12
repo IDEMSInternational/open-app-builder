@@ -4,3 +4,6 @@ ion-content {
 ion-content.background-secondary {
   --background: var(--ion-color-secondary);
 }
+button.alert-button.alert-delete-button {
+  color: var(--ion-color-danger);
+}
