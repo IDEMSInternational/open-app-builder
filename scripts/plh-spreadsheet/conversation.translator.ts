@@ -70,13 +70,21 @@ export class ConversationTranslator {
                 // TODO Should more checks be done if Type is undefined but there may be other contents?
                 if (row.Type === undefined) {
                     continue;
-                } else if (row.Type === "Send_message") {
+                } else if (row.Type === "Send_message" || row.Type === "Story_message") {
                     if (row.MessageText === undefined) {
                         throw new Error("On row " + row.Row_ID.toString() + ": Message text cannot be blank for Type = Send_message.");
                     }
+                    let action_text = row.MessageText;
+                    // App specific properties that will be appended to MessageText in a link.
+                    let link_text = "https://plh-demo1.idems.international/chat/msg-info?";
+                    let add_texts: string[] = [];
+                    if (row.Type === "Story_message") add_texts.push("isStory=true");
+                    if (row.Character) add_texts.push("character="+row.Character);
+                    if (row.Choose_multi) add_texts.push("chooseMulti=true");
+                    if (add_texts.length > 0) action_text += (" " + link_text + add_texts.join("&")) 
                     actionNode.actions.push({
                         "attachments": [],
-                        "text": row.MessageText,
+                        "text": action_text,
                         "type": "send_msg",
                         "quick_replies": this.getRowChoices(row),
                         "uuid": this.generateUUID()
