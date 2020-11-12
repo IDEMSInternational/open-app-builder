@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { ChatAttachment, ChatMessage, IRapidProMessage } from './chat-msg.model';
+import { appCustomFields, ChatAttachment, ChatMessage, IRapidProMessage } from './chat-msg.model';
 import { ChatAction, ChatActionType } from './common/chat-actions';
 
 export type URLParts = { url: string, protocol: string, domain: string, port?: number, path?: string, query?: string, fragment?: string };
@@ -21,7 +21,7 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
   let attachments = await convertRapidProAttachments(attachmentStrings);
   let text = removeHiddenURLs(rpMsg.message, urlPartsList);
   let actions = getActionsFromURLS(urlPartsList);
-  return {
+  let msg: ChatMessage = {
     text: text,
     sender: "bot",
     dateReceived: new Date(),
@@ -29,6 +29,27 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
     attachments: attachments,
     actions: actions
   };
+  msg = applyCustomMessageInfo(urlPartsList, msg);
+  return msg;
+}
+
+export function applyCustomMessageInfo(urlPartsList: URLParts[], msg: ChatMessage) {
+  let msgInfoUrlParts = urlPartsList.find((parts) => parts.path.startsWith("/chat/msg-info"));
+  if (msgInfoUrlParts) {
+    const qParams: Object = queryStringToObject(msgInfoUrlParts.query);
+    for (let customField of appCustomFields) {
+      if (qParams.hasOwnProperty(customField.key)) {
+        const value = qParams[customField.key];
+        switch (customField.type) {
+          case "boolean": msg[customField.key as string] = value === "true"; break;
+          case "float": msg[customField.key as string] = Number.parseFloat(value); break;
+          case "integer": msg[customField.key as string] = Number.parseInt(value); break;
+          default: msg[customField.key as string] = value;
+        }
+      }
+    }
+  }
+  return msg;
 }
 
 export function urlsToAttachmentStrings(urlPartsList: URLParts[]): string[] {
@@ -52,7 +73,10 @@ export function getActionsFromURLS(urlPartsList: URLParts[]): ChatAction[] {
   let matchingOurDomain = urlPartsList
     .filter((urlParts) => environment.domains.indexOf(urlParts.domain) > -1);
   let navigationActions: ChatAction[] = matchingOurDomain
-    .filter((urlParts) => urlParts.fragment && urlParts.fragment.indexOf("goto") > -1)
+    .filter((urlParts) => {
+      return environment.chatNonNavigatePaths
+        .findIndex((nonNav) => urlParts.path.startsWith(nonNav)) < 0;
+    })
     .map((urlParts) => ({
       executed: false,
       type: ChatActionType.NAVIGATE,
@@ -91,15 +115,12 @@ export function removeHiddenURLs(text: string, urlPartsList: URLParts[]) {
 }
 
 export function isHiddenURL(urlParts: URLParts): boolean {
+  return false;
   if (urlParts.path.startsWith("/media/attachments/")) {
     return true;
   }
   if (environment.domains.indexOf(urlParts.domain.toLowerCase()) > -1) {
-    for (let hiddenPath of environment.chatHiddenPaths) {
-      if (urlParts.path.startsWith(hiddenPath)) {
-        return true;
-      }
-    }
+    return true;
   }
   return false;
 }
