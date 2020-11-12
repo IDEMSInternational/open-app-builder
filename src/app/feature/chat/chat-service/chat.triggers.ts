@@ -17,9 +17,8 @@ triggersByPhrase.set(ChatTriggerPhrase.GUIDE_START, {
 
 triggersByPhrase.set(ChatTriggerPhrase.EGG_CHARACTER_START, {
     phrase: ChatTriggerPhrase.EGG_CHARACTER_START,
-    flowNameToStart: "Friend_calm"
+    flowNameToStart: "Praise_Intro"
 });
-
 
 triggersByPhrase.set(ChatTriggerPhrase.WELCOME, {
     phrase: ChatTriggerPhrase.EGG_CHARACTER_START,

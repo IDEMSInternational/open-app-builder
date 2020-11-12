@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, from, throwError, of, Subscription } from 'rxjs';
-import { IRapidProMessage, NotificationService } from '../../notification/notification.service';
-import { ToolboxService } from '../../toolbox/toolbox.service';
+import { BehaviorSubject, Observable, from, of, Subscription } from 'rxjs';
 import { ChatMessage } from '../chat-msg.model';
-import { ChatService } from '../chat.service';
 import { ChatTrigger } from '../chat.triggers';
 import { Capacitor } from "@capacitor/core";
 import { convertFromRapidProMsg } from '../message.converter';
+import { NotificationService } from 'src/app/shared/services/notification/notification.service';
+import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
 
 @Injectable({
   providedIn: 'root'
@@ -47,22 +46,6 @@ export class OnlineChatService {
 
   public sendMessage(message: ChatMessage): Observable<any> {
     return from(this.notificationService.sendRapidproMessage(message.text));
-  }
-
-  private isControlMessage(rpMsg: IRapidProMessage): boolean {
-    return rpMsg.message.indexOf("UNLOCK_TOPIC,") > -1;
-  }
-
-  private executeControlMessage(rpMsg: IRapidProMessage) {
-    if (rpMsg.message.indexOf("UNLOCK_TOPIC,") > -1) {
-      let topicTypeString = rpMsg.message.split(",")[1];
-      this.toolboxService.getTopicMetadatas().subscribe((topicMetadatas) => {
-        let topicMetadata = topicMetadatas.find((tmd) => tmd.type === topicTypeString);
-        if (topicMetadata) {
-          this.toolboxService.unlockTopic(topicMetadata.type);
-        }
-      });
-    }
   }
 
 }
