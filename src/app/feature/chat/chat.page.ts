@@ -20,6 +20,8 @@ export class ChatPage {
   allMessages: ChatMessage[] = [];
   responseOptions: ChatResponseOption[] = [];
 
+  lastReceivedMsg: ChatMessage;
+
   botBlobState:
     | "walking-in"
     | "walking-out"
@@ -57,6 +59,8 @@ export class ChatPage {
   character: "guide" | "egg" = "guide";
   messageSubscription: Subscription;
 
+  chatViewType: "normal" | "story" = "normal";
+
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
@@ -92,19 +96,19 @@ export class ChatPage {
       this.chatService.runTrigger({ phrase: this.triggerPhrase }).subscribe((messages$) => {
         console.log("Ran trigger ", this.triggerPhrase);
         this.messageSubscription = messages$
-        .asObservable()
-        .subscribe((messages) => {
-          console.log("from chat service ", messages);
-          if (messages.length > 0) {
-            const latestMessage = messages[messages.length - 1];
-            if (latestMessage.actions && latestMessage.actions.length > 0) {
-              for (let action of latestMessage.actions) {
-                this.chatActionService.executeChatAction(action);
+          .asObservable()
+          .subscribe((messages) => {
+            console.log("from chat service ", messages);
+            if (messages.length > 0) {
+              const latestMessage = messages[messages.length - 1];
+              if (latestMessage.actions && latestMessage.actions.length > 0) {
+                for (let action of latestMessage.actions) {
+                  this.chatActionService.executeChatAction(action);
+                }
               }
+              this.onNewMessage(latestMessage);
             }
-            this.onNewMessage(latestMessage);
-          }
-        });
+          });
       });
     });
   }
@@ -117,108 +121,31 @@ export class ChatPage {
     this.cd.detectChanges();
   }
 
-  onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
-    this.messagesReceived += 1;
-    let chatMsg: ChatMessage = {
-      sender: "bot",
-      text: rapidMsg.message
-    };
-    if (rapidMsg.quick_replies) {
-      try {
-        chatMsg.responseOptions = JSON.parse(rapidMsg.quick_replies).map(
-          (word: string) => {
-            let responseOption: ChatResponseOption = {
-              text: word,
-            };
-            if (word.toLowerCase().indexOf("help") > -1) {
-              responseOption.customAction = "bot-run-back";
-            }
-            if (word.toLowerCase().indexOf("come back") > -1) {
-              responseOption.customAction = "bot-walk-back";
-            }
-            return responseOption;
-          }
-        );
-      } catch (ex) {
-        console.log("Error parsing quick replies", ex);
-      }
-    }
-    if (this.autoReplyEnabled) {
-      setTimeout(() => {
-        if (rapidMsg.message.toLowerCase().indexOf(this.autoEndPhrase.toLowerCase()) > -1) {
-          this.debugMsg = "THE END!!";
-        } else if (rapidMsg.message.toLowerCase().indexOf(this.autoRepeatPhrase.toLowerCase()) > -1) {
-          this.debugMsg = "repeating...";
-          this.chatService.sendMessage({
-            sender: "user",
-            text: this.triggerPhrase
-          });
-        } else if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
-          this.debugMsg = "flow is stuck. repeating...";
-          this.chatService.sendMessage({
-            sender: "user",
-            text: this.triggerPhrase
-          });
-        } else {
-          this.debugMsg = "";
-          if (chatMsg.responseOptions && chatMsg.responseOptions.length > 0) {
-            let responseOption = chatMsg.responseOptions[0];
-            if (!this.sentResponsesByMessage[chatMsg.text]) {
-              this.sentResponsesByMessage[chatMsg.text] = [];
-            } else {
-              let unusedResponses = chatMsg.responseOptions
-                .filter((option) => this.sentResponsesByMessage[chatMsg.text].indexOf(option.text) < 0);
-              if (unusedResponses.length < 1) {
-                const responseIndex = Math.floor(Math.random() * chatMsg.responseOptions.length);
-                if (chatMsg.responseOptions[responseIndex]) {
-                  responseOption = chatMsg.responseOptions[responseIndex];
-                } else {
-                  responseOption = chatMsg.responseOptions[0];
-                }
-              } else {
-                responseOption = unusedResponses[0];
-              }
-            }
-            this.sentResponsesByMessage[chatMsg.text].push(responseOption.text);
-            this.selectResponseOption(responseOption);
-          } else {
-            this.debugMsg = "auto reply: N";
-            this.sendCustomOption(this.autoReplyWord);
-          }
-        }
-      }, this.autoReplyDelay);
-    }
-    setTimeout(() => {
-      this.onNewMessage(chatMsg);
-    });
-  }
-
   onNewMessage(message: ChatMessage) {
     console.log(
       "Got to the bit where I do something with the messages!",
       message
     );
     message.dateReceived = new Date();
-    this.allMessages.push(message);
-    if (message.sender === "bot") {
-      if (this.botBlobState === "still") {
-        setTimeout(() => {
-          this.botAnimOptions = {
-            path: "assets/lottie-animations/TalkingGesture_Pass_v1.json",
-            loop: false,
-          };
-        });
+    this.lastReceivedMsg = message;
+    if (message.isStory) {
+      this.chatViewType = "story";
+    } else {
+      this.chatViewType = "normal";
+      this.allMessages.push(message);
+
+      if (this.showingAllMessages) {
+        this.messages = this.allMessages;
+      } else {
+        this.messages = this.allMessages.slice(this.allMessages.length - 2);
       }
+    }
+    if (message.sender === "bot") {
       this.responseOptions = message.responseOptions
         ? message.responseOptions
         : [];
     } else {
       this.responseOptions = [];
-    }
-    if (this.showingAllMessages) {
-      this.messages = this.allMessages;
-    } else {
-      this.messages = this.allMessages.slice(this.allMessages.length - 2);
     }
     this.cd.detectChanges();
   }
@@ -306,5 +233,19 @@ export class ChatPage {
       return currentMsg.character === prevMsg.character;
     }
     return false;
+  }
+
+  onStoryNextClicked() {
+    this.chatService.sendMessage({
+      sender: "user",
+      text: "Next"
+    });
+  }
+
+  onStoryPreviousClicked() {
+    this.chatService.sendMessage({
+      sender: "user",
+      text: "Previous"
+    });
   }
 }

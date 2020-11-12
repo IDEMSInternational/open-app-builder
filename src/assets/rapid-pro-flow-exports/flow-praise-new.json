@@ -172,7 +172,9 @@
                     "uuid": "c635e44c-c4e5-4533-836d-3270f61158b6",
                     "actions": [
                         {
-                            "attachments": [],
+                            "attachments": [
+                                "image:https://plh-demo1.idems.international/assets/images/stories/praise_story1/Panel1.jpg"
+                            ],
                             "text": "I was busy cooking and my one daughter @fields.neighbourchild was doing her homework. She was practicing reading her book out loud and her sister @fields.neighbourteen was helping her: \n https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                             "type": "send_msg",
                             "quick_replies": [
@@ -192,7 +194,9 @@
                     "uuid": "c38a8853-0038-4a5b-8715-e3c539f3fc90",
                     "actions": [
                         {
-                            "attachments": [],
+                            "attachments": [
+                                "image:https://plh-demo1.idems.international/assets/images/stories/praise_story1/Panel1.jpg"
+                            ],
                             "text": "@fields.neighbourchild (struggling over a difficult word): \"The girl braw – broo – brought the ball to her brother\" https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                             "type": "send_msg",
                             "quick_replies": [
