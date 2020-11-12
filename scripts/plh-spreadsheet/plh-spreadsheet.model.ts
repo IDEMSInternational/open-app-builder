@@ -34,12 +34,14 @@ export interface ConversationExcelSheet {
 
 export interface ConversationExcelRow {
     Row_ID?: string,
-    Type: 'Start_new_flow' | 'Send_message' | 'Go_to',
+    Type: 'Start_new_flow' | 'Send_message' | 'Story_message' | 'Go_to',
     From?: string,
     Condition?: string,
     Condition_Var?: string,
+    Character?: string,
     MessageText: string,
     Media?: string,
+    Choose_multi?: boolean,
     Default_Choice?: string,
     Save_name?: string,
     Choice_1?: string,
