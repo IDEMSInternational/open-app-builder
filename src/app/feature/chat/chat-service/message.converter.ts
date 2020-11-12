@@ -115,7 +115,6 @@ export function removeHiddenURLs(text: string, urlPartsList: URLParts[]) {
 }
 
 export function isHiddenURL(urlParts: URLParts): boolean {
-  return false;
   if (urlParts.path.startsWith("/media/attachments/")) {
     return true;
   }
