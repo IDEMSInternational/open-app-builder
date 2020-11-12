@@ -35,9 +35,9 @@
                             "text": "How does it make you feel when I say that?   https://plh-demo1.idems.international/chat/msg-info?character=Guide",
                             "type": "send_msg",
                             "quick_replies": [
-                                "slight smile",
-                                "moderate smile",
-                                "big smile"
+                                "🙂",
+                                "😐",
+                                "😀"
                             ],
                             "uuid": "f5d09c07-3df6-40aa-9719-2352a0e4e4a2"
                         }
@@ -446,9 +446,9 @@
                             "text": "That's great right? How do you think what I said  made both my daughters feel?  https://plh-demo1.idems.international/chat/msg-info?character=Neighbour",
                             "type": "send_msg",
                             "quick_replies": [
-                                "slight smile",
-                                "moderate smile",
-                                "big smile"
+                                "🙂",
+                                "😐",
+                                "😀"
                             ],
                             "uuid": "1921b615-b5c1-4af4-85c7-874ac835769e"
                         }
