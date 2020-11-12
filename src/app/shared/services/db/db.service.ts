@@ -21,6 +21,9 @@ const DB_TABLES = {
   calendar: "++id",
   surveys: "++id,surveyId",
   reminders: "++id,type",
+  goals: "id",
+  // taskAction ids are not auto-incremented to make it easier to track repeated daily tasks using prefix-suffix
+  taskActions: "id,taskId",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**
@@ -37,7 +40,7 @@ export interface IDBDoc {
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
  */
-const DB_VERSION = 2000;
+const DB_VERSION = 2004;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({

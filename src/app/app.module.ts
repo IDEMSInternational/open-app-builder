@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouteReuseStrategy } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFireModule } from "@angular/fire";
@@ -28,6 +29,7 @@ const introModules = [AppTermsPageModule, PrivacyPageModule];
   entryComponents: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,

@@ -55,9 +55,7 @@
     "use-pipe-transform-interface": true,
     "one-variable-per-declaration": false,
     "component-class-suffix": [true, "Page", "Component", "Class"],
-    "semicolon": {
-      "options": ["always"]
-    },
+    "semicolon": [false],
     "space-before-function-paren": {
       "options": {
         "anonymous": "never",

@@ -55,8 +55,11 @@ export class RemindersService {
     return reminder;
   }
 
-  deleteReminder(reminder: IReminder) {
-    console.error("TODO - add reminder delete");
+  async deleteReminder(reminder: IReminder) {
+    const { notifications } = reminder;
+    await this.localNotifications.removeNotifications({ notifications });
+    await this.dbService.table("reminders").delete(reminder.id);
+    this.loadDBReminders();
   }
 
   /**
