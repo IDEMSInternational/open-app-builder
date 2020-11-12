@@ -11,7 +11,12 @@
   width: 100%;
 }
 
-.bot-messages {
+.normal-chat {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.story-mode {
   flex-grow: 1;
   overflow-y: auto;
 }

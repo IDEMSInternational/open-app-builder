@@ -1,12 +1,5 @@
-<div class="container">
-  <div *ngIf="botBlobState !='absent'" [hidden]="showingAllMessages" class="bot-blob">
-    <ng-lottie *ngIf="character === 'guide'" containerClass="bot-lottie" [options]="botAnimOptions">
-    </ng-lottie>
-    <div *ngIf="character === 'egg'" style="padding-left: 50%">
-      <img src="assets/images/egg_character1.svg">
-    </div>
-  </div>
-  <div #messagesContent class="bot-messages">
+<div class="container" *ngIf="!lastReceivedMsg?.isStory">
+  <div #messagesContent class="normal-chat">
     <div class="messages">
       <div *ngIf="autoReplyEnabled" class="auto-reply-container">
         <p>Messages Sent {{messagesSent}}</p>
@@ -54,4 +47,14 @@
     </form>
   </div>
   <ion-button *ngIf="triggerPhrase === 'welcome'" class="skip-button" (click)="skipWelcome()">Skip</ion-button>
+</div>
+<div *ngIf="lastReceivedMsg?.isStory" class="story-chat">
+  <h1>{{lastReceivedMsg.text}}</h1>
+  <img class="story-image" *ngIf="lastReceivedMsg?.attachments[0]?.type === 'image'" [src]="lastReceivedMsg?.attachments[0].url">
+  <div class="response-options">
+    <div *ngFor="let option of responseOptions" class="response-option">
+      <div *ngIf="option.text.toLowerCase() !== 'previous'" (click)="onStoryNextClicked()">Next</div>
+      <div *ngIf="option.text.toLowerCase() === 'previous'" (click)="onStoryPreviousClicked()">Previous</div>
+    </div>
+  </div>
 </div>
