@@ -7,7 +7,7 @@ const { SplashScreen } = Plugins;
 import { NotificationService } from "./shared/services/notification/notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from './feature/theme/theme-service/theme.service';
-import { ChatService } from "./shared/services/chat/chat.service";
+import { ChatService } from "./feature/chat/chat-service/chat.service";
 import { SurveyService } from "./feature/survey/survey.service";
 
 @Component({

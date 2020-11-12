@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { RemindersService } from 'src/app/feature/reminders/services/reminders.service';
-import { LocalStorageService } from '../../local-storage/local-storage.service';
-import { toolboxTopicNames } from '../../toolbox/toolbox-topic-metadata';
-import { ToolboxTopicType } from '../../toolbox/toolbox.model';
-import { ToolboxService } from '../../toolbox/toolbox.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
+import { toolboxTopicNames } from 'src/app/shared/services/toolbox/toolbox-topic-metadata';
+import { ToolboxTopicType } from 'src/app/shared/services/toolbox/toolbox.model';
+import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
 import { URLParts } from '../message.converter';
-import { ChatAction, ChatActionType } from './chat-actions';
+import { ChatAction } from './chat-actions';
 
 @Injectable({
   providedIn: 'root'

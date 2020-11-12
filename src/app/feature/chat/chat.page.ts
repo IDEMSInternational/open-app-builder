@@ -2,11 +2,11 @@ import { Component, ChangeDetectorRef } from "@angular/core";
 import { AnimationOptions } from "ngx-lottie";
 import { IRapidProMessage } from 'src/app/shared/services/notification/notification.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/shared/services/chat/chat-msg.model';
+import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/feature/chat/chat-service/chat-msg.model';
 import { Subscription } from 'rxjs';
-import { ChatService } from 'src/app/shared/services/chat/chat.service';
-import { ChatTriggerPhrase } from 'src/app/shared/services/chat/chat.triggers';
-import { ChatActionService } from 'src/app/shared/services/chat/common/chat-action.service';
+import { ChatService } from 'src/app/feature/chat/chat-service/chat.service';
+import { ChatTriggerPhrase } from 'src/app/feature/chat/chat-service/chat.triggers';
+import { ChatActionService } from 'src/app/feature/chat/chat-service/common/chat-action.service';
 import { first } from 'rxjs/operators';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
