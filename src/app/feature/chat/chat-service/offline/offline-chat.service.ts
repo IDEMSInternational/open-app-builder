@@ -46,7 +46,8 @@ export class OfflineChatService {
   }
 
   public init() {
-    return this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_3.json");
+    this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_3.json");
+    return this.loadExportFile("assets/rapid-pro-flow-exports/flow-praise-new.json");
   }
 
   public runTrigger(trigger: ChatTrigger): Observable<BehaviorSubject<ChatMessage[]>> {
