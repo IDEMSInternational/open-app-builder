@@ -300,4 +300,11 @@ export class ChatPage {
     this.localStorageService.setBoolean("welcome_skipped", true);
     this.router.navigateByUrl("/home");
   }
+
+  sameAsLastCharacter(currentMsg: ChatMessage, prevMsg: ChatMessage) {
+    if (prevMsg) {
+      return currentMsg.character === prevMsg.character;
+    }
+    return false;
+  }
 }
