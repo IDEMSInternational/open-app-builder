@@ -2605,7 +2605,7 @@
             {
               "attachments": [],
               "quick_replies": [
-                "slight smile",
+                "🙂",
                 "moderate \r\nsmile",
                 "big \r\nsmile"
               ],
@@ -2638,7 +2638,7 @@
             "cases": [
               {
                 "arguments": [
-                  "slight smile"
+                  "🙂"
                 ],
                 "category_uuid": "fdda4d08-791b-4d16-81a1-4bb0e5e42a33",
                 "type": "has_only_phrase",
@@ -2646,7 +2646,7 @@
               },
               {
                 "arguments": [
-                  "moderate smile"
+                  "😐"
                 ],
                 "category_uuid": "fdda4d08-791b-4d16-81a1-4bb0e5e42a33",
                 "type": "has_only_phrase",
@@ -2654,7 +2654,7 @@
               },
               {
                 "arguments": [
-                  "big smile"
+                  "😀"
                 ],
                 "category_uuid": "fdda4d08-791b-4d16-81a1-4bb0e5e42a33",
                 "type": "has_only_phrase",
@@ -2669,7 +2669,7 @@
               },
               {
                 "exit_uuid": "54d7afe2-6fee-498e-93cd-5e9686e61dbe",
-                "name": "slight smile,  moderate smile,  big smile",
+                "name": "🙂,  😐,  😀",
                 "uuid": "fdda4d08-791b-4d16-81a1-4bb0e5e42a33"
               }
             ],
@@ -2909,7 +2909,7 @@
             {
               "attachments": [],
               "quick_replies": [
-                "slight smile",
+                "🙂",
                 "moderate \r\nsmile",
                 "big \r\nsmile"
               ],
@@ -2942,7 +2942,7 @@
             "cases": [
               {
                 "arguments": [
-                  "slight smile"
+                  "🙂"
                 ],
                 "category_uuid": "23f27e85-f5e0-4320-90c5-ada1f41f2eeb",
                 "type": "has_only_phrase",
@@ -2950,7 +2950,7 @@
               },
               {
                 "arguments": [
-                  "moderate smile"
+                  "😐"
                 ],
                 "category_uuid": "23f27e85-f5e0-4320-90c5-ada1f41f2eeb",
                 "type": "has_only_phrase",
@@ -2958,7 +2958,7 @@
               },
               {
                 "arguments": [
-                  "big smile"
+                  "😀"
                 ],
                 "category_uuid": "23f27e85-f5e0-4320-90c5-ada1f41f2eeb",
                 "type": "has_only_phrase",
@@ -2973,7 +2973,7 @@
               },
               {
                 "exit_uuid": "0f4054aa-0bb2-4d37-935e-aeacd8ef3c1a",
-                "name": "slight smile,  moderate smile, big smile",
+                "name": "🙂,  😐, 😀",
                 "uuid": "23f27e85-f5e0-4320-90c5-ada1f41f2eeb"
               }
             ],

@@ -19,6 +19,13 @@
 .story-mode {
   flex-grow: 1;
   overflow-y: auto;
+
+  .story-image {
+    width: 80%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .bot-blob {
@@ -73,6 +80,10 @@
     padding: 16px;
     font-size: 16px;
     border-radius: 10px;
+
+    &.large {
+      font-size: 40px;
+    }
   }
 
   &.bot-msg .msg-bubble {
@@ -113,6 +124,11 @@
   border-style: solid;
   border-width: 3px;
   white-space: nowrap;
+
+  &.large {
+    font-size: 40px;
+    border-radius: 40px;;
+  }
 }
 
 .user-blob {
