@@ -1,6 +1,6 @@
 export interface AppTheme {
     name: string;
-    schemaVersion: number,
+    editable: boolean;
     author?: string;
     colors?: ThemeColors;
     booleans?: ThemeBooleans;
@@ -26,6 +26,14 @@ export interface ThemeColors {
     light?: ThemeColor;
     background?: ThemeColor;
     itemBackground?: ThemeColor;
+
+    // Home screen buttons
+    chatButton?: ThemeColor;
+    guideButton?: ThemeColor;
+    toolboxButton?: ThemeColor;
+    galleryButton?: ThemeColor;
+    remindersButton?: ThemeColor;
+    activitiesButton?: ThemeColor;
 }
 
 export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
