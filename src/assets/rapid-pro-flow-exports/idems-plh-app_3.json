@@ -1,0 +1,724 @@
+{
+  "version": "13",
+  "site": "https://rapidpro.idems.international",
+  "flows": [
+    {
+      "name": "PLH App Welcome",
+      "uuid": "c6604323-8e47-472a-81df-b6478191430a",
+      "spec_version": "13.1.0",
+      "language": "base",
+      "type": "messaging",
+      "nodes": [
+        {
+          "uuid": "93fff404-101d-4d37-984e-a77e7cb66274",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Taking care of teens is hard, and nobody is doing this perfectly. Take a moment to praise yourself for keeping it up. \nYou are a real star!",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "51297a01-839c-48aa-b975-46c9ad70e45f"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "2a347f9e-f4cf-4fdc-a1f5-b77e1a9a816d",
+              "destination_uuid": "e8721565-1c49-4fa1-94bb-034562639dc1"
+            }
+          ]
+        },
+        {
+          "uuid": "e8721565-1c49-4fa1-94bb-034562639dc1",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Please tell us which language you would like\u2026",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [
+                "English",
+                "Italiano",
+                "Francais"
+              ],
+              "uuid": "0180848a-eabb-4abe-b8c2-5ca4420dfb57"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "e5d42c07-32e2-4e2f-9885-e677e52a1dd1",
+              "destination_uuid": "7d2bac99-9952-4990-a894-081d1267afb7"
+            }
+          ]
+        },
+        {
+          "uuid": "7d2bac99-9952-4990-a894-081d1267afb7",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "d78a0842-09a1-495c-bd91-bd1e0a8c57bb",
+            "cases": [
+              {
+                "arguments": [
+                  "english"
+                ],
+                "type": "has_any_word",
+                "uuid": "7cf54d41-5ab2-4f76-9032-8e2cb56598ef",
+                "category_uuid": "a2a07b05-3d73-4e66-9918-839079c97ced"
+              },
+              {
+                "arguments": [
+                  "Francais"
+                ],
+                "type": "has_any_word",
+                "uuid": "0e6daa4a-23b9-41a5-b2aa-b43f38bda88b",
+                "category_uuid": "1b3788f7-4c9a-455c-be12-c1df152d5d60"
+              },
+              {
+                "arguments": [
+                  "Italiano"
+                ],
+                "type": "has_any_word",
+                "uuid": "0b731ec6-bfc7-4b59-9fa1-6f0b0f0701b3",
+                "category_uuid": "d2d77348-db9f-477f-8691-afab794c9735"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "a2a07b05-3d73-4e66-9918-839079c97ced",
+                "name": "English",
+                "exit_uuid": "7284fdaa-914c-4105-932b-eebc57e3cadf"
+              },
+              {
+                "uuid": "1b3788f7-4c9a-455c-be12-c1df152d5d60",
+                "name": "Francais",
+                "exit_uuid": "3eceacc4-febe-4483-8b33-418bd3e51a86"
+              },
+              {
+                "uuid": "d2d77348-db9f-477f-8691-afab794c9735",
+                "name": "Italiano",
+                "exit_uuid": "a2a751b2-78cc-4348-a08c-0169b3439fd7"
+              },
+              {
+                "uuid": "d78a0842-09a1-495c-bd91-bd1e0a8c57bb",
+                "name": "Other",
+                "exit_uuid": "03b74e1a-8233-4a0c-8b0f-bd78ba0c7ef9"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Result 1"
+          },
+          "exits": [
+            {
+              "uuid": "7284fdaa-914c-4105-932b-eebc57e3cadf",
+              "destination_uuid": "eca22798-6e7d-4a23-9b01-78c0c1288a68"
+            },
+            {
+              "uuid": "3eceacc4-febe-4483-8b33-418bd3e51a86",
+              "destination_uuid": null
+            },
+            {
+              "uuid": "a2a751b2-78cc-4348-a08c-0169b3439fd7"
+            },
+            {
+              "uuid": "03b74e1a-8233-4a0c-8b0f-bd78ba0c7ef9",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "eca22798-6e7d-4a23-9b01-78c0c1288a68",
+          "actions": [
+            {
+              "attachments": [
+                "video:https://firebasestorage.googleapis.com/v0/b/idems-media-recorder.appspot.com/o/take-a-pause-converted-2.m4v?alt=media&token=4a865b55-8686-44fe-8416-ad3afe9e1e75"
+              ],
+              "text": "1. Close your eyes \n2. Listen to your breath as it goes in and out. \n3. Notice how you feel\n4. When you are ready open your eyes again. \n5. You are in control!",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "a4c956b6-4211-40ba-a393-c9bd8da465de"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "571ddb65-657b-4554-8595-1d953476a0e1",
+              "destination_uuid": "54aba83c-9e66-498f-89bd-e4d643a76129"
+            }
+          ]
+        },
+        {
+          "uuid": "54aba83c-9e66-498f-89bd-e4d643a76129",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Sometimes our teens can make us want to scream, but they also do things which makes us feel happy or proud. \nCan you tell us one thing you like about your teen?",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [],
+              "uuid": "78ab5482-c64e-4b43-87a7-6b6b5439125f"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "35328c88-3dc1-46bf-90d8-d4c9a08ef575",
+              "destination_uuid": "1f73421b-1dec-4452-a558-a6c25c31f20f"
+            }
+          ]
+        },
+        {
+          "uuid": "1f73421b-1dec-4452-a558-a6c25c31f20f",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "I like that my teen is...",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [
+                "Friendly",
+                "Warm",
+                "Loving",
+                "Kind",
+                "Brave",
+                "Realistic",
+                "Creative",
+                "Resilient",
+                "Fair",
+                "Smart"
+              ],
+              "uuid": "0b7d705e-482c-4463-94b1-5bfd8bb8ac9d"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "2f96a17c-1b9b-4d3f-858f-14c64e4b7a12",
+              "destination_uuid": "08433aa9-d65f-4608-b231-0d882c912f0b"
+            }
+          ]
+        },
+        {
+          "uuid": "08433aa9-d65f-4608-b231-0d882c912f0b",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "262f4f24-360d-4797-818f-772740d88b3c",
+            "cases": [
+              {
+                "arguments": [],
+                "type": "has_text",
+                "uuid": "cedf8b58-3f5b-4787-ab8f-4591b1c29e65",
+                "category_uuid": "24159f44-dfe4-4cf9-a63a-75ea5f30bedb"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "24159f44-dfe4-4cf9-a63a-75ea5f30bedb",
+                "name": "Has Text",
+                "exit_uuid": "1d8ff05b-b514-47b5-b2af-5d7c7e7990da"
+              },
+              {
+                "uuid": "262f4f24-360d-4797-818f-772740d88b3c",
+                "name": "Other",
+                "exit_uuid": "405c7436-d50c-4bd9-bcfd-664538e147d2"
+              },
+              {
+                "uuid": "5855b651-ada6-4da0-9818-ec82519acab6",
+                "name": "No Response",
+                "exit_uuid": "f5ea2e74-0d77-432e-8e0f-7ea622e3df51"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg",
+              "timeout": {
+                "seconds": 60,
+                "category_uuid": "5855b651-ada6-4da0-9818-ec82519acab6"
+              }
+            },
+            "result_name": "Result 2"
+          },
+          "exits": [
+            {
+              "uuid": "1d8ff05b-b514-47b5-b2af-5d7c7e7990da",
+              "destination_uuid": "e2d8e81e-1fa7-4d42-9436-4c57f730c1ed"
+            },
+            {
+              "uuid": "405c7436-d50c-4bd9-bcfd-664538e147d2",
+              "destination_uuid": "55617463-da67-4d33-a2d7-d326fd1ae1eb"
+            },
+            {
+              "uuid": "f5ea2e74-0d77-432e-8e0f-7ea622e3df51",
+              "destination_uuid": "55617463-da67-4d33-a2d7-d326fd1ae1eb"
+            }
+          ]
+        },
+        {
+          "uuid": "e2d8e81e-1fa7-4d42-9436-4c57f730c1ed",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Well done for being @results.result_2. You can show this to your teen, it will make them feel proud!",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "00dac6d0-7662-479f-aa41-cb85c2b944a7"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "e77687d7-e090-4c64-ab21-b1c28edd9f05",
+              "destination_uuid": "eec636aa-b219-4b86-8695-3a966ac08207"
+            }
+          ]
+        },
+        {
+          "uuid": "55617463-da67-4d33-a2d7-d326fd1ae1eb",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Even if you did not choose anything, just downloading this app shows you are a caring parent! Thank you for wanting to learn more!  ",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "ef465a5e-ab04-4696-8a0c-fc13e144ac5d"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "ddaaaae2-1080-4590-a7bf-4e8dfba8e952",
+              "destination_uuid": "eec636aa-b219-4b86-8695-3a966ac08207"
+            }
+          ]
+        },
+        {
+          "uuid": "eec636aa-b219-4b86-8695-3a966ac08207",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Every parent in the world is struggling in these hard times. Can we ask 1 minute of questions about your experience as a parent during COVID-19? Your participation and anything you tell us will be used to make this app work better for you. \n\nhttps://plh-demo1.idems.international/chat/action?type=FINISH_WELCOME",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [
+                "Yes",
+                "No"
+              ],
+              "uuid": "3e9985fb-6d9d-4c8d-b85f-5160a55d7965"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "f257555e-628d-4c6e-b596-e124a944699b",
+              "destination_uuid": "ce5c9287-3579-499e-b700-2f6f4a0a199a"
+            }
+          ]
+        },
+        {
+          "uuid": "ce5c9287-3579-499e-b700-2f6f4a0a199a",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "1a57800e-dd5f-42d6-ac14-d7481436fb4d",
+            "cases": [
+              {
+                "arguments": [
+                  "Yes"
+                ],
+                "type": "has_any_word",
+                "uuid": "7291a7fe-1cea-4831-8af0-5ec3e38bb0c1",
+                "category_uuid": "2db20eae-4e1f-4dbd-bb1f-c3d018995b7f"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "2db20eae-4e1f-4dbd-bb1f-c3d018995b7f",
+                "name": "Yes",
+                "exit_uuid": "53bd07dd-fbd4-4816-97cc-96c58ad24711"
+              },
+              {
+                "uuid": "1a57800e-dd5f-42d6-ac14-d7481436fb4d",
+                "name": "Other",
+                "exit_uuid": "28a729a6-d5e0-42e6-9d78-7f4668bdd038"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Result 3"
+          },
+          "exits": [
+            {
+              "uuid": "53bd07dd-fbd4-4816-97cc-96c58ad24711",
+              "destination_uuid": "33b696eb-5288-491e-9af5-3a87d5703b3b"
+            },
+            {
+              "uuid": "28a729a6-d5e0-42e6-9d78-7f4668bdd038",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "33b696eb-5288-491e-9af5-3a87d5703b3b",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Thank you. We are proud of you for being honest.",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "99fba361-0b5d-4d3e-9339-5b9615a4a7fc"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "ce21d25e-ee9c-497b-8d9a-5c8c5f48b928",
+              "destination_uuid": "0569d015-b4ea-43b8-a766-6c0f84dc9299"
+            }
+          ]
+        },
+        {
+          "uuid": "0569d015-b4ea-43b8-a766-6c0f84dc9299",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "1.  It is hard to find time to have fun with your teen. How many times in the past week did you do something fun together?",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [],
+              "uuid": "f1a2e9fc-4b46-4971-88b0-3e86ebc9a95d"
+            },
+            {
+              "uuid": "cb32fbff-78b2-4cb2-8e8f-d515e9c737c2",
+              "type": "set_contact_field",
+              "field": {
+                "key": "gender",
+                "name": "gender"
+              },
+              "value": "male"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "6a4b3f0c-c01b-4077-a8ef-2ecd15b78c71",
+              "destination_uuid": "95f2f031-7a15-4c0a-b73d-11e377d0dd09"
+            }
+          ]
+        },
+        {
+          "uuid": "95f2f031-7a15-4c0a-b73d-11e377d0dd09",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "af9bf20b-960e-4143-aeff-bd115f2ad501",
+            "cases": [
+              {
+                "arguments": [
+                  "male"
+                ],
+                "type": "has_any_word",
+                "uuid": "42ba3e37-a3be-41b2-a8e1-88e7b0b4bcf0",
+                "category_uuid": "747469c7-16f3-49d8-a221-5b1b0eca17c0"
+              },
+              {
+                "arguments": [
+                  "female"
+                ],
+                "type": "has_any_word",
+                "uuid": "90615b11-a9c7-4730-9f0f-c8219f154b43",
+                "category_uuid": "604d31a5-a038-4c89-92a3-1b28beaf8b02"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "747469c7-16f3-49d8-a221-5b1b0eca17c0",
+                "name": "Male",
+                "exit_uuid": "ffa3a6b3-acce-4c90-a160-2705040d573d"
+              },
+              {
+                "uuid": "604d31a5-a038-4c89-92a3-1b28beaf8b02",
+                "name": "Female",
+                "exit_uuid": "edf307c7-6984-4051-8ad1-b7e4cd4a1162"
+              },
+              {
+                "uuid": "af9bf20b-960e-4143-aeff-bd115f2ad501",
+                "name": "Other",
+                "exit_uuid": "ca3e84de-7de5-4755-8b8c-bd6dfd67f41a"
+              }
+            ],
+            "operand": "@fields.gender"
+          },
+          "exits": [
+            {
+              "uuid": "ffa3a6b3-acce-4c90-a160-2705040d573d",
+              "destination_uuid": "f12c0348-947a-4839-921d-05a04dbb7be3"
+            },
+            {
+              "uuid": "edf307c7-6984-4051-8ad1-b7e4cd4a1162",
+              "destination_uuid": "71db76ac-ddba-411d-a5f8-af4190447206"
+            },
+            {
+              "uuid": "ca3e84de-7de5-4755-8b8c-bd6dfd67f41a",
+              "destination_uuid": "f12c0348-947a-4839-921d-05a04dbb7be3"
+            }
+          ]
+        },
+        {
+          "uuid": "71db76ac-ddba-411d-a5f8-af4190447206",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "female",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "16168551-01d1-4726-801c-314ec6c03c6f"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "585f3b1e-9257-4ae1-b6d4-6fda7255a07d",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "f12c0348-947a-4839-921d-05a04dbb7be3",
+          "actions": [],
+          "router": {
+            "type": "random",
+            "categories": [
+              {
+                "uuid": "eba019a0-f113-40ea-ab64-6fa5588687c0",
+                "name": "Bucket 1",
+                "exit_uuid": "4316b925-7cb1-41d9-a4ab-87a401ad6536"
+              },
+              {
+                "uuid": "d64fd487-e465-4dbc-a423-0016752fd7e6",
+                "name": "Bucket 2",
+                "exit_uuid": "18438956-070f-401f-bdf0-bc8f8195888b"
+              }
+            ]
+          },
+          "exits": [
+            {
+              "uuid": "4316b925-7cb1-41d9-a4ab-87a401ad6536",
+              "destination_uuid": "29b500ae-2d03-4965-980c-48e21bd25823"
+            },
+            {
+              "uuid": "18438956-070f-401f-bdf0-bc8f8195888b",
+              "destination_uuid": "6a9d5752-14be-4552-863b-8701aa757742"
+            }
+          ]
+        },
+        {
+          "uuid": "6a9d5752-14be-4552-863b-8701aa757742",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "random 2",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "bbca12b4-a99b-4997-b372-8cd1b488f096"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "5a5ee175-46e1-470c-9bb2-0fcc13ab71c8",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "29b500ae-2d03-4965-980c-48e21bd25823",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "random 1",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "e64a4b34-1c1f-43e4-8744-2ededb846083"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "807b68cd-a679-4ddd-9218-0ca90f8f5cae",
+              "destination_uuid": null
+            }
+          ]
+        }
+      ],
+      "_ui": {
+        "nodes": {
+          "93fff404-101d-4d37-984e-a77e7cb66274": {
+            "position": {
+              "left": 300,
+              "top": 40
+            },
+            "type": "execute_actions"
+          },
+          "e8721565-1c49-4fa1-94bb-034562639dc1": {
+            "position": {
+              "left": 540,
+              "top": 160
+            },
+            "type": "execute_actions"
+          },
+          "7d2bac99-9952-4990-a894-081d1267afb7": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 440,
+              "top": 320
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "eca22798-6e7d-4a23-9b01-78c0c1288a68": {
+            "position": {
+              "left": 320,
+              "top": 520
+            },
+            "type": "execute_actions"
+          },
+          "54aba83c-9e66-498f-89bd-e4d643a76129": {
+            "position": {
+              "left": 320,
+              "top": 840
+            },
+            "type": "execute_actions"
+          },
+          "1f73421b-1dec-4452-a558-a6c25c31f20f": {
+            "position": {
+              "left": 340,
+              "top": 1080
+            },
+            "type": "execute_actions"
+          },
+          "08433aa9-d65f-4608-b231-0d882c912f0b": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 340,
+              "top": 1320
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "e2d8e81e-1fa7-4d42-9436-4c57f730c1ed": {
+            "position": {
+              "left": 300,
+              "top": 1500
+            },
+            "type": "execute_actions"
+          },
+          "55617463-da67-4d33-a2d7-d326fd1ae1eb": {
+            "position": {
+              "left": 640,
+              "top": 1520
+            },
+            "type": "execute_actions"
+          },
+          "eec636aa-b219-4b86-8695-3a966ac08207": {
+            "position": {
+              "left": 320,
+              "top": 1820
+            },
+            "type": "execute_actions"
+          },
+          "ce5c9287-3579-499e-b700-2f6f4a0a199a": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 340,
+              "top": 2240
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "33b696eb-5288-491e-9af5-3a87d5703b3b": {
+            "position": {
+              "left": 280,
+              "top": 2560
+            },
+            "type": "execute_actions"
+          },
+          "0569d015-b4ea-43b8-a766-6c0f84dc9299": {
+            "position": {
+              "left": 300,
+              "top": 2700
+            },
+            "type": "execute_actions"
+          },
+          "95f2f031-7a15-4c0a-b73d-11e377d0dd09": {
+            "type": "split_by_contact_field",
+            "position": {
+              "left": 320,
+              "top": 3020
+            },
+            "config": {
+              "operand": {
+                "id": "gender",
+                "type": "field",
+                "name": "gender"
+              },
+              "cases": {}
+            }
+          },
+          "71db76ac-ddba-411d-a5f8-af4190447206": {
+            "position": {
+              "left": 720,
+              "top": 3180
+            },
+            "type": "execute_actions"
+          },
+          "f12c0348-947a-4839-921d-05a04dbb7be3": {
+            "type": "split_by_random",
+            "position": {
+              "left": 260,
+              "top": 3200
+            },
+            "config": null
+          },
+          "6a9d5752-14be-4552-863b-8701aa757742": {
+            "position": {
+              "left": 580,
+              "top": 3320
+            },
+            "type": "execute_actions"
+          },
+          "29b500ae-2d03-4965-980c-48e21bd25823": {
+            "position": {
+              "left": 180,
+              "top": 3420
+            },
+            "type": "execute_actions"
+          }
+        }
+      },
+      "revision": 70,
+      "expire_after_minutes": 10080,
+      "metadata": {
+        "revision": 69
+      },
+      "localization": {}
+    }
+  ],
+  "campaigns": [],
+  "triggers": [
+    {
+      "trigger_type": "K",
+      "keyword": "test",
+      "flow": {
+        "uuid": "c6604323-8e47-472a-81df-b6478191430a",
+        "name": "PLH App Welcome"
+      },
+      "groups": [],
+      "channel": null
+    }
+  ],
+  "fields": [
+    {
+      "key": "gender",
+      "name": "gender",
+      "type": "text"
+    }
+  ],
+  "groups": []
+}

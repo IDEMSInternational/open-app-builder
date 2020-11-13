@@ -19,7 +19,16 @@ const DB_TABLES = {
   flows: "id",
   family: "++id",
   calendar: "++id",
+  surveys: "++id,surveyId",
+  reminders: "++id,type",
 };
+export type IDBTable = keyof typeof DB_TABLES;
+/**
+ * For any tables with automatic id assignment the following fields will be populated
+ */
+export interface IDBDoc {
+  id: number;
+}
 
 /**
  * All databases must contain an incremented version number, and any migration logic
@@ -28,7 +37,7 @@ const DB_TABLES = {
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
  */
-const DB_VERSION = 1000;
+const DB_VERSION = 2000;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({
@@ -42,6 +51,13 @@ export class DbService {
     this._listenToDBChanges();
     db.open();
     this._addEventListeners();
+  }
+
+  /**
+   * Type-safe wrapper around db.table method
+   */
+  table<T>(tableId: IDBTable) {
+    return this.db.table<T>(tableId);
   }
 
   /**

@@ -1,22 +1,26 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild } from "@angular/core";
+import { Component, ChangeDetectorRef } from "@angular/core";
 import { AnimationOptions } from "ngx-lottie";
-import { IonContent } from "@ionic/angular";
-import { IRapidProMessage, NotificationService } from 'src/app/shared/services/notification/notification.service';
+import { IRapidProMessage } from 'src/app/shared/services/notification/notification.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IfStmt } from '@angular/compiler';
-import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/shared/services/chat/chat-msg.model';
-import { OfflineChatService } from 'src/app/shared/services/chat/offline/offline-chat.service';
-import { OnlineChatService } from 'src/app/shared/services/chat/online/online-chat.service';
+import { ChatMessage, ChatResponseOption, ResponseCustomAction } from 'src/app/feature/chat/chat-service/chat-msg.model';
+import { Subscription } from 'rxjs';
+import { ChatService } from 'src/app/feature/chat/chat-service/chat.service';
+import { ChatTriggerPhrase } from 'src/app/feature/chat/chat-service/chat.triggers';
+import { ChatActionService } from 'src/app/feature/chat/chat-service/common/chat-action.service';
+import { first } from 'rxjs/operators';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: "app-chat",
   templateUrl: "./chat.page.html",
   styleUrls: ["./chat.page.scss"],
 })
-export class ChatPage implements OnInit {
+export class ChatPage {
   messages: ChatMessage[] = [];
   allMessages: ChatMessage[] = [];
   responseOptions: ChatResponseOption[] = [];
+
+  lastReceivedMsg: ChatMessage;
 
   botBlobState:
     | "walking-in"
@@ -44,7 +48,7 @@ export class ChatPage implements OnInit {
 
   sentResponsesByMessage: { [messageText: string]: string[] } = {};
 
-  triggerMessage: string = "plh_simulation";
+  triggerPhrase: ChatTriggerPhrase = ChatTriggerPhrase.GUIDE_START;
 
   scrollingInterval: any;
 
@@ -53,106 +57,68 @@ export class ChatPage implements OnInit {
   showingAllMessages = true;
 
   character: "guide" | "egg" = "guide";
+  messageSubscription: Subscription;
+
+  chatViewType: "normal" | "story" = "normal";
 
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private chatService: OnlineChatService
+    private chatService: ChatService,
+    private router: Router,
+    private chatActionService: ChatActionService,
+    private localStorageService: LocalStorageService
   ) {
   }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if(params["character"] && params["character"] === "egg") {
+  ionViewDidEnter() {
+    console.log("ion did enter");
+    this.allMessages = [];
+    this.messages = [];
+    this.cd.detectChanges();
+
+    this.route.queryParams.pipe(first()).subscribe(params => {
+      if (params["character"] && params["character"] === "egg") {
         this.character = "egg";
+        this.triggerPhrase = ChatTriggerPhrase.EGG_CHARACTER_START;
       } else {
+        this.triggerPhrase = ChatTriggerPhrase.GUIDE_START;
         this.character = "guide";
       }
-    });
-    this.chatService.messages$
-      .asObservable()
-      .subscribe((messages) => {
-        console.log("from chat service ", messages);
-        if (messages.length > 0) {
-          this.onNewMessage(messages[messages.length - 1]);
-        }
+
+      if (params.trigger) {
+        this.triggerPhrase = params.trigger;
+      }
+
+      if (this.messageSubscription) {
+        this.messageSubscription.unsubscribe();
+      }
+      this.chatService.runTrigger({ phrase: this.triggerPhrase }).subscribe((messages$) => {
+        console.log("Ran trigger ", this.triggerPhrase);
+        this.messageSubscription = messages$
+          .asObservable()
+          .subscribe((messages) => {
+            console.log("from chat service ", messages);
+            if (messages.length > 0) {
+              const latestMessage = messages[messages.length - 1];
+              if (latestMessage.actions && latestMessage.actions.length > 0) {
+                for (let action of latestMessage.actions) {
+                  this.chatActionService.executeChatAction(action);
+                }
+              }
+              this.onNewMessage(latestMessage);
+            }
+          });
       });
+    });
   }
 
-  onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
-    this.messagesReceived += 1;
-    let chatMsg: ChatMessage = {
-      sender: "bot",
-      text: rapidMsg.message
-    };
-    if (rapidMsg.quick_replies) {
-      try {
-        chatMsg.responseOptions = JSON.parse(rapidMsg.quick_replies).map(
-          (word: string) => {
-            let responseOption: ChatResponseOption = {
-              text: word,
-            };
-            if (word.toLowerCase().indexOf("help") > -1) {
-              responseOption.customAction = "bot-run-back";
-            }
-            if (word.toLowerCase().indexOf("come back") > -1) {
-              responseOption.customAction = "bot-walk-back";
-            }
-            return responseOption;
-          }
-        );
-      } catch (ex) {
-        console.log("Error parsing quick replies", ex);
-      }
-    }
-    if (this.autoReplyEnabled) {
-      setTimeout(() => {
-        if (rapidMsg.message.toLowerCase().indexOf(this.autoEndPhrase.toLowerCase()) > -1) {
-          this.debugMsg = "THE END!!";
-        } else if (rapidMsg.message.toLowerCase().indexOf(this.autoRepeatPhrase.toLowerCase()) > -1) {
-          this.debugMsg = "repeating...";
-          this.chatService.sendMessage({
-            sender: "user",
-            text: this.triggerMessage
-          });
-        } else if (rapidMsg.message.toLowerCase().indexOf("sorry, i don't understand") > -1) {
-          this.debugMsg = "flow is stuck. repeating...";
-          this.chatService.sendMessage({
-            sender: "user",
-            text: this.triggerMessage
-          });
-        } else {
-          this.debugMsg = "";
-          if (chatMsg.responseOptions && chatMsg.responseOptions.length > 0) {
-            let responseOption = chatMsg.responseOptions[0];
-            if (!this.sentResponsesByMessage[chatMsg.text]) {
-              this.sentResponsesByMessage[chatMsg.text] = [];
-            } else {
-              let unusedResponses = chatMsg.responseOptions
-                .filter((option) => this.sentResponsesByMessage[chatMsg.text].indexOf(option.text) < 0);
-              if (unusedResponses.length < 1) {
-                const responseIndex = Math.floor(Math.random() * chatMsg.responseOptions.length);
-                if (chatMsg.responseOptions[responseIndex]) {
-                  responseOption = chatMsg.responseOptions[responseIndex];
-                } else {
-                  responseOption = chatMsg.responseOptions[0];
-                }
-              } else {
-                responseOption = unusedResponses[0];
-              }
-            }
-            this.sentResponsesByMessage[chatMsg.text].push(responseOption.text);
-            this.selectResponseOption(responseOption);
-          } else {
-            this.debugMsg = "auto reply: N";
-            this.sendCustomOption(this.autoReplyWord);
-          }
-        }
-      }, this.autoReplyDelay);
-    }
-    setTimeout(() => {
-      this.onNewMessage(chatMsg);
-    });
+  ionViewDidLeave() {
+    console.log("ion leave");
+    this.messageSubscription.unsubscribe();
+    this.allMessages = [];
+    this.messages = [];
+    this.cd.detectChanges();
   }
 
   onNewMessage(message: ChatMessage) {
@@ -161,26 +127,25 @@ export class ChatPage implements OnInit {
       message
     );
     message.dateReceived = new Date();
-    this.allMessages.push(message);
-    if (message.sender === "bot") {
-      if (this.botBlobState === "still") {
-        setTimeout(() => {
-          this.botAnimOptions = {
-            path: "assets/lottie-animations/TalkingGesture_Pass_v1.json",
-            loop: false,
-          };
-        });
+    this.lastReceivedMsg = message;
+    if (message.isStory) {
+      this.chatViewType = "story";
+    } else {
+      this.chatViewType = "normal";
+      this.allMessages.push(message);
+
+      if (this.showingAllMessages) {
+        this.messages = this.allMessages;
+      } else {
+        this.messages = this.allMessages.slice(this.allMessages.length - 2);
       }
+    }
+    if (message.sender === "bot") {
       this.responseOptions = message.responseOptions
         ? message.responseOptions
         : [];
     } else {
       this.responseOptions = [];
-    }
-    if (this.showingAllMessages) {
-      this.messages = this.allMessages;
-    } else {
-      this.messages = this.allMessages.slice(this.allMessages.length - 2);
     }
     this.cd.detectChanges();
   }
@@ -241,7 +206,7 @@ export class ChatPage implements OnInit {
       text: option.text
     });
     this.messagesSent += 1;
-    
+
   }
 
   toggleShowAllMessages() {
@@ -256,5 +221,31 @@ export class ChatPage implements OnInit {
 
   stringify(obj: any) {
     return JSON.stringify(obj);
+  }
+
+  skipWelcome() {
+    this.localStorageService.setBoolean("welcome_skipped", true);
+    this.router.navigateByUrl("/home");
+  }
+
+  sameAsLastCharacter(currentMsg: ChatMessage, prevMsg: ChatMessage) {
+    if (prevMsg) {
+      return currentMsg.character === prevMsg.character;
+    }
+    return false;
+  }
+
+  onStoryNextClicked() {
+    this.chatService.sendMessage({
+      sender: "user",
+      text: "Next"
+    });
+  }
+
+  onStoryPreviousClicked() {
+    this.chatService.sendMessage({
+      sender: "user",
+      text: "Previous"
+    });
   }
 }

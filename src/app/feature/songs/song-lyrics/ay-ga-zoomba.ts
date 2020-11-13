@@ -2,7 +2,7 @@ import { Song } from '../song.model';
 
 export const Ay_Gazoomba: Song = {
     songTitle: "Ay Gazoomba",
-    audioURL: "assets/audio/Ay_Ga_Zoomba.mp3",
+    audioURL: "assets/audio/songs/Ay_Ga_Zoomba.mp3",
     lyrics: [
         {
             "lyric": "AY GAZOOMBA\nZOOMBA\nZOOMBA\nAY GAZOOMBA\nZOOMBA\nHEY!\n",
