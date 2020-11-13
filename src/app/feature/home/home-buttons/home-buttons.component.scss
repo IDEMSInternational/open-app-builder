@@ -34,7 +34,7 @@
     }
 
     &.activities {
-        background-color: var(--theme-var-toolboxButton, #5FC4D2);
+        background-color: var(--theme-var-activitiesButton, #5FC4D2);
     }
 
     &.gallery {
@@ -42,7 +42,7 @@
     }
 
     &.reminders {
-        background-color: var(--theme-var-reminderButton, #E81C51);
+        background-color: var(--theme-var-remindersButton, #E81C51);
     }
 }
 

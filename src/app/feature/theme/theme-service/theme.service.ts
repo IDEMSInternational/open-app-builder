@@ -39,18 +39,11 @@ export class ThemeService {
       BUILT_IN_EDITABLE_THEMES.forEach((theme) => { editableThemeMap[theme.name] = theme });
       this.localStorageService.setJSON("editableThemes", editableThemeMap);
     }
-    const themeMap = { ...editableThemeMap };
-    themeMap[BASE_THEME.name] = BASE_THEME;
-    return themeMap;
+    return editableThemeMap;
   }
 
   private saveThemeMap(themeMap: { [themeName: string]: AppTheme }) {
-    delete themeMap[BASE_THEME.name];
     this.localStorageService.setJSON("editableThemes", themeMap);
-  }
-
-  public getDefaultTheme(): AppTheme {
-    return BASE_THEME;
   }
 
   public getCurrentTheme(): AppTheme {
@@ -76,7 +69,7 @@ export class ThemeService {
 
   public createNewTheme(themeName: string) {
     let themeMap = this.getThemeMap();
-    let newTheme: AppTheme = { ...BASE_THEME, name: themeName };
+    let newTheme: AppTheme = { ...BASE_THEME, name: themeName, editable: true };
     themeMap[newTheme.name] = newTheme;
     this.saveThemeMap(themeMap);
   }
@@ -92,21 +85,16 @@ export class ThemeService {
     this.ipcService.send(ThemeService.THEME_UPDATE_CHANNEL, theme.name);
   }
 
-  public deleteTheme(theme: AppTheme) {
-    this.localStorageService.setString("theme." + theme.name, null);
-  }
-
   public populateWithDefaults(theme: AppTheme): AppTheme {
     Object.keys(BASE_THEME.colors).forEach((colorId) => {
       if (!theme.colors[colorId]) {
         theme.colors[colorId] = BASE_THEME.colors[colorId];
-      } else {
-        if (theme.colors[colorId].lightValue && !theme.colors[colorId].darkValue) {
-          theme.colors[colorId].darkValue = theme.colors[colorId].lightValue;
-        }
-        if (theme.colors[colorId].darkValue && !theme.colors[colorId].lightValue) {
-          theme.colors[colorId].lightValue = theme.colors[colorId].darkValue;
-        }
+      }
+      if (theme.colors[colorId].lightValue && !theme.colors[colorId].darkValue) {
+        theme.colors[colorId].darkValue = theme.colors[colorId].lightValue;
+      }
+      if (theme.colors[colorId].darkValue && !theme.colors[colorId].lightValue) {
+        theme.colors[colorId].lightValue = theme.colors[colorId].darkValue;
       }
     });
     return theme;
