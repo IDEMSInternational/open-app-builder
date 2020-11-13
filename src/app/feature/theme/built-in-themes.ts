@@ -69,9 +69,52 @@ export const BASE_THEME: AppTheme = {
             name: "Item Background",
             lightValue: "#eee",
             darkValue: "#222"
+        },
+        chatButton: {
+            id: "chatButton",
+            name: "Home - Chat Button",
+            lightValue: "#29A327"
+        },
+        guideButton: {
+            id: "guideButton",
+            name: "Home - Guide Button",
+            lightValue: "#F8AF00"
+        },
+        toolboxButton: {
+            id: "toolboxButton",
+            name: "Home - Toolbox Button",
+            lightValue: "#5550A9"
+        },
+        activitiesButton: {
+            id: "activitiesButton",
+            name: "Home - Activities Button",
+            lightValue: "#5FC4D2"
+        },
+        galleryButton: {
+            id: "galleryButton",
+            name: "Home - Gallery Button",
+            lightValue: "#dc8900"
+        },
+        remindersButton: {
+            id :"remindersButton",
+            name: "Home - Reminders Button",
+            lightValue: "#E81C51"
         }
     }
 };
+
+export const THEME_1: AppTheme = {
+    name: "PLH Teens 1",
+    editable: true,
+    colors: {
+        primary: {
+            name: "Primary",
+            lightValue: "#0d4060",
+            darkValue: "#0d4060"
+        }
+    }
+};
+
 
 export const THEME_2: AppTheme = {
     name: "PLH Teens 2",
@@ -85,4 +128,4 @@ export const THEME_2: AppTheme = {
     }
 };
 
-export const BUILT_IN_EDITABLE_THEMES = [THEME_2];
+export const BUILT_IN_EDITABLE_THEMES = [THEME_1, THEME_2];

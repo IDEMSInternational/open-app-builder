@@ -32,7 +32,8 @@ export interface ThemeColors {
     guideButton?: ThemeColor;
     toolboxButton?: ThemeColor;
     galleryButton?: ThemeColor;
-    reminderButton?: ThemeColor;
+    remindersButton?: ThemeColor;
+    activitiesButton?: ThemeColor;
 }
 
 export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
