@@ -18,6 +18,46 @@
                             "type": "send_msg",
                             "quick_replies": [],
                             "uuid": "27a0b9a6-d88c-479d-b1dd-8f197a9a539c"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "username",
+                                "name": "username"
+                            },
+                            "value": "Esmee"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "guide",
+                                "name": "Guide"
+                            },
+                            "value": "Osk"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "neighbour",
+                                "name": "neighbour"
+                            },
+                            "value": "Santiago"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "neighbourchild",
+                                "name": "neighbourchild"
+                            },
+                            "value": "Rahema"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "neighbourteen",
+                                "name": "neighbourteen"
+                            },
+                            "value": "Beyonce"
                         }
                     ],
                     "exits": [
@@ -600,7 +640,7 @@
                     "actions": [
                         {
                             "attachments": [],
-                            "text": "Let me break it down for you in 3 easy steps! \n https://plh-demo1.idems.international/chat/msg-info?character=Neighbour",
+                            "text": "Let me break it down for you in 3 easy steps! \n https://plh-demo1.idems.international/chat/msg-info?character=Neighbour https://plh-demo1.idems.international/chat/action/UNLOCK_TOOLBOX_TOPIC?topic=PRAISE_AND_POSITIVE_REINFORCEMENT",
                             "type": "send_msg",
                             "quick_replies": [
                                 "Click here to get the tips"
@@ -651,7 +691,7 @@
                     "exits": [
                         {
                             "uuid": "c72cbc2d-7139-4901-94ad-8e2102111baa",
-                            "destination_uuid": null
+                            "destination_uuid": "79a25c52-d5e8-44ef-a1fa-031c8a021bc1"
                         },
                         {
                             "uuid": "48669eb0-e687-45cd-b1b6-caa037a5077e",
@@ -663,59 +703,14 @@
                     "uuid": "79a25c52-d5e8-44ef-a1fa-031c8a021bc1",
                     "actions": [
                         {
-                            "flow": {
-                                "name": "Praise_Tips",
-                                "uuid": "d9cfcb9c-5d11-487b-9675-53c88c019f7b"
-                            },
-                            "type": "enter_flow",
-                            "uuid": "4e81bea2-ec78-4cbe-9468-5d7d569f4df6"
+                            "attachments": [],
+                            "text": "https://plh-demo1.idems.international/toolbox/topic/PRAISE_AND_POSITIVE_REINFORCEMENT",
+                            "type": "send_msg",
+                            "quick_replies": [],
+                            "uuid": "50008f3f-31e9-4027-84e1-ab451ea5000c"
                         }
                     ],
-                    "exits": [
-                        {
-                            "uuid": "8f7e1149-02c3-4a6d-a8c0-6d271a23536c",
-                            "destination_uuid": null
-                        },
-                        {
-                            "uuid": "5a5cedbf-b23b-4e26-af9d-d50590e14a83",
-                            "destination_uuid": null
-                        }
-                    ],
-                    "router": {
-                        "cases": [
-                            {
-                                "uuid": "c0eac6ca-9086-4823-b5cb-91e42027ef31",
-                                "type": "has_only_text",
-                                "arguments": [
-                                    "completed"
-                                ],
-                                "category_uuid": "ffd57b30-c520-46f6-93f0-41e07dda8ea8"
-                            },
-                            {
-                                "uuid": "e79eee0c-3924-4df8-86f2-c56cf9118fef",
-                                "type": "has_only_text",
-                                "arguments": [
-                                    "expired"
-                                ],
-                                "category_uuid": "79e67771-ac25-42b3-8eb5-00407f0c5d0b"
-                            }
-                        ],
-                        "categories": [
-                            {
-                                "uuid": "ffd57b30-c520-46f6-93f0-41e07dda8ea8",
-                                "name": "Complete",
-                                "exit_uuid": "8f7e1149-02c3-4a6d-a8c0-6d271a23536c"
-                            },
-                            {
-                                "uuid": "79e67771-ac25-42b3-8eb5-00407f0c5d0b",
-                                "name": "Expired",
-                                "exit_uuid": "5a5cedbf-b23b-4e26-af9d-d50590e14a83"
-                            }
-                        ],
-                        "operand": "@child.run.status",
-                        "type": "switch",
-                        "default_category_uuid": "ffd57b30-c520-46f6-93f0-41e07dda8ea8"
-                    }
+                    "exits": []
                 }
             ],
             "_ui": null,

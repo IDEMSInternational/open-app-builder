@@ -25,17 +25,6 @@ export class ToolboxTopicPage implements OnInit {
   }
 
   ngOnInit() {
-    this.localNotificationService.scheduleNotification({
-      id: 10,
-      body: "Have you spent one on one time with your teen already?",
-      schedule: { at: new Date(Date.now() + 10000) },
-      actionTypeId: "action_10",
-      extra: {
-        openPath: "/toolbox/topic/ONE_ON_ONE_TIME"
-      }
-    }).then(() => {
-      console.log("We did it!");
-    });
   }
 
 }
