@@ -7,6 +7,7 @@
 <ion-content>
   <div *ngIf="topic">
     <div *ngFor="let section of topic.contentSections" class="tb-section">
+      <a [id]="section.title.replace(' ', '_')"></a>
       <h2 class="tb-title">{{section.title}}</h2>
       <div *ngFor="let element of section.elements">
         <div *ngIf="element.type === 'CORE_TIP'" class="tb-element core-tip">

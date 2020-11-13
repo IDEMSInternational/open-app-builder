@@ -122,6 +122,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
       useHash: false,
+      anchorScrolling: "enabled"
     }),
   ],
   exports: [RouterModule],
