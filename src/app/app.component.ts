@@ -31,6 +31,9 @@ export class AppComponent {
   }
 
   initializeApp() {
+    if (localStorage.getItem("home_screen.use_button_version") === null) {
+      localStorage.setItem("home_screen.use_button_version", "true");
+    }
     this.themeService.init();
     this.platform.ready().then(async () => {
       await this.surveyService.runSurvey("analytics");
