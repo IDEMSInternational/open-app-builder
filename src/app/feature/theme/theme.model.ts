@@ -11,7 +11,7 @@ export interface ThemeBooleans {
 }
 
 export const ionColorNames: (keyof ThemeColors)[] = ["primary", "secondary", "tertiary", "success",
-    "warning", "danger", "dark", "medium", "light", "background"];
+    "warning", "danger", "dark", "medium", "light"];
 
 export interface ThemeColors {
     // Ionic Colors
@@ -41,6 +41,7 @@ export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
         return "--ion-color-" + colorId;
     } else {
         switch (colorId) {
+            case "background": return "--ion-background-color";
             case "itemBackground": return "--ion-item-background";
             default: return "--theme-var-" + colorId;
         }
