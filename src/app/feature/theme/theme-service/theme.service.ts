@@ -14,6 +14,7 @@ export class ThemeService {
   currentTheme: AppTheme;
 
   constructor(private ipcService: IpcService, private localStorageService: LocalStorageService) {
+    this.init();
 
     // Listens on IPC for updates to current theme
     this.ipcService.listen(ThemeService.THEME_UPDATE_CHANNEL).subscribe((themeName: string) => {
@@ -51,7 +52,7 @@ export class ThemeService {
     let currentThemeName = this.localStorageService.getString("currentThemeName");
     this.currentTheme = themeMap[currentThemeName];
     if (!this.currentTheme) {
-      this.currentTheme = BASE_THEME;
+      this.currentTheme = BUILT_IN_EDITABLE_THEMES[0];
     }
     return this.currentTheme;
   }
