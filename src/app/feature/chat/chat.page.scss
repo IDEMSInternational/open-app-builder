@@ -16,16 +16,41 @@
   overflow-y: auto;
 }
 
-.story-mode {
+.story-chat {
   flex-grow: 1;
   overflow-y: auto;
+  background-color: #ffff83;
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
 
   .story-image {
+    border-radius: 30px;
     width: 80%;
-    max-width: 400px;
+    max-width: 300px;
     margin-left: auto;
     margin-right: auto;
+    display: block;
   }
+
+  h1 {
+    margin: 30px;
+  }
+
+  .response-options {
+    justify-content: center;
+  }
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .bot-blob {

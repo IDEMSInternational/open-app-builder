@@ -33,7 +33,7 @@
                                 "key": "guide",
                                 "name": "Guide"
                             },
-                            "value": "Osk"
+                            "value": "Oska"
                         },
                         {
                             "type": "set_contact_field",
@@ -41,7 +41,7 @@
                                 "key": "neighbour",
                                 "name": "neighbour"
                             },
-                            "value": "Santiago"
+                            "value": "Anna"
                         },
                         {
                             "type": "set_contact_field",
@@ -213,7 +213,7 @@
                     "actions": [
                         {
                             "attachments": [
-                                "image:https://plh-demo1.idems.international/assets/images/stories/praise_story1/Panel1.jpg"
+                                "image:https://plh-demo1.idems.international/assets/images/stories/praise_story1/Panel1.png"
                             ],
                             "text": "I was busy cooking and my one daughter @fields.neighbourchild was doing her homework. She was practicing reading her book out loud and her sister @fields.neighbourteen was helping her: \n https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                             "type": "send_msg",
@@ -235,7 +235,7 @@
                     "actions": [
                         {
                             "attachments": [
-                                "image:https://plh-demo1.idems.international/assets/images/stories/praise_story1/Panel1.jpg"
+                                "image:https://plh-demo1.idems.international/assets/images/stories/praise_story1/Panel1.png"
                             ],
                             "text": "@fields.neighbourchild (struggling over a difficult word): \"The girl braw – broo – brought the ball to her brother\" https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                             "type": "send_msg",
@@ -318,7 +318,9 @@
                     "uuid": "eef646be-ea49-448a-843a-511cded1f020",
                     "actions": [
                         {
-                            "attachments": [],
+                            "attachments": [
+                                "image:https://plh-demo1.idems.international/assets/images/stories/praise_story1/Panel2.png"
+                            ],
                             "text": "@fields.neighbourteen: \"@fields.neighbourchild! Well done! You read well! Keep reading! The more you practice the better you will get.\" https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                             "type": "send_msg",
                             "quick_replies": [
@@ -400,7 +402,9 @@
                     "uuid": "f6d2f91f-439c-4b62-89fe-60ce34476053",
                     "actions": [
                         {
-                            "attachments": [],
+                            "attachments": [
+                                "image:https://plh-demo1.idems.international/assets/images/stories/praise_story1/Panel3.png"
+                            ],
                             "text": "@fields.neighbour: \"I am very proud of my two daughters. @fields.neighbourchild, you are working so hard, I know reading is not easy. And thank you very much @fields.neighbourteen for helping your sister so I can cook. You are a big help to me.\" https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                             "type": "send_msg",
                             "quick_replies": [
