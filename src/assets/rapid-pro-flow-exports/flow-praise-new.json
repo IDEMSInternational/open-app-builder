@@ -18,6 +18,46 @@
                             "type": "send_msg",
                             "quick_replies": [],
                             "uuid": "27a0b9a6-d88c-479d-b1dd-8f197a9a539c"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "username",
+                                "name": "username"
+                            },
+                            "value": "Esmee"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "guide",
+                                "name": "Guide"
+                            },
+                            "value": "Osk"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "neighbour",
+                                "name": "neighbour"
+                            },
+                            "value": "Santiago"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "neighbourchild",
+                                "name": "neighbourchild"
+                            },
+                            "value": "Rahema"
+                        },
+                        {
+                            "type": "set_contact_field",
+                            "field": {
+                                "key": "neighbourteen",
+                                "name": "neighbourteen"
+                            },
+                            "value": "Beyonce"
                         }
                     ],
                     "exits": [
