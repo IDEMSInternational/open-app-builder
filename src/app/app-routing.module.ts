@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { ThemeEditorComponent } from 'src/app/feature/theme/theme-editor/theme-editor.component';
 import { StressedMultiHandAnimComponent } from "./shared/components/stressed-multi-hand-anim/stressed-multi-hand-anim.component";
 
 const routes: Routes = [
@@ -100,11 +101,12 @@ const routes: Routes = [
       ),
   },
   {
-    path: "settings",
-    loadChildren: () =>
-      import("./feature/settings/settings.module").then(
-        (m) => m.SettingsPageModule
-      ),
+    path: 'settings',
+    loadChildren: () => import('./feature/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'theme-editor',
+    component: ThemeEditorComponent
   },
   {
     path: "reminders",
@@ -120,6 +122,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
       useHash: false,
+      anchorScrolling: "enabled"
     }),
   ],
   exports: [RouterModule],

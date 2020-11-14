@@ -11,7 +11,6 @@ export function main() {
     if (process.argv[2] && process.argv[2].indexOf("save-assets") > -1) {
         outputFolderPaths.push(path.join(__dirname, "../../src/assets/sheet-content"));
     }
-    const spreadsheetFileName = "plh_input1.xlsx";
 
     if (!fs.existsSync(inputFolderPath)) {
         fs.mkdirSync(inputFolderPath);
@@ -24,9 +23,13 @@ export function main() {
     }
 
     try {
-        let workbook = xlsx.readFile(path.join(inputFolderPath, spreadsheetFileName));
-        processWorkbook(workbook, outputFolderPaths);
-
+        const xlsxFiles = fs.readdirSync(inputFolderPath)
+            .filter((fileName) => fileName.endsWith(".xlsx"));
+        console.log("XLSX files to process ", xlsxFiles);
+        for (let fileName of xlsxFiles) {
+            let workbook = xlsx.readFile(path.join(inputFolderPath, fileName));
+            processWorkbook(workbook, outputFolderPaths);
+        }
     } catch (ex) {
         console.warn("No input spreadsheet found");
         console.warn(ex);
@@ -67,13 +70,13 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
 
     
     const toolboxSheets: ToolboxExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Flow_Type === "Toolbox")
+        .filter((contentListItem) => contentListItem.Flow_Type === "Toolbox" || contentListItem.Flow_Type === "Tips")
         .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
         .map((contentListItem) => {
             const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
             return {
                 sheetName: contentListItem.Flow_Name,
-                topicId: contentListItem.Topic_Id,
+                topicId: contentListItem.Module ? contentListItem.Module : contentListItem.Topic_Id,
                 rows: rows
             };
         });
