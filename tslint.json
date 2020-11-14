@@ -104,6 +104,7 @@
         "check-typecast"
       ]
     },
-    "no-string-literal": false
+    "no-string-literal": false,
+    "prefer-const": false
   }
 }
