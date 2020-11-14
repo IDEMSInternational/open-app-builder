@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
-import { IpcService } from 'src/app/shared/services/ipc/ipc.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
-import { BASE_THEME, BUILT_IN_EDITABLE_THEMES } from '../built-in-themes';
-import { AppTheme, colorIdToCSSVarName, ionColorNames, ThemeColor, ThemeColors } from '../theme.model';
+import { Injectable } from "@angular/core";
+import { IpcService } from "src/app/shared/services/ipc/ipc.service";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { BASE_THEME, BUILT_IN_EDITABLE_THEMES } from "../built-in-themes";
+import { AppTheme, colorIdToCSSVarName, ThemeColor, ThemeColors } from "../theme.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ThemeService {
-
   static THEME_UPDATE_CHANNEL = "THEME_UPDATE_CHANNEL";
 
   currentTheme: AppTheme;
@@ -18,12 +17,12 @@ export class ThemeService {
 
     // Listens on IPC for updates to current theme
     this.ipcService.listen(ThemeService.THEME_UPDATE_CHANNEL).subscribe((themeName: string) => {
-        let themeMap = this.getThemeMap();
-        this.applyCSSVariablesForTheme(themeMap[themeName]);
-        this.currentTheme = themeMap[themeName];
+      let themeMap = this.getThemeMap();
+      this.applyCSSVariablesForTheme(themeMap[themeName]);
+      this.currentTheme = themeMap[themeName];
     });
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
       this.applyCSSVariablesForTheme(this.currentTheme);
     });
   }
@@ -37,7 +36,9 @@ export class ThemeService {
     let editableThemeMap = this.localStorageService.getJSON("editableThemes");
     if (!editableThemeMap || Object.keys(editableThemeMap).length < 1) {
       let editableThemeMap = {};
-      BUILT_IN_EDITABLE_THEMES.forEach((theme) => { editableThemeMap[theme.name] = theme });
+      BUILT_IN_EDITABLE_THEMES.forEach((theme) => {
+        editableThemeMap[theme.name] = theme;
+      });
       this.localStorageService.setJSON("editableThemes", editableThemeMap);
     }
     return editableThemeMap;
@@ -48,19 +49,21 @@ export class ThemeService {
   }
 
   public getCurrentTheme(): AppTheme {
-    let themeMap = this.getThemeMap();
-    let currentThemeName = this.localStorageService.getString("currentThemeName");
-    this.currentTheme = themeMap[currentThemeName];
-    if (!this.currentTheme) {
+    const themeMap = this.getThemeMap();
+    const currentThemeName = this.localStorageService.getString("currentThemeName");
+    if (currentThemeName) {
+      this.currentTheme = themeMap[currentThemeName];
+    } else {
       this.currentTheme = BUILT_IN_EDITABLE_THEMES[0];
     }
+
     return this.currentTheme;
   }
 
   public setCurrentTheme(themeName: string) {
     let themeMap = this.getThemeMap();
     if (themeMap[themeName]) {
-      this.currentTheme = themeMap[themeName]
+      this.currentTheme = themeMap[themeName];
     } else {
       this.currentTheme = BASE_THEME;
     }
@@ -110,7 +113,7 @@ export class ThemeService {
   }
 
   private applyCSSVariablesForTheme(theme: AppTheme) {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     let colorId = Object.keys(theme.colors) as (keyof ThemeColors)[];
     let unchangedCount = 0;
     for (let colorName of colorId) {
@@ -129,5 +132,4 @@ export class ThemeService {
     }
     console.log(`${unchangedCount} colors unchanged by theme update`);
   }
-
 }
