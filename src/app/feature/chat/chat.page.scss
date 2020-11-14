@@ -11,9 +11,46 @@
   width: 100%;
 }
 
-.bot-messages {
+.normal-chat {
   flex-grow: 1;
   overflow-y: auto;
+}
+
+.story-chat {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: #ffff83;
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+
+  .story-image {
+    border-radius: 30px;
+    width: 80%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  h1 {
+    margin: 30px;
+  }
+
+  .response-options {
+    justify-content: center;
+  }
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .bot-blob {
@@ -68,6 +105,10 @@
     padding: 16px;
     font-size: 16px;
     border-radius: 10px;
+
+    &.large {
+      font-size: 40px;
+    }
   }
 
   &.bot-msg .msg-bubble {
@@ -108,6 +149,11 @@
   border-style: solid;
   border-width: 3px;
   white-space: nowrap;
+
+  &.large {
+    font-size: 40px;
+    border-radius: 40px;;
+  }
 }
 
 .user-blob {

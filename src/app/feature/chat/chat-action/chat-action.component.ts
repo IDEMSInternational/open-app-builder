@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChatActionService } from 'src/app/shared/services/chat/common/chat-action.service';
-import { ChatAction, ChatActionType } from 'src/app/shared/services/chat/common/chat-actions';
+import { ChatActionService } from 'src/app/feature/chat/chat-service/common/chat-action.service';
+import { ChatAction, ChatActionType } from 'src/app/feature/chat/chat-service/common/chat-actions';
 
 @Component({
   selector: 'plh-chat-action',

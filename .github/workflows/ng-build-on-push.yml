@@ -1,0 +1,42 @@
+on:
+  pull_request
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          lfs: true
+      - name: Checkout LFS objects
+        run: git lfs checkout
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Get Package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+      - name: Populate firebaseConfig.ts
+        env: 
+          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
+        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+      - name: Populate google-services.json
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
+      - name: npm install
+        run: npm install
+      - name: npm run build
+        run: npm run build

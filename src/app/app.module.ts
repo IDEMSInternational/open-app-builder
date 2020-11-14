@@ -18,13 +18,15 @@ import { SharedModule } from "./shared/shared.module";
 import { environment } from "src/environments/environment";
 import { PrivacyPageModule } from "./feature/privacy/privacy.module";
 import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
+import { ThemeEditorComponent } from 'src/app/feature/theme/theme-editor/theme-editor.component';
+import { ColorSketchModule } from 'ngx-color/sketch';
 import { FormsModule } from "@angular/forms";
-import { SurveyModule } from "./feature/survey/survey.module";
+import { SurveyModule } from "src/app/feature/survey/survey.module";
 
 const introModules = [AppTermsPageModule, PrivacyPageModule];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ThemeEditorComponent],
 
   entryComponents: [],
   imports: [
@@ -37,6 +39,7 @@ const introModules = [AppTermsPageModule, PrivacyPageModule];
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FormsModule,
+    ColorSketchModule,
     ...introModules,
     SurveyModule,
   ],

@@ -41,6 +41,7 @@
     .room-img {
         width: unset;
         height: calc(100vh - 138px);
+        max-width: 300px;
     }
 }
 
@@ -70,5 +71,15 @@
     }
     50% {
         transform: rotate(0deg);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .bg-wall {
+        background-color: #411b1b;
+    }
+
+    .container {
+        background-color: #2e1c14;
     }
 }

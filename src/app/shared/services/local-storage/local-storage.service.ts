@@ -44,4 +44,20 @@ export class LocalStorageService {
     }
     return result === "true";
   }
+
+  getFloat(key: string): number {
+    const result = localStorage.getItem(key);
+    if (result === null) {
+      return null;
+    }
+    return Number.parseFloat(result);
+  }
+
+  setFloat(key: string, value: number) {
+    this.setString(key, "" + value);
+  }
+
+  clear() {
+    localStorage.clear();
+  }
 }
