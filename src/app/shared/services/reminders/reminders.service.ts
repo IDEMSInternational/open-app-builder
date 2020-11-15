@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { IReminder } from "../models/reminders.model";
+import { IReminder } from "./reminders.model";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
 import { LocalNotificationSchedule } from "@capacitor/core";
@@ -8,19 +8,22 @@ import { LocalNotificationSchedule } from "@capacitor/core";
 @Injectable({
   providedIn: "root",
 })
+/**
+ * The reminders service originated as a feature module for creating todo-style tasks,
+ * but has since evolved to a standalone goals module, and shared reminders service.
+ * This service predominantly is designed to facilitate interactions with the local notifications
+ * system (and tracking related data stored in the database)
+ *
+ * It is not currently production-ready (2020-11-15 - Chris)
+ */
 export class RemindersService {
   public reminders$ = new BehaviorSubject<IReminder[]>([]);
 
-  constructor(
-    private dbService: DbService,
-    private localNotifications: LocalNotificationService
-  ) {
+  constructor(private dbService: DbService, private localNotifications: LocalNotificationService) {
     this.loadDBReminders();
   }
   private async loadDBReminders() {
-    const reminders = await this.dbService
-      .table<IReminder>("reminders")
-      .toArray();
+    const reminders = await this.dbService.table<IReminder>("reminders").toArray();
     this.reminders$.next(reminders);
   }
 

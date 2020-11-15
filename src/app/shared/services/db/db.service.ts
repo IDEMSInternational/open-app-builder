@@ -1,12 +1,7 @@
 import { Injectable } from "@angular/core";
 import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
-import {
-  ICreateChange,
-  IDatabaseChange,
-  IDeleteChange,
-  IUpdateChange,
-} from "dexie-observable/api";
+import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
 import { EventService } from "../event/event.service";
 const db = new Dexie("plh-app-db");
 
@@ -23,7 +18,7 @@ const DB_TABLES = {
   reminders: "++id,type",
   goals: "id",
   // taskAction ids are not auto-incremented to make it easier to track repeated daily tasks using prefix-suffix
-  taskActions: "id,taskId",
+  taskActions: "++id,task_id",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**

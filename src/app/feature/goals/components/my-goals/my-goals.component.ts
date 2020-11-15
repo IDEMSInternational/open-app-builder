@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ChartDataSets, ChartOptions } from "chart.js";
 import { format } from "date-fns";
 import { Label } from "ng2-charts";
-import { IGoalTask, IGoalWithMeta } from "../../models/goals.model";
+import { IGoalWithMeta, ITaskWithMeta } from "../../models/goals.model";
 import { GoalsService } from "../../services/goals.service";
 
 @Component({
@@ -14,7 +14,7 @@ export class MyGoalsComponent implements OnInit {
   userGoals: any[] = [];
   userGoalIds: any[] = [];
   allGoals: any[] = [];
-  taskReminders: IGoalTask[] = [];
+  taskReminders: ITaskWithMeta[] = [];
   DAY_STRING = format(new Date(), "yyyy-MM-dd");
 
   public chartOptions: ChartOptions = {
@@ -71,12 +71,12 @@ export class MyGoalsComponent implements OnInit {
     }
   }
 
-  public async toggleTaskComplete(task: IGoalTask, index: number) {
-    if (task.completionByDay[this.DAY_STRING] === true) {
-      await this.goalsService.removeTaskAction(task.id, this.DAY_STRING);
-    } else {
-      await this.goalsService.addTaskAction(task.id, this.DAY_STRING);
-    }
+  public async toggleTaskComplete(task: ITaskWithMeta, index: number) {
+    // if (task.completionByDay[this.DAY_STRING] === true) {
+    // await this.goalsService.removeTaskAction(task.id, this.DAY_STRING);
+    // } else {
+    // await this.goalsService.addTaskAction(task.id, this.DAY_STRING);
+    // }
     await this.loadGoals();
   }
 

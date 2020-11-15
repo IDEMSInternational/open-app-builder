@@ -1,32 +1,40 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { RemindersService } from 'src/app/feature/reminders/services/reminders.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
-import { toolboxTopicNames } from 'src/app/shared/services/toolbox/toolbox-topic-metadata';
-import { ToolboxTopicType } from 'src/app/shared/services/toolbox/toolbox.model';
-import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
-import { URLParts } from '../message.converter';
-import { ChatAction } from './chat-actions';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
+import { toolboxTopicNames } from "src/app/shared/services/toolbox/toolbox-topic-metadata";
+import { ToolboxTopicType } from "src/app/shared/services/toolbox/toolbox.model";
+import { ToolboxService } from "src/app/shared/services/toolbox/toolbox.service";
+import { URLParts } from "../message.converter";
+import { ChatAction } from "./chat-actions";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ChatActionService {
-
-  constructor(private toolboxService: ToolboxService, private router: Router, private localStorageService: LocalStorageService,
-    private remindersService: RemindersService) { }
+  constructor(
+    private toolboxService: ToolboxService,
+    private router: Router,
+    private localStorageService: LocalStorageService,
+    private remindersService: RemindersService
+  ) {}
 
   public async executeChatAction(action: ChatAction) {
     switch (action.type) {
-      case "UNLOCK_TOOLBOX_TOPIC": return this.unlockToolboxTopic(action.params);
-      case "NAVIGATE": return this.navigate(action.params as any);
-      case "FINISH_WELCOME": return this.localStorageService.setBoolean("welcome_finished", true);
-      case "CREATE_REMINDER": return this.createReminder(action.params);
-      default: return;
+      case "UNLOCK_TOOLBOX_TOPIC":
+        return this.unlockToolboxTopic(action.params);
+      case "NAVIGATE":
+        return this.navigate(action.params as any);
+      case "FINISH_WELCOME":
+        return this.localStorageService.setBoolean("welcome_finished", true);
+      case "CREATE_REMINDER":
+        return this.createReminder(action.params);
+      default:
+        return;
     }
   }
 
-  private unlockToolboxTopic(paramMap: { [key: string]: string}) {
+  private unlockToolboxTopic(paramMap: { [key: string]: string }) {
     if (paramMap.topic) {
       let matchingTopic = toolboxTopicNames.find((topic) => topic.type === paramMap.topic);
       if (matchingTopic) {
@@ -35,7 +43,7 @@ export class ChatActionService {
     }
   }
 
-  private createReminder(paramMap: { [key: string]: string}) {
+  private createReminder(paramMap: { [key: string]: string }) {
     const now = new Date();
 
     // If no due parameter set to 24 hours from now
