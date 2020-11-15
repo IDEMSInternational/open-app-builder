@@ -1,11 +1,8 @@
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from "@angular/animations";
+import { trigger, state, style, animate, transition } from "@angular/animations";
 
+/**
+ * An expandable section (accordion-style). Trigger open/close state to show content
+ */
 export const OpenClose = trigger("OpenClose", [
   state(
     "open",

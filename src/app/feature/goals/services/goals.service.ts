@@ -48,13 +48,6 @@ export class GoalsService {
       id
     );
   }
-  public async addTaskAction(action: ITaskAction) {
-    action.timestamp = new Date().toISOString();
-    await this.dbService.table<ITaskAction>("taskActions").put(action as ITaskAction);
-  }
-  public async removeTaskAction(id: string) {
-    await this.dbService.table("taskActions").delete(id);
-  }
 
   public async deleteGoal(id: string) {
     await this.dbService.table("goals").delete(id);
@@ -69,7 +62,8 @@ export class GoalsService {
         id: t.id,
         label: t.label || "",
         trigger_on: this._strToArray(t.trigger_on),
-        start_actions: this._strToArray(t.start_action),
+        start_action: t.start_action,
+        start_action_args: t.start_action_args,
         // TODO - decide how to foramt/handle evaluation functions
         evaluation: null,
       };
@@ -147,7 +141,7 @@ export class GoalsService {
     actionHistory: ITaskAction[]
   ) {
     const { repeat_count, repeat_interval, reset_interval } = criteria;
-    const completeCount = actionHistory.filter((a) => a.action_id === "COMPLETED").length;
+    const completeCount = actionHistory.filter((a) => a.status === "COMPLETED").length;
     if (repeat_interval) {
       console.warn("Repeat interval not currently supported");
     }

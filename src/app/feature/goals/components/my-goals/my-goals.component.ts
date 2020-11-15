@@ -87,26 +87,8 @@ export class MyGoalsComponent implements OnInit {
   goalSelectCompare = (goalId: string) => {
     return this.userGoalIds.includes(goalId);
   };
+
+  trackById(index: number, item: { id: string; [key: string]: any }) {
+    return item.id;
+  }
 }
-
-/*********** WiP / Deprecated **********************/
-
-// public radarChartOptions: RadialChartOptions = {
-//   responsive: true,
-//   legend: { display: false },
-//   scale: { ticks: { stepSize: 100, display: false } },
-// };
-
-// public radialChartData: ChartDataSets[] = [
-//   {
-//     data: [25, 50, 100],
-//     label: "Series A",
-//     backgroundColor: [
-//       "hsl(50,50%,75%)",
-//       "hsl(75,50%,75%)",
-//       "hsl(100,50%,75%)",
-//     ],
-//     borderColor: ["hsl(50,50%,70%)", "hsl(75,50%,70%)", "hsl(100,50%,70%)"],
-//     borderWidth: 2,
-//   },
-// ];

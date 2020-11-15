@@ -44,12 +44,8 @@
 <ion-list-header style="margin-top: 1em">
   <ion-label>Reminders </ion-label>
 </ion-list-header>
-
-<!-- <ion-item
-  button
-  [class.task-complete]="task.completionByDay[DAY_STRING]"
-  *ngFor="let task of taskReminders; index as i"
-  (click)="toggleTaskComplete(task, i)"
->
-  {{ task.label }}
-</ion-item> -->
+<plh-task-reminder-item
+  *ngFor="let task of taskReminders; trackBy: trackById"
+  index
+  [task]="task"
+></plh-task-reminder-item>
