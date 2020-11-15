@@ -43,7 +43,9 @@ export interface ITask {
   /** What the user sees in the task summary */
   label?: string;
   /** Specific action to trigger at start of task, e.g flow_start_praise. (actions are mapped to urls within the app) */
-  start_actions?: string[];
+  start_action?: string;
+  /** addional data passed to start action */
+  start_action_args?: string;
   /** Actions which trigger the start of the task, e.g. praise_my_child_complete, assign_variable_... */
   trigger_on?: string[];
   /**
@@ -90,8 +92,10 @@ export interface ITaskCompletionCriteria {
 // }
 
 export interface ITaskAction {
+  /** A unique identifier should be generated to allow easier updating of a task after run complete  */
+  id: string;
   task_id: string;
-  action_id: "COMPLETED";
-  data: any;
+  status: "STARTED" | "COMPLETED";
   timestamp: ISODateString;
+  data?: any;
 }

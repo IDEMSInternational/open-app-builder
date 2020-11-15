@@ -17,8 +17,8 @@ const DB_TABLES = {
   surveys: "++id,surveyId",
   reminders: "++id,type",
   goals: "id",
-  // taskAction ids are not auto-incremented to make it easier to track repeated daily tasks using prefix-suffix
-  taskActions: "++id,task_id",
+  // taskAction list likely to grow quite long so index across more fields for querying
+  taskActions: "id,task_id,status,timestamp",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**
