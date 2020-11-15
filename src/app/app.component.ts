@@ -6,7 +6,7 @@ import { Plugins, Capacitor } from "@capacitor/core";
 const { SplashScreen } = Plugins;
 import { NotificationService } from "./shared/services/notification/notification.service";
 import { DbService } from "./shared/services/db/db.service";
-import { ThemeService } from './feature/theme/theme-service/theme.service';
+import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { ChatService } from "./feature/chat/chat-service/chat.service";
 import { SurveyService } from "./feature/survey/survey.service";
 
@@ -36,8 +36,9 @@ export class AppComponent {
     }
     this.themeService.init();
     this.platform.ready().then(async () => {
+      await this.surveyService.runSurvey("introSplash");
       await this.surveyService.runSurvey("analytics");
-      
+
       this.skipTutorial = true;
       this.dbService.init();
       this.menuController.enable(true, "main-side-menu");
