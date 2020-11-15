@@ -71,7 +71,7 @@ export class MyGoalsComponent implements OnInit {
     }
   }
 
-  public async toggleTaskComplete(task: IGoalTask) {
+  public async toggleTaskComplete(task: IGoalTask, index: number) {
     if (task.completionByDay[this.DAY_STRING] === true) {
       await this.goalsService.removeTaskAction(task.id, this.DAY_STRING);
     } else {
