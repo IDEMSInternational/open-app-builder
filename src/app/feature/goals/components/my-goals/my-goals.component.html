@@ -12,20 +12,13 @@
   (ionChange)="setGoals(goalSelect.value)"
   [compareWith]="goalSelectCompare"
 >
-  <ion-select-option
-    *ngFor="let goal of allGoals"
-    [value]="goal.id"
-    [disabled]="!goal.unlocked"
-    >{{ goal.label }}</ion-select-option
-  >
+  <ion-select-option *ngFor="let goal of allGoals" [value]="goal.id" [disabled]="!goal.unlocked">{{
+    goal.label
+  }}</ion-select-option>
 </ion-select>
 <!-- Goal Progress -->
 <div class="goals-container">
-  <ion-card
-    class="goal-card"
-    *ngFor="let goal of userGoals"
-    [attr.data-level]="goal.level"
-  >
+  <ion-card class="goal-card" *ngFor="let goal of userGoals" [attr.data-level]="goal.level">
     <div class="goal-background" [attr.data-level]="goal.level"></div>
     <div class="goal-content">
       <div class="goal-label">{{ goal.label }}</div>
@@ -52,11 +45,11 @@
   <ion-label>Reminders </ion-label>
 </ion-list-header>
 
-<ion-item
+<!-- <ion-item
   button
   [class.task-complete]="task.completionByDay[DAY_STRING]"
   *ngFor="let task of taskReminders; index as i"
   (click)="toggleTaskComplete(task, i)"
 >
   {{ task.label }}
-</ion-item>
+</ion-item> -->

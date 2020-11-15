@@ -1,8 +1,6 @@
-<ion-content class="ion-padding container">
+<!-- <ion-content class="ion-padding container">
   <ion-list>
-    <plh-my-goals></plh-my-goals>
-  </ion-list>
-  <!-- <ion-list-header style="margin-top: 1em">
+    <ion-list-header style="margin-top: 1em">
       <ion-label>Reminders</ion-label>
     </ion-list-header>
     <ng-template ngFor let-group [ngForOf]="reminderGroups | objectValues">
@@ -19,10 +17,7 @@
             >{{group.reminders.length}}</ion-badge
           >
         </div>
-        <div
-          class="group-details"
-          [@OpenClose]="group.expanded ? 'open' : 'closed'"
-        >
+        <div class="group-details" [@OpenClose]="group.expanded ? 'open' : 'closed'">
           <div class="no-reminders-message" *ngIf="group.reminders.length===0 ">
             You have no reminders for {{group.label.toLowerCase()}}
           </div>
@@ -58,11 +53,11 @@
         </div>
       </div>
     </ng-template>
-  </ion-list>-->
+  </ion-list>
 
-  <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button>
       <ion-icon name="add" (click)="openReminderEditor($event)"></ion-icon>
     </ion-fab-button>
-  </ion-fab>  -->
-</ion-content>
+  </ion-fab>
+</ion-content> -->
