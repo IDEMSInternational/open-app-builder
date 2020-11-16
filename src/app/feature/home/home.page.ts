@@ -36,7 +36,7 @@ export class HomePage implements OnInit {
   }
 
   shouldRedirectToWelcome() {
-    return false;
+    return !this.localStorageService.getBoolean("welcome_skipped");
   }
 
   toggleMenu() {
