@@ -29,6 +29,8 @@ jobs:
       - name: Get Package version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
+      - name: Sync Version
+        run: npm run version -- --sync-only
       - name: Install Tree
         run: sudo apt-get install tree
       - name: Populate firebaseConfig.ts
