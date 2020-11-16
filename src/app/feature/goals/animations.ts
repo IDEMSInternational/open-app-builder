@@ -1,7 +1,9 @@
 import { trigger, state, style, animate, transition } from "@angular/animations";
 
 /**
- * An expandable section (accordion-style). Trigger open/close state to show content
+ * An expandable section (accordion-style). Trigger open/close state to show content,
+ * Used to expand sections of past/future reminders
+ * 2020-11-16 (Chris) - Currently deprecated but retaining for future use
  */
 export const OpenClose = trigger("OpenClose", [
   state(

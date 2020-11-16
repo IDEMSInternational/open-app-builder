@@ -149,9 +149,9 @@ export class GoalsService {
       console.warn("Reset interval not currently supported");
     }
     if (repeat_count) {
-      return completeCount / repeat_count;
+      return (completeCount / repeat_count) * 100;
     } else {
-      return completeCount / 1;
+      return (completeCount / 1) * 100;
     }
   }
 
@@ -175,9 +175,7 @@ export class GoalsService {
     const userTasks: ITask[] = [];
     for (const goal of userGoals) {
       for (const task of goal.tasks) {
-        if (task.goalCompletionCriteria.progress !== 100) {
-          userTasks.push(task);
-        }
+        userTasks.push(task);
       }
     }
     return userTasks.sort((a, b) => (b.id > a.id ? 1 : -1));
