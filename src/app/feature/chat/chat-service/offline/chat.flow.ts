@@ -253,13 +253,14 @@ export class RapidProOfflineFlow implements ChatFlow {
     private async doSendMessageAction(action: RapidProFlowExport.Action) {
         const messages = this.messages$.getValue();
         const text = await this.parseMessageTemplate(action.text);
+        let parsedAttachmentUrls = await Promise.all(action.attachments.map(this.parseMessageTemplate));
         const rapidProMessage: IRapidProMessage = {
             message: text,
             message_id: action.uuid,
             title: "",
             type: "rapidpro",
             quick_replies: JSON.stringify(action.quick_replies ? action.quick_replies : []),
-            attachments: action.attachments,
+            attachments: parsedAttachmentUrls,
             wasTapped: false
         };
         const newMessage = await convertFromRapidProMsg(rapidProMessage);
