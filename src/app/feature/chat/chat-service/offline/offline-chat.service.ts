@@ -47,6 +47,7 @@ export class OfflineChatService {
 
   public init() {
     this.loadExportFile("assets/rapid-pro-flow-exports/idems-plh-app_3.json");
+    this.loadExportFile("assets/sheet-content/flow-export.json");
     return this.loadExportFile("assets/rapid-pro-flow-exports/flow-praise-new.json");
   }
 
