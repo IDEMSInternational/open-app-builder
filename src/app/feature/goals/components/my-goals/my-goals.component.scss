@@ -1,0 +1,68 @@
+:host {
+  display: block;
+}
+ion-list-header {
+  font-size: 30px;
+}
+// make the goals appear in a horizontal scrolling section
+.goals-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+}
+.goal-card {
+  width: 120px;
+  height: 100px;
+  display: inline-block;
+}
+.goal-card.add-goal {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-style: dashed;
+}
+.add-goal-button {
+  height: 100%;
+  margin: 0;
+}
+// use absolute positioning so that content element can be stacked directly
+// on top of background (so additional opacity layer can be used if wanted)
+.goal-background,
+.goal-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.goal-background {
+  background: var(--ion-color-primary);
+  z-index: 0;
+}
+// Make different goal levels different colours
+.goal-background[data-level="1"] {
+  filter: hue-rotate(60deg);
+}
+.goal-background[data-level="2"] {
+  filter: hue-rotate(90deg);
+}
+.goal-background[data-level="3"] {
+  filter: hue-rotate(120deg);
+}
+.goal-content {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+.goal-label {
+  color: white;
+  padding: 10px 10px 0 10px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.goal-progress {
+  flex: 1;
+  background: rgba(255, 255, 255, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
