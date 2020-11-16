@@ -97,15 +97,16 @@ export class GoalsService {
    */
   private processGoalsList(allGoals: IData["GoalsList"], userGoals: IUserGoal[]) {
     const userGoalsHash = arrayToHashmap(userGoals, "id");
+
     const allGoalsWithMeta = allGoals.map((g) => {
+      const tasks = this.getTasksFromCompletionCriteria(g.completion_id);
       const goal: IGoalWithMeta = {
         id: g.id,
         label: g.label,
         groups: this._strToArray(g.groups),
-        tasks: this.getTasksFromCompletionCriteria(g.completion_id),
+        tasks,
         requires: [],
-        // Progress will be re-calculated for goals user has opted in to
-        progress: 0,
+        progress: this.evaulateGoalProgress(tasks),
         unlocked: this.evaluateGoalUnlocked(this._strToArray(g.requires)),
         active: userGoalsHash.hasOwnProperty(g.id),
       };
@@ -181,18 +182,11 @@ export class GoalsService {
     return userTasks.sort((a, b) => (b.id > a.id ? 1 : -1));
   }
 
-  // private processUserTask(task: IGoalTask, allActions: ITaskAction[]) {
-  //   const { id, count } = task;
-  //   const actions = allActions.filter((a) => a.taskId === id);
-  //   const taskMeta = REMINDER_TYPES[id];
-  //   task.completionByDay = {};
-  //   for (const action of actions) {
-  //     const dayCompleted = format(new Date(action.timestamp), "yyyy-MM-dd");
-  //     task.completionByDay[dayCompleted] = true;
-  //   }
-  //   task.progress = Math.round((actions.length / count) * 100);
-  //   return { ...taskMeta, ...task };
-  // }
+  private evaulateGoalProgress(tasks: ITaskWithMeta[]) {
+    // limit progress to 100% for average calculation (some tasks could be exceeded if triggered elswhere)
+    const tasksProgress = tasks.map((t) => Math.min(t.goalCompletionCriteria.progress, 100));
+    return this._calcAverage(tasksProgress);
+  }
 
   private evaluateGoalUnlocked(requires: IGoal["requires"]) {
     return requires.every((condition) => this.evaluateRequireCondition(condition));
