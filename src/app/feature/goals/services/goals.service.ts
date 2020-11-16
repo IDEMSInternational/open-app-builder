@@ -106,7 +106,7 @@ export class GoalsService {
         groups: this._strToArray(g.groups),
         tasks,
         requires: [],
-        progress: this.evaulateGoalProgress(tasks),
+        progress: this.evaluateGoalProgress(tasks),
         unlocked: this.evaluateGoalUnlocked(this._strToArray(g.requires)),
         active: userGoalsHash.hasOwnProperty(g.id),
       };
@@ -182,7 +182,7 @@ export class GoalsService {
     return userTasks.sort((a, b) => (b.id > a.id ? 1 : -1));
   }
 
-  private evaulateGoalProgress(tasks: ITaskWithMeta[]) {
+  private evaluateGoalProgress(tasks: ITaskWithMeta[]) {
     // limit progress to 100% for average calculation (some tasks could be exceeded if triggered elswhere)
     const tasksProgress = tasks.map((t) => Math.min(t.goalCompletionCriteria.progress, 100));
     return this._calcAverage(tasksProgress);
@@ -194,10 +194,6 @@ export class GoalsService {
   private evaluateRequireCondition(condition: string) {
     // TODO
     return true;
-  }
-  private evaluateGoalProgress(criteria: ITaskCompletionCriteria[]) {
-    // TODO
-    return 0;
   }
 
   private evaluateUnlockCondition(condition: ITaskCompletionCriteria) {}
