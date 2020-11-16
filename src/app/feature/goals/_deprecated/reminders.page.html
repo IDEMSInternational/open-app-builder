@@ -1,0 +1,63 @@
+<!-- <ion-content class="ion-padding container">
+  <ion-list>
+    <ion-list-header style="margin-top: 1em">
+      <ion-label>Reminders</ion-label>
+    </ion-list-header>
+    <ng-template ngFor let-group [ngForOf]="reminderGroups | objectValues">
+      <div class="reminder-group-container">
+        <div class="group-summary" (click)="toggleGroupExpansion(group)">
+          <ion-list-header>{{group.label}}</ion-list-header>
+          <ion-icon name="arrow-right"></ion-icon>
+          <ion-badge
+            class="reminder-count-badge"
+            [attr.data-group]="group._id"
+            style="margin-left: auto; width: 20px"
+            color="dark"
+            *ngIf="group.reminders.length>0 && !group.expanded"
+            >{{group.reminders.length}}</ion-badge
+          >
+        </div>
+        <div class="group-details" [@OpenClose]="group.expanded ? 'open' : 'closed'">
+          <div class="no-reminders-message" *ngIf="group.reminders.length===0 ">
+            You have no reminders for {{group.label.toLowerCase()}}
+          </div>
+          <ion-item
+            [attr.data-reminder-id]="reminder.id"
+            *ngFor="let reminder of group.reminders"
+            trackBy:trackById
+            class="reminder-item"
+            (click)="openReminderEditor($event,reminder)"
+          >
+            <div class="tick-container">
+              <ng-lottie
+                *ngIf="activeAnimations[reminder.id]"
+                containerClass="tick-lottie"
+                [options]="tickAnimOptions"
+                (complete)="tickAnimationComplete(reminder)"
+              >
+              </ng-lottie>
+              <img
+                *ngIf="reminder.complete  && !activeAnimations[reminder.id]"
+                class="complete-indicator"
+                src="assets/images/done_tick.svg"
+                (click)="toggleReminderComplete($event,reminder)"
+              />
+              <div
+                *ngIf="!reminder.complete && !activeAnimations[reminder.id]"
+                class="not-complete-indicator"
+                (click)="toggleReminderComplete($event,reminder)"
+              ></div>
+            </div>
+            <div class="reminder-label">{{reminder.typeMeta.label}}</div>
+          </ion-item>
+        </div>
+      </div>
+    </ng-template>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add" (click)="openReminderEditor($event)"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content> -->
