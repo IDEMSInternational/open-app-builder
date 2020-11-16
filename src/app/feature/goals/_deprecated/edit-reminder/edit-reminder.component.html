@@ -57,11 +57,21 @@
       </ion-select>
     </ion-item>
 
-    <ion-button
-      style="float: right"
-      (click)="dismiss(reminder)"
-      [disabled]="!reminderForm.valid"
-      >Save Reminder</ion-button
-    >
+    <div style="margin-top: 2em; display: flex">
+      <ion-button
+        (click)="promptReminderDelete(reminder)"
+        *ngIf="reminder.id"
+        fill="clear"
+        color="danger"
+      >
+        <ion-icon name="trash" slot="start"></ion-icon>Delete</ion-button
+      >
+      <ion-button
+        style="margin-left: auto"
+        (click)="dismiss(reminder)"
+        [disabled]="!reminderForm.valid"
+        >Save Reminder</ion-button
+      >
+    </div>
   </form>
 </ion-content>
