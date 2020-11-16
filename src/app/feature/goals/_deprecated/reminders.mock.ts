@@ -1,4 +1,4 @@
-import { IReminder, REMINDER_TYPES } from "./reminders.model";
+import { IReminder, REMINDER_TYPES } from "src/app/shared/services/reminders/reminders.model";
 import * as Utils from "src/app/shared/utils";
 
 /**
@@ -16,7 +16,7 @@ export const REMINDERS_MOCK = (items: number) => {
       complete: Utils.randomBool(),
       data: {},
       notify: Utils.randomBool(),
-      repeats: null,
+      repeat: "never",
       notifications: [],
     };
     // add metadata where required
