@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { differenceInCalendarDays } from "date-fns";
 import { generateRandomId } from "src/app/shared/utils";
 import { ITaskWithMeta } from "../../models/goals.model";
 import { GoalsService } from "../../services/goals.service";
@@ -18,6 +19,8 @@ import { TaskActionsService } from "../../services/task-actions.service";
     `
       .task-complete {
         background: green;
+        text-decoration: line-through;
+        pointer-events: none;
       }
     `,
   ],
@@ -29,6 +32,7 @@ export class TaskReminderItemComponent implements OnInit {
   constructor(private taskActions: TaskActionsService, private goalsService: GoalsService) {}
 
   ngOnInit(): void {
+    this.isComplete = this.evaluateTaskComplete(this.task);
     if (this.task.trigger_on.length > 0) {
       this.registerTaskTriggers();
     }
@@ -36,6 +40,28 @@ export class TaskReminderItemComponent implements OnInit {
     if (!this.task.label) {
       this.showTask = false;
     }
+  }
+
+  /**
+   * A task should be marked as complete if either it has already satisfied goal completion criteria
+   * (e.g. has been completed the specified number of repeat times), or if it has already been completed
+   * within the specified repeat interval (i.e. some tasks should only be completed once per day)
+   */
+  evaluateTaskComplete(task: ITaskWithMeta): boolean {
+    const { actionHistory, goalCompletionCriteria } = task;
+    // allow progress over 100% in case of additional completion via other mechanisms
+    if (task.goalCompletionCriteria.progress >= 100) {
+      return true;
+    }
+    const repeat_interval = goalCompletionCriteria.repeat_interval || 1;
+    const lastComplete = actionHistory
+      .map((t) => t.timestamp)
+      .sort()
+      .pop();
+    if (lastComplete) {
+      return differenceInCalendarDays(new Date(lastComplete), new Date()) < repeat_interval;
+    }
+    return false;
   }
 
   async handleTaskClicked() {
@@ -49,10 +75,10 @@ export class TaskReminderItemComponent implements OnInit {
       // or keeping as single entry and updating summary data (e.g. abandoned)
       this.taskActions.addTaskAction({ id, task_id, timestamp, status: "STARTED" });
       // TODO - add action commands and handle callbacks
-      const status = await this.taskActions.runAction(start_action, start_action_args);
+      await this.taskActions.runAction(start_action, start_action_args);
       this.taskActions.addTaskAction({ id, task_id, timestamp, status: "COMPLETED" });
       // TODO - calculate local state updates instead of refreshing full data set
-      await this.goalsService.loadGoals();
+      location.reload();
     } else {
       this.taskActions.addTaskAction({ id, task_id, timestamp, status: "COMPLETED" });
     }
