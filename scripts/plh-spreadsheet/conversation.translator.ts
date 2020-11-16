@@ -78,12 +78,18 @@ export class ConversationTranslator {
                     // App specific properties that will be appended to MessageText in a link.
                     let link_text = "https://plh-demo1.idems.international/chat/msg-info?";
                     let add_texts: string[] = [];
+                    let attachmentUrls: string[] = [];
                     if (row.Type === "Story_message") add_texts.push("isStory=true");
                     if (row.Character) add_texts.push("character="+row.Character);
                     if (row.Choose_multi) add_texts.push("chooseMulti=true");
-                    if (add_texts.length > 0) action_text += (" " + link_text + add_texts.join("&")) 
+                    if (add_texts.length > 0) action_text += (" " + link_text + add_texts.join("&"));
+                    if (row.Media) {
+                        attachmentUrls = row.Media.split(";").map((url) => {
+                            return "image:" + url.trim();
+                        });
+                    }
                     actionNode.actions.push({
-                        "attachments": [],
+                        "attachments": attachmentUrls,
                         "text": action_text,
                         "type": "send_msg",
                         "quick_replies": this.getRowChoices(row),
