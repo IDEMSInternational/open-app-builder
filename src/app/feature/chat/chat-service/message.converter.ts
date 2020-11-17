@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { appCustomFields, ChatAttachment, ChatMessage, IRapidProMessage } from './chat-msg.model';
+import { appCustomFields, ChatAttachment, ChatMessage, ChatResponseOption, IRapidProMessage } from './chat-msg.model';
 import { ChatAction, ChatActionType } from './common/chat-actions';
 
 export type URLParts = { url: string, protocol: string, domain: string, port?: number, path?: string, query?: string, fragment?: string };
@@ -21,16 +21,42 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
   let attachments = await convertRapidProAttachments(attachmentStrings);
   let text = removeHiddenURLs(rpMsg.message, urlPartsList);
   let actions = getActionsFromURLS(urlPartsList);
+  let responseOptions = await Promise.all(quickReplies.map(convertQuickReply));
   let msg: ChatMessage = {
     text: text,
     sender: "bot",
     dateReceived: new Date(),
-    responseOptions: quickReplies.map((choice) => ({ text: choice })),
+    responseOptions: responseOptions,
     attachments: attachments,
     actions: actions
   };
   msg = applyCustomMessageInfo(urlPartsList, msg);
   return msg;
+}
+
+export async function convertQuickReply(choiceString: string): Promise<ChatResponseOption> {
+  let urlPartsList = getURLSInText(choiceString);
+  let text = choiceString;
+  let imageUrl: string;
+  for (let urlParts of urlPartsList) {
+    text = text.replace(urlParts.url, "");
+    imageUrl = urlParts.url;
+    if (environment.domains.indexOf(urlParts.domain) > -1) {
+      try {
+        let response = await fetch(urlParts.path, { method: "HEAD" });
+        if (response.status === 200) {
+          imageUrl = urlParts.path;
+        }
+      } catch (ex) {
+        console.log("HEAD request excetpion ", ex);
+      }
+    }
+    break;
+  }
+  return {
+    text: text,
+    imageUrl: imageUrl
+  };
 }
 
 export function applyCustomMessageInfo(urlPartsList: URLParts[], msg: ChatMessage) {
