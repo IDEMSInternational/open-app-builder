@@ -7,16 +7,18 @@ import { ISurvey } from "../types/survey.types";
   template: `
     <ion-button fill="clear" (click)="skipIntro()" class="skip-button">Skip Intro</ion-button>
     <div class="section-container">
-      <section [@fadeInOut]="fadeSection[0]">
-        App name (ParentApp)+ logo Encouraging/inspirational slogans that fades.
-      </section>
-      <section [@fadeInOut]="fadeSection[1]">Bringing up teenagers is hard</section>
-      <section [@fadeInOut]="fadeSection[2]">You are the best parent your teen could have</section>
-      <section [@fadeInOut]="fadeSection[3]">
+      <section [@fadeInOut]="fadeSection[0]">Bringing up teenagers is hard</section>
+      <section [@fadeInOut]="fadeSection[1]">You are the best parent your teen could have</section>
+      <section [@fadeInOut]="fadeSection[2]">
         Join the 124 million parents who have used our resources
       </section>
-      <section [@fadeInOut]="fadeSection[4]">
-        Powered by Parenting for Lifelong Health PLH LOGO Logos of UNICEF and WHO
+      <section [@fadeInOut]="fadeSection[3]">
+        <div>Powered by Parenting for Lifelong Health</div>
+        <div class="partner-logos">
+          <img src="assets/logos/PLH.svg" />
+          <img src="assets/logos/Unicef.svg" />
+          <img src="assets/logos/WHO.svg" />
+        </div>
       </section>
     </div>
   `,
@@ -28,6 +30,18 @@ import { ISurvey } from "../types/survey.types";
         margin-top: 30%;
         margin-left: auto;
         margin-right: auto;
+      }
+      .partner-logos {
+        width: 300px;
+        margin-top: 2em;
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(3, 90px);
+        grid-template-rows: repeat(3, 90px);
+        grid-auto-flow: row;
+      }
+      .partner-logos > img {
+        height: 100%;
       }
       section {
         position: absolute;
@@ -61,7 +75,7 @@ export class IntroSplashSurveyComponent implements OnInit {
   // local tracker for which sections have been shown
   fadeSection = [];
   // durations to display each faded section
-  fadeTimes = [3500, 3500, 4000, 3500, 5000];
+  fadeTimes = [3500, 4000, 3500, 5000];
 
   constructor(private modalCtrl: ModalController) {}
 
