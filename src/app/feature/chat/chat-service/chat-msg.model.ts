@@ -48,6 +48,7 @@ export interface ChatAttachment {
 export interface ChatResponseOption {
     text: string;
     customAction?: ResponseCustomAction;
+    imageUrl?: string;
   }
   
   export type ResponseCustomAction =
