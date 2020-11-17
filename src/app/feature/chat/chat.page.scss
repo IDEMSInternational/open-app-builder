@@ -133,14 +133,16 @@
   align-self: flex-end;
   width: 100%;
   display: flex;
-  overflow-y: auto;
   flex-wrap: wrap;
   padding: 16px;
 }
 
 .response-option {
-  color: #0d4060;
-  border-color: #0d4060;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--ion-primary-color, #0d4060);
+  border-color: var(--ion-primary-color, #0d4060);
   background-color: transparent;
   padding: 7px;
   font-size: 14px;
@@ -149,6 +151,10 @@
   border-style: solid;
   border-width: 3px;
   white-space: nowrap;
+
+  span {
+    text-align: center;
+  }
 
   &.large {
     font-size: 40px;
