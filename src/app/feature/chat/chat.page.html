@@ -39,7 +39,8 @@
   </div>
   <div class="response-options">
     <div *ngFor="let option of responseOptions" class="response-option" [ngClass]="{'large': option.text.length < 3}" (click)="selectResponseOption(option)">
-      {{option.text}}
+      <img *ngIf="option.imageUrl" [src]="option.imageUrl">
+      <span>{{option.text}}</span>
     </div>
     <form *ngIf="true"
       (ngSubmit)="onInputSubmit($event)">
