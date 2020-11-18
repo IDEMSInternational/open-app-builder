@@ -11,6 +11,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           lfs: true
+      # Not fully sure why, but seems not all lfs handled correctly above so run additional checkout 
+      - name: Checkout LFS objects
+        run: git lfs checkout    
       - name: Cache node modules
         uses: actions/cache@v1
         with:
