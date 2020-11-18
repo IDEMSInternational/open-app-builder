@@ -13,8 +13,8 @@ jobs:
       # Extract current version number from package.json and set it as the APP_VERSION env variable
       - name: checkout
         uses: actions/checkout@master
-      - name: get_version
-        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')" >> $GITHUB_ENV
+      - name: set_version
+        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
       - name: check_version
         run: echo "version $env.APP_VERSION"
       # Drafts your next Release notes as Pull Requests are merged into "master"
