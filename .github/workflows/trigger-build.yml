@@ -11,7 +11,7 @@ on:
 jobs:
   log_build_inputs:
     runs-on: ubuntu-latest
-    name: "${{github.event.inputs.build_branch}}"
+    name: "Branch: ${{github.event.inputs.build_branch}}"
     steps:
       - run: echo "Build branch ${{github.event.inputs.build_branch}}"
   build:
@@ -55,8 +55,9 @@ jobs:
       - name: Assemble Debug Android APK
         working-directory: android
         run: ./gradlew :app:assembleDebug
+      - run: echo $(ls)
       - name: Upload build artifact
         uses: actions/upload-artifact@v2
         with:
-          name: build-output
-          path: android\app\build\outputs\apk\debug
+          name: outputs
+          path: android/app/build/outputs
