@@ -21,10 +21,10 @@
   overflow-y: auto;
   background-color: #ffff83;
   opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 1s;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
 
   .story-image {
     border-radius: 30px;
@@ -45,12 +45,12 @@
 }
 
 @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .bot-blob {
@@ -90,7 +90,6 @@
 }
 
 .msg-container {
-
   margin-bottom: 20px;
 
   .msg-bubble-container {
@@ -158,7 +157,10 @@
 
   &.large {
     font-size: 40px;
-    border-radius: 40px;;
+    border-radius: 40px;
+  }
+  img {
+    max-height: 150px;
   }
 }
 
