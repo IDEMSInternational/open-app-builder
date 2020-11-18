@@ -44,10 +44,10 @@ jobs:
           java-version: 1.8
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - name: Create Android Release Bundle
+      - name: Build Android Release Bundle
         working-directory: android
         run: ./gradlew :app:bundleRelease
-      - name: Assemble Android APK's
+      - name: Build Android Debug APK
         working-directory: android
         run: ./gradlew :app:assembleDebug
       - name: Sign Android Release
@@ -59,15 +59,6 @@ jobs:
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
-      - name: Upload to Google play
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: international.idems.plh_teens
-          releaseFile: ${{ env.SIGNED_RELEASE_FILE}}
-          track: internal
-        env:
-          GOOGLE_PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}  
       - name: Upload Release Asset - Signed App Bundle
         uses: actions/upload-release-asset@v1
         env:
@@ -85,4 +76,14 @@ jobs:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./android/app/build/outputs/apk/debug/app-debug.apk
           asset_name: app-debug.apk
-          asset_content_type: application/zip
+          asset_content_type: application/zip    
+      - name: Upload to Google play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: international.idems.plh_teens
+          releaseFile: ${{ env.SIGNED_RELEASE_FILE}}
+          track: internal
+        env:
+          GOOGLE_PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}  
+      
