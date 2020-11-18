@@ -9,6 +9,7 @@ import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { ChatService } from "./feature/chat/chat-service/chat.service";
 import { SurveyService } from "./feature/survey/survey.service";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-root",
@@ -16,6 +17,7 @@ import { SurveyService } from "./feature/survey/survey.service";
   styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
+  APP_VERSION = environment.version;
   skipTutorial: boolean;
   constructor(
     private platform: Platform,

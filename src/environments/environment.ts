@@ -1,6 +1,8 @@
 import { firebaseConfig } from "./firebaseConfig";
+import { version } from "../../package.json";
 
 export const environment = {
+  version,
   production: false,
   rapidPro: {
     receiveUrl:
@@ -10,7 +12,7 @@ export const environment = {
   },
   firebaseConfig,
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
-  chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"]
+  chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
 };
 
 // This file can be replaced during build by using the `fileReplacements` array.
