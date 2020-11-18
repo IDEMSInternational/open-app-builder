@@ -58,23 +58,23 @@ jobs:
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
-      # - name: Upload to Google play
-      #   uses: r0adkll/upload-google-play@v1
-      #   with:
-      #     serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
-      #     packageName: international.idems.plh_teens
-      #     releaseFile: ${{ env.SIGNED_RELEASE_FILE}}
-      #     track: internal
-      - name: Upload Signed App Bundle
+      - name: Upload to Google play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: international.idems.plh_teens
+          releaseFile: ${{ env.SIGNED_RELEASE_FILE}}
+          track: internal
+      - name: Upload Release Asset - Signed App Bundle
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: android/app/build/outputs/bundle/release/app-release.aab
+          asset_path: ./android/app/build/outputs/bundle/release/app-release.aab
           asset_name: app-release.aab
           asset_content_type: application/zip
-      - name: Upload Debug APK
+      - name: Upload Release Asset - Debug APK
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
