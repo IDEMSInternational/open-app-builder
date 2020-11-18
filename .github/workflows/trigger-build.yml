@@ -55,7 +55,6 @@ jobs:
       - name: Assemble Debug Android APK
         working-directory: android
         run: ./gradlew :app:assembleDebug
-      - run: echo $(ls)
       - name: Upload build artifact
         uses: actions/upload-artifact@v2
         with:
