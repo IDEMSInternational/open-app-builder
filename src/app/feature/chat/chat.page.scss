@@ -11,9 +11,46 @@
   width: 100%;
 }
 
-.bot-messages {
+.normal-chat {
   flex-grow: 1;
   overflow-y: auto;
+}
+
+.story-chat {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: #ffff83;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+
+  .story-image {
+    border-radius: 30px;
+    width: 80%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  h1 {
+    margin: 30px;
+  }
+
+  .response-options {
+    justify-content: center;
+  }
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .bot-blob {
@@ -53,16 +90,12 @@
 }
 
 .msg-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   margin-bottom: 20px;
-  width: 90vw;
 
-  &:nth-child(1) {
-    max-width: calc(75vw - 50px);
-    position: relative;
-    left: 20vw;
+  .msg-bubble-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .msg-bubble {
@@ -71,6 +104,10 @@
     padding: 16px;
     font-size: 16px;
     border-radius: 10px;
+
+    &.large {
+      font-size: 40px;
+    }
   }
 
   &.bot-msg .msg-bubble {
@@ -95,14 +132,16 @@
   align-self: flex-end;
   width: 100%;
   display: flex;
-  overflow-y: auto;
   flex-wrap: wrap;
   padding: 16px;
 }
 
 .response-option {
-  color: #0D4060;
-  border-color: #0D4060;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--ion-primary-color, #0d4060);
+  border-color: var(--ion-primary-color, #0d4060);
   background-color: transparent;
   padding: 7px;
   font-size: 14px;
@@ -111,6 +150,18 @@
   border-style: solid;
   border-width: 3px;
   white-space: nowrap;
+
+  span {
+    text-align: center;
+  }
+
+  &.large {
+    font-size: 40px;
+    border-radius: 40px;
+  }
+  img {
+    max-height: 150px;
+  }
 }
 
 .user-blob {
@@ -155,4 +206,8 @@ ion-content {
 .auto-reply-container {
   display: block;
   font-size: 0.6em;
+}
+
+.skip-button {
+  margin: 16px;
 }

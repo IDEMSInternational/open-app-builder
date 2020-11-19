@@ -11,7 +11,6 @@ export function main() {
     if (process.argv[2] && process.argv[2].indexOf("save-assets") > -1) {
         outputFolderPaths.push(path.join(__dirname, "../../src/assets/sheet-content"));
     }
-    const spreadsheetFileName = "plh_input1.xlsx";
 
     if (!fs.existsSync(inputFolderPath)) {
         fs.mkdirSync(inputFolderPath);
@@ -24,11 +23,15 @@ export function main() {
     }
 
     try {
-        let workbook = xlsx.readFile(path.join(inputFolderPath, spreadsheetFileName));
-        processWorkbook(workbook, outputFolderPaths);
-
+        const xlsxFiles = fs.readdirSync(inputFolderPath)
+            .filter((fileName) => fileName.endsWith(".xlsx"));
+        console.log("XLSX files to process ", xlsxFiles);
+        for (let fileName of xlsxFiles) {
+            let workbook = xlsx.readFile(path.join(inputFolderPath, fileName));
+            processWorkbook(workbook, outputFolderPaths);
+        }
     } catch (ex) {
-        console.warn("No input spreadsheet found");
+        console.warn("Excel parsing error");
         console.warn(ex);
     }
 }
@@ -36,26 +39,27 @@ main();
 
 export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: string[]) {
     console.log("Sheet names", workbook.SheetNames);
+    let contentListSheetName: string = "==Content_List=="
 
-    if (!workbook.Sheets["Content_List"]) {
+    if (!workbook.Sheets[contentListSheetName]) {
         console.error("No content list sheet!");
         return;
     }
-    const contentList: ContentIndexRow[] = xlsx.utils.sheet_to_json(workbook.Sheets["Content_List"]);
+    const contentList: ContentIndexRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListSheetName]);
     
     console.log("Content list", contentList);
 
     const conversationSheets: ConversationExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Content_Type === "Conversation")
-        .filter((contentListItem) => workbook.Sheets[contentListItem.Sheet_Name])
+        .filter((contentListItem) => contentListItem.Flow_Type === "Conversation")
+        .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
         .map((contentListItem) => {
-            const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Sheet_Name]);
+            const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
             return {
-                sheetName: contentListItem.Sheet_Name,
+                sheetName: contentListItem.Flow_Name,
                 rows: rows
             };
         });
-    console.log("Conversation Sheets: ", conversationSheets);
+    console.log("Conversation Sheets: ", JSON.stringify(conversationSheets));
 
     const conversationTranslator = new ConversationTranslator();
     const rapidProExportObject = conversationTranslator.from(conversationSheets);
@@ -66,12 +70,13 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
 
     
     const toolboxSheets: ToolboxExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Content_Type === "Toolbox")
-        .filter((contentListItem) => workbook.Sheets[contentListItem.Sheet_Name])
+        .filter((contentListItem) => contentListItem.Flow_Type === "Toolbox" || contentListItem.Flow_Type === "Tips")
+        .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
         .map((contentListItem) => {
-            const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Sheet_Name]);
+            const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
             return {
-                sheetName: contentListItem.Sheet_Name,
+                sheetName: contentListItem.Flow_Name,
+                topicId: contentListItem.Module ? contentListItem.Module : contentListItem.Topic_Id,
                 rows: rows
             };
         });

@@ -1,0 +1,18 @@
+<p>
+  Chat Action: {{ actionType }}
+</p>
+<p>
+  Action JSON: {{ actionJSON }}
+</p>
+<p *ngIf="executionStatus == 'in_progress'" style="color: yellow">
+  Action Execution in Progress
+</p>
+<p *ngIf="executionStatus == 'success'" style="color: green">
+  Action Execution Success
+</p>
+<p *ngIf="executionStatus == 'failure'" style="color: red">
+  Action Execution Failure
+</p>
+<p>
+  {{ debugMsg }}
+</p>

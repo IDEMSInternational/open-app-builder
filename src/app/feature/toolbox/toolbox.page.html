@@ -1,3 +1,10 @@
 <ion-content class="ion-padding">
-  <p>You don't have any tools in your toolbox at the moment. Talk to the guide to find out how to get some!</p>
+  <!--<p>You don't have any tools in your toolbox at the moment. Talk to the guide to find out how to get some!</p>-->
+  <div *ngFor="let topicMetadata of toolboxTopicMetadatas" class="toolbox-button-container"
+    (click)="onClickTopic(topicMetadata)">
+    <div *ngIf="!topicMetadata.unlocked" class="locked-cover"></div>
+    <div class="toolbox-button-body"  [ngStyle]="{ 'background-color': topicMetadata.buttonColor}">
+      <span class="toolbox-button-label">{{topicMetadata.name}}</span>
+    </div>
+  </div>
 </ion-content>
