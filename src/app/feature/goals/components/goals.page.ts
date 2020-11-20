@@ -15,13 +15,14 @@ export class GoalsPage implements OnInit {
   ngOnInit() {
   }
 
-  async openRewardModal() {
+  async openRewardModal(id: string) {
     const modal = await this.modalController.create({
       cssClass: "anim-slide-up-modal",
       component: AnimModalComponent,
       componentProps: {
-        id: "trophy",
-        title: "Congratulations!"
+        id: id,
+        title: "Congratulations!",
+        autoCloseMs: 0
       }
     });
     modal.present();

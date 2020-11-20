@@ -1,16 +1,17 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { AnimModalComponent } from './anim-modal.component';
 
-fdescribe('AnimModalComponent', () => {
+describe('AnimModalComponent', () => {
   let component: AnimModalComponent;
   let fixture: ComponentFixture<AnimModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AnimModalComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), HttpClientTestingModule ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AnimModalComponent);

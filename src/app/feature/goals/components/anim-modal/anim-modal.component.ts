@@ -1,4 +1,6 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ModalController } from '@ionic/angular';
 import { AnimationOptions } from 'ngx-lottie';
 import { REWARD_ANIMATIONS } from './anim.model';
@@ -27,7 +29,9 @@ export class AnimModalComponent {
 
   autocloseTimeoutRef: any;
 
-  constructor(private modalController: ModalController) { }
+  svgData: SafeHtml;
+
+  constructor(private modalController: ModalController, private http: HttpClient, private domSanitizer: DomSanitizer) { }
 
   ionViewWillEnter() {
     let matchingAnim = REWARD_ANIMATIONS.find((animSummary) => animSummary.id === this.id);
@@ -39,11 +43,24 @@ export class AnimModalComponent {
     } else {
       this.lottieOptions = null;
     }
+    if (matchingAnim.svgAssetPath) {
+      this.loadSvg(matchingAnim.svgAssetPath);
+    }
     if (this.autoCloseMs > 0) {
       this.autocloseTimeoutRef = setTimeout(() => {
         this.modalController.dismiss();
       }, this.autoCloseMs);
     }
+  }
+
+  loadSvg(assetPath: string) {
+    this.http.get(assetPath, {
+      responseType: "text"
+    }).subscribe((text) => {
+      this.svgData = this.domSanitizer.bypassSecurityTrustHtml(text);
+    }, (err) => {
+      console.warn("Error loading animation svg", err);
+    })
   }
 
   dismiss() {
