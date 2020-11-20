@@ -22,7 +22,7 @@ export class GoalsPage implements OnInit {
       componentProps: {
         id: id,
         title: "Congratulations!",
-        autoCloseMs: 0
+        autoCloseMs: 4000
       }
     });
     modal.present();
