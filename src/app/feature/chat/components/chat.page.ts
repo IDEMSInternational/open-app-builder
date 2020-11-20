@@ -106,9 +106,9 @@ export class ChatPage {
     if (flowName) {
       this.chatService.startFlowByName(flowName);
       this.messageSubscription = this.chatService.messages$.subscribe((messages) => {
-        console.log("from chat service ", messages);
         if (messages.length > 0) {
           const latestMessage = messages[messages.length - 1];
+          console.log("message received", latestMessage);
           if (latestMessage.actions && latestMessage.actions.length > 0) {
             for (let action of latestMessage.actions) {
               this.chatActionService.executeChatAction(action);
