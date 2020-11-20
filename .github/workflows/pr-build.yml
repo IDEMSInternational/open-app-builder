@@ -10,6 +10,11 @@ jobs:
         node-version: [12.x]
 
     steps:
+      - name: Get PR Number
+        run: |
+          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          echo "PR Number is $PR_NUMBER"
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
       - name: Install crcmod
         run: |
           sudo apt-get install gcc python-dev python-setuptools
@@ -44,11 +49,11 @@ jobs:
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - name: npm install
         run: npm install
-      - name: npm run build
-        run: npm run build
+      - name: Build Angular for PR
+        run: ng build --prod --base-href /$PR_NUMBER/ --deploy-url /$PR_NUMBER/
       - id: upload-files
         name: Upload files to Google Cloud Storage (rsync)
         timeout-minutes: 15
         run: |
-          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          gsutil rsync -d -R -c ./www gs://parenting-app-ui-pr1/$pull_number && gsutil web set -m index.html gs://parenting-app-ui-master1/
+          
+          gsutil rsync -d -R -c ./www gs://parenting-app-ui-pr1/$PR_NUMBER
