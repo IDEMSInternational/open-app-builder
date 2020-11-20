@@ -78,7 +78,7 @@ export class ChatPage {
       const useOfflineChat = this.localStorageService.getBoolean("use_offline_chat");
       this.chatService = useOfflineChat ? this.offlineChatService : this.onlineChatService;
     }
-    console.log(`%c Using ${this.chatService.type} chat `, "background: #222; color: #bada55");
+    console.log(`%cUsing ${this.chatService.type} chat `, "color: #9c9c9c");
   }
 
   /** The chat page can sometimes be displayed in a modal. Check if it is, and assign variable to handle close button display */
@@ -101,30 +101,24 @@ export class ChatPage {
   }
 
   private async startFlow(flowName: string) {
-    console.log("starting flow", flowName);
     await this.chatService.ready();
-    console.log("chat service ready", this.chatService);
     if (flowName) {
       this.chatService.startFlowByName(flowName);
+      this.messageSubscription = this.chatService.messages$.subscribe((messages) => {
+        console.log("from chat service ", messages);
+        if (messages.length > 0) {
+          const latestMessage = messages[messages.length - 1];
+          if (latestMessage.actions && latestMessage.actions.length > 0) {
+            for (let action of latestMessage.actions) {
+              this.chatActionService.executeChatAction(action);
+            }
+          }
+          this.onNewMessage(latestMessage);
+        }
+      });
     } else {
       console.error("no flow name specified");
     }
-
-    // this.chatService.runTrigger({ phrase: this.triggerPhrase }).subscribe((messages$) => {
-    //   console.log("Ran trigger ", this.triggerPhrase);
-    //   this.messageSubscription = messages$.asObservable().subscribe((messages) => {
-    //     console.log("from chat service ", messages);
-    //     if (messages.length > 0) {
-    //       const latestMessage = messages[messages.length - 1];
-    //       if (latestMessage.actions && latestMessage.actions.length > 0) {
-    //         for (let action of latestMessage.actions) {
-    //           this.chatActionService.executeChatAction(action);
-    //         }
-    //       }
-    //       this.onNewMessage(latestMessage);
-    //     }
-    //   });
-    // });
   }
 
   ionViewDidLeave() {

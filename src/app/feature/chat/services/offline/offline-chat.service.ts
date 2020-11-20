@@ -41,6 +41,7 @@ export class OfflineChatService implements IChatService {
   }
 
   public startFlowByName(flowName: string) {
+    console.log(`%c${flowName} START`, "background: white; color: green");
     this.messages$ = new BehaviorSubject([]);
     const flow = this.flowsByName[flowName];
     if (flow) {
@@ -58,7 +59,6 @@ export class OfflineChatService implements IChatService {
       console.error("flow does not exist", flowName, this.flowsByName);
       this.currentFlow = undefined;
     }
-    return this.messages$;
   }
 
   public sendMessage(message: ChatMessage): Observable<any> {
