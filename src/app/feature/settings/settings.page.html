@@ -7,11 +7,14 @@
 <ion-content>
   <ion-item>
     <ion-label>Use Button Home Screen</ion-label>
-    <ion-toggle [(ngModel)]="useButtonHomeScreen" (ngModelChange)="toggleButtonHomeScreen()"></ion-toggle>
+    <ion-toggle
+      [(ngModel)]="useButtonHomeScreen"
+      (ngModelChange)="toggleButtonHomeScreen()"
+    ></ion-toggle>
   </ion-item>
-  <ion-item>
+  <ion-item *ngIf="isNative">
     <ion-label>Use Offline Chat</ion-label>
-    <ion-toggle [(ngModel)]="offlineChatEnabled" (ngModelChange)="toggleOfflineChat()"></ion-toggle>
+    <ion-toggle [(ngModel)]="useOfflineChat" (ngModelChange)="toggleUseOfflineChat()"></ion-toggle>
   </ion-item>
   <ion-item>
     <ion-button (click)="openWelcomeFlow()">Open Welcome Flow</ion-button>
@@ -24,12 +27,18 @@
   </ion-item>
   <ion-item>
     <ion-label>Theme</ion-label>
-    <ion-select [value]="currentThemeName" okText="Okay" cancelText="Dismiss" (ionChange)="selectThemeName($event.detail.value)">
-      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}">{{themeName}}</ion-select-option>
+    <ion-select
+      [value]="currentThemeName"
+      okText="Okay"
+      cancelText="Dismiss"
+      (ionChange)="selectThemeName($event.detail.value)"
+    >
+      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}"
+        >{{themeName}}</ion-select-option
+      >
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label [routerLink]="['/theme-editor']">Theme Editor</ion-label>
   </ion-item>
-
 </ion-content>
