@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log("Testing PR");
+    console.log("Testing PR...");
   }
 
   ionViewWillEnter() {
