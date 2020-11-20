@@ -24,7 +24,7 @@ export class OfflineChatService implements IChatService {
   private currentFlow: RapidProOfflineFlow;
   private flowStatus$ = new BehaviorSubject<FlowStatusChange[]>([]);
   private ready$ = new BehaviorSubject<boolean>(false);
-  public messages$: BehaviorSubject<ChatMessage[]>;
+  public messages$ = new BehaviorSubject<ChatMessage[]>([]);
 
   constructor(protected http: HttpClient, protected contactFieldService: ContactFieldService) {
     this.init();
@@ -37,24 +37,22 @@ export class OfflineChatService implements IChatService {
 
   private async init() {
     await this.loadExportFile(FLOW_EXPORTS_PATH);
+    this.subscribeToFlowStatusChanges();
     this.ready$.next(true);
   }
 
+  /**
+   * Start a flow listed in the offline flow cache via it's name property
+   * @param flowName the name of a flow as specified in the flow json
+   */
   public startFlowByName(flowName: string) {
-    console.log(`%c${flowName} START`, "background: white; color: green");
     this.messages$ = new BehaviorSubject([]);
     const flow = this.flowsByName[flowName];
     if (flow) {
       const { name, uuid } = flow;
       const status: FlowStatusChange = { name, uuid, status: "start" };
+      // Flow starting is handled below via flowStatusChanges subscription
       this.flowStatus$.next([...this.flowStatus$.value, status]);
-      this.currentFlow = new RapidProOfflineFlow(
-        flow,
-        this.messages$,
-        this.flowStatus$,
-        this.contactFieldService
-      );
-      this.currentFlow.start();
     } else {
       console.error("flow does not exist", flowName, this.flowsByName);
       this.currentFlow = undefined;
@@ -66,7 +64,35 @@ export class OfflineChatService implements IChatService {
     return this.currentFlow.sendMessage(message);
   }
 
-  public async loadExportFile(exportFilePath: string) {
+  /**
+   * It is common that one flow may trigger another flow. These events are captured in flowStatus$ changes,
+   * subscribe and trigger new flow starts when this happens
+   */
+  private subscribeToFlowStatusChanges() {
+    this.flowStatus$.subscribe((events) => {
+      console.log("Flow status change", events);
+      if (events.length > 0) {
+        let latest = events[events.length - 1];
+        if (latest.status === "start") {
+          const flow = this.flowsByName[latest.name];
+          console.log(`%c${flow.name} START`, "background: white; color: green");
+          this.currentFlow = new RapidProOfflineFlow(
+            flow,
+            this.messages$,
+            this.flowStatus$,
+            this.contactFieldService
+          );
+          this.currentFlow.start();
+        }
+      }
+    });
+  }
+
+  /**
+   * Offline flows are stored in json files. Load a file and all the flows represented in it
+   * @param exportFilePath assets path with json to load
+   */
+  private async loadExportFile(exportFilePath: string) {
     const res = (await this.http.get(exportFilePath).toPromise()) as RapidProFlowExport.RootObject;
     if (res.flows && res.flows.length > 0) {
       for (let flow of res.flows) {
