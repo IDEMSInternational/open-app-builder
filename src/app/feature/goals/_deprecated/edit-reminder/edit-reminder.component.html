@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reminder</ion-title>
+    <ion-button slot="end" fill="clear" (click)="dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding container">
+  <form [formGroup]="reminderForm">
+    <ion-item>
+      <ion-label>Remind me to...</ion-label>
+      <ion-select
+        formControlName="type"
+        okText="Okay"
+        cancelText="Cancel"
+        #reminderType
+      >
+        <ion-select-option
+          *ngFor="let reminderType of reminderTypes | objectValues"
+          [value]="reminderType.type"
+          >{{ reminderType.label }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="reminder.type == 'custom'">
+      <ion-input
+        style="text-align: right"
+        type="text"
+        autofocus
+        #customReminderType
+        placeholder="Type reminder name here..."
+        [value]="reminder.data.customLabel"
+        (ionChange)="customReminderChange(customReminderType.value)"
+        debounce="500"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>When</ion-label>
+      <ion-input
+        style="text-align: right"
+        slot="end"
+        type="date"
+        [value]="reminder.due | isoDateToDateInput"
+        #dueDate
+        (ionChange)="dueDateChanged(dueDate.value)"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Repeat</ion-label>
+      <ion-select formControlName="repeat">
+        <ion-select-option
+          *ngFor="let duration of repeatDurations | objectValues"
+          [value]="duration.value"
+          >{{ duration.label }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <div style="margin-top: 2em; display: flex">
+      <ion-button
+        (click)="promptReminderDelete(reminder)"
+        *ngIf="reminder.id"
+        fill="clear"
+        color="danger"
+      >
+        <ion-icon name="trash" slot="start"></ion-icon>Delete</ion-button
+      >
+      <ion-button
+        style="margin-left: auto"
+        (click)="dismiss(reminder)"
+        [disabled]="!reminderForm.valid"
+        >Save Reminder</ion-button
+      >
+    </div>
+  </form>
+</ion-content>
