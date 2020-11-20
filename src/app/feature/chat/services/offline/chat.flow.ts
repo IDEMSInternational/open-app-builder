@@ -78,6 +78,7 @@ export class RapidProOfflineFlow {
     }
   }
   private async handleNodeAction(action: RapidProFlowExport.Action) {
+    console.log(`%cAction: ${action.type}`, "color: #9c9c9c");
     switch (action.type) {
       case "enter_flow":
         if (action.flow) {
