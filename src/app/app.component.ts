@@ -7,7 +7,6 @@ const { SplashScreen } = Plugins;
 import { NotificationService } from "./shared/services/notification/notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
-import { ChatService } from "./feature/chat/chat-service/chat.service";
 import { SurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 
@@ -25,7 +24,6 @@ export class AppComponent {
     private router: Router,
     private notifications: NotificationService,
     private dbService: DbService,
-    private chatService: ChatService,
     private themeService: ThemeService,
     private surveyService: SurveyService
   ) {
@@ -45,7 +43,6 @@ export class AppComponent {
       this.dbService.init();
       this.menuController.enable(true, "main-side-menu");
 
-      this.chatService.init(!Capacitor.isNative).subscribe();
       if (Capacitor.isNative) {
         SplashScreen.hide();
         this.notifications.init();

@@ -1,13 +1,28 @@
-import { environment } from 'src/environments/environment';
-import { appCustomFields, ChatAttachment, ChatMessage, ChatResponseOption, IRapidProMessage } from './chat-msg.model';
-import { ChatAction, ChatActionType } from './common/chat-actions';
+import { environment } from "src/environments/environment";
+import {
+  appCustomFields,
+  ChatAttachment,
+  ChatMessage,
+  ChatResponseOption,
+  IRapidProMessage,
+  ChatAction,
+  ChatActionType,
+} from "../models";
 
-export type URLParts = { url: string, protocol: string, domain: string, port?: number, path?: string, query?: string, fragment?: string };
+export type URLParts = {
+  url: string;
+  protocol: string;
+  domain: string;
+  port?: number;
+  path?: string;
+  query?: string;
+  fragment?: string;
+};
 
 export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<ChatMessage> {
   let quickReplies: string[] = [];
   if (Array.isArray(rpMsg.quick_replies)) {
-    quickReplies = rpMsg.quick_replies
+    quickReplies = rpMsg.quick_replies;
   } else {
     try {
       quickReplies = JSON.parse(rpMsg.quick_replies);
@@ -28,7 +43,7 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
     dateReceived: new Date(),
     responseOptions: responseOptions,
     attachments: attachments,
-    actions: actions
+    actions: actions,
   };
   msg = applyCustomMessageInfo(urlPartsList, msg);
   return msg;
@@ -55,7 +70,7 @@ export async function convertQuickReply(choiceString: string): Promise<ChatRespo
   }
   return {
     text: text,
-    imageUrl: imageUrl
+    imageUrl: imageUrl,
   };
 }
 
@@ -67,10 +82,17 @@ export function applyCustomMessageInfo(urlPartsList: URLParts[], msg: ChatMessag
       if (qParams.hasOwnProperty(customField.key)) {
         const value = qParams[customField.key];
         switch (customField.type) {
-          case "boolean": msg[customField.key as string] = value === "true"; break;
-          case "float": msg[customField.key as string] = Number.parseFloat(value); break;
-          case "integer": msg[customField.key as string] = Number.parseInt(value); break;
-          default: msg[customField.key as string] = value;
+          case "boolean":
+            msg[customField.key as string] = value === "true";
+            break;
+          case "float":
+            msg[customField.key as string] = Number.parseFloat(value);
+            break;
+          case "integer":
+            msg[customField.key as string] = Number.parseInt(value);
+            break;
+          default:
+            msg[customField.key as string] = value;
         }
       }
     }
@@ -85,28 +107,33 @@ export function urlsToAttachmentStrings(urlPartsList: URLParts[]): string[] {
       let fileExtensionRegex = /\.[a-z0-9]*$/m;
       switch (fileExtensionRegex.exec(urlParts.path)[0]) {
         case ".mp3":
-        case ".ogg": return "audio:" + urlParts.url;
+        case ".ogg":
+          return "audio:" + urlParts.url;
         case ".mp4":
         case ".avi":
         case ".mkv":
-        case ".webm": return "video:" + urlParts.url;
-        default: return "image:" + urlParts.url;
+        case ".webm":
+          return "video:" + urlParts.url;
+        default:
+          return "image:" + urlParts.url;
       }
     });
 }
 
 export function getActionsFromURLS(urlPartsList: URLParts[]): ChatAction[] {
-  let matchingOurDomain = urlPartsList
-    .filter((urlParts) => environment.domains.indexOf(urlParts.domain) > -1);
+  let matchingOurDomain = urlPartsList.filter(
+    (urlParts) => environment.domains.indexOf(urlParts.domain) > -1
+  );
   let navigationActions: ChatAction[] = matchingOurDomain
     .filter((urlParts) => {
-      return environment.chatNonNavigatePaths
-        .findIndex((nonNav) => urlParts.path.startsWith(nonNav)) < 0;
+      return (
+        environment.chatNonNavigatePaths.findIndex((nonNav) => urlParts.path.startsWith(nonNav)) < 0
+      );
     })
     .map((urlParts) => ({
       executed: false,
       type: ChatActionType.NAVIGATE,
-      params: urlParts as any
+      params: urlParts as any,
     }));
 
   let imperitiveActions = urlPartsList
@@ -116,7 +143,7 @@ export function getActionsFromURLS(urlPartsList: URLParts[]): ChatAction[] {
     .map((paramMap) => ({
       executed: false,
       type: paramMap.type as ChatActionType,
-      params: paramMap
+      params: paramMap,
     }));
   return [].concat(imperitiveActions, navigationActions);
 }
@@ -154,14 +181,14 @@ export function getURLSInText(text: string): URLParts[] {
   let urlRegex = /(?<protocol>http[s]?):\/\/(?<domain>[a-zA-Z0-9\.\-\_]*)(?:[\:]?(?<port>[0-9]*))(?<path>\/[^?#\s]*)?[\?]?(?:(?<query>[^?#\s]*))?[#]?(?<fragment>[^?#\s]*)?/gm;
   const urls: URLParts[] = [];
   let regexResult: RegExpExecArray;
-  while (regexResult = urlRegex.exec(text)) {
+  while ((regexResult = urlRegex.exec(text))) {
     let urlParts: URLParts = {
       url: regexResult[0],
       protocol: regexResult.groups.protocol,
       domain: regexResult.groups.domain,
       path: regexResult.groups.path,
       query: regexResult.groups.query,
-      fragment: regexResult.groups.fragment
+      fragment: regexResult.groups.fragment,
     };
     if (regexResult.groups.port) {
       urlParts.port = Number.parseInt(regexResult.groups.port);
@@ -175,34 +202,43 @@ export async function convertRapidProAttachments(attachments: string[]): Promise
   if (!attachments) {
     return [];
   }
-  return Promise.all(attachments.map(async (attachmentString) => {
-    let regex = /(?<type>[a-z]*)[\/]?[a-z+]*:(?<url>.*)/gm;
-    let results = regex.exec(attachmentString);
-    let type = "other";
-    switch (results.groups.type) {
-      case "image": type = "image"; break;
-      case "video": type = "video"; break;
-      case "audio": type = "audio"; break;
-      default: type = "other";
-    }
-    let url = results.groups.url;
-    let urlRegex = /http[s]?:\/\/(?<domain>[a-zA-Z0-9\.\-\_]*)\/(?<path>[\S]*)/;
-    let urlRegexResult = urlRegex.exec(url);
-    let domain = urlRegexResult.groups["domain"];
-    let path = urlRegexResult.groups["path"];
-    if (environment.domains.indexOf(domain) > -1) {
-      try {
-        let response = await fetch(path, { method: "HEAD" });
-        if (response.status === 200) {
-          url = path;
-        }
-      } catch (ex) {
-        console.log("HEAD request excetpion ", ex);
+  return Promise.all(
+    attachments.map(async (attachmentString) => {
+      let regex = /(?<type>[a-z]*)[\/]?[a-z+]*:(?<url>.*)/gm;
+      let results = regex.exec(attachmentString);
+      let type = "other";
+      switch (results.groups.type) {
+        case "image":
+          type = "image";
+          break;
+        case "video":
+          type = "video";
+          break;
+        case "audio":
+          type = "audio";
+          break;
+        default:
+          type = "other";
       }
-    }
-    return {
-      type: type as any,
-      url: url
-    };
-  }));
+      let url = results.groups.url;
+      let urlRegex = /http[s]?:\/\/(?<domain>[a-zA-Z0-9\.\-\_]*)\/(?<path>[\S]*)/;
+      let urlRegexResult = urlRegex.exec(url);
+      let domain = urlRegexResult.groups["domain"];
+      let path = urlRegexResult.groups["path"];
+      if (environment.domains.indexOf(domain) > -1) {
+        try {
+          let response = await fetch(path, { method: "HEAD" });
+          if (response.status === 200) {
+            url = path;
+          }
+        } catch (ex) {
+          console.log("HEAD request excetpion ", ex);
+        }
+      }
+      return {
+        type: type as any,
+        url: url,
+      };
+    })
+  );
 }

@@ -1,34 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ChatActionService } from 'src/app/feature/chat/chat-service/common/chat-action.service';
-import { ChatAction, ChatActionType } from 'src/app/feature/chat/chat-service/common/chat-actions';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { ChatAction, ChatActionType } from "../../models";
+import { ChatActionService } from "../../services/common/chat-action.service";
 
 @Component({
-  selector: 'plh-chat-action',
-  templateUrl: './chat-action.component.html',
-  styleUrls: ['./chat-action.component.scss'],
+  selector: "plh-chat-action",
+  templateUrl: "./chat-action.component.html",
+  styleUrls: ["./chat-action.component.scss"],
 })
 export class ChatActionComponent implements OnInit {
-
   actionType: string;
   actionJSON: string;
   executionStatus: "in_progress" | "success" | "failure" = "in_progress";
   debugMsg: string;
 
   constructor(private chatActionService: ChatActionService, private route: ActivatedRoute) {
-    this.getActionFromParams()
-      .then((action) => {
+    this.getActionFromParams().then(
+      (action) => {
         this.actionType = action.type;
         this.actionJSON = JSON.stringify(action);
-        this.chatActionService.executeChatAction(action).then(() => {
-          this.executionStatus = "success";
-        }, (err) => {
-          this.executionStatus = "failure";
-          this.debugMsg = "Failed: " + err;
-        });
-      }, (err) => {
+        this.chatActionService.executeChatAction(action).then(
+          () => {
+            this.executionStatus = "success";
+          },
+          (err) => {
+            this.executionStatus = "failure";
+            this.debugMsg = "Failed: " + err;
+          }
+        );
+      },
+      (err) => {
         this.debugMsg = "Failed to create action: " + err;
-      });
+      }
+    );
   }
 
   async getActionFromParams(): Promise<ChatAction> {
@@ -37,7 +41,7 @@ export class ChatActionComponent implements OnInit {
       const action: ChatAction = {
         type: actionType as ChatActionType,
         executed: false,
-        params: this.route.snapshot.queryParams
+        params: this.route.snapshot.queryParams,
       };
       return action;
     } else {
@@ -45,6 +49,5 @@ export class ChatActionComponent implements OnInit {
     }
   }
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 }

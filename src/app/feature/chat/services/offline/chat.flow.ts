@@ -1,6 +1,6 @@
 import { Observable, of, BehaviorSubject } from "rxjs";
-import { ChatMessage, ChatResponseOption, IRapidProMessage } from "../chat-msg.model";
-import { convertFromRapidProMsg, convertRapidProAttachments } from "../message.converter";
+import { ChatMessage, IRapidProMessage } from "../../models";
+import { convertFromRapidProMsg } from "../../utils/message.converter";
 import { ContactFieldService } from "./contact-field.service";
 import { FlowStatusChange } from "./offline-chat.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
@@ -64,12 +64,9 @@ export class RapidProOfflineFlow implements ChatFlow {
           let flowEvents = this.flowStatus$.getValue();
           if (flowEvents.length > 0) {
             let latest = flowEvents[flowEvents.length - 1];
-            if (latest.flowId !== action.flow.uuid) {
-              flowEvents.push({
-                flowId: action.flow.uuid,
-                flowName: action.flow.name,
-                status: "start",
-              });
+            if (latest.uuid !== action.flow.uuid) {
+              const { name, uuid } = action.flow;
+              flowEvents.push({ name, uuid, status: "start" });
               console.log("Next on BS: child flow");
               this.flowStatus$.next(flowEvents);
             }
@@ -99,8 +96,8 @@ export class RapidProOfflineFlow implements ChatFlow {
         console.log("This should be flow completion");
         let flowEvents = this.flowStatus$.getValue();
         flowEvents.push({
-          flowId: this.flowObject.uuid,
-          flowName: this.flowObject.name,
+          uuid: this.flowObject.uuid,
+          name: this.flowObject.name,
           status: "completed",
         });
         this.running = false;
@@ -188,7 +185,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         let subscription = this.flowStatus$.subscribe((flowEvents) => {
           if (flowEvents.length > 0) {
             let latest = flowEvents[flowEvents.length - 1];
-            if (latest.status === "completed" && latest.flowId === this.childFlowId) {
+            if (latest.status === "completed" && latest.uuid === this.childFlowId) {
               console.log("Returning to parent flow after subflow completion");
               subscription.unsubscribe();
               this.childFlowId = null;

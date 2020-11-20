@@ -5,8 +5,8 @@ import { RemindersService } from "src/app/shared/services/reminders/reminders.se
 import { toolboxTopicNames } from "src/app/shared/services/toolbox/toolbox-topic-metadata";
 import { ToolboxTopicType } from "src/app/shared/services/toolbox/toolbox.model";
 import { ToolboxService } from "src/app/shared/services/toolbox/toolbox.service";
-import { URLParts } from "../message.converter";
-import { ChatAction } from "./chat-actions";
+import { ChatAction } from "../../models";
+import { URLParts } from "../../utils/message.converter";
 
 @Injectable({
   providedIn: "root",
