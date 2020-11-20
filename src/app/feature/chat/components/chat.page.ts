@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, Input } from "@angular/core";
+import { Component, ChangeDetectorRef, Input, ViewChild, ElementRef } from "@angular/core";
 import { AnimationOptions } from "ngx-lottie";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ChatMessage, ChatResponseOption, ResponseCustomAction, IChatService } from "../models";
@@ -48,6 +48,7 @@ export class ChatPage {
   isModal: boolean;
   // when using a modal flowName can be passed by component props
   @Input() flowName: string;
+  @ViewChild("normalChatEnd") chatEndDiv: ElementRef;
   constructor(
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
@@ -146,6 +147,9 @@ export class ChatPage {
     } else {
       this.responseOptions = [];
     }
+    setTimeout(() => {
+      this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+    }, 50);
     this.cd.detectChanges();
   }
 
