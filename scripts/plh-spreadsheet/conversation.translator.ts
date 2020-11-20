@@ -81,9 +81,12 @@ export class ConversationTranslator {
                     if (row.Type === "Story_message") add_texts.push("isStory=true");
                     if (row.Character) add_texts.push("character="+row.Character);
                     if (row.Choose_multi) add_texts.push("chooseMulti=true");
-                    if (add_texts.length > 0) action_text += (" " + link_text + add_texts.join("&")) 
+                    if (row.Display_As_Tick) add_texts.push("displayAsTick=true");
+                    if (row.Ticked_By_Default) add_texts.push("tickedByDefault=true");
+                    if (row.Choice_Media_Display) add_texts.push("choiceMediaDisplay="+row.Choice_Media_Display);
+                    if (add_texts.length > 0) action_text += (" " + link_text + add_texts.join("&"));
                     actionNode.actions.push({
-                        "attachments": [],
+                        "attachments": this.getMediaAttachments(row.Media),
                         "text": action_text,
                         "type": "send_msg",
                         "quick_replies": this.getRowChoices(row),
@@ -155,6 +158,34 @@ export class ConversationTranslator {
                     nodesById[nodeId] = actionNode;
                 } else if (row.Type === "Go_to") {
 
+                } else if (row.Type === "Save_value") {
+                    actionNode.actions.push(this.createSaveAction(row.Save_name, row.MessageText));
+                    row._rapidProNode = actionNode;
+                    nodesById[nodeId] = actionNode;
+                } else if (row.Type === "Exit") {
+                    actionNode.actions.push(this.createSaveAction(flow.name + "__completed", "true"));
+                    row._rapidProNode = actionNode;
+                    nodesById[nodeId] = actionNode;
+                    if (row.MessageText) {
+                        let enterFlowNode: RapidProFlowExport.Node = {
+                            "uuid": this.generateUUID(),
+                            "actions": [
+                                {
+                                    "flow": {
+                                        "name": row.MessageText,
+                                        "uuid": this.generateUUID()
+                                    },
+                                    "type": "enter_flow",
+                                    "uuid": this.generateUUID()
+                                }
+                            ],
+                            "exits": [this.createEmptyExit()]
+                        }
+                        // The initial node exits to the newFlowNode
+                        additionalNodes.push(enterFlowNode);
+                        actionNode.exits[0].destination_uuid = enterFlowNode.uuid;
+                        row._rapidProNode = enterFlowNode;
+                    }
                 } else {
                     continue;
                     //throw new Error("Unknown Type");
@@ -525,13 +556,42 @@ export class ConversationTranslator {
         }
     }
 
-    public getRowChoices(row: ConversationExcelRow) {
+    public getRowChoices(row: ConversationExcelRow): string[] {
         let quick_replies: string[] = [];
         for (var i = 1; i <= 12; i++) {
             if (row["Choice_" + i] !== undefined) {
-                quick_replies.push(row["Choice_" + i].toString());
+                let reply = row["Choice_" + i].toString();
+                if (row["Choice_" + i + "_Media"] !== undefined) {
+                    reply += (" " + row["Choice_" + i + "_Media"].toString());
+                }
+                quick_replies.push(reply);
             }
         }
         return quick_replies;
+    }
+
+    public getMediaAttachments(mediaText: string): string[] {
+        let attachments: string[];
+        if (mediaText === undefined || mediaText === "") return [];
+        if (mediaText.includes(",")) {
+            attachments = mediaText.split(",").map(s => s.trim());
+        } else if (mediaText.includes(";")) {
+            attachments = mediaText.split(";").map(s => s.trim());
+        }
+        else attachments = [mediaText];
+        return attachments;
+    }
+
+    public createSaveAction(fieldName: string, value: string): RapidProFlowExport.Action {
+        return {
+            "uuid": this.generateUUID(),
+            "type": "set_contact_field",
+            "field": {
+                // Can these be the same?
+                "key": fieldName,
+                "name": fieldName
+            },
+            "value": value
+        };
     }
 }
