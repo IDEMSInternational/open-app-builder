@@ -58,7 +58,7 @@ export class TaskActionsService {
       componentProps: { flowName },
     });
     await modal.present();
-    const { role } = await modal.onDidDismiss<ITaskActionStatus>();
+    const { role } = await modal.onDidDismiss();
     console.log("modal dismissed", role);
     return role as ITaskActionStatus;
   }
