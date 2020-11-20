@@ -16,6 +16,10 @@ type IData = typeof DATA;
 @Injectable({
   providedIn: "root",
 })
+/**
+ * The goals service handles loading hardcoded goals, tasks, completion criteria and reminders,
+ * tidying up various data structures and making accessible to display components
+ */
 export class GoalsService {
   public userGoals: IGoalWithMeta[] = [];
   public allGoals: IGoalWithMeta[] = [];
@@ -27,17 +31,29 @@ export class GoalsService {
 
   constructor(private dbService: DbService) {}
 
+  /*************************************************************************
+   *  Public Methods
+   ************************************************************************/
+
+  /**
+   * When initialising the service load all hardcoded data, merge and refactor
+   * data structures as required, and bind to local variables for use in display
+   * components
+   */
   public async loadGoals() {
     const { CompletionsList, GoalsList, RemindersList, TasksList } = DATA;
     this.completionListHash = arrayToHashmap(CompletionsList, "id");
     this.taskListHash = this.processTasksList(TasksList);
-    const userGoals = await this.dbService.table<IUserGoal>("goals").toArray();
     this.actionHistory = await this.dbService.table<any>("taskActions").toArray();
+    const userGoals = await this.dbService.table<IUserGoal>("goals").toArray();
     this.allGoals = this.processGoalsList(GoalsList, userGoals);
     this.userGoals = this.processUserGoals(userGoals, this.allGoals);
     this.taskReminders = this.processUserTaskReminders(this.userGoals);
   }
 
+  /**
+   * Mark a goal as active for the current user by adding to their local goals table
+   */
   public async addGoal(id: string) {
     await this.dbService.table<IUserGoal>("goals").put(
       {
@@ -49,9 +65,16 @@ export class GoalsService {
     );
   }
 
+  /**
+   * Remove a goal from the current user's active goals list by removing from the database
+   */
   public async deleteGoal(id: string) {
     await this.dbService.table("goals").delete(id);
   }
+
+  /*************************************************************************
+   *  Private Methods
+   ************************************************************************/
 
   /**
    * Read raw task data, refactor as required for use in components
