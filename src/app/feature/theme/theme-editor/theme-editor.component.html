@@ -9,7 +9,7 @@
     <ion-label>Theme to Edit</ion-label>
     <ion-select [value]="currentTheme.name" okText="Okay" cancelText="Dismiss"
       (ionChange)="selectThemeName($event.detail.value)">
-      <ion-select-option *ngFor="let theme of themes" value="{{theme.name}}">{{theme.name}}</ion-select-option>
+      <ion-select-option *ngFor="let theme of editableThemes" value="{{theme.name}}">{{theme.name}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-list>

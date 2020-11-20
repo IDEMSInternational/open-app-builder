@@ -1,10 +1,10 @@
-import { RapidProFlowExport } from 'src/app/shared/services/chat/offline/rapid-pro-export.model';
+import { RapidProFlowExport } from 'src/app/feature/chat/chat-service/offline/rapid-pro-export.model';
 
 export interface ContentIndexRow {
     //Removed these as adapting to the format used by Ohad.
     //Sheet_Name: string,
     //Content_Type: "Conversation" | "Toolbox",
-    Flow_Type: "Conversation" | "Toolbox",
+    Flow_Type: "Conversation" | "Toolbox" | "Tips",
     Module?: string,
     Flow_Name: string,
     Character?: "Friend" | "Guide",

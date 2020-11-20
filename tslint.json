@@ -25,12 +25,7 @@
     "member-ordering": [
       true,
       {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
       }
     ],
     "no-consecutive-blank-lines": false,
@@ -41,7 +36,7 @@
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
-    "object-literal-key-quotes": [true, "as-needed"],
+    "object-literal-key-quotes": [false, "as-needed"],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "quotemark": [false],
@@ -55,9 +50,7 @@
     "use-pipe-transform-interface": true,
     "one-variable-per-declaration": false,
     "component-class-suffix": [true, "Page", "Component", "Class"],
-    "semicolon": {
-      "options": ["always"]
-    },
+    "semicolon": [false],
     "space-before-function-paren": {
       "options": {
         "anonymous": "never",
@@ -93,6 +86,7 @@
         "ban-keywords",
         "check-format",
         "allow-pascal-case",
+        "allow-snake-case",
         "allow-leading-underscore"
       ]
     },
@@ -106,6 +100,7 @@
         "check-typecast"
       ]
     },
-    "no-string-literal": false
+    "no-string-literal": false,
+    "prefer-const": false
   }
 }

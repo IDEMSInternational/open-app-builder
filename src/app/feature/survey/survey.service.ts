@@ -34,9 +34,7 @@ export class SurveyService {
       return upgradedResponses;
     } else {
       // pass existing response for editing if available
-      const editableResponse = survey.allowRepeats
-        ? null
-        : upgradedResponses[0];
+      const editableResponse = survey.allowRepeats ? null : upgradedResponses[0];
       await this.showSurvey(survey, editableResponse);
     }
   }
@@ -61,9 +59,7 @@ export class SurveyService {
    * In case of survey data schema changes, use assigned upgrade logic
    * to ensure data consistency across all surveys.
    */
-  private async checkUpgrades(
-    response: ISurveyResponse
-  ): Promise<ISurveyResponse> {
+  private async checkUpgrades(response: ISurveyResponse): Promise<ISurveyResponse> {
     const surveyId = response.surveyId;
     const survey = this.allSurveys[surveyId] as ISurvey;
     if (response.version === survey.version) {
@@ -80,9 +76,7 @@ export class SurveyService {
         values = survey.upgrade[increment](values);
       } else {
         // TODO - log to error monitoring service
-        console.error(
-          `survey upgrade not defined: ${surveyId}: ${response.version}->${increment}`
-        );
+        console.error(`survey upgrade not defined: ${surveyId}: ${response.version}->${increment}`);
       }
       // re-evaluate logic to see if upgraded version still completed or
       // additional inputs required
@@ -103,10 +97,7 @@ export class SurveyService {
         version: increment,
         _isCompleted,
       };
-      console.log(
-        `survey upgraded: ${surveyId}: ${response.version}->${increment}`,
-        upgraded
-      );
+      console.log(`survey upgraded: ${surveyId}: ${response.version}->${increment}`, upgraded);
       await this.dbService.table("surveys").put(upgraded);
       return this.checkUpgrades(upgraded);
     }
@@ -118,15 +109,14 @@ export class SurveyService {
    * to render a surveyJS form, or custom component passed
    */
   private async showSurvey(survey: ISurvey, response: ISurveyResponse = null) {
-    const surveyComponent =
-      survey.surveyCustomComponent || SurveyJSModalComponent;
+    const surveyComponent = survey.surveyCustomComponent || SurveyJSModalComponent;
     const modal = await this.modalCtrl.create({
       component: surveyComponent,
       componentProps: { survey, response },
       backdropDismiss: false,
     });
     await modal.present();
-    const res: ISurveyResponse = (await modal.onDidDismiss()).data;
+    const res: ISurveyResponse = (await modal.onDidDismiss()).data || {};
     if (res._isCompleted) {
       this.dbService.table("surveys").put(res);
     }

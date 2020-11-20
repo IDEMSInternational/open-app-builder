@@ -1,12 +1,7 @@
 import { Injectable } from "@angular/core";
 import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
-import {
-  ICreateChange,
-  IDatabaseChange,
-  IDeleteChange,
-  IUpdateChange,
-} from "dexie-observable/api";
+import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
 import { EventService } from "../event/event.service";
 const db = new Dexie("plh-app-db");
 
@@ -21,6 +16,9 @@ const DB_TABLES = {
   calendar: "++id",
   surveys: "++id,surveyId",
   reminders: "++id,type",
+  goals: "id",
+  // taskAction list likely to grow quite long so index across more fields for querying
+  taskActions: "id,task_id,status,timestamp",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**
@@ -37,7 +35,7 @@ export interface IDBDoc {
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
  */
-const DB_VERSION = 2000;
+const DB_VERSION = 2004;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({

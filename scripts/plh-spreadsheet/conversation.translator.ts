@@ -1,5 +1,5 @@
 import { isNull } from '@angular/compiler/src/output/output_ast';
-import { RapidProFlowExport } from '../../src/app/shared/services/chat/offline/rapid-pro-export.model';
+import { RapidProFlowExport } from '../../src/app/feature/chat/chat-service/offline/rapid-pro-export.model';
 import { ConversationExcelRow, ConversationExcelSheet } from './plh-spreadsheet.model';
 import { v4 as uuidv4 } from 'uuid';
 import { error } from 'console';
@@ -78,6 +78,7 @@ export class ConversationTranslator {
                     // App specific properties that will be appended to MessageText in a link.
                     let link_text = "https://plh-demo1.idems.international/chat/msg-info?";
                     let add_texts: string[] = [];
+                    let attachmentUrls: string[] = [];
                     if (row.Type === "Story_message") add_texts.push("isStory=true");
                     if (row.Character) add_texts.push("character="+row.Character);
                     if (row.Choose_multi) add_texts.push("chooseMulti=true");
