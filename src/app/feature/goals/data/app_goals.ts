@@ -372,4 +372,12 @@ export default {
       open_action: "Remind_Emo2",
     },
   ],
+  AwardsList: [
+    {
+      id: "cup",
+    },
+    {
+      id: "fireworks",
+    },
+  ],
 };
