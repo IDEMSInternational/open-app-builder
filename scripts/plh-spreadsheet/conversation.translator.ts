@@ -572,15 +572,8 @@ export class ConversationTranslator {
     }
 
     public getMediaAttachments(mediaText: string): string[] {
-        let attachments: string[];
         if (mediaText === undefined || mediaText === "") return [];
-        if (mediaText.includes(",")) {
-            attachments = mediaText.split(",").map(s => s.trim());
-        } else if (mediaText.includes(";")) {
-            attachments = mediaText.split(";").map(s => s.trim());
-        }
-        else attachments = [mediaText];
-        return attachments;
+        return mediaText.split(";").map(s => "image:" + s.trim());
     }
 
     public createSaveAction(fieldName: string, value: string): RapidProFlowExport.Action {
