@@ -50,10 +50,9 @@ jobs:
       - name: npm install
         run: npm install
       - name: Build Angular for PR
-        run: npx ng build --prod --base-href /parenting-app-ui-pr1/$PR_NUMBER/ --deploy-url /parenting-app-ui-pr1/$PR_NUMBER/
+        run: npx ng build --prod --base-href /$PR_NUMBER/ --deploy-url /$PR_NUMBER/
       - id: upload-files
         name: Upload files to Google Cloud Storage (rsync)
         timeout-minutes: 15
         run: |
-          
           gsutil rsync -d -R -c ./www gs://parenting-app-ui-pr1/$PR_NUMBER
