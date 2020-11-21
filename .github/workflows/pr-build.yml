@@ -56,3 +56,11 @@ jobs:
         timeout-minutes: 15
         run: |
           gsutil rsync -d -R -c ./www gs://parenting-app-ui-pr1/$PR_NUMBER
+      - uses: ouzi-dev/commit-status-updater@v1.1.0
+        env:
+          PR_URL: https://plh-pr.idems.international/${{ env.PR_NUMBER }}/index.html
+        with:
+          status: "success"
+          url: ${{ env.PR_URL }}
+          description: "Uploaded PR Preview to GCloud Storage"
+          name: "PR Preview"
