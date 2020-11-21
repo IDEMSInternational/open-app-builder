@@ -66,7 +66,6 @@ export class AnimModalComponent {
   dismiss() {
     clearTimeout(this.autocloseTimeoutRef);
     this.modalController.dismiss();
-    
   }
 
 }
