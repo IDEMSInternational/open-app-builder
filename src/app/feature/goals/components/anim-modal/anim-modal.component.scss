@@ -1,0 +1,45 @@
+.anim-modal {
+    .anim-modal-title {
+        display: block;
+        text-align: center;
+    }
+
+    svg {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .svg-anim.waving {
+
+        position: relative;
+        animation: bouncing 3s infinite;
+
+        @keyframes bouncing {
+            0% {
+                bottom: 0px;
+            }
+            20% {
+                bottom: 30px;
+            }
+            40% {
+                bottom: 0px;
+            }
+        }
+
+        #right_arm_group {
+            transform-origin: 266px 173px;
+            animation: waving-right-arm 1s infinite;
+        }
+
+        @keyframes waving-right-arm {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(30deg);
+            }
+        }
+
+    }
+}

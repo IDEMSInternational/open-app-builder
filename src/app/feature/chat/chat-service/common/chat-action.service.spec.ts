@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { RemindersService } from 'src/app/feature/reminders/services/reminders.service';
-import { ToolboxService } from '../../toolbox/toolbox.service';
+import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
+import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
 
 import { ChatActionService } from './chat-action.service';
 import { ChatAction, ChatActionType } from './chat-actions';
