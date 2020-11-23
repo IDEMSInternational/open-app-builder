@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from 'src/app/shared/services/toolbox/toolbox.model';
 import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
+import { ThemeService } from '../theme/theme-service/theme.service';
 
 @Component({
   selector: 'plh-toolbox',
