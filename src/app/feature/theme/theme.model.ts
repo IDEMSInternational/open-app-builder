@@ -28,12 +28,11 @@ export interface ThemeColors {
     itemBackground?: ThemeColor;
 
     // Home screen buttons
-    chatButton?: ThemeColor;
-    guideButton?: ThemeColor;
+    myJourneyButton?: ThemeColor;
     toolboxButton?: ThemeColor;
-    galleryButton?: ThemeColor;
-    remindersButton?: ThemeColor;
-    activitiesButton?: ThemeColor;
+    myParentingMomentsButton?: ThemeColor;
+    myPlansButton?: ThemeColor;
+    helpMeNowButton?: ThemeColor;
 }
 
 export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
