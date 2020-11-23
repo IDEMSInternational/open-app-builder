@@ -184,30 +184,18 @@ export class ChatPage {
   }
 
   sendCustomOption(text: string) {
-    this.onNewMessage({
-      text: text,
-      sender: "user",
-    });
-    this.chatService.sendMessage({
-      sender: "user",
-      text: text,
-    });
+    this.onNewMessage({ text, sender: "user" });
+    this.chatService.sendMessage({ text, sender: "user" });
     this.messagesSent += 1;
   }
 
   selectResponseOption(option: ChatResponseOption) {
-    console.log("Selected option", option);
-    if (option.customAction) {
+    const { text, customAction, imageUrl } = option;
+    if (customAction) {
       this.doCustomResponseAction(option.customAction);
     }
-    this.onNewMessage({
-      text: option.text,
-      sender: "user",
-    });
-    this.chatService.sendMessage({
-      sender: "user",
-      text: option.text,
-    });
+    this.onNewMessage({ text, sender: "user" });
+    this.chatService.sendMessage({ text, sender: "user" });
     this.messagesSent += 1;
   }
 
