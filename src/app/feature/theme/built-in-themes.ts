@@ -176,4 +176,4 @@ export const THEME_2: AppTheme = {
     }
 };
 
-export const BUILT_IN_EDITABLE_THEMES = [THEME_1, THEME_2];
+export const BUILT_IN_EDITABLE_THEMES: AppTheme[] = [THEME_1, THEME_2];
