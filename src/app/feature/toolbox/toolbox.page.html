@@ -1,10 +1,15 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="#/home"></ion-back-button>
+  </ion-buttons>
+  <ion-title>My Parenting Toolbox</ion-title>
+</ion-toolbar>
 <ion-content class="ion-padding">
   <!--<p>You don't have any tools in your toolbox at the moment. Talk to the guide to find out how to get some!</p>-->
-  <div *ngFor="let topicMetadata of toolboxTopicMetadatas" class="toolbox-button-container"
+  <div *ngFor="let topicMetadata of toolboxTopicMetadatas" class="toolbox-button"
+    [ngStyle]="{ 'background-color': topicMetadata.buttonColor}" [ngClass]="{ 'locked': !topicMetadata.unlocked }"
     (click)="onClickTopic(topicMetadata)">
-    <div *ngIf="!topicMetadata.unlocked" class="locked-cover"></div>
-    <div class="toolbox-button-body"  [ngStyle]="{ 'background-color': topicMetadata.buttonColor}">
-      <span class="toolbox-button-label">{{topicMetadata.name}}</span>
-    </div>
+    <img class="toolbox-topic-icon" [src]="'assets/images/toolbox-icons/' + topicMetadata.type + '.svg'">
+    <span class="toolbox-button-label">{{topicMetadata.name}}</span>
   </div>
 </ion-content>
