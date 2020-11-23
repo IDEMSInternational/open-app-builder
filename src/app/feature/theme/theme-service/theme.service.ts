@@ -37,7 +37,7 @@ export class ThemeService {
     if (!editableThemeMap || Object.keys(editableThemeMap).length < 1) {
       let editableThemeMap = {};
       BUILT_IN_EDITABLE_THEMES.forEach((theme) => {
-        editableThemeMap[theme.name] = theme;
+        editableThemeMap[theme.name] = this.populateWithDefaults(theme);
       });
       this.localStorageService.setJSON("editableThemes", editableThemeMap);
     }
@@ -54,7 +54,7 @@ export class ThemeService {
     if (currentThemeName) {
       this.currentTheme = themeMap[currentThemeName];
     } else {
-      this.currentTheme = BUILT_IN_EDITABLE_THEMES[0];
+      this.currentTheme = { ...BASE_THEME };
     }
 
     return this.currentTheme;
@@ -90,18 +90,19 @@ export class ThemeService {
   }
 
   public populateWithDefaults(theme: AppTheme): AppTheme {
+    let newTheme = { ...theme };
     Object.keys(BASE_THEME.colors).forEach((colorId) => {
-      if (!theme.colors[colorId]) {
-        theme.colors[colorId] = BASE_THEME.colors[colorId];
+      if (!newTheme.colors[colorId]) {
+        newTheme.colors[colorId] = BASE_THEME.colors[colorId];
       }
-      if (theme.colors[colorId].lightValue && !theme.colors[colorId].darkValue) {
-        theme.colors[colorId].darkValue = theme.colors[colorId].lightValue;
+      if (newTheme.colors[colorId].lightValue && !newTheme.colors[colorId].darkValue) {
+        newTheme.colors[colorId].darkValue = newTheme.colors[colorId].lightValue;
       }
-      if (theme.colors[colorId].darkValue && !theme.colors[colorId].lightValue) {
-        theme.colors[colorId].lightValue = theme.colors[colorId].darkValue;
+      if (newTheme.colors[colorId].darkValue && !newTheme.colors[colorId].lightValue) {
+        newTheme.colors[colorId].lightValue = newTheme.colors[colorId].darkValue;
       }
     });
-    return theme;
+    return newTheme;
   }
 
   public getThemes(): AppTheme[] {

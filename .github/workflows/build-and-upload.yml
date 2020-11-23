@@ -1,0 +1,54 @@
+name: Build and Upload
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Install crcmod
+        run: |
+          sudo apt-get install gcc python-dev python-setuptools
+          sudo pip install -I --no-cache-dir -U crcmod
+      - uses: actions/checkout@v1
+        with:
+          lfs: true
+      - name: Checkout LFS objects
+        run: git lfs checkout
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Setup GCloud
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '290.0.1'
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+          export_default_credentials: true
+      - run: gcloud info
+      - name: Populate firebaseConfig.ts
+        env:
+          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
+        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+      - name: npm install
+        run: npm install
+      - name: npm run build
+        run: npm run build
+      - id: upload-files
+        name: Upload files to Google Cloud Storage (rsync)
+        timeout-minutes: 15
+        run: gsutil rsync -d -R -c ./www gs://parenting-app-ui-master1/ && gsutil web set -m index.html gs://parenting-app-ui-master1/

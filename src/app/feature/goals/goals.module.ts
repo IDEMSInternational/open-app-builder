@@ -11,6 +11,7 @@ import { SharedPipesModule } from "src/app/shared/pipes";
 import { MyGoalsComponent } from "./components/my-goals/my-goals.component";
 import { GoalsPage } from "./components/goals.page";
 import { TaskReminderItemComponent } from "./components/task-reminder-item/task-reminder-item.component";
+import { AnimModalComponent } from './components/anim-modal/anim-modal.component';
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -29,6 +30,6 @@ export function lottiePlayerFactory() {
     ChartsModule,
     SharedPipesModule,
   ],
-  declarations: [MyGoalsComponent, GoalsPage, TaskReminderItemComponent],
+  declarations: [MyGoalsComponent, GoalsPage, TaskReminderItemComponent, AnimModalComponent],
 })
 export class GoalsPageModule {}
