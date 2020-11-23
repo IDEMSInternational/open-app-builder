@@ -42,6 +42,7 @@
       <ion-label>{{varName}}</ion-label>
       <ion-toggle [(ngModel)]="currentTheme.booleans[varName]" (ngModelChange)="toggleBoolean(varName)"></ion-toggle>
     </ion-item>
+    <ion-button (click)="downloadClicked()" [href]="jsonDataURL" [download]="currentTheme.name.replace(' ', '_') + '.json'">Download Theme JSON</ion-button>
 
   </ion-list>
 
