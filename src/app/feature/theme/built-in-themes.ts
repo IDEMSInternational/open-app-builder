@@ -99,6 +99,54 @@ export const BASE_THEME: AppTheme = {
             "name": "Home - My parenting moments Button",
             "lightValue": "#0f8ab2",
             "darkValue": "#0f8ab2",
+        },
+        "ONE_ON_ONE_TIME": {
+            "id": "ONE_ON_ONE_TIME",
+            "name": "Module - One-on-One Time",
+            "lightValue": "#F7911E",
+            "darkValue": "#F7911E"
+        },
+        "PRAISE_AND_POSITIVE_REINFORCEMENT": {
+            "id": "PRAISE_AND_POSITIVE_REINFORCEMENT",
+            "name": "Module - Praise & Positive Reinforcement",
+            "lightValue": "#ED1651",
+            "darkValue": "#ED1651"
+        },
+        "MANAGING_ANGER_AND_STRESS": {
+            "id": "MANAGING_ANGER_AND_STRESS",
+            "name": "Module - Managing Anger & Stress",
+            "lightValue": "#5652A3",
+            "darkValue": "#5652A3"
+        },
+        "FAMILY_BUDGETING": {
+            "id": "FAMILY_BUDGETING",
+            "name": "Module - Family Budgeting",
+            "lightValue": "#8885D1",
+            "darkValue": "#8885D1"
+        },
+        "RULES_AND_ROUTINES": {
+            "id": "RULES_AND_ROUTINES",
+            "name": "Module - Rules & Routines",
+            "lightValue": "#54C5D0",
+            "darkValue": "#54C5D0"
+        },
+        "ACCEPTING_RESPONSIBILITY": {
+            "id": "ACCEPTING_RESPONSIBILITY",
+            "name": "Module - Accepting Responsibilities",
+            "lightValue": "#0F8AB2",
+            "darkValue": "#0F8AB2"
+        },
+        "PROBLEM_SOLVING": {
+            "id": "PROBLEM_SOLVING",
+            "name": "Module - Problem Solving",
+            "lightValue": "#2E9E48",
+            "darkValue": "#2E9E48"
+        },
+        "RISK_MAPPING_AND_DEALING_WITH_CRISIS": {
+            "id": "RISK_MAPPING_AND_DEALING_WITH_CRISIS",
+            "name": "Module - Risk Mapping & Dealing with Crisis",
+            "lightValue": "#227535",
+            "darkValue": "#227535"
         }
     }
 };

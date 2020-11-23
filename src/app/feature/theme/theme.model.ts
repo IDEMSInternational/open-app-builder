@@ -33,6 +33,16 @@ export interface ThemeColors {
     myParentingMomentsButton?: ThemeColor;
     myPlansButton?: ThemeColor;
     helpMeNowButton?: ThemeColor;
+
+    // Module colors
+    ONE_ON_ONE_TIME?: ThemeColor;
+    PRAISE_AND_POSITIVE_REINFORCEMENT?: ThemeColor;
+    MANAGING_ANGER_AND_STRESS?: ThemeColor;
+    FAMILY_BUDGETING?: ThemeColor;
+    RULES_AND_ROUTINES?: ThemeColor;
+    ACCEPTING_RESPONSIBILITY?: ThemeColor;
+    PROBLEM_SOLVING?: ThemeColor;
+    RISK_MAPPING_AND_DEALING_WITH_CRISIS?: ThemeColor;
 }
 
 export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
