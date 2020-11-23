@@ -12,7 +12,7 @@ import { Component } from "@angular/core";
           src="assets/images/star.svg"
           style="margin: -1px 8px"
         ></ion-icon>
-        <span>STARS</span>
+        <span>ParentApp</span>
       </ion-title>
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
