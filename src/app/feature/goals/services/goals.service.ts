@@ -12,7 +12,6 @@ import {
 } from "../models/goals.model";
 import DATA from "../data/app_goals";
 import ALL_DATA from "src/data/plh-data"
-const 
 type IData = typeof DATA;
 
 @Injectable({
