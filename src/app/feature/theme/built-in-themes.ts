@@ -147,6 +147,18 @@ export const BASE_THEME: AppTheme = {
             "name": "Module - Risk Mapping & Dealing with Crisis",
             "lightValue": "#227535",
             "darkValue": "#227535"
+        },
+        "userMsgBubble": {
+            "id": "userMsgBubble",
+            "name": "Chat - User Message Bubble",
+            "lightValue": "#E9EBEB",
+            "darkValue": "#E9EBEB"
+        },
+        "botMsgBubble": {
+            "id": "botMsgBubble",
+            "name": "Chat - Bot Message Bubble",
+            "lightValue": "#CAE6FC",
+            "darkValue": "#CAE6FC"
         }
     }
 };
