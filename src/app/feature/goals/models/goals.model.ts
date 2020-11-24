@@ -95,7 +95,9 @@ export interface ITaskAction {
   /** A unique identifier should be generated to allow easier updating of a task after run complete  */
   id: string;
   task_id: string;
-  status: "STARTED" | "COMPLETED";
+  status: ITaskActionStatus;
   timestamp: ISODateString;
   data?: any;
 }
+
+export type ITaskActionStatus = "STARTED" | "COMPLETED";

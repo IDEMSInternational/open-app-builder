@@ -128,7 +128,7 @@ export default {
     {
       id: "task_1on1_Emo",
       label: "Emotional Check-in",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "1on1_Emo",
       evaluation: "completed",
       requires: "task_1on1_Intro",
@@ -136,14 +136,14 @@ export default {
     {
       id: "task_1on1_Intro",
       label: "Introduction",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "1on1_Intro",
       evaluation: "completed ",
     },
     {
       id: "task_1on1_Tips",
       label: "Core Tips",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "Toolbox_1on1_Tips",
       evaluation: "completed",
       requires: "task_1on1_Intro",
@@ -151,7 +151,7 @@ export default {
     {
       id: "task_1on1_Activity",
       label: "Home Activity Assignment",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "1on1_Activity",
       evaluation: "completed",
       requires: "task_1on1_Intro",
@@ -159,7 +159,7 @@ export default {
     {
       id: "task_1on1_ActRev",
       label: "Home Activity Review",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "1on1_ActRev",
       evaluation: "completed",
       requires: "task_1on1_Activity",
@@ -173,7 +173,7 @@ export default {
     {
       id: "task_Praise_Intro",
       label: "Introduction",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "Praise_Intro",
       evaluation: "completed",
       requires: "task_1on1_CompletedGoal",
@@ -181,7 +181,7 @@ export default {
     {
       id: "task_Praise_Tips",
       label: "Core Tips",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "Toolbox_Praise_Tips",
       evaluation: "completed",
       requires: "task_Praise_Intro",
@@ -189,7 +189,7 @@ export default {
     {
       id: "task_Praise_Activity",
       label: "Home Activity Assignment",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "Praise_Activity",
       evaluation: "completed",
       requires: "task_Praise_Intro",
@@ -197,7 +197,7 @@ export default {
     {
       id: "task_Praise_ActRev",
       label: "Home Activity Review",
-      start_action: "start_new_flow ",
+      start_action: "start_new_flow",
       start_action_args: "Praise_ActRev",
       evaluation: "completed",
       requires: "task_Praise_Activity",
@@ -370,6 +370,14 @@ export default {
       every: "day",
       on: "hour: 8",
       open_action: "Remind_Emo2",
+    },
+  ],
+  AwardsList: [
+    {
+      id: "cup",
+    },
+    {
+      id: "fireworks",
     },
   ],
 };

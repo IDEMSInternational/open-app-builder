@@ -1,0 +1,9 @@
+<div class="anim-modal">
+  <div class="anim-modal-header" (click)="dismiss()">
+    <h1 *ngIf="title" class="anim-modal-title">{{title}}</h1>
+  </div>
+  <ng-lottie *ngIf="lottieOptions" [options]="lottieOptions">
+  </ng-lottie>
+  <div class="svg-anim" [ngClass]="id" *ngIf="svgData" [innerHtml]="svgData">
+  </div>
+</div>

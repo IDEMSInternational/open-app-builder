@@ -96,7 +96,10 @@ export class IntroSplashSurveyComponent implements OnInit {
       this.fadeSection[i] = "out";
       i++;
     }
-    await this.modalCtrl.dismiss({ _completed: false });
+    // modal may have already been dismissed, so check it exists before attempting again
+    if (await this.modalCtrl.getTop()) {
+      await this.modalCtrl.dismiss({ _completed: false });
+    }
   }
   skipIntro() {
     // repeat intro in the future so set completed variable to false

@@ -101,6 +101,7 @@
       ]
     },
     "no-string-literal": false,
-    "prefer-const": false
+    "prefer-const": false,
+    "no-namespace": false
   }
 }
