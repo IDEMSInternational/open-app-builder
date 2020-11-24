@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ToolboxTopicPageRoutingModule } from './toolbox-topic-routing.module';
+import { ToolboxFlowsPageRoutingModule } from './toolbox-flows-routing.module';
 
-import { ToolboxTopicPage } from './toolbox-topic.page';
+import { ToolboxFlowsPage } from './toolbox-flows.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ToolboxTopicPageRoutingModule,
+    ToolboxFlowsPageRoutingModule
   ],
-  declarations: [ToolboxTopicPage]
+  declarations: [ToolboxFlowsPage]
 })
-export class ToolboxTopicPageModule {}
+export class ToolboxFlowsPageModule {}

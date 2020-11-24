@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: ':type',
     component: ToolboxTopicPage
+  },
+  {
+    path: ':type/:flow_name',
+    loadChildren: () => import('./toolbox-flows/toolbox-flows.module').then( m => m.ToolboxFlowsPageModule)
   }
 ];
 
