@@ -15,6 +15,7 @@ export class SettingsPage implements OnInit {
   public useOfflineChat = false;
   public isNative = Capacitor.isNative;
   public useButtonHomeScreen = false;
+  public useModalQuickResponses = false;
 
   public themeNames: string[] = [];
   public currentThemeName: string;
@@ -28,6 +29,8 @@ export class SettingsPage implements OnInit {
   ) {
     this.themeNames = this.themeService.getThemes().map((theme) => theme.name);
     this.currentThemeName = this.themeService.getCurrentTheme().name;
+    this.useModalQuickResponses = this.localStorageService.getBoolean("chat_responses_use_modal") ? true : false;
+    this.useButtonHomeScreen = this.localStorageService.getBoolean("home_screen.use_button_version") ? true : false;
   }
 
   toggleButtonHomeScreen() {
@@ -37,6 +40,11 @@ export class SettingsPage implements OnInit {
   toggleUseOfflineChat() {
     const useOfflineChat = this.localStorageService.getBoolean("use_offline_chat");
     this.localStorageService.setBoolean("use_offline_chat", useOfflineChat ? false : true);
+  }
+
+  toggleModalQuickResponses() {
+    const useModal = this.localStorageService.getBoolean("chat_responses_use_modal");
+    this.localStorageService.setBoolean("chat_responses_use_modal", useModal ? false : true);
   }
 
   ngOnInit() {
