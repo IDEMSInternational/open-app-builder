@@ -20,23 +20,14 @@ export class HomePage implements OnInit {
     private localStorageService: LocalStorageService
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ionViewWillEnter() {
-    if (this.shouldRedirectToWelcome()) {
-      this.homeScreenOption = "empty";
-      this.router.navigateByUrl("/chat?trigger=welcome");
-    }
     if (this.localStorageService.getBoolean("home_screen.use_button_version")) {
       this.homeScreenOption = "buttons";
     } else {
       this.homeScreenOption = "indoors-blobs";
     }
-  }
-
-  shouldRedirectToWelcome() {
-    return !this.localStorageService.getBoolean("welcome_skipped");
   }
 
   toggleMenu() {
