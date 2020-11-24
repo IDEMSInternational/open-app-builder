@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Plugins, Capacitor } from "@capacitor/core";
