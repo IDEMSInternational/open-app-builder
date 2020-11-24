@@ -16,26 +16,33 @@ async function main() {
   fs.ensureDirSync(JSON_DIR);
   fs.emptyDirSync(JSON_DIR);
   const xlsxFiles = listFilesForConversion(XLSX_DIR);
-  const combined = [];
+  const combined: { json: any; xlsxPath: string }[] = [];
   for (let xlsxPath of xlsxFiles) {
     const json = convertXLSXSheetsToJson(xlsxPath);
-    combined.push(json);
+    combined.push({ json, xlsxPath });
   }
+  // merge and collage plh data
   const merged = mergePLHData(combined);
-  const outputJson = JSON.stringify(merged, null, 2);
-  const outputTs = `export default ${outputJson}`;
-  fs.writeFileSync(`${JSON_DIR}/_merged.json`, JSON.stringify(merged, null, 2));
-  fs.writeFileSync(`${APP_DATA_DIR}/plh-data.ts`, outputTs);
+  const dataByFlowType = _groupJsonByKey(merged, "Flow_Type");
+  // write to output files
+  Object.entries(dataByFlowType).forEach(([key, value]) => {
+    const outputJson = JSON.stringify(value, null, 2);
+    const outputTs = `export default ${outputJson}`;
+    fs.writeFileSync(`${JSON_DIR}/${key}.json`, outputJson);
+    fs.writeFileSync(`${APP_DATA_DIR}/${key}.ts`, outputTs);
+  });
 }
 main();
 
 /**
  * PLH sheets contain contents page with metadata that can be merged into regular data
  * Merge and collate with other existing data, warning in case of overwrites
+ * @returns - array of all merged sheets (no grouping or collating)
  */
-function mergePLHData(jsons: any[]) {
+function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
   const merged = {};
-  for (let json of jsons) {
+  for (let el of jsons) {
+    const { json, xlsxPath } = el;
     const contentList = json["==Content_List=="];
     if (contentList) {
       for (const contents of contentList) {
@@ -46,12 +53,12 @@ function mergePLHData(jsons: any[]) {
           }
           merged[Flow_Name] = { ...contents, flow: json[Flow_Name] };
         } else {
-          console.log(chalk.red("no contents:", Flow_Name));
+          console.log(chalk.red("no contents:", Flow_Name, xlsxPath));
         }
       }
     }
   }
-  return merged;
+  return Object.values(merged);
 }
 
 /**
@@ -104,6 +111,25 @@ function _recursiveFindByExtension(base: string, ext: string, files?: string[], 
     }
   }
   return result;
+}
+
+/**
+ * Take an array of json object and return grouped by specific key
+ * @param json array of objects containing key field
+ * @param key lookup field for grouping
+ */
+function _groupJsonByKey<T>(json: T[], key: string) {
+  const byKey: { [keyValue: string]: T[] } = {};
+  json.forEach((el) => {
+    if (el.hasOwnProperty(key)) {
+      const keyValue = el[key];
+      if (!byKey.hasOwnProperty(keyValue)) {
+        byKey[keyValue] = [];
+      }
+      byKey[keyValue].push(el);
+    }
+  });
+  return byKey;
 }
 
 /**
