@@ -3,7 +3,7 @@ export default [
     "Flow_Type": "Tips",
     "Module": "1on1",
     "Flow_Name": "Fun_Talk1",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "Just a friendly chat",
@@ -33,7 +33,7 @@ export default [
     "Flow_Type": "Tips",
     "Module": "1on1",
     "Flow_Name": "Fun_Do1",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "Co-chef",
@@ -71,7 +71,7 @@ export default [
     "Flow_Type": "Tips",
     "Module": "Praise",
     "Flow_Name": "Fun_Talk2",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "At the End of the Day"
@@ -108,7 +108,7 @@ export default [
     "Flow_Type": "Tips",
     "Module": "Praise",
     "Flow_Name": "Fun_Do2",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "What's new?",
@@ -139,7 +139,7 @@ export default [
     "Module": "ONE_ON_ONE_TIME",
     "Flow_Name": "1on1_Tips",
     "Title": "One-on-One Time Tips",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "One-on-One Time Tips"
@@ -215,7 +215,7 @@ export default [
     "Module": "ONE_ON_ONE_TIME",
     "Flow_Name": "1on1_Ideas",
     "Title": "One-on-One Time Ideas",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "One-on-One Time Ideas"
@@ -266,7 +266,7 @@ export default [
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "Flow_Name": "Praise_Tips",
     "Title": "Praise Tips",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "Praise Tips",
@@ -321,7 +321,7 @@ export default [
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "Flow_Name": "Praise_Ideas_Teen",
     "Title": "Teen Praise Ideas",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "Teen Praise Ideas"
@@ -384,7 +384,7 @@ export default [
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "Flow_Name": "Praise_Ideas_Adult",
     "Title": "Adult Praise Ideas",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "Adult Praise Ideas"
@@ -443,7 +443,7 @@ export default [
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "Flow_Name": "Praise_Ideas_Self",
     "Title": "Self-Praise Ideas",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "Self-Praise Ideas"

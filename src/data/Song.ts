@@ -3,7 +3,7 @@ export default [
     "Flow_Type": "Song",
     "Module": "1on1",
     "Flow_Name": "Fun_Sing1",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "Baba lagumbala",
@@ -15,7 +15,7 @@ export default [
     "Flow_Type": "Song",
     "Module": "Praise",
     "Flow_Name": "Fun_Sing2",
-    "flow": [
+    "data": [
       {
         "Type": "Title",
         "MessageText": "Zoom gali gali",

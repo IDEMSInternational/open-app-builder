@@ -2,7 +2,7 @@ export default [
   {
     "Flow_Type": "Reminders",
     "Flow_Name": "RemindersList",
-    "flow": [
+    "data": [
       {
         "id": "reminder_Remind_Emo2",
         "repeats": true,
