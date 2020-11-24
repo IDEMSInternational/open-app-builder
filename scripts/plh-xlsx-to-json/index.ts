@@ -5,6 +5,7 @@ import chalk from "chalk";
 
 const XLSX_DIR = `${__dirname}/xlsx`;
 const JSON_DIR = `${__dirname}/json`;
+const APP_DATA_DIR = `src/data`;
 
 /**
  * Reads xlsx files in local './xlsx' folder recursively and converts to a json
@@ -17,20 +18,14 @@ async function main() {
   const xlsxFiles = listFilesForConversion(XLSX_DIR);
   const combined = [];
   for (let xlsxPath of xlsxFiles) {
-    // organise input and output filenames and folders
-    const relativePath = path.relative(XLSX_DIR, xlsxPath);
-    const targetDir = path.join(JSON_DIR, path.dirname(relativePath));
-    const targetPath = `${JSON_DIR}/${relativePath.replace(".xlsx", ".json")}`;
-    fs.ensureDirSync(targetDir);
-    // perform the main conversion
     const json = convertXLSXSheetsToJson(xlsxPath);
-    // write to file, using stringify with spacing (2) to format more nicely
-    fs.writeFileSync(targetPath, JSON.stringify(json, null, 2));
     combined.push(json);
   }
   const merged = mergePLHData(combined);
-  fs.writeFileSync(`${__dirname}/json/_merged.json`, JSON.stringify(merged, null, 2));
-  return combined;
+  const outputJson = JSON.stringify(merged, null, 2);
+  const outputTs = `export default ${outputJson}`;
+  fs.writeFileSync(`${JSON_DIR}/_merged.json`, JSON.stringify(merged, null, 2));
+  fs.writeFileSync(`${APP_DATA_DIR}/plh-data.ts`, outputTs);
 }
 main();
 
@@ -109,4 +104,19 @@ function _recursiveFindByExtension(base: string, ext: string, files?: string[], 
     }
   }
   return result;
+}
+
+/**
+ * Take the target xlsx input path and write output to corresponding json folder
+ * DEPRECATED 2020-11-24 - Now  merged data is written to file combined file and app instead
+ * could still call after convertXLSXSheetsToJson script if wanted
+ */
+function writeOutputToFolder(xlsxPath: string, outputJson: any) {
+  // organise input and output filenames and folders
+  const relativePath = path.relative(XLSX_DIR, xlsxPath);
+  const targetDir = path.join(JSON_DIR, path.dirname(relativePath));
+  const targetPath = `${JSON_DIR}/${relativePath.replace(".xlsx", ".json")}`;
+  fs.ensureDirSync(targetDir);
+  // write to file, using stringify with spacing (2) to format more nicely
+  fs.writeFileSync(targetPath, JSON.stringify(outputJson, null, 2));
 }
