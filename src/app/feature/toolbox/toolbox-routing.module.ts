@@ -12,7 +12,6 @@ const routes: Routes = [
     path: 'topic',
     loadChildren: () => import('./toolbox-topic/toolbox-topic.module').then( m => m.ToolboxTopicPageModule)
   }
-
 ];
 
 @NgModule({

@@ -4,16 +4,6 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div *ngIf="topic">
-    <div class="toolbox-button" *ngFor="let flow of topic.contentSections">
-      <img class="toolbox-topic-icon" src="assets/images/toolbox-icons/ONE_ON_ONE_TIME.svg">
-      <span class="toolbox-button-label">{{flow.title}}</span>
-    </div>
-  </div>
-</ion-content>
-<!--
-
 <ion-content>
   <div *ngIf="topic">
     <div *ngFor="let section of topic.contentSections" class="tb-section">
@@ -40,6 +30,3 @@
     </div>
   </div>
 </ion-content>
-
-
--->

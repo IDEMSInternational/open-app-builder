@@ -5,14 +5,14 @@ import { ToolboxTopic, ToolboxTopicType } from 'src/app/shared/services/toolbox/
 import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
 
 @Component({
-  selector: 'plh-toolbox-topic',
-  templateUrl: './toolbox-topic.page.html',
-  styleUrls: ['../toolbox.page.scss'],
+  selector: 'plh-toolbox-flows',
+  templateUrl: './toolbox-flows.page.html',
+  styleUrls: ['./toolbox-flows.page.scss'],
 })
-export class ToolboxTopicPage implements OnInit {
+export class ToolboxFlowsPage implements OnInit {
 
   type: ToolboxTopicType = "ONE_ON_ONE_TIME";
-  topic: ToolboxTopic;
+  topic: ToolboxTopic
 
   constructor(private activatedRoute: ActivatedRoute, private toolboxService: ToolboxService, private router: Router, 
     private localNotificationService: LocalNotificationService) {
@@ -25,6 +25,7 @@ export class ToolboxTopicPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log("New Component")
   }
 
 }

@@ -36,6 +36,7 @@ export class ToolboxService {
       let exportTopic = exportObject.topics.find((topic) => topic.metadata.type === topicMetadata.type);
       if (exportTopic) {
         exportTopic.metadata = topicMetadata;
+        console.log("mike toolbox", exportTopic);
         return exportTopic;
       } else {
         return {
