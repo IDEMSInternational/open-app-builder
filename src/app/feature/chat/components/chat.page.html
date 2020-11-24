@@ -30,30 +30,30 @@
             src="assets/images/chat-characters/Elder_120.png"
           />
         </div>
-        <div class="msg-bubble-container">
-          <div class="msg-bubble-triangle" *ngIf="msg.sender === 'bot'">
-            <svg
-              width="15"
-              height="20"
-              viewBox="0 0 15 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M15 20V0L0 10L15 20Z" fill="grey" />
-            </svg>
-          </div>
+        <div class="msg-bubble-container"
+          [ngClass]="{'bot': msg.sender === 'bot', 'user': msg.sender === 'user'}">
+          <svg
+            *ngIf="msg.sender === 'bot'"class="bot-msg-triangle"
+            width="15"
+            height="20"
+            viewBox="0 0 15 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+          <path d="M15 20V0L0 10L15 20Z" fill="grey" />
+          </svg>
           <div class="msg-bubble" [ngClass]="{'large': msg.text.length < 3}">{{msg.text}}</div>
-          <div class="msg-bubble-triangle" *ngIf="msg.sender === 'user'">
-            <svg
-              width="15"
-              height="20"
-              viewBox="0 0 15 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 20V0L15 10L0 20Z" fill="darkcyan" />
-            </svg>
-          </div>
+          <svg
+            *ngIf="msg.sender === 'user'"
+            class="user-msg-triangle" 
+            width="15"
+            height="20"
+            viewBox="0 0 15 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 20V0L15 10L0 20Z" fill="darkcyan" />
+          </svg>
         </div>
         <div
           *ngFor="let attachment of msg.attachments"
