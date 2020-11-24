@@ -30,7 +30,7 @@ export class ToolboxTopicPage implements OnInit {
   }
   onClickFlow(toolboxSection: ToolboxSection){
     const slug = this.generateSlug(toolboxSection.title)
-    this.router.navigate([slug],{relativeTo: this.activatedRoute})
+    this.router.navigate([slug],{relativeTo: this.activatedRoute, state: toolboxSection})
   }
 
   generateSlug(title: String){

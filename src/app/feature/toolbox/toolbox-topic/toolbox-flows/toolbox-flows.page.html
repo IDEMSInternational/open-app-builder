@@ -1,15 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{topic?.metadata?.name}}</ion-title>
+    <ion-title>{{flow?.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf="topic">
-    <div *ngFor="let section of topic.contentSections" class="tb-section">
-      <a [id]="section.title.replace(' ', '_')"></a>
-      <h2 class="tb-title">{{section.title}}</h2>
-      <div *ngFor="let element of section.elements">
+  <div *ngIf="flow">
+      <div *ngFor="let element of flow.elements">
         <div *ngIf="element.type === 'CORE_TIP'" class="tb-element core-tip">
           <h1>💡</h1>
           {{element.text}}
@@ -27,6 +24,6 @@
           </ul>
         </div>
       </div>
-    </div>
+   
   </div>
 </ion-content>
