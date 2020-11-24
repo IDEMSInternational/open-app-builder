@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { title } from 'process';
 import { LocalNotificationService } from 'src/app/shared/services/notification/local-notification.service';
-import { ToolboxTopic, ToolboxTopicType } from 'src/app/shared/services/toolbox/toolbox.model';
+import { ToolboxTopic, ToolboxTopicType, ToolboxSection } from 'src/app/shared/services/toolbox/toolbox.model';
 import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
 
 @Component({
@@ -20,11 +21,19 @@ export class ToolboxTopicPage implements OnInit {
       this.type = params["type"] as ToolboxTopicType;
       this.toolboxService.getTopic(this.type).subscribe((topic) => {
         this.topic = topic;
+        console.log("topics ", this.topic)
       });
     });
   }
 
   ngOnInit() {
   }
+  onClickFlow(toolboxSection: ToolboxSection){
+    const slug = this.generateSlug(toolboxSection.title)
+    this.router.navigate([slug],{relativeTo: this.activatedRoute})
+  }
 
+  generateSlug(title: String){
+    return title.replace(/\s+/g, '-');
+  }
 }
