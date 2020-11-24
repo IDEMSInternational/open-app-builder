@@ -2,7 +2,7 @@ export default [
   {
     "Flow_Type": "Tasks",
     "Flow_Name": "TasksList",
-    "flow": [
+    "data": [
       {
         "id": "task_1on1_Emo",
         "label": "Emotional Check-in",

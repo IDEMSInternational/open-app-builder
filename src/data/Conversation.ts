@@ -4,7 +4,7 @@ export default [
     "Module": "1on1",
     "Flow_Name": "1on1_Emo",
     "Character": "Guide",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -90,7 +90,7 @@ export default [
     "Module": "1on1",
     "Flow_Name": "1on1_Intro",
     "Character": "Elder",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -184,7 +184,7 @@ export default [
     "Flow_Type": "Conversation",
     "Module": "1on1",
     "Flow_Name": "1on1_Activity",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -252,7 +252,7 @@ export default [
     "Module": "1on1",
     "Flow_Name": "1on1_ActRev",
     "Character": "Elder",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -352,7 +352,7 @@ export default [
     "Module": "1on1",
     "Flow_Name": "1on1_Highlights",
     "Character": "Elder",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -510,7 +510,7 @@ export default [
     "Module": "1on1",
     "Flow_Name": "1on1_Challenges",
     "Character": "Elder",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -899,7 +899,7 @@ export default [
     "Flow_Name": "Praise_Intro",
     "Character": "Guide",
     "Second_Character": "Neighbour",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1080,7 +1080,7 @@ export default [
     "Module": "Praise",
     "Flow_Name": "Praise_Activity",
     "Character": "Guide",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1221,7 +1221,7 @@ export default [
     "Module": "Welcome",
     "Flow_Name": "Welcome_Survey",
     "Character": "Guide",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1439,7 +1439,7 @@ export default [
     "Module": "1on1",
     "Flow_Name": "Calm1",
     "Character": "Guide",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1459,7 +1459,7 @@ export default [
     "Module": "1on1",
     "Flow_Name": "Calm2",
     "Character": "Guide",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1491,7 +1491,7 @@ export default [
     "Module": "Praise",
     "Flow_Name": "Calm3",
     "Character": "Guide",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1510,7 +1510,7 @@ export default [
     "Module": "PosIn",
     "Flow_Name": "Calm4",
     "Character": "Guide",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1540,7 +1540,7 @@ export default [
     "Module": "Welcome",
     "Flow_Name": "Calm5",
     "Character": "Guide",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1557,7 +1557,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "CharacterNames",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Save_value",
@@ -1611,7 +1611,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Homescreen",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1623,7 +1623,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "MyJourney",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1635,7 +1635,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Toolbox",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1647,7 +1647,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Toolbox_1on1_Tips",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1659,7 +1659,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Toolbox_Praise_Tips",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1671,7 +1671,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Gallery",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1683,7 +1683,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Praise1",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1695,7 +1695,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Praise2",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1707,7 +1707,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Praise3",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1719,7 +1719,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Praise4",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1731,7 +1731,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Praise5",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1743,7 +1743,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Praise6",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1755,7 +1755,7 @@ export default [
   {
     "Flow_Type": "Conversation",
     "Flow_Name": "Praise7",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1768,7 +1768,7 @@ export default [
     "Flow_Type": "Conversation",
     "Module": "Welcome",
     "Flow_Name": "Welcome_Reminders",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Start_new_flow",
@@ -1859,7 +1859,7 @@ export default [
     "Flow_Type": "Conversation",
     "Module": "1on1",
     "Flow_Name": "1on1_Reminders",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",
@@ -1981,7 +1981,7 @@ export default [
     "Flow_Type": "Conversation",
     "Module": "Praise",
     "Flow_Name": "Praise_Reminders",
-    "flow": [
+    "data": [
       {
         "Row_ID": 1,
         "Type": "Send_message",

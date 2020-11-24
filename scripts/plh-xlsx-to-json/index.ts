@@ -51,7 +51,7 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
           if (merged.hasOwnProperty(Flow_Name)) {
             console.log(chalk.yellow("duplicate flow:", Flow_Name));
           }
-          merged[Flow_Name] = { ...contents, flow: json[Flow_Name] };
+          merged[Flow_Name] = { ...contents, data: json[Flow_Name] };
         } else {
           console.log(chalk.red("no contents:", Flow_Name, xlsxPath));
         }

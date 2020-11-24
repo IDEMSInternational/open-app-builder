@@ -2,7 +2,7 @@ export default [
   {
     "Flow_Type": "Goals",
     "Flow_Name": "GoalsList",
-    "flow": [
+    "data": [
       {
         "id": "goal_1on1Module",
         "label": "Complete One-on-One Time Module",
