@@ -43,6 +43,10 @@ export interface ThemeColors {
     ACCEPTING_RESPONSIBILITY?: ThemeColor;
     PROBLEM_SOLVING?: ThemeColor;
     RISK_MAPPING_AND_DEALING_WITH_CRISIS?: ThemeColor;
+
+    // Chat colors
+    botMsgBubble?: ThemeColor;
+    userMsgBubble?: ThemeColor;
 }
 
 export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
