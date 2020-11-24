@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { ModalController } from "@ionic/angular";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
 import { toolboxTopicNames } from "src/app/shared/services/toolbox/toolbox-topic-metadata";
 import { ToolboxTopicType } from "src/app/shared/services/toolbox/toolbox.model";
 import { ToolboxService } from "src/app/shared/services/toolbox/toolbox.service";
-import { URLParts } from "../message.converter";
-import { ChatAction } from "./chat-actions";
+import { ChatAction } from "../../models";
+import { URLParts } from "../../utils/message.converter";
 
 @Injectable({
   providedIn: "root",
@@ -16,10 +17,12 @@ export class ChatActionService {
     private toolboxService: ToolboxService,
     private router: Router,
     private localStorageService: LocalStorageService,
-    private remindersService: RemindersService
+    private remindersService: RemindersService,
+    private modalCtrl: ModalController
   ) {}
 
   public async executeChatAction(action: ChatAction) {
+    console.log(`%cChatAction: ${action.type}`, "color: #9c9c9c");
     switch (action.type) {
       case "UNLOCK_TOOLBOX_TOPIC":
         return this.unlockToolboxTopic(action.params);
@@ -74,5 +77,11 @@ export class ChatActionService {
       url += "#" + urlParts.fragment;
     }
     this.router.navigateByUrl(url);
+    // close modal if open
+    this.modalCtrl.getTop().then((modal) => {
+      if (modal) {
+        this.modalCtrl.dismiss();
+      }
+    });
   }
 }
