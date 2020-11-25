@@ -63,6 +63,8 @@ export class SettingsPage implements OnInit {
 
   resetApp() {
     this.localStorageService.clear();
-    this.dbService.db.delete();
+    this.dbService.db.delete().then(() => {
+      location.reload();
+    });
   }
 }
