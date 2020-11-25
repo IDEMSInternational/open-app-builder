@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LocalStorageService } from '../local-storage/local-storage.service';
-import { oneOnOneTimeElements } from './one-one-one-time';
-import { toolboxTopicNames } from './toolbox-topic-metadata';
-import { ToolboxElement, ToolboxExport, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from './toolbox.model';
+import { LocalStorageService} from 'src/app/shared/services/local-storage/local-storage.service'
+import { oneOnOneTimeElements } from '../data/one-one-one-time';
+import { toolboxTopicNames } from '../data/toolbox-topic-metadata';
+import { ToolboxElement, ToolboxExport, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType, ToolboxTip } from '../models/toolbox.model';
+import { toolboxTips} from '../data/Tips'
 
 const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
 
@@ -63,4 +64,26 @@ export class ToolboxService {
     return this.localStorageService.setJSON(UNLOCKED_TOPICS_LS_KEY, unlockedTopicMap);
   }
 
+  getTips(): Observable<ToolboxTip[]>{
+    let toolboxTipsData: ToolboxTip[] = toolboxTips;
+    console.log(toolboxTipsData)
+    return of(toolboxTipsData);
+  }
+
+  getModules(ModuleName: string): Observable<ToolboxTip[]>{
+    let toolboxTipsData: ToolboxTip[] = toolboxTips;
+    let toolboxModules = toolboxTipsData.filter((tip)=>{
+      return tip.Module === ModuleName;
+    })
+    return of(toolboxModules);
+  }
+  getFlows(FlowName: string): Observable<ToolboxTip>{
+    let toolboxTipsData: ToolboxTip[] = toolboxTips;
+
+    //using Array.find assuming that they can only be one flow item
+    let moduleFlows = toolboxTipsData.find((tip)=>{
+      return tip.Flow_Name === FlowName;
+    })
+    return of(moduleFlows);
+  }
 }

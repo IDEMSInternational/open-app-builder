@@ -1,4 +1,4 @@
-import { ToolboxElement } from './toolbox.model';
+import { ToolboxElement } from '../models/toolbox.model';
 
 export const oneOnOneTimeElements: ToolboxElement[] = [
     {
