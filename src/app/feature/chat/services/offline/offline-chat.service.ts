@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
+import { SettingsService } from 'src/app/feature/settings/settings.service';
 import { ChatMessage, IChatService } from "../../models";
 import { RapidProOfflineFlow } from "./chat.flow";
 import { ContactFieldService } from "./contact-field.service";
@@ -27,7 +28,8 @@ export class OfflineChatService implements IChatService {
   public messages$ = new BehaviorSubject<ChatMessage[]>([]);
   public botTyping$ = new BehaviorSubject<boolean>(false);
 
-  constructor(protected http: HttpClient, protected contactFieldService: ContactFieldService) {
+  constructor(protected http: HttpClient, protected contactFieldService: ContactFieldService,
+    protected settingsService: SettingsService) {
     this.init();
   }
 
@@ -84,6 +86,9 @@ export class OfflineChatService implements IChatService {
             this.contactFieldService,
             this.botTyping$
           );
+          this.settingsService.getUserSetting("CHAT_DELAY").subscribe((delay) => {
+            this.currentFlow.sendMessageDelay = Number.parseInt(delay);
+          });
           this.currentFlow.start();
         }
       }
@@ -99,6 +104,7 @@ export class OfflineChatService implements IChatService {
     if (res.flows && res.flows.length > 0) {
       for (let flow of res.flows) {
         this.flowsByName[flow.name] = flow;
+        
       }
     } else {
       console.warn("No flows in export file ", exportFilePath);
