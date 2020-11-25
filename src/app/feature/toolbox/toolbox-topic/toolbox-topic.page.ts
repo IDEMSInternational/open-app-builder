@@ -17,6 +17,9 @@ export class ToolboxTopicPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private toolboxService: ToolboxService, private router: Router, 
     private localNotificationService: LocalNotificationService) {
+      this.toolboxService.getTips().subscribe((tips)=>{
+        console.log("new tips", tips)
+      })
     this.activatedRoute.params.subscribe((params) => {
       this.type = params["type"] as ToolboxTopicType;
       this.toolboxService.getTopic(this.type).subscribe((topic) => {

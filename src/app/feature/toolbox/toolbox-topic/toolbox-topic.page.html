@@ -1,8 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{topic?.metadata?.name}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<plh-sub-header [title]="topic?.metadata?.name"></plh-sub-header>
 
 <ion-content class="ion-padding">
   <div *ngIf="topic">

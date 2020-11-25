@@ -5,7 +5,8 @@ import { map } from 'rxjs/operators';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { oneOnOneTimeElements } from './one-one-one-time';
 import { toolboxTopicNames } from './toolbox-topic-metadata';
-import { ToolboxElement, ToolboxExport, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from './toolbox.model';
+import { ToolboxElement, ToolboxExport, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType, ToolboxTip } from './toolbox.model';
+import { toolboxTips} from './Tips'
 
 const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
 
@@ -63,4 +64,9 @@ export class ToolboxService {
     return this.localStorageService.setJSON(UNLOCKED_TOPICS_LS_KEY, unlockedTopicMap);
   }
 
+  getTips(): Observable<ToolboxTip[]>{
+    let toolboxTipsData: ToolboxTip[] = toolboxTips;
+    console.log(toolboxTipsData)
+    return of(toolboxTipsData);
+  }
 }
