@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { LocalNotificationService } from 'src/app/shared/services/notification/local-notification.service';
-import { ToolboxTopic, ToolboxTopicType, ToolboxSection, ToolboxTip } from 'src/app/shared/services/toolbox/toolbox.model';
-import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
+import { ToolboxTopic, ToolboxTopicType, ToolboxSection, ToolboxTip } from 'src/app/feature/toolbox/models/toolbox.model';
+import { ToolboxService } from 'src/app/feature/toolbox/services/toolbox.service';
 import {OpenClose} from 'src/app/feature/goals/animations'
 
 @Component({
