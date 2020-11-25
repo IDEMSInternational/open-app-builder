@@ -8,7 +8,7 @@ import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
 import { OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { SettingsService } from '../../settings/settings.service';
 
 @Component({
   selector: "app-chat",
@@ -54,7 +54,7 @@ export class ChatPage {
     private route: ActivatedRoute,
     private router: Router,
     private chatActionService: ChatActionService,
-    private localStorageService: LocalStorageService,
+    private settingsService: SettingsService,
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
     public modalCtrl: ModalController
@@ -65,18 +65,19 @@ export class ChatPage {
     this.checkIsModal();
     this.processRouteParams();
     this.processRouteQueryParams();
-    this.initChatService();
-    this.startFlow(this.flowName);
+    this.initChatService().then(() => {
+      this.startFlow(this.flowName);
+    });
   }
 
   /** Load the online or offline chat service dependent on user preferences
    *  (online chat can only be used when running on native)
    */
-  private initChatService() {
+  private async initChatService() {
     if (!Capacitor.isNative) {
       this.chatService = this.offlineChatService;
     } else {
-      const useOfflineChat = this.localStorageService.getBoolean("use_offline_chat");
+      const useOfflineChat = await this.settingsService.getUserSetting("USE_OFFLINE_CHAT").toPromise();
       this.chatService = useOfflineChat ? this.offlineChatService : this.onlineChatService;
     }
     console.log(`%cUsing ${this.chatService.type} chat `, "color: #9c9c9c");
