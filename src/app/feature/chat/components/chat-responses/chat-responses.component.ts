@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { SettingsService } from 'src/app/feature/settings/settings.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { ChatMessage, ChatResponseOption } from '../../models';
 import { ResponsesModalComponent } from './responses-modal/responses-modal.component';
@@ -19,8 +20,10 @@ export class ChatResponsesComponent implements OnChanges {
 
   useModal = false;
 
-  constructor(private modalController: ModalController, private localStorageService: LocalStorageService) {
-    this.useModal = this.localStorageService.getBoolean("chat_responses_use_modal");
+  constructor(private modalController: ModalController, private settingsService: SettingsService) {
+    this.settingsService.getUserSetting("USE_MODAL_FOR_CHAT_RESPONSES").subscribe((useModal) => {
+      this.useModal = useModal === "true"
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
