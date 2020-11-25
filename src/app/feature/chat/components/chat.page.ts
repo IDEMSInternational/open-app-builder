@@ -3,12 +3,12 @@ import { AnimationOptions } from "ngx-lottie";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ChatMessage, ChatResponseOption, ResponseCustomAction, IChatService } from "../models";
 import { Subscription } from "rxjs";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { ModalController } from "@ionic/angular";
 import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
 import { OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 @Component({
   selector: "app-chat",

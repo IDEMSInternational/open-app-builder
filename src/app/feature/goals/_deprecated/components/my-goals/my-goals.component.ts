@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ChartDataSets, ChartOptions } from "chart.js";
 import { format } from "date-fns";
 import { Label } from "ng2-charts";
-import { IGoalWithMeta, ITaskWithMeta } from "../../models/goals.model";
+import { IGoalWithMeta, ITaskWithMeta } from "../../../models/goals.model";
 import { GoalsService } from "../../services/goals.service";
 
 @Component({
