@@ -8,17 +8,26 @@ import { ITaskAction, ITaskActionStatus } from "../models/goals.model";
   providedIn: "root",
 })
 export class TaskActionsService {
+  taskActions: ITaskAction[] = [];
   constructor(
     private dbService: DbService,
     private alertCtrl: AlertController,
     private modalCtrl: ModalController
-  ) {}
+  ) {
+    this.loadActions();
+  }
+
+  public async loadActions() {
+    this.taskActions = await this.dbService.table<ITaskAction>("taskActions").toArray();
+  }
 
   public async addTaskAction(action: ITaskAction) {
     await this.dbService.table<ITaskAction>("taskActions").put(action as ITaskAction);
+    await this.loadActions();
   }
   public async removeTaskAction(id: string) {
     await this.dbService.table("taskActions").delete(id);
+    await this.loadActions();
   }
   public async runAction(actionId: string, actionArgs: string = ""): Promise<ITaskActionStatus> {
     switch (actionId) {

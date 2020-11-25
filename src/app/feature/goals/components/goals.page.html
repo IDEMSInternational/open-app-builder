@@ -1,8 +1,11 @@
 <ion-content class="ion-padding container">
-  <ion-list>
-    <plh-my-goals></plh-my-goals>
-  </ion-list>
-  <ion-button (click)="openRewardModal('trophy')">Open Reward Modal (Trophy)</ion-button>
-  <ion-button (click)="openRewardModal('fireworks')">Open Reward Modal (Fireworks)</ion-button>
-  <ion-button (click)="openRewardModal('waving')">Open Reward Modal (Waving Blob)</ion-button>
+  <h3>Things to do today</h3>
+  <div *ngFor="let task of tasksService.userRegularTasks" trackBy:trackById>
+    <plh-task-reminder-item [task]="task"></plh-task-reminder-item>
+  </div>
+
+  <h3>Next on your journey</h3>
+  <div *ngFor="let task of tasksService.userJourneyTasks" trackBy:trackById>
+    <plh-task-reminder-item [task]="task"></plh-task-reminder-item>
+  </div>
 </ion-content>
