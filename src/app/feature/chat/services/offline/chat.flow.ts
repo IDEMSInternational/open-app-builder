@@ -101,7 +101,6 @@ export class RapidProOfflineFlow {
       case "send_msg":
         if (action.text) {
           this.botTyping$.next(true);
-          await this.wait(this.sendMessageDelay);
           return this.doSendMessageAction(action);
         }
         return;
@@ -275,6 +274,9 @@ export class RapidProOfflineFlow {
     };
     const newMessage = await convertFromRapidProMsg(rapidProMessage);
     messages.push(newMessage);
+    if (!newMessage.isStory) {
+      await this.wait(this.sendMessageDelay);
+    }
     this.messages$.next(messages);
     this.botTyping$.next(false);
   }
