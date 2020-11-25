@@ -8,7 +8,7 @@ import { RapidProOfflineFlow } from "./chat.flow";
 import { ContactFieldService } from "./contact-field.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
 
-const FLOW_EXPORTS_PATH = "assets/rapid-pro-flow-exports/idems-plh-app-combined-2020-11-17.json";
+const FLOW_EXPORTS_PATH = "assets/rapid-pro-flow-exports/idems-plh-app-2020-11-25.json";
 
 export type FlowStatusChange = {
   name: string;
