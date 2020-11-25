@@ -1,29 +1,26 @@
-
-  <ion-header>
-  <ion-toolbar>
-    <ion-title>{{flow?.Title}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<plh-sub-header [title]="flow?.Title"></plh-sub-header>
 
 <ion-content>
   <div *ngIf="flow">
-      <div *ngFor="let element of flow.data">
-        <div *ngIf="element.Type === 'Core_tip'" class="tb-element core-tip">
-          <h1>💡</h1>
-          {{element.MessageText}}
-        </div>
-        <div *ngIf="element.Type === 'List_intro'" class="tb-element text">  <!--If a flow has a list intro in its data structure, then it has a List item-->
-          <h3 *ngIf="element.MessageText">{{element.MessageText}}</h3>   <!-- There exists some flows like in "Praise and ..." which dont have intro text" -->
-        </div>
-        <div *ngIf="element.Type === 'List_item'" class="tb-element list">
-          <ul>
-          <li> <h4> {{element.MessageText}}</h4></li> 
-          </ul>
-        </div>
-        <div *ngIf="element.Type === 'Text'" class="tb-element text">   <!-- This workaroud works for now but a data structure whose Text is not for a list, it would still give it a <details> tag-->
-          <details class="collapse"><p>{{element.MessageText}}</p></details>
-        </div>
+    <div *ngFor="let element of flow.data">
+      <div *ngIf="element.Type === 'Core_tip'" class="tb-element core-tip">
+        <h1>💡</h1>
+        {{element.MessageText}}
       </div>
-   
+      <div *ngIf="element.Type === 'List_intro'" class="tb-element text">
+        <!--If a flow has a list intro in its data structure, then it has a List item-->
+        <h3 *ngIf="element.MessageText">{{element.MessageText}}</h3>
+        <!-- There exists some flows like in "Praise and ..." which dont have intro text" -->
+      </div>
+      <div *ngIf="element.Type === 'List_item'" class="tb-element list">
+        <ul>
+          <li><h4>{{element.MessageText}}</h4></li>
+        </ul>
+      </div>
+      <div *ngIf="element.Type === 'Text'" class="tb-element text">
+        <!-- This workaroud works for now but a data structure whose Text is not for a list, it would still give it a <details> tag-->
+        <details class="collapse"><p>{{element.MessageText}}</p></details>
+      </div>
+    </div>
   </div>
 </ion-content>

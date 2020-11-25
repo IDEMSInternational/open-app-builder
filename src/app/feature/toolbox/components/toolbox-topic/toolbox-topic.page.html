@@ -2,10 +2,17 @@
 
 <ion-content class="ion-padding">
   <div *ngIf="modules">
-    <div class="toolbox-button" *ngFor="let module of modules" (click)="onClickFlow(module)">
-      <img class="toolbox-topic-icon" [src]="'assets/images/toolbox-icons/' + module.Module + '.svg'">
+    <div
+      class="toolbox-button"
+      *ngFor="let module of modules"
+      (click)="onClickFlow(module)"
+      [ngStyle]="{ 'background-color': 'var(--theme-var-' + module.Module + ')' }"
+    >
+      <img
+        class="toolbox-topic-icon"
+        [src]="'assets/images/toolbox-icons/' + module.Module + '.svg'"
+      />
       <span class="toolbox-button-label">{{module.Title}}</span>
     </div>
   </div>
-
 </ion-content>
