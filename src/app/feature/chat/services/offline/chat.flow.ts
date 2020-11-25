@@ -1,18 +1,12 @@
-import { Observable, of, BehaviorSubject } from "rxjs";
-import { ChatMessage, ChatResponseOption, IRapidProMessage } from "../chat-msg.model";
-import { convertFromRapidProMsg, convertRapidProAttachments } from "../message.converter";
+import { of, BehaviorSubject } from "rxjs";
+import { ChatMessage, IRapidProMessage } from "../../models";
+import { convertFromRapidProMsg } from "../../utils/message.converter";
 import { ContactFieldService } from "./contact-field.service";
 import { FlowStatusChange } from "./offline-chat.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
 import { matchesCase } from "./router-case-matchers";
 
-export interface ChatFlow {
-  sendMessage(msg: ChatMessage): Observable<any>;
-  messages$: BehaviorSubject<ChatMessage[]>;
-  flowStatus$: BehaviorSubject<FlowStatusChange[]>;
-}
-
-export class RapidProOfflineFlow implements ChatFlow {
+export class RapidProOfflineFlow {
   name: string;
   nodesById: { [nodeUUID: string]: RapidProFlowExport.Node } = {};
   currentNode: RapidProFlowExport.Node;
@@ -30,7 +24,7 @@ export class RapidProOfflineFlow implements ChatFlow {
     public flowStatus$: BehaviorSubject<FlowStatusChange[]>,
     public contactFieldService: ContactFieldService
   ) {
-    console.log("Export object!", flowObject);
+    console.log("flowObject", flowObject);
     this.name = flowObject.name;
     this.flowObject.nodes.forEach((node) => {
       this.nodesById[node.uuid] = node;
@@ -58,36 +52,7 @@ export class RapidProOfflineFlow implements ChatFlow {
     this.currentNode = node;
     console.log("Entered node id ", node.uuid, node);
     for (let action of node.actions) {
-      if (action.type === "enter_flow") {
-        if (action.flow) {
-          this.childFlowId = action.flow.uuid;
-          let flowEvents = this.flowStatus$.getValue();
-          if (flowEvents.length > 0) {
-            let latest = flowEvents[flowEvents.length - 1];
-            if (latest.flowId !== action.flow.uuid) {
-              flowEvents.push({
-                flowId: action.flow.uuid,
-                flowName: action.flow.name,
-                status: "start",
-              });
-              console.log("Next on BS: child flow");
-              this.flowStatus$.next(flowEvents);
-            }
-          }
-        } else {
-          console.error("Action was to enter_flow however no object for which flow to enter");
-        }
-      }
-      if (action.type === "send_msg" && action.text) {
-        await this.wait(this.sendMessageDelay);
-        this.doSendMessageAction(action);
-      }
-      if (action.type === "set_contact_field") {
-        this.doSetContactFieldAction(action);
-      }
-      if (action.type === "set_contact_name") {
-        this.doSetContactNameAction(action);
-      }
+      await this.handleNodeAction(action);
     }
     await this.wait();
     if (!node.router) {
@@ -99,18 +64,52 @@ export class RapidProOfflineFlow implements ChatFlow {
         console.log("This should be flow completion");
         let flowEvents = this.flowStatus$.getValue();
         flowEvents.push({
-          flowId: this.flowObject.uuid,
-          flowName: this.flowObject.name,
+          uuid: this.flowObject.uuid,
+          name: this.flowObject.name,
           status: "completed",
         });
         this.running = false;
         this.flowStatus$.next(flowEvents);
       }
     } else {
-      console.log("Router here?");
       if (!(node.router.operand && node.router.operand.indexOf("@input.") > -1)) {
         await this.useRouter(node);
       }
+    }
+  }
+  private async handleNodeAction(action: RapidProFlowExport.Action) {
+    console.log(`%cAction: ${action.type}`, "color: #9c9c9c");
+    switch (action.type) {
+      case "enter_flow":
+        if (action.flow) {
+          this.childFlowId = action.flow.uuid;
+          let flowEvents = this.flowStatus$.getValue();
+          if (flowEvents.length > 0) {
+            let latest = flowEvents[flowEvents.length - 1];
+            if (latest.uuid !== action.flow.uuid) {
+              const { name, uuid } = action.flow;
+              flowEvents.push({ name, uuid, status: "start" });
+              console.log("Next on BS: child flow");
+              this.flowStatus$.next(flowEvents);
+            }
+          }
+        } else {
+          console.error("Action was to enter_flow however no object for which flow to enter");
+        }
+        return;
+      case "send_msg":
+        if (action.text) {
+          await this.wait(this.sendMessageDelay);
+          return this.doSendMessageAction(action);
+        }
+        return;
+      case "set_contact_field":
+        return this.doSetContactFieldAction(action);
+      case "set_contact_name": {
+        return this.doSetContactNameAction(action);
+      }
+      default:
+        console.warn(`no node action handler for: [${action.type}]`);
     }
   }
 
@@ -188,7 +187,7 @@ export class RapidProOfflineFlow implements ChatFlow {
         let subscription = this.flowStatus$.subscribe((flowEvents) => {
           if (flowEvents.length > 0) {
             let latest = flowEvents[flowEvents.length - 1];
-            if (latest.status === "completed" && latest.flowId === this.childFlowId) {
+            if (latest.status === "completed" && latest.uuid === this.childFlowId) {
               console.log("Returning to parent flow after subflow completion");
               subscription.unsubscribe();
               this.childFlowId = null;

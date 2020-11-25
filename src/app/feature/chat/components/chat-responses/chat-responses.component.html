@@ -1,0 +1,11 @@
+<div class="response-options">
+  <div
+    *ngFor="let option of chatMessage.responseOptions"
+    class="response-option"
+    [ngClass]="{'large': option.text.length < 2}"
+    (click)="selectResponseOption(option)"
+  >
+    <img *ngIf="option.imageUrl" [src]="option.imageUrl" />
+    <span>{{option.text}}</span>
+  </div>
+</div>
