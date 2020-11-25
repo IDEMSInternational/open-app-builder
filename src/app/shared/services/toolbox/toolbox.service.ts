@@ -77,9 +77,11 @@ export class ToolboxService {
     })
     return of(toolboxModules);
   }
-  getFlows(FlowName: string): Observable<ToolboxTip[]>{
+  getFlows(FlowName: string): Observable<ToolboxTip>{
     let toolboxTipsData: ToolboxTip[] = toolboxTips;
-    let moduleFlows = toolboxTipsData.filter((tip)=>{
+
+    //using Array.find assuming that they can only be one flow item
+    let moduleFlows = toolboxTipsData.find((tip)=>{
       return tip.Flow_Name === FlowName;
     })
     return of(moduleFlows);

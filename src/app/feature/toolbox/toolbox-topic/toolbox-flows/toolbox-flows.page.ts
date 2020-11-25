@@ -14,7 +14,7 @@ import {OpenClose} from 'src/app/feature/goals/animations'
 export class ToolboxFlowsPage implements OnInit {
 
   Flow_Name: string
-  flows: ToolboxTip[]
+  flow: ToolboxTip
 
   constructor(private activatedRoute: ActivatedRoute, private toolboxService: ToolboxService, private router: Router, 
     private localNotificationService: LocalNotificationService) {
@@ -22,8 +22,8 @@ export class ToolboxFlowsPage implements OnInit {
         this.Flow_Name = params.flow_name
         console.log("Flow name", this.Flow_Name)
         this.toolboxService.getFlows(this.Flow_Name).subscribe((module)=>{
-          this.flows = module
-          console.log("Modules", this.flows)
+          this.flow = module
+          console.log("Modules", this.flow)
 
         })
       });

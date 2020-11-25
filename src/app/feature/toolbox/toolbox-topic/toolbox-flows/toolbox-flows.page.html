@@ -1,33 +1,27 @@
-<!--
-  
+
   <ion-header>
   <ion-toolbar>
-    <ion-title>{{flow?.title}}</ion-title>
+    <ion-title>{{flow?.Title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div *ngIf="flow">
-      <div *ngFor="let element of flow.elements">
-        <div *ngIf="element.type === 'CORE_TIP'" class="tb-element core-tip">
+      <div *ngFor="let element of flow.data">
+        <div *ngIf="element.Type === 'Core_tip'" class="tb-element core-tip">
           <h1>💡</h1>
-          {{element.text}}
+          {{element.MessageText}}
         </div>
-        <div *ngIf="element.type === 'TEXT'" class="tb-element text">
-          {{element.text}}
-        </div>
-        <div *ngIf="element.type === 'LIST'" class="tb-element list">
-          <h3>{{element.intro}}</h3>
+
+        <div *ngIf="element.Type === 'List_item'" class="tb-element list">
           <ul>
-            <li *ngFor="let item of element.items">
-              <h4>{{item.heading}}</h4>
-              <details><p>{{item.body}}</p></details>
-            </li>
+          <li> <h4> {{element.MessageText}}</h4></li> 
           </ul>
+        </div>
+        <div *ngIf="element.Type === 'Text'" class="tb-element text">
+          <details class="collapse"><p>{{element.MessageText}}</p></details>
         </div>
       </div>
    
   </div>
 </ion-content>
-
--->
