@@ -1,0 +1,81 @@
+ion-list-header {
+  font-size: 30px;
+}
+ion-item.reminder-item {
+  --background: white;
+  --padding-start: 0;
+}
+.reminder-label {
+  padding: 5px 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.tick-container {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  margin: 5px 14px 0 0;
+}
+
+.not-complete-indicator {
+  border-radius: 15px;
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+.tick-lottie {
+  width: 40px;
+  height: 40px;
+}
+.reminder-group-container {
+  background: white;
+  margin: 10px 0;
+  padding: 10px;
+  max-width: 500px;
+}
+.no-reminders-message {
+  opacity: 0.9;
+  font-size: small;
+  padding: 8px 16px;
+}
+.group-summary {
+  display: flex;
+  align-items: center;
+}
+.reminder-count-badge[data-group="past"] {
+  opacity: 0.2;
+}
+
+.anim-slide-up-modal {
+  .modal-wrapper {
+      max-width: 300px;
+      max-height: 400px;
+      margin: 20px;
+      border-radius: 40px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+      animation-name: slide-up;
+      animation-iteration-count: 1;
+      animation-duration: 0.4s;
+      position: relative;
+      transform: rotate(-60deg);
+  }
+
+  @keyframes slide-up {
+      from {
+          transform: rotate(-60deg);
+          bottom: -600px;
+      }
+      to {
+          transform: rotate(0deg);
+          bottom: 0px;
+      }
+  }
+}

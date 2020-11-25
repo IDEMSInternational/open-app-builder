@@ -1,0 +1,45 @@
+.container {
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.menu-button {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 16px;
+  background-color: var(--ion-color-primary, #5550a9);
+  margin: 5px auto;
+  max-width: 400px;
+  color: white;
+  font-size: 24px;
+  box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 6px 0px;
+  padding-right: 30px;
+
+  &.my-journey {
+    background-color: var(--theme-var-myJourneyButton, #ED1651);
+    padding: 30px;
+  }
+
+  &.toolbox {
+    background-color: var(--theme-var-toolboxButton, #FF9B05);
+  }
+
+  &.help-me-now {
+    background-color: var(--theme-var-helpMeNowButton, #5fc4d2);
+  }
+
+  &.my-parenting-moments {
+    background-color: var(--theme-var-myParentingMomentsButton, #0F8AB2);
+  }
+
+  &.my-plans {
+    background-color: var(--theme-var-myPlansButton, #5652A3);
+  }
+}

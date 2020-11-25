@@ -1,0 +1,85 @@
+.bg-wall {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    background-color: #f3d668;
+    height: 459px;
+    width: 100vw;
+}
+
+.container {
+    position: absolute;
+    background-color: #f8c911;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+}
+
+.center-container {
+    width: 100vw;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+.room-img {
+    display: block;
+    width: 472px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-item-icon {
+    max-width: 200px;
+    width: 35vw;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 400px) {
+    .room-img {
+        width: unset;
+        height: calc(100vh - 138px);
+        max-width: 300px;
+    }
+}
+
+#guide_left_arm_group {
+    transform: rotate(0deg);
+    transform-origin: 130px 347px;
+
+    &.waving {
+        animation-name: left-arm-waving-attention;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+    }
+}
+
+@keyframes left-arm-waving-attention {
+    0% {
+        transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(-7deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(-7deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .bg-wall {
+        background-color: #411b1b;
+    }
+
+    .container {
+        background-color: #2e1c14;
+    }
+}
