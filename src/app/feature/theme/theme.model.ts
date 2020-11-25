@@ -1,6 +1,6 @@
 export interface AppTheme {
     name: string;
-    schemaVersion: number,
+    editable: boolean;
     author?: string;
     colors?: ThemeColors;
     booleans?: ThemeBooleans;
@@ -11,7 +11,7 @@ export interface ThemeBooleans {
 }
 
 export const ionColorNames: (keyof ThemeColors)[] = ["primary", "secondary", "tertiary", "success",
-    "warning", "danger", "dark", "medium", "light", "background"];
+    "warning", "danger", "dark", "medium", "light"];
 
 export interface ThemeColors {
     // Ionic Colors
@@ -26,6 +26,27 @@ export interface ThemeColors {
     light?: ThemeColor;
     background?: ThemeColor;
     itemBackground?: ThemeColor;
+
+    // Home screen buttons
+    myJourneyButton?: ThemeColor;
+    toolboxButton?: ThemeColor;
+    myParentingMomentsButton?: ThemeColor;
+    myPlansButton?: ThemeColor;
+    helpMeNowButton?: ThemeColor;
+
+    // Module colors
+    ONE_ON_ONE_TIME?: ThemeColor;
+    PRAISE_AND_POSITIVE_REINFORCEMENT?: ThemeColor;
+    MANAGING_ANGER_AND_STRESS?: ThemeColor;
+    FAMILY_BUDGETING?: ThemeColor;
+    RULES_AND_ROUTINES?: ThemeColor;
+    ACCEPTING_RESPONSIBILITY?: ThemeColor;
+    PROBLEM_SOLVING?: ThemeColor;
+    RISK_MAPPING_AND_DEALING_WITH_CRISIS?: ThemeColor;
+
+    // Chat colors
+    botMsgBubble?: ThemeColor;
+    userMsgBubble?: ThemeColor;
 }
 
 export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
@@ -33,6 +54,7 @@ export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
         return "--ion-color-" + colorId;
     } else {
         switch (colorId) {
+            case "background": return "--ion-background-color";
             case "itemBackground": return "--ion-item-background";
             default: return "--theme-var-" + colorId;
         }

@@ -6,22 +6,20 @@ import { ReflectAnimationComponent } from "./components/reflect-animation/reflec
 import { IonicModule } from "@ionic/angular";
 import { StressedMultiHandAnimComponent } from "./components/stressed-multi-hand-anim/stressed-multi-hand-anim.component";
 import { PLHMainHeaderComponent } from "./components/plh-main-header";
+import { PLHSubHeaderComponent } from "./components/plh-sub-header";
+
+const Components = [
+  BlobComponent,
+  Blob1Component,
+  ReflectAnimationComponent,
+  StressedMultiHandAnimComponent,
+  PLHMainHeaderComponent,
+  PLHSubHeaderComponent,
+];
 
 @NgModule({
-  declarations: [
-    BlobComponent,
-    Blob1Component,
-    ReflectAnimationComponent,
-    StressedMultiHandAnimComponent,
-    PLHMainHeaderComponent,
-  ],
+  declarations: Components,
   imports: [CommonModule, IonicModule],
-  exports: [
-    BlobComponent,
-    Blob1Component,
-    ReflectAnimationComponent,
-    StressedMultiHandAnimComponent,
-    PLHMainHeaderComponent,
-  ],
+  exports: Components,
 })
 export class SharedModule {}
