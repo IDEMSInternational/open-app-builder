@@ -1,4 +1,16 @@
+:host {
+  line-height: 1.5em;
+}
 
-.collapse{
-    margin-left: 45px;
+details {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #cccccc;
+}
+
+summary {
+  display: flex;
+  align-items: center;
+}
+.core-tip {
+  display: flex;
 }
