@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouteReuseStrategy } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFireModule } from "@angular/fire";
@@ -15,29 +16,32 @@ import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
 
 import { environment } from "src/environments/environment";
-import { IntroTutorialPageModule } from "./feature/intro-tutorial/intro-tutorial.module";
 import { PrivacyPageModule } from "./feature/privacy/privacy.module";
 import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
+import { ThemeEditorComponent } from 'src/app/feature/theme/theme-editor/theme-editor.component';
+import { ColorSketchModule } from 'ngx-color/sketch';
+import { FormsModule } from "@angular/forms";
+import { SurveyModule } from "src/app/feature/survey/survey.module";
 
-const introModules = [
-  IntroTutorialPageModule,
-  AppTermsPageModule,
-  PrivacyPageModule,
-];
+const introModules = [AppTermsPageModule, PrivacyPageModule];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ThemeEditorComponent],
 
   entryComponents: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    FormsModule,
+    ColorSketchModule,
     ...introModules,
+    SurveyModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

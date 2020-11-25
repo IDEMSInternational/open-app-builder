@@ -2,7 +2,7 @@ import { Song } from '../song.model';
 
 export const Zum_Gali_Gali_Instructions: Song = {
     songTitle: "Zum Gali Gali (with Instructions)",
-    audioURL: "assets/audio/Zum_Gali_Gali_Instructions.mp3",
+    audioURL: "assets/audio/songs/Zum_Gali_Gali_Instructions.mp3",
     lyrics: [
         {
             "lyric": "One: Play with the words and sounds",
