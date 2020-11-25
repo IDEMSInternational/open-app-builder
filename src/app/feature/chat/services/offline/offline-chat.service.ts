@@ -25,6 +25,7 @@ export class OfflineChatService implements IChatService {
   private flowStatus$ = new BehaviorSubject<FlowStatusChange[]>([]);
   private ready$ = new BehaviorSubject<boolean>(false);
   public messages$ = new BehaviorSubject<ChatMessage[]>([]);
+  public botTyping$ = new BehaviorSubject<boolean>(false);
 
   constructor(protected http: HttpClient, protected contactFieldService: ContactFieldService) {
     this.init();
@@ -80,7 +81,8 @@ export class OfflineChatService implements IChatService {
             flow,
             this.messages$,
             this.flowStatus$,
-            this.contactFieldService
+            this.contactFieldService,
+            this.botTyping$
           );
           this.currentFlow.start();
         }
