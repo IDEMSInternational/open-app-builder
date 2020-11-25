@@ -125,7 +125,6 @@ export class ThemeService {
         value = colorObj.darkValue;
       }
       if (document.body.style.getPropertyValue(cssVarName) !== value) {
-        console.log("Setting CSS variable ", cssVarName, value);
         document.body.style.setProperty(cssVarName, value);
       } else {
         unchangedCount++;
