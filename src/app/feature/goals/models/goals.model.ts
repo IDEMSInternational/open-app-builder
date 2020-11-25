@@ -41,23 +41,25 @@ export interface ITask {
   /** Unique identifier for the task, e.g. praise_my_child */
   id: string;
   /** What the user sees in the task summary */
-  label?: string;
+  label: string;
   /** Specific action to trigger at start of task, e.g flow_start_praise. (actions are mapped to urls within the app) */
-  start_action?: string;
+  start_action: string | null;
   /** addional data passed to start action */
-  start_action_args?: string;
+  start_action_args: string | null;
   /** Actions which trigger the start of the task, e.g. praise_my_child_complete, assign_variable_... */
-  trigger_on?: string[];
+  trigger_on: string[];
+  /** List of other tasks that must be completed before making available */
+  requires: string[];
+  /** List of strings to use as part of display grouping */
+  groups: string[];
   /**
    * Optional function for determining if a task was completed.
    * Receives callback data from the specific task action, such as whether a flow was navigated in full
    */
-  evaluation?: string;
+  evaluation: string;
 }
 
 export interface ITaskWithMeta extends ITask {
-  /** Specific metadata when considering whether a task satisfies goal completion criteria */
-  goalCompletionCriteria: ITaskCompletionCriteria;
   /** Record of task-related actions recorded */
   actionHistory: ITaskAction[];
 }
@@ -80,16 +82,6 @@ export interface ITaskCompletionCriteria {
   /** computed based on task action history */
   progress?: number;
 }
-
-// export interface IGoalTask {
-//   id: string;
-//   label: string;
-//   reminder: "daily";
-//   count: number;
-//   // auto populated
-//   progress: number;
-//   completionByDay: { [day: string]: boolean };
-// }
 
 export interface ITaskAction {
   /** A unique identifier should be generated to allow easier updating of a task after run complete  */
