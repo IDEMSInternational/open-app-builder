@@ -1,4 +1,4 @@
-import { ToolboxTopicMetadata } from './toolbox.model';
+import { ToolboxTopicMetadata } from '../models/toolbox.model';
 
 export const toolboxTopicNames: ToolboxTopicMetadata[] = [
     {

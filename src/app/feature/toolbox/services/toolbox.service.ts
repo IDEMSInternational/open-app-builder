@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LocalStorageService } from '../local-storage/local-storage.service';
-import { oneOnOneTimeElements } from './one-one-one-time';
-import { toolboxTopicNames } from './toolbox-topic-metadata';
-import { ToolboxElement, ToolboxExport, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType, ToolboxTip } from './toolbox.model';
-import { toolboxTips} from './Tips'
+import { LocalStorageService} from 'src/app/shared/services/local-storage/local-storage.service'
+import { oneOnOneTimeElements } from '../data/one-one-one-time';
+import { toolboxTopicNames } from '../data/toolbox-topic-metadata';
+import { ToolboxElement, ToolboxExport, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType, ToolboxTip } from '../models/toolbox.model';
+import { toolboxTips} from '../data/Tips'
 
 const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
 

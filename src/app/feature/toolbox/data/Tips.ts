@@ -1,4 +1,4 @@
-import { ToolboxTip} from './toolbox.model'
+import { ToolboxTip} from '../models/toolbox.model'
 
 export const toolboxTips:ToolboxTip[] = [
   {
