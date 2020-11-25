@@ -12,8 +12,7 @@ import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service'
 })
 export class ToolboxTopicPage implements OnInit {
 
-  type: ToolboxTopicType = "ONE_ON_ONE_TIME";
-  topic: ToolboxTopic;
+  type: ToolboxTopicType;
   modules: ToolboxTip[];
 
   constructor(private activatedRoute: ActivatedRoute, private toolboxService: ToolboxService, private router: Router, 
@@ -26,22 +25,13 @@ export class ToolboxTopicPage implements OnInit {
         this.modules = module
         console.log("Modules", this.modules)
       })
-
-      this.toolboxService.getTopic(this.type).subscribe((topic) => {
-        this.topic = topic;
-        console.log("topics ", this.topic)
-      });
     });
   }
 
   ngOnInit() {
   }
-  onClickFlow(toolboxSection: ToolboxSection){
-    const slug = this.generateSlug(toolboxSection.title)
-    this.router.navigate([slug],{relativeTo: this.activatedRoute, state: toolboxSection})
+  onClickFlow(module: ToolboxTip){
+    this.router.navigate([module.Flow_Name],{relativeTo: this.activatedRoute})
   }
 
-  generateSlug(title: String){
-    return title.replace(/\s+/g, '-');
-  }
 }
