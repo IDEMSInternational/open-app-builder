@@ -31,7 +31,7 @@ export function main() {
             processWorkbook(workbook, outputFolderPaths);
         }
     } catch (ex) {
-        console.warn("No input spreadsheet found");
+        console.warn("Excel parsing error");
         console.warn(ex);
     }
 }

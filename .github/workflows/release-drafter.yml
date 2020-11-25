@@ -1,0 +1,26 @@
+# Automatically draft release notes based on any pull requests made to master
+name: Release Drafter
+on:
+  push:
+    branches:
+      - master
+jobs:
+  update_release_draft:
+    runs-on: ubuntu-latest
+    env:
+      APP_VERSION: "0.0.0"
+    steps:
+      # Extract current version number from package.json and set it as the APP_VERSION env variable
+      - name: checkout
+        uses: actions/checkout@master
+      - name: set_version
+        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
+      - name: check_version
+        run: echo "version $env.APP_VERSION"
+      # Drafts your next Release notes as Pull Requests are merged into "master"
+      - uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: v${{env.APP_VERSION}}
+          tag: v${{env.APP_VERSION}}

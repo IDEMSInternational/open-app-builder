@@ -75,7 +75,7 @@
                             "text": "How does it make you feel when I say that?   https://plh-demo1.idems.international/chat/msg-info?character=Guide",
                             "type": "send_msg",
                             "quick_replies": [
-                                "🙂",
+                                "🙂 https://plh-demo1.idems.international/assets/images/chat-characters/Elder_120.svg",
                                 "😐",
                                 "😀"
                             ],
