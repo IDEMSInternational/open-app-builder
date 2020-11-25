@@ -14,7 +14,7 @@ export class RapidProOfflineFlow {
   running = false;
 
   flowStepDelay = 200;
-  sendMessageDelay = 1000;
+  public sendMessageDelay = 1000;
 
   flowResults: { [resultName: string]: string } = {};
 
