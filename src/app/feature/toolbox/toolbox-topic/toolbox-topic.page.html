@@ -1,10 +1,11 @@
 <plh-sub-header [title]="topic?.metadata?.name"></plh-sub-header>
 
 <ion-content class="ion-padding">
-  <div *ngIf="topic">
-    <div class="toolbox-button" *ngFor="let flow of topic.contentSections" (click)="onClickFlow(flow)">
-      <img class="toolbox-topic-icon" [src]="'assets/images/toolbox-icons/' + topic.metadata.type + '.svg'">
-      <span class="toolbox-button-label">{{flow.title}}</span>
+  <div *ngIf="modules">
+    <div class="toolbox-button" *ngFor="let module of modules" (click)="onClickFlow(module)">
+      <img class="toolbox-topic-icon" [src]="'assets/images/toolbox-icons/' + module.Module + '.svg'">
+      <span class="toolbox-button-label">{{module.Title}}</span>
     </div>
   </div>
+
 </ion-content>

@@ -69,4 +69,12 @@ export class ToolboxService {
     console.log(toolboxTipsData)
     return of(toolboxTipsData);
   }
+
+  getModules(ModuleName: string): Observable<ToolboxTip[]>{
+    let toolboxTipsData: ToolboxTip[] = toolboxTips;
+    let toolboxModules = toolboxTipsData.filter((tip)=>{
+      return tip.Module === ModuleName;
+    })
+    return of(toolboxModules);
+  }
 }
