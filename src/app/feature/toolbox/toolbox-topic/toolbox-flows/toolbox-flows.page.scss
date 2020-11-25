@@ -14,10 +14,11 @@
 
 .tb-element {
 
-    padding: 20px;
+    padding: 0px;
     margin-left: 40px;
     margin-right: 20px;
     color: black;
+
     &.core-tip {
         color: white;
         background-color: crimson;
@@ -29,4 +30,8 @@
 
 ion-content {
     --ion-background-color: #f3d668;
+}
+
+.collapse{
+    margin-left: 45px;
 }
