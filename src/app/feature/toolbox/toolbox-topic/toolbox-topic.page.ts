@@ -14,15 +14,17 @@ export class ToolboxTopicPage implements OnInit {
 
   type: ToolboxTopicType;
   modules: ToolboxTip[];
+  title: string = null
 
   constructor(private activatedRoute: ActivatedRoute, private toolboxService: ToolboxService, private router: Router, 
     private localNotificationService: LocalNotificationService) {
      
     this.activatedRoute.params.subscribe((params) => {
       this.type = params["type"] as ToolboxTopicType;
-
+      console.log("check params", params)
       this.toolboxService.getModules(this.type).subscribe((module)=>{
         this.modules = module
+        this.title = this.replaceTitle(module[0].Module)
         console.log("Modules", this.modules)
       })
     });
@@ -34,4 +36,7 @@ export class ToolboxTopicPage implements OnInit {
     this.router.navigate([module.Flow_Name],{relativeTo: this.activatedRoute})
   }
 
+  replaceTitle(title: string){
+    return title.replace(/_/g, " ");
+  }
 }
