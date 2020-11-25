@@ -41,3 +41,17 @@ export interface ToolboxExport {
     topics: ToolboxTopic[]
 }
 
+export interface ToolboxTip{
+    "Flow_Type": string,
+    "Module": string,
+    "Flow_Name": string,
+    "Title"?: string,
+    "data": TipData[]
+}
+
+export interface TipData{
+    "Type": string,
+    "MessageText"?: string,
+    "Media"?: string
+    "Comment/suggestion/visual"?: string
+}
