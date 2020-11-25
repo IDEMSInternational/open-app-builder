@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { differenceInCalendarDays } from "date-fns";
 import { generateRandomId } from "src/app/shared/utils";
-import { ITaskWithMeta } from "../../models/goals.model";
-import { GoalsService } from "../../services/goals.service";
+import { ITask, ITaskWithMeta } from "../../models/goals.model";
 import { TaskActionsService } from "../../services/task-actions.service";
 
 @Component({
@@ -13,34 +12,28 @@ import { TaskActionsService } from "../../services/task-actions.service";
     [class.task-complete]="isComplete"
     (click)="handleTaskClicked()"
   >
-    {{ task.label }}
+    <span>{{ _task.label }}</span>
+    <ion-checkbox slot="end" [checked]="isComplete" *ngIf="!_task.start_action"></ion-checkbox>
   </ion-item> `,
   styles: [
     `
       .task-complete {
-        background: green;
         text-decoration: line-through;
         pointer-events: none;
       }
     `,
   ],
 })
-export class TaskReminderItemComponent implements OnInit {
+export class TaskReminderItemComponent {
   isComplete = false;
   showTask = true;
-  @Input() task: ITaskWithMeta;
-  constructor(private taskActions: TaskActionsService, private goalsService: GoalsService) {}
-
-  ngOnInit(): void {
-    this.isComplete = this.evaluateTaskComplete(this.task);
-    if (this.task.trigger_on.length > 0) {
-      this.registerTaskTriggers();
-    }
-    // Hide tasks without a label
-    if (!this.task.label) {
-      this.showTask = false;
-    }
+  _task: ITask;
+  @Input() set task(task: ITaskWithMeta) {
+    console.log("task set", task);
+    this._task = task;
+    this.isComplete = this.evaluateTaskComplete(task);
   }
+  constructor(private taskActions: TaskActionsService) {}
 
   /**
    * A task should be marked as complete if either it has already satisfied goal completion criteria
@@ -48,12 +41,10 @@ export class TaskReminderItemComponent implements OnInit {
    * within the specified repeat interval (i.e. some tasks should only be completed once per day)
    */
   evaluateTaskComplete(task: ITaskWithMeta): boolean {
-    const { actionHistory, goalCompletionCriteria } = task;
-    // allow progress over 100% in case of additional completion via other mechanisms
-    if (task.goalCompletionCriteria.progress >= 100) {
-      return true;
-    }
-    const repeat_interval = goalCompletionCriteria.repeat_interval || 1;
+    // TODO - merge task with completion criteria (in service)
+    // const repeat_interval = goalCompletionCriteria.repeat_interval || 1;
+    const repeat_interval = 1;
+    const { actionHistory } = task;
     const lastComplete = actionHistory
       .filter((action) => action.status === "COMPLETED")
       .map((action) => action.timestamp)
@@ -71,12 +62,13 @@ export class TaskReminderItemComponent implements OnInit {
    * On action completion log to database completion status.
    */
   async handleTaskClicked() {
-    const { start_action, start_action_args } = this.task;
-    const task_id = this.task.id;
+    const { start_action, start_action_args } = this._task;
+
+    const task_id = this._task.id;
     const timestamp = new Date().toISOString();
     const id = generateRandomId();
-    if (this.task.start_action) {
-      console.log("starting action", this.task.start_action);
+    if (start_action) {
+      console.log("starting action", start_action);
       // TODO - possibly add field for grouping start/complete,
       // or keeping as single entry and updating summary data (e.g. abandoned)
       await this.taskActions.addTaskAction({ id, task_id, timestamp, status: "STARTED" });
@@ -89,10 +81,7 @@ export class TaskReminderItemComponent implements OnInit {
       }
     } else {
       this.taskActions.addTaskAction({ id, task_id, timestamp, status: "COMPLETED" });
+      this.isComplete = true;
     }
-  }
-
-  private registerTaskTriggers() {
-    // TODO - some tasks are triggered by events, need better way to handle bindings
   }
 }

@@ -3,12 +3,12 @@ import { AnimationOptions } from "ngx-lottie";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ChatMessage, ChatResponseOption, ResponseCustomAction, IChatService } from "../models";
 import { Subscription } from "rxjs";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { ModalController } from "@ionic/angular";
 import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
 import { OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 @Component({
   selector: "app-chat",
@@ -46,6 +46,13 @@ export class ChatPage {
   chatViewType: "normal" | "story" = "normal";
   chatService: IChatService;
   isModal: boolean;
+
+  botTyping = false;
+  typingAnimOptions: AnimationOptions = {
+    path: "assets/lottie-animations/3759-typing.json",
+    loop: true,
+    autoplay: true
+  };
   // when using a modal flowName can be passed by component props
   @Input() flowName: string;
   @ViewChild("normalChatEnd") chatEndDiv: ElementRef;
@@ -58,7 +65,7 @@ export class ChatPage {
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
     public modalCtrl: ModalController
-  ) {}
+  ) { }
 
   /** Initialise chat configuration on page enter */
   ionViewDidEnter() {
@@ -79,6 +86,9 @@ export class ChatPage {
       const useOfflineChat = this.localStorageService.getBoolean("use_offline_chat");
       this.chatService = useOfflineChat ? this.offlineChatService : this.onlineChatService;
     }
+    this.offlineChatService.botTyping$.subscribe((botTyping) => {
+      this.botTyping = botTyping;
+    });
     console.log(`%cUsing ${this.chatService.type} chat `, "color: #9c9c9c");
   }
 
@@ -220,7 +230,10 @@ export class ChatPage {
 
   sameAsLastCharacter(currentMsg: ChatMessage, prevMsg: ChatMessage) {
     if (prevMsg) {
-      return currentMsg.character === prevMsg.character;
+      const lastTwoBotMessages = this.allMessages.filter((msg) => msg.sender === 'bot').reverse().slice(0, 2);
+      if (lastTwoBotMessages.length === 2) {
+        return lastTwoBotMessages[0].character === lastTwoBotMessages[1].character;
+      }
     }
     return false;
   }

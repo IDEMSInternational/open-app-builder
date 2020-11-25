@@ -16,6 +16,10 @@
     <ion-label>Use Offline Chat</ion-label>
     <ion-toggle [(ngModel)]="useOfflineChat" (ngModelChange)="toggleUseOfflineChat()"></ion-toggle>
   </ion-item>
+  <ion-item >
+    <ion-label>Use Modal for Chat Responses</ion-label>
+    <ion-toggle [(ngModel)]="useModalQuickResponses" (ngModelChange)="toggleModalQuickResponses()"></ion-toggle>
+  </ion-item>
   <ion-item>
     <ion-button (click)="openWelcomeFlow()">Open Welcome Flow</ion-button>
   </ion-item>
