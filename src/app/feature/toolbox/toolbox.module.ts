@@ -6,7 +6,7 @@ import { IonicModule } from "@ionic/angular";
 
 import { ToolboxPageRoutingModule } from "./toolbox-routing.module";
 
-import { ToolboxPage } from "./toolbox.page";
+import { ToolboxPage } from "./components/toolbox.page";
 import { SharedModule } from "src/app/shared/shared.module";
 
 @NgModule({
