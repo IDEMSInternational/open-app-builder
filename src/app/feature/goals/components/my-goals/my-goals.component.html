@@ -1,0 +1,51 @@
+<ion-list-header>
+  <ion-label>Goals </ion-label>
+  <ion-button (click)="goalSelect.open()">
+    <ion-icon slot="start" name="create-outline"></ion-icon>Edit
+  </ion-button>
+</ion-list-header>
+<!-- hide goal select (shows in alert) - future should be own page -->
+<ion-select
+  multiple
+  #goalSelect
+  style="display: none"
+  (ionChange)="setGoals(goalSelect.value)"
+  [compareWith]="goalSelectCompare"
+>
+  <ion-select-option *ngFor="let goal of allGoals" [value]="goal.id" [disabled]="!goal.unlocked">{{
+    goal.label
+  }}</ion-select-option>
+</ion-select>
+<!-- Goal Progress -->
+<div class="goals-container">
+  <ion-card class="goal-card" *ngFor="let goal of userGoals" [attr.data-level]="goal.level">
+    <div class="goal-background" [attr.data-level]="goal.level"></div>
+    <div class="goal-content">
+      <div class="goal-label">{{ goal.label }}</div>
+      <div class="goal-progress">
+        <canvas
+          baseChart
+          [options]="chartOptions"
+          [datasets]="goal.chartData"
+          [labels]="chartLabels"
+          chartType="doughnut"
+        >
+        </canvas>
+      </div>
+    </div>
+  </ion-card>
+  <ion-card class="goal-card add-goal" (click)="goalSelect.open()">
+    <ion-button class="add-goal-button" fill="clear" expand="full" color="dark">
+      <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+    </ion-button>
+  </ion-card>
+</div>
+<!-- Reminders -->
+<ion-list-header style="margin-top: 1em">
+  <ion-label>Reminders </ion-label>
+</ion-list-header>
+<plh-task-reminder-item
+  *ngFor="let task of taskReminders; trackBy: trackById"
+  index
+  [task]="task"
+></plh-task-reminder-item>

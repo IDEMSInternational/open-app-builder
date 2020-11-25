@@ -3,13 +3,11 @@
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>PLH App</ion-title>
+        <div class="app-version" slot="end">{{ APP_VERSION }}</div>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list
-        style="height: 100%; display: flex; flex-direction: column"
-        (click)="menu.close()"
-      >
+      <ion-list style="height: 100%; display: flex; flex-direction: column" (click)="menu.close()">
         <ion-item routerLink="/">Home</ion-item>
         <!-- <ion-item>Progress</ion-item> -->
         <ion-item routerLink="activities">Fun Activities</ion-item>

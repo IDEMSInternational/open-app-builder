@@ -1,0 +1,94 @@
+<div class="container" *ngIf="!lastReceivedMsg?.isStory">
+  <div class="close-button-container" *ngIf="isModal">
+    <ion-button (click)="modalCtrl.dismiss()" fill="clear">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+  </div>
+  <div #messagesContent class="normal-chat">
+    <div class="messages">
+      <div *ngIf="autoReplyEnabled" class="auto-reply-container">
+        <p>Messages Sent {{messagesSent}}</p>
+        <p>Messages Received {{messagesReceived}}</p>
+        <p>{{debugMsg}}</p>
+        <p>{{stringify(messages[messages.length - 1])}}</p>
+      </div>
+      <div
+        *ngFor="let msg of messages; index as i"
+        [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'"
+      >
+        <div *ngIf="msg.character && !sameAsLastCharacter(msg, messages[i - 1])">
+          <img
+            *ngIf="msg.character === 'Guide'"
+            src="assets/images/chat-characters/Guide_120.png"
+          />
+          <img
+            *ngIf="msg.character === 'Neighbour'"
+            src="assets/images/chat-characters/Neighbour_120.png"
+          />
+          <img
+            *ngIf="msg.character === 'Elder'"
+            src="assets/images/chat-characters/Elder_120.png"
+          />
+        </div>
+        <div class="msg-bubble-container"
+          [ngClass]="{'bot': msg.sender === 'bot', 'user': msg.sender === 'user'}">
+          <svg
+            *ngIf="msg.sender === 'bot'"class="bot-msg-triangle"
+            width="15"
+            height="20"
+            viewBox="0 0 15 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+          <path d="M15 20V0L0 10L15 20Z" fill="grey" />
+          </svg>
+          <div class="msg-bubble" [ngClass]="{'large': msg.text.length < 3}">{{msg.text}}</div>
+          <svg
+            *ngIf="msg.sender === 'user'"
+            class="user-msg-triangle" 
+            width="15"
+            height="20"
+            viewBox="0 0 15 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 20V0L15 10L0 20Z" fill="darkcyan" />
+          </svg>
+        </div>
+        <div
+          *ngFor="let attachment of msg.attachments"
+          class="msg-attachment"
+          [ngSwitch]="attachment.type"
+        >
+          <img *ngSwitchCase="'image'" [src]="attachment.url" />
+        </div>
+      </div>
+    </div>
+    <div #normalChatEnd></div>
+    <div style="display: block; height: 100px"></div>
+  </div>
+  <plh-chat-responses
+    *ngIf="lastReceivedMsg"
+    [chatMessage]="lastReceivedMsg"
+    (onOptionSelect)="selectResponseOption($event)"
+  ></plh-chat-responses>
+  <!-- <ion-button *ngIf="showFlowSkip" class="skip-button" (click)="skipFlow()">Skip</ion-button> -->
+</div>
+<div *ngIf="lastReceivedMsg?.isStory" class="story-chat">
+  <h1>{{lastReceivedMsg.text}}</h1>
+  <img
+    class="story-image"
+    *ngIf="lastReceivedMsg?.attachments[0]?.type === 'image'"
+    [src]="lastReceivedMsg?.attachments[0].url"
+  />
+  <div class="response-options">
+    <div *ngFor="let option of responseOptions" class="response-option">
+      <div *ngIf="option.text.toLowerCase() === 'previous'" (click)="onStoryPreviousClicked()">
+        Previous
+      </div>
+      <div *ngIf="option.text.toLowerCase() !== 'previous'" (click)="onStoryNextClicked()">
+        Next
+      </div>
+    </div>
+  </div>
+</div>
