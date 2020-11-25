@@ -2,6 +2,7 @@ export default [
   {
     "Flow_Type": "Tasks",
     "Flow_Name": "TasksList",
+    "status": "preview",
     "data": [
       {
         "id": "task_1on1_Emo",
