@@ -1,7 +1,7 @@
 <plh-sub-header [title]="flow?.Title"></plh-sub-header>
 
 <ion-content>
-  <div *ngIf="flow">
+  <div *ngIf="flow" class="tb-section">
     <div *ngFor="let element of flow.data">
       <div *ngIf="element.Type === 'Core_tip'" class="tb-element core-tip">
         <h1>💡</h1>
