@@ -1,2 +1,3 @@
 # ignore src data folder
-src/data
+src/data/*
+!src/data/index.ts
