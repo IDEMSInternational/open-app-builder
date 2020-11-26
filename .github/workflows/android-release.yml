@@ -37,8 +37,6 @@ jobs:
         run: npm install
       - name: npm run build
         run: npm run build
-      - name: Sync Version
-        run: npm run version -- --sync-only
       - name: npx cap sync
         run: npx cap sync
       - name: Set up JDK 1.8
