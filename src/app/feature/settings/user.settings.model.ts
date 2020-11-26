@@ -47,11 +47,12 @@ export const BASE_USER_SETTINGS: UserSetting[] = [
         type: "boolean",
         value: "true"
     },
-    {
-        id: "USE_OFFLINE_CHAT",
-        name: "Use Button Home Screen",
-        type: "boolean",
-        value: "true",
-        nativeOnly: true
-    }
+    // 2020-11-25 - Online chat disabled here and in settings until tested working
+    // {
+    //     id: "USE_OFFLINE_CHAT",
+    //     name: "Use Offline Chat",
+    //     type: "boolean",
+    //     value: "true",
+    //     nativeOnly: true
+    // }
 ]

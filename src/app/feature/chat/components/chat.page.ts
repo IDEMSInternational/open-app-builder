@@ -8,7 +8,7 @@ import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
 import { OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
-import { SettingsService } from '../../settings/settings.service';
+import { SettingsService } from "../../settings/settings.service";
 
 @Component({
   selector: "app-chat",
@@ -51,7 +51,7 @@ export class ChatPage {
   typingAnimOptions: AnimationOptions = {
     path: "assets/lottie-animations/3759-typing.json",
     loop: true,
-    autoplay: true
+    autoplay: true,
   };
   // when using a modal flowName can be passed by component props
   @Input() flowName: string;
@@ -65,7 +65,7 @@ export class ChatPage {
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
     public modalCtrl: ModalController
-  ) { }
+  ) {}
 
   /** Initialise chat configuration on page enter */
   ionViewDidEnter() {
@@ -84,7 +84,9 @@ export class ChatPage {
     if (!Capacitor.isNative) {
       this.chatService = this.offlineChatService;
     } else {
-      const useOfflineChat = await this.settingsService.getUserSetting("USE_OFFLINE_CHAT").toPromise();
+      // 2020-11-25 - Online chat disabled here and in settings until tested working
+      // const useOfflineChat = await this.settingsService.getUserSetting("USE_OFFLINE_CHAT").toPromise();
+      const useOfflineChat = true;
       this.chatService = useOfflineChat ? this.offlineChatService : this.onlineChatService;
     }
     this.offlineChatService.botTyping$.subscribe((botTyping) => {
@@ -231,7 +233,10 @@ export class ChatPage {
 
   sameAsLastCharacter(currentMsg: ChatMessage, prevMsg: ChatMessage) {
     if (prevMsg) {
-      const lastTwoBotMessages = this.allMessages.filter((msg) => msg.sender === 'bot').reverse().slice(0, 2);
+      const lastTwoBotMessages = this.allMessages
+        .filter((msg) => msg.sender === "bot")
+        .reverse()
+        .slice(0, 2);
       if (lastTwoBotMessages.length === 2) {
         return lastTwoBotMessages[0].character === lastTwoBotMessages[1].character;
       }
