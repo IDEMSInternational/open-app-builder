@@ -43,17 +43,23 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
   const merged = {};
   for (let el of jsons) {
     const { json, xlsxPath } = el;
-    const contentList = json["==Content_List=="];
+    const contentList = json["==Content_List=="] as IContentList[];
     if (contentList) {
       for (const contents of contentList) {
-        const { Flow_Name } = contents;
-        if (json.hasOwnProperty(Flow_Name)) {
-          if (merged.hasOwnProperty(Flow_Name)) {
-            console.log(chalk.yellow("duplicate flow:", Flow_Name));
+        const { Flow_Name, status } = contents;
+        // only include flows marked as released in the contents
+        if (status === "released" || status === "preview") {
+          if (json.hasOwnProperty(Flow_Name)) {
+            if (merged.hasOwnProperty(Flow_Name)) {
+              console.log(chalk.yellow("duplicate flow:", Flow_Name));
+            }
+            console.log(chalk.green("+", Flow_Name));
+            merged[Flow_Name] = { ...contents, data: json[Flow_Name] };
+          } else {
+            console.log(chalk.red("no contents:", Flow_Name, xlsxPath));
           }
-          merged[Flow_Name] = { ...contents, data: json[Flow_Name] };
         } else {
-          console.log(chalk.red("no contents:", Flow_Name, xlsxPath));
+          console.log(chalk.gray("-", Flow_Name));
         }
       }
     }
@@ -145,4 +151,12 @@ function writeOutputToFolder(xlsxPath: string, outputJson: any) {
   fs.ensureDirSync(targetDir);
   // write to file, using stringify with spacing (2) to format more nicely
   fs.writeFileSync(targetPath, JSON.stringify(outputJson, null, 2));
+}
+
+interface IContentList {
+  Flow_Type: string;
+  Module: string;
+  Flow_Name: string;
+  status: "draft" | "released" | "preview";
+  [key: string]: string;
 }

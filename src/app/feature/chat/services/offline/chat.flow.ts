@@ -14,7 +14,7 @@ export class RapidProOfflineFlow {
   running = false;
 
   flowStepDelay = 200;
-  sendMessageDelay = 1000;
+  public sendMessageDelay = 1000;
 
   flowResults: { [resultName: string]: string } = {};
 
@@ -22,7 +22,8 @@ export class RapidProOfflineFlow {
     protected flowObject: RapidProFlowExport.Flow,
     public messages$: BehaviorSubject<ChatMessage[]>,
     public flowStatus$: BehaviorSubject<FlowStatusChange[]>,
-    public contactFieldService: ContactFieldService
+    public contactFieldService: ContactFieldService,
+    public botTyping$: BehaviorSubject<boolean>
   ) {
     console.log("flowObject", flowObject);
     this.name = flowObject.name;
@@ -99,7 +100,7 @@ export class RapidProOfflineFlow {
         return;
       case "send_msg":
         if (action.text) {
-          await this.wait(this.sendMessageDelay);
+          this.botTyping$.next(true);
           return this.doSendMessageAction(action);
         }
         return;
@@ -273,7 +274,11 @@ export class RapidProOfflineFlow {
     };
     const newMessage = await convertFromRapidProMsg(rapidProMessage);
     messages.push(newMessage);
+    if (!newMessage.isStory) {
+      await this.wait(this.sendMessageDelay);
+    }
     this.messages$.next(messages);
+    this.botTyping$.next(false);
   }
 
   private async doSetContactNameAction(action: RapidProFlowExport.Action) {
