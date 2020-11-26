@@ -9,25 +9,14 @@ const APP_BUILD_GRADLE = "android/app/build.gradle";
  * Set a consistent version number by incrementing the current
  * package.json version and also assigning to android version codes
  */
-async function createNewVersion() {
+async function main() {
   const oldVersion = fs.readJSONSync(PACKAGE_PATH).version;
   const newVersion = await promptNewVersion(oldVersion);
   updatePackageJson(newVersion);
   updateGradleBuild(newVersion);
   // commitWithTag(newVersion);
 }
-
-if (syncOnlyMode()) {
-  const currentVersion = fs.readJSONSync(PACKAGE_PATH).version;
-  updateGradleBuild(currentVersion);
-} else {
-  createNewVersion();
-}
-
-function syncOnlyMode() {
-  let myArgs = process.argv.slice(2);
-  return myArgs.indexOf("--sync-only") > -1;
-}
+main();
 
 function updateGradleBuild(newVersionName: string) {
   let gradleBuildFile = fs.readFileSync(APP_BUILD_GRADLE, {

@@ -2,12 +2,13 @@ export default [
   {
     "Flow_Type": "Goals",
     "Flow_Name": "GoalsList",
+    "status": "preview",
     "data": [
       {
         "id": "goal_1on1Module",
         "label": "Complete One-on-One Time Module",
         "groups": "modules;level1",
-        "completion_id": "completion_1on1_Emo;\ncompletion_1on1_Intro;\ncompletion_1on1_Tips; \n",
+        "completion_id": "completion_1on1_Emo;\r\ncompletion_1on1_Intro;\r\ncompletion_1on1_Tips; \r\n",
         "completion_tasks": "task_1on1_CompletedGoal"
       },
       {
@@ -15,35 +16,35 @@ export default [
         "label": "Complete Praise Module",
         "groups": "modules;level2",
         "requires": "goal_1on1Module",
-        "completion_id": "completion_Praise_Intro;\ncompletion_Praise_Tips;",
+        "completion_id": "completion_Praise_Intro;\r\ncompletion_Praise_Tips;",
         "completion_tasks": "task_Praise_CompletedGoal"
       },
       {
         "id": "goal_AllModules",
         "label": "Complete all PLH Teens Modules",
         "groups": "top",
-        "completion_id": "completion_1on1_CompletedGoal; \ncompletion_Praise_CompletedGoal"
+        "completion_id": "completion_1on1_CompletedGoal; \r\ncompletion_Praise_CompletedGoal"
       },
       {
         "id": "goal_relation",
         "label": "I want to have a better relationship with my teen",
         "groups": "top",
         "requires": "@fields.programmegoal=\"I want to have a better relationship with my teen\"",
-        "completion_id": "completion_SpendTime_level1_CompletedGoal;\ncompletion_SpendTime_level2_CompletedGoal;"
+        "completion_id": "completion_SpendTime_level1_CompletedGoal;\r\ncompletion_SpendTime_level2_CompletedGoal;"
       },
       {
         "id": "goal_behavior",
         "label": "I want my teen to behave better",
         "groups": "top",
         "requires": "@fields.programmegoal=\"I want my teen to behave better\"",
-        "completion_id": "completion_SpendTime_level1_CompletedGoal; \ncompletion_PraiseTeen_level1_CompletedGoal;\ncompletion_SpendTime_level2_CompletedGoal; \ncompletion_PraiseTeen_level2_CompletedGoal;"
+        "completion_id": "completion_SpendTime_level1_CompletedGoal; \r\ncompletion_PraiseTeen_level1_CompletedGoal;\r\ncompletion_SpendTime_level2_CompletedGoal; \r\ncompletion_PraiseTeen_level2_CompletedGoal;"
       },
       {
         "id": "goal_stress",
         "label": "I want to feel less stress loneliness or anger",
         "groups": "top",
         "requires": "@fields.programmegoal=\"I want to feel less stress loneliness or anger\"",
-        "completion_id": "completion_Relax_level1_CompletedGoal;\ncompletion_Relax_level2_CompletedGoal"
+        "completion_id": "completion_Relax_level1_CompletedGoal;\r\ncompletion_Relax_level2_CompletedGoal"
       },
       {
         "id": "goal_money",

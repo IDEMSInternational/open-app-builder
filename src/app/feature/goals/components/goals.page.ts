@@ -1,31 +1,47 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { AnimModalComponent } from './anim-modal/anim-modal.component';
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { ModalController } from "@ionic/angular";
+import { AnimModalComponent } from "./anim-modal/anim-modal.component";
+import { TasksService } from "../services/tasks.service";
+import { TaskActionsService } from "../services/task-actions.service";
 
 @Component({
-  selector: 'plh-goals',
-  templateUrl: './goals.page.html',
-  styleUrls: ['./goals.page.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: "plh-goals",
+  templateUrl: "./goals.page.html",
+  styleUrls: ["./goals.page.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class GoalsPage implements OnInit {
-
-  constructor(private modalController: ModalController) { }
-
-  ngOnInit() {
+  dataLoaded = false;
+  constructor(
+    private modalController: ModalController,
+    public tasksService: TasksService,
+    public taskActionsService: TaskActionsService
+  ) {
+    this.taskActionsService.loadActions().then(() => (this.dataLoaded = true));
   }
 
-  async openRewardModal(id: string) {
-    const modal = await this.modalController.create({
-      cssClass: "anim-slide-up-modal",
-      component: AnimModalComponent,
-      componentProps: {
-        id: id,
-        title: "Congratulations!",
-        autoCloseMs: 4000
-      }
-    });
-    modal.present();
+  ngOnInit() {}
+
+  trackById(index: number, item: { id: string; [key: string]: any }) {
+    return item.id;
   }
 
+  // async openRewardModal(id: string) {
+  //   const modal = await this.modalController.create({
+  //     cssClass: "anim-slide-up-modal",
+  //     component: AnimModalComponent,
+  //     componentProps: {
+  //       id,
+  //       title: "Congratulations!",
+  //       autoCloseMs: 4000,
+  //     },
+  //   });
+  //   modal.present();
+  // }
 }
+
+/*
+  <ion-button (click)="openRewardModal('trophy')">Open Reward Modal (Trophy)</ion-button>
+  <ion-button (click)="openRewardModal('fireworks')">Open Reward Modal (Fireworks)</ion-button>
+  <ion-button (click)="openRewardModal('waving')">Open Reward Modal (Waving Blob)</ion-button>
+*/

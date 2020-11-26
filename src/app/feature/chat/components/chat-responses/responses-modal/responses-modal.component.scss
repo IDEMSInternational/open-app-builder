@@ -1,0 +1,35 @@
+.response-options {
+    align-self: flex-end;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+.response-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--ion-primary-color, #0d4060);
+    border-color: var(--ion-primary-color, #0d4060);
+    background-color: white;
+    padding: 7px;
+    font-size: 14px;
+    margin: 10px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 3px;
+    white-space: nowrap;
+
+    span {
+        text-align: center;
+    }
+
+    &.large {
+        font-size: 40px;
+        border-radius: 40px;
+    }
+    img {
+        max-height: 150px;
+    }
+}

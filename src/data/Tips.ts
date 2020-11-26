@@ -1,144 +1,10 @@
 export default [
   {
     "Flow_Type": "Tips",
-    "Module": "1on1",
-    "Flow_Name": "Fun_Talk1",
-    "data": [
-      {
-        "Type": "Title",
-        "MessageText": "Just a friendly chat",
-        "Media": "Audio_activity_friendly"
-      },
-      {
-        "Type": "List_intro"
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Have a conversation with your teen about something they like."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "It can be about anything they choose to talk about: sports, friends, music, celebrities…"
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Try to listen to your teen and give them space to talk."
-      },
-      {
-        "Type": "End_list"
-      }
-    ]
-  },
-  {
-    "Flow_Type": "Tips",
-    "Module": "1on1",
-    "Flow_Name": "Fun_Do1",
-    "data": [
-      {
-        "Type": "Title",
-        "MessageText": "Co-chef",
-        "Media": "Audio_activity_chef"
-      },
-      {
-        "Type": "List_intro"
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Ask your teen what kind of meal they would like to eat."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Prepare it together! The first time, you may need to guide them."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Once your teen knows how to prepare the meal, let them take the lead and follow their instructions."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Let each child and teen in the house have a turn at being the head chef."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "You can even help them make a budget for ingredients!"
-      },
-      {
-        "Type": "End_list"
-      }
-    ]
-  },
-  {
-    "Flow_Type": "Tips",
-    "Module": "Praise",
-    "Flow_Name": "Fun_Talk2",
-    "data": [
-      {
-        "Type": "Title",
-        "MessageText": "At the End of the Day"
-      },
-      {
-        "Type": "List_intro"
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "At the end of each day, take a minute to think about the day."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Talk your child about one positive or fun thing they did."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Praise yourself for one thing you did well today."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Think of one thing that you are grateful for."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "You are a star!"
-      },
-      {
-        "Type": "End_list"
-      }
-    ]
-  },
-  {
-    "Flow_Type": "Tips",
-    "Module": "Praise",
-    "Flow_Name": "Fun_Do2",
-    "data": [
-      {
-        "Type": "Title",
-        "MessageText": "What's new?",
-        "Media": "Audio_activity_chef"
-      },
-      {
-        "Type": "List_intro"
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Think of a new skill you could learn together with your teen. For example, keeping a ball in the air or your foot, juggling, making soup?"
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Take turns in trying the new skill out."
-      },
-      {
-        "Type": "List_item",
-        "MessageText": "Make sure to praise each other, and try to learn and play together!"
-      },
-      {
-        "Type": "End_list"
-      }
-    ]
-  },
-  {
-    "Flow_Type": "Tips",
     "Module": "ONE_ON_ONE_TIME",
     "Flow_Name": "1on1_Tips",
     "Title": "One-on-One Time Tips",
+    "status": "released",
     "data": [
       {
         "Type": "Title",
@@ -215,6 +81,7 @@ export default [
     "Module": "ONE_ON_ONE_TIME",
     "Flow_Name": "1on1_Ideas",
     "Title": "One-on-One Time Ideas",
+    "status": "released",
     "data": [
       {
         "Type": "Title",
@@ -266,6 +133,7 @@ export default [
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "Flow_Name": "Praise_Tips",
     "Title": "Praise Tips",
+    "status": "released",
     "data": [
       {
         "Type": "Title",
@@ -321,6 +189,7 @@ export default [
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "Flow_Name": "Praise_Ideas_Teen",
     "Title": "Teen Praise Ideas",
+    "status": "released",
     "data": [
       {
         "Type": "Title",
@@ -384,6 +253,7 @@ export default [
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "Flow_Name": "Praise_Ideas_Adult",
     "Title": "Adult Praise Ideas",
+    "status": "released",
     "data": [
       {
         "Type": "Title",
@@ -443,6 +313,7 @@ export default [
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "Flow_Name": "Praise_Ideas_Self",
     "Title": "Self-Praise Ideas",
+    "status": "released",
     "data": [
       {
         "Type": "Title",

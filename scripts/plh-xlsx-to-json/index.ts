@@ -5,6 +5,7 @@ import chalk from "chalk";
 
 const XLSX_DIR = `${__dirname}/xlsx`;
 const JSON_DIR = `${__dirname}/json`;
+const APP_DATA_DIR = `src/data`;
 
 /**
  * Reads xlsx files in local './xlsx' folder recursively and converts to a json
@@ -15,48 +16,55 @@ async function main() {
   fs.ensureDirSync(JSON_DIR);
   fs.emptyDirSync(JSON_DIR);
   const xlsxFiles = listFilesForConversion(XLSX_DIR);
-  const combined = [];
+  const combined: { json: any; xlsxPath: string }[] = [];
   for (let xlsxPath of xlsxFiles) {
-    // organise input and output filenames and folders
-    const relativePath = path.relative(XLSX_DIR, xlsxPath);
-    const targetDir = path.join(JSON_DIR, path.dirname(relativePath));
-    const targetPath = `${JSON_DIR}/${relativePath.replace(".xlsx", ".json")}`;
-    fs.ensureDirSync(targetDir);
-    // perform the main conversion
     const json = convertXLSXSheetsToJson(xlsxPath);
-    // write to file, using stringify with spacing (2) to format more nicely
-    fs.writeFileSync(targetPath, JSON.stringify(json, null, 2));
-    combined.push(json);
+    combined.push({ json, xlsxPath });
   }
+  // merge and collage plh data
   const merged = mergePLHData(combined);
-  fs.writeFileSync(`${__dirname}/json/_merged.json`, JSON.stringify(merged, null, 2));
-  return combined;
+  const dataByFlowType = _groupJsonByKey(merged, "Flow_Type");
+  // write to output files
+  Object.entries(dataByFlowType).forEach(([key, value]) => {
+    const outputJson = JSON.stringify(value, null, 2);
+    const outputTs = `export default ${outputJson}`;
+    fs.writeFileSync(`${JSON_DIR}/${key}.json`, outputJson);
+    fs.writeFileSync(`${APP_DATA_DIR}/${key}.ts`, outputTs);
+  });
 }
 main();
 
 /**
  * PLH sheets contain contents page with metadata that can be merged into regular data
  * Merge and collate with other existing data, warning in case of overwrites
+ * @returns - array of all merged sheets (no grouping or collating)
  */
-function mergePLHData(jsons: any[]) {
+function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
   const merged = {};
-  for (let json of jsons) {
-    const contentList = json["==Content_List=="];
+  for (let el of jsons) {
+    const { json, xlsxPath } = el;
+    const contentList = json["==Content_List=="] as IContentList[];
     if (contentList) {
       for (const contents of contentList) {
-        const { Flow_Name } = contents;
-        if (json.hasOwnProperty(Flow_Name)) {
-          if (merged.hasOwnProperty(Flow_Name)) {
-            console.log(chalk.yellow("duplicate flow:", Flow_Name));
+        const { Flow_Name, status } = contents;
+        // only include flows marked as released in the contents
+        if (status === "released" || status === "preview") {
+          if (json.hasOwnProperty(Flow_Name)) {
+            if (merged.hasOwnProperty(Flow_Name)) {
+              console.log(chalk.yellow("duplicate flow:", Flow_Name));
+            }
+            console.log(chalk.green("+", Flow_Name));
+            merged[Flow_Name] = { ...contents, data: json[Flow_Name] };
+          } else {
+            console.log(chalk.red("no contents:", Flow_Name, xlsxPath));
           }
-          merged[Flow_Name] = { ...contents, flow: json[Flow_Name] };
         } else {
-          console.log(chalk.red("no contents:", Flow_Name));
+          console.log(chalk.gray("-", Flow_Name));
         }
       }
     }
   }
-  return merged;
+  return Object.values(merged);
 }
 
 /**
@@ -109,4 +117,46 @@ function _recursiveFindByExtension(base: string, ext: string, files?: string[], 
     }
   }
   return result;
+}
+
+/**
+ * Take an array of json object and return grouped by specific key
+ * @param json array of objects containing key field
+ * @param key lookup field for grouping
+ */
+function _groupJsonByKey<T>(json: T[], key: string) {
+  const byKey: { [keyValue: string]: T[] } = {};
+  json.forEach((el) => {
+    if (el.hasOwnProperty(key)) {
+      const keyValue = el[key];
+      if (!byKey.hasOwnProperty(keyValue)) {
+        byKey[keyValue] = [];
+      }
+      byKey[keyValue].push(el);
+    }
+  });
+  return byKey;
+}
+
+/**
+ * Take the target xlsx input path and write output to corresponding json folder
+ * DEPRECATED 2020-11-24 - Now  merged data is written to file combined file and app instead
+ * could still call after convertXLSXSheetsToJson script if wanted
+ */
+function writeOutputToFolder(xlsxPath: string, outputJson: any) {
+  // organise input and output filenames and folders
+  const relativePath = path.relative(XLSX_DIR, xlsxPath);
+  const targetDir = path.join(JSON_DIR, path.dirname(relativePath));
+  const targetPath = `${JSON_DIR}/${relativePath.replace(".xlsx", ".json")}`;
+  fs.ensureDirSync(targetDir);
+  // write to file, using stringify with spacing (2) to format more nicely
+  fs.writeFileSync(targetPath, JSON.stringify(outputJson, null, 2));
+}
+
+interface IContentList {
+  Flow_Type: string;
+  Module: string;
+  Flow_Name: string;
+  status: "draft" | "released" | "preview";
+  [key: string]: string;
 }

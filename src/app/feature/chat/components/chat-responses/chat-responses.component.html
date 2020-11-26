@@ -1,6 +1,6 @@
-<div class="response-options">
+<div *ngIf="!useModal" class="response-options">
   <div
-    *ngFor="let option of chatMessage.responseOptions"
+    *ngFor="let option of responseOptions"
     class="response-option"
     [ngClass]="{'large': option.text.length < 2}"
     (click)="selectResponseOption(option)"
