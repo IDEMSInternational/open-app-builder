@@ -1,0 +1,6 @@
+{
+    "/user-api": {
+      "target": "https://plh-demo1.idems.international/",
+      "secure": false
+    }
+}
