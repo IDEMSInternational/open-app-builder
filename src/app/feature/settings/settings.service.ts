@@ -2,9 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { catchError, filter, map, mergeMap } from 'rxjs/operators';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { BASE_USER_SETTINGS, UserSetting, UserSettingId } from './user.settings.model';
+
+type CondensedFirebaseUserResult = {
+  users: {
+    uid: string,
+    displayName: string,
+    email: string
+  }[],
+  pageToken: string
+};
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +24,8 @@ export class SettingsService {
 
   private userSettings$: BehaviorSubject<UserSetting[]>;
 
+  private oboUserId: string;
+
   constructor(private localStorageService: LocalStorageService, private http: HttpClient, private afAuth: AngularFireAuth) {
     const lsPopulatedSettings = BASE_USER_SETTINGS.map((setting) => {
       const lsValue = localStorageService.getString(this.lsPrefix + setting.id);
@@ -22,8 +33,12 @@ export class SettingsService {
     });
     this.userSettings$ = new BehaviorSubject(lsPopulatedSettings);
     /* Get user settings from server */
+    this.getSettingsFromServer();
+  }
+
+  private getSettingsFromServer() {
     this.afAuth.idToken.subscribe((firebaseToken) => {
-      this.http.get("/user-api/current-user/settings", {
+      this.http.get("/user-api/current-user/settings" + (this.oboUserId ? "?oboUserId=" + this.oboUserId : ""), {
         headers: {
           authorization: "Bearer " + firebaseToken
         }
@@ -33,6 +48,24 @@ export class SettingsService {
         }
       });
     });
+  }
+
+  getUsersICanObo(): Observable<{ uid: string, displayName: string, email: string}[]> {
+    return this.afAuth.idToken.pipe(
+      mergeMap((firebaseToken) => {
+        return this.http.get("/user-api/users", {
+          headers: {
+            authorization: "Bearer " + firebaseToken
+          }
+        });
+      }),
+      map((result: CondensedFirebaseUserResult) => result.users)
+    );
+  }
+
+  setOboUserId(uid: string) {
+    this.oboUserId = uid;
+    this.getSettingsFromServer();
   }
 
   getAllUserSettings(): Observable<UserSetting[]> {
@@ -62,7 +95,7 @@ export class SettingsService {
     if (sendToServer) {
       this.afAuth.idToken.subscribe((firebaseToken) => {
         this.http.post(
-          "/user-api/current-user/settings",
+          "/user-api/current-user/settings" + (this.oboUserId ? "?oboUserId=" + this.oboUserId : ""),
           this.userSettings$.getValue(),
           {
             headers: {

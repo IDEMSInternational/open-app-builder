@@ -21,6 +21,9 @@ export class SettingsPage {
 
   public userSettings: UserSetting[] = [];
 
+  public selectedOboUid: string;
+  public usersICanObo: { displayName: string, uid: string, email: string}[] = [];
+
   constructor(
     private localStorageService: LocalStorageService,
     private router: Router,
@@ -33,6 +36,11 @@ export class SettingsPage {
     this.currentThemeName = this.themeService.getCurrentTheme().name;
     this.settingsService.getAllUserSettings().subscribe((userSettings) => {
       this.userSettings = userSettings.filter((setting) => Capacitor.isNative || !setting.nativeOnly)
+    });
+    this.settingsService.getUsersICanObo().subscribe((users) => {
+      this.usersICanObo = users;
+    }, (err) => {
+      console.log("Could not get On behalf of users ", err);
     });
   }
 
@@ -67,5 +75,10 @@ export class SettingsPage {
     this.dbService.db.delete().then(() => {
       location.reload();
     });
+  }
+
+  selectOBOUser(uid: string) {
+    console.log("Select OBO user ", uid);
+    this.settingsService.setOboUserId(uid);
   }
 }

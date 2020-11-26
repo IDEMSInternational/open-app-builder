@@ -7,21 +7,11 @@
 <ion-content>
   <ion-item *ngFor="let userSetting of userSettings">
     <ion-label>{{userSetting.name}}</ion-label>
-    <ion-toggle *ngIf="!userSetting.options && userSetting.type === 'boolean'"
-      [checked]="userSetting.value === 'true'"
-      (ionChange)="toggleUserSetting(userSetting)"
-    ></ion-toggle>
-    <ion-select
-      *ngIf="userSetting.options"
-      [value]="userSetting.value"
-      okText="Select"
-      cancelText="Cancel"
-      (ionChange)="selectSettingOption(userSetting, $event.detail.value)"
-    >
-      <ion-select-option
-        *ngFor="let option of userSetting.options"
-        [value]="option.value"
-      >
+    <ion-toggle *ngIf="!userSetting.options && userSetting.type === 'boolean'" [checked]="userSetting.value === 'true'"
+      (ionChange)="toggleUserSetting(userSetting)"></ion-toggle>
+    <ion-select *ngIf="userSetting.options" [value]="userSetting.value" okText="Select" cancelText="Cancel"
+      (ionChange)="selectSettingOption(userSetting, $event.detail.value)">
+      <ion-select-option *ngFor="let option of userSetting.options" [value]="option.value">
         {{option.name}}
       </ion-select-option>
     </ion-select>
@@ -37,18 +27,19 @@
   </ion-item>
   <ion-item>
     <ion-label>Theme</ion-label>
-    <ion-select
-      [value]="currentThemeName"
-      okText="Okay"
-      cancelText="Dismiss"
-      (ionChange)="selectThemeName($event.detail.value)"
-    >
-      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}"
-        >{{themeName}}</ion-select-option
-      >
+    <ion-select [value]="currentThemeName" okText="Okay" cancelText="Dismiss"
+      (ionChange)="selectThemeName($event.detail.value)">
+      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}">{{themeName}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label [routerLink]="['/theme-editor']">Theme Editor</ion-label>
   </ion-item>
+  <ion-list-header>Act On Behalf of User</ion-list-header>
+  <ion-select [value]="selectedOboUid" okText="Select" cancelText="Cancel"
+    (ionChange)="selectOBOUser($event.detail.value)">
+    <ion-select-option *ngFor="let user of usersICanObo" [value]="user.uid">
+      {{user.displayName}}
+    </ion-select-option>
+  </ion-select>
 </ion-content>
