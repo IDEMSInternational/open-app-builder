@@ -161,7 +161,7 @@
   justify-content: center;
   color: var(--ion-primary-color, #0d4060);
   border-color: var(--ion-primary-color, #0d4060);
-  background-color: transparent;
+  background-color: white;
   padding: 7px;
   font-size: 14px;
   margin: 10px;
@@ -229,4 +229,8 @@ ion-content {
 
 .skip-button {
   margin: 16px;
+}
+
+.typing-anim {
+  width: 60px;
 }

@@ -1,18 +1,20 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { ToolboxPage } from './toolbox.page';
+import { ToolboxPage } from "./components/toolbox.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: ToolboxPage
+    path: "",
+    component: ToolboxPage,
   },
   {
-    path: 'topic',
-    loadChildren: () => import('./toolbox-topic/toolbox-topic.module').then( m => m.ToolboxTopicPageModule)
-  }
-
+    path: "topic",
+    loadChildren: () =>
+      import("./components/toolbox-topic/toolbox-topic.module").then(
+        (m) => m.ToolboxTopicPageModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ChatActionComponent } from "./components/chat-action/chat-action.component";
 import { ChatPage } from "./components/chat.page";
+import { CanDeactivateChat } from './guards/can-deactivate-chat';
 
 const routes: Routes = [
   // default chat page flow
@@ -12,6 +13,7 @@ const routes: Routes = [
   {
     path: "flow/:flowName",
     component: ChatPage,
+    canDeactivate: [CanDeactivateChat]
   },
   {
     path: "action/:actionType",

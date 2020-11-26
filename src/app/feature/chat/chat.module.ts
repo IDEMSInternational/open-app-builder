@@ -9,6 +9,8 @@ import { SharedModule } from "src/app/shared/shared.module";
 import { ChatPage } from "./components/chat.page";
 import { ChatActionComponent } from "./components/chat-action/chat-action.component";
 import { ChatResponsesComponent } from './components/chat-responses/chat-responses.component';
+import { ResponsesModalComponent } from './components/chat-responses/responses-modal/responses-modal.component';
+import { CanDeactivateChat } from './guards/can-deactivate-chat';
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -25,7 +27,7 @@ export function lottiePlayerFactory() {
     ChatPageRoutingModule,
     LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),
   ],
-  declarations: [ChatPage, ChatActionComponent, ChatResponsesComponent],
-  providers: [],
+  declarations: [ChatPage, ChatActionComponent, ChatResponsesComponent, ResponsesModalComponent],
+  providers: [CanDeactivateChat],
 })
 export class ChatPageModule {}

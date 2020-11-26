@@ -3,9 +3,9 @@ import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
-import { toolboxTopicNames } from "src/app/shared/services/toolbox/toolbox-topic-metadata";
-import { ToolboxTopicType } from "src/app/shared/services/toolbox/toolbox.model";
-import { ToolboxService } from "src/app/shared/services/toolbox/toolbox.service";
+import { toolboxTopicNames } from "src/app/feature/toolbox/data/toolbox-topic-metadata";
+import { ToolboxTopicType } from "src/app/feature/toolbox/models/toolbox.model";
+import { ToolboxService } from "src/app/feature/toolbox/services/toolbox.service";
 import { ChatAction } from "../../models";
 import { URLParts } from "../../utils/message.converter";
 
