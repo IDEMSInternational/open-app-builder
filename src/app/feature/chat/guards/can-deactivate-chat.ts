@@ -33,7 +33,7 @@ export class CanDeactivateChat implements CanDeactivate<ChatPage> {
 
     const alert = await this.alertController.create({
         header: "Are you sure you want to leave?",
-        message: "If you leave part way through you will loose your progress",
+        message: "If you leave part way through you will lose your progress",
         buttons: [
           {
             text: "OK",
