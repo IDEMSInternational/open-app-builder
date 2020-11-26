@@ -22,16 +22,16 @@ export const BASE_USER_SETTINGS: UserSetting[] = [
         value: "1000",
         options: [
             {
-                name: "Low",
-                value: "1000"
+                name: "Slow",
+                value: "5000"
             },
             {
                 name: "Medium",
                 value: "3000"
             },
             {
-                name: "High",
-                value: "5000"
+                name: "Fast",
+                value: "1000"
             }
         ]
     },
