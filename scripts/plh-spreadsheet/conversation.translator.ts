@@ -1,5 +1,5 @@
 import { isNull } from '@angular/compiler/src/output/output_ast';
-import { RapidProFlowExport } from '../../src/app/feature/chat/chat-service/offline/rapid-pro-export.model';
+import { RapidProFlowExport } from '../../src/app/feature/chat/services/offline/rapid-pro-export.model';
 import { ConversationExcelRow, ConversationExcelSheet } from './plh-spreadsheet.model';
 import { v4 as uuidv4 } from 'uuid';
 import { error } from 'console';
