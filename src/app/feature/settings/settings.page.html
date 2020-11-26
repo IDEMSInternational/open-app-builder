@@ -35,8 +35,8 @@
   <ion-item>
     <ion-label [routerLink]="['/theme-editor']">Theme Editor</ion-label>
   </ion-item>
-  <ion-list-header>Act On Behalf of User</ion-list-header>
-  <ion-select [value]="selectedOboUid" okText="Select" cancelText="Cancel"
+  <ion-list-header *ngIf="usersICanObo?.length > 0">Act On Behalf of User</ion-list-header>
+  <ion-select *ngIf="usersICanObo?.length > 0" [value]="selectedOboUid" okText="Select" cancelText="Cancel"
     (ionChange)="selectOBOUser($event.detail.value)">
     <ion-select-option *ngFor="let user of usersICanObo" [value]="user.uid">
       {{user.displayName}}
