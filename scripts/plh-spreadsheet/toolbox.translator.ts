@@ -1,6 +1,6 @@
 import { Dictionary } from '@fullcalendar/angular';
-import { toolboxTopicNames } from '../../src/app/shared/services/toolbox/toolbox-topic-metadata';
-import { ToolboxElement, ToolboxExport, ToolboxSection, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from '../../src/app/shared/services/toolbox/toolbox.model';
+import { toolboxTopicNames } from '../../src/app/feature/toolbox/data/toolbox-topic-metadata';
+import { ToolboxElement, ToolboxExport, ToolboxSection, ToolboxTopic, ToolboxTopicMetadata, ToolboxTopicType } from '../../src/app/feature/toolbox/models/toolbox.model';
 import { ToolboxExcelRow, ToolboxExcelSheet } from './plh-spreadsheet.model';
 
 export class ToolboxTranslator {
