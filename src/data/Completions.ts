@@ -2,6 +2,7 @@ export default [
   {
     "Flow_Type": "Completions",
     "Flow_Name": "CompletionsList",
+    "status": "preview",
     "data": [
       {
         "id": "completion_1on1_Emo",

@@ -2,12 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
+import { SettingsService } from 'src/app/feature/settings/settings.service';
 import { ChatMessage, IChatService } from "../../models";
 import { RapidProOfflineFlow } from "./chat.flow";
 import { ContactFieldService } from "./contact-field.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
 
-const FLOW_EXPORTS_PATH = "assets/rapid-pro-flow-exports/idems-plh-app-combined-2020-11-17.json";
+const FLOW_EXPORTS_PATH = "assets/rapid-pro-flow-exports/idems-plh-app-2020-11-25.json";
 
 export type FlowStatusChange = {
   name: string;
@@ -22,11 +23,13 @@ export class OfflineChatService implements IChatService {
   type = "offline";
   private flowsByName: { [flowName: string]: RapidProFlowExport.Flow } = {};
   private currentFlow: RapidProOfflineFlow;
-  private flowStatus$ = new BehaviorSubject<FlowStatusChange[]>([]);
+  public flowStatus$ = new BehaviorSubject<FlowStatusChange[]>([]);
   private ready$ = new BehaviorSubject<boolean>(false);
   public messages$ = new BehaviorSubject<ChatMessage[]>([]);
+  public botTyping$ = new BehaviorSubject<boolean>(false);
 
-  constructor(protected http: HttpClient, protected contactFieldService: ContactFieldService) {
+  constructor(protected http: HttpClient, protected contactFieldService: ContactFieldService,
+    protected settingsService: SettingsService) {
     this.init();
   }
 
@@ -80,8 +83,12 @@ export class OfflineChatService implements IChatService {
             flow,
             this.messages$,
             this.flowStatus$,
-            this.contactFieldService
+            this.contactFieldService,
+            this.botTyping$
           );
+          this.settingsService.getUserSetting("CHAT_DELAY").subscribe((delay) => {
+            this.currentFlow.sendMessageDelay = Number.parseInt(delay);
+          });
           this.currentFlow.start();
         }
       }
@@ -97,6 +104,7 @@ export class OfflineChatService implements IChatService {
     if (res.flows && res.flows.length > 0) {
       for (let flow of res.flows) {
         this.flowsByName[flow.name] = flow;
+        
       }
     } else {
       console.warn("No flows in export file ", exportFilePath);

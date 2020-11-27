@@ -5,16 +5,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Use Button Home Screen</ion-label>
-    <ion-toggle
-      [(ngModel)]="useButtonHomeScreen"
-      (ngModelChange)="toggleButtonHomeScreen()"
+  <ion-item *ngFor="let userSetting of userSettings">
+    <ion-label>{{userSetting.name}}</ion-label>
+    <ion-toggle *ngIf="!userSetting.options && userSetting.type === 'boolean'"
+      [checked]="userSetting.value === 'true'"
+      (ionChange)="toggleUserSetting(userSetting)"
     ></ion-toggle>
-  </ion-item>
-  <ion-item *ngIf="isNative">
-    <ion-label>Use Offline Chat</ion-label>
-    <ion-toggle [(ngModel)]="useOfflineChat" (ngModelChange)="toggleUseOfflineChat()"></ion-toggle>
+    <ion-select
+      *ngIf="userSetting.options"
+      [value]="userSetting.value"
+      okText="Select"
+      cancelText="Cancel"
+      (ionChange)="selectSettingOption(userSetting, $event.detail.value)"
+    >
+      <ion-select-option
+        *ngFor="let option of userSetting.options"
+        [value]="option.value"
+      >
+        {{option.name}}
+      </ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item>
     <ion-button (click)="openWelcomeFlow()">Open Welcome Flow</ion-button>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuController } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { SettingsService } from '../settings/settings.service';
 
 @Component({
   selector: "plh-home",
@@ -17,17 +17,19 @@ export class HomePage implements OnInit {
     private menuController: MenuController,
     private router: Router,
     private route: ActivatedRoute,
-    private localStorageService: LocalStorageService
+    private settingsService: SettingsService
   ) {}
 
   ngOnInit(): void {}
 
   ionViewWillEnter() {
-    if (this.localStorageService.getBoolean("home_screen.use_button_version")) {
-      this.homeScreenOption = "buttons";
-    } else {
-      this.homeScreenOption = "indoors-blobs";
-    }
+    this.settingsService.getUserSetting("USE_BUTTON_HOME_SCREEN").subscribe((useButton) => {
+      if (useButton) {
+        this.homeScreenOption = "buttons";
+      } else {
+        this.homeScreenOption = "indoors-blobs";
+      }
+    });
   }
 
   toggleMenu() {
