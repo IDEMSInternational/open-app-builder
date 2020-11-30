@@ -24,24 +24,58 @@ export function main() {
     }
 
     let xlsxFiles = [];
+    let conversationSheets: ConversationExcelSheet[] = [];
+    let toolboxSheets: ToolboxExcelSheet[] = [];
+
     try {
         xlsxFiles = glob.sync(path.join(inputFolderPath, "**/*.xlsx"))
     } catch (ex) {
         console.warn("Error getting list of Excel files", ex);
     }
+
     for (let fileName of xlsxFiles) {
         try {
             let workbook = xlsx.readFile(fileName);
-            processWorkbook(fileName, workbook, outputFolderPaths);
+            let content = getContentSheets(fileName, workbook);
+            try {
+                conversationSheets = conversationSheets.concat(content.conversationSheets);
+                toolboxSheets = toolboxSheets.concat(content.toolboxSheets);
+            } catch (ex) {
+                console.warn("Error gettting content sheets for file ", fileName, ex);
+            }
         } catch (ex) {
-            console.warn("Error parsing workbook ", fileName);
+            console.warn("Error loading file ", fileName);
             console.warn(ex);
         }
     }
+
+    try {
+        const conversationTranslator = new ConversationTranslator();
+        const rapidProExportJSON = conversationTranslator.from(conversationSheets);
+        const rapidProExportJSONString = JSON.stringify(rapidProExportJSON, null, 2);
+        for (let outputFolderPath of outputFolderPaths) {
+            fs.writeFileSync(path.join(outputFolderPath, "flow-export.json"), rapidProExportJSONString, { flag: "w+" });
+        }
+    } catch (ex) {
+        console.warn("Error in conversation flow conversion", ex);
+    }
+
+    try {
+        const toolboxTranslator = new ToolboxTranslator();
+        const toolboxJSON = toolboxTranslator.from(toolboxSheets);
+        const toolboxJSONString = JSON.stringify(toolboxJSON, null, 4);
+
+        for (let outputFolderPath of outputFolderPaths) {
+            fs.writeFileSync(path.join(outputFolderPath, "toolbox-export.json"), toolboxJSONString, { flag: "w+" });
+        }
+    } catch (ex) {
+        console.warn("Error in toolbox conversion", ex);
+    }
+
 }
 main();
 
-export function processWorkbook(fileName: string, workbook: xlsx.WorkBook, outputFolderPaths: string[]) {
+export function getContentSheets(fileName: string, workbook: xlsx.WorkBook): { conversationSheets: ConversationExcelSheet[], toolboxSheets: ToolboxExcelSheet[] } {
     let contentListSheetName: string = "==Content_List=="
 
     if (!workbook.Sheets[contentListSheetName]) {
@@ -61,16 +95,7 @@ export function processWorkbook(fileName: string, workbook: xlsx.WorkBook, outpu
                 rows: rows
             };
         });
-    console.log("File ", fileName, "has", conversationSheets.length, "conversation sheets");
 
-    const conversationTranslator = new ConversationTranslator();
-    const rapidProExportObject = conversationTranslator.from(conversationSheets);
-    const rapidProExportJSONString = JSON.stringify(rapidProExportObject, null, 4);
-    for (let outputFolderPath of outputFolderPaths) {
-        fs.writeFileSync(path.join(outputFolderPath, "flow-export.json"), rapidProExportJSONString, { flag: "w+" });
-    }
-
-    
     const toolboxSheets: ToolboxExcelSheet[] = contentList
         .filter((contentListItem) => contentListItem.Flow_Type === "Toolbox" || contentListItem.Flow_Type === "Tips")
         .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
@@ -82,12 +107,9 @@ export function processWorkbook(fileName: string, workbook: xlsx.WorkBook, outpu
                 rows: rows
             };
         });
-    
-    const toolboxTranslator = new ToolboxTranslator();
-    const toolboxJSON = toolboxTranslator.from(toolboxSheets);
-    const toolboxJSONString = JSON.stringify(toolboxJSON, null, 4);
-    for (let outputFolderPath of outputFolderPaths) {
-        fs.writeFileSync(path.join(outputFolderPath, "toolbox-export.json"), toolboxJSONString, { flag: "w+" });
-    }
-    
+
+    return {
+        conversationSheets: conversationSheets,
+        toolboxSheets: toolboxSheets
+    };
 }
