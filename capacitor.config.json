@@ -21,9 +21,5 @@
       }
     }
   },
-  "allowNavigation": [],
-  "server": {
-    "url": "http://192.168.1.20:8100",
-    "cleartext": true
-  }
+  "allowNavigation": []
 }
