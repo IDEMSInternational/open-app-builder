@@ -53,6 +53,7 @@ export function processWorkbook(fileName: string, workbook: xlsx.WorkBook, outpu
     const conversationSheets: ConversationExcelSheet[] = contentList
         .filter((contentListItem) => contentListItem.Flow_Type === "Conversation")
         .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
+        .filter((contentListItem) => contentListItem.status.trim() !== "draft")
         .map((contentListItem) => {
             const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
             return {
