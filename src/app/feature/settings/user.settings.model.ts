@@ -1,4 +1,5 @@
-export type UserSettingId = "CHAT_DELAY" | "USE_MODAL_FOR_CHAT_RESPONSES" | "USE_BUTTON_HOME_SCREEN" | "USE_OFFLINE_CHAT";
+export type UserSettingId = "CHAT_DELAY" | "USE_MODAL_FOR_CHAT_RESPONSES" | "USE_BUTTON_HOME_SCREEN" | "USE_OFFLINE_CHAT"
+    | "USE_GDRIVE_CONTENT";
 
 export interface UserSetting {
     id: UserSettingId,
@@ -47,6 +48,12 @@ export const BASE_USER_SETTINGS: UserSetting[] = [
         type: "boolean",
         value: "true"
     },
+    {
+        id: "USE_GDRIVE_CONTENT",
+        name: "Use Latest GDrive Content",
+        type: "boolean",
+        value: "false"
+    }
     // 2020-11-25 - Online chat disabled here and in settings until tested working
     // {
     //     id: "USE_OFFLINE_CHAT",

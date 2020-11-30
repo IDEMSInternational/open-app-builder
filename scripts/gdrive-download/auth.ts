@@ -60,7 +60,7 @@ function authorize(credentials: any, tokenPath: string, scopes: string[], callba
     // Check if we have previously stored a token.
     const token = getJSONFromEnvOrFile("GDRIVE_OAUTH_TOKEN", tokenPath);
     if (!token) {
-        return getAccessToken(oAuth2Client, tokenPath, scopes, callback);
+        return getAccessToken(oAuth2Client, scopes, tokenPath, callback);
     }
     oAuth2Client.setCredentials(token);
     callback(oAuth2Client);

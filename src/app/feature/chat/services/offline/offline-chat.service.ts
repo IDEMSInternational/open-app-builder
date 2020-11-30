@@ -38,10 +38,16 @@ export class OfflineChatService implements IChatService {
     return this.ready$.pipe(takeWhile((isReady) => isReady === false)).toPromise();
   }
 
-  private async init() {
-    await this.loadExportFile(FLOW_EXPORTS_PATH);
-    this.subscribeToFlowStatusChanges();
-    this.ready$.next(true);
+  private init() {
+    this.settingsService.getUserSetting("USE_GDRIVE_CONTENT").subscribe(async (useGDriveContent) => {
+      let flowExportsPath = FLOW_EXPORTS_PATH;
+      if (useGDriveContent === "true") {
+        flowExportsPath = "assets/sheet-content/flow-export.json";
+      }
+      await this.loadExportFile(flowExportsPath);
+      this.subscribeToFlowStatusChanges();
+      this.ready$.next(true);
+    });
   }
 
   /**
@@ -104,7 +110,6 @@ export class OfflineChatService implements IChatService {
     if (res.flows && res.flows.length > 0) {
       for (let flow of res.flows) {
         this.flowsByName[flow.name] = flow;
-        
       }
     } else {
       console.warn("No flows in export file ", exportFilePath);

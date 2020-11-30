@@ -4,6 +4,7 @@ import { drive_v3 } from 'googleapis';
 import { authorizeGDrive } from './auth';
 import { Readable } from 'stream';
 import rimraf from "rimraf";
+import ncp from "ncp";
 
 async function createFolderIfNotExists(folderPath: string) {
     if (!fs.existsSync(folderPath)) {
@@ -16,9 +17,20 @@ async function main() {
     try {
         const drive = await authorizeGDrive();
         const folderId = await getPLHFolderId(drive);
-        const outputFolder = path.join(__dirname, "output");
+        const outputFolder = path.join(__dirname, "../plh-spreadsheet/input");
         rimraf.sync(outputFolder);
-        downloadFilesRecursively(drive, folderId, outputFolder);
+        await downloadFilesRecursively(drive, folderId, outputFolder);
+        const gdriveAssets = path.join(outputFolder, "assets");
+        if (fs.existsSync(gdriveAssets)) {
+            ncp(gdriveAssets,
+                path.join(__dirname, "../../src/assets"),
+                (err) => {
+                    console.log("Copied assets folder");
+                });
+        } else {
+            console.log("Copying assets folder");
+        }
+
     } catch (ex) {
         console.log("GDrive download error", ex);
     }
@@ -143,7 +155,7 @@ async function downloadFilesRecursively(drive: drive_v3.Drive, folderId: string,
     await createFolderIfNotExists(outputPath);
 
     const res = await drive.files.list({
-        q: `'${folderId}' in parents and trashed=false`,
+        q: `'${folderId}' in parents and trashed=false and name != 'Old'`,
         pageSize: 100,
         fields: 'nextPageToken, files(id, name, mimeType)',
     });
