@@ -6,7 +6,7 @@ import { ChatMessage } from "./chat-msg.model";
  */
 export interface IChatService {
   /** simple online/offline label */
-  type: string;
+  type: "online" | "offline";
 
   /** Main stream of chat messages */
   messages$: BehaviorSubject<ChatMessage[]>;
