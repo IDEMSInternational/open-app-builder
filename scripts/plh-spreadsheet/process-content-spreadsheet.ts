@@ -4,6 +4,7 @@ import * as path from "path";
 import { ContentIndexRow, ConversationExcelRow, ConversationExcelSheet, ToolboxExcelRow, ToolboxExcelSheet } from './plh-spreadsheet.model';
 import { ToolboxTranslator } from './toolbox.translator';
 import { ConversationTranslator } from './conversation.translator';
+import { glob } from 'glob';
 
 export function main() {
     const inputFolderPath = path.join(__dirname, "./input");
@@ -22,32 +23,32 @@ export function main() {
         }
     }
 
+    let xlsxFiles = [];
     try {
-        const xlsxFiles = fs.readdirSync(inputFolderPath)
-            .filter((fileName) => fileName.endsWith(".xlsx"));
-        console.log("XLSX files to process ", xlsxFiles);
-        for (let fileName of xlsxFiles) {
-            let workbook = xlsx.readFile(path.join(inputFolderPath, fileName));
-            processWorkbook(workbook, outputFolderPaths);
-        }
+        xlsxFiles = glob.sync(path.join(inputFolderPath, "**/*.xlsx"))
     } catch (ex) {
-        console.warn("Excel parsing error");
-        console.warn(ex);
+        console.warn("Error getting list of Excel files", ex);
+    }
+    for (let fileName of xlsxFiles) {
+        try {
+            let workbook = xlsx.readFile(fileName);
+            processWorkbook(fileName, workbook, outputFolderPaths);
+        } catch (ex) {
+            console.warn("Error parsing workbook ", fileName);
+            console.warn(ex);
+        }
     }
 }
 main();
 
-export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: string[]) {
-    console.log("Sheet names", workbook.SheetNames);
+export function processWorkbook(fileName: string, workbook: xlsx.WorkBook, outputFolderPaths: string[]) {
     let contentListSheetName: string = "==Content_List=="
 
     if (!workbook.Sheets[contentListSheetName]) {
-        console.error("No content list sheet!");
+        console.error("No content list sheet for file", fileName);
         return;
     }
     const contentList: ContentIndexRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListSheetName]);
-    
-    console.log("Content list", contentList);
 
     const conversationSheets: ConversationExcelSheet[] = contentList
         .filter((contentListItem) => contentListItem.Flow_Type === "Conversation")
@@ -59,7 +60,7 @@ export function processWorkbook(workbook: xlsx.WorkBook, outputFolderPaths: stri
                 rows: rows
             };
         });
-    console.log("Conversation Sheets: ", JSON.stringify(conversationSheets));
+    console.log("File ", fileName, "has", conversationSheets.length, "conversation sheets");
 
     const conversationTranslator = new ConversationTranslator();
     const rapidProExportObject = conversationTranslator.from(conversationSheets);
