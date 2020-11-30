@@ -20,7 +20,7 @@ export type FlowStatusChange = {
   providedIn: "root",
 })
 export class OfflineChatService implements IChatService {
-  type = "offline";
+  type: "offline" = "offline";
   private flowsByName: { [flowName: string]: RapidProFlowExport.Flow } = {};
   private currentFlow: RapidProOfflineFlow;
   public flowStatus$ = new BehaviorSubject<FlowStatusChange[]>([]);

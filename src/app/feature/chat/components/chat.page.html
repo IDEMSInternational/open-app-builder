@@ -12,6 +12,9 @@
         <p>{{debugMsg}}</p>
         <p>{{stringify(messages[messages.length - 1])}}</p>
       </div>
+      <div *ngIf="showFlowName && latestFlowEvent">
+        <p>Flow Name: {{latestFlowEvent?.name}} : {{latestFlowEvent?.status}}</p>
+      </div>
       <div
         *ngFor="let msg of messages; index as i"
         [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'"
