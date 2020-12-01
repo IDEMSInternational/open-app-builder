@@ -1,4 +1,5 @@
 export type UserSettingId = "CHAT_DELAY" | "USE_MODAL_FOR_CHAT_RESPONSES" | "USE_BUTTON_HOME_SCREEN" | "USE_OFFLINE_CHAT"
+    | "USE_GDRIVE_CONTENT"
     | "SHOW_FLOW_NAME";
 
 export interface UserSetting {
@@ -47,6 +48,12 @@ export const BASE_USER_SETTINGS: UserSetting[] = [
         name: "Use Button Home Screen",
         type: "boolean",
         value: "true"
+    },
+    {
+        id: "USE_GDRIVE_CONTENT",
+        name: "Use Latest GDrive Content",
+        type: "boolean",
+        value: "false"
     },
     {
         id: "SHOW_FLOW_NAME",
