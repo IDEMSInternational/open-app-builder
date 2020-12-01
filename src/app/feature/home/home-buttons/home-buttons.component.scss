@@ -43,3 +43,17 @@
     background-color: var(--theme-var-myPlansButton, #5652A3);
   }
 }
+
+@media only screen and (max-height: 590px) {
+  .container {
+    padding: 5px;
+  }
+
+  .menu-button {
+    padding: 5px;
+  }
+
+  .menu-button.my-journey {
+    padding: 5px;
+  }
+}
