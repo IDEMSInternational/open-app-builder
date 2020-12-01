@@ -42,7 +42,7 @@ export class OfflineChatService implements IChatService {
     this.settingsService.getUserSetting("USE_GDRIVE_CONTENT").subscribe(async (useGDriveContent) => {
       let flowExportsPath = FLOW_EXPORTS_PATH;
       if (useGDriveContent === "true") {
-        flowExportsPath = "assets/sheet-content/flow-export.json";
+        flowExportsPath = "https://plh-demo1.idems.international/sheet-content/flow-export.json";
       }
       await this.loadExportFile(flowExportsPath);
       this.subscribeToFlowStatusChanges();

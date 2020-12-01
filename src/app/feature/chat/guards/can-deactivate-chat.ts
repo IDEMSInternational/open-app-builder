@@ -27,7 +27,7 @@ export class CanDeactivateChat implements CanDeactivate<ChatPage> {
     /* If flow has finished then don't show alert */
     const flowStatusEvents = this.chatService.flowStatus$.getValue();
     const latestFlowEvent = flowStatusEvents[flowStatusEvents.length - 1];
-    if (latestFlowEvent.status === "completed") {
+    if (latestFlowEvent && latestFlowEvent.status === "completed") {
       return true;
     }
 
