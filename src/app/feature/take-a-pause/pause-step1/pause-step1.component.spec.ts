@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { PauseStep1Component } from './pause-step1.component';
@@ -7,7 +7,7 @@ describe('PauseStep1Component', () => {
   let component: PauseStep1Component;
   let fixture: ComponentFixture<PauseStep1Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PauseStep1Component ],
       imports: [IonicModule.forRoot()]
