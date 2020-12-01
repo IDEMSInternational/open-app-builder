@@ -9,11 +9,17 @@ import { Capacitor } from "@capacitor/core";
 export class AudioService {
   constructor() {}
 
+  playersBySrc: { [ src: string]: AudioPlayer } = {};
+
   createPlayer(src: string): AudioPlayer {
-    if (Capacitor.isNative) {
+    if (!this.playersBySrc[src]) {
+      this.playersBySrc[src] = new HTML5AudioPlayer(src);
+    }
+    return this.playersBySrc[src];
+    /* if (Capacitor.isNative) {
       return new IonicNativeAudioPlayer(src);
     } else {
       return new HTML5AudioPlayer(src);
-    }
+    } */
   }
 }

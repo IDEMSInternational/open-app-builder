@@ -6,7 +6,7 @@ import { Subscription } from "rxjs";
 import { ModalController } from "@ionic/angular";
 import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
-import { OfflineChatService } from "../services/offline/offline-chat.service";
+import { FlowStatusChange, OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
 import { SettingsService } from "../../settings/settings.service";
 
@@ -46,6 +46,8 @@ export class ChatPage {
   chatViewType: "normal" | "story" = "normal";
   chatService: IChatService;
   isModal: boolean;
+  latestFlowEvent: FlowStatusChange;
+  showFlowName: boolean = false;
 
   botTyping = false;
   typingAnimOptions: AnimationOptions = {
@@ -65,7 +67,7 @@ export class ChatPage {
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
     public modalCtrl: ModalController
-  ) {}
+  ) { }
 
   /** Initialise chat configuration on page enter */
   ionViewDidEnter() {
@@ -92,6 +94,16 @@ export class ChatPage {
     this.offlineChatService.botTyping$.subscribe((botTyping) => {
       this.botTyping = botTyping;
     });
+    if (this.chatService.type === "offline") {
+      this.offlineChatService.flowStatus$.subscribe((events) => {
+        if (events.length > 0) {
+          this.latestFlowEvent = events[events.length - 1];
+        }
+      });
+      this.settingsService.getUserSetting("SHOW_FLOW_NAME").subscribe((value) => {
+        this.showFlowName = value === "true";
+      });
+    }
     console.log(`%cUsing ${this.chatService.type} chat `, "color: #9c9c9c");
   }
 
