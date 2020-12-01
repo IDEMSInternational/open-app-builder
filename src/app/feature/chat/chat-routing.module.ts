@@ -8,7 +8,7 @@ const routes: Routes = [
   // default chat page flow
   {
     path: "",
-    redirectTo: "flow/Chat Content flow",
+    redirectTo: "flow/Praise_Intro",
   },
   {
     path: "flow/:flowName",
