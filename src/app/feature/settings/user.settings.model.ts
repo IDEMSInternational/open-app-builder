@@ -1,5 +1,5 @@
 export type UserSettingId = "CHAT_DELAY" | "USE_MODAL_FOR_CHAT_RESPONSES" | "USE_BUTTON_HOME_SCREEN" | "USE_OFFLINE_CHAT"
-    | "USE_GDRIVE_CONTENT";
+    | "USE_GDRIVE_CONTENT"
     | "SHOW_FLOW_NAME";
 
 export interface UserSetting {
