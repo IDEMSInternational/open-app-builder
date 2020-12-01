@@ -93,10 +93,11 @@ const StaticPages: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot([...StaticPages, ...FeatureRoutes, ...DeprecatedRoutes], {
-      preloadingStrategy: PreloadAllModules,
-      useHash: false,
-      anchorScrolling: "enabled",
-    }),
+    preloadingStrategy: PreloadAllModules,
+    useHash: false,
+    anchorScrolling: "enabled",
+    relativeLinkResolution: 'legacy'
+}),
   ],
   exports: [RouterModule],
 })
