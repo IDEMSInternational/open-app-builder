@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { ThemeEditorComponent } from './theme-editor.component';
@@ -7,7 +7,7 @@ describe('ThemeEditorComponent', () => {
   let component: ThemeEditorComponent;
   let fixture: ComponentFixture<ThemeEditorComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ThemeEditorComponent ],
       imports: [IonicModule.forRoot()]
