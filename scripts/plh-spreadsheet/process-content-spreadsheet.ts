@@ -78,11 +78,12 @@ main();
 export function getContentSheets(fileName: string, workbook: xlsx.WorkBook): { conversationSheets: ConversationExcelSheet[], toolboxSheets: ToolboxExcelSheet[] } {
     let contentListSheetName: string = "==content_list=="
 
-    if (!workbook.Sheets[contentListSheetName]) {
+    let contentList: ContentIndexRow[] = [];
+    if (workbook.Sheets[contentListSheetName]) {
+        contentList = xlsx.utils.sheet_to_json(workbook.Sheets[contentListSheetName]);
+    } else {
         console.error("No content list sheet for file", fileName);
-        return;
     }
-    const contentList: ContentIndexRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListSheetName]);
 
     const conversationSheets: ConversationExcelSheet[] = contentList
         .filter((contentListItem) => contentListItem.flow_type === "conversation")
