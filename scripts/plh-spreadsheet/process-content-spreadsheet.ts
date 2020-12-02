@@ -76,34 +76,35 @@ export function main() {
 main();
 
 export function getContentSheets(fileName: string, workbook: xlsx.WorkBook): { conversationSheets: ConversationExcelSheet[], toolboxSheets: ToolboxExcelSheet[] } {
-    let contentListSheetName: string = "==Content_List=="
+    let contentListSheetName: string = "==content_list=="
 
-    if (!workbook.Sheets[contentListSheetName]) {
+    let contentList: ContentIndexRow[] = [];
+    if (workbook.Sheets[contentListSheetName]) {
+        contentList = xlsx.utils.sheet_to_json(workbook.Sheets[contentListSheetName]);
+    } else {
         console.error("No content list sheet for file", fileName);
-        return;
     }
-    const contentList: ContentIndexRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListSheetName]);
 
     const conversationSheets: ConversationExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Flow_Type === "Conversation")
-        .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
-        .filter((contentListItem) => contentListItem.status.trim() !== "draft")
+        .filter((contentListItem) => contentListItem.flow_type === "conversation")
+        .filter((contentListItem) => workbook.Sheets[contentListItem.flow_name])
+        .filter((contentListItem) => contentListItem.status !== undefined && contentListItem.status.trim() === "released")
         .map((contentListItem) => {
-            const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
+            const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.flow_name]);
             return {
-                sheetName: contentListItem.Flow_Name,
+                sheet_name: contentListItem.flow_name,
                 rows: rows
             };
         });
 
     const toolboxSheets: ToolboxExcelSheet[] = contentList
-        .filter((contentListItem) => contentListItem.Flow_Type === "Toolbox" || contentListItem.Flow_Type === "Tips")
-        .filter((contentListItem) => workbook.Sheets[contentListItem.Flow_Name])
+        .filter((contentListItem) => contentListItem.flow_type === "toolbox" || contentListItem.flow_type === "tips")
+        .filter((contentListItem) => workbook.Sheets[contentListItem.flow_name])
         .map((contentListItem) => {
-            const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.Flow_Name]);
+            const rows: ToolboxExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.flow_name]);
             return {
-                sheetName: contentListItem.Flow_Name,
-                topicId: contentListItem.Module ? contentListItem.Module : contentListItem.Topic_Id,
+                sheet_name: contentListItem.flow_name,
+                topic_id: contentListItem.module ? contentListItem.module : contentListItem.topic_id,
                 rows: rows
             };
         });
