@@ -20,6 +20,7 @@ export class SettingsPage {
   public currentThemeName: string;
 
   public userSettings: UserSetting[] = [];
+  public devOnlyUserSettings: UserSetting[] = [];
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -32,18 +33,15 @@ export class SettingsPage {
     this.themeNames = this.themeService.getThemes().map((theme) => theme.name);
     this.currentThemeName = this.themeService.getCurrentTheme().name;
     this.settingsService.getAllUserSettings().subscribe((userSettings) => {
-      this.userSettings = userSettings.filter((setting) => Capacitor.isNative || !setting.nativeOnly)
+      this.userSettings = userSettings
+        .filter((setting) => Capacitor.isNative || !setting.nativeOnly)
+        .filter((setting) => !setting.devOnly)
+      this.devOnlyUserSettings = userSettings
+        .filter((setting) => setting.devOnly)
     });
   }
 
-  toggleUserSetting(setting: UserSetting) {
-    const bool = setting.value === "true";
-    setting.value = "" + !bool;
-    this.settingsService.setUserSetting(setting.id, setting.value);
-  }
-
-  selectSettingOption(setting: UserSetting, value: string) {
-    setting.value = value;
+  onSettingChange(setting: UserSetting) {
     this.settingsService.setUserSetting(setting.id, setting.value);
   }
 
@@ -60,6 +58,10 @@ export class SettingsPage {
 
   openWelcomeSurvey() {
     this.surveyService.runSurvey("welcome");
+  }
+
+  navigateByUrl(url: string) {
+    this.router.navigateByUrl(url);
   }
 
   resetApp() {
