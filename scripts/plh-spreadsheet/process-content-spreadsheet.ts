@@ -87,7 +87,7 @@ export function getContentSheets(fileName: string, workbook: xlsx.WorkBook): { c
     const conversationSheets: ConversationExcelSheet[] = contentList
         .filter((contentListItem) => contentListItem.flow_type === "conversation")
         .filter((contentListItem) => workbook.Sheets[contentListItem.flow_name])
-        .filter((contentListItem) => contentListItem.status.trim() === "released")
+        .filter((contentListItem) => contentListItem.status !== undefined && contentListItem.status.trim() === "released")
         .map((contentListItem) => {
             const rows: ConversationExcelRow[] = xlsx.utils.sheet_to_json(workbook.Sheets[contentListItem.flow_name]);
             return {
