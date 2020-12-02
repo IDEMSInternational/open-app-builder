@@ -12,7 +12,8 @@ export interface ContentIndexRow {
     Entry_Condition?: string,
     Output?: string,
     Comment_Suggestion?: string,
-    Topic_Id?: string
+    Topic_Id?: string,
+    status?: "released" | "draft"
 }
 
 export interface ToolboxExcelSheet {

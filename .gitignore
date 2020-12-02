@@ -43,3 +43,5 @@ src/environments/firebaseConfig.ts
 /scripts/output
 /scripts/plh-spreadsheet/input
 /scripts/plh-spreadsheet/output
+
+.env
