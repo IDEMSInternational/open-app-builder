@@ -37,3 +37,20 @@ npm run scripts version
 ```
 
 will call the version script
+
+## Developing scripts
+
+To easy development, an additional `dev` script has been created that will start a
+nodemon server, live-reloading the chosen script whenever an input `.ts` file changes.
+
+```
+npm run dev
+```
+
+will run live-reload of the main start scripts
+
+```
+npm run dev version
+```
+
+will run live-reload of the version script
