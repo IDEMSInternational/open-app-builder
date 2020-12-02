@@ -31,7 +31,7 @@ export function populateEnv() {
     const e = dotenv.parse(fs.readFileSync(DOTENV_PATH));
     Object.entries(e).forEach(([key, value]) => {
       if (!value) {
-        console.log(chalk.bgYellow.black(`[${key}] not specified in scripts/.env`));
+        console.log(chalk.bgYellow.black(`[${key}] not specified in scripts/config/.env`));
       }
     });
     return e;

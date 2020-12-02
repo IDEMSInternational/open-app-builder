@@ -9,8 +9,8 @@ import { spawnSync } from "child_process";
  */
 const SCRIPT_NAMES = [
   {
-    value: "plh-xlsx-to-json",
-    name: "Some Description",
+    value: "sync-plh-content",
+    name: "Sync PLH GDrive Content",
   },
   {
     value: "version",
@@ -33,7 +33,7 @@ async function start() {
   const args = process.argv;
   const scriptToRun = args[2] ? args[2] : await promptOptions(SCRIPT_NAMES);
   spawnSync(`npm run ${scriptToRun}`, {
-    stdio: ["ignore", "inherit", "inherit"],
+    stdio: ["inherit", "inherit", "inherit"],
     shell: true,
   });
 }
