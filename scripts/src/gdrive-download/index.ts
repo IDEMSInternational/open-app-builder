@@ -1,17 +1,19 @@
 import * as fs from "fs-extra";
 import path from "path";
 import { drive_v3 } from "googleapis";
-import { GaxiosResponse } from "gaxios";
+import { GaxiosResponse, GaxiosOptions } from "gaxios";
 import logUpdate from "log-update";
 import chalk from "chalk";
 import { authorizeGDrive } from "./auth";
 import { GDRIVE_OFFICE_MAPPING, MIMETYPE_EXTENSIONS } from "./mimetypes";
 import { ArrayToChunks } from "../utils/file-utils";
+import { dataflow } from "googleapis/build/src/apis/dataflow";
 
 // constants
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 const GOOGLE_DRIVE_TARGET_FOLDER = "PLH Teens app Excel Sheets";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
+fs.ensureDirSync(OUTPUT_FOLDER);
 // global vars
 let drive: drive_v3.Drive;
 // logging
@@ -54,6 +56,8 @@ async function getPLHFolder(): Promise<drive_v3.Schema$File> {
 }
 
 async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
+  // TODO - delete files from local folder that no longer exist (instead of all)
+  fs.emptyDirSync(OUTPUT_FOLDER);
   const total = files.length;
   let i = 0;
   // split into chunks to that downloads can be processed in parallel
@@ -64,7 +68,7 @@ async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
     for (const file of chunk) {
       await exportGdriveFile(file);
       i++;
-      logUpdate(`Downloaded: ${i}/${total}`);
+      // logUpdate(`Downloaded: ${i}/${total}`);
     }
   });
 }
@@ -75,52 +79,47 @@ async function exportGdriveFile(file: IGDriveFileWithFolder) {
   const outputFolder = `${OUTPUT_FOLDER}/${folderPath}`;
   fs.ensureDirSync(outputFolder);
   let outputPath = `${outputFolder}/${file.name}`;
-  const extension = MIMETYPE_EXTENSIONS[file.mimeType] || "txt";
-  if (extension) {
-    outputPath += `.${extension}`;
+  if (GDRIVE_OFFICE_MAPPING[file.mimeType]) {
+    outputPath += `.${MIMETYPE_EXTENSIONS[file.mimeType]}`;
   }
-
+  // run a regex test for anything ending .abc(d)
+  // gdrive keeps duplicate open office formats of gsheets without extension
+  // if uploaded as excel files, so these will be omitted (duplicate of converted export)
+  const hasExtension = /\.([a-z0-9]){3,4}$/gi.test(outputPath);
+  if (!hasExtension) {
+    console.log(chalk.gray(`skip: ${folderPath}/${file.name}`));
+    return;
+  }
   // TODO - check if file already exists and modified date
 
   // Handle the export/download
   return new Promise<void>((resolve, reject) => {
     fs.createFileSync(outputPath);
     const dest = fs.createWriteStream(outputPath);
-    const timeout = 15000;
     const mTime = new Date(modifiedTime);
+    // assign mimetype for conversion from google file formats to office format
+    const mimeType = GDRIVE_OFFICE_MAPPING[file.mimeType] || file.mimeType;
     dest.on("close", () => {
       // assign the same modified time to the file as google drive file
       // for use in future comparisons
       fs.utimesSync(outputPath, mTime, mTime);
       resolve();
     });
-    // setup download request stream
+    const params = { fileId: file.id, mimeType, alt: "media" };
+    const options: GaxiosOptions = { responseType: "stream", timeout: 15000 };
     // export gsheet/doc to office format
     if (GDRIVE_OFFICE_MAPPING[file.mimeType]) {
-      const mimeType = GDRIVE_OFFICE_MAPPING[file.mimeType];
-      drive.files.export(
-        { fileId: file.id, mimeType, alt: "media" },
-        { responseType: "stream", timeout },
-        (err, res: GaxiosResponse) => {
-          if (err) handleErr(err);
-          else {
-            res.data.on("error", (e: Error) => handleErr(e)).pipe(dest);
-          }
-        }
-      );
+      drive.files.export(params, options, (err, res: GaxiosResponse) => {
+        if (err) handleErr(err);
+        else res.data.pipe(dest);
+      });
     }
     // download other files without conversion
     else {
-      drive.files.get(
-        { fileId: file.id, alt: "media" },
-        { responseType: "stream", timeout },
-        (err, res: GaxiosResponse<any>) => {
-          if (err) handleErr(err);
-          else {
-            res.data.on("error", (e: Error) => handleErr(e)).pipe(dest);
-          }
-        }
-      );
+      drive.files.get(params, options, (err, res: GaxiosResponse<any>) => {
+        if (err) handleErr(err);
+        else res.data.pipe(dest);
+      });
     }
   });
 }
@@ -139,8 +138,10 @@ async function listGdriveFilesRecursively(
 ) {
   const res = await drive.files.list({
     q: `'${folderId}' in parents and trashed=false`,
-    pageSize: 100,
-    fields: "nextPageToken, files(id, name, mimeType, modifiedTime)",
+    pageSize: 1000,
+    // list of possible file fields: https://developers.google.com/drive/api/v3/reference/files#resource
+    fields:
+      "nextPageToken, files(id, name, mimeType, modifiedTime, md5Checksum, size, fileExtension, fullFileExtension)",
   });
   const folderFiles = res.data.files.filter((file) => file.mimeType !== GOOGLE_FOLDER_MIMETYPE);
   folderFiles.forEach((f) => {
@@ -149,12 +150,10 @@ async function listGdriveFilesRecursively(
   console.log(chalk.blue(`${pad(folderFiles.length, 3)} |`), chalk.blue(folderPath));
   const subFolders = res.data.files.filter((file) => file.mimeType === GOOGLE_FOLDER_MIMETYPE);
   for (let folder of subFolders) {
-    const subfolderFiles = await listGdriveFilesRecursively(
-      folder.id,
-      `${folderPath}/${folder.name}`
-    );
+    const subfolderPath = `${folderPath}/${folder.name}`;
+    const subfolderFiles = await listGdriveFilesRecursively(folder.id, subfolderPath);
     subfolderFiles.forEach((f) => {
-      files.push({ ...f, folderPath });
+      files.push({ ...f, folderPath: subfolderPath });
     });
   }
   return files;
