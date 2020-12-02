@@ -7,7 +7,6 @@ import chalk from "chalk";
 import { authorizeGDrive } from "./auth";
 import { GDRIVE_OFFICE_MAPPING, MIMETYPE_EXTENSIONS } from "./mimetypes";
 import { ArrayToChunks } from "../utils/file-utils";
-import { dataflow } from "googleapis/build/src/apis/dataflow";
 
 // constants
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
@@ -24,10 +23,10 @@ async function main() {
   try {
     drive = await authorizeGDrive();
     const { id, name } = await getPLHFolder();
-    console.log("checking folders for files");
+    console.log(chalk.yellow("checking folders for files"));
     const files = await listGdriveFilesRecursively(id, name);
     fs.writeFileSync(`${LOGS_DIR}/files.json`, JSON.stringify(files, null, 2));
-    console.log("downloading files");
+    console.log(chalk.yellow("downloading files"));
     await downloadGdriveFiles(files);
   } catch (ex) {
     console.error("GDrive download error", ex);
@@ -56,6 +55,11 @@ async function getPLHFolder(): Promise<drive_v3.Schema$File> {
 }
 
 async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
+  // sort by path to make logging clearer
+  files = files
+    .sort((a, b) => (a.name > b.name ? 1 : -1))
+    .sort((a, b) => (a.folderPath > b.folderPath ? 1 : -1));
+
   // TODO - delete files from local folder that no longer exist (instead of all)
   fs.emptyDirSync(OUTPUT_FOLDER);
   const total = files.length;
@@ -87,7 +91,7 @@ async function exportGdriveFile(file: IGDriveFileWithFolder) {
   // if uploaded as excel files, so these will be omitted (duplicate of converted export)
   const hasExtension = /\.([a-z0-9]){3,4}$/gi.test(outputPath);
   if (!hasExtension) {
-    console.log(chalk.gray(`skip: ${folderPath}/${file.name}`));
+    console.log(chalk.gray(`  ${folderPath}/${file.name}`));
     return;
   }
   // TODO - check if file already exists and modified date
@@ -103,6 +107,7 @@ async function exportGdriveFile(file: IGDriveFileWithFolder) {
       // assign the same modified time to the file as google drive file
       // for use in future comparisons
       fs.utimesSync(outputPath, mTime, mTime);
+      console.log(chalk.blue(`+ ${folderPath}/${file.name}`));
       resolve();
     });
     const params = { fileId: file.id, mimeType, alt: "media" };
