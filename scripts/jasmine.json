@@ -7,5 +7,5 @@
         }
       }
     ],
-    "spec_files": ["scripts/**/*.[sS]pec.ts"]
+    "spec_files": ["**/*.[sS]pec.ts"]
   }
