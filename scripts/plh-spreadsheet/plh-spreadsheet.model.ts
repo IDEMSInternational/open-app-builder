@@ -1,78 +1,78 @@
-import { RapidProFlowExport } from 'src/app/feature/chat/chat-service/offline/rapid-pro-export.model';
+import { RapidProFlowExport } from 'src/app/feature/chat/services/offline/rapid-pro-export.model';
 
 export interface ContentIndexRow {
     //Removed these as adapting to the format used by Ohad.
     //Sheet_Name: string,
     //Content_Type: "Conversation" | "Toolbox",
-    Flow_Type: "Conversation" | "Toolbox" | "Tips",
-    Module?: string,
-    Flow_Name: string,
-    Character?: "Friend" | "Guide",
-    Second_Character?: string,
-    Entry_Condition?: string,
-    Output?: string,
-    Comment_Suggestion?: string,
-    Topic_Id?: string,
+    flow_type: "conversation" | "toolbox" | "tips",
+    module?: string,
+    flow_name: string,
+    character?: string,
+    second_character?: string,
+    entry_condition?: string,
+    output?: string,
+    comment?: string,
+    topic_id?: string,
     status?: "released" | "draft"
 }
 
 export interface ToolboxExcelSheet {
-    sheetName: string,
-    topicId: string,
+    sheet_name: string,
+    topic_id: string,
     rows: ToolboxExcelRow[]
 }
 
 export interface ToolboxExcelRow {
-    Type: 'Title' | 'Text' | 'Core_tip' | 'List_intro' | 'List_item' | 'End_list'
-    MessageText: string,
-    Media?: string
+    type: 'title' | 'text' | 'core_tip' | 'list_intro' | 'list_item' | 'end_list'
+    message_text: string,
+    media?: string
 }
 
 export interface ConversationExcelSheet {
-    sheetName: string;
+    sheet_name: string;
     rows: ConversationExcelRow[];
 }
 
 export interface ConversationExcelRow {
-    Row_ID?: string,
-    Type: 'Start_new_flow' | 'Send_message' | 'Story_message' | 'Go_to' | 'Save_value' | 'Exit',
-    From?: string,
-    Condition?: string,
-    Condition_Var?: string,
-    Character?: string,
-    MessageText: string,
-    Media?: string,
-    Choose_multi?: boolean,
-    Display_As_Tick?: boolean,
-    Ticked_By_Default?: boolean,
-    Default_Choice?: string,
-    Save_name?: string,
-    Choice_Media_Display?: "both" | "media" | "text",
-    Choice_1?: string,
-    Choice_1_Media?: string,
-    Choice_2?: string,
-    Choice_2_Media?: string,
-    Choice_3?: string,
-    Choice_3_Media?: string,
-    Choice_4?: string,
-    Choice_4_Media?: string,
-    Choice_5?: string,
-    Choice_5_Media?: string,
-    Choice_6?: string,
-    Choice_6_Media?: string,
-    Choice_7?: string,
-    Choice_7_Media?: string,
-    Choice_8?: string,
-    Choice_8_Media?: string,
-    Choice_9?: string,
-    Choice_9_Media?: string,
-    Choice_10?: string,
-    Choice_10_Media?: string,
-    Choice_11?: string,
-    Choice_11_Media?: string,
-    Choice_12?: string,
-    Choice_12_Media?: string,
-    Condition_Type?: RapidProFlowExport.RouterCaseType,
+    row_id?: string,
+    type: 'start_new_flow' | 'send_message' | 'story_message' | 'go_to' | 'save_value' | 'exit',
+    from?: string,
+    condition?: string,
+    condition_var?: string,
+    character?: string,
+    message_text: string,
+    media?: string,
+    choose_multi?: boolean,
+    display_as_tick?: boolean,
+    ticked_by_default?: boolean,
+    default_choice?: string,
+    save_name?: string,
+    choice_media_display?: "both" | "media" | "text",
+    choice_1?: string,
+    choice_1_media?: string,
+    choice_2?: string,
+    choice_2_media?: string,
+    choice_3?: string,
+    choice_3_media?: string,
+    choice_4?: string,
+    choice_4_media?: string,
+    choice_5?: string,
+    choice_5_media?: string,
+    choice_6?: string,
+    choice_6_media?: string,
+    choice_7?: string,
+    choice_7_media?: string,
+    choice_8?: string,
+    choice_8_media?: string,
+    choice_9?: string,
+    choice_9_media?: string,
+    choice_10?: string,
+    choice_10_media?: string,
+    choice_11?: string,
+    choice_11_media?: string,
+    choice_12?: string,
+    choice_12_media?: string,
+    condition_type?: RapidProFlowExport.RouterCaseType,
     // This is the UUID of the Node first created for this row, which is used to set how nodes go into this node.
     // This is set once.
     NodeUUIDForExit?: string,

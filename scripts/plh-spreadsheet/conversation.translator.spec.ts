@@ -19,11 +19,11 @@ describe("ConversationTranslator", () => {
 
     let mockSheets1: ConversationExcelSheet[] = [
         {
-            sheetName: "Test_Sheet_1",
+            sheet_name: "Test_Sheet_1",
             rows: [
                 {
-                    Type: "Send_message",
-                    MessageText: "Hi my friend, it’s really good to see you."
+                    type: "send_message",
+                    message_text: "Hi my friend, it’s really good to see you."
                 }
             ]
         }

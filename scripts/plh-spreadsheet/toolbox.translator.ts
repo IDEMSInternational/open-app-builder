@@ -12,7 +12,7 @@ export class ToolboxTranslator {
     public from(toolboxSheets: ToolboxExcelSheet[]): ToolboxExport {
         let topicByType: { [type: string]: ToolboxTopic } = {};
         for (let sheet of toolboxSheets) {
-            let topicMetadata = this.getTopicMetadata(sheet.topicId);
+            let topicMetadata = this.getTopicMetadata(sheet.topic_id);
             if (topicMetadata) {
                 if (!topicByType[topicMetadata.type]) {
                     topicByType[topicMetadata.type] = {
@@ -31,27 +31,27 @@ export class ToolboxTranslator {
 
     public sheetToContentSection(sheet: ToolboxExcelSheet): ToolboxSection {
         let elements: ToolboxElement[] = [];
-        let title = sheet.sheetName;
+        let title = sheet.sheet_name;
         let listElement: ToolboxElement;
         for (let row of sheet.rows) {
-            switch (row.Type) {
-                case "Title": {
-                    title = row.MessageText;
+            switch (row.type) {
+                case "title": {
+                    title = row.message_text;
                     break;
                 }
-                case "Core_tip": {
+                case "core_tip": {
                     elements.push({
                         type: "CORE_TIP",
-                        text: row.MessageText
+                        text: row.message_text
                     });
                     break;
                 }
-                case "List_intro": {
+                case "list_intro": {
                     listElement = this.createEmptyList();
-                    listElement.intro = row.MessageText;
+                    listElement.intro = row.message_text;
                     break;
                 }
-                case "End_list": {
+                case "end_list": {
                     if (listElement) {
                         listElement.items = listElement.items
                             .filter((item) => item.body.length > 0 || item.heading.length > 0)
@@ -60,28 +60,28 @@ export class ToolboxTranslator {
                     listElement = null;
                     break;
                 }
-                case "List_item": {
+                case "list_item": {
                     if (!listElement) {
                         listElement = this.createEmptyList();
                     }
                     listElement.items.push({
-                        heading: row.MessageText,
+                        heading: row.message_text,
                         body: ""
                     });
                     break;
                 }
-                case "Text":
+                case "text":
                 default: {
                     if (listElement) {
                         const lastItem = listElement.items[listElement.items.length - 1];
                         if (lastItem.body.length > 0) {
                             lastItem.body += "\n";
                         }
-                        lastItem.body += row.MessageText;
+                        lastItem.body += row.message_text;
                     } else {
                         elements.push({
                             type: "TEXT",
-                            text: row.MessageText
+                            text: row.message_text
                         });
                     }
                 }
