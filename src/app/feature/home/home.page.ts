@@ -9,7 +9,7 @@ import { SettingsService } from '../settings/settings.service';
   styleUrls: ["home.page.scss"],
 })
 export class HomePage implements OnInit {
-  homeScreenOption: "indoors-blobs" | "buttons" | "empty" = "empty";
+  homeScreenOption: "indoors-blobs" | "buttons" | "empty" = "buttons";
 
   guideHasNotification: boolean = true;
 
@@ -23,13 +23,6 @@ export class HomePage implements OnInit {
   ngOnInit(): void {}
 
   ionViewWillEnter() {
-    this.settingsService.getUserSetting("USE_BUTTON_HOME_SCREEN").subscribe((useButton) => {
-      if (useButton) {
-        this.homeScreenOption = "buttons";
-      } else {
-        this.homeScreenOption = "indoors-blobs";
-      }
-    });
   }
 
   toggleMenu() {
