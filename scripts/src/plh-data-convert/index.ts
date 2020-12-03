@@ -20,6 +20,7 @@ async function main() {
   fs.ensureDirSync(OUTPUT_FOLDER);
   fs.emptyDirSync(OUTPUT_FOLDER);
   const xlsxFiles = listFilesForConversion(INPUT_FOLDER);
+
   const combined: { json: any; xlsxPath: string }[] = [];
   for (let xlsxPath of xlsxFiles) {
     const json = convertXLSXSheetsToJson(xlsxPath);
@@ -27,7 +28,7 @@ async function main() {
   }
   // merge and collage plh data
   const merged = mergePLHData(combined);
-  const dataByFlowType = groupJsonByKey(merged, "Flow_Type");
+  const dataByFlowType = groupJsonByKey(merged, "flow_type");
   const convertedData = applyDataParsers(dataByFlowType as any);
   // write to output files
   Object.entries(convertedData).forEach(([key, value]) => {
@@ -48,9 +49,9 @@ function applyDataParsers(dataByFlowType: { [type in IFlowType]: IContentFlow[] 
     Conversation: new ConversationParser(),
   };
   const convertedData = {};
+  console.log("keys", Object.keys(dataByFlowType));
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
     if (parsers.hasOwnProperty(key)) {
-      console.log(chalk.gray("converting:", key));
       convertedData[key] = contentFlows.map((flow) => parsers[key].convert(flow));
     } else {
       console.log(chalk.gray("no conversion required:", key));
@@ -66,34 +67,40 @@ function applyDataParsers(dataByFlowType: { [type in IFlowType]: IContentFlow[] 
  * @returns - array of all merged sheets (no grouping or collating)
  */
 function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
-  const merged: { [Flow_Name: string]: IContentFlow } = {};
+  const merged: { [flow_name: string]: IContentFlow } = {};
   const releasedSummary = {};
+  const skippedSummary = {};
+  console.log("merging", jsons.length);
   for (let el of jsons) {
     const { json, xlsxPath } = el;
-    const contentList = json["==Content_List=="] as IContentList[];
+    const contentList = json["==content_list=="] as IContentList[];
     if (contentList) {
       for (const contents of contentList) {
-        const { Flow_Name, status, Flow_Type, Module } = contents;
+        const { flow_name, status, flow_type, Module } = contents;
         // only include flows marked as released in the contents
-        if (status === "released") {
-          releasedSummary[Flow_Name] = { status, Flow_Type, Module };
-          if (json.hasOwnProperty(Flow_Name)) {
-            if (merged.hasOwnProperty(Flow_Name)) {
-              console.log(chalk.yellow("duplicate flow:", Flow_Name));
+        if (flow_name && status === "released") {
+          console.log(flow_name);
+          releasedSummary[flow_name] = { status, flow_type, Module };
+          if (json.hasOwnProperty(flow_name)) {
+            if (merged.hasOwnProperty(flow_name)) {
+              console.log(chalk.yellow("duplicate flow:", flow_name));
             }
-            // console.log(chalk.green("+", Flow_Name));
-            merged[Flow_Name] = { ...contents, data: json[Flow_Name] };
+            // console.log(chalk.green("+", flow_name));
+            merged[flow_name] = { ...contents, data: json[flow_name] };
           } else {
-            console.log(chalk.red("no contents:", Flow_Name, xlsxPath));
+            console.log(chalk.red("No Contents:", flow_name));
           }
         } else {
-          // skip drafts
-          // console.log(chalk.gray("-", Flow_Name));
+          skippedSummary[flow_name] = { status, flow_type, Module };
         }
       }
+    } else {
+      console.log(chalk.red(`No Content List: ${path.basename(xlsxPath)}`));
     }
   }
-  console.log(chalk.yellow("App Data"));
+  console.log(chalk.blue("Skipped"));
+  console.table(skippedSummary);
+  console.log(chalk.blue("App Data"));
   console.table(releasedSummary);
   return Object.values(merged);
 }

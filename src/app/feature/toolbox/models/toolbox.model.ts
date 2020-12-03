@@ -42,9 +42,9 @@ export interface ToolboxExport {
 }
 
 export interface ToolboxTip{
-    "Flow_Type": string,
+    "flow_type": string,
     "Module": string,
-    "Flow_Name": string,
+    "flow_name": string,
     "Title"?: string,
     "data": TipData[]
 }

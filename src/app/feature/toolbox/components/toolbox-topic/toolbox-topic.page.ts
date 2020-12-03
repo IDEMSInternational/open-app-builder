@@ -29,7 +29,7 @@ export class ToolboxTopicPage implements OnInit {
 
   ngOnInit() {}
   onClickFlow(module: ToolboxTip) {
-    this.router.navigate([module.Flow_Name], { relativeTo: this.activatedRoute });
+    this.router.navigate([module.flow_name], { relativeTo: this.activatedRoute });
   }
 
   replaceTitle(title: string) {

@@ -31,7 +31,7 @@ export class ConversationParser extends DefaultParser {
     this.setRowIDs(rows);
     // TODO Also need to consider case of updating an existing flow.
     let flow: RapidProFlowExport.Flow = {
-      name: contentFlow.Flow_Name,
+      name: contentFlow.flow_name,
       uuid: this.generateUUID(),
       // TODO This metadata should possibly be passed in from the "Content list" Excel sheet.
       spec_version: flowSpecVersion,

@@ -2,9 +2,9 @@ import { ToolboxTip} from '../models/toolbox.model'
 
 export const toolboxTips:ToolboxTip[] = [
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "1on1",
-    "Flow_Name": "Fun_Talk1",
+    "flow_name": "Fun_Talk1",
     "data": [
       {
         "Type": "Title",
@@ -32,9 +32,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "1on1",
-    "Flow_Name": "Fun_Do1",
+    "flow_name": "Fun_Do1",
     "data": [
       {
         "Type": "Title",
@@ -70,9 +70,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "Praise",
-    "Flow_Name": "Fun_Talk2",
+    "flow_name": "Fun_Talk2",
     "data": [
       {
         "Type": "Title",
@@ -107,9 +107,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "Praise",
-    "Flow_Name": "Fun_Do2",
+    "flow_name": "Fun_Do2",
     "data": [
       {
         "Type": "Title",
@@ -137,9 +137,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "ONE_ON_ONE_TIME",
-    "Flow_Name": "1on1_Tips",
+    "flow_name": "1on1_Tips",
     "Title": "One-on-One Time Tips",
     "data": [
       {
@@ -213,9 +213,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "ONE_ON_ONE_TIME",
-    "Flow_Name": "1on1_Ideas",
+    "flow_name": "1on1_Ideas",
     "Title": "One-on-One Time Ideas",
     "data": [
       {
@@ -264,9 +264,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
-    "Flow_Name": "Praise_Tips",
+    "flow_name": "Praise_Tips",
     "Title": "Praise Tips",
     "data": [
       {
@@ -319,9 +319,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
-    "Flow_Name": "Praise_Ideas_Teen",
+    "flow_name": "Praise_Ideas_Teen",
     "Title": "Teen Praise Ideas",
     "data": [
       {
@@ -382,9 +382,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
-    "Flow_Name": "Praise_Ideas_Adult",
+    "flow_name": "Praise_Ideas_Adult",
     "Title": "Adult Praise Ideas",
     "data": [
       {
@@ -441,9 +441,9 @@ export const toolboxTips:ToolboxTip[] = [
     ]
   },
   {
-    "Flow_Type": "Tips",
+    "flow_type": "Tips",
     "Module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
-    "Flow_Name": "Praise_Ideas_Self",
+    "flow_name": "Praise_Ideas_Self",
     "Title": "Self-Praise Ideas",
     "data": [
       {

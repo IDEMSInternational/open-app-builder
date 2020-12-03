@@ -11,14 +11,14 @@ import { OpenClose } from "src/app/feature/goals/animations";
   animations: [OpenClose],
 })
 export class ToolboxFlowsPage implements OnInit {
-  Flow_Name: string;
+  flow_name: string;
   flow: ToolboxTip;
   elements: ToolboxElement[];
 
   constructor(private activatedRoute: ActivatedRoute, private toolboxService: ToolboxService) {
     this.activatedRoute.params.subscribe((params) => {
-      this.Flow_Name = params.flow_name;
-      this.toolboxService.getFlows(this.Flow_Name).subscribe((module) => {
+      this.flow_name = params.flow_name;
+      this.toolboxService.getFlows(this.flow_name).subscribe((module) => {
         this.flow = module;
         console.log("flow", this.flow);
         const { elements, title } = this.processFlow(this.flow.data);

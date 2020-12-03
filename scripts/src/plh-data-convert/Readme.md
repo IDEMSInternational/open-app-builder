@@ -11,7 +11,7 @@ The script inside this folder is for converting the app content spreadsheet into
 
 An example of the input spreadsheet can be found here: https://drive.google.com/file/d/1m_XxVqVmHDZ_TL7KOrl9OIlfPVpJM9wO/view?usp=sharing
 
-This input spreadsheet has a Content_List sheet which acts as an index / table of contents which is used to describe the other sheets.
+This input spreadsheet has a content_list sheet which acts as an index / table of contents which is used to describe the other sheets.
 
 The other sheets are of two types
 
