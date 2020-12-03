@@ -23,7 +23,6 @@ async function main() {
   try {
     drive = await authorizeGDrive();
     const { id, name } = await getPLHFolder();
-    console.log(chalk.yellow("checking folders for files"));
     const files = await listGdriveFilesRecursively(id, name);
     fs.writeFileSync(`${LOGS_DIR}/files.json`, JSON.stringify(files, null, 2));
     await downloadGdriveFiles(files);

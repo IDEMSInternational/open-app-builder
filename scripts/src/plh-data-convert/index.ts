@@ -76,10 +76,11 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
     if (contentList) {
       for (const contents of contentList) {
         const { flow_name, status, flow_type, module } = contents;
+        const filename = path.basename(xlsxPath, ".xlsx");
         // only include flows marked as released in the contents
         if (flow_name && status === "released") {
           console.log(flow_name);
-          releasedSummary[flow_name] = { status, flow_type, module };
+          releasedSummary[flow_name] = { status, flow_type, module, filename };
           if (json.hasOwnProperty(flow_name)) {
             if (merged.hasOwnProperty(flow_name)) {
               console.log(chalk.yellow("duplicate flow:", flow_name));
@@ -90,7 +91,7 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
             console.log(chalk.red("No Contents:", flow_name));
           }
         } else {
-          skippedSummary[flow_name] = { status, flow_type, module };
+          skippedSummary[flow_name] = { status, flow_type, module, filename };
         }
       }
     } else {

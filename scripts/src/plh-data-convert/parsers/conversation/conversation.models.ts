@@ -20,10 +20,10 @@ export interface ConversationExcelSheet {
 }
 
 export interface ConversationExcelRow {
-  row_id?: string;
+  row_id?: string | number;
   type: "start_new_flow" | "send_message" | "story_message" | "go_to" | "save_value" | "exit";
-  from?: string;
-  condition?: string;
+  from?: string | number;
+  condition?: string | number;
   condition_var?: string;
   character?: string;
   message_text: string;

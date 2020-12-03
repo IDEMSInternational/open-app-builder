@@ -28,218 +28,217 @@ export class ConversationParser extends DefaultParser {
       triggers: [],
       version,
     };
-    const rows = contentFlow.data;
+    const rows = contentFlow.data as ConversationExcelRow[];
     try {
       this.setRowIDs(rows);
+      // TODO Also need to consider case of updating an existing flow.
+      let flow: RapidProFlowExport.Flow = {
+        name: contentFlow.flow_name,
+        uuid: this.generateUUID(),
+        // TODO This metadata should possibly be passed in from the "Content list" Excel sheet.
+        spec_version: flowSpecVersion,
+        language: flowLanguage,
+        type: flowType,
+        nodes: [],
+        _ui: null,
+        revision: defaultRevision,
+        expire_after_minutes: flowExpireAfterMinutes,
+        metadata: {
+          revision: defaultRevision,
+        },
+        localization: {},
+      };
+      const nodesById: { [nodeId: string]: RapidProFlowExport.Node } = {};
+      for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+        const row = rows[rowIndex];
+        let nodeId = this.generateUUID();
+        row.nodeUUIDForExit = nodeId;
+
+        let actionNode: RapidProFlowExport.Node = {
+          uuid: nodeId,
+          actions: [],
+          exits: [this.createEmptyExit()],
+        };
+        // Additional nodes added for the row e.g. because of a "go_to" type.
+        let additionalNodes: RapidProFlowExport.Node[] = [];
+
+        // This takes care of blank rows which may still be included because they have a row_id.
+        // TODO Should more checks be done if Type is undefined but there may be other contents?
+        if (row.type === undefined) {
+          continue;
+        } else if (row.type === "send_message" || row.type === "story_message") {
+          if (row.message_text === undefined) {
+            throw new Error(
+              "On row " +
+                row.row_id.toString() +
+                ": Message text cannot be blank for Type = send_message."
+            );
+          }
+          let action_text = row.message_text;
+          // App specific properties that will be appended to message_text in a link.
+          let link_text = "https://plh-demo1.idems.international/chat/msg-info?";
+          let add_texts: string[] = [];
+          let attachmentUrls: string[] = [];
+          if (row.type === "story_message") add_texts.push("isStory=true");
+          if (row.character) add_texts.push("character=" + row.character);
+          if (row.choose_multi) add_texts.push("chooseMulti=true");
+          if (row.display_as_tick) add_texts.push("displayAsTick=true");
+          if (row.ticked_by_default) add_texts.push("tickedByDefault=true");
+          if (row.choice_media_display)
+            add_texts.push("choiceMediaDisplay=" + row.choice_media_display);
+          if (add_texts.length > 0) action_text += " " + link_text + add_texts.join("&");
+          actionNode.actions.push({
+            attachments: this.getMediaAttachments(row.media),
+            text: action_text,
+            type: "send_msg",
+            quick_replies: this.getRowChoices(row),
+            uuid: this.generateUUID(),
+          });
+          row._rapidProNode = actionNode;
+          nodesById[nodeId] = actionNode;
+          if (row.save_name) {
+            let resultNode: RapidProFlowExport.Node = {
+              uuid: this.generateUUID(),
+              actions: [],
+              exits: [this.createEmptyExit()],
+              router: {
+                type: "switch",
+                default_category_uuid: null,
+                cases: [],
+                categories: [
+                  {
+                    uuid: this.generateUUID(),
+                    name: "All Responses",
+                    exit_uuid: null,
+                  },
+                ],
+                operand: "@input.text",
+                wait: {
+                  type: "msg",
+                },
+                result_name: row.save_name, // Is this ok to be the same as the variable?
+              },
+            };
+            resultNode.router.default_category_uuid = resultNode.router.categories[0].uuid;
+            resultNode.router.categories[0].exit_uuid = resultNode.exits[0].uuid;
+            additionalNodes.push(resultNode);
+            // The initial node exits to the resultNode
+            actionNode.exits[0].destination_uuid = resultNode.uuid;
+            let saveNode: RapidProFlowExport.Node = {
+              uuid: this.generateUUID(),
+              actions: [
+                {
+                  uuid: this.generateUUID(),
+                  type: "set_contact_field",
+                  field: {
+                    // Can these be the same?
+                    key: row.save_name,
+                    name: row.save_name,
+                  },
+                  value: "@results." + row.save_name,
+                },
+              ],
+              exits: [this.createEmptyExit()],
+            };
+            additionalNodes.push(saveNode);
+            // The initial node exits to the resultNode
+            resultNode.exits[0].destination_uuid = saveNode.uuid;
+            row._rapidProNode = saveNode;
+          }
+        } else if (row.type === "start_new_flow") {
+          actionNode.actions.push({
+            flow: {
+              name: row.message_text,
+              uuid: this.generateUUID(),
+            },
+            type: "enter_flow",
+            uuid: this.generateUUID(),
+          });
+          this.setEnterFlowRouterAndExits(actionNode);
+          row._rapidProNode = actionNode;
+          nodesById[nodeId] = actionNode;
+        } else if (row.type === "go_to") {
+        } else if (row.type === "save_value") {
+          actionNode.actions.push(this.createSaveAction(row.save_name, row.message_text));
+          row._rapidProNode = actionNode;
+          nodesById[nodeId] = actionNode;
+        } else if (row.type === "exit") {
+          actionNode.actions.push(this.createSaveAction(flow.name + "__completed", "true"));
+          row._rapidProNode = actionNode;
+          nodesById[nodeId] = actionNode;
+          if (row.message_text) {
+            let enterFlowNode: RapidProFlowExport.Node = {
+              uuid: this.generateUUID(),
+              actions: [
+                {
+                  flow: {
+                    name: row.message_text,
+                    uuid: this.generateUUID(),
+                  },
+                  type: "enter_flow",
+                  uuid: this.generateUUID(),
+                },
+              ],
+              exits: [this.createEmptyExit()],
+            };
+            // The initial node exits to the newFlowNode
+            additionalNodes.push(enterFlowNode);
+            actionNode.exits[0].destination_uuid = enterFlowNode.uuid;
+            row._rapidProNode = enterFlowNode;
+          }
+        } else {
+          continue;
+          // throw new Error("Unknown Type");
+        }
+
+        // Now add connectivity
+        if (row.condition) {
+          row.condition = `${row.condition}`;
+          this.processRouterRow(row, rows, flow);
+        } else {
+          // If no condition just add as exit to nodes that this row says it comes from.
+          // For a "go_to" row set the exit to the NodUUIDForExit of the row mentioned in message_text.
+          let fromNodes = this.getFromNodes(row, rows);
+          for (let fromNode of fromNodes) {
+            if (row.type === "go_to") {
+              // TODO This is repeated when there is a condition as well so could move to separate function.
+              if (!row.message_text)
+                throw new Error(
+                  "On row " + row.row_id + ": message_text must contain the row to go to."
+                );
+              let messageTextRows = rows.filter((r) => (r.row_id = row.message_text));
+              if (messageTextRows.length === 1) {
+                fromNode.exits[0].destination_uuid = messageTextRows[0].nodeUUIDForExit;
+              } else {
+                throw new Error(
+                  "On row " +
+                    row.row_id +
+                    ": Cannot find row with row_id = " +
+                    row.message_text +
+                    " from message_text column."
+                );
+              }
+            } else {
+              fromNode.exits[0].destination_uuid = nodeId;
+            }
+          }
+        }
+        // Add this after the condition so that the nodes are in a sensible order when importing into Rapid Pro
+        // If Type is "go_to" then there is no node to add.
+        if (row.type !== "go_to") {
+          flow.nodes.push(actionNode);
+        }
+        for (let n of additionalNodes) {
+          flow.nodes.push(n);
+        }
+      }
+      rapidProExportObject.flows.push(flow);
+      return rapidProExportObject;
     } catch (error) {
       console.log(contentFlow);
       console.log(chalk.red(error));
       process.exit(1);
     }
-
-    // TODO Also need to consider case of updating an existing flow.
-    let flow: RapidProFlowExport.Flow = {
-      name: contentFlow.flow_name,
-      uuid: this.generateUUID(),
-      // TODO This metadata should possibly be passed in from the "Content list" Excel sheet.
-      spec_version: flowSpecVersion,
-      language: flowLanguage,
-      type: flowType,
-      nodes: [],
-      _ui: null,
-      revision: defaultRevision,
-      expire_after_minutes: flowExpireAfterMinutes,
-      metadata: {
-        revision: defaultRevision,
-      },
-      localization: {},
-    };
-    const nodesById: { [nodeId: string]: RapidProFlowExport.Node } = {};
-    for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
-      const row = rows[rowIndex];
-      let nodeId = this.generateUUID();
-      row.nodeUUIDForExit = nodeId;
-
-      let actionNode: RapidProFlowExport.Node = {
-        uuid: nodeId,
-        actions: [],
-        exits: [this.createEmptyExit()],
-      };
-      // Additional nodes added for the row e.g. because of a "go_to" type.
-      let additionalNodes: RapidProFlowExport.Node[] = [];
-
-      // This takes care of blank rows which may still be included because they have a row_id.
-      // TODO Should more checks be done if Type is undefined but there may be other contents?
-      if (row.type === undefined) {
-        continue;
-      } else if (row.type === "send_message" || row.type === "story_message") {
-        if (row.message_text === undefined) {
-          throw new Error(
-            "On row " +
-              row.row_id.toString() +
-              ": Message text cannot be blank for Type = send_message."
-          );
-        }
-        let action_text = row.message_text;
-        // App specific properties that will be appended to message_text in a link.
-        let link_text = "https://plh-demo1.idems.international/chat/msg-info?";
-        let add_texts: string[] = [];
-        let attachmentUrls: string[] = [];
-        if (row.type === "story_message") add_texts.push("isStory=true");
-        if (row.character) add_texts.push("character=" + row.character);
-        if (row.choose_multi) add_texts.push("chooseMulti=true");
-        if (row.display_as_tick) add_texts.push("displayAsTick=true");
-        if (row.ticked_by_default) add_texts.push("tickedByDefault=true");
-        if (row.choice_media_display)
-          add_texts.push("choiceMediaDisplay=" + row.choice_media_display);
-        if (add_texts.length > 0) action_text += " " + link_text + add_texts.join("&");
-        actionNode.actions.push({
-          attachments: this.getMediaAttachments(row.media),
-          text: action_text,
-          type: "send_msg",
-          quick_replies: this.getRowChoices(row),
-          uuid: this.generateUUID(),
-        });
-        row._rapidProNode = actionNode;
-        nodesById[nodeId] = actionNode;
-        if (row.save_name) {
-          let resultNode: RapidProFlowExport.Node = {
-            uuid: this.generateUUID(),
-            actions: [],
-            exits: [this.createEmptyExit()],
-            router: {
-              type: "switch",
-              default_category_uuid: null,
-              cases: [],
-              categories: [
-                {
-                  uuid: this.generateUUID(),
-                  name: "All Responses",
-                  exit_uuid: null,
-                },
-              ],
-              operand: "@input.text",
-              wait: {
-                type: "msg",
-              },
-              result_name: row.save_name, // Is this ok to be the same as the variable?
-            },
-          };
-          resultNode.router.default_category_uuid = resultNode.router.categories[0].uuid;
-          resultNode.router.categories[0].exit_uuid = resultNode.exits[0].uuid;
-          additionalNodes.push(resultNode);
-          // The initial node exits to the resultNode
-          actionNode.exits[0].destination_uuid = resultNode.uuid;
-          let saveNode: RapidProFlowExport.Node = {
-            uuid: this.generateUUID(),
-            actions: [
-              {
-                uuid: this.generateUUID(),
-                type: "set_contact_field",
-                field: {
-                  // Can these be the same?
-                  key: row.save_name,
-                  name: row.save_name,
-                },
-                value: "@results." + row.save_name,
-              },
-            ],
-            exits: [this.createEmptyExit()],
-          };
-          additionalNodes.push(saveNode);
-          // The initial node exits to the resultNode
-          resultNode.exits[0].destination_uuid = saveNode.uuid;
-          row._rapidProNode = saveNode;
-        }
-      } else if (row.type === "start_new_flow") {
-        actionNode.actions.push({
-          flow: {
-            name: row.message_text,
-            uuid: this.generateUUID(),
-          },
-          type: "enter_flow",
-          uuid: this.generateUUID(),
-        });
-        this.setEnterFlowRouterAndExits(actionNode);
-        row._rapidProNode = actionNode;
-        nodesById[nodeId] = actionNode;
-      } else if (row.type === "go_to") {
-      } else if (row.type === "save_value") {
-        actionNode.actions.push(this.createSaveAction(row.save_name, row.message_text));
-        row._rapidProNode = actionNode;
-        nodesById[nodeId] = actionNode;
-      } else if (row.type === "exit") {
-        actionNode.actions.push(this.createSaveAction(flow.name + "__completed", "true"));
-        row._rapidProNode = actionNode;
-        nodesById[nodeId] = actionNode;
-        if (row.message_text) {
-          let enterFlowNode: RapidProFlowExport.Node = {
-            uuid: this.generateUUID(),
-            actions: [
-              {
-                flow: {
-                  name: row.message_text,
-                  uuid: this.generateUUID(),
-                },
-                type: "enter_flow",
-                uuid: this.generateUUID(),
-              },
-            ],
-            exits: [this.createEmptyExit()],
-          };
-          // The initial node exits to the newFlowNode
-          additionalNodes.push(enterFlowNode);
-          actionNode.exits[0].destination_uuid = enterFlowNode.uuid;
-          row._rapidProNode = enterFlowNode;
-        }
-      } else {
-        continue;
-        // throw new Error("Unknown Type");
-      }
-
-      // Now add connectivity
-      if (row.condition) {
-        this.processRouterRow(row, rows, flow);
-      } else {
-        // If no condition just add as exit to nodes that this row says it comes from.
-        // For a "go_to" row set the exit to the NodUUIDForExit of the row mentioned in message_text.
-        let fromNodes = this.getFromNodes(row, rows);
-        for (let fromNode of fromNodes) {
-          if (row.type === "go_to") {
-            // TODO This is repeated when there is a condition as well so could move to separate function.
-            if (!row.message_text)
-              throw new Error(
-                "On row " + row.row_id + ": message_text must contain the row to go to."
-              );
-            let messageTextRows = rows.filter((r) => (r.row_id = row.message_text));
-            if (messageTextRows.length === 1) {
-              fromNode.exits[0].destination_uuid = messageTextRows[0].nodeUUIDForExit;
-            } else {
-              throw new Error(
-                "On row " +
-                  row.row_id +
-                  ": Cannot find row with row_id = " +
-                  row.message_text +
-                  " from message_text column."
-              );
-            }
-          } else {
-            fromNode.exits[0].destination_uuid = nodeId;
-          }
-        }
-      }
-      // Add this after the condition so that the nodes are in a sensible order when importing into Rapid Pro
-      // If Type is "go_to" then there is no node to add.
-      if (row.type !== "go_to") {
-        flow.nodes.push(actionNode);
-      }
-      for (let n of additionalNodes) {
-        flow.nodes.push(n);
-      }
-    }
-    rapidProExportObject.flows.push(flow);
-
-    return rapidProExportObject;
   }
 
   // Create default required router with 2 cases/categories and 2 exit for an "enter_flow" node.
