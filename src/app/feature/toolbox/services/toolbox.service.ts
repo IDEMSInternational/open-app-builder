@@ -11,7 +11,7 @@ import {
   ToolboxTopicType,
   ToolboxTip,
 } from "../models/toolbox.model";
-import { toolboxTips } from "../data/Tips";
+import { TIPS } from "src/app/shared/services/data/data.service";
 
 const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
 
@@ -73,22 +73,22 @@ export class ToolboxService {
   }
 
   getTips(): Observable<ToolboxTip[]> {
-    let toolboxTipsData: ToolboxTip[] = toolboxTips;
+    let toolboxTipsData = TIPS as ToolboxTip[];
     console.log(toolboxTipsData);
     return of(toolboxTipsData);
   }
 
   getModules(ModuleName: string): Observable<ToolboxTip[]> {
-    let toolboxTipsData: ToolboxTip[] = toolboxTips;
+    let toolboxTipsData = TIPS as ToolboxTip[];
     let toolboxModules = toolboxTipsData.filter((tip) => {
       return tip.module === ModuleName;
     });
     return of(toolboxModules);
   }
   getFlows(FlowName: string): Observable<ToolboxTip> {
-    let toolboxTipsData: ToolboxTip[] = toolboxTips;
+    let toolboxTipsData = TIPS as ToolboxTip[];
 
-    //using Array.find assuming that they can only be one flow item
+    // using Array.find assuming that they can only be one flow item
     let moduleFlows = toolboxTipsData.find((tip) => {
       return tip.flow_name === FlowName;
     });
