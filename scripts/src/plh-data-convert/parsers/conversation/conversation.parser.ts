@@ -1,5 +1,6 @@
 import { ConversationExcelRow, RapidProFlowExport } from "./conversation.models";
 import { v4 as uuidv4 } from "uuid";
+import chalk from "chalk";
 import { DefaultParser } from "../default/default.parser";
 import { IContentFlow } from "../../types";
 
@@ -28,7 +29,14 @@ export class ConversationParser extends DefaultParser {
       version,
     };
     const rows = contentFlow.data;
-    this.setRowIDs(rows);
+    try {
+      this.setRowIDs(rows);
+    } catch (error) {
+      console.log(contentFlow);
+      console.log(chalk.red(error));
+      process.exit(1);
+    }
+
     // TODO Also need to consider case of updating an existing flow.
     let flow: RapidProFlowExport.Flow = {
       name: contentFlow.flow_name,
@@ -236,7 +244,7 @@ export class ConversationParser extends DefaultParser {
 
   // Create default required router with 2 cases/categories and 2 exit for an "enter_flow" node.
   private setEnterFlowRouterAndExits(node: RapidProFlowExport.Node) {
-    let exits: RapidProFlowExport.exit[] = [
+    let exits: RapidProFlowExport.Exit[] = [
       {
         uuid: this.generateUUID(),
         destination_uuid: null,
@@ -335,7 +343,7 @@ export class ConversationParser extends DefaultParser {
   ): RapidProFlowExport.Node[] {
     const fromNodes = this.getFromNodes(currentRow, rows);
 
-    let fromNodeExits: RapidProFlowExport.exit[] = [];
+    let fromNodeExits: RapidProFlowExport.Exit[] = [];
     for (let fromNode of fromNodes) {
       for (let exit of fromNode.exits) {
         fromNodeExits.push(exit);
@@ -349,7 +357,7 @@ export class ConversationParser extends DefaultParser {
 
   private attachToUnattachedCategories(
     routerNode: RapidProFlowExport.Node,
-    newExit: RapidProFlowExport.exit
+    newExit: RapidProFlowExport.Exit
   ) {
     let routerCategoriesWithoutExits = routerNode.router.cases
       .map((routerCase) => {
@@ -362,8 +370,8 @@ export class ConversationParser extends DefaultParser {
     });
   }
 
-  private createEmptyExit(): RapidProFlowExport.exit {
-    let exit: RapidProFlowExport.exit = {
+  private createEmptyExit(): RapidProFlowExport.Exit {
+    let exit: RapidProFlowExport.Exit = {
       uuid: this.generateUUID(),
       destination_uuid: null,
     };
@@ -527,9 +535,9 @@ export class ConversationParser extends DefaultParser {
 
     fromRows = this.getFromRows(row, rows);
     // If condition_var is given this is operandValue
-    if (row.condition_Var && row.condition_Var.length > 0) {
+    if (row.condition_var && row.condition_var.length > 0) {
       operandType = "@fields";
-      operandValue = row.condition_Var;
+      operandValue = row.condition_var;
       // If the first fromRow has a save_name then the condition is from a saved field.
     } else if (fromRows && fromRows.length > 0 && fromRows[0].save_name) {
       operandType = "@fields";
