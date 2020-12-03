@@ -427,6 +427,7 @@ export class ConversationParser extends DefaultParser {
 
     // If row has a condition then add a new category, case and exit.
     if (row.condition) {
+      row.condition = `${row.condition}`;
       let conds: string[];
       if (row.condition.includes(";")) {
         conds = row.condition.split(";").map((s) => s.trim());

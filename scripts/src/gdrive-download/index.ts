@@ -109,7 +109,7 @@ async function exportGdriveFile(file: IGDriveFileWithFolder) {
       resolve();
     });
     const params = { fileId: file.id, mimeType, alt: "media" };
-    const options: GaxiosOptions = { responseType: "stream", timeout: 15000 };
+    const options: GaxiosOptions = { responseType: "stream", timeout: 30000 };
     // export gsheet/doc to office format
     if (GDRIVE_OFFICE_MAPPING[file.mimeType]) {
       drive.files.export(params, options, (err, res: GaxiosResponse) => {
@@ -141,6 +141,7 @@ async function listGdriveFilesRecursively(
 ) {
   const res = await drive.files.list({
     q: `'${folderId}' in parents and trashed=false`,
+    // TODO - handle case where files exceed pageSize
     pageSize: 1000,
     // list of possible file fields: https://developers.google.com/drive/api/v3/reference/files#resource
     fields:
