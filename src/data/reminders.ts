@@ -3,7 +3,7 @@ export default [
     "flow_type": "reminders",
     "flow_name": "reminders_list",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "id": "reminder_remind_emo_2",
         "repeats": true,

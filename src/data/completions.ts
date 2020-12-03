@@ -3,7 +3,7 @@ export default [
     "flow_type": "completions",
     "flow_name": "completions_list",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "id": "completion_1on1_emo",
         "task_id": "task_1on1_emo"

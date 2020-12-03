@@ -3,7 +3,7 @@ export default [
     "flow_type": "tasks",
     "flow_name": "tasks_list",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "id": "task_1on1_emo",
         "label": "Emotional Check-in",
