@@ -45,20 +45,19 @@ main()
   .then(() => console.log(chalk.green("PLH Data Converted")));
 
 function applyDataParsers(dataByFlowType: { [type in IFlowType]: IContentFlow[] }) {
-  const parsers: { [flowType: string]: DefaultParser } = {
-    Conversation: new ConversationParser(),
+  const parsers: { [flowType in IFlowType]?: DefaultParser } = {
+    conversation: new ConversationParser(),
   };
-  const convertedData = {};
-  console.log("keys", Object.keys(dataByFlowType));
+  console.log(chalk.blue(`Parsers applied to flow_types: ${Object.keys(parsers).join(", ")}`));
+  const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
     if (parsers.hasOwnProperty(key)) {
-      convertedData[key] = contentFlows.map((flow) => parsers[key].convert(flow));
+      parsedData[key] = contentFlows.map((flow) => parsers[key].convert(flow));
     } else {
-      console.log(chalk.gray("no conversion required:", key));
-      convertedData[key] = contentFlows;
+      parsedData[key] = contentFlows;
     }
   });
-  return convertedData;
+  return parsedData;
 }
 
 /**
@@ -76,11 +75,11 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
     const contentList = json["==content_list=="] as IContentList[];
     if (contentList) {
       for (const contents of contentList) {
-        const { flow_name, status, flow_type, Module } = contents;
+        const { flow_name, status, flow_type, module } = contents;
         // only include flows marked as released in the contents
         if (flow_name && status === "released") {
           console.log(flow_name);
-          releasedSummary[flow_name] = { status, flow_type, Module };
+          releasedSummary[flow_name] = { status, flow_type, module };
           if (json.hasOwnProperty(flow_name)) {
             if (merged.hasOwnProperty(flow_name)) {
               console.log(chalk.yellow("duplicate flow:", flow_name));
@@ -91,7 +90,7 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
             console.log(chalk.red("No Contents:", flow_name));
           }
         } else {
-          skippedSummary[flow_name] = { status, flow_type, Module };
+          skippedSummary[flow_name] = { status, flow_type, module };
         }
       }
     } else {

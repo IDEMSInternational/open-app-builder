@@ -2,13 +2,13 @@
 
 export interface IContentList {
   flow_type: IFlowType;
-  Module: string;
+  module: string;
   flow_name: string;
   status: "draft" | "released" | "preview";
   [key: string]: any;
 }
 
-export type IFlowType = "Completions" | "Conversation" | "Goals" | "Reminders" | "Tasks" | "Tips";
+export type IFlowType = "completions" | "conversation" | "goals" | "reminders" | "tasks" | "tips";
 
 /**
  * Content flows are the merged data from content list
