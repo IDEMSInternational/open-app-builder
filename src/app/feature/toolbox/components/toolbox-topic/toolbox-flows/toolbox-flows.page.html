@@ -1,4 +1,4 @@
-<plh-sub-header [title]="flow?.Title"></plh-sub-header>
+<plh-sub-header [title]="flow?.title"></plh-sub-header>
 
 <ion-content>
   <div *ngIf="flow" class="tb-section">
@@ -15,7 +15,7 @@
           <p>{{item.body}}</p>
         </details>
       </div>
-      <div *ngIf="element.type === 'List_item'" class="tb-element list">
+      <div *ngIf="element.type === 'list_item'" class="tb-element list">
         <ul>
           <li><h4>{{element.text}}</h4></li>
         </ul>

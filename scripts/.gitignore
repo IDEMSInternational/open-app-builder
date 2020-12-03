@@ -1,0 +1,3 @@
+# gdrive service account for gdrive download scripts
+config/credentials.json
+logs

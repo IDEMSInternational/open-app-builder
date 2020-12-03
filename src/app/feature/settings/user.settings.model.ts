@@ -1,4 +1,6 @@
-export type UserSettingId = "CHAT_DELAY" | "USE_MODAL_FOR_CHAT_RESPONSES" | "USE_BUTTON_HOME_SCREEN" | "USE_OFFLINE_CHAT";
+export type UserSettingId = "CHAT_DELAY" | "USE_MODAL_FOR_CHAT_RESPONSES" | "USE_BUTTON_HOME_SCREEN" | "USE_OFFLINE_CHAT"
+    | "USE_GDRIVE_CONTENT"
+    | "SHOW_FLOW_NAME";
 
 export interface UserSetting {
     id: UserSettingId,
@@ -6,7 +8,9 @@ export interface UserSetting {
     type: "boolean" | "string" | "number",
     value: string,
     options?: UserSettingOption[]
-    nativeOnly?: boolean
+    nativeOnly?: boolean,
+    devOnly?: boolean,
+    /* Route to go to when button clicked */
 }
 
 export interface UserSettingOption {
@@ -22,16 +26,16 @@ export const BASE_USER_SETTINGS: UserSetting[] = [
         value: "1000",
         options: [
             {
-                name: "Low",
-                value: "1000"
+                name: "Slow",
+                value: "5000"
             },
             {
                 name: "Medium",
                 value: "3000"
             },
             {
-                name: "High",
-                value: "5000"
+                name: "Fast",
+                value: "1000"
             }
         ]
     },
@@ -39,14 +43,23 @@ export const BASE_USER_SETTINGS: UserSetting[] = [
         id: "USE_MODAL_FOR_CHAT_RESPONSES",
         name: "Use Modal For Chat Responses",
         type: "boolean",
-        value: "false"
+        value: "false",
+        devOnly: true,
     },
     {
-        id: "USE_BUTTON_HOME_SCREEN",
-        name: "Use Button Home Screen",
+        id: "USE_GDRIVE_CONTENT",
+        name: "Use Latest GDrive Content",
         type: "boolean",
-        value: "true"
+        value: "false",
+        devOnly: true
     },
+    {
+        id: "SHOW_FLOW_NAME",
+        name: "Show Flow Name",
+        type: "boolean",
+        value: "true",
+        devOnly: true
+    }
     // 2020-11-25 - Online chat disabled here and in settings until tested working
     // {
     //     id: "USE_OFFLINE_CHAT",
@@ -55,4 +68,4 @@ export const BASE_USER_SETTINGS: UserSetting[] = [
     //     value: "true",
     //     nativeOnly: true
     // }
-]
+];

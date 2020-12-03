@@ -12,6 +12,9 @@
         <p>{{debugMsg}}</p>
         <p>{{stringify(messages[messages.length - 1])}}</p>
       </div>
+      <div *ngIf="showFlowName && latestFlowEvent">
+        <p>Flow Name: {{latestFlowEvent?.name}} : {{latestFlowEvent?.status}}</p>
+      </div>
       <div
         *ngFor="let msg of messages; index as i"
         [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'"
@@ -22,8 +25,8 @@
             src="assets/images/chat-characters/Guide_120.png"
           />
           <img
-            *ngIf="msg.character === 'Neighbour'"
-            src="assets/images/chat-characters/Neighbour_120.png"
+            *ngIf="msg.character === 'neighbour'"
+            src="assets/images/chat-characters/neighbour_120.png"
           />
           <img
             *ngIf="msg.character === 'Elder'"
