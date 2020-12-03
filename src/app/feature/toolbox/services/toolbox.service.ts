@@ -3,10 +3,8 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { map } from "rxjs/operators";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { oneOnOneTimeElements } from "../data/one-one-one-time";
 import { toolboxTopicNames } from "../data/toolbox-topic-metadata";
 import {
-  ToolboxElement,
   ToolboxExport,
   ToolboxTopic,
   ToolboxTopicMetadata,
