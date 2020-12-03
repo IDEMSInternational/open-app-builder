@@ -2,492 +2,492 @@ import { ToolboxTip} from '../models/toolbox.model'
 
 export const toolboxTips:ToolboxTip[] = [
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "1on1",
     "flow_name": "Fun_Talk1",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "Just a friendly chat",
-        "Media": "Audio_activity_friendly"
+        "type": "title",
+        "message_text": "Just a friendly chat",
+        "media": "Audio_activity_friendly"
       },
       {
-        "Type": "List_intro"
+        "type": "list_intro"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Have a conversation with your teen about something they like."
+        "type": "list_item",
+        "message_text": "Have a conversation with your teen about something they like."
       },
       {
-        "Type": "List_item",
-        "MessageText": "It can be about anything they choose to talk about: sports, friends, music, celebrities…"
+        "type": "list_item",
+        "message_text": "It can be about anything they choose to talk about: sports, friends, music, celebrities…"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Try to listen to your teen and give them space to talk."
+        "type": "list_item",
+        "message_text": "Try to listen to your teen and give them space to talk."
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "1on1",
     "flow_name": "Fun_Do1",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "Co-chef",
-        "Media": "Audio_activity_chef"
+        "type": "title",
+        "message_text": "Co-chef",
+        "media": "Audio_activity_chef"
       },
       {
-        "Type": "List_intro"
+        "type": "list_intro"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Ask your teen what kind of meal they would like to eat."
+        "type": "list_item",
+        "message_text": "Ask your teen what kind of meal they would like to eat."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Prepare it together! The first time, you may need to guide them."
+        "type": "list_item",
+        "message_text": "Prepare it together! The first time, you may need to guide them."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Once your teen knows how to prepare the meal, let them take the lead and follow their instructions."
+        "type": "list_item",
+        "message_text": "Once your teen knows how to prepare the meal, let them take the lead and follow their instructions."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Let each child and teen in the house have a turn at being the head chef."
+        "type": "list_item",
+        "message_text": "Let each child and teen in the house have a turn at being the head chef."
       },
       {
-        "Type": "List_item",
-        "MessageText": "You can even help them make a budget for ingredients!"
+        "type": "list_item",
+        "message_text": "You can even help them make a budget for ingredients!"
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "Praise",
     "flow_name": "Fun_Talk2",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "At the End of the Day"
+        "type": "title",
+        "message_text": "At the End of the Day"
       },
       {
-        "Type": "List_intro"
+        "type": "list_intro"
       },
       {
-        "Type": "List_item",
-        "MessageText": "At the end of each day, take a minute to think about the day."
+        "type": "list_item",
+        "message_text": "At the end of each day, take a minute to think about the day."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Talk your child about one positive or fun thing they did."
+        "type": "list_item",
+        "message_text": "Talk your child about one positive or fun thing they did."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Praise yourself for one thing you did well today."
+        "type": "list_item",
+        "message_text": "Praise yourself for one thing you did well today."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Think of one thing that you are grateful for."
+        "type": "list_item",
+        "message_text": "Think of one thing that you are grateful for."
       },
       {
-        "Type": "List_item",
-        "MessageText": "You are a star!"
+        "type": "list_item",
+        "message_text": "You are a star!"
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "Praise",
     "flow_name": "Fun_Do2",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "What's new?",
-        "Media": "Audio_activity_chef"
+        "type": "title",
+        "message_text": "What's new?",
+        "media": "Audio_activity_chef"
       },
       {
-        "Type": "List_intro"
+        "type": "list_intro"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Think of a new skill you could learn together with your teen. For example, keeping a ball in the air or your foot, juggling, making soup?"
+        "type": "list_item",
+        "message_text": "Think of a new skill you could learn together with your teen. For example, keeping a ball in the air or your foot, juggling, making soup?"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Take turns in trying the new skill out."
+        "type": "list_item",
+        "message_text": "Take turns in trying the new skill out."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Make sure to praise each other, and try to learn and play together!"
+        "type": "list_item",
+        "message_text": "Make sure to praise each other, and try to learn and play together!"
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "ONE_ON_ONE_TIME",
     "flow_name": "1on1_Tips",
-    "Title": "One-on-One Time Tips",
+    "title": "One-on-One Time Tips",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "One-on-One Time Tips"
+        "type": "title",
+        "message_text": "One-on-One Time Tips"
       },
       {
-        "Type": "Text",
-        "MessageText": "When we have difficult relationships with our teenagers, we spend a lot of time disciplining or complaining about them."
+        "type": "text",
+        "message_text": "When we have difficult relationships with our teenagers, we spend a lot of time disciplining or complaining about them."
       },
       {
-        "Type": "Core_tip",
-        "MessageText": "One-on-One Time helps build a positive, trusting relationship. When you really show interest in your teen, you make them feel valued and appreciated."
+        "type": "core_tip",
+        "message_text": "One-on-One Time helps build a positive, trusting relationship. When you really show interest in your teen, you make them feel valued and appreciated."
       },
       {
-        "Type": "List_intro",
-        "MessageText": "Here are 6 tips to make One-on-One Time a positive experience for you and your teen:",
-        "Media": "Audio_Tips_1on1"
+        "type": "list_intro",
+        "message_text": "Here are 6 tips to make One-on-One Time a positive experience for you and your teen:",
+        "media": "Audio_Tips_1on1"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 1. Do it every day"
+        "type": "list_item",
+        "message_text": "Step 1. Do it every day"
       },
       {
-        "Type": "Text",
-        "MessageText": "Set aside a time each day when you and our teen will not be interrupted and when your teen does not have something else they want to do. Switch off television and phones so you will not be interrupted."
+        "type": "text",
+        "message_text": "Set aside a time each day when you and our teen will not be interrupted and when your teen does not have something else they want to do. Switch off television and phones so you will not be interrupted."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 2. Let your teen choose the activity"
+        "type": "list_item",
+        "message_text": "Step 2. Let your teen choose the activity"
       },
       {
-        "Type": "Text",
-        "MessageText": "Tell your teen that you would like to spend some time with them and that they can choose what to do or talk about. Your teen might think this is weird at first, but will come to enjoy having this dedicated time with you!"
+        "type": "text",
+        "message_text": "Tell your teen that you would like to spend some time with them and that they can choose what to do or talk about. Your teen might think this is weird at first, but will come to enjoy having this dedicated time with you!"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 3. Follow your teen's lead"
+        "type": "list_item",
+        "message_text": "Step 3. Follow your teen's lead"
       },
       {
-        "Type": "Text",
-        "MessageText": "Remember this is your teen's activity. Accept their suggestions, show interest, and say something nice."
+        "type": "text",
+        "message_text": "Remember this is your teen's activity. Accept their suggestions, show interest, and say something nice."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 4. Give your teen all of your attention"
+        "type": "list_item",
+        "message_text": "Step 4. Give your teen all of your attention"
       },
       {
-        "Type": "Text",
-        "MessageText": "Look at your teen. Nodding or saying \"I see\" shows you are really paying attention. Accept what they are saying without judging them."
+        "type": "text",
+        "message_text": "Look at your teen. Nodding or saying \"I see\" shows you are really paying attention. Accept what they are saying without judging them."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 5. Show your teen you are really listening"
+        "type": "list_item",
+        "message_text": "Step 5. Show your teen you are really listening"
       },
       {
-        "Type": "Text",
-        "MessageText": "To make them feel supported, you can even try rephrasing what they said: \"Yeah, I see that you find that difficult/fun/confusing/exciting.\""
+        "type": "text",
+        "message_text": "To make them feel supported, you can even try rephrasing what they said: \"Yeah, I see that you find that difficult/fun/confusing/exciting.\""
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 6. Have fun!"
+        "type": "list_item",
+        "message_text": "Step 6. Have fun!"
       },
       {
-        "Type": "Text",
-        "MessageText": "One-on-One Time with your teen can be fun for you, too! It might even make you feel less stressed."
+        "type": "text",
+        "message_text": "One-on-One Time with your teen can be fun for you, too! It might even make you feel less stressed."
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "ONE_ON_ONE_TIME",
     "flow_name": "1on1_Ideas",
-    "Title": "One-on-One Time Ideas",
+    "title": "One-on-One Time Ideas",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "One-on-One Time Ideas"
+        "type": "title",
+        "message_text": "One-on-One Time Ideas"
       },
       {
-        "Type": "List_intro",
-        "MessageText": "Here are some ideas for spending one-on-one time with your teen:"
+        "type": "list_intro",
+        "message_text": "Here are some ideas for spending one-on-one time with your teen:"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Prepare dinner"
+        "type": "list_item",
+        "message_text": "Prepare dinner"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Eat a meal together"
+        "type": "list_item",
+        "message_text": "Eat a meal together"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Have tea after school"
+        "type": "list_item",
+        "message_text": "Have tea after school"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Watch a TV show"
+        "type": "list_item",
+        "message_text": "Watch a TV show"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Review homework"
+        "type": "list_item",
+        "message_text": "Review homework"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Walk to school/shop"
+        "type": "list_item",
+        "message_text": "Walk to school/shop"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Chat before bedtime"
+        "type": "list_item",
+        "message_text": "Chat before bedtime"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Play a game/sport"
+        "type": "list_item",
+        "message_text": "Play a game/sport"
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "flow_name": "Praise_Tips",
-    "Title": "Praise Tips",
+    "title": "Praise Tips",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "Praise Tips",
+        "type": "title",
+        "message_text": "Praise Tips",
         "Comment/suggestion/visual": "Image of teen sweeping, parent encouraging them  \n(hand on shoulder/high five)"
       },
       {
-        "Type": "Text",
-        "MessageText": "Praise your children when they are behaving well! They may not show it but you'll see them doing that good behaviour again…\n"
+        "type": "text",
+        "message_text": "Praise your children when they are behaving well! They may not show it but you'll see them doing that good behaviour again…\n"
       },
       {
-        "Type": "Text",
-        "MessageText": "Praise works for our children, too. When you bring more attention to positive behaviour, they are likely to do it more often. They also will feel good about themselves!"
+        "type": "text",
+        "message_text": "Praise works for our children, too. When you bring more attention to positive behaviour, they are likely to do it more often. They also will feel good about themselves!"
       },
       {
-        "Type": "List_intro"
+        "type": "list_intro"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 1. Praise your teenager for something they have done well"
+        "type": "list_item",
+        "message_text": "Step 1. Praise your teenager for something they have done well"
       },
       {
-        "Type": "Text",
-        "MessageText": "They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care."
+        "type": "text",
+        "message_text": "They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 2. Praise the behaviour"
+        "type": "list_item",
+        "message_text": "Step 2. Praise the behaviour"
       },
       {
-        "Type": "Text",
-        "MessageText": "Use words to describe the behaviour that you are praising. Say \"Well done for finishing all your chores, Sam\", instead of \"Good job\"."
+        "type": "text",
+        "message_text": "Use words to describe the behaviour that you are praising. Say \"Well done for finishing all your chores, Sam\", instead of \"Good job\"."
       },
       {
-        "Type": "List_item",
-        "MessageText": "Step 3. Praise with enthusiasm"
+        "type": "list_item",
+        "message_text": "Step 3. Praise with enthusiasm"
       },
       {
-        "Type": "Text",
-        "MessageText": "Really mean it when you say it!"
+        "type": "text",
+        "message_text": "Really mean it when you say it!"
       },
       {
-        "Type": "Text",
-        "MessageText": "Try to find 3 things that you can praise your children for every day. \nYou can also praise other adults in your household, too. Notice how they respond!"
+        "type": "text",
+        "message_text": "Try to find 3 things that you can praise your children for every day. \nYou can also praise other adults in your household, too. Notice how they respond!"
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "flow_name": "Praise_Ideas_Teen",
-    "Title": "Teen Praise Ideas",
+    "title": "Teen Praise Ideas",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "Teen Praise Ideas"
+        "type": "title",
+        "message_text": "Teen Praise Ideas"
       },
       {
-        "Type": "List_intro",
-        "MessageText": "Here are some ideas for praising your teen:"
+        "type": "list_intro",
+        "message_text": "Here are some ideas for praising your teen:"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Making their bed"
+        "type": "list_item",
+        "message_text": "Making their bed"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Cleaning their room "
+        "type": "list_item",
+        "message_text": "Cleaning their room "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Helping clean up after school "
+        "type": "list_item",
+        "message_text": "Helping clean up after school "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Greeting other family members "
+        "type": "list_item",
+        "message_text": "Greeting other family members "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Looking after siblings "
+        "type": "list_item",
+        "message_text": "Looking after siblings "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Coming home in time "
+        "type": "list_item",
+        "message_text": "Coming home in time "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Showing thoughtfulness/respect "
+        "type": "list_item",
+        "message_text": "Showing thoughtfulness/respect "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Using 'please' and 'thank you' "
+        "type": "list_item",
+        "message_text": "Using 'please' and 'thank you' "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Getting ready for school in time "
+        "type": "list_item",
+        "message_text": "Getting ready for school in time "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Doing chores or schoolwork  "
+        "type": "list_item",
+        "message_text": "Doing chores or schoolwork  "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Getting through mealtime peacefully "
+        "type": "list_item",
+        "message_text": "Getting through mealtime peacefully "
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "flow_name": "Praise_Ideas_Adult",
-    "Title": "Adult Praise Ideas",
+    "title": "Adult Praise Ideas",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "Adult Praise Ideas"
+        "type": "title",
+        "message_text": "Adult Praise Ideas"
       },
       {
-        "Type": "List_intro",
-        "MessageText": "Here are some ideas for praising another adult in the household: "
+        "type": "list_intro",
+        "message_text": "Here are some ideas for praising another adult in the household: "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Cooking for the family "
+        "type": "list_item",
+        "message_text": "Cooking for the family "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Helping the kids with school work"
+        "type": "list_item",
+        "message_text": "Helping the kids with school work"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Making money for the family "
+        "type": "list_item",
+        "message_text": "Making money for the family "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Cleaning the house "
+        "type": "list_item",
+        "message_text": "Cleaning the house "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Spending time with me or the kids"
+        "type": "list_item",
+        "message_text": "Spending time with me or the kids"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Looking after me when I am sick"
+        "type": "list_item",
+        "message_text": "Looking after me when I am sick"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Ensuring we have enough food"
+        "type": "list_item",
+        "message_text": "Ensuring we have enough food"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Listening to me"
+        "type": "list_item",
+        "message_text": "Listening to me"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Having a chat together"
+        "type": "list_item",
+        "message_text": "Having a chat together"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Saying nice things about me"
+        "type": "list_item",
+        "message_text": "Saying nice things about me"
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   },
   {
-    "flow_type": "Tips",
+    "flow_type": "tips",
     "module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
     "flow_name": "Praise_Ideas_Self",
-    "Title": "Self-Praise Ideas",
+    "title": "Self-Praise Ideas",
     "data": [
       {
-        "Type": "Title",
-        "MessageText": "Self-Praise Ideas"
+        "type": "title",
+        "message_text": "Self-Praise Ideas"
       },
       {
-        "Type": "List_intro",
-        "MessageText": "Here are some ideas for praising yourself:"
+        "type": "list_intro",
+        "message_text": "Here are some ideas for praising yourself:"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Cooking for the family "
+        "type": "list_item",
+        "message_text": "Cooking for the family "
       },
       {
-        "Type": "List_item",
-        "MessageText": "Helping the kids with school work"
+        "type": "list_item",
+        "message_text": "Helping the kids with school work"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Making money for the family"
+        "type": "list_item",
+        "message_text": "Making money for the family"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Cleaning the house"
+        "type": "list_item",
+        "message_text": "Cleaning the house"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Spending time with the kids"
+        "type": "list_item",
+        "message_text": "Spending time with the kids"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Ensuring we have enough food"
+        "type": "list_item",
+        "message_text": "Ensuring we have enough food"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Listening to another adult"
+        "type": "list_item",
+        "message_text": "Listening to another adult"
       },
       {
-        "Type": "List_item",
-        "MessageText": "Giving a compliment to someone"
+        "type": "list_item",
+        "message_text": "Giving a compliment to someone"
       },
       {
-        "Type": "End_list"
+        "type": "end_list"
       }
     ]
   }

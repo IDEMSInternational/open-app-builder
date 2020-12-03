@@ -4247,7 +4247,7 @@
           "actions": [
             {
               "flow": {
-                "name": "Toolbox_1on1_Tips",
+                "name": "toolbox_1on1_Tips",
                 "uuid": "ffa844f5-ea2e-4615-bde5-a9295cd20ad7"
               },
               "type": "enter_flow",
@@ -4425,7 +4425,7 @@
       "metadata": {
         "revision": 0
       },
-      "name": "Toolbox_1on1_Tips",
+      "name": "toolbox_1on1_Tips",
       "nodes": [
         {
           "actions": [
@@ -4936,7 +4936,7 @@
       "metadata": {
         "revision": 0
       },
-      "name": "CharacterNames",
+      "name": "character_names",
       "nodes": [
         {
           "actions": [
@@ -5140,7 +5140,7 @@
       "metadata": {
         "revision": 0
       },
-      "name": "Toolbox_Praise_Tips",
+      "name": "toolbox_Praise_Tips",
       "nodes": [
         {
           "actions": [
@@ -5334,7 +5334,7 @@
           "actions": [
             {
               "flow": {
-                "name": "CharacterNames",
+                "name": "character_names",
                 "uuid": "a3a741c8-6e66-45dd-93d5-4e218482105e"
               },
               "type": "enter_flow",
@@ -9887,7 +9887,7 @@
           "actions": [
             {
               "flow": {
-                "name": "Toolbox_1on1_Tips",
+                "name": "toolbox_1on1_Tips",
                 "uuid": "ffa844f5-ea2e-4615-bde5-a9295cd20ad7"
               },
               "type": "enter_flow",
@@ -14432,7 +14432,7 @@
             {
               "attachments": [],
               "quick_replies": [],
-              "text": "Hi @fields.guide, good to see you! https://plh-demo1.idems.international/chat/msg-info?character=Neighbour",
+              "text": "Hi @fields.guide, good to see you! https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
               "type": "send_msg",
               "uuid": "1154fecb-95b7-4417-9c06-88e76855eab7"
             }
@@ -14452,7 +14452,7 @@
               "quick_replies": [
                 "Let me hear your story"
               ],
-              "text": "Sometimes I struggle with my teens. But the other day, they surprised me: They were actually helping each other! Let me tell you: https://plh-demo1.idems.international/chat/msg-info?character=Neighbour",
+              "text": "Sometimes I struggle with my teens. But the other day, they surprised me: They were actually helping each other! Let me tell you: https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
               "type": "send_msg",
               "uuid": "f49f6155-2767-4b81-a7da-2ef39fde2b45"
             }
@@ -14784,7 +14784,7 @@
                 "moderate smile",
                 "big smile"
               ],
-              "text": "That's great right? How do you think what I said  made both my daughters feel?  https://plh-demo1.idems.international/chat/msg-info?character=Neighbour",
+              "text": "That's great right? How do you think what I said  made both my daughters feel?  https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
               "type": "send_msg",
               "uuid": "e95b257a-3526-4be4-8f1b-665b44cacaf4"
             }
@@ -14854,7 +14854,7 @@
                 "To make them feel good",
                 "To make me feel good"
               ],
-              "text": "Why do you think I told them that I appreciated \nwhat they were doing? https://plh-demo1.idems.international/chat/msg-info?character=Neighbour&chooseMulti=true",
+              "text": "Why do you think I told them that I appreciated \nwhat they were doing? https://plh-demo1.idems.international/chat/msg-info?character=neighbour&chooseMulti=true",
               "type": "send_msg",
               "uuid": "7ec40fdc-6736-4b23-a4a7-3b08ba01d3e8"
             }
@@ -14919,7 +14919,7 @@
             {
               "attachments": [],
               "quick_replies": [],
-              "text": "All of those things are true! When my daughters feel happy, I feel happy. And I got my work done. The same can work for you! https://plh-demo1.idems.international/chat/msg-info?character=Neighbour",
+              "text": "All of those things are true! When my daughters feel happy, I feel happy. And I got my work done. The same can work for you! https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
               "type": "send_msg",
               "uuid": "546649a9-9ecd-4a68-b37e-cd4e03deabad"
             }
@@ -14940,7 +14940,7 @@
                 "Take me to Tips",
                 "Take me to Homescreen"
               ],
-              "text": "Let me break it down for you in 3 easy steps! \n https://plh-demo1.idems.international/chat/msg-info?character=Neighbour",
+              "text": "Let me break it down for you in 3 easy steps! \n https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
               "type": "send_msg",
               "uuid": "6e83bb18-cfbd-465c-8dc6-34aa98270e66"
             }
@@ -15018,7 +15018,7 @@
           "actions": [
             {
               "flow": {
-                "name": "Toolbox_Praise_Tips",
+                "name": "toolbox_Praise_Tips",
                 "uuid": "b309d4ed-b3e9-4748-96dc-95b7168fad8b"
               },
               "type": "enter_flow",
@@ -17522,7 +17522,7 @@
               "operand": {
                 "id": "guide",
                 "type": "field",
-                "name": "Guide"
+                "name": "guide"
               },
               "cases": {}
             }
@@ -17910,7 +17910,7 @@
               "type": "set_contact_field",
               "field": {
                 "key": "guide",
-                "name": "Guide"
+                "name": "guide"
               },
               "value": "@results.result_3"
             }
