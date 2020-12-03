@@ -3,7 +3,7 @@ export default [
     "flow_type": "goals",
     "flow_name": "goals_list",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "id": "goal_1on1_mdule",
         "label": "Complete One-on-One Time Module",

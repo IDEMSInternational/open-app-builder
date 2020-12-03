@@ -11,27 +11,33 @@ import { ArrayToChunks } from "../utils/file-utils";
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 const GOOGLE_DRIVE_TARGET_FOLDER = "PLH Teens app Excel Sheets";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
+const CACHE_FOLDER = path.join(__dirname, "cache");
+const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
+// prepare folders
 fs.ensureDirSync(OUTPUT_FOLDER);
+fs.ensureDirSync(CACHE_FOLDER);
+fs.copySync(OUTPUT_FOLDER, CACHE_FOLDER, { overwrite: true });
+fs.ensureDirSync(LOGS_DIR);
 // global vars
 let drive: drive_v3.Drive;
-// logging
-const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
-fs.ensureDirSync(LOGS_DIR);
 
 async function main() {
   console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
     const { id, name } = await getPLHFolder();
+    console.log(chalk.white("Checking folders for files"));
     const files = await listGdriveFilesRecursively(id, name);
     fs.writeFileSync(`${LOGS_DIR}/files.json`, JSON.stringify(files, null, 2));
+    console.log(chalk.white("Downloading files"));
     await downloadGdriveFiles(files);
+    console.log(chalk.green("Gdrive data downloaded"));
   } catch (ex) {
     console.error("GDrive download error", ex);
     process.exit(1);
   }
 }
-main().then(() => console.log(chalk.green("Gdrive data downloaded")));
+main();
 
 /**
  * Lists the names and IDs primary PLH folder
@@ -78,34 +84,55 @@ async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
 async function exportGdriveFile(file: IGDriveFileWithFolder) {
   // setup output folders, paths, and variables
   const { folderPath, modifiedTime } = file;
-  const outputFolder = `${OUTPUT_FOLDER}/${folderPath}`;
-  fs.ensureDirSync(outputFolder);
-  let outputPath = `${outputFolder}/${file.name}`;
+  let filepath = `${folderPath}/${file.name}`;
+  // assign correct file extension if exporting
   if (GDRIVE_OFFICE_MAPPING[file.mimeType]) {
-    outputPath += `.${MIMETYPE_EXTENSIONS[file.mimeType]}`;
+    filepath += `.${MIMETYPE_EXTENSIONS[file.mimeType]}`;
   }
+  const outputPath = `${OUTPUT_FOLDER}/${filepath}`;
+  fs.ensureDirSync(path.dirname(outputPath));
+
   // run a regex test for anything ending .abc(d)
   // gdrive keeps duplicate open office formats of gsheets without extension
   // if uploaded as excel files, so these will be omitted (duplicate of converted export)
   const hasExtension = /\.([a-z0-9]){3,4}$/gi.test(outputPath);
   if (!hasExtension) {
-    console.log(chalk.gray(`  ${folderPath}/${file.name}`));
     return;
   }
+
+  // Check if file already exists in previous cache folder and copy if unchanged
+  // (md5hash/filesizes not supported for gsheets so can't use)
+  const cachePath = `${CACHE_FOLDER}/${filepath}`;
+  if (fs.existsSync(cachePath)) {
+    const localModified = fs.statSync(cachePath).mtime.toISOString();
+    if (modifiedTime === localModified) {
+      // Unchanged file (copy and return)
+      console.log(chalk.gray(`[U] ${filepath}`));
+      fs.copyFileSync(`${CACHE_FOLDER}/${filepath}`, outputPath);
+      return;
+    } else {
+      // Modified file (continue)
+      console.log(chalk.cyan(`[M] ${filepath}`));
+    }
+  } else {
+    // New file (continue)
+    console.log(chalk.blue(`[N] ${filepath}`));
+  }
+
   // TODO - check if file already exists and modified date
 
   // Handle the export/download
   return new Promise<void>((resolve, reject) => {
     fs.createFileSync(outputPath);
     const dest = fs.createWriteStream(outputPath);
-    const mTime = new Date(modifiedTime);
+
     // assign mimetype for conversion from google file formats to office format
     const mimeType = GDRIVE_OFFICE_MAPPING[file.mimeType] || file.mimeType;
     dest.on("close", () => {
       // assign the same modified time to the file as google drive file
       // for use in future comparisons
+      const mTime = new Date(modifiedTime);
       fs.utimesSync(outputPath, mTime, mTime);
-      console.log(chalk.blue(`+ ${folderPath}/${file.name}`));
       resolve();
     });
     const params = { fileId: file.id, mimeType, alt: "media" };
