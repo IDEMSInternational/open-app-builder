@@ -138,7 +138,7 @@ export default [
       {
         "type": "title",
         "message_text": "Praise Tips",
-        "comments": "Image of teen sweeping, parent encouraging them  \n(hand on shoulder/high five)"
+        "comment": "Image of teen sweeping, parent encouraging them  \n(hand on shoulder/high five)"
       },
       {
         "type": "text",
