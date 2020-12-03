@@ -10,7 +10,7 @@ import { spawnSync } from "child_process";
 const SCRIPT_NAMES = [
   {
     value: "sync-plh-content",
-    name: "Sync PLH GDrive Content",
+    name: "Sync Latest GDrive Content to App",
   },
   {
     value: "version",

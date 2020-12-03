@@ -2,7 +2,6 @@ import * as fs from "fs-extra";
 import path from "path";
 import { drive_v3 } from "googleapis";
 import { GaxiosResponse, GaxiosOptions } from "gaxios";
-import logUpdate from "log-update";
 import chalk from "chalk";
 import { authorizeGDrive } from "./auth";
 import { GDRIVE_OFFICE_MAPPING, MIMETYPE_EXTENSIONS } from "./mimetypes";
@@ -20,6 +19,7 @@ const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
 fs.ensureDirSync(LOGS_DIR);
 
 async function main() {
+  console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
     const { id, name } = await getPLHFolder();
@@ -33,7 +33,7 @@ async function main() {
     process.exit(1);
   }
 }
-main();
+main().then(() => console.log(chalk.green("Gdrive data downloaded")));
 
 /**
  * Lists the names and IDs primary PLH folder
