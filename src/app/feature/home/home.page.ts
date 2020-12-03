@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MenuController } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SettingsService } from '../settings/settings.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: "plh-home",
@@ -17,10 +18,16 @@ export class HomePage implements OnInit {
     private menuController: MenuController,
     private router: Router,
     private route: ActivatedRoute,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private localStorageService: LocalStorageService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.localStorageService.getBoolean(LocalStorageService.OPENED_APP_BEFORE)) {
+      this.localStorageService.setBoolean(LocalStorageService.OPENED_APP_BEFORE, true);
+      this.router.navigateByUrl("/chat/flow/first_app_opening");
+    }
+  }
 
   ionViewWillEnter() {
   }
