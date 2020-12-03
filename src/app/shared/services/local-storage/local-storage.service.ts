@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
 
+  static OPENED_APP_BEFORE = "OPENED_APP_BEFORE";
+
   constructor() { }
 
   getString(key: string): string {
