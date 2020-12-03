@@ -1,8 +1,7 @@
-import { ConversationExcelRow, RapidProFlowExport } from "./conversation.models";
 import { v4 as uuidv4 } from "uuid";
 import chalk from "chalk";
 import { DefaultParser } from "../default/default.parser";
-import { IContentFlow } from "../../types";
+import { FlowTypes, RapidProFlowExport } from "../../../../types";
 
 // Default settings
 const version: string = "13";
@@ -18,7 +17,7 @@ export class ConversationParser extends DefaultParser {
     return uuidv4();
   }
 
-  public convert(contentFlow: IContentFlow): RapidProFlowExport.RootObject {
+  public convert(conversation: FlowTypes.Conversation): RapidProFlowExport.RootObject {
     const rapidProExportObject: RapidProFlowExport.RootObject = {
       campaigns: [],
       fields: [],
@@ -28,12 +27,12 @@ export class ConversationParser extends DefaultParser {
       triggers: [],
       version,
     };
-    const rows = contentFlow.data as ConversationExcelRow[];
+    const rows = conversation.rows;
     try {
       this.setRowIDs(rows);
       // TODO Also need to consider case of updating an existing flow.
       let flow: RapidProFlowExport.Flow = {
-        name: contentFlow.flow_name,
+        name: conversation.flow_name,
         uuid: this.generateUUID(),
         // TODO This metadata should possibly be passed in from the "Content list" Excel sheet.
         spec_version: flowSpecVersion,
@@ -235,7 +234,7 @@ export class ConversationParser extends DefaultParser {
       rapidProExportObject.flows.push(flow);
       return rapidProExportObject;
     } catch (error) {
-      console.log(contentFlow);
+      console.log(conversation);
       console.log(chalk.red(error));
       process.exit(1);
     }
@@ -290,7 +289,7 @@ export class ConversationParser extends DefaultParser {
     node.exits = exits;
   }
 
-  private setRowIDs(rows: ConversationExcelRow[]) {
+  private setRowIDs(rows: FlowTypes.ConversationRow[]) {
     let nullRows = rows.filter((row) => row.row_id === undefined);
 
     if (nullRows.length === rows.length) {
@@ -308,7 +307,7 @@ export class ConversationParser extends DefaultParser {
     }
   }
 
-  private getFromRowIndices(row: ConversationExcelRow): string[] {
+  private getFromRowIndices(row: FlowTypes.ConversationRow): string[] {
     if (row.from) {
       return row.from
         .toString()
@@ -319,16 +318,16 @@ export class ConversationParser extends DefaultParser {
   }
 
   private getFromRows(
-    row: ConversationExcelRow,
-    rows: ConversationExcelRow[]
-  ): ConversationExcelRow[] {
+    row: FlowTypes.ConversationRow,
+    rows: FlowTypes.ConversationRow[]
+  ): FlowTypes.ConversationRow[] {
     let ind = this.getFromRowIndices(row);
     return rows.filter((curr_row) => ind.includes(curr_row.row_id.toString()));
   }
 
   private getFromNodes(
-    row: ConversationExcelRow,
-    rows: ConversationExcelRow[]
+    row: FlowTypes.ConversationRow,
+    rows: FlowTypes.ConversationRow[]
   ): RapidProFlowExport.Node[] {
     return this.getFromRows(row, rows)
       .map((row) => row._rapidProNode)
@@ -336,8 +335,8 @@ export class ConversationParser extends DefaultParser {
   }
 
   private getRoutersFromRow(
-    currentRow: ConversationExcelRow,
-    rows: ConversationExcelRow[],
+    currentRow: FlowTypes.ConversationRow,
+    rows: FlowTypes.ConversationRow[],
     nodesById: { [nodeId: string]: RapidProFlowExport.Node }
   ): RapidProFlowExport.Node[] {
     const fromNodes = this.getFromNodes(currentRow, rows);
@@ -414,8 +413,8 @@ export class ConversationParser extends DefaultParser {
   // Adds a condition to a router node based on the condition information in a row.
   private addConditionToRouterNode(
     routerNode: RapidProFlowExport.Node,
-    row: ConversationExcelRow,
-    rows: ConversationExcelRow[],
+    row: FlowTypes.ConversationRow,
+    rows: FlowTypes.ConversationRow[],
     // TODO This could be more global?
     defaultType: RapidProFlowExport.RouterCaseType = "has_only_phrase"
   ) {
@@ -521,12 +520,12 @@ export class ConversationParser extends DefaultParser {
   }
 
   private processRouterRow(
-    row: ConversationExcelRow,
-    rows: ConversationExcelRow[],
+    row: FlowTypes.ConversationRow,
+    rows: FlowTypes.ConversationRow[],
     flow: RapidProFlowExport.Flow
   ) {
     let fromNodes = this.getFromNodes(row, rows);
-    let fromRows: ConversationExcelRow[];
+    let fromRows: FlowTypes.ConversationRow[];
     let routerNode: RapidProFlowExport.Node;
     let newRouterNode: RapidProFlowExport.Node;
     let first: boolean = true;
@@ -604,7 +603,7 @@ export class ConversationParser extends DefaultParser {
     }
   }
 
-  private getRowChoices(row: ConversationExcelRow): string[] {
+  private getRowChoices(row: FlowTypes.ConversationRow): string[] {
     let quick_replies: string[] = [];
     for (let i = 1; i <= 12; i++) {
       if (row["choice_" + i] !== undefined) {
