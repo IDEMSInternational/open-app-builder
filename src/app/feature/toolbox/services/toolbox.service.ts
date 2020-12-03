@@ -31,30 +31,6 @@ export class ToolboxService {
     return of(toolboxTopicMetadatas);
   }
 
-  public getTopic(type: ToolboxTopicType): Observable<ToolboxTopic> {
-    let topicMetadata: ToolboxTopicMetadata = toolboxTopicNames
-      .map((topicMetadata) => ({ ...topicMetadata, unlocked: false }))
-      .find((topicMetadata) => topicMetadata.type === type);
-
-    return this.http.get("assets/sheet-content/toolbox-export.json").pipe(
-      map((exportObject: ToolboxExport) => {
-        console.log("Toolbox export", exportObject);
-        let exportTopic = exportObject.topics.find(
-          (topic) => topic.metadata.type === topicMetadata.type
-        );
-        if (exportTopic) {
-          exportTopic.metadata = topicMetadata;
-          return exportTopic;
-        } else {
-          return {
-            metadata: topicMetadata,
-            contentSections: [],
-          };
-        }
-      })
-    );
-  }
-
   isTopicUnlocked(type: ToolboxTopicType) {
     let unlockedTopicMap: Object = this.localStorageService.getJSON(UNLOCKED_TOPICS_LS_KEY);
     if (unlockedTopicMap) {
