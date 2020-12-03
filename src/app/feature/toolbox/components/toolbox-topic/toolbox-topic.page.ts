@@ -22,14 +22,14 @@ export class ToolboxTopicPage implements OnInit {
       this.type = params["type"] as ToolboxTopicType;
       this.toolboxService.getModules(this.type).subscribe((module) => {
         this.modules = module;
-        this.title = this.replaceTitle(module[0].Module);
+        this.title = this.replaceTitle(module[0].module);
       });
     });
   }
 
   ngOnInit() {}
   onClickFlow(module: ToolboxTip) {
-    this.router.navigate([module.Flow_Name], { relativeTo: this.activatedRoute });
+    this.router.navigate([module.flow_name], { relativeTo: this.activatedRoute });
   }
 
   replaceTitle(title: string) {

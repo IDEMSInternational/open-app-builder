@@ -1,20 +1,20 @@
 export default {
-  "==Content_List==": [
+  "==content_list==": [
     {
-      Flow_Type: "Goals",
-      Flow_Name: "GoalsList",
+      flow_type: "Goals",
+      flow_name: "GoalsList",
     },
     {
-      Flow_Type: "Tasks",
-      Flow_Name: "TasksList",
+      flow_type: "Tasks",
+      flow_name: "TasksList",
     },
     {
-      Flow_Type: "Completions",
-      Flow_Name: "CompletionsList",
+      flow_type: "Completions",
+      flow_name: "CompletionsList",
     },
     {
-      Flow_Type: "Reminders",
-      Flow_Name: "RemindersList",
+      flow_type: "Reminders",
+      flow_name: "RemindersList",
     },
   ],
   GoalsList: [
@@ -144,7 +144,7 @@ export default {
       id: "task_1on1_Tips",
       label: "Core Tips",
       start_action: "start_new_flow",
-      start_action_args: "Toolbox_1on1_Tips",
+      start_action_args: "toolbox_1on1_Tips",
       evaluation: "completed",
       requires: "task_1on1_Intro",
     },
@@ -182,7 +182,7 @@ export default {
       id: "task_Praise_Tips",
       label: "Core Tips",
       start_action: "start_new_flow",
-      start_action_args: "Toolbox_Praise_Tips",
+      start_action_args: "toolbox_Praise_Tips",
       evaluation: "completed",
       requires: "task_Praise_Intro",
     },

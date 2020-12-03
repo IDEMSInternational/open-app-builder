@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { ITaskAction, ITaskWithMeta } from "../models/goals.model";
-import { TASKS } from "src/data";
+import { TASKS } from "src/app/shared/services/data/data.service";
 import { arrayToHashmapArray, stringToArray } from "src/app/shared/utils";
 
 @Injectable({
