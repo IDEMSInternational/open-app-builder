@@ -79,7 +79,6 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
         const filename = path.basename(xlsxPath, ".xlsx");
         // only include flows marked as released in the contents
         if (flow_name && status === "released") {
-          console.log(flow_name);
           releasedSummary[flow_name] = { status, flow_type, module, filename };
           if (json.hasOwnProperty(flow_name)) {
             if (merged.hasOwnProperty(flow_name)) {
