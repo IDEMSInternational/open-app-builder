@@ -1,9 +1,9 @@
 // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
 export interface IContentList {
-  Flow_Type: IFlowType;
+  flow_type: IFlowType;
   Module: string;
-  Flow_Name: string;
+  flow_name: string;
   status: "draft" | "released" | "preview";
   [key: string]: any;
 }

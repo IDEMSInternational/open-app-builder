@@ -2,9 +2,9 @@ import { RapidProFlowExport } from "../../../../../src/app/feature/chat/models";
 export { RapidProFlowExport };
 
 export interface ContentIndexRow {
-  Flow_Type: "Conversation";
+  flow_type: "Conversation";
   Module?: string;
-  Flow_Name: string;
+  flow_name: string;
   Character?: "Friend" | "Guide";
   Second_Character?: string;
   Entry_Condition?: string;

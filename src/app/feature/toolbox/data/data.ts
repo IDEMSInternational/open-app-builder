@@ -1,39 +1,39 @@
 export default {
-  "==Content_List==": [
+  "==content_list==": [
     {
-      Flow_Type: "Tips",
+      flow_type: "Tips",
       Module: "ONE_ON_ONE_TIME",
-      Flow_Name: "1on1_Tips",
+      flow_name: "1on1_Tips",
       Title: "One-on-One Time Tips",
     },
     {
-      Flow_Type: "Tips",
+      flow_type: "Tips",
       Module: "ONE_ON_ONE_TIME",
-      Flow_Name: "1on1_Ideas",
+      flow_name: "1on1_Ideas",
       Title: "One-on-One Time Ideas",
     },
     {
-      Flow_Type: "Tips",
+      flow_type: "Tips",
       Module: "PRAISE_AND_POSITIVE_REINFORCEMENT",
-      Flow_Name: "Praise_Tips",
+      flow_name: "Praise_Tips",
       Title: "Praise Tips",
     },
     {
-      Flow_Type: "Tips",
+      flow_type: "Tips",
       Module: "PRAISE_AND_POSITIVE_REINFORCEMENT",
-      Flow_Name: "Praise_Ideas_Teen",
+      flow_name: "Praise_Ideas_Teen",
       Title: "Teen Praise Ideas",
     },
     {
-      Flow_Type: "Tips",
+      flow_type: "Tips",
       Module: "PRAISE_AND_POSITIVE_REINFORCEMENT",
-      Flow_Name: "Praise_Ideas_Adult",
+      flow_name: "Praise_Ideas_Adult",
       Title: "Adult Praise Ideas",
     },
     {
-      Flow_Type: "Tips",
+      flow_type: "Tips",
       Module: "PRAISE_AND_POSITIVE_REINFORCEMENT",
-      Flow_Name: "Praise_Ideas_Self",
+      flow_name: "Praise_Ideas_Self",
       Title: "Self-Praise Ideas",
     },
   ],

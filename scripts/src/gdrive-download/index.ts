@@ -26,7 +26,6 @@ async function main() {
     console.log(chalk.yellow("checking folders for files"));
     const files = await listGdriveFilesRecursively(id, name);
     fs.writeFileSync(`${LOGS_DIR}/files.json`, JSON.stringify(files, null, 2));
-    console.log(chalk.yellow("downloading files"));
     await downloadGdriveFiles(files);
   } catch (ex) {
     console.error("GDrive download error", ex);

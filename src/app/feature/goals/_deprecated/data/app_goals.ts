@@ -1,20 +1,20 @@
 export default {
-  "==Content_List==": [
+  "==content_list==": [
     {
-      Flow_Type: "Goals",
-      Flow_Name: "GoalsList",
+      flow_type: "Goals",
+      flow_name: "GoalsList",
     },
     {
-      Flow_Type: "Tasks",
-      Flow_Name: "TasksList",
+      flow_type: "Tasks",
+      flow_name: "TasksList",
     },
     {
-      Flow_Type: "Completions",
-      Flow_Name: "CompletionsList",
+      flow_type: "Completions",
+      flow_name: "CompletionsList",
     },
     {
-      Flow_Type: "Reminders",
-      Flow_Name: "RemindersList",
+      flow_type: "Reminders",
+      flow_name: "RemindersList",
     },
   ],
   GoalsList: [

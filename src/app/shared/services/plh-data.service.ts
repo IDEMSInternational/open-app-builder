@@ -10,7 +10,7 @@ export class PlhDataService {
     const allFlowsByName = {};
     Object.values(DATASETS).forEach((DATASET) => {
       DATASET.forEach((el) => {
-        allFlowsByName[el.Flow_Name] = el;
+        allFlowsByName[el.flow_name] = el;
       });
     });
     this.allFlowsByName = allFlowsByName;

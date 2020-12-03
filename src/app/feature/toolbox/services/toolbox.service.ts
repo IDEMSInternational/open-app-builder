@@ -82,7 +82,7 @@ export class ToolboxService {
 
     //using Array.find assuming that they can only be one flow item
     let moduleFlows = toolboxTipsData.find((tip)=>{
-      return tip.Flow_Name === FlowName;
+      return tip.flow_name === FlowName;
     })
     return of(moduleFlows);
   }
