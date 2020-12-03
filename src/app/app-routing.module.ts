@@ -42,19 +42,6 @@ const FeatureRoutes: Routes = [
 /** 2020-11-23 - Deprecated but may use in future (still included in app) */
 const DeprecatedRoutes: Routes = [
   {
-    path: "activities",
-    loadChildren: () =>
-      import("./feature/activities/activities.module").then((m) => m.ActivitiesPageModule),
-  },
-  {
-    path: "songs",
-    loadChildren: () => import("./feature/songs/songs.module").then((m) => m.SongsPageModule),
-  },
-  {
-    path: "stories",
-    loadChildren: () => import("./feature/stories/stories.module").then((m) => m.StoriesPageModule),
-  },
-  {
     path: "family",
     loadChildren: () => import("./feature/family/family.module").then((m) => m.FamilyPageModule),
   },
