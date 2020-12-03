@@ -45,3 +45,4 @@ src/environments/firebaseConfig.ts
 /scripts/plh-spreadsheet/output
 
 .env
+scripts/config/token.json
