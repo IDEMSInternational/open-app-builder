@@ -263,12 +263,16 @@ export class RapidProOfflineFlow {
     const messages = this.messages$.getValue();
     const text = await this.parseMessageTemplate(action.text);
     let parsedAttachmentUrls = await Promise.all(action.attachments.map(this.parseMessageTemplate));
+    let parsedQuickReplies: string[] = [];
+    if (action.quick_replies && action.quick_replies.length > 0) {
+      parsedQuickReplies = await Promise.all(action.quick_replies.map(this.parseMessageTemplate));
+    }
     const rapidProMessage: IRapidProMessage = {
       message: text,
       message_id: action.uuid,
       title: "",
       type: "rapidpro",
-      quick_replies: JSON.stringify(action.quick_replies ? action.quick_replies : []),
+      quick_replies: JSON.stringify(parsedQuickReplies),
       attachments: parsedAttachmentUrls,
       wasTapped: false,
     };
