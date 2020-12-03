@@ -4,8 +4,7 @@ import * as path from "path";
 import chalk from "chalk";
 import { ConversationParser, DefaultParser } from "./parsers";
 import { groupJsonByKey, recursiveFindByExtension } from "../utils";
-import { IContentFlow, IContentList } from "./types";
-import { IFlowType } from "./types";
+import { FlowTypes } from "../../types";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const OUTPUT_FOLDER = `${__dirname}/output`;
@@ -44,8 +43,10 @@ main()
   })
   .then(() => console.log(chalk.green("PLH Data Converted")));
 
-function applyDataParsers(dataByFlowType: { [type in IFlowType]: IContentFlow[] }) {
-  const parsers: { [flowType in IFlowType]?: DefaultParser } = {
+function applyDataParsers(
+  dataByFlowType: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] }
+) {
+  const parsers: { [flowType in FlowTypes.FlowType]?: DefaultParser } = {
     conversation: new ConversationParser(),
   };
   console.log(chalk.blue(`Parsers applied to flow_types: ${Object.keys(parsers).join(", ")}`));
@@ -66,13 +67,13 @@ function applyDataParsers(dataByFlowType: { [type in IFlowType]: IContentFlow[] 
  * @returns - array of all merged sheets (no grouping or collating)
  */
 function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
-  const merged: { [flow_name: string]: IContentFlow } = {};
+  const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
   const releasedSummary = {};
   const skippedSummary = {};
   console.log("merging", jsons.length);
   for (let el of jsons) {
     const { json, xlsxPath } = el;
-    const contentList = json["==content_list=="] as IContentList[];
+    const contentList = json["==content_list=="] as FlowTypes.FlowTypeWithData[];
     if (contentList) {
       for (const contents of contentList) {
         const { flow_name, status, flow_type, module } = contents;
@@ -85,7 +86,7 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
               console.log(chalk.yellow("duplicate flow:", flow_name));
             }
             // console.log(chalk.green("+", flow_name));
-            merged[flow_name] = { ...contents, data: json[flow_name] };
+            merged[flow_name] = { ...contents, rows: json[flow_name] };
           } else {
             console.log(chalk.red("No Contents:", flow_name));
           }
