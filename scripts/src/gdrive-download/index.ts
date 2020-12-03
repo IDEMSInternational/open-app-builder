@@ -6,7 +6,6 @@ import chalk from "chalk";
 import { authorizeGDrive } from "./auth";
 import { GDRIVE_OFFICE_MAPPING, MIMETYPE_EXTENSIONS } from "./mimetypes";
 import { ArrayToChunks } from "../utils/file-utils";
-import { promise } from "protractor";
 
 // constants
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
@@ -76,7 +75,7 @@ async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
       i++;
     }
   });
-  await promise.all(promises);
+  await Promise.all(promises);
 }
 
 /**
