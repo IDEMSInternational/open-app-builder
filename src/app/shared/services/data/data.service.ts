@@ -1,10 +1,10 @@
 import { RapidProFlowExport } from "src/app/feature/chat/models";
-import Completions from "src/data/completions";
-import Conversation from "src/data/conversation";
-import Goals from "src/data/goals";
-import Reminders from "src/data/reminders";
-import Tasks from "src/data/tasks";
-import Tips from "src/data/tips";
+import Completions from "../../../../data/completions";
+import Conversation from "../../../../data/conversation";
+import Goals from "../../../../data/goals";
+import Reminders from "../../../../data/reminders";
+import Tasks from "../../../../data/tasks";
+import Tips from "../../../../data/tips";
 
 /**
  * Data files are imported and re-exported here to allow for easier import and
