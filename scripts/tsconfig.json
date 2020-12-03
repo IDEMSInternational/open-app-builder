@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "noEmit": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    // Global type definitions.
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["src/*", "index.ts"]
+}

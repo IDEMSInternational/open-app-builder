@@ -10,7 +10,7 @@ import { convertFromRapidProMsg } from "../../utils/message.converter";
   providedIn: "root",
 })
 export class OnlineChatService implements IChatService {
-  type = "online";
+  type: "online" = "online";
   public messages$: BehaviorSubject<ChatMessage[]> = new BehaviorSubject([]);
   subscription: Subscription;
 
