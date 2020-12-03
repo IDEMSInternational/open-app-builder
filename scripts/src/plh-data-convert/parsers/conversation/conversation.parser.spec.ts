@@ -9,11 +9,11 @@ const MOCK_JSON_PATH = path.join(__dirname, "../../mocks/rp-export1.json");
 describe("ConversationTranslator", () => {
   let mockSheets1: ConversationExcelSheet[] = [
     {
-      sheetName: "Test_Sheet_1",
+      sheet_name: "Test_Sheet_1",
       rows: [
         {
-          Type: "Send_message",
-          MessageText: "Hi my friend, it’s really good to see you.",
+          Type: "send_message",
+          message_text: "Hi my friend, it’s really good to see you.",
         },
       ],
     },

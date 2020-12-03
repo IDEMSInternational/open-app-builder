@@ -83,7 +83,7 @@ export namespace RapidProFlowExport {
         exits: Exit[];
         uuid: string;
         router?: Router;
-        rowNumber?: number;
+        row_number?: number;
     }
 
     export interface Flow {

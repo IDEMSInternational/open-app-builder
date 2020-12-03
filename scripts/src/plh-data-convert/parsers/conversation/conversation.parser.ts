@@ -50,43 +50,43 @@ export class ConversationParser extends DefaultParser {
     for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
       const row = rows[rowIndex];
       let nodeId = this.generateUUID();
-      row.NodeUUIDForExit = nodeId;
+      row.nodeUUIDForExit = nodeId;
 
       let actionNode: RapidProFlowExport.Node = {
         uuid: nodeId,
         actions: [],
         exits: [this.createEmptyExit()],
       };
-      // Additional nodes added for the row e.g. because of a "Go_to" type.
+      // Additional nodes added for the row e.g. because of a "go_to" type.
       let additionalNodes: RapidProFlowExport.Node[] = [];
 
       // This takes care of blank rows which may still be included because they have a row_id.
       // TODO Should more checks be done if Type is undefined but there may be other contents?
-      if (row.Type === undefined) {
+      if (row.type === undefined) {
         continue;
-      } else if (row.Type === "Send_message" || row.Type === "Story_message") {
-        if (row.MessageText === undefined) {
+      } else if (row.type === "send_message" || row.type === "story_message") {
+        if (row.message_text === undefined) {
           throw new Error(
             "On row " +
-              row.Row_ID.toString() +
-              ": Message text cannot be blank for Type = Send_message."
+              row.row_id.toString() +
+              ": Message text cannot be blank for Type = send_message."
           );
         }
-        let action_text = row.MessageText;
-        // App specific properties that will be appended to MessageText in a link.
+        let action_text = row.message_text;
+        // App specific properties that will be appended to message_text in a link.
         let link_text = "https://plh-demo1.idems.international/chat/msg-info?";
         let add_texts: string[] = [];
         let attachmentUrls: string[] = [];
-        if (row.Type === "Story_message") add_texts.push("isStory=true");
-        if (row.Character) add_texts.push("character=" + row.Character);
-        if (row.Choose_multi) add_texts.push("chooseMulti=true");
-        if (row.Display_As_Tick) add_texts.push("displayAsTick=true");
-        if (row.Ticked_By_Default) add_texts.push("tickedByDefault=true");
-        if (row.Choice_Media_Display)
-          add_texts.push("choiceMediaDisplay=" + row.Choice_Media_Display);
+        if (row.type === "story_message") add_texts.push("isStory=true");
+        if (row.character) add_texts.push("character=" + row.character);
+        if (row.choose_multi) add_texts.push("chooseMulti=true");
+        if (row.display_as_tick) add_texts.push("displayAsTick=true");
+        if (row.ticked_by_default) add_texts.push("tickedByDefault=true");
+        if (row.choice_media_display)
+          add_texts.push("choiceMediaDisplay=" + row.choice_media_display);
         if (add_texts.length > 0) action_text += " " + link_text + add_texts.join("&");
         actionNode.actions.push({
-          attachments: this.getMediaAttachments(row.Media),
+          attachments: this.getMediaAttachments(row.media),
           text: action_text,
           type: "send_msg",
           quick_replies: this.getRowChoices(row),
@@ -94,7 +94,7 @@ export class ConversationParser extends DefaultParser {
         });
         row._rapidProNode = actionNode;
         nodesById[nodeId] = actionNode;
-        if (row.Save_name) {
+        if (row.save_name) {
           let resultNode: RapidProFlowExport.Node = {
             uuid: this.generateUUID(),
             actions: [],
@@ -114,7 +114,7 @@ export class ConversationParser extends DefaultParser {
               wait: {
                 type: "msg",
               },
-              result_name: row.Save_name, // Is this ok to be the same as the variable?
+              result_name: row.save_name, // Is this ok to be the same as the variable?
             },
           };
           resultNode.router.default_category_uuid = resultNode.router.categories[0].uuid;
@@ -130,10 +130,10 @@ export class ConversationParser extends DefaultParser {
                 type: "set_contact_field",
                 field: {
                   // Can these be the same?
-                  key: row.Save_name,
-                  name: row.Save_name,
+                  key: row.save_name,
+                  name: row.save_name,
                 },
-                value: "@results." + row.Save_name,
+                value: "@results." + row.save_name,
               },
             ],
             exits: [this.createEmptyExit()],
@@ -143,10 +143,10 @@ export class ConversationParser extends DefaultParser {
           resultNode.exits[0].destination_uuid = saveNode.uuid;
           row._rapidProNode = saveNode;
         }
-      } else if (row.Type === "Start_new_flow") {
+      } else if (row.type === "start_new_flow") {
         actionNode.actions.push({
           flow: {
-            name: row.MessageText,
+            name: row.message_text,
             uuid: this.generateUUID(),
           },
           type: "enter_flow",
@@ -155,22 +155,22 @@ export class ConversationParser extends DefaultParser {
         this.setEnterFlowRouterAndExits(actionNode);
         row._rapidProNode = actionNode;
         nodesById[nodeId] = actionNode;
-      } else if (row.Type === "Go_to") {
-      } else if (row.Type === "Save_value") {
-        actionNode.actions.push(this.createSaveAction(row.Save_name, row.MessageText));
+      } else if (row.type === "go_to") {
+      } else if (row.type === "save_value") {
+        actionNode.actions.push(this.createSaveAction(row.save_name, row.message_text));
         row._rapidProNode = actionNode;
         nodesById[nodeId] = actionNode;
-      } else if (row.Type === "Exit") {
+      } else if (row.type === "exit") {
         actionNode.actions.push(this.createSaveAction(flow.name + "__completed", "true"));
         row._rapidProNode = actionNode;
         nodesById[nodeId] = actionNode;
-        if (row.MessageText) {
+        if (row.message_text) {
           let enterFlowNode: RapidProFlowExport.Node = {
             uuid: this.generateUUID(),
             actions: [
               {
                 flow: {
-                  name: row.MessageText,
+                  name: row.message_text,
                   uuid: this.generateUUID(),
                 },
                 type: "enter_flow",
@@ -190,29 +190,29 @@ export class ConversationParser extends DefaultParser {
       }
 
       // Now add connectivity
-      if (row.Condition) {
+      if (row.condition) {
         this.processRouterRow(row, rows, flow);
       } else {
         // If no condition just add as exit to nodes that this row says it comes from.
-        // For a "Go_to" row set the exit to the NodUUIDForExit of the row mentioned in MessageText.
+        // For a "go_to" row set the exit to the NodUUIDForExit of the row mentioned in message_text.
         let fromNodes = this.getFromNodes(row, rows);
         for (let fromNode of fromNodes) {
-          if (row.Type === "Go_to") {
+          if (row.type === "go_to") {
             // TODO This is repeated when there is a condition as well so could move to separate function.
-            if (!row.MessageText)
+            if (!row.message_text)
               throw new Error(
-                "On row " + row.Row_ID + ": MessageText must contain the row to go to."
+                "On row " + row.row_id + ": message_text must contain the row to go to."
               );
-            let messageTextRows = rows.filter((r) => (r.Row_ID = row.MessageText));
+            let messageTextRows = rows.filter((r) => (r.row_id = row.message_text));
             if (messageTextRows.length === 1) {
-              fromNode.exits[0].destination_uuid = messageTextRows[0].NodeUUIDForExit;
+              fromNode.exits[0].destination_uuid = messageTextRows[0].nodeUUIDForExit;
             } else {
               throw new Error(
                 "On row " +
-                  row.Row_ID +
-                  ": Cannot find row with Row_ID = " +
-                  row.MessageText +
-                  " from MessageText column."
+                  row.row_id +
+                  ": Cannot find row with row_id = " +
+                  row.message_text +
+                  " from message_text column."
               );
             }
           } else {
@@ -221,8 +221,8 @@ export class ConversationParser extends DefaultParser {
         }
       }
       // Add this after the condition so that the nodes are in a sensible order when importing into Rapid Pro
-      // If Type is "Go_to" then there is no node to add.
-      if (row.Type !== "Go_to") {
+      // If Type is "go_to" then there is no node to add.
+      if (row.type !== "go_to") {
         flow.nodes.push(actionNode);
       }
       for (let n of additionalNodes) {
@@ -236,7 +236,7 @@ export class ConversationParser extends DefaultParser {
 
   // Create default required router with 2 cases/categories and 2 exit for an "enter_flow" node.
   private setEnterFlowRouterAndExits(node: RapidProFlowExport.Node) {
-    let exits: RapidProFlowExport.Exit[] = [
+    let exits: RapidProFlowExport.exit[] = [
       {
         uuid: this.generateUUID(),
         destination_uuid: null,
@@ -284,26 +284,29 @@ export class ConversationParser extends DefaultParser {
   }
 
   private setRowIDs(rows: ConversationExcelRow[]) {
-    let nullRows = rows.filter((row) => row.Row_ID === undefined);
+    let nullRows = rows.filter((row) => row.row_id === undefined);
 
     if (nullRows.length === rows.length) {
       for (let i = 0; i <= rows.length - 1; i++) {
-        rows[i].Row_ID = (i + 2).toString();
+        rows[i].row_id = (i + 2).toString();
       }
     } else if (nullRows.length === 0) {
-      if (new Set(rows.map((row) => row.Row_ID)).size !== rows.length) {
-        throw new Error("Row_ID values are not unique.");
+      if (new Set(rows.map((row) => row.row_id)).size !== rows.length) {
+        throw new Error("row_id values are not unique.");
       }
     } else if (nullRows.length !== rows.length) {
       throw new Error(
-        "Row_ID column has blank values. If Row_ID is included all rows must have a unique row ID."
+        "row_id column has blank values. If row_id is included all rows must have a unique row ID."
       );
     }
   }
 
   private getFromRowIndices(row: ConversationExcelRow): string[] {
-    if (row.From) {
-      return row.From.toString().split(",");
+    if (row.from) {
+      return row.from
+        .toString()
+        .split(";")
+        .map((s) => s.trim());
     }
     return [];
   }
@@ -313,7 +316,7 @@ export class ConversationParser extends DefaultParser {
     rows: ConversationExcelRow[]
   ): ConversationExcelRow[] {
     let ind = this.getFromRowIndices(row);
-    return rows.filter((curr_row) => ind.includes(curr_row.Row_ID.toString()));
+    return rows.filter((curr_row) => ind.includes(curr_row.row_id.toString()));
   }
 
   private getFromNodes(
@@ -332,7 +335,7 @@ export class ConversationParser extends DefaultParser {
   ): RapidProFlowExport.Node[] {
     const fromNodes = this.getFromNodes(currentRow, rows);
 
-    let fromNodeExits: RapidProFlowExport.Exit[] = [];
+    let fromNodeExits: RapidProFlowExport.exit[] = [];
     for (let fromNode of fromNodes) {
       for (let exit of fromNode.exits) {
         fromNodeExits.push(exit);
@@ -346,7 +349,7 @@ export class ConversationParser extends DefaultParser {
 
   private attachToUnattachedCategories(
     routerNode: RapidProFlowExport.Node,
-    newExit: RapidProFlowExport.Exit
+    newExit: RapidProFlowExport.exit
   ) {
     let routerCategoriesWithoutExits = routerNode.router.cases
       .map((routerCase) => {
@@ -359,8 +362,8 @@ export class ConversationParser extends DefaultParser {
     });
   }
 
-  private createEmptyExit(): RapidProFlowExport.Exit {
-    let exit: RapidProFlowExport.Exit = {
+  private createEmptyExit(): RapidProFlowExport.exit {
+    let exit: RapidProFlowExport.exit = {
       uuid: this.generateUUID(),
       destination_uuid: null,
     };
@@ -410,58 +413,56 @@ export class ConversationParser extends DefaultParser {
     defaultType: RapidProFlowExport.RouterCaseType = "has_only_phrase"
   ) {
     let type: RapidProFlowExport.RouterCaseType;
-    if (row.Condition_Type) {
-      type = row.Condition_Type;
+    if (row.condition_type) {
+      type = row.condition_type;
     } else type = defaultType;
     let choiceCategory: RapidProFlowExport.Category;
 
     // If row has a condition then add a new category, case and exit.
-    if (row.Condition) {
+    if (row.condition) {
       let conds: string[];
-      if (row.Condition.includes(",")) {
-        conds = row.Condition.split(",").map((s) => s.trim());
-      } else if (row.Condition.includes(";")) {
-        conds = row.Condition.split(";").map((s) => s.trim());
-      } else conds = [row.Condition];
+      if (row.condition.includes(";")) {
+        conds = row.condition.split(";").map((s) => s.trim());
+      } else conds = [row.condition];
 
       if (routerNode.actions.length > 0 && routerNode.actions[0].type === "enter_flow") {
         if (conds.length === 2 && conds.includes("completed") && conds.includes("expired")) {
-          routerNode.exits[0].destination_uuid = row.NodeUUIDForExit;
-          routerNode.exits[1].destination_uuid = row.NodeUUIDForExit;
+          routerNode.exits[0].destination_uuid = row.nodeUUIDForExit;
+          routerNode.exits[1].destination_uuid = row.nodeUUIDForExit;
         } else if (conds.length === 1 && conds.includes("completed")) {
-          routerNode.exits[0].destination_uuid = row.NodeUUIDForExit;
+          routerNode.exits[0].destination_uuid = row.nodeUUIDForExit;
         } else if (conds.length === 1 && conds.includes("expired")) {
-          routerNode.exits[1].destination_uuid = row.NodeUUIDForExit;
+          routerNode.exits[1].destination_uuid = row.nodeUUIDForExit;
         } else
           throw new Error(
-            "Condition for a Start_new_flow can only be: completed, expired or both."
+            "Condition for a start_new_flow can only be: completed, expired or both."
           );
       } else {
         let exit = this.createEmptyExit();
-        if (row.Type === "Go_to") {
+        if (row.type === "go_to") {
           // TODO This is repeated when there is no condition as well so could move to separate function.
-          if (!row.MessageText)
+          if (!row.message_text)
             throw new Error(
-              "On row " + row.Row_ID + ": MessageText must contain the row to go to."
+              "On row " + row.row_id + ": message_text must contain the row to go to."
             );
-          let messageTextRows = rows.filter((r) => r.Row_ID === row.MessageText);
+          let messageTextRows = rows.filter((r) => r.row_id === row.message_text);
           if (messageTextRows.length === 1) {
-            exit.destination_uuid = messageTextRows[0].NodeUUIDForExit;
+            exit.destination_uuid = messageTextRows[0].nodeUUIDForExit;
           } else {
             throw new Error(
               "On row " +
-                row.Row_ID +
-                ": Cannot find row with Row_ID = " +
-                row.MessageText +
-                " from MessageText column."
+                row.row_id +
+                ": Cannot find row with row_id = " +
+                row.message_text +
+                " from message_text column."
             );
           }
         } else {
-          exit.destination_uuid = row.NodeUUIDForExit;
+          exit.destination_uuid = row.nodeUUIDForExit;
         }
         choiceCategory = {
           exit_uuid: exit.uuid,
-          name: row.Condition,
+          name: row.condition,
           uuid: this.generateUUID(),
         };
         let choiceCases: RapidProFlowExport.RouterCase[] = [];
@@ -507,7 +508,7 @@ export class ConversationParser extends DefaultParser {
     } else {
       // If the row has no condition then update the default (other) exit.
       // Routers are always created with a default (empty) exit so this always exists.
-      routerNode.exits[0].destination_uuid = row.NodeUUIDForExit;
+      routerNode.exits[0].destination_uuid = row.nodeUUIDForExit;
     }
   }
 
@@ -525,15 +526,15 @@ export class ConversationParser extends DefaultParser {
     let operandValue: "text" | string;
 
     fromRows = this.getFromRows(row, rows);
-    // If Condition_Var is given this is operandValue
-    if (row.Condition_Var && row.Condition_Var.length > 0) {
+    // If condition_var is given this is operandValue
+    if (row.condition_Var && row.condition_Var.length > 0) {
       operandType = "@fields";
-      operandValue = row.Condition_Var;
-      // If the first fromRow has a Save_name then the condition is from a saved field.
-    } else if (fromRows && fromRows.length > 0 && fromRows[0].Save_name) {
+      operandValue = row.condition_Var;
+      // If the first fromRow has a save_name then the condition is from a saved field.
+    } else if (fromRows && fromRows.length > 0 && fromRows[0].save_name) {
       operandType = "@fields";
-      operandValue = fromRows[0].Save_name;
-      // If there is no Condition_Var and fromNode is not of type "set_contact_field" then assumed to be input from text.
+      operandValue = fromRows[0].save_name;
+      // If there is no condition_var and fromNode is not of type "set_contact_field" then assumed to be input from text.
     } else {
       operandType = "@input";
       operandValue = "text";
@@ -598,10 +599,10 @@ export class ConversationParser extends DefaultParser {
   private getRowChoices(row: ConversationExcelRow): string[] {
     let quick_replies: string[] = [];
     for (let i = 1; i <= 12; i++) {
-      if (row["Choice_" + i] !== undefined) {
-        let reply = row["Choice_" + i].toString();
-        if (row["Choice_" + i + "_Media"] !== undefined) {
-          reply += " " + row["Choice_" + i + "_Media"].toString();
+      if (row["choice_" + i] !== undefined) {
+        let reply = row["choice_" + i].toString();
+        if (row["choice_" + i + "_Media"] !== undefined) {
+          reply += " " + row["choice_" + i + "_Media"].toString();
         }
         quick_replies.push(reply);
       }

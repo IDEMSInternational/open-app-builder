@@ -15,7 +15,7 @@ export default [
             "actions": [
               {
                 "flow": {
-                  "name": "CharacterNames",
+                  "name": "character_names",
                   "uuid": "fde03726-692e-447b-be1f-68640fbbaf0d"
                 },
                 "type": "enter_flow",

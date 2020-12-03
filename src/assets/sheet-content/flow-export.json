@@ -14,7 +14,7 @@
           "actions": [
             {
               "flow": {
-                "name": "CharacterNames",
+                "name": "character_names",
                 "uuid": "abef1c65-a79f-4ffd-979c-dce1f2fe4de4"
               },
               "type": "enter_flow",
@@ -2367,7 +2367,7 @@
           "actions": [
             {
               "attachments": [],
-              "text": "Hi @fields.guide, good to see you! https://plh-demo1.idems.international/chat/msg-info?character=Neighbour",
+              "text": "Hi @fields.guide, good to see you! https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
               "type": "send_msg",
               "quick_replies": [],
               "uuid": "b334f85b-76d3-4896-821e-1751a9aea631"
@@ -2723,7 +2723,7 @@
           "actions": [
             {
               "attachments": [],
-              "text": "That's great right? How do you think what I said  made both my daughters feel?  https://plh-demo1.idems.international/chat/msg-info?character=Neighbour&choiceMediaDisplay=media",
+              "text": "That's great right? How do you think what I said  made both my daughters feel?  https://plh-demo1.idems.international/chat/msg-info?character=neighbour&choiceMediaDisplay=media",
               "type": "send_msg",
               "quick_replies": [
                 "slight smile https://plh-demo1.idems.international/assets/images/stickers/faces/happy.svg",

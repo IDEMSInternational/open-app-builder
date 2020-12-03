@@ -45,13 +45,13 @@ export interface ToolboxTip{
     "flow_type": string,
     "module": string,
     "flow_name": string,
-    "Title"?: string,
+    "title"?: string,
     "data": TipData[]
 }
 
 export interface TipData{
-    "Type": string,
-    "MessageText"?: string,
-    "Media"?: string
+    "type": string,
+    "message_text"?: string,
+    "media"?: string
     "Comment/suggestion/visual"?: string
 }

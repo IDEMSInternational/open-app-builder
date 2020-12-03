@@ -113,8 +113,8 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
   const json = {};
   const workbook = xlsx.readFile(xlsxFilePath);
   const { Sheets } = workbook;
-  Object.entries(Sheets).forEach(([sheetName, worksheet]) => {
-    json[sheetName] = xlsx.utils.sheet_to_json(worksheet);
+  Object.entries(Sheets).forEach(([sheet_name, worksheet]) => {
+    json[sheet_name] = xlsx.utils.sheet_to_json(worksheet);
   });
   return json;
 }
