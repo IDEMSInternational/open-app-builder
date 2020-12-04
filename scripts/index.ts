@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-import { populateEnv, promptOptions } from "./src/utils";
+import { loadConfig, promptOptions } from "./src/utils";
 import { spawnSync } from "child_process";
 
 /**
@@ -29,7 +29,7 @@ const SCRIPT_NAMES = [
  * `npm run scripts version`
  */
 async function start() {
-  populateEnv();
+  loadConfig();
   const args = process.argv;
   const scriptToRun = args[2] ? args[2] : await promptOptions(SCRIPT_NAMES);
   spawnSync(`npm run ${scriptToRun}`, {

@@ -5,6 +5,10 @@ The app scripts are designed to automated various aspects of the development and
 Most scripts require additional configuration files which are not publically available within this repo.
 To use the scripts you should first contact the development team for the required configurations.
 
+## Required Configuration
+
+In order to run most scripts require specific configuration files which are stored as encrypted in the `config` folder. In order to decrypt the files you must place the `private.key` file obtained from one of the repo admin in the folder. Files will automatically decrypt on run.
+
 ## Running scripts from this folder
 
 Scripts may be added to the `package.json` and can also be listed in the default `index.ts` file which

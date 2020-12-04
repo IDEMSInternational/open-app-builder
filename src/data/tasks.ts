@@ -5,85 +5,119 @@ export default [
     "status": "released",
     "rows": [
       {
-        "id": "task_1on1_emo",
-        "label": "Emotional Check-in",
+        "id": "task_mod_welcome_self-care_package",
+        "label": "Your customised self-care package",
         "start_action": "start_new_flow",
-        "start_action_args": "1on1_emo",
-        "evaluation": "completed",
-        "requires": "first_app_launch | delay_7_day"
+        "start_action_args": "mod_welcome_self-care_package",
+        "evaluation": "completed"
       },
       {
-        "id": "task_1on1_intro",
-        "label": "Introduction",
+        "id": "task_mod_welcome_quick_praise",
+        "label": "A quick praise for your teen",
         "start_action": "start_new_flow",
-        "start_action_args": "1on1_intro",
-        "evaluation": "completed ",
-        "requires": "task_1on1_emo"
+        "start_action_args": "mod_welcome_quick_praise",
+        "evaluation": "completed"
       },
       {
-        "id": "task_1on1_tips",
-        "label": "Core Tips",
+        "id": "task_mod_welcome_survey",
+        "label": "Personalise this app for you",
         "start_action": "start_new_flow",
-        "start_action_args": "toolbox_1on1_tips",
-        "evaluation": "completed",
-        "requires": "task_1on1_intro"
+        "start_action_args": "mod_welcome_survey",
+        "evaluation": "completed"
       },
       {
-        "id": "task_1on1_activity",
-        "label": "Home Activity Assignment",
+        "id": "task_mod_welcome_photo_activity",
+        "label": "Upload a family picture",
         "start_action": "start_new_flow",
-        "start_action_args": "1on1_activity",
-        "evaluation": "completed",
-        "requires": "task_1on1_intro"
+        "start_action_args": "mod_welcome_photo_activity",
+        "evaluation": "completed"
       },
       {
-        "id": "task_1on1_act_rev",
-        "label": "Home Activity Review",
-        "start_action": "start_new_flow",
-        "start_action_args": "1on1_act_rev",
-        "evaluation": "completed",
-        "requires": "task_1on1_activity | delay_2_day"
-      },
-      {
-        "id": "task_1on1_completed_goal",
+        "id": "task_mod_welcome_completed_goal",
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
       },
       {
-        "id": "task_praise_intro",
-        "label": "Introduction",
+        "id": "task_mod_1on1_emo",
+        "label": "Emotional check-in",
         "start_action": "start_new_flow",
-        "start_action_args": "praise_intro",
+        "start_action_args": "mod_1on1_emo",
         "evaluation": "completed",
-        "requires": "task_1on1_completed_goal; first_launch | delay_14_day"
+        "requires": "first_app_launch | delay_7_day"
       },
       {
-        "id": "task_praise_tips",
-        "label": "Core Tips",
+        "id": "task_mod_1on1_intro",
+        "label": "Intro to one-on-one time",
         "start_action": "start_new_flow",
-        "start_action_args": "toolbox_praise_tips",
-        "evaluation": "completed",
-        "requires": "task_praise_intro"
+        "start_action_args": "mod_1on1_intro",
+        "evaluation": "completed ",
+        "requires": "task_mod_1on1_emo"
       },
       {
-        "id": "task_praise_activity",
-        "label": "Home Activity Assignment",
+        "id": "task_mod_1on1_tips",
+        "label": "Core tips",
         "start_action": "start_new_flow",
-        "start_action_args": "praise_activity",
+        "start_action_args": "mod_1on1_tips",
         "evaluation": "completed",
-        "requires": "task_praise_intro"
+        "requires": "task_mod_1on1_intro"
       },
       {
-        "id": "task_praise_act_rev",
-        "label": "Home Activity Review",
+        "id": "task_mod_1on1_activity",
+        "label": "Home activity",
         "start_action": "start_new_flow",
-        "start_action_args": "praise_act_rev",
+        "start_action_args": "mod_1on1_activity",
         "evaluation": "completed",
-        "requires": "task_praise_activity"
+        "requires": "task_mod_1on1_tips"
       },
       {
-        "id": "task_praise_completed_goal",
+        "id": "task_mod_1on1_activity_review",
+        "label": "Home activity review",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_1on1_activity_review",
+        "evaluation": "completed",
+        "requires": "task_mod_1on1_activity | delay_2_day"
+      },
+      {
+        "id": "task_mod_1on1_completed_goal",
+        "start_action": "give_award",
+        "start_action_args": "cup",
+        "evaluation": "completed"
+      },
+      {
+        "id": "task_mod_praise_intro",
+        "label": "Intro to praise",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_praise_intro",
+        "evaluation": "completed",
+        "requires": "task_mod_1on1_completed_goal; first_launch | delay_14_day"
+      },
+      {
+        "id": "task_mod_praise_tips",
+        "label": "Core tips",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_praise_tips",
+        "evaluation": "completed",
+        "requires": "task_mod_praise_intro"
+      },
+      {
+        "id": "task_mod_praise_activity",
+        "label": "Home activity",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_praise_activity",
+        "evaluation": "completed",
+        "requires": "task_mod_praise_tips"
+      },
+      {
+        "id": "task_mod_praise_activity_review",
+        "label": "Home activity review",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_praise_activity_review",
+        "evaluation": "completed",
+        "requires": "task_mod_praise_activity"
+      },
+      {
+        "id": "task_mod_praise_completed_goal",
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
