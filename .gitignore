@@ -34,7 +34,7 @@ google-services.json
 
 resources/android
 resources/ios
-yarn.lock
+package-lock.lock
 src/environments/firebaseConfig.ts
 **/*.jks
 .firebase

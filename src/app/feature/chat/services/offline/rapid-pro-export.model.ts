@@ -138,16 +138,4 @@ export namespace RapidProFlowExport {
     fields: any[];
     groups: Group[];
   }
-
-  // when imported type-checking is only supported on weaker typed fields
-  // or specifying 'as const' in all child string fields
-  export interface RootObjectImported {
-    version: string;
-    site: string;
-    flows: any[];
-    campaigns: any[];
-    triggers: any[];
-    fields: any[];
-    groups: any[];
-  }
 }
