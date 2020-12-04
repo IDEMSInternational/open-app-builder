@@ -1,4 +1,6 @@
-export default [
+/* tslint:disable */
+  import { FlowTypes } from "src/app/shared/model/flowTypes";
+  export const tasks: FlowTypes.Tasks[] = [
   {
     "flow_type": "tasks",
     "flow_name": "tasks_list",

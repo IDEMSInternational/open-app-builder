@@ -1,4 +1,6 @@
-export default [
+/* tslint:disable */
+  import { FlowTypes } from "src/app/shared/model/flowTypes";
+  export const goals: FlowTypes.Goals[] = [
   {
     "flow_type": "goals",
     "flow_name": "goals_list",

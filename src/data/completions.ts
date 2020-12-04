@@ -1,4 +1,6 @@
-export default [
+/* tslint:disable */
+  import { FlowTypes } from "src/app/shared/model/flowTypes";
+  export const completions: FlowTypes.Completions[] = [
   {
     "flow_type": "completions",
     "flow_name": "completions_list",
