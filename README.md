@@ -1,5 +1,13 @@
 # Parenting App UI
 
+# For content coders
+To pull the content code from Google Drive and update the app run
+```
+cd scripts
+npm install
+npm run sync-plh-content
+```
+
 ## Introduction
 
 This is the main frontend repository for the parenting app.
