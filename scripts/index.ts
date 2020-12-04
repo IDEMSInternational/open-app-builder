@@ -12,14 +12,15 @@ const SCRIPT_NAMES = [
     value: "sync-plh-content",
     name: "Sync Latest GDrive Content to App",
   },
+
   {
     value: "version",
     name: "Update App Version",
   },
-  {
-    value: "resize-android-assets",
-    name: "Process Resources Folder Updates",
-  },
+  // {
+  //   value: "resize-android-assets",
+  //   name: "Process Resources Folder Updates",
+  // },
 ];
 
 /**
