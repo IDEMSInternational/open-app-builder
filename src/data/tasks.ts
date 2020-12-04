@@ -88,7 +88,7 @@
       },
       {
         "id": "task_mod_praise_intro",
-        "label": "Intro to praise",
+        "label": "Intro to praise and positive reinforcement",
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_intro",
         "evaluation": "completed",
