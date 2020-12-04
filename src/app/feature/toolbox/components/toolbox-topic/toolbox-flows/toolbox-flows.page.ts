@@ -21,7 +21,7 @@ export class ToolboxFlowsPage implements OnInit {
       this.toolboxService.getFlows(this.flow_name).subscribe((module) => {
         this.flow = module;
         console.log("flow", this.flow);
-        const { elements, title } = this.processFlow(this.flow.data);
+        const { elements, title } = this.processFlow(this.flow.rows);
         this.flow.title = title;
         this.elements = elements;
         console.log("elements", this.elements);
