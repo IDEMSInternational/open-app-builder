@@ -36,16 +36,20 @@ export namespace FlowTypes {
     title: string;
   }
 
-  export interface Conversation extends FlowTypeWithData {
-    flow_type: "conversation";
-    character?: "friend" | "guide";
-    second_character?: string;
-    entry_condition?: string;
-    output?: string;
-    comment_suggestion?: string;
-    topic_id?: string;
-    rows: ConversationRow[];
-  }
+  export interface Conversation extends RapidProFlowExport.RootObject {}
+  
+  // To Sort - possibly these typings affect the input and not the output???
+
+  // flow_type: "conversation";
+  // campaigns: any[];
+  // fields: any[];
+  // character?: "friend" | "guide";
+  // second_character?: string;
+  // entry_condition?: string;
+  // output?: string;
+  // comment_suggestion?: string;
+  // topic_id?: string;
+  // rows: ConversationRow[];
 
   export interface ConversationRow {
     row_id?: string | number;
