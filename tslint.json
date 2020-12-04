@@ -12,7 +12,7 @@
       "severity": "warn"
     },
     "import-blacklist": [true, "rxjs/Rx"],
-    "curly": true,
+    "curly": false,
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [true, 140],
@@ -102,6 +102,7 @@
     },
     "no-string-literal": false,
     "prefer-const": false,
-    "no-namespace": false
+    "no-namespace": false,
+    "no-empty-interface": false
   }
 }

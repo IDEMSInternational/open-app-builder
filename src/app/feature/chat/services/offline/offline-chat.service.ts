@@ -2,11 +2,12 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
-import { SettingsService } from 'src/app/feature/settings/settings.service';
+import { SettingsService } from "src/app/feature/settings/settings.service";
 import { ChatMessage, IChatService } from "../../models";
 import { RapidProOfflineFlow } from "./chat.flow";
 import { ContactFieldService } from "./contact-field.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
+import { CONVERSATION } from "src/app/shared/services/data/data.service";
 
 const FLOW_EXPORTS_PATH = "assets/rapid-pro-flow-exports/idems-plh-app-2020-11-25.json";
 
@@ -28,8 +29,11 @@ export class OfflineChatService implements IChatService {
   public messages$ = new BehaviorSubject<ChatMessage[]>([]);
   public botTyping$ = new BehaviorSubject<boolean>(false);
 
-  constructor(protected http: HttpClient, protected contactFieldService: ContactFieldService,
-    protected settingsService: SettingsService) {
+  constructor(
+    protected http: HttpClient,
+    protected contactFieldService: ContactFieldService,
+    protected settingsService: SettingsService
+  ) {
     this.init();
   }
 
@@ -38,10 +42,27 @@ export class OfflineChatService implements IChatService {
     return this.ready$.pipe(takeWhile((isReady) => isReady === false)).toPromise();
   }
 
-  private async init() {
-    await this.loadExportFile(FLOW_EXPORTS_PATH);
-    this.subscribeToFlowStatusChanges();
-    this.ready$.next(true);
+  private init() {
+    this.loadFlowData();
+    this.settingsService
+      .getUserSetting("USE_GDRIVE_CONTENT")
+      .subscribe(async (useGDriveContent) => {
+        let flowExportsPath = FLOW_EXPORTS_PATH;
+        if (useGDriveContent === "true") {
+          flowExportsPath = "https://plh-demo1.idems.international/sheet-content/flow-export.json";
+          await this.loadExportFile(flowExportsPath);
+        }
+
+        this.subscribeToFlowStatusChanges();
+        this.ready$.next(true);
+      });
+  }
+
+  /** Load the list of all flows defined as type 'conversation' within the hardcoded data ts file */
+  private loadFlowData() {
+    CONVERSATION.forEach((c) => {
+      c.flows.forEach((flow) => (this.flowsByName[flow.name] = flow));
+    });
   }
 
   /**
@@ -104,7 +125,6 @@ export class OfflineChatService implements IChatService {
     if (res.flows && res.flows.length > 0) {
       for (let flow of res.flows) {
         this.flowsByName[flow.name] = flow;
-        
       }
     } else {
       console.warn("No flows in export file ", exportFilePath);

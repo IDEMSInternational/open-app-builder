@@ -25,7 +25,7 @@ npm-debug.log*
 /.vscode
 /coverage
 /dist
-/node_modules
+node_modules
 /platforms
 /plugins
 /www
@@ -34,7 +34,7 @@ google-services.json
 
 resources/android
 resources/ios
-yarn.lock
+package-lock.lock
 src/environments/firebaseConfig.ts
 **/*.jks
 .firebase
@@ -43,3 +43,6 @@ src/environments/firebaseConfig.ts
 /scripts/output
 /scripts/plh-spreadsheet/input
 /scripts/plh-spreadsheet/output
+
+.env
+scripts/config/token.json

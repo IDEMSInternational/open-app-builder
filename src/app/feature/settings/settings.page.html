@@ -5,26 +5,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let userSetting of userSettings">
-    <ion-label>{{userSetting.name}}</ion-label>
-    <ion-toggle *ngIf="!userSetting.options && userSetting.type === 'boolean'"
-      [checked]="userSetting.value === 'true'"
-      (ionChange)="toggleUserSetting(userSetting)"
-    ></ion-toggle>
-    <ion-select
-      *ngIf="userSetting.options"
-      [value]="userSetting.value"
-      okText="Select"
-      cancelText="Cancel"
-      (ionChange)="selectSettingOption(userSetting, $event.detail.value)"
-    >
-      <ion-select-option
-        *ngFor="let option of userSetting.options"
-        [value]="option.value"
-      >
-        {{option.name}}
-      </ion-select-option>
+  <plh-user-setting *ngFor="let userSetting of userSettings" [userSetting]="userSetting"
+    (onSettingChange)="onSettingChange($event)"></plh-user-setting>
+  <ion-item>
+    <ion-label>Theme</ion-label>
+    <ion-select [value]="currentThemeName" okText="Okay" cancelText="Dismiss"
+      (ionChange)="selectThemeName($event.detail.value)">
+      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}">{{themeName}}</ion-select-option>
     </ion-select>
+  </ion-item>
+  <ion-list-header>Development Settings</ion-list-header>
+  <plh-user-setting *ngFor="let userSetting of devOnlyUserSettings" [userSetting]="userSetting"
+    (onSettingChange)="onSettingChange($event)"></plh-user-setting>
+  <ion-item>
+    <ion-button (click)="navigateByUrl('/chat/flow/example_main')">Open Testing Flow</ion-button>
   </ion-item>
   <ion-item>
     <ion-button (click)="openWelcomeFlow()">Open Welcome Flow</ion-button>
@@ -34,19 +28,6 @@
   </ion-item>
   <ion-item>
     <ion-button (click)="resetApp()">Reset App</ion-button>
-  </ion-item>
-  <ion-item>
-    <ion-label>Theme</ion-label>
-    <ion-select
-      [value]="currentThemeName"
-      okText="Okay"
-      cancelText="Dismiss"
-      (ionChange)="selectThemeName($event.detail.value)"
-    >
-      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}"
-        >{{themeName}}</ion-select-option
-      >
-    </ion-select>
   </ion-item>
   <ion-item>
     <ion-label [routerLink]="['/theme-editor']">Theme Editor</ion-label>

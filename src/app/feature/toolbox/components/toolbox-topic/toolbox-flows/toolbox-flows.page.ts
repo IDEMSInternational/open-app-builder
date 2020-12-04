@@ -11,18 +11,18 @@ import { OpenClose } from "src/app/feature/goals/animations";
   animations: [OpenClose],
 })
 export class ToolboxFlowsPage implements OnInit {
-  Flow_Name: string;
+  flow_name: string;
   flow: ToolboxTip;
   elements: ToolboxElement[];
 
   constructor(private activatedRoute: ActivatedRoute, private toolboxService: ToolboxService) {
     this.activatedRoute.params.subscribe((params) => {
-      this.Flow_Name = params.flow_name;
-      this.toolboxService.getFlows(this.Flow_Name).subscribe((module) => {
+      this.flow_name = params.flow_name;
+      this.toolboxService.getFlows(this.flow_name).subscribe((module) => {
         this.flow = module;
         console.log("flow", this.flow);
-        const { elements, title } = this.processFlow(this.flow.data);
-        this.flow.Title = title;
+        const { elements, title } = this.processFlow(this.flow.rows);
+        this.flow.title = title;
         this.elements = elements;
         console.log("elements", this.elements);
       });
@@ -39,24 +39,24 @@ export class ToolboxFlowsPage implements OnInit {
     let listElement: ToolboxElement;
     let title = "";
     for (let row of data) {
-      switch (row.Type) {
-        case "Title": {
-          title = row.MessageText;
+      switch (row.type) {
+        case "title": {
+          title = row.message_text;
           break;
         }
-        case "Core_tip": {
+        case "core_tip": {
           elements.push({
             type: "CORE_TIP",
-            text: row.MessageText,
+            text: row.message_text,
           });
           break;
         }
-        case "List_intro": {
+        case "list_intro": {
           listElement = this.createEmptyList();
-          listElement.intro = row.MessageText;
+          listElement.intro = row.message_text;
           break;
         }
-        case "End_list": {
+        case "end_list": {
           if (listElement) {
             listElement.items = listElement.items.filter(
               (item) => item.body.length > 0 || item.heading.length > 0
@@ -66,28 +66,28 @@ export class ToolboxFlowsPage implements OnInit {
           listElement = null;
           break;
         }
-        case "List_item": {
+        case "list_item": {
           if (!listElement) {
             listElement = this.createEmptyList();
           }
           listElement.items.push({
-            heading: row.MessageText,
+            heading: row.message_text,
             body: "",
           });
           break;
         }
-        case "Text":
+        case "text":
         default: {
           if (listElement) {
             const lastItem = listElement.items[listElement.items.length - 1];
             if (lastItem.body.length > 0) {
               lastItem.body += "\n";
             }
-            lastItem.body += row.MessageText;
+            lastItem.body += row.message_text;
           } else {
             elements.push({
               type: "TEXT",
-              text: row.MessageText,
+              text: row.message_text,
             });
           }
         }

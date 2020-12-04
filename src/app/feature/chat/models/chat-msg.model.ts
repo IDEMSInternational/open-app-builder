@@ -23,8 +23,8 @@ export interface ChatMessage {
   character?: CharacterId;
 }
 
-export type CharacterId = "Guide" | "Neighbour";
-export const characterIds = ["Guide", "Neighbour"];
+export type CharacterId = "guide" | "neighbour";
+export const characterIds = ["guide", "neighbour"];
 
 export const appCustomFields: {
   key: keyof ChatMessage;
