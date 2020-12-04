@@ -1,4 +1,6 @@
-export default [
+/* tslint:disable */
+  import { FlowTypes } from "src/app/shared/model/flowTypes";
+  export const tips: FlowTypes.Tips[] = [
   {
     "flow_type": "tips",
     "module": "ONE_ON_ONE_TIME",

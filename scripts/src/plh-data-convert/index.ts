@@ -3,7 +3,7 @@ import * as xlsx from "xlsx";
 import * as path from "path";
 import chalk from "chalk";
 import { ConversationParser, DefaultParser } from "./parsers";
-import { groupJsonByKey, recursiveFindByExtension } from "../utils";
+import { groupJsonByKey, recursiveFindByExtension, capitalizeFirstLetter } from "../utils";
 import { FlowTypes } from "../../types";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
@@ -32,7 +32,8 @@ async function main() {
   // write to output files
   Object.entries(convertedData).forEach(([key, value]) => {
     const outputJson = JSON.stringify(value, null, 2);
-    fs.writeFileSync(`${OUTPUT_FOLDER}/${key}.json`, outputJson);
+    const outputTs = generateLocalTsOutput(outputJson, key as any);
+    fs.writeFileSync(`${OUTPUT_FOLDER}/${key}.ts`, outputTs);
   });
   console.log(chalk.yellow("Conversion Complete"));
 }
@@ -120,6 +121,16 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
   return json;
 }
 
+/**
+ * Create a ts file of json export, importing what would be the relevant local
+ * typings to allow checking against data (and disabling unwanted additional linting)
+ */
+function generateLocalTsOutput(json: any, flow_type: FlowTypes.FlowType) {
+  const typeName = capitalizeFirstLetter(flow_type);
+  return `/* tslint:disable */
+  import { FlowTypes } from "../../../types";
+  export const ${flow_type}: FlowTypes.${typeName}[] = ${json}`;
+}
 /**
  * Read all xlsx files in the function xlsx folder (ignoring temp files and anything in an 'old' directory)
  * @returns filenames of xlsx files in given folder

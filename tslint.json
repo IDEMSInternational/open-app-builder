@@ -102,6 +102,7 @@
     },
     "no-string-literal": false,
     "prefer-const": false,
-    "no-namespace": false
+    "no-namespace": false,
+    "no-empty-interface": false
   }
 }

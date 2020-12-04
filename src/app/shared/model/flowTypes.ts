@@ -27,7 +27,16 @@ export namespace FlowTypes {
   /*********************************************************************************************
    *  Specific flow types
    ********************************************************************************************/
-  export interface Conversation extends FlowTypeBase {
+  export interface Completions extends FlowTypeWithData {}
+  export interface Completions extends FlowTypeWithData {}
+  export interface Goals extends FlowTypeWithData {}
+  export interface Reminders extends FlowTypeWithData {}
+  export interface Tasks extends FlowTypeWithData {}
+  export interface Tips extends FlowTypeWithData {
+    title: string;
+  }
+
+  export interface Conversation extends FlowTypeWithData {
     flow_type: "conversation";
     character?: "friend" | "guide";
     second_character?: string;

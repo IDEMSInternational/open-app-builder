@@ -1,4 +1,6 @@
-export default [
+/* tslint:disable */
+  import { FlowTypes } from "src/app/shared/model/flowTypes";
+  export const reminders: FlowTypes.Reminders[] = [
   {
     "flow_type": "reminders",
     "flow_name": "reminders_list",
