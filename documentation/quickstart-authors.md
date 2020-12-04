@@ -73,7 +73,12 @@ npm run start
 
 ### Comitting changes
 
-For content changes, it is not required to commit these to github as any developer will also have access to the same gdrive updates and will usually pull prior to release. However it may sometimes be good practice to make a pull request for the changed data, if wishing to identify specific things of note to developers (although this might be easier outside of github).
+For content changes, it is not required to commit these to github as any developer will also have access to the same gdrive updates and will usually pull prior to release. 
+
+Additionally, some scripts (plh conversations) use dynamically generated variables to populate id fields, which will therefore change every time the script is run (This will hopefully be improved on in the future)
+
+
+However it may sometimes be good practice to make a pull request for the changed data, if wishing to identify specific things of note to developers (although this might be easier outside of github).
 
 ### Changing the GDrive data source
 
