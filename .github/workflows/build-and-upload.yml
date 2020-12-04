@@ -35,7 +35,7 @@ jobs:
       - name: Setup GCloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
-          version: '290.0.1'
+          version: "290.0.1"
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_CREDENTIALS }}
           export_default_credentials: true
@@ -44,8 +44,8 @@ jobs:
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - name: npm install
-        run: npm install
+      - name: yarn install
+        run: yarn install
       - name: npm run build
         run: npm run build
       - id: upload-files

@@ -60,7 +60,7 @@ export class OfflineChatService implements IChatService {
 
   /** Load the list of all flows defined as type 'conversation' within the hardcoded data ts file */
   private loadFlowData() {
-    (CONVERSATION as RapidProFlowExport.RootObject[]).forEach((c) => {
+    CONVERSATION.forEach((c) => {
       c.flows.forEach((flow) => (this.flowsByName[flow.name] = flow));
     });
   }

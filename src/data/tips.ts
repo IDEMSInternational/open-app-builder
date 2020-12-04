@@ -1,11 +1,13 @@
-export default [
+/* tslint:disable */
+  import { FlowTypes } from "src/app/shared/model/flowTypes";
+  export const tips: FlowTypes.Tips[] = [
   {
     "flow_type": "tips",
     "module": "ONE_ON_ONE_TIME",
     "flow_name": "mod_1on1_tips",
     "title": "One-on-One Time Tips",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "type": "title",
         "message_text": "One-on-One Time Tips"
@@ -82,7 +84,7 @@ export default [
     "flow_name": "mod_1on1_ideas",
     "title": "One-on-One Time Ideas",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "type": "title",
         "message_text": "One-on-One Time Ideas"
@@ -134,7 +136,7 @@ export default [
     "flow_name": "mod_praise_tips",
     "title": "Praise Tips",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "type": "title",
         "message_text": "Praise Tips",
@@ -190,7 +192,7 @@ export default [
     "flow_name": "mod_praise_ideas_teen",
     "title": "Teen Praise Ideas",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "type": "title",
         "message_text": "Teen Praise Ideas"
@@ -254,7 +256,7 @@ export default [
     "flow_name": "mod_praise_ideas_adult",
     "title": "Adult Praise Ideas",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "type": "title",
         "message_text": "Adult Praise Ideas"
@@ -314,7 +316,7 @@ export default [
     "flow_name": "mod_praise_ideas_self",
     "title": "Self-Praise Ideas",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "type": "title",
         "message_text": "Self-Praise Ideas"
@@ -366,7 +368,7 @@ export default [
     "flow_name": "mod_instructions_tips",
     "title": "Positive Instructions Tips",
     "status": "released",
-    "data": [
+    "rows": [
       {
         "type": "title",
         "message_text": "Positive Instructions Tips"

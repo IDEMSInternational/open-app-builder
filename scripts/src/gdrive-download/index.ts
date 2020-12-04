@@ -11,27 +11,32 @@ import { ArrayToChunks } from "../utils/file-utils";
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 const GOOGLE_DRIVE_TARGET_FOLDER = "PLH Teens app Excel Sheets";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
+const CACHE_FOLDER = path.join(__dirname, "cache");
+const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
+// prepare folders
 fs.ensureDirSync(OUTPUT_FOLDER);
+fs.ensureDirSync(CACHE_FOLDER);
+fs.emptyDirSync(OUTPUT_FOLDER);
+fs.ensureDirSync(LOGS_DIR);
 // global vars
 let drive: drive_v3.Drive;
-// logging
-const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
-fs.ensureDirSync(LOGS_DIR);
 
 async function main() {
   console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
     const { id, name } = await getPLHFolder();
+    console.log(chalk.white("Checking folders for files"));
     const files = await listGdriveFilesRecursively(id, name);
     fs.writeFileSync(`${LOGS_DIR}/files.json`, JSON.stringify(files, null, 2));
+    console.log(chalk.white("Downloading files"));
     await downloadGdriveFiles(files);
   } catch (ex) {
     console.error("GDrive download error", ex);
     process.exit(1);
   }
 }
-main().then(() => console.log(chalk.green("Gdrive data downloaded")));
+main().then(() => console.log(chalk.green("GDrive Data Downloaded")));
 
 /**
  * Lists the names and IDs primary PLH folder
@@ -58,54 +63,79 @@ async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
     .sort((a, b) => (a.name > b.name ? 1 : -1))
     .sort((a, b) => (a.folderPath > b.folderPath ? 1 : -1));
 
-  // TODO - delete files from local folder that no longer exist (instead of all)
-  fs.emptyDirSync(OUTPUT_FOLDER);
   const total = files.length;
   let i = 0;
   // split into chunks to that downloads can be processed in parallel
   // without running out of memory if too many
   const chunks = ArrayToChunks(files, Math.ceil(total / 10));
-  chunks.forEach(async (chunk) => {
+  const promises = chunks.map(async (chunk) => {
     // process in series within a chunk
     for (const file of chunk) {
-      await exportGdriveFile(file);
+      await processGdriveFileExport(file);
       i++;
-      // logUpdate(`Downloaded: ${i}/${total}`);
     }
   });
+  await Promise.all(promises);
 }
 
-async function exportGdriveFile(file: IGDriveFileWithFolder) {
+/**
+ * Prepare for file export. Check local cache to see if file already exists, if not
+ * download/export from google to cache and copy over
+ */
+async function processGdriveFileExport(file: IGDriveFileWithFolder) {
   // setup output folders, paths, and variables
   const { folderPath, modifiedTime } = file;
-  const outputFolder = `${OUTPUT_FOLDER}/${folderPath}`;
-  fs.ensureDirSync(outputFolder);
-  let outputPath = `${outputFolder}/${file.name}`;
+  let filepath = `${folderPath}/${file.name}`;
+  // assign correct file extension if exporting
   if (GDRIVE_OFFICE_MAPPING[file.mimeType]) {
-    outputPath += `.${MIMETYPE_EXTENSIONS[file.mimeType]}`;
+    filepath += `.${MIMETYPE_EXTENSIONS[file.mimeType]}`;
   }
+  const cachePath = `${CACHE_FOLDER}/${filepath}`;
+  fs.ensureDirSync(path.dirname(cachePath));
   // run a regex test for anything ending .abc(d)
   // gdrive keeps duplicate open office formats of gsheets without extension
   // if uploaded as excel files, so these will be omitted (duplicate of converted export)
-  const hasExtension = /\.([a-z0-9]){3,4}$/gi.test(outputPath);
+  const hasExtension = /\.([a-z0-9]){3,4}$/gi.test(cachePath);
   if (!hasExtension) {
-    console.log(chalk.gray(`  ${folderPath}/${file.name}`));
     return;
   }
-  // TODO - check if file already exists and modified date
+  // Check if file already exists in previous cache folder and copy if unchanged
+  // (md5hash/filesizes not supported for gsheets so can't use)
 
-  // Handle the export/download
+  if (fs.existsSync(cachePath)) {
+    const localModified = fs.statSync(cachePath).mtime.toISOString();
+    if (modifiedTime === localModified) {
+      // Unchanged file (skip)
+      console.log(chalk.gray(`[-] ${filepath}`));
+    } else {
+      // Modified file (export)
+      console.log(chalk.cyan(`[M] ${filepath}`));
+      await exportGdriveFile(cachePath, file);
+    }
+  } else {
+    // New file (export)
+    console.log(chalk.blue(`[N] ${filepath}`));
+    await exportGdriveFile(cachePath, file);
+  }
+  // copy downloaded file back from cache to output file
+  const outputPath = `${OUTPUT_FOLDER}/${filepath}`;
+  fs.ensureDirSync(path.dirname(outputPath));
+  fs.copyFileSync(cachePath, outputPath);
+  // assign the same modified time to the file as google drive file
+  // for use in future comparisons and copy as requried
+  const mTime = new Date(file.modifiedTime);
+  fs.utimesSync(cachePath, mTime, mTime);
+  fs.utimesSync(outputPath, mTime, mTime);
+}
+
+async function exportGdriveFile(localPath: string, file: IGDriveFileWithFolder) {
   return new Promise<void>((resolve, reject) => {
-    fs.createFileSync(outputPath);
-    const dest = fs.createWriteStream(outputPath);
-    const mTime = new Date(modifiedTime);
+    // Handle the export/download
+    fs.createFileSync(localPath);
+    const dest = fs.createWriteStream(localPath);
     // assign mimetype for conversion from google file formats to office format
     const mimeType = GDRIVE_OFFICE_MAPPING[file.mimeType] || file.mimeType;
     dest.on("close", () => {
-      // assign the same modified time to the file as google drive file
-      // for use in future comparisons
-      fs.utimesSync(outputPath, mTime, mTime);
-      console.log(chalk.blue(`+ ${folderPath}/${file.name}`));
       resolve();
     });
     const params = { fileId: file.id, mimeType, alt: "media" };

@@ -7,6 +7,8 @@
     "start": "ts-node index.ts",
     "dev": "ts-node-dev --respawn --watch src/**/*.ts index.ts --",
     "test": "jasmine-ts",
+    "decrypt-config": "ts-node src/decrypt-config.ts",
+    "encrypt-config": "ts-node src/encrypt-config.ts",
     "gdrive-download": "ts-node  src/gdrive-download/index.ts",
     "resize-android-assets": "ts-node  src/resizeAndroidAssets.ts",
     "plh-data-convert": "ts-node  src/plh-data-convert/index.ts",

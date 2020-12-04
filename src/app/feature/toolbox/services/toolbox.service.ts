@@ -1,16 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { map } from "rxjs/operators";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { toolboxTopicNames } from "../data/toolbox-topic-metadata";
-import {
-  ToolboxExport,
-  ToolboxTopic,
-  ToolboxTopicMetadata,
-  ToolboxTopicType,
-  ToolboxTip,
-} from "../models/toolbox.model";
+import { ToolboxTopicMetadata, ToolboxTopicType, ToolboxTip } from "../models/toolbox.model";
 import { TIPS } from "src/app/shared/services/data/data.service";
 
 const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
