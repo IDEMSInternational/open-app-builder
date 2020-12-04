@@ -41,7 +41,7 @@ export class TasksService {
    * Read raw task data, refactor as required for use in components
    */
   private processTasksList(actionHistoryHash: Hashmap<ITaskAction[]>) {
-    const allTaskData = [].concat(...TASKS.map((t) => t.data));
+    const allTaskData = [].concat(...TASKS.map((t) => t.rows));
 
     const allTasks = allTaskData.map((t) => {
       const task: ITaskWithMeta = {
