@@ -34,7 +34,7 @@ export namespace FlowTypes {
    * and data corresponding to spreadsheet rows
    */
   export interface FlowTypeWithData extends FlowTypeBase {
-    /** Specific flow data rows */
+    /** Specific flow data rows - these are usually defined from within specific flow type row typings */
     rows: any[];
   }
 
@@ -93,17 +93,12 @@ export namespace FlowTypes {
 
   // To Sort - possibly these typings affect the input and not the output???
 
-  // flow_type: "conversation";
-  // campaigns: any[];
-  // fields: any[];
-  // character?: "friend" | "guide";
-  // second_character?: string;
-  // entry_condition?: string;
-  // output?: string;
-  // comment_suggestion?: string;
-  // topic_id?: string;
-  // rows: ConversationRow[];
-
+  /** Format of conversation rows prior to processing */
+  export interface ConversationSheet extends FlowTypeWithData {
+    flow_type: "conversation";
+    rows: ConversationRow[];
+  }
+  /** Format of conversation rows post processing */
   export interface ConversationRow {
     row_id?: string | number;
     type: "start_new_flow" | "send_message" | "story_message" | "go_to" | "save_value" | "exit";
