@@ -7,6 +7,7 @@ import { groupJsonByKey, recursiveFindByExtension, capitalizeFirstLetter } from 
 import { FlowTypes } from "../../types";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
+const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
 const OUTPUT_FOLDER = `${__dirname}/output`;
 
 /**
@@ -29,6 +30,11 @@ async function main() {
   const merged = mergePLHData(combined);
   const dataByFlowType = groupJsonByKey(merged, "flow_type");
   const convertedData = applyDataParsers(dataByFlowType as any);
+  // write some extra files for logging/debugging purposes
+  fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
+  fs.writeFileSync(`${INTERMEDIATES_FOLDER}/dataByFlowType.json`, JSON.stringify(merged, null, 2));
+  fs.writeFileSync(`${INTERMEDIATES_FOLDER}/convertedData.json`, JSON.stringify(merged, null, 2));
+  return;
   // write to output files
   Object.entries(convertedData).forEach(([key, value]) => {
     const outputJson = JSON.stringify(value, null, 2);

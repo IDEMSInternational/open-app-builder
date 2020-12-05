@@ -17,7 +17,7 @@ export class ConversationParser extends DefaultParser {
     return uuidv4();
   }
 
-  public convert(conversation: FlowTypes.Conversation): RapidProFlowExport.RootObject {
+  public convert(conversation: FlowTypes.ConversationSheet): RapidProFlowExport.RootObject {
     const rapidProExportObject: RapidProFlowExport.RootObject = {
       campaigns: [],
       fields: [],
