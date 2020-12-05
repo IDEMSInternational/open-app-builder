@@ -1,0 +1,12 @@
+<div class="main-container">
+  <div class="main-container-overlay">
+    <plh-habit-tracker></plh-habit-tracker>
+    <div>
+      <plh-slide-left-panel></plh-slide-left-panel>
+      <div>Main Content</div>
+      <ng-container *ngFor="let row of flow.rows">
+        <plh-module-page-flow-component [row]="row"></plh-module-page-flow-component>
+      </ng-container>
+    </div>
+  </div>
+</div>
