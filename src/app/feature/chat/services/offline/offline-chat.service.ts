@@ -83,6 +83,11 @@ export class OfflineChatService implements IChatService {
     }
   }
 
+  public async getFlowNames(): Promise<string[]> {
+    await this.ready();
+    return Object.keys(this.rpFlowsByName);
+  }
+
   public sendMessage(message: ChatMessage): Observable<any> {
     if (this.flowsStack.length > 0) {
       let currentFlow = this.flowsStack[this.flowsStack.length - 1];
