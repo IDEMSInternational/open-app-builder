@@ -48,7 +48,7 @@ export class SettingsPage {
   openWelcomeFlow() {
     this.localStorageService.setBoolean("weclome_skipped", false);
     this.localStorageService.setBoolean("weclome_finished", false);
-    this.router.navigateByUrl("/chat?trigger=welcome");
+    this.router.navigateByUrl("/chat/flow/Welcome_Intro");
   }
 
   selectThemeName(themeName: string) {
