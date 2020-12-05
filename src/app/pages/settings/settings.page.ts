@@ -3,11 +3,11 @@ import { Router } from "@angular/router";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { ThemeService } from "src/app/feature/theme/theme-service/theme.service";
-import { SurveyService } from "../survey/survey.service";
+import { SurveyService } from "src/app/feature/survey/survey.service";
 import { Capacitor } from "@capacitor/core";
-import { UserSetting } from './user.settings.model';
-import { SettingsService } from './settings.service';
-import { OfflineChatService } from '../chat/services/offline/offline-chat.service';
+import { UserSetting } from "./user.settings.model";
+import { SettingsService } from "./settings.service";
+import { OfflineChatService } from "src/app/feature/chat/services/offline/offline-chat.service";
 
 @Component({
   selector: "plh-settings",
@@ -39,9 +39,8 @@ export class SettingsPage {
     this.settingsService.getAllUserSettings().subscribe((userSettings) => {
       this.userSettings = userSettings
         .filter((setting) => Capacitor.isNative || !setting.nativeOnly)
-        .filter((setting) => !setting.devOnly)
-      this.devOnlyUserSettings = userSettings
-        .filter((setting) => setting.devOnly)
+        .filter((setting) => !setting.devOnly);
+      this.devOnlyUserSettings = userSettings.filter((setting) => setting.devOnly);
     });
     this.offlineChatService.getFlowNames().then((flowNames) => {
       this.flowNames = flowNames;

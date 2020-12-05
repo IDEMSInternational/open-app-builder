@@ -8,7 +8,7 @@ import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
 import { FlowStatusChange, OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
-import { SettingsService } from "../../settings/settings.service";
+import { SettingsService } from "src/app/pages/settings/settings.service";
 
 @Component({
   selector: "app-chat",
@@ -67,7 +67,7 @@ export class ChatPage {
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
     public modalCtrl: ModalController
-  ) { }
+  ) {}
 
   /** Initialise chat configuration on page enter */
   ionViewDidEnter() {

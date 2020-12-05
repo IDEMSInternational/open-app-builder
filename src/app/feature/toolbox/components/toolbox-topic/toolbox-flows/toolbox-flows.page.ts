@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { ToolboxElement, ToolboxTip } from "src/app/feature/toolbox/models/toolbox.model";
+import { ToolboxElement } from "src/app/feature/toolbox/models/toolbox.model";
 import { ToolboxService } from "src/app/feature/toolbox/services/toolbox.service";
 import { OpenClose } from "src/app/feature/goals/animations";
+import { FlowTypes } from "scripts/types";
 
 @Component({
   selector: "plh-toolbox-flows",
@@ -12,7 +13,7 @@ import { OpenClose } from "src/app/feature/goals/animations";
 })
 export class ToolboxFlowsPage implements OnInit {
   flow_name: string;
-  flow: ToolboxTip;
+  flow: FlowTypes.Tips;
   elements: ToolboxElement[];
 
   constructor(private activatedRoute: ActivatedRoute, private toolboxService: ToolboxService) {

@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FamilyService } from 'src/app/shared/services/family/family.service';
-import { FamilyMember } from 'src/app/shared/model/family.model';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { FamilyService } from "./services/family.service";
+import { FamilyMember } from "src/app/feature/_deprecated/family/family.model";
+import { Router, NavigationEnd } from "@angular/router";
 
 @Component({
-  selector: 'plh-family',
-  templateUrl: './family.page.html',
-  styleUrls: ['./family.page.scss'],
+  selector: "plh-family",
+  templateUrl: "./family.page.html",
+  styleUrls: ["./family.page.scss"],
 })
 export class FamilyPage implements OnInit {
-
   familyMembers: FamilyMember[];
 
   constructor(private familyService: FamilyService, private router: Router) {
@@ -23,5 +22,4 @@ export class FamilyPage implements OnInit {
   ngOnInit() {
     this.familyMembers = this.familyService.getFamilyMembers();
   }
-
 }

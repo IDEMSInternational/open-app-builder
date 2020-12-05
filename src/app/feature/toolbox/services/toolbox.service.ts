@@ -3,8 +3,9 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { toolboxTopicNames } from "../data/toolbox-topic-metadata";
-import { ToolboxTopicMetadata, ToolboxTopicType, ToolboxTip } from "../models/toolbox.model";
+import { ToolboxTopicMetadata, ToolboxTopicType, TipRow } from "../models/toolbox.model";
 import { TIPS } from "src/app/shared/services/data/data.service";
+import { FlowTypes } from "scripts/types";
 
 const UNLOCKED_TOPICS_LS_KEY = "toolbox.unlocked_topics";
 
@@ -41,22 +42,15 @@ export class ToolboxService {
     return this.localStorageService.setJSON(UNLOCKED_TOPICS_LS_KEY, unlockedTopicMap);
   }
 
-  getTips(): Observable<ToolboxTip[]> {
-    let toolboxTipsData = TIPS as ToolboxTip[];
-    console.log(toolboxTipsData);
-    return of(toolboxTipsData);
-  }
-
-  getModules(ModuleName: string): Observable<ToolboxTip[]> {
-    let toolboxTipsData = TIPS as ToolboxTip[];
+  getModules(ModuleName: string): Observable<FlowTypes.Tips[]> {
+    let toolboxTipsData = TIPS;
     let toolboxModules = toolboxTipsData.filter((tip) => {
       return tip.module === ModuleName;
     });
     return of(toolboxModules);
   }
-  getFlows(FlowName: string): Observable<ToolboxTip> {
-    let toolboxTipsData = TIPS as ToolboxTip[];
-
+  getFlows(FlowName: string): Observable<FlowTypes.Tips> {
+    let toolboxTipsData = TIPS;
     // using Array.find assuming that they can only be one flow item
     let moduleFlows = toolboxTipsData.find((tip) => {
       return tip.flow_name === FlowName;

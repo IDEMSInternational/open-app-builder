@@ -26,7 +26,7 @@ export interface ToolboxSection {
   elements: ToolboxElement[];
 }
 
-export type ToolboxElementType = "LIST" | "CORE_TIP" | "TEXT";
+export type ToolboxElementType = "TITLE" | "CORE_TIP" | "TEXT" | "LIST";
 
 export type ToolboxElement = {
   type: ToolboxElementType;
@@ -42,17 +42,10 @@ export interface ToolboxExport {
   topics: ToolboxTopic[];
 }
 
-export interface ToolboxTip {
-  flow_type: string;
-  module: string;
-  flow_name: string;
-  title?: string;
-  rows: TipData[];
-}
-
-export interface TipData {
-  type: string;
+export interface TipRow {
+  type: "title" | "text" | "list_intro" | "core_tip" | "list_item" | "end_list";
   message_text?: string;
   media?: string;
-  "Comment/suggestion/visual"?: string;
+  comment?: string;
+  comments?: string;
 }

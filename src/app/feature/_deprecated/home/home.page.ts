@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuController } from "@ionic/angular";
-import { ActivatedRoute, Router } from "@angular/router";
-import { SettingsService } from '../settings/settings.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
+import { Router } from "@angular/router";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 @Component({
   selector: "plh-home",
@@ -17,8 +16,6 @@ export class HomePage implements OnInit {
   constructor(
     private menuController: MenuController,
     private router: Router,
-    private route: ActivatedRoute,
-    private settingsService: SettingsService,
     private localStorageService: LocalStorageService
   ) {}
 
@@ -29,8 +26,7 @@ export class HomePage implements OnInit {
     }
   }
 
-  ionViewWillEnter() {
-  }
+  ionViewWillEnter() {}
 
   toggleMenu() {
     this.menuController.toggle("main-side-menu");
