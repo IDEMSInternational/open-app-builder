@@ -16,10 +16,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
 
 import { environment } from "src/environments/environment";
-import { PrivacyPageModule } from "./feature/privacy/privacy.module";
-import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
-import { ThemeEditorComponent } from 'src/app/feature/theme/theme-editor/theme-editor.component';
-import { ColorSketchModule } from 'ngx-color/sketch';
+import { PrivacyPageModule } from "src/app/pages/privacy/privacy.module";
+import { AppTermsPageModule } from "src/app/pages/app-terms/app-terms.module";
+import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
+import { ColorSketchModule } from "ngx-color/sketch";
 import { FormsModule } from "@angular/forms";
 import { SurveyModule } from "src/app/feature/survey/survey.module";
 
@@ -43,11 +43,7 @@ const introModules = [AppTermsPageModule, PrivacyPageModule];
     ...introModules,
     SurveyModule,
   ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    HTTP,
-    Device,
-  ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, HTTP, Device],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

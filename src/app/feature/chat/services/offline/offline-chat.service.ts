@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
-import { SettingsService } from "src/app/feature/settings/settings.service";
+import { SettingsService } from "src/app/pages/settings/settings.service";
 import { ChatMessage, IChatService } from "../../models";
 import { RapidProOfflineFlow } from "./chat.flow";
 import { ContactFieldService } from "./contact-field.service";
