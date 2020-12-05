@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Family</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-button [routerLink]="['add-family-member']">
+  <ion-icon name="add-outline"></ion-icon>
+  Add Family Member
+</ion-button>
+<div class="family-members">
+  <div *ngFor="let familyMember of familyMembers" class="family-member">
+    <p>{{familyMember.name}}, {{familyMember.ageRange}}</p>
+    <plh-blob [ageRange]="familyMember.ageRange" [bodyColor]="familyMember.avatarProperties.bodyColor"></plh-blob>
+  </div>
+</div>
+</ion-content>
