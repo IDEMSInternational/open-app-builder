@@ -1,13 +1,11 @@
-import { Injectable } from '@angular/core';
-import { FamilyMember } from '../../model/family.model';
+import { Injectable } from "@angular/core";
+import { FamilyMember } from "../family.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FamilyService {
-
-  constructor() {
-  }
+  constructor() {}
 
   addFamilyMember(member: FamilyMember) {
     var existingFamilyMembers = [];
@@ -24,5 +22,4 @@ export class FamilyService {
     }
     return [];
   }
-
 }

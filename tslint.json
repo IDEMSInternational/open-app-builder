@@ -49,7 +49,7 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "one-variable-per-declaration": false,
-    "component-class-suffix": [true, "Page", "Component", "Class"],
+    "component-class-suffix": [true, "Page", "Component", "Class", "Skin"],
     "semicolon": [false],
     "space-before-function-paren": {
       "options": {

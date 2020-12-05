@@ -1,0 +1,17 @@
+:host {
+  display: contents;
+}
+// Use the main container and overlay to set a full-sized background
+// as a lighter variant of the primary colour
+.main-container,
+.main-container-overlay {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main-container {
+  background-color: var(--ion-color-primary);
+}
+.main-container-overlay {
+  background-color: rgba(255, 255, 255, 0.85);
+}

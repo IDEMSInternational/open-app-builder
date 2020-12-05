@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { IonSlides, ModalController } from "@ionic/angular";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
-import { AppTermsPage } from "src/app/feature/app-terms/app-terms.page";
-import { PrivacyPage } from "src/app/feature/privacy/privacy.page";
+import { AppTermsPage } from "src/app/pages/app-terms/app-terms.page";
+import { PrivacyPage } from "src/app/pages/privacy/privacy.page";
 import { ISurvey, ISurveyResponse } from "../../types/survey.types";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
