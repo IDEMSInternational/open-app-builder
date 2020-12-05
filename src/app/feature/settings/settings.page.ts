@@ -7,6 +7,7 @@ import { SurveyService } from "../survey/survey.service";
 import { Capacitor } from "@capacitor/core";
 import { UserSetting } from './user.settings.model';
 import { SettingsService } from './settings.service';
+import { OfflineChatService } from '../chat/services/offline/offline-chat.service';
 
 @Component({
   selector: "plh-settings",
@@ -22,13 +23,16 @@ export class SettingsPage {
   public userSettings: UserSetting[] = [];
   public devOnlyUserSettings: UserSetting[] = [];
 
+  public flowNames: string[] = [];
+
   constructor(
     private localStorageService: LocalStorageService,
     private router: Router,
     private themeService: ThemeService,
     private surveyService: SurveyService,
     private dbService: DbService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private offlineChatService: OfflineChatService
   ) {
     this.themeNames = this.themeService.getThemes().map((theme) => theme.name);
     this.currentThemeName = this.themeService.getCurrentTheme().name;
@@ -38,6 +42,9 @@ export class SettingsPage {
         .filter((setting) => !setting.devOnly)
       this.devOnlyUserSettings = userSettings
         .filter((setting) => setting.devOnly)
+    });
+    this.offlineChatService.getFlowNames().then((flowNames) => {
+      this.flowNames = flowNames;
     });
   }
 
@@ -69,5 +76,9 @@ export class SettingsPage {
     this.dbService.db.delete().then(() => {
       location.reload();
     });
+  }
+
+  launchFlowByName(flowName: string) {
+    this.router.navigateByUrl("/chat/flow/" + flowName);
   }
 }
