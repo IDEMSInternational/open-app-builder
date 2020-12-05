@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Family Member</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<h1>Add a member of your family</h1>
+<form (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-label>Name:</ion-label>
+    <ion-input name="name" [(ngModel)]="newMember.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Age Range:</ion-label>
+    <ion-select name="ageRange" [(ngModel)]="newMember.ageRange">
+      <ion-select-option value="baby">Baby</ion-select-option>
+      <ion-select-option value="child">Child</ion-select-option>
+      <ion-select-option value="teen">Teen</ion-select-option>
+      <ion-select-option value="adult">Adult</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Age:</ion-label>
+    <ion-input name="age" [(ngModel)]="newMember.age" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Color:</ion-label>
+    <div class="color-options">
+      <div *ngFor="let color of colorOptions" class="color-option" [style.backgroundColor]="color" (click)="onColorChange(color)"></div>
+    </div>
+  </ion-item>
+  
+  <ion-item>
+    <plh-blob1 [bodyColor]="newMember.avatarProperties.bodyColor"></plh-blob1>
+  </ion-item>
+  <ion-button type="submit" color="primary" expand="block" [disabled]="newMember.name.length < 1">Add</ion-button>
+</form>
+</ion-content>

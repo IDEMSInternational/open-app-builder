@@ -1,0 +1,10 @@
+<ion-content class="ion-padding">
+  <div style="height: 100%; width: 100%; display: flex; flex-direction: column">
+    <div style="flex: 1">
+      <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+    </div>
+    <ion-button (click)="scheduleNotification()"
+      >Example Notification</ion-button
+    >
+  </div>
+</ion-content>
