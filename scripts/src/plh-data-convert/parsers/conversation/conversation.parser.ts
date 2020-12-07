@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import chalk from "chalk";
-import { DefaultParser } from "../default/default.parser";
 import { FlowTypes, RapidProFlowExport } from "../../../../types";
+import { AbstractParser } from "../abstract.parser";
 
 // Default settings
 const version: string = "13";
@@ -12,12 +12,12 @@ const flowType: string = "messaging";
 const defaultRevision: number = 0;
 const flowExpireAfterMinutes: number = 60;
 
-export class ConversationParser extends DefaultParser {
+export class ConversationParser implements AbstractParser {
   private generateUUID() {
     return uuidv4();
   }
 
-  public convert(conversation: FlowTypes.ConversationSheet): RapidProFlowExport.RootObject {
+  public run(conversation: FlowTypes.ConversationSheet): RapidProFlowExport.RootObject {
     const rapidProExportObject: RapidProFlowExport.RootObject = {
       campaigns: [],
       fields: [],

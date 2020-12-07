@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "module-page-flow-step-item",
+  selector: "module-list-flow-step-item",
   template: `<div>Step Item</div>`,
 })
 export class StepItemFlowComponent implements OnInit {

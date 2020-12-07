@@ -4,7 +4,7 @@
     <div [ngSwitch]="appSkin" class="container-full">
       <plh-module-focus-skin
         *ngSwitchCase="'MODULE_FOCUS_SKIN'"
-        [modulePageFlow]="modulePageFlow"
+        [moduleListRow]="moduleListRow"
       ></plh-module-focus-skin>
       <!-- If the specified skin does not exist show an error -->
       <div *ngSwitchDefault class="content-error">
