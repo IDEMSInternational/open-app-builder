@@ -5,6 +5,7 @@ import chalk from "chalk";
 import { ConversationParser, DefaultParser } from "./parsers";
 import { groupJsonByKey, recursiveFindByExtension, capitalizeFirstLetter } from "../utils";
 import { FlowTypes } from "../../types";
+import { AbstractParser } from "./parsers/abstract.parser";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
@@ -34,7 +35,6 @@ async function main() {
   fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
   fs.writeFileSync(`${INTERMEDIATES_FOLDER}/dataByFlowType.json`, JSON.stringify(merged, null, 2));
   fs.writeFileSync(`${INTERMEDIATES_FOLDER}/convertedData.json`, JSON.stringify(merged, null, 2));
-  return;
   // write to output files
   Object.entries(convertedData).forEach(([key, value]) => {
     const outputJson = JSON.stringify(value, null, 2);
@@ -53,14 +53,16 @@ main()
 function applyDataParsers(
   dataByFlowType: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] }
 ) {
-  const parsers: { [flowType in FlowTypes.FlowType]?: DefaultParser } = {
+  const parsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
     conversation: new ConversationParser(),
+    module_page: new DefaultParser(),
+    tips: new DefaultParser(),
   };
   console.log(chalk.blue(`Parsers applied to flow_types: ${Object.keys(parsers).join(", ")}`));
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
     if (parsers.hasOwnProperty(key)) {
-      parsedData[key] = contentFlows.map((flow) => parsers[key].convert(flow));
+      parsedData[key] = contentFlows.map((flow) => parsers[key].run(flow));
     } else {
       parsedData[key] = contentFlows;
     }
@@ -77,7 +79,6 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
   const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
   const releasedSummary = {};
   const skippedSummary = {};
-  console.log("merging", jsons.length);
   for (let el of jsons) {
     const { json, xlsxPath } = el;
     const contentList = json["==content_list=="] as FlowTypes.FlowTypeWithData[];
