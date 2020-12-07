@@ -23,37 +23,34 @@
         "text": "Looking after yourself is essential for parenting."
       },
       {
-        "row_id": 4,
-        "type": "begin_step"
-      },
-      {
-        "row_id": 5,
-        "type": "step_intro",
-        "text": "Complete the following things to learn more"
-      },
-      {
-        "row_id": 6,
-        "type": "step_item",
-        "task_id": "task_mod_welcome_self-care_package"
-      },
-      {
-        "row_id": 7,
-        "type": "step_item",
-        "task_id": "task_mod_welcome_quick_praise"
-      },
-      {
-        "row_id": 8,
-        "type": "step_item",
-        "task_id": "task_mod_welcome_survey"
-      },
-      {
-        "row_id": 9,
-        "type": "step_item",
-        "task_id": "task_mod_welcome_photo_activity"
-      },
-      {
-        "row_id": 10,
-        "type": "end_step"
+        "type": "step_group",
+        "rows": [
+          {
+            "row_id": 5,
+            "type": "step_intro",
+            "text": "Complete the following things to learn more"
+          },
+          {
+            "row_id": 6,
+            "type": "step_item",
+            "task_id": "task_mod_welcome_self-care_package"
+          },
+          {
+            "row_id": 7,
+            "type": "step_item",
+            "task_id": "task_mod_welcome_quick_praise"
+          },
+          {
+            "row_id": 8,
+            "type": "step_item",
+            "task_id": "task_mod_welcome_survey"
+          },
+          {
+            "row_id": 9,
+            "type": "step_item",
+            "task_id": "task_mod_welcome_photo_activity"
+          }
+        ]
       }
     ]
   },
@@ -79,41 +76,39 @@
         "text": "One-on-One Time helps build a positive, trusting relationship. When you really show interest in your teens, you make them feel valued and appreciated."
       },
       {
-        "type": "begin_step"
-      },
-      {
-        "row_id": 4,
-        "type": "step_intro",
-        "text": "Complete the following things to learn more and unlock your toolbox"
-      },
-      {
-        "row_id": 5,
-        "type": "step_item",
-        "task_id": "task_mod_1on1_emo"
-      },
-      {
-        "row_id": 6,
-        "type": "step_item",
-        "task_id": "task_mod_1on1_intro"
-      },
-      {
-        "row_id": 7,
-        "type": "step_item",
-        "task_id": "task_mod_1on1_tips"
-      },
-      {
-        "row_id": 8,
-        "type": "step_item",
-        "task_id": "task_mod_1on1_activity"
-      },
-      {
-        "row_id": 9,
-        "type": "step_item",
-        "task_id": "task_mod_1on1_activity_review"
-      },
-      {
-        "row_id": 10,
-        "type": "end_step"
+        "type": "step_group",
+        "rows": [
+          {
+            "row_id": 4,
+            "type": "step_intro",
+            "text": "Complete the following things to learn more and unlock your toolbox"
+          },
+          {
+            "row_id": 5,
+            "type": "step_item",
+            "task_id": "task_mod_1on1_emo"
+          },
+          {
+            "row_id": 6,
+            "type": "step_item",
+            "task_id": "task_mod_1on1_intro"
+          },
+          {
+            "row_id": 7,
+            "type": "step_item",
+            "task_id": "task_mod_1on1_tips"
+          },
+          {
+            "row_id": 8,
+            "type": "step_item",
+            "task_id": "task_mod_1on1_activity"
+          },
+          {
+            "row_id": 9,
+            "type": "step_item",
+            "task_id": "task_mod_1on1_activity_review"
+          }
+        ]
       },
       {
         "row_id": 11,
@@ -145,36 +140,34 @@
         "text": "Praise your children when they are behaving well! When you bring more attention to positive behaviour, they are likely to do it more often. They also will feel good about themselves! "
       },
       {
-        "type": "begin_step"
-      },
-      {
-        "row_id": 4,
-        "type": "step_intro",
-        "text": "Complete the following things to learn more and unlock your toolbox"
-      },
-      {
-        "row_id": 5,
-        "type": "step_item",
-        "task_id": "task_mod_praise_intro"
-      },
-      {
-        "row_id": 7,
-        "type": "step_item",
-        "task_id": "task_mod_praise_tips"
-      },
-      {
-        "row_id": 8,
-        "type": "step_item",
-        "task_id": "task_mod_praise_activity"
-      },
-      {
-        "row_id": 9,
-        "type": "step_item",
-        "task_id": "task_mod_praise_activity_review"
-      },
-      {
-        "row_id": 10,
-        "type": "end_step"
+        "type": "step_group",
+        "rows": [
+          {
+            "row_id": 4,
+            "type": "step_intro",
+            "text": "Complete the following things to learn more and unlock your toolbox"
+          },
+          {
+            "row_id": 5,
+            "type": "step_item",
+            "task_id": "task_mod_praise_intro"
+          },
+          {
+            "row_id": 7,
+            "type": "step_item",
+            "task_id": "task_mod_praise_tips"
+          },
+          {
+            "row_id": 8,
+            "type": "step_item",
+            "task_id": "task_mod_praise_activity"
+          },
+          {
+            "row_id": 9,
+            "type": "step_item",
+            "task_id": "task_mod_praise_activity_review"
+          }
+        ]
       },
       {
         "row_id": 11,
@@ -206,40 +199,38 @@
         "text": "Positive instructions help us focus on the things we should be doing and keep our relationship positive. "
       },
       {
-        "type": "begin_step"
-      },
-      {
-        "row_id": 4,
-        "type": "step_intro",
-        "text": "Complete the following things to learn more and unlock your toolbox"
-      },
-      {
-        "row_id": 5,
-        "type": "step_item",
-        "text": "Parenting check-in",
-        "task_id": "task_mod_instructions_par"
-      },
-      {
-        "row_id": 7,
-        "type": "step_item",
-        "text": "Intro to positive instructions",
-        "task_id": "task_mod_instructions_intro"
-      },
-      {
-        "row_id": 8,
-        "type": "step_item",
-        "text": "Home activity",
-        "task_id": "task_mod_instructions_activity"
-      },
-      {
-        "row_id": 9,
-        "type": "step_item",
-        "text": "Home activity review",
-        "task_id": "task_mod_instructions_activity_review"
-      },
-      {
-        "row_id": 10,
-        "type": "end_step"
+        "type": "step_group",
+        "rows": [
+          {
+            "row_id": 4,
+            "type": "step_intro",
+            "text": "Complete the following things to learn more and unlock your toolbox"
+          },
+          {
+            "row_id": 5,
+            "type": "step_item",
+            "text": "Parenting check-in",
+            "task_id": "task_mod_instructions_par"
+          },
+          {
+            "row_id": 7,
+            "type": "step_item",
+            "text": "Intro to positive instructions",
+            "task_id": "task_mod_instructions_intro"
+          },
+          {
+            "row_id": 8,
+            "type": "step_item",
+            "text": "Home activity",
+            "task_id": "task_mod_instructions_activity"
+          },
+          {
+            "row_id": 9,
+            "type": "step_item",
+            "text": "Home activity review",
+            "task_id": "task_mod_instructions_activity_review"
+          }
+        ]
       },
       {
         "row_id": 11,
@@ -271,40 +262,38 @@
         "text": "One-on-One Time helps build a positive, trusting relationship. When you really show interest in your teens, you make them feel valued and appreciated."
       },
       {
-        "type": "begin_step"
-      },
-      {
-        "row_id": 4,
-        "type": "step_intro",
-        "text": "Complete the following things to learn more and unlock your toolbox"
-      },
-      {
-        "row_id": 5,
-        "type": "step_item",
-        "text": "Intro to praise",
-        "task_id": "task_mod_praise_intro"
-      },
-      {
-        "row_id": 7,
-        "type": "step_item",
-        "text": "Core tips",
-        "task_id": "task_mod_praise_tips"
-      },
-      {
-        "row_id": 8,
-        "type": "step_item",
-        "text": "Home activity",
-        "task_id": "task_mod_praise_activity"
-      },
-      {
-        "row_id": 9,
-        "type": "step_item",
-        "text": "Home activity review",
-        "task_id": "task_mod_praise_activity_review"
-      },
-      {
-        "row_id": 10,
-        "type": "end_step"
+        "type": "step_group",
+        "rows": [
+          {
+            "row_id": 4,
+            "type": "step_intro",
+            "text": "Complete the following things to learn more and unlock your toolbox"
+          },
+          {
+            "row_id": 5,
+            "type": "step_item",
+            "text": "Intro to praise",
+            "task_id": "task_mod_praise_intro"
+          },
+          {
+            "row_id": 7,
+            "type": "step_item",
+            "text": "Core tips",
+            "task_id": "task_mod_praise_tips"
+          },
+          {
+            "row_id": 8,
+            "type": "step_item",
+            "text": "Home activity",
+            "task_id": "task_mod_praise_activity"
+          },
+          {
+            "row_id": 9,
+            "type": "step_item",
+            "text": "Home activity review",
+            "task_id": "task_mod_praise_activity_review"
+          }
+        ]
       },
       {
         "row_id": 11,
