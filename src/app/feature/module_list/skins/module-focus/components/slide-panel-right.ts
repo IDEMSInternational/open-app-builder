@@ -19,13 +19,18 @@ import { Component, Input } from "@angular/core";
       .main-container {
         position: absolute;
         z-index: 2;
-        background: red;
+        background: white;
         right: calc(var(--plh-panel-width) * -1 + var(--plh-header-height));
         height: var(--plh-panel-height);
         margin: auto;
         width: var(--plh-panel-width);
         top: 50%;
         bottom: 50%;
+        border-radius: 20px;
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+        transition: right 0.3s linear;
       }
       .main-container.expanded {
         right: 0;
@@ -33,7 +38,6 @@ import { Component, Input } from "@angular/core";
       .content {
         margin-left: var(--plh-header-height);
         padding: 8px;
-        background: yellow;
         width: 100%;
         height: 100%;
         position: absolute;

@@ -5,7 +5,7 @@ import { IonicModule } from "@ionic/angular";
 
 // components
 import { HabitTrackerComponent } from "./components/habit-tracker";
-import { ModuleSelectCircleComponent } from "./components/module-select-circle";
+import { ModuleSelectCircleComponent } from "./components/module-select-circle/module-select-circle.component";
 import { SlidePanelRightComponent } from "./components/slide-panel-right";
 import { SlidePanelBottomComponent } from "./components/slide-panel-bottom";
 import { ThingsToDoListComponent } from "./components/things-to-do-list";
