@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { ActivatedRoute } from "@angular/router";
+import { FlowTypes } from "scripts/types";
 import { MODULE_PAGE } from "src/app/shared/services/data/data.service";
 
 @Component({
@@ -7,18 +8,15 @@ import { MODULE_PAGE } from "src/app/shared/services/data/data.service";
   templateUrl: "./module-page.html",
   styleUrls: ["./module-page.scss"],
 })
-export class ModulePage implements OnInit {
+export class ModulePageComponent implements OnInit {
+  dataLoaded = false;
   appSkin = "MODULE_FOCUS_SKIN";
   modulePageFlow: FlowTypes.Module_page;
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.loadActiveModule();
-  }
-
-  async loadActiveModule() {
-    // TODO - determine what is the last user-set active module and if the module has been updated/rotated
-    // via the stored trigger actions
-    this.modulePageFlow = MODULE_PAGE[0];
+    const { flow_name } = this.route.snapshot.params;
+    this.modulePageFlow = MODULE_PAGE.find((m) => m.flow_name === flow_name);
+    this.dataLoaded = true;
   }
 }
