@@ -19,7 +19,7 @@ import { Component, Input } from "@angular/core";
       .main-container {
         position: absolute;
         z-index: 2;
-        background: white;
+        background: #DAF7FF;
         right: calc(var(--plh-panel-width) * -1 + var(--plh-header-height));
         height: var(--plh-panel-height);
         margin: auto;
