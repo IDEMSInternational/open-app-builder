@@ -23,8 +23,8 @@ export class ModuleSelectCircleComponent implements OnChanges {
   @Output() onModuleChange: EventEmitter<Module> = new EventEmitter();
   outerModuleCircles: ModuleCircle[] = [];
 
-  innerCircleDiameter: number = 100; // Number in px
-  outerCirclesDiameter: number = 50; // Number in percent of container
+  innerCircleDiameter: number = 90; // Number in px
+  outerCirclesDiameter: number = 50; // Number in px
 
   constructor() { }
 
