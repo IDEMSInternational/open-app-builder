@@ -1,1 +1,1 @@
-export * from "./module-focus/module-focus.skin.module";
+export * from "./module-focus/module-focus.skin";

@@ -5,11 +5,16 @@ import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-e
 const FeatureRoutes: Routes = [
   {
     path: "",
-    redirectTo: "home",
+    redirectTo: "module_list",
     pathMatch: "full",
   },
   {
-    path: "home",
+    path: "module_list",
+    loadChildren: () =>
+      import("./feature/module_list/module-list.module").then((m) => m.ModuleListModule),
+  },
+  {
+    path: "module_page/:flow_name",
     loadChildren: () =>
       import("./feature/module_page/module-page.module").then((m) => m.ModulePageModule),
   },

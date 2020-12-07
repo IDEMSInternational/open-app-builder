@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 
 @Component({
@@ -7,10 +7,6 @@ import { FlowTypes } from "src/app/shared/model/flowTypes";
   styleUrls: ["./module-focus.skin.scss"],
 })
 /** The module-focus skin has nested routing, which is handled in a basic way here */
-export class ModuleFocusSkin implements OnInit {
-  @Input() modulePageFlow: FlowTypes.Module_page;
-
-  ngOnInit() {
-    console.log("modulePageRow", this.modulePageFlow);
-  }
+export class ModuleFocusSkin {
+  @Input() moduleListRow: FlowTypes.Module_listRow;
 }
