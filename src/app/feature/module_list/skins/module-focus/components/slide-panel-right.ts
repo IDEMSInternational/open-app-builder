@@ -2,8 +2,8 @@ import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "plh-slide-panel-right",
-  template: ` <section class="main-container" (click)="toggleExpand()" [class.expanded]="expanded">
-    <h3 class="panel-header">{{ headerText }}</h3>
+  template: ` <section class="main-container" [class.expanded]="expanded">
+    <h3 class="panel-header" (click)="toggleExpand()">{{ headerText }}</h3>
     <div class="content">
       <ng-content></ng-content>
     </div>

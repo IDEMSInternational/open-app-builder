@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 
 type Module = FlowTypes.Module_listRow;
@@ -19,6 +19,8 @@ export class ModuleSelectCircleComponent implements OnChanges {
 
   @Input() modules: Module[];
   @Input() currentModule: Module;
+
+  @Output() onModuleChange: EventEmitter<Module> = new EventEmitter();
   outerModuleCircles: ModuleCircle[] = [];
 
   innerCircleDiameter: number = 100; // Number in px
@@ -27,7 +29,7 @@ export class ModuleSelectCircleComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.modules && this.modules) {
+    if (this.modules) {
       this.outerModuleCircles = this.modules
         .map((module, index) => {
           const angleRadians = Math.PI * 2 * (index + 1) / this.modules.length;
@@ -49,6 +51,9 @@ export class ModuleSelectCircleComponent implements OnChanges {
     }
   }
 
-
+  onModuleClicked(moduleId: string) {
+    const matchingModule = this.modules.find((mod) => mod.id === moduleId);
+    this.onModuleChange.emit(matchingModule);
+  }
 
 }

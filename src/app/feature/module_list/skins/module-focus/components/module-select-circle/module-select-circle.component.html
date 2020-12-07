@@ -1,6 +1,7 @@
 <div class="module-circle-container">
   <div *ngFor="let moduleCircle of outerModuleCircles" [ngClass]="moduleCircle.cssClass"
-    [ngStyle]="{'left': moduleCircle.left, 'top': moduleCircle.top}">
+    [ngStyle]="{'left': moduleCircle.left, 'top': moduleCircle.top}"
+    (click)="onModuleClicked(moduleCircle.id)">
     <img [src]="'assets/images/module-icons/' + moduleCircle.id + '.svg'">
   </div>
   <div class="inner-circle">
