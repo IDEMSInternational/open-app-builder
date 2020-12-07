@@ -28,9 +28,10 @@ import { Component, Input } from "@angular/core";
         bottom: 50%;
         border-radius: 20px;
         border-style: solid;
-        border-color: black;
+        border-color: grey;
         border-width: 1px;
         transition: right 0.3s linear;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
       }
       .main-container.expanded {
         right: 0;
