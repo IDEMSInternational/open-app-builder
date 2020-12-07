@@ -1,0 +1,17 @@
+<div class="main-container">
+  <div class="main-container-overlay">
+    <plh-habit-tracker></plh-habit-tracker>
+    <div>Module Image Here: {{moduleListRow.main_image}}</div>
+    <h1>{{moduleListRow.title}}</h1>
+    <p>{{moduleListRow.description}}</p>
+    <ion-button [routerLink]="['/','module_page',moduleListRow.module_page]"
+      >Go To Module</ion-button
+    >
+    <plh-slide-panel-right headerText="Modules">
+      <plh-module-select-circle></plh-module-select-circle>
+    </plh-slide-panel-right>
+    <plh-slide-panel-bottom headerText="Things To Do">
+      <plh-things-to-do-list></plh-things-to-do-list>
+    </plh-slide-panel-bottom>
+  </div>
+</div>

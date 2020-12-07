@@ -43,9 +43,10 @@ export interface ToolboxExport {
 }
 
 export interface TipRow {
-  type: "title" | "text" | "list_intro" | "core_tip" | "list_item" | "end_list";
+  type: "title" | "text" | "list_intro" | "core_tip" | "list_item" | "list_group";
   message_text?: string;
   media?: string;
   comment?: string;
   comments?: string;
+  rows?: TipRow[];
 }

@@ -81,14 +81,14 @@ export namespace FlowTypes {
       | "title"
       | "button"
       | "description"
-      | "begin_step"
+      | "step_group"
       | "step_intro"
-      | "step_item"
-      | "end_step";
-
+      | "step_item";
     text?: string;
     media?: string;
     task_id?: string;
+    /** Some groups may recursively nest other row objects */
+    rows?: Module_pageRow[];
   }
 
   // To Sort - possibly these typings affect the input and not the output???

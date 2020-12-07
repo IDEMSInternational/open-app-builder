@@ -10,16 +10,16 @@ import {
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
+import { FlowTypes } from "src/app/shared/model/flowTypes";
 /*********************************************************************
  * Flow Components
  * These should also be included in module declarations at bottom
  *********************************************************************/
 import {
-  BeginStepFlowComponent,
   ButtonFlowComponent,
   DescriptionFlowComponent,
-  EndStepFlowComponent,
   MainImageFlowComponent,
+  StepGroupFlowComponent,
   StepIntroFlowComponent,
   StepItemFlowComponent,
   TitleFlowComponent,
@@ -32,10 +32,9 @@ import {
 type IFlowComponentMapping = { [flow_type in FlowTypes.Module_pageRow["type"]]: Type<any> };
 
 const FLOW_COMPONENT_MAPPING: IFlowComponentMapping = {
-  begin_step: BeginStepFlowComponent,
   description: DescriptionFlowComponent,
-  end_step: EndStepFlowComponent,
   main_image: MainImageFlowComponent,
+  step_group: StepGroupFlowComponent,
   step_intro: StepIntroFlowComponent,
   step_item: StepItemFlowComponent,
   title: TitleFlowComponent,
@@ -55,13 +54,13 @@ export class FlowComponentHostDirective {
  * Dynamic element to populate flow specific flow component
  *********************************************************************/
 import { Component, OnInit } from "@angular/core";
-import { FlowTypes } from "scripts/types";
 @Component({
   selector: "plh-module-page-flow-component",
   template: ` <ng-template appFlowComponentHost></ng-template> `,
 })
 export class FlowComponent implements OnInit {
   @Input() row: FlowTypes.Module_pageRow;
+  @Input() flow: FlowTypes.Module_page;
   @ViewChild(FlowComponentHostDirective, { static: true })
   flowComponentHost: FlowComponentHostDirective;
   flowComponents = FLOW_COMPONENT_MAPPING;
@@ -80,11 +79,10 @@ export class FlowComponent implements OnInit {
  *  Module export
  *********************************************************************/
 const FLOW_COMPONENTS = [
-  BeginStepFlowComponent,
   ButtonFlowComponent,
   DescriptionFlowComponent,
-  EndStepFlowComponent,
   MainImageFlowComponent,
+  StepGroupFlowComponent,
   StepIntroFlowComponent,
   StepItemFlowComponent,
   TitleFlowComponent,
