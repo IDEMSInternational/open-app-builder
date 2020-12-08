@@ -26,7 +26,7 @@
           {
             "type": "list_intro",
             "message_text": "Here are 6 tips to make One-on-One Time a positive experience for you and your teen:",
-            "comments": "audio_tips_1on1"
+            "comment": "audio_tips_1on1"
           },
           {
             "type": "list_item",
@@ -143,52 +143,41 @@
     "rows": [
       {
         "type": "title",
-        "message_text": "Praise Tips",
+        "message_text": "Praise top tips",
         "comment": "Image of teen sweeping, parent encouraging them  \n(hand on shoulder/high five)"
-      },
-      {
-        "type": "text",
-        "message_text": "Praise your children when they are behaving well! They may not show it but you'll see them doing that good behaviour again…\n"
-      },
-      {
-        "type": "text",
-        "message_text": "Praise works for our children, too. When you bring more attention to positive behaviour, they are likely to do it more often. They also will feel good about themselves!"
       },
       {
         "type": "list_group",
         "rows": [
           {
-            "type": "list_intro"
+            "type": "list_item",
+            "message_text": "1. FIND IT"
+          },
+          {
+            "type": "text",
+            "message_text": "Look for anything your teen does that is helpful or good, and praise them. They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care."
           },
           {
             "type": "list_item",
-            "message_text": "Step 1. Praise your teenager for something they have done well"
+            "message_text": "2. PRAISE IT"
           },
           {
             "type": "text",
-            "message_text": "They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care."
+            "message_text": "Be enthusiastic - Really mean it when you say it!"
           },
           {
             "type": "list_item",
-            "message_text": "Step 2. Praise the behaviour"
+            "message_text": "3. FEED IT"
           },
           {
             "type": "text",
-            "message_text": "Use words to describe the behaviour that you are praising. Say \"Well done for finishing all your chores, Sam\", instead of \"Good job\"."
-          },
-          {
-            "type": "list_item",
-            "message_text": "Step 3. Praise with enthusiasm"
-          },
-          {
-            "type": "text",
-            "message_text": "Really mean it when you say it!"
-          },
-          {
-            "type": "text",
-            "message_text": "Try to find 3 things that you can praise your children for every day. \nYou can also praise other adults in your household, too. Notice how they respond!"
+            "message_text": "Try to find something every day to thank them for. Even something really small."
           }
         ]
+      },
+      {
+        "type": "text",
+        "message_text": "You can also praise other adults in your household, too. Notice how they respond!"
       }
     ]
   },

@@ -79,39 +79,51 @@
         "type": "step_group",
         "rows": [
           {
-            "row_id": 4,
+            "row_id": 5,
             "type": "step_intro",
             "text": "Complete the following things to learn more and unlock your toolbox"
           },
           {
-            "row_id": 5,
-            "type": "step_item",
-            "task_id": "task_mod_1on1_emo"
-          },
-          {
             "row_id": 6,
             "type": "step_item",
-            "task_id": "task_mod_1on1_intro"
+            "text": "Welcome",
+            "task_id": "task_mod_1on1_emo"
           },
           {
             "row_id": 7,
             "type": "step_item",
-            "task_id": "task_mod_1on1_tips"
+            "task_id": "task_mod_1on1_intro"
           },
           {
             "row_id": 8,
             "type": "step_item",
-            "task_id": "task_mod_1on1_activity"
+            "task_id": "task_mod_1on1_tips"
           },
           {
             "row_id": 9,
+            "type": "step_item",
+            "text": "Practice at home",
+            "task_id": "task_mod_1on1_activity"
+          },
+          {
+            "row_id": 10,
+            "type": "step_item",
+            "task_id": "task_mod_1on1_par"
+          },
+          {
+            "row_id": 11,
+            "type": "step_item",
+            "task_id": "task_mod_1on1_fun"
+          },
+          {
+            "row_id": 12,
             "type": "step_item",
             "task_id": "task_mod_1on1_activity_review"
           }
         ]
       },
       {
-        "row_id": 11,
+        "row_id": 14,
         "type": "button",
         "text": "Toolbox",
         "task_id": "task_mod_1on1_tips"
@@ -143,12 +155,12 @@
         "type": "step_group",
         "rows": [
           {
-            "row_id": 4,
+            "row_id": 5,
             "type": "step_intro",
             "text": "Complete the following things to learn more and unlock your toolbox"
           },
           {
-            "row_id": 5,
+            "row_id": 6,
             "type": "step_item",
             "task_id": "task_mod_praise_intro"
           },
@@ -160,17 +172,28 @@
           {
             "row_id": 8,
             "type": "step_item",
+            "text": "Practice at home",
             "task_id": "task_mod_praise_activity"
           },
           {
             "row_id": 9,
+            "type": "step_item",
+            "task_id": "task_mod_praise_emo"
+          },
+          {
+            "row_id": 10,
+            "type": "step_item",
+            "task_id": "task_mod_praise_fun"
+          },
+          {
+            "row_id": 11,
             "type": "step_item",
             "task_id": "task_mod_praise_activity_review"
           }
         ]
       },
       {
-        "row_id": 11,
+        "row_id": 13,
         "type": "button",
         "text": "Toolbox",
         "task_id": "task_mod_praise_tips"
@@ -202,48 +225,49 @@
         "type": "step_group",
         "rows": [
           {
-            "row_id": 4,
+            "row_id": 5,
             "type": "step_intro",
             "text": "Complete the following things to learn more and unlock your toolbox"
           },
           {
-            "row_id": 5,
+            "row_id": 6,
             "type": "step_item",
-            "text": "Parenting check-in",
             "task_id": "task_mod_instructions_par"
           },
           {
             "row_id": 7,
             "type": "step_item",
-            "text": "Intro to positive instructions",
             "task_id": "task_mod_instructions_intro"
           },
           {
             "row_id": 8,
             "type": "step_item",
-            "text": "Home activity",
-            "task_id": "task_mod_instructions_activity"
+            "task_id": "task_mod_instructions_tips"
           },
           {
             "row_id": 9,
             "type": "step_item",
-            "text": "Home activity review",
+            "task_id": "task_mod_instructions_activity"
+          },
+          {
+            "row_id": 10,
+            "type": "step_item",
             "task_id": "task_mod_instructions_activity_review"
           }
         ]
       },
       {
-        "row_id": 11,
+        "row_id": 12,
         "type": "button",
         "text": "Toolbox",
-        "task_id": "task_mod_praise_tips"
+        "task_id": "task_mod_instructions_tips"
       }
     ]
   },
   {
     "flow_type": "module_page",
     "module": "anger",
-    "flow_name": "mod_anger_page",
+    "flow_name": "mod_stress_page",
     "status": "released",
     "rows": [
       {
@@ -254,52 +278,43 @@
       {
         "row_id": 2,
         "type": "title",
-        "text": "One-on-one time"
+        "text": "Managing Anger & Stress"
       },
       {
         "row_id": 3,
         "type": "description",
-        "text": "One-on-One Time helps build a positive, trusting relationship. When you really show interest in your teens, you make them feel valued and appreciated."
+        "text": "It is good to share our emotions with our teens, so they can learn to share their emotions with us too – the positive and the difficult ones!"
       },
       {
         "type": "step_group",
         "rows": [
           {
-            "row_id": 4,
+            "row_id": 5,
             "type": "step_intro",
             "text": "Complete the following things to learn more and unlock your toolbox"
           },
           {
-            "row_id": 5,
-            "type": "step_item",
-            "text": "Intro to praise",
-            "task_id": "task_mod_praise_intro"
+            "row_id": 6,
+            "type": "step_item"
           },
           {
             "row_id": 7,
-            "type": "step_item",
-            "text": "Core tips",
-            "task_id": "task_mod_praise_tips"
+            "type": "step_item"
           },
           {
             "row_id": 8,
-            "type": "step_item",
-            "text": "Home activity",
-            "task_id": "task_mod_praise_activity"
+            "type": "step_item"
           },
           {
             "row_id": 9,
-            "type": "step_item",
-            "text": "Home activity review",
-            "task_id": "task_mod_praise_activity_review"
+            "type": "step_item"
           }
         ]
       },
       {
         "row_id": 11,
         "type": "button",
-        "text": "Toolbox",
-        "task_id": "task_mod_praise_tips"
+        "text": "Toolbox"
       }
     ]
   }
