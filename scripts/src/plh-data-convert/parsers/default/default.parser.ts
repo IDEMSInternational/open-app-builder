@@ -5,7 +5,7 @@ type IRowData = { type: string };
 
 /**
  * The default processor performs the following:
- * - Look for rows starting `being_groupname` and `end_groupname`, form a
+ * - Look for rows starting `begin_groupname` and `end_groupname`, form a
  * nested group `groupname_group`. E.g. `begin_step` and `end_step` -> `step_group`
  */
 export class DefaultParser implements AbstractParser {
