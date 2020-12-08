@@ -14,7 +14,7 @@ import { Component, Input } from "@angular/core";
   styles: [
     `
       :host {
-        --plh-panel-height: 65vh;
+        --plh-panel-height: 55vh;
         --plh-header-height: 50px;
         --plh-panel-width: 90vw;
       }
