@@ -1,9 +1,9 @@
 /* tslint:disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const completions: FlowTypes.Completions[] = [
+  export const completion_list: FlowTypes.Completion_list[] = [
   {
-    "flow_type": "completions",
-    "flow_name": "completions_list",
+    "flow_type": "completion_list",
+    "flow_name": "module_completion_list",
     "status": "released",
     "rows": [
       {
@@ -149,61 +149,33 @@
       {
         "id": "completion_mod_stress_completed_goal",
         "task_id": "task_mod_stress_completed_goal"
-      },
+      }
+    ]
+  },
+  {
+    "flow_type": "completion_list",
+    "flow_name": "habit_completion_list",
+    "status": "released",
+    "rows": [
       {
-        "id": "completion_spend_time_level_1",
-        "task_id": "task_spend_time"
-      },
-      {
-        "id": "completion_spend_time_level_2",
-        "task_id": "task_spend_time",
-        "repeat_count": 2
-      },
-      {
-        "id": "completion_spend_time_level_1_completed_goal",
-        "task_id": "task_spend_time_level_1_completed_goal"
-      },
-      {
-        "id": "completion_spend_time_level_2_completed_goal",
-        "task_id": "task_spend_time_level_2_completed_goal"
-      },
-      {
-        "id": "completion_praise_adult",
-        "task_id": "task_praise_adult"
-      },
-      {
-        "id": "completion_praise_self",
-        "task_id": "task_praise_self",
-        "repeat_count": 2,
-        "repeat_interval": 2
-      },
-      {
-        "id": "completion_praise_teen_level_1",
-        "task_id": "task_praise_teen",
+        "id": "completion_open_app_level_1",
+        "task_id": "task_open_app",
         "repeat_count": 3
       },
       {
-        "id": "completion_praise_teen_level_2",
-        "task_id": "task_praise_teen",
+        "id": "completion_open_app_level_2",
+        "task_id": "task_open_app",
         "repeat_count": 10
-      },
-      {
-        "id": "completion_praise_teen_level_1_completed_goal",
-        "task_id": "task_praise_teen_level_1_completed_goal"
-      },
-      {
-        "id": "completion_praise_teen_level_2_completed_goal",
-        "task_id": "task_praise_teen_level_2_completed_goal"
       },
       {
         "id": "completion_relax_level_1",
         "task_id": "task_relax",
-        "repeat_count": 3
+        "repeat_count": 2
       },
       {
         "id": "completion_relax_level_2",
         "task_id": "task_relax",
-        "repeat_count": 6
+        "repeat_count": 5
       },
       {
         "id": "completion_relax_level_1_completed_goal",
@@ -214,14 +186,130 @@
         "task_id": "task_relax_level_2_completed_goal"
       },
       {
-        "id": "completion_open_app_level_1",
-        "task_id": "task_open_app",
+        "id": "completion_treat_yourself_level_1",
+        "task_id": "task_treat_yourself",
+        "repeat_count": 1
+      },
+      {
+        "id": "completion_treat_yourself_level_2",
+        "task_id": "task_treat_yourself",
         "repeat_count": 3
       },
       {
-        "id": "completion_open_app_level_2",
-        "task_id": "task_open_app",
-        "repeat_count": 10
+        "id": "completion_treat_yourself_level_1_completed_goal",
+        "task_id": "task_treat_yourself_level_1_completed_goal"
+      },
+      {
+        "id": "completion_treat_yourself_level_2_completed_goal",
+        "task_id": "task_treat_yourself_level_2_completed_goal"
+      },
+      {
+        "id": "completion_spend_time_level_1",
+        "task_id": "task_spend_time",
+        "repeat_count": 2
+      },
+      {
+        "id": "completion_spend_time_level_2",
+        "task_id": "task_spend_time",
+        "repeat_count": 5
+      },
+      {
+        "id": "completion_spend_time_level_1_completed_goal",
+        "task_id": "task_spend_time_level_1_completed_goal"
+      },
+      {
+        "id": "completion_spend_time_level_2_completed_goal",
+        "task_id": "task_spend_time_level_2_completed_goal"
+      },
+      {
+        "id": "completion_praise_teen_level_1",
+        "task_id": "task_praise_teen",
+        "repeat_count": 2
+      },
+      {
+        "id": "completion_praise_teen_level_2",
+        "task_id": "task_praise_teen",
+        "repeat_count": 5
+      },
+      {
+        "id": "completion_praise_teen_level_1_completed_goal",
+        "task_id": "task_praise_teen_level_1_completed_goal"
+      },
+      {
+        "id": "completion_praise_teen_level_2_completed_goal",
+        "task_id": "task_praise_teen_level_2_completed_goal"
+      },
+      {
+        "id": "completion_breathe_level_1",
+        "task_id": "task_breathe",
+        "repeat_count": 2
+      },
+      {
+        "id": "completion_breathe_level_2",
+        "task_id": "task_breathe",
+        "repeat_count": 5
+      },
+      {
+        "id": "completion_breathe_level_1_completed_goal",
+        "task_id": "task_breathe_level_1_completed_goal"
+      },
+      {
+        "id": "completion_breathe_level_2_completed_goal",
+        "task_id": "task_breathe_level_2_completed_goal"
+      },
+      {
+        "id": "completion_money_level_1",
+        "task_id": "task_money",
+        "repeat_count": 1
+      },
+      {
+        "id": "completion_money_level_2",
+        "task_id": "task_money",
+        "repeat_count": 3
+      },
+      {
+        "id": "completion_money_level_1_completed_goal",
+        "task_id": "task_money_level_1_completed_goal"
+      },
+      {
+        "id": "completion_money_level_2_completed_goal",
+        "task_id": "task_money_level_2_completed_goal"
+      },
+      {
+        "id": "completion_consequence_level_1",
+        "task_id": "task_consequence",
+        "repeat_count": 2
+      },
+      {
+        "id": "completion_consequence_level_2",
+        "task_id": "task_consequence",
+        "repeat_count": 5
+      },
+      {
+        "id": "completion_consequence_level_1_completed_goal",
+        "task_id": "task_consequence_level_1_completed_goal"
+      },
+      {
+        "id": "completion_consequence_level_2_completed_goal",
+        "task_id": "task_consequence_level_2_completed_goal"
+      },
+      {
+        "id": "completion_safe_level_1",
+        "task_id": "task_safe",
+        "repeat_count": 1
+      },
+      {
+        "id": "completion_safe_level_2",
+        "task_id": "task_safe",
+        "repeat_count": 3
+      },
+      {
+        "id": "completion_safe_level_1_completed_goal",
+        "task_id": "task_safe_level_1_completed_goal"
+      },
+      {
+        "id": "completion_safe_level_2_completed_goal",
+        "task_id": "task_safe_level_2_completed_goal"
       }
     ]
   }
