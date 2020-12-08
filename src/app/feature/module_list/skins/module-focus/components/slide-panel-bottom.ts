@@ -35,6 +35,7 @@ import { Component, Input } from "@angular/core";
         height: var(--plh-header-height);
         line-height: var(--plh-header-height);
         margin: 0;
+        background: rgba(255, 255, 255, 0.5);
       }
       .content {
         background: green;
