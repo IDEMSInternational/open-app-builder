@@ -3,7 +3,7 @@
   export const module_list: FlowTypes.Module_list[] = [
   {
     "flow_type": "module_list",
-    "flow_name": "module_list",
+    "flow_name": "modules_list",
     "status": "released",
     "rows": [
       {
@@ -18,7 +18,7 @@
         "id": "mod_1on1",
         "title": "One-on-One Time",
         "description": "One-on-One Time helps build a positive, trusting relationship. When you really show interest in your teens, you make them feel valued and appreciated.",
-        "module_page": "mod_1on1_page_min"
+        "module_page": "mod_1on1_page"
       },
       {
         "module_number": 2,
@@ -36,10 +36,10 @@
       },
       {
         "module_number": 4,
-        "id": "mod_anger",
+        "id": "mod_stress",
         "title": "Managing Anger & Stress",
         "description": "It is good to share our emotions with our teens, so they can learn to share their emotions with us too – the positive and the difficult ones!",
-        "module_page": "mod_anger_page"
+        "module_page": "mod_stress_page"
       }
     ]
   }

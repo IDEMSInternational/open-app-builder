@@ -43,6 +43,14 @@
         "task_id": "task_mod_1on1_activity"
       },
       {
+        "id": "completion_mod_1on1_par",
+        "task_id": "task_mod_1on1_par"
+      },
+      {
+        "id": "completion_mod_1on1_fun",
+        "task_id": "task_mod_1on1_fun"
+      },
+      {
         "id": "completion_mod_1on1_activity_review",
         "task_id": "task_mod_1on1_activity_review"
       },
@@ -63,12 +71,84 @@
         "task_id": "task_mod_praise_activity"
       },
       {
+        "id": "completion_mod_praise_emo",
+        "task_id": "task_mod_praise_emo"
+      },
+      {
+        "id": "completion_mod_praise_fun",
+        "task_id": "task_mod_praise_fun"
+      },
+      {
         "id": "completion_mod_praise_activity_review",
         "task_id": "task_mod_praise_activity_review"
       },
       {
-        "id": "completion_praise_completed_goal",
+        "id": "completion_mod_praise_completed_goal",
         "task_id": "task_mod_praise_completed_goal"
+      },
+      {
+        "id": "completion_mod_instructions_par",
+        "task_id": "task_mod_instructions_par"
+      },
+      {
+        "id": "completion_mod_instructions_intro",
+        "task_id": "task_mod_instructions_intro"
+      },
+      {
+        "id": "completion_mod_instructions_tips",
+        "task_id": "task_mod_instructions_tips"
+      },
+      {
+        "id": "completion_mod_instructions_activity",
+        "task_id": "task_mod_instructions_activity"
+      },
+      {
+        "id": "completion_mod_instructions_emo",
+        "task_id": "task_mod_instructions_emo"
+      },
+      {
+        "id": "completion_mod_instructions_fun",
+        "task_id": "task_mod_instructions_fun"
+      },
+      {
+        "id": "completion_mod_instructions_activity_review",
+        "task_id": "task_mod_instructions_activity_review"
+      },
+      {
+        "id": "completion_mod_instructions_completed_goal",
+        "task_id": "task_mod_instructions_completed_goal"
+      },
+      {
+        "id": "completion_mod_stress_par",
+        "task_id": "task_mod_stress_par"
+      },
+      {
+        "id": "completion_mod_stress_intro",
+        "task_id": "task_mod_stress_intro"
+      },
+      {
+        "id": "completion_mod_stress_tips",
+        "task_id": "task_mod_stress_tips"
+      },
+      {
+        "id": "completion_mod_stress_activity",
+        "task_id": "task_mod_stress_activity"
+      },
+      {
+        "id": "completion_mod_stress_emo",
+        "task_id": "task_mod_stress_emo"
+      },
+      {
+        "id": "completion_mod_stress_fun",
+        "task_id": "task_mod_stress_fun"
+      },
+      {
+        "id": "completion_mod_stress_home_activity",
+        "task_id": "task_mod_stress_home_activity"
+      },
+      {
+        "id": "completion_mod_stress_completed_goal",
+        "task_id": "task_mod_stress_completed_goal"
       },
       {
         "id": "completion_spend_time_level_1",
