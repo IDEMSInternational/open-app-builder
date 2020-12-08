@@ -62,7 +62,15 @@ function applyDataParsers(
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
     if (parsers.hasOwnProperty(key)) {
-      parsedData[key] = contentFlows.map((flow) => parsers[key].run(flow));
+      // add intermediate parsed flow for logging/debugging
+      fs.ensureDir(`${INTERMEDIATES_FOLDER}/${key}`);
+      // parse all flows through the parser
+      parsedData[key] = contentFlows.map((flow) => {
+        const parsed = parsers[key].run(flow);
+        const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
+        fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
+        return parsed;
+      });
     } else {
       parsedData[key] = contentFlows;
     }
