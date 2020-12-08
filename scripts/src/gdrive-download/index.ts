@@ -9,7 +9,7 @@ import { ArrayToChunks } from "../utils/file-utils";
 
 // constants
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
-const GOOGLE_DRIVE_TARGET_FOLDER = "parentapp_sheets_current";
+const GOOGLE_DRIVE_TARGET_FOLDER = "plh_sheets_beta";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
 const CACHE_FOLDER = path.join(__dirname, "cache");
 const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
@@ -52,7 +52,9 @@ async function getPLHFolder(): Promise<drive_v3.Schema$File> {
   if (files.length > 0) {
     return files[0];
   } else {
-    console.log(chalk.red("No PLH Excel folder founds"));
+    console.log(
+      chalk.red(`folder "${GOOGLE_DRIVE_TARGET_FOLDER}" does not exist, perhaps it renamed?`)
+    );
     process.exit(1);
   }
 }
