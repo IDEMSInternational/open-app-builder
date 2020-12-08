@@ -1,9 +1,9 @@
 /* tslint:disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const tasks: FlowTypes.Tasks[] = [
+  export const task_list: FlowTypes.Task_list[] = [
   {
-    "flow_type": "tasks",
-    "flow_name": "tasks_list",
+    "flow_type": "task_list",
+    "flow_name": "module_task_list",
     "status": "released",
     "rows": [
       {
@@ -50,7 +50,7 @@
       },
       {
         "id": "task_mod_1on1_intro",
-        "label": "Why one-on-one time?",
+        "label": "Intro to one-on-one time",
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_intro",
         "evaluation": "completed ",
@@ -104,7 +104,7 @@
       },
       {
         "id": "task_mod_praise_intro",
-        "label": "Why praise?",
+        "label": "Intro to praise",
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_intro",
         "evaluation": "completed",
@@ -268,60 +268,23 @@
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
-      },
+      }
+    ]
+  },
+  {
+    "flow_type": "task_list",
+    "flow_name": "habit_task_list",
+    "status": "released",
+    "rows": [
       {
-        "id": "task_spend_time",
-        "label": "Spend one-on-one time with your teen",
-        "groups": "repeat_on_completion"
-      },
-      {
-        "id": "task_spend_time_level_1_completed_goal",
-        "groups": "hidden",
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_spend_time_level_2_completed_goal",
-        "groups": "hidden",
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_praise_adult",
-        "label": "Praise another adult in your household",
-        "groups": "repeat_on_completion"
-      },
-      {
-        "id": "task_praise_self",
-        "label": "Praise yourself",
-        "groups": "repeat_on_completion"
-      },
-      {
-        "id": "task_praise_teen",
-        "label": "Praise your teen",
-        "groups": "repeat_on_completion"
-      },
-      {
-        "id": "task_praise_teen_level_1_completed_goal",
-        "groups": "hidden",
-        "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "trigger_on": "goal_praise_teen_1"
-      },
-      {
-        "id": "task_praise_teen_level_2_completed_goal",
-        "groups": "hidden",
-        "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "trigger_on": "goal_praise_teen_2"
+        "id": "task_open_app",
+        "start_action": "open_app"
       },
       {
         "id": "task_relax",
-        "label": "Relaxing activity",
+        "label": "Relax",
         "groups": "repeat_on_completion",
-        "start_action": "start_new_flow",
-        "start_action_args": "calm_1",
-        "evaluation": "completed"
+        "requires": "task_mod_welcome_..."
       },
       {
         "id": "task_relax_level_1_completed_goal",
@@ -336,8 +299,130 @@
         "start_action_args": "fireworks"
       },
       {
-        "id": "task_open_app",
-        "start_action": "open_app"
+        "id": "task_treat_yourself",
+        "label": "Treat yourself well",
+        "groups": "repeat_on_completion",
+        "requires": "task_mod_welcome_..."
+      },
+      {
+        "id": "task_treat_yourself_level_1_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_treat_yourself_level_2_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_spend_time",
+        "label": "One on one time",
+        "groups": "repeat_on_completion",
+        "requires": "task_mod_1on1_tips"
+      },
+      {
+        "id": "task_spend_time_level_1_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_spend_time_level_2_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_praise_teen",
+        "label": "Praise your teen",
+        "groups": "repeat_on_completion",
+        "requires": "task_mod_welcome_..."
+      },
+      {
+        "id": "task_praise_teen_level_1_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_praise_teen_level_2_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_breathe",
+        "label": "Breathe not yell",
+        "groups": "repeat_on_completion",
+        "requires": "task_mod_stress_tips"
+      },
+      {
+        "id": "task_breathe_level_1_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_breathe_level_2_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_money",
+        "label": "Good money choice",
+        "groups": "repeat_on_completion",
+        "requires": "task_mod_budgeting_tips"
+      },
+      {
+        "id": "task_money_level_1_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_money_level_2_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_consequence",
+        "label": "Calm consequence",
+        "groups": "repeat_on_completion",
+        "requires": "task_mod_responsibility_tips"
+      },
+      {
+        "id": "task_consequence_level_1_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_consequence_level_2_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_safe",
+        "label": "Safe",
+        "groups": "repeat_on_completion",
+        "requires": "task_mod_safe_tips"
+      },
+      {
+        "id": "task_safe_level_1_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_safe_level_2_completed_goal",
+        "groups": "hidden",
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
       }
     ]
   }

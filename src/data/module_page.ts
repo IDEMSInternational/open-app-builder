@@ -33,21 +33,25 @@
           {
             "row_id": 6,
             "type": "step_item",
+            "text": "Your customised self-care package",
             "task_id": "task_mod_welcome_self-care_package"
           },
           {
             "row_id": 7,
             "type": "step_item",
+            "text": "A quick praise for your teen",
             "task_id": "task_mod_welcome_quick_praise"
           },
           {
             "row_id": 8,
             "type": "step_item",
+            "text": "Personalise this app for you",
             "task_id": "task_mod_welcome_survey"
           },
           {
             "row_id": 9,
             "type": "step_item",
+            "text": "Upload a family picture",
             "task_id": "task_mod_welcome_photo_activity"
           }
         ]
@@ -81,7 +85,7 @@
           {
             "row_id": 5,
             "type": "step_intro",
-            "text": "Complete the following things to learn more and unlock your toolbox"
+            "text": "Complete the following things to learn more"
           },
           {
             "row_id": 6,
@@ -92,11 +96,13 @@
           {
             "row_id": 7,
             "type": "step_item",
+            "text": "Why one-on-one time?",
             "task_id": "task_mod_1on1_intro"
           },
           {
             "row_id": 8,
             "type": "step_item",
+            "text": "Top tips",
             "task_id": "task_mod_1on1_tips"
           },
           {
@@ -108,25 +114,22 @@
           {
             "row_id": 10,
             "type": "step_item",
+            "text": "Parenting check-in",
             "task_id": "task_mod_1on1_par"
           },
           {
             "row_id": 11,
             "type": "step_item",
+            "text": "Something fun",
             "task_id": "task_mod_1on1_fun"
           },
           {
             "row_id": 12,
             "type": "step_item",
+            "text": "Home activity review",
             "task_id": "task_mod_1on1_activity_review"
           }
         ]
-      },
-      {
-        "row_id": 14,
-        "type": "button",
-        "text": "Toolbox",
-        "task_id": "task_mod_1on1_tips"
       }
     ]
   },
@@ -157,16 +160,18 @@
           {
             "row_id": 5,
             "type": "step_intro",
-            "text": "Complete the following things to learn more and unlock your toolbox"
+            "text": "Complete the following things to learn more"
           },
           {
             "row_id": 6,
             "type": "step_item",
+            "text": "Why praise?",
             "task_id": "task_mod_praise_intro"
           },
           {
             "row_id": 7,
             "type": "step_item",
+            "text": "Top tips",
             "task_id": "task_mod_praise_tips"
           },
           {
@@ -178,25 +183,22 @@
           {
             "row_id": 9,
             "type": "step_item",
+            "text": "Emotional check-in",
             "task_id": "task_mod_praise_emo"
           },
           {
             "row_id": 10,
             "type": "step_item",
+            "text": "Something fun",
             "task_id": "task_mod_praise_fun"
           },
           {
             "row_id": 11,
             "type": "step_item",
+            "text": "Home activity review",
             "task_id": "task_mod_praise_activity_review"
           }
         ]
-      },
-      {
-        "row_id": 13,
-        "type": "button",
-        "text": "Toolbox",
-        "task_id": "task_mod_praise_tips"
       }
     ]
   },
@@ -227,40 +229,51 @@
           {
             "row_id": 5,
             "type": "step_intro",
-            "text": "Complete the following things to learn more and unlock your toolbox"
+            "text": "Complete the following things to learn more"
           },
           {
             "row_id": 6,
             "type": "step_item",
+            "text": "Parenting check-in",
             "task_id": "task_mod_instructions_par"
           },
           {
             "row_id": 7,
             "type": "step_item",
+            "text": "Intro to positive instructions",
             "task_id": "task_mod_instructions_intro"
           },
           {
             "row_id": 8,
             "type": "step_item",
+            "text": "Top tips",
             "task_id": "task_mod_instructions_tips"
           },
           {
             "row_id": 9,
             "type": "step_item",
+            "text": "Practice at home",
             "task_id": "task_mod_instructions_activity"
           },
           {
             "row_id": 10,
             "type": "step_item",
+            "text": "Emotional check-in",
+            "task_id": "task_mod_instructions_emo"
+          },
+          {
+            "row_id": 11,
+            "type": "step_item",
+            "text": "Something fun",
+            "task_id": "task_mod_instructions_fun"
+          },
+          {
+            "row_id": 12,
+            "type": "step_item",
+            "text": "Home activity review",
             "task_id": "task_mod_instructions_activity_review"
           }
         ]
-      },
-      {
-        "row_id": 12,
-        "type": "button",
-        "text": "Toolbox",
-        "task_id": "task_mod_instructions_tips"
       }
     ]
   },
@@ -291,30 +304,51 @@
           {
             "row_id": 5,
             "type": "step_intro",
-            "text": "Complete the following things to learn more and unlock your toolbox"
+            "text": "Complete the following things to learn more"
           },
           {
             "row_id": 6,
-            "type": "step_item"
+            "type": "step_item",
+            "text": "Parenting check-in",
+            "task_id": "task_mod_stress_par"
           },
           {
             "row_id": 7,
-            "type": "step_item"
+            "type": "step_item",
+            "text": "Intro to managing anger and stress",
+            "task_id": "task_mod_stress_intro"
           },
           {
             "row_id": 8,
-            "type": "step_item"
+            "type": "step_item",
+            "text": "Top tips",
+            "task_id": "task_mod_stress_tips"
           },
           {
             "row_id": 9,
-            "type": "step_item"
+            "type": "step_item",
+            "text": "Practice at home",
+            "task_id": "task_mod_stress_activity"
+          },
+          {
+            "row_id": 10,
+            "type": "step_item",
+            "text": "Emotional check-in",
+            "task_id": "task_mod_stress_emo"
+          },
+          {
+            "row_id": 11,
+            "type": "step_item",
+            "text": "Something fun",
+            "task_id": "task_mod_stress_fun"
+          },
+          {
+            "row_id": 12,
+            "type": "step_item",
+            "text": "Home activity review",
+            "task_id": "task_mod_stress_home_activity"
           }
         ]
-      },
-      {
-        "row_id": 11,
-        "type": "button",
-        "text": "Toolbox"
       }
     ]
   }
