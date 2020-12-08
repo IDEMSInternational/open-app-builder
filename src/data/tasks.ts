@@ -50,7 +50,7 @@
       },
       {
         "id": "task_mod_1on1_intro",
-        "label": "Intro to one-on-one time",
+        "label": "Why one-on-one time?",
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_intro",
         "evaluation": "completed ",
@@ -58,7 +58,7 @@
       },
       {
         "id": "task_mod_1on1_tips",
-        "label": "Core tips",
+        "label": "Top tips",
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_tips",
         "evaluation": "completed",
@@ -73,12 +73,28 @@
         "requires": "task_mod_1on1_tips"
       },
       {
+        "id": "task_mod_1on1_par",
+        "label": "Parenting check-in",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_1on1_par",
+        "evaluation": "completed",
+        "requires": "task_mod_1on1_tips | delay_1_day"
+      },
+      {
+        "id": "task_mod_1on1_fun",
+        "label": "Something fun",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_1on1_fun",
+        "evaluation": "completed",
+        "requires": "task_mod_1on1_tips | delay_5_day"
+      },
+      {
         "id": "task_mod_1on1_activity_review",
         "label": "Home activity review",
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_activity_review",
         "evaluation": "completed",
-        "requires": "task_mod_1on1_activity | delay_2_day"
+        "requires": "task_mod_1on1_activity | delay_4_day"
       },
       {
         "id": "task_mod_1on1_completed_goal",
@@ -88,7 +104,7 @@
       },
       {
         "id": "task_mod_praise_intro",
-        "label": "Intro to praise and positive reinforcement",
+        "label": "Why praise?",
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_intro",
         "evaluation": "completed",
@@ -96,7 +112,7 @@
       },
       {
         "id": "task_mod_praise_tips",
-        "label": "Core tips",
+        "label": "Top tips",
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_tips",
         "evaluation": "completed",
@@ -111,15 +127,144 @@
         "requires": "task_mod_praise_tips"
       },
       {
+        "id": "task_mod_praise_emo",
+        "label": "Emotional check-in",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_praise_emo",
+        "evaluation": "completed",
+        "requires": "task_mod_praise_tips | delay_1_day"
+      },
+      {
+        "id": "task_mod_praise_fun",
+        "label": "Something fun",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_praise_fun",
+        "requires": "task_mod_praise_tips | delay_7_day"
+      },
+      {
         "id": "task_mod_praise_activity_review",
         "label": "Home activity review",
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_activity_review",
         "evaluation": "completed",
-        "requires": "task_mod_praise_activity"
+        "requires": "task_mod_praise_activity | delay_4_day"
       },
       {
         "id": "task_mod_praise_completed_goal",
+        "start_action": "give_award",
+        "start_action_args": "cup",
+        "evaluation": "completed"
+      },
+      {
+        "id": "task_mod_instructions_par",
+        "label": "Parenting check-in",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_instructions_par",
+        "requires": "task_mod_praise_completed_goal; first_launch | delay_21_day"
+      },
+      {
+        "id": "task_mod_instructions_intro",
+        "label": "Intro to positive instructions",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_instructions_intro",
+        "evaluation": "completed",
+        "requires": "task_mod_instructions_par"
+      },
+      {
+        "id": "task_mod_instructions_tips",
+        "label": "Top tips",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_instructions_tips",
+        "evaluation": "completed",
+        "requires": "task_mod_instructions_intro"
+      },
+      {
+        "id": "task_mod_instructions_activity",
+        "label": "Home activity",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_instructions_activity",
+        "evaluation": "completed",
+        "requires": "task_mod_instructions_tips"
+      },
+      {
+        "id": "task_mod_instructions_emo",
+        "label": "Emotional check-in",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_instructions_emo",
+        "requires": "task_mod_instructions_tips | delay_1_day"
+      },
+      {
+        "id": "task_mod_instructions_fun",
+        "label": "Something fun",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_instructions_fun",
+        "requires": "task_mod_instructions_tips | delay_5_day"
+      },
+      {
+        "id": "task_mod_instructions_activity_review",
+        "label": "Home activity review",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_instructions_activity_review",
+        "evaluation": "completed",
+        "requires": "task_mod_instructions_activity | delay_4_day"
+      },
+      {
+        "id": "task_mod_instructions_completed_goal",
+        "start_action": "give_award",
+        "start_action_args": "cup",
+        "evaluation": "completed"
+      },
+      {
+        "id": "task_mod_stress_par",
+        "label": "Parenting check-in",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_stress_par",
+        "requires": "task_mod_instructions_completed_goal; first_launch | delay_28_day"
+      },
+      {
+        "id": "task_mod_stress_intro",
+        "label": "Intro to managing anger and stress",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_stress_intro",
+        "requires": "task_mod_stress_par"
+      },
+      {
+        "id": "task_mod_stress_tips",
+        "label": "Top tips",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_stress_tips",
+        "requires": "task_mod_stress_intro"
+      },
+      {
+        "id": "task_mod_stress_activity",
+        "label": "Home activity",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_stress_activity",
+        "requires": "task_mod_stress_tips"
+      },
+      {
+        "id": "task_mod_stress_emo",
+        "label": "Emotional check-in",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_stress_emo",
+        "requires": "task_mod_stress_tips | delay_1_day"
+      },
+      {
+        "id": "task_mod_stress_fun",
+        "label": "Something fun",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_stress_fun",
+        "requires": "task_mod_stress_tips | delay_5_day"
+      },
+      {
+        "id": "task_mod_stress_home_activity",
+        "label": "Home activity review",
+        "start_action": "start_new_flow",
+        "start_action_args": "mod_stress_activity_review",
+        "requires": "task_mod_stress_activity | delay_4_day"
+      },
+      {
+        "id": "task_mod_stress_completed_goal",
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
@@ -172,7 +317,7 @@
       },
       {
         "id": "task_relax",
-        "label": "Relaxation activity",
+        "label": "Relaxing activity",
         "groups": "repeat_on_completion",
         "start_action": "start_new_flow",
         "start_action_args": "calm_1",
