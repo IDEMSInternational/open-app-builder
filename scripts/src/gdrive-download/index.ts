@@ -10,6 +10,7 @@ import { ArrayToChunks } from "../utils/file-utils";
 // constants
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 const GOOGLE_DRIVE_TARGET_FOLDER = "plh_sheets_beta";
+const GOOGLE_DRIVE_ASSETS_FOLDER = "plh_assets";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
 const CACHE_FOLDER = path.join(__dirname, "cache");
 const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
@@ -25,9 +26,15 @@ async function main() {
   console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
-    const { id, name } = await getPLHFolder();
+    const plhExcelFolder = await getGDriveFolder(GOOGLE_DRIVE_TARGET_FOLDER);
     console.log(chalk.white("Checking folders for files"));
-    const files = await listGdriveFilesRecursively(id, name);
+    const excelFiles = await listGdriveFilesRecursively(plhExcelFolder.id, plhExcelFolder.name);
+
+    const assetsFolder = await getGDriveFolder(GOOGLE_DRIVE_ASSETS_FOLDER);
+    console.log(chalk.white("Checking folders for files"));
+    const assetFiles = await listGdriveFilesRecursively(assetsFolder.id, assetsFolder.name);
+    console.log("asset file", assetFiles[0]);
+    const files = excelFiles.concat(assetFiles);
     fs.writeFileSync(`${LOGS_DIR}/files.json`, JSON.stringify(files, null, 2));
     console.log(chalk.white("Downloading files"));
     await downloadGdriveFiles(files);
@@ -39,12 +46,12 @@ async function main() {
 main().then(() => console.log(chalk.green("GDrive Data Downloaded")));
 
 /**
- * Lists the names and IDs primary PLH folder
+ * Gets the name and id of a google drive folder
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-async function getPLHFolder(): Promise<drive_v3.Schema$File> {
+async function getGDriveFolder(folderName: string): Promise<drive_v3.Schema$File> {
   const res = await drive.files.list({
-    q: `mimeType='application/vnd.google-apps.folder' and name contains '${GOOGLE_DRIVE_TARGET_FOLDER}'`,
+    q: `mimeType='application/vnd.google-apps.folder' and name contains '${folderName}'`,
     pageSize: 1,
     fields: "nextPageToken, files(id, name)",
   });
@@ -53,7 +60,7 @@ async function getPLHFolder(): Promise<drive_v3.Schema$File> {
     return files[0];
   } else {
     console.log(
-      chalk.red(`folder "${GOOGLE_DRIVE_TARGET_FOLDER}" does not exist, perhaps it renamed?`)
+      chalk.red(`folder "${folderName}" does not exist, perhaps it renamed?`)
     );
     process.exit(1);
   }
