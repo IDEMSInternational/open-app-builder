@@ -8,7 +8,8 @@
       >Go To Module</ion-button
     >
     <plh-slide-panel-right headerText="Modules">
-      <plh-module-select-circle></plh-module-select-circle>
+      <plh-module-select-circle [modules]="moduleList" [currentModule]="moduleListRow"
+        (onModuleChange)="onModuleChange($event)"></plh-module-select-circle>
     </plh-slide-panel-right>
     <plh-slide-panel-bottom headerText="Things To Do">
       <plh-things-to-do-list></plh-things-to-do-list>
