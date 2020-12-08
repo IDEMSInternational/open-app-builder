@@ -9,7 +9,7 @@ import { ArrayToChunks } from "../utils/file-utils";
 
 // constants
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
-const GOOGLE_DRIVE_TARGET_FOLDER = "PLH Teens app Excel Sheets";
+const GOOGLE_DRIVE_TARGET_FOLDER = "parentapp_sheets_current";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
 const CACHE_FOLDER = path.join(__dirname, "cache");
 const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
