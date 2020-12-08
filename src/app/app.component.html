@@ -20,8 +20,11 @@
     </ion-content>
   </ion-menu>
   <!-- Sit global header above main content view -->
-  <plh-main-header></plh-main-header>
-  <div class="route-container">
-    <ion-router-outlet id="main-content"></ion-router-outlet>
+  <div style="display: flex; flex-direction: column; height: 100%">
+    <plh-main-header></plh-main-header>
+    <div class="route-container">
+      <ion-router-outlet id="main-content"></ion-router-outlet>
+    </div>
+    <plh-main-tabs></plh-main-tabs>
   </div>
 </ion-app>
