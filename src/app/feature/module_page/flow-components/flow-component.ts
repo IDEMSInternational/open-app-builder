@@ -72,7 +72,8 @@ export class FlowComponent implements OnInit {
     const viewContainerRef = this.flowComponentHost.viewContainerRef;
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent<any>(componentFactory);
-    componentRef.instance.data = this.row;
+    componentRef.instance.row = this.row;
+    componentRef.instance.flow = this.flow;
   }
 }
 /*********************************************************************
