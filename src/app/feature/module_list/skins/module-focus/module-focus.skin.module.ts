@@ -11,9 +11,11 @@ import { SlidePanelBottomComponent } from "./components/slide-panel-bottom";
 import { ThingsToDoListComponent } from "./components/things-to-do-list";
 import { RouterModule } from "@angular/router";
 import { ModuleFocusSkin } from "./module-focus.skin";
+import { HabitAddComponent } from "./components/habit-add";
 
 const components = [
   HabitTrackerComponent,
+  HabitAddComponent,
   ModuleSelectCircleComponent,
   SlidePanelRightComponent,
   SlidePanelBottomComponent,
