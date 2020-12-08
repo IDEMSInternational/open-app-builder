@@ -18,6 +18,8 @@ const OUTPUT_FOLDER = `${__dirname}/output`;
 async function main() {
   console.log(chalk.yellow("Converting PLH Data"));
   fs.ensureDirSync(INPUT_FOLDER);
+  fs.ensureDirSync(INTERMEDIATES_FOLDER);
+  fs.emptyDirSync(INTERMEDIATES_FOLDER);
   fs.ensureDirSync(OUTPUT_FOLDER);
   fs.emptyDirSync(OUTPUT_FOLDER);
   const xlsxFiles = listFilesForConversion(INPUT_FOLDER);
