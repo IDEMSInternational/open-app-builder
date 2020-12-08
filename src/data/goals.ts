@@ -16,23 +16,36 @@
       {
         "id": "goal_mod_1on1",
         "label": "Complete One-on-One Time Module",
-        "groups": "modules;level1",
-        "completion_id": "completion_mod_1on1_emo; completion_mod_1on1_intro; completion_mod_1on1_tips; completion_mod_1on1_activity; completion_mod_1on1_activity_review",
+        "groups": "modules;level_1",
+        "completion_id": "completion_mod_1on1_emo; completion_mod_1on1_intro; completion_mod_1on1_tips; completion_mod_1on1_activity; completion_mod_1on1_par; completion_mod_1on1_fun; completion_mod_1on1_activity_review",
         "completion_tasks": "task_mod_1on1_completed_goal"
       },
       {
         "id": "goal_mod_praise",
         "label": "Complete Praise Module",
-        "groups": "modules;level2",
-        "requires": "goal_mod_1on1",
-        "completion_id": "completion_mod_praise_intro; completion_mod_praise_tips; completion_mod_praise_activity; completion_mod_praise_activity_review",
+        "groups": "modules;level_2",
+        "completion_id": "completion_mod_praise_intro; completion_mod_praise_tips; completion_mod_praise_activity; completion_mod_praise_emo; completion_mod_praise_fun; completion_mod_praise_activity_review",
         "completion_tasks": "task_mod_praise_completed_goal"
+      },
+      {
+        "id": "goal_mod_instructions",
+        "label": "Complete Positive Instructions Module",
+        "groups": "modules; level_3",
+        "completion_id": "completion_mod_instructions_par; completion_mod_instructions_intro; completion_mod_instructions_tips; completion_mod_instructions_activity; completion_mod_instructions_emo; completion_mod_instructions_fun; completion_mod_instructions_activity_review",
+        "completion_tasks": "task_mod_instructions_completed_goal"
+      },
+      {
+        "id": "goal_mod_stress",
+        "label": "Complete Managing Anger and Stress Module",
+        "groups": "modules; level_4",
+        "completion_id": "completion_mod_stress_par; completion_mod_stress_intro; completion_mod_stress_tips; completion_mod_stress_activity; completion_mod_stress_emo; completion_mod_stress_fun; completion_mod_stress_home_activity",
+        "completion_tasks": "task_mod_stress_completed_goal"
       },
       {
         "id": "goal_all_modules",
         "label": "Complete all PLH Teens Modules",
         "groups": "top",
-        "completion_id": "completion_mod_welcome_completed_goal; completion_mod_1on1_completed_goal; \ncompletion_mod_praise_completed_goal"
+        "completion_id": "completion_mod_welcome_completed_goal; completion_mod_1on1_completed_goal; completion_mod_praise_completed_goal; completion_mod_instructions_completed_goal"
       },
       {
         "id": "goal_spend_time_1",
