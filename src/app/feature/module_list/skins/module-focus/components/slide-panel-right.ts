@@ -2,12 +2,15 @@ import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "plh-slide-panel-right",
-  template: ` <section class="main-container" [class.expanded]="expanded">
-    <h3 class="panel-header" (click)="toggleExpand()">{{ headerText }}</h3>
-    <div class="content">
-      <ng-content></ng-content>
-    </div>
-  </section>`,
+  template: `
+    <section class="main-container" [class.expanded]="expanded" (click)="toggleExpand()">
+      <div class="background-overlay"></div>
+      <h3 class="panel-header">{{ headerText }}</h3>
+      <div class="content">
+        <ng-content></ng-content>
+      </div>
+    </section>
+  `,
   styles: [
     `
       :host {
@@ -15,25 +18,37 @@ import { Component, Input } from "@angular/core";
         --plh-header-height: 50px;
         --plh-panel-width: 90vw;
       }
+      .background-overlay {
+        position: relative;
+        background: var(--ion-color-primary);
+        filter: brightness(3.5) opacity(0.2);
+        top: 0;
+        left: 0;
+      }
 
-      .main-container {
-        position: absolute;
+      .main-container,
+      .background-overlay {
         z-index: 2;
-        background: #DAF7FF;
         right: calc(var(--plh-panel-width) * -1 + var(--plh-header-height));
-        height: var(--plh-panel-height);
         margin: auto;
+        height: var(--plh-panel-height);
         width: var(--plh-panel-width);
-        top: 50%;
-        bottom: 50%;
-        border-radius: 20px;
-        border-style: solid;
-        border-color: grey;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
         border-width: 1px;
         transition: right 0.3s linear;
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
       }
-      .main-container.expanded {
+      .main-container {
+        position: absolute;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        background: white;
+        top: 50%;
+        bottom: 50%;
+      }
+      .main-container.expanded,
+      .background-overlay.expanded {
         right: 0;
       }
       .content {
@@ -43,10 +58,11 @@ import { Component, Input } from "@angular/core";
         height: 100%;
         position: absolute;
         top: 0;
+        z-index: 3;
       }
 
       .panel-header {
-        position: relative;
+        position: absolute;
         top: 100%;
         left: 0;
         transform-origin: 0 0;
@@ -56,6 +72,7 @@ import { Component, Input } from "@angular/core";
         margin: 0;
         width: var(--plh-panel-height);
         text-align: center;
+        z-index: 3;
       }
     `,
   ],
