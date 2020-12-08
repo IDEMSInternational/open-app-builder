@@ -50,7 +50,10 @@ import { HabitAddComponent } from "./habit-add";
 export class HabitTrackerComponent {
   constructor(private modalCtrl: ModalController) {}
   async addHabit() {
-    const modal = await this.modalCtrl.create({ component: HabitAddComponent });
+    const modal = await this.modalCtrl.create({
+      component: HabitAddComponent,
+      backdropDismiss: false,
+    });
     await modal.present();
     const { data, role } = await modal.onDidDismiss();
     console.log("habit dismissed");
