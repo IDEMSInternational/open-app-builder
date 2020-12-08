@@ -2,9 +2,9 @@
   <div *ngFor="let moduleCircle of outerModuleCircles" [ngClass]="moduleCircle.cssClass"
     [ngStyle]="{'left': moduleCircle.left, 'top': moduleCircle.top}"
     (click)="onModuleClicked(moduleCircle.id)">
-    <img [src]="'assets/images/module-icons/' + moduleCircle.id + '.svg'">
+    <img [src]="'assets/images/modules/' + moduleCircle.id + '/icon_white.svg'">
   </div>
   <div class="inner-circle">
-    <img [src]="'assets/images/module-icons/' + currentModule.id + '.svg'">
+    <img [src]="'assets/images/modules/' + currentModule.id + '/icon_white.svg'">
   </div>
 </div>
