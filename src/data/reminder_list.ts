@@ -1,9 +1,9 @@
 /* tslint:disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const reminders: FlowTypes.Reminders[] = [
+  export const reminder_list: FlowTypes.Reminder_list[] = [
   {
-    "flow_type": "reminders",
-    "flow_name": "reminders_list",
+    "flow_type": "reminder_list",
+    "flow_name": "reminder_list",
     "status": "released",
     "rows": [
       {

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { ITaskAction, ITaskWithMeta } from "../models/goals.model";
-import { TASKS } from "src/app/shared/services/data/data.service";
+import { TASK_LIST } from "src/app/shared/services/data/data.service";
 import { arrayToHashmapArray, stringToArray } from "src/app/shared/utils";
 
 @Injectable({
@@ -41,7 +41,7 @@ export class TasksService {
    * Read raw task data, refactor as required for use in components
    */
   private processTasksList(actionHistoryHash: Hashmap<ITaskAction[]>) {
-    const allTaskData = [].concat(...TASKS.map((t) => t.rows));
+    const allTaskData = [].concat(...TASK_LIST.map((t) => t.rows));
 
     const allTasks = allTaskData.map((t) => {
       const task: ITaskWithMeta = {
