@@ -1,3 +1,5 @@
 # gdrive service account for gdrive download scripts
-config/credentials.json
+config/*
+!config/public.key
+!config/*.enc
 logs

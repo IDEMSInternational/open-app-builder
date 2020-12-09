@@ -12,6 +12,14 @@ const SCOPES = [
   "https://www.googleapis.com/auth/drive.metadata.readonly",
 ];
 
+// if the file is run direct as opposed to imported function, run the main auth
+async function main() {
+  if (require.main === module) {
+    await authorizeGDrive();
+  }
+}
+main();
+
 export function authorizeGDrive(options?: drive_v3.Options): Promise<drive_v3.Drive> {
   return new Promise((resolve, reject) => {
     try {

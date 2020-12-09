@@ -2,22 +2,18 @@
   "appId": "international.idems.plh_teens",
   "appName": "PLH Teens",
   "bundledWebRuntime": false,
-  "npmClient": "npm",
+  "npmClient": "yarn",
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 3000
     },
     "CapacitorFirebaseAuth": {
-      "providers": [
-        "google.com"
-      ],
+      "providers": ["google.com"],
       "languageCode": "en",
       "nativeAuth": false,
       "permissions": {
-        "google": [
-          "profile"
-        ]
+        "google": ["profile"]
       }
     }
   },

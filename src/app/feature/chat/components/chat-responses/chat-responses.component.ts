@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { SettingsService } from 'src/app/feature/settings/settings.service';
+import { SettingsService } from 'src/app/pages/settings/settings.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { ChatMessage, ChatResponseOption } from '../../models';
 import { ResponsesModalComponent } from './responses-modal/responses-modal.component';

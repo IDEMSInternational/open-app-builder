@@ -34,7 +34,7 @@ google-services.json
 
 resources/android
 resources/ios
-yarn.lock
+package-lock.lock
 src/environments/firebaseConfig.ts
 **/*.jks
 .firebase
@@ -45,3 +45,4 @@ src/environments/firebaseConfig.ts
 /scripts/plh-spreadsheet/output
 
 .env
+scripts/config/token.json

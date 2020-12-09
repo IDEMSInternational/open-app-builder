@@ -1,0 +1,19 @@
+<ion-content>
+  <!-- Render the skin for the current module -->
+  <div *ngIf="dataLoaded; else elseBlock" class="container-full">
+    <div [ngSwitch]="appSkin" class="container-full">
+      <plh-module-focus-skin
+        *ngSwitchCase="'MODULE_FOCUS_SKIN'"
+        [modulePageFlow]="modulePageFlow"
+      ></plh-module-focus-skin>
+      <!-- If the specified skin does not exist show an error -->
+      <div *ngSwitchDefault class="content-error">
+        <span class="content-error-variable">{{appSkin}}</span>
+        <span class="content-error-message">not defined</span>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <!-- Loading Module -->
+  </ng-template>
+</ion-content>
