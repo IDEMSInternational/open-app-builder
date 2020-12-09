@@ -94,8 +94,8 @@ export namespace FlowTypes {
       | "step_intro"
       | "step_item";
     text?: string;
-    media?: string;
     task_id?: string;
+    media_asset?: string;
     /** Some groups may recursively nest other row objects */
     rows?: Module_pageRow[];
   }
@@ -104,8 +104,10 @@ export namespace FlowTypes {
     title: string;
     description: string;
     task_id: string;
-    icon_asset: string;
-    main_image_asset: string;
+    icon_asset?: string;
+    main_image_asset?: string;
+    /** optional task to launch on click (default checkbox) */
+    launch_task?:string;
     _complete?: boolean;
   }
 
