@@ -73,8 +73,8 @@ export namespace FlowTypes {
     description?: string;
     /** Route to navigate to for page (if omitted not yet authored) */
     module_page?: string;
-    icon?: string;
-    main_image?: string;
+    icon_asset?: string;
+    main_image_asset?: string;
   }
   export interface Module_pageRow {
     row_id?: string | number;

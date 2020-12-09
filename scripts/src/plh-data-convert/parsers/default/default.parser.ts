@@ -79,6 +79,7 @@ export class DefaultParser implements AbstractParser {
     }
     // rewrite asset urls for use in app
     assetPath = `${ASSETS_BASE}/${assetPath}`;
+    return assetPath;
   }
 
   /**
