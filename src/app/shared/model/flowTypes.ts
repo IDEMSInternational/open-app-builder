@@ -44,7 +44,10 @@ export namespace FlowTypes {
    ********************************************************************************************/
   export interface Completion_list extends FlowTypeWithData {}
   export interface Goal_list extends FlowTypeWithData {}
-  export interface Habit_list extends FlowTypeWithData {}
+  export interface Habit_list extends FlowTypeWithData {
+    flow_type: "habit_list";
+    rows: Habit_listRow[];
+  }
   export interface Reminder_list extends FlowTypeWithData {}
   export interface Task_list extends FlowTypeWithData {}
   export interface Tips extends FlowTypeWithData {
@@ -91,6 +94,15 @@ export namespace FlowTypes {
     task_id?: string;
     /** Some groups may recursively nest other row objects */
     rows?: Module_pageRow[];
+  }
+  export interface Habit_listRow {
+    id: string;
+    title: string;
+    description: string;
+    task_id: string;
+    icon_asset: string;
+    main_image_asset: string;
+    _complete?: boolean;
   }
 
   // To Sort - possibly these typings affect the input and not the output???

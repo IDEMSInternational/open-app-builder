@@ -76,6 +76,7 @@ export class IntroSplashSurveyComponent implements OnInit {
   fadeSection = [];
   // durations to display each faded section
   fadeTimes = [3500, 4000, 3500, 5000];
+  private _isDismissed = false;
 
   constructor(private modalCtrl: ModalController) {}
 
@@ -97,12 +98,13 @@ export class IntroSplashSurveyComponent implements OnInit {
       i++;
     }
     // modal may have already been dismissed, so check it exists before attempting again
-    if (await this.modalCtrl.getTop()) {
+    if (!this._isDismissed) {
       await this.modalCtrl.dismiss({ _completed: false });
     }
   }
   skipIntro() {
     // repeat intro in the future so set completed variable to false
+    this._isDismissed = true;
     this.modalCtrl.dismiss({ _completed: false });
   }
   private _wait(ms: number) {
