@@ -14,6 +14,9 @@
     height: 42px;
     border-radius: 42px;
     margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .step-item-button {
@@ -26,4 +29,12 @@
     background-color: white;
     padding: 10px;
     border-radius: 20px;
+}
+
+.locked {
+    filter: brightness(0.7);
+}
+
+.current-step {
+    font-weight: bold;
 }
