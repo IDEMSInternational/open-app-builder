@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ToolboxTopicType, ToolboxTip } from "src/app/feature/toolbox/models/toolbox.model";
+import { FlowTypes } from "scripts/types";
+import { ToolboxTopicType } from "src/app/feature/toolbox/models/toolbox.model";
 import { ToolboxService } from "src/app/feature/toolbox/services/toolbox.service";
 
 @Component({
@@ -10,7 +11,7 @@ import { ToolboxService } from "src/app/feature/toolbox/services/toolbox.service
 })
 export class ToolboxTopicPage implements OnInit {
   type: ToolboxTopicType;
-  modules: ToolboxTip[];
+  modules: FlowTypes.Tips[];
   title: string = null;
 
   constructor(
@@ -28,7 +29,7 @@ export class ToolboxTopicPage implements OnInit {
   }
 
   ngOnInit() {}
-  onClickFlow(module: ToolboxTip) {
+  onClickFlow(module: FlowTypes.Tips) {
     this.router.navigate([module.flow_name], { relativeTo: this.activatedRoute });
   }
 

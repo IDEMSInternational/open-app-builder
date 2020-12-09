@@ -3,11 +3,12 @@ import * as xlsx from "xlsx";
 import * as path from "path";
 import chalk from "chalk";
 import { ConversationParser, DefaultParser } from "./parsers";
-import { groupJsonByKey, recursiveFindByExtension } from "../utils";
-import { IContentFlow, IContentList } from "./types";
-import { IFlowType } from "./types";
+import { groupJsonByKey, recursiveFindByExtension, capitalizeFirstLetter } from "../utils";
+import { FlowTypes } from "../../types";
+import { AbstractParser } from "./parsers/abstract.parser";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
+const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
 const OUTPUT_FOLDER = `${__dirname}/output`;
 
 /**
@@ -17,6 +18,8 @@ const OUTPUT_FOLDER = `${__dirname}/output`;
 async function main() {
   console.log(chalk.yellow("Converting PLH Data"));
   fs.ensureDirSync(INPUT_FOLDER);
+  fs.ensureDirSync(INTERMEDIATES_FOLDER);
+  fs.emptyDirSync(INTERMEDIATES_FOLDER);
   fs.ensureDirSync(OUTPUT_FOLDER);
   fs.emptyDirSync(OUTPUT_FOLDER);
   const xlsxFiles = listFilesForConversion(INPUT_FOLDER);
@@ -30,10 +33,15 @@ async function main() {
   const merged = mergePLHData(combined);
   const dataByFlowType = groupJsonByKey(merged, "flow_type");
   const convertedData = applyDataParsers(dataByFlowType as any);
+  // write some extra files for logging/debugging purposes
+  fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
+  fs.writeFileSync(`${INTERMEDIATES_FOLDER}/dataByFlowType.json`, JSON.stringify(merged, null, 2));
+  fs.writeFileSync(`${INTERMEDIATES_FOLDER}/convertedData.json`, JSON.stringify(merged, null, 2));
   // write to output files
   Object.entries(convertedData).forEach(([key, value]) => {
     const outputJson = JSON.stringify(value, null, 2);
-    fs.writeFileSync(`${OUTPUT_FOLDER}/${key}.json`, outputJson);
+    const outputTs = generateLocalTsOutput(outputJson, key as any);
+    fs.writeFileSync(`${OUTPUT_FOLDER}/${key}.ts`, outputTs);
   });
   console.log(chalk.yellow("Conversion Complete"));
 }
@@ -44,18 +52,25 @@ main()
   })
   .then(() => console.log(chalk.green("PLH Data Converted")));
 
-function applyDataParsers(dataByFlowType: { [type in IFlowType]: IContentFlow[] }) {
-  const parsers: { [flowType in IFlowType]?: DefaultParser } = {
+function applyDataParsers(
+  dataByFlowType: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] }
+) {
+  // All flow types will be processed by the default parser unless otherwise specified here
+  const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
     conversation: new ConversationParser(),
   };
-  console.log(chalk.blue(`Parsers applied to flow_types: ${Object.keys(parsers).join(", ")}`));
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
-    if (parsers.hasOwnProperty(key)) {
-      parsedData[key] = contentFlows.map((flow) => parsers[key].convert(flow));
-    } else {
-      parsedData[key] = contentFlows;
-    }
+    const parser = customParsers[key] ? customParsers[key] : new DefaultParser();
+    // add intermediate parsed flow for logging/debugging
+    fs.ensureDir(`${INTERMEDIATES_FOLDER}/${key}`);
+    // parse all flows through the parser
+    parsedData[key] = contentFlows.map((flow) => {
+      const parsed = parser.run(flow);
+      const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
+      fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
+      return parsed;
+    });
   });
   return parsedData;
 }
@@ -66,13 +81,12 @@ function applyDataParsers(dataByFlowType: { [type in IFlowType]: IContentFlow[] 
  * @returns - array of all merged sheets (no grouping or collating)
  */
 function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
-  const merged: { [flow_name: string]: IContentFlow } = {};
+  const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
   const releasedSummary = {};
   const skippedSummary = {};
-  console.log("merging", jsons.length);
   for (let el of jsons) {
     const { json, xlsxPath } = el;
-    const contentList = json["==content_list=="] as IContentList[];
+    const contentList = json["==content_list=="] as FlowTypes.FlowTypeWithData[];
     if (contentList) {
       for (const contents of contentList) {
         const { flow_name, status, flow_type, module } = contents;
@@ -85,7 +99,7 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
               console.log(chalk.yellow("duplicate flow:", flow_name));
             }
             // console.log(chalk.green("+", flow_name));
-            merged[flow_name] = { ...contents, data: json[flow_name] };
+            merged[flow_name] = { ...contents, rows: json[flow_name] };
           } else {
             console.log(chalk.red("No Contents:", flow_name));
           }
@@ -119,6 +133,16 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
   return json;
 }
 
+/**
+ * Create a ts file of json export, importing what would be the relevant local
+ * typings to allow checking against data (and disabling unwanted additional linting)
+ */
+function generateLocalTsOutput(json: any, flow_type: FlowTypes.FlowType) {
+  const typeName = capitalizeFirstLetter(flow_type);
+  return `/* tslint:disable */
+  import { FlowTypes } from "../../../types";
+  export const ${flow_type}: FlowTypes.${typeName}[] = ${json}`;
+}
 /**
  * Read all xlsx files in the function xlsx folder (ignoring temp files and anything in an 'old' directory)
  * @returns filenames of xlsx files in given folder

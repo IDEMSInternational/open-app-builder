@@ -35,7 +35,7 @@ export class RapidProOfflineFlow {
   public start() {
     if (!this.running) {
       this.running = true;
-      this.enterNode(this.flowObject.nodes[0]);
+      this.enterNode(this.flowObject.nodes[0], null);
     } else {
       console.warn(
         "Attempted to start flow that is already running ",
@@ -45,13 +45,20 @@ export class RapidProOfflineFlow {
     }
   }
 
+  public continue(childStatus: "completed" | "expried") {
+    console.log("Continuing parent flow", this.flowObject.name, "child status", childStatus);
+    this.childFlowId = null;
+    this.useSwitchRouter(this.currentNode, childStatus);
+  }
+
   public reset() {
     this.running = false;
   }
 
-  private async enterNode(node: RapidProFlowExport.Node) {
+  private async enterNode(node: RapidProFlowExport.Node, fromNode: RapidProFlowExport.Node | null) {
     this.currentNode = node;
-    console.log("Entered node id ", node.uuid, node);
+    console.log("Entered from ", fromNode);
+    console.log("Entered node id ", node);
     for (let action of node.actions) {
       await this.handleNodeAction(action);
     }
@@ -60,7 +67,7 @@ export class RapidProOfflineFlow {
       let firstExitWithDestination = node.exits.filter((exit) => exit.destination_uuid)[0];
       if (firstExitWithDestination) {
         console.log("Entered node by exiting from node with no router");
-        this.enterNode(this.getNodeById(firstExitWithDestination.destination_uuid));
+        this.enterNode(this.getNodeById(firstExitWithDestination.destination_uuid), node);
       } else {
         console.log("This should be flow completion");
         let flowEvents = this.flowStatus$.getValue();
@@ -167,7 +174,7 @@ export class RapidProOfflineFlow {
       this.exitAtRandom(node);
     } else {
       if (node.router.operand === "@child.run.status") {
-        this.setupSubflowCompletionSubscription(node);
+        console.log("We'll come back here later...");
       } else {
         let variableValue = await this.parseMessageTemplate(node.router.operand);
         if (variableValue.startsWith("@")) {
@@ -178,24 +185,6 @@ export class RapidProOfflineFlow {
           );
         }
         this.useSwitchRouter(node, variableValue);
-      }
-    }
-  }
-
-  private setupSubflowCompletionSubscription(node: RapidProFlowExport.Node) {
-    for (let routerCase of node.router.cases) {
-      if (routerCase.arguments && routerCase.arguments[0] === "completed") {
-        let subscription = this.flowStatus$.subscribe((flowEvents) => {
-          if (flowEvents.length > 0) {
-            let latest = flowEvents[flowEvents.length - 1];
-            if (latest.status === "completed" && latest.uuid === this.childFlowId) {
-              console.log("Returning to parent flow after subflow completion");
-              subscription.unsubscribe();
-              this.childFlowId = null;
-              this.exitUsingCategoryId(node, routerCase.category_uuid);
-            }
-          }
-        });
       }
     }
   }
@@ -223,10 +212,10 @@ export class RapidProOfflineFlow {
     let matchingCategory = node.router.categories.find((cat) => cat.uuid === matchingCategoryId);
     let matchingExit = node.exits.find((exit) => exit.uuid === matchingCategory.exit_uuid);
     console.log("Entered node via router category ", matchingCategory);
-    this.enterNode(this.getNodeById(matchingExit.destination_uuid));
+    this.enterNode(this.getNodeById(matchingExit.destination_uuid), node);
   }
 
-  private async parseMessageTemplate(template: string): Promise<string> {
+  parseMessageTemplate = async (template: string) => {
     console.log("template", template);
     let output: string = "" + template;
 
