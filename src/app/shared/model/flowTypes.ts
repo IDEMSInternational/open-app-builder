@@ -72,10 +72,14 @@ export namespace FlowTypes {
   export interface Module_listRow {
     module_number: number;
     id: string;
+    /** Main title displayed at top of module page */
     title: string;
+    /** Title to show with abridged icon */
+    title_short: string;
     description?: string;
     /** Route to navigate to for page (if omitted not yet authored) */
     module_page?: string;
+    /** Used in module-select circle */
     icon_asset?: string;
     main_image_asset?: string;
   }

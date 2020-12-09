@@ -341,10 +341,11 @@
         "id": "task_relax",
         "label": "Relax",
         "groups_list": [
-          "repeat_on_completion"
+          "repeat_on_completion",
+          "habits"
         ],
         "requires_list": [
-          "task_mod_welcome_..."
+          "task_mod_welcome_self-care_package"
         ]
       },
       {
@@ -367,10 +368,11 @@
         "id": "task_treat_yourself",
         "label": "Treat yourself well",
         "groups_list": [
-          "repeat_on_completion"
+          "repeat_on_completion",
+          "habits"
         ],
         "requires_list": [
-          "task_mod_welcome_..."
+          "task_mod_welcome_self-care_package"
         ]
       },
       {
@@ -390,10 +392,38 @@
         "start_action_args": "fireworks"
       },
       {
+        "id": "task_praise_yourself",
+        "label": "Praise yourself",
+        "groups_list": [
+          "repeat_on_completion",
+          "habits"
+        ],
+        "requires_list": [
+          "task_mod_welcome_self-care_package"
+        ]
+      },
+      {
+        "id": "task_praise_yourself_level_1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_praise_yourself_level_2_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
         "id": "task_spend_time",
         "label": "One on one time",
         "groups_list": [
-          "repeat_on_completion"
+          "repeat_on_completion",
+          "habits"
         ],
         "requires_list": [
           "task_mod_1on1_tips"
@@ -419,10 +449,11 @@
         "id": "task_praise_teen",
         "label": "Praise your teen",
         "groups_list": [
-          "repeat_on_completion"
+          "repeat_on_completion",
+          "habits"
         ],
         "requires_list": [
-          "task_mod_welcome_..."
+          "task_mod_welcome_quick_praise"
         ]
       },
       {
@@ -445,7 +476,8 @@
         "id": "task_breathe",
         "label": "Breathe not yell",
         "groups_list": [
-          "repeat_on_completion"
+          "repeat_on_completion",
+          "habits"
         ],
         "requires_list": [
           "task_mod_stress_tips"
@@ -471,7 +503,8 @@
         "id": "task_money",
         "label": "Good money choice",
         "groups_list": [
-          "repeat_on_completion"
+          "repeat_on_completion",
+          "habits"
         ],
         "requires_list": [
           "task_mod_budgeting_tips"
@@ -497,7 +530,8 @@
         "id": "task_consequence",
         "label": "Calm consequence",
         "groups_list": [
-          "repeat_on_completion"
+          "repeat_on_completion",
+          "habits"
         ],
         "requires_list": [
           "task_mod_responsibility_tips"
@@ -523,7 +557,8 @@
         "id": "task_safe",
         "label": "Safe",
         "groups_list": [
-          "repeat_on_completion"
+          "repeat_on_completion",
+          "habits"
         ],
         "requires_list": [
           "task_mod_safe_tips"
