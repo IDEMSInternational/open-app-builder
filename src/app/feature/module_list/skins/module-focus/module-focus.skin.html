@@ -2,13 +2,20 @@
   <!-- [ngStyle]="{'background': 'var(--theme-var-' + moduleListRow.id + ')'}" -->
   <div class="main-container-overlay">
     <plh-habit-tracker></plh-habit-tracker>
-    <div style="padding: 20px 60px 20px 10px">
-      <img class="module-main-img" [src]="moduleListRow.main_image_asset" />
+    <div class="module-info-container">
+      <div class="module-image-container">
+        <img class="module-main-img" [src]="moduleListRow.main_image_asset" />
+        <ion-button
+          class="module-main-button"
+          fill="clear"
+          size="large"
+          [routerLink]="['/','module_page',moduleListRow.module_page]"
+          ><ion-icon slot="icon-only" name="play-outline"></ion-icon
+        ></ion-button>
+      </div>
+
       <h1>{{moduleListRow.title}}</h1>
       <p>{{moduleListRow.description}}</p>
-      <ion-button [routerLink]="['/','module_page',moduleListRow.module_page]"
-        >Go To Module</ion-button
-      >
     </div>
     <plh-slide-panel-right headerText="Modules">
       <plh-module-select-circle
