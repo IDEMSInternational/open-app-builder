@@ -3,9 +3,14 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
 
 @Component({
   selector: "module-list-flow-step-group",
-  template: `<div *ngFor="let stepElem of row.rows">
+  template: `<div *ngFor="let stepElem of row.rows; index as i">
       <module-list-flow-step-intro *ngIf="stepElem.type === 'step_intro'" [row]="stepElem"></module-list-flow-step-intro>
-      <module-list-flow-step-item *ngIf="stepElem.type === 'step_item'" [row]="stepElem"></module-list-flow-step-item>
+      <module-list-flow-step-item
+        *ngIf="stepElem.type === 'step_item'"
+        [row]="stepElem"
+        [isCurrentStep]="i === 1"
+        [isLocked]="i > 1"
+        ></module-list-flow-step-item>
     </div>
   `,
   styleUrls: ["./flow-components-common.scss"]
