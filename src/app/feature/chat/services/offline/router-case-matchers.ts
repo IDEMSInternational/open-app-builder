@@ -2,7 +2,7 @@ import { RapidProFlowExport } from './rapid-pro-export.model';
 
 export function matchesCase(routerCase: RapidProFlowExport.RouterCase, operand: string) {
     switch (routerCase.type) {
-        case "has_only_phrase": return matchHasAnyWordCase(routerCase, operand);
+        case "has_only_phrase": return routerCase.arguments[0].toLowerCase() === operand.toLowerCase();
         case "has_any_word": return matchHasAnyWordCase(routerCase, operand);
         case "has_number_between": return matchHasNumberBetweenCase(routerCase, operand);
         case "has_number_gt": return matchHasNumberGreaterThanCase(routerCase, operand);

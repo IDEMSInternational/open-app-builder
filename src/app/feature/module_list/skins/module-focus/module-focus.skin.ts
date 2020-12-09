@@ -13,9 +13,7 @@ export class ModuleFocusSkin {
 
   moduleList = MODULE_LIST[0].rows;
 
-  constructor() {
-    
-  }
+  constructor() {}
 
   onModuleChange(module: FlowTypes.Module_listRow) {
     this.moduleListRow = module;

@@ -1,9 +1,9 @@
 /* tslint:disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const tasks: FlowTypes.Tasks[] = [
+  export const task_list: FlowTypes.Task_list[] = [
   {
-    "flow_type": "tasks",
-    "flow_name": "tasks_list",
+    "flow_type": "task_list",
+    "flow_name": "module_task_list",
     "status": "released",
     "rows": [
       {
@@ -46,15 +46,19 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_emo",
         "evaluation": "completed",
-        "requires": "first_app_launch | delay_7_day"
+        "requires_list": [
+          "first_app_launch | delay_7_day"
+        ]
       },
       {
         "id": "task_mod_1on1_intro",
-        "label": "Why one-on-one time?",
+        "label": "Intro to one-on-one time",
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_intro",
         "evaluation": "completed ",
-        "requires": "task_mod_1on1_emo"
+        "requires_list": [
+          "task_mod_1on1_emo"
+        ]
       },
       {
         "id": "task_mod_1on1_tips",
@@ -62,7 +66,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_tips",
         "evaluation": "completed",
-        "requires": "task_mod_1on1_intro"
+        "requires_list": [
+          "task_mod_1on1_intro"
+        ]
       },
       {
         "id": "task_mod_1on1_activity",
@@ -70,7 +76,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_activity",
         "evaluation": "completed",
-        "requires": "task_mod_1on1_tips"
+        "requires_list": [
+          "task_mod_1on1_tips"
+        ]
       },
       {
         "id": "task_mod_1on1_par",
@@ -78,7 +86,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_par",
         "evaluation": "completed",
-        "requires": "task_mod_1on1_tips | delay_1_day"
+        "requires_list": [
+          "task_mod_1on1_tips | delay_1_day"
+        ]
       },
       {
         "id": "task_mod_1on1_fun",
@@ -86,7 +96,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_fun",
         "evaluation": "completed",
-        "requires": "task_mod_1on1_tips | delay_5_day"
+        "requires_list": [
+          "task_mod_1on1_tips | delay_5_day"
+        ]
       },
       {
         "id": "task_mod_1on1_activity_review",
@@ -94,7 +106,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_1on1_activity_review",
         "evaluation": "completed",
-        "requires": "task_mod_1on1_activity | delay_4_day"
+        "requires_list": [
+          "task_mod_1on1_activity | delay_4_day"
+        ]
       },
       {
         "id": "task_mod_1on1_completed_goal",
@@ -104,11 +118,14 @@
       },
       {
         "id": "task_mod_praise_intro",
-        "label": "Why praise?",
+        "label": "Intro to praise",
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_intro",
         "evaluation": "completed",
-        "requires": "task_mod_1on1_completed_goal; first_launch | delay_14_day"
+        "requires_list": [
+          "task_mod_1on1_completed_goal",
+          "first_launch | delay_14_day"
+        ]
       },
       {
         "id": "task_mod_praise_tips",
@@ -116,7 +133,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_tips",
         "evaluation": "completed",
-        "requires": "task_mod_praise_intro"
+        "requires_list": [
+          "task_mod_praise_intro"
+        ]
       },
       {
         "id": "task_mod_praise_activity",
@@ -124,7 +143,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_activity",
         "evaluation": "completed",
-        "requires": "task_mod_praise_tips"
+        "requires_list": [
+          "task_mod_praise_tips"
+        ]
       },
       {
         "id": "task_mod_praise_emo",
@@ -132,14 +153,18 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_emo",
         "evaluation": "completed",
-        "requires": "task_mod_praise_tips | delay_1_day"
+        "requires_list": [
+          "task_mod_praise_tips | delay_1_day"
+        ]
       },
       {
         "id": "task_mod_praise_fun",
         "label": "Something fun",
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_fun",
-        "requires": "task_mod_praise_tips | delay_7_day"
+        "requires_list": [
+          "task_mod_praise_tips | delay_7_day"
+        ]
       },
       {
         "id": "task_mod_praise_activity_review",
@@ -147,7 +172,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_praise_activity_review",
         "evaluation": "completed",
-        "requires": "task_mod_praise_activity | delay_4_day"
+        "requires_list": [
+          "task_mod_praise_activity | delay_4_day"
+        ]
       },
       {
         "id": "task_mod_praise_completed_goal",
@@ -160,7 +187,10 @@
         "label": "Parenting check-in",
         "start_action": "start_new_flow",
         "start_action_args": "mod_instructions_par",
-        "requires": "task_mod_praise_completed_goal; first_launch | delay_21_day"
+        "requires_list": [
+          "task_mod_praise_completed_goal",
+          "first_launch | delay_21_day"
+        ]
       },
       {
         "id": "task_mod_instructions_intro",
@@ -168,7 +198,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_instructions_intro",
         "evaluation": "completed",
-        "requires": "task_mod_instructions_par"
+        "requires_list": [
+          "task_mod_instructions_par"
+        ]
       },
       {
         "id": "task_mod_instructions_tips",
@@ -176,7 +208,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_instructions_tips",
         "evaluation": "completed",
-        "requires": "task_mod_instructions_intro"
+        "requires_list": [
+          "task_mod_instructions_intro"
+        ]
       },
       {
         "id": "task_mod_instructions_activity",
@@ -184,21 +218,27 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_instructions_activity",
         "evaluation": "completed",
-        "requires": "task_mod_instructions_tips"
+        "requires_list": [
+          "task_mod_instructions_tips"
+        ]
       },
       {
         "id": "task_mod_instructions_emo",
         "label": "Emotional check-in",
         "start_action": "start_new_flow",
         "start_action_args": "mod_instructions_emo",
-        "requires": "task_mod_instructions_tips | delay_1_day"
+        "requires_list": [
+          "task_mod_instructions_tips | delay_1_day"
+        ]
       },
       {
         "id": "task_mod_instructions_fun",
         "label": "Something fun",
         "start_action": "start_new_flow",
         "start_action_args": "mod_instructions_fun",
-        "requires": "task_mod_instructions_tips | delay_5_day"
+        "requires_list": [
+          "task_mod_instructions_tips | delay_5_day"
+        ]
       },
       {
         "id": "task_mod_instructions_activity_review",
@@ -206,7 +246,9 @@
         "start_action": "start_new_flow",
         "start_action_args": "mod_instructions_activity_review",
         "evaluation": "completed",
-        "requires": "task_mod_instructions_activity | delay_4_day"
+        "requires_list": [
+          "task_mod_instructions_activity | delay_4_day"
+        ]
       },
       {
         "id": "task_mod_instructions_completed_goal",
@@ -219,125 +261,289 @@
         "label": "Parenting check-in",
         "start_action": "start_new_flow",
         "start_action_args": "mod_stress_par",
-        "requires": "task_mod_instructions_completed_goal; first_launch | delay_28_day"
+        "requires_list": [
+          "task_mod_instructions_completed_goal",
+          "first_launch | delay_28_day"
+        ]
       },
       {
         "id": "task_mod_stress_intro",
         "label": "Intro to managing anger and stress",
         "start_action": "start_new_flow",
         "start_action_args": "mod_stress_intro",
-        "requires": "task_mod_stress_par"
+        "requires_list": [
+          "task_mod_stress_par"
+        ]
       },
       {
         "id": "task_mod_stress_tips",
         "label": "Top tips",
         "start_action": "start_new_flow",
         "start_action_args": "mod_stress_tips",
-        "requires": "task_mod_stress_intro"
+        "requires_list": [
+          "task_mod_stress_intro"
+        ]
       },
       {
         "id": "task_mod_stress_activity",
         "label": "Home activity",
         "start_action": "start_new_flow",
         "start_action_args": "mod_stress_activity",
-        "requires": "task_mod_stress_tips"
+        "requires_list": [
+          "task_mod_stress_tips"
+        ]
       },
       {
         "id": "task_mod_stress_emo",
         "label": "Emotional check-in",
         "start_action": "start_new_flow",
         "start_action_args": "mod_stress_emo",
-        "requires": "task_mod_stress_tips | delay_1_day"
+        "requires_list": [
+          "task_mod_stress_tips | delay_1_day"
+        ]
       },
       {
         "id": "task_mod_stress_fun",
         "label": "Something fun",
         "start_action": "start_new_flow",
         "start_action_args": "mod_stress_fun",
-        "requires": "task_mod_stress_tips | delay_5_day"
+        "requires_list": [
+          "task_mod_stress_tips | delay_5_day"
+        ]
       },
       {
         "id": "task_mod_stress_home_activity",
         "label": "Home activity review",
         "start_action": "start_new_flow",
         "start_action_args": "mod_stress_activity_review",
-        "requires": "task_mod_stress_activity | delay_4_day"
+        "requires_list": [
+          "task_mod_stress_activity | delay_4_day"
+        ]
       },
       {
         "id": "task_mod_stress_completed_goal",
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
-      },
+      }
+    ]
+  },
+  {
+    "flow_type": "task_list",
+    "flow_name": "habit_task_list",
+    "status": "released",
+    "rows": [
       {
-        "id": "task_spend_time",
-        "label": "Spend one-on-one time with your teen",
-        "groups": "repeat_on_completion"
-      },
-      {
-        "id": "task_spend_time_level_1_completed_goal",
-        "groups": "hidden",
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_spend_time_level_2_completed_goal",
-        "groups": "hidden",
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_praise_adult",
-        "label": "Praise another adult in your household",
-        "groups": "repeat_on_completion"
-      },
-      {
-        "id": "task_praise_self",
-        "label": "Praise yourself",
-        "groups": "repeat_on_completion"
-      },
-      {
-        "id": "task_praise_teen",
-        "label": "Praise your teen",
-        "groups": "repeat_on_completion"
-      },
-      {
-        "id": "task_praise_teen_level_1_completed_goal",
-        "groups": "hidden",
-        "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "trigger_on": "goal_praise_teen_1"
-      },
-      {
-        "id": "task_praise_teen_level_2_completed_goal",
-        "groups": "hidden",
-        "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "trigger_on": "goal_praise_teen_2"
+        "id": "task_open_app",
+        "start_action": "open_app"
       },
       {
         "id": "task_relax",
-        "label": "Relaxing activity",
-        "groups": "repeat_on_completion",
-        "start_action": "start_new_flow",
-        "start_action_args": "calm_1",
-        "evaluation": "completed"
+        "label": "Relax",
+        "groups_list": [
+          "repeat_on_completion"
+        ],
+        "requires_list": [
+          "task_mod_welcome_..."
+        ]
       },
       {
         "id": "task_relax_level_1_completed_goal",
-        "groups": "hidden",
+        "groups_list": [
+          "hidden"
+        ],
         "start_action": "give_award",
         "start_action_args": "fireworks"
       },
       {
         "id": "task_relax_level_2_completed_goal",
-        "groups": "hidden",
+        "groups_list": [
+          "hidden"
+        ],
         "start_action": "give_award",
         "start_action_args": "fireworks"
       },
       {
-        "id": "task_open_app",
-        "start_action": "open_app"
+        "id": "task_treat_yourself",
+        "label": "Treat yourself well",
+        "groups_list": [
+          "repeat_on_completion"
+        ],
+        "requires_list": [
+          "task_mod_welcome_..."
+        ]
+      },
+      {
+        "id": "task_treat_yourself_level_1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_treat_yourself_level_2_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_spend_time",
+        "label": "One on one time",
+        "groups_list": [
+          "repeat_on_completion"
+        ],
+        "requires_list": [
+          "task_mod_1on1_tips"
+        ]
+      },
+      {
+        "id": "task_spend_time_level_1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_spend_time_level_2_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_praise_teen",
+        "label": "Praise your teen",
+        "groups_list": [
+          "repeat_on_completion"
+        ],
+        "requires_list": [
+          "task_mod_welcome_..."
+        ]
+      },
+      {
+        "id": "task_praise_teen_level_1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_praise_teen_level_2_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_breathe",
+        "label": "Breathe not yell",
+        "groups_list": [
+          "repeat_on_completion"
+        ],
+        "requires_list": [
+          "task_mod_stress_tips"
+        ]
+      },
+      {
+        "id": "task_breathe_level_1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_breathe_level_2_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_money",
+        "label": "Good money choice",
+        "groups_list": [
+          "repeat_on_completion"
+        ],
+        "requires_list": [
+          "task_mod_budgeting_tips"
+        ]
+      },
+      {
+        "id": "task_money_level_1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_money_level_2_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_consequence",
+        "label": "Calm consequence",
+        "groups_list": [
+          "repeat_on_completion"
+        ],
+        "requires_list": [
+          "task_mod_responsibility_tips"
+        ]
+      },
+      {
+        "id": "task_consequence_level_1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_consequence_level_2_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_safe",
+        "label": "Safe",
+        "groups_list": [
+          "repeat_on_completion"
+        ],
+        "requires_list": [
+          "task_mod_safe_tips"
+        ]
+      },
+      {
+        "id": "task_safe_level_1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
+      },
+      {
+        "id": "task_safe_level_2_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "fireworks"
       }
     ]
   }

@@ -18,6 +18,8 @@ const OUTPUT_FOLDER = `${__dirname}/output`;
 async function main() {
   console.log(chalk.yellow("Converting PLH Data"));
   fs.ensureDirSync(INPUT_FOLDER);
+  fs.ensureDirSync(INTERMEDIATES_FOLDER);
+  fs.emptyDirSync(INTERMEDIATES_FOLDER);
   fs.ensureDirSync(OUTPUT_FOLDER);
   fs.emptyDirSync(OUTPUT_FOLDER);
   const xlsxFiles = listFilesForConversion(INPUT_FOLDER);
@@ -53,27 +55,22 @@ main()
 function applyDataParsers(
   dataByFlowType: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] }
 ) {
-  const parsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
+  // All flow types will be processed by the default parser unless otherwise specified here
+  const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
     conversation: new ConversationParser(),
-    module_page: new DefaultParser(),
-    tips: new DefaultParser(),
   };
-  console.log(chalk.blue(`Parsers applied to flow_types: ${Object.keys(parsers).join(", ")}`));
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
-    if (parsers.hasOwnProperty(key)) {
-      // add intermediate parsed flow for logging/debugging
-      fs.ensureDir(`${INTERMEDIATES_FOLDER}/${key}`);
-      // parse all flows through the parser
-      parsedData[key] = contentFlows.map((flow) => {
-        const parsed = parsers[key].run(flow);
-        const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
-        fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
-        return parsed;
-      });
-    } else {
-      parsedData[key] = contentFlows;
-    }
+    const parser = customParsers[key] ? customParsers[key] : new DefaultParser();
+    // add intermediate parsed flow for logging/debugging
+    fs.ensureDir(`${INTERMEDIATES_FOLDER}/${key}`);
+    // parse all flows through the parser
+    parsedData[key] = contentFlows.map((flow) => {
+      const parsed = parser.run(flow);
+      const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
+      fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
+      return parsed;
+    });
   });
   return parsedData;
 }

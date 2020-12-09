@@ -25,58 +25,38 @@
         "rows": [
           {
             "type": "list_intro",
-            "message_text": "Here are 6 tips to make One-on-One Time a positive experience for you and your teen:",
-            "comment": "audio_tips_1on1"
+            "message_text": "I have 3 tips to make your One-on-One Time great!",
+            "comment": "audio_tips_1on1\n Maybe the guide's blob?"
           },
           {
             "type": "list_item",
-            "message_text": "Step 1. Do it every day"
+            "message_text": "Tip 1. \"DAY\"- Try to do it every day!"
           },
           {
             "type": "text",
-            "message_text": "Set aside a time each day when you and our teen will not be interrupted and when your teen does not have something else they want to do. Switch off television and phones so you will not be interrupted."
+            "message_text": "Find 5 minutes (or more!) each day when your teen does not have something else they want to do. ."
           },
           {
             "type": "list_item",
-            "message_text": "Step 2. Let your teen choose the activity"
+            "message_text": "Tip 2. \"PLAY\" - Let your teen choose!"
           },
           {
             "type": "text",
-            "message_text": "Tell your teen that you would like to spend some time with them and that they can choose what to do or talk about. Your teen might think this is weird at first, but will come to enjoy having this dedicated time with you!"
+            "message_text": "Tell your teen that you would like to spend some time with them and that they can choose what to do or talk about. They might think this is weird at first, but will come to enjoy this time with you!"
           },
           {
             "type": "list_item",
-            "message_text": "Step 3. Follow your teen's lead"
+            "message_text": "Tip 3. \"STAY\" - Focus on your teen"
           },
           {
             "type": "text",
-            "message_text": "Remember this is your teen's activity. Accept their suggestions, show interest, and say something nice."
-          },
-          {
-            "type": "list_item",
-            "message_text": "Step 4. Give your teen all of your attention"
-          },
-          {
-            "type": "text",
-            "message_text": "Look at your teen. Nodding or saying \"I see\" shows you are really paying attention. Accept what they are saying without judging them."
-          },
-          {
-            "type": "list_item",
-            "message_text": "Step 5. Show your teen you are really listening"
-          },
-          {
-            "type": "text",
-            "message_text": "To make them feel supported, you can even try rephrasing what they said: \"Yeah, I see that you find that difficult/fun/confusing/exciting.\""
-          },
-          {
-            "type": "list_item",
-            "message_text": "Step 6. Have fun!"
-          },
-          {
-            "type": "text",
-            "message_text": "One-on-One Time with your teen can be fun for you, too! It might even make you feel less stressed."
+            "message_text": "Switch off TV and put aside phones. Look at your teen. Nod or say “I see” to show you are really paying attention. Accept what they say without judging them."
           }
         ]
+      },
+      {
+        "type": "text",
+        "message_text": "One-on-One Time with your teen can be fun for you, too! It might even make you feel less stressed."
       }
     ]
   },
