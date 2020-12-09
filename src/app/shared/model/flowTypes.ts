@@ -100,8 +100,8 @@ export namespace FlowTypes {
     title: string;
     description: string;
     task_id: string;
-    icon: string;
-    main_image: string;
+    icon_asset: string;
+    main_image_asset: string;
     _complete?: boolean;
   }
 
