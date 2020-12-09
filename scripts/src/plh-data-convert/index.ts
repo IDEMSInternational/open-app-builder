@@ -63,7 +63,7 @@ function applyDataParsers(
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
     const parser = customParsers[key] ? customParsers[key] : new DefaultParser();
     // add intermediate parsed flow for logging/debugging
-    fs.ensureDir(`${INTERMEDIATES_FOLDER}/${key}`);
+    fs.ensureDirSync(`${INTERMEDIATES_FOLDER}/${key}`);
     // parse all flows through the parser
     parsedData[key] = contentFlows.map((flow) => {
       const parsed = parser.run(flow);
