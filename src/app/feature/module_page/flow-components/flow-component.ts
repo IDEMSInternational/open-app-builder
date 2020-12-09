@@ -57,7 +57,7 @@ export class FlowComponentHostDirective {
 import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "plh-module-page-flow-component",
-  template: ` <ng-template appFlowComponentHost></ng-template> `,
+  template: `<ng-template appFlowComponentHost></ng-template> `,
 })
 export class FlowComponent implements OnInit {
   @Input() row: FlowTypes.Module_pageRow;
