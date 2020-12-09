@@ -10,7 +10,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_welcome_image.svg"
       },
       {
         "row_id": 2,
@@ -67,7 +67,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_1on1_image.svg"
       },
       {
         "row_id": 2,
@@ -142,7 +142,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_praise_image.svg"
       },
       {
         "row_id": 2,
@@ -211,7 +211,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_instructions_image.svg"
       },
       {
         "row_id": 2,
@@ -286,7 +286,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_1on1_image.svg"
       },
       {
         "row_id": 2,
