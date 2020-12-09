@@ -204,6 +204,24 @@
         "task_id": "task_treat_yourself_level_2_completed_goal"
       },
       {
+        "id": "completion_praise_yourself_level_1",
+        "task_id": "task_praise_yourself",
+        "repeat_count": 2
+      },
+      {
+        "id": "completion_praise_yourself_level_2",
+        "task_id": "task_praise_yourself",
+        "repeat_count": 5
+      },
+      {
+        "id": "completion_praise_yourself_level_1_completed_goal",
+        "task_id": "task_praise_yourself_level_1_completed_goal"
+      },
+      {
+        "id": "completion_praise_yourself_level_2_completed_goal",
+        "task_id": "task_praise_yourself_level_2_completed_goal"
+      },
+      {
         "id": "completion_spend_time_level_1",
         "task_id": "task_spend_time",
         "repeat_count": 2
