@@ -52,6 +52,7 @@ export class FlowComponentHostDirective {
 }
 /*********************************************************************
  * Dynamic element to populate flow specific flow component
+ * https://angular.io/guide/dynamic-component-loader
  *********************************************************************/
 import { Component, OnInit } from "@angular/core";
 @Component({

@@ -9,12 +9,13 @@ import { TipRow } from "src/app/feature/toolbox/models/toolbox.model";
 
 export namespace FlowTypes {
   export type FlowType =
-    | "completions"
     | "conversation"
-    | "goals"
-    | "reminders"
-    | "tasks"
     | "tips"
+    | "completion_list"
+    | "goal_list"
+    | "habit_list"
+    | "reminder_list"
+    | "task_list"
     | "module_list"
     | "module_page";
 
@@ -41,11 +42,14 @@ export namespace FlowTypes {
   /*********************************************************************************************
    *  Specific flow types
    ********************************************************************************************/
-  export interface Completions extends FlowTypeWithData {}
-  export interface Completions extends FlowTypeWithData {}
-  export interface Goals extends FlowTypeWithData {}
-  export interface Reminders extends FlowTypeWithData {}
-  export interface Tasks extends FlowTypeWithData {}
+  export interface Completion_list extends FlowTypeWithData {}
+  export interface Goal_list extends FlowTypeWithData {}
+  export interface Habit_list extends FlowTypeWithData {
+    flow_type: "habit_list";
+    rows: Habit_listRow[];
+  }
+  export interface Reminder_list extends FlowTypeWithData {}
+  export interface Task_list extends FlowTypeWithData {}
   export interface Tips extends FlowTypeWithData {
     title: string;
     rows: TipRow[];
@@ -69,10 +73,11 @@ export namespace FlowTypes {
     module_number: number;
     id: string;
     title: string;
-    description: string;
-    module_page: string;
-    icon?: string;
-    main_image?: string;
+    description?: string;
+    /** Route to navigate to for page (if omitted not yet authored) */
+    module_page?: string;
+    icon_asset?: string;
+    main_image_asset?: string;
   }
   export interface Module_pageRow {
     row_id?: string | number;
@@ -89,6 +94,15 @@ export namespace FlowTypes {
     task_id?: string;
     /** Some groups may recursively nest other row objects */
     rows?: Module_pageRow[];
+  }
+  export interface Habit_listRow {
+    id: string;
+    title: string;
+    description: string;
+    task_id: string;
+    icon_asset: string;
+    main_image_asset: string;
+    _complete?: boolean;
   }
 
   // To Sort - possibly these typings affect the input and not the output???
