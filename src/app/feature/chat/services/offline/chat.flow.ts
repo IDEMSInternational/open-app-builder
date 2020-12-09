@@ -45,7 +45,7 @@ export class RapidProOfflineFlow {
     }
   }
 
-  public continue(childStatus: "completed" | "expried") {
+  public continue(childStatus: "completed" | "expired") {
     console.log("Continuing parent flow", this.flowObject.name, "child status", childStatus);
     this.childFlowId = null;
     this.useSwitchRouter(this.currentNode, childStatus);
