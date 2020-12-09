@@ -26,18 +26,18 @@ async function main() {
   console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
+    // Download plh sheets
+    console.log("downloading sheets");
     const plhExcelFolder = await getGDriveFolder(GOOGLE_DRIVE_TARGET_FOLDER);
-    console.log(chalk.white("Checking folders for files"));
     const excelFiles = await listGdriveFilesRecursively(plhExcelFolder.id, plhExcelFolder.name);
-
+    fs.writeFileSync(`${LOGS_DIR}/excelFiles.json`, JSON.stringify(excelFiles, null, 2));
+    await downloadGdriveFiles(excelFiles);
+    // Download plh assets
+    console.log("downloading assets");
     const assetsFolder = await getGDriveFolder(GOOGLE_DRIVE_ASSETS_FOLDER);
-    console.log(chalk.white("Checking folders for files"));
     const assetFiles = await listGdriveFilesRecursively(assetsFolder.id, assetsFolder.name);
-    console.log("asset file", assetFiles[0]);
-    const files = excelFiles.concat(assetFiles);
-    fs.writeFileSync(`${LOGS_DIR}/files.json`, JSON.stringify(files, null, 2));
-    console.log(chalk.white("Downloading files"));
-    await downloadGdriveFiles(files);
+    fs.writeFileSync(`${LOGS_DIR}/assetFiles.json`, JSON.stringify(assetFiles, null, 2));
+    await downloadGdriveFiles(assetFiles);
   } catch (ex) {
     console.error("GDrive download error", ex);
     process.exit(1);
@@ -59,9 +59,7 @@ async function getGDriveFolder(folderName: string): Promise<drive_v3.Schema$File
   if (files.length > 0) {
     return files[0];
   } else {
-    console.log(
-      chalk.red(`folder "${folderName}" does not exist, perhaps it renamed?`)
-    );
+    console.log(chalk.red(`folder "${folderName}" does not exist, perhaps it renamed?`));
     process.exit(1);
   }
 }
@@ -194,10 +192,7 @@ async function listGdriveFilesRecursively(
   const subFolders = res.data.files.filter((file) => file.mimeType === GOOGLE_FOLDER_MIMETYPE);
   for (let folder of subFolders) {
     const subfolderPath = `${folderPath}/${folder.name}`;
-    const subfolderFiles = await listGdriveFilesRecursively(folder.id, subfolderPath);
-    subfolderFiles.forEach((f) => {
-      files.push({ ...f, folderPath: subfolderPath });
-    });
+    files = await listGdriveFilesRecursively(folder.id, subfolderPath, files);
   }
   return files;
 }
