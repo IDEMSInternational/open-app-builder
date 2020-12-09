@@ -13,6 +13,39 @@
     .svg-anim.waving {
 
         position: relative;
+        animation: bouncing 10s infinite;
+
+        @keyframes bouncing {
+            0% { //0s
+                bottom: 0px;
+            }
+            20% { //2s
+                bottom: 30px;
+            }
+            40% { //4s
+                bottom: 0px;
+            }
+        }
+
+        #right_arm_group {
+            transform-origin: 266px 173px;
+            animation: waving-right-arm 4s infinite;
+        }
+
+        @keyframes waving-right-arm {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(30deg);
+            }
+        }
+
+    }
+
+    .svg-anim.elder-waving {
+
+        position: relative;
         animation: bouncing 3s infinite;
 
         @keyframes bouncing {
@@ -27,12 +60,12 @@
             }
         }
 
-        #right_arm_group {
-            transform-origin: 266px 173px;
-            animation: waving-right-arm 1s infinite;
+        #left-arm {
+            transform-origin: 60px 137px;
+            animation: waving-left-arm 1s infinite;
         }
 
-        @keyframes waving-right-arm {
+        @keyframes waving-left-arm {
             0% {
                 transform: rotate(0deg);
             }
