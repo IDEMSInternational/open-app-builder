@@ -10,6 +10,7 @@ import { ArrayToChunks } from "../utils/file-utils";
 // constants
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 const GOOGLE_DRIVE_TARGET_FOLDER = "plh_sheets_beta";
+const GOOGLE_DRIVE_ASSETS_FOLDER = "plh_assets";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
 const CACHE_FOLDER = path.join(__dirname, "cache");
 const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
@@ -25,12 +26,18 @@ async function main() {
   console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
-    const { id, name } = await getPLHFolder();
-    console.log(chalk.white("Checking folders for files"));
-    const files = await listGdriveFilesRecursively(id, name);
-    fs.writeFileSync(`${LOGS_DIR}/files.json`, JSON.stringify(files, null, 2));
-    console.log(chalk.white("Downloading files"));
-    await downloadGdriveFiles(files);
+    // Download plh sheets
+    console.log("downloading sheets");
+    const plhExcelFolder = await getGDriveFolder(GOOGLE_DRIVE_TARGET_FOLDER);
+    const excelFiles = await listGdriveFilesRecursively(plhExcelFolder.id, plhExcelFolder.name);
+    fs.writeFileSync(`${LOGS_DIR}/excelFiles.json`, JSON.stringify(excelFiles, null, 2));
+    await downloadGdriveFiles(excelFiles);
+    // Download plh assets
+    console.log("downloading assets");
+    const assetsFolder = await getGDriveFolder(GOOGLE_DRIVE_ASSETS_FOLDER);
+    const assetFiles = await listGdriveFilesRecursively(assetsFolder.id, assetsFolder.name);
+    fs.writeFileSync(`${LOGS_DIR}/assetFiles.json`, JSON.stringify(assetFiles, null, 2));
+    await downloadGdriveFiles(assetFiles);
   } catch (ex) {
     console.error("GDrive download error", ex);
     process.exit(1);
@@ -39,12 +46,12 @@ async function main() {
 main().then(() => console.log(chalk.green("GDrive Data Downloaded")));
 
 /**
- * Lists the names and IDs primary PLH folder
+ * Gets the name and id of a google drive folder
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-async function getPLHFolder(): Promise<drive_v3.Schema$File> {
+async function getGDriveFolder(folderName: string): Promise<drive_v3.Schema$File> {
   const res = await drive.files.list({
-    q: `mimeType='application/vnd.google-apps.folder' and name contains '${GOOGLE_DRIVE_TARGET_FOLDER}'`,
+    q: `mimeType='application/vnd.google-apps.folder' and name contains '${folderName}'`,
     pageSize: 1,
     fields: "nextPageToken, files(id, name)",
   });
@@ -52,9 +59,7 @@ async function getPLHFolder(): Promise<drive_v3.Schema$File> {
   if (files.length > 0) {
     return files[0];
   } else {
-    console.log(
-      chalk.red(`folder "${GOOGLE_DRIVE_TARGET_FOLDER}" does not exist, perhaps it renamed?`)
-    );
+    console.log(chalk.red(`folder "${folderName}" does not exist, perhaps it renamed?`));
     process.exit(1);
   }
 }
@@ -187,10 +192,7 @@ async function listGdriveFilesRecursively(
   const subFolders = res.data.files.filter((file) => file.mimeType === GOOGLE_FOLDER_MIMETYPE);
   for (let folder of subFolders) {
     const subfolderPath = `${folderPath}/${folder.name}`;
-    const subfolderFiles = await listGdriveFilesRecursively(folder.id, subfolderPath);
-    subfolderFiles.forEach((f) => {
-      files.push({ ...f, folderPath: subfolderPath });
-    });
+    files = await listGdriveFilesRecursively(folder.id, subfolderPath, files);
   }
   return files;
 }
