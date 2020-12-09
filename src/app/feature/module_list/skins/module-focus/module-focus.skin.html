@@ -2,7 +2,7 @@
   <div class="main-container-overlay">
     <plh-habit-tracker></plh-habit-tracker>
     <div style="padding: 20px 60px 20px 10px">
-      <div>Module Image Here: {{moduleListRow.main_image}}</div>
+      <img class="main-image" [src]="moduleListRow.main_image_asset" />
       <h1>{{moduleListRow.title}}</h1>
       <p>{{moduleListRow.description}}</p>
       <ion-button [routerLink]="['/','module_page',moduleListRow.module_page]"
