@@ -7,7 +7,8 @@ type ModuleCircle = {
   id: string,
   left: string,
   top: string,
-  cssClass: string
+  cssClass: string,
+  icon_asset: string
 }
 
 @Component({
@@ -43,6 +44,7 @@ export class ModuleSelectCircleComponent implements OnChanges {
           const diameter = this.outerCirclesDiameter;
           return {
             id: module.id,
+            icon_asset: module.icon_asset,
             left: `calc(${x}% - ${diameter/2}px`,
             top: `calc(${y}% - ${diameter/2}px`,
             cssClass: cssClass
