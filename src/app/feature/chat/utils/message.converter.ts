@@ -19,6 +19,16 @@ export type URLParts = {
   fragment?: string;
 };
 
+// Navigate to any part of the app
+// http://plh-demo1.idems.international/module_list
+
+// Carry out a custom chat action
+// http://plh-demo1.idems.international/chat/action/UNLOCK_TOOLBOX?topic=mod_1on1
+
+
+// Add custom chat message fields
+// http://plh-demo1.idems.international/chat/msg-info?isStory=true
+
 export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<ChatMessage> {
   let quickReplies: string[] = [];
   if (Array.isArray(rpMsg.quick_replies)) {
