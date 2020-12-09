@@ -1,15 +1,14 @@
-<div class="main-container" style="padding-top: 10px">
+<div class="main-container" [ngStyle]="{'background': 'var(--theme-var-' + moduleListRow.id + ')'}">
   <div class="main-container-overlay">
     <plh-habit-tracker></plh-habit-tracker>
     <div style="padding: 20px 60px 20px 10px">
-      <img class="main-image" [src]="moduleListRow.main_image_asset" />
+      <img class="module-main-img" [src]="'assets/images/modules/' + moduleListRow.id + '/home.svg'">
       <h1>{{moduleListRow.title}}</h1>
       <p>{{moduleListRow.description}}</p>
       <ion-button [routerLink]="['/','module_page',moduleListRow.module_page]"
         >Go To Module</ion-button
       >
     </div>
-
     <plh-slide-panel-right headerText="Modules">
       <plh-module-select-circle
         [modules]="moduleList"
