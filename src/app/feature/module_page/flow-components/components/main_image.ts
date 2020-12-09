@@ -4,7 +4,7 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
 @Component({
   selector: "module-list-flow-main-image",
   template: `<div class="image-spacer">
-    <img [src]="'assets/images/modules/mod_' + flow.module + '/home.svg'">
+    <img [src]="row.media_asset">
   </div>`,
   styles: [
     `img {
