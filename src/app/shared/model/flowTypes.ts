@@ -124,7 +124,7 @@ export namespace FlowTypes {
     requires_list?: string[];
   }
   /** As not all tasks will launch flows, use actions to specify different ways to handle a task  */
-  export type Start_action = "start_new_flow" | "give_award";
+  export type Start_action = "start_new_flow" | "give_award" | "open_app";
 
   // To Sort - possibly these typings affect the input and not the output???
 

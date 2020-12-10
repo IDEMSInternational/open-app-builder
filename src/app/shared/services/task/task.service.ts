@@ -1,4 +1,7 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { ModalController } from "@ionic/angular";
+import { NavModalComponent } from "../../components/nav-modal";
 import { FlowTypes } from "../../model";
 import { PLHDataService, TASK_LIST } from "../data/data.service";
 
@@ -6,7 +9,12 @@ import { PLHDataService, TASK_LIST } from "../data/data.service";
 export class TaskService {
   allTasksById: Hashmap<FlowTypes.Task_listRow> = {};
 
-  constructor(private plhDataService: PLHDataService) {
+  constructor(
+    private plhDataService: PLHDataService,
+    private modalCtrl: ModalController,
+    private router: Router
+  ) {
+    console.log("task service", this.modalCtrl);
     this.processTaskList();
     this.processTaskActionHistory();
   }
@@ -18,7 +26,7 @@ export class TaskService {
   /**
    * When running a task we want to trigger any required actions,
    * and add listeners to handle any completion events
-   **/
+   */
   runTask(task_id: string) {
     const task = this.allTasksById[task_id];
     if (!task) {
@@ -34,6 +42,25 @@ export class TaskService {
     }
   }
 
+  /** Provide specific handlers for actions, such as starting a flow */
+  public async runAction(
+    actionId: FlowTypes.Task_listRow["start_action"],
+    actionArgs: string = ""
+  ) {
+    const handlers: {
+      [key in FlowTypes.Task_listRow["start_action"]]: (actionArgs: string) => Promise<any>;
+    } = {
+      give_award: () => this.handleGiveAwardAction(actionArgs),
+      start_new_flow: () => this.handleStartNewFlowAction(actionArgs),
+      open_app: null,
+    };
+    return handlers[actionId](actionArgs);
+  }
+
+  /*******************************************************************************
+   * Initialisation
+   *******************************************************************************/
+
   /** Generate a hashmap of all tasks sorted by id */
   private processTaskList() {
     const allTasksById: Hashmap<FlowTypes.Task_listRow> = {};
@@ -44,28 +71,13 @@ export class TaskService {
     });
     this.allTasksById = allTasksById;
   }
-
-  /** Provide specific handlers for actions, such as starting a flow */
-  public async runAction(
-    actionId: FlowTypes.Task_listRow["start_action"],
-    actionArgs: string = ""
-  ) {
-    const handlers: {
-      [key in FlowTypes.Task_listRow["start_action"]]: (actionArgs: string) => Promise<any>;
-    } = {
-      give_award: this.handleGiveAwardAction,
-      start_new_flow: this.handleStartNewFlowAction,
-    };
-    return handlers[actionId](actionArgs);
+  private async processTaskActionHistory() {
+    // this.taskActions = await this.dbService.table<ITaskAction>("taskActions").toArray();
   }
 
   /*******************************************************************************
    * Specific action handlers
    *******************************************************************************/
-
-  private async processTaskActionHistory() {
-    // this.taskActions = await this.dbService.table<ITaskAction>("taskActions").toArray();
-  }
 
   // private async addTaskAction(action: ITaskAction) {
   //   // await this.dbService.table<ITaskAction>("taskActions").put(action as ITaskAction);
@@ -83,15 +95,19 @@ export class TaskService {
     if (!flowName) {
       throw new Error("no flow id arg specified");
     }
-    const flow = this.plhDataService.getFlowByName(flowName);
-    if (!flow) {
-      throw new Error(`could not find flow: ${flowName}`);
-    }
-    
+    console.log("data service", this.plhDataService);
+    // const flow = this.plhDataService.getFlowByName(flowName);
+    // if (!flow) {
+    //   throw new Error(`could not find flow: ${flowName}`);
+    // }
+
     // const modal = await this.modalCtrl.create({
-    //   component: ChatPage,
-    //   componentProps: { flowName },
+    //   component: NavModalComponent,
+    //   componentProps: {
+    //     rootPage: "toolbox/topic/ONE_ON_ONE_TIME",
+    //   },
     // });
+    this.router.navigate(["toolbox/topic/ONE_ON_ONE_TIME"]);
     // await modal.present();
     // const { role } = await modal.onDidDismiss();
     // console.log("modal dismissed", role);
