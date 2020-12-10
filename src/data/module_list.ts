@@ -20,7 +20,7 @@
         "module_number": 1,
         "id": "mod_1on1",
         "title": "One-on-One Time",
-        "title_short": "One-on-one",
+        "title_short": "1on1",
         "description": "One-on-One Time helps build a positive, trusting relationship. When you really show interest in your teens, you make them feel valued and appreciated.",
         "icon_asset": "assets/plh_assets/plh_images/modules/mod_1on1_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/modules/mod_1on1_image.svg",
@@ -60,7 +60,7 @@
         "module_number": 5,
         "id": "mod_budgeting",
         "title": "Family Budgeting",
-        "title_short": "Budget",
+        "title_short": "Money",
         "icon_asset": "assets/plh_assets/plh_images/modules/mod_budgeting_icon.svg"
       },
       {
@@ -74,14 +74,14 @@
         "module_number": 7,
         "id": "mod_responsibility",
         "title": "Accepting Responsibility",
-        "title_short": "Responsibilities",
+        "title_short": "Consequences",
         "icon_asset": "assets/plh_assets/plh_images/modules/mod_responsibility_icon.svg"
       },
       {
         "module_number": 8,
         "id": "mod_solving",
         "title": "Problem Solving",
-        "title_short": "Problem-solving",
+        "title_short": "Problem-solve",
         "icon_asset": "assets/plh_assets/plh_images/modules/mod_solving_icon.svg"
       },
       {
@@ -90,6 +90,13 @@
         "title": "Keeping Your Teen Safe",
         "title_short": "Safety",
         "icon_asset": "assets/plh_assets/plh_images/modules/mod_safe_icon.svg"
+      },
+      {
+        "module_number": 10,
+        "id": "mod_crisis",
+        "title": "Dealing with Crisis",
+        "title_short": "Crisis",
+        "icon_asset": "assets/plh_assets/plh_images/modules/mod_crisis_icon.svg"
       }
     ]
   }
