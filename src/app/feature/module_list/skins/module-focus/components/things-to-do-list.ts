@@ -1,11 +1,32 @@
 import { Component, OnInit } from "@angular/core";
+import { TaskActionsService } from 'src/app/feature/goals/services/task-actions.service';
+import { TasksService } from 'src/app/feature/goals/services/tasks.service';
 
 @Component({
   selector: "plh-things-to-do-list",
-  template: `<div>PLH Things Todo</div>`,
+  template: `
+  <div class="scroller">
+    <div *ngFor="let task of tasksService.userJourneyTasks" trackBy:trackById>
+      <plh-task-reminder-item [task]="task"></plh-task-reminder-item>
+    </div>
+  </div>
+  `,
+  styles: [
+    `.scroller {
+      overflow-y: auto;
+      height: 100%;
+    }`
+  ]
 })
 export class ThingsToDoListComponent implements OnInit {
-  constructor() {}
+  dataLoaded: boolean = false;
+  constructor(public tasksService: TasksService, public taskActionsService: TaskActionsService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.taskActionsService.loadActions().then(() => (this.dataLoaded = true));
+  }
+
+  trackById(index: number, item: { id: string;[key: string]: any }) {
+    return item.id;
+  }
 }

@@ -30,5 +30,6 @@ export function lottiePlayerFactory() {
     SharedPipesModule,
   ],
   declarations: [GoalsPage, TaskReminderItemComponent, AnimModalComponent],
+  exports: [TaskReminderItemComponent]
 })
 export class GoalsPageModule {}
