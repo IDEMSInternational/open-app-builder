@@ -14,35 +14,27 @@ import { HABIT_LIST } from "src/app/shared/services/data/data.service";
         <ion-title></ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content color="primary">
-      <div class="main-container-overlay ion-padding">
-        <h3>What have you done today?</h3>
-        <div class="habit-cards-container">
-          <div
-            *ngFor="let habit of habits; index as i"
-            class="habit-card"
-            (click)="toggleHabit(i)"
-            [class.complete]="habit._complete"
-          >
-            <div class="habit-image-container">
-              <img class="habit-image" [src]="habit.main_image_asset" />
-            </div>
-            <div class="habit-title">{{ habit.title }}</div>
-          </div>
-        </div>
-        <ion-button class="habit-history-button" color="primary" expand="block"
-          >Discover your habit history</ion-button
+    <ion-content class="ion-padding background-primary-lighter">
+      <h3>What have you done today?</h3>
+      <div class="habit-cards-container">
+        <div
+          *ngFor="let habit of habits; index as i"
+          class="habit-card"
+          (click)="toggleHabit(i)"
+          [class.complete]="habit._complete"
         >
+          <div class="habit-image-container">
+            <img class="habit-image" [src]="habit.main_image_asset" />
+          </div>
+          <div class="habit-title">{{ habit.title }}</div>
+        </div>
       </div>
+      <ion-button class="habit-history-button" color="primary" expand="block"
+        >Discover your habit history</ion-button
+      >
     </ion-content>`,
   styles: [
     `
-      /* copied css, should probably be moved somewhere else  */
-      .main-container-overlay {
-        background: rgba(255, 255, 255, 0.85);
-        height: 100%;
-        overflow: auto;
-      }
       h3 {
         color: var(--ion-color-primary);
       }
