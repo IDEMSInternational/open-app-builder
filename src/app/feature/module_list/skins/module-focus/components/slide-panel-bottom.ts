@@ -18,7 +18,7 @@ import { Component, Input } from "@angular/core";
         width: 100vw;
       }
       .main-container {
-        position: absolute;
+        position: fixed;
         z-index: 10;
         background: #096B8B;
         color: white;
