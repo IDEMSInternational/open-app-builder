@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { IGoalWithMeta } from "../../models/goals.model";
-import DATA from "../../data/app_goals";
 // type IData = typeof DATA;
 
 @Injectable({
@@ -230,6 +229,4 @@ export class GoalsService {
   // }
 }
 
-interface Hashmap<T> {
-  [key: string]: T;
-}
+
