@@ -10,8 +10,9 @@
   flex-direction: column;
 }
 .main-container {
-  background-color: var(--ion-color-primary);
+  background-color: white;
 }
 .main-container-overlay {
-  background-color: rgba(255, 255, 255, 0.85);
+  // background-color: rgba(255, 255, 255, 0.85);
+  overflow: auto;
 }
