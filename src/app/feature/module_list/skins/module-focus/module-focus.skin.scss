@@ -45,3 +45,7 @@ p {
   position: absolute;
   top: 0;
 }
+
+ion-content {
+  --padding-bottom: var(--plh-bottom-panel-header-height, 50px);
+}

@@ -12,6 +12,7 @@ import { ThingsToDoListComponent } from "./components/things-to-do-list";
 import { RouterModule } from "@angular/router";
 import { ModuleFocusSkin } from "./module-focus.skin";
 import { HabitAddComponent } from "./components/habit-add";
+import { GoalsPageModule } from 'src/app/feature/goals/goals.module';
 
 const components = [
   HabitTrackerComponent,
@@ -23,7 +24,7 @@ const components = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, RouterModule],
+  imports: [CommonModule, FormsModule, IonicModule, RouterModule, GoalsPageModule],
   exports: [ModuleFocusSkin],
   declarations: [ModuleFocusSkin, ...components],
 })
