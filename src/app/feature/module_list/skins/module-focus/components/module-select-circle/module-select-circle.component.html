@@ -3,7 +3,7 @@
     *ngFor="let moduleCircle of outerModuleCircles"
     [ngClass]="moduleCircle.cssClass"
     [ngStyle]="{ left: moduleCircle.left, top: moduleCircle.top }"
-    (click)="onModuleClicked(moduleCircle.id)"
+    (click)="onModuleClicked($event, moduleCircle.id)"
   >
     <img [src]="moduleCircle.icon_asset" />
   </div>
