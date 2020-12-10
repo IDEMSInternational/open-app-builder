@@ -12,7 +12,7 @@ import { Component, Input } from "@angular/core";
     `
       :host {
         --plh-panel-height: 65vh;
-        --plh-header-height: 50px;
+        --plh-bottom-panel-header-height: 50px;
         --plh-panel-width: 100vw;
         --plh-bottom-panel-border-radius: 30px 30px 0px 0px;
         width: 100vw;
@@ -25,7 +25,7 @@ import { Component, Input } from "@angular/core";
         height: var(--plh-panel-height);
         margin: auto;
         width: var(--plh-panel-width);
-        bottom: calc(var(--plh-panel-height) * -1 + var(--plh-header-height));
+        bottom: calc(var(--plh-panel-height) * -1 + var(--plh-bottom-panel-header-height));
         border-radius: var(--plh-bottom-panel-border-radius);
         border-style: solid;
         border-width: 1px;
@@ -38,8 +38,8 @@ import { Component, Input } from "@angular/core";
       }
       .panel-header {
         text-align: center;
-        height: var(--plh-header-height);
-        line-height: var(--plh-header-height);
+        height: var(--plh-bottom-panel-header-height);
+        line-height: var(--plh-bottom-panel-header-height);
         margin: 0;
         background: #096B8B;
         border-radius: var(--plh-bottom-panel-border-radius);
