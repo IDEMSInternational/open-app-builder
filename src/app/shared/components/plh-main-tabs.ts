@@ -3,13 +3,17 @@ import { Component } from "@angular/core";
 @Component({
   selector: "plh-main-tabs",
   template: `<ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button routerLink="module_list" value="modules" layout="icon-top">
-      <ion-label>Modules</ion-label>
-      <ion-icon name="book-outline"></ion-icon>
+    <ion-segment-button
+      routerLink="module_page/mod_welcome_page"
+      value="care-packages"
+      layout="icon-top"
+    >
+      <ion-label>Care Packages</ion-label>
+      <ion-icon name="heart-outline"></ion-icon>
     </ion-segment-button>
     <ion-segment-button value="self-care" layout="icon-top">
-      <ion-label>Self Care</ion-label>
-      <ion-icon name=""></ion-icon>
+      <ion-label>Rewards</ion-label>
+      <ion-icon name="star-outline"></ion-icon>
     </ion-segment-button>
     <ion-segment-button value="help-me-now" layout="icon-top">
       <ion-label>Help Me Now</ion-label>
@@ -35,6 +39,6 @@ import { Component } from "@angular/core";
 })
 export class PLHMainTabsComponent {
   segmentChanged(e) {
-    console.log("segment changed", e.target.value);
+    // console.log("segment changed", e.target.value);
   }
 }
