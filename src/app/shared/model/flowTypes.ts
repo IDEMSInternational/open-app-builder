@@ -117,6 +117,11 @@ export namespace FlowTypes {
   export interface Task_listRow {
     id: string;
     start_action?: Start_action;
+    /** when tasks launch flows specify the type and name of flow. Only specific types are currently handled, as listed here */
+    flow_type?: "conversation" | "tips";
+    /** when tasks launch flows specify the type and name of flow */
+    flow_name?: string;
+    /** when tasks require additional paremeters, such as the name of a reward, provide here */
     start_action_args?: string;
     groups_list?: string[];
     evaluation?: string;
