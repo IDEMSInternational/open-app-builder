@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { ITask } from 'src/app/feature/goals/models/goals.model';
 import { TaskActionsService } from 'src/app/feature/goals/services/task-actions.service';
 import { TasksService } from 'src/app/feature/goals/services/tasks.service';
 
@@ -7,7 +8,7 @@ import { TasksService } from 'src/app/feature/goals/services/tasks.service';
   template: `
   <div class="scroller">
     <div *ngFor="let task of tasksService.userJourneyTasks" trackBy:trackById>
-      <plh-task-reminder-item [task]="task"></plh-task-reminder-item>
+      <plh-task-reminder-item [task]="task" (onTaskClick)="onTaskClick.emit($event)"></plh-task-reminder-item>
     </div>
   </div>
   `,
@@ -20,6 +21,7 @@ import { TasksService } from 'src/app/feature/goals/services/tasks.service';
 })
 export class ThingsToDoListComponent implements OnInit {
   dataLoaded: boolean = false;
+  @Output() onTaskClick: EventEmitter<ITask> = new EventEmitter();
   constructor(public tasksService: TasksService, public taskActionsService: TaskActionsService) { }
 
   ngOnInit() {

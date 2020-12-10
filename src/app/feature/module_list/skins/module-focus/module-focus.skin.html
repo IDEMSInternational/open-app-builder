@@ -19,7 +19,7 @@
     <plh-module-select-circle [modules]="moduleList" [currentModule]="moduleListRow"
       (onModuleChange)="onModuleChange($event)"></plh-module-select-circle>
   </plh-slide-panel-right>
-  <plh-slide-panel-bottom headerText="Things To Do">
-    <plh-things-to-do-list></plh-things-to-do-list>
+  <plh-slide-panel-bottom #bottomSlider headerText="Things To Do">
+    <plh-things-to-do-list (onTaskClick)="onTaskClick($event)"></plh-things-to-do-list>
   </plh-slide-panel-bottom>
 </div>
