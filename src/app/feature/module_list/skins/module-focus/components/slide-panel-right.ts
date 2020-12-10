@@ -27,7 +27,7 @@ import { Component, Input } from "@angular/core";
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         border-width: 1px;
-        transition: right 0.3s linear;
+        transition: right 0.3s ease-out;
       }
       .main-container {
         position: absolute;
