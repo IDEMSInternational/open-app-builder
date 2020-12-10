@@ -2,7 +2,7 @@ import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "plh-slide-panel-bottom",
-  template: `<section class="main-container" (click)="toggleExpand()" [class.expanded]="expanded">
+  template: `<section class="main-container" (click)="toggleExpand()" [ngClass]="{'expanded': expanded}">
     <h3 class="panel-header">{{ headerText }}</h3>
     <div class="content">
       <ng-content></ng-content>
@@ -55,7 +55,11 @@ export class SlidePanelBottomComponent {
   @Input() headerText: string = "";
   expanded = false;
 
-  toggleExpand() {
+  public toggleExpand() {
     this.expanded = !this.expanded;
+  }
+
+  public close() {
+    this.expanded = false;
   }
 }
