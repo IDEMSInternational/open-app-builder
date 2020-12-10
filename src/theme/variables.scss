@@ -1,9 +1,20 @@
+@use "sass:color";
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+// https://sass-lang.com/documentation/breaking-changes/css-vars
+// https://sass-lang.com/documentation/modules/color
+
+// WiP - system to generate colours from base colour
+$primary: hsl(203, 76%, 21%);
+$primary-light: color.change($primary, $lightness: 80%);
+$primary-lighter: color.change($primary, $lightness: 95%);
+
 /** Ionic CSS Variables **/
 :root {
-  --ion-color-primary: #0d4060;
+  --ion-color-primary: #{$primary};
+  --ion-color-primary-light: #{$primary-light};
+  --ion-color-primary-lighter: #{$primary-lighter};
   --ion-color-primary-rgb: 13, 64, 96;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;

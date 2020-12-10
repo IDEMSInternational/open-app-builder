@@ -1,40 +1,40 @@
 .step-item-container {
-    margin: var(--module-steps-margin);
-    display: flex;
-    flex-direction: row;
+  margin: var(--module-steps-margin);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .step-item-checkbox {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #096B8B;
-    color: #096B8B;
-    background-color: white;
-    width: 42px;
-    height: 42px;
-    border-radius: 42px;
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 42px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .step-item-button {
-    flex-grow: 1;
-    height: 42px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #096B8B;
-    color: #096B8B;
-    background-color: white;
-    padding: 10px;
-    border-radius: 20px;
+  flex: 1;
+
+  padding: 10px;
+  border-radius: 20px;
+}
+.step-item-button,
+.step-item-checkbox {
+  background: var(--ion-color-primary-light);
+  color: var(--ion-color-primary);
+  border-color: var(--ion-color-primary);
+  border-style: solid;
+  border-width: 1px;
 }
 
-.locked {
-    filter: brightness(0.7);
+.step-item-button.locked,
+.step-item-checkbox.locked {
+  background: white;
 }
 
 .current-step {
-    font-weight: bold;
+  font-weight: bold;
 }

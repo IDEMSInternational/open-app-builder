@@ -7,7 +7,12 @@ import { Subscription } from "rxjs";
   template: `<ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="start" style="position:absolute">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button *ngIf="isHomePage"></ion-menu-button>
+        <ion-back-button
+          defaultHref="/"
+          *ngIf="!isHomePage"
+          icon="chevron-back-outline"
+        ></ion-back-button>
       </ion-buttons>
       <ion-title style="text-align: center">
         <ion-icon src="assets/images/star.svg" style="margin: -1px 8px"></ion-icon>
@@ -17,6 +22,7 @@ import { Subscription } from "rxjs";
   </ion-header>`,
 })
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
+  isHomePage = true;
   @Input() title: string = "ParentApp";
   routeChanges$: Subscription;
   constructor(private router: Router, private route: ActivatedRoute) {}
@@ -37,10 +43,9 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
    * It cannot subscribe to standard router methods as sits outside ion-router-outlet
    */
   handleRouteChange() {
-    console.log("route change", this.route);
     // As component sits outside main ion-router-outlet need to access via firstChild method
-    // const snapshot = this.route.firstChild.snapshot;
-    // could do stuff like check for app-routing.module config/data or build
-    // breadcrumbs out of children objects
+    // if wanting to access route params directly (not currently required)
+    const HOME_ROUTE = "/module_list";
+    this.isHomePage = location.pathname === HOME_ROUTE;
   }
 }
