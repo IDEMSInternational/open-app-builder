@@ -27,7 +27,9 @@
         "id": "habit_praise_yourself",
         "title": "Praise yourself",
         "description": "Praising yourself",
-        "task_id": "task_praise_yourself"
+        "task_id": "task_praise_yourself",
+        "icon_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself_icon.svg",
+        "main_image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself_image.svg"
       },
       {
         "id": "habit_spend_time",
