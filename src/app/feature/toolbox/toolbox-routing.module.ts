@@ -9,6 +9,13 @@ const routes: Routes = [
     component: ToolboxPage,
   },
   {
+    path: "flow/:flow_name",
+    loadChildren: () =>
+      import("./components/toolbox-topic/toolbox-topic.module").then(
+        (m) => m.ToolboxTopicPageModule
+      ),
+  },
+  {
     path: "topic",
     loadChildren: () =>
       import("./components/toolbox-topic/toolbox-topic.module").then(
