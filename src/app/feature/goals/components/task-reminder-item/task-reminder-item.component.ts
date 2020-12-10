@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { differenceInCalendarDays } from "date-fns";
 import { generateRandomId } from "src/app/shared/utils";
 import { ITask, ITaskWithMeta } from "../../models/goals.model";
@@ -33,6 +33,7 @@ export class TaskReminderItemComponent {
     this._task = task;
     this.isComplete = this.evaluateTaskComplete(task);
   }
+  @Output() onTaskClick: EventEmitter<ITask> = new EventEmitter();
   constructor(private taskActions: TaskActionsService) {}
 
   /**

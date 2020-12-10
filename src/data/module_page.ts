@@ -20,7 +20,7 @@
       {
         "row_id": 3,
         "type": "description",
-        "text": "Looking after yourself is essential for parenting."
+        "text": "This week is about YOU. Looking after yourself is essential for parenting."
       },
       {
         "type": "step_group",
