@@ -43,11 +43,9 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
    * It cannot subscribe to standard router methods as sits outside ion-router-outlet
    */
   handleRouteChange() {
-    console.log("route change", this.route);
     // As component sits outside main ion-router-outlet need to access via firstChild method
+    // if wanting to access route params directly (not currently required)
     const HOME_ROUTE = "/module_list";
     this.isHomePage = location.pathname === HOME_ROUTE;
-    // could do stuff like check for app-routing.module config/data or build
-    // breadcrumbs out of children objects
   }
 }
