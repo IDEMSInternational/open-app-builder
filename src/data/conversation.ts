@@ -6,6 +6,116 @@
     "fields": [],
     "flows": [
       {
+        "name": "incorrect_exit",
+        "uuid": "uuid_incorrect_exit_flow_0",
+        "spec_version": "13.1.0",
+        "language": "base",
+        "type": "messaging",
+        "nodes": [
+          {
+            "uuid": "uuid_incorrect_exit_node_0",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "this is a sample message https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next"
+                ],
+                "uuid": "uuid_incorrect_exit_action_0"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_incorrect_exit_exit_0",
+                "destination_uuid": "uuid_incorrect_exit_node_2"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_incorrect_exit_node_2",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "default_category_uuid": "uuid_incorrect_exit_category_0",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_incorrect_exit_category_1",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_incorrect_exit_case_0"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_incorrect_exit_exit_2",
+                  "name": "All Responses",
+                  "uuid": "uuid_incorrect_exit_category_0"
+                },
+                {
+                  "exit_uuid": "uuid_incorrect_exit_exit_3",
+                  "name": "Next",
+                  "uuid": "uuid_incorrect_exit_category_1"
+                }
+              ],
+              "operand": "@input.text",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_incorrect_exit_exit_2",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_incorrect_exit_exit_3",
+                "destination_uuid": "uuid_incorrect_exit_node_1"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_incorrect_exit_node_1",
+            "actions": [
+              {
+                "uuid": "uuid_incorrect_exit_action_1",
+                "type": "set_contact_field",
+                "field": {
+                  "key": "incorrect_exit__completed",
+                  "name": "incorrect_exit__completed"
+                },
+                "value": "true"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_incorrect_exit_exit_1",
+                "destination_uuid": null
+              }
+            ]
+          }
+        ],
+        "_ui": null,
+        "revision": 0,
+        "expire_after_minutes": 60,
+        "metadata": {
+          "revision": 0
+        },
+        "localization": {}
+      }
+    ],
+    "groups": [],
+    "site": "https://rapidpro.idems.international",
+    "triggers": [],
+    "version": "13"
+  },
+  {
+    "campaigns": [],
+    "fields": [],
+    "flows": [
+      {
         "name": "example_main",
         "uuid": "uuid_example_main_flow_0",
         "spec_version": "13.1.0",
@@ -2161,8 +2271,8 @@
                 "uuid": "uuid_first_app_opening_action_6",
                 "type": "set_contact_field",
                 "field": {
-                  "key": "guide ",
-                  "name": "guide "
+                  "key": "guide",
+                  "name": "guide"
                 },
                 "value": "@fields.first_guide"
               }
@@ -2181,8 +2291,8 @@
                 "uuid": "uuid_first_app_opening_action_7",
                 "type": "set_contact_field",
                 "field": {
-                  "key": "guide ",
-                  "name": "guide "
+                  "key": "guide",
+                  "name": "guide"
                 },
                 "value": "@fields.second_guide"
               }
@@ -14734,7 +14844,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
                 ],
                 "text": "Sit down, close your eyes and listen to your breath as it goes in and out. Notice how you feel. When you are ready, open your eyes again. \nTry this whenever you are feeling stressed and you need a break to reconnect.",
                 "type": "send_msg",
@@ -14800,7 +14910,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
                 ],
                 "text": "Let's use the magic power of three stay present and relax. \n",
                 "type": "send_msg",
@@ -14902,7 +15012,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
                 ],
                 "text": "Close your eyes and think about the day. \nName 1 thing that you are grateful for. \nName 1 thing that you did well. \nName 1 thing that you love. \nWell done, you are a hero!",
                 "type": "send_msg",
@@ -14968,7 +15078,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
                 ],
                 "text": "Use the magic power of three to stay connected and relax.",
                 "type": "send_msg",
@@ -15052,7 +15162,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
                 ],
                 "text": "1. Close your eyes.  \n2. Listen to your breath as it goes in and out five times.  \n3. Notice how you feel. \n4. When you are ready open your eyes again.  \n5. You are in control!",
                 "type": "send_msg",
@@ -16429,7 +16539,7 @@
                   "key": "guidenumber",
                   "name": "guidenumber"
                 },
-                "value": "1"
+                "value": "guide1"
               }
             ],
             "exits": [
@@ -16819,6 +16929,70 @@
             "exits": [
               {
                 "uuid": "uuid_toolbox_mod_instructions_tips_exit_1",
+                "destination_uuid": null
+              }
+            ]
+          }
+        ],
+        "_ui": null,
+        "revision": 0,
+        "expire_after_minutes": 60,
+        "metadata": {
+          "revision": 0
+        },
+        "localization": {}
+      }
+    ],
+    "groups": [],
+    "site": "https://rapidpro.idems.international",
+    "triggers": [],
+    "version": "13"
+  },
+  {
+    "campaigns": [],
+    "fields": [],
+    "flows": [
+      {
+        "name": "toolbox_mod_stress_tips",
+        "uuid": "uuid_toolbox_mod_stress_tips_flow_0",
+        "spec_version": "13.1.0",
+        "language": "base",
+        "type": "messaging",
+        "nodes": [
+          {
+            "uuid": "uuid_toolbox_mod_stress_tips_node_0",
+            "actions": [
+              {
+                "uuid": "uuid_toolbox_mod_stress_tips_action_0",
+                "type": "set_contact_field",
+                "field": {
+                  "key": "toolbox_mod_stress_tips__completed",
+                  "name": "toolbox_mod_stress_tips__completed"
+                },
+                "value": "true"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_toolbox_mod_stress_tips_exit_0",
+                "destination_uuid": "uuid_toolbox_mod_stress_tips_node_1"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_toolbox_mod_stress_tips_node_1",
+            "actions": [
+              {
+                "flow": {
+                  "name": "https://plh-demo1.idems.international/toolbox/topic/MANAGING_ANGER_AND_STRESS/Stress_Tips"
+                },
+                "type": "enter_flow",
+                "uuid": "uuid_toolbox_mod_stress_tips_action_1"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_toolbox_mod_stress_tips_exit_1",
                 "destination_uuid": null
               }
             ]
