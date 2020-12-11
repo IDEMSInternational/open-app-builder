@@ -641,17 +641,16 @@ export class ConversationParser implements AbstractParser {
     return mediaText.split(";").map((s) => "image:" + s.trim());
   }
 
-  private createSaveAction(fieldKey: string, value: string): RapidProFlowExport.Action {
-    const stringValue = "" + value;
+  private createSaveAction(fieldName: string, value: string): RapidProFlowExport.Action {
     return {
       uuid: this.deterministicUUID(this.conversationSheet.flow_name, "action"),
       type: "set_contact_field",
       field: {
         // Can these be the same?
-        key: fieldKey,
-        name: fieldKey,
+        key: fieldName,
+        name: fieldName,
       },
-      value: stringValue
+      value,
     };
   }
 }

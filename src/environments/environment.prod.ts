@@ -13,5 +13,4 @@ export const environment = {
   firebaseConfig,
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
-  variableNameFlows: ["character_names"]
 };
