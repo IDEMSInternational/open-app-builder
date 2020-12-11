@@ -9,33 +9,52 @@
       {
         "id": "task_mod_welcome_self-care_package",
         "label": "Your customised self-care package",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_welcome_self-care_package",
+        "flow_type": "conversation",
+        "flow_name": "mod_welcome_self-care_package",
         "evaluation": "completed"
       },
       {
         "id": "task_mod_welcome_quick_praise",
         "label": "A quick praise for your teen",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_welcome_quick_praise",
+        "flow_type": "conversation",
+        "flow_name": "mod_welcome_quick_praise",
         "evaluation": "completed"
       },
       {
         "id": "task_mod_welcome_survey",
         "label": "Personalise this app for you",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_welcome_survey",
+        "flow_type": "conversation",
+        "flow_name": "mod_welcome_survey",
         "evaluation": "completed"
       },
       {
         "id": "task_mod_welcome_photo_activity",
         "label": "Upload a family picture",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_welcome_photo_activity",
+        "flow_type": "conversation",
+        "flow_name": "mod_welcome_photo_activity",
         "evaluation": "completed"
       },
       {
         "id": "task_mod_welcome_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
@@ -43,8 +62,12 @@
       {
         "id": "task_mod_1on1_emo",
         "label": "Emotional check-in",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_1on1_emo",
+        "flow_type": "conversation",
+        "flow_name": "mod_1on1_emo",
         "evaluation": "completed",
         "requires_list": [
           "first_app_launch | delay_7_day"
@@ -53,8 +76,12 @@
       {
         "id": "task_mod_1on1_intro",
         "label": "Intro to one-on-one time",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_1on1_intro",
+        "flow_type": "conversation",
+        "flow_name": "mod_1on1_intro",
         "evaluation": "completed ",
         "requires_list": [
           "task_mod_1on1_emo"
@@ -63,8 +90,12 @@
       {
         "id": "task_mod_1on1_tips",
         "label": "Top tips",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_1on1_tips",
+        "flow_type": "tips",
+        "flow_name": "mod_1on1_tips",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_intro"
@@ -73,8 +104,12 @@
       {
         "id": "task_mod_1on1_activity",
         "label": "Home activity",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_1on1_activity",
+        "flow_type": "conversation",
+        "flow_name": "mod_1on1_activity",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_tips"
@@ -83,8 +118,12 @@
       {
         "id": "task_mod_1on1_par",
         "label": "Parenting check-in",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_1on1_par",
+        "flow_type": "conversation",
+        "flow_name": "mod_1on1_par",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_tips | delay_1_day"
@@ -93,8 +132,12 @@
       {
         "id": "task_mod_1on1_fun",
         "label": "Something fun",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_1on1_fun",
+        "flow_type": "conversation",
+        "flow_name": "mod_1on1_fun",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_tips | delay_5_day"
@@ -103,8 +146,12 @@
       {
         "id": "task_mod_1on1_activity_review",
         "label": "Home activity review",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_1on1_activity_review",
+        "flow_type": "conversation",
+        "flow_name": "mod_1on1_activity_review",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_activity | delay_4_day"
@@ -112,6 +159,9 @@
       },
       {
         "id": "task_mod_1on1_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
@@ -119,8 +169,12 @@
       {
         "id": "task_mod_praise_intro",
         "label": "Intro to praise",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_praise_intro",
+        "flow_type": "conversation",
+        "flow_name": "mod_praise_intro",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_completed_goal",
@@ -130,8 +184,12 @@
       {
         "id": "task_mod_praise_tips",
         "label": "Top tips",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_praise_tips",
+        "flow_type": "tips",
+        "flow_name": "mod_praise_tips",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_praise_intro"
@@ -140,8 +198,12 @@
       {
         "id": "task_mod_praise_activity",
         "label": "Home activity",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_praise_activity",
+        "flow_type": "conversation",
+        "flow_name": "mod_praise_activity",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_praise_tips"
@@ -150,8 +212,12 @@
       {
         "id": "task_mod_praise_emo",
         "label": "Emotional check-in",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_praise_emo",
+        "flow_type": "conversation",
+        "flow_name": "mod_praise_emo",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_praise_tips | delay_1_day"
@@ -160,8 +226,12 @@
       {
         "id": "task_mod_praise_fun",
         "label": "Something fun",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_praise_fun",
+        "flow_type": "conversation",
+        "flow_name": "mod_praise_fun",
         "requires_list": [
           "task_mod_praise_tips | delay_7_day"
         ]
@@ -169,8 +239,12 @@
       {
         "id": "task_mod_praise_activity_review",
         "label": "Home activity review",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_praise_activity_review",
+        "flow_type": "conversation",
+        "flow_name": "mod_praise_activity_review",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_praise_activity | delay_4_day"
@@ -178,6 +252,9 @@
       },
       {
         "id": "task_mod_praise_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
@@ -185,8 +262,12 @@
       {
         "id": "task_mod_instructions_par",
         "label": "Parenting check-in",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_instructions_par",
+        "flow_type": "conversation",
+        "flow_name": "mod_instructions_par",
         "requires_list": [
           "task_mod_praise_completed_goal",
           "first_launch | delay_21_day"
@@ -195,8 +276,12 @@
       {
         "id": "task_mod_instructions_intro",
         "label": "Intro to positive instructions",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_instructions_intro",
+        "flow_type": "conversation",
+        "flow_name": "mod_instructions_intro",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_instructions_par"
@@ -205,8 +290,12 @@
       {
         "id": "task_mod_instructions_tips",
         "label": "Top tips",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_instructions_tips",
+        "flow_type": "tips",
+        "flow_name": "mod_instructions_tips",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_instructions_intro"
@@ -215,8 +304,12 @@
       {
         "id": "task_mod_instructions_activity",
         "label": "Home activity",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_instructions_activity",
+        "flow_type": "conversation",
+        "flow_name": "mod_instructions_activity",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_instructions_tips"
@@ -225,8 +318,12 @@
       {
         "id": "task_mod_instructions_emo",
         "label": "Emotional check-in",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_instructions_emo",
+        "flow_type": "conversation",
+        "flow_name": "mod_instructions_emo",
         "requires_list": [
           "task_mod_instructions_tips | delay_1_day"
         ]
@@ -234,8 +331,12 @@
       {
         "id": "task_mod_instructions_fun",
         "label": "Something fun",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_instructions_fun",
+        "flow_type": "conversation",
+        "flow_name": "mod_instructions_fun",
         "requires_list": [
           "task_mod_instructions_tips | delay_5_day"
         ]
@@ -243,8 +344,12 @@
       {
         "id": "task_mod_instructions_activity_review",
         "label": "Home activity review",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_instructions_activity_review",
+        "flow_type": "conversation",
+        "flow_name": "mod_instructions_activity_review",
         "evaluation": "completed",
         "requires_list": [
           "task_mod_instructions_activity | delay_4_day"
@@ -252,6 +357,9 @@
       },
       {
         "id": "task_mod_instructions_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"
@@ -259,8 +367,12 @@
       {
         "id": "task_mod_stress_par",
         "label": "Parenting check-in",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_stress_par",
+        "flow_type": "conversation",
+        "flow_name": "mod_stress_par",
         "requires_list": [
           "task_mod_instructions_completed_goal",
           "first_launch | delay_28_day"
@@ -269,8 +381,12 @@
       {
         "id": "task_mod_stress_intro",
         "label": "Intro to managing anger and stress",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_stress_intro",
+        "flow_type": "conversation",
+        "flow_name": "mod_stress_intro",
         "requires_list": [
           "task_mod_stress_par"
         ]
@@ -278,8 +394,12 @@
       {
         "id": "task_mod_stress_tips",
         "label": "Top tips",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_stress_tips",
+        "flow_type": "tips",
+        "flow_name": "mod_stress_tips",
         "requires_list": [
           "task_mod_stress_intro"
         ]
@@ -287,8 +407,12 @@
       {
         "id": "task_mod_stress_activity",
         "label": "Home activity",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_stress_activity",
+        "flow_type": "conversation",
+        "flow_name": "mod_stress_activity",
         "requires_list": [
           "task_mod_stress_tips"
         ]
@@ -296,8 +420,12 @@
       {
         "id": "task_mod_stress_emo",
         "label": "Emotional check-in",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_stress_emo",
+        "flow_type": "conversation",
+        "flow_name": "mod_stress_emo",
         "requires_list": [
           "task_mod_stress_tips | delay_1_day"
         ]
@@ -305,8 +433,12 @@
       {
         "id": "task_mod_stress_fun",
         "label": "Something fun",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_stress_fun",
+        "flow_type": "conversation",
+        "flow_name": "mod_stress_fun",
         "requires_list": [
           "task_mod_stress_tips | delay_5_day"
         ]
@@ -314,14 +446,21 @@
       {
         "id": "task_mod_stress_home_activity",
         "label": "Home activity review",
+        "groups_list": [
+          "module"
+        ],
         "start_action": "start_new_flow",
-        "start_action_args": "mod_stress_activity_review",
+        "flow_type": "conversation",
+        "flow_name": "mod_stress_activity_review",
         "requires_list": [
           "task_mod_stress_activity | delay_4_day"
         ]
       },
       {
         "id": "task_mod_stress_completed_goal",
+        "groups_list": [
+          "hidden"
+        ],
         "start_action": "give_award",
         "start_action_args": "cup",
         "evaluation": "completed"

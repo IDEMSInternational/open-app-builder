@@ -1,0 +1,42 @@
+:host {
+  display: contents;
+  line-height: 1.5em;
+}
+.tb-section {
+  padding: 20px 20px 20px 40px;
+  background-image: url("/assets/images/punched_paper_1.png");
+  background-repeat: repeat-y;
+  margin: 20px;
+  max-width: 359px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tb-title {
+  margin-left: 40px;
+  margin-right: 20px;
+}
+
+.tb-element {
+  color: black;
+
+  &.core-tip {
+    color: white;
+    background-color: crimson;
+    border-radius: 20px;
+    padding: 20px;
+  }
+}
+
+details {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #cccccc;
+}
+
+summary {
+  display: flex;
+  align-items: center;
+}
+.core-tip {
+  display: flex;
+}

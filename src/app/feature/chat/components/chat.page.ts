@@ -133,7 +133,6 @@ export class ChatPage {
       this.messageSubscription = this.chatService.messages$.subscribe((messages) => {
         if (messages.length > 0) {
           const latestMessage = messages[messages.length - 1];
-          console.log("message received", latestMessage);
           if (latestMessage.actions && latestMessage.actions.length > 0) {
             for (let action of latestMessage.actions) {
               this.chatActionService.executeChatAction(action);
@@ -152,7 +151,7 @@ export class ChatPage {
   }
 
   private onNewMessage(message: ChatMessage) {
-    console.log("Got to the bit where I do something with the messages!", message);
+    console.log("new Message", message);
     message.dateReceived = new Date();
     this.lastReceivedMsg = message;
     if (message.isStory) {

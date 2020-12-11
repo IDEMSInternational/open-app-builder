@@ -27,7 +27,6 @@ export class ChatResponsesComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("on changes ", changes);
     if (this.useModal && changes.responseOptions && changes.responseOptions.currentValue
       && changes.responseOptions.currentValue.length > 0) {
       this.modalController.create({
