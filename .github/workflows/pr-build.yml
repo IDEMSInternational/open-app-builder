@@ -47,8 +47,8 @@ jobs:
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - name: npm install
-        run: npm install
+      - name: yarn install
+        run: yarn install
       - name: Build Angular for PR
         run: npx ng build --prod --base-href /$PR_NUMBER/ --deploy-url /$PR_NUMBER/
       - id: upload-files

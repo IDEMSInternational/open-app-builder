@@ -1,17 +1,22 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
-import { StressedMultiHandAnimComponent } from "./shared/components/stressed-multi-hand-anim/stressed-multi-hand-anim.component";
 
 const FeatureRoutes: Routes = [
   {
     path: "",
-    redirectTo: "home",
+    redirectTo: "module_list",
     pathMatch: "full",
   },
   {
-    path: "home",
-    loadChildren: () => import("./feature/home/home.module").then((m) => m.HomePageModule),
+    path: "module_list",
+    loadChildren: () =>
+      import("./feature/module_list/module-list.module").then((m) => m.ModuleListModule),
+  },
+  {
+    path: "module_page/:flow_name",
+    loadChildren: () =>
+      import("./feature/module_page/module-page.module").then((m) => m.ModulePageModule),
   },
   {
     path: "take-a-pause",
@@ -19,16 +24,13 @@ const FeatureRoutes: Routes = [
       import("./feature/take-a-pause/take-a-pause.module").then((m) => m.TakeAPausePageModule),
   },
   {
-    path: "chat",
+    path: "conversation",
     loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
   },
+
   {
-    path: "toolbox",
-    loadChildren: () => import("./feature/toolbox/toolbox.module").then((m) => m.ToolboxPageModule),
-  },
-  {
-    path: "gallery",
-    loadChildren: () => import("./feature/gallery/gallery.module").then((m) => m.GalleryPageModule),
+    path: "tips/flow/:flow_name",
+    loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
   },
   {
     path: "goals",
@@ -38,66 +40,46 @@ const FeatureRoutes: Routes = [
     path: "theme-editor",
     component: ThemeEditorComponent,
   },
-];
-/** 2020-11-23 - Deprecated but may use in future (still included in app) */
-const DeprecatedRoutes: Routes = [
+  /*****************************************************************************************
+   * Legacy paths - these should be removed in the future once modules refactored
+   * (duplicated above via 'conversation' and 'tips' flow type handlers)
+   ****************************************************************************************/
   {
-    path: "activities",
-    loadChildren: () =>
-      import("./feature/activities/activities.module").then((m) => m.ActivitiesPageModule),
-  },
-  {
-    path: "songs",
-    loadChildren: () => import("./feature/songs/songs.module").then((m) => m.SongsPageModule),
-  },
-  {
-    path: "stories",
-    loadChildren: () => import("./feature/stories/stories.module").then((m) => m.StoriesPageModule),
-  },
-  {
-    path: "family",
-    loadChildren: () => import("./feature/family/family.module").then((m) => m.FamilyPageModule),
-  },
-  {
-    path: "calendar",
-    loadChildren: () =>
-      import("./feature/calendar/calendar.module").then((m) => m.CalendarPageModule),
-  },
-  {
-    path: "stressed-hands-anim",
-    component: StressedMultiHandAnimComponent,
+    path: "chat",
+    loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
   },
 ];
+
 /** Hardcoded pages, not linked to any feature modules */
 const StaticPages: Routes = [
   {
     path: "about",
-    loadChildren: () => import("./feature/about/about.module").then((m) => m.AboutPageModule),
+    loadChildren: () => import("./pages/about/about.module").then((m) => m.AboutPageModule),
   },
   {
     path: "privacy",
-    loadChildren: () => import("./feature/privacy/privacy.module").then((m) => m.PrivacyPageModule),
+    loadChildren: () => import("./pages/privacy/privacy.module").then((m) => m.PrivacyPageModule),
   },
   {
     path: "app-terms",
     loadChildren: () =>
-      import("./feature/app-terms/app-terms.module").then((m) => m.AppTermsPageModule),
+      import("./pages/app-terms/app-terms.module").then((m) => m.AppTermsPageModule),
   },
   {
     path: "settings",
     loadChildren: () =>
-      import("./feature/settings/settings.module").then((m) => m.SettingsPageModule),
+      import("./pages/settings/settings.module").then((m) => m.SettingsPageModule),
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot([...StaticPages, ...FeatureRoutes, ...DeprecatedRoutes], {
-    preloadingStrategy: PreloadAllModules,
-    useHash: false,
-    anchorScrolling: "enabled",
-    relativeLinkResolution: 'legacy'
-}),
+    RouterModule.forRoot([...StaticPages, ...FeatureRoutes], {
+      preloadingStrategy: PreloadAllModules,
+      useHash: false,
+      anchorScrolling: "enabled",
+      relativeLinkResolution: "legacy",
+    }),
   ],
   exports: [RouterModule],
 })

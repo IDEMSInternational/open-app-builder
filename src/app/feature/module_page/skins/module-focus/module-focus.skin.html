@@ -1,0 +1,8 @@
+<div class="main-container">
+  <ng-container *ngFor="let row of modulePageFlow.rows">
+    <plh-module-page-flow-component
+      [row]="row"
+      [flow]="modulePageFlow"
+    ></plh-module-page-flow-component>
+  </ng-container>
+</div>

@@ -1,0 +1,14 @@
+<div class="module-circle-container">
+  <div
+    *ngFor="let moduleCircle of outerModuleCircles"
+    [ngClass]="moduleCircle.cssClass"
+    [ngStyle]="{ left: moduleCircle.left, top: moduleCircle.top }"
+    (click)="onModuleClicked($event, moduleCircle.id)"
+  >
+    <img [src]="moduleCircle.icon_asset" />
+  </div>
+  <div class="inner-circle">
+    <img [src]="currentModule.icon_asset" />
+    <div class="inner-circle-text">{{ currentModule.title_short }}</div>
+  </div>
+</div>

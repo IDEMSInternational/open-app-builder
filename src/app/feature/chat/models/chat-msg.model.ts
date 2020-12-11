@@ -21,10 +21,11 @@ export interface ChatMessage {
   // Configurable by /chat/msg-info
   isStory?: boolean;
   character?: CharacterId;
+  choiceMediaDisplay?: boolean;
 }
 
-export type CharacterId = "Guide" | "Neighbour";
-export const characterIds = ["Guide", "Neighbour"];
+export type CharacterId = "guide" | "neighbour";
+export const characterIds = ["guide", "neighbour"];
 
 export const appCustomFields: {
   key: keyof ChatMessage;
@@ -38,6 +39,10 @@ export const appCustomFields: {
     key: "isStory",
     type: "boolean",
   },
+  {
+    key: "choiceMediaDisplay",
+    type: "boolean"
+  }
 ];
 
 export interface ChatAttachment {

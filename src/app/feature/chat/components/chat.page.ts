@@ -8,7 +8,7 @@ import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
 import { FlowStatusChange, OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
-import { SettingsService } from "../../settings/settings.service";
+import { SettingsService } from "src/app/pages/settings/settings.service";
 
 @Component({
   selector: "app-chat",
@@ -67,7 +67,7 @@ export class ChatPage {
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
     public modalCtrl: ModalController
-  ) { }
+  ) {}
 
   /** Initialise chat configuration on page enter */
   ionViewDidEnter() {
@@ -133,7 +133,6 @@ export class ChatPage {
       this.messageSubscription = this.chatService.messages$.subscribe((messages) => {
         if (messages.length > 0) {
           const latestMessage = messages[messages.length - 1];
-          console.log("message received", latestMessage);
           if (latestMessage.actions && latestMessage.actions.length > 0) {
             for (let action of latestMessage.actions) {
               this.chatActionService.executeChatAction(action);
@@ -152,7 +151,7 @@ export class ChatPage {
   }
 
   private onNewMessage(message: ChatMessage) {
-    console.log("Got to the bit where I do something with the messages!", message);
+    console.log("new Message", message);
     message.dateReceived = new Date();
     this.lastReceivedMsg = message;
     if (message.isStory) {

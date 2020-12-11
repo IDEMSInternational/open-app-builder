@@ -1,0 +1,5 @@
+# gdrive service account for gdrive download scripts
+config/*
+!config/public.key
+!config/*.enc
+logs

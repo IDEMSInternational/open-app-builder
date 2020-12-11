@@ -101,13 +101,22 @@
     flex-direction: row;
     align-items: center;
   }
+  .msg-attachment > img {
+    max-width: 50vw;
+    border: 0;
+    border-radius: 20px;
+    max-height: 40vh;
+    padding: 16px;
+  }
 
   .msg-bubble {
-    background-color: grey;
-    color: white;
+    background-color: var(--theme-var-botMsgBubble, #cae6fc);
+    color: var(--ion-color-dark, black);
     padding: 16px;
     font-size: 16px;
     border-radius: 10px;
+    box-shadow: 4px 4px 6px grey;
+    white-space: break-spaces;
 
     &.large {
       font-size: 40px;
@@ -115,11 +124,21 @@
   }
 
   &.bot-msg .msg-bubble {
-    background-color: grey;
+    background-color: var(--theme-var-botMsgBubble, #cae6fc);
   }
 
   &.user-msg .msg-bubble {
-    background-color: darkcyan;
+    background-color: var(--theme-var-userMsgBubble, #e9ebeb);
+  }
+
+  .user-msg-triangle > path {
+    z-index: 2;
+    fill: var(--theme-var-userMsgBubble, #e9ebeb);
+  }
+
+  .bot-msg-triangle > path {
+    z-index: 2;
+    fill: var(--theme-var-botMsgBubble, #cae6fc);
   }
 
   &.user-msg {

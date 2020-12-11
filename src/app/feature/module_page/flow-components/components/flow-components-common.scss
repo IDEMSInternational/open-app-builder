@@ -1,0 +1,12 @@
+:host {
+    --module-steps-margin: 20px;
+}
+
+h1 {
+    margin: var(--module-steps-margin);
+}
+
+p {
+    margin: var(--module-steps-margin);
+}
+

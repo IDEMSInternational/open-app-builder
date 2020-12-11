@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { SettingsService } from 'src/app/feature/settings/settings.service';
+import { SettingsService } from 'src/app/pages/settings/settings.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { ChatMessage, ChatResponseOption } from '../../models';
 import { ResponsesModalComponent } from './responses-modal/responses-modal.component';
@@ -27,7 +27,6 @@ export class ChatResponsesComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("on changes ", changes);
     if (this.useModal && changes.responseOptions && changes.responseOptions.currentValue
       && changes.responseOptions.currentValue.length > 0) {
       this.modalController.create({

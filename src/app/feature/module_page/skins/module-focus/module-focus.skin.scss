@@ -1,0 +1,14 @@
+:host {
+  display: contents;
+}
+// Use the main container and overlay to set a full-sized background
+// as a lighter variant of the primary colour
+.main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.main-container {
+  background-color: white;
+}

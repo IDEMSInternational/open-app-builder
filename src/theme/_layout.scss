@@ -1,10 +1,38 @@
 ion-content.background-secondary {
   --background: var(--ion-color-secondary);
 }
+ion-content.background-primary-lighter {
+  --background: var(--ion-color-primary-lighter);
+}
+ion-content.background-white {
+  --background: white;
+}
 button.alert-button.alert-delete-button {
   color: var(--ion-color-danger);
 }
 // ion-alerts
 .alert-wrapper {
-  background-color: white!important;
+  background-color: white !important;
+}
+
+// used in ng-switches to show that we don't have a handler for some specific content
+.content-error {
+  background: #d05b5b;
+  padding: 5px;
+  color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: space-between;
+}
+.content-error-variable {
+  font-weight: bold;
+}
+.content-error-description {
+  font-size: small;
+}
+
+.flex-column-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }

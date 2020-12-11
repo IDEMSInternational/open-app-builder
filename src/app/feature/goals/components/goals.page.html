@@ -1,5 +1,5 @@
 <ion-content class="ion-padding container">
-  <h3>Things to do today</h3>
+  <h3>Things to do</h3>
   <div *ngFor="let task of tasksService.userRegularTasks" trackBy:trackById>
     <plh-task-reminder-item [task]="task"></plh-task-reminder-item>
   </div>

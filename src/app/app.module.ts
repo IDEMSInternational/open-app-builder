@@ -16,14 +16,23 @@ import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
 
 import { environment } from "src/environments/environment";
-import { PrivacyPageModule } from "./feature/privacy/privacy.module";
-import { AppTermsPageModule } from "./feature/app-terms/app-terms.module";
-import { ThemeEditorComponent } from 'src/app/feature/theme/theme-editor/theme-editor.component';
-import { ColorSketchModule } from 'ngx-color/sketch';
+import { PrivacyPageModule } from "src/app/pages/privacy/privacy.module";
+import { AppTermsPageModule } from "src/app/pages/app-terms/app-terms.module";
+import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
+import { ColorSketchModule } from "ngx-color/sketch";
 import { FormsModule } from "@angular/forms";
 import { SurveyModule } from "src/app/feature/survey/survey.module";
 
 const introModules = [AppTermsPageModule, PrivacyPageModule];
+
+import {LottieModule} from "ngx-lottie";
+import player from "lottie-web";
+
+// Note we need a separate function as it's required
+// by the AOT compiler.
+export function lottiePlayerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [AppComponent, ThemeEditorComponent],
@@ -42,12 +51,9 @@ const introModules = [AppTermsPageModule, PrivacyPageModule];
     ColorSketchModule,
     ...introModules,
     SurveyModule,
+    LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true })
   ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    HTTP,
-    Device,
-  ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, HTTP, Device],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
