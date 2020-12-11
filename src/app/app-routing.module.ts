@@ -29,8 +29,8 @@ const FeatureRoutes: Routes = [
   },
 
   {
-    path: "tips",
-    loadChildren: () => import("./feature/toolbox/toolbox.module").then((m) => m.ToolboxPageModule),
+    path: "tips/flow/:flow_name",
+    loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
   },
   {
     path: "goals",
@@ -47,10 +47,6 @@ const FeatureRoutes: Routes = [
   {
     path: "chat",
     loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
-  },
-  {
-    path: "toolbox",
-    loadChildren: () => import("./feature/toolbox/toolbox.module").then((m) => m.ToolboxPageModule),
   },
 ];
 
