@@ -29,3 +29,10 @@ button.alert-button.alert-delete-button {
 .content-error-description {
   font-size: small;
 }
+
+.flex-column-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
