@@ -5,18 +5,55 @@
 </ion-header>
 
 <ion-content>
-  <plh-user-setting *ngFor="let userSetting of userSettings" [userSetting]="userSetting"
-    (onSettingChange)="onSettingChange($event)"></plh-user-setting>
+  <plh-user-setting
+    *ngFor="let userSetting of userSettings"
+    [userSetting]="userSetting"
+    (onSettingChange)="onSettingChange($event)"
+  ></plh-user-setting>
   <ion-item>
     <ion-label>Theme</ion-label>
-    <ion-select [value]="currentThemeName" okText="Okay" cancelText="Dismiss"
-      (ionChange)="selectThemeName($event.detail.value)">
-      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}">{{themeName}}</ion-select-option>
+    <ion-select
+      [value]="currentThemeName"
+      okText="Okay"
+      cancelText="Dismiss"
+      (ionChange)="selectThemeName($event.detail.value)"
+    >
+      <ion-select-option *ngFor="let themeName of themeNames" value="{{themeName}}"
+        >{{themeName}}</ion-select-option
+      >
     </ion-select>
   </ion-item>
   <ion-list-header>Development Settings</ion-list-header>
-  <plh-user-setting *ngFor="let userSetting of devOnlyUserSettings" [userSetting]="userSetting"
-    (onSettingChange)="onSettingChange($event)"></plh-user-setting>
+  <ion-item>
+    <ion-label>Launch Flow</ion-label>
+    <ion-select
+      *ngIf="flowNames?.length > 0"
+      okText="Launch Flow"
+      cancelText="Cancel"
+      (ionChange)="launchFlowByName($event.detail.value)"
+    >
+      <ion-select-option *ngFor="let flowName of flowNames" [value]="flowName">
+        {{flowName}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Open Tip</ion-label>
+    <ion-select
+      okText="Open Tip"
+      cancelText="Cancel"
+      (ionChange)="launchTipFlowByName($event.detail.value)"
+    >
+      <ion-select-option *ngFor="let flowName of tipFlowNames" [value]="flowName">
+        {{flowName}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <plh-user-setting
+    *ngFor="let userSetting of devOnlyUserSettings"
+    [userSetting]="userSetting"
+    (onSettingChange)="onSettingChange($event)"
+  ></plh-user-setting>
   <ion-item>
     <ion-button (click)="navigateByUrl('/chat/flow/example_main')">Open Testing Flow</ion-button>
   </ion-item>
@@ -32,14 +69,4 @@
   <ion-item>
     <ion-label [routerLink]="['/theme-editor']">Theme Editor</ion-label>
   </ion-item>
-  <ion-item>
-    <ion-label>Select Flow to Launch</ion-label>
-    <ion-select *ngIf="flowNames?.length > 0" okText="Launch Flow" cancelText="Cancel"
-      (ionChange)="launchFlowByName($event.detail.value)">
-      <ion-select-option *ngFor="let flowName of flowNames" [value]="flowName">
-        {{flowName}}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
-  
 </ion-content>

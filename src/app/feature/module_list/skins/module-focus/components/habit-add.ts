@@ -29,9 +29,6 @@ import { HABIT_LIST } from "src/app/shared/services/data/data.service";
           <div class="habit-title">{{ habit.title }}</div>
         </div>
       </div>
-      <ion-button class="habit-history-button" color="primary" expand="block"
-        >Discover your habit history</ion-button
-      >
     </ion-content>`,
   styles: [
     `
