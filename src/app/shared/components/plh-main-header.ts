@@ -10,7 +10,8 @@ import { Subscription } from "rxjs";
         <ion-menu-button *ngIf="isHomePage"></ion-menu-button>
         <ion-back-button
           defaultHref="/"
-          *ngIf="!isHomePage"
+          routerDirection="back"
+          [style.display]="isHomePage ? 'none' : 'block'"
           icon="chevron-back-outline"
         ></ion-back-button>
       </ion-buttons>

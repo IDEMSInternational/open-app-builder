@@ -7,9 +7,9 @@ import { TasksService } from 'src/app/feature/goals/services/tasks.service';
   selector: "plh-things-to-do-list",
   template: `
   <div class="scroller">
-    <div *ngFor="let task of tasksService.userJourneyTasks" trackBy:trackById>
+    <!-- <div *ngFor="let task of tasksService.userJourneyTasks" trackBy:trackById>
       <plh-task-reminder-item [task]="task" (onTaskClick)="onTaskClick.emit($event)"></plh-task-reminder-item>
-    </div>
+    </div> -->
   </div>
   `,
   styles: [
@@ -25,7 +25,7 @@ export class ThingsToDoListComponent implements OnInit {
   constructor(public tasksService: TasksService, public taskActionsService: TaskActionsService) { }
 
   ngOnInit() {
-    this.taskActionsService.loadActions().then(() => (this.dataLoaded = true));
+    // this.taskActionsService.loadActions().then(() => (this.dataLoaded = true));
   }
 
   trackById(index: number, item: { id: string;[key: string]: any }) {

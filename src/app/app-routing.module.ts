@@ -24,12 +24,13 @@ const FeatureRoutes: Routes = [
       import("./feature/take-a-pause/take-a-pause.module").then((m) => m.TakeAPausePageModule),
   },
   {
-    path: "chat",
+    path: "conversation",
     loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
   },
+
   {
-    path: "toolbox",
-    loadChildren: () => import("./feature/toolbox/toolbox.module").then((m) => m.ToolboxPageModule),
+    path: "tips/flow/:flow_name",
+    loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
   },
   {
     path: "goals",
@@ -38,6 +39,14 @@ const FeatureRoutes: Routes = [
   {
     path: "theme-editor",
     component: ThemeEditorComponent,
+  },
+  /*****************************************************************************************
+   * Legacy paths - these should be removed in the future once modules refactored
+   * (duplicated above via 'conversation' and 'tips' flow type handlers)
+   ****************************************************************************************/
+  {
+    path: "chat",
+    loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
   },
 ];
 

@@ -3,9 +3,6 @@ import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
-import { toolboxTopicNames } from "src/app/feature/toolbox/data/toolbox-topic-metadata";
-import { ToolboxTopicType } from "src/app/feature/toolbox/models/toolbox.model";
-import { ToolboxService } from "src/app/feature/toolbox/services/toolbox.service";
 import { ChatAction } from "../../models";
 import { URLParts } from "../../utils/message.converter";
 
@@ -14,7 +11,6 @@ import { URLParts } from "../../utils/message.converter";
 })
 export class ChatActionService {
   constructor(
-    private toolboxService: ToolboxService,
     private router: Router,
     private localStorageService: LocalStorageService,
     private remindersService: RemindersService,
@@ -38,12 +34,13 @@ export class ChatActionService {
   }
 
   private unlockToolboxTopic(paramMap: { [key: string]: string }) {
-    if (paramMap.topic) {
-      let matchingTopic = toolboxTopicNames.find((topic) => topic.type === paramMap.topic);
-      if (matchingTopic) {
-        this.toolboxService.unlockTopic(paramMap.topic as ToolboxTopicType);
-      }
-    }
+    console.error('TODO - toolbox unlocking')
+    // if (paramMap.topic) {
+    //   let matchingTopic = toolboxTopicNames.find((topic) => topic.type === paramMap.topic);
+    //   if (matchingTopic) {
+    //     this.toolboxService.unlockTopic(paramMap.topic as ToolboxTopicType);
+    //   }
+    // }
   }
 
   private createReminder(paramMap: { [key: string]: string }) {

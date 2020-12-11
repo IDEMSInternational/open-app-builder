@@ -3,9 +3,15 @@ import * as xlsx from "xlsx";
 import * as path from "path";
 import chalk from "chalk";
 import { ConversationParser, DefaultParser } from "./parsers";
-import { groupJsonByKey, recursiveFindByExtension, capitalizeFirstLetter } from "../utils";
+import {
+  groupJsonByKey,
+  recursiveFindByExtension,
+  capitalizeFirstLetter,
+  arrayToHashmap,
+} from "../utils";
 import { FlowTypes } from "../../types";
 import { AbstractParser } from "./parsers/abstract.parser";
+import { TaskListParser } from "./parsers/task_list/task_list.parser";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
@@ -32,14 +38,19 @@ async function main() {
     const json = convertXLSXSheetsToJson(xlsxPath);
     combined.push({ json, xlsxPath });
   }
-  // merge and collage plh data
+  // merge and collage plh data, write some extra files for logging/debugging purposes
   const merged = mergePLHData(combined);
-  const dataByFlowType = groupJsonByKey(merged, "flow_type");
-  const convertedData = applyDataParsers(dataByFlowType as any);
-  // write some extra files for logging/debugging purposes
   fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
-  fs.writeFileSync(`${INTERMEDIATES_FOLDER}/dataByFlowType.json`, JSON.stringify(merged, null, 2));
-  fs.writeFileSync(`${INTERMEDIATES_FOLDER}/convertedData.json`, JSON.stringify(merged, null, 2));
+  const dataByFlowType = groupJsonByKey(merged, "flow_type");
+  fs.writeFileSync(
+    `${INTERMEDIATES_FOLDER}/dataByFlowType.json`,
+    JSON.stringify(dataByFlowType, null, 2)
+  );
+  const convertedData = applyDataParsers(dataByFlowType as any);
+  fs.writeFileSync(
+    `${INTERMEDIATES_FOLDER}/convertedData.json`,
+    JSON.stringify(convertedData, null, 2)
+  );
   // write to output files
   Object.entries(convertedData).forEach(([key, value]) => {
     const outputJson = JSON.stringify(value, null, 2);
@@ -59,9 +70,15 @@ function applyDataParsers(
   dataByFlowType: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] }
 ) {
   // All flow types will be processed by the default parser unless otherwise specified here
+
+  // generate a list of all tasks required by the taskListParser (merging rows from all task_list types)
+  const allTasksById = arrayToHashmap(
+    dataByFlowType.task_list.reduce((a, b) => [...a, ...b.rows], []),
+    "id"
+  );
   const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
-    conversation: new ConversationParser(DEPLOY_TARGET),
-    // task_list: new TaskListParser(dataByFlowType, allTasksById),
+    conversation: new ConversationParser(),
+    task_list: new TaskListParser(dataByFlowType, allTasksById),
   };
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {

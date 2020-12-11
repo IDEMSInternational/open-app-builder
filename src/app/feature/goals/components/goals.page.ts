@@ -17,7 +17,7 @@ export class GoalsPage implements OnInit {
     public tasksService: TasksService,
     public taskActionsService: TaskActionsService
   ) {
-    this.taskActionsService.loadActions().then(() => (this.dataLoaded = true));
+    // this.taskActionsService.loadActions().then(() => (this.dataLoaded = true));
   }
 
   ngOnInit() {}
