@@ -17,6 +17,9 @@ const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
 const OUTPUT_FOLDER = `${__dirname}/output`;
 
+// TODO - make it easier to set this in dotenv or cli
+const DEPLOY_TARGET: "app" | "rapidpro" = "app";
+
 /**
  * Reads xlsx files from gdrive-download output and converts to json
  * objects representing sheet names and data values

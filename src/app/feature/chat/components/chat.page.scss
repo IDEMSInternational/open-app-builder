@@ -105,9 +105,16 @@
       justify-content: flex-end;
     }
   }
+  .msg-attachment > img {
+    max-width: 50vw;
+    border: 0;
+    border-radius: 20px;
+    max-height: 40vh;
+    padding: 16px;
+  }
 
   .msg-bubble {
-    background-color: var(--theme-var-botMsgBubble, #CAE6FC);
+    background-color: var(--theme-var-botMsgBubble, #cae6fc);
     color: var(--ion-color-dark, black);
     padding: 16px;
     font-size: 16px;
@@ -120,21 +127,21 @@
   }
 
   &.bot-msg .msg-bubble {
-    background-color: var(--theme-var-botMsgBubble, #CAE6FC);
+    background-color: var(--theme-var-botMsgBubble, #cae6fc);
   }
 
   &.user-msg .msg-bubble {
-    background-color: var(--theme-var-userMsgBubble, #E9EBEB);
+    background-color: var(--theme-var-userMsgBubble, #e9ebeb);
   }
 
   .user-msg-triangle > path {
     z-index: 2;
-    fill: var(--theme-var-userMsgBubble, #E9EBEB);
+    fill: var(--theme-var-userMsgBubble, #e9ebeb);
   }
 
   .bot-msg-triangle > path {
     z-index: 2;
-    fill: var(--theme-var-botMsgBubble, #CAE6FC);
+    fill: var(--theme-var-botMsgBubble, #cae6fc);
   }
 
   &.user-msg {

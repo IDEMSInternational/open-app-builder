@@ -590,7 +590,7 @@
             "exits": [
               {
                 "uuid": "uuid_example_media_exit_0",
-                "destination_uuid": "uuid_example_media_node_6"
+                "destination_uuid": "uuid_example_media_node_1"
               }
             ]
           },
@@ -704,58 +704,6 @@
             "exits": [
               {
                 "uuid": "uuid_example_media_exit_3",
-                "destination_uuid": null
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_example_media_node_6",
-            "actions": [],
-            "router": {
-              "type": "switch",
-              "default_category_uuid": "uuid_example_media_category_2",
-              "cases": [
-                {
-                  "arguments": [
-                    "image1"
-                  ],
-                  "category_uuid": "uuid_example_media_category_3",
-                  "type": "has_only_phrase",
-                  "uuid": "uuid_example_media_case_2"
-                },
-                {
-                  "arguments": [
-                    "image2"
-                  ],
-                  "category_uuid": "uuid_example_media_category_3",
-                  "type": "has_only_phrase",
-                  "uuid": "uuid_example_media_case_3"
-                }
-              ],
-              "categories": [
-                {
-                  "exit_uuid": "uuid_example_media_exit_7",
-                  "name": "All Responses",
-                  "uuid": "uuid_example_media_category_2"
-                },
-                {
-                  "exit_uuid": "uuid_example_media_exit_8",
-                  "name": "image1; image2",
-                  "uuid": "uuid_example_media_category_3"
-                }
-              ],
-              "operand": "@input.text",
-              "wait": {
-                "type": "msg"
-              }
-            },
-            "exits": [
-              {
-                "uuid": "uuid_example_media_exit_7",
-                "destination_uuid": "uuid_example_media_node_1"
-              },
-              {
-                "uuid": "uuid_example_media_exit_8",
                 "destination_uuid": "uuid_example_media_node_5"
               }
             ]
@@ -1222,7 +1170,7 @@
             "exits": [
               {
                 "uuid": "uuid_example_variables_exit_5",
-                "destination_uuid": "uuid_example_variables_node_7"
+                "destination_uuid": null
               },
               {
                 "uuid": "uuid_example_variables_exit_6",
@@ -1250,7 +1198,7 @@
             "exits": [
               {
                 "uuid": "uuid_example_variables_exit_4",
-                "destination_uuid": "uuid_example_variables_node_10"
+                "destination_uuid": "uuid_example_variables_node_7"
               }
             ]
           },
@@ -1335,7 +1283,7 @@
             "exits": [
               {
                 "uuid": "uuid_example_variables_exit_11",
-                "destination_uuid": null
+                "destination_uuid": "uuid_example_variables_node_10"
               }
             ]
           },

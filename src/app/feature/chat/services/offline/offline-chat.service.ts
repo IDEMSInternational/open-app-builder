@@ -8,9 +8,7 @@ import { RapidProOfflineFlow } from "./chat.flow";
 import { ContactFieldService } from "./contact-field.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
 import { CONVERSATION } from "src/app/shared/services/data/data.service";
-import { throwError } from 'rxjs';
-
-const FLOW_EXPORTS_PATH = "assets/rapid-pro-flow-exports/idems-plh-app-2020-11-25.json";
+import { throwError } from "rxjs";
 
 export type FlowStatusChange = {
   name: string;
@@ -48,12 +46,11 @@ export class OfflineChatService implements IChatService {
     this.settingsService
       .getUserSetting("USE_GDRIVE_CONTENT")
       .subscribe(async (useGDriveContent) => {
-        let flowExportsPath = FLOW_EXPORTS_PATH;
         if (useGDriveContent === "true") {
-          flowExportsPath = "https://plh-demo1.idems.international/sheet-content/flow-export.json";
+          const flowExportsPath =
+            "https://plh-demo1.idems.international/sheet-content/flow-export.json";
           await this.loadExportFile(flowExportsPath);
         }
-
         this.subscribeToFlowStatusChanges();
         this.ready$.next(true);
       });
@@ -98,6 +95,11 @@ export class OfflineChatService implements IChatService {
     }
   }
 
+  private handleFlowsEnded() {
+    console.log("all flows have ended", this.flowsStack);
+    this.messages$.next([{ sender: "bot", text: "End of this content" }]);
+  }
+
   /**
    * It is common that one flow may trigger another flow. These events are captured in flowStatus$ changes,
    * subscribe and trigger new flow starts when this happens
@@ -125,12 +127,13 @@ export class OfflineChatService implements IChatService {
           newFlow.start();
         }
         if (latest.status === "completed") {
-          if (this.flowsStack.length > 0) {
+          console.log("completed", this.flowsStack);
+          if (this.flowsStack.length > 1) {
             this.flowsStack.pop();
             let currentFlow = this.flowsStack[this.flowsStack.length - 1];
             currentFlow.continue("completed");
           } else {
-            console.log("We have reached the end of all active flows");
+            this.handleFlowsEnded();
           }
         }
         console.log("Flows stack after ", this.flowsStack);
