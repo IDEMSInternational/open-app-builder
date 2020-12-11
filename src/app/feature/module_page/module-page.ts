@@ -5,8 +5,7 @@ import { MODULE_PAGE } from "src/app/shared/services/data/data.service";
 
 @Component({
   selector: "plh-module-page",
-  templateUrl: 
-  "./module-page.html",
+  templateUrl: "./module-page.html",
   styleUrls: ["./module-page.scss"],
 })
 export class ModulePageComponent implements OnInit {
