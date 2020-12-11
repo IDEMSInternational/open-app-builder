@@ -1,7 +1,7 @@
 /* tslint:disable:class-name */
 import { RapidProFlowExport } from "src/app/feature/chat/models";
 export { RapidProFlowExport } from "src/app/feature/chat/models";
-import { TipRow } from "src/app/feature/toolbox/models/toolbox.model";
+import { TipRow } from "src/app/feature/tips/models/tips.model";
 
 /*********************************************************************************************
  *  Base flow types

@@ -3,11 +3,7 @@ import { Component } from "@angular/core";
 @Component({
   selector: "plh-main-tabs",
   template: `<ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button
-      routerLink="module_page/mod_welcome_page"
-      value="care-packages"
-      layout="icon-top"
-    >
+    <ion-segment-button value="care-packages" layout="icon-top">
       <ion-label>Care Packages</ion-label>
       <ion-icon name="heart-outline"></ion-icon>
     </ion-segment-button>
