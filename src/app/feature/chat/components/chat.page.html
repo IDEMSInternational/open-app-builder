@@ -21,16 +21,20 @@
       >
         <div *ngIf="msg.character && !sameAsLastCharacter(msg, messages[i - 1])">
           <img
-            *ngIf="msg.character === 'Guide'"
-            src="assets/images/chat-characters/Guide_120.png"
+            *ngIf="msg.character.toLowerCase().indexOf('friend') > -1"
+            src="assets/images/chat-characters/friend_120.png"
           />
           <img
-            *ngIf="msg.character === 'neighbour'"
-            src="assets/images/chat-characters/Neighbour_120.png"
+            *ngIf="msg.character.toLowerCase().indexOf('neighbour') > -1"
+            src="assets/images/chat-characters/neighbour_120.png"
           />
           <img
-            *ngIf="msg.character === 'Elder'"
-            src="assets/images/chat-characters/Elder_120.png"
+            *ngIf="msg.character.toLowerCase().indexOf('elder') > -1"
+            src="assets/images/chat-characters/elder_120.png"
+          />
+          <img
+            *ngIf="msg.character.toLowerCase().indexOf('guide') > -1"
+            src="assets/images/chat-characters/guide_120.png"
           />
         </div>
         <div class="msg-bubble-container"
