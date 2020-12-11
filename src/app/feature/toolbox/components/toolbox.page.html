@@ -1,9 +1,0 @@
-<ion-content class="ion-padding">
-  <!--<p>You don't have any tools in your toolbox at the moment. Talk to the guide to find out how to get some!</p>-->
-  <div *ngFor="let topicMetadata of toolboxTopicMetadatas" class="toolbox-button"
-    [ngStyle]="{ 'background-color': 'var(--theme-var-' + topicMetadata.type + ')' }" [ngClass]="{ 'locked': !topicMetadata.unlocked }"
-    (click)="onClickTopic(topicMetadata)">
-    <img class="toolbox-topic-icon" [src]="'assets/images/toolbox-icons/' + topicMetadata.type + '.svg'">
-    <span class="toolbox-button-label">{{topicMetadata.name}}</span>
-  </div>
-</ion-content>
