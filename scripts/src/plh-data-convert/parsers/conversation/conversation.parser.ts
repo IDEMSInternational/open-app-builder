@@ -15,7 +15,8 @@ const flowExpireAfterMinutes: number = 60;
 type EntityType = "flow" | "node" | "action" | "router" | "case" | "category" | "exit";
 
 export class ConversationParser implements AbstractParser {
-
+  /** @param deployTarget uuids and media paths may be formatted differently depending on target */
+  constructor(private deployTarget: "app" | "rapidpro" = "app") {}
   conversationSheet: FlowTypes.ConversationSheet;
 
   flowEntityIdCounterMap: { [flowName: string]: { [entityType: string]: number } } = {};
@@ -29,7 +30,11 @@ export class ConversationParser implements AbstractParser {
     } else {
       this.flowEntityIdCounterMap[flowName][entityType]++;
     }
-    return "uuid_" + flowName + "_" + entityType + "_" + this.flowEntityIdCounterMap[flowName][entityType];
+    // TODO - counter could probably be replaced by the row_id for nodes
+    const counter = this.flowEntityIdCounterMap[flowName][entityType];
+    const identifier = "uuid_" + flowName + "_" + entityType + "_" + counter;
+    // rapidpro needs strict uuidv4, so only use custom identifiers with the app
+    return this.deployTarget === "app" ? identifier : uuidv4();
   }
 
   public run(conversation: FlowTypes.ConversationSheet): RapidProFlowExport.RootObject {
@@ -163,7 +168,7 @@ export class ConversationParser implements AbstractParser {
         } else if (row.type === "start_new_flow") {
           actionNode.actions.push({
             flow: {
-              name: row.message_text
+              name: row.message_text,
             },
             type: "enter_flow",
             uuid: this.deterministicUUID(conversation.flow_name, "action"),
@@ -186,7 +191,7 @@ export class ConversationParser implements AbstractParser {
               actions: [
                 {
                   flow: {
-                    name: row.message_text
+                    name: row.message_text,
                   },
                   type: "enter_flow",
                   uuid: this.deterministicUUID(conversation.flow_name, "action"),
