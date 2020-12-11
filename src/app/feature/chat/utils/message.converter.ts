@@ -25,7 +25,6 @@ export type URLParts = {
 // Carry out a custom chat action
 // http://plh-demo1.idems.international/chat/action/UNLOCK_TOOLBOX?topic=mod_1on1
 
-
 // Add custom chat message fields
 // http://plh-demo1.idems.international/chat/msg-info?isStory=true
 
@@ -214,9 +213,11 @@ export async function convertRapidProAttachments(attachments: string[]): Promise
   }
   return Promise.all(
     attachments.map(async (attachmentString) => {
+      console.log("attachmentString", attachmentString);
       let regex = /(?<type>[a-z]*)[\/]?[a-z+]*:(?<url>.*)/gm;
       let results = regex.exec(attachmentString);
       let type = "other";
+      console.log("results", results);
       switch (results.groups.type) {
         case "image":
           type = "image";
@@ -233,22 +234,30 @@ export async function convertRapidProAttachments(attachments: string[]): Promise
       let url = results.groups.url;
       let urlRegex = /http[s]?:\/\/(?<domain>[a-zA-Z0-9\.\-\_]*)\/(?<path>[\S]*)/;
       let urlRegexResult = urlRegex.exec(url);
-      let domain = urlRegexResult.groups["domain"];
-      let path = urlRegexResult.groups["path"];
-      if (environment.domains.indexOf(domain) > -1) {
-        try {
-          let response = await fetch(path, { method: "HEAD" });
-          if (response.status === 200) {
-            url = path;
-          }
-        } catch (ex) {
-          console.log("HEAD request excetpion ", ex);
-        }
+      // Handle local asset
+      if (!urlRegexResult) {
+        url = `assets/plh_assets/${url}`;
+        return { type, url };
       }
-      return {
-        type: type as any,
-        url: url,
-      };
+      // Handle web asset
+      if (urlRegexResult.groups) {
+        let domain = urlRegexResult.groups["domain"];
+        let path = urlRegexResult.groups["path"];
+        if (environment.domains.includes(domain)) {
+          try {
+            let response = await fetch(path, { method: "HEAD" });
+            if (response.status === 200) {
+              url = path;
+            }
+          } catch (ex) {
+            console.log("HEAD request excetpion ", ex);
+          }
+        }
+        return {
+          type: type as any,
+          url: url,
+        };
+      }
     })
   );
 }

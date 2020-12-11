@@ -11,6 +11,9 @@ const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
 const OUTPUT_FOLDER = `${__dirname}/output`;
 
+// TODO - make it easier to set this in dotenv or cli
+const DEPLOY_TARGET: "app" | "rapidpro" = "app";
+
 /**
  * Reads xlsx files from gdrive-download output and converts to json
  * objects representing sheet names and data values
@@ -57,7 +60,8 @@ function applyDataParsers(
 ) {
   // All flow types will be processed by the default parser unless otherwise specified here
   const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
-    conversation: new ConversationParser(),
+    conversation: new ConversationParser(DEPLOY_TARGET),
+    // task_list: new TaskListParser(dataByFlowType, allTasksById),
   };
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
