@@ -6,294 +6,6 @@
     "fields": [],
     "flows": [
       {
-        "name": "error_need_trimming_save_value",
-        "uuid": "uuid_error_need_trimming_save_value_flow_0",
-        "spec_version": "13.1.0",
-        "language": "base",
-        "type": "messaging",
-        "nodes": [
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_0",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "This is save the variables example flow.  ",
-                "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_error_need_trimming_save_value_action_0"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_0",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_1"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_1",
-            "actions": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_action_1",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "first_value",
-                  "name": "first_value"
-                },
-                "value": "I am the first value"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_1",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_2"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_2",
-            "actions": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_action_2",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "second_value",
-                  "name": "second_value"
-                },
-                "value": "I am the second value"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_2",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_3"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_3",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Please choose your variable",
-                "type": "send_msg",
-                "quick_replies": [
-                  "First value",
-                  "Second Value"
-                ],
-                "uuid": "uuid_error_need_trimming_save_value_action_3"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_3",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_4"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_4",
-            "actions": [],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_4",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_5"
-              }
-            ],
-            "router": {
-              "type": "switch",
-              "default_category_uuid": "uuid_error_need_trimming_save_value_category_0",
-              "cases": [],
-              "categories": [
-                {
-                  "uuid": "uuid_error_need_trimming_save_value_category_0",
-                  "name": "All Responses",
-                  "exit_uuid": "uuid_error_need_trimming_save_value_exit_4"
-                }
-              ],
-              "operand": "@input.text",
-              "wait": {
-                "type": "msg"
-              },
-              "result_name": "value_label"
-            }
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_5",
-            "actions": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_action_4",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "value_label",
-                  "name": "value_label"
-                },
-                "value": "@results.value_label"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_5",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_7"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_7",
-            "actions": [],
-            "router": {
-              "type": "switch",
-              "default_category_uuid": "uuid_error_need_trimming_save_value_category_1",
-              "cases": [
-                {
-                  "arguments": [
-                    "First value"
-                  ],
-                  "category_uuid": "uuid_error_need_trimming_save_value_category_2",
-                  "type": "has_only_phrase",
-                  "uuid": "uuid_error_need_trimming_save_value_case_0"
-                },
-                {
-                  "arguments": [
-                    "Second Value"
-                  ],
-                  "category_uuid": "uuid_error_need_trimming_save_value_category_3",
-                  "type": "has_only_phrase",
-                  "uuid": "uuid_error_need_trimming_save_value_case_1"
-                }
-              ],
-              "categories": [
-                {
-                  "exit_uuid": "uuid_error_need_trimming_save_value_exit_7",
-                  "name": "All Responses",
-                  "uuid": "uuid_error_need_trimming_save_value_category_1"
-                },
-                {
-                  "exit_uuid": "uuid_error_need_trimming_save_value_exit_8",
-                  "name": "First value",
-                  "uuid": "uuid_error_need_trimming_save_value_category_2"
-                },
-                {
-                  "exit_uuid": "uuid_error_need_trimming_save_value_exit_10",
-                  "name": "Second Value",
-                  "uuid": "uuid_error_need_trimming_save_value_category_3"
-                }
-              ],
-              "operand": "@fields.value_label"
-            },
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_7",
-                "destination_uuid": null
-              },
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_8",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_6"
-              },
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_10",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_8"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_6",
-            "actions": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_action_5",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "value_value ",
-                  "name": "value_value "
-                },
-                "value": "@fields.first_value"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_6",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_9"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_8",
-            "actions": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_action_6",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "value_value ",
-                  "name": "value_value "
-                },
-                "value": "@fields.second_value"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_9",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_9"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_9",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "@fields.first_value\n@fields.second_value\nYou chose @fields.value_label so @fields.value_value",
-                "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_error_need_trimming_save_value_action_7"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_11",
-                "destination_uuid": "uuid_error_need_trimming_save_value_node_10"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_error_need_trimming_save_value_node_10",
-            "actions": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_action_8",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "error_need_trimming_save_value__completed",
-                  "name": "error_need_trimming_save_value__completed"
-                },
-                "value": "true"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_error_need_trimming_save_value_exit_12",
-                "destination_uuid": null
-              }
-            ]
-          }
-        ],
-        "_ui": null,
-        "revision": 0,
-        "expire_after_minutes": 60,
-        "metadata": {
-          "revision": 0
-        },
-        "localization": {}
-      }
-    ],
-    "groups": [],
-    "site": "https://rapidpro.idems.international",
-    "triggers": [],
-    "version": "13"
-  },
-  {
-    "campaigns": [],
-    "fields": [],
-    "flows": [
-      {
         "name": "example_main",
         "uuid": "uuid_example_main_flow_0",
         "spec_version": "13.1.0",
@@ -15022,7 +14734,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
                 ],
                 "text": "Sit down, close your eyes and listen to your breath as it goes in and out. Notice how you feel. When you are ready, open your eyes again. \nTry this whenever you are feeling stressed and you need a break to reconnect.",
                 "type": "send_msg",
@@ -15088,7 +14800,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
                 ],
                 "text": "Let's use the magic power of three stay present and relax. \n",
                 "type": "send_msg",
@@ -15190,7 +14902,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
                 ],
                 "text": "Close your eyes and think about the day. \nName 1 thing that you are grateful for. \nName 1 thing that you did well. \nName 1 thing that you love. \nWell done, you are a hero!",
                 "type": "send_msg",
@@ -15256,7 +14968,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
                 ],
                 "text": "Use the magic power of three to stay connected and relax.",
                 "type": "send_msg",
@@ -15340,7 +15052,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/characters/@fields.guidenumber/seated.svg"
+                  "image:plh_images/characters/guide@fields.guidenumber/seated.svg"
                 ],
                 "text": "1. Close your eyes.  \n2. Listen to your breath as it goes in and out five times.  \n3. Notice how you feel. \n4. When you are ready open your eyes again.  \n5. You are in control!",
                 "type": "send_msg",
