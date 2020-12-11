@@ -3,7 +3,7 @@ import { AnimationOptions } from "ngx-lottie";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ChatMessage, ChatResponseOption, ResponseCustomAction, IChatService } from "../models";
 import { Subscription } from "rxjs";
-import { ModalController } from "@ionic/angular";
+import { AlertController, ModalController } from "@ionic/angular";
 import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
 import { FlowStatusChange, OfflineChatService } from "../services/offline/offline-chat.service";
@@ -66,7 +66,8 @@ export class ChatPage {
     private settingsService: SettingsService,
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public alertController: AlertController
   ) {}
 
   /** Initialise chat configuration on page enter */
@@ -105,6 +106,24 @@ export class ChatPage {
       });
     }
     console.log(`%cUsing ${this.chatService.type} chat `, "color: #9c9c9c");
+  }
+
+  private async showCustomInputAlert() {
+    const alert = await this.alertController.create({
+      header: this.lastReceivedMsg.text,
+      inputs: [
+        {
+          type: "text"
+        }
+      ],
+      buttons: [{
+        text: 'Submit',
+        handler: (value) => {
+          this.sendCustomOption(value[0]);
+        }
+      }]
+    });
+    await alert.present();
   }
 
   /** The chat page can sometimes be displayed in a modal. Check if it is, and assign variable to handle close button display */
@@ -168,6 +187,9 @@ export class ChatPage {
     }
     if (message.sender === "bot") {
       this.responseOptions = message.responseOptions ? message.responseOptions : [];
+      if (message.showTextInput) {
+        this.showCustomInputAlert();
+      }
     } else {
       this.responseOptions = [];
     }
