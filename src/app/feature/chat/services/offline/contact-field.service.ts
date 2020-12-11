@@ -9,14 +9,21 @@ import { environment } from 'src/environments/environment';
 export class ContactFieldService {
   constructor(private localStorageService: LocalStorageService) {
     // Make sure we always set initial variables
+    this.setDefaultValues();
+  }
+
+  async setDefaultValues() {
     for (var flowName of environment.variableNameFlows) {
       const flow = conversation
         .map((rpExport) => rpExport.flows[0])
         .find((flow) => flow.name === flowName);
-      flow.nodes.forEach((node) => {
+      flow.nodes.forEach(async (node) => {
         const action = node.actions[0];
         if (action && action.field && action.field.key && action.value) {
-          this.setContactField(action.field.key, action.value);
+          const existingValue = await this.getContactField(action.field.key);
+          if (existingValue === null) {
+            this.setContactField(action.field.key, action.value);
+          }
         }
       });
     }
