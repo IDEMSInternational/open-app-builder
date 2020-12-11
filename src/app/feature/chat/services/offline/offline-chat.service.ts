@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, BehaviorSubject } from "rxjs";
+import { Observable, BehaviorSubject, Subject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
 import { SettingsService } from "src/app/pages/settings/settings.service";
 import { ChatMessage, IChatService } from "../../models";
@@ -9,6 +9,7 @@ import { ContactFieldService } from "./contact-field.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
 import { CONVERSATION } from "src/app/shared/services/data/data.service";
 import { throwError } from "rxjs";
+import { AlertController } from '@ionic/angular';
 
 export type FlowStatusChange = {
   name: string;
@@ -27,13 +28,22 @@ export class OfflineChatService implements IChatService {
   private ready$ = new BehaviorSubject<boolean>(false);
   public messages$ = new BehaviorSubject<ChatMessage[]>([]);
   public botTyping$ = new BehaviorSubject<boolean>(false);
+  public error$ = new Subject<string>();
 
   constructor(
     protected http: HttpClient,
     protected contactFieldService: ContactFieldService,
-    protected settingsService: SettingsService
+    protected settingsService: SettingsService,
+    protected alertController: AlertController
   ) {
     this.init();
+    this.error$.subscribe(async (errorMsg) => {
+      const alert = await this.alertController.create({
+        header: "Flow Error",
+        message: errorMsg
+      });
+      alert.present();
+    });
   }
 
   /** Provide a promise that can be used to notify components when initialisation has been completed */
@@ -77,6 +87,7 @@ export class OfflineChatService implements IChatService {
       this.flowStatus$.next([...this.flowStatus$.value, status]);
     } else {
       console.error("flow does not exist", flowName, this.rpFlowsByName);
+      this.error$.next(`Flow with name ${flowName} does not exist`);
     }
   }
 
@@ -118,7 +129,8 @@ export class OfflineChatService implements IChatService {
             this.messages$,
             this.flowStatus$,
             this.contactFieldService,
-            this.botTyping$
+            this.botTyping$,
+            this.error$
           );
           this.flowsStack.push(newFlow);
           this.settingsService.getUserSetting("CHAT_DELAY").subscribe((delay) => {

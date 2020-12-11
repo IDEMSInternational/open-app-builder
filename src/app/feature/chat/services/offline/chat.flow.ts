@@ -1,4 +1,4 @@
-import { of, BehaviorSubject } from "rxjs";
+import { of, BehaviorSubject, Subject } from "rxjs";
 import { ChatMessage, IRapidProMessage } from "../../models";
 import { convertFromRapidProMsg } from "../../utils/message.converter";
 import { ContactFieldService } from "./contact-field.service";
@@ -23,7 +23,8 @@ export class RapidProOfflineFlow {
     public messages$: BehaviorSubject<ChatMessage[]>,
     public flowStatus$: BehaviorSubject<FlowStatusChange[]>,
     public contactFieldService: ContactFieldService,
-    public botTyping$: BehaviorSubject<boolean>
+    public botTyping$: BehaviorSubject<boolean>,
+    public error$: Subject<string>
   ) {
     console.log("flowObject", flowObject);
     this.name = flowObject.name;
