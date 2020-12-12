@@ -49,7 +49,7 @@
           >
           <path d="M15 20V0L0 10L15 20Z" fill="grey" />
           </svg>
-          <div class="msg-bubble" [ngClass]="{'large': msg.text.length < 3}">{{msg.text}}</div>
+          <div class="msg-bubble">{{msg.text}}</div>
           <svg
             *ngIf="msg.sender === 'user'"
             class="user-msg-triangle" 
