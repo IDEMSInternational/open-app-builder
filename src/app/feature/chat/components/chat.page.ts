@@ -9,6 +9,7 @@ import { ChatActionService } from "../services/common/chat-action.service";
 import { FlowStatusChange, OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
 import { SettingsService } from "src/app/pages/settings/settings.service";
+import { ContactFieldService } from "../services/offline/contact-field.service";
 
 @Component({
   selector: "app-chat",
@@ -67,7 +68,8 @@ export class ChatPage {
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
     public modalCtrl: ModalController,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private contactFieldService: ContactFieldService
   ) {}
 
   /** Initialise chat configuration on page enter */
@@ -169,10 +171,16 @@ export class ChatPage {
     this.messageSubscription.unsubscribe();
   }
 
-  private onNewMessage(message: ChatMessage) {
+  private async onNewMessage(message: ChatMessage) {
     console.log("new Message", message);
     message.dateReceived = new Date();
     this.lastReceivedMsg = message;
+    if (message.character && message.character.toLowerCase().indexOf("guide") > -1) {
+      let guideId = await this.contactFieldService.getContactField("guidenumber");
+      if (guideId) {
+        message.character = guideId as any;
+      }
+    }
     if (message.isStory) {
       this.chatViewType = "story";
     } else {
