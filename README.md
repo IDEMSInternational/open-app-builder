@@ -22,7 +22,7 @@
 ```
 $ git lfs clone https://github.com/IDEMSInternational/parenting-app-ui.git
 ```
-Note - if you do a regular git clone, you can always run `git lfs fetch` later to sync assets
+Note - if you do a regular git clone, you can always run `git lfs fetch --all` later to sync assets
 
 ### Install required dependencies
 ```
