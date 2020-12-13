@@ -109,8 +109,9 @@ export class OfflineChatService implements IChatService {
       try {
         console.log("Flow status change", events);
         if (events.length > 0) {
-          console.log("Flows stack before ", this.flowsStack);
+          console.log("Flow stacks before event:", this.flowsStack.length);
           let latest = events[events.length - 1];
+          console.log("latest status:", latest.status);
           if (latest.status === "start") {
             const flow = this.rpFlowsByName[latest.name];
             console.log(`%c${flow.name} START`, "background: white; color: green");
@@ -128,21 +129,27 @@ export class OfflineChatService implements IChatService {
             newFlow.start();
           }
           if (latest.status === "completed") {
-            console.log("completed", this.flowsStack);
-            if (this.flowsStack.length > 1) {
-              this.flowsStack.pop();
+            // remove the completed flow from the stack
+            this.flowsStack.pop();
+            // Check if there are any other flows remaining,
+            // if yes resume them
+            if (this.flowsStack.length > 0) {
               let currentFlow = this.flowsStack[this.flowsStack.length - 1];
               currentFlow.continue("completed");
+              // otherwise all flows have been complete, handle main exit
             } else {
               this.handleFlowsEnded();
             }
           }
-          console.log("Flows stack after ", this.flowsStack);
+          console.log("Flow stacks after event:", this.flowsStack.length);
         }
       } catch (ex) {
         // This catch is necessary to prevent an error causing this subscription to unsubscribe
         // Otherwise a crash in one flow prevents the next flow from launching
-        console.warn("Flow status change subscribe error. This is likely an error caused by a faulty flow.", ex);
+        console.warn(
+          "Flow status change subscribe error. This is likely an error caused by a faulty flow.",
+          ex
+        );
       }
     });
   }
