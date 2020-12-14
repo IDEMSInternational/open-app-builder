@@ -16,7 +16,12 @@ export class ModulePageComponent implements OnInit {
 
   ngOnInit() {
     const { flow_name } = this.route.snapshot.params;
-    this.modulePageFlow = MODULE_PAGE.find((m) => m.flow_name === flow_name);
-    this.dataLoaded = true;
+    const modulePageFlow = MODULE_PAGE.find((m) => m.flow_name === flow_name);
+    if (modulePageFlow) {
+      this.modulePageFlow = modulePageFlow;
+      this.dataLoaded = true;
+    } else {
+      throw new Error(`Module Page Flow Not Found: ${flow_name}`);
+    }
   }
 }
