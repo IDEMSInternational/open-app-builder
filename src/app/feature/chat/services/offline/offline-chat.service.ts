@@ -106,37 +106,50 @@ export class OfflineChatService implements IChatService {
    */
   private subscribeToFlowStatusChanges() {
     this.flowStatus$.subscribe((events) => {
-      console.log("Flow status change", events);
-      if (events.length > 0) {
-        console.log("Flows stack before ", this.flowsStack);
-        let latest = events[events.length - 1];
-        if (latest.status === "start") {
-          const flow = this.rpFlowsByName[latest.name];
-          console.log(`%c${flow.name} START`, "background: white; color: green");
-          let newFlow = new RapidProOfflineFlow(
-            flow,
-            this.messages$,
-            this.flowStatus$,
-            this.contactFieldService,
-            this.botTyping$
-          );
-          this.flowsStack.push(newFlow);
-          this.settingsService.getUserSetting("CHAT_DELAY").subscribe((delay) => {
-            newFlow.sendMessageDelay = Number.parseInt(delay);
-          });
-          newFlow.start();
-        }
-        if (latest.status === "completed") {
-          console.log("completed", this.flowsStack);
-          if (this.flowsStack.length > 1) {
-            this.flowsStack.pop();
-            let currentFlow = this.flowsStack[this.flowsStack.length - 1];
-            currentFlow.continue("completed");
-          } else {
-            this.handleFlowsEnded();
+      try {
+        console.log("Flow status change", events);
+        if (events.length > 0) {
+          console.log("Flow stacks before event:", this.flowsStack.length);
+          let latest = events[events.length - 1];
+          console.log("latest status:", latest.status);
+          if (latest.status === "start") {
+            const flow = this.rpFlowsByName[latest.name];
+            console.log(`%c${flow.name} START`, "background: white; color: green");
+            let newFlow = new RapidProOfflineFlow(
+              flow,
+              this.messages$,
+              this.flowStatus$,
+              this.contactFieldService,
+              this.botTyping$
+            );
+            this.flowsStack.push(newFlow);
+            this.settingsService.getUserSetting("CHAT_DELAY").subscribe((delay) => {
+              newFlow.sendMessageDelay = Number.parseInt(delay);
+            });
+            newFlow.start();
           }
+          if (latest.status === "completed") {
+            // remove the completed flow from the stack
+            this.flowsStack.pop();
+            // Check if there are any other flows remaining,
+            // if yes resume them
+            if (this.flowsStack.length > 0) {
+              let currentFlow = this.flowsStack[this.flowsStack.length - 1];
+              currentFlow.continue("completed");
+              // otherwise all flows have been complete, handle main exit
+            } else {
+              this.handleFlowsEnded();
+            }
+          }
+          console.log("Flow stacks after event:", this.flowsStack.length);
         }
-        console.log("Flows stack after ", this.flowsStack);
+      } catch (ex) {
+        // This catch is necessary to prevent an error causing this subscription to unsubscribe
+        // Otherwise a crash in one flow prevents the next flow from launching
+        console.warn(
+          "Flow status change subscribe error. This is likely an error caused by a faulty flow.",
+          ex
+        );
       }
     });
   }

@@ -178,7 +178,7 @@
         "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_completed_goal",
-          "first_launch | delay_14_day"
+          "first_app_launch | delay_14_day"
         ]
       },
       {
@@ -270,7 +270,7 @@
         "flow_name": "mod_instructions_par",
         "requires_list": [
           "task_mod_praise_completed_goal",
-          "first_launch | delay_21_day"
+          "first_app_launch | delay_21_day"
         ]
       },
       {
@@ -375,7 +375,7 @@
         "flow_name": "mod_stress_par",
         "requires_list": [
           "task_mod_instructions_completed_goal",
-          "first_launch | delay_28_day"
+          "first_app_launch | delay_28_day"
         ]
       },
       {

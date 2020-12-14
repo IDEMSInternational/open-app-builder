@@ -57,7 +57,7 @@ export const BASE_USER_SETTINGS: UserSetting[] = [
         id: "SHOW_FLOW_NAME",
         name: "Show Flow Name",
         type: "boolean",
-        value: "true",
+        value: "false",
         devOnly: true
     }
     // 2020-11-25 - Online chat disabled here and in settings until tested working

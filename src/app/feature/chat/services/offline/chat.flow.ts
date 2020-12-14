@@ -60,7 +60,7 @@ export class RapidProOfflineFlow {
     console.log("Entered from ", fromNode);
     console.log("Entered node id ", node);
     for (let action of node.actions) {
-      await this.handleNodeAction(action);
+      await this.handleNodeAction(action, node);
     }
     await this.wait();
     if (!node.router) {
@@ -85,7 +85,7 @@ export class RapidProOfflineFlow {
       }
     }
   }
-  private async handleNodeAction(action: RapidProFlowExport.Action) {
+  private async handleNodeAction(action: RapidProFlowExport.Action, currentNode: RapidProFlowExport.Node) {
     console.log(`%cAction: ${action.type}`, "color: #9c9c9c");
     switch (action.type) {
       case "enter_flow":
@@ -108,7 +108,7 @@ export class RapidProOfflineFlow {
       case "send_msg":
         if (action.text) {
           this.botTyping$.next(true);
-          return this.doSendMessageAction(action);
+          return this.doSendMessageAction(action, currentNode);
         }
         return;
       case "set_contact_field":
@@ -248,7 +248,27 @@ export class RapidProOfflineFlow {
     return output;
   }
 
-  private async doSendMessageAction(action: RapidProFlowExport.Action) {
+  private messageHasTextInput(action: RapidProFlowExport.Action, currentNode: RapidProFlowExport.Node) {
+    if (action.quick_replies && action.quick_replies.length > 0) {
+      return false;
+    }
+    if (currentNode.router) {
+      if (currentNode.router.operand === "@input.text") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    const firstExitWithDestination = currentNode.exits.find((exit) => exit.destination_uuid);
+    if (firstExitWithDestination) {
+      const nextNode = this.nodesById[firstExitWithDestination.destination_uuid];
+      if (nextNode.router && nextNode.router.operand === "@input.text") {
+        return true;
+      }
+    }
+  }
+
+  private async doSendMessageAction(action: RapidProFlowExport.Action, currentNode: RapidProFlowExport.Node) {
     const messages = this.messages$.getValue();
     const text = await this.parseMessageTemplate(action.text);
     let parsedAttachmentUrls = await Promise.all(action.attachments.map(this.parseMessageTemplate));
@@ -266,6 +286,7 @@ export class RapidProOfflineFlow {
       wasTapped: false,
     };
     const newMessage = await convertFromRapidProMsg(rapidProMessage);
+    newMessage.showTextInput = this.messageHasTextInput(action, currentNode);
     messages.push(newMessage);
     if (!newMessage.isStory) {
       await this.wait(this.sendMessageDelay);

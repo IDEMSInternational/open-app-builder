@@ -21,16 +21,8 @@
       >
         <div *ngIf="msg.character && !sameAsLastCharacter(msg, messages[i - 1])">
           <img
-            *ngIf="msg.character === 'Guide'"
-            src="assets/images/chat-characters/Guide_120.png"
-          />
-          <img
-            *ngIf="msg.character === 'neighbour'"
-            src="assets/images/chat-characters/neighbour_120.png"
-          />
-          <img
-            *ngIf="msg.character === 'Elder'"
-            src="assets/images/chat-characters/Elder_120.png"
+            class="character-image"
+            [src]="'assets/plh_assets/plh_images/characters/' + msg.character.toLowerCase().trim() + '/neutral.svg'"
           />
         </div>
         <div class="msg-bubble-container"
@@ -45,7 +37,7 @@
           >
           <path d="M15 20V0L0 10L15 20Z" fill="grey" />
           </svg>
-          <div class="msg-bubble" [ngClass]="{'large': msg.text.length < 3}">{{msg.text}}</div>
+          <div class="msg-bubble">{{msg.text}}</div>
           <svg
             *ngIf="msg.sender === 'user'"
             class="user-msg-triangle" 
