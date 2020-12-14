@@ -4979,9 +4979,7 @@
             "uuid": "uuid_mod_1on1_intro_node_11",
             "actions": [
               {
-                "flow": {
-                  "name": "homescreen"
-                },
+                "flow": {},
                 "type": "enter_flow",
                 "uuid": "uuid_mod_1on1_intro_action_10"
               }
