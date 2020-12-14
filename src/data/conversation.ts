@@ -4996,7 +4996,6 @@
             "uuid": "uuid_mod_1on1_intro_node_10",
             "actions": [
               {
-<<<<<<< HEAD
                 "uuid": "uuid_mod_1on1_intro_action_9",
                 "type": "set_contact_field",
                 "field": {
@@ -5004,11 +5003,6 @@
                   "name": "mod_1on1_intro__completed"
                 },
                 "value": "true"
-=======
-                "flow": {},
-                "type": "enter_flow",
-                "uuid": "uuid_mod_1on1_intro_action_10"
->>>>>>> eea7eda459712817b92c13c7bd7010d7c3577f0f
               }
             ],
             "exits": [
