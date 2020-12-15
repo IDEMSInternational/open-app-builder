@@ -45,7 +45,9 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
   let attachments = await convertRapidProAttachments(attachmentStrings);
   let text = removeHiddenURLs(rpMsg.message, urlPartsList);
   let actions = getActionsFromURLS(urlPartsList);
-  let responseOptions = await Promise.all(quickReplies.map(convertQuickReply));
+  let responseOptions: ChatResponseOption[] = quickReplies.map((qrText) => ({ 
+    text: qrText
+  }));
   let msg: ChatMessage = {
     text: text,
     sender: "bot",
@@ -55,6 +57,12 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
     actions: actions,
   };
   msg = applyCustomMessageInfo(urlPartsList, msg);
+  if (msg.choiceMediaUrls) {
+    msg.responseOptions.forEach((option, idx) => {
+      option.imageUrl = 'assets/plh_assets/' + msg.choiceMediaUrls[idx];
+      option.hideText = msg.choiceMediaDisplay === "media";
+    })
+  }
   return msg;
 }
 
@@ -89,7 +97,7 @@ export function applyCustomMessageInfo(urlPartsList: URLParts[], msg: ChatMessag
     const qParams: Object = queryStringToObject(msgInfoUrlParts.query);
     for (let customField of appCustomFields) {
       if (qParams.hasOwnProperty(customField.key)) {
-        const value = qParams[customField.key];
+        const value = decodeURIComponent(qParams[customField.key]);
         switch (customField.type) {
           case "boolean":
             msg[customField.key as string] = value === "true";
@@ -99,6 +107,10 @@ export function applyCustomMessageInfo(urlPartsList: URLParts[], msg: ChatMessag
             break;
           case "integer":
             msg[customField.key as string] = Number.parseInt(value);
+            break;
+          case "array":
+          case "object":
+            msg[customField.key as string] = JSON.parse(value);
             break;
           default:
             msg[customField.key as string] = value;

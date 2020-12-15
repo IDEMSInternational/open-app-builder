@@ -13,7 +13,7 @@ export class RapidProOfflineFlow {
   childFlowId: string = null;
   running = false;
 
-  flowStepDelay = 200;
+  flowStepDelay = 50;
   public sendMessageDelay = 1000;
 
   flowResults: { [resultName: string]: string } = {};
