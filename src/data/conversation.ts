@@ -619,7 +619,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "This is a multiple choice question with images attached to the choices, displaying both media and text. https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=both&choiceMediaUrls=[\"plh_images/characters/guide1/neutral.svg\",\"plh_images/characters/guide2/neutral.svg\",null,null,null,null,null,null,null]",
+                "text": "This is a multiple choice question with images attached to the choices, displaying both media and text. https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=both&choiceMediaUrls=%5B%22plh_images%2Fcharacters%2Fguide1%2Fneutral.svg%22%2C%22plh_images%2Fcharacters%2Fguide2%2Fneutral.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "image1",
@@ -692,7 +692,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "This is a multiple choice question with images attached to the choices, displaying only media. https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=media&choiceMediaUrls=[\"plh_images/characters/guide1/neutral.svg\",\"plh_images/characters/guide2/neutral.svg\",null,null,null,null,null,null,null]",
+                "text": "This is a multiple choice question with images attached to the choices, displaying only media. https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fcharacters%2Fguide1%2Fneutral.svg%22%2C%22plh_images%2Fcharacters%2Fguide2%2Fneutral.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "image1",
@@ -893,7 +893,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "This tickbox is ticked by default. https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true",
+                "text": "This tickbox is ticked by default. https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Ticked Value",
@@ -2105,6 +2105,410 @@
     "fields": [],
     "flows": [
       {
+        "name": "example_characters",
+        "uuid": "uuid_example_characters_flow_0",
+        "spec_version": "13.1.0",
+        "language": "base",
+        "type": "messaging",
+        "nodes": [
+          {
+            "uuid": "uuid_example_characters_node_0",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "This flow shows the functionality of the character, character_media and character_display columns.",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_characters_action_0"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_characters_exit_0",
+                "destination_uuid": "uuid_example_characters_node_1"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_characters_node_1",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "This text is said by @fields.neighbour. A neutral image of neighbour is displayed in front of this text. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_characters_action_1"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_characters_exit_1",
+                "destination_uuid": "uuid_example_characters_node_2"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_characters_node_2",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "This text is said by @fields.neighbour. No image of neighbour is displayed. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_characters_action_2"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_characters_exit_2",
+                "destination_uuid": "uuid_example_characters_node_3"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_characters_node_3",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "This text is said by @fields.neighbour. A happy image of neighbour is displayed in front of this text. The link to this image is the happy_asset associated to neighbour in the character_names sheet. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_characters_action_3"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_characters_exit_3",
+                "destination_uuid": "uuid_example_characters_node_4"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_characters_node_4",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "This is the end of the character example flow.",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_characters_action_4"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_characters_exit_4",
+                "destination_uuid": "uuid_example_characters_node_5"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_characters_node_5",
+            "actions": [
+              {
+                "uuid": "uuid_example_characters_action_5",
+                "type": "set_contact_field",
+                "field": {
+                  "key": "example_characters__completed",
+                  "name": "example_characters__completed"
+                },
+                "value": "true"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_characters_exit_5",
+                "destination_uuid": null
+              }
+            ]
+          }
+        ],
+        "_ui": null,
+        "revision": 0,
+        "expire_after_minutes": 60,
+        "metadata": {
+          "revision": 0
+        },
+        "localization": {}
+      }
+    ],
+    "groups": [],
+    "site": "https://rapidpro.idems.international",
+    "triggers": [],
+    "version": "13"
+  },
+  {
+    "campaigns": [],
+    "fields": [],
+    "flows": [
+      {
+        "name": "example_blank_condition",
+        "uuid": "uuid_example_blank_condition_flow_0",
+        "spec_version": "13.1.0",
+        "language": "base",
+        "type": "messaging",
+        "nodes": [
+          {
+            "uuid": "uuid_example_blank_condition_node_0",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "This is the blank condition example flow.",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_blank_condition_action_0"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_0",
+                "destination_uuid": "uuid_example_blank_condition_node_1"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_1",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "This is a multiple choice question.",
+                "type": "send_msg",
+                "quick_replies": [
+                  "First option",
+                  "Second option",
+                  "Third option"
+                ],
+                "uuid": "uuid_example_blank_condition_action_1"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_1",
+                "destination_uuid": "uuid_example_blank_condition_node_3"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_3",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "default_category_uuid": "uuid_example_blank_condition_category_0",
+              "cases": [
+                {
+                  "arguments": [
+                    "First option"
+                  ],
+                  "category_uuid": "uuid_example_blank_condition_category_1",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_example_blank_condition_case_0"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_example_blank_condition_exit_3",
+                  "name": "All Responses",
+                  "uuid": "uuid_example_blank_condition_category_0"
+                },
+                {
+                  "exit_uuid": "uuid_example_blank_condition_exit_4",
+                  "name": "First option",
+                  "uuid": "uuid_example_blank_condition_category_1"
+                }
+              ],
+              "operand": "@input.text",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_3",
+                "destination_uuid": "uuid_example_blank_condition_node_4"
+              },
+              {
+                "uuid": "uuid_example_blank_condition_exit_4",
+                "destination_uuid": "uuid_example_blank_condition_node_2"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_2",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "You chose the first option",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_blank_condition_action_2"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_2",
+                "destination_uuid": null
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_4",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "You chose the second or third option",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_blank_condition_action_3"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_5",
+                "destination_uuid": "uuid_example_blank_condition_node_5"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_5",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "This is another multiple choice question.",
+                "type": "send_msg",
+                "quick_replies": [
+                  "First option",
+                  "Second option",
+                  "Third option"
+                ],
+                "uuid": "uuid_example_blank_condition_action_4"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_6",
+                "destination_uuid": "uuid_example_blank_condition_node_8"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_6",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "You chose the second or third option",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_blank_condition_action_5"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_7",
+                "destination_uuid": null
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_8",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "default_category_uuid": "uuid_example_blank_condition_category_2",
+              "cases": [
+                {
+                  "arguments": [
+                    "First option"
+                  ],
+                  "category_uuid": "uuid_example_blank_condition_category_3",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_example_blank_condition_case_1"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_example_blank_condition_exit_9",
+                  "name": "All Responses",
+                  "uuid": "uuid_example_blank_condition_category_2"
+                },
+                {
+                  "exit_uuid": "uuid_example_blank_condition_exit_10",
+                  "name": "First option",
+                  "uuid": "uuid_example_blank_condition_category_3"
+                }
+              ],
+              "operand": "@input.text",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_9",
+                "destination_uuid": "uuid_example_blank_condition_node_6"
+              },
+              {
+                "uuid": "uuid_example_blank_condition_exit_10",
+                "destination_uuid": "uuid_example_blank_condition_node_7"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_7",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "You chose the first option",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_blank_condition_action_6"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_8",
+                "destination_uuid": "uuid_example_blank_condition_node_9"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_blank_condition_node_9",
+            "actions": [
+              {
+                "uuid": "uuid_example_blank_condition_action_7",
+                "type": "set_contact_field",
+                "field": {
+                  "key": "example_blank_condition__completed",
+                  "name": "example_blank_condition__completed"
+                },
+                "value": "true"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_blank_condition_exit_11",
+                "destination_uuid": null
+              }
+            ]
+          }
+        ],
+        "_ui": null,
+        "revision": 0,
+        "expire_after_minutes": 60,
+        "metadata": {
+          "revision": 0
+        },
+        "localization": {}
+      }
+    ],
+    "groups": [],
+    "site": "https://rapidpro.idems.international",
+    "triggers": [],
+    "version": "13"
+  },
+  {
+    "campaigns": [],
+    "fields": [],
+    "flows": [
+      {
         "name": "first_app_opening",
         "uuid": "uuid_first_app_opening_flow_0",
         "spec_version": "13.1.0",
@@ -2259,7 +2663,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Please choose your guide https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=media&choiceMediaUrls=[\"plh_images/characters/guide1/neutral.svg\",\"plh_images/characters/guide2/neutral.svg\",null,null,null,null,null,null,null]",
+                "text": "Please choose your guide https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fcharacters%2Fguide1%2Fneutral.svg%22%2C%22plh_images%2Fcharacters%2Fguide2%2Fneutral.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "guide1",
@@ -4789,7 +5193,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Welcome! How are you feeling today? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=[\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/neutral.svg\",\"plh_images/stickers/faces/sadder.svg\",null,null,null,null,null,null]",
+                "text": "Welcome! How are you feeling today? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Happy",
@@ -5831,7 +6235,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Your goal was to do one or more of these activities with your teen: @fields.mod_1on1_chooseact\n\nHow did it go?  https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=both&choiceMediaUrls=[\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/neutral.svg\",\"plh_images/stickers/faces/sadder.svg\",null,null,null,null,null,null]",
+                "text": "Your goal was to do one or more of these activities with your teen: @fields.mod_1on1_chooseact\n\nHow did it go?  https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=both&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Great",
@@ -8922,7 +9326,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Hi! How is your parenting going today? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaUrls=[\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/neutral.svg\",\"plh_images/stickers/faces/sadder.svg\",null,null,null,null,null,null]",
+                "text": "Hi! How is your parenting going today? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Great",
@@ -9698,7 +10102,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Think about the last time someone thanked you, or said you'd done something great. How did it make you feel? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=[\"plh_images/stickers/faces/happy.svg\",\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/happiest.svg\",null,null,null,null,null,null]",
+                "text": "Think about the last time someone thanked you, or said you'd done something great. How did it make you feel? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappy.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappiest.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "slight smile",
@@ -9936,7 +10340,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/conversations/mod_praise/@fields.guidenumber/mod_praise_is_1.svg"
+                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"
                 ],
                 "text": "I was busy and my older daughter actually helped her sister with her homework. Usually they just fight! https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
@@ -10002,7 +10406,7 @@
             "actions": [
               {
                 "attachments": [
-                  "image:plh_images/conversations/mod_praise/@fields.guidenumber/mod_praise_is_2.svg"
+                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"
                 ],
                 "text": "Here’s the parenting skill: if I tell my daughters how proud I am of them for doing this, then they will want to do it again. https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
@@ -10086,7 +10490,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "How do you think what I said made my teens feel? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=[\"plh_images/stickers/faces/happy.svg\",\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/happiest.svg\",null,null,null,null,null,null]",
+                "text": "How do you think what I said made my teens feel? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappy.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappiest.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "slight smile",
@@ -11106,7 +11510,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Your goal was to continue to spend time with your teen, and to PRAISE them when spending time together.  \n\nDid you manage to spend time with your teen this week? How did it go? https://plh-demo1.idems.international/chat/msg-info?character=elder&choiceMediaDisplay=both&choiceMediaUrls=[\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/neutral.svg\",\"plh_images/stickers/faces/sadder.svg\",null,null,null,null,null,null]",
+                "text": "Your goal was to continue to spend time with your teen, and to PRAISE them when spending time together.  \n\nDid you manage to spend time with your teen this week? How did it go? https://plh-demo1.idems.international/chat/msg-info?character=elder&choiceMediaDisplay=both&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Great",
@@ -11261,7 +11665,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Sorry to hear it was difficult for you. Well done for trying!  https://plh-demo1.idems.international/chat/msg-info?choiceMediaUrls=[\"Continue\",null,null,null,null,null,null,null,null]",
+                "text": "Sorry to hear it was difficult for you. Well done for trying!  https://plh-demo1.idems.international/chat/msg-info?choiceMediaUrls=%5B%22Continue%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Go to One-on-One Time Challenges"
@@ -12009,7 +12413,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Hi! How are you feeling?  https://plh-demo1.idems.international/chat/msg-info?choiceMediaUrls=[\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/neutral.svg\",\"plh_images/stickers/faces/sadder.svg\",null,null,null,null,null,null]",
+                "text": "Hi! How are you feeling?  https://plh-demo1.idems.international/chat/msg-info?choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Happy",
@@ -12577,7 +12981,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Welcome! How is your parenting going today? https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=both&choiceMediaUrls=[\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/neutral.svg\",\"plh_images/stickers/faces/sadder.svg\",null,null,null,null,null,null]",
+                "text": "Welcome! How is your parenting going today? https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=both&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Great",
@@ -13405,6 +13809,50 @@
             "exits": [
               {
                 "uuid": "uuid_mod_instructions_intro_exit_16",
+                "destination_uuid": "uuid_mod_instructions_intro_node_16"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instructions_intro_node_16",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "default_category_uuid": "uuid_mod_instructions_intro_category_9",
+              "cases": [
+                {
+                  "arguments": [
+                    "Continue"
+                  ],
+                  "category_uuid": "uuid_mod_instructions_intro_category_10",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instructions_intro_case_4"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instructions_intro_exit_20",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instructions_intro_category_9"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instructions_intro_exit_21",
+                  "name": "Continue",
+                  "uuid": "uuid_mod_instructions_intro_category_10"
+                }
+              ],
+              "operand": "@input.text",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instructions_intro_exit_20",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instructions_intro_exit_21",
                 "destination_uuid": "uuid_mod_instructions_intro_node_15"
               }
             ]
@@ -13426,36 +13874,36 @@
             "exits": [
               {
                 "uuid": "uuid_mod_instructions_intro_exit_19",
-                "destination_uuid": "uuid_mod_instructions_intro_node_17"
+                "destination_uuid": "uuid_mod_instructions_intro_node_18"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instructions_intro_node_17",
+            "uuid": "uuid_mod_instructions_intro_node_18",
             "actions": [],
             "router": {
               "type": "switch",
-              "default_category_uuid": "uuid_mod_instructions_intro_category_9",
+              "default_category_uuid": "uuid_mod_instructions_intro_category_11",
               "cases": [
                 {
                   "arguments": [
                     "Watch again"
                   ],
-                  "category_uuid": "uuid_mod_instructions_intro_category_10",
+                  "category_uuid": "uuid_mod_instructions_intro_category_12",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instructions_intro_case_4"
+                  "uuid": "uuid_mod_instructions_intro_case_5"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instructions_intro_exit_21",
+                  "exit_uuid": "uuid_mod_instructions_intro_exit_23",
                   "name": "All Responses",
-                  "uuid": "uuid_mod_instructions_intro_category_9"
+                  "uuid": "uuid_mod_instructions_intro_category_11"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instructions_intro_exit_22",
+                  "exit_uuid": "uuid_mod_instructions_intro_exit_24",
                   "name": "Watch again",
-                  "uuid": "uuid_mod_instructions_intro_category_10"
+                  "uuid": "uuid_mod_instructions_intro_category_12"
                 }
               ],
               "operand": "@input.text",
@@ -13465,17 +13913,17 @@
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instructions_intro_exit_21",
+                "uuid": "uuid_mod_instructions_intro_exit_23",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instructions_intro_exit_22",
+                "uuid": "uuid_mod_instructions_intro_exit_24",
                 "destination_uuid": "uuid_mod_instructions_intro_node_9"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instructions_intro_node_18",
+            "uuid": "uuid_mod_instructions_intro_node_19",
             "actions": [
               {
                 "uuid": "uuid_mod_instructions_intro_action_11",
@@ -13489,13 +13937,13 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instructions_intro_exit_23",
-                "destination_uuid": "uuid_mod_instructions_intro_node_19"
+                "uuid": "uuid_mod_instructions_intro_exit_25",
+                "destination_uuid": "uuid_mod_instructions_intro_node_20"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instructions_intro_node_19",
+            "uuid": "uuid_mod_instructions_intro_node_20",
             "actions": [
               {
                 "flow": {
@@ -13507,7 +13955,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instructions_intro_exit_24",
+                "uuid": "uuid_mod_instructions_intro_exit_26",
                 "destination_uuid": null
               }
             ]
@@ -14463,7 +14911,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Hi! How are you feeling?  https://plh-demo1.idems.international/chat/msg-info?choiceMediaUrls=[\"plh_images/stickers/faces/happier.svg\",\"plh_images/stickers/faces/neutral.svg\",\"plh_images/stickers/faces/sadder.svg\",null,null,null,null,null,null]",
+                "text": "Hi! How are you feeling?  https://plh-demo1.idems.international/chat/msg-info?choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Happy",
