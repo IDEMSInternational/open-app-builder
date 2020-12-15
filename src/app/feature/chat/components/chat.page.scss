@@ -122,6 +122,10 @@
     box-shadow: 4px 4px 6px grey;
     white-space: break-spaces;
 
+    img {
+      height: 100px;
+    }
+
     &.large {
       font-size: 40px;
     }
