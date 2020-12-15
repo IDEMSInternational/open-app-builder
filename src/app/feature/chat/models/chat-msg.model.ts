@@ -52,6 +52,10 @@ export const appCustomFields: {
     type: "string"
   },
   {
+    key: "displayAsTick",
+    type: "boolean"
+  },
+  {
     key: "tickedByDefault",
     type: "boolean"
   },
