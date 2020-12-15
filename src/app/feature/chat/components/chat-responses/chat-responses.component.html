@@ -6,6 +6,6 @@
     (click)="selectResponseOption(option)"
   >
     <img *ngIf="option.imageUrl" [src]="option.imageUrl" />
-    <span>{{option.text}}</span>
+    <span *ngIf="!option.hideText">{{option.text}}</span>
   </div>
 </div>
