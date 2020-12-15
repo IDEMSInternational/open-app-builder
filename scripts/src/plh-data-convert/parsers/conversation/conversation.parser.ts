@@ -106,6 +106,18 @@ export class ConversationParser implements AbstractParser {
           if (row.ticked_by_default) add_texts.push("tickedByDefault=true");
           if (row.choice_media_display)
             add_texts.push("choiceMediaDisplay=" + row.choice_media_display);
+          
+          let choiceMediaUrls: string[] = [];
+          let hasMediaUrls = false;
+          for (var i = 1; i < 10; i++) {
+            if (row["choice_" + i + "_media"]) {
+              hasMediaUrls = true;
+            }
+            choiceMediaUrls.push(row["choice_" + i + "_media"]);
+          }
+          if (hasMediaUrls) {
+            add_texts.push("choiceMediaUrls=" + encodeURIComponent(JSON.stringify(choiceMediaUrls)));
+          }
           if (add_texts.length > 0) action_text += " " + link_text + add_texts.join("&");
           actionNode.actions.push({
             attachments: this.getMediaAttachments(row.media),

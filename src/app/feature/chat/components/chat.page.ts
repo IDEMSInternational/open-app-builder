@@ -248,7 +248,14 @@ export class ChatPage {
     if (customAction) {
       this.doCustomResponseAction(option.customAction);
     }
-    this.onNewMessage({ text, sender: "user" });
+    let newMsg: ChatMessage = { text, sender: "user" };
+    if (option.hideText) {
+      newMsg.hideText = true;
+    }
+    if (option.imageUrl) {
+      newMsg.innerImageUrl = option.imageUrl;
+    }
+    this.onNewMessage(newMsg);
     this.chatService.sendMessage({ text, sender: "user" });
     this.messagesSent += 1;
   }
