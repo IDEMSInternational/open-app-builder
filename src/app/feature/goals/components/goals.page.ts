@@ -13,24 +13,26 @@ export class GoalsPage implements OnInit {
   dataLoaded = false;
   constructor(private modalController: ModalController, public tasksService: TasksService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.openRewardModal("elder-waving")
+  }
 
   trackById(index: number, item: { id: string; [key: string]: any }) {
     return item.id;
   }
 
-  // async openRewardModal(id: string) {
-  //   const modal = await this.modalController.create({
-  //     cssClass: "anim-slide-up-modal",
-  //     component: AnimModalComponent,
-  //     componentProps: {
-  //       id,
-  //       title: "Congratulations!",
-  //       autoCloseMs: 4000,
-  //     },
-  //   });
-  //   modal.present();
-  // }
+  async openRewardModal(id: string) {
+    const modal = await this.modalController.create({
+      cssClass: "anim-slide-up-modal",
+      component: AnimModalComponent,
+      componentProps: {
+        id,
+        title: "Congratulations!",
+        autoCloseMs: 30000,
+      },
+    });
+    modal.present();
+  }
 }
 
 /*
