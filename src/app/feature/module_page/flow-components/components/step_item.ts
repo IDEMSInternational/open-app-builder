@@ -33,9 +33,9 @@ export class StepItemFlowComponent implements OnInit {
    * Note - we are not bubbling up output events as there is a lot of nesting levels to go through
    * and harder to use with dynamic injected components
    */
-  handleItemClicked() {
+  async handleItemClicked() {
     if (this.row.task_id) {
-      this.taskService.runTask(this.row.task_id);
+      await this.taskService.startTask(this.row.task_id);
     }
   }
 }
