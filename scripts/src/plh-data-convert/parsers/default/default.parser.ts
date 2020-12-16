@@ -31,7 +31,8 @@ export class DefaultParser implements AbstractParser {
       const processed = this.processRow(row, flow);
       // some rows may be omitted during processing so ignore
       if (processed) {
-        processedRows.push(processed);
+        const postProcessed = this.postProcess(processed);
+        processedRows.push(postProcessed);
       }
       this.queue.shift();
     }
@@ -41,6 +42,11 @@ export class DefaultParser implements AbstractParser {
     }
 
     return { ...flow, rows: processedRows };
+  }
+
+  /** If extending the class add additional postprocess pipeline here */
+  public postProcess(row: any) {
+    return row;
   }
 
   /** Handle a single row */

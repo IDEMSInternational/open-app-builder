@@ -3,12 +3,13 @@ import { AnimationOptions } from "ngx-lottie";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ChatMessage, ChatResponseOption, ResponseCustomAction, IChatService } from "../models";
 import { Subscription } from "rxjs";
-import { ModalController } from "@ionic/angular";
+import { AlertController, ModalController } from "@ionic/angular";
 import { Capacitor } from "@capacitor/core";
 import { ChatActionService } from "../services/common/chat-action.service";
 import { FlowStatusChange, OfflineChatService } from "../services/offline/offline-chat.service";
 import { OnlineChatService } from "../services/online/online-chat.service";
 import { SettingsService } from "src/app/pages/settings/settings.service";
+import { ContactFieldService } from "../services/offline/contact-field.service";
 
 @Component({
   selector: "app-chat",
@@ -66,7 +67,9 @@ export class ChatPage {
     private settingsService: SettingsService,
     private offlineChatService: OfflineChatService,
     private onlineChatService: OnlineChatService,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public alertController: AlertController,
+    private contactFieldService: ContactFieldService
   ) {}
 
   /** Initialise chat configuration on page enter */
@@ -107,6 +110,24 @@ export class ChatPage {
     console.log(`%cUsing ${this.chatService.type} chat `, "color: #9c9c9c");
   }
 
+  private async showCustomInputAlert() {
+    const alert = await this.alertController.create({
+      header: this.lastReceivedMsg.text,
+      inputs: [
+        {
+          type: "text"
+        }
+      ],
+      buttons: [{
+        text: 'Submit',
+        handler: (value) => {
+          this.sendCustomOption(value[0]);
+        }
+      }]
+    });
+    await alert.present();
+  }
+
   /** The chat page can sometimes be displayed in a modal. Check if it is, and assign variable to handle close button display */
   private checkIsModal() {
     this.modalCtrl.getTop().then((isModal) => (this.isModal = isModal ? true : false));
@@ -133,7 +154,6 @@ export class ChatPage {
       this.messageSubscription = this.chatService.messages$.subscribe((messages) => {
         if (messages.length > 0) {
           const latestMessage = messages[messages.length - 1];
-          console.log("message received", latestMessage);
           if (latestMessage.actions && latestMessage.actions.length > 0) {
             for (let action of latestMessage.actions) {
               this.chatActionService.executeChatAction(action);
@@ -151,10 +171,16 @@ export class ChatPage {
     this.messageSubscription.unsubscribe();
   }
 
-  private onNewMessage(message: ChatMessage) {
-    console.log("Got to the bit where I do something with the messages!", message);
+  private async onNewMessage(message: ChatMessage) {
+    console.log("new Message", message);
     message.dateReceived = new Date();
     this.lastReceivedMsg = message;
+    if (message.character && message.character.toLowerCase().indexOf("guide") > -1) {
+      let guideId = await this.contactFieldService.getContactField("guidenumber");
+      if (guideId) {
+        message.character = guideId as any;
+      }
+    }
     if (message.isStory) {
       this.chatViewType = "story";
     } else {
@@ -169,6 +195,9 @@ export class ChatPage {
     }
     if (message.sender === "bot") {
       this.responseOptions = message.responseOptions ? message.responseOptions : [];
+      if (message.showTextInput) {
+        this.showCustomInputAlert();
+      }
     } else {
       this.responseOptions = [];
     }
@@ -219,7 +248,14 @@ export class ChatPage {
     if (customAction) {
       this.doCustomResponseAction(option.customAction);
     }
-    this.onNewMessage({ text, sender: "user" });
+    let newMsg: ChatMessage = { text, sender: "user" };
+    if (option.hideText) {
+      newMsg.hideText = true;
+    }
+    if (option.imageUrl) {
+      newMsg.innerImageUrl = option.imageUrl;
+    }
+    this.onNewMessage(newMsg);
     this.chatService.sendMessage({ text, sender: "user" });
     this.messagesSent += 1;
   }

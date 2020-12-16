@@ -1,19 +1,14 @@
-<ion-content>
-  <!-- Render the skin for the current module -->
-  <div *ngIf="dataLoaded; else elseBlock" class="container-full">
-    <div [ngSwitch]="appSkin" class="container-full">
-      <plh-module-focus-skin
-        *ngSwitchCase="'MODULE_FOCUS_SKIN'"
-        [moduleListRow]="moduleListRow"
-      ></plh-module-focus-skin>
-      <!-- If the specified skin does not exist show an error -->
-      <div *ngSwitchDefault class="content-error">
-        <span class="content-error-variable">{{appSkin}}</span>
-        <span class="content-error-message">not defined</span>
-      </div>
+<!-- Render the skin for the current module -->
+<div *ngIf="dataLoaded; else elseBlock" class="flex-column-container">
+  <div [ngSwitch]="appSkin" class="flex-column-container">
+    <plh-module-focus-skin *ngSwitchCase="'MODULE_FOCUS_SKIN'" [moduleListRow]="moduleListRow"></plh-module-focus-skin>
+    <!-- If the specified skin does not exist show an error -->
+    <div *ngSwitchDefault class="content-error">
+      <span class="content-error-variable">{{appSkin}}</span>
+      <span class="content-error-message">not defined</span>
     </div>
   </div>
-  <ng-template #elseBlock>
-    <!-- Loading Module -->
-  </ng-template>
-</ion-content>
+</div>
+<ng-template #elseBlock>
+  <!-- Loading Module -->
+</ng-template>

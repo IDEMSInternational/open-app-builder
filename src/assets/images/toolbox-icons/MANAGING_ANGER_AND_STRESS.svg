@@ -1,6 +1,3 @@
-<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="15" cy="15" r="14" stroke="white" stroke-width="2"/>
-<path d="M22 20C22 20 15.7 13.25 8 20" stroke="white" stroke-width="2"/>
-<circle cx="10.5" cy="11.5" r="1.5" transform="rotate(-180 10.5 11.5)" fill="white"/>
-<circle cx="19.5" cy="11.5" r="1.5" transform="rotate(-180 19.5 11.5)" fill="white"/>
-</svg>
+version https://git-lfs.github.com/spec/v1
+oid sha256:120127d91855fd57ac682bdcc1535673653aaa0cf25c53e9a700b12147752d93
+size 413

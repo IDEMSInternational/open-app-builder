@@ -9,12 +9,17 @@ const FeatureRoutes: Routes = [
     pathMatch: "full",
   },
   {
+    path: "home",
+    redirectTo: "module_list",
+    pathMatch: "full",
+  },
+  {
     path: "module_list",
     loadChildren: () =>
       import("./feature/module_list/module-list.module").then((m) => m.ModuleListModule),
   },
   {
-    path: "module_page/:flow_name",
+    path: "module_page",
     loadChildren: () =>
       import("./feature/module_page/module-page.module").then((m) => m.ModulePageModule),
   },
@@ -24,12 +29,13 @@ const FeatureRoutes: Routes = [
       import("./feature/take-a-pause/take-a-pause.module").then((m) => m.TakeAPausePageModule),
   },
   {
-    path: "chat",
+    path: "conversation",
     loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
   },
+
   {
-    path: "toolbox",
-    loadChildren: () => import("./feature/toolbox/toolbox.module").then((m) => m.ToolboxPageModule),
+    path: "tips",
+    loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
   },
   {
     path: "goals",
@@ -38,6 +44,18 @@ const FeatureRoutes: Routes = [
   {
     path: "theme-editor",
     component: ThemeEditorComponent,
+  },
+  /*****************************************************************************************
+   * Legacy paths - these should be removed in the future once modules refactored
+   * (duplicated above via 'conversation' and 'tips' flow type handlers)
+   ****************************************************************************************/
+  {
+    path: "chat",
+    loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
+  },
+  {
+    path: "toolbox/topic/:topicId",
+    loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
   },
 ];
 

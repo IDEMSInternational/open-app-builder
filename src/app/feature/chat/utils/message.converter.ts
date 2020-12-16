@@ -19,6 +19,15 @@ export type URLParts = {
   fragment?: string;
 };
 
+// Navigate to any part of the app
+// http://plh-demo1.idems.international/module_list
+
+// Carry out a custom chat action
+// http://plh-demo1.idems.international/chat/action/UNLOCK_TOOLBOX?topic=mod_1on1
+
+// Add custom chat message fields
+// http://plh-demo1.idems.international/chat/msg-info?isStory=true
+
 export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<ChatMessage> {
   let quickReplies: string[] = [];
   if (Array.isArray(rpMsg.quick_replies)) {
@@ -36,7 +45,9 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
   let attachments = await convertRapidProAttachments(attachmentStrings);
   let text = removeHiddenURLs(rpMsg.message, urlPartsList);
   let actions = getActionsFromURLS(urlPartsList);
-  let responseOptions = await Promise.all(quickReplies.map(convertQuickReply));
+  let responseOptions: ChatResponseOption[] = quickReplies.map((qrText) => ({ 
+    text: qrText
+  }));
   let msg: ChatMessage = {
     text: text,
     sender: "bot",
@@ -46,6 +57,12 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
     actions: actions,
   };
   msg = applyCustomMessageInfo(urlPartsList, msg);
+  if (msg.choiceMediaUrls) {
+    msg.responseOptions.forEach((option, idx) => {
+      option.imageUrl = 'assets/plh_assets/' + msg.choiceMediaUrls[idx];
+      option.hideText = msg.choiceMediaDisplay === "media";
+    })
+  }
   return msg;
 }
 
@@ -80,7 +97,7 @@ export function applyCustomMessageInfo(urlPartsList: URLParts[], msg: ChatMessag
     const qParams: Object = queryStringToObject(msgInfoUrlParts.query);
     for (let customField of appCustomFields) {
       if (qParams.hasOwnProperty(customField.key)) {
-        const value = qParams[customField.key];
+        const value = decodeURIComponent(qParams[customField.key]);
         switch (customField.type) {
           case "boolean":
             msg[customField.key as string] = value === "true";
@@ -90,6 +107,10 @@ export function applyCustomMessageInfo(urlPartsList: URLParts[], msg: ChatMessag
             break;
           case "integer":
             msg[customField.key as string] = Number.parseInt(value);
+            break;
+          case "array":
+          case "object":
+            msg[customField.key as string] = JSON.parse(value);
             break;
           default:
             msg[customField.key as string] = value;
@@ -204,9 +225,11 @@ export async function convertRapidProAttachments(attachments: string[]): Promise
   }
   return Promise.all(
     attachments.map(async (attachmentString) => {
+      console.log("attachmentString", attachmentString);
       let regex = /(?<type>[a-z]*)[\/]?[a-z+]*:(?<url>.*)/gm;
       let results = regex.exec(attachmentString);
       let type = "other";
+      console.log("results", results);
       switch (results.groups.type) {
         case "image":
           type = "image";
@@ -223,22 +246,30 @@ export async function convertRapidProAttachments(attachments: string[]): Promise
       let url = results.groups.url;
       let urlRegex = /http[s]?:\/\/(?<domain>[a-zA-Z0-9\.\-\_]*)\/(?<path>[\S]*)/;
       let urlRegexResult = urlRegex.exec(url);
-      let domain = urlRegexResult.groups["domain"];
-      let path = urlRegexResult.groups["path"];
-      if (environment.domains.indexOf(domain) > -1) {
-        try {
-          let response = await fetch(path, { method: "HEAD" });
-          if (response.status === 200) {
-            url = path;
-          }
-        } catch (ex) {
-          console.log("HEAD request excetpion ", ex);
-        }
+      // Handle local asset
+      if (!urlRegexResult) {
+        url = `assets/plh_assets/${url}`;
+        return { type, url };
       }
-      return {
-        type: type as any,
-        url: url,
-      };
+      // Handle web asset
+      if (urlRegexResult.groups) {
+        let domain = urlRegexResult.groups["domain"];
+        let path = urlRegexResult.groups["path"];
+        if (environment.domains.includes(domain)) {
+          try {
+            let response = await fetch(path, { method: "HEAD" });
+            if (response.status === 200) {
+              url = path;
+            }
+          } catch (ex) {
+            console.log("HEAD request excetpion ", ex);
+          }
+        }
+        return {
+          type: type as any,
+          url: url,
+        };
+      }
     })
   );
 }

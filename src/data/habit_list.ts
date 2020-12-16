@@ -12,7 +12,8 @@
         "description": "Doing a relaxing activity",
         "task_id": "task_relax",
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_relax_icon.svg",
-        "main_image_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "main_image_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg",
+        "launch_task": "calm_1"
       },
       {
         "id": "habit_treat_yourself",
@@ -23,12 +24,12 @@
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself_image.svg"
       },
       {
-        "id": "habit_praise_teen",
-        "title": "Praise your teen",
-        "description": "Praising their teen when they did positive thing",
-        "task_id": "task_praise_teen",
-        "icon_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg",
-        "main_image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen_image.svg"
+        "id": "habit_praise_yourself",
+        "title": "Praise yourself",
+        "description": "Praising yourself",
+        "task_id": "task_praise_yourself",
+        "icon_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself_icon.svg",
+        "main_image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself_image.svg"
       },
       {
         "id": "habit_spend_time",
@@ -37,6 +38,14 @@
         "task_id": "task_spend_time",
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time_image.svg"
+      },
+      {
+        "id": "habit_praise_teen",
+        "title": "Praise your teen",
+        "description": "Praising their teen when they did positive thing",
+        "task_id": "task_praise_teen",
+        "icon_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg",
+        "main_image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen_image.svg"
       },
       {
         "id": "habit_breathe",

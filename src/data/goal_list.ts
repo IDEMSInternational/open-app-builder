@@ -115,6 +115,7 @@
         "id": "goal_open_app_level_1",
         "label": "Turning up",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -125,6 +126,7 @@
         "id": "goal_open_app_level_2",
         "label": "Turning up",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
@@ -138,6 +140,7 @@
         "id": "goal_relax_level_1",
         "label": "Relax",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -149,6 +152,7 @@
         "id": "goal_relax_level_2",
         "label": "Relax",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
@@ -161,8 +165,36 @@
       },
       {
         "id": "goal_treat_yourself_level_1",
+        "label": "Praise yourself",
+        "groups_list": [
+          "hidden",
+          "level_1"
+        ],
+        "completion_id_list": [
+          "completion_praise_yourself_level_1"
+        ],
+        "completion_tasks": "task_praise_yourself_level_1_completed_goal"
+      },
+      {
+        "id": "goal_treat_yourself_level_2",
+        "label": "Praise yourself",
+        "groups_list": [
+          "hidden",
+          "level_2"
+        ],
+        "requires_list": [
+          "goal_praise_yourself_level_1"
+        ],
+        "completion_id_list": [
+          "completion_praise_yourself_level_2"
+        ],
+        "completion_tasks": "task_praise_yourself_level_2_completed_goal"
+      },
+      {
+        "id": "goal_praise_yourself_level_1",
         "label": "Treat yourself well",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -171,9 +203,10 @@
         "completion_tasks": "task_treat_yourself_level_1_completed_goal"
       },
       {
-        "id": "goal_treat_yourself_level_2",
+        "id": "goal_praise_yourself_level_2",
         "label": "Treat yourself well",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
@@ -188,6 +221,7 @@
         "id": "goal_spend_time_level_1",
         "label": "One on one time",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -199,6 +233,7 @@
         "id": "goal_spend_time_level_2",
         "label": "One on one time",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
@@ -213,6 +248,7 @@
         "id": "goal_praise_teen_level_1",
         "label": "Praise your teen",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -224,6 +260,7 @@
         "id": "goal_praise_teen_level_2",
         "label": "Praise your teen",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
@@ -238,6 +275,7 @@
         "id": "goal_breathe_level_1",
         "label": "Breathe not yell",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -249,6 +287,7 @@
         "id": "goal_breathe_level_2",
         "label": "Breathe not yell",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
@@ -263,6 +302,7 @@
         "id": "goal_money_level_1",
         "label": "Good money choice",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -274,6 +314,7 @@
         "id": "goal_money_level_2",
         "label": "Good money choice",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
@@ -288,6 +329,7 @@
         "id": "goal_consequence_level_1",
         "label": "Calm consequence",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -299,6 +341,7 @@
         "id": "goal_consequence_level_2",
         "label": "Calm consequence",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
@@ -313,6 +356,7 @@
         "id": "goal_safe_level_1",
         "label": "Safe",
         "groups_list": [
+          "hidden",
           "level_1"
         ],
         "completion_id_list": [
@@ -324,6 +368,7 @@
         "id": "goal_safe_level_2",
         "label": "Safe",
         "groups_list": [
+          "hidden",
           "level_2"
         ],
         "requires_list": [
