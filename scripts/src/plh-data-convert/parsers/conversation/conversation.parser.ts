@@ -103,7 +103,11 @@ export class ConversationParser implements AbstractParser {
           if (row.character) add_texts.push("character=" + row.character);
           if (row.choose_multi) add_texts.push("chooseMulti=true");
           if (row.display_as_tick) add_texts.push("displayAsTick=true");
-          if (row.ticked_by_default) add_texts.push("tickedByDefault=true");
+          if (row.ticked_by_default + "" === "false") {
+            add_texts.push("tickedByDefault=false");
+          } else if (row.display_as_tick) {
+            add_texts.push("tickedByDefault=true");
+          }
           if (row.choice_media_display)
             add_texts.push("choiceMediaDisplay=" + row.choice_media_display);
           
