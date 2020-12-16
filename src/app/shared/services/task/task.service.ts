@@ -92,7 +92,7 @@ export class TaskService {
     if (!flow_name || !flow_type) {
       throw new Error("flow type or name not specified");
     }
-    this.router.navigate([flow_type, "flow", flow_name]);
+    this.router.navigate([flow_type, flow_name]);
   }
 
   private async handleGiveAwardAction(task: FlowTypes.Task_listRow) {
