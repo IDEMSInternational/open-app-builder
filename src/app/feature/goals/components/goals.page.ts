@@ -21,7 +21,7 @@ export class GoalsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.openRewardModal("elder-waving")
+    this.openRewardModal("neighbour-jumping")
   }
 
   trackById(index: number, item: { id: string; [key: string]: any }) {
