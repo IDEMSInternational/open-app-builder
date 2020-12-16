@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
     if (!this.localStorageService.getBoolean(LocalStorageService.OPENED_APP_BEFORE)) {
       this.localStorageService.setBoolean(LocalStorageService.OPENED_APP_BEFORE, true);
-      this.router.navigateByUrl("/chat/flow/first_app_opening");
+      this.router.navigateByUrl("/conversation/first_app_opening");
     }
   }
 

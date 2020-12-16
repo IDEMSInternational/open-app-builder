@@ -1,0 +1,22 @@
+<ion-content class="background-primary-lighter">
+  <div *ngIf="tip" class="tb-section">
+    <div *ngFor="let el of tip.rows">
+      <h1 *ngIf="el.type==='title'">{{el.message_text}}</h1>
+      <p *ngIf="el.type==='text'">{{el.message_text}}</p>
+      <div *ngIf="el.type === 'core_tip'" class="tb-element core-tip">
+        <h1>💡</h1>
+        <span style="margin-left: 8px">{{el.message_text}}</span>
+      </div>
+      <div *ngIf="el.type === 'list_group'" class="tb-element text">
+        <div *ngFor="let groupEl of el.rows; index as i">
+          <p *ngIf="groupEl.type==='list_intro'">{{groupEl.message_text}}</p>
+          <details *ngIf="groupEl.type==='list_item'" class="list_item">
+            <summary>{{groupEl.message_text}}</summary>
+            <p *ngIf="el.rows[i+1] && el.rows[i+1].type==='text'">{{el.rows[i+1].message_text}}</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- "title" | "text" | "list_intro" | "core_tip" | "list_item" | "list_group"; -->

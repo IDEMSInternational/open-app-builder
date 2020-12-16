@@ -10,7 +10,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_welcome/image.svg"
       },
       {
         "row_id": 2,
@@ -20,7 +20,7 @@
       {
         "row_id": 3,
         "type": "description",
-        "text": "Looking after yourself is essential for parenting."
+        "text": "This week is about YOU. Looking after yourself is essential for parenting."
       },
       {
         "type": "step_group",
@@ -67,7 +67,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_1on1/image.svg"
       },
       {
         "row_id": 2,
@@ -142,7 +142,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_praise/image.svg"
       },
       {
         "row_id": 2,
@@ -211,7 +211,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_instructions/image.svg"
       },
       {
         "row_id": 2,
@@ -286,7 +286,7 @@
       {
         "row_id": 1,
         "type": "main_image",
-        "media": "hyperlink to image"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_1on1/image.svg"
       },
       {
         "row_id": 2,

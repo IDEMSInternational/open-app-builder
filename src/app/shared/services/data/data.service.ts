@@ -1,3 +1,4 @@
+import { Injectable } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 
 import { completion_list } from "src/data/completion_list";
@@ -21,7 +22,7 @@ export const TASK_LIST = task_list;
 export const TIPS = tips;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
-const mapping: { [key in FlowTypes.FlowType]: any } = {
+const mapping: { [key in FlowTypes.FlowType] } = {
   completion_list: COMPLETION_LIST,
   conversation: CONVERSATION,
   goal_list: GOAL_LIST,
@@ -35,11 +36,42 @@ const mapping: { [key in FlowTypes.FlowType]: any } = {
 
 /**
  * The data service has been through a couple iterations, currently the
- * only purpose it serves is re-exporting data from the data folder,
- * but could be enhanced in the future.
- *
- * It is still preferable to import data from this service as opposed to
- * the data file folder, as we could use the service to also update
- * the data that is exported dynamically
- * (e.g. after loading from server json or alternate locations)
+ * main purpose is to re-export data from the data folder, but also has
+ * a more general lookup which is used by task actions
  */
+
+@Injectable({ providedIn: "root" })
+export class PLHDataService {
+  private allFlowsByName: { [flow_name: string]: any };
+  constructor() {
+    this.allFlowsByName = this.listAllFlowsByName();
+  }
+
+  getFlowByName<T>(flow_name: string) {
+    return this.allFlowsByName[flow_name] as T;
+  }
+
+  /** Simple function to create a hashmap of all flows by name */
+  private listAllFlowsByName() {
+    const flowsByName: { [flow_name: string]: any } = {};
+    // Handle default flows
+    const flowTypes = Object.values(mapping) as FlowTypes.FlowTypeBase[][];
+    console.log("mapping flowTypes", flowTypes);
+    flowTypes.forEach((flows) => {
+      flows.forEach((flow) => {
+        if (flow.flow_name) {
+          flowsByName[flow.flow_name] = flow;
+        }
+      });
+    });
+    // Handle conversation flows
+    CONVERSATION.forEach((c) => {
+      c.flows.forEach((flow) => {
+        const flow_name = flow.name;
+        flowsByName[flow_name] = flow;
+      });
+    });
+
+    return flowsByName;
+  }
+}

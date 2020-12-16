@@ -1,11 +1,10 @@
 <div *ngIf="!useModal" class="response-options">
-  <div
-    *ngFor="let option of responseOptions"
-    class="response-option"
-    [ngClass]="{'large': option.text.length < 2}"
-    (click)="selectResponseOption(option)"
-  >
+  <div *ngIf="message.displayAsTick" class="checkbox" [ngClass]="{'ticked': ticked}" (click)="ticked = !ticked">
+    <ion-icon *ngIf="ticked" name="checkmark-outline"></ion-icon>
+  </div>
+  <div *ngFor="let option of getResponseOptions()" class="response-option"
+    (click)="selectResponseOption(option)">
     <img *ngIf="option.imageUrl" [src]="option.imageUrl" />
-    <span>{{option.text}}</span>
+    <span *ngIf="!option.hideText">{{option.text}}</span>
   </div>
 </div>

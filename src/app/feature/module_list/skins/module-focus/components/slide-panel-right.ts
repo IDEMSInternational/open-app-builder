@@ -4,7 +4,6 @@ import { Component, Input } from "@angular/core";
   selector: "plh-slide-panel-right",
   template: `
     <section class="main-container" [class.expanded]="expanded" (click)="toggleExpand()">
-      <div class="background-overlay"></div>
       <h3 class="panel-header">{{ headerText }}</h3>
       <div class="content">
         <ng-content></ng-content>
@@ -18,16 +17,8 @@ import { Component, Input } from "@angular/core";
         --plh-header-height: 50px;
         --plh-panel-width: 90vw;
       }
-      .background-overlay {
-        position: relative;
-        background: var(--ion-color-primary);
-        filter: brightness(3.5) opacity(0.2);
-        top: 0;
-        left: 0;
-      }
 
-      .main-container,
-      .background-overlay {
+      .main-container {
         z-index: 2;
         right: calc(var(--plh-panel-width) * -1 + var(--plh-header-height));
         margin: auto;
@@ -36,7 +27,7 @@ import { Component, Input } from "@angular/core";
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         border-width: 1px;
-        transition: right 0.3s linear;
+        transition: right 0.3s ease-out;
       }
       .main-container {
         position: absolute;
@@ -47,8 +38,7 @@ import { Component, Input } from "@angular/core";
         top: 50%;
         bottom: 50%;
       }
-      .main-container.expanded,
-      .background-overlay.expanded {
+      .main-container.expanded {
         right: 0;
       }
       .content {

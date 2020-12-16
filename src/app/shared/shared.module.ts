@@ -6,7 +6,6 @@ import { ReflectAnimationComponent } from "./components/reflect-animation/reflec
 import { IonicModule } from "@ionic/angular";
 import { StressedMultiHandAnimComponent } from "./components/stressed-multi-hand-anim/stressed-multi-hand-anim.component";
 import { PLHMainHeaderComponent } from "./components/plh-main-header";
-import { PLHSubHeaderComponent } from "./components/plh-sub-header";
 import { PLHMainTabsComponent } from "./components/plh-main-tabs";
 import { RouterModule } from "@angular/router";
 
@@ -16,7 +15,6 @@ const Components = [
   ReflectAnimationComponent,
   StressedMultiHandAnimComponent,
   PLHMainHeaderComponent,
-  PLHSubHeaderComponent,
   PLHMainTabsComponent,
 ];
 

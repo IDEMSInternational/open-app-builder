@@ -15,9 +15,11 @@ export namespace RapidProFlowExport {
     addresses?: string[];
     subject?: string;
     attachments?: string[];
-    field?: { key: string; name: string };
+    field?: { key?: string; name?: string };
     value?: string;
-    flow?: { uuid: string; name: string };
+    // This used to go to another flow. Rapid Pro uses flow unique id (uuid) to pick which flow to go to
+    // The IDEMS version uses name which we assume to be unique
+    flow?: { uuid?: string; name: string };
     name?: string;
   }
 
