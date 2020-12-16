@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { differenceInCalendarDays } from "date-fns";
-import { generateRandomId } from "src/app/shared/utils";
 import { ITask, ITaskWithMeta } from "../../models/goals.model";
-import { TaskActionsService } from "../../services/task-actions.service";
 
 @Component({
   selector: "plh-task-reminder-item",
@@ -34,7 +32,7 @@ export class TaskReminderItemComponent {
     this.isComplete = this.evaluateTaskComplete(task);
   }
   @Output() onTaskClick: EventEmitter<ITask> = new EventEmitter();
-  constructor(private taskActions: TaskActionsService) {}
+  constructor() {}
 
   /**
    * A task should be marked as complete if either it has already satisfied goal completion criteria

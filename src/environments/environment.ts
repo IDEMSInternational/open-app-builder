@@ -2,6 +2,7 @@ import { firebaseConfig } from "./firebaseConfig";
 import { version } from "../../package.json";
 
 export const environment = {
+  /** App version, as provided by package.json */
   version,
   production: false,
   rapidPro: {
@@ -13,7 +14,7 @@ export const environment = {
   firebaseConfig,
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
-  variableNameFlows: ["character_names"]
+  variableNameFlows: ["character_names"],
 };
 
 // This file can be replaced during build by using the `fileReplacements` array.

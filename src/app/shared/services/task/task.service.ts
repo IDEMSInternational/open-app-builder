@@ -2,16 +2,17 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "../../model";
-import { PLHDataService, TASK_LIST } from "../data/data.service";
+import { TASK_LIST } from "../data/data.service";
+import { TaskActionService } from "./task-action.service";
 
 @Injectable({ providedIn: "root" })
 export class TaskService {
   allTasksById: Hashmap<FlowTypes.Task_listRow> = {};
 
   constructor(
-    private plhDataService: PLHDataService,
     private modalCtrl: ModalController,
-    private router: Router
+    private router: Router,
+    private taskActions: TaskActionService
   ) {
     console.log("task service", this.modalCtrl);
     this.processTaskList();
@@ -26,7 +27,8 @@ export class TaskService {
    * When running a task we want to trigger any required actions,
    * and add listeners to handle any completion events
    */
-  runTask(task_id: string) {
+  async startTask(task_id: string) {
+    await this.taskActions.recordTaskAction(task_id, "started");
     const task = this.allTasksById[task_id];
     if (!task) {
       throw new Error(`task not found: ${task_id}`);

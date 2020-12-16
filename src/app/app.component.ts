@@ -8,6 +8,7 @@ import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { SurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
+import { TaskActionService } from "./shared/services/task/task-action.service";
 
 @Component({
   selector: "app-root",
@@ -24,7 +25,9 @@ export class AppComponent {
     private notifications: NotificationService,
     private dbService: DbService,
     private themeService: ThemeService,
-    private surveyService: SurveyService
+    private surveyService: SurveyService,
+    /** Inject in the main app component to start tracking actions immediately */
+    public taskActions: TaskActionService
   ) {
     this.initializeApp();
   }
