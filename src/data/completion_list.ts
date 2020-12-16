@@ -168,166 +168,101 @@
         "repeat_count": 10
       },
       {
-        "id": "completion_relax_level_1",
+        "id": "completion_relax_custom",
         "task_id": "task_relax",
-        "repeat_count": 2
+        "repeat_count": 3
       },
       {
-        "id": "completion_relax_level_2",
-        "task_id": "task_relax",
-        "repeat_count": 5
+        "id": "completion_relax_custom_completed_goal",
+        "task_id": "task_relax_custom_completed_goal"
       },
       {
-        "id": "completion_relax_level_1_completed_goal",
-        "task_id": "task_relax_level_1_completed_goal"
-      },
-      {
-        "id": "completion_relax_level_2_completed_goal",
-        "task_id": "task_relax_level_2_completed_goal"
-      },
-      {
-        "id": "completion_treat_yourself_level_1",
+        "id": "completion_treat_yourself_custom",
         "task_id": "task_treat_yourself",
         "repeat_count": 1
       },
       {
-        "id": "completion_treat_yourself_level_2",
-        "task_id": "task_treat_yourself",
-        "repeat_count": 3
+        "id": "completion_treat_yourself_custom_completed_goal",
+        "task_id": "task_treat_yourself_custom_completed_goal"
       },
       {
-        "id": "completion_treat_yourself_level_1_completed_goal",
-        "task_id": "task_treat_yourself_level_1_completed_goal"
-      },
-      {
-        "id": "completion_treat_yourself_level_2_completed_goal",
-        "task_id": "task_treat_yourself_level_2_completed_goal"
-      },
-      {
-        "id": "completion_praise_yourself_level_1",
+        "id": "completion_praise_yourself_custom",
         "task_id": "task_praise_yourself",
         "repeat_count": 2
       },
       {
-        "id": "completion_praise_yourself_level_2",
-        "task_id": "task_praise_yourself",
-        "repeat_count": 5
+        "id": "completion_praise_yourself_custom_completed_goal",
+        "task_id": "task_praise_yourself_custom_completed_goal"
       },
       {
-        "id": "completion_praise_yourself_level_1_completed_goal",
-        "task_id": "task_praise_yourself_level_1_completed_goal"
-      },
-      {
-        "id": "completion_praise_yourself_level_2_completed_goal",
-        "task_id": "task_praise_yourself_level_2_completed_goal"
-      },
-      {
-        "id": "completion_spend_time_level_1",
+        "id": "completion_spend_time_custom",
         "task_id": "task_spend_time",
         "repeat_count": 2
       },
       {
-        "id": "completion_spend_time_level_2",
-        "task_id": "task_spend_time",
-        "repeat_count": 5
+        "id": "completion_spend_time_custom_completed_goal",
+        "task_id": "task_spend_time_custom_completed_goal"
       },
       {
-        "id": "completion_spend_time_level_1_completed_goal",
-        "task_id": "task_spend_time_level_1_completed_goal"
-      },
-      {
-        "id": "completion_spend_time_level_2_completed_goal",
-        "task_id": "task_spend_time_level_2_completed_goal"
-      },
-      {
-        "id": "completion_praise_teen_level_1",
+        "id": "completion_praise_teen_custom",
         "task_id": "task_praise_teen",
         "repeat_count": 2
       },
       {
-        "id": "completion_praise_teen_level_2",
-        "task_id": "task_praise_teen",
-        "repeat_count": 5
+        "id": "completion_praise_teen_custom_completed_goal",
+        "task_id": "task_praise_teen_custom_completed_goal"
       },
       {
-        "id": "completion_praise_teen_level_1_completed_goal",
-        "task_id": "task_praise_teen_level_1_completed_goal"
-      },
-      {
-        "id": "completion_praise_teen_level_2_completed_goal",
-        "task_id": "task_praise_teen_level_2_completed_goal"
-      },
-      {
-        "id": "completion_breathe_level_1",
+        "id": "completion_breathe_custom",
         "task_id": "task_breathe",
         "repeat_count": 2
       },
       {
-        "id": "completion_breathe_level_2",
-        "task_id": "task_breathe",
-        "repeat_count": 5
+        "id": "completion_breathe_custom_completed_goal",
+        "task_id": "task_breathe_custom_completed_goal"
       },
       {
-        "id": "completion_breathe_level_1_completed_goal",
-        "task_id": "task_breathe_level_1_completed_goal"
-      },
-      {
-        "id": "completion_breathe_level_2_completed_goal",
-        "task_id": "task_breathe_level_2_completed_goal"
-      },
-      {
-        "id": "completion_money_level_1",
+        "id": "completion_money_custom",
         "task_id": "task_money",
         "repeat_count": 1
       },
       {
-        "id": "completion_money_level_2",
-        "task_id": "task_money",
-        "repeat_count": 3
+        "id": "completion_money_custom_completed_goal",
+        "task_id": "task_money_custom_completed_goal"
       },
       {
-        "id": "completion_money_level_1_completed_goal",
-        "task_id": "task_money_level_1_completed_goal"
-      },
-      {
-        "id": "completion_money_level_2_completed_goal",
-        "task_id": "task_money_level_2_completed_goal"
-      },
-      {
-        "id": "completion_consequence_level_1",
+        "id": "completion_consequence_custom",
         "task_id": "task_consequence",
         "repeat_count": 2
       },
       {
-        "id": "completion_consequence_level_2",
-        "task_id": "task_consequence",
-        "repeat_count": 5
+        "id": "completion_consequence_custom_completed_goal",
+        "task_id": "task_consequence_custom_completed_goal"
       },
       {
-        "id": "completion_consequence_level_1_completed_goal",
-        "task_id": "task_consequence_level_1_completed_goal"
-      },
-      {
-        "id": "completion_consequence_level_2_completed_goal",
-        "task_id": "task_consequence_level_2_completed_goal"
-      },
-      {
-        "id": "completion_safe_level_1",
+        "id": "completion_safe_custom",
         "task_id": "task_safe",
         "repeat_count": 1
       },
       {
-        "id": "completion_safe_level_2",
-        "task_id": "task_safe",
-        "repeat_count": 3
+        "id": "completion_safe_custom_completed_goal",
+        "task_id": "task_safe_custom_completed_goal"
       },
       {
-        "id": "completion_safe_level_1_completed_goal",
-        "task_id": "task_safe_level_1_completed_goal"
+        "id": "completion_care_package_self_completed_goal",
+        "task_id": "task_care_package_self_completed_goal"
       },
       {
-        "id": "completion_safe_level_2_completed_goal",
-        "task_id": "task_safe_level_2_completed_goal"
+        "id": "completion_care_package_teen_completed_goal",
+        "task_id": "task_care_package_teen_completed_goal"
+      },
+      {
+        "id": "completion_care_package_behaviour_completed_goal",
+        "task_id": "task_care_package_behaviour_completed_goal"
+      },
+      {
+        "id": "completion_care_package_family_completed_goal",
+        "task_id": "task_care_package_family_completed_goal"
       }
     ]
   }
