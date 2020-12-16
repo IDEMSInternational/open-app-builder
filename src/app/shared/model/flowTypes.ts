@@ -141,7 +141,7 @@ export namespace FlowTypes {
   /** Format of conversation rows post processing */
   export interface ConversationRow {
     row_id?: string | number;
-    type: "start_new_flow" | "send_message" | "story_message" | "go_to" | "save_value" | "exit";
+    type: "start_new_flow" | "send_message" | "story_message" | "go_to" | "save_value" | "exit" | "mark_as_completed" | "split_random";
     from?: string | number;
     condition?: string | number;
     condition_var?: string;
