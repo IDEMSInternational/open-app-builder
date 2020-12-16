@@ -70,6 +70,7 @@
     *ngIf="lastReceivedMsg"
     [responseOptions]="lastReceivedMsg?.responseOptions"
     (onOptionSelect)="selectResponseOption($event)"
+    [message]="lastReceivedMsg"
   ></plh-chat-responses>
   <!-- <ion-button *ngIf="showFlowSkip" class="skip-button" (click)="skipFlow()">Skip</ion-button> -->
 </div>
