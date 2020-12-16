@@ -208,6 +208,9 @@ export class ChatPage {
     setTimeout(() => {
       this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
     }, scrollDelay);
+    setTimeout(() => {
+      this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+    }, 2000);
     this.cd.detectChanges();
   }
 
