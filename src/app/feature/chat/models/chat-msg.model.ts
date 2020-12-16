@@ -17,11 +17,19 @@ export interface ChatMessage {
   actions?: ChatAction[];
   responseOptions?: ChatResponseOption[];
   attachments?: ChatAttachment[];
+  hideText?: boolean;
+  innerImageUrl?: string;
+
+  showTextInput?: boolean;
 
   // Configurable by /chat/msg-info
   isStory?: boolean;
   character?: CharacterId;
-  choiceMediaDisplay?: boolean;
+  displayAsTick?: boolean;
+  tickedByDefault?: boolean;
+  chooseMulti?: boolean;
+  choiceMediaDisplay?: "media" | "text" | "both";
+  choiceMediaUrls?: string[];
 }
 
 export type CharacterId = "guide" | "neighbour";
@@ -29,7 +37,7 @@ export const characterIds = ["guide", "neighbour"];
 
 export const appCustomFields: {
   key: keyof ChatMessage;
-  type: "string" | "boolean" | "float" | "integer";
+  type: "string" | "boolean" | "float" | "integer" | "array" | "object";
 }[] = [
   {
     key: "character",
@@ -41,7 +49,19 @@ export const appCustomFields: {
   },
   {
     key: "choiceMediaDisplay",
+    type: "string"
+  },
+  {
+    key: "displayAsTick",
     type: "boolean"
+  },
+  {
+    key: "tickedByDefault",
+    type: "boolean"
+  },
+  {
+    key: "choiceMediaUrls",
+    type: "array"
   }
 ];
 
@@ -54,6 +74,7 @@ export interface ChatResponseOption {
   text: string;
   customAction?: ResponseCustomAction;
   imageUrl?: string;
+  hideText?: boolean;
 }
 
 export type ResponseCustomAction =

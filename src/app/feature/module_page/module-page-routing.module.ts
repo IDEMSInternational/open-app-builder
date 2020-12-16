@@ -5,7 +5,7 @@ import { ModulePageComponent } from "./module-page";
 
 const routes: Routes = [
   {
-    path: "",
+    path: ":flow_name",
     component: ModulePageComponent,
   },
 ];

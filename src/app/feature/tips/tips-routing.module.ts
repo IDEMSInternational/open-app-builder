@@ -4,7 +4,7 @@ import { TipsComponent } from "./tips";
 
 const routes: Routes = [
   {
-    path: "",
+    path: ":flow_name",
     component: TipsComponent,
   },
 ];

@@ -9,12 +9,17 @@ const FeatureRoutes: Routes = [
     pathMatch: "full",
   },
   {
+    path: "home",
+    redirectTo: "module_list",
+    pathMatch: "full",
+  },
+  {
     path: "module_list",
     loadChildren: () =>
       import("./feature/module_list/module-list.module").then((m) => m.ModuleListModule),
   },
   {
-    path: "module_page/:flow_name",
+    path: "module_page",
     loadChildren: () =>
       import("./feature/module_page/module-page.module").then((m) => m.ModulePageModule),
   },
@@ -29,7 +34,7 @@ const FeatureRoutes: Routes = [
   },
 
   {
-    path: "tips/flow/:flow_name",
+    path: "tips",
     loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
   },
   {
@@ -47,6 +52,10 @@ const FeatureRoutes: Routes = [
   {
     path: "chat",
     loadChildren: () => import("./feature/chat/chat.module").then((m) => m.ChatPageModule),
+  },
+  {
+    path: "toolbox/topic/:topicId",
+    loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
   },
 ];
 

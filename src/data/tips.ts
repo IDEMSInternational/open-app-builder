@@ -13,24 +13,15 @@
         "message_text": "One-on-One Time Tips"
       },
       {
-        "type": "text",
-        "message_text": "When we have difficult relationships with our teenagers, we spend a lot of time disciplining or complaining about them."
-      },
-      {
-        "type": "core_tip",
-        "message_text": "One-on-One Time helps build a positive, trusting relationship. When you really show interest in your teen, you make them feel valued and appreciated."
-      },
-      {
         "type": "list_group",
         "rows": [
           {
             "type": "list_intro",
-            "message_text": "I have 3 tips to make your One-on-One Time great!",
-            "comment": "audio_tips_1on1\n Maybe the guide's blob?"
+            "message_text": "I have 3 tips to make your One-on-One Time great!"
           },
           {
             "type": "list_item",
-            "message_text": "Tip 1. \"DAY\"- Try to do it every day!"
+            "message_text": "1. \"DAY\"- Try to do it every day!"
           },
           {
             "type": "text",
@@ -38,7 +29,7 @@
           },
           {
             "type": "list_item",
-            "message_text": "Tip 2. \"PLAY\" - Let your teen choose!"
+            "message_text": "2. \"PLAY\" - Let your teen choose!"
           },
           {
             "type": "text",
@@ -46,7 +37,7 @@
           },
           {
             "type": "list_item",
-            "message_text": "Tip 3. \"STAY\" - Focus on your teen"
+            "message_text": "3. \"STAY\" - Focus on your teen"
           },
           {
             "type": "text",
