@@ -108,10 +108,16 @@ export namespace FlowTypes {
     title: string;
     description: string;
     task_id: string;
-    icon_asset?: string;
-    main_image_asset?: string;
-    /** optional task to launch on click (default checkbox) */
-    launch_task?: string;
+    icon_asset: string;
+    main_image_asset: string;
+    aim_button_text: string;
+    aim_action: string;
+    suggestion_button_text?: string;
+    launch_flow_type?: string;
+    launch_flow_name?: string;
+    suggestion_flow_type?: string;
+    suggestion_flow_name?: string;
+
     _complete?: boolean;
   }
   export interface Task_listRow {
