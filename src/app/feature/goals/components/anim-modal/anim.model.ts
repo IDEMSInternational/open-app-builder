@@ -22,5 +22,9 @@ export const REWARD_ANIMATIONS: AnimSummary[] = [
     {
         id: "waving",
         svgAssetPath: "assets/images/chat-characters/egg_character1.svg"
+    },
+    {
+        id: "elder-waving",
+        svgAssetPath: "assets/images/Elder_Large.svg"
     }
 ]

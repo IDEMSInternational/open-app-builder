@@ -8,4 +8,5 @@
   <div *ngFor="let task of tasksService.userJourneyTasks" trackBy:trackById>
     <plh-task-reminder-item [task]="task"></plh-task-reminder-item>
   </div>
+  <ion-button (click)="openRewardModal('elder-waving')">Open Reward Modal (Waving Elder Blob)</ion-button>
 </ion-content>
