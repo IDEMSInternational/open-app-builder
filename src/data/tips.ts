@@ -3,6 +3,48 @@
   export const tips: FlowTypes.Tips[] = [
   {
     "flow_type": "tips",
+    "module": "SELF_CARE",
+    "flow_name": "mod_welcome_ideas",
+    "title": "Ideas to treat yourself",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "message_text": "Ideas to treat yourself"
+      },
+      {
+        "type": "list_group",
+        "rows": [
+          {
+            "type": "list_intro",
+            "message_text": "Here are some ideas to treat yourself:"
+          },
+          {
+            "type": "list_item",
+            "message_text": "Have a hot drink"
+          },
+          {
+            "type": "list_item",
+            "message_text": "Call a friend or family"
+          },
+          {
+            "type": "list_item",
+            "message_text": "Have a relaxed bath"
+          },
+          {
+            "type": "list_item",
+            "message_text": "Read"
+          },
+          {
+            "type": "list_item",
+            "message_text": "Watch TV"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "tips",
     "module": "ONE_ON_ONE_TIME",
     "flow_name": "mod_1on1_tips",
     "title": "One-on-One Time Tips",

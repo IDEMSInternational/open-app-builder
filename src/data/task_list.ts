@@ -488,20 +488,13 @@
         ]
       },
       {
-        "id": "task_relax_level_1_completed_goal",
+        "id": "task_relax_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_relax_level_2_completed_goal",
-        "groups_list": [
-          "hidden"
-        ],
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
         "id": "task_treat_yourself",
@@ -515,20 +508,13 @@
         ]
       },
       {
-        "id": "task_treat_yourself_level_1_completed_goal",
+        "id": "task_treat_yourself_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_treat_yourself_level_2_completed_goal",
-        "groups_list": [
-          "hidden"
-        ],
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
         "id": "task_praise_yourself",
@@ -542,20 +528,13 @@
         ]
       },
       {
-        "id": "task_praise_yourself_level_1_completed_goal",
+        "id": "task_praise_yourself_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_praise_yourself_level_2_completed_goal",
-        "groups_list": [
-          "hidden"
-        ],
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
         "id": "task_spend_time",
@@ -569,20 +548,13 @@
         ]
       },
       {
-        "id": "task_spend_time_level_1_completed_goal",
+        "id": "task_spend_time_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_spend_time_level_2_completed_goal",
-        "groups_list": [
-          "hidden"
-        ],
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
         "id": "task_praise_teen",
@@ -596,20 +568,13 @@
         ]
       },
       {
-        "id": "task_praise_teen_level_1_completed_goal",
+        "id": "task_praise_teen_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_praise_teen_level_2_completed_goal",
-        "groups_list": [
-          "hidden"
-        ],
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
         "id": "task_breathe",
@@ -623,20 +588,13 @@
         ]
       },
       {
-        "id": "task_breathe_level_1_completed_goal",
+        "id": "task_breathe_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_breathe_level_2_completed_goal",
-        "groups_list": [
-          "hidden"
-        ],
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
         "id": "task_money",
@@ -650,20 +608,13 @@
         ]
       },
       {
-        "id": "task_money_level_1_completed_goal",
+        "id": "task_money_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_money_level_2_completed_goal",
-        "groups_list": [
-          "hidden"
-        ],
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
         "id": "task_consequence",
@@ -677,20 +628,13 @@
         ]
       },
       {
-        "id": "task_consequence_level_1_completed_goal",
+        "id": "task_consequence_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
-      },
-      {
-        "id": "task_consequence_level_2_completed_goal",
-        "groups_list": [
-          "hidden"
-        ],
-        "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
         "id": "task_safe",
@@ -704,20 +648,49 @@
         ]
       },
       {
-        "id": "task_safe_level_1_completed_goal",
+        "id": "task_safe_custom_completed_goal",
         "groups_list": [
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "fireworks",
+        "evaluation": "completed"
       },
       {
-        "id": "task_safe_level_2_completed_goal",
+        "id": "task_care_package_self_completed_goal",
         "groups_list": [
-          "hidden"
+          "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks"
+        "start_action_args": "medal",
+        "evaluation": "completed"
+      },
+      {
+        "id": "task_care_package_teen_completed_goal",
+        "groups_list": [
+          "care_packages"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "medal",
+        "evaluation": "completed"
+      },
+      {
+        "id": "task_care_package_behaviour_completed_goal",
+        "groups_list": [
+          "care_packages"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "medal",
+        "evaluation": "completed"
+      },
+      {
+        "id": "task_care_package_family_completed_goal",
+        "groups_list": [
+          "care_packages"
+        ],
+        "start_action": "give_award",
+        "start_action_args": "medal",
+        "evaluation": "completed"
       }
     ]
   }
