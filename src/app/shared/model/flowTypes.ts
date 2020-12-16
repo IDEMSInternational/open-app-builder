@@ -14,7 +14,6 @@ export namespace FlowTypes {
     | "completion_list"
     | "goal_list"
     | "habit_list"
-    | "reminder_list"
     | "task_list"
     | "module_list"
     | "module_page";
@@ -48,7 +47,6 @@ export namespace FlowTypes {
     flow_type: "habit_list";
     rows: Habit_listRow[];
   }
-  export interface Reminder_list extends FlowTypeWithData {}
   export interface Task_list extends FlowTypeWithData {
     flow_type: "task_list";
     rows: Task_listRow[];
