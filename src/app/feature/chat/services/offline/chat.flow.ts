@@ -55,6 +55,17 @@ export class RapidProOfflineFlow {
     this.running = false;
   }
 
+  private emitFlowCompletion() {
+    let flowEvents = this.flowStatus$.getValue();
+    flowEvents.push({
+      uuid: this.flowObject.uuid,
+      name: this.flowObject.name,
+      status: "completed",
+    });
+    this.running = false;
+    this.flowStatus$.next(flowEvents);
+  }
+
   private async enterNode(node: RapidProFlowExport.Node, fromNode: RapidProFlowExport.Node | null) {
     this.currentNode = node;
     console.log("Entered from ", fromNode);
@@ -70,14 +81,7 @@ export class RapidProOfflineFlow {
         this.enterNode(this.getNodeById(firstExitWithDestination.destination_uuid), node);
       } else {
         console.log("This should be flow completion");
-        let flowEvents = this.flowStatus$.getValue();
-        flowEvents.push({
-          uuid: this.flowObject.uuid,
-          name: this.flowObject.name,
-          status: "completed",
-        });
-        this.running = false;
-        this.flowStatus$.next(flowEvents);
+        this.emitFlowCompletion();
       }
     } else {
       if (!(node.router.operand && node.router.operand.indexOf("@input.") > -1)) {
@@ -211,8 +215,13 @@ export class RapidProOfflineFlow {
   private exitUsingCategoryId(node: RapidProFlowExport.Node, matchingCategoryId: string) {
     let matchingCategory = node.router.categories.find((cat) => cat.uuid === matchingCategoryId);
     let matchingExit = node.exits.find((exit) => exit.uuid === matchingCategory.exit_uuid);
-    console.log("Entered node via router category ", matchingCategory);
-    this.enterNode(this.getNodeById(matchingExit.destination_uuid), node);
+    if (matchingExit.destination_uuid) {
+      console.log("Entered node via router category ", matchingCategory);
+      this.enterNode(this.getNodeById(matchingExit.destination_uuid), node);
+    } else {
+      console.log("Reached flow completion via router");
+      this.emitFlowCompletion();
+    }
   }
 
   parseMessageTemplate = async (template: string) => {
