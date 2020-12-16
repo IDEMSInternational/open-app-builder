@@ -15,6 +15,11 @@ export class ChatResponsesComponent implements OnChanges {
   @Input()
   responseOptions: ChatResponseOption[];
 
+  @Input()
+  message: ChatMessage;
+
+  ticked: boolean = true;
+
   @Output()
   onOptionSelect: EventEmitter<ChatResponseOption> = new EventEmitter();
 
@@ -33,6 +38,7 @@ export class ChatResponsesComponent implements OnChanges {
         component: ResponsesModalComponent,
         componentProps: {
           responseOptions: this.responseOptions,
+          message: this.message,
           onOptionSelect: this.onOptionSelect
         },
         cssClass: "slide-up-modal",
@@ -40,10 +46,29 @@ export class ChatResponsesComponent implements OnChanges {
         swipeToClose: false
       }).then((modal) => modal.present());
     }
+    if (changes.message.currentValue !== changes.message.previousValue) {
+      if (!this.message.tickedByDefault) {
+        this.ticked = false;
+      } else {
+        this.ticked = true;
+      }
+    }
   }
 
   selectResponseOption(option: ChatResponseOption) {
     this.onOptionSelect.emit(option);
+  }
+
+  getResponseOptions() {
+    if (this.message && this.message.displayAsTick && this.message.responseOptions.length >= 2) {
+      if (this.ticked) {
+        return [this.message.responseOptions[0]];
+      } else {
+        return [this.message.responseOptions[1]];
+      }
+    } else {
+      return this.message.responseOptions;
+    }
   }
 
 }
