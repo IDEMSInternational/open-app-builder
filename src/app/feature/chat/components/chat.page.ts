@@ -203,14 +203,11 @@ export class ChatPage {
     }
     let scrollDelay = 100;
     if (message.attachments && message.attachments.length > 0 || message.innerImageUrl) {
-      scrollDelay = 800;
+      scrollDelay = 1000;
     }
     setTimeout(() => {
       this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
     }, scrollDelay);
-    setTimeout(() => {
-      this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
-    }, 2000);
     this.cd.detectChanges();
   }
 
