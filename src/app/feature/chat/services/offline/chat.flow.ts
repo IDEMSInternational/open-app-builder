@@ -10,7 +10,7 @@ export class RapidProOfflineFlow {
   name: string;
   nodesById: { [nodeUUID: string]: RapidProFlowExport.Node } = {};
   currentNode: RapidProFlowExport.Node;
-  childFlowId: string = null;
+  childFlowName: string = null;
   running = false;
 
   flowStepDelay = 50;
@@ -47,7 +47,7 @@ export class RapidProOfflineFlow {
 
   public continue(childStatus: "completed" | "expired") {
     console.log("Continuing parent flow", this.flowObject.name, "child status", childStatus);
-    this.childFlowId = null;
+    this.childFlowName = null;
     if (this.currentNode && this.currentNode.router) {
       this.useSwitchRouter(this.currentNode, childStatus);
     } else {
@@ -103,11 +103,11 @@ export class RapidProOfflineFlow {
     switch (action.type) {
       case "enter_flow":
         if (action.flow) {
-          this.childFlowId = action.flow.uuid;
+          this.childFlowName = action.flow.name;
           let flowEvents = this.flowStatus$.getValue();
           if (flowEvents.length > 0) {
             let latest = flowEvents[flowEvents.length - 1];
-            if (latest.uuid !== action.flow.uuid) {
+            if (latest.name !== action.flow.name) {
               const { name, uuid } = action.flow;
               flowEvents.push({ name, uuid, status: "start" });
               console.log("Next on BS: child flow");
