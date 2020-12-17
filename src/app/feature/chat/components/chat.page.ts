@@ -201,9 +201,13 @@ export class ChatPage {
     } else {
       this.responseOptions = [];
     }
+    let scrollDelay = 100;
+    if (message.attachments && message.attachments.length > 0 || message.innerImageUrl) {
+      scrollDelay = 1000;
+    }
     setTimeout(() => {
       this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
-    }, 50);
+    }, scrollDelay);
     this.cd.detectChanges();
   }
 

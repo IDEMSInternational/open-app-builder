@@ -70,6 +70,7 @@ export class OfflineChatService implements IChatService {
   public startFlowByName(flowName: string) {
     this.messages$ = new BehaviorSubject([]);
     const flow = this.rpFlowsByName[flowName];
+    this.flowsStack = [];
     if (flow) {
       const { name, uuid } = flow;
       const status: FlowStatusChange = { name, uuid, status: "start" };

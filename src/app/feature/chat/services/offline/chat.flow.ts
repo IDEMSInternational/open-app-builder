@@ -48,11 +48,26 @@ export class RapidProOfflineFlow {
   public continue(childStatus: "completed" | "expired") {
     console.log("Continuing parent flow", this.flowObject.name, "child status", childStatus);
     this.childFlowId = null;
-    this.useSwitchRouter(this.currentNode, childStatus);
+    if (this.currentNode && this.currentNode.router) {
+      this.useSwitchRouter(this.currentNode, childStatus);
+    } else {
+      this.exitWithoutRouter(this.currentNode);
+    }
   }
 
   public reset() {
     this.running = false;
+  }
+
+  private emitFlowCompletion() {
+    let flowEvents = this.flowStatus$.getValue();
+    flowEvents.push({
+      uuid: this.flowObject.uuid,
+      name: this.flowObject.name,
+      status: "completed",
+    });
+    this.running = false;
+    this.flowStatus$.next(flowEvents);
   }
 
   private async enterNode(node: RapidProFlowExport.Node, fromNode: RapidProFlowExport.Node | null) {
@@ -64,27 +79,25 @@ export class RapidProOfflineFlow {
     }
     await this.wait();
     if (!node.router) {
-      let firstExitWithDestination = node.exits.filter((exit) => exit.destination_uuid)[0];
-      if (firstExitWithDestination) {
-        console.log("Entered node by exiting from node with no router");
-        this.enterNode(this.getNodeById(firstExitWithDestination.destination_uuid), node);
-      } else {
-        console.log("This should be flow completion");
-        let flowEvents = this.flowStatus$.getValue();
-        flowEvents.push({
-          uuid: this.flowObject.uuid,
-          name: this.flowObject.name,
-          status: "completed",
-        });
-        this.running = false;
-        this.flowStatus$.next(flowEvents);
-      }
+      this.exitWithoutRouter(node);
     } else {
       if (!(node.router.operand && node.router.operand.indexOf("@input.") > -1)) {
         await this.useRouter(node);
       }
     }
   }
+
+  private exitWithoutRouter(node: RapidProFlowExport.Node) {
+    let firstExitWithDestination = node.exits.filter((exit) => exit.destination_uuid)[0];
+    if (firstExitWithDestination) {
+      console.log("Entered node by exiting from node with no router");
+      this.enterNode(this.getNodeById(firstExitWithDestination.destination_uuid), node);
+    } else {
+      console.log("This should be flow completion");
+      this.emitFlowCompletion();
+    }
+  }
+
   private async handleNodeAction(action: RapidProFlowExport.Action, currentNode: RapidProFlowExport.Node) {
     console.log(`%cAction: ${action.type}`, "color: #9c9c9c");
     switch (action.type) {
@@ -211,8 +224,13 @@ export class RapidProOfflineFlow {
   private exitUsingCategoryId(node: RapidProFlowExport.Node, matchingCategoryId: string) {
     let matchingCategory = node.router.categories.find((cat) => cat.uuid === matchingCategoryId);
     let matchingExit = node.exits.find((exit) => exit.uuid === matchingCategory.exit_uuid);
-    console.log("Entered node via router category ", matchingCategory);
-    this.enterNode(this.getNodeById(matchingExit.destination_uuid), node);
+    if (matchingExit.destination_uuid) {
+      console.log("Entered node via router category ", matchingCategory);
+      this.enterNode(this.getNodeById(matchingExit.destination_uuid), node);
+    } else {
+      console.log("Reached flow completion via router");
+      this.emitFlowCompletion();
+    }
   }
 
   parseMessageTemplate = async (template: string) => {
