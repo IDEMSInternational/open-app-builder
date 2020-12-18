@@ -124,6 +124,20 @@
             }
         }
 
+        #right-arm {
+            animation: right-arm-wave 1s infinite;
+            transform-origin: 71px 146px;
+        }
+
+        @keyframes right-arm-wave {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(33deg);
+            }
+        }
+
         #left-leg {
             position: relative;
             animation: stomping 1s infinite;
@@ -140,11 +154,12 @@
                 transform: translate(0px, 0px);
             }
             20% {
-                transform: translate(0px, -10px);
+                transform: translate(0px, -20px);
             }
             40% {
                 transform: translate(0px, 0px);
+         
+                }
             }
         }
     }
-}
