@@ -17,8 +17,8 @@ const DB_TABLES = {
   surveys: "++id,surveyId",
   reminders: "++id,type",
   goals: "id",
-  // taskAction list likely to grow quite long so index across more fields for querying
-  taskActions: "id,task_id,status,timestamp",
+  // taskActions list likely to grow quite long so index across more fields for querying
+  taskActions: "id,task_id,_created",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**

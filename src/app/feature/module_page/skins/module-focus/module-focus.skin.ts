@@ -10,6 +10,8 @@ import { FlowTypes } from "src/app/shared/model/flowTypes";
 export class ModuleFocusSkin implements OnInit {
   @Input() modulePageFlow: FlowTypes.Module_page;
 
+  constructor() {}
+
   ngOnInit() {
     console.log("modulePageRow", this.modulePageFlow);
   }

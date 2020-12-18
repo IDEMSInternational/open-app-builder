@@ -9,6 +9,7 @@ import { ContactFieldService } from "./contact-field.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
 import { CONVERSATION } from "src/app/shared/services/data/data.service";
 import { throwError } from "rxjs";
+import { ChatActionService } from "../common/chat-action.service";
 
 export type FlowStatusChange = {
   name: string;
@@ -31,7 +32,8 @@ export class OfflineChatService implements IChatService {
   constructor(
     protected http: HttpClient,
     protected contactFieldService: ContactFieldService,
-    protected settingsService: SettingsService
+    protected settingsService: SettingsService,
+    private chatActions: ChatActionService
   ) {
     this.init();
   }
@@ -90,6 +92,8 @@ export class OfflineChatService implements IChatService {
     if (this.flowsStack.length > 0) {
       let currentFlow = this.flowsStack[this.flowsStack.length - 1];
       console.log("Sending message to current flow ", message, currentFlow.name);
+      const flow_name = currentFlow.name;
+      this.chatActions.logActionToDB({ flow_name, type: "new_message", meta: message });
       return currentFlow.sendMessage(message);
     } else {
       return throwError("No active flows to send a message to");
@@ -113,8 +117,9 @@ export class OfflineChatService implements IChatService {
           console.log("Flow stacks before event:", this.flowsStack.length);
           let latest = events[events.length - 1];
           console.log("latest status:", latest.status);
+          const flow = this.rpFlowsByName[latest.name];
           if (latest.status === "start") {
-            const flow = this.rpFlowsByName[latest.name];
+            this.chatActions.logActionToDB({ flow_name: flow.name, type: "flow_started" });
             console.log(`%c${flow.name} START`, "background: white; color: green");
             let newFlow = new RapidProOfflineFlow(
               flow,
@@ -130,6 +135,7 @@ export class OfflineChatService implements IChatService {
             newFlow.start();
           }
           if (latest.status === "completed") {
+            this.chatActions.logActionToDB({ flow_name: flow.name, type: "flow_completed" });
             // remove the completed flow from the stack
             this.flowsStack.pop();
             // Check if there are any other flows remaining,

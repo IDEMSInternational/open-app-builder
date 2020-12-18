@@ -17,24 +17,33 @@
 
 .step-item-button {
   flex: 1;
-
   padding: 10px;
   border-radius: 20px;
 }
 .step-item-button,
 .step-item-checkbox {
-  background: var(--ion-color-primary-light);
   color: var(--ion-color-primary);
+  background: white;
   border-color: var(--ion-color-primary);
   border-style: solid;
   border-width: 1px;
 }
 
-.step-item-button.locked,
-.step-item-checkbox.locked {
-  background: white;
-}
-
 .current-step {
   font-weight: bold;
+}
+
+// Locked content styling
+.step-item-container[data-locked="true"] {
+  .step-item-checkbox,
+  .step-item-button {
+    //
+  }
+}
+// Completed content styling
+.step-item-container[data-completed="true"] {
+  .step-item-checkbox,
+  .step-item-button {
+    background: var(--ion-color-primary-light);
+  }
 }

@@ -52,11 +52,6 @@ export interface ITask {
   requires: string[];
   /** List of strings to use as part of display grouping */
   groups: string[];
-  /**
-   * Optional function for determining if a task was completed.
-   * Receives callback data from the specific task action, such as whether a flow was navigated in full
-   */
-  evaluation: string;
 }
 
 export interface ITaskWithMeta extends ITask {

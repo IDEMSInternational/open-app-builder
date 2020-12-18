@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { AnimModalComponent } from "./anim-modal/anim-modal.component";
 import { TasksService } from "../services/tasks.service";
-import { TaskActionsService } from "../services/task-actions.service";
 
 @Component({
   selector: "plh-goals",
@@ -12,13 +11,7 @@ import { TaskActionsService } from "../services/task-actions.service";
 })
 export class GoalsPage implements OnInit {
   dataLoaded = false;
-  constructor(
-    private modalController: ModalController,
-    public tasksService: TasksService,
-    public taskActionsService: TaskActionsService
-  ) {
-    // this.taskActionsService.loadActions().then(() => (this.dataLoaded = true));
-  }
+  constructor(private modalController: ModalController, public tasksService: TasksService) {}
 
   ngOnInit() {
     this.openRewardModal("elder-waving")

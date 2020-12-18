@@ -1,17 +1,19 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
+import { filter, takeWhile } from "rxjs/operators";
 import { FlowTypes } from "../../model";
-import { PLHDataService, TASK_LIST } from "../data/data.service";
+import { TASK_LIST } from "../data/data.service";
+import { TaskActionService } from "./task-action.service";
 
 @Injectable({ providedIn: "root" })
 export class TaskService {
   allTasksById: Hashmap<FlowTypes.Task_listRow> = {};
 
   constructor(
-    private plhDataService: PLHDataService,
     private modalCtrl: ModalController,
-    private router: Router
+    private router: Router,
+    private taskActions: TaskActionService
   ) {
     console.log("task service", this.modalCtrl);
     this.processTaskList();
@@ -26,19 +28,86 @@ export class TaskService {
    * When running a task we want to trigger any required actions,
    * and add listeners to handle any completion events
    */
-  runTask(task_id: string) {
+  async startTask(task_id: string) {
     const task = this.allTasksById[task_id];
     if (!task) {
       throw new Error(`task not found: ${task_id}`);
     }
-    const { start_action, evaluation } = task;
-    if (evaluation) {
-      // TODO - add listeners/methods to know when task has been complete
-    }
+    const { start_action, flow_type, flow_name } = task;
     if (start_action) {
-      console.log("starting action", start_action);
+      // Make sure evaluation listeners are ready ahead of starting action in case
+      // they instantly resolve on start
+      if (flow_type && flow_name) {
+        this.addFlowActionListeners(task_id, flow_name);
+      }
+      await this.taskActions.recordTaskAction({ task_id, type: "task_started" });
       this.runAction(task);
     }
+  }
+
+  async evaluateTaskCompleted(task_id: string) {
+    const completionCount = await this.getTaskCompletions(task_id).count();
+    return completionCount > 0;
+  }
+
+  getTaskCompletions(task_id: string) {
+    return this.taskActions.table
+      .where("task_id")
+      .equals(task_id)
+      .filter((t) => t._completed);
+  }
+
+  async evaluateTasklocked(task_id: string) {
+    const task = this.allTasksById[task_id];
+    if (task) {
+      if (task.requires_list) {
+        const evaluations = await Promise.all(
+          task.requires_list.map(
+            async (condition) => await this.evaluateTaskRequireCondition(condition)
+          )
+        );
+        console.table(
+          task.requires_list.map((t, i) => ({ condition: t, evaluation: evaluations[i] }))
+        );
+        return !evaluations.every((evaluation) => evaluation === true);
+      } else {
+        return false;
+      }
+    } else {
+      console.error("could not find task_id", task_id);
+    }
+    return false;
+  }
+  private async evaluateTaskRequireCondition(condition: string): Promise<boolean> {
+    // e.g. first_app_launch | delay_7_day |other_condition
+    const [task_id, ...conditions] = condition.split("|").map((str) => str.trim());
+    const completions = await this.getTaskCompletions(task_id).toArray();
+    if (completions.length > 0) {
+      // TODO - handle conditions
+      console.log("TODO - evaluate conditions", completions, conditions);
+      return true;
+    }
+    // TODO - provide informative reason for failure (?)
+
+    return false;
+  }
+
+  /**
+   * Listen to the action stream for actions related to the current task
+   * If the flow is marked as completed also mark the overall task as completed
+   */
+  private addFlowActionListeners(task_id: string, flow_name: string) {
+    this.taskActions.action$
+      .pipe(
+        filter((action) => action.flow_name === flow_name),
+        takeWhile((action) => action.type !== "flow_completed")
+        // TODO - add handler to break subscription if flow abandoned or similar
+      )
+      .subscribe(
+        () => null,
+        (err) => console.error(err),
+        () => this.taskActions.recordTaskAction({ task_id, type: "task_completed" })
+      );
   }
 
   /** Provide specific handlers for actions, such as starting a flow */
