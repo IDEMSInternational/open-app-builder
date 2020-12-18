@@ -119,6 +119,7 @@ export class OfflineChatService implements IChatService {
           console.log("latest status:", latest.status);
           const flow = this.rpFlowsByName[latest.name];
           if (latest.status === "start") {
+            this.chatActions.logActionToDB({ flow_name: flow.name, type: "flow_started" });
             console.log(`%c${flow.name} START`, "background: white; color: green");
             let newFlow = new RapidProOfflineFlow(
               flow,
@@ -132,16 +133,15 @@ export class OfflineChatService implements IChatService {
               newFlow.sendMessageDelay = Number.parseInt(delay);
             });
             newFlow.start();
-            this.chatActions.logActionToDB({ flow_name: flow.name, type: "flow_started" });
           }
           if (latest.status === "completed") {
+            this.chatActions.logActionToDB({ flow_name: flow.name, type: "flow_completed" });
             // remove the completed flow from the stack
             this.flowsStack.pop();
             // Check if there are any other flows remaining,
             // if yes resume them
             if (this.flowsStack.length > 0) {
               let currentFlow = this.flowsStack[this.flowsStack.length - 1];
-              this.chatActions.logActionToDB({ flow_name: flow.name, type: "flow_completed" });
               currentFlow.continue("completed");
               // otherwise all flows have been complete, handle main exit
             } else {

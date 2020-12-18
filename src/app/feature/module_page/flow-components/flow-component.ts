@@ -55,6 +55,7 @@ export class FlowComponentHostDirective {
  * https://angular.io/guide/dynamic-component-loader
  *********************************************************************/
 import { Component, OnInit } from "@angular/core";
+import { ITaskEntry } from "src/app/shared/services/task/task-action.service";
 @Component({
   selector: "plh-module-page-flow-component",
   template: `<ng-template appFlowComponentHost></ng-template> `,
