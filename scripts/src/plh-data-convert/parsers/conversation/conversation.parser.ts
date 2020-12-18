@@ -220,6 +220,25 @@ export class ConversationParser implements AbstractParser {
             actionNode.exits[0].destination_uuid = enterFlowNode.uuid;
             row._rapidProNode = enterFlowNode;
           }
+        } else if (row.type === "mark_as_completed") {
+          // If message_text is blank mark the flow as complete, otherwise mark the item in message_text as complete.
+          let flowOrTask: string
+          if (row.message_text) flowOrTask = row.message_text
+          else flowOrTask = flow.name
+          actionNode.actions.push(this.createSaveAction(flowOrTask + "__completed", "true"));
+          row._rapidProNode = actionNode;
+          nodesById[nodeId] = actionNode;
+        } else if (row.type === "split_random") {
+          // "split_random" produces a single node. Create this node with empty router.
+          // "split_random" should not have a default empty exit.
+          actionNode.exits = [];
+          actionNode.router = {
+              type: "random",
+              cases: [],
+              categories: []
+          }
+          row._rapidProNode = actionNode;
+          nodesById[nodeId] = actionNode;
         } else {
           continue;
           // throw new Error("Unknown Type");
@@ -258,7 +277,7 @@ export class ConversationParser implements AbstractParser {
           }
         }
         // Add this after the condition so that the nodes are in a sensible order when importing into Rapid Pro
-        // If Type is "go_to" then there is no node to add.
+        // If type is "go_to" then there is no node to add.
         if (row.type !== "go_to") {
           flow.nodes.push(actionNode);
         }
@@ -412,9 +431,9 @@ export class ConversationParser implements AbstractParser {
   }
 
   private createRouterNode(
-    operandType: "@input" | "@fields",
+    operandType: "@input" | "@fields" | "",
     operandValue: "text" | string,
-    routerType: "switch" | string = "switch",
+    routerType: "switch" | "random" | string = "switch",
     defaultName: string = "All Responses"
   ): RapidProFlowExport.Node {
     let nodeId = this.deterministicUUID(this.conversationSheet.flow_name, "node");
@@ -424,23 +443,27 @@ export class ConversationParser implements AbstractParser {
       name: defaultName,
       uuid: this.deterministicUUID(this.conversationSheet.flow_name, "category"),
     };
-
+    // This is common to "switch" and "random" router nodes.
     let newRouterNode: RapidProFlowExport.Node = {
       uuid: nodeId,
       actions: [],
       router: {
         type: routerType,
-        default_category_uuid: otherCategory.uuid,
         cases: [],
-        categories: [otherCategory],
-        operand: operandType + "." + operandValue,
+        categories: []
       },
-      exits: [emptyExit],
+      exits: [],
     };
-    if (operandType === "@input") {
-      newRouterNode.router.wait = {
-        type: "msg",
-      };
+    if (routerType === "switch") {
+      newRouterNode.router.categories = [otherCategory];
+      newRouterNode.router.operand = operandType + "." + operandValue;
+      newRouterNode.router.default_category_uuid = otherCategory.uuid;
+      newRouterNode.exits = [emptyExit];
+      if (operandType === "@input") {
+        newRouterNode.router.wait = {
+          type: "msg",
+        };
+      }   
     }
     return newRouterNode;
   }
@@ -502,52 +525,73 @@ export class ConversationParser implements AbstractParser {
         } else {
           exit.destination_uuid = row.nodeUUIDForExit;
         }
-        choiceCategory = {
-          exit_uuid: exit.uuid,
-          name: row.condition,
-          uuid: this.deterministicUUID(this.conversationSheet.flow_name, "category"),
-        };
-        let choiceCases: RapidProFlowExport.RouterCase[] = [];
-        // For "has_any_word" arguments is a list of length one with all words separate by spaces.
-        if (type === "has_any_word") {
-          conds = [conds.join(" ")];
-          choiceCases = [
-            {
-              arguments: conds,
-              category_uuid: choiceCategory.uuid,
-              type,
-              uuid: this.deterministicUUID(this.conversationSheet.flow_name, "case"),
-            },
-          ];
-          // For phrases need one case per phrase linked to the same category. arguments is a list of length one with the phrase.
-        } else if (type === "has_only_phrase" || type === "has_phrase") {
+        // "random" router should have one category for each item to ensure probabilities are as expected.
+        if (routerNode.router.type === "random") {
           for (let con of conds) {
-            choiceCases.push({
-              arguments: [con],
-              category_uuid: choiceCategory.uuid,
-              type,
-              uuid: this.deterministicUUID(this.conversationSheet.flow_name, "case"),
-            });
+            routerNode.router.categories.push(
+              {
+                exit_uuid: exit.uuid,
+                name: con,
+                uuid: this.deterministicUUID(this.conversationSheet.flow_name, "category")
+              }
+            );
           }
         } else {
-          // TODO Other types needs to be implemented. This is not correct for all other types.
-          conds = [conds.join(" ")];
-          choiceCases = [
-            {
-              arguments: conds,
-              category_uuid: choiceCategory.uuid,
-              type,
-              uuid: this.deterministicUUID(this.conversationSheet.flow_name, "case"),
-            },
-          ];
+          choiceCategory = {
+            exit_uuid: exit.uuid,
+            name: row.condition,
+            uuid: this.deterministicUUID(this.conversationSheet.flow_name, "category")
+          };
+          routerNode.router.categories.push(choiceCategory);
         }
         routerNode.exits.push(exit);
-        routerNode.router.categories.push(choiceCategory);
-        for (let c of choiceCases) {
-          routerNode.router.cases.push(c);
+        // "random" router does not have cases.
+        if (routerNode.router.type === "switch") {
+          let choiceCases: RapidProFlowExport.RouterCase[] = [];
+          // For "has_any_word" arguments is a list of length one with all words separate by spaces.
+          if (type === "has_any_word") {
+            conds = [conds.join(" ")];
+            choiceCases = [
+              {
+                arguments: conds,
+                category_uuid: choiceCategory.uuid,
+                type,
+                uuid: this.deterministicUUID(this.conversationSheet.flow_name, "case"),
+              },
+            ];
+            // For phrases need one case per phrase linked to the same category. arguments is a list of length one with the phrase.
+          } else if (type === "has_only_phrase" || type === "has_phrase") {
+            for (let con of conds) {
+              choiceCases.push({
+                arguments: [con],
+                category_uuid: choiceCategory.uuid,
+                type,
+                uuid: this.deterministicUUID(this.conversationSheet.flow_name, "case"),
+              });
+            }
+          } else {
+            // TODO Other types needs to be implemented. This is not correct for all other types.
+            conds = [conds.join(" ")];
+            choiceCases = [
+              {
+                arguments: conds,
+                category_uuid: choiceCategory.uuid,
+                type,
+                uuid: this.deterministicUUID(this.conversationSheet.flow_name, "case"),
+              },
+            ];
+          }
+          for (let c of choiceCases) {
+            routerNode.router.cases.push(c);
+          }  
         }
       }
     } else {
+      if (routerNode.router.type === "random") {
+        throw new Error(
+          "Cannot have no row_condition for random type."
+        );
+      }
       // If the row has no condition then update the default (other) exit.
       // Routers are always created with a default (empty) exit so this always exists.
       routerNode.exits[0].destination_uuid = row.nodeUUIDForExit;
@@ -564,8 +608,8 @@ export class ConversationParser implements AbstractParser {
     let routerNode: RapidProFlowExport.Node;
     let newRouterNode: RapidProFlowExport.Node;
     let first: boolean = true;
-    let operandType: "@input" | "@fields";
-    let operandValue: "text" | string;
+    let operandType: "@input" | "@fields" | "" = "";
+    let operandValue: "text" | string = "";
 
     fromRows = this.getFromRows(row, rows);
     // If condition_var is given this is operandValue
@@ -576,19 +620,33 @@ export class ConversationParser implements AbstractParser {
     } else if (fromRows && fromRows.length > 0 && fromRows[0].save_name) {
       operandType = "@fields";
       operandValue = fromRows[0].save_name;
-      // If there is no condition_var and fromNode is not of type "set_contact_field" then assumed to be input from text.
+    } else if (fromRows && fromRows.length > 0 && fromRows[0].type === "split_random") {
+      operandType = "";
+      operandValue = "";
+      // If there is no condition_var and fromNode is not of type "set_contact_field" and fromRow is not "split_random" then assumed to be input from text.
     } else {
       operandType = "@input";
       operandValue = "text";
     }
     // Each "from row/node" needs to have it's exits update with a router (could be new or existing router)
-    for (let fromNode of fromNodes) {
-      // If fromNode is a router of the same type as the current node/row then add a condition to fromNode for the current row/node
+    for (let i = 0; i <= fromNodes.length - 1; i++) {
+      let fromNode = fromNodes[i];
+      let fromRow = fromRows[i];
+      
+      let routerType: string;
+      if (fromRow.type === "split_random") {
+        routerType = "random";
+      } else {
+        routerType = "switch";
+      }
+      // If fromNode is a router of the same type as the current node/row then add a condition to fromNode for the current row/node.
       if (
         fromNode.router &&
-        fromNode.router.type === "switch" &&
+        fromNode.router.type === routerType &&
+        ((fromNode.router.type === "switch" &&
         fromNode.router.operand &&
-        fromNode.router.operand == operandType + "." + operandValue
+        fromNode.router.operand == operandType + "." + operandValue) ||
+        fromNode.router.type === "random")
       ) {
         this.addConditionToRouterNode(fromNode, row, rows);
       } else {
@@ -599,7 +657,7 @@ export class ConversationParser implements AbstractParser {
         // ordering the rows of the Excel sheet to have different router cases first.
         // TODO Create an example Excel file to demonstate this.
         if (first) {
-          newRouterNode = this.createRouterNode(operandType, operandValue);
+          newRouterNode = this.createRouterNode(operandType, operandValue, routerType);
           this.addConditionToRouterNode(newRouterNode, row, rows);
           flow.nodes.push(newRouterNode);
           first = false;

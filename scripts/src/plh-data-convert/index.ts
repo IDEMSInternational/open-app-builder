@@ -73,7 +73,7 @@ function applyDataParsers(
 
   // generate a list of all tasks required by the taskListParser (merging rows from all task_list types)
   const allTasksById = arrayToHashmap(
-    dataByFlowType.task_list.reduce((a, b) => [...a, ...b.rows], []),
+    (dataByFlowType.task_list || []).reduce((a, b) => [...a, ...b.rows], []),
     "id"
   );
   const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
