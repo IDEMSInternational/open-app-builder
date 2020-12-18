@@ -12,6 +12,7 @@ export class ModulePageComponent implements OnInit {
   dataLoaded = false;
   appSkin = "MODULE_FOCUS_SKIN";
   modulePageFlow: FlowTypes.Module_page;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -19,6 +20,8 @@ export class ModulePageComponent implements OnInit {
     const modulePageFlow = MODULE_PAGE.find((m) => m.flow_name === flow_name);
     if (modulePageFlow) {
       this.modulePageFlow = modulePageFlow;
+      console.log("module page flow", this.modulePageFlow);
+
       this.dataLoaded = true;
     } else {
       throw new Error(`Module Page Flow Not Found: ${flow_name}`);

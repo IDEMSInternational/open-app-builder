@@ -3,6 +3,10 @@ import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
+import {
+  IFlowTaskAction,
+  TaskActionService,
+} from "src/app/shared/services/task/task-action.service";
 import { ChatAction } from "../../models";
 import { URLParts } from "../../utils/message.converter";
 
@@ -14,8 +18,16 @@ export class ChatActionService {
     private router: Router,
     private localStorageService: LocalStorageService,
     private remindersService: RemindersService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private taskActionService: TaskActionService
   ) {}
+
+  /**
+   *  Record specific interactions or actions to the database
+   */
+  public async logActionToDB(action: IFlowTaskAction) {
+    this.taskActionService.recordFlowTaskAction(action);
+  }
 
   public async executeChatAction(action: ChatAction) {
     console.log(`%cChatAction: ${action.type}`, "color: #9c9c9c");
@@ -34,7 +46,7 @@ export class ChatActionService {
   }
 
   private unlockToolboxTopic(paramMap: { [key: string]: string }) {
-    console.error('TODO - toolbox unlocking')
+    console.error("TODO - toolbox unlocking");
     // if (paramMap.topic) {
     //   let matchingTopic = toolboxTopicNames.find((topic) => topic.type === paramMap.topic);
     //   if (matchingTopic) {

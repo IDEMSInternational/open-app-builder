@@ -115,15 +115,17 @@ export class ChatPage {
       header: this.lastReceivedMsg.text,
       inputs: [
         {
-          type: "text"
-        }
+          type: "text",
+        },
       ],
-      buttons: [{
-        text: 'Submit',
-        handler: (value) => {
-          this.sendCustomOption(value[0]);
-        }
-      }]
+      buttons: [
+        {
+          text: "Submit",
+          handler: (value) => {
+            this.sendCustomOption(value[0]);
+          },
+        },
+      ],
     });
     await alert.present();
   }
@@ -147,10 +149,10 @@ export class ChatPage {
     this.character = queryParams["character"] || "guide";
   }
 
-  private async startFlow(flowName: string) {
+  private async startFlow(flow_name: string) {
     await this.chatService.ready();
-    if (flowName) {
-      this.chatService.startFlowByName(flowName);
+    if (flow_name) {
+      this.chatService.startFlowByName(flow_name);
       this.messageSubscription = this.chatService.messages$.subscribe((messages) => {
         if (messages.length > 0) {
           const latestMessage = messages[messages.length - 1];
@@ -202,7 +204,7 @@ export class ChatPage {
       this.responseOptions = [];
     }
     let scrollDelay = 100;
-    if (message.attachments && message.attachments.length > 0 || message.innerImageUrl) {
+    if ((message.attachments && message.attachments.length > 0) || message.innerImageUrl) {
       scrollDelay = 1000;
     }
     setTimeout(() => {

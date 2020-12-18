@@ -14,8 +14,7 @@
         ],
         "start_action": "start_new_flow",
         "flow_type": "conversation",
-        "flow_name": "mod_welcome_self-care_package",
-        "evaluation": "completed"
+        "flow_name": "mod_welcome_self-care_package"
       },
       {
         "id": "task_mod_welcome_quick_praise",
@@ -25,8 +24,7 @@
         ],
         "start_action": "start_new_flow",
         "flow_type": "conversation",
-        "flow_name": "mod_welcome_quick_praise",
-        "evaluation": "completed"
+        "flow_name": "mod_welcome_quick_praise"
       },
       {
         "id": "task_mod_welcome_survey",
@@ -36,8 +34,7 @@
         ],
         "start_action": "start_new_flow",
         "flow_type": "conversation",
-        "flow_name": "mod_welcome_survey",
-        "evaluation": "completed"
+        "flow_name": "mod_welcome_survey"
       },
       {
         "id": "task_mod_welcome_photo_activity",
@@ -47,8 +44,7 @@
         ],
         "start_action": "start_new_flow",
         "flow_type": "conversation",
-        "flow_name": "mod_welcome_photo_activity",
-        "evaluation": "completed"
+        "flow_name": "mod_welcome_photo_activity"
       },
       {
         "id": "task_mod_welcome_completed_goal",
@@ -56,8 +52,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "cup",
-        "evaluation": "completed"
+        "start_action_args": "cup"
       },
       {
         "id": "task_mod_1on1_emo",
@@ -68,7 +63,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_1on1_emo",
-        "evaluation": "completed",
         "requires_list": [
           "first_app_launch | delay_7_day"
         ]
@@ -82,7 +76,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_1on1_intro",
-        "evaluation": "completed ",
         "requires_list": [
           "task_mod_1on1_emo"
         ]
@@ -96,7 +89,6 @@
         "start_action": "start_new_flow",
         "flow_type": "tips",
         "flow_name": "mod_1on1_tips",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_intro"
         ]
@@ -110,7 +102,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_1on1_activity",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_tips"
         ]
@@ -124,7 +115,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_1on1_par",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_tips | delay_1_day"
         ]
@@ -138,7 +128,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_1on1_fun",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_tips | delay_5_day"
         ]
@@ -152,7 +141,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_1on1_activity_review",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_activity | delay_4_day"
         ]
@@ -163,8 +151,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "cup",
-        "evaluation": "completed"
+        "start_action_args": "cup"
       },
       {
         "id": "task_mod_praise_intro",
@@ -175,7 +162,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_praise_intro",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_1on1_completed_goal",
           "first_app_launch | delay_14_day"
@@ -190,7 +176,6 @@
         "start_action": "start_new_flow",
         "flow_type": "tips",
         "flow_name": "mod_praise_tips",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_praise_intro"
         ]
@@ -204,7 +189,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_praise_activity",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_praise_tips"
         ]
@@ -218,7 +202,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_praise_emo",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_praise_tips | delay_1_day"
         ]
@@ -245,7 +228,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_praise_activity_review",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_praise_activity | delay_4_day"
         ]
@@ -256,8 +238,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "cup",
-        "evaluation": "completed"
+        "start_action_args": "cup"
       },
       {
         "id": "task_mod_instructions_par",
@@ -282,7 +263,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_instructions_intro",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_instructions_par"
         ]
@@ -296,7 +276,6 @@
         "start_action": "start_new_flow",
         "flow_type": "tips",
         "flow_name": "mod_instructions_tips",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_instructions_intro"
         ]
@@ -310,7 +289,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_instructions_activity",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_instructions_tips"
         ]
@@ -350,7 +328,6 @@
         "start_action": "start_new_flow",
         "flow_type": "conversation",
         "flow_name": "mod_instructions_activity_review",
-        "evaluation": "completed",
         "requires_list": [
           "task_mod_instructions_activity | delay_4_day"
         ]
@@ -361,8 +338,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "cup",
-        "evaluation": "completed"
+        "start_action_args": "cup"
       },
       {
         "id": "task_mod_stress_par",
@@ -462,8 +438,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "cup",
-        "evaluation": "completed"
+        "start_action_args": "cup"
       }
     ]
   },
@@ -493,8 +468,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_treat_yourself",
@@ -513,8 +487,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_praise_yourself",
@@ -533,8 +506,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_spend_time",
@@ -553,8 +525,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_praise_teen",
@@ -573,8 +544,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_breathe",
@@ -593,8 +563,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_money",
@@ -613,8 +582,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_consequence",
@@ -633,8 +601,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_safe",
@@ -653,8 +620,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_care_package_self_completed_goal",
@@ -662,8 +628,7 @@
           "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "medal",
-        "evaluation": "completed"
+        "start_action_args": "medal"
       },
       {
         "id": "task_care_package_teen_completed_goal",
@@ -671,8 +636,7 @@
           "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "medal",
-        "evaluation": "completed"
+        "start_action_args": "medal"
       },
       {
         "id": "task_care_package_behaviour_completed_goal",
@@ -680,8 +644,7 @@
           "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "medal",
-        "evaluation": "completed"
+        "start_action_args": "medal"
       },
       {
         "id": "task_care_package_family_completed_goal",
@@ -689,8 +652,7 @@
           "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "medal",
-        "evaluation": "completed"
+        "start_action_args": "medal"
       }
     ]
   }
