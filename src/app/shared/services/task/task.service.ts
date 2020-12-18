@@ -45,6 +45,53 @@ export class TaskService {
     }
   }
 
+  async evaluateTaskCompleted(task_id: string) {
+    const completionCount = await this.getTaskCompletions(task_id).count();
+    return completionCount > 0;
+  }
+
+  getTaskCompletions(task_id: string) {
+    return this.taskActions.table
+      .where("task_id")
+      .equals(task_id)
+      .filter((t) => t._completed);
+  }
+
+  async evaluateTasklocked(task_id: string) {
+    const task = this.allTasksById[task_id];
+    if (task) {
+      if (task.requires_list) {
+        const evaluations = await Promise.all(
+          task.requires_list.map(
+            async (condition) => await this.evaluateTaskRequireCondition(condition)
+          )
+        );
+        console.table(
+          task.requires_list.map((t, i) => ({ condition: t, evaluation: evaluations[i] }))
+        );
+        return !evaluations.every((evaluation) => evaluation === true);
+      } else {
+        return false;
+      }
+    } else {
+      console.error("could not find task_id", task_id);
+    }
+    return false;
+  }
+  private async evaluateTaskRequireCondition(condition: string): Promise<boolean> {
+    // e.g. first_app_launch | delay_7_day |other_condition
+    const [task_id, ...conditions] = condition.split("|").map((str) => str.trim());
+    const completions = await this.getTaskCompletions(task_id).toArray();
+    if (completions.length > 0) {
+      // TODO - handle conditions
+      console.log("TODO - evaluate conditions", completions, conditions);
+      return true;
+    }
+    // TODO - provide informative reason for failure (?)
+
+    return false;
+  }
+
   /**
    * Listen to the action stream for actions related to the current task
    * If the flow is marked as completed also mark the overall task as completed

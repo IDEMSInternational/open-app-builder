@@ -20,6 +20,10 @@ export class TaskActionService {
     this.recordSessionTaskAction({ type: "session_started" });
   }
 
+  get table() {
+    return this.db.table<ITaskEntry>("taskActions");
+  }
+
   /**
    * Record an action directly from within a flow. This will be assigned whatever task has
    * been started most recently
@@ -72,12 +76,13 @@ export class TaskActionService {
       action.meta = meta;
     }
     this.activeTasks[task_id].actions.push(actionEntry);
-    // overall tracking of task status
+    const entry = this.activeTasks[task_id];
+    // if task completed can mark overall entry as completed and stop tracking
     if (type === "task_completed") {
-      this.activeTasks[task_id]._completed = true;
+      entry._completed = true;
+      delete this.activeTasks[task_id];
     }
     // update database
-    const entry = this.activeTasks[task_id];
     await this.db.table("taskActions").put(entry, entry.id);
     this.action$.next({ ...action, task_id });
   }
@@ -130,7 +135,7 @@ export class TaskActionService {
   }
 }
 
-interface ITaskEntry {
+export interface ITaskEntry {
   /** Unique id to recognise a task, given by task_id and instance_id combined */
   id: string;
   /** string */
