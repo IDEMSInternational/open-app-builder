@@ -115,15 +115,17 @@ export class ChatPage {
       header: this.lastReceivedMsg.text,
       inputs: [
         {
-          type: "text"
-        }
+          type: "text",
+        },
       ],
-      buttons: [{
-        text: 'Submit',
-        handler: (value) => {
-          this.sendCustomOption(value[0]);
-        }
-      }]
+      buttons: [
+        {
+          text: "Submit",
+          handler: (value) => {
+            this.sendCustomOption(value[0]);
+          },
+        },
+      ],
     });
     await alert.present();
   }
@@ -148,6 +150,7 @@ export class ChatPage {
   }
 
   private async startFlow(flowName: string) {
+    this.chatActionService.logActionToDB("start_flow", { flowName });
     await this.chatService.ready();
     if (flowName) {
       this.chatService.startFlowByName(flowName);
@@ -172,6 +175,7 @@ export class ChatPage {
   }
 
   private async onNewMessage(message: ChatMessage) {
+    this.chatActionService.logActionToDB("new_message", message);
     console.log("new Message", message);
     message.dateReceived = new Date();
     this.lastReceivedMsg = message;
@@ -202,7 +206,7 @@ export class ChatPage {
       this.responseOptions = [];
     }
     let scrollDelay = 100;
-    if (message.attachments && message.attachments.length > 0 || message.innerImageUrl) {
+    if ((message.attachments && message.attachments.length > 0) || message.innerImageUrl) {
       scrollDelay = 1000;
     }
     setTimeout(() => {

@@ -9,6 +9,7 @@ import { ContactFieldService } from "./contact-field.service";
 import { RapidProFlowExport } from "./rapid-pro-export.model";
 import { CONVERSATION } from "src/app/shared/services/data/data.service";
 import { throwError } from "rxjs";
+import { ChatActionService } from "../common/chat-action.service";
 
 export type FlowStatusChange = {
   name: string;
@@ -31,7 +32,8 @@ export class OfflineChatService implements IChatService {
   constructor(
     protected http: HttpClient,
     protected contactFieldService: ContactFieldService,
-    protected settingsService: SettingsService
+    protected settingsService: SettingsService,
+    private chatActions: ChatActionService
   ) {
     this.init();
   }
@@ -99,6 +101,7 @@ export class OfflineChatService implements IChatService {
   private handleFlowsEnded() {
     console.log("all flows have ended", this.flowsStack);
     this.messages$.next([{ sender: "bot", text: "End of this content" }]);
+    this.chatActions.logActionToDB("complete");
   }
 
   /**

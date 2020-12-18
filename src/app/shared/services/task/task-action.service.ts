@@ -1,29 +1,62 @@
 import { Injectable } from "@angular/core";
 import { format } from "date-fns";
+import { Subject } from "scripts/node_modules/rxjs";
 import { environment } from "src/environments/environment";
 import { DbService } from "../db/db.service";
 
 @Injectable({ providedIn: "root" })
 export class TaskActionService {
+  /**
+   * Tasks may be run in parallel (e.g. overall app session with specific task, or pausing one task to complete another)
+   * Keep a list of all tasks that have been recorded as active
+   */
   activeTasks: { [task_id: string]: ITaskEntry } = {};
+  /** Keep track of the most recent task to be started (presumed the active task) */
+  activeTaskId: string;
+  /** An active stream of actions for subcription */
+  action$ = new Subject<ITaskAction & { task_id: string }>();
   constructor(private db: DbService) {
     this._addWindowListeners();
     this.recordTaskAction("app_session", "started");
   }
 
-  async recordTaskAction(task_id: string, actionType: IActionType, meta?: any) {
+  /**
+   *
+   * @param task_id - The identifier of the task to assign the action to
+   * If not known can provide a null value and will assume it is whatever task
+   * had been started most recently
+   * @param actionType - category for logging actions
+   * @param meta - Any additional information required for reporting
+   */
+  async recordTaskAction(
+    task_id: string,
+    actionType: IActionType,
+    actionSubType?: string,
+    meta?: any
+  ) {
+    // fallback to most recent active task if not provided.
+    task_id = task_id || this.activeTaskId;
+    if (!task_id) {
+      console.error("no task specified and no active task");
+      return;
+    }
     // remove any previous instances of same task
     if (actionType === "started" && this.activeTasks[task_id]) {
       delete this.activeTasks[task_id];
     }
     // ensure there is an active entry tracking the current task
+    // assume any newly created task is also now the active task
     if (!this.activeTasks[task_id]) {
       this.activeTasks[task_id] = this.createNewEntry(task_id);
+      this.activeTaskId = task_id;
     }
     // record the main entry and update metadata
     const action: ITaskAction = { _created: this._generateTimestamp(), actionType };
     if (meta) {
       action.meta = meta;
+    }
+    if (actionSubType) {
+      action.actionSubType = actionSubType;
     }
     this.activeTasks[task_id].actions.push(action);
     if (actionType === "started" || actionType === "completed") {
@@ -32,6 +65,7 @@ export class TaskActionService {
     // update database
     const entry = this.activeTasks[task_id];
     await this.db.table("taskActions").put(entry, entry.id);
+    this.action$.next({ ...action, task_id });
   }
 
   /**
@@ -103,8 +137,10 @@ interface ITaskEntry {
 interface ITaskAction {
   /** timestamp */
   _created: string;
-  /** */
+  /** specific list of types to help organising database entries */
   actionType: IActionType;
+  /** additional sub-type for more general lookups */
+  actionSubType?: string;
   /** */
   meta?: any;
 }
@@ -112,4 +148,4 @@ interface ITaskAction {
 /** Core set of overall task statuses */
 type ITaskStatus = "started" | "completed";
 /** A task action can be a task status or other meta statuses */
-type IActionType = ITaskStatus | "response" | "app_unload" | "app_blur" | "app_focus";
+export type IActionType = ITaskStatus | "flow_action" | "app_unload" | "app_blur" | "app_focus";
