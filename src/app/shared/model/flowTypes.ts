@@ -128,7 +128,6 @@ export namespace FlowTypes {
     /** when tasks require additional paremeters, such as the name of a reward, provide here */
     start_action_args?: string;
     groups_list?: string[];
-    evaluation?: string;
     label?: string;
     requires_list?: string[];
   }

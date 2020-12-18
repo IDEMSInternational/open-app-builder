@@ -149,11 +149,10 @@ export class ChatPage {
     this.character = queryParams["character"] || "guide";
   }
 
-  private async startFlow(flowName: string) {
-    this.chatActionService.logActionToDB("start_flow", { flowName });
+  private async startFlow(flow_name: string) {
     await this.chatService.ready();
-    if (flowName) {
-      this.chatService.startFlowByName(flowName);
+    if (flow_name) {
+      this.chatService.startFlowByName(flow_name);
       this.messageSubscription = this.chatService.messages$.subscribe((messages) => {
         if (messages.length > 0) {
           const latestMessage = messages[messages.length - 1];
@@ -175,7 +174,6 @@ export class ChatPage {
   }
 
   private async onNewMessage(message: ChatMessage) {
-    this.chatActionService.logActionToDB("new_message", message);
     console.log("new Message", message);
     message.dateReceived = new Date();
     this.lastReceivedMsg = message;

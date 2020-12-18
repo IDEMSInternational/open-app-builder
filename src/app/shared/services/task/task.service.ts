@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
-import { filter, takeUntil, takeWhile } from "rxjs/operators";
+import { filter, takeWhile } from "rxjs/operators";
 import { FlowTypes } from "../../model";
 import { TASK_LIST } from "../data/data.service";
 import { TaskActionService } from "./task-action.service";
@@ -33,36 +33,34 @@ export class TaskService {
     if (!task) {
       throw new Error(`task not found: ${task_id}`);
     }
-    const { start_action, evaluation } = task;
-
-    // Make sure evaluation listeners are ready ahead of starting action in case
-    // they instantly resolve on start
-    if (evaluation) {
-      console.log("TODO - handle evaluation", evaluation);
-      this.taskActions.action$
-        .pipe(
-          filter((v) => v.task_id === task_id),
-          takeWhile((v) => v.actionSubType !== "completed")
-        )
-        .subscribe(
-          (t) => {
-            console.log("action", t);
-          },
-          (err) => console.error(err),
-          () => {
-            this.taskActions.recordTaskAction(task_id, "completed");
-          }
-        );
-      // TODO - add listeners/methods to know when task has been complete
-    }
+    const { start_action, flow_type, flow_name } = task;
     if (start_action) {
-      await this.taskActions.recordTaskAction(task_id, "started");
+      // Make sure evaluation listeners are ready ahead of starting action in case
+      // they instantly resolve on start
+      if (flow_type && flow_name) {
+        this.addFlowActionListeners(task_id, flow_name);
+      }
+      await this.taskActions.recordTaskAction({ task_id, type: "task_started" });
       this.runAction(task);
     }
-    // If no evaluation criteria can mark as completed immediately
-    if (!evaluation) {
-      this.taskActions.recordTaskAction(task_id, "completed");
-    }
+  }
+
+  /**
+   * Listen to the action stream for actions related to the current task
+   * If the flow is marked as completed also mark the overall task as completed
+   */
+  private addFlowActionListeners(task_id: string, flow_name: string) {
+    this.taskActions.action$
+      .pipe(
+        filter((action) => action.flow_name === flow_name),
+        takeWhile((action) => action.type !== "flow_completed")
+        // TODO - add handler to break subscription if flow abandoned or similar
+      )
+      .subscribe(
+        () => null,
+        (err) => console.error(err),
+        () => this.taskActions.recordTaskAction({ task_id, type: "task_completed" })
+      );
   }
 
   /** Provide specific handlers for actions, such as starting a flow */

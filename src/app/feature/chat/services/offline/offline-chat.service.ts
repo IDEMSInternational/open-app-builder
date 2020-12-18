@@ -92,6 +92,8 @@ export class OfflineChatService implements IChatService {
     if (this.flowsStack.length > 0) {
       let currentFlow = this.flowsStack[this.flowsStack.length - 1];
       console.log("Sending message to current flow ", message, currentFlow.name);
+      const flow_name = currentFlow.name;
+      this.chatActions.logActionToDB({ flow_name, type: "new_message", meta: message });
       return currentFlow.sendMessage(message);
     } else {
       return throwError("No active flows to send a message to");
@@ -101,7 +103,6 @@ export class OfflineChatService implements IChatService {
   private handleFlowsEnded() {
     console.log("all flows have ended", this.flowsStack);
     this.messages$.next([{ sender: "bot", text: "End of this content" }]);
-    this.chatActions.logActionToDB("complete");
   }
 
   /**
@@ -116,8 +117,8 @@ export class OfflineChatService implements IChatService {
           console.log("Flow stacks before event:", this.flowsStack.length);
           let latest = events[events.length - 1];
           console.log("latest status:", latest.status);
+          const flow = this.rpFlowsByName[latest.name];
           if (latest.status === "start") {
-            const flow = this.rpFlowsByName[latest.name];
             console.log(`%c${flow.name} START`, "background: white; color: green");
             let newFlow = new RapidProOfflineFlow(
               flow,
@@ -131,6 +132,7 @@ export class OfflineChatService implements IChatService {
               newFlow.sendMessageDelay = Number.parseInt(delay);
             });
             newFlow.start();
+            this.chatActions.logActionToDB({ flow_name: flow.name, type: "flow_started" });
           }
           if (latest.status === "completed") {
             // remove the completed flow from the stack
@@ -139,6 +141,7 @@ export class OfflineChatService implements IChatService {
             // if yes resume them
             if (this.flowsStack.length > 0) {
               let currentFlow = this.flowsStack[this.flowsStack.length - 1];
+              this.chatActions.logActionToDB({ flow_name: flow.name, type: "flow_completed" });
               currentFlow.continue("completed");
               // otherwise all flows have been complete, handle main exit
             } else {

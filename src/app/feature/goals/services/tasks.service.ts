@@ -52,8 +52,6 @@ export class TasksService {
         start_action_args: t.start_action_args || null,
         groups: stringToArray(t.groups),
         requires: stringToArray(t.requires),
-        // TODO - decide how to foramt/handle evaluation functions
-        evaluation: t.evaluation || null,
         actionHistory: actionHistoryHash[t.id],
       };
       return task;

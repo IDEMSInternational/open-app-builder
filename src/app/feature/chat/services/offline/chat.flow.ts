@@ -98,7 +98,10 @@ export class RapidProOfflineFlow {
     }
   }
 
-  private async handleNodeAction(action: RapidProFlowExport.Action, currentNode: RapidProFlowExport.Node) {
+  private async handleNodeAction(
+    action: RapidProFlowExport.Action,
+    currentNode: RapidProFlowExport.Node
+  ) {
     console.log(`%cAction: ${action.type}`, "color: #9c9c9c");
     switch (action.type) {
       case "enter_flow":
@@ -264,9 +267,12 @@ export class RapidProOfflineFlow {
     }
 
     return output;
-  }
+  };
 
-  private messageHasTextInput(action: RapidProFlowExport.Action, currentNode: RapidProFlowExport.Node) {
+  private messageHasTextInput(
+    action: RapidProFlowExport.Action,
+    currentNode: RapidProFlowExport.Node
+  ) {
     if (action.quick_replies && action.quick_replies.length > 0) {
       return false;
     }
@@ -286,7 +292,10 @@ export class RapidProOfflineFlow {
     }
   }
 
-  private async doSendMessageAction(action: RapidProFlowExport.Action, currentNode: RapidProFlowExport.Node) {
+  private async doSendMessageAction(
+    action: RapidProFlowExport.Action,
+    currentNode: RapidProFlowExport.Node
+  ) {
     const messages = this.messages$.getValue();
     const text = await this.parseMessageTemplate(action.text);
     let parsedAttachmentUrls = await Promise.all(action.attachments.map(this.parseMessageTemplate));
