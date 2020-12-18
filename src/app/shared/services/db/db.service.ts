@@ -18,7 +18,7 @@ const DB_TABLES = {
   reminders: "++id,type",
   goals: "id",
   // taskActions list likely to grow quite long so index across more fields for querying
-  taskActions: "id,task_id,_created,_status,_appVersion",
+  taskActions: "id,task_id,_created",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**

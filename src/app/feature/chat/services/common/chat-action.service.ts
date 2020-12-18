@@ -3,7 +3,10 @@ import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
-import { TaskActionService } from "src/app/shared/services/task/task-action.service";
+import {
+  IFlowTaskAction,
+  TaskActionService,
+} from "src/app/shared/services/task/task-action.service";
 import { ChatAction } from "../../models";
 import { URLParts } from "../../utils/message.converter";
 
@@ -22,11 +25,8 @@ export class ChatActionService {
   /**
    *  Record specific interactions or actions to the database
    */
-  public async logActionToDB(
-    type: "start_flow" | "new_message" | "complete",
-    actionMeta: any = {}
-  ) {
-    this.taskActionService.recordTaskAction(null, "flow_action", type, actionMeta);
+  public async logActionToDB(action: IFlowTaskAction) {
+    this.taskActionService.recordFlowTaskAction(action);
   }
 
   public async executeChatAction(action: ChatAction) {

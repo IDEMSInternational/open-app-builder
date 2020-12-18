@@ -19,8 +19,9 @@ export class TipsComponent implements OnInit {
   ngOnInit() {
     this.setDefaultModule();
     // Assume flow content has been completed once loaded (not necessarily entire task which could have multiple)
-    this.taskActionService.recordTaskAction(null, "flow_action", "completed", {
-      flow: this.tip.flow_name,
+    this.taskActionService.recordFlowTaskAction({
+      flow_name: this.tip.flow_name,
+      type: "flow_completed",
     });
   }
   async setDefaultModule() {

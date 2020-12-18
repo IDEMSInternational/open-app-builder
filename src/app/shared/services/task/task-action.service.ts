@@ -17,10 +17,31 @@ export class TaskActionService {
   action$ = new Subject<ITaskAction & { task_id: string }>();
   constructor(private db: DbService) {
     this._addWindowListeners();
-    this.recordTaskAction("app_session", "started");
+    this.recordSessionTaskAction({ type: "session_started" });
   }
 
   /**
+   * Record an action directly from within a flow. This will be assigned whatever task has
+   * been started most recently
+   */
+  async recordFlowTaskAction(action: IFlowTaskAction) {
+    const { flow_name, meta, type } = action;
+    this.recordTaskAction({
+      task_id: this.activeTaskId,
+      type,
+      flow_name,
+      meta,
+    });
+  }
+
+  /** Session task actions are all recorded against the same `app_session` task entry */
+  async recordSessionTaskAction(action: ISessionTaskAction) {
+    const { type, meta } = action;
+    this.recordTaskAction({ task_id: "app_session", type, meta });
+  }
+
+  /**
+   * This is the main method to record tasks
    *
    * @param task_id - The identifier of the task to assign the action to
    * If not known can provide a null value and will assume it is whatever task
@@ -28,20 +49,14 @@ export class TaskActionService {
    * @param actionType - category for logging actions
    * @param meta - Any additional information required for reporting
    */
-  async recordTaskAction(
-    task_id: string,
-    actionType: IActionType,
-    actionSubType?: string,
-    meta?: any
-  ) {
-    // fallback to most recent active task if not provided.
-    task_id = task_id || this.activeTaskId;
+  public async recordTaskAction(action: ITaskAction) {
+    const { task_id, type, meta } = action;
     if (!task_id) {
       console.error("no task specified and no active task");
       return;
     }
     // remove any previous instances of same task
-    if (actionType === "started" && this.activeTasks[task_id]) {
+    if (type === "task_started" && this.activeTasks[task_id]) {
       delete this.activeTasks[task_id];
     }
     // ensure there is an active entry tracking the current task
@@ -51,16 +66,15 @@ export class TaskActionService {
       this.activeTaskId = task_id;
     }
     // record the main entry and update metadata
-    const action: ITaskAction = { _created: this._generateTimestamp(), actionType };
+    delete action.task_id;
+    const actionEntry: ITaskActionEntry = { _created: this._generateTimestamp(), ...action };
     if (meta) {
       action.meta = meta;
     }
-    if (actionSubType) {
-      action.actionSubType = actionSubType;
-    }
-    this.activeTasks[task_id].actions.push(action);
-    if (actionType === "started" || actionType === "completed") {
-      this.activeTasks[task_id]._status = actionType;
+    this.activeTasks[task_id].actions.push(actionEntry);
+    // overall tracking of task status
+    if (type === "task_completed") {
+      this.activeTasks[task_id]._completed = true;
     }
     // update database
     const entry = this.activeTasks[task_id];
@@ -71,9 +85,9 @@ export class TaskActionService {
   /**
    * Record a specific task action across all tasks
    */
-  private async recordBulkAction(actionType: IActionType, meta?: any) {
+  private async recordBulkAction(type: ITaskActionType, meta?: any) {
     const promises = Object.keys(this.activeTasks).map(
-      async (t) => await this.recordTaskAction(t, actionType, meta)
+      async (task_id) => await this.recordTaskAction({ task_id, type, meta })
     );
     await Promise.all(promises);
   }
@@ -86,7 +100,7 @@ export class TaskActionService {
       actions: [],
       _created: timestamp,
       _appVersion: environment.version,
-      _status: null,
+      _completed: false,
     };
     return entry;
   }
@@ -104,17 +118,13 @@ export class TaskActionService {
   private _addWindowListeners() {
     window.addEventListener("beforeunload", async (e) => {
       e.preventDefault();
-      alert("window will unload");
-      await this.recordBulkAction("app_unload");
+      await this.recordBulkAction("session_ended");
       e.returnValue = "";
     });
     window.onfocus = async () => {
-      console.log("focus");
-      // TODO - decide reasonable limit for when to record or not (e.g. >1min)
       await this.recordBulkAction("app_focus");
     };
     window.onblur = async () => {
-      console.log("blur");
       await this.recordBulkAction("app_blur");
     };
   }
@@ -126,26 +136,54 @@ interface ITaskEntry {
   /** string */
   task_id: string;
   /** Log of all events */
-  actions: ITaskAction[];
+  actions: ITaskActionEntry[];
   /**  */
   _created: string;
-  /** Most recent status update for quick reference, pulled from action history */
-  _status: ITaskStatus;
+  /** Overall completion tracking */
+  _completed: boolean;
   /** Track app version at time of task to be able to generate full task meta if required */
   _appVersion: string;
 }
+/**  */
 interface ITaskAction {
-  /** timestamp */
-  _created: string;
+  /** string */
+  task_id: string;
   /** specific list of types to help organising database entries */
-  actionType: IActionType;
-  /** additional sub-type for more general lookups */
-  actionSubType?: string;
+  type: ITaskActionType;
+  /** when actions are trigered from a flow use name to help with completion tracking */
+  flow_name?: string;
   /** */
   meta?: any;
 }
 
-/** Core set of overall task statuses */
-type ITaskStatus = "started" | "completed";
+export interface IFlowTaskAction {
+  type: IFlowActionType;
+  /** ... */
+  flow_name: string;
+  /** */
+  meta?: any;
+}
+
+interface ISessionTaskAction {
+  type: ITaskActionType;
+  /** */
+  meta?: any;
+}
+
+/** When saving task actions to the database add a timestamp */
+type ITaskActionEntry = Omit<ITaskAction, "task_id"> & {
+  /** timestamp */
+  _created: string;
+};
+
 /** A task action can be a task status or other meta statuses */
-export type IActionType = ITaskStatus | "flow_action" | "app_unload" | "app_blur" | "app_focus";
+export type ITaskActionType = "task_started" | "task_completed" | IMetaActionType | IFlowActionType;
+
+export type IMetaActionType = "session_started" | "session_ended" | "app_blur" | "app_focus";
+
+export type IFlowActionType =
+  | "flow_started"
+  | "flow_completed"
+  | "variable_set"
+  | "new_message"
+  | "item_clicked";
