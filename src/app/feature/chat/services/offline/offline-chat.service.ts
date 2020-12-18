@@ -43,17 +43,8 @@ export class OfflineChatService implements IChatService {
 
   private init() {
     this.loadFlowData();
-    this.settingsService
-      .getUserSetting("USE_GDRIVE_CONTENT")
-      .subscribe(async (useGDriveContent) => {
-        if (useGDriveContent === "true") {
-          const flowExportsPath =
-            "https://plh-demo1.idems.international/sheet-content/flow-export.json";
-          await this.loadExportFile(flowExportsPath);
-        }
-        this.subscribeToFlowStatusChanges();
-        this.ready$.next(true);
-      });
+    this.subscribeToFlowStatusChanges();
+    this.ready$.next(true);
   }
 
   /** Load the list of all flows defined as type 'conversation' within the hardcoded data ts file */
