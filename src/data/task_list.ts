@@ -468,8 +468,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_treat_yourself",
@@ -488,8 +487,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_praise_yourself",
@@ -508,8 +506,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_spend_time",
@@ -528,8 +525,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_praise_teen",
@@ -548,8 +544,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_breathe",
@@ -568,8 +563,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_money",
@@ -588,8 +582,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_consequence",
@@ -608,8 +601,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_safe",
@@ -628,8 +620,7 @@
           "hidden"
         ],
         "start_action": "give_award",
-        "start_action_args": "fireworks",
-        "evaluation": "completed"
+        "start_action_args": "fireworks"
       },
       {
         "id": "task_care_package_self_completed_goal",
@@ -637,8 +628,7 @@
           "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "medal",
-        "evaluation": "completed"
+        "start_action_args": "medal"
       },
       {
         "id": "task_care_package_teen_completed_goal",
@@ -646,8 +636,7 @@
           "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "medal",
-        "evaluation": "completed"
+        "start_action_args": "medal"
       },
       {
         "id": "task_care_package_behaviour_completed_goal",
@@ -655,8 +644,7 @@
           "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "medal",
-        "evaluation": "completed"
+        "start_action_args": "medal"
       },
       {
         "id": "task_care_package_family_completed_goal",
@@ -664,8 +652,7 @@
           "care_packages"
         ],
         "start_action": "give_award",
-        "start_action_args": "medal",
-        "evaluation": "completed"
+        "start_action_args": "medal"
       }
     ]
   }
