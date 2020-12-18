@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
+import { filter, takeUntil, takeWhile } from "rxjs/operators";
 import { FlowTypes } from "../../model";
 import { TASK_LIST } from "../data/data.service";
 import { TaskActionService } from "./task-action.service";
@@ -28,18 +29,39 @@ export class TaskService {
    * and add listeners to handle any completion events
    */
   async startTask(task_id: string) {
-    await this.taskActions.recordTaskAction(task_id, "started");
     const task = this.allTasksById[task_id];
     if (!task) {
       throw new Error(`task not found: ${task_id}`);
     }
     const { start_action, evaluation } = task;
+
+    // Make sure evaluation listeners are ready ahead of starting action in case
+    // they instantly resolve on start
     if (evaluation) {
+      console.log("TODO - handle evaluation", evaluation);
+      this.taskActions.action$
+        .pipe(
+          filter((v) => v.task_id === task_id),
+          takeWhile((v) => v.actionSubType !== "completed")
+        )
+        .subscribe(
+          (t) => {
+            console.log("action", t);
+          },
+          (err) => console.error(err),
+          () => {
+            this.taskActions.recordTaskAction(task_id, "completed");
+          }
+        );
       // TODO - add listeners/methods to know when task has been complete
     }
     if (start_action) {
-      console.log("starting action", start_action);
+      await this.taskActions.recordTaskAction(task_id, "started");
       this.runAction(task);
+    }
+    // If no evaluation criteria can mark as completed immediately
+    if (!evaluation) {
+      this.taskActions.recordTaskAction(task_id, "completed");
     }
   }
 
