@@ -7,10 +7,17 @@ import { ISurvey } from "../types/survey.types";
   template: `
     <ion-button fill="clear" (click)="skipIntro()" class="skip-button">Skip Intro</ion-button>
     <div class="section-container">
-      <section [@fadeInOut]="fadeSection[0]">Bringing up teenagers is hard</section>
-      <section [@fadeInOut]="fadeSection[1]">You are the best parent your teen could have</section>
+      <section [@fadeInOut]="fadeSection[0]">
+        <img src="assets/images/splash-screen/0.svg">
+        <p>Bringing up teenagers is hard</p>
+      </section>
+      <section [@fadeInOut]="fadeSection[1]">
+        <img src="assets/images/splash-screen/1.svg">
+        <p>You are the best parent your teen could have</p>
+      </section>
       <section [@fadeInOut]="fadeSection[2]">
-        Join the 124 million parents who have used our resources
+        <img src="assets/images/splash-screen/2.svg">
+        <p>Join the 124 million parents who have used our resources</p>
       </section>
       <section [@fadeInOut]="fadeSection[3]">
         <div>Powered by Parenting for Lifelong Health</div>
@@ -24,36 +31,70 @@ import { ISurvey } from "../types/survey.types";
   `,
   styles: [
     `
+      p {
+        font-size: 20px;
+      }
+
       .section-container {
         position: relative;
         width: 300px;
-        margin-top: 30%;
+        margin-top: 15%;
         margin-left: auto;
         margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .partner-logos {
-        width: 300px;
+        width: 100%;
         margin-top: 2em;
-        display: grid;
-        grid-gap: 15px;
-        grid-template-columns: repeat(3, 90px);
-        grid-template-rows: repeat(3, 90px);
-        grid-auto-flow: row;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .partner-logos > img {
-        height: 100%;
+        max-width: 200px;
+        margin-bottom: 30px;
       }
       section {
         position: absolute;
         top: 0;
         left: 0;
         opacity: 0;
+        width: 100%;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      section > img {
+        max-width: 200px;
       }
       .skip-button {
         position: absolute;
         top: 0;
         right: 0;
         opacity: 0.3;
+      }
+
+      /* For short phone screen */
+      @media only screen and (max-width: 500px) and (max-height:500px) {
+        .partner-logos > img {
+          width: 80px;
+          margin-bottom: 10px;
+        }
+      }
+
+      /* For short modal */
+      @media only screen and (min-width: 600px) and (min-height:500px) and (max-height:770px) {
+        .partner-logos > img {
+          width: 110px;
+          margin-bottom: 20px;
+        }
       }
     `,
   ],
