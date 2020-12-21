@@ -23,7 +23,7 @@ const DB_TABLES = {
   /** taskActions track content the user has interacted with */
   task_actions: "id,task_id,_created",
   /** user */
-  user_meta: "id",
+  user_meta: "key,value",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**
@@ -40,7 +40,7 @@ export interface IDBDoc {
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
  */
-const DB_VERSION = 5000;
+const DB_VERSION = 7000;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({
