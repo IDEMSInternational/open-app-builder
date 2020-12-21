@@ -24,7 +24,7 @@ export class TasksService {
    ************************************************************************/
   /** Read database objects and evaluate full task lists */
   public async loadTasks() {
-    const actionHistory = await this.dbService.table<any>("taskActions").toArray();
+    const actionHistory = await this.dbService.table<any>("task_actions").toArray();
     const actionHistoryHash = arrayToHashmapArray<ITaskAction>(actionHistory, "task_id");
     const allTasks = this.processTasksList(actionHistoryHash);
     const userTasks = this.processUserTasksList(allTasks, actionHistoryHash);

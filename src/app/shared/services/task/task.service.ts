@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
-import { filter, takeWhile } from "rxjs/operators";
 import { FlowTypes } from "../../model";
 import { TASK_LIST } from "../data/data.service";
 import { TaskActionService } from "./task-action.service";
@@ -15,7 +14,6 @@ export class TaskService {
     private router: Router,
     private taskActions: TaskActionService
   ) {
-    console.log("task service", this.modalCtrl);
     this.processTaskList();
     this.processTaskActionHistory();
   }
@@ -26,21 +24,15 @@ export class TaskService {
 
   /**
    * When running a task we want to trigger any required actions,
-   * and add listeners to handle any completion events
    */
   async startTask(task_id: string) {
     const task = this.allTasksById[task_id];
     if (!task) {
       throw new Error(`task not found: ${task_id}`);
     }
-    const { start_action, flow_type, flow_name } = task;
+    const { start_action } = task;
     if (start_action) {
-      // Make sure evaluation listeners are ready ahead of starting action in case
-      // they instantly resolve on start
-      if (flow_type && flow_name) {
-        this.addFlowActionListeners(task_id, flow_name);
-      }
-      await this.taskActions.recordTaskAction({ task_id, type: "task_started" });
+      await this.taskActions.recordTaskAction({ task_id, type: "started" });
       this.runAction(task);
     }
   }
@@ -92,24 +84,6 @@ export class TaskService {
     return false;
   }
 
-  /**
-   * Listen to the action stream for actions related to the current task
-   * If the flow is marked as completed also mark the overall task as completed
-   */
-  private addFlowActionListeners(task_id: string, flow_name: string) {
-    this.taskActions.action$
-      .pipe(
-        filter((action) => action.flow_name === flow_name),
-        takeWhile((action) => action.type !== "flow_completed")
-        // TODO - add handler to break subscription if flow abandoned or similar
-      )
-      .subscribe(
-        () => null,
-        (err) => console.error(err),
-        () => this.taskActions.recordTaskAction({ task_id, type: "task_completed" })
-      );
-  }
-
   /** Provide specific handlers for actions, such as starting a flow */
   public async runAction(task: FlowTypes.Task_listRow) {
     const handlers: {
@@ -139,21 +113,12 @@ export class TaskService {
     this.allTasksById = allTasksById;
   }
   private async processTaskActionHistory() {
-    // this.taskActions = await this.dbService.table<ITaskAction>("taskActions").toArray();
+    // this.taskActions = await this.dbService.table<ITaskAction>("task_actions").toArray();
   }
 
   /*******************************************************************************
    * Specific action handlers
    *******************************************************************************/
-
-  // private async addTaskAction(action: ITaskAction) {
-  //   // await this.dbService.table<ITaskAction>("taskActions").put(action as ITaskAction);
-  //   // await this.loadActions();
-  // }
-  // private async removeTaskAction(id: string) {
-  //   // await this.dbService.table("taskActions").delete(id);
-  //   // await this.loadActions();
-  // }
 
   /** Launch a flow using the chat page interface, passing the flow id for starting */
   private async handleStartNewFlowAction(task: FlowTypes.Task_listRow) {
