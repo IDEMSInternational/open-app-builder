@@ -1,8 +1,9 @@
 import { Component, Input, ViewChild } from "@angular/core";
-import { ITask } from 'src/app/feature/goals/models/goals.model';
+import { ITask } from "src/app/feature/goals/models/goals.model";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { MODULE_LIST } from "src/app/shared/services/data/data.service";
-import { SlidePanelBottomComponent } from './components/slide-panel-bottom';
+import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
+import { SlidePanelBottomComponent } from "./components/slide-panel-bottom";
 
 @Component({
   selector: "plh-module-focus-skin",
@@ -17,10 +18,11 @@ export class ModuleFocusSkin {
 
   moduleList = MODULE_LIST[0].rows;
 
-  constructor() {}
+  constructor(private userMetaService: UserMetaService) {}
 
   onModuleChange(module: FlowTypes.Module_listRow) {
     this.moduleListRow = module;
+    this.userMetaService.setUserMeta({ active_module: module.id });
   }
 
   onTaskClick(task: ITask) {
