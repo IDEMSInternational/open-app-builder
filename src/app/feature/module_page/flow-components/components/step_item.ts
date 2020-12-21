@@ -28,6 +28,7 @@ export class StepItemFlowComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
+    console.log("step item init", this.row.task_id);
     if (this.row.task_id) {
       this.evaluateTaskMeta(this.row.task_id);
     }
