@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
