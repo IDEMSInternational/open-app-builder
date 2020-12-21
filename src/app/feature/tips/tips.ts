@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FlowTypes } from "scripts/types";
 import { IAppSkin } from "src/app/shared/model";
@@ -10,7 +10,7 @@ import { TaskActionService } from "src/app/shared/services/task/task-action.serv
   templateUrl: "./tips.html",
   styleUrls: ["./tips.scss"],
 })
-export class TipsComponent implements OnInit {
+export class TipsComponent implements OnInit, OnDestroy {
   dataLoaded = false;
   appSkin: IAppSkin = "MODULE_FOCUS_SKIN";
   tip: FlowTypes.Tips;
@@ -18,10 +18,13 @@ export class TipsComponent implements OnInit {
 
   ngOnInit() {
     this.setDefaultModule();
-    // Assume flow content has been completed once loaded (not necessarily entire task which could have multiple)
+  }
+  ngOnDestroy() {
+    console.log("tips destroyed");
+    // Assume flow content has been completed once page left
     this.taskActionService.recordFlowTaskAction({
       flow_name: this.tip.flow_name,
-      type: "flow_completed",
+      type: "completed",
     });
   }
   async setDefaultModule() {
