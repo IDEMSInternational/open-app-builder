@@ -21,7 +21,6 @@ export class ModulePageComponent implements OnInit {
     if (modulePageFlow) {
       this.modulePageFlow = modulePageFlow;
       console.log("module page flow", this.modulePageFlow);
-
       this.dataLoaded = true;
     } else {
       throw new Error(`Module Page Flow Not Found: ${flow_name}`);

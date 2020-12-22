@@ -33,7 +33,7 @@ export class GoalsService {
     // const { CompletionsList, GoalsList, RemindersList, TasksList } = DATA;
     // this.completionListHash = arrayToHashmap(CompletionsList, "id");
     // this.taskListHash = this.processTasksList(TasksList);
-    // this.actionHistory = await this.dbService.table<any>("taskActions").toArray();
+    // this.actionHistory = await this.dbService.table<any>("task_actions").toArray();
     // const userGoals = await this.dbService.table<IUserGoal>("goals").toArray();
     // this.allGoals = this.processGoalsList(GoalsList, userGoals);
     // this.userGoals = this.processUserGoals(userGoals, this.allGoals);

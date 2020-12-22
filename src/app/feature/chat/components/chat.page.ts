@@ -281,7 +281,6 @@ export class ChatPage {
   }
 
   skipFlow() {
-    // this.localStorageService.setBoolean("welcome_skipped", true);
     this.router.navigateByUrl("/home");
   }
 
