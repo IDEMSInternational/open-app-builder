@@ -1,24 +1,23 @@
-<div class="main-container">
-  <ion-content class="background-primary-lighter">
-    <!-- [ngStyle]="{'background': 'var(--theme-var-' + moduleListRow.id + ')'}" -->
-    <plh-habit-tracker></plh-habit-tracker>
-    <div class="module-info-container">
-      <div class="module-image-container">
-        <img class="module-main-img" [src]="moduleListRow.main_image_asset" />
-        <ion-button
-          class="module-main-button"
-          fill="clear"
-          size="large"
-          [routerLink]="['/','module_page',moduleListRow.module_page]"
-        >
-          <ion-icon slot="icon-only" name="play-outline"></ion-icon>
-        </ion-button>
-      </div>
-
-      <h1>{{moduleListRow.title}}</h1>
-      <p>{{moduleListRow.description}}</p>
+<div class="flex-column-container background-primary-lighter">
+  <!-- [ngStyle]="{'background': 'var(--theme-var-' + moduleListRow.id + ')'}" -->
+  <plh-habit-tracker></plh-habit-tracker>
+  <div class="module-info-container flex-column-content">
+    <div class="module-image-container">
+      <img class="module-main-img" [src]="moduleListRow.main_image_asset" />
+      <ion-button
+        class="module-main-button"
+        fill="clear"
+        size="large"
+        [routerLink]="['/','module_page',moduleListRow.module_page]"
+      >
+        <ion-icon slot="icon-only" name="play-outline"></ion-icon>
+      </ion-button>
     </div>
-  </ion-content>
+
+    <h1>{{moduleListRow.title}}</h1>
+    <p>{{moduleListRow.description}}</p>
+  </div>
+
   <plh-slide-panel-right headerText="Modules" #rightPanel>
     <plh-module-select-circle
       [modules]="moduleList"
