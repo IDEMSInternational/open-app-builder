@@ -78,6 +78,8 @@ export class StepItemFlowComponent implements OnInit, OnDestroy {
     this.subscription$ = this.router.events.subscribe(async (e) => {
       if (e instanceof NavigationEnd && e.url === currentUrl) {
         await this.evaluateTaskMeta(this.row.task_id);
+        // TODO - check if there are any pending writes also (e.g. tips page just destroyed)
+        // might be handled with better overall binding system so non-priority
       }
     });
   }

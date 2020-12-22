@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "../../model";
 import { TASK_LIST } from "../data/data.service";
 import { TaskActionService } from "./task-action.service";
@@ -9,11 +8,7 @@ import { TaskActionService } from "./task-action.service";
 export class TaskService {
   allTasksById: Hashmap<FlowTypes.Task_listRow> = {};
 
-  constructor(
-    private modalCtrl: ModalController,
-    private router: Router,
-    private taskActions: TaskActionService
-  ) {
+  constructor(private router: Router, private taskActions: TaskActionService) {
     this.processTaskList();
     this.processTaskActionHistory();
   }

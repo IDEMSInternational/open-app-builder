@@ -5,13 +5,17 @@ import { environment } from "src/environments/environment";
 import { DbService } from "../db/db.service";
 
 @Injectable({ providedIn: "root" })
+/**
+ * The TaskActionService records information about started and completed tasks as well as the current session more generally
+ */
 export class TaskActionService {
   /**
    * Tasks may be run in parallel (e.g. overall app session with specific task, or pausing one task to complete another)
    * Keep a list of all tasks that have been recorded as active
    */
   activeTasks: { [task_id: string]: ITaskEntry } = {};
-
+  /** A single session entry will be created each app session for storing other meta tasks */
+  activeSession: ITaskEntry;
   /** An active stream of actions for subcription */
   action$ = new Subject<ITaskAction & { task_id: string }>();
   /** Track time when app loses focus to calculate overall inactivity time */
@@ -20,7 +24,7 @@ export class TaskActionService {
   private readonly INACTIVITY_THRESHOLD = 30000;
   constructor(private db: DbService) {
     this._addWindowListeners();
-    this.recordSessionTaskAction({ type: "started" });
+    this.recordSessionAction({ type: "started" });
   }
 
   get table() {
@@ -42,20 +46,9 @@ export class TaskActionService {
     });
   }
 
-  /** Session task actions are all recorded against the same `app_session` task entry */
-  async recordSessionTaskAction(action: ISessionTaskAction) {
-    const { type, meta } = action;
-    this.recordTaskAction({ task_id: "app_session", type, meta });
-  }
-
   /**
    * This is the main method to record tasks
-   *
-   * @param task_id - The identifier of the task to assign the action to
-   * If not known can provide a null value and will assume it is whatever task
-   * had been started most recently
-   * @param actionType - category for logging actions
-   * @param meta - Any additional information required for reporting
+   * @param table - task and session actions recorded to different tables for ease of porcessing
    */
   public async recordTaskAction(action: ITaskAction) {
     const { task_id, type, meta } = action;
@@ -63,7 +56,6 @@ export class TaskActionService {
       console.error("no task specified and no active task");
       return;
     }
-
     // remove any previous instances of same task
     if (type === "started" && this.activeTasks[task_id]) {
       delete this.activeTasks[task_id];
@@ -76,9 +68,14 @@ export class TaskActionService {
     const dbEntry = this.activeTasks[task_id];
 
     switch (type) {
+      // if task ended without completion simply track time spent on task
+      case "ended":
+        dbEntry._duration = this._calculateTaskDuration(dbEntry);
+        break;
       // if task completed can mark overall entry as completed and stop tracking
       case "completed":
         dbEntry._completed = true;
+        dbEntry._duration = this._calculateTaskDuration(dbEntry);
         delete this.activeTasks[task_id];
         break;
       default:
@@ -94,14 +91,34 @@ export class TaskActionService {
     this.action$.next({ ...action, task_id });
   }
 
+  /** Session task actions are all recorded against the same `app_session` task entry */
+  async recordSessionAction(action: ISessionTaskAction) {
+    if (!this.activeSession) {
+      this.activeSession = this.createNewEntry("app_session");
+    }
+    const dbEntry = this.activeSession;
+    if (action.type === "ended") {
+      dbEntry._completed = true;
+      dbEntry._duration = this._calculateTaskDuration(dbEntry);
+    }
+    dbEntry.actions.push({ _created: this._generateTimestamp(), ...action });
+    await this.db.table("session_actions").put(dbEntry, dbEntry.id);
+  }
+
+  private _calculateTaskDuration(task: ITaskEntry, taskEndTime = new Date().getTime()) {
+    const taskStartTime = new Date(task._created).getTime();
+    return Math.round((taskEndTime - taskStartTime) / 1000);
+  }
+
   /**
    * Record a specific task action across all tasks
    */
   private async recordBulkAction(type: ITaskActionType, meta?: any) {
-    const promises = Object.keys(this.activeTasks).map(
+    const taskPromises = Object.keys(this.activeTasks).map(
       async (task_id) => await this.recordTaskAction({ task_id, type, meta })
     );
-    await Promise.all(promises);
+    await Promise.all(taskPromises);
+    await this.recordSessionAction({ type, meta });
   }
 
   private createNewEntry(task_id: string) {
@@ -113,6 +130,7 @@ export class TaskActionService {
       _created: timestamp,
       _appVersion: environment.version,
       _completed: false,
+      _duration: 0,
     };
     return entry;
   }
@@ -130,7 +148,7 @@ export class TaskActionService {
   private _addWindowListeners() {
     window.addEventListener("beforeunload", async (e) => {
       e.preventDefault();
-      await this.recordBulkAction("session_ended");
+      await this.recordBulkAction("ended");
       e.returnValue = "";
     });
     // when the app blurs start a time for the total duration
@@ -162,6 +180,8 @@ export interface ITaskEntry {
   _completed: boolean;
   /** Track app version at time of task to be able to generate full task meta if required */
   _appVersion: string;
+  /** Track time spent on task, rounded to the nearest second */
+  _duration: number;
 }
 /**  */
 interface ITaskAction {
@@ -197,10 +217,10 @@ type ITaskActionEntry = Omit<ITaskAction, "task_id"> & {
 
 /**
  * Task actions can use started or completed to indicate the start or end of an entry
- * These aren't explicitly written to the database, but tracked in creation and duration metadata
+ * These aren't explicitly written to the database, but tracked in creation and duration metadata.
  */
-export type ITaskActionBase = "started" | "completed";
+export type ITaskActionBase = "started" | "completed" | "ended";
 /** A task action can be a task status or other meta statuses */
 export type ITaskActionType = ITaskActionBase | IMetaActionType | IFlowActionType;
-export type IMetaActionType = ITaskActionBase | "session_ended" | "app_inactive";
+export type IMetaActionType = ITaskActionBase | "app_inactive";
 export type IFlowActionType = ITaskActionBase | "variable_set" | "new_message" | "item_clicked";

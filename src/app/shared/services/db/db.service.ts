@@ -20,8 +20,10 @@ window.addEventListener("unhandledrejection", (event) => {
 const DB_TABLES = {
   surveys: "++id,surveyId",
   reminders: "++id,type",
-  /** taskActions track content the user has interacted with */
+  /** task_actions track content the user has interacted with */
   task_actions: "id,task_id,_created",
+  /** session_actions track meta interactions such as start and end of session */
+  session_actions: "id,task_id,_created",
   /** user */
   user_meta: "key,value",
 };

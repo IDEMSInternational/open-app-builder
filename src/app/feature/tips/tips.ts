@@ -19,13 +19,13 @@ export class TipsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.setDefaultModule();
   }
-  ngOnDestroy() {
-    console.log("tips destroyed");
+  async ngOnDestroy() {
     // Assume flow content has been completed once page left
-    this.taskActionService.recordFlowTaskAction({
+    await this.taskActionService.recordFlowTaskAction({
       flow_name: this.tip.flow_name,
       type: "completed",
     });
+    // TODO - possibly add a route guard to finish updating data before unload
   }
   async setDefaultModule() {
     const flow_name = this.route.snapshot.params.flow_name;
