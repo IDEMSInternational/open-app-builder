@@ -35,12 +35,12 @@
       },
       {
         "module_number": 3,
-        "id": "mod_instructions",
+        "id": "mod_instruct",
         "title": "Positive Instructions",
         "title_short": "Instructions",
-        "icon_asset": "assets/plh_assets/plh_images/modules/mod_instructions/icon.svg",
-        "main_image_asset": "assets/plh_assets/plh_images/modules/mod_instructions/image.svg",
-        "module_page": "mod_instructions_page"
+        "icon_asset": "assets/plh_assets/plh_images/modules/mod_instruct/icon.svg",
+        "main_image_asset": "assets/plh_assets/plh_images/modules/mod_instruct/image.svg",
+        "module_page": "mod_instruct_page"
       },
       {
         "module_number": 4,

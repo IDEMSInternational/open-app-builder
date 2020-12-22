@@ -3,111 +3,6 @@
   export const goal_list: FlowTypes.Goal_list[] = [
   {
     "flow_type": "goal_list",
-    "flow_name": "module_goal_list",
-    "status": "released",
-    "rows": [
-      {
-        "id": "goal_mod_welcome",
-        "label": "Complete Welcome Module",
-        "groups_list": [
-          "modules"
-        ],
-        "completion_id_list": [
-          "completion_mod_welcome_self-care_package",
-          "completion_mod_welcome_quick_praise",
-          "completion_mod_welcome_survey",
-          "completion_mod_welcome_photo_activity"
-        ],
-        "completion_tasks": "task_mod_welcome_completed_goal"
-      },
-      {
-        "id": "goal_mod_1on1",
-        "label": "Complete One-on-One Time Module",
-        "groups_list": [
-          "modules",
-          "level_1"
-        ],
-        "completion_id_list": [
-          "completion_mod_1on1_emo",
-          "completion_mod_1on1_intro",
-          "completion_mod_1on1_tips",
-          "completion_mod_1on1_activity",
-          "completion_mod_1on1_par",
-          "completion_mod_1on1_fun",
-          "completion_mod_1on1_activity_review"
-        ],
-        "completion_tasks": "task_mod_1on1_completed_goal"
-      },
-      {
-        "id": "goal_mod_praise",
-        "label": "Complete Praise Module",
-        "groups_list": [
-          "modules",
-          "level_2"
-        ],
-        "completion_id_list": [
-          "completion_mod_praise_intro",
-          "completion_mod_praise_tips",
-          "completion_mod_praise_activity",
-          "completion_mod_praise_emo",
-          "completion_mod_praise_fun",
-          "completion_mod_praise_activity_review"
-        ],
-        "completion_tasks": "task_mod_praise_completed_goal"
-      },
-      {
-        "id": "goal_mod_instructions",
-        "label": "Complete Positive Instructions Module",
-        "groups_list": [
-          "modules",
-          "level_3"
-        ],
-        "completion_id_list": [
-          "completion_mod_instructions_par",
-          "completion_mod_instructions_intro",
-          "completion_mod_instructions_tips",
-          "completion_mod_instructions_activity",
-          "completion_mod_instructions_emo",
-          "completion_mod_instructions_fun",
-          "completion_mod_instructions_activity_review"
-        ],
-        "completion_tasks": "task_mod_instructions_completed_goal"
-      },
-      {
-        "id": "goal_mod_stress",
-        "label": "Complete Managing Anger and Stress Module",
-        "groups_list": [
-          "modules",
-          "level_4"
-        ],
-        "completion_id_list": [
-          "completion_mod_stress_par",
-          "completion_mod_stress_intro",
-          "completion_mod_stress_tips",
-          "completion_mod_stress_activity",
-          "completion_mod_stress_emo",
-          "completion_mod_stress_fun",
-          "completion_mod_stress_home_activity"
-        ],
-        "completion_tasks": "task_mod_stress_completed_goal"
-      },
-      {
-        "id": "goal_all_modules",
-        "label": "Complete all PLH Teens Modules",
-        "groups_list": [
-          "top"
-        ],
-        "completion_id_list": [
-          "completion_mod_welcome_completed_goal",
-          "completion_mod_1on1_completed_goal",
-          "completion_mod_praise_completed_goal",
-          "completion_mod_instructions_completed_goal"
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "goal_list",
     "flow_name": "habit_goal_list",
     "status": "released",
     "rows": [
@@ -296,6 +191,111 @@
           "completion_safe_custom"
         ],
         "completion_tasks": "task_care_package_family_completed_goal"
+      }
+    ]
+  },
+  {
+    "flow_type": "goal_list",
+    "flow_name": "module_goal_list",
+    "status": "released",
+    "rows": [
+      {
+        "id": "goal_mod_welcome",
+        "label": "Complete Welcome Module",
+        "groups_list": [
+          "modules"
+        ],
+        "completion_id_list": [
+          "completion_mod_welcome_self-care_package",
+          "completion_mod_welcome_quick_praise",
+          "completion_mod_welcome_survey",
+          "completion_mod_welcome_photo_activity"
+        ],
+        "completion_tasks": "task_mod_welcome_completed_goal"
+      },
+      {
+        "id": "goal_mod_1on1",
+        "label": "Complete One-on-One Time Module",
+        "groups_list": [
+          "modules",
+          "level_1"
+        ],
+        "completion_id_list": [
+          "completion_mod_1on1_emo",
+          "completion_mod_1on1_intro",
+          "completion_mod_1on1_tips",
+          "completion_mod_1on1_activity",
+          "completion_mod_1on1_par",
+          "completion_mod_1on1_fun",
+          "completion_mod_1on1_activity_review"
+        ],
+        "completion_tasks": "task_mod_1on1_completed_goal"
+      },
+      {
+        "id": "goal_mod_praise",
+        "label": "Complete Praise Module",
+        "groups_list": [
+          "modules",
+          "level_2"
+        ],
+        "completion_id_list": [
+          "completion_mod_praise_intro",
+          "completion_mod_praise_tips",
+          "completion_mod_praise_activity",
+          "completion_mod_praise_emo",
+          "completion_mod_praise_fun",
+          "completion_mod_praise_activity_review"
+        ],
+        "completion_tasks": "task_mod_praise_completed_goal"
+      },
+      {
+        "id": "goal_mod_instruct",
+        "label": "Complete Positive Instructions Module",
+        "groups_list": [
+          "modules",
+          "level_3"
+        ],
+        "completion_id_list": [
+          "completion_mod_instruct_par",
+          "completion_mod_instruct_intro",
+          "completion_mod_instruct_tips",
+          "completion_mod_instruct_activity",
+          "completion_mod_instruct_emo",
+          "completion_mod_instruct_fun",
+          "completion_mod_instruct_activity_review"
+        ],
+        "completion_tasks": "task_mod_instruct_completed_goal"
+      },
+      {
+        "id": "goal_mod_stress",
+        "label": "Complete Managing Anger and Stress Module",
+        "groups_list": [
+          "modules",
+          "level_4"
+        ],
+        "completion_id_list": [
+          "completion_mod_stress_par",
+          "completion_mod_stress_intro",
+          "completion_mod_stress_tips",
+          "completion_mod_stress_activity",
+          "completion_mod_stress_emo",
+          "completion_mod_stress_fun",
+          "completion_mod_stress_home_activity"
+        ],
+        "completion_tasks": "task_mod_stress_completed_goal"
+      },
+      {
+        "id": "goal_all_modules",
+        "label": "Complete all PLH Teens Modules",
+        "groups_list": [
+          "top"
+        ],
+        "completion_id_list": [
+          "completion_mod_welcome_completed_goal",
+          "completion_mod_1on1_completed_goal",
+          "completion_mod_praise_completed_goal",
+          "completion_mod_instruct_completed_goal"
+        ]
       }
     ]
   }
