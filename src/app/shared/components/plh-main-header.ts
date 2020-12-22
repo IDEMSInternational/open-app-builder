@@ -1,5 +1,5 @@
 import { Location } from "@angular/common";
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, NgZone, OnDestroy, OnInit } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 
