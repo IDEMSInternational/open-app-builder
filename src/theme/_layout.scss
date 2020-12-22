@@ -7,6 +7,16 @@ ion-content.background-primary-lighter {
 ion-content.background-white {
   --background: white;
 }
+.background-secondary {
+  background: var(--ion-color-secondary);
+}
+.background-primary-lighter {
+  background: var(--ion-color-primary-lighter);
+}
+.background-white {
+  background: white;
+}
+
 button.alert-button.alert-delete-button {
   color: var(--ion-color-danger);
 }
@@ -32,6 +42,13 @@ button.alert-button.alert-delete-button {
 
 .flex-column-container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+}
+
+.flex-column-content {
   display: flex;
   flex-direction: column;
   flex: 1;

@@ -3,7 +3,14 @@ import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
 import { EventService } from "../event/event.service";
+
 const db = new Dexie("plh-app-db");
+
+window.addEventListener("unhandledrejection", (event) => {
+  event.preventDefault(); // Prevents default handler (would log to console).
+  let reason = event.reason;
+  console.warn("Unhandled promise rejection:", reason && (reason.stack || reason));
+});
 
 /**
  * All tables used must be defined with any indices required (other columns freely added)
@@ -11,14 +18,14 @@ const db = new Dexie("plh-app-db");
  * https://dexie.org/docs/API-Reference#quick-reference
  */
 const DB_TABLES = {
-  flows: "id",
-  family: "++id",
-  calendar: "++id",
   surveys: "++id,surveyId",
   reminders: "++id,type",
-  goals: "id",
-  // taskActions list likely to grow quite long so index across more fields for querying
-  taskActions: "id,task_id,_created",
+  /** task_actions track content the user has interacted with */
+  task_actions: "id,task_id,_created",
+  /** session_actions track meta interactions such as start and end of session */
+  session_actions: "id,task_id,_created",
+  /** user */
+  user_meta: "key,value",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**
@@ -35,20 +42,40 @@ export interface IDBDoc {
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
  */
-const DB_VERSION = 2004;
+const DB_VERSION = 7000;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({
   providedIn: "root",
 })
 export class DbService {
-  // expose database for other services to access
-  public db = db;
+  private db = db;
   constructor(private eventService: EventService) {}
   async init() {
     this._listenToDBChanges();
-    db.open();
+    db.open().catch((err) => {
+      console.error("could not open db", err);
+      // NOTE - invalid state error suggests dexie not supported, so
+      // try reloading with cachedb disabled (see db index for implementation)
+      if (err.name === Dexie.errnames.InvalidStateError) {
+        if (err.inner.name === Dexie.errnames.InvalidStateError) {
+          // TODO
+          // location.replace(location.href + "?no-cache");
+        }
+      }
+      // NOTE - upgrade error can be avoided by defining legacy db caches
+      // with corresponding upgrade functions (see below method TODO)
+      if (err.name === Dexie.errnames.UpgradeError) {
+        console.log("upgrade error");
+        // TODO - backup db elsewhere, delete and reload
+        // await Dexie.delete(CACHE_DB_NAME).catch(() => location.reload());
+        // return location.reload();
+      }
+    });
     this._addEventListeners();
+  }
+  deleteDatabase() {
+    return this.db.delete();
   }
 
   /**

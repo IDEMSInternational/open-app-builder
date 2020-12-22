@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { LocalStorageService } from '../local-storage/local-storage.service';
 
 interface IPCChannel  {
   subject: Subject<any>;
@@ -16,7 +15,7 @@ export class IpcService {
 
   private usingBroadcastChannel = false;
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor() { }
 
   /* Broadcast Channel Implementation not working */
 

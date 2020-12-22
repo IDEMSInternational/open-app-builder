@@ -9,6 +9,7 @@ import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { SurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
+import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 
 @Component({
   selector: "app-root",
@@ -24,6 +25,7 @@ export class AppComponent {
     private router: Router,
     private notifications: NotificationService,
     private dbService: DbService,
+    private userMetaService: UserMetaService,
     private themeService: ThemeService,
     private surveyService: SurveyService,
     /** Inject in the main app component to start tracking actions immediately */
@@ -32,19 +34,18 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  initializeApp() {
-    if (localStorage.getItem("home_screen.use_button_version") === null) {
-      localStorage.setItem("home_screen.use_button_version", "true");
-    }
+  async initializeApp() {
     this.themeService.init();
     this.platform.ready().then(async () => {
-      await this.surveyService.runSurvey("introSplash");
-      await this.surveyService.runSurvey("analytics");
-
-      this.skipTutorial = true;
       this.dbService.init();
+      const user = await this.userMetaService.init();
+      if (!user.first_app_open) {
+        await this.surveyService.runSurvey("introSplash");
+        await this.surveyService.runSurvey("analytics");
+        await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
+      }
+      this.skipTutorial = true;
       this.menuController.enable(true, "main-side-menu");
-
       if (Capacitor.isNative) {
         SplashScreen.hide();
         this.notifications.init();

@@ -59,8 +59,8 @@ export class CalendarPage implements OnInit, OnDestroy, AfterViewInit {
   }
   async loadCalendar() {
     console.log("loading calendar");
-    const rows = await this.dbService.db.table("calendar").toArray();
-    console.log("rows", rows);
+    // const rows = await this.dbService.db.table("calendar").toArray();
+    // console.log("rows", rows);
   }
 
   /**
