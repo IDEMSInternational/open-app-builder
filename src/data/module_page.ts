@@ -204,14 +204,14 @@
   },
   {
     "flow_type": "module_page",
-    "module": "instructions",
-    "flow_name": "mod_instructions_page",
+    "module": "instruct",
+    "flow_name": "mod_instruct_page",
     "status": "released",
     "rows": [
       {
         "row_id": 1,
         "type": "main_image",
-        "media_asset": "assets/plh_assets/plh_images/modules/mod_instructions/image.svg"
+        "media_asset": "assets/plh_assets/plh_images/modules/mod_instruct/image.svg"
       },
       {
         "row_id": 2,
@@ -235,43 +235,43 @@
             "row_id": 6,
             "type": "step_item",
             "text": "Parenting check-in",
-            "task_id": "task_mod_instructions_par"
+            "task_id": "task_mod_instruct_par"
           },
           {
             "row_id": 7,
             "type": "step_item",
             "text": "Intro to positive instructions",
-            "task_id": "task_mod_instructions_intro"
+            "task_id": "task_mod_instruct_intro"
           },
           {
             "row_id": 8,
             "type": "step_item",
             "text": "Top tips",
-            "task_id": "task_mod_instructions_tips"
+            "task_id": "task_mod_instruct_tips"
           },
           {
             "row_id": 9,
             "type": "step_item",
             "text": "Practice at home",
-            "task_id": "task_mod_instructions_activity"
+            "task_id": "task_mod_instruct_activity"
           },
           {
             "row_id": 10,
             "type": "step_item",
             "text": "Emotional check-in",
-            "task_id": "task_mod_instructions_emo"
+            "task_id": "task_mod_instruct_emo"
           },
           {
             "row_id": 11,
             "type": "step_item",
             "text": "Something fun",
-            "task_id": "task_mod_instructions_fun"
+            "task_id": "task_mod_instruct_fun"
           },
           {
             "row_id": 12,
             "type": "step_item",
             "text": "Home activity review",
-            "task_id": "task_mod_instructions_activity_review"
+            "task_id": "task_mod_instruct_activity_review"
           }
         ]
       }
