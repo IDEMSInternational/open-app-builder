@@ -46,56 +46,6 @@
   {
     "flow_type": "tips",
     "module": "ONE_ON_ONE_TIME",
-    "flow_name": "mod_1on1_tips",
-    "title": "One-on-One Time Tips",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "message_text": "One-on-One Time Tips"
-      },
-      {
-        "type": "list_group",
-        "rows": [
-          {
-            "type": "list_intro",
-            "message_text": "I have 3 tips to make your One-on-One Time great!"
-          },
-          {
-            "type": "list_item",
-            "message_text": "1. \"DAY\"- Try to do it every day!"
-          },
-          {
-            "type": "text",
-            "message_text": "Find 5 minutes (or more!) each day when your teen does not have something else they want to do. ."
-          },
-          {
-            "type": "list_item",
-            "message_text": "2. \"PLAY\" - Let your teen choose!"
-          },
-          {
-            "type": "text",
-            "message_text": "Tell your teen that you would like to spend some time with them and that they can choose what to do or talk about. They might think this is weird at first, but will come to enjoy this time with you!"
-          },
-          {
-            "type": "list_item",
-            "message_text": "3. \"STAY\" - Focus on your teen"
-          },
-          {
-            "type": "text",
-            "message_text": "Switch off TV and put aside phones. Look at your teen. Nod or say “I see” to show you are really paying attention. Accept what they say without judging them."
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "message_text": "One-on-One Time with your teen can be fun for you, too! It might even make you feel less stressed."
-      }
-    ]
-  },
-  {
-    "flow_type": "tips",
-    "module": "ONE_ON_ONE_TIME",
     "flow_name": "mod_1on1_ideas",
     "title": "One-on-One Time Ideas",
     "status": "released",
@@ -144,53 +94,6 @@
             "message_text": "Play a game/sport"
           }
         ]
-      }
-    ]
-  },
-  {
-    "flow_type": "tips",
-    "module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
-    "flow_name": "mod_praise_tips",
-    "title": "Praise Tips",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "message_text": "Praise top tips",
-        "comment": "Image of teen sweeping, parent encouraging them  \n(hand on shoulder/high five)"
-      },
-      {
-        "type": "list_group",
-        "rows": [
-          {
-            "type": "list_item",
-            "message_text": "1. FIND IT"
-          },
-          {
-            "type": "text",
-            "message_text": "Look for anything your teen does that is helpful or good, and praise them. They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care."
-          },
-          {
-            "type": "list_item",
-            "message_text": "2. PRAISE IT"
-          },
-          {
-            "type": "text",
-            "message_text": "Be enthusiastic - Really mean it when you say it!"
-          },
-          {
-            "type": "list_item",
-            "message_text": "3. FEED IT"
-          },
-          {
-            "type": "text",
-            "message_text": "Try to find something every day to thank them for. Even something really small."
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "message_text": "You can also praise other adults in your household, too. Notice how they respond!"
       }
     ]
   },
@@ -378,8 +281,105 @@
   },
   {
     "flow_type": "tips",
+    "module": "ONE_ON_ONE_TIME",
+    "flow_name": "mod_1on1_tips",
+    "title": "One-on-One Time Tips",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "message_text": "One-on-One Time Tips"
+      },
+      {
+        "type": "list_group",
+        "rows": [
+          {
+            "type": "list_intro",
+            "message_text": "I have 3 tips to make your One-on-One Time great!"
+          },
+          {
+            "type": "list_item",
+            "message_text": "1. \"DAY\"- Try to do it every day!"
+          },
+          {
+            "type": "text",
+            "message_text": "Find 5 minutes (or more!) each day when your teen does not have something else they want to do. ."
+          },
+          {
+            "type": "list_item",
+            "message_text": "2. \"PLAY\" - Let your teen choose!"
+          },
+          {
+            "type": "text",
+            "message_text": "Tell your teen that you would like to spend some time with them and that they can choose what to do or talk about. They might think this is weird at first, but will come to enjoy this time with you!"
+          },
+          {
+            "type": "list_item",
+            "message_text": "3. \"STAY\" - Focus on your teen"
+          },
+          {
+            "type": "text",
+            "message_text": "Switch off TV and put aside phones. Look at your teen. Nod or say “I see” to show you are really paying attention. Accept what they say without judging them."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "message_text": "One-on-One Time with your teen can be fun for you, too! It might even make you feel less stressed."
+      }
+    ]
+  },
+  {
+    "flow_type": "tips",
+    "module": "PRAISE_AND_POSITIVE_REINFORCEMENT",
+    "flow_name": "mod_praise_tips",
+    "title": "Praise Tips",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "message_text": "Praise top tips",
+        "comment": "Image of teen sweeping, parent encouraging them  \n(hand on shoulder/high five)"
+      },
+      {
+        "type": "list_group",
+        "rows": [
+          {
+            "type": "list_item",
+            "message_text": "1. FIND IT"
+          },
+          {
+            "type": "text",
+            "message_text": "Look for anything your teen does that is helpful or good, and praise them. They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care."
+          },
+          {
+            "type": "list_item",
+            "message_text": "2. PRAISE IT"
+          },
+          {
+            "type": "text",
+            "message_text": "Be enthusiastic - Really mean it when you say it!"
+          },
+          {
+            "type": "list_item",
+            "message_text": "3. FEED IT"
+          },
+          {
+            "type": "text",
+            "message_text": "Try to find something every day to thank them for. Even something really small."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "message_text": "You can also praise other adults in your household, too. Notice how they respond!"
+      }
+    ]
+  },
+  {
+    "flow_type": "tips",
     "module": "POSITIVE_INSTRUCTIONS",
-    "flow_name": "mod_instructions_tips",
+    "flow_name": "mod_instruct_tips",
     "title": "Positive Instructions Tips",
     "status": "released",
     "rows": [
