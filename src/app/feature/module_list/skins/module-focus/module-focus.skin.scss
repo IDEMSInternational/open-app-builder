@@ -3,23 +3,6 @@
 }
 // Use the main container and overlay to set a full-sized background
 // as a lighter variant of the primary colour
-.main-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-}
-.main-container {
-  background-color: var(--ion-color-primary-lighter);
-
-  /* Move to theme service later once content programming refactor complete */
-  // NOTE - CC 2020-12-09 - Deprecate until ready to fully implement theming system
-  // --theme-var-mod_welcome: #F185A3;
-  // --theme-var-mod_1on1: #5652A3;
-  // --theme-var-mod_praise: #FF7B02;
-  // --theme-var-mod_instructions: #2E9E48;
-  // --theme-var-mod_stress: #DB0000;
-}
 
 p {
   font-size: 1.2em;
@@ -35,7 +18,11 @@ p {
   position: relative;
 }
 .module-info-container {
-  padding: 20px 60px 20px 10px;
+  padding: 20px 60px 70px 10px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .module-main-button {
@@ -44,6 +31,7 @@ p {
   opacity: 0.5;
   position: absolute;
   top: 0;
+  left: 0;
 }
 
 ion-content {
