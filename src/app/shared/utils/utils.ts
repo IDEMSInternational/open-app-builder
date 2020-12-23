@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
  * @returns uxokjq8co1n
@@ -5,6 +7,14 @@
  */
 export function generateRandomId() {
   return Math.random().toString(36).substring(2);
+}
+
+/**
+ * generate a string representation of the current datetime in local timezone
+ * @returns 2020-12-22T18:15:20
+ */
+export function generateTimestamp() {
+  return format(new Date(), "yyyy-MM-dd'T'HH:mm:ss");
 }
 
 /**
