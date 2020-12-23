@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { format } from "date-fns";
+
 import { Subject } from "scripts/node_modules/rxjs";
 import { environment } from "src/environments/environment";
+import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
 
 @Injectable({ providedIn: "root" })
@@ -81,7 +82,7 @@ export class TaskActionService {
       default:
         // task_id no longer required as tracked in parent
         delete action.task_id;
-        const actionEntry: ITaskActionEntry = { _created: this._generateTimestamp(), ...action };
+        const actionEntry: ITaskActionEntry = { _created: generateTimestamp(), ...action };
         if (meta) {
           action.meta = meta;
         }
@@ -101,7 +102,7 @@ export class TaskActionService {
       dbEntry._completed = true;
       dbEntry._duration = this._calculateTaskDuration(dbEntry);
     }
-    dbEntry.actions.push({ _created: this._generateTimestamp(), ...action });
+    dbEntry.actions.push({ _created: generateTimestamp(), ...action });
     await this.db.table("session_actions").put(dbEntry, dbEntry.id);
   }
 
@@ -122,7 +123,7 @@ export class TaskActionService {
   }
 
   private createNewEntry(task_id: string) {
-    const timestamp = this._generateTimestamp();
+    const timestamp = generateTimestamp();
     const entry: ITaskEntry = {
       id: `${task_id}_${timestamp}`,
       task_id,
@@ -133,11 +134,6 @@ export class TaskActionService {
       _duration: 0,
     };
     return entry;
-  }
-
-  /** generate a string representation of the current datetime in local timezone */
-  private _generateTimestamp() {
-    return format(new Date(), "yyyy-MM-dd'T'HH:mm:ss");
   }
 
   /**
