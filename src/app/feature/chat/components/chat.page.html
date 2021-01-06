@@ -38,7 +38,7 @@
           <path d="M15 20V0L0 10L15 20Z" fill="grey" />
           </svg>
           <div class="msg-bubble">
-            <div *ngIf="!msg.hideText">{{msg.text}}</div>
+            <div *ngIf="!msg.hideText" [innerHTML]="msg.text"></div>
             <img *ngIf="msg.innerImageUrl" [src]="msg.innerImageUrl">
           </div>
           <svg
