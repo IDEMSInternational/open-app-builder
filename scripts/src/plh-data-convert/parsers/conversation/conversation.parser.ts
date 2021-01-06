@@ -122,9 +122,18 @@ export class ConversationParser implements AbstractParser {
           if (hasMediaUrls) {
             add_texts.push("choiceMediaUrls=" + encodeURIComponent(JSON.stringify(choiceMediaUrls)));
           }
+
+          // Allow use of <icon> to place media image inline with message text
+          let mediaAttachments = this.getMediaAttachments(row.media);
+          if (mediaAttachments.length > 0 && action_text.indexOf("<icon>") > -1) {
+            const imageUrl = "assets/plh_assets/" + mediaAttachments[0].replace("image:", "");
+            action_text = action_text.replace("<icon>", `<img class="inline-img" src="${imageUrl}">`);
+            mediaAttachments = [];
+          }
+          
           if (add_texts.length > 0) action_text += " " + link_text + add_texts.join("&");
           actionNode.actions.push({
-            attachments: this.getMediaAttachments(row.media),
+            attachments: mediaAttachments,
             text: action_text,
             type: "send_msg",
             quick_replies: this.getRowChoices(row),
