@@ -123,8 +123,10 @@ export class ConversationParser implements AbstractParser {
             add_texts.push("choiceMediaUrls=" + encodeURIComponent(JSON.stringify(choiceMediaUrls)));
           }
 
-          if (row.type === "story_message" || row.message_text.indexOf("<story-img>") > -1) {
+          let isStory = false;
+          if (row.type === "story_message" || row.message_text.indexOf("<story-image>") > -1) {
             add_texts.push("isStory=true");
+            isStory = true;
           }
 
           let mediaAttachments = this.getMediaAttachments(row.media);
@@ -148,6 +150,13 @@ export class ConversationParser implements AbstractParser {
                 break;
               }
             }
+          }
+
+          if (isStory) {
+            action_text = action_text
+              .split("\n")
+              .map((line) => "<p>" + line + "</p>")
+              .join("\n");
           }
 
           if (add_texts.length > 0) action_text += " " + link_text + add_texts.join("&");

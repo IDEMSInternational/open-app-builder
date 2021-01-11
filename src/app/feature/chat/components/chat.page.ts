@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, Input, ViewChild, ElementRef } from "@angular/core";
+import { Component, ChangeDetectorRef, Input, ViewChild, ElementRef, ViewEncapsulation } from "@angular/core";
 import { AnimationOptions } from "ngx-lottie";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ChatMessage, ChatResponseOption, ResponseCustomAction, IChatService } from "../models";
@@ -15,6 +15,7 @@ import { ContactFieldService } from "../services/offline/contact-field.service";
   selector: "app-chat",
   templateUrl: "./chat.page.html",
   styleUrls: ["./chat.page.scss"],
+  encapsulation: ViewEncapsulation.None
 })
 export class ChatPage {
   messages: ChatMessage[] = [];
@@ -45,7 +46,7 @@ export class ChatPage {
   character: "guide" | "egg" = "guide";
   messageSubscription: Subscription;
   chatViewType: "normal" | "story" = "normal";
-  chatService: IChatService;
+  chatService: OfflineChatService;
   isModal: boolean;
   latestFlowEvent: FlowStatusChange;
   showFlowName: boolean = false;
@@ -92,7 +93,7 @@ export class ChatPage {
       // 2020-11-25 - Online chat disabled here and in settings until tested working
       // const useOfflineChat = await this.settingsService.getUserSetting("USE_OFFLINE_CHAT").toPromise();
       const useOfflineChat = true;
-      this.chatService = useOfflineChat ? this.offlineChatService : this.onlineChatService;
+      this.chatService = useOfflineChat ? this.offlineChatService : this.onlineChatService as any;
     }
     this.offlineChatService.botTyping$.subscribe((botTyping) => {
       this.botTyping = botTyping;
@@ -207,9 +208,11 @@ export class ChatPage {
     if ((message.attachments && message.attachments.length > 0) || message.innerImageUrl) {
       scrollDelay = 1000;
     }
-    setTimeout(() => {
-      this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
-    }, scrollDelay);
+    if (this.chatEndDiv) {
+      setTimeout(() => {
+        this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
+      }, scrollDelay);
+    }
     this.cd.detectChanges();
   }
 
