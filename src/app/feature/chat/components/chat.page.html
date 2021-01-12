@@ -75,12 +75,7 @@
   <!-- <ion-button *ngIf="showFlowSkip" class="skip-button" (click)="skipFlow()">Skip</ion-button> -->
 </div>
 <div *ngIf="lastReceivedMsg?.isStory" class="story-chat">
-  <h1>{{lastReceivedMsg.text}}</h1>
-  <img
-    class="story-image"
-    *ngIf="lastReceivedMsg?.attachments[0]?.type === 'image'"
-    [src]="lastReceivedMsg?.attachments[0].url"
-  />
+  <div class="story-msg-text" [innerHTML]="lastReceivedMsg.text"></div>
   <div class="response-options">
     <div *ngFor="let option of responseOptions" class="response-option">
       <div *ngIf="option.text.toLowerCase() === 'previous'" (click)="onStoryPreviousClicked()">

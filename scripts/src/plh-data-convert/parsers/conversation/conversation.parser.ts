@@ -99,7 +99,7 @@ export class ConversationParser implements AbstractParser {
           let link_text = "https://plh-demo1.idems.international/chat/msg-info?";
           let add_texts: string[] = [];
           let attachmentUrls: string[] = [];
-          if (row.type === "story_message") add_texts.push("isStory=true");
+
           if (row.character) add_texts.push("character=" + row.character);
           if (row.choose_multi) add_texts.push("chooseMulti=true");
           if (row.display_as_tick) add_texts.push("displayAsTick=true");
@@ -123,14 +123,42 @@ export class ConversationParser implements AbstractParser {
             add_texts.push("choiceMediaUrls=" + encodeURIComponent(JSON.stringify(choiceMediaUrls)));
           }
 
-          // Allow use of <icon> to place media image inline with message text
-          let mediaAttachments = this.getMediaAttachments(row.media);
-          if (mediaAttachments.length > 0 && action_text.indexOf("<icon>") > -1) {
-            const imageUrl = "assets/plh_assets/" + mediaAttachments[0].replace("image:", "");
-            action_text = action_text.replace("<icon>", `<img class="inline-img" src="${imageUrl}">`);
-            mediaAttachments = [];
+          let isStory = false;
+          if (row.type === "story_message" || row.message_text.indexOf("<story-image>") > -1) {
+            add_texts.push("isStory=true");
+            isStory = true;
           }
-          
+
+          let mediaAttachments = this.getMediaAttachments(row.media);
+        
+          // Allow use of <icon>, <story-img>, or <inline-img> or <block-img>
+          // to place media image wihin message text
+          if (mediaAttachments.length > 0 && action_text) {
+            let imageTagToClass = {
+              "<icon>": "icon",
+              "<story-image>": "story-image",
+              "<inline-image>": "inline-image",
+              "<block-image>": "block-image"
+            };
+            const imageTags = Object.keys(imageTagToClass);
+            for (let imageTag of imageTags) {
+              if (action_text.indexOf(imageTag) > -1 && mediaAttachments[0]) {
+                const imageUrl = "assets/plh_assets/" + mediaAttachments[0].replace("image:", "");
+                const className = imageTagToClass[imageTag];
+                action_text = action_text.replace(imageTag, `<img class="${className}" src="${imageUrl}">`);
+                mediaAttachments = [];
+                break;
+              }
+            }
+          }
+
+          if (isStory) {
+            action_text = action_text
+              .split("\n")
+              .map((line) => "<p>" + line + "</p>")
+              .join("\n");
+          }
+
           if (add_texts.length > 0) action_text += " " + link_text + add_texts.join("&");
           actionNode.actions.push({
             attachments: mediaAttachments,
