@@ -135,7 +135,7 @@ export class ConversationParser implements AbstractParser {
           // to place media image wihin message text
           if (mediaAttachments.length > 0 && action_text) {
             let imageTagToClass = {
-              "<icon>": "icon-image",
+              "<icon>": "icon",
               "<story-image>": "story-image",
               "<inline-image>": "inline-image",
               "<block-image>": "block-image"

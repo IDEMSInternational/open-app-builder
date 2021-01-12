@@ -136,8 +136,13 @@
       max-height: 30px;
     }
 
-    .icon-image {
+    .icon {
       max-height: 30px;
+    }
+
+    .block-image {
+      display: block;
+      max-height: 100px;
     }
 
     &.large {
