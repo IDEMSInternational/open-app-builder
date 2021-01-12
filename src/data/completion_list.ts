@@ -121,6 +121,10 @@
     "status": "released",
     "rows": [
       {
+        "id": "completion_mod_welcome_give",
+        "task_id": "task_mod_welcome_give"
+      },
+      {
         "id": "completion_mod_welcome_self-care_package",
         "task_id": "task_mod_welcome_self-care_package"
       },
@@ -131,10 +135,6 @@
       {
         "id": "completion_mod_welcome_survey",
         "task_id": "task_mod_welcome_survey"
-      },
-      {
-        "id": "completion_mod_welcome_photo_activity",
-        "task_id": "task_mod_welcome_photo_activity"
       },
       {
         "id": "completion_mod_welcome_completed_goal",
