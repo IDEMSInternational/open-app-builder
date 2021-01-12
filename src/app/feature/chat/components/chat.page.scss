@@ -29,6 +29,12 @@
   display: block;
 }
 
+.story-msg-text {
+  p {
+    text-align: center;
+  }
+}
+
 .story-chat {
   flex-grow: 1;
   overflow-y: auto;
