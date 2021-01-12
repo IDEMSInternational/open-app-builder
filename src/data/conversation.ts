@@ -22068,7 +22068,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "<p>Top text 2</p>\n<p><img class=\"story-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg\"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "text": "<p>Top text 2</p>\n<p><img class=\"story-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg\"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Previous",
