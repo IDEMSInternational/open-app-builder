@@ -242,28 +242,23 @@ export class RapidProOfflineFlow {
 
     let regexResult: RegExpExecArray;
     // Match Rapid Pro Contact fixed variables
-    let contactVaraibleRegex = /@contact\.([0-9a-zA-Z\_]*)/gm;
-    while ((regexResult = contactVaraibleRegex.exec(template)) !== null) {
+    let atVaraibleRegex = /@([a-z]+)\.([0-9a-zA-Z\_]+)([\.]*[0-9a-zA-Z\_]*)/gm;
+    while ((regexResult = atVaraibleRegex.exec(template)) !== null) {
       let fullMatch = regexResult[0];
-      let fieldName = regexResult[1];
-      output = output.replace(fullMatch, await this.contactFieldService.getContactField(fieldName));
-    }
-
-    // Match Rapid Pro Contact fields
-    let contactFieldRegex = /@fields\.([0-9a-zA-Z\_]*)/gm;
-    while ((regexResult = contactFieldRegex.exec(template)) !== null) {
-      let fullMatch = regexResult[0];
-      let fieldName = regexResult[1];
-      output = output.replace(fullMatch, await this.contactFieldService.getContactField(fieldName));
-    }
-
-    // Match Result fields
-    let resultFieldRegex = /@results\.([0-9a-zA-Z\_]*)/gm;
-    while ((regexResult = resultFieldRegex.exec(template)) !== null) {
-      let fullMatch = regexResult[0];
-      let fieldName = regexResult[1];
-      output = output.replace(fullMatch, this.flowResults[fieldName]);
-      console.log("output", output);
+      let variableType = regexResult[1];
+      let fieldName = regexResult[2];
+      let subfieldName = regexResult[3];
+      switch (variableType) {
+        case "contact":
+        case "fields": {
+          output = output.replace(fullMatch, await this.contactFieldService.getContactField(fieldName));
+          break;
+        }
+        case "results": {
+          output = output.replace(fullMatch, this.flowResults[fieldName]);
+          break;
+        }
+      }
     }
 
     return output;
