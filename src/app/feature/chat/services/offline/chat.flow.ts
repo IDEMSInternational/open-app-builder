@@ -1,4 +1,8 @@
 import { of, BehaviorSubject } from "rxjs";
+import { HABIT_LIST } from "src/app/shared/services/data/data.service";
+import { DbService } from "src/app/shared/services/db/db.service";
+import { IFlowTaskAction, ITaskEntry } from "src/app/shared/services/task/task-action.service";
+import { arrayToHashmap } from "src/app/shared/utils/utils";
 import { ChatMessage, IRapidProMessage } from "../../models";
 import { convertFromRapidProMsg } from "../../utils/message.converter";
 import { ContactFieldService } from "./contact-field.service";
@@ -23,7 +27,8 @@ export class RapidProOfflineFlow {
     public messages$: BehaviorSubject<ChatMessage[]>,
     public flowStatus$: BehaviorSubject<FlowStatusChange[]>,
     public contactFieldService: ContactFieldService,
-    public botTyping$: BehaviorSubject<boolean>
+    public botTyping$: BehaviorSubject<boolean>,
+    public dbService: DbService
   ) {
     console.log("flowObject", flowObject);
     this.name = flowObject.name;
@@ -247,7 +252,7 @@ export class RapidProOfflineFlow {
       let fullMatch = regexResult[0];
       let variableType = regexResult[1];
       let fieldName = regexResult[2];
-      let subfieldName = regexResult[3];
+      let subfieldName = regexResult[3] ? regexResult[3].substring(1) : null;
       switch (variableType) {
         case "contact":
         case "fields": {
@@ -258,11 +263,37 @@ export class RapidProOfflineFlow {
           output = output.replace(fullMatch, this.flowResults[fieldName]);
           break;
         }
+        case "habit": {
+          if (subfieldName === "weekly_count") {
+            output = output.replace(fullMatch, "" + await this.getHabitWeeklyCount(fieldName))
+          }
+          break;
+        }
       }
     }
 
     return output;
   };
+
+  private async getHabitWeeklyCount(habitId: string): Promise<number> {
+    const oneWeekAgo = new Date(new Date().getTime() - (7 * 24 * 3600 * 1000));
+    const history = [];
+    const habitListByTaskID = arrayToHashmap(HABIT_LIST[0].rows, "task_id");
+    const completedTasks = await this.dbService.table<ITaskEntry>("task_actions")
+      .orderBy("_created")
+      .reverse()
+      .toArray();
+    completedTasks.forEach((t) => {
+      const date = new Date(t._created);
+      if (t._completed && date > oneWeekAgo && habitListByTaskID.hasOwnProperty(t.task_id)) {
+        const completedHabitId = habitListByTaskID[t.task_id].id;
+        if (completedHabitId === habitId) {
+          history.push({ ...habitListByTaskID[t.task_id], _created: t._created });
+        }
+      }
+    });
+    return history.length;
+  }
 
   private messageHasTextInput(
     action: RapidProFlowExport.Action,
