@@ -206,10 +206,11 @@
           "modules"
         ],
         "completion_id_list": [
+          "completion_mod_welcome_give",
           "completion_mod_welcome_self-care_package",
           "completion_mod_welcome_quick_praise",
           "completion_mod_welcome_survey",
-          "completion_mod_welcome_photo_activity"
+          ""
         ],
         "completion_tasks": "task_mod_welcome_completed_goal"
       },
@@ -225,7 +226,6 @@
           "completion_mod_1on1_intro",
           "completion_mod_1on1_tips",
           "completion_mod_1on1_activity",
-          "completion_mod_1on1_par",
           "completion_mod_1on1_fun",
           "completion_mod_1on1_activity_review"
         ],

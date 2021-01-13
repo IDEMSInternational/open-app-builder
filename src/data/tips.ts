@@ -288,14 +288,14 @@
     "rows": [
       {
         "type": "title",
-        "message_text": "One-on-One Time Tips"
+        "message_text": "Essential Tools One-on-One Time"
       },
       {
         "type": "list_group",
         "rows": [
           {
             "type": "list_intro",
-            "message_text": "I have 3 tips to make your One-on-One Time great!"
+            "message_text": "3 tools to make your One-on-One Time great! You can always find these one-on-one tools in ‘’My toolkit’’. "
           },
           {
             "type": "list_item",
@@ -303,7 +303,7 @@
           },
           {
             "type": "text",
-            "message_text": "Find 5 minutes (or more!) each day when your teen does not have something else they want to do. ."
+            "message_text": "Find 5 minutes (or more!) each day when your teen does not have something else they want to do."
           },
           {
             "type": "list_item",
@@ -326,6 +326,10 @@
       {
         "type": "text",
         "message_text": "One-on-One Time with your teen can be fun for you, too! It might even make you feel less stressed."
+      },
+      {
+        "type": "text",
+        "message_text": "Every time you do one-on-one time, mark your Parent Point <icon> to track your success"
       }
     ]
   },
@@ -338,15 +342,19 @@
     "rows": [
       {
         "type": "title",
-        "message_text": "Praise top tips",
+        "message_text": "Essential Tools Praise",
         "comment": "Image of teen sweeping, parent encouraging them  \n(hand on shoulder/high five)"
       },
       {
         "type": "list_group",
         "rows": [
           {
+            "type": "list_intro",
+            "message_text": "These will be in your toolbox for quick access anytime."
+          },
+          {
             "type": "list_item",
-            "message_text": "1. FIND IT"
+            "message_text": "1. SEE IT"
           },
           {
             "type": "text",
@@ -354,15 +362,15 @@
           },
           {
             "type": "list_item",
-            "message_text": "2. PRAISE IT"
+            "message_text": "2. SAY IT"
           },
           {
             "type": "text",
-            "message_text": "Be enthusiastic - Really mean it when you say it!"
+            "message_text": "Be enthusiastic - really mean it when you say it!"
           },
           {
             "type": "list_item",
-            "message_text": "3. FEED IT"
+            "message_text": "3. REPEAT IT"
           },
           {
             "type": "text",
@@ -373,6 +381,10 @@
       {
         "type": "text",
         "message_text": "You can also praise other adults in your household, too. Notice how they respond!"
+      },
+      {
+        "type": "text",
+        "message_text": "Every time you praise your teen, mark your Parent Point <icon> to track your success"
       }
     ]
   },
@@ -385,64 +397,40 @@
     "rows": [
       {
         "type": "title",
-        "message_text": "Positive Instructions Tips"
-      },
-      {
-        "type": "text",
-        "message_text": "It's hard to feel positive when our teenagers are driving us crazy. We often end up saying \"Stop doing that!\". But children are much more likely to do what we ask if we give them positive instructions and lots of praise for what they do right."
+        "message_text": "Essential Tools Positive Instructions"
       },
       {
         "type": "list_group",
         "rows": [
           {
             "type": "list_intro",
-            "message_text": "Here are 4 steps to help you get your children to follow your instructions more often:"
+            "message_text": "Find these in your toolbox for easy access anytime"
           },
           {
             "type": "list_item",
-            "message_text": "Step 1. Get Your Teen's Attention"
+            "message_text": "1. GET REAL"
           },
           {
             "type": "text",
-            "message_text": "Look at your teen and say their name when you give them an instruction. Really connect to them."
+            "message_text": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic."
           },
           {
             "type": "list_item",
-            "message_text": "Step 2. Be Specific, Positive, and Realistic!"
+            "message_text": "2. GET POSITIVE"
           },
           {
             "type": "text",
-            "message_text": "Describe exactly what you want your teen to do. Say \"Please come home before 7pm\", instead of \"Come home in time\"."
-          },
-          {
-            "type": "text",
-            "message_text": "Use positive words when telling your teen what to do. Say \"Please put your clothes away in the cupboard\", instead of \"Don't make a mess\"."
-          },
-          {
-            "type": "text",
-            "message_text": "Can they actually do what you are asking them? It is very hard for anyone to keep quiet inside for a whole day but maybe they can keep quiet for 15 minutes."
+            "message_text": "Smile, look them in the eye and use positive words. Praise them as soon as they start to do what you ask!"
           },
           {
             "type": "list_item",
-            "message_text": "Step 3. Give Instructions One at a Time"
+            "message_text": "3. GET CLEAR"
           },
           {
             "type": "text",
-            "message_text": "Teens are much more likely to do what you ask if you break things up into smaller steps."
-          },
-          {
-            "type": "list_item",
-            "message_text": "Step 4. Praise Your Teens When They Follow Instructions"
-          },
-          {
-            "type": "text",
-            "message_text": "They will feel good about it and be more likely to follow instructions in the future!"
+            "message_text": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want them to do. Try \"please come home by 7pm\" instead of \"Come home in time\"."
           }
         ]
-      },
-      {
-        "type": "text",
-        "message_text": "It will make a HUGE DIFFERENCE if you can learn these 4 simple steps!"
       }
     ]
   }
