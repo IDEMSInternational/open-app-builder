@@ -10,12 +10,12 @@
       <img [src]="habit.icon_asset">
     </div>
     <div class="buttons">
-      <ion-button>
-        Relaxation Activity
-      </ion-button>
-      <ion-button (click)="aimClicked()">
+      <button class="btn" (click)="suggestedTaskClicked(habit)">
+        {{habit.suggestion_button_text}}
+      </button>
+      <button class="btn" (click)="aimClicked(habit)">
         {{habit.aim_button_text}}: {{habit.timesDone}} / {{habit.goalNumber}}
-      </ion-button>
+      </button>
     </div>
   </section>
 </ion-content>
