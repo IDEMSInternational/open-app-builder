@@ -10,7 +10,8 @@
       <img [src]="habit.icon_asset">
     </div>
     <div class="buttons">
-      <button class="btn" (click)="suggestedTaskClicked(habit)">
+      
+      <button *ngIf="habit.suggestion_button_text" class="btn" (click)="suggestedTaskClicked(habit)">
         {{habit.suggestion_button_text}}
       </button>
       <button class="btn" (click)="aimClicked(habit)">
@@ -18,4 +19,9 @@
       </button>
     </div>
   </section>
+  <ion-select *ngIf="selectedHabit" #numSelect [name]="selectedHabit.id" hidden="true" [(ngModel)]="selectedHabit.goalNumber">
+    <ion-select-option [value]="num" *ngFor="let num of range(1, 9)">
+      {{num}}
+    </ion-select-option>
+  </ion-select>
 </ion-content>
