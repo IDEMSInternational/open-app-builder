@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "plh-main-tabs",
@@ -20,6 +21,7 @@ import { Component } from "@angular/core";
     `
       ion-segment {
         background: var(--ion-color-primary);
+        border-radius: 0px;
       }
       ion-segment-button {
         --color: white;
@@ -34,7 +36,14 @@ import { Component } from "@angular/core";
   ],
 })
 export class PLHMainTabsComponent {
+
+  constructor(private router: Router) {
+  }
+
   segmentChanged(e) {
-    // console.log("segment changed", e.target.value);
+    if (e.target.value === "care-packages") {
+      this.router.navigateByUrl("care-packages");
+    }
+    console.log("segment changed", e.target.value);
   }
 }

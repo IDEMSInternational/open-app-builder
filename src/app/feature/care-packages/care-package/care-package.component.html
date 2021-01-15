@@ -1,0 +1,21 @@
+<ion-content>
+  <h1>{{carePackage?.label}}</h1>
+  <p class="description">{{carePackage?.description}}</p>
+  <section *ngFor="let habit of habits" class="habit-section">
+    <div class="top">
+      <div class="title-and-desc">
+        <title>{{habit.title}}</title>
+        <p>{{habit.description}}</p>
+      </div>
+      <img [src]="habit.icon_asset">
+    </div>
+    <div class="buttons">
+      <ion-button>
+        Relaxation Activity
+      </ion-button>
+      <ion-button (click)="aimClicked()">
+        {{habit.aim_button_text}}: {{habit.timesDone}} / {{habit.goalNumber}}
+      </ion-button>
+    </div>
+  </section>
+</ion-content>

@@ -1,0 +1,33 @@
+h1 {
+    text-align: center;
+}
+
+.care-package-buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.care-package-button {
+    min-height: 150px;
+    box-sizing: border-box;
+    display: flex;
+    flex-basis: calc(50% - 20px);
+    max-width: 240px;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 20px;
+    background-color: var(--ion-item-background, white);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    label {
+        margin-bottom: 10px;
+    }
+
+    img {
+        max-height: 92px;
+    }
+}

@@ -16,7 +16,8 @@ export namespace FlowTypes {
     | "habit_list"
     | "task_list"
     | "module_list"
-    | "module_page";
+    | "module_page"
+    | "care_package_list";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -63,6 +64,10 @@ export namespace FlowTypes {
   export interface Module_page extends FlowTypeWithData {
     flow_type: "module_page";
     rows: Module_pageRow[];
+  }
+  export interface Care_package_list extends FlowTypeWithData {
+    flow_type: "care_package_list";
+    rows: CarePackage[];
   }
 
   export interface Conversation extends RapidProFlowExport.RootObject {}
@@ -188,5 +193,14 @@ export namespace FlowTypes {
     // This is the node to refer to when this row is mentioned as a from in another row.
     // This is updated e.g. when looping through from nodes.
     _rapidProNode?: RapidProFlowExport.Node;
+  }
+
+  export interface CarePackage {
+    id: string;
+    label: string;
+    description?: string;
+    icon_asset?: string;
+    main_image_asset?: string;
+    habit_list: string[];
   }
 }
