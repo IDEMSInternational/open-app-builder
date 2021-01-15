@@ -29,6 +29,8 @@ export class TaskService {
     if (start_action) {
       await this.taskActions.recordTaskAction({ task_id, type: "started" });
       this.runAction(task);
+    } else {
+      console.log("This task does not havea start_action", task);
     }
   }
 
