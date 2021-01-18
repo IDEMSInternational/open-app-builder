@@ -10,6 +10,7 @@ import { RapidProFlowExport } from "./rapid-pro-export.model";
 import { CONVERSATION } from "src/app/shared/services/data/data.service";
 import { throwError } from "rxjs";
 import { ChatActionService } from "../common/chat-action.service";
+import { DbService } from "src/app/shared/services/db/db.service";
 
 export type FlowStatusChange = {
   name: string;
@@ -33,7 +34,8 @@ export class OfflineChatService implements IChatService {
     protected http: HttpClient,
     protected contactFieldService: ContactFieldService,
     protected settingsService: SettingsService,
-    private chatActions: ChatActionService
+    private chatActions: ChatActionService,
+    private dbService: DbService
   ) {
     this.init();
   }
@@ -117,7 +119,8 @@ export class OfflineChatService implements IChatService {
               this.messages$,
               this.flowStatus$,
               this.contactFieldService,
-              this.botTyping$
+              this.botTyping$,
+              this.dbService
             );
             this.flowsStack.push(newFlow);
             this.settingsService.getUserSetting("CHAT_DELAY").subscribe((delay) => {
