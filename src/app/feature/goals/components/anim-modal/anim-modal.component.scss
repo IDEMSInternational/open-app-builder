@@ -75,4 +75,91 @@
         }
 
     }
-}
+
+    .svg-anim.neighbour-jumping {
+        position: relative;
+        animation-name: jumping;
+        animation-duration: 1.2s; 
+        animation-iteration-count: infinite;
+
+        @keyframes jumping {
+            0% {
+                bottom: 0px;
+            }
+            20% {
+                bottom: 20px;
+            }
+            40% {
+                bottom: 0px;
+            }
+        }
+
+        #eyes {
+            animation: blinking 3s infinite;
+        }
+
+        @keyframes blinking {
+            0% {
+                opacity: 1;
+            }
+            5% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+        }
+
+        #left-arm {
+            animation: left-arm-wave 1s infinite;
+            transform-origin: 77px 141px;
+        }
+
+        @keyframes left-arm-wave {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(-33deg);
+            }
+        }
+
+        #right-arm {
+            animation: right-arm-wave 1s infinite;
+            transform-origin: 71px 146px;
+        }
+
+        @keyframes right-arm-wave {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(33deg);
+            }
+        }
+
+        #left-leg {
+            position: relative;
+            animation: stomping 1s infinite;
+        }
+
+        #right-leg {
+            position: relative;
+            animation: stomping 1s infinite;
+            animation-direction: reverse;
+        }
+
+        @keyframes stomping {
+            0% {
+                transform: translate(0px, 0px);
+            }
+            20% {
+                transform: translate(0px, -20px);
+            }
+            40% {
+                transform: translate(0px, 0px);
+         
+                }
+            }
+        }
+    }

@@ -14,7 +14,7 @@ export class GoalsPage implements OnInit {
   constructor(private modalController: ModalController, public tasksService: TasksService) {}
 
   ngOnInit() {
-    this.openRewardModal("elder-waving")
+    this.openRewardModal("neighbour-jumping")
   }
 
   trackById(index: number, item: { id: string; [key: string]: any }) {
