@@ -22004,7 +22004,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "<p>Top text</p>\n<p><img class=\"story-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg\"></p>\n<p>Bottom text</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "text": "<p>Top text @habit.habit_money.weekly_count</p>\n<p><img class=\"story-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg\"></p>\n<p>Bottom text</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next"
