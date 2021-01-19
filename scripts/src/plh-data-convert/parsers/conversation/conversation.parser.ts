@@ -758,7 +758,8 @@ export class ConversationParser implements AbstractParser {
   }
 
   private replaceImageTag(text: string, imageTag: string, className: string, urls: string[]): string {
-    return text.replace(imageTag, () => {
+    const regex = new RegExp(imageTag, "g");
+    return text.replace(regex, () => {
       if (urls.length > 0) {
         const imageUrl = "assets/plh_assets/" + urls.pop();
         return `<img class="${className}" src="${imageUrl}">`;
