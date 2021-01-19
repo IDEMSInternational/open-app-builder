@@ -1,14 +1,13 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonSelect } from '@ionic/angular';
 import { FlowTypes } from 'scripts/types';
 import { CARE_PACKAGE_LIST, HABIT_LIST } from 'src/app/shared/services/data/data.service';
 import { HabitService } from 'src/app/shared/services/habit/habit.service';
-import { TaskService } from 'src/app/shared/services/task/task.service';
 
 type Habit = FlowTypes.Habit_listRow & {
-  timesDone?: number;
-  goalNumber?: number;
+  timesDoneThisWeek?: number;
+  weeklyAim?: number;
 }
 
 @Component({
@@ -25,8 +24,8 @@ export class CarePackageComponent implements OnInit {
   public habits: Habit[] = [];
   selectedHabit: Habit;
 
-  constructor(route: ActivatedRoute, private taskService: TaskService,
-    private habitService: HabitService, private cd: ChangeDetectorRef) {
+  constructor(route: ActivatedRoute, private router: Router,
+    private habitService: HabitService) {
     for (let habit of HABIT_LIST[0].rows) {
       this.habitById[habit.id] = habit;
     }
@@ -39,11 +38,13 @@ export class CarePackageComponent implements OnInit {
         Promise.all(this.carePackage.habit_list
           .map(async (id) => {
             const count = await this.habitService.getHabitWeeklyCount(id);
-            return {
+            const aim = await this.habitService.getHabitWeeklyAim(id);
+            const habit: Habit = {
               ...this.habitById[id],
-              goalNumber: 5,
-              timesDone: count
+              weeklyAim: aim,
+              timesDoneThisWeek: count
             };
+            return habit;
           })).then((habits) => {
             this.selectedHabit = habits[0];
             this.habits = habits;
@@ -54,14 +55,17 @@ export class CarePackageComponent implements OnInit {
 
   ngOnInit() { }
 
+  onAimChange() {
+    this.habitService.setHabitWeeklyAim(this.selectedHabit.id, this.selectedHabit.weeklyAim);
+  }
+
   async aimClicked(habit: Habit) {
     this.selectedHabit = habit;
     this.numSelect.open();
   }
 
   suggestedTaskClicked(habit: FlowTypes.Habit_listRow) {
-    console.log("Should be starting task ", habit.task_id);
-    this.taskService.startTask(habit.task_id);
+    this.router.navigate([habit.suggestion_flow_type, habit.suggestion_flow_name]);
   }
 
   range(min: number, max: number) {

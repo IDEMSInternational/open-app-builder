@@ -115,6 +115,7 @@ export namespace FlowTypes {
     main_image_asset: string;
     aim_button_text: string;
     aim_action: string;
+    set_aim_button_text?: string;
     suggestion_button_text?: string;
     launch_flow_type?: string;
     launch_flow_name?: string;

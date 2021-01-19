@@ -3,6 +3,7 @@ import { arrayToHashmap } from '../../utils';
 import { HABIT_LIST } from '../data/data.service';
 import { DbService } from '../db/db.service';
 import { ITaskEntry } from '../task/task-action.service';
+import { IHabit } from './habit.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,30 @@ export class HabitService {
       }
     });
     return weeklyCount;
+  }
+
+  public async setHabitWeeklyAim(habitId: string, weeklyAim: number) {
+    return this.dbService
+      .table<IHabit>("habits")
+      .put({
+        habitId: habitId,
+        weeklyAim: weeklyAim
+      }, "habitId");
+  }
+
+  public async getHabitWeeklyAim(habitId: string): Promise<number | null> {
+    try {
+      const dbHabit = await this.dbService
+      .table<IHabit>("habits")
+      .where("habitId")
+      .equals(habitId)
+      .first();
+      if (dbHabit) {
+        return dbHabit.weeklyAim;
+      }
+    } catch (ex) {
+      console.warn("No habit found for id", habitId, ex);
+    }
+    return null;
   }
 }
