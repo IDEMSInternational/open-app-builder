@@ -1,0 +1,33 @@
+<ion-content>
+  <h1>{{carePackage?.label}}</h1>
+  <p class="description">{{carePackage?.description}}</p>
+  <section *ngFor="let habit of habits" class="habit-section">
+    <div class="top">
+      <div class="title-and-desc">
+        <title>{{habit.title}}</title>
+        <p>{{habit.description}}</p>
+      </div>
+      <img [src]="habit.icon_asset">
+    </div>
+    <div class="buttons">
+      
+      <button *ngIf="habit.suggestion_button_text" class="btn" (click)="suggestedTaskClicked(habit)">
+        {{habit.suggestion_button_text}}
+      </button>
+      <button class="btn" (click)="aimClicked(habit)">
+        <span *ngIf="!habit.weeklyAim">
+          {{ habit.set_aim_button_text ? habit.set_aim_button_text : 'Set My Aim'}}
+        </span>
+        <span *ngIf="habit.weeklyAim">
+          {{habit.aim_button_text ? habit.aim_button_text : 'My Aim'}}: {{habit.timesDoneThisWeek}} / {{habit.weeklyAim}}
+        </span>
+      </button>
+    </div>
+  </section>
+  <ion-select *ngIf="selectedHabit" #numSelect [name]="selectedHabit.id" hidden="true" [(ngModel)]="selectedHabit.weeklyAim"
+    (ngModelChange)="onAimChange()">
+    <ion-select-option [value]="num" *ngFor="let num of range(1, 9)">
+      {{num}}
+    </ion-select-option>
+  </ion-select>
+</ion-content>

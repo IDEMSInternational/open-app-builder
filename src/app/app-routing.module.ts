@@ -57,6 +57,10 @@ const FeatureRoutes: Routes = [
     path: "toolbox/topic/:topicId",
     loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
   },
+  {
+    path: "care-packages",
+    loadChildren: () => import("./feature/care-packages/care-packages.module").then((m) => m.CarePackagesPageModule),
+  },
 ];
 
 /** Hardcoded pages, not linked to any feature modules */

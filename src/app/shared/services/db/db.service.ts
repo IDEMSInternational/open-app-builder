@@ -26,6 +26,8 @@ const DB_TABLES = {
   session_actions: "id,task_id,_created",
   /** user */
   user_meta: "key,value",
+  /** habits */
+  habits: "habitId"
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**
@@ -42,7 +44,7 @@ export interface IDBDoc {
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
  */
-const DB_VERSION = 7000;
+const DB_VERSION = 7001;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { of, BehaviorSubject } from "rxjs";
 import { HABIT_LIST } from "src/app/shared/services/data/data.service";
-import { DbService } from "src/app/shared/services/db/db.service";
-import { IFlowTaskAction, ITaskEntry } from "src/app/shared/services/task/task-action.service";
+import { HabitService } from "src/app/shared/services/habit/habit.service";
+import { ITaskEntry } from "src/app/shared/services/task/task-action.service";
 import { arrayToHashmap } from "src/app/shared/utils/utils";
 import { ChatMessage, IRapidProMessage } from "../../models";
 import { convertFromRapidProMsg } from "../../utils/message.converter";
@@ -28,7 +28,7 @@ export class RapidProOfflineFlow {
     public flowStatus$: BehaviorSubject<FlowStatusChange[]>,
     public contactFieldService: ContactFieldService,
     public botTyping$: BehaviorSubject<boolean>,
-    public dbService: DbService
+    public habitService: HabitService
   ) {
     console.log("flowObject", flowObject);
     this.name = flowObject.name;
@@ -265,7 +265,7 @@ export class RapidProOfflineFlow {
         }
         case "habit": {
           if (subfieldName === "weekly_count") {
-            output = output.replace(fullMatch, "" + await this.getHabitWeeklyCount(fieldName))
+            output = output.replace(fullMatch, "" + await this.habitService.getHabitWeeklyCount(fieldName))
           }
           break;
         }
@@ -274,26 +274,6 @@ export class RapidProOfflineFlow {
 
     return output;
   };
-
-  private async getHabitWeeklyCount(habitId: string): Promise<number> {
-    const oneWeekAgo = new Date(new Date().getTime() - (7 * 24 * 3600 * 1000));
-    const history = [];
-    const habitListByTaskID = arrayToHashmap(HABIT_LIST[0].rows, "task_id");
-    const completedTasks = await this.dbService.table<ITaskEntry>("task_actions")
-      .orderBy("_created")
-      .reverse()
-      .toArray();
-    completedTasks.forEach((t) => {
-      const date = new Date(t._created);
-      if (t._completed && date > oneWeekAgo && habitListByTaskID.hasOwnProperty(t.task_id)) {
-        const completedHabitId = habitListByTaskID[t.task_id].id;
-        if (completedHabitId === habitId) {
-          history.push({ ...habitListByTaskID[t.task_id], _created: t._created });
-        }
-      }
-    });
-    return history.length;
-  }
 
   private messageHasTextInput(
     action: RapidProFlowExport.Action,
