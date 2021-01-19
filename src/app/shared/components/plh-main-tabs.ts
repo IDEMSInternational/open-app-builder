@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 @Component({
   selector: "plh-main-tabs",
   template: `<ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="care-packages" layout="icon-top">
+    <ion-segment-button value="care-packages" layout="icon-top" (click)="onCarePackagesClicked()">
       <ion-label>Care Packages</ion-label>
       <ion-icon name="heart-outline"></ion-icon>
     </ion-segment-button>
@@ -41,9 +41,10 @@ export class PLHMainTabsComponent {
   }
 
   segmentChanged(e) {
-    if (e.target.value === "care-packages") {
-      this.router.navigateByUrl("care-packages");
-    }
     console.log("segment changed", e.target.value);
+  }
+
+  onCarePackagesClicked() {
+    this.router.navigateByUrl("care-packages");
   }
 }
