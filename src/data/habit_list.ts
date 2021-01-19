@@ -13,12 +13,11 @@
         "task_id": "task_relax",
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_relax_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg",
-        "launch_flow_type": "conversation",
-        "launch_flow_name": "calm_random",
         "suggestion_button_text": "Relaxing activity",
         "suggestion_flow_type": "conversation",
         "suggestion_flow_name": "calm_random",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_relax_custom | repeat_count | min=0 | max = 10"
       },
       {
@@ -32,6 +31,7 @@
         "suggestion_flow_type": "tips",
         "suggestion_flow_name": "mod_welcome_ideas",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_treat_yourself_custom | repeat_count | min=0 | max = 10"
       },
       {
@@ -45,6 +45,7 @@
         "suggestion_flow_type": "tips",
         "suggestion_flow_name": "mod_praise_ideas_self",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_praise_yourself_custom | repeat_count | min=0 | max = 10"
       },
       {
@@ -58,6 +59,7 @@
         "suggestion_flow_type": "tips",
         "suggestion_flow_name": "mod_1on1_ideas",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_spend_time_custom | repeat_count | min=0 | max = 10"
       },
       {
@@ -71,6 +73,7 @@
         "suggestion_flow_type": "tips",
         "suggestion_flow_name": "mod_praise_ideas_teen",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_praise_teen_custom | repeat_count | min=0 | max = 10"
       },
       {
@@ -81,6 +84,7 @@
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_breathe_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_breathe_image.svg",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_breathe_custom | repeat_count | min=0 | max = 10"
       },
       {
@@ -91,6 +95,7 @@
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_money_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_money_image.svg",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_money_custom | repeat_count | min=0 | max = 10"
       },
       {
@@ -101,6 +106,7 @@
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_consequence_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_consequence_image.svg",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_consequence_custom | repeat_count | min=0 | max = 10"
       },
       {
@@ -111,6 +117,7 @@
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_safe_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_safe_image.svg",
         "aim_button_text": "My aim",
+        "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_safe_custom | repeat_count | min=0 | max = 10"
       }
     ]
