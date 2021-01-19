@@ -26,6 +26,8 @@ const DB_TABLES = {
   session_actions: "id,task_id,_created",
   /** user */
   user_meta: "key,value",
+  /** habits */
+  habits: "habitId"
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**

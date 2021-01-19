@@ -15,11 +15,17 @@
         {{habit.suggestion_button_text}}
       </button>
       <button class="btn" (click)="aimClicked(habit)">
-        {{habit.aim_button_text}}: {{habit.timesDone}} / {{habit.goalNumber}}
+        <span *ngIf="!habit.weeklyAim">
+          {{ habit.set_aim_button_text ? habit.set_aim_button_text : 'Set My Aim'}}
+        </span>
+        <span *ngIf="habit.weeklyAim">
+          {{habit.aim_button_text ? habit.aim_button_text : 'My Aim'}}: {{habit.timesDoneThisWeek}} / {{habit.weeklyAim}}
+        </span>
       </button>
     </div>
   </section>
-  <ion-select *ngIf="selectedHabit" #numSelect [name]="selectedHabit.id" hidden="true" [(ngModel)]="selectedHabit.goalNumber">
+  <ion-select *ngIf="selectedHabit" #numSelect [name]="selectedHabit.id" hidden="true" [(ngModel)]="selectedHabit.weeklyAim"
+    (ngModelChange)="onAimChange()">
     <ion-select-option [value]="num" *ngFor="let num of range(1, 9)">
       {{num}}
     </ion-select-option>
