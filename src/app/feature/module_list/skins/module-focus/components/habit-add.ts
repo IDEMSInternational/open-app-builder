@@ -116,10 +116,10 @@ export class HabitAddComponent implements OnInit {
     const timestamp = generateTimestamp();
     const todayString = timestamp.substring(0, 10);
     const completedTaskToday = await this.taskActionService.table
-      .where("_created")
-      .startsWith(todayString)
+      .where("task_id")
+      .equals(habit.task_id)
       .and((taskEntry) => {
-        return taskEntry.task_id === habit.task_id && taskEntry._completed;
+        return taskEntry._created.startsWith(todayString) && taskEntry._completed;
       })
       .last();
     this.taskActionService.table.delete(completedTaskToday.id);
