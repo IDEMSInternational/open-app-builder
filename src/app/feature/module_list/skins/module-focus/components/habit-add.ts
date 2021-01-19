@@ -87,7 +87,7 @@ export class HabitAddComponent implements OnInit {
     public modalCtrl: ModalController,
     private taskService: TaskService,
     private taskActionService: TaskActionService
-  ) {}
+  ) { }
 
   async ngOnInit() {
     await this.evaluateCompletedHabits();
@@ -105,9 +105,24 @@ export class HabitAddComponent implements OnInit {
         type: "completed",
         meta: { habit_id: id },
       });
-      // TODO - add more efficient bindings for evaluating tasks
-      await this.evaluateCompletedHabits();
+    } else {
+      await this.removeHabitOccurence(habit);
     }
+    // TODO - add more efficient bindings for evaluating tasks
+    await this.evaluateCompletedHabits();
+  }
+
+  private async removeHabitOccurence(habit: FlowTypes.Habit_listRow) {
+    const timestamp = generateTimestamp();
+    const todayString = timestamp.substring(0, 10);
+    const completedTaskToday = await this.taskActionService.table
+      .where("task_id")
+      .equals(habit.task_id)
+      .and((taskEntry) => {
+        return taskEntry._created.startsWith(todayString) && taskEntry._completed;
+      })
+      .last();
+    this.taskActionService.table.delete(completedTaskToday.id);
   }
 
   /**
@@ -116,7 +131,7 @@ export class HabitAddComponent implements OnInit {
    */
   private async evaluateCompletedHabits() {
     const timestamp = generateTimestamp();
-    const todayString = timestamp.substring(0, 12);
+    const todayString = timestamp.substring(0, 10);
     const completedTasks = await this.taskActionService.table
       .where("_created")
       .startsWith(todayString)

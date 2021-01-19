@@ -17,9 +17,12 @@
           "repeat_on_completion",
           "habits"
         ],
+        "start_action": "start_new_flow",
         "requires_list": [
           "task_mod_welcome_self-care_package"
-        ]
+        ],
+        "flow_type": "conversation",
+        "flow_name": "calm_1"
       },
       {
         "id": "task_relax_custom_completed_goal",

@@ -9,6 +9,7 @@ import { task_list } from "src/data/task_list";
 import { tips } from "src/data/tips";
 import { module_list } from "src/data/module_list";
 import { module_page } from "src/data/module_page";
+import { care_package_list } from "src/data/care_package_list";
 
 export const COMPLETION_LIST = completion_list;
 export const CONVERSATION = conversation;
@@ -18,6 +19,7 @@ export const MODULE_LIST = module_list;
 export const MODULE_PAGE = module_page;
 export const TASK_LIST = task_list;
 export const TIPS = tips;
+export const CARE_PACKAGE_LIST = care_package_list;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
 const mapping: { [key in FlowTypes.FlowType] } = {
@@ -29,6 +31,7 @@ const mapping: { [key in FlowTypes.FlowType] } = {
   module_page: MODULE_PAGE,
   task_list: TASK_LIST,
   tips: TIPS,
+  care_package_list: CARE_PACKAGE_LIST
 };
 
 /**
