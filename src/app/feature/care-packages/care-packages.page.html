@@ -1,0 +1,10 @@
+<ion-content>
+  <h1>Care Packages</h1>
+  <div class="care-package-buttons">
+    <div *ngFor="let carePackage of carePackages" class="care-package-button" [routerLink]="[carePackage.id]">
+      <label>{{carePackage.label}}</label>
+      <img *ngIf="carePackage.icon_asset" [src]="carePackage.icon_asset">
+      <img *ngIf="!carePackage.icon_asset" src="assets/images/blob_holding_heart1.svg">
+    </div>
+  </div>
+</ion-content>

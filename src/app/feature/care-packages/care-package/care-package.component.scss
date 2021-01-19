@@ -1,0 +1,49 @@
+h1 {
+    text-align: center;
+}
+
+.description {
+    text-align: center;
+}
+
+.habit-section {
+    background-color: var(--ion-item-background, #fefefe);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin: 20px;
+    padding: 20px;
+
+    .top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        title {
+            display: block;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        img {
+            max-width: 60px;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        
+        .btn {
+            color: var(--ion-color-primary-contrast, #fff);
+            white-space: normal;
+            background-color: var(--ion-color-primary, "darkblue");
+            width: calc(50% - 10px);
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin-left: 10px;
+            padding: 10px;
+            height: 100px;
+            font-size: 20px;
+        }
+    }
+}
