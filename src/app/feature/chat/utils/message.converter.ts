@@ -248,7 +248,9 @@ export async function convertRapidProAttachments(attachments: string[]): Promise
       let urlRegexResult = urlRegex.exec(url);
       // Handle local asset
       if (!urlRegexResult) {
-        url = `assets/plh_assets/${url}`;
+        if (!url.startsWith("assets/plh_assets/")) {
+          url = `assets/plh_assets/${url}`;
+        }
         return { type, url };
       }
       // Handle web asset
