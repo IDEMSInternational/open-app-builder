@@ -636,8 +636,15 @@ export class ConversationParser implements AbstractParser {
     fromRows = this.getFromRows(row, rows);
     // If condition_var is given this is operandValue
     if (row.condition_var && row.condition_var.length > 0) {
-      operandType = "@fields";
-      operandValue = row.condition_var;
+      const regex = /(@[a-z]+)\.([\S]*)/;
+      const matches = row.condition_var.match(regex);
+      if (matches) {
+        operandType = matches[1] as any;
+        operandValue = matches[2];
+      } else {
+        operandType = "@fields";
+        operandValue = row.condition_var;
+      }
       // If the first fromRow has a save_name then the condition is from a saved field.
     } else if (fromRows && fromRows.length > 0 && fromRows[0].save_name) {
       operandType = "@fields";
