@@ -455,7 +455,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Weekly Workshops <icon>\n10-12 weekly sessions structured for you. These include key tools for self-care and parenting a teenager, and extra content where you want it. You can choose to do each workshop as an individual, or with someone else, or as a group with family or friends.",
+                "text": "Weekly Workshops <img class=\"icon\" src=\"assets/plh_assets/plh_images/other_icons/tick.svg\">\n10-12 weekly sessions structured for you. These include key tools for self-care and parenting a teenager, and extra content where you want it. You can choose to do each workshop as an individual, or with someone else, or as a group with family or friends.",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_give_action_2"
@@ -473,7 +473,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Parent Centre <icon>\nStacked with the resources you need, whenever you want. Instant access help section with Essential Tools for each skill, extra information and local resources",
+                "text": "Parent Centre <img class=\"icon\" src=\"assets/plh_assets/plh_images/other_icons/tick.svg\">\nStacked with the resources you need, whenever you want. Instant access help section with Essential Tools for each skill, extra information and local resources",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_give_action_3"
@@ -491,7 +491,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Parent Points <icon>\nTrack your success in self-care and parenting. Celebrate your daily achievements! ",
+                "text": "Parent Points <img class=\"icon\" src=\"assets/plh_assets/plh_images/other_icons/tick.svg\">\nTrack your success in self-care and parenting. Celebrate your daily achievements! ",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_give_action_4"
@@ -684,7 +684,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_self-care_package_action_5"
@@ -806,7 +806,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your Parent Point <icon>: see your success!",
+                "text": "Tap your Parent Point <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_self-care_package_action_10"
@@ -1002,7 +1002,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your Parent Point <icon>: see your success!",
+                "text": "Tap your Parent Point <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_treat_yourself_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_self-care_package_action_15"
@@ -3117,7 +3117,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_relax_action_2"
@@ -3465,7 +3465,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_1on1_emo_action_5"
@@ -4162,7 +4162,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [
                   "Back to stepper"
@@ -7968,7 +7968,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Have you spent time with your teen already? Try it again today – you are doing so well! \n\nTap your ParentPoint <icon>: see your success! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Have you spent time with your teen already? Try it again today – you are doing so well! \n\nTap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">: see your success! https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
                 "quick_replies": [
                   "Ideas to spend time with your teen"
@@ -8378,7 +8378,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [
                   "Back to stepper"
@@ -8735,7 +8735,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_emo_action_6"
@@ -9104,12 +9104,202 @@
             "exits": [
               {
                 "uuid": "uuid_mod_praise_intro_exit_1",
+                "destination_uuid": "uuid_mod_praise_intro_node_3"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_intro_node_3",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Click here"
+                  ],
+                  "category_uuid": "uuid_mod_praise_intro_category_1",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_praise_intro_case_0"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_praise_intro_exit_3",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_praise_intro_category_0"
+                },
+                {
+                  "exit_uuid": "uuid_mod_praise_intro_exit_4",
+                  "name": "Click here",
+                  "uuid": "uuid_mod_praise_intro_category_1"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_praise_intro_category_0",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_intro_exit_3",
                 "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_praise_intro_exit_4",
+                "destination_uuid": "uuid_mod_praise_intro_node_2"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_intro_node_2",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg\"> </p>\n<p>I was busy and my older daughter actually helped her sister with her homework. Usually they just fight!</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next"
+                ],
+                "uuid": "uuid_mod_praise_intro_action_2"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_intro_exit_2",
+                "destination_uuid": "uuid_mod_praise_intro_node_5"
               }
             ]
           },
           {
             "uuid": "uuid_mod_praise_intro_node_5",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_praise_intro_category_3",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_praise_intro_case_1"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_praise_intro_exit_6",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_praise_intro_category_2"
+                },
+                {
+                  "exit_uuid": "uuid_mod_praise_intro_exit_7",
+                  "name": "Next",
+                  "uuid": "uuid_mod_praise_intro_category_3"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_praise_intro_category_2",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_intro_exit_6",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_praise_intro_exit_7",
+                "destination_uuid": "uuid_mod_praise_intro_node_4"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_intro_node_4",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg\"></p>\n<p>Here’s the parenting skill: if I tell my daughters how proud I am of them for doing this, then they will want to do it again.</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_praise_intro_action_3"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_intro_exit_5",
+                "destination_uuid": "uuid_mod_praise_intro_node_7"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_intro_node_7",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_praise_intro_category_5",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_praise_intro_case_2"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_praise_intro_category_7",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_praise_intro_case_3"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_praise_intro_exit_9",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_praise_intro_category_4"
+                },
+                {
+                  "exit_uuid": "uuid_mod_praise_intro_exit_10",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_praise_intro_category_5"
+                },
+                {
+                  "exit_uuid": "uuid_mod_praise_intro_exit_14",
+                  "name": "Next",
+                  "uuid": "uuid_mod_praise_intro_category_7"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_praise_intro_category_4",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_intro_exit_9",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_praise_intro_exit_10",
+                "destination_uuid": "uuid_mod_praise_intro_node_2"
+              },
+              {
+                "uuid": "uuid_mod_praise_intro_exit_14",
+                "destination_uuid": "uuid_mod_praise_intro_node_8"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_intro_node_8",
             "actions": [
               {
                 "attachments": [],
@@ -9120,34 +9310,34 @@
                   "Moderate smile",
                   "Big smile"
                 ],
-                "uuid": "uuid_mod_praise_intro_action_2"
+                "uuid": "uuid_mod_praise_intro_action_4"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_5",
-                "destination_uuid": "uuid_mod_praise_intro_node_6"
+                "uuid": "uuid_mod_praise_intro_exit_11",
+                "destination_uuid": "uuid_mod_praise_intro_node_9"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_praise_intro_node_6",
+            "uuid": "uuid_mod_praise_intro_node_9",
             "actions": [],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_6",
-                "destination_uuid": "uuid_mod_praise_intro_node_7"
+                "uuid": "uuid_mod_praise_intro_exit_12",
+                "destination_uuid": "uuid_mod_praise_intro_node_10"
               }
             ],
             "router": {
               "type": "switch",
-              "default_category_uuid": "uuid_mod_praise_intro_category_0",
+              "default_category_uuid": "uuid_mod_praise_intro_category_6",
               "cases": [],
               "categories": [
                 {
-                  "uuid": "uuid_mod_praise_intro_category_0",
+                  "uuid": "uuid_mod_praise_intro_category_6",
                   "name": "All Responses",
-                  "exit_uuid": "uuid_mod_praise_intro_exit_6"
+                  "exit_uuid": "uuid_mod_praise_intro_exit_12"
                 }
               ],
               "operand": "@input.text",
@@ -9158,10 +9348,10 @@
             }
           },
           {
-            "uuid": "uuid_mod_praise_intro_node_7",
+            "uuid": "uuid_mod_praise_intro_node_10",
             "actions": [
               {
-                "uuid": "uuid_mod_praise_intro_action_3",
+                "uuid": "uuid_mod_praise_intro_action_5",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_praise_feeling_3",
@@ -9172,13 +9362,13 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_7",
-                "destination_uuid": "uuid_mod_praise_intro_node_8"
+                "uuid": "uuid_mod_praise_intro_exit_13",
+                "destination_uuid": "uuid_mod_praise_intro_node_11"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_praise_intro_node_8",
+            "uuid": "uuid_mod_praise_intro_node_11",
             "actions": [
               {
                 "attachments": [],
@@ -9190,34 +9380,34 @@
                   "To make them feel good",
                   "To make me feel good"
                 ],
-                "uuid": "uuid_mod_praise_intro_action_4"
+                "uuid": "uuid_mod_praise_intro_action_6"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_8",
-                "destination_uuid": "uuid_mod_praise_intro_node_9"
+                "uuid": "uuid_mod_praise_intro_exit_15",
+                "destination_uuid": "uuid_mod_praise_intro_node_12"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_praise_intro_node_9",
+            "uuid": "uuid_mod_praise_intro_node_12",
             "actions": [],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_9",
-                "destination_uuid": "uuid_mod_praise_intro_node_10"
+                "uuid": "uuid_mod_praise_intro_exit_16",
+                "destination_uuid": "uuid_mod_praise_intro_node_13"
               }
             ],
             "router": {
               "type": "switch",
-              "default_category_uuid": "uuid_mod_praise_intro_category_1",
+              "default_category_uuid": "uuid_mod_praise_intro_category_8",
               "cases": [],
               "categories": [
                 {
-                  "uuid": "uuid_mod_praise_intro_category_1",
+                  "uuid": "uuid_mod_praise_intro_category_8",
                   "name": "All Responses",
-                  "exit_uuid": "uuid_mod_praise_intro_exit_9"
+                  "exit_uuid": "uuid_mod_praise_intro_exit_16"
                 }
               ],
               "operand": "@input.text",
@@ -9228,10 +9418,10 @@
             }
           },
           {
-            "uuid": "uuid_mod_praise_intro_node_10",
+            "uuid": "uuid_mod_praise_intro_node_13",
             "actions": [
               {
-                "uuid": "uuid_mod_praise_intro_action_5",
+                "uuid": "uuid_mod_praise_intro_action_7",
                 "type": "set_contact_field",
                 "field": {
                   "key": "wait",
@@ -9242,13 +9432,13 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_10",
-                "destination_uuid": "uuid_mod_praise_intro_node_11"
+                "uuid": "uuid_mod_praise_intro_exit_17",
+                "destination_uuid": "uuid_mod_praise_intro_node_14"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_praise_intro_node_11",
+            "uuid": "uuid_mod_praise_intro_node_14",
             "actions": [
               {
                 "attachments": [
@@ -9257,18 +9447,18 @@
                 "text": "All of those things are true! When they are happy, I feel happy. And I got my work done. The same can work for you! ",
                 "type": "send_msg",
                 "quick_replies": [],
-                "uuid": "uuid_mod_praise_intro_action_6"
+                "uuid": "uuid_mod_praise_intro_action_8"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_11",
-                "destination_uuid": "uuid_mod_praise_intro_node_12"
+                "uuid": "uuid_mod_praise_intro_exit_18",
+                "destination_uuid": "uuid_mod_praise_intro_node_15"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_praise_intro_node_12",
+            "uuid": "uuid_mod_praise_intro_node_15",
             "actions": [
               {
                 "attachments": [],
@@ -9278,18 +9468,18 @@
                   "Next",
                   "Back to stepper"
                 ],
-                "uuid": "uuid_mod_praise_intro_action_7"
+                "uuid": "uuid_mod_praise_intro_action_9"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_12",
-                "destination_uuid": "uuid_mod_praise_intro_node_15"
+                "uuid": "uuid_mod_praise_intro_exit_19",
+                "destination_uuid": "uuid_mod_praise_intro_node_18"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_praise_intro_node_15",
+            "uuid": "uuid_mod_praise_intro_node_18",
             "actions": [],
             "router": {
               "type": "switch",
@@ -9298,92 +9488,54 @@
                   "arguments": [
                     "Next"
                   ],
-                  "category_uuid": "uuid_mod_praise_intro_category_3",
+                  "category_uuid": "uuid_mod_praise_intro_category_10",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_praise_intro_case_0"
+                  "uuid": "uuid_mod_praise_intro_case_4"
                 },
                 {
                   "arguments": [
                     "Back to stepper"
                   ],
-                  "category_uuid": "uuid_mod_praise_intro_category_4",
+                  "category_uuid": "uuid_mod_praise_intro_category_11",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_praise_intro_case_1"
+                  "uuid": "uuid_mod_praise_intro_case_5"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_praise_intro_exit_15",
+                  "exit_uuid": "uuid_mod_praise_intro_exit_22",
                   "name": "All Responses",
-                  "uuid": "uuid_mod_praise_intro_category_2"
+                  "uuid": "uuid_mod_praise_intro_category_9"
                 },
                 {
-                  "exit_uuid": "uuid_mod_praise_intro_exit_16",
+                  "exit_uuid": "uuid_mod_praise_intro_exit_23",
                   "name": "Next",
-                  "uuid": "uuid_mod_praise_intro_category_3"
+                  "uuid": "uuid_mod_praise_intro_category_10"
                 },
                 {
-                  "exit_uuid": "uuid_mod_praise_intro_exit_19",
+                  "exit_uuid": "uuid_mod_praise_intro_exit_26",
                   "name": "Back to stepper",
-                  "uuid": "uuid_mod_praise_intro_category_4"
+                  "uuid": "uuid_mod_praise_intro_category_11"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_mod_praise_intro_category_2",
+              "default_category_uuid": "uuid_mod_praise_intro_category_9",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_15",
+                "uuid": "uuid_mod_praise_intro_exit_22",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_praise_intro_exit_16",
-                "destination_uuid": "uuid_mod_praise_intro_node_13"
-              },
-              {
-                "uuid": "uuid_mod_praise_intro_exit_19",
+                "uuid": "uuid_mod_praise_intro_exit_23",
                 "destination_uuid": "uuid_mod_praise_intro_node_16"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_praise_intro_node_13",
-            "actions": [
+              },
               {
-                "uuid": "uuid_mod_praise_intro_action_8",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "mod_praise_intro__completed",
-                  "name": "mod_praise_intro__completed"
-                },
-                "value": "true"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_praise_intro_exit_13",
-                "destination_uuid": "uuid_mod_praise_intro_node_14"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_praise_intro_node_14",
-            "actions": [
-              {
-                "flow": {
-                  "name": "toolbox_mod_praise_tips"
-                },
-                "type": "enter_flow",
-                "uuid": "uuid_mod_praise_intro_action_9"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_praise_intro_exit_14",
-                "destination_uuid": null
+                "uuid": "uuid_mod_praise_intro_exit_26",
+                "destination_uuid": "uuid_mod_praise_intro_node_19"
               }
             ]
           },
@@ -9402,7 +9554,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_17",
+                "uuid": "uuid_mod_praise_intro_exit_20",
                 "destination_uuid": "uuid_mod_praise_intro_node_17"
               }
             ]
@@ -9412,7 +9564,7 @@
             "actions": [
               {
                 "flow": {
-                  "name": "link_mod_praise_page"
+                  "name": "toolbox_mod_praise_tips"
                 },
                 "type": "enter_flow",
                 "uuid": "uuid_mod_praise_intro_action_11"
@@ -9420,7 +9572,45 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_praise_intro_exit_18",
+                "uuid": "uuid_mod_praise_intro_exit_21",
+                "destination_uuid": null
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_intro_node_19",
+            "actions": [
+              {
+                "uuid": "uuid_mod_praise_intro_action_12",
+                "type": "set_contact_field",
+                "field": {
+                  "key": "mod_praise_intro__completed",
+                  "name": "mod_praise_intro__completed"
+                },
+                "value": "true"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_intro_exit_24",
+                "destination_uuid": "uuid_mod_praise_intro_node_20"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_intro_node_20",
+            "actions": [
+              {
+                "flow": {
+                  "name": "link_mod_praise_page"
+                },
+                "type": "enter_flow",
+                "uuid": "uuid_mod_praise_intro_action_13"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_intro_exit_25",
                 "destination_uuid": null
               }
             ]
@@ -10373,7 +10563,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [
                   "Back to stepper"
@@ -10519,7 +10709,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_act_teen_reminder_action_1"
@@ -10683,7 +10873,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [
                   "Back to stepper"
@@ -11058,7 +11248,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Tap your ParentPoint <icon>: see your success!",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_instruct_emo_action_7"
@@ -11339,6 +11529,70 @@
         "type": "messaging",
         "nodes": [
           {
+            "uuid": "uuid_mod_instruct_intro_node_0",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/teen_shout.svg\"></p>\n<p>@fields.second_guide: \"Stop making so much noise!\"</p>\n<p>@fields.guide_teen: \"I hate you!\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next"
+                ],
+                "uuid": "uuid_mod_instruct_intro_action_0"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_0",
+                "destination_uuid": "uuid_mod_instruct_intro_node_2"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_2",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_1",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_0"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_2",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_intro_category_0"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_3",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_intro_category_1"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_0",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_2",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_3",
+                "destination_uuid": "uuid_mod_instruct_intro_node_1"
+              }
+            ]
+          },
+          {
             "uuid": "uuid_mod_instruct_intro_node_1",
             "actions": [
               {
@@ -11346,18 +11600,18 @@
                 "text": "It is so hard to tell teenagers what to do! https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
                 "quick_replies": [],
-                "uuid": "uuid_mod_instruct_intro_action_0"
+                "uuid": "uuid_mod_instruct_intro_action_1"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_instruct_intro_exit_1",
-                "destination_uuid": "uuid_mod_instruct_intro_node_2"
+                "destination_uuid": "uuid_mod_instruct_intro_node_3"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_intro_node_2",
+            "uuid": "uuid_mod_instruct_intro_node_3",
             "actions": [
               {
                 "attachments": [],
@@ -11366,13 +11620,203 @@
                 "quick_replies": [
                   "Click here"
                 ],
-                "uuid": "uuid_mod_instruct_intro_action_1"
+                "uuid": "uuid_mod_instruct_intro_action_2"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_emo_exit_21",
+                "uuid": "uuid_mod_instruct_intro_exit_4",
+                "destination_uuid": "uuid_mod_instruct_intro_node_5"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_5",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Click here"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_3",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_1"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_6",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_intro_category_2"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_7",
+                  "name": "Click here",
+                  "uuid": "uuid_mod_instruct_intro_category_3"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_2",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_6",
                 "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_7",
+                "destination_uuid": "uuid_mod_instruct_intro_node_4"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_4",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg\"></p>\n<p>DO NOT THINK ABOUT AN ELEPHANT</p>\n<p></p>\n<p>What are you thinking about?</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next"
+                ],
+                "uuid": "uuid_mod_instruct_intro_action_3"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_5",
+                "destination_uuid": "uuid_mod_instruct_intro_node_7"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_7",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_5",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_2"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_9",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_intro_category_4"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_10",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_intro_category_5"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_4",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_9",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_10",
+                "destination_uuid": "uuid_mod_instruct_intro_node_6"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_6",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_2.svg\"> </p>\n<p>‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_intro_action_4"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_8",
+                "destination_uuid": "uuid_mod_instruct_intro_node_9"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_9",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_7",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_3"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_8",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_4"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_12",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_intro_category_6"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_13",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_intro_category_7"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_15",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_intro_category_8"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_6",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_12",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_13",
+                "destination_uuid": "uuid_mod_instruct_intro_node_4"
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_15",
+                "destination_uuid": "uuid_mod_instruct_intro_node_10"
               }
             ]
           },
@@ -11380,7 +11824,171 @@
             "uuid": "uuid_mod_instruct_intro_node_10",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_intro_action_2",
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg\"> </p>\n<p>THINK ABOUT A FURRY TIGER, THANK YOU! </p>\n<p></p>\n<p>What are you thinking about? </p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_intro_action_5"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_14",
+                "destination_uuid": "uuid_mod_instruct_intro_node_12"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_12",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_10",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_5"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_11",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_6"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_17",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_intro_category_9"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_18",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_intro_category_10"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_20",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_intro_category_11"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_9",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_17",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_18",
+                "destination_uuid": "uuid_mod_instruct_intro_node_6"
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_20",
+                "destination_uuid": "uuid_mod_instruct_intro_node_13"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_13",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_3.svg\"></p>\n<p>Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_intro_action_6"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_19",
+                "destination_uuid": "uuid_mod_instruct_intro_node_15"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_15",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_13",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_7"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_14",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_8"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_22",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_intro_category_12"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_23",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_intro_category_13"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_26",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_intro_category_14"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_12",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_22",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_23",
+                "destination_uuid": "uuid_mod_instruct_intro_node_10"
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_26",
+                "destination_uuid": "uuid_mod_instruct_intro_node_16"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_16",
+            "actions": [
+              {
+                "uuid": "uuid_mod_instruct_intro_action_7",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_intro__completed",
@@ -11391,25 +11999,25 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_10",
-                "destination_uuid": "uuid_mod_instruct_intro_node_11"
+                "uuid": "uuid_mod_instruct_intro_exit_24",
+                "destination_uuid": "uuid_mod_instruct_intro_node_17"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_intro_node_11",
+            "uuid": "uuid_mod_instruct_intro_node_17",
             "actions": [
               {
                 "flow": {
                   "name": "mod_instruct_story"
                 },
                 "type": "enter_flow",
-                "uuid": "uuid_mod_instruct_intro_action_3"
+                "uuid": "uuid_mod_instruct_intro_action_8"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_11",
+                "uuid": "uuid_mod_instruct_intro_exit_25",
                 "destination_uuid": null
               }
             ]
@@ -11456,12 +12064,284 @@
             "exits": [
               {
                 "uuid": "uuid_mod_instruct_story_exit_0",
+                "destination_uuid": "uuid_mod_instruct_story_node_2"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_2",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "See story"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_1",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_0"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_2",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_0"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_3",
+                  "name": "See story",
+                  "uuid": "uuid_mod_instruct_story_category_1"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_0",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_2",
                 "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_3",
+                "destination_uuid": "uuid_mod_instruct_story_node_1"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_1",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p>@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  </p>\n<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_1.svg\"></p>\n<p>@fields.neighbour: \"Don’t make such a mess while I am cleaning the house. You are in the way!\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_1"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_1",
+                "destination_uuid": "uuid_mod_instruct_story_node_4"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_4",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_3",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_1"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_5",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_2"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_6",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_3"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_2",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_5",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_6",
+                "destination_uuid": "uuid_mod_instruct_story_node_3"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_3",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_2.svg\"></p>\n<p>@fields.neighbour_teen_daughter: \"But I need to practice for the school competition. You never let me do anything.\"</p>\n<p>@fields.neighbour: \"Don't you talk back to me!\"</p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_2"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_4",
+                "destination_uuid": "uuid_mod_instruct_story_node_6"
               }
             ]
           },
           {
             "uuid": "uuid_mod_instruct_story_node_6",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_5",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_2"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_6",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_3"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_8",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_4"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_9",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_5"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_11",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_6"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_4",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_8",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_9",
+                "destination_uuid": "uuid_mod_instruct_story_node_1"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_11",
+                "destination_uuid": "uuid_mod_instruct_story_node_7"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_7",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_3.svg\"></p>\n<p>@fields.neighbour_teen_daughter: \"Arrg!! Why am I being yelled at all the time????\" </p>\n<p>@fields.neighbour: \"That child is always making trouble.\"</p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_3"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_10",
+                "destination_uuid": "uuid_mod_instruct_story_node_9"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_9",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_8",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_4"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_10",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_5"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_13",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_7"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_14",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_8"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_18",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_10"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_7",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_13",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_14",
+                "destination_uuid": "uuid_mod_instruct_story_node_3"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_18",
+                "destination_uuid": "uuid_mod_instruct_story_node_10"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_10",
             "actions": [
               {
                 "attachments": [],
@@ -11472,34 +12352,34 @@
                   "Confused face",
                   "Angry face"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_1"
+                "uuid": "uuid_mod_instruct_story_action_4"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_6",
-                "destination_uuid": "uuid_mod_instruct_story_node_7"
+                "uuid": "uuid_mod_instruct_story_exit_15",
+                "destination_uuid": "uuid_mod_instruct_story_node_11"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_7",
+            "uuid": "uuid_mod_instruct_story_node_11",
             "actions": [],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_7",
-                "destination_uuid": "uuid_mod_instruct_story_node_8"
+                "uuid": "uuid_mod_instruct_story_exit_16",
+                "destination_uuid": "uuid_mod_instruct_story_node_12"
               }
             ],
             "router": {
               "type": "switch",
-              "default_category_uuid": "uuid_mod_instruct_story_category_0",
+              "default_category_uuid": "uuid_mod_instruct_story_category_9",
               "cases": [],
               "categories": [
                 {
-                  "uuid": "uuid_mod_instruct_story_category_0",
+                  "uuid": "uuid_mod_instruct_story_category_9",
                   "name": "All Responses",
-                  "exit_uuid": "uuid_mod_instruct_story_exit_7"
+                  "exit_uuid": "uuid_mod_instruct_story_exit_16"
                 }
               ],
               "operand": "@input.text",
@@ -11510,10 +12390,10 @@
             }
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_8",
+            "uuid": "uuid_mod_instruct_story_node_12",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_2",
+                "uuid": "uuid_mod_instruct_story_action_5",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_story_feel",
@@ -11524,13 +12404,13 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_8",
-                "destination_uuid": "uuid_mod_instruct_story_node_9"
+                "uuid": "uuid_mod_instruct_story_exit_17",
+                "destination_uuid": "uuid_mod_instruct_story_node_13"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_9",
+            "uuid": "uuid_mod_instruct_story_node_13",
             "actions": [
               {
                 "attachments": [],
@@ -11541,34 +12421,34 @@
                   "Speak to her in a calm voice",
                   "Tell @fields.neighbour_teen_daughter what they want her to do"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_3"
+                "uuid": "uuid_mod_instruct_story_action_6"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_9",
-                "destination_uuid": "uuid_mod_instruct_story_node_10"
+                "uuid": "uuid_mod_instruct_story_exit_19",
+                "destination_uuid": "uuid_mod_instruct_story_node_14"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_10",
+            "uuid": "uuid_mod_instruct_story_node_14",
             "actions": [],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_10",
-                "destination_uuid": "uuid_mod_instruct_story_node_11"
+                "uuid": "uuid_mod_instruct_story_exit_20",
+                "destination_uuid": "uuid_mod_instruct_story_node_15"
               }
             ],
             "router": {
               "type": "switch",
-              "default_category_uuid": "uuid_mod_instruct_story_category_1",
+              "default_category_uuid": "uuid_mod_instruct_story_category_11",
               "cases": [],
               "categories": [
                 {
-                  "uuid": "uuid_mod_instruct_story_category_1",
+                  "uuid": "uuid_mod_instruct_story_category_11",
                   "name": "All Responses",
-                  "exit_uuid": "uuid_mod_instruct_story_exit_10"
+                  "exit_uuid": "uuid_mod_instruct_story_exit_20"
                 }
               ],
               "operand": "@input.text",
@@ -11579,10 +12459,10 @@
             }
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_11",
+            "uuid": "uuid_mod_instruct_story_node_15",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_4",
+                "uuid": "uuid_mod_instruct_story_action_7",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_story_response",
@@ -11593,13 +12473,13 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_11",
-                "destination_uuid": "uuid_mod_instruct_story_node_12"
+                "uuid": "uuid_mod_instruct_story_exit_21",
+                "destination_uuid": "uuid_mod_instruct_story_node_16"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_12",
+            "uuid": "uuid_mod_instruct_story_node_16",
             "actions": [
               {
                 "attachments": [],
@@ -11608,102 +12488,305 @@
                 "quick_replies": [
                   "See story"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_5"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_12",
-                "destination_uuid": null
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_22",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Why do you think it worked better for @fields.neighbour this time?",
-                "type": "send_msg",
-                "quick_replies": [
-                  "@fields.neighbour_teen_daughter felt respected and loved",
-                  "@fields.neighbour was able to stay calm",
-                  "@fields.neighbour kept a positive attitude"
-                ],
-                "uuid": "uuid_mod_instruct_story_action_6"
+                "uuid": "uuid_mod_instruct_story_action_8"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_instruct_story_exit_22",
+                "destination_uuid": "uuid_mod_instruct_story_node_18"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_18",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "See story"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_13",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_6"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_24",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_12"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_25",
+                  "name": "See story",
+                  "uuid": "uuid_mod_instruct_story_category_13"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_12",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_24",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_25",
+                "destination_uuid": "uuid_mod_instruct_story_node_17"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_17",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p>@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  </p>\n<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_4.svg\"></p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_9"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_23",
+                "destination_uuid": "uuid_mod_instruct_story_node_20"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_20",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_15",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_7"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_27",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_14"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_28",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_15"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_14",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_27",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_28",
+                "destination_uuid": "uuid_mod_instruct_story_node_19"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_19",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_5.svg\"></p>\n<p>@fields.neighbour: \"@fields.neighbour_teen_daughter, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"</p>\n<p>@fields.neighbour_teen_daughter: \"Okay!\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_10"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_26",
+                "destination_uuid": "uuid_mod_instruct_story_node_22"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_22",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_17",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_8"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_18",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_9"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_30",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_16"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_31",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_17"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_33",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_18"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_16",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_30",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_31",
+                "destination_uuid": "uuid_mod_instruct_story_node_17"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_33",
                 "destination_uuid": "uuid_mod_instruct_story_node_23"
               }
             ]
           },
           {
             "uuid": "uuid_mod_instruct_story_node_23",
-            "actions": [],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_23",
-                "destination_uuid": "uuid_mod_instruct_story_node_24"
-              }
-            ],
-            "router": {
-              "type": "switch",
-              "default_category_uuid": "uuid_mod_instruct_story_category_2",
-              "cases": [],
-              "categories": [
-                {
-                  "uuid": "uuid_mod_instruct_story_category_2",
-                  "name": "All Responses",
-                  "exit_uuid": "uuid_mod_instruct_story_exit_23"
-                }
-              ],
-              "operand": "@input.text",
-              "wait": {
-                "type": "msg"
-              },
-              "result_name": "mod_instruct_story_why"
-            }
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_24",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_7",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "mod_instruct_story_why",
-                  "name": "mod_instruct_story_why"
-                },
-                "value": "@results.mod_instruct_story_why"
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_6.svg\"></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_11"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_24",
+                "uuid": "uuid_mod_instruct_story_exit_32",
                 "destination_uuid": "uuid_mod_instruct_story_node_25"
               }
             ]
           },
           {
             "uuid": "uuid_mod_instruct_story_node_25",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_20",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_10"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_21",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_11"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_35",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_19"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_36",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_20"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_38",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_21"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_19",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_35",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_36",
+                "destination_uuid": "uuid_mod_instruct_story_node_19"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_38",
+                "destination_uuid": "uuid_mod_instruct_story_node_26"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_26",
             "actions": [
               {
                 "attachments": [],
-                "text": "Next - Essential tools for Positive Instructions",
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_7.svg\"></p>\n<p>@fields.neighbour: \"Thank you for practicing outside while I finished cleaning the house, @fields.neighbour_teen_daughter . Now I have some time to watch your dance.\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next",
-                  "Back to stepper"
+                  "Previous"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_8"
+                "uuid": "uuid_mod_instruct_story_action_12"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_25",
+                "uuid": "uuid_mod_instruct_story_exit_37",
                 "destination_uuid": "uuid_mod_instruct_story_node_28"
               }
             ]
@@ -11716,94 +12799,56 @@
               "cases": [
                 {
                   "arguments": [
-                    "Next"
+                    "Previous"
                   ],
-                  "category_uuid": "uuid_mod_instruct_story_category_4",
+                  "category_uuid": "uuid_mod_instruct_story_category_23",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_story_case_0"
+                  "uuid": "uuid_mod_instruct_story_case_12"
                 },
                 {
                   "arguments": [
-                    "Back to stepper"
+                    "Next"
                   ],
-                  "category_uuid": "uuid_mod_instruct_story_category_5",
+                  "category_uuid": "uuid_mod_instruct_story_category_24",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_story_case_1"
+                  "uuid": "uuid_mod_instruct_story_case_13"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_28",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_40",
                   "name": "All Responses",
-                  "uuid": "uuid_mod_instruct_story_category_3"
+                  "uuid": "uuid_mod_instruct_story_category_22"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_29",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_41",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_23"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_43",
                   "name": "Next",
-                  "uuid": "uuid_mod_instruct_story_category_4"
-                },
-                {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_32",
-                  "name": "Back to stepper",
-                  "uuid": "uuid_mod_instruct_story_category_5"
+                  "uuid": "uuid_mod_instruct_story_category_24"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_mod_instruct_story_category_3",
+              "default_category_uuid": "uuid_mod_instruct_story_category_22",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_28",
+                "uuid": "uuid_mod_instruct_story_exit_40",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_29",
-                "destination_uuid": "uuid_mod_instruct_story_node_26"
+                "uuid": "uuid_mod_instruct_story_exit_41",
+                "destination_uuid": "uuid_mod_instruct_story_node_23"
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_32",
+                "uuid": "uuid_mod_instruct_story_exit_43",
                 "destination_uuid": "uuid_mod_instruct_story_node_29"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_26",
-            "actions": [
-              {
-                "uuid": "uuid_mod_instruct_story_action_9",
-                "type": "set_contact_field",
-                "field": {
-                  "key": "mod_instruct_story__completed",
-                  "name": "mod_instruct_story__completed"
-                },
-                "value": "true"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_26",
-                "destination_uuid": "uuid_mod_instruct_story_node_27"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_27",
-            "actions": [
-              {
-                "flow": {
-                  "name": "toolbox_mod_instruct_tips"
-                },
-                "type": "enter_flow",
-                "uuid": "uuid_mod_instruct_story_action_10"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_27",
-                "destination_uuid": null
               }
             ]
           },
@@ -11811,7 +12856,240 @@
             "uuid": "uuid_mod_instruct_story_node_29",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_11",
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_8.svg\"> </p>\n<p>@fields.neighbour: \"Wow, @fields.neighbour_teen_daughter! You have such good dance moves!\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_13"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_42",
+                "destination_uuid": "uuid_mod_instruct_story_node_31"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_31",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_26",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_14"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_28",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_15"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_45",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_25"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_46",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_26"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_50",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_28"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_25",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_45",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_46",
+                "destination_uuid": "uuid_mod_instruct_story_node_26"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_50",
+                "destination_uuid": "uuid_mod_instruct_story_node_32"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_32",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "Why do you think it worked better for @fields.neighbour this time?",
+                "type": "send_msg",
+                "quick_replies": [
+                  "@fields.neighbour_teen_daughter felt respected and loved",
+                  "@fields.neighbour was able to stay calm",
+                  "@fields.neighbour kept a positive attitude"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_14"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_47",
+                "destination_uuid": "uuid_mod_instruct_story_node_33"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_33",
+            "actions": [],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_48",
+                "destination_uuid": "uuid_mod_instruct_story_node_34"
+              }
+            ],
+            "router": {
+              "type": "switch",
+              "default_category_uuid": "uuid_mod_instruct_story_category_27",
+              "cases": [],
+              "categories": [
+                {
+                  "uuid": "uuid_mod_instruct_story_category_27",
+                  "name": "All Responses",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_48"
+                }
+              ],
+              "operand": "@input.text",
+              "wait": {
+                "type": "msg"
+              },
+              "result_name": "mod_instruct_story_why"
+            }
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_34",
+            "actions": [
+              {
+                "uuid": "uuid_mod_instruct_story_action_15",
+                "type": "set_contact_field",
+                "field": {
+                  "key": "mod_instruct_story_why",
+                  "name": "mod_instruct_story_why"
+                },
+                "value": "@results.mod_instruct_story_why"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_49",
+                "destination_uuid": "uuid_mod_instruct_story_node_35"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_35",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "Next - Essential tools for Positive Instructions",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Back to stepper"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_16"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_51",
+                "destination_uuid": "uuid_mod_instruct_story_node_38"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_38",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_30",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_16"
+                },
+                {
+                  "arguments": [
+                    "Back to stepper"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_31",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_17"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_54",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_29"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_55",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_30"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_58",
+                  "name": "Back to stepper",
+                  "uuid": "uuid_mod_instruct_story_category_31"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_29",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_54",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_55",
+                "destination_uuid": "uuid_mod_instruct_story_node_36"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_58",
+                "destination_uuid": "uuid_mod_instruct_story_node_39"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_36",
+            "actions": [
+              {
+                "uuid": "uuid_mod_instruct_story_action_17",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_story__completed",
@@ -11822,25 +13100,63 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_30",
-                "destination_uuid": "uuid_mod_instruct_story_node_30"
+                "uuid": "uuid_mod_instruct_story_exit_52",
+                "destination_uuid": "uuid_mod_instruct_story_node_37"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_30",
+            "uuid": "uuid_mod_instruct_story_node_37",
+            "actions": [
+              {
+                "flow": {
+                  "name": "toolbox_mod_instruct_tips"
+                },
+                "type": "enter_flow",
+                "uuid": "uuid_mod_instruct_story_action_18"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_53",
+                "destination_uuid": null
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_39",
+            "actions": [
+              {
+                "uuid": "uuid_mod_instruct_story_action_19",
+                "type": "set_contact_field",
+                "field": {
+                  "key": "mod_instruct_story__completed",
+                  "name": "mod_instruct_story__completed"
+                },
+                "value": "true"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_56",
+                "destination_uuid": "uuid_mod_instruct_story_node_40"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_40",
             "actions": [
               {
                 "flow": {
                   "name": "link_mod_instruct_page"
                 },
                 "type": "enter_flow",
-                "uuid": "uuid_mod_instruct_story_action_12"
+                "uuid": "uuid_mod_instruct_story_action_20"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_31",
+                "uuid": "uuid_mod_instruct_story_exit_57",
                 "destination_uuid": null
               }
             ]
@@ -19895,10 +21211,8 @@
             "uuid": "uuid_example_media_node_2",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/characters/guide1/neutral.svg"
-                ],
-                "text": "This message contains an image inside the speech bubble. This text is above the image\n<image>\nand this text is below.",
+                "attachments": [],
+                "text": "This message contains an image inside the speech bubble. This text is above the image\n<img class=\"block-image\" src=\"assets/plh_assets/plh_images/characters/guide1/neutral.svg\">\nand this text is below.",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_example_media_action_2"
@@ -20272,7 +21586,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "After this text there is an in-line icon <icon> followed by this text.",
+                "text": "After this text there is an in-line icon <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\"> followed by this text.",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_example_icon_action_1"
@@ -20290,7 +21604,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "This message contains multiple icons: first icon <icon>, second <icon>, third icon <icon>.",
+                "text": "This message contains multiple icons: first icon <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">, second <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">, third icon <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">.",
                 "type": "send_msg",
                 "quick_replies": [
                   "Done"
@@ -21545,45 +22859,47 @@
         "type": "messaging",
         "nodes": [
           {
-            "uuid": "uuid_example_story2_node_0",
+            "uuid": "uuid_example_story1_node_0",
             "actions": [
               {
                 "attachments": [],
                 "text": "This flow shows an example of the story mode.",
                 "type": "send_msg",
                 "quick_replies": [],
-                "uuid": "uuid_example_story2_action_0"
+                "uuid": "uuid_example_story1_action_0"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_0",
-                "destination_uuid": "uuid_example_story2_node_1"
+                "uuid": "uuid_example_story1_exit_0",
+                "destination_uuid": "uuid_example_story1_node_1"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_1",
+            "uuid": "uuid_example_story1_node_1",
             "actions": [
               {
-                "attachments": [],
-                "text": "<p>Top text</p>\n<p><img class=\"story-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg\"></p>\n<p>Bottom text</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "attachments": [
+                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"
+                ],
+                "text": "Top text\n<story-image>\nBottom text",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next"
                 ],
-                "uuid": "uuid_example_story2_action_1"
+                "uuid": "uuid_example_story1_action_1"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_1",
-                "destination_uuid": "uuid_example_story2_node_3"
+                "uuid": "uuid_example_story1_exit_1",
+                "destination_uuid": "uuid_example_story1_node_3"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_3",
+            "uuid": "uuid_example_story1_node_3",
             "actions": [],
             "router": {
               "type": "switch",
@@ -21592,63 +22908,65 @@
                   "arguments": [
                     "Next"
                   ],
-                  "category_uuid": "uuid_example_story2_category_1",
+                  "category_uuid": "uuid_example_story1_category_1",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story2_case_0"
+                  "uuid": "uuid_example_story1_case_0"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_example_story2_exit_3",
+                  "exit_uuid": "uuid_example_story1_exit_3",
                   "name": "All Responses",
-                  "uuid": "uuid_example_story2_category_0"
+                  "uuid": "uuid_example_story1_category_0"
                 },
                 {
-                  "exit_uuid": "uuid_example_story2_exit_4",
+                  "exit_uuid": "uuid_example_story1_exit_4",
                   "name": "Next",
-                  "uuid": "uuid_example_story2_category_1"
+                  "uuid": "uuid_example_story1_category_1"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_example_story2_category_0",
+              "default_category_uuid": "uuid_example_story1_category_0",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_3",
+                "uuid": "uuid_example_story1_exit_3",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_example_story2_exit_4",
-                "destination_uuid": "uuid_example_story2_node_2"
+                "uuid": "uuid_example_story1_exit_4",
+                "destination_uuid": "uuid_example_story1_node_2"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_2",
+            "uuid": "uuid_example_story1_node_2",
             "actions": [
               {
-                "attachments": [],
-                "text": "<p>Top text 2</p>\n<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg\"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "attachments": [
+                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"
+                ],
+                "text": "Top text 2\n<story-image>\nBottom text 2",
                 "type": "send_msg",
                 "quick_replies": [
                   "Previous",
                   "Next"
                 ],
-                "uuid": "uuid_example_story2_action_2"
+                "uuid": "uuid_example_story1_action_2"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_2",
-                "destination_uuid": "uuid_example_story2_node_5"
+                "uuid": "uuid_example_story1_exit_2",
+                "destination_uuid": "uuid_example_story1_node_5"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_5",
+            "uuid": "uuid_example_story1_node_5",
             "actions": [],
             "router": {
               "type": "switch",
@@ -21657,38 +22975,38 @@
                   "arguments": [
                     "Next"
                   ],
-                  "category_uuid": "uuid_example_story2_category_3",
+                  "category_uuid": "uuid_example_story1_category_3",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story2_case_1"
+                  "uuid": "uuid_example_story1_case_1"
                 },
                 {
                   "arguments": [
                     "Previous"
                   ],
-                  "category_uuid": "uuid_example_story2_category_4",
+                  "category_uuid": "uuid_example_story1_category_4",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story2_case_2"
+                  "uuid": "uuid_example_story1_case_2"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_example_story2_exit_6",
+                  "exit_uuid": "uuid_example_story1_exit_6",
                   "name": "All Responses",
-                  "uuid": "uuid_example_story2_category_2"
+                  "uuid": "uuid_example_story1_category_2"
                 },
                 {
-                  "exit_uuid": "uuid_example_story2_exit_7",
+                  "exit_uuid": "uuid_example_story1_exit_7",
                   "name": "Next",
-                  "uuid": "uuid_example_story2_category_3"
+                  "uuid": "uuid_example_story1_category_3"
                 },
                 {
-                  "exit_uuid": "uuid_example_story2_exit_9",
+                  "exit_uuid": "uuid_example_story1_exit_9",
                   "name": "Previous",
-                  "uuid": "uuid_example_story2_category_4"
+                  "uuid": "uuid_example_story1_category_4"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_example_story2_category_2",
+              "default_category_uuid": "uuid_example_story1_category_2",
               "wait": {
                 "type": "msg"
               }
@@ -21788,7 +23106,115 @@
             "exits": [
               {
                 "uuid": "uuid_example_story2_exit_0",
+                "destination_uuid": "uuid_example_story2_node_2"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_story2_node_2",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Start story"
+                  ],
+                  "category_uuid": "uuid_example_story2_category_1",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_example_story2_case_0"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_example_story2_exit_2",
+                  "name": "All Responses",
+                  "uuid": "uuid_example_story2_category_0"
+                },
+                {
+                  "exit_uuid": "uuid_example_story2_exit_3",
+                  "name": "Start story",
+                  "uuid": "uuid_example_story2_category_1"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_example_story2_category_0",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_example_story2_exit_2",
                 "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_example_story2_exit_3",
+                "destination_uuid": "uuid_example_story2_node_1"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_story2_node_1",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p>Top text</p>\n<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg\"></p>\n<p>Bottom text</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next"
+                ],
+                "uuid": "uuid_example_story2_action_1"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_story2_exit_1",
+                "destination_uuid": "uuid_example_story2_node_4"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_story2_node_4",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_example_story2_category_3",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_example_story2_case_1"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_example_story2_exit_5",
+                  "name": "All Responses",
+                  "uuid": "uuid_example_story2_category_2"
+                },
+                {
+                  "exit_uuid": "uuid_example_story2_exit_6",
+                  "name": "Next",
+                  "uuid": "uuid_example_story2_category_3"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_example_story2_category_2",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_example_story2_exit_5",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_example_story2_exit_6",
+                "destination_uuid": "uuid_example_story2_node_3"
               }
             ]
           },
@@ -21797,16 +23223,80 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Now we're back in regular mode. ",
+                "text": "<p>Top text 2</p>\n<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg\"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_example_story2_action_1"
+                "quick_replies": [
+                  "Previous",
+                  "Next"
+                ],
+                "uuid": "uuid_example_story2_action_2"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_3",
+                "uuid": "uuid_example_story2_exit_4",
+                "destination_uuid": "uuid_example_story2_node_6"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_story2_node_6",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_example_story2_category_5",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_example_story2_case_2"
+                },
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_example_story2_category_6",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_example_story2_case_3"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_example_story2_exit_8",
+                  "name": "All Responses",
+                  "uuid": "uuid_example_story2_category_4"
+                },
+                {
+                  "exit_uuid": "uuid_example_story2_exit_9",
+                  "name": "Next",
+                  "uuid": "uuid_example_story2_category_5"
+                },
+                {
+                  "exit_uuid": "uuid_example_story2_exit_11",
+                  "name": "Previous",
+                  "uuid": "uuid_example_story2_category_6"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_example_story2_category_4",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_example_story2_exit_8",
                 "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_example_story2_exit_9",
+                "destination_uuid": "uuid_example_story2_node_5"
+              },
+              {
+                "uuid": "uuid_example_story2_exit_11",
+                "destination_uuid": "uuid_example_story2_node_1"
               }
             ]
           },
@@ -21814,7 +23304,25 @@
             "uuid": "uuid_example_story2_node_5",
             "actions": [
               {
-                "uuid": "uuid_example_story2_action_2",
+                "attachments": [],
+                "text": "Now we're back in regular mode. ",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_example_story2_action_3"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_example_story2_exit_7",
+                "destination_uuid": null
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_story2_node_8",
+            "actions": [
+              {
+                "uuid": "uuid_example_story2_action_4",
                 "type": "set_contact_field",
                 "field": {
                   "key": "example_story2__completed",
@@ -21825,7 +23333,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_5",
+                "uuid": "uuid_example_story2_exit_12",
                 "destination_uuid": null
               }
             ]
