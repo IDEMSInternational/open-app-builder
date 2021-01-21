@@ -16,7 +16,7 @@ type EntityType = "flow" | "node" | "action" | "router" | "case" | "category" | 
 
 export class ConversationParser implements AbstractParser {
   /** @param deployTarget uuids and media paths may be formatted differently depending on target */
-  constructor(private deployTarget: "app" | "rapidpro" = "app") {}
+  constructor(private deployTarget: "app" | "rapidpro" = "app") { }
   conversationSheet: FlowTypes.ConversationSheet;
 
   flowEntityIdCounterMap: { [flowName: string]: { [entityType: string]: number } } = {};
@@ -86,12 +86,12 @@ export class ConversationParser implements AbstractParser {
         // TODO Should more checks be done if Type is undefined but there may be other contents?
         if (row.type === undefined) {
           continue;
-        } else if (row.type === "send_message" || row.type === "story_message") {
+        } else if (row.type === "send_message" || row.type === "story_slide") {
           if (row.message_text === undefined) {
             throw new Error(
               "On row " +
-                row.row_id.toString() +
-                ": Message text cannot be blank for Type = send_message."
+              row.row_id.toString() +
+              ": Message text cannot be blank for Type = send_message."
             );
           }
           let action_text = row.message_text;
@@ -110,7 +110,7 @@ export class ConversationParser implements AbstractParser {
           }
           if (row.choice_media_display)
             add_texts.push("choiceMediaDisplay=" + row.choice_media_display);
-          
+
           let choiceMediaUrls: string[] = [];
           let hasMediaUrls = false;
           for (var i = 1; i < 10; i++) {
@@ -124,33 +124,18 @@ export class ConversationParser implements AbstractParser {
           }
 
           let isStory = false;
-          if (row.type === "story_message" || row.message_text.indexOf("<story-image>") > -1) {
+          if (row.type === "story_slide") {
             add_texts.push("isStory=true");
             isStory = true;
           }
 
-          let mediaAttachments = this.getMediaAttachments(row.media);
-        
-          // Allow use of <icon>, <story-img>, or <inline-img> or <block-img>
-          // to place media image wihin message text
-          if (mediaAttachments.length > 0 && action_text) {
-            let imageTagToClass = {
-              "<icon>": "icon",
-              "<story-image>": "story-image",
-              "<inline-image>": "inline-image",
-              "<block-image>": "block-image"
-            };
-            const imageTags = Object.keys(imageTagToClass);
-            for (let imageTag of imageTags) {
-              if (action_text.indexOf(imageTag) > -1 && mediaAttachments[0]) {
-                const imageUrl = "assets/plh_assets/" + mediaAttachments[0].replace("image:", "");
-                const className = imageTagToClass[imageTag];
-                action_text = action_text.replace(imageTag, `<img class="${className}" src="${imageUrl}">`);
-                mediaAttachments = [];
-                break;
-              }
-            }
-          }
+          let imageUrls = this.getImageURLS(row.media);
+          let iconUrls = this.getImageURLS(row.icon);
+
+          // Allow use of <icon> or <image>
+          // to place media image within message bubble
+          action_text = this.replaceImageTag(action_text, "<image>", "block-image", imageUrls);
+          action_text = this.replaceImageTag(action_text, "<icon>", "icon", iconUrls);
 
           if (isStory) {
             action_text = action_text
@@ -161,7 +146,7 @@ export class ConversationParser implements AbstractParser {
 
           if (add_texts.length > 0) action_text += " " + link_text + add_texts.join("&");
           actionNode.actions.push({
-            attachments: mediaAttachments,
+            attachments: imageUrls.map((url) => "image:" + url),
             text: action_text,
             type: "send_msg",
             quick_replies: this.getRowChoices(row),
@@ -270,9 +255,9 @@ export class ConversationParser implements AbstractParser {
           // "split_random" should not have a default empty exit.
           actionNode.exits = [];
           actionNode.router = {
-              type: "random",
-              cases: [],
-              categories: []
+            type: "random",
+            cases: [],
+            categories: []
           }
           row._rapidProNode = actionNode;
           nodesById[nodeId] = actionNode;
@@ -302,10 +287,10 @@ export class ConversationParser implements AbstractParser {
               } else {
                 throw new Error(
                   "On row " +
-                    row.row_id +
-                    ": Cannot find row with row_id = " +
-                    row.message_text +
-                    " from message_text column."
+                  row.row_id +
+                  ": Cannot find row with row_id = " +
+                  row.message_text +
+                  " from message_text column."
                 );
               }
             } else {
@@ -500,7 +485,7 @@ export class ConversationParser implements AbstractParser {
         newRouterNode.router.wait = {
           type: "msg",
         };
-      }   
+      }
     }
     return newRouterNode;
   }
@@ -553,10 +538,10 @@ export class ConversationParser implements AbstractParser {
           } else {
             throw new Error(
               "On row " +
-                row.row_id +
-                ": Cannot find row with row_id = " +
-                row.message_text +
-                " from message_text column."
+              row.row_id +
+              ": Cannot find row with row_id = " +
+              row.message_text +
+              " from message_text column."
             );
           }
         } else {
@@ -620,7 +605,7 @@ export class ConversationParser implements AbstractParser {
           }
           for (let c of choiceCases) {
             routerNode.router.cases.push(c);
-          }  
+          }
         }
       }
     } else {
@@ -669,7 +654,7 @@ export class ConversationParser implements AbstractParser {
     for (let i = 0; i <= fromNodes.length - 1; i++) {
       let fromNode = fromNodes[i];
       let fromRow = fromRows[i];
-      
+
       let routerType: string;
       if (fromRow.type === "split_random") {
         routerType = "random";
@@ -681,9 +666,9 @@ export class ConversationParser implements AbstractParser {
         fromNode.router &&
         fromNode.router.type === routerType &&
         ((fromNode.router.type === "switch" &&
-        fromNode.router.operand &&
-        fromNode.router.operand == operandType + "." + operandValue) ||
-        fromNode.router.type === "random")
+          fromNode.router.operand &&
+          fromNode.router.operand == operandType + "." + operandValue) ||
+          fromNode.router.type === "random")
       ) {
         this.addConditionToRouterNode(fromNode, row, rows);
       } else {
@@ -747,9 +732,15 @@ export class ConversationParser implements AbstractParser {
     return quick_replies;
   }
 
-  private getMediaAttachments(mediaText: string): string[] {
+  private getImageURLS(mediaText: string): string[] {
+    const list = [];
     if (mediaText === undefined || mediaText === "") return [];
-    return mediaText.split(";").map((s) => "image:" + s.trim());
+    mediaText.split("\n").forEach((line) => {
+      line.split(";").forEach((s) => {
+        list.push(s.trim());
+      });
+    });
+    return list;
   }
 
   private createSaveAction(fieldKey: string, value: string): RapidProFlowExport.Action {
@@ -764,5 +755,16 @@ export class ConversationParser implements AbstractParser {
       },
       value: stringValue
     };
+  }
+
+  private replaceImageTag(text: string, imageTag: string, className: string, urls: string[]): string {
+    const regex = new RegExp(imageTag, "g");
+    return text.replace(regex, () => {
+      if (urls.length > 0) {
+        const imageUrl = "assets/plh_assets/" + urls.pop();
+        return `<img class="${className}" src="${imageUrl}">`;
+      }
+      return "";
+    });
   }
 }

@@ -150,13 +150,14 @@ export namespace FlowTypes {
   /** Format of conversation rows post processing */
   export interface ConversationRow {
     row_id?: string | number;
-    type: "start_new_flow" | "send_message" | "story_message" | "go_to" | "save_value" | "exit" | "mark_as_completed" | "split_random";
+    type: "start_new_flow" | "send_message" | "story_slide" | "go_to" | "save_value" | "exit" | "mark_as_completed" | "split_random";
     from?: string | number;
     condition?: string | number;
     condition_var?: string;
     character?: string;
     message_text: string;
     media?: string;
+    icon?: string;
     choose_multi?: boolean;
     display_as_tick?: boolean;
     ticked_by_default?: boolean;

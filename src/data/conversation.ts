@@ -9817,7 +9817,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Every time you praise your teen, mark your Parent Point <icon> to track your success https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Every time you praise your teen, mark your Parent Point  to track your success https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_activity_action_7"
@@ -9835,7 +9835,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Every time you praise yourself, mark your Parent Point <icon> to track your success https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Every time you praise yourself, mark your Parent Point  to track your success https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_activity_action_8"
@@ -11371,7 +11371,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_2",
+                "uuid": "uuid_mod_instruct_emo_exit_21",
                 "destination_uuid": null
               }
             ]
@@ -21545,25 +21545,25 @@
         "type": "messaging",
         "nodes": [
           {
-            "uuid": "uuid_example_story1_node_0",
+            "uuid": "uuid_example_story2_node_0",
             "actions": [
               {
                 "attachments": [],
                 "text": "This flow shows an example of the story mode.",
                 "type": "send_msg",
                 "quick_replies": [],
-                "uuid": "uuid_example_story1_action_0"
+                "uuid": "uuid_example_story2_action_0"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story1_exit_0",
-                "destination_uuid": "uuid_example_story1_node_1"
+                "uuid": "uuid_example_story2_exit_0",
+                "destination_uuid": "uuid_example_story2_node_1"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story1_node_1",
+            "uuid": "uuid_example_story2_node_1",
             "actions": [
               {
                 "attachments": [],
@@ -21572,18 +21572,18 @@
                 "quick_replies": [
                   "Next"
                 ],
-                "uuid": "uuid_example_story1_action_1"
+                "uuid": "uuid_example_story2_action_1"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story1_exit_1",
-                "destination_uuid": "uuid_example_story1_node_3"
+                "uuid": "uuid_example_story2_exit_1",
+                "destination_uuid": "uuid_example_story2_node_3"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story1_node_3",
+            "uuid": "uuid_example_story2_node_3",
             "actions": [],
             "router": {
               "type": "switch",
@@ -21592,63 +21592,63 @@
                   "arguments": [
                     "Next"
                   ],
-                  "category_uuid": "uuid_example_story1_category_1",
+                  "category_uuid": "uuid_example_story2_category_1",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story1_case_0"
+                  "uuid": "uuid_example_story2_case_0"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_example_story1_exit_3",
+                  "exit_uuid": "uuid_example_story2_exit_3",
                   "name": "All Responses",
-                  "uuid": "uuid_example_story1_category_0"
+                  "uuid": "uuid_example_story2_category_0"
                 },
                 {
-                  "exit_uuid": "uuid_example_story1_exit_4",
+                  "exit_uuid": "uuid_example_story2_exit_4",
                   "name": "Next",
-                  "uuid": "uuid_example_story1_category_1"
+                  "uuid": "uuid_example_story2_category_1"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_example_story1_category_0",
+              "default_category_uuid": "uuid_example_story2_category_0",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_example_story1_exit_3",
+                "uuid": "uuid_example_story2_exit_3",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_example_story1_exit_4",
-                "destination_uuid": "uuid_example_story1_node_2"
+                "uuid": "uuid_example_story2_exit_4",
+                "destination_uuid": "uuid_example_story2_node_2"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story1_node_2",
+            "uuid": "uuid_example_story2_node_2",
             "actions": [
               {
                 "attachments": [],
-                "text": "<p>Top text 2</p>\n<p><img class=\"story-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg\"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "text": "<p>Top text 2</p>\n<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg\"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Previous",
                   "Next"
                 ],
-                "uuid": "uuid_example_story1_action_2"
+                "uuid": "uuid_example_story2_action_2"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story1_exit_2",
-                "destination_uuid": "uuid_example_story1_node_5"
+                "uuid": "uuid_example_story2_exit_2",
+                "destination_uuid": "uuid_example_story2_node_5"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story1_node_5",
+            "uuid": "uuid_example_story2_node_5",
             "actions": [],
             "router": {
               "type": "switch",
@@ -21657,38 +21657,38 @@
                   "arguments": [
                     "Next"
                   ],
-                  "category_uuid": "uuid_example_story1_category_3",
+                  "category_uuid": "uuid_example_story2_category_3",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story1_case_1"
+                  "uuid": "uuid_example_story2_case_1"
                 },
                 {
                   "arguments": [
                     "Previous"
                   ],
-                  "category_uuid": "uuid_example_story1_category_4",
+                  "category_uuid": "uuid_example_story2_category_4",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story1_case_2"
+                  "uuid": "uuid_example_story2_case_2"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_example_story1_exit_6",
+                  "exit_uuid": "uuid_example_story2_exit_6",
                   "name": "All Responses",
-                  "uuid": "uuid_example_story1_category_2"
+                  "uuid": "uuid_example_story2_category_2"
                 },
                 {
-                  "exit_uuid": "uuid_example_story1_exit_7",
+                  "exit_uuid": "uuid_example_story2_exit_7",
                   "name": "Next",
-                  "uuid": "uuid_example_story1_category_3"
+                  "uuid": "uuid_example_story2_category_3"
                 },
                 {
-                  "exit_uuid": "uuid_example_story1_exit_9",
+                  "exit_uuid": "uuid_example_story2_exit_9",
                   "name": "Previous",
-                  "uuid": "uuid_example_story1_category_4"
+                  "uuid": "uuid_example_story2_category_4"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_example_story1_category_2",
+              "default_category_uuid": "uuid_example_story2_category_2",
               "wait": {
                 "type": "msg"
               }
