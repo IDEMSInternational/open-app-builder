@@ -95,7 +95,6 @@ export class OfflineChatService implements IChatService {
 
   private handleFlowsEnded() {
     console.log("all flows have ended", this.flowsStack);
-    this.messages$.next([{ sender: "bot", text: "End of this content" }]);
   }
 
   /**
@@ -106,7 +105,10 @@ export class OfflineChatService implements IChatService {
     this.flowStatus$.subscribe((events) => {
       try {
         console.log("Flow status change", events);
-        if (events.length > 0) {
+        if (events.length 
+          
+          
+          > 0) {
           console.log("Flow stacks before event:", this.flowsStack.length);
           let latest = events[events.length - 1];
           console.log("latest status:", latest.status);
