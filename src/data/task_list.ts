@@ -22,7 +22,7 @@
           "task_mod_welcome_self-care_package"
         ],
         "flow_type": "conversation",
-        "flow_name": "calm_1"
+        "flow_name": "calm_random"
       },
       {
         "id": "task_relax_custom_completed_goal",
