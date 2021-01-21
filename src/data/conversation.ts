@@ -219,6 +219,26 @@
                 "uuid": "uuid_character_names_action_10",
                 "type": "set_contact_field",
                 "field": {
+                  "key": "guide_teen",
+                  "name": "guide_teen"
+                },
+                "value": "Alex"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_character_names_exit_10",
+                "destination_uuid": "uuid_character_names_node_11"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_character_names_node_11",
+            "actions": [
+              {
+                "uuid": "uuid_character_names_action_11",
+                "type": "set_contact_field",
+                "field": {
                   "key": "character_names__completed",
                   "name": "character_names__completed"
                 },
@@ -227,7 +247,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_character_names_exit_10",
+                "uuid": "uuid_character_names_exit_11",
                 "destination_uuid": null
               }
             ]
@@ -434,10 +454,8 @@
             "uuid": "uuid_mod_welcome_give_node_2",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/other_icons/tick.svg"
-                ],
-                "text": "Masterclasses \n10-12 weekly sessions structured for you. These include key tools for self-care and parenting a teenager, and extra content where you want it",
+                "attachments": [],
+                "text": "Weekly Workshops <img class=\"icon\" src=\"assets/plh_assets/plh_images/other_icons/tick.svg\">\n10-12 weekly sessions structured for you. These include key tools for self-care and parenting a teenager, and extra content where you want it. You can choose to do each workshop as an individual, or with someone else, or as a group with family or friends.",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_give_action_2"
@@ -454,10 +472,8 @@
             "uuid": "uuid_mod_welcome_give_node_3",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/other_icons/tick.svg"
-                ],
-                "text": "The Toolbox \nStacked with the tools you need, whenever you want. Instant access help section with Essential Tools for each skill, extra information and local resources",
+                "attachments": [],
+                "text": "Parent Centre <img class=\"icon\" src=\"assets/plh_assets/plh_images/other_icons/tick.svg\">\nStacked with the resources you need, whenever you want. Instant access help section with Essential Tools for each skill, extra information and local resources",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_give_action_3"
@@ -474,10 +490,8 @@
             "uuid": "uuid_mod_welcome_give_node_4",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/other_icons/tick.svg"
-                ],
-                "text": "Parent Points \nTrack your success in self-care and parenting. Celebrate your daily achievements! ",
+                "attachments": [],
+                "text": "Parent Points <img class=\"icon\" src=\"assets/plh_assets/plh_images/other_icons/tick.svg\">\nTrack your success in self-care and parenting. Celebrate your daily achievements! ",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_give_action_4"
@@ -669,10 +683,8 @@
             "uuid": "uuid_mod_welcome_self-care_package_node_5",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/habits/habit_relax_icon.svg"
-                ],
-                "text": "Tap your ParentPoint : see your success!",
+                "attachments": [],
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_self-care_package_action_5"
@@ -793,10 +805,8 @@
             "uuid": "uuid_mod_welcome_self-care_package_node_11",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/habits/habit_relax_icon.svg"
-                ],
-                "text": "Tap your Parent Point : see your success!",
+                "attachments": [],
+                "text": "Tap your Parent Point <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_self-care_package_action_10"
@@ -991,10 +1001,8 @@
             "uuid": "uuid_mod_welcome_self-care_package_node_19",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/habits/habit_treat_yourself_icon.svg"
-                ],
-                "text": "Tap your Parent Point : see your success!",
+                "attachments": [],
+                "text": "Tap your Parent Point <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_treat_yourself_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_self-care_package_action_15"
@@ -3108,10 +3116,8 @@
             "uuid": "uuid_mod_welcome_relax_node_2",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/habits/habit_relax_icon.svg"
-                ],
-                "text": "Tap your ParentPoint : see your success!",
+                "attachments": [],
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_welcome_relax_action_2"
@@ -3348,7 +3354,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Great! You’ve done a relaxation X times this week, and praised yourself X times.",
+                "text": "Great! You’ve done a relaxation @habit.habit_relax.weekly_count times this week, and praised yourself @habit.habit_praise_yourself.weekly_count times.",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_1on1_emo_action_1"
@@ -3366,7 +3372,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "I know life can be hard. I’m proud of you. You’ve done a relaxation X times this week, and praised yourself X times.",
+                "text": "I know life can be hard. I’m proud of you.  You’ve done a relaxation @habit.habit_relax.weekly_count times this week, and praised yourself @habit.habit_praise_yourself.weekly_count times.",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_1on1_emo_action_2"
@@ -3458,10 +3464,8 @@
             "uuid": "uuid_mod_1on1_emo_node_6",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/habits/habit_relax_icon.svg"
-                ],
-                "text": "Tap your ParentPoint : see your success!",
+                "attachments": [],
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_1on1_emo_action_5"
@@ -3959,7 +3963,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "These are ideas that some of our 134 million parent users say are good!",
+                "text": "These are ideas that some of our 135 million parent users say are good!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_1on1_activity_action_1"
@@ -4158,15 +4162,61 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Every time you do one-on-one time mark your Parent Point  to track your success",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">: see your success!",
                 "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Back to stepper"
+                ],
                 "uuid": "uuid_mod_1on1_activity_action_6"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_1on1_activity_exit_10",
+                "destination_uuid": "uuid_mod_1on1_activity_node_12"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_1on1_activity_node_12",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Back to stepper"
+                  ],
+                  "category_uuid": "uuid_mod_1on1_activity_category_5",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_1on1_activity_case_1"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_1on1_activity_exit_13",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_1on1_activity_category_4"
+                },
+                {
+                  "exit_uuid": "uuid_mod_1on1_activity_exit_14",
+                  "name": "Back to stepper",
+                  "uuid": "uuid_mod_1on1_activity_category_5"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_1on1_activity_category_4",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_1on1_activity_exit_13",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_1on1_activity_exit_14",
                 "destination_uuid": "uuid_mod_1on1_activity_node_10"
               }
             ]
@@ -4679,7 +4729,89 @@
             "exits": [
               {
                 "uuid": "uuid_mod_1on1_activity_review_exit_22",
+                "destination_uuid": "uuid_mod_1on1_activity_review_node_12"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_1on1_activity_review_node_12",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "Do you have a photo of your time together? Or any nice photo? Upload it so yo can remember good times",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Upload",
+                  "Back to stepper"
+                ],
+                "uuid": "uuid_mod_1on1_activity_review_action_10"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_1on1_activity_review_exit_23",
+                "destination_uuid": "uuid_mod_1on1_activity_review_node_15"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_1on1_activity_review_node_15",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Upload"
+                  ],
+                  "category_uuid": "uuid_mod_1on1_activity_review_category_14",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_1on1_activity_review_case_11"
+                },
+                {
+                  "arguments": [
+                    "Back to stepper"
+                  ],
+                  "category_uuid": "uuid_mod_1on1_activity_review_category_15",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_1on1_activity_review_case_12"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_1on1_activity_review_exit_26",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_1on1_activity_review_category_13"
+                },
+                {
+                  "exit_uuid": "uuid_mod_1on1_activity_review_exit_27",
+                  "name": "Upload",
+                  "uuid": "uuid_mod_1on1_activity_review_category_14"
+                },
+                {
+                  "exit_uuid": "uuid_mod_1on1_activity_review_exit_30",
+                  "name": "Back to stepper",
+                  "uuid": "uuid_mod_1on1_activity_review_category_15"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_1on1_activity_review_category_13",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_1on1_activity_review_exit_26",
                 "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_1on1_activity_review_exit_27",
+                "destination_uuid": "uuid_mod_1on1_activity_review_node_13"
+              },
+              {
+                "uuid": "uuid_mod_1on1_activity_review_exit_30",
+                "destination_uuid": "uuid_mod_1on1_activity_review_node_16"
               }
             ]
           },
@@ -4687,7 +4819,7 @@
             "uuid": "uuid_mod_1on1_activity_review_node_13",
             "actions": [
               {
-                "uuid": "uuid_mod_1on1_activity_review_action_10",
+                "uuid": "uuid_mod_1on1_activity_review_action_11",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_1on1_activity_review__completed",
@@ -4711,7 +4843,7 @@
                   "name": "gallery"
                 },
                 "type": "enter_flow",
-                "uuid": "uuid_mod_1on1_activity_review_action_11"
+                "uuid": "uuid_mod_1on1_activity_review_action_12"
               }
             ],
             "exits": [
@@ -4722,10 +4854,10 @@
             ]
           },
           {
-            "uuid": "uuid_mod_1on1_activity_review_node_15",
+            "uuid": "uuid_mod_1on1_activity_review_node_16",
             "actions": [
               {
-                "uuid": "uuid_mod_1on1_activity_review_action_12",
+                "uuid": "uuid_mod_1on1_activity_review_action_13",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_1on1_activity_review__completed",
@@ -4736,25 +4868,25 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_1on1_activity_review_exit_26",
-                "destination_uuid": "uuid_mod_1on1_activity_review_node_16"
+                "uuid": "uuid_mod_1on1_activity_review_exit_28",
+                "destination_uuid": "uuid_mod_1on1_activity_review_node_17"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_1on1_activity_review_node_16",
+            "uuid": "uuid_mod_1on1_activity_review_node_17",
             "actions": [
               {
                 "flow": {
                   "name": "link_mod_1on1_page"
                 },
                 "type": "enter_flow",
-                "uuid": "uuid_mod_1on1_activity_review_action_13"
+                "uuid": "uuid_mod_1on1_activity_review_action_14"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_1on1_activity_review_exit_27",
+                "uuid": "uuid_mod_1on1_activity_review_exit_29",
                 "destination_uuid": null
               }
             ]
@@ -4876,7 +5008,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Which of my tips helped you?  https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Which of my tips helped you? ",
                 "type": "send_msg",
                 "quick_replies": [
                   "\"Day\" - Do it every day",
@@ -5555,7 +5687,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "These are the top 8 challenges and solutions that parents have with one-on-one time! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "These are the top 8 challenges and solutions that parents have with one-on-one time!",
                 "type": "send_msg",
                 "quick_replies": [
                   "I don’t have enough time",
@@ -5631,7 +5763,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Did you have any challenges when trying to spend time with your teen?  https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Did you have any challenges when trying to spend time with your teen? ",
                 "type": "send_msg",
                 "quick_replies": [
                   "I don’t have enough time",
@@ -5699,7 +5831,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "What challenges did you have when trying to spend time with your teen?  https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "What challenges did you have when trying to spend time with your teen? ",
                 "type": "send_msg",
                 "quick_replies": [
                   "I don’t have enough time",
@@ -7835,10 +7967,8 @@
             "uuid": "uuid_mod_1on1_activity_reminder_node_0",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/habits/habit_spend_time_icon.svg"
-                ],
-                "text": "Have you spent time with your teen already? Try it again today – you are doing so well! \n\nTap your ParentPoint : see your success! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "attachments": [],
+                "text": "Have you spent time with your teen already? Try it again today – you are doing so well! \n\nTap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">: see your success! https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
                 "quick_replies": [
                   "Ideas to spend time with your teen"
@@ -8230,7 +8360,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "- Ask your teen to choose their favourite song \n- Try to sing it together – do your best pop star impression!  ",
+                "text": "Pop stars\n- Ask your teen to choose their favourite song \n- Try to sing it together – do your best pop star impression!  ",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_1on1_fun_action_3"
@@ -8247,18 +8377,62 @@
             "uuid": "uuid_mod_1on1_fun_node_5",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/habits/habit_spend_time_icon.svg"
-                ],
-                "text": "Tap your ParentPoint : see your success!",
+                "attachments": [],
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">: see your success!",
                 "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Back to stepper"
+                ],
                 "uuid": "uuid_mod_1on1_fun_action_4"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_1on1_fun_exit_8",
+                "destination_uuid": "uuid_mod_1on1_fun_node_8"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_1on1_fun_node_8",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Back to stepper"
+                  ],
+                  "category_uuid": "uuid_mod_1on1_fun_category_5",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_1on1_fun_case_3"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_1on1_fun_exit_11",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_1on1_fun_category_4"
+                },
+                {
+                  "exit_uuid": "uuid_mod_1on1_fun_exit_12",
+                  "name": "Back to stepper",
+                  "uuid": "uuid_mod_1on1_fun_category_5"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_1on1_fun_category_4",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_1on1_fun_exit_11",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_1on1_fun_exit_12",
                 "destination_uuid": "uuid_mod_1on1_fun_node_6"
               }
             ]
@@ -8288,7 +8462,7 @@
             "actions": [
               {
                 "flow": {
-                  "name": "link_mod_1on1"
+                  "name": "link_mod_1on1_page"
                 },
                 "type": "enter_flow",
                 "uuid": "uuid_mod_1on1_fun_action_6"
@@ -8332,7 +8506,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Hi – great to see you. You’ve done X one-on-one times this week, and you’ve relaxed X times and praised yourself X times. This is amazing – well done you!  \n\nHow are you feeling today? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
+                "text": "Hi – great to see you. You’ve done @habit.habit_spend_time.weekly_count one-on-one times this week, you’ve relaxed @habit.habit_relax.weekly_count times and praised yourself @habit.habit_praise_yourself.weekly_count times. This is amazing – well done you!  \n\nHow are you feeling today? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fneutral.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fsadder.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Happy",
@@ -8432,7 +8606,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Great to hear that you are doing well. You are a wonderful parent! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Great to hear that you are doing well. You are a wonderful parent!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_emo_action_1"
@@ -8450,7 +8624,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Sorry that you are not having the best day. Well done for trying to figure everything out. Nobody has all the answers but you really do your best! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Sorry that you are not having the best day. Well done for trying to figure everything out. Nobody has all the answers but you really do your best!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_emo_action_2"
@@ -8468,7 +8642,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Sorry to hear that you are not having a good day. Well done for getting up every morning and trying again, even when you are tired. That is real courage and dedication! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Sorry to hear that you are not having a good day. Well done for getting up every morning and trying again, even when you are tired. That is real courage and dedication!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_emo_action_3"
@@ -8486,7 +8660,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Let's do a quick relax together https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Let's do a quick relax together",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_emo_action_4"
@@ -8561,7 +8735,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Every time you do a relax, mark your Parent Point  to track your success https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_emo_action_6"
@@ -8579,7 +8753,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Praise is a powerful parenting skill. Think about the last time someone thanked you, or said you'd done something great. How did it make you feel?  https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappy.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappiest.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
+                "text": "Praise is a powerful parenting skill. Think about the last time someone thanked you, or said you'd done something great. How did it make you feel?  https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappy.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappiest.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Slight smile",
@@ -8648,7 +8822,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Parents usually don’t get thanked or praised enough. How does not being thanked make you feel? https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Parents usually don’t get thanked or praised enough. How does not being thanked make you feel?",
                 "type": "send_msg",
                 "quick_replies": [
                   "Sad",
@@ -8717,16 +8891,80 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Your teen feels this way too. And this week’s parenting tool is important and simple: Praise them for what they do right. https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Your teen feels this way too. And this week’s parenting tool is important and simple: Praise them for what they do right.",
                 "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Next",
+                  "Back to stepper"
+                ],
                 "uuid": "uuid_mod_praise_emo_action_11"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_praise_emo_exit_19",
+                "destination_uuid": "uuid_mod_praise_emo_node_17"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_emo_node_17",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Back to stepper"
+                  ],
+                  "category_uuid": "uuid_mod_praise_emo_category_9",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_praise_emo_case_5"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_praise_emo_category_10",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_praise_emo_case_6"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_praise_emo_exit_22",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_praise_emo_category_8"
+                },
+                {
+                  "exit_uuid": "uuid_mod_praise_emo_exit_23",
+                  "name": "Back to stepper",
+                  "uuid": "uuid_mod_praise_emo_category_9"
+                },
+                {
+                  "exit_uuid": "uuid_mod_praise_emo_exit_26",
+                  "name": "Next",
+                  "uuid": "uuid_mod_praise_emo_category_10"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_praise_emo_category_8",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_emo_exit_22",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_praise_emo_exit_23",
                 "destination_uuid": "uuid_mod_praise_emo_node_15"
+              },
+              {
+                "uuid": "uuid_mod_praise_emo_exit_26",
+                "destination_uuid": "uuid_mod_praise_emo_node_18"
               }
             ]
           },
@@ -8764,6 +9002,44 @@
             "exits": [
               {
                 "uuid": "uuid_mod_praise_emo_exit_21",
+                "destination_uuid": null
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_emo_node_18",
+            "actions": [
+              {
+                "uuid": "uuid_mod_praise_emo_action_14",
+                "type": "set_contact_field",
+                "field": {
+                  "key": "mod_praise_emo__completed",
+                  "name": "mod_praise_emo__completed"
+                },
+                "value": "true"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_emo_exit_24",
+                "destination_uuid": "uuid_mod_praise_emo_node_19"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_emo_node_19",
+            "actions": [
+              {
+                "flow": {
+                  "name": "mod_praise_intro"
+                },
+                "type": "enter_flow",
+                "uuid": "uuid_mod_praise_emo_action_15"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_emo_exit_25",
                 "destination_uuid": null
               }
             ]
@@ -8817,7 +9093,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "But the other day, they surprised me! Let me tell you: https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "But the other day, they surprised me! Let me tell you:",
                 "type": "send_msg",
                 "quick_replies": [
                   "Click here"
@@ -8880,10 +9156,8 @@
             "uuid": "uuid_mod_praise_intro_node_2",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"
-                ],
-                "text": "I was busy and my older daughter actually helped her sister with her homework. Usually they just fight! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg\"> </p>\n<p>I was busy and my older daughter actually helped her sister with her homework. Usually they just fight!</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next"
@@ -8946,10 +9220,8 @@
             "uuid": "uuid_mod_praise_intro_node_4",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"
-                ],
-                "text": "Here’s the parenting skill: if I tell my daughters how proud I am of them for doing this, then they will want to do it again. https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg\"></p>\n<p>Here’s the parenting skill: if I tell my daughters how proud I am of them for doing this, then they will want to do it again.</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next",
@@ -9031,7 +9303,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "How do you think what I said made my teens feel? https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappy.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappiest.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
+                "text": "How do you think what I said made my teens feel? https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fstickers%2Ffaces%2Fhappy.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappier.svg%22%2C%22plh_images%2Fstickers%2Ffaces%2Fhappiest.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
                 "type": "send_msg",
                 "quick_replies": [
                   "Slight smile",
@@ -9100,7 +9372,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Why did I praise them? https://plh-demo1.idems.international/chat/msg-info?character=guide&chooseMulti=true",
+                "text": "Why did I praise them? https://plh-demo1.idems.international/chat/msg-info?chooseMulti=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "To get them to do it more often",
@@ -9172,7 +9444,7 @@
                 "attachments": [
                   "image:plh_images/characters/@fields.guidenumber/hug.svg"
                 ],
-                "text": "All of those things are true! When they are happy, I feel happy. And I got my work done. The same can work for you!  https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "All of those things are true! When they are happy, I feel happy. And I got my work done. The same can work for you! ",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_intro_action_8"
@@ -9190,7 +9462,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Next: Essential tools - praise in 3 easy steps! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Next: Essential tools - praise in 3 easy steps!",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next",
@@ -9955,7 +10227,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Your goal was to praise your teen. You’ve marked X praises in your Parent Points - How did it go?  https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=both",
+                "text": "Your goal was to praise your teen. You’ve marked @habit.habit_praise_teen.weekly_count praises in your Parent Points - How did it go?  https://plh-demo1.idems.international/chat/msg-info?character=guide&choiceMediaDisplay=both",
                 "type": "send_msg",
                 "quick_replies": [
                   "Good",
@@ -10083,14 +10355,16 @@
                 "attachments": [],
                 "text": "It can be hard sometimes to remember. Next time you spend one-on-one time, try and think of one thing you can praise them for. You can even say “thank you for spending time with me!”.",
                 "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Back to stepper"
+                ],
                 "uuid": "uuid_mod_praise_activity_review_action_2"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_praise_activity_review_exit_3",
-                "destination_uuid": null
+                "destination_uuid": "uuid_mod_praise_activity_review_node_14"
               }
             ]
           },
@@ -10289,15 +10563,61 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Every time you praise your teen mark your Parent Point  to track your success ",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg\">: see your success!",
                 "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Back to stepper"
+                ],
                 "uuid": "uuid_mod_praise_activity_review_action_8"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_praise_activity_review_exit_17",
+                "destination_uuid": "uuid_mod_praise_activity_review_node_14"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_activity_review_node_14",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Back to stepper"
+                  ],
+                  "category_uuid": "uuid_mod_praise_activity_review_category_10",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_praise_activity_review_case_6"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_praise_activity_review_exit_20",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_praise_activity_review_category_9"
+                },
+                {
+                  "exit_uuid": "uuid_mod_praise_activity_review_exit_21",
+                  "name": "Back to stepper",
+                  "uuid": "uuid_mod_praise_activity_review_category_10"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_praise_activity_review_category_9",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_activity_review_exit_20",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_praise_activity_review_exit_21",
                 "destination_uuid": "uuid_mod_praise_activity_review_node_12"
               }
             ]
@@ -10389,7 +10709,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Every time you praise your teen, mark your Parent Point  to track your success",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_praise_act_teen_reminder_action_1"
@@ -10553,15 +10873,61 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Every time you do one-on-one time, mark your Parent Point  to track your success",
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg\">: see your success!",
                 "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Back to stepper"
+                ],
                 "uuid": "uuid_mod_praise_fun_action_2"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_praise_fun_exit_2",
+                "destination_uuid": "uuid_mod_praise_fun_node_5"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_fun_node_5",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Back to stepper"
+                  ],
+                  "category_uuid": "uuid_mod_praise_fun_category_1",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_praise_fun_case_0"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_praise_fun_exit_5",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_praise_fun_category_0"
+                },
+                {
+                  "exit_uuid": "uuid_mod_praise_fun_exit_6",
+                  "name": "Back to stepper",
+                  "uuid": "uuid_mod_praise_fun_category_1"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_praise_fun_category_0",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_fun_exit_5",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_praise_fun_exit_6",
                 "destination_uuid": "uuid_mod_praise_fun_node_3"
               }
             ]
@@ -10582,6 +10948,24 @@
             "exits": [
               {
                 "uuid": "uuid_mod_praise_fun_exit_3",
+                "destination_uuid": "uuid_mod_praise_fun_node_4"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_praise_fun_node_4",
+            "actions": [
+              {
+                "flow": {
+                  "name": "link_mod_praise_page"
+                },
+                "type": "enter_flow",
+                "uuid": "uuid_mod_praise_fun_action_4"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_praise_fun_exit_4",
                 "destination_uuid": null
               }
             ]
@@ -10617,7 +11001,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Hi! It's great to see you again. You’ve done  \n- X one-on-one times this week  \n- you’ve relaxed X times  \n- praised yourself X times\n- and praised your teen X times. \n\nYou are showing such commitment to being a parent and to caring for yourself. You are fantastic.  ",
+                "text": "Hi! It's great to see you again. You’ve done  \n- @habit.habit_spend_time.weekly_count one-on-one times this week  \n- you’ve relaxed @habit.habit_relax.weekly_count times  \n- praised yourself @habit.habit_praise_yourself.weekly_count times\n- and praised your teen @habit.habit_praise_teen.weekly_count times. \n\nYou are showing such commitment to being a parent and to caring for yourself. You are fantastic.  ",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_instruct_emo_action_0"
@@ -10863,10 +11247,8 @@
             "uuid": "uuid_mod_instruct_emo_node_8",
             "actions": [
               {
-                "attachments": [
-                  "image:plh_images/habits/habit_relax_icon.svg"
-                ],
-                "text": "Tap your ParentPoint : see your success!",
+                "attachments": [],
+                "text": "Tap your ParentPoint <img class=\"icon\" src=\"assets/plh_assets/plh_images/habits/habit_relax_icon.svg\">: see your success!",
                 "type": "send_msg",
                 "quick_replies": [],
                 "uuid": "uuid_mod_instruct_emo_action_7"
@@ -11151,7 +11533,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Stop making so much noise! https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/teen_shout.svg\"></p>\n<p>@fields.second_guide: \"Stop making so much noise!\"</p>\n<p>@fields.guide_teen: \"I hate you!\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next"
@@ -11215,60 +11597,64 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "I hate you!",
+                "text": "It is so hard to tell teenagers what to do! https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
-                "quick_replies": [
-                  "Next",
-                  "Previous"
-                ],
+                "quick_replies": [],
                 "uuid": "uuid_mod_instruct_intro_action_1"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_instruct_intro_exit_1",
-                "destination_uuid": "uuid_mod_instruct_intro_node_4"
+                "destination_uuid": "uuid_mod_instruct_intro_node_3"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_intro_node_4",
+            "uuid": "uuid_mod_instruct_intro_node_3",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "What really helped was to change how I ask my teen to do things. Now, I tell them what they should do instead of what they shouldn’t. Let me show you how it works!\n",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Click here"
+                ],
+                "uuid": "uuid_mod_instruct_intro_action_2"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_4",
+                "destination_uuid": "uuid_mod_instruct_intro_node_5"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_5",
             "actions": [],
             "router": {
               "type": "switch",
               "cases": [
                 {
                   "arguments": [
-                    "Previous"
+                    "Click here"
                   ],
                   "category_uuid": "uuid_mod_instruct_intro_category_3",
                   "type": "has_only_phrase",
                   "uuid": "uuid_mod_instruct_intro_case_1"
-                },
-                {
-                  "arguments": [
-                    "Next"
-                  ],
-                  "category_uuid": "uuid_mod_instruct_intro_category_4",
-                  "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_intro_case_2"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_5",
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_6",
                   "name": "All Responses",
                   "uuid": "uuid_mod_instruct_intro_category_2"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_6",
-                  "name": "Previous",
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_7",
+                  "name": "Click here",
                   "uuid": "uuid_mod_instruct_intro_category_3"
-                },
-                {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_8",
-                  "name": "Next",
-                  "uuid": "uuid_mod_instruct_intro_category_4"
                 }
               ],
               "operand": "@input.text",
@@ -11279,35 +11665,31 @@
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_5",
+                "uuid": "uuid_mod_instruct_intro_exit_6",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_intro_exit_6",
-                "destination_uuid": "uuid_mod_instruct_intro_node_0"
-              },
-              {
-                "uuid": "uuid_mod_instruct_intro_exit_8",
-                "destination_uuid": "uuid_mod_instruct_intro_node_5"
+                "uuid": "uuid_mod_instruct_intro_exit_7",
+                "destination_uuid": "uuid_mod_instruct_intro_node_4"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_intro_node_5",
+            "uuid": "uuid_mod_instruct_intro_node_4",
             "actions": [
               {
                 "attachments": [],
-                "text": "It is so hard to tell teenagers what to do!\n\nWhat really helped was to change how I ask my teen to do things. Now, I tell them what they should do instead of what they shouldn’t. Let me show you how it works!\n https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg\"></p>\n<p>DO NOT THINK ABOUT AN ELEPHANT</p>\n<p></p>\n<p>What are you thinking about?</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
-                  "Click here"
+                  "Next"
                 ],
-                "uuid": "uuid_mod_instruct_intro_action_2"
+                "uuid": "uuid_mod_instruct_intro_action_3"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_7",
+                "uuid": "uuid_mod_instruct_intro_exit_5",
                 "destination_uuid": "uuid_mod_instruct_intro_node_7"
               }
             ]
@@ -11320,38 +11702,38 @@
               "cases": [
                 {
                   "arguments": [
-                    "Click here"
+                    "Next"
                   ],
-                  "category_uuid": "uuid_mod_instruct_intro_category_6",
+                  "category_uuid": "uuid_mod_instruct_intro_category_5",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_intro_case_3"
+                  "uuid": "uuid_mod_instruct_intro_case_2"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_10",
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_9",
                   "name": "All Responses",
-                  "uuid": "uuid_mod_instruct_intro_category_5"
+                  "uuid": "uuid_mod_instruct_intro_category_4"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_11",
-                  "name": "Click here",
-                  "uuid": "uuid_mod_instruct_intro_category_6"
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_10",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_intro_category_5"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_mod_instruct_intro_category_5",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_4",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_10",
+                "uuid": "uuid_mod_instruct_intro_exit_9",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_intro_exit_11",
+                "uuid": "uuid_mod_instruct_intro_exit_10",
                 "destination_uuid": "uuid_mod_instruct_intro_node_6"
               }
             ]
@@ -11361,63 +11743,36 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "DO NOT THINK ABOUT AN ELEPHANT\n",
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_2.svg\"> </p>\n<p>‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_intro_action_3"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_intro_exit_9",
-                "destination_uuid": "uuid_mod_instruct_intro_node_8"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_intro_node_8",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "What are you thinking about? https://plh-demo1.idems.international/chat/msg-info?character=guide",
-                "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
                 "uuid": "uuid_mod_instruct_intro_action_4"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_12",
+                "uuid": "uuid_mod_instruct_intro_exit_8",
                 "destination_uuid": "uuid_mod_instruct_intro_node_9"
               }
             ]
           },
           {
             "uuid": "uuid_mod_instruct_intro_node_9",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?) https://plh-demo1.idems.international/chat/msg-info?character=guide",
-                "type": "send_msg",
-                "quick_replies": [
-                  "Next"
-                ],
-                "uuid": "uuid_mod_instruct_intro_action_5"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_intro_exit_13",
-                "destination_uuid": "uuid_mod_instruct_intro_node_11"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_intro_node_11",
             "actions": [],
             "router": {
               "type": "switch",
               "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_7",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_3"
+                },
                 {
                   "arguments": [
                     "Next"
@@ -11429,29 +11784,38 @@
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_15",
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_12",
                   "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_intro_category_6"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_13",
+                  "name": "Previous",
                   "uuid": "uuid_mod_instruct_intro_category_7"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_16",
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_15",
                   "name": "Next",
                   "uuid": "uuid_mod_instruct_intro_category_8"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_mod_instruct_intro_category_7",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_6",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_15",
+                "uuid": "uuid_mod_instruct_intro_exit_12",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_intro_exit_16",
+                "uuid": "uuid_mod_instruct_intro_exit_13",
+                "destination_uuid": "uuid_mod_instruct_intro_node_4"
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_15",
                 "destination_uuid": "uuid_mod_instruct_intro_node_10"
               }
             ]
@@ -11461,10 +11825,13 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "THINK ABOUT A FURRY TIGER, THANK YOU!",
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg\"> </p>\n<p>THINK ABOUT A FURRY TIGER, THANK YOU! </p>\n<p></p>\n<p>What are you thinking about? </p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_intro_action_6"
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_intro_action_5"
               }
             ],
             "exits": [
@@ -11476,45 +11843,6 @@
           },
           {
             "uuid": "uuid_mod_instruct_intro_node_12",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "What are you thinking about? https://plh-demo1.idems.international/chat/msg-info?character=guide",
-                "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_intro_action_7"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_intro_exit_17",
-                "destination_uuid": "uuid_mod_instruct_intro_node_13"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_intro_node_13",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager. https://plh-demo1.idems.international/chat/msg-info?character=guide",
-                "type": "send_msg",
-                "quick_replies": [
-                  "Next",
-                  "Previous"
-                ],
-                "uuid": "uuid_mod_instruct_intro_action_8"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_intro_exit_18",
-                "destination_uuid": "uuid_mod_instruct_intro_node_15"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_intro_node_15",
             "actions": [],
             "router": {
               "type": "switch",
@@ -11538,17 +11866,17 @@
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_20",
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_17",
                   "name": "All Responses",
                   "uuid": "uuid_mod_instruct_intro_category_9"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_21",
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_18",
                   "name": "Previous",
                   "uuid": "uuid_mod_instruct_intro_category_10"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_intro_exit_24",
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_20",
                   "name": "Next",
                   "uuid": "uuid_mod_instruct_intro_category_11"
                 }
@@ -11561,15 +11889,97 @@
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_20",
+                "uuid": "uuid_mod_instruct_intro_exit_17",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_intro_exit_21",
+                "uuid": "uuid_mod_instruct_intro_exit_18",
                 "destination_uuid": "uuid_mod_instruct_intro_node_6"
               },
               {
-                "uuid": "uuid_mod_instruct_intro_exit_24",
+                "uuid": "uuid_mod_instruct_intro_exit_20",
+                "destination_uuid": "uuid_mod_instruct_intro_node_13"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_13",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_3.svg\"></p>\n<p>Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_intro_action_6"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_19",
+                "destination_uuid": "uuid_mod_instruct_intro_node_15"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_intro_node_15",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_13",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_7"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_intro_category_14",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_intro_case_8"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_22",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_intro_category_12"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_23",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_intro_category_13"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_intro_exit_26",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_intro_category_14"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_intro_category_12",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_22",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_23",
+                "destination_uuid": "uuid_mod_instruct_intro_node_10"
+              },
+              {
+                "uuid": "uuid_mod_instruct_intro_exit_26",
                 "destination_uuid": "uuid_mod_instruct_intro_node_16"
               }
             ]
@@ -11578,7 +11988,7 @@
             "uuid": "uuid_mod_instruct_intro_node_16",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_intro_action_9",
+                "uuid": "uuid_mod_instruct_intro_action_7",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_intro__completed",
@@ -11589,7 +11999,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_22",
+                "uuid": "uuid_mod_instruct_intro_exit_24",
                 "destination_uuid": "uuid_mod_instruct_intro_node_17"
               }
             ]
@@ -11602,12 +12012,12 @@
                   "name": "mod_instruct_story"
                 },
                 "type": "enter_flow",
-                "uuid": "uuid_mod_instruct_intro_action_10"
+                "uuid": "uuid_mod_instruct_intro_action_8"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_intro_exit_23",
+                "uuid": "uuid_mod_instruct_intro_exit_25",
                 "destination_uuid": null
               }
             ]
@@ -11646,7 +12056,7 @@
                 "text": "This happened with @fields.neighbour's teen daughter the other day: https://plh-demo1.idems.international/chat/msg-info?character=guide",
                 "type": "send_msg",
                 "quick_replies": [
-                  "Click here"
+                  "See story"
                 ],
                 "uuid": "uuid_mod_instruct_story_action_0"
               }
@@ -11666,7 +12076,7 @@
               "cases": [
                 {
                   "arguments": [
-                    "Click here"
+                    "See story"
                   ],
                   "category_uuid": "uuid_mod_instruct_story_category_1",
                   "type": "has_only_phrase",
@@ -11681,7 +12091,7 @@
                 },
                 {
                   "exit_uuid": "uuid_mod_instruct_story_exit_3",
-                  "name": "Click here",
+                  "name": "See story",
                   "uuid": "uuid_mod_instruct_story_category_1"
                 }
               ],
@@ -11707,41 +12117,23 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  \n\n",
+                "text": "<p>@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  </p>\n<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_1.svg\"></p>\n<p>@fields.neighbour: \"Don’t make such a mess while I am cleaning the house. You are in the way!\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Next"
+                ],
                 "uuid": "uuid_mod_instruct_story_action_1"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_instruct_story_exit_1",
-                "destination_uuid": null
+                "destination_uuid": "uuid_mod_instruct_story_node_4"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_3",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Don’t make such a mess while I am cleaning the house. You are in the way! https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                "type": "send_msg",
-                "quick_replies": [
-                  "Next"
-                ],
-                "uuid": "uuid_mod_instruct_story_action_2"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_4",
-                "destination_uuid": "uuid_mod_instruct_story_node_5"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_5",
+            "uuid": "uuid_mod_instruct_story_node_4",
             "actions": [],
             "router": {
               "type": "switch",
@@ -11753,31 +12145,18 @@
                   "category_uuid": "uuid_mod_instruct_story_category_3",
                   "type": "has_only_phrase",
                   "uuid": "uuid_mod_instruct_story_case_1"
-                },
-                {
-                  "arguments": [
-                    "Next"
-                  ],
-                  "category_uuid": "uuid_mod_instruct_story_category_14",
-                  "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_story_case_7"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_6",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_5",
                   "name": "All Responses",
                   "uuid": "uuid_mod_instruct_story_category_2"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_7",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_6",
                   "name": "Next",
                   "uuid": "uuid_mod_instruct_story_category_3"
-                },
-                {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_33",
-                  "name": "Next",
-                  "uuid": "uuid_mod_instruct_story_category_14"
                 }
               ],
               "operand": "@input.text",
@@ -11788,60 +12167,38 @@
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_6",
+                "uuid": "uuid_mod_instruct_story_exit_5",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_7",
-                "destination_uuid": "uuid_mod_instruct_story_node_4"
-              },
-              {
-                "uuid": "uuid_mod_instruct_story_exit_33",
-                "destination_uuid": "uuid_mod_instruct_story_node_25"
+                "uuid": "uuid_mod_instruct_story_exit_6",
+                "destination_uuid": "uuid_mod_instruct_story_node_3"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_4",
+            "uuid": "uuid_mod_instruct_story_node_3",
             "actions": [
               {
                 "attachments": [],
-                "text": "But I need to practice for the school competition. You never let me do anything.\n",
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_2.svg\"></p>\n<p>@fields.neighbour_teen_daughter: \"But I need to practice for the school competition. You never let me do anything.\"</p>\n<p>@fields.neighbour: \"Don't you talk back to me!\"</p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_story_action_3"
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_2"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_5",
+                "uuid": "uuid_mod_instruct_story_exit_4",
                 "destination_uuid": "uuid_mod_instruct_story_node_6"
               }
             ]
           },
           {
             "uuid": "uuid_mod_instruct_story_node_6",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Don’t you talk back to me! https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                "type": "send_msg",
-                "quick_replies": [
-                  "Next",
-                  "Previous"
-                ],
-                "uuid": "uuid_mod_instruct_story_action_4"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_8",
-                "destination_uuid": "uuid_mod_instruct_story_node_8"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_8",
             "actions": [],
             "router": {
               "type": "switch",
@@ -11865,17 +12222,17 @@
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_10",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_8",
                   "name": "All Responses",
                   "uuid": "uuid_mod_instruct_story_category_4"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_11",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_9",
                   "name": "Previous",
                   "uuid": "uuid_mod_instruct_story_category_5"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_13",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_11",
                   "name": "Next",
                   "uuid": "uuid_mod_instruct_story_category_6"
                 }
@@ -11888,60 +12245,42 @@
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_10",
+                "uuid": "uuid_mod_instruct_story_exit_8",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_11",
+                "uuid": "uuid_mod_instruct_story_exit_9",
                 "destination_uuid": "uuid_mod_instruct_story_node_1"
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_13",
+                "uuid": "uuid_mod_instruct_story_exit_11",
+                "destination_uuid": "uuid_mod_instruct_story_node_7"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_7",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_3.svg\"></p>\n<p>@fields.neighbour_teen_daughter: \"Arrg!! Why am I being yelled at all the time????\" </p>\n<p>@fields.neighbour: \"That child is always making trouble.\"</p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_3"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_10",
                 "destination_uuid": "uuid_mod_instruct_story_node_9"
               }
             ]
           },
           {
             "uuid": "uuid_mod_instruct_story_node_9",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Arrg!! Why am I being yelled at all the time????\n",
-                "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_story_action_5"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_12",
-                "destination_uuid": "uuid_mod_instruct_story_node_10"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_10",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "That child is always making trouble. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                "type": "send_msg",
-                "quick_replies": [
-                  "Next",
-                  "Previous"
-                ],
-                "uuid": "uuid_mod_instruct_story_action_6"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_14",
-                "destination_uuid": "uuid_mod_instruct_story_node_12"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_12",
             "actions": [],
             "router": {
               "type": "switch",
@@ -11965,17 +12304,17 @@
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_16",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_13",
                   "name": "All Responses",
                   "uuid": "uuid_mod_instruct_story_category_7"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_17",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_14",
                   "name": "Previous",
                   "uuid": "uuid_mod_instruct_story_category_8"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_21",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_18",
                   "name": "Next",
                   "uuid": "uuid_mod_instruct_story_category_10"
                 }
@@ -11988,48 +12327,48 @@
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_16",
+                "uuid": "uuid_mod_instruct_story_exit_13",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_17",
-                "destination_uuid": "uuid_mod_instruct_story_node_4"
+                "uuid": "uuid_mod_instruct_story_exit_14",
+                "destination_uuid": "uuid_mod_instruct_story_node_3"
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_21",
-                "destination_uuid": "uuid_mod_instruct_story_node_13"
+                "uuid": "uuid_mod_instruct_story_exit_18",
+                "destination_uuid": "uuid_mod_instruct_story_node_10"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_13",
+            "uuid": "uuid_mod_instruct_story_node_10",
             "actions": [
               {
                 "attachments": [],
-                "text": "How do you think @fields.neighbour_teen_daughter felt about the way @fields.neighbour responded to her? https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "How do you think @fields.neighbour_teen_daughter felt about the way @fields.neighbour responded to her?",
                 "type": "send_msg",
                 "quick_replies": [
                   "Slight frown",
                   "Confused face",
                   "Angry face"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_7"
+                "uuid": "uuid_mod_instruct_story_action_4"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_18",
-                "destination_uuid": "uuid_mod_instruct_story_node_14"
+                "uuid": "uuid_mod_instruct_story_exit_15",
+                "destination_uuid": "uuid_mod_instruct_story_node_11"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_14",
+            "uuid": "uuid_mod_instruct_story_node_11",
             "actions": [],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_19",
-                "destination_uuid": "uuid_mod_instruct_story_node_15"
+                "uuid": "uuid_mod_instruct_story_exit_16",
+                "destination_uuid": "uuid_mod_instruct_story_node_12"
               }
             ],
             "router": {
@@ -12040,7 +12379,7 @@
                 {
                   "uuid": "uuid_mod_instruct_story_category_9",
                   "name": "All Responses",
-                  "exit_uuid": "uuid_mod_instruct_story_exit_19"
+                  "exit_uuid": "uuid_mod_instruct_story_exit_16"
                 }
               ],
               "operand": "@input.text",
@@ -12051,10 +12390,10 @@
             }
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_15",
+            "uuid": "uuid_mod_instruct_story_node_12",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_8",
+                "uuid": "uuid_mod_instruct_story_action_5",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_story_feel",
@@ -12065,58 +12404,40 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_20",
-                "destination_uuid": "uuid_mod_instruct_story_node_16"
+                "uuid": "uuid_mod_instruct_story_exit_17",
+                "destination_uuid": "uuid_mod_instruct_story_node_13"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_16",
+            "uuid": "uuid_mod_instruct_story_node_13",
             "actions": [
               {
                 "attachments": [],
-                "text": "At first I thought she was just being disrespectful, but then I thought maybe it was something I did.  \n https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_story_action_9"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_22",
-                "destination_uuid": "uuid_mod_instruct_story_node_17"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_17",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "What could @fields.neighbour have done differently? https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "At first I thought @fields.neighbour_teen_daughter was just being disrespectful, but then I thought maybe it was something @fields.neighbour did.  \n\nWhat could @fields.neighbour have done differently?\n",
                 "type": "send_msg",
                 "quick_replies": [
                   "Say something nice first",
                   "Speak to her in a calm voice",
                   "Tell @fields.neighbour_teen_daughter what they want her to do"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_10"
+                "uuid": "uuid_mod_instruct_story_action_6"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_23",
-                "destination_uuid": "uuid_mod_instruct_story_node_18"
+                "uuid": "uuid_mod_instruct_story_exit_19",
+                "destination_uuid": "uuid_mod_instruct_story_node_14"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_18",
+            "uuid": "uuid_mod_instruct_story_node_14",
             "actions": [],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_24",
-                "destination_uuid": "uuid_mod_instruct_story_node_19"
+                "uuid": "uuid_mod_instruct_story_exit_20",
+                "destination_uuid": "uuid_mod_instruct_story_node_15"
               }
             ],
             "router": {
@@ -12127,7 +12448,7 @@
                 {
                   "uuid": "uuid_mod_instruct_story_category_11",
                   "name": "All Responses",
-                  "exit_uuid": "uuid_mod_instruct_story_exit_24"
+                  "exit_uuid": "uuid_mod_instruct_story_exit_20"
                 }
               ],
               "operand": "@input.text",
@@ -12138,10 +12459,10 @@
             }
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_19",
+            "uuid": "uuid_mod_instruct_story_node_15",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_11",
+                "uuid": "uuid_mod_instruct_story_action_7",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_story_response",
@@ -12152,22 +12473,151 @@
             ],
             "exits": [
               {
+                "uuid": "uuid_mod_instruct_story_exit_21",
+                "destination_uuid": "uuid_mod_instruct_story_node_16"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_16",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "Thank you for thinking along! Let’s go back in time and see what happens! ",
+                "type": "send_msg",
+                "quick_replies": [
+                  "See story"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_8"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_22",
+                "destination_uuid": "uuid_mod_instruct_story_node_18"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_18",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "See story"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_13",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_6"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_24",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_12"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_25",
+                  "name": "See story",
+                  "uuid": "uuid_mod_instruct_story_category_13"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_12",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_24",
+                "destination_uuid": null
+              },
+              {
                 "uuid": "uuid_mod_instruct_story_exit_25",
+                "destination_uuid": "uuid_mod_instruct_story_node_17"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_17",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p>@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  </p>\n<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_4.svg\"></p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_9"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_23",
                 "destination_uuid": "uuid_mod_instruct_story_node_20"
               }
             ]
           },
           {
             "uuid": "uuid_mod_instruct_story_node_20",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_15",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_7"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_27",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_14"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_28",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_15"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_14",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_27",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_28",
+                "destination_uuid": "uuid_mod_instruct_story_node_19"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_19",
             "actions": [
               {
                 "attachments": [],
-                "text": "Thank you for thinking along! Let’s go back in time and see what happens!  https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_5.svg\"></p>\n<p>@fields.neighbour: \"@fields.neighbour_teen_daughter, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"</p>\n<p>@fields.neighbour_teen_daughter: \"Okay!\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
-                  "Click here"
+                  "Next",
+                  "Previous"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_12"
+                "uuid": "uuid_mod_instruct_story_action_10"
               }
             ],
             "exits": [
@@ -12185,56 +12635,55 @@
               "cases": [
                 {
                   "arguments": [
-                    "Click here"
+                    "Previous"
                   ],
-                  "category_uuid": "uuid_mod_instruct_story_category_13",
+                  "category_uuid": "uuid_mod_instruct_story_category_17",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_story_case_6"
+                  "uuid": "uuid_mod_instruct_story_case_8"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_18",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_9"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_28",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_30",
                   "name": "All Responses",
-                  "uuid": "uuid_mod_instruct_story_category_12"
+                  "uuid": "uuid_mod_instruct_story_category_16"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_29",
-                  "name": "Click here",
-                  "uuid": "uuid_mod_instruct_story_category_13"
+                  "exit_uuid": "uuid_mod_instruct_story_exit_31",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_17"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_33",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_18"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_mod_instruct_story_category_12",
+              "default_category_uuid": "uuid_mod_instruct_story_category_16",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_28",
+                "uuid": "uuid_mod_instruct_story_exit_30",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_29",
-                "destination_uuid": "uuid_mod_instruct_story_node_21"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_21",
-            "actions": [
+                "uuid": "uuid_mod_instruct_story_exit_31",
+                "destination_uuid": "uuid_mod_instruct_story_node_17"
+              },
               {
-                "attachments": [],
-                "text": "@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  \n\n",
-                "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_story_action_13"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_27",
+                "uuid": "uuid_mod_instruct_story_exit_33",
                 "destination_uuid": "uuid_mod_instruct_story_node_23"
               }
             ]
@@ -12244,62 +12693,24 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "@fields.neighbour_teen_daughter, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_story_action_14"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_30",
-                "destination_uuid": "uuid_mod_instruct_story_node_24"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_24",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Okay!",
-                "type": "send_msg",
-                "quick_replies": [
-                  "Next"
-                ],
-                "uuid": "uuid_mod_instruct_story_action_15"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_31",
-                "destination_uuid": null
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_25",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "@fields.neighbour_teen_daughter and friends practicing dance moves outside while @fields.neighbour cleans inside.",
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_6.svg\"></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next",
                   "Previous"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_16"
+                "uuid": "uuid_mod_instruct_story_action_11"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_mod_instruct_story_exit_32",
-                "destination_uuid": "uuid_mod_instruct_story_node_27"
+                "destination_uuid": "uuid_mod_instruct_story_node_25"
               }
             ]
           },
           {
-            "uuid": "uuid_mod_instruct_story_node_27",
+            "uuid": "uuid_mod_instruct_story_node_25",
             "actions": [],
             "router": {
               "type": "switch",
@@ -12308,107 +12719,7 @@
                   "arguments": [
                     "Previous"
                   ],
-                  "category_uuid": "uuid_mod_instruct_story_category_16",
-                  "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_story_case_8"
-                },
-                {
-                  "arguments": [
-                    "Next"
-                  ],
-                  "category_uuid": "uuid_mod_instruct_story_category_17",
-                  "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_story_case_9"
-                }
-              ],
-              "categories": [
-                {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_35",
-                  "name": "All Responses",
-                  "uuid": "uuid_mod_instruct_story_category_15"
-                },
-                {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_36",
-                  "name": "Previous",
-                  "uuid": "uuid_mod_instruct_story_category_16"
-                },
-                {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_38",
-                  "name": "Next",
-                  "uuid": "uuid_mod_instruct_story_category_17"
-                }
-              ],
-              "operand": "@input.text",
-              "default_category_uuid": "uuid_mod_instruct_story_category_15",
-              "wait": {
-                "type": "msg"
-              }
-            },
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_35",
-                "destination_uuid": null
-              },
-              {
-                "uuid": "uuid_mod_instruct_story_exit_36",
-                "destination_uuid": "uuid_mod_instruct_story_node_21"
-              },
-              {
-                "uuid": "uuid_mod_instruct_story_exit_38",
-                "destination_uuid": "uuid_mod_instruct_story_node_28"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_28",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Thank you for practicing outside while I finished cleaning the house, @fields.neighbour_teen_daughter. Now, I have some time to watch your dance. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                "type": "send_msg",
-                "quick_replies": [],
-                "uuid": "uuid_mod_instruct_story_action_17"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_37",
-                "destination_uuid": "uuid_mod_instruct_story_node_29"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_29",
-            "actions": [
-              {
-                "attachments": [],
-                "text": "Wow, @fields.neighbour_teen_daughter! You have such good dance moves! https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                "type": "send_msg",
-                "quick_replies": [
-                  "Next",
-                  "Previous"
-                ],
-                "uuid": "uuid_mod_instruct_story_action_18"
-              }
-            ],
-            "exits": [
-              {
-                "uuid": "uuid_mod_instruct_story_exit_39",
-                "destination_uuid": "uuid_mod_instruct_story_node_31"
-              }
-            ]
-          },
-          {
-            "uuid": "uuid_mod_instruct_story_node_31",
-            "actions": [],
-            "router": {
-              "type": "switch",
-              "cases": [
-                {
-                  "arguments": [
-                    "Previous"
-                  ],
-                  "category_uuid": "uuid_mod_instruct_story_category_19",
+                  "category_uuid": "uuid_mod_instruct_story_category_20",
                   "type": "has_only_phrase",
                   "uuid": "uuid_mod_instruct_story_case_10"
                 },
@@ -12423,38 +12734,202 @@
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_41",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_35",
                   "name": "All Responses",
-                  "uuid": "uuid_mod_instruct_story_category_18"
-                },
-                {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_42",
-                  "name": "Previous",
                   "uuid": "uuid_mod_instruct_story_category_19"
                 },
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_46",
+                  "exit_uuid": "uuid_mod_instruct_story_exit_36",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_20"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_38",
                   "name": "Next",
                   "uuid": "uuid_mod_instruct_story_category_21"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_mod_instruct_story_category_18",
+              "default_category_uuid": "uuid_mod_instruct_story_category_19",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_41",
+                "uuid": "uuid_mod_instruct_story_exit_35",
                 "destination_uuid": null
               },
               {
+                "uuid": "uuid_mod_instruct_story_exit_36",
+                "destination_uuid": "uuid_mod_instruct_story_node_19"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_38",
+                "destination_uuid": "uuid_mod_instruct_story_node_26"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_26",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_7.svg\"></p>\n<p>@fields.neighbour: \"Thank you for practicing outside while I finished cleaning the house, @fields.neighbour_teen_daughter . Now I have some time to watch your dance.\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_12"
+              }
+            ],
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_37",
+                "destination_uuid": "uuid_mod_instruct_story_node_28"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_28",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_23",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_12"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_24",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_13"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_40",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_22"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_41",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_23"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_43",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_24"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_22",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_40",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_41",
+                "destination_uuid": "uuid_mod_instruct_story_node_23"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_43",
+                "destination_uuid": "uuid_mod_instruct_story_node_29"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_29",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_8.svg\"> </p>\n<p>@fields.neighbour: \"Wow, @fields.neighbour_teen_daughter! You have such good dance moves!\"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "type": "send_msg",
+                "quick_replies": [
+                  "Next",
+                  "Previous"
+                ],
+                "uuid": "uuid_mod_instruct_story_action_13"
+              }
+            ],
+            "exits": [
+              {
                 "uuid": "uuid_mod_instruct_story_exit_42",
-                "destination_uuid": "uuid_mod_instruct_story_node_25"
+                "destination_uuid": "uuid_mod_instruct_story_node_31"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_mod_instruct_story_node_31",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Previous"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_26",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_14"
+                },
+                {
+                  "arguments": [
+                    "Next"
+                  ],
+                  "category_uuid": "uuid_mod_instruct_story_category_28",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_mod_instruct_story_case_15"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_45",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_25"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_46",
+                  "name": "Previous",
+                  "uuid": "uuid_mod_instruct_story_category_26"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_50",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_28"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_mod_instruct_story_category_25",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_mod_instruct_story_exit_45",
+                "destination_uuid": null
               },
               {
                 "uuid": "uuid_mod_instruct_story_exit_46",
+                "destination_uuid": "uuid_mod_instruct_story_node_26"
+              },
+              {
+                "uuid": "uuid_mod_instruct_story_exit_50",
                 "destination_uuid": "uuid_mod_instruct_story_node_32"
               }
             ]
@@ -12464,19 +12939,19 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Why do you think it worked better for @fields.neighbour this time? https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Why do you think it worked better for @fields.neighbour this time?",
                 "type": "send_msg",
                 "quick_replies": [
-                  "@fields.neigbour_teen_daughter felt respected and loved",
+                  "@fields.neighbour_teen_daughter felt respected and loved",
                   "@fields.neighbour was able to stay calm",
                   "@fields.neighbour kept a positive attitude"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_19"
+                "uuid": "uuid_mod_instruct_story_action_14"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_43",
+                "uuid": "uuid_mod_instruct_story_exit_47",
                 "destination_uuid": "uuid_mod_instruct_story_node_33"
               }
             ]
@@ -12486,19 +12961,19 @@
             "actions": [],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_44",
+                "uuid": "uuid_mod_instruct_story_exit_48",
                 "destination_uuid": "uuid_mod_instruct_story_node_34"
               }
             ],
             "router": {
               "type": "switch",
-              "default_category_uuid": "uuid_mod_instruct_story_category_20",
+              "default_category_uuid": "uuid_mod_instruct_story_category_27",
               "cases": [],
               "categories": [
                 {
-                  "uuid": "uuid_mod_instruct_story_category_20",
+                  "uuid": "uuid_mod_instruct_story_category_27",
                   "name": "All Responses",
-                  "exit_uuid": "uuid_mod_instruct_story_exit_44"
+                  "exit_uuid": "uuid_mod_instruct_story_exit_48"
                 }
               ],
               "operand": "@input.text",
@@ -12512,7 +12987,7 @@
             "uuid": "uuid_mod_instruct_story_node_34",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_20",
+                "uuid": "uuid_mod_instruct_story_action_15",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_story_why",
@@ -12523,7 +12998,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_45",
+                "uuid": "uuid_mod_instruct_story_exit_49",
                 "destination_uuid": "uuid_mod_instruct_story_node_35"
               }
             ]
@@ -12533,18 +13008,18 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "Next - Essential tools for Positive Instructions https://plh-demo1.idems.international/chat/msg-info?character=guide",
+                "text": "Next - Essential tools for Positive Instructions",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next",
                   "Back to stepper"
                 ],
-                "uuid": "uuid_mod_instruct_story_action_21"
+                "uuid": "uuid_mod_instruct_story_action_16"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_47",
+                "uuid": "uuid_mod_instruct_story_exit_51",
                 "destination_uuid": "uuid_mod_instruct_story_node_38"
               }
             ]
@@ -12559,53 +13034,53 @@
                   "arguments": [
                     "Next"
                   ],
-                  "category_uuid": "uuid_mod_instruct_story_category_23",
+                  "category_uuid": "uuid_mod_instruct_story_category_30",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_story_case_12"
+                  "uuid": "uuid_mod_instruct_story_case_16"
                 },
                 {
                   "arguments": [
                     "Back to stepper"
                   ],
-                  "category_uuid": "uuid_mod_instruct_story_category_24",
+                  "category_uuid": "uuid_mod_instruct_story_category_31",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_mod_instruct_story_case_13"
+                  "uuid": "uuid_mod_instruct_story_case_17"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_50",
-                  "name": "All Responses",
-                  "uuid": "uuid_mod_instruct_story_category_22"
-                },
-                {
-                  "exit_uuid": "uuid_mod_instruct_story_exit_51",
-                  "name": "Next",
-                  "uuid": "uuid_mod_instruct_story_category_23"
-                },
-                {
                   "exit_uuid": "uuid_mod_instruct_story_exit_54",
+                  "name": "All Responses",
+                  "uuid": "uuid_mod_instruct_story_category_29"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_55",
+                  "name": "Next",
+                  "uuid": "uuid_mod_instruct_story_category_30"
+                },
+                {
+                  "exit_uuid": "uuid_mod_instruct_story_exit_58",
                   "name": "Back to stepper",
-                  "uuid": "uuid_mod_instruct_story_category_24"
+                  "uuid": "uuid_mod_instruct_story_category_31"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_mod_instruct_story_category_22",
+              "default_category_uuid": "uuid_mod_instruct_story_category_29",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_50",
+                "uuid": "uuid_mod_instruct_story_exit_54",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_51",
+                "uuid": "uuid_mod_instruct_story_exit_55",
                 "destination_uuid": "uuid_mod_instruct_story_node_36"
               },
               {
-                "uuid": "uuid_mod_instruct_story_exit_54",
+                "uuid": "uuid_mod_instruct_story_exit_58",
                 "destination_uuid": "uuid_mod_instruct_story_node_39"
               }
             ]
@@ -12614,7 +13089,7 @@
             "uuid": "uuid_mod_instruct_story_node_36",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_22",
+                "uuid": "uuid_mod_instruct_story_action_17",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_story__completed",
@@ -12625,7 +13100,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_48",
+                "uuid": "uuid_mod_instruct_story_exit_52",
                 "destination_uuid": "uuid_mod_instruct_story_node_37"
               }
             ]
@@ -12638,12 +13113,12 @@
                   "name": "toolbox_mod_instruct_tips"
                 },
                 "type": "enter_flow",
-                "uuid": "uuid_mod_instruct_story_action_23"
+                "uuid": "uuid_mod_instruct_story_action_18"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_49",
+                "uuid": "uuid_mod_instruct_story_exit_53",
                 "destination_uuid": null
               }
             ]
@@ -12652,7 +13127,7 @@
             "uuid": "uuid_mod_instruct_story_node_39",
             "actions": [
               {
-                "uuid": "uuid_mod_instruct_story_action_24",
+                "uuid": "uuid_mod_instruct_story_action_19",
                 "type": "set_contact_field",
                 "field": {
                   "key": "mod_instruct_story__completed",
@@ -12663,7 +13138,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_52",
+                "uuid": "uuid_mod_instruct_story_exit_56",
                 "destination_uuid": "uuid_mod_instruct_story_node_40"
               }
             ]
@@ -12676,12 +13151,12 @@
                   "name": "link_mod_instruct_page"
                 },
                 "type": "enter_flow",
-                "uuid": "uuid_mod_instruct_story_action_25"
+                "uuid": "uuid_mod_instruct_story_action_20"
               }
             ],
             "exits": [
               {
-                "uuid": "uuid_mod_instruct_story_exit_53",
+                "uuid": "uuid_mod_instruct_story_exit_57",
                 "destination_uuid": null
               }
             ]
@@ -22622,13 +23097,59 @@
                 "attachments": [],
                 "text": "This flow shows an example of the story mode.",
                 "type": "send_msg",
-                "quick_replies": [],
+                "quick_replies": [
+                  "Start story"
+                ],
                 "uuid": "uuid_example_story2_action_0"
               }
             ],
             "exits": [
               {
                 "uuid": "uuid_example_story2_exit_0",
+                "destination_uuid": "uuid_example_story2_node_2"
+              }
+            ]
+          },
+          {
+            "uuid": "uuid_example_story2_node_2",
+            "actions": [],
+            "router": {
+              "type": "switch",
+              "cases": [
+                {
+                  "arguments": [
+                    "Start story"
+                  ],
+                  "category_uuid": "uuid_example_story2_category_1",
+                  "type": "has_only_phrase",
+                  "uuid": "uuid_example_story2_case_0"
+                }
+              ],
+              "categories": [
+                {
+                  "exit_uuid": "uuid_example_story2_exit_2",
+                  "name": "All Responses",
+                  "uuid": "uuid_example_story2_category_0"
+                },
+                {
+                  "exit_uuid": "uuid_example_story2_exit_3",
+                  "name": "Start story",
+                  "uuid": "uuid_example_story2_category_1"
+                }
+              ],
+              "operand": "@input.text",
+              "default_category_uuid": "uuid_example_story2_category_0",
+              "wait": {
+                "type": "msg"
+              }
+            },
+            "exits": [
+              {
+                "uuid": "uuid_example_story2_exit_2",
+                "destination_uuid": null
+              },
+              {
+                "uuid": "uuid_example_story2_exit_3",
                 "destination_uuid": "uuid_example_story2_node_1"
               }
             ]
@@ -22649,12 +23170,12 @@
             "exits": [
               {
                 "uuid": "uuid_example_story2_exit_1",
-                "destination_uuid": "uuid_example_story2_node_3"
+                "destination_uuid": "uuid_example_story2_node_4"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_3",
+            "uuid": "uuid_example_story2_node_4",
             "actions": [],
             "router": {
               "type": "switch",
@@ -22663,42 +23184,42 @@
                   "arguments": [
                     "Next"
                   ],
-                  "category_uuid": "uuid_example_story2_category_1",
+                  "category_uuid": "uuid_example_story2_category_3",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story2_case_0"
+                  "uuid": "uuid_example_story2_case_1"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_example_story2_exit_3",
+                  "exit_uuid": "uuid_example_story2_exit_5",
                   "name": "All Responses",
-                  "uuid": "uuid_example_story2_category_0"
+                  "uuid": "uuid_example_story2_category_2"
                 },
                 {
-                  "exit_uuid": "uuid_example_story2_exit_4",
+                  "exit_uuid": "uuid_example_story2_exit_6",
                   "name": "Next",
-                  "uuid": "uuid_example_story2_category_1"
+                  "uuid": "uuid_example_story2_category_3"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_example_story2_category_0",
+              "default_category_uuid": "uuid_example_story2_category_2",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_3",
+                "uuid": "uuid_example_story2_exit_5",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_example_story2_exit_4",
-                "destination_uuid": "uuid_example_story2_node_2"
+                "uuid": "uuid_example_story2_exit_6",
+                "destination_uuid": "uuid_example_story2_node_3"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_2",
+            "uuid": "uuid_example_story2_node_3",
             "actions": [
               {
                 "attachments": [],
@@ -22713,13 +23234,13 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_2",
-                "destination_uuid": "uuid_example_story2_node_5"
+                "uuid": "uuid_example_story2_exit_4",
+                "destination_uuid": "uuid_example_story2_node_6"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_5",
+            "uuid": "uuid_example_story2_node_6",
             "actions": [],
             "router": {
               "type": "switch",
@@ -22728,59 +23249,59 @@
                   "arguments": [
                     "Next"
                   ],
-                  "category_uuid": "uuid_example_story2_category_3",
+                  "category_uuid": "uuid_example_story2_category_5",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story2_case_1"
+                  "uuid": "uuid_example_story2_case_2"
                 },
                 {
                   "arguments": [
                     "Previous"
                   ],
-                  "category_uuid": "uuid_example_story2_category_4",
+                  "category_uuid": "uuid_example_story2_category_6",
                   "type": "has_only_phrase",
-                  "uuid": "uuid_example_story2_case_2"
+                  "uuid": "uuid_example_story2_case_3"
                 }
               ],
               "categories": [
                 {
-                  "exit_uuid": "uuid_example_story2_exit_6",
+                  "exit_uuid": "uuid_example_story2_exit_8",
                   "name": "All Responses",
-                  "uuid": "uuid_example_story2_category_2"
-                },
-                {
-                  "exit_uuid": "uuid_example_story2_exit_7",
-                  "name": "Next",
-                  "uuid": "uuid_example_story2_category_3"
+                  "uuid": "uuid_example_story2_category_4"
                 },
                 {
                   "exit_uuid": "uuid_example_story2_exit_9",
+                  "name": "Next",
+                  "uuid": "uuid_example_story2_category_5"
+                },
+                {
+                  "exit_uuid": "uuid_example_story2_exit_11",
                   "name": "Previous",
-                  "uuid": "uuid_example_story2_category_4"
+                  "uuid": "uuid_example_story2_category_6"
                 }
               ],
               "operand": "@input.text",
-              "default_category_uuid": "uuid_example_story2_category_2",
+              "default_category_uuid": "uuid_example_story2_category_4",
               "wait": {
                 "type": "msg"
               }
             },
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_6",
+                "uuid": "uuid_example_story2_exit_8",
                 "destination_uuid": null
               },
               {
-                "uuid": "uuid_example_story2_exit_7",
-                "destination_uuid": "uuid_example_story2_node_4"
+                "uuid": "uuid_example_story2_exit_9",
+                "destination_uuid": "uuid_example_story2_node_5"
               },
               {
-                "uuid": "uuid_example_story2_exit_9",
+                "uuid": "uuid_example_story2_exit_11",
                 "destination_uuid": "uuid_example_story2_node_1"
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_4",
+            "uuid": "uuid_example_story2_node_5",
             "actions": [
               {
                 "attachments": [],
@@ -22792,13 +23313,13 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_5",
+                "uuid": "uuid_example_story2_exit_7",
                 "destination_uuid": null
               }
             ]
           },
           {
-            "uuid": "uuid_example_story2_node_7",
+            "uuid": "uuid_example_story2_node_8",
             "actions": [
               {
                 "uuid": "uuid_example_story2_action_4",
@@ -22812,7 +23333,7 @@
             ],
             "exits": [
               {
-                "uuid": "uuid_example_story2_exit_10",
+                "uuid": "uuid_example_story2_exit_12",
                 "destination_uuid": null
               }
             ]

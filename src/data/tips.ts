@@ -346,7 +346,7 @@
         "rows": [
           {
             "type": "list_intro",
-            "message_text": "3 tools to make your One-on-One Time great! You can always find these one-on-one tools in ‘’My toolkit’’. "
+            "message_text": "3 tools to make your One-on-One Time great!"
           },
           {
             "type": "list_item",
@@ -380,7 +380,8 @@
       },
       {
         "type": "text",
-        "message_text": "Every time you do one-on-one time, mark your Parent Point <icon> to track your success"
+        "message_text": "Tap your ParentPoint <icon>: see your success!",
+        "comment": "plh_images/habits/habit_spend_time_icon.svg"
       }
     ]
   },
@@ -431,7 +432,8 @@
       },
       {
         "type": "text",
-        "message_text": "Every time you praise your teen, mark your Parent Point <icon> to track your success"
+        "message_text": "Tap your ParentPoint <icon>: see your success!",
+        "comment": "plh_images/habits/habit_praise_teen_icon.svg"
       }
     ]
   },
