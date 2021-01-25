@@ -70,7 +70,7 @@ export class HabitService {
     }
   }
 
-  public addUserHabitActivityIdea(flowName: string, idea: string): Promise<IndexableType> {
+  public async addUserHabitActivityIdea(flowName: string, idea: string): Promise<IndexableType> {
     try {
       return this.dbService
         .table<IHabitActivityIdea>("habit_activity_ideas")
@@ -81,6 +81,20 @@ export class HabitService {
     } catch (ex) {
       console.log("Error adding habit activity idea for flow name: ", flowName, ex);
       return;
+    }
+  }
+
+  public deleteUserHabitActivityIdea(flowName: string, idea: string): Promise<number> {
+    try {
+      return this.dbService
+        .table<IHabitActivityIdea>("habit_activity_ideas")
+        .where("flowName")
+        .equals(flowName)
+        .and((hai) => hai.ideaTitle === idea)
+        .delete();
+    } catch (ex) {
+      console.log(`Could not delete habit activity idea with title ${idea} for flow name ${flowName}`);
+      console.log(ex);
     }
   }
 }

@@ -79,6 +79,12 @@ export class HabitIdeasPage implements OnInit {
     await alert.present();
   }
 
+  deleteUserIdea(idea: string) {
+    this.habitService.deleteUserHabitActivityIdea(this.flowName, idea).then(() => {
+      this.populateUserIdeas(this.flowName);
+    });
+  }
+
   ngOnInit() {
   }
 
