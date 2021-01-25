@@ -7,7 +7,11 @@
     </div>
     <div class="ideas-column user-ideas">
       <h2>My list</h2>
-      <div *ngFor="let idea of userIdeas" class="idea">{{idea}}</div>
+      <div *ngFor="let idea of userIdeas" class="idea user-idea">
+        <span></span>
+        <span>{{idea}}</span>
+        <ion-icon name="close-outline" (click)="deleteUserIdea(idea)"></ion-icon>
+      </div>
       <div class="add-idea-button" (click)="promptForIdea()">+</div>
       <label class="add-your-own-label">Add your own</label>
     </div>
