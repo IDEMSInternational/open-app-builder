@@ -1,0 +1,15 @@
+<ion-content *ngIf="flowName">
+  <h1>{{title}}</h1>
+  <div class="ideas-container">
+    <div class="ideas-column suggested">
+      <h2>Ideas</h2>
+      <div *ngFor="let idea of suggestedIdeas" class="idea">{{idea}}</div>
+    </div>
+    <div class="ideas-column user-ideas">
+      <h2>My list</h2>
+      <div *ngFor="let idea of userIdeas" class="idea">{{idea}}</div>
+      <div class="add-idea-button" (click)="promptForIdea()">+</div>
+      <label class="add-your-own-label">Add your own</label>
+    </div>
+  </div>
+</ion-content>
