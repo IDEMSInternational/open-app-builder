@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { IndexableType } from 'dexie';
 import { arrayToHashmap } from '../../utils';
 import { HABIT_LIST } from '../data/data.service';
 import { DbService } from '../db/db.service';
 import { ITaskEntry } from '../task/task-action.service';
-import { IHabit } from './habit.model';
+import { IHabit, IHabitActivityIdea } from './habit.model';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,47 @@ export class HabitService {
       console.warn("No habit found for id", habitId, ex);
     }
     return null;
+  }
+
+  public async getUserHabitActivityIdeas(flowName: string): Promise<string[]> {
+    try {
+      const dbHabitActivityIdeas = await this.dbService
+        .table<IHabitActivityIdea>("habit_activity_ideas")
+        .where("flowName")
+        .equals(flowName)
+        .toArray();
+      return dbHabitActivityIdeas.map((idea) => idea.ideaTitle);
+    } catch (ex) {
+      console.log("No habit ideas for flow name ", flowName, ex);
+      return [];
+    }
+  }
+
+  public async addUserHabitActivityIdea(flowName: string, idea: string): Promise<IndexableType> {
+    try {
+      return this.dbService
+        .table<IHabitActivityIdea>("habit_activity_ideas")
+        .add({
+          flowName: flowName,
+          ideaTitle: idea
+        });
+    } catch (ex) {
+      console.log("Error adding habit activity idea for flow name: ", flowName, ex);
+      return;
+    }
+  }
+
+  public deleteUserHabitActivityIdea(flowName: string, idea: string): Promise<number> {
+    try {
+      return this.dbService
+        .table<IHabitActivityIdea>("habit_activity_ideas")
+        .where("flowName")
+        .equals(flowName)
+        .and((hai) => hai.ideaTitle === idea)
+        .delete();
+    } catch (ex) {
+      console.log(`Could not delete habit activity idea with title ${idea} for flow name ${flowName}`);
+      console.log(ex);
+    }
   }
 }
