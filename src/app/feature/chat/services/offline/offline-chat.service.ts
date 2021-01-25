@@ -105,10 +105,7 @@ export class OfflineChatService implements IChatService {
     this.flowStatus$.subscribe((events) => {
       try {
         console.log("Flow status change", events);
-        if (events.length 
-          
-          
-          > 0) {
+        if (events.length > 0) {
           console.log("Flow stacks before event:", this.flowsStack.length);
           let latest = events[events.length - 1];
           console.log("latest status:", latest.status);
@@ -133,7 +130,7 @@ export class OfflineChatService implements IChatService {
           if (latest.status === "completed") {
             this.chatActions.logActionToDB({ flow_name: flow.name, type: "completed" });
             // remove the completed flow from the stack
-            this.flowsStack.pop();
+            this.flowsStack = this.flowsStack.filter((f) => f.name != flow.name);
             // Check if there are any other flows remaining,
             // if yes resume them
             if (this.flowsStack.length > 0) {

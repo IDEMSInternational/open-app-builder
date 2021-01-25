@@ -71,7 +71,7 @@ export class ChatPage {
     public modalCtrl: ModalController,
     public alertController: AlertController,
     private contactFieldService: ContactFieldService
-  ) {}
+  ) { }
 
   /** Initialise chat configuration on page enter */
   ionViewDidEnter() {
@@ -208,11 +208,11 @@ export class ChatPage {
     if ((message.attachments && message.attachments.length > 0) || message.innerImageUrl) {
       scrollDelay = 1000;
     }
-    if (this.chatEndDiv) {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (this.chatEndDiv) {
         this.chatEndDiv.nativeElement.scrollIntoView({ behavior: "smooth", block: "end" });
-      }, scrollDelay);
-    }
+      }
+    }, scrollDelay);
     this.cd.detectChanges();
   }
 
