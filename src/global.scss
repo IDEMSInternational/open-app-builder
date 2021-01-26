@@ -29,7 +29,6 @@
 @import "./theme/layout";
 @import "./theme/typography";
 
-
 .slide-up-modal {
     .modal-wrapper {
         max-width: 80%;
@@ -45,7 +44,7 @@
         position: relative;
         transform: rotate(-60deg);
     }
-  
+
     @keyframes slide-up {
         from {
             transform: rotate(-60deg);
@@ -56,4 +55,6 @@
             bottom: 0px;
         }
     }
-  }
+}
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
