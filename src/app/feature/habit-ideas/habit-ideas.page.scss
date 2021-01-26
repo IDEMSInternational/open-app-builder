@@ -23,32 +23,6 @@ h1 {
             border-right: 1px dashed var(--ion-color-primary, #0d4060);
         }
 
-        .idea {
-            display: flex;
-            width: 100%;
-            min-height: 70px;
-            margin: 10px;
-            padding: 10px;
-            border-style: solid;
-            border-width: 1px;
-            border-color: var(--ion-color-primary, #0d4060);
-            border-radius: 20px;
-            
-            background-color: var(--ion-item-background, white);
-            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-
-            &.user-idea {
-                justify-content: space-between;
-
-                ion-icon {
-                    padding: 10px;
-                }
-            }
-        }
-
         .add-idea-button {
             display: flex;
             align-items: center;
@@ -68,4 +42,42 @@ h1 {
             text-align: center;
         }
     }
+}
+
+.idea {
+    display: flex;
+    width: 100%;
+    min-height: 70px;
+    margin: 10px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--ion-color-primary, #0d4060);
+    border-radius: 20px;
+
+    background-color: var(--ion-item-background, white);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &.user-idea {
+        justify-content: space-between;
+
+        ion-icon {
+            padding: 10px;
+        }
+    }
+}
+
+.cdk-drag-preview {
+    @extend .idea;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
