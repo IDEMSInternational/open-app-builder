@@ -8,12 +8,15 @@ import { HabitIdeasPageRoutingModule } from './habit-ideas-routing.module';
 
 import { HabitIdeasPage } from './habit-ideas.page';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HabitIdeasPageRoutingModule
+    HabitIdeasPageRoutingModule,
+    DragDropModule
   ],
   declarations: [HabitIdeasPage]
 })

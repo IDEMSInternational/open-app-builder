@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
@@ -16,6 +17,8 @@ export class HabitIdeasPage implements OnInit {
   public title: string;
   public suggestedIdeas: string[] = [];
   public userIdeas: string[] = [];
+  public suggestedDragging = false;
+  public console = console;
 
   constructor(protected route: ActivatedRoute, protected habitService: HabitService,
     protected alertCtrl: AlertController) {
@@ -26,8 +29,9 @@ export class HabitIdeasPage implements OnInit {
     const { params } = this.route.snapshot;
     if (params.flowName) {
       this.flowName = params.flowName;
-      this.populateFromTips(params.flowName);
-      this.populateUserIdeas(params.flowName);
+      this.populateUserIdeas(params.flowName).finally(() => {
+        this.populateFromTips(params.flowName);
+      });
     }
   }
 
@@ -37,14 +41,17 @@ export class HabitIdeasPage implements OnInit {
     this.title = titleRow && titleRow.message_text ? titleRow.message_text : flowName;
     const listGroup = tipsFlow.rows.find((row) => row.type === "list_group");
     if (listGroup && listGroup.rows) {
+      const userIdeasMap = {};
+      this.userIdeas.forEach((i) => userIdeasMap[i] = true);
       this.suggestedIdeas = listGroup.rows
         .filter((row) => row.type === "list_item")
+        .filter((row) => !userIdeasMap[row.message_text])
         .map((row) => row.message_text);
     }
   }
 
   populateUserIdeas(flowName: string) {
-    this.habitService.getUserHabitActivityIdeas(flowName).then((ideas) => {
+    return this.habitService.getUserHabitActivityIdeas(flowName).then((ideas) => {
       this.userIdeas = ideas;
     });
   }
@@ -80,12 +87,22 @@ export class HabitIdeasPage implements OnInit {
   }
 
   deleteUserIdea(idea: string) {
+    this.userIdeas = this.userIdeas.filter((i) => i !== idea);
     this.habitService.deleteUserHabitActivityIdea(this.flowName, idea).then(() => {
-      this.populateUserIdeas(this.flowName);
+      this.populateFromTips(this.flowName);
     });
   }
 
   ngOnInit() {
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer !== event.container) {
+      const idea = event.previousContainer.data[event.previousIndex];
+      this.userIdeas.push(idea);
+      this.populateFromTips(this.flowName);
+      this.habitService.addUserHabitActivityIdea(this.flowName, idea);
+    }
   }
 
 }
