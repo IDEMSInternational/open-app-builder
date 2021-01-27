@@ -4,7 +4,7 @@ import { Component, Input } from "@angular/core";
   selector: "plh-slide-panel-right",
   template: `
     <section class="main-container" [class.expanded]="expanded" (click)="toggleExpand()">
-      <h3 class="panel-header">{{ headerText }}</h3>
+      <h3 class="panel-header" tourAnchor="modulePicker">{{ headerText }}</h3>
       <div class="content">
         <ng-content></ng-content>
       </div>

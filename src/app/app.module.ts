@@ -23,6 +23,8 @@ import { ColorSketchModule } from "ngx-color/sketch";
 import { FormsModule } from "@angular/forms";
 import { SurveyModule } from "src/app/feature/survey/survey.module";
 
+import { TourMatMenuModule } from "ngx-tour-md-menu"; 
+
 const introModules = [AppTermsPageModule, PrivacyPageModule];
 
 import {LottieModule} from "ngx-lottie";
@@ -49,9 +51,10 @@ export function lottiePlayerFactory() {
     AngularFireAuthModule,
     FormsModule,
     ColorSketchModule,
+    TourMatMenuModule.forRoot(),
     ...introModules,
     SurveyModule,
-    LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true })
+    LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, HTTP, Device],
   bootstrap: [AppComponent],

@@ -10,6 +10,7 @@ import { SurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
+import { TourService } from "ngx-tour-md-menu";
 
 @Component({
   selector: "app-root",
@@ -29,9 +30,31 @@ export class AppComponent {
     private themeService: ThemeService,
     private surveyService: SurveyService,
     /** Inject in the main app component to start tracking actions immediately */
-    public taskActions: TaskActionService
+    public taskActions: TaskActionService,
+    public tourService: TourService
   ) {
     this.initializeApp();
+    this.tourService.events$.subscribe(x => {
+      console.log(x);
+    });
+    this.tourService.initialize([
+      {
+        stepId: "mod_picker",
+        anchorId: "modulePicker",
+        route: "/module_list",
+        title: "Pick a module",
+        content: "Select which module to start here",
+      },
+      {
+        anchorId: "startModuleBtn",
+        route: "/module_list",
+        title: "Click here to start the module",
+        content: "This will take you to the module steps page",
+      }
+    ]);
+    setTimeout(() => {
+      this.tourService.start();
+    }, 4000);
   }
 
   async initializeApp() {

@@ -82,7 +82,12 @@ export class SettingsPage {
   launchFlowByName(flowName: string) {
     this.router.navigateByUrl("/chat/" + flowName);
   }
+
   launchTipFlowByName(flowName: string) {
     this.router.navigateByUrl("/tips/" + flowName);
+  }
+
+  startTour() {
+    // this.tourService.start();
   }
 }

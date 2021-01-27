@@ -13,6 +13,7 @@ import { RouterModule } from "@angular/router";
 import { ModuleFocusSkin } from "./module-focus.skin";
 import { HabitAddComponent } from "./components/habit-add";
 import { GoalsPageModule } from 'src/app/feature/goals/goals.module';
+import { TourMatMenuModule } from "ngx-tour-md-menu";
 
 const components = [
   HabitTrackerComponent,
@@ -20,11 +21,11 @@ const components = [
   ModuleSelectCircleComponent,
   SlidePanelRightComponent,
   SlidePanelBottomComponent,
-  ThingsToDoListComponent,
+  ThingsToDoListComponent
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, RouterModule, GoalsPageModule],
+  imports: [CommonModule, FormsModule, IonicModule, RouterModule, GoalsPageModule, TourMatMenuModule],
   exports: [ModuleFocusSkin],
   declarations: [ModuleFocusSkin, ...components],
 })
