@@ -11679,7 +11679,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg\"></p>\n<p>DO NOT THINK ABOUT AN ELEPHANT</p>\n<p></p>\n<p>What are you thinking about?</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "text": "<img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg\">\nDO NOT THINK ABOUT AN ELEPHANT\n\nWhat are you thinking about?",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next"
@@ -11743,7 +11743,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_2.svg\"> </p>\n<p>‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "text": "<img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_2.svg\"> \n‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next",
@@ -11825,7 +11825,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg\"> </p>\n<p>THINK ABOUT A FURRY TIGER, THANK YOU! </p>\n<p></p>\n<p>What are you thinking about? </p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "text": "<img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg\"> \nTHINK ABOUT A FURRY TIGER, THANK YOU! \n\nWhat are you thinking about? ",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next",
@@ -11907,7 +11907,7 @@
             "actions": [
               {
                 "attachments": [],
-                "text": "<p><img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_3.svg\"></p>\n<p>Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true",
+                "text": "<img class=\"block-image\" src=\"assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_3.svg\">\nPositive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.",
                 "type": "send_msg",
                 "quick_replies": [
                   "Next",
@@ -24327,7 +24327,7 @@
                   "uuid": "uuid_example_habit_category_1"
                 }
               ],
-              "operand": "@fields.@habit.habit_relax.weekly_count",
+              "operand": "@habit.habit_relax.weekly_count",
               "default_category_uuid": "uuid_example_habit_category_0"
             },
             "exits": [
@@ -24404,7 +24404,7 @@
                   "uuid": "uuid_example_habit_category_3"
                 }
               ],
-              "operand": "@fields.@habit.habit_spend_time.weekly_count",
+              "operand": "@habit.habit_spend_time.weekly_count",
               "default_category_uuid": "uuid_example_habit_category_2"
             },
             "exits": [
