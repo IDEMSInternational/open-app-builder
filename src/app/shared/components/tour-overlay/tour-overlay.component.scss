@@ -1,0 +1,35 @@
+#tourOverlay {
+    position: fixed;
+    opacity: 0;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+    padding: 20px;
+    box-sizing: content-box;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 0px 9999px;
+    z-index: 1000;
+    border-radius: 20px;
+    transition: all 0.5s ease-out;
+}
+
+#tourControlsCard {
+    display: none;
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1001;
+
+    p {
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+    }
+}

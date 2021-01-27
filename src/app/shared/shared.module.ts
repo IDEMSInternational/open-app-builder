@@ -8,6 +8,7 @@ import { StressedMultiHandAnimComponent } from "./components/stressed-multi-hand
 import { PLHMainHeaderComponent } from "./components/plh-main-header";
 import { PLHMainTabsComponent } from "./components/plh-main-tabs";
 import { RouterModule } from "@angular/router";
+import { TourOverlayComponent } from "./components/tour-overlay/tour-overlay.component";
 
 const Components = [
   BlobComponent,
@@ -16,6 +17,7 @@ const Components = [
   StressedMultiHandAnimComponent,
   PLHMainHeaderComponent,
   PLHMainTabsComponent,
+  TourOverlayComponent
 ];
 
 @NgModule({
