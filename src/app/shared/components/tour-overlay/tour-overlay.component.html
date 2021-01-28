@@ -2,7 +2,7 @@
 <ion-card id="tourControlsCard">
   <p>{{currentStep?.instructions}}</p>
   <div class="btn-container">
-    <ion-button (click)="tourService.next()">Next</ion-button>
+    <ion-button (click)="tourService.next()">{{onLastStep() ? 'Finish' : 'Next'}}</ion-button>
     <!--<ion-button (click)="tourService.previous()">Previous</ion-button>-->
   </div>
 </ion-card>

@@ -31,56 +31,9 @@ export class AppComponent {
     private themeService: ThemeService,
     private surveyService: SurveyService,
     /** Inject in the main app component to start tracking actions immediately */
-    public taskActions: TaskActionService,
-    public tourService: TourService
+    public taskActions: TaskActionService
   ) {
     this.initializeApp();
-    this.tourService.setSteps([
-      {
-        route: "module_list",
-        selector: "#main-content > plh-module-list > div > div > plh-module-focus-skin > div > plh-slide-panel-right > section > h3",
-        instructions: "Click modules to see the list of modules"
-      },
-      {
-        preStepClick: {
-          selector: "#main-content > plh-module-list > div > div > plh-module-focus-skin > div > plh-slide-panel-right > section > h3",
-          continueDelay: 1000
-        },
-        route: "module_list",
-        selector: "#main-content > plh-module-list > div > div > plh-module-focus-skin > div > plh-slide-panel-right > section",
-        instructions: "Now click a module circle to change the module"
-      },
-      {
-        preStepClick: {
-          selector: "#main-content > plh-module-list > div > div > plh-module-focus-skin > div > plh-slide-panel-right > section > h3",
-          continueDelay: 1000
-        },
-        route: "module_list",
-        selector: "#main-content > plh-module-list > div > div > plh-module-focus-skin > div > plh-habit-tracker > div > div.habit-list > ion-button",
-        instructions: "Click here to track your daily habits"
-      },
-      {
-        preStepClick: {
-          selector: "#main-content > plh-module-list > div > div > plh-module-focus-skin > div > plh-habit-tracker > div > div.habit-list > ion-button",
-          continueDelay: 1000
-        },
-        route: "module_list",
-        selector: "#ion-overlay-1 > div.modal-wrapper.ion-overlay-wrapper.sc-ion-modal-md > plh-habit-add > ion-content",
-        instructions: "Click one of the habits to mark it as done"
-      },
-      {
-        preStepClick: {
-          selector: "#ion-overlay-1 > div.modal-wrapper.ion-overlay-wrapper.sc-ion-modal-md > plh-habit-add > ion-header > ion-toolbar > ion-buttons > ion-button",
-          continueDelay: 1000
-        },
-        route: "module_list",
-        selector: "#ion-overlay-1 > div.modal-wrapper.ion-overlay-wrapper.sc-ion-modal-md > plh-habit-add > ion-content",
-        instructions: "Click here to start a module"
-      }
-    ]);
-    setTimeout(() => {
-      this.tourService.start();
-    }, 2000);
   }
 
   async initializeApp() {

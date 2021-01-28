@@ -32,6 +32,14 @@ export class TourService {
     this.goToStep(this.steps[0]);
   }
 
+  getCurrentStepIndex(): number {
+    return this.currentStepIndex;
+  }
+
+  getNumberOfSteps(): number {
+    return this.steps.length;
+  }
+
   next() {
     this.currentStepIndex++;
     if (this.currentStepIndex >= this.steps.length) {
@@ -59,6 +67,7 @@ export class TourService {
     if (step.route && step.route !== this.router.url) {
       await this.router.navigateByUrl(step.route);
     }
+    await this.wait(200);
     if (step.preStepClick) {
       const clickElem: HTMLElement = document.querySelector(step.preStepClick.selector);
       clickElem.click();

@@ -18,4 +18,8 @@ export class TourOverlayComponent implements OnInit {
 
   ngOnInit() {}
 
+  onLastStep() {
+    return this.tourService.getCurrentStepIndex() >= this.tourService.getNumberOfSteps() - 1;
+  }
+
 }
