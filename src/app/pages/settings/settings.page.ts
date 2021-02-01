@@ -9,6 +9,7 @@ import { UserSetting } from "./user.settings.model";
 import { SettingsService } from "./settings.service";
 import { OfflineChatService } from "src/app/feature/chat/services/offline/offline-chat.service";
 import { TIPS } from "src/app/shared/services/data/data.service";
+import { TourService } from "src/app/shared/services/tour/tour.service";
 
 @Component({
   selector: "plh-settings",
@@ -34,7 +35,8 @@ export class SettingsPage {
     private surveyService: SurveyService,
     private dbService: DbService,
     private settingsService: SettingsService,
-    private offlineChatService: OfflineChatService
+    private offlineChatService: OfflineChatService,
+    private tourService: TourService
   ) {
     this.themeNames = this.themeService.getThemes().map((theme) => theme.name);
     this.currentThemeName = this.themeService.getCurrentTheme().name;
@@ -84,5 +86,9 @@ export class SettingsPage {
   }
   launchTipFlowByName(flowName: string) {
     this.router.navigateByUrl("/tips/" + flowName);
+  }
+
+  startTour() {
+    this.tourService.startTour();
   }
 }
