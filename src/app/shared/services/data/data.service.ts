@@ -11,6 +11,7 @@ import { module_list } from "src/data/module_list";
 import { module_page } from "src/data/module_page";
 import { care_package_list } from "src/data/care_package_list";
 import { habit_ideas } from "src/data/habit_ideas";
+import { tour } from "src/data/tour";
 
 export const COMPLETION_LIST = completion_list;
 export const CONVERSATION = conversation;
@@ -22,6 +23,7 @@ export const TASK_LIST = task_list;
 export const TIPS = tips;
 export const CARE_PACKAGE_LIST = care_package_list;
 export const HABIT_IDEAS = habit_ideas;
+export const TOUR = tour;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
 const mapping: { [key in FlowTypes.FlowType] } = {
@@ -34,7 +36,8 @@ const mapping: { [key in FlowTypes.FlowType] } = {
   task_list: TASK_LIST,
   tips: TIPS,
   care_package_list: CARE_PACKAGE_LIST,
-  habit_ideas: HABIT_IDEAS
+  habit_ideas: HABIT_IDEAS,
+  tour: TOUR
 };
 
 /**
