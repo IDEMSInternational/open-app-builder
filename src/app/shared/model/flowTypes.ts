@@ -17,7 +17,8 @@ export namespace FlowTypes {
     | "task_list"
     | "module_list"
     | "module_page"
-    | "care_package_list";
+    | "care_package_list"
+    | "habit_ideas";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -205,4 +206,23 @@ export namespace FlowTypes {
     main_image_asset?: string;
     habit_list: string[];
   }
+
+  export interface Habit_ideas extends FlowTypeWithData {
+    flow_type: "habit_ideas";
+    flow_name: string;
+    title: string;
+    suggestion_list_title: string;
+    personal_list_title: string;
+    personal_list_title_short: string;
+    add_button: string;
+    publish_button: string;
+    edit_button: string;
+    rows: Habit_ideasRow[];
+  }
+
+  export interface Habit_ideasRow {
+    type: "list_item";
+    message_text: string;
+  }
+
 }
