@@ -18,6 +18,7 @@ export namespace FlowTypes {
     | "module_list"
     | "module_page"
     | "care_package_list"
+    | "tour"
     | "habit_ideas";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
@@ -223,6 +224,19 @@ export namespace FlowTypes {
   export interface Habit_ideasRow {
     type: "list_item";
     message_text: string;
+  }
+
+  export interface Tour extends FlowTypeBase {
+    flow_type: "tour";
+    rows: TourStep[];
+  }
+
+  export interface TourStep {
+    type: "step";
+    message_text?: string;
+    title?: string;
+    element?: string;
+    route?: string;
   }
 
 }
