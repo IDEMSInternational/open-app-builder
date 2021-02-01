@@ -46,7 +46,7 @@ const FeatureRoutes: Routes = [
     loadChildren: () => import("./feature/care-packages/care-packages.module").then((m) => m.CarePackagesPageModule),
   },
   {
-    path: "habit-ideas",
+    path: "habit_ideas",
     loadChildren: () => import("./feature/habit-ideas/habit-ideas.module").then((m) => m.HabitIdeasPageModule)
   },
   {

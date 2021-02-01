@@ -1,8 +1,8 @@
 <ion-content *ngIf="flowName">
-  <h1>{{title}}</h1>
+  <h1>{{habitIdea?.title}}</h1>
   <div class="ideas-container" (pointerup)="suggestedDragging = false">
     <div class="ideas-column">
-      <h2>Suggested Ideas</h2>
+      <h2>{{habitIdea?.suggestion_list_title}}</h2>
 
       <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="suggestedIdeas" [cdkDropListConnectedTo]="[doneList]"
         (pointerdown)="suggestedDragging = true" [cdkDropListSortingDisabled]="true">
@@ -11,7 +11,7 @@
     </div>
 
     <div class="ideas-column">
-      <h2>My List</h2>
+      <h2>{{habitIdea?.personal_list_title_short}}</h2>
 
       <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="userIdeas" (cdkDropListDropped)="drop($event)"
         [cdkDropListSortingDisabled]="true" cdkDragDisabled="true">
@@ -21,7 +21,7 @@
           <ion-icon name="close-outline" (click)="deleteUserIdea(idea)"></ion-icon>
         </div>
         <div class="add-idea-button" (click)="promptForIdea()">+</div>
-          <label class="add-your-own-label">Add your own</label>
+          <label class="add-your-own-label">{{habitIdea?.add_button}}</label>
       </div>
 
     </div>

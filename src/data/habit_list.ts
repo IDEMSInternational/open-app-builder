@@ -28,8 +28,8 @@
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself_image.svg",
         "suggestion_button_text": "Ideas to treat myself",
-        "suggestion_flow_type": "habit-ideas",
-        "suggestion_flow_name": "mod_welcome_ideas",
+        "suggestion_flow_type": "habit_ideas",
+        "suggestion_flow_name": "habit_treat_yourself_well_ideas",
         "aim_button_text": "My aim",
         "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_treat_yourself_custom | repeat_count | min=0 | max = 10"
@@ -42,8 +42,8 @@
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself_image.svg",
         "suggestion_button_text": "Ideas to praise myself",
-        "suggestion_flow_type": "habit-ideas",
-        "suggestion_flow_name": "mod_praise_ideas_self",
+        "suggestion_flow_type": "habit_ideas",
+        "suggestion_flow_name": "habit_spend_time_ideas",
         "aim_button_text": "My aim",
         "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_praise_yourself_custom | repeat_count | min=0 | max = 10"
@@ -56,8 +56,8 @@
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time_image.svg",
         "suggestion_button_text": "Ideas to spend time with my teen",
-        "suggestion_flow_type": "habit-ideas",
-        "suggestion_flow_name": "mod_1on1_ideas",
+        "suggestion_flow_type": "habit_ideas",
+        "suggestion_flow_name": "habit_praise_teen_ideas",
         "aim_button_text": "My aim",
         "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_spend_time_custom | repeat_count | min=0 | max = 10"
@@ -70,8 +70,8 @@
         "icon_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg",
         "main_image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen_image.svg",
         "suggestion_button_text": "Ideas to praise my teen",
-        "suggestion_flow_type": "habit-ideas",
-        "suggestion_flow_name": "mod_praise_ideas_teen",
+        "suggestion_flow_type": "habit_ideas",
+        "suggestion_flow_name": "habit_praise_yourself_ideas",
         "aim_button_text": "My aim",
         "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_praise_teen_custom | repeat_count | min=0 | max = 10"
