@@ -2003,6 +2003,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/intro.js@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/intro.js/-/intro.js-3.0.0.tgz#27ae56f313ebef75c21a957367d1cfcd6b1a6f77"
+  integrity sha512-XbL3Y3jW82vQlf9L4gGOhnqsV9rM5Hs6LDe9hcXRsJj4j+NH5WnHzbRHfApSfLQGffHyCoKcJDaJbDHVptqLLA==
+
 "@types/jasmine@*":
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.6.1.tgz#f8b95def0016411c58c7adb4791dff29bc62992c"
@@ -6846,6 +6851,11 @@ internal-ip@^4.3.0:
   dependencies:
     default-gateway "^4.2.0"
     ipaddr.js "^1.9.0"
+
+intro.js@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/intro.js/-/intro.js-3.2.1.tgz#fb13f03c13d54aab8485d538a719fe4af0b7bf36"
+  integrity sha512-empgAlW/vlIEAZWw19rLMR+1J75sw6bvjqrQd9fhgXJnV/ds0bzASil3k5fCWSJeVBKXFbLlWJ3nvtimDmTIFw==
 
 invert-kv@^1.0.0:
   version "1.0.0"
