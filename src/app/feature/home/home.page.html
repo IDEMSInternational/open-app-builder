@@ -1,0 +1,11 @@
+<ion-content>
+  <div class="button-list">
+    <div class="button-container" *ngFor="let button of buttons"
+    [ngClass]="{ 'disabled': !button.enabled}">
+      <img *ngIf="button.left_image" [src]="'assets/plh_assets/' + button.left_image">
+      <ion-button [disabled]="!button.enabled" [routerLink]="button.route">
+        <span class="btn-text">{{button.text}}</span>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
