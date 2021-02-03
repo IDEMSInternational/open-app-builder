@@ -6,13 +6,13 @@ import { TourComponent } from "./feature/tour/tour.component";
 const FeatureRoutes: Routes = [
   {
     path: "",
-    redirectTo: "module_list",
+    redirectTo: "home",
     pathMatch: "full",
   },
   {
     path: "home",
-    redirectTo: "module_list",
-    pathMatch: "full",
+    loadChildren: () =>
+      import("./feature/home/home.module").then((m) => m.HomePageModule),
   },
   {
     path: "module_list",
