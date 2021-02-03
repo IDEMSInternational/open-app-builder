@@ -240,7 +240,7 @@ export namespace FlowTypes {
     route?: string;
   }
 
-  export interface Home_page {
+  export interface Home_page extends FlowTypeBase {
     flow_type: "home_page";
     rows: Home_pageRow[];
   }
