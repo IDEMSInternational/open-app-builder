@@ -14,7 +14,8 @@ export class HomePage implements OnInit {
   constructor() {
     if (HOME_PAGE && HOME_PAGE.length > 0 && HOME_PAGE[0] && HOME_PAGE[0].rows) {
       this.buttons = HOME_PAGE[0].rows
-        .filter((row) => row.type === "button");
+        .filter((row) => row.type === "button")
+        .filter((row) => row.visible);
     }
     
   }
