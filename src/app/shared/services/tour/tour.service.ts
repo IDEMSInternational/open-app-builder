@@ -11,6 +11,8 @@ export class TourService {
 
   introJS = introJs();
 
+  waitForRoutingDelay = 1000;
+
   constructor(private router: Router) {
 
   }
@@ -28,7 +30,7 @@ export class TourService {
         hidePrev: true
       });
       this.introJS.onafterchange(() => {
-        setTimeout(() => this.introJS.refresh(), 500);
+        setTimeout(() => this.introJS.refresh(), this.waitForRoutingDelay);
       });
       this.introJS.onbeforechange((elem) => {
         this.introJS.currentStep();
@@ -40,7 +42,9 @@ export class TourService {
       });
       const startRoute = matchingTour.rows[0].route ? matchingTour.rows[0].route : "module_list";
       await this.router.navigateByUrl(startRoute);
-      this.introJS.start();
+      setTimeout(() => {
+        this.introJS.start();
+      }, this.waitForRoutingDelay);
     }
   }
 }
