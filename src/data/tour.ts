@@ -24,6 +24,20 @@
         "title": "Title 3",
         "message_text": "Even more text",
         "route": "module_list"
+      },
+      {
+        "type": "step",
+        "title": "Select a module",
+        "message_text": "Click the modules side panel to select a module",
+        "element": "#main-content > plh-module-list > div > div > plh-module-focus-skin > div > plh-slide-panel-right > section > h3",
+        "route": "module_list"
+      },
+      {
+        "type": "step",
+        "title": "Then click on a module section",
+        "message_text": "Click on one of the sections to continue the module",
+        "element": "module-list-flow-step-group > div:nth-child(1)",
+        "route": "module_page/mod_welcome_page"
       }
     ]
   }
