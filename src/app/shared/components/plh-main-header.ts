@@ -49,7 +49,7 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   handleRouteChange() {
     // As component sits outside main ion-router-outlet need to access via firstChild method
     // if wanting to access route params directly (not currently required)
-    const HOME_ROUTE = "/module_list";
+    const HOME_ROUTE = "/home";
     // track if home page, allowing case where hosted from subdirectory (e.g. our pr preview system)
     this.isHomePage = location.pathname.endsWith(HOME_ROUTE);
   }
