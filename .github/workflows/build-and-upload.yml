@@ -24,10 +24,10 @@ jobs:
       - name: Cache node modules
         uses: actions/cache@v1
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node2-${{ hashFiles('**/package-lock.json') }}
+          path: ~/node_modules
+          key: ${{ runner.os }}-node-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-node-yarn-
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -44,8 +44,8 @@ jobs:
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - name: npm install
-        run: npm install
+      - name: yarn install
+        run: yarn install
       - name: npm run build
         run: npm run build
       - id: upload-files
