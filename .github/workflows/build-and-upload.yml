@@ -44,8 +44,8 @@ jobs:
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - name: yarn install
-        run: yarn install
+      - name: npm ci
+        run: npm ci
       - name: npm run build
         run: npm run build
       - id: upload-files
