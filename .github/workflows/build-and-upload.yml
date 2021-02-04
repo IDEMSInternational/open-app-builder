@@ -25,7 +25,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node2-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Node ${{ matrix.node-version }}
@@ -44,8 +44,8 @@ jobs:
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - name: npm ci
-        run: npm ci
+      - name: npm install
+        run: npm install
       - name: npm run build
         run: npm run build
       - id: upload-files
