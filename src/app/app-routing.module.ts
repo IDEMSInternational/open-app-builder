@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
+import { ParentPointsPage } from "./feature/parent-points/parent-points.page";
 import { TourComponent } from "./feature/tour/tour.component";
 
 const FeatureRoutes: Routes = [
@@ -57,6 +58,10 @@ const FeatureRoutes: Routes = [
   {
     path: "tour/:tourName",
     component: TourComponent
+  },
+  {
+    path: "parent_points",
+    loadChildren: () => import("./feature/parent-points/parent-points.module").then((m) => m.ParentPointsPageModule)
   },
   /*****************************************************************************************
    * Legacy paths - these should be removed in the future once modules refactored

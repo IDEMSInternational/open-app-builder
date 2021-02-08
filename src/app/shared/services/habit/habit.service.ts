@@ -4,7 +4,7 @@ import { arrayToHashmap } from '../../utils';
 import { HABIT_LIST } from '../data/data.service';
 import { DbService } from '../db/db.service';
 import { ITaskEntry } from '../task/task-action.service';
-import { IHabit, IHabitActivityIdea } from './habit.model';
+import { IHabit, IHabitActivityIdea, IHabitOccurrence } from './habit.model';
 
 @Injectable({
   providedIn: 'root'
@@ -95,6 +95,34 @@ export class HabitService {
     } catch (ex) {
       console.log(`Could not delete habit activity idea with title ${idea} for flow name ${flowName}`);
       console.log(ex);
+    }
+  }
+
+  public markHabitOccurrence(habitId: string) {
+    try {
+      return this.dbService
+        .table<IHabitOccurrence>("habit_occurrence")
+        .add({
+          id: null,
+          created: new Date(),
+          habitId: habitId
+        });
+    } catch (ex) {
+      console.log("Could not mark habit occurrence")
+    }
+  }
+
+  public deleteLastHabitOccurrence(habitId: string) {
+    try {
+      return this.dbService
+        .table<IHabitOccurrence>("habit_occurrence")
+        .add({
+          id: null,
+          created: new Date(),
+          habitId: habitId
+        });
+    } catch (ex) {
+      console.log("Could not mark habit occurrence")
     }
   }
 }

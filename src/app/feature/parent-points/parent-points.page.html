@@ -1,0 +1,16 @@
+<ion-content>
+  <h1>Parent Points</h1>
+  <div class="habit-cards-container">
+    <div *ngFor="let habit of habits; index as i" class="habit-card" (click)="selectHabit(habit)"
+      [class.complete]="habit._count > 0">
+      <div class="habit-image-container">
+        <img class="habit-image" [src]="habit.main_image_asset" />
+      </div>
+      <div class="habit-title">{{ habit.title }}</div>
+      <div class="habit-star" [ngClass]="{'on-add': habit._animating_on_add}">
+        <ion-icon name="star" class="star-icon"></ion-icon>
+        <span class="habit-star-count">{{ habit._count }}</span>
+      </div>
+    </div>
+  </div>
+</ion-content>
