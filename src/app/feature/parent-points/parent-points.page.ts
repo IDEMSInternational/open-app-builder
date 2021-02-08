@@ -22,6 +22,14 @@ export class ParentPointsPage implements OnInit {
       habit._count = 0;
     }
     habit._count++;
+    habit._animating_on_add = true;
+    if (habit._animate_timeout_ref) {
+      clearTimeout(habit._animate_timeout_ref);
+    }
+    habit._animate_timeout_ref = setTimeout(() => {
+      habit._animating_on_add = false;
+    }, 1000);
+
   }
 
 }
