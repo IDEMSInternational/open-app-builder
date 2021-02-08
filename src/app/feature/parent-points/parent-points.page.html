@@ -7,7 +7,7 @@
         <img class="habit-image" [src]="habit.main_image_asset" />
       </div>
       <div class="habit-title">{{ habit.title }}</div>
-      <div class="habit-star">
+      <div class="habit-star" [ngClass]="{'on-add': habit._animating_on_add}">
         <ion-icon name="star" class="star-icon"></ion-icon>
         <span class="habit-star-count">{{ habit._count }}</span>
       </div>

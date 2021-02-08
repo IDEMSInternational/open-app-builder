@@ -127,6 +127,8 @@ export namespace FlowTypes {
 
     _complete?: boolean;
     _count?: number;
+    _animating_on_add?: boolean;
+    _animate_timeout_ref?: any;
   }
   export interface Task_listRow {
     id: string;
