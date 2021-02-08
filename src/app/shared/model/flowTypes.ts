@@ -126,6 +126,7 @@ export namespace FlowTypes {
     suggestion_flow_name?: string;
 
     _complete?: boolean;
+    _count?: number;
   }
   export interface Task_listRow {
     id: string;
