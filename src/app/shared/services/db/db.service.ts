@@ -28,7 +28,8 @@ const DB_TABLES = {
   user_meta: "key,value",
   /** habits */
   habits: "habitId",
-  habit_activity_ideas: "++id,flowName"
+  habit_activity_ideas: "++id,flowName",
+  habit_occurrence: "++id,habitId,created"
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**
