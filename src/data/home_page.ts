@@ -20,7 +20,7 @@
         "id": "parent_points",
         "text": "Parent Points",
         "visible": true,
-        "enabled": false,
+        "enabled": true,
         "route": "/parent_points",
         "left_image": "plh_images/home_page/home_page_parent_points.svg"
       },
