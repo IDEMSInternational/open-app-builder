@@ -3,7 +3,7 @@ import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
 // When running this parser assumes there is a 'type' column
-type IRowData = { type: string };
+type IRowData = { type: string, name?: string };
 
 /** Prefix for use with images in the app */
 const ASSETS_BASE = "assets/plh_assets";
@@ -68,6 +68,9 @@ export class DefaultParser implements AbstractParser {
       const group = this.extractGroup();
       const groupType = type.replace("begin_", "") + "_group";
       const parsedGroup = new DefaultParser().run({ ...flow, rows: group });
+      if (row.name) {
+        return { type: groupType, rows: parsedGroup.rows, name: row.name };
+      }
       return { type: groupType, rows: parsedGroup.rows };
     }
     // Can ignore as handled during subgroup extraction
@@ -97,8 +100,8 @@ export class DefaultParser implements AbstractParser {
     let nestedIfCount = 0;
     const endIndex = this.queue.slice(startIndex).findIndex((row) => {
       const { type } = row;
-      if (type.startsWith("begin_")) nestedIfCount++;
-      if (type.startsWith("end_")) nestedIfCount--;
+      if (type && type.startsWith("begin_")) nestedIfCount++;
+      if (type && type.startsWith("end_")) nestedIfCount--;
       return nestedIfCount === 0;
     });
     if (endIndex === -1) {
