@@ -74,6 +74,10 @@ const FeatureRoutes: Routes = [
   {
     path: "toolbox/topic/:topicId",
     loadChildren: () => import("./feature/tips/tips.module").then((m) => m.TipsModule),
+  },
+  {
+    path: "template",
+    loadChildren: () => import("./feature/template-testing/template-testing.module").then((m) => m.TemplateTestingPageModule)
   }
 ];
 
