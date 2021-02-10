@@ -20,6 +20,7 @@ export namespace FlowTypes {
     | "care_package_list"
     | "tour"
     | "habit_ideas"
+    | "template"
     | "home_page";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
@@ -256,6 +257,37 @@ export namespace FlowTypes {
     enabled?: boolean;
     route?: string;
     left_image?: string;
+  }
+
+  export interface Template extends FlowTypeBase {
+    flow_type: "template";
+    rows: TemplateRow[];
+    _local_variables?: { [name: string]: string };
+  }
+
+  export type TemplateRowType = 
+    "image"
+    | "title"
+    | "text"
+    | "animated_section_group"
+    | "display_group_group"
+    | "set_variable"
+    | "button"
+    | "image"
+    | "audio"
+    | "video"
+    | "template_group";
+
+  export interface TemplateRow {
+    type?: TemplateRowType;
+    name?: string;
+    value?: any;
+    action_list?: string[];
+    parameter_list?: string[];
+    comments?: string;
+    hidden?: boolean;
+    rows?: TemplateRow[];
+    __EMPTY?: any;
   }
 
 }
