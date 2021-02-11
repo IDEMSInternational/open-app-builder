@@ -3,7 +3,7 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
 
 @Component({
   selector: "plh-tmpl-video",
-  template: `<video [src]="row.value">`,
+  template: `<video [src]="row.value" controls>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })
 export class TmplVideoComponent implements OnInit {

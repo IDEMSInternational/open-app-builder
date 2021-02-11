@@ -1,4 +1,5 @@
 /* tslint:disable:class-name */
+import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { RapidProFlowExport } from "src/app/feature/chat/models";
 export { RapidProFlowExport } from "src/app/feature/chat/models";
 import { TipRow } from "src/app/feature/tips/models/tips.model";
@@ -262,7 +263,7 @@ export namespace FlowTypes {
   export interface Template extends FlowTypeBase {
     flow_type: "template";
     rows: TemplateRow[];
-    _local_variables?: { [name: string]: string };
+    $local_variables?: BehaviorSubject<{ [name: string]: string }>;
   }
 
   export type TemplateRowType = 
@@ -285,7 +286,7 @@ export namespace FlowTypes {
     action_list?: string[];
     parameter_list?: string[];
     comments?: string;
-    hidden?: boolean;
+    hidden?: boolean | string;
     rows?: TemplateRow[];
     __EMPTY?: any;
   }

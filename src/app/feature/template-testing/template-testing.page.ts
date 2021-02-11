@@ -13,18 +13,19 @@ export class TemplateTestingPage implements OnInit {
 
   testTemplate: FlowTypes.Template;
 
-  constructor(route: ActivatedRoute) {
-    route.params.subscribe((params) => {
-      const matchingTemplate = TEMPLATE.find((t) => t.flow_name === params.templateName);
-      if (matchingTemplate) {
-        this.testTemplate = matchingTemplate;
-      } else {
-        this.testTemplate = TEMPLATE[1];
-      }
-    })
+  constructor(private route: ActivatedRoute) {
+    
   }
 
   ngOnInit() {
+    const matchingTemplate = TEMPLATE.find((t) => t.flow_name === this.route.snapshot.params.templateName);
+    if (matchingTemplate) {
+      this.testTemplate = matchingTemplate;
+      console.log("Matched template", this.testTemplate);
+    } else {
+      this.testTemplate = TEMPLATE[1];
+      console.log("Default template", this.testTemplate);
+    }
   }
 
 }

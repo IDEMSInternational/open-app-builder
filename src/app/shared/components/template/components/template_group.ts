@@ -5,8 +5,6 @@ import { TEMPLATE } from "src/app/shared/services/data/data.service";
 @Component({
   selector: "plh-tmpl-template-group",
   template: `<div class="template">
-    <p>Template group {{stringify(row)}}</p>
-    <p>Populated rows {{ populatedRows?.length }} </p>
     <plh-tmpl-comp-host *ngFor="let innerRow of populatedRows" [row]="innerRow" [template]="template"></plh-tmpl-comp-host>
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"]

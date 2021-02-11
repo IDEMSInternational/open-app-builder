@@ -3,5 +3,5 @@
 </div>
 <h4>Local Variables</h4>
 <ul>
-  <li *ngFor="let key of keys(template._local_variables)">{{key}}: {{template._local_variables[key]}}</li>
+  <li *ngFor="let key of keys(template.$local_variables.getValue())">{{key}}: {{template.$local_variables.getValue()[key]}}</li>
 </ul>
