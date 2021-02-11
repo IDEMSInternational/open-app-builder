@@ -68,10 +68,7 @@ export class DefaultParser implements AbstractParser {
       const group = this.extractGroup();
       const groupType = type.replace("begin_", "") + "_group";
       const parsedGroup = new DefaultParser().run({ ...flow, rows: group });
-      if (row.name) {
-        return { type: groupType, rows: parsedGroup.rows, name: row.name };
-      }
-      return { type: groupType, rows: parsedGroup.rows };
+      return { ...row, type: groupType, rows: parsedGroup.rows };
     }
     // Can ignore as handled during subgroup extraction
     if (type.startsWith("end_")) {

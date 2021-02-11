@@ -8,9 +8,10 @@
     "rows": [
       {
         "type": "step",
-        "title": "Title 1",
-        "message_text": "This is the text below the title",
-        "route": "module_list"
+        "title": "Weekly Workshops",
+        "message_text": "Click this button to access the weekly workshops",
+        "element": "#main-content > plh-home > ion-content > div > div:nth-child(1)",
+        "route": "home"
       },
       {
         "type": "step",

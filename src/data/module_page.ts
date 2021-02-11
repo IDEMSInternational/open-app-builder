@@ -18,6 +18,7 @@
         "text": "Self Care"
       },
       {
+        "row_id": 3,
         "type": "step_group",
         "rows": [
           {
@@ -65,6 +66,7 @@
         "text": "One-on-one Time"
       },
       {
+        "row_id": 3,
         "type": "step_group",
         "rows": [
           {
@@ -124,6 +126,7 @@
         "text": "Praise & Positive Reinforcement"
       },
       {
+        "row_id": 3,
         "type": "step_group",
         "rows": [
           {
@@ -183,6 +186,7 @@
         "text": "Positive Instructions"
       },
       {
+        "row_id": 3,
         "type": "step_group",
         "rows": [
           {
@@ -242,6 +246,7 @@
         "text": "Managing Anger & Stress"
       },
       {
+        "row_id": 3,
         "type": "step_group",
         "rows": [
           {
