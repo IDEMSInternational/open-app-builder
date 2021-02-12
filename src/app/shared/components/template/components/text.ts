@@ -10,6 +10,7 @@ export class TmplTextComponent implements OnInit {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
+  @Input() localVariables: { [name: string]: string};
 
   constructor() {}
 

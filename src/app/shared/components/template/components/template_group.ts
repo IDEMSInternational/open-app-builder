@@ -9,7 +9,7 @@ import { TEMPLATE } from "src/app/shared/services/data/data.service";
     <plh-tmpl-comp-host *ngFor="let innerRow of populatedRows"
       [row]="innerRow"
       [template]="template"
-      [$localVariables]="$localVariables"
+      [localVariables]="localVariables"
     ></plh-tmpl-comp-host>
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"]
@@ -20,7 +20,7 @@ export class TmplTemplateGroupComponent {
     this.populateRowsFromParent(value);
   }
   @Input() template: FlowTypes.Template;
-  @Input() $localVariables: BehaviorSubject<{ [name: string]: string }>;
+  @Input() localVariables: { [name: string]: string };
   populatedRows: FlowTypes.TemplateRow[];
 
   constructor() {
@@ -34,21 +34,27 @@ export class TmplTemplateGroupComponent {
 
     const superTemplate = TEMPLATE.find((t) => t.flow_name === ourRow.name);
     if (superTemplate) {
-      const overrideRowMap: Record<string, FlowTypes.TemplateRow> = {};
+      const overrideValueMap: Record<string, string> = {};
       for (let row of ourRow.rows) {
-        overrideRowMap[row.name] = row;
+        overrideValueMap[row.name] = row.value;
       }
-      this.populatedRows = superTemplate.rows.map((row) => {
-        if (overrideRowMap[row.name]) {
-          for (let prop of Object.keys(overrideRowMap[row.name])) {
-            if (prop !== "type") {
-              row[prop] = overrideRowMap[row.name][prop];
-            }
-          }
-        }
-        return row;
+      const newRows = [ ...superTemplate.rows ];
+      newRows.forEach((row) => {
+        this.overrideRow(row, overrideValueMap);
       });
+      this.populatedRows = newRows;
       console.log("Populated rows are ", this.populatedRows);
+    }
+  }
+
+  private overrideRow(row: FlowTypes.TemplateRow, overrideValueMap: Record<string, string>) {
+    if (overrideValueMap[row.name]) {
+      row.value = overrideValueMap[row.name];
+    }
+    if (row.rows) {
+      for (let childRow of row.rows) {
+        this.overrideRow(childRow, overrideValueMap);
+      }
     }
   }
 }

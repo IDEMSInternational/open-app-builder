@@ -33,6 +33,12 @@ const TEMPLATE_COMPONENTS = [
 @NgModule({
     imports: [CommonModule, FormsModule, IonicModule],
     exports: [...TEMPLATE_COMPONENTS, TemplateComponent, TemplateComponentHostDirective],
-    declarations: [...TEMPLATE_COMPONENTS, TmplCompHostDirective, TmplCompHost, TemplateComponent, TemplateComponentHostDirective],
+    declarations: [
+        ...TEMPLATE_COMPONENTS,
+        TmplCompHostDirective,
+        TmplCompHost,
+        TemplateComponent,
+        TemplateComponentHostDirective
+    ],
 })
 export class TemplateComponentsModule { }

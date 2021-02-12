@@ -10,12 +10,12 @@ import { FlowTypes } from "scripts/types";
             *ngFor="let childRow of row.rows"
             [row]="childRow"
             [template]="template"
-            [$localVariables]="$localVariables"
+            [localVariables]="localVariables"
         ></plh-tmpl-comp-host>
     </div>`
 })
 export class AnimatedSectionGroupComponent {
     @Input() row: FlowTypes.TemplateRow;
     @Input() template: FlowTypes.Template;
-    @Input() $localVariables: BehaviorSubject<{ [name: string]: string }>;
+    @Input() localVariables: { [name: string]: string };
 }

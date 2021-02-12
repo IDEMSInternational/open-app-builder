@@ -42,7 +42,8 @@
           },
           {
             "type": "text",
-            "name": "intro_text"
+            "name": "intro_text",
+            "value": "This is the intro I guess? The value of a local varaible @local.hide_intro"
           },
           {
             "type": "display_group_group",
@@ -110,12 +111,6 @@
     "flow_name": "template_together_welcome",
     "status": "released",
     "rows": [
-      {
-        "type": "set_variable",
-        "name": "group_name",
-        "value": "@fields.group_name",
-        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
-      },
       {
         "type": "template_group",
         "name": "template_watch_together",
