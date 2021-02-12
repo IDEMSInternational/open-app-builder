@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
 
 @Component({
@@ -9,4 +10,5 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
 export class TmplAudioComponent {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
+  @Input() $localVariables: BehaviorSubject<{ [name: string]: string }>;
 }

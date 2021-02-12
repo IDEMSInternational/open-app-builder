@@ -11,6 +11,7 @@ import { TEMPLATE } from '../../services/data/data.service';
 export class TemplateComponent implements OnChanges {
 
   @Input() template: FlowTypes.Template;
+  $localVariables: BehaviorSubject<{ [name: string]: string }> = new BehaviorSubject({});
 
   constructor() { }
 
@@ -21,9 +22,6 @@ export class TemplateComponent implements OnChanges {
   }
 
   private onTemplateChange() {
-    if (!this.template.$local_variables) {
-      this.template.$local_variables = new BehaviorSubject({});
-    }
     console.log("Template input is ", this.template);
   }
 

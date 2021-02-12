@@ -1,7 +1,7 @@
 <div *ngFor="let row of template?.rows" class="row">
-  <plh-tmpl-comp-host [row]="row" [template]="template"></plh-tmpl-comp-host>
+  <plh-tmpl-comp-host [row]="row" [template]="template" [$localVariables]="$localVariables"></plh-tmpl-comp-host>
 </div>
 <h4>Local Variables</h4>
 <ul>
-  <li *ngFor="let key of keys(template.$local_variables.getValue())">{{key}}: {{template.$local_variables.getValue()[key]}}</li>
+  <li *ngFor="let key of keys($localVariables.getValue())">{{key}}: {{$localVariables.getValue()[key]}}</li>
 </ul>
