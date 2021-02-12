@@ -263,6 +263,7 @@ export namespace FlowTypes {
   export interface Template extends FlowTypeBase {
     flow_type: "template";
     rows: TemplateRow[];
+    _setLocalVariable?: (name: string, value: string) => any;
   }
 
   export type TemplateRowType = 

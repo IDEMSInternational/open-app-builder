@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'scripts/node_modules/rxjs';
 import { FlowTypes } from '../../model';
 import { TEMPLATE } from '../../services/data/data.service';
@@ -8,22 +8,18 @@ import { TEMPLATE } from '../../services/data/data.service';
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.scss'],
 })
-export class TemplateComponent implements OnChanges {
+export class TemplateComponent {
 
-  @Input() template: FlowTypes.Template;
-  $localVariables: BehaviorSubject<{ [name: string]: string }> = new BehaviorSubject({});
+  _template: FlowTypes.Template;
+  @Input() set template(value: FlowTypes.Template) {
+    value._setLocalVariable = (name, value) => {
+      this.localVariables = { ...this.localVariables, [name]: value };
+    };
+    this._template = value;
+  };
+  localVariables: { [name: string]: string } = {};
 
-  constructor() { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.template) {
-      this.onTemplateChange();
-    }
-  }
-
-  private onTemplateChange() {
-    console.log("Template input is ", this.template);
-  }
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   public keys(obj: any) {
     if (obj) {

@@ -1,4 +1,4 @@
-import { Directive, OnChanges, ViewContainerRef } from "@angular/core";
+import { ComponentRef, Directive, OnChanges, SimpleChanges, ViewContainerRef } from "@angular/core";
 import { Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
@@ -42,40 +42,50 @@ export class TmplCompHostDirective {
   `,
   styleUrls: ['./tmpl-components-common.scss'],
 })
-export class TmplCompHost implements OnInit {
+export class TmplCompHost implements OnInit, OnChanges {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
-  @Input() $localVariables: BehaviorSubject<{ [name: string]: string }>;
-  @ViewChild(TmplCompHostDirective, { static: true }) flowComponentHost: TmplCompHostDirective;
+  @Input() localVariables: { [name: string]: string };
+  @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
   hidden = false;
 
+  componentRef: ComponentRef<any>;
+
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private contactFieldService: ContactFieldService) { }
+  
+  stringify(obj) {
+    return JSON.stringify(obj); 
+  }
+
   ngOnInit() {
     if (this.row && TEMPLATE_COMPONENT_MAPPING[this.row.type]) {
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
         TEMPLATE_COMPONENT_MAPPING[this.row.type]
       );
-      const viewContainerRef = this.flowComponentHost.viewContainerRef;
+      const viewContainerRef = this.tmplComponentHost.viewContainerRef;
       viewContainerRef.clear();
-      const componentRef = viewContainerRef.createComponent<any>(componentFactory);
-      componentRef.instance.row = this.row;
-      componentRef.instance.template = this.template;
-      componentRef.instance.$localVariables = this.$localVariables;
-      this.$localVariables.subscribe(() => {
-        if (!this.row.hidden) {
-          this.hidden = false;
-        } else {
-          this.evaluateBooleanExpression(this.row.hidden).then((hidden) => {
-            this.hidden = hidden;
-          });
-        }
-        
-      });
+      this.componentRef = viewContainerRef.createComponent<any>(componentFactory);
+      this.componentRef.instance.row = this.row;
+      this.componentRef.instance.template = this.template;
+      this.componentRef.instance.localVariables = this.localVariables;
+    }
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.componentRef) {
+      this.componentRef.instance.row = this.row;
+      this.componentRef.instance.template = this.template;
+      this.componentRef.instance.localVariables = this.localVariables;
+    }
+    if (typeof this.row.hidden === "string" && this.row.hidden.indexOf("@local") > -1) {
+      this.hidden = this.evaluateBooleanExpression(this.row.hidden);
+    } else {
+      this.hidden = this.row.hidden ? true : false;
     }
   }
 
-  async evaluateBooleanExpression(expression: string | boolean) {
+  evaluateBooleanExpression(expression: string | boolean) {
     if (typeof expression === "boolean") {
       return expression;
     }
@@ -97,7 +107,7 @@ export class TmplCompHost implements OnInit {
       let subfieldName = regexResult[3] ? regexResult[3].substring(1) : null;
       switch (variableType) {
         case "local": {
-          const vars = this.$localVariables.getValue();
+          const vars = this.localVariables;
           output = output.replace(fullMatch, vars[fieldName]);
         }
         case "fields": {
