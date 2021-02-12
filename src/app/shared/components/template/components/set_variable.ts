@@ -10,16 +10,14 @@ export class TmplSetVariableComponent implements OnInit {
 
     @Input() row: FlowTypes.TemplateRow;
     @Input() template: FlowTypes.Template;
+    @Input() $localVariables: BehaviorSubject<{ [name: string]: string }>;
 
     ngOnInit() {
         console.log("Ng on init set variable", this.row, this.template);
         if (this.row && this.template) {
-            if (!this.template.$local_variables) {
-                this.template.$local_variables = new BehaviorSubject({});
-            }
-            const vars = this.template.$local_variables.getValue();
+            const vars = this.$localVariables.getValue();
             vars[this.row.name] = this.row.value;
-            this.template.$local_variables.next(vars);
+            this.$localVariables.next(vars);
         }
     }
 }

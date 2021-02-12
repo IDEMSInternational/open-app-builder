@@ -10,6 +10,7 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
 export class TmplButtonComponent {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
+  @Input() $localVariables: BehaviorSubject<{ [name: string]: string }>;
 
   onClick() {
     if (this.row && this.row.action_list) {
@@ -24,11 +25,8 @@ export class TmplButtonComponent {
   }
 
   private setValue(name: string, value: string) {
-    if (!this.template.$local_variables) {
-      this.template.$local_variables = new BehaviorSubject({});
-  }
-  const vars = this.template.$local_variables.getValue();
-  vars[name] = value;
-  this.template.$local_variables.next(vars);
+    const vars = this.$localVariables.getValue();
+    vars[name] = value;
+    this.$localVariables.next(vars);
   }
 }

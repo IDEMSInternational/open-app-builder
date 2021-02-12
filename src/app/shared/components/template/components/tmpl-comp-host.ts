@@ -1,5 +1,6 @@
 import { Directive, OnChanges, ViewContainerRef } from "@angular/core";
 import { Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild } from '@angular/core';
+import { BehaviorSubject } from "rxjs";
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { AnimatedSectionGroupComponent } from "./animated_section_group";
@@ -45,6 +46,7 @@ export class TmplCompHost implements OnInit {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
+  @Input() $localVariables: BehaviorSubject<{ [name: string]: string }>;
   @ViewChild(TmplCompHostDirective, { static: true }) flowComponentHost: TmplCompHostDirective;
   hidden = false;
 
@@ -59,15 +61,18 @@ export class TmplCompHost implements OnInit {
       const componentRef = viewContainerRef.createComponent<any>(componentFactory);
       componentRef.instance.row = this.row;
       componentRef.instance.template = this.template;
-    }
-    this.evaluateBooleanExpression(this.row.hidden).then((hidden) => {
-      this.hidden = hidden;
-    });
-    this.template.$local_variables.subscribe(() => {
-      this.evaluateBooleanExpression(this.row.hidden).then((hidden) => {
-        this.hidden = hidden;
+      componentRef.instance.$localVariables = this.$localVariables;
+      this.$localVariables.subscribe(() => {
+        if (!this.row.hidden) {
+          this.hidden = false;
+        } else {
+          this.evaluateBooleanExpression(this.row.hidden).then((hidden) => {
+            this.hidden = hidden;
+          });
+        }
+        
       });
-    });
+    }
   }
 
   async evaluateBooleanExpression(expression: string | boolean) {
@@ -92,7 +97,7 @@ export class TmplCompHost implements OnInit {
       let subfieldName = regexResult[3] ? regexResult[3].substring(1) : null;
       switch (variableType) {
         case "local": {
-          const vars = this.template.$local_variables.getValue();
+          const vars = this.$localVariables.getValue();
           output = output.replace(fullMatch, vars[fieldName]);
         }
         case "fields": {

@@ -1,11 +1,16 @@
 import { Component, Input, OnChanges, OnInit } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
 
 @Component({
   selector: "plh-tmpl-template-group",
   template: `<div class="template">
-    <plh-tmpl-comp-host *ngFor="let innerRow of populatedRows" [row]="innerRow" [template]="template"></plh-tmpl-comp-host>
+    <plh-tmpl-comp-host *ngFor="let innerRow of populatedRows"
+      [row]="innerRow"
+      [template]="template"
+      [$localVariables]="$localVariables"
+    ></plh-tmpl-comp-host>
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })
@@ -15,6 +20,7 @@ export class TmplTemplateGroupComponent {
     this.populateRowsFromParent(value);
   }
   @Input() template: FlowTypes.Template;
+  @Input() $localVariables: BehaviorSubject<{ [name: string]: string }>;
   populatedRows: FlowTypes.TemplateRow[];
 
   constructor() {
@@ -25,7 +31,7 @@ export class TmplTemplateGroupComponent {
   }
 
   private populateRowsFromParent(ourRow: FlowTypes.TemplateRow) {
-    
+
     const superTemplate = TEMPLATE.find((t) => t.flow_name === ourRow.name);
     if (superTemplate) {
       const overrideRowMap: Record<string, FlowTypes.TemplateRow> = {};
