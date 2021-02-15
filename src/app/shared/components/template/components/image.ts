@@ -3,7 +3,11 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
 
 @Component({
   selector: "plh-tmpl-image",
-  template: `<img [src]="row.value">`,
+  template: `
+    <div class="tmpl-image-container">
+      <img [src]="row.value">
+    </div>
+  `,
   styleUrls: ["./tmpl-components-common.scss"]
 })
 export class TmplImageComponent {
