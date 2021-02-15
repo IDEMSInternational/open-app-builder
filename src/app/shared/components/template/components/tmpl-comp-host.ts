@@ -78,19 +78,40 @@ export class TmplCompHost implements OnInit, OnChanges {
       this.componentRef.instance.template = this.template;
       this.componentRef.instance.localVariables = this.localVariables;
     }
-    if (typeof this.row.hidden === "string" && this.row.hidden.indexOf("@local") > -1) {
+    if (typeof this.row.hidden === "string") {
       this.hidden = this.evaluateBooleanExpression(this.row.hidden);
     } else {
-      this.hidden = this.row.hidden ? true : false;
+      this.hidden = this.row.hidden;
     }
   }
 
-  evaluateBooleanExpression(expression: string | boolean) {
+  evaluateBooleanExpression(expression: string | boolean): boolean {
     if (typeof expression === "boolean") {
       return expression;
     }
-    const parsed = this.parseMessageTemplate(expression);
-    return parsed.trim().toLowerCase() === "true";
+    const result = this.evalJSExpression(expression);
+    if (result == true || result == "true") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Create a dynamic function to parse the calculation expression without
+   * the nees for `eval()` operator
+   */
+  evalJSExpression(str: string) {
+    try {
+      const args = "__local, str";
+      const body = `'use strict'; return (${str.replace(/@local\./g, "__local.")})`;
+      const result = new Function(args, body).apply(null, [this.localVariables, str]);
+      console.log(body, "evals to ", result);
+      return result;
+    } catch (ex) {
+      console.log("Error ? ", ex);
+      return str;
+    }
   }
 
   parseMessageTemplate = (template: string) => {
