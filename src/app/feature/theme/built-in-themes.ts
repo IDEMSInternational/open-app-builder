@@ -61,7 +61,7 @@ export const BASE_THEME: AppTheme = {
         "background": {
             "id": "background",
             "name": "Background",
-            "lightValue": "#F3D668",
+            "lightValue": "#E3F4FF",
             "darkValue": "#222",
         },
         "itemBackground": {
