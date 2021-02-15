@@ -41,11 +41,13 @@
               {
                 "type": "title",
                 "name": "main_title",
+                "value": "Welcome family group! ",
                 "comments": "Blank values will assume an empty string"
               },
               {
                 "type": "text",
-                "name": "intro_text"
+                "name": "intro_text",
+                "value": "This week we will be exploring Positive Instructions. \n\nBefore we start the session, select a person with a smartphone to be the informal facilitator."
               },
               {
                 "type": "display_group",
@@ -55,7 +57,7 @@
                   {
                     "type": "button",
                     "name": "button_1",
-                    "value": "Next",
+                    "value": "The role of the facilitator would be:",
                     "action_list": [
                       "set_value | hide_intro | true",
                       "set_value | hide_activity | false"
@@ -65,7 +67,7 @@
                   {
                     "type": "button",
                     "name": "button_2",
-                    "value": "Skip",
+                    "value": "Play audio off their phone",
                     "parameter_list": [
                       "color:secondary",
                       ""
