@@ -36,7 +36,7 @@
               {
                 "type": "image",
                 "name": "main_image",
-                "value": "assets/plh_assets/plh_images/home_page/home_page_workshops.svg"
+                "value": "plh_images/home_page/home_page_workshops.svg"
               },
               {
                 "type": "title",
