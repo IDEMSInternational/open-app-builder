@@ -4,7 +4,6 @@ import { FlowTypes } from "src/app/shared/model/flowTypes";
 @Component({
     selector: "plh-tmpl-animated-section-group",
     template: `<div class="animated-section-group">
-        <h2>Animated Section Group</h2>
         <plh-tmpl-comp-host
             *ngFor="let childRow of row.rows"
             [row]="childRow"
