@@ -16,6 +16,7 @@ import { TmplImageComponent } from "./components/image";
 import { TmplVideoComponent } from "./components/video";
 import { TmplTemplateGroupComponent } from "./components/template_group";
 import { TmplSetVariableComponent } from "./components/set_variable";
+import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
 
 const TEMPLATE_COMPONENTS = [
     TmplTextComponent,
@@ -38,7 +39,8 @@ const TEMPLATE_COMPONENTS = [
         TmplCompHostDirective,
         TmplCompHost,
         TemplateComponent,
-        TemplateComponentHostDirective
+        TemplateComponentHostDirective,
+        LocalVarsReplacePipe
     ],
 })
 export class TemplateComponentsModule { }
