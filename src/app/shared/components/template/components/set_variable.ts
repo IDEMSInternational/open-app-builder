@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { FlowTypes } from "scripts/types";
 
 @Component({

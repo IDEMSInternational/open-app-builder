@@ -25,80 +25,85 @@
       },
       {
         "type": "animated_section_group",
-        "name": "welcome_section",
         "value": "fade_in_out",
-        "hidden": "@local.hide_intro",
-        "comments": "animated section value represents the name of predefined animations. Hidden criteria will be evaluated as TRUE or FALSE.",
         "rows": [
           {
-            "type": "image",
-            "name": "main_image",
-            "value": "assets/plh_assets/plh_images/home_page/home_page_workshops.svg"
-          },
-          {
-            "type": "title",
-            "name": "main_title",
-            "comments": "Blank values will assume an empty string"
-          },
-          {
-            "type": "text",
-            "name": "intro_text"
-          },
-          {
-            "type": "display_group_group",
-            "name": "nav_buttons",
-            "comments": "Grouping content will display on same line",
+            "type": "animated_section",
+            "name": "welcome_section",
+            "hidden": "@local.hide_intro",
+            "comments": "animated section value represents the name of predefined animations. Hidden criteria will be evaluated as TRUE or FALSE.",
             "rows": [
               {
-                "type": "button",
-                "name": "button_1",
-                "value": "Next",
-                "action_list": [
-                  "set_value | hide_intro | true",
-                  "set_value | hide_activity | false"
-                ],
-                "comments": "specific actions can be added to default click handlers where required. May require rethinking to know when to use triggered values vs initialized/formulae"
+                "type": "image",
+                "name": "main_image",
+                "value": "assets/plh_assets/plh_images/home_page/home_page_workshops.svg"
+              },
+              {
+                "type": "title",
+                "name": "main_title",
+                "comments": "Blank values will assume an empty string"
+              },
+              {
+                "type": "text",
+                "name": "intro_text"
+              },
+              {
+                "type": "display_group",
+                "name": "nav_buttons",
+                "comments": "Grouping content will display on same line",
+                "rows": [
+                  {
+                    "type": "button",
+                    "name": "button_1",
+                    "value": "Next",
+                    "action_list": [
+                      "set_value | hide_intro | true",
+                      "set_value | hide_activity | false"
+                    ],
+                    "comments": "specific actions can be added to default click handlers where required. May require rethinking to know when to use triggered values vs initialized/formulae"
+                  },
+                  {
+                    "type": "button",
+                    "name": "button_2",
+                    "value": "Skip",
+                    "parameter_list": [
+                      "color:secondary",
+                      ""
+                    ],
+                    "comments": "additional parameters can be used where default functionality needs to be extended. (use sparingly)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "animated_section",
+            "name": "welcome_activity",
+            "hidden": "@local.hide_activity",
+            "rows": [
+              {
+                "type": "title",
+                "name": "media_title"
+              },
+              {
+                "type": "video",
+                "name": "media_src",
+                "value": "https://www.w3schools.com/html/mov_bbb.mp4"
               },
               {
                 "type": "button",
-                "name": "button_2",
-                "value": "Skip",
-                "parameter_list": [
-                  "color:secondary",
-                  ""
-                ],
-                "comments": "additional parameters can be used where default functionality needs to be extended. (use sparingly)"
+                "name": "button_3",
+                "value": "Continue"
+              },
+              {
+                "type": "button",
+                "name": "button_4",
+                "value": "Back",
+                "action_list": [
+                  "set_value | hide_intro | false",
+                  "set_value | hide_activity | true"
+                ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "animated_section_group",
-        "name": "welcome_activity",
-        "hidden": "@local.hide_activity",
-        "rows": [
-          {
-            "type": "title",
-            "name": "media_title"
-          },
-          {
-            "type": "video",
-            "name": "media_src",
-            "value": "https://www.w3schools.com/html/mov_bbb.mp4"
-          },
-          {
-            "type": "button",
-            "name": "button_3",
-            "value": "Continue"
-          },
-          {
-            "type": "button",
-            "name": "button_4",
-            "value": "Back",
-            "action_list": [
-              "set_value | hide_intro | false",
-              "set_value | hide_activity | true"
             ]
           }
         ]
@@ -113,7 +118,7 @@
       {
         "type": "set_variable",
         "name": "group_name",
-        "value": "Group name??",
+        "value": "@fields.group_name",
         "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
       },
       {

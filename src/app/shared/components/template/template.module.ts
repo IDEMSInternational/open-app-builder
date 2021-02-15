@@ -17,6 +17,7 @@ import { TmplVideoComponent } from "./components/video";
 import { TmplTemplateGroupComponent } from "./components/template_group";
 import { TmplSetVariableComponent } from "./components/set_variable";
 import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
+import { AnimatedSectionComponent } from "./components/animated_section";
 
 const TEMPLATE_COMPONENTS = [
     TmplTextComponent,
@@ -28,6 +29,7 @@ const TEMPLATE_COMPONENTS = [
     TmplImageComponent,
     TmplVideoComponent,
     TmplTemplateGroupComponent,
+    AnimatedSectionComponent,
     TmplSetVariableComponent
 ];
 
@@ -35,9 +37,9 @@ const TEMPLATE_COMPONENTS = [
     imports: [CommonModule, FormsModule, IonicModule],
     exports: [...TEMPLATE_COMPONENTS, TemplateComponent, TemplateComponentHostDirective],
     declarations: [
-        ...TEMPLATE_COMPONENTS,
         TmplCompHostDirective,
         TmplCompHost,
+        ...TEMPLATE_COMPONENTS,
         TemplateComponent,
         TemplateComponentHostDirective,
         LocalVarsReplacePipe

@@ -1,6 +1,4 @@
-import { ComponentRef, Directive, OnChanges, SimpleChanges, ViewContainerRef } from "@angular/core";
-import { Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
+import { ComponentRef, Directive, OnChanges, SimpleChanges, ViewContainerRef, Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild } from "@angular/core";
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { AnimatedSectionGroupComponent } from "./animated_section_group";
@@ -12,12 +10,14 @@ import { TmplSetVariableComponent } from "./set_variable";
 import { TmplTemplateGroupComponent } from "./template_group";
 import { TmplTextComponent } from "./text";
 import { TmplVideoComponent } from "./video";
+import { AnimatedSectionComponent } from "./animated_section";
 
 export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<any>> = {
   text: TmplTextComponent,
   title: TmplTextComponent,
   animated_section_group: AnimatedSectionGroupComponent,
-  display_group_group: TmplDisplayGroupComponent,
+  animated_section: AnimatedSectionComponent,
+  display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   image: TmplImageComponent,
@@ -53,9 +53,9 @@ export class TmplCompHost implements OnInit, OnChanges {
   componentRef: ComponentRef<any>;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private contactFieldService: ContactFieldService) { }
-  
+
   stringify(obj) {
-    return JSON.stringify(obj); 
+    return JSON.stringify(obj);
   }
 
   ngOnInit() {
@@ -71,7 +71,7 @@ export class TmplCompHost implements OnInit, OnChanges {
       this.componentRef.instance.localVariables = this.localVariables;
     }
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (this.componentRef) {
       this.componentRef.instance.row = this.row;

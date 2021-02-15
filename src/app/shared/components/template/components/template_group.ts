@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnInit } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
 
