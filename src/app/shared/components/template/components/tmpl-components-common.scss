@@ -5,6 +5,15 @@
 .display-group {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.plh-tmpl-comp {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
 }
 
 .tmpl-image-container {
@@ -12,4 +21,23 @@
     display: flex;
     justify-content: center;
     margin: 10px;
+}
+
+.tmpl-video-container {
+    width: calc(100% - 20px);
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.template {
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    width: 100%;
+    text-align: center;
 }
