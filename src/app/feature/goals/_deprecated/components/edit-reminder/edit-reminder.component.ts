@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { AlertController, ModalController } from "@ionic/angular";
 import { parseISO } from "date-fns";
-import { IReminder, REMINDER_TIMES, REMINDER_TYPES, REPEAT_DURATIONS } from 'src/app/shared/services/reminders/reminders.model';
+import { IReminder, REMINDER_TIMES, REMINDER_TYPES, REPEAT_DURATIONS } from 'src/app/feature/reminders/reminders.model';
 
 @Component({
   selector: "plh-edit-reminder",
