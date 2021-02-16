@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "scripts/types";
-import { ITemplateComponent } from "./tmpl-comp-host";
+import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
     selector: "plh-tmpl-animated-section-group",

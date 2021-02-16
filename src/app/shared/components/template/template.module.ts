@@ -2,10 +2,10 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { TemplateComponent } from "./template.component";
+import { TemplateContainerComponent } from "./template-container.component";
 import { TemplateComponentHostDirective } from "./template.directive";
 
-import { TmplCompHost, TmplCompHostDirective } from "./components/tmpl-comp-host";
+import { TmplComponent, TmplCompHostDirective } from "./components/tmpl.component";
 import { TmplTextComponent } from "./components/text";
 import { AnimatedSectionGroupComponent } from "./components/animated_section_group";
 import { TmplTitleComponent } from "./components/title";
@@ -35,12 +35,12 @@ const TEMPLATE_COMPONENTS = [
 
 @NgModule({
     imports: [CommonModule, FormsModule, IonicModule],
-    exports: [...TEMPLATE_COMPONENTS, TemplateComponent, TemplateComponentHostDirective],
+    exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent, TemplateComponentHostDirective],
     declarations: [
         TmplCompHostDirective,
-        TmplCompHost,
+        TmplComponent,
         ...TEMPLATE_COMPONENTS,
-        TemplateComponent,
+        TemplateContainerComponent,
         TemplateComponentHostDirective,
         LocalVarsReplacePipe
     ],

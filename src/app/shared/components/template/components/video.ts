@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
-import { ITemplateComponent } from "./tmpl-comp-host";
+import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
   selector: "plh-tmpl-video",

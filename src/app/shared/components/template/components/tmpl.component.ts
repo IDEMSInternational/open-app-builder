@@ -40,7 +40,7 @@ export class TmplCompHostDirective {
 }
 
 @Component({
-  selector: 'plh-tmpl-comp-host',
+  selector: 'plh-tmpl-comp',
   template: `
     <div class="plh-tmpl-comp" [hidden]="hidden">
       <ng-template plhTemplateComponentHost></ng-template>
@@ -48,7 +48,7 @@ export class TmplCompHostDirective {
   `,
   styleUrls: ['./tmpl-components-common.scss'],
 })
-export class TmplCompHost implements OnInit, OnChanges {
+export class TmplComponent implements OnInit, OnChanges {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
