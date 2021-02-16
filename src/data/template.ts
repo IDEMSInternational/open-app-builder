@@ -57,7 +57,7 @@
                   {
                     "type": "button",
                     "name": "button_1",
-                    "value": "The role of the facilitator would be:",
+                    "value": "Start Session",
                     "action_list": [
                       "set_value | hide_intro | true",
                       "set_value | hide_activity | false"
@@ -67,7 +67,7 @@
                   {
                     "type": "button",
                     "name": "button_2",
-                    "value": "Play audio off their phone",
+                    "value": "Skip",
                     "parameter_list": [
                       "color:secondary",
                       ""
@@ -130,7 +130,7 @@
         "rows": [
           {
             "name": "theme_name",
-            "value": "passive_theme"
+            "value": "passive"
           },
           {
             "name": "button_1",

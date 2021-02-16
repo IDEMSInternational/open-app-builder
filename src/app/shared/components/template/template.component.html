@@ -1,4 +1,4 @@
-<div class="template">
+<div [className]="'template-container ' + localVariables?.theme_name">
   <div *ngFor="let row of _template?.rows" class="row">
     <plh-tmpl-comp-host [row]="row" [template]="_template" [localVariables]="localVariables"></plh-tmpl-comp-host>
   </div>

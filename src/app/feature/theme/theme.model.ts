@@ -47,6 +47,10 @@ export interface ThemeColors {
     // Chat colors
     botMsgBubble?: ThemeColor;
     userMsgBubble?: ThemeColor;
+
+    // Workshop templates
+    templateActiveBg?: ThemeColor;
+    templatePassiveBg?: ThemeColor;
 }
 
 export function colorIdToCSSVarName(colorId: keyof ThemeColors) {
