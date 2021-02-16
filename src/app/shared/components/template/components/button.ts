@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
+import { ITemplateComponent } from "./tmpl-comp-host";
 
 @Component({
   selector: "plh-tmpl-button",
   template: `<ion-button (click)="onClick()">{{row.value}}</ion-button>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })
-export class TmplButtonComponent {
+export class TmplButtonComponent implements ITemplateComponent {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: string };

@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "scripts/types";
+import { ITemplateComponent } from "./tmpl-comp-host";
 
 @Component({
     selector: "plh-tmpl-animated-section-group",
     template: ``
 })
-export class TmplSetVariableComponent implements OnInit {
+export class TmplSetVariableComponent implements ITemplateComponent, OnInit {
 
     @Input() row: FlowTypes.TemplateRow;
     @Input() template: FlowTypes.Template;

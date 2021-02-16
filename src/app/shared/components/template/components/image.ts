@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
 import { tr } from "date-fns/locale";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
+import { ITemplateComponent } from "./tmpl-comp-host";
 
 @Component({
   selector: "plh-tmpl-image",
@@ -12,7 +13,7 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
   `,
   styleUrls: ["./tmpl-components-common.scss"]
 })
-export class TmplImageComponent {
+export class TmplImageComponent implements ITemplateComponent {
 
   assetsPrefix = "/assets/plh_assets/";
 
@@ -31,4 +32,5 @@ export class TmplImageComponent {
       });
   }
   @Input() template: FlowTypes.Template;
+  @Input() localVariables: { [name: string]: string };
 }
