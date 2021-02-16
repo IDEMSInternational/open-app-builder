@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
+import { ITemplateComponent } from "./tmpl-comp-host";
 
 @Component({
   selector: "plh-tmpl-video",
@@ -8,12 +9,11 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })
-export class TmplVideoComponent implements OnInit {
+export class TmplVideoComponent implements ITemplateComponent {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
+  @Input() localVariables: { [name: string]: string; };
 
   constructor() { }
-
-  ngOnInit() { }
 }

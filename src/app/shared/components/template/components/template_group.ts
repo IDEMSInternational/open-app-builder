@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
+import { ITemplateComponent } from "./tmpl-comp-host";
 
 @Component({
   selector: "plh-tmpl-template-group",
@@ -13,7 +14,7 @@ import { TEMPLATE } from "src/app/shared/services/data/data.service";
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })
-export class TmplTemplateGroupComponent {
+export class TmplTemplateGroupComponent implements ITemplateComponent {
 
   @Input() set row(value: FlowTypes.TemplateRow) {
     this.populateRowsFromParent(value);

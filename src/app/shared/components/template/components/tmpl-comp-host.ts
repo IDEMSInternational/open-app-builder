@@ -12,7 +12,13 @@ import { TmplTextComponent } from "./text";
 import { TmplVideoComponent } from "./video";
 import { AnimatedSectionComponent } from "./animated_section";
 
-export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<any>> = {
+export interface ITemplateComponent {
+  template: FlowTypes.Template;
+  row: FlowTypes.TemplateRow;
+  localVariables: { [name: string]: string };
+}
+
+export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateComponent>> = {
   text: TmplTextComponent,
   title: TmplTextComponent,
   animated_section_group: AnimatedSectionGroupComponent,
@@ -50,7 +56,7 @@ export class TmplCompHost implements OnInit, OnChanges {
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
   hidden = false;
 
-  componentRef: ComponentRef<any>;
+  componentRef: ComponentRef<ITemplateComponent>;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private contactFieldService: ContactFieldService) { }
 
@@ -65,7 +71,7 @@ export class TmplCompHost implements OnInit, OnChanges {
       );
       const viewContainerRef = this.tmplComponentHost.viewContainerRef;
       viewContainerRef.clear();
-      this.componentRef = viewContainerRef.createComponent<any>(componentFactory);
+      this.componentRef = viewContainerRef.createComponent<ITemplateComponent>(componentFactory);
       this.componentRef.instance.row = this.row;
       this.componentRef.instance.template = this.template;
       this.componentRef.instance.localVariables = this.localVariables;

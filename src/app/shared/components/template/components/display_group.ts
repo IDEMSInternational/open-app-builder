@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
+import { ITemplateComponent } from "./tmpl-comp-host";
 
 @Component({
   selector: "plh-tmpl-display-group",
@@ -9,7 +10,7 @@ import { FlowTypes } from 'src/app/shared/model/flowTypes';
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })
-export class TmplDisplayGroupComponent {
+export class TmplDisplayGroupComponent implements ITemplateComponent {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: string };
