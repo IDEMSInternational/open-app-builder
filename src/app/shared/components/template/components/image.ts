@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
 import { tr } from "date-fns/locale";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
-import { ITemplateComponent } from "./tmpl-comp-host";
+import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
   selector: "plh-tmpl-image",

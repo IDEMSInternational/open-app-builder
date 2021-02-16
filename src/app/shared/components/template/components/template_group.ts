@@ -1,16 +1,16 @@
 import { Component, Input } from "@angular/core";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
-import { ITemplateComponent } from "./tmpl-comp-host";
+import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
   selector: "plh-tmpl-template-group",
   template: `<div class="template">
-    <plh-tmpl-comp-host *ngFor="let innerRow of populatedRows"
+    <plh-tmpl-comp *ngFor="let innerRow of populatedRows"
       [row]="innerRow"
       [template]="template"
       [localVariables]="localVariables"
-    ></plh-tmpl-comp-host>
+    ></plh-tmpl-comp>
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })

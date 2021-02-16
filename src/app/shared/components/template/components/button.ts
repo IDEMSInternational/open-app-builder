@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
-import { ITemplateComponent } from "./tmpl-comp-host";
+import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
   selector: "plh-tmpl-button",

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TemplateComponent } from './template.component';
+import { TemplateContainerComponent } from './template-container.component';
 
 describe('TemplateComponent', () => {
-  let component: TemplateComponent;
-  let fixture: ComponentFixture<TemplateComponent>;
+  let component: TemplateContainerComponent;
+  let fixture: ComponentFixture<TemplateContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemplateComponent ],
+      declarations: [ TemplateContainerComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TemplateComponent);
+    fixture = TestBed.createComponent(TemplateContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
