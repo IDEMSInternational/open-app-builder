@@ -1,0 +1,22 @@
+<ion-content>
+  <h1>Reminders</h1>
+  <ion-card
+    *ngFor="let reminder of remindersService.remindersList$ | async"
+    class="reminder-list-item"
+  >
+    <ion-card-header style="font-weight: 500">{{ reminder.reminder_id }}</ion-card-header>
+    <ion-card-content>
+      <div style="display: flex">
+        <div style="flex: 1">
+          <div>Sent:</div>
+          <div>Scheduled:</div>
+          <div>Activated:</div>
+          <div>Deactivated:</div>
+        </div>
+        <div>
+          <ion-button fill="clear" (click)="previewReminder(reminder)">Preview</ion-button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
