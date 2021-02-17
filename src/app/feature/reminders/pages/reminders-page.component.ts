@@ -10,8 +10,4 @@ export class RemindersPageComponent implements OnInit {
   constructor(public remindersService: RemindersService) {}
 
   ngOnInit(): void {}
-
-  previewReminder(r) {
-    console.log("preview reminder", r);
-  }
 }

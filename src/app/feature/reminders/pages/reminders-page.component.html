@@ -1,5 +1,6 @@
 <ion-content>
   <h1>Reminders</h1>
+  <div style="margin: 10px">App Day: {{ remindersService.appday }}</div>
   <ion-card
     *ngFor="let reminder of remindersService.remindersList$ | async"
     class="reminder-list-item"
@@ -13,8 +14,17 @@
           <div>Activated:</div>
           <div>Deactivated:</div>
         </div>
-        <div>
-          <ion-button fill="clear" (click)="previewReminder(reminder)">Preview</ion-button>
+        <div style="text-align: right">
+          <ion-button
+            fill="clear"
+            (click)="remindersService.triggerReminderAction(reminder)"
+            class="no-padding"
+            style="margin: 0"
+            >Start Action</ion-button
+          >
+          <div style="font-size: small; color: var(--ion-color-primary)">
+            {{ reminder.start_action }}<br />{{ reminder.start_action_args }}
+          </div>
         </div>
       </div>
     </ion-card-content>

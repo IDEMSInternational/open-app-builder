@@ -227,8 +227,10 @@ export namespace FlowTypes {
 
   export interface Reminder_listRow {
     reminder_id: string;
-    start_action: "start_new_flow";
-    flow_type: FlowType;
+    /** start actions will be triggered in the task service so action types must match */
+    start_action: Start_action;
+    flow_type: Task_listRow["flow_type"];
+    /** args should match the name of the flow when being used with a start_new_flow task action */
     start_action_args: string;
     priority: number;
     activation_condition_list: Reminder_conditionList[];
