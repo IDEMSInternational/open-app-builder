@@ -120,7 +120,7 @@
       {
         "type": "set_variable",
         "name": "group_name",
-        "value": "@fields.group_name",
+        "value": "The group name",
         "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
       },
       {
@@ -134,11 +134,11 @@
           },
           {
             "name": "button_1",
-            "value": "next slide"
+            "value": "Next"
           },
           {
             "name": "button_2",
-            "value": "skip slide",
+            "value": "skip",
             "hidden": true,
             "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3"
           },
