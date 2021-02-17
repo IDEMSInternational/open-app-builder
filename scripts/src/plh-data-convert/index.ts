@@ -12,6 +12,7 @@ import {
 import { FlowTypes } from "../../types";
 import { AbstractParser } from "./parsers/abstract.parser";
 import { TaskListParser } from "./parsers/task_list/task_list.parser";
+import { ReminderListParser } from "./parsers/reminder_list/reminder_list.parser";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
@@ -79,6 +80,7 @@ function applyDataParsers(
   const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
     conversation: new ConversationParser(),
     task_list: new TaskListParser(dataByFlowType, allTasksById),
+    reminder_list: new ReminderListParser(),
   };
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
