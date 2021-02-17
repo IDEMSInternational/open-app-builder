@@ -20,7 +20,8 @@ export namespace FlowTypes {
     | "care_package_list"
     | "tour"
     | "habit_ideas"
-    | "home_page";
+    | "home_page"
+    | "reminder_list";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -71,6 +72,10 @@ export namespace FlowTypes {
   export interface Care_package_list extends FlowTypeWithData {
     flow_type: "care_package_list";
     rows: CarePackage[];
+  }
+  export interface Reminder_list extends FlowTypeWithData {
+    flow_type: "reminder_list";
+    rows: Reminder_listRow[];
   }
 
   export interface Conversation extends RapidProFlowExport.RootObject {}
@@ -156,7 +161,15 @@ export namespace FlowTypes {
   /** Format of conversation rows post processing */
   export interface ConversationRow {
     row_id?: string | number;
-    type: "start_new_flow" | "send_message" | "story_slide" | "go_to" | "save_value" | "exit" | "mark_as_completed" | "split_random";
+    type:
+      | "start_new_flow"
+      | "send_message"
+      | "story_slide"
+      | "go_to"
+      | "save_value"
+      | "exit"
+      | "mark_as_completed"
+      | "split_random";
     from?: string | number;
     condition?: string | number;
     condition_var?: string;
@@ -212,6 +225,29 @@ export namespace FlowTypes {
     habit_list: string[];
   }
 
+  export interface Reminder_listRow {
+    reminder_id: string;
+    start_action: "start_new_flow";
+    flow_type: FlowType;
+    start_action_args: string;
+    priority: number;
+    activation_condition_list: Reminder_conditionList[];
+    deactivation_condition_list: Reminder_conditionList[];
+    campaign_list: Reminder_campaign[];
+  }
+  export interface Reminder_conditionList {
+    action:
+      | "field_evaluation"
+      | "reminder_event"
+      | "event_completed"
+      | "task_completed"
+      | "task_last_completed"
+      | "task_first_completed";
+    value?: string;
+    timing?: { base: "delay" | "within" | "before"; quantity: number; unit: "day" | "appday" };
+  }
+  type Reminder_campaign = "campaign_main" | "campaign_evening" | "campaign_morning";
+
   export interface Habit_ideas extends FlowTypeWithData {
     flow_type: "habit_ideas";
     flow_name: string;
@@ -257,5 +293,4 @@ export namespace FlowTypes {
     route?: string;
     left_image?: string;
   }
-
 }
