@@ -14,10 +14,10 @@ export class LocalVarsReplacePipe implements PipeTransform {
     if (typeof value === "boolean") {
       return "" + value;
     }
-    return this.parseMessageTemplate("" + value, localVars);
+    return LocalVarsReplacePipe.parseMessageTemplate("" + value, localVars);
   }
 
-  parseMessageTemplate = (template: string, localVars: { [name: string]: string}) => {
+  static parseMessageTemplate = (template: string, localVars: { [name: string]: string}) => {
     console.log("template", template);
     let output: string = "" + template;
 

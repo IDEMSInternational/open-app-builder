@@ -5,7 +5,7 @@ import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
   selector: "plh-tmpl-button",
-  template: `<ion-button (click)="onClick()">{{row.value}}</ion-button>`,
+  template: `<ion-button (click)="onClick()">{{row.value | localVarsReplace: localVariables}}</ion-button>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })
 export class TmplButtonComponent implements ITemplateComponent {

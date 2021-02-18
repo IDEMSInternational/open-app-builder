@@ -4,7 +4,7 @@ import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
   selector: "plh-tmpl-title",
-  template: `<h1>{{row.value}}</h1>`,
+  template: `<h1>{{row.value | localVarsReplace: localVariables}}</h1>`,
   styleUrls: ["./tmpl-components-common.scss"]
 })
 export class TmplTitleComponent implements ITemplateComponent, OnInit {
