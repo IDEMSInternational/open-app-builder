@@ -274,6 +274,7 @@ export namespace FlowTypes {
     | "animated_section_group"
     | "display_group"
     | "set_variable"
+    | "nested_properties"
     | "button"
     | "image"
     | "audio"
