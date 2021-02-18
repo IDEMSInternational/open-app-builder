@@ -53,7 +53,7 @@
       },
       {
         "module_number": 5,
-        "id": "mod_budgeting",
+        "id": "mod_money",
         "title": "Family Budgeting",
         "title_short": "Money",
         "icon_asset": "assets/plh_assets/plh_images/modules/mod_budgeting/icon.svg"

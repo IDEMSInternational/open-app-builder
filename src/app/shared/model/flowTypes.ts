@@ -240,13 +240,17 @@ export namespace FlowTypes {
   export interface Reminder_conditionList {
     action:
       | "field_evaluation"
-      | "reminder_event"
-      | "event_completed"
+      | "reminder_action"
+      | "app_event"
       | "task_completed"
       | "task_last_completed"
       | "task_first_completed";
     value?: string;
-    timing?: { base: "delay" | "within" | "before"; quantity: number; unit: "day" | "appday" };
+    /** specify timing constraint used to evaluate condition
+     * @example {comparison:"before",quantity:3,unit:"appday"}
+     * evaluate true only if condition satifisies occuring earlier than 3 app use days
+     */
+    timing?: { comparison: "within" | "before"; quantity: number; unit: "day" | "appday" };
   }
   type Reminder_campaign = "campaign_main" | "campaign_evening" | "campaign_morning";
 
