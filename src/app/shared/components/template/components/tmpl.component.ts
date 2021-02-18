@@ -29,6 +29,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   image: TmplImageComponent,
   set_variable: TmplSetVariableComponent,
   template_group: TmplTemplateGroupComponent,
+  nested_properties: TmplSetVariableComponent,
   video: TmplVideoComponent
 };
 

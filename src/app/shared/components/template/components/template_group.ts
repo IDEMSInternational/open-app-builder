@@ -33,10 +33,16 @@ export class TmplTemplateGroupComponent implements ITemplateComponent {
 
   private populateRowsFromParent(ourRow: FlowTypes.TemplateRow) {
     const parsedRowName = LocalVarsReplacePipe.parseMessageTemplate(ourRow.name, this.localVariables);
+    let overrideRows = ourRow.rows;
+    const valueRows = this.localVariables[ourRow.value];
+    if (valueRows && valueRows.length > 0) {
+      overrideRows = overrideRows.concat(valueRows);
+    }
+    
     const superTemplate = TEMPLATE.find((t) => t.flow_name === parsedRowName);
     if (superTemplate) {
       const overrideValueMap: Record<string, string> = {};
-      for (let row of ourRow.rows) {
+      for (let row of overrideRows) {
         overrideValueMap[row.name] = row.value;
       }
       const newRows = [ ...superTemplate.rows ];
