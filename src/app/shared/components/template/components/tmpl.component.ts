@@ -15,7 +15,7 @@ import { AnimatedSectionComponent } from "./animated_section";
 export interface ITemplateComponent {
   template: FlowTypes.Template;
   row: FlowTypes.TemplateRow;
-  localVariables: { [name: string]: string };
+  localVariables: { [name: string]: any };
 }
 
 export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateComponent>> = {
@@ -52,7 +52,7 @@ export class TmplComponent implements OnInit, OnChanges {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string };
+  @Input() localVariables: { [name: string]: any };
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
   hidden = false;
 

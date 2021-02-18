@@ -21,7 +21,7 @@ export class TmplTemplateGroupComponent implements ITemplateComponent {
     this.populateRowsFromParent(value);
   }
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string };
+  @Input() localVariables: { [name: string]: any };
   populatedRows: FlowTypes.TemplateRow[];
 
   constructor() {

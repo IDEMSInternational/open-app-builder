@@ -16,5 +16,5 @@ import { ITemplateComponent } from "./tmpl.component";
 export class AnimatedSectionComponent implements ITemplateComponent {
     @Input() row: FlowTypes.TemplateRow;
     @Input() template: FlowTypes.Template;
-    @Input() localVariables: { [name: string]: string };
+    @Input() localVariables: { [name: string]: any };
 }

@@ -34,5 +34,5 @@ export class TmplImageComponent implements ITemplateComponent {
       });
   }
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string };
+  @Input() localVariables: { [name: string]: any };
 }
