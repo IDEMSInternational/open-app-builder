@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
 import { tr } from "date-fns/locale";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
+import { LocalVarsReplacePipe } from "../local-vars-replace.pipe";
 import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
@@ -22,13 +23,14 @@ export class TmplImageComponent implements ITemplateComponent {
 
   imageSrc: string;
   @Input() set row (value: FlowTypes.TemplateRow) {
-    this.http.get(value.value, { responseType: "arraybuffer" })
+    const replaced = LocalVarsReplacePipe.parseMessageTemplate(value.value, this.localVariables);
+    this.http.get(replaced, { responseType: "arraybuffer" })
       .toPromise()
       .then(() => {
-        this.imageSrc = value.value;
+        this.imageSrc = replaced;
       })
       .catch(() => {
-        this.imageSrc = (this.assetsPrefix + value.value).replace("//", "/");
+        this.imageSrc = (this.assetsPrefix + replaced).replace("//", "/");
       });
   }
   @Input() template: FlowTypes.Template;

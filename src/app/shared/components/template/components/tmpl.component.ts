@@ -65,9 +65,10 @@ export class TmplComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (this.row && TEMPLATE_COMPONENT_MAPPING[this.row.type]) {
+    if (this.row) {
+      let type = TEMPLATE_COMPONENT_MAPPING[this.row.type] ? this.row.type : "set_variable";
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-        TEMPLATE_COMPONENT_MAPPING[this.row.type]
+        TEMPLATE_COMPONENT_MAPPING[type]
       );
       const viewContainerRef = this.tmplComponentHost.viewContainerRef;
       viewContainerRef.clear();
@@ -120,31 +121,6 @@ export class TmplComponent implements OnInit, OnChanges {
     }
   }
 
-  parseMessageTemplate = (template: string) => {
-    console.log("template", template);
-    let output: string = "" + template;
-
-    let regexResult: RegExpExecArray;
-    // Match Rapid Pro Contact fixed variables
-    let atVaraibleRegex = /@([a-z]+)\.([0-9a-zA-Z\_]+)([\.]*[0-9a-zA-Z\_]*)/gm;
-    while ((regexResult = atVaraibleRegex.exec(template)) !== null) {
-      let fullMatch = regexResult[0];
-      let variableType = regexResult[1];
-      let fieldName = regexResult[2];
-      let subfieldName = regexResult[3] ? regexResult[3].substring(1) : null;
-      switch (variableType) {
-        case "local": {
-          const vars = this.localVariables;
-          output = output.replace(fullMatch, vars[fieldName]);
-        }
-        case "fields": {
-          output = output.replace(fullMatch, "contact fields not supported yet");
-          break;
-        }
-      }
-    }
-
-    return output;
-  };
+  
 
 }

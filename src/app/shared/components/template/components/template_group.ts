@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
+import { LocalVarsReplacePipe } from "../local-vars-replace.pipe";
 import { ITemplateComponent } from "./tmpl.component";
 
 @Component({
@@ -31,8 +32,8 @@ export class TmplTemplateGroupComponent implements ITemplateComponent {
   }
 
   private populateRowsFromParent(ourRow: FlowTypes.TemplateRow) {
-
-    const superTemplate = TEMPLATE.find((t) => t.flow_name === ourRow.name);
+    const parsedRowName = LocalVarsReplacePipe.parseMessageTemplate(ourRow.name, this.localVariables);
+    const superTemplate = TEMPLATE.find((t) => t.flow_name === parsedRowName);
     if (superTemplate) {
       const overrideValueMap: Record<string, string> = {};
       for (let row of ourRow.rows) {

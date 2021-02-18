@@ -118,10 +118,22 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_variable",
         "name": "group_name",
         "value": "The group name",
         "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
+      },
+      {
+        "name": "intro_nav_button_text",
+        "value": "Next"
+      },
+      {
+        "name": "outro_nav_button_text",
+        "value": "Next 2"
+      },
+      {
+        "type": "title",
+        "name": "outer_title",
+        "value": "Template Together Welcome"
       },
       {
         "type": "template_group",
@@ -134,13 +146,93 @@
           },
           {
             "name": "button_1",
-            "value": "Next"
+            "value": "@local.intro_nav_button_text"
           },
           {
             "name": "button_2",
             "value": "skip",
             "hidden": true,
             "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3"
+          },
+          {
+            "name": "image_1",
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+          },
+          {
+            "name": "intro_text",
+            "value": "Welcome @local.group_name!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "multi_template",
+    "status": "released",
+    "rows": [
+      {
+        "name": "group_name",
+        "value": "The group name",
+        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
+      },
+      {
+        "name": "intro_nav_button_text",
+        "value": "Next"
+      },
+      {
+        "name": "outro_nav_button_text",
+        "value": "Next 2"
+      },
+      {
+        "type": "title",
+        "name": "outer_title",
+        "value": "Template Together Welcome"
+      },
+      {
+        "type": "template_group",
+        "name": "template_watch_together",
+        "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
+        "rows": [
+          {
+            "name": "theme_name",
+            "value": "passive"
+          },
+          {
+            "name": "button_1",
+            "value": "@local.intro_nav_button_text"
+          },
+          {
+            "name": "button_2",
+            "value": "skip",
+            "hidden": true,
+            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3"
+          },
+          {
+            "name": "image_1",
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+          },
+          {
+            "name": "intro_text",
+            "value": "Welcome @local.group_name!"
+          }
+        ]
+      },
+      {
+        "type": "template_group",
+        "name": "template_watch_together",
+        "rows": [
+          {
+            "name": "theme_name",
+            "value": "passive"
+          },
+          {
+            "name": "button_1",
+            "value": "@local.outro_nav_button_text"
+          },
+          {
+            "name": "button_2",
+            "value": "skip"
           },
           {
             "name": "image_1",
