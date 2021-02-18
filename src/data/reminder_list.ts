@@ -21,10 +21,10 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": {
-              "base": "within",
+              "comparison": "within",
               "quantity": 1,
               "unit": "day"
             }
@@ -44,10 +44,10 @@
         "priority": 2,
         "activation_condition_list": [
           {
-            "action": "event_completed",
+            "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 1,
               "unit": "day"
             }
@@ -55,7 +55,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -72,10 +72,10 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "event_completed",
+            "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 2,
               "unit": "day"
             }
@@ -86,13 +86,13 @@
             "action": "task_last_completed",
             "value": "task_praise_teen",
             "timing": {
-              "base": "within",
+              "comparison": "within",
               "quantity": 1,
               "unit": "day"
             }
           },
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -109,10 +109,10 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "event_completed",
+            "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 3,
               "unit": "day"
             }
@@ -120,7 +120,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -137,10 +137,10 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "event_completed",
+            "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 4,
               "unit": "day"
             }
@@ -153,7 +153,7 @@
             "timing": null
           },
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -170,10 +170,10 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "event_completed",
+            "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 7,
               "unit": "day"
             }
@@ -181,7 +181,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -201,7 +201,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 1,
               "unit": "day"
             }
@@ -209,7 +209,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -229,7 +229,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 2,
               "unit": "day"
             }
@@ -240,13 +240,13 @@
             "action": "task_last_completed",
             "value": "task_spend_time",
             "timing": {
-              "base": "within",
+              "comparison": "within",
               "quantity": 1,
               "unit": "day"
             }
           },
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -266,7 +266,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 3,
               "unit": "day"
             }
@@ -279,7 +279,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -296,22 +296,18 @@
         "priority": 2,
         "activation_condition_list": [
           {
-            "action": "task_first_completed",
+            "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "base": "before",
+              "comparison": "before",
               "quantity": 3,
               "unit": "day"
             }
           },
           {
-            "action": "event_completed",
-            "value": "open_app",
-            "timing": {
-              "base": "within",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "action": "app_launch",
+            "value": "within_1_day",
+            "timing": null
           }
         ],
         "deactivation_condition_list": [
@@ -321,7 +317,7 @@
             "timing": null
           },
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -341,7 +337,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 3,
               "unit": "day"
             }
@@ -354,16 +350,12 @@
             "timing": null
           },
           {
-            "action": "event_completed",
-            "value": "open_app",
-            "timing": {
-              "base": "within",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "action": "app_launch",
+            "value": "within_1_day",
+            "timing": null
           },
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -383,7 +375,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 5,
               "unit": "day"
             }
@@ -391,7 +383,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -411,7 +403,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 2,
               "unit": "day"
             }
@@ -419,7 +411,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -439,7 +431,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 5,
               "unit": "day"
             }
@@ -447,7 +439,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -467,7 +459,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 3,
               "unit": "day"
             }
@@ -475,7 +467,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -495,7 +487,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 6,
               "unit": "day"
             }
@@ -503,7 +495,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
@@ -523,7 +515,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "base": "delay",
+              "comparison": "before",
               "quantity": 6,
               "unit": "day"
             }
@@ -531,7 +523,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_event",
+            "action": "reminder_action",
             "value": "sent",
             "timing": null
           }
