@@ -11,7 +11,7 @@ export class TmplTitleComponent implements ITemplateComponent, OnInit {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string };
+  @Input() localVariables: { [name: string]: any };
 
   constructor() {}
 

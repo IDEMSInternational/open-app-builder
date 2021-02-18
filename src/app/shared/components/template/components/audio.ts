@@ -11,5 +11,5 @@ import { ITemplateComponent } from "./tmpl.component";
 export class TmplAudioComponent implements ITemplateComponent {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string };
+  @Input() localVariables: { [name: string]: any };
 }
