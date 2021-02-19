@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
+import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
 import { EventService } from "../event/event.service";
 
 const db = new Dexie("plh-app-db");
@@ -24,12 +25,14 @@ const DB_TABLES = {
   task_actions: "id,task_id,_created",
   /** session_actions track meta interactions such as start and end of session */
   session_actions: "id,task_id,_created",
+  /** track app events such as open */
+  app_events: "++id,event_id,_created",
   /** user */
   user_meta: "key,value",
   /** habits */
   habits: "habitId",
   habit_activity_ideas: "++id,flowName",
-  habit_occurrence: "++id,habitId,created"
+  habit_occurrence: "++id,habitId,created",
 };
 export type IDBTable = keyof typeof DB_TABLES;
 /**
@@ -46,7 +49,7 @@ export interface IDBDoc {
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
  */
-const DB_VERSION = 7003;
+const DB_VERSION = 8000;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({
@@ -54,7 +57,15 @@ db.version(DB_VERSION).stores(DB_TABLES);
 })
 export class DbService {
   private db = db;
-  constructor(private eventService: EventService) {}
+  /**
+   * Creates a subject to emit changes at an individual table level
+   * Note - this only tracks create and update events, which will emit data value to the subject
+   */
+  private tableChanges$: { [key in IDBTable]: Subject<any> } = {} as any;
+  constructor(private eventService: EventService) {
+    Object.keys(DB_TABLES).forEach((table_id) => (this.tableChanges$[table_id] = new Subject()));
+  }
+
   async init() {
     this._listenToDBChanges();
     db.open().catch((err) => {
@@ -84,14 +95,17 @@ export class DbService {
 
   /**
    * Type-safe wrapper around db.table method
+   * Additionally adds a changes$ subject populated from custom db listeners
    */
   table<T>(tableId: IDBTable) {
-    return this.db.table<T>(tableId);
+    const table = this.db.table<T>(tableId) as Dexie.Table & { changes$: Subject<T> };
+    table.changes$ = this.tableChanges$[tableId];
+    return table;
   }
 
   /**
    * Add reactive bindings to the database to receive updates
-   * (currently only for debugging purposese)
+   * (currently used for debugging and custom tableChanges$ subscription )
    */
   private _listenToDBChanges() {
     // Force typings to recognise dexie-observable plugin
@@ -102,10 +116,12 @@ export class DbService {
           case 1: // CREATED
             change = change as ICreateChange;
             console.log("[DB CREATED]", change);
+            this.tableChanges$[change.table].next(change.obj);
             break;
           case 2: // UPDATED
             change = change as IUpdateChange;
             console.log("[DB CHANGED]", change);
+            this.tableChanges$[change.table].next(change.obj);
             break;
           case 3: // DELETED
             change = change as IDeleteChange;
