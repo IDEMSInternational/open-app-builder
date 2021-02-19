@@ -32,36 +32,33 @@ export class TmplTemplateGroupComponent implements ITemplateComponent {
   }
 
   private populateRowsFromParent(ourRow: FlowTypes.TemplateRow) {
-    const parsedRowName = LocalVarsReplacePipe.parseMessageTemplate(ourRow.name, this.localVariables);
-    let overrideRows = ourRow.rows;
-    const valueRows = this.localVariables[ourRow.value];
-    if (valueRows && valueRows.length > 0) {
-      overrideRows = overrideRows.concat(valueRows);
-    }
-    
-    const superTemplate = TEMPLATE.find((t) => t.flow_name === parsedRowName);
+    /* The value field is used to select a template. This field can have a @local.template_name var  */
+    const parsedRowValue = LocalVarsReplacePipe.parseMessageTemplate(ourRow.value, this.localVariables);
+    const superTemplate = TEMPLATE.find((t) => t.flow_name === parsedRowValue);
     if (superTemplate) {
-      const overrideValueMap: Record<string, string> = {};
-      for (let row of overrideRows) {
-        overrideValueMap[row.name] = row.value;
-      }
-      const newRows = [ ...superTemplate.rows ];
-      newRows.forEach((row) => {
-        this.overrideRow(row, overrideValueMap);
-      });
-      this.populatedRows = newRows;
+      this.populatedRows = superTemplate.rows.map((row) => this.overrideRow(row, ourRow.rows));
       console.log("Populated rows are ", this.populatedRows);
     }
   }
 
-  private overrideRow(row: FlowTypes.TemplateRow, overrideValueMap: Record<string, string>) {
-    if (overrideValueMap[row.name]) {
-      row.value = overrideValueMap[row.name];
+  private overrideRow(parentRow: FlowTypes.TemplateRow, overrideRows: FlowTypes.TemplateRow[]) {
+    if (parentRow.rows) {
+      parentRow.rows = parentRow.rows.map((r) => this.overrideRow(r, overrideRows));
     }
-    if (row.rows) {
-      for (let childRow of row.rows) {
-        this.overrideRow(childRow, overrideValueMap);
-      }
+    const matchingOurRow = overrideRows.find((r) => r.name === parentRow.name);
+    if (matchingOurRow) {
+      const result = { ...parentRow, ...matchingOurRow, type: parentRow.type }
+      return result;
     }
+    return parentRow;
+  }
+
+  private mergeNameArrays(base: { name?: string }[], override: { name?: string }[]): { name: string }[] {
+    const baseMap = {};
+    base.forEach((obj) => baseMap[obj.name] = obj);
+    const overrideMap = {};
+    override.forEach((obj) => overrideMap[obj.name] = obj);
+    const allNames = Object.keys(baseMap).concat(Object.keys(overrideMap));
+    return allNames.map((name) => overrideMap[name] ? overrideMap[name] : baseMap[name]);
   }
 }

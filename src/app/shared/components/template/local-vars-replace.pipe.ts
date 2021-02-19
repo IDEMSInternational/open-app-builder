@@ -31,7 +31,9 @@ export class LocalVarsReplacePipe implements PipeTransform {
       let subfieldName = regexResult[3] ? regexResult[3].substring(1) : null;
       switch (variableType) {
         case "local": {
-          output = output.replace(fullMatch, localVars[fieldName]);
+          if (localVars) {
+            output = output.replace(fullMatch, localVars[fieldName]);
+          }
         }
         case "fields": {
           output = output.replace(fullMatch, "contact fields not supported yet");

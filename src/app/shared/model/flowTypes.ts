@@ -279,6 +279,8 @@ export namespace FlowTypes {
     | "image"
     | "audio"
     | "video"
+    | "display_theme"
+    | "template"
     | "template_group";
 
   export interface TemplateRow {
