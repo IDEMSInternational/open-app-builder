@@ -137,7 +137,7 @@
       },
       {
         "type": "template_group",
-        "name": "template_watch_together",
+        "value": "template_watch_together",
         "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
           {
@@ -241,6 +241,222 @@
           {
             "name": "intro_text",
             "value": "Welcome @local.group_name!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "workshop_activity",
+    "status": "released",
+    "rows": [
+      {
+        "name": "hide_intro",
+        "value": false,
+        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content."
+      },
+      {
+        "name": "hide_activity",
+        "value": true
+      },
+      {
+        "name": "hide_activity_banner",
+        "value": true
+      },
+      {
+        "name": "activity_image",
+        "value": "src/assets/not-found-image.png"
+      },
+      {
+        "name": "activity_title",
+        "value": "Title of this section"
+      },
+      {
+        "type": "display_theme",
+        "name": "display_theme",
+        "value": "passive_theme"
+      },
+      {
+        "type": "animated_section",
+        "name": "intro",
+        "value": "fade_in_out",
+        "hidden": "@local.hide_intro",
+        "rows": [
+          {
+            "type": "image",
+            "name": "intro_image",
+            "value": "@local.activity_image"
+          },
+          {
+            "type": "title",
+            "name": "intro_title",
+            "value": "@local.activity_title"
+          },
+          {
+            "type": "text",
+            "name": "intro_text"
+          },
+          {
+            "type": "template",
+            "name": "nav_buttons",
+            "value": "buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "action_list": [
+                  "set_local | hide_intro | true",
+                  "set_local | hide_activity | false"
+                ]
+              },
+              {
+                "name": "button_skipped",
+                "hidden": "!@local._completed"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "content",
+        "hidden": "@local.hide_activity",
+        "rows": [
+          {
+            "type": "display_group",
+            "name": "activity_banner",
+            "hidden": "@local.hide_activity_banner",
+            "rows": [
+              {
+                "type": "title",
+                "name": "banner_title",
+                "value": "@local.activity_title"
+              },
+              {
+                "type": "image",
+                "name": "banner_image",
+                "value": "@local.activity_image"
+              }
+            ]
+          },
+          {
+            "type": "template",
+            "name": "content_box",
+            "action_list": [
+              "respond_to_action | exit | mark_as_completed",
+              "respond_to_action | exit | exit"
+            ],
+            "rows": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "test_wa_extend",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "value": "workshop_activity",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "rows": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "button_describe",
+            "value": "Describe",
+            "parameter_list": [
+              "colour | secondary"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_completed",
+            "value": "Next",
+            "action_list": [
+              "exit",
+              "mark_as_completed"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_skipped",
+            "value": "Skip",
+            "action_list": [
+              "exit",
+              "mark_as_skipped"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "a",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "a_title",
+        "value": "Template A"
+      },
+      {
+        "type": "template",
+        "name": "buttons",
+        "value": "buttons",
+        "rows": [
+          {
+            "name": "button_completed",
+            "value": "Next 2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "b",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "b_title",
+        "value": "Template B"
+      },
+      {
+        "type": "template",
+        "value": "a",
+        "rows": [
+          {
+            "name": "a_title",
+            "value": "Template A Title Overridden"
+          },
+          {
+            "type": "nested_properties",
+            "name": "buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Next 3"
+              }
+            ]
           }
         ]
       }
