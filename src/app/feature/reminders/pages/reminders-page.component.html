@@ -1,6 +1,23 @@
 <ion-content>
   <h1>Reminders</h1>
-  <div style="margin: 10px">App Day: {{ remindersService.appday }}</div>
+  <div style="position: absolute; right: 0; top: 0">
+    <ion-select
+      placeholder="Mock Data"
+      (ionChange)="remindersService.setMockData($event.target.value)"
+    >
+      <ion-select-option value="">None</ion-select-option>
+      <ion-select-option
+        *ngFor="let dataset of remindersService.mockData; index as i"
+        [value]="dataset"
+        >{{ dataset.label }}</ion-select-option
+      >
+    </ion-select>
+  </div>
+
+  <ul style="margin: 10px">
+    <li>App Day: {{ remindersService.app_day }}</li>
+    <li>First App Launch: {{ remindersService.first_app_launch | date }}</li>
+  </ul>
   <ion-card
     *ngFor="let reminder of remindersService.remindersList$ | async"
     class="reminder-list-item"
@@ -11,8 +28,6 @@
         <div style="flex: 1">
           <div>Sent:</div>
           <div>Scheduled:</div>
-          <div>Activated:</div>
-          <div>Deactivated:</div>
         </div>
         <div style="text-align: right">
           <ion-button
@@ -25,6 +40,18 @@
           <div style="font-size: small; color: var(--ion-color-primary)">
             {{ reminder.start_action }}<br />{{ reminder.start_action_args }}
           </div>
+        </div>
+      </div>
+      <div>
+        <div>Activation</div>
+        <div *ngFor="let condition of reminder.activation_condition_list">
+          <span *ngIf="condition._satisfied === true">✔️</span>
+          <span *ngIf="condition._satisfied === false">❌</span>
+          <span *ngIf="condition._satisfied === undefined">⚠️(not implemented)</span>
+          <span>{{ condition.action }} |</span><span>{{ condition.value }} |</span>
+          <span *ngIf="condition.timing as timing">
+            <span>{{ timing.comparator }}{{ timing.quantity }}{{ timing.unit }}</span>
+          </span>
         </div>
       </div>
     </ion-card-content>

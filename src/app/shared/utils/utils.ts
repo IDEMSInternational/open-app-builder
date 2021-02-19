@@ -10,11 +10,12 @@ export function generateRandomId() {
 }
 
 /**
- * generate a string representation of the current datetime in local timezone
+ * generate a string representation of the current datetime in local (unspecified) timezone
  * @returns 2020-12-22T18:15:20
  */
-export function generateTimestamp() {
-  return format(new Date(), "yyyy-MM-dd'T'HH:mm:ss");
+export function generateTimestamp(value?: string | number | Date) {
+  const date = value ? new Date(value) : new Date();
+  return format(date, "yyyy-MM-dd'T'HH:mm:ss");
 }
 
 /**
