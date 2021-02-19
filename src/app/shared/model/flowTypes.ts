@@ -238,6 +238,7 @@ export namespace FlowTypes {
     campaign_list: Reminder_campaign[];
   }
   export interface Reminder_conditionList {
+    /** specific defined actions that have individual methods to determine completion */
     action:
       | "field_evaluation"
       | "reminder_action"
@@ -245,12 +246,16 @@ export namespace FlowTypes {
       | "task_completed"
       | "task_last_completed"
       | "task_first_completed";
+    // WARNING - adding more entries to this list requires evaluation login in Reminders.service.ts
+    /** a generic catch-all for passing specific task ids or event names to evaluation logic */
     value?: string;
     /** specify timing constraint used to evaluate condition
-     * @example {comparison:"before",quantity:3,unit:"appday"}
-     * evaluate true only if condition satifisies occuring earlier than 3 app use days
+     * @example {comparison:">",quantity:3,unit:"appday"}
+     * evaluate true only if condition satifisies occuring within the past 3 app use days ('after 3 days ago')
      */
-    timing?: { comparison: "within" | "before"; quantity: number; unit: "day" | "appday" };
+    timing?: { comparator: ">" | "<="; quantity: number; unit: "day" | "appday" };
+    /** calculated after criteria has been evaluated */
+    _satisfied?: boolean;
   }
   type Reminder_campaign = "campaign_main" | "campaign_evening" | "campaign_morning";
 
