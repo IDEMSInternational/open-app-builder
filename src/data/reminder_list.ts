@@ -24,7 +24,7 @@
             "action": "reminder_action",
             "value": "sent",
             "timing": {
-              "comparison": "within",
+              "comparator": "<=",
               "quantity": 1,
               "unit": "day"
             }
@@ -47,7 +47,7 @@
             "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 1,
               "unit": "day"
             }
@@ -75,7 +75,7 @@
             "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 2,
               "unit": "day"
             }
@@ -86,7 +86,7 @@
             "action": "task_last_completed",
             "value": "task_praise_teen",
             "timing": {
-              "comparison": "within",
+              "comparator": "<=",
               "quantity": 1,
               "unit": "day"
             }
@@ -112,7 +112,7 @@
             "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 3,
               "unit": "day"
             }
@@ -140,7 +140,7 @@
             "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 4,
               "unit": "day"
             }
@@ -173,7 +173,7 @@
             "action": "app_event",
             "value": "first_app_launch",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 7,
               "unit": "day"
             }
@@ -201,7 +201,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 1,
               "unit": "day"
             }
@@ -229,7 +229,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 2,
               "unit": "day"
             }
@@ -240,7 +240,7 @@
             "action": "task_last_completed",
             "value": "task_spend_time",
             "timing": {
-              "comparison": "within",
+              "comparator": "<=",
               "quantity": 1,
               "unit": "day"
             }
@@ -266,7 +266,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 3,
               "unit": "day"
             }
@@ -299,15 +299,19 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 3,
               "unit": "day"
             }
           },
           {
-            "action": "app_launch",
-            "value": "within_1_day",
-            "timing": null
+            "action": "app_event",
+            "value": "app_launch",
+            "timing": {
+              "comparator": "<=",
+              "quantity": 1,
+              "unit": "day"
+            }
           }
         ],
         "deactivation_condition_list": [
@@ -337,7 +341,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 3,
               "unit": "day"
             }
@@ -350,9 +354,13 @@
             "timing": null
           },
           {
-            "action": "app_launch",
-            "value": "within_1_day",
-            "timing": null
+            "action": "app_event",
+            "value": "app_launch",
+            "timing": {
+              "comparator": "<=",
+              "quantity": 1,
+              "unit": "day"
+            }
           },
           {
             "action": "reminder_action",
@@ -375,7 +383,7 @@
             "action": "task_completed",
             "value": "task_mod_1on1_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 5,
               "unit": "day"
             }
@@ -403,7 +411,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 2,
               "unit": "day"
             }
@@ -431,7 +439,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 5,
               "unit": "day"
             }
@@ -459,7 +467,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 3,
               "unit": "day"
             }
@@ -487,7 +495,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 6,
               "unit": "day"
             }
@@ -515,7 +523,7 @@
             "action": "task_completed",
             "value": "task_mod_praise_tips",
             "timing": {
-              "comparison": "before",
+              "comparator": ">",
               "quantity": 6,
               "unit": "day"
             }
