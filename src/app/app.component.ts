@@ -11,6 +11,7 @@ import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { RemindersService } from "./feature/reminders/reminders.service";
+import { AppEventService } from "./shared/services/app-events/app-events.service";
 
 @Component({
   selector: "app-root",
@@ -30,6 +31,7 @@ export class AppComponent {
     private themeService: ThemeService,
     private surveyService: SurveyService,
     private remindersService: RemindersService,
+    private appEventService: AppEventService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService
   ) {
@@ -53,6 +55,7 @@ export class AppComponent {
         this.notifications.init();
       }
       this.remindersService.init();
+      this.appEventService.init();
     });
   }
 
