@@ -1,14 +1,15 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
+import { differenceInHours, subDays, subHours } from "date-fns";
 import { IReminder } from "./reminders.model";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
 import { LocalNotificationSchedule } from "@capacitor/core";
 import { REMINDER_LIST } from "src/app/shared/services/data/data.service";
-import { generateTimestamp } from "src/app/shared/utils";
 import { FlowTypes } from "scripts/types";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { TaskService } from "src/app/shared/services/task/task.service";
+import { AppEventService, IAppEvent } from "src/app/shared/services/app-events/app-events.service";
+import { generateTimestamp } from "src/app/shared/utils";
 
 @Injectable({
   providedIn: "root",
@@ -22,58 +23,145 @@ import { TaskService } from "src/app/shared/services/task/task.service";
  * It is not currently production-ready (2020-11-15 - Chris)
  */
 export class RemindersService {
-  public appday = 0;
+  public app_day: number;
+  public first_app_launch: string;
+  public mockData = MOCK_DATA;
+
   public reminders$ = new BehaviorSubject<IReminder[]>([]);
   public remindersList$ = new BehaviorSubject<FlowTypes.Reminder_listRow[]>([]);
 
   constructor(
     private dbService: DbService,
     private localNotifications: LocalNotificationService,
-    private localStorageService: LocalStorageService,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private appEventService: AppEventService
   ) {}
 
   async init() {
-    this.setAppDay();
-    await this.loadDBReminders();
-    await this.processRemindersList();
+    // await this.loadDBReminders();
+    await this.appEventService.ready();
+    this.app_day = this.appEventService.summary.app_day;
+    this.first_app_launch = this.appEventService.summary.first_app_launch;
+    this.processRemindersList();
   }
 
-  public activateReminder() {}
+  public async setMockData(data: any) {
+    if (data) {
+      const { app_day, first_app_launch } = data;
+      this.app_day = app_day;
+      this.first_app_launch = first_app_launch;
+      this.processRemindersList();
+    } else {
+      this.init();
+    }
+  }
 
   public triggerReminderAction(r: FlowTypes.Reminder_listRow) {
-    console.log("triggering reminder action", r);
     const { start_action, start_action_args, flow_type, reminder_id } = r;
     const id = `${reminder_id}_action`;
     this.taskService.runAction({ flow_type, id, flow_name: start_action_args, start_action });
   }
 
-  public deactivateReminder() {}
-
-  /** Use local storage to track all days the app has been used, and set the total as the current appday */
-  private setAppDay() {
-    const appdays = this.localStorageService.getJSON("appdays") || {};
-    const todaysDate = generateTimestamp().substring(0, 10);
-    appdays[todaysDate] = true;
-    this.localStorageService.setJSON("appdays", appdays);
-    this.appday = Object.keys(appdays).length;
-  }
-
-  private async processRemindersList() {
+  private processRemindersList() {
     // check pending reminders
     const pendingReminders = this.reminders$.value;
     console.log("pending reminders", pendingReminders);
     // check deactivation
 
     const remindersList = REMINDER_LIST[0].rows.map((r) => {
-      //
-      this.evaluateReminderCondition(r);
+      // TODO - should it be all conditions satisfied or just any? Assume all
+      r.activation_condition_list = r.activation_condition_list.map((condition) => {
+        const evaluation = this.evaluateReminderCondition(condition);
+        return { ...condition, _satisfied: evaluation };
+      });
+      (r as any)._satisfied = r.activation_condition_list.every(
+        (condition) => condition._satisfied
+      );
       return r;
     });
     this.remindersList$.next(remindersList);
+    console.log("remindersList", remindersList);
   }
-  private evaluateReminderCondition(r: FlowTypes.Reminder_listRow) {
+
+  private evaluateReminderCondition(condition: FlowTypes.Reminder_conditionList): boolean {
+    const { action, value, timing } = condition;
+    const evaluators: {
+      [key in FlowTypes.Reminder_conditionList["action"]]: () => string | number;
+    } = {
+      app_event: () => this.getTargetAppEventValue(value as any),
+      field_evaluation: () => undefined,
+      reminder_action: () => undefined,
+      task_completed: () => this.getTaskCompleteValue(value as any),
+      task_first_completed: () => this.getTaskCompleteValue(value as any),
+      task_last_completed: () => this.getTaskCompleteValue(value as any),
+    };
+    const evaluateValue: string | number = evaluators[action]();
+    if (evaluateValue === undefined) {
+      // not yet implemented
+      return undefined;
+    }
+
+    if (timing && evaluateValue) {
+      const evaluation = this.evaluateTimingCondition(evaluateValue, timing);
+      return evaluation;
+    } else {
+      return evaluateValue !== undefined;
+    }
+
     // console.log("evaluate reminder", r);
+  }
+
+  private evaluateTimingCondition(
+    evaluateValue: string | number,
+    timing: FlowTypes.Reminder_conditionList["timing"]
+  ) {
+    console.log("evaluating", evaluateValue, timing);
+    const { comparator, quantity, unit } = timing;
+    switch (unit) {
+      case "day":
+        const dayDiff = differenceInHours(new Date(), new Date(evaluateValue)) / 24;
+        console.log(evaluateValue, dayDiff);
+        return this._compare(dayDiff, comparator, quantity);
+
+      case "appday":
+        const appDayToday = this.app_day;
+        const appDayDiff = appDayToday - (evaluateValue as number);
+        return this._compare(appDayDiff, comparator, quantity);
+    }
+  }
+
+  private getTargetAppEventValue(id: IAppEvent["event_id"]) {
+    switch (id) {
+      case "first_app_launch":
+        return this.first_app_launch;
+      case "app_launch":
+        // most recent
+        return this.appEventService.appEventsById.app_launch.pop()?._created || null;
+      default:
+        console.error("No app event evaluation specified for:", id);
+        break;
+    }
+  }
+
+  private getTaskCompleteValue(id, instance: "first" | "last" = "last") {
+    // TODO
+    return undefined;
+  }
+
+  private _compare(
+    a: string | number,
+    comparator: FlowTypes.Reminder_conditionList["timing"]["comparator"],
+    b: string | number
+  ) {
+    switch (comparator) {
+      case ">":
+        return a > b;
+      case "<=":
+        return a <= b;
+      default:
+        console.error("comparator not included:", comparator);
+        break;
+    }
   }
 
   /************************************************************************************
@@ -141,3 +229,21 @@ export class RemindersService {
     }
   }
 }
+
+const MOCK_DATA = [
+  {
+    label: "First Load",
+    app_day: 1,
+    first_app_launch: generateTimestamp(),
+  },
+  {
+    label: "Day 4",
+    app_day: 4,
+    first_app_launch: generateTimestamp(subHours(subDays(new Date(), 3), 1)),
+  },
+  {
+    label: "Day 8",
+    app_day: 8,
+    first_app_launch: generateTimestamp(subHours(subDays(new Date(), 7), 1)),
+  },
+];
