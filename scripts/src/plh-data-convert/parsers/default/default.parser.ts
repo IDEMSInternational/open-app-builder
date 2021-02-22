@@ -101,9 +101,9 @@ export class DefaultParser implements AbstractParser {
   private extractGroup(startIndex = 0): IRowData[] {
     let nestedIfCount = 0;
     const endIndex = this.queue.slice(startIndex).findIndex((row) => {
-      const { type } = row;
-      if (type && type.startsWith("begin_")) nestedIfCount++;
-      if (type && type.startsWith("end_")) nestedIfCount--;
+      const type = row.type || "";
+      if (type.startsWith("begin_")) nestedIfCount++;
+      if (type.startsWith("end_")) nestedIfCount--;
       return nestedIfCount === 0;
     });
     if (endIndex === -1) {
