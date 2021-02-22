@@ -3,7 +3,7 @@ import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
 // When running this parser assumes there is a 'type' column
-type IRowData = { type: string };
+type IRowData = { type: string, name?: string };
 
 /** Prefix for use with images in the app */
 const ASSETS_BASE = "assets/plh_assets";
@@ -18,6 +18,9 @@ const ASSETS_CACHE_PATH = "src/gdrive-download/cache/plh_assets";
  * - Rewrite `_list` content as string array
  */
 export class DefaultParser implements AbstractParser {
+
+  public groupSuffix = "_group";
+
   /** All rows are handled in a queue, processing linearly */
   private queue: IRowData[];
   private summary = { missingAssets: [] };
@@ -66,9 +69,11 @@ export class DefaultParser implements AbstractParser {
     const type = row.type || "";
     if (type.startsWith("begin_")) {
       const group = this.extractGroup();
-      const groupType = type.replace("begin_", "") + "_group";
-      const parsedGroup = new DefaultParser().run({ ...flow, rows: group });
-      return { type: groupType, rows: parsedGroup.rows };
+      const groupType = type.replace("begin_", "") + this.groupSuffix;
+      const subParser = new DefaultParser();
+      subParser.groupSuffix = this.groupSuffix;
+      const parsedGroup = subParser.run({ ...flow, rows: group });
+      return { ...row, type: groupType, rows: parsedGroup.rows };
     }
     // Can ignore as handled during subgroup extraction
     if (type.startsWith("end_")) {

@@ -1,0 +1,12 @@
+.template-container {
+    width: 100%;
+    height: 100%;
+
+    &.passive {
+        background-color: var(--theme-var-templatePassiveBg, #E3F4FF);
+    }
+
+    &.active {
+        background-color: var(--theme-var-templateActiveBg, #FFF6D6);
+    }
+}

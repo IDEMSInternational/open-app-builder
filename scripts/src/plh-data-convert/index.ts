@@ -2,7 +2,7 @@ import * as fs from "fs-extra";
 import * as xlsx from "xlsx";
 import * as path from "path";
 import chalk from "chalk";
-import { ConversationParser, DefaultParser } from "./parsers";
+import { ConversationParser, DefaultParser, TemplateParser } from "./parsers";
 import {
   groupJsonByKey,
   recursiveFindByExtension,
@@ -79,6 +79,7 @@ function applyDataParsers(
   const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
     conversation: new ConversationParser(),
     task_list: new TaskListParser(dataByFlowType, allTasksById),
+    template: new TemplateParser()
   };
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
