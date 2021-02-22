@@ -18,6 +18,8 @@ import { TmplTemplateGroupComponent } from "./components/template_group";
 import { TmplSetVariableComponent } from "./components/set_variable";
 import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
 import { AnimatedSectionComponent } from "./components/animated_section";
+import { TmplTimerComponent } from "./components/timer";
+import { TmplSliderComponent } from "./components/slider";
 
 const TEMPLATE_COMPONENTS = [
     TmplTextComponent,
@@ -30,7 +32,9 @@ const TEMPLATE_COMPONENTS = [
     TmplVideoComponent,
     TmplTemplateGroupComponent,
     AnimatedSectionComponent,
-    TmplSetVariableComponent
+    TmplSetVariableComponent,
+    TmplTimerComponent,
+    TmplSliderComponent
 ];
 
 @NgModule({

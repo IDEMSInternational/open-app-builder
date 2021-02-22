@@ -461,5 +461,82 @@
         ]
       }
     ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "slider_example",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider",
+        "name": "slider_1",
+        "action_list": [
+          "set_local | slider_value"
+        ],
+        "parameter_list": [
+          "min: 0",
+          "max: 10",
+          ""
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "The slider value is @local.slider_value"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "button_example",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_1",
+        "value": "Button 1"
+      },
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "previous_button",
+            "value": "Previous",
+            "parameter_list": [
+              "color: primary"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "next_button",
+            "value": "Next",
+            "parameter_list": [
+              "color: secondary"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "timer_example",
+    "status": "released",
+    "rows": [
+      {
+        "type": "timer",
+        "name": "default_timer",
+        "comments": "Should use default values from component_defaults sheet"
+      },
+      {
+        "type": "timer",
+        "name": "5_min_timer",
+        "value": 5,
+        "parameter_list": [
+          "timer_title: Timer 2"
+        ]
+      }
+    ]
   }
 ]

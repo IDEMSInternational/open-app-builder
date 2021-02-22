@@ -22,6 +22,7 @@ export namespace FlowTypes {
     | "tour"
     | "habit_ideas"
     | "template"
+    | "component_defaults"
     | "home_page";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
@@ -281,6 +282,8 @@ export namespace FlowTypes {
     | "video"
     | "display_theme"
     | "template"
+    | "timer"
+    | "slider"
     | "template_group";
 
   export interface TemplateRow {
@@ -289,10 +292,24 @@ export namespace FlowTypes {
     value?: any;
     action_list?: string[];
     parameter_list?: string[];
-    comments?: string;
     hidden?: boolean | string;
     rows?: TemplateRow[];
+
+    /* Used for authoring comments. Not used in code */
+    comments?: string;
     __EMPTY?: any;
+  }
+
+  /* Used for setting default parameters for template components */
+  export interface Component_defaults extends FlowTypeBase {
+    flow_type: "component_defaults";
+    rows: Component_defaultsRow[];
+  }
+
+  export interface Component_defaultsRow {
+    parameter: string;
+    default_value?: string | number | boolean;
+    comments?: string; /* Used for authoring comments. Not used in code */
   }
 
 }

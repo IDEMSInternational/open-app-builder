@@ -14,6 +14,7 @@ import { habit_ideas } from "src/data/habit_ideas";
 import { tour } from "src/data/tour";
 import { home_page } from "src/data/home_page";
 import { template } from "src/data/template";
+import { component_defaults } from "src/data/component_defaults";
 
 export const COMPLETION_LIST = completion_list;
 export const CONVERSATION = conversation;
@@ -28,6 +29,7 @@ export const HABIT_IDEAS = habit_ideas;
 export const TOUR = tour;
 export const HOME_PAGE = home_page;
 export const TEMPLATE = template;
+export const COMPONENT_DEFAULTS = component_defaults;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
 const mapping: { [key in FlowTypes.FlowType] } = {
@@ -43,7 +45,8 @@ const mapping: { [key in FlowTypes.FlowType] } = {
   habit_ideas: HABIT_IDEAS,
   tour: TOUR,
   home_page: HOME_PAGE,
-  template: TEMPLATE
+  template: TEMPLATE,
+  component_defaults: COMPONENT_DEFAULTS
 };
 
 /**
