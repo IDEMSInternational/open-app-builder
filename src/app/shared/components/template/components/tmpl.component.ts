@@ -11,6 +11,8 @@ import { TmplTemplateGroupComponent } from "./template_group";
 import { TmplTextComponent } from "./text";
 import { TmplVideoComponent } from "./video";
 import { AnimatedSectionComponent } from "./animated_section";
+import { TmplSliderComponent } from "./slider";
+import { TmplTimerComponent } from "./timer";
 
 export interface ITemplateComponent {
   template: FlowTypes.Template;
@@ -32,7 +34,9 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   template: TmplTemplateGroupComponent,
   nested_properties: TmplSetVariableComponent,
   video: TmplVideoComponent,
-  display_theme: TmplSetVariableComponent
+  display_theme: TmplSetVariableComponent,
+  slider: TmplSliderComponent,
+  timer: TmplTimerComponent
 };
 
 @Directive({
