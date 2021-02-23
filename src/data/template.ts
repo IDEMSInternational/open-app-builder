@@ -3,6 +3,29 @@
   export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
+    "flow_name": "timer",
+    "status": "released",
+    "rows": [
+      {
+        "type": "timer",
+        "name": "default_timer",
+        "value": null,
+        "comments": "",
+        "action_list": [],
+        "parameter_list": []
+      },
+      {
+        "type": "timer",
+        "name": "5_min_timer",
+        "value": 5,
+        "comments": "",
+        "action_list": ['set_value|leftButton|run','set_value|leftButton|pause'],
+        "parameter_list": ["title:Timer 2"]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
     "flow_name": "template_watch_together",
     "status": "released",
     "rows": [

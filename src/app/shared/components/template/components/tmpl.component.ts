@@ -14,6 +14,8 @@ import { AnimatedSectionComponent } from "./animated_section";
 import { TmplSliderComponent } from "./slider";
 import { TmplTimerComponent } from "./timer";
 import { NavGroupComponent } from "./nav_group";
+import { TimerComponent } from "./timer/timer.component";
+import { RoundIconButtonComponent} from "./round-icon-button/round-icon-button.component";
 
 export interface ITemplateComponent {
   template: FlowTypes.Template;
@@ -37,9 +39,10 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   video: TmplVideoComponent,
   display_theme: TmplSetVariableComponent,
   slider: TmplSliderComponent,
-  timer: TmplTimerComponent,
   nav_group: NavGroupComponent,
-  nav_section: AnimatedSectionComponent
+  nav_section: AnimatedSectionComponent,
+  timer: TimerComponent,
+  round_button: RoundIconButtonComponent
 };
 
 @Directive({
