@@ -9,6 +9,8 @@ import { PLHMainHeaderComponent } from "./components/plh-main-header";
 import { PLHMainTabsComponent } from "./components/plh-main-tabs";
 import { RouterModule } from "@angular/router";
 import { TemplateComponentsModule } from "./components/template/template.module";
+import { RoundIconButtonComponent } from "./components/template/components/round-icon-button/round-icon-button.component";
+import { TimerComponent } from "./components/template/components/timer/timer.component";
 
 const Components = [
   BlobComponent,
@@ -16,7 +18,9 @@ const Components = [
   ReflectAnimationComponent,
   StressedMultiHandAnimComponent,
   PLHMainHeaderComponent,
-  PLHMainTabsComponent
+  PLHMainTabsComponent,
+  RoundIconButtonComponent,
+  TimerComponent
 ];
 
 @NgModule({

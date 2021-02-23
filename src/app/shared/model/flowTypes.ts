@@ -338,9 +338,10 @@ export namespace FlowTypes {
     | "template"
     | "timer"
     | "slider"
+    | "template_group"
+    | "round_button"
     | "nav_group"
-    | "nav_section"
-    | "template_group";
+    | "nav_section";
 
   export interface TemplateRow {
     type?: TemplateRowType;
