@@ -61,8 +61,8 @@ export class TimerComponent implements ITemplateComponent, OnInit {
 
   changeState(state: TimerState) { 
     this.state = state;
-    this.leftButton = this.generateButtonTemplateRow(this.leftButtonAction, this.leftButtonIcon, this.leftButtonName);
-    this.rightButton = this.generateButtonTemplateRow(this.rightButtonAction, this.rightButtonIcon, this.rightButtonName);
+    this.leftButton = this.generateButtonTemplateRow(this.leftButtonIcon, this.leftButtonName);
+    this.rightButton = this.generateButtonTemplateRow(this.rightButtonIcon, this.rightButtonName);
   }
   
 
@@ -78,13 +78,13 @@ export class TimerComponent implements ITemplateComponent, OnInit {
    this.state.editTimer(val, type);
   }
 
-  generateButtonTemplateRow(action: string, value: string, name: string): FlowTypes.TemplateRow {
+  generateButtonTemplateRow(value: string, name: string): FlowTypes.TemplateRow {
     return {
       "type": "round_button",
       "name": name,
       "value": value,
       "comments": "",
-      "action_list": [action]
+      "action_list": []
     }
   }
 }
@@ -118,7 +118,7 @@ class PlayingState extends State {
     this.timer.rightButtonAction = 'increase';
     this.timer.rightButtonIcon = 'reload-outline';
     this.timer.rightButtonName = 'increase_timer';
-    this.timer.isTimerEditable = true;
+    this.timer.isTimerEditable = false;
     this.countDown();
   }
 
@@ -155,7 +155,7 @@ class PausedState extends State {
     this.timer.rightButtonAction = 'refresh';
     this.timer.rightButtonIcon = 'sync-outline';
     this.timer.rightButtonName = 'refresh_timer';
-    this.timer.isTimerEditable = false;
+    this.timer.isTimerEditable = true;
   }
 
   clickLeftButton() {
