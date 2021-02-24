@@ -7,20 +7,30 @@
     "status": "released",
     "rows": [
       {
-        "parameter": "title",
-        "default_value": "Title"
+        "name": "title",
+        "value": "Title"
       },
       {
-        "parameter": "help",
-        "default_value": "Help text for timer."
+        "name": "help",
+        "value": "Help text for timer."
       },
       {
-        "parameter": "duration",
-        "default_value": 10
+        "name": "duration",
+        "value": 10
       },
       {
-        "parameter": "duration_extension",
-        "default_value": 1
+        "name": "duration_extension",
+        "value": 1
+      },
+      {
+        "type": "timer",
+        "name": "timer",
+        "parameter_list": [
+          "title | @local.title",
+          "duration_extension | @local.duration_extension",
+          "help | @local.help",
+          "duration | @local.duration"
+        ]
       }
     ]
   }
