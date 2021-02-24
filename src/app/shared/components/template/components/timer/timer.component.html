@@ -1,6 +1,15 @@
 <div class="round-container round-container-br-15">
-  <h2>{{title}}</h2>
+  <div class="timer-row">
+    <h2 class="timer-title">{{title}}</h2>
+  <ion-icon name="help-circle-outline" class="timer-help"></ion-icon>
+  </div>
   <div class="timer-content">
-    <plh-round-button [row]="currLeftButton" [template]="template" [localVariables]="{}"></plh-round-button>
+    <plh-round-button [row]="leftButton" [template]="template" [localVariables]="{}" (click)="clickLeftButton()"></plh-round-button>
+    <div class="timer-counter round-container round-container-br-15">
+      <input type="number" [value]="minutes" min="0" max="99" (change)="editTimer($event.target.value, 'mm')" [disabled]="isTimerEditable"> 
+      <h2>:</h2>
+      <input type="number" [value]="seconds" min="0" max="59" (change)="editTimer($event.target.value, 'ss')" [disabled]="isTimerEditable">
+    </div>
+    <plh-round-button [row]="rightButton" [template]="template" [localVariables]="{}" (click)="clickRightButton()"></plh-round-button>
   </div>
 </div>
