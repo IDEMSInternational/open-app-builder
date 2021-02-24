@@ -362,8 +362,24 @@
         "value": "workshop_activity",
         "rows": [
           {
+            "name": "activity_image",
+            "value": "plh_images/menu_icons/menu_care_packages_icon.svg"
+          },
+          {
             "type": "nested_properties",
-            "rows": []
+            "name": "intro",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "nav_buttons",
+                "rows": [
+                  {
+                    "name": "button_completed",
+                    "value": "Complete Override"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -464,30 +480,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "slider_example",
-    "status": "released",
-    "rows": [
-      {
-        "type": "slider",
-        "name": "slider_1",
-        "action_list": [
-          "set_local | slider_value"
-        ],
-        "parameter_list": [
-          "min: 0",
-          "max: 10",
-          ""
-        ]
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "The slider value is @local.slider_value"
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
     "flow_name": "button_example",
     "status": "released",
     "rows": [
@@ -515,26 +507,6 @@
               "color: secondary"
             ]
           }
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "timer_example",
-    "status": "released",
-    "rows": [
-      {
-        "type": "timer",
-        "name": "default_timer",
-        "comments": "Should use default values from component_defaults sheet"
-      },
-      {
-        "type": "timer",
-        "name": "5_min_timer",
-        "value": 5,
-        "parameter_list": [
-          "timer_title: Timer 2"
         ]
       }
     ]
