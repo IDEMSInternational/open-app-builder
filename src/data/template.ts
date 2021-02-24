@@ -17,9 +17,9 @@
       {
         "type": "timer",
         "name": "5_min_timer",
-        "value": 5,
+        "value": 600,
         "comments": "",
-        "action_list": ['set_value|leftButton|run','set_value|leftButton|pause'],
+        "action_list": [],
         "parameter_list": ["title:Timer 2"]
       }
     ]
