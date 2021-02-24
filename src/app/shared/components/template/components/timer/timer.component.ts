@@ -51,7 +51,7 @@ export class TimerComponent implements ITemplateComponent, OnInit {
   }
 
   ngOnInit() {
-    this.value = this.row.value;
+    this.value = this.row.value || 60 * 10;
     this.title = getStringParamFromTemplateRow(this.row, 'title', "Timer");
     this.timerDurationExtension = getNumberParamFromTemplateRow(this.row, 'timer_duration_extension', 60);
     this.state.callOnInit();
