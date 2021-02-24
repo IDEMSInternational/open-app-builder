@@ -31,7 +31,7 @@
         "start_action_args": "praise_1",
         "priority": 2,
         "activation_condition_list": [
-          "first_app_launch | before_1_day"
+          "app_first_launch | before_1_day"
         ],
         "deactivation_condition_list": [
           "sent"
@@ -47,7 +47,7 @@
         "start_action_args": "mod_welcome_praise_teen",
         "priority": 1,
         "activation_condition_list": [
-          "first_app_launch | before_2_day"
+          "app_first_launch | before_2_day"
         ],
         "deactivation_condition_list": [
           "task_last_completed | task_praise_teen | within_1_day",
@@ -64,7 +64,7 @@
         "start_action_args": "mod_welcome_relax",
         "priority": 1,
         "activation_condition_list": [
-          "first_app_launch | before_3_day"
+          "app_first_launch | before_3_day"
         ],
         "deactivation_condition_list": [
           "sent"
@@ -80,7 +80,7 @@
         "start_action_args": "mod_welcome_photo_activity",
         "priority": 1,
         "activation_condition_list": [
-          "first_app_launch | before_4_day"
+          "app_launch:first | before:4:day"
         ],
         "deactivation_condition_list": [
           "task_completed | task_welcome_photo_activity",
@@ -97,7 +97,7 @@
         "start_action_args": "mod_1on1_unlocked",
         "priority": 1,
         "activation_condition_list": [
-          "first_app_launch | before_7_day"
+          "app_first_launch | before_7_day"
         ],
         "deactivation_condition_list": [
           "sent"
@@ -132,7 +132,7 @@
           "task_completed | task_mod_1on1_tips | before_2_day"
         ],
         "deactivation_condition_list": [
-          "task_last_completed | task_spend_time | within_1_day",
+          "task_completed:first| task_spend_time | within:1:day",
           "sent"
         ],
         "campaign_list": [
