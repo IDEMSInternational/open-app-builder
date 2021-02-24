@@ -60,7 +60,10 @@ export class TmplTemplateGroupComponent implements ITemplateComponent {
       return parentRow;
     }
     if (parentRow.rows) {
-      parentRow.rows = parentRow.rows.map((r) => this.overrideRow(r, overrideTree[r.name]));
+      parentRow.rows = parentRow.rows.map((r) => {
+        const subtree = overrideTree[parentRow.name];
+        return this.overrideRow(r, subtree);
+      });
     }
     let matchingOurRow = Object.keys(overrideTree)
       .map((prop) => overrideTree[prop])
