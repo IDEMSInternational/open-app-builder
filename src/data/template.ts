@@ -17,7 +17,7 @@
       {
         "type": "timer",
         "name": "5_min_timer",
-        "value": 600,
+        "value": 300,
         "comments": "",
         "action_list": [],
         "parameter_list": ["title:Timer 2"]
