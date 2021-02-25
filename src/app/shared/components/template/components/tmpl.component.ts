@@ -12,6 +12,7 @@ import { TmplTextComponent } from "./text";
 import { TmplVideoComponent } from "./video";
 import { AnimatedSectionComponent } from "./animated_section";
 import { TmplSliderComponent } from "./slider";
+import { SliderComponent } from "./slider/slider.component";
 import {TmplTimerComponent} from "./timer/timer.component";
 import { NavGroupComponent } from "./nav_group";
 import { RoundIconButtonComponent} from "./round-icon-button/round-icon-button.component";
