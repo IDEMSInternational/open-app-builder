@@ -1,15 +1,22 @@
 <div class="round-container round-container-br-15">
   <div class="timer-row">
-    <h2 class="timer-title">{{title}}</h2>
-  <ion-icon name="help-circle-outline" class="timer-help"></ion-icon>
+    <h2 class="timer-title" >{{title}}</h2>
+  <ion-icon *ngIf="help" name="help-circle-outline" class="timer-help" [pTooltip]="help" tooltipPosition="right" tooltipEvent="click"></ion-icon>
   </div>
   <div class="timer-content">
-    <plh-round-button [row]="leftButton" [template]="template" [localVariables]="{}" (click)="clickLeftButton()"></plh-round-button>
-    <div class="timer-counter round-container round-container-br-15">
-      <input type="number" [value]="minutes" min="0" max="99" (change)="editTimer($event.target.value, 'mm')" [disabled]="!isTimerEditable"> 
+    <ion-button class="add-min" (click)="clickLeftButton()">
+      <img [src]="isTimerEditable ? '/assets/plh_assets/plh_images/other_icons/play.svg' : '/assets/plh_assets/plh_images/other_icons/pause.svg'" alt="">
+    </ion-button>
+    <div class="timer-counter round-container round-container-br-15" (click)="openPicker()">
+      <input type="number" #min [value]="minutes" min="0" max="99" [disabled]="true">
       <h2>:</h2>
-      <input type="number" [value]="seconds" min="0" max="59" (change)="editTimer($event.target.value, 'ss')" [disabled]="!isTimerEditable">
+      <input type="number" #sec
+             [value]="seconds" min="0" max="59"
+             [disabled]="true"
+      >
     </div>
-    <plh-round-button [row]="rightButton" [template]="template" [localVariables]="{}" (click)="clickRightButton()"></plh-round-button>
+    <ion-button class="add-min"  (click)="clickRightButton()">
+      <img class="right-icon" [class.left-icon]="!isTimerEditable" [src]="!isTimerEditable ? '/assets/plh_assets/plh_images/other_icons/add-time.svg' : '/assets/plh_assets/plh_images/other_icons/repeat.svg'" alt="">
+    </ion-button>
   </div>
 </div>
