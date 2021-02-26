@@ -12,7 +12,9 @@
         "value": null,
         "comments": "",
         "action_list": [],
-        "parameter_list": []
+        "parameter_list": [
+          "help: Some text help"
+        ]
       },
       {
         "type": "timer",
@@ -530,6 +532,27 @@
               "color: secondary"
             ]
           }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "timer_example",
+    "status": "released",
+    "rows": [
+      {
+        "type": "timer",
+        "name": "default_timer",
+        "comments": "Should use default values from component_defaults sheet",
+      },
+      {
+        "type": "timer",
+        "name": "5_min_timer",
+        "value": 5,
+
+        "parameter_list": [
+          "timer_title: Timer 2"
         ]
       }
     ]

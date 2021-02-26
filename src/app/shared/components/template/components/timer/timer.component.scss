@@ -6,9 +6,8 @@
 }
 .timer-counter {
     width: 200px;
-    height: 65px;
-    margin-left: 11px;
-    margin-right: 11px;
+    height: 73px;
+    margin: 0 7px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,10 +15,10 @@
     input {
         background-color: #FFF;
         border: none;
-        width: 32px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         font-weight: bold;
-        font-size: 25px;
+        font-size: 31px;
         color: #0D3F60;
     }
 
@@ -34,17 +33,38 @@
     justify-content: center;
 }
 .timer-title {
-   margin-left: 17px;
+   margin-left: 8px;
 }   
 
 .timer-help {
     margin-top: 15px;
     margin-left: 10px;
     color: #0D3F60;
-    height: 22px;
-    width: 22px;
+    height: 32px;
+    width: 32px;
 }
 
 .timer-row {
     display: flex;
 }
+.add-min{
+    width: 64px;
+    height: 64px;
+    --background: #00A0CC;
+    --background-size: cover;
+    --border-radius: 50%;
+    --padding:0;
+    //--box-shadow: none;
+    .right-icon{
+        //width: 72px !important;
+        //height: 72px !important;
+        max-width: none;
+        //position: absolute;
+        top: 0;
+    }
+    .left-icon{
+        margin-top: 8px;
+        //top: 5px;
+    }
+}
+
