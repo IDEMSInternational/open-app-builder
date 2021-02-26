@@ -284,6 +284,8 @@ export namespace FlowTypes {
     | "template"
     | "timer"
     | "slider"
+    | "nav_group"
+    | "nav_section"
     | "template_group";
 
   export interface TemplateRow {
