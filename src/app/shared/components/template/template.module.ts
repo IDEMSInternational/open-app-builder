@@ -20,6 +20,7 @@ import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
 import { AnimatedSectionComponent } from "./components/animated_section";
 import { TmplTimerComponent } from "./components/timer";
 import { TmplSliderComponent } from "./components/slider";
+import { NavGroupComponent } from "./components/nav_group";
 
 const TEMPLATE_COMPONENTS = [
     TmplTextComponent,
@@ -34,7 +35,8 @@ const TEMPLATE_COMPONENTS = [
     AnimatedSectionComponent,
     TmplSetVariableComponent,
     TmplTimerComponent,
-    TmplSliderComponent
+    TmplSliderComponent,
+    NavGroupComponent
 ];
 
 @NgModule({

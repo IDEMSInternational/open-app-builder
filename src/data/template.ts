@@ -480,30 +480,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "slider_example",
-    "status": "released",
-    "rows": [
-      {
-        "type": "slider",
-        "name": "slider_1",
-        "action_list": [
-          "set_local | slider_value"
-        ],
-        "parameter_list": [
-          "min | 0",
-          "max | 10",
-          ""
-        ]
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "The slider value is @local.slider_value"
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
     "flow_name": "button_example",
     "status": "released",
     "rows": [
@@ -529,6 +505,49 @@
             "value": "Next",
             "parameter_list": [
               "color: secondary"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "nav_test",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_1",
+        "value": "Button 1"
+      },
+      {
+        "type": "nav_group",
+        "rows": [
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "https://freesvg.org/img/lemmling-2D-cartoon-elephant.png"
+              },
+              {
+                "type": "text",
+                "value": "Don't think of an elephant"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "https://freesvg.org/img/lemmling-2D-cartoon-elephant.png"
+              },
+              {
+                "type": "text",
+                "value": "What are you thinking of?"
+              }
             ]
           }
         ]
