@@ -17,8 +17,9 @@ export class TaskActionService {
   activeTasks: { [task_id: string]: ITaskEntry } = {};
   /** A single session entry will be created each app session for storing other meta tasks */
   activeSession: ITaskEntry;
-  /** An active stream of actions for subcription */
+  /** An active stream of actions for subscription */
   action$ = new Subject<ITaskAction & { task_id: string }>();
+
   /** Track time when app loses focus to calculate overall inactivity time */
   private appInactiveStartTime = new Date().getTime();
   /** Don't log inactivity periods lower than this number (30000ms = 30s) */
