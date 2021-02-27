@@ -36,14 +36,14 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
  * Similar as arrayToHashmap, but instead allows duplicate id entries, storing values in an array by hash keyfield
  * @param keyfield any unique field which all array objects contain to use as hash keys (e.g. 'id')
  */
-export function arrayToHashmapArray<T>(arr: T[], keyfield: string) {
+export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
   const hashmap: { [key: string]: T[] } = {};
   for (const el of arr) {
     if (el.hasOwnProperty(keyfield)) {
-      if (!hashmap[el[keyfield]]) {
-        hashmap[el[keyfield]] = [];
+      if (!hashmap[el[keyfield as string]]) {
+        hashmap[el[keyfield as string]] = [];
       }
-      hashmap[el[keyfield]].push(el);
+      hashmap[el[keyfield as string]].push(el);
     }
   }
   return hashmap;
