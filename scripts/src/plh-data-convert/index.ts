@@ -39,7 +39,7 @@ async function main() {
     const json = convertXLSXSheetsToJson(xlsxPath);
     combined.push({ json, xlsxPath });
   }
-  // merge and collage plh data, write some extra files for logging/debugging purposes
+  // merge and collate plh data, write some extra files for logging/debugging purposes
   const merged = mergePLHData(combined);
   fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
   const dataByFlowType = groupJsonByKey(merged, "flow_type");
