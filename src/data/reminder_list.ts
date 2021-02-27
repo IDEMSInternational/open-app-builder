@@ -45,7 +45,8 @@
         "activation_condition_list": [
           {
             "action": "app_event",
-            "value": "first_app_launch",
+            "value": "app_launch",
+            "entry": "first",
             "timing": {
               "comparator": ">",
               "quantity": 1,
@@ -73,7 +74,8 @@
         "activation_condition_list": [
           {
             "action": "app_event",
-            "value": "first_app_launch",
+            "value": "app_launch",
+            "entry": "first",
             "timing": {
               "comparator": ">",
               "quantity": 2,
@@ -83,7 +85,7 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "task_last_completed",
+            "action": "task_completed",
             "value": "task_praise_teen",
             "timing": {
               "comparator": "<=",
@@ -110,7 +112,8 @@
         "activation_condition_list": [
           {
             "action": "app_event",
-            "value": "first_app_launch",
+            "value": "app_launch",
+            "entry": "first",
             "timing": {
               "comparator": ">",
               "quantity": 3,
@@ -138,7 +141,8 @@
         "activation_condition_list": [
           {
             "action": "app_event",
-            "value": "first_app_launch",
+            "value": "app_launch",
+            "entry": "first",
             "timing": {
               "comparator": ">",
               "quantity": 4,
@@ -171,7 +175,8 @@
         "activation_condition_list": [
           {
             "action": "app_event",
-            "value": "first_app_launch",
+            "value": "app_launch",
+            "entry": "first",
             "timing": {
               "comparator": ">",
               "quantity": 7,
@@ -237,8 +242,9 @@
         ],
         "deactivation_condition_list": [
           {
-            "action": "task_last_completed",
+            "action": "task_completed",
             "value": "task_spend_time",
+            "entry": "first",
             "timing": {
               "comparator": "<=",
               "quantity": 1,

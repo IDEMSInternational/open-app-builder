@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import { FlowTypes } from "../../../../types";
 import { DefaultParser } from "../default/default.parser";
 
@@ -26,14 +27,23 @@ export class ReminderListParser extends DefaultParser {
 function extractConditionList(conditionText: string) {
   conditionText = _replaceShorthandText(conditionText);
   let [actionStr, value, timingStr] = conditionText.split("|").map((s: string) => s.trim());
-  const action = actionStr as FlowTypes.Reminder_conditionList["action"];
+  const [action, entry] = actionStr.split(":").map((s) => s.trim() as any);
   let timing: FlowTypes.Reminder_conditionList["timing"] = null;
   if (timingStr) {
-    const [comparatorText, quantity, unit] = timingStr.split("_").map((s: string) => s.trim());
+    const [comparatorText, quantity, unit] = timingStr.split(":").map((s: string) => s.trim());
     const comparator = _extractComparator(comparatorText);
     timing = { comparator, quantity: quantity ? Number(quantity) : null, unit } as any;
   }
-  return { action, value, timing };
+  const condition: FlowTypes.Reminder_conditionList = { action, value, entry, timing };
+  Object.values(condition).forEach((v) => {
+    if (typeof v === "string" && v.includes(":")) {
+      console.error(chalk.red(`condition not fully parsed: ${conditionText}`));
+      console.error(condition);
+      console.error(chalk.red(v));
+      process.exit(1);
+    }
+  });
+  return condition;
 }
 
 /**
@@ -41,16 +51,20 @@ function extractConditionList(conditionText: string) {
  * replace these with full specifications
  */
 function _replaceShorthandText(text: string) {
+  // a maximum of 1 replacement will be made, so order in terms of specifivity
   const shorthandReplacements = {
     sent: "reminder_action | sent",
-    first_app_launch: "app_event | first_app_launch",
+    first_launch: "app_event:first | app_launch",
     app_launch: "app_event | app_launch",
   };
-  Object.entries(shorthandReplacements).forEach(([original, replacement]) => {
+  Object.entries(shorthandReplacements).some(([original, replacement]) => {
     // use a regular expression to prevent matching words that have additional content before
     // e.g. app_launch should not match on first_app_launch (start of string regex)
     const regex = new RegExp(`^${original}`);
     text = text.replace(regex, replacement);
+    // if a match has been found return a true value so that future matches are not made
+    // (e.g. prevent app_launch match running after first_launch match)
+    return regex.test(text);
   });
   return text;
 }
@@ -73,6 +87,7 @@ function _extractComparator(
     case "within":
       return "<=";
     default:
-      throw new Error(`Reminder timing comparison not defined: ${text}`);
+      console.error(chalk.red(`Reminder timing comparison not defined: ${text}`));
+      process.exit(1);
   }
 }

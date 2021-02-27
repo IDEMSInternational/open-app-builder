@@ -243,12 +243,13 @@ export namespace FlowTypes {
       | "field_evaluation"
       | "reminder_action"
       | "app_event"
-      | "task_completed"
-      | "task_last_completed"
-      | "task_first_completed";
+      | "task_completed" // implies first completed
+      | "task_last_completed";
     // WARNING - adding more entries to this list requires evaluation login in Reminders.service.ts
     /** a generic catch-all for passing specific task ids or event names to evaluation logic */
     value?: string;
+    /** In case where multiple values could test against condition decide which to test against (default most recent, i.e 'last') */
+    entry?: "first" | "last";
     /** specify timing constraint used to evaluate condition
      * @example {comparison:">",quantity:3,unit:"appday"}
      * evaluate true only if condition satifisies occuring within the past 3 app use days ('after 3 days ago')
