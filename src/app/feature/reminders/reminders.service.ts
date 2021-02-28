@@ -3,13 +3,12 @@ import { BehaviorSubject } from "rxjs";
 import { differenceInHours, subDays, subHours } from "date-fns";
 import { IReminder } from "./reminders.model";
 import { DbService } from "src/app/shared/services/db/db.service";
-import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
-import { LocalNotificationSchedule } from "@capacitor/core";
 import { REMINDER_LIST } from "src/app/shared/services/data/data.service";
 import { FlowTypes } from "scripts/types";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import { AppEventService, IAppEvent } from "src/app/shared/services/app-events/app-events.service";
-import { generateTimestamp } from "src/app/shared/utils";
+import { arrayToHashmapArray, generateTimestamp } from "src/app/shared/utils";
+import { ITaskAction } from "../goals/models/goals.model";
 
 @Injectable({
   providedIn: "root",
@@ -23,33 +22,47 @@ import { generateTimestamp } from "src/app/shared/utils";
  * It is not currently production-ready (2020-11-15 - Chris)
  */
 export class RemindersService {
-  public app_day: number;
-  public first_app_launch: string;
+  public data: {
+    app_day: number;
+    actionHistory: {
+      task_action: { [action_id: string]: ITaskAction[] };
+      app_event: { [event_id: string]: IAppEvent[] };
+      reminder_action: { [reminder_id: string]: IReminder[] };
+    };
+  };
   public mockData = MOCK_DATA;
-
   public reminders$ = new BehaviorSubject<IReminder[]>([]);
   public remindersList$ = new BehaviorSubject<FlowTypes.Reminder_listRow[]>([]);
 
   constructor(
-    private dbService: DbService,
-    private localNotifications: LocalNotificationService,
     private taskService: TaskService,
+    private dbService: DbService,
     private appEventService: AppEventService
   ) {}
 
   async init() {
-    // await this.loadDBReminders();
     await this.appEventService.ready();
-    this.app_day = this.appEventService.summary.app_day;
-    this.first_app_launch = this.appEventService.summary.first_app_launch;
+    await this.loadReminderData();
     this.processRemindersList();
   }
 
+  /** load all the data that will be required for processing reminders */
+  private async loadReminderData() {
+    const taskActions = await this.dbService.table("task_actions").orderBy("_created").toArray();
+    // get event histories
+    const task_action = arrayToHashmapArray<ITaskAction>(taskActions, "task_id");
+    const appEvents = await this.dbService.table("app_events").orderBy("_created").toArray();
+    const app_event = arrayToHashmapArray<IAppEvent>(appEvents, "event_id");
+    const app_day = this.appEventService.summary.app_day;
+    const reminder = {};
+    this.data = { app_day, actionHistory: { task_action, app_event, reminder } };
+    console.log("reminders data", this.data);
+  }
+
+  /** override local data with testing dataset, or reinitialise from db */
   public async setMockData(data: any) {
     if (data) {
-      const { app_day, first_app_launch } = data;
-      this.app_day = app_day;
-      this.first_app_launch = first_app_launch;
+      this.data = { ...this.data, ...data };
       this.processRemindersList();
     } else {
       this.init();
@@ -74,9 +87,13 @@ export class RemindersService {
         const evaluation = this.evaluateReminderCondition(condition);
         return { ...condition, _satisfied: evaluation };
       });
-      (r as any)._satisfied = r.activation_condition_list.every(
-        (condition) => condition._satisfied
-      );
+      // (r as any)._satisfied = r.activation_condition_list.every(
+      //   (condition) => condition._satisfied
+      // );
+      r.deactivation_condition_list = r.deactivation_condition_list.map((condition) => {
+        const evaluation = this.evaluateReminderCondition(condition);
+        return { ...condition, _satisfied: evaluation };
+      });
       return r;
     });
     this.remindersList$.next(remindersList);
@@ -84,21 +101,23 @@ export class RemindersService {
   }
 
   private evaluateReminderCondition(condition: FlowTypes.Reminder_conditionList): boolean {
-    const { action, value, timing } = condition;
+    const { action, value, timing, entry } = condition;
     const evaluators: {
-      [key in FlowTypes.Reminder_conditionList["action"]]: () => string | number;
+      [key in FlowTypes.Reminder_conditionList["action"]]: () => string | number | null;
     } = {
-      app_event: () => this.getTargetAppEventValue(value as any),
+      app_event: () => this.getTargetAppEventValue(value as any, entry),
       field_evaluation: () => undefined,
       reminder_action: () => undefined,
-      task_completed: () => this.getTaskCompleteValue(value as any),
-      task_first_completed: () => this.getTaskCompleteValue(value as any),
-      task_last_completed: () => this.getTaskCompleteValue(value as any),
+      task_completed: () => this.getTargetTaskCompleteValue(value as any, entry),
     };
     const evaluateValue: string | number = evaluators[action]();
+    // used to indicator the evaluator function does not currently exist
     if (evaluateValue === undefined) {
-      // not yet implemented
       return undefined;
+    }
+    // no value for evaluation (e.g. task never completed), so assume condition not satisfied
+    if (evaluateValue === null) {
+      return false;
     }
 
     if (timing && evaluateValue) {
@@ -115,39 +134,44 @@ export class RemindersService {
     evaluateValue: string | number,
     timing: FlowTypes.Reminder_conditionList["timing"]
   ) {
-    console.log("evaluating", evaluateValue, timing);
     const { comparator, quantity, unit } = timing;
     switch (unit) {
       case "day":
         const dayDiff = differenceInHours(new Date(), new Date(evaluateValue)) / 24;
-        console.log(evaluateValue, dayDiff);
         return this._compare(dayDiff, comparator, quantity);
 
       case "appday":
-        const appDayToday = this.app_day;
+        const appDayToday = this.data.app_day;
         const appDayDiff = appDayToday - (evaluateValue as number);
         return this._compare(appDayDiff, comparator, quantity);
     }
   }
-
-  private getTargetAppEventValue(id: IAppEvent["event_id"]) {
-    switch (id) {
-      case "first_app_launch":
-        return this.first_app_launch;
+  /** Method used to retrieve comparison value (created date) from app events */
+  private getTargetAppEventValue(event_id: IAppEvent["event_id"], entry: "first" | "last") {
+    switch (event_id) {
       case "app_launch":
         // most recent
-        return this.appEventService.appEventsById.app_launch.pop()?._created || null;
+        return this.data.appEventHistory.app_launch?.pop()?._created || null;
       default:
-        console.error("No app event evaluation specified for:", id);
-        break;
+        console.error("No app event evaluation specified for:", event_id);
+        return undefined;
     }
   }
 
-  private getTaskCompleteValue(id, instance: "first" | "last" = "last") {
-    // TODO
+  /** Method used to retrieve comparison value (timestamp) from task action events */
+  private getTargetTaskCompleteValue(task_id: ITaskAction["task_id"], entry: "first" | "last") {
+    switch (entry) {
+      case "first":
+        return this.data.taskActionHistory[task_id]?.[0].timestamp || null;
+      case "last":
+        return this.data.taskActionHistory[task_id]?.pop()?.timestamp || null;
+      default:
+        break;
+    }
     return undefined;
   }
 
+  /** As comparison functions are generated as string parse the relevant cases and evaluate */
   private _compare(
     a: string | number,
     comparator: FlowTypes.Reminder_conditionList["timing"]["comparator"],
@@ -168,82 +192,105 @@ export class RemindersService {
    *  Legacy code - to be re-evaluated (CC 2021-02-16)
    *************************************************************************************/
 
-  private async loadDBReminders() {
-    const reminders = await this.dbService.table<IReminder>("reminders").toArray();
-    this.reminders$.next(reminders);
-  }
+  //   private async loadDBReminders() {
+  //     const reminders = await this.dbService.table<IReminder>("reminders").toArray();
+  //     this.reminders$.next(reminders);
+  //   }
 
   async setReminder(reminder: IReminder) {
-    // reminder form populates an empty placeholder id, which has to be removed
-    // to allow the db to populate
-    if (reminder.id === null) {
-      delete reminder.id;
-    }
-    reminder = await this.setReminderNotifications(reminder);
-    await this.dbService.table("reminders").put(reminder);
-    this.loadDBReminders();
+    // // reminder form populates an empty placeholder id, which has to be removed
+    // // to allow the db to populate
+    // if (reminder.id === null) {
+    //   delete reminder.id;
+    // }
+    // reminder = await this.setReminderNotifications(reminder);
+    // await this.dbService.table("reminders").put(reminder);
+    // this.loadDBReminders();
   }
 
-  private async setReminderNotifications(reminder: IReminder) {
-    // delete old notification
-    if (reminder.notifications.length > 0) {
-      this.localNotifications.removeNotifications({
-        notifications: reminder.notifications,
-      });
-      reminder.notifications = [];
-    }
-    const schedule: Partial<LocalNotificationSchedule> = {
-      repeats: reminder.repeat !== "never",
-      at: new Date(reminder.due),
-      every: this._mapRepeatIntervalToNotification(reminder),
-    };
-    const res = await this.localNotifications.scheduleNotification({
-      schedule,
-    });
-    reminder.notifications = res.notifications;
-    return reminder;
-  }
+  //   private async setReminderNotifications(reminder: IReminder) {
+  //     // delete old notification
+  //     if (reminder.notifications.length > 0) {
+  //       this.localNotifications.removeNotifications({
+  //         notifications: reminder.notifications,
+  //       });
+  //       reminder.notifications = [];
+  //     }
+  //     const schedule: Partial<LocalNotificationSchedule> = {
+  //       repeats: reminder.repeat !== "never",
+  //       at: new Date(reminder.due),
+  //       every: this._mapRepeatIntervalToNotification(reminder),
+  //     };
+  //     const res = await this.localNotifications.scheduleNotification({
+  //       schedule,
+  //     });
+  //     reminder.notifications = res.notifications;
+  //     return reminder;
+  //   }
 
-  async deleteReminder(reminder: IReminder) {
-    const { notifications } = reminder;
-    await this.localNotifications.removeNotifications({ notifications });
-    await this.dbService.table("reminders").delete(reminder.id);
-    this.loadDBReminders();
-  }
+  //   async deleteReminder(reminder: IReminder) {
+  //     const { notifications } = reminder;
+  //     await this.localNotifications.removeNotifications({ notifications });
+  //     await this.dbService.table("reminders").delete(reminder.id);
+  //     this.loadDBReminders();
+  //   }
 
-  /**
-   * Convert form repeat duration to format recognised by capcitor local notifications api
-   */
-  private _mapRepeatIntervalToNotification(
-    reminder: IReminder
-  ): LocalNotificationSchedule["every"] {
-    switch (reminder.repeat) {
-      case "daily":
-        return "day";
-      case "weekly":
-        return "week";
-      case "monthly":
-        return "month";
-      default:
-        return null;
-    }
-  }
+  //   /**
+  //    * Convert form repeat duration to format recognised by capcitor local notifications api
+  //    */
+  //   private _mapRepeatIntervalToNotification(
+  //     reminder: IReminder
+  //   ): LocalNotificationSchedule["every"] {
+  //     switch (reminder.repeat) {
+  //       case "daily":
+  //         return "day";
+  //       case "weekly":
+  //         return "week";
+  //       case "monthly":
+  //         return "month";
+  //       default:
+  //         return null;
+  //     }
+  //   }
 }
 
-const MOCK_DATA = [
+const MOCK_DATA: Partial<IReminderData & { label: string }>[] = [
   {
-    label: "First Load",
+    label: "Demo 1 (first load)",
     app_day: 1,
-    first_app_launch: generateTimestamp(),
+    appEventHistory: {
+      app_launch: [{ _created: generateTimestamp(), event_id: "app_launch" }],
+    },
   },
   {
-    label: "Day 4",
+    label: "Demo 2 (day 4)",
     app_day: 4,
-    first_app_launch: generateTimestamp(subHours(subDays(new Date(), 3), 1)),
+    appEventHistory: {
+      app_launch: [
+        {
+          _created: generateTimestamp(subHours(subDays(new Date(), 3), 1)),
+          event_id: "app_launch",
+        },
+      ],
+    },
   },
   {
-    label: "Day 8",
+    label: "Demo 3 (day 8)",
     app_day: 8,
-    first_app_launch: generateTimestamp(subHours(subDays(new Date(), 7), 1)),
+    appEventHistory: {
+      app_launch: [
+        {
+          _created: generateTimestamp(subHours(subDays(new Date(), 7), 1)),
+          event_id: "app_launch",
+        },
+      ],
+    },
   },
 ];
+
+interface IReminderData {
+  app_day: number;
+  taskActionHistory: { [action_id: string]: ITaskAction[] };
+  appEventHistory: { [event_id in IAppEvent["event_id"]]?: IAppEvent[] };
+  reminderHistory: { [reminder_id: string]: IReminder[] };
+}

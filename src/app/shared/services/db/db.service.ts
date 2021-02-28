@@ -2,7 +2,8 @@ import { Injectable } from "@angular/core";
 import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
-import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
+import { Subject } from "scripts/node_modules/rxjs";
+import { arrayToHashmapArray } from "../../utils";
 import { EventService } from "../event/event.service";
 
 const db = new Dexie("plh-app-db");
@@ -95,11 +96,19 @@ export class DbService {
 
   /**
    * Type-safe wrapper around db.table method
-   * Additionally adds a changes$ subject populated from custom db listeners
+   * - Adds a changes$ subject populated from custom db listeners
+   * - Adds toHashampArray method to return hashmap of array values keyed by a specific field
    */
   table<T>(tableId: IDBTable) {
-    const table = this.db.table<T>(tableId) as Dexie.Table & { changes$: Subject<T> };
+    const table = this.db.table<T>(tableId) as Dexie.Table & {
+      changes$: Subject<T>;
+      toHashmapArray: (keyfield: keyof T) => Promise<{ [key in keyof T]?: T[] }>;
+    };
     table.changes$ = this.tableChanges$[tableId];
+    table.toHashmapArray = async (keyfield: keyof T) => {
+      const arr = await table.toArray();
+      return arrayToHashmapArray(arr, keyfield as string) as any;
+    };
     return table;
   }
 

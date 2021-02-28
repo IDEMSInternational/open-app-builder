@@ -19,11 +19,6 @@ export class ReminderListParser extends DefaultParser {
 }
 
 /**
- * TODO
- * 2021-02-27 CC
- * Failed attempt to make more systematic conversion/typing
- *
- *
  * Take an activation or deactivation criteria and format for use
  * @param c condition string formatted with pipe characters to separate action | value | timings
  * @example
@@ -32,29 +27,14 @@ export class ReminderListParser extends DefaultParser {
  * ```
  */
 function extractConditionList(conditionText: string) {
-  const rawTxt = conditionText;
-  const cleanedTxt = _replaceShorthandText(conditionText);
-  const data: string[][] = _parseXlsxData(cleanedTxt);
-
-  const conditionExtractors: {
-    [key in IConditionList["condition_type"]]: (data: any[][]) => IConditionList;
-  } = {
-    field_evaluation: parseFieldEvaluationCondition,
-    db_lookup: parseDBLookupCondition,
-  };
-
-  console.log("[data]", data);
-  const condition_type = data[0][0];
-  if (!conditionExtractors.hasOwnProperty(condition_type)) {
-    console.error(chalk.red(`cannot extract condition args:`, data));
-    process.exit(1);
-  }
-  const condition: IConditionList = conditionExtractors[condition_type](data);
-  condition._raw = rawTxt;
-  condition._cleaned = cleanedTxt;
-  console.log(condition);
-  return condition;
-
+  conditionText = _replaceShorthandText(conditionText);
+  const data = _parseXlsxData(conditionText);
+  // console.log(data);
+  console.log(conditionText);
+  const condition_type = extractConditionType(data[0]);
+  const condition_args = extractConditionArgs(condition_type, data.slice(1));
+  return {} as any;
+  process.exit(1);
   let [typeStr, argsStr, evaluationStr] = conditionText.split("|").map((s: string) => s.trim());
   if (typeStr.includes("_completed")) {
     argsStr += ":completed";
@@ -67,37 +47,58 @@ function extractConditionList(conditionText: string) {
     const comparator = _extractComparator(comparatorText);
     // timing = { comparator, quantity: quantity ? Number(quantity) : null, unit } as any;
   }
+
+  const condition: IConditionList = {
+    condition_type,
+    condition_args,
+    condition_evaluation_list: [],
+  };
+
+  Object.values(condition).forEach((v) => {
+    if (typeof v === "string" && v.includes(":")) {
+      console.error(chalk.red(`condition not fully parsed: ${conditionText}`));
+      console.error(condition);
+      console.error(chalk.red(v));
+      process.exit(1);
+    }
+  });
+  console.log(condition);
   return condition;
 }
 
-function parseFieldEvaluationCondition(data: any[][]): IConditionList {
-  const [[condition_type], [evaluate]] = data;
-  return {
-    condition_type,
-    condition_args: {
-      field_evaluation: { evaluate },
-    },
-  };
+/** Provide a distinction for the type of condition operation, namely a database lookup or field evaluation */
+function extractConditionType(typeStr: string): IConditionList["condition_type"] {
+  const [actionStr] = typeStr.split(":").map((s) => s.trim() as any);
+  switch (actionStr) {
+    case "field_evaluation":
+      return "field_evaluation";
+    default:
+      return "db_lookup";
+  }
 }
-function parseDBLookupCondition(data: any[][]): IConditionList {
-  const [typeData, tableData, valueData, evaulateData] = data;
-  const [condition_type, orderStr, sort_by] = typeData;
-  const [[table_id], [filter_field]] = tableData;
-  const [value] = valueData;
-  return {
-    condition_type,
-    condition_args: {
-      db_lookup: {
-        table_id,
-        // aggregate: () => "",
-        filter_field: filter_field || "id",
-        filter_value: value,
-        order: orderStr === "first" ? "asc" : "desc",
-        sort_by: sort_by || "_created",
-        evaluate: [(result) => true],
-      },
-    },
-  };
+function extractConditionArgs(
+  condition_type: IConditionList["condition_type"],
+  data: any[]
+): IConditionList["condition_args"] {
+  console.log(data);
+  switch (condition_type) {
+    case "db_lookup":
+      const [, table_id, sortStr] = data;
+      return {
+        db_lookup: {
+          table_id,
+          // aggregate: () => "",
+          filter: { field: "", value: "" },
+          // order: "",
+          // sort_by: "",
+        },
+      };
+    case "field_evaluation":
+      return { field_evaluation: { evaluate: data[0] } };
+    default:
+      console.error(chalk.red(`cannot extract condition args:`, condition_type, data));
+      process.exit(1);
+  }
 }
 
 /**
@@ -107,10 +108,10 @@ function parseDBLookupCondition(data: any[][]): IConditionList {
 function _replaceShorthandText(text: string) {
   // a maximum of 1 replacement will be made, so order in terms of specifivity
   const shorthandReplacements = {
-    sent: "db_lookup | reminders:reminder_id | sent",
-    first_launch: "db_lookup:first |app_events:event_id | app_launch",
-    app_launch: "db_lookup | app_events:event_id | app_launch",
-    task_completed: "db_lookup | task_actions:task_id",
+    sent: "db_lookup | reminders | sent",
+    first_launch: "db_lookup |app_events:first | app_launch",
+    app_launch: "db_lookup | app_events | app_launch",
+    task_completed: "db_lookup | task_actions",
   };
   Object.entries(shorthandReplacements).some(([original, replacement]) => {
     // use a regular expression to prevent matching words that have additional content before
@@ -146,23 +147,8 @@ function _extractComparator(text: string) {
   }
 }
 
-/**
- * Xls data represents nested objects in the following ways
- * ';' - pre-processing with '_list' columns to format as array
- * '|' - post-processing specific item into set of arguments / parameters
- * ':' - modifiers or properties of an argument
- *
- * As the pipe and colon characters may or may not exist for a particular string
- * it is impossible to know any given data needs to be formatted as string or array
- * to remain consistent with the rest of the column. As such all strings will be
- * treated as arrays, and deeply nested objects extracted in future processing stages
- */
-function _parseXlsxData(data: any): any[] | string[][] {
+function _parseXlsxData(data: any): any[] {
   if (typeof data === "string") {
-    if (data.includes(";")) {
-      console.error(chalk.red('lists should be pre-processed, but ";" found'));
-      process.exit(1);
-    }
     // first parse, convert pipes
     if (data.includes("|")) {
       data = data.split("|").map((d) => d.trim());
@@ -172,10 +158,9 @@ function _parseXlsxData(data: any): any[] | string[][] {
       data = data.split(":").map((d) => d.trim());
       return _parseXlsxData(data);
     }
-    return [data];
   }
   if (Array.isArray(data)) {
     data = data.map((d) => _parseXlsxData(d));
   }
-  return data as string[][];
+  return data;
 }
