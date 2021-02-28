@@ -14,20 +14,33 @@
         "priority": 0,
         "activation_condition_list": [
           {
-            "action": "field_evaluation",
-            "value": "@fields.mod_welcome_daily_calm == 'Yes'",
-            "timing": null
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "@fields.mod_welcome_daily_calm == 'Yes'"
+              }
+            },
+            "_raw": "field_evaluation | @fields.mod_welcome_daily_calm == 'Yes'",
+            "_cleaned": "field_evaluation | @fields.mod_welcome_daily_calm == 'Yes'"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": {
-              "comparator": "<=",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent | within:1:day",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent | within:1:day"
           }
         ],
         "campaign_list": [
@@ -44,21 +57,42 @@
         "priority": 2,
         "activation_condition_list": [
           {
-            "action": "app_event",
-            "value": "app_launch",
-            "entry": "first",
-            "timing": {
-              "comparator": ">",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "condition_type": [
+              "db_lookup"
+            ],
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter_field": "event_id",
+                "filter_value": "app_launch",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "first_launch | before:1:day",
+            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:1:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -73,30 +107,59 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "app_event",
-            "value": "app_launch",
-            "entry": "first",
-            "timing": {
-              "comparator": ">",
-              "quantity": 2,
-              "unit": "day"
-            }
+            "condition_type": [
+              "db_lookup"
+            ],
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter_field": "event_id",
+                "filter_value": "app_launch",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "first_launch | before:2:day",
+            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:2:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_praise_teen",
-            "timing": {
-              "comparator": "<=",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_praise_teen",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_praise_teen | within:1:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_praise_teen | within:1:day"
           },
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -111,21 +174,42 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "app_event",
-            "value": "app_launch",
-            "entry": "first",
-            "timing": {
-              "comparator": ">",
-              "quantity": 3,
-              "unit": "day"
-            }
+            "condition_type": [
+              "db_lookup"
+            ],
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter_field": "event_id",
+                "filter_value": "app_launch",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "first_launch | before:3:day",
+            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:3:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -140,26 +224,59 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "app_event",
-            "value": "app_launch",
-            "entry": "first",
-            "timing": {
-              "comparator": ">",
-              "quantity": 4,
-              "unit": "day"
-            }
+            "condition_type": [
+              "db_lookup"
+            ],
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter_field": "event_id",
+                "filter_value": "app_launch",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "first_launch | before:4:day",
+            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:4:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_welcome_photo_activity",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_welcome_photo_activity",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_welcome_photo_activity",
+            "_cleaned": "db_lookup | task_actions:task_id | task_welcome_photo_activity"
           },
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -174,21 +291,42 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "app_event",
-            "value": "app_launch",
-            "entry": "first",
-            "timing": {
-              "comparator": ">",
-              "quantity": 7,
-              "unit": "day"
-            }
+            "condition_type": [
+              "db_lookup"
+            ],
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter_field": "event_id",
+                "filter_value": "app_launch",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "first_launch | before:7:day",
+            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:7:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -203,20 +341,40 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_1on1_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_1on1_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_1on1_tips | before:1:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_1on1_tips | before:1:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -231,30 +389,57 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_1on1_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 2,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_1on1_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_1on1_tips | before:2:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_1on1_tips | before:2:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_spend_time",
-            "entry": "first",
-            "timing": {
-              "comparator": "<=",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_spend_time",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed:first| task_spend_time | within:1:day",
+            "_cleaned": "db_lookup | task_actions:task_id:first| task_spend_time | within:1:day"
           },
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -269,25 +454,57 @@
         "priority": 2,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_1on1_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 3,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_1on1_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_1on1_tips | before:3:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_1on1_tips | before:3:day"
           },
           {
-            "action": "task_completed",
-            "value": "task_spend_time",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_spend_time",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_spend_time",
+            "_cleaned": "db_lookup | task_actions:task_id | task_spend_time"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -302,34 +519,74 @@
         "priority": 2,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_1on1_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 3,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_1on1_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_1on1_tips  | before:3:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_1on1_tips  | before:3:day"
           },
           {
-            "action": "app_event",
-            "value": "app_launch",
-            "timing": {
-              "comparator": "<=",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter_field": "event_id",
+                "filter_value": "app_launch",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "app_launch | within:1:day",
+            "_cleaned": "db_lookup | app_events:event_id | app_launch | within:1:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_spend_time",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_spend_time",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_spend_time",
+            "_cleaned": "db_lookup | task_actions:task_id | task_spend_time"
           },
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -344,34 +601,74 @@
         "priority": 2,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_1on1_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 3,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_1on1_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_1on1_tips  | before:3:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_1on1_tips  | before:3:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_spend_time",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_spend_time",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_spend_time",
+            "_cleaned": "db_lookup | task_actions:task_id | task_spend_time"
           },
           {
-            "action": "app_event",
-            "value": "app_launch",
-            "timing": {
-              "comparator": "<=",
-              "quantity": 1,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter_field": "event_id",
+                "filter_value": "app_launch",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "app_launch | within:1:day",
+            "_cleaned": "db_lookup | app_events:event_id | app_launch | within:1:day"
           },
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -386,20 +683,40 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_1on1_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 5,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_1on1_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_1on1_tips | before:5:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_1on1_tips | before:5:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -414,20 +731,40 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_praise_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 2,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_praise_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_praise_tips | before:2:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_praise_tips | before:2:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -442,20 +779,40 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_praise_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 5,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_praise_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_praise_tips | before:5:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_praise_tips | before:5:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -470,20 +827,40 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_praise_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 3,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_praise_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_praise_tips | before:3:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_praise_tips | before:3:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -498,20 +875,40 @@
         "priority": 2,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_praise_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 6,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_praise_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_praise_tips | before:6:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_praise_tips | before:6:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [
@@ -526,20 +923,40 @@
         "priority": 1,
         "activation_condition_list": [
           {
-            "action": "task_completed",
-            "value": "task_mod_praise_tips",
-            "timing": {
-              "comparator": ">",
-              "quantity": 6,
-              "unit": "day"
-            }
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "task_actions",
+                "filter_field": "task_id",
+                "filter_value": "task_mod_praise_tips",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "task_completed | task_mod_praise_tips | before:6:day",
+            "_cleaned": "db_lookup | task_actions:task_id | task_mod_praise_tips | before:6:day"
           }
         ],
         "deactivation_condition_list": [
           {
-            "action": "reminder_action",
-            "value": "sent",
-            "timing": null
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminders",
+                "filter_field": "reminder_id",
+                "filter_value": "sent",
+                "order": "desc",
+                "sort_by": "_created",
+                "evaluate": [
+                  null
+                ]
+              }
+            },
+            "_raw": "sent",
+            "_cleaned": "db_lookup | reminders:reminder_id | sent"
           }
         ],
         "campaign_list": [

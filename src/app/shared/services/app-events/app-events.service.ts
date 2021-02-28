@@ -35,9 +35,6 @@ export class AppEventService {
   /** Initialise the app events service by recording an app_launch instance */
   async init() {
     await this.loadAppEvents();
-    if (this.appEventsById.first_app_launch.length === 0) {
-      await this.recordAppEvent("first_app_launch");
-    }
     await this.recordAppEvent("app_launch");
     this.calculateEventSummaries();
     this.ready$.next(true);
@@ -78,8 +75,7 @@ export class AppEventService {
     const appOpenEvents = this.appEventsById.app_launch;
     console.log("app days", [...new Set(appOpenEvents.map((e) => e._created.substring(0, 10)))]);
     const app_day = [...new Set(appOpenEvents.map((e) => e._created.substring(0, 10)))].length;
-    const first_app_launch =
-      this.appEventsById.first_app_launch[0]?._created || generateTimestamp();
+    const first_app_launch = this.appEventsById.app_launch?.[0]?._created || generateTimestamp();
     return this.setSummaryValues({ app_day, first_app_launch });
   }
 
@@ -105,7 +101,7 @@ export class AppEventService {
   private _scheduleUpdate() {}
 }
 
-const APP_EVENT_IDs = ["app_launch", "first_app_launch"] as const;
+const APP_EVENT_IDs = ["app_launch"] as const;
 type IEventId = typeof APP_EVENT_IDs[number];
 
 export interface IAppEvent {

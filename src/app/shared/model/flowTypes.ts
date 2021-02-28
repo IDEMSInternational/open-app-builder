@@ -2,6 +2,7 @@
 import { RapidProFlowExport } from "src/app/feature/chat/models";
 export { RapidProFlowExport } from "src/app/feature/chat/models";
 import { TipRow } from "src/app/feature/tips/models/tips.model";
+import { IDBTable } from "../services/db/db.service";
 
 /*********************************************************************************************
  *  Base flow types
@@ -238,23 +239,51 @@ export namespace FlowTypes {
     campaign_list: Reminder_campaign[];
   }
   export interface Reminder_conditionList {
+    /** debug info - text as received from default parser*/
+    _raw?: string;
+    /** debug info - text as parsed after replacements*/
+    _cleaned?: string;
     /** specific defined actions that have individual methods to determine completion */
-    action:
-      | "field_evaluation"
-      | "reminder_action"
-      | "app_event"
-      | "task_completed" // implies first completed
-      | "task_last_completed";
+    condition_type: "field_evaluation" | "db_lookup";
+    // | "reminder_action" | "app_event" | "task_completed";
+
+    /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
+    condition_args: {
+      db_lookup?: {
+        table_id: IDBTable;
+        filter_field: string;
+        filter_value: string | number;
+        sort_by?: string;
+        order?: string;
+        aggregate?: (results: any[]) => any;
+        evaluate?: ((results: any) => boolean)[];
+      };
+      field_evaluation?: {
+        evaluate: string;
+      };
+    };
+
+    // condition_evaluation_list: {
+    //   operator: ">" | "<=";
+    //   value: string | number;
+    //   unit?: "day" | "app_day";
+    // }[];
+
     // WARNING - adding more entries to this list requires evaluation login in Reminders.service.ts
     /** a generic catch-all for passing specific task ids or event names to evaluation logic */
-    value?: string;
+
+    // value?: string;
+
     /** In case where multiple values could test against condition decide which to test against (default most recent, i.e 'last') */
-    entry?: "first" | "last";
+    // entry?: "first" | "last";
+
     /** specify timing constraint used to evaluate condition
      * @example {comparison:">",quantity:3,unit:"appday"}
      * evaluate true only if condition satifisies occuring within the past 3 app use days ('after 3 days ago')
      */
-    timing?: { comparator: ">" | "<="; quantity: number; unit: "day" | "appday" };
+
+    // timing?: { comparator: ">" | "<="; quantity: number; unit: "day" | "appday" };
+
     /** calculated after criteria has been evaluated */
     _satisfied?: boolean;
   }
