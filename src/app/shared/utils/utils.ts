@@ -89,3 +89,14 @@ export function getNumberParamFromTemplateRow(row: FlowTypes.TemplateRow, name: 
 
   return res;
 }
+export function getBooleanParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: boolean): boolean{
+  let res = _default;
+  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
+
+  if (param) {
+    param = param.split(':')[1].trim();
+    res = param === 'true';
+  }
+
+  return res;
+}

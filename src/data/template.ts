@@ -22,7 +22,10 @@
         "value": 300,
         "comments": "",
         "action_list": [],
-        "parameter_list": ["title:Timer 2"]
+        "parameter_list": [
+          "title:Timer 2",
+          "is_editable_on_playing: true",
+        ]
       }
     ]
   },
