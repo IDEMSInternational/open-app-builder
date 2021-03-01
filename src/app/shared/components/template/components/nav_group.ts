@@ -15,8 +15,8 @@ import { ITemplateComponent } from "./tmpl.component";
                 [localVariables]="localVariables"
             ></plh-tmpl-comp>
         </div>
-        <div class="nav-buttons">
-            <ion-button *ngIf="sectionIndex > 0" (click)="backClicked()">{{navButtonList[sectionIndex].back}}</ion-button>
+        <div class="nav-buttons" *ngIf="!navButtonList[sectionIndex].hidden">
+            <ion-button *ngIf="sectionIndex > 0 && navButtonList[sectionIndex].showBack" (click)="backClicked()">{{navButtonList[sectionIndex].back}}</ion-button>
             <ion-button *ngIf="sectionIndex + 1 < _row?.rows?.length" (click)="nextClicked()">{{navButtonList[sectionIndex].next}}</ion-button>
             <ion-button *ngIf="navButtonList[sectionIndex].showSkip && sectionIndex + 1 < _row?.rows?.length" (click)="skipClicked()">
                 {{navButtonList[sectionIndex].skip}}
@@ -24,8 +24,10 @@ import { ITemplateComponent } from "./tmpl.component";
             <ion-button *ngIf="navButtonList[sectionIndex].finish && sectionIndex + 1 == _row?.rows?.length" (click)="finishClicked()">
                 {{navButtonList[sectionIndex].finish}}
             </ion-button>
+            <ion-button *ngIf="navButtonList[sectionIndex].showRestart && sectionIndex + 1 == _row?.rows?.length" (click)="restartClicked()">
+                {{navButtonList[sectionIndex].restart}}
+            </ion-button>
         </div>
-        <p>Section {{sectionIndex}}</p>
     </div>`,
     styles: [
         `.slide {
@@ -36,6 +38,7 @@ import { ITemplateComponent } from "./tmpl.component";
             width: 100%;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         ion-button {
@@ -67,8 +70,11 @@ export class NavGroupComponent implements ITemplateComponent {
         let groupBackText = this.getParamFromMap(paramMap, "back_button_text");
         let groupSkipText = this.getParamFromMap(paramMap, "skip_button_text");
         let groupFinishText = this.getParamFromMap(paramMap, "finish_button_text");
+        let groupRestartText = this.getParamFromMap(paramMap, "restart_button_text");
         let groupShowSkip = this.getParamFromMap(paramMap, "show_skip_button");
         let groupShowBack = this.getParamFromMap(paramMap, "show_back_button");
+        let groupShowRestart = this.getParamFromMap(paramMap, "show_restart_button");
+        
         if (value && value.rows) {
             this.navButtonList = value.rows.map((row) => {
                 const paramMap = this.extractParameterList(row.parameter_list);
@@ -76,21 +82,29 @@ export class NavGroupComponent implements ITemplateComponent {
                 let back = paramMap.back_button_text ? paramMap.back_button_text : groupBackText;
                 let skip = paramMap.skip_button_text ? paramMap.skip_button_text : groupSkipText;
                 let finish = paramMap.finish_button_text ? paramMap.finish_button_text : groupFinishText;
+                let restart = paramMap.restart_button_text ? paramMap.restart_button_text : groupRestartText;
                 let showSkip = groupShowSkip;
-                if (paramMap.show_skip_button + "" == "true") {
-                    showSkip = true;
+                if (paramMap.hasOwnProperty("show_skip_button")) {
+                    showSkip = paramMap.show_skip_button;
                 }
                 let showBack = groupShowBack;
-                if (paramMap.show_back_button + "" == "true") {
-                    showBack = true;
+                if (paramMap.hasOwnProperty("show_back_button")) {
+                    showBack = paramMap.show_back_button;
+                }
+                let showRestart = groupShowRestart;
+                if (paramMap.hasOwnProperty("show_restart_button")) {
+                    showRestart = paramMap.show_restart_button;
                 }
                 return {
+                    hidden: false,
                     next: next,
                     back: back,
                     skip: skip,
                     finish: finish,
+                    restart: restart,
                     showSkip: showSkip,
-                    showBack: showBack
+                    showBack: showBack,
+                    showRestart: showRestart
                 };
             });
         }
@@ -117,11 +131,15 @@ export class NavGroupComponent implements ITemplateComponent {
     }
 
     skipClicked() {
-
+        // Emit completed
     }
 
     finishClicked() {
+        // Emit uncompleted
+    }
 
+    restartClicked() {
+        this.sectionIndex = 0;
     }
 
     extractParameterList(params: string[]): Record<string, string> {
@@ -141,10 +159,13 @@ export class NavGroupComponent implements ITemplateComponent {
 
 
 type NavButtons = {
+    hidden: boolean;
     next: string;
     back: string;
     skip: string;
     finish: string;
+    restart: string;
     showSkip: boolean;
     showBack: boolean;
+    showRestart: boolean;
 }
