@@ -305,7 +305,7 @@ export namespace FlowTypes {
   /* Used for setting default parameters for template components */
   export interface Component_defaults extends FlowTypeBase {
     flow_type: "component_defaults";
-    rows: any[];
+    rows: Component_defaultsRow[];
   }
 
   export interface Component_defaultsRow {
