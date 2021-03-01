@@ -23,12 +23,20 @@
         "default_value": "Finish"
       },
       {
+        "parameter": "restart_button_text",
+        "default_value": "Restart"
+      },
+      {
         "parameter": "show_skip_button",
         "default_value": false
       },
       {
         "parameter": "show_back_button",
         "default_value": true
+      },
+      {
+        "parameter": "show_restart_button",
+        "default_value": false
       }
     ]
   },

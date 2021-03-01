@@ -555,6 +555,11 @@
           },
           {
             "type": "nav_section",
+            "parameter_list": [
+              "restart_button_text:Re-read the story",
+              "show_restart_button:true",
+              ""
+            ],
             "rows": [
               {
                 "type": "image",
