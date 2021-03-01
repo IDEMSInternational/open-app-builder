@@ -517,19 +517,22 @@
     "status": "released",
     "rows": [
       {
-        "type": "button",
-        "name": "button_1",
-        "value": "Button 1"
-      },
-      {
         "type": "nav_group",
+        "parameter_list": [
+          "show_back_button:false",
+          ""
+        ],
         "rows": [
           {
             "type": "nav_section",
+            "parameter_list": [
+              "show_skip_button:true",
+              "skip_button_text:Skip Story"
+            ],
             "rows": [
               {
                 "type": "image",
-                "value": "https://freesvg.org/img/lemmling-2D-cartoon-elephant.png"
+                "value": "plh_images/workshops/welcome1.svg"
               },
               {
                 "type": "text",
@@ -542,11 +545,24 @@
             "rows": [
               {
                 "type": "image",
-                "value": "https://freesvg.org/img/lemmling-2D-cartoon-elephant.png"
+                "value": "plh_images/workshops/welcome1.svg"
               },
               {
                 "type": "text",
                 "value": "What are you thinking of?"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/welcome1.svg"
+              },
+              {
+                "type": "text",
+                "value": "An elephant right?"
               }
             ]
           }

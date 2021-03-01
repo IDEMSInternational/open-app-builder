@@ -39,7 +39,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   slider: TmplSliderComponent,
   timer: TmplTimerComponent,
   nav_group: NavGroupComponent,
-  nav_section: null
+  nav_section: AnimatedSectionComponent
 };
 
 @Directive({
@@ -95,10 +95,12 @@ export class TmplComponent implements OnInit, OnChanges {
       this.componentRef.instance.template = this.template;
       this.componentRef.instance.localVariables = this.localVariables;
     }
-    if (typeof this.row.hidden === "string") {
-      this.hidden = this.evaluateBooleanExpression(this.row.hidden);
-    } else {
-      this.hidden = this.row.hidden;
+    if (this.row) {
+      if (typeof this.row.hidden === "string") {
+        this.hidden = this.evaluateBooleanExpression(this.row.hidden);
+      } else {
+        this.hidden = this.row.hidden;
+      }
     }
   }
 
