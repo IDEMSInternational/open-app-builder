@@ -72,7 +72,7 @@ function parseFieldEvaluationCondition(data: any[][]): IConditionList {
 }
 function parseDBLookupCondition(data: any[][]): IConditionList {
   const [typeData, tableData, valueData, evaulateData] = data;
-  const [condition_type, orderStr, sort_by] = typeData;
+  const [condition_type, orderStr] = typeData;
   const [table_id, filter_field] = tableData;
   const [value] = valueData;
   let evaluate = null;
@@ -89,7 +89,6 @@ function parseDBLookupCondition(data: any[][]): IConditionList {
         table_id,
         filter: { field: filter_field || "id", value },
         order: orderStr === "first" ? "asc" : "desc",
-        sort_by: sort_by || "_created",
         evaluate,
       },
     },
@@ -103,7 +102,7 @@ function parseDBLookupCondition(data: any[][]): IConditionList {
 function _replaceShorthandText(text: string) {
   // a maximum of 1 replacement will be made, so order in terms of specifivity
   const shorthandReplacements = {
-    sent: "db_lookup:last | reminders:reminder_id | sent",
+    sent: "db_lookup:last | reminder_events:reminder_id | sent",
     first_launch: "db_lookup:first |app_events:event_id | app_launch",
     app_launch: "db_lookup:last | app_events:event_id | app_launch",
     "task_completed:first": "db_lookup:first | task_actions:task_id",

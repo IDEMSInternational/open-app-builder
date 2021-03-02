@@ -16,7 +16,10 @@
   <div *ngIf="remindersService.data as data">
     <ul style="margin: 10px">
       <li>App Day: {{ data.app_day }}</li>
-      <li>First App Launch: {{ data.first_app_launch | date }}</li>
+      <li *ngIf="data.dbCache.app_events.app_launch as launchEvents">
+        First App Launch:
+        {{ launchEvents[launchEvents.length - 1]._created | date }}
+      </li>
     </ul>
     <ion-card
       *ngFor="let reminder of remindersService.remindersList$ | async"
@@ -47,8 +50,8 @@
           <div *ngFor="let condition of reminder.activation_condition_list">
             <span *ngIf="condition._satisfied === true">✔️</span>
             <span *ngIf="condition._satisfied === false">❌</span>
-            <span *ngIf="condition._satisfied === undefined">⚠️(not implemented) </span>
-            <span>{{ condition.action }} |</span><span>{{ condition.value }} |</span>
+            <span *ngIf="condition._satisfied === undefined">⚠️(WiP) </span>
+            <span>{{ condition._raw }}</span>
             <span *ngIf="condition.timing as timing">
               <span>{{ timing.comparator }}{{ timing.quantity }}{{ timing.unit }}</span>
             </span>
@@ -59,8 +62,8 @@
           <div *ngFor="let condition of reminder.deactivation_condition_list">
             <span *ngIf="condition._satisfied === true">✔️</span>
             <span *ngIf="condition._satisfied === false">❌</span>
-            <span *ngIf="condition._satisfied === undefined">⚠️(not implemented) </span>
-            <span>{{ condition.action }} |</span><span>{{ condition.value }} |</span>
+            <span *ngIf="condition._satisfied === undefined">⚠️(WiP) </span>
+            <span>{{ condition._raw }}</span>
             <span *ngIf="condition.timing as timing">
               <span>{{ timing.comparator }}{{ timing.quantity }}{{ timing.unit }}</span>
             </span>

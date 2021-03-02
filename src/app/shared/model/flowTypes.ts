@@ -246,9 +246,7 @@ export namespace FlowTypes {
       db_lookup?: {
         table_id: IDBTable;
         filter: { field: string; value: string | number };
-        sort_by?: string;
-        order?: string;
-        aggregate?: (results: any[]) => any;
+        order?: "asc" | "desc";
         evaluate?: {
           operator: ">" | "<=";
           value: string | number;
