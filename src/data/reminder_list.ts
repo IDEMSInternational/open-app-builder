@@ -51,17 +51,17 @@
               }
             },
             "_raw": "sent | within:1:day",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent | within:1:day",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent | within:1:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ],
               [
@@ -103,17 +103,17 @@
               }
             },
             "_raw": "first_launch | before:1:day",
-            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:1:day",
+            "_cleaned": "db_lookup |app_events:first | event_id:app_launch | before:1:day",
             "_parsed": [
               [
-                "db_lookup",
-                "first"
+                "db_lookup"
               ],
               [
                 "app_events",
-                "event_id"
+                "first"
               ],
               [
+                "event_id",
                 "app_launch"
               ],
               [
@@ -139,17 +139,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -184,17 +184,17 @@
               }
             },
             "_raw": "first_launch | before:2:day",
-            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:2:day",
+            "_cleaned": "db_lookup |app_events:first | event_id:app_launch | before:2:day",
             "_parsed": [
               [
-                "db_lookup",
-                "first"
+                "db_lookup"
               ],
               [
                 "app_events",
-                "event_id"
+                "first"
               ],
               [
+                "event_id",
                 "app_launch"
               ],
               [
@@ -224,17 +224,17 @@
               }
             },
             "_raw": "task_completed | task_praise_teen | within:1:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_praise_teen | within:1:day",
+            "_cleaned": "db_lookup | task_actions:last | task_praise_teen | within:1:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_praise_teen"
               ],
               [
@@ -258,17 +258,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -303,17 +303,17 @@
               }
             },
             "_raw": "first_launch | before:3:day",
-            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:3:day",
+            "_cleaned": "db_lookup |app_events:first | event_id:app_launch | before:3:day",
             "_parsed": [
               [
-                "db_lookup",
-                "first"
+                "db_lookup"
               ],
               [
                 "app_events",
-                "event_id"
+                "first"
               ],
               [
+                "event_id",
                 "app_launch"
               ],
               [
@@ -339,17 +339,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -384,17 +384,17 @@
               }
             },
             "_raw": "first_launch | before:4:day",
-            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:4:day",
+            "_cleaned": "db_lookup |app_events:first | event_id:app_launch | before:4:day",
             "_parsed": [
               [
-                "db_lookup",
-                "first"
+                "db_lookup"
               ],
               [
                 "app_events",
-                "event_id"
+                "first"
               ],
               [
+                "event_id",
                 "app_launch"
               ],
               [
@@ -420,17 +420,17 @@
               }
             },
             "_raw": "task_completed | task_welcome_photo_activity",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_welcome_photo_activity",
+            "_cleaned": "db_lookup | task_actions:last | task_welcome_photo_activity",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_welcome_photo_activity"
               ]
             ]
@@ -449,17 +449,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -494,17 +494,17 @@
               }
             },
             "_raw": "first_launch | before:7:day",
-            "_cleaned": "db_lookup:first |app_events:event_id | app_launch | before:7:day",
+            "_cleaned": "db_lookup |app_events:first | event_id:app_launch | before:7:day",
             "_parsed": [
               [
-                "db_lookup",
-                "first"
+                "db_lookup"
               ],
               [
                 "app_events",
-                "event_id"
+                "first"
               ],
               [
+                "event_id",
                 "app_launch"
               ],
               [
@@ -530,17 +530,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -575,17 +575,17 @@
               }
             },
             "_raw": "task_completed | task_mod_1on1_tips | before:1:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_1on1_tips | before:1:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_1on1_tips | before:1:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_1on1_tips"
               ],
               [
@@ -611,17 +611,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -656,17 +656,17 @@
               }
             },
             "_raw": "task_completed | task_mod_1on1_tips | before:2:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_1on1_tips | before:2:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_1on1_tips | before:2:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_1on1_tips"
               ],
               [
@@ -696,17 +696,17 @@
               }
             },
             "_raw": "task_completed:first| task_spend_time | within:1:day",
-            "_cleaned": "db_lookup:first | task_actions:task_id| task_spend_time | within:1:day",
+            "_cleaned": "db_lookup | task_actions:first| task_spend_time | within:1:day",
             "_parsed": [
               [
-                "db_lookup",
-                "first"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "first"
               ],
               [
+                "task_id",
                 "task_spend_time"
               ],
               [
@@ -730,17 +730,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -775,17 +775,17 @@
               }
             },
             "_raw": "task_completed | task_mod_1on1_tips | before:3:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_1on1_tips | before:3:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_1on1_tips | before:3:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_1on1_tips"
               ],
               [
@@ -809,17 +809,17 @@
               }
             },
             "_raw": "task_completed | task_spend_time",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_spend_time",
+            "_cleaned": "db_lookup | task_actions:last | task_spend_time",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_spend_time"
               ]
             ]
@@ -840,17 +840,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -885,17 +885,17 @@
               }
             },
             "_raw": "task_completed | task_mod_1on1_tips  | before:3:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_1on1_tips  | before:3:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_1on1_tips  | before:3:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_1on1_tips"
               ],
               [
@@ -923,17 +923,17 @@
               }
             },
             "_raw": "app_launch | within:1:day",
-            "_cleaned": "db_lookup:last | app_events:event_id | app_launch | within:1:day",
+            "_cleaned": "db_lookup | app_events:last | event_id:app_launch | within:1:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "app_events",
-                "event_id"
+                "last"
               ],
               [
+                "event_id",
                 "app_launch"
               ],
               [
@@ -959,17 +959,17 @@
               }
             },
             "_raw": "task_completed | task_spend_time",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_spend_time",
+            "_cleaned": "db_lookup | task_actions:last | task_spend_time",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_spend_time"
               ]
             ]
@@ -988,17 +988,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -1033,17 +1033,17 @@
               }
             },
             "_raw": "task_completed | task_mod_1on1_tips  | before:3:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_1on1_tips  | before:3:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_1on1_tips  | before:3:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_1on1_tips"
               ],
               [
@@ -1069,17 +1069,17 @@
               }
             },
             "_raw": "task_completed | task_spend_time",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_spend_time",
+            "_cleaned": "db_lookup | task_actions:last | task_spend_time",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_spend_time"
               ]
             ]
@@ -1102,17 +1102,17 @@
               }
             },
             "_raw": "app_launch | within:1:day",
-            "_cleaned": "db_lookup:last | app_events:event_id | app_launch | within:1:day",
+            "_cleaned": "db_lookup | app_events:last | event_id:app_launch | within:1:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "app_events",
-                "event_id"
+                "last"
               ],
               [
+                "event_id",
                 "app_launch"
               ],
               [
@@ -1136,17 +1136,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -1181,17 +1181,17 @@
               }
             },
             "_raw": "task_completed | task_mod_1on1_tips | before:5:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_1on1_tips | before:5:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_1on1_tips | before:5:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_1on1_tips"
               ],
               [
@@ -1217,17 +1217,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -1262,17 +1262,17 @@
               }
             },
             "_raw": "task_completed | task_mod_praise_tips | before:2:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_praise_tips | before:2:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_praise_tips | before:2:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_praise_tips"
               ],
               [
@@ -1298,17 +1298,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -1343,17 +1343,17 @@
               }
             },
             "_raw": "task_completed | task_mod_praise_tips | before:5:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_praise_tips | before:5:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_praise_tips | before:5:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_praise_tips"
               ],
               [
@@ -1379,17 +1379,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -1424,17 +1424,17 @@
               }
             },
             "_raw": "task_completed | task_mod_praise_tips | before:3:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_praise_tips | before:3:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_praise_tips | before:3:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_praise_tips"
               ],
               [
@@ -1460,17 +1460,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -1505,17 +1505,17 @@
               }
             },
             "_raw": "task_completed | task_mod_praise_tips | before:6:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_praise_tips | before:6:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_praise_tips | before:6:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_praise_tips"
               ],
               [
@@ -1541,17 +1541,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]
@@ -1586,17 +1586,17 @@
               }
             },
             "_raw": "task_completed | task_mod_praise_tips | before:6:day",
-            "_cleaned": "db_lookup:last | task_actions:task_id | task_mod_praise_tips | before:6:day",
+            "_cleaned": "db_lookup | task_actions:last | task_mod_praise_tips | before:6:day",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "task_actions",
-                "task_id"
+                "last"
               ],
               [
+                "task_id",
                 "task_mod_praise_tips"
               ],
               [
@@ -1622,17 +1622,17 @@
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
+            "_cleaned": "db_lookup | reminder_events:last | reminder_id:sent",
             "_parsed": [
               [
-                "db_lookup",
-                "last"
+                "db_lookup"
               ],
               [
                 "reminder_events",
-                "reminder_id"
+                "last"
               ],
               [
+                "reminder_id",
                 "sent"
               ]
             ]

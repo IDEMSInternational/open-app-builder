@@ -30,7 +30,7 @@ export class ReminderListParser extends DefaultParser {
  * first_launch | before:7:day
  * ```
  * raw:     'first_launch | before:7:day'
- * cleaned: 'db_lookup:first |app_events:event_id | app_launch | before:7:day'
+ * cleaned: 'db_lookup |app_events:first | event_id:app_launch | before:7:day'
  * parsed:
  * [
  *   [ [ 'db_lookup' ], [ 'first' ] ],
@@ -40,9 +40,10 @@ export class ReminderListParser extends DefaultParser {
  * ]
  */
 function extractConditionList(conditionText: string) {
-  const rawTxt = conditionText;
-  const cleanedTxt = _replaceShorthandText(conditionText);
-  const data: string[][] = _parseXlsxData(cleanedTxt);
+  const txt = conditionText;
+  const cleanedTxt = _handleTextExceptions(conditionText);
+  let data: string[][] = _parseXlsxData(cleanedTxt);
+  data = _handleDataExceptions(data);
   const conditionExtractors: {
     [key in IConditionList["condition_type"]]: (data: any[][]) => IConditionList;
   } = {
@@ -55,7 +56,7 @@ function extractConditionList(conditionText: string) {
     process.exit(1);
   }
   const condition: IConditionList = conditionExtractors[condition_type](data);
-  condition._raw = rawTxt;
+  condition._raw = txt;
   condition._cleaned = cleanedTxt;
   condition._parsed = data;
   return condition;
@@ -72,9 +73,9 @@ function parseFieldEvaluationCondition(data: any[][]): IConditionList {
 }
 function parseDBLookupCondition(data: any[][]): IConditionList {
   const [typeData, tableData, valueData, evaulateData] = data;
-  const [condition_type, orderStr] = typeData;
-  const [table_id, filter_field] = tableData;
-  const [value] = valueData;
+  const [condition_type] = typeData;
+  const [table_id, orderStr] = tableData;
+  const [filter_field, filter_value] = valueData;
   let evaluate = null;
   if (evaulateData) {
     const [comparatorText, quantity, unit] = evaulateData as any[];
@@ -87,7 +88,7 @@ function parseDBLookupCondition(data: any[][]): IConditionList {
     condition_args: {
       db_lookup: {
         table_id,
-        filter: { field: filter_field || "id", value },
+        filter: { field: filter_field || "id", value: filter_value },
         order: orderStr === "first" ? "asc" : "desc",
         evaluate,
       },
@@ -99,14 +100,14 @@ function parseDBLookupCondition(data: any[][]): IConditionList {
  * some common authoring scenarios have been reduced to single keywords for ease-of-authoring
  * replace these with full specifications
  */
-function _replaceShorthandText(text: string) {
+function _handleTextExceptions(text: string) {
   // a maximum of 1 replacement will be made, so order in terms of specifivity
   const shorthandReplacements = {
-    sent: "db_lookup:last | reminder_events:reminder_id | sent",
-    first_launch: "db_lookup:first |app_events:event_id | app_launch",
-    app_launch: "db_lookup:last | app_events:event_id | app_launch",
-    "task_completed:first": "db_lookup:first | task_actions:task_id",
-    task_completed: "db_lookup:last | task_actions:task_id",
+    sent: "db_lookup | reminder_events:last | reminder_id:sent",
+    first_launch: "db_lookup |app_events:first | event_id:app_launch",
+    app_launch: "db_lookup | app_events:last | event_id:app_launch",
+    "task_completed:first": "db_lookup | task_actions:first",
+    task_completed: "db_lookup | task_actions:last",
   };
   Object.entries(shorthandReplacements).some(([original, replacement]) => {
     // use a regular expression to prevent matching words that have additional content before
@@ -118,6 +119,14 @@ function _replaceShorthandText(text: string) {
     return regex.test(text);
   });
   return text;
+}
+
+/** Make additional replacements to format data in a consistent way */
+function _handleDataExceptions(data: string[][]) {
+  if (data[1]?.[0] === "task_actions") {
+    data[2].unshift("task_id");
+  }
+  return data;
 }
 
 /**
