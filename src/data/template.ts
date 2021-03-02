@@ -745,7 +745,9 @@ export const template: FlowTypes.Template[] = [
               "exit | mark_as_skipped"
           ],
           "hidden": false,
-          "parameter_list": [],
+          "parameter_list": [
+            "disabled: true"
+          ],
           "comments": ""
         },
         {
@@ -755,6 +757,8 @@ export const template: FlowTypes.Template[] = [
           "action_list": [],
           "hidden": false,
           "parameter_list": [
+            "disabled: false",
+            "hexBgColor: #504949",
             "color: secondary",
             "width: 326",
             "height: 62"

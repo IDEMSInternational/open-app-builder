@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ITemplateComponent} from "../tmpl.component";
 import {FlowTypes} from "../../../../model";
-import {getStringParamFromTemplateRow, getNumberParamFromTemplateRow} from "../../../../utils";
+import {getStringParamFromTemplateRow, getNumberParamFromTemplateRow, getBooleanParamFromTemplateRow} from "../../../../utils";
 
 @Component({
     selector: 'plh-button',
@@ -15,7 +15,8 @@ export class ButtonComponent implements ITemplateComponent, OnInit {
     color: string = 'primary';
     width: number;
     height: number;
-
+    hexBgColor: string | null;
+    disabled: boolean = false;
     constructor() {}
 
     ngOnInit() {
@@ -27,6 +28,8 @@ export class ButtonComponent implements ITemplateComponent, OnInit {
             this.color = getStringParamFromTemplateRow(this.row, 'color',  'primary');
             this.width = getNumberParamFromTemplateRow(this.row, 'width', 172);
             this.height = getNumberParamFromTemplateRow(this.row, 'height', 62);
+            this.hexBgColor = getStringParamFromTemplateRow(this.row, 'hexBgColor', null);
+            this.disabled = getBooleanParamFromTemplateRow(this.row, 'disabled', false);
         }
     }
 }

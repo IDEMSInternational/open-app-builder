@@ -1,4 +1,4 @@
-import {firebaseConfig} from "../../firabaseConfig";
+import {firebaseConfig} from "../../firebaseConfig";
 import { version } from "../../package.json";
 
 export const environment = {
