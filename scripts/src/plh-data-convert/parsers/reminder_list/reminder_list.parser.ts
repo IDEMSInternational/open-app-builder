@@ -27,15 +27,15 @@ export class ReminderListParser extends DefaultParser {
  *
  * @example
  * ```
- * first_launch | before:7:day
+ * first_launch | before:7:day; task_completed | some_task
  * ```
  * raw:     'first_launch | before:7:day'
  * cleaned: 'db_lookup |app_events:first | event_id:app_launch | before:7:day'
  * parsed:
  * [
- *   [ [ 'db_lookup' ], [ 'first' ] ],
- *   [ [ 'app_events' ], [ 'event_id' ] ],
- *   [ 'app_launch' ],
+ *   [ [ 'db_lookup' ] ],
+ *   [ [ 'app_events' ], [ 'first' ] ],
+ *   [ [ 'event_id' ] , [ 'app_launch' ] ],
  *   [ [ 'before' ], [ '7' ], [ 'day' ] ]
  * ]
  */
