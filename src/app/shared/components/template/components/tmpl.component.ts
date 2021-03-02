@@ -1,4 +1,4 @@
-import { ComponentRef, Directive, OnChanges, SimpleChanges, ViewContainerRef, Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild } from "@angular/core";
+import { ComponentRef, Directive, OnChanges, SimpleChanges, ViewContainerRef, Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild, NgZone, ChangeDetectionStrategy } from "@angular/core";
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { AnimatedSectionGroupComponent } from "./animated_section_group";
@@ -14,8 +14,11 @@ import { AnimatedSectionComponent } from "./animated_section";
 import { TmplSliderComponent } from "./slider";
 import { TmplTimerComponent } from "./timer";
 import { NavGroupComponent } from "./nav_group";
+import { TmplTitleComponent } from "./title";
+import { EventEmitter } from "events";
 
 export interface ITemplateComponent {
+  parent?: TmplComponent,
   template: FlowTypes.Template;
   row: FlowTypes.TemplateRow;
   localVariables: { [name: string]: any };
@@ -23,7 +26,7 @@ export interface ITemplateComponent {
 
 export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateComponent>> = {
   text: TmplTextComponent,
-  title: TmplTextComponent,
+  title: TmplTitleComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
@@ -56,7 +59,7 @@ export class TmplCompHostDirective {
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
   `,
-  styleUrls: ['./tmpl-components-common.scss'],
+  styleUrls: ['./tmpl-components-common.scss']
 })
 export class TmplComponent implements OnInit, OnChanges {
 
@@ -68,7 +71,8 @@ export class TmplComponent implements OnInit, OnChanges {
 
   componentRef: ComponentRef<ITemplateComponent>;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private contactFieldService: ContactFieldService) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private contactFieldService: ContactFieldService,
+    private zone: NgZone) { }
 
   stringify(obj) {
     return JSON.stringify(obj);
@@ -82,14 +86,18 @@ export class TmplComponent implements OnInit, OnChanges {
       );
       const viewContainerRef = this.tmplComponentHost.viewContainerRef;
       viewContainerRef.clear();
-      this.componentRef = viewContainerRef.createComponent<ITemplateComponent>(componentFactory);
-      this.componentRef.instance.row = this.row;
-      this.componentRef.instance.template = this.template;
-      this.componentRef.instance.localVariables = this.localVariables;
+      const componentRef = viewContainerRef.createComponent<ITemplateComponent>(componentFactory);
+      const instance = componentRef.instance;
+      instance.parent = this;
+      instance.row = this.row;
+      instance.template = this.template;
+      instance.localVariables = this.localVariables;
+      this.componentRef = componentRef;
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log("Template component on changes ", this.row.type, changes);
     if (this.componentRef) {
       this.componentRef.instance.row = this.row;
       this.componentRef.instance.template = this.template;
@@ -133,6 +141,10 @@ export class TmplComponent implements OnInit, OnChanges {
     }
   }
 
-  
+  /* ngAfterViewChecked() {
+    this.zone.runOutsideAngular(() => {
+      console.log("ngAfterViewChecked ", this.row.type, this.row);
+    });
+  } */
 
 }
