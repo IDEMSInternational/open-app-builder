@@ -17,7 +17,9 @@ export class SliderComponent implements ITemplateComponent, OnInit {
   minValue: number = 0;
   maxValue: number = 7;
   disabled: boolean = false;
+  title: string | null;
   step: number = 1;
+  value: number | null;
   listNumbers: Array<number> = [];
   constructor() {
   }
@@ -31,7 +33,10 @@ export class SliderComponent implements ITemplateComponent, OnInit {
     this.help = getStringParamFromTemplateRow(this.row, "help", null);
     this.minValue = getNumberParamFromTemplateRow(this.row, "min", this.minValue);
     this.maxValue = getNumberParamFromTemplateRow(this.row, "max", this.maxValue);
+    this.title = getStringParamFromTemplateRow(this.row , 'title', null);
     this.step = getNumberParamFromTemplateRow(this.row, "step", this.step);
+    this.value = this.row.value > this.maxValue ? null : this.row.value;
+    this.disabled = this.value === null;
   }
 
   createListNumber(min, max, step): Array<number> {
@@ -42,7 +47,10 @@ export class SliderComponent implements ITemplateComponent, OnInit {
       }
     }
     switch (true){
-      case (arr.length > 10 && arr.length <= 20):
+      case (arr.length <= 11):
+        this.listNumbers = arr;
+        return this.listNumbers;
+      case (arr.length > 11 && arr.length <= 20):
         this.listNumbers = arr.filter(item => item % 2 === 0);
         return this.listNumbers;
       case (arr.length > 20 && arr.length <= 30):

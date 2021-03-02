@@ -16,6 +16,11 @@ h2{
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   position: relative;
+  .title-slider{
+   font-weight: bold;
+    font-size: 25px;
+    color: #0D3F60;
+  }
   &__container{
       max-width: 288px;
     .slider-item{
