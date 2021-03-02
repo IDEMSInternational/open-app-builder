@@ -1,19 +1,78 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FlowTypes } from '../../../../model';
-import { ITemplateComponent } from '../tmpl.component';
+import { Component, Input, OnInit } from "@angular/core";
+import { FlowTypes } from "../../../../model";
+import { ITemplateComponent } from "../tmpl.component";
+import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
 @Component({
-  selector: 'plh-tmpl-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss'],
+  selector: "plh-tmpl-slider",
+  templateUrl: "./slider.component.html",
+  styleUrls: ["./slider.component.scss"]
 })
 export class SliderComponent implements ITemplateComponent, OnInit {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string};
+  @Input() localVariables: { [name: string]: string };
+  help: string | null;
+  minValue: number = 0;
+  maxValue: number = 7;
+  disabled: boolean = false;
+  step: number = 1;
+  listNumbers: Array<number> = [];
+  constructor() {
+  }
 
-  constructor() {}
+  ngOnInit() {
+    this.getParams();
+    this.createListNumber(this.minValue, this.maxValue, this.step);
+  }
 
-  ngOnInit() {}
+  getParams() {
+    this.help = getStringParamFromTemplateRow(this.row, "help", null);
+    this.minValue = getNumberParamFromTemplateRow(this.row, "min", this.minValue);
+    this.maxValue = getNumberParamFromTemplateRow(this.row, "max", this.maxValue);
+    this.step = getNumberParamFromTemplateRow(this.row, "step", this.step);
+  }
+
+  createListNumber(min, max, step): Array<number> {
+    const arr = [];
+    for (let i = min; i <= max; i++) {
+      if (i % step === 0) {
+        arr.push(i)
+      }
+    }
+    switch (true){
+      case (arr.length > 10 && arr.length <= 20):
+        this.listNumbers = arr.filter(item => item % 2 === 0);
+        return this.listNumbers;
+      case (arr.length > 20 && arr.length <= 30):
+        this.listNumbers = [0, 5, 10, 15, 20 , 25, arr[arr.length - 1]]
+        return this.listNumbers;
+      case (arr.length > 30 && arr.length < 40):
+        this.listNumbers = [0, 5, 10, 15, 20, 25, 30, 35, arr[arr.length - 1]]
+        return this.listNumbers;
+      case (arr.length > 40 && arr.length <= 50):
+          this.listNumbers = [0, 5, 10, 15, 20, 25, 30, 35, arr[arr.length - 1]]
+          return this.listNumbers;
+      case (arr.length > 50 && arr.length <= 60):
+        this.listNumbers = [0, 10, 20 , 30, 40, arr[arr.length - 1]]
+        return this.listNumbers;
+      case (arr.length > 60 && arr.length <= 70):
+        this.listNumbers = [0, 10, 20 , 30, 40, 50, arr[arr.length - 1]]
+        return this.listNumbers;
+      case (arr.length > 70 && arr.length <= 80):
+        this.listNumbers = [0, 10, 20 , 30, 40, 50, 60, arr[arr.length - 1]]
+        return this.listNumbers;
+      case (arr.length > 80 && arr.length <= 90):
+        this.listNumbers = [0, 10, 20 , 30, 40, 50, 60, 70, arr[arr.length - 1]]
+        return this.listNumbers;
+      case (arr.length > 90):
+        this.listNumbers = [0, 20, 40, 60, 80, arr[arr.length - 1]]
+        return this.listNumbers;
+    }
+  }
+
+  disableSlider() {
+    this.disabled = !this.disabled;
+  }
 }

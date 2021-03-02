@@ -1,1 +1,18 @@
-<ion-slider></ion-slider>
+<h2>Slider</h2>
+<div class="slider">
+  <ion-icon *ngIf="help" name="help-circle-outline" class="help" [pTooltip]="help" tooltipPosition="left" tooltipEvent="click"></ion-icon>
+  <div class="slider__container">
+    <div class="slider-item">
+      <ion-range class="custom-range" #range [disabled]="disabled"
+                 [value]="disabled ? 0 : range.value"
+                 [min]="minValue" [max]="maxValue" pin="true"
+                 ticks="false" [step]="step" snaps="true"></ion-range>
+      <div class="checkbox-block" (click)="disableSlider()">
+        <ion-checkbox class="custom-checkbox"  [value]="disabled" [checked]="disabled"  color="primary"></ion-checkbox>
+      </div>
+    </div>
+    <ul class="list-numbers">
+      <li [class.disabled]="disabled" *ngFor="let num of listNumbers">{{num}}</li>
+    </ul>
+  </div>
+</div>
