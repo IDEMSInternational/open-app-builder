@@ -1,10 +1,13 @@
 <h2>Slider</h2>
 <div class="slider">
+  <span class="title-slider">
+    {{title}}
+  </span>
   <ion-icon *ngIf="help" name="help-circle-outline" class="help" [pTooltip]="help" tooltipPosition="left" tooltipEvent="click"></ion-icon>
   <div class="slider__container">
     <div class="slider-item">
-      <ion-range class="custom-range" #range [disabled]="disabled"
-                 [value]="disabled ? 0 : range.value"
+      <ion-range class="custom-range"  [disabled]="disabled"
+                 [value]="disabled ? 0 : value"
                  [min]="minValue" [max]="maxValue" pin="true"
                  ticks="false" [step]="step" snaps="true"></ion-range>
       <div class="checkbox-block" (click)="disableSlider()">

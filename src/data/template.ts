@@ -1,6 +1,6 @@
 /* tslint:disable */
-  import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const template: FlowTypes.Template[] = [
+import { FlowTypes } from "src/app/shared/model/flowTypes";
+export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
     "flow_name": "timer",
@@ -666,23 +666,39 @@
       }
     ]
   },
-    {
-      "flow_type": "template",
-      "flow_name": "slider",
-      "status": "released",
-      "rows": [
-        {
-          "type": "slider",
-          "name": "template_slider",
-          "value": null,
-          "parameter_list": [
-            "min: 0",
-            "max: 100",
-            "help: some help info",
-            "step: 1"
-          ],
-          "comments": ""
-        },
-      ]
-    },
-]
+  {
+    "flow_type": "template",
+    "flow_name": "slider",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value": null,
+        "parameter_list": [
+          "title: Slider example",
+          "min: 0",
+          "max: 10",
+          "help: some help info",
+          "step: 1"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value": null,
+        "parameter_list": [
+          "title: Slider example",
+          "min: 0",
+          "max: 20",
+          "help: some help info",
+          "step: 1"
+        ],
+        "comments": ""
+      },
+
+    ]
+  }
+
+];
