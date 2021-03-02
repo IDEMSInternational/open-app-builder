@@ -666,6 +666,22 @@ export const template: FlowTypes.Template[] = [
       }
     ]
   },
+    {
+      "flow_type": "template",
+      "flow_name": "audio_player",
+      "status": "released",
+      "rows": [
+        {
+          "type": "audio",
+          "name": "Audio",
+          "parameter_list": [
+            "src: ./assets/audio/music.mp3",
+            "title: Fade",
+            "help: Some help text"
+          ]
+        }
+      ]
+    },
   {
     "flow_type": "template",
     "flow_name": "slider",

@@ -1,0 +1,26 @@
+<h2>Audio</h2>
+<div class="container-player">
+  <div class="top-row">
+    <div class="title_and_help">
+      <h3 (click)="start()">{{titleAudio}}</h3>
+      <ion-icon *ngIf="help" [pTooltip]="help" tooltipPosition="right" tooltipEvent="click" name="help-circle-outline" class="audio-help"></ion-icon>
+    </div>
+    <div class="volume" (click)="toggleMute()">
+      <ion-icon [name]="!isMute ? 'volume-high-outline' : 'volume-mute-outline'" class="volume-icon"></ion-icon>
+    </div>
+  </div>
+  <div class="progress-block">
+    progress bar
+  </div>
+  <div class="time">
+    <div class="time-value">
+      03:00
+    </div>
+    <div class="time-value">
+      05:00
+    </div>
+  </div>
+</div>
+<!--<h2 (click)="start()">-->
+<!--  {{titleAudio}}-->
+<!--</h2>-->
