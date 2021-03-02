@@ -518,10 +518,6 @@
     "rows": [
       {
         "type": "nav_group",
-        "parameter_list": [
-          "show_back_button:false",
-          ""
-        ],
         "rows": [
           {
             "type": "nav_section",
@@ -532,11 +528,15 @@
             "rows": [
               {
                 "type": "image",
-                "value": "plh_images/workshops/welcome1.svg"
+                "value": "plh_images/workshops/story_time_intro1.svg"
+              },
+              {
+                "type": "title",
+                "value": "Return to Story Time"
               },
               {
                 "type": "text",
-                "value": "Don't think of an elephant"
+                "value": "Thank you for thinking along! Let’s go back in time and see what happens  "
               }
             ]
           },
@@ -545,11 +545,49 @@
             "rows": [
               {
                 "type": "image",
-                "value": "plh_images/workshops/welcome1.svg"
+                "value": "plh_images/workshops/story1/1.svg"
               },
               {
                 "type": "text",
-                "value": "What are you thinking of?"
+                "value": "Neighour was cleaning the house while Amina was with her friends practicing dance moves."
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/2.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Amina, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\n\nAmina: “Okay, mom!”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/3.svg"
+              },
+              {
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/4.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Thank you for practicing outside while I finished cleaning the house, Amina. Now, I have some time to watch your dance.”"
               }
             ]
           },
@@ -563,11 +601,11 @@
             "rows": [
               {
                 "type": "image",
-                "value": "plh_images/workshops/welcome1.svg"
+                "value": "plh_images/workshops/story1/5.svg"
               },
               {
                 "type": "text",
-                "value": "An elephant right?"
+                "value": "Neighour: “Wow, Amina! You have such good dance moves!”"
               }
             ]
           }
