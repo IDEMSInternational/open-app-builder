@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { differenceInHours, subDays, subHours } from "date-fns";
 import { IReminder } from "./reminders.model";
-import { DbService } from "src/app/shared/services/db/db.service";
+import { DbService, IDBTable } from "src/app/shared/services/db/db.service";
 import { REMINDER_LIST } from "src/app/shared/services/data/data.service";
 import { FlowTypes } from "scripts/types";
 import { TaskService } from "src/app/shared/services/task/task.service";
@@ -22,14 +22,7 @@ import { ITaskAction } from "../goals/models/goals.model";
  * It is not currently production-ready (2020-11-15 - Chris)
  */
 export class RemindersService {
-  public data: {
-    app_day: number;
-    actionHistory: {
-      task_action: { [action_id: string]: ITaskAction[] };
-      app_event: { [event_id: string]: IAppEvent[] };
-      reminder_action: { [reminder_id: string]: IReminder[] };
-    };
-  };
+  public data: IReminderData;
   public mockData = MOCK_DATA;
   public reminders$ = new BehaviorSubject<IReminder[]>([]);
   public remindersList$ = new BehaviorSubject<FlowTypes.Reminder_listRow[]>([]);
@@ -50,12 +43,13 @@ export class RemindersService {
   private async loadReminderData() {
     const taskActions = await this.dbService.table("task_actions").orderBy("_created").toArray();
     // get event histories
-    const task_action = arrayToHashmapArray<ITaskAction>(taskActions, "task_id");
+    const task_actions = arrayToHashmapArray<ITaskAction>(taskActions, "task_id");
     const appEvents = await this.dbService.table("app_events").orderBy("_created").toArray();
-    const app_event = arrayToHashmapArray<IAppEvent>(appEvents, "event_id");
+    const app_events = arrayToHashmapArray<IAppEvent>(appEvents, "event_id");
     const app_day = this.appEventService.summary.app_day;
-    const reminder = {};
-    this.data = { app_day, actionHistory: { task_action, app_event, reminder } };
+    // TODO - add db bindings for reminder_events
+    const reminder_events = {};
+    this.data = { app_day, dbCache: { task_actions, app_events, reminder_events } };
     console.log("reminders data", this.data);
   }
 
@@ -92,6 +86,7 @@ export class RemindersService {
       // );
       r.deactivation_condition_list = r.deactivation_condition_list.map((condition) => {
         const evaluation = this.evaluateReminderCondition(condition);
+        console.log(condition._cleaned, evaluation);
         return { ...condition, _satisfied: evaluation };
       });
       return r;
@@ -101,89 +96,81 @@ export class RemindersService {
   }
 
   private evaluateReminderCondition(condition: FlowTypes.Reminder_conditionList): boolean {
-    const { action, value, timing, entry } = condition;
+    const { condition_type, condition_args } = condition;
     const evaluators: {
-      [key in FlowTypes.Reminder_conditionList["action"]]: () => string | number | null;
+      [key in FlowTypes.Reminder_conditionList["condition_type"]]: () => boolean | undefined;
     } = {
-      app_event: () => this.getTargetAppEventValue(value as any, entry),
-      field_evaluation: () => undefined,
-      reminder_action: () => undefined,
-      task_completed: () => this.getTargetTaskCompleteValue(value as any, entry),
+      db_lookup: () => this.processDBLookupCondition(condition),
+      field_evaluation: () => this.processFieldEvaluationCondition(condition_args.field_evaluation),
     };
-    const evaluateValue: string | number = evaluators[action]();
-    // used to indicator the evaluator function does not currently exist
-    if (evaluateValue === undefined) {
-      return undefined;
-    }
-    // no value for evaluation (e.g. task never completed), so assume condition not satisfied
-    if (evaluateValue === null) {
-      return false;
-    }
-
-    if (timing && evaluateValue) {
-      const evaluation = this.evaluateTimingCondition(evaluateValue, timing);
-      return evaluation;
-    } else {
-      return evaluateValue !== undefined;
-    }
-
-    // console.log("evaluate reminder", r);
+    return evaluators[condition_type]();
   }
 
-  private evaluateTimingCondition(
+  private processDBLookupCondition(condition: FlowTypes.Reminder_conditionList) {
+    const { table_id, filter, evaluate, order } = condition.condition_args.db_lookup;
+    if (!this.data.dbCache.hasOwnProperty(table_id)) {
+      console.error(
+        `[${table_id}] has not been included in reminders.service lookup condition`,
+        condition
+      );
+      return undefined;
+    }
+    // the action history is already organised by filter field (e.g. event_id, task_id etc.), so select child collection (if entries exist)
+    if (!this.data.dbCache[table_id][filter.value]) {
+      return false;
+    }
+    let results = this.data.dbCache[table_id][filter.value];
+    // TODO - assumes standard sort order fine, - may need in future (e.g. by _created)
+    // TODO - assumes no filtering required (e.g. _completed) - may need in future
+    if (order === "asc") {
+      results = results.reverse();
+    }
+    if (evaluate) {
+      // TODO - Assumes all evaluations are based on creation date, possible future syntax to allow more options
+      const evaulateValue = results[0]?._created;
+      return this.evaluateDBLookupCondition(evaulateValue, evaluate);
+    }
+    // default - return if entries exist
+    return true;
+  }
+
+  private evaluateDBLookupCondition(
     evaluateValue: string | number,
-    timing: FlowTypes.Reminder_conditionList["timing"]
+    evaluate: FlowTypes.Reminder_conditionList["condition_args"]["db_lookup"]["evaluate"]
   ) {
-    const { comparator, quantity, unit } = timing;
+    const { operator, value, unit } = evaluate;
     switch (unit) {
       case "day":
         const dayDiff = differenceInHours(new Date(), new Date(evaluateValue)) / 24;
-        return this._compare(dayDiff, comparator, quantity);
+        return this._compare(dayDiff, operator, value);
 
-      case "appday":
+      case "app_day":
         const appDayToday = this.data.app_day;
         const appDayDiff = appDayToday - (evaluateValue as number);
-        return this._compare(appDayDiff, comparator, quantity);
-    }
-  }
-  /** Method used to retrieve comparison value (created date) from app events */
-  private getTargetAppEventValue(event_id: IAppEvent["event_id"], entry: "first" | "last") {
-    switch (event_id) {
-      case "app_launch":
-        // most recent
-        return this.data.appEventHistory.app_launch?.pop()?._created || null;
-      default:
-        console.error("No app event evaluation specified for:", event_id);
-        return undefined;
+        return this._compare(appDayDiff, operator, value);
     }
   }
 
-  /** Method used to retrieve comparison value (timestamp) from task action events */
-  private getTargetTaskCompleteValue(task_id: ITaskAction["task_id"], entry: "first" | "last") {
-    switch (entry) {
-      case "first":
-        return this.data.taskActionHistory[task_id]?.[0].timestamp || null;
-      case "last":
-        return this.data.taskActionHistory[task_id]?.pop()?.timestamp || null;
-      default:
-        break;
-    }
+  processFieldEvaluationCondition(
+    args: FlowTypes.Reminder_conditionList["condition_args"]["field_evaluation"]
+  ) {
+    console.error("Field evaluation not currently implemented");
     return undefined;
   }
 
   /** As comparison functions are generated as string parse the relevant cases and evaluate */
   private _compare(
     a: string | number,
-    comparator: FlowTypes.Reminder_conditionList["timing"]["comparator"],
+    operator: FlowTypes.Reminder_conditionList["condition_args"]["db_lookup"]["evaluate"]["operator"],
     b: string | number
   ) {
-    switch (comparator) {
+    switch (operator) {
       case ">":
         return a > b;
       case "<=":
         return a <= b;
       default:
-        console.error("comparator not included:", comparator);
+        console.error("operator not included:", operator);
         break;
     }
   }
@@ -258,39 +245,50 @@ const MOCK_DATA: Partial<IReminderData & { label: string }>[] = [
   {
     label: "Demo 1 (first load)",
     app_day: 1,
-    appEventHistory: {
-      app_launch: [{ _created: generateTimestamp(), event_id: "app_launch" }],
+    dbCache: {
+      app_events: {
+        app_launch: [{ _created: generateTimestamp(), event_id: "app_launch" }],
+      },
+      task_actions: {},
     },
   },
   {
     label: "Demo 2 (day 4)",
     app_day: 4,
-    appEventHistory: {
-      app_launch: [
-        {
-          _created: generateTimestamp(subHours(subDays(new Date(), 3), 1)),
-          event_id: "app_launch",
-        },
-      ],
+    dbCache: {
+      app_events: {
+        app_launch: [
+          {
+            _created: generateTimestamp(subHours(subDays(new Date(), 3), 1)),
+            event_id: "app_launch",
+          },
+        ],
+      },
+      task_actions: {},
     },
   },
   {
     label: "Demo 3 (day 8)",
     app_day: 8,
-    appEventHistory: {
-      app_launch: [
-        {
-          _created: generateTimestamp(subHours(subDays(new Date(), 7), 1)),
-          event_id: "app_launch",
-        },
-      ],
+    dbCache: {
+      app_events: {
+        app_launch: [
+          {
+            _created: generateTimestamp(subHours(subDays(new Date(), 7), 1)),
+            event_id: "app_launch",
+          },
+        ],
+      },
+      task_actions: {},
     },
   },
 ];
 
 interface IReminderData {
   app_day: number;
-  taskActionHistory: { [action_id: string]: ITaskAction[] };
-  appEventHistory: { [event_id in IAppEvent["event_id"]]?: IAppEvent[] };
-  reminderHistory: { [reminder_id: string]: IReminder[] };
+  /** As database lookups are async and inefficient, store key results in memory (keyed by target field) */
+  dbCache: { [table_id in IDBTable]?: { [filter_id: string]: any[] } };
+  // taskdbCache: { [action_id: string]: ITaskAction[] };
+  // appEventHistory: { [event_id in IAppEvent["event_id"]]?: IAppEvent[] };
+  // reminderHistory: { [reminder_id: string]: IReminder[] };
 }

@@ -37,13 +37,12 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": "<=",
                   "value": "1",
@@ -52,14 +51,14 @@
               }
             },
             "_raw": "sent | within:1:day",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent | within:1:day",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent | within:1:day",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -96,7 +95,6 @@
                   "value": "app_launch"
                 },
                 "order": "asc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "1",
@@ -131,25 +129,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -179,7 +176,6 @@
                   "value": "app_launch"
                 },
                 "order": "asc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "2",
@@ -220,7 +216,6 @@
                   "value": "task_praise_teen"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": "<=",
                   "value": "1",
@@ -253,25 +248,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -301,7 +295,6 @@
                   "value": "app_launch"
                 },
                 "order": "asc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "3",
@@ -336,25 +329,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -384,7 +376,6 @@
                   "value": "app_launch"
                 },
                 "order": "asc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "4",
@@ -425,7 +416,6 @@
                   "value": "task_welcome_photo_activity"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
@@ -449,25 +439,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -497,7 +486,6 @@
                   "value": "app_launch"
                 },
                 "order": "asc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "7",
@@ -532,25 +520,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -580,7 +567,6 @@
                   "value": "task_mod_1on1_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "1",
@@ -615,25 +601,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -663,7 +648,6 @@
                   "value": "task_mod_1on1_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "2",
@@ -704,7 +688,6 @@
                   "value": "task_spend_time"
                 },
                 "order": "asc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": "<=",
                   "value": "1",
@@ -737,25 +720,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -785,7 +767,6 @@
                   "value": "task_mod_1on1_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "3",
@@ -824,7 +805,6 @@
                   "value": "task_spend_time"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
@@ -850,25 +830,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -898,7 +877,6 @@
                   "value": "task_mod_1on1_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "3",
@@ -937,7 +915,6 @@
                   "value": "app_launch"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": "<=",
                   "value": "1",
@@ -978,7 +955,6 @@
                   "value": "task_spend_time"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
@@ -1002,25 +978,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -1050,7 +1025,6 @@
                   "value": "task_mod_1on1_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "3",
@@ -1091,7 +1065,6 @@
                   "value": "task_spend_time"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
@@ -1121,7 +1094,6 @@
                   "value": "app_launch"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": "<=",
                   "value": "1",
@@ -1154,25 +1126,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -1202,7 +1173,6 @@
                   "value": "task_mod_1on1_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "5",
@@ -1237,25 +1207,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -1285,7 +1254,6 @@
                   "value": "task_mod_praise_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "2",
@@ -1320,25 +1288,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -1368,7 +1335,6 @@
                   "value": "task_mod_praise_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "5",
@@ -1403,25 +1369,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -1451,7 +1416,6 @@
                   "value": "task_mod_praise_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "3",
@@ -1486,25 +1450,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -1534,7 +1497,6 @@
                   "value": "task_mod_praise_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "6",
@@ -1569,25 +1531,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
@@ -1617,7 +1578,6 @@
                   "value": "task_mod_praise_tips"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": {
                   "operator": ">",
                   "value": "6",
@@ -1652,25 +1612,24 @@
             "condition_type": "db_lookup",
             "condition_args": {
               "db_lookup": {
-                "table_id": "reminders",
+                "table_id": "reminder_events",
                 "filter": {
                   "field": "reminder_id",
                   "value": "sent"
                 },
                 "order": "desc",
-                "sort_by": "_created",
                 "evaluate": null
               }
             },
             "_raw": "sent",
-            "_cleaned": "db_lookup:last | reminders:reminder_id | sent",
+            "_cleaned": "db_lookup:last | reminder_events:reminder_id | sent",
             "_parsed": [
               [
                 "db_lookup",
                 "last"
               ],
               [
-                "reminders",
+                "reminder_events",
                 "reminder_id"
               ],
               [
