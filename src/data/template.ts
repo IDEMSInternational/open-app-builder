@@ -665,5 +665,24 @@
         ]
       }
     ]
-  }
+  },
+    {
+      "flow_type": "template",
+      "flow_name": "slider",
+      "status": "released",
+      "rows": [
+        {
+          "type": "slider",
+          "name": "template_slider",
+          "value": null,
+          "parameter_list": [
+            "min: 0",
+            "max: 100",
+            "help: some help info",
+            "step: 1"
+          ],
+          "comments": ""
+        },
+      ]
+    },
 ]

@@ -22,7 +22,7 @@ import { TmplTimerComponent } from "./components/timer";
 import { SliderComponent } from "./components/slider/slider.component";
 import { TmplSliderComponent } from "./components/slider";
 import { NavGroupComponent } from "./components/nav_group";
-import {TooltipDirective} from "../common/directives/tooltip.directive";
+import { TooltipDirective } from "../common/directives/tooltip.directive";
 
 const TEMPLATE_COMPONENTS = [
     TmplTextComponent,
