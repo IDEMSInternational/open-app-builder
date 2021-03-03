@@ -17,5 +17,9 @@
     <ul class="list-numbers">
       <li [class.disabled]="disabled" *ngFor="let num of listNumbers">{{num}}</li>
     </ul>
+    <div class="labels">
+      <div class="min">{{min_value_label}}</div>
+      <div class="max">{{max_value_label}}</div>
+    </div>
   </div>
 </div>

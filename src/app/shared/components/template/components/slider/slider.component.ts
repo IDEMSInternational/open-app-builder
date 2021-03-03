@@ -20,6 +20,8 @@ export class SliderComponent implements ITemplateComponent, OnInit {
   title: string | null;
   step: number = 1;
   value: number | null;
+  min_value_label: string | null;
+  max_value_label: string | null;
   listNumbers: Array<number> = [];
   constructor() {
   }
@@ -35,6 +37,8 @@ export class SliderComponent implements ITemplateComponent, OnInit {
     this.maxValue = getNumberParamFromTemplateRow(this.row, "max", this.maxValue);
     this.title = getStringParamFromTemplateRow(this.row , 'title', null);
     this.step = getNumberParamFromTemplateRow(this.row, "step", this.step);
+    this.min_value_label = getStringParamFromTemplateRow(this.row, 'min_value_label', null);
+    this.max_value_label = getStringParamFromTemplateRow(this.row, 'max_value_label', null);
     this.value = this.row.value > this.maxValue ? null : this.row.value;
     this.disabled = this.value === null;
   }

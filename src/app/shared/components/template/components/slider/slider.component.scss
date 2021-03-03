@@ -53,6 +53,16 @@ h2{
         color: #bfbfbf;
       }
     }
+    .labels{
+      margin-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .min, .max{
+        font-size: 15px;
+        color: #096B8B;
+      }
+    }
   }
   .help {
     color: #096B8B;
