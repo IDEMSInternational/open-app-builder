@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, NgZone, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { FlowTypes } from '../../model';
 
 @Component({
@@ -17,23 +17,13 @@ export class TemplateContainerComponent {
   };
   localVariables: { [name: string]: string } = {};
 
-  constructor(private cdRef: ChangeDetectorRef, private zone: NgZone) { }
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   public keys(obj: any) {
     if (obj) {
       return Object.keys(obj);
     }
     return [];
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("Container on changes ", changes);
-  }
-
-  ngAfterViewChecked() {
-    this.zone.runOutsideAngular(() => {
-      console.log("ngAfterViewChecked on template container");
-    });
   }
 
 }
