@@ -676,7 +676,9 @@ export const template: FlowTypes.Template[] = [
           "name": "Audio",
           "parameter_list": [
             "src: ./assets/audio/music.mp3",
+            "rangeBarDisabled: false",
             "title: Fade",
+            "timeToRewind: 10",
             "help: Some help text"
           ]
         }
