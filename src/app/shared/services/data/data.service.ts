@@ -89,4 +89,15 @@ export class PLHDataService {
 
     return flowsByName;
   }
+
+  getComponentDefaultParamMap(componentType: FlowTypes.TemplateRowType): Record<string, any> {
+    const defaultParamsList = COMPONENT_DEFAULTS.find((cd) => cd.flow_name === componentType);
+    const paramMap = {};
+    if (defaultParamsList) {
+      for (let row of defaultParamsList.rows) {
+        paramMap[row.parameter] = row.default_value;
+      }
+    }
+    return paramMap;
+  }
 }
