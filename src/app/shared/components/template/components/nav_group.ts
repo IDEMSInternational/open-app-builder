@@ -64,7 +64,6 @@ export class NavGroupComponent implements ITemplateComponent {
     navButtonList: NavButtons[] = [];
     _row: FlowTypes.TemplateRow;
     @Input() set row(value: FlowTypes.TemplateRow) {
-        console.log("Nav_group row set ", value);
         const paramMap = this.extractParameterList(value.parameter_list);
         
         let groupNextText = this.getParamFromMap(paramMap, "next_button_text");
