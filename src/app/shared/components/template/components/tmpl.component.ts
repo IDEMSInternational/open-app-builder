@@ -136,9 +136,6 @@ export class TmplComponent implements OnInit, OnChanges {
       return str;
     }
   }
-
-  
-
 }
 
 

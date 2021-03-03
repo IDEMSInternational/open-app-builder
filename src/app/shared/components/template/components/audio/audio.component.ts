@@ -1,8 +1,13 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { ITemplateComponent } from "../tmpl.component";
 import { FlowTypes } from "../../../../model";
-import { getStringParamFromTemplateRow } from "../../../../utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow
+} from "../../../../utils";
 import { Howl } from "howler";
+import { IonRange } from "@ionic/angular";
 
 @Component({
   selector: "plh-audio",
@@ -13,71 +18,104 @@ export class AudioComponent implements ITemplateComponent, OnInit {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
+  @ViewChild("range", { static: false }) range: IonRange;
   src: string | null;
   titleAudio: string | null;
   help: string | null;
-  activeTrack = null;
   isMute: boolean = false;
   player: Howl = null;
   isPlayed: boolean = false;
-
+  errorTxt: string | null;
+  progress = 0;
+  timeToRewind: number = 15;
+  rangeBarTouched: boolean = false;
+  currentTimeSong: string = '0';
+  rangeBarDisabled: boolean = false;
   constructor() {
   }
 
   ngOnInit() {
     this.getParams();
+    this.initPlayer();
   }
 
   getParams() {
     this.src = getStringParamFromTemplateRow(this.row, "src", null);
     this.titleAudio = getStringParamFromTemplateRow(this.row, "title", "Title");
     this.help = getStringParamFromTemplateRow(this.row, "help", null);
+    this.rangeBarDisabled = getBooleanParamFromTemplateRow(this.row, 'rangeBarDisabled', false);
+    this.timeToRewind = getNumberParamFromTemplateRow(this.row, 'timeToRewind', 15);
   }
 
-  start() {
-    if (this.player) this.player.stop();
-    this.player = new Howl({
+  initPlayer() {
+    return this.src ? this.player = new Howl({
       src: [this.src],
       onplay: (e) => {
-        console.log('start');
         this.isPlayed = true;
+        this.updateProgress();
       },
       onend: () => {
-        console.log('end');
         this.isPlayed = false;
+        this.range.value = 0;
+        this.currentTimeSong = '0';
+        this.updateProgress();
       },
       onpause: () => {
-        console.log('pause');
         this.isPlayed = false;
+        this.updateProgress();
       }
-    });
-    this.player.play();
+    }) : this.errorTxt = "Src is undefined, player not initialized";
   }
 
-  togglePlayer(pause) {
-
+  togglePlayer() {
+    this.isPlayed = !this.isPlayed;
+    return this.isPlayed ? this.player.play() : this.player.pause();
   }
 
   rewindNext() {
-
+    return this.isPlayed ? this.player.seek(this.player.seek() as any + 15) : null;
   }
 
   rewindPrev() {
-
+    return this.isPlayed ? this.player.seek(this.player.seek() as any < 15 ?
+      this.player.seek(0) as any : this.player.seek() as any - 15) : null;
   }
 
   seek() {
-
+    let newValue = +this.range.value;
+    let duration = this.player.duration();
+    this.player.seek(duration * (newValue / 100));
+    this.rangeBarTouched = false;
+    this.updateProgress();
   }
 
   toggleMute() {
     this.isMute = !this.isMute;
     this.player.mute(this.isMute);
-    console.log(`mute: ${this.isMute}`)
   }
 
   updateProgress() {
-
+    const ref = setInterval(() => {
+      if (!this.isPlayed || this.rangeBarTouched) {
+        clearInterval(ref);
+        return;
+      }
+      let seek: any = this.player.seek();
+      this.progress = (seek / this.player.duration()) * 100 || 0;
+      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any * 1000).toString() : "0";
+    }, 1000);
   }
 
+  checkFocus() {
+    this.rangeBarTouched = true;
+  }
+
+  checkChange() {
+    if (this.rangeBarTouched){
+      let newValue = +this.range.value;
+      let duration = this.player.duration();
+      this.player.seek(duration * (newValue / 100));
+      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any * 1000).toString() : "0";
+    }
+  }
 }

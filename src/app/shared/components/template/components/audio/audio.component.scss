@@ -1,8 +1,8 @@
 .container-player{
   background: #fff;
-  border: 1px solid #0D3F60;
+  border: 2px solid #0D3F60;
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   min-width: 363px;
   padding: 17px 14px 16px 20px;
@@ -31,22 +31,81 @@
     .volume{
       .volume-icon{
         color: #0D3F60;
-        height: 32px;
-        width: 32px;
+        height: 36px;
+        width: 36px;
       }
     }
   }
   .progress-block{
-    margin: 18px 0 10px;
+    .audio-range{
+      padding-inline: 0;
+      --bar-background-active: #0D3F60;;
+      --bar-height: 10px;
+      --bar-border-radius: 20px;
+      --knob-size: 28px;
+      --pin-background: #0D3F60;;
+      --knob-background: #0D3F60;;
+    }
   }
   .time{
+    margin-top: -12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .time-value{
-      font-size: 17px;
+    &-value{
+      font-size: 20px;
       line-height: 20px;
       color: #0D3F60;
     }
   }
+  .controls{
+    display: flex;
+    min-width: 240px;
+    align-self: center;
+    justify-content: space-between;
+    align-items: center;
+    .rewind, .forward{
+      ion-button{
+        width: 64px;
+        height: 64px;
+        --background: transparent;
+        --padding: 0;
+        --border-radius: 50%;
+        --box-shadow: transparent;
+        img{
+          position: absolute;
+          min-width: 48px;
+        }
+      }
+    }
+    .rewind{
+      img{
+
+        transform: rotate(180deg);
+      }
+    }
+    .play{
+      .btn-play{
+        width: 64px;
+        height: 64px;
+        --background: #00A0CC;
+        --border-radius: 50%;
+        --padding:0;
+        img{
+          position: absolute;
+          width: 35px;
+        }
+        .ml-5{
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  .error-text{
+    margin: 10px 0;
+    text-align: center;
+  }
+}
+.disabled{
+  pointer-events: none;
 }
