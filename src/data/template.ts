@@ -681,6 +681,17 @@ export const template: FlowTypes.Template[] = [
             "timeToRewind: 10",
             "help: Some help text"
           ]
+        },
+        {
+          "type": "audio",
+          "name": "Audio",
+          "parameter_list": [
+            "src: ./assets/audio/music.mp3",
+            "rangeBarDisabled: true",
+            "title: Imagine dragons",
+            "timeToRewind: 5",
+            "help: Another text"
+          ]
         }
       ]
     },
