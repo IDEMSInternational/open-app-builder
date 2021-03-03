@@ -50,7 +50,7 @@ export class AudioComponent implements ITemplateComponent, OnInit {
   initPlayer() {
     return this.src ? this.player = new Howl({
       src: [this.src],
-      onplay: (e) => {
+      onplay: () => {
         this.isPlayed = true;
         this.updateProgress();
       },
@@ -73,12 +73,12 @@ export class AudioComponent implements ITemplateComponent, OnInit {
   }
 
   rewindNext() {
-    return this.isPlayed ? this.player.seek(this.player.seek() as any + 15) : null;
+    return this.isPlayed ? this.player.seek(this.player.seek() as any + this.timeToRewind) : null;
   }
 
   rewindPrev() {
-    return this.isPlayed ? this.player.seek(this.player.seek() as any < 15 ?
-      this.player.seek(0) as any : this.player.seek() as any - 15) : null;
+    return this.isPlayed ? this.player.seek(this.player.seek() as any < this.timeToRewind ?
+      this.player.seek(0) as any : this.player.seek() as any - this.timeToRewind) : null;
   }
 
   seek() {
