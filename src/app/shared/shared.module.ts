@@ -8,6 +8,7 @@ import { StressedMultiHandAnimComponent } from "./components/stressed-multi-hand
 import { PLHMainHeaderComponent } from "./components/plh-main-header";
 import { PLHMainTabsComponent } from "./components/plh-main-tabs";
 import { RouterModule } from "@angular/router";
+import { TemplateComponentsModule } from "./components/template/template.module";
 
 const Components = [
   BlobComponent,
@@ -15,12 +16,12 @@ const Components = [
   ReflectAnimationComponent,
   StressedMultiHandAnimComponent,
   PLHMainHeaderComponent,
-  PLHMainTabsComponent,
+  PLHMainTabsComponent
 ];
 
 @NgModule({
   declarations: Components,
-  imports: [CommonModule, IonicModule, RouterModule],
+  imports: [CommonModule, IonicModule, RouterModule, TemplateComponentsModule],
   exports: Components,
 })
 export class SharedModule {}

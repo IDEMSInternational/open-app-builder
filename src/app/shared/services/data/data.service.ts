@@ -14,6 +14,8 @@ import { habit_ideas } from "src/data/habit_ideas";
 import { tour } from "src/data/tour";
 import { home_page } from "src/data/home_page";
 import { reminder_list } from "src/data/reminder_list";
+import { template } from "src/data/template";
+import { component_defaults } from "src/data/component_defaults";
 
 export const COMPLETION_LIST = completion_list;
 export const CONVERSATION = conversation;
@@ -28,6 +30,8 @@ export const HABIT_IDEAS = habit_ideas;
 export const TOUR = tour;
 export const HOME_PAGE = home_page;
 export const REMINDER_LIST = reminder_list;
+export const TEMPLATE = template;
+export const COMPONENT_DEFAULTS = component_defaults;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
 const mapping: { [key in FlowTypes.FlowType] } = {
@@ -44,6 +48,8 @@ const mapping: { [key in FlowTypes.FlowType] } = {
   tour: TOUR,
   home_page: HOME_PAGE,
   reminder_list: REMINDER_LIST,
+  template: TEMPLATE,
+  component_defaults: COMPONENT_DEFAULTS
 };
 
 /**
@@ -85,5 +91,16 @@ export class PLHDataService {
     });
 
     return flowsByName;
+  }
+
+  getComponentDefaultParamMap(componentType: FlowTypes.TemplateRowType): Record<string, any> {
+    const defaultParamsList = COMPONENT_DEFAULTS.find((cd) => cd.flow_name === componentType);
+    const paramMap = {};
+    if (defaultParamsList) {
+      for (let row of defaultParamsList.rows) {
+        paramMap[row.parameter] = row.default_value;
+      }
+    }
+    return paramMap;
   }
 }
