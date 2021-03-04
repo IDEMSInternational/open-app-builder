@@ -24,10 +24,14 @@
         "value": "active"
       },
       {
-        "type": "animated_section_group_group",
+        "type": "animated_section_group",
+        "value": "fade_in_out",
         "rows": [
           {
-            "type": "animated_section_group",
+            "type": "animated_section",
+            "name": "welcome_section",
+            "hidden": "@local.hide_intro",
+            "comments": "animated section value represents the name of predefined animations. Hidden criteria will be evaluated as TRUE or FALSE.",
             "rows": [
               {
                 "type": "image",
@@ -46,7 +50,9 @@
                 "value": "This week we will be exploring Positive Instructions. \n\nBefore we start the session, select a person with a smartphone to be the informal facilitator."
               },
               {
-                "type": "display_group_group",
+                "type": "display_group",
+                "name": "nav_buttons",
+                "comments": "Grouping content will display on same line",
                 "rows": [
                   {
                     "type": "button",
@@ -73,7 +79,9 @@
             ]
           },
           {
-            "type": "animated_section_group",
+            "type": "animated_section",
+            "name": "welcome_activity",
+            "hidden": "@local.hide_activity",
             "rows": [
               {
                 "type": "title",
@@ -110,10 +118,17 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_variable",
         "name": "group_name",
         "value": "The group name",
         "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
+      },
+      {
+        "name": "intro_nav_button_text",
+        "value": "Next"
+      },
+      {
+        "name": "outro_nav_button_text",
+        "value": "Next 2"
       },
       {
         "type": "title",
@@ -121,7 +136,9 @@
         "value": "Template Together Welcome"
       },
       {
-        "type": "template_group_group",
+        "type": "template_group",
+        "value": "template_watch_together",
+        "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
           {
             "name": "theme_name",
@@ -129,7 +146,61 @@
           },
           {
             "name": "button_1",
-            "value": "Next"
+            "value": "@local.intro_nav_button_text"
+          },
+          {
+            "name": "button_2",
+            "value": "skip",
+            "hidden": true,
+            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3"
+          },
+          {
+            "name": "image_1",
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+          },
+          {
+            "name": "intro_text",
+            "value": "Welcome @local.group_name!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "multi_template",
+    "status": "released",
+    "rows": [
+      {
+        "name": "group_name",
+        "value": "The group name",
+        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
+      },
+      {
+        "name": "intro_nav_button_text",
+        "value": "Next"
+      },
+      {
+        "name": "outro_nav_button_text",
+        "value": "Next 2"
+      },
+      {
+        "type": "title",
+        "name": "outer_title",
+        "value": "Template Together Welcome"
+      },
+      {
+        "type": "template_group",
+        "name": "template_watch_together",
+        "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
+        "rows": [
+          {
+            "name": "theme_name",
+            "value": "passive"
+          },
+          {
+            "name": "button_1",
+            "value": "@local.intro_nav_button_text"
           },
           {
             "name": "button_2",
@@ -148,8 +219,397 @@
         ]
       },
       {
-        "type": "template_group_group",
-        "rows": []
+        "type": "template_group",
+        "name": "template_watch_together",
+        "rows": [
+          {
+            "name": "theme_name",
+            "value": "passive"
+          },
+          {
+            "name": "button_1",
+            "value": "@local.outro_nav_button_text"
+          },
+          {
+            "name": "button_2",
+            "value": "skip"
+          },
+          {
+            "name": "image_1",
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+          },
+          {
+            "name": "intro_text",
+            "value": "Welcome @local.group_name!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "workshop_activity",
+    "status": "released",
+    "rows": [
+      {
+        "name": "hide_intro",
+        "value": false,
+        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content."
+      },
+      {
+        "name": "hide_activity",
+        "value": true
+      },
+      {
+        "name": "hide_activity_banner",
+        "value": true
+      },
+      {
+        "name": "activity_image",
+        "value": "src/assets/not-found-image.png"
+      },
+      {
+        "name": "activity_title",
+        "value": "Title of this section"
+      },
+      {
+        "type": "display_theme",
+        "name": "display_theme",
+        "value": "passive_theme"
+      },
+      {
+        "type": "animated_section",
+        "name": "intro",
+        "value": "fade_in_out",
+        "hidden": "@local.hide_intro",
+        "rows": [
+          {
+            "type": "image",
+            "name": "intro_image",
+            "value": "@local.activity_image"
+          },
+          {
+            "type": "title",
+            "name": "intro_title",
+            "value": "@local.activity_title"
+          },
+          {
+            "type": "text",
+            "name": "intro_text"
+          },
+          {
+            "type": "template",
+            "name": "nav_buttons",
+            "value": "buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "action_list": [
+                  "set_local | hide_intro | true",
+                  "set_local | hide_activity | false"
+                ]
+              },
+              {
+                "name": "button_skipped",
+                "hidden": "!@local._completed"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "content",
+        "hidden": "@local.hide_activity",
+        "rows": [
+          {
+            "type": "display_group",
+            "name": "activity_banner",
+            "hidden": "@local.hide_activity_banner",
+            "rows": [
+              {
+                "type": "title",
+                "name": "banner_title",
+                "value": "@local.activity_title"
+              },
+              {
+                "type": "image",
+                "name": "banner_image",
+                "value": "@local.activity_image"
+              }
+            ]
+          },
+          {
+            "type": "template",
+            "name": "content_box",
+            "action_list": [
+              "respond_to_action | exit | mark_as_completed",
+              "respond_to_action | exit | exit"
+            ],
+            "rows": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "test_wa_extend",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "value": "workshop_activity",
+        "rows": [
+          {
+            "name": "activity_image",
+            "value": "plh_images/menu_icons/menu_care_packages_icon.svg"
+          },
+          {
+            "type": "nested_properties",
+            "name": "intro",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "nav_buttons",
+                "rows": [
+                  {
+                    "name": "button_completed",
+                    "value": "Complete Override"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "button_describe",
+            "value": "Describe",
+            "parameter_list": [
+              "colour | secondary"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_completed",
+            "value": "Next",
+            "action_list": [
+              "exit",
+              "mark_as_completed"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_skipped",
+            "value": "Skip",
+            "action_list": [
+              "exit",
+              "mark_as_skipped"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "a",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "a_title",
+        "value": "Template A"
+      },
+      {
+        "type": "template",
+        "name": "buttons",
+        "value": "buttons",
+        "rows": [
+          {
+            "name": "button_completed",
+            "value": "Next 2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "b",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "b_title",
+        "value": "Template B"
+      },
+      {
+        "type": "template",
+        "value": "a",
+        "rows": [
+          {
+            "name": "a_title",
+            "value": "Template A Title Overridden"
+          },
+          {
+            "type": "nested_properties",
+            "name": "buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Next 3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "button_example",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_1",
+        "value": "Button 1"
+      },
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "previous_button",
+            "value": "Previous",
+            "parameter_list": [
+              "color: primary"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "next_button",
+            "value": "Next",
+            "parameter_list": [
+              "color: secondary"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "nav_test",
+    "status": "released",
+    "rows": [
+      {
+        "type": "nav_group",
+        "rows": [
+          {
+            "type": "nav_section",
+            "parameter_list": [
+              "show_skip_button:true",
+              "skip_button_text:Skip Story"
+            ],
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story_time_intro1.svg"
+              },
+              {
+                "type": "title",
+                "value": "Return to Story Time"
+              },
+              {
+                "type": "text",
+                "value": "Thank you for thinking along! Let’s go back in time and see what happens  "
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/1.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour was cleaning the house while Amina was with her friends practicing dance moves."
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/2.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Amina, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\n\nAmina: “Okay, mom!”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/3.svg"
+              },
+              {
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/4.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Thank you for practicing outside while I finished cleaning the house, Amina. Now, I have some time to watch your dance.”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "parameter_list": [
+              "restart_button_text:Re-read the story",
+              "show_restart_button:true",
+              ""
+            ],
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/5.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Wow, Amina! You have such good dance moves!”"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

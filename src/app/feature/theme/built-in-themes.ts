@@ -61,7 +61,7 @@ export const BASE_THEME: AppTheme = {
         "background": {
             "id": "background",
             "name": "Background",
-            "lightValue": "#F3D668",
+            "lightValue": "#E3F4FF",
             "darkValue": "#222",
         },
         "itemBackground": {
@@ -159,6 +159,18 @@ export const BASE_THEME: AppTheme = {
             "name": "Chat - Bot Message Bubble",
             "lightValue": "#CAE6FC",
             "darkValue": "#CAE6FC"
+        },
+        "templatePassiveBg": {
+            "id": "templatePassiveBg",
+            "name": "Template - Passive Background",
+            "lightValue" : "#E3F4FF",
+            "darkValue": "#0D3F60"
+        },
+        "templateActiveBg": {
+            "id": "templateActiveBg",
+            "name": "Template - Active Background",
+            "lightValue" : "#FFF6D6",
+            "darkValue": "#000000"
         }
     }
 };
