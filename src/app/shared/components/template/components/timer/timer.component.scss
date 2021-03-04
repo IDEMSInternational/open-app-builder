@@ -1,6 +1,6 @@
 :host {
     width: 363px;
-    height: 145px;
+    min-height: 183px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -24,6 +24,7 @@
 }
 .timer-title {
    margin-left: 8px;
+    max-width: 298px;
 }   
 
 .timer-help {
