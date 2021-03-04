@@ -12,6 +12,7 @@ import {
 import { FlowTypes } from "../../types";
 import { AbstractParser } from "./parsers/abstract.parser";
 import { TaskListParser } from "./parsers/task_list/task_list.parser";
+import { ReminderListParser } from "./parsers/reminder_list/reminder_list.parser";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
@@ -38,7 +39,7 @@ async function main() {
     const json = convertXLSXSheetsToJson(xlsxPath);
     combined.push({ json, xlsxPath });
   }
-  // merge and collage plh data, write some extra files for logging/debugging purposes
+  // merge and collate plh data, write some extra files for logging/debugging purposes
   const merged = mergePLHData(combined);
   fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
   const dataByFlowType = groupJsonByKey(merged, "flow_type");
@@ -79,6 +80,7 @@ function applyDataParsers(
   const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
     conversation: new ConversationParser(),
     task_list: new TaskListParser(dataByFlowType, allTasksById),
+    reminder_list: new ReminderListParser(),
     template: new TemplateParser()
   };
   const parsedData = {};

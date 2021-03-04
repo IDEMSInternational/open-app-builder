@@ -7,6 +7,8 @@ import { IDBDoc } from "src/app/shared/services/db/db.service";
 export interface IReminder extends IDBDoc {
   _created: ISODateString;
   _modified: ISODateString;
+  /** */
+  reminder_id: string;
   /**
    * ID for lookup against fix set of reminder types
    */
@@ -56,6 +58,7 @@ export const REMINDER_FORM_TEMPLATE: {
 } = {
   _created: new FormControl(new Date().toISOString()),
   _modified: new FormControl(new Date().toISOString()),
+  reminder_id: new FormControl(undefined),
   id: new FormControl(undefined),
   complete: new FormControl(false),
   data: new FormControl({}),

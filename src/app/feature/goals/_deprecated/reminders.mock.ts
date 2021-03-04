@@ -1,4 +1,4 @@
-import { IReminder, REMINDER_TYPES } from "src/app/shared/services/reminders/reminders.model";
+import { IReminder, REMINDER_TYPES } from "src/app/feature/reminders/reminders.model";
 import * as Utils from "src/app/shared/utils";
 
 /**

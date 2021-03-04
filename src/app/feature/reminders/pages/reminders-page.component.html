@@ -1,0 +1,75 @@
+<ion-content>
+  <h1>Reminders</h1>
+  <div style="position: absolute; right: 0; top: 0">
+    <ion-select
+      placeholder="Mock Data"
+      (ionChange)="remindersService.setMockData($event.target.value)"
+    >
+      <ion-select-option value="">None</ion-select-option>
+      <ion-select-option
+        *ngFor="let dataset of remindersService.mockData; index as i"
+        [value]="dataset"
+        >{{ dataset.label }}</ion-select-option
+      >
+    </ion-select>
+  </div>
+  <div *ngIf="remindersService.data as data">
+    <ul style="margin: 10px">
+      <li>App Day: {{ data.app_day }}</li>
+      <li *ngIf="data.dbCache.app_events.app_launch as launchEvents">
+        First App Launch:
+        {{ launchEvents[launchEvents.length - 1]._created | date }}
+      </li>
+    </ul>
+    <ion-card
+      *ngFor="let reminder of remindersService.remindersList$ | async"
+      class="reminder-list-item"
+    >
+      <ion-card-header style="font-weight: 500">{{ reminder.reminder_id }}</ion-card-header>
+      <ion-card-content>
+        <div style="display: flex">
+          <div style="flex: 1">
+            <div>Priority: {{ reminder.priority }}</div>
+            <div>Campaign list:</div>
+          </div>
+          <div style="text-align: right">
+            <ion-button
+              fill="clear"
+              (click)="remindersService.triggerReminderAction(reminder)"
+              class="no-padding"
+              style="margin: 0"
+              >Start Action</ion-button
+            >
+            <div style="font-size: small; color: var(--ion-color-primary)">
+              {{ reminder.start_action }}<br />{{ reminder.start_action_args }}
+            </div>
+          </div>
+        </div>
+        <div style="margin: 1em 0; border-top: 1px solid var(--ion-color-medium)">
+          <div>Activation</div>
+          <div *ngFor="let condition of reminder.activation_condition_list">
+            <span *ngIf="condition._satisfied === true">✔️</span>
+            <span *ngIf="condition._satisfied === false">❌</span>
+            <span *ngIf="condition._satisfied === undefined">⚠️(WiP) </span>
+            <span>{{ condition._raw }}</span>
+            <span *ngIf="condition.timing as timing">
+              <span>{{ timing.comparator }}{{ timing.quantity }}{{ timing.unit }}</span>
+            </span>
+          </div>
+        </div>
+        <div style="margin: 1em 0; border-top: 1px solid var(--ion-color-medium)">
+          <div>Deactivation</div>
+          <div *ngFor="let condition of reminder.deactivation_condition_list">
+            <span *ngIf="condition._satisfied === true">✔️</span>
+            <span *ngIf="condition._satisfied === false">❌</span>
+            <span *ngIf="condition._satisfied === undefined">⚠️(WiP) </span>
+            <span>{{ condition._raw }}</span>
+            <span *ngIf="condition.timing as timing">
+              <span>{{ timing.comparator }}{{ timing.quantity }}{{ timing.unit }}</span>
+            </span>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

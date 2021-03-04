@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
+import { RemindersService } from "src/app/feature/reminders/reminders.service";
 import {
   IFlowTaskAction,
   TaskActionService,

@@ -3,6 +3,7 @@ import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { RapidProFlowExport } from "src/app/feature/chat/models";
 export { RapidProFlowExport } from "src/app/feature/chat/models";
 import { TipRow } from "src/app/feature/tips/models/tips.model";
+import { IDBTable } from "../services/db/db.service";
 
 /*********************************************************************************************
  *  Base flow types
@@ -21,6 +22,7 @@ export namespace FlowTypes {
     | "care_package_list"
     | "tour"
     | "habit_ideas"
+    | "reminder_list"
     | "template"
     | "component_defaults"
     | "home_page";
@@ -74,6 +76,10 @@ export namespace FlowTypes {
   export interface Care_package_list extends FlowTypeWithData {
     flow_type: "care_package_list";
     rows: CarePackage[];
+  }
+  export interface Reminder_list extends FlowTypeWithData {
+    flow_type: "reminder_list";
+    rows: Reminder_listRow[];
   }
 
   export interface Conversation extends RapidProFlowExport.RootObject {}
@@ -159,7 +165,15 @@ export namespace FlowTypes {
   /** Format of conversation rows post processing */
   export interface ConversationRow {
     row_id?: string | number;
-    type: "start_new_flow" | "send_message" | "story_slide" | "go_to" | "save_value" | "exit" | "mark_as_completed" | "split_random";
+    type:
+      | "start_new_flow"
+      | "send_message"
+      | "story_slide"
+      | "go_to"
+      | "save_value"
+      | "exit"
+      | "mark_as_completed"
+      | "split_random";
     from?: string | number;
     condition?: string | number;
     condition_var?: string;
@@ -214,6 +228,46 @@ export namespace FlowTypes {
     main_image_asset?: string;
     habit_list: string[];
   }
+
+  export interface Reminder_listRow {
+    reminder_id: string;
+    /** start actions will be triggered in the task service so action types must match */
+    start_action: Start_action;
+    flow_type: Task_listRow["flow_type"];
+    /** args should match the name of the flow when being used with a start_new_flow task action */
+    start_action_args: string;
+    priority: number;
+    activation_condition_list: Reminder_conditionList[];
+    deactivation_condition_list: Reminder_conditionList[];
+    campaign_list: Reminder_campaign[];
+  }
+  export interface Reminder_conditionList {
+    /** specific defined actions that have individual methods to determine completion */
+    condition_type: "field_evaluation" | "db_lookup";
+    /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
+    condition_args: {
+      db_lookup?: {
+        table_id: IDBTable;
+        filter: { field: string; value: string | number };
+        order?: "asc" | "desc";
+        evaluate?: {
+          operator: ">" | "<=";
+          value: string | number;
+          unit?: "day" | "app_day";
+        };
+      };
+      field_evaluation?: {
+        evaluate: string;
+      };
+    };
+    /** calculated after criteria has been evaluated */
+    _satisfied?: boolean;
+    /** debug info  */
+    _raw?: string;
+    _cleaned?: string;
+    _parsed?: string[][];
+  }
+  type Reminder_campaign = "campaign_main" | "campaign_evening" | "campaign_morning";
 
   export interface Habit_ideas extends FlowTypeWithData {
     flow_type: "habit_ideas";
