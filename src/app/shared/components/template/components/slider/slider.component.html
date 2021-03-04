@@ -5,14 +5,17 @@
   </div>
   <ion-icon *ngIf="help" name="help-circle-outline" class="help" [pTooltip]="help" tooltipPosition="left" tooltipEvent="click"></ion-icon>
   <div class="slider__container">
-    <div class="slider-item">
-      <ion-range class="custom-range"  [disabled]="disabled"
-                 [value]="disabled ? 0 : value"
+    <div class="slider-item" >
+      <ion-range class="custom-range"
+                 #range
+                 [class.no-touch]="no_value"
+                 (ionChange)="changeValue(range)"
+                 [value]="value"
                  [min]="minValue" [max]="maxValue" pin="true"
-                 [style.--knob-size]="disabled ? '0' : '28px'"
+                 [style.--knob-size]="rangeBarTouched && !no_value ? '28px' : '0'"
                  ticks="false" [step]="step" snaps="true"></ion-range>
       <div class="checkbox-block" (click)="disableSlider()">
-        <ion-checkbox class="custom-checkbox"  [value]="disabled" [checked]="disabled"  color="primary"></ion-checkbox>
+        <ion-checkbox class="custom-checkbox"  [value]="no_value" [checked]="no_value"  color="primary"></ion-checkbox>
       </div>
     </div>
     <ul class="list-numbers">

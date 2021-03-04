@@ -1,7 +1,12 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { ITemplateComponent } from "../tmpl.component";
-import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow
+} from "../../../../utils";
+import { IonRange } from "@ionic/angular";
 
 @Component({
   selector: "plh-tmpl-slider",
@@ -23,8 +28,8 @@ export class SliderComponent implements ITemplateComponent, OnInit {
   min_value_label: string | null;
   max_value_label: string | null;
   listNumbers: Array<number> = [];
-  noAnswer: boolean = false;
-
+  no_value: boolean = false;
+  rangeBarTouched: boolean = false;
   constructor() {
   }
 
@@ -42,7 +47,8 @@ export class SliderComponent implements ITemplateComponent, OnInit {
     this.min_value_label = getStringParamFromTemplateRow(this.row, "min_value_label", null);
     this.max_value_label = getStringParamFromTemplateRow(this.row, "max_value_label", null);
     this.value = this.row.value > this.maxValue ? 0 : this.row.value;
-    this.disabled = this.value === null;
+    this.rangeBarTouched = this.row.value > 0;
+    this.no_value = getBooleanParamFromTemplateRow(this.row, "no_value", false);
   }
 
   createListNumber(min, max, step): Array<number> {
@@ -83,8 +89,13 @@ export class SliderComponent implements ITemplateComponent, OnInit {
   }
 
   disableSlider() {
-    this.disabled = !this.disabled;
-    this.noAnswer = !this.disabled;
+    this.no_value = !this.no_value;
+    this.rangeBarTouched = !this.rangeBarTouched;
+    this.value = null;
   }
 
+  changeValue(range: IonRange) {
+    this.value = range.value as any;
+    this.rangeBarTouched = true;
+  }
 }
