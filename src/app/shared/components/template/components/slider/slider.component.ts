@@ -30,6 +30,7 @@ export class SliderComponent implements ITemplateComponent, OnInit {
   listNumbers: Array<number> = [];
   no_value: boolean = false;
   rangeBarTouched: boolean = false;
+
   constructor() {
   }
 
@@ -59,13 +60,29 @@ export class SliderComponent implements ITemplateComponent, OnInit {
       }
     }
     switch (true) {
-      case (arr.length <= 11):
+      case (max === 11):
         return this.listNumbers = arr;
+      case (max === 13):
+        return this.listNumbers = [0, 6, 13];
+      case (max === 17):
+        return this.listNumbers = [0, 4, 9, 13, 17];
+      case (max === 19):
+        return this.listNumbers = [0, 4, 8, 12, 15, 19];
+      case (max === 23):
+        return this.listNumbers = [0, 4, 8, 12, 15, 19, 23];
+      case (max === 29):
+        return this.listNumbers = [0, 4, 8, 12, 17, 19, 23, 25, 29];
+      case (max === 31 || 37 || 41 || 43 || 47 || 53 || 59 || 61 || 67 || 71 || 73 || 79 || 83 || 89 || 97):
+        return this.listNumbers = helpArray(min, max);
+      case (arr.length <= 7):
+        return this.listNumbers = arr;
+      case (arr.length <= 11):
+        return this.listNumbers = arr.filter(item => step >= 2 ? item % 4 === 0 : item % step === 0);
       case (arr.length > 11 && arr.length <= 16):
-        this.listNumbers = arr.filter(item => step > 3 ? item % step === 0 : item % 6 === 0);
+        this.listNumbers = arr.filter(item => step !== 1 || 2 ? item % 3 === 0 : item % step === 0);
         return this.listNumbers;
       case (arr.length > 16 && max < 21):
-        this.listNumbers = arr.filter(item => step === 1 ? item % 2 === 0 : item % step === 0);
+        this.listNumbers = arr.filter(item => step <= 2 ? item % 4 === 0 : item % step === 0);
         return this.listNumbers;
       case (arr.length > 12 && max > 15):
         this.listNumbers = helpArray(min, max);
@@ -73,7 +90,7 @@ export class SliderComponent implements ITemplateComponent, OnInit {
     }
 
     function helpArray(from, to) {
-      const data = [];
+      let data = [];
       for (let i = from; i < to; i++) {
         if (i % 10 === 0) {
           data.push(i);
