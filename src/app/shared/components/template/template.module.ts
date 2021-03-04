@@ -15,40 +15,39 @@ import { TmplAudioComponent } from "./components/audio";
 import { TmplImageComponent } from "./components/image";
 import { TmplVideoComponent } from "./components/video";
 import { TmplTemplateGroupComponent } from "./components/template_group";
-import { TmplSetVariableComponent } from "./components/set_variable";
 import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
 import { AnimatedSectionComponent } from "./components/animated_section";
 import { TmplTimerComponent } from "./components/timer";
 import { TmplSliderComponent } from "./components/slider";
 import { NavGroupComponent } from "./components/nav_group";
+import { SharedPipesModule } from "../../pipes";
 
 const TEMPLATE_COMPONENTS = [
-    TmplTextComponent,
-    AnimatedSectionGroupComponent,
-    TmplTitleComponent,
-    TmplDisplayGroupComponent,
-    TmplAudioComponent,
-    TmplButtonComponent,
-    TmplImageComponent,
-    TmplVideoComponent,
-    TmplTemplateGroupComponent,
-    AnimatedSectionComponent,
-    TmplSetVariableComponent,
-    TmplTimerComponent,
-    TmplSliderComponent,
-    NavGroupComponent
+  TmplTextComponent,
+  AnimatedSectionGroupComponent,
+  TmplTitleComponent,
+  TmplDisplayGroupComponent,
+  TmplAudioComponent,
+  TmplButtonComponent,
+  TmplImageComponent,
+  TmplVideoComponent,
+  TmplTemplateGroupComponent,
+  AnimatedSectionComponent,
+  TmplTimerComponent,
+  TmplSliderComponent,
+  NavGroupComponent,
 ];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, IonicModule],
-    exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent, TemplateComponentHostDirective],
-    declarations: [
-        TmplCompHostDirective,
-        TmplComponent,
-        ...TEMPLATE_COMPONENTS,
-        TemplateContainerComponent,
-        TemplateComponentHostDirective,
-        LocalVarsReplacePipe
-    ],
+  imports: [CommonModule, FormsModule, IonicModule, SharedPipesModule],
+  exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent, TemplateComponentHostDirective],
+  declarations: [
+    TmplCompHostDirective,
+    TmplComponent,
+    ...TEMPLATE_COMPONENTS,
+    TemplateContainerComponent,
+    TemplateComponentHostDirective,
+    LocalVarsReplacePipe,
+  ],
 })
-export class TemplateComponentsModule { }
+export class TemplateComponentsModule {}

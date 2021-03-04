@@ -159,7 +159,15 @@ export namespace FlowTypes {
   /** Format of conversation rows post processing */
   export interface ConversationRow {
     row_id?: string | number;
-    type: "start_new_flow" | "send_message" | "story_slide" | "go_to" | "save_value" | "exit" | "mark_as_completed" | "split_random";
+    type:
+      | "start_new_flow"
+      | "send_message"
+      | "story_slide"
+      | "go_to"
+      | "save_value"
+      | "exit"
+      | "mark_as_completed"
+      | "split_random";
     from?: string | number;
     condition?: string | number;
     condition_var?: string;
@@ -264,11 +272,10 @@ export namespace FlowTypes {
   export interface Template extends FlowTypeBase {
     flow_type: "template";
     rows: TemplateRow[];
-    _setLocalVariable?: (name: string, value: any) => any;
   }
 
-  export type TemplateRowType = 
-    "image"
+  export type TemplateRowType =
+    | "image"
     | "title"
     | "text"
     | "animated_section"
@@ -311,7 +318,6 @@ export namespace FlowTypes {
   export interface Component_defaultsRow {
     parameter: string;
     default_value?: string | number | boolean;
-    comments?: string; /* Used for authoring comments. Not used in code */
+    comments?: string /* Used for authoring comments. Not used in code */;
   }
-
 }
