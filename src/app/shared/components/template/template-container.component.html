@@ -1,9 +1,9 @@
 <div [className]="'template-container ' + localVariables?.theme_name">
-  <div *ngFor="let row of _template?.rows" class="row">
-    <plh-tmpl-comp [row]="row" [template]="_template" [localVariables]="localVariables"></plh-tmpl-comp>
+  <div *ngFor="let row of rows" class="row">
+    <plh-tmpl-comp [row]="row" [localVariables]="localVariables" [parent]="parent"></plh-tmpl-comp>
   </div>
-  <h4>Local Variables</h4>
-  <ul>
-    <li *ngFor="let key of keys(localVariables)">{{key}}: {{localVariables[key]}}</li>
-  </ul>
+  <div *ngIf="debug" class="debug-container">
+    <div style="text-decoration: underline">Debug Props</div>
+    <p>{{ localVariables | json }}</p>
+  </div>
 </div>

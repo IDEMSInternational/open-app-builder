@@ -1,12 +1,21 @@
 .template-container {
-    width: 100%;
-    height: 100%;
+//   border: 4px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
-    &.passive {
-        background-color: var(--theme-var-templatePassiveBg, #E3F4FF);
-    }
+  &.passive {
+    background-color: var(--theme-var-templatePassiveBg, #e3f4ff);
+  }
 
-    &.active {
-        background-color: var(--theme-var-templateActiveBg, #FFF6D6);
-    }
+  &.active {
+    background-color: var(--theme-var-templateActiveBg, #fff6d6);
+  }
+}
+.debug-container {
+  margin-top: auto;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: small;
 }
