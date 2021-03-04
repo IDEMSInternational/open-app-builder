@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
-import { ToolboxService } from 'src/app/shared/services/toolbox/toolbox.service';
+import { TestBed } from "@angular/core/testing";
+import { Router } from "@angular/router";
+import { RemindersService } from "src/app/feature/reminders/reminders.service";
+import { ToolboxService } from "src/app/shared/services/toolbox/toolbox.service";
 
-import { ChatActionService } from './chat-action.service';
-import { ChatAction, ChatActionType } from './chat-actions';
+import { ChatActionService } from "./chat-action.service";
+import { ChatAction, ChatActionType } from "./chat-actions";
 
-describe('ChatActionService', () => {
+describe("ChatActionService", () => {
   let service: ChatActionService;
 
   let mockRemindersService: RemindersService;
@@ -23,8 +23,8 @@ describe('ChatActionService', () => {
       providers: [
         { provide: Router, useValue: mockRouter },
         { provide: ToolboxService, useValue: mockToolboxService },
-        { provide: RemindersService, useValue: mockRemindersService }
-      ]
+        { provide: RemindersService, useValue: mockRemindersService },
+      ],
     });
     service = TestBed.inject(ChatActionService);
   });
@@ -33,19 +33,18 @@ describe('ChatActionService', () => {
     jasmine.clock().uninstall();
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 
   describe("NAVIGATE", () => {
-
     it("can navigate to a page in the app", () => {
       const navigateAction: ChatAction = {
         type: ChatActionType.NAVIGATE,
         executed: false,
         params: {
-          path: "/activities"
-        }
+          path: "/activities",
+        },
       };
       service.executeChatAction(navigateAction);
       expect(mockRouter.navigateByUrl).toHaveBeenCalledWith("/activities");
@@ -57,8 +56,8 @@ describe('ChatActionService', () => {
         executed: false,
         params: {
           path: "/activities",
-          query: "param1=hello"
-        }
+          query: "param1=hello",
+        },
       };
       service.executeChatAction(navigateAction);
       expect(mockRouter.navigateByUrl).toHaveBeenCalledWith("/activities?param1=hello");
@@ -71,8 +70,8 @@ describe('ChatActionService', () => {
         type: ChatActionType.UNLOCK_TOOLBOX_TOPIC,
         executed: false,
         params: {
-          topic: "ONE_ON_ONE_TIME"
-        }
+          topic: "ONE_ON_ONE_TIME",
+        },
       };
       service.executeChatAction(unlockToolboxTopicAction);
       expect(mockToolboxService.unlockTopic).toHaveBeenCalledWith("ONE_ON_ONE_TIME");
@@ -83,8 +82,8 @@ describe('ChatActionService', () => {
         type: ChatActionType.UNLOCK_TOOLBOX_TOPIC,
         executed: false,
         params: {
-          topic: "FAKE_TOPIC"
-        }
+          topic: "FAKE_TOPIC",
+        },
       };
       service.executeChatAction(unlockToolboxTopicAction);
       expect(mockToolboxService.unlockTopic).not.toHaveBeenCalled();
@@ -92,16 +91,15 @@ describe('ChatActionService', () => {
   });
 
   describe("CREATE_REMINDER", () => {
-
-    it('can create a reminder', () => {
+    it("can create a reminder", () => {
       const mockNow = new Date(2020, 11, 9);
       jasmine.clock().mockDate(new Date(mockNow));
       const createReminderAction: ChatAction = {
         type: ChatActionType.CREATE_REMINDER,
         executed: false,
         params: {
-          type: "praise_child"
-        }
+          type: "praise_child",
+        },
       };
       service.executeChatAction(createReminderAction);
       const expectedReminder = {
@@ -118,7 +116,7 @@ describe('ChatActionService', () => {
       expect(mockRemindersService.setReminder).toHaveBeenCalledWith(expectedReminder);
     });
 
-    it('can create a reminder using due date parameter', () => {
+    it("can create a reminder using due date parameter", () => {
       const mockNow = new Date(2020, 11, 9);
       jasmine.clock().mockDate(new Date(mockNow));
       const createReminderAction: ChatAction = {
@@ -126,8 +124,8 @@ describe('ChatActionService', () => {
         executed: false,
         params: {
           type: "praise_child",
-          due: "2020-12-10T13:30:00.000Z"
-        }
+          due: "2020-12-10T13:30:00.000Z",
+        },
       };
       service.executeChatAction(createReminderAction);
       const expectedReminder = {
@@ -143,7 +141,5 @@ describe('ChatActionService', () => {
       };
       expect(mockRemindersService.setReminder).toHaveBeenCalledWith(expectedReminder);
     });
-
   });
-
 });

@@ -12,8 +12,7 @@ const FeatureRoutes: Routes = [
   },
   {
     path: "home",
-    loadChildren: () =>
-      import("./feature/home/home.module").then((m) => m.HomePageModule),
+    loadChildren: () => import("./feature/home/home.module").then((m) => m.HomePageModule),
   },
   {
     path: "module_list",
@@ -45,11 +44,18 @@ const FeatureRoutes: Routes = [
   },
   {
     path: "care-packages",
-    loadChildren: () => import("./feature/care-packages/care-packages.module").then((m) => m.CarePackagesPageModule),
+    loadChildren: () =>
+      import("./feature/care-packages/care-packages.module").then((m) => m.CarePackagesPageModule),
   },
   {
     path: "habit_ideas",
-    loadChildren: () => import("./feature/habit-ideas/habit-ideas.module").then((m) => m.HabitIdeasPageModule)
+    loadChildren: () =>
+      import("./feature/habit-ideas/habit-ideas.module").then((m) => m.HabitIdeasPageModule),
+  },
+  {
+    path: "reminders",
+    loadChildren: () =>
+      import("./feature/reminders/reminders.module").then((m) => m.RemindersModule),
   },
   {
     path: "theme-editor",
@@ -57,11 +63,12 @@ const FeatureRoutes: Routes = [
   },
   {
     path: "tour/:tourName",
-    component: TourComponent
+    component: TourComponent,
   },
   {
     path: "parent_points",
-    loadChildren: () => import("./feature/parent-points/parent-points.module").then((m) => m.ParentPointsPageModule)
+    loadChildren: () =>
+      import("./feature/parent-points/parent-points.module").then((m) => m.ParentPointsPageModule),
   },
   /*****************************************************************************************
    * Legacy paths - these should be removed in the future once modules refactored
