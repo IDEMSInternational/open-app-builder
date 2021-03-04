@@ -20,9 +20,10 @@ h2{
    font-weight: bold;
     font-size: 25px;
     color: #0D3F60;
+    max-width: 258px!important;
   }
   &__container{
-      max-width: 288px;
+    max-width: 292px;
     .slider-item{
       display: flex;
       align-items: center;
@@ -30,6 +31,7 @@ h2{
         margin-top: 30px;
         display: flex;
         padding-left: 11px;
+        margin-left: 5px;
         justify-content: center;
         align-items: center;
         width: 30px;
@@ -38,13 +40,15 @@ h2{
     }
     ul{
       list-style-type: none;
-      max-width: 261px;
+      max-width: 286px;
       display: flex;
-      margin: 0;
       padding: 0;
+      margin: 0 0 0 -15px;
       justify-content: space-between;
       li{
         font-style: normal;
+        width: 28px;
+        text-align: center;
         font-weight: normal;
         font-size: 20px;
         color: #096B8B;
@@ -75,10 +79,10 @@ h2{
   .custom-range{
     padding: 33px 0 0;
     padding-inline: 0;
+    width: 258px;
     --bar-background-active: #096B8B;
     --bar-height: 10px;
     --bar-border-radius: 20px;
-    --knob-size: 28px;
     --pin-background:#096B8B;
     --knob-background: #096B8B;
   }
