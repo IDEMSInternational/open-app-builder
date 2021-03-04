@@ -7,6 +7,7 @@
   min-width: 363px;
   padding: 17px 14px 16px 20px;
   display: flex;
+  position: relative;
   flex-direction: column;
   .top-row{
     display: flex;
@@ -18,6 +19,7 @@
       h3{
         margin: 0;
         color: #0D3F60;
+        max-width: 280px;
         font-weight: bold;
         font-size: 25px;
       }
@@ -29,6 +31,9 @@
       }
     }
     .volume{
+      position: absolute;
+      top: 17px;
+      right: 14px;
       .volume-icon{
         color: #0D3F60;
         height: 36px;
