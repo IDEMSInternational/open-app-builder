@@ -50,7 +50,7 @@ export class RemindersService {
     // TODO - add db bindings for reminder_events
     const reminder_events = {};
     this.data = { app_day, dbCache: { task_actions, app_events, reminder_events } };
-    console.log("reminders data", this.data);
+    // console.log("reminders data", this.data);
   }
 
   /** override local data with testing dataset, or reinitialise from db */
@@ -72,7 +72,7 @@ export class RemindersService {
   private processRemindersList() {
     // check pending reminders
     const pendingReminders = this.reminders$.value;
-    console.log("pending reminders", pendingReminders);
+    // console.log("pending reminders", pendingReminders);
     // check deactivation
 
     const remindersList = REMINDER_LIST[0].rows.map((r) => {
@@ -86,13 +86,12 @@ export class RemindersService {
       // );
       r.deactivation_condition_list = r.deactivation_condition_list.map((condition) => {
         const evaluation = this.evaluateReminderCondition(condition);
-        console.log(condition._cleaned, evaluation);
         return { ...condition, _satisfied: evaluation };
       });
       return r;
     });
     this.remindersList$.next(remindersList);
-    console.log("remindersList", remindersList);
+    // console.log("remindersList", remindersList);
   }
 
   private evaluateReminderCondition(condition: FlowTypes.Reminder_conditionList): boolean {
