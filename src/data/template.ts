@@ -694,6 +694,7 @@ export const template: FlowTypes.Template[] = [
           "title: Slider example",
           "min: 0",
           "max: 60",
+          "no_value: true",
           "help: some help info",
           "step: 3"
         ],
