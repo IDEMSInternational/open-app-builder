@@ -10,16 +10,11 @@ import {
   ViewChild,
 } from "@angular/core";
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes, ITemplateContainerProps, ITemplateRowProps } from "../models";
 
-export interface ITemplateComponent {
-  row?: FlowTypes.TemplateRow;
-  rows?: FlowTypes.TemplateRow[];
-  localVariables?: { [name: string]: any };
-  template?: FlowTypes.Template;
-  parent?: { name: string; component: ITemplateComponent };
-}
-
+/*********************************************************************
+ *  Directive used as part of loading dynamic flow component elemnt
+ *********************************************************************/
 @Directive({
   selector: "[plhTemplateComponentHost]",
 })
@@ -27,59 +22,67 @@ export class TmplCompHostDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}
 }
 
+/*********************************************************************
+ * Dynamic element to populate flow specific template component
+ * https://angular.io/guide/dynamic-component-loader
+ *********************************************************************/
 @Component({
-  selector: "plh-tmpl-comp",
+  selector: "plh-template-component",
   template: `
-    <div class="plh-tmpl-comp" [hidden]="hidden">
+    <div class="plh-tmpl-comp" [hidden]="hidden" [attr.data-type]="row.type">
+      <details *ngIf="debug && row.type !== 'template'" class="debug-container">
+        <summary>Row: {{ row.type }}</summary>
+        <p>type: {{ row.type }}</p>
+        <p *ngIf="row.name">name: {{ row.name }}</p>
+        <p *ngIf="row.value">value: {{ row.value }}</p>
+        <p *ngIf="row.rows">child rows: {{ row.rows | json }}</p>
+      </details>
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
 })
-export class TmplComponent implements OnInit {
+export class TemplateComponent implements OnInit, ITemplateRowProps {
+  /** specific data used in component rendering */
   @Input() row: FlowTypes.TemplateRow;
-  @Input() parent: { name: string; component: ITemplateComponent };
+  /** compiled list of variables used across all template rows */
   @Input() localVariables: { [name: string]: any };
+  /** reference to parent template container */
+  @Input() parent: { name: string; component: TemplateContainerComponent };
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
   hidden = false;
+  debug = true;
 
-  componentRef: ComponentRef<ITemplateComponent>;
+  componentRef: ComponentRef<ITemplateRowProps | ITemplateContainerProps>;
 
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private contactFieldService: ContactFieldService
-  ) {}
-
-  stringify(obj) {
-    return JSON.stringify(obj);
-  }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit() {
-    const row = this.row;
-    const parent = this.parent;
-    const localVariables = this.localVariables;
-    let type = row.type;
-    let templateComponent = TEMPLATE_COMPONENT_MAPPING[type];
-    if (templateComponent) {
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-        templateComponent
-      );
-      const viewContainerRef = this.tmplComponentHost.viewContainerRef;
-      viewContainerRef.clear();
-      const componentRef = viewContainerRef.createComponent<ITemplateComponent>(componentFactory);
-      if (type === "template") {
-        // handle recursive template
-        componentRef.instance.rows = row.rows;
-        componentRef.instance.parent = parent;
-      } else {
+    const { localVariables, parent, row } = this;
+    const type = row.type;
+    const viewContainerRef = this.tmplComponentHost.viewContainerRef;
+    viewContainerRef.clear();
+    // handle recursive template
+    if (type === "template") {
+      const component = TemplateContainerComponent;
+      const factory = this.componentFactoryResolver.resolveComponentFactory(component);
+      const componentRef = viewContainerRef.createComponent(factory);
+      componentRef.instance.parent = parent;
+      componentRef.instance.name = row.value;
+      // handle display component template
+    } else {
+      const component = TEMPLATE_COMPONENT_MAPPING[type];
+      if (component) {
+        const factory = this.componentFactoryResolver.resolveComponentFactory(component);
+        const componentRef = viewContainerRef.createComponent<ITemplateRowProps>(factory);
         // handle display components
         componentRef.instance.row = row;
         componentRef.instance.localVariables = localVariables;
+      } else {
+        console.log("[tmpl.component] - skipped type", row);
       }
-    } else {
-      console.log("[tmpl.component] - skipped type", this.row);
     }
   }
 
@@ -98,12 +101,12 @@ export class TmplComponent implements OnInit {
   //   }
   // }
 
-  evaluateBooleanExpression(expression: string | boolean): boolean {
+  private evaluateBooleanExpression(expression: string | boolean): boolean {
     if (typeof expression === "boolean") {
       return expression;
     }
     const result = this.evalJSExpression(expression);
-    if (result == true || result == "true") {
+    if (result === true || result === "true") {
       return true;
     } else {
       return false;
@@ -114,7 +117,7 @@ export class TmplComponent implements OnInit {
    * Create a dynamic function to parse the calculation expression without
    * the nees for `eval()` operator
    */
-  evalJSExpression(str: string) {
+  private evalJSExpression(str: string) {
     try {
       const args = "__local, str";
       const body = `'use strict'; return (${str.replace(/@local\./g, "__local.")})`;
@@ -146,7 +149,7 @@ import { TmplTimerComponent } from "./timer";
 import { NavGroupComponent } from "./nav_group";
 import { TemplateContainerComponent } from "../template-container.component";
 
-const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateComponent>> = {
+const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRowProps>> = {
   text: TmplTextComponent,
   title: TmplTextComponent,
   animated_section_group: AnimatedSectionGroupComponent,

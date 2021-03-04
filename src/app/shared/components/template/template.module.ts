@@ -3,9 +3,9 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { TemplateContainerComponent } from "./template-container.component";
-import { TemplateComponentHostDirective } from "./template.directive";
 
-import { TmplComponent, TmplCompHostDirective } from "./components/tmpl.component";
+import { TemplateComponent, TmplCompHostDirective } from "./components";
+import { TemplateBaseComponent } from "./components/base";
 import { TmplTextComponent } from "./components/text";
 import { AnimatedSectionGroupComponent } from "./components/animated_section_group";
 import { TmplTitleComponent } from "./components/title";
@@ -15,7 +15,7 @@ import { TmplAudioComponent } from "./components/audio";
 import { TmplImageComponent } from "./components/image";
 import { TmplVideoComponent } from "./components/video";
 import { TmplTemplateGroupComponent } from "./components/template_group";
-import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
+import { LocalVarsReplacePipe } from "./pipes/local-vars-replace.pipe";
 import { AnimatedSectionComponent } from "./components/animated_section";
 import { TmplTimerComponent } from "./components/timer";
 import { TmplSliderComponent } from "./components/slider";
@@ -23,6 +23,7 @@ import { NavGroupComponent } from "./components/nav_group";
 import { SharedPipesModule } from "../../pipes";
 
 const TEMPLATE_COMPONENTS = [
+  TemplateBaseComponent,
   TmplTextComponent,
   AnimatedSectionGroupComponent,
   TmplTitleComponent,
@@ -40,13 +41,12 @@ const TEMPLATE_COMPONENTS = [
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, SharedPipesModule],
-  exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent, TemplateComponentHostDirective],
+  exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent],
   declarations: [
     TmplCompHostDirective,
-    TmplComponent,
+    TemplateComponent,
     ...TEMPLATE_COMPONENTS,
     TemplateContainerComponent,
-    TemplateComponentHostDirective,
     LocalVarsReplacePipe,
   ],
 })
