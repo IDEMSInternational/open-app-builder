@@ -1,24 +1,24 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "../../model";
-import { ITemplateComponent } from "./components/tmpl.component";
+import { TEMPLATE } from "../../services/data/data.service";
+import { FlowTypes, ITemplateContainerProps } from "./models";
 
 @Component({
   selector: "plh-template-container",
   templateUrl: "./template-container.component.html",
   styleUrls: ["./template-container.component.scss"],
 })
-export class TemplateContainerComponent implements OnInit {
-  @Input() rows: FlowTypes.TemplateRow[];
-  @Input() parent: { name: string; component?: ITemplateComponent };
+export class TemplateContainerComponent implements OnInit, ITemplateContainerProps {
+  @Input() name: string;
+  @Input() parent?: { name: string; component?: any };
+  template: FlowTypes.Template;
   debug = true;
   localVariables: { [name: string]: string } = {};
 
-  constructor() {}
-
   ngOnInit() {
-    console.log("Template Init", { rows: this.rows, parent: this.parent });
-    this.localVariables = this.processLocalVariables(this.rows);
-    console.log("local variables", this.localVariables);
+    // TODO - handle fallback template
+    this.template = TEMPLATE.find((t) => t.flow_name === this.name) || TEMPLATE[1];
+    this.localVariables = this.processLocalVariables(this.template.rows);
+    this.parent = { name: this.name, component: this };
   }
 
   private processLocalVariables(rows: FlowTypes.TemplateRow[], localVariables = {}) {

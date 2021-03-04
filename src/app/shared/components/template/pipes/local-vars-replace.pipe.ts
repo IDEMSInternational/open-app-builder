@@ -1,24 +1,13 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 /*
  * Replaces any instances of @local.var_name in text with the value of that local variable
  * Example usage
  * {{ 'Hello @local.user_name' | localVarsReplace: localVariables }}
  * if localVariables.user_name = 'Alice'; This example would become 'Hello Alice'
-*/
-@Pipe({name: 'localVarsReplace'})
+ */
+@Pipe({ name: "localVarsReplace" })
 export class LocalVarsReplacePipe implements PipeTransform {
-  transform(value: any, localVars?: { [name: string]: string}): string {
-    if (typeof value === "undefined") {
-      return "";
-    }
-    if (typeof value === "boolean") {
-      return "" + value;
-    }
-    return LocalVarsReplacePipe.parseMessageTemplate("" + value, localVars);
-  }
-
-  static parseMessageTemplate = (template: string, localVars: { [name: string]: string}) => {
-    console.log("template", template);
+  static parseMessageTemplate = (template: string, localVars: { [name: string]: string }) => {
     let output: string = "" + template;
 
     let regexResult: RegExpExecArray;
@@ -44,4 +33,14 @@ export class LocalVarsReplacePipe implements PipeTransform {
 
     return output;
   };
+
+  transform(value: any, localVars?: { [name: string]: string }): string {
+    if (typeof value === "undefined") {
+      return "";
+    }
+    if (typeof value === "boolean") {
+      return "" + value;
+    }
+    return LocalVarsReplacePipe.parseMessageTemplate("" + value, localVars);
+  }
 }

@@ -1,9 +1,19 @@
-<div [className]="'template-container ' + localVariables?.theme_name">
-  <div *ngFor="let row of rows" class="row">
-    <plh-tmpl-comp [row]="row" [localVariables]="localVariables" [parent]="parent"></plh-tmpl-comp>
-  </div>
-  <div *ngIf="debug" class="debug-container">
-    <div style="text-decoration: underline">Debug Props</div>
-    <p>{{ localVariables | json }}</p>
-  </div>
+<div
+  [className]="'template-container ' + localVariables?.theme_name"
+  [attr.data-theme]="localVariables._theme || 'default'"
+>
+  <details *ngIf="debug" class="debug-container">
+    <summary>Template: {{ name }}</summary>
+    <p>name: {{ name }}</p>
+    <p>vars: {{ localVariables | json }}</p>
+    <p>rows: {{ template.rows | json }}</p>
+    <p *ngIf="parent">parent: {{ parent.name }}</p>
+  </details>
+  <plh-template-component
+    *ngFor="let row of template.rows"
+    class="row"
+    [row]="row"
+    [localVariables]="localVariables"
+    [parent]="parent"
+  ></plh-template-component>
 </div>

@@ -1,17 +1,19 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { FlowTypes } from 'src/app/shared/model/flowTypes';
-import { ITemplateComponent } from "./tmpl.component";
+import { Component, OnInit } from "@angular/core";
+import { TemplateBaseComponent } from "./base";
 
 @Component({
   selector: "plh-tmpl-display-group",
   template: `<div class="display-group">
-    <plh-tmpl-comp *ngFor="let childRow of row.rows" [row]="childRow" [template]="template" [localVariables]="localVariables"></plh-tmpl-comp>
+    <plh-template-component
+      *ngFor="let childRow of _row.rows"
+      [row]="childRow"
+      [localVariables]="_localVariables"
+    ></plh-template-component>
   </div>`,
-  styleUrls: ["./tmpl-components-common.scss"]
+  styleUrls: ["./tmpl-components-common.scss"],
 })
-export class TmplDisplayGroupComponent implements ITemplateComponent {
-  @Input() row: FlowTypes.TemplateRow;
-  @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
+export class TmplDisplayGroupComponent extends TemplateBaseComponent implements OnInit {
+  ngOnInit() {
+    console.log("display group init", this.row);
+  }
 }

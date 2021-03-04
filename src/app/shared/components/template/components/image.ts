@@ -1,30 +1,30 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, Input, OnInit } from "@angular/core";
-import { tr } from "date-fns/locale";
-import { FlowTypes } from 'src/app/shared/model/flowTypes';
-import { LocalVarsReplacePipe } from "../local-vars-replace.pipe";
-import { ITemplateComponent } from "./tmpl.component";
+import { Component, Input } from "@angular/core";
+import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { LocalVarsReplacePipe } from "../pipes/local-vars-replace.pipe";
+import { TemplateBaseComponent } from "./base";
 
 @Component({
   selector: "plh-tmpl-image",
   template: `
     <div class="tmpl-image-container">
-      <img *ngIf="imageSrc" [src]="imageSrc">
+      <img *ngIf="imageSrc" [src]="imageSrc" />
     </div>
   `,
-  styleUrls: ["./tmpl-components-common.scss"]
+  styleUrls: ["./tmpl-components-common.scss"],
 })
-export class TmplImageComponent implements ITemplateComponent {
-
+export class TmplImageComponent extends TemplateBaseComponent {
   assetsPrefix = "/assets/plh_assets/";
 
   constructor(private http: HttpClient) {
+    super();
   }
 
   imageSrc: string;
-  @Input() set row (value: FlowTypes.TemplateRow) {
+  @Input() set row(value: FlowTypes.TemplateRow) {
     const replaced = LocalVarsReplacePipe.parseMessageTemplate(value.value, this.localVariables);
-    this.http.get(replaced, { responseType: "arraybuffer" })
+    this.http
+      .get(replaced, { responseType: "arraybuffer" })
       .toPromise()
       .then(() => {
         this.imageSrc = replaced;
@@ -33,6 +33,4 @@ export class TmplImageComponent implements ITemplateComponent {
         this.imageSrc = (this.assetsPrefix + replaced).replace("//", "/");
       });
   }
-  @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
 }

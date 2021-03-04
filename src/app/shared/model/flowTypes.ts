@@ -296,7 +296,7 @@ export namespace FlowTypes {
     | "template_group";
 
   export interface TemplateRow {
-    type?: TemplateRowType;
+    type: TemplateRowType;
     name?: string;
     value?: any;
     action_list?: string[];
