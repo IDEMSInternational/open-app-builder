@@ -1,14 +1,15 @@
 <h2>Slider</h2>
 <div class="slider">
-  <span class="title-slider">
+  <div class="title-slider">
     {{title}}
-  </span>
+  </div>
   <ion-icon *ngIf="help" name="help-circle-outline" class="help" [pTooltip]="help" tooltipPosition="left" tooltipEvent="click"></ion-icon>
   <div class="slider__container">
     <div class="slider-item">
       <ion-range class="custom-range"  [disabled]="disabled"
                  [value]="disabled ? 0 : value"
                  [min]="minValue" [max]="maxValue" pin="true"
+                 [style.--knob-size]="disabled ? '0' : '28px'"
                  ticks="false" [step]="step" snaps="true"></ion-range>
       <div class="checkbox-block" (click)="disableSlider()">
         <ion-checkbox class="custom-checkbox"  [value]="disabled" [checked]="disabled"  color="primary"></ion-checkbox>

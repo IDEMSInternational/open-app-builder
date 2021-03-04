@@ -23,6 +23,8 @@ export class SliderComponent implements ITemplateComponent, OnInit {
   min_value_label: string | null;
   max_value_label: string | null;
   listNumbers: Array<number> = [];
+  noAnswer: boolean = false;
+
   constructor() {
   }
 
@@ -35,11 +37,11 @@ export class SliderComponent implements ITemplateComponent, OnInit {
     this.help = getStringParamFromTemplateRow(this.row, "help", null);
     this.minValue = getNumberParamFromTemplateRow(this.row, "min", this.minValue);
     this.maxValue = getNumberParamFromTemplateRow(this.row, "max", this.maxValue);
-    this.title = getStringParamFromTemplateRow(this.row , 'title', null);
+    this.title = getStringParamFromTemplateRow(this.row, "title", null);
     this.step = getNumberParamFromTemplateRow(this.row, "step", this.step);
-    this.min_value_label = getStringParamFromTemplateRow(this.row, 'min_value_label', null);
-    this.max_value_label = getStringParamFromTemplateRow(this.row, 'max_value_label', null);
-    this.value = this.row.value > this.maxValue ? null : this.row.value;
+    this.min_value_label = getStringParamFromTemplateRow(this.row, "min_value_label", null);
+    this.max_value_label = getStringParamFromTemplateRow(this.row, "max_value_label", null);
+    this.value = this.row.value > this.maxValue ? 0 : this.row.value;
     this.disabled = this.value === null;
   }
 
@@ -47,44 +49,42 @@ export class SliderComponent implements ITemplateComponent, OnInit {
     const arr = [];
     for (let i = min; i <= max; i++) {
       if (i % step === 0) {
-        arr.push(i)
+        arr.push(i);
       }
     }
-    switch (true){
+    switch (true) {
       case (arr.length <= 11):
-        this.listNumbers = arr;
+        return this.listNumbers = arr;
+      case (arr.length > 11 && arr.length <= 16):
+        this.listNumbers = arr.filter(item => step > 3 ? item % step === 0 : item % 6 === 0);
         return this.listNumbers;
-      case (arr.length > 11 && arr.length <= 21):
-        this.listNumbers = [0, 2, 6, 8, 10, 15, 20]
+      case (arr.length > 16 && max < 21):
+        this.listNumbers = arr.filter(item => step === 1 ? item % 2 === 0 : item % step === 0);
         return this.listNumbers;
-      case (arr.length > 21 && arr.length <= 31):
-        this.listNumbers = [0, 5, 10, 15, 20 , 25, arr[arr.length - 1]]
+      case (arr.length > 12 && max > 15):
+        this.listNumbers = helpArray(min, max);
         return this.listNumbers;
-      case (arr.length > 31 && arr.length <= 41):
-        this.listNumbers = [0, 5, 10, 15, 20, 25, 30, 35, arr[arr.length - 1]]
-        return this.listNumbers;
-      case (arr.length > 41 && arr.length <= 51):
-          this.listNumbers = [0, 10, 15, 20, 25, 30, 35, 40, arr[arr.length - 1]]
-          return this.listNumbers;
-      case (arr.length > 51 && arr.length <= 61):
-        this.listNumbers = [0, 10, 20 , 30, 40, 50, arr[arr.length - 1]]
-        return this.listNumbers;
-      case (arr.length > 61 && arr.length <= 71):
-        this.listNumbers = [0, 10, 20 , 30, 40, 50, 60, arr[arr.length - 1]]
-        return this.listNumbers;
-      case (arr.length > 71 && arr.length <= 81):
-        this.listNumbers = [0, 10, 20 , 30, 40, 50, 60, 70, arr[arr.length - 1]]
-        return this.listNumbers;
-      case (arr.length > 81 && arr.length <= 91):
-        this.listNumbers = [0, 10, 20 , 30, 40, 50, 60, 70, 80, arr[arr.length - 1]]
-        return this.listNumbers;
-      case (arr.length > 91):
-        this.listNumbers = [0, 20, 40, 60, 80, arr[arr.length - 1]]
-        return this.listNumbers;
+    }
+
+    function helpArray(from, to) {
+      const data = [];
+      for (let i = from; i < to; i++) {
+        if (i % 10 === 0) {
+          data.push(i);
+        }
+      }
+      if (to - data[data.length - 1] < 5) {
+        data[data.length - 1] = to;
+      } else {
+        data.push(to);
+      }
+      return data;
     }
   }
 
   disableSlider() {
     this.disabled = !this.disabled;
+    this.noAnswer = !this.disabled;
   }
+
 }
