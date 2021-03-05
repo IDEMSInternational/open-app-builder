@@ -18,6 +18,7 @@ export class LocalVarsReplacePipe implements PipeTransform {
       let variableType = regexResult[1];
       let fieldName = regexResult[2];
       let subfieldName = regexResult[3] ? regexResult[3].substring(1) : null;
+      console.log("transform", template, variableType, localVars);
       switch (variableType) {
         case "local": {
           if (localVars) {
