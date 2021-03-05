@@ -31,6 +31,7 @@ jobs:
           folder: ./src/app
           target-folder: ${{ env.PR_NUMBER }}
           repository-name: IDEMSInternational/parenting-app-ui-pr-preview
+          ssh-key: ${{ secrets.PR_GH_DEPLOY_KEY }}
       - name: Cache node modules
         uses: actions/cache@v1
         with:
@@ -67,6 +68,7 @@ jobs:
           folder: www
           target-folder: ${{ env.PR_NUMBER }}
           repository-name: IDEMSInternational/parenting-app-ui-pr-preview
+          token: ${{ secrets.PR_GH_TOKEN }}
       - id: upload-files
         name: Upload files to Google Cloud Storage (rsync)
         timeout-minutes: 15
