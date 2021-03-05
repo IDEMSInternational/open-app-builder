@@ -9,7 +9,7 @@ import { FlowTypes, ITemplateContainerProps } from "./models";
 })
 export class TemplateContainerComponent implements OnInit, ITemplateContainerProps {
   @Input() name: string;
-  @Input() parent?: { name: string; component?: any };
+  @Input() parent?: TemplateContainerComponent;
   template: FlowTypes.Template;
   debug = true;
   localVariables: { [name: string]: string } = {};
@@ -18,7 +18,16 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     // TODO - handle fallback template
     this.template = TEMPLATE.find((t) => t.flow_name === this.name) || TEMPLATE[1];
     this.localVariables = this.processLocalVariables(this.template.rows);
-    this.parent = { name: this.name, component: this };
+  }
+
+  handleActions(actions: FlowTypes.TemplateRowAction[]) {
+    console.log("handling actions", actions);
+  }
+
+  setLocalVariable(key: string, value: any) {
+    console.log("setting local variable in container", key, value);
+
+    console.log("local variables", this.localVariables);
   }
 
   private processLocalVariables(rows: FlowTypes.TemplateRow[], localVariables = {}) {
@@ -34,14 +43,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         // handle theme specification
       }
 
-      // TODO - could possibly be handled in the parser (no real need for nested properties when rows already nested)
       if (r.rows) {
-        // if using nested properties ensure last element has a set_variable type, and assign with properties namespace
+        // if using nested properties assign with name namespace
         if (r.type === "nested_properties") {
-          r.rows = r.rows.map((nestedRow) => ({
-            ...nestedRow,
-            type: nestedRow.type || "set_variable",
-          }));
           localVariables[r.name] = this.processLocalVariables(r.rows);
         } else {
           // if general nesting apply any variables with value namespace
