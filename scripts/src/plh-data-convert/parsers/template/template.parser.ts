@@ -23,7 +23,19 @@ export class TemplateParser extends DefaultParser {
     return row;
   }
 
-  //  set_value | hide_intro | true",
+  /**
+   * Convert action_list string to row action object, e.g.
+   *
+   * string: `"set_value | hide_intro | true"`
+   *
+   * parsed:
+   * ```
+   * {
+   *    action_id: "set_value",
+   *    args: ["hide_intro","true"]
+   * }
+   * ```
+   */
   private parseActionString(actionString: string): FlowTypes.TemplateRowAction {
     const [action_id, ...args] = actionString.split("|").map((s) => s.trim()) as any;
     return { action_id, args };
