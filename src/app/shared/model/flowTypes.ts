@@ -338,6 +338,7 @@ export namespace FlowTypes {
     | "template"
     | "timer"
     | "slider"
+    | "number_selector"
     | "template_group"
     | "round_button"
     | "nav_group"
