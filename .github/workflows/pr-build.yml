@@ -15,6 +15,7 @@ jobs:
           PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           echo "PR Number is $PR_NUMBER"
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+      - run: mkdir www
       - name: Deploy to Github pages 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
