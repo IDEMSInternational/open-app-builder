@@ -13,7 +13,7 @@ import { PickerController } from "@ionic/angular";
   templateUrl: "./timer.component.html",
   styleUrls: ["./timer.component.scss"]
 })
-export class TimerComponent implements ITemplateComponent, OnInit {
+export class TmplTimerComponent implements ITemplateComponent, OnInit {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
@@ -164,7 +164,7 @@ export class TimerComponent implements ITemplateComponent, OnInit {
 
 
 interface TimerState {
-  timer: TimerComponent;
+  timer: TmplTimerComponent;
 
   clickLeftButton(): void;
 
@@ -176,7 +176,7 @@ interface TimerState {
 }
 
 abstract class State {
-  constructor(public timer: TimerComponent) {
+  constructor(public timer: TmplTimerComponent) {
   }
 
   clickLeftButton() {
@@ -210,7 +210,7 @@ abstract class State {
 class PlayingState extends State {
   private intervalRef;
 
-  constructor(timer: TimerComponent) {
+  constructor(timer: TmplTimerComponent) {
     super(timer);
     this.timer.leftButtonAction = "pause";
     this.timer.leftButtonIcon = "pause-outline";
@@ -246,7 +246,7 @@ class PlayingState extends State {
 }
 
 class PausedState extends State {
-  constructor(timer: TimerComponent) {
+  constructor(timer: TmplTimerComponent) {
     super(timer);
     this.timer.leftButtonAction = "play";
     this.timer.leftButtonIcon = "play-outline";
