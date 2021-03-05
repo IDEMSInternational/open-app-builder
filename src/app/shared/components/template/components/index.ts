@@ -15,7 +15,6 @@ import { TmplButtonComponent } from "./button";
 import { TmplDisplayGroupComponent } from "./display_group";
 import { TmplImageComponent } from "./image";
 import { TmplSliderComponent } from "./slider";
-import { TmplTemplateGroupComponent } from "./template_group";
 import { TmplTextComponent } from "./text";
 import { TmplTimerComponent } from "./timer";
 import { TmplTitleComponent } from "./title";
@@ -32,7 +31,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplDisplayGroupComponent,
   TmplImageComponent,
   TmplSliderComponent,
-  TmplTemplateGroupComponent,
   TmplTextComponent,
   TmplTimerComponent,
   TmplTitleComponent,
@@ -48,7 +46,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   Type<ITemplateRowProps>
 > = {
   text: TmplTextComponent,
-  title: TmplTextComponent,
+  title: TmplTitleComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
@@ -61,7 +59,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   // TODO - handle display_theme and other properties that should be inherited to child components
   display_theme: null as any,
   template: TemplateContainerComponent as any,
-  template_group: TmplTemplateGroupComponent,
   video: TmplVideoComponent,
   slider: TmplSliderComponent,
   timer: TmplTimerComponent,

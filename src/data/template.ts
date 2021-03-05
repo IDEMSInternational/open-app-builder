@@ -163,7 +163,7 @@
         "value": "Template Together Welcome"
       },
       {
-        "type": "template_group",
+        "type": "template",
         "value": "template_watch_together",
         "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
@@ -194,7 +194,8 @@
             "value": "Welcome @local.group_name!",
             "type": "set_variable"
           }
-        ]
+        ],
+        "name": "template_watch_together"
       }
     ]
   },
@@ -225,7 +226,7 @@
         "value": "Template Together Welcome"
       },
       {
-        "type": "template_group",
+        "type": "template",
         "name": "template_watch_together",
         "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
@@ -259,7 +260,7 @@
         ]
       },
       {
-        "type": "template_group",
+        "type": "template",
         "name": "template_watch_together",
         "rows": [
           {
@@ -459,7 +460,8 @@
               }
             ]
           }
-        ]
+        ],
+        "name": "workshop_activity"
       }
     ]
   },
@@ -567,7 +569,8 @@
               }
             ]
           }
-        ]
+        ],
+        "name": "a"
       }
     ]
   },

@@ -11,14 +11,23 @@ export class TemplateParser extends DefaultParser {
     if (!row.type) {
       row.type = "set_variable";
     }
-    if (row.rows) {
-      row.rows = row.rows.map((r) => this.postProcess(r));
+    // TODO - confirm if handling the same and then remove from excel sheets
+    if (row.type === ("template_group" as any)) {
+      row.type = "template";
+    }
+    // when unique template name not specified assume namespacing with template value (flow_name)
+    if (row.type === "template" && !row.name) {
+      row.name = row.value;
     }
     // parse action list
     if (row.action_list) {
       row.action_list = row.action_list.map((actionString) =>
         this.parseActionString(actionString as any)
       );
+    }
+    // handle nested rows in same way
+    if (row.rows) {
+      row.rows = row.rows.map((r) => this.postProcess(r));
     }
     return row;
   }
