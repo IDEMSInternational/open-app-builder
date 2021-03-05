@@ -102,3 +102,4 @@ export function getBooleanParamFromTemplateRow(row: FlowTypes.TemplateRow, name:
 
   return res;
 }
+
