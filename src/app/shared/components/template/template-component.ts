@@ -39,12 +39,12 @@ export class TmplCompHostDirective {
   selector: "plh-template-component",
   template: `
     <div class="plh-tmpl-comp" [hidden]="hidden" [attr.data-type]="row.type">
-      <details *ngIf="debug && row.type !== 'template'" class="debug-container">
-        <summary>Row: {{ row.type }}</summary>
-        <p>type: {{ row.type }}</p>
+      <details *ngIf="debug" class="debug-container">
+        <summary>{{ row.type }}</summary>
         <p *ngIf="row.name">name: {{ row.name }}</p>
         <p *ngIf="row.value">value: {{ row.value }}</p>
-        <p *ngIf="row.rows">child rows: {{ row.rows | json }}</p>
+        <p *ngIf="row.rows">child_rows: {{ row.rows | json }}</p>
+        <p>vars:{{ localVariables | json }}</p>
       </details>
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
