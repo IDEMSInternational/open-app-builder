@@ -59,8 +59,20 @@
                     "name": "button_1",
                     "value": "Start Session",
                     "action_list": [
-                      "set_value | hide_intro | true",
-                      "set_value | hide_activity | false"
+                      {
+                        "action_id": "set_value",
+                        "args": [
+                          "hide_intro",
+                          "true"
+                        ]
+                      },
+                      {
+                        "action_id": "set_value",
+                        "args": [
+                          "hide_activity",
+                          "false"
+                        ]
+                      }
                     ],
                     "comments": "specific actions can be added to default click handlers where required. May require rethinking to know when to use triggered values vs initialized/formulae"
                   },
@@ -102,8 +114,20 @@
                 "name": "button_4",
                 "value": "Back",
                 "action_list": [
-                  "set_value | hide_intro | false",
-                  "set_value | hide_activity | true"
+                  {
+                    "action_id": "set_value",
+                    "args": [
+                      "hide_intro",
+                      "false"
+                    ]
+                  },
+                  {
+                    "action_id": "set_value",
+                    "args": [
+                      "hide_activity",
+                      "true"
+                    ]
+                  }
                 ]
               }
             ]
@@ -331,8 +355,20 @@
               {
                 "name": "button_completed",
                 "action_list": [
-                  "set_local | hide_intro | true",
-                  "set_local | hide_activity | false"
+                  {
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_intro",
+                      "true"
+                    ]
+                  },
+                  {
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_activity",
+                      "false"
+                    ]
+                  }
                 ],
                 "type": "set_variable"
               },
@@ -371,8 +407,20 @@
             "type": "template",
             "name": "content_box",
             "action_list": [
-              "respond_to_action | exit | mark_as_completed",
-              "respond_to_action | exit | exit"
+              {
+                "action_id": "respond_to_action",
+                "args": [
+                  "exit",
+                  "mark_as_completed"
+                ]
+              },
+              {
+                "action_id": "respond_to_action",
+                "args": [
+                  "exit",
+                  "exit"
+                ]
+              }
             ],
             "rows": []
           }
@@ -436,8 +484,14 @@
             "name": "button_completed",
             "value": "Next",
             "action_list": [
-              "exit",
-              "mark_as_completed"
+              {
+                "action_id": "exit",
+                "args": []
+              },
+              {
+                "action_id": "mark_as_completed",
+                "args": []
+              }
             ]
           },
           {
@@ -445,8 +499,14 @@
             "name": "button_skipped",
             "value": "Skip",
             "action_list": [
-              "exit",
-              "mark_as_skipped"
+              {
+                "action_id": "exit",
+                "args": []
+              },
+              {
+                "action_id": "mark_as_skipped",
+                "args": []
+              }
             ]
           }
         ]

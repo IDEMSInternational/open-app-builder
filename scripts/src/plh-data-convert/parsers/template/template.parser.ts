@@ -14,6 +14,18 @@ export class TemplateParser extends DefaultParser {
     if (row.rows) {
       row.rows = row.rows.map((r) => this.postProcess(r));
     }
+    // parse action list
+    if (row.action_list) {
+      row.action_list = row.action_list.map((actionString) =>
+        this.parseActionString(actionString as any)
+      );
+    }
     return row;
+  }
+
+  //  set_value | hide_intro | true",
+  private parseActionString(actionString: string): FlowTypes.TemplateRowAction {
+    const [action_id, ...args] = actionString.split("|").map((s) => s.trim()) as any;
+    return { action_id, args };
   }
 }
