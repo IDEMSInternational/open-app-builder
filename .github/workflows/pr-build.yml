@@ -51,6 +51,15 @@ jobs:
         run: yarn install
       - name: Build Angular for PR
         run: npx ng build --prod --base-href /$PR_NUMBER/ --deploy-url /$PR_NUMBER/
+      - name: index.html as 404 page
+        run: cp ./www/index.html ./www/404.html
+      - name: Deploy to Github pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: www
+          target-folder: ${{ env.PR_NUMBER }}
+          repository-name: IDEMSInternational/parenting-app-ui-pr-preview
       - id: upload-files
         name: Upload files to Google Cloud Storage (rsync)
         timeout-minutes: 15
