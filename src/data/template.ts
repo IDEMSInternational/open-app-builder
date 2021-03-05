@@ -668,6 +668,25 @@ export const template: FlowTypes.Template[] = [
   },
   {
     "flow_type": "template",
+    "flow_name": "number",
+    "status": "released",
+    "rows": [
+      {
+        "type": "number_selector",
+        "name": "example_selector",
+        "value": null,
+        "parameter_list": [
+          "title: Adults",
+          "min_value: 0",
+          "max_value: 5",
+          "height: normal"
+        ]
+      }
+
+    ]
+  },
+  {
+    "flow_type": "template",
     "flow_name": "slider",
     "status": "released",
     "rows": [
@@ -710,5 +729,4 @@ export const template: FlowTypes.Template[] = [
       }
     ]
   }
-
 ];
