@@ -14,17 +14,20 @@
         "action_list": [],
         "parameter_list": [
           "title: Timer",
-          "help: Some text help"
+          "help: Some text help",
+          "duration: 10",
+          "duration_extension: 2"
         ]
       },
       {
         "type": "timer",
         "name": "5_min_timer",
-        "value": 300,
+        "value": null,
         "comments": "",
         "action_list": [],
         "parameter_list": [
           "title:Timer 2",
+          "duration: 5",
           "is_editable_on_playing: true",
         ]
       }

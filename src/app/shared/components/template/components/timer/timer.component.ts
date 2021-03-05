@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import {
   getBooleanParamFromTemplateRow,
@@ -64,7 +64,7 @@ export class TimerComponent implements ITemplateComponent, OnInit {
   }
 
   ngOnInit() {
-    this.value = this.row.value || 60 * 10;
+    // this.value = this.row.value || 60 * 10;
     this.getParams();
     this.state.callOnInit();
   }
@@ -76,8 +76,14 @@ export class TimerComponent implements ITemplateComponent, OnInit {
   getParams() {
     this.title = getStringParamFromTemplateRow(this.row, "title", "Timer");
     this.help = getStringParamFromTemplateRow(this.row, "help", null);
-    this.timerDurationExtension = getNumberParamFromTemplateRow(this.row, "timer_duration_extension", 60);
+    this.value = this.getDurationFromParams();
+    this.timerDurationExtension = getNumberParamFromTemplateRow(this.row, "duration_extension", 1) * 60;
     this.is_editable_on_playing = getBooleanParamFromTemplateRow(this.row, "is_editable_on_playing", false);
+  }
+
+
+  getDurationFromParams() {
+    return getNumberParamFromTemplateRow(this.row, "duration", 10) * 60;
   }
 
   clickLeftButton() {
@@ -140,6 +146,7 @@ export class TimerComponent implements ITemplateComponent, OnInit {
           return 0;
       }
     }
+
     return columns;
   }
 
@@ -256,6 +263,6 @@ class PausedState extends State {
   }
 
   clickRightButton() {
-    this.timer.value = this.timer.row.value ? this.timer.row.value : this.timer.defaultTime * this.timer.timerDurationExtension;
+    this.timer.value = this.timer.getDurationFromParams();
   }
 }
