@@ -676,9 +676,21 @@ export const template: FlowTypes.Template[] = [
         "name": "example_selector",
         "value": null,
         "parameter_list": [
-          "title: Adults",
+          "title: Category size 2",
           "min_value: 0",
-          "max_value: 5",
+          "max_value: 8",
+          "height: short",
+          "category_size: 2"
+        ]
+      },
+      {
+        "type": "number_selector",
+        "name": "example_selector",
+        "value": null,
+        "parameter_list": [
+          "title: Category size 1",
+          "min_value: 0",
+          "max_value: 10",
           "height: normal",
           "category_size: 1"
         ]
@@ -689,7 +701,8 @@ export const template: FlowTypes.Template[] = [
         "value": null,
         "parameter_list": [
           "title: Example",
-          "category_list: 0-20",
+          "first_display_term: 3",
+          "category_list: 0-20; 21-25; 26-30; 30-40; 40-55; 55+",
         ]
       }
 

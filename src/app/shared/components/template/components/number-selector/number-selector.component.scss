@@ -24,7 +24,7 @@
     --background: transparent;
     --box-shadow: none;
     border-radius: 50%;
-    border: 1px solid #096B8B;
+    border: 2px solid #096B8B;
     width: 27px;
     height: 27px;
     display: flex;
@@ -41,11 +41,26 @@
     }
   }
   .center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     .title, .num{
       text-align: center;
       font-weight: 500;
       color: #0D3F60;
       max-width: 150px;
+    }
+    .category{
+      max-width: 150px;
+      span{
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+        color: #0D3F60;
+
+      }
     }
   }
 }
@@ -54,6 +69,14 @@
   .center{
     .title, .num{
       font-size: 15px;
+    }
+  }
+  ion-button{
+    width: 37px;
+    height: 37px;
+    .line{
+      width: 15px;
+      height: 3px;
     }
   }
 }
