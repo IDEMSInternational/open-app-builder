@@ -299,7 +299,7 @@ export namespace FlowTypes {
     type: TemplateRowType;
     name?: string;
     value?: any;
-    action_list?: string[];
+    action_list?: TemplateRowAction[];
     parameter_list?: string[];
     hidden?: boolean | string;
     rows?: TemplateRow[];
@@ -307,6 +307,10 @@ export namespace FlowTypes {
     /* Used for authoring comments. Not used in code */
     comments?: string;
     __EMPTY?: any;
+  }
+  export interface TemplateRowAction {
+    action_id: "set_value" | "set_local" | "respond_to_action" | "exit" | "mark_as_completed";
+    args: string[];
   }
 
   /* Used for setting default parameters for template components */

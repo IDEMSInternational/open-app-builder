@@ -8,6 +8,7 @@ import { TemplateBaseComponent } from "./base";
       *ngFor="let childRow of _row.rows"
       [row]="childRow"
       [localVariables]="_localVariables"
+      [parent]="parent"
     ></plh-template-component>
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"],
