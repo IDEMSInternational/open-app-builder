@@ -120,15 +120,18 @@
       {
         "name": "group_name",
         "value": "The group name",
-        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
+        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred.",
+        "type": "set_variable"
       },
       {
         "name": "intro_nav_button_text",
-        "value": "Next"
+        "value": "Next",
+        "type": "set_variable"
       },
       {
         "name": "outro_nav_button_text",
-        "value": "Next 2"
+        "value": "Next 2",
+        "type": "set_variable"
       },
       {
         "type": "title",
@@ -142,25 +145,30 @@
         "rows": [
           {
             "name": "theme_name",
-            "value": "passive"
+            "value": "passive",
+            "type": "set_variable"
           },
           {
             "name": "button_1",
-            "value": "@local.intro_nav_button_text"
+            "value": "@local.intro_nav_button_text",
+            "type": "set_variable"
           },
           {
             "name": "button_2",
             "value": "skip",
             "hidden": true,
-            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3"
+            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
+            "type": "set_variable"
           },
           {
             "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
           },
           {
             "name": "intro_text",
-            "value": "Welcome @local.group_name!"
+            "value": "Welcome @local.group_name!",
+            "type": "set_variable"
           }
         ]
       }
@@ -174,15 +182,18 @@
       {
         "name": "group_name",
         "value": "The group name",
-        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
+        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred.",
+        "type": "set_variable"
       },
       {
         "name": "intro_nav_button_text",
-        "value": "Next"
+        "value": "Next",
+        "type": "set_variable"
       },
       {
         "name": "outro_nav_button_text",
-        "value": "Next 2"
+        "value": "Next 2",
+        "type": "set_variable"
       },
       {
         "type": "title",
@@ -196,25 +207,30 @@
         "rows": [
           {
             "name": "theme_name",
-            "value": "passive"
+            "value": "passive",
+            "type": "set_variable"
           },
           {
             "name": "button_1",
-            "value": "@local.intro_nav_button_text"
+            "value": "@local.intro_nav_button_text",
+            "type": "set_variable"
           },
           {
             "name": "button_2",
             "value": "skip",
             "hidden": true,
-            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3"
+            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
+            "type": "set_variable"
           },
           {
             "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
           },
           {
             "name": "intro_text",
-            "value": "Welcome @local.group_name!"
+            "value": "Welcome @local.group_name!",
+            "type": "set_variable"
           }
         ]
       },
@@ -224,23 +240,28 @@
         "rows": [
           {
             "name": "theme_name",
-            "value": "passive"
+            "value": "passive",
+            "type": "set_variable"
           },
           {
             "name": "button_1",
-            "value": "@local.outro_nav_button_text"
+            "value": "@local.outro_nav_button_text",
+            "type": "set_variable"
           },
           {
             "name": "button_2",
-            "value": "skip"
+            "value": "skip",
+            "type": "set_variable"
           },
           {
             "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
           },
           {
             "name": "intro_text",
-            "value": "Welcome @local.group_name!"
+            "value": "Welcome @local.group_name!",
+            "type": "set_variable"
           }
         ]
       }
@@ -254,23 +275,28 @@
       {
         "name": "hide_intro",
         "value": false,
-        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content."
+        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content.",
+        "type": "set_variable"
       },
       {
         "name": "hide_activity",
-        "value": true
+        "value": true,
+        "type": "set_variable"
       },
       {
         "name": "hide_activity_banner",
-        "value": true
+        "value": true,
+        "type": "set_variable"
       },
       {
         "name": "activity_image",
-        "value": "src/assets/not-found-image.png"
+        "value": "src/assets/not-found-image.png",
+        "type": "set_variable"
       },
       {
         "name": "activity_title",
-        "value": "Title of this section"
+        "value": "Title of this section",
+        "type": "set_variable"
       },
       {
         "type": "display_theme",
@@ -307,11 +333,13 @@
                 "action_list": [
                   "set_local | hide_intro | true",
                   "set_local | hide_activity | false"
-                ]
+                ],
+                "type": "set_variable"
               },
               {
                 "name": "button_skipped",
-                "hidden": "!@local._completed"
+                "hidden": "!@local._completed",
+                "type": "set_variable"
               }
             ]
           }
@@ -363,7 +391,8 @@
         "rows": [
           {
             "name": "activity_image",
-            "value": "plh_images/menu_icons/menu_care_packages_icon.svg"
+            "value": "plh_images/menu_icons/menu_care_packages_icon.svg",
+            "type": "set_variable"
           },
           {
             "type": "nested_properties",
@@ -375,7 +404,8 @@
                 "rows": [
                   {
                     "name": "button_completed",
-                    "value": "Complete Override"
+                    "value": "Complete Override",
+                    "type": "set_variable"
                   }
                 ]
               }
@@ -440,7 +470,8 @@
         "rows": [
           {
             "name": "button_completed",
-            "value": "Next 2"
+            "value": "Next 2",
+            "type": "set_variable"
           }
         ]
       }
@@ -462,7 +493,8 @@
         "rows": [
           {
             "name": "a_title",
-            "value": "Template A Title Overridden"
+            "value": "Template A Title Overridden",
+            "type": "set_variable"
           },
           {
             "type": "nested_properties",
@@ -470,7 +502,8 @@
             "rows": [
               {
                 "name": "button_completed",
-                "value": "Next 3"
+                "value": "Next 3",
+                "type": "set_variable"
               }
             ]
           }
@@ -517,22 +550,19 @@
     "status": "released",
     "rows": [
       {
+        "type": "button",
+        "name": "button_1",
+        "value": "Button 1"
+      },
+      {
         "type": "nav_group",
-        "parameter_list": [
-          "show_back_button:false",
-          ""
-        ],
         "rows": [
           {
             "type": "nav_section",
-            "parameter_list": [
-              "show_skip_button:true",
-              "skip_button_text:Skip Story"
-            ],
             "rows": [
               {
                 "type": "image",
-                "value": "plh_images/workshops/welcome1.svg"
+                "value": "https://freesvg.org/img/lemmling-2D-cartoon-elephant.png"
               },
               {
                 "type": "text",
@@ -545,29 +575,11 @@
             "rows": [
               {
                 "type": "image",
-                "value": "plh_images/workshops/welcome1.svg"
+                "value": "https://freesvg.org/img/lemmling-2D-cartoon-elephant.png"
               },
               {
                 "type": "text",
                 "value": "What are you thinking of?"
-              }
-            ]
-          },
-          {
-            "type": "nav_section",
-            "parameter_list": [
-              "restart_button_text:Re-read the story",
-              "show_restart_button:true",
-              ""
-            ],
-            "rows": [
-              {
-                "type": "image",
-                "value": "plh_images/workshops/welcome1.svg"
-              },
-              {
-                "type": "text",
-                "value": "An elephant right?"
               }
             ]
           }
