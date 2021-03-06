@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 /*
  * Replaces any instances of @local.var_name in text with the value of that local variable
  * Example usage
- * {{ 'Hello @local.user_name' | localVarsReplace: localVariables }}
+ * {{ 'Hello @local.user_name' | localVarsReplace: parent.localVariables }}
  * if localVariables.user_name = 'Alice'; This example would become 'Hello Alice'
  */
 @Pipe({ name: "localVarsReplace" })

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from "@angular/core";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 
+type ILocalVariables = { [name: string]: any };
+
 @Component({
   selector: "plh-template-container",
   templateUrl: "./template-container.component.html",
@@ -12,12 +14,13 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   @Input() parent?: TemplateContainerComponent;
   template: FlowTypes.Template;
   debug = true;
-  localVariables: { [name: string]: string } = {};
+  localVariables: ILocalVariables = {};
   children = {};
 
   ngOnInit() {
-    // TODO - handle fallback template
-    this.template = TEMPLATE.find((t) => t.flow_name === this.name) || TEMPLATE[1];
+    // Lookup template and provide fallback
+    this.template =
+      TEMPLATE.find((t) => t.flow_name === this.name) || NOT_FOUND_TEMPLATE(this.name);
 
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
@@ -29,6 +32,12 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       console.log({ localVariables });
     }
     this.template.rows = this.processRows(this.template.rows, this.localVariables);
+
+    // if (this.template.flow_name === "buttons") {
+    //   setTimeout(() => {
+    //     this.setLocalVariable("button_completed", "Next 4");
+    //   }, 2000);
+    // }
   }
 
   public handleActions(actions: FlowTypes.TemplateRowAction[]) {
@@ -39,7 +48,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    * When a child triggers the changing of a local variable... TODO
    */
   public setLocalVariable(key: string, value: any) {
-    console.log("setting local variable in container", key, value);
+    this.localVariables[key] = { value };
+    this.template.rows = this.processRows(this.template.rows, this.localVariables);
+    // TODO - row processing should also evaluate hidden states and make field replacements
+    // TODO - ngfor loop should have comparison function and key
   }
 
   /**
@@ -51,13 +63,18 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    * @param variables - set of parent or existing variables to take priority
    *
    */
-  private processVariables(templateRows: FlowTypes.TemplateRow[], variables = {}) {
+  private processVariables(
+    templateRows: FlowTypes.TemplateRow[],
+    variables: ILocalVariables = {}
+  ): ILocalVariables {
     templateRows.forEach((r) => {
       const { name, value, rows, type } = r;
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
       if (type === "set_variable") {
         // don't override values that have otherwise been set from parent or nested properties
+        // TODO - also handle when additional fields are defined (deep merge each prop, e.g. {value, hidden, action_list})
+        // console.log("set variable", r);
         variables[name] = variables[name] || { value };
       }
       if (type === "display_theme") {
@@ -94,12 +111,13 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    * remove the variable setter row types and override row values where specified
    */
   private processRows(templateRows: FlowTypes.TemplateRow[], variables = {}) {
-    console.log("processing rows", templateRows, variables);
+    console.log(`[${this.template.flow_name}]`, "process rows", variables);
     // remove row types that have already been processed during processVariables step
     const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
     const filteredRows = templateRows.filter((r) => !filterTypes.includes(r.type));
+    // TODO - handle hidden evaluation
+    // TODO - handle local var replacement
     const rowsWithReplacedValues = filteredRows.map((r) => {
-      console.log("replacing", r.name, variables[r.name]);
       // update row values as spefied in local variables replacement
       r.value = variables[r.name]?.value || r.value;
       // handle nested templates
@@ -120,3 +138,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     return rowsWithReplacedValues;
   }
 }
+
+const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
+  flow_name: "Template_not_found",
+  flow_type: "template",
+  rows: [{ type: "title", value: `Template "${name}" not found` }],
+  status: "released",
+});

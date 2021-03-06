@@ -20,6 +20,5 @@ export interface ITemplateContainerProps {
  */
 export interface ITemplateRowProps {
   row: FlowTypes.TemplateRow;
-  localVariables: { [name: string]: any };
   parent: TemplateContainerComponent;
 }

@@ -1,10 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { BaseComponent } from "@fullcalendar/angular";
+import { Component } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
 
 @Component({
   selector: "plh-tmpl-text",
-  template: `<p>{{ _row.value | localVarsReplace: localVariables }}</p>`,
+  template: `<p>{{ _row.value | localVarsReplace: parent.localVariables }}</p>`,
   styleUrls: ["./tmpl-components-common.scss"],
 })
 export class TmplTextComponent extends TemplateBaseComponent {}
