@@ -4,7 +4,7 @@ import { TemplateBaseComponent } from "./base";
 @Component({
   selector: "plh-tmpl-button",
   template: `<ion-button (click)="triggerActions()">{{
-    _row.value | localVarsReplace: localVariables
+    _row.value | localVarsReplace: parent.localVariables
   }}</ion-button>`,
   styleUrls: ["./tmpl-components-common.scss"],
 })
