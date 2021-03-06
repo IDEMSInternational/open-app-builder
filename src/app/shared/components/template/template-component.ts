@@ -39,11 +39,11 @@ export class TmplCompHostDirective {
   selector: "plh-template-component",
   template: `
     <div class="plh-tmpl-comp" [hidden]="hidden" [attr.data-type]="row.type">
-      <details *ngIf="debug" class="debug-container">
+      <details *ngIf="debug" class="debug-container" (click)="logDebugInfo()">
         <summary>{{ row.type }}</summary>
         <p *ngIf="row.name">name: {{ row.name }}</p>
         <p *ngIf="row.value">value: {{ row.value }}</p>
-        <p *ngIf="row.rows && row.rows.length > 0">child_rows: {{ row.rows | json }}</p>
+        <p *ngIf="parent.localVariables">vars: {{ parent.localVariables | json }}</p>
       </details>
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
@@ -69,9 +69,16 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
   ngOnInit() {
     this.renderRow(this.row);
   }
+  public logDebugInfo() {
+    console.group(this.row.type, this.row.name);
+    console.log("row", this.row);
+    console.log("parent", this.parent);
+    console.log("children", this.row.rows);
+    console.groupEnd();
+  }
 
   private renderRow(row: FlowTypes.TemplateRow) {
-    console.log(`[${this.row.name}]`, "render row");
+    // console.log(`[${this.row.name}]`, "render row");
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {
       case "template":

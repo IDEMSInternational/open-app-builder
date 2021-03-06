@@ -1,5 +1,4 @@
 /* tslint:disable:class-name */
-import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { RapidProFlowExport } from "src/app/feature/chat/models";
 export { RapidProFlowExport } from "src/app/feature/chat/models";
 import { TipRow } from "src/app/feature/tips/models/tips.model";
@@ -302,10 +301,19 @@ export namespace FlowTypes {
     parameter_list?: string[];
     hidden?: boolean | string;
     rows?: TemplateRow[];
+    /** track fields above where dynamic expressions have been used in field evaluation */
+    _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
 
     /* Used for authoring comments. Not used in code */
     comments?: string;
     __EMPTY?: any;
+  }
+  /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
+  export interface TemplateRowDynamicEvaluator {
+    fullExpression: string;
+    matchedExpression: string;
+    type: "local" | "fields";
+    fieldName: string;
   }
   export interface TemplateRowAction {
     action_id: "set_value" | "set_local" | "respond_to_action" | "exit" | "mark_as_completed";
