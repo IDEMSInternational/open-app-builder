@@ -9,6 +9,8 @@ import { PLHMainHeaderComponent } from "./components/plh-main-header";
 import { PLHMainTabsComponent } from "./components/plh-main-tabs";
 import { RouterModule } from "@angular/router";
 import { TemplateComponentsModule } from "./components/template/template.module";
+import { ANIMATION_COMPONENTS } from "./components/animations";
+import { AnimationComponent } from "./components/animations/animation.component";
 
 const Components = [
   BlobComponent,
@@ -16,7 +18,9 @@ const Components = [
   ReflectAnimationComponent,
   StressedMultiHandAnimComponent,
   PLHMainHeaderComponent,
-  PLHMainTabsComponent
+  PLHMainTabsComponent,
+  AnimationComponent,
+  ... ANIMATION_COMPONENTS
 ];
 
 @NgModule({
