@@ -15,3 +15,9 @@
     margin: 20px;
     width: calc(100% - 40px);
 }
+
+.animation-cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
