@@ -70,6 +70,11 @@ const FeatureRoutes: Routes = [
     loadChildren: () =>
       import("./feature/parent-points/parent-points.module").then((m) => m.ParentPointsPageModule),
   },
+  {
+    path: "animations",
+    loadChildren: () =>
+      import("./feature/animations/animations.module").then((m) => m.AnimationsPageModule),
+  },
   /*****************************************************************************************
    * Legacy paths - these should be removed in the future once modules refactored
    * (duplicated above via 'conversation' and 'tips' flow type handlers)
