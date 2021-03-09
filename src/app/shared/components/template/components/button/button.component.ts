@@ -8,7 +8,7 @@ import {getStringParamFromTemplateRow, getNumberParamFromTemplateRow, getBoolean
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
 })
-export class ButtonComponent implements ITemplateComponent, OnInit {
+export class TmplButtonComponent implements ITemplateComponent, OnInit {
     @Input() row: FlowTypes.TemplateRow;
     @Input() template: FlowTypes.Template;
     @Input() localVariables: { [name: string]: any };
