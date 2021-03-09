@@ -678,7 +678,29 @@ export const template: FlowTypes.Template[] = [
         "parameter_list": [
           "title: Slider example",
           "min: 0",
-          "max: 56",
+          "max: 48",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 2"
+        ],
+        "comments": ""
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "slider_old",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider_old",
+        "name": "templates_slider",
+
+        "parameter_list": [
+          "title: Slider example",
+          "min: 0",
+          "max: 48",
           "min_value_label: not confident",
           "max_value_label: extremely confident",
           "help: some help info",

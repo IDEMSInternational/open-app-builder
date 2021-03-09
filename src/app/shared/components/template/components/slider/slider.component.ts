@@ -92,7 +92,10 @@ export class SliderComponent implements ITemplateComponent, OnInit {
     function helpArray(from, to) {
       let data = [];
       for (let i = from; i < to; i++) {
-        if (i % 10 === 0) {
+        if (i % 10 === 0 && step !== 2) {
+          data.push(i);
+        } else if( Number(i.toString().split('')[i < 10 ? 0 : 1]) === 6 || i % 10 === 0) {
+          console.log();
           data.push(i);
         }
       }
