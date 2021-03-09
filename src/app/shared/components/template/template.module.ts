@@ -6,7 +6,7 @@ import { TemplateContainerComponent } from "./template-container.component";
 
 import { TEMPLATE_COMPONENTS } from "./components";
 import { TmplCompHostDirective, TemplateComponent } from "./template-component";
-import { LocalVarsReplacePipe } from "./pipes/local-vars-replace.pipe";
+// import { LocalVarsReplacePipe } from "./pipes/local-vars-replace.pipe";
 import { SharedPipesModule } from "../../pipes";
 
 @NgModule({
@@ -17,7 +17,7 @@ import { SharedPipesModule } from "../../pipes";
     TemplateComponent,
     ...TEMPLATE_COMPONENTS,
     TemplateContainerComponent,
-    LocalVarsReplacePipe,
+    // LocalVarsReplacePipe,
   ],
 })
 export class TemplateComponentsModule {}

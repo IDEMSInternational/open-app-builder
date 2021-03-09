@@ -316,7 +316,13 @@ export namespace FlowTypes {
     fieldName: string;
   }
   export interface TemplateRowAction {
-    action_id: "set_value" | "set_local" | "respond_to_action" | "exit" | "mark_as_completed";
+    action_id:
+      | "set_value"
+      | "set_local"
+      | "respond_to_action"
+      | "exit"
+      | "mark_as_completed"
+      | "mark_as_skipped";
     args: string[];
   }
 

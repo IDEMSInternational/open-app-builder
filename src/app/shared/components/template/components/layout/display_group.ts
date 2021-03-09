@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { TemplateBaseComponent } from "./base";
+import { TemplateBaseComponent } from "../base";
 
 @Component({
   selector: "plh-tmpl-display-group",
@@ -7,11 +7,10 @@ import { TemplateBaseComponent } from "./base";
     <plh-template-component
       *ngFor="let childRow of _row.rows"
       [row]="childRow"
-      [localVariables]="_localVariables"
       [parent]="parent"
     ></plh-template-component>
   </div>`,
-  styleUrls: ["./tmpl-components-common.scss"],
+  styleUrls: ["../tmpl-components-common.scss"],
 })
 export class TmplDisplayGroupComponent extends TemplateBaseComponent implements OnInit {
   ngOnInit() {

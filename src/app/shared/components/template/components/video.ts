@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Input } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
-import { LocalVarsReplacePipe } from "../pipes/local-vars-replace.pipe";
-import { ITemplateComponent } from "./tmpl.component";
+import { TemplateBaseComponent } from "./base";
 
 @Component({
   selector: "plh-tmpl-video",
@@ -11,26 +10,27 @@ import { ITemplateComponent } from "./tmpl.component";
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"],
 })
-export class TmplVideoComponent implements ITemplateComponent {
+export class TmplVideoComponent extends TemplateBaseComponent {
   assetsPrefix = "/assets/plh_assets/";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    super();
+  }
 
   videoSrc: string;
-  @Input() set row(value: FlowTypes.TemplateRow) {
-    const replaced = LocalVarsReplacePipe.parseMessageTemplate(value.value, this.localVariables);
-    if (replaced.indexOf("http") < -1) {
+  @Input() set row(r: FlowTypes.TemplateRow) {
+    if (r.value.indexOf("http") < -1) {
       this.http
-        .get(replaced, { responseType: "arraybuffer" })
+        .get(r.value, { responseType: "arraybuffer" })
         .toPromise()
         .then(() => {
-          this.videoSrc = replaced;
+          this.videoSrc = r.value;
         })
         .catch(() => {
-          this.videoSrc = (this.assetsPrefix + replaced).replace("//", "/");
+          this.videoSrc = (this.assetsPrefix + r.value).replace("//", "/");
         });
     } else {
-      this.videoSrc = replaced;
+      this.videoSrc = r.value;
     }
   }
   @Input() template: FlowTypes.Template;
