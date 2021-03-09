@@ -6,13 +6,13 @@ import { Type } from "@angular/core";
  * Template Components
  **************************************************************************************/
 
-import { AnimatedSectionComponent } from "./animated_section";
-import { AnimatedSectionGroupComponent } from "./animated_section_group";
-import { NavGroupComponent } from "./nav_group";
+import { AnimatedSectionComponent } from "./layout/animated_section";
+import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
+import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio";
 import { TemplateBaseComponent } from "./base";
 import { TmplButtonComponent } from "./button";
-import { TmplDisplayGroupComponent } from "./display_group";
+import { TmplDisplayGroupComponent } from "./layout/display_group";
 import { TmplImageComponent } from "./image";
 import { TmplSliderComponent } from "./slider";
 import { TmplTextComponent } from "./text";
