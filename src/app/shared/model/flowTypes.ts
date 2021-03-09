@@ -341,7 +341,8 @@ export namespace FlowTypes {
     | "template_group"
     | "round_button"
     | "nav_group"
-    | "nav_section";
+    | "nav_section"
+    | "slider_old";
 
   export interface TemplateRow {
     type?: TemplateRowType;
