@@ -54,3 +54,8 @@ p {
   background: rgba(255, 255, 255, 0.5);
   font-size: small;
 }
+.debug-container > p {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
