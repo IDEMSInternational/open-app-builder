@@ -39,7 +39,7 @@ export class TmplCompHostDirective {
   selector: "plh-template-component",
   template: `
     <div class="plh-tmpl-comp" [hidden]="hidden" [attr.data-type]="row.type">
-      <details *ngIf="debug" class="debug-container" (click)="logDebugInfo()">
+      <details *ngIf="debugMode" class="debug-container" (click)="logDebugInfo()">
         <summary>{{ row.type }}</summary>
         <p *ngIf="row.name">name: {{ row.name }}</p>
         <p *ngIf="row.value">value: {{ row.value }}</p>
@@ -61,8 +61,10 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
+  /** Show debug info above component */
+  @Input() debugMode: boolean;
+
   public hidden = false;
-  public debug = true;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 

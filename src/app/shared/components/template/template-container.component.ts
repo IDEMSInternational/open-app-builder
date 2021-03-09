@@ -24,6 +24,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   template: FlowTypes.Template;
   /** local state tree used to handle default and overwritten row properties */
   localVariables: ILocalVariables = {};
+  debugMode = false;
 
   ngOnInit() {
     // Lookup template and provide fallback
@@ -120,7 +121,6 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
     const filteredRows = templateRows.filter((r) => !filterTypes.includes(r.type));
     // TODO - handle hidden evaluation
-    // TODO - handle local var replacement
     const rowsWithReplacedValues = filteredRows.map((r) => {
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
