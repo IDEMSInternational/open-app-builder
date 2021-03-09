@@ -11,9 +11,10 @@ import { TmplTemplateGroupComponent } from "./template_group";
 import { TmplTextComponent } from "./text";
 import { TmplVideoComponent } from "./video";
 import { AnimatedSectionComponent } from "./animated_section";
-import { TmplSliderComponent } from "./slider";
+import { TmplSliderComponent } from "./slider/slider.component";
 import {TmplTimerComponent} from "./timer/timer.component";
 import { NavGroupComponent } from "./nav_group";
+import {SliderNewComponent} from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent} from "./round-icon-button/round-icon-button.component";
 
 export interface ITemplateComponent {
@@ -38,10 +39,11 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   video: TmplVideoComponent,
   display_theme: TmplSetVariableComponent,
   slider: TmplSliderComponent,
+  timer: TmplTimerComponent,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
-  timer: TmplTimerComponent,
-  round_button: RoundIconButtonComponent
+  round_button: RoundIconButtonComponent,
+  slider_old: SliderNewComponent
 };
 
 @Directive({
