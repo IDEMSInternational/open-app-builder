@@ -7,7 +7,6 @@
     <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
   </div>
   <plh-template-component
-    [debugMode]="debugMode"
     *ngFor="let row of template.rows"
     class="row"
     [row]="row"
