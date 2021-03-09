@@ -13,7 +13,7 @@ import { IonRange } from "@ionic/angular";
   templateUrl: "./slider.component.html",
   styleUrls: ["./slider.component.scss"]
 })
-export class SliderComponent implements ITemplateComponent, OnInit {
+export class TmplSliderComponent implements ITemplateComponent, OnInit {
 
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;

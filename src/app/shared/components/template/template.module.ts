@@ -19,8 +19,7 @@ import { TmplSetVariableComponent } from "./components/set_variable";
 import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
 import { AnimatedSectionComponent } from "./components/animated_section";
 import { TmplTimerComponent } from "./components/timer";
-import { SliderComponent } from "./components/slider/slider.component";
-import { TmplSliderComponent } from "./components/slider";
+import { TmplSliderComponent } from "./components/slider/slider.component";
 import { NavGroupComponent } from "./components/nav_group";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
 import { SliderNewComponent } from "./components/slider-new/slider-new.component";
@@ -40,7 +39,7 @@ const TEMPLATE_COMPONENTS = [
   AnimatedSectionComponent,
   TmplSetVariableComponent,
   TmplTimerComponent,
-  SliderComponent,
+  TmplSliderComponent,
   SliderNewComponent,
   NavGroupComponent
 ];
