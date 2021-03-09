@@ -10,7 +10,6 @@ import { TmplTextComponent } from "./components/text";
 import { AnimatedSectionGroupComponent } from "./components/animated_section_group";
 import { TmplTitleComponent } from "./components/title";
 import { TmplDisplayGroupComponent } from "./components/display_group";
-import { TmplButtonComponent } from "./components/button";
 import { TmplAudioComponent } from "./components/audio";
 import { TmplImageComponent } from "./components/image";
 import { TmplVideoComponent } from "./components/video";
