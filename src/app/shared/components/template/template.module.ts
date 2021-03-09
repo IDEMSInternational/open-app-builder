@@ -23,26 +23,30 @@ import { SliderComponent } from "./components/slider/slider.component";
 import { TmplSliderComponent } from "./components/slider";
 import { NavGroupComponent } from "./components/nav_group";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
+import { SliderNewComponent } from "./components/slider-new/slider-new.component";
+import {NouisliderModule} from "ng2-nouislider";
+
 
 const TEMPLATE_COMPONENTS = [
-    TmplTextComponent,
-    AnimatedSectionGroupComponent,
-    TmplTitleComponent,
-    TmplDisplayGroupComponent,
-    TmplAudioComponent,
-    TmplButtonComponent,
-    TmplImageComponent,
-    TmplVideoComponent,
-    TmplTemplateGroupComponent,
-    AnimatedSectionComponent,
-    TmplSetVariableComponent,
-    TmplTimerComponent,
-    SliderComponent,
-    NavGroupComponent
+  TmplTextComponent,
+  AnimatedSectionGroupComponent,
+  TmplTitleComponent,
+  TmplDisplayGroupComponent,
+  TmplAudioComponent,
+  TmplButtonComponent,
+  TmplImageComponent,
+  TmplVideoComponent,
+  TmplTemplateGroupComponent,
+  AnimatedSectionComponent,
+  TmplSetVariableComponent,
+  TmplTimerComponent,
+  SliderComponent,
+  SliderNewComponent,
+  NavGroupComponent
 ];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, IonicModule],
+    imports: [CommonModule, FormsModule, IonicModule, NouisliderModule],
     exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent, TemplateComponentHostDirective, TooltipDirective],
     declarations: [
         TmplCompHostDirective,
