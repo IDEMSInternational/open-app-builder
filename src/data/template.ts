@@ -3,6 +3,38 @@
   export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
+    "flow_name": "timer",
+    "status": "released",
+    "rows": [
+      {
+        "type": "timer",
+        "name": "default_timer",
+        "value": null,
+        "comments": "",
+        "action_list": [],
+        "parameter_list": [
+          "title: Timer",
+          "help: Some text help",
+          "duration: 10",
+          "duration_extension: 2"
+        ]
+      },
+      {
+        "type": "timer",
+        "name": "5_min_timer",
+        "value": null,
+        "comments": "",
+        "action_list": [],
+        "parameter_list": [
+          "title:Timer 2",
+          "duration: 5",
+          "is_editable_on_playing: true",
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
     "flow_name": "template_watch_together",
     "status": "released",
     "rows": [
@@ -507,6 +539,27 @@
               "color: secondary"
             ]
           }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "timer_example",
+    "status": "released",
+    "rows": [
+      {
+        "type": "timer",
+        "name": "default_timer",
+        "comments": "Should use default values from component_defaults sheet",
+      },
+      {
+        "type": "timer",
+        "name": "5_min_timer",
+        "value": 5,
+
+        "parameter_list": [
+          "timer_title: Timer 2"
         ]
       }
     ]

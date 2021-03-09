@@ -21,6 +21,7 @@ import { AnimatedSectionComponent } from "./components/animated_section";
 import { TmplTimerComponent } from "./components/timer";
 import { TmplSliderComponent } from "./components/slider";
 import { NavGroupComponent } from "./components/nav_group";
+import {TooltipDirective} from "../common/directives/tooltip.directive";
 
 const TEMPLATE_COMPONENTS = [
     TmplTextComponent,
@@ -41,14 +42,15 @@ const TEMPLATE_COMPONENTS = [
 
 @NgModule({
     imports: [CommonModule, FormsModule, IonicModule],
-    exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent, TemplateComponentHostDirective],
+    exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent, TemplateComponentHostDirective, TooltipDirective],
     declarations: [
         TmplCompHostDirective,
         TmplComponent,
         ...TEMPLATE_COMPONENTS,
         TemplateContainerComponent,
         TemplateComponentHostDirective,
-        LocalVarsReplacePipe
+        LocalVarsReplacePipe,
+        TooltipDirective
     ],
 })
 export class TemplateComponentsModule { }
