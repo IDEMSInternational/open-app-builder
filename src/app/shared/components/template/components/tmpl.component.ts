@@ -42,7 +42,8 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   timer: TmplTimerComponent,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
-  round_button: RoundIconButtonComponent
+  round_button: RoundIconButtonComponent,
+  slider_old: SliderNewComponent
 };
 
 @Directive({
