@@ -2,14 +2,12 @@
   [className]="'template-container ' + localVariables?.theme_name"
   [attr.data-theme]="localVariables._theme || 'default'"
 >
-  <!-- <details *ngIf="debug" class="debug-container">
-    <summary>Template: {{ name }}</summary>
-    <p>name: {{ name }}</p>
-    <p>vars: {{ localVariables | json }}</p>
-    <p>rows: {{ template.rows | json }}</p>
-    <p *ngIf="parent">parent: {{ parent.name }}</p>
-  </details> -->
+  <div class="debug-container" [attr.data-enabled]="debugMode">
+    <ion-icon name="bug-outline"></ion-icon>
+    <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
+  </div>
   <plh-template-component
+    [debugMode]="debugMode"
     *ngFor="let row of template.rows"
     class="row"
     [row]="row"
