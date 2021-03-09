@@ -19,29 +19,33 @@ import { TmplSetVariableComponent } from "./components/set_variable";
 import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
 import { AnimatedSectionComponent } from "./components/animated_section";
 import { TmplTimerComponent } from "./components/timer";
-import { TmplSliderComponent } from "./components/slider";
+import { TmplSliderComponent } from "./components/slider/slider.component";
 import { NavGroupComponent } from "./components/nav_group";
-import {TooltipDirective} from "../common/directives/tooltip.directive";
+import { TooltipDirective } from "../common/directives/tooltip.directive";
+import { SliderNewComponent } from "./components/slider-new/slider-new.component";
+import {NouisliderModule} from "ng2-nouislider";
+
 
 const TEMPLATE_COMPONENTS = [
-    TmplTextComponent,
-    AnimatedSectionGroupComponent,
-    TmplTitleComponent,
-    TmplDisplayGroupComponent,
-    TmplAudioComponent,
-    TmplButtonComponent,
-    TmplImageComponent,
-    TmplVideoComponent,
-    TmplTemplateGroupComponent,
-    AnimatedSectionComponent,
-    TmplSetVariableComponent,
-    TmplTimerComponent,
-    TmplSliderComponent,
-    NavGroupComponent
+  TmplTextComponent,
+  AnimatedSectionGroupComponent,
+  TmplTitleComponent,
+  TmplDisplayGroupComponent,
+  TmplAudioComponent,
+  TmplButtonComponent,
+  TmplImageComponent,
+  TmplVideoComponent,
+  TmplTemplateGroupComponent,
+  AnimatedSectionComponent,
+  TmplSetVariableComponent,
+  TmplTimerComponent,
+  TmplSliderComponent,
+  SliderNewComponent,
+  NavGroupComponent
 ];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, IonicModule],
+    imports: [CommonModule, FormsModule, IonicModule, NouisliderModule],
     exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent, TemplateComponentHostDirective, TooltipDirective],
     declarations: [
         TmplCompHostDirective,

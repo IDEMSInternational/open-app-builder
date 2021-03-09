@@ -60,7 +60,7 @@ export function stringToArray(str: string = "", separator = ";") {
       .split(separator)
       .map((s) => s.trim())
       // remove empty strings, undefined or null values
-      .filter((el) => (el ? true : false))
+      .filter((el) => (!!el))
   );
 }
 

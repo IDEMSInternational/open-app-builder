@@ -104,7 +104,6 @@ export class TooltipDirective implements AfterViewInit, OnDestroy {
     }
 
     onMouseClickTarget(e: Event, el: ElementRef) {
-        console.log(this.el.nativeElement.contains(e.target));
         if (!this.container && !this.showTimeout) {
             this.activate()
         }
