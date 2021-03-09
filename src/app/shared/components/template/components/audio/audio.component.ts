@@ -14,7 +14,7 @@ import { IonRange } from "@ionic/angular";
   templateUrl: "./audio.component.html",
   styleUrls: ["./audio.component.scss"]
 })
-export class AudioComponent implements ITemplateComponent, OnInit {
+export class TmplAudioComponent implements ITemplateComponent, OnInit {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
