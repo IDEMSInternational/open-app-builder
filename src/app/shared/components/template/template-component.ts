@@ -39,11 +39,15 @@ export class TmplCompHostDirective {
   selector: "plh-template-component",
   template: `
     <div class="plh-tmpl-comp" [hidden]="hidden" [attr.data-type]="row.type">
-      <details *ngIf="debugMode" class="debug-container" (click)="logDebugInfo()">
+      <details *ngIf="parent.debugMode" class="debug-container">
         <summary>{{ row.type }}</summary>
         <p *ngIf="row.name">name: {{ row.name }}</p>
         <p *ngIf="row.value">value: {{ row.value }}</p>
         <p *ngIf="parent.localVariables">vars: {{ parent.localVariables | json }}</p>
+        <p *ngIf="row.rows && row.rows.length > 0">
+          <span>children: {{ row.rows.length }} </span>
+          <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log details)</ion-button>
+        </p>
       </details>
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
@@ -60,9 +64,6 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
   @Input() parent: TemplateContainerComponent;
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
-
-  /** Show debug info above component */
-  @Input() debugMode: boolean;
 
   public hidden = false;
 
