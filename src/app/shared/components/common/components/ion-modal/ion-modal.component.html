@@ -4,9 +4,17 @@
   </div>
   <div class="form">
     <form [formGroup]="form">
-      <div class="container-radio" *ngFor="let radio of valuesFromListAnswers">
-        <input type="radio" name="checkboxes" [value]="radio">
-        <label> </label>
+      <div class="container-radio" [class.checked-radion]="this.form.get('answer').value === radio" *ngFor="let radio of valuesFromListAnswers">
+        <label>
+          <input type="radio" (click)="check(radio)" formControlName="answer" [value]="radio">
+          {{radio}}
+        </label>
+      </div>
+<!--      <p>{{form.value | json}}</p>-->
+      <div class="user-answer" *ngIf="inputAllowed && this.form.get('answer').value === null">
+        <label>
+          <input type="text">
+        </label>
       </div>
     </form>
   </div>
