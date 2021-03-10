@@ -3,7 +3,6 @@ import { ContactFieldService } from "src/app/feature/chat/services/offline/conta
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { AnimatedSectionGroupComponent } from "./animated_section_group";
 import { TmplAudioComponent } from "./audio";
-import { TmplButtonComponent } from "./button";
 import { TmplDisplayGroupComponent } from "./display_group";
 import { TmplImageComponent } from "./image";
 import { TmplSetVariableComponent } from "./set_variable";
@@ -16,6 +15,7 @@ import {TmplTimerComponent} from "./timer/timer.component";
 import { NavGroupComponent } from "./nav_group";
 import {SliderNewComponent} from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent} from "./round-icon-button/round-icon-button.component";
+import {TmplButtonComponent} from "./button/button.component";
 
 export interface ITemplateComponent {
   template: FlowTypes.Template;
@@ -43,7 +43,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
   round_button: RoundIconButtonComponent,
-  slider_old: SliderNewComponent
+  slider_old: SliderNewComponent,
 };
 
 @Directive({

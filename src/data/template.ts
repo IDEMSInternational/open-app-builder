@@ -709,6 +709,62 @@ export const template: FlowTypes.Template[] = [
         "comments": ""
       }
     ]
-  }
-
-];
+  },
+    {
+      "flow_type": "template",
+      "flow_name": "button",
+      "status": "released",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_describe",
+          "value": "Describe",
+          "action_list": [],
+          "hidden": false,
+          "parameter_list": [
+              "color: secondary"
+          ],
+          "comments": ""
+        },
+        {
+          "type": "button",
+          "name": "button_completed",
+          "value": "Next",
+          "action_list": [
+              "exit | mark_as_skipped",
+          ],
+          "hidden": "",
+          "parameter_list": [],
+          "comments": ""
+        },
+        {
+          "type": "button",
+          "name": "button_skipped",
+          "value": "Skip",
+          "action_list": [
+              "exit | mark_as_skipped"
+          ],
+          "hidden": false,
+          "parameter_list": [
+            "disabled: true"
+          ],
+          "comments": ""
+        },
+        {
+          "type": "button",
+          "name":"button_start",
+          "value": "Start",
+          "action_list": [],
+          "hidden": false,
+          "parameter_list": [
+            "disabled: false",
+            "hexBgColor: #504949",
+            "color: secondary",
+            "width: 326",
+            "height: 62"
+          ],
+          "comments": ""
+        },
+      ]
+    }
+]
