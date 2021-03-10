@@ -14,6 +14,7 @@ import {TmplTimerComponent} from "./timer/timer.component";
 import { NavGroupComponent } from "./nav_group";
 import {SliderNewComponent} from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent} from "./round-icon-button/round-icon-button.component";
+import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import {TmplAudioComponent} from "./audio/audio.component";
 import {TmplButtonComponent} from "./button/button.component";
 
@@ -42,6 +43,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   timer: TmplTimerComponent,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
+  number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
   slider_old: SliderNewComponent
 };
