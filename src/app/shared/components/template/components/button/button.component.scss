@@ -1,0 +1,21 @@
+ion-button{
+  font-size: 25px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color:#fff;
+  height: 62px;
+  min-width: 59px;
+  --border-radius: 15px;
+}
+ion-button:disabled, ion-button[disabled]{
+  filter: brightness(55%);
+}
+.secondary{
+   --background: var(--ion-btn-secondary-color);
+   --box-shadow: var(--ion-btn-secondary-box-shadow);
+}
+.primary{
+  --background: var(--ion-btn-primary-color);
+  --box-shadow: var(--ion-btn-primary-box-shadow);
+}
