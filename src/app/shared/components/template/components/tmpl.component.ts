@@ -2,7 +2,6 @@ import { ComponentRef, Directive, OnChanges, SimpleChanges, ViewContainerRef, Co
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { AnimatedSectionGroupComponent } from "./animated_section_group";
-import { TmplAudioComponent } from "./audio";
 import { TmplDisplayGroupComponent } from "./display_group";
 import { TmplImageComponent } from "./image";
 import { TmplSetVariableComponent } from "./set_variable";
@@ -15,6 +14,7 @@ import {TmplTimerComponent} from "./timer/timer.component";
 import { NavGroupComponent } from "./nav_group";
 import {SliderNewComponent} from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent} from "./round-icon-button/round-icon-button.component";
+import {TmplAudioComponent} from "./audio/audio.component";
 import {TmplButtonComponent} from "./button/button.component";
 
 export interface ITemplateComponent {
@@ -43,7 +43,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
   round_button: RoundIconButtonComponent,
-  slider_old: SliderNewComponent,
+  slider_old: SliderNewComponent
 };
 
 @Directive({
@@ -136,7 +136,6 @@ export class TmplComponent implements OnInit, OnChanges {
       return str;
     }
   }
-
-  
-
 }
+
+
