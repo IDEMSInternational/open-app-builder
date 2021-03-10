@@ -11,7 +11,6 @@ import { RouterModule } from "@angular/router";
 import { TemplateComponentsModule } from "./components/template/template.module";
 import { RoundIconButtonComponent } from "./components/template/components/round-icon-button/round-icon-button.component";
 import { TmplTimerComponent } from "./components/template/components/timer/timer.component";
-import {TooltipModule} from "./components/common/directives/tooltip.directive";
 
 
 const Components = [
