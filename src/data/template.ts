@@ -766,5 +766,50 @@ export const template: FlowTypes.Template[] = [
           "comments": ""
         },
       ]
+    },
+    {
+      "flow_type": "template",
+      "flow_name": "textBox",
+      "status": "released",
+      "rows": [
+        {
+          "type": "textBox",
+          "name": "default_TextBox",
+          "comments": "No",
+          "value": null,
+          "parameter_list": [
+            "placeholder: some text",
+            "maxLength: 38",
+            "style: pop-up",
+            "text: How do you think Amina felt about the way neighbour responded?",
+            "maxLength: 38",
+            "input_allowed: true",
+            "input_position: true",
+            "list_of_answers: Sad; Confused; Angry"
+          ]
+        },
+      ]
+    },
+    {
+      "flow_type": "template",
+      "flow_name": "comboBox",
+      "status": "released",
+      "rows": [
+        {
+          "type": "comboBox",
+          "name": "default_comboBox",
+          "comments": "No",
+          "value": null,
+          "parameter_list": [
+            "style: pop-up",
+            "text: How do you think Amina felt about the way neighbour responded?",
+            "placeholder: some text",
+            "maxLength: 38",
+            "input_allowed: true",
+            "input_position: true",
+            "list_of_answers: Sad; Confused; Angry"
+          ]
+        },
+      ]
     }
 ]

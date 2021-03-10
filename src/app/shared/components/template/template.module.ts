@@ -24,7 +24,8 @@ import { NavGroupComponent } from "./components/nav_group";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
 import { SliderNewComponent } from "./components/slider-new/slider-new.component";
 import { NouisliderModule } from "ng2-nouislider";
-
+import { TmpltTextBoxComponent } from "./components/text-box/text-box.component";
+import { TmplComboBoxComponent } from "./components/combo-box/combo-box.component";
 
 const TEMPLATE_COMPONENTS = [
   TmplTextComponent,
@@ -42,7 +43,9 @@ const TEMPLATE_COMPONENTS = [
   TmplSliderComponent,
   SliderNewComponent,
   NavGroupComponent,
-  TmplButtonComponent
+  TmplButtonComponent,
+  TmpltTextBoxComponent,
+  TmplComboBoxComponent
 ];
 
 @NgModule({

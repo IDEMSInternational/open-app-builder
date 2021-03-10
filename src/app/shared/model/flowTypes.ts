@@ -341,6 +341,8 @@ export namespace FlowTypes {
     | "template_group"
     | "round_button"
     | "nav_group"
+    | "textBox"
+    | "comboBox"
     | "nav_section"
     | "slider_old";
 

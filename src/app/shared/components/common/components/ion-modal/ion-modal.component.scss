@@ -1,0 +1,24 @@
+::ng-deep{
+  .my-custom-modal{
+    padding: 20% 10%  !important;
+    .modal-wrapper{
+      background: #fff;
+      border: 2px solid #0D4060;
+      box-sizing: border-box;
+      border-radius: 20px;
+    }
+  }
+}
+
+.container-modal{
+  width: 100%;
+  height: 100%;
+  padding: 20px 0;
+  .header{
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    color: #0D4060;
+
+  }
+}

@@ -16,6 +16,8 @@ import { NavGroupComponent } from "./nav_group";
 import {SliderNewComponent} from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent} from "./round-icon-button/round-icon-button.component";
 import {TmplButtonComponent} from "./button/button.component";
+import { TmpltTextBoxComponent } from "./text-box/text-box.component";
+import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 
 export interface ITemplateComponent {
   template: FlowTypes.Template;
@@ -44,6 +46,8 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   nav_section: AnimatedSectionComponent,
   round_button: RoundIconButtonComponent,
   slider_old: SliderNewComponent,
+  textBox: TmpltTextBoxComponent,
+  comboBox: TmplComboBoxComponent,
 };
 
 @Directive({
