@@ -1,13 +1,17 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { TemplateTestingPage } from './template-testing.page';
+import { TemplateTestingPage } from "./template-testing.page";
 
 const routes: Routes = [
   {
-    path: ':templateName',
-    component: TemplateTestingPage
-  }
+    path: ":templateName",
+    component: TemplateTestingPage,
+  },
+  {
+    path: "",
+    component: TemplateTestingPage,
+  },
 ];
 
 @NgModule({

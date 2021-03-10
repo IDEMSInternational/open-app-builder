@@ -1,3 +1,11 @@
 <ion-content>
   <plh-template-container *ngIf="templateName" [name]="templateName"></plh-template-container>
+  <div *ngIf="!templateName" class="ion-padding">
+    <h3>Select a Template</h3>
+    <ion-list>
+      <ion-item *ngFor="let template of allTemplates" [routerLink]="template.flow_name"
+        >{{template.flow_name}}</ion-item
+      >
+    </ion-list>
+  </div>
 </ion-content>
