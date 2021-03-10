@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
-import { ITemplateComponent } from "../tmpl.component";
 import { FlowTypes } from "../../../../model";
+import { TemplateBaseComponent } from "../base";
+import { ITemplateRowProps } from "../../models";
 
 
 @Component({
@@ -8,15 +9,17 @@ import { FlowTypes } from "../../../../model";
   templateUrl: './slider-new.component.html',
   styleUrls: ['./slider-new.component.scss'],
 })
-export class SliderNewComponent implements ITemplateComponent, OnInit {
-  @Input() row: FlowTypes.TemplateRow;
+export class SliderNewComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: string };
 
   @ViewChild('slider', {read: ElementRef}) slider: ElementRef;
 
   sliderRange;
-  constructor() { }
+  constructor() {
+    super(); 
+  }
   someKeyboardConfig: any = {
     behaviour: 'drag',
     connect: true,

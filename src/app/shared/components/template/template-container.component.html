@@ -1,9 +1,15 @@
-<div [className]="'template-container ' + localVariables?.theme_name">
-  <div *ngFor="let row of _template?.rows" class="row">
-    <plh-tmpl-comp [row]="row" [template]="_template" [localVariables]="localVariables"></plh-tmpl-comp>
+<div
+  [className]="'template-container ' + localVariables?.theme_name"
+  [attr.data-theme]="localVariables._theme || 'default'"
+>
+  <div class="debug-container" [attr.data-enabled]="debugMode">
+    <ion-icon name="bug-outline"></ion-icon>
+    <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
   </div>
-  <h4>Local Variables</h4>
-  <ul>
-    <li *ngFor="let key of keys(localVariables)">{{key}}: {{localVariables[key]}}</li>
-  </ul>
+  <plh-template-component
+    *ngFor="let row of template.rows"
+    class="row"
+    [row]="row"
+    [parent]="this"
+  ></plh-template-component>
 </div>

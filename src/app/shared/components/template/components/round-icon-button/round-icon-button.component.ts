@@ -1,19 +1,20 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from 'src/app/shared/model/flowTypes';
-import { ITemplateComponent } from "../tmpl.component";
-import { LocalVarsReplacePipe } from "../../local-vars-replace.pipe";
+import { ITemplateRowProps } from "../../models";
+import { TemplateContainerComponent } from "../../template-container.component";
+import { TemplateBaseComponent } from "../base";
 @Component({
   selector: 'plh-round-button',
   templateUrl: './round-icon-button.component.html',
   styleUrls: ['./round-icon-button.component.scss'],
 })
-export class RoundIconButtonComponent implements ITemplateComponent {
-  @Input() row: FlowTypes.TemplateRow;
+export class RoundIconButtonComponent extends TemplateBaseComponent implements ITemplateRowProps {
+  @Input() parent: TemplateContainerComponent;
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
-  LocalVarsReplacePipe = LocalVarsReplacePipe;
 
   onClick() {
+    console.log("Templating action handling to be implemented");
+    /*
     if (this.row && this.row.action_list) {
       for (let actionString of this.row.action_list) {
         let parts = actionString.split("|").map((part) => part.trim());
@@ -23,9 +24,6 @@ export class RoundIconButtonComponent implements ITemplateComponent {
         }
       }
     }
-  }
-
-  private setValue(name: string, value: string) {
-    this.template._setLocalVariable(name, value);
+    */
   }
 }

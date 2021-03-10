@@ -1,21 +1,21 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
-import { ITemplateComponent } from "../tmpl.component";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow
 } from "../../../../utils";
 import { IonRange } from "@ionic/angular";
+import { TemplateBaseComponent } from "../base";
+import { ITemplateRowProps } from "../../models";
 
 @Component({
   selector: "plh-tmpl-slider",
   templateUrl: "./slider.component.html",
   styleUrls: ["./slider.component.scss"]
 })
-export class TmplSliderComponent implements ITemplateComponent, OnInit {
+export class TmplSliderComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
 
-  @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: string };
   help: string | null;
@@ -32,6 +32,7 @@ export class TmplSliderComponent implements ITemplateComponent, OnInit {
   rangeBarTouched: boolean = false;
 
   constructor() {
+    super();
   }
 
   ngOnInit() {
@@ -40,19 +41,19 @@ export class TmplSliderComponent implements ITemplateComponent, OnInit {
   }
 
   getParams() {
-    this.help = getStringParamFromTemplateRow(this.row, "help", null);
-    this.minValue = getNumberParamFromTemplateRow(this.row, "min", this.minValue);
-    this.maxValue = getNumberParamFromTemplateRow(this.row, "max", this.maxValue);
-    this.title = getStringParamFromTemplateRow(this.row, "title", null);
-    this.step = getNumberParamFromTemplateRow(this.row, "step", this.step);
-    this.min_value_label = getStringParamFromTemplateRow(this.row, "min_value_label", null);
-    this.max_value_label = getStringParamFromTemplateRow(this.row, "max_value_label", null);
-    this.value = this.row.value > this.maxValue ? 0 : this.row.value;
-    this.rangeBarTouched = this.row.value > 0;
-    this.no_value = getBooleanParamFromTemplateRow(this.row, "no_value", false);
+    this.help = getStringParamFromTemplateRow(this._row, "help", null);
+    this.minValue = getNumberParamFromTemplateRow(this._row, "min", this.minValue);
+    this.maxValue = getNumberParamFromTemplateRow(this._row, "max", this.maxValue);
+    this.title = getStringParamFromTemplateRow(this._row, "title", null);
+    this.step = getNumberParamFromTemplateRow(this._row, "step", this.step);
+    this.min_value_label = getStringParamFromTemplateRow(this._row, "min_value_label", null);
+    this.max_value_label = getStringParamFromTemplateRow(this._row, "max_value_label", null);
+    this.value = this._row.value > this.maxValue ? 0 : this._row.value;
+    this.rangeBarTouched = this._row.value > 0;
+    this.no_value = getBooleanParamFromTemplateRow(this._row, "no_value", false);
   }
 
-  createListNumber(min, max, step): Array<number> {
+  createListNumber(min: number, max: number, step: number): Array<number> {
     const arr = [];
     for (let i = min; i <= max; i++) {
       if (i % step === 0) {

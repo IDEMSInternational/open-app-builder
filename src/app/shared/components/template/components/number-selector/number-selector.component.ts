@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
-import { ITemplateComponent } from "../tmpl.component";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
+import { ITemplateRowProps } from "../../models";
+import { TemplateBaseComponent } from "../base";
+import { TemplateContainerComponent } from "../../template-container.component";
 
 interface ICategoryList {
   from: number;
@@ -13,10 +15,13 @@ interface ICategoryList {
   templateUrl: "./number-selector.component.html",
   styleUrls: ["./number-selector.component.scss"]
 })
-export class TmplNumberComponent implements ITemplateComponent, OnInit {
-  @Input() row: FlowTypes.TemplateRow;
-  @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
+export class TmplNumberComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+  _row: FlowTypes.TemplateRow;
+  @Input() set row(value: FlowTypes.TemplateRow) {
+    this._row = value;
+  }
+  @Input() parent: TemplateContainerComponent;
+
   title: string | null;
   min_value: number | null = 0;
   displayValue: any = 0;
@@ -29,6 +34,7 @@ export class TmplNumberComponent implements ITemplateComponent, OnInit {
   valuesFromCategoryList: string[];
 
   constructor() {
+    super();
   }
 
   ngOnInit() {
@@ -36,19 +42,19 @@ export class TmplNumberComponent implements ITemplateComponent, OnInit {
   }
 
   getParams() {
-    this.category_list = getStringParamFromTemplateRow(this.row, "category_list", null);
-    this.title = getStringParamFromTemplateRow(this.row, "title", null);
-    this.value = this.row.value;
-    this.height = getStringParamFromTemplateRow(this.row, "height", "short");
+    this.category_list = getStringParamFromTemplateRow(this._row, "category_list", null);
+    this.title = getStringParamFromTemplateRow(this._row, "title", null);
+    this.value = this._row.value;
+    this.height = getStringParamFromTemplateRow(this._row, "height", "short");
     this.height = this.height === "short" || "normal" ? this.height : "short";
     if (this.category_list) {
       this.valuesFromCategoryList = this.category_list.replace(/\s/g, "").split(";");
-      this.first_display_term = getNumberParamFromTemplateRow(this.row, "first_display_term", 1) - 1;
+      this.first_display_term = getNumberParamFromTemplateRow(this._row, "first_display_term", 1) - 1;
       this.displayValue = this.valuesFromCategoryList[this.first_display_term];
     } else {
-      this.min_value = getNumberParamFromTemplateRow(this.row, "min_value", 0);
-      this.max_value = getNumberParamFromTemplateRow(this.row, "max_value", 6);
-      this.category_size = getNumberParamFromTemplateRow(this.row, "category_size", 1);
+      this.min_value = getNumberParamFromTemplateRow(this._row, "min_value", 0);
+      this.max_value = getNumberParamFromTemplateRow(this._row, "max_value", 6);
+      this.category_size = getNumberParamFromTemplateRow(this._row, "category_size", 1);
       this.displayValue = this.min_value;
     }
   }

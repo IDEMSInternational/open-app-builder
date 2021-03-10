@@ -5,16 +5,20 @@ import {
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow
 } from "../../../../utils";
-import { ITemplateComponent } from "../tmpl.component";
 import { PickerController } from "@ionic/angular";
+import { TemplateBaseComponent } from "../base";
+import { ITemplateRowProps } from "../../models";
 
 @Component({
   selector: "plh-timer",
   templateUrl: "./timer.component.html",
   styleUrls: ["./timer.component.scss"]
 })
-export class TmplTimerComponent implements ITemplateComponent, OnInit {
-  @Input() row: FlowTypes.TemplateRow;
+export class TmplTimerComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+  _row: FlowTypes.TemplateRow;
+  @Input() set row (value: FlowTypes.TemplateRow) {
+    this._row = value;
+  }
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   @ViewChild("min", { static: false }) minInput: ElementRef;
@@ -60,6 +64,7 @@ export class TmplTimerComponent implements ITemplateComponent, OnInit {
   }
 
   constructor(private pickerController: PickerController) {
+    super();
     this.changeState(new PausedState(this));
   }
 
@@ -74,16 +79,16 @@ export class TmplTimerComponent implements ITemplateComponent, OnInit {
   }
 
   getParams() {
-    this.title = getStringParamFromTemplateRow(this.row, "title", "Timer");
-    this.help = getStringParamFromTemplateRow(this.row, "help", null);
+    this.title = getStringParamFromTemplateRow(this._row, "title", "Timer");
+    this.help = getStringParamFromTemplateRow(this._row, "help", null);
     this.value = this.getDurationFromParams();
-    this.timerDurationExtension = getNumberParamFromTemplateRow(this.row, "duration_extension", 1) * 60;
-    this.is_editable_on_playing = getBooleanParamFromTemplateRow(this.row, "is_editable_on_playing", false);
+    this.timerDurationExtension = getNumberParamFromTemplateRow(this._row, "duration_extension", 1) * 60;
+    this.is_editable_on_playing = getBooleanParamFromTemplateRow(this._row, "is_editable_on_playing", false);
   }
 
 
   getDurationFromParams() {
-    return getNumberParamFromTemplateRow(this.row, "duration", 10) * 60;
+    return getNumberParamFromTemplateRow(this._row, "duration", 10) * 60;
   }
 
   clickLeftButton() {
