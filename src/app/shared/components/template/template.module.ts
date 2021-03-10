@@ -18,6 +18,7 @@ import { TmplSetVariableComponent } from "./components/set_variable";
 import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
 import { AnimatedSectionComponent } from "./components/animated_section";
 import { TmplTimerComponent } from "./components/timer";
+import { TmplNumberComponent } from "./components/number-selector/number-selector.component";
 import { TmplButtonComponent } from "./components/button/button.component";
 import { TmplSliderComponent } from "./components/slider/slider.component";
 import { NavGroupComponent } from "./components/nav_group";
@@ -40,6 +41,7 @@ const TEMPLATE_COMPONENTS = [
   TmplSetVariableComponent,
   TmplTimerComponent,
   TmplSliderComponent,
+  TmplNumberComponent,
   SliderNewComponent,
   NavGroupComponent,
   TmplButtonComponent
