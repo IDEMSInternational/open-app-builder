@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { TEMPLATE } from "src/app/shared/services/data/data.service";
 
 @Component({
   selector: "plh-template-testing",
@@ -8,19 +9,11 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class TemplateTestingPage implements OnInit {
   templateName: string;
+  allTemplates = TEMPLATE.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // TODO - decide what to do if template not found
-    // const fallbackTemplate = TEMPLATE[1];
     this.templateName = this.route.snapshot.params.templateName;
-
-    // const template = matchingTemplate || fallbackTemplate;
-    // console.log(matchingTemplate ? "matched template" : "fallback template", template);
-    // this.templateProps = {
-    //   name: template.flow_name,
-    //   rows: template.rows,
-    // };
   }
 }
