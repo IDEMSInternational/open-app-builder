@@ -3,38 +3,6 @@ import { FlowTypes } from "src/app/shared/model/flowTypes";
 export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
-    "flow_name": "timer",
-    "status": "released",
-    "rows": [
-      {
-        "type": "timer",
-        "name": "default_timer",
-        "value": null,
-        "comments": "",
-        "action_list": [],
-        "parameter_list": [
-          "title: Timer",
-          "help: Some text help",
-          "duration: 10",
-          "duration_extension: 2"
-        ]
-      },
-      {
-        "type": "timer",
-        "name": "5_min_timer",
-        "value": null,
-        "comments": "",
-        "action_list": [],
-        "parameter_list": [
-          "title:Timer 2",
-          "duration: 5",
-          "is_editable_on_playing: true",
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
     "flow_name": "template_watch_together",
     "status": "released",
     "rows": [
@@ -91,8 +59,20 @@ export const template: FlowTypes.Template[] = [
                     "name": "button_1",
                     "value": "Start Session",
                     "action_list": [
-                      "set_value | hide_intro | true",
-                      "set_value | hide_activity | false"
+                      {
+                        "action_id": "set_value",
+                        "args": [
+                          "hide_intro",
+                          "true"
+                        ]
+                      },
+                      {
+                        "action_id": "set_value",
+                        "args": [
+                          "hide_activity",
+                          "false"
+                        ]
+                      }
                     ],
                     "comments": "specific actions can be added to default click handlers where required. May require rethinking to know when to use triggered values vs initialized/formulae"
                   },
@@ -134,8 +114,20 @@ export const template: FlowTypes.Template[] = [
                 "name": "button_4",
                 "value": "Back",
                 "action_list": [
-                  "set_value | hide_intro | false",
-                  "set_value | hide_activity | true"
+                  {
+                    "action_id": "set_value",
+                    "args": [
+                      "hide_intro",
+                      "false"
+                    ]
+                  },
+                  {
+                    "action_id": "set_value",
+                    "args": [
+                      "hide_activity",
+                      "true"
+                    ]
+                  }
                 ]
               }
             ]
@@ -152,15 +144,18 @@ export const template: FlowTypes.Template[] = [
       {
         "name": "group_name",
         "value": "The group name",
-        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
+        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred.",
+        "type": "set_variable"
       },
       {
         "name": "intro_nav_button_text",
-        "value": "Next"
+        "value": "Next",
+        "type": "set_variable"
       },
       {
         "name": "outro_nav_button_text",
-        "value": "Next 2"
+        "value": "Next 2",
+        "type": "set_variable"
       },
       {
         "type": "title",
@@ -168,33 +163,39 @@ export const template: FlowTypes.Template[] = [
         "value": "Template Together Welcome"
       },
       {
-        "type": "template_group",
+        "type": "template",
         "value": "template_watch_together",
         "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
           {
             "name": "theme_name",
-            "value": "passive"
+            "value": "passive",
+            "type": "set_variable"
           },
           {
             "name": "button_1",
-            "value": "@local.intro_nav_button_text"
+            "value": "@local.intro_nav_button_text",
+            "type": "set_variable"
           },
           {
             "name": "button_2",
             "value": "skip",
             "hidden": true,
-            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3"
+            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
+            "type": "set_variable"
           },
           {
             "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
           },
           {
             "name": "intro_text",
-            "value": "Welcome @local.group_name!"
+            "value": "Welcome @local.group_name!",
+            "type": "set_variable"
           }
-        ]
+        ],
+        "name": "template_watch_together"
       }
     ]
   },
@@ -206,15 +207,18 @@ export const template: FlowTypes.Template[] = [
       {
         "name": "group_name",
         "value": "The group name",
-        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred."
+        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred.",
+        "type": "set_variable"
       },
       {
         "name": "intro_nav_button_text",
-        "value": "Next"
+        "value": "Next",
+        "type": "set_variable"
       },
       {
         "name": "outro_nav_button_text",
-        "value": "Next 2"
+        "value": "Next 2",
+        "type": "set_variable"
       },
       {
         "type": "title",
@@ -222,59 +226,71 @@ export const template: FlowTypes.Template[] = [
         "value": "Template Together Welcome"
       },
       {
-        "type": "template_group",
-        "name": "template_watch_together",
+        "type": "template",
+        "value": "template_watch_together",
         "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
           {
             "name": "theme_name",
-            "value": "passive"
+            "value": "passive",
+            "type": "set_variable"
           },
           {
             "name": "button_1",
-            "value": "@local.intro_nav_button_text"
+            "value": "@local.intro_nav_button_text",
+            "type": "set_variable"
           },
           {
             "name": "button_2",
             "value": "skip",
             "hidden": true,
-            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3"
+            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
+            "type": "set_variable"
           },
           {
             "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
           },
           {
             "name": "intro_text",
-            "value": "Welcome @local.group_name!"
+            "value": "Welcome @local.group_name!",
+            "type": "set_variable"
           }
-        ]
+        ],
+        "name": "template_watch_together"
       },
       {
-        "type": "template_group",
-        "name": "template_watch_together",
+        "type": "template",
+        "value": "template_watch_together",
         "rows": [
           {
             "name": "theme_name",
-            "value": "passive"
+            "value": "passive",
+            "type": "set_variable"
           },
           {
             "name": "button_1",
-            "value": "@local.outro_nav_button_text"
+            "value": "@local.outro_nav_button_text",
+            "type": "set_variable"
           },
           {
             "name": "button_2",
-            "value": "skip"
+            "value": "skip",
+            "type": "set_variable"
           },
           {
             "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg"
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
           },
           {
             "name": "intro_text",
-            "value": "Welcome @local.group_name!"
+            "value": "Welcome @local.group_name!",
+            "type": "set_variable"
           }
-        ]
+        ],
+        "name": "template_watch_together"
       }
     ]
   },
@@ -286,23 +302,28 @@ export const template: FlowTypes.Template[] = [
       {
         "name": "hide_intro",
         "value": false,
-        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content."
+        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content.",
+        "type": "set_variable"
       },
       {
         "name": "hide_activity",
-        "value": true
+        "value": true,
+        "type": "set_variable"
       },
       {
         "name": "hide_activity_banner",
-        "value": true
+        "value": true,
+        "type": "set_variable"
       },
       {
         "name": "activity_image",
-        "value": "src/assets/not-found-image.png"
+        "value": "src/assets/not-found-image.png",
+        "type": "set_variable"
       },
       {
         "name": "activity_title",
-        "value": "Title of this section"
+        "value": "Title of this section",
+        "type": "set_variable"
       },
       {
         "type": "display_theme",
@@ -337,13 +358,27 @@ export const template: FlowTypes.Template[] = [
               {
                 "name": "button_completed",
                 "action_list": [
-                  "set_local | hide_intro | true",
-                  "set_local | hide_activity | false"
-                ]
+                  {
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_intro",
+                      "true"
+                    ]
+                  },
+                  {
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_activity",
+                      "false"
+                    ]
+                  }
+                ],
+                "type": "set_variable"
               },
               {
                 "name": "button_skipped",
-                "hidden": "!@local._completed"
+                "hidden": "!@local._completed",
+                "type": "set_variable"
               }
             ]
           }
@@ -375,8 +410,20 @@ export const template: FlowTypes.Template[] = [
             "type": "template",
             "name": "content_box",
             "action_list": [
-              "respond_to_action | exit | mark_as_completed",
-              "respond_to_action | exit | exit"
+              {
+                "action_id": "respond_to_action",
+                "args": [
+                  "exit",
+                  "mark_as_completed"
+                ]
+              },
+              {
+                "action_id": "respond_to_action",
+                "args": [
+                  "exit",
+                  "exit"
+                ]
+              }
             ],
             "rows": []
           }
@@ -395,7 +442,8 @@ export const template: FlowTypes.Template[] = [
         "rows": [
           {
             "name": "activity_image",
-            "value": "plh_images/menu_icons/menu_care_packages_icon.svg"
+            "value": "plh_images/menu_icons/menu_care_packages_icon.svg",
+            "type": "set_variable"
           },
           {
             "type": "nested_properties",
@@ -407,13 +455,15 @@ export const template: FlowTypes.Template[] = [
                 "rows": [
                   {
                     "name": "button_completed",
-                    "value": "Complete Override"
+                    "value": "Complete Override",
+                    "type": "set_variable"
                   }
                 ]
               }
             ]
           }
-        ]
+        ],
+        "name": "workshop_activity"
       }
     ]
   },
@@ -438,8 +488,14 @@ export const template: FlowTypes.Template[] = [
             "name": "button_completed",
             "value": "Next",
             "action_list": [
-              "exit",
-              "mark_as_completed"
+              {
+                "action_id": "exit",
+                "args": []
+              },
+              {
+                "action_id": "mark_as_completed",
+                "args": []
+              }
             ]
           },
           {
@@ -447,8 +503,14 @@ export const template: FlowTypes.Template[] = [
             "name": "button_skipped",
             "value": "Skip",
             "action_list": [
-              "exit",
-              "mark_as_skipped"
+              {
+                "action_id": "exit",
+                "args": []
+              },
+              {
+                "action_id": "mark_as_skipped",
+                "args": []
+              }
             ]
           }
         ]
@@ -472,7 +534,8 @@ export const template: FlowTypes.Template[] = [
         "rows": [
           {
             "name": "button_completed",
-            "value": "Next 2"
+            "value": "Next 2",
+            "type": "set_variable"
           }
         ]
       }
@@ -494,7 +557,8 @@ export const template: FlowTypes.Template[] = [
         "rows": [
           {
             "name": "a_title",
-            "value": "Template A Title Overridden"
+            "value": "Template A Title Overridden",
+            "type": "set_variable"
           },
           {
             "type": "nested_properties",
@@ -502,11 +566,13 @@ export const template: FlowTypes.Template[] = [
             "rows": [
               {
                 "name": "button_completed",
-                "value": "Next 3"
+                "value": "Next 3",
+                "type": "set_variable"
               }
             ]
           }
-        ]
+        ],
+        "name": "a"
       }
     ]
   },
@@ -545,27 +611,6 @@ export const template: FlowTypes.Template[] = [
   },
   {
     "flow_type": "template",
-    "flow_name": "timer_example",
-    "status": "released",
-    "rows": [
-      {
-        "type": "timer",
-        "name": "default_timer",
-        "comments": "Should use default values from component_defaults sheet",
-      },
-      {
-        "type": "timer",
-        "name": "5_min_timer",
-        "value": 5,
-
-        "parameter_list": [
-          "timer_title: Timer 2"
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
     "flow_name": "nav_test",
     "status": "released",
     "rows": [
@@ -573,25 +618,25 @@ export const template: FlowTypes.Template[] = [
         "type": "nav_group",
         "rows": [
           {
-            "type": "nav_section",
+            "type": "template",
+            "value": "story_slide",
             "parameter_list": [
               "show_skip_button:true",
               "skip_button_text:Skip Story"
             ],
             "rows": [
               {
-                "type": "image",
-                "value": "plh_images/workshops/story_time_intro1.svg"
+                "name": "image",
+                "value": "plh_images/workshops/story_time_intro1.svg",
+                "type": "set_variable"
               },
               {
-                "type": "title",
-                "value": "Return to Story Time"
-              },
-              {
-                "type": "text",
-                "value": "Thank you for thinking along! Let’s go back in time and see what happens  "
+                "name": "text",
+                "value": "Thank you for thinking along! Let’s go back in time and see what happens  ",
+                "type": "set_variable"
               }
-            ]
+            ],
+            "name": "story_slide"
           },
           {
             "type": "nav_section",
@@ -625,9 +670,6 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "image",
                 "value": "plh_images/workshops/story1/3.svg"
-              },
-              {
-                "type": "text"
               }
             ]
           },
@@ -646,11 +688,6 @@ export const template: FlowTypes.Template[] = [
           },
           {
             "type": "nav_section",
-            "parameter_list": [
-              "restart_button_text:Re-read the story",
-              "show_restart_button:true",
-              ""
-            ],
             "rows": [
               {
                 "type": "image",
@@ -661,43 +698,103 @@ export const template: FlowTypes.Template[] = [
                 "value": "Neighour: “Wow, Amina! You have such good dance moves!”"
               }
             ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/6.svg"
+              },
+              {
+                "type": "text",
+                "value": "Now this is the final slide"
+              }
+            ]
           }
         ]
       }
     ]
   },
-    {
-      "flow_type": "template",
-      "flow_name": "audio_player",
-      "status": "released",
-      "rows": [
-        {
-          "type": "audio",
-          "name": "Audio",
-          "parameter_list": [
-            "src: ./assets/audio/music.mp3",
-            "rangeBarDisabled: false",
-            "title: Fade",
-            "timeToRewind: 10",
-            "help: Some help text"
-          ]
-        },
-        {
-          "type": "audio",
-          "name": "Audio",
-          "parameter_list": [
-            "src: ./assets/audio/music.mp3",
-            "rangeBarDisabled: true",
-            "title: Imagine dragons",
-            "timeToRewind: 5",
-            "help: Another text"
-          ]
-        }
-      ]
-    },
   {
     "flow_type": "template",
-    "flow_name": "number",
+    "flow_name": "timer",
+    "status": "released",
+    "rows": [
+      {
+        "type": "timer",
+        "name": "default_timer",
+        "value": null,
+        "comments": "",
+        "action_list": [],
+        "parameter_list": [
+          "title: Timer",
+          "help: Some text help",
+          "duration: 10",
+          "duration_extension: 2"
+        ]
+      },
+      {
+        "type": "timer",
+        "name": "5_min_timer",
+        "value": null,
+        "comments": "",
+        "action_list": [],
+        "parameter_list": [
+          "title:Timer 2",
+          "duration: 5",
+          "is_editable_on_playing: true",
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "slider",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider",
+        "name": "template_slider",
+
+        "parameter_list": [
+          "title: Slider example",
+          "min: 0",
+          "max: 48",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 2"
+        ],
+        "comments": ""
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "slider_new",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider_new",
+        "name": "templates_slider",
+
+        "parameter_list": [
+          "title: Slider example",
+          "min: 0",
+          "max: 48",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 2"
+        ],
+        "comments": ""
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "number_selector",
     "status": "released",
     "rows": [
       {
@@ -739,103 +836,31 @@ export const template: FlowTypes.Template[] = [
   },
   {
     "flow_type": "template",
-    "flow_name": "slider",
+    "flow_name": "audio_player",
     "status": "released",
     "rows": [
       {
-        "type": "slider",
-        "name": "template_slider",
-
+        "type": "audio",
+        "name": "Audio",
         "parameter_list": [
-          "title: Slider example",
-          "min: 0",
-          "max: 48",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 2"
-        ],
-        "comments": ""
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "slider_old",
-    "status": "released",
-    "rows": [
+          "src: ./assets/audio/music.mp3",
+          "rangeBarDisabled: false",
+          "title: Fade",
+          "timeToRewind: 10",
+          "help: Some help text"
+        ]
+      },
       {
-        "type": "slider_old",
-        "name": "templates_slider",
-
+        "type": "audio",
+        "name": "Audio",
         "parameter_list": [
-          "title: Slider example",
-          "min: 0",
-          "max: 48",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 2"
-        ],
-        "comments": ""
+          "src: ./assets/audio/music.mp3",
+          "rangeBarDisabled: true",
+          "title: Imagine dragons",
+          "timeToRewind: 5",
+          "help: Another text"
+        ]
       }
     ]
   },
-    {
-      "flow_type": "template",
-      "flow_name": "button",
-      "status": "released",
-      "rows": [
-        {
-          "type": "button",
-          "name": "button_describe",
-          "value": "Describe",
-          "action_list": [],
-          "hidden": false,
-          "parameter_list": [
-              "color: secondary"
-          ],
-          "comments": ""
-        },
-        {
-          "type": "button",
-          "name": "button_completed",
-          "value": "Next",
-          "action_list": [
-              "exit | mark_as_skipped",
-          ],
-          "hidden": "",
-          "parameter_list": [],
-          "comments": ""
-        },
-        {
-          "type": "button",
-          "name": "button_skipped",
-          "value": "Skip",
-          "action_list": [
-              "exit | mark_as_skipped"
-          ],
-          "hidden": false,
-          "parameter_list": [
-            "disabled: true"
-          ],
-          "comments": ""
-        },
-        {
-          "type": "button",
-          "name":"button_start",
-          "value": "Start",
-          "action_list": [],
-          "hidden": false,
-          "parameter_list": [
-            "disabled: false",
-            "hexBgColor: #504949",
-            "color: secondary",
-            "width: 326",
-            "height: 62"
-          ],
-          "comments": ""
-        },
-      ]
-    }
 ]

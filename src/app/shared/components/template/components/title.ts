@@ -1,19 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from 'src/app/shared/model/flowTypes';
-import { ITemplateComponent } from "./tmpl.component";
+import { Component } from "@angular/core";
+import { TemplateBaseComponent } from "./base";
 
 @Component({
   selector: "plh-tmpl-title",
-  template: `<h1>{{row.value | localVarsReplace: localVariables}}</h1>`,
-  styleUrls: ["./tmpl-components-common.scss"]
+  template: ` <h1>{{ _row.value }}</h1> `,
+  styleUrls: ["./tmpl-components-common.scss"],
 })
-export class TmplTitleComponent implements ITemplateComponent, OnInit {
-
-  @Input() row: FlowTypes.TemplateRow;
-  @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
-
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class TmplTitleComponent extends TemplateBaseComponent {}

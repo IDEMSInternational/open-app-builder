@@ -17,17 +17,17 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "@fields.mod_welcome_daily_calm == 'Yes'"
+                "evaluate": "@fields.mod_welcome_daily_calm=='Yes'"
               }
             },
-            "_raw": "field_evaluation | @fields.mod_welcome_daily_calm == 'Yes'",
-            "_cleaned": "field_evaluation | @fields.mod_welcome_daily_calm == 'Yes'",
+            "_raw": "field_evaluation | @fields.mod_welcome_daily_calm=='Yes'",
+            "_cleaned": "field_evaluation | @fields.mod_welcome_daily_calm=='Yes'",
             "_parsed": [
               [
                 "field_evaluation"
               ],
               [
-                "@fields.mod_welcome_daily_calm == 'Yes'"
+                "@fields.mod_welcome_daily_calm=='Yes'"
               ]
             ]
           }

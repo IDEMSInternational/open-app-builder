@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import { ITemplateComponent } from "../tmpl.component";
 import { FlowTypes } from "../../../../model";
 import {
   getBooleanParamFromTemplateRow,
@@ -8,14 +7,16 @@ import {
 } from "../../../../utils";
 import { Howl } from "howler";
 import { IonRange } from "@ionic/angular";
+import { ITemplateRowProps } from "../../models";
+import { TemplateBaseComponent } from "../base";
 
 @Component({
   selector: "plh-audio",
   templateUrl: "./audio.component.html",
   styleUrls: ["./audio.component.scss"]
 })
-export class TmplAudioComponent implements ITemplateComponent, OnInit {
-  @Input() row: FlowTypes.TemplateRow;
+export class TmplAudioComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   @ViewChild("range", { static: false }) range: IonRange;
@@ -32,6 +33,7 @@ export class TmplAudioComponent implements ITemplateComponent, OnInit {
   currentTimeSong: string = '0';
   rangeBarDisabled: boolean = false;
   constructor() {
+    super();
   }
 
   ngOnInit() {
@@ -40,11 +42,11 @@ export class TmplAudioComponent implements ITemplateComponent, OnInit {
   }
 
   getParams() {
-    this.src = getStringParamFromTemplateRow(this.row, "src", null);
-    this.titleAudio = getStringParamFromTemplateRow(this.row, "title", "Title");
-    this.help = getStringParamFromTemplateRow(this.row, "help", null);
-    this.rangeBarDisabled = getBooleanParamFromTemplateRow(this.row, 'rangeBarDisabled', false);
-    this.timeToRewind = getNumberParamFromTemplateRow(this.row, 'timeToRewind', 15);
+    this.src = getStringParamFromTemplateRow(this._row, "src", null);
+    this.titleAudio = getStringParamFromTemplateRow(this._row, "title", "Title");
+    this.help = getStringParamFromTemplateRow(this._row, "help", null);
+    this.rangeBarDisabled = getBooleanParamFromTemplateRow(this._row, 'rangeBarDisabled', false);
+    this.timeToRewind = getNumberParamFromTemplateRow(this._row, 'timeToRewind', 15);
   }
 
   initPlayer() {

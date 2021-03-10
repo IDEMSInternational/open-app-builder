@@ -1,31 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { FlowTypes } from 'scripts/types';
-import { TEMPLATE } from 'src/app/shared/services/data/data.service';
-import { template } from 'src/data/template';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'plh-template-testing',
-  templateUrl: './template-testing.page.html',
-  styleUrls: ['./template-testing.page.scss'],
+  selector: "plh-template-testing",
+  templateUrl: "./template-testing.page.html",
+  styleUrls: ["./template-testing.page.scss"],
 })
 export class TemplateTestingPage implements OnInit {
+  templateName: string;
 
-  testTemplate: FlowTypes.Template;
-
-  constructor(private route: ActivatedRoute) {
-    
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const matchingTemplate = TEMPLATE.find((t) => t.flow_name === this.route.snapshot.params.templateName);
-    if (matchingTemplate) {
-      this.testTemplate = matchingTemplate;
-      console.log("Matched template", this.testTemplate);
-    } else {
-      this.testTemplate = TEMPLATE[1];
-      console.log("Default template", this.testTemplate);
-    }
-  }
+    // TODO - decide what to do if template not found
+    // const fallbackTemplate = TEMPLATE[1];
+    this.templateName = this.route.snapshot.params.templateName;
 
+    // const template = matchingTemplate || fallbackTemplate;
+    // console.log(matchingTemplate ? "matched template" : "fallback template", template);
+    // this.templateProps = {
+    //   name: template.flow_name,
+    //   rows: template.rows,
+    // };
+  }
 }
