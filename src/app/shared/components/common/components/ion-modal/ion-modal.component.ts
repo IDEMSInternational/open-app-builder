@@ -12,6 +12,7 @@ export class IonModalComponent implements OnInit {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
+  @Input() formData: any;
   listAnswers: string | null;
   valuesFromListAnswers: string[];
   textTitle: string | null;
@@ -42,8 +43,7 @@ export class IonModalComponent implements OnInit {
 
   buildForm() {
     this.form = this.fb.group({
-      checkboxes: [this.valuesFromListAnswers ? this.valuesFromListAnswers : null, []]
+      checkboxes: [this.formData ? this.formData : null, []]
     });
-    console.log(this.form)
   }
 }

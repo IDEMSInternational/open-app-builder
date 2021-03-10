@@ -12,6 +12,7 @@ import { TemplateComponentsModule } from "./components/template/template.module"
 import { RoundIconButtonComponent } from "./components/template/components/round-icon-button/round-icon-button.component";
 import { TmplTimerComponent } from "./components/template/components/timer/timer.component";
 import { IonModalComponent } from "./components/common/components/ion-modal/ion-modal.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 const Components = [
@@ -30,7 +31,7 @@ const Components = [
     declarations: [
         Components,
     ],
-    imports: [CommonModule, IonicModule, RouterModule, TemplateComponentsModule],
+  imports: [CommonModule, IonicModule, RouterModule, TemplateComponentsModule, ReactiveFormsModule],
   exports: Components,
 })
 export class SharedModule {}

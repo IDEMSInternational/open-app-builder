@@ -2,4 +2,12 @@
   <div class="header" *ngIf="textTitle">
     {{textTitle}}
   </div>
+  <div class="form">
+    <form [formGroup]="form">
+      <div class="container-radio" *ngFor="let radio of valuesFromListAnswers">
+        <input type="radio" name="checkboxes" [value]="radio">
+        <label> </label>
+      </div>
+    </form>
+  </div>
 </div>
