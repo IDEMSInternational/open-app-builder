@@ -9,32 +9,38 @@ import { Type } from "@angular/core";
 import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
 import { NavGroupComponent } from "./layout/nav_group";
-import { TmplAudioComponent } from "./audio";
+import { TmplAudioComponent } from "./audio/audio.component";
 import { TemplateBaseComponent } from "./base";
 import { TmplButtonComponent } from "./button";
 import { TmplDisplayGroupComponent } from "./layout/display_group";
 import { TmplImageComponent } from "./image";
-import { TmplSliderComponent } from "./slider";
 import { TmplTextComponent } from "./text";
-import { TmplTimerComponent } from "./timer";
+import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplVideoComponent } from "./video";
+import { TmplNumberComponent } from "./number-selector/number-selector.component";
+import { SliderNewComponent } from "./slider-new/slider-new.component";
+import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
+import { TmplSliderComponent } from "./slider/slider.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
-  AnimatedSectionComponent,
-  AnimatedSectionGroupComponent,
-  NavGroupComponent,
-  TmplAudioComponent,
-  TemplateBaseComponent,
-  TmplButtonComponent,
-  TmplDisplayGroupComponent,
-  TmplImageComponent,
-  TmplSliderComponent,
   TmplTextComponent,
-  TmplTimerComponent,
+  AnimatedSectionGroupComponent,
   TmplTitleComponent,
+  TmplDisplayGroupComponent,
+  TmplAudioComponent,
+  TmplButtonComponent,
+  TmplImageComponent,
   TmplVideoComponent,
+  AnimatedSectionComponent,
+  TmplTimerComponent,
+  TmplSliderComponent,
+  TmplNumberComponent,
+  SliderNewComponent,
+  NavGroupComponent,
+  TmplButtonComponent,
+  RoundIconButtonComponent
 ];
 
 /***************************************************************************************
@@ -64,4 +70,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   timer: TmplTimerComponent,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
+  number_selector: TmplNumberComponent,
+  round_button: RoundIconButtonComponent,
+  slider_new: SliderNewComponent
 };

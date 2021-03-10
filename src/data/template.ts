@@ -1,6 +1,6 @@
 /* tslint:disable */
-  import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const template: FlowTypes.Template[] = [
+import { FlowTypes } from "src/app/shared/model/flowTypes";
+export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
     "flow_name": "template_watch_together",
@@ -227,7 +227,7 @@
       },
       {
         "type": "template",
-        "name": "template_watch_together",
+        "value": "template_watch_together",
         "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
           {
@@ -257,11 +257,12 @@
             "value": "Welcome @local.group_name!",
             "type": "set_variable"
           }
-        ]
+        ],
+        "name": "template_watch_together"
       },
       {
         "type": "template",
-        "name": "template_watch_together",
+        "value": "template_watch_together",
         "rows": [
           {
             "name": "theme_name",
@@ -288,7 +289,8 @@
             "value": "Welcome @local.group_name!",
             "type": "set_variable"
           }
-        ]
+        ],
+        "name": "template_watch_together"
       }
     ]
   },
@@ -613,23 +615,39 @@
     "status": "released",
     "rows": [
       {
-        "type": "button",
-        "name": "button_1",
-        "value": "Button 1"
-      },
-      {
         "type": "nav_group",
         "rows": [
+          {
+            "type": "template",
+            "value": "story_slide",
+            "parameter_list": [
+              "show_skip_button:true",
+              "skip_button_text:Skip Story"
+            ],
+            "rows": [
+              {
+                "name": "image",
+                "value": "plh_images/workshops/story_time_intro1.svg",
+                "type": "set_variable"
+              },
+              {
+                "name": "text",
+                "value": "Thank you for thinking along! Let’s go back in time and see what happens  ",
+                "type": "set_variable"
+              }
+            ],
+            "name": "story_slide"
+          },
           {
             "type": "nav_section",
             "rows": [
               {
                 "type": "image",
-                "value": "https://freesvg.org/img/lemmling-2D-cartoon-elephant.png"
+                "value": "plh_images/workshops/story1/1.svg"
               },
               {
                 "type": "text",
-                "value": "Don't think of an elephant"
+                "value": "Neighour was cleaning the house while Amina was with her friends practicing dance moves."
               }
             ]
           },
@@ -638,16 +656,211 @@
             "rows": [
               {
                 "type": "image",
-                "value": "https://freesvg.org/img/lemmling-2D-cartoon-elephant.png"
+                "value": "plh_images/workshops/story1/2.svg"
               },
               {
                 "type": "text",
-                "value": "What are you thinking of?"
+                "value": "Neighour: “Amina, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\n\nAmina: “Okay, mom!”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/3.svg"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/4.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Thank you for practicing outside while I finished cleaning the house, Amina. Now, I have some time to watch your dance.”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/5.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Wow, Amina! You have such good dance moves!”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/6.svg"
+              },
+              {
+                "type": "text",
+                "value": "Now this is the final slide"
               }
             ]
           }
         ]
       }
     ]
-  }
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "timer",
+    "status": "released",
+    "rows": [
+      {
+        "type": "timer",
+        "name": "default_timer",
+        "value": null,
+        "comments": "",
+        "action_list": [],
+        "parameter_list": [
+          "title: Timer",
+          "help: Some text help",
+          "duration: 10",
+          "duration_extension: 2"
+        ]
+      },
+      {
+        "type": "timer",
+        "name": "5_min_timer",
+        "value": null,
+        "comments": "",
+        "action_list": [],
+        "parameter_list": [
+          "title:Timer 2",
+          "duration: 5",
+          "is_editable_on_playing: true",
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "slider",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider",
+        "name": "template_slider",
+
+        "parameter_list": [
+          "title: Slider example",
+          "min: 0",
+          "max: 48",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 2"
+        ],
+        "comments": ""
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "slider_new",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider_new",
+        "name": "templates_slider",
+
+        "parameter_list": [
+          "title: Slider example",
+          "min: 0",
+          "max: 48",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 2"
+        ],
+        "comments": ""
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "number_selector",
+    "status": "released",
+    "rows": [
+      {
+        "type": "number_selector",
+        "name": "example_selector",
+        "value": null,
+        "parameter_list": [
+          "title: Category size 2",
+          "min_value: 0",
+          "max_value: 8",
+          "height: short",
+          "category_size: 2"
+        ]
+      },
+      {
+        "type": "number_selector",
+        "name": "example_selector",
+        "value": null,
+        "parameter_list": [
+          "title: Category size 1",
+          "min_value: 0",
+          "max_value: 10",
+          "height: normal",
+          "category_size: 1"
+        ]
+      },
+      {
+        "type": "number_selector",
+        "name": "example_selector",
+        "value": null,
+        "parameter_list": [
+          "title: Example",
+          "first_display_term: 3",
+          "category_list: 0-20; 21-25; 26-30; 30-40; 40-55; 55+",
+        ]
+      }
+
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "audio_player",
+    "status": "released",
+    "rows": [
+      {
+        "type": "audio",
+        "name": "Audio",
+        "parameter_list": [
+          "src: ./assets/audio/music.mp3",
+          "rangeBarDisabled: false",
+          "title: Fade",
+          "timeToRewind: 10",
+          "help: Some help text"
+        ]
+      },
+      {
+        "type": "audio",
+        "name": "Audio",
+        "parameter_list": [
+          "src: ./assets/audio/music.mp3",
+          "rangeBarDisabled: true",
+          "title: Imagine dragons",
+          "timeToRewind: 5",
+          "help: Another text"
+        ]
+      }
+    ]
+  },
 ]

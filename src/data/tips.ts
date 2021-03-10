@@ -72,7 +72,8 @@
           },
           {
             "type": "list_item",
-            "message_text": "1. \"DAY\"- Try to do it every day!"
+            "message_text": "1. \"DAY\"- Try to do it every day!",
+            "comment": "long title? not sure if fits"
           },
           {
             "type": "text",
