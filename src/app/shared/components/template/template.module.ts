@@ -8,6 +8,7 @@ import { TEMPLATE_COMPONENTS } from "./components";
 import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 // import { LocalVarsReplacePipe } from "./pipes/local-vars-replace.pipe";
 import { SharedPipesModule } from "../../pipes";
+import { TooltipDirective } from "../common/directives/tooltip.directive";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, SharedPipesModule],
@@ -15,6 +16,7 @@ import { SharedPipesModule } from "../../pipes";
   declarations: [
     TmplCompHostDirective,
     TemplateComponent,
+    TooltipDirective,
     ...TEMPLATE_COMPONENTS,
     TemplateContainerComponent,
     // LocalVarsReplacePipe,

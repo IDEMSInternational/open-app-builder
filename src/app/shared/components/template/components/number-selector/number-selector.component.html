@@ -1,0 +1,21 @@
+<div class="container" [class]="height">
+  <div class="left">
+    <ion-button (click)="increment('lt')">
+      <div class="line"></div>
+    </ion-button>
+  </div>
+  <div class="center">
+    <div class="title" *ngIf="title">{{title}}</div>
+    <div class="num" *ngIf="!category_list">{{displayValue}}</div>
+    <div class="category" *ngIf="category_list">
+      <span>{{displayValue}}</span>
+    </div>
+  </div>
+  <div class="right">
+    <ion-button (click)="increment('gt')">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      <div class="line"></div>
+      <div class="line plus"></div>
+    </ion-button>
+  </div>
+</div>

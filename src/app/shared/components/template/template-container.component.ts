@@ -90,6 +90,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       if (rows) {
         switch (type) {
           // nested properties assign specific value further down the tree
+          // TODO handle case where name is further nested
           case "nested_properties":
             variables[name] = this.processVariables(rows, variables[name]);
             break;

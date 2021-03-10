@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { FlowTypes } from "src/app/shared/model/flowTypes";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -10,11 +11,12 @@ export function generateRandomId() {
 }
 
 /**
- * generate a string representation of the current datetime in local timezone
+ * generate a string representation of the current datetime in local (unspecified) timezone
  * @returns 2020-12-22T18:15:20
  */
-export function generateTimestamp() {
-  return format(new Date(), "yyyy-MM-dd'T'HH:mm:ss");
+export function generateTimestamp(value?: string | number | Date) {
+  const date = value ? new Date(value) : new Date();
+  return format(date, "yyyy-MM-dd'T'HH:mm:ss");
 }
 
 /**
@@ -35,14 +37,14 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
  * Similar as arrayToHashmap, but instead allows duplicate id entries, storing values in an array by hash keyfield
  * @param keyfield any unique field which all array objects contain to use as hash keys (e.g. 'id')
  */
-export function arrayToHashmapArray<T>(arr: T[], keyfield: string) {
+export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
   const hashmap: { [key: string]: T[] } = {};
   for (const el of arr) {
     if (el.hasOwnProperty(keyfield)) {
-      if (!hashmap[el[keyfield]]) {
-        hashmap[el[keyfield]] = [];
+      if (!hashmap[el[keyfield as string]]) {
+        hashmap[el[keyfield as string]] = [];
       }
-      hashmap[el[keyfield]].push(el);
+      hashmap[el[keyfield as string]].push(el);
     }
   }
   return hashmap;
@@ -59,6 +61,45 @@ export function stringToArray(str: string = "", separator = ";") {
       .split(separator)
       .map((s) => s.trim())
       // remove empty strings, undefined or null values
-      .filter((el) => (el ? true : false))
+      .filter((el) => (!!el))
   );
 }
+
+export function getStringParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: string): string {
+  let res = _default;
+  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
+
+  if (param) {
+    param = param.split(":")[1].trim();
+
+    res = param || _default;
+  }
+
+  return res;
+}
+
+export function getNumberParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: number): number {
+  let res = _default;
+  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
+
+  if (param) {
+    param = param.split(":")[1].trim();
+
+    res = Number.isNaN(+param) ? _default : +param;
+  }
+
+  return res;
+}
+
+export function getBooleanParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: boolean): boolean {
+  let res = _default;
+  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
+
+  if (param) {
+    param = param.split(":")[1].trim();
+    res = param === "true";
+  }
+
+  return res;
+}
+

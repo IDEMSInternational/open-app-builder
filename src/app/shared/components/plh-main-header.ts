@@ -17,6 +17,9 @@ import { Subscription } from "rxjs";
         <ion-icon src="assets/images/star.svg" style="margin: -1px 8px"></ion-icon>
         <span>{{ title }}</span>
       </ion-title>
+      <ion-buttons slot="end" routerLink="/reminders">
+        <ion-button><ion-icon slot="icon-only" name="notifications-outline"></ion-icon></ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>`,
 })
