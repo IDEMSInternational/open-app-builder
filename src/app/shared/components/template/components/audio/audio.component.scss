@@ -1,0 +1,116 @@
+.container-player{
+  background: #fff;
+  border: 2px solid #0D3F60;
+  box-sizing: border-box;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  min-width: 363px;
+  padding: 17px 14px 16px 20px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  .top-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title_and_help{
+      display: flex;
+      align-items: center;
+      h3{
+        margin: 0;
+        color: #0D3F60;
+        max-width: 280px;
+        font-weight: bold;
+        font-size: 25px;
+      }
+      .audio-help {
+        margin-left: 11px;
+        color: #0D3F60;
+        height: 32px;
+        width: 32px;
+      }
+    }
+    .volume{
+      position: absolute;
+      top: 17px;
+      right: 14px;
+      .volume-icon{
+        color: #0D3F60;
+        height: 36px;
+        width: 36px;
+      }
+    }
+  }
+  .progress-block{
+    .audio-range{
+      padding-inline: 0;
+      --bar-background-active: #0D3F60;;
+      --bar-height: 10px;
+      --bar-border-radius: 20px;
+      --knob-size: 28px;
+      --pin-background: #0D3F60;;
+      --knob-background: #0D3F60;;
+    }
+  }
+  .time{
+    margin-top: -12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-value{
+      font-size: 20px;
+      line-height: 20px;
+      color: #0D3F60;
+    }
+  }
+  .controls{
+    display: flex;
+    min-width: 240px;
+    align-self: center;
+    justify-content: space-between;
+    align-items: center;
+    .rewind, .forward{
+      ion-button{
+        width: 64px;
+        height: 64px;
+        --background: transparent;
+        --padding: 0;
+        --border-radius: 50%;
+        --box-shadow: transparent;
+        img{
+          position: absolute;
+          min-width: 48px;
+        }
+      }
+    }
+    .rewind{
+      img{
+
+        transform: rotate(180deg);
+      }
+    }
+    .play{
+      .btn-play{
+        width: 64px;
+        height: 64px;
+        --background: #00A0CC;
+        --border-radius: 50%;
+        --padding:0;
+        img{
+          position: absolute;
+          width: 35px;
+        }
+        .ml-5{
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  .error-text{
+    margin: 10px 0;
+    text-align: center;
+  }
+}
+.disabled{
+  pointer-events: none;
+}
