@@ -1,11 +1,33 @@
 ::ng-deep{
   .my-custom-modal{
-    padding: 20% 10%  !important;
+    --height: auto;
+    @media (max-width: 450px) {
+      //padding: 20% 2%  !important;
+    }
+
+    //padding: 20% 10%  !important;
     .modal-wrapper{
+      max-width: 90vw;
       background: #fff;
       border: 2px solid #0D4060;
       box-sizing: border-box;
       border-radius: 20px;
+      .ion-page{
+        max-height: 90vh;
+        position: relative;
+        contain: content;
+      }
+    }
+  }
+  .wrapper{
+    padding: 0;
+    .text-box-input{
+      height: 59px;
+      margin-top: 15px;
+      border-radius: 20px;
+      @media (max-width: 400px) {
+        min-width: 260px;
+      }
     }
   }
 }
@@ -19,13 +41,21 @@
     line-height: 28px;
     text-align: center;
     color: #0D4060;
-    margin-bottom: 20px;
+
   }
   .form{
     display: flex;
     width: 100%;
     justify-content: center;
+    form{
+      display: flex;
+      flex-direction: column;
+    }
+    .reverse{
+      flex-direction: column-reverse;
+    }
     .container-radio{
+      margin-top: 15px;
       min-height: 59px;
       min-width: 342px;
       max-width: fit-content;
@@ -37,7 +67,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 15px;
+      @media (max-width: 400px) {
+        min-width: 260px;
+      }
       input{
         display: none;
       }
@@ -59,3 +91,4 @@
     }
   }
 }
+

@@ -3,18 +3,27 @@
     {{textTitle}}
   </div>
   <div class="form">
-    <form [formGroup]="form">
-      <div class="container-radio" [class.checked-radion]="this.form.get('answer').value === radio" *ngFor="let radio of valuesFromListAnswers">
-        <label>
-          <input type="radio" (click)="check(radio)" formControlName="answer" [value]="radio">
-          {{radio}}
-        </label>
+    <form [formGroup]="form" [class.reverse]="inputPosition">
+      <div class="checkboxes">
+        <div class="container-radio" [class.checked-radion]="form.get('answer').value === radio"
+             *ngFor="let radio of valuesFromListAnswers">
+          <label>
+            <input type="radio"
+                   (click)="check(radio)"
+                   formControlName="answer"
+                   [value]="radio">
+            {{radio}}
+          </label>
+        </div>
       </div>
-<!--      <p>{{form.value | json}}</p>-->
-      <div class="user-answer" *ngIf="inputAllowed && this.form.get('answer').value === null">
-        <label>
-          <input type="text">
-        </label>
+      <div class="wrapper" *ngIf="inputAllowed">
+        <ion-input formControlName="customAnswer"
+                   (ionChange)="changeCustomAnswer()"
+                   [disabled]="this.listAnswers ? form.get('answer').value !== null : false"
+                   class="text-box-input"
+                   (keyup.enter)="checkValidCustomAnswer ? closeModal() : null"
+                   placeholder="Your answer">
+        </ion-input>
       </div>
     </form>
   </div>

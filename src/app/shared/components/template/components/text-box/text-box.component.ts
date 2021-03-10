@@ -2,9 +2,6 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ITemplateComponent } from "../tmpl.component";
 import { FlowTypes } from "../../../../model";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
-import { ModalController } from "@ionic/angular";
-import { TmplComboBoxComponent } from "../combo-box/combo-box.component";
-import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "plh-text-box",
@@ -19,8 +16,6 @@ export class TmpltTextBoxComponent implements ITemplateComponent, OnInit {
   maxLength: number;
   value: string | null;
 
-  constructor(private dialog: MatDialog, private modalController: ModalController) {
-  }
 
   ngOnInit() {
     this.getParams();

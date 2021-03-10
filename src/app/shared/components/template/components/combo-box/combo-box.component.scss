@@ -1,82 +1,19 @@
-//.comboBox {
-//  background: #FFFFFF;
-//}
-//
-//::ng-deep {
-//  .alert-checkbox, .alert-input {
-//    border: 2px solid #0D4060 !important;
-//    border-top: 2px solid #0D4060 !important;
-//    border-bottom: 2px solid #0D4060 !important;
-//    --box-shadow: --ion-default-box-shadow;
-//    border-radius: 20px!important;
-//    margin: 15px 0!important;
-//  }
-//  .example{
-//    background: transparent !important;
-//  }
-//  .example-checked{
-//    background: #2DC7F2!important;
-//  }
-//
-//  .comboBox {
-//    .alert-wrapper {
-//      min-width: 375px;
-//      padding: 20px 15px;
-//      background: #FFFFFF;
-//      border: 1px solid #0D4060;
-//      --box-shadow: --ion-default-box-shadow;
-//      border-radius: 20px!important;
-//    }
-//    .alert-head{
-//      padding: 0;
-//    }
-//    .alert-title{
-//      font-size: 20px;
-//      line-height: 28px;
-//      font-weight: normal;
-//      text-align: center;
-//      color: #0D4060;
-//    }
-//
-//    .alert-button-group {
-//      display: none;
-//    }
-//
-//    .alert-checkbox-group {
-//      border-top: none;
-//
-//      .alert-checkbox-icon {
-//        display: none;
-//      }
-//
-//      .alert-checkbox-label {
-//        padding: 0;
-//        text-align: center;
-//        font-weight: 700;
-//        font-size: 20px;
-//        color: #0D3F60;
-//      }
-//    }
-//  }
-//}
-::ng-deep{
-  .combo-dialog{
-    min-width: 375px;
-    .mat-dialog-container{
-      background: #FFFFFF;
-      border: 2px solid #0D4060;
-      box-sizing: border-box;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 20px;
-      .mat-dialog-content{
-        .header{
-          text-align: center;
-          font-size: 20px;
-          line-height: 28px;
-          color: #0D4060;
-          margin-bottom: 15px;
-        }
-      }
-    }
+.open-combobox{
+  margin-top: 15px;
+  outline: none;
+  min-width: 342px;
+  border: 2px solid #0D4060;
+  box-sizing: border-box;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 20px;
+  font-weight: bold;
+  background: transparent;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  color: #0D3F60;
+  height: 59px;
+  @media (max-width: 400px) {
+    min-width: 260px;
   }
 }
