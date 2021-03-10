@@ -10,7 +10,6 @@ import { TmplTextComponent } from "./components/text";
 import { AnimatedSectionGroupComponent } from "./components/animated_section_group";
 import { TmplTitleComponent } from "./components/title";
 import { TmplDisplayGroupComponent } from "./components/display_group";
-import { TmplButtonComponent } from "./components/button";
 import { TmplAudioComponent } from "./components/audio";
 import { TmplImageComponent } from "./components/image";
 import { TmplVideoComponent } from "./components/video";
@@ -20,6 +19,7 @@ import { LocalVarsReplacePipe } from "./local-vars-replace.pipe";
 import { AnimatedSectionComponent } from "./components/animated_section";
 import { TmplTimerComponent } from "./components/timer";
 import { TmplNumberComponent } from "./components/number-selector/number-selector.component";
+import { TmplButtonComponent } from "./components/button/button.component";
 import { TmplSliderComponent } from "./components/slider/slider.component";
 import { NavGroupComponent } from "./components/nav_group";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
@@ -43,7 +43,8 @@ const TEMPLATE_COMPONENTS = [
   TmplSliderComponent,
   TmplNumberComponent,
   SliderNewComponent,
-  NavGroupComponent
+  NavGroupComponent,
+  TmplButtonComponent
 ];
 
 @NgModule({
