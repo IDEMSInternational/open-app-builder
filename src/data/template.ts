@@ -666,6 +666,35 @@ export const template: FlowTypes.Template[] = [
       }
     ]
   },
+    {
+      "flow_type": "template",
+      "flow_name": "audio_player",
+      "status": "released",
+      "rows": [
+        {
+          "type": "audio",
+          "name": "Audio",
+          "parameter_list": [
+            "src: ./assets/audio/music.mp3",
+            "rangeBarDisabled: false",
+            "title: Fade",
+            "timeToRewind: 10",
+            "help: Some help text"
+          ]
+        },
+        {
+          "type": "audio",
+          "name": "Audio",
+          "parameter_list": [
+            "src: ./assets/audio/music.mp3",
+            "rangeBarDisabled: true",
+            "title: Imagine dragons",
+            "timeToRewind: 5",
+            "help: Another text"
+          ]
+        }
+      ]
+    },
   {
     "flow_type": "template",
     "flow_name": "slider",
