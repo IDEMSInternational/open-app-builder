@@ -20,10 +20,6 @@ const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
   templateUrl: "./template-container.component.html",
   styleUrls: ["./template-container.component.scss"],
 })
-/**
- * 
- * TODO - ngfor loop should have comparison function and key
- */
 export class TemplateContainerComponent implements OnInit, ITemplateContainerProps {
   @Input() name: string;
   @Input() parent?: TemplateContainerComponent;
@@ -177,8 +173,6 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     // remove row types that have already been processed during processVariables step
     const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
     const filteredRows = templateRows.filter((r) => !filterTypes.includes(r.type));
-    // TODO - handle hidden evaluation
-
     const rowsWithReplacedValues = filteredRows.map((r) => {
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
@@ -230,6 +224,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
     return parsedExpression;
+  }
+  /** When using ngFor loop track by  */
+  public trackByRow(index: number, row: FlowTypes.TemplateRow) {
+    return row.name || row.value || index;
   }
 }
 
