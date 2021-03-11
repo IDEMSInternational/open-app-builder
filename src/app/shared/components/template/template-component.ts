@@ -38,21 +38,31 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div class="plh-tmpl-comp" [hidden]="hidden" [attr.data-type]="row.type">
-      <details *ngIf="parent.debugMode" class="debug-container">
-        <summary>{{ row.type }}</summary>
-        <p *ngIf="row.name">name: {{ row.name }}</p>
-        <p *ngIf="row.value">value: {{ row.value }}</p>
-        <p *ngIf="parent.localVariables">vars: {{ parent.localVariables | json }}</p>
-        <p *ngIf="row.rows && row.rows.length > 0">
-          <span>children: {{ row.rows.length }} </span>
-          <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log details)</ion-button>
-        </p>
+    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
+      <details *ngIf="parent.debugMode" class="debug-container" [attr.data-hidden]="row.hidden">
+        <summary style="display:flex">
+          <span>{{ row.type }}</span>
+          <span *ngIf="row.hidden === 'true'" style="margin-left:auto">Hidden</span>
+        </summary>
+        <table>
+          <th></th>
+          <th></th>
+          <div *ngFor="let key of row | objectKeys" style="display:contents">
+            <tr *ngIf="!debugFieldExclusions.includes(key) && row[key]">
+              <div></div>
+              <td>{{ key }}</td>
+              <td>{{ row[key] | json }}</td>
+            </tr>
+          </div>
+        </table>
+        <ion-button fill="clear" size="small" (click)="logDebugInfo()"
+          >(log full details)</ion-button
+        >
       </details>
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
   `,
-  styleUrls: ["./components/tmpl-components-common.scss"],
+  styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
 })
 export class TemplateComponent implements OnInit, ITemplateRowProps {
   /**
@@ -66,6 +76,7 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
   public hidden = false;
+  public debugFieldExclusions = ["comments", "rows"];
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
@@ -75,6 +86,7 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
   public logDebugInfo() {
     console.group(this.row.type, this.row.name);
     console.log("row", this.row);
+    console.log("local variables", this.parent.localVariables);
     console.log("parent", this.parent);
     console.log("children", this.row.rows);
     console.groupEnd();
