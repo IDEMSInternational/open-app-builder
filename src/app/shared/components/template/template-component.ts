@@ -38,21 +38,18 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div class="plh-tmpl-comp" [hidden]="hidden" [attr.data-type]="row.type">
-      <details *ngIf="parent.debugMode" class="debug-container">
-        <summary>{{ row.type }}</summary>
-        <p *ngIf="row.name">name: {{ row.name }}</p>
-        <p *ngIf="row.value">value: {{ row.value }}</p>
-        <p *ngIf="parent.localVariables">vars: {{ parent.localVariables | json }}</p>
-        <p *ngIf="row.rows && row.rows.length > 0">
-          <span>children: {{ row.rows.length }} </span>
-          <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log details)</ion-button>
-        </p>
-      </details>
+    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
+      <!-- Template Debugger -->
+      <plh-template-debugger
+        *ngIf="parent.debugMode"
+        [row]="row"
+        [parent]="parent"
+      ></plh-template-debugger>
+      <!-- Injected template component -->
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
   `,
-  styleUrls: ["./components/tmpl-components-common.scss"],
+  styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
 })
 export class TemplateComponent implements OnInit, ITemplateRowProps {
   /**
@@ -65,19 +62,10 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  public hidden = false;
-
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit() {
     this.renderRow(this.row);
-  }
-  public logDebugInfo() {
-    console.group(this.row.type, this.row.name);
-    console.log("row", this.row);
-    console.log("parent", this.parent);
-    console.log("children", this.row.rows);
-    console.groupEnd();
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
