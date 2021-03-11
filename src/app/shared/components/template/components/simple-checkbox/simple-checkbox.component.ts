@@ -10,11 +10,8 @@ import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from ".
   templateUrl: "./simple-checkbox.component.html",
   styleUrls: ["./simple-checkbox.component.scss"]
 })
+
 export class TmplSimpleCheckboxComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
-  _row: FlowTypes.TemplateRow;
-  @Input() set row(value: FlowTypes.TemplateRow) {
-    this._row = value;
-  }
   @Input() parent: TemplateContainerComponent;
   checked: boolean;
   position: boolean;
