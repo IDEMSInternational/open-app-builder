@@ -14,6 +14,17 @@ const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
   "parameter_list",
   "action_list",
 ];
+/**
+ * Some types that contain nested rows are nested in display only (not template properties)
+ * Log here to handle accordingly
+ * TODO - would be nice to unify
+ */
+const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
+  "animated_section",
+  "animated_section_group",
+  "nav_group",
+  "nav_section",
+];
 
 @Component({
   selector: "plh-template-container",
@@ -38,11 +49,15 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    *  Action Handling
    **************************************************************************************/
   /** Public method to add actions to processing queue and process */
-  public async handleActions(actions: FlowTypes.TemplateRowAction[] = []) {
+  public async handleActions(actions = []) {
     actions.forEach((action) => this.actionsQueue.push(action));
-    await this.processActionQueue();
+    // TODO - pass back relevant info from processActionsQueue
+    const res = await this.processActionQueue();
+    this.handleActionsCallback(actions, res);
     // TODO - possibly attach unique id to action to passback action results
   }
+  /** Optional method child component can add to handle post-action callback */
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -77,6 +92,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         return this.setLocalVariable(key, value);
 
       default:
+        console.warn("No handler for action", { action_id, args });
         break;
     }
   }
@@ -100,7 +116,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     // that have already been set/overridden
     const parentVariables = this.parent?.localVariables?.[this.template.flow_name];
     this.localVariables = this.processVariables(this.template.rows, parentVariables);
-    console.log("[Template Init]", { name: this.name, parentVariables });
+    // console.log("[Template Init]", { name: this.name, parentVariables });
     if (!this.parent) {
       console.log({ localVariables: this.localVariables });
     }
@@ -121,7 +137,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     variables: ILocalVariables = {}
   ): ILocalVariables {
     templateRows.forEach((r) => {
-      const { name, value, rows, type } = r;
+      let { name, value, rows, type } = r;
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
       if (type === "set_variable") {
@@ -140,6 +156,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
       // handle rows which have nested structures
       if (rows) {
+        // TODO - don't like overwriting this, be nicer to handle elsewhere
+        if (DISPLAY_TYPES.includes(type)) {
+          type = "display_group";
+        }
         switch (type) {
           // nested properties assign specific value further down the tree
           // TODO handle case where name is further nested (e.g. templateA.child1.someField)
@@ -178,7 +198,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       // handle updates where field defined with dynamic expressions
       VARIABLE_FIELDS.forEach((field) => {
         r[field] = variables[r.name]?.[field] || r[field];
-        const dynamicEvaluator = r._dynamicFields?.[field] || _extractDynamicEvaluators(r[field]);
+        // identify if the current field-value has a dynamic expression, or a previous one
+        // TODO - if a dynamic field is overwritten by static value (not just revaluated) that value
+        // would also be overwritten on render (so needs fix, possibly moving dynamic fields to parser to merge)
+        const dynamicEvaluator = _extractDynamicEvaluators(r[field]) || r._dynamicFields?.[field];
         if (dynamicEvaluator) {
           r._dynamicFields = r._dynamicFields || {};
           // evaluate dynamic field, keeping reference for future
@@ -189,7 +212,12 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       });
       // handle nested templates
       if (r.rows) {
-        switch (r.type) {
+        // TODO - don't like overwriting this, be nicer to handle elsewhere
+        let type = r.type;
+        if (DISPLAY_TYPES.includes(type)) {
+          type = "display_group";
+        }
+        switch (type) {
           case "display_group":
             // display groups are visual distinction only, process the rest of the variables as if they were inline
             r.rows = this.processRows(r.rows, variables);
