@@ -340,7 +340,8 @@ export namespace FlowTypes {
     | "round_button"
     | "nav_group"
     | "nav_section"
-    | "slider_new";
+    | "slider_new"
+    | "simple_checkbox";
 
   export interface TemplateRow {
     type: TemplateRowType;
