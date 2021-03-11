@@ -26,38 +26,8 @@
   opacity: 1;
 }
 
-.debug-container {
-  padding: 5px;
-  background: rgba(255, 255, 255, 0.5);
-  font-size: small;
-}
-.debug-container > p {
-  text-align: left;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-}
-.debug-container table {
-  padding: 2px;
-  border-collapse: collapse;
-  margin-top: 8px;
-  td {
-    padding: 2px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-  }
-}
-
-.debug-container[data-hidden="true"] > summary {
-  background: #ffcece;
-  padding: 5px;
-  margin: -5px;
-}
 // hide template components with hidden attribute (unless in debug mode)
 .plh-tmpl-comp[data-hidden="true"] {
-  display: none;
-}
-.plh-tmpl-comp[data-hidden="'true'"] {
   display: none;
 }
 .plh-tmpl-comp[data-debug="true"] {

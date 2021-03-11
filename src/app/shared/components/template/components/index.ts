@@ -11,6 +11,7 @@ import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
 import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TemplateBaseComponent } from "./base";
+import { TemplateDebuggerComponent } from "./debugger";
 import { TmplButtonComponent } from "./button";
 import { TmplDisplayGroupComponent } from "./layout/display_group";
 import { TmplImageComponent } from "./image";
@@ -25,6 +26,8 @@ import { TmplSliderComponent } from "./slider/slider.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
+  TemplateBaseComponent,
+  TemplateDebuggerComponent,
   TmplTextComponent,
   AnimatedSectionGroupComponent,
   TmplTitleComponent,
@@ -40,7 +43,7 @@ export const TEMPLATE_COMPONENTS = [
   SliderNewComponent,
   NavGroupComponent,
   TmplButtonComponent,
-  RoundIconButtonComponent
+  RoundIconButtonComponent,
 ];
 
 /***************************************************************************************
@@ -72,5 +75,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  slider_new: SliderNewComponent
+  slider_new: SliderNewComponent,
 };
