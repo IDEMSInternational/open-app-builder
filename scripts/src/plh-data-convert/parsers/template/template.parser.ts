@@ -25,9 +25,12 @@ export class TemplateParser extends DefaultParser {
         this.parseActionString(actionString as any)
       );
     }
-    // convert hidden field to string if requried (easier for future processing, as most update functions typically return strings)
-    if (row.hidden && typeof row.hidden === "boolean") {
+    // convert boolean to strings (easier for future processing, as most update functions typically return strings)
+    if (typeof row.hidden === "boolean") {
       row.hidden = `${row.hidden}`;
+    }
+    if (typeof row.value === "boolean") {
+      row.value = `${row.value}`;
     }
     // handle nested rows in same way
     if (row.rows) {
