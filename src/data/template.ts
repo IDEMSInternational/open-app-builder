@@ -135,22 +135,22 @@
       },
       {
         "name": "include_outro",
-        "value": false,
+        "value": "false",
         "type": "set_variable"
       },
       {
         "name": "hide_intro",
-        "value": false,
+        "value": "false",
         "type": "set_variable"
       },
       {
         "name": "hide_content",
-        "value": true,
+        "value": "true",
         "type": "set_variable"
       },
       {
         "name": "hide_outro",
-        "value": true,
+        "value": "true",
         "type": "set_variable"
       },
       {
@@ -802,7 +802,7 @@
           },
           {
             "name": "user_input_1",
-            "value": false,
+            "value": "false",
             "type": "set_variable"
           },
           {
@@ -827,7 +827,7 @@
           },
           {
             "name": "user_input_2",
-            "value": true,
+            "value": "true",
             "type": "set_variable"
           },
           {
