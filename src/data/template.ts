@@ -1,6 +1,6 @@
 /* tslint:disable */
-import { FlowTypes } from "src/app/shared/model/flowTypes";
-export const template: FlowTypes.Template[] = [
+  import { FlowTypes } from "src/app/shared/model/flowTypes";
+  export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
     "flow_name": "template_watch_together",
@@ -180,7 +180,7 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "button_2",
             "value": "skip",
-            "hidden": true,
+            "hidden": "true",
             "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
             "type": "set_variable"
           },
@@ -243,7 +243,7 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "button_2",
             "value": "skip",
-            "hidden": true,
+            "hidden": "true",
             "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
             "type": "set_variable"
           },
@@ -464,6 +464,11 @@ export const template: FlowTypes.Template[] = [
           }
         ],
         "name": "workshop_activity"
+      },
+      {
+        "name": "content_box",
+        "value": "buttons",
+        "type": "set_variable"
       }
     ]
   },
@@ -715,152 +720,5 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "timer",
-    "status": "released",
-    "rows": [
-      {
-        "type": "timer",
-        "name": "default_timer",
-        "value": null,
-        "comments": "",
-        "action_list": [],
-        "parameter_list": [
-          "title: Timer",
-          "help: Some text help",
-          "duration: 10",
-          "duration_extension: 2"
-        ]
-      },
-      {
-        "type": "timer",
-        "name": "5_min_timer",
-        "value": null,
-        "comments": "",
-        "action_list": [],
-        "parameter_list": [
-          "title:Timer 2",
-          "duration: 5",
-          "is_editable_on_playing: true",
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "slider",
-    "status": "released",
-    "rows": [
-      {
-        "type": "slider",
-        "name": "template_slider",
-
-        "parameter_list": [
-          "title: Slider example",
-          "min: 0",
-          "max: 48",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 2"
-        ],
-        "comments": ""
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "slider_new",
-    "status": "released",
-    "rows": [
-      {
-        "type": "slider_new",
-        "name": "templates_slider",
-
-        "parameter_list": [
-          "title: Slider example",
-          "min: 0",
-          "max: 48",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 2"
-        ],
-        "comments": ""
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "number_selector",
-    "status": "released",
-    "rows": [
-      {
-        "type": "number_selector",
-        "name": "example_selector",
-        "value": null,
-        "parameter_list": [
-          "title: Category size 2",
-          "min_value: 0",
-          "max_value: 8",
-          "height: short",
-          "category_size: 2"
-        ]
-      },
-      {
-        "type": "number_selector",
-        "name": "example_selector",
-        "value": null,
-        "parameter_list": [
-          "title: Category size 1",
-          "min_value: 0",
-          "max_value: 10",
-          "height: normal",
-          "category_size: 1"
-        ]
-      },
-      {
-        "type": "number_selector",
-        "name": "example_selector",
-        "value": null,
-        "parameter_list": [
-          "title: Example",
-          "first_display_term: 3",
-          "category_list: 0-20; 21-25; 26-30; 30-40; 40-55; 55+",
-        ]
-      }
-
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "audio_player",
-    "status": "released",
-    "rows": [
-      {
-        "type": "audio",
-        "name": "Audio",
-        "parameter_list": [
-          "src: ./assets/audio/music.mp3",
-          "rangeBarDisabled: false",
-          "title: Fade",
-          "timeToRewind: 10",
-          "help: Some help text"
-        ]
-      },
-      {
-        "type": "audio",
-        "name": "Audio",
-        "parameter_list": [
-          "src: ./assets/audio/music.mp3",
-          "rangeBarDisabled: true",
-          "title: Imagine dragons",
-          "timeToRewind: 5",
-          "help: Another text"
-        ]
-      }
-    ]
-  },
+  }
 ]

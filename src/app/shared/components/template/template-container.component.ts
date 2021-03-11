@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { takeWhile } from "rxjs/operators";
+import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 
@@ -18,6 +20,10 @@ const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
   templateUrl: "./template-container.component.html",
   styleUrls: ["./template-container.component.scss"],
 })
+/**
+ * 
+ * TODO - ngfor loop should have comparison function and key
+ */
 export class TemplateContainerComponent implements OnInit, ITemplateContainerProps {
   @Input() name: string;
   @Input() parent?: TemplateContainerComponent;
@@ -25,8 +31,72 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   /** local state tree used to handle default and overwritten row properties */
   localVariables: ILocalVariables = {};
   debugMode = false;
+  private actionsQueue: FlowTypes.TemplateRowAction[] = [];
+  private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
   ngOnInit() {
+    this.initialiseTemplate();
+  }
+
+  /***************************************************************************************
+   *  Action Handling
+   **************************************************************************************/
+  /** Public method to add actions to processing queue and process */
+  public async handleActions(actions: FlowTypes.TemplateRowAction[] = []) {
+    actions.forEach((action) => this.actionsQueue.push(action));
+    await this.processActionQueue();
+    // TODO - possibly attach unique id to action to passback action results
+  }
+  /**
+   * To avoid actions potentially trying to write to same db records at the same time,
+   * all actions are added to a queue and processed in order of addition
+   */
+  private async processActionQueue() {
+    const processedActions = [];
+    // start the queue if it is not already running
+    if (!this.actionsQueueProcessing$.value) {
+      console.group("Template Actions");
+      this.actionsQueueProcessing$.next(true);
+      while (this.actionsQueue.length > 0) {
+        const action = this.actionsQueue[0];
+        await this.processAction(action);
+        this.actionsQueue.shift();
+        processedActions.push(action);
+      }
+      this.actionsQueueProcessing$.next(false);
+      console.groupEnd();
+    }
+    // resolve once full queue processed
+    await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
+    // once all actions have been processed re-render rows
+    if (processedActions.length > 0) {
+      this.processRows(this.template.rows, this.localVariables);
+    }
+  }
+  private async processAction(action: FlowTypes.TemplateRowAction) {
+    const { action_id, args } = action;
+    switch (action_id) {
+      case "set_value":
+        const [key, value] = args;
+        return this.setLocalVariable(key, value);
+
+      default:
+        break;
+    }
+  }
+
+  /**
+   * When a child triggers the changing of a local variable... TODO
+   */
+  public setLocalVariable(key: string, value: any) {
+    this.localVariables[key] = { value };
+  }
+
+  /***************************************************************************************
+   *  Template Initialisation
+   **************************************************************************************/
+
+  private initialiseTemplate() {
     // Lookup template and provide fallback
     this.template =
       TEMPLATE.find((t) => t.flow_name === this.name) || NOT_FOUND_TEMPLATE(this.name);
@@ -39,20 +109,6 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       console.log({ localVariables: this.localVariables });
     }
     this.template.rows = this.processRows(this.template.rows, this.localVariables);
-  }
-
-  public handleActions(actions: FlowTypes.TemplateRowAction[]) {
-    console.log("handling actions", actions);
-  }
-
-  /**
-   * When a child triggers the changing of a local variable... TODO
-   */
-  public setLocalVariable(key: string, value: any) {
-    this.localVariables[key] = { value };
-    this.template.rows = this.processRows(this.template.rows, this.localVariables);
-    // TODO - row processing should also evaluate hidden states and make field replacements (?) -
-    // TODO - ngfor loop should have comparison function and key
   }
 
   /**
@@ -90,7 +146,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       if (rows) {
         switch (type) {
           // nested properties assign specific value further down the tree
-          // TODO handle case where name is further nested
+          // TODO handle case where name is further nested (e.g. templateA.child1.someField)
           case "nested_properties":
             variables[name] = this.processVariables(rows, variables[name]);
             break;
@@ -122,16 +178,17 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
     const filteredRows = templateRows.filter((r) => !filterTypes.includes(r.type));
     // TODO - handle hidden evaluation
+
     const rowsWithReplacedValues = filteredRows.map((r) => {
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
-      r._dynamicFields = r._dynamicFields || {};
       VARIABLE_FIELDS.forEach((field) => {
         r[field] = variables[r.name]?.[field] || r[field];
-        const dynamicEvaluator = _isDynamicValue(r[field] || r._dynamicFields[field]);
+        const dynamicEvaluator = r._dynamicFields?.[field] || _extractDynamicEvaluators(r[field]);
         if (dynamicEvaluator) {
+          r._dynamicFields = r._dynamicFields || {};
           // evaluate dynamic field, keeping reference for future
-          r._dynamicFields[field] = dynamicEvaluator;
+          r._dynamicFields[field] = dynamicEvaluator as any;
           r[field] = this.parseDynamicValue(r._dynamicFields[field]);
         }
         // TODO - evaulate function expressions (e.g. !@fields.something)
@@ -156,12 +213,12 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
   private parseDynamicValue(evaluators: FlowTypes.TemplateRowDynamicEvaluator[]) {
     let parsedExpression = evaluators[0].fullExpression;
+    // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
     for (let evaluator of evaluators) {
       let parsedValue: any;
       const { matchedExpression, type, fieldName } = evaluator;
       switch (type) {
         case "local":
-          console.log("evaluate local", fieldName, this.localVariables);
           parsedValue = this.localVariables[fieldName]?.value || "";
           break;
         // case 'fields':
@@ -172,19 +229,12 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
+    return parsedExpression;
   }
-
-  // private _testSetLocalVariables() {
-  //   if (this.template.flow_name === "buttons") {
-  //     setTimeout(() => {
-  //       this.setLocalVariable("button_completed", "Next 4");
-  //     }, 2000);
-  //   }
-  // }
 }
 
 /** Some strings contain a variable expression such as "/assets/@fields.name/happy.jpg" or "welcome @local.name!" */
-function _isDynamicValue(fullExpression: any) {
+function _extractDynamicEvaluators(fullExpression: any) {
   // match fields such as @local.someField or @fields.someField.deeperNested
   // first prefix should consist only of letters (e.g. @local, @fields)
   // second part can be any letter, number, or characters _ .
@@ -213,7 +263,14 @@ function _isDynamicValue(fullExpression: any) {
       return allMatches;
     }
   }
-  return false;
+}
+/** helper function used for dev to wait a fixed amount of time */
+function _wait(ms: number) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
 }
 
 const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({

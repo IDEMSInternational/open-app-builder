@@ -348,7 +348,7 @@ export namespace FlowTypes {
     value?: any;
     action_list?: TemplateRowAction[];
     parameter_list?: string[];
-    hidden?: boolean | string;
+    hidden?: string;
     rows?: TemplateRow[];
     /** track fields above where dynamic expressions have been used in field evaluation */
     _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
@@ -386,5 +386,4 @@ export namespace FlowTypes {
     default_value?: string | number | boolean;
     comments?: string /* Used for authoring comments. Not used in code */;
   }
-
 }
