@@ -345,7 +345,7 @@ export namespace FlowTypes {
   export interface TemplateRow {
     type: TemplateRowType;
     name?: string;
-    value?: any;
+    value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
     parameter_list?: string[];
     hidden?: string;
@@ -365,11 +365,15 @@ export namespace FlowTypes {
     fieldName: string;
   }
   export interface TemplateRowAction {
+    // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "set_value"
       | "set_local"
       | "respond_to_action"
       | "exit"
+      | "completed"
+      | "uncompleted"
+      | "click"
       | "mark_as_completed"
       | "mark_as_skipped";
     args: string[];
