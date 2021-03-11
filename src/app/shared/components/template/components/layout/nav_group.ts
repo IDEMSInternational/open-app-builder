@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { IonSlides } from "@ionic/angular";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { PLHDataService } from "src/app/shared/services/data/data.service";
@@ -67,7 +67,7 @@ import { TemplateBaseComponent } from "../base";
     `,
   ],
 })
-export class NavGroupComponent extends TemplateBaseComponent {
+export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
   defaultParamMap: Record<string, any>;
   sectionIndex = 0;
   navButtonList: NavButtons[] = [];
@@ -76,6 +76,12 @@ export class NavGroupComponent extends TemplateBaseComponent {
   constructor(dataService: PLHDataService) {
     super();
     this.defaultParamMap = dataService.getComponentDefaultParamMap("nav_group");
+  }
+
+  ngOnInit() {
+    this.parent.handleActionsCallback = async (actions, results) => {
+      console.log("parent handled actions", actions, results);
+    };
   }
 
   private getParamFromMap(paramMap: Record<string, any>, name: string) {
