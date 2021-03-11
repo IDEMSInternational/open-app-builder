@@ -2,7 +2,7 @@
   [className]="'template-container ' + localVariables?.theme_name"
   [attr.data-theme]="localVariables._theme || 'default'"
 >
-  <div class="debug-container" [attr.data-enabled]="debugMode">
+  <div class="debug-toggle" [attr.data-enabled]="debugMode">
     <ion-icon name="bug-outline"></ion-icon>
     <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
   </div>
