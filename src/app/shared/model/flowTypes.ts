@@ -367,6 +367,7 @@ export namespace FlowTypes {
   export interface TemplateRowAction {
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
+      | "" // TODO document this property for stop propogation
       | "set_value"
       | "set_local"
       | "respond_to_action"

@@ -49,12 +49,18 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    *  Action Handling
    **************************************************************************************/
   /** Public method to add actions to processing queue and process */
-  public async handleActions(actions = []) {
+  public async handleActions(actions: FlowTypes.TemplateRowAction[] = []) {
     actions.forEach((action) => this.actionsQueue.push(action));
     // TODO - pass back relevant info from processActionsQueue
     const res = await this.processActionQueue();
     this.handleActionsCallback(actions, res);
     // TODO - possibly attach unique id to action to passback action results
+
+    // Emit actions to parent
+    const emitActions = actions.filter((a) => a.args[0] && a.args[0].indexOf("emit") > -1);
+    if (emitActions.length > 0) {
+      this.parent?.handleActions(emitActions);
+    }
   }
   /** Optional method child component can add to handle post-action callback */
   public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
