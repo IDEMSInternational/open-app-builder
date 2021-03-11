@@ -39,26 +39,13 @@ export class TmplCompHostDirective {
   selector: "plh-template-component",
   template: `
     <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
-      <details *ngIf="parent.debugMode" class="debug-container" [attr.data-hidden]="row.hidden">
-        <summary style="display:flex">
-          <span>{{ row.type }}</span>
-          <span *ngIf="row.hidden === 'true'" style="margin-left:auto">Hidden</span>
-        </summary>
-        <table>
-          <th></th>
-          <th></th>
-          <div *ngFor="let key of row | objectKeys" style="display:contents">
-            <tr *ngIf="!debugFieldExclusions.includes(key) && row[key]">
-              <div></div>
-              <td>{{ key }}</td>
-              <td>{{ row[key] | json }}</td>
-            </tr>
-          </div>
-        </table>
-        <ion-button fill="clear" size="small" (click)="logDebugInfo()"
-          >(log full details)</ion-button
-        >
-      </details>
+      <!-- Template Debugger -->
+      <plh-template-debugger
+        *ngIf="parent.debugMode"
+        [row]="row"
+        [parent]="parent"
+      ></plh-template-debugger>
+      <!-- Injected template component -->
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
   `,
@@ -75,21 +62,10 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  public hidden = false;
-  public debugFieldExclusions = ["comments", "rows"];
-
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit() {
     this.renderRow(this.row);
-  }
-  public logDebugInfo() {
-    console.group(this.row.type, this.row.name);
-    console.log("row", this.row);
-    console.log("local variables", this.parent.localVariables);
-    console.log("parent", this.parent);
-    console.log("children", this.row.rows);
-    console.groupEnd();
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
