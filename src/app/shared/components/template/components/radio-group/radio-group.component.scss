@@ -31,13 +31,21 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
     .btn_square{
       &_container{
-        max-width: 150px;
         margin: 2% 1.5%;
         label{
+          max-width: 115px;
           padding: 5px;
           img{
-            max-width: 70px;
+            max-width: calc(50px * var(--scale-factor));
             margin-bottom: 3px;
+          }
+          @media (max-width: 360px) {
+            img{
+              max-width: calc(30px * var(--scale-factor));
+            }
+          }
+          @media(min-width: 576px){
+            max-width: 150px;
           }
         }
       }
@@ -51,6 +59,12 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           border:none;
           img{
             margin-bottom: 12px;
+            max-width: calc(70px * var(--scale-factor));
+          }
+          @media (min-width: 500px){
+            img{
+              max-width: calc(90px * var(--scale-factor));
+            }
           }
         }
         .image-checked{
@@ -89,7 +103,7 @@ input{
   transition: .3s linear;
 }
 label{
-  font-size: 16px;
+  font-size: calc(16px * var(--scale-factor));
   height: 100%;
   font-weight: 700;
   text-align: center;
