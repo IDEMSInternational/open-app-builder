@@ -42,9 +42,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private contactFieldService: ContactFieldService) {
-
-  }
+  constructor(private contactFieldService: ContactFieldService) {}
 
   ngOnInit() {
     this.initialiseTemplate();
@@ -54,10 +52,14 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    *  Action Handling
    **************************************************************************************/
   /** Public method to add actions to processing queue and process */
-  public async handleActions(actions = []) {
+  public async handleActions(actions: FlowTypes.TemplateRowAction[] = []) {
     actions.forEach((action) => this.actionsQueue.push(action));
     // TODO - pass back relevant info from processActionsQueue
     const res = await this.processActionQueue();
+    // continue to emit any actions to parent where defined
+    if (this.parent) {
+      this.parent.handleActions(actions.filter((a) => a.action_id === "emit"));
+    }
     this.handleActionsCallback(actions, res);
     // TODO - possibly attach unique id to action to passback action results
   }
@@ -92,7 +94,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private async processAction(action: FlowTypes.TemplateRowAction) {
     const { action_id, args } = action;
     switch (action_id) {
-      case "set_value":
+      case "set_local":
         const [key, value] = args;
         return this.setLocalVariable(key, value);
 
@@ -248,7 +250,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         case "local":
           parsedValue = this.localVariables[fieldName]?.value || "";
           break;
-        case 'fields':
+        case "fields":
           parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
           break;
         default:
@@ -257,6 +259,15 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
+
+    // Handle negated conditions - true/false will already have been filled as text so manually toggle
+    if (parsedExpression.startsWith("!")) {
+      parsedExpression = parsedExpression.replace("!true", "false").replace("!false", "true");
+      if (parsedExpression.startsWith("!")) {
+        console.error("Negation condition not handled correctly", parsedExpression);
+      }
+    }
+    console.log("parsedExpression", parsedExpression);
     return parsedExpression;
   }
   /** When using ngFor loop track by  */

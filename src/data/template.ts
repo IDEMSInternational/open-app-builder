@@ -95,15 +95,6 @@
           {
             "type": "slider",
             "name": "slider",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "set_value",
-                "args": [],
-                "_raw": "set_value",
-                "_cleaned": "click | set_value"
-              }
-            ],
             "parameter_list": [
               "min_value:@local.min_value",
               "min_text:@local.min_text",
