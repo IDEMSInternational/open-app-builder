@@ -13,6 +13,16 @@
   &.active {
     background-color: var(--theme-var-templateActiveBg, #fff6d6);
   }
+
+  &.show-border {
+    border: 1px solid green;
+    padding: 2px;
+    margin: 2px;
+  }
+
+  .template-name-debug {
+    color: green;
+  }
 }
 .debug-toggle {
   position: absolute;
