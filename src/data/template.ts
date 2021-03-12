@@ -3,117 +3,306 @@
   export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
-    "flow_name": "widget_video",
+    "flow_name": "template_watch_together",
     "status": "released",
     "rows": [
       {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "title",
-            "name": "title",
-            "value": "Video",
-            "comments": "For consistency with the other widgets, it would make sense if the title and help fit inside the widget frame."
-          },
-          {
-            "name": "help",
-            "type": "set_variable"
-          }
-        ]
+        "type": "set_variable",
+        "name": "hide_intro",
+        "value": "false",
+        "comments": "entries without type specified simply create a local variable. These can be referenced via @local syntax, e.g. @local.example_variable ",
+        "__EMPTY": "All content will be hardcoded, so should not be changed without dev consult"
       },
       {
-        "type": "video",
-        "name": "video_src",
-        "comments": "Needs option for full screen mode"
+        "type": "set_variable",
+        "name": "hide_activity",
+        "value": "true"
+      },
+      {
+        "type": "set_variable",
+        "name": "theme_name",
+        "value": "active"
+      },
+      {
+        "type": "animated_section_group",
+        "value": "fade_in_out",
+        "rows": [
+          {
+            "type": "animated_section",
+            "name": "welcome_section",
+            "hidden": "@local.hide_intro",
+            "comments": "animated section value represents the name of predefined animations. Hidden criteria will be evaluated as TRUE or FALSE.",
+            "rows": [
+              {
+                "type": "image",
+                "name": "main_image",
+                "value": "plh_images/workshops/welcome1.svg"
+              },
+              {
+                "type": "title",
+                "name": "main_title",
+                "value": "Welcome family group! ",
+                "comments": "Blank values will assume an empty string"
+              },
+              {
+                "type": "text",
+                "name": "intro_text",
+                "value": "This week we will be exploring Positive Instructions. \n\nBefore we start the session, select a person with a smartphone to be the informal facilitator."
+              },
+              {
+                "type": "display_group",
+                "name": "nav_buttons",
+                "comments": "Grouping content will display on same line",
+                "rows": [
+                  {
+                    "type": "button",
+                    "name": "button_1",
+                    "value": "Start Session",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_value",
+                        "args": [
+                          "hide_intro",
+                          "true"
+                        ],
+                        "_raw": "set_value | hide_intro | true",
+                        "_cleaned": "click | set_value | hide_intro | true"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_value",
+                        "args": [
+                          "hide_activity",
+                          "false"
+                        ],
+                        "_raw": "set_value | hide_activity | false",
+                        "_cleaned": "click | set_value | hide_activity | false"
+                      }
+                    ],
+                    "comments": "specific actions can be added to default click handlers where required. May require rethinking to know when to use triggered values vs initialized/formulae"
+                  },
+                  {
+                    "type": "button",
+                    "name": "button_2",
+                    "value": "Skip",
+                    "parameter_list": [
+                      "color:secondary",
+                      ""
+                    ],
+                    "comments": "additional parameters can be used where default functionality needs to be extended. (use sparingly)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "animated_section",
+            "name": "welcome_activity",
+            "hidden": "@local.hide_activity",
+            "rows": [
+              {
+                "type": "title",
+                "name": "media_title"
+              },
+              {
+                "type": "video",
+                "name": "media_src",
+                "value": "https://www.w3schools.com/html/mov_bbb.mp4"
+              },
+              {
+                "type": "button",
+                "name": "button_3",
+                "value": "Continue"
+              },
+              {
+                "type": "button",
+                "name": "button_4",
+                "value": "Back",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "set_value",
+                    "args": [
+                      "hide_intro",
+                      "false"
+                    ],
+                    "_raw": "set_value | hide_intro | false",
+                    "_cleaned": "click | set_value | hide_intro | false"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_value",
+                    "args": [
+                      "hide_activity",
+                      "true"
+                    ],
+                    "_raw": "set_value | hide_activity | true",
+                    "_cleaned": "click | set_value | hide_activity | true"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   {
     "flow_type": "template",
-    "flow_name": "widget_slider",
+    "flow_name": "template_together_welcome",
     "status": "released",
     "rows": [
       {
-        "name": "min_value",
-        "value": 1,
+        "name": "group_name",
+        "value": "The group name",
+        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred.",
         "type": "set_variable"
       },
       {
-        "name": "max_value",
-        "value": 10,
+        "name": "intro_nav_button_text",
+        "value": "Next",
         "type": "set_variable"
       },
       {
-        "name": "step",
-        "value": 1,
+        "name": "outro_nav_button_text",
+        "value": "Next 2",
         "type": "set_variable"
       },
       {
-        "name": "min_text",
-        "value": "Low",
-        "type": "set_variable"
+        "type": "title",
+        "name": "outer_title",
+        "value": "Template Together Welcome"
       },
       {
-        "name": "max_text",
-        "value": "High",
-        "type": "set_variable"
-      },
-      {
-        "name": "unit_text",
-        "value": "units",
-        "type": "set_variable"
-      },
-      {
-        "name": "default_value",
-        "value": "null",
-        "type": "set_variable"
-      },
-      {
-        "name": "_value",
-        "value": "@local.default_value",
-        "comments": "should be type: set_default",
-        "type": "set_variable"
-      },
-      {
-        "type": "display_group",
+        "type": "template",
+        "value": "template_watch_together",
+        "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
           {
-            "type": "title",
-            "name": "title"
+            "name": "theme_name",
+            "value": "passive",
+            "type": "set_variable"
           },
           {
-            "name": "help",
-            "comments": "should be type: help",
+            "name": "button_1",
+            "value": "@local.intro_nav_button_text",
+            "type": "set_variable"
+          },
+          {
+            "name": "button_2",
+            "value": "skip",
+            "hidden": "true",
+            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
+            "type": "set_variable"
+          },
+          {
+            "name": "image_1",
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Welcome @local.group_name!",
             "type": "set_variable"
           }
-        ]
+        ],
+        "name": "template_watch_together"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "multi_template",
+    "status": "released",
+    "rows": [
+      {
+        "name": "group_name",
+        "value": "The group name",
+        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred.",
+        "type": "set_variable"
       },
       {
-        "type": "display_group",
+        "name": "intro_nav_button_text",
+        "value": "Next",
+        "type": "set_variable"
+      },
+      {
+        "name": "outro_nav_button_text",
+        "value": "Next 2",
+        "type": "set_variable"
+      },
+      {
+        "type": "title",
+        "name": "outer_title",
+        "value": "Template Together Welcome"
+      },
+      {
+        "type": "template",
+        "value": "template_watch_together",
+        "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
         "rows": [
           {
-            "type": "slider",
-            "name": "slider",
-            "action_list": [
-              {
-                "action_id": "set_value",
-                "args": []
-              }
-            ],
-            "parameter_list": [
-              "min_value:@local.min_value",
-              "min_text:@local.min_text",
-              "max_value:@max_value",
-              "max_text:@local.max_text",
-              "step:@local.step",
-              "unit_text:@local.unit_text"
-            ]
+            "name": "theme_name",
+            "value": "passive",
+            "type": "set_variable"
           },
           {
-            "comments": "no_answer",
+            "name": "button_1",
+            "value": "@local.intro_nav_button_text",
+            "type": "set_variable"
+          },
+          {
+            "name": "button_2",
+            "value": "skip",
+            "hidden": "true",
+            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
+            "type": "set_variable"
+          },
+          {
+            "name": "image_1",
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Welcome @local.group_name!",
             "type": "set_variable"
           }
-        ]
+        ],
+        "name": "template_watch_together"
+      },
+      {
+        "type": "template",
+        "value": "template_watch_together",
+        "rows": [
+          {
+            "name": "theme_name",
+            "value": "passive",
+            "type": "set_variable"
+          },
+          {
+            "name": "button_1",
+            "value": "@local.outro_nav_button_text",
+            "type": "set_variable"
+          },
+          {
+            "name": "button_2",
+            "value": "skip",
+            "type": "set_variable"
+          },
+          {
+            "name": "image_1",
+            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Welcome @local.group_name!",
+            "type": "set_variable"
+          }
+        ],
+        "name": "template_watch_together"
       }
     ]
   },
@@ -123,34 +312,29 @@
     "status": "released",
     "rows": [
       {
-        "name": "activity_image_src",
+        "name": "hide_intro",
+        "value": "false",
+        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content.",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_activity",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_activity_banner",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "activity_image",
         "value": "src/assets/not-found-image.png",
-        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content. It occasionally has an outro.",
         "type": "set_variable"
       },
       {
         "name": "activity_title",
-        "value": "Title of this activity",
-        "type": "set_variable"
-      },
-      {
-        "name": "include_outro",
-        "value": "false",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_intro",
-        "value": "false",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_content",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_outro",
-        "value": "true",
+        "value": "Title of this section",
         "type": "set_variable"
       },
       {
@@ -166,11 +350,8 @@
         "rows": [
           {
             "type": "image",
-            "name": "intro_image_src",
-            "value": "@local.activity_image",
-            "parameter_list": [
-              "background_box"
-            ]
+            "name": "intro_image",
+            "value": "@local.activity_image"
           },
           {
             "type": "title",
@@ -183,34 +364,38 @@
           },
           {
             "type": "template",
-            "name": "intro_nav_buttons",
-            "value": "nav_buttons",
-            "action_list": [
-              {
-                "action_id": "completed",
-                "args": [
-                  "set_local:hide_content:false"
-                ]
-              },
-              {
-                "action_id": "completed",
-                "args": [
-                  "set_local:hide_intro:true"
-                ]
-              },
-              {
-                "action_id": "uncompleted",
-                "args": [
-                  "emit:uncompleted"
-                ]
-              }
-            ],
+            "name": "nav_buttons",
+            "value": "buttons",
             "rows": [
               {
-                "name": "button_uncompleted",
-                "value": "Skip",
+                "name": "button_completed",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_intro",
+                      "true"
+                    ],
+                    "_raw": "set_local | hide_intro | true",
+                    "_cleaned": "click | set_local | hide_intro | true"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_activity",
+                      "false"
+                    ],
+                    "_raw": "set_local | hide_activity | false",
+                    "_cleaned": "click | set_local | hide_activity | false"
+                  }
+                ],
+                "type": "set_variable"
+              },
+              {
+                "name": "button_skipped",
                 "hidden": "!@local._completed",
-                "comments": "default: set_properties\nuse extend_properties to add to an existing list of properties",
                 "type": "set_variable"
               }
             ]
@@ -220,12 +405,12 @@
       {
         "type": "animated_section",
         "name": "content",
-        "hidden": "@local.hide_content",
+        "hidden": "@local.hide_activity",
         "rows": [
           {
             "type": "display_group",
             "name": "activity_banner",
-            "hidden": "true",
+            "hidden": "@local.hide_activity_banner",
             "rows": [
               {
                 "type": "title",
@@ -234,11 +419,8 @@
               },
               {
                 "type": "image",
-                "name": "banner_image_src",
-                "value": "@local.activity_image",
-                "parameter_list": [
-                  "background_box"
-                ]
+                "name": "banner_image",
+                "value": "@local.activity_image"
               }
             ]
           },
@@ -247,96 +429,26 @@
             "name": "content_box",
             "action_list": [
               {
-                "action_id": "completed",
+                "trigger": "respond_to_action",
+                "action_id": "emit",
                 "args": [
-                  "set_local:hide_content:true"
-                ]
+                  "exit",
+                  "mark_as_completed"
+                ],
+                "_raw": "respond_to_action | exit | mark_as_completed",
+                "_cleaned": "respond_to_action | exit | mark_as_completed"
               },
               {
-                "action_id": "completed",
+                "trigger": "respond_to_action",
+                "action_id": "emit",
                 "args": [
-                  "set_local:hide_outro:false"
-                ]
-              },
-              {
-                "action_id": "uncompleted",
-                "args": [
-                  "set_local:hide_intro:false"
-                ]
-              },
-              {
-                "action_id": "uncompleted",
-                "args": [
-                  "set_local:hide_content:true"
-                ]
+                  "exit",
+                  "exit"
+                ],
+                "_raw": "respond_to_action | exit | exit",
+                "_cleaned": "respond_to_action | exit | exit"
               }
             ],
-            "hidden": "!@local.include_outro",
-            "comments": "Do this row when include_outro = TRUE",
-            "rows": []
-          },
-          {
-            "type": "template",
-            "name": "content_box",
-            "action_list": [
-              {
-                "action_id": "completed",
-                "args": [
-                  "emit:completed"
-                ]
-              },
-              {
-                "action_id": "uncompleted",
-                "args": [
-                  "set_local:hide_intro:false"
-                ]
-              },
-              {
-                "action_id": "uncompleted",
-                "args": [
-                  "set_local:hide_content:true"
-                ]
-              }
-            ],
-            "hidden": "@local.include_outro",
-            "comments": "Do this row when include_outro = FALSE",
-            "rows": []
-          }
-        ]
-      },
-      {
-        "type": "animated_section",
-        "name": "outro",
-        "hidden": "@local.hide_outro",
-        "rows": [
-          {
-            "type": "image",
-            "name": "outro_image_src",
-            "value": "@local.activity_image",
-            "parameter_list": [
-              "background_box"
-            ]
-          },
-          {
-            "type": "title",
-            "name": "outro_title",
-            "value": "@local.activity_title"
-          },
-          {
-            "type": "text",
-            "name": "outro_text"
-          },
-          {
-            "type": "text",
-            "name": "outro_habit_text",
-            "parameter_list": [
-              "alert"
-            ]
-          },
-          {
-            "type": "template",
-            "name": "outro_nav_buttons",
-            "value": "nav_buttons",
             "rows": []
           }
         ]
@@ -345,7 +457,48 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "nav_buttons",
+    "flow_name": "test_wa_extend",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "value": "workshop_activity",
+        "rows": [
+          {
+            "name": "activity_image",
+            "value": "plh_images/menu_icons/menu_care_packages_icon.svg",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "intro",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "nav_buttons",
+                "rows": [
+                  {
+                    "name": "button_completed",
+                    "value": "Complete Override",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "name": "workshop_activity"
+      },
+      {
+        "name": "content_box",
+        "value": "buttons",
+        "type": "set_variable"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "buttons",
     "status": "released",
     "rows": [
       {
@@ -353,9 +506,8 @@
         "rows": [
           {
             "type": "button",
-            "name": "button_info",
+            "name": "button_describe",
             "value": "Describe",
-            "hidden": "true",
             "parameter_list": [
               "colour | secondary"
             ]
@@ -366,26 +518,49 @@
             "value": "Next",
             "action_list": [
               {
-                "action_id": "click",
+                "trigger": "click",
+                "action_id": "emit",
                 "args": [
-                  "emit:completed"
-                ]
+                  "exit"
+                ],
+                "_raw": "exit",
+                "_cleaned": "click | emit | exit"
+              },
+              {
+                "trigger": "click",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "mark_as_completed",
+                "_cleaned": "click | emit | completed"
               }
             ]
           },
           {
             "type": "button",
-            "name": "button_uncompleted",
-            "value": "Back",
+            "name": "button_skipped",
+            "value": "Skip",
             "action_list": [
               {
-                "action_id": "click",
+                "trigger": "click",
+                "action_id": "emit",
                 "args": [
-                  "emit:uncompleted"
-                ]
+                  "exit"
+                ],
+                "_raw": "exit",
+                "_cleaned": "click | emit | exit"
+              },
+              {
+                "trigger": "click",
+                "action_id": "emit",
+                "args": [
+                  "skipped"
+                ],
+                "_raw": "mark_as_skipped",
+                "_cleaned": "click | emit | skipped"
               }
-            ],
-            "hidden": "true"
+            ]
           }
         ]
       }
@@ -393,586 +568,200 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "video_component",
+    "flow_name": "a",
     "status": "released",
     "rows": [
       {
-        "name": "video_src",
-        "type": "set_variable"
-      },
-      {
-        "name": "video_title",
-        "value": "Video",
-        "type": "set_variable"
-      },
-      {
-        "name": "video_help",
-        "type": "set_variable"
+        "type": "title",
+        "name": "a_title",
+        "value": "Template A"
       },
       {
         "type": "template",
-        "name": "widget_video",
-        "value": "widget_video",
+        "name": "buttons",
+        "value": "buttons",
         "rows": [
           {
-            "name": "video_src",
-            "value": "@local.video_src",
-            "type": "set_variable"
-          },
-          {
-            "name": "title",
-            "value": "@local.video_title",
-            "type": "set_variable"
-          },
-          {
-            "name": "help",
-            "value": "@local.video_help",
+            "name": "button_completed",
+            "value": "Next 2",
             "type": "set_variable"
           }
         ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "rows": []
       }
     ]
   },
   {
     "flow_type": "template",
-    "flow_name": "watch",
+    "flow_name": "b",
     "status": "released",
     "rows": [
       {
+        "type": "title",
+        "name": "b_title",
+        "value": "Template B"
+      },
+      {
         "type": "template",
-        "name": "workshop_activity",
-        "value": "workshop_activity",
+        "value": "a",
         "rows": [
           {
-            "name": "activity_image",
-            "value": "plh_images/characters/guide2/happy.svg",
-            "__EMPTY": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_title",
-            "value": "Watch",
-            "hidden": "@fields.do_workshops_together",
-            "__EMPTY": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Let's watch a video!",
-            "hidden": "@fields.do_workshops_together",
-            "__EMPTY": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_title",
-            "value": "Watch Together",
-            "hidden": "!@fields.do_workshops_together",
-            "__EMPTY": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Let's watch a video together!",
-            "hidden": "!@fields.do_workshops_together",
-            "__EMPTY": "placeholder",
+            "name": "a_title",
+            "value": "Template A Title Overridden",
             "type": "set_variable"
           },
           {
             "type": "nested_properties",
-            "name": "intro_nav_buttons",
+            "name": "buttons",
             "rows": [
               {
                 "name": "button_completed",
-                "value": "Show video",
-                "__EMPTY": "placeholder",
+                "value": "Next 3",
                 "type": "set_variable"
               }
+            ]
+          }
+        ],
+        "name": "a"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "button_example",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_1",
+        "value": "Button 1"
+      },
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "previous_button",
+            "value": "Previous",
+            "parameter_list": [
+              "color: primary"
             ]
           },
           {
-            "type": "nested_properties",
-            "name": "content_box",
-            "value": "video_component",
-            "rows": [
-              {
-                "name": "video_help",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "welcome_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "watch",
-        "value": "watch",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "workshop_activity",
-            "rows": [
-              {
-                "name": "activity_title",
-                "value": "Welcome @fields.group_name",
-                "type": "set_variable"
-              },
-              {
-                "name": "activity_image",
-                "value": "plh_images/characters/guide2/happy.svg",
-                "comments": "placeholder",
-                "type": "set_variable"
-              },
-              {
-                "type": "nested_properties",
-                "name": "intro_nav_buttons",
-                "rows": [
-                  {
-                    "name": "button_skipped",
-                    "hidden": "false",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "button_completed",
-                    "value": "Start song",
-                    "type": "set_variable"
-                  }
-                ]
-              },
-              {
-                "type": "nested_properties",
-                "name": "content_box",
-                "rows": [
-                  {
-                    "name": "video_title",
-                    "value": "Let's Slow Down",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "video_src",
-                    "value": "path to let's slow down video",
-                    "type": "set_variable"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_example_stepper",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "workshop_stepper",
-        "value": "workshop_stepper",
-        "hidden": "true",
-        "rows": [
-          {
-            "type": "nav_group",
-            "hidden": "!@fields.do_workshops_together",
+            "type": "button",
+            "name": "next_button",
+            "value": "Next",
             "parameter_list": [
-              "show_stepper:true"
+              "color: secondary"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "nav_test",
+    "status": "released",
+    "rows": [
+      {
+        "type": "nav_group",
+        "rows": [
+          {
+            "type": "template",
+            "value": "story_slide",
+            "parameter_list": [
+              "show_skip_button:true",
+              "skip_button_text:Skip Story"
             ],
             "rows": [
               {
-                "type": "template",
-                "value": "w_example_welcome_together",
-                "rows": [],
-                "name": "w_example_welcome_together"
-              },
-              {
-                "type": "template",
-                "value": "w_example_read",
-                "parameter_list": [
-                  "theme:active"
-                ],
-                "rows": [],
-                "name": "w_example_read"
-              },
-              {
-                "type": "template",
-                "value": "w_example_talk_together",
-                "parameter_list": [
-                  "theme:active"
-                ],
-                "rows": [],
-                "name": "w_example_talk_together"
-              },
-              {
-                "type": "template",
-                "value": "w_example_tools_activity",
-                "parameter_list": [
-                  "theme:active"
-                ],
-                "rows": [],
-                "name": "w_example_tools_activity"
-              },
-              {
-                "type": "template",
-                "value": "w_example_ending",
-                "rows": [],
-                "name": "w_example_ending"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "nav_group",
-        "value": "w_example_welcome_individual",
-        "parameter_list": [
-          "show_stepper:true"
-        ],
-        "rows": []
-      },
-      {
-        "type": "template",
-        "value": "w_example_read",
-        "parameter_list": [
-          "theme:active"
-        ],
-        "rows": [],
-        "name": "w_example_read"
-      },
-      {
-        "type": "template",
-        "value": "w_example_question_time",
-        "parameter_list": [
-          "theme:active"
-        ],
-        "rows": [],
-        "name": "w_example_question_time"
-      },
-      {
-        "type": "template",
-        "value": "w_example_tools_activity",
-        "parameter_list": [
-          "theme:active"
-        ],
-        "rows": [],
-        "name": "w_example_tools_activity"
-      },
-      {
-        "type": "template",
-        "value": "w_example_ending",
-        "rows": [],
-        "name": "w_example_ending"
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_example_welcome_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "welcome_together",
-        "value": "welcome_together",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "watch",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "workshop_activity",
-                "rows": [
-                  {
-                    "name": "intro_text",
-                    "value": "This is the introduction text of the welcome together.",
-                    "type": "set_variable"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_example_read",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "read",
-        "value": "read",
-        "rows": [
-          {
-            "name": "number_of_slides",
-            "value": 3,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_1",
-            "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "This is the text on the first slide.",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_2",
-            "value": "plh_images/modules/mod_instruct/thought_experiment/te_2.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_2",
-            "value": "This is the text on the second slide.",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_3",
-            "value": "plh_images/modules/mod_instruct/thought_experiment/te_3.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_3",
-            "value": "This is the text on the third slide.",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_example_talk_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "talk_together",
-        "value": "talk_together",
-        "rows": [
-          {
-            "name": "discussion_text",
-            "value": "This text describes what should be discussed.",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_example_question_time",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "value": "question_time",
-        "rows": [
-          {
-            "name": "text_1",
-            "value": "This is some text.",
-            "type": "set_variable"
-          },
-          {
-            "name": "question_text_1",
-            "value": "This is the first question.",
-            "type": "set_variable"
-          },
-          {
-            "name": "answer_list_1",
-            "value": "First combo box answer; Second combo box answer",
-            "type": "set_variable"
-          },
-          {
-            "name": "user_input_1",
-            "value": "false",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_1",
-            "value": "This text shows up when you've selected an answer.",
-            "type": "set_variable"
-          },
-          {
-            "name": "text_2",
-            "value": "This is some text.",
-            "type": "set_variable"
-          },
-          {
-            "name": "question_text_2",
-            "value": "This is the second question.",
-            "type": "set_variable"
-          },
-          {
-            "name": "answer_list_2",
-            "value": "name:answer_1 | text: First answer; name:answer_2 | text:Second answer",
-            "type": "set_variable"
-          },
-          {
-            "name": "user_input_2",
-            "value": "true",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_2",
-            "value": "This text shows up when you've selected or typed an answer.",
-            "type": "set_variable"
-          }
-        ],
-        "name": "question_time"
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_example_tools",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "tools_component",
-        "value": "tools_component",
-        "rows": [
-          {
-            "type": "title",
-            "name": "tools_title",
-            "value": "Example Workshop"
-          },
-          {
-            "type": "nested_properties",
-            "name": "tool_1",
-            "rows": [
-              {
-                "name": "title",
-                "value": "First tool",
-                "type": "set_variable"
-              },
-              {
-                "name": "text_1",
-                "value": "Text describing the first tool.",
-                "type": "set_variable"
-              },
-              {
-                "name": "button",
-                "value": "Button",
-                "hidden": "false",
-                "type": "set_variable"
-              }
-            ]
-          },
-          {
-            "type": "nested_properties",
-            "name": "tool_2",
-            "rows": [
-              {
-                "name": "title",
-                "value": "Second tool",
-                "type": "set_variable"
-              },
-              {
-                "name": "subtitle_1",
-                "value": "Subtitle 1",
-                "hidden": "false",
-                "type": "set_variable"
-              },
-              {
-                "name": "text_1",
-                "value": "Some text.",
-                "type": "set_variable"
-              },
-              {
-                "name": "subtitle_2",
-                "value": "Subtitle 2",
-                "hidden": "false",
-                "type": "set_variable"
-              },
-              {
-                "name": "text_2",
-                "value": "More text.",
-                "hidden": "false",
-                "type": "set_variable"
-              }
-            ]
-          },
-          {
-            "type": "nested_properties",
-            "name": "tool_3",
-            "rows": [
-              {
-                "name": "title",
-                "value": "Third tool",
-                "type": "set_variable"
-              },
-              {
-                "name": "text_1",
-                "value": "Text describing the third tool.",
-                "type": "set_variable"
-              },
-              {
                 "name": "image",
-                "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
-                "hidden": "false",
+                "value": "plh_images/workshops/story_time_intro1.svg",
+                "type": "set_variable"
+              },
+              {
+                "name": "text",
+                "value": "Thank you for thinking along! Let’s go back in time and see what happens  ",
                 "type": "set_variable"
               }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_example_tools_activity",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "tools_activity",
-        "value": "tools_activity",
-        "rows": [
+            ],
+            "name": "story_slide"
+          },
           {
-            "type": "nested_properties",
-            "name": "workshop_activity",
+            "type": "nav_section",
             "rows": [
               {
-                "type": "nested_properties",
-                "name": "content_box",
-                "value": "w_example_tools_activity",
-                "rows": []
+                "type": "image",
+                "value": "plh_images/workshops/story1/1.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour was cleaning the house while Amina was with her friends practicing dance moves."
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/2.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Amina, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\n\nAmina: “Okay, mom!”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/3.svg"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/4.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Thank you for practicing outside while I finished cleaning the house, Amina. Now, I have some time to watch your dance.”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/5.svg"
+              },
+              {
+                "type": "text",
+                "value": "Neighour: “Wow, Amina! You have such good dance moves!”"
+              }
+            ]
+          },
+          {
+            "type": "nav_section",
+            "rows": [
+              {
+                "type": "image",
+                "value": "plh_images/workshops/story1/6.svg"
+              },
+              {
+                "type": "text",
+                "value": "Now this is the final slide"
               }
             ]
           }
         ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_example_ending",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "ending",
-        "value": "ending",
-        "rows": []
       }
     ]
   }
