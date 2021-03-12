@@ -7,6 +7,13 @@ import { TemplateBaseComponent } from "../base";
 @Component({
   selector: "plh-tmpl-nav-group",
   template: `<div class="nav-group">
+    <div class="nav-progress">
+      <div
+        *ngFor="let templateName of templateNames; index as i"
+        class="nav-progress-part"
+        [ngClass]="{'seen': i <= sectionIndex}">
+      </div>
+    </div>
     <div class="nav-section" *ngFor="let templateName of templateNames; index as i">
       <plh-template-container
         *ngIf="sectionIndex === i"
@@ -27,6 +34,24 @@ import { TemplateBaseComponent } from "../base";
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+      }
+
+      .nav-progress {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .nav-progress-part {
+        height: 5px;
+        flex-grow: 1;
+        background-color: var(--ion-primary-color, #0D3F60);
+        margin: 10px;
+        max-width: 40px;
+      }
+
+      .nav-progress-part.seen {
+        background-color: var(--ion-primary-color, #F88923);
       }
 
       ion-button {
