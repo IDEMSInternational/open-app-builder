@@ -35,6 +35,8 @@ export namespace FlowTypes {
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
     module?: string;
+    // debug info
+    _xlsxPath: string;
   }
 
   /**
@@ -368,7 +370,7 @@ export namespace FlowTypes {
     /** actions have an associated trigger */
     trigger: "click" | "completed" | "uncompleted" | "respond_to_action";
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
-    action_id: "set_value" | "set_local" | "emit";
+    action_id: "set_local" | "emit";
     args: string[];
     // debug info
     _raw: string;

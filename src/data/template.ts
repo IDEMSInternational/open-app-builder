@@ -26,7 +26,8 @@
         "name": "video_src",
         "comments": "Needs option for full screen mode"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
   },
   {
     "flow_type": "template",
@@ -118,7 +119,8 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
   },
   {
     "flow_type": "template",
@@ -145,7 +147,8 @@
         "type": "nav_group",
         "name": "nav_template_list"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshops.xlsx"
   },
   {
     "flow_type": "template",
@@ -409,7 +412,8 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshops.xlsx"
   },
   {
     "flow_type": "template",
@@ -463,7 +467,8 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshops.xlsx"
   },
   {
     "flow_type": "template",
@@ -511,7 +516,8 @@
         "value": "nav_buttons",
         "rows": []
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_components.xlsx"
   },
   {
     "flow_type": "template",
@@ -559,7 +565,8 @@
         "value": "nav_buttons",
         "rows": []
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_components.xlsx"
   },
   {
     "flow_type": "template",
@@ -581,7 +588,8 @@
         "value": "buttons",
         "rows": []
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_components.xlsx"
   },
   {
     "flow_type": "template",
@@ -663,7 +671,8 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\mode_templates\\templates_listen.xlsx"
   },
   {
     "flow_type": "template",
@@ -746,7 +755,8 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\mode_templates\\templates_welcome.xlsx"
   },
   {
     "flow_type": "template",
@@ -821,7 +831,8 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\mode_templates\\templates_welcome.xlsx"
   },
   {
     "flow_type": "template",
@@ -878,7 +889,8 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\templates_workshop_example.xlsx"
   },
   {
     "flow_type": "template",
@@ -920,7 +932,8 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\templates_workshop_example.xlsx"
   },
   {
     "flow_type": "template",
@@ -939,6 +952,7 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\templates_workshop_example.xlsx"
   }
 ]
