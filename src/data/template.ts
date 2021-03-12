@@ -119,33 +119,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "workshop_stepper",
-    "status": "released",
-    "rows": [
-      {
-        "name": "progress_bar_value",
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_bar_num_items",
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_bar",
-        "value": "@local.progress_bar_value",
-        "parameter_list": [
-          "num_items:@local.progress_bar_num_items"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "nav_group",
-        "name": "nav_template_list"
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
     "flow_name": "workshop_activity",
     "status": "released",
     "rows": [
@@ -468,158 +441,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "audio_component",
-    "status": "released",
-    "rows": [
-      {
-        "name": "audio_src",
-        "type": "set_variable"
-      },
-      {
-        "name": "audio_title",
-        "value": "Audio",
-        "type": "set_variable"
-      },
-      {
-        "name": "audio_help",
-        "type": "set_variable"
-      },
-      {
-        "type": "template",
-        "name": "widget_audio",
-        "value": "widget_audio",
-        "rows": [
-          {
-            "name": "audio_src",
-            "value": "@local.audio_src",
-            "type": "set_variable"
-          },
-          {
-            "name": "title",
-            "value": "@local.audio_title",
-            "type": "set_variable"
-          },
-          {
-            "name": "help",
-            "value": "@local.audio_help",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "rows": []
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "image_component",
-    "status": "released",
-    "rows": [
-      {
-        "type": "image",
-        "name": "image_src",
-        "value": "src/assets/not-found-image.png"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "buttons",
-        "rows": []
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "listen",
-    "status": "released",
-    "rows": [
-      {
-        "name": "audio_src",
-        "type": "set_variable"
-      },
-      {
-        "type": "template",
-        "name": "workshop_activity",
-        "value": "workshop_activity",
-        "rows": [
-          {
-            "name": "activity_image",
-            "value": "plh_images/characters/guide2/happy.svg",
-            "comments": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_title",
-            "value": "Listen",
-            "hidden": "@fields.do_workshops_together",
-            "comments": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Let's listen to an audio!",
-            "hidden": "@fields.do_workshops_together",
-            "comments": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_title",
-            "value": "Listen Together",
-            "hidden": "!@fields.do_workshops_together",
-            "comments": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Let's listen to an audio together!",
-            "hidden": "!@fields.do_workshops_together",
-            "comments": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_banner",
-            "hidden": "false",
-            "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "comments": "intro_nav_buttons",
-            "rows": [
-              {
-                "name": "button_completed",
-                "value": "Go to audio",
-                "comments": "placeholder",
-                "type": "set_variable"
-              }
-            ]
-          },
-          {
-            "type": "nested_properties",
-            "name": "content_box",
-            "value": "audio_component",
-            "rows": [
-              {
-                "name": "audio_src",
-                "value": "@local.audio_src",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
     "flow_name": "watch",
     "status": "released",
     "rows": [
@@ -627,18 +448,6 @@
         "type": "template",
         "name": "workshop_activity",
         "value": "workshop_activity",
-        "action_list": [
-          {
-            "action_id": "completed",
-            "args": [
-              "emit:completed"
-            ]
-          },
-          {
-            "action_id": "",
-            "args": []
-          }
-        ],
         "rows": [
           {
             "name": "activity_image",
@@ -676,8 +485,7 @@
           },
           {
             "type": "nested_properties",
-            "name": "nav_buttons",
-            "__EMPTY": "intro_nav_buttons",
+            "name": "intro_nav_buttons",
             "rows": [
               {
                 "name": "button_completed",
@@ -711,18 +519,6 @@
         "type": "template",
         "name": "watch",
         "value": "watch",
-        "action_list": [
-          {
-            "action_id": "completed",
-            "args": [
-              "emit:completed"
-            ]
-          },
-          {
-            "action_id": "",
-            "args": []
-          }
-        ],
         "rows": [
           {
             "type": "nested_properties",
@@ -758,7 +554,6 @@
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "video_component",
                 "rows": [
                   {
                     "name": "video_title",
@@ -767,7 +562,7 @@
                   },
                   {
                     "name": "video_src",
-                    "value": "plh_video/lets_slow_down.mp4",
+                    "value": "path to let's slow down video",
                     "type": "set_variable"
                   }
                 ]
@@ -787,53 +582,98 @@
         "type": "template",
         "name": "workshop_stepper",
         "value": "workshop_stepper",
-        "action_list": [
-          {
-            "action_id": "completed",
-            "args": [
-              "emit:completed"
-            ]
-          },
-          {
-            "action_id": "",
-            "args": []
-          }
-        ],
-        "hidden": "!@fields.do_workshops_together",
+        "hidden": "true",
         "rows": [
           {
-            "name": "nav_template_list",
-            "value": "w_example_welcome_together;\nw_example_listen;\n",
-            "comments": "w_example_read; w_example_talk_together; w_example_tools_activity;",
-            "type": "set_variable"
+            "type": "nav_group",
+            "hidden": "!@fields.do_workshops_together",
+            "parameter_list": [
+              "show_stepper:true"
+            ],
+            "rows": [
+              {
+                "type": "template",
+                "value": "w_example_welcome_together",
+                "rows": [],
+                "name": "w_example_welcome_together"
+              },
+              {
+                "type": "template",
+                "value": "w_example_read",
+                "parameter_list": [
+                  "theme:active"
+                ],
+                "rows": [],
+                "name": "w_example_read"
+              },
+              {
+                "type": "template",
+                "value": "w_example_talk_together",
+                "parameter_list": [
+                  "theme:active"
+                ],
+                "rows": [],
+                "name": "w_example_talk_together"
+              },
+              {
+                "type": "template",
+                "value": "w_example_tools_activity",
+                "parameter_list": [
+                  "theme:active"
+                ],
+                "rows": [],
+                "name": "w_example_tools_activity"
+              },
+              {
+                "type": "template",
+                "value": "w_example_ending",
+                "rows": [],
+                "name": "w_example_ending"
+              }
+            ]
           }
         ]
       },
       {
-        "type": "template",
-        "name": "workshop_stepper",
-        "action_list": [
-          {
-            "action_id": "completed",
-            "args": [
-              "emit:completed"
-            ]
-          },
-          {
-            "action_id": "",
-            "args": []
-          }
+        "type": "nav_group",
+        "value": "w_example_welcome_individual",
+        "parameter_list": [
+          "show_stepper:true"
         ],
-        "hidden": "true",
-        "comments": "@fields.do_workshops_together",
-        "rows": [
-          {
-            "name": "nav_template_list",
-            "value": "w_example_welcome_together;\nw_example_listen;",
-            "comments": "w_example_listen;\nw_example_read;\nw_example_question_time;\nw_example_tools_activity;\nw_example_home_practice;\nw_example_ending",
-            "type": "set_variable"
-          }
-        ]
+        "rows": []
+      },
+      {
+        "type": "template",
+        "value": "w_example_read",
+        "parameter_list": [
+          "theme:active"
+        ],
+        "rows": [],
+        "name": "w_example_read"
+      },
+      {
+        "type": "template",
+        "value": "w_example_question_time",
+        "parameter_list": [
+          "theme:active"
+        ],
+        "rows": [],
+        "name": "w_example_question_time"
+      },
+      {
+        "type": "template",
+        "value": "w_example_tools_activity",
+        "parameter_list": [
+          "theme:active"
+        ],
+        "rows": [],
+        "name": "w_example_tools_activity"
+      },
+      {
+        "type": "template",
+        "value": "w_example_ending",
+        "rows": [],
+        "name": "w_example_ending"
       }
     ]
   },
@@ -846,18 +686,6 @@
         "type": "template",
         "name": "welcome_together",
         "value": "welcome_together",
-        "action_list": [
-          {
-            "action_id": "completed",
-            "args": [
-              "emit:completed"
-            ]
-          },
-          {
-            "action_id": "",
-            "args": []
-          }
-        ],
         "rows": [
           {
             "type": "nested_properties",
@@ -882,20 +710,269 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "w_example_listen",
+    "flow_name": "w_example_read",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "listen",
-        "value": "listen",
+        "name": "read",
+        "value": "read",
         "rows": [
           {
-            "name": "audio_src",
-            "value": "plh_audio/sample.mp3",
+            "name": "number_of_slides",
+            "value": 3,
+            "type": "set_variable"
+          },
+          {
+            "name": "slide_image_src_1",
+            "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "slide_text_1",
+            "value": "This is the text on the first slide.",
+            "type": "set_variable"
+          },
+          {
+            "name": "slide_image_src_2",
+            "value": "plh_images/modules/mod_instruct/thought_experiment/te_2.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "slide_text_2",
+            "value": "This is the text on the second slide.",
+            "type": "set_variable"
+          },
+          {
+            "name": "slide_image_src_3",
+            "value": "plh_images/modules/mod_instruct/thought_experiment/te_3.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "slide_text_3",
+            "value": "This is the text on the third slide.",
             "type": "set_variable"
           }
         ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_example_talk_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "talk_together",
+        "value": "talk_together",
+        "rows": [
+          {
+            "name": "discussion_text",
+            "value": "This text describes what should be discussed.",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_example_question_time",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "value": "question_time",
+        "rows": [
+          {
+            "name": "text_1",
+            "value": "This is some text.",
+            "type": "set_variable"
+          },
+          {
+            "name": "question_text_1",
+            "value": "This is the first question.",
+            "type": "set_variable"
+          },
+          {
+            "name": "answer_list_1",
+            "value": "First combo box answer; Second combo box answer",
+            "type": "set_variable"
+          },
+          {
+            "name": "user_input_1",
+            "value": "false",
+            "type": "set_variable"
+          },
+          {
+            "name": "reply_1",
+            "value": "This text shows up when you've selected an answer.",
+            "type": "set_variable"
+          },
+          {
+            "name": "text_2",
+            "value": "This is some text.",
+            "type": "set_variable"
+          },
+          {
+            "name": "question_text_2",
+            "value": "This is the second question.",
+            "type": "set_variable"
+          },
+          {
+            "name": "answer_list_2",
+            "value": "name:answer_1 | text: First answer; name:answer_2 | text:Second answer",
+            "type": "set_variable"
+          },
+          {
+            "name": "user_input_2",
+            "value": "true",
+            "type": "set_variable"
+          },
+          {
+            "name": "reply_2",
+            "value": "This text shows up when you've selected or typed an answer.",
+            "type": "set_variable"
+          }
+        ],
+        "name": "question_time"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_example_tools",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "tools_component",
+        "value": "tools_component",
+        "rows": [
+          {
+            "type": "title",
+            "name": "tools_title",
+            "value": "Example Workshop"
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_1",
+            "rows": [
+              {
+                "name": "title",
+                "value": "First tool",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "Text describing the first tool.",
+                "type": "set_variable"
+              },
+              {
+                "name": "button",
+                "value": "Button",
+                "hidden": "false",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_2",
+            "rows": [
+              {
+                "name": "title",
+                "value": "Second tool",
+                "type": "set_variable"
+              },
+              {
+                "name": "subtitle_1",
+                "value": "Subtitle 1",
+                "hidden": "false",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "Some text.",
+                "type": "set_variable"
+              },
+              {
+                "name": "subtitle_2",
+                "value": "Subtitle 2",
+                "hidden": "false",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_2",
+                "value": "More text.",
+                "hidden": "false",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_3",
+            "rows": [
+              {
+                "name": "title",
+                "value": "Third tool",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "Text describing the third tool.",
+                "type": "set_variable"
+              },
+              {
+                "name": "image",
+                "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
+                "hidden": "false",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_example_tools_activity",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "tools_activity",
+        "value": "tools_activity",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "w_example_tools_activity",
+                "rows": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_example_ending",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "ending",
+        "value": "ending",
+        "rows": []
       }
     ]
   }
