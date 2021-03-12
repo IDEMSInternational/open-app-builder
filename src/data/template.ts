@@ -3,146 +3,118 @@
   export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
-    "flow_name": "template_watch_together",
+    "flow_name": "widget_video",
     "status": "released",
     "rows": [
       {
-        "type": "set_variable",
-        "name": "hide_intro",
-        "value": "false",
-        "comments": "entries without type specified simply create a local variable. These can be referenced via @local syntax, e.g. @local.example_variable ",
-        "__EMPTY": "All content will be hardcoded, so should not be changed without dev consult"
-      },
-      {
-        "type": "set_variable",
-        "name": "hide_activity",
-        "value": "true"
-      },
-      {
-        "type": "set_variable",
-        "name": "theme_name",
-        "value": "active"
-      },
-      {
-        "type": "animated_section_group",
-        "value": "fade_in_out",
+        "type": "display_group",
         "rows": [
           {
-            "type": "animated_section",
-            "name": "welcome_section",
-            "hidden": "@local.hide_intro",
-            "comments": "animated section value represents the name of predefined animations. Hidden criteria will be evaluated as TRUE or FALSE.",
-            "rows": [
+            "type": "title",
+            "name": "title",
+            "value": "Video",
+            "comments": "For consistency with the other widgets, it would make sense if the title and help fit inside the widget frame."
+          },
+          {
+            "name": "help",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "name": "video_src",
+        "comments": "Needs option for full screen mode"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "widget_slider",
+    "status": "released",
+    "rows": [
+      {
+        "name": "min_value",
+        "value": 1,
+        "type": "set_variable"
+      },
+      {
+        "name": "max_value",
+        "value": 10,
+        "type": "set_variable"
+      },
+      {
+        "name": "step",
+        "value": 1,
+        "type": "set_variable"
+      },
+      {
+        "name": "min_text",
+        "value": "Low",
+        "type": "set_variable"
+      },
+      {
+        "name": "max_text",
+        "value": "High",
+        "type": "set_variable"
+      },
+      {
+        "name": "unit_text",
+        "value": "units",
+        "type": "set_variable"
+      },
+      {
+        "name": "default_value",
+        "value": "null",
+        "type": "set_variable"
+      },
+      {
+        "name": "_value",
+        "value": "@local.default_value",
+        "comments": "should be type: set_default",
+        "type": "set_variable"
+      },
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "title",
+            "name": "title"
+          },
+          {
+            "name": "help",
+            "comments": "should be type: help",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "slider",
+            "name": "slider",
+            "action_list": [
               {
-                "type": "image",
-                "name": "main_image",
-                "value": "plh_images/workshops/welcome1.svg"
-              },
-              {
-                "type": "title",
-                "name": "main_title",
-                "value": "Welcome family group! ",
-                "comments": "Blank values will assume an empty string"
-              },
-              {
-                "type": "text",
-                "name": "intro_text",
-                "value": "This week we will be exploring Positive Instructions. \n\nBefore we start the session, select a person with a smartphone to be the informal facilitator."
-              },
-              {
-                "type": "display_group",
-                "name": "nav_buttons",
-                "comments": "Grouping content will display on same line",
-                "rows": [
-                  {
-                    "type": "button",
-                    "name": "button_1",
-                    "value": "Start Session",
-                    "action_list": [
-                      {
-                        "trigger": "click",
-                        "action_id": "set_value",
-                        "args": [
-                          "hide_intro",
-                          "true"
-                        ],
-                        "_raw": "set_value | hide_intro | true",
-                        "_cleaned": "click | set_value | hide_intro | true"
-                      },
-                      {
-                        "trigger": "click",
-                        "action_id": "set_value",
-                        "args": [
-                          "hide_activity",
-                          "false"
-                        ],
-                        "_raw": "set_value | hide_activity | false",
-                        "_cleaned": "click | set_value | hide_activity | false"
-                      }
-                    ],
-                    "comments": "specific actions can be added to default click handlers where required. May require rethinking to know when to use triggered values vs initialized/formulae"
-                  },
-                  {
-                    "type": "button",
-                    "name": "button_2",
-                    "value": "Skip",
-                    "parameter_list": [
-                      "color:secondary",
-                      ""
-                    ],
-                    "comments": "additional parameters can be used where default functionality needs to be extended. (use sparingly)"
-                  }
-                ]
+                "trigger": "click",
+                "action_id": "set_value",
+                "args": [],
+                "_raw": "set_value",
+                "_cleaned": "click | set_value"
               }
+            ],
+            "parameter_list": [
+              "min_value:@local.min_value",
+              "min_text:@local.min_text",
+              "max_value:@max_value",
+              "max_text:@local.max_text",
+              "step:@local.step",
+              "unit_text:@local.unit_text"
             ]
           },
           {
-            "type": "animated_section",
-            "name": "welcome_activity",
-            "hidden": "@local.hide_activity",
-            "rows": [
-              {
-                "type": "title",
-                "name": "media_title"
-              },
-              {
-                "type": "video",
-                "name": "media_src",
-                "value": "https://www.w3schools.com/html/mov_bbb.mp4"
-              },
-              {
-                "type": "button",
-                "name": "button_3",
-                "value": "Continue"
-              },
-              {
-                "type": "button",
-                "name": "button_4",
-                "value": "Back",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "set_value",
-                    "args": [
-                      "hide_intro",
-                      "false"
-                    ],
-                    "_raw": "set_value | hide_intro | false",
-                    "_cleaned": "click | set_value | hide_intro | false"
-                  },
-                  {
-                    "trigger": "click",
-                    "action_id": "set_value",
-                    "args": [
-                      "hide_activity",
-                      "true"
-                    ],
-                    "_raw": "set_value | hide_activity | true",
-                    "_cleaned": "click | set_value | hide_activity | true"
-                  }
-                ]
-              }
-            ]
+            "comments": "no_answer",
+            "type": "set_variable"
           }
         ]
       }
@@ -150,159 +122,28 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "template_together_welcome",
+    "flow_name": "workshop_stepper",
     "status": "released",
     "rows": [
       {
-        "name": "group_name",
-        "value": "The group name",
-        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred.",
+        "name": "progress_bar_value",
         "type": "set_variable"
       },
       {
-        "name": "intro_nav_button_text",
-        "value": "Next",
+        "name": "progress_bar_num_items",
         "type": "set_variable"
       },
       {
-        "name": "outro_nav_button_text",
-        "value": "Next 2",
-        "type": "set_variable"
-      },
-      {
-        "type": "title",
-        "name": "outer_title",
-        "value": "Template Together Welcome"
-      },
-      {
-        "type": "template",
-        "value": "template_watch_together",
-        "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
-        "rows": [
-          {
-            "name": "theme_name",
-            "value": "passive",
-            "type": "set_variable"
-          },
-          {
-            "name": "button_1",
-            "value": "@local.intro_nav_button_text",
-            "type": "set_variable"
-          },
-          {
-            "name": "button_2",
-            "value": "skip",
-            "hidden": "true",
-            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
-            "type": "set_variable"
-          },
-          {
-            "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Welcome @local.group_name!",
-            "type": "set_variable"
-          }
+        "name": "progress_bar",
+        "value": "@local.progress_bar_value",
+        "parameter_list": [
+          "num_items:@local.progress_bar_num_items"
         ],
-        "name": "template_watch_together"
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "multi_template",
-    "status": "released",
-    "rows": [
-      {
-        "name": "group_name",
-        "value": "The group name",
-        "comments": "If a variable will be used in multiple places it could be assigned at the start, or just written inline where requred.",
         "type": "set_variable"
       },
       {
-        "name": "intro_nav_button_text",
-        "value": "Next",
-        "type": "set_variable"
-      },
-      {
-        "name": "outro_nav_button_text",
-        "value": "Next 2",
-        "type": "set_variable"
-      },
-      {
-        "type": "title",
-        "name": "outer_title",
-        "value": "Template Together Welcome"
-      },
-      {
-        "type": "template",
-        "value": "template_watch_together",
-        "comments": "A template can call another template. All nested rows will override default values. Names are namespaced to a template so will not conflict between templates",
-        "rows": [
-          {
-            "name": "theme_name",
-            "value": "passive",
-            "type": "set_variable"
-          },
-          {
-            "name": "button_1",
-            "value": "@local.intro_nav_button_text",
-            "type": "set_variable"
-          },
-          {
-            "name": "button_2",
-            "value": "skip",
-            "hidden": "true",
-            "comments": "Hidden condition will also evaluate function such as db lookup, e.g. @somevar=3",
-            "type": "set_variable"
-          },
-          {
-            "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Welcome @local.group_name!",
-            "type": "set_variable"
-          }
-        ],
-        "name": "template_watch_together"
-      },
-      {
-        "type": "template",
-        "value": "template_watch_together",
-        "rows": [
-          {
-            "name": "theme_name",
-            "value": "passive",
-            "type": "set_variable"
-          },
-          {
-            "name": "button_1",
-            "value": "@local.outro_nav_button_text",
-            "type": "set_variable"
-          },
-          {
-            "name": "button_2",
-            "value": "skip",
-            "type": "set_variable"
-          },
-          {
-            "name": "image_1",
-            "value": "plh_images/characters/@fields.guidenumber/happy.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Welcome @local.group_name!",
-            "type": "set_variable"
-          }
-        ],
-        "name": "template_watch_together"
+        "type": "nav_group",
+        "name": "nav_template_list"
       }
     ]
   },
@@ -312,29 +153,34 @@
     "status": "released",
     "rows": [
       {
-        "name": "hide_intro",
-        "value": "false",
-        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content.",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_activity",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_activity_banner",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "name": "activity_image",
+        "name": "activity_image_src",
         "value": "src/assets/not-found-image.png",
+        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content. It occasionally has an outro.",
         "type": "set_variable"
       },
       {
         "name": "activity_title",
-        "value": "Title of this section",
+        "value": "Title of this activity",
+        "type": "set_variable"
+      },
+      {
+        "name": "include_outro",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_intro",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_content",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_outro",
+        "value": "true",
         "type": "set_variable"
       },
       {
@@ -350,8 +196,11 @@
         "rows": [
           {
             "type": "image",
-            "name": "intro_image",
-            "value": "@local.activity_image"
+            "name": "intro_image_src",
+            "value": "@local.activity_image",
+            "parameter_list": [
+              "background_box"
+            ]
           },
           {
             "type": "title",
@@ -364,38 +213,45 @@
           },
           {
             "type": "template",
-            "name": "nav_buttons",
-            "value": "buttons",
-            "rows": [
+            "name": "intro_nav_buttons",
+            "value": "nav_buttons",
+            "action_list": [
               {
-                "name": "button_completed",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "set_local",
-                    "args": [
-                      "hide_intro",
-                      "true"
-                    ],
-                    "_raw": "set_local | hide_intro | true",
-                    "_cleaned": "click | set_local | hide_intro | true"
-                  },
-                  {
-                    "trigger": "click",
-                    "action_id": "set_local",
-                    "args": [
-                      "hide_activity",
-                      "false"
-                    ],
-                    "_raw": "set_local | hide_activity | false",
-                    "_cleaned": "click | set_local | hide_activity | false"
-                  }
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "false"
                 ],
-                "type": "set_variable"
+                "_raw": "completed | set_local:hide_content:false",
+                "_cleaned": "completed | set_local:hide_content:false"
               },
               {
-                "name": "button_skipped",
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_intro:true",
+                "_cleaned": "completed | set_local:hide_intro:true"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "uncompleted | emit:uncompleted",
+                "_cleaned": "uncompleted | emit:uncompleted"
+              }
+            ],
+            "rows": [
+              {
+                "name": "button_uncompleted",
+                "value": "Skip",
                 "hidden": "!@local._completed",
+                "comments": "default: set_properties\nuse extend_properties to add to an existing list of properties",
                 "type": "set_variable"
               }
             ]
@@ -405,12 +261,12 @@
       {
         "type": "animated_section",
         "name": "content",
-        "hidden": "@local.hide_activity",
+        "hidden": "@local.hide_content",
         "rows": [
           {
             "type": "display_group",
             "name": "activity_banner",
-            "hidden": "@local.hide_activity_banner",
+            "hidden": "true",
             "rows": [
               {
                 "type": "title",
@@ -419,8 +275,11 @@
               },
               {
                 "type": "image",
-                "name": "banner_image",
-                "value": "@local.activity_image"
+                "name": "banner_image_src",
+                "value": "@local.activity_image",
+                "parameter_list": [
+                  "background_box"
+                ]
               }
             ]
           },
@@ -429,26 +288,123 @@
             "name": "content_box",
             "action_list": [
               {
-                "trigger": "respond_to_action",
-                "action_id": "emit",
+                "trigger": "completed",
+                "action_id": "set_local",
                 "args": [
-                  "exit",
-                  "mark_as_completed"
+                  "hide_content",
+                  "true"
                 ],
-                "_raw": "respond_to_action | exit | mark_as_completed",
-                "_cleaned": "respond_to_action | exit | mark_as_completed"
+                "_raw": "completed | set_local:hide_content:true",
+                "_cleaned": "completed | set_local:hide_content:true"
               },
               {
-                "trigger": "respond_to_action",
-                "action_id": "emit",
+                "trigger": "completed",
+                "action_id": "set_local",
                 "args": [
-                  "exit",
-                  "exit"
+                  "hide_outro",
+                  "false"
                 ],
-                "_raw": "respond_to_action | exit | exit",
-                "_cleaned": "respond_to_action | exit | exit"
+                "_raw": "completed | set_local:hide_outro:false",
+                "_cleaned": "completed | set_local:hide_outro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_intro:false",
+                "_cleaned": "uncompleted | set_local:hide_intro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "uncompleted | set_local:hide_content:true",
+                "_cleaned": "uncompleted | set_local:hide_content:true"
               }
             ],
+            "hidden": "!@local.include_outro",
+            "comments": "Do this row when include_outro = TRUE",
+            "rows": []
+          },
+          {
+            "type": "template",
+            "name": "content_box",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "completed | emit:completed",
+                "_cleaned": "completed | emit:completed"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_intro:false",
+                "_cleaned": "uncompleted | set_local:hide_intro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "uncompleted | set_local:hide_content:true",
+                "_cleaned": "uncompleted | set_local:hide_content:true"
+              }
+            ],
+            "hidden": "@local.include_outro",
+            "comments": "Do this row when include_outro = FALSE",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "outro",
+        "hidden": "@local.hide_outro",
+        "rows": [
+          {
+            "type": "image",
+            "name": "outro_image_src",
+            "value": "@local.activity_image",
+            "parameter_list": [
+              "background_box"
+            ]
+          },
+          {
+            "type": "title",
+            "name": "outro_title",
+            "value": "@local.activity_title"
+          },
+          {
+            "type": "text",
+            "name": "outro_text"
+          },
+          {
+            "type": "text",
+            "name": "outro_habit_text",
+            "parameter_list": [
+              "alert"
+            ]
+          },
+          {
+            "type": "template",
+            "name": "outro_nav_buttons",
+            "value": "nav_buttons",
             "rows": []
           }
         ]
@@ -457,48 +413,7 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "test_wa_extend",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "value": "workshop_activity",
-        "rows": [
-          {
-            "name": "activity_image",
-            "value": "plh_images/menu_icons/menu_care_packages_icon.svg",
-            "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "intro",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "nav_buttons",
-                "rows": [
-                  {
-                    "name": "button_completed",
-                    "value": "Complete Override",
-                    "type": "set_variable"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "name": "workshop_activity"
-      },
-      {
-        "name": "content_box",
-        "value": "buttons",
-        "type": "set_variable"
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "buttons",
+    "flow_name": "nav_buttons",
     "status": "released",
     "rows": [
       {
@@ -506,8 +421,9 @@
         "rows": [
           {
             "type": "button",
-            "name": "button_describe",
+            "name": "button_info",
             "value": "Describe",
+            "hidden": "true",
             "parameter_list": [
               "colour | secondary"
             ]
@@ -521,46 +437,29 @@
                 "trigger": "click",
                 "action_id": "emit",
                 "args": [
-                  "exit"
-                ],
-                "_raw": "exit",
-                "_cleaned": "click | emit | exit"
-              },
-              {
-                "trigger": "click",
-                "action_id": "emit",
-                "args": [
                   "completed"
                 ],
-                "_raw": "mark_as_completed",
-                "_cleaned": "click | emit | completed"
+                "_raw": "click | emit:completed",
+                "_cleaned": "click | emit:completed"
               }
             ]
           },
           {
             "type": "button",
-            "name": "button_skipped",
-            "value": "Skip",
+            "name": "button_uncompleted",
+            "value": "Back",
             "action_list": [
               {
                 "trigger": "click",
                 "action_id": "emit",
                 "args": [
-                  "exit"
+                  "uncompleted"
                 ],
-                "_raw": "exit",
-                "_cleaned": "click | emit | exit"
-              },
-              {
-                "trigger": "click",
-                "action_id": "emit",
-                "args": [
-                  "skipped"
-                ],
-                "_raw": "mark_as_skipped",
-                "_cleaned": "click | emit | skipped"
+                "_raw": "click | emit:uncompleted",
+                "_cleaned": "click | emit:uncompleted"
               }
-            ]
+            ],
+            "hidden": "true"
           }
         ]
       }
@@ -568,90 +467,198 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "a",
+    "flow_name": "video_component",
     "status": "released",
     "rows": [
       {
-        "type": "title",
-        "name": "a_title",
-        "value": "Template A"
+        "name": "video_src",
+        "type": "set_variable"
+      },
+      {
+        "name": "video_title",
+        "value": "Video",
+        "type": "set_variable"
+      },
+      {
+        "name": "video_help",
+        "type": "set_variable"
       },
       {
         "type": "template",
-        "name": "buttons",
-        "value": "buttons",
+        "name": "widget_video",
+        "value": "widget_video",
         "rows": [
           {
-            "name": "button_completed",
-            "value": "Next 2",
+            "name": "video_src",
+            "value": "@local.video_src",
+            "type": "set_variable"
+          },
+          {
+            "name": "title",
+            "value": "@local.video_title",
+            "type": "set_variable"
+          },
+          {
+            "name": "help",
+            "value": "@local.video_help",
             "type": "set_variable"
           }
         ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "rows": []
       }
     ]
   },
   {
     "flow_type": "template",
-    "flow_name": "b",
+    "flow_name": "audio_component",
     "status": "released",
     "rows": [
       {
-        "type": "title",
-        "name": "b_title",
-        "value": "Template B"
+        "name": "audio_src",
+        "type": "set_variable"
+      },
+      {
+        "name": "audio_title",
+        "value": "Audio",
+        "type": "set_variable"
+      },
+      {
+        "name": "audio_help",
+        "type": "set_variable"
       },
       {
         "type": "template",
-        "value": "a",
+        "name": "widget_audio",
+        "value": "widget_audio",
         "rows": [
           {
-            "name": "a_title",
-            "value": "Template A Title Overridden",
+            "name": "audio_src",
+            "value": "@local.audio_src",
+            "type": "set_variable"
+          },
+          {
+            "name": "title",
+            "value": "@local.audio_title",
+            "type": "set_variable"
+          },
+          {
+            "name": "help",
+            "value": "@local.audio_help",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "rows": []
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "image_component",
+    "status": "released",
+    "rows": [
+      {
+        "type": "image",
+        "name": "image_src",
+        "value": "src/assets/not-found-image.png"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "buttons",
+        "rows": []
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "listen",
+    "status": "released",
+    "rows": [
+      {
+        "name": "audio_src",
+        "type": "set_variable"
+      },
+      {
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "rows": [
+          {
+            "name": "activity_image",
+            "value": "plh_images/characters/guide2/happy.svg",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Listen",
+            "hidden": "@fields.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Let's listen to an audio!",
+            "hidden": "@fields.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Listen Together",
+            "hidden": "!@fields.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Let's listen to an audio together!",
+            "hidden": "!@fields.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_banner",
+            "hidden": "false",
             "type": "set_variable"
           },
           {
             "type": "nested_properties",
-            "name": "buttons",
+            "name": "nav_buttons",
+            "comments": "intro_nav_buttons",
             "rows": [
               {
                 "name": "button_completed",
-                "value": "Next 3",
+                "value": "Go to audio",
+                "comments": "placeholder",
                 "type": "set_variable"
               }
             ]
-          }
-        ],
-        "name": "a"
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "button_example",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "button_1",
-        "value": "Button 1"
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "button",
-            "name": "previous_button",
-            "value": "Previous",
-            "parameter_list": [
-              "color: primary"
-            ]
           },
           {
-            "type": "button",
-            "name": "next_button",
-            "value": "Next",
-            "parameter_list": [
-              "color: secondary"
+            "type": "nested_properties",
+            "name": "content_box",
+            "value": "audio_component",
+            "rows": [
+              {
+                "name": "audio_src",
+                "value": "@local.audio_src",
+                "type": "set_variable"
+              }
             ]
           }
         ]
@@ -660,106 +667,275 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "nav_test",
+    "flow_name": "watch",
     "status": "released",
     "rows": [
       {
-        "type": "nav_group",
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
         "rows": [
           {
-            "type": "template",
-            "value": "story_slide",
-            "parameter_list": [
-              "show_skip_button:true",
-              "skip_button_text:Skip Story"
-            ],
+            "name": "activity_image",
+            "value": "plh_images/characters/guide2/happy.svg",
+            "__EMPTY": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Watch",
+            "hidden": "@fields.do_workshops_together",
+            "__EMPTY": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Let's watch a video!",
+            "hidden": "@fields.do_workshops_together",
+            "__EMPTY": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Watch Together",
+            "hidden": "!@fields.do_workshops_together",
+            "__EMPTY": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Let's watch a video together!",
+            "hidden": "!@fields.do_workshops_together",
+            "__EMPTY": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "__EMPTY": "intro_nav_buttons",
             "rows": [
               {
-                "name": "image",
-                "value": "plh_images/workshops/story_time_intro1.svg",
+                "name": "button_completed",
+                "value": "Show video",
+                "__EMPTY": "placeholder",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "content_box",
+            "value": "video_component",
+            "rows": [
+              {
+                "name": "video_help",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "welcome_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "watch",
+        "value": "watch",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "activity_title",
+                "value": "Welcome @fields.group_name",
                 "type": "set_variable"
               },
               {
-                "name": "text",
-                "value": "Thank you for thinking along! Let’s go back in time and see what happens  ",
+                "name": "activity_image",
+                "value": "plh_images/characters/guide2/happy.svg",
+                "comments": "placeholder",
                 "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "intro_nav_buttons",
+                "rows": [
+                  {
+                    "name": "button_skipped",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_completed",
+                    "value": "Start song",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "video_component",
+                "rows": [
+                  {
+                    "name": "video_title",
+                    "value": "Let's Slow Down",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "video_src",
+                    "value": "plh_video/lets_slow_down.mp4",
+                    "type": "set_variable"
+                  }
+                ]
               }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_example_stepper",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_stepper",
+        "value": "workshop_stepper",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
             ],
-            "name": "story_slide"
-          },
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "!@fields.do_workshops_together",
+        "rows": [
           {
-            "type": "nav_section",
+            "name": "nav_template_list",
+            "value": "w_example_welcome_together;\nw_example_listen;\n",
+            "comments": "w_example_read; w_example_talk_together; w_example_tools_activity;",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "workshop_stepper",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "true",
+        "comments": "@fields.do_workshops_together",
+        "rows": [
+          {
+            "name": "nav_template_list",
+            "value": "w_example_welcome_together;\nw_example_listen;",
+            "comments": "w_example_listen;\nw_example_read;\nw_example_question_time;\nw_example_tools_activity;\nw_example_home_practice;\nw_example_ending",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_example_welcome_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "welcome_together",
+        "value": "welcome_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "watch",
             "rows": [
               {
-                "type": "image",
-                "value": "plh_images/workshops/story1/1.svg"
-              },
-              {
-                "type": "text",
-                "value": "Neighour was cleaning the house while Amina was with her friends practicing dance moves."
+                "type": "nested_properties",
+                "name": "workshop_activity",
+                "rows": [
+                  {
+                    "name": "intro_text",
+                    "value": "This is the introduction text of the welcome together.",
+                    "type": "set_variable"
+                  }
+                ]
               }
             ]
-          },
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_example_listen",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "listen",
+        "value": "listen",
+        "rows": [
           {
-            "type": "nav_section",
-            "rows": [
-              {
-                "type": "image",
-                "value": "plh_images/workshops/story1/2.svg"
-              },
-              {
-                "type": "text",
-                "value": "Neighour: “Amina, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\n\nAmina: “Okay, mom!”"
-              }
-            ]
-          },
-          {
-            "type": "nav_section",
-            "rows": [
-              {
-                "type": "image",
-                "value": "plh_images/workshops/story1/3.svg"
-              }
-            ]
-          },
-          {
-            "type": "nav_section",
-            "rows": [
-              {
-                "type": "image",
-                "value": "plh_images/workshops/story1/4.svg"
-              },
-              {
-                "type": "text",
-                "value": "Neighour: “Thank you for practicing outside while I finished cleaning the house, Amina. Now, I have some time to watch your dance.”"
-              }
-            ]
-          },
-          {
-            "type": "nav_section",
-            "rows": [
-              {
-                "type": "image",
-                "value": "plh_images/workshops/story1/5.svg"
-              },
-              {
-                "type": "text",
-                "value": "Neighour: “Wow, Amina! You have such good dance moves!”"
-              }
-            ]
-          },
-          {
-            "type": "nav_section",
-            "rows": [
-              {
-                "type": "image",
-                "value": "plh_images/workshops/story1/6.svg"
-              },
-              {
-                "type": "text",
-                "value": "Now this is the final slide"
-              }
-            ]
+            "name": "audio_src",
+            "value": "plh_audio/sample.mp3",
+            "type": "set_variable"
           }
         ]
       }

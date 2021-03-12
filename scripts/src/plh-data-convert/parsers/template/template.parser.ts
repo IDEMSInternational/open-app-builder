@@ -1,5 +1,6 @@
 import { FlowTypes } from "../../../../types";
 import { DefaultParser } from "../default/default.parser";
+import { parsePLHString } from "../utils";
 
 export class TemplateParser extends DefaultParser {
   constructor() {
@@ -66,15 +67,13 @@ export class TemplateParser extends DefaultParser {
       actionString = `click | ${actionString}`;
     }
     const _cleaned = actionString;
-
-    let [trigger, action_id, ...args] = actionString.split("|").map((s) => s.trim()) as any;
+    const _parsed = parsePLHString(actionString);
+    let [[trigger], [action_id, ...args]] = _parsed as any[];
     // when responding to actions the action_id is actually the emitted name, so move to args
     if (trigger === "respond_to_action") {
       args.unshift(action_id);
       action_id = "emit";
     }
-    console.log({ actionString, trigger, action_id, args });
-
     return { trigger, action_id, args, _raw, _cleaned };
   }
 }
