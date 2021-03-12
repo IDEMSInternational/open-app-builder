@@ -103,3 +103,14 @@ export function getBooleanParamFromTemplateRow(row: FlowTypes.TemplateRow, name:
   return res;
 }
 
+export function getStringParamFromTemplateRowValueList(row: FlowTypes.TemplateRow, name: string, _default: string): string {
+  let res = _default;
+  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
+
+  if (param) {
+    param = param.split(":").slice(1).join(':');
+    res = param || _default;
+  }
+
+  return res;
+}
