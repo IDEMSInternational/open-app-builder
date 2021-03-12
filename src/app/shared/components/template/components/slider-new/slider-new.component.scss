@@ -1,12 +1,18 @@
-div{
+.slider-wrapper{
+  margin-top: 30px;
   min-width: 334px;
-  //padding: 20px 0 29px 23px;
-  //background: #fff;
-  //border: 2px solid #096B8B;
-  //box-sizing: border-box;
-  //box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  //border-radius: 20px;
-  //position: relative;
+  padding: 20px 0 29px 23px;
+  background: #fff;
+  border: 2px solid #096B8B;
+  box-sizing: border-box;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  position: relative;
+  height: 139px;
+  .slider-container{
+    max-width: 260px;
+    width: 100%;
+  }
 }
 ::ng-deep{
   .noUi-target{
@@ -45,5 +51,12 @@ div{
   }
   .noUi-active .noUi-tooltip {
     display: block;
+    background: #096B8B;
+    color: #fff;
+    border:none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
   }
+
 }
