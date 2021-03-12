@@ -9,9 +9,10 @@ import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 // import { LocalVarsReplacePipe } from "./pipes/local-vars-replace.pipe";
 import { SharedPipesModule } from "../../pipes";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
+import { NouisliderModule } from "ng2-nouislider";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, SharedPipesModule],
+  imports: [CommonModule, FormsModule, IonicModule, SharedPipesModule, NouisliderModule],
   exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent],
   declarations: [
     TmplCompHostDirective,
