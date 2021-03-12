@@ -26,8 +26,11 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   @Input() parent: TemplateContainerComponent;
   constructor() {}
 
-  /** Whenever actions are triggered handle in the parent template component */
-  triggerActions() {
-    this.parent.handleActions(this._row.action_list);
+  /**
+   * Whenever actions are triggered handle in the parent template component
+   * Actions are grouped by trigger, only emitting specific event handler (e.g. click)
+   */
+  triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
+    this.parent.handleActions(this._row.action_list.filter((a) => a.trigger === trigger));
   }
 }

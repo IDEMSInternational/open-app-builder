@@ -365,18 +365,14 @@ export namespace FlowTypes {
     fieldName: string;
   }
   export interface TemplateRowAction {
+    /** actions have an associated trigger */
+    trigger: "click" | "completed" | "uncompleted" | "respond_to_action";
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
-    action_id:
-      | "set_value"
-      | "set_local"
-      | "respond_to_action"
-      | "exit"
-      | "completed"
-      | "uncompleted"
-      | "click"
-      | "mark_as_completed"
-      | "mark_as_skipped";
+    action_id: "set_value" | "set_local" | "emit";
     args: string[];
+    // debug info
+    _raw: string;
+    _cleaned: string;
   }
 
   /* Used for setting default parameters for template components */
