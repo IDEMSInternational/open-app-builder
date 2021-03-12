@@ -36,7 +36,7 @@ export namespace FlowTypes {
     status: "draft" | "released";
     module?: string;
     // debug info
-    _xlsxPath: string;
+    _xlsxPath?: string;
   }
 
   /**
@@ -372,6 +372,8 @@ export namespace FlowTypes {
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id: "set_local" | "emit";
     args: string[];
+    /** field populated for tracking the component that triggered the action */
+    _triggeredBy?: string;
     // debug info
     _raw: string;
     _cleaned: string;
