@@ -121,8 +121,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
   private initialiseTemplate() {
     // Lookup template and provide fallback
-    this.template =
+    const foundTemplate =
       TEMPLATE.find((t) => t.flow_name === this.name) || NOT_FOUND_TEMPLATE(this.name);
+    this.template = JSON.parse(JSON.stringify(foundTemplate));
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
     const parentVariables = this.parent?.localVariables?.[this.template.flow_name];
