@@ -52,14 +52,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    *  Action Handling
    **************************************************************************************/
   /** Public method to add actions to processing queue and process */
-  public async handleActions(actions: FlowTypes.TemplateRowAction[] = []) {
-    actions.forEach((action) => this.actionsQueue.push(action));
+  public async handleActions(actions: FlowTypes.TemplateRowAction[] = [], _triggeredBy: string) {
+    actions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     // TODO - pass back relevant info from processActionsQueue
     const res = await this.processActionQueue();
-    // continue to emit any actions to parent where defined
-    if (this.parent) {
-      this.parent.handleActions(actions.filter((a) => a.action_id === "emit"));
-    }
     this.handleActionsCallback(actions, res);
     // TODO - possibly attach unique id to action to passback action results
   }
@@ -73,7 +69,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     const processedActions = [];
     // start the queue if it is not already running
     if (!this.actionsQueueProcessing$.value) {
-      console.group("Template Actions");
+      console.group("Process Actions");
+      console.log("Template:", this.name);
       this.actionsQueueProcessing$.next(true);
       while (this.actionsQueue.length > 0) {
         const action = this.actionsQueue[0];
@@ -92,12 +89,19 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
+    console.log("process action", action);
     const { action_id, args } = action;
     switch (action_id) {
       case "set_local":
         const [key, value] = args;
         return this.setLocalVariable(key, value);
-
+      case "emit":
+        // TODO - handle DB writes or similar for emit handling
+        if (this.parent) {
+          // continue to emit any actions to parent where defined
+          await this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
+        }
+        break;
       default:
         console.warn("No handler for action", { action_id, args });
         break;
@@ -267,7 +271,6 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         console.error("Negation condition not handled correctly", parsedExpression);
       }
     }
-    console.log("parsedExpression", parsedExpression);
     return parsedExpression;
   }
   /** When using ngFor loop track by  */
