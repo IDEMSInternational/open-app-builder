@@ -42,8 +42,12 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private contactFieldService: ContactFieldService) {
+  showTemplates = false;
 
+  constructor(private contactFieldService: ContactFieldService) {
+    if (location.href.indexOf("showTemplates=true") > -1) {
+      this.showTemplates = true;
+    }
   }
 
   ngOnInit() {
