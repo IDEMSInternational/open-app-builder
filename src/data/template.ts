@@ -6270,5 +6270,48 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "radio_group",
+    "status": "released",
+    "rows": [
+      {
+        "type": "radio_group",
+        "name": "radio",
+        "value": null,
+        "parameter_list": [
+          "radio_button_list: name:name_var_1 | text:Man; name:name_var_2 | text:Woman;",
+          "radio_button_type: btn_triangle"
+        ]
+      },
+      {
+        "type": "radio_group",
+        "name": "radio",
+        "value": null,
+        "parameter_list": [
+          "radio_button_list: " +
+          "name:name_var_1 | text:Single | image:src;" +
+          "name:name_var_2 | image:src | text:Pair;" +
+          "name:name_var_3 | image:src | text:Group;" +
+          "name:name_var_4 | image:src | text:example some info;",
+          "options_per_row: 3",
+          "radio_button_type: btn_square"
+        ]
+      },
+      {
+        "type": "radio_group",
+        "name": "radio",
+        "value": null,
+        "parameter_list": [
+          "radio_button_list: " +
+          "name:name_var_1 | text:Single | image:src;" +
+          "name:name_var_2 | image:src | text:Pair;" +
+          "name:name_var_3 | image:src | text:Group;",
+          "options_per_row: 3",
+          "radio_button_type: btn_image"
+        ]
+      }
+    ]
   }
 ]

@@ -23,6 +23,7 @@ import { TmplNumberComponent } from "./number-selector/number-selector.component
 import { SliderNewComponent } from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
+import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -44,6 +45,7 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
+  TmplRadioGroupComponent
 ];
 
 /***************************************************************************************
@@ -81,5 +83,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  slider_new: SliderNewComponent
+  slider_new: SliderNewComponent,
+  radio_group: TmplRadioGroupComponent
 };

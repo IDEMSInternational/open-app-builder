@@ -349,7 +349,8 @@ export namespace FlowTypes {
     | "set_default"
     | "text_box"
     | "combo_box"
-    | "slider_new";
+    | "slider_new"
+    | "radio_group";
 
   export interface TemplateRow {
     type: TemplateRowType;
