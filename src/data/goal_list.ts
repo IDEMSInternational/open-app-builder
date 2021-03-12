@@ -209,8 +209,7 @@
           "completion_mod_welcome_give",
           "completion_mod_welcome_self-care_package",
           "completion_mod_welcome_quick_praise",
-          "completion_mod_welcome_survey",
-          ""
+          "completion_mod_welcome_survey"
         ],
         "completion_tasks": "task_mod_welcome_completed_goal"
       },
