@@ -23,7 +23,8 @@ export class TemplateParser extends DefaultParser {
     if (row.action_list) {
       row.action_list = row.action_list.map((actionString) =>
         this.parseActionString(actionString as any)
-      );
+      )
+      .filter((action) => action != null);
     }
     // convert boolean to strings (easier for future processing, as most update functions typically return strings)
     if (typeof row.hidden === "boolean") {
@@ -53,7 +54,13 @@ export class TemplateParser extends DefaultParser {
    * ```
    */
   private parseActionString(actionString: string): FlowTypes.TemplateRowAction {
-    const [action_id, ...args] = actionString.split("|").map((s) => s.trim()) as any;
-    return { action_id, args };
+    const parts = actionString.split("|").map((s) => s.trim());
+    const event_id = parts[0] as any;
+    if (parts[1]) {
+      const [action_id, ...args] = parts[1].split(":").map((s) => s.trim()) as any;
+      return { event_id, action_id, args };
+    } else {
+      return null;
+    }
   }
 }
