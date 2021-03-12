@@ -160,7 +160,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       let { name, value, rows, type } = r;
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
-      if (type === "set_variable") {
+      if (type === "set_variable" || type === "nested_properties") {
         variables[name] = variables[name] || {};
         // handle merging updated properties
         VARIABLE_FIELDS.forEach((field) => {
