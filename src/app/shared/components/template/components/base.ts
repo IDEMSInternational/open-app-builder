@@ -1,3 +1,4 @@
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Component, Input } from "@angular/core";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
@@ -27,7 +28,11 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   constructor() {}
 
   /** Whenever actions are triggered handle in the parent template component */
-  triggerActions() {
-    this.parent.handleActions(this._row.action_list);
+  triggerActionsForEvent(eventId?: string) {
+    if (this._row && this._row.action_list) {
+      const actionsForEvent = this._row.action_list
+        .filter((action) => !eventId || !action.event_id || action.event_id === eventId)
+      this.parent.handleActions(actionsForEvent);
+    }
   }
 }
