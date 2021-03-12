@@ -6295,7 +6295,7 @@
           "name:name_var_2 | image:src | text:Pair;" +
           "name:name_var_3 | image:src | text:Group;" +
           "name:name_var_4 | image:src | text:example some info;",
-          "options_per_row: 3",
+          "options_per_row: 5",
           "radio_button_type: btn_square"
         ]
       },
