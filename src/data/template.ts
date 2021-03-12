@@ -94,12 +94,6 @@
           {
             "type": "slider",
             "name": "slider",
-            "action_list": [
-              {
-                "action_id": "set_value",
-                "args": []
-              }
-            ],
             "parameter_list": [
               "min_value:@local.min_value",
               "min_text:@local.min_text",
@@ -214,24 +208,30 @@
             "value": "nav_buttons",
             "action_list": [
               {
-                "action_id": "completed",
+                "event_id": "completed",
+                "action_id": "set_local",
                 "args": [
-                  "set_local:hide_content:false"
+                  "hide_content",
+                  "false"
                 ]
               },
               {
-                "action_id": "completed",
+                "event_id": "completed",
+                "action_id": "set_local",
                 "args": [
-                  "set_local:hide_intro:true"
+                  "hide_intro",
+                  "true"
                 ]
               },
               {
-                "action_id": "uncompleted",
+                "event_id": "uncompleted",
+                "action_id": "emit",
                 "args": [
-                  "emit:uncompleted"
+                  "uncompleted"
                 ]
               }
             ],
+            "comments": "completed | set_local:hide_content:false; completed | set_local:hide_intro:true; uncompleted | emit:uncompleted ",
             "rows": [
               {
                 "name": "button_uncompleted",
@@ -274,27 +274,35 @@
             "name": "content_box",
             "action_list": [
               {
-                "action_id": "completed",
+                "event_id": "completed",
+                "action_id": "set_local",
                 "args": [
-                  "set_local:hide_content:true"
+                  "hide_content",
+                  "true"
                 ]
               },
               {
-                "action_id": "completed",
+                "event_id": "completed",
+                "action_id": "set_local",
                 "args": [
-                  "set_local:hide_outro:false"
+                  "hide_outro",
+                  "false"
                 ]
               },
               {
-                "action_id": "uncompleted",
+                "event_id": "uncompleted",
+                "action_id": "set_local",
                 "args": [
-                  "set_local:hide_intro:false"
+                  "hide_intro",
+                  "false"
                 ]
               },
               {
-                "action_id": "uncompleted",
+                "event_id": "uncompleted",
+                "action_id": "set_local",
                 "args": [
-                  "set_local:hide_content:true"
+                  "hide_content",
+                  "true"
                 ]
               }
             ],
@@ -307,21 +315,26 @@
             "name": "content_box",
             "action_list": [
               {
-                "action_id": "completed",
+                "event_id": "completed",
+                "action_id": "emit",
                 "args": [
-                  "emit:completed"
+                  "completed"
                 ]
               },
               {
-                "action_id": "uncompleted",
+                "event_id": "uncompleted",
+                "action_id": "set_local",
                 "args": [
-                  "set_local:hide_intro:false"
+                  "hide_intro",
+                  "false"
                 ]
               },
               {
-                "action_id": "uncompleted",
+                "event_id": "uncompleted",
+                "action_id": "set_local",
                 "args": [
-                  "set_local:hide_content:true"
+                  "hide_content",
+                  "true"
                 ]
               }
             ],
@@ -364,6 +377,15 @@
             "type": "template",
             "name": "outro_nav_buttons",
             "value": "nav_buttons",
+            "action_list": [
+              {
+                "event_id": "completed",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ]
+              }
+            ],
             "rows": []
           }
         ]
@@ -393,9 +415,10 @@
             "value": "Next",
             "action_list": [
               {
-                "action_id": "click",
+                "event_id": "click",
+                "action_id": "emit",
                 "args": [
-                  "emit:completed"
+                  "completed"
                 ]
               }
             ]
@@ -406,9 +429,10 @@
             "value": "Back",
             "action_list": [
               {
-                "action_id": "click",
+                "event_id": "click",
+                "action_id": "emit",
                 "args": [
-                  "emit:uncompleted"
+                  "uncompleted"
                 ]
               }
             ],
@@ -462,6 +486,15 @@
         "type": "template",
         "name": "nav_buttons",
         "value": "nav_buttons",
+        "action_list": [
+          {
+            "event_id": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ]
+          }
+        ],
         "rows": []
       }
     ]
@@ -483,6 +516,10 @@
       {
         "name": "audio_help",
         "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "text"
       },
       {
         "type": "template",
@@ -549,6 +586,15 @@
         "type": "template",
         "name": "workshop_activity",
         "value": "workshop_activity",
+        "action_list": [
+          {
+            "event_id": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ]
+          }
+        ],
         "rows": [
           {
             "name": "activity_image",
@@ -629,14 +675,11 @@
         "value": "workshop_activity",
         "action_list": [
           {
-            "action_id": "completed",
+            "event_id": "completed",
+            "action_id": "emit",
             "args": [
-              "emit:completed"
+              "completed"
             ]
-          },
-          {
-            "action_id": "",
-            "args": []
           }
         ],
         "rows": [
@@ -713,14 +756,11 @@
         "value": "watch",
         "action_list": [
           {
-            "action_id": "completed",
+            "event_id": "completed",
+            "action_id": "emit",
             "args": [
-              "emit:completed"
+              "completed"
             ]
-          },
-          {
-            "action_id": "",
-            "args": []
           }
         ],
         "rows": [
@@ -789,14 +829,11 @@
         "value": "workshop_stepper",
         "action_list": [
           {
-            "action_id": "completed",
+            "event_id": "completed",
+            "action_id": "emit",
             "args": [
-              "emit:completed"
+              "completed"
             ]
-          },
-          {
-            "action_id": "",
-            "args": []
           }
         ],
         "hidden": "!@fields.do_workshops_together",
@@ -812,16 +849,14 @@
       {
         "type": "template",
         "name": "workshop_stepper",
+        "value": "workshop_stepper",
         "action_list": [
           {
-            "action_id": "completed",
+            "event_id": "completed",
+            "action_id": "emit",
             "args": [
-              "emit:completed"
+              "completed"
             ]
-          },
-          {
-            "action_id": "",
-            "args": []
           }
         ],
         "hidden": "true",
@@ -848,14 +883,11 @@
         "value": "welcome_together",
         "action_list": [
           {
-            "action_id": "completed",
+            "event_id": "completed",
+            "action_id": "emit",
             "args": [
-              "emit:completed"
+              "completed"
             ]
-          },
-          {
-            "action_id": "",
-            "args": []
           }
         ],
         "rows": [
@@ -889,6 +921,15 @@
         "type": "template",
         "name": "listen",
         "value": "listen",
+        "action_list": [
+          {
+            "event_id": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ]
+          }
+        ],
         "rows": [
           {
             "name": "audio_src",
@@ -896,6 +937,248 @@
             "type": "set_variable"
           }
         ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "home_screen_variables",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_global",
+        "name": "weekly_workshops",
+        "value": "Weekly Workshops"
+      },
+      {
+        "type": "set_global",
+        "name": "weekly_workshop",
+        "value": "Weekly Workshop"
+      },
+      {
+        "type": "set_global",
+        "name": "weekly_workshops_image",
+        "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_points",
+        "value": "Parent Points"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point",
+        "value": "Parent Point"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_points_image",
+        "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_centre",
+        "value": "Parent Centre"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_centre_image",
+        "value": "plh_images/characters/@fields.guidenumber/happy.svg",
+        "comments": "placeholder"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "parent_centre_variables",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_global",
+        "name": "help",
+        "value": "Help"
+      },
+      {
+        "type": "set_global",
+        "name": "help_icon",
+        "value": "plh_images/icons/heart.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "essential_tools",
+        "value": "Essential Tools"
+      },
+      {
+        "type": "set_global",
+        "name": "essential_tools_icon",
+        "value": "plh_images/icons/heart.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "covid",
+        "value": "COVID"
+      },
+      {
+        "type": "set_global",
+        "name": "covid_icon",
+        "value": "plh_images/icons/heart.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "relax_and_activities",
+        "value": "Relax & Activities"
+      },
+      {
+        "type": "set_global",
+        "name": "relax_and_activities_icon",
+        "value": "plh_images/icons/heart.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "extra",
+        "value": "Extra"
+      },
+      {
+        "type": "set_global",
+        "name": "extra_icon",
+        "value": "plh_images/icons/heart.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "support_contacts",
+        "value": "Support Contacts"
+      },
+      {
+        "type": "set_global",
+        "name": "support_contacts_icon",
+        "value": "plh_images/icons/heart.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "evidence_base",
+        "value": "Evidence Base"
+      },
+      {
+        "type": "set_global",
+        "name": "evidence_base_icon",
+        "value": "plh_images/icons/heart.svg",
+        "comments": "placeholder"
+      },
+      {
+        "type": "set_global",
+        "name": "technical_support",
+        "value": "Technical Support"
+      },
+      {
+        "type": "set_global",
+        "name": "technical_support_icon",
+        "value": "plh_images/icons/heart.svg",
+        "comments": "placeholder"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "parent_point_variables",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_global",
+        "name": "parent_point_relax",
+        "value": "Relax"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_relax_image",
+        "value": "plh_images/habits/habit_relax_image.svg"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_treat_yourself",
+        "value": "Treat yourself well"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_treat_yourself_image",
+        "value": "plh_images/habits/habit_treat_yourself_image.svg"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_praise_yourself",
+        "value": "Praise yourself"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_praise_yourself_image",
+        "value": "plh_images/habits/habit_praise_yourself_image.svg"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_spend_time",
+        "value": "One on one time"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_spend_time_image",
+        "value": "plh_images/habits/habit_spend_time_image.svg"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_praise_teen",
+        "value": "Praise your teen"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_praise_teen_image",
+        "value": "plh_images/habits/habit_praise_teen_image.svg"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_breathe",
+        "value": "Breathe not yell"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_breathe_image",
+        "value": "plh_images/habits/habit_breathe_image.svg"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_money",
+        "value": "Good money choice"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_money_image",
+        "value": "plh_images/habits/habit_money_image.svg"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_consequence",
+        "value": "Calm consequence"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_consequence_image",
+        "value": "plh_images/habits/habit_consequence_image.svg"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_safe",
+        "value": "Safe"
+      },
+      {
+        "type": "set_global",
+        "name": "parent_point_safe_image",
+        "value": "plh_images/habits/habit_safe_image.svg"
       }
     ]
   }
