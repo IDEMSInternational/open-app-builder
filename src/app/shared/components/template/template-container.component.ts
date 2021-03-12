@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { takeWhile } from "rxjs/operators";
 import { BehaviorSubject } from "scripts/node_modules/rxjs";
+import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 
@@ -40,6 +41,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   debugMode = false;
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
+
+  constructor(private contactFieldService: ContactFieldService) {
+
+  }
 
   ngOnInit() {
     this.initialiseTemplate();
@@ -243,8 +248,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         case "local":
           parsedValue = this.localVariables[fieldName]?.value || "";
           break;
-        // case 'fields':
-        // TODO
+        case 'fields':
+          parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
+          break;
         default:
           console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
           parsedValue = evaluator.matchedExpression;
