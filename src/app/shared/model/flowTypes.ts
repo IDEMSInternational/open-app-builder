@@ -327,6 +327,7 @@ export namespace FlowTypes {
     | "animated_section_group"
     | "display_group"
     | "set_variable"
+    | "set_global"
     | "nested_properties"
     | "button"
     | "image"
@@ -365,18 +366,24 @@ export namespace FlowTypes {
     fieldName: string;
   }
   export interface TemplateRowAction {
+    event_id:
+      "click"
+      | "completed"
+      | "uncompleted"
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
       | "set_value"
+      | "set_field"
       | "set_local"
-      | "respond_to_action"
-      | "exit"
-      | "completed"
-      | "uncompleted"
-      | "click"
-      | "mark_as_completed"
-      | "mark_as_skipped";
+      | "set_global"
+      | "emit"
+      | "respond_to_action" // Is this needed?
+      | "exit" // Is this needed?
+      | "completed" // Is this needed?
+      | "uncompleted" // Is this needed?
+      | "mark_as_completed" // Is this needed?
+      | "mark_as_skipped"; // Is this needed?
     args: string[];
   }
 
