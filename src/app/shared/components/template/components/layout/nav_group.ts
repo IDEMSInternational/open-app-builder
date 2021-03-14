@@ -18,6 +18,7 @@ import { TemplateBaseComponent } from "../base";
       <plh-template-container
         *ngIf="sectionIndex === i"
         [name]="templateName"
+        [templatename]="templateName"
         [parent]="parent"
       >
       </plh-template-container>
@@ -87,8 +88,8 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
   ngOnInit() {
     this.parent.handleActionsCallback = async (actions, results) => {
       console.log("parent handled actions", actions, results);
-      const completedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "completed");
-      const uncompletedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "uncompleted");
+      const completedAction = actions.find((a) => a.action_id === "completed" && a.args[0] === "completed");
+      const uncompletedAction = actions.find((a) => a.action_id === "uncompleted" && a.args[0] === "uncompleted");
 
       if (completedAction) {
         this.nextSection();
@@ -102,6 +103,7 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
     if (this.sectionIndex + 1 < this.templateNames.length) {
       this.sectionIndex++;
     } else {
+      // There should be an emit "completed" action 
       console.log("Nav group completed?");
     }
   }
@@ -109,6 +111,9 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
   previousSection() {
     if (this.sectionIndex > 0) {
       this.sectionIndex--;
+    } else {
+      // There should be an emit "uncompleted" action
+      console.log("Nav group uncompleted?");
     }
   }
 }

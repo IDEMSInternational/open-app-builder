@@ -99,6 +99,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
     const { action_id, args } = action;
+    //part of temporary fix
+    let actionsForEmittedEvent = [];
     switch (action_id) {
       case "set_local":
       case "set_value":
@@ -106,11 +108,19 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         console.log("Setting local variable", key, value);
         return this.setLocalVariable(key, value);
       case "emit": 
-        console.log("Emiting", args[0], " from ", this.row?.name, " to parent ", this.parent);
-        const actionsForEmittedEvent = this.row.action_list.filter((action) => action.event_id === args[0]);
+        console.log("Emiting", args[0], " from ", this.name, " to parent ", this.parent);
+        if (!this.row) {
+          //TODO fix a temporary hack to fix for nav_group templates which don't have rows
+           actionsForEmittedEvent = [{event_id: "completed", action_id:  "completed", args: ["completed"]}];
+        }else{
+           actionsForEmittedEvent = this.row.action_list.filter((action) => action.event_id === args[0]);
+        }
         console.log("Excuting actions matching event ", args[0], actionsForEmittedEvent);
         this.parent?.handleActions(actionsForEmittedEvent);
         return;
+// Hack solution for Nav-groups
+      case "completed":
+        this.handleActionsCallback([action], null);
       default:
         console.warn("No handler for action", { action_id, args });
         return;
