@@ -34,6 +34,7 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
 })
 export class TemplateContainerComponent implements OnInit, ITemplateContainerProps {
   @Input() name: string;
+  @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
   template: FlowTypes.Template;
@@ -130,11 +131,11 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private initialiseTemplate() {
     // Lookup template and provide fallback
     const foundTemplate =
-      TEMPLATE.find((t) => t.flow_name === this.name) || NOT_FOUND_TEMPLATE(this.name);
+      TEMPLATE.find((t) => t.flow_name === this.templatename) || NOT_FOUND_TEMPLATE(this.templatename);
     this.template = JSON.parse(JSON.stringify(foundTemplate));
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
-    const parentVariables = this.parent?.localVariables?.[this.template.flow_name];
+    const parentVariables = this.parent?.localVariables?.[this.name];
     this.localVariables = this.processVariables(this.template.rows, parentVariables);
     // console.log("[Template Init]", { name: this.name, parentVariables });
     if (!this.parent) {
@@ -243,6 +244,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
             r.rows = this.processRows(r.rows, variables);
             break;
           // could add logic here to ignore/remove template rows (already processed), leaving as will be overwritten on init anyways
+          case "template":
+          //  r.rows = this.processRows(r.rows, variables[r.name]);
           default:
             // otherwise treat nested rows as value-namespaced local variables
             r.rows = this.processRows(r.rows, variables[r.name]);
