@@ -59,17 +59,18 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    *  Action Handling
    **************************************************************************************/
   /** Public method to add actions to processing queue and process */
-
-  public async handleActions(actions: FlowTypes.TemplateRowAction[] = []) {
-    actions.forEach((action) => this.actionsQueue.push(action));
+  public async handleActions(actions: FlowTypes.TemplateRowAction[] = [], _triggeredBy: string) {
+    actions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     // TODO - pass back relevant info from processActionsQueue
+    console.log("processActionQueue for ", this.name);
     const res = await this.processActionQueue();
-    this.handleActionsCallback([...this.actionsQueue], res);
+    console.log("About to call handleActionsCallback", this.name);
+    this.handleActionsCallback([...actions], res);
     // TODO - possibly attach unique id to action to passback action results
 
   }
   /** Optional method child component can add to handle post-action callback */
-  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) { }
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -78,7 +79,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     const processedActions = [];
     // start the queue if it is not already running
     if (!this.actionsQueueProcessing$.value) {
-      console.group("Template Actions");
+      console.group("Process Actions");
+      console.log("Template:", this.name);
       this.actionsQueueProcessing$.next(true);
       while (this.actionsQueue.length > 0) {
         const action = this.actionsQueue[0];
@@ -97,6 +99,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
+    console.log("process action", action);
     const { action_id, args } = action;
     switch (action_id) {
       case "set_local":
@@ -104,12 +107,25 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         const [key, value] = args;
         console.log("Setting local variable", key, value);
         return this.setLocalVariable(key, value);
-      case "emit": 
-        console.log("Emiting", args[0], " from ", this.row?.name, " to parent ", this.parent);
-        const actionsForEmittedEvent = this.row.action_list.filter((action) => action.event_id === args[0]);
-        console.log("Excuting actions matching event ", args[0], actionsForEmittedEvent);
-        this.parent?.handleActions(actionsForEmittedEvent);
-        return;
+      case "emit":
+        // TODO - handle DB writes or similar for emit handling
+        if (this.parent) {
+          // continue to emit any actions to parent where defined
+
+          // When emitting, tell parent template to execute actions in 
+          console.log("Emiting", args[0], " from ", this.row?.name, " to parent ", this.parent);
+          if (this.row && this.row.action_list) {
+            const actionsForEmittedEvent = this.row.action_list.filter((action) => action.trigger === args[0]);
+            console.log("Excuting actions matching event ", args[0], actionsForEmittedEvent);
+            await this.parent.handleActions(actionsForEmittedEvent, `${this.name}.${action._triggeredBy}`);
+            // Below needs discussion
+            // await this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
+          } else {
+            console.log("No action list for row ", this.row, "on template name ", this.name);
+            this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
+          }
+        }
+        break;
       default:
         console.warn("No handler for action", { action_id, args });
         return;
@@ -263,7 +279,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         case "local":
           parsedValue = this.localVariables[fieldName]?.value || "";
           break;
-        case 'fields':
+        case "fields":
           parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
           break;
         default:
@@ -271,6 +287,14 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           parsedValue = evaluator.matchedExpression;
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
+    }
+
+    // Handle negated conditions - true/false will already have been filled as text so manually toggle
+    if (parsedExpression.startsWith("!")) {
+      parsedExpression = parsedExpression.replace("!true", "false").replace("!false", "true");
+      if (parsedExpression.startsWith("!")) {
+        console.error("Negation condition not handled correctly", parsedExpression);
+      }
     }
     return parsedExpression;
   }

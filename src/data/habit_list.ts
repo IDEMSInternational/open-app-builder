@@ -120,6 +120,7 @@
         "set_aim_button_text": "Set my aim",
         "aim_action": "choose_number | completion_safe_custom | repeat_count | min=0 | max = 10"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\habits\\habit_list.xlsx"
   }
 ]
