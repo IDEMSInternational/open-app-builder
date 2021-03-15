@@ -51,7 +51,7 @@ export class SliderNewComponent extends TemplateBaseComponent implements ITempla
     pips: {
       mode: "count",
       density: 1,
-      values: 8,
+      values: 7,
       stepped: true
     }
   };

@@ -72,13 +72,13 @@
   }
   .noUi-horizontal .noUi-handle{
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background: #096B8B;
     border:none;
     box-shadow: none;
     outline: none;
-    top: -5px;
+    top: -7px;
     right: -11px;
   }
   .noUi-pips-horizontal{
@@ -95,12 +95,14 @@
     display: none;
   }
   .noUi-active .noUi-tooltip {
-    display: block;
     background: #096B8B;
     color: #fff;
     border:none;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
     border-radius: 50%;
   }
   .custom-slider{
