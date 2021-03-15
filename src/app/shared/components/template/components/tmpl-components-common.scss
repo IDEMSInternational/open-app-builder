@@ -18,6 +18,9 @@
   flex-direction: column;
   width: 100%;
   justify-content: center;
+  .animated_section{
+    display: flex;
+  }
 }
 
 .tmpl-image-container {
@@ -68,3 +71,5 @@ p {
   font-size: 25px;
   color: #0d3f60;
 }
+
+

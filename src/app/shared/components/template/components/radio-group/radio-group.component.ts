@@ -7,11 +7,13 @@ import {
   getStringParamFromTemplateRow,
   getStringParamFromTemplateRowValueList
 } from "../../../../utils";
+import { SvgIconRegistryService } from "angular-svg-icon";
 
 interface IButton {
   name: string | null;
   image: string | null;
   text: string | null;
+  image_checked: string | null;
 }
 
 @Component({
@@ -37,7 +39,7 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   }
   @HostBinding('style.--scale-factor') get scale() { return this.scaleFactor; }
 
-  constructor() {
+  constructor(private iconReg: SvgIconRegistryService) {
     super();
   }
 
@@ -47,7 +49,7 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   }
 
    getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / ((150 + 20) * this.options_per_row) > 1 ? 1 : this.windowWidth / ((115 + 20) * this.options_per_row);
+    this.scaleFactor = this.windowWidth / ((150) * this.options_per_row) > 1 ? 1 : this.windowWidth / ((115 + 20) * this.options_per_row);
     return this.scaleFactor;
   }
 
@@ -67,7 +69,8 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
       const obj: IButton = {
         text: null,
         image: null,
-        name: null
+        name: null,
+        image_checked: null,
       };
       item.split("|").map((values) => {
         obj[values.split(":")[0].trim()] = values.split(":")[1].trim();

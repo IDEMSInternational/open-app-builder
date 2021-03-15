@@ -1,7 +1,7 @@
 <div class="wrapper-radio-group">
   <div class="container" [ngSwitch]="radioButtonType">
     <div class="btn_triangle dse" *ngSwitchCase="'btn_triangle'">
-      <div class="btn_triangle_container center" *ngFor="let item of arrayOfBtn" [style.flex]="getFlexWidth">
+      <div class="btn_triangle_container center" *ngFor="let item of arrayOfBtn" >
         <label class="center standard-label" [class.checked]="el.checked">
           <input #el type="radio" name="triangle">
           {{item.text}}
@@ -9,9 +9,11 @@
       </div>
     </div>
     <div class="btn_square dse" *ngSwitchCase="'btn_square'">
-      <div class="btn_square_container center" *ngFor="let item of arrayOfBtn" [style.flex]="getFlexWidth">
+      <div class="btn_square_container center" *ngFor="let item of arrayOfBtn">
         <label class="center standard-label" [class.checked]="el.checked">
-          <img *ngIf="item.image" src="/assets/plh_assets/plh_images/other_icons/icon-man.svg" alt="">
+          <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image"
+          [svgStyle]="{'fill': el.checked && !item.image_checked ? '#fff': '#0D3F60'}">
+          </svg-icon>
           <input #el type="radio" name="square">
           {{item.text}}
         </label>
@@ -20,7 +22,8 @@
     <div class="btn_image dse" *ngSwitchCase="'btn_image'">
       <div class="btn_image_container center" *ngFor="let item of arrayOfBtn" [style.flex]="getFlexWidth">
         <label class="center standard-label" [class.image-checked]="el.checked">
-          <img *ngIf="item.image" src="/assets/plh_assets/plh_images/other_icons/smile.svg" alt="">
+          <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
+          </svg-icon>
           <input #el type="radio" name="image">
           {{item.text}}
         </label>
