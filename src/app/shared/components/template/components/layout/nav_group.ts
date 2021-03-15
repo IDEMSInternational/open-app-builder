@@ -85,6 +85,7 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("nav_group init", this.parent);
     this.parent.handleActionsCallback = async (actions, results) => {
       console.log("parent handled actions", actions, results);
       const completedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "completed");

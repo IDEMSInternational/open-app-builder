@@ -56,6 +56,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
 > = {
   text: TmplTextComponent,
   title: TmplTitleComponent,
+  subtitle: TmplTextComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,

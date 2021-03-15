@@ -3,7 +3,7 @@ import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
 // When running this parser assumes there is a 'type' column
-type IRowData = { type: string, name?: string };
+type IRowData = { type: string; name?: string };
 
 /** Prefix for use with images in the app */
 const ASSETS_BASE = "assets/plh_assets";
@@ -18,7 +18,6 @@ const ASSETS_CACHE_PATH = "src/gdrive-download/cache/plh_assets";
  * - Rewrite `_list` content as string array
  */
 export class DefaultParser implements AbstractParser {
-
   public groupSuffix = "_group";
 
   /** All rows are handled in a queue, processing linearly */
@@ -60,8 +59,10 @@ export class DefaultParser implements AbstractParser {
         row[field] = this.handleAssetLinks(row[field], flow.flow_name);
       }
       if (field.endsWith("_list")) {
-        // rewrite asset urls
-        row[field] = row[field].split(";").map((val: string) => val.trim());
+        row[field] = row[field]
+          .split(";")
+          .map((val: string) => val.trim())
+          .filter((val: string) => val !== "");
       }
     });
 
