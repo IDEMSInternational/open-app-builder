@@ -24,7 +24,8 @@ export class TemplateParser extends DefaultParser {
     if (row.action_list) {
       row.action_list = row.action_list.map((actionString) =>
         this.parseActionString(actionString as any)
-      );
+      )
+      .filter((action) => action != null);
     }
     // convert boolean to strings (easier for future processing, as most update functions typically return strings)
     if (typeof row.hidden === "boolean") {
@@ -60,21 +61,30 @@ export class TemplateParser extends DefaultParser {
     const actionTriggers: FlowTypes.TemplateRowAction["trigger"][] = [
       "click",
       "completed",
-      "respond_to_action",
       "uncompleted",
     ];
     if (!actionTriggers.find((t) => actionString.startsWith(t))) {
       actionString = `click | ${actionString}`;
     }
     const _cleaned = actionString;
-    const _parsed = parsePLHString(actionString);
-    let [[trigger], [action_id, ...args]] = _parsed as any[];
+    // This was causing an error
+    // const _parsed = parsePLHString(actionString);
+    const parts = actionString.split("|").map((s) => s.trim());
+    const trigger = parts[0] as any;
+    if (parts[1]) {
+      const [action_id, ...args] = parts[1].split(":").map((s) => s.trim()) as any;
+      return { trigger, action_id, args, _raw, _cleaned };
+    } else {
+      return { trigger, action_id: null, args: [], _raw, _cleaned };
+    }
+    /* let [[trigger], [action_id, ...args]] = _parsed as any[];
     // when responding to actions the action_id is actually the emitted name, so move to args
     if (trigger === "respond_to_action") {
       args.unshift(action_id);
       action_id = "emit";
     }
-    return { trigger, action_id, args, _raw, _cleaned };
+    return { trigger, action_id, args, _raw, _cleaned }; */
+    
   }
 }
 

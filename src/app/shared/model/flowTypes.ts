@@ -319,16 +319,19 @@ export namespace FlowTypes {
   export interface Template extends FlowTypeBase {
     flow_type: "template";
     rows: TemplateRow[];
+    comments?: string;
   }
 
   export type TemplateRowType =
     | "image"
     | "title"
+    | "subtitle"
     | "text"
     | "animated_section"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
+    | "set_global"
     | "nested_properties"
     | "button"
     | "image"
@@ -368,9 +371,19 @@ export namespace FlowTypes {
   }
   export interface TemplateRowAction {
     /** actions have an associated trigger */
-    trigger: "click" | "completed" | "uncompleted" | "respond_to_action";
+    trigger:
+      "click"
+      | "completed"
+      | "uncompleted"
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
-    action_id: "set_local" | "emit";
+    action_id:
+      | "" // TODO document this property for stop propogation
+      | "set_value" // This currently is same as set_local (remove?)
+      | "set_field"
+      | "set_local"
+      | "set_global"
+      | "emit"
+      | "go_to"
     args: string[];
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: string;

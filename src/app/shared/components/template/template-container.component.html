@@ -1,11 +1,14 @@
 <div
   [className]="'template-container ' + localVariables?.theme_name"
   [attr.data-theme]="localVariables._theme || 'default'"
+  [ngClass]="{'show-border': showTemplates }"
 >
+  <div [hidden]="!showTemplates" class="template-name-debug" >{{name}}</div>
   <div class="debug-toggle" [attr.data-enabled]="debugMode">
     <ion-icon name="bug-outline"></ion-icon>
     <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
   </div>
+  
   <plh-template-component
     *ngFor="let row of template.rows"
     class="row"
