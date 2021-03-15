@@ -35,6 +35,7 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
 export class TemplateContainerComponent implements OnInit, ITemplateContainerProps {
   @Input() name: string;
   @Input() parent?: TemplateContainerComponent;
+  @Input() row?: FlowTypes.TemplateRow;
   template: FlowTypes.Template;
   /** local state tree used to handle default and overwritten row properties */
   localVariables: ILocalVariables = {};
@@ -42,7 +43,13 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private contactFieldService: ContactFieldService) {}
+  showTemplates = false;
+
+  constructor(private contactFieldService: ContactFieldService) {
+    if (location.href.indexOf("showTemplates=true") > -1) {
+      this.showTemplates = true;
+    }
+  }
 
   ngOnInit() {
     this.initialiseTemplate();
@@ -55,12 +62,15 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   public async handleActions(actions: FlowTypes.TemplateRowAction[] = [], _triggeredBy: string) {
     actions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     // TODO - pass back relevant info from processActionsQueue
+    console.log("processActionQueue for ", this.name);
     const res = await this.processActionQueue();
-    this.handleActionsCallback(actions, res);
+    console.log("About to call handleActionsCallback", this.name);
+    this.handleActionsCallback([...actions], res);
     // TODO - possibly attach unique id to action to passback action results
+
   }
   /** Optional method child component can add to handle post-action callback */
-  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) { }
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -93,18 +103,32 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     const { action_id, args } = action;
     switch (action_id) {
       case "set_local":
+      case "set_value":
         const [key, value] = args;
+        console.log("Setting local variable", key, value);
         return this.setLocalVariable(key, value);
       case "emit":
         // TODO - handle DB writes or similar for emit handling
         if (this.parent) {
           // continue to emit any actions to parent where defined
-          await this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
+
+          // When emitting, tell parent template to execute actions in 
+          console.log("Emiting", args[0], " from ", this.row?.name, " to parent ", this.parent);
+          if (this.row && this.row.action_list) {
+            const actionsForEmittedEvent = this.row.action_list.filter((action) => action.trigger === args[0]);
+            console.log("Excuting actions matching event ", args[0], actionsForEmittedEvent);
+            await this.parent.handleActions(actionsForEmittedEvent, `${this.name}.${action._triggeredBy}`);
+            // Below needs discussion
+            // await this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
+          } else {
+            console.log("No action list for row ", this.row, "on template name ", this.name);
+            this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
+          }
         }
         break;
       default:
         console.warn("No handler for action", { action_id, args });
-        break;
+        return;
     }
   }
 
@@ -121,8 +145,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
   private initialiseTemplate() {
     // Lookup template and provide fallback
-    this.template =
+    const foundTemplate =
       TEMPLATE.find((t) => t.flow_name === this.name) || NOT_FOUND_TEMPLATE(this.name);
+    this.template = JSON.parse(JSON.stringify(foundTemplate));
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
     const parentVariables = this.parent?.localVariables?.[this.template.flow_name];
@@ -151,7 +176,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       let { name, value, rows, type } = r;
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
-      if (type === "set_variable") {
+      if (type === "set_variable" || type === "nested_properties") {
         variables[name] = variables[name] || {};
         // handle merging updated properties
         VARIABLE_FIELDS.forEach((field) => {

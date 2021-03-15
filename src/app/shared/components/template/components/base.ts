@@ -1,3 +1,4 @@
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Component, Input } from "@angular/core";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
@@ -31,8 +32,9 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * Actions are grouped by trigger, only emitting specific event handler (e.g. click)
    */
   triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
+    const actionsForTrigger = this._row.action_list.filter((a) => a.trigger === trigger);
     this.parent.handleActions(
-      this._row.action_list.filter((a) => a.trigger === trigger),
+      actionsForTrigger,
       this._row.name
     );
   }
