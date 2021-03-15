@@ -21,7 +21,7 @@
     </div>
     <div class="btn_image dse" *ngSwitchCase="'btn_image'">
       <div class="btn_image_container center" *ngFor="let item of arrayOfBtn" [style.flex]="getFlexWidth">
-        <label class="center standard-label" [class.image-checked]="el.checked">
+        <label class="center standard-label" [class.smile-checked]="el.checked">
           <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
           </svg-icon>
           <input #el type="radio" name="image">
