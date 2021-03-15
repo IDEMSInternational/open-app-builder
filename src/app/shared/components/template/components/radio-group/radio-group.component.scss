@@ -1,6 +1,6 @@
 $primary-radio-bg: linear-gradient(168.87deg, #0F8AB2 28.12%, #0D4060 100%);
-$primary-radio-border: 1px solid #0D3F60;
-$primary-radio-border-rd: 15px;
+$primary-radio-border: 2px solid #0D3F60;
+$primary-radio-border-rd: calc(15px * var(--scale-factor));;
 $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 .wrapper-radio-group{
@@ -11,14 +11,14 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 15px;
+    padding: 0 10px;
     .btn_triangle{
       &_container{
-        max-width: 151px;
-        height: 44px;
-        margin: 2% 1.5%;
+        width: calc(150px * var(--scale-factor));;
+        height: calc(44px * var(--scale-factor));
+        margin: calc(5px * var(--scale-factor));
         label{
-          height: 44px;
+          height: calc(44px * var(--scale-factor));
         }
       }
     }
@@ -31,39 +31,35 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
     .btn_square{
       &_container{
-        margin: 2% 1.5%;
+        margin: calc(5px * var(--scale-factor));
         label{
-          max-width: 115px;
-          padding: 5px;
-          img{
-            max-width: calc(50px * var(--scale-factor));
-            margin-bottom: 3px;
-          }
-          @media (max-width: 360px) {
-            img{
-              max-width: calc(30px * var(--scale-factor));
+          width: calc(115px * var(--scale-factor));
+          height: calc(115px * var(--scale-factor));
+          padding: calc(5px * var(--scale-factor));
+          svg-icon{
+            svg{
+              width: calc(100% * var(--scale-factor));
+              height: calc(100% * var(--scale-factor));
+              margin-bottom: calc(3px * var(--scale-factor));
             }
-          }
-          @media(min-width: 576px){
-            max-width: 150px;
           }
         }
       }
     }
     .btn_image{
       &_container{
-        margin: 2% 1.5%;
+        margin: calc(5px * var(--scale-factor));;
         label{
           background: transparent;
           box-shadow: none;
           border:none;
-          img{
-            margin-bottom: 12px;
-            max-width: calc(70px * var(--scale-factor));
-          }
-          @media (min-width: 500px){
-            img{
-              max-width: calc(90px * var(--scale-factor));
+          max-width: calc(120px * var(--scale-factor));
+          max-height: calc(120px * var(--scale-factor));
+          svg-icon{
+            svg{
+              width: calc(100% * var(--scale-factor));
+              height: calc(100% * var(--scale-factor));
+              margin-bottom: calc(3px * var(--scale-factor));
             }
           }
         }
@@ -80,7 +76,7 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transition: .3s linear;
   width: 100%;
   box-shadow: $primary-radio-shadow;
-  border: 1px solid #096B8B;
+  border: 2px solid #096B8B;
   background: #fff;
   color: #0D4060;
 }
@@ -107,4 +103,5 @@ label{
   height: 100%;
   font-weight: 700;
   text-align: center;
+  transition: .3s linear;
 }

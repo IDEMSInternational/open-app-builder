@@ -6282,7 +6282,8 @@
         "value": null,
         "parameter_list": [
           "radio_button_list: name:name_var_1 | text:Man; name:name_var_2 | text:Woman;",
-          "radio_button_type: btn_triangle"
+          "radio_button_type: btn_triangle",
+          "options_per_row: 2",
         ]
       },
       {
@@ -6291,11 +6292,11 @@
         "value": null,
         "parameter_list": [
           "radio_button_list: " +
-          "name:name_var_1 | text:Single | image:src;" +
-          "name:name_var_2 | image:src | text:Pair;" +
-          "name:name_var_3 | image:src | text:Group;" +
-          "name:name_var_4 | image:src | text:example some info;",
-          "options_per_row: 5",
+          "name:name_var_1 | text:Single | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | image_checked: /assets/plh_assets/plh_images/other_icons/smile.svg;" +
+          "name:name_var_2 | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | text:Pair;" +
+          "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/group.svg | text:Group;" +
+          "name:name_var_4 | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | text:example some info;",
+          "options_per_row: 4",
           "radio_button_type: btn_square"
         ]
       },
@@ -6305,10 +6306,11 @@
         "value": null,
         "parameter_list": [
           "radio_button_list: " +
-          "name:name_var_1 | text:Single | image:src;" +
-          "name:name_var_2 | image:src | text:Pair;" +
-          "name:name_var_3 | image:src | text:Group;",
-          "options_per_row: 3",
+          "name:name_var_1 | text:Single | image:/assets/plh_assets/plh_images/other_icons/smile.svg;" +
+          "name:name_var_2 | image:/assets/plh_assets/plh_images/other_icons/smile.svg | text:Pair;" +
+          "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/smile.svg | text:Group;" +
+          "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/smile.svg | text:Group;",
+          "options_per_row: 4",
           "radio_button_type: btn_image"
         ]
       }
