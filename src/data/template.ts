@@ -6287,13 +6287,88 @@ export const template: FlowTypes.Template[] = [
         "name": "template_slider",
         "value":  null,
         "parameter_list": [
-          "title: Slider example",
+          "title: Slider first",
           "min: 0",
           "max: 15",
           "min_value_label: not confident",
           "max_value_label: extremely confident",
           "help: some help info",
           "step: 3"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider_new",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider second",
+          "min: 0",
+          "max: 30",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 1"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider_new",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider third",
+          "min: 0",
+          "max: 44",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 2"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider_new",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider fourth",
+          "min: 0",
+          "max: 100",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 10"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider_new",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider fifth",
+          "min: 0",
+          "max: 51",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 3"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider_new",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider fifth",
+          "min: 0",
+          "max: 60",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 5"
         ],
         "comments": ""
       }
