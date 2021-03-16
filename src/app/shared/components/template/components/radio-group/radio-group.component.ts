@@ -7,7 +7,6 @@ import {
   getStringParamFromTemplateRow,
   getStringParamFromTemplateRowValueList
 } from "../../../../utils";
-import { SvgIconRegistryService } from "angular-svg-icon";
 
 interface IButton {
   name: string | null;
@@ -35,11 +34,10 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
     this.getScaleFactor();
-    console.log(this.scaleFactor);
   }
   @HostBinding('style.--scale-factor') get scale() { return this.scaleFactor; }
 
-  constructor(private iconReg: SvgIconRegistryService) {
+  constructor() {
     super();
   }
 
@@ -49,7 +47,7 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   }
 
    getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / ((150) * this.options_per_row) > 1 ? 1 : this.windowWidth / ((115 + 20) * this.options_per_row);
+    this.scaleFactor = this.windowWidth / ((150) * this.options_per_row) > 1 ? 1 : this.windowWidth / ((120 + 20) * this.options_per_row);
     return this.scaleFactor;
   }
 

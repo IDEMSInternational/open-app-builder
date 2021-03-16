@@ -37,12 +37,17 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           height: calc(115px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
           svg-icon{
-            max-width: calc(100% * var(--scale-factor));
-            max-height: calc(100% * var(--scale-factor));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 25px;
+            min-height: 22px;
+            width: calc(100% * var(--scale-factor));
+            height: calc(100% * var(--scale-factor));
+            margin-bottom: calc(3px * var(--scale-factor));
             svg{
-              width: calc(100% * var(--scale-factor));
-              height: calc(100% * var(--scale-factor));
-              margin-bottom: calc(3px * var(--scale-factor));
+              max-width: 100%;
+              max-height: 100%;
             }
           }
         }
@@ -51,12 +56,16 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     .btn_image{
       &_container{
         margin: calc(5px * var(--scale-factor));;
+
         label{
           background: transparent!important;
+          border:2px solid transparent;
+          box-shadow: none;
           max-width: calc(120px * var(--scale-factor));
           max-height: calc(120px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
           svg-icon{
+
             svg{
               width: calc(100% * var(--scale-factor));
               height: calc(100% * var(--scale-factor));
