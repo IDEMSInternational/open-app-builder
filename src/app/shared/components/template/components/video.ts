@@ -19,7 +19,7 @@ export class TmplVideoComponent extends TemplateBaseComponent {
 
   videoSrc: string;
   @Input() set row(r: FlowTypes.TemplateRow) {
-    if (r.value.indexOf("http") < -1) {
+    if (r.value.indexOf("http") < 0) {
       this.http
         .get(r.value, { responseType: "arraybuffer" })
         .toPromise()
