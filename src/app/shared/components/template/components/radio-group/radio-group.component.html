@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="btn_square dse" *ngSwitchCase="'btn_square'">
-      <div class="btn_square_container center" *ngFor="let item of arrayOfBtn">
+      <div class="btn_square_container center" *ngFor="let item of arrayOfBtn" [style.flex]="getFlexWidth">
         <label class="center standard-label" [class.checked]="el.checked">
           <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image"
           [svgStyle]="{'fill': el.checked && !item.image_checked ? '#fff': '#0D3F60'}">

@@ -6295,8 +6295,10 @@
           "name:name_var_1 | text:Single | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | image_checked: /assets/plh_assets/plh_images/other_icons/smile.svg;" +
           "name:name_var_2 | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | text:Pair;" +
           "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/group.svg | text:Group;" +
+          "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/group.svg | text:Group;" +
+          "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/group.svg | text:Group;" +
           "name:name_var_4 | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | text:example some info;",
-          "options_per_row: 4",
+          "options_per_row: 3",
           "radio_button_type: btn_square"
         ]
       },

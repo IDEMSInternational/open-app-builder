@@ -45,7 +45,7 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
-  TmplRadioGroupComponent
+  TmplRadioGroupComponent,
 ];
 
 /***************************************************************************************
@@ -84,5 +84,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
   slider_new: SliderNewComponent,
-  radio_group: TmplRadioGroupComponent
+  radio_group: TmplRadioGroupComponent,
 };
