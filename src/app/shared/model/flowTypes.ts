@@ -332,6 +332,7 @@ export namespace FlowTypes {
     | "display_group"
     | "set_variable"
     | "set_global"
+    | "set_local"
     | "nested_properties"
     | "button"
     | "image"
@@ -347,6 +348,7 @@ export namespace FlowTypes {
     | "nav_section"
     | "set_default"
     | "text_box"
+    | "combo_box"
     | "slider_new";
 
   export interface TemplateRow {
