@@ -6293,7 +6293,8 @@ export const template: FlowTypes.Template[] = [
           "min_value_label: not confident",
           "max_value_label: extremely confident",
           "help: some help info",
-          "step: 3"
+          "step: 3",
+          "labels_count: 5"
         ],
         "comments": ""
       },
@@ -6323,7 +6324,8 @@ export const template: FlowTypes.Template[] = [
           "min_value_label: not confident",
           "max_value_label: extremely confident",
           "help: some help info",
-          "step: 2"
+          "step: 2",
+          "labels_count: 8"
         ],
         "comments": ""
       },
@@ -6338,7 +6340,8 @@ export const template: FlowTypes.Template[] = [
           "min_value_label: not confident",
           "max_value_label: extremely confident",
           "help: some help info",
-          "step: 10"
+          "step: 10",
+          "labels_count: 5"
         ],
         "comments": ""
       },
@@ -6362,7 +6365,7 @@ export const template: FlowTypes.Template[] = [
         "name": "template_slider",
         "value":  null,
         "parameter_list": [
-          "title: Slider fifth",
+          "title: Slider sixth",
           "min: 0",
           "max: 60",
           "min_value_label: not confident",

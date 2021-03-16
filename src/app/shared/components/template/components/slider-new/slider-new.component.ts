@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
@@ -7,7 +7,6 @@ import {
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow
 } from "../../../../utils";
-import { IonRange } from "@ionic/angular";
 
 
 @Component({
@@ -32,7 +31,7 @@ export class SliderNewComponent extends TemplateBaseComponent implements ITempla
   no_value: boolean = false;
   rangeBarTouched: boolean = false;
   sliderRange;
-
+  labels_count: number | null = 8;
   constructor() {
     super();
   }
@@ -69,6 +68,7 @@ export class SliderNewComponent extends TemplateBaseComponent implements ITempla
     this.min_value_label = getStringParamFromTemplateRow(this._row, "min_value_label", null);
     this.max_value_label = getStringParamFromTemplateRow(this._row, "max_value_label", null);
     this.value = this._row.value > this.maxValue ? 0 : (this._row.value === null ? 0 : this._row.value);
+    this.labels_count = getNumberParamFromTemplateRow(this._row, 'labels_count', 8);
     this.updateConfigParams();
     this.rangeBarTouched = this.value !== 0;
     this.no_value = getBooleanParamFromTemplateRow(this._row, "no_value", false);
@@ -92,5 +92,6 @@ export class SliderNewComponent extends TemplateBaseComponent implements ITempla
     this.someKeyboardConfig.range.max = this.maxValue;
     this.someKeyboardConfig.step = this.step;
     this.someKeyboardConfig.start = this.value;
+    this.someKeyboardConfig.pips.values = this.labels_count;
   }
 }
