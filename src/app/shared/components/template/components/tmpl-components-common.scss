@@ -68,3 +68,14 @@ p {
   font-size: 25px;
   color: #0d3f60;
 }
+.title-wrapper{
+  display: flex;
+  align-items: center;
+  .timer-help{
+    margin-left: 8px;
+    margin-top: 7px;
+    color: #0D3F60;
+    height: 32px;
+    width: 32px;
+  }
+}
