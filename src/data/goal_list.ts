@@ -192,7 +192,8 @@
         ],
         "completion_tasks": "task_care_package_family_completed_goal"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\habits\\habit_goals.xlsx"
   },
   {
     "flow_type": "goal_list",
@@ -209,8 +210,7 @@
           "completion_mod_welcome_give",
           "completion_mod_welcome_self-care_package",
           "completion_mod_welcome_quick_praise",
-          "completion_mod_welcome_survey",
-          ""
+          "completion_mod_welcome_survey"
         ],
         "completion_tasks": "task_mod_welcome_completed_goal"
       },
@@ -297,6 +297,7 @@
           "completion_mod_instruct_completed_goal"
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\module_goals.xlsx"
   }
 ]

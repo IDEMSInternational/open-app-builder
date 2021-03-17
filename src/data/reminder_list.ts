@@ -1642,6 +1642,7 @@
           "campaign_main"
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\periodic_content\\reminders.xlsx"
   }
 ]

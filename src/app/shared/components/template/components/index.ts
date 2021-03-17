@@ -56,6 +56,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
 > = {
   text: TmplTextComponent,
   title: TmplTitleComponent,
+  subtitle: TmplTextComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
@@ -66,6 +67,10 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   set_variable: null as any,
   nested_properties: null as any,
   set_global: null as any,
+  set_local: null as any,
+  combo_box: null as any,
+  set_default: null as any,
+  text_box: null as any,
   // TODO - handle display_theme and other properties that should be inherited to child components
   display_theme: null as any,
   template: TemplateContainerComponent as any,
@@ -76,5 +81,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  slider_new: SliderNewComponent,
+  slider_new: SliderNewComponent
 };

@@ -35,6 +35,8 @@ export namespace FlowTypes {
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
     module?: string;
+    // debug info
+    _xlsxPath?: string;
   }
 
   /**
@@ -317,17 +319,20 @@ export namespace FlowTypes {
   export interface Template extends FlowTypeBase {
     flow_type: "template";
     rows: TemplateRow[];
+    comments?: string;
   }
 
   export type TemplateRowType =
     | "image"
     | "title"
+    | "subtitle"
     | "text"
     | "animated_section"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
     | "set_global"
+    | "set_local"
     | "nested_properties"
     | "button"
     | "image"
@@ -341,6 +346,9 @@ export namespace FlowTypes {
     | "round_button"
     | "nav_group"
     | "nav_section"
+    | "set_default"
+    | "text_box"
+    | "combo_box"
     | "slider_new";
 
   export interface TemplateRow {
@@ -366,25 +374,26 @@ export namespace FlowTypes {
     fieldName: string;
   }
   export interface TemplateRowAction {
-    event_id:
+    /** actions have an associated trigger */
+    trigger:
       "click"
       | "completed"
       | "uncompleted"
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
-      | "set_value"
+      | "set_value" // This currently is same as set_local (remove?)
       | "set_field"
       | "set_local"
       | "set_global"
       | "emit"
-      | "respond_to_action" // Is this needed?
-      | "exit" // Is this needed?
-      | "completed" // Is this needed?
-      | "uncompleted" // Is this needed?
-      | "mark_as_completed" // Is this needed?
-      | "mark_as_skipped"; // Is this needed?
+      | "go_to"
     args: string[];
+    /** field populated for tracking the component that triggered the action */
+    _triggeredBy?: string;
+    // debug info
+    _raw: string;
+    _cleaned: string;
   }
 
   /* Used for setting default parameters for template components */
