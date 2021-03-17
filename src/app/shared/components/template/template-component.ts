@@ -92,7 +92,8 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
     // assign input variables (note template name taken from the row's value column)
     componentRef.instance.row = this.row;
     componentRef.instance.parent = this.parent;
-    componentRef.instance.name = this.row.value;
+    componentRef.instance.name = this.row.name;
+    componentRef.instance.templatename = this.row.value;
   }
 
   /** Create and render a common display component */
