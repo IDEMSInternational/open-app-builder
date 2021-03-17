@@ -1616,6 +1616,11 @@
         "type": "set_global",
         "name": "debug_variable_1",
         "value": "Value of the first debug variable"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Global value is @global.debug_variable_1"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_small_issues.xlsx"

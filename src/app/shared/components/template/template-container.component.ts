@@ -4,6 +4,7 @@ import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
+import { TemplateService } from "./services/template.service";
 
 type ILocalVariables = { [name: string]: any };
 
@@ -46,7 +47,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
   showTemplates = false;
 
-  constructor(private contactFieldService: ContactFieldService) {
+  constructor(private contactFieldService: ContactFieldService, private templateService: TemplateService) {
     if (location.href.indexOf("showTemplates=true") > -1) {
       this.showTemplates = true;
     }
@@ -104,12 +105,15 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     const { action_id, args } = action;
     //part of temporary fix
     let actionsForEmittedEvent = [];
+    const [key, value] = args;
     switch (action_id) {
       case "set_local":
       case "set_value":
-        const [key, value] = args;
         console.log("Setting local variable", key, value);
         return this.setLocalVariable(key, value);
+      case "set_global":
+        console.log("Setting global variable", key, value);
+        return this.templateService.setGlobal(key, value);
       case "emit":
         // TODO - handle DB writes or similar for emit handling
         if (this.parent) {
@@ -287,6 +291,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         case "fields":
           parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
           break;
+        case "global":
+            parsedValue = this.templateService.getGlobal(fieldName);
+            break;
         default:
           console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
           parsedValue = evaluator.matchedExpression;
