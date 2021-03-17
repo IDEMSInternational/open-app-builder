@@ -18,6 +18,7 @@ import { TemplateBaseComponent } from "../base";
       <plh-template-container
         *ngIf="sectionIndex === i"
         [name]="templateName"
+        [templatename]="templateName"
         [parent]="parent"
       >
       </plh-template-container>
@@ -103,6 +104,7 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
     if (this.sectionIndex + 1 < this.templateNames.length) {
       this.sectionIndex++;
     } else {
+      // There should be an emit "completed" action 
       console.log("Nav group completed?");
     }
   }
@@ -110,6 +112,9 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
   previousSection() {
     if (this.sectionIndex > 0) {
       this.sectionIndex--;
+    } else {
+      // There should be an emit "uncompleted" action
+      console.log("Nav group uncompleted?");
     }
   }
 }
