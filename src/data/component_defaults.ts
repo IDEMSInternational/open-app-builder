@@ -22,6 +22,7 @@
         "parameter": "duration_extension",
         "default_value": 1
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\quality_assurance\\template_component_defaults.xlsx"
   }
 ]

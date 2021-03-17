@@ -27,12 +27,15 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   @Input() parent: TemplateContainerComponent;
   constructor() {}
 
-  /** Whenever actions are triggered handle in the parent template component */
-  triggerActionsForEvent(eventId?: string) {
-    if (this._row && this._row.action_list) {
-      const actionsForEvent = this._row.action_list
-        .filter((action) => !eventId || !action.event_id || action.event_id === eventId)
-      this.parent.handleActions(actionsForEvent);
-    }
+  /**
+   * Whenever actions are triggered handle in the parent template component
+   * Actions are grouped by trigger, only emitting specific event handler (e.g. click)
+   */
+  triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
+    const actionsForTrigger = this._row.action_list.filter((a) => a.trigger === trigger);
+    this.parent.handleActions(
+      actionsForTrigger,
+      this._row.name
+    );
   }
 }
