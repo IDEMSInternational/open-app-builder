@@ -30,12 +30,20 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   options_per_row: number = 2;
   windowWidth: number;
   scaleFactor: number = 1;
+  selectedBackgroundColor: string = "#0D3F60";
+  backgroundGradient: string = "168.87deg, #0F8AB2 28.12%, #0D4060 100%";
+
 
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
     this.getScaleFactor();
   }
   @HostBinding('style.--scale-factor') get scale() { return this.scaleFactor; }
+
+  @HostBinding('style.--border-color') get borderColor() { return this.selectedBackgroundColor; }
+
+  @HostBinding('style.--bg-gradient') get bgGradientStart() { return this.backgroundGradient; }
+
 
   constructor() {
     super();
@@ -55,6 +63,9 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
     this.radioBtnList = getStringParamFromTemplateRowValueList(this._row, "radio_button_list", null);
     this.radioButtonType = getStringParamFromTemplateRow(this._row, "radio_button_type", null);
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 2);
+    this.selectedBackgroundColor = getStringParamFromTemplateRow(this._row, "color", "#0D3F60");
+    this.backgroundGradient = getStringParamFromTemplateRow(this._row, "background_gradient", "168.87deg, #0F8AB2 28.12%, #0D4060 100%");
+
     this.windowWidth = window.innerWidth;
     if (this.radioBtnList) {
       this.valuesFromBtnList = this.radioBtnList.split(";").filter(item => item !== "");

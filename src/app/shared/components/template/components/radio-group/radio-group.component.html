@@ -12,7 +12,7 @@
       <div class="btn_square_container center" *ngFor="let item of arrayOfBtn" [style.flex]="getFlexWidth">
         <label class="center standard-label" [class.checked]="el.checked">
           <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image"
-          [svgStyle]="{'fill': el.checked && !item.image_checked ? '#fff': '#0D3F60'}">
+          [svgStyle]="{'fill': el.checked && !item.image_checked ? '#fff': this.selectedBackgroundColor}">
           </svg-icon>
           <input #el type="radio" name="square">
           {{item.text}}
