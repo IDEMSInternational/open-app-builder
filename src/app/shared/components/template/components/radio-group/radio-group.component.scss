@@ -76,7 +76,7 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           }
         }
         .smile-checked{
-          color:#0D3F60;
+          color: var(--border-color);
           border: $primary-radio-border!important;
         }
       }
