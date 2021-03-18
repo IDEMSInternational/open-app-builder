@@ -24,6 +24,8 @@ export class TmplComboBoxComponent implements ITemplateComponent, OnInit {
 
   ngOnInit(): void {
     this.getParams()
+    var listAnswers = getStringParamFromTemplateRow(this.row, "list_of_answers", null);
+    this.customAnswerSelected = listAnswers && this.row.value && this.row.value ? !listAnswers.split(";").find(x => x == this.row.value) : false;
     this.row.value = this.row.value || this.placeholder;
   }
 
