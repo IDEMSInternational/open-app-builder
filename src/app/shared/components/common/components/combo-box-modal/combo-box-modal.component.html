@@ -18,11 +18,9 @@
       </div>
       <div class="wrapper" *ngIf="inputAllowed">
         <ion-input formControlName="customAnswer"
-                   (ionChange)="changeCustomAnswer()"
-                   [disabled]="this.listAnswers ? form.get('answer').value !== null : false"
-                   class="text-box-input"
-                   (keyup.enter)="checkValidCustomAnswer ? closeModal() : null"
-                   placeholder="Your answer">
+                   [class]="customAnswerClass"
+                   (keyup.enter)="enterCustomAnswer()"
+                   [placeholder]="placeholder">
         </ion-input>
       </div>
     </form>

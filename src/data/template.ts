@@ -779,13 +779,7 @@ export const template: FlowTypes.Template[] = [
           "value": null,
           "parameter_list": [
             "placeholder: some text",
-            "maxLength: 38",
-            "style: pop-up",
-            "text: How do you think Amina felt about the way neighbour responded?",
-            "maxLength: 38",
-            "input_allowed: true",
-            "input_position: true",
-            "list_of_answers: Sad; Confused; Angry"
+            "max-length: 38",
           ]
         },
       ]
@@ -803,8 +797,9 @@ export const template: FlowTypes.Template[] = [
           "parameter_list": [
             "style: pop-up",
             "text: How do you think Amina felt about the way neighbour responded?",
-            "placeholder: some text",
-            "maxLength: 38",
+            "placeholder: Please select",
+            "answer_placeholder: Your Answer",
+            "max-length: 38",
             "input_allowed: true",
             "input_position: true",
             "list_of_answers: Sad; Confused; Angry"

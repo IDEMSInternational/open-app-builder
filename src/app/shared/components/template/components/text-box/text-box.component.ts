@@ -23,7 +23,7 @@ export class TmpltTextBoxComponent implements ITemplateComponent, OnInit {
 
   getParams() {
     this.placeholder = getStringParamFromTemplateRow(this.row, "placeholder", "");
-    this.maxLength = getNumberParamFromTemplateRow(this.row, "maxLength", 30);
+    this.maxLength = getNumberParamFromTemplateRow(this.row, "max-length", 30);
     this.value = this.row.value;
   }
 
