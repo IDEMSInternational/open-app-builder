@@ -62,7 +62,7 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   getParams() {
     this.radioBtnList = getStringParamFromTemplateRowValueList(this._row, "radio_button_list", null);
     this.radioButtonType = getStringParamFromTemplateRow(this._row, "radio_button_type", null);
-    this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 2);
+    this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
     this.selectedBackgroundColor = getStringParamFromTemplateRow(this._row, "color", "#0D3F60");
     this.backgroundGradient = getStringParamFromTemplateRow(this._row, "background_gradient", "168.87deg, #0F8AB2 28.12%, #0D4060 100%");
 
