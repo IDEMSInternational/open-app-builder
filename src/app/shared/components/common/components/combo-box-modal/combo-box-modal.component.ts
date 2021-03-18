@@ -38,7 +38,7 @@ export class ComboBoxModalComponent implements OnInit {
     this.listAnswers = getStringParamFromTemplateRow(this.row, "list_of_answers", null);
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
-    this.inputPosition = getBooleanParamFromTemplateRow(this.row, 'input_position', false);
+    this.inputPosition = getStringParamFromTemplateRow(this.row, 'input_position', 'bottom') == 'top';
     this.maxLength = getNumberParamFromTemplateRow(this.row, 'max-length', 30);
     this.placeholder = getStringParamFromTemplateRow(this.row, 'answer_placeholder', "");
     this.valuesFromListAnswers = this.listAnswers ? this.listAnswers.split(";") : null;
@@ -71,22 +71,22 @@ export class ComboBoxModalComponent implements OnInit {
   check(el) {
     if (this.form.get("answer").value === el) {
       this.form.get("answer").setValue(null);
-      this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: null});
+      this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: null });
     }
     else {
       this.form.get("answer").setValue(el);
-      this.form.get("customAnswer").setValue(null);
+      if (this.inputAllowed) {
+        this.form.get("customAnswer").setValue(null);
+      }
       this.customAnswerSelected = false;
-      this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: el});
+      this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: el });
     }
   }
 
   closeModal(value) {
-    this.form.disable();
     setTimeout(async () => {
-      this.form.enable();
       await this.modalController.dismiss(value);
-    }, 100);
+    }, 50);
   }
 
   enterCustomAnswer() {
@@ -94,12 +94,12 @@ export class ComboBoxModalComponent implements OnInit {
       if (this.customAnswerSelected) {
         this.form.get("customAnswer").setValue(null);
         this.customAnswerSelected = false;
-        this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: null});
+        this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: null });
       }
       else {
         this.form.get("answer").setValue(null);
         this.customAnswerSelected = true;
-        this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: this.form.get("customAnswer").value});
+        this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: this.form.get("customAnswer").value });
       }
     }
   }

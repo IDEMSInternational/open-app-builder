@@ -46,8 +46,8 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<
   nav_section: AnimatedSectionComponent,
   round_button: RoundIconButtonComponent,
   slider_old: SliderNewComponent,
-  textBox: TmpltTextBoxComponent,
-  comboBox: TmplComboBoxComponent,
+  text_box: TmpltTextBoxComponent,
+  combo_box: TmplComboBoxComponent,
 };
 
 @Directive({

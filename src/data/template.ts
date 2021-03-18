@@ -769,11 +769,11 @@ export const template: FlowTypes.Template[] = [
     },
     {
       "flow_type": "template",
-      "flow_name": "textBox",
+      "flow_name": "text_box",
       "status": "released",
       "rows": [
         {
-          "type": "textBox",
+          "type": "text_box",
           "name": "default_TextBox",
           "comments": "No",
           "value": null,
@@ -786,11 +786,11 @@ export const template: FlowTypes.Template[] = [
     },
     {
       "flow_type": "template",
-      "flow_name": "comboBox",
+      "flow_name": "combo_box",
       "status": "released",
       "rows": [
         {
-          "type": "comboBox",
+          "type": "combo_box",
           "name": "default_comboBox",
           "comments": "No",
           "value": "Sad but true",
@@ -800,8 +800,7 @@ export const template: FlowTypes.Template[] = [
             "placeholder: Please select",
             "answer_placeholder: Your Answer",
             "max-length: 38",
-            "input_allowed: true",
-            "input_position: true",
+            "input_allowed: false",
             "list_of_answers: Sad; Confused; Angry"
           ]
         },
