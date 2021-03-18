@@ -6285,7 +6285,7 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "slider",
         "name": "template_slider",
-        "value":  null,
+        "value": null,
         "parameter_list": [
           "title: Slider first",
           "min: 0",
@@ -6301,7 +6301,7 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "slider",
         "name": "template_slider",
-        "value":  null,
+        "value": null,
         "parameter_list": [
           "title: Slider second",
           "min: 0",
@@ -6316,7 +6316,7 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "slider",
         "name": "template_slider",
-        "value":  null,
+        "value": null,
         "parameter_list": [
           "title: Slider third",
           "min: 0",
@@ -6332,7 +6332,7 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "slider",
         "name": "template_slider",
-        "value":  null,
+        "value": null,
         "parameter_list": [
           "title: Slider fourth",
           "min: 0",
@@ -6348,7 +6348,7 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "slider",
         "name": "template_slider",
-        "value":  null,
+        "value": null,
         "parameter_list": [
           "title: Slider fifth",
           "min: 0",
@@ -6363,7 +6363,7 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "slider",
         "name": "template_slider",
-        "value":  null,
+        "value": null,
         "parameter_list": [
           "title: Slider sixth",
           "min: 0",
@@ -6376,5 +6376,23 @@ export const template: FlowTypes.Template[] = [
         "comments": ""
       }
     ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "tile",
+    "status": "released",
+    "rows": [
+      {
+        "type": "tile_component",
+        "name": "name",
+        "value": null,
+        "parameter_list": [
+          "first_line_text: My Group",
+          "second_line_text: Start week one",
+          "icon_src: /assets/icon/shared/start.svg",
+          "style: quick_start"
+        ]
+      }
+    ]
   }
-];
+]

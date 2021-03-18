@@ -1,0 +1,27 @@
+.tile-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .text{
+    div{
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 29px;
+      color: #FFFFFF;
+    }
+  }
+  .button-wrapper{
+    .btn-tile{
+      width: 73px;
+      height: 73px;
+      --background: transparent;
+      --box-shadow: none;
+      border: 1px solid #fff;
+      --border-radius: 50%;
+      border-radius: 50%;
+      img{
+        margin-left: 5px;
+      }
+    }
+  }
+}
