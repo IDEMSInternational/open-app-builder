@@ -20,7 +20,6 @@ import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
-import { SliderNewComponent } from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 
@@ -40,7 +39,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
-  SliderNewComponent,
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
@@ -81,5 +79,4 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  slider_new: SliderNewComponent
 };
