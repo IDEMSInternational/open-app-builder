@@ -69,12 +69,18 @@ export class DefaultParser implements AbstractParser {
     // Extract any required groups that start from this row
     const type = row.type || "";
     if (type.startsWith("begin_")) {
-      const group = this.extractGroup();
-      const groupType = type.replace("begin_", "") + this.groupSuffix;
-      const subParser = new DefaultParser();
-      subParser.groupSuffix = this.groupSuffix;
-      const parsedGroup = subParser.run({ ...flow, rows: group });
-      return { ...row, type: groupType, rows: parsedGroup.rows };
+      try {
+        const group = this.extractGroup();
+        const groupType = type.replace("begin_", "") + this.groupSuffix;
+        const subParser = new DefaultParser();
+        subParser.groupSuffix = this.groupSuffix;
+        const parsedGroup = subParser.run({ ...flow, rows: group });
+        return { ...row, type: groupType, rows: parsedGroup.rows };
+      } catch (ex) {
+        console.warn("Error on group extract on row", row, flow, ex);
+        console.warn("Error is in sheet ", flow._xlsxPath);
+      }
+
     }
     // Can ignore as handled during subgroup extraction
     if (type.startsWith("end_")) {
@@ -109,7 +115,7 @@ export class DefaultParser implements AbstractParser {
     });
     if (endIndex === -1) {
       console.log("could not find end index", startIndex);
-      process.exit(1);
+      throw "extract group error. count not find end index for start index=" + startIndex;
     }
     const queueEndIndex = startIndex + endIndex;
     // remove all rows from the queue excluding start and end clause statements (e.g. if/end-if)
