@@ -370,7 +370,7 @@ export namespace FlowTypes {
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
-    type: "local" | "fields";
+    type: "local" | "fields" | "global";
     fieldName: string;
   }
   export interface TemplateRowAction {
