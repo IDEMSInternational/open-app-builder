@@ -67,7 +67,7 @@ export function stringToArray(str: string = "", separator = ";") {
 
 export function getStringParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: string): string {
   let res = _default;
-  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
+  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
 
   if (param) {
     param = param.split(":")[1].trim();
@@ -80,7 +80,7 @@ export function getStringParamFromTemplateRow(row: FlowTypes.TemplateRow, name: 
 
 export function getNumberParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: number): number {
   let res = _default;
-  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
+  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
 
   if (param) {
     param = param.split(":")[1].trim();
@@ -93,7 +93,7 @@ export function getNumberParamFromTemplateRow(row: FlowTypes.TemplateRow, name: 
 
 export function getBooleanParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: boolean): boolean {
   let res = _default;
-  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
+  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
 
   if (param) {
     param = param.split(":")[1].trim();
