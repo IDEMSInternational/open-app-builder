@@ -348,8 +348,7 @@ export namespace FlowTypes {
     | "nav_section"
     | "set_default"
     | "text_box"
-    | "combo_box"
-    | "slider_new";
+    | "combo_box";
 
   export interface TemplateRow {
     type: TemplateRowType;

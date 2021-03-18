@@ -6279,27 +6279,27 @@ export const template: FlowTypes.Template[] = [
   },
   {
     "flow_type": "template",
-    "flow_name": "slider_new",
+    "flow_name": "slider",
     "status": "released",
     "rows": [
       {
-        "type": "slider_new",
+        "type": "slider",
         "name": "template_slider",
         "value":  null,
         "parameter_list": [
           "title: Slider first",
           "min: 0",
-          "max: 15",
+          "max: 7",
           "min_value_label: not confident",
           "max_value_label: extremely confident",
           "help: some help info",
-          "step: 3",
-          "labels_count: 5"
+          "step: 1",
+          "labels_count: 8"
         ],
         "comments": ""
       },
       {
-        "type": "slider_new",
+        "type": "slider",
         "name": "template_slider",
         "value":  null,
         "parameter_list": [
@@ -6314,7 +6314,7 @@ export const template: FlowTypes.Template[] = [
         "comments": ""
       },
       {
-        "type": "slider_new",
+        "type": "slider",
         "name": "template_slider",
         "value":  null,
         "parameter_list": [
@@ -6330,7 +6330,7 @@ export const template: FlowTypes.Template[] = [
         "comments": ""
       },
       {
-        "type": "slider_new",
+        "type": "slider",
         "name": "template_slider",
         "value":  null,
         "parameter_list": [
@@ -6346,7 +6346,7 @@ export const template: FlowTypes.Template[] = [
         "comments": ""
       },
       {
-        "type": "slider_new",
+        "type": "slider",
         "name": "template_slider",
         "value":  null,
         "parameter_list": [
@@ -6361,7 +6361,7 @@ export const template: FlowTypes.Template[] = [
         "comments": ""
       },
       {
-        "type": "slider_new",
+        "type": "slider",
         "name": "template_slider",
         "value":  null,
         "parameter_list": [
@@ -6372,27 +6372,6 @@ export const template: FlowTypes.Template[] = [
           "max_value_label: extremely confident",
           "help: some help info",
           "step: 5"
-        ],
-        "comments": ""
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "slider",
-    "status": "released",
-    "rows": [
-      {
-        "type": "slider",
-        "name": "template_slider",
-        "parameter_list": [
-          "title: Slider example",
-          "min: 0",
-          "max: 48",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 2"
         ],
         "comments": ""
       }
