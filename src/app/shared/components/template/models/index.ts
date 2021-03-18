@@ -9,6 +9,7 @@ export { FlowTypes } from "scripts/types";
  */
 export interface ITemplateContainerProps {
   name: string;
+  templatename: string;
   parent?: { name: string; component?: any };
   row?: FlowTypes.TemplateRow;
 }

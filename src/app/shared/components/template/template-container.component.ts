@@ -4,6 +4,7 @@ import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
+import { TemplateService } from "./services/template.service";
 
 type ILocalVariables = { [name: string]: any };
 
@@ -34,6 +35,7 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
 })
 export class TemplateContainerComponent implements OnInit, ITemplateContainerProps {
   @Input() name: string;
+  @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
   template: FlowTypes.Template;
@@ -45,7 +47,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
   showTemplates = false;
 
-  constructor(private contactFieldService: ContactFieldService) {
+  constructor(private contactFieldService: ContactFieldService, private templateService: TemplateService) {
     if (location.href.indexOf("showTemplates=true") > -1) {
       this.showTemplates = true;
     }
@@ -101,12 +103,17 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private async processAction(action: FlowTypes.TemplateRowAction) {
     console.log("process action", action);
     const { action_id, args } = action;
+    //part of temporary fix
+    let actionsForEmittedEvent = [];
+    const [key, value] = args;
     switch (action_id) {
       case "set_local":
       case "set_value":
-        const [key, value] = args;
         console.log("Setting local variable", key, value);
         return this.setLocalVariable(key, value);
+      case "set_global":
+        console.log("Setting global variable", key, value);
+        return this.templateService.setGlobal(key, value);
       case "emit":
         // TODO - handle DB writes or similar for emit handling
         if (this.parent) {
@@ -146,11 +153,11 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private initialiseTemplate() {
     // Lookup template and provide fallback
     const foundTemplate =
-      TEMPLATE.find((t) => t.flow_name === this.name) || NOT_FOUND_TEMPLATE(this.name);
+      TEMPLATE.find((t) => t.flow_name === this.templatename) || NOT_FOUND_TEMPLATE(this.templatename);
     this.template = JSON.parse(JSON.stringify(foundTemplate));
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
-    const parentVariables = this.parent?.localVariables?.[this.template.flow_name];
+    const parentVariables = this.parent?.localVariables?.[this.name];
     this.localVariables = this.processVariables(this.template.rows, parentVariables);
     // console.log("[Template Init]", { name: this.name, parentVariables });
     if (!this.parent) {
@@ -176,7 +183,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       let { name, value, rows, type } = r;
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
-      if (type === "set_variable" || type === "nested_properties") {
+      if (type === "set_variable" || type === "set_local" || type === "nested_properties") {
         variables[name] = variables[name] || {};
         // handle merging updated properties
         VARIABLE_FIELDS.forEach((field) => {
@@ -259,6 +266,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
             r.rows = this.processRows(r.rows, variables);
             break;
           // could add logic here to ignore/remove template rows (already processed), leaving as will be overwritten on init anyways
+          case "template":
+          //  r.rows = this.processRows(r.rows, variables[r.name]);
           default:
             // otherwise treat nested rows as value-namespaced local variables
             r.rows = this.processRows(r.rows, variables[r.name]);
@@ -282,6 +291,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         case "fields":
           parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
           break;
+        case "global":
+            parsedValue = this.templateService.getGlobal(fieldName);
+            break;
         default:
           console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
           parsedValue = evaluator.matchedExpression;
