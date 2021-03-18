@@ -6295,10 +6295,12 @@
           "name:name_var_1 | text:Single | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | image_checked: /assets/plh_assets/plh_images/other_icons/smile.svg;" +
           "name:name_var_2 | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | text:Pair;" +
           "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/group.svg | text:Group;" +
-          "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/group.svg | text:Group;" +
-          "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/group.svg | text:Group;" +
-          "name:name_var_4 | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | text:example some info;",
+          "name:name_var_4 | image:/assets/plh_assets/plh_images/other_icons/MansOne.svg | text:Group;" +
+          "name:name_var_5 | image:/assets/plh_assets/plh_images/other_icons/MansTwo.svg | text:Group;" +
+          "name:name_var_6 | image:/assets/plh_assets/plh_images/other_icons/MansFour.svg | text:example some info;",
           "options_per_row: 3",
+          "color: #ff4060",
+          "background_gradient: 168.87deg, #ff4060 28.12%, #0D4060 100%",
           "radio_button_type: btn_square"
         ]
       },
