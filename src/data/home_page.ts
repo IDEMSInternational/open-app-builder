@@ -9,7 +9,7 @@
       {
         "type": "button",
         "id": "workshops",
-        "text": "Weekly Workshops",
+        "text": "WeeklyWorkshops",
         "visible": true,
         "enabled": true,
         "route": "/module_list",
@@ -18,7 +18,7 @@
       {
         "type": "button",
         "id": "parent_points",
-        "text": "Parent Points",
+        "text": "ParentPoints",
         "visible": true,
         "enabled": true,
         "route": "/parent_points",
@@ -27,7 +27,7 @@
       {
         "type": "button",
         "id": "parent_center",
-        "text": "Parent Centre",
+        "text": "ParentCentre",
         "visible": true,
         "enabled": false,
         "route": "/parent_center",
