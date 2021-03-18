@@ -27,7 +27,6 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
 
     ngOnInit() {
         this.getParams();
-        console.log(this.help)
     }
 
     getParams() {
