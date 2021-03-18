@@ -388,6 +388,8 @@ export namespace FlowTypes {
       | "set_global"
       | "emit"
       | "go_to"
+      | "nav_next"
+      | "nav_back"
     args: string[];
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: string;

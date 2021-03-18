@@ -20,6 +20,7 @@ import { TemplateBaseComponent } from "../base";
         [name]="templateName"
         [templatename]="templateName"
         [parent]="parent"
+        [row]="_row"
       >
       </plh-template-container>
     </div>
@@ -67,6 +68,24 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
   sectionIndex = 0;
 
   @Input() set row(value: FlowTypes.TemplateRow) {
+    if (!value.action_list) {
+      value.action_list = [
+        {
+          trigger: "completed",
+          action_id: "nav_next",
+          args: [],
+          _raw: "completed | nav_next",
+          _cleaned: ""
+        },
+        {
+          trigger: "uncompleted",
+          action_id: "nav_back",
+          args: [],
+          _raw: "uncompleted | nav_back",
+          _cleaned: "uncompleted | nav_back"
+        }
+      ]
+    }
     this._row = value;
     if (value && value.value && typeof value.value === "string") {
       this.templateNames = this.splitLines(value.value);
@@ -89,8 +108,8 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
     console.log("nav_group init", this.parent);
     this.parent.handleActionsCallback = async (actions, results) => {
       console.log("parent handled actions", actions, results);
-      const completedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "completed");
-      const uncompletedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "uncompleted");
+      const completedAction = actions.find((a) => a.action_id === "nav_next");
+      const uncompletedAction = actions.find((a) => a.action_id === "nav_back");
 
       if (completedAction) {
         this.nextSection();
