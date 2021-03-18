@@ -1,6 +1,7 @@
 /* tslint:disable */
-  import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const template: FlowTypes.Template[] = [
+import { FlowTypes } from "src/app/shared/model/flowTypes";
+
+export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
     "flow_name": "tools_component",
@@ -6275,5 +6276,105 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "slider",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider first",
+          "min: 0",
+          "max: 7",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 1",
+          "labels_count: 8"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider second",
+          "min: 0",
+          "max: 30",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 1"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider third",
+          "min: 0",
+          "max: 44",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 2",
+          "labels_count: 8"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider fourth",
+          "min: 0",
+          "max: 100",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 10",
+          "labels_count: 5"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider fifth",
+          "min: 0",
+          "max: 51",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 3"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value":  null,
+        "parameter_list": [
+          "title: Slider sixth",
+          "min: 0",
+          "max: 60",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 5"
+        ],
+        "comments": ""
+      }
+    ]
   }
-]
+];
