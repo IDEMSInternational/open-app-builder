@@ -197,6 +197,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         // TODO - inherited variable should be defined in better/consistent way
       }
 
+      if (type === "set_field") {
+        this.contactFieldService.setContactField(name, value);
+      }
+
       // handle rows which have nested structures
       if (rows) {
         // TODO - don't like overwriting this, be nicer to handle elsewhere
@@ -299,6 +303,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         case "local":
           parsedValue = this.localVariables[fieldName]?.value || "";
           break;
+        case "field":
         case "fields":
           parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
           break;

@@ -3840,6 +3840,143 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "example_call_global_constants",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.example_global_constant_title"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Text that includes @global.example_global_constant_text"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "value": "@global.example_global_image"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "There should be an image above this text, whose source is example_global_image"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_set_fields_in_action",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "field_0",
+        "value": "Value of field 0"
+      },
+      {
+        "type": "text",
+        "name": "text_0",
+        "value": "The value of field_0 is @field.field_0"
+      },
+      {
+        "type": "button",
+        "name": "button_1",
+        "value": "Override field_1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "field_1",
+              "\"New value of Field 1\""
+            ],
+            "_raw": "click | set_field:field_1:\"New value of Field 1\"",
+            "_cleaned": "click | set_field:field_1:\"New value of Field 1\""
+          }
+        ],
+        "comments": "Overrides the value of field_1"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "The value of field_1 is @field.field_1"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "value": "Create field_2",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "field_2",
+              "\"Value of Field 2\""
+            ],
+            "_raw": "click | set_field:field_2:\"Value of Field 2\"",
+            "_cleaned": "click | set_field:field_2:\"Value of Field 2\""
+          }
+        ],
+        "comments": "Creates a new field called field_2 with value Value of Field 2"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "The value of field_2 is @field.field_2",
+        "comments": "this text would be The value of field_2 is 'undefined' so presumably an empty string or even @field.field_2? until the button is pressed in which case it would change to The value of field_2 is Value of Field 2"
+      },
+      {
+        "type": "set_field",
+        "name": "field_4",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "name": "text_hidden_4",
+        "value": "This should be hidden when field_4 is TRUE",
+        "hidden": "@field.field_4",
+        "comments": "There could be more complex conditions for shown ie @filed.field_4>3)"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_4",
+        "value": "This should be hidden when field_4 is FALSE",
+        "hidden": "!@field.field_4"
+      },
+      {
+        "type": "set_field",
+        "name": "field_5",
+        "value": 5
+      },
+      {
+        "type": "text",
+        "name": "text_hidden_5",
+        "value": "This should be hidden when field_5 is more than 2",
+        "hidden": "@field.field_5>2",
+        "comments": "Not currently implemented?"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_5_a",
+        "value": "This should be hidden when field_5 is less than or equal to 2",
+        "hidden": "@field.field_5<=2",
+        "comments": "Not currently implemented?"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_5_b",
+        "value": "This should be hidden when field_5 is less than or equal to 2",
+        "hidden": "!@field.field_5>2",
+        "comments": "Not currently implemented?"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "w_example_stepper",
     "status": "released",
     "rows": [
@@ -6038,11 +6175,6 @@
         ],
         "rows": [
           {
-            "name": "discussion_text",
-            "value": "Think about the last time someone thanked you or said you’d done something great. Tell each other about it, and how it made you feel.\n\nParents usually don’t get thanked or praised enough. Can you tell each other how it feels not to be thanked or praised for what you do? ",
-            "type": "set_variable"
-          },
-          {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
@@ -6050,6 +6182,18 @@
                 "name": "intro_text",
                 "value": "Praise is a powerful parenting skill.",
                 "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_timer",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "Think about the last time someone thanked you or said you’d done something great. Tell each other about it, and how it made you feel.\n\nParents usually don’t get thanked or praised enough. Can you tell each other how it feels not to be thanked or praised for what you do? ",
+                    "type": "set_variable"
+                  }
+                ]
               }
             ]
           }
@@ -6065,9 +6209,9 @@
     "status": "released",
     "rows": [
       {
-        "type": "template",
+        "type": "begin_template",
         "name": "read",
-        "value": "read",
+        "value": "read_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -6078,44 +6222,47 @@
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
           }
-        ],
-        "rows": [
-          {
-            "name": "intro_text",
-            "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_male_caregiver was surprised by his teens! Let me tell you:",
-            "comments": "placeholder; should be rewritten without \"me\" and \"my teen\"",
-            "type": "set_variable"
-          },
-          {
-            "name": "number_of_slides",
-            "value": 2,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_1",
-            "value": "plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg",
-            "comments": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "@global.w_praise_male_caregiver_name was busy and his older daughter actually helped her sister with her homework. Usually they just fight!",
-            "comments": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_2",
-            "value": "plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg",
-            "comments": "placeholder",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_2",
-            "value": "Here’s the parenting skill: if we tell our teens how proud we are of them for doing this, then they will want to do it again.",
-            "comments": "placeholder",
-            "type": "set_variable"
-          }
         ]
+      },
+      {
+        "name": "intro_text",
+        "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_male_caregiver was surprised by his teens! Let me tell you:",
+        "comments": "placeholder; should be rewritten without \"me\" and \"my teen\"",
+        "type": "set_variable"
+      },
+      {
+        "name": "number_of_slides",
+        "value": 2,
+        "type": "set_variable"
+      },
+      {
+        "name": "slide_image_src_1",
+        "value": "plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg",
+        "comments": "placeholder",
+        "type": "set_variable"
+      },
+      {
+        "name": "slide_text_1",
+        "value": "@global.w_praise_male_caregiver_name was busy and his older daughter actually helped her sister with her homework. Usually they just fight!",
+        "comments": "placeholder",
+        "type": "set_variable"
+      },
+      {
+        "name": "slide_image_src_2",
+        "value": "plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg",
+        "comments": "placeholder",
+        "type": "set_variable"
+      },
+      {
+        "name": "slide_text_2",
+        "value": "Here’s the parenting skill: if we tell our teens how proud we are of them for doing this, then they will want to do it again.",
+        "comments": "placeholder",
+        "type": "set_variable"
+      },
+      {
+        "type": "nested_properties",
+        "name": "content_box",
+        "rows": []
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
@@ -6143,11 +6290,6 @@
         ],
         "rows": [
           {
-            "name": "discussion_text",
-            "value": "How do you think what @global.w_instruct_male_caregiver said made his teens feel?  \n\nWhy did he praise them?",
-            "type": "set_variable"
-          },
-          {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
@@ -6167,12 +6309,18 @@
                 "name": "content_box",
                 "rows": [
                   {
+                    "name": "text",
+                    "value": "How do you think what @global.w_instruct_male_caregiver said made his teens feel?  \n\nWhy did he praise them?",
+                    "type": "set_variable"
+                  },
+                  {
                     "type": "nested_properties",
                     "name": "nav_buttons",
                     "rows": [
                       {
                         "name": "button_info",
                         "value": "Ideas",
+                        "hidden": "false",
                         "comments": "This should be a pop-up:\n\n@global.w_instruct_male_caregiver praised his teens...\n... to get them to do it more often\n... to help him finish his work \n... to make them feel good \n... to make himself feel good ",
                         "type": "set_variable"
                       },
@@ -6376,6 +6524,7 @@
                       {
                         "name": "button_info",
                         "value": "Ideas",
+                        "hidden": "false",
                         "comments": "This has to be authored as a pop-up text:\n\nSometimes it’s hard to think of what to praise your teen for! Here are some ideas.\n\nBeing kind to someone \nCleaning their room \nJoining a family meal \nGreeting other family members \nLooking after siblings \nComing home in time \nShowing thoughtfulness \nSaying 'please' or  'thank you' \nGoing to school  \nDoing chores or schoolwork  \nGetting through mealtime peacefully ",
                         "type": "set_variable"
                       },

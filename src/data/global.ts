@@ -16,6 +16,38 @@
   },
   {
     "flow_type": "global",
+    "flow_name": "example_initialise_global",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_global",
+        "name": "example_global_constant_text",
+        "value": "Example Global Constant Text",
+        "comments": "I'm setting a new global constant"
+      },
+      {
+        "type": "set_global",
+        "name": "example_global_constant_title",
+        "value": "Example Global Constant Title",
+        "comments": "I'm setting a new global constant"
+      },
+      {
+        "type": "set_global",
+        "name": "example_global_constant_image",
+        "value": "plh_images/habits/habit_relax_image.svg",
+        "comments": "I'm setting a new global constant"
+      },
+      {
+        "type": "set_field",
+        "name": "field_1",
+        "value": "Value of Field 1",
+        "comments": "This should be defined in one template and persist to another"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+  },
+  {
+    "flow_type": "global",
     "flow_name": "home_screen_variables",
     "status": "released",
     "rows": [
