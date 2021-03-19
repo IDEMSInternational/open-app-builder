@@ -244,13 +244,24 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         // identify if the current field-value has a dynamic expression, or a previous one
         // TODO - if a dynamic field is overwritten by static value (not just revaluated) that value
         // would also be overwritten on render (so needs fix, possibly moving dynamic fields to parser to merge)
-        const dynamicEvaluator = _extractDynamicEvaluators(r[field]) || r._dynamicFields?.[field];
-        if (dynamicEvaluator) {
-          r._dynamicFields = r._dynamicFields || {};
-          // evaluate dynamic field, keeping reference for future
-          r._dynamicFields[field] = dynamicEvaluator as any;
-          r[field] = this.parseDynamicValue(r._dynamicFields[field]);
+
+        // TODO - Memoize evaluators for arrays
+        if (Array.isArray(r[field]) && r[field].length > 0) {
+          let array = r[field] as any[];
+          let dynamicEvaluatorsPerItem = array.map((item) => _extractDynamicEvaluators(item));
+          if (dynamicEvaluatorsPerItem.length > 0) {
+            r[field] = dynamicEvaluatorsPerItem.map((evaluator) => this.parseDynamicValue(evaluator));
+          }
+        } else {
+          let dynamicEvaluators = _extractDynamicEvaluators(r[field]) || r._dynamicFields?.[field];
+          if (dynamicEvaluators) {
+            r._dynamicFields = r._dynamicFields || {};
+            // evaluate dynamic field, keeping reference for future
+            r._dynamicFields[field] = dynamicEvaluators as any;
+            r[field] = this.parseDynamicValue(r._dynamicFields[field]);
+          }
         }
+
         // TODO - evaulate function expressions (e.g. !@fields.something)
       });
       // handle nested templates
@@ -292,8 +303,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
           break;
         case "global":
-            parsedValue = this.templateService.getGlobal(fieldName);
-            break;
+          parsedValue = this.templateService.getGlobal(fieldName);
+          break;
         default:
           console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
           parsedValue = evaluator.matchedExpression;
@@ -317,7 +328,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 }
 
 /** Some strings contain a variable expression such as "/assets/@fields.name/happy.jpg" or "welcome @local.name!" */
-function _extractDynamicEvaluators(fullExpression: any) {
+function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDynamicEvaluator[] {
   // match fields such as @local.someField or @fields.someField.deeperNested
   // first prefix should consist only of letters (e.g. @local, @fields)
   // second part can be any letter, number, or characters _ .
