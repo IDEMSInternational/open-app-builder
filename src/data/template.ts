@@ -150,8 +150,12 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "audio",
         "name": "audio_src",
-        "value": "plh_audio/sample.mp3",
-        "comments": "this will get more parameters"
+        "value": null,
+        "comments": "this will get more parameters", 
+        "parameter_list": [
+          "src: plh_audio/sample.mp3",
+          "help: help text"
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
