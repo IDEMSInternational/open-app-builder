@@ -22,7 +22,7 @@ import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
-import { TmplTileComponentComponent } from "./tile-component/tile-component.component";
+import { TmplTileComponent } from "./tile-component/tile-component.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -43,7 +43,7 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
-  TmplTileComponentComponent
+  TmplTileComponent
 ];
 
 /***************************************************************************************
@@ -81,5 +81,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  tile_component: TmplTileComponentComponent
+  tile_component: TmplTileComponent
 };
