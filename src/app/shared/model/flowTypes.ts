@@ -355,6 +355,7 @@ export namespace FlowTypes {
     name?: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
+    style_list?: string[];
     parameter_list?: string[];
     hidden?: string;
     rows?: TemplateRow[];
