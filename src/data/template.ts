@@ -6380,5 +6380,30 @@ export const template: FlowTypes.Template[] = [
         "comments": ""
       }
     ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "simple_checkbox",
+    "status": "released",
+    "rows": [
+      {
+        "type": "simple_checkbox",
+        "name": "checkbox",
+        "value": true,
+        "parameter_list": [
+          "position: right",
+          "label_text: If you missed a group sessions would you like to catch up alone."
+        ]
+      },
+      {
+        "type": "simple_checkbox",
+        "name": "checkbox_2",
+        "value": null,
+        "parameter_list": [
+          "position: left",
+          "label_text: If you missed a group sessions would you like to catch up alone."
+        ]
+      }
+    ]
   }
 ];
