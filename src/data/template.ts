@@ -5910,7 +5910,7 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_praise_welcome_together; w_praise_care_together; w_praise_review_together; w_praise_intro; w_praise_talk_1; w_praise_read; w_praise_talk_2; w_praise_tools_activity; w_praise_talk_3; w_praise_home_practice; w_praise_ending",
+            "value": "w_praise_welcome_together; w_praise_care_together; w_praise_relax; w_praise_review_together; w_praise_intro; w_praise_talk_1; w_praise_read; w_praise_talk_2; w_praise_tools_activity; w_praise_talk_3; w_praise_home_practice; w_praise_ending",
             "comments": "w_praise_welcome_together; w_praise_care_together; w_praise_review_together; w_praise_relax; w_praise_intro; w_praise_talk_1; w_praise_read; w_praise_talk_2; w_praise_tools_activity; w_praise_talk_3; w_praise_home_practice; w_praise_ending",
             "type": "set_variable"
           }
@@ -5996,18 +5996,6 @@
           {
             "type": "nested_properties",
             "name": "workshop_activity",
-            "value": "workshop_activity",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "emit",
-                "args": [
-                  "completed"
-                ],
-                "_raw": "completed | emit:completed",
-                "_cleaned": "completed | emit:completed"
-              }
-            ],
             "rows": [
               {
                 "type": "nested_properties",
@@ -6141,7 +6129,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "This week is about praise.",
+                "value": "This week is about praise and positive reinforcement.",
                 "comments": "placeholder",
                 "type": "set_variable"
               }
@@ -6209,7 +6197,7 @@
     "status": "released",
     "rows": [
       {
-        "type": "begin_template",
+        "type": "template",
         "name": "read",
         "value": "read_temp",
         "action_list": [
@@ -6222,47 +6210,56 @@
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
           }
+        ],
+        "rows": [
+          {
+            "name": "intro_text",
+            "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_male_caregiver was surprised by his teens! Let me tell you:",
+            "comments": "placeholder; should be rewritten without \"me\" and \"my teen\"",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "content_box",
+            "value": "pair",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "box_1",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/praise/read/slide_1.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "@global.w_praise_male_caregiver_name was busy and his older daughter actually helped her sister with her homework. Usually they just fight!",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "box_2",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/praise/read/slide_2.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "Here’s the parenting skill: if we tell our teens how proud we are of them for doing this, then they will want to do it again.",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
         ]
-      },
-      {
-        "name": "intro_text",
-        "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_male_caregiver was surprised by his teens! Let me tell you:",
-        "comments": "placeholder; should be rewritten without \"me\" and \"my teen\"",
-        "type": "set_variable"
-      },
-      {
-        "name": "number_of_slides",
-        "value": 2,
-        "type": "set_variable"
-      },
-      {
-        "name": "slide_image_src_1",
-        "value": "plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg",
-        "comments": "placeholder",
-        "type": "set_variable"
-      },
-      {
-        "name": "slide_text_1",
-        "value": "@global.w_praise_male_caregiver_name was busy and his older daughter actually helped her sister with her homework. Usually they just fight!",
-        "comments": "placeholder",
-        "type": "set_variable"
-      },
-      {
-        "name": "slide_image_src_2",
-        "value": "plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg",
-        "comments": "placeholder",
-        "type": "set_variable"
-      },
-      {
-        "name": "slide_text_2",
-        "value": "Here’s the parenting skill: if we tell our teens how proud we are of them for doing this, then they will want to do it again.",
-        "comments": "placeholder",
-        "type": "set_variable"
-      },
-      {
-        "type": "nested_properties",
-        "name": "content_box",
-        "rows": []
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
