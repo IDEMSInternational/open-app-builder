@@ -7,7 +7,7 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "debug_variable_1",
         "value": "Value of the first debug variable"
       }
@@ -67,27 +67,27 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "weekly_workshops",
         "value": "Weekly Workshops"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "weekly_workshop",
         "value": "Weekly Workshop"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "parent_points",
         "value": "Parent Points"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "parent_point",
         "value": "Parent Point"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "parent_centre",
         "value": "Parent Centre"
       }
@@ -100,89 +100,89 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "help",
         "value": "Help"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "help_icon",
         "value": "plh_images/icons/heart.svg",
         "comments": "placeholder"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "essential_tools",
         "value": "Essential Tools"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "essential_tools_icon",
         "value": "plh_images/icons/heart.svg",
         "comments": "placeholder"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "covid",
         "value": "COVID"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "covid_icon",
         "value": "plh_images/icons/heart.svg",
         "comments": "placeholder"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "relax_and_activities",
         "value": "Relax & Activities"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "relax_and_activities_icon",
         "value": "plh_images/icons/heart.svg",
         "comments": "placeholder"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "extra",
         "value": "Extra"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "extra_icon",
         "value": "plh_images/icons/heart.svg",
         "comments": "placeholder"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "support_contacts",
         "value": "Support Contacts"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "support_contacts_icon",
         "value": "plh_images/icons/heart.svg",
         "comments": "placeholder"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "evidence_base",
         "value": "Evidence Base"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "evidence_base_icon",
         "value": "plh_images/icons/heart.svg",
         "comments": "placeholder"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "technical_support",
         "value": "Technical Support"
       },
       {
-        "type": "set_global",
+        "type": "declare_global_constant",
         "name": "technical_support_icon",
         "value": "plh_images/icons/heart.svg",
         "comments": "placeholder"
