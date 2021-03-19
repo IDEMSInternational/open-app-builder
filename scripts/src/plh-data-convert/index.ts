@@ -81,7 +81,7 @@ function applyDataParsers(
     conversation: new ConversationParser(),
     task_list: new TaskListParser(dataByFlowType, allTasksById),
     reminder_list: new ReminderListParser(),
-    template: new TemplateParser()
+    template: new TemplateParser(),
   };
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
@@ -123,7 +123,8 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
               console.log(chalk.yellow("duplicate flow:", flow_name));
             }
             // console.log(chalk.green("+", flow_name));
-            merged[flow_name] = { ...contents, rows: json[flow_name] };
+            const _xlsxPath = path.relative(INPUT_FOLDER, xlsxPath);
+            merged[flow_name] = { ...contents, rows: json[flow_name], _xlsxPath };
           } else {
             console.log(chalk.red("No Contents:", flow_name));
           }

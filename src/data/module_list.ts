@@ -93,6 +93,7 @@
         "title_short": "Crisis",
         "icon_asset": "assets/plh_assets/plh_images/modules/mod_crisis/icon.svg"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\navigation\\module_pages.xlsx"
   }
 ]
