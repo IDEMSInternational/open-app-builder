@@ -43,7 +43,7 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
-  TmplSimpleCheckboxComponent
+  TmplSimpleCheckboxComponent,
 ];
 
 /***************************************************************************************
@@ -67,6 +67,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   set_variable: null as any,
   nested_properties: null as any,
   set_global: null as any,
+  set_field: null as any,
   set_local: null as any,
   combo_box: null as any,
   set_default: null as any,
@@ -81,5 +82,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  simple_checkbox: TmplSimpleCheckboxComponent
+  simple_checkbox: TmplSimpleCheckboxComponent,
 };
