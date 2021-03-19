@@ -149,7 +149,7 @@
       {
         "type": "audio",
         "name": "audio_src",
-        "value": "plh_audio/sample.mp3",
+        "value": null,
         "comments": "this will get more parameters", 
         "parameter_list": [
           "src: plh_audio/sample.mp3",
