@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { TEMPLATE } from 'src/app/shared/services/data/data.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
+import { Injectable } from "@angular/core";
+import { TEMPLATE } from "src/app/shared/services/data/data.service";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class TemplateService {
-
   constructor(private localStorageService: LocalStorageService) {
     this.initialiseGlobals();
   }
@@ -22,14 +21,19 @@ export class TemplateService {
   }
 
   getGlobal(key: string): string {
-    return this.localStorageService.getString("template_global." + key);
+    let val = this.localStorageService.getString("template_global." + key);
+    if (val === null) {
+      console.warn("global value not found for key:", key);
+      // provide a sensible fallback to debug when not exists
+      val = `{{global.${key}}}`;
+    }
+    return val;
   }
 
   setGlobal(key: string, value: string) {
     this.localStorageService.setString("template_global." + key, value);
   }
 }
-
 
 // if (this.row) {
 //   if (typeof this.row.hidden === "string") {
