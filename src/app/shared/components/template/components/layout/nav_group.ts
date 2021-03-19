@@ -11,8 +11,8 @@ import { TemplateBaseComponent } from "../base";
       <div
         *ngFor="let templateName of templateNames; index as i"
         class="nav-progress-part"
-        [ngClass]="{'seen': i <= sectionIndex}">
-      </div>
+        [ngClass]="{ seen: i <= sectionIndex }"
+      ></div>
     </div>
     <div class="nav-section" *ngFor="let templateName of templateNames; index as i">
       <plh-template-container
@@ -46,13 +46,13 @@ import { TemplateBaseComponent } from "../base";
       .nav-progress-part {
         height: 5px;
         flex-grow: 1;
-        background-color: var(--ion-primary-color, #0D3F60);
+        background-color: var(--ion-primary-color, #0d3f60);
         margin: 10px;
         max-width: 40px;
       }
 
       .nav-progress-part.seen {
-        background-color: var(--ion-primary-color, #F88923);
+        background-color: var(--ion-primary-color, #f88923);
       }
 
       ion-button {
@@ -86,11 +86,14 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("nav_group init", this.parent);
     this.parent.handleActionsCallback = async (actions, results) => {
       console.log("parent handled actions", actions, results);
-      const completedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "completed");
-      const uncompletedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "uncompleted");
+      const completedAction = actions.find(
+        (a) => a.action_id === "emit" && a.args[0] === "completed"
+      );
+      const uncompletedAction = actions.find(
+        (a) => a.action_id === "emit" && a.args[0] === "uncompleted"
+      );
 
       if (completedAction) {
         this.nextSection();
@@ -104,7 +107,7 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
     if (this.sectionIndex + 1 < this.templateNames.length) {
       this.sectionIndex++;
     } else {
-      // There should be an emit "completed" action 
+      // There should be an emit "completed" action
       console.log("Nav group completed?");
     }
   }
