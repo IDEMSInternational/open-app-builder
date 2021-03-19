@@ -16,8 +16,10 @@ export class TemplateService {
   initialiseGlobals() {
     GLOBAL.forEach((flow) => {
       flow.rows?.forEach((row) => {
-        if (row.type === "set_field") {
-          this.setField(row.name, row.value);
+        if (row.type === "declare_field_default") {
+          if (this.getField(row.name) === undefined) {
+            this.setField(row.name, row.value);
+          }
         } else {
           this.setGlobal(row.name, row.value);
         }

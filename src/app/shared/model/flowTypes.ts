@@ -405,7 +405,7 @@ export namespace FlowTypes {
   }
 
   export interface GlobalRow {
-    type: "set_global" | "set_field";
+    type: "declare_global_constant" | "declare_field_default";
     name: string;
     value: any;
     comments?: string;
