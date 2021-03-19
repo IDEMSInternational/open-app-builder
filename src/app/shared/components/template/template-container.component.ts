@@ -47,7 +47,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
   showTemplates = false;
 
-  constructor(private contactFieldService: ContactFieldService, private templateService: TemplateService) {
+  constructor(private templateService: TemplateService) {
     if (location.href.indexOf("showTemplates=true") > -1) {
       this.showTemplates = true;
     }
@@ -115,7 +115,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         console.log("Setting global variable", key, value);
         return this.templateService.setGlobal(key, value);
       case "set_field":
-        return this.contactFieldService.setContactFieldSync(key, value);
+        return this.templateService.setField(key, value);
       case "emit":
         // TODO - handle DB writes or similar for emit handling
         if (this.parent) {
@@ -200,7 +200,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       }
 
       if (type === "set_field") {
-        this.contactFieldService.setContactFieldSync(name, value);
+        this.templateService.setField(name, value);
       }
 
       // handle rows which have nested structures
@@ -314,7 +314,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           break;
         case "field":
         case "fields":
-          parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
+          parsedValue = this.templateService.getField(fieldName);
           break;
         case "global":
           parsedValue = this.templateService.getGlobal(fieldName);

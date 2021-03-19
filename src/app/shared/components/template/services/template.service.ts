@@ -16,9 +16,21 @@ export class TemplateService {
   initialiseGlobals() {
     GLOBAL.forEach((flow) => {
       flow.rows?.forEach((row) => {
-        this.setGlobal(row.name, row.value);
+        if (row.type === "set_field") {
+          this.setField(row.name, row.value);
+        } else {
+          this.setGlobal(row.name, row.value);
+        }
       });
     });
+  }
+
+  getField(key: string): string {
+    return this.localStorageService.getString("rp-contact-field." + key);
+  }
+
+  setField(key: string, value: string): void {
+    this.localStorageService.setString("rp-contact-field." + key, value);
   }
 
   getGlobal(key: string): string {
