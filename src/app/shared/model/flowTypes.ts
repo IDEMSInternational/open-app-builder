@@ -35,6 +35,8 @@ export namespace FlowTypes {
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
     module?: string;
+    // debug info
+    _xlsxPath?: string;
   }
 
   /**
@@ -317,16 +319,20 @@ export namespace FlowTypes {
   export interface Template extends FlowTypeBase {
     flow_type: "template";
     rows: TemplateRow[];
+    comments?: string;
   }
 
   export type TemplateRowType =
     | "image"
     | "title"
+    | "subtitle"
     | "text"
     | "animated_section"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
+    | "set_global"
+    | "set_local"
     | "nested_properties"
     | "button"
     | "image"
@@ -340,16 +346,18 @@ export namespace FlowTypes {
     | "round_button"
     | "nav_group"
     | "nav_section"
-    | "slider_new"
-    | "simple_checkbox";
+    | "simple_checkbox"
+    | "set_default"
+    | "text_box"
+    | "combo_box";
 
   export interface TemplateRow {
     type: TemplateRowType;
     name?: string;
-    value?: any;
+    value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
     parameter_list?: string[];
-    hidden?: boolean | string;
+    hidden?: string;
     rows?: TemplateRow[];
     /** track fields above where dynamic expressions have been used in field evaluation */
     _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
@@ -362,18 +370,30 @@ export namespace FlowTypes {
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
-    type: "local" | "fields";
+    type: "local" | "fields" | "global";
     fieldName: string;
   }
   export interface TemplateRowAction {
+    /** actions have an associated trigger */
+    trigger:
+      "click"
+      | "completed"
+      | "uncompleted"
+    // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
-      | "set_value"
+      | "" // TODO document this property for stop propogation
+      | "set_value" // This currently is same as set_local (remove?)
+      | "set_field"
       | "set_local"
-      | "respond_to_action"
-      | "exit"
-      | "mark_as_completed"
-      | "mark_as_skipped";
+      | "set_global"
+      | "emit"
+      | "go_to"
     args: string[];
+    /** field populated for tracking the component that triggered the action */
+    _triggeredBy?: string;
+    // debug info
+    _raw: string;
+    _cleaned: string;
   }
 
   /* Used for setting default parameters for template components */
@@ -387,5 +407,4 @@ export namespace FlowTypes {
     default_value?: string | number | boolean;
     comments?: string /* Used for authoring comments. Not used in code */;
   }
-
 }

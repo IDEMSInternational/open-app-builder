@@ -1,5 +1,4 @@
 import {
-  ComponentRef,
   Directive,
   ViewContainerRef,
   Component,
@@ -38,21 +37,18 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div class="plh-tmpl-comp" [hidden]="hidden" [attr.data-type]="row.type">
-      <details *ngIf="parent.debugMode" class="debug-container">
-        <summary>{{ row.type }}</summary>
-        <p *ngIf="row.name">name: {{ row.name }}</p>
-        <p *ngIf="row.value">value: {{ row.value }}</p>
-        <p *ngIf="parent.localVariables">vars: {{ parent.localVariables | json }}</p>
-        <p *ngIf="row.rows && row.rows.length > 0">
-          <span>children: {{ row.rows.length }} </span>
-          <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log details)</ion-button>
-        </p>
-      </details>
+    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
+      <!-- Template Debugger -->
+      <plh-template-debugger
+        *ngIf="parent.debugMode"
+        [row]="row"
+        [parent]="parent"
+      ></plh-template-debugger>
+      <!-- Injected template component -->
       <ng-template plhTemplateComponentHost></ng-template>
     </div>
   `,
-  styleUrls: ["./components/tmpl-components-common.scss"],
+  styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
 })
 export class TemplateComponent implements OnInit, ITemplateRowProps {
   /**
@@ -65,19 +61,10 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  public hidden = false;
-
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit() {
     this.renderRow(this.row);
-  }
-  public logDebugInfo() {
-    console.group(this.row.type, this.row.name);
-    console.log("row", this.row);
-    console.log("parent", this.parent);
-    console.log("children", this.row.rows);
-    console.groupEnd();
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
@@ -103,8 +90,10 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
     const factory = this.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainerRef.createComponent(factory);
     // assign input variables (note template name taken from the row's value column)
+    componentRef.instance.row = this.row;
     componentRef.instance.parent = this.parent;
-    componentRef.instance.name = this.row.value;
+    componentRef.instance.name = this.row.name;
+    componentRef.instance.templatename = this.row.value;
   }
 
   /** Create and render a common display component */
@@ -118,41 +107,4 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
     componentRef.instance.parent = this.parent;
     componentRef.instance.row = this.row;
   }
-
-  // if (this.row) {
-  //   if (typeof this.row.hidden === "string") {
-  //     this.hidden = this.evaluateBooleanExpression(this.row.hidden);
-  //   } else {
-  //     this.hidden = this.row.hidden;
-  //   }
-  // }
 }
-
-// private evaluateBooleanExpression(expression: string | boolean): boolean {
-//   if (typeof expression === "boolean") {
-//     return expression;
-//   }
-//   const result = this.evalJSExpression(expression);
-//   if (result === true || result === "true") {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-
-/**
- * Create a dynamic function to parse the calculation expression without
- * the nees for `eval()` operator
- */
-// private evalJSExpression(str: string) {
-//   try {
-//     const args = "__local, str";
-//     const body = `'use strict'; return (${str.replace(/@local\./g, "__local.")})`;
-//     const result = new Function(args, body).apply(null, [this.localVariables, str]);
-//     console.log(body, "evals to ", result);
-//     return result;
-//   } catch (ex) {
-//     console.log("Error ? ", ex);
-//     return str;
-//   }
-// }

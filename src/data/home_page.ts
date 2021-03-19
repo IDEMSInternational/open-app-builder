@@ -33,6 +33,7 @@
         "route": "/parent_center",
         "left_image": "plh_images/home_page/home_page_parent_center.svg"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\navigation\\home_page.xlsx"
   }
 ]
