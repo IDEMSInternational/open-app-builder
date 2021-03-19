@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ModalController } from "@ionic/angular";
 import { takeWhile } from "rxjs/operators";
 import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
@@ -6,7 +8,9 @@ import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateService } from "./services/template.service";
 
-type ILocalVariables = { [name: string]: any };
+interface ILocalVariables {
+  [name: string]: any;
+}
 
 /** list of fields where overwrites will be allowed */
 const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
@@ -47,7 +51,13 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
   showTemplates = false;
 
-  constructor(private contactFieldService: ContactFieldService, private templateService: TemplateService) {
+  constructor(
+    private contactFieldService: ContactFieldService,
+    private templateService: TemplateService,
+    private modalCtrl: ModalController,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     if (location.href.indexOf("showTemplates=true") > -1) {
       this.showTemplates = true;
     }
@@ -55,6 +65,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
   ngOnInit() {
     this.initialiseTemplate();
+    const { name, templatename, parent, row } = this;
+    console.log("template initialised", { name, templatename, parent, row });
   }
 
   /***************************************************************************************
@@ -63,16 +75,34 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   /** Public method to add actions to processing queue and process */
   public async handleActions(actions: FlowTypes.TemplateRowAction[] = [], _triggeredBy: string) {
     actions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
-    // TODO - pass back relevant info from processActionsQueue
-    console.log("processActionQueue for ", this.name);
     const res = await this.processActionQueue();
-    console.log("About to call handleActionsCallback", this.name);
-    this.handleActionsCallback([...actions], res);
-    // TODO - possibly attach unique id to action to passback action results
-
+    await this.handleActionsCallback([...actions], res);
+    this.handleNavActions(actions);
   }
   /** Optional method child component can add to handle post-action callback */
-  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) { }
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
+
+  private handleNavActions(actions: FlowTypes.TemplateRowAction[] = []) {
+    console.log("handle nav actions", {
+      actions,
+      name: this.name,
+      parent: this.parent,
+      row: this.row,
+    });
+    const previousTemplate = this.route.snapshot.queryParamMap.get("from_template");
+    const navExitAction = actions.find(
+      (a) => a.action_id === "emit" && (a.trigger === "completed" || a.trigger === "uncompleted")
+    );
+
+    if (!this.parent && previousTemplate && navExitAction) {
+      this.router.navigate(["../", previousTemplate], {
+        relativeTo: this.route,
+        queryParams: { nav_emit: navExitAction.args[0] },
+        replaceUrl: true,
+      });
+    }
+  }
+
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -81,8 +111,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     const processedActions = [];
     // start the queue if it is not already running
     if (!this.actionsQueueProcessing$.value) {
-      console.group("Process Actions");
-      console.log("Template:", this.name);
+      console.group(`Process Actions - ${this.name}`, [...this.actionsQueue]);
       this.actionsQueueProcessing$.next(true);
       while (this.actionsQueue.length > 0) {
         const action = this.actionsQueue[0];
@@ -103,8 +132,6 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private async processAction(action: FlowTypes.TemplateRowAction) {
     console.log("process action", action);
     const { action_id, args } = action;
-    //part of temporary fix
-    let actionsForEmittedEvent = [];
     const [key, value] = args;
     switch (action_id) {
       case "set_local":
@@ -114,17 +141,52 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       case "set_global":
         console.log("Setting global variable", key, value);
         return this.templateService.setGlobal(key, value);
+      case "go_to":
+        const [templatename] = action.args;
+        history.pushState({}, "", location.href);
+        return this.router.navigate(["../", templatename], {
+          relativeTo: this.route,
+          queryParams: { from_template: this.name },
+          replaceUrl: true,
+        });
+      // const childContainerProps: ITemplateContainerProps = {
+      //   name: `${this.name}_${templatename}`,
+      //   templatename,
+      //   parent: this,
+      //   row: {
+      //     action_list: [
+      //       { trigger: "completed", action_id: "emit", args: ["dismiss:completed"] },
+      //       { trigger: "uncompleted", action_id: "emit", args: ["dismiss:uncompleted"] },
+      //     ],
+      //   } as any,
+      // };
+      // const childTemplateModal = await this.modalCtrl.create({
+      //   component: TemplateContainerComponent,
+      //   componentProps: childContainerProps,
+      // });
+      // await childTemplateModal.present();
+      // const dismissed = await childTemplateModal.onDidDismiss();
+      // console.log("dismissed", dismissed);
       case "emit":
         // TODO - handle DB writes or similar for emit handling
         if (this.parent) {
           // continue to emit any actions to parent where defined
-
-          // When emitting, tell parent template to execute actions in 
-          console.log("Emiting", args[0], " from ", this.row?.name, " to parent ", this.parent);
+          // When emitting, tell parent template to execute actions in
+          console.log(
+            "Emiting",
+            args[0],
+            ` from ${this.row?.name || "(no row)"} to parent ${this.parent?.name || "(no parent)"}`,
+            this.parent
+          );
           if (this.row && this.row.action_list) {
-            const actionsForEmittedEvent = this.row.action_list.filter((action) => action.trigger === args[0]);
+            const actionsForEmittedEvent = this.row.action_list.filter(
+              (a) => a.trigger === args[0]
+            );
             console.log("Excuting actions matching event ", args[0], actionsForEmittedEvent);
-            await this.parent.handleActions(actionsForEmittedEvent, `${this.name}.${action._triggeredBy}`);
+            await this.parent.handleActions(
+              actionsForEmittedEvent,
+              `${this.name}.${action._triggeredBy}`
+            );
             // Below needs discussion
             // await this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
           } else {
@@ -153,8 +215,11 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private initialiseTemplate() {
     // Lookup template and provide fallback
     const foundTemplate =
-      TEMPLATE.find((t) => t.flow_name === this.templatename) || NOT_FOUND_TEMPLATE(this.templatename);
+      TEMPLATE.find((t) => t.flow_name === this.templatename) ||
+      NOT_FOUND_TEMPLATE(this.templatename);
     this.template = JSON.parse(JSON.stringify(foundTemplate));
+    // if template created at top level also ensure it has a name
+    this.name = this.name || this.templatename;
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
     const parentVariables = this.parent?.localVariables?.[this.name];
@@ -253,7 +318,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
             let oldList = r[field];
             r[field] = dynamicEvaluatorsPerItem.map((evaluator, idx) => {
               if (evaluator) {
-                return this.parseDynamicValue(evaluator)
+                return this.parseDynamicValue(evaluator);
               } else {
                 return oldList[idx];
               }

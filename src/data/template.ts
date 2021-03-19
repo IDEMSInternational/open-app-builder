@@ -133,6 +133,78 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "workshop_buttons_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "workshop_button_0",
+        "value": "@global.w_self_care",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_self_care_stepper"
+            ],
+            "_raw": "click | go_to:w_self_care_stepper",
+            "_cleaned": "click | go_to:w_self_care_stepper"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "workshop_button_1",
+        "value": "@global.w_1on1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_stepper"
+            ],
+            "_raw": "click | go_to:w_1on1_stepper",
+            "_cleaned": "click | go_to:w_1on1_stepper"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "workshop_button_2",
+        "value": "@global.w_praise",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_praise_stepper"
+            ],
+            "_raw": "click | go_to:w_praise_stepper",
+            "_cleaned": "click | go_to:w_praise_stepper"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "workshop_button_3",
+        "value": "@global.w_instruct",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_instruct_stepper"
+            ],
+            "_raw": "click | go_to:w_instruct_stepper",
+            "_cleaned": "click | go_to:w_instruct_stepper"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_navigation_temporary.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "widget_audio",
     "status": "released",
     "rows": [
@@ -3856,7 +3928,7 @@
       {
         "type": "image",
         "name": "image_src",
-        "value": "@global.example_global_image"
+        "value": "@global.example_global_constant_image"
       },
       {
         "type": "text",
@@ -3871,11 +3943,6 @@
     "flow_name": "example_set_fields_in_action",
     "status": "released",
     "rows": [
-      {
-        "type": "set_field",
-        "name": "field_0",
-        "value": "Value of field 0"
-      },
       {
         "type": "text",
         "name": "text_0",
@@ -3929,11 +3996,6 @@
         "comments": "this text would be The value of field_2 is 'undefined' so presumably an empty string or even @field.field_2? until the button is pressed in which case it would change to The value of field_2 is Value of Field 2"
       },
       {
-        "type": "set_field",
-        "name": "field_4",
-        "value": "true"
-      },
-      {
         "type": "text",
         "name": "text_hidden_4",
         "value": "This should be hidden when field_4 is TRUE",
@@ -3945,11 +4007,6 @@
         "name": "text_not_hidden_4",
         "value": "This should be hidden when field_4 is FALSE",
         "hidden": "!@field.field_4"
-      },
-      {
-        "type": "set_field",
-        "name": "field_5",
-        "value": 5
       },
       {
         "type": "text",
@@ -5073,7 +5130,7 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_instruct_welcome_together; w_instruct_care_together; w_instruct_review_together; w_instruct_relax; w_instruct_intro; w_instruct_think_1; w_instruct_read_1; w_instruct_talk_1; w_instruct_read_2; w_instruct_talk_2; w_instruct_tools_activity; w_instruct_talk_3; w_instruct_home_practice; w_instruct_ending",
+            "value": "w_instruct_welcome_together; w_instruct_care_together; w_instruct_relax; w_instruct_review_together; w_instruct_intro; w_instruct_think_1; w_instruct_read_1; w_instruct_talk_1; w_instruct_read_2; w_instruct_talk_2; w_instruct_tools_activity; w_instruct_talk_3; w_instruct_home_practice; w_instruct_ending",
             "comments": "w_instruct_welcome_together; w_instruct_care_together; w_instruct_review_together; w_instruct_relax; w_instruct_intro; w_instruct_think_1; w_instruct_read_1; w_instruct_talk_1; w_instruct_read_2; w_instruct_talk_2; w_instruct_tools_activity; w_instruct_talk_3; w_instruct_home_practice; w_instruct_ending",
             "type": "set_variable"
           }
@@ -5294,7 +5351,7 @@
       {
         "type": "template",
         "name": "think",
-        "value": "think",
+        "value": "think_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -5309,62 +5366,126 @@
         "rows": [
           {
             "type": "nested_properties",
-            "name": "read",
+            "name": "workshop_activity",
             "rows": [
               {
-                "name": "number_of_slides",
-                "value": 5,
+                "name": "intro_text",
+                "value": "It's time for a thought experiment!",
+                "comments": "placeholder",
                 "type": "set_variable"
               },
               {
-                "name": "slide_image_src_1",
-                "value": "plh_images/modules/mod_instruct/teen_shout.svg",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_text_1",
-                "value": "@fields.neighbour: \"Stop making so much noise!\" \n@fields.guide_teen: \"I hate you!\"\n\nIt is so hard to tell teenagers what to do! What really helped me was to change how to ask my teen to do things. Now, I tell them what they should do instead of what they shouldn’t. Let me show you how it works!",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_image_src_2",
-                "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_text_2",
-                "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_image_src_3",
-                "value": "plh_images/modules/mod_instruct/thought_experiment/te_2.svg",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_text_3",
-                "value": "‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_image_src_4",
-                "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_text_4",
-                "value": "THINK ABOUT A FURRY TIGER, THANK YOU! \n\nWhat are you thinking about?",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_image_src_5",
-                "value": "plh_images/modules/mod_instruct/thought_experiment/te_3.svg",
-                "type": "set_variable"
-              },
-              {
-                "name": "slide_text_5",
-                "value": "Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.",
-                "type": "set_variable"
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_image",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "value": "plh_images/workshops/instruct/guide_2/teen_phone_2.svg",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "@global.guide_2_name: \"Stop making so much noise!\" \n@global.guide_teen_name: \"I hate you!\"\n\nIt is so hard to tell teenagers what to do! What really helped me was to change how to ask my teen to do things. Now, I tell them what they should do instead of what they shouldn’t. Let me show you how it works!",
+                        "type": "set_variable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "pair",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "box_image",
+                        "rows": [
+                          {
+                            "name": "image_src",
+                            "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
+                            "type": "set_variable"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "pair",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "value": "plh_images/workshops/instruct/guide_2/think/slide_2.svg",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)",
+                                "type": "set_variable"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "pair",
+                            "rows": [
+                              {
+                                "type": "nested_properties",
+                                "name": "box_1",
+                                "value": "box_image",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "THINK ABOUT A FURRY TIGER, THANK YOU! \n\nWhat are you thinking about?",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "box_2",
+                                "value": "box_image",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/instruct/guide_2/think/slide_3.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -6213,47 +6334,53 @@
         ],
         "rows": [
           {
-            "name": "intro_text",
-            "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_male_caregiver was surprised by his teens! Let me tell you:",
-            "comments": "placeholder; should be rewritten without \"me\" and \"my teen\"",
-            "type": "set_variable"
-          },
-          {
             "type": "nested_properties",
-            "name": "content_box",
-            "value": "pair",
+            "name": "workshop_activity",
             "rows": [
               {
-                "type": "nested_properties",
-                "name": "box_1",
-                "value": "box_image",
-                "rows": [
-                  {
-                    "name": "image_src",
-                    "value": "plh_images/workshops/praise/read/slide_1.svg",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "text",
-                    "value": "@global.w_praise_male_caregiver_name was busy and his older daughter actually helped her sister with her homework. Usually they just fight!",
-                    "type": "set_variable"
-                  }
-                ]
+                "name": "intro_text",
+                "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_female_caregiver was surprised by her teens! Let me tell you:",
+                "comments": "placeholder; should be rewritten without \"me\" and \"my teen\"",
+                "type": "set_variable"
               },
               {
                 "type": "nested_properties",
-                "name": "box_2",
-                "value": "box_image",
+                "name": "content_box",
+                "value": "pair",
                 "rows": [
                   {
-                    "name": "image_src",
-                    "value": "plh_images/workshops/praise/read/slide_2.svg",
-                    "type": "set_variable"
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_image",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "value": "plh_images/workshops/praise/read/slide_1.svg",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "@global.w_praise_female_caregiver_name was busy and her older daughter actually helped her sister with her homework. Usually they just fight!",
+                        "type": "set_variable"
+                      }
+                    ]
                   },
                   {
-                    "name": "text",
-                    "value": "Here’s the parenting skill: if we tell our teens how proud we are of them for doing this, then they will want to do it again.",
-                    "type": "set_variable"
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "box_image",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "value": "plh_images/workshops/praise/read/slide_2.svg",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "Here’s the parenting skill: if we tell our teens how proud we are of them for doing this, then they will want to do it again.",
+                        "type": "set_variable"
+                      }
+                    ]
                   }
                 ]
               }
@@ -6307,7 +6434,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "How do you think what @global.w_instruct_male_caregiver said made his teens feel?  \n\nWhy did he praise them?",
+                    "value": "How do you think what @global.w_instruct_female_caregiver said made her teens feel?  \n\nWhy did she praise them?",
                     "type": "set_variable"
                   },
                   {
@@ -6318,7 +6445,7 @@
                         "name": "button_info",
                         "value": "Ideas",
                         "hidden": "false",
-                        "comments": "This should be a pop-up:\n\n@global.w_instruct_male_caregiver praised his teens...\n... to get them to do it more often\n... to help him finish his work \n... to make them feel good \n... to make himself feel good ",
+                        "comments": "This should be a pop-up:\n\n@global.w_instruct_female_caregiver praised her teens...\n... to get them to do it more often\n... to help him finish his work \n... to make them feel good \n... to make himself feel good ",
                         "type": "set_variable"
                       },
                       {
@@ -6333,7 +6460,7 @@
               },
               {
                 "name": "outro_text",
-                "value": "All of those things are true! When his teens are happy, @global.w_instruct_male_caregiver feels happy. And he got his work done. The same can work for you!",
+                "value": "All of those things are true! When his teens are happy, @global.w_instruct_female_caregiver feels happy. And she got her work done. The same can work for you!",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
