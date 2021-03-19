@@ -254,7 +254,14 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           let array = r[field] as any[];
           let dynamicEvaluatorsPerItem = array.map((item) => _extractDynamicEvaluators(item));
           if (dynamicEvaluatorsPerItem.length > 0) {
-            r[field] = dynamicEvaluatorsPerItem.map((evaluator) => this.parseDynamicValue(evaluator));
+            let oldList = r[field];
+            r[field] = dynamicEvaluatorsPerItem.map((evaluator, idx) => {
+              if (evaluator) {
+                return this.parseDynamicValue(evaluator)
+              } else {
+                return oldList[idx];
+              }
+            });
           }
         } else {
           let dynamicEvaluators = _extractDynamicEvaluators(r[field]) || r._dynamicFields?.[field];
