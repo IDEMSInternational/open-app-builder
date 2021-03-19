@@ -1,5 +1,5 @@
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
-import { Component, HostBinding, Input } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
