@@ -346,6 +346,7 @@ export namespace FlowTypes {
     | "round_button"
     | "nav_group"
     | "nav_section"
+    | "simple_checkbox"
     | "set_default"
     | "text_box"
     | "combo_box";
