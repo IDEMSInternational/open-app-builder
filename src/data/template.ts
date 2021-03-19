@@ -3856,7 +3856,7 @@
       {
         "type": "image",
         "name": "image_src",
-        "value": "@global.example_global_image"
+        "value": "@global.example_global_constant_image"
       },
       {
         "type": "text",
