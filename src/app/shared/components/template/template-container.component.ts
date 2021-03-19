@@ -114,6 +114,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       case "set_global":
         console.log("Setting global variable", key, value);
         return this.templateService.setGlobal(key, value);
+      case "set_field":
+        return this.contactFieldService.setContactFieldSync(key, value);
       case "emit":
         // TODO - handle DB writes or similar for emit handling
         if (this.parent) {
@@ -198,7 +200,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       }
 
       if (type === "set_field") {
-        this.contactFieldService.setContactField(name, value);
+        this.contactFieldService.setContactFieldSync(name, value);
       }
 
       // handle rows which have nested structures
