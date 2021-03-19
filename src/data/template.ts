@@ -1,10 +1,9 @@
 /* tslint:disable */
-import { FlowTypes } from "src/app/shared/model/flowTypes";
-
-export const template: FlowTypes.Template[] = [
+  import { FlowTypes } from "src/app/shared/model/flowTypes";
+  export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
-    "flow_name": "tools_component",
+    "flow_name": "box_tools",
     "status": "released",
     "rows": [
       {
@@ -66,9 +65,9 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "text",
         "name": "tip_text",
-        "value": "You can always find these tools in the @local.parent_centre ",
+        "value": "You can always find these tools in the @global.parent_centre ",
         "parameter_list": [
-          "alert"
+          "alert:true"
         ]
       },
       {
@@ -150,12 +149,8 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "audio",
         "name": "audio_src",
-        "value": null,
-        "comments": "this will get more parameters", 
-        "parameter_list": [
-          "src: plh_audio/sample.mp3",
-          "help: help text"
-        ]
+        "value": "plh_audio/sample.mp3",
+        "comments": "this will get more parameters"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
@@ -278,207 +273,16 @@ export const template: FlowTypes.Template[] = [
         "type": "set_variable"
       },
       {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "title",
-            "name": "title"
-          },
-          {
-            "name": "help",
-            "comments": "should be type: help",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "slider",
-            "name": "slider",
-            "parameter_list": [
-              "min_value:@local.min_value",
-              "min_text:@local.min_text",
-              "max_value:@max_value",
-              "max_text:@local.max_text",
-              "step:@local.step",
-              "unit_text:@local.unit_text"
-            ]
-          },
-          {
-            "comments": "no_answer",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "widget_number_selector",
-    "status": "released",
-    "rows": [
-      {
-        "name": "min_value",
-        "value": 0,
-        "type": "set_variable"
-      },
-      {
-        "name": "max_value",
-        "value": 20,
-        "type": "set_variable"
-      },
-      {
-        "name": "category_size",
-        "value": 1,
-        "type": "set_variable"
-      },
-      {
-        "name": "category_list",
-        "type": "set_variable"
-      },
-      {
-        "name": "first_display_term",
-        "value": 0,
-        "type": "set_variable"
-      },
-      {
-        "name": "height",
-        "comments": "short or normal for the case with a title. This determines the font size if it has a title",
-        "type": "set_variable"
-      },
-      {
-        "name": "default_value",
-        "value": "null",
-        "type": "set_variable"
-      },
-      {
-        "type": "set_default",
-        "name": "_value",
-        "value": "@local.default_value"
-      },
-      {
-        "type": "title",
-        "name": "title"
-      },
-      {
-        "type": "number_selector",
-        "name": "number_selector",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_value",
-            "args": [],
-            "_raw": "set_value",
-            "_cleaned": "click | set_value"
-          }
-        ],
+        "type": "slider",
+        "name": "slider",
         "parameter_list": [
-          "min_value:@local.min_value",
-          "max_value:@max_value",
-          "max_text:@local.max_text",
-          "category_size:@local.category_size",
-          "category_list:@local.category_list",
-          "first_display_term:@local.first_display_term",
-          "height:@local.height"
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "widget_text_box",
-    "status": "released",
-    "rows": [
-      {
-        "name": "blank_display_text",
-        "value": "Click here to answer",
-        "comments": "text shown inside box before clicking on it",
-        "type": "set_variable"
-      },
-      {
-        "name": "default_value",
-        "value": "null",
-        "type": "set_variable"
-      },
-      {
-        "type": "set_default",
-        "name": "_value",
-        "value": "@local.default_value"
-      },
-      {
-        "type": "text_box",
-        "name": "text_box",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_value",
-            "args": [],
-            "_raw": "set_value",
-            "_cleaned": "click | set_value"
-          }
-        ],
-        "parameter_list": [
-          "blank_display_text:@local.blank_display_text"
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "widget_combo_box",
-    "status": "released",
-    "rows": [
-      {
-        "name": "combo_box_style",
-        "value": "pop-up",
-        "type": "set_variable"
-      },
-      {
-        "name": "blank_display_text",
-        "value": "Click here to answer",
-        "type": "set_variable"
-      },
-      {
-        "name": "user_input",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "name": "answer_list",
-        "type": "set_variable"
-      },
-      {
-        "name": "default_value",
-        "value": "null",
-        "type": "set_variable"
-      },
-      {
-        "type": "set_default",
-        "name": "_value",
-        "value": "@local.default_value"
-      },
-      {
-        "type": "combo_box",
-        "name": "combo_box",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_value",
-            "args": [],
-            "_raw": "set_value",
-            "_cleaned": "click | set_value"
-          }
-        ],
-        "parameter_list": [
-          "combo_box_style:@local.combo_box_style",
-          "blank_display_text:@local.blank_display_text",
-          "answer_list:@local.answer_list",
-          "user_input:@local.user_input"
+          "min:@local.min_value",
+          "min_value_label:@local.min_text",
+          "max:@local.max_value",
+          "max_value_label:@local.max_text",
+          "step:@local.step",
+          "help: @local.help",
+          "title: @local.title"
         ]
       }
     ],
@@ -754,7 +558,8 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "title",
             "name": "outro_title",
-            "value": "@local.activity_title"
+            "value": "@local.activity_title",
+            "hidden": "true"
           },
           {
             "type": "text",
@@ -762,13 +567,14 @@ export const template: FlowTypes.Template[] = [
           },
           {
             "type": "button",
-            "name": "outro_button"
+            "name": "outro_button",
+            "hidden": "true"
           },
           {
             "type": "text",
             "name": "outro_habit_text",
             "parameter_list": [
-              "alert"
+              "alert:plh_images/icons/star_circle.svg"
             ]
           },
           {
@@ -954,23 +760,7 @@ export const template: FlowTypes.Template[] = [
   },
   {
     "flow_type": "template",
-    "flow_name": "info_button",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "button_info",
-        "value": "Describe",
-        "parameter_list": [
-          "colour | secondary"
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "video_component",
+    "flow_name": "box_video",
     "status": "released",
     "rows": [
       {
@@ -1026,11 +816,11 @@ export const template: FlowTypes.Template[] = [
         "rows": []
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_components.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_boxes.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "audio_component",
+    "flow_name": "box_audio",
     "status": "released",
     "rows": [
       {
@@ -1091,16 +881,17 @@ export const template: FlowTypes.Template[] = [
         "rows": []
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_components.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_boxes.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "image_component",
+    "flow_name": "box_image",
     "status": "released",
     "rows": [
       {
         "type": "image",
-        "name": "image_src"
+        "name": "image_src",
+        "value": "plh_images/workshops/praise/read/slide_1.svg"
       },
       {
         "type": "text",
@@ -1109,8 +900,9 @@ export const template: FlowTypes.Template[] = [
       {
         "type": "text",
         "name": "habit_text",
+        "hidden": "true",
         "parameter_list": [
-          "alert"
+          "alert:plh_images/icons/star_circle.svg"
         ]
       },
       {
@@ -1131,11 +923,71 @@ export const template: FlowTypes.Template[] = [
         "rows": []
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_components.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_boxes.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "timer_component",
+    "flow_name": "box_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1"
+      },
+      {
+        "type": "button",
+        "name": "button_1"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "hidden": "true"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "hidden": "true"
+      },
+      {
+        "type": "button",
+        "name": "button_3",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "habit_text",
+        "parameter_list": [
+          "alert:plh_images/icons/star_circle.svg"
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_timer",
     "status": "released",
     "rows": [
       {
@@ -1221,445 +1073,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_components.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "button_component",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text_1"
-      },
-      {
-        "type": "button",
-        "name": "button_1",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text_2",
-        "hidden": "true"
-      },
-      {
-        "type": "button",
-        "name": "button_2",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text_3",
-        "hidden": "true"
-      },
-      {
-        "type": "button",
-        "name": "button_3",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "habit_text",
-        "parameter_list": [
-          "alert"
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_components.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_sheet_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title",
-        "value": "title for debug sheet 1"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "value": "text for debug sheet 1"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_nesting.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_sheet_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title",
-        "value": "title for debug sheet 2"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "value": "text for debug sheet 2"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_nesting.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_test_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "name_1",
-        "value": "debug_sheet_1",
-        "rows": [
-          {
-            "name": "title",
-            "value": "title for sheet 1 was overwritten",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "name_2",
-        "value": "debug_sheet_2",
-        "rows": [
-          {
-            "name": "title",
-            "value": "title for sheet 2 was overwritten",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "name_3",
-        "value": "debug_sheet_1",
-        "rows": [
-          {
-            "name": "text",
-            "value": "text for sheet 1 was overwritten",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_nesting.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_test_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "other_name",
-        "value": "debug_test_1",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "name_1",
-            "rows": [
-              {
-                "name": "title",
-                "value": "title for sheet 1 was overwritten twice",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_nesting.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_test_1_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "debug_sheet_1",
-        "value": "debug_sheet_1",
-        "rows": [
-          {
-            "name": "title",
-            "value": "title for sheet 1 was overwritten",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "debug_sheet_2",
-        "value": "debug_sheet_2",
-        "rows": [
-          {
-            "name": "title",
-            "value": "title for sheet 2 was overwritten",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "debug_sheet_1",
-        "value": "debug_sheet_1",
-        "rows": [
-          {
-            "name": "text",
-            "value": "text for sheet 1 was overwritten",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_nesting.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_test_1_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "debug_override_1",
-        "value": "debug_override_1",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "debug_sheet_1",
-            "rows": [
-              {
-                "name": "title",
-                "value": "title for sheet 1 was overwritten",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "debug_sheet_2",
-        "value": "debug_sheet_2",
-        "rows": [
-          {
-            "name": "title",
-            "value": "title for sheet 2 was overwritten",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "debug_override_2",
-        "value": "debug_override_2",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "debug_sheet_1",
-            "rows": [
-              {
-                "name": "text",
-                "value": "text for sheet 1 was overwritten",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_nesting.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_override_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "debug_sheet_1",
-        "value": "debug_sheet_1",
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_nesting.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_override_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "debug_sheet_1",
-        "value": "debug_sheet_1",
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_nesting.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_video_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "video",
-        "name": "video_src",
-        "value": "plh_video/lets_slow_down.mp4"
-      },
-      {
-        "type": "video",
-        "name": "video_src",
-        "value": "https://www.w3schools.com/html/mov_bbb.mp4"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_small_issues.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_timer_icons_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "timer",
-        "name": "timer",
-        "parameter_list": [
-          "duration_extension:1",
-          "duration:10"
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_small_issues.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_negation",
-    "status": "released",
-    "rows": [
-      {
-        "name": "var_true",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "name": "var_false",
-        "value": "false",
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "true_true",
-        "value": "Variable true Hidden true",
-        "hidden": "@local.var_true"
-      },
-      {
-        "type": "text",
-        "name": "true_false",
-        "value": "Variable true Hidden false",
-        "hidden": "!@local.var_true"
-      },
-      {
-        "type": "text",
-        "name": "false_true",
-        "value": "Variable false Hidden true",
-        "hidden": "@local.var_false"
-      },
-      {
-        "type": "text",
-        "name": "false_false",
-        "value": "Variable false Hidden false",
-        "hidden": "!@local.var_false"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_small_issues.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_set_local",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_local",
-        "name": "debug_variable",
-        "value": "Value of the debug variable"
-      },
-      {
-        "type": "text",
-        "name": "debug_text",
-        "value": "Text that includes @local.debug_variable"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_small_issues.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_set_global_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_global",
-        "name": "debug_variable_1",
-        "value": "Value of the first debug variable"
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "Global value is @global.debug_variable_1"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_small_issues.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_set_global_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "debug_text",
-        "value": "Text that includes @global.debug_variable_1"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_small_issues.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_set_global_3",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_global",
-        "name": "debug_variable_2",
-        "value": "Value of the second debug variable"
-      },
-      {
-        "type": "text",
-        "name": "debug_text",
-        "value": "Text that includes @global.debug_variable_2"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\debug_templates\\debug_small_issues.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_boxes.xlsx"
   },
   {
     "flow_type": "template",
@@ -1685,13 +1099,13 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/guide_2/light_bulb.svg",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/group/light_bulb.svg",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
@@ -1734,13 +1148,13 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/guide_2/with_teen.svg",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/group/with_teen.svg",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
@@ -1774,7 +1188,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "nested_properties",
             "name": "content_box",
-            "value": "button_component",
+            "value": "box_buttons",
             "rows": []
           }
         ]
@@ -1816,28 +1230,28 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "activity_title",
             "value": "Listen",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let's listen to an audio!",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Listen Together",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let's listen to an audio together!",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
@@ -1862,7 +1276,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "nested_properties",
             "name": "content_box",
-            "value": "audio_component",
+            "value": "box_audio",
             "rows": [
               {
                 "name": "audio_src",
@@ -1875,6 +1289,181 @@ export const template: FlowTypes.Template[] = [
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\mode_templates\\listen.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "question_time",
+    "status": "released",
+    "rows": [
+      {
+        "name": "text_1",
+        "type": "set_variable"
+      },
+      {
+        "name": "question_text_1",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list_1",
+        "type": "set_variable"
+      },
+      {
+        "name": "user_input_1",
+        "type": "set_variable"
+      },
+      {
+        "name": "reply_1",
+        "type": "set_variable"
+      },
+      {
+        "name": "text_2",
+        "type": "set_variable"
+      },
+      {
+        "name": "question_text_2",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list_2",
+        "type": "set_variable"
+      },
+      {
+        "name": "user_input_2",
+        "type": "set_variable"
+      },
+      {
+        "name": "reply_2",
+        "type": "set_variable"
+      },
+      {
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "activity_title",
+            "value": "Question Time",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_image",
+            "value": "plh_images/workshop_modes/guide_2/notes.svg",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "It's time for some questions!",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_banner",
+            "hidden": "false",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "intro_nav_buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Go to questions",
+                "comments": "placeholder",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "content_box",
+            "value": "box_duo_combo_box",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "combo_box_1",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "@local.text_1",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "@local.question_text_1",
+                    "parameter_list": [
+                      "\"\""
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": "@local.answer_list_1",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "user_input",
+                    "value": "@local.user_input_1",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "@local.reply_1",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "combo_box_2",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "@local.text_2",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "@local.question_text_2",
+                    "parameter_list": [
+                      "\"\""
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": "@local.answer_list_2",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "user_input",
+                    "value": "@local.user_input_2",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "@local.reply_2",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\mode_templates\\question_time.xlsx"
   },
   {
     "flow_type": "template",
@@ -1969,40 +1558,40 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/guide_2/read.svg",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Read",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let's read a story!",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/group/read.svg",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Read Together",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let's read a story together!",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
@@ -2020,7 +1609,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "nested_properties",
             "name": "content_box",
-            "value": "image_component",
+            "value": "box_image",
             "hidden": "@local.number_of_slides = 1",
             "rows": [
               {
@@ -2044,7 +1633,7 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "box_1",
-                "value": "image_component",
+                "value": "box_image",
                 "rows": [
                   {
                     "name": "image_src",
@@ -2061,7 +1650,7 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "box_2",
-                "value": "image_component",
+                "value": "box_image",
                 "hidden": "@local.number_of_slides = 2",
                 "rows": [
                   {
@@ -2085,7 +1674,7 @@ export const template: FlowTypes.Template[] = [
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "image_component",
+                    "value": "box_image",
                     "rows": [
                       {
                         "name": "image_src",
@@ -2102,7 +1691,7 @@ export const template: FlowTypes.Template[] = [
                   {
                     "type": "nested_properties",
                     "name": "box_2",
-                    "value": "image_component",
+                    "value": "box_image",
                     "hidden": "@local.number_of_slides = 3",
                     "rows": [
                       {
@@ -2126,7 +1715,7 @@ export const template: FlowTypes.Template[] = [
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "image_component",
+                        "value": "box_image",
                         "rows": [
                           {
                             "name": "image_src",
@@ -2143,7 +1732,7 @@ export const template: FlowTypes.Template[] = [
                       {
                         "type": "nested_properties",
                         "name": "box_2",
-                        "value": "image_component",
+                        "value": "box_image",
                         "hidden": "@local.number_of_slides = 4",
                         "rows": [
                           {
@@ -2167,7 +1756,7 @@ export const template: FlowTypes.Template[] = [
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "image_component",
+                            "value": "box_image",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -2184,7 +1773,7 @@ export const template: FlowTypes.Template[] = [
                           {
                             "type": "nested_properties",
                             "name": "box_2",
-                            "value": "image_component",
+                            "value": "box_image",
                             "hidden": "@local.number_of_slides = 5",
                             "rows": [
                               {
@@ -2208,7 +1797,7 @@ export const template: FlowTypes.Template[] = [
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "image_component",
+                                "value": "box_image",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -2225,7 +1814,7 @@ export const template: FlowTypes.Template[] = [
                               {
                                 "type": "nested_properties",
                                 "name": "box_2",
-                                "value": "image_component",
+                                "value": "box_image",
                                 "hidden": "@local.number_of_slides = 6",
                                 "rows": [
                                   {
@@ -2249,7 +1838,7 @@ export const template: FlowTypes.Template[] = [
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "image_component",
+                                    "value": "box_image",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -2266,7 +1855,7 @@ export const template: FlowTypes.Template[] = [
                                   {
                                     "type": "nested_properties",
                                     "name": "box_2",
-                                    "value": "image_component",
+                                    "value": "box_image",
                                     "hidden": "@local.number_of_slides = 7",
                                     "rows": [
                                       {
@@ -2290,7 +1879,7 @@ export const template: FlowTypes.Template[] = [
                                       {
                                         "type": "nested_properties",
                                         "name": "box_1",
-                                        "value": "image",
+                                        "value": "box_image",
                                         "rows": [
                                           {
                                             "name": "image_src",
@@ -2307,7 +1896,7 @@ export const template: FlowTypes.Template[] = [
                                       {
                                         "type": "nested_properties",
                                         "name": "box_2",
-                                        "value": "image_component",
+                                        "value": "box_image",
                                         "hidden": "@local.number_of_slides = 8",
                                         "rows": [
                                           {
@@ -2333,6 +1922,83 @@ export const template: FlowTypes.Template[] = [
                     ]
                   }
                 ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\mode_templates\\read.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "read_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "activity_image",
+            "value": "plh_images/workshop_modes/guide_2/read.svg",
+            "hidden": "@field.do_workshops_together",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Read",
+            "hidden": "@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Let's read a story!",
+            "hidden": "@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_image",
+            "value": "plh_images/workshop_modes/group/read.svg",
+            "hidden": "!@field.do_workshops_together",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Read Together",
+            "hidden": "!@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Let's read a story together!",
+            "hidden": "!@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "intro_nav_buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Start story",
+                "type": "set_variable"
               }
             ]
           }
@@ -2375,28 +2041,28 @@ export const template: FlowTypes.Template[] = [
               {
                 "name": "activity_title",
                 "value": "Think",
-                "hidden": "@fields.do_workshops_together",
+                "hidden": "@field.do_workshops_together",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
               {
                 "name": "intro_text",
                 "value": "It's time to think!",
-                "hidden": "@fields.do_workshops_together",
+                "hidden": "@field.do_workshops_together",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
               {
                 "name": "activity_title",
                 "value": "Think Together",
-                "hidden": "!@fields.do_workshops_together",
+                "hidden": "!@field.do_workshops_together",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
               {
                 "name": "intro_text",
                 "value": "It's time to think together!",
-                "hidden": "!@fields.do_workshops_together",
+                "hidden": "!@field.do_workshops_together",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
@@ -2410,6 +2076,77 @@ export const template: FlowTypes.Template[] = [
                     "type": "set_variable"
                   }
                 ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\mode_templates\\read.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "think_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "activity_image",
+            "value": "plh_images/workshop_modes/guide2/happy.svg",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Think",
+            "hidden": "@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "It's time to think!",
+            "hidden": "@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Think Together",
+            "hidden": "!@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "It's time to think together!",
+            "hidden": "!@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "intro_nav_buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Start",
+                "type": "set_variable"
               }
             ]
           }
@@ -2516,28 +2253,28 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "activity_title",
             "value": "Learn",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "It's time to learn and practice!",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Learn Together",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "It's time to learn and practice together!",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
@@ -2549,7 +2286,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "nested_properties",
             "name": "content_box",
-            "value": "image_component",
+            "value": "box_image",
             "hidden": "@local.number_of_slides = 1",
             "rows": [
               {
@@ -2573,7 +2310,7 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "box_1",
-                "value": "image_component",
+                "value": "box_image",
                 "rows": [
                   {
                     "name": "text",
@@ -2590,7 +2327,7 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "box_2",
-                "value": "image_component",
+                "value": "box_image",
                 "hidden": "@local.number_of_slides = 2",
                 "rows": [
                   {
@@ -2614,7 +2351,7 @@ export const template: FlowTypes.Template[] = [
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "image_component",
+                    "value": "box_image",
                     "rows": [
                       {
                         "name": "text",
@@ -2631,7 +2368,7 @@ export const template: FlowTypes.Template[] = [
                   {
                     "type": "nested_properties",
                     "name": "box_2",
-                    "value": "image_component",
+                    "value": "box_image",
                     "hidden": "@local.number_of_slides = 3",
                     "rows": [
                       {
@@ -2655,7 +2392,7 @@ export const template: FlowTypes.Template[] = [
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "image_component",
+                        "value": "box_image",
                         "rows": [
                           {
                             "name": "habit_text",
@@ -2672,7 +2409,7 @@ export const template: FlowTypes.Template[] = [
                       {
                         "type": "nested_properties",
                         "name": "box_2",
-                        "value": "image_component",
+                        "value": "box_image",
                         "hidden": "@local.number_of_slides = 4",
                         "rows": [
                           {
@@ -2696,7 +2433,7 @@ export const template: FlowTypes.Template[] = [
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "image_component",
+                            "value": "box_image",
                             "rows": [
                               {
                                 "name": "text",
@@ -2713,7 +2450,7 @@ export const template: FlowTypes.Template[] = [
                           {
                             "type": "nested_properties",
                             "name": "box_2",
-                            "value": "image_component",
+                            "value": "box_image",
                             "hidden": "@local.number_of_slides = 5",
                             "rows": [
                               {
@@ -2737,7 +2474,7 @@ export const template: FlowTypes.Template[] = [
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "image_component",
+                                "value": "box_image",
                                 "rows": [
                                   {
                                     "name": "text",
@@ -2754,7 +2491,7 @@ export const template: FlowTypes.Template[] = [
                               {
                                 "type": "nested_properties",
                                 "name": "box_2",
-                                "value": "image_component",
+                                "value": "box_image",
                                 "hidden": "@local.number_of_slides = 6",
                                 "rows": [
                                   {
@@ -2778,7 +2515,7 @@ export const template: FlowTypes.Template[] = [
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "image_component",
+                                    "value": "box_image",
                                     "rows": [
                                       {
                                         "name": "text",
@@ -2795,7 +2532,7 @@ export const template: FlowTypes.Template[] = [
                                   {
                                     "type": "nested_properties",
                                     "name": "box_2",
-                                    "value": "image_component",
+                                    "value": "box_image",
                                     "hidden": "@local.number_of_slides = 7",
                                     "rows": [
                                       {
@@ -2819,7 +2556,7 @@ export const template: FlowTypes.Template[] = [
                                       {
                                         "type": "nested_properties",
                                         "name": "box_1",
-                                        "value": "image",
+                                        "value": "box_image",
                                         "rows": [
                                           {
                                             "name": "text",
@@ -2836,7 +2573,7 @@ export const template: FlowTypes.Template[] = [
                                       {
                                         "type": "nested_properties",
                                         "name": "box_2",
-                                        "value": "image_component",
+                                        "value": "box_image",
                                         "hidden": "@local.number_of_slides = 8",
                                         "rows": [
                                           {
@@ -2862,6 +2599,81 @@ export const template: FlowTypes.Template[] = [
                     ]
                   }
                 ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\mode_templates\\read.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "learn_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "activity_image",
+            "value": "plh_images/workshop_modes/guide2/writing.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Learn",
+            "hidden": "@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "It's time to learn and practice!",
+            "hidden": "@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_title",
+            "value": "Learn Together",
+            "hidden": "!@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "It's time to learn and practice together!",
+            "hidden": "!@field.do_workshops_together",
+            "comments": "placeholder",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_banner",
+            "hidden": "false",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "intro_nav_buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Start",
+                "type": "set_variable"
               }
             ]
           }
@@ -2899,39 +2711,39 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/guide_2/relax.svg",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Relax",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let's calm down.",
-            "hidden": "@fields.do_workshops_together",
+            "hidden": "@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/group/relax.svg",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Relax Together",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let's calm down together.",
-            "hidden": "!@fields.do_workshops_together",
+            "hidden": "!@field.do_workshops_together",
             "comments": "placeholder",
             "type": "set_variable"
           },
@@ -2955,7 +2767,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "nested_properties",
             "name": "content_box",
-            "value": "audio_component",
+            "value": "box_audio",
             "rows": [
               {
                 "type": "nested_properties",
@@ -2975,24 +2787,25 @@ export const template: FlowTypes.Template[] = [
                     "type": "set_variable"
                   }
                 ]
-              },
-              {
-                "name": "outro_title",
-                "hidden": "true",
-                "type": "set_variable"
-              },
-              {
-                "name": "outro_text",
-                "value": "You are a star! \n\nToday, also remember to RECOGNISE something you have done well, and REWARD yourself with something that makes you happy. You matter.",
-                "type": "set_variable"
-              },
-              {
-                "name": "outro_habit_text",
-                "value": "Every time you do a relax, mark your @global.parent_point to track your success.",
-                "comments": "needs star icon attached",
-                "type": "set_variable"
               }
             ]
+          },
+          {
+            "name": "outro_title",
+            "hidden": "true",
+            "type": "set_variable"
+          },
+          {
+            "name": "outro_text",
+            "value": "You are a star! \n\nToday, also remember to RECOGNISE something you have done well, and REWARD yourself with something that makes you happy. You matter.",
+            "type": "set_variable"
+          },
+          {
+            "name": "outro_habit_text",
+            "value": "Every time you do a relax, mark your @global.parent_point to track your success.",
+            "hidden": "false",
+            "comments": "needs star icon attached",
+            "type": "set_variable"
           }
         ]
       }
@@ -3060,7 +2873,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "nested_properties",
             "name": "content_box",
-            "value": "timer_component",
+            "value": "box_timer",
             "rows": [
               {
                 "name": "text",
@@ -3165,7 +2978,7 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "box_1",
-                "value": "timer_component",
+                "value": "box_timer",
                 "rows": [
                   {
                     "name": "text",
@@ -3177,7 +2990,7 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "box_2",
-                "value": "timer_component",
+                "value": "box_timer",
                 "rows": [
                   {
                     "name": "text",
@@ -3197,6 +3010,7 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "outro_button",
             "value": "Challenges and solutions",
+            "hidden": "false",
             "comments": "placeholder",
             "type": "set_variable"
           }
@@ -3262,7 +3076,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "nested_properties",
             "name": "content_box",
-            "value": "timer_component",
+            "value": "box_timer",
             "rows": [
               {
                 "name": "text",
@@ -3317,40 +3131,40 @@ export const template: FlowTypes.Template[] = [
           {
             "name": "activity_title",
             "value": "Watch",
-            "hidden": "@fields.do_workshops_together",
-            "__EMPTY": "placeholder",
+            "hidden": "@field.do_workshops_together",
+            "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let's watch a video!",
-            "hidden": "@fields.do_workshops_together",
-            "__EMPTY": "placeholder",
+            "hidden": "@field.do_workshops_together",
+            "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Watch Together",
-            "hidden": "!@fields.do_workshops_together",
-            "__EMPTY": "placeholder",
+            "hidden": "!@field.do_workshops_together",
+            "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let's watch a video together!",
-            "hidden": "!@fields.do_workshops_together",
-            "__EMPTY": "placeholder",
+            "hidden": "!@field.do_workshops_together",
+            "comments": "placeholder",
             "type": "set_variable"
           },
           {
             "type": "nested_properties",
             "name": "intro_nav_buttons",
-            "__EMPTY": "intro_nav_buttons",
+            "comments": "intro_nav_buttons",
             "rows": [
               {
                 "name": "button_completed",
                 "value": "Show video",
-                "__EMPTY": "placeholder",
+                "comments": "placeholder",
                 "type": "set_variable"
               }
             ]
@@ -3358,7 +3172,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "nested_properties",
             "name": "content_box",
-            "value": "video_component",
+            "value": "box_video",
             "rows": [
               {
                 "name": "video_help",
@@ -3399,7 +3213,7 @@ export const template: FlowTypes.Template[] = [
             "rows": [
               {
                 "name": "activity_title",
-                "value": "Welcome @fields.group_name",
+                "value": "Welcome @field.group_name",
                 "type": "set_variable"
               },
               {
@@ -3478,25 +3292,25 @@ export const template: FlowTypes.Template[] = [
             "rows": [
               {
                 "name": "activity_title",
-                "value": "You've completed the workshop! ",
+                "value": "You've finished!",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/guide_2/cup.svg",
-                "hidden": "@fields.do_workshops_together",
+                "hidden": "@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/group/cup.svg",
-                "hidden": "!@fields.do_workshops_together",
+                "hidden": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
                 "name": "intro_text",
-                "value": "Well done! See you next week! ",
+                "value": "Well done for completing this week's workshop! See you next week! ",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
@@ -3552,6 +3366,617 @@ export const template: FlowTypes.Template[] = [
   },
   {
     "flow_type": "template",
+    "flow_name": "debug_nesting_variables",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_local",
+        "name": "var_text_2",
+        "value": "This is text_2"
+      },
+      {
+        "type": "set_local",
+        "name": "var_text_4",
+        "value": "This is text_4"
+      },
+      {
+        "type": "template",
+        "name": "debug_two_texts",
+        "value": "debug_two_texts",
+        "rows": [
+          {
+            "name": "text_1",
+            "value": "This is text_1 overridden directly in the value",
+            "type": "set_variable"
+          },
+          {
+            "name": "text_2",
+            "value": "@local.var_text_2 overridden by calling a variable",
+            "comments": "@local.var_text_2 is not printed",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "This is text_3 written directly in the value"
+      },
+      {
+        "type": "text",
+        "name": "text_4",
+        "value": "@local.var_text_4 calling a variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_two_texts",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Text 1"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "Text 2"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_nesting_variables_global",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_local",
+        "name": "var_text_2",
+        "value": "This is text_2"
+      },
+      {
+        "type": "set_local",
+        "name": "var_text_4",
+        "value": "This is text_4"
+      },
+      {
+        "type": "template",
+        "name": "debug_two_texts",
+        "value": "debug_two_texts",
+        "rows": [
+          {
+            "name": "text_1",
+            "value": "This is text_1 overridden directly in the value",
+            "type": "set_variable"
+          },
+          {
+            "name": "text_2",
+            "value": "@global.teen_girl_1 overridden by calling a variable",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "This is text_3 written directly in the value"
+      },
+      {
+        "type": "text",
+        "name": "text_4",
+        "value": "@local.var_text_4 calling a variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_video_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "video",
+        "name": "video_src",
+        "value": "plh_video/lets_slow_down.mp4"
+      },
+      {
+        "type": "video",
+        "name": "video_src",
+        "value": "https://www.w3schools.com/html/mov_bbb.mp4"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_timer_icons_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "timer",
+        "name": "timer",
+        "parameter_list": [
+          "duration_extension:1",
+          "duration:10"
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_negation",
+    "status": "released",
+    "rows": [
+      {
+        "name": "var_true",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "var_false",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "true_true",
+        "value": "Variable true  (this text is hidden)",
+        "hidden": "@local.var_true"
+      },
+      {
+        "type": "text",
+        "name": "true_false",
+        "value": "Variable true Hidden negated (this text is visible)",
+        "hidden": "!@local.var_true"
+      },
+      {
+        "type": "text",
+        "name": "false_true",
+        "value": "Variable false (this text is visible)",
+        "hidden": "@local.var_false"
+      },
+      {
+        "type": "text",
+        "name": "false_false",
+        "value": "Variable false Hidden negated (this text is hidden)",
+        "hidden": "!@local.var_false"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_set_local",
+    "status": "released",
+    "rows": [
+      {
+        "name": "debug_variable_one",
+        "value": "Value of the first debug variable.",
+        "type": "set_variable"
+      },
+      {
+        "name": "debug_variable_two",
+        "value": "Value of the second debug variable",
+        "type": "set_variable"
+      },
+      {
+        "name": "debug_variable_3",
+        "value": "Value of the third debug variable",
+        "type": "set_variable"
+      },
+      {
+        "type": "set_local",
+        "name": "debug_variable_four",
+        "value": "Value of the fourth debug variable"
+      },
+      {
+        "name": "debug_variable_five",
+        "value": "Value of the fifth debug variable",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "debug_text_1",
+        "value": "Text that includes @local.debug_variable_one"
+      },
+      {
+        "type": "text",
+        "name": "debug_text_2",
+        "value": "Text that includes @local.debug_variable_two"
+      },
+      {
+        "type": "text",
+        "name": "debug_text_3",
+        "value": "Text that includes @local.debug_variable_3"
+      },
+      {
+        "type": "text",
+        "name": "debug_text_4",
+        "value": "Text that includes @local.debug_variable_four"
+      },
+      {
+        "type": "text",
+        "name": "debug_text_5",
+        "value": "Text that includes @local.debug_variable-five"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_set_local_image",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_local",
+        "name": "debug_variable",
+        "value": "plh_images/workshop_modes/guide_2/wave.svg"
+      },
+      {
+        "type": "image",
+        "name": "direct_image",
+        "value": "plh_images/workshop_modes/guide_2/wave.svg"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Text below the direct image and above the variable image."
+      },
+      {
+        "type": "image",
+        "name": "variable_image",
+        "value": "plh_images/workshop_modes/guide_2/wave.svg"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_set_global_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.debug_variable_1"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Text that includes @global.debug_variable_1"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_set_field_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "variable",
+        "value": "Value of the field"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Field value is @field.variable",
+        "comments": "Before we switched to templating, this used to be @fields -- but I don't see why it should be plural"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_set_field_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Field value is @field.variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_hidden_text",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Placeholder Text to create separation"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "comments": "This is text_2 which should be hidden since the value (row??) is blank"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "Placeholder Text to create separation"
+      },
+      {
+        "type": "text",
+        "name": "text_4",
+        "value": "This is text_4 which should be hidden as we set hidden to true",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text_5",
+        "value": "Placeholder Text to create separation"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_hidden_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Placeholder Text to create separation"
+      },
+      {
+        "type": "button",
+        "name": "button_1",
+        "comments": "This is button_1 which should be hidden since the value is blank"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "Placeholder Text to create separation.."
+      },
+      {
+        "type": "text",
+        "name": "button_2",
+        "value": "Hidden Button",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "Placeholder Text to create separation"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_audio_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "audio",
+        "name": "audio_src",
+        "value": "plh_audio/sample.mp3"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_evaluate_hidden",
+    "status": "released",
+    "rows": [
+      {
+        "name": "var_true",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "var_number_1",
+        "value": 1,
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "true_true",
+        "value": "This text is hidden if var_true is true.",
+        "hidden": "@local.var_true"
+      },
+      {
+        "type": "text",
+        "name": "true_false",
+        "value": "This text is hidden if var_true is false.",
+        "hidden": "!@local.var_true"
+      },
+      {
+        "type": "text",
+        "name": "number_1",
+        "value": "This text is hidden if var_number_1 is 1.",
+        "hidden": "@local.var_number_1=1"
+      },
+      {
+        "type": "text",
+        "name": "number_not_1",
+        "value": "This text is hidden if var_number_1 not 1.",
+        "hidden": "!@local.var_number_1=1"
+      },
+      {
+        "type": "text",
+        "name": "number_greater_1",
+        "value": "This text is hidden if var_number_1 is greater than 1.",
+        "hidden": "@local.var_number_1>1"
+      },
+      {
+        "type": "text",
+        "name": "number_not_1",
+        "value": "This text is hidden if var_number_1 is not greater than 1.",
+        "hidden": "!@local.var_number_1>1"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_text_paragraphs",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "Two paragraphs of text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_call_global_constants",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.example_global_constant_title"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Text that includes @global.example_global_constant_text"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "value": "@global.example_global_image"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "There should be an image above this text, whose source is example_global_image"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_set_fields_in_action",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "field_0",
+        "value": "Value of field 0"
+      },
+      {
+        "type": "text",
+        "name": "text_0",
+        "value": "The value of field_0 is @field.field_0"
+      },
+      {
+        "type": "button",
+        "name": "button_1",
+        "value": "Override field_1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "field_1",
+              "\"New value of Field 1\""
+            ],
+            "_raw": "click | set_field:field_1:\"New value of Field 1\"",
+            "_cleaned": "click | set_field:field_1:\"New value of Field 1\""
+          }
+        ],
+        "comments": "Overrides the value of field_1"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "The value of field_1 is @field.field_1"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "value": "Create field_2",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "field_2",
+              "\"Value of Field 2\""
+            ],
+            "_raw": "click | set_field:field_2:\"Value of Field 2\"",
+            "_cleaned": "click | set_field:field_2:\"Value of Field 2\""
+          }
+        ],
+        "comments": "Creates a new field called field_2 with value Value of Field 2"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "The value of field_2 is @field.field_2",
+        "comments": "this text would be The value of field_2 is 'undefined' so presumably an empty string or even @field.field_2? until the button is pressed in which case it would change to The value of field_2 is Value of Field 2"
+      },
+      {
+        "type": "set_field",
+        "name": "field_4",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "name": "text_hidden_4",
+        "value": "This should be hidden when field_4 is TRUE",
+        "hidden": "@field.field_4",
+        "comments": "There could be more complex conditions for shown ie @filed.field_4>3)"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_4",
+        "value": "This should be hidden when field_4 is FALSE",
+        "hidden": "!@field.field_4"
+      },
+      {
+        "type": "set_field",
+        "name": "field_5",
+        "value": 5
+      },
+      {
+        "type": "text",
+        "name": "text_hidden_5",
+        "value": "This should be hidden when field_5 is more than 2",
+        "hidden": "@field.field_5>2",
+        "comments": "Not currently implemented?"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_5_a",
+        "value": "This should be hidden when field_5 is less than or equal to 2",
+        "hidden": "@field.field_5<=2",
+        "comments": "Not currently implemented?"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_5_b",
+        "value": "This should be hidden when field_5 is less than or equal to 2",
+        "hidden": "!@field.field_5>2",
+        "comments": "Not currently implemented?"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "w_example_stepper",
     "status": "released",
     "rows": [
@@ -3570,7 +3995,7 @@ export const template: FlowTypes.Template[] = [
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "!@fields.do_workshops_together",
+        "hidden": "!@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
@@ -3595,18 +4020,18 @@ export const template: FlowTypes.Template[] = [
           }
         ],
         "hidden": "true",
-        "comments": "@fields.do_workshops_together",
+        "comments": "@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_example_welcome_together;\nw_example_listen;",
+            "value": "w_example_listen",
             "comments": "w_example_listen;\nw_example_read;\nw_example_question_time;\nw_example_tools_activity;\nw_example_home_practice;\nw_example_ending",
             "type": "set_variable"
           }
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -3649,7 +4074,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -3680,7 +4105,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -3741,7 +4166,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -3772,7 +4197,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -3781,8 +4206,8 @@ export const template: FlowTypes.Template[] = [
     "rows": [
       {
         "type": "template",
-        "name": "tools_component",
-        "value": "tools_component",
+        "name": "box_tools",
+        "value": "box_tools",
         "action_list": [
           {
             "trigger": "completed",
@@ -3881,7 +4306,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -3919,7 +4344,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -3957,16 +4382,16 @@ export const template: FlowTypes.Template[] = [
                   },
                   {
                     "name": "button_1",
-                    "value": "Button 1",
+                    "value": "Pop-up button",
                     "action_list": [
                       {
                         "trigger": "click",
-                        "action_id": "go_to",
+                        "action_id": "pop_up",
                         "args": [
-                          "w_example_read"
+                          "w_example_pop-up"
                         ],
-                        "_raw": "click | go_to:w_example_read",
-                        "_cleaned": "click | go_to:w_example_read"
+                        "_raw": "click | pop_up:w_example_pop-up",
+                        "_cleaned": "click | pop_up:w_example_pop-up"
                       }
                     ],
                     "hidden": "false",
@@ -4002,7 +4427,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -4016,386 +4441,7 @@ export const template: FlowTypes.Template[] = [
         "rows": []
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\example_templates\\workshop_example.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "home_screen_variables",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_global",
-        "name": "weekly_workshops",
-        "value": "Weekly Workshops"
-      },
-      {
-        "type": "set_global",
-        "name": "weekly_workshop",
-        "value": "Weekly Workshop"
-      },
-      {
-        "type": "set_global",
-        "name": "weekly_workshops_image",
-        "value": "plh_images/characters/@fields.guidenumber/happy.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_points",
-        "value": "Parent Points"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point",
-        "value": "Parent Point"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_points_image",
-        "value": "plh_images/characters/@fields.guidenumber/happy.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_centre",
-        "value": "Parent Centre"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_centre_image",
-        "value": "plh_images/characters/@fields.guidenumber/happy.svg",
-        "comments": "placeholder"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\navigation_templates\\global_variables_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "parent_centre_variables",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_global",
-        "name": "help",
-        "value": "Help"
-      },
-      {
-        "type": "set_global",
-        "name": "help_icon",
-        "value": "plh_images/icons/heart.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "essential_tools",
-        "value": "Essential Tools"
-      },
-      {
-        "type": "set_global",
-        "name": "essential_tools_icon",
-        "value": "plh_images/icons/heart.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "covid",
-        "value": "COVID"
-      },
-      {
-        "type": "set_global",
-        "name": "covid_icon",
-        "value": "plh_images/icons/heart.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "relax_and_activities",
-        "value": "Relax & Activities"
-      },
-      {
-        "type": "set_global",
-        "name": "relax_and_activities_icon",
-        "value": "plh_images/icons/heart.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "extra",
-        "value": "Extra"
-      },
-      {
-        "type": "set_global",
-        "name": "extra_icon",
-        "value": "plh_images/icons/heart.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "support_contacts",
-        "value": "Support Contacts"
-      },
-      {
-        "type": "set_global",
-        "name": "support_contacts_icon",
-        "value": "plh_images/icons/heart.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "evidence_base",
-        "value": "Evidence Base"
-      },
-      {
-        "type": "set_global",
-        "name": "evidence_base_icon",
-        "value": "plh_images/icons/heart.svg",
-        "comments": "placeholder"
-      },
-      {
-        "type": "set_global",
-        "name": "technical_support",
-        "value": "Technical Support"
-      },
-      {
-        "type": "set_global",
-        "name": "technical_support_icon",
-        "value": "plh_images/icons/heart.svg",
-        "comments": "placeholder"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\navigation_templates\\global_variables_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "parent_point_variables",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_global",
-        "name": "parent_point_relax",
-        "value": "Relax"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_relax_image",
-        "value": "plh_images/habits/habit_relax_image.svg"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_treat_yourself",
-        "value": "Treat yourself well"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_treat_yourself_image",
-        "value": "plh_images/habits/habit_treat_yourself_image.svg"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_praise_yourself",
-        "value": "Praise yourself"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_praise_yourself_image",
-        "value": "plh_images/habits/habit_praise_yourself_image.svg"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_spend_time",
-        "value": "One on one time"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_spend_time_image",
-        "value": "plh_images/habits/habit_spend_time_image.svg"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_praise_teen",
-        "value": "Praise your teen"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_praise_teen_image",
-        "value": "plh_images/habits/habit_praise_teen_image.svg"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_breathe",
-        "value": "Breathe not yell"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_breathe_image",
-        "value": "plh_images/habits/habit_breathe_image.svg"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_money",
-        "value": "Good money choice"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_money_image",
-        "value": "plh_images/habits/habit_money_image.svg"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_consequence",
-        "value": "Calm consequence"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_consequence_image",
-        "value": "plh_images/habits/habit_consequence_image.svg"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_safe",
-        "value": "Safe"
-      },
-      {
-        "type": "set_global",
-        "name": "parent_point_safe_image",
-        "value": "plh_images/habits/habit_safe_image.svg"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\parent_point_templates\\global_variables_parent_points.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_titles",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_global",
-        "name": "w_self-care",
-        "value": "Self-Care",
-        "comments": "self-care"
-      },
-      {
-        "type": "set_global",
-        "name": "w_self-care_short",
-        "value": "Self-Care",
-        "comments": "ETW 1 -- done"
-      },
-      {
-        "type": "set_global",
-        "name": "w_1on1",
-        "value": "One-on-One Time",
-        "comments": "1on1"
-      },
-      {
-        "type": "set_global",
-        "name": "w_1on1_short",
-        "value": "1 on 1",
-        "comments": "ETW 3 -- done"
-      },
-      {
-        "type": "set_global",
-        "name": "w_praise",
-        "value": "Praise & Positive Reinforcement",
-        "comments": "praise"
-      },
-      {
-        "type": "set_global",
-        "name": "w_praise_short",
-        "value": "Praise",
-        "comments": "ETW 4 -- done"
-      },
-      {
-        "type": "set_global",
-        "name": "w_instruct",
-        "value": "Positive Instructions",
-        "comments": "instruct"
-      },
-      {
-        "type": "set_global",
-        "name": "w_instruct_short",
-        "value": "Instructions",
-        "comments": "ETW 2 -- done"
-      },
-      {
-        "type": "set_global",
-        "name": "w_stress",
-        "value": "Managing Anger & Stress",
-        "comments": "stress"
-      },
-      {
-        "type": "set_global",
-        "name": "w_stress_short",
-        "value": "Stress",
-        "comments": "SB 1"
-      },
-      {
-        "type": "set_global",
-        "name": "w_money",
-        "value": "Family Budgeting",
-        "comments": "money"
-      },
-      {
-        "type": "set_global",
-        "name": "w_money_short",
-        "value": "Money"
-      },
-      {
-        "type": "set_global",
-        "name": "w_rules",
-        "value": "Rules",
-        "comments": "rules"
-      },
-      {
-        "type": "set_global",
-        "name": "w_rules_short",
-        "value": "Rules"
-      },
-      {
-        "type": "set_global",
-        "name": "w_responsibility",
-        "value": "Accepting Responsibility",
-        "comments": "responsibility"
-      },
-      {
-        "type": "set_global",
-        "name": "w_responsibility_short",
-        "value": "Consequences"
-      },
-      {
-        "type": "set_global",
-        "name": "w_solve",
-        "value": "Problem Solving",
-        "comments": "solve"
-      },
-      {
-        "type": "set_global",
-        "name": "w_solve_short",
-        "value": "Problem Solve"
-      },
-      {
-        "type": "set_global",
-        "name": "w_safe",
-        "value": "Keeping Your Teen Safe",
-        "comments": "safe"
-      },
-      {
-        "type": "set_global",
-        "name": "w_safe_short",
-        "value": "Safety"
-      },
-      {
-        "type": "set_global",
-        "name": "w_crisis",
-        "value": "Dealing with Crisis",
-        "comments": "crisis"
-      },
-      {
-        "type": "set_global",
-        "name": "w_crisis_short",
-        "value": "Crisis"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_workshop.xlsx"
   },
   {
     "flow_type": "template",
@@ -4418,12 +4464,12 @@ export const template: FlowTypes.Template[] = [
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "!@fields.do_workshops_together",
+        "hidden": "!@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
             "value": "w_1on1_welcome_together;\nw_1on1_care_together; \nw_1on1_relax; \nw_1on1_intro; \nw_1on1_talk;\nw_1on1_tools_activity;  \nw_1on1_home_practice; \nw_1on1_ending",
-            "comments": "w_1on1_welcome_together;\nw_1on1_care_together; \nw_1on1_relax; \nw_1on1_intro; \nw_1on1_talk;\nw_1on1_tools_activity;  \nw_1on1_home_practice; \nw_1on1_ending",
+            "comments": "w_1on1_welcome_together;\nw_1on1_care_together; \nw_1on1_relax; \nw_1on1_intro; \nw_1on1_talk;\nw_1on1_tools_activity;  \nw_1on1_home_practice; \nw_1on1_ending;",
             "type": "set_variable"
           }
         ]
@@ -4443,11 +4489,12 @@ export const template: FlowTypes.Template[] = [
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "@fields.do_workshops_together",
-        "comments": "@fields.do_workshops_together",
+        "hidden": "true",
+        "comments": "@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
+            "value": "w_1on1_relax; w_1on1_intro",
             "comments": "w_1on1_welcome_individual; w_1on1_care_together; w_1on1_relax; w_1on1_intro; w_1on1_think; w_1on1_tools_activity;  w_1on1_home_practice; w_1on1_ending",
             "type": "set_variable"
           }
@@ -4641,7 +4688,6 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "timer_component",
                 "rows": [
                   {
                     "name": "text",
@@ -4656,6 +4702,7 @@ export const template: FlowTypes.Template[] = [
                       {
                         "name": "button_info",
                         "value": "Examples",
+                        "hidden": "false",
                         "comments": "Walking to the shops\nGet water together \nDoing a chore together \nPrepare dinner \nEat breakfast/lunch/dinner \nHave tea after school \nWatch a T.V. show  \nReview homework \nChat before bedtime \nPlay a game/sport ",
                         "type": "set_variable"
                       },
@@ -4689,13 +4736,99 @@ export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
     "module": "1on1",
+    "flow_name": "w_1on1_think",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "think",
+        "value": "think_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Let's think about what activities you could do for one-on-one time.",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "Think of ways to spend one-on-one time with your teen.\n\nFeel like you have NO TIME and you are exhausted? Remember to also think of ways that don't take up extra time.",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "nav_buttons",
+                    "rows": [
+                      {
+                        "name": "button_info",
+                        "value": "Examples",
+                        "hidden": "false",
+                        "comments": "Same list as in w_1on1_talk",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "outro_text",
+                "value": "It may not have instant results, but it will make a difference over the long term. You are an amazing parent for trying this.",
+                "type": "set_variable"
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you do one-on-one time, mark your @global.parent_point to track your success",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_1on1.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
     "flow_name": "w_1on1_tools",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "tools_component",
-        "value": "tools_component",
+        "name": "box_tools",
+        "value": "box_tools",
         "action_list": [
           {
             "trigger": "completed",
@@ -4936,7 +5069,7 @@ export const template: FlowTypes.Template[] = [
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "!@fields.do_workshops_together",
+        "hidden": "!@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
@@ -4961,8 +5094,8 @@ export const template: FlowTypes.Template[] = [
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "@fields.do_workshops_together",
-        "comments": "@fields.do_workshops_together",
+        "hidden": "true",
+        "comments": "@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
@@ -4973,7 +5106,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -4999,7 +5132,7 @@ export const template: FlowTypes.Template[] = [
         "rows": []
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5025,7 +5158,7 @@ export const template: FlowTypes.Template[] = [
         "rows": []
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5055,7 +5188,7 @@ export const template: FlowTypes.Template[] = [
             "rows": [
               {
                 "name": "outro_text",
-                "value": "You can use the top 8 challenges and solutions that parents have with positive instructions.",
+                "value": "You can use the top 8 challenges and solutions that parents have with praise.",
                 "type": "set_variable"
               }
             ]
@@ -5063,7 +5196,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5101,7 +5234,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5150,7 +5283,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5238,7 +5371,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5305,7 +5438,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5349,7 +5482,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5437,7 +5570,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5481,7 +5614,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5491,8 +5624,8 @@ export const template: FlowTypes.Template[] = [
     "rows": [
       {
         "type": "template",
-        "name": "tools_component",
-        "value": "tools_component",
+        "name": "box_tools",
+        "value": "box_tools",
         "action_list": [
           {
             "trigger": "completed",
@@ -5561,7 +5694,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5600,7 +5733,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5637,7 +5770,6 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "timer_component",
                 "rows": [
                   {
                     "name": "text",
@@ -5669,7 +5801,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5715,6 +5847,7 @@ export const template: FlowTypes.Template[] = [
                   {
                     "name": "button_2",
                     "value": "Essential Tools",
+                    "hidden": "false",
                     "type": "set_variable"
                   }
                 ]
@@ -5724,7 +5857,7 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
@@ -5750,11 +5883,12 @@ export const template: FlowTypes.Template[] = [
         "name": "ending"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_instruct.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_stepper",
+    "module": "praise",
+    "flow_name": "w_praise_stepper",
     "status": "released",
     "rows": [
       {
@@ -5772,12 +5906,12 @@ export const template: FlowTypes.Template[] = [
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "!@fields.do_workshops_together",
+        "hidden": "!@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_self-care_welcome_together; w_self-care_intro; w_self-care_relax;  w_self-care_recognise; w_self-care_reward;  w_self-care_tools_activity; w_self-care_home_practice; w_self-care_ending",
-            "comments": "w_self-care_welcome_together; w_self-care_intro; w_self-care_relax; w_self-care_recognise; w_self-care_reward;  w_self-care_tools_activity; w_self-care_home_practice; w_self-care_ending",
+            "value": "w_praise_welcome_together; w_praise_care_together; w_praise_relax; w_praise_review_together; w_praise_intro; w_praise_talk_1; w_praise_read; w_praise_talk_2; w_praise_tools_activity; w_praise_talk_3; w_praise_home_practice; w_praise_ending",
+            "comments": "w_praise_welcome_together; w_praise_care_together; w_praise_review_together; w_praise_relax; w_praise_intro; w_praise_talk_1; w_praise_read; w_praise_talk_2; w_praise_tools_activity; w_praise_talk_3; w_praise_home_practice; w_praise_ending",
             "type": "set_variable"
           }
         ]
@@ -5797,23 +5931,768 @@ export const template: FlowTypes.Template[] = [
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "@fields.do_workshops_together",
-        "comments": "@fields.do_workshops_together",
+        "hidden": "true",
+        "comments": "@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_self-care_welcome_individual; w_self-care_intro; w_self-care_recognise; w_self-care_reward;  w_self-care_tools_activity; w_self-care_home_practice; w_self-care_ending",
-            "comments": "w_self-care_welcome_individual; w_self-care_intro; w_self-care_relax; w_self-care_recognise; w_self-care_reward;  w_self-care_tools_activity; w_self-care_survey_activity; w_self-care_home_practice; w_self-care_ending",
+            "value": "w_praise_welcome_individual; w_praise_intro; w_praise_read; w_praise_tools_activity; w_praise_home_practice; w_praise_ending",
+            "comments": "w_praise_welcome_individual; w_praise_review_individual; w_praise_relax; w_praise_intro; w_praise_question_1; w_praise_read; w_praise_question_2; w_praise_tools_activity; w_praise_think_1; w_praise_home_practice; w_praise_ending",
             "type": "set_variable"
           }
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_welcome_together",
+    "module": "praise",
+    "flow_name": "w_praise_welcome_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "welcome_together",
+        "value": "welcome_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_care_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "care_together",
+        "value": "care_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "Can you each say how you are feeling today? Remember that no matter how you feel, it’s great you are all here! \n\nEach person think of something the others have done well this week and praise them for it!",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_review_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "review_together",
+        "value": "review_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "outro_text",
+                "value": "You can use the top 8 challenges and solutions that parents have with one-on-one time.",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_relax",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "relax",
+        "value": "relax",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "Let’s do a quick relax together.",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_intro",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "listen",
+        "value": "listen",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "audio_src",
+            "value": "plh_audio/sample.mp3",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "activity_title",
+                "value": "@global.w_praise",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "This week is about praise and positive reinforcement.",
+                "comments": "placeholder",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_talk_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "talk_together",
+        "value": "talk_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "Praise is a powerful parenting skill.",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_timer",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "Think about the last time someone thanked you or said you’d done something great. Tell each other about it, and how it made you feel.\n\nParents usually don’t get thanked or praised enough. Can you tell each other how it feels not to be thanked or praised for what you do? ",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_read",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "read",
+        "value": "read_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "intro_text",
+            "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_male_caregiver was surprised by his teens! Let me tell you:",
+            "comments": "placeholder; should be rewritten without \"me\" and \"my teen\"",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "content_box",
+            "value": "pair",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "box_1",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/praise/read/slide_1.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "@global.w_praise_male_caregiver_name was busy and his older daughter actually helped her sister with her homework. Usually they just fight!",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "box_2",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/praise/read/slide_2.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "Here’s the parenting skill: if we tell our teens how proud we are of them for doing this, then they will want to do it again.",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_talk_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "talk_together",
+        "value": "talk_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Let's discuss what happened.",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "How do you think what @global.w_instruct_male_caregiver said made his teens feel?  \n\nWhy did he praise them?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "nav_buttons",
+                    "rows": [
+                      {
+                        "name": "button_info",
+                        "value": "Ideas",
+                        "hidden": "false",
+                        "comments": "This should be a pop-up:\n\n@global.w_instruct_male_caregiver praised his teens...\n... to get them to do it more often\n... to help him finish his work \n... to make them feel good \n... to make himself feel good ",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "button_completed",
+                        "value": "Finish",
+                        "comments": "placeholder",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "outro_text",
+                "value": "All of those things are true! When his teens are happy, @global.w_instruct_male_caregiver feels happy. And he got his work done. The same can work for you!",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you praise your teen, mark your @global.parent_point to track your success.",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_tools",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "box_tools",
+        "value": "box_tools",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "tools_title",
+            "value": "@global.w_praise"
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_1",
+            "rows": [
+              {
+                "name": "title",
+                "value": "SEE IT",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "Look for anything your teen does that is helpful or good, and praise them. They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care.",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_2",
+            "rows": [
+              {
+                "name": "title",
+                "value": "SAY IT",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "Be enthusiastic – really mean it when you say it!",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_3",
+            "rows": [
+              {
+                "name": "title",
+                "value": "REPEAT IT",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "Try to find something every day to thank them for. Even something really small.",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "name": "bottom_text",
+            "value": "You can also praise other adults in your household, too. Notice how they respond!",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_tools_activity",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "tools_activity",
+        "value": "tools_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "w_praise_tools",
+                "rows": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_talk_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "talk_together",
+        "value": "talk_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "Let's practice giving praise.",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "Can you each think of something to praise your teen for, and tell the others – you can also help each other think of ideas.\n\nCan you praise each other for something each person has done well in this workshop? Have they listened, or been thoughtful, or caring? Give praise and see how it makes you both feel. ",
+                    "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "nav_buttons",
+                    "rows": [
+                      {
+                        "name": "button_info",
+                        "value": "Ideas",
+                        "hidden": "false",
+                        "comments": "This has to be authored as a pop-up text:\n\nSometimes it’s hard to think of what to praise your teen for! Here are some ideas.\n\nBeing kind to someone \nCleaning their room \nJoining a family meal \nGreeting other family members \nLooking after siblings \nComing home in time \nShowing thoughtfulness \nSaying 'please' or  'thank you' \nGoing to school  \nDoing chores or schoolwork  \nGetting through mealtime peacefully ",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "button_completed",
+                        "value": "Finish",
+                        "comments": "placeholder",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_home_practice",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "home_practice",
+        "value": "home_practice",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text_1",
+                    "value": "This week's home practice is to praise your teen once a day. It will only take 10 seconds!",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_1",
+                    "value": "Ideas",
+                    "comments": "same ideas as in w_praise_talk_3",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_2",
+                    "value": "Essential Tools",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "habit_text",
+                    "value": "Every time you praise your teen, mark your @global.parent_point to track your success.",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_ending",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "value": "ending",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [],
+        "name": "ending"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_self_care_stepper",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_stepper_together",
+        "value": "workshop_stepper",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "!@field.do_workshops_together",
+        "rows": [
+          {
+            "name": "nav_template_list",
+            "value": "w_self_care_welcome_together; w_self_care_intro; w_self_care_relax;  w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_home_practice; w_self_care_ending",
+            "comments": "w_self_care_welcome_together; w_self_care_intro; w_self_care_relax; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_home_practice; w_self_care_ending",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "workshop_stepper_individual",
+        "value": "workshop_stepper",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "true",
+        "comments": "@field.do_workshops_together",
+        "rows": [
+          {
+            "name": "nav_template_list",
+            "value": "w_self_care_welcome_individual; w_self_care_intro; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_home_practice; w_self_care_ending",
+            "comments": "w_self_care_welcome_individual; w_self_care_intro; w_self_care_relax; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_survey_activity; w_self_care_home_practice; w_self_care_ending",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_self_care_welcome_together",
     "status": "released",
     "rows": [
       {
@@ -5852,11 +6731,11 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_intro",
+    "flow_name": "w_self_care_intro",
     "status": "released",
     "rows": [
       {
@@ -5886,7 +6765,7 @@ export const template: FlowTypes.Template[] = [
             "rows": [
               {
                 "name": "activity_title",
-                "value": "@local.w_self-care",
+                "value": "@global.w_self_care",
                 "type": "set_variable"
               },
               {
@@ -5910,11 +6789,11 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_relax",
+    "flow_name": "w_self_care_relax",
     "status": "released",
     "rows": [
       {
@@ -5952,48 +6831,27 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_recognise",
+    "flow_name": "w_self_care_recognise",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "learn",
-        "value": "learn",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
+        "name": "think",
+        "value": "think_temp",
         "rows": [
-          {
-            "name": "number_of_slides",
-            "value": 1,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "Say it aloud if you can \"Well done for …\"\n\nHere is one thing we know you deserve a praise for -  you started using ParentApp!  \nSo... WELL DONE for using ParentApp! \n\nHere are more examples of things you might have done recently and deserve a praise: \n\n1. Showing love to my children \n2. Getting up even though I felt tired \n3. Smiling at someone \n4. Making food to stay strong \n5. Spending time with my children \n6. Helping my children with schoolwork ",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_habit_text_1",
-            "value": "Every time you praise yourself, mark your @local.parent_point to track your success.",
-            "type": "set_variable"
-          },
           {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
               {
                 "name": "activity_title",
                 "value": "Recognise",
@@ -6003,50 +6861,69 @@ export const template: FlowTypes.Template[] = [
                 "name": "intro_text",
                 "value": "Take a moment and think of one thing YOU have done recently that you have done well!",
                 "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "Say it aloud if you can \"Well done for …\"\n\nHere is one thing we know you deserve a praise for -  you started using ParentApp!  \nSo... WELL DONE for using ParentApp! ",
+                    "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "nav_buttons",
+                    "rows": [
+                      {
+                        "name": "button_info",
+                        "value": "More examples",
+                        "hidden": "false",
+                        "comments": "Pop-up with examples of things to praise yourself for:\n1. Showing love to my children \n2. Getting up even though I felt tired \n3. Smiling at someone \n4. Making food to stay strong \n5. Spending time with my children \n6. Helping my children with schoolwork",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you praise yourself, mark your @global.parent_point to track your success.",
+                "type": "set_variable"
               }
             ]
           }
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_reward",
+    "flow_name": "w_self_care_reward",
     "status": "released",
-    "comments": "w_self-care_welcome_together; w_self-care_intro; w_self-care_relax;  w_self-care_recognise; w_self-care_reward;  w_self-care_tools_activity; w_self-care_home_practice; w_self-care_ending",
+    "comments": "w_self_care_welcome_together; w_self_care_intro; w_self_care_relax;  w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_home_practice; w_self_care_ending",
     "rows": [
       {
         "type": "template",
-        "name": "learn",
-        "value": "learn",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
+        "name": "think",
+        "value": "think_temp",
         "rows": [
-          {
-            "name": "number_of_slides",
-            "value": 1,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "What makes you happy? \n\nHave a hot drink \nCall a friend or family \nHave a relaxed bath \nRead \nWatch TV \nWrite your own ____________ \n\nTaking care of yourself is an important parenting skill!  \n\nStart now. Relax, recognise and reward yourself.  \n",
-            "type": "set_variable"
-          },
           {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
               {
                 "name": "activity_title",
                 "value": "Reward",
@@ -6056,23 +6933,45 @@ export const template: FlowTypes.Template[] = [
                 "name": "intro_text",
                 "value": "Remember you deserve your quality time too!",
                 "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "What makes you happy? \n\nHave a hot drink \nCall a friend or family \nHave a relaxed bath \nRead \nWatch TV \nWrite your own ____________ \n\nTaking care of yourself is an important parenting skill!  ",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you treat yourself well, mark your @global.parent_point to track your success.",
+                "type": "set_variable"
               }
             ]
           }
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_tools",
+    "flow_name": "w_self_care_tools",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "tools_component",
-        "value": "tools_component",
+        "name": "box_tools",
+        "value": "box_tools",
         "action_list": [
           {
             "trigger": "completed",
@@ -6088,7 +6987,7 @@ export const template: FlowTypes.Template[] = [
           {
             "type": "title",
             "name": "tools_title",
-            "value": "@global.w_self-care"
+            "value": "@global.w_self_care"
           },
           {
             "type": "nested_properties",
@@ -6101,7 +7000,7 @@ export const template: FlowTypes.Template[] = [
               },
               {
                 "name": "text_1",
-                "value": "Do a 30 second quick relaxation activity. Here's one: \n1. Close your eyes.   \n2. Listen to your breath as it goes in and out five times, noticing how you feel.  \n3. When you are ready open your eyes again. You are in control! ",
+                "value": "Do a 30 second quick relaxation activity.",
                 "type": "set_variable"
               },
               {
@@ -6162,11 +7061,11 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_tools_activity",
+    "flow_name": "w_self_care_tools_activity",
     "status": "released",
     "rows": [
       {
@@ -6192,7 +7091,7 @@ export const template: FlowTypes.Template[] = [
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "w_self-care_tools",
+                "value": "w_self_care_tools",
                 "rows": []
               }
             ]
@@ -6200,11 +7099,11 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_home_practice",
+    "flow_name": "w_self_care_home_practice",
     "status": "released",
     "rows": [
       {
@@ -6265,11 +7164,11 @@ export const template: FlowTypes.Template[] = [
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self-care_ending",
+    "flow_name": "w_self_care_ending",
     "status": "released",
     "rows": [
       {
@@ -6279,131 +7178,6 @@ export const template: FlowTypes.Template[] = [
         "rows": []
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self-care.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "slider",
-    "status": "released",
-    "rows": [
-      {
-        "type": "slider",
-        "name": "template_slider",
-        "value":  null,
-        "parameter_list": [
-          "title: Slider first",
-          "min: 0",
-          "max: 7",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 1",
-          "labels_count: 8"
-        ],
-        "comments": ""
-      },
-      {
-        "type": "slider",
-        "name": "template_slider",
-        "value":  null,
-        "parameter_list": [
-          "title: Slider second",
-          "min: 0",
-          "max: 30",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 1"
-        ],
-        "comments": ""
-      },
-      {
-        "type": "slider",
-        "name": "template_slider",
-        "value":  null,
-        "parameter_list": [
-          "title: Slider third",
-          "min: 0",
-          "max: 44",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 2",
-          "labels_count: 8"
-        ],
-        "comments": ""
-      },
-      {
-        "type": "slider",
-        "name": "template_slider",
-        "value":  null,
-        "parameter_list": [
-          "title: Slider fourth",
-          "min: 0",
-          "max: 100",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 10",
-          "labels_count: 5"
-        ],
-        "comments": ""
-      },
-      {
-        "type": "slider",
-        "name": "template_slider",
-        "value":  null,
-        "parameter_list": [
-          "title: Slider fifth",
-          "min: 0",
-          "max: 51",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 3"
-        ],
-        "comments": ""
-      },
-      {
-        "type": "slider",
-        "name": "template_slider",
-        "value":  null,
-        "parameter_list": [
-          "title: Slider sixth",
-          "min: 0",
-          "max: 60",
-          "min_value_label: not confident",
-          "max_value_label: extremely confident",
-          "help: some help info",
-          "step: 5"
-        ],
-        "comments": ""
-      }
-    ]
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "simple_checkbox",
-    "status": "released",
-    "rows": [
-      {
-        "type": "simple_checkbox",
-        "name": "checkbox",
-        "value": true,
-        "parameter_list": [
-          "position: right",
-          "label_text: If you missed a group sessions would you like to catch up alone."
-        ]
-      },
-      {
-        "type": "simple_checkbox",
-        "name": "checkbox_2",
-        "value": null,
-        "parameter_list": [
-          "position: left",
-          "label_text: If you missed a group sessions would you like to catch up alone."
-        ]
-      }
-    ]
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
   }
-];
+]
