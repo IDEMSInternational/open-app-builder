@@ -332,6 +332,8 @@ export namespace FlowTypes {
     | "animated_section_group"
     | "display_group"
     | "set_variable"
+    // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
+    | "set_field"
     | "set_global"
     | "set_local"
     | "set_field"
@@ -377,10 +379,7 @@ export namespace FlowTypes {
   }
   export interface TemplateRowAction {
     /** actions have an associated trigger */
-    trigger:
-      "click"
-      | "completed"
-      | "uncompleted"
+    trigger: "click" | "completed" | "uncompleted";
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
@@ -389,8 +388,9 @@ export namespace FlowTypes {
       | "set_local"
       | "set_global"
       | "emit"
+      // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"
-      | "pop_up"
+      | "pop_up";
     args: string[];
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: string;
