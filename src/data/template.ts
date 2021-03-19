@@ -6376,5 +6376,49 @@ export const template: FlowTypes.Template[] = [
         "comments": ""
       }
     ]
-  }
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "displayGroup_test",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "style_list": [
+          "justify-content: center",
+          "align-items: center",
+          "width: 100%",
+          "flex:",
+          "height: null",
+          "margin-left: 0px;",
+          "margin-rigth: 0px;",
+          "margin-top: 0px",
+          "margin-bottom:0px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "title",
+            "value": "Audio"
+          },
+          {
+            "type": "button",
+            "name": "buttonName",
+            "value": "Button"
+          }
+        ]
+      },
+      {
+        "type": "audio",
+        "name": "audio_src",
+        "value": "plh_audio/sample.mp3",
+        "comments": "this will get more parameters", 
+        "parameter_list": [
+          "src: plh_audio/sample.mp3",
+          "help: help text"
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
+  },
 ];
