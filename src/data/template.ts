@@ -558,7 +558,8 @@
           {
             "type": "title",
             "name": "outro_title",
-            "value": "@local.activity_title"
+            "value": "@local.activity_title",
+            "hidden": "true"
           },
           {
             "type": "text",
@@ -4564,6 +4565,7 @@
                       {
                         "name": "button_info",
                         "value": "Examples",
+                        "hidden": "false",
                         "comments": "Walking to the shops\nGet water together \nDoing a chore together \nPrepare dinner \nEat breakfast/lunch/dinner \nHave tea after school \nWatch a T.V. show  \nReview homework \nChat before bedtime \nPlay a game/sport ",
                         "type": "set_variable"
                       },
@@ -4571,6 +4573,92 @@
                         "name": "button_completed",
                         "value": "Finish",
                         "comments": "placeholder",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "outro_text",
+                "value": "It may not have instant results, but it will make a difference over the long term. You are an amazing parent for trying this.",
+                "type": "set_variable"
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you do one-on-one time, mark your @global.parent_point to track your success",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_1on1.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "w_1on1_think",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "think",
+        "value": "think_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Let's think about what activities you could do for one-on-one time.",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "Think of ways to spend one-on-one time with your teen.\n\nFeel like you have NO TIME and you are exhausted? Remember to also think of ways that don't take up extra time.",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "nav_buttons",
+                    "rows": [
+                      {
+                        "name": "button_info",
+                        "value": "Examples",
+                        "hidden": "false",
+                        "comments": "Same list as in w_1on1_talk",
                         "type": "set_variable"
                       }
                     ]
@@ -6606,39 +6694,18 @@
     "rows": [
       {
         "type": "template",
-        "name": "learn",
-        "value": "learn",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
+        "name": "think",
+        "value": "think_temp",
         "rows": [
-          {
-            "name": "number_of_slides",
-            "value": 1,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "Say it aloud if you can \"Well done for …\"\n\nHere is one thing we know you deserve a praise for -  you started using ParentApp!  \nSo... WELL DONE for using ParentApp! \n\nHere are more examples of things you might have done recently and deserve a praise: \n\n1. Showing love to my children \n2. Getting up even though I felt tired \n3. Smiling at someone \n4. Making food to stay strong \n5. Spending time with my children \n6. Helping my children with schoolwork ",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_habit_text_1",
-            "value": "Every time you praise yourself, mark your @local.parent_point to track your success.",
-            "type": "set_variable"
-          },
           {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
               {
                 "name": "activity_title",
                 "value": "Recognise",
@@ -6647,6 +6714,41 @@
               {
                 "name": "intro_text",
                 "value": "Take a moment and think of one thing YOU have done recently that you have done well!",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "Say it aloud if you can \"Well done for …\"\n\nHere is one thing we know you deserve a praise for -  you started using ParentApp!  \nSo... WELL DONE for using ParentApp! ",
+                    "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "nav_buttons",
+                    "rows": [
+                      {
+                        "name": "button_info",
+                        "value": "More examples",
+                        "hidden": "false",
+                        "comments": "Pop-up with examples of things to praise yourself for:\n1. Showing love to my children \n2. Getting up even though I felt tired \n3. Smiling at someone \n4. Making food to stay strong \n5. Spending time with my children \n6. Helping my children with schoolwork",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you praise yourself, mark your @global.parent_point to track your success.",
                 "type": "set_variable"
               }
             ]
@@ -6664,34 +6766,18 @@
     "rows": [
       {
         "type": "template",
-        "name": "learn",
-        "value": "learn",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
+        "name": "think",
+        "value": "think_temp",
         "rows": [
-          {
-            "name": "number_of_slides",
-            "value": 1,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "What makes you happy? \n\nHave a hot drink \nCall a friend or family \nHave a relaxed bath \nRead \nWatch TV \nWrite your own ____________ \n\nTaking care of yourself is an important parenting skill!  \n\nStart now. Relax, recognise and reward yourself.  \n",
-            "type": "set_variable"
-          },
           {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
               {
                 "name": "activity_title",
                 "value": "Reward",
@@ -6700,6 +6786,28 @@
               {
                 "name": "intro_text",
                 "value": "Remember you deserve your quality time too!",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "What makes you happy? \n\nHave a hot drink \nCall a friend or family \nHave a relaxed bath \nRead \nWatch TV \nWrite your own ____________ \n\nTaking care of yourself is an important parenting skill!  ",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you treat yourself well, mark your @global.parent_point to track your success.",
                 "type": "set_variable"
               }
             ]
@@ -6746,7 +6854,7 @@
               },
               {
                 "name": "text_1",
-                "value": "Do a 30 second quick relaxation activity. Here's one: \n1. Close your eyes.   \n2. Listen to your breath as it goes in and out five times, noticing how you feel.  \n3. When you are ready open your eyes again. You are in control! ",
+                "value": "Do a 30 second quick relaxation activity.",
                 "type": "set_variable"
               },
               {

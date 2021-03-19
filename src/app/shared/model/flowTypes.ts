@@ -334,6 +334,7 @@ export namespace FlowTypes {
     | "set_variable"
     | "set_global"
     | "set_local"
+    | "set_field"
     | "nested_properties"
     | "button"
     | "image"
@@ -389,6 +390,7 @@ export namespace FlowTypes {
       | "set_global"
       | "emit"
       | "go_to"
+      | "pop_up"
     args: string[];
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: string;
@@ -398,8 +400,16 @@ export namespace FlowTypes {
   }
 
   export interface Global extends FlowTypeBase {
-    flow_type: "global",
-    rows: TemplateRow[];
+    flow_type: "global";
+    rows: GlobalRow[];
+  }
+
+  export interface GlobalRow {
+    type: "set_global" | "set_field";
+    name: string;
+    value: any;
+    comments?: string;
+    __EMPTY?: string;
   }
 
   /* Used for setting default parameters for template components */
