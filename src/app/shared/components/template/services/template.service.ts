@@ -17,7 +17,7 @@ export class TemplateService {
     GLOBAL.forEach((flow) => {
       flow.rows?.forEach((row) => {
         if (row.type === "declare_field_default") {
-          if (this.getField(row.name) === undefined) {
+          if (this.getField(row.name) === null) {
             this.setField(row.name, row.value);
           }
         } else {
