@@ -367,6 +367,7 @@ export namespace FlowTypes {
     _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
 
     /* Used for authoring comments. Not used in code */
+    cc_comments?: string;
     comments?: string;
     __EMPTY?: any;
   }
