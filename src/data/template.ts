@@ -2086,8 +2086,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "read",
-        "value": "read",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
         "action_list": [
           {
             "trigger": "completed",
@@ -4732,6 +4732,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "!@field.do_workshops_together",
         "rows": [
           {
             "type": "nested_properties",
@@ -4811,6 +4812,8 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "true",
+        "comments": "@field.do_workshops_together",
         "rows": [
           {
             "type": "nested_properties",
@@ -4987,8 +4990,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "tools_activity",
-        "value": "tools_activity",
+        "name": "care_together",
+        "value": "care_together",
         "action_list": [
           {
             "trigger": "completed",
@@ -5026,8 +5029,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "home_practice",
-        "value": "home_practice",
+        "name": "review_together",
+        "value": "review_together",
         "action_list": [
           {
             "trigger": "completed",
@@ -6144,8 +6147,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "review_together",
-        "value": "review_together",
+        "name": "welcome_together",
+        "value": "welcome_together",
         "action_list": [
           {
             "trigger": "completed",
@@ -6182,8 +6185,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "relax",
-        "value": "relax",
+        "name": "care_together",
+        "value": "care_together",
         "action_list": [
           {
             "trigger": "completed",
@@ -6220,8 +6223,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "listen",
-        "value": "listen",
+        "name": "review_together",
+        "value": "review_together",
         "action_list": [
           {
             "trigger": "completed",
@@ -6234,11 +6237,6 @@
           }
         ],
         "rows": [
-          {
-            "name": "audio_src",
-            "value": "plh_audio/sample.mp3",
-            "type": "set_variable"
-          },
           {
             "type": "nested_properties",
             "name": "workshop_activity",
@@ -6335,7 +6333,8 @@
         "rows": [
           {
             "type": "nested_properties",
-            "name": "workshop_activity",
+            "name": "content_box",
+            "value": "pair",
             "rows": [
               {
                 "name": "intro_text",

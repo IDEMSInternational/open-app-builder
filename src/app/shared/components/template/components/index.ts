@@ -43,7 +43,7 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
-  TmplSimpleCheckboxComponent
+  TmplSimpleCheckboxComponent,
 ];
 
 /***************************************************************************************
@@ -82,5 +82,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  simple_checkbox: TmplSimpleCheckboxComponent
+  simple_checkbox: TmplSimpleCheckboxComponent,
 };
