@@ -24,6 +24,7 @@ export namespace FlowTypes {
     | "reminder_list"
     | "template"
     | "component_defaults"
+    | "global"
     | "home_page";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
@@ -394,6 +395,11 @@ export namespace FlowTypes {
     // debug info
     _raw: string;
     _cleaned: string;
+  }
+
+  export interface Global extends FlowTypeBase {
+    flow_type: "global",
+    rows: TemplateRow[];
   }
 
   /* Used for setting default parameters for template components */
