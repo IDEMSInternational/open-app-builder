@@ -24,6 +24,7 @@ export namespace FlowTypes {
     | "reminder_list"
     | "template"
     | "component_defaults"
+    | "global"
     | "home_page";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
@@ -335,6 +336,7 @@ export namespace FlowTypes {
     | "set_field"
     | "set_global"
     | "set_local"
+    | "set_field"
     | "nested_properties"
     | "button"
     | "image"
@@ -372,7 +374,7 @@ export namespace FlowTypes {
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
-    type: "local" | "fields" | "global";
+    type: "local" | "field" | "fields" | "global";
     fieldName: string;
   }
   export interface TemplateRowAction {
@@ -395,6 +397,19 @@ export namespace FlowTypes {
     // debug info
     _raw: string;
     _cleaned: string;
+  }
+
+  export interface Global extends FlowTypeBase {
+    flow_type: "global";
+    rows: GlobalRow[];
+  }
+
+  export interface GlobalRow {
+    type: "declare_global_constant" | "declare_field_default";
+    name: string;
+    value: any;
+    comments?: string;
+    __EMPTY?: string;
   }
 
   /* Used for setting default parameters for template components */

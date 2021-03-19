@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TEMPLATE } from 'src/app/shared/services/data/data.service';
+import { GLOBAL, TEMPLATE } from 'src/app/shared/services/data/data.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Injectable({
@@ -7,26 +7,40 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage/local
 })
 export class TemplateService {
 
+  globals = {};
+
   constructor(private localStorageService: LocalStorageService) {
     this.initialiseGlobals();
   }
 
   initialiseGlobals() {
-    TEMPLATE.forEach((template) => {
-      template.rows?.forEach((row) => {
-        if (row.type === "set_global") {
+    GLOBAL.forEach((flow) => {
+      flow.rows?.forEach((row) => {
+        if (row.type === "declare_field_default") {
+          if (this.getField(row.name) === undefined) {
+            this.setField(row.name, row.value);
+          }
+        } else {
           this.setGlobal(row.name, row.value);
         }
       });
     });
   }
 
+  getField(key: string): string {
+    return this.localStorageService.getString("rp-contact-field." + key);
+  }
+
+  setField(key: string, value: string): void {
+    this.localStorageService.setString("rp-contact-field." + key, value);
+  }
+
   getGlobal(key: string): string {
-    return this.localStorageService.getString("template_global." + key);
+    return this.globals[key];
   }
 
   setGlobal(key: string, value: string) {
-    this.localStorageService.setString("template_global." + key, value);
+    this.globals[key] = value;
   }
 }
 
