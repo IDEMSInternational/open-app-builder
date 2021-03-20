@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { takeWhile } from "rxjs/operators";
 import { BehaviorSubject } from "scripts/node_modules/rxjs";
-import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateService } from "./services/template.service";
@@ -45,13 +44,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  showTemplates = false;
-
-  constructor(private templateService: TemplateService) {
-    if (location.href.indexOf("showTemplates=true") > -1) {
-      this.showTemplates = true;
-    }
-  }
+  constructor(private templateService: TemplateService) {}
 
   ngOnInit() {
     this.initialiseTemplate();
@@ -69,10 +62,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     console.log("About to call handleActionsCallback", this.name);
     this.handleActionsCallback([...actions], res);
     // TODO - possibly attach unique id to action to passback action results
-
   }
   /** Optional method child component can add to handle post-action callback */
-  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) { }
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -121,12 +113,17 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         if (this.parent) {
           // continue to emit any actions to parent where defined
 
-          // When emitting, tell parent template to execute actions in 
+          // When emitting, tell parent template to execute actions in
           console.log("Emiting", args[0], " from ", this.row?.name, " to parent ", this.parent);
           if (this.row && this.row.action_list) {
-            const actionsForEmittedEvent = this.row.action_list.filter((action) => action.trigger === args[0]);
+            const actionsForEmittedEvent = this.row.action_list.filter(
+              (action) => action.trigger === args[0]
+            );
             console.log("Excuting actions matching event ", args[0], actionsForEmittedEvent);
-            await this.parent.handleActions(actionsForEmittedEvent, `${this.name}.${action._triggeredBy}`);
+            await this.parent.handleActions(
+              actionsForEmittedEvent,
+              `${this.name}.${action._triggeredBy}`
+            );
             // Below needs discussion
             // await this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
           } else {
@@ -155,7 +152,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private initialiseTemplate() {
     // Lookup template and provide fallback
     const foundTemplate =
-      TEMPLATE.find((t) => t.flow_name === this.templatename) || NOT_FOUND_TEMPLATE(this.templatename);
+      TEMPLATE.find((t) => t.flow_name === this.templatename) ||
+      NOT_FOUND_TEMPLATE(this.templatename);
     this.template = JSON.parse(JSON.stringify(foundTemplate));
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
@@ -259,7 +257,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
             let oldList = r[field];
             r[field] = dynamicEvaluatorsPerItem.map((evaluator, idx) => {
               if (evaluator) {
-                return this.parseDynamicValue(evaluator)
+                return this.parseDynamicValue(evaluator);
               } else {
                 return oldList[idx];
               }

@@ -5,8 +5,9 @@ import { TemplateBaseComponent } from "./base";
   selector: "plh-template-debugger",
   template: `<details #details class="debug-container" [attr.data-hidden]="_row.hidden">
     <summary style="display:flex">
-      <span>{{ _row.type }}</span>
-      <span *ngIf="_row.hidden === 'true'" style="margin-left:auto">Hidden</span>
+      <span class="debug-row-type">{{ _row.type }}</span>
+      <span class="debug-row-name" *ngIf="_row.name !== _row.type">{{ _row.name }}</span>
+      <!-- <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden">Hidden</span> -->
     </summary>
     <div *ngIf="details.open">
       <table>
@@ -40,6 +41,23 @@ import { TemplateBaseComponent } from "./base";
         width: 100%;
         text-align: center;
       }
+      .debug-container[data-hidden="true"] > summary {
+        background: #e2dcf0;
+        padding: 5px;
+        margin: -5px;
+      }
+      .debug-row-type {
+        width: 100px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .debug-row-name {
+        margin-left: auto;
+      }
+      .debug-row-hidden {
+        text-align: right;
+      }
       table {
         padding: 2px;
         border-collapse: collapse;
@@ -48,12 +66,6 @@ import { TemplateBaseComponent } from "./base";
       td {
         padding: 2px;
         border: 1px solid rgba(0, 0, 0, 0.5);
-      }
-
-      .debug-container[data-hidden="true"] > summary {
-        background: #ffcece;
-        padding: 5px;
-        margin: -5px;
       }
     `,
   ],
