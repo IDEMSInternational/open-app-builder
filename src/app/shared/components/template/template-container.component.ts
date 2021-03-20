@@ -41,6 +41,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   /** local state tree used to handle default and overwritten row properties */
   localVariables: ILocalVariables = {};
   debugMode = false;
+  // TODO - link debug toggle to build environment or advanced setting (hide for general users)
+  showDebugToggle = true;
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
