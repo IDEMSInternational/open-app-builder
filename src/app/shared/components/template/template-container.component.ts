@@ -353,6 +353,13 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           case "local":
             parsedValue = localvariables[fieldName]?.value || evaluator.matchedExpression;
             break;
+          case "field":
+          case "fields":
+            parsedValue = this.templateService.getField(fieldName);
+            break;
+          case "global":
+            parsedValue = this.templateService.getGlobal(fieldName);
+            break;
           default:
             parsedValue = evaluator.matchedExpression;
         }
