@@ -16,6 +16,7 @@ import { home_page } from "src/data/home_page";
 import { reminder_list } from "src/data/reminder_list";
 import { template } from "src/data/template";
 import { component_defaults } from "src/data/component_defaults";
+import { global } from "src/data/global";
 
 export const COMPLETION_LIST = completion_list;
 export const CONVERSATION = conversation;
@@ -32,6 +33,7 @@ export const HOME_PAGE = home_page;
 export const REMINDER_LIST = reminder_list;
 export const TEMPLATE = template;
 export const COMPONENT_DEFAULTS = component_defaults;
+export const GLOBAL = global;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
 const mapping: { [key in FlowTypes.FlowType] } = {
@@ -49,7 +51,8 @@ const mapping: { [key in FlowTypes.FlowType] } = {
   home_page: HOME_PAGE,
   reminder_list: REMINDER_LIST,
   template: TEMPLATE,
-  component_defaults: COMPONENT_DEFAULTS
+  component_defaults: COMPONENT_DEFAULTS,
+  global: GLOBAL
 };
 
 /**
