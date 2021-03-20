@@ -5,8 +5,11 @@ import { TemplateBaseComponent } from "./base";
   selector: "plh-template-debugger",
   template: `<details #details class="debug-container" [attr.data-hidden]="_row.hidden">
     <summary style="display:flex">
-      <span>{{ _row.type }}</span>
-      <span *ngIf="_row.hidden === 'true'" style="margin-left:auto">Hidden</span>
+      <span class="debug-row-type">{{ _row.type }}</span>
+      <span class="debug-row-name">{{ _row.name || "(no name)" }}</span>
+      <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
+        ><ion-icon name="eye-off"></ion-icon
+      ></span>
     </summary>
     <div *ngIf="details.open">
       <table>
@@ -40,6 +43,19 @@ import { TemplateBaseComponent } from "./base";
         width: 100%;
         text-align: center;
       }
+      .debug-container[data-hidden="true"] > summary {
+        background: #e2dcf0;
+        padding: 5px;
+        margin: -5px;
+      }
+      .debug-row-type {
+      }
+      .debug-row-name {
+        margin-left: auto;
+      }
+      .debug-row-hidden {
+        margin-left: 8px;
+      }
       table {
         padding: 2px;
         border-collapse: collapse;
@@ -48,12 +64,6 @@ import { TemplateBaseComponent } from "./base";
       td {
         padding: 2px;
         border: 1px solid rgba(0, 0, 0, 0.5);
-      }
-
-      .debug-container[data-hidden="true"] > summary {
-        background: #ffcece;
-        padding: 5px;
-        margin: -5px;
       }
     `,
   ],
