@@ -4,7 +4,7 @@
   [attr.data-debug]="debugMode"
   [attr.data-isChild]="parent ? true : false"
 >
-  <div class="debug-toggle" [attr.data-enabled]="debugMode">
+  <div class="debug-toggle" [attr.data-enabled]="debugMode" *ngIf="showDebugToggle">
     <ion-icon name="bug-outline"></ion-icon>
     <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
   </div>

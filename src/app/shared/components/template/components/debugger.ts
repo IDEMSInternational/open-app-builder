@@ -49,10 +49,6 @@ import { TemplateBaseComponent } from "./base";
         margin: -5px;
       }
       .debug-row-type {
-        width: 100px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
       }
       .debug-row-name {
         margin-left: auto;
