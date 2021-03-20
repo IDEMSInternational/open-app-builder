@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ModalController } from "@ionic/angular";
 import { takeWhile } from "rxjs/operators";
 import { BehaviorSubject } from "scripts/node_modules/rxjs";
-import { ContactFieldService } from "src/app/feature/chat/services/offline/contact-field.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateService } from "./services/template.service";
@@ -52,9 +50,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   showTemplates = false;
 
   constructor(
-    private contactFieldService: ContactFieldService,
     private templateService: TemplateService,
-    private modalCtrl: ModalController,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -167,6 +163,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       // await childTemplateModal.present();
       // const dismissed = await childTemplateModal.onDidDismiss();
       // console.log("dismissed", dismissed);
+      case "set_field":
+        return this.templateService.setField(key, value);
       case "emit":
         // TODO - handle DB writes or similar for emit handling
         if (this.parent) {
@@ -260,6 +258,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       }
       if (type === "display_theme") {
         // TODO - inherited variable should be defined in better/consistent way
+      }
+
+      if (type === "set_field") {
+        this.templateService.setField(name, value);
       }
 
       // handle rows which have nested structures
@@ -371,8 +373,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         case "local":
           parsedValue = this.localVariables[fieldName]?.value || "";
           break;
+        case "field":
         case "fields":
-          parsedValue = this.contactFieldService.getContactFieldSync(fieldName);
+          parsedValue = this.templateService.getField(fieldName);
           break;
         case "global":
           parsedValue = this.templateService.getGlobal(fieldName);

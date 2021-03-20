@@ -3945,6 +3945,393 @@
     "rows": [
       {
         "type": "text",
+        "name": "text",
+        "value": "This template demonstates 4 types of go-to buttons. \n\nWrite x for the template example_emit.",
+        "comments": "A template is finished if it emits something, this can be completed or uncompleted."
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_1",
+        "value": "Go to x and come back",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          }
+        ],
+        "comments": "This returns to the current template after finishing example_emit"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_2",
+        "value": "Go to x and don't come  back",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ],
+        "comments": "Creates a new field called field_2 with value Value of Field 2"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "The value of field_2 is @field.field_2",
+        "comments": "this text would be The value of field_2 is 'undefined' so presumably an empty string or even @field.field_2? until the button is pressed in which case it would change to The value of field_2 is Value of Field 2"
+      },
+      {
+        "type": "text",
+        "name": "text_hidden_4",
+        "value": "This should be hidden when field_4 is TRUE",
+        "hidden": "@field.field_4",
+        "comments": "There could be more complex conditions for shown ie @filed.field_4>3)"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_4",
+        "value": "This should be hidden when field_4 is FALSE",
+        "hidden": "!@field.field_4"
+      },
+      {
+        "type": "text",
+        "name": "text_hidden_5",
+        "value": "This should be hidden when field_5 is more than 2",
+        "hidden": "@field.field_5>2",
+        "comments": "Not currently implemented?"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_5_a",
+        "value": "This should be hidden when field_5 is less than or equal to 2",
+        "hidden": "@field.field_5<=2",
+        "comments": "Not currently implemented?"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_3",
+        "value": "Go to x and come back if x uncompleted",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "comments": "This returns to the current template and completes the current template if it returns completed or does nothing if example_emit emits uncompleted",
+        "cc_comments": "how does the action imply the comment? If we are overriding default actions in the template need a better syntax to specify"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_4",
+        "value": "Go to x and come back if x completed",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "uncompleted | emit:completed",
+            "_cleaned": "uncompleted | emit:completed"
+          }
+        ],
+        "comments": "This returns to the current template IF AND ONLY IF example_emit emits completed"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_emit",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example emit template."
+      },
+      {
+        "type": "button",
+        "name": "button_completed",
+        "value": "Emit completed",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "button_uncompleted",
+        "value": "Emit uncompleted",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "click | emit:uncompleted",
+            "_cleaned": "click | emit:uncompleted"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_pop_ups",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the main template demonstrating three types of pop-ups."
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_1",
+        "value": "Simple text pop-up",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_text"
+            ],
+            "_raw": "click | pop_up:example_text",
+            "_cleaned": "click | pop_up:example_text"
+          }
+        ],
+        "comments": "This launches a simple pop-up (without buttons)"
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_2",
+        "value": "Pop-up with go-to buttons that return",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_go_to_2"
+            ],
+            "_raw": "click | pop_up:example_go_to_2",
+            "_cleaned": "click | pop_up:example_go_to_2"
+          }
+        ],
+        "comments": "This launches a pop-up with a go-to button. When the destination template emits something (completed or uncompleted),  it comes back to the pop-up or to the main template."
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_3",
+        "value": "Pop-up with go-to buttons that don't return",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_go_to_3"
+            ],
+            "_raw": "click | pop_up:example_go_to_3",
+            "_cleaned": "click | pop_up:example_go_to_3"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "comments": "This launches a pop-up with a go-to button. This does not return if you click the go-to button but does if you close."
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_text",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template."
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_go_to_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_go_to_1",
+        "value": "Go to example_emit and come back to this pop-up",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to: example_emit",
+            "_cleaned": "click | go_to: example_emit"
+          }
+        ],
+        "comments": "This returns to the current template after finishing example_emit"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_2",
+        "value": "Go to example_emit and come back to the main template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ],
+        "comments": "This does not return to the current template after finishing example_emit"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_go_to_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_go_to",
+        "value": "Go to example_emit and don't come back",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ],
+        "comments": "This does not return to the current template after finishing example_emit"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_call_global_constants",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.example_global_constant_title"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Text that includes @global.example_global_constant_text"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "value": "@global.example_global_constant_image"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "There should be an image above this text, whose source is example_global_image"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_set_fields_in_action",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
         "name": "text_0",
         "value": "The value of field_0 is @field.field_0"
       },
@@ -5503,7 +5890,7 @@
       {
         "type": "template",
         "name": "read",
-        "value": "read",
+        "value": "read_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -5517,44 +5904,81 @@
         ],
         "rows": [
           {
-            "name": "intro_text",
-            "value": "This happened with @global.w_instruct_teen_girl and her @global.w_instruct_female_caregiver the other day: ",
-            "type": "set_variable"
-          },
-          {
-            "name": "number_of_slides",
-            "value": 3,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_1",
-            "value": "plh_images/modules/mod_instruct/illustrated_story/is_1.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.\n\n@global.w_instruct_female_caregiver: “Don’t make such a mess while I am cleaning the house. You are in the way!”",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_2",
-            "value": "plh_images/modules/mod_instruct/illustrated_story/is_2.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_2",
-            "value": "@global.w_instruct_teen_girl: “But I need to practice for the school competition. You never let me do anything.”\n\n@global.w_instruct_female_caregiver: “Don’t you talk back to me!”",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_3",
-            "value": "plh_images/modules/mod_instruct/illustrated_story/is_3.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_3",
-            "value": "@global.w_instruct_teen_girl: “Arrg!! Why Am I being yelled at all the time????.”\n\n(inside) @global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
-            "type": "set_variable"
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "This happened with @global.w_instruct_teen_girl and her @global.w_instruct_female_caregiver the other day: ",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_image",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "value": "plh_images/workshops/instruct/read_1/slide_1.svg",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.\n\n@global.w_instruct_female_caregiver: “Don’t make such a mess while I am cleaning the house. You are in the way!”",
+                        "type": "set_variable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "pair",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "box_image",
+                        "rows": [
+                          {
+                            "name": "image_src",
+                            "value": "plh_images/workshops/instruct/read_1/slide_2.svg",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "@global.w_instruct_teen_girl: “But I need to practice for the school competition. You never let me do anything.”\n\n@global.w_instruct_female_caregiver: “Don’t you talk back to me!”",
+                            "type": "set_variable"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "box_image",
+                        "rows": [
+                          {
+                            "name": "image_src",
+                            "value": "plh_images/workshops/instruct/read_1/slide_3.svg",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????.”\n\n(inside) @global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -5584,11 +6008,6 @@
         ],
         "rows": [
           {
-            "name": "discussion_text",
-            "value": "How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n\nWhat could @global.w_instruct_female_caregiver have done differently? ",
-            "type": "set_variable"
-          },
-          {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
@@ -5597,6 +6016,18 @@
                 "value": "Let's discuss what happened in this story.",
                 "comments": "placeholder",
                 "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n\nWhat could @global.w_instruct_female_caregiver have done differently? ",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  }
+                ]
               }
             ]
           }
@@ -5614,7 +6045,7 @@
       {
         "type": "template",
         "name": "read",
-        "value": "read",
+        "value": "read_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -5628,56 +6059,6 @@
         ],
         "rows": [
           {
-            "name": "number_of_slides",
-            "value": 5,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_1",
-            "value": "plh_images/modules/mod_instruct/illustrated_story/is_4.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  ",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_2",
-            "value": "plh_images/modules/mod_instruct/illustrated_story/is_5.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_2",
-            "value": "@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_3",
-            "value": "plh_images/modules/mod_instruct/illustrated_story/is_6.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_4",
-            "value": "plh_images/modules/mod_instruct/illustrated_story/is_7.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_4",
-            "value": "@fields.w_instruct_female_caregiver: \"Thank you for practicing outside while I finished cleaning the house, @fields.w_instruct_teen_girl . Now I have some time to watch your dance.\"",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_5",
-            "value": "plh_images/modules/mod_instruct/illustrated_story/is_8.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_5",
-            "value": "@fields.w_instruct_female_caregiver: \"Wow, @fields.w_instruct_teen_girl! You have such good dance moves!\"",
-            "type": "set_variable"
-          },
-          {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
@@ -5685,6 +6066,95 @@
                 "name": "intro_text",
                 "value": "Thank you for thinking along! Let’s go back in time and see what happens!",
                 "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_image",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "value": "plh_images/workshops/instruct/read_2/slide_1.svg",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                        "type": "set_variable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "pair",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "box_image",
+                        "rows": [
+                          {
+                            "name": "image_src",
+                            "value": "plh_images/workshops/instruct/read_2/slide_2.svg",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "hidden": "true",
+                            "type": "set_variable"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "pair",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "value": "plh_images/workshops/instruct/read_2/slide_3.svg",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "@fields.w_instruct_female_caregiver: \"Thank you for practicing outside while I finished cleaning the house, @fields.w_instruct_teen_girl . Now I have some time to watch your dance.\"",
+                                "type": "set_variable"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "value": "plh_images/workshops/instruct/read_2/slide_4.svg",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "@fields.w_instruct_female_caregiver: \"Wow, @fields.w_instruct_teen_girl! You have such good dance moves!\"",
+                                "type": "set_variable"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -5716,11 +6186,6 @@
         ],
         "rows": [
           {
-            "name": "discussion_text",
-            "value": "Why do you think it worked better for @global.w_instruct_female_caregiver this time? \n\nWhat do you think worked well? ",
-            "type": "set_variable"
-          },
-          {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
@@ -5729,6 +6194,18 @@
                 "value": "Let's discuss what happened this time.",
                 "comments": "placeholder",
                 "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "Why do you think it worked better for @global.w_instruct_female_caregiver this time? \n\nWhat do you think worked well? ",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  }
+                ]
               }
             ]
           }
@@ -5904,6 +6381,7 @@
                       {
                         "name": "button_info",
                         "value": "Examples",
+                        "hidden": "false",
                         "comments": "This has to be authored as a pop-up text:\n\nExample of a negative instruction: Please stop making that noise all the time! \n\nExamples of positive instructions: I like your music, but could you turn it down so that we can talk whilst we have dinner? Thank you – I really appreciate this. \nThat’s great. Who is the singer? Please turn this off when you come in the house but you can play it in your room quietly if you want. Thank you!",
                         "type": "set_variable"
                       },
@@ -5967,7 +6445,7 @@
                   },
                   {
                     "name": "button_2",
-                    "value": "Essential Tools",
+                    "value": "@global.essential_tools",
                     "hidden": "false",
                     "type": "set_variable"
                   }
