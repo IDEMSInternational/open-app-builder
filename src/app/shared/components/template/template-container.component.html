@@ -4,11 +4,19 @@
   [attr.data-debug]="debugMode"
   [attr.data-isChild]="parent ? true : false"
 >
-  <div class="debug-toggle" [attr.data-enabled]="debugMode" *ngIf="showDebugToggle">
-    <ion-icon name="bug-outline"></ion-icon>
-    <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
+  <!-- Debug Toggle -->
+  <div class="debug-container" [attr.data-enabled]="debugMode" *ngIf="showDebugToggle">
+    <div *ngIf="debugMode" class="debug-name">
+      <div>template: {{ templatename || "(undefined)" }}</div>
+      <div>name: {{ name || "(undefined)" }}</div>
+    </div>
+    <div class="debug-toggle-container">
+      <ion-icon name="bug-outline"></ion-icon>
+      <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
+    </div>
   </div>
 
+  <!-- Template Component-->
   <plh-template-component
     *ngFor="let row of template.rows"
     class="row"
