@@ -7,7 +7,9 @@ import { TemplateBaseComponent } from "./base";
     <summary style="display:flex">
       <span class="debug-row-type">{{ _row.type }}</span>
       <span class="debug-row-name" *ngIf="_row.name !== _row.type">{{ _row.name }}</span>
-      <!-- <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden">Hidden</span> -->
+      <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
+        ><ion-icon name="eye-off"></ion-icon
+      ></span>
     </summary>
     <div *ngIf="details.open">
       <table>
@@ -56,7 +58,7 @@ import { TemplateBaseComponent } from "./base";
         margin-left: auto;
       }
       .debug-row-hidden {
-        text-align: right;
+        margin-left: 8px;
       }
       table {
         padding: 2px;
