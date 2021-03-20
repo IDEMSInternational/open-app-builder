@@ -13,16 +13,10 @@
   &.active {
     background-color: var(--theme-var-templateActiveBg, #fff6d6);
   }
-
-  &.show-border {
-    border: 1px solid green;
-    padding: 2px;
-    margin: 2px;
-  }
-
-  .template-name-debug {
-    color: green;
-  }
+}
+.template-container[data-debug="true"] {
+  border: 2px solid black;
+  overflow: auto;
 }
 .debug-toggle {
   position: absolute;
@@ -41,5 +35,8 @@
   display: none;
 }
 .plh-tmpl-comp[data-debug="true"] {
-  display: unset;
+  display: block;
+  border: 1px solid #c7c7c7;
+  padding: 2px;
+  margin: 2px;
 }
