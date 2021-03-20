@@ -46,7 +46,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private templateService: TemplateService) {}
+  constructor(private templateService: TemplateService) { }
 
   ngOnInit() {
     this.initialiseTemplate();
@@ -66,7 +66,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     // TODO - possibly attach unique id to action to passback action results
   }
   /** Optional method child component can add to handle post-action callback */
-  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) { }
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -179,7 +179,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    */
   private processVariables(
     templateRows: FlowTypes.TemplateRow[],
-    variables: ILocalVariables = {}
+    variables: ILocalVariables = {},
+    localvariables: ILocalVariables = {}
   ): ILocalVariables {
     templateRows.forEach((r) => {
       let { name, value, rows, type } = r;
@@ -187,11 +188,15 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       // set_variable is actually setting the _value field, so should be called accordingly
       if (type === "set_variable" || type === "set_local" || type === "nested_properties") {
         variables[name] = variables[name] || {};
+        localvariables[name] = variables[name] || {};
         // handle merging updated properties
         VARIABLE_FIELDS.forEach((field) => {
           if (r[field]) {
             // don't override values that have otherwise been set from parent or nested properties
-            variables[name][field] = variables[name][field] || r[field];
+            // local variables within r[field] are parsed 
+            variables[name][field] = variables[name][field] || this.parseLocalVariables(r[field], localvariables);
+            // local variables on a given excel sheet are managed together
+            localvariables[name][field] = localvariables[name][field] || variables[name][field]
           }
         });
       }
@@ -213,15 +218,15 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           // nested properties assign specific value further down the tree
           // TODO handle case where name is further nested (e.g. templateA.child1.someField)
           case "nested_properties":
-            variables[name] = this.processVariables(rows, variables[name]);
+            variables[name] = this.processVariables(rows, variables[name], localvariables);
             break;
           // nested templates are handled in the same way as nested properties
           case "template":
-            variables[name] = this.processVariables(rows, variables[name]);
+            variables[name] = this.processVariables(rows, variables[name], localvariables);
             break;
           // display groups are visual distinction only, process the rest of the variables as if they were inline
           case "display_group":
-            variables = { ...variables, ...this.processVariables(rows, variables) };
+            variables = { ...variables, ...this.processVariables(rows, variables, localvariables) };
             break;
           // otherwise treat nested rows as value-namespaced local variables
           default:
@@ -334,6 +339,30 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       }
     }
     return parsedExpression;
+  }
+
+  private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}) {
+    let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(variable);
+    if (evaluators) {
+      let parsedExpression = evaluators[0].fullExpression;
+      // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
+      for (let evaluator of evaluators) {
+        let parsedValue: any;
+        const { matchedExpression, type, fieldName } = evaluator;
+        switch (type) {
+          case "local":
+            parsedValue = localvariables[fieldName]?.value || evaluator.matchedExpression;
+            break;
+          default:
+            parsedValue = evaluator.matchedExpression;
+        }
+        parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
+      }
+
+      return parsedExpression;
+    } else {
+      return variable
+    };
   }
   /** When using ngFor loop track by  */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
