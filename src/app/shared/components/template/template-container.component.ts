@@ -323,9 +323,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           case "template":
           //  r.rows = this.processRows(r.rows, variables[r.name]);
           default:
-            const mergedChildVariables = { ...variables[r.name], ...this.sheetVariables };
-            console.log({ variables, mergedChildVariables });
             // otherwise treat nested rows as value-namespaced local variables, with access to parent declared variables
+            const mergedChildVariables = { ...variables[r.name], ...this.sheetVariables };
             r.rows = this.processRows(r.rows, mergedChildVariables);
         }
       }

@@ -68,7 +68,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nested_properties: null as any,
   set_global: null as any,
   set_field: null as any,
-  set_local: null as any,
+  declare_variable: null as any,
   combo_box: null as any,
   set_default: null as any,
   text_box: null as any,
