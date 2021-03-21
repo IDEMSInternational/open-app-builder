@@ -335,7 +335,7 @@ export namespace FlowTypes {
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
     | "set_global"
-    | "set_local"
+    | "declare_variable"
     | "set_field"
     | "nested_properties"
     | "button"
@@ -384,7 +384,6 @@ export namespace FlowTypes {
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
-      | "set_value" // This currently is same as set_local (remove?)
       | "set_field"
       | "set_local"
       | "set_global"

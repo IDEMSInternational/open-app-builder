@@ -5,7 +5,9 @@ import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateService } from "./services/template.service";
 
-type ILocalVariables = { [name: string]: any };
+interface IVariables {
+  [name: string]: any;
+}
 
 /** list of fields where overwrites will be allowed */
 const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
@@ -15,6 +17,18 @@ const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
   "parameter_list",
   "action_list",
 ];
+
+/**
+ * List of row types that set variable states. These will be processed either during
+ * initialisation or via global methods, and will be stripped from resulting output
+ */
+const VARIABLE_SETTER_TYPES: FlowTypes.TemplateRowType[] = [
+  "declare_variable",
+  "set_global",
+  "set_variable",
+  "nested_properties",
+];
+
 /**
  * Some types that contain nested rows are nested in display only (not template properties)
  * Log here to handle accordingly
@@ -38,8 +52,13 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
   template: FlowTypes.Template;
-  /** local state tree used to handle default and overwritten row properties */
-  localVariables: ILocalVariables = {};
+
+  /** state variables inherited and shared with template rows */
+  localVariables: IVariables = {};
+
+  /** variables declared in template sheet which will not be inherited by children  */
+  sheetVariables: IVariables = {};
+
   debugMode = false;
   // TODO - link debug toggle to build environment or advanced setting (hide for general users)
   showDebugToggle = true;
@@ -102,7 +121,6 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     const [key, value] = args;
     switch (action_id) {
       case "set_local":
-      case "set_value":
         console.log("Setting local variable", key, value);
         return this.setLocalVariable(key, value);
       case "set_global":
@@ -160,12 +178,11 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
     const parentVariables = this.parent?.localVariables?.[this.name];
-    this.localVariables = this.processVariables(this.template.rows, parentVariables);
-    // console.log("[Template Init]", { name: this.name, parentVariables });
-    if (!this.parent) {
-      console.log({ localVariables: this.localVariables });
-    }
-    this.template.rows = this.processRows(this.template.rows, this.localVariables);
+    const localVariables = this.processVariables(this.template.rows, parentVariables);
+    this.localVariables = localVariables;
+    // when initialising any sheet variables declared by the parent can also be used
+    // console.log("[Template Init]", { name: this.name, parent: this.parent, localVariables });
+    this.template.rows = this.processRows(this.template.rows, localVariables);
   }
 
   /**
@@ -179,21 +196,27 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    */
   private processVariables(
     templateRows: FlowTypes.TemplateRow[],
-    variables: ILocalVariables = {}
-  ): ILocalVariables {
+    variables: IVariables = {}
+  ): IVariables {
     templateRows.forEach((r) => {
       let { name, value, rows, type } = r;
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
-      if (type === "set_variable" || type === "set_local" || type === "nested_properties") {
-        variables[name] = variables[name] || {};
-        // handle merging updated properties
-        VARIABLE_FIELDS.forEach((field) => {
-          if (r[field]) {
-            // don't override values that have otherwise been set from parent or nested properties
-            variables[name][field] = variables[name][field] || r[field];
-          }
-        });
+      if (VARIABLE_SETTER_TYPES.includes(type)) {
+        // assign sheet variables that can be called from child rows
+        if (type === "declare_variable") {
+          this.sheetVariables[name] = r;
+          // assign all other local variables from setter types
+        } else {
+          variables[name] = variables[name] || {};
+          // handle merging updated properties
+          VARIABLE_FIELDS.forEach((field) => {
+            if (r[field]) {
+              // don't override values that have otherwise been set from parent or nested properties
+              variables[name][field] = variables[name][field] || r[field];
+            }
+          });
+        }
       }
       if (type === "display_theme") {
         // TODO - inherited variable should be defined in better/consistent way
@@ -205,6 +228,9 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
 
       // handle rows which have nested structures
       if (rows) {
+        // when processing rows from this sheet provide access to relevant set and declare variables
+        const childRowVariables = variables[name];
+        const parentRowVariables = variables;
         // TODO - don't like overwriting this, be nicer to handle elsewhere
         if (DISPLAY_TYPES.includes(type)) {
           type = "display_group";
@@ -213,19 +239,19 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           // nested properties assign specific value further down the tree
           // TODO handle case where name is further nested (e.g. templateA.child1.someField)
           case "nested_properties":
-            variables[name] = this.processVariables(rows, variables[name]);
+            variables[name] = this.processVariables(rows, childRowVariables);
             break;
           // nested templates are handled in the same way as nested properties
           case "template":
-            variables[name] = this.processVariables(rows, variables[name]);
+            variables[name] = this.processVariables(rows, childRowVariables);
             break;
           // display groups are visual distinction only, process the rest of the variables as if they were inline
           case "display_group":
-            variables = { ...variables, ...this.processVariables(rows, variables) };
+            variables = { ...variables, ...this.processVariables(rows, parentRowVariables) };
             break;
           // otherwise treat nested rows as value-namespaced local variables
           default:
-            variables[value] = this.processVariables(rows, variables[name]);
+            variables[value] = this.processVariables(rows, childRowVariables);
             break;
         }
       }
@@ -237,11 +263,15 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
    * Once the full tree of parent variable setters/overrides has been established
    * remove the variable setter row types and override row values where specified
    */
-  private processRows(templateRows: FlowTypes.TemplateRow[], variables = {}) {
+  private processRows(templateRows: FlowTypes.TemplateRow[], variables: IVariables) {
+    // ensure dynamic evaluators have access to both local variables and sheet variables
+    variables = { ...variables, ...this.sheetVariables };
+    if (this.parent) {
+      variables = { ...variables, ...this.parent.sheetVariables };
+    }
     // console.log(`[${this.template.flow_name}]`, "process rows", variables);
     // remove row types that have already been processed during processVariables step
-    const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
-    const filteredRows = templateRows.filter((r) => !filterTypes.includes(r.type));
+    const filteredRows = templateRows.filter((r) => !VARIABLE_SETTER_TYPES.includes(r.type));
     const rowsWithReplacedValues = filteredRows.map((r) => {
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
@@ -259,7 +289,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
             let oldList = r[field];
             r[field] = dynamicEvaluatorsPerItem.map((evaluator, idx) => {
               if (evaluator) {
-                return this.parseDynamicValue(evaluator);
+                return this.parseDynamicValue(evaluator, variables);
               } else {
                 return oldList[idx];
               }
@@ -271,7 +301,7 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
             r._dynamicFields = r._dynamicFields || {};
             // evaluate dynamic field, keeping reference for future
             r._dynamicFields[field] = dynamicEvaluators as any;
-            r[field] = this.parseDynamicValue(r._dynamicFields[field]);
+            r[field] = this.parseDynamicValue(r._dynamicFields[field], variables);
           }
         }
 
@@ -293,8 +323,10 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           case "template":
           //  r.rows = this.processRows(r.rows, variables[r.name]);
           default:
-            // otherwise treat nested rows as value-namespaced local variables
-            r.rows = this.processRows(r.rows, variables[r.name]);
+            const mergedChildVariables = { ...variables[r.name], ...this.sheetVariables };
+            console.log({ variables, mergedChildVariables });
+            // otherwise treat nested rows as value-namespaced local variables, with access to parent declared variables
+            r.rows = this.processRows(r.rows, mergedChildVariables);
         }
       }
       return r;
@@ -302,7 +334,11 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
     return rowsWithReplacedValues;
   }
 
-  private parseDynamicValue(evaluators: FlowTypes.TemplateRowDynamicEvaluator[]) {
+  private parseDynamicValue(
+    evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
+    localVariables: IVariables
+  ) {
+    let parseSuccess = true;
     let parsedExpression = evaluators[0].fullExpression;
     // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
     for (let evaluator of evaluators) {
@@ -310,7 +346,11 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       const { matchedExpression, type, fieldName } = evaluator;
       switch (type) {
         case "local":
-          parsedValue = this.localVariables[fieldName]?.value || "";
+          parsedValue = localVariables[fieldName]?.value;
+          if (!parsedValue) {
+            console.error("could not parse local variable", { evaluator, localVariables });
+            parsedValue = `{{local.${fieldName}}}`;
+          }
           break;
         case "field":
         case "fields":
@@ -320,12 +360,12 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
           parsedValue = this.templateService.getGlobal(fieldName);
           break;
         default:
+          parseSuccess = false;
           console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
           parsedValue = evaluator.matchedExpression;
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
-
     // Handle negated conditions - true/false will already have been filled as text so manually toggle
     if (parsedExpression.startsWith("!")) {
       parsedExpression = parsedExpression.replace("!true", "false").replace("!false", "true");
@@ -333,6 +373,12 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
         console.error("Negation condition not handled correctly", parsedExpression);
       }
     }
+    // handle case where parsed expression contains reference to another dynamic expression
+    const recursiveDynamicExpression = _extractDynamicEvaluators(parsedExpression);
+    if (recursiveDynamicExpression && parseSuccess) {
+      return this.parseDynamicValue(recursiveDynamicExpression, localVariables);
+    }
+
     return parsedExpression;
   }
   /** When using ngFor loop track by  */
