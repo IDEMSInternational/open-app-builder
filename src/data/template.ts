@@ -3531,12 +3531,12 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_local",
+        "type": "declare_variable",
         "name": "var_text_2",
         "value": "This is text_2"
       },
       {
-        "type": "set_local",
+        "type": "declare_variable",
         "name": "var_text_4",
         "value": "This is text_4"
       },
