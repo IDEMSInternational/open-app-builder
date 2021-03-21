@@ -5,14 +5,18 @@
   [attr.data-isChild]="parent ? true : false"
 >
   <!-- Debug Toggle -->
-  <div class="debug-container" [attr.data-enabled]="debugMode" *ngIf="showDebugToggle">
-    <div *ngIf="debugMode" class="debug-name">
+  <div class="debug-container" *ngIf="showDebugToggle" [attr.data-enabled]="debugMode">
+    <div *ngIf="debugMode && !parent" class="debug-name">
       <div>template: {{ templatename || "(undefined)" }}</div>
       <div>name: {{ name || "(undefined)" }}</div>
     </div>
-    <div class="debug-toggle-container">
+    <div *ngIf="!parent" class="debug-toggle-container" [attr.data-enabled]="debugMode">
       <ion-icon name="bug-outline"></ion-icon>
-      <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
+      <ion-toggle
+        #debugToggle
+        (ionChange)="setDebugMode(debugToggle.checked)"
+        [checked]="debugMode"
+      ></ion-toggle>
     </div>
   </div>
 
