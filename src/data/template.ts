@@ -2876,7 +2876,6 @@
             "name": "outro_habit_text",
             "value": "Every time you do a relax, mark your @global.parent_point to track your success.",
             "hidden": "false",
-            "comments": "needs star icon attached",
             "type": "set_variable"
           }
         ]
@@ -3442,14 +3441,21 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_local",
-        "name": "var_text_2",
-        "value": "This is text_2"
+        "type": "declare_variable",
+        "name": "local_text_2",
+        "value": "Success: text_2",
+        "comments": "variables declared can be used anywhere on the sheet, including in child templates"
       },
       {
-        "type": "set_local",
-        "name": "var_text_4",
-        "value": "This is text_4"
+        "type": "declare_variable",
+        "name": "global_text",
+        "value": "@global.debug_variable_1",
+        "comments": "declared variables will not be overwritten by parents"
+      },
+      {
+        "type": "declare_variable",
+        "name": "local_text_4",
+        "value": "Success: text_4"
       },
       {
         "type": "template",
@@ -3457,27 +3463,41 @@
         "value": "debug_two_texts",
         "rows": [
           {
-            "name": "text_1",
-            "value": "This is text_1 overridden directly in the value",
-            "type": "set_variable"
+            "type": "set_variable",
+            "name": "child_text_1",
+            "value": "Success: text_1"
           },
           {
-            "name": "text_2",
-            "value": "@local.var_text_2 overridden by calling a variable",
-            "comments": "@local.var_text_2 is not printed",
-            "type": "set_variable"
+            "type": "set_variable",
+            "name": "child_text_2",
+            "value": "Expected: \"Success: text_2\"\nResult: @local.local_text_2"
+          },
+          {
+            "type": "set_variable",
+            "name": "child_text_3",
+            "value": "Expected: global.debug_variable_1 lookup\nResult: @local.global_text"
           }
         ]
       },
       {
         "type": "text",
         "name": "text_3",
-        "value": "This is text_3 written directly in the value"
+        "value": "Success: text_3"
       },
       {
         "type": "text",
         "name": "text_4",
-        "value": "@local.var_text_4 calling a variable"
+        "value": "Expected: \"Success: text_4\" \nResult: @local.local_text_4"
+      },
+      {
+        "type": "text",
+        "name": "text_5",
+        "value": "Expected: global.debug_variable_1 lookup\nResult: @local.global_text"
+      },
+      {
+        "type": "text",
+        "name": "text_6",
+        "value": "Global text test: @global.debug_variable_1"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_nesting_variables.xlsx"
@@ -3489,13 +3509,18 @@
     "rows": [
       {
         "type": "text",
-        "name": "text_1",
-        "value": "Text 1"
+        "name": "child_text_1",
+        "value": "Failed: \"text_1\""
       },
       {
         "type": "text",
-        "name": "text_2",
-        "value": "Text 2"
+        "name": "child_text_2",
+        "value": "Failed: \"text_2\""
+      },
+      {
+        "type": "text",
+        "name": "child_text_3",
+        "value": "Falied: \"text_global\""
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_nesting_variables.xlsx"
@@ -7747,5 +7772,1048 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_self_care.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_stepper",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_stepper",
+        "value": "workshop_stepper",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "!@field.do_workshops_together",
+        "rows": [
+          {
+            "name": "nav_template_list",
+            "value": "w_stress_welcome_together; w_stress_care_together; w_stress_relax; w_stress_review_together; w_stress_intro; w_stress_read_1; w_stress_talk_1; w_stress_read_2; w_stress_think; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
+            "comments": "w_stress_welcome_together; w_stress_care_together; w_stress_relax; w_stress_review_together; w_stress_intro; w_stress_read_1; w_stress_talk_1; w_stress_read_2; w_stress_think w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "workshop_stepper",
+        "value": "workshop_stepper",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "true",
+        "comments": "@field.do_workshops_together",
+        "rows": [
+          {
+            "name": "nav_template_list",
+            "comments": "w_stress_welcome_individual; w_stress_relax; w_stress_review_together; w_stress_intro; w_stress_read_1; w_stress_read_2; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_welcome_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "welcome_together",
+        "value": "welcome_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_care_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "care_together",
+        "value": "care_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_review_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "review_together",
+        "value": "review_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "outro_text",
+                "value": "You can use the top 8 challenges and solutions that parents have with positive instructions.",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_relax",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "relax",
+        "value": "relax",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_intro",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "listen",
+        "value": "listen",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "audio_src",
+            "value": "plh_audio/sample.mp3",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "activity_title",
+                "value": "@global.w_stress",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "This week is about managing anger and stress.",
+                "comments": "placeholder",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_read_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "read",
+        "value": "read_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "“My teen is driving me crazy! They make me want to pull my hair out, all they do is complain, ask for things, and cause trouble. I can’t take this anymore! \n\nLet me tell you what happened...",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_image",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "value": "plh_images/workshops/stress/read_1/slide_1.svg",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "I lost my job and I was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy entered.",
+                        "type": "set_variable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "pair",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "box_image",
+                        "rows": [
+                          {
+                            "name": "image_src",
+                            "value": "plh_images/workshops/stress/read_1/slide_2.svg",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "@global.w_stress_teen_boy: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (snapping): “Leave me alone and mind your own business!”",
+                            "type": "set_variable"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "pair",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "value": "plh_images/workshops/stress/read_1/slide_3.svg",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "@global.w_stress_teen_boy: “What did I do? You never listen!”  \n\n@global.w_stress_male_caregiver: “I said leave me alone or you will get a beating!”",
+                                "type": "set_variable"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "pair",
+                            "rows": [
+                              {
+                                "type": "nested_properties",
+                                "name": "box_1",
+                                "value": "box_image",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/stress/read_1/slide_4.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "@global.w_stress_girl: “Look! I have made a paper house paper!” ",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "box_2",
+                                "value": "pair",
+                                "rows": [
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_1",
+                                    "value": "box_image",
+                                    "rows": [
+                                      {
+                                        "name": "image_src",
+                                        "value": "plh_images/workshops/stress/read_1/slide_5.svg",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "text",
+                                        "value": "@global.w_stress_teen_boy: “Who cares about your stupid house!”",
+                                        "type": "set_variable"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_2",
+                                    "value": "box_image",
+                                    "rows": [
+                                      {
+                                        "name": "image_src",
+                                        "value": "plh_images/workshops/stress/read_1/slide_6.svg",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "text",
+                                        "hidden": "true",
+                                        "type": "set_variable"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_talk_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "talk_together",
+        "value": "talk_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "Let's discuss what happened in this story.",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "How do you think @global.w_stress_teen_boy felt? And his @global.w_instruct_male_caregiver? And @global.w_stress_girl?\n\nWhat things could have helped @global.w_instruct_male_caregiver?",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "nav_group",
+                    "rows": [
+                      {
+                        "name": "info_button",
+                        "value": "Ideas",
+                        "hidden": "false",
+                        "comments": "Recognise why he feels stressed \n\nTake a deep breath and speak calmly  \n\nShow he understands his teen’s feelings \n\nThink about solutions together \n\nDo something positive together ",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_read_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "read",
+        "value": "read_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "All these can help. Let’s try this again",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_image",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "value": "plh_images/workshops/stress/read_1/slide_1.svg",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "I lost my job and I was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy entered.",
+                        "type": "set_variable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "pair",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "box_image",
+                        "rows": [
+                          {
+                            "name": "image_src",
+                            "value": "plh_images/workshops/stress/read_2/slide_2.svg",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "@global.w_stress_teen_boy: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (taking a breath): “I’m sorry son. I had a difficult day today. The boss fired me.” ",
+                            "type": "set_variable"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "pair",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "value": "plh_images/workshops/stress/read_2/slide_3.svg",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "@global.w_stress_teen_boy (looking worried): “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver (sees his son looking upset so puts an arm around): “I’ll try, son, And your@global.w_stress_female_caregiver’s job will help us get by while I look for another job.” ",
+                                "type": "set_variable"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "pair",
+                            "rows": [
+                              {
+                                "type": "nested_properties",
+                                "name": "box_1",
+                                "value": "box_image",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/stress/read_2/slide_4.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "@global.w_stress_teen_boy: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.stress_male_caregiver: “No it’s okay, Amani. I appreciate you offer. The most important thing is that you work hard at school . Thanks for listening to me.” ",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "box_2",
+                                "value": "box_image",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/stress/read_2/slide_5.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy: “Okay, @global.w_stress_male_caregiver!” ",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "outro_text",
+                "value": "That went so much better! \n\nTaking a pause helps to respond calmly when you feel angry or stressed. Let’s try it out.",
+                "type": "set_variable"
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you breathe instead of yell, mark your @global.parent_point to track your success.",
+                "hidden": "false",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_think",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "think",
+        "value": "think_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_title",
+                "value": "Safety Amnesty",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Think back to when you were a teenager. Was there ever a time when you were in danger but you couldn’t tell your family because they would have been angry with you?",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_image",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "Boy: ‘Don’t tell the adults, but I’m going to bar with my friends tonight’ Girl ‘Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party’",
+                        "type": "set_variable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "pair",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "box_image",
+                        "rows": [
+                          {
+                            "name": "image_src",
+                            "hidden": "true",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "Boy: ‘I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry’",
+                            "type": "set_variable"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "pair",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "hidden": "true",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "Girl: ‘I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party’",
+                                "type": "set_variable"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "pair",
+                            "rows": [
+                              {
+                                "type": "nested_properties",
+                                "name": "box_1",
+                                "value": "box_image",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "hidden": "true",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "Parent: I care about your safety more than anything. If something ever happens to you where you are upset, or scared, you can always call me for help, or tell me about it. Just say ‘safety amnesty’. I promise that I will do the best I can to help you and I won’t be angry with you – even if you are somewhere you shouldn’t be or doing something you shouldn’t be’",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "box_2",
+                                "value": "pair",
+                                "rows": [
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_1",
+                                    "value": "box_image",
+                                    "rows": [
+                                      {
+                                        "name": "image_src",
+                                        "hidden": "true",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "text",
+                                        "value": "Girl: ‘Mum, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.’",
+                                        "type": "set_variable"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_2",
+                                    "value": "box_image",
+                                    "rows": [
+                                      {
+                                        "name": "image_src",
+                                        "hidden": "true",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "text",
+                                        "value": "Boy: ‘Dad, I’m worried that my friends are getting into trouble. I don’t want to stop being their friend, but I’m worried. Can we talk about this?’",
+                                        "type": "set_variable"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_tools",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "box_tools",
+        "value": "box_tools",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "tools_title",
+            "value": "@global.w_instruct"
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_1",
+            "rows": [
+              {
+                "name": "title",
+                "value": "BREATHE. Slowly. Pause.  ",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "Before you say anything, slowly breathe in and out five times. It will calm you, and give you a chance to think.",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_2",
+            "rows": [
+              {
+                "name": "title",
+                "value": "SHARE how you feel",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "This is hard. Many of us were told not to cry, or show our feelings to our children. But take a deep breath and calmly tell them how you feel. They will understand better, and also learn from you how to deal with stress.",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_3",
+            "rows": [
+              {
+                "name": "title",
+                "value": "SHOW them you care",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "This is also hard! Stress makes us focus on ourselves. But our teens need our support. Ask them how they feel. Listen to them and comfort them. Try a hug or say ‘I understand’. It can change everything.",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_4",
+            "rows": [
+              {
+                "name": "title",
+                "value": "SEEK the positive",
+                "type": "set_variable"
+              },
+              {
+                "name": "text_1",
+                "value": "Can you and your teen think about ideas that might help? Can you do something positive together to take your mind off the stress?",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "name": "bottom_text",
+            "value": "If all else fails, breathe. You can do this.",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_tools_activity",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "tools_activity",
+        "value": "tools_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "w_stress_tools",
+                "rows": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_home_practice",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "home_practice",
+        "value": "home_practice",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "There are two home practices for this week.",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text_1",
+                    "value": "Whenever you are feeling stressed or upset: take five breaths in and out before you react",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_1",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text_2",
+                    "value": "Do a safety amnesty with your teenager",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_2",
+                    "value": "Safety Amnesty Activity",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "habit_text",
+                    "value": "Every time you breathe instead of yell, mark your @global.parent_point to track your success.",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_ending",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "value": "ending",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [],
+        "name": "ending"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
   }
 ]
