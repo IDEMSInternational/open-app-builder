@@ -3667,9 +3667,9 @@
         "type": "set_variable"
       },
       {
-        "type": "set_local",
         "name": "debug_variable_four",
-        "value": "Value of the fourth debug variable"
+        "value": "Value of the fourth debug variable",
+        "type": "set_variable"
       },
       {
         "name": "debug_variable_five",
