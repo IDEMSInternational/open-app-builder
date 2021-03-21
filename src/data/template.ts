@@ -3710,7 +3710,7 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_local",
+        "type": "declare_variable",
         "name": "debug_variable",
         "value": "plh_images/workshop_modes/guide_2/wave.svg"
       },
