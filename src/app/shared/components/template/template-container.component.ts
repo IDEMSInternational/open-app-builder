@@ -161,11 +161,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         return this.templateService.setGlobal(key, value);
       case "go_to":
         const [templatename] = action.args;
-        history.pushState({}, "", location.href);
-        return this.router.navigate(["../", templatename], {
-          relativeTo: this.route,
+        return this.router.navigate(["template", templatename], {
           queryParams: { from_template: this.name },
-          replaceUrl: true,
+          queryParamsHandling: "merge",
         });
       case "pop_up":
         /*** WiP */
