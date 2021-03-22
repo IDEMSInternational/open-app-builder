@@ -62,6 +62,7 @@ If category_list is not available we generate list of values based on min_value,
 
 ## Radio Buttons - TmplRadioGroupComponent
 
+- value - string or null. Result or selected by default.
 - radio_button_list - string or null. List of buttons with parameters. Default - undefined
 - radio_button_type - string or null. Type of radio buttons. Default - null
 - options_per_row - number. Count of radio button in one row. Default - 2
@@ -71,17 +72,18 @@ If category_list is not available we generate list of values based on min_value,
 
 ## ComboBox - TmplComboBoxComponent
 
+- value - string or null. Result or selected by default.
 - list_of_answers - string or null. List of the answers to be displayed. Default - null
 - text - string or null. Text of question. Default - null
 - input_allowed - boolean. Can the user set a custom response. Default - false
 - input_position - string or null. Position of input element('top or bottom'). Default - top
-- answer_placeholder - string. Input placeholder. Default - ''
+- answer_placeholder - string. Input placeholder. Default - empty string
 
 ## TextBox - TmplTextBoxComponent
 
 - value - string or null. Input value. Default - undefined
 - max-length - number. Max length input value. Default - 30
-- placeholder - string or null. Input placeholder. Default ''
+- placeholder - string or null. Input placeholder. Default - empty string
 
 ## TileComponent - TmplTileComponent
 
