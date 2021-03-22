@@ -54,11 +54,11 @@ If category_list is not available we generate list of values based on min_value,
 
 ## Timer - TmplTimerComponent
 
-- value - timer duration. Default - 10
+- value - timer duration in minutes. Default - 10 minutes
 - title - text or null - Timer title text.
 - help - text or null. If null - don't display help icon.
 - is_editable_on_playing - boolean value, is it possible to change the values of the timer when it is running. Default - false
-- timerDurationExtension - number. Value for increase the time on the timer. Default - 1
+- timerDurationExtension - number. Value for increase the time on the timer. Default - 1 minute
 
 ## Radio Buttons - TmplRadioGroupComponent
 
@@ -66,7 +66,7 @@ If category_list is not available we generate list of values based on min_value,
 - radio_button_list - string or null. List of buttons with parameters. Default - undefined
 - radio_button_type - string or null. Type of radio buttons. Default - null
 - options_per_row - number. Count of radio button in one row. Default - 2
-- color - string. Background button color if it checked. Default - '#0D3F60'
+- color - string. Border color if it is checked. Default - '#0D3F60'
 - background_gradient - string. Background button color. Default - "168.87deg, #0F8AB2 28.12%, #0D4060 100%"
 
 
