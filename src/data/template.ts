@@ -216,7 +216,6 @@
       {
         "type": "timer",
         "name": "timer",
-        "value": 300,
         "parameter_list": [
           "duration_extension:@local.duration_extension",
           "duration:@local.duration"
