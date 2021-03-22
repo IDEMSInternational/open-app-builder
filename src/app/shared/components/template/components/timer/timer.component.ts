@@ -88,7 +88,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
 
 
   getDurationFromParams() {
-    return getNumberParamFromTemplateRow(this._row, "duration", 10) * 60;
+    return this._row.value ? this._row.value : 600;
   }
 
   clickLeftButton() {
