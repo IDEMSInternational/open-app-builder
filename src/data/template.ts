@@ -6435,13 +6435,20 @@ export const template: FlowTypes.Template[] = [
         "status": "released",
         "rows": [
             {
-                "type": "title",
-                "name": "title",
-                "value": "Template Together Welcome",
+                "name": 'text1',
+                "type": "display_group",
                 "style_list": [
-                    "align-self: center",
-                    "margin-top: 25px",
+                    "width: 100%",
+                    "margin-top: 35px",
+                    "border: 1px solid black",
                 ],
+                "rows": [
+                    {
+                        "name": "title_2",
+                        "value": "Template Together Welcome",
+                        "type": "title",
+                    },
+                ]
             },
             {
                 "name": "activity_image",
@@ -6453,7 +6460,21 @@ export const template: FlowTypes.Template[] = [
             },
             {
                 "name": 'text1',
-                "ty[e"
+                "type": "display_group",
+                "style_list": [
+                    "width: 100%",
+                    "border: 1px solid black",
+                    "justify-content: space-end"
+                ],
+                "rows": [
+                    {
+                        "name": "title_2",
+                        "value": "Welcome family group",
+                        "type": "title",
+                        "style_list": [
+                        ],
+                    },
+                ]
             },
             {
                 "name": "text",
@@ -6471,7 +6492,6 @@ export const template: FlowTypes.Template[] = [
                 "style_list": [
                     "align-self: center",
                     "border: 1px solid black",
-                    "width: 100%"
                 ],
                 "rows": [
                     {
@@ -6479,7 +6499,6 @@ export const template: FlowTypes.Template[] = [
                         "name": "buttonName",
                         "value": "START SESSION",
                         "style_list": [
-                            "flex: 0",
                             "border: 1px solid black"
                         ],
                     },
@@ -6488,7 +6507,6 @@ export const template: FlowTypes.Template[] = [
                         "name": "buttonName",
                         "value": "SKIP",
                         "style_list": [
-                            "flex: 0",
                             "border: 1px solid black"
                         ],
                     }
