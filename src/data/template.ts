@@ -793,14 +793,14 @@ export const template: FlowTypes.Template[] = [
           "type": "combo_box",
           "name": "default_comboBox",
           "comments": "No",
-          "value": "Sad but true",
+          "value": "Sad or no",
           "parameter_list": [
             "style: pop-up",
             "text: How do you think Amina felt about the way neighbour responded?",
             "placeholder: Please select",
             "answer_placeholder: Your Answer",
             "max-length: 38",
-            "input_allowed: false",
+            "input_allowed: true",
             "list_of_answers: Sad; Confused; Angry"
           ]
         },

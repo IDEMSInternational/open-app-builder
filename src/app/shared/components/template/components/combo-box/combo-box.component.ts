@@ -8,7 +8,7 @@ import { getStringParamFromTemplateRow } from 'src/app/shared/utils';
 
 @Component({
   selector: "plh-combo-box",
-  templateUrl: "./combo-box.component.html", 
+  templateUrl: "./combo-box.component.html",
   styleUrls: ["./combo-box.component.scss"]
 })
 export class TmplComboBoxComponent implements ITemplateComponent, OnInit {
@@ -24,8 +24,8 @@ export class TmplComboBoxComponent implements ITemplateComponent, OnInit {
 
   ngOnInit(): void {
     this.getParams()
-    var listAnswers = getStringParamFromTemplateRow(this.row, "list_of_answers", null);
-    this.customAnswerSelected = listAnswers && this.row.value && this.row.value ? !listAnswers.split(";").find(x => x == this.row.value) : false;
+    const listAnswers = getStringParamFromTemplateRow(this.row, "list_of_answers", null);
+    this.customAnswerSelected = listAnswers && this.row.value ? !listAnswers.split(";").find(x => x === this.row.value) : false;
     this.row.value = this.row.value || this.placeholder;
   }
 
@@ -44,12 +44,13 @@ export class TmplComboBoxComponent implements ITemplateComponent, OnInit {
         "selectedValue":  this.row.value,
         "customAnswerSelected": this.customAnswerSelected
       },
-      showBackdrop: false
+      showBackdrop: false,
     });
 
     modal.onDidDismiss().then((data) => {
-      this.row.value = data.data.answer || this.placeholder;
-      this.customAnswerSelected = data.data.customAnswerSelected;
+
+      this.row.value = data?.data?.answer || this.placeholder;
+      this.customAnswerSelected = data?.data?.customAnswerSelected;
     });
 
     await modal.present();
