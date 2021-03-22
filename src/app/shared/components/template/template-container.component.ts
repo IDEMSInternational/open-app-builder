@@ -351,7 +351,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             let oldList = r[field];
             r[field] = dynamicEvaluatorsPerItem.map((evaluator, idx) => {
               if (evaluator) {
-                return this.parseDynamicValue(evaluator);
+                return this.parseDynamicValue(evaluator, field);
               } else {
                 return oldList[idx];
               }
@@ -363,7 +363,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             r._dynamicFields = r._dynamicFields || {};
             // evaluate dynamic field, keeping reference for future
             r._dynamicFields[field] = dynamicEvaluators as any;
-            r[field] = this.parseDynamicValue(r._dynamicFields[field]);
+            r[field] = this.parseDynamicValue(r._dynamicFields[field], field);
           }
         }
 
@@ -394,7 +394,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return rowsWithReplacedValues;
   }
 
-  private parseDynamicValue(evaluators: FlowTypes.TemplateRowDynamicEvaluator[]) {
+  private parseDynamicValue(evaluators: FlowTypes.TemplateRowDynamicEvaluator[], field: string) {
     let parsedExpression = evaluators[0].fullExpression;
     // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
     for (let evaluator of evaluators) {
@@ -418,13 +418,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
 
-    // Handle negated conditions - true/false will already have been filled as text so manually toggle
-    if (parsedExpression.startsWith("!")) {
-      parsedExpression = parsedExpression.replace("!true", "false").replace("!false", "true");
-      if (parsedExpression.startsWith("!")) {
-        console.error("Negation condition not handled correctly", parsedExpression);
-      }
-    }
+    // For hidden field only support Javascript evaluation
+    if (field === "hidden") {
+      const func = new Function(`"use strict"; return (${parsedExpression});`);
+      return func.apply(this);
+    } 
+    
     return parsedExpression;
   }
 
