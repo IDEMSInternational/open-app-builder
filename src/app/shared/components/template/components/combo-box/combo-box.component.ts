@@ -48,7 +48,6 @@ export class TmplComboBoxComponent implements ITemplateComponent, OnInit {
     });
 
     modal.onDidDismiss().then((data) => {
-
       this.row.value = data?.data?.answer || this.placeholder;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
     });

@@ -94,9 +94,8 @@ export class ComboBoxModalComponent implements OnInit {
     enterCustomAnswer() {
         if (this.form.get("customAnswer").value !== "") {
             if (this.customAnswerSelected) {
-                this.form.get("customAnswer").setValue(null);
-                this.customAnswerSelected = false;
-                this.closeModal({customAnswerSelected: this.customAnswerSelected, answer: null});
+                this.customAnswerSelected = true;
+                this.closeModal({customAnswerSelected: this.customAnswerSelected, answer: this.form.get("customAnswer").value});
             } else {
                 this.form.get("answer").setValue(null);
                 this.customAnswerSelected = true;
