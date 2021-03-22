@@ -8846,5 +8846,16 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_anim1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "css_anim",
+        "value": "relax1",
+      }
+    ]
   }
 ]
