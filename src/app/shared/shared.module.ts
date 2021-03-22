@@ -11,6 +11,9 @@ import { RouterModule } from "@angular/router";
 import { TemplateComponentsModule } from "./components/template/template.module";
 import { ANIMATION_COMPONENTS } from "./components/animations";
 import { AnimationComponent } from "./components/animations/animation.component";
+import { RoundIconButtonComponent } from "./components/template/components/round-icon-button/round-icon-button.component";
+import { TooltipModule } from "./components/common/directives/tooltip.directive";
+
 
 const Components = [
   BlobComponent,
@@ -20,12 +23,14 @@ const Components = [
   PLHMainHeaderComponent,
   PLHMainTabsComponent,
   AnimationComponent,
-  ... ANIMATION_COMPONENTS
+  ...ANIMATION_COMPONENTS
 ];
 
 @NgModule({
-  declarations: Components,
+  declarations: [
+    Components,
+  ],
   imports: [CommonModule, IonicModule, RouterModule, TemplateComponentsModule],
   exports: Components,
 })
-export class SharedModule {}
+export class SharedModule { }

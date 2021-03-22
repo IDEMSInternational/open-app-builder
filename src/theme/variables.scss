@@ -12,6 +12,14 @@ $primary-lighter: color.change($primary, $lightness: 95%);
 
 /** Ionic CSS Variables **/
 :root {
+
+  --ion-btn-secondary-color: linear-gradient(168.87deg, #FFB833 28.12%, #F88923 100%);
+  --ion-btn-secondary-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  --ion-btn-primary-color: linear-gradient(168.87deg, #0F8AB2 28.12%, #0D4060 100%);
+  --ion-btn-primary-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
   --ion-color-primary: #{$primary};
   --ion-color-primary-light: #{$primary-light};
   --ion-color-primary-lighter: #{$primary-lighter};

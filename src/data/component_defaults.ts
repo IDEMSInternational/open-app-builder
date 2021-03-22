@@ -3,45 +3,6 @@
   export const component_defaults: FlowTypes.Component_defaults[] = [
   {
     "flow_type": "component_defaults",
-    "flow_name": "nav_group",
-    "status": "released",
-    "rows": [
-      {
-        "parameter": "next_button_text",
-        "default_value": "Next"
-      },
-      {
-        "parameter": "back_button_text",
-        "default_value": "Back"
-      },
-      {
-        "parameter": "skip_button_text",
-        "default_value": "Skip"
-      },
-      {
-        "parameter": "finish_button_text",
-        "default_value": "Finish"
-      },
-      {
-        "parameter": "restart_button_text",
-        "default_value": "Restart"
-      },
-      {
-        "parameter": "show_skip_button",
-        "default_value": false
-      },
-      {
-        "parameter": "show_back_button",
-        "default_value": true
-      },
-      {
-        "parameter": "show_restart_button",
-        "default_value": false
-      }
-    ]
-  },
-  {
-    "flow_type": "component_defaults",
     "flow_name": "timer",
     "status": "released",
     "rows": [
@@ -61,6 +22,7 @@
         "parameter": "duration_extension",
         "default_value": 1
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\quality_assurance\\template_component_defaults.xlsx"
   }
 ]

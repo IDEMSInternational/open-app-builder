@@ -2003,6 +2003,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/howler@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@types/howler/-/howler-2.2.1.tgz#c95314724a8e970b1b29a731861975f39987b9ca"
+  integrity sha512-1MiSldngr+eAO4lDPtjzl4Nf2GmRh8VDHIpNBIkyd25L22JExVlI6w3fjSM7+FNc1e1WZAPNq7/flkw685byfg==
+
 "@types/intro.js@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/intro.js/-/intro.js-3.0.0.tgz#27ae56f313ebef75c21a957367d1cfcd6b1a6f77"
@@ -2069,6 +2074,13 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.30.tgz#1ed6e01e4ca576d5aec9cc802cc3bcf94c274192"
   integrity sha512-HmqFpNzp3TSELxU/bUuRK+xzarVOAsR00hzcvM0TXrMlt/+wcSLa5q6YhTb6/cA6wqDCZLDcfd8fSL95x5h7AA==
 
+"@types/nouislider@^9.0.10":
+  version "9.0.10"
+  resolved "https://registry.yarnpkg.com/@types/nouislider/-/nouislider-9.0.10.tgz#4c03990e37aa885826a5be8d5c226508f78aecdd"
+  integrity sha512-aQ7U5oQ/h/joc93kwJvpGpGOkWGRg6doDvFyU9Do+K2JwwQnhAAcfnT9mMN1fgHAlnKLlyWTWRGs90B6FL0l4w==
+  dependencies:
+    "@types/wnumb" "*"
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -2112,6 +2124,11 @@
     "@types/node" "*"
     "@types/source-list-map" "*"
     source-map "^0.6.1"
+
+"@types/wnumb@*":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/wnumb/-/wnumb-1.2.0.tgz#de93478a0d10ea2e27809b5e3fc90ac52c1acd43"
+  integrity sha512-74+3MQqSTrDUtYisxrE8xbrTxmc3pi3G+yr1/TKNrMD7nfXIgUSgYeOu5R7g6Nsn/hl1GxKZ5VW2BuOQg9aLYg==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -6487,6 +6504,11 @@ hosted-git-info@^3.0.6:
   dependencies:
     lru-cache "^6.0.0"
 
+howler@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.1.tgz#a521a9b495841e8bb9aa12e651bebba0affc179e"
+  integrity sha512-0iIXvuBO/81CcrQ/HSSweYmbT50fT2mIc9XMFb+kxIfk2pW/iKzDbX1n3fZmDXMEIpYvyyfrB+gXwPYSDqUxIQ==
+
 hpack.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/hpack.js/-/hpack.js-2.1.6.tgz#87774c0949e513f42e84575b3c45681fade2a0b2"
@@ -8767,6 +8789,11 @@ ng2-charts@^2.4.2:
     lodash-es "^4.17.15"
     tslib "^2.0.0"
 
+ng2-nouislider@^1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-1.8.3.tgz#c9c1ec77b6b5a909f87368ba799914208baa13a6"
+  integrity sha512-Vl8tHCcJ/ioJLAs2t6FBC35sZq1P/O5ZdqdFwYxOCOMVbILGWNg+2gWZIjFstvv9pqb/mVvVUYe6qGG/mA/RBQ==
+
 ngx-color@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/ngx-color/-/ngx-color-6.1.0.tgz#0bccf2b1723a1928902f71b1271ed793460bdf54"
@@ -8904,6 +8931,11 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
+
+nouislider@^14.6.3:
+  version "14.6.3"
+  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-14.6.3.tgz#4dad5b6651d6515f6e6829f8b8e3a1736a5c0ffb"
+  integrity sha512-/3tAqsWY2JYW9vd7bC14bFRA1P9A+pRHOtKmoMsyfnB0fQcd1UFx2pdY1Ey5wAUzTnXTesmYaEo/ecLVETijIQ==
 
 npm-bundled@^1.0.1:
   version "1.1.1"

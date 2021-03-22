@@ -28,7 +28,7 @@
 /* Custom Styles */
 @import "./theme/layout";
 @import "./theme/typography";
-
+@import "./theme/tooltip";
 .slide-up-modal {
     .modal-wrapper {
         max-width: 80%;
@@ -56,5 +56,6 @@
         }
     }
 }
-
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~nouislider/distribute/nouislider.min.css";
+

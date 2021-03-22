@@ -9,7 +9,7 @@
       {
         "id": "campaign_morning",
         "time": 0.375,
-        "every": "app_day"
+        "every": "app:day"
       },
       {
         "id": "campaign_main",
@@ -19,21 +19,22 @@
       {
         "id": "campaign_evening",
         "time": 0.7916666666666666,
-        "every": "app_day"
+        "every": "app:day"
       },
       {
         "id": "campaign_inactive",
         "time": 0.625,
-        "every": "7_non_app_day"
+        "every": "7_non_app:day"
       },
       {
         "id": "campaign_week",
-        "every": "7_day"
+        "every": "7:day"
       },
       {
         "id": "campaign_active_week",
-        "every": "7_app_day"
+        "every": "7_app:day"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\periodic_content\\reminders.xlsx"
   }
 ]
