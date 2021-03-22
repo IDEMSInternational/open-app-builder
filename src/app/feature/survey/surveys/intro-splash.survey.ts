@@ -1,22 +1,23 @@
-import { animate, state, style, transition, trigger } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
+import { PLHAnimations } from "src/app/shared/animations";
 import { ISurvey } from "../types/survey.types";
 
 @Component({
+  animations: PLHAnimations.fadeInOut,
   template: `
     <ion-button fill="clear" (click)="skipIntro()" class="skip-button">Skip Intro</ion-button>
     <div class="section-container">
       <section [@fadeInOut]="fadeSection[0]">
-        <img src="assets/images/splash-screen/0.svg">
+        <img src="assets/images/splash-screen/0.svg" />
         <p>Bringing up teenagers is hard</p>
       </section>
       <section [@fadeInOut]="fadeSection[1]">
-        <img src="assets/images/splash-screen/1.svg">
+        <img src="assets/images/splash-screen/1.svg" />
         <p>You are the best parent your teen could have</p>
       </section>
       <section [@fadeInOut]="fadeSection[2]">
-        <img src="assets/images/splash-screen/2.svg">
+        <img src="assets/images/splash-screen/2.svg" />
         <p>Join the 124 million parents who have used our resources</p>
       </section>
       <section [@fadeInOut]="fadeSection[3]">
@@ -82,7 +83,7 @@ import { ISurvey } from "../types/survey.types";
       }
 
       /* For short phone screen */
-      @media only screen and (max-width: 500px) and (max-height:500px) {
+      @media only screen and (max-width: 500px) and (max-height: 500px) {
         .partner-logos > img {
           width: 80px;
           margin-bottom: 10px;
@@ -90,22 +91,13 @@ import { ISurvey } from "../types/survey.types";
       }
 
       /* For short modal */
-      @media only screen and (min-width: 600px) and (min-height:500px) and (max-height:770px) {
+      @media only screen and (min-width: 600px) and (min-height: 500px) and (max-height: 770px) {
         .partner-logos > img {
           width: 110px;
           margin-bottom: 20px;
         }
       }
     `,
-  ],
-  animations: [
-    trigger("fadeInOut", [
-      state("in", style({ opacity: 1 })),
-      state("out", style({ opacity: 0 })),
-      // when fading in include 1s delay for previous animations to complete
-      transition("* => in", [animate("0.5s 1s")]),
-      transition("in => out", [animate("0.5s")]),
-    ]),
   ],
 })
 /**
