@@ -6379,32 +6379,39 @@ export const template: FlowTypes.Template[] = [
   },
   {
     "flow_type": "template",
-    "flow_name": "displayGroup_test",
+    "flow_name": "flex_styling_example",
     "status": "released",
     "rows": [
       {
         "type": "display_group",
         "style_list": [
+          "margin-top: 35px",
+        ],
+        /*"style_list": [
           "justify-content: center",
           "align-items: center",
           "width: 100%",
-          "flex:",
-          "height: null",
           "margin-left: 0px;",
           "margin-rigth: 0px;",
           "margin-top: 0px",
-          "margin-bottom:0px"
-        ],
+          "margin-bottom:0px",
+        ],*/
         "rows": [
           {
             "type": "title",
             "name": "title",
-            "value": "Audio"
+            "value": "Audio",
+            "style_list": [
+              "flex: 3"
+            ],
           },
           {
             "type": "button",
             "name": "buttonName",
-            "value": "Button"
+            "value": "Button",
+            "style_list": [
+              "flex: 10"
+            ],
           }
         ]
       },
