@@ -49,5 +49,46 @@ If category_list is not available we generate list of values based on min_value,
 - step - step for slider. Default - 1
 - min_value_label - select value on slider
 - max_value_label - select value on slider
-- labels_count - labels count for slader. Default - 8
+- labels_count - labels count for slider. Default - 8
 - no_value - boolean. Default - false. Control is no_value selected
+
+## Timer - TmplTimerComponent
+
+- value - timer duration. Default - 10
+- title - text or null - Timer title text.
+- help - text or null. If null - don't display help icon.
+- is_editable_on_playing - boolean value, is it possible to change the values of the timer when it is running. Default - false
+- timerDurationExtension - number. Value for increase the time on the timer. Default - 1
+
+## Radio Buttons - TmplRadioGroupComponent
+
+- radio_button_list - string or null. List of buttons with parameters. Default - undefined
+- radio_button_type - string or null. Type of radio buttons. Default - null
+- options_per_row - number. Count of radio button in one row. Default - 2
+- color - string. Background button color if it checked. Default - '#0D3F60'
+- background_gradient - string. Background button color. Default - "168.87deg, #0F8AB2 28.12%, #0D4060 100%"
+
+
+## ComboBox - TmplComboBoxComponent
+
+- list_of_answers - string or null. List of the answers to be displayed. Default - null
+- text - string or null. Text of question. Default - null
+- input_allowed - boolean. Can the user set a custom response. Default - false
+- input_position - string or null. Position of input element('top or bottom'). Default - top
+- answer_placeholder - string. Input placeholder. Default - ''
+
+## TextBox - TmplTextBoxComponent
+
+- value - string or null. Input value. Default - undefined
+- max-length - number. Max length input value. Default - 30
+- placeholder - string or null. Input placeholder. Default ''
+
+## TileComponent - TmplTileComponent
+
+- value - any. Default - undefined
+- first_line_text - string or null. Text. Default - null
+- second_line_text string or null. Text. Default - null
+- icon_src - string or null. image file source link. Default - null
+- background_gradient - string. Background button color. Default - "168.87deg, #0F8AB2 28.12%, #0D4060 100%"
+- style - string. Name of default css class. Default 'quick_start'
+
