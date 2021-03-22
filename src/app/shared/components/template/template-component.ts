@@ -7,6 +7,7 @@ import {
   ViewChild,
   Type,
   OnInit,
+  ElementRef
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
@@ -19,7 +20,7 @@ import { TemplateContainerComponent } from "./template-container.component";
   selector: "[plhTemplateComponentHost]",
 })
 export class TmplCompHostDirective {
-  constructor(public viewContainerRef: ViewContainerRef) {}
+  constructor(public viewContainerRef: ViewContainerRef) { }
 }
 
 /*********************************************************************
@@ -59,12 +60,18 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
 
+  styles: any = {};
+
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private elRef: ElementRef) { }
 
   ngOnInit() {
     this.renderRow(this.row);
+  }
+
+  ngAfterContentInit() {
+    this.setStyleList();
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
@@ -81,6 +88,17 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
           // not all components have mapping, for now just log warning
           console.warn("[tmpl.component] - skipped type", row);
         }
+    }
+  }
+
+  private setStyleList() {
+    const styles = {}
+    if (this.row.style_list) {
+      for (let i = 0; i < this.row.style_list.length; i++) {
+        let splited = this.row.style_list[i].split(':')
+        styles[splited[0]] = splited[1];
+        this.elRef.nativeElement.style.setProperty(splited[0], splited[1])
+      }
     }
   }
 
