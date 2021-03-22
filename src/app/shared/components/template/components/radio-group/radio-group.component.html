@@ -3,7 +3,7 @@
     <div class="btn_triangle dse" *ngSwitchCase="'btn_triangle'">
       <div class="btn_triangle_container center" *ngFor="let item of arrayOfBtn" >
         <label class="center standard-label" [class.checked]="el.checked">
-          <input #el type="radio" name="triangle">
+          <input #el type="radio" [value]="item.text" [checked]="el.value === value" [(ngModel)]="value"  name="triangle">
           {{item.text}}
         </label>
       </div>
@@ -14,7 +14,7 @@
           <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image"
           [svgStyle]="{'fill': el.checked && !item.image_checked ? '#fff': this.selectedBackgroundColor}">
           </svg-icon>
-          <input #el type="radio" name="square">
+          <input #el type="radio" [value]="item.text" [checked]="el.value === value" [(ngModel)]="value" name="square">
           {{item.text}}
         </label>
       </div>
@@ -24,7 +24,7 @@
         <label class="center standard-label" [class.smile-checked]="el.checked">
           <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
           </svg-icon>
-          <input #el type="radio" name="image">
+          <input #el type="radio" [value]="item.text" [checked]="el.value === value" [(ngModel)]="value" name="image">
           {{item.text}}
         </label>
       </div>
