@@ -1,0 +1,56 @@
+:host {
+    width: 363px;
+    min-height: 183px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.timer-counter {
+    width: 200px;
+    height: 73px;
+    margin: 0 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div{
+        font-weight: bold;
+        font-size: 40px;
+        color: #0D3F60;
+    }
+}
+.timer-content {
+    display: flex;
+    margin-bottom: 22px;
+    justify-content: center;
+}
+.timer-title {
+   margin-left: 8px;
+    max-width: 298px;
+}   
+
+.timer-help {
+    margin-top: 15px;
+    margin-left: 10px;
+    color: #0D3F60;
+    height: 32px;
+    width: 32px;
+}
+
+.timer-row {
+    display: flex;
+}
+.add-min{
+    width: 64px;
+    height: 64px;
+    --background: #00A0CC;
+    --background-size: cover;
+    --border-radius: 50%;
+    --padding:0;
+    .right-icon{
+        max-width: none;
+        top: 0;
+    }
+    .left-icon{
+        margin-top: 8px;
+    }
+}
+

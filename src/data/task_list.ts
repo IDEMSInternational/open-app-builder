@@ -216,7 +216,8 @@
         "start_action": "give_award",
         "start_action_args": "medal"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\habits\\habit_goals.xlsx"
   },
   {
     "flow_type": "task_list",
@@ -657,6 +658,7 @@
         "start_action": "give_award",
         "start_action_args": "cup"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\module_goals.xlsx"
   }
 ]

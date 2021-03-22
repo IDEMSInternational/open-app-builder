@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { FlowTypes } from "src/app/shared/model/flowTypes";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -60,6 +61,45 @@ export function stringToArray(str: string = "", separator = ";") {
       .split(separator)
       .map((s) => s.trim())
       // remove empty strings, undefined or null values
-      .filter((el) => (el ? true : false))
+      .filter((el) => (!!el))
   );
 }
+
+export function getStringParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: string): string {
+  let res = _default;
+  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
+
+  if (param) {
+    param = param.split(":")[1].trim();
+
+    res = param || _default;
+  }
+
+  return res;
+}
+
+export function getNumberParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: number): number {
+  let res = _default;
+  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
+
+  if (param) {
+    param = param.split(":")[1].trim();
+
+    res = Number.isNaN(+param) ? _default : +param;
+  }
+
+  return res;
+}
+
+export function getBooleanParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: boolean): boolean {
+  let res = _default;
+  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
+
+  if (param) {
+    param = param.split(":")[1].trim();
+    res = param === "true";
+  }
+
+  return res;
+}
+

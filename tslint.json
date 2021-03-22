@@ -79,7 +79,7 @@
         }
       ]
     },
-    "directive-selector": [true, "attribute", "app", "camelCase"],
+    "directive-selector": [true, "attribute", "plh", "app", "camelCase"],
     "component-selector": [true, "element", "app", "page", "kebab-case"],
     "variable-name": {
       "options": [

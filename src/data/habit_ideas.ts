@@ -34,7 +34,8 @@
         "type": "list_item",
         "message_text": "Watch TV"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\habits\\habit_idea_picker.xlsx"
   },
   {
     "flow_type": "habit_ideas",
@@ -81,7 +82,8 @@
         "type": "list_item",
         "message_text": "Play a game/sport"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\habits\\habit_idea_picker.xlsx"
   },
   {
     "flow_type": "habit_ideas",
@@ -140,7 +142,8 @@
         "type": "list_item",
         "message_text": "Getting through mealtime peacefully "
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\habits\\habit_idea_picker.xlsx"
   },
   {
     "flow_type": "habit_ideas",
@@ -187,6 +190,7 @@
         "type": "list_item",
         "message_text": "Giving a compliment to someone"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\habits\\habit_idea_picker.xlsx"
   }
 ]

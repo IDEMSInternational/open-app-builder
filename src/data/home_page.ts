@@ -12,7 +12,7 @@
         "text": "Weekly Workshops",
         "visible": true,
         "enabled": true,
-        "route": "/module_list",
+        "route": "/template/workshop_buttons_temp",
         "left_image": "plh_images/home_page/home_page_workshops.svg"
       },
       {
@@ -33,6 +33,7 @@
         "route": "/parent_center",
         "left_image": "plh_images/home_page/home_page_parent_center.svg"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_navigation_temporary.xlsx"
   }
 ]

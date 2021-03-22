@@ -50,7 +50,8 @@
         "message_text": "Tap your ParentPoints <icon>, <icon>, <icon>: see your success!",
         "comment": "Requires icons"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\tips.xlsx"
   },
   {
     "flow_type": "tips",
@@ -72,7 +73,8 @@
           },
           {
             "type": "list_item",
-            "message_text": "1. \"DAY\"- Try to do it every day!"
+            "message_text": "1. \"DAY\"- Try to do it every day!",
+            "comment": "long title? not sure if fits"
           },
           {
             "type": "text",
@@ -105,7 +107,8 @@
         "message_text": "Tap your ParentPoint <icon>: see your success!",
         "comment": "plh_images/habits/habit_spend_time_icon.svg"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\tips.xlsx"
   },
   {
     "flow_type": "tips",
@@ -157,7 +160,8 @@
         "message_text": "Tap your ParentPoint <icon>: see your success!",
         "comment": "plh_images/habits/habit_praise_teen_icon.svg"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\tips.xlsx"
   },
   {
     "flow_type": "tips",
@@ -199,6 +203,7 @@
           }
         ]
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\tips.xlsx"
   }
 ]

@@ -113,7 +113,8 @@
         "id": "completion_care_package_family_completed_goal",
         "task_id": "task_care_package_family_completed_goal"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\habits\\habit_goals.xlsx"
   },
   {
     "flow_type": "completion_list",
@@ -264,6 +265,7 @@
         "id": "completion_mod_stress_completed_goal",
         "task_id": "task_mod_stress_completed_goal"
       }
-    ]
+    ],
+    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\module_goals.xlsx"
   }
 ]

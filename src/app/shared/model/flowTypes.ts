@@ -1,5 +1,4 @@
 /* tslint:disable:class-name */
-import { BehaviorSubject } from "scripts/node_modules/rxjs";
 import { RapidProFlowExport } from "src/app/feature/chat/models";
 export { RapidProFlowExport } from "src/app/feature/chat/models";
 import { TipRow } from "src/app/feature/tips/models/tips.model";
@@ -25,6 +24,7 @@ export namespace FlowTypes {
     | "reminder_list"
     | "template"
     | "component_defaults"
+    | "global"
     | "home_page";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
@@ -36,6 +36,8 @@ export namespace FlowTypes {
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
     module?: string;
+    // debug info
+    _xlsxPath?: string;
   }
 
   /**
@@ -318,17 +320,23 @@ export namespace FlowTypes {
   export interface Template extends FlowTypeBase {
     flow_type: "template";
     rows: TemplateRow[];
-    _setLocalVariable?: (name: string, value: any) => any;
+    comments?: string;
   }
 
-  export type TemplateRowType = 
-    "image"
+  export type TemplateRowType =
+    | "image"
     | "title"
+    | "subtitle"
     | "text"
     | "animated_section"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
+    // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
+    | "set_field"
+    | "set_global"
+    | "set_local"
+    | "set_field"
     | "nested_properties"
     | "button"
     | "image"
@@ -338,22 +346,71 @@ export namespace FlowTypes {
     | "template"
     | "timer"
     | "slider"
+    | "number_selector"
+    | "round_button"
     | "nav_group"
     | "nav_section"
-    | "template_group";
+    | "simple_checkbox"
+    | "set_default"
+    | "text_box"
+    | "combo_box";
 
   export interface TemplateRow {
-    type?: TemplateRowType;
+    type: TemplateRowType;
     name?: string;
-    value?: any;
-    action_list?: string[];
+    value?: any; // TODO - incoming data will be string, so components should handle own parsing
+    action_list?: TemplateRowAction[];
     parameter_list?: string[];
-    hidden?: boolean | string;
+    hidden?: string;
     rows?: TemplateRow[];
+    /** track fields above where dynamic expressions have been used in field evaluation */
+    _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
 
     /* Used for authoring comments. Not used in code */
+    cc_comments?: string;
     comments?: string;
     __EMPTY?: any;
+  }
+  /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
+  export interface TemplateRowDynamicEvaluator {
+    fullExpression: string;
+    matchedExpression: string;
+    type: "local" | "field" | "fields" | "global";
+    fieldName: string;
+  }
+  export interface TemplateRowAction {
+    /** actions have an associated trigger */
+    trigger: "click" | "completed" | "uncompleted";
+    // TODO - 2021-03-11 - most of list needs reconsideration/implementation
+    action_id:
+      | "" // TODO document this property for stop propogation
+      | "set_value" // This currently is same as set_local (remove?)
+      | "set_field"
+      | "set_local"
+      | "set_global"
+      | "emit"
+      // note - to keep target nav within component stack go_to is actually just a special case of pop_up
+      | "go_to"
+      | "pop_up";
+    args: string[];
+    /** field populated for tracking the component that triggered the action */
+    _triggeredBy?: string;
+    // debug info
+    _raw: string;
+    _cleaned: string;
+  }
+
+  export interface Global extends FlowTypeBase {
+    flow_type: "global";
+    rows: GlobalRow[];
+  }
+
+  export interface GlobalRow {
+    type: "declare_global_constant" | "declare_field_default";
+    name: string;
+    value: any;
+    comments?: string;
+    __EMPTY?: string;
   }
 
   /* Used for setting default parameters for template components */
@@ -365,7 +422,6 @@ export namespace FlowTypes {
   export interface Component_defaultsRow {
     parameter: string;
     default_value?: string | number | boolean;
-    comments?: string; /* Used for authoring comments. Not used in code */
+    comments?: string /* Used for authoring comments. Not used in code */;
   }
-
 }
