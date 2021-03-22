@@ -3457,19 +3457,19 @@
     "status": "released",
     "rows": [
       {
-        "type": "declare_variable",
+        "type": "set_variable",
         "name": "local_text_2",
         "value": "Success: text_2",
         "comments": "variables declared can be used anywhere on the sheet, including in child templates"
       },
       {
-        "type": "declare_variable",
+        "type": "set_variable",
         "name": "global_text",
         "value": "@global.debug_variable_1",
         "comments": "declared variables will not be overwritten by parents"
       },
       {
-        "type": "declare_variable",
+        "type": "set_variable",
         "name": "local_text_4",
         "value": "Success: text_4"
       },
@@ -3529,7 +3529,7 @@
     "status": "released",
     "rows": [
       {
-        "type": "declare_variable",
+        "type": "set_variable",
         "name": "child_local_variable",
         "value": "Failed: \"local_variable_1\""
       },
@@ -3562,12 +3562,12 @@
     "status": "released",
     "rows": [
       {
-        "type": "declare_variable",
+        "type": "set_variable",
         "name": "var_text_2",
         "value": "This is text_2"
       },
       {
-        "type": "declare_variable",
+        "type": "set_variable",
         "name": "var_text_4",
         "value": "This is text_4"
       },
@@ -3741,7 +3741,7 @@
     "status": "released",
     "rows": [
       {
-        "type": "declare_variable",
+        "type": "set_variable",
         "name": "debug_variable",
         "value": "plh_images/workshop_modes/guide_2/wave.svg"
       },
