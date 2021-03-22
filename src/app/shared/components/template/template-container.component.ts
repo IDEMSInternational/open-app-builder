@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { takeWhile } from "rxjs/operators";
-import { BehaviorSubject } from "scripts/node_modules/rxjs";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { takeUntil, takeWhile } from "rxjs/operators";
+import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateService } from "./services/template.service";
@@ -32,24 +33,44 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
   templateUrl: "./template-container.component.html",
   styleUrls: ["./template-container.component.scss"],
 })
-export class TemplateContainerComponent implements OnInit, ITemplateContainerProps {
+export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateContainerProps {
   @Input() name: string;
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
   template: FlowTypes.Template;
+  /** track path to template from top parent (not currently used) */
+  templateBreadcrumbs: string[] = [];
   /** local state tree used to handle default and overwritten row properties */
   localVariables: ILocalVariables = {};
-  debugMode = false;
+  componentDestroyed$ = new Subject();
+  debugMode: boolean;
   // TODO - link debug toggle to build environment or advanced setting (hide for general users)
   showDebugToggle = true;
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private templateService: TemplateService) {}
+  constructor(
+    private templateService: TemplateService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    // subscribe to query params to indicate if debugMode is enabled
+    this.route.queryParamMap
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((paramMap) => (this.debugMode = paramMap.get("debugMode") === "true"));
+  }
 
   ngOnInit() {
     this.initialiseTemplate();
+    const { name, templatename, parent, row, templateBreadcrumbs } = this;
+    // console.log("template initialised", { name, templatename, parent, row, templateBreadcrumbs });
+  }
+
+  ngOnDestroy(): void {
+    // allow any subscriptions to be removed by binding to these events (avoid memory leak)
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.unsubscribe();
   }
 
   /***************************************************************************************
@@ -67,6 +88,11 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
   }
   /** Optional method child component can add to handle post-action callback */
   public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
+
+  public setDebugMode(debugMode: boolean) {
+    const queryParams = { debugMode: debugMode || null };
+    this.router.navigate([], { relativeTo: this.route, queryParams, queryParamsHandling: "merge" });
+  }
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -166,6 +192,8 @@ export class TemplateContainerComponent implements OnInit, ITemplateContainerPro
       console.log({ localVariables: this.localVariables });
     }
     this.template.rows = this.processRows(this.template.rows, this.localVariables);
+    // keep track of path to this template from any parents
+    this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
   }
 
   /**
