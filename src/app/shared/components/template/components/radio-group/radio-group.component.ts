@@ -32,7 +32,7 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   scaleFactor: number = 1;
   selectedBackgroundColor: string = "#0D3F60";
   backgroundGradient: string = "168.87deg, #0F8AB2 28.12%, #0D4060 100%";
-
+  value: any;
 
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
@@ -65,7 +65,7 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
     this.selectedBackgroundColor = getStringParamFromTemplateRow(this._row, "color", "#0D3F60");
     this.backgroundGradient = getStringParamFromTemplateRow(this._row, "background_gradient", "168.87deg, #0F8AB2 28.12%, #0D4060 100%");
-
+    this.value = this._row.value;
     this.windowWidth = window.innerWidth;
     if (this.radioBtnList) {
       this.valuesFromBtnList = this.radioBtnList.split(";").filter(item => item !== "");

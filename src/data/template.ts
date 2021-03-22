@@ -6279,7 +6279,7 @@
       {
         "type": "radio_group",
         "name": "radio",
-        "value": null,
+        "value": 'Woman',
         "parameter_list": [
           "radio_button_list: name:name_var_1 | text:Man; name:name_var_2 | text:Woman;",
           "radio_button_type: btn_triangle",
@@ -6289,14 +6289,14 @@
       {
         "type": "radio_group",
         "name": "radio",
-        "value": null,
+        "value": "Pair",
         "parameter_list": [
           "radio_button_list: " +
           "name:name_var_1 | text:Single | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | image_checked: /assets/plh_assets/plh_images/other_icons/smile.svg;" +
           "name:name_var_2 | image:/assets/plh_assets/plh_images/other_icons/icon-man.svg | text:Pair;" +
           "name:name_var_3 | image:/assets/plh_assets/plh_images/other_icons/group.svg | text:Group;" +
-          "name:name_var_4 | image:/assets/plh_assets/plh_images/other_icons/MansOne.svg | text:Group;" +
-          "name:name_var_5 | image:/assets/plh_assets/plh_images/other_icons/MansTwo.svg | text:Group;" +
+          "name:name_var_4 | image:/assets/plh_assets/plh_images/other_icons/MansOne.svg | text:Group1;" +
+          "name:name_var_5 | image:/assets/plh_assets/plh_images/other_icons/MansTwo.svg | text:Group2;" +
           "name:name_var_6 | image:/assets/plh_assets/plh_images/other_icons/MansFour.svg | text:example some info;",
           "options_per_row: 3",
           "color: #ff4060",
