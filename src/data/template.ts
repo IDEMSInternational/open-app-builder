@@ -3912,7 +3912,35 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "example_go_to_1",
+    "flow_name": "example_call_global_constants",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.example_global_constant_title"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Text that includes @global.example_global_constant_text"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "value": "@global.example_global_constant_image"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "There should be an image above this text, whose source is example_global_image"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_set_fields_in_action",
     "status": "released",
     "rows": [
       {
@@ -3962,7 +3990,40 @@
             "_cleaned": "click | emit:completed"
           }
         ],
-        "comments": "This does not return to the current template after finishing example_emit"
+        "comments": "Creates a new field called field_2 with value Value of Field 2"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "The value of field_2 is @field.field_2",
+        "comments": "this text would be The value of field_2 is 'undefined' so presumably an empty string or even @field.field_2? until the button is pressed in which case it would change to The value of field_2 is Value of Field 2"
+      },
+      {
+        "type": "text",
+        "name": "text_hidden_4",
+        "value": "This should be hidden when field_4 is TRUE",
+        "hidden": "@field.field_4",
+        "comments": "There could be more complex conditions for shown ie @filed.field_4>3)"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_4",
+        "value": "This should be hidden when field_4 is FALSE",
+        "hidden": "!@field.field_4"
+      },
+      {
+        "type": "text",
+        "name": "text_hidden_5",
+        "value": "This should be hidden when field_5 is more than 2",
+        "hidden": "@field.field_5>2",
+        "comments": "Not currently implemented?"
+      },
+      {
+        "type": "text",
+        "name": "text_not_hidden_5_a",
+        "value": "This should be hidden when field_5 is less than or equal to 2",
+        "hidden": "@field.field_5<=2",
+        "comments": "Not currently implemented?"
       },
       {
         "type": "button",
@@ -5717,7 +5778,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "@global.guide_2_name: \"Stop making so much noise!\" \n@global.guide_teen_name: \"I hate you!\"",
+                        "value": "@global.guide_2_name: \"Stop making so much noise!\" \n@global.guide_teen_name: \"I hate you!\"\n\nIt is so hard to tell teenagers what to do! What really helped me was to change how to ask my teen to do things. Now, I tell them what they should do instead of what they shouldn’t. Let me show you how it works!",
                         "type": "set_variable"
                       }
                     ]
@@ -5734,12 +5795,12 @@
                         "rows": [
                           {
                             "name": "image_src",
-                            "value": "plh_images/workshops/instruct/guide_2/teen_phone_1.svg",
+                            "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
                             "type": "set_variable"
                           },
                           {
                             "name": "text",
-                            "value": "It is so hard to tell teenagers what to do! What really helped me was to change how to ask my teen to do things. Now, I tell them what they should do instead of what they shouldn’t. Let me show you how it works!",
+                            "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
                             "type": "set_variable"
                           }
                         ]
@@ -5756,12 +5817,12 @@
                             "rows": [
                               {
                                 "name": "image_src",
-                                "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
+                                "value": "plh_images/workshops/instruct/guide_2/think/slide_2.svg",
                                 "type": "set_variable"
                               },
                               {
                                 "name": "text",
-                                "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
+                                "value": "‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)",
                                 "type": "set_variable"
                               }
                             ]
@@ -5778,12 +5839,12 @@
                                 "rows": [
                                   {
                                     "name": "image_src",
-                                    "value": "plh_images/workshops/instruct/guide_2/think/slide_2.svg",
+                                    "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
                                     "type": "set_variable"
                                   },
                                   {
                                     "name": "text",
-                                    "value": "‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)",
+                                    "value": "THINK ABOUT A FURRY TIGER, THANK YOU! \n\nWhat are you thinking about?",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -5791,41 +5852,17 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_2",
-                                "value": "pair",
+                                "value": "box_image",
                                 "rows": [
                                   {
-                                    "type": "nested_properties",
-                                    "name": "box_1",
-                                    "value": "box_image",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "THINK ABOUT A FURRY TIGER, THANK YOU! \n\nWhat are you thinking about?",
-                                        "type": "set_variable"
-                                      }
-                                    ]
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/instruct/guide_2/think/slide_3.svg",
+                                    "type": "set_variable"
                                   },
                                   {
-                                    "type": "nested_properties",
-                                    "name": "box_2",
-                                    "value": "box_image",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/instruct/guide_2/think/slide_3.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.",
-                                        "type": "set_variable"
-                                      }
-                                    ]
+                                    "name": "text",
+                                    "value": "Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.",
+                                    "type": "set_variable"
                                   }
                                 ]
                               }
