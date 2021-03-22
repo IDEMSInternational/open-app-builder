@@ -13,7 +13,7 @@ import { Subscription } from "rxjs";
           <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-title style="text-align: center">
+      <ion-title style="text-align: center" routerLink="/">
         <ion-icon src="assets/images/star.svg" style="margin: -1px 8px"></ion-icon>
         <span>{{ title }}</span>
       </ion-title>
