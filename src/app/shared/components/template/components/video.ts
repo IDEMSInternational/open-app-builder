@@ -21,13 +21,13 @@ export class TmplVideoComponent extends TemplateBaseComponent {
   @Input() set row(r: FlowTypes.TemplateRow) {
     if (r.value.indexOf("http") < 0) {
       this.http
-        .get(r.value, { responseType: "arraybuffer" })
+        .get(this.assetsPrefix + r.value, { responseType: "arraybuffer" })
         .toPromise()
         .then(() => {
-          this.videoSrc = r.value;
+          this.videoSrc = this.assetsPrefix + r.value;
         })
         .catch(() => {
-          this.videoSrc = (this.assetsPrefix + r.value).replace("//", "/");
+          this.videoSrc = (r.value).replace("//", "/");
         });
     } else {
       this.videoSrc = r.value;
