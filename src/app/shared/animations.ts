@@ -13,7 +13,7 @@ const fadeInOut = [
 
 const fadeEntryExit = [
   trigger("fadeEntryExit", [
-    transition(":enter", [style({ opacity: 0 }), animate("0.5s 0.3s", style({ opacity: 1 }))]),
+    transition(":enter", [style({ opacity: 0 }), animate("0.7s 0.3s", style({ opacity: 1 }))]),
     transition(":leave", [animate("0.3s", style({ opacity: 0 }))]),
   ]),
 ];
