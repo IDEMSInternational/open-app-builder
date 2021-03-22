@@ -353,6 +353,7 @@ export namespace FlowTypes {
     | "simple_checkbox"
     | "set_default"
     | "text_box"
+    | "css_anim"
     | "combo_box";
 
   export interface TemplateRow {
