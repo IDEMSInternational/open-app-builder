@@ -87,7 +87,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.handleNavActions(actions);
   }
   /** Optional method child component can add to handle post-action callback */
-  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) { }
 
   /** Optional method child component can filter action list to handle outside of default handlers */
   public async handleActionsInterceptor(
@@ -420,9 +420,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
     // Support Javascript evaluation for hidden field only
     if (field === "hidden" && parsedExpression !== "true" && parsedExpression !== "false") {
-      const funcString = `"use strict"; return (${parsedExpression});`;
-      const func = new Function(funcString);
-      return func.apply(this);
+      try {
+        const funcString = `"use strict"; return (${parsedExpression});`;
+        const func = new Function(funcString);
+        return func.apply(this);
+      } catch (ex) {
+        console.warn("Hidden evaulation exception ", ex);
+        return false;
+      }
     }
 
     return parsedExpression;
