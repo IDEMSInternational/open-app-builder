@@ -67,7 +67,7 @@ export class TmplSliderComponent extends TemplateBaseComponent implements ITempl
     this.step = getNumberParamFromTemplateRow(this._row, "step", this.step);
     this.min_value_label = getStringParamFromTemplateRow(this._row, "min_value_label", null);
     this.max_value_label = getStringParamFromTemplateRow(this._row, "max_value_label", null);
-    this.value = this._row.value > this.maxValue ? 0 : (this._row.value === null ? 0 : this._row.value);
+    this.value = this._row.value > this.maxValue ? 0 : (this._row.value ? this._row.value : 0);
     this.labels_count = getNumberParamFromTemplateRow(this._row, 'labels_count', 8);
     this.updateConfigParams();
     this.rangeBarTouched = this.value !== 0;

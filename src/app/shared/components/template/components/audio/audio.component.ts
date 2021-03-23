@@ -42,7 +42,8 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
   }
 
   getParams() {
-    this.src = getStringParamFromTemplateRow(this._row, "src", null);
+    const audioPath = 'assets/plh_assets/'
+    this.src = audioPath + (this._row.value || getStringParamFromTemplateRow(this._row, "src", null));
     this.titleAudio = getStringParamFromTemplateRow(this._row, "title", "Title");
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
     this.rangeBarDisabled = getBooleanParamFromTemplateRow(this._row, 'rangeBarDisabled', false);

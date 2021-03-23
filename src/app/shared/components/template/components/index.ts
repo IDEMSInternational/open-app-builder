@@ -22,6 +22,8 @@ import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
+import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
+import { TmplAnimationComponent } from "./animation";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -42,6 +44,8 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
+  TmplSimpleCheckboxComponent,
+  TmplAnimationComponent
 ];
 
 /***************************************************************************************
@@ -65,6 +69,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   set_variable: null as any,
   nested_properties: null as any,
   set_global: null as any,
+  set_field: null as any,
   set_local: null as any,
   combo_box: null as any,
   set_default: null as any,
@@ -79,4 +84,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
+  simple_checkbox: TmplSimpleCheckboxComponent,
+  css_anim: TmplAnimationComponent
 };
