@@ -26,13 +26,13 @@ export class TmplImageComponent extends TemplateBaseComponent {
     //   this.parent.localVariables
     // );
     this.http
-      .get(r.value, { responseType: "arraybuffer" })
+      .get(this.assetsPrefix + r.value, { responseType: "arraybuffer" })
       .toPromise()
       .then(() => {
-        this.imageSrc = r.value;
+        this.imageSrc = this.assetsPrefix + r.value;
       })
       .catch(() => {
-        this.imageSrc = (this.assetsPrefix + r.value).replace("//", "/");
+        this.imageSrc = (r.value).replace("//", "/");
       });
   }
 }

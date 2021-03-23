@@ -1,0 +1,23 @@
+.animation-card {
+    padding: 20px;
+    max-width: 400px;
+}
+
+.id-text {
+    font-size: 20px;
+    font-family: monospace;
+}
+
+.input {
+    --background: white;
+    --color: black;
+    border-radius: 20px;
+    margin: 20px;
+    width: calc(100% - 40px);
+}
+
+.animation-cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}

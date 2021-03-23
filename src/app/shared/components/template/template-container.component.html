@@ -1,14 +1,26 @@
 <div
   [className]="'template-container ' + localVariables?.theme_name"
   [attr.data-theme]="localVariables._theme || 'default'"
-  [ngClass]="{'show-border': showTemplates }"
+  [attr.data-debug]="debugMode"
+  [attr.data-isChild]="parent ? true : false"
 >
-  <div [hidden]="!showTemplates" class="template-name-debug" >{{name}}</div>
-  <div class="debug-toggle" [attr.data-enabled]="debugMode">
-    <ion-icon name="bug-outline"></ion-icon>
-    <ion-toggle [(ngModel)]="debugMode"></ion-toggle>
+  <!-- Debug Toggle -->
+  <div class="debug-container" *ngIf="showDebugToggle" [attr.data-enabled]="debugMode">
+    <div *ngIf="debugMode && !parent" class="debug-name">
+      <div>template: {{ templatename || "(undefined)" }}</div>
+      <div>name: {{ name || "(undefined)" }}</div>
+    </div>
+    <div *ngIf="!parent" class="debug-toggle-container" [attr.data-enabled]="debugMode">
+      <ion-icon name="bug-outline"></ion-icon>
+      <ion-toggle
+        #debugToggle
+        (ionChange)="setDebugMode(debugToggle.checked)"
+        [checked]="debugMode"
+      ></ion-toggle>
+    </div>
   </div>
-  
+
+  <!-- Template Component-->
   <plh-template-component
     *ngFor="let row of template.rows"
     class="row"
