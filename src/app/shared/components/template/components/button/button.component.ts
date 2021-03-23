@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import { getStringParamFromTemplateRow, getBooleanParamFromTemplateRow, getNumberParamFromTemplateRow } from "../../../../utils";
+import { getStringParamFromTemplateRow, getBooleanParamFromTemplateRow } from "../../../../utils";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -13,8 +13,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     hexBgColor: string | null;
     disabled: boolean = false;
     height: number;
-    widthPx: number;
-    widthPercent: number;
+    width: string | null;
     constructor() {
         super();
     }
@@ -26,8 +25,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     getParams() {
             this.color = getStringParamFromTemplateRow(this._row, 'color',  'primary');
             this.hexBgColor = getStringParamFromTemplateRow(this._row, 'hexBgColor', null);
-            this.widthPx = getNumberParamFromTemplateRow(this._row, 'widthPx', null);
-            this.widthPercent = getNumberParamFromTemplateRow(this._row, 'widthPercent', 100);
+            this.width = getStringParamFromTemplateRow(this._row, 'width', '100%');
             this.disabled = getBooleanParamFromTemplateRow(this._row, 'disabled', false);
     }
 }
