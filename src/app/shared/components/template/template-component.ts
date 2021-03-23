@@ -60,7 +60,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
 
-  styles: any = {};
+  styles: { [name: string]: any } = {};
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
