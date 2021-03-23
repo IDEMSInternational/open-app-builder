@@ -9,7 +9,7 @@
       {
         "type": "button",
         "id": "workshops",
-        "text": "WeeklyWorkshops",
+        "text": "Weekly Workshops",
         "visible": true,
         "enabled": true,
         "route": "/module_list",
