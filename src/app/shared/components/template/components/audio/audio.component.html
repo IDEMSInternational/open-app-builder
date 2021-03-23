@@ -1,4 +1,3 @@
-<h2>Audio</h2>
 <div class="container-player">
   <div class="top-row">
     <div class="title_and_help">
@@ -30,18 +29,18 @@
   </div>
   <div class="controls" *ngIf="!errorTxt">
     <div class="rewind">
-      <ion-button (click)="rewindPrev();"><img src="/assets/plh_assets/plh_images/other_icons/arrow.svg" alt=""></ion-button>
+      <ion-button (click)="rewindPrev();"><img src="/assets/icon/audio/arrow.svg" alt=""></ion-button>
     </div>
     <div class="play">
       <ion-button class="btn-play" (click)="togglePlayer()">
         <img [class.ml-5]="!isPlayed"
-             [src]="!isPlayed ? '/assets/plh_assets/plh_images/other_icons/play.svg'
-             : '/assets/plh_assets/plh_images/other_icons/pause.svg'" alt="">
+             [src]="!isPlayed ? '/assets/icon/audio/play.svg'
+             : '/assets/icon/audio/pause.svg'" alt="">
       </ion-button>
     </div>
     <div class="forward">
       <ion-button (click)="rewindNext()">
-        <img src="/assets/plh_assets/plh_images/other_icons/arrow.svg" alt="">
+        <img src="/assets/icon/audio/arrow.svg" alt="">
       </ion-button>
     </div>
   </div>
