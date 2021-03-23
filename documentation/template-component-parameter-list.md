@@ -63,7 +63,7 @@ If category_list is not available we generate list of values based on min_value,
 ## Radio Buttons - TmplRadioGroupComponent
 
 - value - string or null. Result or selected by default.
-- radio_button_list - string or null. List of buttons with parameters. Default - undefined
+- radio_button_list - string or null. List of buttons with parameters. Default - undefined. (Supports only svg images).
 - radio_button_type - string or null. Type of radio buttons. Default - null
 - options_per_row - number. Count of radio button in one row. Default - 2
 - color - string. Border color if it is checked. Default - '#0D3F60'
