@@ -66,21 +66,17 @@
         "@typescript-eslint/no-namespace": "off",
         "@typescript-eslint/quotes": [
           "off",
-          "single",
+          "double",
           {
             "allowTemplateLiterals": true
           }
         ],
         "@typescript-eslint/semi": ["off", null],
-        "@typescript-eslint/naming-convention": [
-          "warn",
-          {
-            "selector": ["typeProperty", "objectLiteralProperty", "classProperty"],
-            "format": ["snake_case", "camelCase"],
-            "leadingUnderscore": "allow"
-          }
-        ],
-        "@typescript-eslint/member-ordering": "warn",
+
+        // CC - rule overrides
+        // (most naming convention handled by ng angular selectors above)
+        "@typescript-eslint/naming-convention": ["off"],
+        "@typescript-eslint/member-ordering": "off",
         "@typescript-eslint/prefer-for-of": "warn",
         "@typescript-eslint/no-unused-expressions": "warn",
         "@typescript-eslint/no-shadow": "warn",
@@ -99,10 +95,10 @@
         "no-console": "warn",
         "radix": "warn",
         "eqeqeq": "warn",
-        "arrow-body-style": "warn",
         "no-fallthrough": "warn",
         "no-throw-literal": "warn",
-        "use-isnan": "warn"
+        "use-isnan": "warn",
+        "arrow-body-style": "off"
       }
     },
     {
