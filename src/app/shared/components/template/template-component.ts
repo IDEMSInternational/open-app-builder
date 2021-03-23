@@ -7,7 +7,7 @@ import {
   ViewChild,
   Type,
   OnInit,
-  ElementRef
+  ElementRef, AfterContentInit
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
@@ -51,7 +51,7 @@ export class TmplCompHostDirective {
   `,
   styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
 })
-export class TemplateComponent implements OnInit, ITemplateRowProps {
+export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
   /**
    * Specific data used in component rendering
    * when updated from parent changes will automatically propogate to child
