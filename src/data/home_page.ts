@@ -29,8 +29,8 @@
         "id": "parent_center",
         "text": "Parent Centre",
         "visible": true,
-        "enabled": false,
-        "route": "/parent_center",
+        "enabled": true,
+        "route": "/template",
         "left_image": "plh_images/home_page/home_page_parent_center.svg"
       }
     ],
