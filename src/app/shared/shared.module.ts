@@ -13,6 +13,8 @@ import { ANIMATION_COMPONENTS } from "./components/animations";
 import { AnimationComponent } from "./components/animations/animation.component";
 import { RoundIconButtonComponent } from "./components/template/components/round-icon-button/round-icon-button.component";
 import { TooltipModule } from "./components/common/directives/tooltip.directive";
+import { ComboBoxModalComponent } from "./components/common/components/combo-box-modal/combo-box-modal.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 const Components = [
@@ -23,6 +25,7 @@ const Components = [
   PLHMainHeaderComponent,
   PLHMainTabsComponent,
   AnimationComponent,
+  ComboBoxModalComponent,
   ...ANIMATION_COMPONENTS
 ];
 
@@ -30,7 +33,7 @@ const Components = [
   declarations: [
     Components,
   ],
-  imports: [CommonModule, IonicModule, RouterModule, TemplateComponentsModule],
+  imports: [CommonModule, IonicModule, RouterModule, TemplateComponentsModule, ReactiveFormsModule],
   exports: Components,
 })
 export class SharedModule { }
