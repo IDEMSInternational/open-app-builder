@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .template-container {
   width: 100%;
   height: 100%;

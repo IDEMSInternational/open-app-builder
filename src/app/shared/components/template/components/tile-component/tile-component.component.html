@@ -1,0 +1,11 @@
+<div [class]="style" class="tile-wrapper">
+  <div class="text">
+    <div class="first" *ngIf="first_line_text">{{ first_line_text }}</div>
+    <div class="second" *ngIf="second_line_text">{{ second_line_text }}</div>
+  </div>
+  <div class="button-wrapper">
+    <ion-button class="btn-tile">
+      <img [src]="icon_src" alt="" />
+    </ion-button>
+  </div>
+</div>
