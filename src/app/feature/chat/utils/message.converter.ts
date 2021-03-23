@@ -45,8 +45,8 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
   let attachments = await convertRapidProAttachments(attachmentStrings);
   let text = removeHiddenURLs(rpMsg.message, urlPartsList);
   let actions = getActionsFromURLS(urlPartsList);
-  let responseOptions: ChatResponseOption[] = quickReplies.map((qrText) => ({ 
-    text: qrText
+  let responseOptions: ChatResponseOption[] = quickReplies.map((qrText) => ({
+    text: qrText,
   }));
   let msg: ChatMessage = {
     text: text,
@@ -59,9 +59,9 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
   msg = applyCustomMessageInfo(urlPartsList, msg);
   if (msg.choiceMediaUrls) {
     msg.responseOptions.forEach((option, idx) => {
-      option.imageUrl = 'assets/plh_assets/' + msg.choiceMediaUrls[idx];
+      option.imageUrl = "assets/plh_assets/" + msg.choiceMediaUrls[idx];
       option.hideText = msg.choiceMediaDisplay === "media";
-    })
+    });
   }
   return msg;
 }
@@ -94,7 +94,7 @@ export async function convertQuickReply(choiceString: string): Promise<ChatRespo
 export function applyCustomMessageInfo(urlPartsList: URLParts[], msg: ChatMessage) {
   let msgInfoUrlParts = urlPartsList.find((parts) => parts.path.startsWith("/chat/msg-info"));
   if (msgInfoUrlParts) {
-    const qParams: Object = queryStringToObject(msgInfoUrlParts.query);
+    const qParams = queryStringToObject(msgInfoUrlParts.query);
     for (let customField of appCustomFields) {
       if (qParams.hasOwnProperty(customField.key)) {
         const value = decodeURIComponent(qParams[customField.key]);
