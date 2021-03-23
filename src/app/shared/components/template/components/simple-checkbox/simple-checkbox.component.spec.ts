@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TmplSliderComponent } from './slider.component';
+import { SimpleCheckboxComponent } from './simple-checkbox.component';
 
-describe('SliderNewComponent', () => {
-  let component: TmplSliderComponent;
-  let fixture: ComponentFixture<TmplSliderComponent>;
+describe('SimpleCheckboxComponent', () => {
+  let component: SimpleCheckboxComponent;
+  let fixture: ComponentFixture<SimpleCheckboxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TmplSliderComponent ],
+      declarations: [ SimpleCheckboxComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TmplSliderComponent);
+    fixture = TestBed.createComponent(SimpleCheckboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
