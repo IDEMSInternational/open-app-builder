@@ -58,7 +58,7 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     .btn_image{
       &_container{
         margin: calc(5px * var(--scale-factor));;
-
+        padding: calc(5px * var(--scale-factor));
         label{
           background: transparent!important;
           border:2px solid transparent;
@@ -67,11 +67,11 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           max-height: calc(120px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
           svg-icon{
-
             svg{
-              width: calc(100% * var(--scale-factor));
-              height: calc(100% * var(--scale-factor));
-              margin-bottom: calc(3px * var(--scale-factor));
+              max-width: 95%;
+              max-height: 95%;
+              width: 95%;
+              height: 95%;
             }
           }
         }

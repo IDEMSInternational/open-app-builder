@@ -28,6 +28,7 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   arrayOfBtn: Array<IButton>;
   radioButtonType: string | null;
   options_per_row: number = 2;
+  baseSrcAssets = "/assets/plh_assets/";
   windowWidth: number;
   scaleFactor: number = 1;
   selectedBackgroundColor: string = "#0D3F60";
@@ -38,11 +39,18 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
     this.windowWidth = event.target.innerWidth;
     this.getScaleFactor();
   }
-  @HostBinding('style.--scale-factor') get scale() { return this.scaleFactor; }
 
-  @HostBinding('style.--border-color') get borderColor() { return this.selectedBackgroundColor; }
+  @HostBinding("style.--scale-factor") get scale() {
+    return this.scaleFactor;
+  }
 
-  @HostBinding('style.--bg-gradient') get bgGradientStart() { return this.backgroundGradient; }
+  @HostBinding("style.--border-color") get borderColor() {
+    return this.selectedBackgroundColor;
+  }
+
+  @HostBinding("style.--bg-gradient") get bgGradientStart() {
+    return this.backgroundGradient;
+  }
 
 
   constructor() {
@@ -54,7 +62,7 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
     this.getScaleFactor();
   }
 
-   getScaleFactor(): number {
+  getScaleFactor(): number {
     this.scaleFactor = this.windowWidth / ((150) * this.options_per_row) > 1 ? 1 : this.windowWidth / ((120 + 20) * this.options_per_row);
     return this.scaleFactor;
   }
@@ -79,13 +87,18 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
         text: null,
         image: null,
         name: null,
-        image_checked: null,
+        image_checked: null
       };
       item.split("|").map((values) => {
         obj[values.split(":")[0].trim()] = values.split(":")[1].trim();
       });
       return obj;
     });
+  }
+
+  getPathImg(path): string {
+    const src = this.baseSrcAssets + path;
+    return src.replace('//', '/');
   }
 
   get getFlexWidth(): string {
