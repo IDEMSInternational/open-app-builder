@@ -1,27 +1,30 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import { IonSlides } from "@ionic/angular";
+import { Component, Input, OnInit } from "@angular/core";
+import { PLHAnimations } from "src/app/shared/animations";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { PLHDataService } from "src/app/shared/services/data/data.service";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
   selector: "plh-tmpl-nav-group",
+  animations: PLHAnimations.fadeEntryExit,
   template: `<div class="nav-group">
     <div class="nav-progress">
       <div
         *ngFor="let templateName of templateNames; index as i"
         class="nav-progress-part"
-        [ngClass]="{'seen': i <= sectionIndex}">
-      </div>
+        [ngClass]="{ seen: i <= sectionIndex }"
+        (click)="goToSection(i)"
+      ></div>
     </div>
     <div class="nav-section" *ngFor="let templateName of templateNames; index as i">
-      <plh-template-container
-        *ngIf="sectionIndex === i"
-        [name]="templateName"
-        [templatename]="templateName"
-        [parent]="parent"
-      >
-      </plh-template-container>
+      <div *ngIf="sectionIndex === i" @fadeEntryExit>
+        <plh-template-container
+          [name]="templateName"
+          [templatename]="templateName"
+          [parent]="parent"
+        >
+        </plh-template-container>
+      </div>
     </div>
   </div>`,
   styles: [
@@ -46,13 +49,13 @@ import { TemplateBaseComponent } from "../base";
       .nav-progress-part {
         height: 5px;
         flex-grow: 1;
-        background-color: var(--ion-primary-color, #0D3F60);
+        background-color: var(--ion-primary-color, #0d3f60);
         margin: 10px;
         max-width: 40px;
       }
 
       .nav-progress-part.seen {
-        background-color: var(--ion-primary-color, #F88923);
+        background-color: var(--ion-primary-color, #f88923);
       }
 
       ion-button {
@@ -86,35 +89,40 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("nav_group init", this.parent);
-    this.parent.handleActionsCallback = async (actions, results) => {
-      console.log("parent handled actions", actions, results);
-      const completedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "completed");
-      const uncompletedAction = actions.find((a) => a.action_id === "emit" && a.args[0] === "uncompleted");
+    this.addParentActionsInterceptor();
+  }
 
-      if (completedAction) {
-        this.nextSection();
-      } else if (uncompletedAction) {
-        this.previousSection();
-      }
+  /**
+   * Action emitted by child rows will by default be handled by the parent template
+   * Intercept completed/uncompleted actions to only emit if all sections completed
+   */
+  private addParentActionsInterceptor() {
+    console.log("templateNames", this.templateNames);
+    this.parent.handleActionsInterceptor = async (actions) => {
+      return actions.filter((action) => {
+        const { action_id, args } = action;
+        // only allow actions to be processed by parent if last section
+        if (action_id === "emit" && args[0] === "completed") {
+          console.log("intercepting actions", this.sectionIndex, this.templateNames.length);
+          if (this.sectionIndex < this.templateNames.length - 1) {
+            this.sectionIndex++;
+            return false;
+          }
+        }
+        if (action_id === "emit" && args[0] === "uncompleted") {
+          console.log("intercepting actions");
+          if (this.sectionIndex > 0) {
+            this.sectionIndex--;
+            return false;
+          }
+        }
+        // default process on parent
+        return true;
+      });
     };
   }
 
-  nextSection() {
-    if (this.sectionIndex + 1 < this.templateNames.length) {
-      this.sectionIndex++;
-    } else {
-      // There should be an emit "completed" action 
-      console.log("Nav group completed?");
-    }
-  }
-
-  previousSection() {
-    if (this.sectionIndex > 0) {
-      this.sectionIndex--;
-    } else {
-      // There should be an emit "uncompleted" action
-      console.log("Nav group uncompleted?");
-    }
+  goToSection(index: number) {
+    this.sectionIndex = index;
   }
 }
