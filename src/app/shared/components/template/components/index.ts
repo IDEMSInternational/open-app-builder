@@ -47,7 +47,7 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
-  TmplTileComponent
+  TmplTileComponent,
   TmplSimpleCheckboxComponent,
   TmplAnimationComponent,
   TmplTextBoxComponent,
@@ -90,7 +90,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  tile_component: TmplTileComponent
+  tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
   css_anim: TmplAnimationComponent
 };

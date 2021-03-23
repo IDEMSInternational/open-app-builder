@@ -354,7 +354,7 @@ export namespace FlowTypes {
     | "set_default"
     | "text_box"
     | "combo_box"
-    | 'tile_component';
+    | 'tile_component'
     | "css_anim"
     | "combo_box";
 
