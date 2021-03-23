@@ -4,8 +4,10 @@ ion-button{
   font-weight: bold;
   text-align: center;
   color:#fff;
-  height: 62px;
+  padding: 5px 0;
+  min-height: 62px;
   min-width: 59px;
+  width: 100%;
   --border-radius: 15px;
 }
 ion-button:disabled, ion-button[disabled]{
