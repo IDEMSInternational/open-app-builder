@@ -8857,5 +8857,44 @@
         "value": "relax1",
       }
     ]
-  }
+  },
+    {
+      "flow_type": "template",
+      "flow_name": "text_box",
+      "status": "released",
+      "rows": [
+        {
+          "type": "text_box",
+          "name": "default_TextBox",
+          "comments": "No",
+          "value": null,
+          "parameter_list": [
+            "placeholder: some text",
+            "max-length: 38",
+          ]
+        },
+      ]
+    },
+    {
+      "flow_type": "template",
+      "flow_name": "combo_box",
+      "status": "released",
+      "rows": [
+        {
+          "type": "combo_box",
+          "name": "default_comboBox",
+          "comments": "No",
+          "value": "Sad",
+          "parameter_list": [
+            "style: pop-up",
+            "text: How do you think Amina felt about the way neighbour responded?",
+            "placeholder: Please select",
+            "answer_placeholder: Your Answer",
+            "max-length: 38",
+            "input_allowed: false",
+            "list_of_answers: Sad; Confused; Angry"
+          ]
+        },
+      ]
+    }
 ]
