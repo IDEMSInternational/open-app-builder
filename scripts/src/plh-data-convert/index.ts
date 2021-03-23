@@ -164,7 +164,7 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
  */
 function generateLocalTsOutput(json: any, flow_type: FlowTypes.FlowType) {
   const typeName = capitalizeFirstLetter(flow_type);
-  return `/* tslint:disable */
+  return `/* eslint-disable */
   import { FlowTypes } from "../../../types";
   export const ${flow_type}: FlowTypes.${typeName}[] = ${json}`;
 }

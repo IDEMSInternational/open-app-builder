@@ -7,7 +7,8 @@ import {
   ViewChild,
   Type,
   OnInit,
-  ElementRef, AfterContentInit
+  ElementRef,
+  AfterContentInit,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
@@ -20,7 +21,7 @@ import { TemplateContainerComponent } from "./template-container.component";
   selector: "[plhTemplateComponentHost]",
 })
 export class TmplCompHostDirective {
-  constructor(public viewContainerRef: ViewContainerRef) { }
+  constructor(public viewContainerRef: ViewContainerRef) {}
 }
 
 /*********************************************************************
@@ -64,7 +65,10 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private elRef: ElementRef) { }
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private elRef: ElementRef
+  ) {}
 
   ngOnInit() {
     this.renderRow(this.row);
@@ -92,12 +96,12 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   private setStyleList() {
-    const styles = {}
+    const styles = {};
     if (this.row.style_list) {
       for (let i = 0; i < this.row.style_list.length; i++) {
-        let splited = this.row.style_list[i].split(':')
+        let splited = this.row.style_list[i].split(":");
         styles[splited[0]] = splited[1];
-        this.elRef.nativeElement.style.setProperty(splited[0], splited[1])
+        this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
       }
     }
   }

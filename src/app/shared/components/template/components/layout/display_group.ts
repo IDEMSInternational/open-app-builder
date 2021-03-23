@@ -13,7 +13,5 @@ import { TemplateBaseComponent } from "../base";
   styleUrls: ["../tmpl-components-common.scss"],
 })
 export class TmplDisplayGroupComponent extends TemplateBaseComponent implements OnInit {
-  
   ngOnInit() {}
-  
 }
