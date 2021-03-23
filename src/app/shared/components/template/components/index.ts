@@ -20,10 +20,11 @@ import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
-import { SliderNewComponent } from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
+import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
+import { TmplAnimationComponent } from "./animation";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -41,11 +42,12 @@ export const TEMPLATE_COMPONENTS = [
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
-  SliderNewComponent,
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
   TmplRadioGroupComponent,
+  TmplSimpleCheckboxComponent,
+  TmplAnimationComponent
 ];
 
 /***************************************************************************************
@@ -69,6 +71,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   set_variable: null as any,
   nested_properties: null as any,
   set_global: null as any,
+  set_field: null as any,
   set_local: null as any,
   combo_box: null as any,
   set_default: null as any,
@@ -83,6 +86,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  slider_new: SliderNewComponent,
   radio_group: TmplRadioGroupComponent,
+  simple_checkbox: TmplSimpleCheckboxComponent,
+  css_anim: TmplAnimationComponent
 };
