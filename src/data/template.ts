@@ -8529,5 +8529,162 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "slider",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value": null,
+        "parameter_list": [
+          "title: Slider first",
+          "min: 0",
+          "max: 7",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 1",
+          "labels_count: 8"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value": null,
+        "parameter_list": [
+          "title: Slider second",
+          "min: 0",
+          "max: 30",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 1"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value": null,
+        "parameter_list": [
+          "title: Slider third",
+          "min: 0",
+          "max: 44",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 2",
+          "labels_count: 8"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value": null,
+        "parameter_list": [
+          "title: Slider fourth",
+          "min: 0",
+          "max: 100",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 10",
+          "labels_count: 5"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value": null,
+        "parameter_list": [
+          "title: Slider fifth",
+          "min: 0",
+          "max: 51",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 3"
+        ],
+        "comments": ""
+      },
+      {
+        "type": "slider",
+        "name": "template_slider",
+        "value": null,
+        "parameter_list": [
+          "title: Slider sixth",
+          "min: 0",
+          "max: 60",
+          "min_value_label: not confident",
+          "max_value_label: extremely confident",
+          "help: some help info",
+          "step: 5"
+        ],
+        "comments": ""
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "tile",
+    "status": "released",
+    "rows": [
+      {
+        "type": "tile_component",
+        "name": "name",
+        "value": null,
+        "parameter_list": [
+          "first_line_text: My Group",
+          "second_line_text: Start week one",
+          "icon_src: /assets/icon/shared/start.svg",
+          "style: quick_start"
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "text_box",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text_box",
+        "name": "default_TextBox",
+        "comments": "No",
+        "value": null,
+        "parameter_list": [
+          "placeholder: some text",
+          "max-length: 38",
+        ]
+      },
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "combo_box",
+    "status": "released",
+    "rows": [
+      {
+        "type": "combo_box",
+        "name": "default_comboBox",
+        "comments": "No",
+        "value": "Sad",
+        "parameter_list": [
+          "style: pop-up",
+          "text: How do you think Amina felt about the way neighbour responded?",
+          "placeholder: Please select",
+          "answer_placeholder: Your Answer",
+          "max-length: 38",
+          "input_allowed: false",
+          "list_of_answers: Sad; Confused; Angry"
+        ]
+      },
+    ]
   }
-]
+];
