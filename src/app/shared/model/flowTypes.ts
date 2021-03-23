@@ -353,8 +353,7 @@ export namespace FlowTypes {
     | "simple_checkbox"
     | "set_default"
     | "text_box"
-    | "combo_box"
-    | "radio_group";
+    | "radio_group"
     | "css_anim"
     | "combo_box";
 
