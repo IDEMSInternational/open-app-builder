@@ -8857,5 +8857,48 @@
         "value": "relax1",
       }
     ]
-  }
+  },
+    {
+      "flow_type": "template",
+      "flow_name": "radio_group",
+      "status": "released",
+      "rows": [
+        {
+          "type": "radio_group",
+          "name": "radio",
+          "value": null,
+          "parameter_list": [
+            "radio_button_list: name:name_var_1 | text:Man; name:name_var_2 | text:Woman;",
+            "radio_button_type: btn_triangle"
+          ]
+        },
+        {
+          "type": "radio_group",
+          "name": "radio",
+          "value": 'Pair',
+          "parameter_list": [
+            "radio_button_list: " +
+            "name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;" +
+            "name:name_var_2 | image: /plh_images/icons/tick.svg | text:Pair;" +
+            "name:name_var_3 | image: /plh_images/icons/tick.svg | text:Group;" +
+            "name:name_var_4 | image: /plh_images/icons/star_outline.svg | text:example some info;",
+            "options_per_row: 3",
+            "radio_button_type: btn_square"
+          ]
+        },
+        {
+          "type": "radio_group",
+          "name": "radio",
+          "value": "Group",
+          "parameter_list": [
+            "radio_button_list: " +
+            "name:name_var_1 | text:Single | image:/plh_images/icons/star_outline.svg;" +
+            "name:name_var_2 | image:/plh_images/icons/star_outline.svg | text:Pair;" +
+            "name:name_var_3 | image:/plh_images/icons/star_outline.svg | text:Group;",
+            "options_per_row: 3",
+            "radio_button_type: btn_image"
+          ]
+        }
+      ]
+    }
 ]
