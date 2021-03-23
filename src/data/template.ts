@@ -3925,25 +3925,25 @@
         "type": "text",
         "name": "number_1",
         "value": "This text is hidden if var_number_1 is 1.",
-        "hidden": "@local.var_number_1=1"
+        "hidden": "@local.var_number_1 == 1"
       },
       {
         "type": "text",
         "name": "number_not_1",
         "value": "This text is hidden if var_number_1 not 1.",
-        "hidden": "!@local.var_number_1=1"
+        "hidden": "@local.var_number_1 != 1"
       },
       {
         "type": "text",
         "name": "number_greater_1",
         "value": "This text is hidden if var_number_1 is greater than 1.",
-        "hidden": "@local.var_number_1>1"
+        "hidden": "@local.var_number_1 > 1"
       },
       {
         "type": "text",
         "name": "number_not_1",
         "value": "This text is hidden if var_number_1 is not greater than 1.",
-        "hidden": "!@local.var_number_1>1"
+        "hidden": "!(@local.var_number_1 > 1)"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
