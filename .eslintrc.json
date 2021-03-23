@@ -1,51 +1,39 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
-        ],
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier"
       ],
       "rules": {
         "@angular-eslint/component-class-suffix": [
-          "error",
+          "warn",
           {
-            "suffixes": [
-              "Page",
-              "Component",
-              "Class",
-              "Skin"
-            ]
+            "suffixes": ["page", "Page", "component", "Component", "class", "skin"]
           }
         ],
         "@angular-eslint/component-selector": [
-          "error",
+          "warn",
           {
             "type": "element",
-            "prefix": "app",
-            "style": "page"
+            "style": "kebab-case"
           }
         ],
         "@angular-eslint/directive-selector": [
-          "error",
+          "warn",
           {
             "type": "attribute",
             "prefix": "plh",
-            "style": "app"
+            "style": "camelCase"
           }
         ],
         "@typescript-eslint/dot-notation": "off",
@@ -83,34 +71,43 @@
             "allowTemplateLiterals": true
           }
         ],
-        "@typescript-eslint/semi": [
-          "off",
-          null
+        "@typescript-eslint/semi": ["off", null],
+        "@typescript-eslint/naming-convention": [
+          "warn",
+          {
+            "selector": ["typeProperty", "objectLiteralProperty", "classProperty"],
+            "format": ["snake_case", "camelCase"],
+            "leadingUnderscore": "allow"
+          }
         ],
-        "arrow-parens": [
-          "off",
-          "always"
-        ],
+        "@typescript-eslint/member-ordering": "warn",
+        "@typescript-eslint/prefer-for-of": "warn",
+        "@typescript-eslint/no-unused-expressions": "warn",
+        "@typescript-eslint/no-shadow": "warn",
+        "@angular-eslint/no-output-on-prefix": "warn",
+        "arrow-parens": ["off", "always"],
         "curly": "off",
         "import/order": "off",
-        "one-var": [
-          "off",
-          "never"
-        ],
+        "one-var": ["off", "never"],
         "prefer-const": "off",
-        "quote-props": [
-          "off",
-          "as-needed"
-        ]
+        "quote-props": ["off", "as-needed"],
+        "prefer-arrow/prefer-arrow-functions": "off",
+        "jsdoc/newline-after-description": ["off"],
+        "no-underscore-dangle": "off",
+        "object-shorthand": "warn",
+        "no-var": "warn",
+        "no-console": "warn",
+        "radix": "warn",
+        "eqeqeq": "warn",
+        "arrow-body-style": "warn",
+        "no-fallthrough": "warn",
+        "no-throw-literal": "warn",
+        "use-isnan": "warn"
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     }
   ]
