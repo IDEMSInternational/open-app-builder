@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { MenuController } from "@ionic/angular";
 
 @Component({
-  selector: 'plh-home-indoor-blobs',
-  templateUrl: './home-indoor-blobs.component.html',
-  styleUrls: ['./home-indoor-blobs.component.scss'],
+  selector: "plh-home-indoor-blobs",
+  templateUrl: "./home-indoor-blobs.component.html",
+  styleUrls: ["./home-indoor-blobs.component.scss"],
 })
 export class HomeIndoorBlobsComponent implements OnInit {
-
   guideHasNotification: boolean = true;
 
   constructor(private menuController: MenuController, private router: Router) {}
-  
-  idClickListeners: { [id: string]: Function } = {};
+
+  idClickListeners: { [id: string]: () => void } = {};
 
   ngOnInit(): void {
     Object.keys(this.idClickListeners).forEach((id) => {
@@ -22,7 +21,7 @@ export class HomeIndoorBlobsComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.menuController.toggle('main-side-menu');
+    this.menuController.toggle("main-side-menu");
   }
 
   goToPage(url: string) {
@@ -30,11 +29,10 @@ export class HomeIndoorBlobsComponent implements OnInit {
   }
 
   openChat() {
-    this.router.navigateByUrl("/chat?character=egg")
+    this.router.navigateByUrl("/chat?character=egg");
   }
 
   openGuide() {
-    this.router.navigateByUrl("/chat?character=guide")
+    this.router.navigateByUrl("/chat?character=guide");
   }
-
 }
