@@ -12,7 +12,7 @@
 ## Button - TmplButtonComponent
 
 - value - text - button text
-- width - number - button width. Default: 172
+- width - number - button width. Default: 100%
 - height - number - button height. Default: 62
 - color - color variable or hex. Default: primary
 - disabled - boolean. Default: false
