@@ -1,4 +1,4 @@
-/* tslint:disable */
+/* eslint-disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
   export const habit_ideas: FlowTypes.Habit_ideas[] = [
   {

@@ -481,7 +481,7 @@ function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDy
     let match: RegExpExecArray;
     // run recursive match for all dynamic expressions
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#finding_successive_matches
-    // tslint:disable:no-conditional-assignment
+    /* eslint-disable no-cond-assign */
     while ((match = regex.exec(fullExpression)) !== null) {
       const [matchedExpression, type, fieldName] = match as any[];
       allMatches.push({ fullExpression, matchedExpression, type, fieldName });
