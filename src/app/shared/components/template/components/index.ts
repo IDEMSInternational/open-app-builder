@@ -51,7 +51,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplSimpleCheckboxComponent,
   TmplAnimationComponent,
   TmplTextBoxComponent,
-  TmplComboBoxComponent
+  TmplComboBoxComponent,
 ];
 
 /***************************************************************************************
@@ -92,5 +92,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   round_button: RoundIconButtonComponent,
   tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
-  css_anim: TmplAnimationComponent
+  css_anim: TmplAnimationComponent,
 };

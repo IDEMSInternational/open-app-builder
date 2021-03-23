@@ -16,7 +16,6 @@ import { TooltipModule } from "./components/common/directives/tooltip.directive"
 import { ComboBoxModalComponent } from "./components/common/components/combo-box-modal/combo-box-modal.component";
 import { ReactiveFormsModule } from "@angular/forms";
 
-
 const Components = [
   BlobComponent,
   Blob1Component,
@@ -26,14 +25,12 @@ const Components = [
   PLHMainTabsComponent,
   AnimationComponent,
   ComboBoxModalComponent,
-  ...ANIMATION_COMPONENTS
+  ...ANIMATION_COMPONENTS,
 ];
 
 @NgModule({
-  declarations: [
-    Components,
-  ],
+  declarations: [Components],
   imports: [CommonModule, IonicModule, RouterModule, TemplateComponentsModule, ReactiveFormsModule],
   exports: Components,
 })
-export class SharedModule { }
+export class SharedModule {}

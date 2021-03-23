@@ -7,9 +7,11 @@ import { ITemplateRowProps } from "../../models";
 @Component({
   selector: "plh-text-box",
   templateUrl: "./text-box.component.html",
-  styleUrls: ["./text-box.component.scss"]
+  styleUrls: ["./text-box.component.scss"],
 })
-export class TmplTextBoxComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplTextBoxComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   placeholder: string;
@@ -28,5 +30,4 @@ export class TmplTextBoxComponent extends TemplateBaseComponent implements ITemp
     this.maxLength = getNumberParamFromTemplateRow(this._row, "max-length", 30);
     this.value = this._row.value;
   }
-
 }
