@@ -420,12 +420,13 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
     // Support Javascript evaluation for hidden field only
     if (field === "hidden" && parsedExpression !== "true" && parsedExpression !== "false") {
+      const funcString = `"use strict"; return (${parsedExpression});`;
       try {
-        const funcString = `"use strict"; return (${parsedExpression});`;
         const func = new Function(funcString);
         return func.apply(this);
       } catch (ex) {
         console.warn("Hidden evaulation exception ", ex);
+        console.warn(funcString);
         return false;
       }
     }
