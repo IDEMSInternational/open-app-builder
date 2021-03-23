@@ -68,6 +68,7 @@ If category_list is not available we generate list of values based on min_value,
 - options_per_row - number. Count of radio button in one row. Default - 2
 - color - string. Border color if it is checked. Default - '#0D3F60'
 - background_gradient - string. Background button color. Default - "168.87deg, #0F8AB2 28.12%, #0D4060 100%"
+- radio_button_type - type of radio button (btn_triangle | btn_square | btn_image)
 
 
 ## ComboBox - TmplComboBoxComponent
