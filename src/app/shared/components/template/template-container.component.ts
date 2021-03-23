@@ -418,12 +418,13 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
 
-    // For hidden field only support Javascript evaluation
-    if (field === "hidden") {
-      const func = new Function(`"use strict"; return (${parsedExpression});`);
+    // Support Javascript evaluation for hidden field only
+    if (field === "hidden" && parsedExpression !== "true" && parsedExpression !== "false") {
+      const funcString = `"use strict"; return (${parsedExpression});`;
+      const func = new Function(funcString);
       return func.apply(this);
-    } 
-    
+    }
+
     return parsedExpression;
   }
 
