@@ -8627,6 +8627,20 @@
           "step: 5"
         ],
         "comments": ""
+        "type": "css_anim",
+        "value": "relax1"
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "test_btn",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "value": "check",
+
       }
     ]
   },
