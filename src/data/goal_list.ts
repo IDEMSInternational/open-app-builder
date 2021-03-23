@@ -1,4 +1,4 @@
-/* tslint:disable */
+/* eslint-disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
   export const goal_list: FlowTypes.Goal_list[] = [
   {
