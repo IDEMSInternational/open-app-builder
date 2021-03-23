@@ -21,7 +21,6 @@ export class HomePage {
   }
 
   getBottomPositionImage(index): number {
-    console.log(index)
     switch (index) {
       case 0:
         return 44;
