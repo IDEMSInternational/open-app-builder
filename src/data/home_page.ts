@@ -12,7 +12,7 @@
         "text": "Weekly Workshops",
         "visible": true,
         "enabled": true,
-        "route": "/module_list",
+        "route": "/template/workshop_buttons_temp",
         "left_image": "plh_images/home_page/home_page_workshops.svg"
       },
       {
@@ -29,11 +29,11 @@
         "id": "parent_center",
         "text": "Parent Centre",
         "visible": true,
-        "enabled": false,
-        "route": "/parent_center",
+        "enabled": true,
+        "route": "/template",
         "left_image": "plh_images/home_page/home_page_parent_center.svg"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\navigation\\home_page.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_navigation_temporary.xlsx"
   }
 ]
