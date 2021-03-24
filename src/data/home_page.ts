@@ -18,7 +18,7 @@
       {
         "type": "button",
         "id": "parent_points",
-        "text": "ParentPoints",
+        "text": "Parent Points",
         "visible": true,
         "enabled": true,
         "route": "/parent_points",
@@ -27,7 +27,7 @@
       {
         "type": "button",
         "id": "parent_center",
-        "text": "ParentCentre",
+        "text": "Parent Centre",
         "visible": true,
         "enabled": true,
         "route": "/template",

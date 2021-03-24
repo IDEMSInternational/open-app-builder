@@ -363,7 +363,7 @@
         "type": "declare_global_constant",
         "name": "w_money_short",
         "value": "Money",
-        "comments": "ETW 6"
+        "comments": "ETW 6 -- mostly finished, modulo images and some thinking regarding essential tools and activities"
       },
       {
         "type": "declare_global_constant",
@@ -374,18 +374,20 @@
       {
         "type": "declare_global_constant",
         "name": "w_rules_short",
-        "value": "Rules"
+        "value": "Rules",
+        "comments": "ETW 7 -- done"
       },
       {
         "type": "declare_global_constant",
-        "name": "w_responsibility",
+        "name": "w_consequence",
         "value": "Accepting Responsibility",
-        "comments": "responsibility"
+        "comments": "consequence"
       },
       {
         "type": "declare_global_constant",
-        "name": "w_responsibility_short",
-        "value": "Consequences"
+        "name": "w_consequence_short",
+        "value": "Consequences",
+        "comments": "ETW 8"
       },
       {
         "type": "declare_global_constant",
@@ -431,12 +433,35 @@
       {
         "type": "declare_global_constant",
         "name": "home_practice_problem_solving",
-        "value": "Home Practice Problem-Solving"
+        "value": "Talk about Home Practice"
       },
       {
         "type": "declare_global_constant",
         "name": "home_practice",
         "value": "Home Practice"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "workshop_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "ideas_button",
+        "value": "Real-world ideas"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "ideas_pop_up",
+        "value": "Ideas from other families..."
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "more_button",
+        "value": "Find out more"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
