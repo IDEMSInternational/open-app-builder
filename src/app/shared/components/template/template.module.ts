@@ -10,9 +10,10 @@ import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 import { SharedPipesModule } from "../../pipes";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
 import { NouisliderModule } from "ng2-nouislider";
+import { AngularSvgIconModule } from "angular-svg-icon";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, SharedPipesModule, NouisliderModule],
+  imports: [CommonModule, FormsModule, IonicModule, SharedPipesModule, NouisliderModule, AngularSvgIconModule.forRoot()],
   exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent],
   declarations: [
     TmplCompHostDirective,
