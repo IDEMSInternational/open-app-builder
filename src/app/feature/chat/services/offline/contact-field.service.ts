@@ -13,7 +13,6 @@ export class ContactFieldService {
   }
 
   async setDefaultValues() {
-    this.setContactField("group_name", "Church Group");
     for (var flowName of environment.variableNameFlows) {
       const flow = conversation
         .map((rpExport) => rpExport.flows[0])
@@ -31,10 +30,6 @@ export class ContactFieldService {
   }
 
   async getContactField(key: string): Promise<string> {
-    return this.localStorageService.getString("rp-contact-field." + key);
-  }
-
-  getContactFieldSync(key: string): string {
     return this.localStorageService.getString("rp-contact-field." + key);
   }
 

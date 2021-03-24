@@ -1,4 +1,4 @@
-/* tslint:disable:class-name */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { RapidProFlowExport } from "src/app/feature/chat/models";
 export { RapidProFlowExport } from "src/app/feature/chat/models";
 import { TipRow } from "src/app/feature/tips/models/tips.model";
@@ -24,6 +24,7 @@ export namespace FlowTypes {
     | "reminder_list"
     | "template"
     | "component_defaults"
+    | "global"
     | "home_page";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
@@ -331,8 +332,11 @@ export namespace FlowTypes {
     | "animated_section_group"
     | "display_group"
     | "set_variable"
+    // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
+    | "set_field"
     | "set_global"
     | "set_local"
+    | "set_field"
     | "nested_properties"
     | "button"
     | "image"
@@ -346,16 +350,20 @@ export namespace FlowTypes {
     | "round_button"
     | "nav_group"
     | "nav_section"
+    | "simple_checkbox"
     | "set_default"
     | "text_box"
     | "combo_box"
-    | "slider_new";
+    | "tile_component"
+    | "css_anim"
+    | "combo_box";
 
   export interface TemplateRow {
     type: TemplateRowType;
     name?: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
+    style_list?: string[];
     parameter_list?: string[];
     hidden?: string;
     rows?: TemplateRow[];
@@ -363,6 +371,7 @@ export namespace FlowTypes {
     _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
 
     /* Used for authoring comments. Not used in code */
+    cc_comments?: string;
     comments?: string;
     __EMPTY?: any;
   }
@@ -370,15 +379,12 @@ export namespace FlowTypes {
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
-    type: "local" | "fields";
+    type: "local" | "field" | "fields" | "global";
     fieldName: string;
   }
   export interface TemplateRowAction {
     /** actions have an associated trigger */
-    trigger:
-      "click"
-      | "completed"
-      | "uncompleted"
+    trigger: "click" | "completed" | "uncompleted";
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
@@ -387,13 +393,28 @@ export namespace FlowTypes {
       | "set_local"
       | "set_global"
       | "emit"
+      // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"
+      | "pop_up";
     args: string[];
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: string;
     // debug info
     _raw: string;
     _cleaned: string;
+  }
+
+  export interface Global extends FlowTypeBase {
+    flow_type: "global";
+    rows: GlobalRow[];
+  }
+
+  export interface GlobalRow {
+    type: "declare_global_constant" | "declare_field_default";
+    name: string;
+    value: any;
+    comments?: string;
+    __EMPTY?: string;
   }
 
   /* Used for setting default parameters for template components */

@@ -1,10 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .template-container {
-  //   border: 4px solid black;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: auto;
 
   &.passive {
     background-color: var(--theme-var-templatePassiveBg, #e3f4ff);
@@ -13,27 +19,26 @@
   &.active {
     background-color: var(--theme-var-templateActiveBg, #fff6d6);
   }
-
-  &.show-border {
-    border: 1px solid green;
-    padding: 2px;
-    margin: 2px;
-  }
-
-  .template-name-debug {
-    color: green;
-  }
 }
-.debug-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
+.template-container[data-debug="true"] {
+  overflow: auto;
+}
+
+.debug-container,
+.debug-toggle-container {
   display: flex;
   align-items: center;
+}
+.debug-toggle-container {
+  margin-left: auto;
   opacity: 0.2;
 }
-.debug-toggle[data-enabled="true"] {
+.debug-toggle-container[data-enabled="true"] {
   opacity: 1;
+}
+.debug-name {
+  padding: 4px;
+  font-size: small;
 }
 
 // hide template components with hidden attribute (unless in debug mode)
@@ -41,5 +46,8 @@
   display: none;
 }
 .plh-tmpl-comp[data-debug="true"] {
-  display: unset;
+  display: block;
+  border: 1px solid #c7c7c7;
+  padding: 2px;
+  margin: 2px;
 }

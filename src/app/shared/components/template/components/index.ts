@@ -20,9 +20,13 @@ import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
-import { SliderNewComponent } from "./slider-new/slider-new.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
+import { TmplTileComponent } from "./tile-component/tile-component.component";
+import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
+import { TmplAnimationComponent } from "./animation";
+import { TmplTextBoxComponent } from "./text-box/text-box.component";
+import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -40,10 +44,14 @@ export const TEMPLATE_COMPONENTS = [
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
-  SliderNewComponent,
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
+  TmplTileComponent,
+  TmplSimpleCheckboxComponent,
+  TmplAnimationComponent,
+  TmplTextBoxComponent,
+  TmplComboBoxComponent,
 ];
 
 /***************************************************************************************
@@ -67,10 +75,11 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   set_variable: null as any,
   nested_properties: null as any,
   set_global: null as any,
+  set_field: null as any,
   set_local: null as any,
-  combo_box: null as any,
+  combo_box: TmplComboBoxComponent,
   set_default: null as any,
-  text_box: null as any,
+  text_box: TmplTextBoxComponent,
   // TODO - handle display_theme and other properties that should be inherited to child components
   display_theme: null as any,
   template: TemplateContainerComponent as any,
@@ -81,5 +90,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
-  slider_new: SliderNewComponent
+  tile_component: TmplTileComponent,
+  simple_checkbox: TmplSimpleCheckboxComponent,
+  css_anim: TmplAnimationComponent,
 };
