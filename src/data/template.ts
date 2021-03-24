@@ -8626,9 +8626,6 @@
           "help: some help info",
           "step: 5"
         ],
-        "comments": ""
-        "type": "css_anim",
-        "value": "relax1"
       }
     ]
   },
