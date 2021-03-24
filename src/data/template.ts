@@ -8626,7 +8626,20 @@
           "help: some help info",
           "step: 5"
         ],
-        "comments": ""
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "test_btn",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "value": "check",
+        "parameter_list": [
+          "width: 100%"
+        ]
       }
     ]
   },
