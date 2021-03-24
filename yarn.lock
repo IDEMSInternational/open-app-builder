@@ -2817,6 +2817,13 @@ android-versions@^1.5.0:
   dependencies:
     semver "^5.7.1"
 
+angular-svg-icon@^11.2.0:
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/angular-svg-icon/-/angular-svg-icon-11.2.0.tgz#cda349cb55643781b7a42d622f0f6610921ead2a"
+  integrity sha512-5SWvZyRPRV88n6/b+5AqI580Aq3xmQ1dd1ucYCMDrj4afQzQwJv2V7pBFcF3qNYzVZyF5TLDF006tGxMHYAb2g==
+  dependencies:
+    tslib "^2.0.0"
+
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"

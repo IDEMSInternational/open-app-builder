@@ -1,0 +1,36 @@
+<div class="wrapper-radio-group">
+  <div class="container" [ngSwitch]="radioButtonType">
+    <div class="btn_triangle dse" *ngSwitchCase="'btn_triangle'">
+      <div class="btn_triangle_container center" *ngFor="let item of arrayOfBtn" >
+        <label class="center standard-label" [class.checked]="el.checked">
+          <input #el type="radio" [value]="item.text" [checked]="el.value === value" [(ngModel)]="value"  name="triangle">
+          {{item.text}}
+        </label>
+      </div>
+    </div>
+    <div class="btn_square dse" *ngSwitchCase="'btn_square'">
+      <div class="btn_square_container center" *ngFor="let item of arrayOfBtn" [style.flex]="getFlexWidth">
+        <label class="center standard-label" [class.checked]="el.checked">
+          <svg-icon [src]="el.checked && item.image_checked ? getPathImg(item.image_checked) : getPathImg(item.image)"
+          [svgStyle]="{'fill': el.checked && !item.image_checked ? '#fff': this.selectedBackgroundColor}">
+          </svg-icon>
+          <input #el type="radio" [value]="item.text" [checked]="el.value === value" [(ngModel)]="value" name="square">
+          {{item.text}}
+        </label>
+      </div>
+    </div>
+    <div class="btn_image dse" *ngSwitchCase="'btn_image'">
+      <div class="btn_image_container center" *ngFor="let item of arrayOfBtn" [style.flex]="getFlexWidth">
+        <label class="center standard-label" [class.smile-checked]="el.checked">
+          <svg-icon [src]="el.checked && item.image_checked ? getPathImg(item.image_checked) : getPathImg(item.image)">
+          </svg-icon>
+          <input #el type="radio" [value]="item.text" [checked]="el.value === value" [(ngModel)]="value" name="image">
+          {{item.text}}
+        </label>
+      </div>
+    </div>
+    <div *ngSwitchDefault>
+      Invalid type button
+    </div>
+  </div>
+</div>

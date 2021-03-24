@@ -41,6 +41,7 @@
     "@ionic/angular": "^5.5.2",
     "@ionic/pwa-elements": "^3.0.1",
     "@types/ncp": "^2.0.4",
+    "angular-svg-icon": "^11.2.0",
     "capacitor-firebase-auth": "^2.3.2",
     "chart.js": "^2.9.4",
     "cordova-android": "^9.0.0",
