@@ -7,6 +7,8 @@ import {
   ViewChild,
   Type,
   OnInit,
+  ElementRef,
+  AfterContentInit,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
@@ -50,7 +52,7 @@ export class TmplCompHostDirective {
   `,
   styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
 })
-export class TemplateComponent implements OnInit, ITemplateRowProps {
+export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
   /**
    * Specific data used in component rendering
    * when updated from parent changes will automatically propogate to child
@@ -59,12 +61,21 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
 
+  styles: { [name: string]: any } = {};
+
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private elRef: ElementRef
+  ) {}
 
   ngOnInit() {
     this.renderRow(this.row);
+  }
+
+  ngAfterContentInit() {
+    this.setStyleList();
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
@@ -84,6 +95,17 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
     }
   }
 
+  private setStyleList() {
+    const styles = {};
+    if (this.row.style_list) {
+      for (let i = 0; i < this.row.style_list.length; i++) {
+        let splited = this.row.style_list[i].split(":");
+        styles[splited[0]] = splited[1];
+        this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
+      }
+    }
+  }
+
   /** Create and render a nested template component */
   private renderTemplateComponent(component: typeof TemplateContainerComponent) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
@@ -92,7 +114,8 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
     // assign input variables (note template name taken from the row's value column)
     componentRef.instance.row = this.row;
     componentRef.instance.parent = this.parent;
-    componentRef.instance.name = this.row.value;
+    componentRef.instance.name = this.row.name;
+    componentRef.instance.templatename = this.row.value;
   }
 
   /** Create and render a common display component */

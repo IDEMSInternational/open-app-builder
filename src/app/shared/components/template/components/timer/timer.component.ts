@@ -24,7 +24,6 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   @ViewChild("min", { static: false }) minInput: ElementRef;
   @ViewChild("sec", { static: false }) secInput: ElementRef;
   state: TimerState;
-  defaultTime: number = 10;
   leftButtonAction: string;
   leftButtonIcon: string;
   leftButtonName: string;
@@ -38,6 +37,8 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   help: string | null = null;
   title: string;
   _value: number;
+  starting_minutes: number;
+  starting_seconds: number;
   minutes: string;
   seconds: string;
   timeValues = () => {
@@ -81,14 +82,16 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   getParams() {
     this.title = getStringParamFromTemplateRow(this._row, "title", "Timer");
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
-    this.value = this.getDurationFromParams();
     this.timerDurationExtension = getNumberParamFromTemplateRow(this._row, "duration_extension", 1) * 60;
     this.is_editable_on_playing = getBooleanParamFromTemplateRow(this._row, "is_editable_on_playing", false);
+    this.starting_minutes = getNumberParamFromTemplateRow(this._row, "starting_minutes", 10);
+    this.starting_seconds = getNumberParamFromTemplateRow(this._row, 'starting_seconds', 0);
+    this.value = this.getDurationFromParams();
   }
 
 
   getDurationFromParams() {
-    return getNumberParamFromTemplateRow(this._row, "duration", 10) * 60;
+    return this._row.value ? this._row.value : (this.starting_minutes * 60 + this.starting_seconds);
   }
 
   clickLeftButton() {

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SliderComponent } from './slider.component';
+import { TmplSliderComponent } from './slider.component';
 
-describe('SliderComponent', () => {
-  let component: SliderComponent;
-  let fixture: ComponentFixture<SliderComponent>;
+describe('SliderNewComponent', () => {
+  let component: TmplSliderComponent;
+  let fixture: ComponentFixture<TmplSliderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SliderComponent ],
+      declarations: [ TmplSliderComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SliderComponent);
+    fixture = TestBed.createComponent(TmplSliderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

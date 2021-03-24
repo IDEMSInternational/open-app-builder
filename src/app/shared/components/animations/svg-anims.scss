@@ -1,0 +1,141 @@
+svg {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.svg-anim.waving-blob1 {
+    position: relative;
+
+    #right_arm_rotate_group {
+        opacity: 0;
+        transform-origin: 266px 173px;
+        animation: waving-right-arm 4s infinite;
+    }
+
+    @keyframes waving-right-arm {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(30deg);
+        }
+    }
+}
+
+.svg-anim.elder-waving1 {
+    position: relative;
+    animation: bouncing 3s infinite;
+
+    @keyframes bouncing {
+        0% {
+            bottom: 0px;
+        }
+        20% {
+            bottom: 30px;
+        }
+        40% {
+            bottom: 0px;
+        }
+    }
+
+    #left-arm {
+        transform-origin: 60px 137px;
+        animation: waving-left-arm 1s infinite;
+    }
+
+    @keyframes waving-left-arm {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(30deg);
+        }
+    }
+}
+
+.svg-anim.neighbour-jumping1 {
+    position: relative;
+    animation-name: jumping;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+
+    @keyframes jumping {
+        0% {
+            bottom: 0px;
+        }
+        20% {
+            bottom: 20px;
+        }
+        40% {
+            bottom: 0px;
+        }
+    }
+
+    #eyes {
+        animation: blinking 3s infinite;
+    }
+
+    @keyframes blinking {
+        0% {
+            opacity: 1;
+        }
+        5% {
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+    }
+
+    #left-arm {
+        animation: left-arm-wave 1s infinite;
+        transform-origin: 77px 141px;
+    }
+
+    @keyframes left-arm-wave {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(-33deg);
+        }
+    }
+
+    #right-arm {
+        animation: right-arm-wave 1s infinite;
+        transform-origin: 71px 146px;
+    }
+
+    @keyframes right-arm-wave {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(33deg);
+        }
+    }
+
+    #left-leg {
+        position: relative;
+        animation: stomping 1s infinite;
+    }
+
+    #right-leg {
+        position: relative;
+        animation: stomping 1s infinite;
+        animation-direction: reverse;
+    }
+
+    @keyframes stomping {
+        0% {
+            transform: translate(0px, 0px);
+        }
+        20% {
+            transform: translate(0px, -20px);
+        }
+        40% {
+            transform: translate(0px, 0px);
+        }
+    }
+}
