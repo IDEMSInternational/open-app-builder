@@ -1,3 +1,7 @@
-# ignore src data folder
+# src data folder
 src/data/*
+src/assets/*
+# build folder
+www
+# markdown files
 *.md

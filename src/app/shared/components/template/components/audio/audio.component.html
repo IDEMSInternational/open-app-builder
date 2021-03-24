@@ -1,51 +1,66 @@
-<h2>Audio</h2>
 <div class="container-player">
   <div class="top-row">
     <div class="title_and_help">
-      <h3 *ngIf="titleAudio">{{titleAudio}}</h3>
-      <ion-icon *ngIf="help" [pTooltip]="help" tooltipPosition="right" tooltipEvent="click" name="help-circle-outline" class="audio-help"></ion-icon>
+      <h3 *ngIf="titleAudio">{{ titleAudio }}</h3>
+      <ion-icon
+        *ngIf="help"
+        [pTooltip]="help"
+        tooltipPosition="right"
+        tooltipEvent="click"
+        name="help-circle-outline"
+        class="audio-help"
+      ></ion-icon>
     </div>
     <div class="volume" (click)="player ? toggleMute() : null">
-      <ion-icon [name]="!isMute ? 'volume-high-outline' : 'volume-mute-outline'" class="volume-icon"></ion-icon>
+      <ion-icon
+        [name]="!isMute ? 'volume-high-outline' : 'volume-mute-outline'"
+        class="volume-icon"
+      ></ion-icon>
     </div>
   </div>
   <div class="progress-block" [class.disabled]="rangeBarDisabled || !player">
-    <ion-range #range
-               class="audio-range"
-               max="100"
-               aria-readonly="true"
-               [value]="progress"
-               (ionChange)="checkChange()"
-               (touchstart)="checkFocus()"
-               (touchend)="seek()"
-               (mouseup)="seek()"></ion-range>
+    <ion-range
+      #range
+      class="audio-range"
+      max="100"
+      aria-readonly="true"
+      [value]="progress"
+      (ionChange)="checkChange()"
+      (touchstart)="checkFocus()"
+      (touchend)="seek()"
+      (mouseup)="seek()"
+    ></ion-range>
   </div>
   <div class="time">
     <div class="time-value">
-    {{currentTimeSong | date: 'mm:ss'}}
+      {{ currentTimeSong | date: "mm:ss" }}
     </div>
     <div class="time-value">
-      {{!player ? '00:00' : player.duration() * 1000 | date: 'mm:ss'  }}
+      {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}
     </div>
   </div>
   <div class="controls" *ngIf="!errorTxt">
     <div class="rewind">
-      <ion-button (click)="rewindPrev();"><img src="/assets/plh_assets/plh_images/other_icons/arrow.svg" alt=""></ion-button>
+      <ion-button (click)="rewindPrev()"
+        ><img src="/assets/icon/audio/arrow.svg" alt=""
+      /></ion-button>
     </div>
     <div class="play">
       <ion-button class="btn-play" (click)="togglePlayer()">
-        <img [class.ml-5]="!isPlayed"
-             [src]="!isPlayed ? '/assets/plh_assets/plh_images/other_icons/play.svg'
-             : '/assets/plh_assets/plh_images/other_icons/pause.svg'" alt="">
+        <img
+          [class.ml-5]="!isPlayed"
+          [src]="!isPlayed ? '/assets/icon/audio/play.svg' : '/assets/icon/audio/pause.svg'"
+          alt=""
+        />
       </ion-button>
     </div>
     <div class="forward">
       <ion-button (click)="rewindNext()">
-        <img src="/assets/plh_assets/plh_images/other_icons/arrow.svg" alt="">
+        <img src="/assets/icon/audio/arrow.svg" alt="" />
       </ion-button>
     </div>
   </div>
-  <div class="error-text"  *ngIf="errorTxt">
-    {{errorTxt}}
+  <div class="error-text" *ngIf="errorTxt">
+    {{ errorTxt }}
   </div>
 </div>

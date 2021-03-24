@@ -1,4 +1,4 @@
-/* tslint:disable */
+/* eslint-disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
   export const global: FlowTypes.Global[] = [
   {
@@ -351,7 +351,7 @@
         "type": "declare_global_constant",
         "name": "w_stress_short",
         "value": "Stress",
-        "comments": "ETW 5"
+        "comments": "ETW 5 -- done"
       },
       {
         "type": "declare_global_constant",
@@ -362,7 +362,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_money_short",
-        "value": "Money"
+        "value": "Money",
+        "comments": "ETW 6"
       },
       {
         "type": "declare_global_constant",
@@ -418,6 +419,24 @@
         "type": "declare_global_constant",
         "name": "w_crisis_short",
         "value": "Crisis"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "workshop_modes",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "home_practice_problem_solving",
+        "value": "Home Practice Problem-Solving"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "home_practice",
+        "value": "Home Practice"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
