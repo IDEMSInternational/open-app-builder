@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FlowTypes } from 'scripts/types';
-import { HOME_PAGE } from 'src/app/shared/services/data/data.service';
+import { Component } from "@angular/core";
+import { FlowTypes } from "scripts/types";
+import { HOME_PAGE } from "src/app/shared/services/data/data.service";
 
 @Component({
-  selector: 'plh-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: "plh-home",
+  templateUrl: "./home.page.html",
+  styleUrls: ["./home.page.scss"]
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   buttons: FlowTypes.Home_pageRow[] = [];
 
@@ -17,10 +17,22 @@ export class HomePage implements OnInit {
         .filter((row) => row.type === "button")
         .filter((row) => row.visible);
     }
-    
+
   }
 
-  ngOnInit() {
+  getBottomPositionImage(index): number {
+    switch (index) {
+      case 0:
+        return 44;
+      case 1:
+        return 32;
+      case 2:
+        return 45;
+      default:
+        return 34;
+    }
   }
-
+  trackByFn(index) {
+    return index;
+  }
 }
