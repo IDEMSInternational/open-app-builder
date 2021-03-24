@@ -1,6 +1,7 @@
 /* eslint-disable */
-  import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const template: FlowTypes.Template[] = [
+import { FlowTypes } from "src/app/shared/model/flowTypes";
+
+export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
     "flow_name": "box_tools",
@@ -8625,7 +8626,7 @@
           "max_value_label: extremely confident",
           "help: some help info",
           "step: 5"
-        ],
+        ]
       }
     ]
   },
@@ -8678,7 +8679,7 @@
       {
         "type": "radio_group",
         "name": "radio",
-        "value": 'Pair',
+        "value": "Pair",
         "parameter_list": [
           "radio_button_list: " +
           "name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;" +
@@ -8716,9 +8717,9 @@
         "value": null,
         "parameter_list": [
           "placeholder: some text",
-          "max-length: 38",
+          "max-length: 38"
         ]
-      },
+      }
     ]
   },
   {
@@ -8740,7 +8741,44 @@
           "input_allowed: false",
           "list_of_answers: Sad; Confused; Angry"
         ]
-      },
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "test_banner",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "name": "def_banner",
+        "parameter_list": [
+          "style: banner"
+        ],
+        "style_list": [
+          "margin-bottom: 20px"
+        ],
+        "rows": [
+          {
+            "type": "display_group",
+            "name": "exx",
+            "style_list": [
+              "margin-bottom: -20px"
+            ],
+            "rows": [
+              {
+                "type": "image",
+                "name": "direct_image",
+                "value": "plh_images/workshop_modes/guide_2/wave.svg",
+                "style_list": [
+                  "width: 150px",
+                  "height: 150px"
+                ]
+              },
+            ]
+          }
+        ]
+      }
     ]
   }
 ];
