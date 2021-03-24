@@ -2,7 +2,6 @@
   [class]="style"
   [disabled]="disabled"
   [style.--background]="color"
-  [style.width]="width"
-  [style.height]="height"
+  (click)="triggerActions('click')"
   >{{ _row.value }}</ion-button
 >
