@@ -46,3 +46,4 @@ src/environments/firebaseConfig.ts
 
 .env
 scripts/config/token.json
+.eslintcache

@@ -1,0 +1,92 @@
+::ng-deep {
+  .my-custom-modal {
+    --height: auto;
+    @media (max-width: 450px) {
+      //padding: 20% 2%  !important;
+    }
+
+    //padding: 20% 10%  !important;
+    .modal-wrapper {
+      max-width: 90vw;
+      background: #fff;
+      border: 2px solid #0d4060;
+      box-sizing: border-box;
+      border-radius: 20px;
+      .ion-page {
+        max-height: 90vh;
+        position: relative;
+        contain: content;
+      }
+    }
+  }
+  .wrapper {
+    padding: 0;
+    .text-box-input {
+      height: 59px;
+      margin-top: 15px;
+      border-radius: 20px;
+      @media (max-width: 400px) {
+        min-width: 260px;
+      }
+    }
+  }
+}
+
+.container-modal {
+  width: 100%;
+  height: 100%;
+  padding: 20px 15px;
+  .header {
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    color: #0d4060;
+  }
+  .form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .reverse {
+      flex-direction: column-reverse;
+    }
+    .container-radio {
+      margin-top: 15px;
+      min-height: 59px;
+      min-width: 342px;
+      max-width: fit-content;
+      background: #ffffff;
+      border: 2px solid #0d4060;
+      box-sizing: border-box;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @media (max-width: 400px) {
+        min-width: 260px;
+      }
+      input {
+        display: none;
+      }
+      label {
+        padding: 5px;
+        width: 100%;
+        min-height: 49px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        line-height: 25px;
+        color: #0d3f60;
+      }
+    }
+    .checked-radion {
+      background: #2dc7f2;
+    }
+  }
+}

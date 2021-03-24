@@ -1,0 +1,110 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier"
+      ],
+      "rules": {
+        "@angular-eslint/component-class-suffix": [
+          "warn",
+          {
+            "suffixes": ["page", "Page", "component", "Component", "class", "skin"]
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "warn",
+          {
+            "type": "element",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "warn",
+          {
+            "type": "attribute",
+            "prefix": "plh",
+            "style": "camelCase"
+          }
+        ],
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "off",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/member-delimiter-style": [
+          "off",
+          {
+            "multiline": {
+              "delimiter": "none",
+              "requireLast": true
+            },
+            "singleline": {
+              "delimiter": "semi",
+              "requireLast": false
+            }
+          }
+        ],
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-inferrable-types": [
+          "off",
+          {
+            "ignoreParameters": true
+          }
+        ],
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/quotes": [
+          "off",
+          "double",
+          {
+            "allowTemplateLiterals": true
+          }
+        ],
+        "@typescript-eslint/semi": ["off", null],
+
+        // CC - rule overrides
+        // (most naming convention handled by ng angular selectors above)
+        "@typescript-eslint/naming-convention": ["off"],
+        "@typescript-eslint/member-ordering": "off",
+        "@typescript-eslint/prefer-for-of": "warn",
+        "@typescript-eslint/no-unused-expressions": "warn",
+        "@typescript-eslint/no-shadow": "warn",
+        "@angular-eslint/no-output-on-prefix": "warn",
+        "arrow-parens": ["off", "always"],
+        "curly": "off",
+        "import/order": "off",
+        "one-var": ["off", "never"],
+        "prefer-const": "off",
+        "quote-props": ["off", "as-needed"],
+        "prefer-arrow/prefer-arrow-functions": "off",
+        "jsdoc/newline-after-description": ["off"],
+        "no-underscore-dangle": "off",
+        "object-shorthand": "warn",
+        "no-var": "warn",
+        "no-console": "warn",
+        "radix": "warn",
+        "eqeqeq": "warn",
+        "no-fallthrough": "warn",
+        "no-throw-literal": "warn",
+        "use-isnan": "warn",
+        "arrow-body-style": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
