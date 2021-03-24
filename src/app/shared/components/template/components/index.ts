@@ -12,7 +12,7 @@ import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TemplateBaseComponent } from "./base";
 import { TemplateDebuggerComponent } from "./debugger";
-import { TmplButtonComponent } from "./button";
+import { TmplButtonComponent } from "./button/button.component";
 import { TmplDisplayGroupComponent } from "./layout/display_group";
 import { TmplImageComponent } from "./image";
 import { TmplTextComponent } from "./text";

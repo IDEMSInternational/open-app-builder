@@ -1,8 +1,7 @@
 <ion-button
-        [class]="color"
-        [style.width.px]="width"
-        [style.height.px]="height"
-        [disabled]="disabled"
-        [style.--background]="hexBgColor"
->{{row.value}}</ion-button>
-
+  [class]="style"
+  [disabled]="disabled"
+  [style.--background]="color"
+  (click)="triggerActions('click')"
+  >{{ _row.value }}</ion-button
+>
