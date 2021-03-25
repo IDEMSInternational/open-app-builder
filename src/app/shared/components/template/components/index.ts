@@ -31,6 +31,7 @@ import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.c
 import { TmplAnimationComponent } from "./animation";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
+import { TmplPointsItemComponent } from "./points-item/points-item.component";
 import { TemplatePopupComponent } from "./layout/popup";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
@@ -66,6 +67,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplComboBoxComponent,
   TmplIconBannerComponent,
   TmplDashedBoxComponent,
+  TmplPointsItemComponent,
 ];
 
 /***************************************************************************************
@@ -112,4 +114,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   css_anim: TmplAnimationComponent,
   icon_banner: TmplIconBannerComponent,
   dashed_box: TmplDashedBoxComponent,
+  tmpl_points: TmplPointsItemComponent,
 };
