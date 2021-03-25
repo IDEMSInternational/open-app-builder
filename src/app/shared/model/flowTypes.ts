@@ -356,7 +356,8 @@ export namespace FlowTypes {
     | "radio_group"
     | "tile_component"
     | "css_anim"
-    | "combo_box";
+    | "combo_box"
+    | "icon_banner";
 
   export interface TemplateRow {
     type: TemplateRowType;
