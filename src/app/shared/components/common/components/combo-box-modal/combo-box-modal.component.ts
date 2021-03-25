@@ -37,7 +37,11 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   getParams() {
-    this.listAnswers = getStringParamFromTemplateRow(this.row, "list_of_answers", null);
+    this.listAnswers = getStringParamFromTemplateRow(this.row, "list_of_answers", null)
+      .split("[")
+      .join("")
+      .split("]")
+      .join("");
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
     this.inputPosition =
