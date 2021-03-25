@@ -3,7 +3,6 @@ import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
 @Component({
-  selector: "plh-template-component-base",
   template: ``,
   styleUrls: ["./tmpl-components-common.scss"],
 })
