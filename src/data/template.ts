@@ -981,6 +981,29 @@
         "name": "text"
       },
       {
+        "type": "button",
+        "value": 'Check it',
+        "parameter_list": [
+          "text-align: left",
+          "style: make-me-smile"
+        ]
+      },
+      {
+        "type": "title",
+        "value": 'Check it',
+        "parameter_list": [
+          "text-align: center",
+          "help: Some help"
+        ]
+      },
+      {
+        "type": "text_box",
+        "value": 'Check it',
+        "parameter_list": [
+          "text-align: left",
+        ]
+      },
+      {
         "type": "template",
         "name": "widget_audio",
         "value": "widget_audio",
@@ -12356,5 +12379,23 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
-  }
+  },
+    {
+      "flow_type": "template",
+      "flow_name": "icon_banner",
+      "status": "released",
+      "rows": [
+        {
+          "type": "icon_banner",
+          "name": "icon_banner",
+          "value": null,
+          "parameter_list": [
+            "text: Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.",
+            "title: Text for title",
+            "style: primary",
+            "image_src: plh_images/icons/star.svg"
+          ]
+        }
+      ]
+    }
 ]

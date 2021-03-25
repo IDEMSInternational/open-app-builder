@@ -1,0 +1,11 @@
+<div class="icon-banner-wrapper" [class]="style">
+  <div class="title">
+    {{ title }}
+  </div>
+  <div class="text">
+    {{ text }}
+  </div>
+  <div class="image" *ngIf="image_src">
+    <img [src]="getPathImg(image_src)" alt="" />
+  </div>
+</div>
