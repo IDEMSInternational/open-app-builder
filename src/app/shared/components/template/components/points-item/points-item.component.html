@@ -2,6 +2,9 @@
   <div class="item">
     <div class="star">
       <img src="/assets/plh_assets/plh_images/habits/star.png" alt="" />
+      <div class="star-value">
+        {{ _row.value }}
+      </div>
     </div>
     <div class="image" *ngIf="icon_src">
       <img [src]="getPathImg()" alt="" />

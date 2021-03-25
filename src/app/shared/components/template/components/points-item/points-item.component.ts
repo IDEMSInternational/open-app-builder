@@ -26,7 +26,7 @@ export class TmplPointsItemComponent
   }
 
   getParams() {
-    this.icon_src = this.assetsPrefix + getStringParamFromTemplateRow(this._row, "icon_src", null);
+    this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
   }
 

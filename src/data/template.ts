@@ -12367,8 +12367,8 @@
           "value": 10,
           "type": "tmpl_points",
           "parameter_list": [
-            "icon_src: example",
-            "text: Some text"
+            "icon_src: plh_images/habits/habit_praise_yourself_image.svg",
+            "text: Some text",
           ]
         }
       ]
