@@ -12356,5 +12356,21 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
-  }
+  },
+    {
+      "flow_type": "template",
+      "flow_name": "points",
+      "status": "released",
+      "rows": [
+        {
+          "name": "test_block",
+          "value": 10,
+          "type": "tmpl_points",
+          "parameter_list": [
+            "icon_src: example",
+            "text: Some text"
+          ]
+        }
+      ]
+    }
 ]

@@ -1,0 +1,13 @@
+<div class="wrapper-point">
+  <div class="item">
+    <div class="star">
+      <img src="/assets/plh_assets/plh_images/habits/star.png" alt="" />
+    </div>
+    <div class="image" *ngIf="icon_src">
+      <img [src]="getPathImg()" alt="" />
+    </div>
+    <div class="text" *ngIf="text">
+      {{ text }}
+    </div>
+  </div>
+</div>

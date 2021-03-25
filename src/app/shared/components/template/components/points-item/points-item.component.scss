@@ -1,0 +1,38 @@
+.wrapper-point {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .item {
+    margin: 0 auto;
+    padding: 12px 0;
+    width: 176px;
+    min-height: 153px;
+    background: #b3edfd;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .star {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .image {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .text {
+      margin-top: 7px;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+      color: #0d4060;
+    }
+  }
+}
