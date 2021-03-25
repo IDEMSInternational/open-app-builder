@@ -12356,5 +12356,22 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
-  }
+  },
+    {
+      "flow_type": "template",
+      "flow_name": "radio_group",
+      "status": "released",
+      "rows": [
+        {
+          "name": "example",
+          "type": "radio_group",
+          "value": 'Any',
+          "parameter_list": [
+            "radio_button_list: [name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;" +
+            "name:name_var_2 | text:Pair | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg]",
+            "radio_button_type: btn_square"
+          ]
+        }
+      ]
+    }
 ]
