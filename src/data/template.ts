@@ -12356,22 +12356,5 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
-  },
-    {
-      "flow_type": "template",
-      "flow_name": "tile_component",
-      "status": "released",
-      "rows": [
-        {
-          "name": "tile",
-          "type": "tile_component",
-          "value": null,
-          "parameter_list": [
-            "first_line_text: example",
-            "second_line_text: second line",
-            "icon_src: example"
-          ]
-        }
-      ]
-    }
+  }
 ]
