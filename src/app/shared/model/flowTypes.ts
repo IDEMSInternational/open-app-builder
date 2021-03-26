@@ -401,8 +401,8 @@ export namespace FlowTypes {
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: string;
     // debug info
-    _raw: string;
-    _cleaned: string;
+    _raw?: string;
+    _cleaned?: string;
   }
 
   export interface Global extends FlowTypeBase {

@@ -24,6 +24,8 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
   help: string | null;
   tooltipPosition: string;
   textAlign: string;
+  style: string | null;
+  
   constructor() {
     super();
   }
@@ -36,5 +38,6 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
     this.tooltipPosition = getStringParamFromTemplateRow(this._row, "tooltipPosition", "right");
     this.textAlign = getStringParamFromTemplateRow(this._row, "text-align", "left");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "primary");
   }
 }
