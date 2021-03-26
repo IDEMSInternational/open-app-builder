@@ -12984,7 +12984,7 @@ export const template: FlowTypes.Template[] = [
         "name": "exx",
         "parameter_list": [
           "offset: 25",
-          "style: banner"
+          "style: banner_active"
         ],
         "style_list": [
           "padding: 0 20px",
@@ -13015,7 +13015,7 @@ export const template: FlowTypes.Template[] = [
         "name": "exx",
         "parameter_list": [
           "offset: 10",
-          "style: banner"
+          "style: banner_active"
         ],
         "style_list": [
           "padding: 0 20px",
@@ -13036,6 +13036,29 @@ export const template: FlowTypes.Template[] = [
             "value": "plh_images/characters/group/talk_together.png",
             "style_list": [
               "flex: 2"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "name": "exx",
+        "parameter_list": [
+          "offset: 40",
+          "style: banner_passive"
+        ],
+        "style_list": [
+          "padding: 0 20px",
+          "min-height: 200px"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "direct_image",
+            "value": "plh_images/characters/group/talk_together.png",
+            "style_list": [
+              "width: 100%",
+              "height: 100%"
             ]
           }
         ]
