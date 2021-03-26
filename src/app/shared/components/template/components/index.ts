@@ -28,11 +28,13 @@ import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.c
 import { TmplAnimationComponent } from "./animation";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
+import { TemplatePopupComponent } from "./layout/popup";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
   TemplateBaseComponent,
   TemplateDebuggerComponent,
+  TemplatePopupComponent,
   TmplTextComponent,
   AnimatedSectionGroupComponent,
   TmplTitleComponent,
