@@ -985,7 +985,11 @@
         "value": 'Check it',
         "parameter_list": [
           "text-align: left",
-          "style: make-me-smile"
+          "style: make-me-smile",
+
+        ],
+        "style_list": [
+
         ]
       },
       {
