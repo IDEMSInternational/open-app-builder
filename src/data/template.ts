@@ -12975,70 +12975,71 @@ export const template: FlowTypes.Template[] = [
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
   },
   {
-  "flow_type": "template",
-  "flow_name": "test_banner",
-  "status": "released",
-  "rows": [
-    {
-      "type": "display_group",
-      "name": "exx",
-      "parameter_list": [
-        "offset: 25",
-        "style: banner"
-      ],
-      "style_list": [
-        "padding: 0 20px",
-      ],
-      "rows": [
-        {
-          "type": "image",
-          "name": "direct_image",
-          "value": "plh_images/workshop_modes/guide_2/wave.svg",
-          "style_list": [
-            "width: 150px",
-            "height: 150px"
-          ]
-        },
-        {
-          "type": "image",
-          "name": "direct_image",
-          "value": "plh_images/workshop_modes/guide_2/wave.svg",
-          "style_list": [
-            "width: 150px",
-            "height: 150px"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "display_group",
-      "name": "exx",
-      "parameter_list": [
-        "offset: 10",
-        "style: banner"
-      ],
-      "style_list": [
-        "padding: 0 20px",
-        "min-height: 70px"
-      ],
-      "rows": [
-        {
-          "type": "title",
-          "name": "direct_image",
-          "value": "Talk together",
-          "style_list": [
-            "flex:3"
-          ]
-        },
-        {
-          "type": "image",
-          "name": "direct_image",
-          "value": "plh_images/characters/group/talk_together.png",
-          "style_list": [
-            "flex: 2"
-          ]
-        }
-      ]
-    }
-  ]
+    "flow_type": "template",
+    "flow_name": "test_banner",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "name": "exx",
+        "parameter_list": [
+          "offset: 25",
+          "style: banner"
+        ],
+        "style_list": [
+          "padding: 0 20px",
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "direct_image",
+            "value": "plh_images/workshop_modes/guide_2/wave.svg",
+            "style_list": [
+              "width: 150px",
+              "height: 150px"
+            ]
+          },
+          {
+            "type": "image",
+            "name": "direct_image",
+            "value": "plh_images/workshop_modes/guide_2/wave.svg",
+            "style_list": [
+              "width: 150px",
+              "height: 150px"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "name": "exx",
+        "parameter_list": [
+          "offset: 10",
+          "style: banner"
+        ],
+        "style_list": [
+          "padding: 0 20px",
+          "min-height: 70px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "direct_image",
+            "value": "Talk together",
+            "style_list": [
+              "flex:3"
+            ]
+          },
+          {
+            "type": "image",
+            "name": "direct_image",
+            "value": "plh_images/characters/group/talk_together.png",
+            "style_list": [
+              "flex: 2"
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ]
