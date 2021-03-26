@@ -23,13 +23,14 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   }
 
   getParams() {
-    this.style = getStringParamFromTemplateRow(this._row, "style", "get-me-going");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "primary");
     this.color = getStringParamFromTemplateRow(this._row, "color", null);
     this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
     this.textAlign = getStringParamFromTemplateRow(this._row, "text-align", "center");
     this.width = getStringParamFromTemplateRow(this._row, "width", null);
-    if (!this.width.includes("%")) {
-      this.width += "px";
+
+    if (this.width) {
+      if (!this.width.includes("%") || !this.width.includes("px")) this.width += "px";
     }
   }
 }
