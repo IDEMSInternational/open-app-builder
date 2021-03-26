@@ -12972,5 +12972,34 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
-  }
+  },
+    {
+      "flow_type": "template",
+      "flow_name": "dashed_box",
+      "status": "released",
+      "rows": [
+        {
+          "type": "dashed_box",
+          "name": "dashed_box",
+          "value": "lorenk a sks kksle sksaiem sal;dsk slasajenx asklsje",
+          "parameter_list": [
+            "icon_src: plh_images/icons/star.svg"
+          ],
+          "style_list": [
+            "margin: 0 20px"
+          ],
+        },
+        {
+          "type": "dashed_box",
+          "name": "dashed_box_passive",
+          "value": "Example text for test",
+          "parameter_list": [
+            "style: banner_passive"
+          ],
+          "style_list": [
+            "margin: 10px 20px"
+          ],
+        }
+      ]
+    }
 ]
