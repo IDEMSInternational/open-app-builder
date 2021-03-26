@@ -351,7 +351,7 @@
         "type": "declare_global_constant",
         "name": "w_stress_short",
         "value": "Stress",
-        "comments": "ETW 5 -- done"
+        "comments": "ETW 5 -- waiting for Safety Amnesty images"
       },
       {
         "type": "declare_global_constant",
@@ -363,7 +363,7 @@
         "type": "declare_global_constant",
         "name": "w_money_short",
         "value": "Money",
-        "comments": "ETW 6 -- mostly finished, modulo images and some thinking regarding essential tools and activities"
+        "comments": "ETW 6 -- might need reordering"
       },
       {
         "type": "declare_global_constant",
@@ -387,7 +387,7 @@
         "type": "declare_global_constant",
         "name": "w_consequence_short",
         "value": "Consequences",
-        "comments": "ETW 8"
+        "comments": "ETW 8 -- done"
       },
       {
         "type": "declare_global_constant",
@@ -398,7 +398,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_solve_short",
-        "value": "Problem Solve"
+        "value": "Problem Solve",
+        "comments": "ETW 9 -- waiting for images"
       },
       {
         "type": "declare_global_constant",
@@ -615,7 +616,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_stress_teen_girl",
-        "value": "Sara"
+        "value": "Maria"
       },
       {
         "type": "declare_global_constant",
@@ -661,6 +662,51 @@
         "type": "declare_global_constant",
         "name": "w_consequence_female_caregiver",
         "value": "Mother"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_money_grandma",
+        "value": "Grandma Sara"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_money_teen_girl",
+        "value": "Amina"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_money_teen_boy",
+        "value": "Baraka"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_solve_female_caregiver_1",
+        "value": "Mother"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_solve_female_caregiver_1_name",
+        "value": "Emma"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_solve_teen_girl",
+        "value": "Faraja"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_solve_teen_boy_1",
+        "value": "Sammy"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_solve_female_caregiver_2",
+        "value": "Grandma"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_solve_teen_boy_2",
+        "value": "Baraka"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
