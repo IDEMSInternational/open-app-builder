@@ -356,7 +356,8 @@ export namespace FlowTypes {
     | "radio_group"
     | "tile_component"
     | "css_anim"
-    | "combo_box";
+    | "combo_box"
+    | "dashed_box";
 
   export interface TemplateRow {
     type: TemplateRowType;
@@ -400,8 +401,8 @@ export namespace FlowTypes {
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: string;
     // debug info
-    _raw: string;
-    _cleaned: string;
+    _raw?: string;
+    _cleaned?: string;
   }
 
   export interface Global extends FlowTypeBase {

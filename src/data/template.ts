@@ -1022,6 +1022,11 @@
         "name": "image_src"
       },
       {
+        "type": "title",
+        "name": "title",
+        "hidden": "true"
+      },
+      {
         "type": "text",
         "name": "text"
       },
@@ -1049,6 +1054,58 @@
           }
         ],
         "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_image_more",
+    "status": "released",
+    "rows": [
+      {
+        "type": "image",
+        "name": "image_src"
+      },
+      {
+        "type": "title",
+        "name": "title",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "text",
+        "name": "habit_text",
+        "hidden": "true",
+        "parameter_list": [
+          "alert:plh_images/icons/star_circle.svg"
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "button_completed",
+            "value": "@global.more_button",
+            "type": "set_variable"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_workshop_boxes.xlsx"
@@ -3009,7 +3066,8 @@
             "rows": [
               {
                 "name": "text",
-                "value": "Take it in turns for each person to say how this week’s home practice was for them.\n\nWhat went well? What was a problem?\n\nThen think together of ideas to try for each problem. \n\nRemember to encourage and praise each other for trying!",
+                "value": "(1) Share :) and :(\n(2) Bring ideas\n(3) Pick & try one!",
+                "comments": "Take it in turns for each person to say how this week’s home practice was for them.\n\nWhat went well? What was a problem?\n\nThen think together of ideas to try for each problem. \n\nRemember to encourage and praise each other for trying!",
                 "type": "set_variable"
               },
               {
@@ -3019,6 +3077,19 @@
                   {
                     "name": "duration",
                     "value": 20,
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "nav_buttons",
+                "rows": [
+                  {
+                    "name": "button_info",
+                    "value": "@global.ideas_button",
+                    "hidden": "false",
+                    "comments": "This button takes you to the corresponding challenges and solutions flow of the in-week content",
                     "type": "set_variable"
                   }
                 ]
@@ -3079,7 +3150,7 @@
             "rows": [
               {
                 "name": "text",
-                "value": "Each person take a turn.\n\nSay how you are feeling today. \n\nLook at the person on each side of you. Think of something they have done well this week, and praise them for it!",
+                "value": "Share with each other:\n(-) How are you feeling today? \n(-) What has someone else done well this week? Praise them for it!\n\nRemember that no matter how you feel, it’s great you are here! You all deserve praise!",
                 "type": "set_variable"
               }
             ]
@@ -3885,9 +3956,394 @@
         "type": "text",
         "name": "text",
         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "This is the first line in first 'paragraph'.\nThis is the second line in first 'paragraph'.\n\nThis is the second 'paragraph'."
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_print_global",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "read",
+        "value": "read_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "@global.w_instruct_female_caregiver @global.w_instruct_teen_girl @global.parent_point @global.w_instruct @global.guide_teen_name",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/instruct/read_1/slide_1.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "@global.w_instruct_female_caregiver @global.w_instruct_teen_girl @global.parent_point @global.w_instruct @global.guide_teen_name",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_go_to_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This template demonstates 4 types of go-to buttons. \n\nWrite x for the template example_emit.",
+        "comments": "A template is finished if it emits something, this can be completed or uncompleted."
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_1",
+        "value": "Go to x",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          }
+        ],
+        "comments": "This returns to the current template after finishing example_emit"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_2",
+        "value": "Go to x and don't come  back",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ],
+        "comments": "This does not return to the current template after finishing example_emit"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_3",
+        "value": "Go to x and come back if x uncompleted",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "comments": "This returns to the current template and completes the current template if it returns completed or does nothing if example_emit emits uncompleted"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_4",
+        "value": "Go to x and come back if x completed",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "uncompleted | emit:completed",
+            "_cleaned": "uncompleted | emit:completed"
+          }
+        ],
+        "comments": "This returns to the current template IF AND ONLY IF example_emit emits completed"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_emit",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example emit template."
+      },
+      {
+        "type": "button",
+        "name": "button_completed",
+        "value": "Emit completed",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "button_uncompleted",
+        "value": "Emit uncompleted",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "click | emit:uncompleted",
+            "_cleaned": "click | emit:uncompleted"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_pop_ups",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the main template demonstrating three types of pop-ups."
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_1",
+        "value": "Simple text pop-up",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_text"
+            ],
+            "_raw": "click | pop_up:example_text",
+            "_cleaned": "click | pop_up:example_text"
+          }
+        ],
+        "comments": "This launches a simple pop-up (without buttons)"
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_2",
+        "value": "Pop-up with go-to buttons that return",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_go_to_2"
+            ],
+            "_raw": "click | pop_up:example_go_to_2",
+            "_cleaned": "click | pop_up:example_go_to_2"
+          }
+        ],
+        "comments": "This launches a pop-up with a go-to button. When the destination template emits something (completed or uncompleted),  it comes back to the pop-up or to the main template."
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_3",
+        "value": "Pop-up with go-to buttons that don't return",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_go_to_3"
+            ],
+            "_raw": "click | pop_up:example_go_to_3",
+            "_cleaned": "click | pop_up:example_go_to_3"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "comments": "This launches a pop-up with a go-to button. This does not return if you click the go-to button but does if you close."
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_text",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template."
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_go_to_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_go_to_1",
+        "value": "Go to example_emit and come back to this pop-up",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to: example_emit",
+            "_cleaned": "click | go_to: example_emit"
+          }
+        ],
+        "comments": "This returns to the current template after finishing example_emit"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_2",
+        "value": "Go to example_emit and come back to the main template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ],
+        "comments": "This does not return to the current template after finishing example_emit"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_go_to_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_go_to",
+        "value": "Go to example_emit and don't come back",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "example_emit"
+            ],
+            "_raw": "click | go_to:example_emit",
+            "_cleaned": "click | go_to:example_emit"
+          },
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ],
+        "comments": "This does not return to the current template after finishing example_emit"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
   },
   {
     "flow_type": "template",
@@ -4030,6 +4486,107 @@
           "help: This is how you play an audio",
           "rangeBarDisabled:true",
           "timeToRewind:2"
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_widgets.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_widget_nesting_audio",
+    "status": "released",
+    "rows": [
+      {
+        "name": "source_file",
+        "value": "plh_audio/sample.mp3",
+        "type": "set_variable"
+      },
+      {
+        "name": "title_name",
+        "value": "This title has been overridden correctly",
+        "type": "set_variable"
+      },
+      {
+        "name": "help_msg",
+        "value": "This help message has been overriden correctly",
+        "type": "set_variable"
+      },
+      {
+        "name": "no_range_bar",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "rew_time",
+        "value": 12,
+        "type": "set_variable"
+      },
+      {
+        "type": "template",
+        "name": "overridden_audio",
+        "value": "example_widget_audio_def",
+        "rows": [
+          {
+            "name": "audio_1",
+            "value": "@local.source_file",
+            "parameter_list": [
+              "title: @local.title_name"
+            ],
+            "type": "set_variable"
+          },
+          {
+            "name": "audio_2",
+            "hidden": "true",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "audio",
+        "name": "audio_2",
+        "parameter_list": [
+          "title: @local.title_name",
+          "src: @local.source_file",
+          "help: @local.help_msg",
+          "rangeBarDisabled:@local.no_range_bar",
+          "timeToRewind:@local.rew_time"
+        ]
+      },
+      {
+        "type": "text",
+        "name": "helping_text",
+        "value": "@local.title_name"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_widgets.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_widget_combo_box",
+    "status": "released",
+    "rows": [
+      {
+        "name": "question_text",
+        "value": "This is the question",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "question",
+        "value": "@local.question_text"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_1",
+        "parameter_list": [
+          "list_of_answers: [Option 1",
+          "Option 2",
+          "Option 3]",
+          "text: @local.question_text",
+          "input_allowed: true",
+          "input_position: top",
+          "placeholder: Answer Prompt",
+          "answer_placeholder: Enter Your Own Answer"
         ]
       }
     ],
@@ -4774,7 +5331,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "Ideas from other families...\nWalking to the shops\nGet water together \nDoing a chore together \nPrepare dinner \nEat breakfast/lunch/dinner \nHave tea after school \nWatch a T.V. show  \nReview homework \nChat before bedtime \nPlay a game/sport ",
+                    "comments": "Ideas from other families:\n(-) Walking to the shops\n(-) Get water together \n(-) Doing a chore together \n(-) Prepare dinner \n(-) Eat breakfast/lunch/dinner \n(-) Have tea after school \n(-) Watch a T.V. show  \n(-) Review homework \n(-) Chat before bedtime \n(-) Play a game/sport ",
                     "type": "set_variable"
                   }
                 ]
@@ -5006,6 +5563,9 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "parameter_list": [
+          "style: active"
+        ],
         "rows": [
           {
             "type": "nested_properties",
@@ -5068,11 +5628,12 @@
                   {
                     "name": "button_2",
                     "value": "@global.essential_tools",
+                    "hidden": "false",
                     "type": "set_variable"
                   },
                   {
                     "name": "habit_text",
-                    "value": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success.",
+                    "value": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
                     "type": "set_variable"
                   }
                 ]
@@ -5322,7 +5883,7 @@
                   },
                   {
                     "name": "intro_text",
-                    "value": "This week is about accepting responsibility and giving calm consequences.",
+                    "value": "You can help your teenager to understand that breaking family rules leads to consequences. But HOW you do consequences matters. Getting them right helps teens behave better and makes family life calmer...",
                     "comments": "placeholder",
                     "type": "set_variable"
                   }
@@ -5374,7 +5935,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -5383,7 +5944,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy! What time is it! It is late!”",
+                        "value": "@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy! What time is this? You are late!”",
                         "type": "set_variable"
                       }
                     ]
@@ -5396,7 +5957,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -5418,7 +5979,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -5444,7 +6005,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@global.w_consequence_teen_boy: “That’s unfair! You never listen to me!!”  “That’s unfair! You never listen to me!!”",
+                                "value": "@global.w_consequence_teen_boy: “That’s unfair! You never listen to me!! I hate you!”",
                                 "type": "set_variable"
                               }
                             ]
@@ -5500,14 +6061,14 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Why did giving a consequence not work?",
+                    "value": "This parent gave an angry consequence ‘I’ll give you a hiding!’ but it just made everyone more angry and upset. Think together - why did giving a consequence this way not work well?",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "Father was angry \n\nFather did not let Teen explain \n\nThe consequence was not discussed beforehand with Teen \n\nThe consequence was too strong ",
+                    "comments": "(-) @global.w_consequence_male_caregiver was angry \n(-) @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy explain \n(-) The consequence was not discussed beforehand with @global.w_consequence_teen_boy \n(-)The consequence was too strong ",
                     "type": "set_variable"
                   }
                 ]
@@ -5552,7 +6113,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Teenagers often break rules. Growing up is a difficult time when they are learning about who they are. Luckily, there are ways to discipline your teen without getting angry or using violence …and they work well!",
+                "value": "Teenagers often break rules. Growing up is a difficult time when they are learning about who they are. \n\nLuckily, there are ways to discipline your teen without getting angry or using violence …and they work well!",
                 "type": "set_variable"
               },
               {
@@ -5563,7 +6124,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -5572,7 +6133,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "Giving calm consequences help teach our children responsibility for what they do – good and bad. They also allow discipline that is controlled. This is more effective than hitting or shouting. Consequences are not quite the same as punishment: they give our teens a chance to learn responsibility for their actions!\n\nYou can discuss and agree consequences in advance with teens. It can help if they make sense to them",
+                        "value": "Giving calm consequences help teach our children responsibility for what they do – good and bad. \n\nThey also allow discipline that is controlled. \n\nThis is more effective than hitting or shouting. Consequences are not quite the same as punishment: they give our teens a chance to learn responsibility for their actions!",
                         "type": "set_variable"
                       }
                     ]
@@ -5585,16 +6146,16 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
-                            "value": "plh_images/workshops/consequence/read_2/slide_1.svg",
+                            "hidden": "true",
                             "type": "set_variable"
                           },
                           {
                             "name": "text",
-                            "value": "Come home late = can’t go out next evening",
+                            "value": "You can discuss and agree consequences in advance with teens. It can help if they make sense to them\n\nYou can also agree good consequences for good actions\n\nHere are some examples: ",
                             "type": "set_variable"
                           }
                         ]
@@ -5607,16 +6168,16 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
-                                "value": "plh_images/workshops/consequence/read_2/slide_2.svg",
+                                "value": "plh_images/workshops/consequence/read_2/slide_1.svg",
                                 "type": "set_variable"
                               },
                               {
                                 "name": "text",
-                                "value": "Fight over a phone = phones taken away for an hour",
+                                "value": "Come home late = can’t go out next evening",
                                 "type": "set_variable"
                               }
                             ]
@@ -5624,17 +6185,41 @@
                           {
                             "type": "nested_properties",
                             "name": "box_2",
-                            "value": "box_image",
+                            "value": "pair",
                             "rows": [
                               {
-                                "name": "image_src",
-                                "value": "plh_images/workshops/consequence/read_2/slide_3.svg",
-                                "type": "set_variable"
+                                "type": "nested_properties",
+                                "name": "box_1",
+                                "value": "box_image_more",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/consequence/read_2/slide_2.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "Fight over a phone = phones taken away for an hour",
+                                    "type": "set_variable"
+                                  }
+                                ]
                               },
                               {
-                                "name": "text",
-                                "value": "Wash dishes = extra time to speak to friends",
-                                "type": "set_variable"
+                                "type": "nested_properties",
+                                "name": "box_2",
+                                "value": "box_image_more",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/consequence/read_2/slide_3.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "Wash dishes = extra time to speak to friends",
+                                    "type": "set_variable"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -5923,7 +6508,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -5932,7 +6517,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "@global.w_consequence_male_caregiver: \"I am concerned that you are often still coming home late, @global.w_consequence_teen_boy. What can we do to help you remember to come home in time?\"\n\n@global.w_consequence_teen_boy: \"If I come home in time, maybe I can stay up 30 minutes later than usual?\"",
+                        "value": "@global.w_consequence_male_caregiver: \"I am concerned that you are often still coming home late, @global.w_consequence_teen_boy . What can we do to help you remember to come home in time?\"\n\n@global.w_consequence_teen_boy: \"If I come home in time, maybe I can stay up 30 minutes later than usual?\"",
                         "type": "set_variable"
                       }
                     ]
@@ -5945,7 +6530,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -5967,7 +6552,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -5989,7 +6574,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -5998,7 +6583,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "@global.w_consequence_male_caregiver: \"You have to do your homework anyway. I think, if you forget the rule, it is fair that you will not be able to see your friends the next day.\"\n\n@global.w_consequence_teen_boy: \"Okay, @global.w_consequence_male_caregiver.\"",
+                                    "value": "@global.w_consequence_male_caregiver: \"You have to do your homework anyway. I think, if you forget the rule, it is fair that you will not be able to see your friends the next day.\"\n\n@global.w_consequence_teen_boy: \"Okay, @global.w_consequence_male_caregiver .\"",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -6011,7 +6596,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image",
+                                    "value": "box_image_more",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -6033,7 +6618,7 @@
                                       {
                                         "type": "nested_properties",
                                         "name": "box_1",
-                                        "value": "box_image",
+                                        "value": "box_image_more",
                                         "rows": [
                                           {
                                             "name": "image_src",
@@ -6055,7 +6640,7 @@
                                           {
                                             "type": "nested_properties",
                                             "name": "box_1",
-                                            "value": "box_image",
+                                            "value": "box_image_more",
                                             "rows": [
                                               {
                                                 "name": "image_src",
@@ -6077,7 +6662,7 @@
                                               {
                                                 "type": "nested_properties",
                                                 "name": "box_1",
-                                                "value": "box_image",
+                                                "value": "box_image_more",
                                                 "rows": [
                                                   {
                                                     "name": "image_src",
@@ -6086,7 +6671,7 @@
                                                   },
                                                   {
                                                     "name": "text",
-                                                    "value": "@global.w_consequence_teen_boy: “The guy who was supposed to drive us home was drunk, so I decided not to get in the car and then I had to wait for someone else to drive me home.” \n\n@global.w_consequence_male_caregiver: “I am glad you did not get in the car with a drunk driver, @global.w_consequence_teen_boy. That was a good decision. Let’s talk more about this in the morning when we have had some rest.” ",
+                                                    "value": "@global.w_consequence_teen_boy: “The guy who was supposed to drive us home was drunk, so I decided not to get in the car and then I had to wait for someone else to drive me home.” \n\n@global.w_consequence_male_caregiver: “I am glad you did not get in the car with a drunk driver, @global.w_consequence_teen_boy . That was a good decision. Let’s talk more about this in the morning when we have had some rest.” ",
                                                     "type": "set_variable"
                                                   }
                                                 ]
@@ -6544,7 +7129,7 @@
                   },
                   {
                     "name": "intro_text",
-                    "value": "This week is about positive instructions.",
+                    "value": "Focus on the positive! Telling our teens what we do want them to do works better than telling them to stop doing something - you will see the difference. ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   }
@@ -6585,7 +7170,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "It's time for a thought experiment!",
+                "value": "Let’s look at an example together!",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
@@ -6619,7 +7204,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -6641,7 +7226,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -6650,7 +7235,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
+                                "value": "Let’s do a thought experiment!\n\nDO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
                                 "type": "set_variable"
                               }
                             ]
@@ -6663,7 +7248,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -6672,7 +7257,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)",
+                                    "value": "Exactly! ‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also they often don’t like being told not to do things (don’t we all?)",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -6685,7 +7270,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image",
+                                    "value": "box_image_more",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -6694,7 +7279,7 @@
                                       },
                                       {
                                         "name": "text",
-                                        "value": "THINK ABOUT A FURRY TIGER, THANK YOU! \n\nWhat are you thinking about?",
+                                        "value": "NOW, THINK ABOUT A CHEETAH! \n\nWhat are you thinking about?",
                                         "type": "set_variable"
                                       }
                                     ]
@@ -6711,7 +7296,7 @@
                                       },
                                       {
                                         "name": "text",
-                                        "value": "Positive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.",
+                                        "value": "That’s right! Positive, clear instructions help teens focus on what they should be doing. Teens will also feel more respected this way, and are more likely to listen.",
                                         "type": "set_variable"
                                       }
                                     ]
@@ -6846,7 +7431,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -6868,7 +7453,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -6894,7 +7479,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????.”\n\n(inside) @global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
+                            "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????”\n\n@global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
                             "type": "set_variable"
                           }
                         ]
@@ -6955,7 +7540,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "Say something nice first \n\nSpeak to her in a calm voice \n\nTell Amina what I want her to do ",
+                    "comments": "(-) Say something nice first \n(-) Speak to her in a calm voice \n(-) Tell @global.w_instruct_teen_girl what she wants her to do ",
                     "type": "set_variable"
                   }
                 ]
@@ -6995,7 +7580,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Thank you for thinking along! Let’s go back in time and see what happens!",
+                "value": "Thank you for thinking along! Let’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction!",
                 "type": "set_variable"
               },
               {
@@ -7006,7 +7591,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -7028,7 +7613,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -7050,7 +7635,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -7059,7 +7644,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@fields.w_instruct_female_caregiver: \"Thank you for practicing outside while I finished cleaning the house, @fields.w_instruct_teen_girl . Now I have some time to watch your dance.\"",
+                                "value": "@global.w_instruct_female_caregiver: \"Thank you for practicing outside while I finished cleaning the house, @global.w_instruct_teen_girl . Now I have some time to watch your dance.\"",
                                 "type": "set_variable"
                               }
                             ]
@@ -7076,7 +7661,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@fields.w_instruct_female_caregiver: \"Wow, @fields.w_instruct_teen_girl! You have such good dance moves!\"",
+                                "value": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\"",
                                 "type": "set_variable"
                               }
                             ]
@@ -7139,7 +7724,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "Amina felt respected and loved by me \n\nI was able to stay calm  \n\nI kept a positive attitude ",
+                    "comments": "(-) @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n(-) @global.w_instruct_female_caregiver was able to stay calm  \n(-) @global.w_instruct_female_caregiver  kept a positive attitude ",
                     "type": "set_variable"
                   }
                 ]
@@ -7175,7 +7760,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_instruct",
+            "value": "Effective Instructions",
             "type": "set_variable"
           },
           {
@@ -7221,7 +7806,7 @@
               },
               {
                 "name": "text_1",
-                "value": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want them to do. Try ‘please come home by 7pm’ instead of ‘Come home in time’.",
+                "value": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want them to do. Try ‘please come home by 7pm’ instead of ‘come home in time’.",
                 "type": "set_variable"
               }
             ]
@@ -7308,13 +7893,13 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Try giving positive instructions to each other! And give each other encouragement and praise – you deserve it.\n\n",
+                    "value": "Give each other one positive instruction.\nAnd then give each other encouragement and praise – you deserve it!",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "This has to be authored as a pop-up text:\n\nExample of a negative instruction: Please stop making that noise all the time! \n\nExamples of positive instructions: I like your music, but could you turn it down so that we can talk whilst we have dinner? Thank you – I really appreciate this. \nThat’s great. Who is the singer? Please turn this off when you come in the house but you can play it in your room quietly if you want. Thank you!",
+                    "comments": "Negative instruction: \n(-) Please stop making that noise all the time! \n\nPositive instructions: \n(-) I like your music, but could you turn it down so that we can talk whilst we have dinner? Thank you – I really appreciate this. \n(-) That’s great. Who is the singer? Please turn this off when you come in the house but you can play it in your room quietly if you want. Thank you!",
                     "type": "set_variable"
                   }
                 ]
@@ -7807,7 +8392,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "Food \n\nMedical care \n\nPhone \n\nOwn bedroom \n\nNice clothes \n\nClean water ",
+                    "comments": "Food \n\nMedical care \n\nPhone \n\nNice clothes \n\nClean water ",
                     "type": "set_variable"
                   }
                 ]
@@ -7996,7 +8581,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "expenses: food, water & electricity, clothing accounts, TV subscription, toiletries, salon, airtime, school fees, transport, insurance/policies, medication, entertainment/sports, rent, loans, church, stokvel, housekeeper, other…",
+                    "comments": "expenses: food, water & electricity, clothing accounts, TV subscription, toiletries, salon, airtime, school fees, transport, insurance/policies, medication, entertainment/sports, rent, loans, church",
                     "type": "set_variable"
                   }
                 ]
@@ -8307,7 +8892,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "Severe illness or death of a friend or family member  \nRobbery \nFlooding \nEarthquakes \nPolitical violence \nLosing my job\nPandemic (COVID-19) ",
+                    "comments": "Severe illness or death of a friend or family member  \nRobbery \nFlooding \nPolitical violence \nLosing my job\nPandemic (COVID-19) ",
                     "type": "set_variable"
                   }
                 ]
@@ -8369,7 +8954,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "at home, investing in things we can sell later on, at a bank, or in a savings group.",
+                    "comments": "at home\nbuy things we can sell\nat a bank\nin a savings group",
                     "type": "set_variable"
                   }
                 ]
@@ -8970,11 +9555,18 @@
                     "rows": [
                       {
                         "name": "image_src",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "title",
+                        "value": "STEP 1: Share :) and :( ",
+                        "hidden": "false",
                         "type": "set_variable"
                       },
                       {
                         "name": "text",
-                        "value": "Step 1",
+                        "value": "I learned so much more about my teen’s life when we spent one-on-one time! But after the first day, my teen only wanted to play on his phone.",
                         "type": "set_variable"
                       }
                     ]
@@ -8991,11 +9583,18 @@
                         "rows": [
                           {
                             "name": "image_src",
+                            "hidden": "true",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "title",
+                            "value": "STEP 2: Bring ideas!",
+                            "hidden": "false",
                             "type": "set_variable"
                           },
                           {
                             "name": "text",
-                            "value": "Step 2",
+                            "value": "Well done for trying! Maybe you could suggest some other fun things you could do together to your teen.\n\nYes, or you could do something together on his phone? Or he could show you how his phone works?",
                             "type": "set_variable"
                           }
                         ]
@@ -9012,11 +9611,18 @@
                             "rows": [
                               {
                                 "name": "image_src",
+                                "hidden": "true",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "title",
+                                "value": "STEP 3: Pick and try one!",
+                                "hidden": "false",
                                 "type": "set_variable"
                               },
                               {
                                 "name": "text",
-                                "value": "Step 3",
+                                "value": "Thank you for those great ideas! Yes, let me ask my teen to show how his phone works tomorrow after school.",
                                 "type": "set_variable"
                               }
                             ]
@@ -9038,6 +9644,19 @@
                                   {
                                     "name": "duration",
                                     "value": 20,
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "nav_buttons",
+                                "rows": [
+                                  {
+                                    "name": "button_info",
+                                    "value": "@global.ideas_button",
+                                    "hidden": "false",
+                                    "comments": "This button takes you to the corresponding challenges and solutions flow of the in-week content",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -9172,7 +9791,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Think about the last time someone thanked you or said you’d done something great. Tell each other about it, and how it made you feel.\n\nParents usually don’t get thanked or praised enough. Can you tell each other how it feels not to be thanked or praised for what you do? ",
+                    "value": "Share with each other:\n(-) When last did someone thank you or said you did something great? \n(-) How did it make you feel? \n(-) How does it feel if you are not thanked or praised for what you do? \n\nParents usually don’t get thanked or praised enough. Maybe you can give your teens the right example and praise them first when they do something well! ",
                     "type": "set_variable"
                   }
                 ]
@@ -9212,8 +9831,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_female_caregiver was surprised by her teens! Let me tell you:",
-                "comments": "placeholder; should be rewritten without \"me\" and \"my teen\"",
+                "value": "Sometimes we tell our teens to do 20 things and they ignore us. Often we just want to scream. But then they still ignore us.\n\nBut the other day, @global.w_praise_female_caregiver_name was surprised by her teens! Let me tell you:",
                 "type": "set_variable"
               },
               {
@@ -9224,7 +9842,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -9307,13 +9925,13 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "How do you think what @global.w_instruct_female_caregiver said made her teens feel?  \n\nWhy did she praise them?",
+                    "value": "How did what @global.w_praise_female_caregiver_name said made her teens feel?\n\nWhy did she praise them?",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "This should be a pop-up:\n\n@global.w_instruct_female_caregiver praised her teens...\n... to get them to do it more often\n... to help her finish her work \n... to make them feel good \n... to make herself feel good ",
+                    "comments": "@global.w_praise_female_caregiver_name praised her teens...\n(-) to get them to do it more often\n(-) to help her finish her work \n(-) to make them feel good \n(-) to make herself feel good ",
                     "type": "set_variable"
                   }
                 ]
@@ -9498,21 +10116,14 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Can you each think of something to praise your teen for, and tell the others – you can also help each other think of ideas.\n\nCan you praise each other for something each person has done well in this workshop? Have they listened, or been thoughtful, or caring? Give praise and see how it makes you both feel. ",
+                    "value": "Share with each other: \n(-) What can you praise your teen for? \n(-) What has someone else done well during this workshop? Tell them!\n(-) How did it make you feel to praise someone?\n(-) How did it make you feel to be praised?",
                     "type": "set_variable"
                   },
                   {
-                    "type": "nested_properties",
-                    "name": "nav_buttons",
-                    "rows": [
-                      {
-                        "name": "button_info",
-                        "value": "@global.ideas_button",
-                        "hidden": "false",
-                        "comments": "This has to be authored as a pop-up text:\n\nSometimes it’s hard to think of what to praise your teen for! Here are some ideas.\n\nBeing kind to someone \nCleaning their room \nJoining a family meal \nGreeting other family members \nLooking after siblings \nComing home in time \nShowing thoughtfulness \nSaying 'please' or  'thank you' \nGoing to school  \nDoing chores or schoolwork  \nGetting through mealtime peacefully ",
-                        "type": "set_variable"
-                      }
-                    ]
+                    "name": "button",
+                    "hidden": "false",
+                    "comments": "Sometimes it’s hard to think of what to praise your teen for! Here are some ideas.\n(-) Being kind to someone \n(-) Cleaning their room \n(-) Joining a family meal \n(-) Greeting other family members \n(-) Looking after siblings \n(-) Coming home in time \n(-) Showing thoughtfulness \n(-) Saying 'please' or  'thank you' \n(-) Going to school  \n(-) Doing chores or schoolwork  \n(-) Getting through mealtime peacefully ",
+                    "type": "set_variable"
                   }
                 ]
               }
@@ -9932,7 +10543,7 @@
                   },
                   {
                     "name": "intro_text",
-                    "value": "This week is about rules. Creating rules with your teenager can help you both! ",
+                    "value": "Rules help teens understand what is expected from them. Teens are more likely to follow rules if you create the rules WITH your teen and praise them for it! ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   }
@@ -9984,7 +10595,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -10006,7 +10617,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -10015,7 +10626,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "Try creating a specific rule about this together. Rules are important for any household!",
+                            "value": "Discuss together: \nWhich specific rule could @global.w_rules_teen_boy and @global.w_rules_female_caregiver_1 create together?  \n\nLet’s see how @global.w_rules_female_caregiver_1 and @global.w_rules_teen_boy could do this!",
                             "type": "set_variable"
                           }
                         ]
@@ -10028,7 +10639,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -10037,7 +10648,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@global.w_rules_female_caregiver_1: “I am really proud of you, @global.w_rules_teen_boy. But I’m also worried about you staying out late. Do you know why?” \n\n@global.w_rules_teen_boy: “Because you want me to have enough time for my schoolwork?” ",
+                                "value": "@global.w_rules_female_caregiver_1: “I am really proud of you, @global.w_rules_teen_boy, but I’m also worried about you staying out late. Do you know why?” \n\n@global.w_rules_teen_boy: “Because you want me to have enough time for my schoolwork?”",
                                 "type": "set_variable"
                               }
                             ]
@@ -10045,7 +10656,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -10054,7 +10665,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@global.w_rules_female_caregiver_1: “That’s right, it’s also not safe in this area to be outside after sunset. What do you think would be a good time for you to be home?”",
+                                "value": "@global.w_rules_female_caregiver_1: “That’s right, and it’s also not safe in this area to be outside after sunset. What do you think would be a good time for you to be home?”",
                                 "type": "set_variable"
                               }
                             ]
@@ -10067,7 +10678,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -10089,7 +10700,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image",
+                                    "value": "box_image_more",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -10115,7 +10726,7 @@
                                       },
                                       {
                                         "name": "text",
-                                        "value": "@global.w_rules_teen_boy (resigned, thinking): “Okay, @global.w_rules_female_caregiver_1” \n\n@global.w_rules_female_caregiver_1: “Thank you very much, @global.w_rules_teen_boy, for helping to come up with a good rule together. I am proud to see how responsible you are getting”.  ",
+                                        "value": "@global.w_rules_teen_boy: “Okay, @global.w_rules_female_caregiver_1” \n\n@global.w_rules_female_caregiver_1: “Thank you very much, @global.w_rules_teen_boy, for helping to come up with a good rule together. I am proud to see how responsible you are getting”.  ",
                                         "type": "set_variable"
                                       }
                                     ]
@@ -10182,7 +10793,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "I made the rule together with my teen \n\nWe discussed the reasons behind the rule \n\nI listened to my teen’s suggestions \n\nThe rule was clear, specific and fair \n\nI praised my teen for helping to make the rule ",
+                    "comments": "(-) They made the rule together\n(-) They discussed the reasons behind the rule \n(-) @global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions \n(-) The rule was clear, specific and fair \n(-) @global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule ",
                     "type": "set_variable"
                   }
                 ]
@@ -10294,7 +10905,7 @@
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "She praised him\n\nShe rewarded him when he followed the rule ",
+                    "comments": "(-) She praised him\n(-) She rewarded him when he followed the rule ",
                     "type": "set_variable"
                   }
                 ]
@@ -10469,7 +11080,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Something all parents worry about is keeping their children safe online. There’s more about this in the Weekly Workshop on safety planning but rules you make with your teenager can be really helpful here.  ",
+                "value": "Rules are important to keep your teens safe - also online. There’s more about this in the Weekly Workshop on safety planning, but let’s already have a first look now!",
                 "type": "set_variable"
               },
               {
@@ -10480,7 +11091,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -10502,7 +11113,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -10524,7 +11135,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -10533,7 +11144,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@global.w_rules_female_caregiver_2: \"I’m proud of how well you dance, @global.w_rules_teen_girl. But we need to make sure you are safe on this. I know your friends look at TikTok, but with an open account there are also paedophiles who look at videos of teenagers. Paedophiles are older men who want to attack young girls and boys.\"",
+                                "value": "@global.w_rules_female_caregiver_2: \"I’m proud of how well you dance, @global.w_rules_teen_girl . But we need to make sure you are safe on this. I know your friends look at TikTok, but with an open account there are also paedophiles who look at videos of teenagers. Paedophiles are older men who want to attack young girls and boys.\"",
                                 "type": "set_variable"
                               }
                             ]
@@ -10546,7 +11157,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -10555,7 +11166,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "@global.w_rules_female_caregiver_2: \"Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you. So you can accept people you know but not strangers. Can we make a rule together that you can use TikTok but with a private account? I trust you to know who to accept!\"",
+                                    "value": "@global.w_rules_female_caregiver_2: \"Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you. So you can accept people you know, but not strangers. Can we make a rule together that you can use TikTok, but with a private account? I trust you to know who to accept!\"",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -10563,7 +11174,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_2",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -10635,14 +11246,14 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "What is one important rule you’d each like to make with your teenager? Practice with a friend pretending to be your teen to make a rule that you are both OK with!\n\nMake rules specific and realistic! For example a timetable for washing dishes: My daughter washes Monday to Wednesday and my son washes Thursday to Saturday. I do Sunday. ",
+                    "value": "What is one important rule you’d each like to make with your teenager? \n\nPractice with a friend pretending to be your teen to make a rule that you are both OK with!\n\nMake rules specific and realistic! \n\nFor example, agree on a timetable for washing dishes: My daughter washes Monday to Wednesday and my son washes Thursday to Saturday. I do Sunday. ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "Time to be home \n\nSchoolwork \n\nChores \n\nMealtime \n\nPlay/free time \n\nT.V. or gadget time ",
+                    "comments": "(-) Time to be home \n(-) Schoolwork \n(-) Chores \n(-) Mealtime \n(-) Play/free time \n(-) T.V. or gadget time ",
                     "type": "set_variable"
                   }
                 ]
@@ -11345,8 +11956,8 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_stress_welcome_together; w_stress_care_together; w_stress_relax; w_stress_reflect_together; w_stress_intro; w_stress_read_1_temp; w_stress_talk; w_stress_read_2_temp; w_stress_think_temp; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
-            "comments": "w_stress_welcome_together; w_stress_care_together; w_stress_relax; w_stress_reflect_together; w_stress_intro; w_stress_read_1; w_stress_talk; w_stress_read_2; w_stress_think; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
+            "value": "w_stress_welcome_together; w_stress_care_together; w_stress_relax; w_stress_reflect_together; w_stress_intro; w_stress_read_1_temp; w_stress_talk; w_stress_read_2_temp; w_stress_read_3_temp; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
+            "comments": "w_stress_welcome_together; w_stress_care_together; w_stress_relax; w_stress_reflect_together; w_stress_intro; w_stress_read_1; w_stress_talk; w_stress_read_2; w_stress_read_3; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
             "type": "set_variable"
           }
         ]
@@ -11532,7 +12143,7 @@
                   },
                   {
                     "name": "intro_text",
-                    "value": "This week is about managing anger and stress.",
+                    "value": "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family. ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   }
@@ -11584,7 +12195,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -11593,7 +12204,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "I lost my job and I was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy entered.",
+                        "value": "I lost my job and I was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.",
                         "type": "set_variable"
                       }
                     ]
@@ -11606,7 +12217,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -11615,7 +12226,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "@global.w_stress_teen_boy: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (snapping): “Leave me alone and mind your own business!”",
+                            "value": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (snapping): “Leave me alone and mind your own business!”",
                             "type": "set_variable"
                           }
                         ]
@@ -11628,7 +12239,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -11637,7 +12248,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@global.w_stress_teen_boy: “What did I do? You never listen!”  \n\n@global.w_stress_male_caregiver: “I said leave me alone or you will get a beating!”",
+                                "value": "@global.w_stress_teen_boy_1: “What did I do? You never listen!”  \n\n@global.w_stress_male_caregiver: “I said leave me alone or you will get a beating!”",
                                 "type": "set_variable"
                               }
                             ]
@@ -11650,7 +12261,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -11659,7 +12270,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "@global.w_stress_girl: “Look! I have made a paper house paper!” ",
+                                    "value": "@global.w_stress_girl: “Look! I have made a paper house!” ",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -11672,7 +12283,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image",
+                                    "value": "box_image_more",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -11681,7 +12292,7 @@
                                       },
                                       {
                                         "name": "text",
-                                        "value": "@global.w_stress_teen_boy: “Who cares about your stupid house!”",
+                                        "value": "@global.w_stress_teen_boy_1: “Who cares about your stupid house!”",
                                         "type": "set_variable"
                                       }
                                     ]
@@ -11758,14 +12369,14 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "How do you think @global.w_stress_teen_boy felt? And his @global.w_instruct_male_caregiver? And @global.w_stress_girl?\n\nWhat things could have helped @global.w_instruct_male_caregiver?",
+                    "value": "How do you think @global.w_stress_teen_boy_1 felt? And his @global.w_stress_male_caregiver? And @global.w_stress_girl?\n\nWhat things could have helped @global.w_stress_male_caregiver?",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "hidden": "false",
-                    "comments": "Recognise why he feels stressed \n\nTake a deep breath and speak calmly  \n\nShow he understands his teen’s feelings \n\nThink about solutions together \n\nDo something positive together ",
+                    "comments": "(-) Recognise why he feels stressed \n(-) Take a deep breath and speak calmly  \n(-) Show he understands his teen’s feelings \n(-) Think about solutions together \n(-) Do something positive together ",
                     "type": "set_variable"
                   }
                 ]
@@ -11809,6 +12420,11 @@
                 "type": "set_variable"
               },
               {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
+              {
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "pair",
@@ -11816,7 +12432,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -11825,7 +12441,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "I lost my job and I was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy entered.",
+                        "value": "I lost my job and I was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.",
                         "type": "set_variable"
                       }
                     ]
@@ -11838,7 +12454,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -11847,7 +12463,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "@global.w_stress_teen_boy: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (taking a breath): “I’m sorry son. I had a difficult day today. The boss fired me.” ",
+                            "value": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (taking a breath): “I’m sorry son. I had a difficult day today. The boss fired me.” ",
                             "type": "set_variable"
                           }
                         ]
@@ -11860,7 +12476,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -11869,7 +12485,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@global.w_stress_teen_boy (looking worried): “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver (sees his son looking upset so puts an arm around): “I’ll try, son, And your@global.w_stress_female_caregiver’s job will help us get by while I look for another job.” ",
+                                "value": "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, And your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.” ",
                                 "type": "set_variable"
                               }
                             ]
@@ -11882,7 +12498,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -11891,7 +12507,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "@global.w_stress_teen_boy: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.stress_male_caregiver: “No it’s okay, Amani. I appreciate you offer. The most important thing is that you work hard at school . Thanks for listening to me.” ",
+                                    "value": "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1 . I appreciate you offer. The most important thing is that you work hard at school. Thanks for listening to me.” ",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -11899,7 +12515,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_2",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -11908,7 +12524,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy: “Okay, @global.w_stress_male_caregiver!” ",
+                                    "value": "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy_1: “Okay, @global.w_stress_male_caregiver!” ",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -11942,13 +12558,13 @@
   {
     "flow_type": "template",
     "module": "stress",
-    "flow_name": "w_stress_think_temp",
+    "flow_name": "w_stress_read_3_temp",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "think",
-        "value": "think_temp",
+        "name": "read",
+        "value": "read_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -11983,7 +12599,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
@@ -11992,7 +12608,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "Boy: ‘Don’t tell the adults, but I’m going to bar with my friends tonight’ Girl ‘Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party’",
+                        "value": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I’m going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party\"",
                         "type": "set_variable"
                       }
                     ]
@@ -12005,7 +12621,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image",
+                        "value": "box_image_more",
                         "rows": [
                           {
                             "name": "image_src",
@@ -12014,7 +12630,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "Boy: ‘I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry’",
+                            "value": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry\"",
                             "type": "set_variable"
                           }
                         ]
@@ -12027,7 +12643,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image",
+                            "value": "box_image_more",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -12036,7 +12652,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "Girl: ‘I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party’",
+                                "value": "@global.w_stress_teen_girl: \"I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\"",
                                 "type": "set_variable"
                               }
                             ]
@@ -12049,7 +12665,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image",
+                                "value": "box_image_more",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -12058,7 +12674,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "Parent: I care about your safety more than anything. If something ever happens to you where you are upset, or scared, you can always call me for help, or tell me about it. Just say ‘safety amnesty’. I promise that I will do the best I can to help you and I won’t be angry with you – even if you are somewhere you shouldn’t be or doing something you shouldn’t be’",
+                                    "value": "@global.w_stress_parent: \"I care about your safety more than anything. If something ever happens to you where you are upset, or scared, you can always call me for help, or tell me about it. Just say ‘safety amnesty’. I promise that I will do the best I can to help you and I won’t be angry with you – even if you are somewhere you shouldn’t be or doing something you shouldn’t be\"",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -12071,7 +12687,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image",
+                                    "value": "box_image_more",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -12080,7 +12696,7 @@
                                       },
                                       {
                                         "name": "text",
-                                        "value": "Girl: ‘Mum, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.’",
+                                        "value": "@global.w_stress_teen_girl: \"@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.\"",
                                         "type": "set_variable"
                                       }
                                     ]
@@ -12097,7 +12713,7 @@
                                       },
                                       {
                                         "name": "text",
-                                        "value": "Boy: ‘Dad, I’m worried that my friends are getting into trouble. I don’t want to stop being their friend, but I’m worried. Can we talk about this?’",
+                                        "value": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, I’m worried that my friends are getting into trouble. I don’t want to stop being their friend, but I’m worried. Can we talk about this?\"",
                                         "type": "set_variable"
                                       }
                                     ]
@@ -12143,7 +12759,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_stress",
+            "value": "Stressful situations",
             "type": "set_variable"
           },
           {
@@ -12297,12 +12913,12 @@
                   {
                     "name": "text_1",
                     "value": "Whenever you are feeling stressed or upset: take five breaths in and out before you react",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button_1",
-                    "hidden": "true",
+                    "value": "@global.essential_tools",
+                    "hidden": "false",
                     "type": "set_variable"
                   },
                   {
@@ -12359,18 +12975,30 @@
   },
     {
       "flow_type": "template",
-      "flow_name": "radio_group",
+      "flow_name": "dashed_box",
       "status": "released",
       "rows": [
         {
-          "name": "example",
-          "type": "radio_group",
-          "value": 'Any',
+          "type": "dashed_box",
+          "name": "dashed_box",
+          "value": "lorenk a sks kksle sksaiem sal;dsk slasajenx asklsje",
           "parameter_list": [
-            "radio_button_list: [name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;" +
-            "name:name_var_2 | text:Pair | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg]",
-            "radio_button_type: btn_square"
-          ]
+            "icon_src: plh_images/icons/star.svg"
+          ],
+          "style_list": [
+            "margin: 0 20px"
+          ],
+        },
+        {
+          "type": "dashed_box",
+          "name": "dashed_box_passive",
+          "value": "Example text for test",
+          "parameter_list": [
+            "style: banner_passive"
+          ],
+          "style_list": [
+            "margin: 10px 20px"
+          ],
         }
       ]
     }
