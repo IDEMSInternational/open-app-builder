@@ -1004,6 +1004,14 @@
         ]
       },
       {
+        "type": "title",
+        "value": 'Check it',
+        "parameter_list": [
+          "text-align: center",
+          "help: some help"
+        ]
+      },
+      {
         "type": "template",
         "name": "widget_audio",
         "value": "widget_audio",
