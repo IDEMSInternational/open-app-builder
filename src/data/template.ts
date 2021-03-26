@@ -8748,22 +8748,12 @@ export const template: FlowTypes.Template[] = [
     "flow_type": "template",
     "flow_name": "test_banner",
     "status": "released",
-    "rows": [
-      {
-        "type": "display_group",
-        "name": "def_banner",
-        "parameter_list": [
-          "style: banner"
-        ],
-        "style_list": [
-          "margin-bottom: 20px"
-        ],
         "rows": [
           {
             "type": "display_group",
             "name": "exx",
-            "style_list": [
-              "margin-bottom: -20px"
+            "parameter_list": [
+              "style: banner"
             ],
             "rows": [
               {
@@ -8776,8 +8766,6 @@ export const template: FlowTypes.Template[] = [
                 ]
               },
             ]
-          }
-        ]
       }
     ]
   }
