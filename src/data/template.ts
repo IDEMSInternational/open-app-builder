@@ -12368,7 +12368,10 @@
           "value": "lorenk a sks kksle sksaiem sal;dsk slasajenx asklsje",
           "parameter_list": [
             "icon_src: plh_images/icons/star.svg"
-          ]
+          ],
+          "style_list": [
+            "margin: 0 20px"
+          ],
         }
       ]
     }
