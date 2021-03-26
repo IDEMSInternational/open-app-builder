@@ -12372,6 +12372,17 @@
           "style_list": [
             "margin: 0 20px"
           ],
+        },
+        {
+          "type": "dashed_box",
+          "name": "dashed_box_passive",
+          "value": "Example text for test",
+          "parameter_list": [
+            "style: banner_passive"
+          ],
+          "style_list": [
+            "margin: 10px 20px"
+          ],
         }
       ]
     }
