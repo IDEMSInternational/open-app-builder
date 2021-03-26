@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
-import { PLHDataService } from "src/app/shared/services/data/data.service";
-import { TemplateBaseComponent } from "../base";
+import { TemplateLayoutComponent } from "./layout";
 
 @Component({
   selector: "plh-tmpl-nav-group",
@@ -65,19 +64,15 @@ import { TemplateBaseComponent } from "../base";
     `,
   ],
 })
-export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
+export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
   sectionIndex = 0;
 
-  @Input() set row(value: FlowTypes.TemplateRow) {
-    this._row = value;
-    if (value && value.value && typeof value.value === "string") {
-      this.templateNames = this.splitLines(value.value);
+  modifyRowSetter(row: FlowTypes.TemplateRow) {
+    if (row && row.value && typeof row.value === "string") {
+      this.templateNames = this.splitLines(row.value);
     }
-  }
-
-  constructor(dataService: PLHDataService) {
-    super();
+    return row;
   }
 
   private splitLines(input: string) {
@@ -88,38 +83,23 @@ export class NavGroupComponent extends TemplateBaseComponent implements OnInit {
       .filter((s) => s.length > 0);
   }
 
-  ngOnInit() {
-    this.addParentActionsInterceptor();
-  }
-
-  /**
-   * Action emitted by child rows will by default be handled by the parent template
-   * Intercept completed/uncompleted actions to only emit if all sections completed
-   */
-  private addParentActionsInterceptor() {
-    console.log("templateNames", this.templateNames);
-    this.parent.handleActionsInterceptor = async (actions) => {
-      return actions.filter((action) => {
-        const { action_id, args } = action;
-        // only allow actions to be processed by parent if last section
-        if (action_id === "emit" && args[0] === "completed") {
-          console.log("intercepting actions", this.sectionIndex, this.templateNames.length);
-          if (this.sectionIndex < this.templateNames.length - 1) {
-            this.sectionIndex++;
-            return false;
-          }
-        }
-        if (action_id === "emit" && args[0] === "uncompleted") {
-          console.log("intercepting actions");
-          if (this.sectionIndex > 0) {
-            this.sectionIndex--;
-            return false;
-          }
-        }
-        // default process on parent
-        return true;
-      });
-    };
+  interceptTemplateContainerAction(action: FlowTypes.TemplateRowAction) {
+    const { action_id, args } = action;
+    // only allow actions to be processed by parent if last section
+    if (action_id === "emit" && args[0] === "completed") {
+      if (this.sectionIndex < this.templateNames.length - 1) {
+        this.sectionIndex++;
+        return false;
+      }
+    }
+    if (action_id === "emit" && args[0] === "uncompleted") {
+      if (this.sectionIndex > 0) {
+        this.sectionIndex--;
+        return false;
+      }
+    }
+    // default process on parent
+    return true;
   }
 
   goToSection(index: number) {

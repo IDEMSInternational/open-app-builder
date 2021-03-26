@@ -113,7 +113,7 @@
       {
         "type": "declare_global_constant",
         "name": "essential_tools",
-        "value": "Essential Tools"
+        "value": "Essential tools"
       },
       {
         "type": "declare_global_constant",
@@ -363,7 +363,7 @@
         "type": "declare_global_constant",
         "name": "w_money_short",
         "value": "Money",
-        "comments": "ETW 6"
+        "comments": "ETW 6 -- mostly finished, modulo images and some thinking regarding essential tools and activities"
       },
       {
         "type": "declare_global_constant",
@@ -374,18 +374,20 @@
       {
         "type": "declare_global_constant",
         "name": "w_rules_short",
-        "value": "Rules"
+        "value": "Rules",
+        "comments": "ETW 7 -- done"
       },
       {
         "type": "declare_global_constant",
-        "name": "w_responsibility",
+        "name": "w_consequence",
         "value": "Accepting Responsibility",
-        "comments": "responsibility"
+        "comments": "consequence"
       },
       {
         "type": "declare_global_constant",
-        "name": "w_responsibility_short",
-        "value": "Consequences"
+        "name": "w_consequence_short",
+        "value": "Consequences",
+        "comments": "ETW 8"
       },
       {
         "type": "declare_global_constant",
@@ -431,12 +433,35 @@
       {
         "type": "declare_global_constant",
         "name": "home_practice_problem_solving",
-        "value": "Home Practice Problem-Solving"
+        "value": "Talk about Home Practice"
       },
       {
         "type": "declare_global_constant",
         "name": "home_practice",
         "value": "Home Practice"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "workshop_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "ideas_button",
+        "value": "Real-world ideas"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "ideas_pop_up",
+        "value": "Ideas from other families..."
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "more_button",
+        "value": "Find out more"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
@@ -528,6 +553,114 @@
         "type": "declare_field_default",
         "name": "user_name",
         "value": "Lucie"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "names_of_characters",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "guide_1_name",
+        "value": "Giles"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "guide_2_name",
+        "value": "Grace"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "guide_teen_name",
+        "value": "Alex"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_praise_female_caregiver_name",
+        "value": "Felicia"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_instruct_teen_girl",
+        "value": "Amina"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_instruct_female_caregiver",
+        "value": "Grandma"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_stress_teen_boy_1",
+        "value": "Amani"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_stress_girl",
+        "value": "Shukuru"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_stress_male_caregiver",
+        "value": "Father"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_stress_female_caregiver",
+        "value": "Mother"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_stress_teen_girl",
+        "value": "Sara"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_stress_teen_boy_2",
+        "value": "James"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_stress_parent",
+        "value": "Dad"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_rules_teen_boy",
+        "value": "Amani"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_rules_female_caregiver_1",
+        "value": "Mother"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_rules_teen_girl",
+        "value": "Shalini"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_rules_female_caregiver_2",
+        "value": "Mom"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_consequence_teen_boy",
+        "value": "Amani"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_consequence_male_caregiver",
+        "value": "Father"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_consequence_female_caregiver",
+        "value": "Mother"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
