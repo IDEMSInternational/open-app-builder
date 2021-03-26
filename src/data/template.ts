@@ -13027,6 +13027,7 @@
     ]
   },
   {
+    "flow_type": "template",
     "flow_name": "dashed_box",
     "status": "released",
     "rows": [
@@ -13035,6 +13036,7 @@
         "name": "dashed_box",
         "value": "lorenk a sks kksle sksaiem sal;dsk slasajenx asklsje",
         "parameter_list": [
+          "style: banner_active",
           "icon_src: plh_images/icons/star.svg"
         ],
         "style_list": [
