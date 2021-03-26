@@ -79,6 +79,7 @@ p {
   align-items: center;
   h1 {
     font-size: 25px;
+    margin: 0;
     @media (max-width: 375px) {
       font-size: 24px;
     }
