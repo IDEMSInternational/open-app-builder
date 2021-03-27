@@ -314,13 +314,13 @@
       {
         "type": "declare_global_constant",
         "name": "w_1on1_short",
-        "value": "1 on 1",
+        "value": "One-on-One Time",
         "comments": "ETW 3 -- done"
       },
       {
         "type": "declare_global_constant",
         "name": "w_praise",
-        "value": "Praise & Positive Reinforcement",
+        "value": "Praise",
         "comments": "praise"
       },
       {
@@ -338,31 +338,31 @@
       {
         "type": "declare_global_constant",
         "name": "w_instruct_short",
-        "value": "Instructions",
+        "value": "Positive Instructions",
         "comments": "ETW 2 -- done"
       },
       {
         "type": "declare_global_constant",
         "name": "w_stress",
-        "value": "Managing Anger & Stress",
+        "value": "Managing Stress",
         "comments": "stress"
       },
       {
         "type": "declare_global_constant",
         "name": "w_stress_short",
-        "value": "Stress",
-        "comments": "ETW 5 -- waiting for Safety Amnesty images"
+        "value": "Managing Stress",
+        "comments": "ETW 5 -- done"
       },
       {
         "type": "declare_global_constant",
         "name": "w_money",
-        "value": "Family Budgeting",
+        "value": "Family Budgets",
         "comments": "money"
       },
       {
         "type": "declare_global_constant",
         "name": "w_money_short",
-        "value": "Money",
+        "value": "Family Budgets",
         "comments": "ETW 6 -- might need reordering"
       },
       {
@@ -380,13 +380,13 @@
       {
         "type": "declare_global_constant",
         "name": "w_consequence",
-        "value": "Accepting Responsibility",
+        "value": "Calm Consequences",
         "comments": "consequence"
       },
       {
         "type": "declare_global_constant",
         "name": "w_consequence_short",
-        "value": "Consequences",
+        "value": "Calm Consequences",
         "comments": "ETW 8 -- done"
       },
       {
@@ -398,19 +398,19 @@
       {
         "type": "declare_global_constant",
         "name": "w_solve_short",
-        "value": "Problem Solve",
+        "value": "Problem Solving",
         "comments": "ETW 9 -- waiting for images"
       },
       {
         "type": "declare_global_constant",
         "name": "w_safe",
-        "value": "Keeping Your Teen Safe",
+        "value": "Teen Safety",
         "comments": "safe"
       },
       {
         "type": "declare_global_constant",
         "name": "w_safe_short",
-        "value": "Safety"
+        "value": "Teen Safety"
       },
       {
         "type": "declare_global_constant",
@@ -421,7 +421,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_crisis_short",
-        "value": "Crisis"
+        "value": "Dealing with Crisis"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
@@ -707,6 +707,26 @@
         "type": "declare_global_constant",
         "name": "w_solve_teen_boy_2",
         "value": "Baraka"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_safe_teen_girl_1",
+        "value": "Faraja"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_safe_teen_girl_2",
+        "value": "Amina"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_safe_teen_girl_3",
+        "value": "Shukuru"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_safe_female_caregiver",
+        "value": "Grandma"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
