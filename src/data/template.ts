@@ -71,9 +71,9 @@
         "type": "text",
         "name": "tip_text",
         "value": "You can always find these tools in the @global.parent_centre ",
-        "parameter_list": [
-          "alert:true"
-        ]
+        "parameter_list": {
+          "alert": "true"
+        }
       },
       {
         "type": "template",
@@ -312,9 +312,9 @@
         "type": "audio",
         "name": "audio_player",
         "value": "@local.audio_src",
-        "parameter_list": [
-          "title:@local.audio_title"
-        ]
+        "parameter_list": {
+          "title": "@local.audio_title"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
@@ -382,10 +382,10 @@
       {
         "type": "timer",
         "name": "timer",
-        "parameter_list": [
-          "duration_extension:@local.duration_extension",
-          "duration:@local.duration"
-        ]
+        "parameter_list": {
+          "duration_extension": "@local.duration_extension",
+          "duration": "@local.duration"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
@@ -439,15 +439,15 @@
       {
         "type": "slider",
         "name": "slider",
-        "parameter_list": [
-          "min:@local.min_value",
-          "min_value_label:@local.min_text",
-          "max:@local.max_value",
-          "max_value_label:@local.max_text",
-          "step:@local.step",
-          "help: @local.help",
-          "title: @local.title"
-        ]
+        "parameter_list": {
+          "min": "@local.min_value",
+          "min_value_label": "@local.min_text",
+          "max": "@local.max_value",
+          "max_value_label": "@local.max_text",
+          "step": "@local.step",
+          "help": "@local.help",
+          "title": "@local.title"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\core_templates\\core_templates_widgets.xlsx"
@@ -468,9 +468,9 @@
       {
         "name": "progress_bar",
         "value": "@local.progress_bar_value",
-        "parameter_list": [
-          "num_items:@local.progress_bar_num_items"
-        ],
+        "parameter_list": {
+          "num_items": "@local.progress_bar_num_items"
+        },
         "type": "set_variable"
       },
       {
@@ -531,9 +531,9 @@
             "type": "image",
             "name": "intro_image_src",
             "value": "@local.activity_image",
-            "parameter_list": [
-              "background_box"
-            ]
+            "parameter_list": {
+              "background_box": "true"
+            }
           },
           {
             "type": "title",
@@ -616,9 +616,9 @@
                 "type": "image",
                 "name": "banner_image_src",
                 "value": "@local.activity_image",
-                "parameter_list": [
-                  "background_box"
-                ]
+                "parameter_list": {
+                  "background_box": "true"
+                }
               }
             ]
           },
@@ -720,9 +720,9 @@
             "type": "image",
             "name": "outro_image_src",
             "value": "@local.activity_image",
-            "parameter_list": [
-              "background_box"
-            ]
+            "parameter_list": {
+              "background_box": "true"
+            }
           },
           {
             "type": "title",
@@ -742,9 +742,9 @@
           {
             "type": "text",
             "name": "outro_habit_text",
-            "parameter_list": [
-              "alert:plh_images/icons/star_circle.svg"
-            ]
+            "parameter_list": {
+              "alert": "plh_images/icons/star_circle.svg"
+            }
           },
           {
             "type": "template",
@@ -781,9 +781,9 @@
             "name": "button_info",
             "value": "@global.ideas_button",
             "hidden": "true",
-            "parameter_list": [
-              "colour:secondary"
-            ]
+            "parameter_list": {
+              "colour": "secondary"
+            }
           },
           {
             "type": "button",
@@ -1050,9 +1050,9 @@
         "type": "text",
         "name": "habit_text",
         "hidden": "true",
-        "parameter_list": [
-          "alert:plh_images/icons/star_circle.svg"
-        ]
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
       },
       {
         "type": "template",
@@ -1096,9 +1096,9 @@
         "type": "text",
         "name": "habit_text",
         "hidden": "true",
-        "parameter_list": [
-          "alert:plh_images/icons/star_circle.svg"
-        ]
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
       },
       {
         "type": "template",
@@ -1163,9 +1163,9 @@
         "type": "text",
         "name": "habit_text",
         "hidden": "true",
-        "parameter_list": [
-          "alert:plh_images/icons/star_circle.svg"
-        ]
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
       },
       {
         "type": "text",
@@ -1615,14 +1615,16 @@
                   {
                     "name": "question_text",
                     "value": "@local.question_text_1",
-                    "parameter_list": [
-                      "\"\""
-                    ],
+                    "parameter_list": {
+                      "\"\"": "true"
+                    },
                     "type": "set_variable"
                   },
                   {
                     "name": "answer_list",
-                    "value": "@local.answer_list_1",
+                    "value": [
+                      "@local.answer_list_1"
+                    ],
                     "type": "set_variable"
                   },
                   {
@@ -1649,14 +1651,16 @@
                   {
                     "name": "question_text",
                     "value": "@local.question_text_2",
-                    "parameter_list": [
-                      "\"\""
-                    ],
+                    "parameter_list": {
+                      "\"\"": "true"
+                    },
                     "type": "set_variable"
                   },
                   {
                     "name": "answer_list",
-                    "value": "@local.answer_list_2",
+                    "value": [
+                      "@local.answer_list_2"
+                    ],
                     "type": "set_variable"
                   },
                   {
@@ -3575,10 +3579,10 @@
       {
         "type": "timer",
         "name": "timer",
-        "parameter_list": [
-          "duration_extension:1",
-          "duration:10"
-        ]
+        "parameter_list": {
+          "duration_extension": "1",
+          "duration": "10"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
@@ -3897,9 +3901,9 @@
         "type": "audio",
         "name": "audio_src",
         "value": "plh_audio/sample.mp3",
-        "parameter_list": [
-          "title:  Test title"
-        ]
+        "parameter_list": {
+          "title": "Test title"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
@@ -4496,13 +4500,13 @@
       {
         "type": "audio",
         "name": "audio_2",
-        "parameter_list": [
-          "src: plh_audio/sample.mp3",
-          "title: New Title Test",
-          "help: This is how you play an audio",
-          "rangeBarDisabled:true",
-          "timeToRewind:2"
-        ]
+        "parameter_list": {
+          "src": "plh_audio/sample.mp3",
+          "title": "New Title Test",
+          "help": "This is how you play an audio",
+          "rangeBarDisabled": "true",
+          "timeToRewind": "2"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_widgets.xlsx"
@@ -4545,9 +4549,9 @@
           {
             "name": "audio_1",
             "value": "@local.source_file",
-            "parameter_list": [
-              "title: @local.title_name"
-            ],
+            "parameter_list": {
+              "title": "@local.title_name"
+            },
             "type": "set_variable"
           },
           {
@@ -4560,13 +4564,13 @@
       {
         "type": "audio",
         "name": "audio_2",
-        "parameter_list": [
-          "title: @local.title_name",
-          "src: @local.source_file",
-          "help: @local.help_msg",
-          "rangeBarDisabled:@local.no_range_bar",
-          "timeToRewind:@local.rew_time"
-        ]
+        "parameter_list": {
+          "title": "@local.title_name",
+          "src": "@local.source_file",
+          "help": "@local.help_msg",
+          "rangeBarDisabled": "@local.no_range_bar",
+          "timeToRewind": "@local.rew_time"
+        }
       },
       {
         "type": "text",
@@ -4594,16 +4598,16 @@
       {
         "type": "combo_box",
         "name": "combo_box_1",
-        "parameter_list": [
-          "text: @local.question_text",
-          "input_allowed: true",
-          "input_position: top",
-          "placeholder: Answer Prompt",
-          "answer_placeholder: Enter Your Own Answer",
-          "answers_list: [Option 1",
-          "Option 2",
-          "Option 3]"
-        ]
+        "parameter_list": {
+          "text": "@local.question_text",
+          "input_allowed": "true",
+          "input_position": "top",
+          "placeholder": "Answer Prompt",
+          "answer_placeholder": "Enter Your Own Answer",
+          "answers_list": "[Option 1",
+          "Option 2": "true",
+          "Option 3]": "true"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_widgets.xlsx"
@@ -4616,27 +4620,30 @@
       {
         "type": "radio_group",
         "name": "radio_buttons_1",
-        "parameter_list": [
-          "value:radio_ex_result",
-          "radio_button_list: [name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_2 | image: /plh_images/icons/tick.svg | text:Pair]",
-          "Options_per_row: 3",
-          "radio_button_type: btn_square"
-        ]
+        "parameter_list": {
+          "value": "radio_ex_result",
+          "radio_button_list": "[name",
+          "name": "name_var_2 | image",
+          "Options_per_row": "3",
+          "radio_button_type": "btn_square"
+        }
       },
       {
         "type": "radio_group",
         "name": "radio_buttons_2",
-        "parameter_list": [
-          "value:radio_ex_result",
-          "radio_button_list: @local.radio_button_list",
-          "Options_per_row: 3",
-          "radio_button_type: btn_square"
-        ]
+        "parameter_list": {
+          "value": "radio_ex_result",
+          "radio_button_list": "@local.radio_button_list",
+          "Options_per_row": "3",
+          "radio_button_type": "btn_square"
+        }
       },
       {
         "name": "radio_button_list",
-        "value": "name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; name:name_var_2 | image: /plh_images/icons/tick.svg | text:Pair",
+        "value": [
+          "name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_2 | image: /plh_images/icons/tick.svg | text:Pair"
+        ],
         "type": "set_variable"
       }
     ],
@@ -4666,7 +4673,15 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_example_welcome_together;\nw_example_listen; w_example_read;\nw_example_talk_together; w_example_tools_activity;\nw_example_home_practice;\nw_example_ending",
+            "value": [
+              "w_example_welcome_together",
+              "w_example_listen",
+              "w_example_read",
+              "w_example_talk_together",
+              "w_example_tools_activity",
+              "w_example_home_practice",
+              "w_example_ending"
+            ],
             "type": "set_variable"
           }
         ]
@@ -4691,7 +4706,9 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_example_listen",
+            "value": [
+              "w_example_listen"
+            ],
             "comments": "w_example_listen;\nw_example_read;\nw_example_question_time;\nw_example_tools_activity;\nw_example_home_practice;\nw_example_ending",
             "type": "set_variable"
           }
@@ -5135,7 +5152,16 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_1on1_welcome_together;\nw_1on1_care_together; \nw_1on1_relax; \nw_1on1_intro; \nw_1on1_talk;\nw_1on1_tools_activity;  \nw_1on1_home_practice; \nw_1on1_ending",
+            "value": [
+              "w_1on1_welcome_together",
+              "w_1on1_care_together",
+              "w_1on1_relax",
+              "w_1on1_intro",
+              "w_1on1_talk",
+              "w_1on1_tools_activity",
+              "w_1on1_home_practice",
+              "w_1on1_ending"
+            ],
             "comments": "w_1on1_welcome_together;\nw_1on1_care_together; \nw_1on1_relax; \nw_1on1_intro; \nw_1on1_talk;\nw_1on1_tools_activity;  \nw_1on1_home_practice; \nw_1on1_ending;",
             "type": "set_variable"
           }
@@ -5161,7 +5187,10 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_1on1_relax; w_1on1_intro",
+            "value": [
+              "w_1on1_relax",
+              "w_1on1_intro"
+            ],
             "comments": "w_1on1_welcome_individual; w_1on1_care_together; w_1on1_relax; w_1on1_intro; w_1on1_think; w_1on1_tools_activity;  w_1on1_home_practice; w_1on1_ending",
             "type": "set_variable"
           }
@@ -5613,9 +5642,9 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "parameter_list": [
-          "style: active"
-        ],
+        "parameter_list": {
+          "style": "active"
+        },
         "rows": [
           {
             "type": "nested_properties",
@@ -5746,7 +5775,23 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_consequence_welcome_together;\nw_consequence_care_together;\nw_consequence_relax;\nw_consequence_reflect_together;\nw_consequence_intro;\nw_consequence_read_1_temp;\nw_consequence_talk_1;\nw_consequence_read_2_temp;\nw_consequence_tools_activity;\nw_consequence_talk_2;\nw_consequence_read_3_temp;\nw_consequence_talk_3;\nw_consequence_talk_4;\nw_consequence_home_practice;\nw_consequence_ending",
+            "value": [
+              "w_consequence_welcome_together",
+              "w_consequence_care_together",
+              "w_consequence_relax",
+              "w_consequence_reflect_together",
+              "w_consequence_intro",
+              "w_consequence_read_1_temp",
+              "w_consequence_talk_1",
+              "w_consequence_read_2_temp",
+              "w_consequence_tools_activity",
+              "w_consequence_talk_2",
+              "w_consequence_read_3_temp",
+              "w_consequence_talk_3",
+              "w_consequence_talk_4",
+              "w_consequence_home_practice",
+              "w_consequence_ending"
+            ],
             "comments": "w_consequence_welcome_together; w_consequence_care_together; w_consequence_relax; w_consequence_reflect_together; w_consequence_intro; w_consequence_read_1; w_consequence_talk; w_consequence_read_2; w_consequence_think; w_consequence_tools_activity; w_consequence_home_practice; w_consequence_ending",
             "type": "set_variable"
           }
@@ -6954,7 +6999,22 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_instruct_welcome_together; w_instruct_care_together; w_instruct_relax; w_instruct_reflect_together; w_instruct_intro; w_instruct_think_1_temp; w_instruct_read_1_temp; w_instruct_talk_1; w_instruct_read_2_temp; w_instruct_talk_2; w_instruct_tools_activity; w_instruct_talk_3; w_instruct_home_practice; w_instruct_ending",
+            "value": [
+              "w_instruct_welcome_together",
+              "w_instruct_care_together",
+              "w_instruct_relax",
+              "w_instruct_reflect_together",
+              "w_instruct_intro",
+              "w_instruct_think_1_temp",
+              "w_instruct_read_1_temp",
+              "w_instruct_talk_1",
+              "w_instruct_read_2_temp",
+              "w_instruct_talk_2",
+              "w_instruct_tools_activity",
+              "w_instruct_talk_3",
+              "w_instruct_home_practice",
+              "w_instruct_ending"
+            ],
             "comments": "w_instruct_welcome_together; w_instruct_care_together; w_instruct_relax; w_instruct_reflect_together; w_instruct_intro; w_instruct_think_1_temp; w_instruct_read_1_temp; w_instruct_talk_1; w_instruct_read_2_temp; w_instruct_talk_2; w_instruct_tools_activity; w_instruct_talk_3; w_instruct_home_practice; w_instruct_ending",
             "type": "set_variable"
           }
@@ -6980,7 +7040,16 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_instruct_welcome_individual; w_instruct_intro; w_instruct_think; w_instruct_read_1; w_instruct_read_2; w_instruct_tools_activity; w_instruct_home_practice; w_instruct_ending",
+            "value": [
+              "w_instruct_welcome_individual",
+              "w_instruct_intro",
+              "w_instruct_think",
+              "w_instruct_read_1",
+              "w_instruct_read_2",
+              "w_instruct_tools_activity",
+              "w_instruct_home_practice",
+              "w_instruct_ending"
+            ],
             "comments": "w_instruct_welcome_individual; w_instruct_reflect_individual; w_instruct_relax; w_instruct_intro; w_instruct_think_1; w_instruct_read_1; w_instruct_question_1; w_instruct_read_2; w_instruct_question_2; w_instruct_tools_activity; w_instruct_think_2; w_instruct_home_practice; w_instruct_ending",
             "type": "set_variable"
           }
@@ -8043,7 +8112,26 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_money_welcome_together; w_money_care_together; w_money_relax; w_money_reflect_together; w_money_intro; w_money_read_1_temp; w_money_talk_1; w_money_read_2_temp; w_money_talk_2; w_money_read_3_temp; w_money_talk_3; w_money_read_4_temp; w_money_talk_4; w_money_talk_5; w_money_learn_temp; w_money_tools_activity; w_money_home_practice; w_money_ending",
+            "value": [
+              "w_money_welcome_together",
+              "w_money_care_together",
+              "w_money_relax",
+              "w_money_reflect_together",
+              "w_money_intro",
+              "w_money_read_1_temp",
+              "w_money_talk_1",
+              "w_money_read_2_temp",
+              "w_money_talk_2",
+              "w_money_read_3_temp",
+              "w_money_talk_3",
+              "w_money_read_4_temp",
+              "w_money_talk_4",
+              "w_money_talk_5",
+              "w_money_learn_temp",
+              "w_money_tools_activity",
+              "w_money_home_practice",
+              "w_money_ending"
+            ],
             "comments": "w_money_welcome_together; w_money_care_together; w_money_relax; w_money_reflect_together; w_money_intro; w_money_read_1_temp; w_money_talk_1; w_money_read_2_temp; w_money_talk_2; w_money_read_3_temp; w_money_talk_3; w_money_read_4_temp; w_money_talk_4; w_money_talk_5; w_money_learn_temp; w_money_tools_activity; w_money_home_practice; w_money_ending",
             "type": "set_variable"
           }
@@ -9516,7 +9604,20 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_praise_welcome_together; w_praise_care_together; w_praise_relax; w_praise_reflect_together; w_praise_intro; w_praise_talk_1; w_praise_read_temp; w_praise_talk_2; w_praise_tools_activity; w_praise_talk_3; w_praise_home_practice; w_praise_ending",
+            "value": [
+              "w_praise_welcome_together",
+              "w_praise_care_together",
+              "w_praise_relax",
+              "w_praise_reflect_together",
+              "w_praise_intro",
+              "w_praise_talk_1",
+              "w_praise_read_temp",
+              "w_praise_talk_2",
+              "w_praise_tools_activity",
+              "w_praise_talk_3",
+              "w_praise_home_practice",
+              "w_praise_ending"
+            ],
             "comments": "w_praise_welcome_together; w_praise_care_together; w_praise_reflect_together; w_praise_relax; w_praise_intro; w_praise_talk_1; w_praise_read; w_praise_talk_2; w_praise_tools_activity; w_praise_talk_3; w_praise_home_practice; w_praise_ending",
             "type": "set_variable"
           }
@@ -9542,7 +9643,14 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_praise_welcome_individual; w_praise_intro; w_praise_read_temp; w_praise_tools_activity; w_praise_home_practice; w_praise_ending",
+            "value": [
+              "w_praise_welcome_individual",
+              "w_praise_intro",
+              "w_praise_read_temp",
+              "w_praise_tools_activity",
+              "w_praise_home_practice",
+              "w_praise_ending"
+            ],
             "comments": "w_praise_welcome_individual; w_praise_reflect_individual; w_praise_relax; w_praise_intro; w_praise_question_1; w_praise_read; w_praise_question_2; w_praise_tools_activity; w_praise_think_1; w_praise_home_practice; w_praise_ending",
             "type": "set_variable"
           }
@@ -10345,7 +10453,22 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_rules_welcome_together; w_rules_care_together; w_rules_relax; w_rules_reflect_together; w_rules_intro; w_rules_read_1_temp; w_rules_talk_1; w_rules_read_2_temp; w_rules_talk_2; w_rules_tools_activity; w_rules_read_3_temp; w_rules_talk_3; w_rules_home_practice; w_rules_ending",
+            "value": [
+              "w_rules_welcome_together",
+              "w_rules_care_together",
+              "w_rules_relax",
+              "w_rules_reflect_together",
+              "w_rules_intro",
+              "w_rules_read_1_temp",
+              "w_rules_talk_1",
+              "w_rules_read_2_temp",
+              "w_rules_talk_2",
+              "w_rules_tools_activity",
+              "w_rules_read_3_temp",
+              "w_rules_talk_3",
+              "w_rules_home_practice",
+              "w_rules_ending"
+            ],
             "comments": "w_rules_welcome_together; w_rules_care_together; w_rules_relax; w_rules_reflect_together; w_rules_intro; w_rules_read_1; w_rules_talk; w_rules_read_2; w_rules_think; w_rules_tools_activity; w_rules_home_practice; w_rules_ending",
             "type": "set_variable"
           }
@@ -11474,7 +11597,22 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_safe_welcome_together;\nw_safe_care_together;\nw_safe_relax;\nw_safe_reflect_together;\nw_safe_intro;\nw_safe_read_1_temp;\nw_safe_talk_1;\nw_safe_read_2_temp;\nw_safe_talk_2;\nw_safe_learn_temp;\nw_safe_tools_activity;\nw_safe_talk_3;\nw_safe_home_practice;\nw_safe_ending",
+            "value": [
+              "w_safe_welcome_together",
+              "w_safe_care_together",
+              "w_safe_relax",
+              "w_safe_reflect_together",
+              "w_safe_intro",
+              "w_safe_read_1_temp",
+              "w_safe_talk_1",
+              "w_safe_read_2_temp",
+              "w_safe_talk_2",
+              "w_safe_learn_temp",
+              "w_safe_tools_activity",
+              "w_safe_talk_3",
+              "w_safe_home_practice",
+              "w_safe_ending"
+            ],
             "type": "set_variable"
           }
         ]
@@ -12634,7 +12772,16 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_self_care_welcome_together; w_self_care_intro; w_self_care_relax;  w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_home_practice; w_self_care_ending",
+            "value": [
+              "w_self_care_welcome_together",
+              "w_self_care_intro",
+              "w_self_care_relax",
+              "w_self_care_recognise",
+              "w_self_care_reward",
+              "w_self_care_tools_activity",
+              "w_self_care_home_practice",
+              "w_self_care_ending"
+            ],
             "comments": "w_self_care_welcome_together; w_self_care_intro; w_self_care_relax; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_home_practice; w_self_care_ending",
             "type": "set_variable"
           }
@@ -12660,7 +12807,15 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_self_care_welcome_individual; w_self_care_intro; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_home_practice; w_self_care_ending",
+            "value": [
+              "w_self_care_welcome_individual",
+              "w_self_care_intro",
+              "w_self_care_recognise",
+              "w_self_care_reward",
+              "w_self_care_tools_activity",
+              "w_self_care_home_practice",
+              "w_self_care_ending"
+            ],
             "comments": "w_self_care_welcome_individual; w_self_care_intro; w_self_care_relax; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_survey_activity; w_self_care_home_practice; w_self_care_ending",
             "type": "set_variable"
           }
@@ -13219,7 +13374,21 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_solve_welcome_together;\nw_solve_care_together;\nw_solve_relax;\nw_solve_reflect_together;\nw_solve_intro;\nw_solve_read_1_temp;\nw_solve_tools_activity;\nw_solve_read_2_temp;\nw_solve_talk_1;\nw_solve_read_3_temp;\nw_solve_talk_2;\nw_solve_home_practice;\nw_solve_ending",
+            "value": [
+              "w_solve_welcome_together",
+              "w_solve_care_together",
+              "w_solve_relax",
+              "w_solve_reflect_together",
+              "w_solve_intro",
+              "w_solve_read_1_temp",
+              "w_solve_tools_activity",
+              "w_solve_read_2_temp",
+              "w_solve_talk_1",
+              "w_solve_read_3_temp",
+              "w_solve_talk_2",
+              "w_solve_home_practice",
+              "w_solve_ending"
+            ],
             "comments": "w_solve_welcome_together;\nw_solve_care_together;\nw_solve_relax;\nw_solve_reflect_together;\nw_solve_intro;\nw_solve_read_1_temp;\nw_solve_tools_activity;\nw_solve_read_2_temp;\nw_solve_talk_1;\nw_solve_read_3_temp;\nw_solve_talk_2;\nw_solve_home_practice;\nw_solve_ending",
             "type": "set_variable"
           }
@@ -14441,7 +14610,20 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "value": "w_stress_welcome_together; w_stress_care_together; w_stress_relax; w_stress_reflect_together; w_stress_intro; w_stress_read_1_temp; w_stress_talk; w_stress_read_2_temp; w_stress_read_3_temp; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
+            "value": [
+              "w_stress_welcome_together",
+              "w_stress_care_together",
+              "w_stress_relax",
+              "w_stress_reflect_together",
+              "w_stress_intro",
+              "w_stress_read_1_temp",
+              "w_stress_talk",
+              "w_stress_read_2_temp",
+              "w_stress_read_3_temp",
+              "w_stress_tools_activity",
+              "w_stress_home_practice",
+              "w_stress_ending"
+            ],
             "comments": "w_stress_welcome_together; w_stress_care_together; w_stress_relax; w_stress_reflect_together; w_stress_intro; w_stress_read_1; w_stress_talk; w_stress_read_2; w_stress_read_3; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
             "type": "set_variable"
           }

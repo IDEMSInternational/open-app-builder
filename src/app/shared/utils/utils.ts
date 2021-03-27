@@ -61,56 +61,45 @@ export function stringToArray(str: string = "", separator = ";") {
       .split(separator)
       .map((s) => s.trim())
       // remove empty strings, undefined or null values
-      .filter((el) => (!!el))
+      .filter((el) => !!el)
   );
 }
 
-export function getStringParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: string): string {
-  let res = _default;
-  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
-
-  if (param) {
-    param = param.split(":")[1].trim();
-
-    res = param || _default;
-  }
-
-  return res;
+/**
+ * Return a specific parameter from the row, as default type
+ * (usually string, unless populated from local variables in which case could be string[])
+ * */
+export function getParamFromTemplateRow(
+  row: FlowTypes.TemplateRow,
+  name: string,
+  _default: string
+): string | string[] {
+  const params = row.parameter_list || {};
+  return params.hasOwnProperty(name) ? params[name] : _default;
+}
+export function getStringParamFromTemplateRow(
+  row: FlowTypes.TemplateRow,
+  name: string,
+  _default: string
+): string {
+  return `${getParamFromTemplateRow(row, name, _default)}`;
 }
 
-export function getNumberParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: number): number {
-  let res = _default;
-  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
-
-  if (param) {
-    param = param.split(":")[1].trim();
-
-    res = Number.isNaN(+param) ? _default : +param;
-  }
-
-  return res;
+/** Return a specific parameter, parsed as a number */
+export function getNumberParamFromTemplateRow(
+  row: FlowTypes.TemplateRow,
+  name: string,
+  _default: number
+): number {
+  return Number(getParamFromTemplateRow(row, name, `${_default}`));
 }
 
-export function getBooleanParamFromTemplateRow(row: FlowTypes.TemplateRow, name: string, _default: boolean): boolean {
-  let res = _default;
-  let param = row?.parameter_list?.find(val => val.startsWith(`${name}:`));
-
-  if (param) {
-    param = param.split(":")[1].trim();
-    res = param === "true";
-  }
-
-  return res;
-}
-
-export function getStringParamFromTemplateRowValueList(row: FlowTypes.TemplateRow, name: string, _default: string): string {
-  let res = _default;
-  let param = row.parameter_list.find(val => val.startsWith(`${name}:`));
-
-  if (param) {
-    param = param.split(":").slice(1).join(':');
-    res = param || _default;
-  }
-
-  return res;
+/** Return a specific parameter, parsed as a boolean */
+export function getBooleanParamFromTemplateRow(
+  row: FlowTypes.TemplateRow,
+  name: string,
+  _default: boolean
+): boolean {
+  const params = row.parameter_list || {};
+  return params.hasOwnProperty(name) ? params[name] === "true" : _default;
 }
