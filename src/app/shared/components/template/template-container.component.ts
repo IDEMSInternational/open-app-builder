@@ -438,37 +438,32 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
-
-    // Handle negated conditions - true/false will already have been filled as text so manually toggle
-    if (parsedExpression.startsWith("!")) {
-      parsedExpression = parsedExpression.replace("!true", "false").replace("!false", "true");
-      if (parsedExpression.startsWith("!")) {
-        console.error("Negation condition not handled correctly", parsedExpression);
-      }
-    }
     // handle case where parsed expression contains reference to another dynamic expression
     const recursiveDynamicExpression = _extractDynamicEvaluators(parsedExpression);
     if (recursiveDynamicExpression && parseSuccess) {
       return this.parseDynamicValue(recursiveDynamicExpression, localVariables);
     }
-
     return parsedExpression;
   }
 
-  /**  */
-  private evaluateJSExpression(expression: string) {
+  /**
+   * Evaluate a javascript expression in a safe context
+   * @param expression string expression, e.g. "!true", "5 - 4"
+   * @returns string interpretation of evaluation, e.g. "true", "1"
+   * */
+  private evaluateJSExpression(expression: string): string {
     // Support Javascript evaluation for hidden field only
-    if (expression !== "true" && expression !== "false") {
-      const funcString = `"use strict"; return (${expression});`;
-      try {
-        const func = new Function(funcString);
-        return func.apply(this);
-      } catch (ex) {
-        console.warn("Hidden evaulation exception ", ex);
-        console.warn(funcString);
-        return false;
-      }
+    let evaluated = expression;
+    const funcString = `"use strict"; return (${expression});`;
+    try {
+      const func = new Function(funcString);
+      evaluated = func.apply(this);
+    } catch (ex) {
+      console.warn("Hidden evaulation exception ", ex);
+      console.warn(funcString);
     }
+    // Return as a string to maintain compatibility with other types
+    return `${evaluated}`;
   }
 
   private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}) {
