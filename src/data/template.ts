@@ -4622,17 +4622,6 @@
         "name": "radio_buttons_1",
         "parameter_list": {
           "value": "radio_ex_result",
-          "radio_button_list": "[name",
-          "name": "name_var_2 | image",
-          "Options_per_row": "3",
-          "radio_button_type": "btn_square"
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_buttons_2",
-        "parameter_list": {
-          "value": "radio_ex_result",
           "radio_button_list": "@local.radio_button_list",
           "Options_per_row": "3",
           "radio_button_type": "btn_square"
