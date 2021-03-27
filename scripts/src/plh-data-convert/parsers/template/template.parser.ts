@@ -30,6 +30,9 @@ export class TemplateParser extends DefaultParser {
         .map((actionString) => this.parseActionString(actionString as any))
         .filter((action) => action != null);
     }
+    if (row.parameter_list) {
+      row.parameter_list = this.parseParameterList(row.parameter_list as any);
+    }
     // convert boolean to strings (easier for future processing, as most update functions typically return strings)
     if (typeof row.hidden === "boolean") {
       row.hidden = `${row.hidden}`;
@@ -91,6 +94,19 @@ export class TemplateParser extends DefaultParser {
       action_id = "emit";
     }
     return { trigger, action_id, args, _raw, _cleaned }; */
+  }
+
+  parseParameterList(parameterList: string[]) {
+    const parameterObj: FlowTypes.TemplateRow["parameter_list"] = {};
+    parameterList.forEach((p) => {
+      let [key, value] = p.split(":").map((str) => str.trim()) as any[];
+      // if a single word is specified, e.g. 'box_display', assume setting param to true
+      if (value === undefined) {
+        value = "true";
+      }
+      parameterObj[key] = value;
+    });
+    return parameterObj;
   }
 }
 
