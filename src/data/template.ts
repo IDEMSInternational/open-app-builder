@@ -4220,7 +4220,7 @@
       {
         "type": "button",
         "name": "button_pop_up_2",
-        "value": "go_to_2. Dismisses on return",
+        "value": "go_to_2. Dismisses on all",
         "action_list": [
           {
             "trigger": "click",
