@@ -119,7 +119,9 @@
     "typescript": "~4.0.3",
     "uuid": "^8.3.0"
   },
-  "simple-git-hooks": {},
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
   "lint-staged": {
     "*.{ts,scss,html}": [
       "prettier --write"
