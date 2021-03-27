@@ -29,6 +29,7 @@ import { TmplAnimationComponent } from "./animation";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TemplatePopupComponent } from "./layout/popup";
+import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -56,6 +57,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAnimationComponent,
   TmplTextBoxComponent,
   TmplComboBoxComponent,
+  TmplDashedBoxComponent,
 ];
 
 /***************************************************************************************
@@ -98,4 +100,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
   css_anim: TmplAnimationComponent,
+  dashed_box: TmplDashedBoxComponent,
 };
