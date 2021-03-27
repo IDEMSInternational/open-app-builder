@@ -4220,7 +4220,7 @@
       {
         "type": "button",
         "name": "button_pop_up_2",
-        "value": "Pop-up with go-to buttons that return",
+        "value": "go_to_2. Dismisses on return",
         "action_list": [
           {
             "trigger": "click",
@@ -4232,12 +4232,12 @@
             "_cleaned": "click | pop_up:example_go_to_2"
           }
         ],
-        "comments": "This launches a pop-up with a go-to button. When the destination template emits something (completed or uncompleted),  it comes back to the pop-up or to the main template."
+        "comments": "This launches a popup with navigation. Return actions will be ignored (no complete/uncomplete handling), and popup will close on return"
       },
       {
         "type": "button",
         "name": "button_pop_up_3",
-        "value": "Pop-up with go-to buttons that don't return",
+        "value": "go_to_3. Dismisses on completed",
         "action_list": [
           {
             "trigger": "click",
@@ -4258,7 +4258,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "This launches a pop-up with a go-to button. This does not return if you click the go-to button but does if you close."
+        "comments": "This launches a popup with navigation. As there is a completed listener it will stay open until that is received"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
@@ -4284,7 +4284,7 @@
       {
         "type": "button",
         "name": "button_go_to_1",
-        "value": "Go to example_emit and come back to this pop-up",
+        "value": "Go to example emit",
         "action_list": [
           {
             "trigger": "click",
@@ -4301,7 +4301,7 @@
       {
         "type": "button",
         "name": "button_go_to_2",
-        "value": "Go to example_emit and come back to the main template",
+        "value": "Mark as complete and go to example_emit",
         "action_list": [
           {
             "trigger": "click",
@@ -4356,7 +4356,7 @@
             "_cleaned": "click | emit:completed"
           }
         ],
-        "comments": "This does not return to the current template after finishing example_emit"
+        "comments": "This does not return to the current template after finishing example_emit as there is no completed/uncompleted action"
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_actions.xlsx"
@@ -4616,17 +4616,6 @@
       {
         "type": "radio_group",
         "name": "radio_buttons_1",
-        "parameter_list": [
-          "value:radio_ex_result",
-          "radio_button_list: [name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_2 | image: /plh_images/icons/tick.svg | text:Pair]",
-          "Options_per_row: 3",
-          "radio_button_type: btn_square"
-        ]
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_buttons_2",
         "parameter_list": [
           "value:radio_ex_result",
           "radio_button_list: @local.radio_button_list",
