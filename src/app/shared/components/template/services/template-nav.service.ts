@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "scripts/types";
+import { arrayToHashmapArray } from "src/app/shared/utils";
 import { TemplatePopupComponent } from "../components/layout/popup";
 import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
@@ -166,30 +167,36 @@ export class TemplateNavService {
 
     // process any actions triggered by nav from the popup
     if (nav_child_emit) {
+      // identify the full action_list of the row that triggered the initial pop_up action
       const triggerRow = template.rows.find((r) => r.name === popup_parent_triggered_by);
-      console.log("Popup trigger row", triggerRow);
-      if (triggerRow) {
-        const triggeredActions = triggerRow.action_list.filter((a) => a.trigger === nav_child_emit);
-        console.log("triggered actions", triggeredActions);
-        await container.handleActions(triggeredActions, popup_child);
-
-        // TODO - when should we close the popup?
-        // only pass back completed/uncompleted emit actions
-        const popupCloseActions = triggeredActions.find(
-          (a) => a.action_id === "emit" && ["completed", "uncompleted"].includes(a.args[0])
-        );
-        console.log("popupCloseActions", popupCloseActions);
-        // await container.handleActions(triggeredActions, nav_child);
-        // // back history will have changed (2 duplicate pages), so nav back to restore correct back button
-        // history.back();
+      if (triggerRow && existingPopup) {
+        const actionsByTrigger = arrayToHashmapArray(triggerRow.action_list || [], "trigger");
+        console.log({ actionsByTrigger, existingPopup, nav_child_emit });
+        // process any completed/uncompleted actions as specified
+        const emittedActions = actionsByTrigger[nav_child_emit];
+        if (emittedActions) {
+          await container.handleActions(emittedActions, popup_child);
+          await this.modalCtrl.dismiss(nav_child_emit);
+        }
+        // if the popup does not have any actions triggered by the nav_emit, leave open if there
+        // is a trigger for the alternate completed/uncompleted event (otherwise dismiss)
+        // - confusing logic I know!
+        else {
+          if (!actionsByTrigger["completed"] && !actionsByTrigger["uncompleted"]) {
+            await this.modalCtrl.dismiss(nav_child_emit);
+          } else {
+            // ensure popup visible if previously put behind on navigated template
+            existingPopup.classList.remove("hide-popup-on-template");
+          }
+        }
       }
-    }
-
-    // If popup already exists ensure visible (unless specified differently above)
-    if (existingPopup) {
-      // Set popup as visible on current template (if had been hidden following nav)
-      existingPopup.classList.remove("hide-popup-on-template");
-      console.log("nav child emit", { params, container, template });
+      // If navigation has ocurred the page history will have a previous item with query params
+      // to open the initial popup. Replace it with the current state and navigate back to the
+      // duplicate page to keep overall history in order
+      // TODO - not working as wanted, get duplicate modals. Will likely have to edit history
+      // at earlier part of workflow and use back nav to trigger this state (in nav code)
+      // history.replaceState({}, "", location.href);
+      // history.back();
     }
     // If no popup already exists, create, present, and react to dismiss
     else {
@@ -225,18 +232,12 @@ export class TemplateNavService {
       // make the popup share the same name as the container so that nav events return to parent container page
       name: popup_child,
       templatename: popup_child,
-      // do not include a parent so that the popup can also process itself at top-level query param changes
       parent: container,
-      row: {
-        action_list: [
-          // { trigger: "completed", action_id: "emit", args: ["dismiss:completed"] },
-          // { trigger: "uncompleted", action_id: "emit", args: ["dismiss:uncompleted"] },
-        ],
-      } as any,
     };
     return this.modalCtrl.create({
       component: TemplatePopupComponent,
       componentProps: childContainerProps,
+      // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
       cssClass: "template-popup-modal",
       showBackdrop: false,
     });
