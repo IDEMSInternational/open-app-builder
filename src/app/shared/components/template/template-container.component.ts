@@ -30,6 +30,9 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
   "nav_section",
 ];
 
+/** Specific fields that will be evaluated as javascript */
+const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["hidden"];
+
 @Component({
   selector: "plh-template-container",
   templateUrl: "./template-container.component.html",
@@ -87,7 +90,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.handleNavActions(actions);
   }
   /** Optional method child component can add to handle post-action callback */
-  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) { }
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
 
   /** Optional method child component can filter action list to handle outside of default handlers */
   public async handleActionsInterceptor(
@@ -280,10 +283,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         VARIABLE_FIELDS.forEach((field) => {
           if (r[field]) {
             // don't override values that have otherwise been set from parent or nested properties
-            // local variables within r[field] are parsed 
-            variables[name][field] = variables[name][field] || this.parseLocalVariables(r[field], localvariables);
+            // local variables within r[field] are parsed
+            variables[name][field] =
+              variables[name][field] || this.parseLocalVariables(r[field], localvariables);
             // local variables on a given excel sheet are managed together
-            localvariables[name][field] = localvariables[name][field] || variables[name][field]
+            localvariables[name][field] = localvariables[name][field] || variables[name][field];
           }
         });
       }
@@ -351,7 +355,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             let oldList = r[field];
             r[field] = dynamicEvaluatorsPerItem.map((evaluator, idx) => {
               if (evaluator) {
-                return this.parseDynamicValue(evaluator, field);
+                let evaluated = this.parseDynamicValue(evaluator, variables);
+                if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
+                  evaluated = this.evaluateJSExpression(evaluated);
+                }
+                return evaluated;
               } else {
                 return oldList[idx];
               }
@@ -363,7 +371,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             r._dynamicFields = r._dynamicFields || {};
             // evaluate dynamic field, keeping reference for future
             r._dynamicFields[field] = dynamicEvaluators as any;
-            r[field] = this.parseDynamicValue(r._dynamicFields[field], field);
+            r[field] = this.parseDynamicValue(r._dynamicFields[field], variables);
+            if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
+              r[field] = this.evaluateJSExpression(r[field]);
+            }
           }
         }
 
@@ -394,7 +405,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return rowsWithReplacedValues;
   }
 
-  private parseDynamicValue(evaluators: FlowTypes.TemplateRowDynamicEvaluator[], field: string) {
+  private parseDynamicValue(
+    evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
+    localVariables: ILocalVariables
+  ) {
+    let parseSuccess = true;
     let parsedExpression = evaluators[0].fullExpression;
     // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
     for (let evaluator of evaluators) {
@@ -403,6 +418,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       switch (type) {
         case "local":
           parsedValue = this.localVariables[fieldName]?.value || "";
+          parsedValue = localVariables[fieldName]?.value;
+          if (!parsedValue) {
+            console.error("could not parse local variable", { evaluator, localVariables });
+            parsedValue = `{{local.${fieldName}}}`;
+          }
           break;
         case "field":
         case "fields":
@@ -412,15 +432,34 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           parsedValue = this.templateService.getGlobal(fieldName);
           break;
         default:
+          parseSuccess = false;
           console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
           parsedValue = evaluator.matchedExpression;
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
 
+    // Handle negated conditions - true/false will already have been filled as text so manually toggle
+    if (parsedExpression.startsWith("!")) {
+      parsedExpression = parsedExpression.replace("!true", "false").replace("!false", "true");
+      if (parsedExpression.startsWith("!")) {
+        console.error("Negation condition not handled correctly", parsedExpression);
+      }
+    }
+    // handle case where parsed expression contains reference to another dynamic expression
+    const recursiveDynamicExpression = _extractDynamicEvaluators(parsedExpression);
+    if (recursiveDynamicExpression && parseSuccess) {
+      return this.parseDynamicValue(recursiveDynamicExpression, localVariables);
+    }
+
+    return parsedExpression;
+  }
+
+  /**  */
+  private evaluateJSExpression(expression: string) {
     // Support Javascript evaluation for hidden field only
-    if (field === "hidden" && parsedExpression !== "true" && parsedExpression !== "false") {
-      const funcString = `"use strict"; return (${parsedExpression});`;
+    if (expression !== "true" && expression !== "false") {
+      const funcString = `"use strict"; return (${expression});`;
       try {
         const func = new Function(funcString);
         return func.apply(this);
@@ -430,8 +469,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         return false;
       }
     }
-
-    return parsedExpression;
   }
 
   private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}) {
@@ -461,8 +498,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
       return parsedExpression;
     } else {
-      return variable
-    };
+      return variable;
+    }
   }
   /** When using ngFor loop track by  */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
