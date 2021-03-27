@@ -1,0 +1,10 @@
+<div class="box-wrapper">
+  <div class="item" [class]="style">
+    <div class="text">
+      {{ _row.value }}
+    </div>
+    <div class="icon" *ngIf="icon_src">
+      <img [src]="getPathImg()" alt="" />
+    </div>
+  </div>
+</div>
