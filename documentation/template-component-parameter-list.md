@@ -86,6 +86,7 @@ If category_list is not available we generate list of values based on min_value,
 - value - string or null. Input value. Default - undefined
 - max-length - number. Max length input value. Default - 30
 - placeholder - string or null. Input placeholder. Default - empty string
+- text-align - string. Default - center
 
 ## TileComponent - TmplTileComponent
 

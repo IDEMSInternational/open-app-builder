@@ -997,6 +997,41 @@
         "name": "text"
       },
       {
+        "type": "button",
+        "value": 'Check it',
+        "parameter_list": [
+          "text-align: left",
+          "style: make-me-smile",
+
+        ],
+        "style_list": [
+
+        ]
+      },
+      {
+        "type": "title",
+        "value": 'Check it',
+        "parameter_list": [
+          "text-align: center",
+          "help: Some help"
+        ]
+      },
+      {
+        "type": "text_box",
+        "value": 'Check it',
+        "parameter_list": [
+          "text-align: left",
+        ]
+      },
+      {
+        "type": "title",
+        "value": 'Check it',
+        "parameter_list": [
+          "text-align: center",
+          "help: some help"
+        ]
+      },
+      {
         "type": "template",
         "name": "widget_audio",
         "value": "widget_audio",
@@ -15468,5 +15503,53 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "icon_banner",
+    "status": "released",
+    "rows": [
+      {
+        "type": "icon_banner",
+        "name": "icon_banner",
+        "value": null,
+        "parameter_list": [
+          "text: Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.",
+          "title: Text for title",
+          "style: primary",
+          "image_src: plh_images/icons/star.svg"
+        ]
+      }
+    ]
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "dashed_box",
+    "status": "released",
+    "rows": [
+      {
+        "type": "dashed_box",
+        "name": "dashed_box",
+        "value": "lorenk a sks kksle sksaiem sal;dsk slasajenx asklsje",
+        "parameter_list": [
+          "style: banner_active",
+          "icon_src: plh_images/icons/star.svg"
+        ],
+        "style_list": [
+          "margin: 0 20px"
+        ],
+      },
+      {
+        "type": "dashed_box",
+        "name": "dashed_box_passive",
+        "value": "Example text for test",
+        "parameter_list": [
+          "style: banner_passive"
+        ],
+        "style_list": [
+          "margin: 10px 20px"
+        ],
+      }
+    ]
   }
 ]
