@@ -16,7 +16,8 @@
     "plh-copy-app-data": "ts-node src/plh-copy-app-data.ts",
     "sync-plh-content": "npm run gdrive-download && npm run plh-data-convert && npm run plh-copy-app-data",
     "version": "ts-node  src/version.ts",
-    "xlsx-to-json": "ts-node  src/plh-xlsx-to-json/index.ts"
+    "xlsx-to-json": "ts-node  src/plh-xlsx-to-json/index.ts",
+    "sync-single": "ts-node src/sync-single.ts"
   },
   "author": "",
   "license": "ISC",
