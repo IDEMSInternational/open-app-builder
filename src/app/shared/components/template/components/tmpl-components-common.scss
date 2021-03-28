@@ -83,6 +83,13 @@ p {
 .title-wrapper {
   display: flex;
   align-items: center;
+  h1 {
+    font-size: 25px;
+    margin: 0;
+    @media (max-width: 375px) {
+      font-size: 24px;
+    }
+  }
   .primary {
     font-weight: bold;
     font-size: 25px;
@@ -97,6 +104,7 @@ p {
     width: 32px;
   }
 }
+
 .banner_active {
   background: linear-gradient(179.77deg, #ffe16a 34.6%, #ffb833 105.68%);
   border-radius: 20px;
@@ -109,4 +117,14 @@ p {
   width: 100%;
   margin: 0 auto 5px auto;
   background: linear-gradient(179.77deg, #b3edfd 34.6%, #60ddff 65.78%, #09b9e9 105.68%);
+}
+
+.left {
+  justify-content: start;
+}
+.right {
+  justify-content: end;
+}
+.center {
+  justify-content: center;
 }
