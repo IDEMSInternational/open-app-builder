@@ -32,7 +32,7 @@ const SCRIPT_NAMES = [
 async function start() {
   loadConfig();
   const args = process.argv;
-  const scriptToRun = args[2] ? args[2] : await promptOptions(SCRIPT_NAMES);
+  const scriptToRun = args[2] ? args.slice(2).join(" ") : await promptOptions(SCRIPT_NAMES);
   spawnSync(`npm run ${scriptToRun}`, {
     stdio: ["inherit", "inherit", "inherit"],
     shell: true,
