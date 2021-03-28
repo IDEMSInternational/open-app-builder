@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
+import { ThemeService } from "src/app/feature/theme/theme-service/theme.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateService } from "./services/template.service";
@@ -87,7 +88,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.handleNavActions(actions);
   }
   /** Optional method child component can add to handle post-action callback */
-  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) { }
+  public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
 
   /** Optional method child component can filter action list to handle outside of default handlers */
   public async handleActionsInterceptor(
@@ -280,10 +281,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         VARIABLE_FIELDS.forEach((field) => {
           if (r[field]) {
             // don't override values that have otherwise been set from parent or nested properties
-            // local variables within r[field] are parsed 
-            variables[name][field] = variables[name][field] || this.parseLocalVariables(r[field], localvariables);
+            // local variables within r[field] are parsed
+            variables[name][field] =
+              variables[name][field] || this.parseLocalVariables(r[field], localvariables);
             // local variables on a given excel sheet are managed together
-            localvariables[name][field] = localvariables[name][field] || variables[name][field]
+            localvariables[name][field] = localvariables[name][field] || variables[name][field];
           }
         });
       }
@@ -333,7 +335,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // console.log(`[${this.template.flow_name}]`, "process rows", variables);
     // remove row types that have already been processed during processVariables step
     const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
-    const filteredRows = templateRows.filter((r) => !filterTypes.includes(r.type));
+    const filteredRows = templateRows
+      .filter((r) => this.filterRowOnCondition(r))
+      .filter((r) => !filterTypes.includes(r.type));
     const rowsWithReplacedValues = filteredRows.map((r) => {
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
@@ -394,6 +398,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return rowsWithReplacedValues;
   }
 
+  private filterRowOnCondition(row: FlowTypes.TemplateRow) {
+    if (!row.hasOwnProperty("condition")) {
+      return true;
+    }
+    let dynamicEvaluators = _extractDynamicEvaluators(row.condition);
+    if (dynamicEvaluators) {
+      return this.parseDynamicValue(dynamicEvaluators, "condition") + "" === "true";
+    }
+    return (row.condition + "").trim() === "true";
+  }
+
   private parseDynamicValue(evaluators: FlowTypes.TemplateRowDynamicEvaluator[], field: string) {
     let parsedExpression = evaluators[0].fullExpression;
     // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
@@ -419,13 +434,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     }
 
     // Support Javascript evaluation for hidden field only
-    if (field === "hidden" && parsedExpression !== "true" && parsedExpression !== "false") {
+    if (
+      (field === "hidden" || field === "condition") &&
+      parsedExpression !== "true" &&
+      parsedExpression !== "false"
+    ) {
       const funcString = `"use strict"; return (${parsedExpression});`;
       try {
         const func = new Function(funcString);
         return func.apply(this);
       } catch (ex) {
-        console.warn("Hidden evaulation exception ", ex);
+        console.warn(field, "evaulation exception ", ex);
         console.warn(funcString);
         return false;
       }
@@ -461,8 +480,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
       return parsedExpression;
     } else {
-      return variable
-    };
+      return variable;
+    }
   }
   /** When using ngFor loop track by  */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
