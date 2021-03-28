@@ -11,6 +11,12 @@
   flex-direction: row;
   width: 100%;
   justify-content: center;
+  .offset {
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+    flex-direction: inherit;
+  }
 }
 
 .plh-tmpl-comp {
@@ -98,6 +104,21 @@ p {
     width: 32px;
   }
 }
+
+.banner_active {
+  background: linear-gradient(179.77deg, #ffe16a 34.6%, #ffb833 105.68%);
+  border-radius: 20px;
+  width: 100%;
+  margin: 0 auto 5px auto;
+}
+
+.banner_passive {
+  border-radius: 20px;
+  width: 100%;
+  margin: 0 auto 5px auto;
+  background: linear-gradient(179.77deg, #b3edfd 34.6%, #60ddff 65.78%, #09b9e9 105.68%);
+}
+
 .left {
   justify-content: start;
 }

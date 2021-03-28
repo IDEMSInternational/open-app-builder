@@ -1,6 +1,7 @@
 /* eslint-disable */
-  import { FlowTypes } from "src/app/shared/model/flowTypes";
-  export const template: FlowTypes.Template[] = [
+import { FlowTypes } from "src/app/shared/model/flowTypes";
+
+export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
     "flow_name": "box_tools",
