@@ -998,41 +998,6 @@ export const template: FlowTypes.Template[] = [
         "name": "text"
       },
       {
-        "type": "button",
-        "value": 'Check it',
-        "parameter_list": [
-          "text-align: left",
-          "style: make-me-smile",
-
-        ],
-        "style_list": [
-
-        ]
-      },
-      {
-        "type": "title",
-        "value": 'Check it',
-        "parameter_list": [
-          "text-align: center",
-          "help: Some help"
-        ]
-      },
-      {
-        "type": "text_box",
-        "value": 'Check it',
-        "parameter_list": [
-          "text-align: left",
-        ]
-      },
-      {
-        "type": "title",
-        "value": 'Check it',
-        "parameter_list": [
-          "text-align: center",
-          "help: some help"
-        ]
-      },
-      {
         "type": "template",
         "name": "widget_audio",
         "value": "widget_audio",
