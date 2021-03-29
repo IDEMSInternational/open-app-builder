@@ -18,6 +18,31 @@
     flex-direction: inherit;
   }
 }
+.light_orange {
+  flex-direction: column;
+  background: #f89b2d;
+}
+.orange {
+  flex-direction: column;
+  background: #ff7a00;
+}
+.light_blue {
+  flex-direction: column;
+  background: #0f8ab2;
+}
+.blue {
+  flex-direction: column;
+  background: #096b8b;
+}
+.dark_blue {
+  background: #0d3f60;
+}
+.white_box {
+  flex-direction: column;
+  background: #fff;
+  border: 2px solid #0d3f60;
+  border-radius: 15px;
+}
 
 .plh-tmpl-comp {
   display: flex;
