@@ -3,5 +3,6 @@
   [disabled]="disabled"
   [style.--background]="color"
   (click)="triggerActions('click')"
-  >{{ _row.value }}</ion-button
+  [style.width]="width"
+  ><span [class]="textAlign">{{ _row.value }}</span></ion-button
 >

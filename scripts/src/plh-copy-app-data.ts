@@ -7,13 +7,15 @@ const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
 const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_assets");
 const APP_DATA_DIR = `../src/data`;
 const APP_PLH_ASSETS_DIR = "../src/assets/plh_assets";
-fs.ensureDirSync(APP_DATA_DIR);
-fs.emptyDirSync(APP_DATA_DIR);
-fs.ensureDirSync(APP_PLH_ASSETS_DIR);
-fs.emptyDirSync(APP_PLH_ASSETS_DIR);
 
 /** A simple script to copy data exported from gdrive and processed for plh into the app data folder */
-function main() {
+export function main(doAssetFolderCheck = true) {
+  fs.ensureDirSync(APP_DATA_DIR);
+  fs.emptyDirSync(APP_DATA_DIR);
+  if (doAssetFolderCheck) {
+    fs.ensureDirSync(APP_PLH_ASSETS_DIR);
+    fs.emptyDirSync(APP_PLH_ASSETS_DIR);
+  }
   console.log(chalk.yellow("Copying Data To App"));
   const localTsFiles = fs.readdirSync(DATA_INPUT_FOLDER);
   for (const filepath of localTsFiles) {
@@ -22,10 +24,15 @@ function main() {
     const appOutputTs = generateAppTsOutput(localTsFile);
     fs.writeFileSync(`${APP_DATA_DIR}/${flow_type}.ts`, appOutputTs);
   }
-  fs.copySync(ASSETS_INPUT_FOLDER, APP_PLH_ASSETS_DIR);
+  if (fs.existsSync(ASSETS_INPUT_FOLDER)) {
+    fs.copySync(ASSETS_INPUT_FOLDER, APP_PLH_ASSETS_DIR);
+  }
   console.log(chalk.green("Data Copied to App"));
 }
-main();
+
+if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
+  main();
+}
 
 /**
  * When copying to the app simply replace the path to local typings imported to
