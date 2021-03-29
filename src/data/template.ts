@@ -15650,12 +15650,12 @@ export const template: FlowTypes.Template[] = [
         "type": "icon_banner",
         "name": "icon_banner",
         "value": null,
-        "parameter_list": [
-          "text: Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.",
-          "title: Text for title",
-          "style: primary",
-          "image_src: plh_images/icons/star.svg"
-        ]
+        "parameter_list": {
+          "text": "Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.",
+          "title": "Text for title",
+          "style": "primary",
+          "image_src": "plh_images/icons/star.svg"
+        }
       }
     ]
   },
@@ -15668,10 +15668,10 @@ export const template: FlowTypes.Template[] = [
         "type": "dashed_box",
         "name": "dashed_box",
         "value": "lorenk a sks kksle sksaiem sal;dsk slasajenx asklsje",
-        "parameter_list": [
-          "style: banner_active",
-          "icon_src: plh_images/icons/star.svg"
-        ],
+        "parameter_list": {
+          "style": "banner_active",
+          "icon_src" : "plh_images/icons/star.svg"
+        },
         "style_list": [
           "margin: 0 20px"
         ],
@@ -15680,9 +15680,9 @@ export const template: FlowTypes.Template[] = [
         "type": "dashed_box",
         "name": "dashed_box_passive",
         "value": "Example text for test",
-        "parameter_list": [
-          "style: banner_passive"
-        ],
+        "parameter_list": {
+          "style": "banner_passive"
+        },
         "style_list": [
           "margin: 10px 20px"
         ],
