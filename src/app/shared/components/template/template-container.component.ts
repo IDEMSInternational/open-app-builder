@@ -4,6 +4,7 @@ import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
+import { INavQueryParams, TemplateNavService } from "./services/template-nav.service";
 import { TemplateService } from "./services/template.service";
 
 interface ILocalVariables {
@@ -54,16 +55,22 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   constructor(
     private templateService: TemplateService,
-    private router: Router,
-    private route: ActivatedRoute
+    public router: Router,
+    public route: ActivatedRoute,
+    private templateNavService: TemplateNavService
   ) {
-    // subscribe to query params to indicate if debugMode is enabled
-    this.route.queryParamMap
+    this.route.queryParams // subscribe to query params to indicate if debugMode is enabled
       .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe((paramMap) => (this.debugMode = paramMap.get("debugMode") === "true"));
+      .subscribe(async (params: IQueryParams) => {
+        this.debugMode = params.debugMode ? true : false;
+        // allow templateNavService to process actions based on query param change
+        if (!this.parent) {
+          await this.templateNavService.handleActionsFromParent(params, this);
+        }
+      });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.initialiseTemplate();
     // const { name, templatename, parent, row, templateBreadcrumbs } = this;
     // console.log("template initialised", { name, templatename, parent, row, templateBreadcrumbs });
@@ -84,7 +91,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
-    this.handleNavActions(actions);
+    if (!this.parent) {
+      await this.templateNavService.handleNavActionsFromChild(actions, this);
+    }
   }
   /** Optional method child component can add to handle post-action callback */
   public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
@@ -96,29 +105,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return actions;
   }
 
-  private handleNavActions(actions: FlowTypes.TemplateRowAction[] = []) {
-    console.log("handle nav actions", {
-      actions,
-      name: this.name,
-      parent: this.parent,
-      row: this.row,
-    });
-    const previousTemplate = this.route.snapshot.queryParamMap.get("from_template");
-    const navExitAction = actions.find(
-      (a) => a.action_id === "emit" && (a.trigger === "completed" || a.trigger === "uncompleted")
-    );
-
-    if (!this.parent && previousTemplate && navExitAction) {
-      this.router.navigate(["../", previousTemplate], {
-        relativeTo: this.route,
-        queryParams: { nav_emit: navExitAction.args[0] },
-        replaceUrl: true,
-      });
-    }
-  }
-
   public setDebugMode(debugMode: boolean) {
-    const queryParams = { debugMode: debugMode || null };
+    const queryParams: IQueryParams = { debugMode: debugMode || null };
     this.router.navigate([], { relativeTo: this.route, queryParams, queryParamsHandling: "merge" });
   }
   /**
@@ -160,11 +148,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         console.log("Setting global variable", key, value);
         return this.templateService.setGlobal(key, value);
       case "go_to":
-        const [templatename] = action.args;
-        return this.router.navigate(["template", templatename], {
-          queryParams: { from_template: this.name },
-          queryParamsHandling: "merge",
-        });
+        return this.templateNavService.handleGoToAction(action, this);
       case "pop_up":
         /*** WiP */
         console.warn("No handler for action", { action_id, args });
@@ -525,3 +509,7 @@ const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
   rows: [{ type: "title", value: `Template "${name}" not found` }],
   status: "released",
 });
+
+type IQueryParams = INavQueryParams & {
+  debugMode?: boolean | string;
+};
