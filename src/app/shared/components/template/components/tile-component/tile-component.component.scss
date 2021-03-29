@@ -32,13 +32,29 @@
     }
   }
 }
-
-.quick_start {
+.default_style {
   padding: 17px 27px;
-  background: linear-gradient(var(--bg-gradient));
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   min-height: 104px;
   max-width: 371px;
   border-radius: 15px;
   margin: 15px auto;
+}
+.quick_start {
+  background: linear-gradient(281.65deg, #ffd943 41.02%, #f49d04 102.14%);
+}
+
+.quick_start_passive {
+  background: linear-gradient(168.87deg, #0f8ab2 28.12%, #0d4060 100%);
+}
+.quick_start_blue {
+  background: linear-gradient(281.65deg, #b3edfd 41.02%, #08a6d1 102.14%);
+  .text {
+    div {
+      color: #0d4060;
+    }
+  }
+}
+.quick_start_red {
+  background: linear-gradient(168.87deg, #ff7a00 28.12%, #e13917 100%);
 }
