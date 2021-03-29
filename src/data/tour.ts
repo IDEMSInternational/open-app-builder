@@ -41,6 +41,6 @@
         "route": "module_page/mod_welcome_page"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\support\\tour.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/support/tour.xlsx"
   }
 ]
