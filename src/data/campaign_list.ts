@@ -35,6 +35,6 @@
         "every": "7_app:day"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\periodic_content\\reminders.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/periodic_content/reminders.xlsx"
   }
 ]
