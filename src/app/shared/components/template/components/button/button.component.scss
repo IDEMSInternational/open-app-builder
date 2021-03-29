@@ -15,11 +15,11 @@ ion-button:disabled,
 ion-button[disabled] {
   filter: brightness(55%);
 }
-.secondary {
-  --background: var(--ion-btn-secondary-color);
+.active {
+  --background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
   --box-shadow: var(--ion-btn-secondary-box-shadow);
 }
-.primary {
+.passive {
   --background: var(--ion-btn-primary-color);
   --box-shadow: var(--ion-btn-primary-box-shadow);
 }
@@ -41,4 +41,7 @@ ion-button[disabled] {
 }
 .right {
   margin-left: auto;
+}
+.full-width {
+  width: 100%;
 }
