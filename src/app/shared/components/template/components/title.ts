@@ -7,7 +7,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   selector: "plh-tmpl-title",
   template: `
     <div class="title-wrapper" [class]="textAlign">
-      <h1>{{ _row.value }}</h1>
+      <h1 [class]="style">{{ _row.value }}</h1>
       <ion-icon
         *ngIf="help"
         name="help-circle-outline"
@@ -25,7 +25,7 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
   tooltipPosition: string;
   textAlign: string;
   style: string | null;
-  
+
   constructor() {
     super();
   }
