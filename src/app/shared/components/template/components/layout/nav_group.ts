@@ -69,18 +69,10 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   sectionIndex = 0;
 
   modifyRowSetter(row: FlowTypes.TemplateRow) {
-    if (row && row.value && typeof row.value === "string") {
-      this.templateNames = this.splitLines(row.value);
+    if (Array.isArray(row?.value)) {
+      this.templateNames = row.value;
     }
     return row;
-  }
-
-  private splitLines(input: string) {
-    return input
-      .replace("\n", ";")
-      .split(";")
-      .map((s) => s.trim())
-      .filter((s) => s.length > 0);
   }
 
   interceptTemplateContainerAction(action: FlowTypes.TemplateRowAction) {
