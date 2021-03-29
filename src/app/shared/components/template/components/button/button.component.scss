@@ -2,10 +2,12 @@ ion-button {
   font-size: 25px;
   font-family: Roboto, sans-serif;
   font-weight: bold;
-  text-align: center;
   color: #fff;
+  text-transform: none;
+  white-space: pre-line;
   padding: 5px 0;
-  min-height: 62px;
+  min-height: 60px;
+  max-width: calc(100% - 4px);
   min-width: 59px;
   --border-radius: 15px;
 }
@@ -20,4 +22,23 @@ ion-button[disabled] {
 .primary {
   --background: var(--ion-btn-primary-color);
   --box-shadow: var(--ion-btn-primary-box-shadow);
+}
+
+.make-me-smile {
+  --background: linear-gradient(179.77deg, #b3edfd 34.6%, #60ddff 65.78%, #09b9e9 105.68%);
+  --box-shadow: var(--ion-btn-primary-box-shadow);
+  min-height: 76px;
+  color: #0d4060;
+}
+.get-me-going {
+  --background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
+  --box-shadow: var(--ion-btn-primary-box-shadow);
+  min-height: 76px;
+  color: #0d4060;
+}
+.left {
+  margin-right: auto;
+}
+.right {
+  margin-left: auto;
 }
