@@ -12,7 +12,7 @@
         "value": "Value of the first debug variable"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_small_issues.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
   },
   {
     "flow_type": "global",
@@ -59,7 +59,7 @@
         "value": 5
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_global_field.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
   },
   {
     "flow_type": "global",
@@ -92,7 +92,7 @@
         "value": "Parent Centre"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\navigation_templates\\global_navigation.xlsx"
   },
   {
     "flow_type": "global",
@@ -188,7 +188,7 @@
         "comments": "placeholder"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\navigation_templates\\global_navigation.xlsx"
   },
   {
     "flow_type": "global",
@@ -286,7 +286,7 @@
         "value": "plh_images/habits/habit_safe_image.svg"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/global_parent_points.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\parent_point_templates\\global_parent_points.xlsx"
   },
   {
     "flow_type": "global",
@@ -411,7 +411,7 @@
         "type": "declare_global_constant",
         "name": "w_safe_short",
         "value": "Teen Safety",
-        "comments": "ETW 10 - waiting for images"
+        "comments": "ETW 10 - need to discuss with Orli"
       },
       {
         "type": "declare_global_constant",
@@ -422,10 +422,17 @@
       {
         "type": "declare_global_constant",
         "name": "w_crisis_short",
-        "value": "Dealing with Crisis"
+        "value": "Dealing with Crisis",
+        "comments": "ETW 11 - waiting for images"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_celebrate",
+        "value": "Celebration and Next Steps",
+        "comments": "celebrate"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -443,7 +450,7 @@
         "value": "Home Practice"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -613,7 +620,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_safe_female_caregiver",
-        "value": "Grandma"
+        "value": "Mom"
       },
       {
         "type": "declare_global_constant",
@@ -632,16 +639,26 @@
       },
       {
         "type": "declare_global_constant",
-        "name": "w_crisis_teen_boy",
+        "name": "w_crisis_teen_boy_1",
         "value": "Amani"
       },
       {
         "type": "declare_global_constant",
-        "name": "w_crisis_male_caregiver",
-        "value": "Father"
+        "name": "w_crisis_teen_boy_2",
+        "value": "Thabani"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_crisis_male_caregiver_1",
+        "value": "Dad"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_crisis_male_caregiver_2",
+        "value": "Grandpa"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -654,7 +671,7 @@
         "value": "TikTok"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -682,7 +699,7 @@
         "value": "Find out more"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -745,7 +762,7 @@
         "value": 0
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -773,6 +790,6 @@
         "value": "Lucie"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
   }
 ]
