@@ -6,39 +6,66 @@ ion-button {
   text-transform: none;
   white-space: pre-line;
   padding: 5px 0;
-  min-height: 60px;
+  min-height: 70px;
   max-width: calc(100% - 4px);
   min-width: 59px;
   --border-radius: 15px;
+  --box-shadow: var(--ion-btn-primary-box-shadow);
 }
 ion-button:disabled,
 ion-button[disabled] {
   filter: brightness(55%);
 }
-.secondary {
-  --background: var(--ion-btn-secondary-color);
-  --box-shadow: var(--ion-btn-secondary-box-shadow);
+.active {
+  --background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
 }
-.primary {
+.passive {
   --background: var(--ion-btn-primary-color);
-  --box-shadow: var(--ion-btn-primary-box-shadow);
 }
 
 .make-me-smile {
   --background: linear-gradient(179.77deg, #b3edfd 34.6%, #60ddff 65.78%, #09b9e9 105.68%);
-  --box-shadow: var(--ion-btn-primary-box-shadow);
-  min-height: 76px;
+  min-height: 86px;
   color: #0d4060;
 }
 .get-me-going {
   --background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
-  --box-shadow: var(--ion-btn-primary-box-shadow);
-  min-height: 76px;
+  min-height: 86px;
   color: #0d4060;
 }
+
+.light_orange {
+  --background: linear-gradient(180deg, #ff7a00 0%, #be5d02 100%);
+  min-height: 56px;
+  font-size: 19px;
+}
+.orange {
+  --background: linear-gradient(180deg, #c76001 0%, #914804 100%);
+  min-height: 56px;
+  font-size: 19px;
+}
+.light_blue {
+  --background: linear-gradient(180deg, #096b8b 0%, #044c64 100%);
+  min-height: 56px;
+  font-size: 19px;
+}
+.dark_blue {
+  --background: linear-gradient(180deg, #05293f 0%, #031d2e 100%);
+  min-height: 56px;
+  font-size: 19px;
+}
+.blue {
+  --background: linear-gradient(180deg, #0b4a71, #062a42);
+  min-height: 56px;
+  font-size: 19px;
+}
+
 .left {
   margin-right: auto;
 }
 .right {
   margin-left: auto;
+}
+.full-width {
+  width: 100%;
 }

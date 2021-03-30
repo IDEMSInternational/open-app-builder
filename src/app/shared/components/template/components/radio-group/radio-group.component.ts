@@ -33,7 +33,7 @@ export class TmplRadioGroupComponent
   implements ITemplateRowProps, OnInit {
   @Input() parent: TemplateContainerComponent;
   @ViewChild("labelImage", { static: false, read: true }) labelImage: ElementRef;
-  radioBtnList: string;
+  radioBtnList: any;
   valuesFromBtnList;
   arrayOfBtn: Array<IButton>;
   radioButtonType: string | null;
@@ -44,6 +44,7 @@ export class TmplRadioGroupComponent
   selectedBackgroundColor: string = "#0D3F60";
   backgroundGradient: string = "168.87deg, #0F8AB2 28.12%, #0D4060 100%";
   value: any;
+  style: string;
 
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
@@ -80,7 +81,7 @@ export class TmplRadioGroupComponent
   }
 
   getParams() {
-    this.radioBtnList = getParamFromTemplateRow(this._row, "radio_button_list", null) as string;
+    this.radioBtnList = getParamFromTemplateRow(this._row, "answers_list", null);
     this.radioButtonType = getStringParamFromTemplateRow(this._row, "radio_button_type", null);
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
     this.selectedBackgroundColor = getStringParamFromTemplateRow(this._row, "color", "#0D3F60");
@@ -110,6 +111,7 @@ export class TmplRadioGroupComponent
       });
       return obj;
     });
+    console.log(this.arrayOfBtn);
   }
 
   getPathImg(path): string {
