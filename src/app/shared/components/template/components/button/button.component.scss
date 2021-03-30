@@ -6,7 +6,7 @@ ion-button {
   text-transform: none;
   white-space: pre-line;
   padding: 5px 0;
-  min-height: 60px;
+  min-height: 70px;
   max-width: calc(100% - 4px);
   min-width: 59px;
   --border-radius: 15px;
@@ -25,12 +25,12 @@ ion-button[disabled] {
 
 .make-me-smile {
   --background: linear-gradient(179.77deg, #b3edfd 34.6%, #60ddff 65.78%, #09b9e9 105.68%);
-  min-height: 76px;
+  min-height: 86px;
   color: #0d4060;
 }
 .get-me-going {
   --background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
-  min-height: 76px;
+  min-height: 86px;
   color: #0d4060;
 }
 
