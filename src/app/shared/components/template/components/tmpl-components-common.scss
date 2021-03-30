@@ -21,27 +21,33 @@
 .light_orange {
   flex-direction: column;
   background: #f89b2d;
+  border-radius: 20px;
 }
 .orange {
   flex-direction: column;
   background: #ff7a00;
+  border-radius: 20px;
 }
 .light_blue {
   flex-direction: column;
   background: #0f8ab2;
+  border-radius: 20px;
 }
 .blue {
   flex-direction: column;
   background: #096b8b;
+  border-radius: 20px;
 }
 .dark_blue {
+  flex-direction: column;
   background: #0d3f60;
+  border-radius: 20px;
 }
 .white_box {
   flex-direction: column;
   background: #fff;
   border: 2px solid #0d3f60;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 .plh-tmpl-comp {
