@@ -108,4 +108,3 @@ If category_list is not available we generate list of values based on min_value,
 - offset - number. Offset to move abroad component. Default - 0.
 - style - string or null. Class name. Default - null.
   Names of styles - 'light_orange', 'orange', 'light_blue', 'blue', 'dark_blue', 'white_box', 'active_banner', 'passive_banner'.
-  
