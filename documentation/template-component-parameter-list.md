@@ -95,8 +95,12 @@ If category_list is not available we generate list of values based on min_value,
 - background_gradient - string. Background button color. Default - "168.87deg, #0F8AB2 28.12%, #0D4060 100%"
 - style - string. Name of default css class. Default 'quick_start'
 
-## TitleComponent - TmplTitleComponent
+## DashedBox - TmplDashedBoxComponent
+- value - any. Default - undefined.
+- icon_src - string. Path to image. Default empty.
+- icon_position - string. Position of icon. Default - top-left.
 
+## Title - TmplTitleComponent
 - help - string or null.
 - tooltipPosition - string. Defalut - 'right' 
 - textAlign - string. Default - 'left'
@@ -106,4 +110,9 @@ If category_list is not available we generate list of values based on min_value,
 - offset - number. Offset to move abroad component. Default - 0.
 - style - string or null. Class name. Default - null.
   Names of styles - 'light_orange', 'orange', 'light_blue', 'blue', 'dark_blue', 'white_box', 'active_banner', 'passive_banner'.
-  
+
+## DashedBox - TmplDashedBoxComponent
+- value - any. Default - undefined.
+- icon_src - string. Path to image. Default empty.
+- icon_position - string. Position of icon. Default - top-left.
+
