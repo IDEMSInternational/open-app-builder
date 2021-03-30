@@ -91,9 +91,8 @@ If category_list is not available we generate list of values based on min_value,
 - value - any. Default - undefined
 - first_line_text - string or null. Text. Default - null
 - second_line_text string or null. Text. Default - null
-- icon_src - string or null. image file source link. Default - null
-- background_gradient - string. Background button color. Default - "168.87deg, #0F8AB2 28.12%, #0D4060 100%"
-- style - string. Name of default css class. Default 'quick_start'
+- icon_src - string or null. image file source link. Default - null.
+- style - string. Name of default css class. Default 'quick_start'. Styles: 'default_style', 'quick_start', 'quick_start_passive', 'quick_start_blue', 'quick_start_red'.
 
 ## TitleComponent - TmplTitleComponent
 
