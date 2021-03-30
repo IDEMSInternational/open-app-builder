@@ -1,6 +1,6 @@
 import { FlowTypes } from "../../../../types";
 import { DefaultParser } from "../default/default.parser";
-import { parsePLHString } from "../utils";
+import { parsePLHListString } from "../utils";
 
 export class TemplateParser extends DefaultParser {
   constructor() {
@@ -20,12 +20,18 @@ export class TemplateParser extends DefaultParser {
     if (row.type === "template" && !row.name) {
       row.name = row.value;
     }
+    // convert any variables (local/global) list strings to array
+    if (row.name?.includes("_list") && row.value) {
+      row.value = parsePLHListString(row.value);
+    }
     // parse action list
     if (row.action_list) {
-      row.action_list = row.action_list.map((actionString) =>
-        this.parseActionString(actionString as any)
-      )
-      .filter((action) => action != null);
+      row.action_list = row.action_list
+        .map((actionString) => this.parseActionString(actionString as any))
+        .filter((action) => action != null);
+    }
+    if (row.parameter_list) {
+      row.parameter_list = this.parseParameterList(row.parameter_list as any);
     }
     // convert boolean to strings (easier for future processing, as most update functions typically return strings)
     if (typeof row.hidden === "boolean") {
@@ -68,6 +74,10 @@ export class TemplateParser extends DefaultParser {
     }
     const _cleaned = actionString;
     // This was causing an error
+
+    // CC 2021-03-27 - Above comment from Michael likely due to intentional catch of unparsed lists ';'
+    // which this commit fixes. Should review in future
+
     // const _parsed = parsePLHString(actionString);
     const parts = actionString.split("|").map((s) => s.trim());
     const trigger = parts[0] as any;
@@ -84,7 +94,19 @@ export class TemplateParser extends DefaultParser {
       action_id = "emit";
     }
     return { trigger, action_id, args, _raw, _cleaned }; */
-    
+  }
+
+  parseParameterList(parameterList: string[]) {
+    const parameterObj: FlowTypes.TemplateRow["parameter_list"] = {};
+    parameterList.forEach((p) => {
+      let [key, value] = p.split(":").map((str) => str.trim()) as any[];
+      // if a single word is specified, e.g. 'box_display', assume setting param to true
+      if (value === undefined) {
+        value = "true";
+      }
+      parameterObj[key] = value;
+    });
+    return parameterObj;
   }
 }
 
