@@ -12,7 +12,7 @@
         "value": "Value of the first debug variable"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_small_issues.xlsx"
   },
   {
     "flow_type": "global",
@@ -59,7 +59,7 @@
         "value": 5
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_global_field.xlsx"
   },
   {
     "flow_type": "global",
@@ -92,7 +92,7 @@
         "value": "Parent Centre"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\navigation_templates\\global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
   },
   {
     "flow_type": "global",
@@ -188,7 +188,7 @@
         "comments": "placeholder"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\navigation_templates\\global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
   },
   {
     "flow_type": "global",
@@ -286,7 +286,7 @@
         "value": "plh_images/habits/habit_safe_image.svg"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\parent_point_templates\\global_parent_points.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/global_parent_points.xlsx"
   },
   {
     "flow_type": "global",
@@ -399,7 +399,7 @@
         "type": "declare_global_constant",
         "name": "w_solve_short",
         "value": "Problem Solving",
-        "comments": "ETW 9 -- waiting for images"
+        "comments": "ETW 9 -- done"
       },
       {
         "type": "declare_global_constant",
@@ -410,7 +410,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_safe_short",
-        "value": "Teen Safety"
+        "value": "Teen Safety",
+        "comments": "ETW 10 - waiting for images"
       },
       {
         "type": "declare_global_constant",
@@ -424,7 +425,7 @@
         "value": "Dealing with Crisis"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -442,121 +443,7 @@
         "value": "Home Practice"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
-  },
-  {
-    "flow_type": "global",
-    "flow_name": "workshop_buttons",
-    "status": "released",
-    "rows": [
-      {
-        "type": "declare_global_constant",
-        "name": "ideas_button",
-        "value": "Real-world ideas"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "ideas_pop_up",
-        "value": "Ideas from other families..."
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "more_button",
-        "value": "Find out more"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
-  },
-  {
-    "flow_type": "global",
-    "flow_name": "workshop_completion_levels",
-    "status": "released",
-    "rows": [
-      {
-        "type": "declare_field_default",
-        "name": "w_self-care_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_1on1_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_praise_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_instruct_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_stress_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_money_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_rules_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_responsibility_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_solve_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_safe_completion_level",
-        "value": 0
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_crisis_completion_level",
-        "value": 0
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
-  },
-  {
-    "flow_type": "global",
-    "flow_name": "workshop_options",
-    "status": "released",
-    "rows": [
-      {
-        "type": "declare_field_default",
-        "name": "do_workshops_together",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "guide_number",
-        "value": "guide_2"
-      },
-      {
-        "type": "declare_field_default",
-        "name": "group_name",
-        "value": "Friends"
-      },
-      {
-        "type": "declare_field_default",
-        "name": "user_name",
-        "value": "Lucie"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -727,8 +614,165 @@
         "type": "declare_global_constant",
         "name": "w_safe_female_caregiver",
         "value": "Grandma"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_crisis_teen_girl_1",
+        "value": "Faraja"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_crisis_teen_girl_2",
+        "value": "Bibi"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_crisis_female_caregiver",
+        "value": "Mama"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_crisis_teen_boy",
+        "value": "Amani"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_crisis_male_caregiver",
+        "value": "Father"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "localisation_options",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "teen_social_medium",
+        "value": "TikTok"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "workshop_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "ideas_button",
+        "value": "Real-world ideas"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "ideas_short_button",
+        "value": "Ideas"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "ideas_pop_up",
+        "value": "Ideas from other families..."
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "more_button",
+        "value": "Find out more"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "workshop_completion_levels",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_field_default",
+        "name": "w_self-care_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_1on1_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_praise_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_instruct_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_stress_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_money_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_rules_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_responsibility_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_solve_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_safe_completion_level",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_crisis_completion_level",
+        "value": 0
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "workshop_options",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_field_default",
+        "name": "do_workshops_together",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "guide_number",
+        "value": "guide_2"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "group_name",
+        "value": "Friends"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "user_name",
+        "value": "Lucie"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   }
 ]
