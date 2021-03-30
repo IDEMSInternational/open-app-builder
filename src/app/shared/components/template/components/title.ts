@@ -11,7 +11,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
       <ion-icon
         *ngIf="help"
         name="help-circle-outline"
-        class="timer-help"
+        class="title-help"
         [pTooltip]="help"
         [tooltipPosition]="tooltipPosition"
         tooltipEvent="click"
