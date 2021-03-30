@@ -12,11 +12,9 @@
 ## Button - TmplButtonComponent
 
 - value - text - button text
-- width - number - button width. Default: 100%
-- height - number - button height. Default: 62
-- color - string. Color variable or hex. Default: null
-- disabled - boolean. Default: false
-- style - string. Class name for button. Default: "primary"
+- disabled - boolean. Default: false.
+- style - string. Class name for button. Default: "primary".
+- text-align - string. Text align. Default 'center'.
 
 ## Number Selector - TmplNumberComponent
 
