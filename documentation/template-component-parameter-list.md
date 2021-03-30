@@ -13,7 +13,7 @@
 
 - value - text - button text
 - disabled - boolean. Default: false.
-- style - string. Class name for button. Default: "primary".
+- style - string. Class name for button. Default: "primary". Styles: orange, light_orange, light_blue, dark_blue, active, passive, make-me-smile, get-me-going.
 - text-align - string. Text align. Default 'center'.
 
 ## Number Selector - TmplNumberComponent
