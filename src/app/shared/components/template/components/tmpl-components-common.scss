@@ -18,6 +18,43 @@
     flex-direction: inherit;
   }
 }
+.light_orange {
+  padding: 0 15px;
+  flex-direction: column;
+  background: #f89b2d;
+  border-radius: 20px;
+}
+.orange {
+  padding: 0 15px;
+  flex-direction: column;
+  background: #ff7a00;
+  border-radius: 20px;
+}
+.light_blue {
+  padding: 0 15px;
+  flex-direction: column;
+  background: #0f8ab2;
+  border-radius: 20px;
+}
+.blue {
+  padding: 0 15px;
+  flex-direction: column;
+  background: #096b8b;
+  border-radius: 20px;
+}
+.dark_blue {
+  padding: 0 15px;
+  flex-direction: column;
+  background: #0d3f60;
+  border-radius: 20px;
+}
+.white_box {
+  padding: 0 15px;
+  flex-direction: column;
+  background: #fff;
+  border: 2px solid #0d3f60;
+  border-radius: 20px;
+}
 
 .plh-tmpl-comp {
   display: flex;
@@ -96,9 +133,14 @@ p {
     line-height: 29px;
     color: #0d4060;
   }
-  .timer-help {
+  .white {
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 26px;
+    color: #ffffff;
+  }
+  .title-help {
     margin-left: 8px;
-    margin-top: 7px;
     color: #0d3f60;
     height: 32px;
     width: 32px;
