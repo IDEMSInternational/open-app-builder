@@ -12,7 +12,6 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   color: string | null;
   disabled: boolean = false;
   textAlign: string;
-  width: string | null;
 
   constructor() {
     super();
@@ -26,10 +25,5 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     this.style = getStringParamFromTemplateRow(this._row, "style", "primary");
     this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
     this.textAlign = getStringParamFromTemplateRow(this._row, "text-align", "center");
-    this.width = getStringParamFromTemplateRow(this._row, "width", null);
-
-    if (this.width) {
-      if (!this.width.includes("%") || !this.width.includes("px")) this.width += "px";
-    }
   }
 }
