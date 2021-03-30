@@ -54,6 +54,11 @@ ion-button[disabled] {
   min-height: 56px;
   font-size: 19px;
 }
+.blue {
+  --background: linear-gradient(180deg, #0b4a71, #062a42);
+  min-height: 56px;
+  font-size: 19px;
+}
 
 .left {
   margin-right: auto;
