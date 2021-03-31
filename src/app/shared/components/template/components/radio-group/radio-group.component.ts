@@ -75,7 +75,7 @@ export class TmplRadioGroupComponent
     this.radioButtonType = getStringParamFromTemplateRow(this._row, "radio_button_type", null);
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
     this.value = this._row.value;
-    this.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
     this.windowWidth = window.innerWidth;
     if (this.radioBtnList) {
       this.valuesFromBtnList = this.radioBtnList.split(";").filter((item) => item !== "");
