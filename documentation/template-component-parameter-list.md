@@ -118,5 +118,5 @@ If category_list is not available we generate list of values based on min_value,
 ## SubtitleComponent - TmplSubtitleComponent
 
 - text-align - string. Default - left
-- style - string or null. Name of default css class. (white | primary) Default - primary
+- style - string or null. Name of default css class. (white | passive) Default - passive
 
