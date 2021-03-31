@@ -53,3 +53,13 @@ button.alert-button.alert-delete-button {
   flex-direction: column;
   flex: 1;
 }
+
+ion-modal.template-popup-modal {
+  --width: 100%;
+  --height: 100%;
+  --background: none;
+  // when a template wants to hide a modal simply put it behind
+  &.hide-popup-on-template {
+    z-index: -1 !important;
+  }
+}
