@@ -26,7 +26,7 @@ export class TmplDashedBoxComponent
 
   getParams() {
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
-    this.style = getStringParamFromTemplateRow(this._row, "style", "banner_passive");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "default");
     this.icon_result = this.getPathImg();
     this.icon_position = getStringParamFromTemplateRow(this._row, "icon_position", "top-left");
   }
