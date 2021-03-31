@@ -82,7 +82,8 @@ export function getStringParamFromTemplateRow(
   name: string,
   _default: string
 ): string {
-  return `${getParamFromTemplateRow(row, name, _default)}`;
+  var paramValue = getParamFromTemplateRow(row, name, _default) as string;
+  return paramValue ? `${paramValue}` : paramValue;
 }
 
 /** Return a specific parameter, parsed as a number */
