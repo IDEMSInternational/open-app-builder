@@ -103,7 +103,7 @@ If category_list is not available we generate list of values based on min_value,
 ## Title - TmplTitleComponent
 - value - any. Text of title. Default undefined.
 - help - string or null.
-- tooltip_position - string. Defalut - 'right' 
+- tooltip_position - string. Default - 'right' 
 - text_align - string. Default - 'left'
 - style - string. Setting style of the text. Default - 'primary'. Styles: 'primary', 'white'.
 
