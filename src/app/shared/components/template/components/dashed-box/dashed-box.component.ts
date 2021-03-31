@@ -14,6 +14,8 @@ export class TmplDashedBoxComponent
   style: string;
   icon_src: string | null;
   assetsPrefix = "/assets/plh_assets/";
+  icon_result: string;
+  icon_position: string;
   constructor() {
     super();
   }
@@ -23,8 +25,10 @@ export class TmplDashedBoxComponent
   }
 
   getParams() {
-    this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
+    this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
     this.style = getStringParamFromTemplateRow(this._row, "style", "banner_passive");
+    this.icon_result = this.getPathImg();
+    this.icon_position = getStringParamFromTemplateRow(this._row, "icon_position", "top-left");
   }
 
   getPathImg(): string {
