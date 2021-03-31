@@ -58,20 +58,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public router: Router,
     public route: ActivatedRoute,
     private templateNavService: TemplateNavService
-  ) {
-    this.route.queryParams // subscribe to query params to indicate if debugMode is enabled
-      .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe(async (params: IQueryParams) => {
-        this.debugMode = params.debugMode ? true : false;
-        // allow templateNavService to process actions based on query param change
-        if (!this.parent) {
-          await this.templateNavService.handleActionsFromParent(params, this);
-        }
-      });
-  }
+  ) {}
 
   async ngOnInit() {
     this.initialiseTemplate();
+    this.subscribeToQueryParamChanges();
     // const { name, templatename, parent, row, templateBreadcrumbs } = this;
     // console.log("template initialised", { name, templatename, parent, row, templateBreadcrumbs });
   }
@@ -148,29 +139,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         console.log("Setting global variable", key, value);
         return this.templateService.setGlobal(key, value);
       case "go_to":
-        return this.templateNavService.handleGoToAction(action, this);
+        return this.templateNavService.handleNavAction(action, this);
       case "pop_up":
-        /*** WiP */
-        console.warn("No handler for action", { action_id, args });
-        break;
-      // const childContainerProps: ITemplateContainerProps = {
-      //   name: `${this.name}_${templatename}`,
-      //   templatename,
-      //   parent: this,
-      //   row: {
-      //     action_list: [
-      //       { trigger: "completed", action_id: "emit", args: ["dismiss:completed"] },
-      //       { trigger: "uncompleted", action_id: "emit", args: ["dismiss:uncompleted"] },
-      //     ],
-      //   } as any,
-      // };
-      // const childTemplateModal = await this.modalCtrl.create({
-      //   component: TemplateContainerComponent,
-      //   componentProps: childContainerProps,
-      // });
-      // await childTemplateModal.present();
-      // const dismissed = await childTemplateModal.onDidDismiss();
-      // console.log("dismissed", dismissed);
+        return this.templateNavService.handlePopupAction(action, this);
       case "set_field":
         return this.templateService.setField(key, value);
       case "emit":
@@ -330,7 +301,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
         if (field === "parameter_list" && r.parameter_list) {
           Object.keys(r.parameter_list).forEach((param) => {
-            let dynamicEvaluators = _extractDynamicEvaluators(r[field]);
+            let dynamicEvaluators = _extractDynamicEvaluators(r[field][param]);
             if (dynamicEvaluators) {
               r.parameter_list[param] = this.parseDynamicValue(dynamicEvaluators, field);
             }
@@ -460,6 +431,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   /** When using ngFor loop track by  */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
     return row.name || row.value || index;
+  }
+
+  /** Query params are used to track state across navigation events */
+  private subscribeToQueryParamChanges() {
+    this.route.queryParams
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe(async (params: IQueryParams) => {
+        this.debugMode = params.debugMode ? true : false;
+        // allow templateNavService to process actions based on query param change
+        await this.templateNavService.handleQueryParamChange(params, this);
+      });
   }
 }
 
