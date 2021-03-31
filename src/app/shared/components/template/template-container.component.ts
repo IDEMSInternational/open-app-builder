@@ -4,6 +4,7 @@ import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
+import { INavQueryParams, TemplateNavService } from "./services/template-nav.service";
 import { TemplateService } from "./services/template.service";
 
 interface ILocalVariables {
@@ -57,17 +58,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   constructor(
     private templateService: TemplateService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-    // subscribe to query params to indicate if debugMode is enabled
-    this.route.queryParamMap
-      .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe((paramMap) => (this.debugMode = paramMap.get("debugMode") === "true"));
-  }
+    public router: Router,
+    public route: ActivatedRoute,
+    private templateNavService: TemplateNavService
+  ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.initialiseTemplate();
+    this.subscribeToQueryParamChanges();
     // const { name, templatename, parent, row, templateBreadcrumbs } = this;
     // console.log("template initialised", { name, templatename, parent, row, templateBreadcrumbs });
   }
@@ -87,7 +85,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
-    this.handleNavActions(actions);
+    if (!this.parent) {
+      await this.templateNavService.handleNavActionsFromChild(actions, this);
+    }
   }
   /** Optional method child component can add to handle post-action callback */
   public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
@@ -99,29 +99,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return actions;
   }
 
-  private handleNavActions(actions: FlowTypes.TemplateRowAction[] = []) {
-    console.log("handle nav actions", {
-      actions,
-      name: this.name,
-      parent: this.parent,
-      row: this.row,
-    });
-    const previousTemplate = this.route.snapshot.queryParamMap.get("from_template");
-    const navExitAction = actions.find(
-      (a) => a.action_id === "emit" && (a.trigger === "completed" || a.trigger === "uncompleted")
-    );
-
-    if (!this.parent && previousTemplate && navExitAction) {
-      this.router.navigate(["../", previousTemplate], {
-        relativeTo: this.route,
-        queryParams: { nav_emit: navExitAction.args[0] },
-        replaceUrl: true,
-      });
-    }
-  }
-
   public setDebugMode(debugMode: boolean) {
-    const queryParams = { debugMode: debugMode || null };
+    const queryParams: IQueryParams = { debugMode: debugMode || null };
     this.router.navigate([], { relativeTo: this.route, queryParams, queryParamsHandling: "merge" });
   }
   /**
@@ -163,33 +142,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         console.log("Setting global variable", key, value);
         return this.templateService.setGlobal(key, value);
       case "go_to":
-        const [templatename] = action.args;
-        return this.router.navigate(["template", templatename], {
-          queryParams: { from_template: this.name },
-          queryParamsHandling: "merge",
-        });
+        return this.templateNavService.handleNavAction(action, this);
       case "pop_up":
-        /*** WiP */
-        console.warn("No handler for action", { action_id, args });
-        break;
-      // const childContainerProps: ITemplateContainerProps = {
-      //   name: `${this.name}_${templatename}`,
-      //   templatename,
-      //   parent: this,
-      //   row: {
-      //     action_list: [
-      //       { trigger: "completed", action_id: "emit", args: ["dismiss:completed"] },
-      //       { trigger: "uncompleted", action_id: "emit", args: ["dismiss:uncompleted"] },
-      //     ],
-      //   } as any,
-      // };
-      // const childTemplateModal = await this.modalCtrl.create({
-      //   component: TemplateContainerComponent,
-      //   componentProps: childContainerProps,
-      // });
-      // await childTemplateModal.present();
-      // const dismissed = await childTemplateModal.onDidDismiss();
-      // console.log("dismissed", dismissed);
+        return this.templateNavService.handlePopupAction(action, this);
       case "set_field":
         return this.templateService.setField(key, value);
       case "emit":
@@ -347,8 +302,16 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         // TODO - if a dynamic field is overwritten by static value (not just revaluated) that value
         // would also be overwritten on render (so needs fix, possibly moving dynamic fields to parser to merge)
 
+        if (field === "parameter_list" && r.parameter_list) {
+          Object.keys(r.parameter_list).forEach((param) => {
+            let dynamicEvaluators = _extractDynamicEvaluators(r[field][param]);
+            if (dynamicEvaluators) {
+              r.parameter_list[param] = this.parseDynamicValue(dynamicEvaluators, field);
+            }
+          });
+        }
         // TODO - Memoize evaluators for arrays
-        if (Array.isArray(r[field]) && r[field].length > 0) {
+        else if (Array.isArray(r[field]) && r[field].length > 0) {
           let array = r[field] as any[];
           let dynamicEvaluatorsPerItem = array.map((item) => _extractDynamicEvaluators(item));
           if (dynamicEvaluatorsPerItem.length > 0) {
@@ -500,6 +463,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
     return row.name || row.value || index;
   }
+
+  /** Query params are used to track state across navigation events */
+  private subscribeToQueryParamChanges() {
+    this.route.queryParams
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe(async (params: IQueryParams) => {
+        this.debugMode = params.debugMode ? true : false;
+        // allow templateNavService to process actions based on query param change
+        await this.templateNavService.handleQueryParamChange(params, this);
+      });
+  }
 }
 
 /** Some strings contain a variable expression such as "/assets/@fields.name/happy.jpg" or "welcome @local.name!" */
@@ -548,3 +522,7 @@ const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
   rows: [{ type: "title", value: `Template "${name}" not found` }],
   status: "released",
 });
+
+type IQueryParams = INavQueryParams & {
+  debugMode?: boolean | string;
+};

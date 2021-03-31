@@ -21,7 +21,8 @@
       border: 1px solid #fff;
       --border-radius: 50%;
       border-radius: 50%;
-
+      box-shadow: none;
+      --ripple-color: transparent;
       img {
         width: 60px;
         height: 60px;

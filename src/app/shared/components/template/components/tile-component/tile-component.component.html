@@ -1,4 +1,4 @@
-<div [class]="style" class="tile-wrapper">
+<div [class]="style" class="tile-wrapper" (click)="triggerActions('click')">
   <div class="text">
     <div class="first" *ngIf="first_line_text">{{ first_line_text }}</div>
     <div class="second" *ngIf="second_line_text">{{ second_line_text }}</div>
