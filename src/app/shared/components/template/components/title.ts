@@ -36,8 +36,8 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
 
   getParams() {
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
-    this.tooltipPosition = getStringParamFromTemplateRow(this._row, "tooltipPosition", "right");
-    this.textAlign = getStringParamFromTemplateRow(this._row, "text-align", "left");
+    this.tooltipPosition = getStringParamFromTemplateRow(this._row, "tooltip_position", "right");
+    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "left");
     this.style = getStringParamFromTemplateRow(this._row, "style", "primary");
   }
 }
