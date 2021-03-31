@@ -42,18 +42,18 @@
       bottom: -23px;
     }
   }
-  .banner_active {
-    background: #fff;
-    border-color: #f49d04;
-    .text {
-      color: #f49d04;
-    }
-  }
-  .banner_passive {
+  .default {
     background: transparent;
     border-color: #0d4060;
     .text {
       color: #0d4060;
+    }
+  }
+  .alert {
+    background: #fff;
+    border-color: #f49d04;
+    .text {
+      color: #f49d04;
     }
   }
 }
