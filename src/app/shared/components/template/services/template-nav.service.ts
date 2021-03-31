@@ -6,6 +6,10 @@ import { TemplatePopupComponent } from "../components/layout/popup";
 import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
+// Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
+const SHOW_DEBUG_LOGS = false;
+const log = SHOW_DEBUG_LOGS ? console.log : () => null;
+
 @Injectable({
   providedIn: "root",
 })
@@ -20,7 +24,7 @@ export class TemplateNavService {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    console.log(`[Query Param Change] - ${container.name}`, { ...params });
+    log(`[Query Param Change] - ${container.name}`, { ...params });
     const { nav_child, nav_parent, popup_child, popup_parent } = params;
     const { parent, name } = container;
     // handle nav delegation
@@ -67,7 +71,7 @@ export class TemplateNavService {
   ) {
     const { nav_child_emit, nav_parent_triggered_by, nav_child } = params;
     const { router, template } = container;
-    console.log("[Nav] - Parent", { params, container });
+    log("[Nav] - Parent", { params, container });
     // remove query param
     const queryParams: INavQueryParams = {
       nav_child_emit: null,
@@ -86,13 +90,13 @@ export class TemplateNavService {
       const triggerRow = template.rows.find((r) => r.name === nav_parent_triggered_by);
       // Note - if triggered from a popup this will be hand
       if (triggerRow) {
-        console.log("trigger row", triggerRow);
+        log("trigger row", triggerRow);
         const triggeredActions = triggerRow.action_list.filter((a) => a.trigger === nav_child_emit);
         await container.handleActions(triggeredActions, nav_child);
         // back history will have changed (2 duplicate pages), so nav back to restore correct back button
         history.back();
       } else {
-        console.log("nav trigger row not found");
+        log("nav trigger row not found");
       }
     }
   }
@@ -108,7 +112,7 @@ export class TemplateNavService {
     const { route, router } = container;
     const params = route.snapshot.queryParams as INavQueryParams;
     const { nav_parent, popup_parent } = params;
-    console.log("[Nav] - Child", { params, container });
+    log("[Nav] - Child", { params, container });
     // only process nav events for child if a nav_parent has been set
     if (nav_parent) {
       // only pass back completed/uncompleted emit actions
@@ -153,7 +157,7 @@ export class TemplateNavService {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    console.log("[Popup] - other", { params, container });
+    log("[Popup] - other", { params, container });
   }
 
   private async handlePopupActionsFromParent(
@@ -163,7 +167,7 @@ export class TemplateNavService {
     const { popup_child, nav_child_emit, popup_parent_triggered_by } = params;
     const { template } = container;
     const existingPopup = await this.modalCtrl.getTop();
-    console.log("[Popup] - parent", { params, parent: container.name });
+    log("[Popup] - parent", { params, parent: container.name });
 
     // process any actions triggered by nav from the popup
     if (nav_child_emit) {
@@ -171,7 +175,7 @@ export class TemplateNavService {
       const triggerRow = template.rows.find((r) => r.name === popup_parent_triggered_by);
       if (triggerRow && existingPopup) {
         const actionsByTrigger = arrayToHashmapArray(triggerRow.action_list || [], "trigger");
-        console.log({ actionsByTrigger, existingPopup, nav_child_emit });
+        log({ actionsByTrigger, existingPopup, nav_child_emit });
         // process any completed/uncompleted actions as specified
         const emittedActions = actionsByTrigger[nav_child_emit];
         if (emittedActions) {
@@ -203,7 +207,7 @@ export class TemplateNavService {
       const childTemplateModal = await this.createChildPopupModal(popup_child, container);
       await childTemplateModal.present();
       const { data } = await childTemplateModal.onDidDismiss();
-      console.log("dismissed", data);
+      log("dismissed", data);
       // clear both popup and query params
       const queryParams: INavQueryParams = {
         popup_child: null,
