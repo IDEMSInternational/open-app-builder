@@ -12,11 +12,9 @@
 ## Button - TmplButtonComponent
 
 - value - text - button text
-- width - number - button width. Default: 100%
-- height - number - button height. Default: 62
-- color - string. Color variable or hex. Default: null
-- disabled - boolean. Default: false
-- style - string. Class name for button. Default: "primary"
+- disabled - boolean. Default: false.
+- style - string. Class name for button. Default: "primary". Styles: orange, light_orange, light_blue, dark_blue, active, passive, make-me-smile, get-me-going.
+- text-align - string. Text align. Default 'center'.
 
 ## Number Selector - TmplNumberComponent
 
@@ -86,6 +84,7 @@ If category_list is not available we generate list of values based on min_value,
 - value - string or null. Input value. Default - undefined
 - max-length - number. Max length input value. Default - 30
 - placeholder - string or null. Input placeholder. Default - empty string
+- text-align - string. Default - center
 
 ## TileComponent - TmplTileComponent
 
@@ -95,4 +94,25 @@ If category_list is not available we generate list of values based on min_value,
 - icon_src - string or null. image file source link. Default - null
 - background_gradient - string. Background button color. Default - "168.87deg, #0F8AB2 28.12%, #0D4060 100%"
 - style - string. Name of default css class. Default 'quick_start'
+
+## DashedBox - TmplDashedBoxComponent
+- value - any. Default - undefined.
+- icon_src - string. Path to image. Default empty.
+- icon_position - string. Position of icon. Default - top-left.
+
+## Title - TmplTitleComponent
+- help - string or null.
+- tooltipPosition - string. Defalut - 'right' 
+- textAlign - string. Default - 'left'
+- style - string. Setting style of the text. Default - 'primary'
+
+## DisplayGroupComponent - TmplDisplayGroupComponent
+- offset - number. Offset to move abroad component. Default - 0.
+- style - string or null. Class name. Default - null.
+  Names of styles - 'light_orange', 'orange', 'light_blue', 'blue', 'dark_blue', 'white_box', 'active_banner', 'passive_banner'.
+
+## DashedBox - TmplDashedBoxComponent
+- value - any. Default - undefined.
+- icon_src - string. Path to image. Default empty.
+- icon_position - string. Position of icon. Default - top-left.
 

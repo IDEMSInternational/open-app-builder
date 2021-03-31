@@ -25,3 +25,13 @@ export function parsePLHString(str: string): string[][] {
   const nest2 = nest1.map((el) => el.split(":").map((d) => d.trim()));
   return nest2;
 }
+
+/**
+ * Split a string by ';' and return array string, ignoring empty elements left by hanging ';'
+ */
+export function parsePLHListString(str: string): string[] {
+  return str
+    .split(";")
+    .map((val: string) => val.trim())
+    .filter((val: string) => val !== "");
+}
