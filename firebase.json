@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "plh-teens-app1",
+      "target": "app",
       "public": "www",
       "ignore": [
         "firebase.json",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "target": "plh-teens-uat1",
+      "target": "uat",
       "public": "www",
       "ignore": [
         "firebase.json",
