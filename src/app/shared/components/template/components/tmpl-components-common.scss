@@ -56,6 +56,11 @@
   border-radius: 20px;
 }
 
+.display_group_bottom {
+  position: fixed;
+  bottom: 0px;
+}
+
 .plh-tmpl-comp {
   display: flex;
   flex-direction: column;
