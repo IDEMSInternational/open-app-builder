@@ -30,7 +30,7 @@ jobs:
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-        name: Set envName to uat
+      - name: Set envName to uat
         run: echo "export const ENV_NAME = 'uat';" > src/environments/env_name.ts
       - run: yarn install
       - run: npm run build
