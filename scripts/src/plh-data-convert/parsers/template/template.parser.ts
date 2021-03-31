@@ -36,7 +36,7 @@ export class TemplateParser extends DefaultParser {
     // convert boolean to strings (easier for future processing, as most update functions typically return strings)
     for (let key of Object.keys(row)) {
       if (typeof row[key] === "boolean") {
-        row[key] = `${row.value}`;
+        row[key] = `${row[key]}`;
       }
     }
     // handle nested rows in same way
