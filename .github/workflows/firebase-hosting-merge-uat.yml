@@ -37,7 +37,8 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}'
           projectId: plh-teens-app1
-          channelId: ${{ steps.extract_branch.outputs.branch }}
+          channelId: live
+          target: plh-teens-uat1
           
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
