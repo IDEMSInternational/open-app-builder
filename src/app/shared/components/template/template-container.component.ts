@@ -299,8 +299,16 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         // TODO - if a dynamic field is overwritten by static value (not just revaluated) that value
         // would also be overwritten on render (so needs fix, possibly moving dynamic fields to parser to merge)
 
+        if (field === "parameter_list" && r.parameter_list) {
+          Object.keys(r.parameter_list).forEach((param) => {
+            let dynamicEvaluators = _extractDynamicEvaluators(r[field][param]);
+            if (dynamicEvaluators) {
+              r.parameter_list[param] = this.parseDynamicValue(dynamicEvaluators, field);
+            }
+          });
+        }
         // TODO - Memoize evaluators for arrays
-        if (Array.isArray(r[field]) && r[field].length > 0) {
+        else if (Array.isArray(r[field]) && r[field].length > 0) {
           let array = r[field] as any[];
           let dynamicEvaluatorsPerItem = array.map((item) => _extractDynamicEvaluators(item));
           if (dynamicEvaluatorsPerItem.length > 0) {

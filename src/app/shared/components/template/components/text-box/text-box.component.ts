@@ -15,6 +15,7 @@ export class TmplTextBoxComponent
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   placeholder: string;
+  textAlign: string;
   maxLength: number;
   value: string | null;
   constructor() {
@@ -28,6 +29,7 @@ export class TmplTextBoxComponent
   getParams() {
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
     this.maxLength = getNumberParamFromTemplateRow(this._row, "max-length", 30);
+    this.textAlign = getStringParamFromTemplateRow(this._row, "text-align", "center");
     this.value = this._row.value;
   }
 }

@@ -25,7 +25,7 @@ const DEPLOY_TARGET: "app" | "rapidpro" = "app";
  * Reads xlsx files from gdrive-download output and converts to json
  * objects representing sheet names and data values
  */
-async function main() {
+export async function main() {
   console.log(chalk.yellow("Converting PLH Data"));
   fs.ensureDirSync(INPUT_FOLDER);
   fs.ensureDirSync(INTERMEDIATES_FOLDER);
@@ -60,12 +60,15 @@ async function main() {
   });
   console.log(chalk.yellow("Conversion Complete"));
 }
-main()
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  })
-  .then(() => console.log(chalk.green("PLH Data Converted")));
+
+if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
+  main()
+    .catch((err) => {
+      console.error(err);
+      process.exit(1);
+    })
+    .then(() => console.log(chalk.green("PLH Data Converted")));
+}
 
 function applyDataParsers(
   dataByFlowType: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] }

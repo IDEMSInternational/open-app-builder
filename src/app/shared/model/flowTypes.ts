@@ -357,6 +357,7 @@ export namespace FlowTypes {
     | "tile_component"
     | "css_anim"
     | "combo_box"
+    | "icon_banner"
     | "dashed_box";
 
   export interface TemplateRow {
@@ -365,7 +366,7 @@ export namespace FlowTypes {
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
     style_list?: string[];
-    parameter_list?: string[];
+    parameter_list?: { [param: string]: string };
     hidden?: string;
     rows?: TemplateRow[];
     /** track fields above where dynamic expressions have been used in field evaluation */

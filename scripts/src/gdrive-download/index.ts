@@ -14,36 +14,55 @@ const GOOGLE_DRIVE_ASSETS_FOLDER = "plh_assets";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
 const CACHE_FOLDER = path.join(__dirname, "cache");
 const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
-// prepare folders
-fs.ensureDirSync(OUTPUT_FOLDER);
-fs.ensureDirSync(CACHE_FOLDER);
-fs.emptyDirSync(OUTPUT_FOLDER);
-fs.ensureDirSync(LOGS_DIR);
+
 // global vars
 let drive: drive_v3.Drive;
 
-async function main() {
+export async function main(onlyFileName?: string) {
+  // prepare folders
+  fs.ensureDirSync(OUTPUT_FOLDER);
+  fs.ensureDirSync(CACHE_FOLDER);
+  fs.ensureDirSync(LOGS_DIR);
   console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
-    // Download plh sheets
-    console.log("downloading sheets");
     const plhExcelFolder = await getGDriveFolder(GOOGLE_DRIVE_TARGET_FOLDER);
-    const excelFiles = await listGdriveFilesRecursively(plhExcelFolder.id, plhExcelFolder.name);
-    fs.writeFileSync(`${LOGS_DIR}/excelFiles.json`, JSON.stringify(excelFiles, null, 2));
-    await downloadGdriveFiles(excelFiles);
-    // Download plh assets
-    console.log("downloading assets");
-    const assetsFolder = await getGDriveFolder(GOOGLE_DRIVE_ASSETS_FOLDER);
-    const assetFiles = await listGdriveFilesRecursively(assetsFolder.id, assetsFolder.name);
-    fs.writeFileSync(`${LOGS_DIR}/assetFiles.json`, JSON.stringify(assetFiles, null, 2));
-    await downloadGdriveFiles(assetFiles);
+    if (onlyFileName) {
+      console.log(chalk.magenta("Only downloading files matching name ", onlyFileName));
+      const excelFilesFromCache: IGDriveFileWithFolder[] = JSON.parse(
+        fs.readFileSync(`${LOGS_DIR}/excelFiles.json`).toString()
+      );
+      const matchingFilesFromCache = excelFilesFromCache.filter(
+        (file) => file.name.toLowerCase().indexOf(onlyFileName.toLowerCase()) > -1
+      );
+      console.log(
+        chalk.green("Matching files\n", matchingFilesFromCache.map((file) => file.name).join("\n"))
+      );
+      await downloadGdriveFiles(matchingFilesFromCache, true);
+    } else {
+      console.log("removing existing output folder");
+      fs.emptyDirSync(OUTPUT_FOLDER);
+      // Download plh sheets
+      console.log("downloading sheets");
+      const excelFiles = await listGdriveFilesRecursively(plhExcelFolder.id, plhExcelFolder.name);
+      fs.writeFileSync(`${LOGS_DIR}/excelFiles.json`, JSON.stringify(excelFiles, null, 2));
+      await downloadGdriveFiles(excelFiles);
+      // Download plh assets
+      console.log("downloading assets");
+      const assetsFolder = await getGDriveFolder(GOOGLE_DRIVE_ASSETS_FOLDER);
+      const assetFiles = await listGdriveFilesRecursively(assetsFolder.id, assetsFolder.name);
+      fs.writeFileSync(`${LOGS_DIR}/assetFiles.json`, JSON.stringify(assetFiles, null, 2));
+      await downloadGdriveFiles(assetFiles);
+    }
   } catch (ex) {
     console.error("GDrive download error", ex);
     process.exit(1);
   }
 }
-main().then(() => console.log(chalk.green("GDrive Data Downloaded")));
+
+if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
+  main().then(() => console.log(chalk.green("GDrive Data Downloaded")));
+}
 
 /**
  * Gets the name and id of a google drive folder
@@ -64,7 +83,7 @@ async function getGDriveFolder(folderName: string): Promise<drive_v3.Schema$File
   }
 }
 
-async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
+async function downloadGdriveFiles(files: IGDriveFileWithFolder[], ignoreCache = false) {
   // sort by path to make logging clearer
   files = files
     .sort((a, b) => (a.name > b.name ? 1 : -1))
@@ -78,7 +97,7 @@ async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
   const promises = chunks.map(async (chunk) => {
     // process in series within a chunk
     for (const file of chunk) {
-      await processGdriveFileExport(file);
+      await processGdriveFileExport(file, ignoreCache);
       i++;
     }
   });
@@ -89,7 +108,7 @@ async function downloadGdriveFiles(files: IGDriveFileWithFolder[]) {
  * Prepare for file export. Check local cache to see if file already exists, if not
  * download/export from google to cache and copy over
  */
-async function processGdriveFileExport(file: IGDriveFileWithFolder) {
+async function processGdriveFileExport(file: IGDriveFileWithFolder, ignoreCache = false) {
   // setup output folders, paths, and variables
   const { folderPath, modifiedTime } = file;
   let filepath = `${folderPath}/${file.name}`;
@@ -109,7 +128,10 @@ async function processGdriveFileExport(file: IGDriveFileWithFolder) {
   // Check if file already exists in previous cache folder and copy if unchanged
   // (md5hash/filesizes not supported for gsheets so can't use)
 
-  if (fs.existsSync(cachePath)) {
+  if (ignoreCache) {
+    console.log(chalk.cyan(`[Ignoring Cache - Downloading] ${filepath}`));
+    await exportGdriveFile(cachePath, file);
+  } else if (fs.existsSync(cachePath)) {
     const localModified = fs.statSync(cachePath).mtime.toISOString();
     if (modifiedTime === localModified) {
       // Unchanged file (skip)
