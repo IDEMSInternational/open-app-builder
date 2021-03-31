@@ -114,5 +114,9 @@ If category_list is not available we generate list of values based on min_value,
 - value - any. Default - undefined.
 - icon_src - string. Path to image. Default empty.
 - icon_position - string. Position of icon. Default - top-left.
+## SubtitleComponent - TmplSubtitleComponent
+
+- text-align - string. Default - left
+- style - string or null. Name of default css class. (white | passive) Default - passive
 
 
