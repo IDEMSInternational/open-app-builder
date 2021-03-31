@@ -65,7 +65,7 @@ If category_list is not available we generate list of values based on min_value,
 - answer_list - string or null. List of buttons with parameters. Default - undefined. (Supports only svg images).
 - radio_button_type - string or null. Type of radio buttons. Default - null
 - options_per_row - number. Count of radio button in one row. Default - 2
-- style - string. Name of class. Default 'primary'. Styles: 'primary', 'secondary'.
+- style - string. Name of class. Default 'passive'. Styles: 'active', 'passive'.
 - radio_button_type - type of radio button (btn_triangle | btn_square | btn_image)
 
 
@@ -110,5 +110,5 @@ If category_list is not available we generate list of values based on min_value,
 ## DisplayGroupComponent - TmplDisplayGroupComponent
 - offset - number. Offset to move abroad component. Default - 0.
 - style - string or null. Class name. Default - null.
-  Names of styles - 'light_orange', 'orange', 'light_blue', 'blue', 'dark_blue', 'white_box', 'active_banner', 'passive_banner'.
+  Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner'.
   
