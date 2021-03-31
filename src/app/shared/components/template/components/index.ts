@@ -18,6 +18,7 @@ import { TmplImageComponent } from "./image";
 import { TmplTextComponent } from "./text";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
+import { TmplSubtitleComponent } from "./subtitle";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
@@ -40,6 +41,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplTextComponent,
   AnimatedSectionGroupComponent,
   TmplTitleComponent,
+  TmplSubtitleComponent,
   TmplDisplayGroupComponent,
   TmplAudioComponent,
   TmplButtonComponent,
@@ -72,7 +74,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
 > = {
   text: TmplTextComponent,
   title: TmplTitleComponent,
-  subtitle: TmplTextComponent,
+  subtitle: TmplSubtitleComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
@@ -103,5 +105,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   simple_checkbox: TmplSimpleCheckboxComponent,
   css_anim: TmplAnimationComponent,
   icon_banner: TmplIconBannerComponent,
-  dashed_box: TmplDashedBoxComponent
+  dashed_box: TmplDashedBoxComponent,
 };
