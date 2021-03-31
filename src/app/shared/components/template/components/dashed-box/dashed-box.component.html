@@ -3,8 +3,8 @@
     <div class="text">
       {{ _row.value }}
     </div>
-    <div class="icon" *ngIf="icon_src">
-      <img [src]="getPathImg()" alt="" />
+    <div class="icon" [class]="icon_position" *ngIf="icon_src">
+      <img [src]="icon_result" alt="" />
     </div>
   </div>
 </div>
