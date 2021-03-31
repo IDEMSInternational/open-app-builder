@@ -9,7 +9,7 @@
             [value]="item.text"
             [checked]="el.value === value"
             [(ngModel)]="value"
-            name="triangle"
+            [name]="_row.name"
           />
           {{ item.text }}
         </label>
@@ -38,7 +38,7 @@
             [value]="item.text"
             [checked]="el.value === value"
             [(ngModel)]="value"
-            name="square"
+            [name]="_row.name"
           />
           {{ item.text }}
         </label>
@@ -65,7 +65,7 @@
             [value]="item.text"
             [checked]="el.value === value"
             [(ngModel)]="value"
-            name="image"
+            [name]="_row.name"
           />
           {{ item.text }}
         </label>
