@@ -629,7 +629,7 @@
       },
       {
         "type": "declare_global_constant",
-        "name": "w_crisis_teen_girl_2",
+        "name": "w_crisis_adult_friend",
         "value": "Bibi"
       },
       {
