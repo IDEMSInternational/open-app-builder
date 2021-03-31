@@ -330,7 +330,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
         if (field === "parameter_list" && r.parameter_list) {
           Object.keys(r.parameter_list).forEach((param) => {
-            let dynamicEvaluators = _extractDynamicEvaluators(r[field]);
+            let dynamicEvaluators = _extractDynamicEvaluators(r[field][param]);
             if (dynamicEvaluators) {
               r.parameter_list[param] = this.parseDynamicValue(dynamicEvaluators, field);
             }
