@@ -20,6 +20,7 @@ import { AppEventService } from "./shared/services/app-events/app-events.service
 })
 export class AppComponent {
   APP_VERSION = environment.version;
+  ENV_NAME = environment.envName;
   skipTutorial: boolean;
   constructor(
     private platform: Platform,
