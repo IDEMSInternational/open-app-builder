@@ -66,8 +66,7 @@ If category_list is not available we generate list of values based on min_value,
 - radio_button_type - string or null. Type of radio buttons. Default - null
 - options_per_row - number. Count of radio button in one row. Default - 2
 - style - string. Name of class. Default 'passive'. Styles: 'active', 'passive'.
-- color - string. Border color if it is checked. Default - '#0D3F60'
-- radio_button_type - type of radio button (btn_triangle | btn_square | btn_image)
+- radio_button_type - type of radio button (btn_text | btn_square | btn_icon)
 
 
 ## ComboBox - TmplComboBoxComponent
@@ -113,3 +112,6 @@ If category_list is not available we generate list of values based on min_value,
 - style - string or null. Class name. Default - null.
   Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner'.
   
+## SubtitleComponent - TmplSubtitleComponent
+- text_align - string. Default - left.
+- style - string or null. Name of default css class. (white | passive) Default - passive
