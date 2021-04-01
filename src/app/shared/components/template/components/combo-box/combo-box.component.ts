@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "../../../common/components/combo-box-modal/combo-box-modal.component";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 
@@ -26,11 +26,10 @@ export class TmplComboBoxComponent
 
   ngOnInit(): void {
     this.getParams();
-    const listAnswers = getStringParamFromTemplateRow(this._row, "list_of_answers", null);
+    const listAnswers = getParamFromTemplateRow(this._row, "answer_list", null) as string;
+    const arrValues = listAnswers.split(",").filter((item) => item !== "");
     this.customAnswerSelected =
-      listAnswers && this._row.value
-        ? !listAnswers.split(";").find((x) => x === this._row.value)
-        : false;
+      arrValues && this._row.value ? !arrValues.find((x) => x === this._row.value) : false;
     this._row.value = this._row.value || this.placeholder;
   }
 
