@@ -48,7 +48,7 @@
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\navigation\\module_pages.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/navigation/module_pages.xlsx"
   },
   {
     "flow_type": "module_page",
@@ -109,7 +109,7 @@
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\navigation\\module_pages.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/navigation/module_pages.xlsx"
   },
   {
     "flow_type": "module_page",
@@ -170,7 +170,7 @@
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\navigation\\module_pages.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/navigation/module_pages.xlsx"
   },
   {
     "flow_type": "module_page",
@@ -231,7 +231,7 @@
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\navigation\\module_pages.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/navigation/module_pages.xlsx"
   },
   {
     "flow_type": "module_page",
@@ -298,6 +298,6 @@
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\navigation\\module_pages.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/navigation/module_pages.xlsx"
   }
 ]
