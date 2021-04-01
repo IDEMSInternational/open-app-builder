@@ -3,7 +3,7 @@
     <div class="btn_triangle dse" *ngSwitchCase="'btn_text'">
       <div
         class="btn_triangle_container center"
-        [style.flex]="getFlexWidth"
+        [style.flex]="flexWidth"
         [class]="style"
         *ngFor="let item of arrayOfBtn"
       >
@@ -25,7 +25,7 @@
         class="btn_square_container center"
         [class]="style"
         *ngFor="let item of arrayOfBtn"
-        [style.flex]="getFlexWidth"
+        [style.flex]="flexWidth"
       >
         <label class="center standard-label" [class.checked]="el.checked">
           <svg-icon
@@ -50,7 +50,7 @@
         class="btn_image_container center"
         [class]="style"
         *ngFor="let item of arrayOfBtn"
-        [style.flex]="getFlexWidth"
+        [style.flex]="flexWidth"
       >
         <label class="center standard-label" [class.smile-checked]="el.checked">
           <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
