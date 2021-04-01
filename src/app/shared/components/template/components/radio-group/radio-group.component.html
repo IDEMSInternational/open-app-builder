@@ -1,7 +1,12 @@
 <div class="wrapper-radio-group">
   <div class="container" [ngSwitch]="radioButtonType">
-    <div class="btn_triangle dse" *ngSwitchCase="'btn_triangle'">
-      <div class="btn_triangle_container center" [class]="style" *ngFor="let item of arrayOfBtn">
+    <div class="btn_triangle dse" *ngSwitchCase="'btn_text'">
+      <div
+        class="btn_triangle_container center"
+        [style.flex]="getFlexWidth"
+        [class]="style"
+        *ngFor="let item of arrayOfBtn"
+      >
         <label class="center standard-label" [class.checked]="el.checked">
           <input
             #el
@@ -40,7 +45,7 @@
         </label>
       </div>
     </div>
-    <div class="btn_image dse" *ngSwitchCase="'btn_image'">
+    <div class="btn_image dse" *ngSwitchCase="'btn_icon'">
       <div
         class="btn_image_container center"
         [class]="style"
