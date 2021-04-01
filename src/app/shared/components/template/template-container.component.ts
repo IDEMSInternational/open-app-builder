@@ -31,6 +31,9 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
   "nav_section",
 ];
 
+/** Specific fields that will be evaluated as javascript */
+const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["hidden"];
+
 @Component({
   selector: "plh-template-container",
   templateUrl: "./template-container.component.html",
@@ -58,20 +61,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public router: Router,
     public route: ActivatedRoute,
     private templateNavService: TemplateNavService
-  ) {
-    this.route.queryParams // subscribe to query params to indicate if debugMode is enabled
-      .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe(async (params: IQueryParams) => {
-        this.debugMode = params.debugMode ? true : false;
-        // allow templateNavService to process actions based on query param change
-        if (!this.parent) {
-          await this.templateNavService.handleActionsFromParent(params, this);
-        }
-      });
-  }
+  ) {}
 
   async ngOnInit() {
     this.initialiseTemplate();
+    this.subscribeToQueryParamChanges();
     // const { name, templatename, parent, row, templateBreadcrumbs } = this;
     // console.log("template initialised", { name, templatename, parent, row, templateBreadcrumbs });
   }
@@ -148,29 +142,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         console.log("Setting global variable", key, value);
         return this.templateService.setGlobal(key, value);
       case "go_to":
-        return this.templateNavService.handleGoToAction(action, this);
+        return this.templateNavService.handleNavAction(action, this);
       case "pop_up":
-        /*** WiP */
-        console.warn("No handler for action", { action_id, args });
-        break;
-      // const childContainerProps: ITemplateContainerProps = {
-      //   name: `${this.name}_${templatename}`,
-      //   templatename,
-      //   parent: this,
-      //   row: {
-      //     action_list: [
-      //       { trigger: "completed", action_id: "emit", args: ["dismiss:completed"] },
-      //       { trigger: "uncompleted", action_id: "emit", args: ["dismiss:uncompleted"] },
-      //     ],
-      //   } as any,
-      // };
-      // const childTemplateModal = await this.modalCtrl.create({
-      //   component: TemplateContainerComponent,
-      //   componentProps: childContainerProps,
-      // });
-      // await childTemplateModal.present();
-      // const dismissed = await childTemplateModal.onDidDismiss();
-      // console.log("dismissed", dismissed);
+        return this.templateNavService.handlePopupAction(action, this);
       case "set_field":
         return this.templateService.setField(key, value);
       case "emit":
@@ -330,9 +304,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
         if (field === "parameter_list" && r.parameter_list) {
           Object.keys(r.parameter_list).forEach((param) => {
-            let dynamicEvaluators = _extractDynamicEvaluators(r[field]);
+            let dynamicEvaluators = _extractDynamicEvaluators(r[field][param]);
             if (dynamicEvaluators) {
-              r.parameter_list[param] = this.parseDynamicValue(dynamicEvaluators, field);
+              r.parameter_list[param] = this.parseDynamicValue(dynamicEvaluators, variables);
             }
           });
         }
@@ -344,7 +318,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             let oldList = r[field];
             r[field] = dynamicEvaluatorsPerItem.map((evaluator, idx) => {
               if (evaluator) {
-                return this.parseDynamicValue(evaluator, field);
+                let evaluated = this.parseDynamicValue(evaluator, variables);
+                if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
+                  evaluated = this.evaluateJSExpression(evaluated);
+                }
+                return evaluated;
               } else {
                 return oldList[idx];
               }
@@ -356,7 +334,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             r._dynamicFields = r._dynamicFields || {};
             // evaluate dynamic field, keeping reference for future
             r._dynamicFields[field] = dynamicEvaluators as any;
-            r[field] = this.parseDynamicValue(r._dynamicFields[field], field);
+            r[field] = this.parseDynamicValue(r._dynamicFields[field], variables);
+            if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
+              r[field] = this.evaluateJSExpression(r[field]);
+            }
           }
         }
 
@@ -387,7 +368,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return rowsWithReplacedValues;
   }
 
-  private parseDynamicValue(evaluators: FlowTypes.TemplateRowDynamicEvaluator[], field: string) {
+  private parseDynamicValue(
+    evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
+    localVariables: ILocalVariables
+  ) {
+    let parseSuccess = true;
     let parsedExpression = evaluators[0].fullExpression;
     // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
     for (let evaluator of evaluators) {
@@ -396,6 +381,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       switch (type) {
         case "local":
           parsedValue = this.localVariables[fieldName]?.value || "";
+          parsedValue = localVariables[fieldName]?.value;
+          if (!parsedValue) {
+            console.error("could not parse local variable", { evaluator, localVariables });
+            parsedValue = `{{local.${fieldName}}}`;
+          }
           break;
         case "field":
         case "fields":
@@ -405,26 +395,38 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           parsedValue = this.templateService.getGlobal(fieldName);
           break;
         default:
+          parseSuccess = false;
           console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
           parsedValue = evaluator.matchedExpression;
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
-
-    // Support Javascript evaluation for hidden field only
-    if (field === "hidden" && parsedExpression !== "true" && parsedExpression !== "false") {
-      const funcString = `"use strict"; return (${parsedExpression});`;
-      try {
-        const func = new Function(funcString);
-        return func.apply(this);
-      } catch (ex) {
-        console.warn("Hidden evaulation exception ", ex);
-        console.warn(funcString);
-        return false;
-      }
+    // handle case where parsed expression contains reference to another dynamic expression
+    const recursiveDynamicExpression = _extractDynamicEvaluators(parsedExpression);
+    if (recursiveDynamicExpression && parseSuccess) {
+      return this.parseDynamicValue(recursiveDynamicExpression, localVariables);
     }
-
     return parsedExpression;
+  }
+
+  /**
+   * Evaluate a javascript expression in a safe context
+   * @param expression string expression, e.g. "!true", "5 - 4"
+   * @returns string interpretation of evaluation, e.g. "true", "1"
+   * */
+  private evaluateJSExpression(expression: string): string {
+    // Support Javascript evaluation for hidden field only
+    let evaluated = expression;
+    const funcString = `"use strict"; return (${expression});`;
+    try {
+      const func = new Function(funcString);
+      evaluated = func.apply(this);
+    } catch (error) {
+      console.warn("expression evaluation exception ", { expression, error });
+      console.warn(funcString);
+    }
+    // Return as a string to maintain compatibility with other types
+    return `${evaluated}`;
   }
 
   private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}) {
@@ -460,6 +462,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   /** When using ngFor loop track by  */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
     return row.name || row.value || index;
+  }
+
+  /** Query params are used to track state across navigation events */
+  private subscribeToQueryParamChanges() {
+    this.route.queryParams
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe(async (params: IQueryParams) => {
+        this.debugMode = params.debugMode ? true : false;
+        // allow templateNavService to process actions based on query param change
+        await this.templateNavService.handleQueryParamChange(params, this);
+      });
   }
 }
 

@@ -18,31 +18,31 @@
     flex-direction: inherit;
   }
 }
-.light_orange {
+.tool_1 {
   padding: 0 15px;
   flex-direction: column;
   background: #f89b2d;
   border-radius: 20px;
 }
-.orange {
+.tool_2 {
   padding: 0 15px;
   flex-direction: column;
   background: #ff7a00;
   border-radius: 20px;
 }
-.light_blue {
+.tool_3 {
   padding: 0 15px;
   flex-direction: column;
   background: #0f8ab2;
   border-radius: 20px;
 }
-.blue {
+.tool_4 {
   padding: 0 15px;
   flex-direction: column;
   background: #096b8b;
   border-radius: 20px;
 }
-.dark_blue {
+.tool_5 {
   padding: 0 15px;
   flex-direction: column;
   background: #0d3f60;
@@ -54,6 +54,11 @@
   background: #fff;
   border: 2px solid #0d3f60;
   border-radius: 20px;
+}
+
+.navigation {
+  position: fixed;
+  bottom: 0;
 }
 
 .plh-tmpl-comp {
@@ -147,6 +152,21 @@ p {
   }
 }
 
+.subtitle-wrapper {
+  display: flex;
+  align-items: center;
+  h2 {
+    font-size: 20px;
+    line-height: 22px;
+  }
+  .passive {
+    color: #0d4060;
+  }
+  .white {
+    color: white;
+  }
+}
+
 .banner_active {
   background: linear-gradient(179.77deg, #ffe16a 34.6%, #ffb833 105.68%);
   border-radius: 20px;
@@ -165,8 +185,11 @@ p {
   justify-content: start;
 }
 .right {
-  justify-content: end;
+  justify-content: flex-end;
 }
 .center {
   justify-content: center;
+}
+.rounded_corners {
+  border-radius: 15px;
 }

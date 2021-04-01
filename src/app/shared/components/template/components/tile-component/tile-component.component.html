@@ -1,11 +1,11 @@
-<div [class]="style" class="tile-wrapper" (click)="triggerActions('click')">
+<div [class]="style" class="tile-wrapper default_style" (click)="triggerActions('click')">
   <div class="text">
     <div class="first" *ngIf="first_line_text">{{ first_line_text }}</div>
     <div class="second" *ngIf="second_line_text">{{ second_line_text }}</div>
   </div>
-  <div class="button-wrapper">
+  <div class="button-wrapper" *ngIf="icon_src">
     <ion-button class="btn-tile">
-      <img [src]="icon_src" alt="" />
+      <img [src]="icon_result" alt="" />
     </ion-button>
   </div>
 </div>

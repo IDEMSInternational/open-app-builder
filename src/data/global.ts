@@ -12,7 +12,7 @@
         "value": "Value of the first debug variable"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\debug_templates\\debug_small_issues.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_small_issues.xlsx"
   },
   {
     "flow_type": "global",
@@ -59,7 +59,7 @@
         "value": 5
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\quality_assurance\\example_templates\\example_global_field.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_global_field.xlsx"
   },
   {
     "flow_type": "global",
@@ -89,10 +89,10 @@
       {
         "type": "declare_global_constant",
         "name": "parent_centre",
-        "value": "Parent Centre"
+        "value": "Parent Library"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\navigation_templates\\global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
   },
   {
     "flow_type": "global",
@@ -188,7 +188,7 @@
         "comments": "placeholder"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\navigation_templates\\global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
   },
   {
     "flow_type": "global",
@@ -286,7 +286,7 @@
         "value": "plh_images/habits/habit_safe_image.svg"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\parent_point_templates\\global_parent_points.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/global_parent_points.xlsx"
   },
   {
     "flow_type": "global",
@@ -432,7 +432,7 @@
         "comments": "celebrate"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -450,7 +450,7 @@
         "value": "Home Practice"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -658,7 +658,7 @@
         "value": "Grandpa"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -671,7 +671,7 @@
         "value": "TikTok"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -699,7 +699,7 @@
         "value": "Find out more"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -762,7 +762,7 @@
         "value": 0
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   },
   {
     "flow_type": "global",
@@ -773,6 +773,16 @@
         "type": "declare_field_default",
         "name": "do_workshops_together",
         "value": true
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "together",
+        "value": "Together with others"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "individual",
+        "value": "On my own"
       },
       {
         "type": "declare_field_default",
@@ -790,6 +800,6 @@
         "value": "Lucie"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\plh_templating\\top_templates\\workshop_templates\\global_variables_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
   }
 ]

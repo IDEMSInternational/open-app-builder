@@ -1,42 +1,50 @@
 $primary-radio-bg: linear-gradient(var(--bg-gradient));
-$primary-radio-border: 2px solid  var(--border-color);
+$primary-radio-border: 2px solid;
 $primary-radio-border-rd: calc(15px * var(--scale-factor));
 $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-.wrapper-radio-group{
+.wrapper-radio-group {
   width: 100%;
   height: 100%;
   margin-top: 7%;
-  .container{
+
+  .container {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 10px;
-    .btn_triangle{
-      &_container{
-        width: calc(150px * var(--scale-factor));;
+
+    .btn_triangle {
+      &_container {
+        width: calc(150px * var(--scale-factor));
         height: calc(44px * var(--scale-factor));
         margin: calc(5px * var(--scale-factor));
-        label{
+
+        label {
           height: calc(44px * var(--scale-factor));
+          background-color: #fff;
         }
       }
     }
-    .dse{
+
+    .dse {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       width: 100%;
       height: 100%;
     }
-    .btn_square{
-      &_container{
+
+    .btn_square {
+      &_container {
         margin: calc(5px * var(--scale-factor));
-        label{
+
+        label {
           width: calc(115px * var(--scale-factor));
           height: calc(115px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
-          svg-icon{
+
+          svg-icon {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -45,7 +53,8 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             width: calc(100% * var(--scale-factor));
             height: calc(100% * var(--scale-factor));
             margin-bottom: calc(3px * var(--scale-factor));
-            svg{
+
+            svg {
               max-width: 95%;
               max-height: 95%;
               width: 95%;
@@ -55,67 +64,108 @@ $primary-radio-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
       }
     }
-    .btn_image{
-      &_container{
-        margin: calc(5px * var(--scale-factor));;
+
+    .btn_image {
+      &_container {
+        margin: calc(5px * var(--scale-factor));
         padding: calc(5px * var(--scale-factor));
-        label{
-          background: transparent!important;
-          border:2px solid transparent;
+
+        label {
+          background: transparent !important;
+          border: 2px solid transparent;
           box-shadow: none;
           max-width: calc(120px * var(--scale-factor));
           max-height: calc(120px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
-          svg-icon{
-            svg{
+
+          svg-icon {
+            svg {
               max-width: 95%;
               max-height: 95%;
               width: 95%;
               height: 95%;
             }
           }
-        }
-        .smile-checked{
-          color: var(--border-color);
-          border: $primary-radio-border!important;
+
+          span {
+            margin-top: -10px;
+          }
         }
       }
     }
   }
 }
 
-.standard-label{
+.standard-label {
   border-radius: $primary-radio-border-rd;
-  transition: .3s linear;
+  transition: 0.3s linear;
   width: 100%;
   box-shadow: $primary-radio-shadow;
-  border: 2px solid var(--border-color);
-  background: #fff;
-  color: var(--border-color);
 }
 
-.center{
+.passive {
+  .standard-label {
+    border: 2px solid #0d4060;
+    color: #0d4060;
+    background: #fff;
+  }
+
+  .checked {
+    background: linear-gradient(168.87deg, #0f8ab2 28.12%, #0d4060 100%);
+    color: #fff;
+    transition: 0.3s linear;
+  }
+
+  .smile-checked {
+    color: #0d4060;
+    border: $primary-radio-border !important;
+    border-color: #0d4060;
+  }
+}
+
+.active {
+  .standard-label {
+    border: 2px solid #f89b2d;
+    background: #fff;
+    color: #f89b2d;
+  }
+
+  .checked {
+    background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
+    color: #fff;
+    transition: 0.3s linear;
+  }
+
+  .smile-checked {
+    color: #f89b2d;
+    border: $primary-radio-border !important;
+    border-color: #f89b2d;
+  }
+}
+
+.center {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-input{
+
+input {
   width: 100%;
   height: 100%;
   display: none;
 }
-.checked{
-  background: $primary-radio-bg!important;
-  border: $primary-radio-border!important;
-  color: #fff!important;
-  transition: .3s linear;
-}
-label{
+
+//.checked{
+//  background: $primary-radio-bg!important;
+//  border: $primary-radio-border!important;
+//  color: #fff!important;
+//  transition: .3s linear;
+//}
+label {
   font-size: calc(16px * var(--scale-factor));
   height: 100%;
   font-weight: 700;
   text-align: center;
-  transition: .3s linear;
+  transition: 0.3s linear;
 }
-

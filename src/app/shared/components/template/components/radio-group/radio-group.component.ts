@@ -41,10 +41,9 @@ export class TmplRadioGroupComponent
   baseSrcAssets = "/assets/plh_assets/";
   windowWidth: number;
   scaleFactor: number = 1;
-  selectedBackgroundColor: string = "#0D3F60";
-  backgroundGradient: string = "168.87deg, #0F8AB2 28.12%, #0D4060 100%";
   value: any;
   style: string;
+  imageCheckedColor = "#0D3F60";
 
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
@@ -53,14 +52,6 @@ export class TmplRadioGroupComponent
 
   @HostBinding("style.--scale-factor") get scale() {
     return this.scaleFactor;
-  }
-
-  @HostBinding("style.--border-color") get borderColor() {
-    return this.selectedBackgroundColor;
-  }
-
-  @HostBinding("style.--bg-gradient") get bgGradientStart() {
-    return this.backgroundGradient;
   }
 
   constructor() {
@@ -81,19 +72,14 @@ export class TmplRadioGroupComponent
   }
 
   getParams() {
-    this.radioBtnList = getParamFromTemplateRow(this._row, "answers_list", null);
+    this.radioBtnList = getParamFromTemplateRow(this._row, "answer_list", null);
     this.radioButtonType = getStringParamFromTemplateRow(this._row, "radio_button_type", null);
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
-    this.selectedBackgroundColor = getStringParamFromTemplateRow(this._row, "color", "#0D3F60");
-    this.backgroundGradient = getStringParamFromTemplateRow(
-      this._row,
-      "background_gradient",
-      "168.87deg, #0F8AB2 28.12%, #0D4060 100%"
-    );
-    this.value = this._row.value;
+    this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
+    this.imageCheckedColor = this.style == "active" ? "#f89b2d" : "#0D3F60";
     this.windowWidth = window.innerWidth;
     if (this.radioBtnList) {
-      this.valuesFromBtnList = this.radioBtnList.split(";").filter((item) => item !== "");
+      this.valuesFromBtnList = this.radioBtnList.split(",").filter((item) => item !== "");
       this.createArrayBtnElement();
     }
   }
@@ -109,9 +95,12 @@ export class TmplRadioGroupComponent
       item.split("|").map((values) => {
         obj[values.split(":")[0].trim()] = values.split(":")[1].trim();
       });
+      obj.image = obj.image ? this.getPathImg(obj.image) : obj.image;
+      obj.image_checked = obj.image_checked
+        ? this.getPathImg(obj.image_checked)
+        : obj.image_checked;
       return obj;
     });
-    console.log(this.arrayOfBtn);
   }
 
   getPathImg(path): string {
