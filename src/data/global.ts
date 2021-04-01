@@ -89,7 +89,7 @@
       {
         "type": "declare_global_constant",
         "name": "parent_centre",
-        "value": "Parent Centre"
+        "value": "Parent Library"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
