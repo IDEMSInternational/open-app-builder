@@ -1,3 +1,4 @@
+/* test merge */
 /* eslint-disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
   export const template: FlowTypes.Template[] = [
