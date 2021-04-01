@@ -3,6 +3,7 @@ import { FlowTypes } from "../../../../model";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
+  getParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
@@ -37,14 +38,15 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   getParams() {
-    this.listAnswers = getStringParamFromTemplateRow(this.row, "list_of_answers", null);
+    this.listAnswers = getParamFromTemplateRow(this.row, "answer_list", null) as string;
+    this.valuesFromListAnswers = this.listAnswers.split(",").filter((item) => item !== "");
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
+
     this.inputPosition =
       getStringParamFromTemplateRow(this.row, "input_position", "bottom") == "top";
-    this.maxLength = getNumberParamFromTemplateRow(this.row, "max-length", 30);
+    this.maxLength = getNumberParamFromTemplateRow(this.row, "max_length", 30);
     this.placeholder = getStringParamFromTemplateRow(this.row, "answer_placeholder", "");
-    this.valuesFromListAnswers = this.listAnswers ? this.listAnswers.split(";") : null;
     if (this.formData) {
       this.form = this.formData;
     } else {

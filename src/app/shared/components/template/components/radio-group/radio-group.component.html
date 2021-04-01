@@ -1,14 +1,14 @@
 <div class="wrapper-radio-group">
   <div class="container" [ngSwitch]="radioButtonType">
     <div class="btn_triangle dse" *ngSwitchCase="'btn_triangle'">
-      <div class="btn_triangle_container center" *ngFor="let item of arrayOfBtn">
+      <div class="btn_triangle_container center" [class]="style" *ngFor="let item of arrayOfBtn">
         <label class="center standard-label" [class.checked]="el.checked">
           <input
             #el
             type="radio"
             [value]="item.text"
             [checked]="el.value === value"
-            [(ngModel)]="value"
+            [(ngModel)]="_row.value"
             [name]="_row.name"
           />
           {{ item.text }}
@@ -24,12 +24,8 @@
       >
         <label class="center standard-label" [class.checked]="el.checked">
           <svg-icon
-            [src]="
-              el.checked && item.image_checked
-                ? getPathImg(item.image_checked)
-                : getPathImg(item.image)
-            "
-            [svgStyle]="{ fill: el.checked && !item.image_checked ? '#fff' : '#0D3F60' }"
+            [src]="el.checked && item.image_checked ? item.image_checked : item.image"
+            [svgStyle]="{ fill: el.checked && !item.image_checked ? '#fff' : imageCheckedColor }"
           >
           </svg-icon>
           <input
@@ -37,7 +33,7 @@
             type="radio"
             [value]="item.text"
             [checked]="el.value === value"
-            [(ngModel)]="value"
+            [(ngModel)]="_row.value"
             [name]="_row.name"
           />
           {{ item.text }}
@@ -47,27 +43,22 @@
     <div class="btn_image dse" *ngSwitchCase="'btn_image'">
       <div
         class="btn_image_container center"
+        [class]="style"
         *ngFor="let item of arrayOfBtn"
         [style.flex]="getFlexWidth"
       >
         <label class="center standard-label" [class.smile-checked]="el.checked">
-          <svg-icon
-            [src]="
-              el.checked && item.image_checked
-                ? getPathImg(item.image_checked)
-                : getPathImg(item.image)
-            "
-          >
+          <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
           </svg-icon>
           <input
             #el
             type="radio"
             [value]="item.text"
             [checked]="el.value === value"
-            [(ngModel)]="value"
+            [(ngModel)]="_row.value"
             [name]="_row.name"
           />
-          {{ item.text }}
+          <span> {{ item.text }} </span>
         </label>
       </div>
     </div>
