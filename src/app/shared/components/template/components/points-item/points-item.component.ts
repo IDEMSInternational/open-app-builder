@@ -17,6 +17,7 @@ export class TmplPointBoxComponent
   icon_src: string | null;
   text: string | null;
   assetsPrefix = "/assets/plh_assets/";
+  icon_result: string;
   constructor() {
     super();
   }
@@ -28,6 +29,7 @@ export class TmplPointBoxComponent
   getParams() {
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
+    this.icon_result = this.getPathImg();
   }
 
   getPathImg(): string {
