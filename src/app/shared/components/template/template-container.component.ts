@@ -421,8 +421,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     try {
       const func = new Function(funcString);
       evaluated = func.apply(this);
-    } catch (ex) {
-      console.warn("Hidden evaulation exception ", ex);
+    } catch (error) {
+      console.warn("expression evaluation exception ", { expression, error });
       console.warn(funcString);
     }
     // Return as a string to maintain compatibility with other types
