@@ -7589,6 +7589,7 @@
                     "rows": [
                       {
                         "name": "image_src",
+                        "value": "plh_images/workshops/celebrate/read/slide_1.svg",
                         "type": "set_variable"
                       },
                       {
@@ -7616,6 +7617,7 @@
                         "rows": [
                           {
                             "name": "image_src",
+                            "value": "plh_images/workshops/celebrate/read/slide_2.svg",
                             "type": "set_variable"
                           },
                           {
@@ -7638,6 +7640,7 @@
                         "rows": [
                           {
                             "name": "image_src",
+                            "value": "plh_images/workshops/celebrate/read/slide_3.svg",
                             "type": "set_variable"
                           },
                           {
