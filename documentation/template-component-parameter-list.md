@@ -1,25 +1,24 @@
 # Template Components
 
 ## Audio - TmplAudioComponent
-
+- type - audio.
 - value - link to file
-- src - audio file source link if value is null try to find link in src parameter. 
-- title - title. Default: "Title"
-- help - help tooltip text.
-- range_bar_disabled - disable select audio seconds on range bar. Default: false
-- time_to_rewind - time to rewind in seconds. Default: 15 seconds
+- src - string or null. Audio file source link if value is null try to find link in src parameter. 
+- title - string or null. Title. Default: "Title"
+- help - string or null. Help tooltip text.
+- range_bar_disabled - boolean. Disable select audio seconds on range bar. Default: false
+- time_to_rewind - number. Time to rewind in seconds. Default: 15 seconds
 
 ## Button - TmplButtonComponent
-
+- type - button.
 - value - text - button text
 - disabled - boolean. Default: false.
 - style - string. Class name for button. Default: "primary". Styles: orange, light_orange, light_blue, dark_blue, active, passive, make-me-smile, get-me-going.
 - text_align - string. Text align. Default 'center'.
 
 ## Number Selector - TmplNumberComponent
-
+- type - number_selector.
 - value - number or null. If null - don't display slider picker circle.
-
 - help - text or null. If null - don't display help icon.
 - min_value - number - minimum value of selector. Default - 0
 - max_value - number - maximum value of selector. Default - 6
@@ -33,13 +32,13 @@ If category_list available we take list of values from it.
 If category_list is not available we generate list of values based on min_value, max_value, category_size
 
 ## Checkbox - TmplSimpleCheckboxComponent
-
+- type - simple_checkbox.
 - value - boolean value of checkbox. If true - checked
 - position - checkbox position relative to label_text - left | right. Default - left
 - label_text - text label for checkbox.
 
 ## Slider - TmplSliderComponent
-
+- type - slider.
 - value - select value on slider. Default - 0 
 - help - text or null. If null - don't display help icon.
 - min - minimum value on slider. Default - 0
@@ -52,7 +51,7 @@ If category_list is not available we generate list of values based on min_value,
 - no_value - boolean. Default - false. Control is no_value selected
 
 ## Timer - TmplTimerComponent
-
+- type - timer.
 - value - timer duration in minutes. Default - 10 minutes
 - title - text or null - Timer title text.
 - help - text or null. If null - don't display help icon.
@@ -60,7 +59,7 @@ If category_list is not available we generate list of values based on min_value,
 - duration_extension - number. Value for increase the time on the timer. Default - 1 minute.
 
 ## Radio Buttons - TmplRadioGroupComponent
-
+- type - radio_group.
 - value - string or null. Result or selected by default.
 - answer_list - string or null. List of buttons with parameters. Default - undefined. (Supports only svg images).
 - radio_button_type - string or null. Type of radio buttons. Default - null
@@ -70,7 +69,7 @@ If category_list is not available we generate list of values based on min_value,
 
 
 ## ComboBox - TmplComboBoxComponent
-
+- type - combo_box.
 - value - string or null. Result or selected by default.
 - answer_list - string or null. List of the answers to be displayed. Default - null
 - text - string or null. Text of question. Default - null
@@ -80,14 +79,14 @@ If category_list is not available we generate list of values based on min_value,
 - placeholder - string. Placeholder for button open pop_up window. Default - null.
 
 ## TextBox - TmplTextBoxComponent
-
+- type - text.
 - value - string or null. Input value. Default - undefined
 - max_length - number. Max length input value. Default - 30
 - placeholder - string or null. Input placeholder. Default - empty string
 - text_align - string. Default - center
 
 ## TileComponent - TmplTileComponent
-
+- type - tile_component.
 - value - any. Default - undefined
 - first_line_text - string or null. Text. Default - null
 - second_line_text string or null. Text. Default - null
@@ -95,12 +94,14 @@ If category_list is not available we generate list of values based on min_value,
 - style - string. Name of default css class. Default 'quick_start'. Styles: 'quick_start', 'quick_start_passive', 'quick_start_blue', 'quick_start_red'.
 
 ## DashedBox - TmplDashedBoxComponent
+- type - dashed_box.
 - value - any. Default - undefined.
 - icon_src - string. Path to image. Default empty.
 - icon_position - string. Position of icon. Default - top-left. Positions list: 'top-left', 'top-right', 'bottom-left', 'bottom-right'.
 - style - string. Name of class. Default - default. Styles: 'default', 'alert'.
 
 ## Title - TmplTitleComponent
+- type - title.
 - value - any. Text of title. Default undefined.
 - help - string or null.
 - tooltip_position - string. Default - 'right' 
@@ -108,10 +109,12 @@ If category_list is not available we generate list of values based on min_value,
 - style - string. Setting style of the text. Default - 'primary'. Styles: 'primary', 'white'.
 
 ## DisplayGroupComponent - TmplDisplayGroupComponent
+- type - display_group.
 - offset - number. Offset to move abroad component. Default - 0.
 - style - string or null. Class name. Default - null.
   Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner'.
   
 ## SubtitleComponent - TmplSubtitleComponent
+- type - subtitle.
 - text_align - string. Default - left.
 - style - string or null. Name of default css class. (white | passive) Default - passive
