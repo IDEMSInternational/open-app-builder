@@ -8,7 +8,7 @@ import { getStringParamFromTemplateRow } from "../../../../utils";
   templateUrl: "./points-item.component.html",
   styleUrls: ["./points-item.component.scss"],
 })
-export class TmplPointBoxComponent
+export class TmplParentPointBoxComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit {
   @Input() template: FlowTypes.Template;

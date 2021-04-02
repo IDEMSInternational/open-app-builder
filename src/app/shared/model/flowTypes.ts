@@ -359,7 +359,7 @@ export namespace FlowTypes {
     | "tile_component"
     | "css_anim"
     | "combo_box"
-    | "tmpl_points"
+    | "parent_point_box"
     | "icon_banner"
     | "dashed_box";
 
