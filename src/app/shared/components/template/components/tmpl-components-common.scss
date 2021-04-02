@@ -57,10 +57,11 @@
 }
 
 .plh-tmpl-comp {
-  display: flex;
-  flex-direction: column;
+  display: inherit;
+  flex-direction: inherit;
   width: 100%;
-  justify-content: center;
+  justify-content: inherit;
+  align-items: inherit;
   .animated_section {
     display: flex;
   }
