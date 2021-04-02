@@ -1,6 +1,6 @@
 <div class="wrapper-point">
-  <div class="item">
-    <div class="star" *ngIf="_row.value">
+  <div class="item" #item (click)="clickPointItem()">
+    <div class="star" #star>
       <img src="/assets/plh_assets/plh_images/habits/star.png" alt="" />
       <div class="star-value">
         {{ _row.value }}
