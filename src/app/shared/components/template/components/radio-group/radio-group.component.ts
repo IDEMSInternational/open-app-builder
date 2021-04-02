@@ -44,7 +44,7 @@ export class TmplRadioGroupComponent
   value: any;
   style: string;
   imageCheckedColor = "#0D3F60";
-
+  flexWidth: string;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
     this.getScaleFactor();
@@ -73,7 +73,11 @@ export class TmplRadioGroupComponent
 
   getParams() {
     this.radioBtnList = getParamFromTemplateRow(this._row, "answer_list", null);
-    this.radioButtonType = getStringParamFromTemplateRow(this._row, "radio_button_type", null);
+    this.radioButtonType = getStringParamFromTemplateRow(
+      this._row,
+      "radio_button_type",
+      "btn_text"
+    );
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
     this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
     this.imageCheckedColor = this.style == "active" ? "#f89b2d" : "#0D3F60";
@@ -82,6 +86,7 @@ export class TmplRadioGroupComponent
       this.valuesFromBtnList = this.radioBtnList.split(",").filter((item) => item !== "");
       this.createArrayBtnElement();
     }
+    this.getFlexWidth();
   }
 
   createArrayBtnElement() {
@@ -108,7 +113,7 @@ export class TmplRadioGroupComponent
     return src.replace("//", "/");
   }
 
-  get getFlexWidth(): string {
-    return `0 1 ${100 / this.options_per_row - 3}%`;
+  getFlexWidth() {
+    this.flexWidth = `0 1 ${100 / this.options_per_row - 3}%`;
   }
 }
