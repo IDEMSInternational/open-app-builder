@@ -28,8 +28,8 @@ export class TmplTextBoxComponent
 
   getParams() {
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
-    this.maxLength = getNumberParamFromTemplateRow(this._row, "max-length", 30);
-    this.textAlign = getStringParamFromTemplateRow(this._row, "text-align", "center");
+    this.maxLength = getNumberParamFromTemplateRow(this._row, "max_length", 30);
+    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "center");
     this.value = this._row.value;
   }
 }
