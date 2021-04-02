@@ -112,8 +112,8 @@ If category_list is not available we generate list of values based on min_value,
 - type - display_group.
 - offset - number. Offset to move abroad component. Default - 0.
 - style - string or null. Class name. Default - null.
-  Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner'.
-  
+  Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner', 'navigation'. 
+  ####To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
 ## SubtitleComponent - TmplSubtitleComponent
 - type - subtitle.
 - text_align - string. Default - left.
