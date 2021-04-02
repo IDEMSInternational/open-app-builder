@@ -118,3 +118,9 @@ If category_list is not available we generate list of values based on min_value,
 - type - subtitle.
 - text_align - string. Default - left.
 - style - string or null. Name of default css class. (white | passive) Default - passive
+
+## PointBoxComponent - TmplPointBoxComponent
+- type - tmpl_points.
+- value - number. Default 0.
+- icon_src - string or null. Path to image. Default null.
+- text - string or null. Text component. Default null.
