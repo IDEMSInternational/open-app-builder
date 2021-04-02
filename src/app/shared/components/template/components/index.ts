@@ -7,7 +7,9 @@ import { Type } from "@angular/core";
  **************************************************************************************/
 
 import { AnimatedSectionComponent } from "./layout/animated_section";
+import { AccordionSectionComponent } from "./layout/accordion_section";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
+import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TemplateBaseComponent } from "./base";
@@ -40,6 +42,7 @@ export const TEMPLATE_COMPONENTS = [
   TemplatePopupComponent,
   TmplTextComponent,
   AnimatedSectionGroupComponent,
+  WorkshopsComponent,
   TmplTitleComponent,
   TmplSubtitleComponent,
   TmplDisplayGroupComponent,
@@ -48,6 +51,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplImageComponent,
   TmplVideoComponent,
   AnimatedSectionComponent,
+  AccordionSectionComponent,
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
@@ -76,6 +80,8 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   title: TmplTitleComponent,
   subtitle: TmplSubtitleComponent,
   animated_section_group: AnimatedSectionGroupComponent,
+  workshops_accordion: WorkshopsComponent,
+  accordion_section: AccordionSectionComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
