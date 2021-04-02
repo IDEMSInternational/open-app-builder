@@ -1,0 +1,59 @@
+@import "../../../../../../theme/typography";
+.workshops-accordion {
+  position: relative;
+  &::after {
+    content: "";
+    width: 1px;
+    height: 100%;
+    background: var(--ion-color-tertiary);
+    position: absolute;
+    left: 10%;
+    top: 0;
+    margin-top: 15px;
+  }
+}
+.accordion-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+  .accordion-status {
+    width: 32px;
+    height: 32px;
+    margin-top: 10px;
+    border-radius: 50%;
+    padding: 5px;
+    z-index: 2;
+  }
+  .accordion-section {
+    position: relative;
+    width: 75%;
+    border-radius: 10px;
+    background: var(--ion-color-tertiary-contrast);
+    overflow: hidden;
+    height: 50px;
+    color: $color_passive;
+    border: 1px solid var(--ion-color-tertiary);
+    .progress {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.opened {
+  height: 300px;
+  .accordion-section {
+    height: fit-content;
+  }
+}
+
+.completed {
+  background: var(--ion-color-tertiary);
+}
+.uncopleted {
+  background: var(--ion-color-tertiary-contrast);
+}
+.disabled {
+  background: var(--ion-color-tertiary-contrast);
+}
