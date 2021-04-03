@@ -51,8 +51,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   localVariables: ILocalVariables = {};
   componentDestroyed$ = new Subject();
   debugMode: boolean;
-  // TODO - link debug toggle to build environment or advanced setting (hide for general users)
-  showDebugToggle = true;
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
@@ -99,10 +97,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return actions;
   }
 
-  public setDebugMode(debugMode: boolean) {
-    const queryParams: IQueryParams = { debugMode: debugMode || null };
-    this.router.navigate([], { relativeTo: this.route, queryParams, queryParamsHandling: "merge" });
-  }
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -468,7 +462,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private subscribeToQueryParamChanges() {
     this.route.queryParams
       .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe(async (params: IQueryParams) => {
+      .subscribe(async (params: any) => {
         this.debugMode = params.debugMode ? true : false;
         // allow templateNavService to process actions based on query param change
         await this.templateNavService.handleQueryParamChange(params, this);
@@ -522,7 +516,3 @@ const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
   rows: [{ type: "title", value: `Template "${name}" not found` }],
   status: "released",
 });
-
-type IQueryParams = INavQueryParams & {
-  debugMode?: boolean | string;
-};
