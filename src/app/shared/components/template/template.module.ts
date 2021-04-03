@@ -13,7 +13,14 @@ import { NouisliderModule } from "ng2-nouislider";
 import { AngularSvgIconModule } from "angular-svg-icon";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, SharedPipesModule, NouisliderModule, AngularSvgIconModule.forRoot()],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SharedPipesModule,
+    NouisliderModule,
+    AngularSvgIconModule.forRoot(),
+  ],
   exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent],
   declarations: [
     TmplCompHostDirective,
@@ -21,7 +28,6 @@ import { AngularSvgIconModule } from "angular-svg-icon";
     TooltipDirective,
     ...TEMPLATE_COMPONENTS,
     TemplateContainerComponent,
-    // LocalVarsReplacePipe,
   ],
 })
 export class TemplateComponentsModule {}
