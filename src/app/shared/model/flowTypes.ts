@@ -360,7 +360,8 @@ export namespace FlowTypes {
     | "css_anim"
     | "combo_box"
     | "icon_banner"
-    | "dashed_box";
+    | "dashed_box"
+    | "parent_point_box";
 
   export interface TemplateRow {
     type: TemplateRowType;
