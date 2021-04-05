@@ -56,11 +56,6 @@
   border-radius: 20px;
 }
 
-.navigation {
-  position: fixed;
-  bottom: 0;
-}
-
 .plh-tmpl-comp {
   display: flex;
   flex-direction: column;
@@ -192,4 +187,7 @@ p {
 }
 .rounded_corners {
   border-radius: 15px;
+}
+.whiteText {
+  color: #fff;
 }
