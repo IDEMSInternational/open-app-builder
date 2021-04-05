@@ -4,11 +4,12 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 
 @Component({
   selector: "plh-tmpl-text",
-  template: `<p [style.textAlign]="textAlign">{{ _row.value }}</p>`,
+  template: `<p [class]="style" [style.textAlign]="textAlign">{{ _row.value }}</p>`,
   styleUrls: ["./tmpl-components-common.scss"],
 })
 export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   textAlign: string | null;
+  style: string | null;
   constructor() {
     super();
   }
@@ -18,6 +19,7 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   }
 
   getParams() {
-    this.textAlign = getStringParamFromTemplateRow(this._row, "text-align", null);
+    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null);
+    this.style = getStringParamFromTemplateRow(this._row, "style", null);
   }
 }
