@@ -1,5 +1,5 @@
 <ion-button
-  [class]="style"
+  [class]="style + ' ' + buttonAlign"
   [disabled]="disabled"
   (click)="triggerActions('click')"
   ><span [class]="textAlign">{{ _row.value }}</span></ion-button
