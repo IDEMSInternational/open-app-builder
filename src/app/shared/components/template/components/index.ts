@@ -34,6 +34,7 @@ import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TemplatePopupComponent } from "./layout/popup";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
+import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -66,6 +67,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplComboBoxComponent,
   TmplIconBannerComponent,
   TmplDashedBoxComponent,
+  TmplParentPointBoxComponent,
 ];
 
 /***************************************************************************************
@@ -112,4 +114,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   css_anim: TmplAnimationComponent,
   icon_banner: TmplIconBannerComponent,
   dashed_box: TmplDashedBoxComponent,
+  parent_point_box: TmplParentPointBoxComponent,
 };

@@ -1,0 +1,16 @@
+<div class="wrapper-point">
+  <div class="item" #item (click)="clickPointItem()">
+    <div class="star" #star>
+      <img src="/assets/plh_assets/plh_images/icons/star.svg" alt="" />
+      <div class="star-value">
+        {{ _row.value }}
+      </div>
+    </div>
+    <div class="image" *ngIf="icon_src">
+      <img [src]="icon_result" alt="" />
+    </div>
+    <div class="text" *ngIf="text">
+      {{ text }}
+    </div>
+  </div>
+</div>
