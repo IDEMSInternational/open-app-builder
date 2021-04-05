@@ -17,8 +17,11 @@ import { Subscription } from "rxjs";
         <ion-icon src="assets/images/star.svg" style="margin: -1px 8px"></ion-icon>
         <span>{{ title }}</span>
       </ion-title>
-      <ion-buttons slot="end" routerLink="/reminders">
-        <ion-button><ion-icon slot="icon-only" name="notifications-outline"></ion-icon></ion-button>
+      <ion-buttons slot="end">
+        <plh-debug-toggle *ngIf="showDebugToggle"></plh-debug-toggle>
+        <ion-button routerLink="/reminders"
+          ><ion-icon slot="icon-only" name="notifications-outline"></ion-icon
+        ></ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>`,
@@ -26,6 +29,8 @@ import { Subscription } from "rxjs";
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   isHomePage = true;
   @Input() title: string = "ParentApp";
+  // TODO - link debug toggle to build environment or advanced setting (hide for general users)
+  showDebugToggle = true;
   routeChanges$: Subscription;
   /** track if navigation has been used to handle back button click behaviour */
   hasBackHistory = false;
