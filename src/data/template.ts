@@ -5944,61 +5944,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "debug_parent_point_box",
-    "status": "released",
-    "rows": [
-      {
-        "type": "display_group",
-        "name": "dg",
-        "style_list": [
-          "flex-wrap: wrap"
-        ],
-        "rows": [
-          {
-            "type": "parent_point_box",
-            "name": "points_example",
-            "value": 3,
-            "parameter_list": {
-              "icon_src": "@local.icon_src",
-              "text": "@local.text"
-            }
-          },
-          {
-            "name": "icon_src",
-            "value": "plh_images/habits/habit_money_image.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "value": "Good money choice",
-            "type": "set_variable"
-          },
-          {
-            "type": "parent_point_box",
-            "name": "points_example1",
-            "value": 3,
-            "parameter_list": {
-              "icon_src": "@local.icon_src1",
-              "text": "@local.text1"
-            }
-          },
-          {
-            "name": "icon_src1",
-            "value": "plh_images/habits/habit_money_image.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text1",
-            "value": "Good money choice 1",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_template_components.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "debug_navigation_group",
     "status": "released",
     "rows": [
