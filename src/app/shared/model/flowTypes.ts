@@ -35,6 +35,10 @@ export namespace FlowTypes {
     flow_name: string;
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
+    /** Events triggered from the flow that would ordinarily write to the db (e.g. emit completed) will be ignored */
+    db_ignore_events?: boolean;
+    /** By default data will be removed following server-sync. Specify if instead should be retained locally also */
+    db_persist_events?: boolean;
     module?: string;
     // debug info
     _xlsxPath?: string;

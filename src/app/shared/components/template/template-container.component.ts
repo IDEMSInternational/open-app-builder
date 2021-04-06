@@ -146,7 +146,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         [value] = args;
         // write completions to the database for data tracking
         if (value === "completed") {
-          await this.templateService.recordEvent(this.templatename, "emit", value);
+          await this.templateService.recordEvent(this.template, "emit", value);
         }
         if (this.parent) {
           // continue to emit any actions to parent where defined
