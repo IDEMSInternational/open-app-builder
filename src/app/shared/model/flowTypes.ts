@@ -329,6 +329,8 @@ export namespace FlowTypes {
     | "subtitle"
     | "text"
     | "animated_section"
+    | "accordion_section"
+    | "workshops_accordion"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
@@ -357,7 +359,9 @@ export namespace FlowTypes {
     | "tile_component"
     | "css_anim"
     | "combo_box"
-    | "dashed_box";
+    | "icon_banner"
+    | "dashed_box"
+    | "parent_point_box";
 
   export interface TemplateRow {
     type: TemplateRowType;
@@ -365,7 +369,7 @@ export namespace FlowTypes {
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
     style_list?: string[];
-    parameter_list?: string[];
+    parameter_list?: { [param: string]: string };
     hidden?: string;
     rows?: TemplateRow[];
     /** track fields above where dynamic expressions have been used in field evaluation */

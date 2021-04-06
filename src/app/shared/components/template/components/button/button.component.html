@@ -1,7 +1,6 @@
 <ion-button
-  [class]="style"
+  [class]="style + ' ' + buttonAlign"
   [disabled]="disabled"
-  [style.--background]="color"
   (click)="triggerActions('click')"
-  >{{ _row.value }}</ion-button
+  ><span [class]="textAlign">{{ _row.value }}</span></ion-button
 >

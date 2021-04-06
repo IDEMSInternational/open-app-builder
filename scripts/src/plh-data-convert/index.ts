@@ -126,7 +126,8 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
               console.log(chalk.yellow("duplicate flow:", flow_name));
             }
             // console.log(chalk.green("+", flow_name));
-            const _xlsxPath = path.relative(INPUT_FOLDER, xlsxPath);
+            // Ensure all paths use / to match HTTP style paths
+            const _xlsxPath = path.relative(INPUT_FOLDER, xlsxPath).replace(/\\/g, "/");
             merged[flow_name] = { ...contents, rows: json[flow_name], _xlsxPath };
           } else {
             console.log(chalk.red("No Contents:", flow_name));

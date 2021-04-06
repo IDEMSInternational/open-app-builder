@@ -7,7 +7,9 @@ import { Type } from "@angular/core";
  **************************************************************************************/
 
 import { AnimatedSectionComponent } from "./layout/animated_section";
+import { AccordionSectionComponent } from "./layout/accordion_section";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
+import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TemplateBaseComponent } from "./base";
@@ -18,6 +20,7 @@ import { TmplImageComponent } from "./image";
 import { TmplTextComponent } from "./text";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
+import { TmplSubtitleComponent } from "./subtitle";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
@@ -28,21 +31,28 @@ import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.c
 import { TmplAnimationComponent } from "./animation";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
+import { TemplatePopupComponent } from "./layout/popup";
+import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
+import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
   TemplateBaseComponent,
   TemplateDebuggerComponent,
+  TemplatePopupComponent,
   TmplTextComponent,
   AnimatedSectionGroupComponent,
+  WorkshopsComponent,
   TmplTitleComponent,
+  TmplSubtitleComponent,
   TmplDisplayGroupComponent,
   TmplAudioComponent,
   TmplButtonComponent,
   TmplImageComponent,
   TmplVideoComponent,
   AnimatedSectionComponent,
+  AccordionSectionComponent,
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
@@ -55,7 +65,9 @@ export const TEMPLATE_COMPONENTS = [
   TmplAnimationComponent,
   TmplTextBoxComponent,
   TmplComboBoxComponent,
+  TmplIconBannerComponent,
   TmplDashedBoxComponent,
+  TmplParentPointBoxComponent,
 ];
 
 /***************************************************************************************
@@ -68,8 +80,10 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
 > = {
   text: TmplTextComponent,
   title: TmplTitleComponent,
-  subtitle: TmplTextComponent,
+  subtitle: TmplSubtitleComponent,
   animated_section_group: AnimatedSectionGroupComponent,
+  workshops_accordion: WorkshopsComponent,
+  accordion_section: AccordionSectionComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
@@ -98,5 +112,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
   css_anim: TmplAnimationComponent,
+  icon_banner: TmplIconBannerComponent,
   dashed_box: TmplDashedBoxComponent,
+  parent_point_box: TmplParentPointBoxComponent,
 };

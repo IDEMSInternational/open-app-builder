@@ -1,0 +1,45 @@
+.icon-banner-wrapper {
+  width: 373px;
+  min-height: 70px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 25px 39px 25px 25px;
+  margin: 5px auto;
+  position: relative;
+  .title,
+  .text {
+    font-size: 19px;
+    line-height: 22px;
+    color: #ffffff;
+  }
+  .title {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .image {
+    width: 73px;
+    height: 73px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    right: -6px;
+    padding: 5px;
+    top: -11px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.primary {
+  background: #0f8ab2;
+}
+.secondary {
+  background: #ffcc03;
+}
+.red {
+  background: #ff7a00;
+}

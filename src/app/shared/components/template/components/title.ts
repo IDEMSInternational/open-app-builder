@@ -6,12 +6,12 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-title",
   template: `
-    <div class="title-wrapper">
+    <div class="title-wrapper" [class]="textAlign">
       <h1 [class]="style">{{ _row.value }}</h1>
       <ion-icon
         *ngIf="help"
         name="help-circle-outline"
-        class="timer-help"
+        class="title-help"
         [pTooltip]="help"
         [tooltipPosition]="tooltipPosition"
         tooltipEvent="click"
@@ -23,7 +23,9 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 export class TmplTitleComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
   help: string | null;
   tooltipPosition: string;
+  textAlign: string;
   style: string | null;
+
   constructor() {
     super();
   }
@@ -34,7 +36,8 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
 
   getParams() {
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
-    this.tooltipPosition = getStringParamFromTemplateRow(this._row, "tooltipPosition", "right");
+    this.tooltipPosition = getStringParamFromTemplateRow(this._row, "tooltip_position", "right");
+    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "left");
     this.style = getStringParamFromTemplateRow(this._row, "style", "primary");
   }
 }

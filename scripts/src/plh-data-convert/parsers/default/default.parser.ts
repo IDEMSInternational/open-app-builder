@@ -2,6 +2,7 @@ import chalk from "chalk";
 import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
+import { parsePLHListString } from "../utils";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string };
 
@@ -59,10 +60,7 @@ export class DefaultParser implements AbstractParser {
         row[field] = this.handleAssetLinks(row[field], flow.flow_name);
       }
       if (field.endsWith("_list")) {
-        row[field] = row[field]
-          .split(";")
-          .map((val: string) => val.trim())
-          .filter((val: string) => val !== "");
+        row[field] = parsePLHListString(row[field]);
       }
     });
 
@@ -80,7 +78,6 @@ export class DefaultParser implements AbstractParser {
         console.warn("Error on group extract on row", row, flow, ex);
         console.warn("Error is in sheet ", flow._xlsxPath);
       }
-
     }
     // Can ignore as handled during subgroup extraction
     if (type.startsWith("end_")) {

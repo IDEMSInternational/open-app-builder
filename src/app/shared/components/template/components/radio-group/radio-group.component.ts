@@ -1,11 +1,19 @@
-import { Component, ElementRef, HostBinding, HostListener, Input, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 import {
   getNumberParamFromTemplateRow,
+  getParamFromTemplateRow,
   getStringParamFromTemplateRow,
-  getStringParamFromTemplateRowValueList
 } from "../../../../utils";
 
 interface IButton {
@@ -18,12 +26,14 @@ interface IButton {
 @Component({
   selector: "plh-radio-group",
   templateUrl: "./radio-group.component.html",
-  styleUrls: ["./radio-group.component.scss"]
+  styleUrls: ["./radio-group.component.scss"],
 })
-export class TmplRadioGroupComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplRadioGroupComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit {
   @Input() parent: TemplateContainerComponent;
   @ViewChild("labelImage", { static: false, read: true }) labelImage: ElementRef;
-  radioBtnList: string | null;
+  radioBtnList: any;
   valuesFromBtnList;
   arrayOfBtn: Array<IButton>;
   radioButtonType: string | null;
@@ -31,10 +41,10 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   baseSrcAssets = "/assets/plh_assets/";
   windowWidth: number;
   scaleFactor: number = 1;
-  selectedBackgroundColor: string = "#0D3F60";
-  backgroundGradient: string = "168.87deg, #0F8AB2 28.12%, #0D4060 100%";
   value: any;
-
+  style: string;
+  imageCheckedColor = "#0D3F60";
+  flexWidth: string;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
     this.getScaleFactor();
@@ -43,15 +53,6 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   @HostBinding("style.--scale-factor") get scale() {
     return this.scaleFactor;
   }
-
-  @HostBinding("style.--border-color") get borderColor() {
-    return this.selectedBackgroundColor;
-  }
-
-  @HostBinding("style.--bg-gradient") get bgGradientStart() {
-    return this.backgroundGradient;
-  }
-
 
   constructor() {
     super();
@@ -63,22 +64,29 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
   }
 
   getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / ((150) * this.options_per_row) > 1 ? 1 : this.windowWidth / ((120 + 20) * this.options_per_row);
+    this.scaleFactor =
+      this.windowWidth / (150 * this.options_per_row) > 1
+        ? 1
+        : this.windowWidth / ((120 + 20) * this.options_per_row);
     return this.scaleFactor;
   }
 
   getParams() {
-    this.radioBtnList = getStringParamFromTemplateRowValueList(this._row, "radio_button_list", null);
-    this.radioButtonType = getStringParamFromTemplateRow(this._row, "radio_button_type", null);
+    this.radioBtnList = getParamFromTemplateRow(this._row, "answer_list", null);
+    this.radioButtonType = getStringParamFromTemplateRow(
+      this._row,
+      "radio_button_type",
+      "btn_text"
+    );
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
-    this.selectedBackgroundColor = getStringParamFromTemplateRow(this._row, "color", "#0D3F60");
-    this.backgroundGradient = getStringParamFromTemplateRow(this._row, "background_gradient", "168.87deg, #0F8AB2 28.12%, #0D4060 100%");
-    this.value = this._row.value;
+    this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
+    this.imageCheckedColor = this.style == "active" ? "#f89b2d" : "#0D3F60";
     this.windowWidth = window.innerWidth;
     if (this.radioBtnList) {
-      this.valuesFromBtnList = this.radioBtnList.split(";").filter(item => item !== "");
+      this.valuesFromBtnList = this.radioBtnList.split(",").filter((item) => item !== "");
       this.createArrayBtnElement();
     }
+    this.getFlexWidth();
   }
 
   createArrayBtnElement() {
@@ -87,21 +95,25 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements IT
         text: null,
         image: null,
         name: null,
-        image_checked: null
+        image_checked: null,
       };
       item.split("|").map((values) => {
         obj[values.split(":")[0].trim()] = values.split(":")[1].trim();
       });
+      obj.image = obj.image ? this.getPathImg(obj.image) : obj.image;
+      obj.image_checked = obj.image_checked
+        ? this.getPathImg(obj.image_checked)
+        : obj.image_checked;
       return obj;
     });
   }
 
   getPathImg(path): string {
     const src = this.baseSrcAssets + path;
-    return src.replace('//', '/');
+    return src.replace("//", "/");
   }
 
-  get getFlexWidth(): string {
-    return `0 1 ${100 / this.options_per_row - 3}%`;
+  getFlexWidth() {
+    this.flexWidth = `0 1 ${100 / this.options_per_row - 3}%`;
   }
 }

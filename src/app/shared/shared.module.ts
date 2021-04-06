@@ -11,10 +11,9 @@ import { RouterModule } from "@angular/router";
 import { TemplateComponentsModule } from "./components/template/template.module";
 import { ANIMATION_COMPONENTS } from "./components/animations";
 import { AnimationComponent } from "./components/animations/animation.component";
-import { RoundIconButtonComponent } from "./components/template/components/round-icon-button/round-icon-button.component";
-import { TooltipModule } from "./components/common/directives/tooltip.directive";
 import { ComboBoxModalComponent } from "./components/common/components/combo-box-modal/combo-box-modal.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { PLHDebugToggleComponent } from "./components/debug-toggle";
 
 const Components = [
   BlobComponent,
@@ -23,6 +22,7 @@ const Components = [
   StressedMultiHandAnimComponent,
   PLHMainHeaderComponent,
   PLHMainTabsComponent,
+  PLHDebugToggleComponent,
   AnimationComponent,
   ComboBoxModalComponent,
   ...ANIMATION_COMPONENTS,
