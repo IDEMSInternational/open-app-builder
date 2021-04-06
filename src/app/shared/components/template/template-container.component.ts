@@ -18,7 +18,6 @@ const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
   "value",
   "action_list",
   "parameter_list",
-  "action_list",
 ];
 /**
  * Some types that contain nested rows are nested in display only (not template properties)
@@ -130,8 +129,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     const [key, value] = args;
     switch (action_id) {
       case "set_local":
-      case "set_value":
-        console.log("Setting local variable", key, value);
         return this.setLocalVariable(key, value);
       case "set_global":
         console.log("Setting global variable", key, value);
@@ -215,6 +212,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * with first recorded (from parent templates) taking priority over current.
    *
    * @param variables - set of parent or existing variables to take priority
+   * @param localVariables - working set of variables available to this template
    *
    */
   private processVariables(
@@ -390,8 +388,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       const { matchedExpression, type, fieldName } = evaluator;
       switch (type) {
         case "local":
-          parsedValue = this.localVariables[fieldName]?.value || "";
-          parsedValue = localVariables[fieldName]?.value;
+          // check local variables set through set_variables / nested_properties
+          if (localVariables.hasOwnProperty(fieldName)) {
+            parsedValue = localVariables[fieldName]?.value;
+          }
+          // also check sibling components for name match and return value where set
+          else {
+            parsedValue = this.template.rows.find((r) => r.name === fieldName)?.value;
+          }
+          // TODO - handle case where match found (but still returns undefined)
           if (!parsedValue) {
             console.error("could not parse local variable", { evaluator, localVariables });
             parsedValue = `{{local.${fieldName}}}`;
