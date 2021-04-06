@@ -394,7 +394,6 @@ export namespace FlowTypes {
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
-      | "set_value" // This currently is same as set_local (remove?)
       | "set_field"
       | "set_local"
       | "set_global"
