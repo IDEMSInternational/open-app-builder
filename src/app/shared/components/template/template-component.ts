@@ -2,7 +2,6 @@ import {
   AfterContentInit,
   Component,
   ComponentFactoryResolver,
-  Directive,
   ElementRef,
   HostBinding,
   Input,
@@ -10,6 +9,7 @@ import {
   Type,
   ViewChild,
   ViewContainerRef,
+  Directive
   ViewEncapsulation,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
@@ -41,16 +41,16 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <!--    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">-->
-    <!-- Template Debugger -->
-    <plh-template-debugger
-      *ngIf="parent.debugMode"
-      [row]="row"
-      [parent]="parent"
-    ></plh-template-debugger>
-    <!-- Injected template component -->
-    <ng-template plhTemplateComponentHost></ng-template>
-    <!--    </div>-->
+    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
+      <!-- Template Debugger -->
+      <plh-template-debugger
+        *ngIf="parent.debugMode"
+        [row]="row"
+        [parent]="parent"
+      ></plh-template-debugger>
+      <!-- Injected template component -->
+      <ng-template plhTemplateComponentHost></ng-template>
+    </div>
   `,
   styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
   encapsulation: ViewEncapsulation.None,
