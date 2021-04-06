@@ -9,7 +9,7 @@ import {
   Type,
   ViewChild,
   ViewContainerRef,
-  Directive
+  Directive,
   ViewEncapsulation,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
