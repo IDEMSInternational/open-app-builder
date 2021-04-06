@@ -3,6 +3,7 @@ import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
 import { Subject } from "scripts/node_modules/rxjs";
+import { FlowTypes } from "scripts/types";
 import { arrayToHashmapArray } from "../../utils";
 import { EventService } from "../event/event.service";
 
@@ -14,12 +15,23 @@ window.addEventListener("unhandledrejection", (event) => {
   console.warn("Unhandled promise rejection:", reason && (reason.stack || reason));
 });
 
+const FLOW_EVENT_INDEXES: (keyof IFlowEvent)[] = ["type", "name", "event", "_created"];
+
 /**
  * All tables used must be defined with any indices required (other columns freely added)
  * Include auto-increment primary key via `++`
  * https://dexie.org/docs/API-Reference#quick-reference
  */
 const DB_TABLES = {
+  /** Track template flow events such as completion emit **/
+  flow_events: "++id," + FLOW_EVENT_INDEXES.join(","), // also has `value` column not indexed
+  /** Long term tracking of changes to user data, such as contact fields */
+  data_events: "++id",
+
+  /**********************************************************************************************************
+   * 2021-04-06
+   * TODO - Resolve tables below and determine which are still relevant, or could be merged into tables above
+   **********************************************************************************************************/
   surveys: "++id,surveyId",
   reminders: "++id,type",
   reminder_events: "++id,event_id",
@@ -36,6 +48,7 @@ const DB_TABLES = {
   habit_activity_ideas: "++id,flowName",
   habit_occurrence: "++id,habitId,created",
 };
+
 export type IDBTable = keyof typeof DB_TABLES;
 /**
  * For any tables with automatic id assignment the following fields will be populated
@@ -51,7 +64,7 @@ export interface IDBDoc {
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
  */
-const DB_VERSION = 8000;
+const DB_VERSION = 9000;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({
@@ -96,11 +109,11 @@ export class DbService {
   }
 
   /**
-   * Type-safe wrapper around db.table method
+   * Type-safe wrapper around db.table method (with default flowEvent type)
    * - Adds a changes$ subject populated from custom db listeners
    * - Adds toHashampArray method to return hashmap of array values keyed by a specific field
    */
-  table<T>(tableId: IDBTable) {
+  table<T = IFlowEvent>(tableId: IDBTable) {
     const table = this.db.table<T>(tableId) as Dexie.Table & {
       changes$: Subject<T>;
       toHashmapArray: (keyfield: keyof T) => Promise<{ [key in keyof T]?: T[] }>;
@@ -176,3 +189,19 @@ type IDBChangEvent = (
   subscriber: (changes: IDatabaseChange[]) => any,
   bSticky?: boolean
 ) => void;
+
+/**
+ * Data written to the database from flows will usually retain the following format
+ * @param type flow type triggering the event, e.g. 'template'
+ * @param name identifier for the source of the event, i.e. the flow_name
+ * @param event name given to the event for indexing/query/lookup, e.g. 'emit'
+ * @param value (not indexed) - specific value corresponding to the event
+ * @param _created timestamp in isostring format generated on write
+ */
+export interface IFlowEvent {
+  type: FlowTypes.FlowType;
+  name: string;
+  event: string;
+  value: any;
+  _created: string;
+}
