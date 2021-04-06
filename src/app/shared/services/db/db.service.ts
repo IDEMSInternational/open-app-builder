@@ -4,7 +4,7 @@ import "dexie-observable";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
 import { Subject } from "scripts/node_modules/rxjs";
 import { FlowTypes } from "scripts/types";
-import { arrayToHashmapArray } from "../../utils";
+import { arrayToHashmapArray, generateTimestamp } from "../../utils";
 import { EventService } from "../event/event.service";
 
 const db = new Dexie("plh-app-db");
@@ -15,7 +15,7 @@ window.addEventListener("unhandledrejection", (event) => {
   console.warn("Unhandled promise rejection:", reason && (reason.stack || reason));
 });
 
-const FLOW_EVENT_INDEXES: (keyof IFlowEvent)[] = ["type", "name", "event", "_created"];
+const FLOW_EVENT_INDEXES: (keyof IFlowEvent)[] = ["type", "name", "event", "_created", "_synced"];
 
 /**
  * All tables used must be defined with any indices required (other columns freely added)
@@ -126,6 +126,15 @@ export class DbService {
     return table;
   }
 
+  /** Generate standard metadata to be included with database entries */
+  public generateDBMeta() {
+    const meta: IDBMeta = {
+      _created: generateTimestamp(),
+      _synced: false,
+    };
+    return meta;
+  }
+
   /**
    * Add reactive bindings to the database to receive updates
    * (currently used for debugging and custom tableChanges$ subscription )
@@ -197,11 +206,16 @@ type IDBChangEvent = (
  * @param event name given to the event for indexing/query/lookup, e.g. 'emit'
  * @param value (not indexed) - specific value corresponding to the event
  * @param _created timestamp in isostring format generated on write
+ * @param _synced whether the data has been succesfully synced to the database
  */
-export interface IFlowEvent {
+export interface IFlowEvent extends IDBMeta {
   type: FlowTypes.FlowType;
   name: string;
   event: string;
   value: any;
+}
+
+interface IDBMeta {
   _created: string;
+  _synced: boolean;
 }
