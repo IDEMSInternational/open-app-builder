@@ -1,3 +1,6 @@
+:host {
+  width: 100%;
+}
 ion-button {
   font-size: 25px;
   font-family: Roboto, sans-serif;
@@ -7,7 +10,6 @@ ion-button {
   white-space: pre-line;
   padding: 5px 0;
   min-height: 70px;
-  max-width: calc(100% - 4px);
   min-width: 59px;
   --border-radius: 15px;
   --box-shadow: var(--ion-btn-primary-box-shadow);

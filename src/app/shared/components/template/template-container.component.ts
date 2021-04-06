@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, Injectable, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
@@ -195,6 +195,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       NOT_FOUND_TEMPLATE(this.templatename);
     this.template = JSON.parse(JSON.stringify(foundTemplate));
     // if template created at top level also ensure it has a name
+
     this.name = this.name || this.templatename;
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
@@ -364,6 +365,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       }
       return r;
     });
+
     return rowsWithReplacedValues;
   }
 

@@ -16,6 +16,7 @@
     align-items: inherit;
     justify-content: inherit;
     flex-direction: inherit;
+    width: inherit;
   }
 }
 .tool_1 {
@@ -56,12 +57,12 @@
   border-radius: 20px;
 }
 
-.plh-tmpl-comp {
-  display: inherit;
-  flex-direction: inherit;
-  width: 100%;
-  justify-content: inherit;
-  align-items: inherit;
+plh-template-component {
+  //display: inherit;
+  //flex-direction: inherit;
+  //width: 100%;
+  //justify-content: inherit;
+  //align-items: inherit;
   .animated_section {
     display: flex;
   }
@@ -237,4 +238,9 @@ p {
 }
 .whiteText {
   color: #fff;
+}
+:host {
+  plh-template-container {
+    width: 100%;
+  }
 }
