@@ -9,6 +9,7 @@ import {
   OnInit,
   ElementRef,
   AfterContentInit,
+  HostBinding,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
@@ -39,16 +40,16 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
-      <!-- Template Debugger -->
-      <plh-template-debugger
-        *ngIf="parent.debugMode"
-        [row]="row"
-        [parent]="parent"
-      ></plh-template-debugger>
-      <!-- Injected template component -->
-      <ng-template plhTemplateComponentHost></ng-template>
-    </div>
+    <!--    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">-->
+    <!-- Template Debugger -->
+    <plh-template-debugger
+      *ngIf="parent.debugMode"
+      [row]="row"
+      [parent]="parent"
+    ></plh-template-debugger>
+    <!-- Injected template component -->
+    <ng-template plhTemplateComponentHost></ng-template>
+    <!--    </div>-->
   `,
   styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
 })
@@ -60,7 +61,12 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   @Input() row: FlowTypes.TemplateRow;
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
-
+  @HostBinding("attr.data-hidden") get getAttrHidden() {
+    return this.row && this.row.hidden;
+  }
+  @HostBinding("attr.data-debug-hidden") get getAttrDat() {
+    return this.parent && this.parent.debugMode;
+  }
   styles: { [name: string]: any } = {};
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
@@ -83,7 +89,9 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {
       case "template":
-        return this.renderTemplateComponent(TemplateContainerComponent);
+        return this.row.hidden === "true"
+          ? null
+          : this.renderTemplateComponent(TemplateContainerComponent);
       default:
         const displayComponent = TEMPLATE_COMPONENT_MAPPING[row.type];
         if (displayComponent) {
