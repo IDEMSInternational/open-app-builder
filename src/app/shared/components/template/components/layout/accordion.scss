@@ -1,59 +1,75 @@
 @import "../../../../../../theme/typography";
 .workshops-accordion {
   position: relative;
+  margin-top: 20px;
   &::after {
     content: "";
     width: 1px;
-    height: 100%;
+    height: calc(100% - 35px);
     background: var(--ion-color-tertiary);
     position: absolute;
     left: 10%;
     top: 0;
     margin-top: 15px;
+    @media (min-width: 768px) {
+      left: 9%;
+    }
   }
 }
 .accordion-wrapper {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 10px;
+  height: 100%;
   .accordion-status {
     width: 32px;
     height: 32px;
-    margin-top: 10px;
+    margin-top: 7px;
     border-radius: 50%;
     padding: 5px;
+    background: rgba(255, 255, 255, 1);
+    display: flex;
     z-index: 2;
   }
   .accordion-section {
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 75%;
     border-radius: 10px;
-    background: var(--ion-color-tertiary-contrast);
+    background: rgba(255, 255, 255, 1);
     overflow: hidden;
-    height: 50px;
+    max-height: 43px;
     color: $color_passive;
     border: 1px solid var(--ion-color-tertiary);
+    transition: max-height 0.4s;
     .progress {
+      position: absolute;
       height: 100%;
-      display: flex;
-      flex-direction: column;
+      border-radius: 0 13px 13px 0;
+      z-index: 1;
+      background: linear-gradient(168.11deg, #69cce7 36%, #0c7e9d 111.65%);
+      transition: opacity 0.4s ease-in;
     }
   }
 }
 
-.opened {
-  height: 300px;
-  .accordion-section {
-    height: fit-content;
+.openSection {
+  max-height: 1000px !important;
+  background: rgba(255, 255, 255, 1);
+  transition: max-height 0.4s;
+  & .progress {
+    opacity: 0;
+    transition: none !important;
   }
 }
 
 .completed {
-  background: var(--ion-color-tertiary);
+  background: linear-gradient(168.11deg, #69cce7 36%, #0c7e9d 111.65%) !important;
+  & .progress {
+    opacity: 0;
+  }
 }
-.uncopleted {
-  background: var(--ion-color-tertiary-contrast);
-}
-.disabled {
-  background: var(--ion-color-tertiary-contrast);
+.inProgress {
+  background: rgba(47, 156, 185, 1) !important;
 }

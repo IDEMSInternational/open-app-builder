@@ -5607,17 +5607,19 @@
         "name": "btn_example_1",
         "value": "First",
         "parameter_list": {
-          "style": "active"
+          "style": "active",
+          "button_align": "right"
         },
-        "comments": "style: active_1; \nbutton_align:left;\nwidth: responsive"
+        "comments": "style: active_1; \nbutton_align:left;\n"
       },
       {
         "type": "button",
         "name": "btn_example_2",
         "value": "Second",
         "parameter_list": {
-          "style": "passive full-width",
-          "text_align": "left"
+          "style": "passive",
+          "text_align": "left",
+          "button_align": "left"
         },
         "comments": "style: passive_1; \ntext_align: left;"
       },
@@ -5626,7 +5628,7 @@
         "name": "btn_example_3",
         "value": "Third",
         "parameter_list": {
-          "style": "make-me-smile full-width",
+          "style": "make-me-smile",
           "text_align": "right"
         },
         "comments": "style: passive_2;\ntext_align: left;"
@@ -5864,22 +5866,14 @@
             "parameter_list": {
               "state": "closed",
               "status": "completed",
-              "title": "Description of week two"
+              "title": "With template"
             },
             "rows": [
               {
-                "type": "subtitle",
-                "parameter_list": {
-                  "style": "primary"
-                }
-              },
-              {
-                "type": "button",
-                "name": "btn_example_1",
-                "value": "First",
-                "parameter_list": {
-                  "style": "active"
-                }
+                "type": "template",
+                "name": "test_template",
+                "value": "care_together",
+                "rows": []
               }
             ]
           },
@@ -5892,12 +5886,10 @@
             },
             "rows": [
               {
-                "type": "button",
-                "name": "btn_example_1",
-                "value": "First",
-                "parameter_list": {
-                  "style": "active"
-                }
+                "type": "template",
+                "name": "test_template",
+                "value": "debug_navigation_group",
+                "rows": []
               }
             ]
           },
@@ -5936,61 +5928,6 @@
                 }
               }
             ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_template_components.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_parent_point_box",
-    "status": "released",
-    "rows": [
-      {
-        "type": "display_group",
-        "name": "dg",
-        "style_list": [
-          "flex-wrap: wrap"
-        ],
-        "rows": [
-          {
-            "type": "parent_point_box",
-            "name": "points_example",
-            "value": 3,
-            "parameter_list": {
-              "icon_src": "@local.icon_src",
-              "text": "@local.text"
-            }
-          },
-          {
-            "name": "icon_src",
-            "value": "plh_images/habits/habit_money_image.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "value": "Good money choice",
-            "type": "set_variable"
-          },
-          {
-            "type": "parent_point_box",
-            "name": "points_example1",
-            "value": 3,
-            "parameter_list": {
-              "icon_src": "@local.icon_src1",
-              "text": "@local.text1"
-            }
-          },
-          {
-            "name": "icon_src1",
-            "value": "plh_images/habits/habit_money_image.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text1",
-            "value": "Good money choice 1",
-            "type": "set_variable"
           }
         ]
       }

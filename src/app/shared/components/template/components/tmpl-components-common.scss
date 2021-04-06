@@ -113,7 +113,7 @@ p {
 
 ::ng-deep h2 {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 18px;
   color: #0d3f60;
 }
 
@@ -159,6 +159,15 @@ p {
   }
   .white {
     color: white;
+  }
+}
+
+.accordion-section {
+  h2 {
+    z-index: 2;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0 10px 0;
   }
 }
 
