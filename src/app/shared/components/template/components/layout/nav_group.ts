@@ -28,6 +28,9 @@ import { TemplateLayoutComponent } from "./layout";
   </div>`,
   styles: [
     `
+      :host {
+        width: 100%;
+      }
       .slide {
         width: 95vw;
       }
