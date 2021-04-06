@@ -3,6 +3,8 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { GLOBAL } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { generateTimestamp } from "src/app/shared/utils";
+import { FlowType } from "typescript";
+import { FlowTypes } from "scripts/types";
 
 @Injectable({
   providedIn: "root",
@@ -50,7 +52,7 @@ export class TemplateService {
 
     // write to db
     const evt: IFlowEvent = {
-      _created: generateTimestamp(),
+      ...this.dbService.generateDBMeta(),
       event: "set",
       value,
       name: key,
@@ -74,14 +76,17 @@ export class TemplateService {
   }
 
   /** Record a template event to the database */
-  recordEvent(flow_name: string, event: "emit", value: any) {
-    const evt: IFlowEvent = {
-      _created: generateTimestamp(),
-      event,
-      name: flow_name,
-      type: "template",
-      value,
-    };
-    return this.dbService.table("flow_events").add(evt);
+  recordEvent(template: FlowTypes.Template, event: "emit", value: any) {
+    const { flow_name, db_ignore_events } = template;
+    if (!db_ignore_events) {
+      const evt: IFlowEvent = {
+        ...this.dbService.generateDBMeta(),
+        event,
+        name: flow_name,
+        type: "template",
+        value,
+      };
+      return this.dbService.table("flow_events").add(evt);
+    }
   }
 }

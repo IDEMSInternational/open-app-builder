@@ -47,7 +47,7 @@ export class ContactFieldService {
 
     // write to db
     const evt: IFlowEvent = {
-      _created: generateTimestamp(),
+      ...this.dbService.generateDBMeta(),
       event: "set",
       value,
       name: key,
