@@ -141,13 +141,15 @@ export class TemplateNavService {
     action: FlowTypes.TemplateRowAction,
     container: TemplateContainerComponent
   ) {
-    const { router, name } = container;
+    const { router } = container;
     const templatename = action.args[0];
+    // ensure the popup is associated with the top-most template in the current stack
+    const popup_parent = container.templateBreadcrumbs[0];
     // simply set the query params which will be handled in method below so that
     // opening can also be handled following navigation or on refresh
     const queryParams: INavQueryParams = {
       popup_child: templatename,
-      popup_parent: name,
+      popup_parent,
       popup_parent_triggered_by: action._triggeredBy,
     };
     router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
