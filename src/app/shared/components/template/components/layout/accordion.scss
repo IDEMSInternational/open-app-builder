@@ -11,6 +11,9 @@
     left: 10%;
     top: 0;
     margin-top: 15px;
+    @media (min-width: 768px) {
+      left: 9%;
+    }
   }
 }
 .accordion-wrapper {
@@ -52,7 +55,7 @@
 }
 
 .openSection {
-  max-height: 200px !important;
+  max-height: 1000px !important;
   background: rgba(255, 255, 255, 1);
   transition: max-height 0.4s;
   & .progress {
