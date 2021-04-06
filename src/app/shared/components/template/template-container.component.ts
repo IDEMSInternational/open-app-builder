@@ -366,14 +366,16 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   }
 
   private filterRowOnCondition(row: FlowTypes.TemplateRow, localVariables: ILocalVariables) {
-    if (!row.hasOwnProperty("condition")) {
-      return true;
+    let value = "true";
+    if (row.hasOwnProperty("condition")) {
+      value = row.condition;
+      let dynamicEvaluators = _extractDynamicEvaluators(row.condition);
+      if (dynamicEvaluators) {
+        value = this.parseDynamicValue(dynamicEvaluators, localVariables);
+      }
     }
-    let dynamicEvaluators = _extractDynamicEvaluators(row.condition);
-    if (dynamicEvaluators) {
-      return this.parseDynamicValue(dynamicEvaluators, localVariables) + "" === "true";
-    }
-    return (row.condition + "").trim() === "true";
+    value = this.evaluateJSExpression(value);
+    return value.trim() === "true";
   }
 
   private parseDynamicValue(
