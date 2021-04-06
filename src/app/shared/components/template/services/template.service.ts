@@ -38,8 +38,25 @@ export class TemplateService {
     return val;
   }
 
-  setField(key: string, value: string): void {
+  /**
+   * Store a contact field in localstorage and create a backup also in the database
+   *
+   * @remark whilst writing to the db is an async event, the data will be immediately
+   * available in local storage so does not require await for further processing
+   * */
+  setField(key: string, value: string) {
+    // write to local storage
     this.localStorageService.setString("rp-contact-field." + key, value);
+
+    // write to db
+    const evt: IFlowEvent = {
+      _created: generateTimestamp(),
+      event: "set",
+      value,
+      name: key,
+      type: "contact_field" as any,
+    };
+    return this.dbService.table("data_events").add(evt);
   }
 
   getGlobal(key: string): string {
