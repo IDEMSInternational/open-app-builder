@@ -36,7 +36,7 @@ export class TemplateNavService {
       await this.handlePopupActionsFromParent(params, container);
     }
     if (popup_child && !parent && popup_parent !== name) {
-      await this.handlePopupActionsFromOther();
+      await this.handlePopupActionsFromOther(params, container);
     }
     if (popup_child && popup_child === name) {
       await this.handlePopupActionsFromChild(params, container);
@@ -204,30 +204,43 @@ export class TemplateNavService {
     }
     // If no popup already exists, create, present, and react to dismiss
     else {
-      const childTemplateModal = await this.createChildPopupModal(popup_child, container);
-      await childTemplateModal.present();
-      const { data } = await childTemplateModal.onDidDismiss();
-      log("dismissed", data);
-      // clear both popup and query params
-      const queryParams: INavQueryParams = {
-        popup_child: null,
-        popup_parent: null,
-        popup_parent_triggered_by: null,
-        nav_child_emit: null,
-        nav_child: null,
-        nav_parent: null,
-        nav_parent_triggered_by: null,
-      };
-      const { router } = container;
-      router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+      await this.createPopupAndWaitForDismiss(popup_child, container);
     }
   }
+
+  private async createPopupAndWaitForDismiss(
+    popup_child: string,
+    container: TemplateContainerComponent
+  ) {
+    const childTemplateModal = await this.createChildPopupModal(popup_child, container);
+    await childTemplateModal.present();
+    const { data } = await childTemplateModal.onDidDismiss();
+    log("dismissed", data);
+    // clear both popup and query params
+    const queryParams: INavQueryParams = {
+      popup_child: null,
+      popup_parent: null,
+      popup_parent_triggered_by: null,
+      nav_child_emit: null,
+      nav_child: null,
+      nav_parent: null,
+      nav_parent_triggered_by: null,
+    };
+    const { router } = container;
+    router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+  }
+
   /** Popups persist nav operations, so also need to handle from top-level templates that are not the parent */
-  private async handlePopupActionsFromOther() {
+  private async handlePopupActionsFromOther(
+    params: INavQueryParams,
+    container: TemplateContainerComponent
+  ) {
     // Hide any open popup that was trigggered on a previous page prior to navigation
     const existingPopup = await this.modalCtrl.getTop();
     if (existingPopup) {
       existingPopup.classList.add("hide-popup-on-template");
+    } else {
+      this.createPopupAndWaitForDismiss(params.popup_child, container);
     }
   }
 
