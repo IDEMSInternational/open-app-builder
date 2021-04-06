@@ -24,18 +24,11 @@
   overflow: auto;
 }
 
-.debug-container,
-.debug-toggle-container {
+.debug-container {
   display: flex;
   align-items: center;
 }
-.debug-toggle-container {
-  margin-left: auto;
-  opacity: 0.2;
-}
-.debug-toggle-container[data-enabled="true"] {
-  opacity: 1;
-}
+
 .debug-name {
   padding: 4px;
   font-size: small;

@@ -42,5 +42,41 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/ver_7_design/support/tour.xlsx"
+  },
+  {
+    "flow_type": "tour",
+    "flow_name": "home_page_tour",
+    "status": "released",
+    "rows": [
+      {
+        "type": "step",
+        "title": "Weekly Workshops",
+        "message_text": "Click this button to access the weekly workshops",
+        "element": "#main-content > plh-home > ion-content > div > div:nth-child(1) > div",
+        "route": "home"
+      },
+      {
+        "type": "step",
+        "title": "Start a workshop",
+        "message_text": "Click here to continue your last workshop",
+        "element": "#main-content > plh-template-testing.ng-star-inserted.ion-page.can-go-back > ion-content > plh-template-container > div > plh-template-component:nth-child(2) > div > plh-button",
+        "route": "template/workshop_buttons_temp"
+      },
+      {
+        "type": "step",
+        "title": "Parent Points",
+        "message_text": "Click here to view your parent points",
+        "element": "#main-content > plh-home > ion-content > div > div:nth-child(2)",
+        "route": "home"
+      },
+      {
+        "type": "step",
+        "title": "Parent Centre",
+        "message_text": "Click here to view the parent centre",
+        "element": "#main-content > plh-home > ion-content > div > div:nth-child(3)",
+        "route": "home"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/support/tour.xlsx"
   }
 ]

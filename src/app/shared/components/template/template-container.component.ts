@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
+import { ThemeService } from "src/app/feature/theme/theme-service/theme.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { INavQueryParams, TemplateNavService } from "./services/template-nav.service";
@@ -51,8 +52,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   localVariables: ILocalVariables = {};
   componentDestroyed$ = new Subject();
   debugMode: boolean;
-  // TODO - link debug toggle to build environment or advanced setting (hide for general users)
-  showDebugToggle = true;
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
@@ -99,10 +98,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return actions;
   }
 
-  public setDebugMode(debugMode: boolean) {
-    const queryParams: IQueryParams = { debugMode: debugMode || null };
-    this.router.navigate([], { relativeTo: this.route, queryParams, queryParamsHandling: "merge" });
-  }
   /**
    * To avoid actions potentially trying to write to same db records at the same time,
    * all actions are added to a queue and processed in order of addition
@@ -292,7 +287,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // console.log(`[${this.template.flow_name}]`, "process rows", variables);
     // remove row types that have already been processed during processVariables step
     const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
-    const filteredRows = templateRows.filter((r) => !filterTypes.includes(r.type));
+    const filteredRows = templateRows
+      .filter((r) => this.filterRowOnCondition(r, variables))
+      .filter((r) => !filterTypes.includes(r.type));
     const rowsWithReplacedValues = filteredRows.map((r) => {
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
@@ -366,6 +363,19 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       return r;
     });
     return rowsWithReplacedValues;
+  }
+
+  private filterRowOnCondition(row: FlowTypes.TemplateRow, localVariables: ILocalVariables) {
+    let value = "true";
+    if (row.hasOwnProperty("condition")) {
+      value = row.condition;
+      let dynamicEvaluators = _extractDynamicEvaluators(row.condition);
+      if (dynamicEvaluators) {
+        value = this.parseDynamicValue(dynamicEvaluators, localVariables);
+      }
+    }
+    value = this.evaluateJSExpression(value);
+    return value.trim() === "true";
   }
 
   private parseDynamicValue(
@@ -468,7 +478,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private subscribeToQueryParamChanges() {
     this.route.queryParams
       .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe(async (params: IQueryParams) => {
+      .subscribe(async (params: any) => {
         this.debugMode = params.debugMode ? true : false;
         // allow templateNavService to process actions based on query param change
         await this.templateNavService.handleQueryParamChange(params, this);
@@ -522,7 +532,3 @@ const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
   rows: [{ type: "title", value: `Template "${name}" not found` }],
   status: "released",
 });
-
-type IQueryParams = INavQueryParams & {
-  debugMode?: boolean | string;
-};

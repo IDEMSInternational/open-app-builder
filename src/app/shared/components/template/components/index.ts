@@ -7,7 +7,9 @@ import { Type } from "@angular/core";
  **************************************************************************************/
 
 import { AnimatedSectionComponent } from "./layout/animated_section";
+import { AccordionSectionComponent } from "./layout/accordion_section";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
+import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TemplateBaseComponent } from "./base";
@@ -32,6 +34,7 @@ import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TemplatePopupComponent } from "./layout/popup";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
+import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -40,6 +43,7 @@ export const TEMPLATE_COMPONENTS = [
   TemplatePopupComponent,
   TmplTextComponent,
   AnimatedSectionGroupComponent,
+  WorkshopsComponent,
   TmplTitleComponent,
   TmplSubtitleComponent,
   TmplDisplayGroupComponent,
@@ -48,6 +52,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplImageComponent,
   TmplVideoComponent,
   AnimatedSectionComponent,
+  AccordionSectionComponent,
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
@@ -62,6 +67,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplComboBoxComponent,
   TmplIconBannerComponent,
   TmplDashedBoxComponent,
+  TmplParentPointBoxComponent,
 ];
 
 /***************************************************************************************
@@ -76,6 +82,8 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   title: TmplTitleComponent,
   subtitle: TmplSubtitleComponent,
   animated_section_group: AnimatedSectionGroupComponent,
+  workshops_accordion: WorkshopsComponent,
+  accordion_section: AccordionSectionComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
@@ -106,4 +114,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   css_anim: TmplAnimationComponent,
   icon_banner: TmplIconBannerComponent,
   dashed_box: TmplDashedBoxComponent,
+  parent_point_box: TmplParentPointBoxComponent,
 };

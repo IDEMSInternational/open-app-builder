@@ -329,6 +329,8 @@ export namespace FlowTypes {
     | "subtitle"
     | "text"
     | "animated_section"
+    | "accordion_section"
+    | "workshops_accordion"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
@@ -358,7 +360,8 @@ export namespace FlowTypes {
     | "css_anim"
     | "combo_box"
     | "icon_banner"
-    | "dashed_box";
+    | "dashed_box"
+    | "parent_point_box";
 
   export interface TemplateRow {
     type: TemplateRowType;
@@ -371,6 +374,7 @@ export namespace FlowTypes {
     rows?: TemplateRow[];
     /** track fields above where dynamic expressions have been used in field evaluation */
     _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
+    condition?: any;
 
     /* Used for authoring comments. Not used in code */
     cc_comments?: string;

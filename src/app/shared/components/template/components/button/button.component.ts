@@ -12,7 +12,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   color: string | null;
   disabled: boolean = false;
   textAlign: string;
-
+  buttonAlign: string;
   constructor() {
     super();
   }
@@ -25,5 +25,6 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     this.style = getStringParamFromTemplateRow(this._row, "style", "primary");
     this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "center");
+    this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
   }
 }
