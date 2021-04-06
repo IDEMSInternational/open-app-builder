@@ -24,9 +24,9 @@ const FLOW_EVENT_INDEXES: (keyof IFlowEvent)[] = ["type", "name", "event", "_cre
  */
 const DB_TABLES = {
   /** Track template flow events such as completion emit **/
-  flow_events: "++id," + FLOW_EVENT_INDEXES.join(","), // also has `value` column not indexed
+  flow_events: "++id," + FLOW_EVENT_INDEXES.join(","),
   /** Long term tracking of changes to user data, such as contact fields */
-  data_events: "++id",
+  data_events: "++id," + FLOW_EVENT_INDEXES.join(","),
 
   /**********************************************************************************************************
    * 2021-04-06
