@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
+import { GLOBAL } from "src/app/shared/services/data/data.service";
+import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
+import { generateTimestamp } from "src/app/shared/utils";
 
 @Injectable({
   providedIn: "root",
@@ -8,7 +10,7 @@ import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
 export class TemplateService {
   globals = {};
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(private localStorageService: LocalStorageService, private dbService: DbService) {
     this.initialiseGlobals();
   }
 
@@ -52,5 +54,17 @@ export class TemplateService {
 
   setGlobal(key: string, value: string) {
     this.globals[key] = value;
+  }
+
+  /** Record a template event to the database */
+  recordEvent(flow_name: string, event: "emit", value: any) {
+    const evt: IFlowEvent = {
+      _created: generateTimestamp(),
+      event,
+      name: flow_name,
+      type: "template",
+      value,
+    };
+    return this.dbService.table("flow_events").add(evt);
   }
 }
