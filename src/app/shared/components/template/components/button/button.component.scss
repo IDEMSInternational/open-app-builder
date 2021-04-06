@@ -11,6 +11,9 @@ ion-button {
   min-width: 59px;
   --border-radius: 15px;
   --box-shadow: var(--ion-btn-primary-box-shadow);
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
 }
 ion-button:disabled,
 ion-button[disabled] {
@@ -61,10 +64,10 @@ ion-button[disabled] {
 }
 
 .left {
-  margin-right: auto;
+  margin: 0 auto 0 2px;
 }
 .right {
-  margin-left: auto;
+  margin: 0 2px 0 auto;
 }
 .full-width {
   width: 100%;
