@@ -51,7 +51,7 @@
         "comment": "Requires icons"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\tips.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/modules/tips.xlsx"
   },
   {
     "flow_type": "tips",
@@ -108,7 +108,7 @@
         "comment": "plh_images/habits/habit_spend_time_icon.svg"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\tips.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/modules/tips.xlsx"
   },
   {
     "flow_type": "tips",
@@ -161,7 +161,7 @@
         "comment": "plh_images/habits/habit_praise_teen_icon.svg"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\tips.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/modules/tips.xlsx"
   },
   {
     "flow_type": "tips",
@@ -204,6 +204,6 @@
         ]
       }
     ],
-    "_xlsxPath": "plh_sheets_beta\\ver_7_design\\modules\\tips.xlsx"
+    "_xlsxPath": "plh_sheets_beta/ver_7_design/modules/tips.xlsx"
   }
 ]

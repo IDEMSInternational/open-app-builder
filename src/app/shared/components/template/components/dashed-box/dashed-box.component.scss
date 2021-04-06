@@ -1,4 +1,5 @@
 .box-wrapper {
+  padding: 25px;
   .item {
     margin: 0 auto;
     width: 100%;
@@ -19,26 +20,40 @@
       width: 56px;
       height: 56px;
       position: absolute;
-      left: -23px;
-      top: -23px;
       img {
         width: 100%;
         height: 100%;
       }
     }
-  }
-  .banner_active {
-    background: #fff;
-    border-color: #f49d04;
-    .text {
-      color: #f49d04;
+    .top-left {
+      left: -23px;
+      top: -23px;
+    }
+    .top-right {
+      right: -23px;
+      top: -23px;
+    }
+    .bottom-left {
+      left: -23px;
+      bottom: -23px;
+    }
+    .bottom-right {
+      right: -23px;
+      bottom: -23px;
     }
   }
-  .banner_passive {
+  .default {
     background: transparent;
     border-color: #0d4060;
     .text {
       color: #0d4060;
+    }
+  }
+  .alert {
+    background: #fff;
+    border-color: #f49d04;
+    .text {
+      color: #f49d04;
     }
   }
 }
