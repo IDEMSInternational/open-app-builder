@@ -165,8 +165,9 @@ p {
 .accordion-section {
   h2 {
     z-index: 2;
-    margin-top: 10px;
     text-align: center;
+    margin: 0;
+    padding: 10px 0 10px 0;
   }
 }
 
