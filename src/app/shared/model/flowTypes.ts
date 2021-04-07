@@ -24,8 +24,12 @@ export namespace FlowTypes {
     | "reminder_list"
     | "template"
     | "component_defaults"
+    // global data provides data to other modules, without namespacing (all top-level)
     | "global"
-    | "home_page";
+    | "home_page"
+    // data_lists are a general catch for any data that will be used throughout the app, but
+    // without defined typings (such as habit_list).
+    | "data_list";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -36,6 +40,8 @@ export namespace FlowTypes {
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
     module?: string;
+    /** ... */
+    data_list_name?: string;
     // debug info
     _xlsxPath?: string;
   }
@@ -52,6 +58,8 @@ export namespace FlowTypes {
   /*********************************************************************************************
    *  Specific flow types
    ********************************************************************************************/
+  // 2021-04-07 - TODO - implementing common data lists but need to review what is now deprecated
+  // and what other list types also want to be refactored
   export interface Completion_list extends FlowTypeWithData {}
   export interface Goal_list extends FlowTypeWithData {}
   export interface Habit_list extends FlowTypeWithData {
@@ -120,8 +128,11 @@ export namespace FlowTypes {
     /** Some groups may recursively nest other row objects */
     rows?: Module_pageRow[];
   }
-  export interface Habit_listRow {
+  /** all data_list type must provide a unique id for each row to allow */
+  interface IDataListRow {
     id: string;
+  }
+  export interface Habit_listRow extends IDataListRow {
     title: string;
     description: string;
     task_id: string;
