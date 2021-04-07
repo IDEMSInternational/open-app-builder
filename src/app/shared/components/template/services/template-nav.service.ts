@@ -49,7 +49,8 @@ export class TemplateNavService {
     action: FlowTypes.TemplateRowAction,
     container: TemplateContainerComponent
   ) {
-    const parentName = container.row ? container.row.value : container.name;
+    // TODO: Find more elegant way to get current root level template name
+    const parentName = location.pathname.replace("/template/", "");
     const [templatename] = action.args;
     const nav_parent_triggered_by = action._triggeredBy;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
