@@ -34,4 +34,14 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     const actionsForTrigger = action_list.filter((a) => a.trigger === trigger);
     this.parent.handleActions(actionsForTrigger, this._row.name);
   }
+
+  /** Update the current value of the row by setting a local variable that matches */
+  setValue(value: any) {
+    const action: FlowTypes.TemplateRowAction = {
+      action_id: "set_local",
+      args: [this._row.name, value],
+      trigger: "click",
+    };
+    return this.parent.handleActions([action], this._row.name);
+  }
 }

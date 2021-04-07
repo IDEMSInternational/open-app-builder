@@ -11,9 +11,9 @@
           <input
             #el
             type="radio"
-            [value]="item.text"
+            [value]="item.name"
             [checked]="el.value === value"
-            [(ngModel)]="_row.value"
+            (click)="setValue(el.value)"
             [name]="_row.name"
           />
           {{ item.text }}
@@ -36,9 +36,9 @@
           <input
             #el
             type="radio"
-            [value]="item.text"
+            [value]="item.name"
             [checked]="el.value === value"
-            [(ngModel)]="_row.value"
+            (click)="setValue(el.value)"
             [name]="_row.name"
           />
           {{ item.text }}
@@ -58,9 +58,9 @@
           <input
             #el
             type="radio"
-            [value]="item.text"
+            [value]="item.name"
             [checked]="el.value === value"
-            [(ngModel)]="_row.value"
+            (click)="setValue(el.value)"
             [name]="_row.name"
           />
           <span> {{ item.text }} </span>
