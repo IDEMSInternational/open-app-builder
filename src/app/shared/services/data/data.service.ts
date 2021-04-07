@@ -90,7 +90,9 @@ export class PLHDataService {
           const listName = data_list_name || flow_name;
           dataLists[listName] = dataLists[listName] || {};
           flow.rows.forEach((row) => {
-            dataLists[flow.flow_name][row.id] = row;
+            if (row.id) {
+              dataLists[flow.flow_name][row.id] = row;
+            }
           });
         }
       });

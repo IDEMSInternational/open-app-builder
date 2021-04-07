@@ -40,7 +40,7 @@ export namespace FlowTypes {
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
     module?: string;
-    /** ... */
+    /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
     data_list_name?: string;
     // debug info
     _xlsxPath?: string;
