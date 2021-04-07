@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
+import { GLOBAL, PLHDataService, TEMPLATE } from "src/app/shared/services/data/data.service";
 
 @Injectable({
   providedIn: "root",
@@ -8,7 +8,10 @@ import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
 export class TemplateService {
   globals = {};
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private dataService: PLHDataService
+  ) {
     this.initialiseGlobals();
   }
 
