@@ -10,5 +10,12 @@ import { TemplateBaseComponent } from "../base";
       [parent]="parent"
     ></plh-template-component>
   </div>`,
+  styles: [
+    `
+      :host {
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class AnimatedSectionComponent extends TemplateBaseComponent {}
