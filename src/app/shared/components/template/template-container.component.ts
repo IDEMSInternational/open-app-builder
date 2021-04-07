@@ -2,10 +2,9 @@ import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
-import { ThemeService } from "src/app/feature/theme/theme-service/theme.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
-import { INavQueryParams, TemplateNavService } from "./services/template-nav.service";
+import { TemplateNavService } from "./services/template-nav.service";
 import { TemplateService } from "./services/template.service";
 
 interface ILocalVariables {
@@ -126,7 +125,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private async processAction(action: FlowTypes.TemplateRowAction) {
     console.log("process action", action);
     const { action_id, args } = action;
-    const [key, value] = args;
+    // NOTE - args will vary depending on action
+    let [key, value] = args;
     switch (action_id) {
       case "set_local":
         return this.setLocalVariable(key, value);
@@ -140,7 +140,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       case "set_field":
         return this.templateService.setField(key, value);
       case "emit":
-        // TODO - handle DB writes or similar for emit handling
+        [value] = args;
+        // write completions to the database for data tracking
+        if (value === "completed") {
+          await this.templateService.recordEvent(this.template, "emit", value);
+        }
         if (this.parent) {
           // continue to emit any actions to parent where defined
           // When emitting, tell parent template to execute actions in

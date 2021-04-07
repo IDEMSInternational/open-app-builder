@@ -962,6 +962,7 @@
     "flow_type": "template",
     "flow_name": "workshop_stepper",
     "status": "released",
+    "db_ignore_events": true,
     "rows": [
       {
         "name": "progress_bar_value",
@@ -990,6 +991,7 @@
     "flow_type": "template",
     "flow_name": "workshop_activity",
     "status": "released",
+    "db_ignore_events": true,
     "rows": [
       {
         "name": "activity_image_src",
@@ -1278,6 +1280,7 @@
     "flow_type": "template",
     "flow_name": "nav_buttons",
     "status": "released",
+    "db_ignore_events": true,
     "rows": [
       {
         "type": "display_group",
@@ -1333,6 +1336,7 @@
     "flow_type": "template",
     "flow_name": "pair",
     "status": "released",
+    "db_ignore_events": true,
     "rows": [
       {
         "name": "hide_animated_section_1",
