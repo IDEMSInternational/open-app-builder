@@ -40,7 +40,11 @@ export class TmplDisplayGroupComponent
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
   }
-  ngAfterContentInit() {
-    this.elRef.nativeElement.style.setProperty("--background-tool_1", "#F89B2D");
+  ngAfterContentInit() {}
+  setBackground() {
+    switch (this.style) {
+      case "tool_1":
+        this.elRef.nativeElement.style.setProperty("--background", "");
+    }
   }
 }
