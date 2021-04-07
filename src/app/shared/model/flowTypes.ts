@@ -35,6 +35,10 @@ export namespace FlowTypes {
     flow_name: string;
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
+    /** Events triggered from the flow that would ordinarily write to the db (e.g. emit completed) will be ignored */
+    db_ignore_events?: boolean;
+    /** By default data will be removed following server-sync. Specify if instead should be retained locally also */
+    db_persist_events?: boolean;
     module?: string;
     // debug info
     _xlsxPath?: string;
@@ -394,7 +398,6 @@ export namespace FlowTypes {
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
-      | "set_value" // This currently is same as set_local (remove?)
       | "set_field"
       | "set_local"
       | "set_global"

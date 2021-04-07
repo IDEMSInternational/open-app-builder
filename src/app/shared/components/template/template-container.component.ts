@@ -2,10 +2,9 @@ import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
-import { ThemeService } from "src/app/feature/theme/theme-service/theme.service";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
-import { INavQueryParams, TemplateNavService } from "./services/template-nav.service";
+import { TemplateNavService } from "./services/template-nav.service";
 import { TemplateService } from "./services/template.service";
 
 interface ILocalVariables {
@@ -18,7 +17,6 @@ const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
   "value",
   "action_list",
   "parameter_list",
-  "action_list",
 ];
 /**
  * Some types that contain nested rows are nested in display only (not template properties)
@@ -127,11 +125,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private async processAction(action: FlowTypes.TemplateRowAction) {
     console.log("process action", action);
     const { action_id, args } = action;
-    const [key, value] = args;
+    // NOTE - args will vary depending on action
+    let [key, value] = args;
     switch (action_id) {
       case "set_local":
-      case "set_value":
-        console.log("Setting local variable", key, value);
         return this.setLocalVariable(key, value);
       case "set_global":
         console.log("Setting global variable", key, value);
@@ -143,7 +140,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       case "set_field":
         return this.templateService.setField(key, value);
       case "emit":
-        // TODO - handle DB writes or similar for emit handling
+        [value] = args;
+        // write completions to the database for data tracking
+        if (value === "completed") {
+          await this.templateService.recordEvent(this.template, "emit", value);
+        }
         if (this.parent) {
           // continue to emit any actions to parent where defined
           // When emitting, tell parent template to execute actions in
@@ -215,6 +216,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * with first recorded (from parent templates) taking priority over current.
    *
    * @param variables - set of parent or existing variables to take priority
+   * @param localVariables - working set of variables available to this template
    *
    */
   private processVariables(
@@ -390,8 +392,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       const { matchedExpression, type, fieldName } = evaluator;
       switch (type) {
         case "local":
-          parsedValue = this.localVariables[fieldName]?.value || "";
-          parsedValue = localVariables[fieldName]?.value;
+          // check local variables set through set_variables / nested_properties
+          if (localVariables.hasOwnProperty(fieldName)) {
+            parsedValue = localVariables[fieldName]?.value;
+          }
+          // also check sibling components for name match and return value where set
+          else {
+            parsedValue = this.template.rows.find((r) => r.name === fieldName)?.value;
+          }
+          // TODO - handle case where match found (but still returns undefined)
           if (!parsedValue) {
             console.error("could not parse local variable", { evaluator, localVariables });
             parsedValue = `{{local.${fieldName}}}`;
