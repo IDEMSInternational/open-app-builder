@@ -1,15 +1,16 @@
 import {
-  Directive,
-  ViewContainerRef,
+  AfterContentInit,
   Component,
   ComponentFactoryResolver,
-  Input,
-  ViewChild,
-  Type,
-  OnInit,
+  Directive,
   ElementRef,
-  AfterContentInit,
   HostBinding,
+  Input,
+  OnInit,
+  Type,
+  ViewChild,
+  ViewContainerRef,
+  ViewEncapsulation,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
@@ -52,6 +53,14 @@ export class TmplCompHostDirective {
     <!--    </div>-->
   `,
   styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
+  encapsulation: ViewEncapsulation.None,
+  styles: [
+    `
+      :host :nth-child(1n) {
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
   /**
