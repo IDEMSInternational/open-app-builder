@@ -8,7 +8,7 @@ ion-button {
   color: #fff;
   text-transform: none;
   white-space: pre-line;
-  padding: 5px 0;
+  padding: var(--regular-padding);
   min-height: 70px;
   min-width: 59px;
   --border-radius: 15px;
