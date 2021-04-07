@@ -69,10 +69,10 @@ plh-template-component {
 }
 
 .tmpl-image-container {
-  width: calc(100% - 20px);
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin: 10px;
+  padding: 10px;
 }
 
 .tmpl-video-container {
