@@ -25,6 +25,7 @@ $tool_1: #f89b2d;
   --ion-btn-primary-color: linear-gradient(168.87deg, #0f8ab2 28.12%, #0d4060 100%);
   --ion-btn-primary-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+  --regular-padding: 5px;
   --ion-tool-active: linear-gradient(
     180deg,
     #{tone($tool_1, 5, up)} 0%,

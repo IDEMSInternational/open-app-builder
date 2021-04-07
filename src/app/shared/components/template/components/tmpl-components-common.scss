@@ -123,6 +123,7 @@ p {
 .title-wrapper {
   display: flex;
   align-items: center;
+  padding: var(--regular-padding);
   h1 {
     font-size: 25px;
     margin: 0;
@@ -156,6 +157,7 @@ p {
 .subtitle-wrapper {
   display: flex;
   align-items: center;
+  padding: var(--regular-padding);
   h2 {
     font-size: 20px;
     line-height: 22px;
