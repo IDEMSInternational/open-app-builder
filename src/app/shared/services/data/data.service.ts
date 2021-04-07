@@ -17,6 +17,7 @@ import { reminder_list } from "src/data/reminder_list";
 import { template } from "src/data/template";
 import { component_defaults } from "src/data/component_defaults";
 import { global } from "src/data/global";
+import { data_list } from "src/data/data_list";
 
 export const COMPLETION_LIST = completion_list;
 export const CONVERSATION = conversation;
@@ -34,6 +35,7 @@ export const REMINDER_LIST = reminder_list;
 export const TEMPLATE = template;
 export const COMPONENT_DEFAULTS = component_defaults;
 export const GLOBAL = global;
+export const DATA_LIST = data_list;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
 const mapping: { [key in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
@@ -54,7 +56,7 @@ const mapping: { [key in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
   component_defaults: COMPONENT_DEFAULTS,
   global: GLOBAL,
   // TODO - once we have data_list types they should be imported here
-  data_list: [],
+  data_list: DATA_LIST,
 };
 
 /**
@@ -91,7 +93,7 @@ export class PLHDataService {
           dataLists[listName] = dataLists[listName] || {};
           flow.rows.forEach((row) => {
             if (row.id) {
-              dataLists[flow.flow_name][row.id] = row;
+              dataLists[listName][row.id] = row;
             }
           });
         }

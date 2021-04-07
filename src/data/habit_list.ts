@@ -4,7 +4,6 @@
   {
     "flow_type": "habit_list",
     "flow_name": "habit_list",
-    data_list_name:'habit_list',
     "status": "released",
     "rows": [
       {

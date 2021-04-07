@@ -3,6 +3,7 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "scripts/types";
+import { getNestedProperty } from "src/app/shared/utils";
 
 @Injectable({
   providedIn: "root",
@@ -75,6 +76,12 @@ export class TemplateService {
 
   setGlobal(key: string, value: string) {
     this.globals[key] = value;
+  }
+
+  /** Get the value of a data_list item as defined within templates */
+  getDataListByPath(path: string) {
+    const data = getNestedProperty(this.dataService.dataLists, path);
+    return data;
   }
 
   /** Record a template event to the database */
