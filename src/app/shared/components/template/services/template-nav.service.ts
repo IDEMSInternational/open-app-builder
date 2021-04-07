@@ -49,11 +49,11 @@ export class TemplateNavService {
     action: FlowTypes.TemplateRowAction,
     container: TemplateContainerComponent
   ) {
-    const { router, name } = container;
+    const parentName = container.row ? container.row.value : container.name;
     const [templatename] = action.args;
     const nav_parent_triggered_by = action._triggeredBy;
-    const queryParams: INavQueryParams = { nav_parent: name, nav_parent_triggered_by };
-    return router.navigate(["template", templatename], {
+    const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
+    return container.router.navigate(["template", templatename], {
       queryParams,
       queryParamsHandling: "merge",
     });
