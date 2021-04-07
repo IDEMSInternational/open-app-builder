@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterContentInit, Component, ElementRef, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
@@ -14,10 +14,23 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     </div>
   </div>`,
   styleUrls: ["../tmpl-components-common.scss"],
+  styles: [
+    `
+      :host {
+        border-radius: 20px;
+      }
+    `,
+  ],
 })
-export class TmplDisplayGroupComponent extends TemplateBaseComponent implements OnInit {
+export class TmplDisplayGroupComponent
+  extends TemplateBaseComponent
+  implements OnInit, AfterContentInit {
   style: string | null;
   offset: number = 0;
+
+  constructor(private elRef: ElementRef) {
+    super();
+  }
 
   ngOnInit() {
     this.getParams();
@@ -26,5 +39,8 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
+  }
+  ngAfterContentInit() {
+    this.elRef.nativeElement.style.setProperty("--background-tool_1", "#F89B2D");
   }
 }
