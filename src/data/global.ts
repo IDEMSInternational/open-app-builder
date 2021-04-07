@@ -319,7 +319,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_1on1_short",
-        "value": "One-on-One Time"
+        "value": "One-on-One Time",
+        "comments": "pop-ups done"
       },
       {
         "type": "declare_global_constant",

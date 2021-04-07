@@ -154,6 +154,123 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "home_screen",
+    "status": "released",
+    "comments": "These templates require more actions than just emit and set_local",
+    "rows": [
+      {
+        "type": "display_group",
+        "name": "dg_example_7",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "weekly_workshops"
+            ],
+            "_raw": "click | go_to:weekly_workshops",
+            "_cleaned": "click | go_to:weekly_workshops"
+          }
+        ],
+        "parameter_list": {
+          "style": "home_screen"
+        },
+        "style_list": [
+          "margin: 40px 10px"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/home_page/home_page_workshops.svg"
+          },
+          {
+            "type": "title",
+            "name": "title_ex_s",
+            "value": "Weekly Workshops",
+            "parameter_list": {
+              "style": "white"
+            }
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_7",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "parent_points"
+            ],
+            "_raw": "click | go_to:parent_points",
+            "_cleaned": "click | go_to:parent_points"
+          }
+        ],
+        "parameter_list": {
+          "style": "home_screen"
+        },
+        "style_list": [
+          "margin: 0px 10px"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/home_page/home_page_parent_points.svg"
+          },
+          {
+            "type": "title",
+            "name": "title_ex_s",
+            "value": "Parent Points",
+            "parameter_list": {
+              "style": "white"
+            }
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_7",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "parent_centre"
+            ],
+            "_raw": "click | go_to:parent_centre",
+            "_cleaned": "click | go_to:parent_centre"
+          }
+        ],
+        "parameter_list": {
+          "style": "home_screen"
+        },
+        "style_list": [
+          "margin: 40px 10px 0 10px"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/home_page/home_page_parent_center.svg"
+          },
+          {
+            "type": "title",
+            "name": "title_ex_s",
+            "value": "Weekly Workshops",
+            "parameter_list": {
+              "style": "white"
+            }
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "workshop_buttons_temp",
     "status": "released",
     "rows": [
@@ -1963,7 +2080,7 @@
           },
           {
             "name": "activity_title",
-            "value": "Essential Tools",
+            "value": "@global.essential_tools",
             "type": "set_variable"
           },
           {
@@ -5380,8 +5497,14 @@
         "type": "set_variable"
       },
       {
+        "name": "radio_group_default",
+        "value": "name:name_var_3 | text:Option ",
+        "type": "set_variable"
+      },
+      {
         "type": "radio_group",
         "name": "option_buttons",
+        "value": "@local.radio_group_default",
         "parameter_list": {
           "radio_button_type": "btn_text",
           "answer_list": "@local.answer_list",
@@ -5391,25 +5514,25 @@
       {
         "type": "text",
         "name": "text_with_option",
-        "value": "The option currently selecte is @local.option_buttons"
+        "value": "The option currently selecte is @local.option_buttons.text"
       },
       {
         "type": "text",
         "name": "text_option_1",
         "value": "This is the text to show if option 1 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_1\""
+        "hidden": "\"@local.option_buttons.name\"==\"name_var_1\""
       },
       {
         "type": "text",
         "name": "text_option_2",
         "value": "This is the text to show if option 2 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_2\""
+        "hidden": "\"@local.option_buttons.name\"==\"name_var_2\""
       },
       {
         "type": "text",
         "name": "text_option_3",
         "value": "This is the text to show if option 3 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_3\""
+        "hidden": "\"@local.option_buttons.name\"==\"name_var_3\""
       },
       {
         "name": "output_fieldname",
@@ -5419,6 +5542,12 @@
       {
         "type": "radio_group",
         "name": "option_buttons_2"
+      },
+      {
+        "type": "text",
+        "name": "text_option_4",
+        "value": "This is the style of options_buttons @local.option_buttons",
+        "hidden": "\"@local.option_buttons.name\"==\"name_var_3\""
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_component_variables.xlsx"
@@ -7722,6 +7851,11 @@
               "margin-top: 15px",
               "max-width: 320px"
             ]
+          },
+          {
+            "type": "button",
+            "name": "bt_2",
+            "value": "Button"
           }
         ]
       },
@@ -7768,6 +7902,11 @@
               "margin-top: 15px",
               "max-width: 320px"
             ]
+          },
+          {
+            "type": "button",
+            "name": "bt_3",
+            "value": "Button"
           }
         ]
       },
@@ -7814,6 +7953,11 @@
               "margin-top: 15px",
               "max-width: 320px"
             ]
+          },
+          {
+            "type": "button",
+            "name": "bt_2",
+            "value": "Button"
           }
         ]
       },
@@ -7860,6 +8004,11 @@
               "margin-top: 15px",
               "max-width: 320px"
             ]
+          },
+          {
+            "type": "button",
+            "name": "bt_2",
+            "value": "Button"
           }
         ]
       }
@@ -12484,8 +12633,8 @@
                   },
                   {
                     "name": "button",
+                    "value": "@global.ideas_short_button",
                     "hidden": "false",
-                    "comments": "(-) Say something nice first \n(-) Speak to her in a calm voice \n(-) Tell @global.w_instruct_teen_girl what she wants her to do ",
                     "type": "set_variable"
                   }
                 ]
@@ -14591,7 +14740,7 @@
                       },
                       {
                         "name": "title",
-                        "value": "STEP 1: Share :) and :( ",
+                        "value": "Step 1: Share :) and :( ",
                         "hidden": "false",
                         "type": "set_variable"
                       },
@@ -14619,7 +14768,7 @@
                           },
                           {
                             "name": "title",
-                            "value": "STEP 2: Bring ideas!",
+                            "value": "Step 2: Bring ideas!",
                             "hidden": "false",
                             "type": "set_variable"
                           },
@@ -14647,7 +14796,7 @@
                               },
                               {
                                 "name": "title",
-                                "value": "STEP 3: Pick and try one!",
+                                "value": "Step 3: Pick and try one!",
                                 "hidden": "false",
                                 "type": "set_variable"
                               },
@@ -14777,7 +14926,6 @@
                   {
                     "name": "intro_text",
                     "value": "Praise is a powerful parenting skill.",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   }
                 ]
@@ -14956,14 +15104,24 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "How did praise make her teens feel?\n\nWhy did she praise them?",
+                    "value": "How did praise make @global.w_praise_female_caregiver_name's teens feel?\n\nWhy did she praise them?",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_praise_talk_2_pop"
+                        ],
+                        "_raw": "click | pop_up:w_praise_talk_2_pop",
+                        "_cleaned": "click | pop_up:w_praise_talk_2_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "@global.w_praise_female_caregiver_name praised her teens...\n(-) to get them to do it more often\n(-) to help her finish her work \n(-) to make them feel good \n(-) to make herself feel good ",
                     "type": "set_variable"
                   }
                 ]
@@ -14980,6 +15138,32 @@
                 "type": "set_variable"
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_talk_2_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "@global.w_praise_female_caregiver_name praised her teens...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) to get them to do it more often\n(-) to help her finish her work \n(-) to make them feel good \n(-) to make herself feel good ",
+            "type": "set_variable"
           }
         ]
       }
@@ -15159,8 +15343,18 @@
                   },
                   {
                     "name": "button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_praise_talk_3_pop"
+                        ],
+                        "_raw": "click | pop_up:w_praise_talk_3_pop",
+                        "_cleaned": "click | pop_up:w_praise_talk_3_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "Sometimes it’s hard to think of what to praise your teen for! Here are some ideas.\n(-) Being kind to someone \n(-) Cleaning their room \n(-) Joining a family meal \n(-) Greeting other family members \n(-) Looking after siblings \n(-) Coming home in time \n(-) Showing thoughtfulness \n(-) Saying 'please' or  'thank you' \n(-) Going to school  \n(-) Doing chores or schoolwork  \n(-) Getting through mealtime peacefully ",
                     "type": "set_variable"
                   }
                 ]
@@ -15168,6 +15362,36 @@
             ]
           }
         ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "w_praise_talk_3_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Sometimes it’s hard to think of what to praise your teen for! Here are some ideas:",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) Being kind to someone \n(-) Cleaning their room \n(-) Joining a family meal \n(-) Greeting other family members \n(-) Looking after siblings \n(-) Coming home in time \n(-) Showing thoughtfulness \n(-) Saying 'please' or  'thank you' \n(-) Going to school  \n(-) Doing chores or schoolwork  \n(-) Getting through mealtime peacefully ",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "value": "\n",
+        "type": "set_variable"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_praise.xlsx"
@@ -15211,12 +15435,33 @@
                   {
                     "name": "button_1",
                     "value": "@global.ideas_button",
-                    "comments": "same ideas as in w_praise_talk_3",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_praise_talk_3_pop"
+                        ],
+                        "_raw": "click | pop_up:w_praise_talk_3_pop",
+                        "_cleaned": "click | pop_up:w_praise_talk_3_pop"
+                      }
+                    ],
                     "type": "set_variable"
                   },
                   {
                     "name": "button_2",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_praise_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_praise_tools_activity",
+                        "_cleaned": "click | go_to:w_praise_tools_activity"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   },

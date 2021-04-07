@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
-import introJs from 'intro.js';
-import { TOUR } from '../data/data.service';
+import introJs from "intro.js";
+import { TOUR } from "../data/data.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class TourService {
-
   introJS = introJs();
 
   waitForRoutingDelay = 1000;
 
-  constructor(private router: Router) {
+  constructor(private router: Router) {}
 
+  listTourNames(): string[] {
+    return TOUR.map((t) => t.flow_name);
   }
 
   async startTour(tourName = "test_tour") {
@@ -27,14 +28,14 @@ export class TourService {
           title: row.title,
           element: row.element,
         })),
-        hidePrev: true
+        hidePrev: true,
       });
       this.introJS.onafterchange(() => {
         setTimeout(() => this.introJS.refresh(), this.waitForRoutingDelay);
       });
       this.introJS.onbeforechange((elem) => {
         this.introJS.currentStep();
-        const stepNumber = this.introJS.currentStep()
+        const stepNumber = this.introJS.currentStep();
         const currentRow = matchingTour.rows[stepNumber];
         if (currentRow.route) {
           this.router.navigateByUrl(currentRow.route);
