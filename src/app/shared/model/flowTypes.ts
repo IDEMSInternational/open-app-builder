@@ -95,6 +95,10 @@ export namespace FlowTypes {
     flow_type: "reminder_list";
     rows: Reminder_listRow[];
   }
+  export interface Data_list extends FlowTypeWithData {
+    flow_type: "data_list";
+    rows: Data_listRow[];
+  }
 
   export interface Conversation extends RapidProFlowExport.RootObject {}
 
@@ -133,10 +137,11 @@ export namespace FlowTypes {
     rows?: Module_pageRow[];
   }
   /** all data_list type must provide a unique id for each row to allow */
-  interface IDataListRow {
+  interface Data_listRow {
     id: string;
+    [key: string]: any;
   }
-  export interface Habit_listRow extends IDataListRow {
+  export interface Habit_listRow extends Data_listRow {
     title: string;
     description: string;
     task_id: string;
@@ -400,7 +405,7 @@ export namespace FlowTypes {
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
-    type: "local" | "field" | "fields" | "global";
+    type: "local" | "field" | "fields" | "global" | "data";
     fieldName: string;
   }
   export interface TemplateRowAction {
