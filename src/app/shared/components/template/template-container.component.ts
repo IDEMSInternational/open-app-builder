@@ -31,7 +31,7 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
 ];
 
 /** Specific fields that will be evaluated as javascript */
-const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["hidden"];
+const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["hidden", "disabled"];
 
 @Component({
   selector: "plh-template-container",
