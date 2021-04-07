@@ -1,10 +1,10 @@
-import { AfterContentInit, Component, ElementRef, OnInit } from "@angular/core";
+import { AfterContentInit, Component, ElementRef, HostBinding, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
 @Component({
   selector: "plh-tmpl-display-group",
-  template: `<div class="display-group" [class]="style" [style.marginBottom.px]="offset">
+  template: ` <div class="display-group" [class]="style" [style.marginBottom.px]="offset">
     <div [style.marginBottom.px]="-offset" class="offset">
       <plh-template-component
         *ngFor="let childRow of _row.rows"
@@ -22,14 +22,17 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     `,
   ],
 })
-export class TmplDisplayGroupComponent
-  extends TemplateBaseComponent
-  implements OnInit, AfterContentInit {
+export class TmplDisplayGroupComponent extends TemplateBaseComponent implements OnInit {
   style: string | null;
   offset: number = 0;
+  bgColor: string;
 
   constructor(private elRef: ElementRef) {
     super();
+  }
+
+  @HostBinding("attr.color") get color() {
+    return this.setBackground();
   }
 
   ngOnInit() {
@@ -40,11 +43,21 @@ export class TmplDisplayGroupComponent
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
   }
-  ngAfterContentInit() {}
+
   setBackground() {
     switch (this.style) {
       case "tool_1":
-        this.elRef.nativeElement.style.setProperty("--background", "");
+        return "#F89B2D";
+      case "tool_2":
+        return "#FF7A00";
+      case "tool_3":
+        return "#0F8AB2";
+      case "tool_4":
+        return "#096B8B";
+      case "tool_5":
+        return "#0D3F60";
+      default:
+        return "#0D4060";
     }
   }
 }
