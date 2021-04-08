@@ -7806,7 +7806,7 @@
             "name": "bt_1",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color full-width"
             }
           }
         ]
@@ -7860,7 +7860,7 @@
             "name": "bt_2",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color full-width"
             }
           }
         ]
@@ -7914,7 +7914,7 @@
             "name": "bt_3",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color  full-width"
             }
           }
         ]
@@ -7968,7 +7968,7 @@
             "name": "bt_3",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color full-width"
             }
           }
         ]
@@ -8022,8 +8022,128 @@
             "name": "bt_3",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color full-width"
             }
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_5"
+        },
+        "style_list": [
+          "padding: 10px 15px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "ft",
+            "value": "GET REAL",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top:20px"
+            ]
+          },
+          {
+            "type": "subtitle",
+            "name": "ss",
+            "value": "Subtitle",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top: 15px"
+            ]
+          },
+          {
+            "type": "text",
+            "name": "ftt",
+            "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "parameter_list": {
+              "text_align": "left",
+              "style": "whiteText"
+            },
+            "style_list": [
+              "margin-top: 15px",
+              "max-width: 320px"
+            ]
+          },
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/workshop_modes/group/relax.svg",
+            "parameter_list": {
+              "style": "corner"
+            }
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_2"
+        },
+        "style_list": [
+          "padding: 10px 15px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "ft",
+            "value": "GET REAL",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top:20px"
+            ]
+          },
+          {
+            "type": "subtitle",
+            "name": "ss",
+            "value": "Subtitle",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top: 15px"
+            ]
+          },
+          {
+            "type": "text",
+            "name": "ftt",
+            "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "parameter_list": {
+              "text_align": "left",
+              "style": "whiteText"
+            },
+            "style_list": [
+              "margin-top: 15px",
+              "max-width: 320px"
+            ]
+          },
+          {
+            "type": "display_group",
+            "name": "bgg_1",
+            "parameter_list": {
+              "style": "tool_1"
+            },
+            "style_list": [
+              "margin-bottom: 15px"
+            ],
+            "rows": [
+              {
+                "type": "image",
+                "name": "image",
+                "value": "plh_images/workshop_modes/group/relax.svg",
+                "parameter_list": {
+                  "style": "corner"
+                }
+              }
+            ]
           }
         ]
       }
