@@ -62,6 +62,9 @@
 plh-template-component[data-hidden="true"] {
   display: none;
 }
-.no-padding {
+plh-template-component[data-debug-hidden="true"] {
+  display: block;
+}
+.no_padding {
   padding: 0 !important;
 }

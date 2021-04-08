@@ -250,3 +250,13 @@ p {
     width: 100%;
   }
 }
+
+.plh-tmpl-comp[data-hidden="true"] {
+  display: none;
+}
+.plh-tmpl-comp[data-debug="true"] {
+  display: block;
+  border: 1px solid #c7c7c7;
+  padding: 2px;
+  margin: 2px;
+}
