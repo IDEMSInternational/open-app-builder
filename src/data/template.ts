@@ -5629,27 +5629,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "example_data_template",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "@data.example.example1.value",
-        "comments": "This should read the data from the the data_list"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_1",
-        "parameter_list": {
-          "answer_list": "@data.example.example2.value"
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "example_call_global_constants",
     "status": "released",
     "rows": [
@@ -7827,7 +7806,7 @@
             "name": "bt_1",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color full-width"
             }
           }
         ]
@@ -7881,7 +7860,7 @@
             "name": "bt_2",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color full-width"
             }
           }
         ]
@@ -7935,7 +7914,7 @@
             "name": "bt_3",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color  full-width"
             }
           }
         ]
@@ -7989,7 +7968,7 @@
             "name": "bt_3",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color full-width"
             }
           }
         ]
@@ -8043,8 +8022,128 @@
             "name": "bt_3",
             "value": "Button",
             "parameter_list": {
-              "style": "nested_color"
+              "style": "nested_color full-width"
             }
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_5"
+        },
+        "style_list": [
+          "padding: 10px 15px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "ft",
+            "value": "GET REAL",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top:20px"
+            ]
+          },
+          {
+            "type": "subtitle",
+            "name": "ss",
+            "value": "Subtitle",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top: 15px"
+            ]
+          },
+          {
+            "type": "text",
+            "name": "ftt",
+            "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "parameter_list": {
+              "text_align": "left",
+              "style": "whiteText"
+            },
+            "style_list": [
+              "margin-top: 15px",
+              "max-width: 320px"
+            ]
+          },
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/workshop_modes/group/relax.svg",
+            "parameter_list": {
+              "style": "corner"
+            }
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_2"
+        },
+        "style_list": [
+          "padding: 10px 15px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "ft",
+            "value": "GET REAL",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top:20px"
+            ]
+          },
+          {
+            "type": "subtitle",
+            "name": "ss",
+            "value": "Subtitle",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top: 15px"
+            ]
+          },
+          {
+            "type": "text",
+            "name": "ftt",
+            "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "parameter_list": {
+              "text_align": "left",
+              "style": "whiteText"
+            },
+            "style_list": [
+              "margin-top: 15px",
+              "max-width: 320px"
+            ]
+          },
+          {
+            "type": "display_group",
+            "name": "bgg_1",
+            "parameter_list": {
+              "style": "tool_1"
+            },
+            "style_list": [
+              "margin-bottom: 15px"
+            ],
+            "rows": [
+              {
+                "type": "image",
+                "name": "image",
+                "value": "plh_images/workshop_modes/group/relax.svg",
+                "parameter_list": {
+                  "style": "corner"
+                }
+              }
+            ]
           }
         ]
       }
@@ -12502,7 +12601,7 @@
           },
           {
             "name": "slide_text_3",
-            "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????”\n\n(inside) @global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
+            "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????.”\n\n(inside) @global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
             "type": "set_variable"
           },
           {
@@ -12663,56 +12762,19 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Discuss together: \n\n(-) How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n(-) What could @global.w_instruct_female_caregiver have done differently? ",
+                    "value": "How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n\nWhat could @global.w_instruct_female_caregiver have done differently? ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
-                    "action_list": [
-                      {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "w_instruct_talk_1_pop"
-                        ],
-                        "_raw": "click | pop_up:w_instruct_talk_1_pop",
-                        "_cleaned": "click | pop_up:w_instruct_talk_1_pop"
-                      }
-                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "instruct",
-    "flow_name": "w_instruct_talk_1_pop",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "suggestions",
-        "value": "suggestions",
-        "rows": [
-          {
-            "name": "description_text",
-            "value": "@global.w_instruct_female_caregiver could have...",
-            "type": "set_variable"
-          },
-          {
-            "name": "list_text",
-            "value": "(-) Said something nice first \n(-) Spoken to her in a calm voice \n(-) Told @global.w_instruct_teen_girl what she wants her to do ",
-            "type": "set_variable"
           }
         ]
       }
@@ -12884,56 +12946,20 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Discuss together: \n\n(-) Why do you think it worked better for @global.w_instruct_female_caregiver this time? \n(-) What do you think worked well? ",
+                    "value": "Why do you think it worked better for @global.w_instruct_female_caregiver this time? \n\nWhat do you think worked well? ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
-                    "action_list": [
-                      {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "w_instruct_talk_2_pop"
-                        ],
-                        "_raw": "click | pop_up:w_instruct_talk_2_pop",
-                        "_cleaned": "click | pop_up:w_instruct_talk_2_pop"
-                      }
-                    ],
                     "hidden": "false",
+                    "comments": "(-) @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n(-) @global.w_instruct_female_caregiver was able to stay calm  \n(-) @global.w_instruct_female_caregiver  kept a positive attitude ",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "instruct",
-    "flow_name": "w_instruct_talk_2_pop",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "suggestions",
-        "value": "suggestions",
-        "rows": [
-          {
-            "name": "description_text",
-            "value": "It worked better this time because...",
-            "type": "set_variable"
-          },
-          {
-            "name": "list_text",
-            "value": "(-) @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n(-) @global.w_instruct_female_caregiver was able to stay calm  \n(-) @global.w_instruct_female_caregiver  kept a positive attitude ",
-            "type": "set_variable"
           }
         ]
       }
@@ -13107,18 +13133,8 @@
                   },
                   {
                     "name": "button",
-                    "action_list": [
-                      {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "w_instruct_talk_3_pop"
-                        ],
-                        "_raw": "click | pop_up:w_instruct_talk_3_pop",
-                        "_cleaned": "click | pop_up:w_instruct_talk_3_pop"
-                      }
-                    ],
                     "hidden": "false",
+                    "comments": "Positive instructions: \n(-) I like your music, but could you turn it down so that we can talk whilst we have dinner? Thank you – I really appreciate this. \n(-) That’s great. Who is the singer? Please turn this off when you come in the house but you can play it in your room quietly if you want. Thank you!",
                     "type": "set_variable"
                   }
                 ]
@@ -15089,7 +15105,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Share with each other:\n\n(-) When last did someone thank you or said you did something great? \n(-) How did it make you feel? \n(-) How does it feel if you are not thanked or praised for what you do? \n\nParents usually don’t get thanked or praised enough. Maybe you can give your teens the right example and praise them first when they do something well! ",
+                    "value": "Share with each other:\n(-) When last did someone thank you or said you did something great? \n(-) How did it make you feel? \n(-) How does it feel if you are not thanked or praised for what you do? \n\nParents usually don’t get thanked or praised enough. Maybe you can give your teens the right example and praise them first when they do something well! ",
                     "type": "set_variable"
                   }
                 ]
@@ -15214,6 +15230,7 @@
               {
                 "name": "intro_text",
                 "value": "Let's discuss this story.",
+                "comments": "placeholder",
                 "type": "set_variable"
               },
               {
@@ -15222,7 +15239,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Discuss together:\n\n(-) How did praise make @global.w_praise_female_caregiver_name's teens feel?\n(-) Why did she praise them?",
+                    "value": "How did praise make @global.w_praise_female_caregiver_name's teens feel?\n\nWhy did she praise them?",
                     "type": "set_variable"
                   },
                   {
@@ -15247,6 +15264,7 @@
               {
                 "name": "outro_text",
                 "value": "The same can work for you!",
+                "comments": "placeholder",
                 "type": "set_variable"
               },
               {
@@ -15446,6 +15464,7 @@
               {
                 "name": "intro_text",
                 "value": "Let's practice giving praise.",
+                "comments": "placeholder",
                 "type": "set_variable"
               },
               {
@@ -15454,7 +15473,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Share with each other: \n\n(-) What can you praise your teen for? \n(-) What has someone else done well during this workshop? Tell them!\n(-) How did it make you feel to praise someone?\n(-) How did it make you feel to be praised?",
+                    "value": "Share with each other: \n(-) What can you praise your teen for? \n(-) What has someone else done well during this workshop? Tell them!\n(-) How did it make you feel to praise someone?\n(-) How did it make you feel to be praised?",
                     "type": "set_variable"
                   },
                   {
