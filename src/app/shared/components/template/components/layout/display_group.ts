@@ -39,6 +39,10 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
     this.getParams();
   }
 
+  clickDisplayGroup() {
+    this.triggerActions("click");
+  }
+
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
