@@ -307,8 +307,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_self_care_short",
-        "value": "Self-Care",
-        "comments": "pop-ups done"
+        "value": "Self-Care"
       },
       {
         "type": "declare_global_constant",
