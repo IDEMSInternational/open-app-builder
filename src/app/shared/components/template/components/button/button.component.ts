@@ -42,10 +42,10 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     const color = this.elRef.nativeElement.parentElement.parentElement.parentElement.parentElement.parentElement.attributes[
       "color"
     ].value.trim();
-    this.nestedProperty = `linear-gradient(${this.hexToRGB(color, "up", 4)} 0%, ${this.hexToRGB(
+    this.nestedProperty = `linear-gradient(${this.hexToRGB(color, "down", 2)} 0%, ${this.hexToRGB(
       color,
       "down",
-      4
+      3
     )} 100%)`;
   }
   hexToRGB(hex, change: "up" | "down", tone: number) {
