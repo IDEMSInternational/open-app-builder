@@ -13,7 +13,7 @@ import { Subscription } from "rxjs";
           <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-title style="text-align: center" routerLink="/">
+      <ion-title style="text-align: left" routerLink="/">
         <ion-icon src="assets/images/star.svg" style="margin: -1px 8px"></ion-icon>
         <span>{{ title }}</span>
       </ion-title>
@@ -21,6 +21,9 @@ import { Subscription } from "rxjs";
         <plh-debug-toggle *ngIf="showDebugToggle"></plh-debug-toggle>
         <ion-button routerLink="/reminders"
           ><ion-icon slot="icon-only" name="notifications-outline"></ion-icon
+        ></ion-button>
+        <ion-button routerLink="/template"
+          ><ion-icon slot="icon-only" name="list-circle-outline"></ion-icon
         ></ion-button>
       </ion-buttons>
     </ion-toolbar>
