@@ -52,14 +52,14 @@
         "type": "step",
         "title": "Weekly Workshops",
         "message_text": "Click this button to access the weekly workshops",
-        "element": "#main-content > plh-home > ion-content > div > div:nth-child(1) > div",
+        "element": "#main-content > plh-home > ion-content > div > div:nth-child(1)",
         "route": "home"
       },
       {
         "type": "step",
         "title": "Start a workshop",
         "message_text": "Click here to continue your last workshop",
-        "element": "#main-content > plh-template-testing.ng-star-inserted.ion-page.can-go-back > ion-content > plh-template-container > div > plh-template-component:nth-child(2) > div > plh-button",
+        "element": "#main-content > plh-template-testing > ion-content > plh-template-container > div > plh-template-component:nth-child(2)",
         "route": "template/workshop_buttons_temp"
       },
       {
