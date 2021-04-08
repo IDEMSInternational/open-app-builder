@@ -166,17 +166,17 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "weekly_workshops"
+              "feature_workshops_page"
             ],
-            "_raw": "click | go_to:weekly_workshops",
-            "_cleaned": "click | go_to:weekly_workshops"
+            "_raw": "click | go_to:feature_workshops_page",
+            "_cleaned": "click | go_to:feature_workshops_page"
           }
         ],
         "parameter_list": {
-          "style": "home_screen"
+          "style": "home_screen standart"
         },
         "style_list": [
-          "margin: 40px 10px"
+          "margin: 40px 10px 0px 10px"
         ],
         "rows": [
           {
@@ -190,7 +190,10 @@
             "value": "Weekly Workshops",
             "parameter_list": {
               "style": "white"
-            }
+            },
+            "style_list": [
+              "align-self: flex-start"
+            ]
           }
         ]
       },
@@ -209,10 +212,10 @@
           }
         ],
         "parameter_list": {
-          "style": "home_screen"
+          "style": "home_screen shade"
         },
         "style_list": [
-          "margin: 0px 10px"
+          "margin: 40px 10px 0px 10px"
         ],
         "rows": [
           {
@@ -223,10 +226,13 @@
           {
             "type": "title",
             "name": "title_ex_s",
-            "value": "Parent Points",
+            "value": "ParentPoints",
             "parameter_list": {
               "style": "white"
-            }
+            },
+            "style_list": [
+              "align-self: flex-start"
+            ]
           }
         ]
       },
@@ -245,10 +251,10 @@
           }
         ],
         "parameter_list": {
-          "style": "home_screen"
+          "style": "home_screen dark"
         },
         "style_list": [
-          "margin: 40px 10px 0 10px"
+          "margin: 40px 10px 0px 10px"
         ],
         "rows": [
           {
@@ -259,10 +265,13 @@
           {
             "type": "title",
             "name": "title_ex_s",
-            "value": "Weekly Workshops",
+            "value": "ParentCentre",
             "parameter_list": {
               "style": "white"
-            }
+            },
+            "style_list": [
+              "align-self: flex-start"
+            ]
           }
         ]
       }
@@ -930,6 +939,79 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_radio_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "name": "radio_button_field",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list",
+        "value": [
+          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg",
+          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg",
+          "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "name": "radio_button_type",
+        "value": "btn_square",
+        "type": "set_variable"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "text",
+        "name": "question_text",
+        "parameter_list": {
+          "emphasised": "true"
+        }
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "parameter_list": {
+          "radio_button_type": "@local.radio_button_type",
+          "answer_list": "@local.answer_list"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply",
+        "value": "You selected @local.radio_group"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.radio_button_field",
+              "@local.radio_group"
+            ],
+            "_raw": "completed | set_field:@local.radio_button_field:@local.radio_group",
+            "_cleaned": "completed | set_field:@local.radio_button_field:@local.radio_group"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
   },
   {
     "flow_type": "template",
@@ -3946,7 +4028,7 @@
             "rows": [
               {
                 "name": "text",
-                "value": "Share with each other:\n(-) How are you feeling today? \n(-) What has someone else done well this week? Praise them for it!\n\nRemember that no matter how you feel, it’s great you are here! You all deserve praise!",
+                "value": "Share with each other:\n\n(-) How are you feeling today? \n(-) What has someone else done well this week? Praise them for it!\n\nRemember that no matter how you feel, it’s great you are here! You all deserve praise!",
                 "type": "set_variable"
               }
             ]
@@ -3980,17 +4062,17 @@
     "rows": [
       {
         "name": "reply_happy",
-        "value": "Wonderful, I am so happy!. Keep up the good work.",
+        "value": "Wonderful, I am so happy! Keep up the good work.",
         "type": "set_variable"
       },
       {
         "name": "reply_ok",
-        "value": "Sorry that things are difficult . All families struggle. We are here to help!",
+        "value": "Sorry that things are difficult. All families struggle. We are here to help!",
         "type": "set_variable"
       },
       {
         "name": "reply_sad",
-        "value": "Whatever  went ‘wrong’ today, let it go and try again tomorrow. It’s okay!  ",
+        "value": "Whatever went ‘wrong’ today, let it go and try again tomorrow. It’s okay!  ",
         "type": "set_variable"
       },
       {
@@ -4039,15 +4121,10 @@
               {
                 "name": "radio_button_list",
                 "value": [
-                  "name:Happy | image:plh_images/stickers/faces/happier.svg",
-                  "name:OK | image:plh_images/stickers/faces/neutral.svg",
-                  "name:Sad | image:plh_images/stickers/faces/sadder.svg"
+                  "name:happy | image:plh_images/stickers/faces/happier.svg",
+                  "name:ok | image:plh_images/stickers/faces/neutral.svg",
+                  "name:sad | image:plh_images/stickers/faces/sadder.svg"
                 ],
-                "type": "set_variable"
-              },
-              {
-                "name": "radio_button_type",
-                "value": "image",
                 "type": "set_variable"
               },
               {
@@ -4056,21 +4133,21 @@
                 "type": "set_variable"
               },
               {
+                "condition": "@local.radio_group==happy",
                 "name": "reply",
                 "value": "@local.reply_happy",
-                "hidden": "!@local.radio_buttons._value=Happy",
                 "type": "set_variable"
               },
               {
+                "condition": "@local.radio_group==ok",
                 "name": "reply",
                 "value": "@local.reply_ok",
-                "hidden": "!@local.radio_buttons._value=OK",
                 "type": "set_variable"
               },
               {
+                "condition": "@local.radio_group==sad",
                 "name": "reply",
                 "value": "@local.reply_sad",
-                "hidden": "!@local.radio_buttons._value=Sad",
                 "type": "set_variable"
               }
             ]
@@ -5629,6 +5706,261 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "example_condition_top_1",
+    "status": "released",
+    "rows": [
+      {
+        "name": "var_1",
+        "value": "val_1",
+        "type": "set_variable"
+      },
+      {
+        "name": "var_2",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "type": "template",
+        "name": "example_text_1",
+        "value": "example_text",
+        "rows": [
+          {
+            "name": "text",
+            "value": "The condition is not satisfied",
+            "condition": "@local.var_1==\"val_2\"",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "The condition is satisfied",
+            "condition": "@local.var_1==\"val_1\"",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "example_text_2",
+        "value": "example_text",
+        "rows": [
+          {
+            "name": "text",
+            "value": "The condition is satisfied",
+            "condition": "@local.var_1==\"val_1\"",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "The condition is not satisfied",
+            "condition": "@local.var_1==\"val_2\"",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "example_text_3",
+        "value": "example_text",
+        "rows": [
+          {
+            "name": "text",
+            "value": "The condition is satisfied",
+            "condition": "@local.var_2",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "The condition is not satisfied",
+            "condition": "!@local.var_2",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "example_text_4",
+        "value": "example_text",
+        "rows": [
+          {
+            "name": "text",
+            "value": "The condition is not satisfied",
+            "condition": "!@local.var_2",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "The condition is satisfied",
+            "condition": "@local.var_2",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_condition.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_text_button",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Text"
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "value": "Button"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_condition.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_condition_top_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "example_condition_bottom",
+        "value": "example_condition_bottom",
+        "rows": [
+          {
+            "name": "text_result",
+            "value": "@local.radio_group_text",
+            "type": "set_variable"
+          },
+          {
+            "name": "text_reply",
+            "value": "Reply for selecting first",
+            "condition": "@local.radio_group_text==name_var_1",
+            "type": "set_variable"
+          },
+          {
+            "name": "text_reply",
+            "value": "Reply for selecting second",
+            "condition": "@local.radio_group_text==name_var_2",
+            "type": "set_variable"
+          },
+          {
+            "name": "text_reply",
+            "value": "Reply for selecting third",
+            "condition": "@local.radio_group_text==name_var_3",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_condition.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_condition_top_3",
+    "status": "released",
+    "rows": [
+      {
+        "name": "variable",
+        "value": "initial_value",
+        "type": "set_variable"
+      },
+      {
+        "type": "template",
+        "name": "example_text_button",
+        "value": "example_text_button",
+        "rows": [
+          {
+            "name": "text",
+            "value": "@local.variable is the secondary value",
+            "condition": "@local.variable==secondary_value",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "@local.variable is the initial value",
+            "condition": "@local.variable==initial_value",
+            "type": "set_variable"
+          },
+          {
+            "name": "button",
+            "value": "Set value to secondary",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "set_local",
+                "args": [
+                  "variable",
+                  "secondary_value"
+                ],
+                "_raw": "click | set_local:variable:secondary_value",
+                "_cleaned": "click | set_local:variable:secondary_value"
+              }
+            ],
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_condition.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_condition_bottom",
+    "status": "released",
+    "rows": [
+      {
+        "name": "answer_list",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second",
+          "name:name_var_3 | text:Third"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_text",
+        "value": "nothing",
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_result",
+        "value": "You selected @local.radio_group_text"
+      },
+      {
+        "type": "text",
+        "name": "text_reply",
+        "value": "Reply text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_condition.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_data_template",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@data.example.example1.value",
+        "comments": "This should read the data from the the data_list"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_1",
+        "parameter_list": {
+          "answer_list": "@data.example.example2.value"
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "example_call_global_constants",
     "status": "released",
     "rows": [
@@ -6836,7 +7168,7 @@
         "value": [
           "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
           "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
-          "name:name_var_2| image:/plh_images/icons/heart.svg | text:Blue"
+          "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue"
         ],
         "type": "set_variable"
       },
@@ -6891,8 +7223,8 @@
         "value": [
           "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
           "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_1 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_2 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
+          "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
         ],
         "comments": "Suggestion: \n\nradio_button_type: btn_text (default), btn_image, btn_both\nstyle: passive (default), active, outline\noptions_per_row: 3 (default), 2, 1\nSelection should be done by name, not by text\n\n",
         "type": "set_variable"
@@ -6916,9 +7248,9 @@
       {
         "name": "answer_list_4",
         "value": [
-          "text:First",
-          "text:Second",
-          "text:Third"
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second",
+          "name:name_var_3 | text:Third"
         ],
         "type": "set_variable"
       },
@@ -6941,7 +7273,6 @@
       {
         "type": "radio_group",
         "name": "radio_group_preselected",
-        "value": "Second",
         "parameter_list": {
           "answer_list": "@local.answer_list_1"
         }
@@ -6949,12 +7280,10 @@
       {
         "type": "radio_group",
         "name": "radio_group_active",
-        "value": "name_var_2",
         "parameter_list": {
           "answer_list": "@local.answer_list_1",
           "style": "active"
-        },
-        "comments": "This should use the name, not the text (otherwise it doesn't work for images without text)"
+        }
       },
       {
         "type": "radio_group",
@@ -7023,18 +7352,30 @@
       {
         "type": "radio_group",
         "name": "radio_group_text",
+        "value": "nothing selected",
         "parameter_list": {
           "answer_list": "@local.answer_list_4"
         }
       },
       {
+        "type": "text",
+        "name": "text_result",
+        "value": "@local.radio_group_text"
+      },
+      {
         "type": "radio_group",
         "name": "radio_group_image",
+        "value": "nothing selected",
         "parameter_list": {
           "radio_button_type": "btn_square",
           "answer_list": "@local.answer_list_5"
         },
         "comments": "radio_button_type: btn_image; \nanswer_list: @local.answer_list_5;"
+      },
+      {
+        "type": "text",
+        "name": "text_result",
+        "value": "@local.radio_group_image"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -7592,6 +7933,14 @@
         "parameter_list": {
           "text_align": "right"
         }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "this is a text",
+        "parameter_list": {
+          "style": "centre emphasised"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -8096,21 +8445,7 @@
             "value": "GET REAL",
             "parameter_list": {
               "style": "white"
-            },
-            "style_list": [
-              "margin-top:20px"
-            ]
-          },
-          {
-            "type": "subtitle",
-            "name": "ss",
-            "value": "Subtitle",
-            "parameter_list": {
-              "style": "white"
-            },
-            "style_list": [
-              "margin-top: 15px"
-            ]
+            }
           },
           {
             "type": "text",
@@ -8121,7 +8456,7 @@
               "style": "whiteText"
             },
             "style_list": [
-              "margin-top: 15px",
+              "margin-top: 10px",
               "max-width: 320px"
             ]
           },
@@ -8132,16 +8467,62 @@
               "style": "tool_1"
             },
             "style_list": [
-              "margin-bottom: 15px"
+              "maggin-top:15px"
             ],
             "rows": [
               {
                 "type": "image",
                 "name": "image",
-                "value": "plh_images/workshop_modes/group/relax.svg",
-                "parameter_list": {
-                  "style": "corner"
-                }
+                "value": "plh_images/workshop_modes/group/relax.svg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_3"
+        },
+        "style_list": [
+          "padding: 10px 15px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "ft",
+            "value": "GET REAL",
+            "parameter_list": {
+              "style": "white"
+            }
+          },
+          {
+            "type": "text",
+            "name": "ftt",
+            "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "parameter_list": {
+              "text_align": "left",
+              "style": "whiteText"
+            },
+            "style_list": [
+              "margin-top: 10px",
+              "max-width: 320px"
+            ]
+          },
+          {
+            "type": "display_group",
+            "name": "bgg_1",
+            "parameter_list": {
+              "style": "tool_2"
+            },
+            "style_list": [
+              "maggin-top:15px"
+            ],
+            "rows": [
+              {
+                "type": "image",
+                "name": "image",
+                "value": "plh_images/workshop_modes/group/relax.svg"
               }
             ]
           }
@@ -8149,6 +8530,168 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_text",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "**This is bold text** and _italic text_ )"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "relax_text",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "activity_text"
+      },
+      {
+        "type": "text",
+        "name": "outro_text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/relax_templates/relax_databank.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "relax_text_1",
+    "status": "released",
+    "rows": [
+      {
+        "name": "activity_text",
+        "value": "Sit down, close your eyes and listen to your breath as it goes in and out. \n\nNotice how you feel. \n\nWhen you are ready, open your eyes again.",
+        "type": "set_variable"
+      },
+      {
+        "name": "outro_text",
+        "value": "Try this whenever you are feeling stressed and you need a break to reconnect.",
+        "type": "set_variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/relax_templates/relax_databank.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "relax_text_2",
+    "status": "released",
+    "rows": [
+      {
+        "name": "activity_text",
+        "value": "Let's use the magic power of three to stay present and relax. \n\nName three sounds you can hear right now. \nName three smells you can smell right now. \nName your three favourite foods. \n\nWhat are three things you can be grateful for right now? They don't have to be big. ",
+        "type": "set_variable"
+      },
+      {
+        "name": "outro_text",
+        "value": "At the end of a tough day, thinking of three things to be grateful for can help us find the courage to try again tomorrow.",
+        "type": "set_variable"
+      },
+      {
+        "value": "\n",
+        "type": "set_variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/relax_templates/relax_databank.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "relax_text_3",
+    "status": "released",
+    "rows": [
+      {
+        "name": "activity_text",
+        "value": "Close your eyes and think about the day. \n\nName 1 thing that you are grateful for. \nName 1 thing that you did well. \nName 1 thing that you love. ",
+        "type": "set_variable"
+      },
+      {
+        "name": "outro_text",
+        "value": "Well done, you are a hero!",
+        "type": "set_variable"
+      },
+      {
+        "value": "\n",
+        "type": "set_variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/relax_templates/relax_databank.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "relax_text_4",
+    "status": "released",
+    "rows": [
+      {
+        "name": "activity_text",
+        "value": "Use the magic power of three to stay connected and relax.\n\nBreathe in to the count of three. 1, 2, 3. \nBreathe out to the count of three. 1, 2, 3. \nBreathe in to the count of three. 1, 2, 3. \nBreathe out to the count of three. 1, 2, 3. ",
+        "type": "set_variable"
+      },
+      {
+        "name": "outro_text",
+        "value": "Do you feel any different? Deep breathing helps our whole body and mind to calm down. \n\nYou are a star!",
+        "type": "set_variable"
+      },
+      {
+        "value": "\n",
+        "type": "set_variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/relax_templates/relax_databank.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "welcome",
+    "flow_name": "relax_text_5",
+    "status": "released",
+    "rows": [
+      {
+        "name": "activity_text",
+        "value": "Close your eyes.\n\nListen to your breath as it goes in and out five times.\n\nNotice how you feel.",
+        "type": "set_variable"
+      },
+      {
+        "name": "outro_text",
+        "value": "When you are ready open your eyes again. You are in control!",
+        "type": "set_variable"
+      },
+      {
+        "value": "\n",
+        "type": "set_variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/relax_templates/relax_databank.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "relax_text_6",
+    "status": "released",
+    "rows": [
+      {
+        "name": "activity_text",
+        "value": "Take a minute to think about the day.\n\nThink about one positive or fun thing you did.\nPraise yourself for one thing you did well today. \nThink of one thing you can do differently tomorrow.  \nThink of one thing that you are grateful for.  ",
+        "type": "set_variable"
+      },
+      {
+        "name": "outro_text",
+        "hidden": "true",
+        "type": "set_variable"
+      },
+      {
+        "value": "\n",
+        "type": "set_variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/relax_templates/relax_databank.xlsx"
   },
   {
     "flow_type": "template",
@@ -10010,13 +10553,49 @@
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_consequence_talk_1_pop"
+                        ],
+                        "_raw": "click | pop_up:w_consequence_talk_1_pop",
+                        "_cleaned": "click | pop_up:w_consequence_talk_1_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) @global.w_consequence_male_caregiver was angry \n(-) @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy explain \n(-) The consequence was not discussed beforehand with @global.w_consequence_teen_boy \n(-)The consequence was too strong ",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "w_consequence_talk_1_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Giving a consequence this way did not work well because...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) @global.w_consequence_male_caregiver was angry \n(-) @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy explain \n(-) The consequence was not discussed beforehand with @global.w_consequence_teen_boy \n(-)The consequence was too strong ",
+            "type": "set_variable"
           }
         ]
       }
@@ -10672,13 +11251,49 @@
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_consequence_talk_3_pop"
+                        ],
+                        "_raw": "click | pop_up:w_consequence_talk_3_pop",
+                        "_cleaned": "click | pop_up:w_consequence_talk_3_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) @global.w_consequence_teen_boy and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n(-) They agreed on consequences together\n(-) @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy broke the rule \n(-) @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy\n(-) The consequence was realistic and appropriate",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "w_consequence_talk_3_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Using a consequence worked well this time because...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) @global.w_consequence_teen_boy and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n(-) They agreed on consequences together\n(-) @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy broke the rule \n(-) @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy\n(-) The consequence was realistic and appropriate",
+            "type": "set_variable"
           }
         ]
       }
@@ -10728,13 +11343,44 @@
                   },
                   {
                     "name": "button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_consequence_talk_4_pop"
+                        ],
+                        "_raw": "click | pop_up:w_consequence_talk_4_pop",
+                        "_cleaned": "click | pop_up:w_consequence_talk_4_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) Not seeing any friends for a month may be hard to do for you and also too harsh\n(-) Cancelling their birthday plans in a month’s time – it’s too far away\n(-) For example no TV this evening – fair and can be done straight away",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "w_consequence_talk_4_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "(-) Not seeing any friends for a month may be hard to do for you and also too harsh\n(-) Cancelling their birthday plans in a month’s time – it’s too far away\n(-) For example no TV this evening – fair and can be done straight away",
+            "type": "set_variable"
           }
         ]
       }
@@ -10779,18 +11425,60 @@
                   {
                     "name": "button_1",
                     "value": "@global.ideas_button",
-                    "comments": "Negative Behaviour: Coming home after the agreed hour. \nNegative Consequence: Cannot see friends the next day. \n\nNegative Behaviour: Talking rudely. \nNegative Consequence: Write a letter of apology. \n \nPositive Behaviour: Helping out with shopping \nPositive Consequence: 30 minutes extra of loved activity of their choice.  \n\nPositive Behaviour: Helping look after younger siblings \nPositive Consequence:  One hour of extra time with friends on the weekend ",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_consequence_home_practice_pop"
+                        ],
+                        "_raw": "click | pop_up:w_consequence_home_practice_pop",
+                        "_cleaned": "click | pop_up:w_consequence_home_practice_pop"
+                      }
+                    ],
                     "type": "set_variable"
                   },
                   {
                     "name": "button_2",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_consequence_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_consequence_tools_activity",
+                        "_cleaned": "click | go_to:w_consequence_tools_activity"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "w_consequence_home_practice_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "Negative Behaviour: Coming home after the agreed hour. \nNegative Consequence: Cannot see friends the next day. \n\nNegative Behaviour: Talking rudely. \nNegative Consequence: Write a letter of apology. \n \nPositive Behaviour: Helping out with shopping \nPositive Consequence: 30 minutes extra of loved activity of their choice.  \n\nPositive Behaviour: Helping look after younger siblings \nPositive Consequence:  One hour of extra time with friends on the weekend ",
+            "type": "set_variable"
           }
         ]
       }
@@ -11411,9 +12099,16 @@
     "status": "released",
     "rows": [
       {
-        "type": "text",
-        "name": "text",
-        "value": "(-) Take a deep breath and pause before responding \n(-) Listen to your teen \n(-) Praise your teen for sharing \n(-) Use problem solving skills \n(-) Work out where you can get help"
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "(-) Take a deep breath and pause before responding \n(-) Listen to your teen \n(-) Praise your teen for sharing \n(-) Use problem solving skills \n(-) Work out where you can get help",
+            "type": "set_variable"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_crisis.xlsx"
@@ -11749,6 +12444,7 @@
             "name": "button_1",
             "value": "Resources to help in the community",
             "hidden": "false",
+            "comments": "needs to link to parent centre",
             "type": "set_variable"
           }
         ]
@@ -12040,11 +12736,33 @@
                   {
                     "name": "button_1",
                     "value": "Crisis Examples",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_crisis_learn_temp"
+                        ],
+                        "_raw": "click | go_to:w_crisis_learn_temp",
+                        "_cleaned": "click | go_to:w_crisis_learn_temp"
+                      }
+                    ],
                     "type": "set_variable"
                   },
                   {
                     "name": "button_2",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_crisis_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_crisis_tools_activity",
+                        "_cleaned": "click | go_to:w_crisis_tools_activity"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   },
@@ -12601,7 +13319,7 @@
           },
           {
             "name": "slide_text_3",
-            "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????.”\n\n(inside) @global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
+            "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????”\n\n(inside) @global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
             "type": "set_variable"
           },
           {
@@ -12762,19 +13480,56 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n\nWhat could @global.w_instruct_female_caregiver have done differently? ",
+                    "value": "Discuss together: \n\n(-) How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n(-) What could @global.w_instruct_female_caregiver have done differently? ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_instruct_talk_1_pop"
+                        ],
+                        "_raw": "click | pop_up:w_instruct_talk_1_pop",
+                        "_cleaned": "click | pop_up:w_instruct_talk_1_pop"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "w_instruct_talk_1_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "@global.w_instruct_female_caregiver could have...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) Said something nice first \n(-) Spoken to her in a calm voice \n(-) Told @global.w_instruct_teen_girl what she wants her to do ",
+            "type": "set_variable"
           }
         ]
       }
@@ -12946,20 +13701,56 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Why do you think it worked better for @global.w_instruct_female_caregiver this time? \n\nWhat do you think worked well? ",
+                    "value": "Discuss together: \n\n(-) Why do you think it worked better for @global.w_instruct_female_caregiver this time? \n(-) What do you think worked well? ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_instruct_talk_2_pop"
+                        ],
+                        "_raw": "click | pop_up:w_instruct_talk_2_pop",
+                        "_cleaned": "click | pop_up:w_instruct_talk_2_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n(-) @global.w_instruct_female_caregiver was able to stay calm  \n(-) @global.w_instruct_female_caregiver  kept a positive attitude ",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "w_instruct_talk_2_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "It worked better this time because...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n(-) @global.w_instruct_female_caregiver was able to stay calm  \n(-) @global.w_instruct_female_caregiver  kept a positive attitude ",
+            "type": "set_variable"
           }
         ]
       }
@@ -13133,13 +13924,49 @@
                   },
                   {
                     "name": "button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_instruct_talk_3_pop"
+                        ],
+                        "_raw": "click | pop_up:w_instruct_talk_3_pop",
+                        "_cleaned": "click | pop_up:w_instruct_talk_3_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "Positive instructions: \n(-) I like your music, but could you turn it down so that we can talk whilst we have dinner? Thank you – I really appreciate this. \n(-) That’s great. Who is the singer? Please turn this off when you come in the house but you can play it in your room quietly if you want. Thank you!",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "w_instruct_talk_3_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Examples of positive instructions:",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) I like your music, but could you turn it down so that we can talk whilst we have dinner? Thank you – I really appreciate this. \n(-) That’s great. Who is the singer? Please turn this off when you come in the house but you can play it in your room quietly if you want. Thank you!",
+            "type": "set_variable"
           }
         ]
       }
@@ -13185,11 +14012,33 @@
                   {
                     "name": "button_1",
                     "value": "@global.ideas_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_instruct_talk_3_pop"
+                        ],
+                        "_raw": "click | pop_up:w_instruct_talk_3_pop",
+                        "_cleaned": "click | pop_up:w_instruct_talk_3_pop"
+                      }
+                    ],
                     "type": "set_variable"
                   },
                   {
                     "name": "button_2",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_instruct_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_instruct_tools_activity",
+                        "_cleaned": "click | go_to:w_instruct_tools_activity"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   }
@@ -13809,8 +14658,18 @@
                     "rows": [
                       {
                         "name": "button_info",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_money_learn_2_pop"
+                            ],
+                            "_raw": "click | pop_up:w_money_learn_2_pop",
+                            "_cleaned": "click | pop_up:w_money_learn_2_pop"
+                          }
+                        ],
                         "hidden": "false",
-                        "comments": "(-) food \n(-) water & electricity \n(-) clothing \n(-) accounts \n(-) TV subscription \n(-) toiletries \n(-) salon \n(-) airtime \n(-) school fees \n(-) transport \n(-) insurance/policies \n(-) medication \n(-) entertainment/sports \n(-) rent \n(-) loans \n(-) church",
                         "type": "set_variable"
                       }
                     ]
@@ -13823,6 +14682,27 @@
                 "type": "set_variable"
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "w_money_learn_2_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "(-) food \n(-) water & electricity \n(-) clothing \n(-) accounts \n(-) TV subscription \n(-) toiletries \n(-) salon \n(-) airtime \n(-) school fees \n(-) transport \n(-) insurance/policies \n(-) medication \n(-) entertainment/sports \n(-) rent \n(-) loans \n(-) church",
+            "type": "set_variable"
           }
         ]
       }
@@ -14183,8 +15063,18 @@
                   },
                   {
                     "name": "button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_money_talk_1_pop"
+                        ],
+                        "_raw": "click | pop_up:w_money_talk_1_pop",
+                        "_cleaned": "click | pop_up:w_money_talk_1_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) Teens completing school/university \n(-) Building/expanding a house for my family \n(-) Starting a business \n(-) Buying a car for my family ",
                     "type": "set_variable"
                   }
                 ]
@@ -14195,6 +15085,27 @@
                 "type": "set_variable"
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "w_money_talk_1_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "(-) Teens completing school/university \n(-) Building/expanding a house for my family \n(-) Starting a business \n(-) Buying a car for my family ",
+            "type": "set_variable"
           }
         ]
       }
@@ -14305,8 +15216,18 @@
                   },
                   {
                     "name": "button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_money_talk_2_pop"
+                        ],
+                        "_raw": "click | pop_up:w_money_talk_2_pop",
+                        "_cleaned": "click | pop_up:w_money_talk_2_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) Severe illness or death of a friend or family member  \n(-) Robbery \n(-) Flooding \n(-) Political violence \n(-) Losing my job\n(-) Pandemic (COVID-19) ",
                     "type": "set_variable"
                   }
                 ]
@@ -14317,6 +15238,27 @@
                 "type": "set_variable"
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "w_money_talk_2_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "(-) Severe illness or death of a friend or family member  \n(-) Robbery \n(-) Flooding \n(-) Political violence \n(-) Losing my job\n(-) Pandemic (COVID-19) ",
+            "type": "set_variable"
           }
         ]
       }
@@ -14367,13 +15309,44 @@
                   },
                   {
                     "name": "button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_money_talk_3_pop"
+                        ],
+                        "_raw": "click | pop_up:w_money_talk_3_pop",
+                        "_cleaned": "click | pop_up:w_money_talk_3_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) at home\n(-) buy things we can sell\n(-) at a bank\n(-) in a savings group",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "w_money_talk_3_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "(-) At home\n(-) Buy things we can sell\n(-) At a bank\n(-) In a savings group",
+            "type": "set_variable"
           }
         ]
       }
@@ -14504,6 +15477,17 @@
               {
                 "name": "button_1",
                 "value": "THINK Activity",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_money_learn_2_temp"
+                    ],
+                    "_raw": "click | go_to:w_money_learn_2_temp",
+                    "_cleaned": "click | go_to:w_money_learn_2_temp"
+                  }
+                ],
                 "hidden": "false",
                 "type": "set_variable"
               }
@@ -14526,6 +15510,17 @@
               {
                 "name": "button_1",
                 "value": "TALK Activity",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_money_learn_3_temp"
+                    ],
+                    "_raw": "click | go_to:w_money_learn_3_temp",
+                    "_cleaned": "click | go_to:w_money_learn_3_temp"
+                  }
+                ],
                 "hidden": "false",
                 "type": "set_variable"
               }
@@ -14548,6 +15543,17 @@
               {
                 "name": "button_1",
                 "value": "BUILD Activity",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_money_learn_4_temp"
+                    ],
+                    "_raw": "click | go_to:w_money_learn_4_temp",
+                    "_cleaned": "click | go_to:w_money_learn_4_temp"
+                  }
+                ],
                 "hidden": "false",
                 "type": "set_variable"
               }
@@ -14571,6 +15577,17 @@
               {
                 "name": "button_1",
                 "value": "PLAN Activity",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_money_learn_5_temp"
+                    ],
+                    "_raw": "click | go_to:w_money_learn_5_temp",
+                    "_cleaned": "click | go_to:w_money_learn_5_temp"
+                  }
+                ],
                 "hidden": "false",
                 "type": "set_variable"
               }
@@ -14658,6 +15675,17 @@
                   {
                     "name": "button_1",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_money_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_money_tools_activity",
+                        "_cleaned": "click | go_to:w_money_tools_activity"
+                      }
+                    ],
                     "type": "set_variable"
                   }
                 ]
@@ -15105,7 +16133,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Share with each other:\n(-) When last did someone thank you or said you did something great? \n(-) How did it make you feel? \n(-) How does it feel if you are not thanked or praised for what you do? \n\nParents usually don’t get thanked or praised enough. Maybe you can give your teens the right example and praise them first when they do something well! ",
+                    "value": "Share with each other:\n\n(-) When last did someone thank you or said you did something great? \n(-) How did it make you feel? \n(-) How does it feel if you are not thanked or praised for what you do? \n\nParents usually don’t get thanked or praised enough. Maybe you can give your teens the right example and praise them first when they do something well! ",
                     "type": "set_variable"
                   }
                 ]
@@ -15230,7 +16258,6 @@
               {
                 "name": "intro_text",
                 "value": "Let's discuss this story.",
-                "comments": "placeholder",
                 "type": "set_variable"
               },
               {
@@ -15239,7 +16266,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "How did praise make @global.w_praise_female_caregiver_name's teens feel?\n\nWhy did she praise them?",
+                    "value": "Discuss together:\n\n(-) How did praise make @global.w_praise_female_caregiver_name's teens feel?\n(-) Why did she praise them?",
                     "type": "set_variable"
                   },
                   {
@@ -15264,7 +16291,6 @@
               {
                 "name": "outro_text",
                 "value": "The same can work for you!",
-                "comments": "placeholder",
                 "type": "set_variable"
               },
               {
@@ -15464,7 +16490,6 @@
               {
                 "name": "intro_text",
                 "value": "Let's practice giving praise.",
-                "comments": "placeholder",
                 "type": "set_variable"
               },
               {
@@ -15473,7 +16498,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Share with each other: \n(-) What can you praise your teen for? \n(-) What has someone else done well during this workshop? Tell them!\n(-) How did it make you feel to praise someone?\n(-) How did it make you feel to be praised?",
+                    "value": "Share with each other: \n\n(-) What can you praise your teen for? \n(-) What has someone else done well during this workshop? Tell them!\n(-) How did it make you feel to praise someone?\n(-) How did it make you feel to be praised?",
                     "type": "set_variable"
                   },
                   {
@@ -16252,8 +17277,18 @@
                       {
                         "name": "button",
                         "value": "@global.ideas_short_button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_rules_talk_1_pop_1"
+                            ],
+                            "_raw": "click | pop_up: w_rules_talk_1_pop_1",
+                            "_cleaned": "click | pop_up: w_rules_talk_1_pop_1"
+                          }
+                        ],
                         "hidden": "false",
-                        "comments": "(-) They discussed the reasons behind the rule \n(-) @global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions \n(-) The rule was clear, specific and fair \n(-) @global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule ",
                         "type": "set_variable"
                       }
                     ]
@@ -16271,8 +17306,18 @@
                       {
                         "name": "button",
                         "value": "@global.ideas_short_button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_rules_talk_1_pop_2"
+                            ],
+                            "_raw": "click | pop_up: w_rules_talk_1_pop_2",
+                            "_cleaned": "click | pop_up: w_rules_talk_1_pop_2"
+                          }
+                        ],
                         "hidden": "false",
-                        "comments": "(-) She praised him\n(-) She rewarded him when he followed the rule ",
                         "type": "set_variable"
                       }
                     ]
@@ -16280,6 +17325,58 @@
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_rules.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "w_rules_talk_1_pop_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Making the rule together went well because...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) They discussed the reasons behind the rule \n(-) @global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions \n(-) The rule was clear, specific and fair \n(-) @global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule ",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_rules.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "w_rules_talk_1_pop_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "@global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him because...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) She praised him\n(-) She rewarded him when he followed the rule ",
+            "type": "set_variable"
           }
         ]
       }
@@ -16626,13 +17723,49 @@
                   },
                   {
                     "name": "button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_rules_talk_2_pop"
+                        ],
+                        "_raw": "click | pop_up:w_rules_talk_2_pop",
+                        "_cleaned": "click | pop_up:w_rules_talk_2_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "Here are some of the rules parents shared with us:\n(-)Teen can play outside for after finishing homework\n(-) All family members are eating dinner together\n(-) Teen 1 do dishes on Sunday and Monday, Teen 2 on Tuesday and Wednesday\n(-) We speak to each other politely and nicely\n(-) When listening to music you need to use earphones",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_rules.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "w_rules_talk_2_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Here are some of the rules parents shared with us:",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) Teen can play outside for after finishing homework\n(-) All family members are eating dinner together\n(-) Teen 1 do dishes on Sunday and Monday, Teen 2 on Tuesday and Wednesday\n(-) We speak to each other politely and nicely\n(-) When listening to music you need to use earphones",
+            "type": "set_variable"
           }
         ]
       }
@@ -16677,11 +17810,33 @@
                   {
                     "name": "button_1",
                     "value": "@global.ideas_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_rules_talk_2_pop"
+                        ],
+                        "_raw": "click | pop_up:w_rules_talk_2_pop",
+                        "_cleaned": "click | pop_up:w_rules_talk_2_pop"
+                      }
+                    ],
                     "type": "set_variable"
                   },
                   {
                     "name": "button_2",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_rules_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_rules_tools_activity",
+                        "_cleaned": "click | go_to:w_rules_tools_activity"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   }
@@ -17054,7 +18209,6 @@
                   {
                     "name": "intro_text",
                     "value": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. Talking together about safe and unsafe places, and how to prevent problems, really helps!",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   }
                 ]
@@ -17279,13 +18433,49 @@
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_safe_talk_1_pop"
+                        ],
+                        "_raw": "click | pop_up:w_safe_talk_1_pop",
+                        "_cleaned": "click | pop_up:w_safe_talk_1_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) The man in the car was pressuring Faraja with gifts \n(-) Faraja’s friend was encouraging her  \n(-) Going with an older man puts Faraja in a dangerous situation where she can get hurt or be forced to do things \n(-) Many girls in our communities get pregnant or catch HIV from older men \n(-) There were no other trusted adults to advise Faraja ",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_safe.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "safe",
+    "flow_name": "w_safe_talk_1_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "The situation was risky because...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts \n(-) @global.w_safe_teen_girl_1's friend was encouraging her  \n(-) Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things \n(-) Many girls in our communities get pregnant or catch HIV from older men \n(-) There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+            "type": "set_variable"
           }
         ]
       }
@@ -17437,13 +18627,44 @@
                   },
                   {
                     "name": "button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_safe_talk_2_pop"
+                        ],
+                        "_raw": "click | pop_up:w_safe_talk_2_pop",
+                        "_cleaned": "click | pop_up:w_safe_talk_2_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things \n(-) People put things online to make us hurt other people – like making violence seem cool, or hating people from another race or country\n(-) People put things online to persuade teenagers to hurt themselves or commit suicide\n(-) Teenagers share sexy videos or photos or information about themselves, and people show it to others or use it to upset them\n(-) People can often be nasty to teenagers online – they feel like they can bully people safely",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_safe.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "safe",
+    "flow_name": "w_safe_talk_2_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "(-) Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things \n(-) People put things online to make us hurt other people – like making violence seem cool, or hating people from another race or country\n(-) People put things online to persuade teenagers to hurt themselves or commit suicide\n(-) Teenagers share sexy videos or photos or information about themselves, and people show it to others or use it to upset them\n(-) People can often be nasty to teenagers online – they feel like they can bully people safely",
+            "type": "set_variable"
           }
         ]
       }
@@ -17688,6 +18909,17 @@
               {
                 "name": "button_1",
                 "value": "Safety Plan Activity",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_safe_learn_temp"
+                    ],
+                    "_raw": "click | go_to:w_safe_learn_temp",
+                    "_cleaned": "click | go_to:w_safe_learn_temp"
+                  }
+                ],
                 "hidden": "false",
                 "type": "set_variable"
               }
@@ -17710,6 +18942,17 @@
               {
                 "name": "button_1",
                 "value": "Online Safety Story",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_rules_read_2_temp"
+                    ],
+                    "_raw": "click | go_to:w_rules_read_2_temp",
+                    "_cleaned": "click | go_to:w_rules_read_2_temp"
+                  }
+                ],
                 "hidden": "false",
                 "type": "set_variable"
               }
@@ -17732,6 +18975,17 @@
               {
                 "name": "button_1",
                 "value": "Safety Amnesty Story",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_stress_read_3_temp"
+                    ],
+                    "_raw": "click | go_to:w_stress_read_3_temp",
+                    "_cleaned": "click | go_to:w_stress_read_3_temp"
+                  }
+                ],
                 "hidden": "false",
                 "type": "set_variable"
               }
@@ -17747,6 +19001,7 @@
             "name": "button_1",
             "value": "Resources to help in the community",
             "hidden": "false",
+            "comments": "Need to link to the the parent centre",
             "type": "set_variable"
           },
           {
@@ -17837,11 +19092,33 @@
                   {
                     "name": "button_1",
                     "value": "Safety Plan Activity",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_safe_learn_temp"
+                        ],
+                        "_raw": "click | go_to:w_safe_learn_temp",
+                        "_cleaned": "click | go_to:w_safe_learn_temp"
+                      }
+                    ],
                     "type": "set_variable"
                   },
                   {
                     "name": "button_2",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_safe_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_safe_tools_activity",
+                        "_cleaned": "click | go_to:w_safe_tools_activity"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   },
@@ -17970,6 +19247,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "comments": "include completed | set_theme : active to the action list",
         "rows": [
           {
             "type": "nested_properties",
@@ -18013,6 +19291,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "comments": "include completed | set_theme : active to the action list",
         "rows": [
           {
             "type": "nested_properties",
@@ -18519,6 +19798,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "comments": "include completed | set_theme : passive to the action list",
         "rows": [
           {
             "type": "nested_properties",
@@ -18984,7 +20264,6 @@
                   {
                     "name": "intro_text",
                     "value": "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too! ",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   }
                 ]
@@ -19897,18 +21176,65 @@
                   {
                     "name": "button_1",
                     "value": "@global.ideas_button",
-                    "comments": "Some problems other parents solved with their teens:  \n(-) My teenager does not want to go to school\n(-) I am worried my teenager will get pregnant or will get someone pregnant\n(-) I am worried about what my teen does online\n(-) My teenager is hanging out with bad friends\n(-) My teenager is lazy\n(-) My teenager is not doing their school work\n(-) My teenager might be using drugs",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_solve_home_practice_pop"
+                        ],
+                        "_raw": "click | pop_up:w_solve_home_practice_pop",
+                        "_cleaned": "click | pop_up:w_solve_home_practice_pop"
+                      }
+                    ],
                     "type": "set_variable"
                   },
                   {
                     "name": "button_2",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_solve_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_solve_tools_activity",
+                        "_cleaned": "click | go_to:w_solve_tools_activity"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_solve.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "w_solve_home_practice_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Some problems other parents solved with their teens:",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) My teenager does not want to go to school\n(-) I am worried my teenager will get pregnant or will get someone pregnant\n(-) I am worried about what my teen does online\n(-) My teenager is hanging out with bad friends\n(-) My teenager is lazy\n(-) My teenager is not doing their school work\n(-) My teenager might be using drugs",
+            "type": "set_variable"
           }
         ]
       }
@@ -20399,13 +21725,49 @@
                   {
                     "name": "button",
                     "value": "@global.ideas_short_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_stress_talk_pop"
+                        ],
+                        "_raw": "click | pop_up:w_stress_talk_pop",
+                        "_cleaned": "click | pop_up:w_stress_talk_pop"
+                      }
+                    ],
                     "hidden": "false",
-                    "comments": "(-) Recognise why he feels stressed \n(-) Take a deep breath and speak calmly  \n(-) Show he understands his teen’s feelings \n(-) Think about solutions together \n(-) Do something positive together ",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_stress.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "w_stress_talk_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "@global.w_stress_male_caregiver could have...",
+            "type": "set_variable"
+          },
+          {
+            "name": "list_text",
+            "value": "(-) Recognised why he feels stressed \n(-) Taken a deep breath and speak calmly  \n(-) Shown he understands his teen’s feelings \n(-) Thought about solutions together with @global.w_stress_teen_boy_1\n(-) Done something positive together with @global.w_stress_teen_boy_1",
+            "type": "set_variable"
           }
         ]
       }
@@ -20954,6 +22316,17 @@
                   {
                     "name": "button_1",
                     "value": "@global.essential_tools",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_stress_tools_activity"
+                        ],
+                        "_raw": "click | go_to:w_stress_tools_activity",
+                        "_cleaned": "click | go_to:w_stress_tools_activity"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   },
@@ -20966,6 +22339,17 @@
                   {
                     "name": "button_2",
                     "value": "Safety Amnesty Story",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "go_to",
+                        "args": [
+                          "w_stress_read_3_temp"
+                        ],
+                        "_raw": "click | go_to:w_stress_read_3_temp",
+                        "_cleaned": "click | go_to:w_stress_read_3_temp"
+                      }
+                    ],
                     "hidden": "false",
                     "type": "set_variable"
                   },
