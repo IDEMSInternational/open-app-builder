@@ -1077,354 +1077,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "box_video",
-    "status": "released",
-    "rows": [
-      {
-        "name": "video_src",
-        "type": "set_variable"
-      },
-      {
-        "name": "video_title",
-        "value": "Video",
-        "type": "set_variable"
-      },
-      {
-        "name": "video_help",
-        "type": "set_variable"
-      },
-      {
-        "type": "template",
-        "name": "widget_video",
-        "value": "widget_video",
-        "rows": [
-          {
-            "name": "video_src",
-            "value": "plh_video/lets_slow_down.mp4",
-            "type": "set_variable"
-          },
-          {
-            "name": "title",
-            "value": "@local.video_title",
-            "type": "set_variable"
-          },
-          {
-            "name": "help",
-            "value": "@local.video_help",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_audio",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "template",
-        "name": "widget_audio",
-        "value": "widget_audio",
-        "rows": [
-          {
-            "type": "set_variable",
-            "name": "audio_title",
-            "value": "Box title"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_image",
-    "status": "released",
-    "rows": [
-      {
-        "type": "image",
-        "name": "image_src"
-      },
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "text",
-        "name": "habit_text",
-        "hidden": "true",
-        "parameter_list": {
-          "alert": "plh_images/icons/star_circle.svg"
-        }
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_image_more",
-    "status": "released",
-    "rows": [
-      {
-        "type": "image",
-        "name": "image_src"
-      },
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "text",
-        "name": "habit_text",
-        "hidden": "true",
-        "parameter_list": {
-          "alert": "plh_images/icons/star_circle.svg"
-        }
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": [
-          {
-            "name": "button_completed",
-            "value": "@global.more_button",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_buttons",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text_1"
-      },
-      {
-        "type": "button",
-        "name": "button_1"
-      },
-      {
-        "type": "text",
-        "name": "text_2",
-        "hidden": "true"
-      },
-      {
-        "type": "button",
-        "name": "button_2",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text_3",
-        "hidden": "true"
-      },
-      {
-        "type": "button",
-        "name": "button_3",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "habit_text",
-        "hidden": "true",
-        "parameter_list": {
-          "alert": "plh_images/icons/star_circle.svg"
-        }
-      },
-      {
-        "type": "text",
-        "name": "bottom_text",
-        "hidden": "true"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_timer",
-    "status": "released",
-    "rows": [
-      {
-        "name": "timer_duration",
-        "value": 10,
-        "type": "set_variable"
-      },
-      {
-        "name": "timer_duration_extension",
-        "value": 2,
-        "type": "set_variable"
-      },
-      {
-        "name": "timer_title",
-        "value": "Timer",
-        "type": "set_variable"
-      },
-      {
-        "name": "timer_help",
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "button",
-        "name": "button",
-        "hidden": "true"
-      },
-      {
-        "type": "template",
-        "name": "widget_timer",
-        "value": "widget_timer",
-        "rows": [
-          {
-            "name": "duration",
-            "value": "@local.timer_duration",
-            "type": "set_variable"
-          },
-          {
-            "name": "duration_extension",
-            "value": "@local.timer_duration_extension",
-            "type": "set_variable"
-          },
-          {
-            "value": "@local.timer_title",
-            "type": "set_variable"
-          },
-          {
-            "name": "title",
-            "value": "@local.timer_help",
-            "type": "set_variable"
-          },
-          {
-            "name": "help",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "workshop_stepper",
     "status": "released",
     "rows": [
@@ -1897,6 +1549,354 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_video",
+    "status": "released",
+    "rows": [
+      {
+        "name": "video_src",
+        "type": "set_variable"
+      },
+      {
+        "name": "video_title",
+        "value": "Video",
+        "type": "set_variable"
+      },
+      {
+        "name": "video_help",
+        "type": "set_variable"
+      },
+      {
+        "type": "template",
+        "name": "widget_video",
+        "value": "widget_video",
+        "rows": [
+          {
+            "name": "video_src",
+            "value": "plh_video/lets_slow_down.mp4",
+            "type": "set_variable"
+          },
+          {
+            "name": "title",
+            "value": "@local.video_title",
+            "type": "set_variable"
+          },
+          {
+            "name": "help",
+            "value": "@local.video_help",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_audio",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "template",
+        "name": "widget_audio",
+        "value": "widget_audio",
+        "rows": [
+          {
+            "type": "set_variable",
+            "name": "audio_title",
+            "value": "Box title"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_image",
+    "status": "released",
+    "rows": [
+      {
+        "type": "image",
+        "name": "image_src"
+      },
+      {
+        "type": "title",
+        "name": "title",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "text",
+        "name": "habit_text",
+        "hidden": "true",
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_image_more",
+    "status": "released",
+    "rows": [
+      {
+        "type": "image",
+        "name": "image_src"
+      },
+      {
+        "type": "title",
+        "name": "title",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "text",
+        "name": "habit_text",
+        "hidden": "true",
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "button_completed",
+            "value": "@global.more_button",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1"
+      },
+      {
+        "type": "button",
+        "name": "button_1"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "hidden": "true"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "hidden": "true"
+      },
+      {
+        "type": "button",
+        "name": "button_3",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "habit_text",
+        "hidden": "true",
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
+      },
+      {
+        "type": "text",
+        "name": "bottom_text",
+        "hidden": "true"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_timer",
+    "status": "released",
+    "rows": [
+      {
+        "name": "timer_duration",
+        "value": 10,
+        "type": "set_variable"
+      },
+      {
+        "name": "timer_duration_extension",
+        "value": 2,
+        "type": "set_variable"
+      },
+      {
+        "name": "timer_title",
+        "value": "Timer",
+        "type": "set_variable"
+      },
+      {
+        "name": "timer_help",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "hidden": "true"
+      },
+      {
+        "type": "template",
+        "name": "widget_timer",
+        "value": "widget_timer",
+        "rows": [
+          {
+            "name": "duration",
+            "value": "@local.timer_duration",
+            "type": "set_variable"
+          },
+          {
+            "name": "duration_extension",
+            "value": "@local.timer_duration_extension",
+            "type": "set_variable"
+          },
+          {
+            "value": "@local.timer_title",
+            "type": "set_variable"
+          },
+          {
+            "name": "title",
+            "value": "@local.timer_help",
+            "type": "set_variable"
+          },
+          {
+            "name": "help",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
   },
   {
     "flow_type": "template",
@@ -7804,7 +7804,10 @@
           {
             "type": "button",
             "name": "bt_1",
-            "value": "Button"
+            "value": "Button",
+            "parameter_list": {
+              "style": "nested_color full-width"
+            }
           }
         ]
       },
@@ -7855,7 +7858,10 @@
           {
             "type": "button",
             "name": "bt_2",
-            "value": "Button"
+            "value": "Button",
+            "parameter_list": {
+              "style": "nested_color full-width"
+            }
           }
         ]
       },
@@ -7906,7 +7912,10 @@
           {
             "type": "button",
             "name": "bt_3",
-            "value": "Button"
+            "value": "Button",
+            "parameter_list": {
+              "style": "nested_color  full-width"
+            }
           }
         ]
       },
@@ -7956,8 +7965,11 @@
           },
           {
             "type": "button",
-            "name": "bt_2",
-            "value": "Button"
+            "name": "bt_3",
+            "value": "Button",
+            "parameter_list": {
+              "style": "nested_color full-width"
+            }
           }
         ]
       },
@@ -8007,8 +8019,131 @@
           },
           {
             "type": "button",
-            "name": "bt_2",
-            "value": "Button"
+            "name": "bt_3",
+            "value": "Button",
+            "parameter_list": {
+              "style": "nested_color full-width"
+            }
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_5"
+        },
+        "style_list": [
+          "padding: 10px 15px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "ft",
+            "value": "GET REAL",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top:20px"
+            ]
+          },
+          {
+            "type": "subtitle",
+            "name": "ss",
+            "value": "Subtitle",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top: 15px"
+            ]
+          },
+          {
+            "type": "text",
+            "name": "ftt",
+            "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "parameter_list": {
+              "text_align": "left",
+              "style": "whiteText"
+            },
+            "style_list": [
+              "margin-top: 15px",
+              "max-width: 320px"
+            ]
+          },
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/workshop_modes/group/relax.svg",
+            "parameter_list": {
+              "style": "corner"
+            }
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_2"
+        },
+        "style_list": [
+          "padding: 10px 15px"
+        ],
+        "rows": [
+          {
+            "type": "title",
+            "name": "ft",
+            "value": "GET REAL",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top:20px"
+            ]
+          },
+          {
+            "type": "subtitle",
+            "name": "ss",
+            "value": "Subtitle",
+            "parameter_list": {
+              "style": "white"
+            },
+            "style_list": [
+              "margin-top: 15px"
+            ]
+          },
+          {
+            "type": "text",
+            "name": "ftt",
+            "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "parameter_list": {
+              "text_align": "left",
+              "style": "whiteText"
+            },
+            "style_list": [
+              "margin-top: 15px",
+              "max-width: 320px"
+            ]
+          },
+          {
+            "type": "display_group",
+            "name": "bgg_1",
+            "parameter_list": {
+              "style": "tool_1"
+            },
+            "style_list": [
+              "margin-bottom: 15px"
+            ],
+            "rows": [
+              {
+                "type": "image",
+                "name": "image",
+                "value": "plh_images/workshop_modes/group/relax.svg",
+                "parameter_list": {
+                  "style": "corner"
+                }
+              }
+            ]
           }
         ]
       }

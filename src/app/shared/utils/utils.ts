@@ -51,6 +51,27 @@ export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
 }
 
 /**
+ * Retrieve a nested property from a json object
+ * using a single path string accessor
+ * (modified from https://gist.github.com/jasonrhodes/2321581)
+ *
+ * @returns value if exists, or null otherwise
+ *
+ * @example
+ * const obj = {"a":{"b":{"c":1}}}
+ * getNestedProperty(obj,'a.b.c')  // returns 1
+ * getNestedProperty(obj,'a.b.c.d')  // returns null
+ *
+ * @param obj data object to iterate over
+ * @param path nested path, such as data.subfield1.deeperfield2
+ */
+export function getNestedProperty(obj: any, path: string) {
+  return path.split(".").reduce((prev, current) => {
+    return prev ? prev[current] : null;
+  }, obj);
+}
+
+/**
  * Take a string and split into an array based on character separator.
  * Removes additional whitespace and linebreak characters and empty values
  */
