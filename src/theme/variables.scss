@@ -10,15 +10,26 @@ $primary: hsl(203, 76%, 21%);
 $primary-light: color.change($primary, $lightness: 80%);
 $primary-lighter: color.change($primary, $lightness: 95%);
 
+@function tone($color, $tone: 1, $dir: up) {
+  $adjust: if($dir == up, 16, -16) * $tone;
+  @return adjust-color($color, $red: $adjust, $green: $adjust, $blue: $adjust);
+}
+
+$tool_1: #f89b2d;
+
 /** Ionic CSS Variables **/
 :root {
-
-  --ion-btn-secondary-color: linear-gradient(168.87deg, #FFB833 28.12%, #F88923 100%);
+  --ion-btn-secondary-color: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
   --ion-btn-secondary-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  --ion-btn-primary-color: linear-gradient(168.87deg, #0F8AB2 28.12%, #0D4060 100%);
+  --ion-btn-primary-color: linear-gradient(168.87deg, #0f8ab2 28.12%, #0d4060 100%);
   --ion-btn-primary-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+  --ion-tool-active: linear-gradient(
+    180deg,
+    #{tone($tool_1, 5, up)} 0%,
+    #{tone($tool_1, 5, down)} 100%
+  );
 
   --ion-color-primary: #{$primary};
   --ion-color-primary-light: #{$primary-light};
