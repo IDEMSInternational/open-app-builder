@@ -1,10 +1,9 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL } from "src/app/shared/services/data/data.service";
+import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
-import { generateTimestamp } from "src/app/shared/utils";
-import { FlowType } from "typescript";
 import { FlowTypes } from "scripts/types";
+import { getNestedProperty } from "src/app/shared/utils";
 
 @Injectable({
   providedIn: "root",
@@ -12,7 +11,11 @@ import { FlowTypes } from "scripts/types";
 export class TemplateService {
   globals = {};
 
-  constructor(private localStorageService: LocalStorageService, private dbService: DbService) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private dataService: PLHDataService,
+    private dbService: DbService
+  ) {
     this.initialiseGlobals();
   }
 
@@ -73,6 +76,12 @@ export class TemplateService {
 
   setGlobal(key: string, value: string) {
     this.globals[key] = value;
+  }
+
+  /** Get the value of a data_list item as defined within templates */
+  getDataListByPath(path: string) {
+    const data = getNestedProperty(this.dataService.dataLists, path);
+    return data;
   }
 
   /** Record a template event to the database */

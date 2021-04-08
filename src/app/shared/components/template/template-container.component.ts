@@ -413,10 +413,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         case "global":
           parsedValue = this.templateService.getGlobal(fieldName);
           break;
+        case "data":
+          return this.templateService.getDataListByPath(fieldName);
         default:
           parseSuccess = false;
           console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
           parsedValue = evaluator.matchedExpression;
+      }
+      if (typeof parsedValue !== "string") {
+        // TODO - possibly want better handling to determine when to look recursively
+        // within string, object or arrays (depending on what has been evaluated)
+        console.error("dynamic value expected string but found", parsedExpression);
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }

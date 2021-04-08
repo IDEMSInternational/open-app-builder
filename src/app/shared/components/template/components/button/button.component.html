@@ -1,4 +1,5 @@
 <ion-button
+  [style.--background]="nestedProperty"
   [class]="style + ' ' + buttonAlign"
   [disabled]="disabled"
   (click)="triggerActions('click')"
