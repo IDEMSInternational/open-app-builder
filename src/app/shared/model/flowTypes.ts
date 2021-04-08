@@ -24,8 +24,12 @@ export namespace FlowTypes {
     | "reminder_list"
     | "template"
     | "component_defaults"
+    // global data provides data to other modules, without namespacing (all top-level)
     | "global"
-    | "home_page";
+    | "home_page"
+    // data_lists are a general catch for any data that will be used throughout the app, but
+    // without defined typings (such as habit_list).
+    | "data_list";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -40,6 +44,8 @@ export namespace FlowTypes {
     /** By default data will be removed following server-sync. Specify if instead should be retained locally also */
     db_persist_events?: boolean;
     module?: string;
+    /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
+    data_list_name?: string;
     // debug info
     _xlsxPath?: string;
   }
@@ -56,6 +62,8 @@ export namespace FlowTypes {
   /*********************************************************************************************
    *  Specific flow types
    ********************************************************************************************/
+  // 2021-04-07 - TODO - implementing common data lists but need to review what is now deprecated
+  // and what other list types also want to be refactored
   export interface Completion_list extends FlowTypeWithData {}
   export interface Goal_list extends FlowTypeWithData {}
   export interface Habit_list extends FlowTypeWithData {
@@ -86,6 +94,10 @@ export namespace FlowTypes {
   export interface Reminder_list extends FlowTypeWithData {
     flow_type: "reminder_list";
     rows: Reminder_listRow[];
+  }
+  export interface Data_list extends FlowTypeWithData {
+    flow_type: "data_list";
+    rows: Data_listRow[];
   }
 
   export interface Conversation extends RapidProFlowExport.RootObject {}
@@ -124,8 +136,12 @@ export namespace FlowTypes {
     /** Some groups may recursively nest other row objects */
     rows?: Module_pageRow[];
   }
-  export interface Habit_listRow {
+  /** all data_list type must provide a unique id for each row to allow */
+  interface Data_listRow {
     id: string;
+    [key: string]: any;
+  }
+  export interface Habit_listRow extends Data_listRow {
     title: string;
     description: string;
     task_id: string;
@@ -389,7 +405,7 @@ export namespace FlowTypes {
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
-    type: "local" | "field" | "fields" | "global";
+    type: "local" | "field" | "fields" | "global" | "data";
     fieldName: string;
   }
   export interface TemplateRowAction {
