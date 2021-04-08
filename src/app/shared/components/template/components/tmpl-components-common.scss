@@ -2,6 +2,10 @@
   // border:2px solid purple;
 }
 
+:host .display-group .offset :nth-child(1n) {
+  width: 100%;
+}
+
 .hidden {
   display: none;
 }
