@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
+import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
+import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
+import { FlowTypes } from "scripts/types";
+import { getNestedProperty } from "src/app/shared/utils";
 
 @Injectable({
   providedIn: "root",
@@ -8,7 +11,11 @@ import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
 export class TemplateService {
   globals = {};
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private dataService: PLHDataService,
+    private dbService: DbService
+  ) {
     this.initialiseGlobals();
   }
 
@@ -36,8 +43,25 @@ export class TemplateService {
     return val;
   }
 
-  setField(key: string, value: string): void {
+  /**
+   * Store a contact field in localstorage and create a backup also in the database
+   *
+   * @remark whilst writing to the db is an async event, the data will be immediately
+   * available in local storage so does not require await for further processing
+   * */
+  setField(key: string, value: string) {
+    // write to local storage
     this.localStorageService.setString("rp-contact-field." + key, value);
+
+    // write to db
+    const evt: IFlowEvent = {
+      ...this.dbService.generateDBMeta(),
+      event: "set",
+      value,
+      name: key,
+      type: "contact_field" as any,
+    };
+    return this.dbService.table("data_events").add(evt);
   }
 
   getGlobal(key: string): string {
@@ -52,5 +76,26 @@ export class TemplateService {
 
   setGlobal(key: string, value: string) {
     this.globals[key] = value;
+  }
+
+  /** Get the value of a data_list item as defined within templates */
+  getDataListByPath(path: string) {
+    const data = getNestedProperty(this.dataService.dataLists, path);
+    return data;
+  }
+
+  /** Record a template event to the database */
+  recordEvent(template: FlowTypes.Template, event: "emit", value: any) {
+    const { flow_name, db_ignore_events } = template;
+    if (!db_ignore_events) {
+      const evt: IFlowEvent = {
+        ...this.dbService.generateDBMeta(),
+        event,
+        name: flow_name,
+        type: "template",
+        value,
+      };
+      return this.dbService.table("flow_events").add(evt);
+    }
   }
 }

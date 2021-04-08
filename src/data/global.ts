@@ -68,6 +68,11 @@
     "rows": [
       {
         "type": "declare_global_constant",
+        "name": "parent_app",
+        "value": "ParentApp"
+      },
+      {
+        "type": "declare_global_constant",
         "name": "weekly_workshops",
         "value": "Weekly Workshops"
       },
@@ -302,8 +307,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_self_care_short",
-        "value": "Self-Care",
-        "comments": "ETW 1 -- done"
+        "value": "Self-Care"
       },
       {
         "type": "declare_global_constant",
@@ -314,8 +318,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_1on1_short",
-        "value": "One-on-One Time",
-        "comments": "ETW 3 -- done"
+        "value": "One-on-One Time"
       },
       {
         "type": "declare_global_constant",
@@ -326,8 +329,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_praise_short",
-        "value": "Praise",
-        "comments": "ETW 4 -- done"
+        "value": "Praise"
       },
       {
         "type": "declare_global_constant",
@@ -338,8 +340,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_instruct_short",
-        "value": "Positive Instructions",
-        "comments": "ETW 2 -- done"
+        "value": "Positive Instructions"
       },
       {
         "type": "declare_global_constant",
@@ -350,8 +351,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_stress_short",
-        "value": "Managing Stress",
-        "comments": "ETW 5 -- done"
+        "value": "Managing Stress"
       },
       {
         "type": "declare_global_constant",
@@ -362,8 +362,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_money_short",
-        "value": "Family Budgets",
-        "comments": "ETW 6 -- might need reordering"
+        "value": "Family Budgets"
       },
       {
         "type": "declare_global_constant",
@@ -374,8 +373,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_rules_short",
-        "value": "Rules",
-        "comments": "ETW 7 -- done"
+        "value": "Rules"
       },
       {
         "type": "declare_global_constant",
@@ -386,8 +384,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_consequence_short",
-        "value": "Calm Consequences",
-        "comments": "ETW 8 -- done"
+        "value": "Calm Consequences"
       },
       {
         "type": "declare_global_constant",
@@ -398,8 +395,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_solve_short",
-        "value": "Problem Solving",
-        "comments": "ETW 9 -- done"
+        "value": "Problem Solving"
       },
       {
         "type": "declare_global_constant",
@@ -410,8 +406,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_safe_short",
-        "value": "Teen Safety",
-        "comments": "ETW 10 - need to discuss with Orli"
+        "value": "Teen Safety"
       },
       {
         "type": "declare_global_constant",
@@ -422,8 +417,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_crisis_short",
-        "value": "Dealing with Crisis",
-        "comments": "ETW 11 - waiting for images"
+        "value": "Dealing with Crisis"
       },
       {
         "type": "declare_global_constant",
