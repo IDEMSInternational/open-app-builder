@@ -292,16 +292,6 @@
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
               "group_name",
               "Friends"
             ],
@@ -322,10 +312,10 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "w_self_care_stepper"
+              "w_self_care_buttons_temp"
             ],
-            "_raw": "click | go_to:w_self_care_stepper",
-            "_cleaned": "click | go_to:w_self_care_stepper"
+            "_raw": "click | go_to:w_self_care_buttons_temp",
+            "_cleaned": "click | go_to:w_self_care_buttons_temp"
           }
         ],
         "parameter_list": {
@@ -962,23 +952,6 @@
     "status": "released",
     "rows": [
       {
-        "name": "action_list",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.radio_button_field",
-              "@local.radio_group"
-            ],
-            "_raw": "completed | set_field:@local.radio_button_field:@local.radio_group",
-            "_cleaned": "completed | set_field:@local.radio_button_field:@local.radio_group"
-          }
-        ],
-        "comments": "row_type needs to be action_list",
-        "type": "set_variable"
-      },
-      {
         "name": "radio_button_field",
         "value": "radio_button_field",
         "type": "set_variable"
@@ -1019,7 +992,8 @@
         "parameter_list": {
           "radio_button_type": "@local.radio_button_type",
           "answer_list": "@local.answer_list"
-        }
+        },
+        "comments": "changed | set_field:@local.radio_button_field:@local.radio_group"
       },
       {
         "type": "text",
@@ -1033,16 +1007,6 @@
         "action_list": [
           {
             "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.radio_button_field",
-              "@local.radio_group"
-            ],
-            "_raw": "completed | set_field:@local.radio_button_field:@local.radio_group",
-            "_cleaned": "completed | set_field:@local.radio_button_field:@local.radio_group"
-          },
-          {
-            "trigger": "completed",
             "action_id": "emit",
             "args": [
               "completed"
@@ -1051,7 +1015,6 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "completed | emit:completed",
         "rows": []
       }
     ],
@@ -1062,23 +1025,6 @@
     "flow_name": "box_combo_box",
     "status": "released",
     "rows": [
-      {
-        "name": "action_list",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.combo_box_field",
-              "@local.combo_box"
-            ],
-            "_raw": "completed | set_field:@local.combo_box_field:@local.combo_box",
-            "_cleaned": "completed | set_field:@local.combo_box_field:@local.combo_box"
-          }
-        ],
-        "comments": "row_type needs to be action_list",
-        "type": "set_variable"
-      },
       {
         "name": "combo_box_field",
         "type": "set_variable"
@@ -1135,7 +1081,8 @@
       },
       {
         "type": "text",
-        "name": "reply"
+        "name": "reply",
+        "value": "You selected @local.combo_box"
       },
       {
         "type": "template",
@@ -1163,6 +1110,122 @@
           }
         ],
         "comments": "completed | emit:completed",
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_multi_1",
+    "status": "released",
+    "rows": [
+      {
+        "name": "radio_buttons_completed",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "radio_buttons_completed_text",
+        "value": "Radio buttons completed: @local.radio_buttons_completed"
+      },
+      {
+        "type": "template",
+        "name": "text_box",
+        "value": "box_text_box",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "radio_buttons",
+        "value": "box_radio_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "set_local",
+            "args": [
+              "radio_buttons_completed",
+              "true"
+            ],
+            "_raw": "completed | set_local:radio_buttons_completed:true",
+            "_cleaned": "completed | set_local:radio_buttons_completed:true"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "number_selector",
+        "value": "box_number_selector",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed",
+              "text_box"
+            ],
+            "_raw": "completed | emit:completed:text_box",
+            "_cleaned": "completed | emit:completed:text_box"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed",
+              "radio_buttons"
+            ],
+            "_raw": "completed | emit:completed:radio_buttons",
+            "_cleaned": "completed | emit:completed:radio_buttons"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed",
+              "number_selector"
+            ],
+            "_raw": "completed | emit:completed:number_selector",
+            "_cleaned": "completed | emit:completed:number_selector"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
         "rows": []
       }
     ],
@@ -2181,7 +2244,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "completed | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
+        "comments": "This should be: \ncompleted | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
         "rows": []
       }
     ],
@@ -2559,9 +2622,9 @@
                     "name": "widget_audio",
                     "rows": [
                       {
-                        "type": "set_variable",
                         "name": "audio_title",
-                        "value": "Hear Sbo's message"
+                        "value": "Hear Sbo's message",
+                        "type": "set_variable"
                       }
                     ]
                   }
@@ -3803,19 +3866,30 @@
     "status": "released",
     "rows": [
       {
+        "name": "text_template",
+        "value": ".text_template",
+        "type": "set_variable"
+      },
+      {
+        "name": "audio_asset",
+        "value": ".audio_asset",
+        "type": "set_variable"
+      },
+      {
         "name": "relax",
-        "value": "@relax.random",
+        "value": "relax_1",
+        "comments": "@data.relax_list.random().id\n\nNeed random picker at some point",
         "type": "set_variable"
       },
       {
         "name": "relax_text",
-        "value": "@relax.@local.relax._text",
+        "value": "@data.relax_list.@local.relax@local.text_template",
         "comments": "Will these evaluate correctly or should we use brackets?",
         "type": "set_variable"
       },
       {
         "name": "relax_audio",
-        "value": "@relax.@local.relax._audio",
+        "value": "@data.relax_list.@local.relax@local.audio_asset",
         "type": "set_variable"
       },
       {
@@ -3842,40 +3916,37 @@
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/group/relax.svg",
-            "hidden": "!@field.do_workshops_together",
-            "comments": "placeholder",
+            "condition": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Relax Together",
-            "hidden": "!@field.do_workshops_together",
+            "condition": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let’s do a 30 second relaxation activity together.",
-            "hidden": "!@field.do_workshops_together",
-            "comments": "placeholder",
+            "condition": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/guide_2/relax.svg",
-            "hidden": "@field.do_workshops_together",
+            "condition": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Relax",
-            "hidden": "@field.do_workshops_together",
+            "condition": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let’s do a 30 second relaxation activity.",
-            "hidden": "@field.do_workshops_together",
-            "comments": "placeholder",
+            "condition": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
@@ -3918,13 +3989,11 @@
                       }
                     ],
                     "hidden": "false",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button_completed",
                     "value": "Done!",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   }
                 ]
@@ -5700,74 +5769,6 @@
         "type": "set_variable"
       },
       {
-        "type": "radio_group",
-        "name": "option_buttons",
-        "parameter_list": {
-          "radio_button_type": "btn_text",
-          "answer_list": "@local.answer_list",
-          "style": "passive"
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_with_option",
-        "value": "The option currently selecte is @local.option_buttons"
-      },
-      {
-        "type": "text",
-        "name": "text_option_1",
-        "value": "This is the text to show if option 1 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_1\""
-      },
-      {
-        "type": "text",
-        "name": "text_option_2",
-        "value": "This is the text to show if option 2 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_2\""
-      },
-      {
-        "type": "text",
-        "name": "text_option_3",
-        "value": "This is the text to show if option 3 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_3\""
-      },
-      {
-        "name": "output_fieldname",
-        "value": "this_will_be_overwritten",
-        "type": "set_variable"
-      },
-      {
-        "type": "radio_group",
-        "name": "option_buttons_2"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_component_variables.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "example_double_ref_comp_var",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "example_1a",
-        "value": "Basic Example"
-      },
-      {
-        "type": "text",
-        "name": "example_1b",
-        "value": "The text above is: @local.example_1a"
-      },
-      {
-        "name": "answer_list",
-        "value": [
-          "name:name_var_1 | text:Option 1",
-          "name:name_var_2 | text: Option 2",
-          "name:name_var_3 | text: Option 3"
-        ],
-        "type": "set_variable"
-      },
-      {
         "name": "radio_group_default",
         "value": "name:name_var_3 | text:Option ",
         "type": "set_variable"
@@ -5921,13 +5922,13 @@
           {
             "name": "text",
             "value": "The condition is not satisfied",
-            "condition": "@local.var_1==\"val_2\"",
+            "condition": "@local.var_1==val_2",
             "type": "set_variable"
           },
           {
             "name": "text",
             "value": "The condition is satisfied",
-            "condition": "@local.var_1==\"val_1\"",
+            "condition": "@local.var_1==val_1",
             "type": "set_variable"
           }
         ]
@@ -6112,12 +6113,18 @@
         "type": "set_variable"
       },
       {
+        "name": "field_name",
+        "value": "radio_button_field",
+        "type": "set_variable"
+      },
+      {
         "type": "radio_group",
         "name": "radio_group_text",
         "value": "nothing",
         "parameter_list": {
           "answer_list": "@local.answer_list"
-        }
+        },
+        "comments": "change | set_field:@local.field_name:@local.radio_group_text"
       },
       {
         "type": "text",
@@ -6141,6 +6148,12 @@
         "type": "text",
         "name": "text_1",
         "value": "@data.example.example1.value",
+        "comments": "This should read the data from the the data_list"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@data.example.example3.value_list",
         "comments": "This should read the data from the the data_list"
       },
       {
@@ -7319,7 +7332,16 @@
       },
       {
         "type": "combo_box",
-        "name": "combo_box_with_placeholder",
+        "name": "combo_box_with_placeholder_1",
+        "parameter_list": {
+          "answer_list": "@local.answer_list",
+          "placeholder": "Click here to answer"
+        },
+        "comments": "Placeholder should be displayed when nothing is selected. In that case, @local.combo_box_with_placeholder is the value of combo_box_with_placeholder (i.e. \"nothing\") \n\nDesign comment: \nPlaceholder should look different from (pre-)selected answer"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_with_placeholder_2",
         "value": "nothing",
         "parameter_list": {
           "answer_list": "@local.answer_list",
@@ -7475,7 +7497,7 @@
           "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
           "name:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
         ],
-        "comments": "Suggestion: \n\nradio_button_type: btn_text (default), btn_image, btn_both\nstyle: passive (default), active, outline\noptions_per_row: 3 (default), 2, 1\nSelection should be done by name, not by text\n\n",
+        "comments": "Suggestion: \n\nradio_button_type: btn_text (default), btn_image, btn_both\nstyle: passive (default), active, outline\noptions_per_row: 3 (default), 2, 1\n\n",
         "type": "set_variable"
       },
       {
@@ -9272,6 +9294,17 @@
                         "value": "One-on-one time is when you focus on them, without TV or phones. Let them lead what you do or talk about.\n\nIt is great if you can do twenty minutes a day, but even five minutes a day is really good.",
                         "comments": "placeholder",
                         "type": "set_variable"
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/1on1.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -13169,7 +13202,7 @@
                 "rows": [
                   {
                     "name": "intro_text",
-                    "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and plan support for everyone going forward. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
+                    "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
                     "hidden": "!@field.do_workshops_together",
                     "comments": "ETW to check ",
                     "type": "set_variable"
@@ -13435,6 +13468,23 @@
                     "value": "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference. ",
                     "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/instruct.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -14774,6 +14824,23 @@
                     "name": "intro_text",
                     "value": "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals.",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/money.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -16446,6 +16513,23 @@
                     "name": "intro_text",
                     "value": "Praise is a powerful parenting skill.",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/praise.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -17358,6 +17442,23 @@
                     "value": "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it! ",
                     "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/rules.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -19575,6 +19676,16 @@
         "rows": [
           {
             "name": "nav_template_list",
+            "value": [
+              "w_self_care_welcome_individual",
+              "w_self_care_intro",
+              "w_self_care_relax",
+              "w_self_care_recognise",
+              "w_self_care_reward",
+              "w_self_care_tools_activity",
+              "w_self_care_home_practice",
+              "w_self_care_ending"
+            ],
             "comments": "w_self_care_welcome_individual; w_self_care_intro; w_self_care_relax; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_survey_activity; w_self_care_home_practice; w_self_care_ending",
             "type": "set_variable"
           }
@@ -19603,7 +19714,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "include completed | set_theme : active to the action list",
+        "comments": "include completed | set_theme: active to the action list",
         "rows": [
           {
             "type": "nested_properties",
@@ -19615,7 +19726,7 @@
                 "rows": [
                   {
                     "name": "intro_text",
-                    "value": "It’s great to have you here. Let’s start with a song for families everywhere.",
+                    "value": "It’s great to have you here. \n\nLet’s start with a song for families everywhere.",
                     "type": "set_variable"
                   }
                 ]
@@ -19647,7 +19758,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "include completed | set_theme : active to the action list",
+        "comments": "include completed | set_theme: active to the action list",
         "rows": [
           {
             "type": "nested_properties",
@@ -19712,6 +19823,17 @@
                         "name": "text",
                         "value": "Parents don’t look after themselves enough. But this is so important. Reducing our stress and treating ourselves well helps us and our teenagers. \n\nHere are three brief things to do every day.\n\nRELAX – RECOGNISE – REWARD",
                         "type": "set_variable"
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/self_care.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -19799,13 +19921,61 @@
               {
                 "name": "intro_text",
                 "value": "Everyone take a moment to praise yourselves. We’ll show you how.",
-                "comments": "!@field.do_workshops_together",
+                "condition": "@field.do_workshops_together",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Take a moment to praise yourself. We’ll show you how.",
+                "condition": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
                 "type": "nested_properties",
                 "name": "content_box",
+                "value": "box_combo_box",
+                "condition": "@field.do_workshops_together",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/self_care/guide_2/recognise.svg",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "Think of one thing YOU have done well recently!",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "Showing love to my children",
+                      "Getting up even though I felt tired",
+                      "Smiling at someone",
+                      "Making food to stay strong",
+                      "Spending time with my children",
+                      "Helping my children with schoolwork"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "Say it aloud if you can: \"Well done to me for @local.combo_box\"\n\nHere is one thing you deserve praise for - WELL DONE for using ParentApp!",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
                 "value": "box_image",
+                "condition": "@field.do_workshops_together",
                 "rows": [
                   {
                     "name": "image_src",
@@ -19916,7 +20086,13 @@
               {
                 "name": "intro_text",
                 "value": "You all deserve to treat yourself well!",
-                "comments": "!@field.do_workshops_together",
+                "condition": "@field.do_workshops_together",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "You deserve to treat yourself well!",
+                "condition": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
@@ -19932,6 +20108,13 @@
                   {
                     "name": "text",
                     "value": "What small things make you happy? Can you each say one thing?\n\nTaking care of yourself is an important parenting skill! ",
+                    "condition": "@field.do_workshops_together",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "What small things make you happy?\n\nTaking care of yourself is an important parenting skill! ",
+                    "condition": "!@field.do_workshops_together",
                     "type": "set_variable"
                   },
                   {
@@ -20154,7 +20337,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "include completed | set_theme : passive to the action list",
+        "comments": "include completed | set_theme: passive to the action list",
         "rows": [
           {
             "type": "nested_properties",
