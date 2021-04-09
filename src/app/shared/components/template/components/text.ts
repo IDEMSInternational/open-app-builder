@@ -25,6 +25,15 @@ import { getStringParamFromTemplateRow } from "../../../utils";
       .large {
         font-size: 20px;
       }
+      .right {
+        text-align: right;
+      }
+      .left {
+        text-align: left;
+      }
+      .center {
+        text-align: center;
+      }
     `,
   ],
 })
