@@ -226,6 +226,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   ): ILocalVariables {
     templateRows.forEach((r) => {
       let { name, value, rows, type } = r;
+      if (r.condition) {
+        if (!this.filterRowOnCondition(r, localvariables)) {
+          return;
+        }
+      }
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
       if (type === "set_variable" || type === "set_local" || type === "nested_properties") {
