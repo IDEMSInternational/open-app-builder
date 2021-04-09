@@ -5,11 +5,28 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-text",
   template: `<p
+    class="small standard normal"
     [class]="style"
     [innerHTML]="_row.value | markdown"
     [style.textAlign]="textAlign"
   ></p>`,
   styleUrls: ["./tmpl-components-common.scss"],
+  styles: [
+    `
+      .tiny {
+        font-size: 14px;
+      }
+      .small {
+        font-size: 16px;
+      }
+      .medium {
+        font-size: 18px;
+      }
+      .large {
+        font-size: 20px;
+      }
+    `,
+  ],
 })
 export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   textAlign: string | null;
