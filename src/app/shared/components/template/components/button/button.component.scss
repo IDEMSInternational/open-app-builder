@@ -14,9 +14,15 @@ ion-button {
   --border-radius: 15px;
   --box-shadow: var(--ion-btn-primary-box-shadow);
   display: flex;
+  height: auto;
   width: fit-content;
   margin: 0 auto;
 }
+
+ion-button::part(native) {
+  height: auto;
+}
+
 ion-button:disabled,
 ion-button[disabled] {
   filter: brightness(55%);
