@@ -125,3 +125,8 @@ If category_list is not available we generate list of values based on min_value,
 - value - number. Default 0.
 - icon_src - string or null. Path to image. Default null.
 - text - string or null. Text component. Default null.
+
+## ImageComponent - TmplImageComponent
+- type - image.
+- value - string. Path to image. Default null.
+- style string. Classname. Default null. Style_list: 'rounded_corners'.
