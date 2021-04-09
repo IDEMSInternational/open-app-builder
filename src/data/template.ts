@@ -962,7 +962,25 @@
     "status": "released",
     "rows": [
       {
+        "name": "action_list",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.radio_button_field",
+              "@local.radio_group"
+            ],
+            "_raw": "completed | set_field:@local.radio_button_field:@local.radio_group",
+            "_cleaned": "completed | set_field:@local.radio_button_field:@local.radio_group"
+          }
+        ],
+        "comments": "row_type needs to be action_list",
+        "type": "set_variable"
+      },
+      {
         "name": "radio_button_field",
+        "value": "radio_button_field",
         "type": "set_variable"
       },
       {
@@ -1022,8 +1040,129 @@
             ],
             "_raw": "completed | set_field:@local.radio_button_field:@local.radio_group",
             "_cleaned": "completed | set_field:@local.radio_button_field:@local.radio_group"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
           }
         ],
+        "comments": "completed | emit:completed",
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_combo_box",
+    "status": "released",
+    "rows": [
+      {
+        "name": "action_list",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.combo_box_field",
+              "@local.combo_box"
+            ],
+            "_raw": "completed | set_field:@local.combo_box_field:@local.combo_box",
+            "_cleaned": "completed | set_field:@local.combo_box_field:@local.combo_box"
+          }
+        ],
+        "comments": "row_type needs to be action_list",
+        "type": "set_variable"
+      },
+      {
+        "name": "combo_box_field",
+        "type": "set_variable"
+      },
+      {
+        "name": "input_allowed",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list",
+        "value": [
+          "First",
+          "Second",
+          "Third"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "name": "placeholder",
+        "value": "Click here to answer",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_placeholder",
+        "value": "Type your own",
+        "type": "set_variable"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "text",
+        "name": "question_text",
+        "parameter_list": {
+          "emphasised": "true"
+        }
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box",
+        "parameter_list": {
+          "answer_list": "@local.answer_list",
+          "placeholder": "@local.placeholder",
+          "input_allowed": "@local.input_allowed",
+          "answer_placeholder": "@local.answer_placeholder"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.combo_box_field",
+              "@local.combo_box"
+            ],
+            "_raw": "completed | set_field:@local.combo_box_field:@local.combo_box",
+            "_cleaned": "completed | set_field:@local.combo_box_field:@local.combo_box"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "comments": "completed | emit:completed",
         "rows": []
       }
     ],
@@ -1172,354 +1311,6 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_widgets.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_video",
-    "status": "released",
-    "rows": [
-      {
-        "name": "video_src",
-        "type": "set_variable"
-      },
-      {
-        "name": "video_title",
-        "value": "Video",
-        "type": "set_variable"
-      },
-      {
-        "name": "video_help",
-        "type": "set_variable"
-      },
-      {
-        "type": "template",
-        "name": "widget_video",
-        "value": "widget_video",
-        "rows": [
-          {
-            "name": "video_src",
-            "value": "plh_video/lets_slow_down.mp4",
-            "type": "set_variable"
-          },
-          {
-            "name": "title",
-            "value": "@local.video_title",
-            "type": "set_variable"
-          },
-          {
-            "name": "help",
-            "value": "@local.video_help",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_audio",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "template",
-        "name": "widget_audio",
-        "value": "widget_audio",
-        "rows": [
-          {
-            "type": "set_variable",
-            "name": "audio_title",
-            "value": "Box title"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_image",
-    "status": "released",
-    "rows": [
-      {
-        "type": "image",
-        "name": "image_src"
-      },
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "text",
-        "name": "habit_text",
-        "hidden": "true",
-        "parameter_list": {
-          "alert": "plh_images/icons/star_circle.svg"
-        }
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_image_more",
-    "status": "released",
-    "rows": [
-      {
-        "type": "image",
-        "name": "image_src"
-      },
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "text",
-        "name": "habit_text",
-        "hidden": "true",
-        "parameter_list": {
-          "alert": "plh_images/icons/star_circle.svg"
-        }
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": [
-          {
-            "name": "button_completed",
-            "value": "@global.more_button",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_buttons",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text_1"
-      },
-      {
-        "type": "button",
-        "name": "button_1"
-      },
-      {
-        "type": "text",
-        "name": "text_2",
-        "hidden": "true"
-      },
-      {
-        "type": "button",
-        "name": "button_2",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text_3",
-        "hidden": "true"
-      },
-      {
-        "type": "button",
-        "name": "button_3",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "habit_text",
-        "hidden": "true",
-        "parameter_list": {
-          "alert": "plh_images/icons/star_circle.svg"
-        }
-      },
-      {
-        "type": "text",
-        "name": "bottom_text",
-        "hidden": "true"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_timer",
-    "status": "released",
-    "rows": [
-      {
-        "name": "timer_duration",
-        "value": 10,
-        "type": "set_variable"
-      },
-      {
-        "name": "timer_duration_extension",
-        "value": 2,
-        "type": "set_variable"
-      },
-      {
-        "name": "timer_title",
-        "value": "Timer",
-        "type": "set_variable"
-      },
-      {
-        "name": "timer_help",
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "button",
-        "name": "button",
-        "hidden": "true"
-      },
-      {
-        "type": "template",
-        "name": "widget_timer",
-        "value": "widget_timer",
-        "rows": [
-          {
-            "name": "duration",
-            "value": "@local.timer_duration",
-            "type": "set_variable"
-          },
-          {
-            "name": "duration_extension",
-            "value": "@local.timer_duration_extension",
-            "type": "set_variable"
-          },
-          {
-            "value": "@local.timer_title",
-            "type": "set_variable"
-          },
-          {
-            "name": "title",
-            "value": "@local.timer_help",
-            "type": "set_variable"
-          },
-          {
-            "name": "help",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
   },
   {
     "flow_type": "template",
@@ -1998,6 +1789,406 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "box_video",
+    "status": "released",
+    "rows": [
+      {
+        "name": "video_src",
+        "type": "set_variable"
+      },
+      {
+        "name": "video_title",
+        "value": "Video",
+        "type": "set_variable"
+      },
+      {
+        "name": "video_help",
+        "type": "set_variable"
+      },
+      {
+        "type": "template",
+        "name": "widget_video",
+        "value": "widget_video",
+        "rows": [
+          {
+            "name": "video_src",
+            "value": "plh_video/lets_slow_down.mp4",
+            "type": "set_variable"
+          },
+          {
+            "name": "title",
+            "value": "@local.video_title",
+            "type": "set_variable"
+          },
+          {
+            "name": "help",
+            "value": "@local.video_help",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_audio",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "template",
+        "name": "widget_audio",
+        "value": "widget_audio",
+        "rows": [
+          {
+            "type": "set_variable",
+            "name": "audio_title",
+            "value": "Box title"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_image",
+    "status": "released",
+    "rows": [
+      {
+        "type": "image",
+        "name": "image_src"
+      },
+      {
+        "type": "title",
+        "name": "title",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "text",
+        "name": "habit_text",
+        "hidden": "true",
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_image_more",
+    "status": "released",
+    "rows": [
+      {
+        "type": "image",
+        "name": "image_src"
+      },
+      {
+        "type": "title",
+        "name": "title",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "text",
+        "name": "habit_text",
+        "hidden": "true",
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "button_completed",
+            "value": "@global.more_button",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1"
+      },
+      {
+        "type": "button",
+        "name": "button_1"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "hidden": "true"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "hidden": "true"
+      },
+      {
+        "type": "button",
+        "name": "button_3",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "habit_text",
+        "hidden": "true",
+        "parameter_list": {
+          "alert": "plh_images/icons/star_circle.svg"
+        }
+      },
+      {
+        "type": "text",
+        "name": "bottom_text",
+        "hidden": "true"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_timer",
+    "status": "released",
+    "rows": [
+      {
+        "name": "timer_duration",
+        "value": 10,
+        "type": "set_variable"
+      },
+      {
+        "name": "timer_duration_extension",
+        "value": 2,
+        "type": "set_variable"
+      },
+      {
+        "name": "timer_title",
+        "value": "Timer",
+        "type": "set_variable"
+      },
+      {
+        "name": "timer_help",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "hidden": "true"
+      },
+      {
+        "type": "template",
+        "name": "widget_timer",
+        "value": "widget_timer",
+        "rows": [
+          {
+            "name": "duration",
+            "value": "@local.timer_duration",
+            "type": "set_variable"
+          },
+          {
+            "name": "duration_extension",
+            "value": "@local.timer_duration_extension",
+            "type": "set_variable"
+          },
+          {
+            "value": "@local.timer_title",
+            "type": "set_variable"
+          },
+          {
+            "name": "title",
+            "value": "@local.timer_help",
+            "type": "set_variable"
+          },
+          {
+            "name": "help",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_duo_combo_box",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "combo_box_1",
+        "value": "box_combo_box",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "combo_box_2",
+        "value": "box_combo_box",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "comments": "completed | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "workshops_navigation_page",
     "status": "released",
     "rows": [
@@ -2389,46 +2580,6 @@
     "status": "released",
     "rows": [
       {
-        "name": "text_1",
-        "type": "set_variable"
-      },
-      {
-        "name": "question_text_1",
-        "type": "set_variable"
-      },
-      {
-        "name": "answer_list_1",
-        "type": "set_variable"
-      },
-      {
-        "name": "user_input_1",
-        "type": "set_variable"
-      },
-      {
-        "name": "reply_1",
-        "type": "set_variable"
-      },
-      {
-        "name": "text_2",
-        "type": "set_variable"
-      },
-      {
-        "name": "question_text_2",
-        "type": "set_variable"
-      },
-      {
-        "name": "answer_list_2",
-        "type": "set_variable"
-      },
-      {
-        "name": "user_input_2",
-        "type": "set_variable"
-      },
-      {
-        "name": "reply_2",
-        "type": "set_variable"
-      },
-      {
         "type": "template",
         "name": "workshop_activity",
         "value": "workshop_activity",
@@ -2470,80 +2621,7 @@
             "type": "nested_properties",
             "name": "content_box",
             "value": "box_duo_combo_box",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "combo_box_1",
-                "rows": [
-                  {
-                    "name": "text",
-                    "value": "@local.text_1",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "question_text",
-                    "value": "@local.question_text_1",
-                    "parameter_list": {
-                      "\"\"": "true"
-                    },
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "answer_list",
-                    "value": [
-                      "@local.answer_list_1"
-                    ],
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "user_input",
-                    "value": "@local.user_input_1",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "reply",
-                    "value": "@local.reply_1",
-                    "type": "set_variable"
-                  }
-                ]
-              },
-              {
-                "type": "nested_properties",
-                "name": "combo_box_2",
-                "rows": [
-                  {
-                    "name": "text",
-                    "value": "@local.text_2",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "question_text",
-                    "value": "@local.question_text_2",
-                    "parameter_list": {
-                      "\"\"": "true"
-                    },
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "answer_list",
-                    "value": [
-                      "@local.answer_list_2"
-                    ],
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "user_input",
-                    "value": "@local.user_input_2",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "reply",
-                    "value": "@local.reply_2",
-                    "type": "set_variable"
-                  }
-                ]
-              }
-            ]
+            "rows": []
           }
         ]
       }
@@ -4167,7 +4245,7 @@
             "value": "box_radio_buttons",
             "rows": [
               {
-                "name": "radio_button_list",
+                "name": "answer_list",
                 "value": [
                   "name:happy | image:plh_images/stickers/faces/happier.svg",
                   "name:ok | image:plh_images/stickers/faces/neutral.svg",
@@ -4181,19 +4259,19 @@
                 "type": "set_variable"
               },
               {
-                "condition": "@local.radio_group==happy",
+                "condition": "@local.radio_group==\"happy\"",
                 "name": "reply",
                 "value": "@local.reply_happy",
                 "type": "set_variable"
               },
               {
-                "condition": "@local.radio_group==ok",
+                "condition": "@local.radio_group==\"ok\"",
                 "name": "reply",
                 "value": "@local.reply_ok",
                 "type": "set_variable"
               },
               {
-                "condition": "@local.radio_group==sad",
+                "condition": "@local.radio_group==\"sad\"",
                 "name": "reply",
                 "value": "@local.reply_sad",
                 "type": "set_variable"
@@ -7161,7 +7239,7 @@
         "type": "text",
         "name": "text_result",
         "value": "You selected @local.combo_box_defaults",
-        "comments": "Suggestion: @local.[combo_box_name] is the selected value of the combo box. If nothing is selected this is the value of [combo_box_name] (same syntax as for radio_group)"
+        "comments": "Suggestion: \n@local.[combo_box_name] is the selected value of the combo box. If nothing is selected this is the value of [combo_box_name]\n(same syntax as for radio_group)"
       },
       {
         "type": "combo_box",
@@ -7174,11 +7252,17 @@
       {
         "type": "combo_box",
         "name": "combo_box_with_placeholder",
+        "value": "nothing",
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "Click here to answer"
         },
-        "comments": "Design comment: \nPlaceholder should look different from preselected answer"
+        "comments": "Placeholder should be displayed when nothing is selected. In that case, @local.combo_box_with_placeholder is the value of combo_box_with_placeholder (i.e. \"nothing\") \n\nDesign comment: \nPlaceholder should look different from (pre-)selected answer"
+      },
+      {
+        "type": "text",
+        "name": "text_result",
+        "value": "You selected @local.combo_box_with_placeholder"
       },
       {
         "type": "combo_box",
@@ -7354,8 +7438,9 @@
       {
         "name": "answer_list_5",
         "value": [
-          "name:name_var_1 | image:/plh_images/icons/heart.svg",
-          "name:name_var_2 | image:/plh_images/icons/star_outline.svg"
+          "name:happy | image:plh_images/stickers/faces/happier.svg",
+          "name:ok | image:plh_images/stickers/faces/neutral.svg",
+          "name:sad | image:plh_images/stickers/faces/sadder.svg"
         ],
         "type": "set_variable"
       },
@@ -7460,6 +7545,11 @@
         "value": "@local.radio_group_text"
       },
       {
+        "type": "text",
+        "name": "text_result",
+        "value": "@local.radio_group_text._value"
+      },
+      {
         "type": "radio_group",
         "name": "radio_group_image",
         "value": "nothing selected",
@@ -7473,6 +7563,15 @@
         "type": "text",
         "name": "text_result",
         "value": "@local.radio_group_image"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_image_outline",
+        "parameter_list": {
+          "radio_button_type": "btn_icon",
+          "answer_list": "@local.answer_list_5"
+        },
+        "comments": "radio_button_type: btn_image; \nanswer_list: @local.answer_list_5;\nstyle:outline"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -8637,6 +8736,107 @@
         "type": "text",
         "name": "text",
         "value": "**This is bold text** and _italic text_ )"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Font size 18px and bold text",
+        "parameter_list": {
+          "style": "medium emphasied center"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Italic center aligh large text",
+        "parameter_list": {
+          "style": "large contextual right"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Standart text "
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Italic center aligh large text and color white",
+        "parameter_list": {
+          "style": "large contextual center alternative left"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Font size 20px and bold text",
+        "parameter_list": {
+          "style": "large emphasied right"
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_audio",
+    "status": "released",
+    "rows": [
+      {
+        "type": "audio",
+        "name": "audio_1",
+        "value": "plh_audio/sample.mp3",
+        "parameter_list": {
+          "range_bar_disabled": "true",
+          "time_to_rewind": "5",
+          "title": "Audio player #1"
+        },
+        "style_list": [
+          "margin-top: 15px"
+        ]
+      },
+      {
+        "type": "audio",
+        "name": "audio_2",
+        "value": "plh_audio/sample.mp3",
+        "parameter_list": {
+          "range_bar_disabled": "false",
+          "time_to_rewind": "3",
+          "title": "Audio player #2",
+          "help": "Example"
+        },
+        "style_list": [
+          "margin-top: 15px"
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_set_theme",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "Button",
+            "value": "Button",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "set_theme",
+                "args": [
+                  "red"
+                ],
+                "_raw": "click | set_theme: red",
+                "_cleaned": "click | set_theme: red"
+              }
+            ]
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
