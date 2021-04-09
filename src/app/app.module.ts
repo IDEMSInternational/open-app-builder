@@ -27,6 +27,7 @@ const introModules = [AppTermsPageModule, PrivacyPageModule];
 
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
+import { TourComponent } from "./feature/tour/tour.component";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -35,7 +36,7 @@ export function lottiePlayerFactory() {
 }
 
 @NgModule({
-  declarations: [AppComponent, ThemeEditorComponent],
+  declarations: [AppComponent, ThemeEditorComponent, TourComponent],
 
   entryComponents: [],
   imports: [
