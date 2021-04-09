@@ -98,4 +98,10 @@ export class TemplateService {
       return this.dbService.table("flow_events").add(evt);
     }
   }
+
+  setTheme(template: FlowTypes.Template, event: "set_theme", value: any) {
+    console.error("template", template);
+    console.error("event", event);
+    console.error("value", value);
+  }
 }
