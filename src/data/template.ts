@@ -5700,6 +5700,74 @@
         "type": "set_variable"
       },
       {
+        "type": "radio_group",
+        "name": "option_buttons",
+        "parameter_list": {
+          "radio_button_type": "btn_text",
+          "answer_list": "@local.answer_list",
+          "style": "passive"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_with_option",
+        "value": "The option currently selecte is @local.option_buttons"
+      },
+      {
+        "type": "text",
+        "name": "text_option_1",
+        "value": "This is the text to show if option 1 is selected",
+        "hidden": "\"@local.option_buttons\"==\"name_var_1\""
+      },
+      {
+        "type": "text",
+        "name": "text_option_2",
+        "value": "This is the text to show if option 2 is selected",
+        "hidden": "\"@local.option_buttons\"==\"name_var_2\""
+      },
+      {
+        "type": "text",
+        "name": "text_option_3",
+        "value": "This is the text to show if option 3 is selected",
+        "hidden": "\"@local.option_buttons\"==\"name_var_3\""
+      },
+      {
+        "name": "output_fieldname",
+        "value": "this_will_be_overwritten",
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "option_buttons_2"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_component_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_double_ref_comp_var",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "example_1a",
+        "value": "Basic Example"
+      },
+      {
+        "type": "text",
+        "name": "example_1b",
+        "value": "The text above is: @local.example_1a"
+      },
+      {
+        "name": "answer_list",
+        "value": [
+          "name:name_var_1 | text:Option 1",
+          "name:name_var_2 | text: Option 2",
+          "name:name_var_3 | text: Option 3"
+        ],
+        "type": "set_variable"
+      },
+      {
         "name": "radio_group_default",
         "value": "name:name_var_3 | text:Option ",
         "type": "set_variable"
@@ -13101,7 +13169,7 @@
                 "rows": [
                   {
                     "name": "intro_text",
-                    "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
+                    "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and plan support for everyone going forward. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
                     "hidden": "!@field.do_workshops_together",
                     "comments": "ETW to check ",
                     "type": "set_variable"

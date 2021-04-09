@@ -4,7 +4,12 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
 
 @Component({
   selector: "plh-tmpl-display-group",
-  template: ` <div class="display-group" [class]="style" [style.marginBottom.px]="offset">
+  template: ` <div
+    class="display-group"
+    (click)="clickDisplayGroup()"
+    [class]="style"
+    [style.marginBottom.px]="offset"
+  >
     <div [style.marginBottom.px]="-offset" class="offset">
       <plh-template-component
         *ngFor="let childRow of _row.rows"
@@ -37,6 +42,10 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
 
   ngOnInit() {
     this.getParams();
+  }
+
+  clickDisplayGroup() {
+    this.triggerActions("click");
   }
 
   getParams() {
