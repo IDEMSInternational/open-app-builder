@@ -6,7 +6,7 @@ import { TourService } from "src/app/shared/services/tour/tour.service";
   template: ` <ion-content class="ion-padding">
     <h3>Start a tour</h3>
     <ion-list>
-      <ion-item *ngFor="let tourName of tourNames" [routerLink]="['tour', tourName]">
+      <ion-item *ngFor="let tourName of tourNames" [routerLink]="[tourName]">
         {{ tourName }}
       </ion-item>
     </ion-list>
