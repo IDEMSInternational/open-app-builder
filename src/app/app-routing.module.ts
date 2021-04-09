@@ -62,6 +62,10 @@ const FeatureRoutes: Routes = [
     component: ThemeEditorComponent,
   },
   {
+    path: "tour",
+    component: TourComponent,
+  },
+  {
     path: "tour/:tourName",
     component: TourComponent,
   },
@@ -89,8 +93,11 @@ const FeatureRoutes: Routes = [
   },
   {
     path: "template",
-    loadChildren: () => import("./feature/template-testing/template-testing.module").then((m) => m.TemplateTestingPageModule)
-  }
+    loadChildren: () =>
+      import("./feature/template-testing/template-testing.module").then(
+        (m) => m.TemplateTestingPageModule
+      ),
+  },
 ];
 
 /** Hardcoded pages, not linked to any feature modules */
