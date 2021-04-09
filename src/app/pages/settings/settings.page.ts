@@ -88,7 +88,7 @@ export class SettingsPage {
     this.router.navigateByUrl("/tips/" + flowName);
   }
 
-  startTour() {
-    this.tourService.startTour();
+  openTours() {
+    this.router.navigateByUrl("/tour");
   }
 }
