@@ -3884,7 +3884,6 @@
       {
         "name": "relax_text",
         "value": "@data.relax_list.@local.relax@local.text_template",
-        "comments": "Will these evaluate correctly or should we use brackets?",
         "type": "set_variable"
       },
       {
@@ -4294,13 +4293,11 @@
           {
             "name": "activity_title",
             "value": "Welcome @field.user_name",
-            "__EMPTY": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "It's great to see you again! ",
-            "__EMPTY": "placeholder",
             "type": "set_variable"
           },
           {
@@ -4331,6 +4328,7 @@
                 "condition": "@local.radio_group==\"happy\"",
                 "name": "reply",
                 "value": "@local.reply_happy",
+                "comments": "This does not yet evaluate",
                 "type": "set_variable"
               },
               {
@@ -4637,6 +4635,109 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "debug_go_to_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the first template"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_1",
+        "value": "Go to the second template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "debug_go_to_2"
+            ],
+            "_raw": "click | go_to:debug_go_to_2",
+            "_cleaned": "click | go_to:debug_go_to_2"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_double_go_to.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_go_to_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the second template"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_1",
+        "value": "Go to the third template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "debug_go_to_3"
+            ],
+            "_raw": "click | go_to:debug_go_to_3",
+            "_cleaned": "click | go_to:debug_go_to_3"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "button_completed",
+        "value": "Complete the current template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_double_go_to.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_go_to_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the third template"
+      },
+      {
+        "type": "button",
+        "name": "button_completed",
+        "value": "Complete the current template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_double_go_to.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "debug_go_to_nest_top",
     "status": "released",
     "rows": [
@@ -4888,6 +4989,61 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_pop_ups_variable",
+    "status": "released",
+    "rows": [
+      {
+        "name": "template_name",
+        "value": "example_text",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Button 1 pops up the template example_text directly"
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_1",
+        "value": "Button_1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_text"
+            ],
+            "_raw": "click | pop_up:example_text",
+            "_cleaned": "click | pop_up:example_text"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "Button 2 pops up the template example_text using a local variable \"template_name\""
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_2",
+        "value": "Button 2",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "@local.template_name"
+            ],
+            "_raw": "click | pop_up:@local.template_name",
+            "_cleaned": "click | pop_up:@local.template_name"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_pop_ups_variable.xlsx"
   },
   {
     "flow_type": "template",
@@ -5922,7 +6078,6 @@
           {
             "name": "text",
             "value": "The condition is not satisfied",
-            "condition": "@local.var_1==val_2",
             "type": "set_variable"
           },
           {
@@ -7289,6 +7444,35 @@
         "parameter_list": {
           "blank_display_text": "@local.blank_display_text",
           "help": "some help text"
+        }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_1",
+        "value": "Answer 1",
+        "parameter_list": {
+          "help": "some help text",
+          "text_align": "right",
+          "placeholder": "Add your answer"
+        }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_2",
+        "value": "Answer 2",
+        "parameter_list": {
+          "help": "some help text",
+          "text_align": "left",
+          "placeholder": "Add your answer 2"
+        }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_3",
+        "value": "Answer 3",
+        "parameter_list": {
+          "text_align": "center",
+          "placeholder": "Add your answer 3"
         }
       }
     ],
@@ -10173,6 +10357,23 @@
                     "value": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future ParentApp support.",
                     "hidden": "@field.do_workshops_together",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/celebrate.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -10760,6 +10961,23 @@
                     "value": "You can help your teenager to understand that breaking family rules leads to consequences. \n\nBut HOW you do consequences matters. \n\nGetting them right helps teens behave better and makes family life calmer...",
                     "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/consequence.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -12236,6 +12454,23 @@
                     "value": "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis. ",
                     "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/crisis.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -18667,6 +18902,23 @@
                     "name": "intro_text",
                     "value": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. Talking together about safe and unsafe places, and how to prevent problems, really helps!",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/safe.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -19686,7 +19938,6 @@
               "w_self_care_home_practice",
               "w_self_care_ending"
             ],
-            "comments": "w_self_care_welcome_individual; w_self_care_intro; w_self_care_relax; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_survey_activity; w_self_care_home_practice; w_self_care_ending",
             "type": "set_variable"
           }
         ]
@@ -19868,6 +20119,11 @@
         ],
         "rows": [
           {
+            "name": "relax",
+            "value": "relax_5",
+            "type": "set_variable"
+          },
+          {
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
@@ -20012,6 +20268,47 @@
                 ]
               },
               {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_combo_box",
+                "condition": "!@field.do_workshops_together",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/self_care/guide_2/recognise.svg",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "Think of one thing YOU have done well recently!",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "\"Well done to me for...\"",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "Showing love to my children",
+                      "Getting up even though I felt tired",
+                      "Smiling at someone",
+                      "Making food to stay strong",
+                      "Spending time with my children",
+                      "Helping my children with schoolwork"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "Say it aloud if you can.\n\nHere is one thing you deserve praise for - WELL DONE for using ParentApp!",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
                 "name": "outro_text",
                 "value": "Well done! Try to do this every day.",
                 "type": "set_variable"
@@ -20099,6 +20396,7 @@
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_image",
+                "condition": "@field.do_workshops_together",
                 "rows": [
                   {
                     "name": "image_src",
@@ -20138,6 +20436,46 @@
                         "type": "set_variable"
                       }
                     ]
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_combo_box",
+                "condition": "!@field.do_workshops_together",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/self_care/guide_2/reward.svg",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "What small things make you happy?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "Have a hot drink",
+                      "Call a friend or family",
+                      "Have a relaxed bath",
+                      "Read",
+                      "Watch TV"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "Taking care of yourself is an important parenting skill!",
+                    "type": "set_variable"
                   }
                 ]
               },
@@ -20804,6 +21142,23 @@
                     "name": "intro_text",
                     "value": "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too! ",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/solve.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -21865,11 +22220,14 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "true",
+        "hidden": "@field.do_workshops_together",
         "comments": "@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
+            "value": [
+              "w_stress_welcome_individual"
+            ],
             "comments": "w_stress_welcome_individual; w_stress_relax; w_stress_reflect_individual; w_stress_intro; w_stress_read_1; w_stress_read_2; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
             "type": "set_variable"
           }
@@ -22032,8 +22390,24 @@
                   {
                     "name": "intro_text",
                     "value": "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family. ",
-                    "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/stress.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
