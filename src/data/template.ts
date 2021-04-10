@@ -1946,6 +1946,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "comments": "completed | emit:completed; completed | emit:completed:widget_audio",
         "rows": []
       }
     ],
@@ -4311,6 +4312,11 @@
             "value": "box_radio_buttons",
             "rows": [
               {
+                "name": "radio_button_field",
+                "value": "current_feeling",
+                "type": "set_variable"
+              },
+              {
                 "name": "answer_list",
                 "value": [
                   "name:happy | image:plh_images/stickers/faces/happier.svg",
@@ -4325,20 +4331,20 @@
                 "type": "set_variable"
               },
               {
-                "condition": "@local.radio_group==\"happy\"",
+                "condition": "@local.current_feeling==\"happy\"",
                 "name": "reply",
                 "value": "@local.reply_happy",
                 "comments": "This does not yet evaluate",
                 "type": "set_variable"
               },
               {
-                "condition": "@local.radio_group==\"ok\"",
+                "condition": "@local.current_feeling==\"ok\"",
                 "name": "reply",
                 "value": "@local.reply_ok",
                 "type": "set_variable"
               },
               {
-                "condition": "@local.radio_group==\"sad\"",
+                "condition": "@local.current_feeling==\"sad\"",
                 "name": "reply",
                 "value": "@local.reply_sad",
                 "type": "set_variable"
@@ -6078,12 +6084,13 @@
           {
             "name": "text",
             "value": "The condition is not satisfied",
+            "hidden": "1>0",
             "type": "set_variable"
           },
           {
             "name": "text",
             "value": "The condition is satisfied",
-            "condition": "@local.var_1==val_1",
+            "condition": "@local.var_1==\"val_1\"",
             "type": "set_variable"
           }
         ]
@@ -19938,6 +19945,7 @@
               "w_self_care_home_practice",
               "w_self_care_ending"
             ],
+            "comments": "w_self_care_welcome_individual; \nw_self_care_intro; \nw_self_care_relax; \nw_self_care_recognise; \nw_self_care_reward;  \nw_self_care_tools_activity; \nw_self_care_survey_activity;\nw_self_care_home_practice; \nw_self_care_ending",
             "type": "set_variable"
           }
         ]
@@ -20189,47 +20197,6 @@
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "box_combo_box",
-                "condition": "@field.do_workshops_together",
-                "rows": [
-                  {
-                    "name": "image_src",
-                    "value": "plh_images/workshops/self_care/guide_2/recognise.svg",
-                    "hidden": "false",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "text",
-                    "hidden": "true",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "question_text",
-                    "value": "Think of one thing YOU have done well recently!",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "answer_list",
-                    "value": [
-                      "Showing love to my children",
-                      "Getting up even though I felt tired",
-                      "Smiling at someone",
-                      "Making food to stay strong",
-                      "Spending time with my children",
-                      "Helping my children with schoolwork"
-                    ],
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "reply",
-                    "value": "Say it aloud if you can: \"Well done to me for @local.combo_box\"\n\nHere is one thing you deserve praise for - WELL DONE for using ParentApp!",
-                    "type": "set_variable"
-                  }
-                ]
-              },
-              {
-                "type": "nested_properties",
-                "name": "content_box",
                 "value": "box_image",
                 "condition": "@field.do_workshops_together",
                 "rows": [
@@ -20406,13 +20373,6 @@
                   {
                     "name": "text",
                     "value": "What small things make you happy? Can you each say one thing?\n\nTaking care of yourself is an important parenting skill! ",
-                    "condition": "@field.do_workshops_together",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "text",
-                    "value": "What small things make you happy?\n\nTaking care of yourself is an important parenting skill! ",
-                    "condition": "!@field.do_workshops_together",
                     "type": "set_variable"
                   },
                   {
