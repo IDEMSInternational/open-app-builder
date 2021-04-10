@@ -31,7 +31,7 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
 ];
 
 /** Specific fields that will be evaluated as javascript */
-const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["hidden"];
+const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["condition", "hidden"];
 
 @Component({
   selector: "plh-template-container",
@@ -251,7 +251,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             // don't override values that have otherwise been set from parent or nested properties
             // local variables within r[field] are parsed
             variables[name][field] =
-              variables[name][field] || this.parseLocalVariables(r[field], localvariables);
+              variables[name][field] || this.parseLocalVariables(r[field], localvariables, field);
             // local variables on a given excel sheet are managed together
             localvariables[name][field] = localvariables[name][field] || variables[name][field];
           }
@@ -469,10 +469,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return `${evaluated}`;
   }
 
-  private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}) {
+  private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}, field: any) {
+    let parsedExpression = variable;
     let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(variable);
     if (evaluators) {
-      let parsedExpression = evaluators[0].fullExpression;
+      parsedExpression = evaluators[0].fullExpression;
       // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
       for (let evaluator of evaluators) {
         let parsedValue: any;
@@ -493,11 +494,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         }
         parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
       }
-
-      return parsedExpression;
-    } else {
-      return variable;
     }
+    if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
+      parsedExpression = this.evaluateJSExpression(parsedExpression);
+    }
+    return parsedExpression;
   }
   /** When using ngFor loop track by  */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
