@@ -292,16 +292,6 @@
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
               "group_name",
               "Friends"
             ],
@@ -322,10 +312,10 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "w_self_care_stepper"
+              "w_self_care_buttons_temp"
             ],
-            "_raw": "click | go_to:w_self_care_stepper",
-            "_cleaned": "click | go_to:w_self_care_stepper"
+            "_raw": "click | go_to:w_self_care_buttons_temp",
+            "_cleaned": "click | go_to:w_self_care_buttons_temp"
           }
         ],
         "parameter_list": {
@@ -1019,7 +1009,8 @@
         "parameter_list": {
           "radio_button_type": "@local.radio_button_type",
           "answer_list": "@local.answer_list"
-        }
+        },
+        "comments": "changed | set_field:@local.radio_button_field:@local.radio_group"
       },
       {
         "type": "text",
@@ -1033,10 +1024,220 @@
         "action_list": [
           {
             "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_combo_box",
+    "status": "released",
+    "rows": [
+      {
+        "name": "combo_box_field",
+        "type": "set_variable"
+      },
+      {
+        "name": "input_allowed",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list",
+        "value": [
+          "First",
+          "Second",
+          "Third"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "name": "placeholder",
+        "value": "Click here to answer",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_placeholder",
+        "value": "Type your own",
+        "type": "set_variable"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "text",
+        "name": "question_text",
+        "parameter_list": {
+          "emphasised": "true"
+        }
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box",
+        "parameter_list": {
+          "answer_list": "@local.answer_list",
+          "placeholder": "@local.placeholder",
+          "input_allowed": "@local.input_allowed",
+          "answer_placeholder": "@local.answer_placeholder"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply",
+        "value": "You selected @local.combo_box"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
             "action_id": "set_field",
             "args": [
-              "@local.radio_button_field",
-              "@local.radio_group"
+              "@local.combo_box_field",
+              "@local.combo_box"
+            ],
+            "_raw": "completed | set_field:@local.combo_box_field:@local.combo_box",
+            "_cleaned": "completed | set_field:@local.combo_box_field:@local.combo_box"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "comments": "completed | emit:completed",
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_multi_1",
+    "status": "released",
+    "rows": [
+      {
+        "name": "radio_buttons_completed",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "radio_buttons_completed_text",
+        "value": "Radio buttons completed: @local.radio_buttons_completed"
+      },
+      {
+        "type": "template",
+        "name": "text_box",
+        "value": "box_text_box",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "radio_buttons",
+        "value": "box_radio_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "set_local",
+            "args": [
+              "radio_buttons_completed",
+              "true"
+            ],
+            "_raw": "completed | set_local:radio_buttons_completed:true",
+            "_cleaned": "completed | set_local:radio_buttons_completed:true"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "number_selector",
+        "value": "box_number_selector",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed",
+              "text_box"
+            ],
+            "_raw": "completed | emit:completed:text_box",
+            "_cleaned": "completed | emit:completed:text_box"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed",
+              "radio_buttons"
+            ],
+            "_raw": "completed | emit:completed:radio_buttons",
+            "_cleaned": "completed | emit:completed:radio_buttons"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed",
+              "number_selector"
+            ],
+            "_raw": "completed | emit:completed:number_selector",
+            "_cleaned": "completed | emit:completed:number_selector"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
             ],
             "_raw": "completed | set_field:@local.radio_button_field:@local.radio_group",
             "_cleaned": "completed | set_field:@local.radio_button_field:@local.radio_group"
@@ -2559,9 +2760,9 @@
                     "name": "widget_audio",
                     "rows": [
                       {
-                        "type": "set_variable",
                         "name": "audio_title",
-                        "value": "Hear Sbo's message"
+                        "value": "Hear Sbo's message",
+                        "type": "set_variable"
                       }
                     ]
                   }
@@ -3803,19 +4004,29 @@
     "status": "released",
     "rows": [
       {
+        "name": "text_template",
+        "value": ".text_template",
+        "type": "set_variable"
+      },
+      {
+        "name": "audio_asset",
+        "value": ".audio_asset",
+        "type": "set_variable"
+      },
+      {
         "name": "relax",
-        "value": "@relax.random",
+        "value": "relax_1",
+        "comments": "@data.relax_list.random().id\n\nNeed random picker at some point",
         "type": "set_variable"
       },
       {
         "name": "relax_text",
-        "value": "@relax.@local.relax._text",
-        "comments": "Will these evaluate correctly or should we use brackets?",
+        "value": "@data.relax_list.@local.relax@local.text_template",
         "type": "set_variable"
       },
       {
         "name": "relax_audio",
-        "value": "@relax.@local.relax._audio",
+        "value": "@data.relax_list.@local.relax@local.audio_asset",
         "type": "set_variable"
       },
       {
@@ -3842,40 +4053,37 @@
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/group/relax.svg",
-            "hidden": "!@field.do_workshops_together",
-            "comments": "placeholder",
+            "condition": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Relax Together",
-            "hidden": "!@field.do_workshops_together",
+            "condition": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let’s do a 30 second relaxation activity together.",
-            "hidden": "!@field.do_workshops_together",
-            "comments": "placeholder",
+            "condition": "@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_image",
             "value": "plh_images/workshop_modes/guide_2/relax.svg",
-            "hidden": "@field.do_workshops_together",
+            "condition": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "activity_title",
             "value": "Relax",
-            "hidden": "@field.do_workshops_together",
+            "condition": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "Let’s do a 30 second relaxation activity.",
-            "hidden": "@field.do_workshops_together",
-            "comments": "placeholder",
+            "condition": "!@field.do_workshops_together",
             "type": "set_variable"
           },
           {
@@ -3918,13 +4126,11 @@
                       }
                     ],
                     "hidden": "false",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
                     "name": "button_completed",
                     "value": "Done!",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   }
                 ]
@@ -4225,13 +4431,11 @@
           {
             "name": "activity_title",
             "value": "Welcome @field.user_name",
-            "__EMPTY": "placeholder",
             "type": "set_variable"
           },
           {
             "name": "intro_text",
             "value": "It's great to see you again! ",
-            "__EMPTY": "placeholder",
             "type": "set_variable"
           },
           {
@@ -4262,6 +4466,7 @@
                 "condition": "@local.radio_group==\"happy\"",
                 "name": "reply",
                 "value": "@local.reply_happy",
+                "comments": "This does not yet evaluate",
                 "type": "set_variable"
               },
               {
@@ -4568,6 +4773,109 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "debug_go_to_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the first template"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_1",
+        "value": "Go to the second template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "debug_go_to_2"
+            ],
+            "_raw": "click | go_to:debug_go_to_2",
+            "_cleaned": "click | go_to:debug_go_to_2"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_double_go_to.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_go_to_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the second template"
+      },
+      {
+        "type": "button",
+        "name": "button_go_to_1",
+        "value": "Go to the third template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "debug_go_to_3"
+            ],
+            "_raw": "click | go_to:debug_go_to_3",
+            "_cleaned": "click | go_to:debug_go_to_3"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "button_completed",
+        "value": "Complete the current template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_double_go_to.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_go_to_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the third template"
+      },
+      {
+        "type": "button",
+        "name": "button_completed",
+        "value": "Complete the current template",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "click | emit:completed",
+            "_cleaned": "click | emit:completed"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_double_go_to.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "debug_go_to_nest_top",
     "status": "released",
     "rows": [
@@ -4819,6 +5127,61 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_pop_ups_variable",
+    "status": "released",
+    "rows": [
+      {
+        "name": "template_name",
+        "value": "example_text",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Button 1 pops up the template example_text directly"
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_1",
+        "value": "Button_1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_text"
+            ],
+            "_raw": "click | pop_up:example_text",
+            "_cleaned": "click | pop_up:example_text"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "Button 2 pops up the template example_text using a local variable \"template_name\""
+      },
+      {
+        "type": "button",
+        "name": "button_pop_up_2",
+        "value": "Button 2",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "@local.template_name"
+            ],
+            "_raw": "click | pop_up:@local.template_name",
+            "_cleaned": "click | pop_up:@local.template_name"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_pop_ups_variable.xlsx"
   },
   {
     "flow_type": "template",
@@ -5921,7 +6284,7 @@
           {
             "name": "text",
             "value": "The condition is not satisfied",
-            "condition": "@local.var_1==\"val_2\"",
+            "hidden": "1==1",
             "type": "set_variable"
           },
           {
@@ -6112,12 +6475,18 @@
         "type": "set_variable"
       },
       {
+        "name": "field_name",
+        "value": "radio_button_field",
+        "type": "set_variable"
+      },
+      {
         "type": "radio_group",
         "name": "radio_group_text",
         "value": "nothing",
         "parameter_list": {
           "answer_list": "@local.answer_list"
-        }
+        },
+        "comments": "change | set_field:@local.field_name:@local.radio_group_text"
       },
       {
         "type": "text",
@@ -6141,6 +6510,12 @@
         "type": "text",
         "name": "text_1",
         "value": "@data.example.example1.value",
+        "comments": "This should read the data from the the data_list"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@data.example.example3.value_list",
         "comments": "This should read the data from the the data_list"
       },
       {
@@ -7277,6 +7652,35 @@
           "blank_display_text": "@local.blank_display_text",
           "help": "some help text"
         }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_1",
+        "value": "Answer 1",
+        "parameter_list": {
+          "help": "some help text",
+          "text_align": "right",
+          "placeholder": "Add your answer"
+        }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_2",
+        "value": "Answer 2",
+        "parameter_list": {
+          "help": "some help text",
+          "text_align": "left",
+          "placeholder": "Add your answer 2"
+        }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_3",
+        "value": "Answer 3",
+        "parameter_list": {
+          "text_align": "center",
+          "placeholder": "Add your answer 3"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -7475,7 +7879,7 @@
           "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
           "name:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
         ],
-        "comments": "Suggestion: \n\nradio_button_type: btn_text (default), btn_image, btn_both\nstyle: passive (default), active, outline\noptions_per_row: 3 (default), 2, 1\nSelection should be done by name, not by text\n\n",
+        "comments": "Suggestion: \n\nradio_button_type: btn_text (default), btn_image, btn_both\nstyle: passive (default), active, outline\noptions_per_row: 3 (default), 2, 1\n\n",
         "type": "set_variable"
       },
       {
@@ -9272,6 +9676,17 @@
                         "value": "One-on-one time is when you focus on them, without TV or phones. Let them lead what you do or talk about.\n\nIt is great if you can do twenty minutes a day, but even five minutes a day is really good.",
                         "comments": "placeholder",
                         "type": "set_variable"
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/1on1.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -10140,6 +10555,23 @@
                     "value": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future ParentApp support.",
                     "hidden": "@field.do_workshops_together",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/celebrate.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -10727,6 +11159,23 @@
                     "value": "You can help your teenager to understand that breaking family rules leads to consequences. \n\nBut HOW you do consequences matters. \n\nGetting them right helps teens behave better and makes family life calmer...",
                     "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/consequence.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -12203,6 +12652,23 @@
                     "value": "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis. ",
                     "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/crisis.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -13435,6 +13901,23 @@
                     "value": "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference. ",
                     "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/instruct.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -14774,6 +15257,23 @@
                     "name": "intro_text",
                     "value": "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals.",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/money.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -16446,6 +16946,23 @@
                     "name": "intro_text",
                     "value": "Praise is a powerful parenting skill.",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/praise.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -17358,6 +17875,23 @@
                     "value": "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it! ",
                     "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/rules.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -18566,6 +19100,23 @@
                     "name": "intro_text",
                     "value": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. Talking together about safe and unsafe places, and how to prevent problems, really helps!",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/safe.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -19575,7 +20126,17 @@
         "rows": [
           {
             "name": "nav_template_list",
-            "comments": "w_self_care_welcome_individual; w_self_care_intro; w_self_care_relax; w_self_care_recognise; w_self_care_reward;  w_self_care_tools_activity; w_self_care_survey_activity; w_self_care_home_practice; w_self_care_ending",
+            "value": [
+              "w_self_care_welcome_individual",
+              "w_self_care_intro",
+              "w_self_care_relax",
+              "w_self_care_recognise",
+              "w_self_care_reward",
+              "w_self_care_tools_activity",
+              "w_self_care_home_practice",
+              "w_self_care_ending"
+            ],
+            "comments": "w_self_care_welcome_individual; \nw_self_care_intro; \nw_self_care_relax; \nw_self_care_recognise; \nw_self_care_reward;  \nw_self_care_tools_activity; \nw_self_care_survey_activity;\nw_self_care_home_practice; \nw_self_care_ending",
             "type": "set_variable"
           }
         ]
@@ -19603,7 +20164,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "include completed | set_theme : active to the action list",
+        "comments": "include completed | set_theme: active to the action list",
         "rows": [
           {
             "type": "nested_properties",
@@ -19615,7 +20176,7 @@
                 "rows": [
                   {
                     "name": "intro_text",
-                    "value": "It’s great to have you here. Let’s start with a song for families everywhere.",
+                    "value": "It’s great to have you here. \n\nLet’s start with a song for families everywhere.",
                     "type": "set_variable"
                   }
                 ]
@@ -19647,7 +20208,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "include completed | set_theme : active to the action list",
+        "comments": "include completed | set_theme: active to the action list",
         "rows": [
           {
             "type": "nested_properties",
@@ -19712,6 +20273,17 @@
                         "name": "text",
                         "value": "Parents don’t look after themselves enough. But this is so important. Reducing our stress and treating ourselves well helps us and our teenagers. \n\nHere are three brief things to do every day.\n\nRELAX – RECOGNISE – REWARD",
                         "type": "set_variable"
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/self_care.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -19745,6 +20317,11 @@
           }
         ],
         "rows": [
+          {
+            "name": "relax",
+            "value": "relax_5",
+            "type": "set_variable"
+          },
           {
             "type": "nested_properties",
             "name": "workshop_activity",
@@ -19799,13 +20376,20 @@
               {
                 "name": "intro_text",
                 "value": "Everyone take a moment to praise yourselves. We’ll show you how.",
-                "comments": "!@field.do_workshops_together",
+                "condition": "@field.do_workshops_together",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Take a moment to praise yourself. We’ll show you how.",
+                "condition": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_image",
+                "condition": "@field.do_workshops_together",
                 "rows": [
                   {
                     "name": "image_src",
@@ -19838,6 +20422,47 @@
                         "type": "set_variable"
                       }
                     ]
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_combo_box",
+                "condition": "!@field.do_workshops_together",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/self_care/guide_2/recognise.svg",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "Think of one thing YOU have done well recently!",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "\"Well done to me for...\"",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "Showing love to my children",
+                      "Getting up even though I felt tired",
+                      "Smiling at someone",
+                      "Making food to stay strong",
+                      "Spending time with my children",
+                      "Helping my children with schoolwork"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "Say it aloud if you can.\n\nHere is one thing you deserve praise for - WELL DONE for using ParentApp!",
+                    "type": "set_variable"
                   }
                 ]
               },
@@ -19916,13 +20541,20 @@
               {
                 "name": "intro_text",
                 "value": "You all deserve to treat yourself well!",
-                "comments": "!@field.do_workshops_together",
+                "condition": "@field.do_workshops_together",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "You deserve to treat yourself well!",
+                "condition": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_image",
+                "condition": "@field.do_workshops_together",
                 "rows": [
                   {
                     "name": "image_src",
@@ -19955,6 +20587,46 @@
                         "type": "set_variable"
                       }
                     ]
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_combo_box",
+                "condition": "!@field.do_workshops_together",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/self_care/guide_2/reward.svg",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "What small things make you happy?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "Have a hot drink",
+                      "Call a friend or family",
+                      "Have a relaxed bath",
+                      "Read",
+                      "Watch TV"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "Taking care of yourself is an important parenting skill!",
+                    "type": "set_variable"
                   }
                 ]
               },
@@ -20154,7 +20826,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "include completed | set_theme : passive to the action list",
+        "comments": "include completed | set_theme: passive to the action list",
         "rows": [
           {
             "type": "nested_properties",
@@ -20621,6 +21293,23 @@
                     "name": "intro_text",
                     "value": "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too! ",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/solve.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -21682,11 +22371,14 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "true",
+        "hidden": "@field.do_workshops_together",
         "comments": "@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
+            "value": [
+              "w_stress_welcome_individual"
+            ],
             "comments": "w_stress_welcome_individual; w_stress_relax; w_stress_reflect_individual; w_stress_intro; w_stress_read_1; w_stress_read_2; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
             "type": "set_variable"
           }
@@ -21849,8 +22541,24 @@
                   {
                     "name": "intro_text",
                     "value": "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family. ",
-                    "comments": "placeholder",
                     "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "content_box",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "widget_audio",
+                        "rows": [
+                          {
+                            "name": "audio_src",
+                            "value": "plh_audio/topic_intros/stress.mp3",
+                            "type": "set_variable"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
