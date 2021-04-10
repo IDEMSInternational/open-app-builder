@@ -952,23 +952,6 @@
     "status": "released",
     "rows": [
       {
-        "name": "action_list",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.radio_button_field",
-              "@local.radio_group"
-            ],
-            "_raw": "completed | set_field:@local.radio_button_field:@local.radio_group",
-            "_cleaned": "completed | set_field:@local.radio_button_field:@local.radio_group"
-          }
-        ],
-        "comments": "row_type needs to be action_list",
-        "type": "set_variable"
-      },
-      {
         "name": "radio_button_field",
         "value": "radio_button_field",
         "type": "set_variable"
@@ -1239,131 +1222,10 @@
             "args": [
               "completed"
             ],
-            "_raw": "completed | set_field:@local.radio_button_field:@local.radio_group",
-            "_cleaned": "completed | set_field:@local.radio_button_field:@local.radio_group"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "completed | emit:completed",
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_combo_box",
-    "status": "released",
-    "rows": [
-      {
-        "name": "action_list",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.combo_box_field",
-              "@local.combo_box"
-            ],
-            "_raw": "completed | set_field:@local.combo_box_field:@local.combo_box",
-            "_cleaned": "completed | set_field:@local.combo_box_field:@local.combo_box"
-          }
-        ],
-        "comments": "row_type needs to be action_list",
-        "type": "set_variable"
-      },
-      {
-        "name": "combo_box_field",
-        "type": "set_variable"
-      },
-      {
-        "name": "input_allowed",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "name": "answer_list",
-        "value": [
-          "First",
-          "Second",
-          "Third"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "name": "placeholder",
-        "value": "Click here to answer",
-        "type": "set_variable"
-      },
-      {
-        "name": "answer_placeholder",
-        "value": "Type your own",
-        "type": "set_variable"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "text",
-        "name": "question_text",
-        "parameter_list": {
-          "emphasised": "true"
-        }
-      },
-      {
-        "type": "combo_box",
-        "name": "combo_box",
-        "parameter_list": {
-          "answer_list": "@local.answer_list",
-          "placeholder": "@local.placeholder",
-          "input_allowed": "@local.input_allowed",
-          "answer_placeholder": "@local.answer_placeholder"
-        }
-      },
-      {
-        "type": "text",
-        "name": "reply"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.combo_box_field",
-              "@local.combo_box"
-            ],
-            "_raw": "completed | set_field:@local.combo_box_field:@local.combo_box",
-            "_cleaned": "completed | set_field:@local.combo_box_field:@local.combo_box"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "comments": "completed | emit:completed",
         "rows": []
       }
     ],
@@ -2382,7 +2244,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "comments": "completed | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
+        "comments": "This should be: \ncompleted | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
         "rows": []
       }
     ],
@@ -6063,74 +5925,6 @@
         "type": "set_variable"
       },
       {
-        "type": "radio_group",
-        "name": "option_buttons",
-        "parameter_list": {
-          "radio_button_type": "btn_text",
-          "answer_list": "@local.answer_list",
-          "style": "passive"
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_with_option",
-        "value": "The option currently selecte is @local.option_buttons"
-      },
-      {
-        "type": "text",
-        "name": "text_option_1",
-        "value": "This is the text to show if option 1 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_1\""
-      },
-      {
-        "type": "text",
-        "name": "text_option_2",
-        "value": "This is the text to show if option 2 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_2\""
-      },
-      {
-        "type": "text",
-        "name": "text_option_3",
-        "value": "This is the text to show if option 3 is selected",
-        "hidden": "\"@local.option_buttons\"==\"name_var_3\""
-      },
-      {
-        "name": "output_fieldname",
-        "value": "this_will_be_overwritten",
-        "type": "set_variable"
-      },
-      {
-        "type": "radio_group",
-        "name": "option_buttons_2"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_component_variables.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "example_double_ref_comp_var",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "example_1a",
-        "value": "Basic Example"
-      },
-      {
-        "type": "text",
-        "name": "example_1b",
-        "value": "The text above is: @local.example_1a"
-      },
-      {
-        "name": "answer_list",
-        "value": [
-          "name:name_var_1 | text:Option 1",
-          "name:name_var_2 | text: Option 2",
-          "name:name_var_3 | text: Option 3"
-        ],
-        "type": "set_variable"
-      },
-      {
         "name": "radio_group_default",
         "value": "name:name_var_3 | text:Option ",
         "type": "set_variable"
@@ -6284,13 +6078,12 @@
           {
             "name": "text",
             "value": "The condition is not satisfied",
-            "hidden": "1==1",
             "type": "set_variable"
           },
           {
             "name": "text",
             "value": "The condition is satisfied",
-            "condition": "@local.var_1==\"val_1\"",
+            "condition": "@local.var_1==val_1",
             "type": "set_variable"
           }
         ]
@@ -7723,7 +7516,16 @@
       },
       {
         "type": "combo_box",
-        "name": "combo_box_with_placeholder",
+        "name": "combo_box_with_placeholder_1",
+        "parameter_list": {
+          "answer_list": "@local.answer_list",
+          "placeholder": "Click here to answer"
+        },
+        "comments": "Placeholder should be displayed when nothing is selected. In that case, @local.combo_box_with_placeholder is the value of combo_box_with_placeholder (i.e. \"nothing\") \n\nDesign comment: \nPlaceholder should look different from (pre-)selected answer"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_with_placeholder_2",
         "value": "nothing",
         "parameter_list": {
           "answer_list": "@local.answer_list",
@@ -13635,7 +13437,7 @@
                 "rows": [
                   {
                     "name": "intro_text",
-                    "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and plan support for everyone going forward. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
+                    "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
                     "hidden": "!@field.do_workshops_together",
                     "comments": "ETW to check ",
                     "type": "set_variable"
@@ -20136,7 +19938,6 @@
               "w_self_care_home_practice",
               "w_self_care_ending"
             ],
-            "comments": "w_self_care_welcome_individual; \nw_self_care_intro; \nw_self_care_relax; \nw_self_care_recognise; \nw_self_care_reward;  \nw_self_care_tools_activity; \nw_self_care_survey_activity;\nw_self_care_home_practice; \nw_self_care_ending",
             "type": "set_variable"
           }
         ]
@@ -20388,6 +20189,47 @@
               {
                 "type": "nested_properties",
                 "name": "content_box",
+                "value": "box_combo_box",
+                "condition": "@field.do_workshops_together",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/self_care/guide_2/recognise.svg",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "Think of one thing YOU have done well recently!",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "Showing love to my children",
+                      "Getting up even though I felt tired",
+                      "Smiling at someone",
+                      "Making food to stay strong",
+                      "Spending time with my children",
+                      "Helping my children with schoolwork"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "Say it aloud if you can: \"Well done to me for @local.combo_box\"\n\nHere is one thing you deserve praise for - WELL DONE for using ParentApp!",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
                 "value": "box_image",
                 "condition": "@field.do_workshops_together",
                 "rows": [
@@ -20564,6 +20406,13 @@
                   {
                     "name": "text",
                     "value": "What small things make you happy? Can you each say one thing?\n\nTaking care of yourself is an important parenting skill! ",
+                    "condition": "@field.do_workshops_together",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "What small things make you happy?\n\nTaking care of yourself is an important parenting skill! ",
+                    "condition": "!@field.do_workshops_together",
                     "type": "set_variable"
                   },
                   {
