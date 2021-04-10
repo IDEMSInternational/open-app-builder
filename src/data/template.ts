@@ -6068,12 +6068,17 @@
     "rows": [
       {
         "name": "var_1",
-        "value": "val_1",
+        "value": "\"val_1\"",
         "type": "set_variable"
       },
       {
         "name": "var_2",
         "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "var_3",
+        "value": 5,
         "type": "set_variable"
       },
       {
@@ -6084,7 +6089,7 @@
           {
             "name": "text",
             "value": "The condition is not satisfied",
-            "hidden": "1>0",
+            "condition": "@local.var_1==\"val_2\"",
             "type": "set_variable"
           },
           {
@@ -6103,13 +6108,13 @@
           {
             "name": "text",
             "value": "The condition is satisfied",
-            "condition": "@local.var_1==\"val_1\"",
+            "condition": "@local.var_3<9",
             "type": "set_variable"
           },
           {
             "name": "text",
             "value": "The condition is not satisfied",
-            "condition": "@local.var_1==\"val_2\"",
+            "condition": "@local.var_3>9",
             "type": "set_variable"
           }
         ]
