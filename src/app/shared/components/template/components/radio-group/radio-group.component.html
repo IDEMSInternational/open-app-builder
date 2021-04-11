@@ -14,7 +14,7 @@
             [value]="item.name"
             [checked]="el.value === value"
             (click)="setValue(el.value)"
-            [name]="_row.name"
+            [name]="groupName"
           />
           {{ item.text }}
         </label>
@@ -39,7 +39,7 @@
             [value]="item.name"
             [checked]="el.value === value"
             (click)="setValue(el.value)"
-            [name]="_row.name"
+            [name]="groupName"
           />
           {{ item.text }}
         </label>
@@ -61,7 +61,7 @@
             [value]="item.name"
             [checked]="el.value === value"
             (click)="setValue(el.value)"
-            [name]="_row.name"
+            [name]="groupName"
           />
           <span> {{ item.text }} </span>
         </label>
