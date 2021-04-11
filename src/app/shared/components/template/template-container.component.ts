@@ -437,7 +437,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       if (typeof parsedValue !== "string") {
         // TODO - possibly want better handling to determine when to look recursively
         // within string, object or arrays (depending on what has been evaluated)
-        console.error("dynamic value expected string but found", parsedExpression);
+        console.warn(
+          "dynamic value expected string but found",
+          parsedExpression,
+          " which is of type ",
+          typeof parsedValue
+        );
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
@@ -523,8 +528,8 @@ function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDy
   // first prefix should consist only of letters (e.g. @local, @fields)
   // second part can be any letter, number, or characters _ .
   const regex = /@([a-z]+)\.([0-9a-z_.]+)/gi;
+  let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
   if (typeof fullExpression === "string") {
-    let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
     let match: RegExpExecArray;
     // run recursive match for all dynamic expressions
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#finding_successive_matches
@@ -543,9 +548,30 @@ function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDy
         allMatches
       );
     }
-    if (allMatches.length > 0) {
-      return allMatches;
+  } else if (typeof fullExpression === "object") {
+    for (let expressionItem of fullExpression) {
+      if (expressionItem) {
+        let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(
+          expressionItem
+        );
+        if (evaluators) {
+          for (let evaluator of evaluators) {
+            allMatches.push(evaluator);
+          }
+          console.warn(
+            "Adding item",
+            expressionItem,
+            "in array",
+            fullExpression,
+            "gives",
+            allMatches
+          );
+        }
+      }
     }
+  }
+  if (allMatches.length > 0) {
+    return allMatches;
   }
 }
 /** helper function used for dev to wait a fixed amount of time */
