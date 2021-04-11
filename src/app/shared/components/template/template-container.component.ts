@@ -548,7 +548,10 @@ function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDy
         allMatches
       );
     }
-  } else if (typeof fullExpression === "object") {
+  } else if (
+    typeof fullExpression === "object" &&
+    typeof fullExpression[Symbol.iterator] === "function"
+  ) {
     for (let expressionItem of fullExpression) {
       if (expressionItem) {
         let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(
