@@ -36,6 +36,7 @@ export class TmplRadioGroupComponent
   radioBtnList: any;
   valuesFromBtnList;
   arrayOfBtn: Array<IButton>;
+  groupName: string;
   radioButtonType: string | null;
   options_per_row: number = 2;
   baseSrcAssets = "/assets/plh_assets/";
@@ -87,6 +88,13 @@ export class TmplRadioGroupComponent
       this.createArrayBtnElement();
     }
     this.getFlexWidth();
+    // Temporary fix to give appropriate group names to radiobutton
+    // was previously _row.name
+    // but this is incorrect because of template nesting meaning these names are
+    // not unique on a page
+    // not sure what the correct implementation should be. It could be the
+    // full name with template stack, a counter on the row name or a unique random id
+    this.groupName = Math.random().toString();
   }
 
   createArrayBtnElement() {
