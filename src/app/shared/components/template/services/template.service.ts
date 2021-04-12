@@ -104,8 +104,10 @@ export class TemplateService {
       const mainBgBodyColor = `var(--${
         value[0] === "active" ? "ion-main-bg-active" : "ion-main-bg-passive"
       })`;
-      // const dgBodyColor = `var(--${value[0] === 'active' ? 'ion-banner-secondary' : 'ion-banner-primary'})`;
-      // document.body.style.setProperty('--ion-dg-bg-default', dgBodyColor);
+      const dgBodyColor = `var(--${
+        value[0] === "active" ? "ion-banner-secondary" : "ion-banner-primary"
+      })`;
+      document.body.style.setProperty("--ion-dg-bg-default", dgBodyColor);
       document.body.style.setProperty("--ion-background-color", mainBgBodyColor);
     }
   }
