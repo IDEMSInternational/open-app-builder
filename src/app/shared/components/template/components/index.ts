@@ -95,6 +95,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   set_global: null as any,
   set_field: null as any,
   set_local: null as any,
+  set_theme: null as any,
   combo_box: TmplComboBoxComponent,
   set_default: null as any,
   text_box: TmplTextBoxComponent,
