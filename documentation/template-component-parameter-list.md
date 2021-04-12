@@ -92,7 +92,7 @@ If category_list is not available we generate list of values based on min_value,
 - first_line_text - string or null. Text. Default - null
 - second_line_text string or null. Text. Default - null
 - icon_src - string or null. image file source link. Default - null
-- style - string. Name of default css class. Default 'quick_start'. Styles: 'quick_start', 'quick_start_passive', 'quick_start_blue', 'quick_start_red'.
+- style - string. Name of default css class. Default 'quick_start'. Styles: 'quick_start', 'quick_start_passive', 'quick_start_blue', 'quick_start_red', 'workshop_page'.
 
 ## DashedBox - TmplDashedBoxComponent
 - type - dashed_box.
@@ -125,3 +125,18 @@ If category_list is not available we generate list of values based on min_value,
 - value - number. Default 0.
 - icon_src - string or null. Path to image. Default null.
 - text - string or null. Text component. Default null.
+
+## ImageComponent - TmplImageComponent
+- type - image.
+- value - string. Path to image. Default null.
+- style string. Classname. Default null. Style_list: 'rounded_corners'.
+
+## TextComponent - TmplTextComponent
+- type - text.
+- value - string. Text. Default null.
+- text_align - string. Text align. Default - left. Align_list: 'left', 'right', 'center'.
+- style - string. Style for component. Default - 'small standard normal'.
+- Style list:
+   - Style font-size: 'tiny', 'small', 'medium', 'large'.
+   - Style colour: 'standard', 'alternative'. 
+   - Style format: 'normal', 'contextual', 'emphasised'.
