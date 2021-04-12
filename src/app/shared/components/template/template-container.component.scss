@@ -2,8 +2,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
-
+plh-template-container {
+  width: 100%;
+}
 .template-container {
   width: 100%;
   height: 100%;
