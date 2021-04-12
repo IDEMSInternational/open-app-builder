@@ -47,5 +47,3 @@ src/environments/firebaseConfig.ts
 .env
 scripts/config/token.json
 .eslintcache
-/scripts/yarn.lock
-/yarn.lock
