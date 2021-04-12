@@ -130,3 +130,13 @@ If category_list is not available we generate list of values based on min_value,
 - type - image.
 - value - string. Path to image. Default null.
 - style string. Classname. Default null. Style_list: 'rounded_corners'.
+
+## TextComponent - TmplTextComponent
+- type - text.
+- value - string. Text. Default null.
+- text_align - string. Text align. Default - left. Align_list: 'left', 'right', 'center'.
+- style - string. Style for component. Default - 'small standard normal'.
+- Style list:
+   - Style font-size: 'tiny', 'small', 'medium', 'large'.
+   - Style colour: 'standard', 'alternative'. 
+   - Style format: 'normal', 'contextual', 'emphasised'.
