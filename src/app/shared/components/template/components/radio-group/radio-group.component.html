@@ -14,7 +14,7 @@
             [value]="item.name"
             [checked]="el.value === value"
             (click)="setValue(el.value)"
-            [name]="_row.name"
+            [name]="groupName"
             [disabled]="_row.disabled"
           />
           {{ item.text }}
@@ -40,7 +40,7 @@
             [value]="item.name"
             [checked]="el.value === value"
             (click)="setValue(el.value)"
-            [name]="_row.name"
+            [name]="groupName"
             [disabled]="_row.disabled"
           />
           {{ item.text }}
@@ -63,7 +63,7 @@
             [value]="item.name"
             [checked]="el.value === value"
             (click)="setValue(el.value)"
-            [name]="_row.name"
+            [name]="groupName"
             [disabled]="_row.disabled"
           />
           <span> {{ item.text }} </span>

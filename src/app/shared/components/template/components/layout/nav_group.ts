@@ -28,6 +28,9 @@ import { TemplateLayoutComponent } from "./layout";
   </div>`,
   styles: [
     `
+      :host {
+        width: 100%;
+      }
       .slide {
         width: 95vw;
       }
@@ -42,14 +45,15 @@ import { TemplateLayoutComponent } from "./layout";
       .nav-progress {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
+        gap: 5px;
+        padding: 10px;
       }
 
       .nav-progress-part {
         height: 5px;
-        flex-grow: 1;
+        flex: 1;
         background-color: var(--ion-primary-color, #0d3f60);
-        margin: 10px;
         max-width: 40px;
       }
 

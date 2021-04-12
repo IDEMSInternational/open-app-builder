@@ -11,6 +11,7 @@ import { SharedPipesModule } from "../../pipes";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
 import { NouisliderModule } from "ng2-nouislider";
 import { AngularSvgIconModule } from "angular-svg-icon";
+import { MarkdownPipe } from "./pipes/markdown.pipe";
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { AngularSvgIconModule } from "angular-svg-icon";
     TooltipDirective,
     ...TEMPLATE_COMPONENTS,
     TemplateContainerComponent,
+    MarkdownPipe,
   ],
 })
 export class TemplateComponentsModule {}
