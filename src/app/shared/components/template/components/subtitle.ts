@@ -28,6 +28,6 @@ export class TmplSubtitleComponent
 
   getParams() {
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "left");
-    this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "standard");
   }
 }
