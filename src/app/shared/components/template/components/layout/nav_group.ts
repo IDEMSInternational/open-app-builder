@@ -54,7 +54,6 @@ import { TemplateLayoutComponent } from "./layout";
         height: 5px;
         flex: 1;
         background-color: var(--ion-primary-color, #0d3f60);
-        margin: 10px;
         max-width: 40px;
       }
 
