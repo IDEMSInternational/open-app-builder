@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "scripts/types";
@@ -18,7 +19,7 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
  * ...
  */
 export class TemplateNavService {
-  constructor(private modalCtrl: ModalController) {}
+  constructor(private modalCtrl: ModalController, private location: Location) {}
 
   public async handleQueryParamChange(
     params: INavQueryParams,
@@ -120,18 +121,28 @@ export class TemplateNavService {
       const navExitAction = actions.find(
         (a) => a.action_id === "emit" && ["completed", "uncompleted"].includes(a.args[0])
       );
-      const nav_child_emit = navExitAction?.args?.[0] || null;
-      const nav_child = nav_child_emit ? container.name : null;
-      const queryParams: INavQueryParams = { nav_child_emit, nav_child, nav_parent: null };
-      // if we have navigated from a popup we need to return to the popup parent template
-      // otherwise return to the template of the element that initiated the navigation
-      const navTargetTemplate = popup_parent || nav_parent;
-      router.navigate(["../", navTargetTemplate], {
-        relativeTo: route,
-        queryParams,
-        replaceUrl: true,
-        queryParamsHandling: "merge",
-      });
+
+      /**
+       * 2021-04-12 CC - Previous attempt at navigating back with different query params
+       * Temporariliy deprecated, pending future implementation
+       */
+      // const nav_child_emit = navExitAction?.args?.[0] || null;
+      // const nav_child = nav_child_emit ? container.name : null;
+      // const queryParams: INavQueryParams = { nav_child_emit, nav_child, nav_parent: null };
+      // // if we have navigated from a popup we need to return to the popup parent template
+      // // otherwise return to the template of the element that initiated the navigation
+      // const navTargetTemplate = popup_parent || nav_parent;
+      // router.navigate(["../", navTargetTemplate], {
+      //   relativeTo: route,
+      //   queryParams,
+      //   replaceUrl: true,
+      //   queryParamsHandling: "merge",
+      // });
+
+      /** Current implementation simply navigates back */
+      if (navExitAction) {
+        this.location.back();
+      }
     }
   }
 
