@@ -2148,13 +2148,13 @@
     "status": "released",
     "rows": [
       {
-        "type": "image",
-        "name": "image_src"
-      },
-      {
         "type": "title",
         "name": "title",
         "hidden": "true"
+      },
+      {
+        "type": "image",
+        "name": "image_src"
       },
       {
         "type": "text",
@@ -2194,13 +2194,13 @@
     "status": "released",
     "rows": [
       {
-        "type": "image",
-        "name": "image_src"
-      },
-      {
         "type": "title",
         "name": "title",
         "hidden": "true"
+      },
+      {
+        "type": "image",
+        "name": "image_src"
       },
       {
         "type": "text",
@@ -4141,6 +4141,236 @@
   },
   {
     "flow_type": "template",
+    "module": "praise",
+    "flow_name": "reflect_together_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "reflect_together",
+        "value": "reflect_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "activity_title",
+                "value": "@global.home_practice_problem_solving: @global.w_1on1",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "Take turns to discuss how your home activities went.",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_1",
+                    "value": "Step 1: Share what went well and what was hard",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "problem_solve_step_1"
+                        ],
+                        "_raw": "click | pop_up:problem_solve_step_1",
+                        "_cleaned": "click | pop_up:problem_solve_step_1"
+                      }
+                    ],
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_2",
+                    "value": "Step 2: Bring solutions!",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "problem_solve_step_2"
+                        ],
+                        "_raw": "click | pop_up:problem_solve_step_2",
+                        "_cleaned": "click | pop_up:problem_solve_step_2"
+                      }
+                    ],
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_3",
+                    "value": "Step 3: Pick and try one!",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "problem_solve_step_3"
+                        ],
+                        "_raw": "click | pop_up:problem_solve_step_3",
+                        "_cleaned": "click | pop_up:problem_solve_step_3"
+                      }
+                    ],
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "nav_buttons",
+                    "rows": [
+                      {
+                        "name": "button_info",
+                        "value": "@global.ideas_button",
+                        "hidden": "false",
+                        "comments": "This button takes you to the corresponding challenges and solutions flow of the in-week content",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/reflect_together_with_pop_ups.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "problem_solve_step_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions_image",
+        "value": "suggestions_image",
+        "rows": [
+          {
+            "name": "title",
+            "value": "Step 1: Share what went well and what was hard",
+            "hidden": "false",
+            "type": "set_variable"
+          },
+          {
+            "name": "image",
+            "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "\"I learned so much more about my teen’s life when we spent one-on-one time! But after the first day, my teen only wanted to play on his phone.\"",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/reflect_together_with_pop_ups.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "problem_solve_step_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions_image",
+        "value": "suggestions_image",
+        "rows": [
+          {
+            "name": "title",
+            "value": "Step 2: Bring solutions!",
+            "hidden": "false",
+            "type": "set_variable"
+          },
+          {
+            "name": "image",
+            "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "\"Well done for trying! Maybe you could suggest some other fun things you could do together with your teen.\"\n\n\"Yes, or you could do something together on his phone? Or he could show you how his phone works?\"",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/reflect_together_with_pop_ups.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "problem_solve_step_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions_image",
+        "value": "suggestions_image",
+        "rows": [
+          {
+            "name": "title",
+            "value": "Step 3: Pick and try one!",
+            "hidden": "false",
+            "type": "set_variable"
+          },
+          {
+            "name": "image",
+            "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "“Thank you for those great ideas! Yes, let me ask my teen to show how his phone works tomorrow after school. Can one of you pretend to be my teen now, so I can practice asking?”",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/reflect_together_with_pop_ups.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "suggestions_image",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title"
+      },
+      {
+        "type": "image",
+        "name": "image"
+      },
+      {
+        "type": "text",
+        "name": "text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/reflect_together_with_pop_ups.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "relax",
     "status": "released",
     "rows": [
@@ -4328,6 +4558,68 @@
           {
             "name": "intro_text",
             "value": "Share ideas, support each other!",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_banner",
+            "hidden": "false",
+            "type": "set_variable"
+          },
+          {
+            "type": "nested_properties",
+            "name": "content_box",
+            "value": "box_timer",
+            "rows": [
+              {
+                "name": "text",
+                "type": "set_variable"
+              },
+              {
+                "name": "button_1",
+                "value": "@global.ideas_button",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/talk_together.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "try_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "activity_title",
+            "value": "Try it Together",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_image",
+            "value": "plh_images/workshop_modes/group/talk.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "intro_text",
+            "value": "Let's practice together.",
             "comments": "placeholder",
             "type": "set_variable"
           },
@@ -4524,26 +4816,6 @@
       {
         "type": "text",
         "name": "list_text"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/talk_together.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "suggestions_image",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title"
-      },
-      {
-        "type": "image",
-        "name": "image"
-      },
-      {
-        "type": "text",
-        "name": "text"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/talk_together.xlsx"
@@ -14010,7 +14282,7 @@
     "rows": [
       {
         "type": "template",
-        "name": "workshop_stepper_together",
+        "name": "workshop_stepper",
         "value": "workshop_stepper",
         "action_list": [
           {
@@ -14023,7 +14295,6 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "!@field.do_workshops_together",
         "rows": [
           {
             "name": "nav_template_list",
@@ -14043,42 +14314,26 @@
               "w_instruct_home_practice",
               "w_instruct_ending"
             ],
-            "comments": "w_instruct_welcome_together; w_instruct_care_together; w_instruct_relax; w_instruct_reflect_together; w_instruct_intro; w_instruct_think_1_temp; w_instruct_read_1_temp; w_instruct_talk_1; w_instruct_read_2_temp; w_instruct_talk_2; w_instruct_tools_activity; w_instruct_talk_3; w_instruct_home_practice; w_instruct_ending",
+            "condition": "@field.do_workshops_together",
             "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "workshop_stepper_individual",
-        "value": "workshop_stepper",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "hidden": "true",
-        "comments": "@field.do_workshops_together",
-        "rows": [
+          },
           {
             "name": "nav_template_list",
             "value": [
               "w_instruct_welcome_individual",
+              "w_instruct_reflect_individual",
+              "w_instruct_relax",
               "w_instruct_intro",
-              "w_instruct_think",
-              "w_instruct_read_1",
-              "w_instruct_read_2",
+              "w_instruct_think_1_temp",
+              "w_instruct_read_1_temp",
+              "w_instruct_question_1",
+              "w_instruct_read_2_temp",
+              "w_instruct_question_2",
               "w_instruct_tools_activity",
               "w_instruct_home_practice",
               "w_instruct_ending"
             ],
-            "comments": "w_instruct_welcome_individual; w_instruct_reflect_individual; w_instruct_relax; w_instruct_intro; w_instruct_think_1; w_instruct_read_1; w_instruct_question_1; w_instruct_read_2; w_instruct_question_2; w_instruct_tools_activity; w_instruct_think_2; w_instruct_home_practice; w_instruct_ending",
+            "condition": "!@field.do_workshops_together",
             "type": "set_variable"
           }
         ]
@@ -14108,6 +14363,48 @@
           }
         ],
         "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "w_instruct_welcome_individual",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "welcome_individual",
+        "value": "welcome_individual",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "name": "reply_happy",
+            "value": "Wonderful, I am so happy! Keep up the good work.",
+            "type": "set_variable"
+          },
+          {
+            "name": "reply_ok",
+            "value": "Sorry that things are difficult. All families struggle. We are here to help!",
+            "type": "set_variable"
+          },
+          {
+            "name": "reply_sad",
+            "value": "Whatever went ‘wrong’ today, let it go and try again tomorrow. It’s okay!  ",
+            "type": "set_variable"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
@@ -14179,6 +14476,32 @@
   {
     "flow_type": "template",
     "module": "instruct",
+    "flow_name": "w_instruct_reflect_individual",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "reflect_individual",
+        "value": "reflect_individual",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
     "flow_name": "w_instruct_relax",
     "status": "released",
     "rows": [
@@ -14199,9 +14522,9 @@
         ],
         "rows": [
           {
-            "type": "nested_properties",
-            "name": "workshop_activity",
-            "rows": []
+            "name": "relax",
+            "value": "relax_4",
+            "type": "set_variable"
           }
         ]
       }
@@ -14303,7 +14626,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Let’s hear @global.guide_2_name's story.",
+                "value": "Let’s do a thought experiment!",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
@@ -14315,16 +14638,16 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image",
+                    "value": "box_image_more",
                     "rows": [
                       {
                         "name": "image_src",
-                        "value": "plh_images/workshops/instruct/guide_2/teen_phone_2.svg",
+                        "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
                         "type": "set_variable"
                       },
                       {
                         "name": "text",
-                        "value": "@global.guide_2_name: \"Stop making so much noise!\" \n@global.guide_teen_name: \"I hate you!\"",
+                        "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
                         "type": "set_variable"
                       }
                     ]
@@ -14341,12 +14664,12 @@
                         "rows": [
                           {
                             "name": "image_src",
-                            "value": "plh_images/workshops/instruct/guide_2/teen_phone_1.svg",
+                            "value": "plh_images/workshops/instruct/guide_2/think/slide_2.svg",
                             "type": "set_variable"
                           },
                           {
                             "name": "text",
-                            "value": "It is so hard to tell teenagers what to do! \n\nWhat really helped me was to change how to ask my teen to do things. \n\nNow, I tell them what they SHOULD do instead of what they SHOULDN'T. Let me show you how it works!",
+                            "value": "Exactly! ‘Don’t do’ instructions make teens think about that thing. \n\nSometimes they don’t understand what we do want from them. \n\nAlso they often don’t like being told not to do things (don’t we all?)",
                             "type": "set_variable"
                           }
                         ]
@@ -14368,7 +14691,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "Let’s do a thought experiment!\n\nDO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
+                                "value": "NOW, THINK ABOUT A CHEETAH! \n\nWhat are you thinking about?",
                                 "type": "set_variable"
                               }
                             ]
@@ -14376,65 +14699,17 @@
                           {
                             "type": "nested_properties",
                             "name": "box_2",
-                            "value": "pair",
+                            "value": "box_image",
                             "rows": [
                               {
-                                "type": "nested_properties",
-                                "name": "box_1",
-                                "value": "box_image_more",
-                                "rows": [
-                                  {
-                                    "name": "image_src",
-                                    "value": "plh_images/workshops/instruct/guide_2/think/slide_2.svg",
-                                    "type": "set_variable"
-                                  },
-                                  {
-                                    "name": "text",
-                                    "value": "Exactly! ‘Don’t do’ instructions make teens think about that thing. \n\nSometimes they don’t understand what we do want from them. \n\nAlso they often don’t like being told not to do things (don’t we all?)",
-                                    "type": "set_variable"
-                                  }
-                                ]
+                                "name": "image_src",
+                                "value": "plh_images/workshops/instruct/guide_2/think/slide_3.svg",
+                                "type": "set_variable"
                               },
                               {
-                                "type": "nested_properties",
-                                "name": "box_2",
-                                "value": "pair",
-                                "rows": [
-                                  {
-                                    "type": "nested_properties",
-                                    "name": "box_1",
-                                    "value": "box_image_more",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/instruct/guide_2/think/slide_1.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "NOW, THINK ABOUT A CHEETAH! \n\nWhat are you thinking about?",
-                                        "type": "set_variable"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "type": "nested_properties",
-                                    "name": "box_2",
-                                    "value": "box_image",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/instruct/guide_2/think/slide_3.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "That’s right! Positive, clear instructions help teens focus on what they should be doing. \n\nTeens will also feel more respected this way, and are more likely to listen.",
-                                        "type": "set_variable"
-                                      }
-                                    ]
-                                  }
-                                ]
+                                "name": "text",
+                                "value": "That’s right! Positive, clear instructions help teens focus on what they should be doing. \n\nTeens will also feel more respected this way, and are more likely to listen.",
+                                "type": "set_variable"
                               }
                             ]
                           }
@@ -14443,79 +14718,6 @@
                     ]
                   }
                 ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "instruct",
-    "flow_name": "w_instruct_read_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "read",
-        "value": "read",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": [
-          {
-            "name": "number_of_slides",
-            "value": 3,
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_1",
-            "value": "plh_images/workshops/instruct/read_1/slide_1.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_1",
-            "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.\n\n@global.w_instruct_female_caregiver: “Don’t make such a mess while I am cleaning the house. You are in the way!”",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_2",
-            "value": "plh_images/workshops/instruct/read_1/slide_2.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_2",
-            "value": "@global.w_instruct_teen_girl: “But I need to practice for the school competition. You never let me do anything.”\n\n@global.w_instruct_female_caregiver: “Don’t you talk back to me!”",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_image_src_3",
-            "value": "plh_images/workshops/instruct/read_1/slide_3.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "slide_text_3",
-            "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????”\n\n(inside) @global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
-            "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "workshop_activity",
-            "rows": [
-              {
-                "name": "intro_text",
-                "value": "This happened with @global.w_instruct_teen_girl and her @global.w_instruct_female_caregiver the other day: ",
-                "type": "set_variable"
               }
             ]
           }
@@ -14552,7 +14754,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "This happened with @global.w_instruct_teen_girl and her @global.w_instruct_female_caregiver the other day: ",
+                "value": "Let’s see how @global.w_instruct_female_caregiver uses instructions with @global.w_instruct_teen_girl: ",
                 "comments": "placeholder",
                 "type": "set_variable"
               },
@@ -14573,7 +14775,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.\n\n@global.w_instruct_female_caregiver: “Don’t make such a mess while I am cleaning the house. You are in the way!”",
+                        "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.\n\n@global.w_instruct_female_caregiver: “Don’t make such a mess while I am cleaning the house. You are in the way!”",
                         "type": "set_variable"
                       }
                     ]
@@ -14714,8 +14916,124 @@
           },
           {
             "name": "list_text",
-            "value": "(-) Said something nice first \n(-) Spoken to her in a calm voice \n(-) Told @global.w_instruct_teen_girl what she wants her to do ",
+            "value": "(-) Said something nice first \n(-) Spoken to @global.w_instruct_teen_girl in a calm voice \n(-) Told @global.w_instruct_teen_girl what she wants her to do ",
             "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "w_instruct_question_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "question_time",
+        "value": "question_time",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "combo_box_1",
+                    "value": "box_radio_buttons",
+                    "rows": [
+                      {
+                        "name": "text",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "question_text",
+                        "value": "How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "answer_list",
+                        "value": [
+                          "name:sad | text: Sad",
+                          "name:confused | text:Confused",
+                          "name:angry | text: Angry"
+                        ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "radio_button_type",
+                        "value": "btn_text",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "reply",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "nav_buttons",
+                        "hidden": "true",
+                        "rows": []
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "combo_box_2",
+                    "rows": [
+                      {
+                        "name": "text",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "question_text",
+                        "value": "What could @global.w_instruct_female_caregiver have done differently?",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "answer_list",
+                        "value": [
+                          "Said something nice first",
+                          "Spoken to @global.w_instruct_teen_girl in a calm voice",
+                          "Told @global.w_instruct_teen_girl what she wants her to do"
+                        ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "input_allowed",
+                        "value": "false",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "reply",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -14770,7 +15088,7 @@
                       },
                       {
                         "name": "text",
-                        "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                        "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                         "type": "set_variable"
                       }
                     ]
@@ -14814,7 +15132,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@global.w_instruct_female_caregiver: \"Thank you for practicing outside while I finished cleaning the house, @global.w_instruct_teen_girl . Now I have some time to watch your dance.\"",
+                                "value": "@global.w_instruct_female_caregiver: \"Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl . Now I have some time to watch your dance.\"",
                                 "type": "set_variable"
                               }
                             ]
@@ -14887,7 +15205,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Discuss together: \n\n(-) Why do you think it worked better for @global.w_instruct_female_caregiver this time? \n(-) What do you think worked well? ",
+                    "value": "Discuss together: \n\n(-) How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?\n(-) Why do you think the situation went better for @global.w_instruct_female_caregiver this time?",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
@@ -14937,6 +15255,117 @@
             "name": "list_text",
             "value": "(-) @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n(-) @global.w_instruct_female_caregiver was able to stay calm  \n(-) @global.w_instruct_female_caregiver  kept a positive attitude ",
             "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_instruct.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "w_instruct_question_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "question_time",
+        "value": "question_time",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "combo_box_1",
+                    "value": "box_radio_buttons",
+                    "rows": [
+                      {
+                        "name": "text",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "question_text",
+                        "value": "How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "answer_list",
+                        "value": [
+                          "name:happy | image:plh_images/stickers/faces/happy.svg",
+                          "name:happier | image:plh_images/stickers/faces/happier.svg",
+                          "name:happiest | image:plh_images/stickers/faces/happiest.svg"
+                        ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "reply",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "nav_buttons",
+                        "hidden": "true",
+                        "rows": []
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "combo_box_2",
+                    "rows": [
+                      {
+                        "name": "text",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "question_text",
+                        "value": "Why do you think the situation went better for @global.w_instruct_female_caregiver this time?",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "answer_list",
+                        "value": [
+                          "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+                          "@global.w_instruct_female_caregiver was able to stay calm",
+                          "@global.w_instruct_female_caregiver kept a positive attitude"
+                        ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "input_allowed",
+                        "value": "false",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "reply",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -14997,7 +15426,7 @@
               },
               {
                 "name": "text_1",
-                "value": "Smile, look them in the eye and use positive words. Praise them as soon as they start to do what you ask!",
+                "value": "Smile, look them in the eye, and use positive words. Praise them as soon as they start to do what you ask!",
                 "type": "set_variable"
               }
             ]
@@ -15013,7 +15442,7 @@
               },
               {
                 "name": "text_1",
-                "value": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want them to do. Try ‘please come home by 7pm’ instead of ‘come home in time’.",
+                "value": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want your teen to do. Try ‘please come home by 7pm’ instead of ‘come home in time’.",
                 "type": "set_variable"
               }
             ]
@@ -15105,7 +15534,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "In a pair, take turns to be teenager and parent. Give your teenager one positive instruction.\n\nAnd then give your teenager encouragement and praise.",
+                    "value": "In a pair, take turns to be teenager and parent: \n(-) Give your teenager one positive instruction.\n(-) And then give your teenager encouragement and praise.\n\nDiscuss together how that went! How did it make you feel as “parent” and as “teen”?",
                     "type": "set_variable"
                   },
                   {
@@ -15151,7 +15580,7 @@
           },
           {
             "name": "list_text",
-            "value": "(-) I like your music, but could you turn it down so that we can talk whilst we have dinner? Thank you – I really appreciate this. \n(-) That’s great. Who is the singer? Please turn this off when you come in the house but you can play it in your room quietly if you want. Thank you!",
+            "value": "(-) I like your music. Could you turn it down during dinner so that we can talk? Thank you – I really appreciate it. \n(-) That’s great music. Who is the singer? Please turn the music off when you come in the house. You can play it in your room quietly if you want. Thank you!",
             "type": "set_variable"
           }
         ]
@@ -17117,175 +17546,130 @@
               {
                 "type": "nested_properties",
                 "name": "content_box",
+                "value": "pair",
                 "rows": [
                   {
-                    "name": "text",
-                    "value": "Take turns to discuss how your home activities went.",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "button_1",
-                    "value": "Step 1: Share what went well and what was hard",
-                    "action_list": [
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_image",
+                    "rows": [
                       {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "problem_solve_step_1"
-                        ],
-                        "_raw": "click | pop_up:problem_solve_step_1",
-                        "_cleaned": "click | pop_up:problem_solve_step_1"
-                      }
-                    ],
-                    "hidden": "false",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "button_2",
-                    "value": "Step 2: Bring solutions!",
-                    "action_list": [
+                        "name": "image_src",
+                        "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+                        "type": "set_variable"
+                      },
                       {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "problem_solve_step_2"
-                        ],
-                        "_raw": "click | pop_up:problem_solve_step_2",
-                        "_cleaned": "click | pop_up:problem_solve_step_2"
-                      }
-                    ],
-                    "hidden": "false",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "button_3",
-                    "value": "Step 3: Pick and try one!",
-                    "action_list": [
+                        "name": "title",
+                        "value": "Step 1: Share what went well and what was hard",
+                        "hidden": "false",
+                        "type": "set_variable"
+                      },
                       {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "problem_solve_step_3"
-                        ],
-                        "_raw": "click | pop_up:problem_solve_step_3",
-                        "_cleaned": "click | pop_up:problem_solve_step_3"
+                        "name": "text",
+                        "value": "\"I learned so much more about my teen’s life when we spent one-on-one time! But after the first day, my teen only wanted to play on his phone.\"",
+                        "type": "set_variable"
                       }
-                    ],
-                    "hidden": "false",
-                    "type": "set_variable"
+                    ]
                   },
                   {
                     "type": "nested_properties",
-                    "name": "nav_buttons",
+                    "name": "box_2",
+                    "value": "pair",
                     "rows": [
                       {
-                        "name": "button_info",
-                        "value": "@global.ideas_button",
-                        "hidden": "false",
-                        "comments": "This button takes you to the corresponding challenges and solutions flow of the in-week content",
-                        "type": "set_variable"
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "box_image",
+                        "rows": [
+                          {
+                            "name": "image_src",
+                            "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "title",
+                            "value": "Step 2: Bring ideas!",
+                            "hidden": "false",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "\"Well done for trying! Maybe you could suggest some other fun things you could do together with your teen.\"\n\n\"Yes, or you could do something together on his phone? Or he could show you how his phone works?\"",
+                            "type": "set_variable"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "pair",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "title",
+                                "value": "Step 3: Pick and try one!",
+                                "hidden": "false",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "“Thank you for those great ideas! Yes, let me ask my teen to show how his phone works tomorrow after school. Can one of you pretend to be my teen now, so I can practice asking?”",
+                                "type": "set_variable"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "box_timer",
+                            "rows": [
+                              {
+                                "name": "text",
+                                "value": "Take turns to discuss how your home activities went:\n\n(1) What went well and what was a problem?\n(2) What solutions can you think of together?\n(3) Pick one solution and try it later with your teen! \n\n(Or you can even practice it now  so it will be easier later!)",
+                                "type": "set_variable"
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "widget_timer",
+                                "rows": [
+                                  {
+                                    "name": "duration",
+                                    "value": 20,
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "nav_buttons",
+                                "rows": [
+                                  {
+                                    "name": "button_info",
+                                    "value": "@global.ideas_button",
+                                    "hidden": "false",
+                                    "comments": "This button takes you to the corresponding challenges and solutions flow of the in-week content",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
                       }
                     ]
                   }
                 ]
               }
             ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_praise.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "praise",
-    "flow_name": "problem_solve_step_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "suggestions_image",
-        "value": "suggestions_image",
-        "rows": [
-          {
-            "name": "title",
-            "value": "Step 1: Share what went well and what was hard",
-            "hidden": "false",
-            "type": "set_variable"
-          },
-          {
-            "name": "image",
-            "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "value": "\"I learned so much more about my teen’s life when we spent one-on-one time! But after the first day, my teen only wanted to play on his phone.\"",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_praise.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "praise",
-    "flow_name": "problem_solve_step_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "suggestions_image",
-        "value": "suggestions_image",
-        "rows": [
-          {
-            "name": "title",
-            "value": "Step 2: Bring solutions!",
-            "hidden": "false",
-            "type": "set_variable"
-          },
-          {
-            "name": "image",
-            "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "value": "\"Well done for trying! Maybe you could suggest some other fun things you could do together with your teen.\"\n\n\"Yes, or you could do something together on his phone? Or he could show you how his phone works?\"",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_praise.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "praise",
-    "flow_name": "problem_solve_step_3",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "suggestions_image",
-        "value": "suggestions_image",
-        "rows": [
-          {
-            "name": "title",
-            "value": "Step 3: Pick and try one!",
-            "hidden": "false",
-            "type": "set_variable"
-          },
-          {
-            "name": "image",
-            "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "value": "“Thank you for those great ideas! Yes, let me ask my teen to show how his phone works tomorrow after school. Can one of you pretend to be my teen now, so I can practice asking?”",
-            "type": "set_variable"
           }
         ]
       }
@@ -17783,6 +18167,11 @@
             "name": "workshop_activity",
             "rows": [
               {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
+              {
                 "type": "nested_properties",
                 "name": "content_box",
                 "rows": [
@@ -17845,6 +18234,11 @@
                           "To make them feel good",
                           "To make herself feel good"
                         ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "input_allowed",
+                        "value": "false",
                         "type": "set_variable"
                       },
                       {
