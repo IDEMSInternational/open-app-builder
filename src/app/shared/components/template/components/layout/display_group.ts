@@ -22,6 +22,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
   styles: [
     `
       :host {
+        width: 100%;
         border-radius: 20px;
       }
     `,
