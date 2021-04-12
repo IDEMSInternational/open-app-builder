@@ -10,41 +10,95 @@ $primary: hsl(203, 76%, 21%);
 $primary-light: color.change($primary, $lightness: 80%);
 $primary-lighter: color.change($primary, $lightness: 95%);
 
-@function tone($color, $tone: 1, $dir: up) {
-  $adjust: if($dir == up, 16, -16) * $tone;
-  @return adjust-color($color, $red: $adjust, $green: $adjust, $blue: $adjust);
-}
+$secondary: hsl(31, 95%, 57%);
+$secondary-light: color.change($secondary, $lightness: 80%);
+$secondary-lighter: color.change($secondary, $lightness: 95%);
 
-$tool_1: #f89b2d;
+$tertiary: #fff6d6;
+$some: #e1f2fd;
+$light: #ffffff;
+$dark: #00000040;
+
+/** Title **/
+$font-size-title-medium: 22px;
+$font-size-title-large: 26px;
+$font-size-title-largest: 30px;
+
+/** Subtitle **/
+$font-size-subtitle-small: 20px;
+$font-size-subtitle-medium: 24px;
+$font-size-subtitle-large: 28px;
+
+/** Text **/
+$font-size-text-tiny: 14px;
+$font-size-text-small: 16px;
+$font-size-text-medium: 18px;
+$font-size-text-large: 20px;
+
+/** Font Weight **/
+$font-weight-standart: 500;
+$font-weight-bold: 700;
+
+/** Line Height **/
+$line-height-text: 22px;
+
+/** Borders **/
+$border-standard: 2px solid $primary;
+$border-dashed: 2px dashed $primary;
+$border-radius-standard: 15px;
 
 /** Ionic CSS Variables **/
 :root {
-  --ion-btn-secondary-color: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
-  --ion-btn-secondary-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)};
+  --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)};
 
-  --ion-btn-primary-color: linear-gradient(168.87deg, #0f8ab2 28.12%, #0d4060 100%);
-  --ion-btn-primary-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)};
+  --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)};
 
-  --ion-tool-active: linear-gradient(
-    180deg,
-    #{tone($tool_1, 5, up)} 0%,
-    #{tone($tool_1, 5, down)} 100%
+  --ion-btn-primary: linear-gradient(
+    170.54deg,
+    var(--ion-gradient-primary-start) 0.43%,
+    var(--ion-gradient-primary-end) 74.07%
   );
+  --ion-btn-secondary: linear-gradient(
+    168.87deg,
+    var(--ion-gradient-secondary-start) 28.12%,
+    var(--ion-gradient-secondary-end) 100%
+  );
+
+  --ion-banner-secondary: linear-gradient(
+    179.77deg,
+    hsl(48, 100%, 71%) 34.6%,
+    hsl(39, 100%, 60%) 105.68%
+  );
+  --ion-banner-primary: linear-gradient(
+    179.77deg,
+    hsl(193, 95%, 85%) 34.6%,
+    hsl(193, 100%, 69%) 65.78%,
+    hsl(193, 93%, 47%) 105.68%
+  );
+
+  --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};
+
+  --ion-background-passive: #{some};
+  --ion-background-active: #{some};
 
   --ion-color-primary: #{$primary};
   --ion-color-primary-light: #{$primary-light};
   --ion-color-primary-lighter: #{$primary-lighter};
   --ion-color-primary-rgb: 13, 64, 96;
-  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast: #{$light};
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #0b3854;
   --ion-color-primary-tint: #255370;
 
-  --ion-color-secondary: #f3d668;
-  --ion-color-secondary-rgb: 243, 214, 104;
-  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary: #{$secondary};
+  --ion-color-primary-light: #{$secondary-light};
+  --ion-color-primary-lighter: #{$secondary-lighter};
   --ion-color-secondary-contrast-rgb: 0, 0, 0;
   --ion-color-secondary-shade: #d6bc5c;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-rgb: 243, 214, 104;
   --ion-color-secondary-tint: #f4da77;
 
   --ion-color-tertiary: #00a1cd;

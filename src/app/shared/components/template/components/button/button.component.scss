@@ -10,7 +10,7 @@ ion-button {
   max-width: calc(100% - 4px);
   min-width: 59px;
   --border-radius: 15px;
-  --box-shadow: var(--ion-btn-primary-box-shadow);
+  --box-shadow: var(--ion-btn-dark-box-shadow);
   display: flex;
   width: fit-content;
   margin: 0 auto;
@@ -20,21 +20,21 @@ ion-button[disabled] {
   filter: brightness(55%);
 }
 .active {
-  --background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
+  --background: var(--ion-btn-secondary);
 }
 .passive {
-  --background: var(--ion-btn-primary-color);
+  --background: var(--ion-btn-primary);
 }
 
 .make-me-smile {
   --background: linear-gradient(179.77deg, #b3edfd 34.6%, #60ddff 65.78%, #09b9e9 105.68%);
   min-height: 86px;
-  color: #0d4060;
+  color: var(--ion-color-primary);
 }
 .get-me-going {
   --background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
   min-height: 86px;
-  color: #0d4060;
+  color: var(--ion-color-primary);
 }
 
 .light_orange {
