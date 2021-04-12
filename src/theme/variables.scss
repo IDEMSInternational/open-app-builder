@@ -49,8 +49,14 @@ $border-radius-standard: 15px;
 
 /** Ionic CSS Variables **/
 :root {
-  --ion-btn-secondary-color: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
-  --ion-btn-secondary-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)};
+  --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)};
+
+  --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)};
+  --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)};
+
+  --regular-padding: 5px;
+  --large-padding: 10px;
 
   --ion-btn-primary: linear-gradient(
     170.54deg,
@@ -62,9 +68,6 @@ $border-radius-standard: 15px;
     var(--ion-gradient-secondary-start) 28.12%,
     var(--ion-gradient-secondary-end) 100%
   );
-
-  --regular-padding: 5px;
-  --large-padding: 10px;
 
   --ion-banner-secondary: linear-gradient(
     179.77deg,
