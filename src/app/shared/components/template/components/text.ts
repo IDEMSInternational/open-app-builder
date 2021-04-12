@@ -13,11 +13,11 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [
     `
-      .tiny {
-        font-size: 14px;
-      }
       .small {
         font-size: 16px;
+      }
+      .tiny {
+        font-size: 14px;
       }
       .medium {
         font-size: 18px;
