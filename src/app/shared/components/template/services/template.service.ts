@@ -100,9 +100,13 @@ export class TemplateService {
   }
 
   setTheme(template: FlowTypes.Template, event: "set_theme", value: any) {
-    console.log("template", template);
-    console.log("event", event);
-    console.log("value", value);
-    document.body.style.setProperty("--ion-background-color", "red");
+    if (value && value.length) {
+      const mainBgBodyColor = `var(--${
+        value[0] === "active" ? "ion-main-bg-active" : "ion-main-bg-passive"
+      })`;
+      // const dgBodyColor = `var(--${value[0] === 'active' ? 'ion-banner-secondary' : 'ion-banner-primary'})`;
+      // document.body.style.setProperty('--ion-dg-bg-default', dgBodyColor);
+      document.body.style.setProperty("--ion-background-color", mainBgBodyColor);
+    }
   }
 }
