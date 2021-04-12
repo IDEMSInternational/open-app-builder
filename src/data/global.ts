@@ -307,7 +307,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_self_care_short",
-        "value": "Self-Care"
+        "value": "Self-Care",
+        "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
@@ -318,7 +319,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_1on1_short",
-        "value": "One-on-One Time"
+        "value": "One-on-One Time",
+        "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
@@ -329,7 +331,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_praise_short",
-        "value": "Praise"
+        "value": "Praise",
+        "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
@@ -470,6 +473,16 @@
         "type": "declare_global_constant",
         "name": "w_praise_female_caregiver_name",
         "value": "Felicia"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_praise_girl",
+        "value": "Faraja"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_praise_teen_girl",
+        "value": "Amina"
       },
       {
         "type": "declare_global_constant",
