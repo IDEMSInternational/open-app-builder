@@ -121,9 +121,6 @@ export class TemplateNavService {
       const navExitAction = actions.find(
         (a) => a.action_id === "emit" && ["completed", "uncompleted"].includes(a.args[0])
       );
-      if (navExitAction) {
-        this.location.back();
-      }
       /**
        * 2021-04-12 CC - Previous attempt at navigating back with different query params
        * Temporariliy deprecated, pending future implementation
@@ -140,6 +137,10 @@ export class TemplateNavService {
       //   replaceUrl: true,
       //   queryParamsHandling: "merge",
       // });
+      /** Current implementation simply navigates back */
+      if (navExitAction) {
+        this.location.back();
+      }
     }
   }
 
