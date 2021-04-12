@@ -9,6 +9,8 @@ import {
   OnInit,
   ElementRef,
   AfterContentInit,
+  ViewEncapsulation,
+  HostBinding,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
@@ -51,6 +53,14 @@ export class TmplCompHostDirective {
     </div>
   `,
   styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
+  encapsulation: ViewEncapsulation.None,
+  styles: [
+    `
+      :host :nth-child(1n) {
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
   /**
@@ -60,6 +70,13 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   @Input() row: FlowTypes.TemplateRow;
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
+
+  @HostBinding("attr.data-hidden") get getAttrHidden() {
+    return this.row && this.row.hidden;
+  }
+  @HostBinding("attr.data-debug-hidden") get getAttrDat() {
+    return this.parent && this.parent.debugMode;
+  }
 
   styles: { [name: string]: any } = {};
 
@@ -83,7 +100,9 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {
       case "template":
-        return this.renderTemplateComponent(TemplateContainerComponent);
+        return this.row.hidden === "true"
+          ? null
+          : this.renderTemplateComponent(TemplateContainerComponent);
       default:
         const displayComponent = TEMPLATE_COMPONENT_MAPPING[row.type];
         if (displayComponent) {

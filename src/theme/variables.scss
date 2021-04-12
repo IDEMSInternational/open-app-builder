@@ -66,6 +66,9 @@ $border-radius-standard: 15px;
     var(--ion-gradient-secondary-end) 100%
   );
 
+  --regular-padding: 5px;
+  --large-padding: 10px;
+
   --ion-banner-secondary: linear-gradient(
     179.77deg,
     hsl(48, 100%, 71%) 34.6%,
