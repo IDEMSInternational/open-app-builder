@@ -33,11 +33,12 @@ import { TemplateContainerComponent } from "../../template-container.component";
       }
       .popup-content {
         width: 80%;
-        height: 50%;
+        height: calc(100vh - 140px);
         background: white;
         border: 2px solid black;
         border-radius: 40px;
         padding: 20px;
+        margin-top: 40px;
       }
       .close-button {
         margin-left: auto;
