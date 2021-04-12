@@ -40,6 +40,37 @@
   border-radius: 15px;
   margin: 15px auto;
 }
+
+.workshop_page {
+  display: flex;
+  flex-direction: column;
+  width: 132px;
+  height: 111px;
+  border-radius: 15px;
+  background: white;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  .button-wrapper {
+    order: 1;
+    .btn-tile {
+      pointer-events: none;
+      width: unset;
+      height: 60px;
+      --border-radius: unset;
+      border-radius: unset;
+    }
+  }
+  .text {
+    order: 2;
+    div {
+      font-size: 16px;
+      line-height: 16px;
+      color: #0d4060;
+    }
+  }
+}
+
 .quick_start {
   background: linear-gradient(281.65deg, #ffd943 41.02%, #f49d04 102.14%);
 }

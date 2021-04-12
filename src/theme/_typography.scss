@@ -7,3 +7,22 @@ p {
 }
 
 $color_passive: #0d4060;
+$font_weight_standard: 500;
+.standard {
+  color: $color_passive;
+}
+.alternative {
+  color: #fff;
+}
+.normal {
+  font-weight: $font_weight_standard;
+  font-style: normal;
+}
+.contextual {
+  font-weight: $font_weight_standard;
+  font-style: italic;
+}
+.emphasised {
+  font-weight: 700;
+  font-style: normal;
+}

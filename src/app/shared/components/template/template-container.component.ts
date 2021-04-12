@@ -31,7 +31,7 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
 ];
 
 /** Specific fields that will be evaluated as javascript */
-const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["hidden"];
+const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["condition", "hidden"];
 
 @Component({
   selector: "plh-template-container",
@@ -43,6 +43,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
+  children: { [name: string]: TemplateContainerComponent } = {};
   template: FlowTypes.Template;
   /** track path to template from top parent (not currently used) */
   templateBreadcrumbs: string[] = [];
@@ -126,48 +127,53 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     console.log("process action", action);
     const { action_id, args } = action;
     // NOTE - args will vary depending on action
-    let [key, value] = args;
+    const [key, value] = args;
     switch (action_id) {
       case "set_local":
+        console.log("[SET LOCAL]", key, value);
         return this.setLocalVariable(key, value);
       case "set_global":
-        console.log("Setting global variable", key, value);
+        console.log("[SET GLOBAL]", key, value);
         return this.templateService.setGlobal(key, value);
       case "go_to":
         return this.templateNavService.handleNavAction(action, this);
       case "pop_up":
         return this.templateNavService.handlePopupAction(action, this);
       case "set_field":
+        console.log("[SET FIELD]", key, value);
         return this.templateService.setField(key, value);
       case "emit":
-        [value] = args;
-        // write completions to the database for data tracking
-        if (value === "completed") {
-          await this.templateService.recordEvent(this.template, "emit", value);
+        const [emit_value, emit_from] = args;
+        let container: TemplateContainerComponent = this;
+        if (emit_from) {
+          // emit from the named template container instead of this one if specified (assumed sibling of current)
+          const targetContainer = container.children[emit_from];
+          if (targetContainer) {
+            action.args = [emit_value];
+            container = targetContainer;
+          }
         }
-        if (this.parent) {
+        let { parent, row, name, template } = container;
+        if (emit_value === "completed") {
+          // write completions to the database for data tracking
+          await this.templateService.recordEvent(template, "emit", emit_value);
+        }
+        if (parent) {
           // continue to emit any actions to parent where defined
-          // When emitting, tell parent template to execute actions in
           console.log(
             "Emiting",
-            args[0],
-            ` from ${this.row?.name || "(no row)"} to parent ${this.parent?.name || "(no parent)"}`,
-            this.parent
+            emit_value,
+            ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`,
+            parent
           );
-          if (this.row && this.row.action_list) {
-            const actionsForEmittedEvent = this.row.action_list.filter(
-              (a) => a.trigger === args[0]
-            );
-            console.log("Excuting actions matching event ", args[0], actionsForEmittedEvent);
-            await this.parent.handleActions(
-              actionsForEmittedEvent,
-              `${this.name}.${action._triggeredBy}`
-            );
-            // Below needs discussion
-            // await this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
+          if (row && row.action_list) {
+            const actionsForEmittedEvent = row.action_list.filter((a) => a.trigger === emit_value);
+            console.log("Excuting actions matching event ", { emit_value, actionsForEmittedEvent });
+            // process in parallel, do not return/await
+            parent.handleActions(actionsForEmittedEvent, `${name}.${action._triggeredBy}`);
           } else {
-            console.log("No action list for row ", this.row, "on template name ", this.name);
-            this.parent.handleActions([action], `${this.name}.${action._triggeredBy}`);
+            console.log("No action list for row ", row, "on template name ", name);
+            parent.handleActions([action], `${name}.${action._triggeredBy}`);
           }
         }
         break;
@@ -207,6 +213,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.template.rows = this.processRows(this.template.rows, this.localVariables);
     // keep track of path to this template from any parents
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
+    if (this.parent) {
+      this.parent.children[this.name] = this;
+    }
   }
 
   /**
@@ -226,6 +235,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   ): ILocalVariables {
     templateRows.forEach((r) => {
       let { name, value, rows, type } = r;
+      if (r.condition) {
+        if (!this.filterRowOnCondition(r, localvariables)) {
+          return;
+        }
+      }
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
       if (type === "set_variable" || type === "set_local" || type === "nested_properties") {
@@ -237,7 +251,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             // don't override values that have otherwise been set from parent or nested properties
             // local variables within r[field] are parsed
             variables[name][field] =
-              variables[name][field] || this.parseLocalVariables(r[field], localvariables);
+              variables[name][field] || this.parseLocalVariables(r[field], localvariables, field);
             // local variables on a given excel sheet are managed together
             localvariables[name][field] = localvariables[name][field] || variables[name][field];
           }
@@ -423,7 +437,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       if (typeof parsedValue !== "string") {
         // TODO - possibly want better handling to determine when to look recursively
         // within string, object or arrays (depending on what has been evaluated)
-        console.error("dynamic value expected string but found", parsedExpression);
+        console.warn(
+          "dynamic value expected string but found",
+          parsedExpression,
+          " which is of type ",
+          typeof parsedValue
+        );
       }
       parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
     }
@@ -455,10 +474,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return `${evaluated}`;
   }
 
-  private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}) {
+  private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}, field: any) {
+    let parsedExpression = variable;
     let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(variable);
     if (evaluators) {
-      let parsedExpression = evaluators[0].fullExpression;
+      parsedExpression = evaluators[0].fullExpression;
       // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
       for (let evaluator of evaluators) {
         let parsedValue: any;
@@ -479,11 +499,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         }
         parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
       }
-
-      return parsedExpression;
-    } else {
-      return variable;
     }
+    if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
+      parsedExpression = this.evaluateJSExpression(parsedExpression);
+    }
+    return parsedExpression;
   }
   /** When using ngFor loop track by  */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
@@ -508,8 +528,8 @@ function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDy
   // first prefix should consist only of letters (e.g. @local, @fields)
   // second part can be any letter, number, or characters _ .
   const regex = /@([a-z]+)\.([0-9a-z_.]+)/gi;
+  let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
   if (typeof fullExpression === "string") {
-    let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
     let match: RegExpExecArray;
     // run recursive match for all dynamic expressions
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#finding_successive_matches
@@ -528,9 +548,33 @@ function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDy
         allMatches
       );
     }
-    if (allMatches.length > 0) {
-      return allMatches;
+  } else if (
+    typeof fullExpression === "object" &&
+    typeof fullExpression[Symbol.iterator] === "function"
+  ) {
+    for (let expressionItem of fullExpression) {
+      if (expressionItem) {
+        let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(
+          expressionItem
+        );
+        if (evaluators) {
+          for (let evaluator of evaluators) {
+            allMatches.push(evaluator);
+          }
+          console.warn(
+            "Adding item",
+            expressionItem,
+            "in array",
+            fullExpression,
+            "gives",
+            allMatches
+          );
+        }
+      }
     }
+  }
+  if (allMatches.length > 0) {
+    return allMatches;
   }
 }
 /** helper function used for dev to wait a fixed amount of time */
