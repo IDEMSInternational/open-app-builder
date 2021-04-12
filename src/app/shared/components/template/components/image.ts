@@ -12,6 +12,13 @@ import { getStringParamFromTemplateRow } from "../../../utils";
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
+  styles: [
+    `
+      :host {
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
   assetsPrefix = "/assets/plh_assets/";

@@ -9,6 +9,7 @@
   display: flex;
   position: relative;
   flex-direction: column;
+  margin: var(--regular-padding);
   .top-row {
     display: flex;
     justify-content: space-between;
