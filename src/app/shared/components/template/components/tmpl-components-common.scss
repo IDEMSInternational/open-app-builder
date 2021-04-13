@@ -1,3 +1,5 @@
+@import "../../../../../theme/variables.scss";
+
 .plh-tmpl-comp {
   // border:2px solid purple;
 }
@@ -121,12 +123,6 @@ p {
   }
 }
 
-::ng-deep h2 {
-  font-weight: bold;
-  font-size: 18px;
-  color: #0d3f60;
-}
-
 .title-wrapper {
   display: flex;
   align-items: center;
@@ -165,15 +161,18 @@ p {
   display: flex;
   align-items: center;
   padding: var(--regular-padding);
+  color: var(--ion-color-primary);
   h2 {
-    font-size: 20px;
-    line-height: 22px;
+    line-height: $line-height-text;
   }
-  .standard {
-    color: #0d4060;
+  .small {
+    font-size: $font-size-subtitle-small;
   }
-  .alternative {
-    color: white;
+  .medium {
+    font-size: $font-size-subtitle-medium;
+  }
+  .large {
+    font-size: $font-size-subtitle-large;
   }
 }
 
