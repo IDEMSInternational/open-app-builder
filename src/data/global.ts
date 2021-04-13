@@ -343,7 +343,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_instruct_short",
-        "value": "Positive Instructions"
+        "value": "Positive Instructions",
+        "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
@@ -354,7 +355,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_stress_short",
-        "value": "Managing Stress"
+        "value": "Managing Stress",
+        "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
@@ -767,6 +769,26 @@
         "type": "declare_field_default",
         "name": "w_crisis_completion_level",
         "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_week1_unlocked",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_week2_unlocked",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_week3_unlocked",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_week4_unlocked",
+        "value": false
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
@@ -784,12 +806,12 @@
       {
         "type": "declare_global_constant",
         "name": "together",
-        "value": "Together with others"
+        "value": "Group"
       },
       {
         "type": "declare_global_constant",
         "name": "individual",
-        "value": "On my own"
+        "value": "Me"
       },
       {
         "type": "declare_field_default",
