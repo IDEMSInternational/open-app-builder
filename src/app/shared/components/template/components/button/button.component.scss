@@ -1,66 +1,60 @@
+:host {
+  width: 100%;
+}
 ion-button {
   font-size: 25px;
   font-family: Roboto, sans-serif;
   font-weight: 500;
-  color: #fff;
+  color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
-  padding: 5px 0;
+  padding: var(--regular-padding);
   min-height: 70px;
-  max-width: calc(100% - 4px);
   min-width: 59px;
+  height: auto;
   --border-radius: 15px;
   --box-shadow: var(--ion-btn-dark-box-shadow);
   display: flex;
   width: fit-content;
   margin: 0 auto;
 }
+
+ion-button::part(native) {
+  height: auto;
+}
+
 ion-button:disabled,
 ion-button[disabled] {
   filter: brightness(55%);
 }
-.active {
+
+.navigation {
   --background: var(--ion-btn-secondary);
 }
-.passive {
+
+.information {
   --background: var(--ion-btn-primary);
 }
 
-.make-me-smile {
-  --background: linear-gradient(179.77deg, #b3edfd 34.6%, #60ddff 65.78%, #09b9e9 105.68%);
+.make_me_smile {
+  --background: var(--ion-btn-primary);
   min-height: 86px;
-  color: var(--ion-color-primary);
-}
-.get-me-going {
-  --background: linear-gradient(168.87deg, #ffb833 28.12%, #f88923 100%);
-  min-height: 86px;
-  color: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
 }
 
-.light_orange {
-  --background: linear-gradient(180deg, #ff7a00 0%, #be5d02 100%);
-  min-height: 56px;
-  font-size: 19px;
+.get_me_going {
+  --background: var(--ion-btn-secondary);
+  min-height: 86px;
+  color: var(--ion-color-primary-contrast);
 }
-.orange {
-  --background: linear-gradient(180deg, #c76001 0%, #914804 100%);
-  min-height: 56px;
-  font-size: 19px;
-}
-.light_blue {
-  --background: linear-gradient(180deg, #096b8b 0%, #044c64 100%);
-  min-height: 56px;
-  font-size: 19px;
-}
-.dark_blue {
-  --background: linear-gradient(180deg, #05293f 0%, #031d2e 100%);
-  min-height: 56px;
-  font-size: 19px;
-}
-.blue {
-  --background: linear-gradient(180deg, #0b4a71, #062a42);
-  min-height: 56px;
-  font-size: 19px;
+
+.options {
+  --background: var(--ion-gradient-option-btn);
+  font-size: 18px;
+  min-height: 40px;
+  padding: 0;
+  width: 95px;
+  color: var(--ion-color-primary-contrast);
 }
 
 .left {

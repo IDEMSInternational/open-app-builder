@@ -113,8 +113,9 @@ If category_list is not available we generate list of values based on min_value,
 - type - display_group.
 - offset - number. Offset to move abroad component. Default - 0.
 - style - string or null. Class name. Default - null.
-  Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner', 'navigation'. 
+  Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner', 'navigation'. 'banner'. 
   ####To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
+  #### If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
 ## SubtitleComponent - TmplSubtitleComponent
 - type - subtitle.
 - text_align - string. Default - left.
@@ -130,3 +131,13 @@ If category_list is not available we generate list of values based on min_value,
 - type - image.
 - value - string. Path to image. Default null.
 - style string. Classname. Default null. Style_list: 'rounded_corners'.
+
+## TextComponent - TmplTextComponent
+- type - text.
+- value - string. Text. Default null.
+- text_align - string. Text align. Default - left. Align_list: 'left', 'right', 'center'.
+- style - string. Style for component. Default - 'small standard normal'.
+- Style list:
+   - Style font-size: 'tiny', 'small', 'medium', 'large'.
+   - Style colour: 'standard', 'alternative'. 
+   - Style format: 'normal', 'contextual', 'emphasised'.

@@ -142,6 +142,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       case "set_field":
         console.log("[SET FIELD]", key, value);
         return this.templateService.setField(key, value);
+      case "set_theme":
+        return this.templateService.setTheme(this.template, "set_theme", action.args);
       case "emit":
         const [emit_value, emit_from] = args;
         let container: TemplateContainerComponent = this;

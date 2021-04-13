@@ -5,6 +5,9 @@
 .hidden {
   display: none;
 }
+:host .display-group .offset :nth-child(1n) {
+  width: 100%;
+}
 
 .display-group {
   display: flex;
@@ -16,61 +19,68 @@
     align-items: inherit;
     justify-content: inherit;
     flex-direction: inherit;
+    width: inherit;
   }
 }
 .tool_1 {
-  padding: 0 15px;
+  padding: 15px;
   flex-direction: column;
   background: #f89b2d;
   border-radius: 20px;
 }
 .tool_2 {
-  padding: 0 15px;
+  padding: 15px;
   flex-direction: column;
   background: #ff7a00;
   border-radius: 20px;
 }
 .tool_3 {
-  padding: 0 15px;
+  padding: 15px;
   flex-direction: column;
   background: #0f8ab2;
   border-radius: 20px;
 }
 .tool_4 {
-  padding: 0 15px;
+  padding: 15px;
   flex-direction: column;
   background: #096b8b;
   border-radius: 20px;
 }
 .tool_5 {
-  padding: 0 15px;
+  padding: 15px;
   flex-direction: column;
   background: #0d3f60;
   border-radius: 20px;
 }
 .white_box {
-  padding: 0 15px;
+  padding: 15px;
   flex-direction: column;
   background: #fff;
   border: 2px solid #0d3f60;
   border-radius: 20px;
 }
+.banner {
+  padding: 15px;
+  border-radius: 20px;
+  background: var(--ion-dg-bg-default);
+}
 
 .plh-tmpl-comp {
-  display: flex;
-  flex-direction: column;
+  display: inherit;
+  flex-direction: inherit;
   width: 100%;
-  justify-content: center;
+  justify-content: inherit;
+  align-items: inherit;
   .animated_section {
     display: flex;
   }
 }
 
 .tmpl-image-container {
-  width: calc(100% - 20px);
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin: 10px;
+  padding: 10px;
 }
 
 .tmpl-video-container {
@@ -95,7 +105,6 @@
 
 p {
   width: 100%;
-  text-align: left;
   margin: 0;
 }
 
@@ -121,6 +130,7 @@ p {
 .title-wrapper {
   display: flex;
   align-items: center;
+  padding: var(--regular-padding);
   h1 {
     font-size: 25px;
     margin: 0;
@@ -154,14 +164,15 @@ p {
 .subtitle-wrapper {
   display: flex;
   align-items: center;
+  padding: var(--regular-padding);
   h2 {
     font-size: 20px;
     line-height: 22px;
   }
-  .passive {
+  .standard {
     color: #0d4060;
   }
-  .white {
+  .alternative {
     color: white;
   }
 }
@@ -236,4 +247,19 @@ p {
 }
 .whiteText {
   color: #fff;
+}
+:host {
+  plh-template-container {
+    width: 100%;
+  }
+}
+
+.plh-tmpl-comp[data-hidden="true"] {
+  display: none;
+}
+.plh-tmpl-comp[data-debug="true"] {
+  display: block;
+  border: 1px solid #c7c7c7;
+  padding: 2px;
+  margin: 2px;
 }

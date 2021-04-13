@@ -47,8 +47,17 @@ $border-standard: 2px solid $primary;
 $border-dashed: 2px dashed $primary;
 $border-radius-standard: 15px;
 
+/** Gradient direction **/
+$vertical: 180deg;
+$horizontal: 90deg;
+
 /** Ionic CSS Variables **/
 :root {
+  --regular-padding: 5px;
+  --large-padding: 10px;
+  --ion-main-bg-passive: #{$some};
+  --ion-main-bg-active: #{$tertiary};
+  //buttons
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)};
   --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)};
 
@@ -56,28 +65,54 @@ $border-radius-standard: 15px;
   --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)};
 
   --ion-btn-primary: linear-gradient(
-    170.54deg,
+    #{$vertical},
     var(--ion-gradient-primary-start) 0.43%,
     var(--ion-gradient-primary-end) 74.07%
   );
+
   --ion-btn-secondary: linear-gradient(
-    168.87deg,
+    #{$vertical},
     var(--ion-gradient-secondary-start) 28.12%,
     var(--ion-gradient-secondary-end) 100%
   );
 
-  --ion-banner-secondary: linear-gradient(
-    179.77deg,
-    hsl(48, 100%, 71%) 34.6%,
-    hsl(39, 100%, 60%) 105.68%
-  );
-  --ion-banner-primary: linear-gradient(
-    179.77deg,
-    hsl(193, 95%, 85%) 34.6%,
-    hsl(193, 100%, 69%) 65.78%,
-    hsl(193, 93%, 47%) 105.68%
+  // options buttons
+  $primary: hsl(203, 76%, 21%);
+  --ion-gradient-primary-option-start: #{color.adjust($primary, $saturation: 8%, $lightness: 17%)};
+  --ion-gradient-primary-option-end: #{$primary};
+
+  --ion-gradient-option-btn: linear-gradient(
+    #{$vertical},
+    var(--ion-gradient-primary-option-start) 28.12%,
+    var(--ion-gradient-primary-option-end) 100%
   );
 
+  // banner
+  $secondary: hsl(31, 95%, 57%);
+  --ion-banner-gradient-secondary-start: #{color.adjust(
+      $secondary,
+      $saturation: 5%,
+      $lightness: 14%
+    )};
+  --ion-banner-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: 3%)};
+
+  --ion-banner-gradient-primary-start: #{color.adjust($primary, $saturation: 19%, $lightness: 64%)};
+  --ion-banner-gradient-primary-middle: #{color.adjust($primary, $saturation: 24%, $lightness: 48%)};
+  --ion-banner-gradient-primary-end: #{color.adjust($primary, $saturation: 17%, $lightness: 26%)};
+
+  --ion-banner-secondary: linear-gradient(
+    #{$vertical},
+    var(--ion-banner-gradient-secondary-start) 34.6%,
+    var(--ion-banner-gradient-secondary-end) 105.68%
+  );
+  --ion-banner-primary: linear-gradient(
+    #{$vertical},
+    var(--ion-banner-gradient-primary-start) 34.6%,
+    var(--ion-banner-gradient-primary-middle) 65.78%,
+    var(--ion-banner-gradient-primary-end) 105.68%
+  );
+
+  --ion-dg-bg-default: var(--ion-banner-primary);
   --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};
 
   --ion-background-passive: #{some};
