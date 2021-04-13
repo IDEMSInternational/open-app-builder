@@ -1,5 +1,11 @@
 :host {
   width: 100%;
+  ion-button {
+    height: 100%;
+  }
+  span {
+    padding: 5px 0;
+  }
 }
 ion-button {
   font-size: 25px;
@@ -8,10 +14,8 @@ ion-button {
   color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
+  min-height: 65px;
   padding: var(--regular-padding);
-  min-height: 70px;
-  min-width: 59px;
-  height: auto;
   --border-radius: 15px;
   --box-shadow: var(--ion-btn-dark-box-shadow);
   display: flex;
@@ -38,23 +42,24 @@ ion-button[disabled] {
 
 .make_me_smile {
   --background: var(--ion-btn-primary);
-  min-height: 86px;
   color: var(--ion-color-primary-contrast);
 }
 
 .get_me_going {
   --background: var(--ion-btn-secondary);
-  min-height: 86px;
   color: var(--ion-color-primary-contrast);
 }
 
 .options {
   --background: var(--ion-gradient-option-btn);
-  font-size: 18px;
-  min-height: 40px;
-  padding: 0;
-  width: 95px;
   color: var(--ion-color-primary-contrast);
+}
+
+.standard {
+  color: var(--ion-color-primary-contrast);
+}
+.alternative {
+  color: var(--ion-color-primary);
 }
 
 .left {
@@ -63,6 +68,30 @@ ion-button[disabled] {
 .right {
   margin: 0 2px 0 auto;
 }
-.full-width {
+
+// width
+.full {
   width: 100%;
+}
+.flexible {
+  width: fit-content;
+  max-width: 100%;
+}
+// height
+.medium {
+  min-height: 65px;
+}
+.short {
+  min-height: 50px;
+  font-size: 20px;
+}
+.tall {
+  min-height: 80px;
+}
+
+.medium_round {
+  --border-radius: 20px;
+}
+.no_shadow {
+  --box-shadow: none;
 }
