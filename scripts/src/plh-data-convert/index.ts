@@ -163,7 +163,7 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
       if (
         html !== undefined &&
         typeof html === "string" &&
-        (html.indexOf("<b>") > -1 || html.indexOf("<em>") > -1)
+        (html.indexOf("<b>") > -1 || html.indexOf("<em>") > -1 || html.indexOf("<i>") > -1)
       ) {
         console.log("Formatting?", html);
         html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
