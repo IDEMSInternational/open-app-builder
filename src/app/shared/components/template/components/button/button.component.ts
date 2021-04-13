@@ -1,4 +1,5 @@
 import { AfterContentInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { getStringParamFromTemplateRow, getBooleanParamFromTemplateRow } from "../../../../utils";
 import { TemplateBaseComponent } from "../base";
 
@@ -16,12 +17,14 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   nestedStyle: boolean = false;
   nestedProperty: string;
   nestedStyleName = "nested_color";
-  constructor(private elRef: ElementRef) {
+  innerHTML: SafeHtml;
+  constructor(private elRef: ElementRef, private domSanitizer: DomSanitizer) {
     super();
   }
   @ViewChild("ionButton", { static: true }) btn: any;
   ngOnInit() {
     this.getParams();
+    this.innerHTML = this.domSanitizer.bypassSecurityTrustHtml(this._row.value);
   }
 
   getParams() {
