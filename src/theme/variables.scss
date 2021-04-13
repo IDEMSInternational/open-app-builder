@@ -112,7 +112,7 @@ $horizontal: 90deg;
     var(--ion-banner-gradient-primary-end) 105.68%
   );
 
-  --ion-dg-bg-default: var(--ion-banner-secondary);
+  --ion-dg-bg-default: var(--ion-banner-primary);
   --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};
 
   --ion-background-passive: #{some};
