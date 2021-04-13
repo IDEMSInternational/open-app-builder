@@ -96,13 +96,9 @@ $horizontal: 90deg;
     )};
   --ion-banner-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: 3%)};
 
-  --ion-banner-gradient-primary-start: #{color.adjust($secondary, $saturation: 19%, $lightness: 64%)};
-  --ion-banner-gradient-primary-middle: #{color.adjust(
-      $secondary,
-      $saturation: 24%,
-      $lightness: 48%
-    )};
-  --ion-banner-gradient-primary-end: #{color.adjust($secondary, $saturation: 17%, $lightness: 26%)};
+  --ion-banner-gradient-primary-start: #{color.adjust($primary, $saturation: 19%, $lightness: 64%)};
+  --ion-banner-gradient-primary-middle: #{color.adjust($primary, $saturation: 24%, $lightness: 48%)};
+  --ion-banner-gradient-primary-end: #{color.adjust($primary, $saturation: 17%, $lightness: 26%)};
 
   --ion-banner-secondary: linear-gradient(
     #{$vertical},
@@ -116,7 +112,7 @@ $horizontal: 90deg;
     var(--ion-banner-gradient-primary-end) 105.68%
   );
 
-  --ion-dg-bg-default: transparent;
+  --ion-dg-bg-default: var(--ion-banner-primary);
   --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};
 
   --ion-background-passive: #{some};
