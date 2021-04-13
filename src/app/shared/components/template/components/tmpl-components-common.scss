@@ -16,6 +16,7 @@
   flex-direction: row;
   width: 100%;
   justify-content: center;
+  align-items: center;
   .offset {
     display: inherit;
     align-items: inherit;
@@ -66,7 +67,12 @@
   border-radius: 20px;
   background: var(--ion-dg-bg-default);
 }
-
+.column {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
 .plh-tmpl-comp {
   display: inherit;
   flex-direction: inherit;
