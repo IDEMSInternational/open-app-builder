@@ -128,27 +128,30 @@ p {
   align-items: center;
   padding: var(--regular-padding);
   h1 {
-    font-size: 25px;
     margin: 0;
+    line-height: 29px;
+    font-weight: $font-weight-bold;
     @media (max-width: 375px) {
       font-size: 23px;
     }
   }
-  .primary {
-    font-weight: bold;
-    font-size: 25px;
-    line-height: 29px;
-    color: #0d4060;
-  }
-  .white {
-    font-weight: bold;
-    font-size: 23px;
+  .alternative {
     line-height: 26px;
-    color: #ffffff;
+    color: var(--ion-color-primary-contrast);
     @media (max-width: 320px) {
       font-size: 20px;
     }
   }
+  .medium {
+    font-size: $font-size-title-medium;
+  }
+  .large {
+    font-size: $font-size-title-large;
+  }
+  .huge {
+    font-size: $font-size-title-largest;
+  }
+
   .title-help {
     margin-left: 8px;
     color: #0d3f60;
@@ -222,7 +225,7 @@ p {
     }
   }
 }
-.standart {
+.light {
   background: linear-gradient(to right, #b3edfd, #08a6d1);
 }
 .shade {
