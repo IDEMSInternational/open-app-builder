@@ -125,12 +125,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
     console.log("process action", action);
-    const { action_id, args } = action;
-    // NOTE - args will vary depending on action
-    const [key, value] = args;
+    let { action_id, args } = action;
+    // parse dynamic expressions from the args
+    args = args.map((a) => this.evaluatePLHExpression(a));
+    let [key, value] = args;
+
     switch (action_id) {
       case "set_local":
-        console.log("[SET LOCAL]", key, value);
+        console.log("[SET LOCAL]", { key, value });
         return this.setLocalVariable(key, value);
       case "set_global":
         console.log("[SET GLOBAL]", key, value);
@@ -207,8 +209,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
     const parentVariables = this.parent?.localVariables?.[this.name];
+    console.log("[Template Init]", { name: this.name, parentVariables });
     this.localVariables = this.processVariables(this.template.rows, parentVariables);
-    // console.log("[Template Init]", { name: this.name, parentVariables });
     if (!this.parent) {
       console.log({ localVariables: this.localVariables });
     }
@@ -235,6 +237,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     variables: ILocalVariables = {},
     localvariables: ILocalVariables = {}
   ): ILocalVariables {
+    console.log("process variables", { templateRows, variables, localvariables });
     templateRows.forEach((r) => {
       let { name, value, rows, type } = r;
       if (r.condition) {
@@ -249,11 +252,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         localvariables[name] = variables[name] || {};
         // handle merging updated properties
         VARIABLE_FIELDS.forEach((field) => {
-          if (r[field]) {
+          if (r.hasOwnProperty(field)) {
             // don't override values that have otherwise been set from parent or nested properties
             // local variables within r[field] are parsed
             variables[name][field] =
-              variables[name][field] || this.parseLocalVariables(r[field], localvariables, field);
+              variables[name][field] || this.parsePLHExpression(r[field], localvariables, field);
             // local variables on a given excel sheet are managed together
             localvariables[name][field] = localvariables[name][field] || variables[name][field];
           }
@@ -302,7 +305,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * remove the variable setter row types and override row values where specified
    */
   private processRows(templateRows: FlowTypes.TemplateRow[], variables = {}) {
-    // console.log(`[${this.template.flow_name}]`, "process rows", variables);
+    console.log(`[${this.template.flow_name}]`, "process rows", variables);
     // remove row types that have already been processed during processVariables step
     const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
     const filteredRows = templateRows
@@ -396,6 +399,38 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return value.trim() === "true";
   }
 
+  /***************************************************************************************
+   *  Dynamic Values
+   **************************************************************************************/
+
+  private evaluatePLHExpression(expression: string | number | boolean | any) {
+    // only strings or objects could contain dynamic values that need evaluation
+    let value = expression;
+    switch (typeof expression) {
+      case "string":
+        // check for dynamic strings and convert accordingly
+        const evaluators = _extractDynamicEvaluators(expression);
+        if (evaluators) {
+        }
+        break;
+      case "object":
+        // array - evaluate all elements
+        if (Array.isArray(expression)) {
+          value = expression.map((el) => this.evaluatePLHExpression(el));
+        }
+        // non-null object - evaluate both keys and values
+        else if (expression !== null) {
+          value = {};
+          Object.keys(expression).forEach(
+            (k) =>
+              (value[this.evaluatePLHExpression(k)] = this.evaluatePLHExpression(expression[k]))
+          );
+        }
+    }
+    console.log("dynamic", { expression, value });
+    return value;
+  }
+
   private parseDynamicValue(
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
     localVariables: ILocalVariables
@@ -417,7 +452,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             parsedValue = this.template.rows.find((r) => r.name === fieldName)?.value;
           }
           // TODO - handle case where match found (but still returns undefined)
-          if (!parsedValue) {
+          if (parsedValue === undefined) {
             console.error("could not parse local variable", { evaluator, localVariables });
             parsedValue = `{{local.${fieldName}}}`;
           }
@@ -476,7 +511,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return `${evaluated}`;
   }
 
-  private parseLocalVariables(variable: any, localvariables: ILocalVariables = {}, field: any) {
+  private parsePLHExpression(variable: any, localvariables: ILocalVariables = {}, field: any) {
     let parsedExpression = variable;
     let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(variable);
     if (evaluators) {
@@ -525,7 +560,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 }
 
 /** Some strings contain a variable expression such as "/assets/@fields.name/happy.jpg" or "welcome @local.name!" */
-function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDynamicEvaluator[] {
+function _extractDynamicEvaluators(
+  fullExpression: string
+): FlowTypes.TemplateRowDynamicEvaluator[] | null {
   // match fields such as @local.someField or @fields.someField.deeperNested
   // first prefix should consist only of letters (e.g. @local, @fields)
   // second part can be any letter, number, or characters _ .
@@ -550,34 +587,11 @@ function _extractDynamicEvaluators(fullExpression: any): FlowTypes.TemplateRowDy
         allMatches
       );
     }
-  } else if (
-    typeof fullExpression === "object" &&
-    typeof fullExpression[Symbol.iterator] === "function"
-  ) {
-    for (let expressionItem of fullExpression) {
-      if (expressionItem) {
-        let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(
-          expressionItem
-        );
-        if (evaluators) {
-          for (let evaluator of evaluators) {
-            allMatches.push(evaluator);
-          }
-          console.warn(
-            "Adding item",
-            expressionItem,
-            "in array",
-            fullExpression,
-            "gives",
-            allMatches
-          );
-        }
-      }
-    }
   }
   if (allMatches.length > 0) {
     return allMatches;
   }
+  return null;
 }
 /** helper function used for dev to wait a fixed amount of time */
 function _wait(ms: number) {
