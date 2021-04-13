@@ -23705,5 +23705,33 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_solve.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_formatting",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title1",
+        "value": "<span>This is a title where part of it is </span><span><i>italics</i></span>"
+      },
+      {
+        "type": "text",
+        "name": "text1",
+        "value": "<span>This is text where part is </span><span><b>bold </b></span><span>part is in </span><span><i>italics</i></span><span><b><i> </b></i></span><span>and part is </span><span><b><i>both bold and italics (emphasised) </b></i></span>"
+      },
+      {
+        "type": "dashed_box",
+        "name": "box1",
+        "value": "<span>This is a dashed box where some of the text is </span><span><b>bold</b></span><span> and </span><span><i>italics</i></span>"
+      },
+      {
+        "type": "button",
+        "name": "button1",
+        "value": "<span>Some of this button is </span><span><b>bold. </b></span><span><i>WOAH!</i></span>"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
   }
 ]
