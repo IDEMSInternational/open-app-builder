@@ -71,6 +71,7 @@
   display: inherit;
   flex-direction: inherit;
   width: 100%;
+  height: 100%;
   justify-content: inherit;
   align-items: inherit;
   .animated_section {
@@ -141,6 +142,9 @@ p {
     @media (max-width: 320px) {
       font-size: 20px;
     }
+  }
+  .tiny {
+    font-size: $font-size-title-tiny;
   }
   .medium {
     font-size: $font-size-title-medium;

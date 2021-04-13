@@ -25,7 +25,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   }
 
   getParams() {
-    this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "information");
     this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "center");
     this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");

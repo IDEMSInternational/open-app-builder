@@ -1,6 +1,6 @@
 <ion-button
   [style.--background]="nestedProperty"
-  [class]="style + ' ' + buttonAlign"
+  [class]="'full standard medium' + ' ' + style + ' ' + buttonAlign"
   [disabled]="disabled"
   (click)="triggerActions('click')"
   ><span [class]="textAlign">{{ _row.value }}</span></ion-button
