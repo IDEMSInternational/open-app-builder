@@ -26,6 +26,9 @@ export class TourService {
       this.introJS.setOptions({
         steps: matchingTour.rows.map((row) => {
           let elementSelector = row.element;
+          if (row.template_component_name && row.template_component_name.trim().length > 0) {
+            elementSelector = "." + NAME_CLASS_PREFIX + row.template_component_name;
+          }
           return {
             intro: row.message_text,
             title: row.title,
