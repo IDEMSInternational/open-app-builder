@@ -52,10 +52,10 @@ export class TmplComboBoxComponent
     });
 
     modal.onDidDismiss().then((data) => {
+      this.triggerActions("changed");
       this._row.value = data?.data?.answer || this.placeholder;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
     });
-
     await modal.present();
   }
 }

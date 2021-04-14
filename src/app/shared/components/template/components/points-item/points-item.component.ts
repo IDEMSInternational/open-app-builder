@@ -42,6 +42,9 @@ export class TmplParentPointBoxComponent
   }
 
   clickPointItem() {
+    if (this._row.disabled) {
+      return;
+    }
     this.triggerActions("click");
     this._row.value += 1;
     this.star.nativeElement.classList.add("on-add");
