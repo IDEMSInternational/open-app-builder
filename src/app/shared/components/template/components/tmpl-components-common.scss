@@ -2,6 +2,10 @@
 
 .plh-tmpl-comp {
   // border:2px solid purple;
+
+  &.disabled {
+    filter: grayscale(100%);
+  }
 }
 
 .hidden {

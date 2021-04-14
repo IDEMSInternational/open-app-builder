@@ -9,6 +9,7 @@ import {
   Input,
 } from "@angular/core";
 import { BehaviorSubject } from "scripts/node_modules/rxjs";
+import { FlowTypes } from "scripts/types";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 
@@ -17,25 +18,28 @@ import { TemplateBaseComponent } from "../base";
   template: `<div class="accordion-wrapper">
     <div
       [ngClass]="{
-        completed: status === 'completed',
-        disabled: status === 'disabled',
-        inProgress: status === 'inProgress'
+        completed: completed && _row.disabled === 'false',
+        disabled: _row.disabled === 'true',
+        inProgress: _row.disabled !== 'true' && !completed
       }"
       class="accordion-status"
-      [ngSwitch]="status"
     >
-      <img *ngSwitchCase="'completed'" src="/assets/plh_assets/plh_images/icons/tick_white.svg" />
-      <img *ngSwitchCase="'disabled'" src="/assets/plh_assets/plh_images/icons/lock.svg" />
+      <img
+        *ngIf="completed && _row.disabled !== 'true'"
+        class="tick-icon"
+        src="/assets/plh_assets/plh_images/icons/tick.svg"
+      />
+      <img *ngIf="_row.disabled === 'true'" src="/assets/plh_assets/plh_images/icons/lock.svg" />
     </div>
     <div
       class="accordion-section"
       [ngClass]="{
         openSection: _row.parameter_list.state === 'open',
-        completed: status === 'completed'
+        completed: completed
       }"
       [class.open-section]="_row.parameter_list.state === 'open'"
     >
-      <div #progress class="progress"></div>
+      <div class="progress" [ngStyle]="{ width: percentComplete + '%' }"></div>
       <h2 (click)="toggleOpen()">{{ title }}</h2>
       <plh-template-component
         style="z-index: 2"
@@ -48,52 +52,37 @@ import { TemplateBaseComponent } from "../base";
   </div>`,
   styleUrls: ["./accordion.scss", "../tmpl-components-common.scss"],
 })
-export class AccordionSectionComponent
-  extends TemplateBaseComponent
-  implements OnInit, AfterViewInit {
-  private progressBar: HTMLElement;
-  public status: string;
+export class AccordionSectionComponent extends TemplateBaseComponent implements OnInit {
+  public completed: boolean;
+  public percentComplete: number;
   public title: string;
-  public progressValue$: BehaviorSubject<number> = new BehaviorSubject(0);
 
   @Input() id: string;
   @Output() toggleState = new EventEmitter<string>();
-
-  @ViewChild("progress") progress: ElementRef;
 
   ngOnInit() {
     this.getParams();
   }
 
-  ngAfterViewInit() {
-    this.progressBar = this.progress.nativeElement;
-    this.progressValue$.subscribe((value) => {
-      this.updateStatus(value);
-      this.updateProgressBar(value);
-    });
-  }
-
   public toggleOpen() {
-    if (this.status !== "disabled") {
+    console.log("ROW??", this._row);
+    if (this._row.disabled !== "true") {
       this.toggleState.emit(this.id);
     }
   }
 
   private getParams() {
-    this.status = getStringParamFromTemplateRow(this._row, "status", null);
+    this.completed = getStringParamFromTemplateRow(this._row, "completed", "false") === "true";
     this.title = getStringParamFromTemplateRow(this._row, "title", null);
-    this.progressValue$.next(this._row.value);
-  }
-
-  private updateProgressBar(value: number) {
-    this.progressBar.style.width = `${value}%`;
+    this.percentComplete = this._row.value ? this._row.value : 0;
+    this.updateStatus(this.percentComplete);
   }
 
   private updateStatus(value: number) {
     if (value === 100) {
-      this.status = "completed";
+      this.completed = true;
     } else if (value > 0) {
-      this.status = "inProgress";
+      this.completed = false;
     }
   }
 }
