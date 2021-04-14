@@ -3170,9 +3170,127 @@
         "name": "text"
       },
       {
+        "type": "text",
+        "name": "text"
+      },
+      {
+        "type": "button",
+        "name": "button_1",
+        "hidden": "true"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "hidden": "true"
+      },
+      {
+        "type": "button",
+        "name": "button_3",
+        "hidden": "true"
+      },
+      {
         "type": "template",
+<<<<<<< HEAD
+        "name": "combo_box_2",
+        "value": "box_combo_box",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+=======
+        "name": "widget_timer",
+        "value": "widget_timer",
+        "rows": [
+          {
+            "name": "duration",
+            "value": "@local.timer_duration",
+            "type": "set_variable"
+          },
+          {
+            "name": "duration_extension",
+            "value": "@local.timer_duration_extension",
+            "type": "set_variable"
+          },
+          {
+            "value": "@local.timer_title",
+            "type": "set_variable"
+          },
+          {
+            "name": "title",
+            "value": "@local.timer_help",
+            "type": "set_variable"
+          },
+          {
+            "name": "help",
+            "type": "set_variable"
+>>>>>>> accordion changes
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "comments": "This should be: \ncompleted | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+<<<<<<< HEAD
+    "flow_name": "box_duo_radio_buttons",
+=======
+    "flow_name": "box_duo_combo_box",
+>>>>>>> accordion changes
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+<<<<<<< HEAD
+        "name": "radio_buttons_1",
+        "value": "box_radio_buttons",
+=======
+        "name": "combo_box_1",
+        "value": "box_combo_box",
+>>>>>>> accordion changes
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+<<<<<<< HEAD
         "name": "widget_audio",
         "value": "widget_audio",
+=======
+<<<<<<< HEAD
+        "name": "radio_buttons_2",
+        "value": "box_radio_buttons",
+=======
+        "name": "combo_box_2",
+        "value": "box_combo_box",
+>>>>>>> accordion changes
+>>>>>>> accordion changes
         "rows": [
           {
             "type": "set_variable",
@@ -3196,7 +3314,15 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+<<<<<<< HEAD
         "comments": "completed | emit:completed; completed | emit:completed:widget_audio",
+=======
+<<<<<<< HEAD
+        "comments": "This should be: \ncompleted | emit:completed:radio_buttons_1;\ncompleted | emit:completed:radio_buttons_2; \ncompleted | emit:completed",
+=======
+        "comments": "This should be: \ncompleted | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
+>>>>>>> accordion changes
+>>>>>>> accordion changes
         "rows": []
       }
     ],
@@ -3204,7 +3330,15 @@
   },
   {
     "flow_type": "template",
+<<<<<<< HEAD
     "flow_name": "box_image",
+=======
+<<<<<<< HEAD
+    "flow_name": "box_multi_radio_buttons",
+=======
+    "flow_name": "box_duo_radio_buttons",
+>>>>>>> accordion changes
+>>>>>>> accordion changes
     "status": "released",
     "rows": [
       {
@@ -3227,6 +3361,9 @@
       },
       {
         "type": "template",
+<<<<<<< HEAD
+        "name": "radio_buttons_3",
+=======
         "name": "nav_buttons",
         "value": "nav_buttons",
         "action_list": [
@@ -3251,6 +3388,7 @@
     "status": "released",
     "rows": [
       {
+<<<<<<< HEAD
         "type": "title",
         "name": "title",
         "hidden": "true"
@@ -3258,15 +3396,59 @@
       {
         "type": "image",
         "name": "image_src"
+=======
+        "type": "template",
+        "name": "radio_buttons_1",
+>>>>>>> accordion changes
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "template",
+<<<<<<< HEAD
+=======
+        "name": "radio_buttons_2",
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+>>>>>>> accordion changes
       },
       {
         "type": "text",
         "name": "text"
       },
       {
+<<<<<<< HEAD
         "type": "dashed_box",
         "name": "dashed_box",
         "hidden": "true"
+=======
+        "type": "template",
+>>>>>>> accordion changes
+        "name": "radio_buttons_4",
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": "true",
+            "rows": []
+          }
+        ]
+>>>>>>> accordion changes
       },
       {
         "type": "template",
@@ -3372,8 +3554,112 @@
     "status": "released",
     "rows": [
       {
+<<<<<<< HEAD
         "name": "timer_duration",
         "value": 10,
+=======
+        "name": "progress_bar_value",
+        "type": "set_variable"
+<<<<<<< HEAD
+      },
+      {
+        "name": "progress_bar_num_items",
+        "type": "set_variable"
+      },
+      {
+        "name": "progress_bar",
+        "value": "@local.progress_bar_value",
+        "parameter_list": {
+          "num_items": "@local.progress_bar_num_items"
+        },
+        "type": "set_variable"
+      },
+      {
+        "name": "progress_field_name",
+        "type": "set_variable"
+      },
+      {
+        "type": "nav_group",
+        "name": "nav_template_list",
+        "comments": "in parameter list: progress_variable:@local.progress_field_name"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "workshop_activity",
+    "status": "released",
+    "rows": [
+      {
+        "name": "activity_image_src",
+        "value": "src/assets/not-found-image.png",
+        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content. It occasionally has an outro.",
+        "type": "set_variable"
+      },
+      {
+        "name": "activity_title",
+        "value": "Title of this activity",
+        "type": "set_variable"
+      },
+      {
+        "name": "include_outro",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_intro",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_content",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_outro",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "type": "display_theme",
+        "name": "display_theme",
+        "value": "passive_theme"
+      },
+      {
+        "type": "animated_section",
+        "name": "intro",
+        "value": "fade_in_out",
+        "hidden": "@local.hide_intro",
+        "rows": [
+          {
+            "type": "display_group",
+            "parameter_list": {
+              "style": "banner",
+              "offset": "20"
+            },
+            "rows": [
+              {
+                "type": "image",
+                "name": "intro_image_src",
+=======
+      },
+      {
+        "name": "progress_bar_num_items",
+        "type": "set_variable"
+      },
+      {
+        "name": "progress_bar",
+        "value": "@local.progress_bar_value",
+        "parameter_list": {
+          "num_items": "@local.progress_bar_num_items"
+        },
+        "type": "set_variable"
+      },
+      {
+        "name": "progress_field_name",
+>>>>>>> accordion changes
         "type": "set_variable"
       },
       {
@@ -3440,6 +3726,7 @@
         ]
       },
       {
+<<<<<<< HEAD
         "type": "template",
         "name": "nav_buttons",
         "value": "nav_buttons",
@@ -3449,6 +3736,141 @@
             "action_id": "emit",
             "args": [
               "completed"
+=======
+        "type": "animated_section",
+        "name": "content",
+        "hidden": "@local.hide_content",
+        "rows": [
+          {
+            "type": "display_group",
+            "name": "activity_banner",
+            "hidden": "true",
+            "parameter_list": {
+              "style": "banner"
+            },
+            "rows": [
+              {
+                "type": "title",
+                "name": "banner_title",
+                "value": "@local.activity_title"
+              },
+              {
+                "type": "image",
+                "name": "banner_image_src",
+>>>>>>> accordion changes
+                "value": "@local.activity_image",
+                "parameter_list": {
+                  "background_box": "true"
+                }
+              }
+            ]
+          },
+          {
+<<<<<<< HEAD
+            "type": "title",
+            "name": "intro_title",
+            "value": "@local.activity_title",
+            "parameter_list": {
+              "style": "centre"
+            }
+          },
+          {
+            "type": "text",
+            "name": "intro_text",
+            "parameter_list": {
+              "style": "center"
+            }
+          },
+          {
+            "type": "template",
+            "name": "intro_nav_buttons",
+            "value": "nav_buttons",
+=======
+            "type": "template",
+            "name": "content_box",
+>>>>>>> accordion changes
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+<<<<<<< HEAD
+                  "false"
+                ],
+                "_raw": "completed | set_local:hide_content:false",
+                "_cleaned": "completed | set_local:hide_content:false"
+=======
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_content:true",
+                "_cleaned": "completed | set_local:hide_content:true"
+>>>>>>> accordion changes
+              },
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+<<<<<<< HEAD
+                  "hide_intro",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_intro:true",
+                "_cleaned": "completed | set_local:hide_intro:true"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "uncompleted | emit:uncompleted",
+                "_cleaned": "uncompleted | emit:uncompleted"
+              }
+            ],
+            "comments": "completed | set_local:hide_content:false; completed | set_local:hide_intro:true; uncompleted | emit:uncompleted ",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Let's go!",
+                "type": "set_variable"
+              },
+              {
+                "name": "button_uncompleted",
+                "value": "Skip",
+                "hidden": "true",
+                "comments": "default: set_properties\nuse extend_properties to add to an existing list of properties",
+                "type": "set_variable"
+              }
+            ]
+=======
+                  "hide_outro",
+                  "false"
+                ],
+                "_raw": "completed | set_local:hide_outro:false",
+                "_cleaned": "completed | set_local:hide_outro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_intro:false",
+                "_cleaned": "uncompleted | set_local:hide_intro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "uncompleted | set_local:hide_content:true",
+                "_cleaned": "uncompleted | set_local:hide_content:true"
+              }
+>>>>>>> accordion changes
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
@@ -3474,10 +3896,12 @@
             "name": "nav_buttons",
             "hidden": "true",
             "rows": []
+>>>>>>> accordion changes
           }
         ]
       },
       {
+<<<<<<< HEAD
         "type": "template",
         "name": "combo_box_2",
         "value": "box_combo_box",
@@ -3486,7 +3910,317 @@
             "type": "nested_properties",
             "name": "nav_buttons",
             "hidden": "true",
+=======
+        "type": "animated_section",
+<<<<<<< HEAD
+        "name": "content",
+        "hidden": "@local.hide_content",
+        "rows": [
+          {
+            "type": "display_group",
+            "name": "activity_banner",
+            "hidden": "true",
+            "parameter_list": {
+              "style": "banner"
+            },
+            "rows": [
+              {
+                "type": "title",
+                "name": "banner_title",
+                "value": "@local.activity_title"
+              },
+              {
+                "type": "image",
+                "name": "banner_image_src",
+=======
+        "name": "outro",
+        "value": "fade_in_out",
+        "hidden": "@local.hide_outro",
+        "rows": [
+          {
+            "type": "display_group",
+            "parameter_list": {
+              "style": "banner",
+              "offset": "20"
+            },
+            "rows": [
+              {
+                "type": "image",
+                "name": "outro_image_src",
+>>>>>>> accordion changes
+                "value": "@local.activity_image",
+                "parameter_list": {
+                  "background_box": "true"
+                }
+              }
+            ]
+<<<<<<< HEAD
+          },
+          {
+            "type": "template",
+            "name": "content_box",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_content:true",
+                "_cleaned": "completed | set_local:hide_content:true"
+              },
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_outro",
+                  "false"
+                ],
+                "_raw": "completed | set_local:hide_outro:false",
+                "_cleaned": "completed | set_local:hide_outro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_intro:false",
+                "_cleaned": "uncompleted | set_local:hide_intro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "uncompleted | set_local:hide_content:true",
+                "_cleaned": "uncompleted | set_local:hide_content:true"
+              }
+            ],
+            "hidden": "!@local.include_outro",
+            "comments": "Do this row when include_outro = TRUE\n!@local.include_outro",
             "rows": []
+          },
+          {
+            "type": "template",
+            "name": "content_box",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "completed | emit:completed",
+                "_cleaned": "completed | emit:completed"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_intro:false",
+                "_cleaned": "uncompleted | set_local:hide_intro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "uncompleted | set_local:hide_content:true",
+                "_cleaned": "uncompleted | set_local:hide_content:true"
+              }
+            ],
+            "hidden": "@local.include_outro",
+            "comments": "Do this row when include_outro = FALSE\n@local.include_outro",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "outro",
+        "value": "fade_in_out",
+        "hidden": "@local.hide_outro",
+        "rows": [
+          {
+            "type": "display_group",
+            "parameter_list": {
+              "style": "banner",
+              "offset": "20"
+            },
+            "rows": [
+              {
+                "type": "image",
+                "name": "outro_image_src",
+                "value": "@local.activity_image",
+                "parameter_list": {
+                  "background_box": "true"
+                }
+              }
+            ]
+          },
+          {
+            "type": "title",
+            "name": "outro_title",
+            "value": "@local.activity_title",
+            "hidden": "true"
+          },
+          {
+            "type": "text",
+            "name": "outro_text"
+          },
+          {
+            "type": "button",
+            "name": "outro_button",
+            "hidden": "true"
+          },
+          {
+            "type": "dashed_box",
+            "name": "outro_habit_text",
+            "hidden": "true",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star_circle.svg",
+              "icon_position": "top-left"
+            }
+          },
+          {
+            "type": "template",
+            "name": "outro_nav_buttons",
+            "value": "nav_buttons",
+            "action_list": [
+              {
+                "trigger": "completed",
+=======
+          },
+          {
+            "type": "title",
+            "name": "outro_title",
+            "value": "@local.activity_title",
+            "hidden": "true"
+          },
+          {
+            "type": "text",
+            "name": "outro_text"
+          },
+          {
+            "type": "button",
+            "name": "outro_button",
+            "hidden": "true"
+          },
+          {
+            "type": "dashed_box",
+            "name": "outro_habit_text",
+            "hidden": "true",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star_circle.svg",
+              "icon_position": "top-left"
+            }
+          },
+          {
+            "type": "template",
+            "name": "outro_nav_buttons",
+            "value": "nav_buttons",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "completed | emit:completed",
+                "_cleaned": "completed | emit:completed"
+              }
+            ],
+            "rows": []
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "nav_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "button_info",
+            "value": "@global.ideas_button",
+            "hidden": "true",
+            "parameter_list": {
+              "style": "information"
+            },
+            "style_list": [
+              "flex:1"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_completed",
+            "value": "Done!",
+            "action_list": [
+              {
+                "trigger": "click",
+>>>>>>> accordion changes
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+<<<<<<< HEAD
+                "_raw": "completed | emit:completed",
+                "_cleaned": "completed | emit:completed"
+              }
+            ],
+>>>>>>> accordion changes
+            "rows": []
+=======
+                "_raw": "click | emit:completed",
+                "_cleaned": "click | emit:completed"
+              }
+            ],
+            "parameter_list": {
+              "style": "navigation"
+            },
+            "style_list": [
+              "flex:1"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_uncompleted",
+            "value": "Back",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "click | emit:uncompleted",
+                "_cleaned": "click | emit:uncompleted"
+              }
+            ],
+            "hidden": "true",
+            "parameter_list": {
+              "style": "navigation"
+            },
+            "style_list": [
+              "flex:1"
+            ]
+>>>>>>> accordion changes
           }
         ]
       },
@@ -3513,7 +4247,12 @@
   },
   {
     "flow_type": "template",
+<<<<<<< HEAD
     "flow_name": "box_duo_radio_buttons",
+=======
+<<<<<<< HEAD
+    "flow_name": "nav_buttons",
+>>>>>>> accordion changes
     "status": "released",
     "rows": [
       {
@@ -3535,6 +4274,7 @@
         "value": "box_radio_buttons",
         "rows": [
           {
+<<<<<<< HEAD
             "type": "nested_properties",
             "name": "nav_buttons",
             "hidden": "true",
@@ -3566,6 +4306,137 @@
   {
     "flow_type": "template",
     "flow_name": "box_multi_radio_buttons",
+=======
+            "type": "button",
+            "name": "button_uncompleted",
+            "value": "Back",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "click | emit:uncompleted",
+                "_cleaned": "click | emit:uncompleted"
+              }
+            ],
+            "hidden": "true",
+            "parameter_list": {
+              "style": "navigation"
+            },
+            "style_list": [
+              "flex:1"
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "pair",
+    "status": "released",
+    "rows": [
+      {
+        "name": "hide_animated_section_1",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_animated_section_2",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "type": "animated_section",
+        "name": "animated_section_1",
+        "hidden": "@local.hide_animated_section_1",
+        "rows": [
+          {
+            "type": "template",
+            "name": "box_1",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_animated_section_1",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_animated_section_1:true",
+                "_cleaned": "completed | set_local:hide_animated_section_1:true"
+              },
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_animated_section_2",
+                  "false"
+                ],
+                "_raw": "completed | set_local:hide_animated_section_2:false",
+                "_cleaned": "completed | set_local:hide_animated_section_2:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "uncompleted | emit:uncompleted",
+                "_cleaned": "uncompleted | emit:uncompleted"
+              }
+            ],
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "animated_section_2",
+        "hidden": "@local.hide_animated_section_2",
+        "rows": [
+          {
+            "type": "template",
+            "name": "box_2",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "completed | emit:completed",
+                "_cleaned": "completed | emit:completed"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_animated_section_1",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_animated_section_1:false",
+                "_cleaned": "uncompleted | set_local:hide_animated_section_1:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_animated_section_2",
+                  "true"
+                ],
+                "_raw": "uncompleted  | set_local:hide_animated_section_2:true",
+                "_cleaned": "uncompleted  | set_local:hide_animated_section_2:true"
+              }
+            ],
+            "rows": []
+          }
+        ]
+=======
+    "flow_name": "pair",
+>>>>>>> accordion changes
     "status": "released",
     "rows": [
       {
@@ -3606,7 +4477,20 @@
             "rows": []
           }
         ]
+<<<<<<< HEAD
       },
+=======
+>>>>>>> accordion changes
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "workshops_navigation_page",
+    "status": "released",
+    "rows": [
+>>>>>>> accordion changes
       {
         "type": "template",
         "name": "radio_buttons_4",
@@ -9923,6 +10807,45 @@
         "type": "set_variable"
       },
       {
+<<<<<<< HEAD
+        "type": "radio_group",
+        "name": "radio_group_square_ex3",
+        "value": "Smile",
+        "parameter_list": {
+          "radio_button_type": "btn_icon",
+          "answer_list": "@local.answer3_list",
+          "options_per_row": "@local.options_per_row"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_result_ex_1",
+        "value": "@local.radio_group_square_ex1"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_square_ex1",
+        "value": "Black",
+        "parameter_list": {
+          "radio_button_type": "btn_text",
+          "answer_list": "@local.answer2_list",
+          "options_per_row": "3",
+          "options_per_row_min": "2",
+          "style": "passive"
+        }
+      },
+      {
+        "name": "answer2_list",
+        "value": [
+          "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
+          "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
+          "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue"
+        ],
+        "type": "set_variable"
+      },
+      {
+=======
+>>>>>>> accordion changes
         "name": "radio_button_type",
         "value": "btn_text",
         "type": "set_variable"
@@ -10703,6 +11626,176 @@
   {
     "flow_type": "template",
     "flow_name": "feature_workshops_page",
+<<<<<<< HEAD
+=======
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "title",
+            "value": "Weekly Workshops",
+            "parameter_list": {
+              "help": "seme help"
+            }
+          },
+          {
+            "type": "button",
+            "name": "options_button",
+            "value": "Options",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "pop_up",
+                "args": [],
+                "_raw": "pop_up | workshop_options_popup",
+                "_cleaned": "click | pop_up | workshop_options_popup"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "tile_component",
+        "name": "quick_start",
+        "value": "@local.group_name\nStart @local.next_workshop_name",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "@local.next_workshop"
+            ],
+            "_raw": "click | go_to : @local.next_workshop",
+            "_cleaned": "click | go_to : @local.next_workshop"
+          }
+        ],
+        "parameter_list": {
+          "first_line_text": "My Group",
+          "second_line_text": "Start week one",
+          "style": "quick_start",
+          "icon_src": "plh_images/icons/star.svg"
+        },
+        "comments": "Not sure how to do this"
+      },
+      {
+        "type": "workshops_accordion",
+        "comments": "Could make this more generic name such as\nbegin_accordion_stepper\nBut this would require extra info on syntax for workshop completion / partial completion",
+        "rows": [
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "status": "completed",
+              "title": "Description of week one"
+            },
+            "comments": "title - accordion tile title, value - number 0-100, state: open | closed, status: completed | uncompleted | disabled",
+            "rows": [
+              {
+                "type": "button",
+                "name": "button_completed",
+                "value": "Emit completed",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_self_care_stepper"
+                    ],
+                    "_raw": "click | go_to:w_self_care_stepper",
+                    "_cleaned": "click | go_to:w_self_care_stepper"
+                  }
+                ],
+                "parameter_list": {
+                  "style": "active"
+                }
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "status": "completed",
+              "title": "With template"
+            },
+            "comments": "!@field.w_week2_unlocked",
+            "rows": [
+              {
+                "type": "template",
+                "name": "test_template",
+                "value": "care_together",
+                "rows": []
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 70,
+            "parameter_list": {
+              "state": "open",
+              "title": "Description of week three"
+            },
+            "comments": "!@field.w_week3_unlocked",
+            "rows": [
+              {
+                "type": "template",
+                "name": "test_template",
+                "value": "feature_navigation_group",
+                "rows": []
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "parameter_list": {
+              "state": "closed",
+              "status": "disabled",
+              "title": "Description of week four"
+            },
+            "comments": "!@field.w_week4_unlocked",
+            "rows": [
+              {
+                "type": "button",
+                "name": "btn_example_1",
+                "value": "First",
+                "parameter_list": {
+                  "style": "active"
+                }
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "parameter_list": {
+              "state": "closed",
+              "status": "disabled",
+              "title": "Description of week five"
+            },
+            "comments": "!@field.w_week5_unlocked",
+            "rows": [
+              {
+                "type": "button",
+                "name": "btn_example_1",
+                "value": "First",
+                "parameter_list": {
+                  "style": "active"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_parent_point_box",
+>>>>>>> accordion changes
     "status": "released",
     "rows": [
       {
@@ -10955,6 +12048,78 @@
         "type": "text",
         "name": "text_2",
         "value": "value 2 is @local.points_example_1"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_navigation_group",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "name": "dg",
+        "parameter_list": {
+          "style": "banner_active",
+          "offset": "30"
+        },
+        "style_list": [
+          "margin: 10px 15px",
+          "min-height: 40px"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/characters/group/talk_together.png",
+            "style_list": [
+              "max-width: 250px"
+            ],
+          }
+        ]
+      },
+      {
+        "type": "title",
+        "name": "title_ex",
+        "value": "Relax together",
+        "parameter_list": {
+          "text_align": "center"
+        }
+      },
+      {
+        "type": "subtitle",
+        "name": "subtitle",
+        "value": " Facilitator play the audio...\n",
+        "parameter_list": {
+          "text_align": "center"
+        }
+      },
+      {
+        "type": "display_group",
+        "name": "navigation_dp",
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "comments": "To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets",
+        "rows": [
+          {
+            "type": "button",
+            "name": "button_prev",
+            "value": "Previous",
+            "parameter_list": {
+              "style": "active"
+            }
+          },
+          {
+            "type": "button",
+            "name": "button_next",
+            "value": "Next",
+            "parameter_list": {
+              "style": "active"
+            }
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -11617,7 +12782,15 @@
       {
         "type": "text",
         "name": "list1",
+<<<<<<< HEAD
         "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n- List item 1\n- List item 2\n- List item 3"
+=======
+<<<<<<< HEAD
+        "value": "This is text with a list in it\n- List item 1\n- List item 2\n- List item 3"
+=======
+        "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n- List item 1\n- List item 2\n- List item 3"
+>>>>>>> accordion changes
+>>>>>>> accordion changes
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
