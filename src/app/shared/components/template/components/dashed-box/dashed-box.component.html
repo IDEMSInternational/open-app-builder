@@ -1,8 +1,6 @@
 <div class="box-wrapper">
   <div class="item" [class]="style">
-    <div class="text">
-      {{ _row.value }}
-    </div>
+    <div *ngIf="innerHTML" class="text" [innerHTML]="innerHTML"></div>
     <div class="icon" [class]="icon_position" *ngIf="icon_src">
       <img [src]="icon_result" alt="" />
     </div>
