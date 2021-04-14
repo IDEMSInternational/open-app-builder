@@ -15,9 +15,6 @@ import { TemplateBaseComponent } from "../base";
       :host {
         width: 100%;
       }
-      .animated-section {
-        padding: 0 10px;
-      }
     `,
   ],
 })
