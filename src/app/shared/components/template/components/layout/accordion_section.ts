@@ -69,6 +69,7 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
     if (this._row.disabled !== "true") {
       this.toggleState.emit(this.id);
     }
+    // this.progressValue$.next(100)
   }
 
   private getParams() {

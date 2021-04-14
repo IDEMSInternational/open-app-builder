@@ -198,7 +198,13 @@ p {
     z-index: 2;
     text-align: center;
     margin: 0;
+    font-size: $font-size-subtitle-small;
+    font-weight: $font-weight-bold;
     padding: 10px 0 10px 0;
+    @media (max-width: 320px) {
+      font-size: 17px;
+      padding: 11px 0 10px 0;
+    }
   }
 }
 
