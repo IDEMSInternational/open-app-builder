@@ -67,7 +67,7 @@ export class TourService {
           this.introJS.refresh();
         }, this.waitForRoutingDelay);
       });
-      const startRoute = matchingTour.rows[0].route ? matchingTour.rows[0].route : "module_list";
+      const startRoute = matchingTour.rows[0].route ? matchingTour.rows[0].route : "/";
       await this.router.navigateByUrl(startRoute);
       setTimeout(() => {
         this.introJS.start();
