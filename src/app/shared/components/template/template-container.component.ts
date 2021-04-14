@@ -417,7 +417,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             parsedValue = this.template.rows.find((r) => r.name === fieldName)?.value;
           }
           // TODO - handle case where match found (but still returns undefined)
-          if (!parsedValue) {
+          if (!parsedValue && parsedValue !== 0) {
             console.error("could not parse local variable", { evaluator, localVariables });
             parsedValue = `{{local.${fieldName}}}`;
           }

@@ -67,6 +67,7 @@ export class TemplateParser extends DefaultParser {
       "click",
       "completed",
       "uncompleted",
+      "changed",
     ];
     if (!actionTriggers.find((t) => actionString.startsWith(t))) {
       actionString = `click | ${actionString}`;
