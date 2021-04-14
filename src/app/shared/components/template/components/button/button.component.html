@@ -3,5 +3,5 @@
   [class]="'full standard medium' + ' ' + style + ' ' + buttonAlign"
   [disabled]="disabled"
   (click)="triggerActions('click')"
-  ><span [class]="textAlign">{{ _row.value }}</span></ion-button
->
+  ><span *ngIf="innerHTML" [class]="textAlign" [innerHTML]="innerHTML"></span
+></ion-button>
