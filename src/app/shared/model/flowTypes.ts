@@ -395,7 +395,8 @@ export namespace FlowTypes {
     rows?: TemplateRow[];
     /** track fields above where dynamic expressions have been used in field evaluation */
     _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
-    condition?: any;
+    condition?: string;
+    disabled?: string;
 
     /* Used for authoring comments. Not used in code */
     cc_comments?: string;
