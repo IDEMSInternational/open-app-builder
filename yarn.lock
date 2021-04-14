@@ -5290,6 +5290,11 @@ dexie-observable@^3.0.0-beta.9:
   resolved "https://registry.yarnpkg.com/dexie-observable/-/dexie-observable-3.0.0-beta.10.tgz#ad7a7e136defbb62f9eab9198a5cb9e10bce1c87"
   integrity sha512-GMPwQMLh1nYqM1MYsOZudsIwSMqDMrAOBxNuw+Y2ijsrQTBPi3nRF2CinY02IdlmffkaU7DsDfnlgdaMEaiHTQ==
 
+dexie-syncable@^3.0.0-beta.10:
+  version "3.0.0-beta.10"
+  resolved "https://registry.yarnpkg.com/dexie-syncable/-/dexie-syncable-3.0.0-beta.10.tgz#ecd1405ffd1dbe1cfc750c0c1ad1d719dda54bfe"
+  integrity sha512-Gx7GF4uNFLVYye/qLqzMcH1rzdy2D55YqzH6rGDwthIPNLJW9DYYbLWGUJZ6Oa58zahDrbCnaM0nZdf4M8Ph/g==
+
 dexie@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/dexie/-/dexie-3.0.2.tgz#4b979904d739e0530b68352005f175a82633a075"

@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
+import "dexie-syncable";
+import "./db-sync.service";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
 import { Subject } from "scripts/node_modules/rxjs";
 import { arrayToHashmapArray } from "../../utils";
@@ -89,9 +91,16 @@ export class DbService {
         // return location.reload();
       }
     });
+    db.syncable.connect("websocket", "ws://127.0.0.1:8080/");
+    db.syncable.on("statusChanged", function (newStatus, url) {
+      console.log("Sync Status changed: " + Dexie.Syncable.StatusTexts[newStatus]);
+    });
+
     this._addEventListeners();
   }
   deleteDatabase() {
+    db.syncable.disconnect("ws://127.0.0.1:8080/");
+    db.syncable.delete("ws://127.0.0.1:8080/");
     return this.db.delete();
   }
 
