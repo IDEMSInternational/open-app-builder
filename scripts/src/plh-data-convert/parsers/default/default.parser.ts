@@ -2,7 +2,7 @@ import chalk from "chalk";
 import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
-import { parsePLHListString } from "../utils";
+import { parsePLHListString, parsePLHCollectionString } from "../utils";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string };
 
@@ -62,7 +62,15 @@ export class DefaultParser implements AbstractParser {
       if (field.endsWith("_list")) {
         row[field] = parsePLHListString(row[field]);
       }
+      if (field.endsWith("_collection")) {
+        row[field] = parsePLHCollectionString(row[field]);
+      }
     });
+    /**
+     * TODO - some specific sheet types (e.g. template data_list and derivatives)
+     * will likely perfer to convert depending on the name or id of the row (ending in _list or _collection)
+     * Should likely want to add support to automate conversion (currently manually handled in template parser)
+     **/
 
     // Extract any required groups that start from this row
     const type = row.type || "";
