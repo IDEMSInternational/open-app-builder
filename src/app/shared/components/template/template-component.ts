@@ -41,7 +41,12 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
+    <div
+      class="plh-tmpl-comp"
+      [attr.data-hidden]="row.hidden"
+      [attr.data-debug]="parent.debugMode"
+      [id]="id"
+    >
       <!-- Template Debugger -->
       <plh-template-debugger
         *ngIf="parent.debugMode"
@@ -63,6 +68,9 @@ export class TmplCompHostDirective {
   ],
 })
 export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
+  /** id combination of parent template name and our row name */
+  id: string;
+
   /**
    * Specific data used in component rendering
    * when updated from parent changes will automatically propogate to child
@@ -96,6 +104,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
+    this.id = `tc_${this.parent.name}_${row.name}`;
     // console.log(`[${this.row.name}]`, "render row");
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {
