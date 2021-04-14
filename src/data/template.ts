@@ -7804,6 +7804,280 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "example_changed_action",
+    "status": "released",
+    "rows": [
+      {
+        "name": "answer_list",
+        "value": [
+          "First",
+          "Second",
+          "Third"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_defaults",
+        "value": "nothing",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_combo_box",
+              "@local.combo_box_defaults"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_combo_box: @local.combo_box_defaults",
+            "_cleaned": "changed | set_field: demo_changed_field_combo_box: @local.combo_box_defaults"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        }
+      },
+      {
+        "type": "text",
+        "name": "comb_box_text",
+        "value": "the selected choice in combo box is @fields.demo_changed_field_combo_box"
+      },
+      {
+        "name": "answer_list_1",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second",
+          "name:name_var_3 | text:Third",
+          "name:name_var_4 | text:Fourth"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_defaults",
+        "value": "Third",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_radio_group",
+              "@local.radio_group_defaults"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_radio_group: @local.radio_group_defaults",
+            "_cleaned": "changed | set_field: demo_changed_field_radio_group: @local.radio_group_defaults"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_1"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the selected choice in radio group is @fields.demo_changed_field_radio_group"
+      },
+      {
+        "name": "blank_display_text",
+        "value": "Click here to answer",
+        "type": "set_variable"
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_1",
+        "value": "Some text value",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_text_box",
+              "@local.text_box_1"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_text_box: @local.text_box_1",
+            "_cleaned": "changed | set_field: demo_changed_field_text_box: @local.text_box_1"
+          }
+        ],
+        "parameter_list": {
+          "blank_display_text": "@local.blank_display_text"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the value in the text box is @fields.demo_changed_field_text_box"
+      },
+      {
+        "type": "slider",
+        "name": "slider",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_slider",
+              "@local.slider"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_slider: @local.slider",
+            "_cleaned": "changed | set_field: demo_changed_field_slider: @local.slider"
+          }
+        ],
+        "parameter_list": {
+          "min": "0",
+          "max": "7",
+          "title": "without help",
+          "min_value_label": "0",
+          "max_value_label": "7",
+          "labels_count": "8",
+          "no_value": "false"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the selected choice in slider is @fields.demo_changed_field_slider"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_changed_action",
+    "status": "released",
+    "rows": [
+      {
+        "name": "answer_list",
+        "value": [
+          "First",
+          "Second",
+          "Third"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_defaults",
+        "value": "nothing",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_combo_box",
+              "@local.combo_box_defaults"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_combo_box: @local.combo_box_defaults",
+            "_cleaned": "changed | set_field: demo_changed_field_combo_box: @local.combo_box_defaults"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        }
+      },
+      {
+        "type": "text",
+        "name": "comb_box_text",
+        "value": "the selected choice in combo box is @fields.demo_changed_field_combo_box"
+      },
+      {
+        "name": "answer_list_1",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second",
+          "name:name_var_3 | text:Third",
+          "name:name_var_4 | text:Fourth"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_defaults",
+        "value": "Third",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_radio_group",
+              "@local.radio_group_defaults"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_radio_group: @local.radio_group_defaults",
+            "_cleaned": "changed | set_field: demo_changed_field_radio_group: @local.radio_group_defaults"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_1"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the selected choice in radio group is @fields.demo_changed_field_radio_group"
+      },
+      {
+        "name": "blank_display_text",
+        "value": "Click here to answer",
+        "type": "set_variable"
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_1",
+        "value": "Some text value",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_text_box",
+              "@local.text_box_1"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_text_box: @local.text_box_1",
+            "_cleaned": "changed | set_field: demo_changed_field_text_box: @local.text_box_1"
+          }
+        ],
+        "parameter_list": {
+          "blank_display_text": "@local.blank_display_text"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the value in the text box is @fields.demo_changed_field_text_box"
+      },
+      {
+        "type": "slider",
+        "name": "slider",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_slider",
+              "@local.slider"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_slider: @local.slider",
+            "_cleaned": "changed | set_field: demo_changed_field_slider: @local.slider"
+          }
+        ],
+        "parameter_list": {
+          "min": "0",
+          "max": "7",
+          "title": "without help",
+          "min_value_label": "0",
+          "max_value_label": "7",
+          "labels_count": "8",
+          "no_value": "false"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the selected choice in slider is @fields.demo_changed_field_slider"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "example_double_ref_comp_var",
     "status": "released",
     "rows": [
