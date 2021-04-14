@@ -1,8 +1,9 @@
+@import "../../../theme/variables.scss";
 ion-searchbar {
   --background: #fff;
 }
 
 plh-template-container {
   height: 100%;
-  padding: 0 10px;
+  padding: $main-container-padding;
 }
