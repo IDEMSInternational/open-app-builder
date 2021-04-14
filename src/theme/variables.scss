@@ -20,14 +20,15 @@ $light: #ffffff;
 $dark: #00000040;
 
 /** Title **/
-$font-size-title-medium: 22px;
-$font-size-title-large: 26px;
-$font-size-title-largest: 30px;
+$font-size-title-tiny: 24px;
+$font-size-title-medium: 26px;
+$font-size-title-large: 30px;
+$font-size-title-largest: 34px;
 
 /** Subtitle **/
-$font-size-subtitle-small: 20px;
-$font-size-subtitle-medium: 24px;
-$font-size-subtitle-large: 28px;
+$font-size-subtitle-small: 18px;
+$font-size-subtitle-medium: 20px;
+$font-size-subtitle-large: 22px;
 
 /** Text **/
 $font-size-text-tiny: 14px;
@@ -50,6 +51,8 @@ $border-radius-standard: 15px;
 /** Gradient direction **/
 $vertical: 180deg;
 $horizontal: 90deg;
+
+$main-container-padding: 0 10px;
 
 /** Ionic CSS Variables **/
 :root {
