@@ -148,6 +148,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       case "set_field":
         console.log("[SET FIELD]", key, value);
         return this.templateService.setField(key, value);
+      case "set_theme":
+        return this.templateService.setTheme(this.template, "set_theme", action.args);
       case "emit":
         const [emit_value, emit_from] = args;
         let container: TemplateContainerComponent = this;
@@ -421,7 +423,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             parsedValue = this.template.rows.find((r) => r.name === fieldName)?.value;
           }
           // TODO - handle case where match found (but still returns undefined)
-          if (!parsedValue) {
+          if (!parsedValue && parsedValue !== 0) {
             console.error("could not parse local variable", { evaluator, localVariables });
             parsedValue = `{{local.${fieldName}}}`;
           }

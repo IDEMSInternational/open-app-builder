@@ -16,6 +16,7 @@
             (click)="setValue(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
+            (change)="triggerActions('changed')"
           />
           {{ item.text }}
         </label>
@@ -42,6 +43,7 @@
             (click)="setValue(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
+            (change)="triggerActions('changed')"
           />
           {{ item.text }}
         </label>
@@ -65,6 +67,7 @@
             (click)="setValue(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
+            (change)="triggerActions('changed')"
           />
           <span> {{ item.text }} </span>
         </label>

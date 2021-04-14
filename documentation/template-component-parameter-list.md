@@ -49,7 +49,8 @@ If category_list is not available we generate list of values based on min_value,
 - min_value_label - select value on slider
 - max_value_label - select value on slider
 - labels_count - labels count for slider. Default - 8
-- no_value - boolean. Default - false. Control is no_value selected
+- no_value - boolean. Default - false. Control is no_value selected.
+- no_value_text - string. Default 'no_value'. If control is no_value selected.
 
 ## Timer - TmplTimerComponent
 - type - timer.
@@ -113,8 +114,9 @@ If category_list is not available we generate list of values based on min_value,
 - type - display_group.
 - offset - number. Offset to move abroad component. Default - 0.
 - style - string or null. Class name. Default - null.
-  Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner', 'navigation'. 
+  Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner', 'navigation', 'banner', 'row, 'column'. 
   ####To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
+  #### If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
 ## SubtitleComponent - TmplSubtitleComponent
 - type - subtitle.
 - text_align - string. Default - left.
