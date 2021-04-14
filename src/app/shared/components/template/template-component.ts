@@ -42,10 +42,10 @@ export class TmplCompHostDirective {
   selector: "plh-template-component",
   template: `
     <div
-      class="plh-tmpl-comp"
+      class="plh-tmpl-comp t-type-{{ rowType }} t-name-{{ rowName }}"
       [attr.data-hidden]="row.hidden"
       [attr.data-debug]="parent.debugMode"
-      [id]="id"
+      [id]="uid"
     >
       <!-- Template Debugger -->
       <plh-template-debugger
@@ -68,8 +68,11 @@ export class TmplCompHostDirective {
   ],
 })
 export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
-  /** id combination of parent template name and our row name */
-  id: string;
+  /** id combination of parent template uid, our row name, and row index */
+  @Input() uid: string;
+
+  rowType: string;
+  rowName: string;
 
   /**
    * Specific data used in component rendering
@@ -104,9 +107,10 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
-    this.id = `tc_${this.parent.name}_${row.name}`;
     // console.log(`[${this.row.name}]`, "render row");
     // Depending on row type, either prepare instantiation of a nested template or a display component
+    this.rowType = row.type;
+    this.rowName = row.name;
     switch (row.type) {
       case "template":
         return this.row.hidden === "true"
@@ -148,6 +152,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     componentRef.instance.parent = this.parent;
     componentRef.instance.name = this.row.name;
     componentRef.instance.templatename = this.row.value;
+    componentRef.instance.uid = this.uid;
   }
 
   /** Create and render a common display component */
@@ -160,5 +165,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     // assign input variables
     componentRef.instance.parent = this.parent;
     componentRef.instance.row = this.row;
+    componentRef.instance.uid = this.uid;
   }
 }

@@ -23,6 +23,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   }
   /** reference to parent template container - does not have setter as should remain static */
   @Input() parent: TemplateContainerComponent;
+
+  @Input() uid: string;
   constructor() {}
 
   /**

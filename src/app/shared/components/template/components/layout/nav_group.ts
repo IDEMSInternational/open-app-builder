@@ -21,6 +21,7 @@ import { TemplateLayoutComponent } from "./layout";
           [name]="templateName"
           [templatename]="templateName"
           [parent]="parent"
+          [uid]="uid + '_' + i"
         >
         </plh-template-container>
       </div>

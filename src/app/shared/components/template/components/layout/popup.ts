@@ -15,6 +15,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
         [templatename]="templatename"
         [parent]="parent"
         [row]="row"
+        [uid]="parent.uid + '_popup'"
       ></plh-template-container>
     </div>
   </div>`,

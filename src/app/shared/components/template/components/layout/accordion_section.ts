@@ -39,9 +39,10 @@ import { TemplateBaseComponent } from "../base";
       <h2 (click)="toggleOpen()">{{ title }}</h2>
       <plh-template-component
         style="z-index: 2"
-        *ngFor="let childRow of _row.rows"
+        *ngFor="let childRow of _row.rows; index as i"
         [row]="childRow"
         [parent]="parent"
+        [uid]="uid + '_' + i"
       >
       </plh-template-component>
     </div>

@@ -14,10 +14,11 @@
 
   <!-- Template Component-->
   <plh-template-component
-    *ngFor="let row of template.rows"
+    *ngFor="let row of template.rows; index as i"
     class="row"
     [row]="row"
     [parent]="this"
+    [uid]="uid + '_' + row.type + '_' + i"
     ngForTrackBy="trackByRow"
   ></plh-template-component>
 </div>

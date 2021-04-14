@@ -39,6 +39,7 @@ const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["condition"
   styleUrls: ["./template-container.component.scss"],
 })
 export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateContainerProps {
+  @Input() uid: string;
   @Input() name: string;
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
@@ -127,7 +128,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     console.log("process action", action);
     const { action_id, args } = action;
     // NOTE - args will vary depending on action
-    const [key, value] = args;
+    let [key, value] = args;
+
     switch (action_id) {
       case "set_local":
         console.log("[SET LOCAL]", key, value);
@@ -204,6 +206,16 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.template = JSON.parse(JSON.stringify(foundTemplate));
     // if template created at top level also ensure it has a name
     this.name = this.name || this.templatename;
+
+    if (!this.uid) {
+      if (this.parent) {
+        const parentUID = this.parent.uid || this.parent.name;
+        this.uid = parentUID + "_" + this.name;
+      } else {
+        this.uid = this.name;
+      }
+    }
+
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
     const parentVariables = this.parent?.localVariables?.[this.name];

@@ -25,4 +25,5 @@ export interface ITemplateContainerProps {
 export interface ITemplateRowProps {
   row: FlowTypes.TemplateRow;
   parent: TemplateContainerComponent;
+  uid: string;
 }

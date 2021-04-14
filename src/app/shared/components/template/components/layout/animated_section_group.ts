@@ -5,9 +5,10 @@ import { TemplateBaseComponent } from "../base";
   selector: "plh-tmpl-animated-section-group",
   template: `<div class="animated-section-group">
     <plh-template-component
-      *ngFor="let childRow of _row.rows"
+      *ngFor="let childRow of _row.rows; index as i"
       [row]="childRow"
       [parent]="parent"
+      [uid]="uid + '_' + i"
     ></plh-template-component>
   </div>`,
 })

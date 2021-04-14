@@ -12,9 +12,10 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
   >
     <div [style.marginBottom.px]="-offset" class="offset">
       <plh-template-component
-        *ngFor="let childRow of _row.rows"
+        *ngFor="let childRow of _row.rows; index as i"
         [row]="childRow"
         [parent]="parent"
+        [uid]="uid + '_' + i"
       ></plh-template-component>
     </div>
   </div>`,
