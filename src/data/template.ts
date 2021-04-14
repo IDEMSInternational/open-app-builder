@@ -5933,12 +5933,12 @@
           {
             "type": "set_variable",
             "name": "child_text_2",
-            "value": "Expected: \"Success: text_2\"\nResult: @local.local_text_2"
+            "value": "<span>Expected: \"Success: text_2\"<br/>Result: @local</span><span><b>.local_text_2</b></span>"
           },
           {
             "type": "set_variable",
             "name": "child_text_3",
-            "value": "Expected: global.debug_variable_1 lookup\nResult: @local.global_text"
+            "value": "<span>Expected: global.debug_variable_1 lookup<br/>Result: @local.</span><span><b>global_text</b></span>"
           },
           {
             "type": "set_variable",
@@ -6960,6 +6960,143 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_actions.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_changed_action",
+    "status": "released",
+    "rows": [
+      {
+        "name": "answer_list",
+        "value": [
+          "First",
+          "Second",
+          "Third"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_defaults",
+        "value": "nothing",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_combo_box",
+              "@local.combo_box_defaults"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_combo_box: @local.combo_box_defaults",
+            "_cleaned": "changed | set_field: demo_changed_field_combo_box: @local.combo_box_defaults"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        }
+      },
+      {
+        "type": "text",
+        "name": "comb_box_text",
+        "value": "the selected choice in combo box is @fields.demo_changed_field_combo_box"
+      },
+      {
+        "name": "answer_list_1",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second",
+          "name:name_var_3 | text:Third",
+          "name:name_var_4 | text:Fourth"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_defaults",
+        "value": "Third",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_radio_group",
+              "@local.radio_group_defaults"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_radio_group: @local.radio_group_defaults",
+            "_cleaned": "changed | set_field: demo_changed_field_radio_group: @local.radio_group_defaults"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_1"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the selected choice in radio group is @fields.demo_changed_field_radio_group"
+      },
+      {
+        "name": "blank_display_text",
+        "value": "Click here to answer",
+        "type": "set_variable"
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_1",
+        "value": "Some text value",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_text_box",
+              "@local.text_box_1"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_text_box: @local.text_box_1",
+            "_cleaned": "changed | set_field: demo_changed_field_text_box: @local.text_box_1"
+          }
+        ],
+        "parameter_list": {
+          "blank_display_text": "@local.blank_display_text"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the value in the text box is @fields.demo_changed_field_text_box"
+      },
+      {
+        "type": "slider",
+        "name": "slider",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_slider",
+              "@local.slider"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_slider: @local.slider",
+            "_cleaned": "changed | set_field: demo_changed_field_slider: @local.slider"
+          }
+        ],
+        "parameter_list": {
+          "min": "0",
+          "max": "7",
+          "title": "without help",
+          "min_value_label": "0",
+          "max_value_label": "7",
+          "labels_count": "8",
+          "no_value": "false"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the selected choice in slider is @fields.demo_changed_field_slider"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
   },
   {
     "flow_type": "template",
@@ -24710,33 +24847,5 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_stress.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "feature_formatting",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title1",
-        "value": "<span>This is a title where part of it is </span><span><i>italics</i></span>"
-      },
-      {
-        "type": "text",
-        "name": "text1",
-        "value": "<span>This is text where part is </span><span><b>bold </b></span><span>part is in </span><span><i>italics</i></span><span><b><i> </b></i></span><span>and part is </span><span><b><i>both bold and italics (emphasised) </b></i></span>"
-      },
-      {
-        "type": "dashed_box",
-        "name": "box1",
-        "value": "<span>This is a dashed box where some of the text is </span><span><b>bold</b></span><span> and </span><span><i>italics</i></span>"
-      },
-      {
-        "type": "button",
-        "name": "button1",
-        "value": "<span>Some of this button is </span><span><b>bold. </b></span><span><i>WOAH!</i></span>"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
   }
 ]
