@@ -1,6 +1,6 @@
 import { FlowTypes } from "../../../../types";
 import { DefaultParser } from "../default/default.parser";
-import { parsePLHListString } from "../utils";
+import { parsePLHCollectionString, parsePLHListString } from "../utils";
 
 export class TemplateParser extends DefaultParser {
   constructor() {
@@ -20,10 +20,17 @@ export class TemplateParser extends DefaultParser {
     if (row.type === "template" && !row.name) {
       row.name = row.value;
     }
-    // convert any variables (local/global) list strings to array
-    if (row.name?.includes("_list") && row.value) {
-      row.value = parsePLHListString(row.value);
+    // convert any variables (local/global) list or collection strings
+    // ignore rows which reference dynamic values (e.g. @local.some_var)
+    if (row.value && typeof row.value === "string" && !row.value.includes("@")) {
+      if (row.name?.includes("_list") && row.value && typeof row.value === "string") {
+        row.value = parsePLHListString(row.value);
+      }
+      if (row.name?.includes("_collection") && row.value && typeof row.value === "string") {
+        row.value = parsePLHCollectionString(row.value);
+      }
     }
+
     // parse action list
     if (row.action_list) {
       row.action_list = row.action_list
