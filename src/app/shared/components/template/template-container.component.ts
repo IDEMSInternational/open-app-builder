@@ -5,6 +5,7 @@ import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateNavService } from "./services/template-nav.service";
+import { TemplateVariablesService } from "./services/template-variables.service";
 import { TemplateService } from "./services/template.service";
 
 interface ILocalVariables {
@@ -30,9 +31,6 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
   "nav_section",
 ];
 
-/** Specific fields that will be evaluated as javascript */
-const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["condition", "hidden"];
-
 @Component({
   selector: "plh-template-container",
   templateUrl: "./template-container.component.html",
@@ -56,6 +54,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   constructor(
     private templateService: TemplateService,
+    private templateVariables: TemplateVariablesService,
     public router: Router,
     public route: ActivatedRoute,
     private templateNavService: TemplateNavService
@@ -127,7 +126,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     console.log("process action", action);
     let { action_id, args } = action;
     // parse dynamic expressions from the args
-    args = args.map((a) => this.evaluatePLHExpression(a));
+    args = args.map((a) =>
+      this.templateVariables.evaluatePLHExpression(a, {
+        localVariables: this.localVariables,
+        template: this.template,
+      })
+    );
     let [key, value] = args;
 
     switch (action_id) {
@@ -210,11 +214,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // that have already been set/overridden
     const parentVariables = this.parent?.localVariables?.[this.name];
     console.log("[Template Init]", { name: this.name, parentVariables });
-    this.localVariables = this.processVariables(this.template.rows, parentVariables);
+    const { rows } = this.template;
+    this.localVariables = this.processVariables(rows, parentVariables);
     if (!this.parent) {
       console.log({ localVariables: this.localVariables });
     }
-    this.template.rows = this.processRows(this.template.rows, this.localVariables);
+    this.template.rows = this.processRows(rows, this.localVariables);
     // keep track of path to this template from any parents
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     if (this.parent) {
@@ -237,13 +242,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     variables: ILocalVariables = {},
     localvariables: ILocalVariables = {}
   ): ILocalVariables {
-    console.log("process variables", { templateRows, variables, localvariables });
+    // console.log("process variables", { templateRows, variables, localvariables });
     templateRows.forEach((r) => {
       let { name, value, rows, type } = r;
-      if (r.condition) {
-        if (!this.filterRowOnCondition(r, localvariables)) {
-          return;
-        }
+      // Do not continue to process variable if fails condition statement
+      if (r.hasOwnProperty("condition") && this.shouldFilterRowOnCondition(r, localvariables)) {
+        return;
       }
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
@@ -255,10 +259,16 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           if (r.hasOwnProperty(field)) {
             // don't override values that have otherwise been set from parent or nested properties
             // local variables within r[field] are parsed
-            variables[name][field] =
-              variables[name][field] || this.parsePLHExpression(r[field], localvariables, field);
-            // local variables on a given excel sheet are managed together
-            localvariables[name][field] = localvariables[name][field] || variables[name][field];
+            if (!variables[name].hasOwnProperty(field)) {
+              variables[name][field] = this.templateVariables.evaluatePLHExpression(r[field], {
+                localVariables: localvariables,
+                template: this.template,
+              });
+            }
+            if (!localvariables[name].hasOwnProperty(field)) {
+              // local variables on a given excel sheet are managed together
+              localvariables[name][field] = variables[name][field];
+            }
           }
         });
       }
@@ -305,61 +315,20 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * remove the variable setter row types and override row values where specified
    */
   private processRows(templateRows: FlowTypes.TemplateRow[], variables = {}) {
-    console.log(`[${this.template.flow_name}]`, "process rows", variables);
+    console.log(`[${this.template.flow_name}]`, "process rows", { variables, templateRows });
     // remove row types that have already been processed during processVariables step
     const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
     const filteredRows = templateRows
-      .filter((r) => this.filterRowOnCondition(r, variables))
+      .filter((r) => !this.shouldFilterRowOnCondition(r, variables))
       .filter((r) => !filterTypes.includes(r.type));
     const rowsWithReplacedValues = filteredRows.map((r) => {
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
       VARIABLE_FIELDS.forEach((field) => {
-        r[field] = variables[r.name]?.[field] || r[field];
-        // identify if the current field-value has a dynamic expression, or a previous one
-        // TODO - if a dynamic field is overwritten by static value (not just revaluated) that value
-        // would also be overwritten on render (so needs fix, possibly moving dynamic fields to parser to merge)
-
-        if (field === "parameter_list" && r.parameter_list) {
-          Object.keys(r.parameter_list).forEach((param) => {
-            let dynamicEvaluators = _extractDynamicEvaluators(r[field][param]);
-            if (dynamicEvaluators) {
-              r.parameter_list[param] = this.parseDynamicValue(dynamicEvaluators, variables);
-            }
-          });
-        }
-        // TODO - Memoize evaluators for arrays
-        else if (Array.isArray(r[field]) && r[field].length > 0) {
-          let array = r[field] as any[];
-          let dynamicEvaluatorsPerItem = array.map((item) => _extractDynamicEvaluators(item));
-          if (dynamicEvaluatorsPerItem.length > 0) {
-            let oldList = r[field];
-            r[field] = dynamicEvaluatorsPerItem.map((evaluator, idx) => {
-              if (evaluator) {
-                let evaluated = this.parseDynamicValue(evaluator, variables);
-                if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
-                  evaluated = this.evaluateJSExpression(evaluated);
-                }
-                return evaluated;
-              } else {
-                return oldList[idx];
-              }
-            });
-          }
-        } else {
-          let dynamicEvaluators = _extractDynamicEvaluators(r[field]) || r._dynamicFields?.[field];
-          if (dynamicEvaluators) {
-            r._dynamicFields = r._dynamicFields || {};
-            // evaluate dynamic field, keeping reference for future
-            r._dynamicFields[field] = dynamicEvaluators as any;
-            r[field] = this.parseDynamicValue(r._dynamicFields[field], variables);
-            if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
-              r[field] = this.evaluateJSExpression(r[field]);
-            }
-          }
-        }
-
-        // TODO - evaulate function expressions (e.g. !@fields.something)
+        r[field] = this.templateVariables.evaluatePLHExpression(r[field], {
+          localVariables: variables,
+          template: this.template,
+        });
       });
       // handle nested templates
       if (r.rows) {
@@ -386,162 +355,16 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     return rowsWithReplacedValues;
   }
 
-  private filterRowOnCondition(row: FlowTypes.TemplateRow, localVariables: ILocalVariables) {
-    let value = "true";
-    if (row.hasOwnProperty("condition")) {
-      value = row.condition;
-      let dynamicEvaluators = _extractDynamicEvaluators(row.condition);
-      if (dynamicEvaluators) {
-        value = this.parseDynamicValue(dynamicEvaluators, localVariables);
-      }
-    }
-    value = this.evaluateJSExpression(value);
-    return value.trim() === "true";
+  private shouldFilterRowOnCondition(row: FlowTypes.TemplateRow, localVariables: ILocalVariables) {
+    return (
+      row.hasOwnProperty("condition") &&
+      this.templateVariables.evaluatePLHExpression(row.condition, {
+        localVariables,
+        template: this.template,
+      })
+    );
   }
 
-  /***************************************************************************************
-   *  Dynamic Values
-   **************************************************************************************/
-
-  private evaluatePLHExpression(expression: string | number | boolean | any) {
-    // only strings or objects could contain dynamic values that need evaluation
-    let value = expression;
-    switch (typeof expression) {
-      case "string":
-        // check for dynamic strings and convert accordingly
-        const evaluators = _extractDynamicEvaluators(expression);
-        if (evaluators) {
-        }
-        break;
-      case "object":
-        // array - evaluate all elements
-        if (Array.isArray(expression)) {
-          value = expression.map((el) => this.evaluatePLHExpression(el));
-        }
-        // non-null object - evaluate both keys and values
-        else if (expression !== null) {
-          value = {};
-          Object.keys(expression).forEach(
-            (k) =>
-              (value[this.evaluatePLHExpression(k)] = this.evaluatePLHExpression(expression[k]))
-          );
-        }
-    }
-    console.log("dynamic", { expression, value });
-    return value;
-  }
-
-  private parseDynamicValue(
-    evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
-    localVariables: ILocalVariables
-  ) {
-    let parseSuccess = true;
-    let parsedExpression = evaluators[0].fullExpression;
-    // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
-    for (let evaluator of evaluators) {
-      let parsedValue: any;
-      const { matchedExpression, type, fieldName } = evaluator;
-      switch (type) {
-        case "local":
-          // check local variables set through set_variables / nested_properties
-          if (localVariables.hasOwnProperty(fieldName)) {
-            parsedValue = localVariables[fieldName]?.value;
-          }
-          // also check sibling components for name match and return value where set
-          else {
-            parsedValue = this.template.rows.find((r) => r.name === fieldName)?.value;
-          }
-          // TODO - handle case where match found (but still returns undefined)
-          if (parsedValue === undefined) {
-            console.error("could not parse local variable", { evaluator, localVariables });
-            parsedValue = `{{local.${fieldName}}}`;
-          }
-          break;
-        case "field":
-        case "fields":
-          parsedValue = this.templateService.getField(fieldName);
-          break;
-        case "global":
-          parsedValue = this.templateService.getGlobal(fieldName);
-          break;
-        case "data":
-          return this.templateService.getDataListByPath(fieldName);
-        default:
-          parseSuccess = false;
-          console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
-          parsedValue = evaluator.matchedExpression;
-      }
-      if (typeof parsedValue !== "string") {
-        // TODO - possibly want better handling to determine when to look recursively
-        // within string, object or arrays (depending on what has been evaluated)
-        console.warn(
-          "dynamic value expected string but found",
-          parsedExpression,
-          " which is of type ",
-          typeof parsedValue
-        );
-      }
-      parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
-    }
-    // handle case where parsed expression contains reference to another dynamic expression
-    const recursiveDynamicExpression = _extractDynamicEvaluators(parsedExpression);
-    if (recursiveDynamicExpression && parseSuccess) {
-      return this.parseDynamicValue(recursiveDynamicExpression, localVariables);
-    }
-    return parsedExpression;
-  }
-
-  /**
-   * Evaluate a javascript expression in a safe context
-   * @param expression string expression, e.g. "!true", "5 - 4"
-   * @returns string interpretation of evaluation, e.g. "true", "1"
-   * */
-  private evaluateJSExpression(expression: string): string {
-    // Support Javascript evaluation for hidden field only
-    let evaluated = expression;
-    const funcString = `"use strict"; return (${expression});`;
-    try {
-      const func = new Function(funcString);
-      evaluated = func.apply(this);
-    } catch (error) {
-      console.warn("expression evaluation exception ", { expression, error });
-      console.warn(funcString);
-    }
-    // Return as a string to maintain compatibility with other types
-    return `${evaluated}`;
-  }
-
-  private parsePLHExpression(variable: any, localvariables: ILocalVariables = {}, field: any) {
-    let parsedExpression = variable;
-    let evaluators: FlowTypes.TemplateRowDynamicEvaluator[] = _extractDynamicEvaluators(variable);
-    if (evaluators) {
-      parsedExpression = evaluators[0].fullExpression;
-      // In case an expression contains multiple parts to evaluate we will handle 1 at a time and overwrite the original
-      for (let evaluator of evaluators) {
-        let parsedValue: any;
-        const { matchedExpression, type, fieldName } = evaluator;
-        switch (type) {
-          case "local":
-            parsedValue = localvariables[fieldName]?.value || evaluator.matchedExpression;
-            break;
-          case "field":
-          case "fields":
-            parsedValue = this.templateService.getField(fieldName);
-            break;
-          case "global":
-            parsedValue = this.templateService.getGlobal(fieldName);
-            break;
-          default:
-            parsedValue = evaluator.matchedExpression;
-        }
-        parsedExpression = parsedExpression.replace(matchedExpression, parsedValue);
-      }
-    }
-    if (FIELDS_WITH_JS_EXPRESSIONS.includes(field)) {
-      parsedExpression = this.evaluateJSExpression(parsedExpression);
-    }
-    return parsedExpression;
-  }
   /** When using ngFor loop track by  */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
     return row.name || row.value || index;
@@ -559,40 +382,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   }
 }
 
-/** Some strings contain a variable expression such as "/assets/@fields.name/happy.jpg" or "welcome @local.name!" */
-function _extractDynamicEvaluators(
-  fullExpression: string
-): FlowTypes.TemplateRowDynamicEvaluator[] | null {
-  // match fields such as @local.someField or @fields.someField.deeperNested
-  // first prefix should consist only of letters (e.g. @local, @fields)
-  // second part can be any letter, number, or characters _ .
-  const regex = /@([a-z]+)\.([0-9a-z_.]+)/gi;
-  let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
-  if (typeof fullExpression === "string") {
-    let match: RegExpExecArray;
-    // run recursive match for all dynamic expressions
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#finding_successive_matches
-    /* eslint-disable no-cond-assign */
-    while ((match = regex.exec(fullExpression)) !== null) {
-      const [matchedExpression, type, fieldName] = match as any[];
-      allMatches.push({ fullExpression, matchedExpression, type, fieldName });
-    }
-    // expect the number of match statements to match the total number of @ characters (replace all non-@)
-    // provide a warning if this is not the case
-    const expectedMatchLength = fullExpression.replace(/[^@]/g, "").length;
-    if (allMatches.length !== expectedMatchLength) {
-      console.warn(
-        `Expected ${expectedMatchLength} dynamic matches but recorded ${allMatches.length}`,
-        fullExpression,
-        allMatches
-      );
-    }
-  }
-  if (allMatches.length > 0) {
-    return allMatches;
-  }
-  return null;
-}
 /** helper function used for dev to wait a fixed amount of time */
 function _wait(ms: number) {
   return new Promise<void>((resolve) => {
