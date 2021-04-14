@@ -16,11 +16,10 @@
           {
             "type": "image",
             "name": "icon",
-            "value": "plh_images/icons/star.svg",
+            "value": "plh_images/icons/light_bulb_circle.svg",
             "style_list": [
               "flex:1"
-            ],
-            "comments": "placeholder image"
+            ]
           },
           {
             "type": "title",
@@ -117,7 +116,11 @@
       {
         "type": "dashed_box",
         "name": "tip_text",
-        "value": "You can always find these tools in the @global.parent_centre "
+        "value": "You can always find these tools in the @global.parent_centre ",
+        "parameter_list": {
+          "icon_src": "plh_images/icons/hand_heart_circle.svg",
+          "icon_position": "top-left"
+        }
       },
       {
         "type": "template",
@@ -234,14 +237,14 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "feature_workshops_page"
+              "weekly_workshops"
             ],
-            "_raw": "click | go_to:feature_workshops_page",
-            "_cleaned": "click | go_to:feature_workshops_page"
+            "_raw": "click | go_to:weekly_workshops",
+            "_cleaned": "click | go_to:weekly_workshops"
           }
         ],
         "parameter_list": {
-          "style": "home_screen standart"
+          "style": "home_screen light"
         },
         "style_list": [
           "margin: 40px 10px 0px 10px"
@@ -255,9 +258,9 @@
           {
             "type": "title",
             "name": "title_ex_s",
-            "value": "Weekly Workshops",
+            "value": "@global.weekly_workshops",
             "parameter_list": {
-              "style": "white"
+              "style": "alternative"
             },
             "style_list": [
               "align-self: flex-start"
@@ -294,9 +297,9 @@
           {
             "type": "title",
             "name": "title_ex_s",
-            "value": "ParentPoints",
+            "value": "@global.parent_points",
             "parameter_list": {
-              "style": "white"
+              "style": "alternative"
             },
             "style_list": [
               "align-self: flex-start"
@@ -333,9 +336,9 @@
           {
             "type": "title",
             "name": "title_ex_s",
-            "value": "ParentCentre",
+            "value": "@global.parent_centre",
             "parameter_list": {
-              "style": "white"
+              "style": "alternative"
             },
             "style_list": [
               "align-self: flex-start"
@@ -345,6 +348,516 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "weekly_workshops",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "title",
+            "value": "Weekly Workshops"
+          },
+          {
+            "type": "button",
+            "name": "options_button",
+            "value": "Options",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "pop_up",
+                "args": [],
+                "_raw": "pop_up | workshop_options_popup",
+                "_cleaned": "click | pop_up | workshop_options_popup"
+              }
+            ],
+            "parameter_list": {
+              "style": "options"
+            }
+          }
+        ]
+      },
+      {
+        "type": "tile_component",
+        "name": "quick_start",
+        "value": "@local.group_name\nStart @local.next_workshop_name",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "@field.next_workshop"
+            ],
+            "_raw": "click | go_to:@field.next_workshop",
+            "_cleaned": "click | go_to:@field.next_workshop"
+          }
+        ],
+        "parameter_list": {
+          "style": "quick_start",
+          "first_line_text": "My Group",
+          "second_line_text": "Start week one",
+          "icon_src": "plh_images/icons/star.svg"
+        },
+        "comments": "Not sure how to do this"
+      },
+      {
+        "type": "workshops_accordion",
+        "parameter_list": {
+          "current_workshop_num": "3"
+        },
+        "comments": "Could make this more generic name such as\nbegin_accordion_stepper\nBut this would require extra info on syntax for workshop completion / partial completion",
+        "rows": [
+          {
+            "type": "accordion_section",
+            "value": 70,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_self_care"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_1",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_self_care_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_1on1"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_2",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_1on1_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_praise"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_3",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_praise_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_instruct"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_4",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_instruct_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_stress"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_5",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_stress_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_money"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_6",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_money_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_rules"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_7",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_rules_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_consequence"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_8",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_consequence_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_solve"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_9",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_solve_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_safe"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_10",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_safe_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_crisis"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_11",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_crisis_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "value": 100,
+            "parameter_list": {
+              "state": "closed",
+              "title": "@global.w_celebrate"
+            },
+            "rows": [
+              {
+                "type": "template",
+                "name": "workshop_12",
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_celebrate_stepper",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "parameter_list": {
+              "state": "closed",
+              "title": "Description of week four"
+            },
+            "rows": [
+              {
+                "type": "button",
+                "name": "btn_example_1",
+                "value": "First",
+                "parameter_list": {
+                  "style": "active"
+                }
+              }
+            ]
+          },
+          {
+            "type": "accordion_section",
+            "parameter_list": {
+              "state": "closed",
+              "status": "uncompleted",
+              "title": "Description of week five"
+            },
+            "rows": [
+              {
+                "type": "button",
+                "name": "btn_example_1",
+                "value": "First",
+                "parameter_list": {
+                  "style": "active"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "workshop_accordion_item",
+    "status": "released",
+    "rows": [
+      {
+        "name": "label_group",
+        "value": "@global.together",
+        "type": "set_variable"
+      },
+      {
+        "name": "image_group",
+        "value": "plh_images/workshops/options/together.svg",
+        "type": "set_variable"
+      },
+      {
+        "name": "label_individual",
+        "value": "@global.individual",
+        "type": "set_variable"
+      },
+      {
+        "name": "image_individual",
+        "value": "plh_images/workshops/options/individual.svg",
+        "type": "set_variable"
+      },
+      {
+        "name": "target_workshop_stepper",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "How would you like to access this workshop?",
+        "parameter_list": {
+          "style": "alternative"
+        }
+      },
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "tile_component",
+            "name": "individual_workshop",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "group_name",
+                  "Friends"
+                ],
+                "_raw": "click | set_field:group_name:Friends",
+                "_cleaned": "click | set_field:group_name:Friends"
+              },
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "user_name",
+                  "Lucie"
+                ],
+                "_raw": "click | set_field:user_name:Lucie",
+                "_cleaned": "click | set_field:user_name:Lucie"
+              },
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "do_workshops_together",
+                  "false"
+                ],
+                "_raw": "click | set_field:do_workshops_together:false",
+                "_cleaned": "click | set_field:do_workshops_together:false"
+              },
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "@local.target_workshop_stepper"
+                ],
+                "_raw": "click | go_to:@local.target_workshop_stepper",
+                "_cleaned": "click | go_to:@local.target_workshop_stepper"
+              }
+            ],
+            "parameter_list": {
+              "first_line_text": "@local.label_individual",
+              "style": "workshop_page",
+              "icon_src": "@local.image_individual"
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "group_workshop",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "group_name",
+                  "Friends"
+                ],
+                "_raw": "click | set_field:group_name:Friends",
+                "_cleaned": "click | set_field:group_name:Friends"
+              },
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "user_name",
+                  "Lucie"
+                ],
+                "_raw": "click | set_field:user_name:Lucie",
+                "_cleaned": "click | set_field:user_name:Lucie"
+              },
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "do_workshops_together",
+                  "true"
+                ],
+                "_raw": "click | set_field:do_workshops_together:true",
+                "_cleaned": "click | set_field:do_workshops_together:true"
+              },
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "@local.target_workshop_stepper"
+                ],
+                "_raw": "click | go_to:@local.target_workshop_stepper",
+                "_cleaned": "click | go_to:@local.target_workshop_stepper"
+              }
+            ],
+            "parameter_list": {
+              "first_line_text": "@local.label_group",
+              "style": "workshop_page",
+              "icon_src": "@local.image_group"
+            }
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_workshops_navigation.xlsx"
   },
   {
     "flow_type": "template",
@@ -633,16 +1146,6 @@
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
               "group_name",
               "Friends"
             ],
@@ -663,10 +1166,10 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "w_consequence_stepper"
+              "w_consequence_buttons_temp"
             ],
-            "_raw": "click | go_to:w_consequence_stepper",
-            "_cleaned": "click | go_to:w_consequence_stepper"
+            "_raw": "click | go_to:w_consequence_buttons_temp",
+            "_cleaned": "click | go_to:w_consequence_buttons_temp"
           }
         ],
         "parameter_list": {
@@ -1336,6 +1839,72 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "w_consequence_buttons_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "individual_button",
+        "value": "@global.individual",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_workshops_together",
+              "false"
+            ],
+            "_raw": "click | set_field:do_workshops_together:false",
+            "_cleaned": "click | set_field:do_workshops_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_consequence_stepper"
+            ],
+            "_raw": "click | go_to:w_consequence_stepper",
+            "_cleaned": "click | go_to:w_consequence_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "passive full-width"
+        }
+      },
+      {
+        "type": "button",
+        "name": "together_button",
+        "value": "@global.together",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_workshops_together",
+              "true"
+            ],
+            "_raw": "click | set_field:do_workshops_together:true",
+            "_cleaned": "click | set_field:do_workshops_together:true"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_consequence_stepper"
+            ],
+            "_raw": "click | go_to:w_consequence_stepper",
+            "_cleaned": "click | go_to:w_consequence_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "passive full-width"
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "relax_text",
     "status": "released",
     "rows": [
@@ -1806,8 +2375,13 @@
         "type": "set_variable"
       },
       {
+        "name": "progress_field_name",
+        "type": "set_variable"
+      },
+      {
         "type": "nav_group",
-        "name": "nav_template_list"
+        "name": "nav_template_list",
+        "comments": "in parameter list: progress_variable:@local.progress_field_name"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
@@ -2058,15 +2632,25 @@
       {
         "type": "animated_section",
         "name": "outro",
+        "value": "fade_in_out",
         "hidden": "@local.hide_outro",
         "rows": [
           {
-            "type": "image",
-            "name": "outro_image_src",
-            "value": "@local.activity_image",
+            "type": "display_group",
             "parameter_list": {
-              "background_box": "true"
-            }
+              "style": "banner",
+              "offset": "20"
+            },
+            "rows": [
+              {
+                "type": "image",
+                "name": "outro_image_src",
+                "value": "@local.activity_image",
+                "parameter_list": {
+                  "background_box": "true"
+                }
+              }
+            ]
           },
           {
             "type": "title",
@@ -2498,7 +3082,7 @@
       {
         "type": "image",
         "name": "image_src",
-        "hidden": "false"
+        "hidden": "true"
       },
       {
         "type": "text",
@@ -2887,7 +3471,7 @@
             "type": "title",
             "value": "Weekly Workshops",
             "parameter_list": {
-              "help": "seme help"
+              "help": "some help"
             }
           },
           {
@@ -2915,10 +3499,10 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "@local.next_workshop"
+              "@field.next_workshop"
             ],
-            "_raw": "click | go_to : @local.next_workshop",
-            "_cleaned": "click | go_to : @local.next_workshop"
+            "_raw": "click | go_to:@field.next_workshop",
+            "_cleaned": "click | go_to:@field.next_workshop"
           }
         ],
         "hidden": " ",
@@ -2948,8 +3532,14 @@
               {
                 "type": "template",
                 "name": "workshop_1",
-                "value": "nav_w_self_care",
-                "rows": []
+                "value": "workshop_accordion_item",
+                "rows": [
+                  {
+                    "name": "target_workshop_stepper",
+                    "value": "w_self_care_stepper",
+                    "type": "set_variable"
+                  }
+                ]
               }
             ]
           },
@@ -2987,67 +3577,6 @@
                 }
               }
             ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_workshops_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "nav_w_self_care",
-    "status": "released",
-    "rows": [
-      {
-        "name": "label_group",
-        "value": "As a Group",
-        "type": "set_variable"
-      },
-      {
-        "name": "image_group",
-        "value": "plh_images/home_page/home_page_workshops.svg",
-        "comments": "need to update image",
-        "type": "set_variable"
-      },
-      {
-        "name": "label_individual",
-        "value": "Alone",
-        "type": "set_variable"
-      },
-      {
-        "name": "image_individual",
-        "value": "plh_images/home_page/home_page_workshops.svg",
-        "comments": "need to update image",
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "How would you like to access this workshop?",
-        "parameter_list": {
-          "style": "alternative"
-        }
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "tile_component",
-            "name": "individual_workshop",
-            "parameter_list": {
-              "first_line_text": "@local.label_individual",
-              "style": "workshop_page",
-              "src": "@local.image_individual"
-            }
-          },
-          {
-            "type": "tile_component",
-            "name": "group_workshop",
-            "parameter_list": {
-              "first_line_text": "@local.label_group",
-              "style": "workshop_page",
-              "src": "@local.image_group"
-            }
           }
         ]
       }
@@ -3328,7 +3857,7 @@
           },
           {
             "name": "activity_image",
-            "value": "plh_images/workshop_modes/guide_2/notes.svg",
+            "value": "plh_images/workshop_modes/guide_2/write.svg",
             "comments": "placeholder",
             "type": "set_variable"
           },
@@ -4088,7 +4617,7 @@
         "rows": [
           {
             "name": "activity_image",
-            "value": "plh_images/workshop_modes/guide2/writing.svg",
+            "value": "plh_images/workshop_modes/guide_2/notes.svg",
             "type": "set_variable"
           },
           {
@@ -4485,7 +5014,7 @@
           },
           {
             "name": "activity_image",
-            "value": "plh_images/workshop_modes/guide2/writing.svg",
+            "value": "plh_images/workshop_modes/guide_2/notes.svg",
             "condition": "!@field.do_workshops_together",
             "type": "set_variable"
           },
@@ -4503,7 +5032,7 @@
           },
           {
             "name": "activity_banner",
-            "condition": "false",
+            "hidden": "false",
             "type": "set_variable"
           }
         ]
@@ -4827,6 +5356,11 @@
             "name": "intro_text",
             "value": "Let’s do a 30 second relaxation activity.",
             "condition": "!@field.do_workshops_together",
+            "type": "set_variable"
+          },
+          {
+            "name": "activity_banner",
+            "hidden": "false",
             "type": "set_variable"
           },
           {
@@ -5258,9 +5792,9 @@
               {
                 "name": "answer_list",
                 "value": [
-                  "name:happy | image:plh_images/stickers/faces/happier.svg",
-                  "name:ok | image:plh_images/stickers/faces/neutral.svg",
-                  "name:sad | image:plh_images/stickers/faces/sadder.svg"
+                  "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+                  "name:ok | image:plh_images/stickers/faces/neutral.svg | image_checked:plh_images/stickers/faces/neutral.svg",
+                  "name:sad | image:plh_images/stickers/faces/sadder.svg |  image_checked:plh_images/stickers/faces/sadder.svg"
                 ],
                 "type": "set_variable"
               },
@@ -6114,20 +6648,17 @@
         "name": "local_text_2",
         "value": "Success: text_2",
         "comments": "variables declared can be used anywhere on the sheet, including in child templates",
-        "__EMPTY": "declare_variable",
         "type": "set_variable"
       },
       {
         "name": "global_text",
         "value": "@global.debug_variable_1",
         "comments": "declared variables will not be overwritten by parents",
-        "__EMPTY": "declare_variable",
         "type": "set_variable"
       },
       {
         "name": "local_text_4",
         "value": "Success: text_4",
-        "__EMPTY": "declare_variable",
         "type": "set_variable"
       },
       {
@@ -6143,12 +6674,12 @@
           {
             "type": "set_variable",
             "name": "child_text_2",
-            "value": "Expected: \"Success: text_2\"\nResult: @local.local_text_2"
+            "value": "<span>Expected: \"Success: text_2\"<br/>Result: @local</span><span><b>.local_text_2</b></span>"
           },
           {
             "type": "set_variable",
             "name": "child_text_3",
-            "value": "Expected: global.debug_variable_1 lookup\nResult: @local.global_text"
+            "value": "<span>Expected: global.debug_variable_1 lookup<br/>Result: @local.</span><span><b>global_text</b></span>"
           },
           {
             "type": "set_variable",
@@ -6257,6 +6788,47 @@
         "type": "text",
         "name": "text_4",
         "value": "@local.var_text_4 calling a variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_variable_type",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_variable",
+        "name": "var_number_1",
+        "value": 0
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Value of variable: @local.var_number_1"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "Text 1: @data.debug_vars.text_1.value_list.length",
+        "comments": "Length of object array"
+      },
+      {
+        "type": "button",
+        "name": "button_number_1_increment",
+        "value": "Increment local var_number_1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_local",
+            "args": [
+              "var_number_1",
+              "@local.var_number_1 + 1"
+            ],
+            "_raw": "click | set_local:var_number_1:@local.var_number_1 + 1",
+            "_cleaned": "click | set_local:var_number_1:@local.var_number_1 + 1"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
@@ -7381,19 +7953,19 @@
           {
             "name": "text_reply",
             "value": "Reply for selecting first",
-            "condition": "@local.radio_group_text==name_var_1",
+            "condition": "@field.radio_button_field==\"name_var_1\"",
             "type": "set_variable"
           },
           {
             "name": "text_reply",
             "value": "Reply for selecting second",
-            "condition": "@local.radio_group_text==name_var_2",
+            "condition": "@field.radio_button_field==\"name_var_2\"",
             "type": "set_variable"
           },
           {
             "name": "text_reply",
             "value": "Reply for selecting third",
-            "condition": "@local.radio_group_text==name_var_3",
+            "condition": "@field.radio_button_field==\"name_var_3\"",
             "type": "set_variable"
           }
         ]
@@ -7486,7 +8058,8 @@
       {
         "type": "text",
         "name": "text_reply",
-        "value": "Reply text"
+        "value": "Reply text",
+        "hidden": "\"@local.radio_group_text\" = \"nothing\""
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_condition.xlsx"
@@ -7682,6 +8255,94 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_new_nav_buttons.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_radio_group_fb_hid",
+    "status": "released",
+    "rows": [
+      {
+        "name": "answer_list_1",
+        "value": [
+          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_defaults",
+        "value": "na",
+        "parameter_list": {
+          "answer_list": "@local.answer_list_1"
+        },
+        "comments": "default radio_button_type: btn_text"
+      },
+      {
+        "type": "text",
+        "name": "text_reply_1",
+        "value": "This is the feedback for option 1",
+        "hidden": "\"@local.radio_group_defaults\" != \"name_var_1\""
+      },
+      {
+        "type": "text",
+        "name": "text_reply_2",
+        "value": "This is the feedback for option 2",
+        "hidden": "\"@local.radio_group_defaults\" != \"name_var_2\""
+      },
+      {
+        "type": "text",
+        "name": "text_reply_3",
+        "value": "This is the feedback for option 3",
+        "hidden": "\"@local.radio_group_defaults\" != \"name_var_3\""
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_options_feedback.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_radio_group_fb_con",
+    "status": "released",
+    "rows": [
+      {
+        "name": "answer_list_1",
+        "value": [
+          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_defaults",
+        "value": "na",
+        "parameter_list": {
+          "answer_list": "@local.answer_list_1"
+        },
+        "comments": "I'm putting na so that it has an initial value"
+      },
+      {
+        "type": "text",
+        "name": "text_reply",
+        "value": "This is the feedback for option 1",
+        "condition": "\"@local.radio_group_defaults\" == \"name_var_1\""
+      },
+      {
+        "type": "text",
+        "name": "text_reply",
+        "value": "This is the feedback for option 2",
+        "condition": "\"@local.radio_group_defaults\" == \"name_var_2\""
+      },
+      {
+        "type": "text",
+        "name": "text_reply",
+        "value": "This is the feedback for option 3",
+        "condition": "\"@local.radio_group_defaults\" == \"name_var_3\""
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_options_feedback.xlsx"
   },
   {
     "flow_type": "template",
@@ -8952,9 +9613,9 @@
       {
         "name": "answer_list_5",
         "value": [
-          "name:happy | image:plh_images/stickers/faces/happier.svg",
-          "name:ok | image:plh_images/stickers/faces/neutral.svg",
-          "name:sad | image:plh_images/stickers/faces/sadder.svg"
+          "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+          "name:ok | image:plh_images/stickers/faces/neutral.svg | image_checked :plh_images/stickers/faces/neutral.svg",
+          "name:sad | image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg"
         ],
         "type": "set_variable"
       },
@@ -9522,7 +10183,7 @@
         "rows": [
           {
             "type": "button",
-            "value": "Example title orange"
+            "value": "Example title orange button big"
           },
           {
             "type": "button",
@@ -9674,6 +10335,79 @@
           "text_align": "center",
           "style": "emphasised large alternative"
         }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_parent_point_box",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "name": "dg",
+        "parameter_list": {
+          "style": "parent_point"
+        },
+        "style_list": [
+          "flex-wrap: wrap"
+        ],
+        "rows": [
+          {
+            "name": "init_value_1",
+            "value": 0,
+            "type": "set_variable"
+          },
+          {
+            "type": "parent_point_box",
+            "name": "points_example",
+            "value": "@local.init_value_1",
+            "parameter_list": {
+              "icon_src": "@local.icon_src",
+              "text": "@local.text"
+            }
+          },
+          {
+            "name": "icon_src",
+            "value": "plh_images/habits/habit_money_image.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "Good money choice",
+            "type": "set_variable"
+          },
+          {
+            "type": "parent_point_box",
+            "name": "points_example1",
+            "value": 3,
+            "parameter_list": {
+              "icon_src": "@local.icon_src1",
+              "text": "@local.text1"
+            }
+          },
+          {
+            "name": "icon_src1",
+            "value": "plh_images/habits/habit_money_image.svg",
+            "type": "set_variable"
+          },
+          {
+            "name": "text1",
+            "value": "Good money choice 1",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "value 1 is @local.points_example"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "value 2 is @local.points_example_1"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -10221,6 +10955,123 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "feature_dg_styles_improve",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Display group with style column"
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_1 column"
+        },
+        "style_list": [
+          "margin: 15px 0"
+        ],
+        "rows": [
+          {
+            "type": "text",
+            "name": "text",
+            "value": "Text 1"
+          },
+          {
+            "type": "title",
+            "name": "title",
+            "value": "title 1"
+          },
+          {
+            "type": "button",
+            "value": "Ok"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "Display group with style row"
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_2 row"
+        },
+        "style_list": [
+          "margin: 15px 0"
+        ],
+        "rows": [
+          {
+            "type": "text",
+            "name": "text",
+            "value": "Text 1"
+          },
+          {
+            "type": "title",
+            "name": "title",
+            "value": "title 1"
+          },
+          {
+            "type": "button",
+            "value": "Ok"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "Display group with style banner and parameter offset: 50;"
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "tool_2 row",
+          "offset": "50"
+        },
+        "style_list": [
+          "margin: 15px 0"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "value": "plh_images/home_page/home_page_workshops.svg"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_formatting",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title1",
+        "value": "<span>This is a title where part of it is </span><span><i>italics</i></span>"
+      },
+      {
+        "type": "text",
+        "name": "text1",
+        "value": "<span>This is text where part is </span><span><b>bold </b></span><span>part is in </span><span><i>italics</i></span><span><b><i> </b></i></span><span>and part is </span><span><b><i>both bold and italics (emphasised) </b></i></span>"
+      },
+      {
+        "type": "dashed_box",
+        "name": "box1",
+        "value": "<span>This is a dashed box where some of the text is </span><span><b>bold</b></span><span> and </span><span><i>italics</i></span>"
+      },
+      {
+        "type": "button",
+        "name": "button1",
+        "value": "<span>Some of this button is </span><span><b>bold. </b></span><span><i>WOAH!</i></span>"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
     "module": "1on1",
     "flow_name": "relax_text_1",
     "status": "released",
@@ -10448,6 +11299,64 @@
   },
   {
     "flow_type": "template",
+    "module": "rules",
+    "flow_name": "relax_text_9",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "relax_text",
+        "rows": [
+          {
+            "name": "activity_text",
+            "value": "Here's an activity to relax your body:  \n\nSit comfortably and close your eyes if you can.  \nImagine a golden ring scanning your body from your feet to your head.   \nPay attention as it moves up and down your body. Are there any areas that feel tense? Numb? Painful?   \nFocus on those areas for a moment. Breathe in to the area and when you breathe out, try to let go of any tension or pain.   \nDo this for a few breaths.   \n\nOpen your eyes. How does your body feel now? ",
+            "type": "set_variable"
+          },
+          {
+            "name": "outro_text",
+            "value": "You can also try this next time you find yourself lying in bed unable to sleep!",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "value": "\n",
+        "type": "set_variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/databank_relax.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "relax_text_10",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "relax_text",
+        "rows": [
+          {
+            "name": "activity_text",
+            "value": "Notice your connection with the ground beneath you.  \nWhat parts of your body touch the ground? What parts of your body don’t?   \nNotice where it feels warm and where it feels cool.  \nFeel the ground underneath you supporting you. Let your body sink into the support of the ground.   ",
+            "type": "set_variable"
+          },
+          {
+            "name": "outro_text",
+            "value": "Try this next time you feel alone or are doing a mundane activity like washing up. It can really help!  ",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "value": "\n",
+        "type": "set_variable"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/databank_relax.xlsx"
+  },
+  {
+    "flow_type": "template",
     "module": "1on1",
     "flow_name": "w_1on1_stepper",
     "status": "released",
@@ -10622,24 +11531,6 @@
             "name": "relax",
             "value": "relax_2",
             "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "workshop_activity",
-            "rows": [
-              {
-                "name": "intro_text",
-                "value": "We’re proud of you. Let’s do a 30 second relaxation activity together now.",
-                "condition": "@field.do_workshops_together",
-                "type": "set_variable"
-              },
-              {
-                "name": "intro_text",
-                "value": "We’re proud of you. Let’s do a 30 second relaxation activity now.",
-                "condition": "!@field.do_workshops_together",
-                "type": "set_variable"
-              }
-            ]
           }
         ]
       }
@@ -10677,8 +11568,13 @@
                 "name": "workshop_activity",
                 "rows": [
                   {
-                    "name": "activity_title",
+                    "name": "intro_title",
                     "value": "Why @global.w_1on1?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "activity_title",
+                    "value": "@global.w_1on1",
                     "type": "set_variable"
                   },
                   {
@@ -10793,7 +11689,7 @@
               },
               {
                 "name": "outro_text",
-                "value": "One-on-one time may not always have instant results, but after a while you will see a big difference. \n\nYou are amazing parents for trying this.",
+                "value": "It may take some time to get used to one-on-one time, but the more you do it the better it gets!\n\nYou are amazing parents for trying this.",
                 "type": "set_variable"
               },
               {
@@ -10905,7 +11801,7 @@
               },
               {
                 "name": "outro_text",
-                "value": "One-on-one time may not always have instant results, but after a while you will see a big difference. \n\nYou are an amazing parent for trying this.",
+                "value": "It may take some time to get used to one-on-one time, but the more you do it the better it gets!\n\nYou are amazing parents for trying this.",
                 "type": "set_variable"
               },
               {
@@ -11794,6 +12690,7 @@
                             "rows": [
                               {
                                 "name": "image_src",
+                                "value": "plh_images/workshops/celebrate/read/slide_4.svg",
                                 "type": "set_variable"
                               },
                               {
@@ -11946,9 +12843,24 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "w_consequence_completed",
+              "true"
+            ],
+            "_raw": "completed | set_field:w_consequence_completed:true",
+            "_cleaned": "completed | set_field:w_consequence_completed:true"
           }
         ],
         "rows": [
+          {
+            "name": "progress_field_name",
+            "value": "w_consequence_progress",
+            "type": "set_variable"
+          },
           {
             "name": "nav_template_list",
             "value": [
@@ -11964,7 +12876,7 @@
               "w_consequence_talk_2",
               "w_consequence_read_3_temp",
               "w_consequence_talk_3",
-              "w_consequence_talk_4",
+              "w_consequence_try",
               "w_consequence_home_practice",
               "w_consequence_ending"
             ],
@@ -11975,11 +12887,16 @@
           {
             "name": "nav_template_list",
             "value": [
-              "w_consequence_welcome_individual",
+              "w_consequence_welcome_ind",
               "w_consequence_relax",
-              "w_consequence_reflect_individual",
               "w_consequence_intro",
+              "w_consequence_read_1_temp",
+              "w_consequence_question_1",
+              "w_consequence_read_2_temp",
               "w_consequence_tools_activity",
+              "w_consequence_read_3_temp",
+              "w_consequence_question_2",
+              "w_consequence_learn_temp",
               "w_consequence_home_practice",
               "w_consequence_ending"
             ],
@@ -12014,6 +12931,70 @@
           }
         ],
         "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "w_consequence_welcome_ind",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "welcome_individual",
+        "value": "welcome_individual",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "Self-care is a key parenting tool.",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "How are you feeling today?",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "reply_happy",
+            "value": "So good to hear you are feeling well today. You are incredible!",
+            "type": "set_variable"
+          },
+          {
+            "name": "reply_ok",
+            "value": "Sorry that things are difficult right now. Take a deep breath and know that you are valued.",
+            "type": "set_variable"
+          },
+          {
+            "name": "reply_sad",
+            "value": "Sorry that things are difficult right now. Take a deep breath and know that you are valued.",
+            "type": "set_variable"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
@@ -12065,7 +13046,13 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "rows": []
+        "rows": [
+          {
+            "name": "relax",
+            "value": "relax_10",
+            "type": "set_variable"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
@@ -12139,6 +13126,11 @@
                 "name": "workshop_activity",
                 "rows": [
                   {
+                    "name": "intro_title",
+                    "value": "Why @global.w_consequence?",
+                    "type": "set_variable"
+                  },
+                  {
                     "name": "activity_title",
                     "value": "@global.w_consequence",
                     "type": "set_variable"
@@ -12203,7 +13195,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Let's read what happened with @global.w_consequence_teen_boy and his @global.w_consequence_male_caregiver",
+                "value": "Let's read what happened with @global.w_consequence_teen_boy and his @global.w_consequence_male_caregiver:",
                 "type": "set_variable"
               },
               {
@@ -12399,6 +13391,76 @@
   {
     "flow_type": "template",
     "module": "consequence",
+    "flow_name": "w_consequence_question_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "question_time",
+        "value": "question_time",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "Let's think about what happened in this story.",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_combo_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "This parent gave an angry consequence ‘I’ll give you a hiding!’ but it just made everyone more angry and upset. ",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "Why did giving a consequence this way not work well?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "@global.w_consequence_male_caregiver was angry",
+                      "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy explain",
+                      "The consequence was not discussed beforehand with @global.w_consequence_teen_boy",
+                      "The consequence was too strong"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
     "flow_name": "w_consequence_read_2_temp",
     "status": "released",
     "rows": [
@@ -12471,7 +13533,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "You can discuss and agree consequences in advance with teens. It helps if they make sense to them.\n\nYou can also agree good consequences for good actions.\n\nHere are some examples: ",
+                            "value": "You can discuss and agree on consequences in advance with teens. It helps if they make sense to them.\n\nYou can also agree on good consequences for good actions.\n\nHere are some examples: ",
                             "type": "set_variable"
                           }
                         ]
@@ -12547,7 +13609,7 @@
               },
               {
                 "name": "outro_text",
-                "value": "Calm consequences should be... \n\nFair: Not too harsh and you can actually do it \n\nImmediate: Give them as soon as possible \n\nConsistent: The same consequence every time",
+                "value": "Calm consequences should be... \n\nFAIR: Not too harsh and you can actually do it \n\nIMMEDIATE: Give them as soon as possible \n\nCONSISTENT: The same consequence every time",
                 "type": "set_variable"
               },
               {
@@ -12741,7 +13803,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "What rules do your teens often break? What consequences could you use? \n\nConsequences should be FAIR (not too harsh), IMMEDIATE (do it straight away) CONSISTENT (same every time).\n\nPraise and encourage each other – we can give each other strength! ",
+                    "value": "Discuss together:\n(-) What rules do your teens often break? \n(-) What consequence could you use for each specific broken rule? \n\nConsequences should be: \nFAIR (not too harsh)\nIMMEDIATE (do it straight away) \nCONSISTENT (same every time).\n\nPraise and encourage each other – we can give each other strength! ",
                     "type": "set_variable"
                   }
                 ]
@@ -13097,13 +14159,13 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "w_consequence_talk_4",
+    "flow_name": "w_consequence_question_2",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "talk_together",
-        "value": "talk_together",
+        "name": "question_time",
+        "value": "question_time",
         "action_list": [
           {
             "trigger": "completed",
@@ -13121,11 +14183,76 @@
             "name": "workshop_activity",
             "rows": [
               {
-                "name": "activity_title",
-                "value": "Try it Together",
-                "comments": "placeholder",
+                "name": "intro_text",
+                "value": "Let's think about this story.",
                 "type": "set_variable"
               },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_combo_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "Why did using a consequence work well this time?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "@global.w_consequence_teen_boy and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+                      "They agreed on consequences together",
+                      "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy broke the rule",
+                      "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy",
+                      "The consequence was realistic and appropriate"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "w_consequence_try",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "try_together",
+        "value": "try_together",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
               {
                 "type": "nested_properties",
                 "name": "content_box",
@@ -13142,10 +14269,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_consequence_talk_4_pop"
+                          "w_consequence_try_pop"
                         ],
-                        "_raw": "click | pop_up:w_consequence_talk_4_pop",
-                        "_cleaned": "click | pop_up:w_consequence_talk_4_pop"
+                        "_raw": "click | pop_up:w_consequence_try_pop",
+                        "_cleaned": "click | pop_up:w_consequence_try_pop"
                       }
                     ],
                     "hidden": "false",
@@ -13163,7 +14290,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "w_consequence_talk_4_pop",
+    "flow_name": "w_consequence_try_pop",
     "status": "released",
     "rows": [
       {
@@ -13175,6 +14302,68 @@
             "name": "list_text",
             "value": "(-) Not seeing any friends for a month may be hard to do for you and also too harsh\n(-) Cancelling their birthday plans in a month’s time – it’s too far away\n(-) For example no TV this evening – fair and can be done straight away",
             "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "w_consequence_learn_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "learn_temp",
+        "value": "learn_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_buttons",
+                "rows": [
+                  {
+                    "name": "text_1",
+                    "value": "Plan a calm consequence for your teenagers arguing with each other during dinner. Remember they need to be \n\nFAIR - IMMEDIATE - CONSISTENT",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_1",
+                    "value": "@global.ideas_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_consequence_try_pop"
+                        ],
+                        "_raw": "click | pop_up:w_consequence_try_pop",
+                        "_cleaned": "click | pop_up:w_consequence_try_pop"
+                      }
+                    ],
+                    "hidden": "false",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -13620,6 +14809,11 @@
                 "type": "nested_properties",
                 "name": "workshop_activity",
                 "rows": [
+                  {
+                    "name": "intro_title",
+                    "value": "Why @global.w_crisis?",
+                    "type": "set_variable"
+                  },
                   {
                     "name": "activity_title",
                     "value": "@global.w_crisis",
@@ -14680,7 +15874,6 @@
             "name": "nav_template_list",
             "value": [
               "w_instruct_welcome_individual",
-              "w_instruct_reflect_individual",
               "w_instruct_relax",
               "w_instruct_intro",
               "w_instruct_think_1_temp",
@@ -14920,6 +16113,11 @@
                 "type": "nested_properties",
                 "name": "workshop_activity",
                 "rows": [
+                  {
+                    "name": "intro_title",
+                    "value": "Why @global.w_instruct?",
+                    "type": "set_variable"
+                  },
                   {
                     "name": "activity_title",
                     "value": "@global.w_instruct",
@@ -16072,7 +17270,6 @@
             "name": "nav_template_list",
             "value": [
               "w_money_welcome_individual",
-              "w_money_reflect_individual",
               "w_money_relax",
               "w_money_intro",
               "w_money_read_1_temp",
@@ -16354,8 +17551,13 @@
                 "name": "workshop_activity",
                 "rows": [
                   {
+                    "name": "intro_title",
+                    "value": "Why @global.w_money?",
+                    "type": "set_variable"
+                  },
+                  {
                     "name": "activity_title",
-                    "value": "Why make a family budget?",
+                    "value": "@global.w_money",
                     "type": "set_variable"
                   },
                   {
@@ -17994,7 +19196,6 @@
             "name": "nav_template_list",
             "value": [
               "w_praise_welcome_individual",
-              "w_praise_reflect_individual",
               "w_praise_relax",
               "w_praise_intro",
               "w_praise_question_1",
@@ -18364,8 +19565,13 @@
                 "name": "workshop_activity",
                 "rows": [
                   {
+                    "name": "intro_title",
+                    "value": "Why @global.w_praise?",
+                    "type": "set_variable"
+                  },
+                  {
                     "name": "activity_title",
-                    "value": "Why @global.w_praise_short?",
+                    "value": "@global.w_praise",
                     "type": "set_variable"
                   },
                   {
@@ -18491,9 +19697,9 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "name:happy | image:plh_images/stickers/faces/happy.svg",
-                          "name:happier | image:plh_images/stickers/faces/happier.svg",
-                          "name:happiest | image:plh_images/stickers/faces/happiest.svg"
+                          "name:happy | image:plh_images/stickers/faces/happy.svg | image_checked:plh_images/stickers/faces/happy.svg",
+                          "name:happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+                          "name:happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg"
                         ],
                         "type": "set_variable"
                       },
@@ -18788,9 +19994,9 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "name:happy | image:plh_images/stickers/faces/happy.svg",
-                          "name:happier | image:plh_images/stickers/faces/happier.svg",
-                          "name:happiest | image:plh_images/stickers/faces/happiest.svg"
+                          "name:happy | image:plh_images/stickers/faces/happy.svg | image_checked:plh_images/stickers/faces/happy.svg",
+                          "name:happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+                          "name:happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg"
                         ],
                         "type": "set_variable"
                       },
@@ -19034,10 +20240,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_praise_talk_3_pop"
+                          "w_praise_try_pop"
                         ],
-                        "_raw": "click | pop_up:w_praise_talk_3_pop",
-                        "_cleaned": "click | pop_up:w_praise_talk_3_pop"
+                        "_raw": "click | pop_up:w_praise_try_pop",
+                        "_cleaned": "click | pop_up:w_praise_try_pop"
                       }
                     ],
                     "hidden": "false",
@@ -19065,7 +20271,7 @@
         "rows": [
           {
             "name": "description_text",
-            "value": "Sometimes it’s hard to think of what to praise your teen for! Here are some ideas:",
+            "value": "Sometimes it’s hard to think of what to praise your teen for! Here are some ideas from other parents:",
             "type": "set_variable"
           },
           {
@@ -19126,10 +20332,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_praise_talk_3_pop"
+                          "w_praise_try_pop"
                         ],
-                        "_raw": "click | pop_up:w_praise_talk_3_pop",
-                        "_cleaned": "click | pop_up:w_praise_talk_3_pop"
+                        "_raw": "click | pop_up:w_praise_try_pop",
+                        "_cleaned": "click | pop_up:w_praise_try_pop"
                       }
                     ],
                     "type": "set_variable"
@@ -19223,15 +20429,14 @@
               "w_rules_reflect_together",
               "w_rules_intro",
               "w_rules_read_1_temp",
-              "w_rules_talk_1",
+              "w_rules_talk",
               "w_rules_tools_activity",
               "w_rules_read_2_temp",
-              "w_rules_talk_2",
+              "w_rules_try",
               "w_rules_home_practice",
               "w_rules_ending"
             ],
             "condition": "@field.do_workshops_together",
-            "comments": "w_rules_welcome_together; w_rules_care_together; w_rules_relax; w_rules_reflect_together; w_rules_intro; w_rules_read_1_temp; w_rules_talk_1; w_rules_tools_activity; w_rules_read_2_temp; w_rules_talk_2; w_rules_home_practice; w_rules_ending",
             "type": "set_variable"
           },
           {
@@ -19239,11 +20444,12 @@
             "value": [
               "w_rules_welcome_individual",
               "w_rules_relax",
-              "w_rules_reflect_individual",
               "w_rules_intro",
-              "w_rules_read_1",
-              "w_rules_read_2",
+              "w_rules_read_1_temp",
+              "w_rules_question",
               "w_rules_tools_activity",
+              "w_rules_read_2_temp",
+              "w_rules_learn_temp",
               "w_rules_home_practice",
               "w_rules_ending"
             ],
@@ -19392,7 +20598,13 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "rows": []
+        "rows": [
+          {
+            "name": "relax",
+            "value": "relax_9",
+            "type": "set_variable"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_rules.xlsx"
@@ -19510,8 +20722,13 @@
                 "name": "workshop_activity",
                 "rows": [
                   {
-                    "name": "activity_title",
+                    "name": "intro_title",
                     "value": "Why @global.w_rules?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "activity_title",
+                    "value": "@global.w_rules",
                     "type": "set_variable"
                   },
                   {
@@ -19616,7 +20833,14 @@
                           },
                           {
                             "name": "text",
-                            "value": "Discuss together: \nWhich specific rule could @global.w_rules_teen_boy and @global.w_rules_female_caregiver_1 create together?  \n\nLet’s see how @global.w_rules_female_caregiver_1 and @global.w_rules_teen_boy could do this!",
+                            "value": "Discuss together: \n\nWhich specific rule could @global.w_rules_teen_boy and @global.w_rules_female_caregiver_1 create together?  \n\nLet’s see how @global.w_rules_female_caregiver_1 and @global.w_rules_teen_boy could do this!",
+                            "condition": "@field.do_workshops_together",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "Think:\n\nWhich specific rule could @global.w_rules_teen_boy and @global.w_rules_female_caregiver_1 create together?  \n\nLet’s see how @global.w_rules_female_caregiver_1 and @global.w_rules_teen_boy could do this!",
+                            "condition": "!@field.do_workshops_together",
                             "type": "set_variable"
                           }
                         ]
@@ -19765,7 +20989,7 @@
   {
     "flow_type": "template",
     "module": "rules",
-    "flow_name": "w_rules_talk_1",
+    "flow_name": "w_rules_talk",
     "status": "released",
     "rows": [
       {
@@ -19816,10 +21040,10 @@
                             "trigger": "click",
                             "action_id": "pop_up",
                             "args": [
-                              "w_rules_talk_1_pop_1"
+                              "w_rules_talk_pop_1"
                             ],
-                            "_raw": "click | pop_up: w_rules_talk_1_pop_1",
-                            "_cleaned": "click | pop_up: w_rules_talk_1_pop_1"
+                            "_raw": "click | pop_up: w_rules_talk_pop_1",
+                            "_cleaned": "click | pop_up: w_rules_talk_pop_1"
                           }
                         ],
                         "hidden": "false",
@@ -19845,10 +21069,10 @@
                             "trigger": "click",
                             "action_id": "pop_up",
                             "args": [
-                              "w_rules_talk_1_pop_2"
+                              "w_rules_talk_pop_2"
                             ],
-                            "_raw": "click | pop_up: w_rules_talk_1_pop_2",
-                            "_cleaned": "click | pop_up: w_rules_talk_1_pop_2"
+                            "_raw": "click | pop_up: w_rules_talk_pop_2",
+                            "_cleaned": "click | pop_up: w_rules_talk_pop_2"
                           }
                         ],
                         "hidden": "false",
@@ -19868,7 +21092,7 @@
   {
     "flow_type": "template",
     "module": "rules",
-    "flow_name": "w_rules_talk_1_pop_1",
+    "flow_name": "w_rules_talk_pop_1",
     "status": "released",
     "rows": [
       {
@@ -19894,7 +21118,7 @@
   {
     "flow_type": "template",
     "module": "rules",
-    "flow_name": "w_rules_talk_1_pop_2",
+    "flow_name": "w_rules_talk_pop_2",
     "status": "released",
     "rows": [
       {
@@ -19911,6 +21135,126 @@
             "name": "list_text",
             "value": "(-) She praised him\n(-) She rewarded him when he followed the rule ",
             "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_rules.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "w_rules_question",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "question_time",
+        "value": "question_time",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "Let's think about what happened in this story.",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "combo_box_1",
+                    "rows": [
+                      {
+                        "name": "text",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "question_text",
+                        "value": "What went well here in making a rule together?",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "answer_list",
+                        "value": [
+                          "They discussed the reasons behind the rule",
+                          "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+                          "The rule was clear, specific and fair",
+                          "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule"
+                        ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "input_allowed",
+                        "value": "false",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "reply",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "nav_buttons",
+                        "hidden": "true",
+                        "rows": []
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "combo_box_2",
+                    "rows": [
+                      {
+                        "name": "text",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "question_text",
+                        "value": "How do you think @global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him? ",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "answer_list",
+                        "value": [
+                          "She praised him",
+                          "She rewarded him when he followed the rule"
+                        ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "input_allowed",
+                        "value": "false",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "reply",
+                        "value": "You are right! ",
+                        "type": "set_variable"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -20204,6 +21548,7 @@
               {
                 "name": "outro_habit_text",
                 "value": "Every time you do something to keep your teen safe, click the @global.parent_point and celebrate your success",
+                "hidden": "false",
                 "type": "set_variable"
               }
             ]
@@ -20216,13 +21561,13 @@
   {
     "flow_type": "template",
     "module": "rules",
-    "flow_name": "w_rules_talk_2",
+    "flow_name": "w_rules_try",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "talk_together",
-        "value": "talk_together",
+        "name": "try_together",
+        "value": "try_together",
         "action_list": [
           {
             "trigger": "completed",
@@ -20251,7 +21596,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "What is one important rule you’d each like to make with your teenager? \n\nIn a pair, take turns to be the teenager. Make a rule that you are both OK with!\n\nMake rules specific and realistic! \n\nFor example, agree on a timetable for washing dishes: My daughter washes Monday to Wednesday and my son washes Thursday to Saturday. I do Sunday. ",
+                    "value": "What is one important rule you’d each like to make with your teenager? \n\nIn a pair, take turns to be the teenager. Make a rule that you are both OK with!\n\nMake rules specific and realistic! ",
                     "comments": "placeholder",
                     "type": "set_variable"
                   },
@@ -20262,10 +21607,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_rules_talk_2_pop"
+                          "w_rules_try_pop"
                         ],
-                        "_raw": "click | pop_up:w_rules_talk_2_pop",
-                        "_cleaned": "click | pop_up:w_rules_talk_2_pop"
+                        "_raw": "click | pop_up:w_rules_try_pop",
+                        "_cleaned": "click | pop_up:w_rules_try_pop"
                       }
                     ],
                     "hidden": "false",
@@ -20283,7 +21628,7 @@
   {
     "flow_type": "template",
     "module": "rules",
-    "flow_name": "w_rules_talk_2_pop",
+    "flow_name": "w_rules_try_pop",
     "status": "released",
     "rows": [
       {
@@ -20298,8 +21643,77 @@
           },
           {
             "name": "list_text",
-            "value": "(-) Teen can play outside for after finishing homework\n(-) All family members are eating dinner together\n(-) Teen 1 do dishes on Sunday and Monday, Teen 2 on Tuesday and Wednesday\n(-) We speak to each other politely and nicely\n(-) When listening to music you need to use earphones",
+            "value": "(-) Teen can play outside after finishing homework\n(-) All family members are eating dinner together\n(-) Teen 1 does dishes on Sunday and Monday, Teen 2 on Tuesday and Wednesday\n(-) We speak to each other politely and nicely\n(-) When listening to music you need to use earphones",
             "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_rules.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "w_rules_learn_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "learn_temp",
+        "value": "learn_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "Let's practice making rules.",
+                "comments": "placeholder",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_buttons",
+                "rows": [
+                  {
+                    "name": "text_1",
+                    "value": "Write down one important rule you’d like to make with your teenager – you'll be doing this as your home practice this week. \n\nWhat will they think about it?",
+                    "comments": "placeholder",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_1",
+                    "value": "@global.ideas_button",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "pop_up",
+                        "args": [
+                          "w_rules_try_pop"
+                        ],
+                        "_raw": "click | pop_up:w_rules_try_pop",
+                        "_cleaned": "click | pop_up:w_rules_try_pop"
+                      }
+                    ],
+                    "hidden": "false",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -20349,10 +21763,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_rules_talk_2_pop"
+                          "w_rules_try_pop"
                         ],
-                        "_raw": "click | pop_up:w_rules_talk_2_pop",
-                        "_cleaned": "click | pop_up:w_rules_talk_2_pop"
+                        "_raw": "click | pop_up:w_rules_try_pop",
+                        "_cleaned": "click | pop_up:w_rules_try_pop"
                       }
                     ],
                     "type": "set_variable"
@@ -20725,8 +22139,13 @@
                 "name": "workshop_activity",
                 "rows": [
                   {
-                    "name": "activity_title",
+                    "name": "intro_title",
                     "value": "Why @global.w_safe?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "activity_title",
+                    "value": "@global.w_safe",
                     "type": "set_variable"
                   },
                   {
@@ -21881,6 +23300,11 @@
                 "name": "workshop_activity",
                 "rows": [
                   {
+                    "name": "intro_title",
+                    "value": "Why @global.w_self_care?",
+                    "type": "set_variable"
+                  },
+                  {
                     "name": "activity_title",
                     "value": "@global.w_self_care",
                     "type": "set_variable"
@@ -22901,8 +24325,13 @@
                 "name": "workshop_activity",
                 "rows": [
                   {
-                    "name": "activity_title",
+                    "name": "intro_title",
                     "value": "Why @global.w_solve?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "activity_title",
+                    "value": "@global.w_solve",
                     "type": "set_variable"
                   },
                   {
@@ -23973,12 +25402,12 @@
             "name": "nav_template_list",
             "value": [
               "w_stress_welcome_individual",
-              "w_stress_reflect_individual",
               "w_stress_relax",
               "w_stress_intro",
               "w_stress_read_1_temp",
               "w_stress_question",
               "w_stress_read_2_temp",
+              "w_stress_read_3_temp",
               "w_stress_tools_activity",
               "w_stress_home_practice",
               "w_stress_ending"
@@ -24252,6 +25681,11 @@
                 "type": "nested_properties",
                 "name": "workshop_activity",
                 "rows": [
+                  {
+                    "name": "intro_title",
+                    "value": "Why @global.w_stress?",
+                    "type": "set_variable"
+                  },
                   {
                     "name": "activity_title",
                     "value": "@global.w_stress",
@@ -24969,7 +26403,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?",
+                "value": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look: ",
                 "type": "set_variable"
               },
               {
@@ -25066,7 +26500,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say ‘safety amnesty’. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
+                                    "value": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -25327,7 +26761,7 @@
                   },
                   {
                     "name": "text_2",
-                    "value": "Do a safety amnesty with your teenager",
+                    "value": "Discuss \"safety amnesty\" with your teenager, and think of a situation together when you could use this.",
                     "hidden": "false",
                     "type": "set_variable"
                   },

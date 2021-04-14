@@ -302,23 +302,11 @@
         "type": "declare_global_constant",
         "name": "w_self_care",
         "value": "Self-Care",
-        "comments": "self-care"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_self_care_short",
-        "value": "Self-Care",
         "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
         "name": "w_1on1",
-        "value": "One-on-One Time",
-        "comments": "1on1"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_1on1_short",
         "value": "One-on-One Time",
         "comments": "individual done"
       },
@@ -326,23 +314,11 @@
         "type": "declare_global_constant",
         "name": "w_praise",
         "value": "Praise",
-        "comments": "praise"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_praise_short",
-        "value": "Praise",
         "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
         "name": "w_instruct",
-        "value": "Positive Instructions",
-        "comments": "instruct"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_instruct_short",
         "value": "Positive Instructions",
         "comments": "individual done"
       },
@@ -350,85 +326,44 @@
         "type": "declare_global_constant",
         "name": "w_stress",
         "value": "Managing Stress",
-        "comments": "stress"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_stress_short",
-        "value": "Managing Stress",
         "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
         "name": "w_money",
         "value": "Family Budgets",
-        "comments": "money"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_money_short",
-        "value": "Family Budgets"
+        "comments": "individual done"
       },
       {
         "type": "declare_global_constant",
         "name": "w_rules",
         "value": "Rules",
-        "comments": "rules"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_rules_short",
-        "value": "Rules"
+        "comments": "checking"
       },
       {
         "type": "declare_global_constant",
         "name": "w_consequence",
-        "value": "Calm Consequences",
-        "comments": "consequence"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_consequence_short",
         "value": "Calm Consequences"
       },
       {
         "type": "declare_global_constant",
         "name": "w_solve",
-        "value": "Problem Solving",
-        "comments": "solve"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_solve_short",
         "value": "Problem Solving"
       },
       {
         "type": "declare_global_constant",
         "name": "w_safe",
-        "value": "Teen Safety",
-        "comments": "safe"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_safe_short",
         "value": "Teen Safety"
       },
       {
         "type": "declare_global_constant",
         "name": "w_crisis",
-        "value": "Dealing with Crisis",
-        "comments": "crisis"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "w_crisis_short",
         "value": "Dealing with Crisis"
       },
       {
         "type": "declare_global_constant",
         "name": "w_celebrate",
-        "value": "Celebration and Next Steps",
-        "comments": "celebrate"
+        "value": "Celebration and Next Steps"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
