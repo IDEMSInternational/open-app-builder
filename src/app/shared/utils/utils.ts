@@ -71,6 +71,18 @@ export function getNestedProperty(obj: any, path: string) {
   }, obj);
 }
 
+export function setNestedProperty(path: string, value: any, obj = {}) {
+  let childKeys = path.split(".");
+  const currentKey = childKeys[0];
+  if (childKeys.length > 1) {
+    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
+    obj[currentKey] = { ...obj[currentKey], ...nestedValue };
+  } else {
+    obj[currentKey] = value;
+  }
+  return obj;
+}
+
 /**
  * Take a string and split into an array based on character separator.
  * Removes additional whitespace and linebreak characters and empty values
@@ -103,7 +115,7 @@ export function getStringParamFromTemplateRow(
   name: string,
   _default: string
 ): string {
-  var paramValue = getParamFromTemplateRow(row, name, _default) as string;
+  const paramValue = getParamFromTemplateRow(row, name, _default) as string;
   return paramValue ? `${paramValue}` : paramValue;
 }
 
@@ -124,4 +136,16 @@ export function getBooleanParamFromTemplateRow(
 ): boolean {
   const params = row.parameter_list || {};
   return params.hasOwnProperty(name) ? params[name] === "true" : _default;
+}
+
+/**
+ * Evaluate a javascript expression in a safe context
+ * @param expression string expression, e.g. "!true", "5 - 4"
+ * @param context variables and methods that will be available in the function's `this.exampleVar` scope
+ * @throws Error if the expression is not valid within the context
+ * */
+export function evaluateJSExpression(expression: string, context = {}): any {
+  const funcString = `"use strict"; return (${expression});`;
+  const func = new Function(funcString);
+  return func.apply(context);
 }
