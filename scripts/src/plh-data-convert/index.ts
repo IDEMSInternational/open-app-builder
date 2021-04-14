@@ -157,6 +157,20 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
   const workbook = xlsx.readFile(xlsxFilePath);
   const { Sheets } = workbook;
   Object.entries(Sheets).forEach(([sheet_name, worksheet]) => {
+    /* If bold or italics, include HTML in cell value */
+    Object.keys(worksheet).forEach((cellId) => {
+      let html = worksheet[cellId]?.h;
+      if (
+        html !== undefined &&
+        typeof html === "string" &&
+        (html.indexOf("<b>") > -1 || html.indexOf("<em>") > -1 || html.indexOf("<i>") > -1)
+      ) {
+        console.log("Formatting?", html);
+        html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
+        worksheet[cellId].v = html;
+      }
+    });
+
     json[sheet_name] = xlsx.utils.sheet_to_json(worksheet);
   });
   return json;

@@ -47,7 +47,7 @@ import { TemplateLayoutComponent } from "./layout";
         flex-direction: row;
         justify-content: space-evenly;
         gap: 5px;
-        padding: 10px;
+        padding: 10px 0;
       }
 
       .nav-progress-part {
