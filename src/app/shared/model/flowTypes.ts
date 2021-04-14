@@ -411,7 +411,7 @@ export namespace FlowTypes {
   }
   export interface TemplateRowAction {
     /** actions have an associated trigger */
-    trigger: "click" | "completed" | "uncompleted";
+    trigger: "click" | "completed" | "uncompleted" | "changed";
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation

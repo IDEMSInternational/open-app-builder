@@ -42,6 +42,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
       args: [this._row.name, value],
       trigger: "click",
     };
-    return this.parent.handleActions([action], this._row.name);
+    this.parent.handleActions([action], this._row.name);
+    this.triggerActions("changed");
   }
 }
