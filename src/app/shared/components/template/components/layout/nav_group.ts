@@ -85,6 +85,9 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     if (action_id === "emit" && args[0] === "completed") {
       if (this.sectionIndex < this.templateNames.length - 1) {
         this.sectionIndex++;
+        //update the field provided in progress_variable to be equal to the max of it's current value
+        //and the percentage of this.sectionIndex from this.templateNames.length. the value should
+        //be an integer between 0 and 100 inclusive.
         return false;
       }
     }
