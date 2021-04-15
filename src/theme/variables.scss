@@ -80,7 +80,6 @@ $main-container-padding: 0 10px;
   );
 
   // options buttons
-  $primary: hsl(203, 76%, 21%);
   --ion-gradient-primary-option-start: #{color.adjust($primary, $saturation: 8%, $lightness: 17%)};
   --ion-gradient-primary-option-end: #{$primary};
 
@@ -91,7 +90,6 @@ $main-container-padding: 0 10px;
   );
 
   // banner
-  $secondary: hsl(31, 95%, 57%);
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,
       $saturation: 5%,
@@ -113,6 +111,31 @@ $main-container-padding: 0 10px;
     var(--ion-banner-gradient-primary-start) 34.6%,
     var(--ion-banner-gradient-primary-middle) 65.78%,
     var(--ion-banner-gradient-primary-end) 105.68%
+  );
+  // accordion
+  --ion-accordion-gradient-start: #{color.adjust(
+      $primary,
+      $hue: -8,
+      $saturation: 8%,
+      $lightness: 17%
+    )};
+  --ion-accordion-gradient-end: var(--ion-color-primary);
+  --ion-accordion-bg: linear-gradient(
+    168.87deg,
+    var(--ion-accordion-gradient-start) 28.12%,
+    var(--ion-accordion-gradient-end) 100%
+  );
+  --ion-accordion-progress-gradient-start: #{color.adjust(
+      $primary,
+      $hue: -9,
+      $saturation: 3%,
+      $lightness: 11%
+    )};
+  --ion-accordion-progress-gradient-end: var(--ion-color-primary);
+  --ion-accordion-progress-gradient: linear-gradient(
+    168.87deg,
+    var(--ion-accordion-progress-gradient-start) 28.12%,
+    var(--ion-accordion-progress-gradient-end) 100%
   );
 
   --ion-dg-bg-default: var(--ion-banner-primary);
