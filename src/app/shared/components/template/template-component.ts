@@ -68,6 +68,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
    * when updated from parent changes will automatically propogate to child
    */
   @Input() row: FlowTypes.TemplateRow;
+
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
 
@@ -92,21 +93,21 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   ngAfterContentInit() {
-    this.setStyleList();
+    this.setStyleList(this.row);
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
-    // console.log(`[${this.row.name}]`, "render row");
+    // console.log(`[${row.name}]`, "render row");
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {
       case "template":
-        return this.row.hidden === "true"
+        return row.hidden === "true"
           ? null
-          : this.renderTemplateComponent(TemplateContainerComponent);
+          : this.renderTemplateComponent(TemplateContainerComponent, row);
       default:
         const displayComponent = TEMPLATE_COMPONENT_MAPPING[row.type];
         if (displayComponent) {
-          this.renderDisplayComponent(displayComponent);
+          this.renderDisplayComponent(displayComponent, row);
         } else {
           // not all components have mapping, for now just log warning
           console.warn("[tmpl.component] - skipped type", row);
@@ -114,35 +115,38 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     }
   }
 
-  private setStyleList() {
+  private setStyleList(row: FlowTypes.TemplateRow) {
     const styles = {};
-    if (this.row.style_list) {
-      for (let i = 0; i < this.row.style_list.length; i++) {
-        let splited = this.row.style_list[i].split(":");
+    if (row.style_list) {
+      for (let i = 0; i < row.style_list.length; i++) {
+        let splited = row.style_list[i].split(":");
         styles[splited[0]] = splited[1];
         this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
       }
     }
-    if (this.row.parameter_list && this.row.parameter_list["style"] == "navigation") {
+    if (row.parameter_list && row.parameter_list["style"] === "navigation") {
       this.elRef.nativeElement.style.setProperty("flex", "1");
       this.elRef.nativeElement.style.setProperty("justify-content", "flex-end");
     }
   }
 
   /** Create and render a nested template component */
-  private renderTemplateComponent(component: typeof TemplateContainerComponent) {
+  private renderTemplateComponent(
+    component: typeof TemplateContainerComponent,
+    row: FlowTypes.TemplateRow
+  ) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
     const factory = this.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainerRef.createComponent(factory);
     // assign input variables (note template name taken from the row's value column)
-    componentRef.instance.row = this.row;
+    componentRef.instance.row = row;
     componentRef.instance.parent = this.parent;
-    componentRef.instance.name = this.row.name;
-    componentRef.instance.templatename = this.row.value;
+    componentRef.instance.name = row.name;
+    componentRef.instance.templatename = row.value;
   }
 
   /** Create and render a common display component */
-  private renderDisplayComponent(component: Type<ITemplateRowProps>) {
+  private renderDisplayComponent(component: Type<ITemplateRowProps>, row: FlowTypes.TemplateRow) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
     const factory = this.componentFactoryResolver.resolveComponentFactory<ITemplateRowProps>(
       component
@@ -150,6 +154,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     const componentRef = viewContainerRef.createComponent(factory);
     // assign input variables
     componentRef.instance.parent = this.parent;
-    componentRef.instance.row = this.row;
+    componentRef.instance.row = row;
   }
 }
