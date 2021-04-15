@@ -491,8 +491,23 @@
       },
       {
         "type": "declare_global_constant",
-        "name": "w_consequence_teen_boy",
+        "name": "w_consequence_teen_boy_1",
         "value": "Amani"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_consequence_teen_boy_2",
+        "value": "Baraka"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_consequence_teen_girl_1",
+        "value": "Faraja"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_consequence_teen_girl_2",
+        "value": "Shukuru"
       },
       {
         "type": "declare_global_constant",
@@ -775,63 +790,63 @@
       },
       {
         "type": "declare_field_default",
-        "name": "w_self_care_unlocked",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_1on1_unlocked",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_praise_unlocked",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_instruct_unlocked",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_stress_unlocked",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_money_unlocked",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_rules_unlocked",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_consequence_unlocked",
-        "value": true
-      },
-      {
-        "type": "declare_field_default",
-        "name": "w_solve_unlocked",
+        "name": "w_self_care_disabled",
         "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "w_safe_unlocked",
+        "name": "w_1on1_disabled",
         "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "w_crisis_unlocked",
+        "name": "w_praise_disabled",
         "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "w_celebrate_unlocked",
+        "name": "w_instruct_disabled",
         "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_stress_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_money_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_rules_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_consequence_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_solve_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_safe_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_crisis_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_celebrate_disabled",
+        "value": true
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
