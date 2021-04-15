@@ -140,22 +140,15 @@
       },
       {
         "id": "list_1",
-        "value_list": [
-          "1",
-          "2",
-          "3"
-        ]
+        "value": "1; 2; 3;"
       },
       {
         "id": "text_1",
         "value": "text1"
       },
       {
-        "id": "obj_1",
-        "parameter_list": [
-          "key1:val1",
-          "key2:val2"
-        ]
+        "id": "collection_1",
+        "value": "key1:val1; key2:val2"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
