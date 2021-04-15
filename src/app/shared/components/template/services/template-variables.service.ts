@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { FlowTypes } from "scripts/types";
-import { evaluateJSExpression, setNestedProperty } from "src/app/shared/utils";
+import { evaluateJSExpression, getNestedProperty, setNestedProperty } from "src/app/shared/utils";
 import { TemplateService } from "./template.service";
 
 interface ILocalVariables {
@@ -42,35 +42,37 @@ export class TemplateVariablesService {
       // process arrays as json objects and return
       if (Array.isArray(data)) {
         const objData = _arrayToObject(data);
-        return Object.values(this.evaluatePLHData(objData, context));
+        value = Object.values(this.evaluatePLHData(objData, context));
       }
 
       // non-null object - evaluate both keys and values
       else if (data !== null) {
-        value = {};
-        if (context.field) {
-          context.row._dynamicFields = context.row._dynamicFields?.[context.field] as any;
-        }
+        // console.group("[evaluate]", { data, dyn: context.row._dynamicFields });
         Object.keys(data).forEach((k) => {
           value[k] = data[k];
           // ignore evaluation of meta fields. Could provide single list of approved fields, but as dynamic fields
           // also can be found in parameter lists would likely prove too restrictive
           if (!k.startsWith("_") && !omitFields.includes(k)) {
             // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
-            context.field = k as any;
-            value[k] = this.evaluatePLHData(data[k], context);
+            const nestedContext = { ...context };
+            nestedContext.field = nestedContext.field ? `${nestedContext.field}.${k}` : k;
+            value[k] = this.evaluatePLHData(data[k], nestedContext);
           }
         });
-        // console.log("[Eval Object]", { data, value, context });
+        // console.groupEnd();
       }
     } else {
       // For all other cases see if a dynamic evaluation statement already exists (e.g. @local.someVar)
       // If yes evaluate and return, if no simply return
       const { row, field } = context;
       // Check if any @keyword references exist. If not assume basic text and return
-      const evaluators = row._dynamicFields?.[field] as FlowTypes.TemplateRowDynamicEvaluator[];
+      const evaluators = getNestedProperty(
+        row._dynamicFields,
+        field
+      ) as FlowTypes.TemplateRowDynamicEvaluator[];
       if (evaluators) {
         value = this.evaluatePLHString(evaluators, context);
+        // console.log("[evaluated]", { value, evaluators, field, context });
       }
     }
     return value;
