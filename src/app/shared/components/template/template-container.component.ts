@@ -209,21 +209,22 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.template = JSON.parse(JSON.stringify(foundTemplate));
     // if template created at top level also ensure it has a name
     this.name = this.name || this.templatename;
+    console.group(`[Template Init] - ${this.name}`);
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
-    const parentVariables = this.parent?.localVariables?.[this.name] || {};
-    console.log("[Template Init]", { name: this.name, parentVariables });
+    const inheritedRows = this.parent?.localVariables?.[this.name] || {};
     const { rows } = this.template;
-    this.localVariables = this.processVariables(rows, parentVariables);
-    if (!this.parent) {
-      console.log({ localVariables: this.localVariables });
-    }
-    this.template.rows = this.processRows(rows, this.localVariables);
+    console.log({ rows: { ...rows }, variables: { ...inheritedRows } });
+    // TODO - CC 2021-04-15 - Can consider merging variable and row processing to same method
+    this.localVariables = this.processVariables(rows, inheritedRows);
+    this.template.rows = this.processRows(rows, this.localVariables, inheritedRows);
+
     // keep track of path to this template from any parents
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     if (this.parent) {
       this.parent.children[this.name] = this;
     }
+    console.groupEnd();
   }
 
   /**
@@ -232,54 +233,63 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * As such build an overall map of all variables nested by template naming,
    * with first recorded (from parent templates) taking priority over current.
    *
-   * @param variables - set of parent or existing variables to take priority
    * @param localVariables - working set of variables available to this template
    *
    */
   private processVariables(
     templateRows: FlowTypes.TemplateRow[],
-    variables: ILocalVariables = {},
-    localVariables: ILocalVariables = {}
+    inheritedRows: { [name: string]: FlowTypes.TemplateRow } = {}
   ): ILocalVariables {
+    const { template } = this;
+    let localVariables = {};
     // console.log("process variables", { templateRows, variables, localvariables });
     templateRows.forEach((row) => {
       let { name, value, rows, type } = row;
-      // Do not continue to process variable if fails condition statement
+
+      // TODO - set_variable / set_nested_properties should have consistent naming
+      // set_variable is actually setting the _value field, so should be called accordingly
+
+      // if a row has been overwritten by the parent (currently specified as set_variable)
+      // override the entire row except for (except the type, which will likely be the same)
+      if (inheritedRows.hasOwnProperty(name)) {
+        localVariables[name] = inheritedRows[name];
+        return;
+      }
+
+      // skip processing any row that is filtered by condition field
       if (row.hasOwnProperty("condition") && this.shouldFilterRowOnCondition(row, localVariables)) {
         return;
       }
-      // TODO - set_variable / set_nested_properties should have consistent naming
-      // set_variable is actually setting the _value field, so should be called accordingly
+
+      console.group(name);
+      console.log({ value, name, type, variables: { ...inheritedRows } });
+
+      // process any rows that declare data types
       if (DATA_INIT_TYPES.includes(type)) {
-        variables[name] = variables[name] || {};
-        localVariables[name] = variables[name] || {};
-        // handle merging updated properties
+        localVariables[name] = {};
+
+        // Do not continue to process variable if fails condition statement
 
         // Replace any dynamic fields with their evaluations
-        const evalContext = { localVariables, template: this.template, row, field: null };
+        const evalContext = { localVariables, template, row };
         const parsedRow = this.templateVariables.evaluatePLHData(row, evalContext, ["comments"]);
         Object.keys(parsedRow).forEach((field) => {
           const fieldValue = parsedRow[field];
           // don't override values that have otherwise been set from parent or nested properties
           // local variables within r[field] are parsed
-          if (!variables[name].hasOwnProperty(field)) {
-            variables[name][field] = fieldValue;
-          }
           if (!localVariables[name].hasOwnProperty(field)) {
-            // local variables on a given excel sheet are managed together
             localVariables[name][field] = fieldValue;
           }
         });
       }
-      if (type === "display_theme") {
-        // TODO - inherited variable should be defined in better/consistent way
-      }
 
+      // Handle misc types
+      // TODO - CC 2021-04-15 - Does this need to be evaluated here?
       if (type === "set_field") {
         this.templateService.setField(name, value);
       }
 
-      // handle rows which have nested structures
+      // process any rows that declare nested or grouped data
       if (rows) {
         // TODO - don't like overwriting this, be nicer to handle elsewhere
         if (DISPLAY_TYPES.includes(type)) {
@@ -289,37 +299,51 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           // nested properties assign specific value further down the tree
           // TODO handle case where name is further nested (e.g. templateA.child1.someField)
           case "nested_properties":
-            variables[name] = this.processVariables(rows, variables[name], localVariables);
+            localVariables[name] = this.processVariables(rows, localVariables[name]);
             break;
           // nested templates are handled in the same way as nested properties
           case "template":
-            variables[name] = this.processVariables(rows, variables[name], localVariables);
+            // when processing a template we provide access to our current set of variables for access
+            console.log("processing template", { ...localVariables });
+            localVariables[name] = this.processVariables(rows, localVariables);
             break;
           // display groups are visual distinction only, process the rest of the variables as if they were inline
           case "display_group":
-            variables = { ...variables, ...this.processVariables(rows, variables, localVariables) };
+            localVariables = { ...localVariables, ...this.processVariables(rows) };
             break;
           // otherwise treat nested rows as value-namespaced local variables
           default:
-            variables[value] = this.processVariables(rows, variables[name]);
+            localVariables[value] = this.processVariables(rows, localVariables[name]);
             break;
         }
       }
+      console.groupEnd();
     });
-    return variables;
+    console.log("processed variables", { ...localVariables });
+    return localVariables;
   }
 
   /**
    * Once the full tree of parent variable setters/overrides has been established
    * remove the variable setter row types and override row values where specified
    */
-  private processRows(templateRows: FlowTypes.TemplateRow[], variables = {}) {
+  private processRows(
+    templateRows: FlowTypes.TemplateRow[],
+    variables = {},
+    inheritedRows: { [name: string]: FlowTypes.TemplateRow } = {}
+  ) {
     // remove row types that have already been processed or should be filtered out by condition
     const filteredRows = templateRows
       .filter((r) => !this.shouldFilterRowOnCondition(r, variables))
       .filter((r) => !DATA_INIT_TYPES.includes(r.type));
 
     const rowsWithReplacedValues = filteredRows.map((row) => {
+      // if a row has been overwritten by the parent (currently specified as set_variable)
+      // override the entire row except for the type
+      if (inheritedRows.hasOwnProperty(row.name)) {
+        return { ...inheritedRows[row.name], type: row.type };
+      }
+
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
       const template = this.template;

@@ -16,7 +16,7 @@ interface IVariableContext {
   localVariables: ILocalVariables;
   template: FlowTypes.Template;
   row: FlowTypes.TemplateRow;
-  field: string;
+  field?: string;
 }
 
 @Injectable({ providedIn: "root" })
