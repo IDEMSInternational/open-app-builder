@@ -1,15 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  Output,
-  ViewChild,
-  EventEmitter,
-  Input,
-} from "@angular/core";
-import { BehaviorSubject } from "scripts/node_modules/rxjs";
-import { FlowTypes } from "scripts/types";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 
@@ -18,9 +7,9 @@ import { TemplateBaseComponent } from "../base";
   template: `<div class="accordion-wrapper">
     <div
       [ngClass]="{
-        completed: completed,
+        completed: completed && _row.disabled === 'false',
         disabled: _row.disabled === 'true',
-        inProgress: percentComplete > 0
+        inProgress: !completed && _row.disabled !== 'true'
       }"
       class="accordion-status"
     >
@@ -35,8 +24,9 @@ import { TemplateBaseComponent } from "../base";
       class="accordion-section"
       [ngClass]="{
         openSection: _row.parameter_list.state === 'open',
+        disabled: _row.disabled === 'true',
         completed: completed,
-        inProgress: percentComplete > 0 && percentComplete < 100
+        inProgress: !completed && _row.disabled !== 'true'
       }"
     >
       <div class="progress" [ngStyle]="{ width: percentComplete + '%' }"></div>
@@ -69,7 +59,6 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
     if (this._row.disabled !== "true") {
       this.toggleState.emit(this.id);
     }
-    // this.progressValue$.next(100)
   }
 
   private getParams() {
