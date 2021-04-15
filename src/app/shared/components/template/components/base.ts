@@ -32,7 +32,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
     const action_list = this._row.action_list || [];
     const actionsForTrigger = action_list.filter((a) => a.trigger === trigger);
-    this.parent.handleActions(actionsForTrigger, this._row.name);
+    this.parent.handleActions(actionsForTrigger, this._row);
   }
 
   /** Update the current value of the row by setting a local variable that matches */
@@ -42,6 +42,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
       args: [this._row.name, value],
       trigger: "click",
     };
-    return this.parent.handleActions([action], this._row.name);
+    return this.parent.handleActions([action], this._row);
   }
 }
