@@ -12,13 +12,6 @@ interface ILocalVariables {
   [name: string]: any;
 }
 
-/** list of fields where overwrites will be allowed */
-const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
-  "hidden",
-  "value",
-  "action_list",
-  "parameter_list",
-];
 /**
  * Some types that contain nested rows are nested in display only (not template properties)
  * Log here to handle accordingly
@@ -29,6 +22,15 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
   "animated_section_group",
   "nav_group",
   "nav_section",
+];
+
+/**
+ * These data types will be used to populate local state at the start only and not reprocessed
+ */
+const DATA_INIT_TYPES: FlowTypes.TemplateRowType[] = [
+  "set_variable",
+  "nested_properties",
+  "set_local",
 ];
 
 @Component({
@@ -77,7 +79,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    *  Action Handling
    **************************************************************************************/
   /** Public method to add actions to processing queue and process */
-  public async handleActions(actions: FlowTypes.TemplateRowAction[] = [], _triggeredBy: string) {
+  public async handleActions(
+    actions: FlowTypes.TemplateRowAction[] = [],
+    _triggeredBy: FlowTypes.TemplateRow
+  ) {
     const unhandledActions = await this.handleActionsInterceptor(actions);
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     const res = await this.processActionQueue();
@@ -119,19 +124,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
     // once all actions have been processed re-render rows
     if (processedActions.length > 0) {
-      this.processRows(this.template.rows, this.localVariables);
+      this.template.rows = this.processRows(this.template.rows, this.localVariables);
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
-    console.log("process action", action);
     let { action_id, args } = action;
-    // parse dynamic expressions from the args
-    args = args.map((a) =>
-      this.templateVariables.evaluatePLHExpression(a, {
-        localVariables: this.localVariables,
-        template: this.template,
-      })
-    );
     let [key, value] = args;
 
     switch (action_id) {
@@ -178,10 +175,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             const actionsForEmittedEvent = row.action_list.filter((a) => a.trigger === emit_value);
             console.log("Excuting actions matching event ", { emit_value, actionsForEmittedEvent });
             // process in parallel, do not return/await
-            parent.handleActions(actionsForEmittedEvent, `${name}.${action._triggeredBy}`);
+
+            // TODO - check if should be parent row or current row
+            parent.handleActions(actionsForEmittedEvent, row);
           } else {
             console.log("No action list for row ", row, "on template name ", name);
-            parent.handleActions([action], `${name}.${action._triggeredBy}`);
+            parent.handleActions([action], row);
           }
         }
         break;
@@ -240,35 +239,37 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private processVariables(
     templateRows: FlowTypes.TemplateRow[],
     variables: ILocalVariables = {},
-    localvariables: ILocalVariables = {}
+    localVariables: ILocalVariables = {}
   ): ILocalVariables {
     // console.log("process variables", { templateRows, variables, localvariables });
-    templateRows.forEach((r) => {
-      let { name, value, rows, type } = r;
+    templateRows.forEach((row) => {
+      let { name, value, rows, type } = row;
       // Do not continue to process variable if fails condition statement
-      if (r.hasOwnProperty("condition") && this.shouldFilterRowOnCondition(r, localvariables)) {
+      if (row.hasOwnProperty("condition") && this.shouldFilterRowOnCondition(row, localVariables)) {
         return;
       }
       // TODO - set_variable / set_nested_properties should have consistent naming
       // set_variable is actually setting the _value field, so should be called accordingly
-      if (type === "set_variable" || type === "set_local" || type === "nested_properties") {
+      if (DATA_INIT_TYPES.includes(type)) {
         variables[name] = variables[name] || {};
-        localvariables[name] = variables[name] || {};
+        localVariables[name] = variables[name] || {};
         // handle merging updated properties
-        VARIABLE_FIELDS.forEach((field) => {
-          if (r.hasOwnProperty(field)) {
-            // don't override values that have otherwise been set from parent or nested properties
-            // local variables within r[field] are parsed
-            if (!variables[name].hasOwnProperty(field)) {
-              variables[name][field] = this.templateVariables.evaluatePLHExpression(r[field], {
-                localVariables: localvariables,
-                template: this.template,
-              });
-            }
-            if (!localvariables[name].hasOwnProperty(field)) {
-              // local variables on a given excel sheet are managed together
-              localvariables[name][field] = variables[name][field];
-            }
+
+        // TODO - also want to retain dynamic variables on replacement
+
+        // Replace any dynamic fields with their evaluations
+        const evalContext = { localVariables, template: this.template, row, field: null };
+        const parsedRow = this.templateVariables.evaluatePLHData(row, evalContext, ["comments"]);
+        Object.keys(parsedRow).forEach((field) => {
+          const fieldValue = parsedRow[field];
+          //  don't override values that have otherwise been set from parent or nested properties
+          // local variables within r[field] are parsed
+          if (!variables[name].hasOwnProperty(field)) {
+            variables[name][field] = fieldValue;
+          }
+          if (!localVariables[name].hasOwnProperty(field)) {
+            // local variables on a given excel sheet are managed together
+            localVariables[name][field] = fieldValue;
           }
         });
       }
@@ -290,15 +291,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           // nested properties assign specific value further down the tree
           // TODO handle case where name is further nested (e.g. templateA.child1.someField)
           case "nested_properties":
-            variables[name] = this.processVariables(rows, variables[name], localvariables);
+            variables[name] = this.processVariables(rows, variables[name], localVariables);
             break;
           // nested templates are handled in the same way as nested properties
           case "template":
-            variables[name] = this.processVariables(rows, variables[name], localvariables);
+            variables[name] = this.processVariables(rows, variables[name], localVariables);
             break;
           // display groups are visual distinction only, process the rest of the variables as if they were inline
           case "display_group":
-            variables = { ...variables, ...this.processVariables(rows, variables, localvariables) };
+            variables = { ...variables, ...this.processVariables(rows, variables, localVariables) };
             break;
           // otherwise treat nested rows as value-namespaced local variables
           default:
@@ -315,42 +316,43 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * remove the variable setter row types and override row values where specified
    */
   private processRows(templateRows: FlowTypes.TemplateRow[], variables = {}) {
-    console.log(`[${this.template.flow_name}]`, "process rows", { variables, templateRows });
-    // remove row types that have already been processed during processVariables step
-    const filterTypes: FlowTypes.TemplateRowType[] = ["set_variable", "nested_properties"];
+    // remove row types that have already been processed or should be filtered out by condition
     const filteredRows = templateRows
       .filter((r) => !this.shouldFilterRowOnCondition(r, variables))
-      .filter((r) => !filterTypes.includes(r.type));
-    const rowsWithReplacedValues = filteredRows.map((r) => {
+      .filter((r) => !DATA_INIT_TYPES.includes(r.type));
+
+    const rowsWithReplacedValues = filteredRows.map((row) => {
       // update row fields as spefied in local variables replacement
       // handle updates where field defined with dynamic expressions
-      VARIABLE_FIELDS.forEach((field) => {
-        r[field] = this.templateVariables.evaluatePLHExpression(r[field], {
-          localVariables: variables,
-          template: this.template,
-        });
-      });
+      const template = this.template;
+      const evaluationContext = { localVariables: variables, template, row, field: null };
+      row = this.templateVariables.evaluatePLHData(row, evaluationContext, ["rows"]);
+
       // handle nested templates
-      if (r.rows) {
+      if (row.rows) {
         // TODO - don't like overwriting this, be nicer to handle elsewhere
-        let type = r.type;
+        let type = row.type;
         if (DISPLAY_TYPES.includes(type)) {
           type = "display_group";
         }
         switch (type) {
           case "display_group":
             // display groups are visual distinction only, process the rest of the variables as if they were inline
-            r.rows = this.processRows(r.rows, variables);
+            row.rows = this.processRows(row.rows, variables);
             break;
           // could add logic here to ignore/remove template rows (already processed), leaving as will be overwritten on init anyways
           case "template":
-          //  r.rows = this.processRows(r.rows, variables[r.name]);
+          //  row.rows = this.processRows(row.rows, variables[row.name]);
           default:
             // otherwise treat nested rows as value-namespaced local variables
-            r.rows = this.processRows(r.rows, variables[r.name]);
+            row.rows = this.processRows(row.rows, variables[row.name]);
         }
       }
-      return r;
+      return row;
+    });
+    console.log(`[${this.template.flow_name}]`, "process rows", {
+      variables,
+      rowsWithReplacedValues,
     });
     return rowsWithReplacedValues;
   }
@@ -358,9 +360,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private shouldFilterRowOnCondition(row: FlowTypes.TemplateRow, localVariables: ILocalVariables) {
     return (
       row.hasOwnProperty("condition") &&
-      this.templateVariables.evaluatePLHExpression(row.condition, {
+      this.templateVariables.evaluatePLHData(row.condition, {
         localVariables,
         template: this.template,
+        field: "condition",
+        row,
       })
     );
   }

@@ -393,15 +393,20 @@ export namespace FlowTypes {
     parameter_list?: { [param: string]: string };
     hidden?: string;
     rows?: TemplateRow[];
-    /** track fields above where dynamic expressions have been used in field evaluation */
-    _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
-    condition?: any;
-
+    disabled?: string;
+    condition?: string;
     /* Used for authoring comments. Not used in code */
-    cc_comments?: string;
     comments?: string;
+    /**
+     * track fields above where dynamic expressions have been used in field evaluation
+     * they will be nested in the same way the template itself is (e.g. parameter_list.paramNam.someVal)
+     * */
+    _dynamicFields?: IDynamicField;
+    /** excel sheets may supply empty columns on occasion */
     __EMPTY?: any;
   }
+  type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
+
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
@@ -425,7 +430,7 @@ export namespace FlowTypes {
       | "set_theme";
     args: string[];
     /** field populated for tracking the component that triggered the action */
-    _triggeredBy?: string;
+    _triggeredBy?: TemplateRow;
     // debug info
     _raw?: string;
     _cleaned?: string;

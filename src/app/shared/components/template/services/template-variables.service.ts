@@ -7,12 +7,17 @@ interface ILocalVariables {
   [name: string]: any;
 }
 
-/** Specific fields that may contain statements requiring evaluation in javascript */
-const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = [
-  "condition",
-  "hidden",
-  "parameter_list",
-];
+/**
+ * Most methods in this class depend on factors relating to the execution context
+ * (e.g. template, row, localVariables etc.). Store as a single object to make
+ * it easier to pass between methods
+ */
+interface IVariableContext {
+  localVariables: ILocalVariables;
+  template: FlowTypes.Template;
+  row: FlowTypes.TemplateRow;
+  field: string;
+}
 
 @Injectable({ providedIn: "root" })
 export class TemplateVariablesService {
@@ -26,37 +31,47 @@ export class TemplateVariablesService {
    * Additionally the references may be themselves nested within arrays, or json objects.
    * This method attempts to handle all such cases
    */
-  public evaluatePLHExpression(
-    expression: string | number | boolean | any,
-    context: {
-      localVariables: ILocalVariables;
-      template: FlowTypes.Template;
-    }
+  public evaluatePLHData(
+    data: string | number | boolean | any,
+    context: IVariableContext,
+    omitFields: string[] = []
   ) {
-    // only strings or objects could contain dynamic values that need evaluation
-    let value = expression;
-    const { localVariables, template } = context;
-    switch (typeof expression) {
-      case "string":
-        // check for dynamic strings and convert accordingly
-        value = this.evaluatePLHString(expression, localVariables, template);
-        break;
-      case "object":
-        // array - evaluate all elements
-        if (Array.isArray(expression)) {
-          value = expression.map((el) => this.evaluatePLHExpression(el, context));
+    let value = data;
+    // If the data is array or json-type object extract individual strings and reprocess
+    if (typeof data === "object") {
+      // process arrays as json objects and return
+      if (Array.isArray(data)) {
+        const objData = _arrayToObject(data);
+        return Object.values(this.evaluatePLHData(objData, context));
+      }
+
+      // non-null object - evaluate both keys and values
+      else if (data !== null) {
+        value = {};
+        if (context.field) {
+          context.row._dynamicFields = context.row._dynamicFields?.[context.field] as any;
         }
-        // non-null object - evaluate both keys and values
-        else if (expression !== null) {
-          value = {};
-          Object.keys(expression).forEach(
-            (k) =>
-              (value[this.evaluatePLHExpression(k, context)] = this.evaluatePLHExpression(
-                expression[k],
-                context
-              ))
-          );
-        }
+        Object.keys(data).forEach((k) => {
+          value[k] = data[k];
+          // ignore evaluation of meta fields. Could provide single list of approved fields, but as dynamic fields
+          // also can be found in parameter lists would likely prove too restrictive
+          if (!k.startsWith("_") && !omitFields.includes(k)) {
+            // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
+            context.field = k as any;
+            value[k] = this.evaluatePLHData(data[k], context);
+          }
+        });
+        // console.log("[Eval Object]", { data, value, context });
+      }
+    } else {
+      // For all other cases see if a dynamic evaluation statement already exists (e.g. @local.someVar)
+      // If yes evaluate and return, if no simply return
+      const { row, field } = context;
+      // Check if any @keyword references exist. If not assume basic text and return
+      const evaluators = row._dynamicFields?.[field] as FlowTypes.TemplateRowDynamicEvaluator[];
+      if (evaluators) {
+        value = this.evaluatePLHString(evaluators, context);
+      }
     }
     return value;
   }
@@ -77,29 +92,22 @@ export class TemplateVariablesService {
    * @returns
    */
   private evaluatePLHString(
-    expression: string,
-    localVariables: ILocalVariables,
-    template: FlowTypes.Template
+    evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
+    context: IVariableContext
   ) {
-    // Check if any @keyword references exist. If not assume basic text and return
-    const evaluators = this.extractDynamicEvaluators(expression);
-    if (!evaluators) {
-      return expression;
-    }
     let parsedExpression = evaluators[0].fullExpression;
     // main evaluation
     for (let evaluator of evaluators) {
       const { matchedExpression, type, fieldName } = evaluator;
       // evaluate the core @keyword.someVar part
-      const { parsedValue } = this.processDynamicEvaluator(evaluator, localVariables, template);
-      console.log("parsedValue", parsedValue);
+      const { parsedValue } = this.processDynamicEvaluator(evaluator, context);
       // replace '@' with 'this.' so we can evaluate as a statement. E.g. @local.someVar => this.local.someVar
       // create a custom context with the correct variables assigned (e.g. this.local = {someVar:'value'}) and evaluate
       const contextExpression = matchedExpression.replace("@", "this.");
-      const context = { [type]: { [fieldName]: parsedValue } };
+      const evalContext = { [type]: { [fieldName]: parsedValue } };
       try {
-        const evaluatedExpression = evaluateJSExpression(contextExpression, context);
-        console.log("[Evaluated]", { expression, parsedExpression, evaluatedExpression });
+        const evaluatedExpression = evaluateJSExpression(contextExpression, evalContext);
+        // console.log("[Evaluated]", { expression, parsedExpression, evaluatedExpression });
         // if we have an array, object, null or undefined no further processing required
         if (typeof evaluatedExpression === "object") {
           return evaluatedExpression;
@@ -107,14 +115,17 @@ export class TemplateVariablesService {
         // otherwise replace the part of the expression that was matched and evaluated
         parsedExpression = parsedExpression.replace(matchedExpression, evaluatedExpression);
       } catch (error) {
-        console.error("failed to evaluate expression", { contextExpression, context });
+        console.error("failed to evaluate expression", { contextExpression, evalContext });
       }
     }
     // handle case where parsed expression contains reference to another dynamic expression
-    const recursiveDynamicExpression = this.extractDynamicEvaluators(parsedExpression);
-    if (recursiveDynamicExpression) {
-      return this.evaluatePLHString(parsedExpression, localVariables, template);
-    }
+    // TODO
+
+    // const recursiveDynamicExpression = this.extractDynamicEvaluators(parsedExpression);
+    // if (recursiveDynamicExpression) {
+    //   return this.evaluatePLHString(parsedExpression, args);
+    // }
+
     // Individual variables such as @local.someVar will have been replaced, but now evaluate the entire statement
     // to also evaluate mathematical operations. e.g.
     // "@local.someVar + 1" => "1 + 1"  => 2
@@ -123,7 +134,7 @@ export class TemplateVariablesService {
     // for the text detected, however this is fine as the current evaluation already contains everything we need (@someVar was evaluated previously)
     try {
       const evaluatedExpression = evaluateJSExpression(parsedExpression);
-      console.log("[Evaluated]", { expression, parsedExpression, evaluatedExpression });
+      // console.log("[Evaluated]", { expression, parsedExpression, evaluatedExpression });
       return evaluatedExpression;
     } catch (error) {
       return parsedExpression;
@@ -136,17 +147,19 @@ export class TemplateVariablesService {
    */
   private processDynamicEvaluator(
     evaluator: FlowTypes.TemplateRowDynamicEvaluator,
-    localVariables: ILocalVariables,
-    template: FlowTypes.Template
+    context: IVariableContext
   ) {
     let parsedValue: any;
     let parseSuccess = true;
     const { matchedExpression, type, fieldName } = evaluator;
+    const { localVariables, template } = context;
     switch (type) {
       case "local":
         // check local variables set through set_variables / nested_properties
         if (localVariables.hasOwnProperty(fieldName)) {
           parsedValue = localVariables[fieldName]?.value;
+          // TODO - need to check if there are also child evaluator refs?
+          // Maybe that's calculated above
         }
         // also check sibling components for name match and return value where set
         else {
@@ -174,40 +187,10 @@ export class TemplateVariablesService {
     }
     return { parsedValue, parseSuccess };
   }
+}
 
-  public extractDynamicEvaluators(
-    fullExpression: string
-  ): FlowTypes.TemplateRowDynamicEvaluator[] | null {
-    // match fields such as @local.someField
-    // deeper nesting will be need to be handled after evaluation as part of JSEvaluation (e.g. @local.somefield.nestedProperty)
-    // group 1: @local, @fields etc.
-    // group 2: property of group, e.g. @local.'someVar'
-    // group 3: trailing evaluation, e.g. @local.someVar'.nestedvar.length'
-    const regex = /@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
-    let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
-    if (typeof fullExpression === "string") {
-      let match: RegExpExecArray;
-      // run recursive match for all dynamic expressions
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#finding_successive_matches
-      /* eslint-disable no-cond-assign */
-      while ((match = regex.exec(fullExpression)) !== null) {
-        const [matchedExpression, type, fieldName] = match as any[];
-        allMatches.push({ fullExpression, matchedExpression, type, fieldName });
-      }
-      // expect the number of match statements to match the total number of @ characters (replace all non-@)
-      // provide a warning if this is not the case
-      const expectedMatchLength = fullExpression.replace(/[^@]/g, "").length;
-      if (allMatches.length !== expectedMatchLength) {
-        console.warn(
-          `Expected ${expectedMatchLength} dynamic matches but recorded ${allMatches.length}`,
-          fullExpression,
-          allMatches
-        );
-      }
-    }
-    if (allMatches.length > 0) {
-      return allMatches;
-    }
-    return null;
-  }
+function _arrayToObject(arr: any[]) {
+  const obj = {};
+  arr.forEach((el, i) => (obj[i] = el));
+  return obj;
 }
