@@ -41,7 +41,12 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
+    <div
+      class="plh-tmpl-comp"
+      [attr.data-hidden]="row.hidden"
+      [attr.data-debug]="parent.debugMode"
+      [ngClass]="{ disabled: row.disabled }"
+    >
       <!-- Template Debugger -->
       <plh-template-debugger
         *ngIf="parent.debugMode"

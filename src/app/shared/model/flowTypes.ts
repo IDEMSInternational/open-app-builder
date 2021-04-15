@@ -395,7 +395,8 @@ export namespace FlowTypes {
     rows?: TemplateRow[];
     /** track fields above where dynamic expressions have been used in field evaluation */
     _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
-    condition?: any;
+    condition?: string;
+    disabled?: string;
 
     /* Used for authoring comments. Not used in code */
     cc_comments?: string;
@@ -411,7 +412,7 @@ export namespace FlowTypes {
   }
   export interface TemplateRowAction {
     /** actions have an associated trigger */
-    trigger: "click" | "completed" | "uncompleted";
+    trigger: "click" | "completed" | "uncompleted" | "changed";
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation

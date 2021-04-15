@@ -17,6 +17,7 @@ const VARIABLE_FIELDS: (keyof FlowTypes.TemplateRow)[] = [
   "value",
   "action_list",
   "parameter_list",
+  "disabled",
 ];
 /**
  * Some types that contain nested rows are nested in display only (not template properties)
@@ -28,10 +29,15 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
   "animated_section_group",
   "nav_group",
   "nav_section",
+  "workshops_accordion",
 ];
 
 /** Specific fields that will be evaluated as javascript */
-const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = ["condition", "hidden"];
+const FIELDS_WITH_JS_EXPRESSIONS: (keyof FlowTypes.TemplateRow)[] = [
+  "condition",
+  "hidden",
+  "disabled",
+];
 
 @Component({
   selector: "plh-template-container",
@@ -417,7 +423,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             parsedValue = this.template.rows.find((r) => r.name === fieldName)?.value;
           }
           // TODO - handle case where match found (but still returns undefined)
-          if (!parsedValue) {
+          if (!parsedValue && parsedValue !== 0) {
             console.error("could not parse local variable", { evaluator, localVariables });
             parsedValue = `{{local.${fieldName}}}`;
           }
