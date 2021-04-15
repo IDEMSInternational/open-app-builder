@@ -143,7 +143,10 @@ p {
     line-height: 29px;
     font-weight: $font-weight-bold;
     @media (max-width: 375px) {
-      font-size: 23px;
+      font-size: 23px !important;
+    }
+    @media (max-width: 320px) {
+      font-size: 20px !important;
     }
   }
   .alternative {
