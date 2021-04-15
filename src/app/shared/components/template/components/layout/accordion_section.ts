@@ -7,7 +7,7 @@ import { TemplateBaseComponent } from "../base";
   template: `<div class="accordion-wrapper">
     <div
       [ngClass]="{
-        completed: completed && _row.disabled === 'false',
+        completed: completed && _row.disabled !== 'true',
         disabled: _row.disabled === 'true',
         inProgress: !completed && _row.disabled !== 'true'
       }"
@@ -72,6 +72,7 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
     if (value === 100) {
       this.completed = true;
     } else if (value > 0) {
+      console.log(value);
       this.completed = false;
     }
   }
