@@ -125,17 +125,29 @@ $main-container-padding: 0 10px;
     var(--ion-accordion-gradient-start) 28.12%,
     var(--ion-accordion-gradient-end) 100%
   );
-  --ion-accordion-progress-gradient-start: #{color.adjust(
+  --ion-accordion-progress-gradient-primery-start: #{color.adjust(
       $primary,
       $hue: -9,
       $saturation: 3%,
       $lightness: 11%
     )};
-  --ion-accordion-progress-gradient-end: var(--ion-color-primary);
-  --ion-accordion-progress-gradient: linear-gradient(
+  --ion-accordion-progress-gradient-primery-end: var(--ion-color-primary);
+  --ion-accordion-progress-primary-gradient: linear-gradient(
     168.87deg,
-    var(--ion-accordion-progress-gradient-start) 28.12%,
-    var(--ion-accordion-progress-gradient-end) 100%
+    var(--ion-accordion-progress-gradient-primery-start-start) 28.12%,
+    var(--ion-accordion-progress-gradient-primery-end-end) 100%
+  );
+  --ion-accordion-progress-gradient-secondary-start: #{color.adjust(
+      $secondary,
+      $hue: 17,
+      $saturation: -5%,
+      $lightness: -6%
+    )};
+  --ion-accordion-progress-gradient-secondary-end: var(--ion-color-secondary);
+  --ion-accordion-progress-secondary-gradient: linear-gradient(
+    281.65deg,
+    var(--ion-accordion-progress-gradient-secondary-start) 41.02%,
+    var(--ion-accordion-progress-gradient-secondary-end) 102.14%
   );
 
   --ion-dg-bg-default: var(--ion-banner-primary);
