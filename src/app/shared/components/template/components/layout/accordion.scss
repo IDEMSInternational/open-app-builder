@@ -54,6 +54,7 @@
     padding: 0 10px 10px 10px;
     border: 1px solid var(--ion-color-primary);
     transition: max-height 0.4s;
+    overflow-y: hidden;
     &.completed {
       background: var(--ion-accordion-bg);
     }
