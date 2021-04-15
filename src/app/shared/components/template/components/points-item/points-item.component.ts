@@ -53,7 +53,9 @@ export class TmplParentPointBoxComponent
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
     this.icon_result = this.getPathImg();
     this.windowWidth = window.innerWidth - 10;
-    if (!this._row.value) this._row.value = 0;
+    if (!this._row.value) {
+      this._row.value = 0;
+    }
   }
 
   getPathImg(): string {
@@ -65,7 +67,6 @@ export class TmplParentPointBoxComponent
     if (this._row.disabled) {
       return;
     }
-    this.triggerActions("click");
     this._row.value += 1;
     this.star.nativeElement.classList.add("on-add");
     setTimeout((_) => {
@@ -75,10 +76,10 @@ export class TmplParentPointBoxComponent
       this.item.nativeElement.classList.add("complete");
     }
     this.wasClicked = true;
+    this.triggerActions("changed");
   }
   getScaleFactor(): number {
     this.scaleFactor = this.windowWidth / 400 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
-    console.log(this.scaleFactor);
     return this.scaleFactor;
   }
 }
