@@ -5,20 +5,21 @@ import { ITemplateRowProps } from "../../models";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
-  getStringParamFromTemplateRow
+  getStringParamFromTemplateRow,
 } from "../../../../utils";
-
 
 @Component({
   selector: "plh-slider-new",
   templateUrl: "./slider.component.html",
-  styleUrls: ["./slider.component.scss"]
+  styleUrls: ["./slider.component.scss"],
 })
-export class TmplSliderComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplSliderComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: string };
   help: string | null;
-
+  no_value_text: string = "no_value";
   minValue: number = 0;
   maxValue: number = 7;
   disabled: boolean = false;
@@ -41,18 +42,18 @@ export class TmplSliderComponent extends TemplateBaseComponent implements ITempl
     start: this.value,
     tooltips: true,
     step: this.step,
-    behaviour: 'tap',
-    pageSteps: 6,  // number of page steps, defaults to 10
+    behaviour: "tap",
+    pageSteps: 6, // number of page steps, defaults to 10
     range: {
       min: this.minValue,
-      max: this.maxValue
+      max: this.maxValue,
     },
     pips: {
       mode: "count",
       density: 1,
       values: 7,
-      stepped: true
-    }
+      stepped: true,
+    },
   };
 
   ngOnInit() {
@@ -67,8 +68,9 @@ export class TmplSliderComponent extends TemplateBaseComponent implements ITempl
     this.step = getNumberParamFromTemplateRow(this._row, "step", this.step);
     this.min_value_label = getStringParamFromTemplateRow(this._row, "min_value_label", null);
     this.max_value_label = getStringParamFromTemplateRow(this._row, "max_value_label", null);
-    this.value = this._row.value > this.maxValue ? 0 : (this._row.value ? this._row.value : 0);
-    this.labels_count = getNumberParamFromTemplateRow(this._row, 'labels_count', 8);
+    this.value = this._row.value > this.maxValue ? 0 : this._row.value ? this._row.value : 0;
+    this.labels_count = getNumberParamFromTemplateRow(this._row, "labels_count", 8);
+    this.no_value_text = getStringParamFromTemplateRow(this._row, "no_value_text", "no_value");
     this.updateConfigParams();
     this.rangeBarTouched = this.value !== 0;
     this.no_value = getBooleanParamFromTemplateRow(this._row, "no_value", false);
@@ -78,13 +80,14 @@ export class TmplSliderComponent extends TemplateBaseComponent implements ITempl
     this.no_value = !this.no_value;
     this.rangeBarTouched = !this.rangeBarTouched;
     this.disabled = !this.disabled;
-    this.value = null;
-
+    this._row.value = this.no_value ? this.no_value_text : this.value;
+    this.triggerActions("changed");
   }
 
   changeValue() {
-    console.log(this.value)
     this.rangeBarTouched = true;
+    this._row.value = this.value;
+    this.triggerActions("changed");
   }
 
   updateConfigParams() {

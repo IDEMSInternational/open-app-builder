@@ -49,7 +49,8 @@ If category_list is not available we generate list of values based on min_value,
 - min_value_label - select value on slider
 - max_value_label - select value on slider
 - labels_count - labels count for slider. Default - 8
-- no_value - boolean. Default - false. Control is no_value selected
+- no_value - boolean. Default - false. Control is no_value selected.
+- no_value_text - string. Default 'no_value'. If control is no_value selected.
 
 ## Timer - TmplTimerComponent
 - type - timer.

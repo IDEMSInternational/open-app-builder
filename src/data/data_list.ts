@@ -140,7 +140,12 @@
       },
       {
         "id": "list_1",
-        "value": "1; 2; 3;"
+        "value_list": [
+          "1",
+          "2",
+          "3"
+        ],
+        "comment": "if referring to _list the value will already be parsed as array"
       },
       {
         "id": "text_1",
@@ -148,7 +153,8 @@
       },
       {
         "id": "collection_1",
-        "value": "key1:val1; key2:val2"
+        "value_collection": "key1:val1; key2:val2",
+        "comment": "if referring to _collection the value will already be parsed as object"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"

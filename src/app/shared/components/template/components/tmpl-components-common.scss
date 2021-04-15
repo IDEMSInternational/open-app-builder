@@ -2,6 +2,10 @@
 
 .plh-tmpl-comp {
   // border:2px solid purple;
+
+  &.disabled {
+    filter: grayscale(100%);
+  }
 }
 
 .hidden {
@@ -222,16 +226,27 @@ p {
   }
   & .offset {
     width: 100%;
+    padding-left: 10px;
     plh-template-component:first-child {
       margin-bottom: 40px;
-      width: 57%;
+      max-width: 50%;
       @media (max-width: 375px) {
         width: 52%;
       }
     }
     plh-template-component:last-child {
       flex: 1;
-      padding-top: 15px;
+      padding-top: 40px;
+      @media (max-width: 375px) {
+        h1 {
+          font-size: 21px !important;
+        }
+      }
+      @media (max-width: 320px) {
+        h1 {
+          font-size: 18px !important;
+        }
+      }
     }
   }
 }

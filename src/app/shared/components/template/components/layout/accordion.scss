@@ -72,3 +72,7 @@
 .inProgress {
   background: rgba(47, 156, 185, 1) !important;
 }
+
+.tick-icon {
+  filter: brightness(0) invert(1);
+}
