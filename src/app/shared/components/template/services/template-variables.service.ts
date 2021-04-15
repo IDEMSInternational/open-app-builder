@@ -47,19 +47,23 @@ export class TemplateVariablesService {
 
       // non-null object - evaluate both keys and values
       else if (data !== null) {
-        // console.group("[evaluate]", { data, dyn: context.row._dynamicFields });
-        Object.keys(data).forEach((k) => {
-          value[k] = data[k];
-          // ignore evaluation of meta fields. Could provide single list of approved fields, but as dynamic fields
-          // also can be found in parameter lists would likely prove too restrictive
-          if (!k.startsWith("_") && !omitFields.includes(k)) {
-            // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
-            const nestedContext = { ...context };
-            nestedContext.field = nestedContext.field ? `${nestedContext.field}.${k}` : k;
-            value[k] = this.evaluatePLHData(data[k], nestedContext);
-          }
-        });
-        // console.groupEnd();
+        const dynamicFields = context.row._dynamicFields;
+        // only evaluate if there are dynamic fields recorded somewhere in the object
+        if (dynamicFields) {
+          console.group(`[evaluate] ${data.value || ""}`, { data, dynamicFields });
+          Object.keys(data).forEach((k) => {
+            value[k] = data[k];
+            // ignore evaluation of meta fields. Could provide single list of approved fields, but as dynamic fields
+            // also can be found in parameter lists would likely prove too restrictive
+            if (!k.startsWith("_") && !omitFields.includes(k)) {
+              // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
+              const nestedContext = { ...context };
+              nestedContext.field = nestedContext.field ? `${nestedContext.field}.${k}` : k;
+              value[k] = this.evaluatePLHData(data[k], nestedContext);
+            }
+          });
+          console.groupEnd();
+        }
       }
     } else {
       // For all other cases see if a dynamic evaluation statement already exists (e.g. @local.someVar)
@@ -120,13 +124,6 @@ export class TemplateVariablesService {
         console.error("failed to evaluate expression", { contextExpression, evalContext });
       }
     }
-    // handle case where parsed expression contains reference to another dynamic expression
-    // TODO
-
-    // const recursiveDynamicExpression = this.extractDynamicEvaluators(parsedExpression);
-    // if (recursiveDynamicExpression) {
-    //   return this.evaluatePLHString(parsedExpression, args);
-    // }
 
     // Individual variables such as @local.someVar will have been replaced, but now evaluate the entire statement
     // to also evaluate mathematical operations. e.g.
@@ -160,8 +157,6 @@ export class TemplateVariablesService {
         // check local variables set through set_variables / nested_properties
         if (localVariables.hasOwnProperty(fieldName)) {
           parsedValue = localVariables[fieldName]?.value;
-          // TODO - need to check if there are also child evaluator refs?
-          // Maybe that's calculated above
         }
         // also check sibling components for name match and return value where set
         else {

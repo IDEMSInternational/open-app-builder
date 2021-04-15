@@ -211,7 +211,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.name = this.name || this.templatename;
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
-    const parentVariables = this.parent?.localVariables?.[this.name];
+    const parentVariables = this.parent?.localVariables?.[this.name] || {};
     console.log("[Template Init]", { name: this.name, parentVariables });
     const { rows } = this.template;
     this.localVariables = this.processVariables(rows, parentVariables);
@@ -260,10 +260,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         const parsedRow = this.templateVariables.evaluatePLHData(row, evalContext, ["comments"]);
         Object.keys(parsedRow).forEach((field) => {
           const fieldValue = parsedRow[field];
-          // TODO - also want to retain dynamic variables on replacement
-          // const dynamicFields = parsedRow[field]._dynamicFields;
-
-          //  don't override values that have otherwise been set from parent or nested properties
+          // don't override values that have otherwise been set from parent or nested properties
           // local variables within r[field] are parsed
           if (!variables[name].hasOwnProperty(field)) {
             variables[name][field] = fieldValue;
