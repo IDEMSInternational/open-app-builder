@@ -371,12 +371,12 @@
             "action_list": [
               {
                 "trigger": "click",
-                "action_id": "pop_up",
+                "action_id": "go_to",
                 "args": [
-                  "workshop_options_pop_up"
+                  "workshop_options_page"
                 ],
-                "_raw": "click | pop_up: workshop_options_pop_up",
-                "_cleaned": "click | pop_up: workshop_options_pop_up"
+                "_raw": "click | go_to: workshop_options_page",
+                "_cleaned": "click | go_to: workshop_options_page"
               }
             ],
             "parameter_list": {
@@ -404,7 +404,7 @@
           "style": "quick_start",
           "first_line_text": "My Group",
           "second_line_text": "Start week one",
-          "icon_src": "plh_images/icons/star.svg"
+          "icon_src": "plh_images/icons/play_light.svg"
         },
         "comments": "- Need to change the icon\n- Need to get the next workshop"
       },
@@ -417,17 +417,19 @@
         "rows": [
           {
             "type": "accordion_section",
-            "value": "@field.w_self_care_completion_level",
+            "value": 100,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_self_care"
             },
+            "disabled": "false",
             "comments": "-need to track progress made in each workshop -> started in the consequence workshop stepper",
             "rows": [
               {
                 "type": "template",
                 "name": "workshop_1",
                 "value": "workshop_accordion_item",
+                "disabled": "@field.w_self_care_unlocked",
                 "rows": [
                   {
                     "name": "target_workshop_stepper",
@@ -445,16 +447,19 @@
               "state": "closed",
               "title": "@global.w_1on1"
             },
+            "disabled": "true",
             "comments": "- Need to know the status of the workshops",
             "rows": [
               {
                 "type": "template",
                 "name": "workshop_2",
                 "value": "workshop_accordion_item",
+                "comments": "status is no longer there, it's managed through disabled column",
                 "rows": [
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_1on1_stepper",
+                    "comments": "state: closed or open determine whether the accordion item is expanded or not",
                     "type": "set_variable"
                   }
                 ]
@@ -468,6 +473,7 @@
               "state": "closed",
               "title": "@global.w_praise"
             },
+            "disabled": "true",
             "rows": [
               {
                 "type": "template",
@@ -490,6 +496,7 @@
               "state": "closed",
               "title": "@global.w_instruct"
             },
+            "disabled": "true",
             "rows": [
               {
                 "type": "template",
@@ -507,11 +514,13 @@
           },
           {
             "type": "accordion_section",
-            "value": "@field.w_stress_completion_level",
+            "value": 70,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_stress"
             },
+            "disabled": "false",
+            "comments": "@field.w_stress_completion_level",
             "rows": [
               {
                 "type": "template",
@@ -534,6 +543,7 @@
               "state": "closed",
               "title": "@global.w_money"
             },
+            "disabled": "false",
             "rows": [
               {
                 "type": "template",
@@ -556,6 +566,7 @@
               "state": "closed",
               "title": "@global.w_rules"
             },
+            "disabled": "false",
             "rows": [
               {
                 "type": "template",
@@ -578,6 +589,7 @@
               "state": "closed",
               "title": "@global.w_consequence"
             },
+            "disabled": "false",
             "rows": [
               {
                 "type": "template",
@@ -600,6 +612,7 @@
               "state": "closed",
               "title": "@global.w_solve"
             },
+            "disabled": "false",
             "rows": [
               {
                 "type": "template",
@@ -622,6 +635,7 @@
               "state": "closed",
               "title": "@global.w_safe"
             },
+            "disabled": "false",
             "rows": [
               {
                 "type": "template",
@@ -644,6 +658,7 @@
               "state": "closed",
               "title": "@global.w_crisis"
             },
+            "disabled": "false",
             "rows": [
               {
                 "type": "template",
@@ -666,6 +681,7 @@
               "state": "closed",
               "title": "@global.w_celebrate"
             },
+            "disabled": "false",
             "rows": [
               {
                 "type": "template",
@@ -678,41 +694,6 @@
                     "type": "set_variable"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "type": "accordion_section",
-            "parameter_list": {
-              "state": "closed",
-              "title": "Description of week four"
-            },
-            "rows": [
-              {
-                "type": "button",
-                "name": "btn_example_1",
-                "value": "First",
-                "parameter_list": {
-                  "style": "active"
-                }
-              }
-            ]
-          },
-          {
-            "type": "accordion_section",
-            "parameter_list": {
-              "state": "closed",
-              "status": "uncompleted",
-              "title": "Description of week five"
-            },
-            "rows": [
-              {
-                "type": "button",
-                "name": "btn_example_1",
-                "value": "First",
-                "parameter_list": {
-                  "style": "active"
-                }
               }
             ]
           }
@@ -868,7 +849,7 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "workshop_options_pop_up",
+    "flow_name": "workshop_options_page",
     "status": "released",
     "rows": [
       {
@@ -903,12 +884,23 @@
         "type": "set_variable"
       },
       {
+        "name": "answer_list_3",
+        "value": [
+          "name:name_var_1 | text: @global.individual | image:plh_images/workshops/options/individual.svg",
+          "name:name_var_2 | text:@global.together | image:plh_images/workshops/options/together.svg"
+        ],
+        "type": "set_variable"
+      },
+      {
         "type": "title",
         "name": "title",
         "value": "@global.weekly_workshops Options"
       },
       {
         "type": "display_group",
+        "parameter_list": {
+          "style": "column"
+        },
         "rows": [
           {
             "type": "text",
@@ -922,6 +914,18 @@
             "type": "text_box",
             "name": "text_box_1",
             "value": "@field.user_name",
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "user_name",
+                  "@local.text_box_1"
+                ],
+                "_raw": "changed | set_field:user_name:@local.text_box_1",
+                "_cleaned": "changed | set_field:user_name:@local.text_box_1"
+              }
+            ],
             "parameter_list": {
               "text_align": "center"
             },
@@ -961,6 +965,14 @@
         "type": "text",
         "name": "question_3",
         "value": "Select Number of People"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_3",
+        "parameter_list": {
+          "radio_button_type": "btn_square",
+          "answer_list": "@local.answer_list_3"
+        }
       },
       {
         "type": "text",
@@ -2145,6 +2157,232 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "box_slider",
+    "status": "released",
+    "rows": [
+      {
+        "name": "slider_field",
+        "value": "slider_field_name",
+        "type": "set_variable"
+      },
+      {
+        "name": "slider_title",
+        "hidden": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "help_text",
+        "type": "set_variable"
+      },
+      {
+        "name": "min_value",
+        "value": 0,
+        "type": "set_variable"
+      },
+      {
+        "name": "min_value_label",
+        "value": "days in the past week",
+        "type": "set_variable"
+      },
+      {
+        "name": "max_value",
+        "value": 7,
+        "type": "set_variable"
+      },
+      {
+        "name": "max_value_label",
+        "type": "set_variable"
+      },
+      {
+        "name": "step",
+        "value": 1,
+        "type": "set_variable"
+      },
+      {
+        "name": "labels_count",
+        "value": 8,
+        "type": "set_variable"
+      },
+      {
+        "name": "threshold",
+        "value": 3,
+        "type": "set_variable"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Text"
+      },
+      {
+        "type": "text",
+        "name": "question_text",
+        "value": "Question text",
+        "parameter_list": {
+          "style": "emphasised"
+        }
+      },
+      {
+        "type": "slider",
+        "name": "slider",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.slider_field",
+              "@local.slider"
+            ],
+            "_raw": "changed | set_field:@local.slider_field:@local.slider",
+            "_cleaned": "changed | set_field:@local.slider_field:@local.slider"
+          }
+        ],
+        "parameter_list": {
+          "help": "@local.help_text",
+          "min": "@local.min_value",
+          "min_value_label": "@local.min_value_label",
+          "max": "@local.max_value",
+          "max_value_label": "@local.max_value_label",
+          "title": "@local.title",
+          "step": "@local.step",
+          "labels_count": "@local.labels_count"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_less_equal",
+        "value": "You selected @local.threshold or less",
+        "hidden": "@local.slider > @local.threshold"
+      },
+      {
+        "type": "text",
+        "name": "reply_greater",
+        "value": "You selected more than @local.threshold",
+        "hidden": "@field.slider_field <= @local.threshold"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_slider_temp",
+    "status": "released",
+    "rows": [
+      {
+        "name": "slider_field",
+        "value": "slider_field_name",
+        "type": "set_variable"
+      },
+      {
+        "name": "labels_count",
+        "value": 8,
+        "type": "set_variable"
+      },
+      {
+        "name": "threshold",
+        "value": 3,
+        "type": "set_variable"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "hidden": "true"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Text"
+      },
+      {
+        "type": "text",
+        "name": "question_text",
+        "value": "Question text",
+        "parameter_list": {
+          "style": "emphasised"
+        }
+      },
+      {
+        "type": "slider",
+        "name": "slider",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.slider_field",
+              "@local.slider"
+            ],
+            "_raw": "changed | set_field:@local.slider_field:@local.slider",
+            "_cleaned": "changed | set_field:@local.slider_field:@local.slider"
+          }
+        ],
+        "parameter_list": {
+          "min": "0",
+          "min_value_label": "days in the past week",
+          "max": "7"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_less_equal",
+        "value": "You selected @local.threshold or less",
+        "hidden": "@local.slider > @local.threshold; "
+      },
+      {
+        "type": "text",
+        "name": "reply_greater",
+        "value": "You selected more than @local.threshold",
+        "hidden": "@local.slider <= @local.threshold; "
+      },
+      {
+        "type": "text",
+        "name": "reply_no_value",
+        "value": "You chose not to answer",
+        "hidden": "\"@local.slider\" != \"no_value\""
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "box_radio_buttons",
     "status": "released",
     "rows": [
@@ -2185,7 +2423,7 @@
         "type": "text",
         "name": "question_text",
         "parameter_list": {
-          "emphasised": "true"
+          "style": "emphasised"
         }
       },
       {
@@ -2269,7 +2507,7 @@
         "type": "text",
         "name": "question_text",
         "parameter_list": {
-          "emphasised": "true"
+          "style": "emphasised"
         }
       },
       {
@@ -2691,7 +2929,10 @@
       },
       {
         "type": "image",
-        "name": "image_src"
+        "name": "image_src",
+        "parameter_list": {
+          "style": "rounded_corners"
+        }
       },
       {
         "type": "text",
@@ -2734,7 +2975,10 @@
       },
       {
         "type": "image",
-        "name": "image_src"
+        "name": "image_src",
+        "parameter_list": {
+          "style": "rounded_corners"
+        }
       },
       {
         "type": "text",
@@ -7046,8 +7290,9 @@
       },
       {
         "type": "set_variable",
-        "name": "var_counter_double",
-        "value": "2*@local.var_counter"
+        "name": "var_counter_calc",
+        "value": "10*@local.var_counter",
+        "comments": "Note - this will show correctly first time but not update with var_counter (set_variable initialises only)\nNEED alternative syntax"
       },
       {
         "type": "set_variable",
@@ -7124,13 +7369,13 @@
       {
         "type": "text",
         "name": "text_4wrong",
-        "value": "Expected fail calculation: 2*@local.var_counter",
+        "value": "Expected fail calculation: 10*@local.var_counter",
         "comments": "This will not work - the calculated part should be handled as another variable"
       },
       {
         "type": "text",
         "name": "text_4right",
-        "value": "Expected pass calculation: @local.var_counter_double"
+        "value": "Expected pass calculation: @local.var_counter_calc"
       },
       {
         "type": "text",
@@ -8084,6 +8329,160 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "example_changed_action",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "demo_changed_combo_box",
+        "value": "na"
+      },
+      {
+        "type": "set_field",
+        "name": "demo_changed_slider",
+        "value": "na"
+      },
+      {
+        "type": "set_field",
+        "name": "demo_changed_radio_group",
+        "value": "na"
+      },
+      {
+        "type": "set_field",
+        "name": "demo_changed_text_box",
+        "value": "na"
+      },
+      {
+        "name": "answer_list_1",
+        "value": [
+          "First",
+          "Second",
+          "Third"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second",
+          "name:name_var_3 | text:Third",
+          "name:name_var_4 | text:Fourth"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_combo_box",
+              "@local.combo_box"
+            ],
+            "_raw": "changed | set_field: demo_changed_combo_box: @local.combo_box",
+            "_cleaned": "changed | set_field: demo_changed_combo_box: @local.combo_box"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_1",
+          "placeholder": "Click and choose!"
+        }
+      },
+      {
+        "type": "text",
+        "name": "comb_box_text",
+        "value": "the selected choice in combo box is @field.demo_changed_combo_box",
+        "hidden": "\"@field.demo_changed_combo_box\"==\"na\""
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_radio_group",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field: demo_changed_radio_group: @local.radio_group",
+            "_cleaned": "changed | set_field: demo_changed_radio_group: @local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        }
+      },
+      {
+        "type": "text",
+        "name": "radio_group_text",
+        "value": "the selected choice in radio group is @field.demo_changed_radio_group",
+        "hidden": "\"@field.demo_changed_radio_group\"==\"na\""
+      },
+      {
+        "type": "text_box",
+        "name": "text_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_text_box",
+              "@local.text_box"
+            ],
+            "_raw": "changed | set_field: demo_changed_text_box: @local.text_box",
+            "_cleaned": "changed | set_field: demo_changed_text_box: @local.text_box"
+          }
+        ],
+        "parameter_list": {
+          "placeholder": "Click and type!"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_box_text",
+        "value": "The value in the text box is @field.demo_changed_text_box",
+        "hidden": "\"@field.demo_changed_text_box\"==\"na\""
+      },
+      {
+        "type": "slider",
+        "name": "slider",
+        "value": 3,
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_slider",
+              "@local.slider"
+            ],
+            "_raw": "changed | set_field: demo_changed_slider: @local.slider",
+            "_cleaned": "changed | set_field: demo_changed_slider: @local.slider"
+          }
+        ],
+        "parameter_list": {
+          "min": "0",
+          "max": "7",
+          "min_value_label": "least",
+          "max_value_label": "most",
+          "labels_count": "8",
+          "no_value": "false"
+        }
+      },
+      {
+        "type": "text",
+        "name": "slider_text",
+        "value": "the selected choice in slider is @field.demo_changed_slider",
+        "hidden": "\"@field.demo_changed_slider\"==\"na\""
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "example_double_ref_comp_var",
     "status": "released",
     "rows": [
@@ -8635,6 +9034,12 @@
         "name": "text_reply_3",
         "value": "This is the feedback for option 3",
         "hidden": "\"@local.radio_group_defaults\" != \"name_var_3\""
+      },
+      {
+        "type": "text",
+        "name": "text_reply_universal",
+        "value": "This is the universal feedback",
+        "hidden": "\"@local.radio_group_defaults\" == \"na\""
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_options_feedback.xlsx"
@@ -9760,23 +10165,21 @@
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "Click here to answer"
-        },
-        "comments": "Placeholder should be displayed when nothing is selected. In that case, @local.combo_box_with_placeholder is the value of combo_box_with_placeholder (i.e. \"nothing\") \n\nDesign comment: \nPlaceholder should look different from (pre-)selected answer"
+        }
       },
       {
         "type": "combo_box",
         "name": "combo_box_with_placeholder_2",
-        "value": "nothing",
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "Click here to answer"
         },
-        "comments": "Placeholder should be displayed when nothing is selected. In that case, @local.combo_box_with_placeholder is the value of combo_box_with_placeholder (i.e. \"nothing\") \n\nDesign comment: \nPlaceholder should look different from (pre-)selected answer"
+        "comments": "Placeholder should be displayed when nothing is selected. In that case, @local.combo_box_with_placeholder_2 is the value of combo_box_with_placeholder_2 (i.e. \"nothing\") \n\nDesign comment: \nPlaceholder should look different from (pre-)selected answer"
       },
       {
         "type": "text",
         "name": "text_result",
-        "value": "You selected @local.combo_box_with_placeholder"
+        "value": "You selected @local.combo_box_with_placeholder_2"
       },
       {
         "type": "combo_box",
@@ -9978,9 +10381,18 @@
       {
         "name": "answer_list_5",
         "value": [
-          "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
-          "name:ok | image:plh_images/stickers/faces/neutral.svg | image_checked :plh_images/stickers/faces/neutral.svg",
-          "name:sad | image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg"
+          "name:happy | image:plh_images/stickers/faces/happy.svg | image_checked:plh_images/stickers/faces/happy.svg",
+          "name:happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+          "name:happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list_6",
+        "value": [
+          "name:happy | image:plh_images/stickers/faces_yellow/happy.svg | image_checked:plh_images/stickers/faces_yellow/happy.svg",
+          "name:happier | image:plh_images/stickers/faces_yellow/happier.svg | image_checked:plh_images/stickers/faces_yellow/happier.svg",
+          "name:happiest | image:plh_images/stickers/faces_yellow/happiest.svg | image_checked:plh_images/stickers/faces_yellow/happiest.svg"
         ],
         "type": "set_variable"
       },
@@ -10085,13 +10497,8 @@
         "value": "@local.radio_group_text"
       },
       {
-        "type": "text",
-        "name": "text_result",
-        "value": "@local.radio_group_text._value"
-      },
-      {
         "type": "radio_group",
-        "name": "radio_group_image",
+        "name": "radio_group_image_1",
         "value": "nothing selected",
         "parameter_list": {
           "radio_button_type": "btn_square",
@@ -10106,10 +10513,28 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_image_outline",
+        "name": "radio_group_image_2",
+        "parameter_list": {
+          "radio_button_type": "btn_square",
+          "answer_list": "@local.answer_list_6"
+        },
+        "comments": "radio_button_type: btn_image; \nanswer_list: @local.answer_list_5;"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_image_outline_1",
         "parameter_list": {
           "radio_button_type": "btn_icon",
           "answer_list": "@local.answer_list_5"
+        },
+        "comments": "radio_button_type: btn_image; \nanswer_list: @local.answer_list_5;\nstyle:outline"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_image_outline_2",
+        "parameter_list": {
+          "radio_button_type": "btn_icon",
+          "answer_list": "@local.answer_list_6"
         },
         "comments": "radio_button_type: btn_image; \nanswer_list: @local.answer_list_5;\nstyle:outline"
       }
@@ -10410,62 +10835,58 @@
       {
         "type": "title",
         "name": "title_debug_with_help_tooltip",
-        "value": "text title1",
+        "value": "tiny title left",
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right",
-          "text_align": "left"
+          "style": "left tiny"
         }
       },
       {
         "type": "title",
         "name": "title_debug_without_help_tooltip",
-        "value": "text title2",
+        "value": "alternative center small",
         "parameter_list": {
-          "text_align": "left"
+          "style": "center small alternative"
         }
       },
       {
         "type": "title",
         "name": "title_debug_text_aligh_center",
-        "value": "text title3",
+        "value": "medium right ",
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right",
-          "text_align": "center",
-          "style": "alternative"
+          "style": "medium right"
         }
       },
       {
         "type": "title",
         "name": "title_debug_text_aligh_left",
-        "value": "text title4",
+        "value": "large alternative",
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right",
-          "text_align": "left"
+          "style": "large alternative"
         }
       },
       {
         "type": "title",
         "name": "title_debug_text_aligh_right",
-        "value": "text title5",
+        "value": "huge center",
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right",
-          "text_align": "right",
-          "style": "huge"
+          "style": "huge center"
         }
       },
       {
         "type": "title",
-        "name": "title_debug_style_white",
-        "value": "text title6",
+        "name": "title_debug_text_aligh_right",
+        "value": "Default title",
         "parameter_list": {
           "help": "some help",
-          "tooltip_position": "right",
-          "text_align": "left",
-          "style": "alternative large"
+          "tooltip_position": "right"
         }
       }
     ],
@@ -10656,222 +11077,47 @@
       {
         "type": "subtitle",
         "name": "subtitle_debug_style_primary",
-        "value": "primary style"
+        "value": "default"
       },
       {
         "type": "subtitle",
         "name": "subtitle_debug_style_active",
-        "value": "white style",
+        "value": "alternative small",
         "parameter_list": {
-          "style": "large"
+          "style": "alternative small"
         }
       },
       {
         "type": "subtitle",
         "name": "subtitle_debug_text_align_left",
-        "value": "text align left",
+        "value": "medium right",
         "parameter_list": {
-          "text_align": "left"
+          "style": "medium right"
         }
       },
       {
         "type": "subtitle",
         "name": "subtitle_debug_text_align_center",
-        "value": "text align center",
+        "value": "large center",
         "parameter_list": {
-          "text_align": "center",
-          "style": "small alternative"
+          "style": "large center"
         }
       },
       {
         "type": "subtitle",
         "name": "subtitle_debug_text_right",
-        "value": "text align right",
+        "value": "center contextual",
         "parameter_list": {
-          "text_align": "right",
-          "style": "contextual large"
+          "style": "center contextual"
         }
       },
       {
         "type": "subtitle",
         "name": "subtitle_debug_text_right",
-        "value": "text align right",
+        "value": "emphasised alternative",
         "parameter_list": {
-          "text_align": "center",
-          "style": "emphasised large alternative"
+          "style": "emphasised alternative"
         }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "feature_workshops_page",
-    "status": "released",
-    "rows": [
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "title",
-            "value": "Weekly Workshops",
-            "parameter_list": {
-              "help": "seme help"
-            }
-          },
-          {
-            "type": "button",
-            "name": "options_button",
-            "value": "Options",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "pop_up",
-                "args": [],
-                "_raw": "pop_up | workshop_options_popup",
-                "_cleaned": "click | pop_up | workshop_options_popup"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "tile_component",
-        "name": "quick_start",
-        "value": "@local.group_name\nStart @local.next_workshop_name",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "@local.next_workshop"
-            ],
-            "_raw": "click | go_to : @local.next_workshop",
-            "_cleaned": "click | go_to : @local.next_workshop"
-          }
-        ],
-        "parameter_list": {
-          "first_line_text": "My Group",
-          "second_line_text": "Start week one",
-          "style": "quick_start",
-          "icon_src": "plh_images/icons/star.svg"
-        },
-        "comments": "Not sure how to do this"
-      },
-      {
-        "type": "workshops_accordion",
-        "comments": "Could make this more generic name such as\nbegin_accordion_stepper\nBut this would require extra info on syntax for workshop completion / partial completion",
-        "rows": [
-          {
-            "type": "accordion_section",
-            "value": 100,
-            "disabled": "false",
-            "parameter_list": {
-              "state": "open",
-              "status": "completed",
-              "title": "Description of week one"
-            },
-            "comments": "title - accordion tile title, value - number 0-100, state: open | closed, status: completed | uncompleted | disabled",
-            "rows": [
-              {
-                "type": "button",
-                "name": "button_completed",
-                "value": "Emit completed",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "go_to",
-                    "args": [
-                      "w_self_care_stepper"
-                    ],
-                    "_raw": "click | go_to:w_self_care_stepper",
-                    "_cleaned": "click | go_to:w_self_care_stepper"
-                  }
-                ],
-                "parameter_list": {
-                  "style": "active"
-                }
-              }
-            ]
-          },
-          {
-            "type": "accordion_section",
-            "value": 100,
-            "disabled": "false",
-            "parameter_list": {
-              "state": "closed",
-              "completed": "true",
-              "title": "With template"
-            },
-            "comments": "!@field.w_week2_unlocked",
-            "rows": [
-              {
-                "type": "template",
-                "name": "test_template",
-                "value": "care_together",
-                "rows": []
-              }
-            ]
-          },
-          {
-            "type": "accordion_section",
-            "value": 70,
-            "disabled": "false",
-            "parameter_list": {
-              "state": "closed",
-              "title": "Description of week three"
-            },
-            "comments": "!@field.w_week3_unlocked",
-            "rows": [
-              {
-                "type": "template",
-                "name": "test_template",
-                "value": "feature_navigation_group",
-                "rows": []
-              }
-            ]
-          },
-          {
-            "type": "accordion_section",
-            "disabled": "!@field.w_week4_unlocked",
-            "parameter_list": {
-              "state": "closed",
-              "status": "disabled",
-              "title": "Description of week four"
-            },
-            "comments": "!@field.w_week4_unlocked",
-            "rows": [
-              {
-                "type": "button",
-                "name": "btn_example_1",
-                "value": "First",
-                "parameter_list": {
-                  "style": "active"
-                }
-              }
-            ]
-          },
-          {
-            "type": "accordion_section",
-            "disabled": "!@field.w_week4_unlocked",
-            "parameter_list": {
-              "state": "closed",
-              "status": "disabled",
-              "title": "Description of week five"
-            },
-            "comments": "!@field.w_week5_unlocked",
-            "rows": [
-              {
-                "type": "button",
-                "name": "btn_example_1",
-                "value": "First",
-                "parameter_list": {
-                  "style": "active"
-                }
-              }
-            ]
-          }
-        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -10893,13 +11139,25 @@
         "rows": [
           {
             "name": "init_value_1",
-            "value": 0,
+            "value": 2,
             "type": "set_variable"
           },
           {
             "type": "parent_point_box",
             "name": "points_example",
             "value": "@local.init_value_1",
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "demo_changed_field_parent_point",
+                  "@local.points_example"
+                ],
+                "_raw": "changed | set_field: demo_changed_field_parent_point: @local.points_example",
+                "_cleaned": "changed | set_field: demo_changed_field_parent_point: @local.points_example"
+              }
+            ],
             "parameter_list": {
               "icon_src": "@local.icon_src",
               "text": "@local.text"
@@ -10917,8 +11175,20 @@
           },
           {
             "type": "parent_point_box",
-            "name": "points_example1",
+            "name": "points_example_1",
             "value": 3,
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "demo_changed_field_parent_point_1",
+                  "@local.points_example_1"
+                ],
+                "_raw": "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
+                "_cleaned": "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1"
+              }
+            ],
             "parameter_list": {
               "icon_src": "@local.icon_src1",
               "text": "@local.text1"
@@ -10936,8 +11206,20 @@
           },
           {
             "type": "parent_point_box",
-            "name": "points_example1",
+            "name": "points_example_2",
             "value": 3,
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "demo_changed_field_parent_point_2",
+                  "@local.points_example_2"
+                ],
+                "_raw": "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
+                "_cleaned": "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2"
+              }
+            ],
             "parameter_list": {
               "icon_src": "@local.icon_src1",
               "text": "@local.text1"
@@ -10947,95 +11229,23 @@
             "name": "icon_src1",
             "value": "plh_images/habits/habit_money_image.svg",
             "type": "set_variable"
-          },
-          {
-            "name": "text1",
-            "value": "Good money choice 1",
-            "type": "set_variable"
           }
         ]
       },
       {
         "type": "text",
         "name": "text_1",
-        "value": "value 1 is @local.points_example"
+        "value": "value 1 is @fields.demo_changed_field_parent_point"
       },
       {
         "type": "text",
         "name": "text_2",
-        "value": "value 2 is @local.points_example_1"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "feature_navigation_group",
-    "status": "released",
-    "rows": [
-      {
-        "type": "display_group",
-        "name": "dg",
-        "parameter_list": {
-          "style": "banner_active",
-          "offset": "30"
-        },
-        "style_list": [
-          "margin: 10px 15px",
-          "min-height: 40px"
-        ],
-        "rows": [
-          {
-            "type": "image",
-            "name": "image",
-            "value": "plh_images/characters/group/talk_together.png",
-            "style_list": [
-              "max-width: 250px"
-            ],
-          }
-        ]
+        "value": "value 2 is @fields.demo_changed_field_parent_point_1"
       },
       {
-        "type": "title",
-        "name": "title_ex",
-        "value": "Relax together",
-        "parameter_list": {
-          "text_align": "center"
-        }
-      },
-      {
-        "type": "subtitle",
-        "name": "subtitle",
-        "value": " Facilitator play the audio...\n",
-        "parameter_list": {
-          "text_align": "center"
-        }
-      },
-      {
-        "type": "display_group",
-        "name": "navigation_dp",
-        "parameter_list": {
-          "style": "navigation"
-        },
-        "comments": "To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets",
-        "rows": [
-          {
-            "type": "button",
-            "name": "button_prev",
-            "value": "Previous",
-            "parameter_list": {
-              "style": "active"
-            }
-          },
-          {
-            "type": "button",
-            "name": "button_next",
-            "value": "Next",
-            "parameter_list": {
-              "style": "active"
-            }
-          }
-        ]
+        "type": "text",
+        "name": "text_3",
+        "value": "value 3 is @fields.demo_changed_field_parent_point_2"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -11699,6 +11909,43 @@
         "type": "text",
         "name": "list1",
         "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n- List item 1\n- List item 2\n- List item 3"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_round_button",
+    "status": "released",
+    "rows": [
+      {
+        "type": "round_button",
+        "name": "round_button_1",
+        "value": "Value",
+        "parameter_list": {
+          "icon_src": "/assets/icon/round-button/message.svg",
+          "text": "Message",
+          "style": "home_screen dark_orange"
+        }
+      },
+      {
+        "type": "round_button",
+        "name": "round_button_2",
+        "value": "Value",
+        "parameter_list": {
+          "icon_src": "/assets/icon/round-button/play.svg",
+          "text": "Start",
+          "style": "home_screen yellow"
+        }
+      },
+      {
+        "type": "round_button",
+        "name": "round_button_2",
+        "value": "Value",
+        "parameter_list": {
+          "icon_src": "/assets/icon/round-button/smile.svg",
+          "style": "home_screen orange"
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -17332,15 +17579,10 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "name:sad | text: Sad",
-                          "name:confused | text:Confused",
-                          "name:angry | text: Angry"
+                          "name:sad | text: Sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
+                          "name:confused | text:Confused | image:plh_images/stickers/faces/confused.svg | image_checked:plh_images/stickers/faces/confused.svg",
+                          "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg | image_checked:plh_images/stickers/faces/angry.svg"
                         ],
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "radio_button_type",
-                        "value": "btn_text",
                         "type": "set_variable"
                       },
                       {
@@ -17669,9 +17911,9 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "name:happy | image:plh_images/stickers/faces/happy.svg",
-                          "name:happier | image:plh_images/stickers/faces/happier.svg",
-                          "name:happiest | image:plh_images/stickers/faces/happiest.svg"
+                          "name:happy | image:plh_images/stickers/faces/happy.svg | image_checked:plh_images/stickers/faces/happy.svg",
+                          "name:happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+                          "name:happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg"
                         ],
                         "type": "set_variable"
                       },
@@ -20153,7 +20395,7 @@
                     "rows": [
                       {
                         "name": "image_src",
-                        "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+                        "value": "plh_images/workshops/praise/reflect_together/slide_1.svg",
                         "type": "set_variable"
                       },
                       {
@@ -20181,7 +20423,7 @@
                         "rows": [
                           {
                             "name": "image_src",
-                            "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+                            "value": "plh_images/workshops/praise/reflect_together/slide_2.svg",
                             "type": "set_variable"
                           },
                           {
@@ -20209,7 +20451,7 @@
                             "rows": [
                               {
                                 "name": "image_src",
-                                "value": "plh_images/workshops/praise/reflect_together/placeholder.svg",
+                                "value": "plh_images/workshops/praise/reflect_together/slide_3.svg",
                                 "type": "set_variable"
                               },
                               {
@@ -20530,15 +20772,10 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "name:sad | text: Sad",
-                          "name:angry | text: Angry",
-                          "name:tired | text:Tired"
+                          "name:sad | text: Sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
+                          "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg | image_checked:plh_images/stickers/faces/angry.svg",
+                          "name:tired | text:Tired | image:plh_images/stickers/faces/tired.svg | image_checked:plh_images/stickers/faces/tired.svg"
                         ],
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "radio_button_type",
-                        "value": "btn_text",
                         "type": "set_variable"
                       },
                       {
@@ -27203,11 +27440,6 @@
                         "type": "set_variable"
                       },
                       {
-                        "name": "options_per_row",
-                        "value": 2,
-                        "type": "set_variable"
-                      },
-                      {
                         "name": "reply",
                         "hidden": "true",
                         "type": "set_variable"
@@ -27231,21 +27463,11 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "name:sad | text: Sad",
-                          "name:scared | text: Scared",
-                          "name:confused | text:Confused",
-                          "name:angry | text: Angry"
+                          "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg",
+                          "name:scared | text: Scared | image:plh_images/stickers/faces/scared.svg",
+                          "name:confused | text:Confused | image:plh_images/stickers/faces/confused.svg",
+                          "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg"
                         ],
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "radio_button_type",
-                        "value": "btn_text",
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "options_per_row",
-                        "value": 2,
                         "type": "set_variable"
                       },
                       {
@@ -27272,21 +27494,11 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "name:sad | text: Sad",
-                          "name:scared | text: Scared",
-                          "name:confused | text:Confused",
-                          "name:angry | text: Angry"
+                          "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg",
+                          "name:scared | text: Scared | image:plh_images/stickers/faces/scared.svg",
+                          "name:confused | text:Confused | image:plh_images/stickers/faces/confused.svg",
+                          "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg"
                         ],
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "radio_button_type",
-                        "value": "btn_text",
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "options_per_row",
-                        "value": 2,
                         "type": "set_variable"
                       },
                       {

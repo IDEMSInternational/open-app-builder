@@ -142,12 +142,6 @@ p {
     margin: 0;
     line-height: 29px;
     font-weight: $font-weight-bold;
-    @media (max-width: 375px) {
-      font-size: 23px !important;
-    }
-    @media (max-width: 320px) {
-      font-size: 20px !important;
-    }
   }
   .alternative {
     line-height: 26px;
@@ -158,6 +152,12 @@ p {
   }
   .tiny {
     font-size: $font-size-title-tiny;
+    @media (max-width: 375px) {
+      font-size: 23px;
+    }
+    @media (max-width: 320px) {
+      font-size: 20px;
+    }
   }
   .medium {
     font-size: $font-size-title-medium;
