@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { TemplateService } from "../../services/template.service";
 import { TemplateLayoutComponent } from "./layout";
 
 @Component({
@@ -72,6 +73,10 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
   sectionIndex = 0;
 
+  constructor(private templateService: TemplateService) {
+    super();
+  }
+
   modifyRowSetter(row: FlowTypes.TemplateRow) {
     if (Array.isArray(row?.value)) {
       this.templateNames = row.value;
@@ -110,7 +115,14 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     //be an integer between 0 and 100 inclusive.
     const progressField = this._row.parameter_list["progress_field"];
     if (progressField && progressField.indexOf("{{") < 0) {
-      const percentDone = Math.ceil(((this.sectionIndex + 1) / this.templateNames.length) * 100);
+      const currentPercentDone = Math.ceil(
+        ((this.sectionIndex + 1) / this.templateNames.length) * 100
+      );
+      const previousPercentDone = Number.parseInt(this.templateService.getField(progressField));
+      let percentDone = currentPercentDone;
+      if (previousPercentDone && previousPercentDone != NaN) {
+        percentDone = Math.max(currentPercentDone, previousPercentDone);
+      }
       this.parent.handleActions(
         [
           {
