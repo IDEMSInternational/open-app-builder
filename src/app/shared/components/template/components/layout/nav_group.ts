@@ -85,9 +85,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     if (action_id === "emit" && args[0] === "completed") {
       if (this.sectionIndex < this.templateNames.length - 1) {
         this.sectionIndex++;
-        //update the field provided in progress_variable to be equal to the max of it's current value
-        //and the percentage of this.sectionIndex from this.templateNames.length. the value should
-        //be an integer between 0 and 100 inclusive.
+        this.updateSectionProgress();
         return false;
       }
     }
@@ -103,5 +101,29 @@ export class NavGroupComponent extends TemplateLayoutComponent {
 
   goToSection(index: number) {
     this.sectionIndex = index;
+    this.updateSectionProgress();
+  }
+
+  updateSectionProgress() {
+    //update the field provided in progress_variable to be equal to the max of it's current value
+    //and the percentage of this.sectionIndex from this.templateNames.length. the value should
+    //be an integer between 0 and 100 inclusive.
+    const progressField = this._row.parameter_list["progress_field"];
+    if (progressField && progressField.indexOf("{{") < 0) {
+      const percentDone = Math.ceil(((this.sectionIndex + 1) / this.templateNames.length) * 100);
+      this.parent.handleActions(
+        [
+          {
+            action_id: "set_field",
+            args: [progressField, "" + percentDone],
+            trigger: "completed",
+            _triggeredBy: "nav_group",
+          },
+        ],
+        "nav_group"
+      );
+    } else {
+      console.warn("No progress field", progressField);
+    }
   }
 }
