@@ -255,13 +255,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         localVariables[name] = variables[name] || {};
         // handle merging updated properties
 
-        // TODO - also want to retain dynamic variables on replacement
-
         // Replace any dynamic fields with their evaluations
         const evalContext = { localVariables, template: this.template, row, field: null };
         const parsedRow = this.templateVariables.evaluatePLHData(row, evalContext, ["comments"]);
         Object.keys(parsedRow).forEach((field) => {
           const fieldValue = parsedRow[field];
+          // TODO - also want to retain dynamic variables on replacement
+          // const dynamicFields = parsedRow[field]._dynamicFields;
+
           //  don't override values that have otherwise been set from parent or nested properties
           // local variables within r[field] are parsed
           if (!variables[name].hasOwnProperty(field)) {
@@ -326,7 +327,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       // handle updates where field defined with dynamic expressions
       const template = this.template;
       const evaluationContext = { localVariables: variables, template, row, field: null };
-      row = this.templateVariables.evaluatePLHData(row, evaluationContext, ["rows"]);
+      const evaluationOmit = ["rows"];
+      row = this.templateVariables.evaluatePLHData(row, evaluationContext, evaluationOmit);
 
       // handle nested templates
       if (row.rows) {
@@ -369,9 +371,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     );
   }
 
-  /** When using ngFor loop track by  */
+  /**
+   * When using ngFor loop track by to ensure updates correctly propagated on change
+   * Most important is to keep track of row value as updates to this will want UI refresh
+   */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
-    return row.name || row.value || index;
+    return `${row.name}-${row.value}-${index}`;
   }
 
   /** Query params are used to track state across navigation events */
