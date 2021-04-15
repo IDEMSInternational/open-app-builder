@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { TemplateService } from "../../services/template.service";
 import { TemplateLayoutComponent } from "./layout";
 
 @Component({
@@ -72,6 +73,10 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
   sectionIndex = 0;
 
+  constructor(private templateService: TemplateService) {
+    super();
+  }
+
   modifyRowSetter(row: FlowTypes.TemplateRow) {
     if (Array.isArray(row?.value)) {
       this.templateNames = row.value;
@@ -85,6 +90,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     if (action_id === "emit" && args[0] === "completed") {
       if (this.sectionIndex < this.templateNames.length - 1) {
         this.sectionIndex++;
+        this.updateSectionProgress();
         return false;
       }
     }
@@ -100,5 +106,36 @@ export class NavGroupComponent extends TemplateLayoutComponent {
 
   goToSection(index: number) {
     this.sectionIndex = index;
+    this.updateSectionProgress();
+  }
+
+  updateSectionProgress() {
+    //update the field provided in progress_variable to be equal to the max of it's current value
+    //and the percentage of this.sectionIndex from this.templateNames.length. the value should
+    //be an integer between 0 and 100 inclusive.
+    const progressField = this._row.parameter_list["progress_field"];
+    if (progressField && progressField.indexOf("{{") < 0) {
+      const currentPercentDone = Math.ceil(
+        ((this.sectionIndex + 1) / this.templateNames.length) * 100
+      );
+      const previousPercentDone = Number.parseInt(this.templateService.getField(progressField));
+      let percentDone = currentPercentDone;
+      if (previousPercentDone && previousPercentDone != NaN) {
+        percentDone = Math.max(currentPercentDone, previousPercentDone);
+      }
+      this.parent.handleActions(
+        [
+          {
+            action_id: "set_field",
+            args: [progressField, "" + percentDone],
+            trigger: "completed",
+            _triggeredBy: "nav_group",
+          },
+        ],
+        "nav_group"
+      );
+    } else {
+      console.warn("No progress field", progressField);
+    }
   }
 }
