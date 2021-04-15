@@ -3170,115 +3170,8 @@
         "name": "text"
       },
       {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "button",
-        "name": "button_1",
-        "hidden": "true"
-      },
-      {
-        "type": "button",
-        "name": "button_2",
-        "hidden": "true"
-      },
-      {
-        "type": "button",
-        "name": "button_3",
-        "hidden": "true"
-      },
-      {
         "type": "template",
 <<<<<<< HEAD
-        "name": "combo_box_2",
-        "value": "box_combo_box",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": "true",
-            "rows": []
-=======
-        "name": "widget_timer",
-        "value": "widget_timer",
-        "rows": [
-          {
-            "name": "duration",
-            "value": "@local.timer_duration",
-            "type": "set_variable"
-          },
-          {
-            "name": "duration_extension",
-            "value": "@local.timer_duration_extension",
-            "type": "set_variable"
-          },
-          {
-            "value": "@local.timer_title",
-            "type": "set_variable"
-          },
-          {
-            "name": "title",
-            "value": "@local.timer_help",
-            "type": "set_variable"
-          },
-          {
-            "name": "help",
-            "type": "set_variable"
->>>>>>> accordion changes
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "comments": "This should be: \ncompleted | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-<<<<<<< HEAD
-    "flow_name": "box_duo_radio_buttons",
-=======
-    "flow_name": "box_duo_combo_box",
->>>>>>> accordion changes
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-<<<<<<< HEAD
-        "name": "radio_buttons_1",
-        "value": "box_radio_buttons",
-=======
-        "name": "combo_box_1",
-        "value": "box_combo_box",
->>>>>>> accordion changes
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": "true",
-            "rows": []
-          }
-        ]
-      },
-      {
-        "type": "template",
 <<<<<<< HEAD
         "name": "widget_audio",
         "value": "widget_audio",
@@ -3290,6 +3183,10 @@
         "name": "combo_box_2",
         "value": "box_combo_box",
 >>>>>>> accordion changes
+>>>>>>> accordion changes
+=======
+        "name": "combo_box_2",
+        "value": "box_combo_box",
 >>>>>>> accordion changes
         "rows": [
           {
@@ -3315,6 +3212,7 @@
           }
         ],
 <<<<<<< HEAD
+<<<<<<< HEAD
         "comments": "completed | emit:completed; completed | emit:completed:widget_audio",
 =======
 <<<<<<< HEAD
@@ -3322,6 +3220,9 @@
 =======
         "comments": "This should be: \ncompleted | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
 >>>>>>> accordion changes
+>>>>>>> accordion changes
+=======
+        "comments": "This should be: \ncompleted | complete:combo_box_1;\ncompleted | complete:combo_box_2; \ncompleted | emit:completed",
 >>>>>>> accordion changes
         "rows": []
       }
@@ -3331,6 +3232,7 @@
   {
     "flow_type": "template",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "flow_name": "box_image",
 =======
 <<<<<<< HEAD
@@ -3338,6 +3240,9 @@
 =======
     "flow_name": "box_duo_radio_buttons",
 >>>>>>> accordion changes
+>>>>>>> accordion changes
+=======
+    "flow_name": "box_duo_radio_buttons",
 >>>>>>> accordion changes
     "status": "released",
     "rows": [
@@ -3361,9 +3266,6 @@
       },
       {
         "type": "template",
-<<<<<<< HEAD
-        "name": "radio_buttons_3",
-=======
         "name": "nav_buttons",
         "value": "nav_buttons",
         "action_list": [
@@ -3399,7 +3301,6 @@
 =======
         "type": "template",
         "name": "radio_buttons_1",
->>>>>>> accordion changes
         "value": "box_radio_buttons",
         "rows": [
           {
@@ -3412,8 +3313,6 @@
       },
       {
         "type": "template",
-<<<<<<< HEAD
-=======
         "name": "radio_buttons_2",
         "value": "box_radio_buttons",
         "rows": [
@@ -3437,7 +3336,6 @@
         "hidden": "true"
 =======
         "type": "template",
->>>>>>> accordion changes
         "name": "radio_buttons_4",
         "value": "box_radio_buttons",
         "rows": [
@@ -3560,90 +3458,6 @@
 =======
         "name": "progress_bar_value",
         "type": "set_variable"
-<<<<<<< HEAD
-      },
-      {
-        "name": "progress_bar_num_items",
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_bar",
-        "value": "@local.progress_bar_value",
-        "parameter_list": {
-          "num_items": "@local.progress_bar_num_items"
-        },
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_field_name",
-        "type": "set_variable"
-      },
-      {
-        "type": "nav_group",
-        "name": "nav_template_list",
-        "comments": "in parameter list: progress_variable:@local.progress_field_name"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_activity",
-    "status": "released",
-    "rows": [
-      {
-        "name": "activity_image_src",
-        "value": "src/assets/not-found-image.png",
-        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content. It occasionally has an outro.",
-        "type": "set_variable"
-      },
-      {
-        "name": "activity_title",
-        "value": "Title of this activity",
-        "type": "set_variable"
-      },
-      {
-        "name": "include_outro",
-        "value": "false",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_intro",
-        "value": "false",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_content",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_outro",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "type": "display_theme",
-        "name": "display_theme",
-        "value": "passive_theme"
-      },
-      {
-        "type": "animated_section",
-        "name": "intro",
-        "value": "fade_in_out",
-        "hidden": "@local.hide_intro",
-        "rows": [
-          {
-            "type": "display_group",
-            "parameter_list": {
-              "style": "banner",
-              "offset": "20"
-            },
-            "rows": [
-              {
-                "type": "image",
-                "name": "intro_image_src",
-=======
       },
       {
         "name": "progress_bar_num_items",
@@ -3843,7 +3657,59 @@
                 "type": "set_variable"
               }
             ]
+<<<<<<< HEAD
 =======
+=======
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "content",
+        "hidden": "@local.hide_content",
+        "rows": [
+          {
+            "type": "display_group",
+            "name": "activity_banner",
+            "hidden": "true",
+            "parameter_list": {
+              "style": "banner"
+            },
+            "rows": [
+              {
+                "type": "title",
+                "name": "banner_title",
+                "value": "@local.activity_title"
+              },
+              {
+                "type": "image",
+                "name": "banner_image_src",
+                "value": "@local.activity_image",
+                "parameter_list": {
+                  "background_box": "true"
+                }
+              }
+            ]
+          },
+          {
+            "type": "template",
+            "name": "content_box",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_content:true",
+                "_cleaned": "completed | set_local:hide_content:true"
+              },
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+>>>>>>> accordion changes
                   "hide_outro",
                   "false"
                 ],
@@ -3896,7 +3762,6 @@
             "name": "nav_buttons",
             "hidden": "true",
             "rows": []
->>>>>>> accordion changes
           }
         ]
       },
@@ -3912,141 +3777,6 @@
             "hidden": "true",
 =======
         "type": "animated_section",
-<<<<<<< HEAD
-        "name": "content",
-        "hidden": "@local.hide_content",
-        "rows": [
-          {
-            "type": "display_group",
-            "name": "activity_banner",
-            "hidden": "true",
-            "parameter_list": {
-              "style": "banner"
-            },
-            "rows": [
-              {
-                "type": "title",
-                "name": "banner_title",
-                "value": "@local.activity_title"
-              },
-              {
-                "type": "image",
-                "name": "banner_image_src",
-=======
-        "name": "outro",
-        "value": "fade_in_out",
-        "hidden": "@local.hide_outro",
-        "rows": [
-          {
-            "type": "display_group",
-            "parameter_list": {
-              "style": "banner",
-              "offset": "20"
-            },
-            "rows": [
-              {
-                "type": "image",
-                "name": "outro_image_src",
->>>>>>> accordion changes
-                "value": "@local.activity_image",
-                "parameter_list": {
-                  "background_box": "true"
-                }
-              }
-            ]
-<<<<<<< HEAD
-          },
-          {
-            "type": "template",
-            "name": "content_box",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_content",
-                  "true"
-                ],
-                "_raw": "completed | set_local:hide_content:true",
-                "_cleaned": "completed | set_local:hide_content:true"
-              },
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_outro",
-                  "false"
-                ],
-                "_raw": "completed | set_local:hide_outro:false",
-                "_cleaned": "completed | set_local:hide_outro:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_intro",
-                  "false"
-                ],
-                "_raw": "uncompleted | set_local:hide_intro:false",
-                "_cleaned": "uncompleted | set_local:hide_intro:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_content",
-                  "true"
-                ],
-                "_raw": "uncompleted | set_local:hide_content:true",
-                "_cleaned": "uncompleted | set_local:hide_content:true"
-              }
-            ],
-            "hidden": "!@local.include_outro",
-            "comments": "Do this row when include_outro = TRUE\n!@local.include_outro",
-            "rows": []
-          },
-          {
-            "type": "template",
-            "name": "content_box",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "emit",
-                "args": [
-                  "completed"
-                ],
-                "_raw": "completed | emit:completed",
-                "_cleaned": "completed | emit:completed"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_intro",
-                  "false"
-                ],
-                "_raw": "uncompleted | set_local:hide_intro:false",
-                "_cleaned": "uncompleted | set_local:hide_intro:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_content",
-                  "true"
-                ],
-                "_raw": "uncompleted | set_local:hide_content:true",
-                "_cleaned": "uncompleted | set_local:hide_content:true"
-              }
-            ],
-            "hidden": "@local.include_outro",
-            "comments": "Do this row when include_outro = FALSE\n@local.include_outro",
-            "rows": []
-          }
-        ]
-      },
-      {
-        "type": "animated_section",
         "name": "outro",
         "value": "fade_in_out",
         "hidden": "@local.hide_outro",
@@ -4067,39 +3797,6 @@
                 }
               }
             ]
-          },
-          {
-            "type": "title",
-            "name": "outro_title",
-            "value": "@local.activity_title",
-            "hidden": "true"
-          },
-          {
-            "type": "text",
-            "name": "outro_text"
-          },
-          {
-            "type": "button",
-            "name": "outro_button",
-            "hidden": "true"
-          },
-          {
-            "type": "dashed_box",
-            "name": "outro_habit_text",
-            "hidden": "true",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star_circle.svg",
-              "icon_position": "top-left"
-            }
-          },
-          {
-            "type": "template",
-            "name": "outro_nav_buttons",
-            "value": "nav_buttons",
-            "action_list": [
-              {
-                "trigger": "completed",
-=======
           },
           {
             "type": "title",
@@ -4174,11 +3871,11 @@
             "action_list": [
               {
                 "trigger": "click",
->>>>>>> accordion changes
                 "action_id": "emit",
                 "args": [
                   "completed"
                 ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                 "_raw": "completed | emit:completed",
                 "_cleaned": "completed | emit:completed"
@@ -4187,6 +3884,8 @@
 >>>>>>> accordion changes
             "rows": []
 =======
+=======
+>>>>>>> accordion changes
                 "_raw": "click | emit:completed",
                 "_cleaned": "click | emit:completed"
               }
@@ -4220,7 +3919,6 @@
             "style_list": [
               "flex:1"
             ]
->>>>>>> accordion changes
           }
         ]
       },
@@ -4243,6 +3941,7 @@
         "rows": []
       }
     ],
+<<<<<<< HEAD
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
   },
   {
@@ -4332,10 +4031,13 @@
         ]
       }
     ],
+=======
+>>>>>>> accordion changes
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
   },
   {
     "flow_type": "template",
+<<<<<<< HEAD
     "flow_name": "pair",
     "status": "released",
     "rows": [
@@ -4435,6 +4137,8 @@
           }
         ]
 =======
+=======
+>>>>>>> accordion changes
     "flow_name": "pair",
 >>>>>>> accordion changes
     "status": "released",
@@ -4478,7 +4182,10 @@
           }
         ]
 <<<<<<< HEAD
+<<<<<<< HEAD
       },
+=======
+>>>>>>> accordion changes
 =======
 >>>>>>> accordion changes
       }
@@ -10807,45 +10514,6 @@
         "type": "set_variable"
       },
       {
-<<<<<<< HEAD
-        "type": "radio_group",
-        "name": "radio_group_square_ex3",
-        "value": "Smile",
-        "parameter_list": {
-          "radio_button_type": "btn_icon",
-          "answer_list": "@local.answer3_list",
-          "options_per_row": "@local.options_per_row"
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_result_ex_1",
-        "value": "@local.radio_group_square_ex1"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_square_ex1",
-        "value": "Black",
-        "parameter_list": {
-          "radio_button_type": "btn_text",
-          "answer_list": "@local.answer2_list",
-          "options_per_row": "3",
-          "options_per_row_min": "2",
-          "style": "passive"
-        }
-      },
-      {
-        "name": "answer2_list",
-        "value": [
-          "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
-          "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
-          "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue"
-        ],
-        "type": "set_variable"
-      },
-      {
-=======
->>>>>>> accordion changes
         "name": "radio_button_type",
         "value": "btn_text",
         "type": "set_variable"
@@ -11686,8 +11354,9 @@
           {
             "type": "accordion_section",
             "value": 100,
+            "disabled": "false",
             "parameter_list": {
-              "state": "closed",
+              "state": "open",
               "status": "completed",
               "title": "Description of week one"
             },
@@ -11717,6 +11386,7 @@
           {
             "type": "accordion_section",
             "value": 100,
+            "disabled": "false",
             "parameter_list": {
               "state": "closed",
               "status": "completed",
@@ -11735,8 +11405,9 @@
           {
             "type": "accordion_section",
             "value": 70,
+            "disabled": "false",
             "parameter_list": {
-              "state": "open",
+              "state": "closed",
               "title": "Description of week three"
             },
             "comments": "!@field.w_week3_unlocked",
@@ -11751,6 +11422,7 @@
           },
           {
             "type": "accordion_section",
+            "disabled": "!@field.w_week4_unlocked",
             "parameter_list": {
               "state": "closed",
               "status": "disabled",
@@ -11770,6 +11442,7 @@
           },
           {
             "type": "accordion_section",
+            "disabled": "!@field.w_week4_unlocked",
             "parameter_list": {
               "state": "closed",
               "status": "disabled",
@@ -12075,7 +11748,7 @@
             "value": "plh_images/characters/group/talk_together.png",
             "style_list": [
               "max-width: 250px"
-            ],
+            ]
           }
         ]
       },
@@ -12783,6 +12456,7 @@
         "type": "text",
         "name": "list1",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n- List item 1\n- List item 2\n- List item 3"
 =======
 <<<<<<< HEAD
@@ -12790,6 +12464,9 @@
 =======
         "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n- List item 1\n- List item 2\n- List item 3"
 >>>>>>> accordion changes
+>>>>>>> accordion changes
+=======
+        "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n- List item 1\n- List item 2\n- List item 3"
 >>>>>>> accordion changes
       }
     ],

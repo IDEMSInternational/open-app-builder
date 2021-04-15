@@ -18,16 +18,16 @@ import { TemplateBaseComponent } from "../base";
   template: `<div class="accordion-wrapper">
     <div
       [ngClass]="{
-        completed: completed && _row.disabled === 'false',
+        completed: completed,
         disabled: _row.disabled === 'true',
-        inProgress: _row.disabled !== 'true' && !completed
+        inProgress: percentComplete > 0
       }"
       class="accordion-status"
     >
       <img
         *ngIf="completed && _row.disabled !== 'true'"
         class="tick-icon"
-        src="/assets/plh_assets/plh_images/icons/tick.svg"
+        src="/assets/plh_assets/plh_images/icons/tick_light.svg"
       />
       <img *ngIf="_row.disabled === 'true'" src="/assets/plh_assets/plh_images/icons/lock.svg" />
     </div>
@@ -35,9 +35,9 @@ import { TemplateBaseComponent } from "../base";
       class="accordion-section"
       [ngClass]="{
         openSection: _row.parameter_list.state === 'open',
-        completed: completed
+        completed: completed,
+        inProgress: percentComplete > 0 && percentComplete < 100
       }"
-      [class.open-section]="_row.parameter_list.state === 'open'"
     >
       <div class="progress" [ngStyle]="{ width: percentComplete + '%' }"></div>
       <h2 (click)="toggleOpen()">{{ title }}</h2>
