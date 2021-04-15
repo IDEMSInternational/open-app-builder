@@ -142,6 +142,12 @@ p {
     margin: 0;
     line-height: 29px;
     font-weight: $font-weight-bold;
+    @media (max-width: 375px) {
+      font-size: 23px;
+    }
+    @media (max-width: 320px) {
+      font-size: 20px;
+    }
   }
   .alternative {
     line-height: 26px;
@@ -158,6 +164,9 @@ p {
     @media (max-width: 320px) {
       font-size: 20px;
     }
+  }
+  .small {
+    font-size: $font-size-title-small;
   }
   .medium {
     font-size: $font-size-title-medium;
@@ -185,11 +194,11 @@ p {
   h2 {
     line-height: $line-height-text;
   }
-  .small {
-    font-size: $font-size-subtitle-small;
-  }
   .medium {
     font-size: $font-size-subtitle-medium;
+  }
+  .small {
+    font-size: $font-size-subtitle-small;
   }
   .large {
     font-size: $font-size-subtitle-large;
