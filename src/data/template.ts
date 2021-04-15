@@ -11097,11 +11097,26 @@
       },
       {
         "type": "subtitle",
-        "name": "subtitle_debug_text_right",
-        "value": "text align right",
+        "name": "subtitle_debug_text_align_center",
+        "value": "large center",
         "parameter_list": {
-          "text_align": "center",
-          "style": "emphasised large alternative"
+          "style": "large center"
+        }
+      },
+      {
+        "type": "subtitle",
+        "name": "subtitle_debug_text_right",
+        "value": "center contextual",
+        "parameter_list": {
+          "style": "center contextual"
+        }
+      },
+      {
+        "type": "subtitle",
+        "name": "subtitle_debug_text_right",
+        "value": "emphasised alternative",
+        "parameter_list": {
+          "style": "emphasised alternative"
         }
       }
     ],

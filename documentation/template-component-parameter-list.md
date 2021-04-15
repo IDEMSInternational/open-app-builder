@@ -107,8 +107,21 @@ If category_list is not available we generate list of values based on min_value,
 - value - any. Text of title. Default undefined.
 - help - string or null.
 - tooltip_position - string. Default - 'right' 
-- text_align - string. Default - 'left'
-- style - string. Setting style of the text. Default - 'primary'. Styles: 'primary', 'white'.
+- style - string or null. Class name.  Default - 'tiny standard'
+- Style list:
+   - Style font-size: 
+      'tiny' -> 24px (default)'
+      'small -> 26px', 
+      'medium -> 30px', 
+      'large -> 34px',
+      'huge -> 36px'
+   - Style colour: 'standard', 'alternative'. 
+   - Style format:  
+      'normal -> no italics, medium (default)',
+   - Style aligned:  
+      'left -> Left Aligned (default)', 
+      'right -> Right Aligned',
+      'center -> Centered'
 
 ## DisplayGroupComponent - TmplDisplayGroupComponent
 - type - display_group.
@@ -119,9 +132,21 @@ If category_list is not available we generate list of values based on min_value,
   #### If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
 ## SubtitleComponent - TmplSubtitleComponent
 - type - subtitle.
-- text_align - string. Default - left.
-- style - string or null. Name of default css class. (white | passive) Default - passive
-
+- style - string or null. Class name.  Default - 'standard medium'
+- Style list:
+   - Style font-size: 
+      'small -> 18px', 
+      'medium -> 20px (default)', 
+      'large -> 22px', .
+   - Style colour: 'standard', 'alternative'. 
+   - Style format:  
+      'normal -> no italics, medium (default)',
+      'contextual -> italics, medium',
+      'emphasised -> bold, no italics'.
+   - Style aligned:  
+      'left -> Left Aligned (default)', 
+      'right -> Right Aligned',
+      'center -> Centered'
 ## PointBoxComponent - TmplPointBoxComponent
 - type - parent_point_box.
 - value - number. Default 0.
