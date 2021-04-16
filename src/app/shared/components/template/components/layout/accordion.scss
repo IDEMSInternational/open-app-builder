@@ -1,3 +1,4 @@
+@import "../../../../../../theme/variables.scss";
 .workshops-accordion {
   position: relative;
   margin-top: 20px;
@@ -7,72 +8,83 @@
     height: calc(100% - 35px);
     background: var(--ion-color-tertiary);
     position: absolute;
-    left: 10%;
+    left: 21px;
     top: 0;
     margin-top: 15px;
-    @media (min-width: 768px) {
-      left: 9%;
-    }
   }
 }
 .accordion-wrapper {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  margin-bottom: 15px;
   height: 100%;
   .accordion-status {
-    width: 32px;
-    height: 32px;
-    margin-top: 7px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    padding: 5px;
-    background: rgba(255, 255, 255, 1);
+    padding: 6px;
     display: flex;
+    justify-content: center;
+    background: var(--ion-color-primary-contrast);
     z-index: 2;
+    &.inProgress {
+      background: var(--ion-accordion-bg);
+    }
+    &.disabled {
+      background: var(--ion-color-primary-contrast);
+    }
+    &.completed {
+      background: var(--ion-accordion-bg);
+    }
   }
   .accordion-section {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 75%;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 1);
+    width: 85%;
+    border-radius: $border-radius-standard;
     overflow: hidden;
     max-height: 43px;
-    color: var(--ion-color-primary);
-    border: 1px solid var(--ion-color-tertiary);
+    padding: 0 10px 10px 10px;
+    border: 1px solid var(--ion-color-primary);
     transition: max-height 0.4s;
+    overflow-y: hidden;
+    &.completed {
+      background: var(--ion-accordion-bg);
+      .progress {
+        opacity: 0;
+      }
+    }
+    &.disabled {
+      background: var(--ion-color-primary-contrast);
+      color: var(--ion-color-primary);
+      .progress {
+        opacity: 0;
+      }
+    }
+    &.inProgress {
+      background: var(--ion-color-primary-contrast);
+      color: var(--ion-color-primary);
+    }
+    &.openSection {
+      max-height: 600px !important;
+      background: var(--ion-accordion-bg);
+      transition: max-height 0.4s;
+      color: var(--ion-color-primary-contrast);
+      .progress {
+        opacity: 0;
+        transition: none !important;
+      }
+    }
     .progress {
       position: absolute;
       height: 100%;
+      left: 0;
       border-radius: 0 13px 13px 0;
       z-index: 1;
-      background: linear-gradient(168.11deg, #69cce7 36%, #0c7e9d 111.65%);
+      background: var(--ion-accordion-progress-secondary-gradient);
+      opacity: 1;
       transition: opacity 0.4s ease-in;
     }
   }
-}
-
-.openSection {
-  max-height: 1000px !important;
-  background: rgba(255, 255, 255, 1);
-  transition: max-height 0.4s;
-  & .progress {
-    opacity: 0;
-    transition: none !important;
-  }
-}
-
-.completed {
-  background: linear-gradient(168.11deg, #69cce7 36%, #0c7e9d 111.65%) !important;
-  & .progress {
-    opacity: 0;
-  }
-}
-.inProgress {
-  background: rgba(47, 156, 185, 1) !important;
-}
-
-.tick-icon {
-  filter: brightness(0) invert(1);
 }

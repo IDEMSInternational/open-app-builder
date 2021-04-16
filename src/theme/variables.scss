@@ -21,9 +21,10 @@ $dark: #00000040;
 
 /** Title **/
 $font-size-title-tiny: 24px;
-$font-size-title-medium: 26px;
-$font-size-title-large: 30px;
-$font-size-title-largest: 34px;
+$font-size-title-small: 26px;
+$font-size-title-medium: 30px;
+$font-size-title-large: 34px;
+$font-size-title-largest: 36px;
 
 /** Subtitle **/
 $font-size-subtitle-small: 18px;
@@ -80,7 +81,6 @@ $main-container-padding: 0 10px;
   );
 
   // options buttons
-  $primary: hsl(203, 76%, 21%);
   --ion-gradient-primary-option-start: #{color.adjust($primary, $saturation: 8%, $lightness: 17%)};
   --ion-gradient-primary-option-end: #{$primary};
 
@@ -91,7 +91,6 @@ $main-container-padding: 0 10px;
   );
 
   // banner
-  $secondary: hsl(31, 95%, 57%);
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,
       $saturation: 5%,
@@ -113,6 +112,43 @@ $main-container-padding: 0 10px;
     var(--ion-banner-gradient-primary-start) 34.6%,
     var(--ion-banner-gradient-primary-middle) 65.78%,
     var(--ion-banner-gradient-primary-end) 105.68%
+  );
+  // accordion
+  --ion-accordion-gradient-start: #{color.adjust(
+      $primary,
+      $hue: -8,
+      $saturation: 8%,
+      $lightness: 17%
+    )};
+  --ion-accordion-gradient-end: var(--ion-color-primary);
+  --ion-accordion-bg: linear-gradient(
+    168.87deg,
+    var(--ion-accordion-gradient-start) 28.12%,
+    var(--ion-accordion-gradient-end) 100%
+  );
+  --ion-accordion-progress-gradient-primery-start: #{color.adjust(
+      $primary,
+      $hue: -9,
+      $saturation: 3%,
+      $lightness: 11%
+    )};
+  --ion-accordion-progress-gradient-primery-end: var(--ion-color-primary);
+  --ion-accordion-progress-primary-gradient: linear-gradient(
+    168.87deg,
+    var(--ion-accordion-progress-gradient-primery-start-start) 28.12%,
+    var(--ion-accordion-progress-gradient-primery-end-end) 100%
+  );
+  --ion-accordion-progress-gradient-secondary-start: #{color.adjust(
+      $secondary,
+      $hue: 17,
+      $saturation: -5%,
+      $lightness: -6%
+    )};
+  --ion-accordion-progress-gradient-secondary-end: var(--ion-color-secondary);
+  --ion-accordion-progress-secondary-gradient: linear-gradient(
+    281.65deg,
+    var(--ion-accordion-progress-gradient-secondary-start) 41.02%,
+    var(--ion-accordion-progress-gradient-secondary-end) 102.14%
   );
 
   --ion-dg-bg-default: var(--ion-banner-primary);
