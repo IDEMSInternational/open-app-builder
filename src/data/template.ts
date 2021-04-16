@@ -885,8 +885,8 @@
       {
         "name": "answer_list_4",
         "value": [
-          "name:name_var_1 | text: @global.individual | image:plh_images/workshops/options/individual.svg",
-          "name:name_var_2 | text:@global.together | image:plh_images/workshops/options/together.svg"
+          "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg",
+          "name:true | text:@global.together | image:plh_images/workshops/options/together.svg"
         ],
         "type": "set_variable"
       },
@@ -1005,6 +1005,18 @@
       {
         "type": "radio_group",
         "name": "radio_group_4",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "do_workshops_together",
+              "@local.radio_group_4"
+            ],
+            "_raw": "changed | set_field:do_workshops_together:@local.radio_group_4",
+            "_cleaned": "changed | set_field:do_workshops_together:@local.radio_group_4"
+          }
+        ],
         "parameter_list": {
           "radio_button_type": "btn_square",
           "answer_list": "@local.answer_list_4"
@@ -1017,9 +1029,9 @@
       },
       {
         "type": "text",
-        "name": "option 5",
+        "name": "option_5",
         "value": "Group Name: @field.group_name",
-        "hidden": "@field.do_workshops_together",
+        "hidden": "!@field.do_workshops_together",
         "parameter_list": {
           "style": "emphasised"
         }
@@ -1033,30 +1045,22 @@
             "action_id": "set_field",
             "args": [
               "group_name",
-              "@local.text_box_4"
+              "@local.text_box_5"
             ],
-            "_raw": "changed | set_field:group_name:@local.text_box_4",
-            "_cleaned": "changed | set_field:group_name:@local.text_box_4"
+            "_raw": "changed | set_field:group_name:@local.text_box_5",
+            "_cleaned": "changed | set_field:group_name:@local.text_box_5"
           }
         ],
-        "hidden": "@field.do_workshops_together",
+        "hidden": "!@field.do_workshops_together",
         "parameter_list": {
           "text_align": "center",
           "placeholder": "Click to change your group name"
         }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "testing_progress",
-    "status": "released",
-    "rows": [
+      },
       {
         "type": "text",
-        "name": "text",
-        "value": "the percentage of consequence is @field.w_consequence_completion_level"
+        "name": "checking_5",
+        "value": "the current group name is @field.group_name"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
@@ -1465,16 +1469,6 @@
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
               "group_name",
               "Friends"
             ],
@@ -1495,10 +1489,10 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "w_crisis_stepper"
+              "w_crisis_buttons_temp"
             ],
-            "_raw": "click | go_to:w_crisis_stepper",
-            "_cleaned": "click | go_to:w_crisis_stepper"
+            "_raw": "click | go_to:w_crisis_buttons_temp",
+            "_cleaned": "click | go_to:w_crisis_buttons_temp"
           }
         ],
         "parameter_list": {
@@ -1514,16 +1508,6 @@
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
               "group_name",
               "Friends"
             ],
@@ -1544,10 +1528,10 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "w_celebrate_stepper"
+              "w_celebrate_buttons_temp"
             ],
-            "_raw": "click | go_to:w_celebrate_stepper",
-            "_cleaned": "click | go_to:w_celebrate_stepper"
+            "_raw": "click | go_to:w_celebrate_buttons_temp",
+            "_cleaned": "click | go_to:w_celebrate_buttons_temp"
           }
         ],
         "parameter_list": {
@@ -2208,6 +2192,138 @@
             ],
             "_raw": "click | go_to:w_safe_stepper",
             "_cleaned": "click | go_to:w_safe_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "passive full-width"
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_crisis_buttons_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "individual_button",
+        "value": "@global.individual",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_workshops_together",
+              "false"
+            ],
+            "_raw": "click | set_field:do_workshops_together:false",
+            "_cleaned": "click | set_field:do_workshops_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_crisis_stepper"
+            ],
+            "_raw": "click | go_to:w_crisis_stepper",
+            "_cleaned": "click | go_to:w_crisis_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "passive full-width"
+        }
+      },
+      {
+        "type": "button",
+        "name": "together_button",
+        "value": "@global.together",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_workshops_together",
+              "true"
+            ],
+            "_raw": "click | set_field:do_workshops_together:true",
+            "_cleaned": "click | set_field:do_workshops_together:true"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_crisis_stepper"
+            ],
+            "_raw": "click | go_to:w_crisis_stepper",
+            "_cleaned": "click | go_to:w_crisis_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "passive full-width"
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_celebrate_buttons_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "individual_button",
+        "value": "@global.individual",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_workshops_together",
+              "false"
+            ],
+            "_raw": "click | set_field:do_workshops_together:false",
+            "_cleaned": "click | set_field:do_workshops_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_celebrate_stepper"
+            ],
+            "_raw": "click | go_to:w_celebrate_stepper",
+            "_cleaned": "click | go_to:w_celebrate_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "passive full-width"
+        }
+      },
+      {
+        "type": "button",
+        "name": "together_button",
+        "value": "@global.together",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_workshops_together",
+              "true"
+            ],
+            "_raw": "click | set_field:do_workshops_together:true",
+            "_cleaned": "click | set_field:do_workshops_together:true"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_celebrate_stepper"
+            ],
+            "_raw": "click | go_to:w_celebrate_stepper",
+            "_cleaned": "click | go_to:w_celebrate_stepper"
           }
         ],
         "parameter_list": {
@@ -3483,6 +3599,9 @@
     "rows": [
       {
         "type": "display_group",
+        "parameter_list": {
+          "style": "navigation"
+        },
         "rows": [
           {
             "type": "button",
@@ -3646,6 +3765,24 @@
             "rows": []
           }
         ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_duo",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "box_1",
+        "rows": []
+      },
+      {
+        "type": "template",
+        "name": "box_2",
+        "rows": []
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
@@ -6412,7 +6549,7 @@
             "rows": [
               {
                 "name": "text",
-                "value": "Take turns to discuss how your home activities went:\n\n(1) What went well and what was a problem?\n(2) What solutions can you think of together?\n(3) Pick one solution and try it later with your teen! \n\n(Or you can even practice it now so it will be easier later!)",
+                "value": "Take turns to discuss how your home activities went:\n- What went well and what was a problem?\n- What solutions can you think of together?\n- Pick one solution and try it later with your teen! \n\n(Or you can even practice it now so it will be easier later!)",
                 "type": "set_variable"
               },
               {
@@ -6495,7 +6632,7 @@
             "rows": [
               {
                 "name": "text",
-                "value": "Share with each other:\n\n- How are you feeling today? \n- What has someone else done well this week? Praise them for it!\n\nRemember that no matter how you feel, it’s great you are here! You all deserve praise!",
+                "value": "Share with each other:\n- How are you feeling today? \n- What has someone else done well this week? Praise them for it!\n\nRemember that no matter how you feel, it’s great you are here! You all deserve praise!",
                 "type": "set_variable"
               }
             ]
@@ -6518,6 +6655,38 @@
       {
         "type": "text",
         "name": "list_text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/talk_together.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "suggestions_ticks",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1"
+      },
+      {
+        "type": "dashed_box",
+        "name": "dashed_box_1"
+      },
+      {
+        "type": "text",
+        "name": "text_2"
+      },
+      {
+        "type": "dashed_box",
+        "name": "dashed_box_2"
+      },
+      {
+        "type": "text",
+        "name": "text_3"
+      },
+      {
+        "type": "dashed_box",
+        "name": "dashed_box_3"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/talk_together.xlsx"
@@ -7412,17 +7581,6 @@
         "type": "set_variable"
       },
       {
-        "name": "global_text",
-        "value": "@global.debug_variable_1",
-        "comments": "declared variables will not be overwritten by parents",
-        "type": "set_variable"
-      },
-      {
-        "name": "local_text_4",
-        "value": "Success: text_4",
-        "type": "set_variable"
-      },
-      {
         "type": "template",
         "name": "debug_two_texts",
         "value": "debug_two_texts",
@@ -7430,17 +7588,14 @@
           {
             "type": "set_variable",
             "name": "child_text_1",
-            "value": "Success: text_1"
+            "value": "Success: text_1",
+            "comments": "whilst this is called 'set_variable', it really behaves as 'overwrite_row'"
           },
           {
             "type": "set_variable",
             "name": "child_text_2",
-            "value": "<span>Expected: \"Success: text_2\"<br/>Result: @local</span><span><b>.local_text_2</b></span>"
-          },
-          {
-            "type": "set_variable",
-            "name": "child_text_3",
-            "value": "<span>Expected: global.debug_variable_1 lookup<br/>Result: @local.</span><span><b>global_text</b></span>"
+            "value": "Expected: \"Success: text_2\"\nResult: @local.local_text_2",
+            "comments": "Later we will also want functionality to 'merge_row'"
           },
           {
             "type": "set_variable",
@@ -7448,26 +7603,6 @@
             "value": "Success: nesting local variable"
           }
         ]
-      },
-      {
-        "type": "text",
-        "name": "text_3",
-        "value": "Success: text_3"
-      },
-      {
-        "type": "text",
-        "name": "text_4",
-        "value": "Expected: \"Success: text_4\" \nResult: @local.local_text_4"
-      },
-      {
-        "type": "text",
-        "name": "text_5",
-        "value": "Expected: global.debug_variable_1 lookup\nResult: @local.global_text"
-      },
-      {
-        "type": "text",
-        "name": "text_6",
-        "value": "Global text test: @global.debug_variable_1"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
@@ -7529,12 +7664,12 @@
         "value": "debug_two_texts",
         "rows": [
           {
-            "name": "text_1",
+            "name": "child_text_1",
             "value": "This is text_1 overridden directly in the value",
             "type": "set_variable"
           },
           {
-            "name": "text_2",
+            "name": "child_text_2",
             "value": "@global.teen_girl_1 overridden by calling a variable",
             "type": "set_variable"
           }
@@ -7583,7 +7718,7 @@
       {
         "type": "set_variable",
         "name": "var_recursive_lookup",
-        "value": "@var_bool_true"
+        "value": "@local.var_bool_true"
       },
       {
         "type": "set_variable",
@@ -7623,6 +7758,11 @@
         "name": "var_collection_1",
         "value": "@data.debug_vars.collection_1.value_collection",
         "comments": "collection_1"
+      },
+      {
+        "type": "set_variable",
+        "name": "global_text",
+        "value": "@global.debug_variable_1"
       },
       {
         "type": "text",
@@ -7677,6 +7817,16 @@
         "type": "text",
         "name": "text_7",
         "value": "TODO - nested rows"
+      },
+      {
+        "type": "text",
+        "name": "text_8",
+        "value": "Expected: global.debug_variable_1 lookup\nResult: @local.global_text"
+      },
+      {
+        "type": "text",
+        "name": "text_9",
+        "value": "Global text test: @global.debug_variable_1"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
@@ -8698,6 +8848,11 @@
       },
       {
         "type": "text",
+        "name": "radio_group_field_text",
+        "value": "The value of demo_changed_radio_group is @field.demo_changed_radio_group"
+      },
+      {
+        "type": "text",
         "name": "radio_group_text",
         "value": "the selected choice in radio group is @field.demo_changed_radio_group",
         "hidden": "\"@field.demo_changed_radio_group\"==\"na\""
@@ -8757,6 +8912,206 @@
         "name": "slider_text",
         "value": "the selected choice in slider is @field.demo_changed_slider",
         "hidden": "\"@field.demo_changed_slider\"==\"na\""
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_changed_radio_group_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "demo_changed_field_1",
+        "value": "false"
+      },
+      {
+        "name": "demo_changed_local",
+        "value": "demo_changed_field_2",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.demo_changed_local",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field: @local.demo_changed_local: @local.radio_group",
+            "_cleaned": "changed | set_field: @local.demo_changed_local: @local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_1\"",
+        "hidden": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_1\""
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "!@field.demo_changed_field_1",
+        "hidden": "!@field.demo_changed_field_1"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_2\"",
+        "hidden": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_2\""
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_changed_radio_group_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "demo_changed_field_3",
+        "value": "false"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_4",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_4: @local.radio_group",
+            "_cleaned": "changed | set_field: demo_changed_field_4: @local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_1\"",
+        "hidden": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_1\""
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "!@field.demo_changed_field_3",
+        "hidden": "!@field.demo_changed_field_3"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_2\"",
+        "hidden": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_2\""
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_changed_radio_group_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "demo_changed_field_5",
+        "value": "false"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_6",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_6: @local.radio_group",
+            "_cleaned": "changed | set_field: demo_changed_field_6: @local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        }
+      },
+      {
+        "type": "template",
+        "name": "example_text_1",
+        "value": "example_text",
+        "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
+        "rows": [
+          {
+            "name": "text",
+            "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "example_text_2",
+        "value": "example_text",
+        "hidden": "!@field.demo_changed_field_6",
+        "rows": [
+          {
+            "name": "text",
+            "value": "!@field.demo_changed_field_5",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "example_text_3",
+        "value": "example_text",
+        "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
+        "rows": [
+          {
+            "name": "text",
+            "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
+            "type": "set_variable"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
@@ -9230,6 +9585,184 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_global_field.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_navigation_style",
+    "status": "released",
+    "rows": [
+      {
+        "name": "hide_page_1",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_page_2",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "type": "animated_section",
+        "name": "page_1",
+        "hidden": "@local.hide_page_1",
+        "rows": [
+          {
+            "type": "title",
+            "name": "title_page_1",
+            "value": "Page 1"
+          },
+          {
+            "type": "text",
+            "name": "text_page_1",
+            "value": "This is page 1"
+          },
+          {
+            "type": "template",
+            "name": "page_1_nav_buttons",
+            "value": "nav_buttons",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_page_1",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_page_1:true",
+                "_cleaned": "completed | set_local:hide_page_1:true"
+              },
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_page_2",
+                  "false"
+                ],
+                "_raw": "completed | set_local:hide_page_2:false",
+                "_cleaned": "completed | set_local:hide_page_2:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "uncompleted | emit:uncompleted",
+                "_cleaned": "uncompleted | emit:uncompleted"
+              }
+            ],
+            "comments": "the style: navigation is set in the nav_buttons template, at the end of the sheet, but it's not at the end of this one.",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Let's go!",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "page_2",
+        "hidden": "@local.hide_page_2",
+        "rows": [
+          {
+            "type": "title",
+            "name": "title_page_2",
+            "value": "Page 2"
+          },
+          {
+            "type": "text",
+            "name": "text_page_2",
+            "value": "This is page 2"
+          },
+          {
+            "type": "template",
+            "name": "page_2_nav_buttons",
+            "value": "nav_buttons",
+            "comments": "It is unclear whether the nav_buttons is at the end of this sheet to me",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Finish",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "home_screen"
+                    ],
+                    "_raw": "click | go_to:home_screen",
+                    "_cleaned": "click | go_to:home_screen"
+                  }
+                ],
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_navigation_style.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_navigation_style_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "page_1_title",
+        "value": "This Page"
+      },
+      {
+        "type": "text",
+        "name": "page_1_text",
+        "value": "This is the text for this page"
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "rows": [
+          {
+            "type": "button",
+            "name": "button_1",
+            "value": "return",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "home_screen"
+                ],
+                "_raw": "click | go_to:home_screen",
+                "_cleaned": "click | go_to:home_screen"
+              }
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_2",
+            "value": "go back",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "home_screen"
+                ],
+                "_raw": "click | go_to:home_screen",
+                "_cleaned": "click | go_to:home_screen"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_navigation_style.xlsx"
   },
   {
     "flow_type": "template",
@@ -12226,6 +12759,50 @@
           "icon_src": "/assets/icon/round-button/smile.svg",
           "style": "home_screen orange"
         }
+      },
+      {
+        "type": "round_button",
+        "name": "round_button_3",
+        "value": "Value",
+        "parameter_list": {
+          "icon_src": "airplane"
+        }
+      },
+      {
+        "type": "round_button",
+        "name": "round_button_3",
+        "value": "Value",
+        "parameter_list": {
+          "icon_src": "at",
+          "style": "alternative"
+        }
+      },
+      {
+        "type": "display_group",
+        "name": "name",
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "rows": [
+          {
+            "type": "round_button",
+            "name": "round_button_3",
+            "value": "Value",
+            "parameter_list": {
+              "icon_src": "chevron-back",
+              "style": "information"
+            }
+          },
+          {
+            "type": "round_button",
+            "name": "round_button_3",
+            "value": "Value",
+            "parameter_list": {
+              "icon_src": "chevron-forward",
+              "style": "navigation"
+            }
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -13721,6 +14298,7 @@
                 "rows": [
                   {
                     "name": "text",
+                    "hidden": "true",
                     "type": "set_variable"
                   },
                   {
@@ -14036,6 +14614,7 @@
               "w_celebrate_relax",
               "w_celebrate_reflect_together",
               "w_celebrate_intro",
+              "w_celebrate_think",
               "w_celebrate_talk_1",
               "w_celebrate_read_temp",
               "w_celebrate_talk_2",
@@ -14049,10 +14628,8 @@
             "value": [
               "w_celebrate_welcome_individual",
               "w_celebrate_relax",
-              "w_celebrate_reflect_individual",
               "w_celebrate_intro",
-              "w_celebrate_tools_activity",
-              "w_celebrate_home_practice",
+              "w_celebrate_think",
               "w_celebrate_ending"
             ],
             "condition": "!@field.do_workshops_together",
@@ -14148,28 +14725,23 @@
                     "type": "set_variable"
                   },
                   {
-                    "name": "question_text",
-                    "value": "How are you feeling today?",
+                    "name": "reply_happy",
+                    "value": "Fantastic! We are proud of you for all you have done over the past weeks.",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply_ok",
+                    "value": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply_sad",
+                    "value": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
-          },
-          {
-            "name": "reply_happy",
-            "value": "Fantastic!  We are proud of you for all you have done over the past weeks.",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_ok",
-            "value": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_sad",
-            "value": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
-            "type": "set_variable"
           }
         ]
       }
@@ -14394,13 +14966,13 @@
                   {
                     "name": "intro_text",
                     "value": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future parenting support.",
-                    "hidden": "!@field.do_workshops_together",
+                    "condition": "@field.do_workshops_together",
                     "type": "set_variable"
                   },
                   {
                     "name": "intro_text",
                     "value": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future ParentApp support.",
-                    "hidden": "@field.do_workshops_together",
+                    "condition": "!@field.do_workshops_together",
                     "type": "set_variable"
                   },
                   {
@@ -14417,6 +14989,84 @@
                             "type": "set_variable"
                           }
                         ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_celebrate.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "celebrate",
+    "flow_name": "w_celebrate_think",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "think_temp",
+        "value": "think_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "activity_image",
+                "value": "plh_images/workshop_modes/group/final/talk.svg",
+                "parameter_list": {
+                  "@field.do_workshops_together": "true"
+                },
+                "type": "set_variable"
+              },
+              {
+                "name": "activity_image",
+                "value": "plh_images/workshop_modes/guide_2/final/wave.svg",
+                "parameter_list": {
+                  "!@field.do_workshops_together": "true"
+                },
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "You and your family have learnt so much. Let's think back and see what has changed.",
+                "type": "set_variable"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": "false",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_audio",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "widget_audio",
+                    "rows": [
+                      {
+                        "name": "audio_title",
+                        "value": "Reflect with Sbo",
+                        "comments": "Users may need some time to reflect themselves before sharing:\n\n- Close eyes and relax\n- Recall family life before ParentApp\n- Summary of workshop topics\n- Reflect on key experiences (discussions, looking at comics, sharing experiences, practicing skills)\n- Reflect on changes in self & family\n- Consider how to continue to use new skills",
+                        "type": "set_variable"
                       }
                     ]
                   }
@@ -14462,44 +15112,17 @@
               },
               {
                 "name": "intro_text",
-                "value": "You and your family have learnt so much. Let's think back and see what has changed.",
+                "value": "Let's talk about what has changed.",
                 "type": "set_variable"
               },
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "pair",
                 "rows": [
                   {
-                    "type": "nested_properties",
-                    "name": "box_1",
-                    "value": "box_audio",
-                    "rows": [
-                      {
-                        "type": "nested_properties",
-                        "name": "widget_audio",
-                        "rows": [
-                          {
-                            "name": "audio_title",
-                            "value": "Reflect with Sbo",
-                            "comments": "Users may need some time to reflect themselves before sharing:\n\n- Close eyes and relax\n- Recall family life before ParentApp\n- Summary of workshop topics\n- Reflect on key experiences (discussions, looking at comics, sharing experiences, practicing skills)\n- Reflect on changes in self & family\n- Consider how to continue to use new skills",
-                            "type": "set_variable"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "nested_properties",
-                    "name": "box_2",
-                    "value": "box_image",
-                    "rows": [
-                      {
-                        "name": "text",
-                        "value": "Discuss together:\n\n- What has changed in your family?\n- What are you proud of that you have done?\n\nRemember to praise and encourage each other!",
-                        "type": "set_variable"
-                      }
-                    ]
+                    "name": "text",
+                    "value": "Discuss together:\n- What has changed in your family?\n- What are you proud of that you have done?\n\nRemember to praise and encourage each other!",
+                    "type": "set_variable"
                   }
                 ]
               }
@@ -14548,7 +15171,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "How will you support each other going forward? Here are some ideas from other families. ",
+                "value": "How will you support each other going forward? Here are some ideas from other families:",
                 "type": "set_variable"
               },
               {
@@ -14753,18 +15376,25 @@
                   {
                     "name": "activity_image",
                     "value": "plh_images/workshop_modes/group/final/cup.svg",
-                    "hidden": "!@field.do_workshops_together",
+                    "condition": "@field.do_workshops_together",
                     "type": "set_variable"
                   },
                   {
                     "name": "activity_image",
                     "value": "plh_images/workshop_modes/guide_2/final/cup.svg",
-                    "hidden": "@field.do_workshops_together",
+                    "condition": "!@field.do_workshops_together",
                     "type": "set_variable"
                   },
                   {
                     "name": "intro_text",
                     "value": "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance together and celebrate yourselves!  ",
+                    "condition": "@field.do_workshops_together",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "intro_text",
+                    "value": "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance and celebrate yourself!  ",
+                    "condition": "!@field.do_workshops_together",
                     "type": "set_variable"
                   }
                 ]
@@ -15437,6 +16067,11 @@
             "name": "workshop_activity",
             "rows": [
               {
+                "name": "activity_banner",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
                 "name": "include_outro",
                 "value": "true",
                 "type": "set_variable"
@@ -15459,14 +16094,22 @@
                   },
                   {
                     "type": "nested_properties",
-                    "name": "box_1",
-                    "value": "consequence_1",
-                    "rows": []
-                  },
-                  {
-                    "name": "button_3",
-                    "value": "Wash dishes",
-                    "type": "set_variable"
+                    "name": "box_2",
+                    "value": "pair",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "consequence_2",
+                        "rows": []
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "consequence_3",
+                        "rows": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15547,12 +16190,6 @@
             "name": "reply",
             "value": "Consequences are not quite the same as punishment: they give our teens a chance to learn responsibility for their actions.\n\nAnd they are more controlled AND effective than hitting or shouting!",
             "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": "true",
-            "rows": []
           }
         ]
       },
@@ -15588,12 +16225,6 @@
               }
             ],
             "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": "true",
-            "rows": []
           }
         ]
       }
@@ -15680,12 +16311,6 @@
             "name": "reply",
             "value": "Consequences are more successful if you discuss and agree in advance with teens before you apply them.\n\nAnd: consequences are not all negative… You can also agree on GOOD consequences for GOOD actions to see more positive behaviour!",
             "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": "true",
-            "rows": []
           }
         ]
       },
@@ -15721,12 +16346,6 @@
               }
             ],
             "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": "true",
-            "rows": []
           }
         ]
       }
@@ -15792,12 +16411,6 @@
             "name": "reply",
             "hidden": "true",
             "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": "true",
-            "rows": []
           }
         ]
       },
@@ -15833,12 +16446,6 @@
               }
             ],
             "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": "true",
-            "rows": []
           }
         ]
       }
@@ -15935,6 +16542,7 @@
           {
             "name": "top_text",
             "value": "How you introduce calm consequences is important. Remember, when you involve your teen, things usually go better! ",
+            "hidden": "false",
             "type": "set_variable"
           },
           {
@@ -16501,7 +17109,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Plan a calm consequence for your teenagers arguing with each other during dinner. Remember they need to be \n\nFAIR - IMMEDIATE - CONSISTENT",
+                    "value": "What would be a calm consequence for your teenagers arguing with each other during dinner? \n\nRemember it needs to be: \nFAIR - IMMEDIATE - CONSISTENT",
                     "type": "set_variable"
                   },
                   {
@@ -16537,12 +17145,49 @@
     "rows": [
       {
         "type": "template",
-        "name": "suggestions",
-        "value": "suggestions",
+        "name": "suggestions_ticks",
+        "value": "suggestions_ticks",
         "rows": [
           {
-            "name": "list_text",
-            "value": "- Not seeing any friends for a month may be hard to do for you and also too harsh\n- Cancelling their birthday plans in a month’s time – it’s too far away\n- For example no TV this evening – fair and can be done straight away",
+            "name": "text_1",
+            "value": "Not seeing any friends for a month",
+            "type": "set_variable"
+          },
+          {
+            "name": "dashed_box_1",
+            "value": "This may be hard to do for you and also too harsh!",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/cross_circle.svg",
+              "icon_position": "top-left"
+            },
+            "type": "set_variable"
+          },
+          {
+            "name": "text_2",
+            "value": "Cancelling their birthday plans in a month’s time",
+            "type": "set_variable"
+          },
+          {
+            "name": "dashed_box_2",
+            "value": "This is too far in the future, and too harsh as well!",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/cross_circle.svg",
+              "icon_position": "top-left"
+            },
+            "type": "set_variable"
+          },
+          {
+            "name": "text_3",
+            "value": "No TV this evening",
+            "type": "set_variable"
+          },
+          {
+            "name": "dashed_box_3",
+            "value": "Perfect, this sounds fair and can be done straight away\r\n",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/tick_circle.svg",
+              "icon_position": "top-left"
+            },
             "type": "set_variable"
           }
         ]
@@ -16644,7 +17289,7 @@
                 "rows": [
                   {
                     "name": "text_1",
-                    "value": "Your home practice for this week will be to talk together with your teen about a ONE negative consequence and ONE positive consequence.\n\nConsequences should be FAIR (not too harsh), IMMEDIATE (do it straight away) CONSISTENT (same every time).",
+                    "value": "Your home practice for this week will be to talk together with your teen about a ONE negative consequence and ONE positive consequence.\n\nConsequences should be:\nFAIR (not too harsh)\nIMMEDIATE (do it straight away)\nCONSISTENT (same every time)",
                     "type": "set_variable"
                   },
                   {
@@ -16702,7 +17347,7 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "Negative Behaviour: Coming home after the agreed hour. \nNegative Consequence: Cannot see friends the next day. \n\nNegative Behaviour: Talking rudely. \nNegative Consequence: Write a letter of apology. \n \nPositive Behaviour: Helping out with shopping \nPositive Consequence: 30 minutes extra of loved activity of their choice.  \n\nPositive Behaviour: Helping look after younger siblings \nPositive Consequence:  One hour of extra time with friends on the weekend ",
+            "value": "Negative Behaviour: Coming home after the agreed hour. \nNegative Consequence: Cannot see friends the next day. \n\nNegative Behaviour: Talking rudely. \nNegative Consequence: Write a letter of apology. \n \nPositive Behaviour: Helping out with shopping. \nPositive Consequence: 30 minutes extra of loved activity of their choice.  \n\nPositive Behaviour: Helping look after younger siblings. \nPositive Consequence:  One hour of extra time with friends on the weekend. ",
             "type": "set_variable"
           }
         ]
@@ -16783,9 +17428,13 @@
             "value": [
               "w_crisis_welcome_individual",
               "w_crisis_relax",
-              "w_crisis_reflect_individual",
               "w_crisis_intro",
+              "w_crisis_read_1_temp",
+              "w_crisis_question_1",
+              "w_crisis_read_2_temp",
+              "w_crisis_question_2",
               "w_crisis_tools_activity",
+              "w_crisis_learn_temp",
               "w_crisis_home_practice",
               "w_crisis_ending"
             ],
@@ -17352,6 +18001,77 @@
   {
     "flow_type": "template",
     "module": "crisis",
+    "flow_name": "w_crisis_question_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "question_time",
+        "value": "question_time",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "This was such a difficult situation for @global.w_crisis_teen_girl_1 and her @global.w_crisis_female_caregiver! This can happen to boys and girls.",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_combo_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "What skills did @global.w_crisis_female_caregiver use?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "Take a deep breath and pause before responding",
+                      "Listen to your teen",
+                      "Praise your teen for sharing",
+                      "Use problem solving skills",
+                      "Work out where you can get help"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "Yes, @global.w_crisis_female_caregiver actually used all those skills – and so can you! ",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_crisis.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "crisis",
     "flow_name": "w_crisis_read_2_temp",
     "status": "released",
     "rows": [
@@ -17592,6 +18312,77 @@
   {
     "flow_type": "template",
     "module": "crisis",
+    "flow_name": "w_crisis_question_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "question_time",
+        "value": "question_time",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_text",
+                "value": "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_combo_box",
+                "rows": [
+                  {
+                    "name": "text",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "What skills did @global.w_crisis_male_caregiver_1 use?",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "Take a deep breath and pause before responding",
+                      "Listen to your teen",
+                      "Praise your teen for sharing",
+                      "Use problem solving skills",
+                      "Work out where you can get help"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "All these skills can help in a crisis.",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_crisis.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "crisis",
     "flow_name": "w_crisis_tools_activity",
     "status": "released",
     "rows": [
@@ -17754,11 +18545,6 @@
             "name": "workshop_activity",
             "rows": [
               {
-                "name": "activity_title",
-                "value": "Try It Together",
-                "type": "set_variable"
-              },
-              {
                 "name": "intro_text",
                 "value": "It’s helpful to practice dealing with crisis before something happens. \n\nLook at these five family crisis times. Imagine you are the parent: What would you do?\n\nRemember:  BREATHE - LISTEN - THINK",
                 "type": "set_variable"
@@ -17796,8 +18582,8 @@
                       },
                       {
                         "name": "text",
-                        "value": "\"I’ve never done this before. And now they will expel me\"\n\nHow could you respond to @global.w_crisis_teen_boy_2? ",
-                        "comments": "Last sentence needs different formatting.",
+                        "value": "\"I’ve never done this before. And now they will expel me\"\n\n**How could you respond to @global.w_crisis_teen_boy_2?**",
+                        "comments": "ETW: Should be give more guidance here, as in w_consequence_learn_1?",
                         "type": "set_variable"
                       }
                     ]
@@ -17825,7 +18611,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "\"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"\n\nHow could you respond to @global.w_crisis_teen_girl_1?",
+                            "value": "\"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"\n\n**How could you respond to @global.w_crisis_teen_girl_1?**",
                             "type": "set_variable"
                           }
                         ]
@@ -17853,7 +18639,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "\"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"\n\nHow could you respond to @global.w_crisis_teen_boy_2?",
+                                "value": "\"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"\n\n**How could you respond to @global.w_crisis_teen_boy_2?**",
                                 "type": "set_variable"
                               }
                             ]
@@ -17881,7 +18667,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "\"The test said I have caught HIV. I’m scared I’m going to die\"\n\nHow could you respond in this situation? ",
+                                    "value": "\"The test said I have caught HIV. I’m scared I’m going to die\"\n\n**How could you respond in this situation?**",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -17904,7 +18690,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "\"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared...\"\n\nHow could you respond to @global.w_crisis_teen_girl_1?",
+                                    "value": "\"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared...\"\n\n**How could you respond to @global.w_crisis_teen_girl_1?**",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -18004,7 +18790,7 @@
                   },
                   {
                     "name": "habit_text",
-                    "value": "Whenever you give a safety amnesty, talk about keeping safe, or respond calmly to a crisis, click the @global.parent_point and celebrate your success",
+                    "value": "Whenever you give a safety amnesty, talk about keeping safe, or respond calmly to a crisis, click the @global.parent_point and celebrate your success!",
                     "hidden": "false",
                     "type": "set_variable"
                   }
@@ -18051,7 +18837,6 @@
                     "name": "intro_text",
                     "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
                     "hidden": "!@field.do_workshops_together",
-                    "comments": "ETW to check ",
                     "type": "set_variable"
                   },
                   {
@@ -19503,10 +20288,10 @@
               "w_money_learn_3_temp",
               "w_money_learn_4_temp",
               "w_money_read_2_temp",
-              "w_money_talk_1",
+              "w_money_tq_1",
               "w_money_read_3_temp",
-              "w_money_talk_2",
-              "w_money_talk_3",
+              "w_money_tq_2",
+              "w_money_tq_3",
               "w_money_learn_5_temp",
               "w_money_tools_activity",
               "w_money_home_practice",
@@ -19522,11 +20307,16 @@
               "w_money_relax",
               "w_money_intro",
               "w_money_read_1_temp",
+              "w_money_learn_1_temp",
+              "w_money_learn_2_temp",
+              "w_money_learn_3_temp",
+              "w_money_learn_4_temp",
               "w_money_read_2_temp",
-              "w_money_question_1",
+              "w_money_tq_1",
               "w_money_read_3_temp",
-              "w_money_question_2",
-              "w_money_question_3",
+              "w_money_tq_2",
+              "w_money_tq_3",
+              "w_money_learn_5_temp",
               "w_money_tools_activity",
               "w_money_home_practice",
               "w_money_ending"
@@ -19878,12 +20668,12 @@
                     "rows": [
                       {
                         "name": "image_src",
-                        "value": "plh_images/workshops/money/read_1/slide_1.svg",
+                        "value": "plh_images/workshops/money/read_2/slide_1.svg",
                         "type": "set_variable"
                       },
                       {
                         "name": "text",
-                        "value": "@global.w_money_grandma: \"I am so stressed, I don’t have any money left. And now I’m fighting with my teens over things they want – again.\"",
+                        "value": "@global.w_money_grandma: \"I have been taking care of my grandchildren, @global.w_money_teen_girl and @global.w_money_teen_boy, since their parents died when they were young. We often struggle with money, as I only receive a small grant.\"",
                         "type": "set_variable"
                       }
                     ]
@@ -19891,41 +20681,17 @@
                   {
                     "type": "nested_properties",
                     "name": "box_2",
-                    "value": "pair",
+                    "value": "box_image",
                     "rows": [
                       {
-                        "type": "nested_properties",
-                        "name": "box_1",
-                        "value": "box_image_more",
-                        "rows": [
-                          {
-                            "name": "image_src",
-                            "value": "plh_images/workshops/money/read_2/slide_1.svg",
-                            "type": "set_variable"
-                          },
-                          {
-                            "name": "text",
-                            "value": "\"I have been taking care of my grandchildren since their parents died when they were  young. My granddaughter @global.w_money_teen_girl is 16 and my grandson @global.w_money_teen_boy is 12.\"",
-                            "type": "set_variable"
-                          }
-                        ]
+                        "name": "image_src",
+                        "value": "plh_images/workshops/money/read_2/slide_2.svg",
+                        "type": "set_variable"
                       },
                       {
-                        "type": "nested_properties",
-                        "name": "box_2",
-                        "value": "box_image",
-                        "rows": [
-                          {
-                            "name": "image_src",
-                            "value": "plh_images/workshops/money/read_2/slide_2.svg",
-                            "type": "set_variable"
-                          },
-                          {
-                            "name": "text",
-                            "value": "\"We struggle with money. I work when I can, and we get a small grant. But things always get tough at the end of the month.\"",
-                            "type": "set_variable"
-                          }
-                        ]
+                        "name": "text",
+                        "value": "@global.w_money_grandma: \"I am so stressed. I don’t have any money left. And now I’m fighting with my teens over things they want – again.\"",
+                        "type": "set_variable"
                       }
                     ]
                   }
@@ -19978,6 +20744,7 @@
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_image",
+                "condition": "@field.do_workshops_together",
                 "rows": [
                   {
                     "name": "image_src",
@@ -19986,7 +20753,64 @@
                   },
                   {
                     "name": "text",
-                    "value": "There are four steps for doing a family budget: \n\nTHINK - TALK - BUILD - PLAN\n\nWe will review them together. You need:\n\n- Papers (or old newspaper or a cardboard box) and pens\n- Stones or beans or anything with lots of bits to represent money\n \nTake a minute to get these things before we start with the first step.",
+                    "value": "There are four steps for doing a family budget: \n\nStep 1: THINK\nStep 2: CHOOSE\nStep 3: BUILD\nStep 4: PLAN\n\nLet’s go through the steps together. You need:\n\n- Papers (or old newspaper or a cardboard box) and pens\n- Stones or beans or anything with lots of bits to represent money\n \nTake a minute to get these things before we start with the first step.",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_radio_buttons",
+                "condition": "!@field.do_workshops_together",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "There are four steps for doing a family budget: \n\nStep 1: THINK\nStep 2: CHOOSE\nStep 3: BUILD\nStep 4: PLAN\n\nLet’s go through the steps together. ",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "answer_list",
+                    "value": [
+                      "name:family | text:My family can join in now!",
+                      "name:alone | text:Let me try it out by myself"
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "radio_group",
+                    "action_list": [
+                      {
+                        "trigger": "changed",
+                        "action_id": "set_field",
+                        "args": [
+                          "w_money_path",
+                          "@local.radio_group"
+                        ],
+                        "_raw": "changed | set_field: w_money_path: @local.radio_group",
+                        "_cleaned": "changed | set_field: w_money_path: @local.radio_group"
+                      }
+                    ],
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "radio_button_type",
+                    "value": "btn_text",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "reply",
+                    "value": "@field.w_money_path\n\nYou need: \n- Papers (or old newspaper or a cardboard box) and pens \n- Stones or beans or anything with lots of bits to represent money \n\nTake a minute to get these things before we start with the first step.",
                     "type": "set_variable"
                   }
                 ]
@@ -20031,14 +20855,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Now, each of the @field.group_name team members need to think about what we spend on.",
-                "condition": "@field.do_workshops_together",
-                "type": "set_variable"
-              },
-              {
-                "name": "intro_text",
-                "value": "Think about what your family spends money on.",
-                "condition": "!@field.do_workshops_together",
+                "value": "Think about what we spend money on each month.",
                 "type": "set_variable"
               },
               {
@@ -20131,7 +20948,7 @@
     "rows": [
       {
         "type": "template",
-        "name": "learn",
+        "name": "learn_group_family",
         "value": "learn_temp",
         "action_list": [
           {
@@ -20144,6 +20961,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "\"@field.w_money_path\"==\"alone\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -20151,19 +20969,12 @@
             "rows": [
               {
                 "name": "intro_title",
-                "value": "Step 2: TALK",
+                "value": "Step 2: CHOOSE",
                 "type": "set_variable"
               },
               {
                 "name": "intro_text",
                 "value": "Talk together about your needs and wants\n\nWANT: Something you can live without\nNEED: Something you cannot live without",
-                "condition": "@field.do_workshops_together",
-                "type": "set_variable"
-              },
-              {
-                "name": "intro_text",
-                "value": "Talk with your family about your needs and wants\n\nWANT: Something you can live without\nNEED: Something you cannot live without",
-                "condition": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
@@ -20183,14 +20994,64 @@
                   },
                   {
                     "name": "text",
-                    "value": "People often don’t see things in the same way. When we talk about our needs and wants, we understand each other better and can make good decisions together on how to spend our money.\n\nLook at your lists and think:\n\n- Which are NEEDS that you can’t live without? Why?\n- Which are WANTS which are nice to have but not essential? Why? \n\nDiscuss together what things you could try to spend less on as a family.",
-                    "condition": "@field.do_workshops_together",
+                    "value": "People often don’t see things in the same way. When we talk about our needs and wants, we understand each other better and can make good choices together on how to spend our money.\n\nLook at your lists of things you spend money on and discuss:\n\n- Which are NEEDS that you can’t live without? Why?\n- Which are WANTS which are nice to have but not essential? Why? \n- Which things could you try to spend less money on as a family?",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "learn_alone",
+        "value": "learn_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_title",
+                "value": "Step 2: CHOOSE",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Think about your needs and wants\n\nWANT: Something you can live without\nNEED: Something you cannot live without",
+                "type": "set_variable"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/money/learn/slide_1.svg",
                     "type": "set_variable"
                   },
                   {
                     "name": "text",
-                    "value": "People often don’t see things in the same way. When we talk about our needs and wants, we understand each other better and can make good decisions together on how to spend our money.\n\nLook at your list and think:\n\n- Which are NEEDS that you can’t live without? Why?\n- Which are WANTS which are nice to have but not essential? Why? \n\nDiscuss together what things you could try to spend less on as a family.",
-                    "condition": "!@field.do_workshops_together",
+                    "value": "Look at your lists of things you spend money on and choose:\n\n- Which are NEEDS that you can’t live without? Why?\n- Which are WANTS which are nice to have but not essential? Why? \n- Which things could you try to spend less money on?",
                     "type": "set_variable"
                   }
                 ]
@@ -20210,7 +21071,7 @@
     "rows": [
       {
         "type": "template",
-        "name": "learn",
+        "name": "learn_alone",
         "value": "learn_temp",
         "action_list": [
           {
@@ -20223,6 +21084,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -20235,18 +21097,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Make a budget as one big family!",
-                "parameter_list": {
-                  "@field.do_workshops_together": "true"
-                },
-                "type": "set_variable"
-              },
-              {
-                "name": "intro_text",
-                "value": "Make a budget as a family!",
-                "parameter_list": {
-                  "!@field.do_workshops_together": "true"
-                },
+                "value": "Make a budget!",
                 "type": "set_variable"
               },
               {
@@ -20266,14 +21117,121 @@
                   },
                   {
                     "name": "text",
-                    "value": "- One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n- Take roles - some will be adults, some will be teens. \n- Decide what your income is for the month.\n- Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n- Decide together what you will spend on what, and put the stones/objects on your picture. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
-                    "condition": "@field.do_workshops_together",
+                    "value": "- Write down what your income is for the month.\n- Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n- Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "learn_group",
+        "value": "learn_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "!@field.do_workshops_together",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_title",
+                "value": "Step 3: BUILD",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Make a budget as one big family!",
+                "type": "set_variable"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/money/learn/slide_3.svg",
                     "type": "set_variable"
                   },
                   {
                     "name": "text",
-                    "value": "- Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n- Decide together what you will spend on what, and put the stones/objects on your picture. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
-                    "condition": "!@field.do_workshops_together",
+                    "value": "- One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n- Take roles - some will be adults, some will be teens. \n- Decide what your income is for the month.\n- Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n- Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "learn_family",
+        "value": "learn_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_title",
+                "value": "Step 3: BUILD",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Make a budget as a family!",
+                "type": "set_variable"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/money/learn/slide_3.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "- Write down what your income is for the month.\n- Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n- Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
                     "type": "set_variable"
                   }
                 ]
@@ -20314,13 +21272,6 @@
               {
                 "name": "intro_text",
                 "value": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing: ",
-                "condition": "@field.do_workshops_together",
-                "type": "set_variable"
-              },
-              {
-                "name": "intro_text",
-                "value": "Let's see how @global.w_money_grandma made a plan with her money, just like you will do with your family this week: ",
-                "condition": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
@@ -20335,12 +21286,12 @@
                     "rows": [
                       {
                         "name": "image_src",
-                        "value": "plh_images/workshops/money/read_3/slide_1.svg",
+                        "value": "plh_images/workshops/money/read_3/slide_2.svg",
                         "type": "set_variable"
                       },
                       {
                         "name": "text",
-                        "value": "\"I have been taking care of my grandchildren since their parents died when they were young, but we often run out of money. \n\n@global.w_money_teen_girl is so clever! She will graduate next year and need books and money for university!  \n\nAnd @global.w_money_teen_boy will go to high school soon - but he will need a uniform and transport money!\"",
+                        "value": "\"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\"",
                         "type": "set_variable"
                       }
                     ]
@@ -20357,12 +21308,12 @@
                         "rows": [
                           {
                             "name": "image_src",
-                            "value": "plh_images/workshops/money/read_3/slide_2.svg",
+                            "value": "plh_images/workshops/money/read_3/slide_3.svg",
                             "type": "set_variable"
                           },
                           {
                             "name": "text",
-                            "value": "\"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\"",
+                            "value": "\"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?\"",
                             "type": "set_variable"
                           }
                         ]
@@ -20379,12 +21330,12 @@
                             "rows": [
                               {
                                 "name": "image_src",
-                                "value": "plh_images/workshops/money/read_3/slide_3.svg",
+                                "value": "plh_images/workshops/money/read_3/slide_4.svg",
                                 "type": "set_variable"
                               },
                               {
                                 "name": "text",
-                                "value": "\"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?\"",
+                                "value": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\"",
                                 "type": "set_variable"
                               }
                             ]
@@ -20401,12 +21352,12 @@
                                 "rows": [
                                   {
                                     "name": "image_src",
-                                    "value": "plh_images/workshops/money/read_3/slide_4.svg",
+                                    "value": "plh_images/workshops/money/read_3/slide_5.svg",
                                     "type": "set_variable"
                                   },
                                   {
                                     "name": "text",
-                                    "value": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\"",
+                                    "value": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but don’t need.\"",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -20414,41 +21365,17 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_2",
-                                "value": "pair",
+                                "value": "box_image",
                                 "rows": [
                                   {
-                                    "type": "nested_properties",
-                                    "name": "box_1",
-                                    "value": "box_image_more",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/money/read_3/slide_5.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but don’t need.\"",
-                                        "type": "set_variable"
-                                      }
-                                    ]
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/money/read_3/slide_6.svg",
+                                    "type": "set_variable"
                                   },
                                   {
-                                    "type": "nested_properties",
-                                    "name": "box_2",
-                                    "value": "box_image",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/money/read_3/slide_6.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”",
-                                        "type": "set_variable"
-                                      }
-                                    ]
+                                    "name": "text",
+                                    "value": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”",
+                                    "type": "set_variable"
                                   }
                                 ]
                               }
@@ -20470,12 +21397,12 @@
   {
     "flow_type": "template",
     "module": "money",
-    "flow_name": "w_money_talk_1",
+    "flow_name": "w_money_tq_1",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "talk_together",
+        "name": "talk_group_family",
         "value": "talk_together",
         "action_list": [
           {
@@ -20488,6 +21415,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "\"@field.w_money_path\"==\"individual\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -20500,8 +21428,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Let's talk about saving.",
-                "comments": "placeholder",
+                "value": "We all have dreams for our family, just like @global.w_money_grandma . By setting aside a bit of money every month, you can realise them too!",
                 "type": "set_variable"
               },
               {
@@ -20510,8 +21437,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Let’s go back to the budget you planned together: \n\nWhat are your  family savings goals?",
-                    "comments": "placeholder",
+                    "value": "What are your  family savings goals?",
                     "type": "set_variable"
                   },
                   {
@@ -20521,10 +21447,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_money_talk_1_pop"
+                          "w_money_tq_1_pop"
                         ],
-                        "_raw": "click | pop_up:w_money_talk_1_pop",
-                        "_cleaned": "click | pop_up:w_money_talk_1_pop"
+                        "_raw": "click | pop_up:w_money_tq_1_pop",
+                        "_cleaned": "click | pop_up:w_money_tq_1_pop"
                       }
                     ],
                     "hidden": "false",
@@ -20534,46 +21460,16 @@
               },
               {
                 "name": "outro_text",
-                "value": "Such great goals! \n\nWhen we make a good budget and saving plan together, we can achieve it and feel proud of ourselves!",
+                "value": "Such great goals! \n\nSuch a great goal! When we make a good budget and saving plan together, we can achieve it and feel proud of ourselves!",
                 "type": "set_variable"
               }
             ]
           }
         ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "money",
-    "flow_name": "w_money_talk_1_pop",
-    "status": "released",
-    "rows": [
+      },
       {
         "type": "template",
-        "name": "suggestions",
-        "value": "suggestions",
-        "rows": [
-          {
-            "name": "list_text",
-            "value": "- Teens completing school/university \n- Building/expanding a house for my family \n- Starting a business \n- Buying a car for my family ",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "money",
-    "flow_name": "w_money_question_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "question_time",
+        "name": "question_alone",
         "value": "question_time",
         "action_list": [
           {
@@ -20586,6 +21482,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -20593,7 +21490,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Let's think about saving goals.",
+                "value": "We all have dreams for our family, just like @global.w_money_grandma . By setting aside a bit of money every month, you can realise them too!",
                 "type": "set_variable"
               },
               {
@@ -20623,12 +21520,33 @@
                   },
                   {
                     "name": "reply",
-                    "value": "Such great goals! \n\nWhen we make a good budget and saving plan together, we can achieve it and feel proud of ourselves!",
+                    "value": "Such a great goal! \n\nBy making a good budget and saving plan, you can achieve it and feel proud of yourself!",
                     "type": "set_variable"
                   }
                 ]
               }
             ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "w_money_tq_1_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "- Teens completing school/university \n- Building/expanding a house for my family \n- Starting a business \n- Buying a car for my family ",
+            "type": "set_variable"
           }
         ]
       }
@@ -20663,7 +21581,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "There is one more thing @global.w_money_grandma learned along the way… ",
+                "value": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learned this along the way:",
                 "type": "set_variable"
               },
               {
@@ -20693,12 +21611,12 @@
   {
     "flow_type": "template",
     "module": "money",
-    "flow_name": "w_money_talk_2",
+    "flow_name": "w_money_tq_2",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "talk_together",
+        "name": "talk_group_family",
         "value": "talk_together",
         "action_list": [
           {
@@ -20711,6 +21629,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "\"@field.w_money_path\"==\"individual\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -20724,7 +21643,6 @@
               {
                 "name": "intro_text",
                 "value": "Let's talk about this story.",
-                "comments": "placeholder",
                 "type": "set_variable"
               },
               {
@@ -20734,7 +21652,6 @@
                   {
                     "name": "text",
                     "value": "For @global.w_money_grandma, a storm happened. \n\nWhat other emergencies could come up for us?",
-                    "comments": "placeholder",
                     "type": "set_variable"
                   },
                   {
@@ -20744,10 +21661,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_money_talk_2_pop"
+                          "w_money_tq_2_pop"
                         ],
-                        "_raw": "click | pop_up:w_money_talk_2_pop",
-                        "_cleaned": "click | pop_up:w_money_talk_2_pop"
+                        "_raw": "click | pop_up:w_money_tq_2_pop",
+                        "_cleaned": "click | pop_up:w_money_tq_2_pop"
                       }
                     ],
                     "hidden": "false",
@@ -20757,46 +21674,16 @@
               },
               {
                 "name": "outro_text",
-                "value": "Remember, we already made a plan for our needs and wants, and for our goals.  Now we have seen that it is important to have an EMERGENCY PLAN too!",
+                "value": "Emergencies can happen in any family. Saving some money for these emergencies BEFORE they happen prevents a lot of sudden worry and stress!",
                 "type": "set_variable"
               }
             ]
           }
         ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "money",
-    "flow_name": "w_money_talk_2_pop",
-    "status": "released",
-    "rows": [
+      },
       {
         "type": "template",
-        "name": "suggestions",
-        "value": "suggestions",
-        "rows": [
-          {
-            "name": "list_text",
-            "value": "- Severe illness or death of a friend or family member  \n- Robbery \n- Flooding \n- Political violence \n- Losing my job\n- Pandemic (COVID-19) ",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "money",
-    "flow_name": "w_money_question_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "question_time",
+        "name": "question_alone",
         "value": "question_time",
         "action_list": [
           {
@@ -20809,6 +21696,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -20848,7 +21736,7 @@
                   },
                   {
                     "name": "reply",
-                    "value": "It's important to have an EMERGENCY PLAN too!",
+                    "value": "Emergencies can happen in any family. Saving some money for these emergencies BEFORE they happen prevents a lot of sudden worry and stress!",
                     "type": "set_variable"
                   }
                 ]
@@ -20863,12 +21751,33 @@
   {
     "flow_type": "template",
     "module": "money",
-    "flow_name": "w_money_talk_3",
+    "flow_name": "w_money_tq_2_pop",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "talk_together",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "- Severe illness or death of a friend or family member  \n- Robbery \n- Flooding \n- Political violence \n- Losing my job\n- Pandemic (COVID-19) ",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "w_money_tq_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "talk_group_family",
         "value": "talk_together",
         "action_list": [
           {
@@ -20881,6 +21790,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "\"@field.w_money_path\"==\"individual\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -20909,10 +21819,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_money_talk_3_pop"
+                          "w_money_tq_3_pop"
                         ],
-                        "_raw": "click | pop_up:w_money_talk_3_pop",
-                        "_cleaned": "click | pop_up:w_money_talk_3_pop"
+                        "_raw": "click | pop_up:w_money_tq_3_pop",
+                        "_cleaned": "click | pop_up:w_money_tq_3_pop"
                       }
                     ],
                     "hidden": "false",
@@ -20923,40 +21833,10 @@
             ]
           }
         ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "money",
-    "flow_name": "w_money_talk_3_pop",
-    "status": "released",
-    "rows": [
+      },
       {
         "type": "template",
-        "name": "suggestions",
-        "value": "suggestions",
-        "rows": [
-          {
-            "name": "list_text",
-            "value": "- At home\n- Buy things we can sell\n- At a bank\n- In a savings group",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "money",
-    "flow_name": "w_money_question_3",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "question_time",
+        "name": "question_alone",
         "value": "question_time",
         "action_list": [
           {
@@ -20969,6 +21849,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -20976,7 +21857,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Let's think about saving options.",
+                "value": "Let's think about different ways we can save.",
                 "type": "set_variable"
               },
               {
@@ -21021,12 +21902,33 @@
   {
     "flow_type": "template",
     "module": "money",
+    "flow_name": "w_money_tq_3_pop",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "list_text",
+            "value": "- At home\n- Buy things we can sell\n- At a bank\n- In a savings group",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_money.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
     "flow_name": "w_money_learn_5_temp",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "learn",
+        "name": "learn_group_family",
         "value": "learn_temp",
         "action_list": [
           {
@@ -21039,6 +21941,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "hidden": "\"@field.w_money_path\"==\"individual\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -21051,7 +21954,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Emergencies and family goals",
+                "value": "Plan how you can save money, so you can deal with emergencies and realise your family goals!",
                 "type": "set_variable"
               },
               {
@@ -21084,6 +21987,79 @@
               {
                 "name": "outro_text",
                 "value": "CONGRATULATIONS!!! You’ve made your family budget – and using it will make a huge difference for you. I think every person in your family deserves a praise, don’t you?",
+                "type": "set_variable"
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "When you’ve done your budget, or anytime you make a good choice about needs, wants and savings, click the @global.parent_point and celebrate your success",
+                "hidden": "false",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "learn_alone",
+        "value": "learn_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_title",
+                "value": "Step 4: PLAN",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Plan how you can save money, so you can deal with emergencies and realise your family goals!",
+                "type": "set_variable"
+              },
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "box_image",
+                "rows": [
+                  {
+                    "name": "image_src",
+                    "value": "plh_images/workshops/money/learn/slide_4.svg",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text",
+                    "value": "If you can save even a tiny amount for the future or emergency - it can make a big difference over time. \n\n- Add a circle called “emergencies”.\n- Add a circle called “family goals”.\n- Now try to move your money around so you can save a bit every month for each of these.  ",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "name": "outro_text",
+                "value": "CONGRATULATIONS!!! You’ve made your budget – remember to do this exercise again with your other family members - if you agree on a plan together it will make a huge difference!",
                 "type": "set_variable"
               },
               {
@@ -21204,7 +22180,7 @@
             "rows": [
               {
                 "name": "title",
-                "value": "Step 2: TALK",
+                "value": "Step 2: CHOOSE",
                 "type": "set_variable"
               },
               {
@@ -21214,7 +22190,7 @@
               },
               {
                 "name": "button_1",
-                "value": "TALK Activity",
+                "value": "CHOOSE Activity",
                 "action_list": [
                   {
                     "trigger": "click",
@@ -21335,12 +22311,30 @@
                 "rows": [
                   {
                     "name": "text_1",
-                    "value": "Make a budget with your teen and family. This will help teens understand that we all need to make hard decisions in difficult times. \n\nBudgets have helped  millions of families to have  enough money at the end of the month. \n\nThis is an important and fun thing to do with your family – it takes about 30 minutes.",
+                    "value": "Make a budget again - this time WITH your teen and family! \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
+                    "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text_2",
+                    "value": "Make a budget with your teen and family. \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
+                    "hidden": "!@field.do_workshops_together",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "text_3",
+                    "value": "Review your budget with your teen and family. This will remind everyone that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped millions of families.",
+                    "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
                     "type": "set_variable"
                   },
                   {
                     "name": "button_1",
-                    "value": "Steps for budget",
+                    "hidden": "true",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "button_3",
+                    "value": "Steps to make a budget",
                     "action_list": [
                       {
                         "trigger": "click",
@@ -21352,6 +22346,7 @@
                         "_cleaned": "click | go_to:w_money_tools"
                       }
                     ],
+                    "hidden": "false",
                     "type": "set_variable"
                   },
                   {
@@ -24078,7 +25073,7 @@
               "w_safe_talk_1",
               "w_safe_read_2_temp",
               "w_safe_talk_2",
-              "w_safe_learn_temp",
+              "w_safe_learn_together_temp",
               "w_safe_tools_activity",
               "w_safe_home_practice",
               "w_safe_ending"
@@ -24096,7 +25091,7 @@
               "w_safe_question_1",
               "w_safe_read_2_temp",
               "w_safe_question_2",
-              "w_safe_learn_temp",
+              "w_safe_learn_individual_temp",
               "w_safe_tools_activity",
               "w_safe_home_practice",
               "w_safe_ending"
@@ -24241,7 +25236,13 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "rows": []
+        "rows": [
+          {
+            "name": "relax",
+            "value": "relax_12",
+            "type": "set_variable"
+          }
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_safe.xlsx"
@@ -24370,7 +25371,7 @@
                   },
                   {
                     "name": "intro_text",
-                    "value": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. Talking together about safe and unsafe places, and how to prevent problems, really helps!",
+                    "value": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. \n\nTalking together about safe and unsafe places, and how to prevent problems, really helps!",
                     "type": "set_variable"
                   },
                   {
@@ -24425,6 +25426,11 @@
             "type": "nested_properties",
             "name": "workshop_activity",
             "rows": [
+              {
+                "name": "intro_text",
+                "value": "Communication is the most important thing!\n\nLet's see what happened with @global.w_safe_female_caregiver and @global.w_safe_teen_girl_1:",
+                "type": "set_variable"
+              },
               {
                 "type": "nested_properties",
                 "name": "content_box",
@@ -24508,7 +25514,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "@global.w_safe_teen_girl_2: “You are lucky, my friend. I wish I could also have a man that would ask me out and buy me gifts. I’m telling you, if you don’t do this I’m going to tell everyone you are stupid!” ",
+                                    "value": "@global.w_safe_teen_girl_2: “You are lucky, my friend. I wish a man would ask ME out and buy me gifts. I’m telling you, if you don’t do this I’m going to tell everyone you are stupid!” ",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -24689,7 +25695,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Let's think about what happened to @global.w_safe_teen_girl_1",
+                "value": "Let's think about what happened to @global.w_safe_teen_girl_1:",
                 "type": "set_variable"
               },
               {
@@ -24759,7 +25765,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Let's look at another example together.",
+                "value": "Let's look at another example of a dangerous situation together.",
                 "type": "set_variable"
               },
               {
@@ -24818,7 +25824,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "@global.w_safe_female_caregiver: \"Sometimes people aren’t who they say they are online – he could say he is your age but be a 50 year old man. Or when they break up, he sends those photos to everyone so your friend feels awful.\"",
+                            "value": "@global.w_safe_female_caregiver: \"Sometimes people aren’t who they say they are online – he could say he is your age but be a 50 year old man. Or when they break up, he could send those photos to everyone and your friend would feel awful.\"",
                             "type": "set_variable"
                           }
                         ]
@@ -24993,7 +25999,7 @@
   {
     "flow_type": "template",
     "module": "safe",
-    "flow_name": "w_safe_learn_temp",
+    "flow_name": "w_safe_learn_together_temp",
     "status": "released",
     "rows": [
       {
@@ -25023,14 +26029,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Let’s make two maps together of safe and unsafe places:\n(1) A map of our community\n(2) A map of apps/websites we use online\n\nLet’s make these maps as a group now. \n\nYou’ll do the same with your teen as home practice this week.",
-                "condition": "@field.do_workshops_together",
-                "type": "set_variable"
-              },
-              {
-                "name": "intro_text",
-                "value": "Let’s make two maps together of safe and unsafe places:\n(1) A map of our community\n(2) A map of apps/websites we use online\n\nYou’ll do the same with your teen as home practice this week - if your teen is here now, you can do it together now!",
-                "condition": "!@field.do_workshops_together",
+                "value": "To keep our teens safe, we need to understand the dangerous situations they could get into!\n\nLet’s make two maps together of safe and unsafe places:\n- A map of our community\n- A map of apps/websites we use online\n\nLet’s make these maps as a group now. \n\nYou’ll do the same with your teen as home practice this week.",
                 "type": "set_variable"
               },
               {
@@ -25095,13 +26094,6 @@
                           {
                             "name": "text",
                             "value": "Discuss together:\n\n- Which areas on your map are safe for teenagers \n     – CIRCLE these \n- Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n- What makes a place safe or unsafe?  \n- What could you and your teen do to keep your teen safer?",
-                            "condition": "@field.do_workshops_together",
-                            "type": "set_variable"
-                          },
-                          {
-                            "name": "text",
-                            "value": "- Which areas on your map are safe for teenagers \n     – CIRCLE these \n- Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n- What makes a place safe or unsafe?  \n- What could you and your teen do to keep your teen safer?",
-                            "condition": "!@field.do_workshops_together",
                             "type": "set_variable"
                           }
                         ]
@@ -25130,13 +26122,6 @@
                               {
                                 "name": "text",
                                 "value": "Sometimes, we can find ourselves in trouble. Discuss together:\n \n- Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful",
-                                "condition": "@field.do_workshops_together",
-                                "type": "set_variable"
-                              },
-                              {
-                                "name": "text",
-                                "value": "Sometimes, we can find ourselves in trouble.\n \n- Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful",
-                                "condition": "!@field.do_workshops_together",
                                 "type": "set_variable"
                               },
                               {
@@ -25176,6 +26161,7 @@
                               },
                               {
                                 "type": "nested_properties",
+                                "name": "nav_buttons",
                                 "rows": [
                                   {
                                     "name": "button_info",
@@ -25195,7 +26181,412 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success",
+                "value": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!",
+                "hidden": "false",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_safe.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "safe",
+    "flow_name": "w_safe_learn_individual_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "learn",
+        "value": "learn_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "intro_title",
+                "value": "Safety Plan",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "To keep our teens safe, we need to understand the dangerous situations they could get into!",
+                "type": "set_variable"
+              },
+              {
+                "name": "include_outro",
+                "value": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_radio_buttons",
+                    "rows": [
+                      {
+                        "name": "image_src",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "text",
+                        "value": "Let’s make two maps together of safe and unsafe places: \n- A map of our community \n- A map of apps/websites we use online \n\nYou’ll do the same with your teen as home practice this week - if your teen is here now, you can do it together now!",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "question_text",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "answer_list",
+                        "value": [
+                          "name:family | text:My family can join in now!",
+                          "name:alone | text:Let me try it out by myself"
+                        ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "radio_group",
+                        "action_list": [
+                          {
+                            "trigger": "changed",
+                            "action_id": "set_field",
+                            "args": [
+                              "w_safe_path",
+                              "@local.radio_group"
+                            ],
+                            "_raw": "changed | set_field: w_safe_path: @local.radio_group",
+                            "_cleaned": "changed | set_field: w_safe_path: @local.radio_group"
+                          }
+                        ],
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "radio_button_type",
+                        "value": "btn_text",
+                        "type": "set_variable"
+                      },
+                      {
+                        "name": "reply",
+                        "hidden": "true",
+                        "type": "set_variable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "box_duo",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "pair",
+                        "hidden": "\"@field.w_safe_path\" ==\"alone\"",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "value": "plh_images/workshops/safe/learn/slide_1.svg",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "title",
+                                "value": "Step 1: What are important places in your community? ",
+                                "hidden": "false",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "- Get a piece of paper (or old newspaper or a cardboard box) and a pen. \n- Draw a map of your teen’s community, with pictures of all the main places like streets, your house, school, shops, places your teen visits.",
+                                "type": "set_variable"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "pair",
+                            "rows": [
+                              {
+                                "type": "nested_properties",
+                                "name": "box_1",
+                                "value": "box_image",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/safe/learn/slide_2.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "title",
+                                    "value": "Step 2: Which places are safe and unsafe?",
+                                    "hidden": "false",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "Discuss together:\n- Which areas on your map are safe for teenagers \n     – CIRCLE these \n- Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n- What makes a place safe or unsafe?  \n- What could you and your teen do to keep your teen safer?",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "box_2",
+                                "value": "pair",
+                                "rows": [
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_1",
+                                    "value": "box_image",
+                                    "rows": [
+                                      {
+                                        "name": "image_src",
+                                        "value": "plh_images/workshops/safe/learn/slide_3.svg",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "title",
+                                        "value": "Step 3: Where can you get support?",
+                                        "hidden": "false",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "text",
+                                        "value": "Sometimes, we can find ourselves in trouble. Discuss together:\n \n- Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "type": "nested_properties",
+                                        "name": "nav_buttons",
+                                        "rows": [
+                                          {
+                                            "name": "button_info",
+                                            "value": "Resources to help in the community",
+                                            "hidden": "false",
+                                            "type": "set_variable"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_2",
+                                    "value": "box_image",
+                                    "rows": [
+                                      {
+                                        "name": "image_src",
+                                        "value": "plh_images/workshops/safe/learn/slide_4.svg",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "title",
+                                        "value": "Step 4: What are risky places online and how can you make them safer? ",
+                                        "hidden": "false",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "text",
+                                        "value": "- Draw pictures of the apps and websites your teenagers use \n- Praise your teens for how good they are at using the web!  \n- Talk about which ones might be unsafe. Why? \n- What could you and your teen do to make using the internet safer for your teen and their friends?",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "type": "nested_properties",
+                                        "name": "nav_buttons",
+                                        "rows": [
+                                          {
+                                            "name": "button_info",
+                                            "value": "Online Safety Resources",
+                                            "hidden": "false",
+                                            "type": "set_variable"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "pair",
+                        "hidden": "\"@field.w_safe_path\" ==\"family\"",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "box_image",
+                            "rows": [
+                              {
+                                "name": "image_src",
+                                "value": "plh_images/workshops/safe/learn/slide_1.svg",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "title",
+                                "value": "Step 1: What are important places in your community? ",
+                                "hidden": "false",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "- Get a piece of paper (or old newspaper or a cardboard box) and a pen. \n- Draw a map of your teen’s community, with pictures of all the main places like streets, your house, school, shops, places your teen visits.",
+                                "type": "set_variable"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "pair",
+                            "rows": [
+                              {
+                                "type": "nested_properties",
+                                "name": "box_1",
+                                "value": "box_image",
+                                "rows": [
+                                  {
+                                    "name": "image_src",
+                                    "value": "plh_images/workshops/safe/learn/slide_2.svg",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "title",
+                                    "value": "Step 2: Which places are safe and unsafe?",
+                                    "hidden": "false",
+                                    "type": "set_variable"
+                                  },
+                                  {
+                                    "name": "text",
+                                    "value": "- Which areas on your map are safe for teenagers \n     – CIRCLE these \n- Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n- What makes a place safe or unsafe?  \n- What could you and your teen do to keep your teen safer?",
+                                    "type": "set_variable"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "box_2",
+                                "value": "pair",
+                                "rows": [
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_1",
+                                    "value": "box_image",
+                                    "rows": [
+                                      {
+                                        "name": "image_src",
+                                        "value": "plh_images/workshops/safe/learn/slide_3.svg",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "title",
+                                        "value": "Step 3: Where can you get support?",
+                                        "hidden": "false",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "text",
+                                        "value": "Sometimes, we can find ourselves in trouble.\n \n- Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "type": "nested_properties",
+                                        "name": "nav_buttons",
+                                        "rows": [
+                                          {
+                                            "name": "button_info",
+                                            "value": "Resources to help in the community",
+                                            "hidden": "false",
+                                            "type": "set_variable"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_2",
+                                    "value": "box_image",
+                                    "rows": [
+                                      {
+                                        "name": "image_src",
+                                        "value": "plh_images/workshops/safe/learn/slide_4.svg",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "title",
+                                        "value": "Step 4: What are risky places online and how can you make them safer? ",
+                                        "hidden": "false",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "name": "text",
+                                        "value": "- Draw pictures of the apps and websites your teenagers use \n- Recognise how good they are at using the web!  \n- Think about which ones might be unsafe. Why? \n- What could you and your teen do to make using the internet safer for your teen and their friends?",
+                                        "type": "set_variable"
+                                      },
+                                      {
+                                        "type": "nested_properties",
+                                        "name": "nav_buttons",
+                                        "rows": [
+                                          {
+                                            "name": "button_info",
+                                            "value": "Online Safety Resources",
+                                            "hidden": "false",
+                                            "type": "set_variable"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "outro_habit_text",
+                "value": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!",
                 "hidden": "false",
                 "type": "set_variable"
               }
@@ -27194,7 +28585,7 @@
                                       },
                                       {
                                         "name": "text",
-                                        "value": "@global.w_solve_female_caregiver_2: \"Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2:  \"That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!\"",
+                                        "value": "@global.w_solve_female_caregiver_2: \"Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2: \"That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!\"",
                                         "type": "set_variable"
                                       }
                                     ]
@@ -27432,7 +28823,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Discuss together: \n\nHow could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT",
+                    "value": "Discuss together: \n\nHow could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving, like @global.w_solve_female_caregiver_2 and @global.w_solve_teen_boy_2 did? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT",
                     "type": "set_variable"
                   }
                 ]
@@ -27487,7 +28878,7 @@
                 "rows": [
                   {
                     "name": "text_1",
-                    "value": "How could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT",
+                    "value": "How could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving, like @global.w_solve_female_caregiver_2 and @global.w_solve_teen_boy_2 did? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT",
                     "type": "set_variable"
                   },
                   {
@@ -27891,7 +29282,7 @@
                 "rows": [
                   {
                     "name": "text_1",
-                    "value": "Teach your teenagers the four steps of problem-solving:\nKNOW IT - SOLVE IT - TRY IT - TEST IT \n\nWhen something bad happens, we often get upset and blame. But what they really need is someone to help  find solutions together. Listen to them, accept how they see and feel things, and thank them for trusting you.\n\nTeaching your teen how to deal with problems will help them for the rest of their lives. What a gift!",
+                    "value": "Teach your teenagers the four steps of problem-solving:\nKNOW IT - SOLVE IT - TRY IT - TEST IT \n\nUse these steps together when a problem comes up!\n\nWhen something bad happens, we often get upset and blame. But what our teens really need is someone to help find solutions together. Listen to them, accept how they see and feel things, and thank them for trusting you.\n\nTeaching your teen how to deal with problems will help them for the rest of their lives. What a gift!",
                     "type": "set_variable"
                   },
                   {
