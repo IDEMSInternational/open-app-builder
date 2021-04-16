@@ -22,6 +22,7 @@ const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
   "animated_section_group",
   "nav_group",
   "nav_section",
+  "workshops_accordion",
 ];
 
 const NESTED_TYPES: FlowTypes.TemplateRowType[] = ["template", "nested_properties"];

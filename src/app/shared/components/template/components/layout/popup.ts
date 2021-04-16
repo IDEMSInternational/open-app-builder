@@ -28,17 +28,17 @@ import { TemplateContainerComponent } from "../../template-container.component";
         align-items: center;
       }
       .popup-backdrop {
-        height: 100%;
+        height: calc(100vh - 40px);
         width: 100%;
+        margin-top: 40px;
       }
       .popup-content {
         width: 80%;
-        height: calc(100vh - 140px);
+        max-height: calc(100vh - 140px);
         background: white;
         border: 2px solid black;
         border-radius: 40px;
         padding: 20px;
-        margin-top: 40px;
       }
       .close-button {
         margin-left: auto;

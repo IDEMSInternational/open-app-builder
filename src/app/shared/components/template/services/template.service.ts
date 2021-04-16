@@ -23,7 +23,7 @@ export class TemplateService {
     GLOBAL.forEach((flow) => {
       flow.rows?.forEach((row) => {
         if (row.type === "declare_field_default") {
-          if (this.getField(row.name) === null) {
+          if (this.localStorageService.getString("rp-contact-field." + row.name) === null) {
             this.setField(row.name, row.value);
           }
         } else {

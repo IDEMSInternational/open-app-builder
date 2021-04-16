@@ -26,8 +26,6 @@
       img {
         width: 60px;
         height: 60px;
-        max-width: initial;
-        margin-right: 2px;
       }
     }
   }
@@ -51,6 +49,14 @@
   text-align: center;
   padding: 10px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  @media (max-width: 375px) {
+    width: 122px;
+    height: 101px;
+  }
+  @media (max-width: 320px) {
+    width: 102px;
+    height: 90px;
+  }
   .button-wrapper {
     order: 1;
     .btn-tile {
