@@ -411,9 +411,20 @@ export namespace FlowTypes {
     type: "local" | "field" | "fields" | "global" | "data";
     fieldName: string;
   }
+
+  export type TemplateRowActionTrigger =
+    | "click"
+    | "completed"
+    | "uncompleted"
+    | "changed"
+    | "audio_play"
+    | "audio_pause"
+    | "audio_end"
+    | "audio_first_start";
+
   export interface TemplateRowAction {
     /** actions have an associated trigger */
-    trigger: "click" | "completed" | "uncompleted" | "changed";
+    trigger: TemplateRowActionTrigger;
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
