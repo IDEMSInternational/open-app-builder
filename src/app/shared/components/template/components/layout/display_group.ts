@@ -25,6 +25,12 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         width: 100%;
         border-radius: 20px;
       }
+      .navigation {
+        justify-content: space-between;
+      }
+      :host .navigation .offset :nth-child(1n) {
+        flex: 0;
+      }
     `,
   ],
 })
