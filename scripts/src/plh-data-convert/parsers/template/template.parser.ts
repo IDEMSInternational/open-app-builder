@@ -68,6 +68,10 @@ export class TemplateParser extends DefaultParser {
       "completed",
       "uncompleted",
       "changed",
+      "audio_play",
+      "audio_pause",
+      "audio_end",
+      "audio_first_start",
     ];
     if (!actionTriggers.find((t) => actionString.startsWith(t))) {
       actionString = `click | ${actionString}`;

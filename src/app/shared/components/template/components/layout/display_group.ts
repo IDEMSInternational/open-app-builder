@@ -26,6 +26,10 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         width: 100%;
         border-radius: 20px;
       }
+      .navigation {
+        justify-content: space-between;
+        padding-bottom: 10px;
+      }
       .parent_point .offset {
         flex-wrap: wrap;
         padding: 10px 0;
