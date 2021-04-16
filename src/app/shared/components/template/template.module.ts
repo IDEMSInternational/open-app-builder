@@ -12,6 +12,7 @@ import { TooltipDirective } from "../common/directives/tooltip.directive";
 import { NouisliderModule } from "ng2-nouislider";
 import { AngularSvgIconModule } from "angular-svg-icon";
 import { MarkdownPipe } from "./pipes/markdown.pipe";
+import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { MarkdownPipe } from "./pipes/markdown.pipe";
     ...TEMPLATE_COMPONENTS,
     TemplateContainerComponent,
     MarkdownPipe,
+    appendStyleSvgDirective,
   ],
 })
 export class TemplateComponentsModule {}
