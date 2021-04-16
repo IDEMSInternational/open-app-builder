@@ -16,8 +16,6 @@ import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
 import { TemplateContainerComponent } from "./template-container.component";
 
-export const NAME_CLASS_PREFIX = "tc-name-";
-
 /*********************************************************************
  *  Directive used as part of loading dynamic flow component elemnt
  *********************************************************************/
@@ -44,10 +42,11 @@ export class TmplCompHostDirective {
   selector: "plh-template-component",
   template: `
     <div
-      class="plh-tmpl-comp {{ rowNameClass }}"
+      class="plh-tmpl-comp"
       [attr.data-hidden]="row.hidden"
       [attr.data-debug]="parent.debugMode"
       [ngClass]="{ disabled: row.disabled }"
+      [attr.data-rowname]="row.name"
     >
       <!-- Template Debugger -->
       <plh-template-debugger
@@ -87,8 +86,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
 
   styles: { [name: string]: any } = {};
 
-  rowNameClass: string;
-
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
   constructor(
@@ -105,8 +102,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
-    this.rowNameClass = NAME_CLASS_PREFIX + row.name;
-
     // console.log(`[${this.row.name}]`, "render row");
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {

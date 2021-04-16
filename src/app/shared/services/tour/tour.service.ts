@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 
 import introJs from "intro.js";
-import { NAME_CLASS_PREFIX } from "../../components/template/template-component";
 import { TOUR } from "../data/data.service";
 
 @Injectable({
@@ -27,7 +26,7 @@ export class TourService {
         steps: matchingTour.rows.map((row) => {
           let elementSelector = row.element;
           if (row.template_component_name && row.template_component_name.trim().length > 0) {
-            elementSelector = "." + NAME_CLASS_PREFIX + row.template_component_name;
+            elementSelector = `[data-rowname="${row.template_component_name}"]`;
           }
           return {
             intro: row.message_text,
