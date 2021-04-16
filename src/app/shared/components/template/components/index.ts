@@ -35,6 +35,7 @@ import { TemplatePopupComponent } from "./layout/popup";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
+import { TmplLottieAnimation } from "./lottie-animation";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -68,6 +69,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplIconBannerComponent,
   TmplDashedBoxComponent,
   TmplParentPointBoxComponent,
+  TmplLottieAnimation,
 ];
 
 /***************************************************************************************
@@ -116,4 +118,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   icon_banner: TmplIconBannerComponent,
   dashed_box: TmplDashedBoxComponent,
   parent_point_box: TmplParentPointBoxComponent,
+  lottie_animation: TmplLottieAnimation,
 };
