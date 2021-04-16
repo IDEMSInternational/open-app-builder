@@ -30,11 +30,13 @@ export class TemplateVariablesService {
    *
    * Additionally the references may be themselves nested within arrays, or json objects.
    * This method attempts to handle all such cases
+   *
+   * @param omitFields Any fields listed here will not be evaluated alongside any metadata fields (prefix '_')
    */
   public evaluatePLHData(
     data: string | number | boolean | any,
     context: IVariableContext,
-    omitFields: string[] = []
+    omitFields: string[] = ["comments"]
   ) {
     let value = data;
     // If the data is array or json-type object extract individual strings and reprocess

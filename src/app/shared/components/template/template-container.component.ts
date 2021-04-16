@@ -18,10 +18,11 @@ interface ILocalVariables {
  * TODO - would be nice to unify
  */
 const DISPLAY_TYPES: FlowTypes.TemplateRowType[] = [
+  "accordion_section",
   "animated_section",
   "animated_section_group",
+  "display_group",
   "nav_group",
-  "nav_section",
   "workshops_accordion",
 ];
 
@@ -37,7 +38,7 @@ const DATA_INIT_TYPES: FlowTypes.TemplateRowType[] = [
 ];
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
-const SHOW_DEBUG_LOGS = false;
+const SHOW_DEBUG_LOGS = true;
 const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 const log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
@@ -298,6 +299,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
          * 3. Process child rows at child level (e.g. template, nested_properties)
          * 4. Process child rows at current level (e.g. display_group)
          */
+        let evalContext = { localVariables, template: this.template, row };
+        let parsedRow = this.templateVariables.evaluatePLHData(row, evalContext);
         switch (type) {
           // Case 1
           //  TODO - CC 2021-04-15 - Does this need to be evaluated here?
@@ -307,10 +310,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           case "set_variable":
             localVariables[name] = {};
             // Replace any dynamic fields with their evaluations
-            const evalContext = { localVariables, template: this.template, row };
-            const parsedRow = this.templateVariables.evaluatePLHData(row, evalContext, [
-              "comments",
-            ]);
             Object.keys(parsedRow).forEach((field) => {
               const fieldValue = parsedRow[field];
               // don't override values that have otherwise been set from parent or nested properties
@@ -322,10 +321,31 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             return;
           // Case 3
           case "nested_properties":
-            localVariables[name] = this.processVariables(rows, localVariables, nestedLog);
+            // when nesting properties we want to both overwrite with any of the properties defined in the current
+            // nested properties row (e.g value, action_list) to apply directly to the template itself,
+            // and then also parse any processed variables to the template. These are namespaced together,
+            // which is fine for now as long as named variables don't conflict with the column names of the template
+            // TODO - should tidy this behaviour later
+
+            const nestedVariables = this.processVariables(rows, localVariables, nestedLog);
+            console.log("handle nested properties", {
+              localVariables: { ...localVariables },
+              nestedVariables,
+              parsedRow,
+            });
+            localVariables[name] = { ...parsedRow, ...nestedVariables };
+            Object.keys(parsedRow).forEach((field) => {
+              const fieldValue = parsedRow[field];
+              if (!localVariables[name].hasOwnProperty(field)) {
+                localVariables[name][field] = fieldValue;
+              }
+            });
             return;
           // Case 4
           case "display_group":
+            if (!name) {
+              console.warn("handling group without name");
+            }
             localVariables[name] = {
               ...localVariables,
               ...this.processVariables(rows, localVariables, nestedLog),
@@ -377,6 +397,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         row = this.templateVariables.evaluatePLHData(row, evalContext, ["comments", "rows"]);
         // Handle rows that have nested child rows
         if (rows) {
+          if (!name) {
+            console.warn("processing child rows without name");
+          }
           // if they are a structural nesting (e.g. template), process with reference to child variables
           // otherwise display nesting (e.g. display_group) can be processed in same way as current row
           if (NESTED_TYPES.includes(type)) {
