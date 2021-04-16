@@ -129,10 +129,10 @@ export class NavGroupComponent extends TemplateLayoutComponent {
             action_id: "set_field",
             args: [progressField, "" + percentDone],
             trigger: "completed",
-            _triggeredBy: "nav_group",
+            _triggeredBy: this._row,
           },
         ],
-        "nav_group"
+        this._row
       );
     } else {
       console.warn("No progress field", progressField);
