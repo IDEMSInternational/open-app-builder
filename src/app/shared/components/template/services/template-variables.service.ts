@@ -50,7 +50,7 @@ export class TemplateVariablesService {
         const dynamicFields = context.row._dynamicFields;
         // only evaluate if there are dynamic fields recorded somewhere in the object
         if (dynamicFields) {
-          console.group(`[evaluate] ${data.value || ""}`, { data, dynamicFields });
+          // console.group(`[evaluate] ${data.value || ""}`, { data, dynamicFields });
           Object.keys(data).forEach((k) => {
             value[k] = data[k];
             // ignore evaluation of meta fields. Could provide single list of approved fields, but as dynamic fields
@@ -62,7 +62,7 @@ export class TemplateVariablesService {
               value[k] = this.evaluatePLHData(data[k], nestedContext);
             }
           });
-          console.groupEnd();
+          // console.groupEnd();
         }
       }
     } else {
@@ -160,13 +160,18 @@ export class TemplateVariablesService {
         }
         // also check sibling components for name match and return value where set
         else {
-          parsedValue = template.rows.find((r) => r.name === fieldName)?.value;
+          const siblingRow = template.rows.find((r) => r.name === fieldName);
+          if (siblingRow) {
+            parsedValue = siblingRow.value;
+          } else {
+            console.error(`[Local] - @local.${fieldName} not found`, {
+              evaluator,
+              localVariables,
+            });
+            parsedValue = `{{local.${fieldName}}}`;
+          }
         }
-        // TODO - handle case where match found (but still returns undefined)
-        if (parsedValue === undefined) {
-          console.error("could not parse local variable", { evaluator, localVariables });
-          parsedValue = `{{local.${fieldName}}}`;
-        }
+
         break;
       case "field":
         parsedValue = this.templateService.getField(fieldName);
