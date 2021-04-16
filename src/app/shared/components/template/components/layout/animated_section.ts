@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -12,10 +12,28 @@ import { TemplateBaseComponent } from "../base";
   </div>`,
   styles: [
     `
+      .animated-section {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
       :host {
         width: 100%;
+        height: 100%;
       }
+      /*:host ::ng-deep plh-template-component{*/
+      /*   height: 100%;*/
+      /* }*/
     `,
   ],
 })
-export class AnimatedSectionComponent extends TemplateBaseComponent {}
+export class AnimatedSectionComponent extends TemplateBaseComponent implements AfterViewInit {
+  constructor(private elRef: ElementRef) {
+    super();
+  }
+
+  ngAfterViewInit() {
+    this.elRef.nativeElement.style.setProperty("height", "100%");
+    this.elRef.nativeElement.parentElement.parentElement.style.setProperty("height", "100%");
+  }
+}
