@@ -27,6 +27,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       }
       .navigation {
         justify-content: space-between;
+        padding-bottom: 10px;
       }
       :host .navigation .offset :nth-child(1n) {
         flex: 0;

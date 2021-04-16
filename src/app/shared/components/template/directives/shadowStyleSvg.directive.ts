@@ -25,8 +25,8 @@ export class appendStyleSvgDirective implements AfterViewInit, OnDestroy {
       this._styles.innerHTML = `
       svg,
       .icon-inner {
-        height: fit-content!important;
-        
+        width: auto!important;
+        height: auto!important;
       }`;
     }
 
