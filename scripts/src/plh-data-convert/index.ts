@@ -165,7 +165,6 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
         typeof html === "string" &&
         (html.indexOf("<b>") > -1 || html.indexOf("<em>") > -1 || html.indexOf("<i>") > -1)
       ) {
-        console.log("Formatting?", html);
         html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
         worksheet[cellId].v = html;
       }
