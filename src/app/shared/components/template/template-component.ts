@@ -132,6 +132,9 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
       this.elRef.nativeElement.style.setProperty("flex", "1");
       this.elRef.nativeElement.style.setProperty("justify-content", "flex-end");
     }
+    if (this.row.type === "button") {
+      this.elRef.nativeElement.style.setProperty("align-self", "normal");
+    }
   }
 
   /** Create and render a nested template component */
