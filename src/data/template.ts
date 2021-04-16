@@ -256,15 +256,41 @@
             "value": "plh_images/home_page/home_page_workshops.svg"
           },
           {
-            "type": "title",
-            "name": "title_ex_s",
-            "value": "@global.weekly_workshops",
+            "type": "display_group",
             "parameter_list": {
-              "style": "alternative"
+              "style": "column"
             },
             "style_list": [
-              "align-self: flex-start",
-              "margin-left: 20px"
+              "padding: 0"
+            ],
+            "rows": [
+              {
+                "type": "title",
+                "name": "title_ex_s",
+                "value": "@global.weekly_workshops",
+                "parameter_list": {
+                  "style": "alternative"
+                },
+                "style_list": [
+                  "align-self: flex-start",
+                  "margin-left: 20px",
+                  "margin-bottom: 0px",
+                  "margin-top: 23px"
+                ]
+              },
+              {
+                "type": "round_button",
+                "name": "round_button_1",
+                "value": "Value",
+                "parameter_list": {
+                  "icon_src": "/assets/icon/round-button/play.svg",
+                  "text": "Start",
+                  "style": "home_screen yellow"
+                },
+                "style_list": [
+                  "padding: 0"
+                ]
+              }
             ]
           }
         ]
@@ -296,15 +322,40 @@
             "value": "plh_images/home_page/home_page_parent_points.svg"
           },
           {
-            "type": "title",
-            "name": "title_ex_s",
-            "value": "@global.parent_points",
+            "type": "display_group",
             "parameter_list": {
-              "style": "alternative"
+              "style": "column"
             },
             "style_list": [
-              "align-self: flex-start",
-              "white-space: nowrap"
+              "padding: 0"
+            ],
+            "rows": [
+              {
+                "type": "title",
+                "name": "title_ex_s",
+                "value": "@global.parent_points",
+                "parameter_list": {
+                  "style": "alternative"
+                },
+                "style_list": [
+                  "align-self: flex-start",
+                  "white-space: nowrap",
+                  "margin-top: 23px",
+                  "margin-bottom: 28px"
+                ]
+              },
+              {
+                "type": "round_button",
+                "name": "round_button_1",
+                "value": "Value",
+                "parameter_list": {
+                  "icon_src": "/assets/icon/round-button/smile.svg",
+                  "style": "home_screen orange"
+                },
+                "style_list": [
+                  "padding: 0"
+                ]
+              }
             ]
           }
         ]
@@ -336,15 +387,41 @@
             "value": "plh_images/home_page/home_page_parent_center.svg"
           },
           {
-            "type": "title",
-            "name": "title_ex_s",
-            "value": "@global.parent_centre",
+            "type": "display_group",
             "parameter_list": {
-              "style": "alternative"
+              "style": "column"
             },
             "style_list": [
-              "align-self: flex-start",
-              "white-space: nowrap"
+              "padding: 0"
+            ],
+            "rows": [
+              {
+                "type": "title",
+                "name": "title_ex_s",
+                "value": "@global.parent_centre",
+                "parameter_list": {
+                  "style": "alternative"
+                },
+                "style_list": [
+                  "align-self: flex-start",
+                  "white-space: nowrap",
+                  "margin-top:23px",
+                  "margin-bottom: 28px"
+                ]
+              },
+              {
+                "type": "round_button",
+                "name": "round_button_1",
+                "value": "Value",
+                "parameter_list": {
+                  "icon_src": "/assets/icon/round-button/message.svg",
+                  "text": "Message",
+                  "style": "home_screen dark_orange"
+                },
+                "style_list": [
+                  "padding: 0"
+                ]
+              }
             ]
           }
         ]
@@ -359,10 +436,19 @@
     "rows": [
       {
         "type": "display_group",
+        "style_list": [
+          "margin: 20px 0 10px 0"
+        ],
         "rows": [
           {
             "type": "title",
-            "value": "@global.weekly_workshops"
+            "value": "@global.weekly_workshops",
+            "parameter_list": {
+              "style": "tiny"
+            },
+            "style_list": [
+              "flex: 2"
+            ]
           },
           {
             "type": "button",
@@ -380,8 +466,11 @@
               }
             ],
             "parameter_list": {
-              "style": "options"
-            }
+              "style": "options short flexible"
+            },
+            "style_list": [
+              "flex: 1"
+            ]
           }
         ]
       },
@@ -404,7 +493,7 @@
           "style": "quick_start",
           "first_line_text": "My Group",
           "second_line_text": "Start week one",
-          "icon_src": "plh_images/icons/play_light.svg"
+          "icon_src": "plh_images/icons/play_outline_white.svg"
         },
         "comments": "- Need to change the icon\n- Need to get the next workshop"
       },
@@ -3765,24 +3854,6 @@
             "rows": []
           }
         ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_duo",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "box_1",
-        "rows": []
-      },
-      {
-        "type": "template",
-        "name": "box_2",
-        "rows": []
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
@@ -9039,85 +9110,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "example_changed_radio_group_3",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_field",
-        "name": "demo_changed_field_5",
-        "value": "false"
-      },
-      {
-        "name": "answer_list_2",
-        "value": [
-          "name:name_var_1 | text:First",
-          "name:name_var_2 | text:Second"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "demo_changed_field_6",
-              "@local.radio_group"
-            ],
-            "_raw": "changed | set_field: demo_changed_field_6: @local.radio_group",
-            "_cleaned": "changed | set_field: demo_changed_field_6: @local.radio_group"
-          }
-        ],
-        "parameter_list": {
-          "answer_list": "@local.answer_list_2"
-        }
-      },
-      {
-        "type": "template",
-        "name": "example_text_1",
-        "value": "example_text",
-        "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
-        "rows": [
-          {
-            "name": "text",
-            "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "example_text_2",
-        "value": "example_text",
-        "hidden": "!@field.demo_changed_field_6",
-        "rows": [
-          {
-            "name": "text",
-            "value": "!@field.demo_changed_field_5",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "example_text_3",
-        "value": "example_text",
-        "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
-        "rows": [
-          {
-            "name": "text",
-            "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "example_double_ref_comp_var",
     "status": "released",
     "rows": [
@@ -9617,46 +9609,54 @@
             "value": "This is page 1"
           },
           {
-            "type": "template",
-            "name": "page_1_nav_buttons",
-            "value": "nav_buttons",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_page_1",
-                  "true"
-                ],
-                "_raw": "completed | set_local:hide_page_1:true",
-                "_cleaned": "completed | set_local:hide_page_1:true"
-              },
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_page_2",
-                  "false"
-                ],
-                "_raw": "completed | set_local:hide_page_2:false",
-                "_cleaned": "completed | set_local:hide_page_2:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "emit",
-                "args": [
-                  "uncompleted"
-                ],
-                "_raw": "uncompleted | emit:uncompleted",
-                "_cleaned": "uncompleted | emit:uncompleted"
-              }
-            ],
-            "comments": "the style: navigation is set in the nav_buttons template, at the end of the sheet, but it's not at the end of this one.",
+            "type": "display_group",
+            "parameter_list": {
+              "style": "navigation"
+            },
             "rows": [
               {
-                "name": "button_completed",
-                "value": "Let's go!",
-                "type": "set_variable"
+                "type": "template",
+                "name": "page_1_nav_buttons",
+                "value": "nav_buttons",
+                "action_list": [
+                  {
+                    "trigger": "completed",
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_page_1",
+                      "true"
+                    ],
+                    "_raw": "completed | set_local:hide_page_1:true",
+                    "_cleaned": "completed | set_local:hide_page_1:true"
+                  },
+                  {
+                    "trigger": "completed",
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_page_2",
+                      "false"
+                    ],
+                    "_raw": "completed | set_local:hide_page_2:false",
+                    "_cleaned": "completed | set_local:hide_page_2:false"
+                  },
+                  {
+                    "trigger": "uncompleted",
+                    "action_id": "emit",
+                    "args": [
+                      "uncompleted"
+                    ],
+                    "_raw": "uncompleted | emit:uncompleted",
+                    "_cleaned": "uncompleted | emit:uncompleted"
+                  }
+                ],
+                "comments": "the style: navigation is set in the nav_buttons template, at the end of the sheet, but it's not at the end of this one.",
+                "rows": [
+                  {
+                    "name": "button_completed",
+                    "value": "Let's go!",
+                    "type": "set_variable"
+                  }
+                ]
               }
             ]
           }
@@ -10901,7 +10901,8 @@
         "name": "text_box",
         "parameter_list": {
           "blank_display_text": "@local.blank_display_text",
-          "help": "some help text"
+          "help": "some help text",
+          "placeholder": "example placeholder"
         }
       },
       {
@@ -10969,7 +10970,8 @@
         "name": "combo_box_text_in_pop_up",
         "parameter_list": {
           "answer_list": "@local.answer_list",
-          "text": "Text above the answers"
+          "text": "Text above the answers",
+          "placeholder": "Click here to answer"
         }
       },
       {
@@ -11002,14 +11004,6 @@
           "placeholder": "Click here to answer",
           "input_allowed": "true",
           "answer_placeholder": "Type your own"
-        }
-      },
-      {
-        "type": "combo_box",
-        "name": "combo_box_preselected",
-        "value": "First",
-        "parameter_list": {
-          "answer_list": "@local.answer_list"
         }
       }
     ],
@@ -12801,6 +12795,209 @@
               "icon_src": "chevron-forward",
               "style": "navigation"
             }
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_home",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "name": "dg_example_7",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "weekly_workshops"
+            ],
+            "_raw": "click | go_to:weekly_workshops",
+            "_cleaned": "click | go_to:weekly_workshops"
+          }
+        ],
+        "parameter_list": {
+          "style": "home_screen light"
+        },
+        "style_list": [
+          "margin: 40px 10px 0px 10px"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/home_page/home_page_workshops.svg"
+          },
+          {
+            "type": "display_group",
+            "parameter_list": {
+              "style": "column"
+            },
+            "style_list": [
+              "padding: 0"
+            ],
+            "rows": [
+              {
+                "type": "title",
+                "name": "title_ex_s",
+                "value": "@global.weekly_workshops",
+                "parameter_list": {
+                  "style": "alternative"
+                },
+                "style_list": [
+                  "align-self: flex-start",
+                  "margin-left: 20px",
+                  "margin-bottom: 8px",
+                  "margin-top: 15px"
+                ]
+              },
+              {
+                "type": "round_button",
+                "name": "round_button_1",
+                "value": "Value",
+                "parameter_list": {
+                  "icon_src": "/assets/icon/round-button/message.svg",
+                  "text": "Message",
+                  "style": "home_screen yellow"
+                },
+                "style_list": [
+                  "padding: 0"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_7",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "parent_points"
+            ],
+            "_raw": "click | go_to:parent_points",
+            "_cleaned": "click | go_to:parent_points"
+          }
+        ],
+        "parameter_list": {
+          "style": "home_screen shade"
+        },
+        "style_list": [
+          "margin: 40px 10px 0px 10px"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/home_page/home_page_parent_points.svg"
+          },
+          {
+            "type": "display_group",
+            "parameter_list": {
+              "style": "column"
+            },
+            "style_list": [
+              "padding: 0"
+            ],
+            "rows": [
+              {
+                "type": "title",
+                "name": "title_ex_s",
+                "value": "@global.parent_points",
+                "parameter_list": {
+                  "style": "alternative"
+                },
+                "style_list": [
+                  "align-self: flex-start",
+                  "white-space: nowrap",
+                  "margin-top: 15px"
+                ]
+              },
+              {
+                "type": "round_button",
+                "name": "round_button_1",
+                "value": "Value",
+                "parameter_list": {
+                  "icon_src": "/assets/icon/round-button/play.svg",
+                  "text": "Start",
+                  "style": "home_screen orange"
+                },
+                "style_list": [
+                  "padding: 0"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_7",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "parent_centre"
+            ],
+            "_raw": "click | go_to:parent_centre",
+            "_cleaned": "click | go_to:parent_centre"
+          }
+        ],
+        "parameter_list": {
+          "style": "home_screen dark"
+        },
+        "style_list": [
+          "margin: 40px 10px 0px 10px"
+        ],
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/home_page/home_page_parent_center.svg"
+          },
+          {
+            "type": "display_group",
+            "parameter_list": {
+              "style": "column"
+            },
+            "style_list": [
+              "padding: 0"
+            ],
+            "rows": [
+              {
+                "type": "title",
+                "name": "title_ex_s",
+                "value": "@global.parent_centre",
+                "parameter_list": {
+                  "style": "alternative"
+                },
+                "style_list": [
+                  "align-self: flex-start",
+                  "white-space: nowrap",
+                  "margin-top:15px"
+                ]
+              },
+              {
+                "type": "round_button",
+                "name": "round_button_1",
+                "value": "Value",
+                "parameter_list": {
+                  "icon_src": "/assets/icon/round-button/smile.svg",
+                  "style": "home_screen dark_orange"
+                },
+                "style_list": [
+                  "padding: 0"
+                ]
+              }
+            ]
           }
         ]
       }
@@ -20782,8 +20979,8 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "name:family | text:My family can join in now!",
-                      "name:alone | text:Let me try it out by myself"
+                      "name:family | text:My family can join in!",
+                      "name:individual | text:Let me try it out by myself"
                     ],
                     "type": "set_variable"
                   },
@@ -20961,7 +21158,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "\"@field.w_money_path\"==\"alone\"",
+        "hidden": "\"@field.w_money_path\"==\"individual\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -21005,7 +21202,7 @@
       },
       {
         "type": "template",
-        "name": "learn_alone",
+        "name": "learn_individual",
         "value": "learn_temp",
         "action_list": [
           {
@@ -21071,7 +21268,7 @@
     "rows": [
       {
         "type": "template",
-        "name": "learn_alone",
+        "name": "learn_individual",
         "value": "learn_temp",
         "action_list": [
           {
@@ -21198,7 +21395,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
+        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"individual\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -21469,7 +21666,7 @@
       },
       {
         "type": "template",
-        "name": "question_alone",
+        "name": "question_individual",
         "value": "question_time",
         "action_list": [
           {
@@ -21683,7 +21880,7 @@
       },
       {
         "type": "template",
-        "name": "question_alone",
+        "name": "question_individual",
         "value": "question_time",
         "action_list": [
           {
@@ -21836,7 +22033,7 @@
       },
       {
         "type": "template",
-        "name": "question_alone",
+        "name": "question_individual",
         "value": "question_time",
         "action_list": [
           {
@@ -22001,7 +22198,7 @@
       },
       {
         "type": "template",
-        "name": "learn_alone",
+        "name": "learn_individual",
         "value": "learn_temp",
         "action_list": [
           {
@@ -22324,7 +22521,7 @@
                   {
                     "name": "text_3",
                     "value": "Review your budget with your teen and family. This will remind everyone that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped millions of families.",
-                    "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
+                    "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"individual\"",
                     "type": "set_variable"
                   },
                   {
@@ -25073,7 +25270,7 @@
               "w_safe_talk_1",
               "w_safe_read_2_temp",
               "w_safe_talk_2",
-              "w_safe_learn_together_temp",
+              "w_safe_learn_temp",
               "w_safe_tools_activity",
               "w_safe_home_practice",
               "w_safe_ending"
@@ -25091,7 +25288,7 @@
               "w_safe_question_1",
               "w_safe_read_2_temp",
               "w_safe_question_2",
-              "w_safe_learn_individual_temp",
+              "w_safe_learn_temp",
               "w_safe_tools_activity",
               "w_safe_home_practice",
               "w_safe_ending"
@@ -25514,7 +25711,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "@global.w_safe_teen_girl_2: “You are lucky, my friend. I wish a man would ask ME out and buy me gifts. I’m telling you, if you don’t do this I’m going to tell everyone you are stupid!” ",
+                                    "value": "@global.w_safe_teen_girl_2: “You are lucky, my friend. I wish I could also have a man that would ask me out and buy me gifts. I’m telling you, if you don’t do this I’m going to tell everyone you are stupid!” ",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -25695,7 +25892,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Let's think about what happened to @global.w_safe_teen_girl_1:",
+                "value": "Let's think about what happened to @global.w_safe_teen_girl_1",
                 "type": "set_variable"
               },
               {
@@ -25765,7 +25962,7 @@
             "rows": [
               {
                 "name": "intro_text",
-                "value": "Let's look at another example of a dangerous situation together.",
+                "value": "Let's look at another example together.",
                 "type": "set_variable"
               },
               {
@@ -25824,7 +26021,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "@global.w_safe_female_caregiver: \"Sometimes people aren’t who they say they are online – he could say he is your age but be a 50 year old man. Or when they break up, he could send those photos to everyone and your friend would feel awful.\"",
+                            "value": "@global.w_safe_female_caregiver: \"Sometimes people aren’t who they say they are online – he could say he is your age but be a 50 year old man. Or when they break up, he sends those photos to everyone so your friend feels awful.\"",
                             "type": "set_variable"
                           }
                         ]
@@ -25999,7 +26196,7 @@
   {
     "flow_type": "template",
     "module": "safe",
-    "flow_name": "w_safe_learn_together_temp",
+    "flow_name": "w_safe_learn_temp",
     "status": "released",
     "rows": [
       {
@@ -26029,7 +26226,14 @@
               },
               {
                 "name": "intro_text",
-                "value": "To keep our teens safe, we need to understand the dangerous situations they could get into!\n\nLet’s make two maps together of safe and unsafe places:\n- A map of our community\n- A map of apps/websites we use online\n\nLet’s make these maps as a group now. \n\nYou’ll do the same with your teen as home practice this week.",
+                "value": "Let’s make two maps together of safe and unsafe places:\n(1) A map of our community\n(2) A map of apps/websites we use online\n\nLet’s make these maps as a group now. \n\nYou’ll do the same with your teen as home practice this week.",
+                "condition": "@field.do_workshops_together",
+                "type": "set_variable"
+              },
+              {
+                "name": "intro_text",
+                "value": "Let’s make two maps together of safe and unsafe places:\n(1) A map of our community\n(2) A map of apps/websites we use online\n\nYou’ll do the same with your teen as home practice this week - if your teen is here now, you can do it together now!",
+                "condition": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
@@ -26094,6 +26298,13 @@
                           {
                             "name": "text",
                             "value": "Discuss together:\n\n- Which areas on your map are safe for teenagers \n     – CIRCLE these \n- Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n- What makes a place safe or unsafe?  \n- What could you and your teen do to keep your teen safer?",
+                            "condition": "@field.do_workshops_together",
+                            "type": "set_variable"
+                          },
+                          {
+                            "name": "text",
+                            "value": "- Which areas on your map are safe for teenagers \n     – CIRCLE these \n- Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n- What makes a place safe or unsafe?  \n- What could you and your teen do to keep your teen safer?",
+                            "condition": "!@field.do_workshops_together",
                             "type": "set_variable"
                           }
                         ]
@@ -26122,6 +26333,13 @@
                               {
                                 "name": "text",
                                 "value": "Sometimes, we can find ourselves in trouble. Discuss together:\n \n- Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful",
+                                "condition": "@field.do_workshops_together",
+                                "type": "set_variable"
+                              },
+                              {
+                                "name": "text",
+                                "value": "Sometimes, we can find ourselves in trouble.\n \n- Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful",
+                                "condition": "!@field.do_workshops_together",
                                 "type": "set_variable"
                               },
                               {
@@ -26161,7 +26379,6 @@
                               },
                               {
                                 "type": "nested_properties",
-                                "name": "nav_buttons",
                                 "rows": [
                                   {
                                     "name": "button_info",
@@ -26181,412 +26398,7 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!",
-                "hidden": "false",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_safe.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "safe",
-    "flow_name": "w_safe_learn_individual_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "learn",
-        "value": "learn_temp",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "workshop_activity",
-            "rows": [
-              {
-                "name": "intro_title",
-                "value": "Safety Plan",
-                "type": "set_variable"
-              },
-              {
-                "name": "intro_text",
-                "value": "To keep our teens safe, we need to understand the dangerous situations they could get into!",
-                "type": "set_variable"
-              },
-              {
-                "name": "include_outro",
-                "value": "true",
-                "type": "set_variable"
-              },
-              {
-                "name": "activity_banner",
-                "hidden": "true",
-                "type": "set_variable"
-              },
-              {
-                "type": "nested_properties",
-                "name": "content_box",
-                "value": "pair",
-                "rows": [
-                  {
-                    "type": "nested_properties",
-                    "name": "box_1",
-                    "value": "box_radio_buttons",
-                    "rows": [
-                      {
-                        "name": "image_src",
-                        "hidden": "true",
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "text",
-                        "value": "Let’s make two maps together of safe and unsafe places: \n- A map of our community \n- A map of apps/websites we use online \n\nYou’ll do the same with your teen as home practice this week - if your teen is here now, you can do it together now!",
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "question_text",
-                        "hidden": "true",
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "answer_list",
-                        "value": [
-                          "name:family | text:My family can join in now!",
-                          "name:alone | text:Let me try it out by myself"
-                        ],
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "radio_group",
-                        "action_list": [
-                          {
-                            "trigger": "changed",
-                            "action_id": "set_field",
-                            "args": [
-                              "w_safe_path",
-                              "@local.radio_group"
-                            ],
-                            "_raw": "changed | set_field: w_safe_path: @local.radio_group",
-                            "_cleaned": "changed | set_field: w_safe_path: @local.radio_group"
-                          }
-                        ],
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "radio_button_type",
-                        "value": "btn_text",
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "reply",
-                        "hidden": "true",
-                        "type": "set_variable"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "nested_properties",
-                    "name": "box_2",
-                    "value": "box_duo",
-                    "rows": [
-                      {
-                        "type": "nested_properties",
-                        "name": "box_1",
-                        "value": "pair",
-                        "hidden": "\"@field.w_safe_path\" ==\"alone\"",
-                        "rows": [
-                          {
-                            "type": "nested_properties",
-                            "name": "box_1",
-                            "value": "box_image",
-                            "rows": [
-                              {
-                                "name": "image_src",
-                                "value": "plh_images/workshops/safe/learn/slide_1.svg",
-                                "type": "set_variable"
-                              },
-                              {
-                                "name": "title",
-                                "value": "Step 1: What are important places in your community? ",
-                                "hidden": "false",
-                                "type": "set_variable"
-                              },
-                              {
-                                "name": "text",
-                                "value": "- Get a piece of paper (or old newspaper or a cardboard box) and a pen. \n- Draw a map of your teen’s community, with pictures of all the main places like streets, your house, school, shops, places your teen visits.",
-                                "type": "set_variable"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "nested_properties",
-                            "name": "box_2",
-                            "value": "pair",
-                            "rows": [
-                              {
-                                "type": "nested_properties",
-                                "name": "box_1",
-                                "value": "box_image",
-                                "rows": [
-                                  {
-                                    "name": "image_src",
-                                    "value": "plh_images/workshops/safe/learn/slide_2.svg",
-                                    "type": "set_variable"
-                                  },
-                                  {
-                                    "name": "title",
-                                    "value": "Step 2: Which places are safe and unsafe?",
-                                    "hidden": "false",
-                                    "type": "set_variable"
-                                  },
-                                  {
-                                    "name": "text",
-                                    "value": "Discuss together:\n- Which areas on your map are safe for teenagers \n     – CIRCLE these \n- Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n- What makes a place safe or unsafe?  \n- What could you and your teen do to keep your teen safer?",
-                                    "type": "set_variable"
-                                  }
-                                ]
-                              },
-                              {
-                                "type": "nested_properties",
-                                "name": "box_2",
-                                "value": "pair",
-                                "rows": [
-                                  {
-                                    "type": "nested_properties",
-                                    "name": "box_1",
-                                    "value": "box_image",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/safe/learn/slide_3.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "title",
-                                        "value": "Step 3: Where can you get support?",
-                                        "hidden": "false",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "Sometimes, we can find ourselves in trouble. Discuss together:\n \n- Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "type": "nested_properties",
-                                        "name": "nav_buttons",
-                                        "rows": [
-                                          {
-                                            "name": "button_info",
-                                            "value": "Resources to help in the community",
-                                            "hidden": "false",
-                                            "type": "set_variable"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "type": "nested_properties",
-                                    "name": "box_2",
-                                    "value": "box_image",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/safe/learn/slide_4.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "title",
-                                        "value": "Step 4: What are risky places online and how can you make them safer? ",
-                                        "hidden": "false",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "- Draw pictures of the apps and websites your teenagers use \n- Praise your teens for how good they are at using the web!  \n- Talk about which ones might be unsafe. Why? \n- What could you and your teen do to make using the internet safer for your teen and their friends?",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "type": "nested_properties",
-                                        "name": "nav_buttons",
-                                        "rows": [
-                                          {
-                                            "name": "button_info",
-                                            "value": "Online Safety Resources",
-                                            "hidden": "false",
-                                            "type": "set_variable"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "nested_properties",
-                        "name": "box_2",
-                        "value": "pair",
-                        "hidden": "\"@field.w_safe_path\" ==\"family\"",
-                        "rows": [
-                          {
-                            "type": "nested_properties",
-                            "name": "box_1",
-                            "value": "box_image",
-                            "rows": [
-                              {
-                                "name": "image_src",
-                                "value": "plh_images/workshops/safe/learn/slide_1.svg",
-                                "type": "set_variable"
-                              },
-                              {
-                                "name": "title",
-                                "value": "Step 1: What are important places in your community? ",
-                                "hidden": "false",
-                                "type": "set_variable"
-                              },
-                              {
-                                "name": "text",
-                                "value": "- Get a piece of paper (or old newspaper or a cardboard box) and a pen. \n- Draw a map of your teen’s community, with pictures of all the main places like streets, your house, school, shops, places your teen visits.",
-                                "type": "set_variable"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "nested_properties",
-                            "name": "box_2",
-                            "value": "pair",
-                            "rows": [
-                              {
-                                "type": "nested_properties",
-                                "name": "box_1",
-                                "value": "box_image",
-                                "rows": [
-                                  {
-                                    "name": "image_src",
-                                    "value": "plh_images/workshops/safe/learn/slide_2.svg",
-                                    "type": "set_variable"
-                                  },
-                                  {
-                                    "name": "title",
-                                    "value": "Step 2: Which places are safe and unsafe?",
-                                    "hidden": "false",
-                                    "type": "set_variable"
-                                  },
-                                  {
-                                    "name": "text",
-                                    "value": "- Which areas on your map are safe for teenagers \n     – CIRCLE these \n- Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n- What makes a place safe or unsafe?  \n- What could you and your teen do to keep your teen safer?",
-                                    "type": "set_variable"
-                                  }
-                                ]
-                              },
-                              {
-                                "type": "nested_properties",
-                                "name": "box_2",
-                                "value": "pair",
-                                "rows": [
-                                  {
-                                    "type": "nested_properties",
-                                    "name": "box_1",
-                                    "value": "box_image",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/safe/learn/slide_3.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "title",
-                                        "value": "Step 3: Where can you get support?",
-                                        "hidden": "false",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "Sometimes, we can find ourselves in trouble.\n \n- Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "type": "nested_properties",
-                                        "name": "nav_buttons",
-                                        "rows": [
-                                          {
-                                            "name": "button_info",
-                                            "value": "Resources to help in the community",
-                                            "hidden": "false",
-                                            "type": "set_variable"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "type": "nested_properties",
-                                    "name": "box_2",
-                                    "value": "box_image",
-                                    "rows": [
-                                      {
-                                        "name": "image_src",
-                                        "value": "plh_images/workshops/safe/learn/slide_4.svg",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "title",
-                                        "value": "Step 4: What are risky places online and how can you make them safer? ",
-                                        "hidden": "false",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "name": "text",
-                                        "value": "- Draw pictures of the apps and websites your teenagers use \n- Recognise how good they are at using the web!  \n- Think about which ones might be unsafe. Why? \n- What could you and your teen do to make using the internet safer for your teen and their friends?",
-                                        "type": "set_variable"
-                                      },
-                                      {
-                                        "type": "nested_properties",
-                                        "name": "nav_buttons",
-                                        "rows": [
-                                          {
-                                            "name": "button_info",
-                                            "value": "Online Safety Resources",
-                                            "hidden": "false",
-                                            "type": "set_variable"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "name": "outro_habit_text",
-                "value": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!",
+                "value": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success",
                 "hidden": "false",
                 "type": "set_variable"
               }

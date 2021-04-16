@@ -1,5 +1,4 @@
 :host {
-  width: 363px;
   min-height: 183px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -19,7 +18,7 @@
 }
 .wrapper-audio {
   margin: var(--large-padding);
-  width: auto;
+  width: calc(100% - var(--large-padding));
 }
 .timer-content {
   display: flex;
@@ -29,6 +28,8 @@
 .timer-title {
   margin-left: 8px;
   max-width: 298px;
+  font-size: 22px;
+  color: var(--ion-color-primary);
 }
 
 .timer-help {
@@ -44,6 +45,7 @@
 }
 .add-min {
   width: 64px;
+  min-width: 64px;
   height: 64px;
   --background: #00a0cc;
   --background-size: cover;
@@ -55,5 +57,17 @@
   }
   .left-icon {
     margin-top: 8px;
+  }
+}
+.round-container {
+  width: calc;
+  background-color: #fff;
+  border: 2px solid #0d3f60;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+
+  &-br-15 {
+    border-radius: 15px;
   }
 }
