@@ -318,6 +318,7 @@ export namespace FlowTypes {
     type: "step";
     message_text?: string;
     title?: string;
+    template_component_name?: string;
     element?: string;
     route?: string;
   }

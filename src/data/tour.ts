@@ -59,7 +59,7 @@
         "type": "step",
         "title": "Start a workshop",
         "message_text": "Click here to continue your last workshop",
-        "element": "#main-content > plh-template-testing > ion-content > plh-template-container > div > plh-template-component:nth-child(2)",
+        "template_component_name": "workshop_button_0",
         "route": "template/workshop_buttons_temp"
       },
       {
