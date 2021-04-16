@@ -274,8 +274,8 @@
                 "style_list": [
                   "align-self: flex-start",
                   "margin-left: 20px",
-                  "margin-bottom: 0px",
-                  "margin-top: 23px"
+                  "margin-bottom: 8px",
+                  "margin-top: 15px"
                 ]
               },
               {
@@ -283,8 +283,8 @@
                 "name": "round_button_1",
                 "value": "Value",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/play.svg",
-                  "text": "Start",
+                  "icon_src": "/assets/icon/round-button/message.svg",
+                  "text": "Message",
                   "style": "home_screen yellow"
                 },
                 "style_list": [
@@ -340,8 +340,7 @@
                 "style_list": [
                   "align-self: flex-start",
                   "white-space: nowrap",
-                  "margin-top: 23px",
-                  "margin-bottom: 28px"
+                  "margin-top: 15px"
                 ]
               },
               {
@@ -349,7 +348,8 @@
                 "name": "round_button_1",
                 "value": "Value",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/smile.svg",
+                  "icon_src": "/assets/icon/round-button/play.svg",
+                  "text": "Start",
                   "style": "home_screen orange"
                 },
                 "style_list": [
@@ -405,8 +405,7 @@
                 "style_list": [
                   "align-self: flex-start",
                   "white-space: nowrap",
-                  "margin-top:23px",
-                  "margin-bottom: 28px"
+                  "margin-top:15px"
                 ]
               },
               {
@@ -414,8 +413,7 @@
                 "name": "round_button_1",
                 "value": "Value",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/message.svg",
-                  "text": "Message",
+                  "icon_src": "/assets/icon/round-button/smile.svg",
                   "style": "home_screen dark_orange"
                 },
                 "style_list": [
@@ -436,19 +434,10 @@
     "rows": [
       {
         "type": "display_group",
-        "style_list": [
-          "margin: 20px 0 10px 0"
-        ],
         "rows": [
           {
             "type": "title",
-            "value": "@global.weekly_workshops",
-            "parameter_list": {
-              "style": "tiny"
-            },
-            "style_list": [
-              "flex: 2"
-            ]
+            "value": "@global.weekly_workshops"
           },
           {
             "type": "button",
@@ -466,11 +455,8 @@
               }
             ],
             "parameter_list": {
-              "style": "options short flexible"
-            },
-            "style_list": [
-              "flex: 1"
-            ]
+              "style": "options"
+            }
           }
         ]
       },
@@ -493,7 +479,7 @@
           "style": "quick_start",
           "first_line_text": "My Group",
           "second_line_text": "Start week one",
-          "icon_src": "plh_images/icons/play_outline_white.svg"
+          "icon_src": "plh_images/icons/play_light.svg"
         },
         "comments": "- Need to change the icon\n- Need to get the next workshop"
       },
@@ -9649,46 +9635,6 @@
                 "name": "button_completed",
                 "value": "Let's go!",
                 "type": "set_variable"
-              }
-            ]
-          },
-          {
-            "type": "display_group",
-            "parameter_list": {
-              "style": "navigation"
-            },
-            "rows": [
-              {
-                "type": "button",
-                "name": "button_1",
-                "value": "return",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "go_to",
-                    "args": [
-                      "home_screen"
-                    ],
-                    "_raw": "click | go_to:home_screen",
-                    "_cleaned": "click | go_to:home_screen"
-                  }
-                ]
-              },
-              {
-                "type": "button",
-                "name": "button_2",
-                "value": "go back",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "go_to",
-                    "args": [
-                      "home_screen"
-                    ],
-                    "_raw": "click | go_to:home_screen",
-                    "_cleaned": "click | go_to:home_screen"
-                  }
-                ]
               }
             ]
           }
