@@ -1,10 +1,10 @@
 .wrapper-point {
-  padding: 5px;
+  padding: calc(15px * var(--scale-factor--point)) calc(5px * var(--scale-factor--point));
   .item {
     margin: 0 auto;
-    padding: 12px 0;
-    width: 174px;
-    height: 153px;
+    padding: calc(20px * var(--scale-factor--point)) 0;
+    width: calc(176px * var(--scale-factor--point));
+    height: calc(152px * var(--scale-factor--point));
     background: #b3edfd;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -24,26 +24,26 @@
       .star-value {
         padding-top: 4px;
         font-weight: 500;
-        font-size: 15px;
+        font-size: calc(15px * var(--scale-factor--point));
         color: #0d4060;
         position: absolute;
       }
       img {
-        width: 47px;
-        height: 47px;
+        width: calc(47px * var(--scale-factor--point));
+        height: calc(47px * var(--scale-factor--point));
       }
     }
     .image {
-      max-height: 115px;
+      max-height: calc(100% * var(--scale-factor--point));
       img {
         width: 100%;
         height: 100%;
       }
     }
     .text {
-      margin-top: 7px;
+      margin: 7px 0;
       font-weight: 500;
-      font-size: 15px;
+      font-size: calc(16px * var(--scale-factor--point));
       line-height: 18px;
       text-align: center;
       color: #0d4060;
