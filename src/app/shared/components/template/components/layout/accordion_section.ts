@@ -1,15 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  Output,
-  ViewChild,
-  EventEmitter,
-  Input,
-} from "@angular/core";
-import { BehaviorSubject } from "scripts/node_modules/rxjs";
-import { FlowTypes } from "scripts/types";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 
@@ -18,16 +7,16 @@ import { TemplateBaseComponent } from "../base";
   template: `<div class="accordion-wrapper">
     <div
       [ngClass]="{
-        completed: completed && _row.disabled === 'false',
+        completed: completed && _row.disabled !== 'true',
         disabled: _row.disabled === 'true',
-        inProgress: _row.disabled !== 'true' && !completed
+        inProgress: !completed && _row.disabled !== 'true'
       }"
       class="accordion-status"
     >
       <img
         *ngIf="completed && _row.disabled !== 'true'"
         class="tick-icon"
-        src="/assets/plh_assets/plh_images/icons/tick.svg"
+        src="/assets/plh_assets/plh_images/icons/tick_light.svg"
       />
       <img *ngIf="_row.disabled === 'true'" src="/assets/plh_assets/plh_images/icons/lock.svg" />
     </div>
@@ -35,9 +24,10 @@ import { TemplateBaseComponent } from "../base";
       class="accordion-section"
       [ngClass]="{
         openSection: _row.parameter_list.state === 'open',
-        completed: completed
+        disabled: _row.disabled === 'true',
+        completed: completed,
+        inProgress: !completed && _row.disabled !== 'true'
       }"
-      [class.open-section]="_row.parameter_list.state === 'open'"
     >
       <div class="progress" [ngStyle]="{ width: percentComplete + '%' }"></div>
       <h2 (click)="toggleOpen()">{{ title }}</h2>
@@ -79,9 +69,10 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
   }
 
   private updateStatus(value: number) {
-    if (value === 100) {
+    if (value == 100) {
       this.completed = true;
     } else if (value > 0) {
+      console.log(value);
       this.completed = false;
     }
   }
