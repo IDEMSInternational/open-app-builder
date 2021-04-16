@@ -670,6 +670,11 @@
     "rows": [
       {
         "type": "declare_field_default",
+        "name": "w_self_care_started",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
         "name": "w_self_care_completion_level",
         "value": 100
       },
