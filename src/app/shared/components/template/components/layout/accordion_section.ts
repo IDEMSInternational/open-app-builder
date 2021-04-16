@@ -9,16 +9,21 @@ import { TemplateBaseComponent } from "../base";
       [ngClass]="{
         completed: completed && _row.disabled !== 'true',
         disabled: _row.disabled === 'true',
-        inProgress: !completed && _row.disabled !== 'true'
+        inProgress: !completed && _row.disabled !== 'true' && percentComplete > 0,
+        notStarted: !completed && _row.disabled !== 'true' && percentComplete === 0
       }"
       class="accordion-status"
     >
       <img
         *ngIf="completed && _row.disabled !== 'true'"
         class="tick-icon"
-        src="/assets/plh_assets/plh_images/icons/tick_light.svg"
+        src="/assets/icon/accordion/tick_light.svg"
       />
       <img *ngIf="_row.disabled === 'true'" src="/assets/plh_assets/plh_images/icons/lock.svg" />
+      <img
+        *ngIf="!completed && _row.disabled !== 'true' && percentComplete === 0"
+        src="/assets/plh_assets/plh_images/icons/unlock.svg"
+      />
     </div>
     <div
       class="accordion-section"
@@ -72,7 +77,6 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
     if (value == 100) {
       this.completed = true;
     } else if (value > 0) {
-      console.log(value);
       this.completed = false;
     }
   }
