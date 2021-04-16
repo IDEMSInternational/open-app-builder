@@ -9,6 +9,7 @@ import { Howl } from "howler";
 import { IonRange } from "@ionic/angular";
 import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "plh-audio",
@@ -31,6 +32,8 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
   rangeBarTouched: boolean = false;
   currentTimeSong: string = "0";
   rangeBarDisabled: boolean = false;
+  hasStarted: boolean = false;
+
   constructor() {
     super();
   }
@@ -57,16 +60,23 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
           onplay: () => {
             this.isPlayed = true;
             this.updateProgress();
+            if (!this.hasStarted) {
+              this.hasStarted = true;
+              this.triggerActions("audio_first_start");
+            }
+            this.triggerActions("audio_play");
           },
           onend: () => {
             this.isPlayed = false;
             this.range.value = 0;
             this.currentTimeSong = "0";
             this.updateProgress();
+            this.triggerActions("audio_end");
           },
           onpause: () => {
             this.isPlayed = false;
             this.updateProgress();
+            this.triggerActions("audio_pause");
           },
         }))
       : (this.errorTxt = "Src is undefined, player not initialized");
