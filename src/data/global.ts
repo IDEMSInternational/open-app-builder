@@ -301,62 +301,52 @@
       {
         "type": "declare_global_constant",
         "name": "w_self_care",
-        "value": "Self-Care",
-        "comments": "individual done"
+        "value": "Self-Care"
       },
       {
         "type": "declare_global_constant",
         "name": "w_1on1",
-        "value": "One-on-One Time",
-        "comments": "individual done"
+        "value": "One-on-One Time"
       },
       {
         "type": "declare_global_constant",
         "name": "w_praise",
-        "value": "Praise",
-        "comments": "individual done"
+        "value": "Praise"
       },
       {
         "type": "declare_global_constant",
         "name": "w_instruct",
-        "value": "Positive Instructions",
-        "comments": "individual done"
+        "value": "Positive Instructions"
       },
       {
         "type": "declare_global_constant",
         "name": "w_stress",
-        "value": "Managing Stress",
-        "comments": "individual done"
+        "value": "Managing Stress"
       },
       {
         "type": "declare_global_constant",
         "name": "w_money",
-        "value": "Family Budgets",
-        "comments": "individual done"
+        "value": "Family Budgets"
       },
       {
         "type": "declare_global_constant",
         "name": "w_rules",
-        "value": "Rules",
-        "comments": "individual done"
+        "value": "Rules"
       },
       {
         "type": "declare_global_constant",
         "name": "w_consequence",
-        "value": "Calm Consequences",
-        "comments": "individual done"
+        "value": "Calm Consequences"
       },
       {
         "type": "declare_global_constant",
         "name": "w_solve",
-        "value": "Problem Solving",
-        "comments": "individual done"
+        "value": "Problem Solving"
       },
       {
         "type": "declare_global_constant",
         "name": "w_safe",
-        "value": "Teen Safety",
-        "comments": "individual done"
+        "value": "Teen Safety"
       },
       {
         "type": "declare_global_constant",
