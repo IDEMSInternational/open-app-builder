@@ -283,8 +283,8 @@
                 "name": "round_button_1",
                 "value": "Value",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/play.svg",
-                  "text": "Start",
+                  "icon_src": "/assets/icon/round-button/message.svg",
+                  "text": "Message",
                   "style": "home_screen yellow"
                 },
                 "style_list": [
@@ -348,7 +348,8 @@
                 "name": "round_button_1",
                 "value": "Value",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/smile.svg",
+                  "icon_src": "/assets/icon/round-button/play.svg",
+                  "text": "Start",
                   "style": "home_screen orange"
                 },
                 "style_list": [
@@ -412,8 +413,7 @@
                 "name": "round_button_1",
                 "value": "Value",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/message.svg",
-                  "text": "Message",
+                  "icon_src": "/assets/icon/round-button/smile.svg",
                   "style": "home_screen dark_orange"
                 },
                 "style_list": [
