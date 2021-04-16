@@ -9659,46 +9659,6 @@
                 ]
               }
             ]
-          },
-          {
-            "type": "display_group",
-            "parameter_list": {
-              "style": "navigation"
-            },
-            "rows": [
-              {
-                "type": "button",
-                "name": "button_1",
-                "value": "return",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "go_to",
-                    "args": [
-                      "home_screen"
-                    ],
-                    "_raw": "click | go_to:home_screen",
-                    "_cleaned": "click | go_to:home_screen"
-                  }
-                ]
-              },
-              {
-                "type": "button",
-                "name": "button_2",
-                "value": "go back",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "go_to",
-                    "args": [
-                      "home_screen"
-                    ],
-                    "_raw": "click | go_to:home_screen",
-                    "_cleaned": "click | go_to:home_screen"
-                  }
-                ]
-              }
-            ]
           }
         ]
       },
