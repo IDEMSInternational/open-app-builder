@@ -165,6 +165,13 @@ export class TemplateNavService {
     router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
 
+  public handleClosePopupAction(
+    action: FlowTypes.TemplateRowAction,
+    container: TemplateContainerComponent
+  ) {
+    return this.modalCtrl.dismiss();
+  }
+
   private async handlePopupActionsFromChild(
     params: INavQueryParams,
     container: TemplateContainerComponent
