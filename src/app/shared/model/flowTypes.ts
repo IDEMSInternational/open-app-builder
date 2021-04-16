@@ -435,6 +435,7 @@ export namespace FlowTypes {
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"
       | "pop_up"
+      | "close_pop_up"
       | "set_theme";
     args: string[];
     /** field populated for tracking the component that triggered the action */
