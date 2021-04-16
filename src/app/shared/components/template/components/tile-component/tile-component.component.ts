@@ -16,6 +16,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   style: string | null;
   assetsPrefix = "/assets/plh_assets/";
   icon_result: string;
+  is_play_icon: boolean;
   constructor() {
     super();
   }
@@ -31,6 +32,11 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
     this.value = this._row.value;
     this.style = getStringParamFromTemplateRow(this._row, "style", "quick_start");
     this.icon_result = this.getPathImg();
+    this.is_play_icon = this.isPlayIcon(this.icon_src);
+  }
+
+  isPlayIcon(iconSrc: string): boolean {
+    return iconSrc.includes("play");
   }
 
   getPathImg(): string {
