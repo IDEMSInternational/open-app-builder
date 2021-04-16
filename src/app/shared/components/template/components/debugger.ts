@@ -21,10 +21,10 @@ import { TemplateBaseComponent } from "./base";
             <td>{{ _row[key] | json }}</td>
           </tr>
         </div>
-        <tr *ngIf="_row._dynamicFields">
+        <!-- <tr *ngIf="_row._dynamicFields">
           <td>@local</td>
           <td>{{ parent.localVariables | json }}</td>
-        </tr>
+        </tr> -->
       </table>
       <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log full details)</ion-button>
     </div>
@@ -69,7 +69,7 @@ import { TemplateBaseComponent } from "./base";
   ],
 })
 export class TemplateDebuggerComponent extends TemplateBaseComponent {
-  public debugFieldExclusions = ["comments", "rows"];
+  public debugFieldExclusions = ["comments", "rows", "_dynamicFields"];
   public logDebugInfo() {
     console.group(this._row.type, this._row.name);
     console.log("row", this._row);
