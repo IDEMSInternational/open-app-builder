@@ -69,7 +69,7 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
   }
 
   private updateStatus(value: number) {
-    if (value === 100) {
+    if (value == 100) {
       this.completed = true;
     } else if (value > 0) {
       console.log(value);
