@@ -41,7 +41,7 @@
         "route": "module_page/mod_welcome_page"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/ver_7_design/support/tour.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/tutorials/tour.xlsx"
   },
   {
     "flow_type": "tour",
@@ -75,8 +75,19 @@
         "message_text": "Click here to view the parent centre",
         "element": "#main-content > plh-home > ion-content > div > div:nth-child(3)",
         "route": "home"
+      },
+      {
+        "type": "step",
+        "title": "Settings",
+        "message_text": "Come here to change your settings",
+        "route": "settings"
+      },
+      {
+        "type": "step",
+        "title": "Workshop",
+        "route": "template/w_self_care_stepper?nav_parent=w_self_care_buttons_temp&nav_parent_triggered_by=individual_button"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/ver_7_design/support/tour.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/tutorials/tour.xlsx"
   }
 ]
