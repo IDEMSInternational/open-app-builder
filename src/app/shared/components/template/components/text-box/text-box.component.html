@@ -1,9 +1,11 @@
 <div class="wrapper">
   <ion-input
-    [value]="value"
     class="text-box-input"
+    [(ngModel)]="_row.value"
     [placeholder]="placeholder"
     [maxlength]="maxLength"
     [style.textAlign]="textAlign"
+    (ionBlur)="triggerActions('changed')"
+    (keyup.enter)="triggerActions('changed')"
   ></ion-input>
 </div>

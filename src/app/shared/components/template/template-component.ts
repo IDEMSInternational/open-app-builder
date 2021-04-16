@@ -41,7 +41,13 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div class="plh-tmpl-comp" [attr.data-hidden]="row.hidden" [attr.data-debug]="parent.debugMode">
+    <div
+      class="plh-tmpl-comp"
+      [attr.data-hidden]="row.hidden"
+      [attr.data-debug]="parent.debugMode"
+      [ngClass]="{ disabled: row.disabled }"
+      [attr.data-rowname]="row.name"
+    >
       <!-- Template Debugger -->
       <plh-template-debugger
         *ngIf="parent.debugMode"
@@ -127,6 +133,9 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     if (row.parameter_list && row.parameter_list["style"] === "navigation") {
       this.elRef.nativeElement.style.setProperty("flex", "1");
       this.elRef.nativeElement.style.setProperty("justify-content", "flex-end");
+    }
+    if (this.row.type === "button") {
+      this.elRef.nativeElement.style.setProperty("align-self", "normal");
     }
   }
 
