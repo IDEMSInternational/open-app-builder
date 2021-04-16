@@ -5,7 +5,12 @@
   </div>
   <div class="button-wrapper" *ngIf="icon_src">
     <ion-button class="btn-tile">
-      <img [src]="icon_result" alt="" />
+      <img
+        [style.max-width]="is_play_icon ? '' : 'initial'"
+        [style.margin-left]="is_play_icon ? '5px' : '0'"
+        [src]="icon_result"
+        alt=""
+      />
     </ion-button>
   </div>
 </div>
