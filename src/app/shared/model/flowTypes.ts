@@ -383,6 +383,7 @@ export namespace FlowTypes {
     | "combo_box"
     | "icon_banner"
     | "dashed_box"
+    | "lottie_animation"
     | "parent_point_box";
 
   export interface TemplateRow {
