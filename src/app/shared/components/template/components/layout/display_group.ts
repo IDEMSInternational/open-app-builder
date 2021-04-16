@@ -25,6 +25,10 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         width: 100%;
         border-radius: 20px;
       }
+      .navigation {
+        justify-content: space-between;
+        padding-bottom: 10px;
+      }
     `,
   ],
 })
