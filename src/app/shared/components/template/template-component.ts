@@ -46,6 +46,7 @@ export class TmplCompHostDirective {
       [attr.data-hidden]="row.hidden"
       [attr.data-debug]="parent.debugMode"
       [ngClass]="{ disabled: row.disabled }"
+      [attr.data-rowname]="row.name"
     >
       <!-- Template Debugger -->
       <plh-template-debugger
