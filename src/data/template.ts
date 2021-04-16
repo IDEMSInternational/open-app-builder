@@ -274,8 +274,8 @@
                 "style_list": [
                   "align-self: flex-start",
                   "margin-left: 20px",
-                  "margin-bottom: 8px",
-                  "margin-top: 15px"
+                  "margin-bottom: 0px",
+                  "margin-top: 23px"
                 ]
               },
               {
@@ -340,7 +340,8 @@
                 "style_list": [
                   "align-self: flex-start",
                   "white-space: nowrap",
-                  "margin-top: 15px"
+                  "margin-top: 23px",
+                  "margin-bottom: 28px"
                 ]
               },
               {
@@ -404,7 +405,8 @@
                 "style_list": [
                   "align-self: flex-start",
                   "white-space: nowrap",
-                  "margin-top:15px"
+                  "margin-top:23px",
+                  "margin-bottom: 28px"
                 ]
               },
               {
@@ -434,10 +436,19 @@
     "rows": [
       {
         "type": "display_group",
+        "style_list": [
+          "margin: 20px 0 10px 0"
+        ],
         "rows": [
           {
             "type": "title",
-            "value": "@global.weekly_workshops"
+            "value": "@global.weekly_workshops",
+            "parameter_list": {
+              "style": "tiny"
+            },
+            "style_list": [
+              "flex: 2"
+            ]
           },
           {
             "type": "button",
@@ -455,8 +466,11 @@
               }
             ],
             "parameter_list": {
-              "style": "options"
-            }
+              "style": "options short flexible"
+            },
+            "style_list": [
+              "flex: 1"
+            ]
           }
         ]
       },
@@ -479,7 +493,7 @@
           "style": "quick_start",
           "first_line_text": "My Group",
           "second_line_text": "Start week one",
-          "icon_src": "plh_images/icons/play_light.svg"
+          "icon_src": "plh_images/icons/play_outline_white.svg"
         },
         "comments": "- Need to change the icon\n- Need to get the next workshop"
       },
@@ -9595,46 +9609,54 @@
             "value": "This is page 1"
           },
           {
-            "type": "template",
-            "name": "page_1_nav_buttons",
-            "value": "nav_buttons",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_page_1",
-                  "true"
-                ],
-                "_raw": "completed | set_local:hide_page_1:true",
-                "_cleaned": "completed | set_local:hide_page_1:true"
-              },
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_page_2",
-                  "false"
-                ],
-                "_raw": "completed | set_local:hide_page_2:false",
-                "_cleaned": "completed | set_local:hide_page_2:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "emit",
-                "args": [
-                  "uncompleted"
-                ],
-                "_raw": "uncompleted | emit:uncompleted",
-                "_cleaned": "uncompleted | emit:uncompleted"
-              }
-            ],
-            "comments": "the style: navigation is set in the nav_buttons template, at the end of the sheet, but it's not at the end of this one.",
+            "type": "display_group",
+            "parameter_list": {
+              "style": "navigation"
+            },
             "rows": [
               {
-                "name": "button_completed",
-                "value": "Let's go!",
-                "type": "set_variable"
+                "type": "template",
+                "name": "page_1_nav_buttons",
+                "value": "nav_buttons",
+                "action_list": [
+                  {
+                    "trigger": "completed",
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_page_1",
+                      "true"
+                    ],
+                    "_raw": "completed | set_local:hide_page_1:true",
+                    "_cleaned": "completed | set_local:hide_page_1:true"
+                  },
+                  {
+                    "trigger": "completed",
+                    "action_id": "set_local",
+                    "args": [
+                      "hide_page_2",
+                      "false"
+                    ],
+                    "_raw": "completed | set_local:hide_page_2:false",
+                    "_cleaned": "completed | set_local:hide_page_2:false"
+                  },
+                  {
+                    "trigger": "uncompleted",
+                    "action_id": "emit",
+                    "args": [
+                      "uncompleted"
+                    ],
+                    "_raw": "uncompleted | emit:uncompleted",
+                    "_cleaned": "uncompleted | emit:uncompleted"
+                  }
+                ],
+                "comments": "the style: navigation is set in the nav_buttons template, at the end of the sheet, but it's not at the end of this one.",
+                "rows": [
+                  {
+                    "name": "button_completed",
+                    "value": "Let's go!",
+                    "type": "set_variable"
+                  }
+                ]
               }
             ]
           }

@@ -24,7 +24,7 @@ import { isPlatformBrowser } from "@angular/common";
 })
 export class RoundIconButtonComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit, AfterViewInit {
   @Input() parent: TemplateContainerComponent;
   @Input() template: FlowTypes.Template;
   icon_src: string;
@@ -35,11 +35,18 @@ export class RoundIconButtonComponent
   buttonAlign: string;
   isHomeScreen: boolean = false;
   isCustomIcon: boolean = false;
-  constructor() {
+  constructor(private elRef: ElementRef) {
     super();
   }
   ngOnInit() {
     this.getParams();
+  }
+
+  ngAfterViewInit() {
+    const el = this.elRef.nativeElement.closest(".display-group");
+    if (el && el.classList.value.includes("navigation")) {
+      this.elRef.nativeElement.parentElement.parentElement.style.setProperty("flex", "0");
+    }
   }
 
   getParams() {

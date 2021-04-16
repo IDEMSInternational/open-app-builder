@@ -129,7 +129,11 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
         this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
       }
     }
-    if (this.row.parameter_list && this.row.parameter_list["style"] === "navigation") {
+    if (
+      this.row.parameter_list &&
+      this.row.parameter_list["style"] === "navigation" &&
+      this.row.type === "display_group"
+    ) {
       this.elRef.nativeElement.style.setProperty("display", "flex");
       this.elRef.nativeElement.style.setProperty("height", "100%");
       this.elRef.nativeElement.style.setProperty("align-items", "flex-end");
