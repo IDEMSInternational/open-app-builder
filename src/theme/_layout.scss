@@ -63,3 +63,13 @@ ion-modal.template-popup-modal {
     z-index: -1 !important;
   }
 }
+
+.margin-t-small {
+  margin-top: var(--small-margin);
+}
+.margin-t-regular {
+  margin-top: var(--regular-margin);
+}
+.margin-t-large {
+  margin-top: var(--large-margin);
+}

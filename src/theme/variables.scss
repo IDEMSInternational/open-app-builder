@@ -59,6 +59,9 @@ $main-container-padding: 0 10px;
 :root {
   --regular-padding: 5px;
   --large-padding: 10px;
+  --small-margin: 10px;
+  --regular-margin: 16px;
+  --large-margin: 24px;
   --ion-main-bg-passive: #{$some};
   --ion-main-bg-active: #{$tertiary};
   //buttons
