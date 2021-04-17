@@ -4,12 +4,10 @@
   box-sizing: border-box;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  min-width: 363px;
   padding: 17px 14px 16px 20px;
   display: flex;
   position: relative;
   flex-direction: column;
-  margin: var(--regular-padding);
   .top-row {
     display: flex;
     justify-content: space-between;
@@ -21,10 +19,10 @@
       h3 {
         margin: 0;
         margin-right: 11px;
-        color: #0d3f60;
+        color: var(--ion-color-primary);
         max-width: 280px;
         font-weight: bold;
-        font-size: 25px;
+        font-size: 22px;
       }
       .audio-help {
         color: #0d3f60;
