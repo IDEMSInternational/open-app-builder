@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: calc(100% - 10px);
   background: #ffffff;
   border: 2px solid #096b8b;
   box-sizing: border-box;
@@ -9,6 +9,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 6px;
+  margin-left: 5px;
+  margin-right: 5px;
   .left,
   .right {
     flex: 1 1 20%;
