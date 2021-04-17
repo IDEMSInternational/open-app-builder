@@ -1,5 +1,6 @@
 <button
-  class="open-combobox"
+  class="open-combobox margin-t-regular"
+  [class]="style"
   [class.have-value]="_row.value"
   (click)="openModal()"
   [class.placeholder-style]="!_row.value && placeholder"

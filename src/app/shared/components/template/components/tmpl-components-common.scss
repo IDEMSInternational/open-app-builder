@@ -30,36 +30,42 @@
   }
 }
 .tool_1 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #f89b2d;
   border-radius: 20px;
 }
 .tool_2 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #ff7a00;
   border-radius: 20px;
 }
 .tool_3 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #0f8ab2;
   border-radius: 20px;
 }
 .tool_4 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #096b8b;
   border-radius: 20px;
 }
 .tool_5 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #0d3f60;
   border-radius: 20px;
 }
 .white_box {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #fff;
@@ -67,6 +73,7 @@
   border-radius: 20px;
 }
 .banner {
+  margin-top: var(--regular-margin);
   padding: 15px;
   border-radius: 20px;
   background: var(--ion-dg-bg-default);
@@ -99,10 +106,9 @@
 }
 
 .tmpl-video-container {
-  width: calc(100% - 20px);
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin: 10px;
 
   video {
     width: 100%;
@@ -209,6 +215,7 @@ p {
 }
 
 .banner_active {
+  margin-top: var(--regular-margin);
   background: var(--ion-banner-secondary);
   border-radius: 20px;
   width: 100%;
@@ -216,6 +223,7 @@ p {
 }
 
 .banner_passive {
+  margin-top: var(--regular-margin);
   border-radius: 20px;
   width: 100%;
   margin: 0 auto 5px auto;
@@ -223,6 +231,7 @@ p {
 }
 
 .banner_welcome {
+  margin-top: var(--regular-margin);
   border-radius: 20px;
   width: 100%;
   margin-bottom: 30px !important;
@@ -244,6 +253,7 @@ p {
 }
 
 .banner_short {
+  margin-top: var(--regular-margin);
   border-radius: 20px;
   width: 100%;
   margin-bottom: 30px !important;
@@ -323,6 +333,10 @@ p {
 }
 .rounded_corners {
   border-radius: 15px;
+
+  img {
+    border-radius: 15px;
+  }
 }
 .whiteText {
   color: #fff;
