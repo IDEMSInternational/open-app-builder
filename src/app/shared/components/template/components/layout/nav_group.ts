@@ -52,9 +52,10 @@ import { TemplateLayoutComponent } from "./layout";
       }
 
       .nav-progress-part {
-        height: 5px;
+        height: 7px;
         flex: 1;
         background-color: var(--ion-primary-color, #0d3f60);
+        border-radius: var(--ion-border-radius-standard);
         max-width: 40px;
       }
 
