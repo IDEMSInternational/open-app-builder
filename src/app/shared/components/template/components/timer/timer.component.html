@@ -1,5 +1,8 @@
-<div class="round-container wrapper-audio round-container-br-15">
-  <div class="timer-row">
+<div
+  class="round-container wrapper-audio round-container-br-15 margin-t-large"
+  [style.paddingBottom.px]="timerRow.offsetHeight - timerRow.offsetHeight / 3"
+>
+  <div class="timer-row" #timerRow>
     <h2 class="timer-title">{{ title }}</h2>
     <ion-icon
       *ngIf="help"

@@ -37,6 +37,8 @@ $font-size-text-small: 16px;
 $font-size-text-medium: 18px;
 $font-size-text-large: 20px;
 
+$p-margin-standart: 0.75em;
+
 /** Font Weight **/
 $font-weight-standart: 500;
 $font-weight-bold: 700;
@@ -53,12 +55,14 @@ $border-radius-standard: 15px;
 $vertical: 180deg;
 $horizontal: 90deg;
 
-$main-container-padding: 0 10px;
-
 /** Ionic CSS Variables **/
 :root {
+  --main-container-padding: 0 var(--large-margin);
   --regular-padding: 5px;
   --large-padding: 10px;
+  --small-margin: 10px;
+  --regular-margin: 16px;
+  --large-margin: 24px;
   --ion-main-bg-passive: #{$some};
   --ion-main-bg-active: #{$tertiary};
   --ion-border-radius-standard: #{$border-radius-standard};
