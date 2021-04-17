@@ -19,7 +19,6 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     </div>
   </div>`,
   styleUrls: ["../tmpl-components-common.scss"],
-  encapsulation: ViewEncapsulation.None,
   styles: [
     `
       :host {
