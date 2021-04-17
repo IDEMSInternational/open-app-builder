@@ -63,3 +63,37 @@ ion-modal.template-popup-modal {
     z-index: -1 !important;
   }
 }
+
+.main-layout-padding {
+  @media (max-width: 339px) {
+    padding: 0 var(--regular-margin);
+  }
+
+  @media (min-width: 340px) {
+    padding: 0 var(--large-margin);
+  }
+}
+
+.margin-lr-small {
+  margin: 0 var(--small-margin);
+}
+
+.margin-lr-regular {
+  margin: 0 var(--regular-margin);
+}
+
+.margin-lr-large {
+  margin: 0 var(--large-margin);
+}
+
+.margin-t-small {
+  margin-top: var(--small-margin);
+}
+
+.margin-t-regular {
+  margin-top: var(--regular-margin);
+}
+
+.margin-t-large {
+  margin-top: var(--large-margin);
+}
