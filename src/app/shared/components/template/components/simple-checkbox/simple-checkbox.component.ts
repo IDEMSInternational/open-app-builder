@@ -4,14 +4,14 @@ import { FlowTypes, ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
-
 @Component({
   selector: "plh-simple-checkbox",
   templateUrl: "./simple-checkbox.component.html",
-  styleUrls: ["./simple-checkbox.component.scss"]
+  styleUrls: ["./simple-checkbox.component.scss"],
 })
-
-export class TmplSimpleCheckboxComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplSimpleCheckboxComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit {
   @Input() parent: TemplateContainerComponent;
   position: boolean;
   label_text: string | null;
@@ -24,7 +24,7 @@ export class TmplSimpleCheckboxComponent extends TemplateBaseComponent implement
   }
 
   getParams() {
-    this.position = getStringParamFromTemplateRow(this._row, 'position', 'left') != 'left';
-    this.label_text = getStringParamFromTemplateRow(this._row, 'label_text', null);
+    this.position = getStringParamFromTemplateRow(this._row, "position", "left") !== "left";
+    this.label_text = getStringParamFromTemplateRow(this._row, "label_text", null);
   }
 }
