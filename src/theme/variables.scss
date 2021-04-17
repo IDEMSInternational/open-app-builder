@@ -93,10 +93,16 @@ $main-container-padding: 0 10px;
   // banner
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,
+      $hue: 17,
       $saturation: 5%,
       $lightness: 14%
     )};
-  --ion-banner-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: 3%)};
+  --ion-banner-gradient-secondary-end: #{color.adjust(
+      $secondary,
+      $hue: 8,
+      $saturation: 5%,
+      $lightness: 3%
+    )};
 
   --ion-banner-gradient-primary-start: #{color.adjust($primary, $saturation: 19%, $lightness: 64%)};
   --ion-banner-gradient-primary-middle: #{color.adjust($primary, $saturation: 24%, $lightness: 48%)};
