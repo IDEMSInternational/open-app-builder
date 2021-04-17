@@ -108,11 +108,28 @@ ion-modal.template-popup-modal {
   margin-top: var(--large-margin);
 }
 
-.no-margin-top {
+.no_margin_t {
   margin-top: 0 !important;
 }
 
-.no-margin-lr {
+.no_margin_lr {
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+
+.no_margin {
+  margin: 0 !important;
+}
+
+.no_padding {
+  padding: 0 !important;
+}
+
+.no_padding_t {
+  padding-top: 0 !important;
+}
+
+.no_padding_lr {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
