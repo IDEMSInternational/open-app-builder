@@ -1,7 +1,7 @@
 <div class="wrapper" [class.home_screen_wrapper]="isHomeScreen">
   <ion-tab-button
     [class]="style"
-    (click)="triggerActions('click')"
+    (click)="onClick($event)"
     class="round-icon-button"
     [disabled]="_row.disabled"
   >
