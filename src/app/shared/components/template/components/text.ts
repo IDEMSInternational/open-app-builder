@@ -14,6 +14,9 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [
     `
+      .margin-t-large {
+        margin-bottom: -0.75em;
+      }
       .small {
         font-size: 16px;
       }

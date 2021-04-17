@@ -97,3 +97,12 @@ ion-modal.template-popup-modal {
 .margin-t-large {
   margin-top: var(--large-margin);
 }
+
+.no-margin-top {
+  margin-top: 0 !important;
+}
+
+.no-margin-lr {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
