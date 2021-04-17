@@ -49,6 +49,11 @@ export class RoundIconButtonComponent
     }
   }
 
+  onClick(event: Event) {
+    this.triggerActions("click");
+    event.stopPropagation();
+  }
+
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", "information");
     this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
