@@ -14,7 +14,6 @@ plh-template-container {
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: auto;
 
   &.passive {
     background-color: var(--theme-var-templatePassiveBg, #e3f4ff);

@@ -49,7 +49,6 @@ import { TemplateLayoutComponent } from "./layout";
         justify-content: space-evenly;
         gap: 5px;
         padding: var(--large-padding) 0;
-        margin: var(--large-margin) 0;
       }
 
       .nav-progress-part {
