@@ -31,11 +31,14 @@ import { TemplateLayoutComponent } from "./layout";
     `
       :host {
         width: 100%;
+        height: 100%;
       }
       .slide {
         width: 95vw;
       }
-
+      .nav-group {
+        height: 100%;
+      }
       .nav-buttons {
         width: 100%;
         display: flex;
@@ -50,7 +53,9 @@ import { TemplateLayoutComponent } from "./layout";
         gap: 5px;
         padding: var(--large-padding) 0;
       }
-
+      .nav-section :nth-child(1) {
+        height: 100%;
+      }
       .nav-progress-part {
         height: 7px;
         flex: 1;
