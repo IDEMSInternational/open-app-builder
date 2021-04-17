@@ -282,6 +282,7 @@
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
+                "hidden": "true",
                 "parameter_list": {
                   "icon_src": "/assets/icon/round-button/play.svg",
                   "text": "Start",
@@ -348,6 +349,17 @@
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "pop_up",
+                    "args": [
+                      "example_home_pop_up"
+                    ],
+                    "_raw": "click | pop_up:example_home_pop_up",
+                    "_cleaned": "click | pop_up:example_home_pop_up"
+                  }
+                ],
                 "parameter_list": {
                   "icon_src": "/assets/icon/round-button/smile.svg",
                   "style": "home_screen orange"
@@ -413,6 +425,7 @@
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
+                "hidden": "true",
                 "parameter_list": {
                   "icon_src": "/assets/icon/round-button/message.svg",
                   "text": "Message",
@@ -425,6 +438,19 @@
             ]
           }
         ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_home_pop_up",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "value": "this is text for a pop up from the quick start buttons"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
@@ -2710,6 +2736,16 @@
         "action_list": [
           {
             "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.slider_field",
+              "@local.slider"
+            ],
+            "_raw": "completed | set_field:@local.slider_field:@local.slider",
+            "_cleaned": "completed | set_field:@local.slider_field:@local.slider"
+          },
+          {
+            "trigger": "completed",
             "action_id": "emit",
             "args": [
               "completed"
@@ -2725,12 +2761,22 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "box_slider_month_temp",
+    "flow_name": "box_slider_duo_temp",
     "status": "released",
     "rows": [
       {
-        "name": "slider_field",
-        "value": "slider_field_name",
+        "name": "slider_1_field",
+        "value": "slider_1_field_name",
+        "type": "set_variable"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "hidden": "true"
+      },
+      {
+        "name": "slider_2_field",
+        "value": "slider_2_field_name",
         "type": "set_variable"
       },
       {
@@ -2750,7 +2796,7 @@
       },
       {
         "type": "text",
-        "name": "question_text",
+        "name": "question_text_1",
         "value": "Question text",
         "parameter_list": {
           "style": "emphasised"
@@ -2758,17 +2804,46 @@
       },
       {
         "type": "slider",
-        "name": "slider",
+        "name": "slider_1",
         "action_list": [
           {
             "trigger": "changed",
             "action_id": "set_field",
             "args": [
-              "@local.slider_field",
-              "@local.slider"
+              "@local.slider_1_field",
+              "@local.slider_1"
             ],
-            "_raw": "changed | set_field:@local.slider_field:@local.slider",
-            "_cleaned": "changed | set_field:@local.slider_field:@local.slider"
+            "_raw": "changed | set_field:@local.slider_1_field:@local.slider_1",
+            "_cleaned": "changed | set_field:@local.slider_1_field:@local.slider_1"
+          }
+        ],
+        "parameter_list": {
+          "min": "0",
+          "min_value_label": "Days in the past week",
+          "max": "7"
+        }
+      },
+      {
+        "type": "text",
+        "name": "question_text_2",
+        "value": "Question text",
+        "parameter_list": {
+          "style": "emphasised"
+        }
+      },
+      {
+        "type": "slider",
+        "name": "slider_2",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.slider_2_field",
+              "@local.slider_2"
+            ],
+            "_raw": "changed | set_field:@local.slider_2_field:@local.slider_2",
+            "_cleaned": "changed | set_field:@local.slider_2_field:@local.slider_2"
           }
         ],
         "parameter_list": {
@@ -2782,29 +2857,19 @@
         "type": "text",
         "name": "reply_less",
         "value": "You selected less than @local.threshold",
-        "hidden": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" "
-      },
-      {
-        "type": "dashed_box",
-        "name": "unlock_less",
-        "value": "Unlock for less than @local.threshold",
-        "hidden": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
-        "parameter_list": {
-          "icon_src": "plh_images/icons/unlock_circle.svg",
-          "icon_position": "top-left"
-        }
+        "hidden": "\"@local.slider_1\" >= @local.threshold || \"@local.slider_2\" >= @local.threshold "
       },
       {
         "type": "text",
         "name": "reply_greater_equal",
         "value": "You selected @local.threshold or more",
-        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" "
+        "hidden": "\"@local.slider_1\" < @local.threshold  && \"@local.slider_2\" < @local.threshold"
       },
       {
         "type": "dashed_box",
         "name": "unlock_greater_equal",
         "value": "Unlock for greater than or equal to @local.threshold",
-        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+        "hidden": "\"@local.slider_1\" < @local.threshold  && \"@local.slider_2\" < @local.threshold",
         "parameter_list": {
           "icon_src": "plh_images/icons/unlock_circle.svg",
           "icon_position": "top-left"
@@ -2823,6 +2888,26 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.slider_1_field",
+              "@local.slider_1"
+            ],
+            "_raw": "completed | set_field:@local.slider_1_field:@local.slider_1",
+            "_cleaned": "completed | set_field:@local.slider_1_field:@local.slider_1"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.slider_2_field",
+              "@local.slider_2"
+            ],
+            "_raw": "completed | set_field:@local.slider_2_field:@local.slider_2",
+            "_cleaned": "completed | set_field:@local.slider_2_field:@local.slider_2"
           }
         ],
         "rows": []
@@ -3396,10 +3481,42 @@
       {
         "type": "number_selector",
         "name": "number_selector",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_number_selector",
+              "@local.number_selector"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_number_selector: @local.number_selector",
+            "_cleaned": "changed | set_field: demo_changed_field_number_selector: @local.number_selector"
+          }
+        ],
         "parameter_list": {
-          "category_list": "0-10,11-20,21-30,31-40,41-50,51-60,61-70,71-80,80+",
+          "category_list": "@local.category_list",
           "first_display_term": "3"
         }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Number selector value: @fields.demo_changed_field_number_selector"
+      },
+      {
+        "name": "category_list",
+        "value": [
+          "0-10",
+          "11-20",
+          "21-30",
+          "31-40",
+          "41-50",
+          "51-60",
+          "61-70",
+          "71-80",
+          "80+"
+        ],
+        "type": "set_variable"
       },
       {
         "type": "template",
@@ -3672,6 +3789,208 @@
             ],
             "_raw": "click | set_field: household_babies: @local.number_selector_babies",
             "_cleaned": "click | set_field: household_babies: @local.number_selector_babies"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          }
+        ],
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_multi_3_temp",
+    "status": "released",
+    "rows": [
+      {
+        "name": "slider_1_field",
+        "type": "set_variable"
+      },
+      {
+        "name": "radio_button_field",
+        "type": "set_variable"
+      },
+      {
+        "name": "slider_2_field",
+        "type": "set_variable"
+      },
+      {
+        "name": "threshold",
+        "value": 7,
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Text"
+      },
+      {
+        "type": "text",
+        "name": "question_text",
+        "value": "Question text",
+        "parameter_list": {
+          "style": "emphasised"
+        }
+      },
+      {
+        "type": "slider",
+        "name": "slider_1",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.slider_1_field",
+              "@local.slider_1"
+            ],
+            "_raw": "changed | set_field:@local.slider_1_field:@local.slider_1",
+            "_cleaned": "changed | set_field:@local.slider_1_field:@local.slider_1"
+          }
+        ],
+        "parameter_list": {
+          "min": "0",
+          "min_value_label": "Days in the past week",
+          "max": "7"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_less",
+        "value": "You selected less than @local.threshold",
+        "hidden": "\"@local.slider_1\" >= @local.threshold || \"@local.slider_1\"==\"{{local.slider_1}}\" || \"@local.slider_1\"==\"no_value\" "
+      },
+      {
+        "type": "dashed_box",
+        "name": "unlock_less",
+        "value": "Unlock for less than @local.threshold",
+        "hidden": "\"@local.slider_1\" >= @local.threshold || \"@local.slider_1\"==\"{{local.slider_1}}\" || \"@local.slider_1\"==\"no_value\" ",
+        "parameter_list": {
+          "icon_src": "plh_images/icons/unlock_circle.svg",
+          "icon_position": "top-left"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_greater_equal",
+        "value": "You selected @local.threshold or more",
+        "hidden": "\"@local.slider_1\" < @local.threshold  || \"@local.slider_1\"==\"{{local.slider_1}}\" || \"@local.slider_1\"==\"no_value\" "
+      },
+      {
+        "type": "text",
+        "name": "question_greater_equal",
+        "value": "Question text",
+        "hidden": "\"@local.slider_1\" < @local.threshold  || \"@local.slider_1\"==\"{{local.slider_1}}\" || \"@local.slider_1\"==\"no_value\" ",
+        "parameter_list": {
+          "style": "emphasised"
+        }
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.radio_button_field",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field:@local.radio_button_field:@local.radio_group",
+            "_cleaned": "changed | set_field:@local.radio_button_field:@local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "radio_button_type": "btn_text",
+          "answer_list": "@local.answer_list"
+        }
+      },
+      {
+        "name": "answer_list",
+        "value": [
+          "name:yes | text:Yes",
+          "name:no | text:No"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "reply_no",
+        "value": "Reply no",
+        "hidden": "\"@local.radio_group\"!=\"no\" || \"@local.radio_group\"==\"{{local.radio_group}}\" "
+      },
+      {
+        "type": "text",
+        "name": "question_yes",
+        "value": "Question yes",
+        "hidden": "\"@local.radio_group\"!=\"ok\" ||\"@local.radio_group\"==\"{{local.radio_group}}\" ",
+        "parameter_list": {
+          "style": "emphasised"
+        }
+      },
+      {
+        "type": "slider",
+        "name": "slider_2",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.slider_2_field",
+              "@local.slider_2"
+            ],
+            "_raw": "changed | set_field:@local.slider_2_field:@local.slider_2",
+            "_cleaned": "changed | set_field:@local.slider_2_field:@local.slider_2"
+          }
+        ],
+        "parameter_list": {
+          "min": "0",
+          "min_value_label": "Days in the past week",
+          "max": "7"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_less",
+        "value": "You selected less than @local.threshold",
+        "hidden": "\"@local.slider_2\" >= @local.threshold || \"@local.slider_2\"==\"{{local.slider_2}}\" || \"@local.slider_2\"==\"no_value\" "
+      },
+      {
+        "type": "dashed_box",
+        "name": "unlock_less",
+        "value": "Unlock for less than @local.threshold",
+        "hidden": "\"@local.slider_2\" >= @local.threshold || \"@local.slider_2\"==\"{{local.slider_2}}\" || \"@local.slider_2\"==\"no_value\" ",
+        "parameter_list": {
+          "icon_src": "plh_images/icons/unlock_circle.svg",
+          "icon_position": "top-left"
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_greater_equal",
+        "value": "You selected @local.threshold or more",
+        "hidden": "\"@local.slider_2\" < @local.threshold  || \"@local.slider_2\"==\"{{local.slider_2}}\" || \"@local.slider_2\"==\"no_value\" "
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
           }
         ],
         "rows": []
@@ -14472,6 +14791,39 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "feature_checkbox",
+    "status": "released",
+    "rows": [
+      {
+        "type": "simple_checkbox",
+        "name": "checkbox_1",
+        "value": "false",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_checkbox",
+              "@local.checkbox_1"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_checkbox: @local.checkbox_1",
+            "_cleaned": "changed | set_field: demo_changed_field_checkbox: @local.checkbox_1"
+          }
+        ],
+        "parameter_list": {
+          "label_text": "Example answer?"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "CheckBox checked: @fields.demo_changed_field_checkbox"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "relax_text_1",
     "status": "released",
     "rows": [
@@ -14936,13 +15288,19 @@
         ],
         "rows": [
           {
+            "name": "title",
+            "value": "Customise for your needs",
+            "hidden": "false",
+            "type": "set_variable"
+          },
+          {
             "name": "image_src",
             "value": "plh_images/survey/welcome/busy.svg",
             "type": "set_variable"
           },
           {
             "name": "text",
-            "value": "Every parent in the world is struggling in these hard times. These quick questions will fit this app to your needs.\n\nBe honest. Remember that you are not alone! Millions of parents feel like you do, and we all deserve support.",
+            "value": "Every parent in the world is struggling in these hard times. These quick questions will fit this app to your needs.\n\nBe honest. Remember that **you are not alone**! Millions of parents feel like you do, and we all deserve support.",
             "type": "set_variable"
           }
         ]
@@ -14977,12 +15335,6 @@
             "type": "set_variable"
           },
           {
-            "name": "image_src",
-            "value": "plh_images/characters/@fields.guidenumber/busy.svg",
-            "hidden": "true",
-            "type": "set_variable"
-          },
-          {
             "name": "text",
             "value": "It is hard to find time to have fun with your teenager.",
             "type": "set_variable"
@@ -14999,7 +15351,7 @@
           },
           {
             "name": "reply_less",
-            "value": "We know this is hard. We'll make this your first @global.weekly_workshop – it builds a foundation for all other parenting tools.",
+            "value": "We know this is hard. We'll unlock this @global.weekly_workshop for you now – it builds a foundation for all other parenting tools.",
             "type": "set_variable"
           },
           {
@@ -15047,6 +15399,13 @@
           {
             "name": "slider_field",
             "value": "survey_welcome_a_2",
+            "type": "set_variable"
+          },
+          {
+            "name": "image_src",
+            "value": "plh_images/survey/welcome/guide_1_frustrated.svg",
+            "hidden": "false",
+            "comments": "In Orli's design this image appears quite small",
             "type": "set_variable"
           },
           {
@@ -15116,12 +15475,6 @@
             "type": "set_variable"
           },
           {
-            "name": "image_src",
-            "value": "plh_images/characters/@field.guidenumber/frustrated.svg",
-            "hidden": "true",
-            "type": "set_variable"
-          },
-          {
             "name": "text",
             "value": "This is a very stressful time for families.",
             "type": "set_variable"
@@ -15185,7 +15538,13 @@
         "rows": [
           {
             "name": "slider_variable",
-            "value": "survey_welcome_a_4",
+            "value": "survey_welcome_q_4",
+            "type": "set_variable"
+          },
+          {
+            "name": "image_src",
+            "value": "plh_images/survey/welcome/guide_2_argument.svg",
+            "hidden": "false",
             "type": "set_variable"
           },
           {
@@ -15221,7 +15580,7 @@
           {
             "name": "unlock_greater_equal",
             "value": "@global.weekly_workshop @global.w_stress unlocked",
-            "comments": "Needs an action",
+            "comments": "Needs an action:\nif @field.survey_welcome_q_4 >=2, unlock workshop stress",
             "type": "set_variable"
           }
         ]
@@ -15236,8 +15595,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "pair",
-        "value": "pair",
+        "name": "box_slider_duo_temp",
+        "value": "box_slider_duo_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -15251,92 +15610,50 @@
         ],
         "rows": [
           {
-            "type": "nested_properties",
-            "name": "box_1",
-            "value": "box_slider_week_temp",
-            "rows": [
-              {
-                "name": "image_src",
-                "value": "plh_images/characters/@fields.guidenumber/frustrated.svg",
-                "hidden": "true",
-                "type": "set_variable"
-              },
-              {
-                "name": "text",
-                "value": "Money is one of the biggest stresses for families now. ",
-                "type": "set_variable"
-              },
-              {
-                "name": "question_text",
-                "value": "How many days in the past week have you worried or felt anxious about money? ",
-                "type": "set_variable"
-              },
-              {
-                "name": "reply_less",
-                "hidden": "true",
-                "type": "set_variable"
-              },
-              {
-                "name": "unlock_less",
-                "hidden": "true",
-                "type": "set_variable"
-              },
-              {
-                "name": "reply_greater_equal",
-                "hidden": "true",
-                "type": "set_variable"
-              },
-              {
-                "name": "unlock_greater_equal",
-                "hidden": "true",
-                "type": "set_variable"
-              }
-            ]
+            "name": "slider_1_field",
+            "value": "survey_welcome_q_5_part_1",
+            "type": "set_variable"
           },
           {
-            "type": "nested_properties",
-            "name": "box_2",
-            "value": "box_slider_month_temp",
-            "rows": [
-              {
-                "name": "text",
-                "hidden": "true",
-                "type": "set_variable"
-              },
-              {
-                "name": "question_text",
-                "value": "How many days in the past month (30 days) did you run out of money to pay for food? ",
-                "type": "set_variable"
-              },
-              {
-                "name": "theshold",
-                "value": 1,
-                "type": "set_variable"
-              },
-              {
-                "name": "reply_less",
-                "value": "Great. We have a @global.weekly_workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments",
-                "hidden": "@box_1.slider._value <= @local.threshold & @box_2.slider._value <= @local.threshold",
-                "type": "set_variable"
-              },
-              {
-                "name": "unlock_less",
-                "hidden": "true",
-                "type": "set_variable"
-              },
-              {
-                "name": "reply_greater_equal",
-                "value": "Money stress can be overwhelming. We have a @global.weekly_workshop on family budgeting that can help. We’ll unlock this now to make it available for you anytime you want.",
-                "hidden": "!(@local.box_1.slider._value <= @local.threshold & @local.box_2.slider._value > @local.threshold)",
-                "comments": "Needs an action",
-                "type": "set_variable"
-              },
-              {
-                "name": "unlock_greater_equal",
-                "value": "@global.weekly_workshop @global.w_money unlocked",
-                "type": "set_variable"
-              }
-            ]
+            "name": "slider_2_field",
+            "value": "survey_welcome_q_5_part_2",
+            "type": "set_variable"
+          },
+          {
+            "name": "text",
+            "value": "Money is one of the biggest stresses for families now. ",
+            "type": "set_variable"
+          },
+          {
+            "name": "question_text_1",
+            "value": "How many days in the past week have you worried or felt anxious about money? ",
+            "type": "set_variable"
+          },
+          {
+            "name": "question_text_2",
+            "value": "How many days in the past month (30 days) did you run out of money to pay for food? ",
+            "type": "set_variable"
+          },
+          {
+            "name": "theshold",
+            "value": 1,
+            "type": "set_variable"
+          },
+          {
+            "name": "reply_less",
+            "value": "Great. We have a @global.weekly_workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments",
+            "type": "set_variable"
+          },
+          {
+            "name": "reply_greater_equal",
+            "value": "Money stress can be overwhelming. We have a @global.weekly_workshop on family budgeting that can help. We’ll unlock this now to make it available for you anytime you want.",
+            "comments": "Action:\nif @field.survey_welcome_q_5_part_1>=1 or @field.survey_welcome_q_5_part_1>=1, unlock workshop money",
+            "type": "set_variable"
+          },
+          {
+            "name": "unlock_greater_equal",
+            "value": "@global.weekly_workshop @global.w_money unlocked",
+            "type": "set_variable"
           }
         ]
       }
@@ -22732,7 +23049,7 @@
                   },
                   {
                     "name": "reply",
-                    "value": "@field.w_money_path\n\nYou need: \n- Papers (or old newspaper or a cardboard box) and pens \n- Stones or beans or anything with lots of bits to represent money \n\nTake a minute to get these things before we start with the first step.",
+                    "value": "You need: \n- Papers (or old newspaper or a cardboard box) and pens \n- Stones or beans or anything with lots of bits to represent money \n\nTake a minute to get these things before we start with the first step.",
                     "type": "set_variable"
                   }
                 ]
