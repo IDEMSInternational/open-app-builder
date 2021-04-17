@@ -16,31 +16,40 @@ import { TemplateLayoutComponent } from "./layout";
         (click)="goToSection(i)"
       ></div>
     </div>
-    <div class="nav-section" *ngFor="let templateName of templateNames; index as i">
-      <div *ngIf="sectionIndex === i" @fadeEntryExit>
-        <plh-template-container
-          [name]="templateName"
-          [templatename]="templateName"
-          [parent]="parent"
-        >
-        </plh-template-container>
+    <ng-template ngFor let-i="index" let-templateName [ngForOf]="templateNames">
+      <div class="nav-section" [class.selected]="sectionIndex === i">
+        <div *ngIf="sectionIndex === i" @fadeEntryExit>
+          <plh-template-container
+            [name]="templateName"
+            [templatename]="templateName"
+            [parent]="parent"
+          >
+          </plh-template-container>
+        </div>
       </div>
-    </div>
+    </ng-template>
   </div>`,
   styles: [
     `
       :host {
         width: 100%;
+        height: 100%;
       }
       .slide {
         width: 95vw;
       }
-
+      .nav-group {
+        height: calc(100% - 27px);
+      }
       .nav-buttons {
         width: 100%;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+      }
+
+      .selected {
+        height: 100%;
       }
 
       .nav-progress {
@@ -50,7 +59,9 @@ import { TemplateLayoutComponent } from "./layout";
         gap: 5px;
         padding: var(--large-padding) 0;
       }
-
+      .nav-section :nth-child(1) {
+        height: 100%;
+      }
       .nav-progress-part {
         height: 7px;
         flex: 1;
