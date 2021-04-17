@@ -189,10 +189,10 @@ p {
 .subtitle-wrapper {
   display: flex;
   align-items: center;
-  padding: var(--regular-padding);
   color: var(--ion-color-primary);
   h2 {
     line-height: $line-height-text;
+    margin: 0;
   }
   .medium {
     font-size: $font-size-subtitle-medium;
