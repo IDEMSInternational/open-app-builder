@@ -137,15 +137,22 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
       this.elRef.nativeElement.style.setProperty("display", "flex");
       this.elRef.nativeElement.style.setProperty("height", "100%");
       this.elRef.nativeElement.style.setProperty("align-items", "flex-end");
-      this.elRef.nativeElement.parentElement
-        .closest("plh-template-component")
-        .style.setProperty("height", "100%");
-      this.elRef.nativeElement.parentElement
-        .closest("plh-template-component")
-        .style.setProperty("display", "flex");
-      this.elRef.nativeElement.parentElement
-        .closest("plh-template-component")
-        .style.setProperty("align-items", "flex-end");
+
+      const el_component = this.elRef.nativeElement.parentElement.closest("plh-template-component");
+
+      if (el_component) {
+        el_component.style.setProperty("height", "100%");
+        el_component.style.setProperty("display", "flex");
+        el_component.style.setProperty("align-items", "flex-end");
+      }
+
+      const el_container = this.elRef.nativeElement.parentElement.closest("plh-template-container");
+
+      if (el_container) {
+        el_container.style.setProperty("height", "100%");
+        el_container.style.setProperty("display", "flex");
+        el_container.style.setProperty("align-items", "flex-end");
+      }
     }
     if (this.row.type === "button") {
       this.elRef.nativeElement.style.setProperty("align-self", "normal");
