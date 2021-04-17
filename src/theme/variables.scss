@@ -53,12 +53,14 @@ $border-radius-standard: 15px;
 $vertical: 180deg;
 $horizontal: 90deg;
 
-$main-container-padding: 0 10px;
+$main-container-padding: 0 var(--large-margin);
 
 /** Ionic CSS Variables **/
 :root {
   --regular-padding: 5px;
   --large-padding: 10px;
+  --regular-margin: 15px;
+  --large-margin: 24px;
   --ion-main-bg-passive: #{$some};
   --ion-main-bg-active: #{$tertiary};
   //buttons

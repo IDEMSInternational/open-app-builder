@@ -70,6 +70,7 @@
   padding: 15px;
   border-radius: 20px;
   background: var(--ion-dg-bg-default);
+  margin-bottom: var(--regular-margin);
 }
 .column {
   flex-direction: column;
@@ -119,6 +120,7 @@
 p {
   width: 100%;
   margin: 0;
+  margin-bottom: var(--regular-margin);
 }
 
 ::ng-deep .round-container {
@@ -137,7 +139,8 @@ p {
 .title-wrapper {
   display: flex;
   align-items: center;
-  padding: var(--regular-padding);
+  margin-bottom: var(--regular-margin);
+  margin-top: var(--regular-margin);
   h1 {
     margin: 0;
     line-height: 29px;
