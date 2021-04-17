@@ -18,6 +18,7 @@ export class TmplComboBoxComponent
   @Input() localVariables: { [name: string]: any };
 
   placeholder: string;
+  style: string;
   customAnswerSelected: boolean = false;
 
   constructor(private modalController: ModalController) {
@@ -34,6 +35,7 @@ export class TmplComboBoxComponent
 
   getParams() {
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
   }
 
   async openModal() {
