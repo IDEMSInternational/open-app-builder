@@ -6,7 +6,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-subtitle",
   template: `
-    <div class="subtitle-wrapper" [class]="style">
+    <div class="subtitle-wrapper margin-t-regular" [class]="style">
       <h2 [class]="'standard medium' + ' ' + style">{{ _row.value }}</h2>
     </div>
   `,
