@@ -66,6 +66,7 @@ $horizontal: 90deg;
   --ion-main-bg-passive: #{$some};
   --ion-main-bg-active: #{$tertiary};
   --ion-border-radius-standard: #{$border-radius-standard};
+  --banner-short-height: 95px;
   //buttons
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)};
   --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)};

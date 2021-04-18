@@ -13370,7 +13370,7 @@
             "name": "title_ex_s",
             "value": "Example short banner",
             "parameter_list": {
-              "style": "large emphasised"
+              "style": "small emphasised"
             }
           },
           {
@@ -13392,13 +13392,27 @@
             "name": "title_ex_s",
             "value": "Example short banner with more text",
             "parameter_list": {
-              "style": "large emphasised"
+              "style": "small emphasised"
             }
           },
           {
             "type": "image",
             "name": "image",
             "value": "plh_images/workshop_modes/guide_2/wave.svg"
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_7",
+        "parameter_list": {
+          "style": "banner_welcome"
+        },
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/workshop_modes/guide_2/relax.svg"
           }
         ]
       }
