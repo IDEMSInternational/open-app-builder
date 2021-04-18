@@ -118,7 +118,7 @@
         "name": "tip_text",
         "value": "You can always find these tools in the @global.parent_centre ",
         "parameter_list": {
-          "icon_src": "plh_images/icons/house_circle.svg",
+          "icon_src": "plh_images/icons/hand_heart_circle.svg",
           "icon_position": "top-left"
         }
       },
@@ -274,15 +274,14 @@
                 "style_list": [
                   "align-self: flex-start",
                   "margin-left: 20px",
-                  "margin-bottom: 0px",
-                  "margin-top: 23px"
+                  "margin-bottom: 8px",
+                  "margin-top: 15px"
                 ]
               },
               {
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
-                "hidden": "true",
                 "parameter_list": {
                   "icon_src": "/assets/icon/round-button/play.svg",
                   "text": "Start",
@@ -341,25 +340,13 @@
                 "style_list": [
                   "align-self: flex-start",
                   "white-space: nowrap",
-                  "margin-top: 23px",
-                  "margin-bottom: 28px"
+                  "margin-top: 15px"
                 ]
               },
               {
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "pop_up",
-                    "args": [
-                      "example_home_pop_up"
-                    ],
-                    "_raw": "click | pop_up:example_home_pop_up",
-                    "_cleaned": "click | pop_up:example_home_pop_up"
-                  }
-                ],
                 "parameter_list": {
                   "icon_src": "/assets/icon/round-button/smile.svg",
                   "style": "home_screen orange"
@@ -417,15 +404,13 @@
                 "style_list": [
                   "align-self: flex-start",
                   "white-space: nowrap",
-                  "margin-top:23px",
-                  "margin-bottom: 28px"
+                  "margin-top:15px"
                 ]
               },
               {
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
-                "hidden": "true",
                 "parameter_list": {
                   "icon_src": "/assets/icon/round-button/message.svg",
                   "text": "Message",
@@ -444,32 +429,17 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "example_home_pop_up",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text",
-        "value": "this is text for a pop up from the quick start buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "weekly_workshops",
     "status": "released",
     "rows": [
       {
         "type": "display_group",
-        "name": "temp_name_1",
         "style_list": [
           "margin: 20px 0 10px 0"
         ],
         "rows": [
           {
             "type": "title",
-            "name": "temp_name_0",
             "value": "@global.weekly_workshops",
             "parameter_list": {
               "style": "tiny"
@@ -527,7 +497,6 @@
       },
       {
         "type": "workshops_accordion",
-        "name": "temp_name_2",
         "parameter_list": {
           "current_workshop_num": "3"
         },
@@ -535,7 +504,6 @@
         "rows": [
           {
             "type": "accordion_section",
-            "name": "temp_name_3",
             "value": "@field.w_self_care_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -560,7 +528,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_4",
             "value": "@field.w_1on1_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -587,7 +554,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_5",
             "value": "@field.w_praise_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -611,7 +577,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_6",
             "value": "@field.w_instruct_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -635,7 +600,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_7",
             "value": 70,
             "parameter_list": {
               "state": "closed",
@@ -660,7 +624,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_8",
             "value": "@field.w_money_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -684,7 +647,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_9",
             "value": "@field.w_rules_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -708,7 +670,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_10",
             "value": "@field.w_consequence_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -732,7 +693,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_11",
             "value": "@field.w_solve_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -756,7 +716,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_12",
             "value": "@field.w_safe_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -780,7 +739,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_13",
             "value": "@field.w_crisis_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -804,7 +762,6 @@
           },
           {
             "type": "accordion_section",
-            "name": "temp_name_14",
             "value": "@field.w_celebrate_completion_level",
             "parameter_list": {
               "state": "closed",
@@ -2481,42 +2438,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "survey_stepper",
-    "status": "released",
-    "rows": [
-      {
-        "name": "progress_bar_value",
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_bar_num_items",
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_bar",
-        "value": "@local.progress_bar_value",
-        "parameter_list": {
-          "num_items": "@local.progress_bar_num_items"
-        },
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_field_name",
-        "type": "set_variable"
-      },
-      {
-        "type": "nav_group",
-        "name": "nav_template_list",
-        "parameter_list": {
-          "progress_field": "@local.progress_field_name"
-        },
-        "comments": "in parameter list: progress_field:@local.progress_field_name"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_surveys.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "box_slider",
     "status": "released",
     "rows": [
@@ -2736,16 +2657,6 @@
         "action_list": [
           {
             "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.slider_field",
-              "@local.slider"
-            ],
-            "_raw": "completed | set_field:@local.slider_field:@local.slider",
-            "_cleaned": "completed | set_field:@local.slider_field:@local.slider"
-          },
-          {
-            "trigger": "completed",
             "action_id": "emit",
             "args": [
               "completed"
@@ -2761,22 +2672,12 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "box_slider_duo_temp",
+    "flow_name": "box_slider_month_temp",
     "status": "released",
     "rows": [
       {
-        "name": "slider_1_field",
-        "value": "slider_1_field_name",
-        "type": "set_variable"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "hidden": "true"
-      },
-      {
-        "name": "slider_2_field",
-        "value": "slider_2_field_name",
+        "name": "slider_field",
+        "value": "slider_field_name",
         "type": "set_variable"
       },
       {
@@ -2796,7 +2697,7 @@
       },
       {
         "type": "text",
-        "name": "question_text_1",
+        "name": "question_text",
         "value": "Question text",
         "parameter_list": {
           "style": "emphasised"
@@ -2804,46 +2705,17 @@
       },
       {
         "type": "slider",
-        "name": "slider_1",
+        "name": "slider",
         "action_list": [
           {
             "trigger": "changed",
             "action_id": "set_field",
             "args": [
-              "@local.slider_1_field",
-              "@local.slider_1"
+              "@local.slider_field",
+              "@local.slider"
             ],
-            "_raw": "changed | set_field:@local.slider_1_field:@local.slider_1",
-            "_cleaned": "changed | set_field:@local.slider_1_field:@local.slider_1"
-          }
-        ],
-        "parameter_list": {
-          "min": "0",
-          "min_value_label": "Days in the past week",
-          "max": "7"
-        }
-      },
-      {
-        "type": "text",
-        "name": "question_text_2",
-        "value": "Question text",
-        "parameter_list": {
-          "style": "emphasised"
-        }
-      },
-      {
-        "type": "slider",
-        "name": "slider_2",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "@local.slider_2_field",
-              "@local.slider_2"
-            ],
-            "_raw": "changed | set_field:@local.slider_2_field:@local.slider_2",
-            "_cleaned": "changed | set_field:@local.slider_2_field:@local.slider_2"
+            "_raw": "changed | set_field:@local.slider_field:@local.slider",
+            "_cleaned": "changed | set_field:@local.slider_field:@local.slider"
           }
         ],
         "parameter_list": {
@@ -2857,130 +2729,33 @@
         "type": "text",
         "name": "reply_less",
         "value": "You selected less than @local.threshold",
-        "hidden": "\"@local.slider_1\" >= @local.threshold || \"@local.slider_2\" >= @local.threshold "
-      },
-      {
-        "type": "text",
-        "name": "reply_greater_equal",
-        "value": "You selected @local.threshold or more",
-        "hidden": "\"@local.slider_1\" < @local.threshold  && \"@local.slider_2\" < @local.threshold"
+        "hidden": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" "
       },
       {
         "type": "dashed_box",
-        "name": "unlock_greater_equal",
-        "value": "Unlock for greater than or equal to @local.threshold",
-        "hidden": "\"@local.slider_1\" < @local.threshold  && \"@local.slider_2\" < @local.threshold",
+        "name": "unlock_less",
+        "value": "Unlock for less than @local.threshold",
+        "hidden": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
         "parameter_list": {
           "icon_src": "plh_images/icons/unlock_circle.svg",
           "icon_position": "top-left"
         }
       },
       {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.slider_1_field",
-              "@local.slider_1"
-            ],
-            "_raw": "completed | set_field:@local.slider_1_field:@local.slider_1",
-            "_cleaned": "completed | set_field:@local.slider_1_field:@local.slider_1"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.slider_2_field",
-              "@local.slider_2"
-            ],
-            "_raw": "completed | set_field:@local.slider_2_field:@local.slider_2",
-            "_cleaned": "completed | set_field:@local.slider_2_field:@local.slider_2"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_number_selector",
-    "status": "released",
-    "rows": [
-      {
-        "name": "number_selector_variable",
-        "type": "set_variable"
-      },
-      {
-        "name": "number_selector_title",
-        "type": "set_variable"
-      },
-      {
-        "name": "number_selector_min_value",
-        "value": 0,
-        "type": "set_variable"
-      },
-      {
-        "name": "number_selector_max_value",
-        "value": 30,
-        "type": "set_variable"
-      },
-      {
-        "name": "number_selector_step",
-        "value": 1,
-        "type": "set_variable"
-      },
-      {
-        "name": "number_selector_category_size",
-        "value": 1,
-        "type": "set_variable"
-      },
-      {
-        "name": "number_selector_category_list",
-        "type": "set_variable"
-      },
-      {
-        "name": "number_selector_first_display_term",
-        "value": 1,
-        "type": "set_variable"
-      },
-      {
-        "name": "number_selector_height",
-        "value": "normal",
-        "type": "set_variable"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "hidden": "true"
-      },
-      {
         "type": "text",
-        "name": "text"
+        "name": "reply_greater_equal",
+        "value": "You selected @local.threshold or more",
+        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" "
       },
       {
-        "type": "text",
-        "name": "question_text",
+        "type": "dashed_box",
+        "name": "unlock_greater_equal",
+        "value": "Unlock for greater than or equal to @local.threshold",
+        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
         "parameter_list": {
-          "style": "emphasised"
+          "icon_src": "plh_images/icons/unlock_circle.svg",
+          "icon_position": "top-left"
         }
-      },
-      {
-        "type": "number_selector",
-        "name": "number_selector"
       },
       {
         "type": "template",
@@ -3198,70 +2973,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "box_text_box",
-    "status": "released",
-    "rows": [
-      {
-        "name": "text_box_field",
-        "type": "set_variable"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "hidden": "true"
-      },
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "text",
-        "name": "question_text",
-        "parameter_list": {
-          "style": "emphasised"
-        }
-      },
-      {
-        "type": "text_box",
-        "name": "text_box",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "@local.text_box_field",
-              "@local.text_box"
-            ],
-            "_raw": "changed | set_field: @local.text_box_field: @local.text_box",
-            "_cleaned": "changed | set_field: @local.text_box_field: @local.text_box"
-          }
-        ],
-        "parameter_list": {
-          "placeholder": "Click and type!"
-        }
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "box_combo_box",
     "status": "released",
     "rows": [
@@ -3363,6 +3074,16 @@
     "status": "released",
     "rows": [
       {
+        "name": "radio_buttons_completed",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "type": "text",
+        "name": "radio_buttons_completed_text",
+        "value": "Radio buttons completed: @local.radio_buttons_completed"
+      },
+      {
         "type": "template",
         "name": "text_box",
         "value": "box_text_box",
@@ -3379,6 +3100,18 @@
         "type": "template",
         "name": "radio_buttons",
         "value": "box_radio_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "set_local",
+            "args": [
+              "radio_buttons_completed",
+              "true"
+            ],
+            "_raw": "completed | set_local:radio_buttons_completed:true",
+            "_cleaned": "completed | set_local:radio_buttons_completed:true"
+          }
+        ],
         "rows": [
           {
             "type": "nested_properties",
@@ -3410,579 +3143,32 @@
             "trigger": "completed",
             "action_id": "emit",
             "args": [
-              "completed"
+              "completed",
+              "text_box"
             ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_multi_1_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "name",
-        "value": "Your name",
-        "parameter_list": {
-          "style": "large emphasised center"
-        }
-      },
-      {
-        "type": "text_box",
-        "name": "text_box",
-        "parameter_list": {
-          "placeholder": "Click and type!"
-        }
-      },
-      {
-        "type": "text",
-        "name": "gender",
-        "value": "Are you a lady or a gentleman?",
-        "parameter_list": {
-          "style": "large emphasised center"
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "parameter_list": {
-          "radio_button_type": "btn_text",
-          "answer_list": "@local.answer_list"
-        }
-      },
-      {
-        "name": "answer_list",
-        "value": [
-          "name:female | text: Lady",
-          "name:male | text:Gentleman"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "age",
-        "value": "How old are you?",
-        "parameter_list": {
-          "style": "large emphasised center"
-        }
-      },
-      {
-        "type": "image",
-        "name": "age_image",
-        "value": "plh_images/survey/workshop_setup/age_image.svg"
-      },
-      {
-        "type": "number_selector",
-        "name": "number_selector",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "demo_changed_field_number_selector",
-              "@local.number_selector"
-            ],
-            "_raw": "changed | set_field: demo_changed_field_number_selector: @local.number_selector",
-            "_cleaned": "changed | set_field: demo_changed_field_number_selector: @local.number_selector"
-          }
-        ],
-        "parameter_list": {
-          "category_list": "@local.category_list",
-          "first_display_term": "3"
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "Number selector value: @fields.demo_changed_field_number_selector"
-      },
-      {
-        "name": "category_list",
-        "value": [
-          "0-10",
-          "11-20",
-          "21-30",
-          "31-40",
-          "41-50",
-          "51-60",
-          "61-70",
-          "71-80",
-          "80+"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "user_name",
-              "@local.text_box"
-            ],
-            "_raw": "click | set_field: user_name: @local.text_box",
-            "_cleaned": "click | set_field: user_name: @local.text_box"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "user_gender",
-              "@local.radio_group"
-            ],
-            "_raw": "click | set_field:user_gender: @local.radio_group",
-            "_cleaned": "click | set_field:user_gender: @local.radio_group"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "user_age",
-              "@local.number_selector"
-            ],
-            "_raw": "click | set_field:user_age: @local.number_selector",
-            "_cleaned": "click | set_field:user_age: @local.number_selector"
+            "_raw": "completed | emit:completed:text_box",
+            "_cleaned": "completed | emit:completed:text_box"
           },
           {
             "trigger": "completed",
             "action_id": "emit",
             "args": [
-              "completed"
+              "completed",
+              "radio_buttons"
             ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_multi_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text"
-      },
-      {
-        "type": "text",
-        "name": "question_text",
-        "parameter_list": {
-          "emphasised": "true"
-        }
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "template",
-            "name": "number_selector_1",
-            "value": "box_number_selector",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "nav_buttons",
-                "hidden": "true",
-                "rows": []
-              }
-            ]
-          },
-          {
-            "type": "template",
-            "name": "number_selector_2",
-            "value": "box_number_selector",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "nav_buttons",
-                "hidden": "true",
-                "rows": []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "template",
-            "name": "number_selector_3",
-            "value": "box_number_selector",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "nav_buttons",
-                "hidden": "true",
-                "rows": []
-              }
-            ]
-          },
-          {
-            "type": "template",
-            "name": "number_selector_4",
-            "value": "box_number_selector",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "nav_buttons",
-                "hidden": "true",
-                "rows": []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_multi_2_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text",
-        "value": "How many people are in your household?",
-        "parameter_list": {
-          "style": "large emphasised center"
-        }
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_adults",
-            "value": "plh_images/survey/workshop_setup/adults.svg"
-          },
-          {
-            "type": "image",
-            "name": "image_teens",
-            "value": "plh_images/survey/workshop_setup/teens.svg"
-          }
-        ]
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "number_selector",
-            "name": "number_selector_adults",
-            "parameter_list": {
-              "min_value": "0",
-              "max_value": "20",
-              "title": "Adults"
-            }
-          },
-          {
-            "type": "number_selector",
-            "name": "number_selector_teens",
-            "parameter_list": {
-              "min_value": "0",
-              "max_value": "20",
-              "title": "Teens"
-            }
-          }
-        ]
-      },
-      {
-        "type": "image",
-        "name": "image_children",
-        "value": "plh_images/survey/workshop_setup/children.svg"
-      },
-      {
-        "type": "number_selector",
-        "name": "number_selector_adults",
-        "parameter_list": {
-          "min_value": "0",
-          "max_value": "20",
-          "title": "Children"
-        }
-      },
-      {
-        "type": "image",
-        "name": "image_babies",
-        "value": "plh_images/survey/workshop_setup/babies.svg"
-      },
-      {
-        "type": "number_selector",
-        "name": "number_selector_babies",
-        "parameter_list": {
-          "min_value": "0",
-          "max_value": "20",
-          "title": "Babies"
-        }
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "household_adults",
-              "@local.number_selector_adults"
-            ],
-            "_raw": "click | set_field: household_adults: @local.number_selector_adults",
-            "_cleaned": "click | set_field: household_adults: @local.number_selector_adults"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "household_teens",
-              "@local.number_selector_teens"
-            ],
-            "_raw": "click | set_field: household_teens: @local.number_selector_teens",
-            "_cleaned": "click | set_field: household_teens: @local.number_selector_teens"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "household_children",
-              "@local.number_selector_children"
-            ],
-            "_raw": "click | set_field: household_children: @local.number_selector_children",
-            "_cleaned": "click | set_field: household_children: @local.number_selector_children"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "household_babies",
-              "@local.number_selector_babies"
-            ],
-            "_raw": "click | set_field: household_babies: @local.number_selector_babies",
-            "_cleaned": "click | set_field: household_babies: @local.number_selector_babies"
+            "_raw": "completed | emit:completed:radio_buttons",
+            "_cleaned": "completed | emit:completed:radio_buttons"
           },
           {
             "trigger": "completed",
             "action_id": "emit",
             "args": [
-              "completed"
+              "completed",
+              "number_selector"
             ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_survey_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_multi_3_temp",
-    "status": "released",
-    "rows": [
-      {
-        "name": "slider_1_field",
-        "type": "set_variable"
-      },
-      {
-        "name": "radio_button_field",
-        "type": "set_variable"
-      },
-      {
-        "name": "slider_2_field",
-        "type": "set_variable"
-      },
-      {
-        "name": "threshold",
-        "value": 7,
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "value": "Text"
-      },
-      {
-        "type": "text",
-        "name": "question_text",
-        "value": "Question text",
-        "parameter_list": {
-          "style": "emphasised"
-        }
-      },
-      {
-        "type": "slider",
-        "name": "slider_1",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "@local.slider_1_field",
-              "@local.slider_1"
-            ],
-            "_raw": "changed | set_field:@local.slider_1_field:@local.slider_1",
-            "_cleaned": "changed | set_field:@local.slider_1_field:@local.slider_1"
-          }
-        ],
-        "parameter_list": {
-          "min": "0",
-          "min_value_label": "Days in the past week",
-          "max": "7"
-        }
-      },
-      {
-        "type": "text",
-        "name": "reply_less",
-        "value": "You selected less than @local.threshold",
-        "hidden": "\"@local.slider_1\" >= @local.threshold || \"@local.slider_1\"==\"{{local.slider_1}}\" || \"@local.slider_1\"==\"no_value\" "
-      },
-      {
-        "type": "dashed_box",
-        "name": "unlock_less",
-        "value": "Unlock for less than @local.threshold",
-        "hidden": "\"@local.slider_1\" >= @local.threshold || \"@local.slider_1\"==\"{{local.slider_1}}\" || \"@local.slider_1\"==\"no_value\" ",
-        "parameter_list": {
-          "icon_src": "plh_images/icons/unlock_circle.svg",
-          "icon_position": "top-left"
-        }
-      },
-      {
-        "type": "text",
-        "name": "reply_greater_equal",
-        "value": "You selected @local.threshold or more",
-        "hidden": "\"@local.slider_1\" < @local.threshold  || \"@local.slider_1\"==\"{{local.slider_1}}\" || \"@local.slider_1\"==\"no_value\" "
-      },
-      {
-        "type": "text",
-        "name": "question_greater_equal",
-        "value": "Question text",
-        "hidden": "\"@local.slider_1\" < @local.threshold  || \"@local.slider_1\"==\"{{local.slider_1}}\" || \"@local.slider_1\"==\"no_value\" ",
-        "parameter_list": {
-          "style": "emphasised"
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "@local.radio_button_field",
-              "@local.radio_group"
-            ],
-            "_raw": "changed | set_field:@local.radio_button_field:@local.radio_group",
-            "_cleaned": "changed | set_field:@local.radio_button_field:@local.radio_group"
-          }
-        ],
-        "parameter_list": {
-          "radio_button_type": "btn_text",
-          "answer_list": "@local.answer_list"
-        }
-      },
-      {
-        "name": "answer_list",
-        "value": [
-          "name:yes | text:Yes",
-          "name:no | text:No"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "reply_no",
-        "value": "Reply no",
-        "hidden": "\"@local.radio_group\"!=\"no\" || \"@local.radio_group\"==\"{{local.radio_group}}\" "
-      },
-      {
-        "type": "text",
-        "name": "question_yes",
-        "value": "Question yes",
-        "hidden": "\"@local.radio_group\"!=\"ok\" ||\"@local.radio_group\"==\"{{local.radio_group}}\" ",
-        "parameter_list": {
-          "style": "emphasised"
-        }
-      },
-      {
-        "type": "slider",
-        "name": "slider_2",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "@local.slider_2_field",
-              "@local.slider_2"
-            ],
-            "_raw": "changed | set_field:@local.slider_2_field:@local.slider_2",
-            "_cleaned": "changed | set_field:@local.slider_2_field:@local.slider_2"
-          }
-        ],
-        "parameter_list": {
-          "min": "0",
-          "min_value_label": "Days in the past week",
-          "max": "7"
-        }
-      },
-      {
-        "type": "text",
-        "name": "reply_less",
-        "value": "You selected less than @local.threshold",
-        "hidden": "\"@local.slider_2\" >= @local.threshold || \"@local.slider_2\"==\"{{local.slider_2}}\" || \"@local.slider_2\"==\"no_value\" "
-      },
-      {
-        "type": "dashed_box",
-        "name": "unlock_less",
-        "value": "Unlock for less than @local.threshold",
-        "hidden": "\"@local.slider_2\" >= @local.threshold || \"@local.slider_2\"==\"{{local.slider_2}}\" || \"@local.slider_2\"==\"no_value\" ",
-        "parameter_list": {
-          "icon_src": "plh_images/icons/unlock_circle.svg",
-          "icon_position": "top-left"
-        }
-      },
-      {
-        "type": "text",
-        "name": "reply_greater_equal",
-        "value": "You selected @local.threshold or more",
-        "hidden": "\"@local.slider_2\" < @local.threshold  || \"@local.slider_2\"==\"{{local.slider_2}}\" || \"@local.slider_2\"==\"no_value\" "
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
+            "_raw": "completed | emit:completed:number_selector",
+            "_cleaned": "completed | emit:completed:number_selector"
+          },
           {
             "trigger": "completed",
             "action_id": "emit",
@@ -4143,551 +3329,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "workshop_stepper",
-    "status": "released",
-    "rows": [
-      {
-        "name": "progress_bar_value",
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_bar_num_items",
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_bar",
-        "value": "@local.progress_bar_value",
-        "parameter_list": {
-          "num_items": "@local.progress_bar_num_items"
-        },
-        "type": "set_variable"
-      },
-      {
-        "name": "progress_field_name",
-        "type": "set_variable"
-      },
-      {
-        "type": "nav_group",
-        "name": "nav_template_list",
-        "parameter_list": {
-          "progress_field": "@local.progress_field_name"
-        },
-        "comments": "in parameter list: progress_field:@local.progress_field_name"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_activity",
-    "status": "released",
-    "rows": [
-      {
-        "name": "activity_image_src",
-        "value": "src/assets/not-found-image.png",
-        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content. It occasionally has an outro.",
-        "type": "set_variable"
-      },
-      {
-        "name": "activity_title",
-        "value": "Title of this activity",
-        "type": "set_variable"
-      },
-      {
-        "name": "include_outro",
-        "value": "false",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_intro",
-        "value": "false",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_content",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_outro",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "type": "display_theme",
-        "name": "display_theme",
-        "value": "passive_theme"
-      },
-      {
-        "type": "animated_section",
-        "name": "intro",
-        "value": "fade_in_out",
-        "hidden": "@local.hide_intro",
-        "rows": [
-          {
-            "type": "display_group",
-            "parameter_list": {
-              "style": "banner_welcome"
-            },
-            "rows": [
-              {
-                "type": "image",
-                "name": "intro_image_src",
-                "value": "@local.activity_image",
-                "parameter_list": {
-                  "background_box": "true"
-                }
-              }
-            ]
-          },
-          {
-            "type": "title",
-            "name": "intro_title",
-            "value": "@local.activity_title",
-            "comments": "text_align: center"
-          },
-          {
-            "type": "text",
-            "name": "intro_text",
-            "comments": "style: center"
-          },
-          {
-            "type": "template",
-            "name": "intro_nav_buttons",
-            "value": "nav_buttons",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_content",
-                  "false"
-                ],
-                "_raw": "completed | set_local:hide_content:false",
-                "_cleaned": "completed | set_local:hide_content:false"
-              },
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_intro",
-                  "true"
-                ],
-                "_raw": "completed | set_local:hide_intro:true",
-                "_cleaned": "completed | set_local:hide_intro:true"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "emit",
-                "args": [
-                  "uncompleted"
-                ],
-                "_raw": "uncompleted | emit:uncompleted",
-                "_cleaned": "uncompleted | emit:uncompleted"
-              }
-            ],
-            "comments": "completed | set_local:hide_content:false; completed | set_local:hide_intro:true; uncompleted | emit:uncompleted ",
-            "rows": [
-              {
-                "name": "button_completed",
-                "value": "Let's go!",
-                "type": "set_variable"
-              },
-              {
-                "name": "button_uncompleted",
-                "value": "Skip",
-                "hidden": "true",
-                "comments": "default: set_properties\nuse extend_properties to add to an existing list of properties",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "animated_section",
-        "name": "content",
-        "hidden": "@local.hide_content",
-        "rows": [
-          {
-            "type": "display_group",
-            "name": "activity_banner",
-            "hidden": "true",
-            "parameter_list": {
-              "style": "banner_short"
-            },
-            "rows": [
-              {
-                "type": "title",
-                "name": "banner_title",
-                "value": "@local.activity_title"
-              },
-              {
-                "type": "image",
-                "name": "banner_image_src",
-                "value": "@local.activity_image",
-                "parameter_list": {
-                  "background_box": "true"
-                }
-              }
-            ]
-          },
-          {
-            "type": "template",
-            "name": "content_box",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_content",
-                  "true"
-                ],
-                "_raw": "completed | set_local:hide_content:true",
-                "_cleaned": "completed | set_local:hide_content:true"
-              },
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_outro",
-                  "false"
-                ],
-                "_raw": "completed | set_local:hide_outro:false",
-                "_cleaned": "completed | set_local:hide_outro:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_intro",
-                  "false"
-                ],
-                "_raw": "uncompleted | set_local:hide_intro:false",
-                "_cleaned": "uncompleted | set_local:hide_intro:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_content",
-                  "true"
-                ],
-                "_raw": "uncompleted | set_local:hide_content:true",
-                "_cleaned": "uncompleted | set_local:hide_content:true"
-              }
-            ],
-            "hidden": "!@local.include_outro",
-            "comments": "Do this row when include_outro = TRUE\n!@local.include_outro\n\ncontent box value is inherited",
-            "rows": []
-          },
-          {
-            "type": "template",
-            "name": "content_box",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "emit",
-                "args": [
-                  "completed"
-                ],
-                "_raw": "completed | emit:completed",
-                "_cleaned": "completed | emit:completed"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_intro",
-                  "false"
-                ],
-                "_raw": "uncompleted | set_local:hide_intro:false",
-                "_cleaned": "uncompleted | set_local:hide_intro:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_content",
-                  "true"
-                ],
-                "_raw": "uncompleted | set_local:hide_content:true",
-                "_cleaned": "uncompleted | set_local:hide_content:true"
-              }
-            ],
-            "hidden": "@local.include_outro",
-            "comments": "Do this row when include_outro = FALSE\n@local.include_outro",
-            "rows": []
-          }
-        ]
-      },
-      {
-        "type": "animated_section",
-        "name": "outro",
-        "value": "fade_in_out",
-        "hidden": "@local.hide_outro",
-        "rows": [
-          {
-            "type": "display_group",
-            "parameter_list": {
-              "style": "banner_welcome"
-            },
-            "rows": [
-              {
-                "type": "image",
-                "name": "outro_image_src",
-                "value": "@local.activity_image",
-                "parameter_list": {
-                  "background_box": "true"
-                }
-              }
-            ]
-          },
-          {
-            "type": "title",
-            "name": "outro_title",
-            "value": "@local.activity_title",
-            "hidden": "true",
-            "comments": "text_align: center"
-          },
-          {
-            "type": "text",
-            "name": "outro_text",
-            "comments": "style: center"
-          },
-          {
-            "type": "button",
-            "name": "outro_button",
-            "hidden": "true"
-          },
-          {
-            "type": "dashed_box",
-            "name": "outro_habit_text",
-            "hidden": "true",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star_circle.svg",
-              "icon_position": "top-left"
-            }
-          },
-          {
-            "type": "template",
-            "name": "outro_nav_buttons",
-            "value": "nav_buttons",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "emit",
-                "args": [
-                  "completed"
-                ],
-                "_raw": "completed | emit:completed",
-                "_cleaned": "completed | emit:completed"
-              }
-            ],
-            "rows": []
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "nav_buttons",
-    "status": "released",
-    "rows": [
-      {
-        "type": "display_group",
-        "parameter_list": {
-          "style": "navigation"
-        },
-        "rows": [
-          {
-            "type": "button",
-            "name": "button_info",
-            "value": "@global.ideas_button",
-            "hidden": "true",
-            "parameter_list": {
-              "style": "information"
-            },
-            "style_list": [
-              "flex:1"
-            ]
-          },
-          {
-            "type": "button",
-            "name": "button_completed",
-            "value": "Done!",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "emit",
-                "args": [
-                  "completed"
-                ],
-                "_raw": "click | emit:completed",
-                "_cleaned": "click | emit:completed"
-              }
-            ],
-            "parameter_list": {
-              "style": "navigation"
-            },
-            "style_list": [
-              "flex:1"
-            ]
-          },
-          {
-            "type": "button",
-            "name": "button_uncompleted",
-            "value": "Back",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "emit",
-                "args": [
-                  "uncompleted"
-                ],
-                "_raw": "click | emit:uncompleted",
-                "_cleaned": "click | emit:uncompleted"
-              }
-            ],
-            "hidden": "true",
-            "parameter_list": {
-              "style": "navigation"
-            },
-            "style_list": [
-              "flex:1"
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "pair",
-    "status": "released",
-    "rows": [
-      {
-        "name": "hide_animated_section_1",
-        "value": "false",
-        "type": "set_variable"
-      },
-      {
-        "name": "hide_animated_section_2",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "type": "animated_section",
-        "name": "animated_section_1",
-        "hidden": "@local.hide_animated_section_1",
-        "rows": [
-          {
-            "type": "template",
-            "name": "box_1",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_animated_section_1",
-                  "true"
-                ],
-                "_raw": "completed | set_local:hide_animated_section_1:true",
-                "_cleaned": "completed | set_local:hide_animated_section_1:true"
-              },
-              {
-                "trigger": "completed",
-                "action_id": "set_local",
-                "args": [
-                  "hide_animated_section_2",
-                  "false"
-                ],
-                "_raw": "completed | set_local:hide_animated_section_2:false",
-                "_cleaned": "completed | set_local:hide_animated_section_2:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "emit",
-                "args": [
-                  "uncompleted"
-                ],
-                "_raw": "uncompleted | emit:uncompleted",
-                "_cleaned": "uncompleted | emit:uncompleted"
-              }
-            ],
-            "rows": []
-          }
-        ]
-      },
-      {
-        "type": "animated_section",
-        "name": "animated_section_2",
-        "hidden": "@local.hide_animated_section_2",
-        "rows": [
-          {
-            "type": "template",
-            "name": "box_2",
-            "action_list": [
-              {
-                "trigger": "completed",
-                "action_id": "emit",
-                "args": [
-                  "completed"
-                ],
-                "_raw": "completed | emit:completed",
-                "_cleaned": "completed | emit:completed"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_animated_section_1",
-                  "false"
-                ],
-                "_raw": "uncompleted | set_local:hide_animated_section_1:false",
-                "_cleaned": "uncompleted | set_local:hide_animated_section_1:false"
-              },
-              {
-                "trigger": "uncompleted",
-                "action_id": "set_local",
-                "args": [
-                  "hide_animated_section_2",
-                  "true"
-                ],
-                "_raw": "uncompleted  | set_local:hide_animated_section_2:true",
-                "_cleaned": "uncompleted  | set_local:hide_animated_section_2:true"
-              }
-            ],
-            "rows": []
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_duo",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "box_1",
-        "rows": []
-      },
-      {
-        "type": "template",
-        "name": "box_2",
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "box_video",
     "status": "released",
     "rows": [
@@ -4754,11 +3395,6 @@
       {
         "type": "text",
         "name": "text"
-      },
-      {
-        "type": "lottie_animation",
-        "name": "lottie_src",
-        "hidden": "true"
       },
       {
         "type": "template",
@@ -5278,6 +3914,553 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "workshop_stepper",
+    "status": "released",
+    "rows": [
+      {
+        "name": "progress_bar_value",
+        "type": "set_variable"
+      },
+      {
+        "name": "progress_bar_num_items",
+        "type": "set_variable"
+      },
+      {
+        "name": "progress_bar",
+        "value": "@local.progress_bar_value",
+        "parameter_list": {
+          "num_items": "@local.progress_bar_num_items"
+        },
+        "type": "set_variable"
+      },
+      {
+        "name": "progress_field_name",
+        "type": "set_variable"
+      },
+      {
+        "type": "nav_group",
+        "name": "nav_template_list",
+        "parameter_list": {
+          "progress_field": "@local.progress_field_name"
+        },
+        "comments": "in parameter list: progress_field:@local.progress_field_name"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "workshop_activity",
+    "status": "released",
+    "rows": [
+      {
+        "name": "activity_image_src",
+        "value": "src/assets/not-found-image.png",
+        "comments": "A workshop activity corresponds to a column in Figma. It typically consists of intro and content. It occasionally has an outro.",
+        "type": "set_variable"
+      },
+      {
+        "name": "activity_title",
+        "value": "Title of this activity",
+        "type": "set_variable"
+      },
+      {
+        "name": "include_outro",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_intro",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_content",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_outro",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "type": "display_theme",
+        "name": "display_theme",
+        "value": "passive_theme"
+      },
+      {
+        "type": "animated_section",
+        "name": "intro",
+        "value": "fade_in_out",
+        "hidden": "@local.hide_intro",
+        "rows": [
+          {
+            "type": "display_group",
+            "parameter_list": {
+              "style": "banner",
+              "offset": "20"
+            },
+            "rows": [
+              {
+                "type": "image",
+                "name": "intro_image_src",
+                "value": "@local.activity_image",
+                "parameter_list": {
+                  "background_box": "true"
+                }
+              }
+            ]
+          },
+          {
+            "type": "title",
+            "name": "intro_title",
+            "value": "@local.activity_title",
+            "comments": "text_align: center"
+          },
+          {
+            "type": "text",
+            "name": "intro_text",
+            "comments": "style: center"
+          },
+          {
+            "type": "template",
+            "name": "intro_nav_buttons",
+            "value": "nav_buttons",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "false"
+                ],
+                "_raw": "completed | set_local:hide_content:false",
+                "_cleaned": "completed | set_local:hide_content:false"
+              },
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_intro:true",
+                "_cleaned": "completed | set_local:hide_intro:true"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "uncompleted | emit:uncompleted",
+                "_cleaned": "uncompleted | emit:uncompleted"
+              }
+            ],
+            "comments": "completed | set_local:hide_content:false; completed | set_local:hide_intro:true; uncompleted | emit:uncompleted ",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "Let's go!",
+                "type": "set_variable"
+              },
+              {
+                "name": "button_uncompleted",
+                "value": "Skip",
+                "hidden": "true",
+                "comments": "default: set_properties\nuse extend_properties to add to an existing list of properties",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "content",
+        "hidden": "@local.hide_content",
+        "rows": [
+          {
+            "type": "display_group",
+            "name": "activity_banner",
+            "hidden": "true",
+            "parameter_list": {
+              "style": "banner"
+            },
+            "rows": [
+              {
+                "type": "title",
+                "name": "banner_title",
+                "value": "@local.activity_title"
+              },
+              {
+                "type": "image",
+                "name": "banner_image_src",
+                "value": "@local.activity_image",
+                "parameter_list": {
+                  "background_box": "true"
+                }
+              }
+            ]
+          },
+          {
+            "type": "template",
+            "name": "content_box",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_content:true",
+                "_cleaned": "completed | set_local:hide_content:true"
+              },
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_outro",
+                  "false"
+                ],
+                "_raw": "completed | set_local:hide_outro:false",
+                "_cleaned": "completed | set_local:hide_outro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_intro:false",
+                "_cleaned": "uncompleted | set_local:hide_intro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "uncompleted | set_local:hide_content:true",
+                "_cleaned": "uncompleted | set_local:hide_content:true"
+              }
+            ],
+            "hidden": "!@local.include_outro",
+            "comments": "Do this row when include_outro = TRUE\n!@local.include_outro",
+            "rows": []
+          },
+          {
+            "type": "template",
+            "name": "content_box",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "completed | emit:completed",
+                "_cleaned": "completed | emit:completed"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_intro",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_intro:false",
+                "_cleaned": "uncompleted | set_local:hide_intro:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_content",
+                  "true"
+                ],
+                "_raw": "uncompleted | set_local:hide_content:true",
+                "_cleaned": "uncompleted | set_local:hide_content:true"
+              }
+            ],
+            "hidden": "@local.include_outro",
+            "comments": "Do this row when include_outro = FALSE\n@local.include_outro",
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "outro",
+        "value": "fade_in_out",
+        "hidden": "@local.hide_outro",
+        "rows": [
+          {
+            "type": "display_group",
+            "parameter_list": {
+              "style": "banner",
+              "offset": "20"
+            },
+            "rows": [
+              {
+                "type": "image",
+                "name": "outro_image_src",
+                "value": "@local.activity_image",
+                "parameter_list": {
+                  "background_box": "true"
+                }
+              }
+            ]
+          },
+          {
+            "type": "title",
+            "name": "outro_title",
+            "value": "@local.activity_title",
+            "hidden": "true",
+            "comments": "text_align: center"
+          },
+          {
+            "type": "text",
+            "name": "outro_text",
+            "comments": "style: center"
+          },
+          {
+            "type": "button",
+            "name": "outro_button",
+            "hidden": "true"
+          },
+          {
+            "type": "dashed_box",
+            "name": "outro_habit_text",
+            "hidden": "true",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star_circle.svg",
+              "icon_position": "top-left"
+            }
+          },
+          {
+            "type": "template",
+            "name": "outro_nav_buttons",
+            "value": "nav_buttons",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "completed | emit:completed",
+                "_cleaned": "completed | emit:completed"
+              }
+            ],
+            "rows": []
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "nav_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "rows": [
+          {
+            "type": "button",
+            "name": "button_info",
+            "value": "@global.ideas_button",
+            "hidden": "true",
+            "parameter_list": {
+              "style": "information"
+            },
+            "style_list": [
+              "flex:1"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_completed",
+            "value": "Done!",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "click | emit:completed",
+                "_cleaned": "click | emit:completed"
+              }
+            ],
+            "parameter_list": {
+              "style": "navigation"
+            },
+            "style_list": [
+              "flex:1"
+            ]
+          },
+          {
+            "type": "button",
+            "name": "button_uncompleted",
+            "value": "Back",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "click | emit:uncompleted",
+                "_cleaned": "click | emit:uncompleted"
+              }
+            ],
+            "hidden": "true",
+            "parameter_list": {
+              "style": "navigation"
+            },
+            "style_list": [
+              "flex:1"
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "pair",
+    "status": "released",
+    "rows": [
+      {
+        "name": "hide_animated_section_1",
+        "value": "false",
+        "type": "set_variable"
+      },
+      {
+        "name": "hide_animated_section_2",
+        "value": "true",
+        "type": "set_variable"
+      },
+      {
+        "type": "animated_section",
+        "name": "animated_section_1",
+        "hidden": "@local.hide_animated_section_1",
+        "rows": [
+          {
+            "type": "template",
+            "name": "box_1",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_animated_section_1",
+                  "true"
+                ],
+                "_raw": "completed | set_local:hide_animated_section_1:true",
+                "_cleaned": "completed | set_local:hide_animated_section_1:true"
+              },
+              {
+                "trigger": "completed",
+                "action_id": "set_local",
+                "args": [
+                  "hide_animated_section_2",
+                  "false"
+                ],
+                "_raw": "completed | set_local:hide_animated_section_2:false",
+                "_cleaned": "completed | set_local:hide_animated_section_2:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "emit",
+                "args": [
+                  "uncompleted"
+                ],
+                "_raw": "uncompleted | emit:uncompleted",
+                "_cleaned": "uncompleted | emit:uncompleted"
+              }
+            ],
+            "rows": []
+          }
+        ]
+      },
+      {
+        "type": "animated_section",
+        "name": "animated_section_2",
+        "hidden": "@local.hide_animated_section_2",
+        "rows": [
+          {
+            "type": "template",
+            "name": "box_2",
+            "action_list": [
+              {
+                "trigger": "completed",
+                "action_id": "emit",
+                "args": [
+                  "completed"
+                ],
+                "_raw": "completed | emit:completed",
+                "_cleaned": "completed | emit:completed"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_animated_section_1",
+                  "false"
+                ],
+                "_raw": "uncompleted | set_local:hide_animated_section_1:false",
+                "_cleaned": "uncompleted | set_local:hide_animated_section_1:false"
+              },
+              {
+                "trigger": "uncompleted",
+                "action_id": "set_local",
+                "args": [
+                  "hide_animated_section_2",
+                  "true"
+                ],
+                "_raw": "uncompleted  | set_local:hide_animated_section_2:true",
+                "_cleaned": "uncompleted  | set_local:hide_animated_section_2:true"
+              }
+            ],
+            "rows": []
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_duo",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "box_1",
+        "rows": []
+      },
+      {
+        "type": "template",
+        "name": "box_2",
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
   },
   {
     "flow_type": "template",
@@ -7197,172 +6380,6 @@
           },
           {
             "name": "activity_banner",
-            "hidden": "true",
-            "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "content_box",
-            "value": "box_audio",
-            "rows": [
-              {
-                "name": "lottie_src",
-                "value": "lottie_animations/relax1.json",
-                "hidden": "false",
-                "type": "set_variable"
-              },
-              {
-                "type": "nested_properties",
-                "name": "widget_audio",
-                "rows": [
-                  {
-                    "name": "audio_title",
-                    "value": "Listen and relax",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "audio_src",
-                    "value": "@local.relax_audio",
-                    "type": "set_variable"
-                  }
-                ]
-              },
-              {
-                "type": "nested_properties",
-                "name": "nav_buttons",
-                "rows": [
-                  {
-                    "name": "button_info",
-                    "value": "Read and relax",
-                    "action_list": [
-                      {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "@local.relax_text"
-                        ],
-                        "_raw": "click | pop_up:@local.relax_text",
-                        "_cleaned": "click | pop_up:@local.relax_text"
-                      }
-                    ],
-                    "hidden": "false",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "button_completed",
-                    "value": "Done!",
-                    "type": "set_variable"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "outro_text",
-            "value": "You are a star!\n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax. ",
-            "type": "set_variable"
-          },
-          {
-            "name": "outro_habit_text",
-            "value": "Click it!",
-            "hidden": "false",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/relax.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "relax_pop_up_animation",
-    "status": "released",
-    "rows": [
-      {
-        "name": "text_template",
-        "value": ".text_template",
-        "type": "set_variable"
-      },
-      {
-        "name": "audio_asset",
-        "value": ".audio_asset",
-        "type": "set_variable"
-      },
-      {
-        "name": "relax",
-        "value": "relax_1",
-        "comments": "@data.relax_list.random().id\n\nNeed random picker at some point",
-        "type": "set_variable"
-      },
-      {
-        "name": "relax_text",
-        "value": "@data.relax_list.@local.relax@local.text_template",
-        "type": "set_variable"
-      },
-      {
-        "name": "relax_audio",
-        "value": "@data.relax_list.@local.relax@local.audio_asset",
-        "type": "set_variable"
-      },
-      {
-        "type": "template",
-        "name": "workshop_activity",
-        "value": "workshop_activity",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": [
-          {
-            "name": "include_outro",
-            "value": "true",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_image",
-            "value": "plh_images/workshop_modes/group/relax.svg",
-            "condition": "@field.do_workshops_together",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_title",
-            "value": "Relax Together",
-            "condition": "@field.do_workshops_together",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Let’s do a 30 second relaxation activity together.",
-            "condition": "@field.do_workshops_together",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_image",
-            "value": "plh_images/workshop_modes/guide_2/relax.svg",
-            "condition": "!@field.do_workshops_together",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_title",
-            "value": "Relax",
-            "condition": "!@field.do_workshops_together",
-            "type": "set_variable"
-          },
-          {
-            "name": "intro_text",
-            "value": "Let’s do a 30 second relaxation activity.",
-            "condition": "!@field.do_workshops_together",
-            "type": "set_variable"
-          },
-          {
-            "name": "activity_banner",
             "hidden": "false",
             "type": "set_variable"
           },
@@ -7383,28 +6400,6 @@
                   {
                     "name": "audio_src",
                     "value": "@local.relax_audio",
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "audio_player",
-                    "action_list": [
-                      {
-                        "trigger": "audio_play",
-                        "action_id": "pop_up",
-                        "args": [
-                          "feature_lottie"
-                        ],
-                        "_raw": "audio_play | pop_up: feature_lottie",
-                        "_cleaned": "audio_play | pop_up: feature_lottie"
-                      },
-                      {
-                        "trigger": "audio_end",
-                        "action_id": "close_pop_up",
-                        "args": [],
-                        "_raw": "audio_end | close_pop_up",
-                        "_cleaned": "audio_end | close_pop_up"
-                      }
-                    ],
                     "type": "set_variable"
                   }
                 ]
@@ -8134,254 +7129,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "debug_changed_radio_group_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_field",
-        "name": "demo_changed_field_1",
-        "value": "false"
-      },
-      {
-        "name": "demo_changed_local",
-        "value": "demo_changed_field_2",
-        "type": "set_variable"
-      },
-      {
-        "name": "answer_list_2",
-        "value": [
-          "name:name_var_1 | text:First",
-          "name:name_var_2 | text:Second"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "@local.demo_changed_local",
-              "@local.radio_group"
-            ],
-            "_raw": "changed | set_field: @local.demo_changed_local: @local.radio_group",
-            "_cleaned": "changed | set_field: @local.demo_changed_local: @local.radio_group"
-          }
-        ],
-        "parameter_list": {
-          "answer_list": "@local.answer_list_2"
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_1\"",
-        "hidden": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_1\""
-      },
-      {
-        "type": "text",
-        "name": "text_2",
-        "value": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_2\"",
-        "hidden": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_2\""
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_changed_radio_group.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_changed_radio_group_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_field",
-        "name": "demo_changed_field_3",
-        "value": "false"
-      },
-      {
-        "name": "answer_list_2",
-        "value": [
-          "name:name_var_1 | text:First",
-          "name:name_var_2 | text:Second"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "demo_changed_field_4",
-              "@local.radio_group"
-            ],
-            "_raw": "changed | set_field: demo_changed_field_4: @local.radio_group",
-            "_cleaned": "changed | set_field: demo_changed_field_4: @local.radio_group"
-          }
-        ],
-        "parameter_list": {
-          "answer_list": "@local.answer_list_2"
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_1\"",
-        "hidden": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_1\""
-      },
-      {
-        "type": "text",
-        "name": "text_2",
-        "value": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_2\"",
-        "hidden": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_2\""
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_changed_radio_group.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_changed_radio_group_3",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_field",
-        "name": "demo_changed_field_5",
-        "value": "false"
-      },
-      {
-        "name": "answer_list_2",
-        "value": [
-          "name:name_var_1 | text:First",
-          "name:name_var_2 | text:Second"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "demo_changed_field_6",
-              "@local.radio_group"
-            ],
-            "_raw": "changed | set_field: demo_changed_field_6: @local.radio_group",
-            "_cleaned": "changed | set_field: demo_changed_field_6: @local.radio_group"
-          }
-        ],
-        "parameter_list": {
-          "answer_list": "@local.answer_list_2"
-        }
-      },
-      {
-        "type": "template",
-        "name": "example_text_1",
-        "value": "example_text",
-        "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
-        "rows": [
-          {
-            "name": "text",
-            "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
-            "type": "set_variable"
-          }
-        ]
-      },
-      {
-        "type": "template",
-        "name": "example_text_2",
-        "value": "example_text",
-        "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
-        "rows": [
-          {
-            "name": "text",
-            "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_changed_radio_group.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_changed_radio_group_4",
-    "status": "released",
-    "rows": [
-      {
-        "type": "set_field",
-        "name": "demo_changed_field_7",
-        "value": "false"
-      },
-      {
-        "name": "answer_list_2",
-        "value": [
-          "name:name_var_1 | text:First",
-          "name:name_var_2 | text:Second"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "demo_changed_field_8",
-              "@local.radio_group"
-            ],
-            "_raw": "changed | set_field: demo_changed_field_8: @local.radio_group",
-            "_cleaned": "changed | set_field: demo_changed_field_8: @local.radio_group"
-          }
-        ],
-        "parameter_list": {
-          "answer_list": "@local.answer_list_2"
-        }
-      },
-      {
-        "type": "template",
-        "name": "box_duo",
-        "value": "box_duo",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "box_1",
-            "value": "example_text",
-            "hidden": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_1\"",
-            "rows": [
-              {
-                "name": "text",
-                "value": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_1\"",
-                "type": "set_variable"
-              }
-            ]
-          },
-          {
-            "type": "nested_properties",
-            "name": "box_2",
-            "value": "example_text",
-            "hidden": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_2\"",
-            "rows": [
-              {
-                "name": "text",
-                "value": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_2\"",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_changed_radio_group.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "debug_combo_box_variables",
     "status": "released",
     "rows": [
@@ -9090,77 +7837,6 @@
     "status": "released",
     "rows": [
       {
-        "type": "text",
-        "name": "heading_1",
-        "value": "TEST 1: Override template variables"
-      },
-      {
-        "type": "template",
-        "name": "two_texts",
-        "value": "debug_two_texts",
-        "comments": "Usually names and values will want to be the same (unless multiple instances used), but different here for better testing purposes",
-        "rows": [
-          {
-            "type": "set_variable",
-            "name": "child_local_variable",
-            "value": "Success: nesting local variable"
-          },
-          {
-            "type": "set_variable",
-            "name": "child_text_1",
-            "value": "Success: text_1",
-            "comments": "whilst this is called 'set_variable', it really behaves as 'overwrite_row'"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "name": "heading_2",
-        "value": "TEST 2: Override template variables dynamic",
-        "condition": "false"
-      },
-      {
-        "type": "display_group",
-        "name": "test_2",
-        "condition": "false",
-        "comments": "change the condition to toggle whether the test will exist or not",
-        "rows": [
-          {
-            "type": "set_variable",
-            "name": "var_text_1",
-            "value": "Success: text_1",
-            "comments": "variables declared can be used anywhere on the sheet, including in child templates"
-          },
-          {
-            "type": "template",
-            "name": "two_texts",
-            "value": "debug_two_texts",
-            "comments": "Usually names and values will want to be the same (unless multiple instances used), but different here for better testing purposes",
-            "rows": [
-              {
-                "type": "set_variable",
-                "name": "child_local_variable",
-                "value": "Success: nesting local variable"
-              },
-              {
-                "type": "set_variable",
-                "name": "child_text_1",
-                "value": "@local.var_text_1",
-                "comments": "whilst this is called 'set_variable', it really behaves as 'overwrite_row'"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_variables_2",
-    "status": "released",
-    "rows": [
-      {
         "type": "set_variable",
         "name": "local_text_2",
         "value": "Success: text_2",
@@ -9192,21 +7868,14 @@
         ]
       },
       {
-        "type": "text",
-        "name": "heading_1",
-        "value": "The template below should match the template above, and has been set by nested_properties"
-      },
-      {
         "type": "template",
-        "name": "debug_wrapper_1",
-        "value": "debug_wrapper",
+        "name": "two_texts_wrapper",
+        "value": "debug_two_texts_wrapper",
         "comments": "We should be able to achieve the same behaviour using nested properties to access the template within a template",
         "rows": [
           {
             "type": "nested_properties",
-            "name": "wrapper_template",
-            "value": "debug_two_texts",
-            "comments": "The value needs to get written into the template wrapper_template",
+            "name": "debug_two_texts",
             "rows": [
               {
                 "type": "set_variable",
@@ -9226,233 +7895,6 @@
             ]
           }
         ]
-      },
-      {
-        "type": "text",
-        "name": "heading_2",
-        "value": "The template below should match the template above, and has been set by 2 levels of nested_properties"
-      },
-      {
-        "type": "template",
-        "name": "debug_wrapper_2",
-        "value": "debug_wrapper",
-        "comments": "We should be able to achieve the same behaviour using nested properties to access the template within a template",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "wrapper_template",
-            "value": "debug_wrapper",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "wrapper_template",
-                "value": "debug_two_texts",
-                "rows": [
-                  {
-                    "type": "set_variable",
-                    "name": "child_text_1",
-                    "value": "Success: text_1"
-                  },
-                  {
-                    "type": "set_variable",
-                    "name": "child_text_2",
-                    "value": "Expected: \"Success: text_2\"\nResult: @local.local_text_2"
-                  },
-                  {
-                    "type": "set_variable",
-                    "name": "child_local_variable",
-                    "value": "Success: nesting local variable"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_variables_3",
-    "status": "released",
-    "rows": [
-      {
-        "name": "text_2",
-        "value": "Success: text_2",
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "intro_1",
-        "value": "The following template is rendered from a blank wrapper"
-      },
-      {
-        "type": "template",
-        "name": "debug_wrapper_1",
-        "value": "debug_wrapper",
-        "comments": "debug wrapper renders a single template named \"wrapper_template\" which does not have a template value (expects one to be passed)",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "wrapper_template",
-            "value": "debug_two_texts",
-            "comments": "this will make the wrapper_template display the debug_two_texts template",
-            "rows": [
-              {
-                "type": "set_variable",
-                "name": "child_text_1",
-                "value": "Success: text_1"
-              },
-              {
-                "type": "set_variable",
-                "name": "child_text_2",
-                "value": "Expected: \"Success: text_2\"\nResult: @local.text_2"
-              },
-              {
-                "type": "set_variable",
-                "name": "child_local_variable",
-                "value": "Success: nesting local variable"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "name": "intro_2",
-        "value": "The following template is modified from begin_template"
-      },
-      {
-        "type": "template",
-        "name": "direct_template",
-        "value": "debug_two_texts",
-        "rows": [
-          {
-            "type": "set_variable",
-            "name": "child_text_1",
-            "value": "Success: text_1"
-          },
-          {
-            "type": "set_variable",
-            "name": "child_text_2",
-            "value": "Expected: \"Success: text_2\"\nResult: @local.text_2"
-          },
-          {
-            "type": "set_variable",
-            "name": "child_local_variable",
-            "value": "Success: nesting local variable"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "name": "intro_3",
-        "value": "Displayin in display group"
-      },
-      {
-        "type": "display_group",
-        "name": "temp_name_1",
-        "rows": [
-          {
-            "type": "template",
-            "name": "direct_template_2",
-            "value": "debug_two_texts",
-            "rows": [
-              {
-                "type": "set_variable",
-                "name": "child_text_1",
-                "value": "Success: text_1"
-              },
-              {
-                "type": "set_variable",
-                "name": "child_text_2",
-                "value": "Expected: \"Success: text_2\"\nResult: @local.text_2"
-              },
-              {
-                "type": "set_variable",
-                "name": "child_local_variable",
-                "value": "Success: nesting local variable"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "name": "text_2a",
-            "value": "Text 2: @local.text_2"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_nesting_conditional",
-    "status": "released",
-    "rows": [
-      {
-        "name": "text_2",
-        "value": "Success: text_2",
-        "type": "set_variable"
-      },
-      {
-        "name": "text_1_toggle",
-        "value": "true",
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "var_toggle_text",
-        "value": "The value of the toggle is: @local.text_1_toggle"
-      },
-      {
-        "type": "text",
-        "name": "intro_1",
-        "value": "The following template should change text_1 value depending on the value of a variable"
-      },
-      {
-        "type": "template",
-        "name": "direct_template_2",
-        "value": "debug_two_texts",
-        "rows": [
-          {
-            "type": "set_variable",
-            "name": "child_text_1",
-            "value": "Success: text_1 - toggle TRUE",
-            "condition": "@local.text_1_toggle"
-          },
-          {
-            "type": "set_variable",
-            "name": "child_text_1",
-            "value": "Success: text_1 - toggle FALSE",
-            "condition": "!@local.text_1_toggle"
-          },
-          {
-            "type": "set_variable",
-            "name": "child_text_2",
-            "value": "Expected: \"Success: text_2\"\nResult: @local.text_2"
-          },
-          {
-            "type": "set_variable",
-            "name": "child_local_variable",
-            "value": "Success: nesting local variable"
-          }
-        ]
-      },
-      {
-        "type": "button",
-        "name": "toggle text",
-        "value": "Toggle value of text_1",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_local",
-            "args": [],
-            "_raw": "click | set_local | var_toggle: !@local.var_toggle",
-            "_cleaned": "click | set_local | var_toggle: !@local.var_toggle"
-          }
-        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
@@ -9464,32 +7906,24 @@
     "rows": [
       {
         "name": "child_local_variable",
+        "value": "Failed: \"local_variable_1\"",
+        "comments": "declare_variable",
         "type": "set_variable"
       },
       {
         "type": "text",
         "name": "child_text_1",
-        "value": "Failed: \"text_1\" has not been overwritten"
+        "value": "Failed: \"text_1\""
       },
       {
         "type": "text",
-        "name": "child_text_from_local_variable",
-        "value": "@local.child_local_variable",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "emit",
-            "args": [
-              "@local.child_local_variable"
-            ],
-            "_raw": "click | emit:@local.child_local_variable",
-            "_cleaned": "click | emit:@local.child_local_variable"
-          }
-        ],
-        "parameter_list": {
-          "key_1": "@local.child_local_variable"
-        },
-        "comments": "test setting from a local variable that requires overwrite (starts blank)"
+        "name": "child_text_2",
+        "value": "Failed: \"text_2\""
+      },
+      {
+        "type": "text",
+        "name": "child_text_4",
+        "value": "@local.child_local_variable"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
@@ -9504,21 +7938,6 @@
         "name": "debug_two_texts",
         "value": "debug_two_texts",
         "comments": "This template simply renders the debug_two_texts template, for testing nested_properties",
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_two_texts_wrapper_wrapper",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "debug_two_texts_wrapper",
-        "value": "debug_two_texts_wrapper",
-        "comments": "Example to nest debug two_texts within a wrapper 2x deep",
         "rows": []
       }
     ],
@@ -9710,20 +8129,6 @@
         "type": "text",
         "name": "text_9",
         "value": "Global text test: @global.debug_variable_1"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_wrapper",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "wrapper_template",
-        "comments": "This template simply renders the debug_two_texts template, for testing nested_properties",
-        "rows": []
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
@@ -10815,6 +9220,254 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "example_changed_radio_group_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "demo_changed_field_1",
+        "value": "false"
+      },
+      {
+        "name": "demo_changed_local",
+        "value": "demo_changed_field_2",
+        "type": "set_variable"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.demo_changed_local",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field: @local.demo_changed_local: @local.radio_group",
+            "_cleaned": "changed | set_field: @local.demo_changed_local: @local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_1\"",
+        "hidden": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_1\""
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_2\"",
+        "hidden": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_2\""
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_changed_radio_group_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "demo_changed_field_3",
+        "value": "false"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_4",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_4: @local.radio_group",
+            "_cleaned": "changed | set_field: demo_changed_field_4: @local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_1\"",
+        "hidden": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_1\""
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_2\"",
+        "hidden": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_2\""
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_changed_radio_group_3",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "demo_changed_field_5",
+        "value": "false"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_6",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_6: @local.radio_group",
+            "_cleaned": "changed | set_field: demo_changed_field_6: @local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        }
+      },
+      {
+        "type": "template",
+        "name": "example_text_1",
+        "value": "example_text",
+        "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
+        "rows": [
+          {
+            "name": "text",
+            "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
+            "type": "set_variable"
+          }
+        ]
+      },
+      {
+        "type": "template",
+        "name": "example_text_2",
+        "value": "example_text",
+        "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
+        "rows": [
+          {
+            "name": "text",
+            "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
+            "type": "set_variable"
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_changed_radio_group_4",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "demo_changed_field_7",
+        "value": "false"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second"
+        ],
+        "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_8",
+              "@local.radio_group"
+            ],
+            "_raw": "changed | set_field: demo_changed_field_8: @local.radio_group",
+            "_cleaned": "changed | set_field: demo_changed_field_8: @local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        }
+      },
+      {
+        "type": "template",
+        "name": "box_duo",
+        "value": "box_duo",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "box_1",
+            "value": "example_text",
+            "hidden": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_1\"",
+            "rows": [
+              {
+                "name": "text",
+                "value": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_1\"",
+                "type": "set_variable"
+              }
+            ]
+          },
+          {
+            "type": "nested_properties",
+            "name": "box_2",
+            "value": "example_text",
+            "hidden": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_2\"",
+            "rows": [
+              {
+                "name": "text",
+                "value": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_2\"",
+                "type": "set_variable"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_changed_action.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "example_double_ref_comp_var",
     "status": "released",
     "rows": [
@@ -11314,12 +9967,6 @@
             "value": "This is page 1"
           },
           {
-            "parameter_list": {
-              "style": "navigation"
-            },
-            "type": "set_variable"
-          },
-          {
             "type": "template",
             "name": "page_1_nav_buttons",
             "value": "nav_buttons",
@@ -11384,9 +10031,6 @@
             "type": "template",
             "name": "page_2_nav_buttons",
             "value": "nav_buttons",
-            "parameter_list": {
-              "style": "navigation"
-            },
             "comments": "It is unclear whether the nav_buttons is at the end of this sheet to me",
             "rows": [
               {
@@ -11466,11 +10110,6 @@
             ]
           }
         ]
-      },
-      {
-        "type": "text",
-        "name": "hidden",
-        "value": "hideme "
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_navigation_style.xlsx"
@@ -13370,7 +12009,7 @@
             "name": "title_ex_s",
             "value": "Example short banner",
             "parameter_list": {
-              "style": "large emphasised"
+              "style": "small emphasised"
             }
           },
           {
@@ -13392,13 +12031,27 @@
             "name": "title_ex_s",
             "value": "Example short banner with more text",
             "parameter_list": {
-              "style": "large emphasised"
+              "style": "small emphasised"
             }
           },
           {
             "type": "image",
             "name": "image",
             "value": "plh_images/workshop_modes/guide_2/wave.svg"
+          }
+        ]
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_7",
+        "parameter_list": {
+          "style": "banner_welcome"
+        },
+        "rows": [
+          {
+            "type": "image",
+            "name": "image",
+            "value": "plh_images/workshop_modes/guide_2/relax.svg"
           }
         ]
       }
@@ -13640,6 +12293,16 @@
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
         "parameter_list": {
           "style": "banner_active",
+          "icon_src": "plh_images/icons/star.svg",
+          "icon_position": "bottom-right"
+        }
+      },
+      {
+        "type": "dashed_box",
+        "name": "dashed_box_active",
+        "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
+        "parameter_list": {
+          "style": "banner_light",
           "icon_src": "plh_images/icons/star.svg",
           "icon_position": "bottom-right"
         }
@@ -14824,6 +13487,7 @@
   },
   {
     "flow_type": "template",
+    "module": "1on1",
     "flow_name": "relax_text_1",
     "status": "released",
     "rows": [
@@ -15196,7 +13860,7 @@
   },
   {
     "flow_type": "template",
-    "module": "celebrate",
+    "module": "safe",
     "flow_name": "relax_text_14",
     "status": "released",
     "rows": [
@@ -15206,7 +13870,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Take a moment to feel the ground under your feet  \n\nThink of something you feel grateful for \n\nFocus on your breath \n\nBreathe in and out\n\nIn and out  ",
+            "value": "Take a moment to feel the ground under your feet  \n\nThink of something you feel grateful for \n\nFocus on your breath \nBreathe in and out\nIn and out  ",
             "type": "set_variable"
           },
           {
@@ -15225,13 +13889,12 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "survey_welcome_stepper",
+    "flow_name": "survey_welcome",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "survey_stepper",
-        "value": "survey_stepper",
+        "value": "pair",
         "action_list": [
           {
             "trigger": "completed",
@@ -15245,65 +13908,97 @@
         ],
         "rows": [
           {
-            "name": "nav_template_list",
-            "value": [
-              "survey_welcome_intro",
-              "survey_welcome_q_1",
-              "survey_welcome_q_2",
-              "survey_welcome_q_3",
-              "survey_welcome_q_4",
-              "survey_welcome_q_5",
-              "survey_welcome_q_6",
-              "survey_welcome_q_7",
-              "survey_welcome_q_8",
-              "survey_welcome_q_9",
-              "survey_welcome_q_10"
-            ],
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/survey_welcome.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "survey_welcome_intro",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "box_image",
-        "value": "box_image",
-        "action_list": [
+            "type": "nested_properties",
+            "name": "box_1",
+            "value": "survey_welcome_q_1",
+            "rows": []
+          },
           {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
+            "type": "nested_properties",
+            "name": "box_2",
+            "value": "pair",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "box_1",
+                "value": "survey_welcome_q_2",
+                "rows": []
+              },
+              {
+                "type": "nested_properties",
+                "name": "box_2",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "survey_welcome_q_3",
+                    "rows": []
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "pair",
+                    "rows": [
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "survey_welcome_q_4",
+                        "rows": []
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "pair",
+                        "rows": [
+                          {
+                            "type": "nested_properties",
+                            "name": "box_1",
+                            "value": "survey_welcome_q_5",
+                            "rows": []
+                          },
+                          {
+                            "type": "nested_properties",
+                            "name": "box_2",
+                            "value": "pair",
+                            "rows": [
+                              {
+                                "type": "nested_properties",
+                                "name": "box_1",
+                                "value": "survey_welcome_q_6",
+                                "rows": []
+                              },
+                              {
+                                "type": "nested_properties",
+                                "name": "box_2",
+                                "value": "pair",
+                                "rows": [
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_1",
+                                    "value": "survey_welcome_q_7",
+                                    "rows": []
+                                  },
+                                  {
+                                    "type": "nested_properties",
+                                    "name": "box_2",
+                                    "value": "survey_welcome_q_8",
+                                    "rows": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ],
-        "rows": [
-          {
-            "name": "title",
-            "value": "Customise for your needs",
-            "hidden": "false",
-            "type": "set_variable"
-          },
-          {
-            "name": "image_src",
-            "value": "plh_images/survey/welcome/busy.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "value": "Every parent in the world is struggling in these hard times. These quick questions will fit this app to your needs.\n\nBe honest. Remember that **you are not alone**! Millions of parents feel like you do, and we all deserve support.",
-            "type": "set_variable"
-          }
-        ]
+        "name": "pair"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/survey_welcome.xlsx"
@@ -15335,6 +14030,12 @@
             "type": "set_variable"
           },
           {
+            "name": "image_src",
+            "value": "plh_images/characters/@fields.guidenumber/busy.svg",
+            "hidden": "true",
+            "type": "set_variable"
+          },
+          {
             "name": "text",
             "value": "It is hard to find time to have fun with your teenager.",
             "type": "set_variable"
@@ -15351,13 +14052,13 @@
           },
           {
             "name": "reply_less",
-            "value": "We know this is hard. We'll unlock this @global.weekly_workshop for you now – it builds a foundation for all other parenting tools.",
+            "value": "We know this is hard. We'll make this your first @global.weekly_workshop – it builds a foundation for all other parenting tools.",
             "type": "set_variable"
           },
           {
             "name": "unlock_less",
             "value": "@global.weekly_workshop @global.w_1on1 unlocked",
-            "comments": "Needs an action:\nif @field.survey_welcome_q_1 < 4, unlock workshop 1on1",
+            "comments": "Needs an action, associated to nav_buttons or the template: \nif @field.survey_welcome_a_1 < @local.threshold, unlock the workshop 1on1",
             "type": "set_variable"
           },
           {
@@ -15399,13 +14100,6 @@
           {
             "name": "slider_field",
             "value": "survey_welcome_a_2",
-            "type": "set_variable"
-          },
-          {
-            "name": "image_src",
-            "value": "plh_images/survey/welcome/guide_1_frustrated.svg",
-            "hidden": "false",
-            "comments": "In Orli's design this image appears quite small",
             "type": "set_variable"
           },
           {
@@ -15475,6 +14169,12 @@
             "type": "set_variable"
           },
           {
+            "name": "image_src",
+            "value": "plh_images/characters/@field.guidenumber/frustrated.svg",
+            "hidden": "true",
+            "type": "set_variable"
+          },
+          {
             "name": "text",
             "value": "This is a very stressful time for families.",
             "type": "set_variable"
@@ -15501,8 +14201,7 @@
           },
           {
             "name": "reply_greater_equal",
-            "value": "We understand how stressful this is. Remember that you are not alone. We’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.",
-            "comments": "Every user needs to receive a daily relax",
+            "value": "We understand how stressful this is. Remember that you are not alone.",
             "type": "set_variable"
           },
           {
@@ -15538,13 +14237,7 @@
         "rows": [
           {
             "name": "slider_variable",
-            "value": "survey_welcome_q_4",
-            "type": "set_variable"
-          },
-          {
-            "name": "image_src",
-            "value": "plh_images/survey/welcome/guide_2_argument.svg",
-            "hidden": "false",
+            "value": "survey_welcome_a_4",
             "type": "set_variable"
           },
           {
@@ -15580,7 +14273,7 @@
           {
             "name": "unlock_greater_equal",
             "value": "@global.weekly_workshop @global.w_stress unlocked",
-            "comments": "Needs an action:\nif @field.survey_welcome_q_4 >=2, unlock workshop stress",
+            "comments": "Needs an action",
             "type": "set_variable"
           }
         ]
@@ -15595,8 +14288,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "box_slider_duo_temp",
-        "value": "box_slider_duo_temp",
+        "name": "pair",
+        "value": "pair",
         "action_list": [
           {
             "trigger": "completed",
@@ -15610,50 +14303,92 @@
         ],
         "rows": [
           {
-            "name": "slider_1_field",
-            "value": "survey_welcome_q_5_part_1",
-            "type": "set_variable"
+            "type": "nested_properties",
+            "name": "box_1",
+            "value": "box_slider_week_temp",
+            "rows": [
+              {
+                "name": "image_src",
+                "value": "plh_images/characters/@fields.guidenumber/frustrated.svg",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "text",
+                "value": "Money is one of the biggest stresses for families now. ",
+                "type": "set_variable"
+              },
+              {
+                "name": "question_text",
+                "value": "How many days in the past week have you worried or felt anxious about money? ",
+                "type": "set_variable"
+              },
+              {
+                "name": "reply_less",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "unlock_less",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "reply_greater_equal",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "unlock_greater_equal",
+                "hidden": "true",
+                "type": "set_variable"
+              }
+            ]
           },
           {
-            "name": "slider_2_field",
-            "value": "survey_welcome_q_5_part_2",
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "value": "Money is one of the biggest stresses for families now. ",
-            "type": "set_variable"
-          },
-          {
-            "name": "question_text_1",
-            "value": "How many days in the past week have you worried or felt anxious about money? ",
-            "type": "set_variable"
-          },
-          {
-            "name": "question_text_2",
-            "value": "How many days in the past month (30 days) did you run out of money to pay for food? ",
-            "type": "set_variable"
-          },
-          {
-            "name": "theshold",
-            "value": 1,
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_less",
-            "value": "Great. We have a @global.weekly_workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_greater_equal",
-            "value": "Money stress can be overwhelming. We have a @global.weekly_workshop on family budgeting that can help. We’ll unlock this now to make it available for you anytime you want.",
-            "comments": "Action:\nif @field.survey_welcome_q_5_part_1>=1 or @field.survey_welcome_q_5_part_1>=1, unlock workshop money",
-            "type": "set_variable"
-          },
-          {
-            "name": "unlock_greater_equal",
-            "value": "@global.weekly_workshop @global.w_money unlocked",
-            "type": "set_variable"
+            "type": "nested_properties",
+            "name": "box_2",
+            "value": "box_slider_month_temp",
+            "rows": [
+              {
+                "name": "text",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "question_text",
+                "value": "How many days in the past month (30 days) did you run out of money to pay for food? ",
+                "type": "set_variable"
+              },
+              {
+                "name": "theshold",
+                "value": 1,
+                "type": "set_variable"
+              },
+              {
+                "name": "reply_less",
+                "value": "Great. We have a @global.weekly_workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments",
+                "hidden": "@box_1.slider._value <= @local.threshold & @box_2.slider._value <= @local.threshold",
+                "type": "set_variable"
+              },
+              {
+                "name": "unlock_less",
+                "hidden": "true",
+                "type": "set_variable"
+              },
+              {
+                "name": "reply_greater_equal",
+                "value": "Money stress can be overwhelming. We have a @global.weekly_workshop on family budgeting that can help. We’ll unlock this now to make it available for you anytime you want.",
+                "hidden": "!(@local.box_1.slider._value <= @local.threshold & @local.box_2.slider._value > @local.threshold)",
+                "comments": "Needs an action",
+                "type": "set_variable"
+              },
+              {
+                "name": "unlock_greater_equal",
+                "value": "@global.weekly_workshop @global.w_money unlocked",
+                "type": "set_variable"
+              }
+            ]
           }
         ]
       }
@@ -15868,144 +14603,6 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/survey_welcome.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_setup_stepper",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "survey_stepper",
-        "value": "survey_stepper",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": [
-          {
-            "name": "nav_template_list",
-            "value": [
-              "workshop_setup_intro",
-              "workshop_setup_q_1",
-              "workshop_setup_q_2"
-            ],
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/workshop_setup.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_setup_intro",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "box_image",
-        "value": "box_image",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": [
-          {
-            "name": "title",
-            "value": "Customise your @global.parent_app",
-            "hidden": "false",
-            "type": "set_variable"
-          },
-          {
-            "name": "image_src",
-            "value": "plh_images/survey/workshop_setup/high_five.svg",
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "hidden": "true",
-            "type": "set_variable"
-          },
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "rows": [
-              {
-                "name": "button_completed",
-                "value": "Let's go!",
-                "type": "set_variable"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/workshop_setup.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_setup_q_1",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "box_multi_1_temp",
-        "value": "box_multi_1_temp",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/workshop_setup.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_setup_q_2",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "box_multi_2_temp",
-        "value": "box_multi_2_temp",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/workshop_setup.xlsx"
   },
   {
     "flow_type": "template",
@@ -16978,11 +15575,6 @@
           }
         ],
         "rows": [
-          {
-            "name": "relax",
-            "value": "relax_14",
-            "type": "set_variable"
-          },
           {
             "type": "nested_properties",
             "name": "workshop_activity",
@@ -19786,13 +18378,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
-        "rows": [
-          {
-            "name": "relax",
-            "value": "relax_13",
-            "type": "set_variable"
-          }
-        ]
+        "rows": []
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_crisis.xlsx"
@@ -23049,7 +21635,7 @@
                   },
                   {
                     "name": "reply",
-                    "value": "You need: \n- Papers (or old newspaper or a cardboard box) and pens \n- Stones or beans or anything with lots of bits to represent money \n\nTake a minute to get these things before we start with the first step.",
+                    "value": "@field.w_money_path\n\nYou need: \n- Papers (or old newspaper or a cardboard box) and pens \n- Stones or beans or anything with lots of bits to represent money \n\nTake a minute to get these things before we start with the first step.",
                     "type": "set_variable"
                   }
                 ]
@@ -30870,14 +29456,14 @@
                                     "type": "set_variable"
                                   },
                                   {
-                                    "name": "text",
-                                    "value": "@global.w_solve_female_caregiver_2: “Just give me a moment. I am tired and now worried about having enough food for dinner.” \n\n@global.w_solve_teen_boy_2: “I am sorry, @global.w_solve_female_caregiver_2\"",
+                                    "name": "title",
+                                    "value": "Step 1: KNOW IT",
+                                    "hidden": "false",
                                     "type": "set_variable"
                                   },
                                   {
-                                    "name": "dashed_box",
-                                    "value": "Step 1: KNOW IT",
-                                    "hidden": "false",
+                                    "name": "text",
+                                    "value": "@global.w_solve_female_caregiver_2: “Just give me a moment. I am tired and now worried about having enough food for dinner.” \n\n@global.w_solve_teen_boy_2: “I am sorry, @global.w_solve_female_caregiver_2\"",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -30920,14 +29506,14 @@
                                             "type": "set_variable"
                                           },
                                           {
-                                            "name": "text",
-                                            "value": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2 . It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?\"\n\n@global.w_solve_teen_boy_2: \"Well… I want to just hit him or get him back.\"",
+                                            "name": "title",
+                                            "value": "Step 2: SOLVE IT",
+                                            "hidden": "false",
                                             "type": "set_variable"
                                           },
                                           {
-                                            "name": "dashed_box",
-                                            "value": "Step 2: SOLVE IT",
-                                            "hidden": "false",
+                                            "name": "text",
+                                            "value": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2 . It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?\"\n\n@global.w_solve_teen_boy_2: \"Well… I want to just hit him or get him back.\"",
                                             "type": "set_variable"
                                           }
                                         ]
@@ -31014,14 +29600,14 @@
                                                             "type": "set_variable"
                                                           },
                                                           {
-                                                            "name": "text",
-                                                            "value": "@global.w_solve_female_caregiver_2: \"Anything for you, my dear. I will do it first thing after dinner. And you know? If that doesn’t work, we can always try something else together.\"\n\n@global.w_solve_teen_boy_2: \"Thanks, @global.w_solve_female_caregiver_2\"",
+                                                            "name": "title",
+                                                            "value": "Step 3: TRY IT",
+                                                            "hidden": "false",
                                                             "type": "set_variable"
                                                           },
                                                           {
-                                                            "name": "dashed_box",
-                                                            "value": "Step 3: TRY IT",
-                                                            "hidden": "false",
+                                                            "name": "text",
+                                                            "value": "@global.w_solve_female_caregiver_2: \"Anything for you, my dear. I will do it first thing after dinner. And you know? If that doesn’t work, we can always try something else together.\"\n\n@global.w_solve_teen_boy_2: \"Thanks, @global.w_solve_female_caregiver_2\"",
                                                             "type": "set_variable"
                                                           }
                                                         ]
@@ -31042,14 +29628,14 @@
                                                                 "type": "set_variable"
                                                               },
                                                               {
-                                                                "name": "text",
-                                                                "value": "A week later… \n\n@global.w_solve_female_caregiver_2: \"How are things going at school now?\"\n\n@global.w_solve_teen_boy_2: \"It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me.\"",
+                                                                "name": "title",
+                                                                "value": "Step 4: TEST IT",
+                                                                "hidden": "false",
                                                                 "type": "set_variable"
                                                               },
                                                               {
-                                                                "name": "dashed_box",
-                                                                "value": "Step 4: TEST IT",
-                                                                "hidden": "false",
+                                                                "name": "text",
+                                                                "value": "A week later… \n\n@global.w_solve_female_caregiver_2: \"How are things going at school now?\"\n\n@global.w_solve_teen_boy_2: \"It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me.\"",
                                                                 "type": "set_variable"
                                                               }
                                                             ]
