@@ -1,37 +1,37 @@
-.slider-wrapper{
-  margin: 40px 15px 0 15px;
+.slider-wrapper {
+  margin: 40px 0 0 0;
   min-width: 334px;
-  padding: 20px 0 30px 23px;
+  padding: 20px 0 15px 23px;
   background: #fff;
-  border: 2px solid #096B8B;
+  border: 2px solid #096b8b;
   box-sizing: border-box;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   position: relative;
   min-height: 139px;
   .help {
-    color: #096B8B;
+    color: #096b8b;
     height: 35px;
     width: 35px;
     position: absolute;
     right: 5px;
     top: 12px;
   }
-  .title-slider{
+  .title-slider {
     font-weight: bold;
     font-size: 25px;
-    color: #0D3F60;
-    max-width: 258px!important;
+    color: #0d3f60;
+    max-width: 258px !important;
     margin-bottom: 36px;
   }
-  .slider-container{
-    max-width: 292px;
+  .slider-container {
+    max-width: 95%;
     width: 100%;
     display: flex;
-    .custom-slider{
-      max-width: 260px;
+    .custom-slider {
+      max-width: 100%;
     }
-    .checkbox-block{
+    .checkbox-block {
       margin-top: 6px;
       display: flex;
       padding-left: 11px;
@@ -42,62 +42,64 @@
       height: 30px;
     }
   }
-  .labels{
+  .labels {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 275px;
     margin-left: -5px;
     margin-top: 25px;
-    .min, .max{
+    .min,
+    .max {
       font-size: 15px;
-      color: #096B8B;
+      color: #096b8b;
     }
   }
 }
-::ng-deep{
-  .noUi-target{
-    border:none;
+::ng-deep {
+  .noUi-target {
+    border: none;
     background: transparent;
     box-shadow: none;
   }
-  .noUi-connects{
-    border: 1px solid #096B8B;
+  .noUi-connects {
+    border: 1px solid #096b8b;
     box-sizing: border-box;
     border-radius: 20px;
     height: 10px;
   }
-  .noUi-handle::before , .noUi-handle::after{
+  .noUi-handle::before,
+  .noUi-handle::after {
     content: none;
   }
-  .noUi-horizontal .noUi-handle{
+  .noUi-horizontal .noUi-handle {
     border-radius: 50%;
     width: 24px;
     height: 24px;
-    background: #096B8B;
-    border:none;
+    background: #096b8b;
+    border: none;
     box-shadow: none;
     outline: none;
     top: -7px;
     right: -11px;
   }
-  .noUi-pips-horizontal{
+  .noUi-pips-horizontal {
     top: 25%;
   }
-  .noUi-value-horizontal{
+  .noUi-value-horizontal {
     font-size: 20px;
-    color: #096B8B;
+    color: #096b8b;
   }
-  .noUi-marker-horizontal{
+  .noUi-marker-horizontal {
     display: none;
   }
   .noUi-tooltip {
     display: none;
   }
   .noUi-active .noUi-tooltip {
-    background: #096B8B;
+    background: #096b8b;
     color: #fff;
-    border:none;
+    border: none;
     width: 32px;
     display: flex;
     justify-content: center;
@@ -105,15 +107,15 @@
     height: 32px;
     border-radius: 50%;
   }
-  .custom-slider{
-   .noUi-horizontal .noUi-handle{
+  .custom-slider {
+    .noUi-horizontal .noUi-handle {
       display: none;
     }
   }
 }
-.custom-checkbox{
+.custom-checkbox {
   --border-radius: 50%;
-  --border-color: #096B8B;
+  --border-color: #096b8b;
   --background: transparent;
-  --size: 16px
+  --size: 16px;
 }
