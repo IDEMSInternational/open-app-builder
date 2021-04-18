@@ -342,6 +342,11 @@ export namespace FlowTypes {
     flow_type: "template";
     rows: TemplateRow[];
     comments?: string;
+    /** Templates may inherit variables from a parent for initialisation.
+     * If set from a row keeps full reference to row, if set as a value will only have {value} field */
+    _localVariables?: { [key: string]: Partial<TemplateRow> };
+    /** Name provided to template when creating from another template */
+    _instance_name?: string;
   }
 
   export type TemplateRowType =
@@ -383,7 +388,8 @@ export namespace FlowTypes {
     | "combo_box"
     | "icon_banner"
     | "dashed_box"
-    | "parent_point_box";
+    | "parent_point_box"
+    | "lottie_animation";
 
   export interface TemplateRow {
     type: TemplateRowType;
@@ -429,7 +435,10 @@ export namespace FlowTypes {
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"
       | "pop_up"
-      | "set_theme";
+      | "set_theme"
+      | "audio_end"
+      | "audio_play"
+      | "style";
     args: string[];
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: TemplateRow;

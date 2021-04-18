@@ -30,6 +30,8 @@ export class TemplateParser extends DefaultParser {
         row.value = parsePLHCollectionString(row.value);
       }
     }
+    // remove any comments
+    delete row.comments;
 
     // parse action list
     if (row.action_list) {

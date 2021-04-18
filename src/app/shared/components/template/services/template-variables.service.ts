@@ -1,11 +1,17 @@
 import { Injectable } from "@angular/core";
 import { FlowTypes } from "scripts/types";
-import { evaluateJSExpression, getNestedProperty, setNestedProperty } from "src/app/shared/utils";
+import { evaluateJSExpression, getNestedProperty } from "src/app/shared/utils";
 import { TemplateService } from "./template.service";
 
 interface ILocalVariables {
   [name: string]: any;
 }
+
+/** Logging Toggle - rewrite default functions to enable or disable inline logs */
+const SHOW_DEBUG_LOGS = false;
+const log = SHOW_DEBUG_LOGS ? console.log : () => null;
+const log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
+const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
 /**
  * Most methods in this class depend on factors relating to the execution context
@@ -32,11 +38,12 @@ export class TemplateVariablesService {
    * This method attempts to handle all such cases
    *
    * @param omitFields Any fields listed here will not be evaluated alongside any metadata fields (prefix '_')
+   * and the "comments" field
    */
   public evaluatePLHData(
     data: string | number | boolean | any,
     context: IVariableContext,
-    omitFields: string[] = ["comments"]
+    omitFields: string[] = []
   ) {
     let value = data;
     // If the data is array or json-type object extract individual strings and reprocess
@@ -52,19 +59,19 @@ export class TemplateVariablesService {
         const dynamicFields = context.row._dynamicFields;
         // only evaluate if there are dynamic fields recorded somewhere in the object
         if (dynamicFields) {
-          // console.group(`[evaluate] ${data.value || ""}`, { data, dynamicFields });
+          log_group(`[evaluate] ${data.value || ""}`, { data: { ...data }, dynamicFields });
           Object.keys(data).forEach((k) => {
             value[k] = data[k];
-            // ignore evaluation of meta fields. Could provide single list of approved fields, but as dynamic fields
+            // ignore evaluation of meta, comment, and specifiedfields. Could provide single list of approved fields, but as dynamic fields
             // also can be found in parameter lists would likely prove too restrictive
-            if (!k.startsWith("_") && !omitFields.includes(k)) {
+            if (!k.startsWith("_") && !omitFields.includes(k) && !["comments"].includes(k)) {
               // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
               const nestedContext = { ...context };
               nestedContext.field = nestedContext.field ? `${nestedContext.field}.${k}` : k;
               value[k] = this.evaluatePLHData(data[k], nestedContext);
             }
           });
-          // console.groupEnd();
+          log_groupEnd();
         }
       }
     } else {
@@ -78,7 +85,7 @@ export class TemplateVariablesService {
       ) as FlowTypes.TemplateRowDynamicEvaluator[];
       if (evaluators) {
         value = this.evaluatePLHString(evaluators, context);
-        // console.log("[evaluated]", { value, evaluators, field, context });
+        log("[evaluated]", { value, evaluators, field, context });
       }
     }
     return value;
@@ -160,6 +167,7 @@ export class TemplateVariablesService {
         if (localVariables.hasOwnProperty(fieldName)) {
           parsedValue = localVariables[fieldName]?.value;
         }
+
         // also check sibling components for name match and return value where set
         else {
           const siblingRow = template.rows.find((r) => r.name === fieldName);
@@ -168,7 +176,7 @@ export class TemplateVariablesService {
           } else {
             console.error(`[Local] - @local.${fieldName} not found`, {
               evaluator,
-              localVariables,
+              localVariables: { ...localVariables },
             });
             parsedValue = `{{local.${fieldName}}}`;
           }
