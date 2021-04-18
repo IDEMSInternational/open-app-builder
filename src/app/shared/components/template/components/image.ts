@@ -7,7 +7,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-image",
   template: `
-    <div class="tmpl-image-container" [class]="style">
+    <div class="tmpl-image-container margin-t-regular" [class]="style">
       <img *ngIf="imageSrc" [src]="imageSrc" />
     </div>
   `,

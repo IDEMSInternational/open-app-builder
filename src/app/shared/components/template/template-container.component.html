@@ -13,12 +13,11 @@
   </div>
 
   <!-- Template Component-->
-  <div *ngIf="template && template.rows">
-    <plh-template-component
-      *ngFor="let row of template.rows; trackBy: trackByRow"
-      class="row"
-      [row]="row"
-      [parent]="this"
-    ></plh-template-component>
-  </div>
+  <plh-template-component
+    *ngFor="let row of template.rows; trackBy: trackByRow"
+    [style.height]="onlyOneChild ? '100%' : null"
+    class="row"
+    [row]="row"
+    [parent]="this"
+  ></plh-template-component>
 </div>

@@ -1,3 +1,10 @@
-<button class="open-combobox" (click)="openModal()" [disabled]="_row.disabled">
-  {{ _row.value }}
+<button
+  class="open-combobox margin-t-regular"
+  [class]="style"
+  [class.have-value]="_row.value"
+  (click)="openModal()"
+  [class.placeholder-style]="!_row.value && placeholder"
+  [disabled]="_row.disabled"
+>
+  {{ _row.value ? _row.value : placeholder }}
 </button>

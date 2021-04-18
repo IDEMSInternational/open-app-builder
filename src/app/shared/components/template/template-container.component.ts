@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
@@ -20,7 +20,8 @@ const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
   templateUrl: "./template-container.component.html",
   styleUrls: ["./template-container.component.scss"],
 })
-export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateContainerProps {
+export class TemplateContainerComponent
+  implements OnInit, OnDestroy, AfterViewInit, ITemplateContainerProps {
   /** unique instance_name of template */
   @Input() name: string;
   /** flow_name of template for lookup */
@@ -48,11 +49,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
+  onlyOneChild: boolean;
+
   constructor(
     private templateService: TemplateService,
     private templateVariables: TemplateVariablesService,
     public router: Router,
     public route: ActivatedRoute,
+    public elRef: ElementRef,
     private templateNavService: TemplateNavService
   ) {}
 
@@ -61,6 +65,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.subscribeToQueryParamChanges();
     // const { name, templatename, parent, row, templateBreadcrumbs } = this;
     // log("template initialised", { name, templatename, parent, row, templateBreadcrumbs });
+  }
+
+  // TODO - code can likely be tidied (just use the rows length instead of new variable)
+  ngAfterViewInit(): void {
+    this.onlyOneChild = this.template?.rows?.length === 1;
+    if (this.onlyOneChild) {
+      this.elRef.nativeElement.style.setProperty("height", "100%");
+    }
   }
 
   ngOnDestroy(): void {

@@ -167,3 +167,11 @@ If category_list is not available we generate list of values based on min_value,
    - Style font-size: 'tiny', 'small', 'medium', 'large'.
    - Style colour: 'standard', 'alternative'. 
    - Style format: 'normal', 'contextual', 'emphasised'.
+
+## Padding and Margins control:
+- no_margin_t - remove top margin;
+- no_margin_lr - remove left and right margin;
+- no_margin - remove all margins;
+- no_padding_t - remove top padding;
+- no_padding_lr - remove left and rigth padding
+- no_padding - remove all paddings

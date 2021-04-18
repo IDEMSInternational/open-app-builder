@@ -1,8 +1,7 @@
-.container{
-  margin-top: 30px;
-  min-width: 301px;
-  background: #FFFFFF;
-  border: 2px solid #096B8B;
+.container {
+  width: calc(100% - 10px);
+  background: #ffffff;
+  border: 2px solid #096b8b;
   box-sizing: border-box;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -10,80 +9,85 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 6px;
-  .left,.right{
+  margin-left: 5px;
+  margin-right: 5px;
+  .left,
+  .right {
     flex: 1 1 20%;
   }
-   .center{
+  .center {
     flex: 1 1 60%;
   }
-  .right{
+  .right {
     display: flex;
     justify-content: flex-end;
   }
-  ion-button{
+  ion-button {
     --background: transparent;
     --box-shadow: none;
     border-radius: 50%;
-    border: 2px solid #096B8B;
+    border: 2px solid #096b8b;
     width: 27px;
     height: 27px;
     display: flex;
     justify-content: center;
     align-items: center;
-    .line{
+    .line {
       position: absolute;
       width: 8px;
       height: 2px;
-      background: #096B8B;
+      background: #096b8b;
     }
-    .plus{
+    .plus {
       transform: rotate(90deg);
     }
   }
-  .center{
+  .center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    .title, .num{
+    .title,
+    .num {
       text-align: center;
       font-weight: 500;
-      color: #0D3F60;
+      color: #0d3f60;
       max-width: 150px;
     }
-    .category{
+    .category {
       max-width: 150px;
-      span{
+      span {
         font-weight: 500;
         font-size: 15px;
         line-height: 18px;
-        color: #0D3F60;
-
+        color: #0d3f60;
       }
     }
   }
 }
-.short{
+.short {
   min-height: 44px;
-  .center{
-    .title, .num{
+  .center {
+    .title,
+    .num {
       font-size: 15px;
     }
   }
-  ion-button{
+  ion-button {
     width: 37px;
     height: 37px;
-    .line{
+    .line {
       width: 15px;
       height: 3px;
     }
   }
 }
-.normal{
+.normal {
   min-height: 59px;
-  .center{
-    .title, .num{
+  .center {
+    .title,
+    .num {
       font-size: 20px;
     }
   }
