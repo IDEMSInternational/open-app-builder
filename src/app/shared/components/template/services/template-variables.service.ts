@@ -167,12 +167,20 @@ export class TemplateVariablesService {
         if (localVariables.hasOwnProperty(fieldName)) {
           parsedValue = localVariables[fieldName]?.value;
         }
-
-        // also check sibling components for name match and return value where set
+        // aWhen performing a local lookup we might be referring to another row
+        // which is not a set_value type (e.g. a button, or text)
+        // try to locate that row if variable row does not exist
         else {
-          const siblingRow = template.rows.find((r) => r.name === fieldName);
-          if (siblingRow) {
-            parsedValue = siblingRow.value;
+          const siblingRows = _findTemplateRow(fieldName, template.rows);
+          if (siblingRows[0]) {
+            parsedValue = siblingRows[0];
+            if (siblingRows.length > 1) {
+              console.warn(
+                "Multiple siblings found for lookup",
+                `[Local] - @local.${fieldName}`,
+                siblingRows
+              );
+            }
           } else {
             console.error(`[Local] - @local.${fieldName} not found`, {
               evaluator,
@@ -199,6 +207,22 @@ export class TemplateVariablesService {
     }
     return { parsedValue, parseSuccess };
   }
+}
+
+function _findTemplateRow(
+  rowName: string,
+  searchRows: FlowTypes.TemplateRow[],
+  matches: FlowTypes.TemplateRow[] = []
+) {
+  searchRows.forEach((row) => {
+    if (row.name === rowName) {
+      matches.push(row);
+    }
+    if (row.rows) {
+      return _findTemplateRow(rowName, row.rows, matches);
+    }
+  });
+  return matches;
 }
 
 function _arrayToObject(arr: any[]) {
