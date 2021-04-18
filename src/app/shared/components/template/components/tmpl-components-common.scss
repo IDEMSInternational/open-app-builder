@@ -230,6 +230,15 @@ p {
   background: var(--ion-banner-primary);
 }
 
+.banner_light {
+  color: var(--ion-color-primary);
+  margin-top: var(--regular-margin);
+  border-radius: 20px;
+  width: 100%;
+  margin: 0 auto 5px auto;
+  background: var(--ion-color-primary-contrast);
+}
+
 .banner_welcome {
   margin-top: var(--regular-margin);
   border-radius: 20px;
