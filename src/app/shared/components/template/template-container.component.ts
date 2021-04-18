@@ -15,13 +15,6 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 const log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
-type IChildOverride = {
-  [template_instance: string]: {
-    _rows?: FlowTypes.TemplateRow[];
-    _self?: FlowTypes.TemplateRow;
-  };
-};
-
 @Component({
   selector: "plh-template-container",
   templateUrl: "./template-container.component.html",
@@ -44,7 +37,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * declared properties to be inherited by child templates during their own initialisation
    * maybe declared 1 or more levels deep (e.g. templateA.templateB.templateC)
    * */
-  childOverrides: IChildOverride | { [template_instance: string]: IChildOverride } = {};
+  childOverrides: { [template_instance: string]: FlowTypes.TemplateRow };
 
   template: FlowTypes.Template;
   /** track path to template from top parent (not currently used) */
@@ -226,9 +219,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     template = this.processParentOverrides(template);
     template._localVariables = template._localVariables || {};
 
-    const nestedProperties = this.extractNestedProperties(template.rows);
-    console.log("NESTED PROPERTIES", { ...nestedProperties });
-
     // handle main processing of template rows and variables
     template = this.processTemplate(template);
 
@@ -245,75 +235,56 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     log_groupEnd();
   }
 
-  private extractNestedProperties(
-    rows: FlowTypes.TemplateRow[],
-    prefix = "root",
-    isOverrideRow = false
-  ) {
-    let stateTree = {};
-    const stateRows = [];
-    rows.forEach((row) => {
-      const { name, type } = row;
-      // enter namespace
-      if (type === "nested_properties" || type === "template") {
-        prefix += `.${name}`;
-      }
-      if (name && row.rows) {
-        const nested = this.extractNestedProperties(row.rows, prefix, isOverrideRow);
-      }
-      if (isOverrideRow) {
-      }
-    });
-
-    return { stateTree, stateRows };
-  }
-
   /**
    *
-   * TODO - we need a better way of extracting nested_properties rows
-   * and assigning earlier (deep nesting still needs to be applied)
    *
    */
   private processParentOverrides(template: FlowTypes.Template) {
-    const overrides = this.parent?.childOverrides?.[this.name];
-    if (overrides) {
-      console.log("[Overrides]", { overrides, template: { ...template } });
+    const overrides = { ...this.parent?.childOverrides };
+    log("[Overrides Start]", { overrides, template: { ...template } });
+
+    // apply overrides for the existing template
+    const currentOverride = overrides[template._instance_name];
+    if (currentOverride) {
+      const overridesByName = arrayToHashmap(currentOverride.rows, "name");
+      // apply any existing overrides for each row
+      // note - if overrides exist that do not match any row they will not be processed
       template.rows = template.rows.map((row) => {
-        const override = overrides[row.name];
-        if (override) {
-          console.log("[Override row]", { row: { ...row }, override });
-          // Case 1 - nested properties appled over begin_template statement
-          // We need to merge overrides (as they will all apply)
-          if (row.type === "template") {
-            console.log("[Override merge]");
-            // merge rows previously set with nested_properties statements and rows
-            // defined from the begin_template statement (both target override)
-            override.rows.forEach((oRow) => {
-              // if rows with the same name exist assume the nested_property row correct (defined higher)
-              // otherwise include in the template rows list for processing later
-              const conflictIndex = row.rows.findIndex((r) => r.name === oRow.name);
-              if (conflictIndex > -1) {
-                console.log("[Override conflict]", {
-                  override: oRow,
-                  row: row.rows[conflictIndex],
-                });
-                row.rows[conflictIndex] = oRow;
-              } else {
-                row.rows.push(oRow);
+        if (row.name) {
+          // keep the existing row type (as by default updated rows will be 'set_variable' type)
+          const override = overridesByName[row.name];
+          if (override) {
+            // remove any dynamic references in the current template which will now be overwritten
+            const _dynamicFields = row._dynamicFields || {};
+            Object.keys(_dynamicFields).forEach((key) => {
+              if (override.hasOwnProperty(key)) {
+                delete _dynamicFields[key];
               }
             });
-          } else {
-            // Check - all other overrides should be single rows, check that is the case
-            if (row.rows) {
-              console.warn("target row has child rows, possible override issue requires review");
-            }
-            // Case 2 - template rows overwritten by rows within begin_template statement
-            return { ...override, type: row.type };
+            // merge the original row and override row together, preserving original row type
+            // and assigning modified dynamicFields references
+            const merged = { ...row, ...override, type: row.type, _dynamicFields };
+
+            return merged;
+            // remove dynamic references
           }
         }
         return row;
       });
     }
+    // Rename any deeper nested overrides to omit current template name
+    // e.g. if current template is template_a
+    //  template_a.template_b.template_c => template_b.template_c
+    //  template_a => template_a (want to retain for processing in this template)
+    const nestedOverrides = {};
+    Object.keys(overrides).forEach((k) => {
+      if (k !== template._instance_name) {
+        const childName = k.replace(`${template._instance_name}.`, "");
+        nestedOverrides[childName] = overrides[k];
+      }
+    });
+    this.childOverrides = nestedOverrides;
+    log("[Overrides End]", { template: { ...template } });
     return template;
   }
 
@@ -322,7 +293,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    *
    */
   private processTemplate(template: FlowTypes.Template) {
-    log({ template: { ...template } });
+    log("[Template Process Start]", { template: { ...template } });
 
     const processedRows = [];
 
@@ -361,8 +332,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       // TODO - there might be a better way to handle this recursively, although would need
       // slighly different handling as want to keep set_variable/set_field instead of processing
       if (row.rows) {
-        // TODO - need to extract all nested_properties statements
-
         const processedRowRows = [];
         row.rows.forEach((rRow) => {
           const rRowEvalContext = { localVariables, template, row: rRow };
@@ -375,15 +344,16 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         row.rows = processedRowRows;
       }
 
-      if (row.type === "nested_properties") {
-        console.warn("[Nested properties] - TODO");
-      }
-
       // Store reference to template overrides
       if (row.type === "template") {
-        console.log("[Template Overrides] start");
         const previousOverrides = this.childOverrides || {};
+        log("[Template Overrides] start", { previousOverrides, row: { ...row } });
+
+        // TODO - only the template child rows will define things to pass into the tree,
+        // so needs a slight refactor (although fine for now as top level ignored)
         const newOverrides = this.extractRowOverrideTree(row);
+        console.log("new overrides", { ...newOverrides });
+
         const mergedOverrides = newOverrides;
         Object.entries(previousOverrides).forEach(([key, previousOverride]) => {
           const newOverride = newOverrides[key];
@@ -396,7 +366,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           }
         });
         this.childOverrides = mergedOverrides;
-        console.log("[Template Overrides] end", { mergedOverrides });
+        console.log("[Template Overrides] end", { ...mergedOverrides });
         // remove the child rows from further processing in this template
         row.rows = [];
       }
@@ -408,7 +378,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     });
 
     // process rows with deep nesting
-    console.log(`[Template Processed]`, { ...template });
+    console.log(`[Template Process End]`, { ...template });
     template.rows = processedRows;
     template._localVariables = localVariables;
     return template;
@@ -425,10 +395,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * @param namespace prefix used to define the current tree level, either the current template name or path to nested template
    */
   private extractRowOverrideTree(row: FlowTypes.TemplateRow, tree = {}, namespace?: string) {
+    // use a new object so that 'delete' operations are not accidentally passed back (could use different variable name)
+    row = { ...row };
     namespace = namespace || row.name;
     const { name, rows } = row;
-    // neither of these fields can be updated on template, so remove
-    delete row.name; // this will be the same as the template
     delete row.type; // we cannot currently override a row type (as blank rows interpreted as set_variable which might not be correct)
     delete row._dynamicFields; // remove references to dynamic fields calculated from the current template when inherited
     if (name) {
@@ -437,11 +407,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         tree[namespace].rows = [];
         // repeat above process for nested_properties, which form their own namespaced trees
         rows.forEach((r) => {
+          const nestedName = r.name;
+          delete r.type;
+          delete r._dynamicFields;
           if (r.type === "nested_properties") {
-            const nestedName = r.name;
-            delete r.name;
-            delete r.type;
-            delete row._dynamicFields;
             const nestedTemplate: FlowTypes.TemplateRow = { ...r, name: nestedName };
             const nestedNamespace = `${namespace}.${nestedName}`;
             tree = this.extractRowOverrideTree(nestedTemplate, tree, nestedNamespace);
