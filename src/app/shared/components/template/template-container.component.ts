@@ -29,8 +29,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() row?: FlowTypes.TemplateRow;
   children: { [name: string]: TemplateContainerComponent } = {};
 
-  // TODO - this is now deprecated and should probably be removed (or reconsidered)
-  // Might have knock-on effect for theming
+  /** Templates may inherit variables from a parent for initialisation.
+   * If set from a row keeps full reference to row, if set as a value will only have {value} field */
   localVariables: any = {};
 
   /**
@@ -118,7 +118,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
     // once all actions have been processed re-render rows
     if (processedActions.length > 0) {
-      this.processTemplate(this.template);
+      this.processRows(this.template.rows);
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
@@ -188,7 +188,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * When a child triggers the changing of a local variable... TODO
    */
   public setLocalVariable(key: string, value: any) {
-    this.template._localVariables[key] = { value } as FlowTypes.TemplateRow;
+    this.localVariables[key] = { value } as FlowTypes.TemplateRow;
   }
 
   /***************************************************************************************
@@ -217,10 +217,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // When processing local variables check parent in case there are any variables
     // that have already been set/overridden
     template = this.processParentOverrides(template);
-    template._localVariables = template._localVariables || {};
 
     // handle main processing of template rows and variables
-    template = this.processTemplate(template);
+    template.rows = this.processRows(template.rows);
 
     this.template = template;
     console.log("[Template] Render", { ...template });
@@ -291,22 +290,24 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   /**
    *
    *
+   * TODO - a level of recursion is currently missing. Currently set_variable, set_field etc.
+   * to be at top level because they are manually checked. Ideally there should be a processRows
+   * function that is also called recursively to process nested rows in same way
+   * (this requires localVariables being handled outside the function, or returning updated)
    */
-  private processTemplate(template: FlowTypes.Template) {
-    log("[Template Process Start]", { template: { ...template } });
-
+  private processRows(rows: FlowTypes.TemplateRow[]) {
     const processedRows = [];
 
     // Create a variable to keep track of set_variable statements from within rows
     // Any variables inherited from parents will already have overwritten the child row statement
-    const localVariables = template._localVariables;
+    // const localVariables = this.localVariables;
 
-    template.rows.forEach((row) => {
-      let { name, type, value, condition } = row;
+    rows.forEach((row) => {
+      let { name, value, condition } = row;
       log("[Row start]", name, { ...row });
       // Evaluate row in context of current local state. Skip processing nested rows
       // as these could be filtered out folloing condition evaluation
-      const evalContext = { localVariables, template, row };
+      const evalContext = { localVariables: this.localVariables, template: this.template, row };
       row = this.templateVariables.evaluatePLHData(row, evalContext, ["rows"]);
 
       // Filter out if specified by condition. This might be string or boolean
@@ -318,7 +319,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
       // Update local variables where specified and filter out
       if (row.type === "set_variable") {
-        template._localVariables[name] = row;
+        this.localVariables[name] = row;
         log("[Row end (variable)]", name);
         return;
       }
@@ -328,47 +329,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         return this.templateService.setField(name, value);
       }
 
-      // evaluate nested rows, again filtering on condition
-      // TODO - there might be a better way to handle this recursively, although would need
-      // slighly different handling as want to keep set_variable/set_field instead of processing
       if (row.rows) {
-        const processedRowRows = [];
-        row.rows.forEach((rRow) => {
-          const rRowEvalContext = { localVariables, template, row: rRow };
-          rRow = this.templateVariables.evaluatePLHData(rRow, rRowEvalContext);
-          if (rRow.condition === (false as any) || rRow.condition === "false") {
-            return;
-          }
-          processedRowRows.push(rRow);
-        });
-        row.rows = processedRowRows;
+        row.rows = this.filterNestedRows(row.rows);
+      }
+
+      if (row.rows) {
+        row.rows = this.extractNestedTemplates(row.rows);
       }
 
       // Store reference to template overrides
       if (row.type === "template") {
-        const previousOverrides = this.childOverrides || {};
-        log("[Template Overrides] start", { previousOverrides, row: { ...row } });
-
-        // TODO - only the template child rows will define things to pass into the tree,
-        // so needs a slight refactor (although fine for now as top level ignored)
-        const newOverrides = this.extractRowOverrideTree(row);
-        console.log("new overrides", { ...newOverrides });
-
-        const mergedOverrides = newOverrides;
-        Object.entries(previousOverrides).forEach(([key, previousOverride]) => {
-          const newOverride = newOverrides[key];
-          if (newOverrides) {
-            // override secondary field with previousOverride-secondary merge
-            mergedOverrides[key] = this.mergeOverrideRows(previousOverride, newOverride);
-          } else {
-            // add new properties to secondary
-            mergedOverrides[key] = previousOverride;
-          }
-        });
-        this.childOverrides = mergedOverrides;
-        console.log("[Template Overrides] end", { ...mergedOverrides });
-        // remove the child rows from further processing in this template
-        row.rows = [];
+        row = this.processTemplateRow(row);
       }
 
       log("[Row end]", name, { ...row });
@@ -377,11 +348,78 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       return;
     });
 
-    // process rows with deep nesting
-    console.log(`[Template Process End]`, { ...template });
-    template.rows = processedRows;
-    template._localVariables = localVariables;
-    return template;
+    return processedRows;
+  }
+
+  /**
+   * Evaluate nested rows, again filtering on condition
+   * TODO - code matches main methods, so perhaps there might be better way to handle.
+   * slighly different handling as want to keep set_variable/set_field instead of processing
+   * TODO - recursive calls here can be removed if handled in main methods
+   */
+  private filterNestedRows(rows: FlowTypes.TemplateRow[]) {
+    const processedRowRows = [];
+    rows.forEach((row) => {
+      const rowEvalContext = { localVariables: this.localVariables, template: this.template, row };
+      row = this.templateVariables.evaluatePLHData(row, rowEvalContext);
+      if (row.condition === (false as any) || row.condition === "false") {
+        return;
+      }
+      if (row.rows) {
+        row.rows = this.filterNestedRows(row.rows);
+      }
+      processedRowRows.push(row);
+    });
+    rows = processedRowRows;
+    return rows;
+  }
+
+  /**
+   * Look through all rows and nested structures for begin template instances
+   * for processing
+   * TODO - recursive calls here can be removed if handled in main methods
+   */
+  private extractNestedTemplates(rows: FlowTypes.TemplateRow[]) {
+    return rows.map((row) => {
+      if (row.type === "template") {
+        console.log("[Template Row] - Nested Found", { ...row });
+        return this.processTemplateRow(row);
+      } else {
+        if (row.rows) {
+          row.rows = this.extractNestedTemplates(row.rows);
+        }
+      }
+      return row;
+    });
+  }
+  /**
+   *
+   */
+  private processTemplateRow(row: FlowTypes.TemplateRow) {
+    const previousOverrides = this.childOverrides || {};
+    log(`[Template Row Start] - ${row.name}`, { previousOverrides, row: { ...row } });
+
+    // TODO - only the template child rows will define things to pass into the tree,
+    // so needs a slight refactor (although fine for now as top level ignored)
+    const newOverrides = this.extractRowOverrideTree(row);
+    console.log("new overrides", { ...newOverrides });
+
+    const mergedOverrides = newOverrides;
+    Object.entries(previousOverrides).forEach(([key, previousOverride]) => {
+      const newOverride = newOverrides[key];
+      if (newOverride) {
+        // override secondary field with previousOverride-secondary merge
+        mergedOverrides[key] = this.mergeOverrideRows(previousOverride, newOverride);
+      } else {
+        // add new properties to secondary
+        mergedOverrides[key] = previousOverride;
+      }
+    });
+    this.childOverrides = mergedOverrides;
+    log(`[Template Row End] - ${row.name}`, { ...mergedOverrides });
+    // remove the child rows from further processing in this template
+    row.rows = [];
+    return row;
   }
 
   /**
