@@ -240,8 +240,11 @@ p {
     margin-bottom: -30px !important;
   }
   .offset {
-    plh-template-component:first-child {
-      max-width: 220px;
+    plh-template-component > .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
+      height: 220px;
+      &.margin-t-regular {
+        margin-top: 0 !important;
+      }
     }
   }
   &.active {
@@ -259,15 +262,21 @@ p {
   margin-bottom: 30px !important;
   background: var(--ion-banner-primary);
   padding: 0 24px;
-  min-height: 115px;
+  min-height: var(--banner-short-height);
+  max-height: var(--banner-short-height);
   .offset {
     plh-template-component:first-child {
       flex: 2;
     }
     plh-template-component:last-child {
       flex: 1;
-      min-width: 100px;
+      min-width: var(--banner-short-height);
       max-width: fit-content;
+      .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
+        &.margin-t-regular {
+          margin-top: 0 !important;
+        }
+      }
     }
   }
   &.active {
