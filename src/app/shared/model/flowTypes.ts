@@ -342,9 +342,6 @@ export namespace FlowTypes {
     flow_type: "template";
     rows: TemplateRow[];
     comments?: string;
-    /** Templates may inherit variables from a parent for initialisation.
-     * If set from a row keeps full reference to row, if set as a value will only have {value} field */
-    _localVariables?: { [key: string]: Partial<TemplateRow> };
     /** Name provided to template when creating from another template */
     _instance_name?: string;
   }
