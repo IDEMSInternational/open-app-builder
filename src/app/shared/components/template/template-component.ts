@@ -99,7 +99,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   ngAfterContentInit() {
-    this.setStyleList(this.row);
+    this.setStyleList();
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
