@@ -276,10 +276,11 @@ p {
   .offset {
     plh-template-component:first-child {
       flex: 2;
+      padding: 0 15px 15px 0;
     }
     plh-template-component:last-child {
       flex: 1;
-      min-width: var(--banner-short-height);
+      min-width: 75px;
       max-width: fit-content;
       .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
         &.margin-t-regular {
