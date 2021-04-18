@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef, HostBinding, OnInit } from "@angular/core";
+import { Component, ElementRef, HostBinding, OnInit, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
@@ -24,6 +24,17 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       :host {
         width: 100%;
         border-radius: 20px;
+      }
+      .navigation {
+        justify-content: space-between;
+        padding-bottom: 10px;
+      }
+      .parent_point .offset {
+        flex-wrap: wrap;
+        padding: 10px 0;
+      }
+      .parent_point > .offset > :nth-child(1n) {
+        flex: 1 0 45%;
       }
     `,
   ],

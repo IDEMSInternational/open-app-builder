@@ -1,14 +1,15 @@
 .wrapper {
-  padding: 20px 5px;
   .text-box-input {
     background: #fff;
     border: 2px solid #096b8b;
-    min-width: 302px;
+    width: 100%;
     height: 44px;
     font-size: 18px;
     color: #0d4060;
     font-weight: 700;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
+    --padding-end: 10px;
+    --padding-start: 10px;
   }
 }

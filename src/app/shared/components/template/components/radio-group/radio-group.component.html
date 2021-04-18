@@ -1,4 +1,4 @@
-<div class="wrapper-radio-group">
+<div class="wrapper-radio-group margin-t-large">
   <div class="container" [ngSwitch]="radioButtonType">
     <div class="btn_triangle dse" *ngSwitchCase="'btn_text'">
       <div
@@ -30,10 +30,7 @@
         [style.flex]="flexWidth"
       >
         <label class="center standard-label" [class.checked]="el.checked">
-          <svg-icon
-            [src]="el.checked && item.image_checked ? item.image_checked : item.image"
-            [svgStyle]="{ fill: el.checked && !item.image_checked ? '#fff' : imageCheckedColor }"
-          >
+          <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
           </svg-icon>
           <input
             #el

@@ -1,14 +1,109 @@
-.round-icon-button {
-    width: 54px;
-    height: 54px;
-    background: #00A0CC;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 50%;
-    ::ng-deep ion-icon {
-        font-size: 40px;
-    }
+ion-tab-button {
+  color: var(--ion-color-primary-contrast);
+  text-transform: none;
+  white-space: pre-line;
+  min-height: 58px;
+  background: var(--ion-btn-primary);
+  box-shadow: var(--ion-btn-dark-box-shadow);
+  width: 58px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  ion-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    flex: auto;
+  }
 }
 
-ion-button.round-icon-button::part(native) {
-    border-radius: 50%;
-} 
+ion-tab-button::part(native) {
+  height: auto;
+  flex: 1;
+}
+
+ion-tab-button:disabled,
+ion-tab-button[disabled] {
+  filter: brightness(55%);
+}
+
+ion-tab-button.round-icon-button::part(native) {
+  border-radius: 50%;
+  padding: 0;
+  height: 100%;
+}
+ion-tab-button {
+  div {
+    font-size: 12px;
+    white-space: pre-line;
+    margin-top: 5px;
+    margin-bottom: 11px;
+    display: flex;
+    align-items: center;
+    text-transform: none;
+  }
+}
+.home_screen {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%) translateX(50%);
+}
+.wrapper {
+  display: flex;
+  width: fit-content;
+}
+.home_screen_wrapper {
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  background: #e3f4ff;
+  position: relative;
+  margin-left: auto;
+  margin-right: -5px;
+}
+.yellow {
+  background: #ffca41;
+}
+.orange {
+  background: #f49d04;
+}
+.dark_orange {
+  background: #f87023;
+}
+
+.navigation {
+  background: var(--ion-btn-secondary);
+}
+
+.information {
+  background: var(--ion-btn-primary);
+}
+
+.make_me_smile {
+  background: var(--ion-btn-primary);
+  color: var(--ion-color-primary-contrast);
+}
+
+.get_me_going {
+  background: var(--ion-btn-secondary);
+  color: var(--ion-color-primary-contrast);
+}
+
+.options {
+  background: var(--ion-gradient-option-btn);
+  color: var(--ion-color-primary-contrast);
+}
+
+.standard {
+  color: var(--ion-color-primary-contrast);
+}
+.alternative {
+  color: var(--ion-color-primary);
+}

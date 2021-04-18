@@ -18,6 +18,7 @@ export class TmplComboBoxComponent
   @Input() localVariables: { [name: string]: any };
 
   placeholder: string;
+  style: string;
   customAnswerSelected: boolean = false;
 
   constructor(private modalController: ModalController) {
@@ -30,11 +31,11 @@ export class TmplComboBoxComponent
     const arrValues = listAnswers.split(",").filter((item) => item !== "");
     this.customAnswerSelected =
       arrValues && this._row.value ? !arrValues.find((x) => x === this._row.value) : false;
-    this._row.value = this._row.value || this.placeholder;
   }
 
   getParams() {
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
   }
 
   async openModal() {
@@ -53,7 +54,7 @@ export class TmplComboBoxComponent
 
     modal.onDidDismiss().then((data) => {
       this.triggerActions("changed");
-      this._row.value = data?.data?.answer || this.placeholder;
+      this._row.value = data?.data?.answer;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
     });
     await modal.present();

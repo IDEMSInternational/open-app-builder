@@ -106,7 +106,10 @@ export class TmplRadioGroupComponent
         image_checked: null,
       };
       item.split("|").map((values) => {
-        obj[values.split(":")[0].trim()] = values.split(":")[1].trim();
+        var valChunks = values.split(":");
+        if (valChunks.length > 1) {
+          obj[valChunks[0].trim()] = valChunks[1].trim();
+        }
       });
       obj.image = obj.image ? this.getPathImg(obj.image) : obj.image;
       obj.image_checked = obj.image_checked
