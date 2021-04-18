@@ -116,4 +116,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   icon_banner: TmplIconBannerComponent,
   dashed_box: TmplDashedBoxComponent,
   parent_point_box: TmplParentPointBoxComponent,
+  lottie_animation: null as any,
 };
