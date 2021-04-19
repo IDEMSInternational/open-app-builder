@@ -262,23 +262,28 @@ export class TemplateContainerComponent
    * TODO - if parent overrides have changed this will not currently be reprocessed
    */
   private processParentOverrides(template: FlowTypes.Template) {
-    const overrides = { ...this.parent?.childOverrides };
+    const parentOverrides = this.parent?.childOverrides || {};
+    const overrides = {};
+    Object.keys(parentOverrides).forEach((key) => {
+      if (key.startsWith(this.name)) {
+        overrides[key.replace(`${this.name}.`, "")] = parentOverrides[key];
+      }
+    });
     // TODO - may want to filter which overrides are kept and passed on
     this.childOverrides = overrides;
     // apply overrides for the existing template
-    const overridesByName = overrides[this.templateNestedPath];
+    const overridesByName = overrides[this.name];
     if (overridesByName) {
       log("[Overrides Start]", { overridesByName, template: { ...template } });
       // apply any existing overrides for each row
-      // NOTE - if overrides exist that do not match any row they will not be processed
       template.rows = template.rows.map((row) =>
         // Note - we only care about the nested row overrides as top-level overrides (e.g. value, action_list)
         // will have been handled by the parent that first processed the begin_template row
         this.processParentRowOverride(row, overridesByName.rows)
       );
-      const unprocessedOverrides = Object.values(
-        this.childOverrides[this.templateNestedPath].rows
-      ).filter((override) => !override._processed);
+      const unprocessedOverrides = Object.values(this.childOverrides[this.name].rows).filter(
+        (override) => !override._processed
+      );
       if (unprocessedOverrides.length > 0) {
         console.warn("Overrides could not find target row; Assuming set_variables", {
           unprocessedOverrides,
@@ -291,7 +296,7 @@ export class TemplateContainerComponent
       }
       log("[Overrides End]", { template: { ...template } });
     } else {
-      log("[Overrides Skip]", { overrides, path: this.templateNestedPath });
+      log("[Overrides Skip]", { parentOverrides });
     }
     return template;
   }
@@ -303,7 +308,7 @@ export class TemplateContainerComponent
       if (override) {
         log("[Override]", { override, row: { ...row } });
         // keep track of which overrides have been applied for debugging purposes
-        this.childOverrides[this.templateNestedPath].rows[row.name]._processed = true;
+        this.childOverrides[this.name].rows[row.name]._processed = true;
         // process changes to the row itself
         Object.keys(override).forEach((field) => {
           switch (field) {
@@ -468,7 +473,7 @@ export class TemplateContainerComponent
     log("[Tree Extract Start]", { row: { ...row }, tree: { ...tree } });
     // use a new object so that 'delete' operations are not accidentally passed back (could use different variable name)
     row = { ...row };
-    namespace = namespace || `${this.templateNestedPath}.${row.name}`;
+    namespace = namespace || row.name;
     const { name, rows } = row;
     delete row.type; // we cannot currently override a row type (as blank rows interpreted as set_variable which might not be correct)
     delete row._dynamicFields; // remove references to dynamic fields calculated from the current template when inherited
