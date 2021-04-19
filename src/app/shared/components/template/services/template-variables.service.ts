@@ -27,6 +27,12 @@ interface IVariableContext {
 
 @Injectable({ providedIn: "root" })
 export class TemplateVariablesService {
+  /**
+   *
+   *
+   * TODO - ideally we should keep namespaced references to all variables, to make them easier
+   * to read from child components and quickly evaluate on change
+   */
   constructor(private templateService: TemplateService) {}
 
   /**
