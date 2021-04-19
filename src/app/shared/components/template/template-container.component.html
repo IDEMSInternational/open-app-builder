@@ -1,6 +1,6 @@
 <div
   [className]="'template-container ' + localVariables?.theme_name"
-  [attr.data-theme]="localVariables._theme || 'default'"
+  [attr.data-theme]="localVariables?._theme || 'default'"
   [attr.data-debug]="debugMode"
   [attr.data-isChild]="parent ? true : false"
 >
@@ -13,11 +13,13 @@
   </div>
 
   <!-- Template Component-->
-  <plh-template-component
-    *ngFor="let row of template.rows; trackBy: trackByRow"
-    [style.height]="onlyOneChild ? '100%' : null"
-    class="row"
-    [row]="row"
-    [parent]="this"
-  ></plh-template-component>
+  <div *ngFor="let row of template.rows; trackBy: trackByRow">
+    <plh-template-component
+      *ngIf="row.condition !== 'false'"
+      [style.height]="onlyOneChild ? '100%' : null"
+      class="row"
+      [row]="row"
+      [parent]="this"
+    ></plh-template-component>
+  </div>
 </div>
