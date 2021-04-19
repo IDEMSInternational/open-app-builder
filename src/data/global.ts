@@ -83,6 +83,11 @@
       },
       {
         "type": "declare_global_constant",
+        "name": "weekly_workshop_options",
+        "value": "Weekly Workshop Options"
+      },
+      {
+        "type": "declare_global_constant",
         "name": "parent_points",
         "value": "Parent Points"
       },
@@ -95,6 +100,23 @@
         "type": "declare_global_constant",
         "name": "parent_centre",
         "value": "Parent Library"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "workshops_setup",
+        "value": false,
+        "comments": "This ensures that the first time weekle workshops is pressed the workshop_setup is launched."
+      },
+      {
+        "type": "declare_field_default",
+        "name": "no_mail",
+        "value": false,
+        "comments": "This hides the parent library quick start when true"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "daily_relax_done",
+        "value": true
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
@@ -123,7 +145,7 @@
       {
         "type": "declare_global_constant",
         "name": "essential_tools_icon",
-        "value": "plh_images/icons/heart.svg",
+        "value": "plh_images/icons/light_bulb_outline.svg",
         "comments": "placeholder"
       },
       {
@@ -134,7 +156,7 @@
       {
         "type": "declare_global_constant",
         "name": "covid_icon",
-        "value": "plh_images/icons/heart.svg",
+        "value": "plh_images/icons/hand_heart_outline.svg",
         "comments": "placeholder"
       },
       {
@@ -156,7 +178,7 @@
       {
         "type": "declare_global_constant",
         "name": "extra_icon",
-        "value": "plh_images/icons/heart.svg",
+        "value": "plh_images/icons/question_mark.svg",
         "comments": "placeholder"
       },
       {
@@ -167,7 +189,7 @@
       {
         "type": "declare_global_constant",
         "name": "support_contacts_icon",
-        "value": "plh_images/icons/heart.svg",
+        "value": "plh_images/icons/hand_heart_outline.svg",
         "comments": "placeholder"
       },
       {
@@ -178,7 +200,7 @@
       {
         "type": "declare_global_constant",
         "name": "evidence_base_icon",
-        "value": "plh_images/icons/heart.svg",
+        "value": "plh_images/icons/light_bulb_outline.svg",
         "comments": "placeholder"
       },
       {
@@ -189,7 +211,7 @@
       {
         "type": "declare_global_constant",
         "name": "technical_support_icon",
-        "value": "plh_images/icons/heart.svg",
+        "value": "plh_images/icons/question_mark.svg",
         "comments": "placeholder"
       }
     ],
@@ -202,6 +224,16 @@
     "rows": [
       {
         "type": "declare_global_constant",
+        "name": "parent_points_make_me_smile",
+        "value": "Make me smile"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "parent_points_get_me_going",
+        "value": "Get me going"
+      },
+      {
+        "type": "declare_global_constant",
         "name": "parent_point_relax",
         "value": "Relax"
       },
@@ -209,6 +241,16 @@
         "type": "declare_global_constant",
         "name": "parent_point_relax_image",
         "value": "plh_images/habits/habit_relax_image.svg"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_relax",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_relax",
+        "value": 0
       },
       {
         "type": "declare_global_constant",
@@ -221,6 +263,16 @@
         "value": "plh_images/habits/habit_treat_yourself_image.svg"
       },
       {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_treat_yourself",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_treat_yourself",
+        "value": 0
+      },
+      {
         "type": "declare_global_constant",
         "name": "parent_point_praise_yourself",
         "value": "Praise yourself"
@@ -229,6 +281,16 @@
         "type": "declare_global_constant",
         "name": "parent_point_praise_yourself_image",
         "value": "plh_images/habits/habit_praise_yourself_image.svg"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_praise_yourself",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_praise_yourself",
+        "value": 0
       },
       {
         "type": "declare_global_constant",
@@ -241,6 +303,16 @@
         "value": "plh_images/habits/habit_spend_time_image.svg"
       },
       {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_spend_time",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_spend_time",
+        "value": 0
+      },
+      {
         "type": "declare_global_constant",
         "name": "parent_point_praise_teen",
         "value": "Praise your teen"
@@ -249,6 +321,16 @@
         "type": "declare_global_constant",
         "name": "parent_point_praise_teen_image",
         "value": "plh_images/habits/habit_praise_teen_image.svg"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_praise_teen",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_praise_teen",
+        "value": 0
       },
       {
         "type": "declare_global_constant",
@@ -261,6 +343,16 @@
         "value": "plh_images/habits/habit_breathe_image.svg"
       },
       {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_breathe",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_breathe",
+        "value": 0
+      },
+      {
         "type": "declare_global_constant",
         "name": "parent_point_money",
         "value": "Good money choice"
@@ -269,6 +361,16 @@
         "type": "declare_global_constant",
         "name": "parent_point_money_image",
         "value": "plh_images/habits/habit_money_image.svg"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_money",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_money",
+        "value": 0
       },
       {
         "type": "declare_global_constant",
@@ -281,6 +383,16 @@
         "value": "plh_images/habits/habit_consequence_image.svg"
       },
       {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_consequence",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_consequence",
+        "value": 0
+      },
+      {
         "type": "declare_global_constant",
         "name": "parent_point_safe",
         "value": "Safe"
@@ -289,6 +401,16 @@
         "type": "declare_global_constant",
         "name": "parent_point_safe_image",
         "value": "plh_images/habits/habit_safe_image.svg"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_safe",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_safe",
+        "value": 0
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/global_parent_points.xlsx"
@@ -301,67 +423,112 @@
       {
         "type": "declare_global_constant",
         "name": "w_self_care",
-        "value": "Self-Care",
-        "comments": "individual done"
+        "value": "Self-Care"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_self_care_tools",
+        "value": "How to add self-care"
       },
       {
         "type": "declare_global_constant",
         "name": "w_1on1",
-        "value": "One-on-One Time",
-        "comments": "individual done"
+        "value": "One-on-One Time"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_1on1_tools",
+        "value": "How to spend one-on-one time"
       },
       {
         "type": "declare_global_constant",
         "name": "w_praise",
-        "value": "Praise",
-        "comments": "individual done"
+        "value": "Praise"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_praise_tools",
+        "value": "How to praise"
       },
       {
         "type": "declare_global_constant",
         "name": "w_instruct",
-        "value": "Positive Instructions",
-        "comments": "individual done"
+        "value": "Positive Instructions"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_instruct_tools",
+        "value": "How to give positive instructions"
       },
       {
         "type": "declare_global_constant",
         "name": "w_stress",
-        "value": "Managing Stress",
-        "comments": "individual done"
+        "value": "Managing Stress"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_stress_tools",
+        "value": "How to manage stress"
       },
       {
         "type": "declare_global_constant",
         "name": "w_money",
-        "value": "Family Budgets",
-        "comments": "individual done"
+        "value": "Family Budgets"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_money_tools",
+        "value": "How to budget & save"
       },
       {
         "type": "declare_global_constant",
         "name": "w_rules",
-        "value": "Rules",
-        "comments": "individual done"
+        "value": "Rules"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_rules_tools",
+        "value": "How to create rules"
       },
       {
         "type": "declare_global_constant",
         "name": "w_consequence",
-        "value": "Calm Consequences",
-        "comments": "individual done"
+        "value": "Calm Consequences"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_consequence_tools",
+        "value": "How to give calm consequences"
       },
       {
         "type": "declare_global_constant",
         "name": "w_solve",
-        "value": "Problem Solving",
-        "comments": "individual done"
+        "value": "Problem Solving"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_solve_tools",
+        "value": "How to solve problems"
       },
       {
         "type": "declare_global_constant",
         "name": "w_safe",
-        "value": "Teen Safety",
-        "comments": "individual done"
+        "value": "Teen Safety"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_safe_tools",
+        "value": "How to keep your teen safe"
       },
       {
         "type": "declare_global_constant",
         "name": "w_crisis",
         "value": "Dealing with Crisis"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_crisis_tools",
+        "value": "How to deal with crisis"
       },
       {
         "type": "declare_global_constant",
@@ -671,27 +838,27 @@
       {
         "type": "declare_field_default",
         "name": "w_self_care_started",
-        "value": true
+        "value": false
       },
       {
         "type": "declare_field_default",
         "name": "w_self_care_completion_level",
-        "value": 100
+        "value": 0
       },
       {
         "type": "declare_field_default",
         "name": "w_1on1_completion_level",
-        "value": 100
+        "value": 0
       },
       {
         "type": "declare_field_default",
         "name": "w_praise_completion_level",
-        "value": 100
+        "value": 0
       },
       {
         "type": "declare_field_default",
         "name": "w_instruct_completion_level",
-        "value": 70
+        "value": 0
       },
       {
         "type": "declare_field_default",
@@ -801,17 +968,17 @@
       {
         "type": "declare_field_default",
         "name": "w_1on1_disabled",
-        "value": false
+        "value": true
       },
       {
         "type": "declare_field_default",
         "name": "w_praise_disabled",
-        "value": false
+        "value": true
       },
       {
         "type": "declare_field_default",
         "name": "w_instruct_disabled",
-        "value": false
+        "value": true
       },
       {
         "type": "declare_field_default",
@@ -864,7 +1031,7 @@
       {
         "type": "declare_field_default",
         "name": "do_workshops_together",
-        "value": true
+        "value": false
       },
       {
         "type": "declare_global_constant",
@@ -872,9 +1039,19 @@
         "value": "Group"
       },
       {
+        "type": "declare_field_default",
+        "name": "together_alternative",
+        "value": "In my group"
+      },
+      {
         "type": "declare_global_constant",
         "name": "individual",
         "value": "Me"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "individual_alternative",
+        "value": "On my own"
       },
       {
         "type": "declare_field_default",
@@ -889,17 +1066,17 @@
       {
         "type": "declare_field_default",
         "name": "user_name",
-        "value": "Lucie"
+        "value": "Awesome Parent"
       },
       {
         "type": "declare_field_default",
         "name": "workshop_day",
-        "value": "Monday"
+        "value": "Friday"
       },
       {
         "type": "declare_field_default",
         "name": "current_workshop",
-        "value": "Positive Instructions"
+        "value": "Self Care"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
