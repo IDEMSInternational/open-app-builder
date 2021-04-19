@@ -89,5 +89,62 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/tutorials/tour.xlsx"
+  },
+  {
+    "flow_type": "tour",
+    "flow_name": "intro_tour",
+    "status": "released",
+    "rows": [
+      {
+        "type": "step",
+        "title": "Welcome to ParentApp",
+        "message_text": "Welcome to ParentApp.\n\nYou Desreve to feel good, and have happier family relationships.\n\nThis app will support you with three major components",
+        "template_component_name": "home_screen",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "Weekly Workshops",
+        "message_text": "This tile takes you to the weekly workshops. \n\nThese include key tools for self-care and parenting a teenager. \n\nYou can choose to do them by yourself or as a group with family or friends.",
+        "template_component_name": "tile_weekly_workshops",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "Parent Points",
+        "message_text": "This tile takes you to the Parent points.\n\nSee your success in self-care and parenting. \n\nCelebrate your daily achievements!",
+        "template_component_name": "tile_parent_points",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "Parent Library",
+        "message_text": "This tile takes you to the parent library.\n\nStacked with the resources you need whenever you want. \n\nInstant access to help sections with Essential Tools for each skill, extra information and local resources.",
+        "template_component_name": "tile_parent_centre",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "Quick Starts",
+        "message_text": "These buttons appear when you have content to do. \n\nThis first message involves a task which asks you a few questions and customises your app experience.",
+        "template_component_name": "quick_start_parent_centre",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "Jump into a workshop",
+        "message_text": "This quick start would jump you straight into a first workshop which is all about self-care.\n\nAs a parent looking after yourself is the basis of look after your family.",
+        "template_component_name": "quick_start_weekly_workshops",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "Set-up",
+        "message_text": "Another good starting point is with the weekly workshop tile.\n\nPress it for the first time to set yourself up to do the workshops your way.\n\nHowever you start, just the fact you are here shows you care.",
+        "template_component_name": "tile_weekly_workshops",
+        "route": "template/home_screen"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/tutorials/tour.xlsx"
   }
 ]
