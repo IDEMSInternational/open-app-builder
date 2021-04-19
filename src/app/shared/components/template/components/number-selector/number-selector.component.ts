@@ -22,6 +22,7 @@ export class TmplNumberComponent
   @Input() set row(value: FlowTypes.TemplateRow) {
     this._row = value;
   }
+
   @Input() parent: TemplateContainerComponent;
 
   title: string | null;
@@ -58,6 +59,7 @@ export class TmplNumberComponent
     } else {
       this.min_value = getNumberParamFromTemplateRow(this._row, "min_value", 0);
       this.max_value = getNumberParamFromTemplateRow(this._row, "max_value", 6);
+      console.log(this.min_value, this.max_value);
       this.category_size = getNumberParamFromTemplateRow(this._row, "category_size", 1);
       this.displayValue = this.min_value;
       this._row.value = this.displayValue;
@@ -66,22 +68,28 @@ export class TmplNumberComponent
 
   increment(param: "gt" | "lt") {
     this.triggerActions("changed");
-    return this.category_list
-      ? this.checkIfContainsNextArrayItem(this.valuesFromCategoryList, param)
-        ? this.updateData(param)
-        : null
-      : param === "gt"
-      ? this.displayValue + this.category_size <= this.max_value
-        ? this.category_size === 1
-          ? this.displayValue++
-          : (this.displayValue += this.category_size)
-        : null
-      : this.displayValue > this.min_value - this.category_size &&
-        this.displayValue - this.category_size >= this.min_value
-      ? this.category_size === 1
-        ? this.displayValue--
-        : (this.displayValue -= this.category_size)
-      : null;
+    if (this.category_list) {
+      if (this.checkIfContainsNextArrayItem(this.valuesFromCategoryList, param)) {
+        this.updateData(param);
+      }
+    } else {
+      if (param === "gt") {
+        if (this.displayValue + this.category_size <= this.max_value) {
+          return this.category_size === 1
+            ? this.displayValue++
+            : (this.displayValue += this.category_size);
+        }
+      } else {
+        if (
+          this.displayValue > this.min_value - this.category_size &&
+          this.displayValue - this.category_size >= this.min_value
+        ) {
+          return this.displayValue === 1
+            ? this.displayValue--
+            : (this.displayValue -= this.category_size);
+        }
+      }
+    }
   }
 
   getMinOrMaxFromCategoryListItem(item: string): ICategoryList {
