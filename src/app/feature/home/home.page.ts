@@ -5,11 +5,11 @@ import { HOME_PAGE } from "src/app/shared/services/data/data.service";
 @Component({
   selector: "plh-home",
   templateUrl: "./home.page.html",
-  styleUrls: ["./home.page.scss"]
+  styleUrls: ["./home.page.scss"],
 })
 export class HomePage {
-
-  buttons: FlowTypes.Home_pageRow[] = [];
+  Home_Screen: string = "home_screen";
+  /*  buttons: FlowTypes.Home_pageRow[] = [];
 
   constructor() {
     if (HOME_PAGE && HOME_PAGE.length > 0 && HOME_PAGE[0] && HOME_PAGE[0].rows) {
@@ -31,7 +31,7 @@ export class HomePage {
       default:
         return 34;
     }
-  }
+  }*/
   trackByFn(index) {
     return index;
   }

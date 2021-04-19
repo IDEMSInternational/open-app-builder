@@ -12,6 +12,8 @@ import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { RemindersService } from "./feature/reminders/reminders.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
+import { TourService } from "./shared/services/tour/tour.service";
+import { TemplateService } from "./shared/components/template/services/template.service";
 
 @Component({
   selector: "app-root",
@@ -31,6 +33,8 @@ export class AppComponent {
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
     private surveyService: SurveyService,
+    private tourService: TourService,
+    private templateService: TemplateService,
     private remindersService: RemindersService,
     private appEventService: AppEventService,
     /** Inject in the main app component to start tracking actions immediately */
@@ -48,9 +52,15 @@ export class AppComponent {
         await this.surveyService.runSurvey("introSplash");
         await this.surveyService.runSurvey("analytics");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
+        await this.tourService.startTour("intro_tour");
       }
       this.skipTutorial = true;
       this.menuController.enable(true, "main-side-menu");
+      let old_date = this.userMetaService.getUserMeta("current_date");
+      await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
+      if (old_date != this.userMetaService.getUserMeta("current_date")) {
+        this.templateService.setField("daily_relax_done", "false");
+      }
       if (Capacitor.isNative) {
         SplashScreen.hide();
         this.notifications.init();
