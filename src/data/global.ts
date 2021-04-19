@@ -838,27 +838,27 @@
       {
         "type": "declare_field_default",
         "name": "w_self_care_started",
-        "value": true
+        "value": false
       },
       {
         "type": "declare_field_default",
         "name": "w_self_care_completion_level",
-        "value": 100
+        "value": 0
       },
       {
         "type": "declare_field_default",
         "name": "w_1on1_completion_level",
-        "value": 100
+        "value": 0
       },
       {
         "type": "declare_field_default",
         "name": "w_praise_completion_level",
-        "value": 100
+        "value": 0
       },
       {
         "type": "declare_field_default",
         "name": "w_instruct_completion_level",
-        "value": 70
+        "value": 0
       },
       {
         "type": "declare_field_default",
@@ -968,17 +968,17 @@
       {
         "type": "declare_field_default",
         "name": "w_1on1_disabled",
-        "value": false
+        "value": true
       },
       {
         "type": "declare_field_default",
         "name": "w_praise_disabled",
-        "value": false
+        "value": true
       },
       {
         "type": "declare_field_default",
         "name": "w_instruct_disabled",
-        "value": false
+        "value": true
       },
       {
         "type": "declare_field_default",
@@ -1031,7 +1031,7 @@
       {
         "type": "declare_field_default",
         "name": "do_workshops_together",
-        "value": true
+        "value": false
       },
       {
         "type": "declare_global_constant",
@@ -1066,17 +1066,17 @@
       {
         "type": "declare_field_default",
         "name": "user_name",
-        "value": "Lucie"
+        "value": "Awesome Parent"
       },
       {
         "type": "declare_field_default",
         "name": "workshop_day",
-        "value": "Monday"
+        "value": "Friday"
       },
       {
         "type": "declare_field_default",
         "name": "current_workshop",
-        "value": "Positive Instructions"
+        "value": "Self Care"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
