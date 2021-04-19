@@ -342,8 +342,6 @@ export namespace FlowTypes {
     flow_type: "template";
     rows: TemplateRow[];
     comments?: string;
-    /** Name provided to template when creating from another template */
-    _instance_name?: string;
   }
 
   export type TemplateRowType =

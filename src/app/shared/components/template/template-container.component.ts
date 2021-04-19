@@ -29,7 +29,7 @@ interface IOverride {
 })
 export class TemplateContainerComponent
   implements OnInit, OnDestroy, AfterViewInit, ITemplateContainerProps {
-  /** unique instance_name of template */
+  /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
   @Input() templatename: string;
@@ -219,42 +219,41 @@ export class TemplateContainerComponent
   private initialiseTemplate() {
     // Lookup template and provide fallback
     let foundTemplate = TEMPLATE.find((t) => t.flow_name === this.templatename);
-    if (!foundTemplate) {
-      console.warn(`[Template] - Not Found -`, this.templatename);
-      foundTemplate = NOT_FOUND_TEMPLATE(this.templatename);
+    if (foundTemplate) {
+      // TODO - 2021-04-17 CC - is there any reason for this?
+      let template: FlowTypes.Template = JSON.parse(JSON.stringify(foundTemplate));
+
+      // if template created at top level also ensure it has a name
+      this.name = this.name || this.templatename;
+
+      // keep track of path to this template from any parents
+      this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
+      this.templateNestedPath = this.templateBreadcrumbs.join(".");
+
+      log_group(`[Template] Init -`, this.name);
+      log("Nested Path:", this.templateNestedPath);
+
+      // When processing local variables check parent in case there are any variables
+      // that have already been set/overridden
+      template = this.processParentOverrides(template);
+
+      // handle main processing of template rows and variables
+      template.rows = this.processRows(template.rows, template);
+
+      this.template = template;
+      log("[Template] Render", { ...template });
+
+      // if a parent exists also provide parent reference to this as a child
+      if (this.parent) {
+        this.parent.children[this.name] = this;
+      }
+      log_groupEnd();
     }
-
-    // TODO - 2021-04-17 CC - is there any reason for this?
-    let template: FlowTypes.Template = JSON.parse(JSON.stringify(foundTemplate));
-
-    // if template created at top level also ensure it has a name
-    template._instance_name = this.name || this.templatename;
-
-    // TODO - unlikely to require this field anymore
-    this.name = template._instance_name;
-
-    // keep track of path to this template from any parents
-    this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
-    this.templateNestedPath = this.templateBreadcrumbs.join(".");
-
-    log_group(`[Template] Init -`, this.name);
-    console.log("Nested Path:", this.templateNestedPath);
-
-    // When processing local variables check parent in case there are any variables
-    // that have already been set/overridden
-    template = this.processParentOverrides(template);
-
-    // handle main processing of template rows and variables
-    template.rows = this.processRows(template.rows, template);
-
-    this.template = template;
-    console.log("[Template] Render", { ...template });
-
-    // if a parent exists also provide parent reference to this as a child
-    if (this.parent) {
-      this.parent.children[this.name] = this;
+    // Template not found
+    else {
+      console.warn(`[Template] - Not Found -`, this.templatename, { parent: this.parent });
+      this.template = NOT_FOUND_TEMPLATE(this.templatename);
     }
-    log_groupEnd();
   }
 
   /**
@@ -273,8 +272,8 @@ export class TemplateContainerComponent
       // apply any existing overrides for each row
       // NOTE - if overrides exist that do not match any row they will not be processed
       template.rows = template.rows.map((row) =>
-        // TODO - if it's only the child row overrides that we care about (top level are merged in parent template row)
-        // do we even need to track? Probably requires minor refactor as childTemplateRowOverrides
+        // Note - we only care about the nested row overrides as top-level overrides (e.g. value, action_list)
+        // will have been handled by the parent that first processed the begin_template row
         this.processParentRowOverride(row, overridesByName.rows)
       );
       const unprocessedOverrides = Object.values(
@@ -283,6 +282,7 @@ export class TemplateContainerComponent
       if (unprocessedOverrides.length > 0) {
         console.warn("Overrides could not find target row; Assuming set_variables", {
           unprocessedOverrides,
+          template: { ...template },
         });
         // Push unused overrides to the top as set_variable statements
         unprocessedOverrides.forEach((override) => {
@@ -418,7 +418,7 @@ export class TemplateContainerComponent
     log(`[Template Row Start] - ${row.name}`, { previousOverrides, row: { ...row } });
 
     const newOverrides = this.extractRowOverrideTree(row);
-    console.log("template child overrides", { ...newOverrides });
+    log("template child overrides", { ...newOverrides });
 
     const mergedOverrides = newOverrides;
     Object.entries(previousOverrides).forEach(([key, previousOverride]) => {
@@ -465,7 +465,7 @@ export class TemplateContainerComponent
     tree: IOverride = {},
     namespace?: string
   ): IOverride {
-    console.log("[Tree Extract Start]", { row: { ...row }, tree: { ...tree } });
+    log("[Tree Extract Start]", { row: { ...row }, tree: { ...tree } });
     // use a new object so that 'delete' operations are not accidentally passed back (could use different variable name)
     row = { ...row };
     namespace = namespace || `${this.templateNestedPath}.${row.name}`;
@@ -484,7 +484,7 @@ export class TemplateContainerComponent
           delete r.type;
           delete r._dynamicFields;
           if (nestedType === "nested_properties") {
-            console.log("[Nested Properties]", { ...r });
+            log("[Nested Properties]", { ...r });
             const nestedTemplate: FlowTypes.TemplateRow = { ...r, name: nestedName };
             const nestedNamespace = `${namespace}.${nestedName}`;
             tree = this.extractRowOverrideTree(nestedTemplate, tree, nestedNamespace);
@@ -497,7 +497,7 @@ export class TemplateContainerComponent
         });
       }
     }
-    console.log("[Tree Extract End]", { ...tree });
+    log("[Tree Extract End]", { ...tree });
     return tree;
   }
 
