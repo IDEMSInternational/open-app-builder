@@ -30,36 +30,42 @@
   }
 }
 .tool_1 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #f89b2d;
   border-radius: 20px;
 }
 .tool_2 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #ff7a00;
   border-radius: 20px;
 }
 .tool_3 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #0f8ab2;
   border-radius: 20px;
 }
 .tool_4 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #096b8b;
   border-radius: 20px;
 }
 .tool_5 {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #0d3f60;
   border-radius: 20px;
 }
 .white_box {
+  margin-top: var(--regular-margin);
   padding: 15px;
   flex-direction: column;
   background: #fff;
@@ -67,10 +73,13 @@
   border-radius: 20px;
 }
 .banner {
+  margin-top: var(--regular-margin);
   padding: 15px;
   border-radius: 20px;
   background: var(--ion-dg-bg-default);
+  margin-bottom: var(--regular-margin);
 }
+
 .column {
   flex-direction: column;
 }
@@ -97,10 +106,9 @@
 }
 
 .tmpl-video-container {
-  width: calc(100% - 20px);
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin: 10px;
 
   video {
     width: 100%;
@@ -118,26 +126,12 @@
 
 p {
   width: 100%;
-  margin: 0;
-}
-
-::ng-deep .round-container {
-  width: 100%;
-  background-color: #fff;
-  border: 2px solid #0d3f60;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-
-  &-br-15 {
-    border-radius: 15px;
-  }
 }
 
 .title-wrapper {
   display: flex;
   align-items: center;
-  padding: var(--regular-padding);
+  margin-top: var(--large-margin);
   h1 {
     margin: 0;
     line-height: 29px;
@@ -189,10 +183,10 @@ p {
 .subtitle-wrapper {
   display: flex;
   align-items: center;
-  padding: var(--regular-padding);
   color: var(--ion-color-primary);
   h2 {
     line-height: $line-height-text;
+    margin: 0;
   }
   .medium {
     font-size: $font-size-subtitle-medium;
@@ -221,17 +215,86 @@ p {
 }
 
 .banner_active {
-  background: linear-gradient(179.77deg, #ffe16a 34.6%, #ffb833 105.68%);
+  margin-top: var(--regular-margin);
+  background: var(--ion-banner-secondary);
   border-radius: 20px;
   width: 100%;
   margin: 0 auto 5px auto;
 }
 
 .banner_passive {
+  margin-top: var(--regular-margin);
   border-radius: 20px;
   width: 100%;
   margin: 0 auto 5px auto;
-  background: linear-gradient(179.77deg, #b3edfd 34.6%, #60ddff 65.78%, #09b9e9 105.68%);
+  background: var(--ion-banner-primary);
+}
+
+.banner_light {
+  color: var(--ion-color-primary);
+  margin-top: var(--regular-margin);
+  border-radius: 20px;
+  width: 100%;
+  margin: 0 auto 5px auto;
+  background: var(--ion-color-primary-contrast);
+}
+
+.banner_welcome {
+  margin-top: var(--regular-margin);
+  border-radius: 20px;
+  width: 100%;
+  margin-bottom: 30px !important;
+  background: var(--ion-banner-primary);
+  .offset {
+    margin-bottom: -30px !important;
+  }
+  .offset {
+    plh-template-component > .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
+      height: 220px;
+      &.margin-t-regular {
+        margin-top: 0 !important;
+      }
+    }
+  }
+  &.active {
+    background: var(--ion-banner-secondary);
+  }
+  &.passive {
+    background: var(--ion-banner-primary);
+  }
+}
+
+.banner_short {
+  margin-top: var(--regular-margin);
+  border-radius: 20px;
+  width: 100%;
+  margin-bottom: 30px !important;
+  background: var(--ion-banner-primary);
+  padding: 0 24px;
+  min-height: var(--banner-short-height);
+  max-height: var(--banner-short-height);
+  .offset {
+    plh-template-component:first-child {
+      flex: 2;
+      padding: 0 15px 15px 0;
+    }
+    plh-template-component:last-child {
+      flex: 1;
+      min-width: 75px;
+      max-width: fit-content;
+      .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
+        &.margin-t-regular {
+          margin-top: 0 !important;
+        }
+      }
+    }
+  }
+  &.active {
+    background: var(--ion-banner-secondary);
+  }
+  &.passive {
+    background: var(--ion-banner-primary);
+  }
 }
 
 .home_screen {
@@ -289,6 +352,10 @@ p {
 }
 .rounded_corners {
   border-radius: 15px;
+
+  img {
+    border-radius: 15px;
+  }
 }
 .whiteText {
   color: #fff;

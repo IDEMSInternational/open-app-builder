@@ -1,11 +1,6 @@
 <ion-content>
-  <div class="button-list">
-    <div class="button-container" [routerLink]="button.enabled ? button.route : null" *ngFor="let button of buttons; let i = index; trackBy: trackByFn"
-    [class.disabled]="!button.enabled">
-      <img [style.bottom.px]="getBottomPositionImage(i)" *ngIf="button.left_image" [src]="'assets/plh_assets/' + button.left_image">
-      <div class="button">
-        <div class="btn-text" [style.width.px]="button.text.length >= 16 ? 110 : 150 ">{{button.text}}</div>
-      </div>
-    </div>
-  </div>
+  <plh-template-container
+    class="main-layout-padding"
+    [templatename]="Home_Screen"
+  ></plh-template-container>
 </ion-content>

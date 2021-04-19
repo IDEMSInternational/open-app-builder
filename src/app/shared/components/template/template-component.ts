@@ -46,6 +46,7 @@ export class TmplCompHostDirective {
       [attr.data-hidden]="row.hidden"
       [attr.data-debug]="parent.debugMode"
       [ngClass]="{ disabled: row.disabled }"
+      [attr.data-rowname]="row.name"
     >
       <!-- Template Debugger -->
       <plh-template-debugger
@@ -128,9 +129,40 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
         this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
       }
     }
-    if (this.row.parameter_list && this.row.parameter_list["style"] == "navigation") {
-      this.elRef.nativeElement.style.setProperty("flex", "1");
-      this.elRef.nativeElement.style.setProperty("justify-content", "flex-end");
+    if (
+      this.row.parameter_list &&
+      this.row.parameter_list["style"] === "navigation" &&
+      this.row.type === "display_group"
+    ) {
+      this.elRef.nativeElement.style.setProperty("display", "flex");
+      this.elRef.nativeElement.style.setProperty("height", "100%");
+      this.elRef.nativeElement.style.setProperty("align-items", "flex-end");
+      let el_component = this.elRef.nativeElement.parentElement.closest("plh-template-component");
+      let el_container = this.elRef.nativeElement.parentElement.closest("plh-template-container");
+      while (el_component && el_container) {
+        try {
+          if (el_component) {
+            el_component.style.setProperty("height", "100%");
+            el_component.style.setProperty("display", "flex");
+            el_component.style.setProperty("align-items", "flex-end");
+          }
+
+          if (el_container) {
+            el_container.style.setProperty("height", "100%");
+            el_container.style.setProperty("display", "flex");
+            el_container.style.setProperty("align-items", "flex-end");
+
+            el_component = el_container.parentElement.closest("plh-template-component");
+          }
+
+          if (el_component) {
+            el_container = el_component.parentElement.closest("plh-template-container");
+          }
+        } catch (ex) {
+          console.error(ex);
+          console.log("navigation style settings exception");
+        }
+      }
     }
     if (this.row.type === "button") {
       this.elRef.nativeElement.style.setProperty("align-self", "normal");

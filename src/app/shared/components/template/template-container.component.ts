@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
@@ -60,10 +60,13 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
+  onlyOneChild: boolean;
+
   constructor(
     private templateService: TemplateService,
     public router: Router,
     public route: ActivatedRoute,
+    public elRef: ElementRef,
     private templateNavService: TemplateNavService
   ) {}
 
@@ -72,6 +75,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.subscribeToQueryParamChanges();
     // const { name, templatename, parent, row, templateBreadcrumbs } = this;
     // console.log("template initialised", { name, templatename, parent, row, templateBreadcrumbs });
+  }
+
+  ngAfterViewInit(): void {
+    this.onlyOneChild = this.template?.rows?.length === 1;
+
+    if (this.onlyOneChild) {
+      this.elRef.nativeElement.style.setProperty("height", "100%");
+    }
   }
 
   ngOnDestroy(): void {
@@ -423,7 +434,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
             parsedValue = this.template.rows.find((r) => r.name === fieldName)?.value;
           }
           // TODO - handle case where match found (but still returns undefined)
-          if (!parsedValue && parsedValue !== 0) {
+          if (parsedValue === null || parsedValue === undefined) {
             console.error("could not parse local variable", { evaluator, localVariables });
             parsedValue = `{{local.${fieldName}}}`;
           }

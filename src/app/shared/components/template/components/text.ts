@@ -5,7 +5,8 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-text",
   template: `<p
-    class="small standard normal"
+    *ngIf="_row.value"
+    class="small standard normal margin-t-large"
     [class]="style"
     [innerHTML]="_row.value | markdown"
     [style.textAlign]="textAlign"
@@ -13,6 +14,9 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [
     `
+      .margin-t-large {
+        margin-bottom: -0.75em;
+      }
       .small {
         font-size: 16px;
       }

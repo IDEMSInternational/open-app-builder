@@ -14,6 +14,7 @@
 
   <!-- Template Component-->
   <plh-template-component
+    [style.height]="onlyOneChild ? '100%' : null"
     *ngFor="let row of template.rows"
     class="row"
     [row]="row"

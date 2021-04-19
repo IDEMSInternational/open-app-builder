@@ -318,6 +318,7 @@ export namespace FlowTypes {
     type: "step";
     message_text?: string;
     title?: string;
+    template_component_name?: string;
     element?: string;
     route?: string;
   }
@@ -382,6 +383,7 @@ export namespace FlowTypes {
     | "combo_box"
     | "icon_banner"
     | "dashed_box"
+    | "lottie_animation"
     | "parent_point_box";
 
   export interface TemplateRow {
@@ -410,9 +412,20 @@ export namespace FlowTypes {
     type: "local" | "field" | "fields" | "global" | "data";
     fieldName: string;
   }
+
+  export type TemplateRowActionTrigger =
+    | "click"
+    | "completed"
+    | "uncompleted"
+    | "changed"
+    | "audio_play"
+    | "audio_pause"
+    | "audio_end"
+    | "audio_first_start";
+
   export interface TemplateRowAction {
     /** actions have an associated trigger */
-    trigger: "click" | "completed" | "uncompleted" | "changed";
+    trigger: TemplateRowActionTrigger;
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
@@ -423,6 +436,7 @@ export namespace FlowTypes {
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"
       | "pop_up"
+      | "close_pop_up"
       | "set_theme";
     args: string[];
     /** field populated for tracking the component that triggered the action */

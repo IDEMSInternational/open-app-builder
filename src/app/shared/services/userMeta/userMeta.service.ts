@@ -44,6 +44,7 @@ interface IUserMetaEntry {
 interface IUserMeta {
   uuid: string;
   first_app_open: isostring;
+  current_date: isostring;
   app_skin: "MODULE_FOCUS_SKIN" | "BLOBS" | "BUTTONS";
   active_module: string;
 }
@@ -55,6 +56,7 @@ const USER_DEFAULTS: IUserMeta = {
   uuid: null,
   app_skin: "MODULE_FOCUS_SKIN",
   first_app_open: null,
+  current_date: null,
   // Set default module id as first defined in module list
   active_module: MODULE_LIST[0].rows[0].id,
 };

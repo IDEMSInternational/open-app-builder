@@ -14,8 +14,8 @@ ion-button {
   color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
-  min-height: 65px;
-  padding: var(--regular-padding);
+  min-height: 71px;
+  padding: var(--regular-margin) var(--regular-padding) 0;
   --border-radius: 15px;
   --box-shadow: var(--ion-btn-dark-box-shadow);
   display: flex;
@@ -41,11 +41,15 @@ ion-button[disabled] {
 }
 
 .make_me_smile {
+  min-height: 80px !important;
+  max-width: fit-content;
   --background: var(--ion-btn-primary);
   color: var(--ion-color-primary-contrast);
 }
 
 .get_me_going {
+  min-height: 80px !important;
+  max-width: fit-content;
   --background: var(--ion-btn-secondary);
   color: var(--ion-color-primary-contrast);
 }
