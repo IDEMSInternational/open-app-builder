@@ -131,6 +131,7 @@ export class TemplateContainerComponent
     await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
     // once all actions have been processed re-render rows
     if (processedActions.length > 0) {
+      log("[Actions Trigger Row Reprocess]");
       this.processRows(this.template.rows, this.template);
     }
   }
@@ -252,57 +253,57 @@ export class TemplateContainerComponent
   /**
    *
    *
+   * TODO - if parent overrides have changed this will not currently be reprocessed
    */
   private processParentOverrides(template: FlowTypes.Template) {
     const overrides = { ...this.parent?.childOverrides };
-    log("[Overrides Start]", { overrides: { ...overrides }, template: { ...template } });
-
+    // TODO - may want to filter which overrides are kept and passed on
+    // (renaming path)
+    this.childOverrides = overrides;
     // apply overrides for the existing template
     const currentOverride = overrides[this.templateNestedPath];
     if (currentOverride) {
+      log("[Overrides Start]", { currentOverride, template: { ...template } });
       const overridesByName = arrayToHashmap(currentOverride.rows, "name");
       // apply any existing overrides for each row
-      // note - if overrides exist that do not match any row they will not be processed
-      template.rows = template.rows.map((row) => {
-        if (row.name) {
-          // keep the existing row type (as by default updated rows will be 'set_variable' type)
-          const override = overridesByName[row.name];
-          if (override) {
-            // remove any dynamic references in the current template which will now be overwritten
-            const _dynamicFields = row._dynamicFields || {};
-            Object.keys(_dynamicFields).forEach((key) => {
-              if (override.hasOwnProperty(key)) {
-                delete _dynamicFields[key];
-              }
-            });
-            // merge the original row and override row together, preserving original row type
-            // and assigning modified dynamicFields references
-            const merged = { ...row, ...override, type: row.type, _dynamicFields };
-
-            return merged;
-            // remove dynamic references
-          }
-        }
-        return row;
-      });
-      // once overrides have been processed can remove
-      delete overrides[this.templateNestedPath];
+      // NOTE - if overrides exist that do not match any row they will not be processed
+      template.rows = template.rows.map((row) =>
+        this.processParentRowOverride(row, overridesByName)
+      );
+      log("[Overrides End]", { template: { ...template } });
+    } else {
+      log("[Overrides Skip]");
     }
-    // Rename any deeper nested overrides to omit current template name
-    // e.g. if current template is template_a
-    //  template_a.template_b.template_c => template_b.template_c
-    //  template_a => template_a (want to retain for processing in this template)
-    // const nestedOverrides = {};
-    // Object.keys(overrides).forEach((k) => {
-    //   if (k !== template._instance_name) {
-    //     const childName = k.replace(`${template._instance_name}.`, "");
-    //     nestedOverrides[childName] = overrides[k];
-    //   }
-    // });
-
-    this.childOverrides = overrides;
-    log("[Overrides End]", { template: { ...template } });
     return template;
+  }
+
+  private processParentRowOverride(row: FlowTypes.TemplateRow, overridesByName) {
+    if (row.name) {
+      // keep the existing row type (as by default updated rows will be 'set_variable' type)
+      const override = overridesByName[row.name];
+      if (override) {
+        // remove any dynamic references in the current template which will now be overwritten
+        const _dynamicFields = row._dynamicFields || {};
+        Object.keys(_dynamicFields).forEach((key) => {
+          if (override.hasOwnProperty(key)) {
+            delete _dynamicFields[key];
+          }
+        });
+        // merge the original row and override row together, preserving original row type
+        // and assigning modified dynamicFields references
+        const merged = { ...row, ...override, type: row.type, _dynamicFields };
+        // TODO - want to mark the override as processed (for tracking any un-used)
+        // but this will require storing fully as a hashmap to access
+        return merged;
+      }
+    }
+    // If the row has nested rows also process overrides for them
+    if (row.rows) {
+      row.rows = row.rows.map((nestedRow) =>
+        this.processParentRowOverride(nestedRow, overridesByName)
+      );
+    }
+    return row;
   }
 
   /**
@@ -326,7 +327,7 @@ export class TemplateContainerComponent
     // const localVariables = this.localVariables;
 
     rows.forEach((row) => {
-      let { name, value, condition, hidden, type } = row;
+      const { name, value, condition, hidden, type } = row;
       log("[Row start]", name, { ...row });
       // Evaluate row variables in context of current local state
       const evalContext = { localVariables: this.localVariables, template, row };
@@ -349,14 +350,14 @@ export class TemplateContainerComponent
 
       // Update local variables where specified and filter out if
       // processing for use in local template (not skipVars for child)
-      if (row.type === "set_variable" && !skipVars) {
+      if (type === "set_variable" && !skipVars) {
         this.localVariables[name] = row;
         log("[Row end (set)]", name);
         return;
       }
       // Handle rows that set external data and filter out
       // TODO - confirm no other externally processed rows
-      if (row.type === "set_field") {
+      if (type === "set_field") {
         log("[Row end (set)]", name);
         return this.templateService.setField(name, value);
       }
@@ -369,7 +370,7 @@ export class TemplateContainerComponent
       }
 
       // Generate data to pass to child template where defined
-      if (row.type === "template") {
+      if (type === "template") {
         row = this.processTemplateRow(row);
       }
 
