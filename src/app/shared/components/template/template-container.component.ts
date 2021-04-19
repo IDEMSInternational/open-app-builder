@@ -219,6 +219,10 @@ export class TemplateContainerComponent
    *
    * TODO - parent overrides may have changed, so need way to determine which to process or not
    * (possibly tracking list of actions or checking previous parent overrides vs current)
+   *
+   * Or possibly passing more information into the template row (e.g. do initial template lookup)
+   * from within begin_template block and merge with child overrides before render
+   *
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
   private processRowUpdates() {
@@ -238,6 +242,7 @@ export class TemplateContainerComponent
       this.name = this.name || this.templatename;
       // keep track of path to this template from any parents
       this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
+
       log_group(`[Template] Init -`, this.name, { template: { ...template } });
       template.rows = this.processParentOverrides(template.rows);
       template.rows = this.processRows(template.rows, template);
@@ -304,11 +309,10 @@ export class TemplateContainerComponent
   }
 
   /**
-   *
+   *  Lookup any overrides for a row or a row's nested child rows and apply
    */
   private processParentRowOverride(row: FlowTypes.TemplateRow) {
     if (row.name) {
-      // keep the existing row type (as by default updated rows will be 'set_variable' type)
       const override = this.templateRowOverrides[row.name];
       if (override) {
         log("[Override]", { override, row: { ...row } });
@@ -413,7 +417,9 @@ export class TemplateContainerComponent
   }
 
   /**
-   *
+   * When a begin_template row is found we want to extract the full list of information
+   * to the child instance once rendered, merging overrides defined in the current
+   * row with any overrides defined via nested_properties in parent templates
    */
   private processTemplateRow(row: FlowTypes.TemplateRow) {
     const previousOverrides = { ...this.childOverrides };

@@ -1,4 +1,18 @@
-import { FlowTypes } from "scripts/types";
+namespace FlowTypes {
+  export interface TemplateRow {
+    name: string;
+    type: "set_variable" | "nested_properties" | "template";
+    value?: string;
+    rows?: TemplateRow[];
+  }
+}
+
+interface IOverride {
+  [name: string]: {
+    [override_key: string]: any;
+    rows?: IOverride;
+  };
+}
 
 const template_primary: FlowTypes.TemplateRow = {
   name: "template_name",
@@ -95,16 +109,20 @@ const template_secondary: FlowTypes.TemplateRow = {
   ],
 };
 
-function extract(row: FlowTypes.TemplateRow, nested = {}, namespace?: string) {
+function extractRowOverrideTree(
+  row: FlowTypes.TemplateRow,
+  tree: IOverride = {},
+  namespace?: string
+): IOverride {
   namespace = namespace || row.name;
   const { name, rows } = row;
   // neither of these fields can be updated on template, so remove
   delete row.name;
   delete row.type;
   if (name) {
-    nested[namespace] = { ...row };
+    tree[namespace] = { ...row } as any;
     if (rows) {
-      nested[namespace].rows = [];
+      tree[namespace].rows = {};
       // repeat above process for extract nested_properties
       rows.forEach((r) => {
         if (r.type === "nested_properties") {
@@ -115,23 +133,25 @@ function extract(row: FlowTypes.TemplateRow, nested = {}, namespace?: string) {
             ...r,
             name: nestedName,
           };
-          nested = extract(nestedTemplate, nested, `${namespace}.${nestedName}`);
+          tree = extractRowOverrideTree(nestedTemplate, tree, `${namespace}.${nestedName}`);
         } else {
-          nested[namespace].rows.push(r);
+          if (r.rows) {
+            // TODO - possibly needs recursive handling?
+            console.warn("Nested rows not expected during extract, Requires review", { ...r });
+          }
+          tree[namespace].rows[r.name] = r as any;
         }
       });
     }
   }
-
-  return nested;
+  return tree;
 }
-const extracted_primary = extract(template_primary);
-console.log("extracted_primary");
-console.log(JSON.stringify(extracted_primary, null, 2));
-const extracted_secondary = extract(template_secondary);
-console.log("extracted_secondary");
-console.log(JSON.stringify(extracted_secondary, null, 2));
-
+const extracted_primary = extractRowOverrideTree(template_primary);
+const extracted_secondary = extractRowOverrideTree(template_secondary);
+// console.log("extracted_primary");
+// console.log(JSON.stringify(extracted_primary, null, 2));
+// console.log("extracted_secondary");
+// console.log(JSON.stringify(extracted_secondary, null, 2));
 const extracted_merged = extracted_secondary;
 Object.entries(extracted_primary).forEach(([key, primary]) => {
   const secondary = extracted_secondary[key];
@@ -147,8 +167,19 @@ Object.entries(extracted_primary).forEach(([key, primary]) => {
 console.log("merged");
 console.log(JSON.stringify(extracted_merged, null, 2));
 
-// Simple test case for merging two items that share properties and rows
-const test_primary = {
+function extractNested(rows: any[]) {
+  const nested = {};
+  rows.forEach((r) => {
+    if (r.rows) {
+      nested[r.name] = extractNested(r.rows);
+    } else {
+      nested[r.name] = r;
+    }
+  });
+  return nested;
+}
+
+const primary = {
   text_a: "1a",
   text_b: "1b",
   properties: { key_a: "1a", key_b: "1b" },
@@ -162,7 +193,7 @@ const test_primary = {
   ],
 };
 
-const test_secondary = {
+const secondary = {
   text_b: "2b",
   text_c: "2c",
   properties: { key_b: "2b", key_c: "2c" },
@@ -176,11 +207,14 @@ const test_secondary = {
   ],
 };
 
-function mergeObjectsWithRows(primary, secondary) {
+function mergeObjectsWithRows(primary: IOverride, secondary: IOverride = {} as any) {
   return {
     ...secondary,
     ...primary,
-    rows: mergeObjectArrays(primary.rows, secondary.rows, "name"),
+    rows: {
+      ...secondary.rows,
+      ...primary.rows,
+    },
   };
 }
 
@@ -194,8 +228,6 @@ function mergeObjectArrays<T>(primaryRows: T[], secondaryRows: T[] = [], mergeKe
   });
   return Object.values(secondaryHash);
 }
-
-// const merged = mergeObjectsWithRows(primary, secondary);
 
 function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: T } {
   const hashmap: { [key: string]: T } = {};
