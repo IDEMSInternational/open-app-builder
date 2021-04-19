@@ -84,7 +84,11 @@ export class TmplRadioGroupComponent
     this.imageCheckedColor = this.style == "active" ? "#f89b2d" : "#0D3F60";
     this.windowWidth = window.innerWidth;
     if (this.radioBtnList) {
-      this.valuesFromBtnList = this.radioBtnList.split(",").filter((item) => item !== "");
+      if (typeof this.radioBtnList === "string") {
+        // TODO - 2021-04-19 CC - confirm if values still sometimes parse as string or are always object
+        this.radioBtnList = this.radioBtnList.split(",").filter((item) => item !== "");
+      }
+      this.valuesFromBtnList = this.radioBtnList;
       this.createArrayBtnElement();
     }
     this.getFlexWidth();
