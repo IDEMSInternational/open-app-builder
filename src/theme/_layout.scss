@@ -73,6 +73,9 @@ ion-modal.template-popup-modal {
 .margin-t-large {
   margin-top: var(--large-margin);
 }
+.margin-t-huge {
+  margin-top: var(--huge-margin);
+}
 
 .main-layout-padding {
   @media (max-width: 339px) {
