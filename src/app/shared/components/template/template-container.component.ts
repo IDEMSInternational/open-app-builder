@@ -74,7 +74,7 @@ export class TemplateContainerComponent
     if (this.debugMode) {
       this.setLogging(true);
     }
-    this.initialiseTemplate();
+    this.renderTemplate();
   }
 
   // TODO - CC 2021-04-19 - code can likely be tidied (just use the rows length instead of new variable)
@@ -210,8 +210,10 @@ export class TemplateContainerComponent
   /**
    * When a child triggers the changing of a local variable... TODO
    */
-  public setLocalVariable(key: string, value: any) {
-    this.localVariables[key] = { value } as FlowTypes.TemplateRow;
+  public setLocalVariable(name: string, value: any) {
+    this.localVariables[name] = { value } as FlowTypes.TemplateRow;
+
+    // TODO - cross-reference any children that have dynamic row referencing this variable
   }
 
   /**
@@ -225,25 +227,36 @@ export class TemplateContainerComponent
    *
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
-  private processRowUpdates() {
+  public processRowUpdates() {
     console.warn("Reprocessing rows following action - NOTE this method requires review");
-    this.processRows(this.template.rows, this.template);
+
+    console.group(`[Reprocess Template]`, this.name);
+    this.template.rows = [...this.processRows(this.template.rows, this.template)];
+    console.groupEnd();
+    // Note -
+
+    // force children to re-render ?
+    // TODO - could have lots of knock-ons, need better way to cache localVariables and
+    // parent overrides that will determine changes
   }
 
   /***************************************************************************************
    *  Template Initialisation
    **************************************************************************************/
 
-  private initialiseTemplate() {
+  private renderTemplate() {
     // Lookup template
-    let template: FlowTypes.Template = TEMPLATE.find((t) => t.flow_name === this.templatename);
-    if (template) {
+    const foundTemplate: FlowTypes.Template = TEMPLATE.find(
+      (t) => t.flow_name === this.templatename
+    );
+    if (foundTemplate) {
+      // create a deep clone of the object to prevent accidental reference changes
+      const template = JSON.parse(JSON.stringify(foundTemplate));
       // if template created at top level also ensure it has a name
       this.name = this.name || this.templatename;
       // keep track of path to this template from any parents
       this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
-
-      log_group(`[Template] Init -`, this.name, { template: { ...template } });
+      log_group(`[Template] Init -`, this.name, { template: { ...template }, ctxt: { ...this } });
       template.rows = this.processParentOverrides(template.rows);
       template.rows = this.processRows(template.rows, template);
       this.template = template;
@@ -256,7 +269,7 @@ export class TemplateContainerComponent
     }
     // Template not found
     else {
-      console.warn(`[Template] - Not Found -`, this.templatename, { parent: this.parent });
+      console.warn(`[Template] - Not Found -`, { ...this });
       this.template = NOT_FOUND_TEMPLATE(this.templatename);
     }
   }
@@ -370,17 +383,15 @@ export class TemplateContainerComponent
       // Filter out if specified by condition. This might be string or boolean
       // depending on the parser and related calculations (so check for both)
       if (condition === (false as any) || condition === "false") {
+        // stop processing row (will not be rendered)
+        row.condition = "false";
         log("[Row end (skip)]", name);
-        return;
+        return row;
       }
 
-      // HACK - To resolve in future (likely removing hidden as a field)
-      // Previously hidden fields were evaluated at runtime and used to populate
-      // content dynamically. Now they are processed in advance, so to avoid
-      // conflict where two content boxes are both set, treat as conditional
+      // Make type assigned to hidden consistend
       if (hidden === (true as any) || hidden === "true") {
-        log("[Row end (skip)]", name);
-        return;
+        row.hidden = "true";
       }
 
       // Update local variables where specified and filter out if
@@ -388,12 +399,14 @@ export class TemplateContainerComponent
       if (type === "set_variable" && !skipVars) {
         this.localVariables[name] = row;
         log("[Row end (set)]", name);
+        // remove so that the same initialisation won't happen again on re-render
         return;
       }
 
       // Handle rows that set external data and filter out
       // TODO - confirm no other externally processed rows
       if (type === "set_field") {
+        console.warn("Setting fields from template rows is not advised", { ...row });
         log("[Row end (set)]", name);
         return this.templateService.setField(name, value);
       }
@@ -426,7 +439,7 @@ export class TemplateContainerComponent
     log(`[Template Row Start] - ${row.name}`, { previousOverrides, row: { ...row } });
 
     const newOverrides = this.extractRowOverrideTree(row);
-    log("template child overrides", { ...newOverrides });
+    log("new overrides to merge with previous", { ...newOverrides });
 
     const mergedOverrides = newOverrides;
     Object.entries(previousOverrides).forEach(([key, previousOverride]) => {
@@ -439,9 +452,19 @@ export class TemplateContainerComponent
         mergedOverrides[key] = previousOverride;
       }
     });
+    if (mergedOverrides[row.name]) {
+      // apply top-level overrides to row (e.g. value, action_list)
+      row = { ...row, ...(mergedOverrides[row.name] as any) };
+    }
+
+    // Pass row overrides for use later
+    // TODO - each of these fields only needs the nested [.rows] property saved (top level added to row above)
     this.childOverrides = mergedOverrides;
+
     log(`[Template Row End] - ${row.name}`, { ...mergedOverrides });
     // remove the child rows from further processing in this template
+    // TODO - confirm if this is actually useful to do - Might be better to let rows
+    // pass to child and just process from there
     row.rows = [];
     return row;
   }

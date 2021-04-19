@@ -107,9 +107,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {
       case "template":
-        return row.hidden === "true"
-          ? null
-          : this.renderTemplateComponent(TemplateContainerComponent, row);
+        return this.renderTemplateComponent(TemplateContainerComponent, row);
       default:
         const displayComponent = TEMPLATE_COMPONENT_MAPPING[row.type];
         if (displayComponent) {
@@ -181,6 +179,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     component: typeof TemplateContainerComponent,
     row: FlowTypes.TemplateRow
   ) {
+    console.log("[Template Component Render]", { ...row });
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
     const factory = this.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainerRef.createComponent(factory);
