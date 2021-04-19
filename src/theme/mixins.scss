@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @mixin banner {
   border-radius: var(--ion-border-radius-secondary);
   margin-top: var(--regular-margin);

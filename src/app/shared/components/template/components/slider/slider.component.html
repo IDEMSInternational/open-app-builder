@@ -1,22 +1,35 @@
-<div class="slider-wrapper">
+<div class="slider-wrapper margin-t-huge">
   <div class="title-slider">
-    {{title}}
+    {{ title }}
   </div>
-  <ion-icon *ngIf="help" name="help-circle-outline" class="help" [pTooltip]="help" tooltipPosition="left" tooltipEvent="click"></ion-icon>
+  <ion-icon
+    *ngIf="help"
+    name="help-circle-outline"
+    class="help"
+    [pTooltip]="help"
+    tooltipPosition="left"
+    tooltipEvent="click"
+  ></ion-icon>
   <div class="slider-container">
     <nouislider
-                (slide)="changeValue()"
-                [class.custom-slider]="!rangeBarTouched || disabled"
-                [config]="someKeyboardConfig"
-                [style.width.%]="100"
-                [disabled]="disabled"
-                [(ngModel)]="value"></nouislider>
+      (slide)="changeValue()"
+      [class.custom-slider]="!rangeBarTouched || disabled"
+      [config]="someKeyboardConfig"
+      [style.width.%]="100"
+      [disabled]="disabled"
+      [(ngModel)]="value"
+    ></nouislider>
     <div class="checkbox-block" (click)="disableSlider()">
-      <ion-checkbox class="custom-checkbox"  [value]="no_value" [checked]="no_value"  color="primary"></ion-checkbox>
+      <ion-checkbox
+        class="custom-checkbox"
+        [value]="no_value"
+        [checked]="no_value"
+        color="primary"
+      ></ion-checkbox>
     </div>
   </div>
   <div class="labels">
-    <div class="min">{{min_value_label}}</div>
-    <div class="max">{{max_value_label}}</div>
+    <div class="min">{{ min_value_label }}</div>
+    <div class="max">{{ max_value_label }}</div>
   </div>
 </div>
