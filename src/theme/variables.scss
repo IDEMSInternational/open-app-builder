@@ -20,7 +20,6 @@ $light: #ffffff;
 $dark: #00000040;
 
 /** Borders **/
-$border-standard: 2px solid $primary;
 $border-dashed: 2px dashed $primary;
 $border-radius-standard: 15px;
 $border-radius-secondary: 20px;
@@ -43,13 +42,14 @@ $horizontal: 90deg;
   --huge-margin: 40px;
   --ion-main-bg-passive: #{$some};
   --ion-main-bg-active: #{$tertiary};
+  --ion-border-standart: 2px solid #{$primary};
   --ion-default-box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
-  --ion-border-standart: #{$border-standard};
   --ion-border-radius-standard: #{$border-radius-standard};
   --ion-border-radius-secondary: #{$border-radius-secondary};
   --banner-short-height: 95px;
   --home-screen-height: 154px;
   --home-screen-height-small: 130px;
+  --ion-border-radius-rounded: 50%;
 
   --p-margin-standart: 0.75em;
 
@@ -240,6 +240,9 @@ $horizontal: 90deg;
     var(--home-screen-dark-gradient-end) 96.06%
   );
 
+  --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
+  --ion-color-slider: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
+
   --ion-dg-bg-default: var(--ion-banner-primary);
   --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};
 
@@ -256,8 +259,8 @@ $horizontal: 90deg;
   --ion-color-primary-tint: #255370;
 
   --ion-color-secondary: #{$secondary};
-  --ion-color-primary-light: #{$secondary-light};
-  --ion-color-primary-lighter: #{$secondary-lighter};
+  --ion-color-secondary-light: #{$secondary-light};
+  --ion-color-secondary-lighter: #{$secondary-lighter};
   --ion-color-secondary-contrast-rgb: 0, 0, 0;
   --ion-color-secondary-shade: #d6bc5c;
   --ion-color-secondary-contrast: #000000;
