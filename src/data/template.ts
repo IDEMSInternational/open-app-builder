@@ -24,7 +24,7 @@
           {
             "type": "title",
             "name": "title",
-            "value": "@local.tools_title",
+            "value": "@global.essential_tools: \n@local.tools_title",
             "style_list": [
               "flex:4"
             ]
@@ -4866,12 +4866,9 @@
             },
             "rows": [
               {
-                "type": "subtitle",
+                "type": "title",
                 "name": "banner_title",
-                "value": "@local.activity_title",
-                "parameter_list": {
-                  "style": "small emphasised"
-                }
+                "value": "@local.activity_title"
               },
               {
                 "type": "image",
@@ -7675,19 +7672,18 @@
       },
       {
         "name": "relax",
+        "value": "relax_1",
         "comments": "@data.relax_list.random().id\n\nNeed random picker at some point",
         "type": "set_variable"
       },
       {
         "name": "relax_text",
-        "value": "relax_text_1",
-        "comments": "@data.relax_list.@local.relax@local.text_template",
+        "value": "@data.relax_list.@local.relax@local.text_template",
         "type": "set_variable"
       },
       {
         "name": "relax_audio",
-        "value": "plh_audio/relax/relax_audio_1.mp3",
-        "comments": "@data.relax_list.@local.relax@local.audio_asset",
+        "value": "@data.relax_list.@local.relax@local.audio_asset",
         "type": "set_variable"
       },
       {
@@ -7791,10 +7787,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "relax_text_1"
+                          "@local.relax_text"
                         ],
-                        "_raw": "click | pop_up:relax_text_1",
-                        "_cleaned": "click | pop_up:relax_text_1"
+                        "_raw": "click | pop_up:@local.relax_text",
+                        "_cleaned": "click | pop_up:@local.relax_text"
                       }
                     ],
                     "hidden": "false",
@@ -9648,7 +9644,7 @@
       },
       {
         "type": "template",
-        "name": "two_texts_a",
+        "name": "two_texts",
         "value": "debug_two_texts",
         "comments": "Usually names and values will want to be the same (unless multiple instances used), but different here for better testing purposes",
         "rows": [
@@ -9668,30 +9664,39 @@
       {
         "type": "text",
         "name": "heading_2",
-        "value": "TEST 2: Override template variables dynamic"
+        "value": "TEST 2: Override template variables dynamic",
+        "condition": "false"
       },
       {
-        "type": "set_variable",
-        "name": "var_text_1",
-        "value": "Success: text_1",
-        "comments": "variables declared can be used anywhere on the sheet, including in child templates"
-      },
-      {
-        "type": "template",
-        "name": "two_texts_b",
-        "value": "debug_two_texts",
-        "comments": "Usually names and values will want to be the same (unless multiple instances used), but different here for better testing purposes",
+        "type": "display_group",
+        "name": "test_2",
+        "condition": "false",
+        "comments": "change the condition to toggle whether the test will exist or not",
         "rows": [
           {
             "type": "set_variable",
-            "name": "child_local_variable",
-            "value": "Success: nesting local variable"
+            "name": "var_text_1",
+            "value": "Success: text_1",
+            "comments": "variables declared can be used anywhere on the sheet, including in child templates"
           },
           {
-            "type": "set_variable",
-            "name": "child_text_1",
-            "value": "@local.var_text_1",
-            "comments": "whilst this is called 'set_variable', it really behaves as 'overwrite_row'"
+            "type": "template",
+            "name": "two_texts",
+            "value": "debug_two_texts",
+            "comments": "Usually names and values will want to be the same (unless multiple instances used), but different here for better testing purposes",
+            "rows": [
+              {
+                "type": "set_variable",
+                "name": "child_local_variable",
+                "value": "Success: nesting local variable"
+              },
+              {
+                "type": "set_variable",
+                "name": "child_text_1",
+                "value": "@local.var_text_1",
+                "comments": "whilst this is called 'set_variable', it really behaves as 'overwrite_row'"
+              }
+            ]
           }
         ]
       }
@@ -9705,14 +9710,39 @@
     "rows": [
       {
         "type": "set_variable",
-        "name": "var_text_1",
-        "value": "Success: text_1",
+        "name": "local_text_2",
+        "value": "Success: text_2",
         "comments": "variables declared can be used anywhere on the sheet, including in child templates"
+      },
+      {
+        "type": "template",
+        "name": "two_texts",
+        "value": "debug_two_texts",
+        "comments": "Usually names and values will want to be the same (unless multiple instances used), but different here for better testing purposes",
+        "rows": [
+          {
+            "type": "set_variable",
+            "name": "child_text_1",
+            "value": "Success: text_1",
+            "comments": "whilst this is called 'set_variable', it really behaves as 'overwrite_row'"
+          },
+          {
+            "type": "set_variable",
+            "name": "child_text_2",
+            "value": "Expected: \"Success: text_2\"\nResult: @local.local_text_2",
+            "comments": "Later we will also want functionality to 'merge_row'"
+          },
+          {
+            "type": "set_variable",
+            "name": "child_local_variable",
+            "value": "Success: nesting local variable"
+          }
+        ]
       },
       {
         "type": "text",
         "name": "heading_1",
-        "value": "TEST 1 - Overwrite a general wrapper to display a named template"
+        "value": "The template below should match the template above, and has been set by nested_properties"
       },
       {
         "type": "template",
@@ -9728,13 +9758,18 @@
             "rows": [
               {
                 "type": "set_variable",
-                "name": "child_local_variable",
-                "value": "Success: nesting local variable"
+                "name": "child_text_1",
+                "value": "Success: text_1"
               },
               {
                 "type": "set_variable",
-                "name": "child_text_1",
-                "value": "@local.var_text_1"
+                "name": "child_text_2",
+                "value": "Expected: \"Success: text_2\"\nResult: @local.local_text_2"
+              },
+              {
+                "type": "set_variable",
+                "name": "child_local_variable",
+                "value": "Success: nesting local variable"
               }
             ]
           }
@@ -9743,14 +9778,12 @@
       {
         "type": "text",
         "name": "heading_2",
-        "value": "The template below should match the template above, and has been set by 2 levels of nested_properties",
-        "condition": "false"
+        "value": "The template below should match the template above, and has been set by 2 levels of nested_properties"
       },
       {
         "type": "template",
         "name": "debug_wrapper_2",
         "value": "debug_wrapper",
-        "condition": "false",
         "comments": "We should be able to achieve the same behaviour using nested properties to access the template within a template",
         "rows": [
           {
@@ -9765,44 +9798,20 @@
                 "rows": [
                   {
                     "type": "set_variable",
-                    "name": "child_local_variable",
-                    "value": "Success: nesting local variable"
+                    "name": "child_text_1",
+                    "value": "Success: text_1"
                   },
                   {
                     "type": "set_variable",
-                    "name": "child_text_1",
-                    "value": "@local.var_text_1"
+                    "name": "child_text_2",
+                    "value": "Expected: \"Success: text_2\"\nResult: @local.local_text_2"
+                  },
+                  {
+                    "type": "set_variable",
+                    "name": "child_local_variable",
+                    "value": "Success: nesting local variable"
                   }
                 ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "name": "heading_3",
-        "value": "The content below adds additional content to the template"
-      },
-      {
-        "type": "template",
-        "name": "debug_wrapper_1",
-        "value": "debug_wrapper",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "wrapper_template",
-            "value": "debug_two_texts",
-            "rows": [
-              {
-                "type": "set_variable",
-                "name": "child_local_variable",
-                "value": "Success: nesting local variable"
-              },
-              {
-                "type": "set_variable",
-                "name": "child_text_1",
-                "value": "@local.var_text_1"
               }
             ]
           }
@@ -9817,53 +9826,108 @@
     "status": "released",
     "rows": [
       {
+        "name": "text_2",
+        "value": "Success: text_2",
+        "type": "set_variable"
+      },
+      {
         "type": "text",
-        "name": "heading_1",
-        "value": "TEST 1: Conditional properties"
+        "name": "intro_1",
+        "value": "The following template is rendered from a blank wrapper"
       },
       {
-        "type": "set_variable",
-        "name": "toggle_value",
-        "value": "true"
-      },
-      {
-        "type": "button",
-        "name": "toggle_button",
-        "value": "Value: @local.toggle_value",
-        "action_list": [
+        "type": "template",
+        "name": "debug_wrapper_1",
+        "value": "debug_wrapper",
+        "comments": "debug wrapper renders a single template named \"wrapper_template\" which does not have a template value (expects one to be passed)",
+        "rows": [
           {
-            "trigger": "click",
-            "action_id": "set_local",
-            "args": [
-              "toggle_value",
-              "!@local.toggle_value"
-            ],
-            "_raw": "click | set_local : toggle_value:!@local.toggle_value",
-            "_cleaned": "click | set_local : toggle_value:!@local.toggle_value"
+            "type": "nested_properties",
+            "name": "wrapper_template",
+            "value": "debug_two_texts",
+            "comments": "this will make the wrapper_template display the debug_two_texts template",
+            "rows": [
+              {
+                "type": "set_variable",
+                "name": "child_text_1",
+                "value": "Success: text_1"
+              },
+              {
+                "type": "set_variable",
+                "name": "child_text_2",
+                "value": "Expected: \"Success: text_2\"\nResult: @local.text_2"
+              },
+              {
+                "type": "set_variable",
+                "name": "child_local_variable",
+                "value": "Success: nesting local variable"
+              }
+            ]
           }
         ]
       },
       {
+        "type": "text",
+        "name": "intro_2",
+        "value": "The following template is modified from begin_template"
+      },
+      {
         "type": "template",
-        "name": "two_texts_a",
+        "name": "direct_template",
         "value": "debug_two_texts",
         "rows": [
           {
             "type": "set_variable",
-            "name": "child_local_variable",
-            "value": "Text variant 1 (toggle to change)",
-            "condition": "@local.toggle_value"
-          },
-          {
-            "type": "set_variable",
-            "name": "child_local_variable",
-            "value": "Text variant 2 (toggle to change)",
-            "condition": "!@local.toggle_value"
-          },
-          {
-            "type": "set_variable",
             "name": "child_text_1",
             "value": "Success: text_1"
+          },
+          {
+            "type": "set_variable",
+            "name": "child_text_2",
+            "value": "Expected: \"Success: text_2\"\nResult: @local.text_2"
+          },
+          {
+            "type": "set_variable",
+            "name": "child_local_variable",
+            "value": "Success: nesting local variable"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "intro_3",
+        "value": "Displayin in display group"
+      },
+      {
+        "type": "display_group",
+        "name": "temp_name_1",
+        "rows": [
+          {
+            "type": "template",
+            "name": "direct_template_2",
+            "value": "debug_two_texts",
+            "rows": [
+              {
+                "type": "set_variable",
+                "name": "child_text_1",
+                "value": "Success: text_1"
+              },
+              {
+                "type": "set_variable",
+                "name": "child_text_2",
+                "value": "Expected: \"Success: text_2\"\nResult: @local.text_2"
+              },
+              {
+                "type": "set_variable",
+                "name": "child_local_variable",
+                "value": "Success: nesting local variable"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "text_2a",
+            "value": "Text 2: @local.text_2"
           }
         ]
       }
@@ -9974,6 +10038,36 @@
           "key_1": "@local.child_local_variable"
         },
         "comments": "test setting from a local variable that requires overwrite (starts blank)"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_two_texts_wrapper",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "debug_two_texts",
+        "value": "debug_two_texts",
+        "comments": "This template simply renders the debug_two_texts template, for testing nested_properties",
+        "rows": []
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_two_texts_wrapper_wrapper",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "debug_two_texts_wrapper",
+        "value": "debug_two_texts_wrapper",
+        "comments": "Example to nest debug two_texts within a wrapper 2x deep",
+        "rows": []
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
@@ -10177,13 +10271,7 @@
         "type": "template",
         "name": "wrapper_template",
         "comments": "This template simply renders the debug_two_texts template, for testing nested_properties",
-        "rows": [
-          {
-            "name": "text_1",
-            "value": "No text to display in wrapper_template",
-            "type": "set_variable"
-          }
-        ]
+        "rows": []
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
@@ -15341,7 +15429,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15367,7 +15454,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15397,7 +15483,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15427,7 +15512,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15457,7 +15541,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15486,7 +15569,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15516,7 +15598,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15546,7 +15627,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15576,7 +15656,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15606,7 +15685,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15636,7 +15714,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15666,7 +15743,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15696,7 +15772,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15727,7 +15802,6 @@
       {
         "type": "template",
         "name": "relax_text",
-        "value": "relax_text",
         "rows": [
           {
             "name": "activity_text",
@@ -15782,7 +15856,7 @@
               "survey_welcome_q_7",
               "survey_welcome_q_8",
               "survey_welcome_q_9",
-              "survey_welcome_outro"
+              "survey_welcome_q_10"
             ],
             "type": "set_variable"
           }
@@ -15950,7 +16024,7 @@
           },
           {
             "name": "reply_less",
-            "value": "Using this app shows us that you care about your teen. \n\nYou’ll learn in our @global.weekly_workshop how to use praise as a key parenting tool.   ",
+            "value": "Using this app shows us that you care about your teen. You’ll learn in our @global.weekly_workshop how to use praise as a key parenting tool.   ",
             "type": "set_variable"
           },
           {
@@ -16016,7 +16090,7 @@
           },
           {
             "name": "reply_less",
-            "value": "Great that this has been a good week!",
+            "value": "Great that  this has been a good week!",
             "type": "set_variable"
           },
           {
@@ -16026,7 +16100,7 @@
           },
           {
             "name": "reply_greater_equal",
-            "value": "We understand how stressful this is. Remember that you are not alone. \n\nWe’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.",
+            "value": "We understand how stressful this is. Remember that you are not alone. We’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.",
             "comments": "Every user needs to receive a daily relax",
             "type": "set_variable"
           },
@@ -16099,7 +16173,7 @@
           },
           {
             "name": "reply_greater_equal",
-            "value": "Thank you for being honest. It can be so difficult to control our stress. \n\nOur workshop on managing stress and anger is in four weeks, but we’ll unlock it for you now so it’s available anytime you want it.  ",
+            "value": "Thank you for being honest. It can be so difficult to control our stress. Our workshop on managing stress and anger is in four weeks, but we’ll unlock it for you now so it’s available anytime you want it.  ",
             "type": "set_variable"
           },
           {
@@ -16120,8 +16194,8 @@
     "rows": [
       {
         "type": "template",
-        "name": "box_multi_3_temp",
-        "value": "box_multi_3_temp",
+        "name": "box_slider_duo_temp",
+        "value": "box_slider_duo_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -16166,12 +16240,12 @@
           },
           {
             "name": "reply_less",
-            "value": "Great. We have a @global.weekly_workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.",
+            "value": "Great. We have a @global.weekly_workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments",
             "type": "set_variable"
           },
           {
             "name": "reply_greater_equal",
-            "value": "Money stress can be overwhelming. \n\nWe have a @global.weekly_workshop on family budgeting that can help. We’ll unlock this now to make it available for you anytime you want.",
+            "value": "Money stress can be overwhelming. We have a @global.weekly_workshop on family budgeting that can help. We’ll unlock this now to make it available for you anytime you want.",
             "comments": "Action:\nif @field.survey_welcome_q_5_part_1>=1 or @field.survey_welcome_q_5_part_1>=1, unlock workshop money",
             "type": "set_variable"
           },
@@ -16193,7 +16267,7 @@
       {
         "type": "template",
         "name": "box_slider",
-        "value": "box_slider_week_temp",
+        "value": "box_slider_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -16212,11 +16286,6 @@
             "type": "set_variable"
           },
           {
-            "name": "slider_variable",
-            "value": "survey_welcome_q_6",
-            "type": "set_variable"
-          },
-          {
             "name": "question_text",
             "value": "In the past week, did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
             "type": "set_variable"
@@ -16232,19 +16301,16 @@
             "type": "set_variable"
           },
           {
-            "name": "unlock_less",
-            "hidden": "true",
+            "name": "reply_greater_equal",
+            "value": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. This can be really hard so be patient with yourself.  You’ll start with the @global.weekly_workshops that help with managing teenage behavior. ",
+            "hidden": "@local.slider._value > @local.threshold &\n@fields.welcome_survey_q_4.slider._value > @fields.welcome_survey_q_4.threshold",
             "type": "set_variable"
           },
           {
             "name": "reply_greater_equal",
-            "value": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. This can be really hard so be patient with yourself. \n\nWe’ll unlock for you the workshop on managing stress and anger so it’s available whenever you want. These have helped millions of parents.",
-            "comments": "Needs an action:\nif @field.survey_welcome_q_4 >=2, unlock workshop stress",
-            "type": "set_variable"
-          },
-          {
-            "name": "unlock_greater_equal",
-            "value": "@global.weekly_workshop @global.w_stress unlocked",
+            "value": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. This can be really hard so be patient with yourself. You’ll start with the @global.weekly_workshops that help with managing teenage behavior. \nWe’ll also unlock for you the workshop on managing stress and anger so it’s available whenever you want. These have helped millions of parents.",
+            "hidden": "@local.slider._value > @local.threshold & @fields.welcome_survey_q_4.slider._value <= @fields.welcome_survey_q_4.threshold",
+            "comments": "Needs to unlock stress workshop and breathe not yell habit.",
             "type": "set_variable"
           }
         ]
@@ -16259,8 +16325,7 @@
     "rows": [
       {
         "type": "template",
-        "name": "box_multi_4_temp",
-        "value": "box_multi_4_temp",
+        "value": "pair",
         "action_list": [
           {
             "trigger": "completed",
@@ -16274,87 +16339,74 @@
         ],
         "rows": [
           {
-            "name": "image_src",
-            "value": "plh_images/survey/welcome/guide_1_nervous.svg",
-            "type": "set_variable"
+            "type": "nested_properties",
+            "name": "box_1",
+            "value": "box_slider_temp",
+            "rows": [
+              {
+                "name": "image_src",
+                "value": "plh_images/characters/@fields.guidenumber/frustrated.svg",
+                "hidden": "false",
+                "type": "set_variable"
+              },
+              {
+                "name": "text",
+                "value": "It’s hard to parent when teenagers are becoming independent.",
+                "type": "set_variable"
+              },
+              {
+                "name": "threshold",
+                "value": 6,
+                "type": "set_variable"
+              },
+              {
+                "name": "question_text",
+                "value": "In the past week, did you know what your teen was doing and who they were with?",
+                "type": "set_variable"
+              }
+            ]
           },
           {
-            "name": "slider_1_field",
-            "value": "survey_welcome_q_7_part_1",
-            "type": "set_variable"
-          },
-          {
-            "name": "radio_button_field",
-            "value": "survey_welcome_q_7_part_2",
-            "type": "set_variable"
-          },
-          {
-            "name": "slider_2_field",
-            "value": "survey_welcome_q_7_part_3",
-            "type": "set_variable"
-          },
-          {
-            "name": "threshold",
-            "value": 7,
-            "type": "set_variable"
-          },
-          {
-            "name": "text",
-            "value": "It’s hard to parent when teenagers are becoming independent. ",
-            "type": "set_variable"
-          },
-          {
-            "name": "question_text",
-            "value": "How many days in the past week did you know what your teen was doing and who they were with? ",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_less_1",
-            "value": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nPlanning for your teen’s safety comes later in the @global.weekly_workshops, but we’ll unlock this for you now so it’s available for you anytime.",
-            "type": "set_variable"
-          },
-          {
-            "name": "unlock_less_1",
-            "value": "@global.weekly_workshop @global.w_safe unlocked",
-            "comments": "Unlock workshop safe if first or second slider is answered less than threshold",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_greater_equal_1",
-            "value": "This is good to hear.",
-            "type": "set_variable"
-          },
-          {
-            "name": "question_greater_equal_1",
-            "value": "Were you in lockdown this week?  ",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_no",
-            "hidden": "true",
-            "type": "set_variable"
-          },
-          {
-            "name": "question_yes",
-            "value": "How many days in a typical non-lockdown week do you know what your teen is doing and who they are with?  ",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_less_2",
-            "value": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nPlanning for your teen’s safety comes later in the @global.weekly_workshops, but we’ll unlock this for you now so it’s available for you anytime.",
-            "type": "set_variable"
-          },
-          {
-            "name": "unlock_less_2",
-            "value": "@global.weekly_workshop @global.w_safe unlocked",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_greater_equal_2",
-            "value": "This is really great. Parenting is hard, but you’re really succeeding in this.",
-            "type": "set_variable"
+            "type": "nested_properties",
+            "name": "box_2",
+            "value": "pair",
+            "hidden": "@local.box_1.slider._value > @local.threshold",
+            "rows": [
+              {
+                "type": "nested_properties",
+                "name": "box_1",
+                "value": "button_question",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "This is good to hear.",
+                    "type": "set_variable"
+                  },
+                  {
+                    "name": "question_text",
+                    "value": "Were you in lockdown this week?",
+                    "type": "set_variable"
+                  }
+                ]
+              },
+              {
+                "type": "nested_properties",
+                "name": "box_2",
+                "value": "button_question",
+                "hidden": "@local.box_1.slider._value <= @local.threshold",
+                "rows": [
+                  {
+                    "name": "text",
+                    "value": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. Planning for your teen’s safety comes later in the Weekly Workshops but we’ll unlock this for you now so it’s available for you anytime.",
+                    "comments": "Needs to unlock Safety workshop and habit.",
+                    "type": "set_variable"
+                  }
+                ]
+              }
+            ]
           }
-        ]
+        ],
+        "name": "pair"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/survey_welcome.xlsx"
@@ -16367,74 +16419,7 @@
       {
         "type": "template",
         "name": "box_slider",
-        "value": "box_slider_confidence_temp",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": [
-          {
-            "name": "text",
-            "value": "We all want to keep our children safe.",
-            "type": "set_variable"
-          },
-          {
-            "name": "slider_variable",
-            "value": "survey_welcome_q_8",
-            "type": "set_variable"
-          },
-          {
-            "name": "question_text",
-            "value": "How confident do you feel you are to protect your child from sexual abuse online or in-person? ",
-            "type": "set_variable"
-          },
-          {
-            "name": "threshold",
-            "value": 5,
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_less",
-            "value": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nWe’ll also unlock the @global.weekly_workshops on rules and safety planning, which help with this – they'll be available for you anytime.",
-            "type": "set_variable"
-          },
-          {
-            "name": "unlock_less",
-            "value": "@global.weekly_workshops @global.w_rules and @global.w_safe unlocked",
-            "comments": "Needs an action:\nif @field.survey_welcome_q_4 <5, unlock workshops rules and safe.",
-            "type": "set_variable"
-          },
-          {
-            "name": "reply_greater_equal",
-            "value": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for on this you in the later @global.weekly_workshops if you’d like to know even more!",
-            "type": "set_variable"
-          },
-          {
-            "name": "unlock_greater_equal",
-            "hidden": "true",
-            "type": "set_variable"
-          }
-        ]
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/survey_welcome.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "survey_welcome_q_9",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "box_slider",
-        "value": "box_slider_week_temp",
+        "value": "box_slider_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -16449,8 +16434,8 @@
         "rows": [
           {
             "name": "image_src",
-            "value": "plh_images/survey/welcome/guide_2_worried.svg",
-            "hidden": "false",
+            "value": "plh_images/characters/@fields.guidenumber/frustrated.svg",
+            "hidden": "true",
             "type": "set_variable"
           },
           {
@@ -16460,7 +16445,7 @@
           },
           {
             "name": "question_text",
-            "value": "How many days last week did your teenager stay safe through wearing a mask, keeping a distance from people and keeping away from crowded places? ",
+            "value": "Last week did your teenager stay safe through wearing a mask, keeping a distance from people and keeping away from crowded places?",
             "type": "set_variable"
           },
           {
@@ -16470,22 +16455,12 @@
           },
           {
             "name": "reply_less",
-            "value": "Would you like some advice for keeping your teen safe in COVID? You can find this in the @global.parent_centre",
-            "type": "set_variable"
-          },
-          {
-            "name": "unlock_less",
-            "hidden": "true",
+            "value": "Would you like some advice for keeping your teen safe in COVID? You can find this in the Parent Centre.",
             "type": "set_variable"
           },
           {
             "name": "reply_greater_equal",
-            "value": "That’s great. If you ever want it, there’s advice for keeping your teen safe in COVID in the @global.parent_centre",
-            "type": "set_variable"
-          },
-          {
-            "name": "unlock_greater_equal",
-            "hidden": "true",
+            "value": "That’s great. If you ever want it, there’s advice for keeping your teen safe in COVID in the Parent Centre.",
             "type": "set_variable"
           }
         ]
@@ -16621,8 +16596,7 @@
             "value": [
               "workshop_setup_intro",
               "workshop_setup_q_1",
-              "workshop_setup_q_2",
-              "workshop_setup_q_3"
+              "workshop_setup_q_2"
             ],
             "type": "set_variable"
           }
@@ -16656,9 +16630,6 @@
             "name": "title",
             "value": "Customise your @global.parent_app",
             "hidden": "false",
-            "parameter_list": {
-              "style": "center"
-            },
             "type": "set_variable"
           },
           {
@@ -16668,10 +16639,7 @@
           },
           {
             "name": "text",
-            "value": "We'll ask you a couple of questions to make sure your @global.weekly_workshops are exactly right for you!",
-            "parameter_list": {
-              "style": "center"
-            },
+            "hidden": "true",
             "type": "set_variable"
           },
           {
@@ -16696,115 +16664,10 @@
     "status": "released",
     "rows": [
       {
-        "type": "text",
-        "name": "name",
-        "value": "We’d love to know your first name or nickname:",
-        "parameter_list": {
-          "style": "medium emphasised center"
-        }
-      },
-      {
-        "type": "text_box",
-        "name": "text_box",
-        "parameter_list": {
-          "placeholder": "Click and type!"
-        }
-      },
-      {
-        "type": "text",
-        "name": "gender",
-        "value": "Are you a lady or a gentleman?",
-        "parameter_list": {
-          "style": "medium emphasised center"
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "parameter_list": {
-          "radio_button_type": "btn_text",
-          "answer_list": "@local.answer_list"
-        }
-      },
-      {
-        "name": "answer_list",
-        "value": [
-          "name:female | text: Lady",
-          "name:male | text:Gentleman"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "age",
-        "value": "How old are you?",
-        "parameter_list": {
-          "style": "medium emphasised center"
-        }
-      },
-      {
-        "type": "image",
-        "name": "age_image",
-        "value": "plh_images/survey/workshop_setup/age_image.svg"
-      },
-      {
-        "type": "number_selector",
-        "name": "number_selector",
-        "parameter_list": {
-          "category_list": "@local.category_list",
-          "first_display_term": "4"
-        }
-      },
-      {
-        "name": "category_list",
-        "value": [
-          "0-10",
-          "11-20",
-          "21-30",
-          "31-40",
-          "41-50",
-          "51-60",
-          "61-70",
-          "71-80",
-          "80+"
-        ],
-        "type": "set_variable"
-      },
-      {
         "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
+        "name": "box_multi_1_temp",
+        "value": "box_multi_1_temp",
         "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "user_name",
-              "@local.text_box"
-            ],
-            "_raw": "completed | set_field: user_name: @local.text_box",
-            "_cleaned": "completed | set_field: user_name: @local.text_box"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "user_gender",
-              "@local.radio_group"
-            ],
-            "_raw": "completed | set_field:user_gender: @local.radio_group",
-            "_cleaned": "completed | set_field:user_gender: @local.radio_group"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "user_age",
-              "@local.number_selector"
-            ],
-            "_raw": "completed | set_field:user_age: @local.number_selector",
-            "_cleaned": "completed | set_field:user_age: @local.number_selector"
-          },
           {
             "trigger": "completed",
             "action_id": "emit",
@@ -16826,273 +16689,9 @@
     "status": "released",
     "rows": [
       {
-        "type": "text",
-        "name": "text",
-        "value": "How many people are in your household?",
-        "parameter_list": {
-          "style": "medium emphasised center"
-        }
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_adults",
-            "value": "plh_images/survey/workshop_setup/adults.svg"
-          },
-          {
-            "type": "image",
-            "name": "image_teens",
-            "value": "plh_images/survey/workshop_setup/teens.svg"
-          }
-        ]
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "number_selector",
-            "name": "number_selector_adults",
-            "parameter_list": {
-              "min_value": "0",
-              "max_value": "20",
-              "title": "Adults"
-            }
-          },
-          {
-            "type": "number_selector",
-            "name": "number_selector_teens",
-            "parameter_list": {
-              "min_value": "0",
-              "max_value": "20",
-              "title": "Teens"
-            }
-          }
-        ]
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_children",
-            "value": "plh_images/survey/workshop_setup/children.svg"
-          },
-          {
-            "type": "image",
-            "name": "image_babies",
-            "value": "plh_images/survey/workshop_setup/babies.svg"
-          }
-        ]
-      },
-      {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "number_selector",
-            "name": "number_selector_adults",
-            "parameter_list": {
-              "min_value": "0",
-              "max_value": "20",
-              "title": "Children"
-            }
-          },
-          {
-            "type": "number_selector",
-            "name": "number_selector_babies",
-            "parameter_list": {
-              "min_value": "0",
-              "max_value": "20",
-              "title": "Babies"
-            }
-          }
-        ]
-      },
-      {
         "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "household_adults",
-              "@local.number_selector_adults"
-            ],
-            "_raw": "completed | set_field: household_adults: @local.number_selector_adults",
-            "_cleaned": "completed | set_field: household_adults: @local.number_selector_adults"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "household_teens",
-              "@local.number_selector_teens"
-            ],
-            "_raw": "completed | set_field: household_teens: @local.number_selector_teens",
-            "_cleaned": "completed | set_field: household_teens: @local.number_selector_teens"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "household_children",
-              "@local.number_selector_children"
-            ],
-            "_raw": "completed | set_field: household_children: @local.number_selector_children",
-            "_cleaned": "completed | set_field: household_children: @local.number_selector_children"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "household_babies",
-              "@local.number_selector_babies"
-            ],
-            "_raw": "completed | set_field: household_babies: @local.number_selector_babies",
-            "_cleaned": "completed | set_field: household_babies: @local.number_selector_babies"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          }
-        ],
-        "rows": []
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/workshop_setup.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_setup_q_3",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "name",
-        "value": "How would you like to do your @global.weekly_workshops?",
-        "parameter_list": {
-          "style": "medium emphasised center"
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "@local.radio_group"
-            ],
-            "_raw": "changed | set_field:do_workshops_together:@local.radio_group",
-            "_cleaned": "changed | set_field:do_workshops_together:@local.radio_group"
-          }
-        ],
-        "parameter_list": {
-          "answer_list": "@local.answer_list_1",
-          "radio_button_type": "btn_square"
-        }
-      },
-      {
-        "name": "answer_list_1",
-        "value": [
-          "name:false | text: On my own | image:plh_images/workshops/options/individual.svg | image_selected:plh_images/workshops/options/individual.svg",
-          "name:true | text:In my group | image:plh_images/workshops/options/together.svg | image_selected:plh_images/workshops/options/together.svg"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "name",
-        "value": "Can you think of a name for your group?",
-        "hidden": "\"@local.radio_group\"!=\"true\"",
-        "parameter_list": {
-          "style": "medium emphasised center"
-        }
-      },
-      {
-        "type": "text_box",
-        "name": "text_box",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "group_name",
-              "@local.text_box"
-            ],
-            "_raw": "changed | set_field:group_name:@local.text_box",
-            "_cleaned": "changed | set_field:group_name:@local.text_box"
-          }
-        ],
-        "hidden": "\"@local.radio_group\"!=\"true\"",
-        "parameter_list": {
-          "placeholder": "Click and type!"
-        }
-      },
-      {
-        "type": "text",
-        "name": "name",
-        "value": "Which day of the week would you like to do your @global.weekly_workshops?",
-        "parameter_list": {
-          "style": "medium emphasised center"
-        }
-      },
-      {
-        "type": "combo_box",
-        "name": "combo_box",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "workshop_day",
-              "@local.combo_box"
-            ],
-            "_raw": "changed | set_field: workshop_day: @local.combo_box",
-            "_cleaned": "changed | set_field: workshop_day: @local.combo_box"
-          }
-        ],
-        "parameter_list": {
-          "answer_list": "@local.answer_list_2",
-          "placeholder": "Click and choose!",
-          "input_allowed": "false"
-        }
-      },
-      {
-        "name": "answer_list_2",
-        "value": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "value": "If you change your mind you can always change these settings in your @global.weekly_workshop_options",
-        "parameter_list": {
-          "style": "center"
-        }
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
+        "name": "box_multi_2_temp",
+        "value": "box_multi_2_temp",
         "action_list": [
           {
             "trigger": "completed",
@@ -17105,11 +16704,6 @@
           }
         ],
         "rows": []
-      },
-      {
-        "type": "set_field",
-        "name": "workshops_setup",
-        "value": "true"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/survey_templates/workshop_setup.xlsx"
@@ -17675,7 +17269,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_1on1_tools",
+            "value": "@global.w_1on1",
             "type": "set_variable"
           },
           {
@@ -18097,13 +17691,13 @@
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/group/final/relax.svg",
-                "condition": "@field.do_workshops_together",
+                "hidden": "!@field.do_workshops_together",
                 "type": "set_variable"
               },
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/guide_2/final/relax.svg",
-                "condition": "!@field.do_workshops_together",
+                "hidden": "@field.do_workshops_together",
                 "type": "set_variable"
               }
             ]
@@ -18312,13 +17906,17 @@
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/group/final/talk.svg",
-                "condition": "@field.do_workshops_together",
+                "parameter_list": {
+                  "@field.do_workshops_together": "true"
+                },
                 "type": "set_variable"
               },
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/guide_2/final/wave.svg",
-                "condition": "!@field.do_workshops_together",
+                "parameter_list": {
+                  "!@field.do_workshops_together": "true"
+                },
                 "type": "set_variable"
               },
               {
@@ -18449,7 +18047,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "How will you support each other going forward? \n\nHere are some ideas from other families:",
+                "value": "How will you support each other going forward? Here are some ideas from other families:",
                 "type": "set_variable"
               },
               {
@@ -19827,7 +19425,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_consequence_tools",
+            "value": "@global.w_consequence",
             "type": "set_variable"
           },
           {
@@ -21081,11 +20679,6 @@
             "name": "workshop_activity",
             "rows": [
               {
-                "name": "intro_text",
-                "value": "Crisis can happen to anyone. \n\nLet's see what happened with @global.w_crisis_teen_girl_1 and @global.w_crisis_female_caregiver:",
-                "type": "set_variable"
-              },
-              {
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "pair",
@@ -21370,11 +20963,6 @@
                       "Use problem solving skills",
                       "Work out where you can get help"
                     ],
-                    "type": "set_variable"
-                  },
-                  {
-                    "name": "input_allowed",
-                    "value": "false",
                     "type": "set_variable"
                   },
                   {
@@ -21689,11 +21277,6 @@
                     "type": "set_variable"
                   },
                   {
-                    "name": "input_allowed",
-                    "value": "false",
-                    "type": "set_variable"
-                  },
-                  {
                     "name": "reply",
                     "value": "All these skills can help in a crisis.",
                     "type": "set_variable"
@@ -21770,7 +21353,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_crisis_tools",
+            "value": "@global.w_crisis",
             "type": "set_variable"
           },
           {
@@ -21909,14 +21492,8 @@
                       },
                       {
                         "name": "text",
-                        "value": "\"I’ve never done this before. And now they will expel me\"",
+                        "value": "\"I’ve never done this before. And now they will expel me\"\n\n**How could you respond to @global.w_crisis_teen_boy_2?**",
                         "comments": "ETW: Should be give more guidance here, as in w_consequence_learn_1?",
-                        "type": "set_variable"
-                      },
-                      {
-                        "name": "dashed_box",
-                        "value": "How could you respond to @global.w_crisis_teen_boy_2?",
-                        "hidden": "false",
                         "type": "set_variable"
                       }
                     ]
@@ -21944,13 +21521,7 @@
                           },
                           {
                             "name": "text",
-                            "value": "\"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
-                            "type": "set_variable"
-                          },
-                          {
-                            "name": "dashed_box",
-                            "value": "How could you respond to @global.w_crisis_teen_girl_1?",
-                            "hidden": "false",
+                            "value": "\"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"\n\n**How could you respond to @global.w_crisis_teen_girl_1?**",
                             "type": "set_variable"
                           }
                         ]
@@ -21978,13 +21549,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "\"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"",
-                                "type": "set_variable"
-                              },
-                              {
-                                "name": "dashed_box",
-                                "value": "How could you respond to @global.w_crisis_teen_boy_2?",
-                                "hidden": "false",
+                                "value": "\"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"\n\n**How could you respond to @global.w_crisis_teen_boy_2?**",
                                 "type": "set_variable"
                               }
                             ]
@@ -22012,13 +21577,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "\"The test said I have HIV. I’m scared I’m going to die\"",
-                                    "type": "set_variable"
-                                  },
-                                  {
-                                    "name": "dashed_box",
-                                    "value": "How could you respond in this situation?",
-                                    "hidden": "false",
+                                    "value": "\"The test said I have caught HIV. I’m scared I’m going to die\"\n\n**How could you respond in this situation?**",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -22041,13 +21600,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "\"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared...\"",
-                                    "type": "set_variable"
-                                  },
-                                  {
-                                    "name": "dashed_box",
-                                    "value": "How could you respond to @global.w_crisis_teen_girl_1?",
-                                    "hidden": "false",
+                                    "value": "\"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared...\"\n\n**How could you respond to @global.w_crisis_teen_girl_1?**",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -22067,8 +21620,7 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you respond in a calm way to a crisis, click the @global.parent_point and celebrate your success!",
-                "hidden": "false",
+                "value": "Every time you respond in a calm way to a crisis, click the @global.parent_point and celebrate your success",
                 "type": "set_variable"
               }
             ]
@@ -22194,13 +21746,13 @@
                   {
                     "name": "intro_text",
                     "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
-                    "condition": "@field.do_workshops_together",
+                    "hidden": "!@field.do_workshops_together",
                     "type": "set_variable"
                   },
                   {
                     "name": "intro_text",
                     "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you, and you can choose the support you want going forward. \n\nYou can prepare a treat to celebrate – something you like to eat, or music you like to listen to!",
-                    "condition": "!@field.do_workshops_together",
+                    "hidden": "@field.do_workshops_together",
                     "type": "set_variable"
                   }
                 ]
@@ -23399,7 +22951,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_instruct_tools",
+            "value": "@global.w_instruct",
             "type": "set_variable"
           },
           {
@@ -25526,7 +25078,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_money_tools",
+            "value": "@global.w_money",
             "type": "set_variable"
           },
           {
@@ -26781,7 +26333,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_praise_tools",
+            "value": "@global.w_praise",
             "type": "set_variable"
           },
           {
@@ -27958,7 +27510,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_rules_tools",
+            "value": "@global.w_rules",
             "type": "set_variable"
           },
           {
@@ -30093,7 +29645,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_safe_tools",
+            "value": "@global.w_safe",
             "type": "set_variable"
           },
           {
@@ -30362,6 +29914,16 @@
             ],
             "_raw": "completed | set_field:w_self_care_completion_status:completed",
             "_cleaned": "completed | set_field:w_self_care_completion_status:completed"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "w_week2_unlocked",
+              "true"
+            ],
+            "_raw": "completed | set_field: w_week2_unlocked : true",
+            "_cleaned": "completed | set_field: w_week2_unlocked : true"
           }
         ],
         "rows": [
@@ -30633,11 +30195,6 @@
             ]
           }
         ]
-      },
-      {
-        "type": "set_field",
-        "name": "daily_relax_done",
-        "value": "false"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
@@ -31027,7 +30584,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_self_care_tools",
+            "value": "@global.w_self_care",
             "type": "set_variable"
           },
           {
@@ -31798,7 +31355,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_solve_tools",
+            "value": "@global.w_solve",
             "type": "set_variable"
           },
           {
@@ -34084,7 +33641,7 @@
         "rows": [
           {
             "name": "tools_title",
-            "value": "@global.w_stress_tools",
+            "value": "@global.w_stress",
             "type": "set_variable"
           },
           {
