@@ -54,6 +54,10 @@ ion-tab-button {
   top: 50%;
   right: 50%;
   transform: translateY(-50%) translateX(50%);
+  @media (max-width: 375px) {
+    width: 70px;
+    height: 70px;
+  }
 }
 .wrapper {
   display: flex;
@@ -66,7 +70,11 @@ ion-tab-button {
   background: #e3f4ff;
   position: relative;
   margin-left: auto;
-  margin-right: -5px;
+  margin-right: -10px;
+  @media (max-width: 375px) {
+    width: 84px;
+    height: 84px;
+  }
 }
 .yellow {
   background: #ffca41;

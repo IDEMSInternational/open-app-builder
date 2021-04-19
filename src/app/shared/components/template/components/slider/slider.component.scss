@@ -1,3 +1,4 @@
+@import "../../../../../../theme/variables.scss";
 .slider-wrapper {
   margin: 40px 0 0 0;
   min-width: 334px;
@@ -19,10 +20,10 @@
   }
   .title-slider {
     font-weight: bold;
-    font-size: 25px;
-    color: #0d3f60;
+    font-size: var(--font-size-title-tiny);
+    color: var(--ion-color-primary);
     max-width: 258px !important;
-    margin-bottom: 36px;
+    margin-bottom: var(--regular-margin);
   }
   .slider-container {
     max-width: 95%;
