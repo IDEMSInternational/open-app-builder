@@ -117,6 +117,17 @@ export class TmplRadioGroupComponent
         : obj.image_checked;
       return obj;
     });
+    this.arrayOfBtn.forEach((item) => {
+      if (item.image && item.text) {
+        this.radioButtonType = "btn_both";
+      } else if (!item.image && item.text) {
+        this.radioButtonType = "btn_text";
+      } else if (item.image && !item.text) {
+        this.radioButtonType = "btn_image";
+      }
+      console.log(this.radioButtonType, item);
+    });
+    console.log(this.arrayOfBtn);
   }
 
   getPathImg(path): string {
@@ -124,7 +135,8 @@ export class TmplRadioGroupComponent
     return src.replace("//", "/");
   }
 
+  automaticallyRadioBtnType(type: string) {}
   getFlexWidth() {
-    this.flexWidth = `0 1 ${100 / this.options_per_row - 3}%`;
+    this.flexWidth = `0 1 ${100 / this.options_per_row - 7}%`;
   }
 }
