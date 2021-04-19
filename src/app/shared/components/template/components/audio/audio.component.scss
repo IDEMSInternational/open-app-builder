@@ -2,8 +2,8 @@
   background: #fff;
   border: 2px solid #0d3f60;
   box-sizing: border-box;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-standard);
   padding: 17px 14px 16px 20px;
   display: flex;
   position: relative;
@@ -25,9 +25,9 @@
         font-size: 22px;
       }
       .audio-help {
-        color: #0d3f60;
-        height: 32px;
-        width: 32px;
+        color: var(--ion-color-primary);
+        height: var(--help-icon-standard-size);
+        width: var(--help-icon-standard-size);
       }
     }
     .volume {
@@ -35,7 +35,7 @@
       top: 17px;
       right: 14px;
       .volume-icon {
-        color: #0d3f60;
+        color: var(--ion-color-primary);
         height: 36px;
         width: 36px;
       }
@@ -49,12 +49,12 @@
       --bar-height: 4px;
       --bar-border-radius: 20px;
       --knob-size: 0px;
-      --pin-background: #0d3f60;
-      --knob-background: #0d3f60;
+      --pin-background: var(--ion-color-primary);
+      --knob-background: var(--ion-color-primary);
     }
 
     ion-range::part(bar) {
-      border: 1px solid #0d3f60;
+      border: 1px solid var(--ion-color-primary);
       height: 10px;
     }
 
@@ -71,7 +71,7 @@
     &-value {
       font-size: 20px;
       line-height: 20px;
-      color: #0d3f60;
+      color: var(--ion-color-primary);
     }
   }
   .controls {
@@ -87,7 +87,7 @@
         height: 64px;
         --background: transparent;
         --padding: 0;
-        --border-radius: 50%;
+        --border-radius: var(--ion-border-radius-rounded);
         --box-shadow: transparent;
         img {
           position: absolute;
@@ -105,9 +105,9 @@
         width: 64px;
         height: 64px;
         --background: #00a0cc;
-        --border-radius: 50%;
+        --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
-        --box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
+        --box-shadow: var(--ion-default-box-shadow);
         img {
           position: absolute;
           width: 35px;

@@ -43,6 +43,7 @@ $horizontal: 90deg;
   --huge-margin: 40px;
   --ion-main-bg-passive: #{$some};
   --ion-main-bg-active: #{$tertiary};
+  --ion-default-box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
   --ion-border-standart: #{$border-standard};
   --ion-border-radius-standard: #{$border-radius-standard};
   --ion-border-radius-secondary: #{$border-radius-secondary};
@@ -81,6 +82,11 @@ $horizontal: 90deg;
   /** Line Height **/
   --line-height-text: 22px;
 
+  //* Help icon **/
+  --help-icon-standard-size: 35px;
+  --help-icon-small-size: 30px;
+  --help-icon-standard-color: $primary;
+  --help-icon-alternative-color: $light;
   // tools
   --tool-one-bg: #{color.adjust($secondary, $hue: -2)};
   --tool-two-bg: #{color.adjust($secondary, $hue: -2, $saturation: 5%, $lightness: -7%)};
