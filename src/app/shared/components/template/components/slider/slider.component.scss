@@ -11,8 +11,8 @@
   min-height: 139px;
   .help {
     color: var(--ion-color-help-tooltip);
-    height: 35px;
-    width: 35px;
+    height: var(--help-icon-standard-height);
+    width: var(--help-icon-standard-width);
     position: absolute;
     right: 5px;
     top: 12px;
