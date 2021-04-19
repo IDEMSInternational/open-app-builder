@@ -342,7 +342,7 @@ export class TemplateContainerComponent
       // Previously hidden fields were evaluated at runtime and used to populate
       // content dynamically. Now they are processed in advance, so to avoid
       // conflict where two content boxes are both set, treat as conditional
-      if (hidden === (false as any) || hidden === "false") {
+      if (hidden === (true as any) || hidden === "true") {
         log("[Row end (skip)]", name);
         return;
       }

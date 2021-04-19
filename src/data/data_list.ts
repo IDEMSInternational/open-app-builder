@@ -12,106 +12,92 @@
         "title": "Breathe",
         "task_id": "task_relax",
         "text_template": "relax_text_1",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_1.mp3"
       },
       {
         "id": "relax_2",
         "title": "Senses",
         "task_id": "task_relax",
         "text_template": "relax_text_2",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_2.mp3"
       },
       {
         "id": "relax_3",
         "title": "Think about the day",
         "task_id": "task_relax",
         "text_template": "relax_text_3",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_3.mp3"
       },
       {
         "id": "relax_4",
         "title": "Breathe",
         "task_id": "task_relax",
         "text_template": "relax_text_4",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
       },
       {
         "id": "relax_5",
         "title": "Breathe",
         "task_id": "task_relax",
         "text_template": "relax_text_5",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
       },
       {
         "id": "relax_6",
         "title": "Think about the day",
         "task_id": "task_relax",
         "text_template": "relax_text_6",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
       },
       {
         "id": "relax_7",
         "title": "Breathe",
         "task_id": "task_relax",
         "text_template": "relax_text_7",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
       },
       {
         "id": "relax_8",
         "title": "Take a moment",
         "task_id": "task_relax",
         "text_template": "relax_text_8",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
       },
       {
         "id": "relax_9",
         "task_id": "task_relax",
         "text_template": "relax_text_9",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
       },
       {
         "id": "relax_10",
         "task_id": "task_relax",
         "text_template": "relax_text_10",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp4",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp4"
       },
       {
         "id": "relax_11",
         "task_id": "task_relax",
         "text_template": "relax_text_11",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp5",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp5"
       },
       {
         "id": "relax_12",
         "task_id": "task_relax",
         "text_template": "relax_text_12",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp6",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp6"
       },
       {
         "id": "relax_13",
         "task_id": "task_relax",
         "text_template": "relax_text_13",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp7",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp7"
       },
       {
         "id": "relax_14",
         "task_id": "task_relax",
         "text_template": "relax_text_14",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp8",
-        "animation_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "audio_asset": "assets/plh_assets/plh_audio/sample.mp8"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_relax.xlsx"
