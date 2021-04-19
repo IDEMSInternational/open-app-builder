@@ -41,15 +41,15 @@ export class TemplateContainerComponent
    * If set from a row keeps full reference to row, if set as a value will only have {value} field */
   localVariables: any = {};
 
-  /**
-   * declared properties to be inherited by child templates during their own initialisation
-   * maybe declared 1 or more levels deep (e.g. templateA.templateB.templateC)
-   * */
+  /** declared properties to be inherited by child templates during their own initialisation
+   * maybe declared 1 or more levels deep (e.g. templateA.templateB.templateC) */
   childOverrides: IOverride;
+
   /** overrides applying to this specific template rows */
   templateRowOverrides: IOverride;
 
   template: FlowTypes.Template;
+
   /** track path to template from top parent (not currently used) */
   templateBreadcrumbs: string[] = [];
   componentDestroyed$ = new Subject();
