@@ -44,12 +44,12 @@ $horizontal: 90deg;
   --ion-main-bg-active: #{$tertiary};
   --ion-border-standart: 2px solid #{$primary};
   --ion-default-box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
-  --ion-border-radius-standard: #{$border-radius-standard};
-  --ion-border-radius-secondary: #{$border-radius-secondary};
+  --ion-border-radius-standard: 15px;
+  --ion-border-radius-secondary: 20px;
+  --ion-border-radius-rounded: 50%;
   --banner-short-height: 95px;
   --home-screen-height: 154px;
   --home-screen-height-small: 130px;
-  --ion-border-radius-rounded: 50%;
 
   --p-margin-standart: 0.75em;
 
