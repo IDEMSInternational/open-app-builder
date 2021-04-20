@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import {
   getBooleanParamFromTemplateRow,
@@ -16,7 +16,9 @@ import { Router } from "@angular/router";
   templateUrl: "./audio.component.html",
   styleUrls: ["./audio.component.scss"],
 })
-export class TmplAudioComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplAudioComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit, OnDestroy {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   @ViewChild("range", { static: false }) range: IonRange;
@@ -141,5 +143,8 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
         ? ((this.player.seek() as any) * 1000).toString()
         : "0";
     }
+  }
+  ngOnDestroy() {
+    this.player.stop();
   }
 }
