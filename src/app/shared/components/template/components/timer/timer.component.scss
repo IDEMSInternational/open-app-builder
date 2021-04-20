@@ -1,13 +1,12 @@
 @import "../../../../../../theme/mixins.scss";
+
 :host {
   min-height: 183px;
 }
 .timer-counter {
   width: calc(100% - 10px);
   height: 73px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-centered;
   margin: 0 5px;
   div {
     font-weight: var(--font-weight-bold);
@@ -29,8 +28,8 @@
 }
 
 .timer-help {
-  margin-top: 15px;
-  margin-left: 10px;
+  margin-top: var(--regular-margin);
+  margin-left: var(--small-margin);
   color: var(--ion-color-primary);
   height: var(--help-icon-standard-size);
   width: var(--help-icon-standard-size);
@@ -60,13 +59,14 @@
   padding-left: 5px;
   padding-right: 5px;
   width: 100%;
-  background-color: #fff;
-  border: var(--ion-border-standart);
+  background-color: var(--ion-color-primary-contrast);
+  border: var(--ion-border-standard);
+  box-sizing: border-box;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-secondary);
 
   &-br-15 {
-    border-radius: 15px;
+    border-radius: var(--ion-border-radius-standard);
   }
 }
 ion-button {
