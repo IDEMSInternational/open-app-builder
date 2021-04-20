@@ -37,6 +37,7 @@ If category_list is not available we generate list of values based on min_value,
 - value - boolean value of checkbox. If true - checked
 - position - checkbox position relative to label_text - left | right. Default - left
 - label_text - text label for checkbox.
+- style - string. Style name. Default ''.
 
 ## Slider - TmplSliderComponent
 - type - slider.
