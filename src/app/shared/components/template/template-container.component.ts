@@ -410,6 +410,8 @@ export class TemplateContainerComponent
       // depending on the parser and related calculations (so check for both)
       if (condition === (false as any) || condition === "false") {
         // stop processing row (will not be rendered)
+        // TODO - ideally should filter out here (but retain reference for future processing)
+        // Maybe via a this.renderedRows to distinguish from template rows or similar
         parsedRow.condition = "false";
         log("[Row end (skip)]", name);
         log_groupEnd();
