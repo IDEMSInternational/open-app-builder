@@ -35099,7 +35099,7 @@
         "rows": [
           {
             "name": "text",
-            "value": "We all want to keep our children safe.",
+            "value": "We all want to keep our children safe.\n\nIn the past month, have you talked with your teen about keeping safe from sexual violence online or offline? This could be when they are going out with friends, or talking about the websites they use.",
             "type": "set_variable"
           },
           {
