@@ -1,6 +1,7 @@
+@import "../../../../../../theme/mixins.scss";
 .container-player {
   background: #fff;
-  border: 2px solid #0d3f60;
+  border: var(--ion-border-standart);
   box-sizing: border-box;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-standard);
@@ -9,9 +10,7 @@
   position: relative;
   flex-direction: column;
   .top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-space-between;
     .title_and_help {
       display: flex;
       align-items: center;
@@ -21,8 +20,8 @@
         margin-right: 11px;
         color: var(--ion-color-primary);
         max-width: 280px;
-        font-weight: bold;
-        font-size: 22px;
+        font-weight: var(--font-weight-bold);
+        font-size: var(--audio-title-size);
       }
       .audio-help {
         color: var(--ion-color-primary);
@@ -44,10 +43,10 @@
   .progress-block {
     .audio-range {
       padding-inline: 0;
-      --bar-background-active: #00a0cc;
+      --bar-background-active: var(--ion-play-btn-default-bg);
       --bar-background: transparent;
       --bar-height: 4px;
-      --bar-border-radius: 20px;
+      --bar-border-radius: var(--ion-border-radius-secondary);
       --knob-size: 0px;
       --pin-background: var(--ion-color-primary);
       --knob-background: var(--ion-color-primary);
@@ -65,9 +64,7 @@
   }
   .time {
     margin-top: -12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-space-between;
     &-value {
       font-size: 20px;
       line-height: 20px;
@@ -83,8 +80,8 @@
     .rewind,
     .forward {
       ion-button {
-        width: 64px;
-        height: 64px;
+        width: var(--ion-btn-tmpl-components-size);
+        height: var(--ion-btn-tmpl-components-size);
         --background: transparent;
         --padding: 0;
         --border-radius: var(--ion-border-radius-rounded);
@@ -102,9 +99,9 @@
     }
     .play {
       .btn-play {
-        width: 64px;
-        height: 64px;
-        --background: #00a0cc;
+        width: var(--ion-btn-tmpl-components-size);
+        height: var(--ion-btn-tmpl-components-size);
+        --background: var(--ion-play-btn-default-bg);
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
         --box-shadow: var(--ion-default-box-shadow);
