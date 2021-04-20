@@ -95,7 +95,8 @@ export class TemplateContainerComponent
   }
 
   /***************************************************************************************
-   *  Action Handling
+   * Action Handling
+   * TODO - Ideally this should be separated into own service and somehow linked with container
    **************************************************************************************/
   /** Public method to add actions to processing queue and process */
   public async handleActions(
@@ -219,7 +220,10 @@ export class TemplateContainerComponent
   }
 
   /**
-   * When a child triggers the changing of a local variable... TODO
+   * When a child triggers the changing of a local variable
+   * TODO - when setting local the user might actually be trying to set the value
+   * of a row component. Need to decide how best to handle that case
+   * (likely set variables replace existing row values as in parent init methods, and render)
    */
   public setLocalVariable(name: string, value: any) {
     // convert values likely intended as boolean
@@ -237,24 +241,13 @@ export class TemplateContainerComponent
 
   /**
    * When actions have triggered updates this method is called to handle updating the current template
-   *
-   * TODO - parent overrides may have changed, so need way to determine which to process or not
-   * (possibly tracking list of actions or checking previous parent overrides vs current)
-   *
-   * Or possibly passing more information into the template row (e.g. do initial template lookup)
-   * from within begin_template block and merge with child overrides before render
-   *
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
   public processRowUpdates() {
     console.warn("Reprocessing rows following action - NOTE this method requires review");
-
     console.group(`[Reprocess Template]`, this.name);
     this.template.rows = this.processRows(this.template.rows, this.template);
     console.groupEnd();
-
-    // TODO - could have lots of knock-ons, need better way to cache localVariables and
-    // parent overrides that will determine changes
   }
 
   /***************************************************************************************
@@ -523,6 +516,7 @@ export class TemplateContainerComponent
     log(`[Template Row End] - ${row.name}`, { ...mergedOverrides });
     // remove the child rows from further processing in this template
     // TODO - confirm if this is actually useful to do - (see above TOOO)
+    // row.rows = []
 
     return row;
   }
