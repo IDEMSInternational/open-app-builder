@@ -44,7 +44,7 @@ $horizontal: 90deg;
   --ion-main-bg-active: #{$tertiary};
   --ion-border-standart: 2px solid #{$primary};
   --ion-border-color-secondary: 2px solid #{$secondary};
-  --ion-default-box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
+  --ion-default-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   --ion-border-radius-standard: #{$border-radius-standard};
   --ion-border-radius-secondary: #{$border-radius-secondary};
   --ion-border-radius-rounded: 50%;
@@ -107,13 +107,13 @@ $horizontal: 90deg;
   --help-icon-small-size: 30px;
   --help-icon-standard-color: $primary;
   --help-icon-alternative-color: $light;
-  // tools
+  //TOOLS
   --tool-one-bg: #{color.adjust($secondary, $hue: -2)};
   --tool-two-bg: #{color.adjust($secondary, $hue: -2, $saturation: 5%, $lightness: -7%)};
   --tool-three-bg: #{color.adjust($primary, $hue: -8, $saturation: 8%, $lightness: 17%)};
   --tool-four-bg: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 8%)};
   --tool-five-bg: var(--ion-color-primary);
-  //buttons
+  //BUTTONS
   --ion-play-btn-default-bg: #00a0cc;
   --ion-btn-tmpl-components-size: 64px;
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)};
@@ -131,7 +131,7 @@ $horizontal: 90deg;
     var(--ion-gradient-secondary-end) 100%
   );
 
-  // options buttons
+  //OPTION BUTTONS
   --ion-gradient-primary-option-start: #{color.adjust($primary, $saturation: 8%, $lightness: 17%)};
   --ion-gradient-primary-option-end: #{$primary};
 
@@ -141,7 +141,7 @@ $horizontal: 90deg;
     var(--ion-gradient-primary-option-end) 100%
   );
 
-  // banner
+  //BANNER
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,
       $hue: 17,
@@ -170,7 +170,7 @@ $horizontal: 90deg;
     var(--ion-banner-gradient-primary-middle) 65.78%,
     var(--ion-banner-gradient-primary-end) 105.68%
   );
-  // accordion
+  //ACCORDION
   --accordion-section-padding: var(--large-padding) 0 var(--large-padding) 0;
   --ion-accordion-gradient-start: #{color.adjust(
       $primary,
@@ -208,8 +208,7 @@ $horizontal: 90deg;
     var(--ion-accordion-progress-gradient-secondary-start) 41.02%,
     var(--ion-accordion-progress-gradient-secondary-end) 102.14%
   );
-
-  //home screen
+  //HOME SCREEN
   --home-screen-light-gradient-start: #{color.adjust(
       $primary,
       $hue: -10,
@@ -261,8 +260,7 @@ $horizontal: 90deg;
     var(--home-screen-dark-gradient-start) 20.92%,
     var(--home-screen-dark-gradient-end) 96.06%
   );
-
-  //radio group
+  //RADIO GROUP
   --radio-group-gradient-primary-start: #{color.adjust(
       $primary,
       $hue: -8,
@@ -287,7 +285,6 @@ $horizontal: 90deg;
     var(--radio-group-gradient-primary-start) 28.12%,
     var(--radio-group-gradient-primary-end) 100%
   );
-
   --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
   --ion-color-slider: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
 
