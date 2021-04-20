@@ -43,8 +43,11 @@ $horizontal: 90deg;
   --ion-main-bg-passive: #{$some};
   --ion-main-bg-active: #{$tertiary};
   --ion-border-standart: 2px solid #{$primary};
+  --ion-border-color-secondary: 2px solid #{$secondary};
+  --ion-default-box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
   --ion-border-radius-standard: #{$border-radius-standard};
   --ion-border-radius-secondary: #{$border-radius-secondary};
+  --ion-border-radius-rounded: 50%;
   --banner-short-height: 95px;
   --home-screen-height: 154px;
   --home-screen-height-small: 130px;
@@ -242,6 +245,32 @@ $horizontal: 90deg;
     172.6deg,
     var(--home-screen-dark-gradient-start) 20.92%,
     var(--home-screen-dark-gradient-end) 96.06%
+  );
+
+  //radio group
+  --radio-group-gradient-primary-start: #{color.adjust(
+      $primary,
+      $hue: -8,
+      $saturation: 8%,
+      $lightness: 17%
+    )};
+  --radio-group-gradient-primary-end: #{$primary};
+  --radio-group-gradient-secondary-start: #{color.adjust(
+      $secondary,
+      $hue: 8,
+      $saturation: 5%,
+      $lightness: 3%
+    )};
+  --radio-group-gradient-secondary-end: #{$secondary};
+  --radio-group-gradient-secondary: linear-gradient(
+    168.87deg,
+    var(--radio-group-gradient-secondary-start) 28.12%,
+    var(--radio-group-gradient-secondary-end) 100%
+  );
+  --radio-group-gradient-primary: linear-gradient(
+    168.87deg,
+    var(--radio-group-gradient-primary-start) 28.12%,
+    var(--radio-group-gradient-primary-end) 100%
   );
 
   --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
