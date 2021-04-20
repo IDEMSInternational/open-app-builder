@@ -98,49 +98,49 @@
       {
         "type": "step",
         "title": "Welcome to ParentApp",
-        "message_text": "Welcome to ParentApp.\n\nYou Desreve to feel good, and have happier family relationships.\n\nThis app will support you with three major components",
+        "message_text": "<p>Welcome to @global.parent_app.</p>\n<p>You deserve to feel good, and have happier family relationships.</p>\n<p>This app will support you with three major components.</p>",
         "template_component_name": "home_screen",
         "route": "template/home_screen"
       },
       {
         "type": "step",
         "title": "Weekly Workshops",
-        "message_text": "This tile takes you to the weekly workshops. \n\nThese include key tools for self-care and parenting a teenager. \n\nYou can choose to do them by yourself or as a group with family or friends.",
+        "message_text": "<p>This tile takes you to the weekly workshops. </p>\n\n<p>These include key tools for self-care and parenting a teenager. </p>\n\n<p>You can choose to do them by yourself or as a group with family or friends.</p>",
         "template_component_name": "tile_weekly_workshops",
         "route": "template/home_screen"
       },
       {
         "type": "step",
         "title": "Parent Points",
-        "message_text": "This tile takes you to the Parent points.\n\nSee your success in self-care and parenting. \n\nCelebrate your daily achievements!",
+        "message_text": "<p>This tile takes you to the @global.parent_points </p>\n\n<p>See your success in self-care and parenting. </p>\n\n<p>Celebrate your daily achievements!</p>",
         "template_component_name": "tile_parent_points",
         "route": "template/home_screen"
       },
       {
         "type": "step",
         "title": "Parent Library",
-        "message_text": "This tile takes you to the parent library.\n\nStacked with the resources you need whenever you want. \n\nInstant access to help sections with Essential Tools for each skill, extra information and local resources.",
+        "message_text": "<p>This tile takes you to the @global.parent_centre </p>\n\n<p>Stacked with the resources you need whenever you want. </p>\n\n<p>Instant access to help sections with @global.essential_tools for each skill, extra information and local resources.</p>",
         "template_component_name": "tile_parent_centre",
         "route": "template/home_screen"
       },
       {
         "type": "step",
         "title": "Quick Starts",
-        "message_text": "These buttons appear when you have content to do. \n\nThis first message involves a task which asks you a few questions and customises your app experience.",
-        "template_component_name": "quick_start_parent_centre",
+        "message_text": "<p>These round buttons appear whenever you have content to do.</p> \n\n<p>This message <img src=\"/assets/icon/round-button/message_2.svg\"> would now instigate an initial task which customises your app experience.</p>",
+        "element": "#main-content > plh-template-testing:nth-child(5) > ion-content > plh-template-container > div > plh-template-component:nth-child(4) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-round-button > div > ion-tab-button",
         "route": "template/home_screen"
       },
       {
         "type": "step",
-        "title": "Jump into a workshop",
-        "message_text": "This quick start would jump you straight into a first workshop which is all about self-care.\n\nAs a parent looking after yourself is the basis of look after your family.",
-        "template_component_name": "quick_start_weekly_workshops",
+        "title": "Quick Starts continued",
+        "message_text": "<p> While <img src=\"/assets/icon/round-button/play_2.svg\"> starts a first workshop which is all about self-care.</p>\n\n<p> As a parent looking after yourself is the basis of look after your family, this workshop is a good place to start.</p>",
+        "element": "#main-content > plh-template-testing:nth-child(5) > ion-content > plh-template-container > div > plh-template-component:nth-child(2) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-round-button > div > ion-tab-button",
         "route": "template/home_screen"
       },
       {
         "type": "step",
-        "title": "Set-up",
-        "message_text": "Another good starting point is with the weekly workshop tile.\n\nPress it for the first time to set yourself up to do the workshops your way.\n\nHowever you start, just the fact you are here shows you care.",
+        "title": "Getting started",
+        "message_text": "<p>Another good starting point is with the @global.weekly_workshops tile.</p>\n\n<p>Press it for the first time to set yourself up to do the workshops your way.</p>\n\n<p>However you start, just the fact you are here shows you care.</p>",
         "template_component_name": "tile_weekly_workshops",
         "route": "template/home_screen"
       }
