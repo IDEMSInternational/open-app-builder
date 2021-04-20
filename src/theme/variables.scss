@@ -81,6 +81,10 @@ $horizontal: 90deg;
   /** Line Height **/
   --line-height-text: 22px;
 
+  // Components variables //
+  --audio-title-size: 22px;
+  --timer-title-size: 22px;
+
   //* Help icon **/
   --help-icon-standard-size: 35px;
   --help-icon-small-size: 30px;
@@ -93,6 +97,8 @@ $horizontal: 90deg;
   --tool-four-bg: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 8%)};
   --tool-five-bg: var(--ion-color-primary);
   //buttons
+  --ion-play-btn-default-bg: #00a0cc;
+  --ion-btn-tmpl-components-size: 64px;
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)};
   --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)};
   --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)};
