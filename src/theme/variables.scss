@@ -14,10 +14,11 @@ $secondary: hsl(31, 95%, 57%);
 $secondary-light: color.change($secondary, $lightness: 80%);
 $secondary-lighter: color.change($secondary, $lightness: 95%);
 
-$tertiary: #fff6d6;
+$tertiary: hsl(47, 100%, 92%);
 $some: #e1f2fd;
 $light: #ffffff;
 $dark: #00000040;
+$worning: hsl(10, 81%, 49%);
 
 /** Borders **/
 $border-dashed: 2px dashed $primary;
@@ -35,6 +36,7 @@ $horizontal: 90deg;
   --large-padding: 10px;
   --largest-padding: 15px;
   --huge-padding: 40px;
+  --tiny-margin: 5px;
   --small-margin: 10px;
   --regular-margin: 15px;
   --large-margin: 24px;
@@ -285,6 +287,10 @@ $horizontal: 90deg;
     var(--radio-group-gradient-primary-start) 28.12%,
     var(--radio-group-gradient-primary-end) 100%
   );
+  // ROUND ICON BUTTON
+  --button-icon-secondary-light: #{color.adjust($tertiary, $lightness: -42%)};
+  --button-icon-secondary: var(--ion-color-secondary);
+  --button-icon-secondary-dark: #{color.adjust($secondary, $lightness: -7%)};
   --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
   --ion-color-slider: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
 
