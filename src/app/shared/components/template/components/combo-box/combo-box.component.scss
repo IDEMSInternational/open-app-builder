@@ -7,7 +7,7 @@
   border-radius: var(--ion-border-radius-secondary);
   font-weight: 500;
   background: transparent;
-  font-size: 20px;
+  font-size: var(--combo-box-font-size-standard);
   line-height: 25px;
   text-align: center;
   color: var(--ion-color-primary);
@@ -21,5 +21,5 @@
   color: var(--ion-color-primary-contrast);
 }
 .placeholder-style {
-  color: rgba(var(--ion-btn-primary), 0.5);
+  color: var(--combo-box-placeholder-primary);
 }
