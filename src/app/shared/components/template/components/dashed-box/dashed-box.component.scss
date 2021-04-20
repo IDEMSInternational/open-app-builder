@@ -1,17 +1,17 @@
+@import "../../../../../../theme/mixins.scss";
+
 .box-wrapper {
   padding: 25px;
   .item {
+    @include flex-centered;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
     min-height: 60px;
     padding: 17px 33px;
     border: 1px dashed transparent;
-    border-radius: 20px;
+    border-radius: var(--ion-border-radius-secondary);
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     .text {
       text-align: center;
       font-size: 18px;
@@ -45,16 +45,16 @@
   }
   .default {
     background: transparent;
-    border-color: #0d4060;
+    border-color: var(--ion-color-primary);
     .text {
-      color: #0d4060;
+      color: var(--ion-color-primary);
     }
   }
   .alert {
-    background: #fff;
-    border-color: #f49d04;
+    background: var(--ion-color-primary-contrast);
+    border-color: var(--ion-color-secondary);
     .text {
-      color: #f49d04;
+      color: var(--ion-color-secondary);
     }
   }
 }
