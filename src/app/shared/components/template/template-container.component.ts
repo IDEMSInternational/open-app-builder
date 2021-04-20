@@ -9,7 +9,7 @@ import { TemplateVariablesService } from "./services/template-variables.service"
 import { TemplateService } from "./services/template.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
-let SHOW_DEBUG_LOGS = true;
+let SHOW_DEBUG_LOGS = false;
 let log = SHOW_DEBUG_LOGS ? console.log : () => null;
 let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
@@ -49,6 +49,9 @@ export class TemplateContainerComponent
   templateRowOverrides: IOverride;
 
   template: FlowTypes.Template;
+
+  /** when processing actions track whether templates will also require render after */
+  actionsRequireRender = false;
 
   /** track path to template from top parent (not currently used) */
   templateBreadcrumbs: string[] = [];
@@ -101,6 +104,11 @@ export class TemplateContainerComponent
   ) {
     const unhandledActions = await this.handleActionsInterceptor(actions);
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
+    // TODO - review change detection methods to see if this is respected or not
+    // TODO - further optimise child re-renders
+    if (this.actionsQueue.find((a) => a.action_id !== "emit")) {
+      this.actionsRequireRender = true;
+    }
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
     if (!this.parent) {
@@ -140,8 +148,11 @@ export class TemplateContainerComponent
     await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
     // once all actions have been processed re-render rows
     if (processedActions.length > 0) {
-      log("[Actions Trigger Row Reprocess]");
-      this.processRowUpdates();
+      if (this.actionsRequireRender) {
+        log("[Actions Trigger Row Reprocess]");
+        this.processRowUpdates();
+        this.actionsRequireRender = false;
+      }
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
@@ -211,8 +222,16 @@ export class TemplateContainerComponent
    * When a child triggers the changing of a local variable... TODO
    */
   public setLocalVariable(name: string, value: any) {
-    this.localVariables[name] = { value } as FlowTypes.TemplateRow;
-
+    // convert values likely intended as boolean
+    if (value === "true") {
+      value = true;
+    }
+    if (value === "false") {
+      value = false;
+    }
+    this.localVariables[name] = { value, name, type: "set_variable" } as FlowTypes.TemplateRow;
+    // update parent reference in case actions force a re-intialisation
+    this.parent.children[this.name] = this;
     // TODO - cross-reference any children that have dynamic row referencing this variable
   }
 
@@ -231,11 +250,9 @@ export class TemplateContainerComponent
     console.warn("Reprocessing rows following action - NOTE this method requires review");
 
     console.group(`[Reprocess Template]`, this.name);
-    this.template.rows = [...this.processRows(this.template.rows, this.template)];
+    this.template.rows = this.processRows(this.template.rows, this.template);
     console.groupEnd();
-    // Note -
 
-    // force children to re-render ?
     // TODO - could have lots of knock-ons, need better way to cache localVariables and
     // parent overrides that will determine changes
   }
@@ -256,11 +273,22 @@ export class TemplateContainerComponent
       this.name = this.name || this.templatename;
       // keep track of path to this template from any parents
       this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
-      log_group(`[Template] Init -`, this.name, { template: { ...template }, ctxt: { ...this } });
-      template.rows = this.processParentOverrides(template.rows);
-      template.rows = this.processRows(template.rows, template);
-      this.template = template;
-      log("[Template] Render", { ...template });
+
+      // If the template has previously been rendered but forced to re-initialise from parent
+      // try to restore previous state
+      const cachedRender = this.parent?.children?.[this.name];
+      log_group("[Template Render Start]", this.name);
+      if (cachedRender) {
+        log(`[Loading Cache] -`, this.name, { ...cachedRender });
+        this.localVariables = cachedRender.localVariables;
+        this.template = cachedRender.template;
+      } else {
+        log("[Process Template]", { template: { ...template }, ctxt: { ...this } });
+        template.rows = this.processParentOverrides(template.rows);
+        template.rows = this.processRows(template.rows, template);
+        this.template = template;
+        log("[Template] Render", { ...template });
+      }
       // if a parent exists also provide parent reference to this as a child
       if (this.parent) {
         this.parent.children[this.name] = this;
@@ -371,59 +399,78 @@ export class TemplateContainerComponent
     skipVars = false
   ) {
     log("[Process Rows Start]", [...rows]);
+    log("local variables", { ...this.localVariables });
     const processedRows = [];
-    rows.forEach((row) => {
-      const { name, value, condition, hidden, type } = row;
-      log("[Row start]", name, { ...row });
+    rows.forEach((r) => {
+      log_group("[Row start]", r.name, { ...r });
 
       // Evaluate row variables in context of current local state
-      const evalContext = { localVariables: this.localVariables, template, row };
-      row = this.templateVariables.evaluatePLHData(row, evalContext);
+      const evalContext = { localVariables: this.localVariables, template, row: r };
+
+      // create a new object with data from evaluation
+      const parsedRow = this.templateVariables.evaluatePLHData(r, evalContext);
+      const { name, value, condition, hidden, type } = parsedRow;
+
+      log("evaluatedRow", { ...parsedRow });
 
       // Filter out if specified by condition. This might be string or boolean
       // depending on the parser and related calculations (so check for both)
       if (condition === (false as any) || condition === "false") {
         // stop processing row (will not be rendered)
-        row.condition = "false";
+        parsedRow.condition = "false";
         log("[Row end (skip)]", name);
-        return row;
+        log_groupEnd();
+        return parsedRow;
       }
 
-      // Make type assigned to hidden consistend
+      // Make type assigned to hidden consistent
       if (hidden === (true as any) || hidden === "true") {
-        row.hidden = "true";
+        parsedRow.hidden = "true";
       }
 
       // Update local variables where specified and filter out if
       // processing for use in local template (not skipVars for child)
       if (type === "set_variable" && !skipVars) {
-        this.localVariables[name] = row;
-        log("[Row end (set)]", name);
+        // only set the variable value if it has not previously been set (e.g. re-render)
+        if (!this.localVariables.hasOwnProperty(name)) {
+          this.localVariables[name] = parsedRow;
+          log("[Row end]", name, "(skip)");
+        } else {
+          log("[Row end]", name, "(set)");
+        }
         // remove so that the same initialisation won't happen again on re-render
+        // TODO - less important if refactor templateRowProcess to return correct rows
+        log_groupEnd();
         return;
       }
 
       // Handle rows that set external data and filter out
       // TODO - confirm no other externally processed rows
       if (type === "set_field") {
-        console.warn("Setting fields from template rows is not advised", { ...row });
-        log("[Row end (set)]", name);
+        console.warn("Setting fields from template rows is not advised", { ...parsedRow });
+        log("[Row end]", name, "(set field)");
+        log_groupEnd();
         return this.templateService.setField(name, value);
       }
 
       // Process child rows, ignoring set_variable statement if row type
       // will be used as part of child template overrides
-      if (row.hasOwnProperty("rows")) {
-        skipVars = ["template", "nested_properties"].includes(row.type);
-        row.rows = this.processRows(row.rows, template, skipVars);
+      if (parsedRow.hasOwnProperty("rows")) {
+        skipVars = ["template", "nested_properties"].includes(type);
+        parsedRow.rows = this.processRows(parsedRow.rows, template, skipVars);
       }
 
       // Generate data to pass to child template where defined
       if (type === "template") {
-        row = this.processTemplateRow(row);
+        const templateRow = this.processTemplateRow(parsedRow);
+        processedRows.push(templateRow);
+        log("[Row end]", name, "(template push)");
+        log_groupEnd();
+        return;
       }
-      log("[Row end (push)]", name, { ...row });
-      processedRows.push(row);
+      log("[Row end]", name, "(push)", { ...parsedRow });
+      log_groupEnd();
+      processedRows.push(parsedRow);
     });
     log("[Process Rows End]", [...processedRows]);
     return processedRows;
@@ -439,46 +486,51 @@ export class TemplateContainerComponent
     log(`[Template Row Start] - ${row.name}`, { previousOverrides, row: { ...row } });
 
     const newOverrides = this.extractRowOverrideTree(row);
-    log("new overrides to merge with previous", { ...newOverrides });
+    log("row state for merge", { ...newOverrides });
 
+    // merge any previous nested or template overrides with those extracted and store for
+    // processing when the template is rendered
     const mergedOverrides = newOverrides;
-    Object.entries(previousOverrides).forEach(([key, previousOverride]) => {
-      const newOverride = newOverrides[key];
+    Object.entries(previousOverrides).forEach(([namespace, previousOverride]) => {
+      const newOverride = newOverrides[namespace];
       if (newOverride) {
-        // override secondary field with previousOverride-secondary merge
-        mergedOverrides[key] = this.mergeOverrideRows(previousOverride, newOverride);
+        mergedOverrides[namespace] = this.mergeOverrideRows(previousOverride, newOverride);
       } else {
-        // add new properties to secondary
-        mergedOverrides[key] = previousOverride;
+        mergedOverrides[namespace] = previousOverride;
       }
     });
+
+    // apply top_level overrides targeting this template row (e.g. value, action_list)
     if (mergedOverrides[row.name]) {
-      // apply top-level overrides to row (e.g. value, action_list)
-      row = { ...row, ...(mergedOverrides[row.name] as any) };
+      const merged = mergedOverrides[row.name];
+      row = { ...row, ...(merged as any), rows: Object.values(merged.rows) };
     }
 
-    // Pass row overrides for use later
-    // TODO - each of these fields only needs the nested [.rows] property saved (top level added to row above)
-    this.childOverrides = mergedOverrides;
+    // when storing child overrides for future use we want to pass all nested (template_a.template_b)
+    // types, but for the current template we want to retain previous top_level data (e.g. value, action_list)
+    // in case of re-render and only pass the updated rows
+    const childOverrides = {
+      ...mergedOverrides,
+      [row.name]: { ...previousOverrides[row.name], rows: mergedOverrides[row.name].rows },
+    };
+
+    this.childOverrides = childOverrides;
+
+    // TODO - if re-render changes the rows that would be passed the override will not be processed properly
+    // (priority given to the state we populate here instead of re-render state. Not an issue currently but could be)
+    // Likely resolve by refactor, passing rows to template element instead of child overrides system
 
     log(`[Template Row End] - ${row.name}`, { ...mergedOverrides });
     // remove the child rows from further processing in this template
-    // TODO - confirm if this is actually useful to do - Might be better to let rows
-    // pass to child and just process from there
-    row.rows = [];
+    // TODO - confirm if this is actually useful to do - (see above TOOO)
+
     return row;
   }
 
   /** Merge override entries by keeping all primary columns, adding secondary columns, and merging primary-secondary rows */
-  private mergeOverrideRows(primary: IOverride, secondary: IOverride) {
-    return {
-      ...secondary,
-      ...primary,
-      rows: {
-        ...secondary.rows,
-        ...primary.rows,
-      },
-    };
+  private mergeOverrideRows(primary: IOverride = {}, secondary: IOverride = {}) {
+    const mergedRows = { ...secondary.rows, ...primary.rows };
+    return { ...secondary, ...primary, rows: mergedRows };
   }
 
   /**
@@ -537,7 +589,7 @@ export class TemplateContainerComponent
    * Most important is to keep track of row value as updates to this will want UI refresh
    */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
-    return `${row.name}-${row.value}-${index}`;
+    return `${row.name}-${row.value}-${row.hidden}-${index}`;
   }
 
   /** Query params are used to track state across navigation events */
