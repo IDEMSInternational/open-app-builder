@@ -246,7 +246,7 @@
           "style": "home_screen light"
         },
         "style_list": [
-          "margin: 40px 10px 0px 10px"
+          "margin: 40px 0px 0px 0px"
         ],
         "rows": [
           {
@@ -274,8 +274,7 @@
                 "style_list": [
                   "align-self: flex-start",
                   "margin-left: 20px",
-                  "margin-bottom: 0px",
-                  "margin-top: 23px"
+                  "margin-bottom: 0px"
                 ]
               },
               {
@@ -324,7 +323,7 @@
           "style": "home_screen shade"
         },
         "style_list": [
-          "margin: 40px 10px 0px 10px"
+          "margin: 40px 0px 0px 0px"
         ],
         "rows": [
           {
@@ -352,7 +351,6 @@
                 "style_list": [
                   "align-self: flex-start",
                   "white-space: nowrap",
-                  "margin-top: 23px",
                   "margin-bottom: 28px"
                 ]
               },
@@ -401,7 +399,7 @@
           "style": "home_screen dark"
         },
         "style_list": [
-          "margin: 40px 10px 0px 10px"
+          "margin: 40px 0px 0px 0px"
         ],
         "rows": [
           {
@@ -429,7 +427,6 @@
                 "style_list": [
                   "align-self: flex-start",
                   "white-space: nowrap",
-                  "margin-top:23px",
                   "margin-bottom: 28px"
                 ]
               },
@@ -1793,7 +1790,7 @@
       {
         "type": "button",
         "name": "workshop_1",
-        "value": "@global.w_self_care",
+        "value": "@global.w_self_care_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1812,7 +1809,7 @@
       {
         "type": "button",
         "name": "workshop_2",
-        "value": "@global.w_1on1",
+        "value": "@global.w_1on1_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1831,7 +1828,7 @@
       {
         "type": "button",
         "name": "workshop_3",
-        "value": "@global.w_praise",
+        "value": "@global.w_praise_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1850,7 +1847,7 @@
       {
         "type": "button",
         "name": "workshop_4",
-        "value": "@global.w_instruct",
+        "value": "@global.w_instruct_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1869,7 +1866,7 @@
       {
         "type": "button",
         "name": "workshop_5",
-        "value": "@global.w_stress",
+        "value": "@global.w_stress_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1888,7 +1885,7 @@
       {
         "type": "button",
         "name": "workshop_6",
-        "value": "@global.w_money",
+        "value": "@global.w_money_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1907,7 +1904,7 @@
       {
         "type": "button",
         "name": "workshop_7",
-        "value": "@global.w_rules",
+        "value": "@global.w_rules_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1926,7 +1923,7 @@
       {
         "type": "button",
         "name": "workshop_8",
-        "value": "@global.w_consequence",
+        "value": "@global.w_consequence_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1945,7 +1942,7 @@
       {
         "type": "button",
         "name": "workshop_9",
-        "value": "@global.w_solve",
+        "value": "@global.w_solve_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1964,7 +1961,7 @@
       {
         "type": "button",
         "name": "workshop_10",
-        "value": "@global.w_safe",
+        "value": "@global.w_safe_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -1983,7 +1980,7 @@
       {
         "type": "button",
         "name": "workshop_11",
-        "value": "@global.w_crisis",
+        "value": "@global.w_crisis_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -2002,7 +1999,7 @@
       {
         "type": "button",
         "name": "workshop_12",
-        "value": "@global.w_celebrate",
+        "value": "@global.w_celebrate_tools",
         "action_list": [
           {
             "trigger": "click",
@@ -13191,8 +13188,8 @@
       {
         "name": "answer0_list",
         "value": [
-          "name:name_var_1 | text:Single | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_2 | text:Pair | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
+          "name:name_var_1 | text:Single",
+          "name:name_var_2 | text:Pair"
         ],
         "type": "set_variable"
       },
@@ -13203,16 +13200,10 @@
         "type": "set_variable"
       },
       {
-        "name": "radio_button_type",
-        "value": "btn_square",
-        "type": "set_variable"
-      },
-      {
         "type": "radio_group",
         "name": "radio_group_square",
         "value": "Pair",
         "parameter_list": {
-          "radio_button_type": "btn_square",
           "answer_list": "@local.answer0_list",
           "options_per_row": "@local.options_per_row",
           "style": "active"
@@ -13227,16 +13218,10 @@
         "type": "set_variable"
       },
       {
-        "name": "radio_button_type",
-        "value": "btn_square",
-        "type": "set_variable"
-      },
-      {
         "type": "radio_group",
         "name": "radio_group_square_ex1",
         "value": "Black",
         "parameter_list": {
-          "radio_button_type": "btn_text",
           "answer_list": "@local.answer2_list",
           "options_per_row": "3",
           "style": "passive"
@@ -13249,70 +13234,24 @@
           "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
           "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue"
         ],
-        "type": "set_variable"
-      },
-      {
-        "name": "radio_button_type",
-        "value": "btn_text",
         "type": "set_variable"
       },
       {
         "type": "radio_group",
         "name": "radio_group_square_ex2",
-        "value": "Black",
         "parameter_list": {
-          "radio_button_type": "@local.radio_button_type",
-          "answer_list": "@local.answer2_list",
-          "options_per_row": "@local.options_per_row"
+          "answer_list": "@local.answer3_list",
+          "options_per_row": "3",
+          "style": "active"
         }
       },
       {
         "name": "answer3_list",
         "value": [
-          "name:name_var_1 | text:Smile | image:/plh_images/icons/heart.svg",
-          "name:name_var_1 | text: Sad | image:/plh_images/icons/heart.svg"
+          "name:name_var_1 | image:/plh_images/icons/heart.svg",
+          "name:name_var_2| image:/plh_images/icons/heart.svg",
+          "name:name_var_3| image:/plh_images/icons/heart.svg"
         ],
-        "type": "set_variable"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_square_ex3",
-        "value": "Smile",
-        "parameter_list": {
-          "radio_button_type": "btn_icon",
-          "answer_list": "@local.answer3_list",
-          "options_per_row": "@local.options_per_row"
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_result_ex_1",
-        "value": "@local.radio_group_square_ex1"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_square_ex1",
-        "value": "Black",
-        "parameter_list": {
-          "radio_button_type": "btn_text",
-          "answer_list": "@local.answer2_list",
-          "options_per_row": "3",
-          "options_per_row_min": "2",
-          "style": "passive"
-        }
-      },
-      {
-        "name": "answer2_list",
-        "value": [
-          "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
-          "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
-          "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue"
-        ],
-        "type": "set_variable"
-      },
-      {
-        "name": "radio_button_type",
-        "value": "btn_text",
         "type": "set_variable"
       }
     ],
@@ -15330,7 +15269,7 @@
           {
             "type": "button",
             "name": "do_relax",
-            "value": "Let'g go!",
+            "value": "Let's go!",
             "action_list": [
               {
                 "trigger": "click",
@@ -15365,7 +15304,7 @@
           {
             "type": "button",
             "name": "mark_relax",
-            "value": "I've done it!",
+            "value": "Done!",
             "action_list": [
               {
                 "trigger": "click",
@@ -16577,7 +16516,7 @@
         "rows": [
           {
             "name": "title",
-            "value": "Thank you for taking the time",
+            "value": "Thank you!",
             "hidden": "false",
             "type": "set_variable"
           },
@@ -16588,7 +16527,7 @@
           },
           {
             "name": "text",
-            "value": "Content unlocked by these questions is now accessible through the weekly workshop section.",
+            "value": "Content unlocked by these questions is now accessible in the @global.weekly_workshops section.",
             "type": "set_variable"
           }
         ]
@@ -28188,7 +28127,7 @@
                               },
                               {
                                 "name": "text",
-                                "value": "@global.w_rules_female_caregiver_2: \"I’m proud of how well you dance, @global.w_rules_teen_girl . But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account there are also paedophiles who look at videos of teenagers. \n\nPaedophiles are adults who want to attack young girls and boys.\"",
+                                "value": "@global.w_rules_female_caregiver_2: \"I’m proud of how well you dance, @global.w_rules_teen_girl . But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens.\"",
                                 "type": "set_variable"
                               }
                             ]
@@ -28210,7 +28149,7 @@
                                   },
                                   {
                                     "name": "text",
-                                    "value": "@global.w_rules_female_caregiver_2: \"Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you. \n\nSo you can accept people you know, but not strangers. \n\nCan we make a rule together that you can use @global.teen_social_medium, but with a private account? I trust you to know who to accept!\"",
+                                    "value": "@global.w_rules_female_caregiver_2: \"Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you.\n\nSo you can accept people you know from school and our community, but not people who contact you online.\n\nCan we make a rule together that you can use @global.teen_social_medium, but with a private account? I trust you to know who to accept!”",
                                     "type": "set_variable"
                                   }
                                 ]
@@ -30757,7 +30696,7 @@
                   },
                   {
                     "name": "text",
-                    "value": "Think of one thing YOU have done well recently!\n\nSay it aloud to each other: \"Well done to me for…\"\n\nHere is one thing you deserve praise for: WELL DONE for using ParentApp!",
+                    "value": "Think of one thing YOU have done well recently.\n\nSay it aloud to each other: \"Well done to me for…\"\n\nHere is one thing you deserve praise for: WELL DONE for using ParentApp!",
                     "type": "set_variable"
                   },
                   {

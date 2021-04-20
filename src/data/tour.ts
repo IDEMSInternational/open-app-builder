@@ -98,7 +98,7 @@
       {
         "type": "step",
         "title": "Welcome to ParentApp",
-        "message_text": "<p>Welcome to ParentApp.</p>\n<p>You Desreve to feel good, and have happier family relationships.</p>\n<p>This app will support you with three major components.</p>",
+        "message_text": "<p>Welcome to @global.parent_app.</p>\n<p>You deserve to feel good, and have happier family relationships.</p>\n<p>This app will support you with three major components.</p>",
         "template_component_name": "home_screen",
         "route": "template/home_screen"
       },
@@ -112,14 +112,14 @@
       {
         "type": "step",
         "title": "Parent Points",
-        "message_text": "<p>This tile takes you to the Parent points.</p>\n\n<p>See your success in self-care and parenting. </p>\n\n<p>Celebrate your daily achievements!</p>",
+        "message_text": "<p>This tile takes you to the @global.parent_points </p>\n\n<p>See your success in self-care and parenting. </p>\n\n<p>Celebrate your daily achievements!</p>",
         "template_component_name": "tile_parent_points",
         "route": "template/home_screen"
       },
       {
         "type": "step",
         "title": "Parent Library",
-        "message_text": "<p>This tile takes you to the parent library.</p>\n\n<p>Stacked with the resources you need whenever you want. </p>\n\n<p>Instant access to help sections with Essential Tools for each skill, extra information and local resources.</p>",
+        "message_text": "<p>This tile takes you to the @global.parent_centre </p>\n\n<p>Stacked with the resources you need whenever you want. </p>\n\n<p>Instant access to help sections with @global.essential_tools for each skill, extra information and local resources.</p>",
         "template_component_name": "tile_parent_centre",
         "route": "template/home_screen"
       },
@@ -140,7 +140,7 @@
       {
         "type": "step",
         "title": "Getting started",
-        "message_text": "<p>Another good starting point is with the weekly workshop tile.</p>\n\n<p>Press it for the first time to set yourself up to do the workshops your way.</p>\n\n<p>However you start, just the fact you are here shows you care.</p>",
+        "message_text": "<p>Another good starting point is with the @global.weekly_workshops tile.</p>\n\n<p>Press it for the first time to set yourself up to do the workshops your way.</p>\n\n<p>However you start, just the fact you are here shows you care.</p>",
         "template_component_name": "tile_weekly_workshops",
         "route": "template/home_screen"
       }
