@@ -200,6 +200,10 @@ export class TemplateVariablesService {
       case "field":
         parsedValue = this.templateService.getField(fieldName);
         break;
+      case "fields":
+        console.warn("@fields is deprecated, please use @field instead");
+        parsedValue = this.templateService.getField(fieldName);
+        break;
       case "global":
         parsedValue = this.templateService.getGlobal(fieldName);
         break;

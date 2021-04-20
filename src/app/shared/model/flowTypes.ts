@@ -393,12 +393,10 @@ export namespace FlowTypes {
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
-    hidden?: string;
+    hidden?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     rows?: TemplateRow[];
-    disabled?: string;
-    condition?: string;
-    /* Used for authoring comments. Not used in code */
-    comments?: string;
+    disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     /**
      * track fields above where dynamic expressions have been used in field evaluation
      * they will be nested in the same way the template itself is (e.g. parameter_list.paramNam.someVal)

@@ -31,7 +31,7 @@ export class TemplateParser extends DefaultParser {
       }
     }
     // remove any comments
-    delete row.comments;
+    delete row["comments"];
 
     // parse action list
     if (row.action_list) {
@@ -41,12 +41,6 @@ export class TemplateParser extends DefaultParser {
     }
     if (row.parameter_list) {
       row.parameter_list = this.parseParameterList(row.parameter_list as any);
-    }
-    // convert boolean to strings (easier for future processing, as most update functions typically return strings)
-    for (let key of Object.keys(row)) {
-      if (typeof row[key] === "boolean") {
-        row[key] = `${row[key]}`;
-      }
     }
     // extract dynamic fields for runtime evaluation
     const dynamicFields = this.extractDynamicFields(row);

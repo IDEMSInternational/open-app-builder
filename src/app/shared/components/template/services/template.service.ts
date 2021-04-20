@@ -40,6 +40,7 @@ export class TemplateService {
       console.warn("field value not found for key:", key);
       val = `{{field.${key}}}`;
     }
+    // console.log("[Field Retrieved]", key, val);
     return val;
   }
 
@@ -50,6 +51,14 @@ export class TemplateService {
    * available in local storage so does not require await for further processing
    * */
   setField(key: string, value: string) {
+    if (typeof value === "object") {
+      console.warn("Warning - expected string field but received", { key, value });
+      try {
+        value = JSON.stringify(value);
+      } catch (error) {
+        console.warn("string conversion failed", error);
+      }
+    }
     // write to local storage
     this.localStorageService.setString("rp-contact-field." + key, value);
 
