@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 
 import introJs from "intro.js";
 import { TOUR } from "../data/data.service";
+import { TemplateService } from "../../components/template/services/template.service";
 
 @Injectable({
   providedIn: "root",
@@ -12,7 +13,7 @@ export class TourService {
 
   waitForRoutingDelay = 1000;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private templateService: TemplateService) {}
 
   listTourNames(): string[] {
     return TOUR.map((t) => t.flow_name);
@@ -28,11 +29,12 @@ export class TourService {
           if (row.template_component_name && row.template_component_name.trim().length > 0) {
             elementSelector = `[data-rowname="${row.template_component_name}"]`;
           }
+          console.log(row.title);
           return {
-            intro: row.message_text,
-            title: row.title,
+            intro: this.replaceGlobalInRowMessage(row.message_text),
+            title: this.replaceGlobalInRowMessage(row.title),
             element: elementSelector,
-            elementSelector: elementSelector,
+            elementSelector,
           } as any;
         }),
         hidePrev: true,
@@ -86,5 +88,16 @@ export class TourService {
         this.introJS["_introItems"][key].position = step.position ? step.position : "bottom";
       }
     });
+  }
+  replaceGlobalInRowMessage(field: any) {
+    const regExs = new RegExp(/([@]+[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
+    const globalVariables = field ? field.match(regExs) : field;
+    if (globalVariables) {
+      for (let i of globalVariables) {
+        const name = i.split(".");
+        field = field.replace(i, this.templateService.getGlobal(name[1]));
+      }
+    }
+    return field;
   }
 }
