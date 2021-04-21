@@ -80,6 +80,7 @@ If category_list is not available we generate list of values based on min_value,
 - input_position - string or null. Position of input element('top or bottom'). Default - top
 - answer_placeholder - string. Input placeholder. Default - empty string.
 - placeholder - string. Placeholder for button open pop_up window. Default - null.
+- style - string. Class names: active or passive. Default take style from main-theme-bg.
 
 ## TextBox - TmplTextBoxComponent
 - type - text.

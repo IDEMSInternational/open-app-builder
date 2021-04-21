@@ -1,17 +1,16 @@
+@import "../../../../../../theme/mixins.scss";
 .container-player {
   background: #fff;
-  border: 2px solid #0d3f60;
+  border: var(--ion-border-standard);
   box-sizing: border-box;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  padding: 16px;
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-standard);
+  padding: 17px 14px 16px 20px;
   display: flex;
   position: relative;
   flex-direction: column;
   .top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-space-between;
     .title_and_help {
       display: flex;
       align-items: center;
@@ -21,13 +20,13 @@
         margin-right: 11px;
         color: var(--ion-color-primary);
         max-width: 280px;
-        font-weight: bold;
-        font-size: 22px;
+        font-weight: var(--font-weight-bold);
+        font-size: var(--audio-title-size);
       }
       .audio-help {
-        color: #0d3f60;
-        height: 32px;
-        width: 32px;
+        color: var(--ion-color-primary);
+        height: var(--help-icon-standard-size);
+        width: var(--help-icon-standard-size);
       }
     }
     .volume {
@@ -35,7 +34,7 @@
       top: 17px;
       right: 14px;
       .volume-icon {
-        color: #0d3f60;
+        color: var(--ion-color-primary);
         height: 36px;
         width: 36px;
       }
@@ -44,17 +43,17 @@
   .progress-block {
     .audio-range {
       padding-inline: 0;
-      --bar-background-active: #00a0cc;
+      --bar-background-active: var(--ion-play-btn-default-bg);
       --bar-background: transparent;
       --bar-height: 4px;
-      --bar-border-radius: 20px;
+      --bar-border-radius: var(--ion-border-radius-secondary);
       --knob-size: 0px;
-      --pin-background: #0d3f60;
-      --knob-background: #0d3f60;
+      --pin-background: var(--ion-color-primary);
+      --knob-background: var(--ion-color-primary);
     }
 
     ion-range::part(bar) {
-      border: 1px solid #0d3f60;
+      border: 1px solid var(--ion-color-primary);
       height: 10px;
     }
 
@@ -65,13 +64,11 @@
   }
   .time {
     margin-top: -12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-space-between;
     &-value {
       font-size: 20px;
       line-height: 20px;
-      color: #0d3f60;
+      color: var(--ion-color-primary);
     }
   }
   .controls {
@@ -83,11 +80,11 @@
     .rewind,
     .forward {
       ion-button {
-        width: 64px;
-        height: 64px;
+        width: var(--ion-btn-tmpl-components-size);
+        height: var(--ion-btn-tmpl-components-size);
         --background: transparent;
         --padding: 0;
-        --border-radius: 50%;
+        --border-radius: var(--ion-border-radius-rounded);
         --box-shadow: transparent;
         img {
           position: absolute;
@@ -102,12 +99,12 @@
     }
     .play {
       .btn-play {
-        width: 64px;
-        height: 64px;
-        --background: #00a0cc;
-        --border-radius: 50%;
+        width: var(--ion-btn-tmpl-components-size);
+        height: var(--ion-btn-tmpl-components-size);
+        --background: var(--ion-play-btn-default-bg);
+        --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
-        --box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
+        --box-shadow: var(--ion-default-box-shadow);
         img {
           position: absolute;
           width: 35px;

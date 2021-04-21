@@ -1,0 +1,25 @@
+@mixin flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin banner {
+  border-radius: var(--ion-border-radius-secondary);
+  margin-top: var(--regular-margin);
+  width: 100%;
+  margin: 0 auto 5px auto;
+}
+
+@mixin essential-tool {
+  margin-top: var(--regular-margin);
+  padding: var(--largest-padding);
+  flex-direction: column;
+  border-radius: var(--ion-border-radius-secondary);
+}

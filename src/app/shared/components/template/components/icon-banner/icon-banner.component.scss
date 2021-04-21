@@ -1,7 +1,9 @@
+@import "../../../../../../theme/mixins.scss";
+
 .icon-banner-wrapper {
   width: 373px;
   min-height: 70px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--ion-default-box-shadow);
   border-radius: 20px;
   padding: 25px 39px 25px 25px;
   margin: 5px auto;
@@ -10,19 +12,17 @@
   .text {
     font-size: 19px;
     line-height: 22px;
-    color: #ffffff;
+    color: var(--ion-color-primary-contrast);
   }
   .title {
     font-weight: 700;
     margin-bottom: 10px;
   }
   .image {
+    @include flex-centered;
     width: 73px;
     height: 73px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: var(--ion-color-primary-contrast);
     border-radius: 50%;
     position: absolute;
     right: -6px;
