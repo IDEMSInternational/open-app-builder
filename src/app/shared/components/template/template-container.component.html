@@ -2,7 +2,6 @@
   [className]="'template-container ' + localVariables?.theme_name"
   [attr.data-theme]="localVariables?._theme || 'default'"
   [attr.data-debug]="debugMode"
-  [attr.data-isChild]="parent ? true : false"
 >
   <!-- Debug Toggle -->
   <div class="debug-container" [attr.data-enabled]="debugMode">
@@ -13,25 +12,12 @@
   </div>
 
   <!-- Template Component-->
-  <div *ngFor="let row of template.rows; trackBy: trackByRow" style="display: contents">
-    <plh-template-component
-      *ngIf="row.condition !== 'false'"
-      [style.height]="onlyOneChild ? '100%' : null"
-      class="row"
-      [row]="row"
-      [parent]="this"
-      [attr.data-name]="row.name"
-    ></plh-template-component>
-  </div>
-
-  <!-- TODO - CC 2021-04-20 rows should be filtered in container to make display below work (slightly cleaner dom)
-    <plh-template-component
-      *ngFor="let row of template.rows; trackBy: trackByRow"
-      [style.height]="onlyOneChild ? '100%' : null"
-      class="row"
-      [row]="row"
-      [parent]="this"
-      [attr.data-name]="row.name"
-    ></plh-template-component>
-   -->
+  <plh-template-component
+    *ngFor="let row of renderedRows; trackBy: trackByRow"
+    [style.display]="row.hidden ? 'none' : 'inherit'"
+    class="row"
+    [row]="row"
+    [parent]="this"
+    [attr.data-name]="row.name"
+  ></plh-template-component>
 </div>

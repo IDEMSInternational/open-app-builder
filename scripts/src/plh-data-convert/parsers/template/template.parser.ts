@@ -7,7 +7,7 @@ export class TemplateParser extends DefaultParser {
     super();
     this.groupSuffix = "";
   }
-  postProcess(row: FlowTypes.TemplateRow) {
+  postProcess(row: FlowTypes.TemplateRow, nestedPath?: string) {
     // set all empty row and nested row types to 'set_variable' type
     if (!row.type) {
       row.type = "set_variable";
@@ -16,10 +16,18 @@ export class TemplateParser extends DefaultParser {
     if (row.type === ("template_group" as any)) {
       row.type = "template";
     }
-    // when unique template name not specified assume namespacing with template value (flow_name)
-    if (row.type === "template" && !row.name) {
-      row.name = row.value;
+    // when unique name not specified assume namespacing with template value (flow_name)
+    // or the row type for non-templates
+    if (!row.name) {
+      if (row.type === "template") {
+        row.name = row.value;
+      } else {
+        row.name = row.type;
+      }
     }
+    // track path to row when nested
+    row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
+
     // convert any variables (local/global) list or collection strings
     // ignore rows which reference dynamic values (e.g. @local.some_var)
     if (row.value && typeof row.value === "string" && !row.value.includes("@")) {
@@ -50,7 +58,7 @@ export class TemplateParser extends DefaultParser {
 
     // handle nested rows in same way
     if (row.rows) {
-      row.rows = row.rows.map((r) => this.postProcess(r));
+      row.rows = row.rows.map((r) => this.postProcess(r, row._nested_name));
     }
     return row;
   }

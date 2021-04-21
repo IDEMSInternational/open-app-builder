@@ -3,10 +3,6 @@ import { FlowTypes } from "scripts/types";
 import { evaluateJSExpression, getNestedProperty } from "src/app/shared/utils";
 import { TemplateService } from "./template.service";
 
-interface ILocalVariables {
-  [name: string]: any;
-}
-
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
 const log = SHOW_DEBUG_LOGS ? console.log : () => null;
@@ -15,12 +11,11 @@ const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
 /**
  * Most methods in this class depend on factors relating to the execution context
- * (e.g. template, row, localVariables etc.). Store as a single object to make
- * it easier to pass between methods
+ * (e.g.row, variables etc.). Store as a single object to make it easier to pass between methods
+ * @param templateRowMap hashmap containing list of all template rows, keyed by their nested row name
  */
 interface IVariableContext {
-  localVariables: ILocalVariables;
-  template: FlowTypes.Template;
+  templateRowMap: Map<string, FlowTypes.TemplateRow>;
   row: FlowTypes.TemplateRow;
   field?: string;
 }
@@ -65,7 +60,7 @@ export class TemplateVariablesService {
         const dynamicFields = context.row._dynamicFields;
         // only evaluate if there are dynamic fields recorded somewhere in the object
         if (dynamicFields) {
-          log_group(`[evaluate] ${data.value || ""}`, { data: { ...data }, dynamicFields });
+          log_group(`[evaluate] ${data.value || ""}`, { data: { ...data }, context });
           Object.keys(data).forEach((k) => {
             value[k] = data[k];
             // ignore evaluation of meta, comment, and specifiedfields. Could provide single list of approved fields, but as dynamic fields
@@ -128,7 +123,6 @@ export class TemplateVariablesService {
       const evalContext = { [type]: { [fieldName]: parsedValue } };
       try {
         const evaluatedExpression = evaluateJSExpression(contextExpression, evalContext);
-        // console.log("[Evaluated]", { expression, parsedExpression, evaluatedExpression });
         // if we have an array, object, null or undefined no further processing required
         if (typeof evaluatedExpression === "object") {
           return evaluatedExpression;
@@ -148,7 +142,6 @@ export class TemplateVariablesService {
     // for the text detected, however this is fine as the current evaluation already contains everything we need (@someVar was evaluated previously)
     try {
       const evaluatedExpression = evaluateJSExpression(parsedExpression);
-      // console.log("[Evaluated]", { expression, parsedExpression, evaluatedExpression });
       return evaluatedExpression;
     } catch (error) {
       return parsedExpression;
@@ -166,34 +159,37 @@ export class TemplateVariablesService {
     let parsedValue: any;
     let parseSuccess = true;
     const { matchedExpression, type, fieldName } = evaluator;
-    const { localVariables, template } = context;
+    const { templateRowMap } = context;
     switch (type) {
       case "local":
-        // check local variables set through set_variables / nested_properties
-        if (localVariables.hasOwnProperty(fieldName)) {
-          parsedValue = localVariables[fieldName]?.value;
-        }
-        // aWhen performing a local lookup we might be referring to another row
-        // which is not a set_value type (e.g. a button, or text)
-        // try to locate that row if variable row does not exist
-        else {
-          const siblingRows = _findTemplateRow(fieldName, template.rows);
-          if (siblingRows[0]) {
-            parsedValue = siblingRows[0];
-            if (siblingRows.length > 1) {
-              console.warn(
-                "Multiple siblings found for lookup",
-                `[Local] - @local.${fieldName}`,
-                siblingRows
-              );
-            }
-          } else {
-            console.error(`[Local] - @local.${fieldName} not found`, {
-              evaluator,
-              localVariables: { ...localVariables },
-            });
-            parsedValue = `{{local.${fieldName}}}`;
+        // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
+        const returnField: keyof FlowTypes.TemplateRow = "value";
+
+        // find any rows where nested path corresponds to match path
+        let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
+        templateRowMap.forEach((row, nestedName) => {
+          if (nestedName === fieldName || nestedName.endsWith(`.${fieldName}`)) {
+            matchedRows.push({ row, nestedName });
           }
+        });
+        // no match found
+        if (matchedRows.length === 0) {
+          parseSuccess = false;
+          console.error(`@local.${fieldName} not found`, {
+            evaluator,
+            rowMap: mapToJson(templateRowMap),
+          });
+          parsedValue = `{{local.${fieldName}}}`;
+        }
+        // match found - return least nested (in case of duplicates)
+        else {
+          matchedRows = matchedRows.sort(
+            (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
+          );
+          if (matchedRows.length > 1) {
+            console.warn(`@local.${fieldName} found multiple`, { matchedRows });
+          }
+          parsedValue = matchedRows[0].row[returnField];
         }
 
         break;
@@ -219,24 +215,14 @@ export class TemplateVariablesService {
   }
 }
 
-function _findTemplateRow(
-  rowName: string,
-  searchRows: FlowTypes.TemplateRow[],
-  matches: FlowTypes.TemplateRow[] = []
-) {
-  searchRows.forEach((row) => {
-    if (row.name === rowName) {
-      matches.push(row);
-    }
-    if (row.rows) {
-      return _findTemplateRow(rowName, row.rows, matches);
-    }
-  });
-  return matches;
-}
-
 function _arrayToObject(arr: any[]) {
   const obj = {};
   arr.forEach((el, i) => (obj[i] = el));
   return obj;
+}
+
+function mapToJson(map: Map<string, any>) {
+  const json = {};
+  map.forEach((value, key) => (json[key] = value));
+  return json;
 }
