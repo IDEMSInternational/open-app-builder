@@ -10,7 +10,7 @@
     .modal-wrapper {
       max-width: 90vw;
       background: #fff;
-      border: var(--ion-border-standart);
+      border: var(--ion-border-standard);
       border-radius: var(--ion-border-radius-secondary);
       .ion-page {
         max-height: 90vh;
@@ -77,7 +77,7 @@
         width: 100%;
         text-align: center;
         @include flex-centered;
-        font-weight: var(--font-weight-standart);
+        font-weight: var(--font-weight-standard);
         font-size: var(--combo-box-font-size-standard);
         color: var(--ion-color-primary);
         min-height: 50px;
