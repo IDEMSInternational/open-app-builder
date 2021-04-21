@@ -96,18 +96,31 @@ $horizontal: 90deg;
   // combo box
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
   --combo-box-font-size-standard: 20px;
-
-  --combo-box-active-no-answer-bg: #fff;
-  --combo-box-active-with-answer-bg: linear-gradient(179.77deg, #ffe895 34.6%, #fbc70f 105.68%);
-
+  --combo-box-active-no-answer-bg: var(--ion-color-primary-contrast);
   --combo-box-passive-no-answer-bg: transparent;
-  --combo-box-passive-with-answer-bg: linear-gradient(179.77deg, #b7e3ff 34.6%, #029eff 105.68%);
-
   --combo-box-no-answer-bg: transparent;
   --combo-box-with-answer-bg: transparent;
   // radio-group
   --radio-group-active-bg: linear-gradient(179.77deg, #ffe895 34.6%, #fbc70f 105.68%);
   --radio-group-passive-bg: linear-gradient(179.77deg, #b7e3ff 34.6%, #029eff 105.68%);
+
+  --combo-box-gradient-active-start: #{color.adjust($tertiary, $lightness: -13%)};
+  --combo-box-gradient-active-end: #{color.adjust($tertiary, $saturation: -3%, $lightness: -40%)};
+
+  --combo-box-gradient-passive-start: #{color.adjust($quaternary, $saturation: 12%, $lightness: -8%)};
+  --combo-box-gradient-passive-end: #{color.adjust($quaternary, $saturation: 12%, $lightness: -44%)};
+
+  --combo-box-active-with-answer-bg: linear-gradient(
+    #{$vertical},
+    var(--combo-box-gradient-active-start) 34.6%,
+    var(--combo-box-gradient-active-end) 105.68%
+  );
+  --combo-box-passive-with-answer-bg: linear-gradient(
+    #{$vertical},
+    var(--combo-box-gradient-passive-start) 34.6%,
+    var(--combo-box-gradient-passive-end) 105.68%
+  );
+
   //* Help icon **/
   --help-icon-standard-size: 35px;
   --help-icon-small-size: 30px;
@@ -262,9 +275,10 @@ $horizontal: 90deg;
     var(--radio-group-gradient-primary-end) 100%
   );
   // ROUND ICON BUTTON
-  --button-icon-secondary-light: #{color.adjust($tertiary, $lightness: -42%)};
-  --button-icon-secondary: var(--ion-color-secondary);
-  --button-icon-secondary-dark: #{color.adjust($secondary, $lightness: -7%)};
+  --button-icon-secondary-light: #{color.adjust($tertiary, $lightness: -42%)}; //#FFCA41
+  --button-icon-secondary: var(--ion-color-secondary); //#F49D04
+  --button-icon-secondary-dark: #{color.adjust($secondary, $lightness: -7%)}; //#F87023
+
   --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
   --ion-color-slider: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
 
