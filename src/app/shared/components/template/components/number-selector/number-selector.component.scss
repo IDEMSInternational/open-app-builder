@@ -1,13 +1,11 @@
+@import "../../../../../../theme/mixins.scss";
 .container {
   width: calc(100% - 10px);
   background: #ffffff;
-  border: 2px solid #096b8b;
-  box-sizing: border-box;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border: var(--ion-border-standard);
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-secondary);
+  @include flex-space-between;
   padding: 0 6px;
   margin-left: 5px;
   margin-right: 5px;
@@ -25,43 +23,38 @@
   ion-button {
     --background: transparent;
     --box-shadow: none;
-    border-radius: 50%;
-    border: 2px solid #096b8b;
+    border-radius: var(--ion-border-radius-rounded);
+    border: var(--ion-border-standard);
     width: 27px;
     height: 27px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-centered;
     .line {
       position: absolute;
       width: 8px;
       height: 2px;
-      background: #096b8b;
+      background: var(--ion-color-primary);
     }
     .plus {
       transform: rotate(90deg);
     }
   }
   .center {
-    display: flex;
+    @include flex-centered;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     .title,
     .num {
       text-align: center;
-      font-weight: 500;
-      color: #0d3f60;
+      font-weight: var(--font-weight-standard);
+      color: var(--ion-color-primary);
       max-width: 150px;
     }
     .category {
       max-width: 150px;
       span {
-        font-weight: 500;
+        font-weight: var(--font-weight-standard);
         font-size: 15px;
         line-height: 18px;
-        color: #0d3f60;
+        color: var(--ion-color-primary);
       }
     }
   }
@@ -71,7 +64,7 @@
   .center {
     .title,
     .num {
-      font-size: 15px;
+      font-size: var(--number-selector-short-font-size);
     }
   }
   ion-button {
@@ -88,7 +81,7 @@
   .center {
     .title,
     .num {
-      font-size: 20px;
+      font-size: var(--number-selector-normal-font-size);
     }
   }
 }

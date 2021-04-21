@@ -1,14 +1,13 @@
-.tile-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+@import "../../../../../../theme/mixins.scss";
 
+.tile-wrapper {
+  @include flex-space-between;
   .text {
     div {
       font-weight: 700;
       font-size: 24px;
       line-height: 28px;
-      color: #ffffff;
+      color: var(--ion-color-primary-contrast);
     }
   }
 
@@ -20,7 +19,7 @@
       --box-shadow: none;
       border: 1px solid #fff;
       --border-radius: 50%;
-      border-radius: 50%;
+      border-radius: var(--ion-border-radius-rounded);
       box-shadow: none;
       --ripple-color: transparent;
       img {
@@ -32,11 +31,11 @@
 }
 .default_style {
   padding: 17px 27px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--ion-default-box-shadow);
   min-height: 104px;
   max-width: 371px;
-  border-radius: 15px;
-  margin: 15px auto;
+  border-radius: var(--ion-border-radius-standard);
+  margin: var(--regular-margin) auto;
 }
 
 .workshop_page {
@@ -44,11 +43,11 @@
   flex-direction: column;
   width: 132px;
   height: 111px;
-  border-radius: 15px;
-  background: white;
+  border-radius: var(--ion-border-radius-standard);
+  background: var(--ion-color-primary-contrast);
   text-align: center;
-  padding: 10px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: var(--large-padding);
+  box-shadow: var(--ion-default-box-shadow);
   @media (max-width: 375px) {
     width: 122px;
     height: 101px;
@@ -70,9 +69,9 @@
   .text {
     order: 2;
     div {
-      font-size: 16px;
+      font-size: var(--font-size-text-small);
       line-height: 16px;
-      color: #0d4060;
+      color: var(--ion-color-primary);
     }
   }
 }
@@ -88,10 +87,10 @@
   background: linear-gradient(281.65deg, #b3edfd 41.02%, #08a6d1 102.14%);
   .text {
     div {
-      color: #0d4060;
+      color: var(--ion-color-primary);
     }
   }
 }
 .quick_start_red {
-  background: linear-gradient(168.87deg, #ff7a00 28.12%, #e13917 100%);
+  background: linear-gradient(168.87deg, #ff7a00 28.12%, hsl(10, 81%, 49%) 100%);
 }

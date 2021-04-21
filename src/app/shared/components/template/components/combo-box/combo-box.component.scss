@@ -1,25 +1,37 @@
 .open-combobox {
   outline: none;
   width: 100%;
-  border: 2px solid #0d4060;
+  border: var(--ion-border-standard);
   box-sizing: border-box;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 20px;
+  border-radius: var(--ion-border-radius-secondary);
   font-weight: 500;
-  background: transparent;
-  font-size: 20px;
+  background: var(--combo-box-with-answer-bg);
+  font-size: var(--combo-box-font-size-standard);
   line-height: 25px;
   text-align: center;
-  color: #0d3f60;
+  color: var(--ion-color-primary);
   min-height: 55px;
   @media (max-width: 400px) {
     min-width: 260px;
   }
 }
-.have-value {
-  background: var(--ion-btn-primary);
-  color: #fff;
-}
+
 .placeholder-style {
-  color: rgba(#0d3f60, 0.5);
+  color: var(--combo-box-placeholder-primary);
+}
+.active {
+  background: var(--combo-box-active-with-answer-bg);
+}
+.active-no-value {
+  background: #fff;
+}
+.passive {
+  background: var(--combo-box-passive-with-answer-bg);
+}
+.passive-no-value {
+  background: transparent;
+}
+.default-no-value {
+  background: var(--combo-box-no-answer-bg);
 }

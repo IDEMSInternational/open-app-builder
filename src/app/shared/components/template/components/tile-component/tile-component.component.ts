@@ -36,7 +36,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   }
 
   isPlayIcon(iconSrc: string): boolean {
-    return iconSrc.includes("play");
+    if (iconSrc) return iconSrc.includes("play");
   }
 
   getPathImg(): string {

@@ -1,3 +1,5 @@
+@import "../../../../../../theme/mixins.scss";
+
 ion-tab-button {
   color: var(--ion-color-primary-contrast);
   text-transform: none;
@@ -10,12 +12,10 @@ ion-tab-button {
   padding: 0;
   display: flex;
   align-items: center;
-  border-radius: 50%;
+  border-radius: var(--ion-border-radius-rounded);
   ion-icon {
+    @include flex-centered;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 0;
     flex: auto;
   }
@@ -32,7 +32,7 @@ ion-tab-button[disabled] {
 }
 
 ion-tab-button.round-icon-button::part(native) {
-  border-radius: 50%;
+  border-radius: var(--ion-border-radius-rounded);
   padding: 0;
   height: 100%;
 }
@@ -40,7 +40,7 @@ ion-tab-button {
   div {
     font-size: 12px;
     white-space: pre-line;
-    margin-top: 5px;
+    margin-top: var(--tiny-margin);
     margin-bottom: 11px;
     display: flex;
     align-items: center;
@@ -54,6 +54,10 @@ ion-tab-button {
   top: 50%;
   right: 50%;
   transform: translateY(-50%) translateX(50%);
+  @media (max-width: 375px) {
+    width: 70px;
+    height: 70px;
+  }
 }
 .wrapper {
   display: flex;
@@ -62,20 +66,24 @@ ion-tab-button {
 .home_screen_wrapper {
   width: 94px;
   height: 94px;
-  border-radius: 50%;
+  border-radius: var(--ion-border-radius-rounded);
   background: #e3f4ff;
   position: relative;
   margin-left: auto;
-  margin-right: -5px;
+  margin-right: -10px;
+  @media (max-width: 375px) {
+    width: 84px;
+    height: 84px;
+  }
 }
 .yellow {
-  background: #ffca41;
+  background: var(--button-icon-secondary-light);
 }
 .orange {
-  background: #f49d04;
+  background: var(--button-icon-secondary);
 }
 .dark_orange {
-  background: #f87023;
+  background: var(--button-icon-secondary-dark);
 }
 
 .navigation {

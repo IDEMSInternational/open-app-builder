@@ -1,51 +1,50 @@
+@import "../../../../../../theme/mixins.scss";
+
 :host {
   min-height: 183px;
 }
 .timer-counter {
-  width: 200px;
+  @include flex-centered;
+  width: calc(100% - 10px);
   height: 73px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0 5px;
   div {
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     font-size: 40px;
-    color: #0d3f60;
+    color: var(--ion-color-primary);
+    @media (max-width: 320px) {
+      font-size: 30px;
+    }
   }
 }
-.wrapper-audio {
-}
 .timer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-space-between;
 }
 .timer-title {
   margin-left: 8px;
   max-width: 298px;
-  font-size: 22px;
+  font-size: var(--timer-title-size);
   color: var(--ion-color-primary);
 }
 
 .timer-help {
-  margin-top: 15px;
-  margin-left: 10px;
-  color: #0d3f60;
-  height: 32px;
-  width: 32px;
+  margin-top: var(--regular-margin);
+  margin-left: var(--small-margin);
+  color: var(--ion-color-primary);
+  height: var(--help-icon-standard-size);
+  width: var(--help-icon-standard-size);
 }
 
 .timer-row {
   display: flex;
 }
 .add-min {
-  width: 64px;
-  min-width: 64px;
-  height: 64px;
-  --background: #00a0cc;
+  width: var(--ion-btn-tmpl-components-size);
+  min-width: var(--ion-btn-tmpl-components-size);
+  height: var(--ion-btn-tmpl-components-size);
+  --background: var(--ion-play-btn-default-bg);
   --background-size: cover;
-  --border-radius: 50%;
+  --border-radius: var(--ion-border-radius-rounded);
   --padding: 0;
   .right-icon {
     max-width: none;
@@ -57,17 +56,17 @@
 }
 
 .round-container {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: var(--regular-padding);
+  padding-right: var(--regular-padding);
   width: 100%;
-  background-color: #fff;
-  border: 2px solid #0d3f60;
+  background-color: var(--ion-color-primary-contrast);
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+  border: var(--ion-border-standard);
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-secondary);
 
   &-br-15 {
-    border-radius: 15px;
+    border-radius: var(--ion-border-radius-standard);
   }
 }
 ion-button {

@@ -1,28 +1,28 @@
+@import "../../../../../../theme/mixins.scss";
 .slider-wrapper {
-  margin: 40px 0 0 0;
-  min-width: 334px;
-  padding: 20px 0 15px 23px;
-  background: #fff;
-  border: 2px solid #096b8b;
+  min-width: 100%;
+  padding: 20px 0 15px 20px;
+  background: var(--ion-color-primary-contrast);
+  border: var(--ion-border-standard);
   box-sizing: border-box;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-secondary);
   position: relative;
   min-height: 139px;
   .help {
-    color: #096b8b;
-    height: 35px;
-    width: 35px;
+    color: var(--ion-color-help-tooltip);
+    height: var(--help-icon-standard-size);
+    width: var(--help-icon-standard-size);
     position: absolute;
     right: 5px;
     top: 12px;
   }
   .title-slider {
     font-weight: bold;
-    font-size: 25px;
-    color: #0d3f60;
+    font-size: var(--font-size-title-tiny);
+    color: var(--ion-color-primary);
     max-width: 258px !important;
-    margin-bottom: 36px;
+    margin-bottom: var(--regular-margin);
   }
   .slider-container {
     max-width: 95%;
@@ -32,27 +32,23 @@
       max-width: 100%;
     }
     .checkbox-block {
+      @include flex-centered;
       margin-top: 6px;
-      display: flex;
       padding-left: 11px;
       margin-left: 7px;
-      justify-content: center;
-      align-items: center;
       width: 30px;
       height: 30px;
     }
   }
   .labels {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-space-between;
     max-width: 275px;
     margin-left: -5px;
     margin-top: 25px;
     .min,
     .max {
       font-size: 15px;
-      color: #096b8b;
+      color: var(--ion-color-slider);
     }
   }
 }
@@ -63,7 +59,7 @@
     box-shadow: none;
   }
   .noUi-connects {
-    border: 1px solid #096b8b;
+    border: 1px solid var(--ion-color-slider);
     box-sizing: border-box;
     border-radius: 20px;
     height: 10px;
@@ -76,7 +72,7 @@
     border-radius: 50%;
     width: 24px;
     height: 24px;
-    background: #096b8b;
+    background: var(--ion-color-slider);
     border: none;
     box-shadow: none;
     outline: none;
@@ -88,7 +84,7 @@
   }
   .noUi-value-horizontal {
     font-size: 20px;
-    color: #096b8b;
+    color: var(--ion-color-slider);
   }
   .noUi-marker-horizontal {
     display: none;
@@ -97,15 +93,13 @@
     display: none;
   }
   .noUi-active .noUi-tooltip {
-    background: #096b8b;
-    color: #fff;
+    @include flex-centered;
+    background: var(--ion-color-slider);
+    color: var(--ion-color-primary-contrast);
     border: none;
     width: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 32px;
-    border-radius: 50%;
+    border-radius: var(--ion-border-radius-rounded);
   }
   .custom-slider {
     .noUi-horizontal .noUi-handle {
@@ -114,8 +108,8 @@
   }
 }
 .custom-checkbox {
-  --border-radius: 50%;
-  --border-color: #096b8b;
+  border-radius: var(--ion-border-radius-rounded);
+  --border-color: var(--ion-color-slider);
   --background: transparent;
   --size: 16px;
 }
