@@ -97,51 +97,56 @@
     "rows": [
       {
         "type": "step",
-        "title": "Welcome to ParentApp",
-        "message_text": "<p>Welcome to @global.parent_app.</p>\n<p>You deserve to feel good, and have happier family relationships.</p>\n<p>This app will support you with three major components.</p>",
+        "title": "Welcome to @global.parent_app",
+        "message_text": "<p>Welcome to @global.parent_app.</p>\n\n<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>This app will support you and your family in three ways.</p>",
         "template_component_name": "home_screen",
         "route": "template/home_screen"
       },
       {
         "type": "step",
-        "title": "Weekly Workshops",
-        "message_text": "<p>This tile takes you to the weekly workshops. </p>\n\n<p>These include key tools for self-care and parenting a teenager. </p>\n\n<p>You can choose to do them by yourself or as a group with family or friends.</p>",
+        "title": "@global.weekly_workshops",
+        "message_text": "<p>This button takes you to the @global.weekly_workshops </p>\n\n<p> Once per week a new workshop will be ready for you - every time focusing on a different a parenting skill. </p>",
         "template_component_name": "tile_weekly_workshops",
         "route": "template/home_screen"
       },
       {
         "type": "step",
-        "title": "Parent Points",
-        "message_text": "<p>This tile takes you to the @global.parent_points </p>\n\n<p>See your success in self-care and parenting. </p>\n\n<p>Celebrate your daily achievements!</p>",
+        "title": "Set up your @global.weekly_workshops",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"/icon/round-button/play_2.svg\"> to tell us more about yourself, and choose when and how to do your @global.weekly_workshops  </p>",
+        "template_component_name": "tile_weekly_workshops",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "@global.parent_points",
+        "message_text": "<p>This button takes you to the @global.parent_points </p>\n\n<p>See your success in self-care and parenting. </p>\n\n<p>Celebrate your daily achievements!</p>",
         "template_component_name": "tile_parent_points",
         "route": "template/home_screen"
       },
       {
         "type": "step",
-        "title": "Parent Library",
-        "message_text": "<p>This tile takes you to the @global.parent_centre </p>\n\n<p>Stacked with the resources you need whenever you want. </p>\n\n<p>Instant access to help sections with @global.essential_tools for each skill, extra information and local resources.</p>",
+        "title": "Do a relaxation activity",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"/assets/icon/round-button/smile.svg\">  to try out a quick relaxation activity </p>",
+        "template_component_name": "tile_parent_points",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "@global.parent_centre",
+        "message_text": "<p>This button takes you to the @global.parent_centre </p>\n\n<p>Stacked with the resources you need whenever you want. </p>\n\n<p>Instant access to help sections with @global.essential_tools for each skill, extra information and local resources.</p>",
         "template_component_name": "tile_parent_centre",
         "route": "template/home_screen"
       },
       {
         "type": "step",
-        "title": "Quick Starts",
-        "message_text": "<p>These round buttons appear whenever you have content to do.</p> \n\n<p>This message <img src=\"/assets/icon/round-button/message_2.svg\"> would now instigate an initial task which customises your app experience.</p>",
-        "element": "#main-content > plh-template-testing:nth-child(5) > ion-content > plh-template-container > div > plh-template-component:nth-child(4) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-round-button > div > ion-tab-button",
+        "title": "Customise your @global.parent_app",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"/assets/icon/round-button/message_2.svg\"> to customise your app experience </p>",
+        "template_component_name": "tile_parent_centre",
         "route": "template/home_screen"
       },
       {
         "type": "step",
-        "title": "Quick Starts continued",
-        "message_text": "<p> While <img src=\"/assets/icon/round-button/play_2.svg\"> starts a first workshop which is all about self-care.</p>\n\n<p> As a parent looking after yourself is the basis of look after your family, this workshop is a good place to start.</p>",
-        "element": "#main-content > plh-template-testing:nth-child(5) > ion-content > plh-template-container > div > plh-template-component:nth-child(2) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-round-button > div > ion-tab-button",
-        "route": "template/home_screen"
-      },
-      {
-        "type": "step",
-        "title": "Getting started",
-        "message_text": "<p>Another good starting point is with the @global.weekly_workshops tile.</p>\n\n<p>Press it for the first time to set yourself up to do the workshops your way.</p>\n\n<p>However you start, just the fact you are here shows you care.</p>",
-        "template_component_name": "tile_weekly_workshops",
+        "message_text": "<p>However you start, just the fact you are here shows you care.</p>",
         "route": "template/home_screen"
       }
     ],
