@@ -10,7 +10,7 @@ import { TemplateBaseComponent } from "../base";
         completed: completed && _row.disabled !== 'true',
         disabled: _row.disabled === 'true',
         inProgress: !completed && _row.disabled !== 'true' && percentComplete > 0,
-        notStarted: !completed && _row.disabled !== 'true' && percentComplete === 0
+        notStarted: !completed && _row.disabled !== 'true' && percentComplete == 0
       }"
       class="accordion-status"
     >
@@ -21,7 +21,7 @@ import { TemplateBaseComponent } from "../base";
       />
       <img *ngIf="_row.disabled === 'true'" src="/assets/plh_assets/plh_images/icons/lock.svg" />
       <img
-        *ngIf="!completed && _row.disabled !== 'true' && percentComplete === 0"
+        *ngIf="!completed && _row.disabled !== 'true' && percentComplete == 0"
         src="/assets/plh_assets/plh_images/icons/unlock.svg"
       />
     </div>
