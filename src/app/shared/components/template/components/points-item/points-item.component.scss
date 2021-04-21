@@ -1,31 +1,29 @@
+@import "../../../../../../theme/mixins.scss";
+
 .wrapper-point {
   padding: calc(15px * var(--scale-factor--point)) calc(5px * var(--scale-factor--point));
   .item {
+    @include flex-centered;
     margin: 0 auto;
     padding: calc(20px * var(--scale-factor--point)) 0;
     width: calc(176px * var(--scale-factor--point));
     height: calc(152px * var(--scale-factor--point));
     background: #b3edfd;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    box-shadow: var(--ion-default-box-shadow);
+    border-radius: var(--ion-border-radius-standard);
     position: relative;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
     .star {
+      @include flex-centered;
       position: absolute;
       right: -12px;
       top: -16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       .star-value {
         padding-top: 4px;
         font-weight: 500;
         font-size: calc(15px * var(--scale-factor--point));
-        color: #0d4060;
+        color: var(--ion-color-primary);
         position: absolute;
       }
       img {
@@ -46,12 +44,12 @@
       font-size: calc(16px * var(--scale-factor--point));
       line-height: 18px;
       text-align: center;
-      color: #0d4060;
+      color: var(--ion-color-primary);
       padding: 0 5px;
     }
   }
   .complete {
-    background: white;
+    background: var(--ion-color-primary-contrast);
   }
 }
 .on-add {
