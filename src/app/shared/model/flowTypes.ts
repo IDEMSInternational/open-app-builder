@@ -388,7 +388,7 @@ export namespace FlowTypes {
 
   export interface TemplateRow {
     type: TemplateRowType;
-    name?: string;
+    name: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
     style_list?: string[];
@@ -397,6 +397,9 @@ export namespace FlowTypes {
     rows?: TemplateRow[];
     disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    /** track full path to row when nested in a template (e.g. contentBox1.row2.title) */
+    /** TODO - this should be extracted by the parser */
+    _nested_name;
     /**
      * track fields above where dynamic expressions have been used in field evaluation
      * they will be nested in the same way the template itself is (e.g. parameter_list.paramNam.someVal)

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
@@ -14,21 +14,12 @@ let log = SHOW_DEBUG_LOGS ? console.log : () => null;
 let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
-interface IOverride {
-  [name: string]: {
-    [override_key: string]: any;
-    rows?: IOverride;
-    _processed?: boolean;
-  };
-}
-
 @Component({
   selector: "plh-template-container",
   templateUrl: "./template-container.component.html",
   styleUrls: ["./template-container.component.scss"],
 })
-export class TemplateContainerComponent
-  implements OnInit, OnDestroy, AfterViewInit, ITemplateContainerProps {
+export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateContainerProps {
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
@@ -37,21 +28,24 @@ export class TemplateContainerComponent
   @Input() row?: FlowTypes.TemplateRow;
   children: { [name: string]: TemplateContainerComponent } = {};
 
-  /** Templates may inherit variables from a parent for initialisation.
-   * If set from a row keeps full reference to row, if set as a value will only have {value} field */
+  /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title) */
+  templateRowMap: Map<string, FlowTypes.TemplateRow> = new Map();
+
+  // TODO - Remove once template row maps working fully
   localVariables: any = {};
 
-  /** declared properties to be inherited by child templates during their own initialisation
-   * maybe declared 1 or more levels deep (e.g. templateA.templateB.templateC) */
-  childOverrides: IOverride;
+  /** TODO - Implement hashmap of all rows that have rows defined by dynamic variables (e.g. "@local.var1") */
+  dynamicVariablesMap: Map<string, FlowTypes.TemplateRow[]> = new Map();
 
-  /** overrides applying to this specific template rows */
-  templateRowOverrides: IOverride;
+  /** List of rows that have passed the condition statement for rendering */
+  renderedRows: FlowTypes.TemplateRow[];
+
+  /** List of overrides set by parent templates for access during parent processing */
+  rowOverrides: {
+    [row_nested_name: string]: Partial<FlowTypes.TemplateRow> & { _processed?: boolean };
+  };
 
   template: FlowTypes.Template;
-
-  /** when processing actions track whether templates will also require render after */
-  actionsRequireRender = false;
 
   /** track path to template from top parent (not currently used) */
   templateBreadcrumbs: string[] = [];
@@ -59,8 +53,6 @@ export class TemplateContainerComponent
   debugMode: boolean;
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
-
-  onlyOneChild: boolean;
 
   constructor(
     private templateService: TemplateService,
@@ -73,19 +65,11 @@ export class TemplateContainerComponent
 
   async ngOnInit() {
     this.subscribeToQueryParamChanges();
-    // add logging if default disabled
+    // add logging if default disabled and in debug view
     if (this.debugMode) {
       this.setLogging(true);
     }
     this.renderTemplate();
-  }
-
-  // TODO - CC 2021-04-19 - code can likely be tidied (just use the rows length instead of new variable)
-  ngAfterViewInit(): void {
-    this.onlyOneChild = this.template?.rows?.length === 1;
-    if (this.onlyOneChild) {
-      this.elRef.nativeElement.style.setProperty("height", "100%");
-    }
   }
 
   ngOnDestroy(): void {
@@ -105,11 +89,6 @@ export class TemplateContainerComponent
   ) {
     const unhandledActions = await this.handleActionsInterceptor(actions);
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
-    // TODO - review change detection methods to see if this is respected or not
-    // TODO - further optimise child re-renders
-    if (this.actionsQueue.find((a) => a.action_id !== "emit")) {
-      this.actionsRequireRender = true;
-    }
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
     if (!this.parent) {
@@ -131,7 +110,7 @@ export class TemplateContainerComponent
    * all actions are added to a queue and processed in order of addition
    */
   private async processActionQueue() {
-    const processedActions = [];
+    const processedActions: FlowTypes.TemplateRowAction[] = [];
     // start the queue if it is not already running
     if (!this.actionsQueueProcessing$.value) {
       log_group(`Process Actions - ${this.name}`, [...this.actionsQueue]);
@@ -149,11 +128,9 @@ export class TemplateContainerComponent
     await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
     // once all actions have been processed re-render rows
     if (processedActions.length > 0) {
-      if (this.actionsRequireRender) {
-        log("[Actions Trigger Row Reprocess]");
-        this.processRowUpdates();
-        this.actionsRequireRender = false;
-      }
+      // assume rows might need re-evaluation if actions contain at least 1 non-emit event
+      // TODO - further optimise
+      if (processedActions.find((a) => a.action_id !== "emit")) this.processRowUpdates();
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
@@ -220,23 +197,60 @@ export class TemplateContainerComponent
   }
 
   /**
-   * When a child triggers the changing of a local variable
-   * TODO - when setting local the user might actually be trying to set the value
-   * of a row component. Need to decide how best to handle that case
-   * (likely set variables replace existing row values as in parent init methods, and render)
+   * Update a local template row
+   *
    */
   public setLocalVariable(name: string, value: any) {
     // convert values likely intended as boolean
-    if (value === "true") {
-      value = true;
+    if (value === "true") value = true;
+    if (value === "false") value = false;
+    // find the namespaced entry (could be the provided name or nested)
+    // TODO - add catch and log if multiple matching entries
+    const rowEntry = this.getTemplateRowByName(name);
+    if (rowEntry) {
+      this.templateRowMap.set(rowEntry._nested_name, { ...rowEntry, value });
+    } else {
+      // TODO
+      console.warn("Setting local variable which does not exist", { name, value }, "TODO");
     }
-    if (value === "false") {
-      value = false;
+    // TODO - prompt any rows to re-process if they depend on the value
+    const dynamicEntries = this.dynamicVariablesMap.get(`@local.${name}`);
+    if (dynamicEntries) {
+      console.warn("[TODO - update rows with dependency on this variable]");
     }
-    this.localVariables[name] = { value, name, type: "set_variable" } as FlowTypes.TemplateRow;
+
     // update parent reference in case actions force a re-intialisation
+    // (not currently implemented)
     this.parent.children[this.name] = this;
-    // TODO - cross-reference any children that have dynamic row referencing this variable
+  }
+
+  /**
+   * Lookup a template row by name within the nested template structure
+   * If multiple rows are found with the same name the least nested will be returned
+   */
+  public getTemplateRowByName(name: string): FlowTypes.TemplateRow {
+    // find any rows where nested path corresponds to match path
+    let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
+    this.templateRowMap.forEach((row, nestedName) => {
+      if (nestedName === name || nestedName.endsWith(`.${name}`)) {
+        matchedRows.push({ row, nestedName });
+      }
+    });
+    // no match found
+    if (matchedRows.length === 0) {
+      console.error(`row [${name}] not found`, mapToJson(this.templateRowMap));
+      return null;
+    }
+    // match found - return least nested (in case of duplicates)
+    else {
+      matchedRows = matchedRows.sort(
+        (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
+      );
+      if (matchedRows.length > 1) {
+        console.warn(`row [${name}] found multiple, returning least nested`, { matchedRows });
+      }
+      return matchedRows[0].row;
+    }
   }
 
   /**
@@ -247,6 +261,7 @@ export class TemplateContainerComponent
     console.warn("Reprocessing rows following action - NOTE this method requires review");
     console.group(`[Reprocess Template]`, this.name);
     this.template.rows = this.processRows(this.template.rows, this.template);
+    this.renderedRows = this.template.rows.filter((r) => r.condition !== false);
     console.groupEnd();
   }
 
@@ -261,27 +276,27 @@ export class TemplateContainerComponent
     );
     if (foundTemplate) {
       // create a deep clone of the object to prevent accidental reference changes
+      // assign a name (in case top-level template) and store breadcrumb path for nested
       const template = JSON.parse(JSON.stringify(foundTemplate));
-      // if template created at top level also ensure it has a name
       this.name = this.name || this.templatename;
-      // keep track of path to this template from any parents
       this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
 
       // If the template has previously been rendered but forced to re-initialise from parent
-      // try to restore previous state
+      // try to restore previous state (WiP - TODO / Re-evaluate CC 2021-04-21)
       const cachedRender = this.parent?.children?.[this.name];
       log_group("[Template Render Start]", this.name);
-      if (cachedRender) {
-        log(`[Loading Cache] -`, this.name, { ...cachedRender });
-        this.localVariables = cachedRender.localVariables;
-        this.template = cachedRender.template;
-      } else {
-        log("[Process Template]", { template: { ...template }, ctxt: { ...this } });
-        template.rows = this.processParentOverrides(template.rows);
-        template.rows = this.processRows(template.rows, template);
-        this.template = template;
-        log("[Template] Render", { ...template });
-      }
+
+      log("[Process Template]", { template: { ...template }, ctxt: { ...this } });
+      const rowsWithOverrides = this.processParentOverrides(template.rows);
+      const processedRows = this.processRows(rowsWithOverrides, template);
+      this.template = { ...template, rows: processedRows };
+      this.renderedRows = this.template.rows.filter((r) => r.condition !== false);
+      log("[Template] Render", {
+        template,
+        renderedRows: { ...this.renderedRows },
+        rowMap: mapToJson(this.templateRowMap),
+      });
+
       // if a parent exists also provide parent reference to this as a child
       if (this.parent) {
         this.parent.children[this.name] = this;
@@ -290,89 +305,90 @@ export class TemplateContainerComponent
     }
     // Template not found
     else {
-      console.warn(`[Template] - Not Found -`, { ...this });
+      console.error(`[Template] - Not Found -`, { ...this });
       this.template = NOT_FOUND_TEMPLATE(this.templatename);
     }
   }
 
   /**
    * Lookup list of template row overrides from parent and use to merge into existing rows
+   * NOTE - whilst this could be handled in the processRows function we also want to
+   * cross-check any overrides that do not exist and add to the template
    */
-  private processParentOverrides(rows: FlowTypes.TemplateRow[]) {
-    const parentOverrides = this.parent?.childOverrides || {};
-    // Note - we only care about the nested row overrides as top-level overrides (e.g. value, action_list)
-    // will have been handled by the parent that first processed the begin_template row
-    this.templateRowOverrides = parentOverrides[this.name]?.rows;
-    if (this.templateRowOverrides) {
-      log("[Overrides Start]", { overrides: { ...this.templateRowOverrides }, rows: { ...rows } });
-      // apply any existing overrides for each row
-      rows = rows.map((row) => this.processParentRowOverride(row));
-      const unprocessedOverrides = Object.values(this.templateRowOverrides).filter(
-        (override) => !override._processed
-      );
-      // log any unprocessed overrides and set as variables by default
+  private processParentOverrides(originalRows: FlowTypes.TemplateRow[]) {
+    const parentRowMap = this.parent?.templateRowMap || new Map();
+
+    // extract any overrides for child rows, e.g template_a.template_b.title and store
+    // within the current namesapce (e.g. if this is temeplate_a, the above would just be template_b.title)
+    this.rowOverrides = {};
+    const nestedPropertiesKeys = {};
+    parentRowMap.forEach((row, key) => {
+      if (key.startsWith(`${this.name}.`)) {
+        // extract any row fields that we don't want to override and save
+        const { _nested_name, _dynamicFields, type, rows, ...overrideFields } = row;
+        const childKey = key.replace(`${this.name}.`, "");
+        // when nested properties are detected only the immediate entry needs to be processed now (e.g template_a)
+        // as these are the values on the template row itself (e.g value, action_list)
+        // and all children can be passed to the next processor (e.g. template_a.intro_text)
+        if (type === "nested_properties") {
+          nestedPropertiesKeys[childKey] = true;
+          this.rowOverrides[childKey] = overrideFields;
+        }
+        if (nestedPropertiesKeys[childKey.split(".")[0]]) {
+          this.templateRowMap.set(childKey, row);
+        }
+        // otherwise keep a reference to the override in this template for processing
+        else {
+          this.rowOverrides[childKey] = overrideFields;
+        }
+      }
+    });
+
+    // process main overrides (if they exist), logging any mismatches and adding as additional set_variable
+    if (Object.keys(this.rowOverrides).length > 0) {
+      const overrides = { ...this.rowOverrides };
+      log("[Overrides Start]", { overrides, originalRows, parentRowMap: mapToJson(parentRowMap) });
+      const processedRows = originalRows.map((r) => this.processRowOverride(r));
+      const unprocessedOverrides = Object.values(this.rowOverrides).filter((o) => !o._processed);
       if (unprocessedOverrides.length > 0) {
         console.warn("Overrides could not find target row; Assuming set_variables", {
           unprocessedOverrides,
-          rows: { ...rows },
+          rows: { ...processedRows },
         });
+        // if an override exists but no corresponding template row assume it is an additional set_variable statement
         unprocessedOverrides.forEach((override) => {
-          rows.unshift({ ...override, type: "set_variable" } as any);
+          const { name, value } = override as any;
+          const type = "set_variable";
+          const rowEntry: FlowTypes.TemplateRow = { name, value, type, _nested_name: name };
+          processedRows.unshift(rowEntry);
         });
       }
-      log("[Overrides End]", { rows: { ...rows } });
+      log("[Overrides End]", { rows: { ...processedRows } });
+      return processedRows;
     } else {
-      log("[Overrides Skip]", { parentOverrides });
+      log("[Overrides Skip]", { parentRowMap: mapToJson(parentRowMap) });
+      return originalRows;
     }
-
-    // Nested overrides are written in namespaced way (e.g. template_a.template_b.template_c)
-    // Extract list of overrides that apply only within this namespace, rename nesting accordingly
-    // and pass for use by children
-    const childOverrides = {};
-    Object.keys(parentOverrides).forEach((key) => {
-      if (key.startsWith(`${this.name}.`)) {
-        const newNamespace = key.replace(`${this.name}.`, "");
-        if (parentOverrides.hasOwnProperty(newNamespace)) {
-          console.warn("Overrides will have conflicting namespace", { ...parentOverrides });
-        }
-        childOverrides[newNamespace] = parentOverrides[key];
-      }
-    });
-    this.childOverrides = childOverrides;
-    return rows;
   }
 
   /**
    *  Lookup any overrides for a row or a row's nested child rows and apply
    */
-  private processParentRowOverride(row: FlowTypes.TemplateRow) {
-    if (row.name) {
-      const override = this.templateRowOverrides[row.name];
-      if (override) {
-        log("[Override]", { override, row: { ...row } });
-        Object.keys(override).forEach((field) => {
-          switch (field) {
-            case "rows":
-              console.warn("Unexpected nested rows found for override", { ...override });
-              break;
-            case "type":
-              // type shouldn't be processed as will be incorrect (always set_variable)
-              console.warn("Unexpected type found for override", { ...override });
-              break;
-            default:
-              row[field] = override[field];
-              if (row._dynamicFields && row._dynamicFields.hasOwnProperty(field)) {
-                delete row._dynamicFields[field];
-              }
-              break;
-          }
-        });
-        // keep track of which overrides have been applied for debugging purposes
-        this.templateRowOverrides[row.name]._processed = true;
-      }
+  private processRowOverride(row: FlowTypes.TemplateRow) {
+    // Note - parent overrides are not namespaced (they don't know the full nesting path)
+    const override = this.rowOverrides[row.name];
+    if (override) {
+      Object.keys(override).forEach((field) => {
+        row[field] = override[field];
+        if (row._dynamicFields && row._dynamicFields.hasOwnProperty(field)) {
+          delete row._dynamicFields[field];
+        }
+      });
+      // keep track of applied overrides for debugging
+      this.rowOverrides[row.name]._processed = true;
     }
     if (row.rows) {
-      row.rows = row.rows.map((nestedRow) => this.processParentRowOverride(nestedRow));
+      row.rows = row.rows.map((childRow) => this.processRowOverride(childRow));
     }
     return row;
   }
@@ -386,55 +402,44 @@ export class TemplateContainerComponent
    * skipVars to prevent the variables being processed within the current template
    *
    */
-  private processRows(
-    rows: FlowTypes.TemplateRow[],
-    template: FlowTypes.Template,
-    skipVars = false
-  ) {
+  private processRows(rows: FlowTypes.TemplateRow[], template: FlowTypes.Template) {
     log("[Process Rows Start]", [...rows]);
-    log("local variables", { ...this.localVariables });
     const processedRows = [];
-    rows.forEach((r) => {
-      log_group("[Row start]", r.name, { ...r });
+    rows.forEach((preProcessedRow) => {
+      log_group("[Row start]", preProcessedRow.name, { ...preProcessedRow });
 
       // Evaluate row variables in context of current local state
-      const evalContext = { localVariables: this.localVariables, template, row: r };
+      const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
 
       // create a new object with data from evaluation
-      const parsedRow = this.templateVariables.evaluatePLHData(r, evalContext);
-      const { name, value, condition, hidden, type } = parsedRow;
+      const parsedRow = this.templateVariables.evaluatePLHData(preProcessedRow, evalContext);
+      const { name, value, condition, hidden, type, _nested_name } = parsedRow;
 
       log("evaluatedRow", { ...parsedRow });
 
       // Filter out if specified by condition. This might be string or boolean
       // depending on the parser and related calculations (so check for both)
       if (condition === (false as any) || condition === "false") {
-        // stop processing row (will not be rendered)
-        // TODO - ideally should filter out here (but retain reference for future processing)
-        // Maybe via a this.renderedRows to distinguish from template rows or similar
-        parsedRow.condition = "false";
-        log("[Row end (skip)]", name);
+        parsedRow.condition = false;
+
+        // Do not process any further
+        processedRows.push(parsedRow);
+        log("[Row end (condition)]", name);
         log_groupEnd();
-        return parsedRow;
+        return;
       }
 
       // Make type assigned to hidden consistent
       if (hidden === (true as any) || hidden === "true") {
-        parsedRow.hidden = "true";
+        parsedRow.hidden = true;
       }
 
-      // Update local variables where specified and filter out if
-      // processing for use in local template (not skipVars for child)
-      if (type === "set_variable" && !skipVars) {
-        // only set the variable value if it has not previously been set (e.g. re-render)
-        if (!this.localVariables.hasOwnProperty(name)) {
-          this.localVariables[name] = parsedRow;
-          log("[Row end]", name, "(skip)");
-        } else {
-          log("[Row end]", name, "(set)");
-        }
-        // remove so that the same initialisation won't happen again on re-render
-        // TODO - less important if refactor templateRowProcess to return correct rows
+      // store global reference for use
+      this.templateRowMap.set(_nested_name, parsedRow);
+
+      // once set_variable rows have been processed they can be removed from the row list
+      if (type === "set_variable") {
+        log("[Row end (variable)]", name);
         log_groupEnd();
         return;
       }
@@ -443,149 +448,61 @@ export class TemplateContainerComponent
       // TODO - confirm no other externally processed rows
       if (type === "set_field") {
         console.warn("Setting fields from template rows is not advised", { ...parsedRow });
+
+        this.templateService.setField(name, value);
+        // stop processing and remove from future processing
         log("[Row end]", name, "(set field)");
         log_groupEnd();
-        return this.templateService.setField(name, value);
+        return;
       }
 
       // Process child rows, ignoring set_variable statement if row type
       // will be used as part of child template overrides
       if (parsedRow.hasOwnProperty("rows")) {
-        skipVars = ["template", "nested_properties"].includes(type);
-        parsedRow.rows = this.processRows(parsedRow.rows, template, skipVars);
+        parsedRow.rows = this.processRows(parsedRow.rows, template);
       }
 
-      // Generate data to pass to child template where defined
-      if (type === "template") {
-        const templateRow = this.processTemplateRow(parsedRow);
-        processedRows.push(templateRow);
-        log("[Row end]", name, "(template push)");
-        log_groupEnd();
-        return;
-      }
       log("[Row end]", name, "(push)", { ...parsedRow });
       log_groupEnd();
       processedRows.push(parsedRow);
     });
-    log("[Process Rows End]", [...processedRows]);
+    log("[Process Rows End]", [...processedRows], { map: mapToJson(this.templateRowMap) });
     return processedRows;
   }
 
   /**
-   * When a begin_template row is found we want to extract the full list of information
-   * to the child instance once rendered, merging overrides defined in the current
-   * row with any overrides defined via nested_properties in parent templates
+   *
+   *
    */
-  private processTemplateRow(row: FlowTypes.TemplateRow) {
-    const previousOverrides = { ...this.childOverrides };
-    log(`[Template Row Start] - ${row.name}`, { previousOverrides, row: { ...row } });
-
-    const newOverrides = this.extractRowOverrideTree(row);
-    log("row state for merge", { ...newOverrides });
-
-    // merge any previous nested or template overrides with those extracted and store for
-    // processing when the template is rendered
-    const mergedOverrides = newOverrides;
-    Object.entries(previousOverrides).forEach(([namespace, previousOverride]) => {
-      const newOverride = newOverrides[namespace];
-      if (newOverride) {
-        mergedOverrides[namespace] = this.mergeOverrideRows(previousOverride, newOverride);
-      } else {
-        mergedOverrides[namespace] = previousOverride;
+  private flattenTemplateRows(
+    templateRows: FlowTypes.TemplateRow[] = [],
+    tree = {},
+    nestedPath?: string
+  ) {
+    templateRows.forEach((r) => {
+      let name = r.name || r.type;
+      const nestedName = nestedPath ? `${nestedPath}.${name}` : name;
+      if (tree[nestedName]) {
+        console.warn("Duplicate references found for rows with name", name);
+      }
+      // use spread to separate rows property from everything else, for processing separately
+      const { rows, ...rest } = r;
+      tree[nestedName] = rest;
+      if (rows) {
+        tree = this.flattenTemplateRows(rows, tree, `${nestedName}.rows`);
       }
     });
-
-    // apply top_level overrides targeting this template row (e.g. value, action_list)
-    if (mergedOverrides[row.name]) {
-      const merged = mergedOverrides[row.name];
-      row = { ...row, ...(merged as any), rows: Object.values(merged.rows) };
-    }
-
-    // when storing child overrides for future use we want to pass all nested (template_a.template_b)
-    // types, but for the current template we want to retain previous top_level data (e.g. value, action_list)
-    // in case of re-render and only pass the updated rows
-    const childOverrides = {
-      ...mergedOverrides,
-      [row.name]: { ...previousOverrides[row.name], rows: mergedOverrides[row.name].rows },
-    };
-
-    this.childOverrides = childOverrides;
-
-    // TODO - if re-render changes the rows that would be passed the override will not be processed properly
-    // (priority given to the state we populate here instead of re-render state. Not an issue currently but could be)
-    // Likely resolve by refactor, passing rows to template element instead of child overrides system
-
-    log(`[Template Row End] - ${row.name}`, { ...mergedOverrides });
-    // remove the child rows from further processing in this template
-    // TODO - confirm if this is actually useful to do - (see above TOOO)
-    // row.rows = []
-
-    return row;
-  }
-
-  /** Merge override entries by keeping all primary columns, adding secondary columns, and merging primary-secondary rows */
-  private mergeOverrideRows(primary: IOverride = {}, secondary: IOverride = {}) {
-    const mergedRows = { ...secondary.rows, ...primary.rows };
-    return { ...secondary, ...primary, rows: mergedRows };
-  }
-
-  /**
-   * When a row defines a template, extract a set of properties to pass to that template when it is later rendered
-   * Also requires extracting any properties that will be passed to a child of that template (via nested_properties)
-   * and defining within its own namespace to be inherited by the future template.
-   * @see ./mocks/nested-templates.mock.ts for examples of implementation
-   *
-   * @param row row containing overrides, either the initial 'template' row or a child 'nested_properties' row
-   * @param tree current override tree, used when calling recursively to define nested trees
-   * @param namespace prefix used to define the current tree level, either the current template name or path to nested template
-   */
-  private extractRowOverrideTree(
-    row: FlowTypes.TemplateRow,
-    tree: IOverride = {},
-    namespace?: string
-  ): IOverride {
-    log("[Tree Extract Start]", { row: { ...row }, tree: { ...tree } });
-    // use a new object so that 'delete' operations are not accidentally passed back (could use different variable name)
-    row = { ...row };
-    namespace = namespace || row.name;
-    const { name, rows } = row;
-    delete row.type; // we cannot currently override a row type (as blank rows interpreted as set_variable which might not be correct)
-    delete row._dynamicFields; // remove references to dynamic fields calculated from the current template when inherited
-    if (name) {
-      tree[namespace] = { ...row } as any;
-      if (rows) {
-        tree[namespace].rows = {};
-        // repeat above process for nested_properties, which form their own namespaced trees
-        rows.forEach((r) => {
-          r = { ...r };
-          const nestedName = r.name;
-          const nestedType = r.type;
-          delete r.type;
-          delete r._dynamicFields;
-          if (nestedType === "nested_properties") {
-            log("[Nested Properties]", { ...r });
-            const nestedTemplate: FlowTypes.TemplateRow = { ...r, name: nestedName };
-            const nestedNamespace = `${namespace}.${nestedName}`;
-            tree = this.extractRowOverrideTree(nestedTemplate, tree, nestedNamespace);
-          } else {
-            if (r.rows) {
-              console.warn("Nested rows not expected during extract, Requires review", { ...r });
-            }
-            tree[namespace].rows[r.name] = r as any;
-          }
-        });
-      }
-    }
-    log("[Tree Extract End]", { ...tree });
     return tree;
   }
 
   /**
    * When using ngFor loop track by to ensure updates correctly propagated on change
    * Most important is to keep track of row value as updates to this will want UI refresh
+   * Note - we do not track row value change as most likely any value change will come from within
+   * the component itself and will not require re-render
    */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
-    return `${row.name}-${row.value}-${row.hidden}-${index}`;
+    return `${row._nested_name}`;
   }
 
   /** Query params are used to track state across navigation events */
@@ -616,9 +533,17 @@ function _wait(ms: number) {
   });
 }
 
+function mapToJson(map: Map<string, any>) {
+  const json = {};
+  map.forEach((value, key) => (json[key] = value));
+  return json;
+}
+
 const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
   flow_name: "Template_not_found",
   flow_type: "template",
-  rows: [{ type: "title", value: `Template "${name}" not found` }],
+  rows: [
+    { type: "title", value: `Template "${name}" not found`, name: "title", _nested_name: "title" },
+  ],
   status: "released",
 });
