@@ -81,7 +81,7 @@ export class TmplRadioGroupComponent
     );
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
     this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
-    this.imageCheckedColor = this.style == "active" ? "#f89b2d" : "#0D3F60";
+    this.imageCheckedColor = this.style === "active" ? "#f89b2d" : "#0D3F60";
     this.windowWidth = window.innerWidth;
     if (this.radioBtnList) {
       this.valuesFromBtnList = this.radioBtnList.split(",").filter((item) => item !== "");
@@ -117,6 +117,15 @@ export class TmplRadioGroupComponent
         : obj.image_checked;
       return obj;
     });
+    this.arrayOfBtn.forEach((item) => {
+      if (item.image && item.text) {
+        this.radioButtonType = "btn_both";
+      } else if (!item.image && item.text) {
+        this.radioButtonType = "btn_text";
+      } else if (item.image && !item.text) {
+        this.radioButtonType = "btn_image";
+      }
+    });
   }
 
   getPathImg(path): string {
@@ -124,7 +133,8 @@ export class TmplRadioGroupComponent
     return src.replace("//", "/");
   }
 
+  automaticallyRadioBtnType(type: string) {}
   getFlexWidth() {
-    this.flexWidth = `0 1 ${100 / this.options_per_row - 3}%`;
+    this.flexWidth = `0 1 ${100 / this.options_per_row - 7}%`;
   }
 }

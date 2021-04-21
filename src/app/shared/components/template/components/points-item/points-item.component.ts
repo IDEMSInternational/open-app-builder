@@ -79,7 +79,7 @@ export class TmplParentPointBoxComponent
     this.triggerActions("changed");
   }
   getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / 400 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
+    this.scaleFactor = this.windowWidth / 420 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
     return this.scaleFactor;
   }
 }

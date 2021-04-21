@@ -1,3 +1,4 @@
+@import "../../../../../../theme/mixins.scss";
 ::ng-deep {
   .my-custom-modal {
     --height: auto;
@@ -9,9 +10,8 @@
     .modal-wrapper {
       max-width: 90vw;
       background: #fff;
-      border: 2px solid #0d4060;
-      box-sizing: border-box;
-      border-radius: 20px;
+      border: var(--ion-border-standard);
+      border-radius: var(--ion-border-radius-secondary);
       .ion-page {
         max-height: 90vh;
         position: relative;
@@ -23,15 +23,15 @@
     padding: 0;
     .text-box-input {
       background: #fff;
-      border: 2px solid #096b8b;
+      border: var(--ion-border-standard);
+      border-radius: var(--ion-border-radius-secondary);
       width: 100%;
       min-height: 55px;
-      border-radius: 20px;
-      font-size: 20px;
-      color: #0d4060;
+      font-size: var(--combo-box-font-size-standard);
+      color: var(--ion-color-primary);
       text-align: center;
       font-weight: 500;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      box-shadow: var(--ion-default-box-shadow);
       margin-bottom: 20px;
     }
   }
@@ -45,7 +45,7 @@
   .header {
     font-size: 20px;
     text-align: center;
-    color: #0d4060;
+    color: var(--ion-color-primary);
     margin-bottom: 20px;
   }
   .form {
@@ -65,13 +65,10 @@
       min-height: 55px;
       width: 100%;
       background: #ffffff;
-      border: 2px solid #0d4060;
-      box-sizing: border-box;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      border: var(--ion-border-standard);
+      border-radius: var(--ion-border-radius-secondary);
+      box-shadow: var(--ion-default-box-shadow);
+      @include flex-centered;
       input {
         display: none;
       }
@@ -79,19 +76,22 @@
         padding: 5px;
         width: 100%;
         text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 500;
-        font-size: 20px;
-        color: #0d3f60;
+        @include flex-centered;
+        font-weight: var(--font-weight-standard);
+        font-size: var(--combo-box-font-size-standard);
+        color: var(--ion-color-primary);
+        min-height: 50px;
+        border-radius: 20px;
       }
     }
     .checked-radio {
-      background: var(--ion-btn-primary);
-      label {
-        color: #fff;
-      }
+      background: var(--combo-box-with-answer-bg);
+    }
+    .active {
+      background: var(--combo-box-active-with-answer-bg);
+    }
+    .passive {
+      background: var(--combo-box-passive-with-answer-bg);
     }
   }
 }

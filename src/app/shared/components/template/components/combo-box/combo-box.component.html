@@ -1,9 +1,14 @@
 <button
   class="open-combobox margin-t-regular"
-  [class]="style"
-  [class.have-value]="_row.value"
   (click)="openModal()"
   [class.placeholder-style]="!_row.value && placeholder"
+  [ngClass]="{
+    active: _row.value && style === 'active',
+    'active-no-value': !_row.value && style === 'active',
+    passive: _row.value && style === 'passive',
+    'passive-no-value': !_row.value && style === 'passive',
+    'default-no-value': !checkIfContainsDefaultStyles && !_row.value
+  }"
   [disabled]="_row.disabled"
 >
   {{ _row.value ? _row.value : placeholder }}

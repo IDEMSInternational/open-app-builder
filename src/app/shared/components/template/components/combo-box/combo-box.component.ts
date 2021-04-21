@@ -16,10 +16,10 @@ export class TmplComboBoxComponent
   implements ITemplateRowProps, OnInit {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
-
   placeholder: string;
   style: string;
   customAnswerSelected: boolean = false;
+  checkIfContainsDefaultStyles: boolean = false;
 
   constructor(private modalController: ModalController) {
     super();
@@ -31,11 +31,16 @@ export class TmplComboBoxComponent
     const arrValues = listAnswers.split(",").filter((item) => item !== "");
     this.customAnswerSelected =
       arrValues && this._row.value ? !arrValues.find((x) => x === this._row.value) : false;
+    if (!this.checkIfContainsDefaultStyles) {
+      this.setCustomStyle();
+    }
   }
 
   getParams() {
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.checkIfContainsDefaultStyles =
+      this.style.includes("active") || this.style.includes("passive");
   }
 
   async openModal() {
@@ -58,5 +63,36 @@ export class TmplComboBoxComponent
       this.customAnswerSelected = data?.data?.customAnswerSelected;
     });
     await modal.present();
+  }
+
+  setCustomStyle() {
+    const currentBgColor = document.body.style
+      .getPropertyValue("--ion-background-color")
+      .toLocaleLowerCase();
+    const nameBgColor: string =
+      currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
+    return nameBgColor === "active" ? this.setActiveTheme() : this.setPassiveTheme();
+  }
+
+  setActiveTheme() {
+    document.body.style.setProperty(
+      "--combo-box-no-answer-bg",
+      "var(--combo-box-active-no-answer-bg)"
+    );
+    document.body.style.setProperty(
+      "--combo-box-with-answer-bg",
+      "var(--combo-box-active-with-answer-bg)"
+    );
+  }
+
+  setPassiveTheme() {
+    document.body.style.setProperty(
+      "--combo-box-no-answer-bg",
+      "var(--combo-box-passive-no-answer-bg)"
+    );
+    document.body.style.setProperty(
+      "--combo-box-with-answer-bg",
+      "var(--combo-box-passive-with-answer-bg)"
+    );
   }
 }
