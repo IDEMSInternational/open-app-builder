@@ -13215,7 +13215,8 @@
         "name": "combo_box_defaults",
         "value": "nothing",
         "parameter_list": {
-          "answer_list": "@local.answer_list"
+          "answer_list": "@local.answer_list",
+          "style": "active"
         }
       },
       {
@@ -13230,7 +13231,8 @@
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "text": "Text above the answers",
-          "placeholder": "Click here to answer"
+          "placeholder": "Click here to answer",
+          "style": "active"
         }
       },
       {
@@ -13262,7 +13264,8 @@
           "answer_list": "@local.answer_list",
           "placeholder": "Click here to answer",
           "input_allowed": "true",
-          "answer_placeholder": "Type your own"
+          "answer_placeholder": "Type your own",
+          "style": "active"
         }
       }
     ],
@@ -13329,8 +13332,12 @@
         "name": "radio_group_square_ex2",
         "parameter_list": {
           "answer_list": "@local.answer3_list",
+<<<<<<< HEAD
           "options_per_row": "3",
           "style": "active"
+=======
+          "options_per_row": "3"
+>>>>>>> feat: add style passive or active to combo-box
         }
       },
       {
@@ -13558,7 +13565,7 @@
         "type": "display_group",
         "name": "example_dp_gr",
         "parameter_list": {
-          "style": "light_orange"
+          "style": "tool_1"
         },
         "style_list": [
           "margin: 10px 15px",
@@ -13590,7 +13597,7 @@
         "type": "display_group",
         "name": "dg_example_2",
         "parameter_list": {
-          "style": "orange"
+          "style": "tool_2"
         },
         "style_list": [
           "margin: 10px 15px",
@@ -13622,7 +13629,7 @@
         "type": "display_group",
         "name": "dg_example_3",
         "parameter_list": {
-          "style": "light_blue"
+          "style": "tool_3"
         },
         "style_list": [
           "margin: 10px 15px",
@@ -13654,7 +13661,7 @@
         "type": "display_group",
         "name": "dg_example_4",
         "parameter_list": {
-          "style": "blue"
+          "style": "tool_4"
         },
         "style_list": [
           "margin: 10px 15px",
@@ -13686,7 +13693,7 @@
         "type": "display_group",
         "name": "dg_example_6",
         "parameter_list": {
-          "style": "dark_blue"
+          "style": "tool_5"
         },
         "style_list": [
           "margin: 10px 15px",
@@ -13698,7 +13705,7 @@
             "name": "title_ex_s",
             "value": "Example title dark_blue",
             "parameter_list": {
-              "style": "primary"
+              "style": "alternative"
             },
             "style_list": [
               "margin: 10px 10px"
@@ -15338,6 +15345,7 @@
   },
   {
     "flow_type": "template",
+<<<<<<< HEAD
     "flow_name": "daily_relax_pop_up",
     "status": "released",
     "rows": [
@@ -15423,6 +15431,8 @@
   },
   {
     "flow_type": "template",
+=======
+>>>>>>> feat: add style passive or active to combo-box
     "flow_name": "relax_text_1",
     "status": "released",
     "rows": [
@@ -16470,6 +16480,7 @@
   },
   {
     "flow_type": "template",
+<<<<<<< HEAD
     "flow_name": "survey_welcome_outro",
     "status": "released",
     "rows": [
@@ -16572,6 +16583,8 @@
   },
   {
     "flow_type": "template",
+=======
+>>>>>>> feat: add style passive or active to combo-box
     "flow_name": "workshop_setup_stepper",
     "status": "released",
     "rows": [

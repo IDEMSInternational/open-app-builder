@@ -6,7 +6,7 @@
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: var(--ion-border-radius-secondary);
   font-weight: 500;
-  background: transparent;
+  background: var(--combo-box-with-answer-bg);
   font-size: var(--combo-box-font-size-standard);
   line-height: 25px;
   text-align: center;
@@ -16,10 +16,22 @@
     min-width: 260px;
   }
 }
-.have-value {
-  background: var(--ion-btn-primary);
-  color: var(--ion-color-primary-contrast);
-}
+
 .placeholder-style {
   color: var(--combo-box-placeholder-primary);
+}
+.active {
+  background: var(--combo-box-active-with-answer-bg);
+}
+.active-no-value {
+  background: #fff;
+}
+.passive {
+  background: var(--combo-box-passive-with-answer-bg);
+}
+.passive-no-value {
+  background: transparent;
+}
+.default-no-value {
+  background: var(--combo-box-no-answer-bg);
 }
