@@ -29,7 +29,6 @@ export class TourService {
           if (row.template_component_name && row.template_component_name.trim().length > 0) {
             elementSelector = `[data-rowname="${row.template_component_name}"]`;
           }
-          console.log(row.title);
           return {
             intro: this.replaceGlobalInRowMessage(row.message_text),
             title: this.replaceGlobalInRowMessage(row.title),
@@ -92,10 +91,28 @@ export class TourService {
   replaceGlobalInRowMessage(field: any) {
     const regExs = new RegExp(/([@]+[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
     const globalVariables = field ? field.match(regExs) : field;
+    const regExpImg = new RegExp(/<img .*?>/g);
+    const imageTags = field ? field.match(regExpImg) : null;
     if (globalVariables) {
       for (let i of globalVariables) {
         const name = i.split(".");
         field = field.replace(i, this.templateService.getGlobal(name[1]));
+      }
+    }
+    if (imageTags) {
+      for (let i of imageTags) {
+        const imgSrcExp = new RegExp(/src=".*?"/g);
+        const src = i.match(imgSrcExp);
+        const finallySrc = i.replace(
+          src,
+          `src="/assets/plh_assets/plh_images${src[0]
+            .split("=")[1]
+            .split("")
+            .filter((v) => v !== '"')
+            .join("")
+            .replace("//", "/")}"`
+        );
+        field = field.replace(i, finallySrc);
       }
     }
     return field;
