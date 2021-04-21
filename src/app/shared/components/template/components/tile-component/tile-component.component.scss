@@ -23,8 +23,8 @@
       box-shadow: none;
       --ripple-color: transparent;
       img {
-        width: 60px;
-        height: 60px;
+        width: calc(60px * var(--scale-factor-tile));
+        height: calc(60px * var(--scale-factor-tile));
       }
     }
   }
@@ -41,36 +41,50 @@
 .workshop_page {
   display: flex;
   flex-direction: column;
-  width: 132px;
-  height: 111px;
+  justify-content: space-between;
+  max-width: calc(132px * var(--scale-factor-tile));
+  max-height: calc(111px * var(--scale-factor-tile));
+  background: white;
   border-radius: var(--ion-border-radius-standard);
   background: var(--ion-color-primary-contrast);
   text-align: center;
   padding: var(--large-padding);
   box-shadow: var(--ion-default-box-shadow);
   @media (max-width: 375px) {
-    width: 122px;
-    height: 101px;
+    width: calc(122px * var(--scale-factor-tile));
+    max-height: calc(101px * var(--scale-factor-tile));
+    &.default_style {
+      min-height: calc(101px * var(--scale-factor-tile));
+    }
   }
   @media (max-width: 320px) {
-    width: 102px;
-    height: 90px;
+    width: calc(102px * var(--scale-factor-tile));
+    max-height: calc(91px * var(--scale-factor-tile));
+    padding: calc(5px * var(--scale-factor-tile));
+    resize: both;
+    &.default_style {
+      min-height: calc(91px * var(--scale-factor-tile));
+    }
   }
   .button-wrapper {
     order: 1;
+    width: 100%;
     .btn-tile {
       pointer-events: none;
-      width: unset;
-      height: 60px;
+      border: 0;
       --border-radius: unset;
       border-radius: unset;
+      width: calc(100% * var(--scale-factor-tile));
+      height: calc(55px * var(--scale-factor-tile));
+      img {
+      }
     }
   }
   .text {
     order: 2;
     div {
-      font-size: var(--font-size-text-small);
-      line-height: 16px;
+      font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));
+      line-height: calc(16px * var(--scale-factor-tile));
       color: var(--ion-color-primary);
     }
   }
