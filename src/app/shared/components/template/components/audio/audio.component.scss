@@ -43,7 +43,7 @@
   .progress-block {
     .audio-range {
       padding-inline: 0;
-      --bar-background-active: var(--ion-play-btn-default-bg);
+      --bar-background-active: var(--ion-btn-control-bg);
       --bar-background: transparent;
       --bar-height: 4px;
       --bar-border-radius: var(--ion-border-radius-secondary);
@@ -101,7 +101,7 @@
       .btn-play {
         width: var(--ion-btn-tmpl-components-size);
         height: var(--ion-btn-tmpl-components-size);
-        --background: var(--ion-play-btn-default-bg);
+        --background: var(--ion-btn-control-bg);
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
         --box-shadow: var(--ion-default-box-shadow);
