@@ -2,7 +2,7 @@
 .container {
   width: calc(100% - 10px);
   background: #ffffff;
-  border: var(--ion-border-standart);
+  border: var(--ion-border-standard);
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-secondary);
   @include flex-space-between;
@@ -24,7 +24,7 @@
     --background: transparent;
     --box-shadow: none;
     border-radius: var(--ion-border-radius-rounded);
-    border: var(--ion-border-standart);
+    border: var(--ion-border-standard);
     width: 27px;
     height: 27px;
     @include flex-centered;
@@ -44,14 +44,14 @@
     .title,
     .num {
       text-align: center;
-      font-weight: var(--font-weight-standart);
+      font-weight: var(--font-weight-standard);
       color: var(--ion-color-primary);
       max-width: 150px;
     }
     .category {
       max-width: 150px;
       span {
-        font-weight: var(--font-weight-standart);
+        font-weight: var(--font-weight-standard);
         font-size: 15px;
         line-height: 18px;
         color: var(--ion-color-primary);
