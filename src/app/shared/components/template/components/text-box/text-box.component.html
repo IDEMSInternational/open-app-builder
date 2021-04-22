@@ -1,6 +1,7 @@
 <div class="wrapper margin-t-regular" [class]="style">
   <ion-input
     class="text-box-input"
+    [inputmode]="isNumberInput ? 'tel' : 'text'"
     [(ngModel)]="_row.value"
     [placeholder]="placeholder"
     [maxlength]="maxLength"
