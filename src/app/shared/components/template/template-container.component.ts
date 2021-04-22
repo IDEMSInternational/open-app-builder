@@ -19,6 +19,12 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
   templateUrl: "./template-container.component.html",
   styleUrls: ["./template-container.component.scss"],
 })
+/**
+ * TODOs
+ * - Separate out initialisation variables and updated runtime variables for easier change detection/reprocessing
+ * - Track dynamic variable dependency (to know when to trigger row change based on set_local/field/global events)
+ * - Consider case of template container re-render (some draft cached code exists, but not sure if this is a valid use-case or not)
+ */
 export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateContainerProps {
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
@@ -200,15 +206,21 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * Update a local template row
    *
    */
-  public setLocalVariable(name: string, value: any) {
+  public setLocalVariable(key: string, value: any) {
+    const row_name = key;
     // convert values likely intended as boolean
     if (value === "true") value = true;
     if (value === "false") value = false;
-    // find the namespaced entry (could be the provided name or nested)
-    // TODO - add catch and log if multiple matching entries
-    const rowEntry = this.getTemplateRowByName(name);
+    // check the namespaced entry exists in the template tree(could be the provided name or nested)
+    // update the value of the entry for use in future reprocessing
+    const rowEntry = this.getTemplateRowByName(row_name);
     if (rowEntry) {
-      this.templateRowMap.set(rowEntry._nested_name, { ...rowEntry, value });
+      // remove previous dynamic value reference if exists
+      if (rowEntry._dynamicFields && rowEntry._dynamicFields.value) {
+        delete rowEntry._dynamicFields.value;
+      }
+      rowEntry.value = value;
+      this.templateRowMap.set(rowEntry._nested_name, rowEntry);
     } else {
       // TODO
       console.warn("Setting local variable which does not exist", { name, value }, "TODO");
@@ -225,41 +237,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   }
 
   /**
-   * Lookup a template row by name within the nested template structure
-   * If multiple rows are found with the same name the least nested will be returned
-   */
-  public getTemplateRowByName(name: string): FlowTypes.TemplateRow {
-    // find any rows where nested path corresponds to match path
-    let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
-    this.templateRowMap.forEach((row, nestedName) => {
-      if (nestedName === name || nestedName.endsWith(`.${name}`)) {
-        matchedRows.push({ row, nestedName });
-      }
-    });
-    // no match found
-    if (matchedRows.length === 0) {
-      console.error(`row [${name}] not found`, mapToJson(this.templateRowMap));
-      return null;
-    }
-    // match found - return least nested (in case of duplicates)
-    else {
-      matchedRows = matchedRows.sort(
-        (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
-      );
-      if (matchedRows.length > 1) {
-        console.warn(`row [${name}] found multiple, returning least nested`, { matchedRows });
-      }
-      return matchedRows[0].row;
-    }
-  }
-
-  /**
    * When actions have triggered updates this method is called to handle updating the current template
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
   public processRowUpdates() {
     console.warn("Reprocessing rows following action - NOTE this method requires review");
-    console.group(`[Reprocess Template]`, this.name);
+    console.group(`[Reprocess Template]`, this.name, { rowMap: mapToJson(this.templateRowMap) });
     this.template.rows = this.processRows(this.template.rows, this.template);
     this.renderedRows = this.template.rows.filter((r) => r.condition !== false);
     console.groupEnd();
@@ -316,29 +299,31 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * cross-check any overrides that do not exist and add to the template
    */
   private processParentOverrides(originalRows: FlowTypes.TemplateRow[]) {
-    const parentRowMap = this.parent?.templateRowMap || new Map();
+    const parentRows = mapToJson<FlowTypes.TemplateRow>(this.parent?.templateRowMap || new Map());
 
     // extract any overrides for child rows, e.g template_a.template_b.title and store
     // within the current namesapce (e.g. if this is temeplate_a, the above would just be template_b.title)
     this.rowOverrides = {};
     const nestedPropertiesKeys = {};
-    parentRowMap.forEach((row, key) => {
+    Object.entries(parentRows).forEach(([key, row]) => {
       if (key.startsWith(`${this.name}.`)) {
         // extract any row fields that we don't want to override and save
         const { _nested_name, _dynamicFields, type, rows, ...overrideFields } = row;
-        const childKey = key.replace(`${this.name}.`, "");
-        // when nested properties are detected only the immediate entry needs to be processed now (e.g template_a)
-        // as these are the values on the template row itself (e.g value, action_list)
-        // and all children can be passed to the next processor (e.g. template_a.intro_text)
-        if (type === "nested_properties") {
-          nestedPropertiesKeys[childKey] = true;
-          this.rowOverrides[childKey] = overrideFields;
-        }
-        if (nestedPropertiesKeys[childKey.split(".")[0]]) {
-          this.templateRowMap.set(childKey, row);
-        }
-        // otherwise keep a reference to the override in this template for processing
-        else {
+        // some rows might only be specifiying name (e.g. nested properties without overrides), in which case can stop processing
+        if (Object.keys(row).length > 1) {
+          const childKey = key.replace(`${this.name}.`, "");
+          // when nested properties are detected only the immediate entry needs to be processed now (e.g template_a)
+          // as these are the values on the template row itself (e.g value, action_list)
+          // and all children can be passed to the next processor (e.g. template_a.intro_text)
+          const [base, ...nestedPath] = childKey.split(".");
+          // save deeply nested row mappings for access by children
+          if (type === "nested_properties") nestedPropertiesKeys[childKey] = true;
+          if (nestedPropertiesKeys[base]) {
+            if (nestedPath.length > 0) {
+              this.templateRowMap.set(childKey, row);
+            }
+          }
+          // keep a reference to the override in this template for processing
           this.rowOverrides[childKey] = overrideFields;
         }
       }
@@ -347,7 +332,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // process main overrides (if they exist), logging any mismatches and adding as additional set_variable
     if (Object.keys(this.rowOverrides).length > 0) {
       const overrides = { ...this.rowOverrides };
-      log("[Overrides Start]", { overrides, originalRows, parentRowMap: mapToJson(parentRowMap) });
+      log("[Overrides Start]", { overrides, originalRows, parentRows });
       const processedRows = originalRows.map((r) => this.processRowOverride(r));
       const unprocessedOverrides = Object.values(this.rowOverrides).filter((o) => !o._processed);
       if (unprocessedOverrides.length > 0) {
@@ -366,7 +351,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       log("[Overrides End]", { rows: { ...processedRows } });
       return processedRows;
     } else {
-      log("[Overrides Skip]", { parentRowMap: mapToJson(parentRowMap) });
+      log("[Overrides Skip]", { parentRows });
       return originalRows;
     }
   }
@@ -406,16 +391,25 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     log("[Process Rows Start]", [...rows]);
     const processedRows = [];
     rows.forEach((preProcessedRow) => {
-      log_group("[Row start]", preProcessedRow.name, { ...preProcessedRow });
+      const { _nested_name } = preProcessedRow;
+
+      // If a row has been previously updated locally and re-rendered the updated values
+      // will be stored in the template row map (without nested rows, as these are namespaced separately)
+      let initialRowState = preProcessedRow;
+      const previousRow = this.templateRowMap.get(_nested_name);
+      if (previousRow && previousRow.type !== "nested_properties") {
+        initialRowState = { ...previousRow, rows: preProcessedRow.rows || [] };
+      }
+      log_group("[Row start]", preProcessedRow.name, { preProcessedRow, initialRowState });
 
       // Evaluate row variables in context of current local state
-      const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
+      const evalContext = { templateRowMap: this.templateRowMap, row: initialRowState };
 
       // create a new object with data from evaluation
-      const parsedRow = this.templateVariables.evaluatePLHData(preProcessedRow, evalContext);
-      const { name, value, condition, hidden, type, _nested_name } = parsedRow;
+      const parsedRow = this.templateVariables.evaluatePLHData(initialRowState, evalContext);
+      const { name, value, condition, hidden, type } = parsedRow;
 
-      log("evaluatedRow", { ...parsedRow });
+      log("parsedRow", { ...parsedRow });
 
       // Filter out if specified by condition. This might be string or boolean
       // depending on the parser and related calculations (so check for both)
@@ -434,7 +428,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         parsedRow.hidden = true;
       }
 
-      // store global reference for use
+      // store global reference for use in future initialisation logic
       this.templateRowMap.set(_nested_name, parsedRow);
 
       // once set_variable rows have been processed they can be removed from the row list
@@ -468,6 +462,35 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     });
     log("[Process Rows End]", [...processedRows], { map: mapToJson(this.templateRowMap) });
     return processedRows;
+  }
+
+  /**
+   * Lookup a template row by name within the nested template structure
+   * If multiple rows are found with the same name the least nested will be returned
+   */
+  private getTemplateRowByName(name: string): FlowTypes.TemplateRow {
+    // find any rows where nested path corresponds to match path
+    let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
+    this.templateRowMap.forEach((row, nestedName) => {
+      if (nestedName === name || nestedName.endsWith(`.${name}`)) {
+        matchedRows.push({ row, nestedName });
+      }
+    });
+    // no match found
+    if (matchedRows.length === 0) {
+      console.error(`row [${name}] not found`, mapToJson(this.templateRowMap));
+      return null;
+    }
+    // match found - return least nested (in case of duplicates)
+    else {
+      matchedRows = matchedRows.sort(
+        (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
+      );
+      if (matchedRows.length > 1) {
+        console.warn(`row [${name}] found multiple, returning least nested`, { matchedRows });
+      }
+      return matchedRows[0].row;
+    }
   }
 
   /**
@@ -533,8 +556,8 @@ function _wait(ms: number) {
   });
 }
 
-function mapToJson(map: Map<string, any>) {
-  const json = {};
+function mapToJson<T = any>(map: Map<string, any>) {
+  const json: { [key: string]: T } = {};
   map.forEach((value, key) => (json[key] = value));
   return json;
 }

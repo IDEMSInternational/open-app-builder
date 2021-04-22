@@ -84,7 +84,7 @@ export class TemplateVariablesService {
         row._dynamicFields,
         field
       ) as FlowTypes.TemplateRowDynamicEvaluator[];
-      if (evaluators) {
+      if (evaluators && evaluators.length > 0) {
         value = this.evaluatePLHString(evaluators, context);
         log("[evaluated]", { value, evaluators, field, context });
       }
