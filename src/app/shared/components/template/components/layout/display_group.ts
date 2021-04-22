@@ -86,6 +86,10 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
         return;
       case this.style.includes("passive_banner"):
         return;
+      case this.style.includes("navigation"):
+        break;
+      case this.style.includes("row"):
+        break;
       default:
         const currentBgColor = document.body.style
           .getPropertyValue("--ion-background-color")
