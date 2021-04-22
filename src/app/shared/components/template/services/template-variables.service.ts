@@ -179,7 +179,7 @@ export class TemplateVariablesService {
             evaluator,
             rowMap: mapToJson(templateRowMap),
           });
-          parsedValue = `{{local.${fieldName}}}`;
+          // parsedValue = `{{local.${fieldName}}}`;
         }
         // match found - return least nested (in case of duplicates)
         else {
