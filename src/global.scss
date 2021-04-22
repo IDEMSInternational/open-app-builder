@@ -57,7 +57,7 @@
   }
 }
 plh-template-component[data-hidden="true"] {
-  display: none;
+  display: none !important;
 }
 plh-template-component[data-debug-hidden="true"] {
   display: block;
