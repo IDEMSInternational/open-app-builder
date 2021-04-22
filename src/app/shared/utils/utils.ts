@@ -122,13 +122,13 @@ export function stringToArray(str: string = "", separator = ";") {
 
 /**
  * Return a specific parameter from the row, as default type
- * (usually string, unless populated from local variables in which case could be string[])
+ * (params ending in _list will be arrays, others will be strings)
  * */
 export function getParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
-  _default: string
-): string | string[] {
+  _default: any
+): any {
   const params = row.parameter_list || {};
   return params.hasOwnProperty(name) ? params[name] : _default;
 }

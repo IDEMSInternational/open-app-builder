@@ -69,7 +69,7 @@ import { TemplateBaseComponent } from "./base";
   ],
 })
 export class TemplateDebuggerComponent extends TemplateBaseComponent {
-  public debugFieldExclusions = ["comments", "rows", "_dynamicFields"];
+  public debugFieldExclusions = ["comments", "rows", "_dynamicFields", "action_list"];
   public logDebugInfo() {
     console.group(this._row.type, this._row.name);
     console.log("row", this._row);
