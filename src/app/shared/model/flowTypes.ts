@@ -405,6 +405,8 @@ export namespace FlowTypes {
      * they will be nested in the same way the template itself is (e.g. parameter_list.paramNam.someVal)
      * */
     _dynamicFields?: IDynamicField;
+    /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
+    _dynamicDependencies?: { [reference: string]: string[] };
     /** excel sheets may supply empty columns on occasion */
     __EMPTY?: any;
   }
