@@ -27,10 +27,10 @@ export class TmplComboBoxComponent
 
   ngOnInit(): void {
     this.getParams();
-    const listAnswers = getParamFromTemplateRow(this._row, "answer_list", null) as string;
-    const arrValues = listAnswers.split(",").filter((item) => item !== "");
+    const listAnswers: string[] = getParamFromTemplateRow(this._row, "answer_list", null);
+
     this.customAnswerSelected =
-      arrValues && this._row.value ? !arrValues.find((x) => x === this._row.value) : false;
+      listAnswers && this._row.value ? !listAnswers.find((x) => x === this._row.value) : false;
     if (!this.checkIfContainsDefaultStyles) {
       this.setCustomStyle();
     }
