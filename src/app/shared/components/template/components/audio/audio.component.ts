@@ -9,7 +9,6 @@ import { Howl } from "howler";
 import { IonRange } from "@ionic/angular";
 import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "plh-audio",
@@ -90,17 +89,17 @@ export class TmplAudioComponent
   }
 
   rewindNext() {
-    return this.isPlayed ? this.player.seek((this.player.seek() as any) + this.timeToRewind) : null;
+    this.player.seek((this.player.seek() as any) + this.timeToRewind);
+    this.customUpdateWhenRewind();
   }
 
   rewindPrev() {
-    return this.isPlayed
-      ? this.player.seek(
-          (this.player.seek() as any) < this.timeToRewind
-            ? (this.player.seek(0) as any)
-            : (this.player.seek() as any) - this.timeToRewind
-        )
-      : null;
+    this.player.seek(
+      (this.player.seek() as any) < this.timeToRewind
+        ? (this.player.seek(0) as any)
+        : (this.player.seek() as any) - this.timeToRewind
+    );
+    this.customUpdateWhenRewind();
   }
 
   seek() {
@@ -124,9 +123,7 @@ export class TmplAudioComponent
       }
       let seek: any = this.player.seek();
       this.progress = (seek / this.player.duration()) * 100 || 0;
-      this.currentTimeSong = this.player.seek()
-        ? ((this.player.seek() as any) * 1000).toString()
-        : "0";
+      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
     }, 1000);
   }
 
@@ -139,11 +136,18 @@ export class TmplAudioComponent
       let newValue = +this.range.value;
       let duration = this.player.duration();
       this.player.seek(duration * (newValue / 100));
-      this.currentTimeSong = this.player.seek()
-        ? ((this.player.seek() as any) * 1000).toString()
-        : "0";
+      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
     }
   }
+
+  customUpdateWhenRewind() {
+    if (!this.isPlayed) {
+      let seek: any = this.player.seek();
+      this.progress = (seek / this.player.duration()) * 100 || 0;
+      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
+    }
+  }
+
   ngOnDestroy() {
     this.player.stop();
   }
