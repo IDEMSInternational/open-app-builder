@@ -13,10 +13,9 @@
             type="radio"
             [value]="item.name"
             [checked]="el.value === value"
-            (click)="setValue(el.value)"
+            (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
-            (change)="triggerActions('changed')"
           />
           {{ item.text }}
         </label>
@@ -37,10 +36,9 @@
             type="radio"
             [value]="item.name"
             [checked]="el.value === value"
-            (click)="setValue(el.value)"
+            (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
-            (change)="triggerActions('changed')"
           />
           {{ item.text }}
         </label>
@@ -61,10 +59,9 @@
             type="radio"
             [value]="item.name"
             [checked]="el.value === value"
-            (click)="setValue(el.value)"
+            (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
-            (change)="triggerActions('changed')"
           />
           <span> {{ item.text }} </span>
         </label>

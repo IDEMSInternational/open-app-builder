@@ -164,8 +164,8 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
             el_container = el_component.parentElement.closest("plh-template-container");
           }
         } catch (ex) {
+          console.error("navigation style settings exception");
           console.error(ex);
-          console.log("navigation style settings exception");
         }
       }
     }
@@ -179,7 +179,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     component: typeof TemplateContainerComponent,
     row: FlowTypes.TemplateRow
   ) {
-    console.log("[Template Component Render]", { ...row });
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
     const factory = this.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainerRef.createComponent(factory);
