@@ -42,6 +42,7 @@
   width: var(--ion-btn-tmpl-components-size);
   min-width: var(--ion-btn-tmpl-components-size);
   height: var(--ion-btn-tmpl-components-size);
+  position: relative;
   --background: var(--ion-play-btn-default-bg);
   --background-size: cover;
   --border-radius: var(--ion-border-radius-rounded);
@@ -50,8 +51,11 @@
     max-width: none;
     top: 0;
   }
-  .left-icon {
-    margin-top: 8px;
+  .time-rewind-value {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 15px;
+    font-weight: bold;
   }
 }
 
