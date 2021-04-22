@@ -15,6 +15,7 @@ export class TmplSimpleCheckboxComponent
   @Input() parent: TemplateContainerComponent;
   position: boolean;
   label_text: string | null;
+  style: string;
   constructor() {
     super();
   }
@@ -26,5 +27,6 @@ export class TmplSimpleCheckboxComponent
   getParams() {
     this.position = getStringParamFromTemplateRow(this._row, "position", "left") !== "left";
     this.label_text = getStringParamFromTemplateRow(this._row, "label_text", null);
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
   }
 }

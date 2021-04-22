@@ -7,6 +7,10 @@
       <div class="checkboxes">
         <div
           class="container-radio"
+          [ngClass]="{
+            active: style === 'active' && form.get('answer').value === radio,
+            passive: style === 'passive' && form.get('answer').value === radio
+          }"
           [class.checked-radio]="form.get('answer').value === radio"
           *ngFor="let radio of valuesFromListAnswers"
         >

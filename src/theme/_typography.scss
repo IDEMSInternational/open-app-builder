@@ -15,11 +15,11 @@ p {
   color: var(--ion-color-primary-contrast);
 }
 .normal {
-  font-weight: $font-weight-standart;
+  font-weight: var(--font-weight-standard);
   font-style: normal;
 }
 .contextual {
-  font-weight: $font-weight-standart;
+  font-weight: var(--font-weight-standard);
   font-style: italic;
 }
 .emphasised {

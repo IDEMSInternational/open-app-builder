@@ -111,8 +111,22 @@
       },
       {
         "type": "step",
+        "title": "Set up your @global.weekly_workshops",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"/icon/round-button/play_2.svg\"> to tell us more about yourself, and choose when and how to do your @global.weekly_workshops  </p>",
+        "template_component_name": "tile_weekly_workshops",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
         "title": "@global.parent_points",
         "message_text": "<p>This button takes you to the @global.parent_points </p>\n\n<p>See your success in self-care and parenting. </p>\n\n<p>Celebrate your daily achievements!</p>",
+        "template_component_name": "tile_parent_points",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "title": "Do a relaxation activity",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"/assets/icon/round-button/smile.svg\">  to try out a quick relaxation activity </p>",
         "template_component_name": "tile_parent_points",
         "route": "template/home_screen"
       },
@@ -125,30 +139,14 @@
       },
       {
         "type": "step",
-        "title": "Quick Starts",
-        "message_text": "<p>These round buttons appear whenever there is something ready for you to do.</p> ",
-        "template_component_name": "quick_start_weekly_workshops",
-        "route": "template/home_screen"
-      },
-      {
-        "type": "step",
-        "title": "Set up your @global.weekly_workshops",
-        "message_text": "<p>Click <img src=\"/assets/icon/round-button/play_2.svg\"> to tell us more about yourself, and choose when and how to do your @global.weekly_workshops  </p>",
-        "template_component_name": "quick_start_weekly_workshops",
-        "route": "template/home_screen"
-      },
-      {
-        "type": "step",
-        "title": "Do a relaxation activity",
-        "message_text": "<p>Click <img src=\"/assets/icon/round-button/play_2.svg\"> to try out a quick relaxation activity </p>",
-        "template_component_name": "quick_start_parent_points",
-        "route": "template/home_screen"
-      },
-      {
-        "type": "step",
         "title": "Customise your @global.parent_app",
-        "message_text": "<p>Or click <img src=\"/assets/icon/round-button/play_2.svg\"> to customise your app experience </p>\n\n<p>However you start, just the fact you are here shows you care.</p>",
-        "template_component_name": "quick_start_parent_centre",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"/assets/icon/round-button/message_2.svg\"> to customise your app experience </p>",
+        "template_component_name": "tile_parent_centre",
+        "route": "template/home_screen"
+      },
+      {
+        "type": "step",
+        "message_text": "<p>However you start, just the fact you are here shows you care.</p>",
         "route": "template/home_screen"
       }
     ],
