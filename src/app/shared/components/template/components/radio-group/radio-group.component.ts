@@ -83,7 +83,7 @@ export class TmplRadioGroupComponent
 
     // convert string answer lists to formatted objects
     const answer_list: string[] = getParamFromTemplateRow(this._row, "answer_list", []);
-    this.arrayOfBtn = this.createArrayBtnElement(answer_list);
+    this.createArrayBtnElement(answer_list);
 
     this.getFlexWidth();
     this.groupName = this._row._nested_name;
@@ -103,7 +103,7 @@ export class TmplRadioGroupComponent
    * Convert to an object array, with key value pairs extracted from the string values
    */
   createArrayBtnElement(answer_list: string[]) {
-    return answer_list.map((item) => {
+    this.arrayOfBtn = answer_list.map((item) => {
       const obj: IButton = {
         text: null,
         image: null,
