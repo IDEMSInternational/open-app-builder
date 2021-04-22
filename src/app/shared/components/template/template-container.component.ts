@@ -233,7 +233,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
     // update parent reference in case actions force a re-intialisation
     // (not currently implemented)
-    this.parent.children[this.name] = this;
+    if (this.parent) {
+      this.parent.children[this.name] = this;
+    }
   }
 
   /**
@@ -294,8 +296,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   /**
    * Lookup list of template row overrides from parent and use to merge into existing rows
-   * NOTE - whilst this could be handled in the processRows function we also want to
-   * cross-check any overrides that do not exist and add to the template
    */
   private processParentOverrides(originalRows: FlowTypes.TemplateRow[]) {
     const parentRows = mapToJson<FlowTypes.TemplateRow>(this.parent?.templateRowMap || new Map());
@@ -306,31 +306,23 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     const nestedPrefixes = [];
     Object.entries(parentRows).forEach(([key, row]) => {
       if (key.startsWith(`${this.name}.`)) {
-        // extract any row fields that we don't want to override and save
+        // extract any row fields that we don't want to override and store everything else as a single 'overrideFields' object
         const { _nested_name, _dynamicFields, type, rows, ...overrideFields } = row;
-        // some rows might only be specifiying name (e.g. nested properties without overrides), in which case can stop processing
-        const childKey = key.replace(`${this.name}.`, "");
         // when nested properties are detected only the immediate entry needs to be processed now (e.g template_a)
         // as these are the values on the template row itself (e.g value, action_list)
         // and all children can be passed to the next processor (e.g. template_a.intro_text)
-        const nestedDepth = childKey.split(".").length;
+        let childKey = key.replace(`${this.name}.`, "");
 
-        // keep track of properties that will only apply to further nested templates
-        // (nested with depth 1 applies to template row rendered here, anything deeper gets passed on)
+        // seperate out properties that should be overridden when processing this template or are nested deeper
+        // and handle accordingly
         if (type === "nested_properties") {
           nestedPrefixes.push(childKey);
-          if (nestedDepth === 1) {
-            this.rowOverrides[childKey] = overrideFields;
-          } else {
-            this.templateRowMap.set(childKey, row);
-          }
+        }
+        const isDeeperNested = nestedPrefixes.find((prefix) => childKey.startsWith(`${prefix}.`));
+        if (isDeeperNested) {
+          this.templateRowMap.set(childKey, row);
         } else {
-          if (nestedPrefixes.find((prefix) => childKey.startsWith(prefix))) {
-            this.templateRowMap.set(childKey, row);
-          } else {
-            // all other row overrides should be processed in the function below
-            this.rowOverrides[childKey] = overrideFields;
-          }
+          this.rowOverrides[childKey] = overrideFields;
         }
       }
     });
@@ -338,7 +330,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // process main overrides (if they exist), logging any mismatches and adding as additional set_variable
     if (Object.keys(this.rowOverrides).length > 0) {
       const overrides = { ...this.rowOverrides };
-      log("[Overrides Start]", { overrides, originalRows, parentRows });
+      log("[Overrides Start]", { overrides, originalRows: [...originalRows], parentRows });
       const processedRows = originalRows.map((r) => this.processRowOverride(r));
       const unprocessedOverrides = Object.values(this.rowOverrides).filter((o) => !o._processed);
       if (unprocessedOverrides.length > 0) {
@@ -367,6 +359,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    */
   private processRowOverride(row: FlowTypes.TemplateRow) {
     // Note - parent overrides are not namespaced (they don't know the full nesting path)
+    // TODO - a bit tricky because some are namespaced (e.g template_a.text) while others aren't (template_a.template_b.text)
     const override = this.rowOverrides[row.name];
     if (override) {
       Object.keys(override).forEach((field) => {
@@ -380,6 +373,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       log(["Override"], { row: { ...row }, override: { ...override } });
     }
     if (row.rows) {
+      log(["Overrides - process child rows", [...row.rows]]);
       row.rows = row.rows.map((childRow) => this.processRowOverride(childRow));
     }
     return row;
@@ -407,9 +401,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       // If a row has been previously updated locally and re-rendered the updated values
       // will be stored in the template row map (without nested rows, as these are namespaced separately)
       const existingRow = this.templateRowMap.get(_nested_name);
-      if (existingRow && firstRender) {
-        console.warn("[W] Unexpected row already exists", { existingRow, preProcessedRow });
-      }
+
       let initialRowState = preProcessedRow;
 
       if (existingRow && existingRow.type !== "nested_properties") {
@@ -421,7 +413,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       const evalContext = { templateRowMap: this.templateRowMap, row: initialRowState };
 
       // create a new object with data from evaluation
-      const parsedRow = this.templateVariables.evaluatePLHData(initialRowState, evalContext);
+      const parsedRow: FlowTypes.TemplateRow = this.templateVariables.evaluatePLHData(
+        initialRowState,
+        evalContext
+      );
       const { name, value, condition, hidden, type } = parsedRow;
 
       log("parsedRow", { ...parsedRow });
@@ -457,7 +452,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       // TODO - confirm no other externally processed rows
       if (type === "set_field") {
         console.warn("[W] Setting fields from template rows is not advised", { ...parsedRow });
-
         this.templateService.setField(name, value);
         // stop processing and remove from future processing
         log("[Row end]", name, "(set field)");
