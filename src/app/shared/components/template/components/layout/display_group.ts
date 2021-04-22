@@ -39,6 +39,10 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       .parent_point > .offset > :nth-child(1n) {
         flex: 1 0 45%;
       }
+      .transparent {
+        border: none !important;
+        background: transparent !important;
+      }
     `,
   ],
 })
@@ -86,10 +90,6 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
         return;
       case this.style.includes("passive_banner"):
         return;
-      case this.style.includes("navigation"):
-        break;
-      case this.style.includes("row"):
-        break;
       case this.style.includes("banner"):
         const currentBgColor = document.body.style
           .getPropertyValue("--ion-background-color")
