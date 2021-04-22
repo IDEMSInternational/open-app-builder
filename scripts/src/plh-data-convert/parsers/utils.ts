@@ -68,3 +68,16 @@ export function parsePLHCollectionString(str: string): { [key: string]: string }
   });
   return collection;
 }
+
+/** Convert a deeply nested json object to a flat json object (with nested key references) */
+export function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [key: string]: T } {
+  Object.entries<T>(json).forEach(([key, value]) => {
+    const nestedName = nestedPath ? `${nestedPath}.${key}` : key;
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      tree = { ...tree, ...flattenJson(value, tree, nestedName) };
+    } else {
+      tree[nestedName] = value;
+    }
+  });
+  return tree;
+}

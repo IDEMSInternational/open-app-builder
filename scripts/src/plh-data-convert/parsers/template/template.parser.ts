@@ -1,6 +1,6 @@
 import { FlowTypes } from "../../../../types";
 import { DefaultParser } from "../default/default.parser";
-import { parsePLHCollectionString, parsePLHListString } from "../utils";
+import { flattenJson, parsePLHCollectionString, parsePLHListString } from "../utils";
 
 export class TemplateParser extends DefaultParser {
   constructor() {
@@ -54,6 +54,7 @@ export class TemplateParser extends DefaultParser {
     const dynamicFields = this.extractDynamicFields(row);
     if (dynamicFields) {
       row._dynamicFields = dynamicFields;
+      row._dynamicDependencies = this.extractDynamicDependencies(dynamicFields);
     }
 
     // handle nested rows in same way
@@ -169,6 +170,18 @@ export class TemplateParser extends DefaultParser {
     if (Object.keys(dynamicFields).length > 0) {
       return dynamicFields;
     }
+  }
+
+  private extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow["_dynamicFields"]) {
+    const dynamicDependencies = {};
+    const flatFields = flattenJson<FlowTypes.TemplateRowDynamicEvaluator[]>(dynamicFields);
+    Object.entries(flatFields).forEach(([key, fields]) => {
+      fields.forEach((field) => {
+        const deps = dynamicDependencies[field.matchedExpression] || [];
+        dynamicDependencies[field.matchedExpression] = [...deps, key];
+      });
+    });
+    return dynamicDependencies;
   }
 }
 
