@@ -90,7 +90,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
         break;
       case this.style.includes("row"):
         break;
-      default:
+      case this.style.includes("banner"):
         const currentBgColor = document.body.style
           .getPropertyValue("--ion-background-color")
           .toLocaleLowerCase();
@@ -100,6 +100,8 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
           "background",
           `var(--combo-box-${nameBgColor}-with-answer-bg)`
         );
+      default:
+        break;
     }
   }
 }
