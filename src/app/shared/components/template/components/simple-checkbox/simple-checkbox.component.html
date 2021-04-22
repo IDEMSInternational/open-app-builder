@@ -1,4 +1,4 @@
-<div class="checkbox-wrapper" [class.reverse]="position">
+<div class="checkbox-wrapper margin-t-large" [class]="style" [class.reverse]="position">
   <ion-checkbox
     (ionChange)="triggerActions('changed')"
     [(ngModel)]="_row.value"
