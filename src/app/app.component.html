@@ -2,8 +2,12 @@
   <ion-menu #menu side="start" menuId="main-side-menu" contentId="main-content">
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>PLH App</ion-title>
-        <div class="app-version" slot="end">{{ APP_VERSION }} ({{ ENV_NAME }})</div>
+        <ion-title>ParentApp</ion-title>
+
+        <div class="app-version" slot="end">
+          <plh-debug-toggle></plh-debug-toggle>
+          <span>{{ APP_VERSION }} ({{ ENV_NAME }})</span>
+        </div>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -13,6 +17,8 @@
         <!-- <ion-item routerLink="family">My Family</ion-item> -->
         <ion-item routerLink="about">About PLH App</ion-item>
         <ion-item routerLink="settings">Settings</ion-item>
+        <ion-item routerLink="template">Template</ion-item>
+        <ion-item routerLink="tour">Tour</ion-item>
         <div style="flex: 1"></div>
         <ion-item routerLink="privacy">Privacy Policy</ion-item>
         <ion-item routerLink="app-terms">App Terms</ion-item>
