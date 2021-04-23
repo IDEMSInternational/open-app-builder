@@ -804,7 +804,7 @@
   },
   {
     "flow_type": "global",
-    "flow_name": "workshop_buttons",
+    "flow_name": "button_texts",
     "status": "released",
     "rows": [
       {
@@ -826,6 +826,21 @@
         "type": "declare_global_constant",
         "name": "more_button",
         "value": "Find out more"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "lets_go_button",
+        "value": "Let's go! "
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "done_button",
+        "value": "Done! "
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "back_button",
+        "value": "Previous"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
