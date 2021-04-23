@@ -275,9 +275,53 @@ $horizontal: 90deg;
     var(--radio-group-gradient-primary-end) 100%
   );
   // ROUND ICON BUTTON
-  --button-icon-secondary-light: #{color.adjust($tertiary, $lightness: -42%)}; //#FFCA41
-  --button-icon-secondary: var(--ion-color-secondary); //#F49D04
-  --button-icon-secondary-dark: #{color.adjust($secondary, $lightness: -7%)}; //#F87023
+  --round-icon-button-light: #{color.adjust($tertiary, $lightness: -42%)}; //#FFCA41
+  --round-icon-button: var(--ion-color-secondary); //#F49D04
+  --round-icon-button-dark: #{color.adjust($secondary, $lightness: -7%)}; //#F87023
+
+  // POINTS ITEM
+  --points-item-bg: #{color.adjust($quaternary, $saturation: 12%, $lightness: -9%)}; //#B2E2FF
+
+  // TILES
+  --tile-primary-light-gradient-start: #{color.adjust(
+      $quaternary,
+      $saturation: 6%,
+      $lightness: -15%
+    )}; // #97d5fc
+  --tile-primary-light-gradient-end: #{color.adjust($quaternary, $saturation: 12%, $lightness: -44%)}; // #009dff;
+  --tile-primary-light-gradient: linear-gradient(
+    179.77deg,
+    var(--tile-primary-light-gradient-start) 34.6%,
+    var(--tile-primary-light-gradient-end) 105.68%
+  );
+
+  --tile-primary-gradient-start: #{color.adjust($primary, $saturation: 17%, $lightness: 39%)}; // #3aaff8
+  --tile-primary-gradient-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; // #13669a
+  --tile-primary-gradient: linear-gradient(
+    170.54deg,
+    var(--tile-primary-gradient-start) 0.43%,
+    var(--tile-primary-gradient-end) 74.07%
+  );
+
+  --tile-secondary-light-gradient-start: #{color.adjust(
+      $tertiary,
+      $saturation: -1%,
+      $lightness: -27%
+    )}; // #fed84d
+  --tile-secondary-light-gradient-end: #{color.adjust($tertiary, $lightness: -47%)}; // #e6b400
+  --tile-secondary-light-gradient: linear-gradient(
+    168.87deg,
+    var(--tile-secondary-light-gradient-start) 28.12%,
+    var(--tile-secondary-light-gradient-end) 100%
+  );
+
+  --tile-secondary-gradient-start: #{color.adjust($secondary, $saturation: 4%)}; // #fe9525
+  --tile-secondary-gradient-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)}; // #c26400
+  --tile-secondary-gradient: linear-gradient(
+    168.87deg,
+    var(--tile-secondary-gradient-start) 28.12%,
+    var(--tile-secondary-gradient-end) 100%
+  );
 
   --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
   --ion-color-slider: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
