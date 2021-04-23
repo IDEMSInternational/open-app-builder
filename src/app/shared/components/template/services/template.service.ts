@@ -1,16 +1,19 @@
-import { Injectable } from "@angular/core";
+import { Host, Inject, Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "scripts/types";
 import { getNestedProperty } from "src/app/shared/utils";
+import { TmplRadioGroupComponent } from "../components/radio-group/radio-group.component";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class TemplateService {
   globals = {};
-
+  private themeValue = new BehaviorSubject("passive");
+  currentTheme = this.themeValue.asObservable();
   constructor(
     private localStorageService: LocalStorageService,
     private dataService: PLHDataService,
@@ -109,6 +112,7 @@ export class TemplateService {
       })`;
       document.body.style.setProperty("--ion-dg-bg-default", dgBodyColor);
       document.body.style.setProperty("--ion-background-color", mainBgBodyColor);
+      this.themeValue.next(value[0]);
     }
   }
 }

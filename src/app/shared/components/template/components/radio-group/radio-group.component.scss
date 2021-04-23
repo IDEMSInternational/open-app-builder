@@ -69,6 +69,7 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
           max-height: calc(120px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
           box-shadow: var(--ion-default-box-shadow);
+          transition: 0.3s linear;
           svg-icon {
             svg {
               max-width: 95%;
@@ -81,6 +82,17 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
           span {
             margin-top: -10px;
           }
+        }
+      }
+      .transparent {
+        .standard-label {
+          border: 2px solid transparent;
+          box-shadow: none;
+        }
+        .checked {
+          transition: 0.3s linear;
+          border: var(--ion-border-standard);
+          box-shadow: var(--ion-default-box-shadow);
         }
       }
     }
