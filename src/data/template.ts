@@ -8803,7 +8803,19 @@
               },
               {
                 "name": "intro_text",
+<<<<<<< HEAD
                 "value": "You’ve completed this week’s workshop. See you soon.",
+=======
+                "value": "You’ve completed this week’s workshop. ",
+<<<<<<< HEAD
+                "type": "set_variable"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": "false",
+=======
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
                 "type": "set_variable"
               },
               {
@@ -8830,6 +8842,29 @@
                     "name": "video_src",
                     "value": "plh_video/lets_slow_down.mp4",
                     "type": "set_variable"
+<<<<<<< HEAD
+=======
+                  },
+                  {
+<<<<<<< HEAD
+=======
+                    "name": "bottom_text",
+                    "value": "See you soon.",
+                    "hidden": "false",
+                    "type": "set_variable"
+                  },
+                  {
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
+                    "type": "nested_properties",
+                    "name": "nav_buttons",
+                    "rows": [
+                      {
+                        "name": "button_completed",
+                        "value": "Goodbye!",
+                        "type": "set_variable"
+                      }
+                    ]
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
                   }
                 ]
               }
@@ -16402,6 +16437,7 @@
           {
             "name": "slider_field",
             "value": "survey_welcome_q_3",
+            "comments": "Every user needs to receive a daily relax",
             "type": "set_variable"
           },
           {
@@ -16421,18 +16457,37 @@
           },
           {
             "name": "reply_less",
+<<<<<<< HEAD
             "value": "Great that this has been a good week!",
+=======
+<<<<<<< HEAD
+            "value": "Great that you felt calm most of the week! \n\nWe’ll remind you every day to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
+            "comments": "Every user needs to receive a daily relax",
+=======
+            "value": "Great that this has been a good week!\n\nWe’ll remind you every day to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
+            "comments": "Answer for 0",
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
             "type": "set_variable"
           },
           {
             "name": "unlock_less",
             "hidden": "true",
+            "comments": "Answer for 1: \n\nGreat that you felt calm most of the week! \n\nWe’ll remind you every day to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
             "type": "set_variable"
           },
           {
             "name": "reply_greater_equal",
+<<<<<<< HEAD
             "value": "We understand how stressful this is. Remember that you are not alone. \n\nWe’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.",
             "comments": "Every user needs to receive a daily relax",
+=======
+            "value": "We understand how stressful life can be. Remember that you are not alone. \n\nWe’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.",
+<<<<<<< HEAD
+=======
+            "comments": "Answer for 2 - 7 ",
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
             "type": "set_variable"
           },
           {
@@ -16797,7 +16852,21 @@
           },
           {
             "name": "question_text",
+<<<<<<< HEAD
             "value": "How many days have you had a talk like this?",
+=======
+            "value": "How many days in the past month (30 days) did you talk with your teen about keeping safe from sexual violence online or offline? ",
+            "type": "set_variable"
+          },
+          {
+            "name": "example_text",
+            "value": "This could be when they are going out with friends, or talking about the websites they use.",
+<<<<<<< HEAD
+            "hidden": "false",
+=======
+            "comments": "ETW to add this lower down",
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
+>>>>>>> feat: add subscription on event set_theme for combobox and radio group
             "type": "set_variable"
           },
           {

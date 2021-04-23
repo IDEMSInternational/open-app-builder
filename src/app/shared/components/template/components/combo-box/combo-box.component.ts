@@ -1,10 +1,13 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "../../../common/components/combo-box-modal/combo-box-modal.component";
 import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
+import { TemplateService } from "../../services/template.service";
+import { ReplaySubject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "plh-combo-box",
@@ -13,15 +16,15 @@ import { ITemplateRowProps } from "../../models";
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit, OnDestroy {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   placeholder: string;
   style: string;
   customAnswerSelected: boolean = false;
   checkIfContainsDefaultStyles: boolean = false;
-
-  constructor(private modalController: ModalController) {
+  destroy$ = new ReplaySubject(1);
+  constructor(private modalController: ModalController, private templateService: TemplateService) {
     super();
   }
 
@@ -34,6 +37,7 @@ export class TmplComboBoxComponent
     if (!this.checkIfContainsDefaultStyles) {
       this.setCustomStyle();
     }
+    this.checkTheme();
   }
 
   getParams() {
@@ -53,6 +57,7 @@ export class TmplComboBoxComponent
         localVariables: this.localVariables,
         selectedValue: this._row.value,
         customAnswerSelected: this.customAnswerSelected,
+        style: this.style,
       },
       showBackdrop: false,
     });
@@ -71,28 +76,32 @@ export class TmplComboBoxComponent
       .toLocaleLowerCase();
     const nameBgColor: string =
       currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
-    return nameBgColor === "active" ? this.setActiveTheme() : this.setPassiveTheme();
+    return this.setTheme(nameBgColor);
   }
 
-  setActiveTheme() {
+  setTheme(themeName: string) {
     document.body.style.setProperty(
-      "--combo-box-no-answer-bg",
-      "var(--combo-box-active-no-answer-bg)"
+      `--combo-box-no-answer-bg`,
+      `var(--combo-box-${themeName}-no-answer-bg`
     );
     document.body.style.setProperty(
-      "--combo-box-with-answer-bg",
-      "var(--combo-box-active-with-answer-bg)"
+      `--combo-box-with-answer-bg`,
+      `var(--combo-box-${themeName}-with-answer-bg`
     );
   }
 
-  setPassiveTheme() {
-    document.body.style.setProperty(
-      "--combo-box-no-answer-bg",
-      "var(--combo-box-passive-no-answer-bg)"
+  checkTheme() {
+    return (
+      !this.checkIfContainsDefaultStyles &&
+      this.templateService.currentTheme.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+        this.style = value;
+        this.setTheme(value);
+      })
     );
-    document.body.style.setProperty(
-      "--combo-box-with-answer-bg",
-      "var(--combo-box-passive-with-answer-bg)"
-    );
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
