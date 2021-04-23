@@ -8,7 +8,7 @@
     padding: calc(20px * var(--scale-factor--point)) 0;
     width: calc(176px * var(--scale-factor--point));
     height: calc(152px * var(--scale-factor--point));
-    background: #b3edfd;
+    background: var(--points-item-bg);
     box-shadow: var(--ion-default-box-shadow);
     border-radius: var(--ion-border-radius-standard);
     position: relative;
