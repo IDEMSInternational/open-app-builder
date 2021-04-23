@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
-import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "../../../../utils";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 
@@ -14,6 +18,7 @@ export class TmplTextBoxComponent
   implements ITemplateRowProps, OnInit {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
+  isNumberInput = false;
   placeholder: string;
   textAlign: string;
   maxLength: number;
@@ -31,5 +36,6 @@ export class TmplTextBoxComponent
     this.maxLength = getNumberParamFromTemplateRow(this._row, "max_length", 30);
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "center");
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
+    this.isNumberInput = getBooleanParamFromTemplateRow(this._row, "number_input", false);
   }
 }
