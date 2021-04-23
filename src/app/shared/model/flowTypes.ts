@@ -399,7 +399,7 @@ export namespace FlowTypes {
     condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     /** track full path to row when nested in a template (e.g. contentBox1.row2.title) */
     /** TODO - this should be extracted by the parser */
-    _nested_name;
+    _nested_name: string;
     /**
      * track fields above where dynamic expressions have been used in field evaluation
      * they will be nested in the same way the template itself is (e.g. parameter_list.paramNam.someVal)
