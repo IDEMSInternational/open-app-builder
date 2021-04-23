@@ -89,12 +89,12 @@
       {
         "type": "declare_global_constant",
         "name": "parent_points",
-        "value": "Parent Points"
+        "value": "ParentPoints"
       },
       {
         "type": "declare_global_constant",
         "name": "parent_point",
-        "value": "Parent Point"
+        "value": "ParentPoint"
       },
       {
         "type": "declare_global_constant",
@@ -105,7 +105,7 @@
         "type": "declare_field_default",
         "name": "workshops_setup",
         "value": false,
-        "comments": "This ensures that the first time weekle workshops is pressed the workshop_setup is launched."
+        "comments": "This ensures that the first time weekly workshops is pressed the workshop_setup is launched."
       },
       {
         "type": "declare_field_default",
