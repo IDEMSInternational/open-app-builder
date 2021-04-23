@@ -62,10 +62,12 @@ export class TmplComboBoxComponent
       showBackdrop: false,
     });
 
-    modal.onDidDismiss().then((data) => {
-      this.triggerActions("changed");
+    modal.onDidDismiss().then(async (data) => {
+      const value = data?.data?.answer;
       this._row.value = data?.data?.answer;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
+      await this.setValue(value);
+      await this.triggerActions("changed");
     });
     await modal.present();
   }
