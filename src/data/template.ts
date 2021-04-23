@@ -14613,6 +14613,24 @@
           "name:name_var_3| image:/plh_images/icons/heart.svg"
         ],
         "type": "set_variable"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_square_ex2",
+        "parameter_list": {
+          "answer_list": "@local.answer3_list",
+          "options_per_row": "3",
+          "style": "transparent"
+        }
+      },
+      {
+        "name": "answer3_list",
+        "value": [
+          "name:name_var_1 | image:/plh_images/icons/heart.svg",
+          "name:name_var_2| image:/plh_images/icons/heart.svg",
+          "name:name_var_3| image:/plh_images/icons/heart.svg"
+        ],
+        "type": "set_variable"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
