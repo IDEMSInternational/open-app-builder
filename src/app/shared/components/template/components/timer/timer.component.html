@@ -36,6 +36,7 @@
         [src]="timerStarted ? '/assets/icon/timer/add-time.svg' : '/assets/icon/timer/repeat.svg'"
         alt=""
       />
+      <span class="time-rewind-value" *ngIf="timerStarted">+{{ timerDurationExtension / 60 }}</span>
     </ion-button>
   </div>
 </div>

@@ -108,7 +108,7 @@
   }
 }
 .custom-checkbox {
-  border-radius: var(--ion-border-radius-rounded);
+  --border-radius: 50%;
   --border-color: var(--ion-color-slider);
   --background: transparent;
   --size: 16px;

@@ -64,13 +64,12 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
         padding: calc(5px * var(--scale-factor));
 
         label {
-          background: transparent !important;
-          border: 2px solid transparent;
-          box-shadow: none;
+          border: var(--ion-border-standard);
           max-width: calc(120px * var(--scale-factor));
           max-height: calc(120px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
-
+          box-shadow: var(--ion-default-box-shadow);
+          transition: 0.3s linear;
           svg-icon {
             svg {
               max-width: 95%;
@@ -83,6 +82,17 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
           span {
             margin-top: -10px;
           }
+        }
+      }
+      .transparent {
+        .standard-label {
+          border: 2px solid transparent;
+          box-shadow: none;
+        }
+        .checked {
+          transition: 0.3s linear;
+          border: var(--ion-border-standard);
+          box-shadow: var(--ion-default-box-shadow);
         }
       }
     }
@@ -104,8 +114,7 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
   }
 
   .checked {
-    background: var(--radio-group-gradient-primary);
-    color: var(--ion-color-primary-contrast);
+    background: var(--radio-group-passive-bg);
     transition: 0.3s linear;
   }
 
@@ -118,21 +127,21 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
 
 .active {
   .standard-label {
-    border: var(--ion-border-color-secondary);
+    border: var(--ion-border-standard);
     background: var(--ion-color-primary-contrast);
-    color: var(--ion-color-secondary);
+    color: var(--ion-color-primary);
   }
 
   .checked {
-    background: var(--radio-group-gradient-secondary);
-    color: var(--ion-color-primary-contrast);
+    background: var(--radio-group-active-bg);
     transition: 0.3s linear;
+    color: var(--ion-color-primary);
   }
 
   .smile-checked {
-    color: var(--ion-color-secondary);
+    color: var(--radio-group-active-bg);
     border: $primary-radio-border !important;
-    border-color: var(--ion-color-secondary);
+    border-color: var(--ion-color-primary);
   }
 }
 
