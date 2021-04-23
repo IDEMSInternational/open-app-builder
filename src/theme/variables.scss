@@ -105,6 +105,9 @@ $horizontal: 90deg;
 
   --combo-box-no-answer-bg: transparent;
   --combo-box-with-answer-bg: transparent;
+  // radio-group
+  --radio-group-active-bg: linear-gradient(179.77deg, #ffe895 34.6%, #fbc70f 105.68%);
+  --radio-group-passive-bg: linear-gradient(179.77deg, #b7e3ff 34.6%, #029eff 105.68%);
   //* Help icon **/
   --help-icon-standard-size: 35px;
   --help-icon-small-size: 30px;
