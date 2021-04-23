@@ -397,9 +397,10 @@ export namespace FlowTypes {
     rows?: TemplateRow[];
     disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
-    /** track full path to row when nested in a template (e.g. contentBox1.row2.title) */
-    /** TODO - this should be extracted by the parser */
-    _nested_name: string;
+
+    _debug_name?: string; // some components may optionally provide a different name for debugging purposes
+    _nested_name: string; // track full path to row when nested in a template (e.g. contentBox1.row2.title)
+
     /**
      * track fields above where dynamic expressions have been used in field evaluation
      * they will be nested in the same way the template itself is (e.g. parameter_list.paramNam.someVal)
