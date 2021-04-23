@@ -145,17 +145,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
     switch (action_id) {
       case "set_local":
-        log("[SET LOCAL]", { key, value });
+        console.log("[SET LOCAL]", { key, value });
         return this.setLocalVariable(key, value);
       case "set_global":
-        log("[SET GLOBAL]", key, value);
+        console.log("[SET GLOBAL]", key, value);
         return this.templateService.setGlobal(key, value);
       case "go_to":
         return this.templateNavService.handleNavAction(action, this);
       case "pop_up":
         return this.templateNavService.handlePopupAction(action, this);
       case "set_field":
-        log("[SET FIELD]", key, value);
+        console.log("[SET FIELD]", key, value);
         return this.templateService.setField(key, value);
       case "set_theme":
         return this.templateService.setTheme(this.template, "set_theme", action.args);
@@ -230,7 +230,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // TODO - prompt any rows to re-process if they depend on the value (and other @ types)
     this.templateRowMap.forEach((r) => {
       if (r._dynamicDependencies?.[`@local.${key}`]) {
-        console.warn("[Dynamic Deps] - TODO - handle single row update]", r);
+        // console.warn("[Dynamic Deps] - TODO - handle single row update]", r);
       }
     });
 

@@ -6,7 +6,10 @@
     [placeholder]="placeholder"
     [maxlength]="maxLength"
     [style.textAlign]="textAlign"
-    (ionBlur)="triggerActions('changed')"
+    debounce="500"
+    (ionChange)="setValue(_row.value)"
     (keyup.enter)="triggerActions('changed')"
   ></ion-input>
 </div>
+
+<!-- (ionBlur)="triggerActions('changed')" -->
