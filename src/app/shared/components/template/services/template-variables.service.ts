@@ -46,6 +46,7 @@ export class TemplateVariablesService {
     context: IVariableContext,
     omitFields: string[] = []
   ) {
+    const dynamicFields = context.row._dynamicFields;
     let value = data;
     // If the data is array or json-type object extract individual strings and reprocess
     if (typeof data === "object") {
@@ -55,38 +56,36 @@ export class TemplateVariablesService {
         value = Object.values(this.evaluatePLHData(objData, context));
       }
 
-      // non-null object - evaluate both keys and values
+      // non-null object - set to recursively evaluate
       else if (data !== null) {
-        const dynamicFields = context.row._dynamicFields;
         // only evaluate if there are dynamic fields recorded somewhere in the object
         if (dynamicFields) {
-          log_group(`[evaluate] ${data.value || ""}`, { data: { ...data }, context });
           Object.keys(data).forEach((k) => {
             value[k] = data[k];
             // ignore evaluation of meta, comment, and specifiedfields. Could provide single list of approved fields, but as dynamic fields
             // also can be found in parameter lists would likely prove too restrictive
-            if (!k.startsWith("_") && !omitFields.includes(k) && !["comments"].includes(k)) {
+            if (!k.startsWith("_") && !omitFields.includes(k)) {
               // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
               const nestedContext = { ...context };
               nestedContext.field = nestedContext.field ? `${nestedContext.field}.${k}` : k;
-              value[k] = this.evaluatePLHData(data[k], nestedContext);
+              const evaluated = this.evaluatePLHData(data[k], nestedContext);
+              value[k] = evaluated;
             }
           });
-          log_groupEnd();
         }
       }
     } else {
       // For all other cases see if a dynamic evaluation statement already exists (e.g. @local.someVar)
       // If yes evaluate and return, if no simply return
-      const { row, field } = context;
+      const { field } = context;
       // Check if any @keyword references exist. If not assume basic text and return
       const evaluators = getNestedProperty(
-        row._dynamicFields,
+        dynamicFields,
         field
       ) as FlowTypes.TemplateRowDynamicEvaluator[];
       if (evaluators && evaluators.length > 0) {
         value = this.evaluatePLHString(evaluators, context);
-        log("[evaluated]", { value, evaluators, field, context });
+        log(`[evaluated] ${evaluators[0].fullExpression}`, value, { evaluators, field, context });
       }
     }
     return value;
