@@ -20,6 +20,7 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() localVariables: { [name: string]: any };
   @Input() selectedValue: string;
   @Input() customAnswerSelected: boolean;
+  @Input() style: string;
   formData: FormGroup | null;
   listAnswers: string | null;
   valuesFromListAnswers: string[];
@@ -29,7 +30,6 @@ export class ComboBoxModalComponent implements OnInit {
   inputPosition: boolean = false;
   maxLength: number = 30;
   placeholder: string = "";
-  style: string;
   constructor(private fb: FormBuilder, private modalController: ModalController) {}
 
   ngOnInit() {
@@ -42,7 +42,6 @@ export class ComboBoxModalComponent implements OnInit {
     this.valuesFromListAnswers = this.listAnswers.split(",").filter((item) => item !== "");
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
-    this.style = getStringParamFromTemplateRow(this.row, "style", "");
     this.inputPosition =
       getStringParamFromTemplateRow(this.row, "input_position", "bottom") === "top";
     this.maxLength = getNumberParamFromTemplateRow(this.row, "max_length", 30);

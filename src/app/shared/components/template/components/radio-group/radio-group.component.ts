@@ -1,9 +1,12 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   HostBinding,
   HostListener,
+  Inject,
   Input,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from "@angular/core";
@@ -15,6 +18,9 @@ import {
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
+import { takeUntil } from "rxjs/operators";
+import { ReplaySubject } from "rxjs";
+import { TemplateService } from "../../services/template.service";
 
 interface IButton {
   name: string | null;
@@ -30,7 +36,8 @@ interface IButton {
 })
 export class TmplRadioGroupComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit, OnDestroy {
+  @Input() changeTheme: EventEmitter<boolean>;
   @Input() parent: TemplateContainerComponent;
   @ViewChild("labelImage", { static: false, read: true }) labelImage: ElementRef;
   radioBtnList: any;
@@ -44,8 +51,10 @@ export class TmplRadioGroupComponent
   scaleFactor: number = 1;
   value: any;
   style: string;
+  destroy$ = new ReplaySubject(1);
   imageCheckedColor = "#0D3F60";
   flexWidth: string;
+  checkIfContainsStyleParameter: boolean = false;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
     this.getScaleFactor();
@@ -55,13 +64,15 @@ export class TmplRadioGroupComponent
     return this.scaleFactor;
   }
 
-  constructor() {
+  constructor(private templateService: TemplateService) {
     super();
   }
 
   ngOnInit() {
     this.getParams();
     this.getScaleFactor();
+    this.setAutoBackground();
+    this.checkTheme();
   }
 
   getScaleFactor(): number {
@@ -80,7 +91,11 @@ export class TmplRadioGroupComponent
       "btn_text"
     );
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
-    this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.checkIfContainsStyleParameter =
+      this.style.includes("active") ||
+      this.style.includes("passive") ||
+      this.style.includes("transparent");
     this.imageCheckedColor = this.style === "active" ? "#f89b2d" : "#0D3F60";
     this.windowWidth = window.innerWidth;
     if (this.radioBtnList) {
@@ -133,8 +148,30 @@ export class TmplRadioGroupComponent
     return src.replace("//", "/");
   }
 
-  automaticallyRadioBtnType(type: string) {}
   getFlexWidth() {
     this.flexWidth = `0 1 ${100 / this.options_per_row - 7}%`;
+  }
+
+  setAutoBackground() {
+    if (!this.checkIfContainsStyleParameter) {
+      const currentBgColor = document.body.style
+        .getPropertyValue("--ion-background-color")
+        .toLocaleLowerCase();
+      this.style = currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
+    }
+  }
+
+  checkTheme() {
+    return (
+      !this.checkIfContainsStyleParameter &&
+      this.templateService.currentTheme
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((value) => (this.style = value))
+    );
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
