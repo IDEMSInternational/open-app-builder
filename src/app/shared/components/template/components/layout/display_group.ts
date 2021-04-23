@@ -29,6 +29,9 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         justify-content: space-between;
         padding-bottom: 10px;
       }
+      .navigation .offset {
+        align-items: flex-end;
+      }
       .parent_point .offset {
         flex-wrap: wrap;
         padding: 10px 0;
