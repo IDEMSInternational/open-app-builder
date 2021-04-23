@@ -43,9 +43,9 @@
   min-width: var(--ion-btn-tmpl-components-size);
   height: var(--ion-btn-tmpl-components-size);
   position: relative;
-  --background: var(--ion-play-btn-default-bg);
+  --background: hsl(193, 100%, 40%);
   --background-size: cover;
-  --border-radius: var(--ion-border-radius-rounded);
+  --border-radius: 50%;
   --padding: 0;
   .right-icon {
     max-width: none;
