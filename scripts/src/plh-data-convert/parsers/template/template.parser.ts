@@ -166,6 +166,10 @@ export class TemplateParser extends DefaultParser {
           return dynamicEvaluators;
         }
     }
+    // nested dynamic fields are managed in the row themselves
+    if (dynamicFields.hasOwnProperty("rows")) {
+      delete dynamicFields["rows"];
+    }
     // only return is something has been assigned
     if (Object.keys(dynamicFields).length > 0) {
       return dynamicFields;
