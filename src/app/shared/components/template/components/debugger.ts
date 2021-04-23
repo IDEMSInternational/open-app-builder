@@ -6,7 +6,7 @@ import { TemplateBaseComponent } from "./base";
   template: `<details #details class="debug-container" [attr.data-hidden]="_row.hidden">
     <summary style="display:flex">
       <span class="debug-row-type">{{ _row.type }}</span>
-      <span class="debug-row-name">{{ _row.name || "(no name)" }}</span>
+      <span class="debug-row-name">{{ _row._debug_name || _row.name || "(no name)" }}</span>
       <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
         ><ion-icon name="eye-off"></ion-icon
       ></span>
