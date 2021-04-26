@@ -5,7 +5,7 @@ import {
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
-import { PickerController } from "@ionic/angular";
+import { PickerController, Platform } from "@ionic/angular";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 
@@ -13,15 +13,6 @@ import { ITemplateRowProps } from "../../models";
   selector: "plh-timer",
   templateUrl: "./timer.component.html",
   styleUrls: ["./timer.component.scss"],
-  styles: [
-    `
-      :host {
-        .pickerColumn {
-          --width: 20px;
-        }
-      }
-    `,
-  ],
 })
 export class TmplTimerComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
   _row: FlowTypes.TemplateRow;
@@ -73,13 +64,12 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.minutes = _minutes < 10 ? `0${_minutes}` : String(_minutes);
   }
 
-  constructor(private pickerController: PickerController) {
+  constructor(private pickerController: PickerController, private platform: Platform) {
     super();
     this.changeState(new PausedState(this));
   }
 
   ngOnInit() {
-    // this.value = this.row.value || 60 * 10;
     this.getParams();
     this.state.callOnInit();
   }
@@ -115,12 +105,13 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.state.clickRightButton();
   }
 
-  openPicker() {
+  async openPicker() {
     if (this.isTimerEditable) {
       const numColumns = 4;
-      const columnOptions = this.timeValues();
+      const columnOptions = await this.timeValues();
       this.pickerController
         .create({
+          mode: this.platform.is("android") ? "md" : "ios" || "ios",
           columns: this.getColumns(numColumns, columnOptions),
           buttons: [
             {
@@ -157,9 +148,6 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
         selectedIndex: getIndex(i, this.minutes, this.seconds),
       });
     }
-    // columns[0]['columnWidth'] = '30px'
-    // columns[2]["columnWidth"] = "30px";
-    // columns[3]["align"] = "left"
 
     function getIndex(index: number, minutes: string, seconds: string): number {
       switch (index) {
