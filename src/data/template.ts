@@ -781,10 +781,10 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "w_self_care"
+              "w_self_care_stepper"
             ],
-            "_raw": "click | go_to:w_self_care",
-            "_cleaned": "click | go_to:w_self_care"
+            "_raw": "click | go_to:w_self_care_stepper",
+            "_cleaned": "click | go_to:w_self_care_stepper"
           }
         ],
         "parameter_list": {
