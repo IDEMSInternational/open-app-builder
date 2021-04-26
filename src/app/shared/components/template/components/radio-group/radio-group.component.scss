@@ -60,27 +60,25 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
 
     .btn_image {
       &_container {
-        margin: calc(5px * var(--scale-factor));
-        padding: calc(5px * var(--scale-factor));
-
         label {
-          border: var(--ion-border-standard);
-          max-width: calc(120px * var(--scale-factor));
-          max-height: calc(120px * var(--scale-factor));
+          width: calc(115px * var(--scale-factor));
+          height: calc(115px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
-          box-shadow: var(--ion-default-box-shadow);
-          transition: 0.3s linear;
+
           svg-icon {
+            @include flex-centered;
+            min-width: 25px;
+            min-height: 22px;
+            width: calc(100% * var(--scale-factor));
+            height: calc(100% * var(--scale-factor));
+            margin-bottom: calc(3px * var(--scale-factor));
+
             svg {
               max-width: 95%;
               max-height: 95%;
               width: 95%;
               height: 95%;
             }
-          }
-
-          span {
-            margin-top: -10px;
           }
         }
       }
@@ -102,7 +100,8 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
 .standard-label {
   border-radius: $primary-radio-border-rd;
   transition: 0.3s linear;
-  width: 100%;
+  max-width: fit-content;
+  min-width: 100%;
   box-shadow: var(--ion-default-box-shadow);
 }
 
