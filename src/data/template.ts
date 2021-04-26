@@ -821,7 +821,7 @@
       },
       {
         "type": "workshops_accordion",
-        "name": "temp_name_2",
+        "name": "temp_name_222",
         "parameter_list": {
           "current_workshop_num": "3"
         },
@@ -845,13 +845,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_self_care_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_3.workshop_1.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_3.workshop_1.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_3.workshop_1"
+                "_nested_name": "temp_name_222.temp_name_3.workshop_1"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_3",
+            "_nested_name": "temp_name_222.temp_name_3",
             "_dynamicFields": {
               "value": [
                 {
@@ -911,13 +911,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_1on1_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_4.workshop_2.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_4.workshop_2.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_4.workshop_2"
+                "_nested_name": "temp_name_222.temp_name_4.workshop_2"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_4",
+            "_nested_name": "temp_name_222.temp_name_4",
             "_dynamicFields": {
               "value": [
                 {
@@ -977,13 +977,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_praise_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_5.workshop_3.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_5.workshop_3.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_5.workshop_3"
+                "_nested_name": "temp_name_222.temp_name_5.workshop_3"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_5",
+            "_nested_name": "temp_name_222.temp_name_5",
             "_dynamicFields": {
               "value": [
                 {
@@ -1043,13 +1043,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_instruct_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_6.workshop_4.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_6.workshop_4.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_6.workshop_4"
+                "_nested_name": "temp_name_222.temp_name_6.workshop_4"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_6",
+            "_nested_name": "temp_name_222.temp_name_6",
             "_dynamicFields": {
               "value": [
                 {
@@ -1109,13 +1109,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_stress_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_7.workshop_5.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_7.workshop_5.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_7.workshop_5"
+                "_nested_name": "temp_name_222.temp_name_7.workshop_5"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_7",
+            "_nested_name": "temp_name_222.temp_name_7",
             "_dynamicFields": {
               "value": [
                 {
@@ -1175,13 +1175,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_money_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_8.workshop_6.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_8.workshop_6.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_8.workshop_6"
+                "_nested_name": "temp_name_222.temp_name_8.workshop_6"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_8",
+            "_nested_name": "temp_name_222.temp_name_8",
             "_dynamicFields": {
               "value": [
                 {
@@ -1241,13 +1241,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_rules_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_9.workshop_7.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_9.workshop_7.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_9.workshop_7"
+                "_nested_name": "temp_name_222.temp_name_9.workshop_7"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_9",
+            "_nested_name": "temp_name_222.temp_name_9",
             "_dynamicFields": {
               "value": [
                 {
@@ -1307,13 +1307,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_consequence_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_10.workshop_8.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_10.workshop_8.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_10.workshop_8"
+                "_nested_name": "temp_name_222.temp_name_10.workshop_8"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_10",
+            "_nested_name": "temp_name_222.temp_name_10",
             "_dynamicFields": {
               "value": [
                 {
@@ -1373,13 +1373,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_solve_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_11.workshop_9.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_11.workshop_9.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_11.workshop_9"
+                "_nested_name": "temp_name_222.temp_name_11.workshop_9"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_11",
+            "_nested_name": "temp_name_222.temp_name_11",
             "_dynamicFields": {
               "value": [
                 {
@@ -1439,13 +1439,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_safe_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_12.workshop_10.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_12.workshop_10.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_12.workshop_10"
+                "_nested_name": "temp_name_222.temp_name_12.workshop_10"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_12",
+            "_nested_name": "temp_name_222.temp_name_12",
             "_dynamicFields": {
               "value": [
                 {
@@ -1505,13 +1505,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_crisis_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_13.workshop_11.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_13.workshop_11.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_13.workshop_11"
+                "_nested_name": "temp_name_222.temp_name_13.workshop_11"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_13",
+            "_nested_name": "temp_name_222.temp_name_13",
             "_dynamicFields": {
               "value": [
                 {
@@ -1571,13 +1571,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_celebrate_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_14.workshop_12.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_14.workshop_12.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_14.workshop_12"
+                "_nested_name": "temp_name_222.temp_name_14.workshop_12"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_14",
+            "_nested_name": "temp_name_222.temp_name_14",
             "_dynamicFields": {
               "value": [
                 {
@@ -1619,7 +1619,7 @@
             }
           }
         ],
-        "_nested_name": "temp_name_2"
+        "_nested_name": "temp_name_222"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
