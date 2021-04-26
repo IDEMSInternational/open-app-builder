@@ -29355,7 +29355,6 @@
         },
         "_nested_name": "radio_group_square_ex2",
         "_dynamicFields": {
-          "parameter_list": {
             "answer_list": [
               {
                 "fullExpression": "@local.answer3_list",
@@ -29372,8 +29371,6 @@
           ]
         }
       },
-      {
-        "name": "answer3_list",
         "value": [
           "name:name_var_1 | image:/plh_images/icons/heart.svg",
           "name:name_var_2| image:/plh_images/icons/heart.svg",
