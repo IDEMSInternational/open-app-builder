@@ -834,6 +834,11 @@
       },
       {
         "type": "declare_global_constant",
+        "name": "check_it_out_button",
+        "value": "Check it out!"
+      },
+      {
+        "type": "declare_global_constant",
         "name": "done_button",
         "value": "Done! "
       },
