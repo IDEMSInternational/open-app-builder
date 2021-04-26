@@ -120,6 +120,12 @@ export function stringToArray(str: string = "", separator = ";") {
   );
 }
 
+export function mapToJson<T = any>(map: Map<string, any>) {
+  const json: { [key: string]: T } = {};
+  map.forEach((value, key) => (json[key] = value));
+  return json;
+}
+
 /**
  * Return a specific parameter from the row, as default type
  * (params ending in _list will be arrays, others will be strings)

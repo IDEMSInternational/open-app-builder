@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { mapToJson } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "./base";
 
 @Component({
@@ -73,7 +74,8 @@ export class TemplateDebuggerComponent extends TemplateBaseComponent {
   public logDebugInfo() {
     console.group(this._row.type, this._row.name);
     console.log("row", this._row);
-    console.log("local variables", this.parent.localVariables);
+    console.log("parent rows", mapToJson(this.parent.templateRowMap));
+    console.log("local overrides", this.parent.localVariables);
     console.log("parent", this.parent);
     console.log("children", this._row.rows);
     console.groupEnd();

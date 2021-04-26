@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
+import { mapToJson } from "../../utils";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateNavService } from "./services/template-nav.service";
 import { TemplateVariablesService } from "./services/template-variables.service";
@@ -545,12 +546,6 @@ function _wait(ms: number) {
       resolve();
     }, ms);
   });
-}
-
-function mapToJson<T = any>(map: Map<string, any>) {
-  const json: { [key: string]: T } = {};
-  map.forEach((value, key) => (json[key] = value));
-  return json;
 }
 
 const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
