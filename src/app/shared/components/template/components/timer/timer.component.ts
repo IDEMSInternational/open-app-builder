@@ -3,20 +3,20 @@ import { FlowTypes } from "src/app/shared/model/flowTypes";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
-  getStringParamFromTemplateRow
+  getStringParamFromTemplateRow,
 } from "../../../../utils";
-import { PickerController } from "@ionic/angular";
+import { PickerController, Platform } from "@ionic/angular";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 
 @Component({
   selector: "plh-timer",
   templateUrl: "./timer.component.html",
-  styleUrls: ["./timer.component.scss"]
+  styleUrls: ["./timer.component.scss"],
 })
 export class TmplTimerComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
   _row: FlowTypes.TemplateRow;
-  @Input() set row (value: FlowTypes.TemplateRow) {
+  @Input() set row(value: FlowTypes.TemplateRow) {
     this._row = value;
   }
   @Input() template: FlowTypes.Template;
@@ -64,13 +64,12 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.minutes = _minutes < 10 ? `0${_minutes}` : String(_minutes);
   }
 
-  constructor(private pickerController: PickerController) {
+  constructor(private pickerController: PickerController, private platform: Platform) {
     super();
     this.changeState(new PausedState(this));
   }
 
   ngOnInit() {
-    // this.value = this.row.value || 60 * 10;
     this.getParams();
     this.state.callOnInit();
   }
@@ -82,16 +81,20 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   getParams() {
     this.title = getStringParamFromTemplateRow(this._row, "title", "Timer");
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
-    this.timerDurationExtension = getNumberParamFromTemplateRow(this._row, "duration_extension", 1) * 60;
-    this.is_editable_on_playing = getBooleanParamFromTemplateRow(this._row, "is_editable_on_playing", false);
+    this.timerDurationExtension =
+      getNumberParamFromTemplateRow(this._row, "duration_extension", 1) * 60;
+    this.is_editable_on_playing = getBooleanParamFromTemplateRow(
+      this._row,
+      "is_editable_on_playing",
+      false
+    );
     this.starting_minutes = getNumberParamFromTemplateRow(this._row, "starting_minutes", 10);
-    this.starting_seconds = getNumberParamFromTemplateRow(this._row, 'starting_seconds', 0);
+    this.starting_seconds = getNumberParamFromTemplateRow(this._row, "starting_seconds", 0);
     this.value = this.getDurationFromParams();
   }
 
-
   getDurationFromParams() {
-    return this._row.value ? this._row.value : (this.starting_minutes * 60 + this.starting_seconds);
+    return this._row.value ? this._row.value : this.starting_minutes * 60 + this.starting_seconds;
   }
 
   clickLeftButton() {
@@ -106,27 +109,33 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     if (this.isTimerEditable) {
       const numColumns = 4;
       const columnOptions = this.timeValues();
-      this.pickerController.create({
-        columns: this.getColumns(numColumns, columnOptions),
-        buttons: [
-          {
-            text: "Cancel",
-            role: "cancel",
-            handler: _ => this.timerStarted ? this.state.clickLeftButton() : null
-          },
-          {
-            text: "Confirm",
-            handler: (value) => {
-              const min = Object.values(value["col-0"]).toString().split(",")[0].trim()
-                + Object.values(value["col-1"]).toString().split(",")[0].trim();
-              const sec = Object.values(value["col-2"]).toString().split(",")[0].trim()
-                + Object.values(value["col-3"]).toString().split(",")[0].trim();
-              this.state.editTimer(min, "mm");
-              this.state.editTimer(sec, "ss");
-            }
-          }
-        ]
-      }).then(e => e.present());
+      this.pickerController
+        .create({
+          mode: this.platform.is("android") ? "md" : "ios" || "ios",
+          columns: this.getColumns(numColumns, columnOptions),
+          buttons: [
+            {
+              text: "Cancel",
+              role: "cancel",
+              handler: (_) => (this.timerStarted ? this.state.clickLeftButton() : null),
+            },
+            {
+              text: "Confirm",
+              handler: (value) => {
+                const min =
+                  Object.values(value["col-0"]).toString().split(",")[0].trim() +
+                  Object.values(value["col-1"]).toString().split(",")[0].trim();
+                const sec =
+                  Object.values(value["col-2"]).toString().split(",")[0].trim() +
+                  Object.values(value["col-3"]).toString().split(",")[0].trim();
+                this.state.editTimer(min, "mm");
+                this.state.editTimer(sec, "ss");
+              },
+            },
+          ],
+          cssClass: "picker",
+        })
+        .then((e) => e.present());
     }
   }
 
@@ -136,7 +145,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
       columns.push({
         name: `col-${i}`,
         options: this.getColumnOptions(i, i % 2 === 0 ? 6 : 10, columnOptions),
-        selectedIndex: getIndex(i, this.minutes, this.seconds)
+        selectedIndex: getIndex(i, this.minutes, this.seconds),
       });
     }
 
@@ -163,13 +172,12 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     for (let i = 0; i < numOptions; i++) {
       options.push({
         text: columnOptions[columnIndex][i % numOptions],
-        value: i
+        value: i,
       });
     }
     return options;
   }
 }
-
 
 interface TimerState {
   timer: TmplTimerComponent;
@@ -184,17 +192,13 @@ interface TimerState {
 }
 
 abstract class State {
-  constructor(public timer: TmplTimerComponent) {
-  }
+  constructor(public timer: TmplTimerComponent) {}
 
-  clickLeftButton() {
-  }
+  clickLeftButton() {}
 
-  clickRightButton() {
-  }
+  clickRightButton() {}
 
-  clickTimer() {
-  }
+  clickTimer() {}
 
   editTimer(val: string, type: "mm" | "ss") {
     val = val.replace(/^0/, "");
@@ -211,8 +215,7 @@ abstract class State {
     }
   }
 
-  callOnInit() {
-  }
+  callOnInit() {}
 }
 
 class PlayingState extends State {
@@ -248,7 +251,6 @@ class PlayingState extends State {
         return;
       }
       this.timer.value -= 1;
-
     }, 1000);
   }
 }
