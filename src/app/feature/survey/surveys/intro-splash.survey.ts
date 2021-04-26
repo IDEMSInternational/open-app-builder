@@ -18,7 +18,7 @@ import { ISurvey } from "../types/survey.types";
       </section>
       <section [@fadeInOut]="fadeSection[2]">
         <img src="assets/images/splash-screen/2.svg" />
-        <p>Join the 124 million parents who have used our resources</p>
+        <p>Join the 152.4 million parents who have used our resources</p>
       </section>
       <section [@fadeInOut]="fadeSection[3]">
         <div>Powered by Parenting for Lifelong Health</div>
