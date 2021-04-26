@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { mapToJson } from "src/app/shared/utils";
+import { TemplateService } from "../services/template.service";
 import { TemplateBaseComponent } from "./base";
 
 @Component({
@@ -6,7 +8,7 @@ import { TemplateBaseComponent } from "./base";
   template: `<details #details class="debug-container" [attr.data-hidden]="_row.hidden">
     <summary style="display:flex">
       <span class="debug-row-type">{{ _row.type }}</span>
-      <span class="debug-row-name">{{ _row.name || "(no name)" }}</span>
+      <span class="debug-row-name">{{ _row._debug_name || _row.name || "(no name)" }}</span>
       <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
         ><ion-icon name="eye-off"></ion-icon
       ></span>
@@ -21,10 +23,10 @@ import { TemplateBaseComponent } from "./base";
             <td>{{ _row[key] | json }}</td>
           </tr>
         </div>
-        <tr *ngIf="_row._dynamicFields">
+        <!-- <tr *ngIf="_row._dynamicFields">
           <td>@local</td>
           <td>{{ parent.localVariables | json }}</td>
-        </tr>
+        </tr> -->
       </table>
       <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log full details)</ion-button>
     </div>
@@ -69,11 +71,21 @@ import { TemplateBaseComponent } from "./base";
   ],
 })
 export class TemplateDebuggerComponent extends TemplateBaseComponent {
-  public debugFieldExclusions = ["comments", "rows"];
+  constructor(private templateService: TemplateService) {
+    super();
+  }
+  public debugFieldExclusions = ["comments", "rows", "_dynamicFields", "action_list"];
   public logDebugInfo() {
+    // retrieve local storage keys in the same way they would be populated in a template
+    const fields = {};
+    Object.keys(localStorage).forEach(
+      (key) => (fields[key] = this.templateService.getField(key.replace("rp-contact-field.", "")))
+    );
     console.group(this._row.type, this._row.name);
     console.log("row", this._row);
-    console.log("local variables", this.parent.localVariables);
+    console.log("parent rows", mapToJson(this.parent.templateRowMap));
+    console.log("local overrides", this.parent.localVariables);
+    console.log("fields", fields);
     console.log("parent", this.parent);
     console.log("children", this._row.rows);
     console.groupEnd();

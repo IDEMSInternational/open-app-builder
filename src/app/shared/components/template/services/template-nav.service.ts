@@ -53,7 +53,7 @@ export class TemplateNavService {
     // TODO: Find more elegant way to get current root level template name
     const parentName = location.pathname.replace("/template/", "");
     const [templatename] = action.args;
-    const nav_parent_triggered_by = action._triggeredBy;
+    const nav_parent_triggered_by = action._triggeredBy.name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
     return container.router.navigate(["template", templatename], {
       queryParams,
@@ -94,7 +94,7 @@ export class TemplateNavService {
       if (triggerRow) {
         log("trigger row", triggerRow);
         const triggeredActions = triggerRow.action_list.filter((a) => a.trigger === nav_child_emit);
-        await container.handleActions(triggeredActions, nav_child);
+        await container.handleActions(triggeredActions, triggerRow);
         // back history will have changed (2 duplicate pages), so nav back to restore correct back button
         history.back();
       } else {
@@ -160,7 +160,7 @@ export class TemplateNavService {
     const queryParams: INavQueryParams = {
       popup_child: templatename,
       popup_parent: name,
-      popup_parent_triggered_by: action._triggeredBy,
+      popup_parent_triggered_by: action._triggeredBy.name,
     };
     router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
@@ -198,7 +198,7 @@ export class TemplateNavService {
         // process any completed/uncompleted actions as specified
         const emittedActions = actionsByTrigger[nav_child_emit];
         if (emittedActions) {
-          await container.handleActions(emittedActions, popup_child);
+          await container.handleActions(emittedActions, triggerRow);
           await this.modalCtrl.dismiss(nav_child_emit);
         }
         // if the popup does not have any actions triggered by the nav_emit, leave open if there

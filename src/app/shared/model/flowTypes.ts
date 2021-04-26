@@ -388,23 +388,31 @@ export namespace FlowTypes {
 
   export interface TemplateRow {
     type: TemplateRowType;
-    name?: string;
+    name: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
-    hidden?: string;
+    hidden?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     rows?: TemplateRow[];
-    /** track fields above where dynamic expressions have been used in field evaluation */
-    _dynamicFields?: { [key in keyof TemplateRow]?: TemplateRowDynamicEvaluator[] };
-    condition?: string;
-    disabled?: string;
+    disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
 
-    /* Used for authoring comments. Not used in code */
-    cc_comments?: string;
-    comments?: string;
+    _debug_name?: string; // some components may optionally provide a different name for debugging purposes
+    _nested_name: string; // track full path to row when nested in a template (e.g. contentBox1.row2.title)
+
+    /**
+     * track fields above where dynamic expressions have been used in field evaluation
+     * they will be nested in the same way the template itself is (e.g. parameter_list.paramNam.someVal)
+     * */
+    _dynamicFields?: IDynamicField;
+    /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
+    _dynamicDependencies?: { [reference: string]: string[] };
+    /** excel sheets may supply empty columns on occasion */
     __EMPTY?: any;
   }
+  type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
+
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
@@ -433,14 +441,18 @@ export namespace FlowTypes {
       | "set_local"
       | "set_global"
       | "emit"
+      | "changed"
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"
       | "pop_up"
+      | "audio_end"
+      | "audio_play"
+      | "style"
       | "close_pop_up"
       | "set_theme";
     args: string[];
     /** field populated for tracking the component that triggered the action */
-    _triggeredBy?: string;
+    _triggeredBy?: TemplateRow;
     // debug info
     _raw?: string;
     _cleaned?: string;

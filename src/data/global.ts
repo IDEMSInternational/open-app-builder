@@ -134,7 +134,7 @@
       {
         "type": "declare_global_constant",
         "name": "help_icon",
-        "value": "plh_images/icons/heart.svg",
+        "value": "plh_images/parent_centre/hug_heart_white.svg",
         "comments": "placeholder"
       },
       {
@@ -145,7 +145,7 @@
       {
         "type": "declare_global_constant",
         "name": "essential_tools_icon",
-        "value": "plh_images/icons/light_bulb_outline.svg",
+        "value": "plh_images/parent_centre/light_bulb_white.svg",
         "comments": "placeholder"
       },
       {
@@ -156,7 +156,7 @@
       {
         "type": "declare_global_constant",
         "name": "covid_icon",
-        "value": "plh_images/icons/hand_heart_outline.svg",
+        "value": "plh_images/parent_centre/ask_white.svg",
         "comments": "placeholder"
       },
       {
@@ -167,7 +167,7 @@
       {
         "type": "declare_global_constant",
         "name": "relax_and_activities_icon",
-        "value": "plh_images/icons/heart.svg",
+        "value": "plh_images/parent_centre/smile_white.svg",
         "comments": "placeholder"
       },
       {
@@ -178,7 +178,7 @@
       {
         "type": "declare_global_constant",
         "name": "extra_icon",
-        "value": "plh_images/icons/question_mark.svg",
+        "value": "plh_images/parent_centre/info_circle_white.svg",
         "comments": "placeholder"
       },
       {
@@ -189,7 +189,7 @@
       {
         "type": "declare_global_constant",
         "name": "support_contacts_icon",
-        "value": "plh_images/icons/hand_heart_outline.svg",
+        "value": "plh_images/parent_centre/hands_carrying_heart_white.svg",
         "comments": "placeholder"
       },
       {
@@ -200,7 +200,7 @@
       {
         "type": "declare_global_constant",
         "name": "evidence_base_icon",
-        "value": "plh_images/icons/light_bulb_outline.svg",
+        "value": "plh_images/parent_centre/paper_stack_white.svg",
         "comments": "placeholder"
       },
       {
@@ -211,7 +211,7 @@
       {
         "type": "declare_global_constant",
         "name": "technical_support_icon",
-        "value": "plh_images/icons/question_mark.svg",
+        "value": "plh_images/parent_centre/info_phone_white.svg",
         "comments": "placeholder"
       }
     ],
@@ -804,7 +804,7 @@
   },
   {
     "flow_type": "global",
-    "flow_name": "workshop_buttons",
+    "flow_name": "button_texts",
     "status": "released",
     "rows": [
       {
@@ -826,6 +826,26 @@
         "type": "declare_global_constant",
         "name": "more_button",
         "value": "Find out more"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "lets_go_button",
+        "value": "Let's go! "
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "check_it_out_button",
+        "value": "Check it out!"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "done_button",
+        "value": "Done! "
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "back_button",
+        "value": "Previous"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"

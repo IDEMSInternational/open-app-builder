@@ -22,7 +22,6 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() customAnswerSelected: boolean;
   @Input() style: string;
   formData: FormGroup | null;
-  listAnswers: string | null;
   valuesFromListAnswers: string[];
   textTitle: string | null;
   inputAllowed: boolean = false;
@@ -38,8 +37,7 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   getParams() {
-    this.listAnswers = getParamFromTemplateRow(this.row, "answer_list", null) as string;
-    this.valuesFromListAnswers = this.listAnswers.split(",").filter((item) => item !== "");
+    this.valuesFromListAnswers = getParamFromTemplateRow(this.row, "answer_list", null);
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
     this.inputPosition =

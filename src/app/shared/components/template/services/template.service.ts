@@ -1,11 +1,10 @@
-import { Host, Inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "scripts/types";
 import { getNestedProperty } from "src/app/shared/utils";
-import { TmplRadioGroupComponent } from "../components/radio-group/radio-group.component";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -36,13 +35,21 @@ export class TemplateService {
     });
   }
 
-  getField(key: string): string {
-    let val = this.localStorageService.getString("rp-contact-field." + key);
+  /**
+   * Retrieve fields from localstorage. These are automatically prefixed with 'rp-contact-field'
+   * and will be returned as string or boolean
+   */
+  getField(key: string) {
+    let val: any = this.localStorageService.getString("rp-contact-field." + key);
     // provide a fallback if the target variable does not exist in local storage
     if (val === null) {
       console.warn("field value not found for key:", key);
       val = `{{field.${key}}}`;
     }
+    // convert boolean strings if required
+    if (val === "true") val = true;
+    if (val === "false") val = false;
+    // console.log("[Field Retrieved]", key, val);
     return val;
   }
 
@@ -53,6 +60,14 @@ export class TemplateService {
    * available in local storage so does not require await for further processing
    * */
   setField(key: string, value: string) {
+    if (typeof value === "object") {
+      console.warn("Warning - expected string field but received", { key, value });
+      try {
+        value = JSON.stringify(value);
+      } catch (error) {
+        console.warn("string conversion failed", error);
+      }
+    }
     // write to local storage
     this.localStorageService.setString("rp-contact-field." + key, value);
 

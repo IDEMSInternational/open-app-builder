@@ -27,11 +27,57 @@ export function parsePLHString(str: string): string[][] {
 }
 
 /**
- * Split a string by ';' and return array string, ignoring empty elements left by hanging ';'
+ * Convert plh map string to object
+ * @param str list string with key-value pairs, e.g
+ * ```
+ * "value_1; value_2; value_3;"
+ * ````
+ * @returns object with key-value pairs, e.g.
+ * ```
+ * ["value_1", "value_2", "value_3"]
+ * ```
  */
 export function parsePLHListString(str: string): string[] {
-  return str
-    .split(";")
-    .map((val: string) => val.trim())
-    .filter((val: string) => val !== "");
+  return (
+    str
+      .split(";")
+      // remove whitespace between elements
+      .map((val: string) => val.trim())
+      // remove any trailing empty elements left by final ';'
+      .filter((val: string) => val !== "")
+  );
+}
+
+/**
+ * Convert plh collection string to object
+ * @param str list string with key-value pairs, e.g
+ * ```
+ * "key_1:value_1; key_2:value_2"
+ * ````
+ * @returns object with key-value pairs, e.g.
+ * ```
+ * {"key_1":"value_1", "key_2":"value_2"}
+ * ```
+ */
+export function parsePLHCollectionString(str: string): { [key: string]: string } {
+  const collection = {};
+  const entryList = parsePLHListString(str);
+  entryList.forEach((el) => {
+    const [key, value] = el.split(":");
+    collection[key] = value;
+  });
+  return collection;
+}
+
+/** Convert a deeply nested json object to a flat json object (with nested key references) */
+export function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [key: string]: T } {
+  Object.entries<T>(json).forEach(([key, value]) => {
+    const nestedName = nestedPath ? `${nestedPath}.${key}` : key;
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      tree = { ...tree, ...flattenJson(value, tree, nestedName) };
+    } else {
+      tree[nestedName] = value;
+    }
+  });
+  return tree;
 }

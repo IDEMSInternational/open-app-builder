@@ -38,10 +38,6 @@ plh-template-container {
   font-size: small;
 }
 
-// hide template components with hidden attribute (unless in debug mode)
-.plh-tmpl-comp[data-hidden="true"] {
-  display: none;
-}
 .plh-tmpl-comp[data-debug="true"] {
   display: block;
   border: 1px solid #c7c7c7;
