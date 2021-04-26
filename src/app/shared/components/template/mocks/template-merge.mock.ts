@@ -15,39 +15,11 @@ const data = {
       rows: [
         {
           name: "intro_text",
-          value: "It’s great to have you here.",
+          value: "Let's try it out and do a short relaxation activity together!",
           type: "set_variable",
-          _nested_name: "welcome_individual.workshop_activity.intro_text",
-        },
-        {
-          type: "nested_properties",
-          name: "content_box",
-          rows: [
-            {
-              name: "reply_happy",
-              value: "Wonderful, I am so happy things are going well.",
-              type: "set_variable",
-              _nested_name: "welcome_individual.workshop_activity.content_box.reply_happy",
-            },
-            {
-              name: "reply_ok",
-              value:
-                "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
-              type: "set_variable",
-              _nested_name: "welcome_individual.workshop_activity.content_box.reply_ok",
-            },
-            {
-              name: "reply_sad",
-              value:
-                "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
-              type: "set_variable",
-              _nested_name: "welcome_individual.workshop_activity.content_box.reply_sad",
-            },
-          ],
-          _nested_name: "welcome_individual.workshop_activity.content_box",
+          _nested_name: "relax.workshop_activity.intro_text",
         },
       ],
-      _processed: true,
     },
   },
   originalRows: [
@@ -55,72 +27,43 @@ const data = {
       type: "template",
       name: "workshop_activity",
       value: "workshop_activity",
-      action_list: [
-        {
-          trigger: "completed",
-          action_id: "emit",
-          args: ["completed"],
-          _raw: "completed | emit:completed",
-          _cleaned: "completed | emit:completed",
-        },
-      ],
       rows: [
         {
-          name: "activity_image",
-          value: "plh_images/workshop_modes/guide_2/wave.svg",
+          name: "intro_text",
+          value: "Let’s do a 30 second relaxation activity together.",
+          condition: "@field.do_workshops_together",
           type: "set_variable",
-          _nested_name: "workshop_activity.activity_image",
-        },
-        {
-          name: "activity_title",
-          value: "Welcome @field.user_name",
-          type: "set_variable",
-          _nested_name: "workshop_activity.activity_title",
+          _nested_name: "workshop_activity.intro_text",
           _dynamicFields: {
-            value: [
+            condition: [
               {
-                fullExpression: "Welcome @field.user_name",
-                matchedExpression: "@field.user_name",
+                fullExpression: "@field.do_workshops_together",
+                matchedExpression: "@field.do_workshops_together",
                 type: "field",
-                fieldName: "user_name",
+                fieldName: "do_workshops_together",
               },
             ],
           },
           _dynamicDependencies: {
-            "@field.user_name": ["value"],
+            "@field.do_workshops_together": ["condition"],
           },
         },
         {
           name: "intro_text",
-          value: "It's great to see you again! ",
+          value: "Let’s do a 30 second relaxation activity.",
+          condition: "!@field.do_workshops_together",
           type: "set_variable",
           _nested_name: "workshop_activity.intro_text",
-        },
-        {
-          name: "activity_banner",
-          hidden: false,
-          type: "set_variable",
-          _nested_name: "workshop_activity.activity_banner",
-        },
-        {
-          type: "nested_properties",
-          name: "content_box",
-          value: "box_radio_buttons_emo_temp",
-          rows: [
-            {
-              name: "radio_button_field",
-              value: "current_feeling",
-              type: "set_variable",
-              _nested_name: "workshop_activity.content_box.radio_button_field",
-            },
-            {
-              name: "question_text",
-              value: "How are you feeling today?",
-              type: "set_variable",
-              _nested_name: "workshop_activity.content_box.question_text",
-            },
-          ],
-          _nested_name: "workshop_activity.content_box",
+          _dynamicFields: {
+            condition: [
+              {
+                fullExpression: "!@field.do_workshops_together",
+                matchedExpression: "@field.do_workshops_together",
+                type: "field",
+                fieldName: "do_workshops_together",
+              },
+            ],
+          },
         },
       ],
       _nested_name: "workshop_activity",
@@ -128,44 +71,50 @@ const data = {
   ],
   parentRows: [
     {
+      name: "relax",
+      value: "relax_5",
+      type: "set_variable",
+      _nested_name: "relax.relax",
+    },
+    {
       type: "nested_properties",
       name: "workshop_activity",
       rows: [
         {
           name: "intro_text",
-          value: "It’s great to have you here.",
+          value: "Let's try it out and do a short relaxation activity together!",
           type: "set_variable",
-          _nested_name: "welcome_individual.workshop_activity.intro_text",
+          _nested_name: "relax.workshop_activity.intro_text",
         },
         {
-          type: "nested_properties",
-          name: "content_box",
-          rows: [
-            {
-              name: "reply_happy",
-              value: "Wonderful, I am so happy things are going well.",
-              type: "set_variable",
-              _nested_name: "welcome_individual.workshop_activity.content_box.reply_happy",
-            },
-            {
-              name: "reply_ok",
-              value:
-                "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
-              type: "set_variable",
-              _nested_name: "welcome_individual.workshop_activity.content_box.reply_ok",
-            },
-            {
-              name: "reply_sad",
-              value:
-                "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
-              type: "set_variable",
-              _nested_name: "welcome_individual.workshop_activity.content_box.reply_sad",
-            },
-          ],
-          _nested_name: "welcome_individual.workshop_activity.content_box",
+          name: "outro_text",
+          value: "Well done! Try to do this every day.",
+          type: "set_variable",
+          _nested_name: "relax.workshop_activity.outro_text",
+        },
+        {
+          name: "outro_habit_text",
+          value: "Every time you do a relax, click the ParentPoint and celebrate your success",
+          hidden: false,
+          type: "set_variable",
+          _nested_name: "relax.workshop_activity.outro_habit_text",
+          _dynamicFields: {
+            value: [
+              {
+                fullExpression:
+                  "Every time you do a relax, click the @global.parent_point and celebrate your success",
+                matchedExpression: "@global.parent_point",
+                type: "global",
+                fieldName: "parent_point",
+              },
+            ],
+          },
+          _dynamicDependencies: {
+            "@global.parent_point": ["value"],
+          },
         },
       ],
-      _nested_name: "welcome_individual.workshop_activity",
+      _nested_name: "relax.workshop_activity",
     },
   ],
 };
@@ -244,19 +193,25 @@ function mergeNestedTemplateRows(
 ): FlowTypes.TemplateRow[] {
   const primaryHashmap = arrayToHashmap(primary, "name");
   const secondaryHashmap = arrayToHashmap(secondary, "name");
-  const mergedHashmap = secondaryHashmap;
-  Object.entries(primaryHashmap).forEach(([key, primaryRow]) => {
-    const secondaryRow = secondaryHashmap[key];
-    if (secondaryRow) {
-      mergedHashmap[key] = { ...secondaryRow, ...primaryRow };
-      if (mergedHashmap[key].rows) {
-        mergedHashmap[key].rows = mergeNestedTemplateRows(primaryRow.rows, secondaryRow.rows);
-      }
-    } else {
-      mergedHashmap[key] = primaryRow;
+  const merged = [];
+  // make sure all secondary rows exist are overridden
+  secondary.forEach((secondaryRow) => {
+    const primaryRow = primaryHashmap[secondaryRow.name];
+    if (primaryRow) {
+      secondaryRow = { ...secondaryRow, ...primaryRow };
+    }
+    if (secondaryRow.rows) {
+      secondaryRow.rows = mergeNestedTemplateRows(primaryRow.rows, secondaryRow.rows);
+    }
+    merged.push(secondaryRow);
+  });
+  // make sure all primary rows exist
+  Object.keys(primaryHashmap).forEach((name) => {
+    if (!secondaryHashmap[name]) {
+      merged.push(primaryHashmap[name]);
     }
   });
-  return Object.values(mergedHashmap);
+  return merged;
 }
 
 export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: T } {
