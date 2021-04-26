@@ -402,8 +402,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     const processedRows = [];
     rows.forEach((preProcessedRow) => {
       const { _nested_name } = preProcessedRow;
-      if (this.localVariables[_nested_name]) {
-      }
+      // TODO - CC 2021-04-26 - decide if required, seems to break
+      // if (this.localVariables[_nested_name]) {
+      // log("[Local Override]", this.localVariables[_nested_name]);
+      // preProcessedRow = this.localVariables[_nested_name];
+      // }
 
       log_group("[Row start]", preProcessedRow.name, { preProcessedRow });
 
