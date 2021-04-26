@@ -84,11 +84,11 @@ export class TmplSliderComponent
     this.triggerActions("changed");
   }
 
-  changeValue() {
+  async changeValue() {
     this.rangeBarTouched = true;
     this._row.value = this.value;
-    this.setValue(`${this.value}`);
-    this.triggerActions("changed");
+    await this.setValue(`${this.value}`);
+    await this.triggerActions("changed");
   }
 
   updateConfigParams() {

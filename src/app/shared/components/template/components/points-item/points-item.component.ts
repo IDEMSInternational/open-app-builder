@@ -31,6 +31,7 @@ export class TmplParentPointBoxComponent
   assetsPrefix = "/assets/plh_assets/";
   icon_result: string;
   wasClicked: boolean = false;
+  value: number | null = 0;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
     this.getScaleFactor();
@@ -63,11 +64,12 @@ export class TmplParentPointBoxComponent
     return src.replace("//", "/");
   }
 
-  clickPointItem() {
+  async clickPointItem() {
     if (this._row.disabled) {
       return;
     }
-    this._row.value += 1;
+    this._row.value = parseInt(this._row.value) + 1;
+    this.value = this._row.value;
     this.star.nativeElement.classList.add("on-add");
     setTimeout((_) => {
       this.star.nativeElement.classList.remove("on-add");
@@ -76,7 +78,9 @@ export class TmplParentPointBoxComponent
       this.item.nativeElement.classList.add("complete");
     }
     this.wasClicked = true;
-    this.triggerActions("changed");
+    await this.setValue(`${this.value}`);
+    await this.triggerActions("click");
+    await this.triggerActions("changed");
   }
   getScaleFactor(): number {
     this.scaleFactor = this.windowWidth / 420 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
