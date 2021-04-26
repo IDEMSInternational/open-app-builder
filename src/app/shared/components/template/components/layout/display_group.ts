@@ -39,10 +39,6 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       .parent_point > .offset > :nth-child(1n) {
         flex: 1 0 45%;
       }
-      .transparent {
-        border: none !important;
-        background: transparent !important;
-      }
     `,
   ],
 })
