@@ -105,10 +105,10 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.state.clickRightButton();
   }
 
-  async openPicker() {
+  openPicker() {
     if (this.isTimerEditable) {
       const numColumns = 4;
-      const columnOptions = await this.timeValues();
+      const columnOptions = this.timeValues();
       this.pickerController
         .create({
           mode: this.platform.is("android") ? "md" : "ios" || "ios",
