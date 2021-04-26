@@ -1,9 +1,4 @@
-<div
-  [className]="'template-container ' + localVariables?.theme_name"
-  [attr.data-theme]="localVariables._theme || 'default'"
-  [attr.data-debug]="debugMode"
-  [attr.data-isChild]="parent ? true : false"
->
+<div class="template-container" [attr.data-theme]="'default'" [attr.data-debug]="debugMode">
   <!-- Debug Toggle -->
   <div class="debug-container" [attr.data-enabled]="debugMode">
     <div *ngIf="debugMode && !parent" class="debug-name">
@@ -14,11 +9,10 @@
 
   <!-- Template Component-->
   <plh-template-component
-    [style.height]="onlyOneChild ? '100%' : null"
-    *ngFor="let row of template.rows"
+    *ngFor="let row of renderedRows; trackBy: trackByRow"
     class="row"
     [row]="row"
     [parent]="this"
-    ngForTrackBy="trackByRow"
+    [attr.data-name]="row.name"
   ></plh-template-component>
 </div>

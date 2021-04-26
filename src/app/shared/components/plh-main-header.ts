@@ -14,15 +14,14 @@ import { Subscription } from "rxjs";
         </ion-button>
       </ion-buttons>
       <ion-title style="text-align: center" routerLink="/">
-        <ion-icon src="assets/images/star.svg" style="margin: -1px 8px"></ion-icon>
+        <!-- <ion-icon src="assets/images/star.svg" style="margin: -1px 8px"></ion-icon> -->
         <span>{{ title }}</span>
       </ion-title>
       <ion-buttons slot="end">
-        <plh-debug-toggle *ngIf="showDebugToggle"></plh-debug-toggle>
-        <ion-button routerLink="/reminders"
+        <!-- <ion-button routerLink="/reminders"
           ><ion-icon slot="icon-only" name="notifications-outline"></ion-icon
-        ></ion-button>
-        <ion-button routerLink="/template"
+        ></ion-button> -->
+        <ion-button routerLink="/template" *ngIf="isSettingsPage"
           ><ion-icon slot="icon-only" name="list-circle-outline"></ion-icon
         ></ion-button>
       </ion-buttons>
@@ -31,6 +30,7 @@ import { Subscription } from "rxjs";
 })
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   isHomePage = true;
+  isSettingsPage = false;
   @Input() title: string = "ParentApp";
   // TODO - link debug toggle to build environment or advanced setting (hide for general users)
   showDebugToggle = true;
@@ -63,6 +63,7 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
     const HOME_ROUTE = "/home";
     // track if home page, allowing case where hosted from subdirectory (e.g. our pr preview system)
     this.isHomePage = location.pathname.endsWith(HOME_ROUTE);
+    this.isSettingsPage = location.pathname.endsWith("/settings");
   }
 
   onBackButtonClick() {

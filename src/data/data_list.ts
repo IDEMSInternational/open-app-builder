@@ -139,7 +139,10 @@
       },
       {
         "id": "collection_1",
-        "value_collection": "key1:val1; key2:val2",
+        "value_collection": {
+          "key1": "val1",
+          "key2": "val2"
+        },
         "comment": "if referring to _collection the value will already be parsed as object"
       }
     ],
