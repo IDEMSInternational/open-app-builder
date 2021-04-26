@@ -27,17 +27,23 @@ function mergeNestedTemplateRows(
 ): FlowTypes.TemplateRow[] {
   const primaryHashmap = arrayToHashmap(primary, "name");
   const secondaryHashmap = arrayToHashmap(secondary, "name");
-  const mergedHashmap = secondaryHashmap;
-  Object.entries(primaryHashmap).forEach(([key, primaryRow]) => {
-    const secondaryRow = secondaryHashmap[key];
-    if (secondaryRow) {
-      mergedHashmap[key] = { ...secondaryRow, ...primaryRow };
-      if (mergedHashmap[key].rows) {
-        mergedHashmap[key].rows = mergeNestedTemplateRows(primaryRow.rows, secondaryRow.rows);
+  const merged = [];
+  // make sure all secondary rows exist are overridden
+  secondary.forEach((secondaryRow) => {
+    const primaryRow = primaryHashmap[secondaryRow.name];
+    if (primaryRow) {
+      secondaryRow = { ...secondaryRow, ...primaryRow };
+      if (secondaryRow.rows) {
+        secondaryRow.rows = mergeNestedTemplateRows(primaryRow.rows, secondaryRow.rows);
       }
-    } else {
-      mergedHashmap[key] = primaryRow;
+    }
+    merged.push(secondaryRow);
+  });
+  // make sure all primary rows exist
+  Object.keys(primaryHashmap).forEach((name) => {
+    if (!secondaryHashmap[name]) {
+      merged.push(primaryHashmap[name]);
     }
   });
-  return Object.values(mergedHashmap);
+  return merged;
 }
