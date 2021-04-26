@@ -339,7 +339,7 @@
           {
             "type": "image",
             "name": "image_weekly_workshops",
-            "value": "plh_images/home_page/home_page_workshops.svg",
+            "value": "plh_images/home_screen/weekly_workshops.svg",
             "_nested_name": "tile_weekly_workshops.image_weekly_workshops"
           },
           {
@@ -451,7 +451,7 @@
           {
             "type": "image",
             "name": "image_parent_points",
-            "value": "plh_images/home_page/home_page_parent_points.svg",
+            "value": "plh_images/home_screen/parent_points.svg",
             "_nested_name": "tile_parent_points.image_parent_points"
           },
           {
@@ -562,7 +562,7 @@
           {
             "type": "image",
             "name": "image_parent_centre",
-            "value": "plh_images/home_page/home_page_parent_center.svg",
+            "value": "plh_images/home_screen/parent_centre.svg",
             "_nested_name": "tile_parent_centre.image_parent_centre"
           },
           {
@@ -7765,6 +7765,9 @@
         "type": "image",
         "name": "image_src",
         "hidden": true,
+        "style_list": [
+          "max-height: 150px"
+        ],
         "_nested_name": "image_src"
       },
       {
@@ -12182,10 +12185,10 @@
             ],
             "rows": [
               {
-                "name": "use_uncompleted_arrow",
+                "name": "use_uncompleted_chevron",
                 "value": false,
                 "type": "set_variable",
-                "_nested_name": "intro.intro_nav_buttons.use_uncompleted_arrow"
+                "_nested_name": "intro.intro_nav_buttons.use_uncompleted_chevron"
               },
               {
                 "name": "button_completed",
@@ -12576,16 +12579,16 @@
     "status": "released",
     "rows": [
       {
-        "name": "use_completed_arrow",
+        "name": "use_completed_chevron",
         "value": false,
         "type": "set_variable",
-        "_nested_name": "use_completed_arrow"
+        "_nested_name": "use_completed_chevron"
       },
       {
-        "name": "use_uncompleted_arrow",
+        "name": "use_uncompleted_chevron",
         "value": true,
         "type": "set_variable",
-        "_nested_name": "use_uncompleted_arrow"
+        "_nested_name": "use_uncompleted_chevron"
       },
       {
         "name": "display_back",
@@ -12626,7 +12629,7 @@
         "rows": [
           {
             "type": "round_button",
-            "name": "button_uncompleted_arrow",
+            "name": "button_uncompleted_chevron",
             "action_list": [
               {
                 "trigger": "click",
@@ -12638,7 +12641,7 @@
                 "_cleaned": "click | emit:uncompleted"
               }
             ],
-            "hidden": "(!@local.use_uncompleted_arrow) || (!@local.display_back)",
+            "hidden": "(!@local.use_uncompleted_chevron) || (!@local.display_back)",
             "parameter_list": {
               "icon_src": "chevron-back",
               "style": "navigation"
@@ -12646,17 +12649,17 @@
             "style_list": [
               "flex:1"
             ],
-            "_nested_name": "display_group.button_uncompleted_arrow",
+            "_nested_name": "display_group.button_uncompleted_chevron",
             "_dynamicFields": {
               "hidden": [
                 {
-                  "fullExpression": "(!@local.use_uncompleted_arrow) || (!@local.display_back)",
-                  "matchedExpression": "@local.use_uncompleted_arrow",
+                  "fullExpression": "(!@local.use_uncompleted_chevron) || (!@local.display_back)",
+                  "matchedExpression": "@local.use_uncompleted_chevron",
                   "type": "local",
-                  "fieldName": "use_uncompleted_arrow"
+                  "fieldName": "use_uncompleted_chevron"
                 },
                 {
-                  "fullExpression": "(!@local.use_uncompleted_arrow) || (!@local.display_back)",
+                  "fullExpression": "(!@local.use_uncompleted_chevron) || (!@local.display_back)",
                   "matchedExpression": "@local.display_back",
                   "type": "local",
                   "fieldName": "display_back"
@@ -12664,7 +12667,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@local.use_uncompleted_arrow": [
+              "@local.use_uncompleted_chevron": [
                 "hidden"
               ],
               "@local.display_back": [
@@ -12673,9 +12676,8 @@
             }
           },
           {
-            "type": "button",
+            "type": "round_button",
             "name": "button_uncompleted",
-            "value": "@global.back_button",
             "action_list": [
               {
                 "trigger": "click",
@@ -12687,8 +12689,9 @@
                 "_cleaned": "click | emit:uncompleted"
               }
             ],
-            "hidden": "@local.use_uncompleted_arrow || (!@local.display_back)",
+            "hidden": "@local.use_uncompleted_chevron || (!@local.display_back)",
             "parameter_list": {
+              "icon_src": "caret-back",
               "style": "navigation"
             },
             "style_list": [
@@ -12696,23 +12699,15 @@
             ],
             "_nested_name": "display_group.button_uncompleted",
             "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@global.back_button",
-                  "matchedExpression": "@global.back_button",
-                  "type": "global",
-                  "fieldName": "back_button"
-                }
-              ],
               "hidden": [
                 {
-                  "fullExpression": "@local.use_uncompleted_arrow || (!@local.display_back)",
-                  "matchedExpression": "@local.use_uncompleted_arrow",
+                  "fullExpression": "@local.use_uncompleted_chevron || (!@local.display_back)",
+                  "matchedExpression": "@local.use_uncompleted_chevron",
                   "type": "local",
-                  "fieldName": "use_uncompleted_arrow"
+                  "fieldName": "use_uncompleted_chevron"
                 },
                 {
-                  "fullExpression": "@local.use_uncompleted_arrow || (!@local.display_back)",
+                  "fullExpression": "@local.use_uncompleted_chevron || (!@local.display_back)",
                   "matchedExpression": "@local.display_back",
                   "type": "local",
                   "fieldName": "display_back"
@@ -12720,10 +12715,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@global.back_button": [
-                "value"
-              ],
-              "@local.use_uncompleted_arrow": [
+              "@local.use_uncompleted_chevron": [
                 "hidden"
               ],
               "@local.display_back": [
@@ -12746,7 +12738,7 @@
                 "_cleaned": "click | emit:completed"
               }
             ],
-            "hidden": "@local.use_completed_arrow",
+            "hidden": "@local.use_completed_chevron",
             "parameter_list": {
               "style": "navigation"
             },
@@ -12765,10 +12757,10 @@
               ],
               "hidden": [
                 {
-                  "fullExpression": "@local.use_completed_arrow",
-                  "matchedExpression": "@local.use_completed_arrow",
+                  "fullExpression": "@local.use_completed_chevron",
+                  "matchedExpression": "@local.use_completed_chevron",
                   "type": "local",
-                  "fieldName": "use_completed_arrow"
+                  "fieldName": "use_completed_chevron"
                 }
               ]
             },
@@ -12776,14 +12768,14 @@
               "@global.done_button": [
                 "value"
               ],
-              "@local.use_completed_arrow": [
+              "@local.use_completed_chevron": [
                 "hidden"
               ]
             }
           },
           {
             "type": "round_button",
-            "name": "button_completed_arrow",
+            "name": "button_completed_chevron",
             "action_list": [
               {
                 "trigger": "click",
@@ -12795,7 +12787,7 @@
                 "_cleaned": "click | emit:completed"
               }
             ],
-            "hidden": "!@local.use_completed_arrow",
+            "hidden": "!@local.use_completed_chevron",
             "parameter_list": {
               "icon_src": "chevron-forward",
               "style": "navigation"
@@ -12803,19 +12795,19 @@
             "style_list": [
               "flex:1"
             ],
-            "_nested_name": "display_group.button_completed_arrow",
+            "_nested_name": "display_group.button_completed_chevron",
             "_dynamicFields": {
               "hidden": [
                 {
-                  "fullExpression": "!@local.use_completed_arrow",
-                  "matchedExpression": "@local.use_completed_arrow",
+                  "fullExpression": "!@local.use_completed_chevron",
+                  "matchedExpression": "@local.use_completed_chevron",
                   "type": "local",
-                  "fieldName": "use_completed_arrow"
+                  "fieldName": "use_completed_chevron"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@local.use_completed_arrow": [
+              "@local.use_completed_chevron": [
                 "hidden"
               ]
             }
@@ -13364,10 +13356,10 @@
         ],
         "rows": [
           {
-            "name": "use_completed_arrow",
+            "name": "use_completed_chevron",
             "value": true,
             "type": "set_variable",
-            "_nested_name": "nav_buttons.use_completed_arrow"
+            "_nested_name": "nav_buttons.use_completed_chevron"
           }
         ],
         "_nested_name": "nav_buttons"
@@ -13940,6 +13932,114 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "splash_screen",
+    "status": "released",
+    "rows": [
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_1",
+            "value": "plh_images/first_app_launch/frustrated.svg",
+            "_nested_name": "animated_section.image_1"
+          },
+          {
+            "type": "text",
+            "name": "slogan_1",
+            "value": "Bringing teenagers up is hard",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_1"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_2",
+            "value": "plh_images/first_app_launch/loving_parent.svg",
+            "_nested_name": "animated_section.image_2"
+          },
+          {
+            "type": "text",
+            "name": "slogan_2",
+            "value": "You are the best parent your teen could have",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_2"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_3",
+            "value": "plh_images/first_app_launch/parent_group.svg",
+            "_nested_name": "animated_section.image_3"
+          },
+          {
+            "type": "text",
+            "name": "slogan_3",
+            "value": "Join the 152 million parents who have used our resources",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_3"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "text",
+            "value": "Powered by Parenting for Lifelong Health and partners",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "name": "text",
+            "_nested_name": "animated_section.text"
+          },
+          {
+            "type": "image",
+            "name": "logo_1",
+            "value": "plh_images/logos/plh_light.svg",
+            "_nested_name": "animated_section.logo_1"
+          },
+          {
+            "type": "image",
+            "name": "logo_2",
+            "value": "plh_images/logos/unicef_light.svg",
+            "_nested_name": "animated_section.logo_2"
+          },
+          {
+            "type": "image",
+            "name": "logo_3",
+            "value": "plh_images/logos/who_light.svg",
+            "_nested_name": "animated_section.logo_3"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_template_splash_screen.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "workshops_navigation_page",
     "status": "released",
     "rows": [
@@ -14361,9 +14461,24 @@
             "rows": [
               {
                 "name": "button_completed",
-                "value": "Check it out! ",
+                "value": "@global.check_it_out_button",
                 "type": "set_variable",
-                "_nested_name": "workshop_activity.intro_nav_buttons.button_completed"
+                "_nested_name": "workshop_activity.intro_nav_buttons.button_completed",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.check_it_out_button",
+                      "matchedExpression": "@global.check_it_out_button",
+                      "type": "global",
+                      "fieldName": "check_it_out_button"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.check_it_out_button": [
+                    "value"
+                  ]
+                }
               }
             ],
             "_nested_name": "workshop_activity.intro_nav_buttons"
@@ -19358,19 +19473,6 @@
           },
           {
             "type": "nested_properties",
-            "name": "intro_nav_buttons",
-            "rows": [
-              {
-                "name": "display_back",
-                "value": false,
-                "type": "set_variable",
-                "_nested_name": "workshop_activity.intro_nav_buttons.display_back"
-              }
-            ],
-            "_nested_name": "workshop_activity.intro_nav_buttons"
-          },
-          {
-            "type": "nested_properties",
             "name": "content_box",
             "value": "box_timer",
             "rows": [
@@ -19535,19 +19637,6 @@
             "hidden": false,
             "type": "set_variable",
             "_nested_name": "workshop_activity.activity_banner"
-          },
-          {
-            "type": "nested_properties",
-            "name": "intro_nav_buttons",
-            "rows": [
-              {
-                "name": "display_back",
-                "value": false,
-                "type": "set_variable",
-                "_nested_name": "workshop_activity.intro_nav_buttons.display_back"
-              }
-            ],
-            "_nested_name": "workshop_activity.intro_nav_buttons"
           },
           {
             "type": "nested_properties",
@@ -19889,19 +19978,6 @@
                 "value": "It's great to see you again! Let’s start with a song for families everywhere.",
                 "type": "set_variable",
                 "_nested_name": "watch.workshop_activity.intro_text"
-              },
-              {
-                "type": "nested_properties",
-                "name": "intro_nav_buttons",
-                "rows": [
-                  {
-                    "name": "display_back",
-                    "value": false,
-                    "type": "set_variable",
-                    "_nested_name": "watch.workshop_activity.intro_nav_buttons.display_back"
-                  }
-                ],
-                "_nested_name": "watch.workshop_activity.intro_nav_buttons"
               },
               {
                 "type": "nested_properties",
@@ -32471,16 +32547,28 @@
     "status": "released",
     "rows": [
       {
+        "type": "title",
+        "name": "title",
+        "value": "Your daily relax",
+        "parameter_list": {
+          "style": "center"
+        },
+        "_nested_name": "title"
+      },
+      {
         "type": "lottie_animation",
         "name": "lottie_src",
         "value": "lottie_animations/relax_individual.json",
         "_nested_name": "lottie_src"
       },
       {
-        "type": "title",
-        "name": "daily_relax_title",
-        "value": "Your daily relax",
-        "_nested_name": "daily_relax_title"
+        "type": "text",
+        "name": "text_1",
+        "value": "Remember to sit down and relax today - taking care of yourself is an important parenting skill.\n\nIf you like we can do a relaxation activity together now!",
+        "parameter_list": {
+          "style": "center"
+        },
+        "_nested_name": "text_1"
       },
       {
         "type": "display_group",
@@ -32488,7 +32576,7 @@
           {
             "type": "button",
             "name": "do_relax",
-            "value": "Let's go!",
+            "value": "@global.lets_go_button",
             "action_list": [
               {
                 "trigger": "click",
@@ -32519,34 +32607,25 @@
                 "_cleaned": "click | set_field:daily_relax_done:true"
               }
             ],
-            "_nested_name": "display_group.do_relax"
-          },
-          {
-            "type": "button",
-            "name": "mark_relax",
-            "value": "Done!",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "emit",
-                "args": [
-                  "completed"
-                ],
-                "_raw": "click | emit:completed",
-                "_cleaned": "click | emit:completed"
-              },
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "daily_relax_done",
-                  "true"
-                ],
-                "_raw": "click | set_field:daily_relax_done:true",
-                "_cleaned": "click | set_field:daily_relax_done:true"
-              }
-            ],
-            "_nested_name": "display_group.mark_relax"
+            "parameter_list": {
+              "style": "navigation"
+            },
+            "_nested_name": "display_group.do_relax",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.lets_go_button",
+                  "matchedExpression": "@global.lets_go_button",
+                  "type": "global",
+                  "fieldName": "lets_go_button"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.lets_go_button": [
+                "value"
+              ]
+            }
           }
         ],
         "name": "display_group",
