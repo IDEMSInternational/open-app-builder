@@ -4,13 +4,15 @@ import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.servic
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "scripts/types";
 import { getNestedProperty } from "src/app/shared/utils";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class TemplateService {
   globals = {};
-
+  private themeValue = new BehaviorSubject("passive");
+  currentTheme = this.themeValue.asObservable();
   constructor(
     private localStorageService: LocalStorageService,
     private dataService: PLHDataService,
@@ -33,13 +35,21 @@ export class TemplateService {
     });
   }
 
-  getField(key: string): string {
-    let val = this.localStorageService.getString("rp-contact-field." + key);
+  /**
+   * Retrieve fields from localstorage. These are automatically prefixed with 'rp-contact-field'
+   * and will be returned as string or boolean
+   */
+  getField(key: string) {
+    let val: any = this.localStorageService.getString("rp-contact-field." + key);
     // provide a fallback if the target variable does not exist in local storage
     if (val === null) {
       console.warn("field value not found for key:", key);
       val = `{{field.${key}}}`;
     }
+    // convert boolean strings if required
+    if (val === "true") val = true;
+    if (val === "false") val = false;
+    // console.log("[Field Retrieved]", key, val);
     return val;
   }
 
@@ -50,6 +60,14 @@ export class TemplateService {
    * available in local storage so does not require await for further processing
    * */
   setField(key: string, value: string) {
+    if (typeof value === "object") {
+      console.warn("Warning - expected string field but received", { key, value });
+      try {
+        value = JSON.stringify(value);
+      } catch (error) {
+        console.warn("string conversion failed", error);
+      }
+    }
     // write to local storage
     this.localStorageService.setString("rp-contact-field." + key, value);
 
@@ -109,6 +127,7 @@ export class TemplateService {
       })`;
       document.body.style.setProperty("--ion-dg-bg-default", dgBodyColor);
       document.body.style.setProperty("--ion-background-color", mainBgBodyColor);
+      this.themeValue.next(value[0]);
     }
   }
 }

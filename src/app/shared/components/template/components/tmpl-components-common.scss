@@ -80,6 +80,7 @@
 
 .tmpl-image-container {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   padding: 10px 0;
@@ -333,9 +334,6 @@ p {
   }
 }
 
-.plh-tmpl-comp[data-hidden="true"] {
-  display: none;
-}
 .plh-tmpl-comp[data-debug="true"] {
   display: block;
   border: 1px solid #c7c7c7;

@@ -105,7 +105,7 @@ export class TourService {
         const src = i.match(imgSrcExp);
         const finallySrc = i.replace(
           src,
-          `src="/assets/plh_assets/plh_images${src[0]
+          `src="/assets/plh_assets/${src[0]
             .split("=")[1]
             .split("")
             .filter((v) => v !== '"')

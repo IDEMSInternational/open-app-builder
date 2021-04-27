@@ -51,6 +51,28 @@ export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
 }
 
 /**
+ * Take 2 object arrays identified by a given key field, and merge rows together.
+ * In case of rows with identical keys, only one will be retained
+ *
+ * @param primaryRows set of rows given priority in case of conflict
+ * @param secondaryRows set of rows to merge into primary
+ * @param keyfield key in rows to identify conflicts
+ */
+export function mergeObjectArrays<T>(
+  primaryRows: T[],
+  secondaryRows: T[] = [],
+  keyfield: keyof T
+): T[] {
+  const secondaryHash = arrayToHashmap(secondaryRows, keyfield as string);
+  primaryRows.forEach((r) => {
+    if (r.hasOwnProperty(keyfield)) {
+      secondaryHash[r[keyfield as string]] = r;
+    }
+  });
+  return Object.values(secondaryHash);
+}
+
+/**
  * Retrieve a nested property from a json object
  * using a single path string accessor
  * (modified from https://gist.github.com/jasonrhodes/2321581)
@@ -71,6 +93,18 @@ export function getNestedProperty(obj: any, path: string) {
   }, obj);
 }
 
+export function setNestedProperty(path: string, value: any, obj = {}) {
+  let childKeys = path.split(".");
+  const currentKey = childKeys[0];
+  if (childKeys.length > 1) {
+    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
+    obj[currentKey] = { ...obj[currentKey], ...nestedValue };
+  } else {
+    obj[currentKey] = value;
+  }
+  return obj;
+}
+
 /**
  * Take a string and split into an array based on character separator.
  * Removes additional whitespace and linebreak characters and empty values
@@ -86,15 +120,21 @@ export function stringToArray(str: string = "", separator = ";") {
   );
 }
 
+export function mapToJson<T = any>(map: Map<string, any>) {
+  const json: { [key: string]: T } = {};
+  map.forEach((value, key) => (json[key] = value));
+  return json;
+}
+
 /**
  * Return a specific parameter from the row, as default type
- * (usually string, unless populated from local variables in which case could be string[])
+ * (params ending in _list will be arrays, others will be strings)
  * */
 export function getParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
-  _default: string
-): string | string[] {
+  _default: any
+): any {
   const params = row.parameter_list || {};
   return params.hasOwnProperty(name) ? params[name] : _default;
 }
@@ -103,7 +143,7 @@ export function getStringParamFromTemplateRow(
   name: string,
   _default: string
 ): string {
-  var paramValue = getParamFromTemplateRow(row, name, _default) as string;
+  const paramValue = getParamFromTemplateRow(row, name, _default) as string;
   return paramValue ? `${paramValue}` : paramValue;
 }
 
@@ -124,4 +164,16 @@ export function getBooleanParamFromTemplateRow(
 ): boolean {
   const params = row.parameter_list || {};
   return params.hasOwnProperty(name) ? params[name] === "true" : _default;
+}
+
+/**
+ * Evaluate a javascript expression in a safe context
+ * @param expression string expression, e.g. "!true", "5 - 4"
+ * @param context variables and methods that will be available in the function's `this.exampleVar` scope
+ * @throws Error if the expression is not valid within the context
+ * */
+export function evaluateJSExpression(expression: string, context = {}): any {
+  const funcString = `"use strict"; return (${expression});`;
+  const func = new Function(funcString);
+  return func.apply(context);
 }

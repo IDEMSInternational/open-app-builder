@@ -31,19 +31,19 @@ export class TmplImageComponent extends TemplateBaseComponent implements OnInit 
   imageSrc: string;
 
   @Input() set row(r: FlowTypes.TemplateRow) {
-    // const replaced = LocalVarsReplacePipe.parseMessageTemplate(
-    //   value.value,
-    //   this.parent.localVariables
-    // );
-    this.http
-      .get(this.assetsPrefix + r.value, { responseType: "arraybuffer" })
-      .toPromise()
-      .then(() => {
-        this.imageSrc = this.assetsPrefix + r.value;
-      })
-      .catch(() => {
-        this.imageSrc = r.value.replace("//", "/");
-      });
+    if (r.value) {
+      this.http
+        .get(this.assetsPrefix + r.value, { responseType: "arraybuffer" })
+        .toPromise()
+        .then(() => {
+          this.imageSrc = this.assetsPrefix + r.value;
+        })
+        .catch(() => {
+          this.imageSrc = r.value.replace("//", "/");
+        });
+    } else {
+      console.warn("No image specified", { ...r });
+    }
   }
 
   ngOnInit() {

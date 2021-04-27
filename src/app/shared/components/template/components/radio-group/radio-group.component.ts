@@ -1,9 +1,12 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   HostBinding,
   HostListener,
+  Inject,
   Input,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from "@angular/core";
@@ -15,6 +18,9 @@ import {
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
+import { takeUntil } from "rxjs/operators";
+import { ReplaySubject } from "rxjs";
+import { TemplateService } from "../../services/template.service";
 
 interface IButton {
   name: string | null;
@@ -30,11 +36,10 @@ interface IButton {
 })
 export class TmplRadioGroupComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit, OnDestroy {
+  @Input() changeTheme: EventEmitter<boolean>;
   @Input() parent: TemplateContainerComponent;
   @ViewChild("labelImage", { static: false, read: true }) labelImage: ElementRef;
-  radioBtnList: any;
-  valuesFromBtnList;
   arrayOfBtn: Array<IButton>;
   groupName: string;
   radioButtonType: string | null;
@@ -44,8 +49,10 @@ export class TmplRadioGroupComponent
   scaleFactor: number = 1;
   value: any;
   style: string;
+  destroy$ = new ReplaySubject(1);
   imageCheckedColor = "#0D3F60";
   flexWidth: string;
+  checkIfContainsStyleParameter: boolean = false;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth;
     this.getScaleFactor();
@@ -55,13 +62,15 @@ export class TmplRadioGroupComponent
     return this.scaleFactor;
   }
 
-  constructor() {
+  constructor(private templateService: TemplateService) {
     super();
   }
 
   ngOnInit() {
     this.getParams();
     this.getScaleFactor();
+    this.setAutoBackground();
+    this.checkTheme();
   }
 
   getScaleFactor(): number {
@@ -73,48 +82,67 @@ export class TmplRadioGroupComponent
   }
 
   getParams() {
-    this.radioBtnList = getParamFromTemplateRow(this._row, "answer_list", null);
-    this.radioButtonType = getStringParamFromTemplateRow(
-      this._row,
-      "radio_button_type",
-      "btn_text"
-    );
+    const row = this._row;
+    console.log("getting params", row);
+
+    // extract properties from parameters
+    this.radioButtonType = getParamFromTemplateRow(row, "radio_button_type", "btn_text");
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
-    this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.checkIfContainsStyleParameter =
+      this.style.includes("active") ||
+      this.style.includes("passive") ||
+      this.style.includes("transparent");
     this.imageCheckedColor = this.style === "active" ? "#f89b2d" : "#0D3F60";
     this.windowWidth = window.innerWidth;
-    if (this.radioBtnList) {
-      this.valuesFromBtnList = this.radioBtnList.split(",").filter((item) => item !== "");
-      this.createArrayBtnElement();
-    }
+
+    // convert string answer lists to formatted objects
+    const answer_list: string[] = getParamFromTemplateRow(this._row, "answer_list", []);
+    this.createArrayBtnElement(answer_list);
+
     this.getFlexWidth();
-    // Temporary fix to give appropriate group names to radiobutton
-    // was previously _row.name
-    // but this is incorrect because of template nesting meaning these names are
-    // not unique on a page
-    // not sure what the correct implementation should be. It could be the
-    // full name with template stack, a counter on the row name or a unique random id
-    this.groupName = Math.random().toString();
+    this.groupName = this._row._nested_name;
   }
 
-  createArrayBtnElement() {
-    this.arrayOfBtn = this.valuesFromBtnList.map((item) => {
+  public async handleRadioButtonClick(selectedValue: string) {
+    await this.setValue(selectedValue);
+    this.triggerActions("changed");
+  }
+
+  /**
+   * Answer lists are formatted as strings with to indicate properties, e.g.
+   * [
+   * "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+   * "name:unhappy | image:plh_images/stickers/faces/unhappy.svg"
+   * ]
+   * Convert to an object array, with key value pairs extracted from the string values
+   */
+  createArrayBtnElement(answer_list: string[]) {
+    this.arrayOfBtn = answer_list.map((item) => {
       const obj: IButton = {
         text: null,
         image: null,
         name: null,
         image_checked: null,
       };
-      item.split("|").map((values) => {
-        var valChunks = values.split(":");
-        if (valChunks.length > 1) {
-          obj[valChunks[0].trim()] = valChunks[1].trim();
+      const stringProperties = item.split("|");
+      stringProperties.forEach((s) => {
+        const [field, value] = s.split(":").map((v) => v.trim());
+        if (field && value) {
+          switch (field) {
+            case "image":
+              obj[field] = this.getPathImg(value);
+              break;
+            case "image_checked":
+              obj[field] = this.getPathImg(value);
+              break;
+
+            default:
+              obj[field] = value;
+              break;
+          }
         }
       });
-      obj.image = obj.image ? this.getPathImg(obj.image) : obj.image;
-      obj.image_checked = obj.image_checked
-        ? this.getPathImg(obj.image_checked)
-        : obj.image_checked;
       return obj;
     });
     this.arrayOfBtn.forEach((item) => {
@@ -128,13 +156,35 @@ export class TmplRadioGroupComponent
     });
   }
 
-  getPathImg(path): string {
+  getPathImg(path: string): string {
     const src = this.baseSrcAssets + path;
     return src.replace("//", "/");
   }
 
-  automaticallyRadioBtnType(type: string) {}
   getFlexWidth() {
     this.flexWidth = `0 1 ${100 / this.options_per_row - 7}%`;
+  }
+
+  setAutoBackground() {
+    if (!this.checkIfContainsStyleParameter) {
+      const currentBgColor = document.body.style
+        .getPropertyValue("--ion-background-color")
+        .toLocaleLowerCase();
+      this.style = currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
+    }
+  }
+
+  checkTheme() {
+    return (
+      !this.checkIfContainsStyleParameter &&
+      this.templateService.currentTheme
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((value) => (this.style = value))
+    );
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

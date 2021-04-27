@@ -1,13 +1,13 @@
 import { FlowTypes } from "../../../../types";
 import { DefaultParser } from "../default/default.parser";
-import { parsePLHListString } from "../utils";
+import { flattenJson, parsePLHCollectionString, parsePLHListString } from "../utils";
 
 export class TemplateParser extends DefaultParser {
   constructor() {
     super();
     this.groupSuffix = "";
   }
-  postProcess(row: FlowTypes.TemplateRow) {
+  postProcess(row: FlowTypes.TemplateRow, nestedPath?: string) {
     // set all empty row and nested row types to 'set_variable' type
     if (!row.type) {
       row.type = "set_variable";
@@ -16,14 +16,31 @@ export class TemplateParser extends DefaultParser {
     if (row.type === ("template_group" as any)) {
       row.type = "template";
     }
-    // when unique template name not specified assume namespacing with template value (flow_name)
-    if (row.type === "template" && !row.name) {
-      row.name = row.value;
+    // when unique name not specified assume namespacing with template value (flow_name)
+    // or the row type for non-templates
+    if (!row.name) {
+      if (row.type === "template") {
+        row.name = row.value;
+      } else {
+        row.name = row.type;
+      }
     }
-    // convert any variables (local/global) list strings to array
-    if (row.name?.includes("_list") && row.value) {
-      row.value = parsePLHListString(row.value);
+    // track path to row when nested
+    row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
+
+    // convert any variables (local/global) list or collection strings
+    // ignore rows which reference dynamic values (e.g. @local.some_var)
+    if (row.value && typeof row.value === "string" && !row.value.includes("@")) {
+      if (row.name?.includes("_list") && row.value && typeof row.value === "string") {
+        row.value = parsePLHListString(row.value);
+      }
+      if (row.name?.includes("_collection") && row.value && typeof row.value === "string") {
+        row.value = parsePLHCollectionString(row.value);
+      }
     }
+    // remove any comments
+    delete row["comments"];
+
     // parse action list
     if (row.action_list) {
       row.action_list = row.action_list
@@ -33,15 +50,16 @@ export class TemplateParser extends DefaultParser {
     if (row.parameter_list) {
       row.parameter_list = this.parseParameterList(row.parameter_list as any);
     }
-    // convert boolean to strings (easier for future processing, as most update functions typically return strings)
-    for (let key of Object.keys(row)) {
-      if (typeof row[key] === "boolean") {
-        row[key] = `${row[key]}`;
-      }
+    // extract dynamic fields for runtime evaluation
+    const dynamicFields = this.extractDynamicFields(row);
+    if (dynamicFields) {
+      row._dynamicFields = dynamicFields;
+      row._dynamicDependencies = this.extractDynamicDependencies(dynamicFields);
     }
+
     // handle nested rows in same way
     if (row.rows) {
-      row.rows = row.rows.map((r) => this.postProcess(r));
+      row.rows = row.rows.map((r) => this.postProcess(r, row._nested_name));
     }
     return row;
   }
@@ -100,7 +118,7 @@ export class TemplateParser extends DefaultParser {
     return { trigger, action_id, args, _raw, _cleaned }; */
   }
 
-  parseParameterList(parameterList: string[]) {
+  private parseParameterList(parameterList: string[]) {
     const parameterObj: FlowTypes.TemplateRow["parameter_list"] = {};
     parameterList.forEach((p) => {
       let [key, value] = p.split(":").map((str) => str.trim()) as any[];
@@ -111,6 +129,63 @@ export class TemplateParser extends DefaultParser {
       parameterObj[key] = value;
     });
     return parameterObj;
+  }
+
+  /**
+   * Process each column specified in VARIABLE_FIELDS, to check whether there are any references to
+   * dynamic fields, such as @local.someVar. These can appear nested within objects or arrays so requires
+   * recursive iteration
+   *
+   * Store these references in a separate object so they can be evaluated at runtime
+   */
+  private extractDynamicFields(data: any) {
+    let dynamicFields = {};
+    switch (typeof data) {
+      case "object":
+        // simply convert array to object to handle in next case
+        // ie. ["a","b"] => {0: "a", 1: "b"}
+        if (Array.isArray(data)) {
+          data = _arrayToObject(data);
+        }
+        if (data !== null) {
+          // data is a json-like object
+          Object.entries(data).forEach(([key, value]) => {
+            // skip processing some columns (remember these can be nested in other objects like parameter_list)
+            if (!["comments", "_dynamicFields"].includes(key)) {
+              const nestedDynamic = this.extractDynamicFields(value);
+              if (nestedDynamic) {
+                dynamicFields[key] = nestedDynamic;
+              }
+            }
+          });
+        }
+        break;
+      case "string":
+        const dynamicEvaluators = _extractDynamicEvaluators(data as string);
+        if (dynamicEvaluators) {
+          return dynamicEvaluators;
+        }
+    }
+    // nested dynamic fields are managed in the row themselves
+    if (dynamicFields.hasOwnProperty("rows")) {
+      delete dynamicFields["rows"];
+    }
+    // only return is something has been assigned
+    if (Object.keys(dynamicFields).length > 0) {
+      return dynamicFields;
+    }
+  }
+
+  private extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow["_dynamicFields"]) {
+    const dynamicDependencies = {};
+    const flatFields = flattenJson<FlowTypes.TemplateRowDynamicEvaluator[]>(dynamicFields);
+    Object.entries(flatFields).forEach(([key, fields]) => {
+      fields.forEach((field) => {
+        const deps = dynamicDependencies[field.matchedExpression] || [];
+        dynamicDependencies[field.matchedExpression] = [...deps, key];
+      });
+    });
+    return dynamicDependencies;
   }
 }
 
@@ -135,4 +210,46 @@ function _handleTextExceptions(text: string) {
     return regex.test(text);
   });
   return text;
+}
+
+function _extractDynamicEvaluators(
+  fullExpression: string
+): FlowTypes.TemplateRowDynamicEvaluator[] | null {
+  // match fields such as @local.someField
+  // deeper nesting will be need to be handled after evaluation as part of JSEvaluation (e.g. @local.somefield.nestedProperty)
+  // group 1: @local, @fields etc.
+  // group 2: property of group, e.g. @local.'someVar'
+  // group 3: trailing evaluation, e.g. @local.someVar'.nestedvar.length'
+  const regex = /@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
+  let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
+  if (typeof fullExpression === "string") {
+    let match: RegExpExecArray;
+    // run recursive match for all dynamic expressions
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#finding_successive_matches
+    /* eslint-disable no-cond-assign */
+    while ((match = regex.exec(fullExpression)) !== null) {
+      const [matchedExpression, type, fieldName] = match as any[];
+      allMatches.push({ fullExpression, matchedExpression, type, fieldName });
+    }
+    // expect the number of match statements to match the total number of @ characters (replace all non-@)
+    // provide a warning if this is not the case
+    const expectedMatchLength = fullExpression.replace(/[^@]/g, "").length;
+    if (allMatches.length !== expectedMatchLength) {
+      console.warn(
+        `Expected ${expectedMatchLength} dynamic matches but recorded ${allMatches.length}`,
+        fullExpression,
+        allMatches
+      );
+    }
+  }
+  if (allMatches.length > 0) {
+    return allMatches;
+  }
+  return null;
+}
+
+function _arrayToObject(arr: any[]) {
+  const obj = {};
+  arr.forEach((el, i) => (obj[i] = el));
+  return obj;
 }

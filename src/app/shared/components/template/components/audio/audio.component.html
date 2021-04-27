@@ -33,7 +33,7 @@
   </div>
   <div class="time">
     <div class="time-value">
-      {{ currentTimeSong | date: "mm:ss" }}
+      {{ +currentTimeSong * 1000 | date: "mm:ss" }}
     </div>
     <div class="time-value">
       {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}

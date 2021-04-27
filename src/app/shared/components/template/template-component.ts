@@ -74,6 +74,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
    * when updated from parent changes will automatically propogate to child
    */
   @Input() row: FlowTypes.TemplateRow;
+
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
 
@@ -102,17 +103,15 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
-    // console.log(`[${this.row.name}]`, "render row");
+    // console.log(`[${row.name}]`, "render row");
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {
       case "template":
-        return this.row.hidden === "true"
-          ? null
-          : this.renderTemplateComponent(TemplateContainerComponent);
+        return this.renderTemplateComponent(TemplateContainerComponent, row);
       default:
         const displayComponent = TEMPLATE_COMPONENT_MAPPING[row.type];
         if (displayComponent) {
-          this.renderDisplayComponent(displayComponent);
+          this.renderDisplayComponent(displayComponent, row);
         } else {
           // not all components have mapping, for now just log warning
           console.warn("[tmpl.component] - skipped type", row);
@@ -120,6 +119,12 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     }
   }
 
+  /**
+   * CC  2021-04-18
+   * TODO - this code looks pretty long and specific, so likely best reviewed
+   * and moved into own service
+   * Also assume more could be handle with stylesheets instead of specific style
+   */
   private setStyleList() {
     const styles = {};
     if (this.row.style_list) {
@@ -159,8 +164,8 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
             el_container = el_component.parentElement.closest("plh-template-container");
           }
         } catch (ex) {
+          console.error("navigation style settings exception");
           console.error(ex);
-          console.log("navigation style settings exception");
         }
       }
     }
@@ -170,19 +175,22 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   /** Create and render a nested template component */
-  private renderTemplateComponent(component: typeof TemplateContainerComponent) {
+  private renderTemplateComponent(
+    component: typeof TemplateContainerComponent,
+    row: FlowTypes.TemplateRow
+  ) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
     const factory = this.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainerRef.createComponent(factory);
     // assign input variables (note template name taken from the row's value column)
-    componentRef.instance.row = this.row;
+    componentRef.instance.row = row;
     componentRef.instance.parent = this.parent;
-    componentRef.instance.name = this.row.name;
-    componentRef.instance.templatename = this.row.value;
+    componentRef.instance.name = row.name;
+    componentRef.instance.templatename = row.value;
   }
 
   /** Create and render a common display component */
-  private renderDisplayComponent(component: Type<ITemplateRowProps>) {
+  private renderDisplayComponent(component: Type<ITemplateRowProps>, row: FlowTypes.TemplateRow) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
     const factory = this.componentFactoryResolver.resolveComponentFactory<ITemplateRowProps>(
       component
@@ -190,6 +198,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     const componentRef = viewContainerRef.createComponent(factory);
     // assign input variables
     componentRef.instance.parent = this.parent;
-    componentRef.instance.row = this.row;
+    componentRef.instance.row = row;
   }
 }

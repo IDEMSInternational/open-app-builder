@@ -36,16 +36,16 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     }
     const action_list = this._row.action_list || [];
     const actionsForTrigger = action_list.filter((a) => a.trigger === trigger);
-    this.parent.handleActions(actionsForTrigger, this._row.name);
+    return this.parent.handleActions(actionsForTrigger, this._row);
   }
 
   /** Update the current value of the row by setting a local variable that matches */
   setValue(value: any) {
     const action: FlowTypes.TemplateRowAction = {
       action_id: "set_local",
-      args: [this._row.name, value],
+      args: [this._row._nested_name, value],
       trigger: "click",
     };
-    return this.parent.handleActions([action], this._row.name);
+    return this.parent.handleActions([action], this._row);
   }
 }

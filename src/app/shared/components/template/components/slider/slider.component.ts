@@ -80,14 +80,15 @@ export class TmplSliderComponent
     this.no_value = !this.no_value;
     this.rangeBarTouched = !this.rangeBarTouched;
     this.disabled = !this.disabled;
-    this._row.value = this.no_value ? this.no_value_text : this.value;
+    this._row.value = this.no_value ? this.no_value_text : "null";
     this.triggerActions("changed");
   }
 
-  changeValue() {
+  async changeValue() {
     this.rangeBarTouched = true;
     this._row.value = this.value;
-    this.triggerActions("changed");
+    await this.setValue(`${this.value}`);
+    await this.triggerActions("changed");
   }
 
   updateConfigParams() {

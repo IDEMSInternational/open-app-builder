@@ -92,6 +92,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   modifyRowSetter(row: FlowTypes.TemplateRow) {
     if (Array.isArray(row?.value)) {
       this.templateNames = row.value;
+      row._debug_name = this.templateNames[this.sectionIndex];
     }
     return row;
   }
@@ -118,6 +119,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
 
   goToSection(index: number) {
     this.sectionIndex = index;
+    this._row._debug_name = this.templateNames[index];
     this.updateSectionProgress();
   }
 
@@ -141,10 +143,10 @@ export class NavGroupComponent extends TemplateLayoutComponent {
             action_id: "set_field",
             args: [progressField, "" + percentDone],
             trigger: "completed",
-            _triggeredBy: "nav_group",
+            _triggeredBy: this._row,
           },
         ],
-        "nav_group"
+        this._row
       );
     } else {
       console.warn("No progress field", progressField);
