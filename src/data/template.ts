@@ -11080,109 +11080,81 @@
     "status": "released",
     "rows": [
       {
-        "name": "video_src",
+        "name": "progress_bar_value",
         "type": "set_variable",
-        "_nested_name": "video_src"
+        "_nested_name": "progress_bar_value"
       },
       {
-        "name": "video_title",
-        "value": "Video",
+        "name": "progress_bar_num_items",
         "type": "set_variable",
-        "_nested_name": "video_title"
+        "_nested_name": "progress_bar_num_items"
       },
       {
-        "name": "video_help",
+        "name": "progress_bar",
+        "value": "@local.progress_bar_value",
+        "parameter_list": {
+          "num_items": "@local.progress_bar_num_items"
+        },
         "type": "set_variable",
-        "_nested_name": "video_help"
-      },
-      {
-        "type": "template",
-        "name": "widget_video",
-        "value": "widget_video",
-        "rows": [
-          {
-            "name": "video_src",
-            "value": "plh_video/lets_slow_down.mp4",
-            "type": "set_variable",
-            "_nested_name": "widget_video.video_src"
-          },
-          {
-            "name": "title",
-            "value": "@local.video_title",
-            "type": "set_variable",
-            "_nested_name": "widget_video.title",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.video_title",
-                  "matchedExpression": "@local.video_title",
-                  "type": "local",
-                  "fieldName": "video_title"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.video_title": [
-                "value"
-              ]
+        "_nested_name": "progress_bar",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.progress_bar_value",
+              "matchedExpression": "@local.progress_bar_value",
+              "type": "local",
+              "fieldName": "progress_bar_value"
             }
-          },
-          {
-            "name": "help",
-            "value": "@local.video_help",
-            "type": "set_variable",
-            "_nested_name": "widget_video.help",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.video_help",
-                  "matchedExpression": "@local.video_help",
-                  "type": "local",
-                  "fieldName": "video_help"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.video_help": [
-                "value"
-              ]
-            }
+          ],
+          "parameter_list": {
+            "num_items": [
+              {
+                "fullExpression": "@local.progress_bar_num_items",
+                "matchedExpression": "@local.progress_bar_num_items",
+                "type": "local",
+                "fieldName": "progress_bar_num_items"
+              }
+            ]
           }
-        ],
-        "_nested_name": "widget_video"
+        },
+        "_dynamicDependencies": {
+          "@local.progress_bar_value": [
+            "value"
+          ],
+          "@local.progress_bar_num_items": [
+            "parameter_list.num_items"
+          ]
+        }
       },
       {
-        "name": "bottom_text",
-        "hidden": true,
+        "name": "progress_field_name",
         "type": "set_variable",
-        "_nested_name": "bottom_text"
+        "_nested_name": "progress_field_name"
       },
       {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
+        "type": "nav_group",
+        "name": "nav_template_list",
+        "parameter_list": {
+          "progress_field": "@local.progress_field_name"
+        },
+        "_nested_name": "nav_template_list",
+        "_dynamicFields": {
+          "parameter_list": {
+            "progress_field": [
+              {
+                "fullExpression": "@local.progress_field_name",
+                "matchedExpression": "@local.progress_field_name",
+                "type": "local",
+                "fieldName": "progress_field_name"
+              }
+            ]
           }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
+        },
+        "_dynamicDependencies": {
+          "@local.progress_field_name": [
+            "parameter_list.progress_field"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_surveys.xlsx"
