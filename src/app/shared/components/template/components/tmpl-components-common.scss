@@ -212,7 +212,7 @@ p {
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
-  background: var(--ion-banner-primary);
+  background: var(--ion-dg-bg-default);
   .offset {
     margin-bottom: -30px !important;
   }
@@ -224,12 +224,6 @@ p {
       }
     }
   }
-  &.active {
-    background: var(--ion-banner-secondary);
-  }
-  &.passive {
-    background: var(--ion-banner-primary);
-  }
 }
 
 .banner_short {
@@ -237,8 +231,8 @@ p {
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
-  background: var(--ion-banner-primary);
   padding: 0 24px;
+  background: var(--ion-dg-bg-default);
   min-height: var(--banner-short-height);
   max-height: var(--banner-short-height);
   .offset {
@@ -256,12 +250,6 @@ p {
         }
       }
     }
-  }
-  &.active {
-    background: var(--ion-banner-secondary);
-  }
-  &.passive {
-    background: var(--ion-banner-primary);
   }
 }
 
