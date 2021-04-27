@@ -249,29 +249,29 @@ $horizontal: 90deg;
     var(--home-screen-dark-gradient-end) 96.06%
   );
   //RADIO GROUP
-  --radio-group-gradient-primary-start: #{color.adjust(
-      $primary,
-      $hue: -8,
-      $saturation: 8%,
-      $lightness: 17%
+  --radio-group-gradient-active-start: #{color.adjust($tertiary, $lightness: -13%)};
+  --radio-group-gradient-active-end: #{color.adjust($tertiary, $saturation: -3%, $lightness: -40%)};
+
+  --radio-group-gradient-passive-start: #{color.adjust(
+      $quaternary,
+      $saturation: 12%,
+      $lightness: -8%
     )};
-  --radio-group-gradient-primary-end: #{$primary};
-  --radio-group-gradient-secondary-start: #{color.adjust(
-      $secondary,
-      $hue: 8,
-      $saturation: 5%,
-      $lightness: 3%
+  --radio-group-gradient-passive-end: #{color.adjust(
+      $quaternary,
+      $saturation: 12%,
+      $lightness: -44%
     )};
-  --radio-group-gradient-secondary-end: #{$secondary};
+
   --radio-group-gradient-secondary: linear-gradient(
-    168.87deg,
-    var(--radio-group-gradient-secondary-start) 28.12%,
-    var(--radio-group-gradient-secondary-end) 100%
+    #{$vertical},
+    var(--radio-group-gradient-active-start) 34.6%,
+    var(--radio-group-gradient-active-end) 105.68%
   );
   --radio-group-gradient-primary: linear-gradient(
-    168.87deg,
-    var(--radio-group-gradient-primary-start) 28.12%,
-    var(--radio-group-gradient-primary-end) 100%
+    #{$vertical},
+    var(--radio-group-gradient-passive-start) 34.6%,
+    var(--radio-group-gradient-passive-end) 105.68%
   );
   --radio-group-active-bg: var(--radio-group-gradient-secondary);
   --radio-group-passive-bg: var(--radio-group-gradient-primary);

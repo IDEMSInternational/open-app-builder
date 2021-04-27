@@ -77,10 +77,10 @@ ion-tab-button {
   width: 94px;
   height: 94px;
   border-radius: var(--ion-border-radius-rounded);
-  background: #e3f4ff;
+  background: var(--ion-background-color);
   position: relative;
   margin-left: auto;
-  margin-right: -10px;
+  margin-right: -13px;
   @media (max-width: 375px) {
     width: 84px;
     height: 84px;
