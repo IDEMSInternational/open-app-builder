@@ -397,7 +397,7 @@
                 ],
                 "hidden": "\"@fields.w_self_care_status\" == \"completed\"",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/play.svg",
+                  "icon_src": "plh_images/icons/play_outline_white.svg",
                   "text": "Start",
                   "style": "home_screen yellow"
                 },
@@ -509,7 +509,7 @@
                 ],
                 "hidden": "@fields.daily_relax_done",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/smile.svg",
+                  "icon_src": "plh_images/icons/smile_outline_white.svg",
                   "style": "home_screen orange"
                 },
                 "style_list": [
@@ -620,7 +620,7 @@
                 ],
                 "hidden": "@fields.no_mail",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/message.svg",
+                  "icon_src": "plh_images/icons/letter_outline.svg",
                   "text": "Message",
                   "style": "home_screen dark_orange"
                 },
@@ -856,7 +856,7 @@
       },
       {
         "type": "workshops_accordion",
-        "name": "temp_name_2",
+        "name": "temp_name_222",
         "parameter_list": {
           "current_workshop_num": "3"
         },
@@ -880,13 +880,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_self_care_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_3.workshop_1.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_3.workshop_1.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_3.workshop_1"
+                "_nested_name": "temp_name_222.temp_name_3.workshop_1"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_3",
+            "_nested_name": "temp_name_222.temp_name_3",
             "_dynamicFields": {
               "value": [
                 {
@@ -946,13 +946,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_1on1_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_4.workshop_2.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_4.workshop_2.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_4.workshop_2"
+                "_nested_name": "temp_name_222.temp_name_4.workshop_2"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_4",
+            "_nested_name": "temp_name_222.temp_name_4",
             "_dynamicFields": {
               "value": [
                 {
@@ -1012,13 +1012,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_praise_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_5.workshop_3.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_5.workshop_3.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_5.workshop_3"
+                "_nested_name": "temp_name_222.temp_name_5.workshop_3"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_5",
+            "_nested_name": "temp_name_222.temp_name_5",
             "_dynamicFields": {
               "value": [
                 {
@@ -1078,13 +1078,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_instruct_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_6.workshop_4.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_6.workshop_4.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_6.workshop_4"
+                "_nested_name": "temp_name_222.temp_name_6.workshop_4"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_6",
+            "_nested_name": "temp_name_222.temp_name_6",
             "_dynamicFields": {
               "value": [
                 {
@@ -1144,13 +1144,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_stress_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_7.workshop_5.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_7.workshop_5.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_7.workshop_5"
+                "_nested_name": "temp_name_222.temp_name_7.workshop_5"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_7",
+            "_nested_name": "temp_name_222.temp_name_7",
             "_dynamicFields": {
               "parameter_list": {
                 "title": [
@@ -1199,13 +1199,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_money_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_8.workshop_6.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_8.workshop_6.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_8.workshop_6"
+                "_nested_name": "temp_name_222.temp_name_8.workshop_6"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_8",
+            "_nested_name": "temp_name_222.temp_name_8",
             "_dynamicFields": {
               "value": [
                 {
@@ -1265,13 +1265,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_rules_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_9.workshop_7.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_9.workshop_7.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_9.workshop_7"
+                "_nested_name": "temp_name_222.temp_name_9.workshop_7"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_9",
+            "_nested_name": "temp_name_222.temp_name_9",
             "_dynamicFields": {
               "value": [
                 {
@@ -1331,13 +1331,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_consequence_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_10.workshop_8.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_10.workshop_8.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_10.workshop_8"
+                "_nested_name": "temp_name_222.temp_name_10.workshop_8"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_10",
+            "_nested_name": "temp_name_222.temp_name_10",
             "_dynamicFields": {
               "value": [
                 {
@@ -1397,13 +1397,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_solve_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_11.workshop_9.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_11.workshop_9.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_11.workshop_9"
+                "_nested_name": "temp_name_222.temp_name_11.workshop_9"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_11",
+            "_nested_name": "temp_name_222.temp_name_11",
             "_dynamicFields": {
               "value": [
                 {
@@ -1463,13 +1463,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_safe_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_12.workshop_10.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_12.workshop_10.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_12.workshop_10"
+                "_nested_name": "temp_name_222.temp_name_12.workshop_10"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_12",
+            "_nested_name": "temp_name_222.temp_name_12",
             "_dynamicFields": {
               "value": [
                 {
@@ -1529,13 +1529,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_crisis_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_13.workshop_11.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_13.workshop_11.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_13.workshop_11"
+                "_nested_name": "temp_name_222.temp_name_13.workshop_11"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_13",
+            "_nested_name": "temp_name_222.temp_name_13",
             "_dynamicFields": {
               "value": [
                 {
@@ -1595,13 +1595,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_celebrate_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_14.workshop_12.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_14.workshop_12.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_14.workshop_12"
+                "_nested_name": "temp_name_222.temp_name_14.workshop_12"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_14",
+            "_nested_name": "temp_name_222.temp_name_14",
             "_dynamicFields": {
               "value": [
                 {
@@ -1643,7 +1643,7 @@
             }
           }
         ],
-        "_nested_name": "temp_name_2"
+        "_nested_name": "temp_name_222"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
@@ -2235,36 +2235,6 @@
       },
       {
         "type": "text",
-        "name": "checking_1",
-        "value": "field: @field.user_name \nlocal: @local.text_box_1",
-        "_nested_name": "checking_1",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "field: @field.user_name \nlocal: @local.text_box_1",
-              "matchedExpression": "@field.user_name",
-              "type": "field",
-              "fieldName": "user_name"
-            },
-            {
-              "fullExpression": "field: @field.user_name \nlocal: @local.text_box_1",
-              "matchedExpression": "@local.text_box_1",
-              "type": "local",
-              "fieldName": "text_box_1"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.user_name": [
-            "value"
-          ],
-          "@local.text_box_1": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "text",
         "name": "option_2",
         "value": "Select a day to practice",
         "parameter_list": {
@@ -2353,27 +2323,6 @@
           ],
           "@local.answer_list_2": [
             "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "checking_2",
-        "value": "the selected day is @field.workshop_day",
-        "_nested_name": "checking_2",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "the selected day is @field.workshop_day",
-              "matchedExpression": "@field.workshop_day",
-              "type": "field",
-              "fieldName": "workshop_day"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.workshop_day": [
-            "value"
           ]
         }
       },
@@ -2472,27 +2421,6 @@
       },
       {
         "type": "text",
-        "name": "checking_3",
-        "value": "the current workshop is @field.current_workshop",
-        "_nested_name": "checking_3",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "the current workshop is @field.current_workshop",
-              "matchedExpression": "@field.current_workshop",
-              "type": "field",
-              "fieldName": "current_workshop"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.current_workshop": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "text",
         "name": "option_4",
         "value": "Select Number of People",
         "parameter_list": {
@@ -2569,27 +2497,6 @@
           ],
           "@local.answer_list_4": [
             "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "checking_4",
-        "value": "the setting do workshop together is @field.current_workshop",
-        "_nested_name": "checking_4",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "the setting do workshop together is @field.current_workshop",
-              "matchedExpression": "@field.current_workshop",
-              "type": "field",
-              "fieldName": "current_workshop"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.current_workshop": [
-            "value"
           ]
         }
       },
@@ -2698,27 +2605,6 @@
           ],
           "@field.do_workshops_together": [
             "hidden"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "checking_5",
-        "value": "the current group name is @field.group_name",
-        "_nested_name": "checking_5",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "the current group name is @field.group_name",
-              "matchedExpression": "@field.group_name",
-              "type": "field",
-              "fieldName": "group_name"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.group_name": [
-            "value"
           ]
         }
       }
@@ -11557,81 +11443,109 @@
     "status": "released",
     "rows": [
       {
-        "name": "progress_bar_value",
+        "name": "video_src",
         "type": "set_variable",
-        "_nested_name": "progress_bar_value"
+        "_nested_name": "video_src"
       },
       {
-        "name": "progress_bar_num_items",
+        "name": "video_title",
+        "value": "Video",
         "type": "set_variable",
-        "_nested_name": "progress_bar_num_items"
+        "_nested_name": "video_title"
       },
       {
-        "name": "progress_bar",
-        "value": "@local.progress_bar_value",
-        "parameter_list": {
-          "num_items": "@local.progress_bar_num_items"
-        },
+        "name": "video_help",
         "type": "set_variable",
-        "_nested_name": "progress_bar",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@local.progress_bar_value",
-              "matchedExpression": "@local.progress_bar_value",
-              "type": "local",
-              "fieldName": "progress_bar_value"
+        "_nested_name": "video_help"
+      },
+      {
+        "type": "template",
+        "name": "widget_video",
+        "value": "widget_video",
+        "rows": [
+          {
+            "name": "video_src",
+            "value": "plh_video/lets_slow_down.mp4",
+            "type": "set_variable",
+            "_nested_name": "widget_video.video_src"
+          },
+          {
+            "name": "title",
+            "value": "@local.video_title",
+            "type": "set_variable",
+            "_nested_name": "widget_video.title",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@local.video_title",
+                  "matchedExpression": "@local.video_title",
+                  "type": "local",
+                  "fieldName": "video_title"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.video_title": [
+                "value"
+              ]
             }
-          ],
-          "parameter_list": {
-            "num_items": [
-              {
-                "fullExpression": "@local.progress_bar_num_items",
-                "matchedExpression": "@local.progress_bar_num_items",
-                "type": "local",
-                "fieldName": "progress_bar_num_items"
-              }
-            ]
+          },
+          {
+            "name": "help",
+            "value": "@local.video_help",
+            "type": "set_variable",
+            "_nested_name": "widget_video.help",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@local.video_help",
+                  "matchedExpression": "@local.video_help",
+                  "type": "local",
+                  "fieldName": "video_help"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.video_help": [
+                "value"
+              ]
+            }
           }
-        },
-        "_dynamicDependencies": {
-          "@local.progress_bar_value": [
-            "value"
-          ],
-          "@local.progress_bar_num_items": [
-            "parameter_list.num_items"
-          ]
-        }
+        ],
+        "_nested_name": "widget_video"
       },
       {
-        "name": "progress_field_name",
+        "name": "bottom_text",
+        "hidden": true,
         "type": "set_variable",
-        "_nested_name": "progress_field_name"
+        "_nested_name": "bottom_text"
       },
       {
-        "type": "nav_group",
-        "name": "nav_template_list",
-        "parameter_list": {
-          "progress_field": "@local.progress_field_name"
-        },
-        "_nested_name": "nav_template_list",
-        "_dynamicFields": {
-          "parameter_list": {
-            "progress_field": [
-              {
-                "fullExpression": "@local.progress_field_name",
-                "matchedExpression": "@local.progress_field_name",
-                "type": "local",
-                "fieldName": "progress_field_name"
-              }
-            ]
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
-        },
-        "_dynamicDependencies": {
-          "@local.progress_field_name": [
-            "parameter_list.progress_field"
-          ]
-        }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_surveys.xlsx"
@@ -31869,7 +31783,7 @@
         "name": "round_button_3",
         "value": "Value",
         "parameter_list": {
-          "icon_src": "/plh_images/icons/letter_outline.svg",
+          "icon_src": "/plh_images/icons/cross_outline.svg",
           "style": "alternative"
         },
         "_nested_name": "round_button_3"
