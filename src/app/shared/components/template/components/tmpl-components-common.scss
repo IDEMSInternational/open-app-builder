@@ -212,7 +212,7 @@ p {
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
-  background: inherit;
+  background: var(--ion-dg-bg-default);
   .offset {
     margin-bottom: -30px !important;
   }
@@ -232,7 +232,7 @@ p {
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
   padding: 0 24px;
-  background: inherit;
+  background: var(--ion-dg-bg-default);
   min-height: var(--banner-short-height);
   max-height: var(--banner-short-height);
   .offset {

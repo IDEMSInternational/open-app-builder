@@ -118,42 +118,44 @@ export class TmplRadioGroupComponent
    * Convert to an object array, with key value pairs extracted from the string values
    */
   createArrayBtnElement(answer_list: string[]) {
-    this.arrayOfBtn = answer_list.map((item) => {
-      const obj: IButton = {
-        text: null,
-        image: null,
-        name: null,
-        image_checked: null,
-      };
-      const stringProperties = item.split("|");
-      stringProperties.forEach((s) => {
-        const [field, value] = s.split(":").map((v) => v.trim());
-        if (field && value) {
-          switch (field) {
-            case "image":
-              obj[field] = this.getPathImg(value);
-              break;
-            case "image_checked":
-              obj[field] = this.getPathImg(value);
-              break;
+    if (answer_list) {
+      this.arrayOfBtn = answer_list.map((item) => {
+        const obj: IButton = {
+          text: null,
+          image: null,
+          name: null,
+          image_checked: null,
+        };
+        const stringProperties = item.split("|");
+        stringProperties.forEach((s) => {
+          const [field, value] = s.split(":").map((v) => v.trim());
+          if (field && value) {
+            switch (field) {
+              case "image":
+                obj[field] = this.getPathImg(value);
+                break;
+              case "image_checked":
+                obj[field] = this.getPathImg(value);
+                break;
 
-            default:
-              obj[field] = value;
-              break;
+              default:
+                obj[field] = value;
+                break;
+            }
           }
+        });
+        return obj;
+      });
+      this.arrayOfBtn.forEach((item) => {
+        if (item.image && item.text) {
+          this.radioButtonType = "btn_both";
+        } else if (!item.image && item.text) {
+          this.radioButtonType = "btn_text";
+        } else if (item.image && !item.text) {
+          this.radioButtonType = "btn_image";
         }
       });
-      return obj;
-    });
-    this.arrayOfBtn.forEach((item) => {
-      if (item.image && item.text) {
-        this.radioButtonType = "btn_both";
-      } else if (!item.image && item.text) {
-        this.radioButtonType = "btn_text";
-      } else if (item.image && !item.text) {
-        this.radioButtonType = "btn_image";
-      }
-    });
+    }
   }
 
   getPathImg(path: string): string {
