@@ -339,7 +339,7 @@
           {
             "type": "image",
             "name": "image_weekly_workshops",
-            "value": "plh_images/home_page/home_page_workshops.svg",
+            "value": "plh_images/home_screen/weekly_workshops.svg",
             "_nested_name": "tile_weekly_workshops.image_weekly_workshops"
           },
           {
@@ -397,7 +397,7 @@
                 ],
                 "hidden": "\"@fields.w_self_care_status\" == \"completed\"",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/play.svg",
+                  "icon_src": "plh_images/icons/play_outline_white.svg",
                   "text": "Start",
                   "style": "home_screen yellow"
                 },
@@ -451,7 +451,7 @@
           {
             "type": "image",
             "name": "image_parent_points",
-            "value": "plh_images/home_page/home_page_parent_points.svg",
+            "value": "plh_images/home_screen/parent_points.svg",
             "_nested_name": "tile_parent_points.image_parent_points"
           },
           {
@@ -509,7 +509,7 @@
                 ],
                 "hidden": "@fields.daily_relax_done",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/smile.svg",
+                  "icon_src": "plh_images/icons/smile_outline_white.svg",
                   "style": "home_screen orange"
                 },
                 "style_list": [
@@ -562,7 +562,7 @@
           {
             "type": "image",
             "name": "image_parent_centre",
-            "value": "plh_images/home_page/home_page_parent_center.svg",
+            "value": "plh_images/home_screen/parent_centre.svg",
             "_nested_name": "tile_parent_centre.image_parent_centre"
           },
           {
@@ -620,7 +620,7 @@
                 ],
                 "hidden": "@fields.no_mail",
                 "parameter_list": {
-                  "icon_src": "/assets/icon/round-button/message.svg",
+                  "icon_src": "plh_images/icons/letter_outline.svg",
                   "text": "Message",
                   "style": "home_screen dark_orange"
                 },
@@ -661,7 +661,7 @@
       {
         "type": "template",
         "name": "weekly_workshops",
-        "value": "workshop_buttons_temp",
+        "value": "weekly_workshops",
         "hidden": "!@fields.workshops_setup",
         "rows": [],
         "_nested_name": "weekly_workshops",
@@ -781,14 +781,14 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "@field.next_workshop"
+              "w_self_care_stepper"
             ],
-            "_raw": "click | go_to:@field.next_workshop",
-            "_cleaned": "click | go_to:@field.next_workshop"
+            "_raw": "click | go_to:w_self_care_stepper",
+            "_cleaned": "click | go_to:w_self_care_stepper"
           }
         ],
         "parameter_list": {
-          "style": "quick_start",
+          "style": "quick_start_dark",
           "first_line_text": "My Group",
           "second_line_text": "Start week one",
           "icon_src": "plh_images/icons/play_outline_white.svg"
@@ -808,37 +808,7 @@
               "type": "local",
               "fieldName": "next_workshop_name"
             }
-          ],
-          "action_list": {
-            "0": {
-              "args": {
-                "0": [
-                  {
-                    "fullExpression": "@field.next_workshop",
-                    "matchedExpression": "@field.next_workshop",
-                    "type": "field",
-                    "fieldName": "next_workshop"
-                  }
-                ]
-              },
-              "_raw": [
-                {
-                  "fullExpression": "click | go_to:@field.next_workshop",
-                  "matchedExpression": "@field.next_workshop",
-                  "type": "field",
-                  "fieldName": "next_workshop"
-                }
-              ],
-              "_cleaned": [
-                {
-                  "fullExpression": "click | go_to:@field.next_workshop",
-                  "matchedExpression": "@field.next_workshop",
-                  "type": "field",
-                  "fieldName": "next_workshop"
-                }
-              ]
-            }
-          }
+          ]
         },
         "_dynamicDependencies": {
           "@local.group_name": [
@@ -846,17 +816,12 @@
           ],
           "@local.next_workshop_name": [
             "value"
-          ],
-          "@field.next_workshop": [
-            "action_list.0.args.0",
-            "action_list.0._raw",
-            "action_list.0._cleaned"
           ]
         }
       },
       {
         "type": "workshops_accordion",
-        "name": "temp_name_2",
+        "name": "temp_name_222",
         "parameter_list": {
           "current_workshop_num": "3"
         },
@@ -880,13 +845,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_self_care_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_3.workshop_1.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_3.workshop_1.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_3.workshop_1"
+                "_nested_name": "temp_name_222.temp_name_3.workshop_1"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_3",
+            "_nested_name": "temp_name_222.temp_name_3",
             "_dynamicFields": {
               "value": [
                 {
@@ -946,13 +911,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_1on1_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_4.workshop_2.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_4.workshop_2.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_4.workshop_2"
+                "_nested_name": "temp_name_222.temp_name_4.workshop_2"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_4",
+            "_nested_name": "temp_name_222.temp_name_4",
             "_dynamicFields": {
               "value": [
                 {
@@ -1012,13 +977,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_praise_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_5.workshop_3.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_5.workshop_3.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_5.workshop_3"
+                "_nested_name": "temp_name_222.temp_name_5.workshop_3"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_5",
+            "_nested_name": "temp_name_222.temp_name_5",
             "_dynamicFields": {
               "value": [
                 {
@@ -1078,13 +1043,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_instruct_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_6.workshop_4.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_6.workshop_4.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_6.workshop_4"
+                "_nested_name": "temp_name_222.temp_name_6.workshop_4"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_6",
+            "_nested_name": "temp_name_222.temp_name_6",
             "_dynamicFields": {
               "value": [
                 {
@@ -1128,7 +1093,7 @@
           {
             "type": "accordion_section",
             "name": "temp_name_7",
-            "value": 70,
+            "value": "@field.w_stress_completion_level",
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_stress"
@@ -1144,14 +1109,22 @@
                     "name": "target_workshop_stepper",
                     "value": "w_stress_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_7.workshop_5.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_7.workshop_5.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_7.workshop_5"
+                "_nested_name": "temp_name_222.temp_name_7.workshop_5"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_7",
+            "_nested_name": "temp_name_222.temp_name_7",
             "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@field.w_stress_completion_level",
+                  "matchedExpression": "@field.w_stress_completion_level",
+                  "type": "field",
+                  "fieldName": "w_stress_completion_level"
+                }
+              ],
               "parameter_list": {
                 "title": [
                   {
@@ -1172,6 +1145,9 @@
               ]
             },
             "_dynamicDependencies": {
+              "@field.w_stress_completion_level": [
+                "value"
+              ],
               "@global.w_stress": [
                 "parameter_list.title"
               ],
@@ -1199,13 +1175,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_money_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_8.workshop_6.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_8.workshop_6.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_8.workshop_6"
+                "_nested_name": "temp_name_222.temp_name_8.workshop_6"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_8",
+            "_nested_name": "temp_name_222.temp_name_8",
             "_dynamicFields": {
               "value": [
                 {
@@ -1265,13 +1241,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_rules_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_9.workshop_7.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_9.workshop_7.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_9.workshop_7"
+                "_nested_name": "temp_name_222.temp_name_9.workshop_7"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_9",
+            "_nested_name": "temp_name_222.temp_name_9",
             "_dynamicFields": {
               "value": [
                 {
@@ -1331,13 +1307,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_consequence_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_10.workshop_8.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_10.workshop_8.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_10.workshop_8"
+                "_nested_name": "temp_name_222.temp_name_10.workshop_8"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_10",
+            "_nested_name": "temp_name_222.temp_name_10",
             "_dynamicFields": {
               "value": [
                 {
@@ -1397,13 +1373,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_solve_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_11.workshop_9.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_11.workshop_9.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_11.workshop_9"
+                "_nested_name": "temp_name_222.temp_name_11.workshop_9"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_11",
+            "_nested_name": "temp_name_222.temp_name_11",
             "_dynamicFields": {
               "value": [
                 {
@@ -1463,13 +1439,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_safe_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_12.workshop_10.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_12.workshop_10.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_12.workshop_10"
+                "_nested_name": "temp_name_222.temp_name_12.workshop_10"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_12",
+            "_nested_name": "temp_name_222.temp_name_12",
             "_dynamicFields": {
               "value": [
                 {
@@ -1529,13 +1505,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_crisis_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_13.workshop_11.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_13.workshop_11.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_13.workshop_11"
+                "_nested_name": "temp_name_222.temp_name_13.workshop_11"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_13",
+            "_nested_name": "temp_name_222.temp_name_13",
             "_dynamicFields": {
               "value": [
                 {
@@ -1595,13 +1571,13 @@
                     "name": "target_workshop_stepper",
                     "value": "w_celebrate_stepper",
                     "type": "set_variable",
-                    "_nested_name": "temp_name_2.temp_name_14.workshop_12.target_workshop_stepper"
+                    "_nested_name": "temp_name_222.temp_name_14.workshop_12.target_workshop_stepper"
                   }
                 ],
-                "_nested_name": "temp_name_2.temp_name_14.workshop_12"
+                "_nested_name": "temp_name_222.temp_name_14.workshop_12"
               }
             ],
-            "_nested_name": "temp_name_2.temp_name_14",
+            "_nested_name": "temp_name_222.temp_name_14",
             "_dynamicFields": {
               "value": [
                 {
@@ -1643,7 +1619,7 @@
             }
           }
         ],
-        "_nested_name": "temp_name_2"
+        "_nested_name": "temp_name_222"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
@@ -2235,36 +2211,6 @@
       },
       {
         "type": "text",
-        "name": "checking_1",
-        "value": "field: @field.user_name \nlocal: @local.text_box_1",
-        "_nested_name": "checking_1",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "field: @field.user_name \nlocal: @local.text_box_1",
-              "matchedExpression": "@field.user_name",
-              "type": "field",
-              "fieldName": "user_name"
-            },
-            {
-              "fullExpression": "field: @field.user_name \nlocal: @local.text_box_1",
-              "matchedExpression": "@local.text_box_1",
-              "type": "local",
-              "fieldName": "text_box_1"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.user_name": [
-            "value"
-          ],
-          "@local.text_box_1": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "text",
         "name": "option_2",
         "value": "Select a day to practice",
         "parameter_list": {
@@ -2353,27 +2299,6 @@
           ],
           "@local.answer_list_2": [
             "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "checking_2",
-        "value": "the selected day is @field.workshop_day",
-        "_nested_name": "checking_2",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "the selected day is @field.workshop_day",
-              "matchedExpression": "@field.workshop_day",
-              "type": "field",
-              "fieldName": "workshop_day"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.workshop_day": [
-            "value"
           ]
         }
       },
@@ -2472,27 +2397,6 @@
       },
       {
         "type": "text",
-        "name": "checking_3",
-        "value": "the current workshop is @field.current_workshop",
-        "_nested_name": "checking_3",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "the current workshop is @field.current_workshop",
-              "matchedExpression": "@field.current_workshop",
-              "type": "field",
-              "fieldName": "current_workshop"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.current_workshop": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "text",
         "name": "option_4",
         "value": "Select Number of People",
         "parameter_list": {
@@ -2569,27 +2473,6 @@
           ],
           "@local.answer_list_4": [
             "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "checking_4",
-        "value": "the setting do workshop together is @field.current_workshop",
-        "_nested_name": "checking_4",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "the setting do workshop together is @field.current_workshop",
-              "matchedExpression": "@field.current_workshop",
-              "type": "field",
-              "fieldName": "current_workshop"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.current_workshop": [
-            "value"
           ]
         }
       },
@@ -2698,27 +2581,6 @@
           ],
           "@field.do_workshops_together": [
             "hidden"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "checking_5",
-        "value": "the current group name is @field.group_name",
-        "_nested_name": "checking_5",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "the current group name is @field.group_name",
-              "matchedExpression": "@field.group_name",
-              "type": "field",
-              "fieldName": "group_name"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.group_name": [
-            "value"
           ]
         }
       }
@@ -2837,483 +2699,27 @@
           {
             "type": "parent_point_box",
             "name": "parent_point_relax",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_relax",
-              "icon_src": "@global.parent_point_relax_image"
-            },
-            "_nested_name": "Points.parent_point_relax",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_relax",
-                    "matchedExpression": "@global.parent_point_relax",
-                    "type": "global",
-                    "fieldName": "parent_point_relax"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_relax_image",
-                    "matchedExpression": "@global.parent_point_relax_image",
-                    "type": "global",
-                    "fieldName": "parent_point_relax_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_relax": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_relax_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_treat_yourself",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_treat_yourself",
-              "icon_src": "@global.parent_point_treat_yourself_image"
-            },
-            "_nested_name": "Points.parent_point_treat_yourself",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_treat_yourself",
-                    "matchedExpression": "@global.parent_point_treat_yourself",
-                    "type": "global",
-                    "fieldName": "parent_point_treat_yourself"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_treat_yourself_image",
-                    "matchedExpression": "@global.parent_point_treat_yourself_image",
-                    "type": "global",
-                    "fieldName": "parent_point_treat_yourself_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_treat_yourself": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_treat_yourself_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_praise_yourself",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_praise_yourself",
-              "icon_src": "@global.parent_point_praise_yourself_image"
-            },
-            "_nested_name": "Points.parent_point_praise_yourself",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_praise_yourself",
-                    "matchedExpression": "@global.parent_point_praise_yourself",
-                    "type": "global",
-                    "fieldName": "parent_point_praise_yourself"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_praise_yourself_image",
-                    "matchedExpression": "@global.parent_point_praise_yourself_image",
-                    "type": "global",
-                    "fieldName": "parent_point_praise_yourself_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_praise_yourself": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_praise_yourself_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_spend_time",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_spend_time",
-              "icon_src": "@global.parent_point_spend_time_image"
-            },
-            "_nested_name": "Points.parent_point_spend_time",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_spend_time",
-                    "matchedExpression": "@global.parent_point_spend_time",
-                    "type": "global",
-                    "fieldName": "parent_point_spend_time"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_spend_time_image",
-                    "matchedExpression": "@global.parent_point_spend_time_image",
-                    "type": "global",
-                    "fieldName": "parent_point_spend_time_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_spend_time": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_spend_time_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_praise_teen",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_praise_teen",
-              "icon_src": "@global.parent_point_praise_teen_image"
-            },
-            "_nested_name": "Points.parent_point_praise_teen",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_praise_teen",
-                    "matchedExpression": "@global.parent_point_praise_teen",
-                    "type": "global",
-                    "fieldName": "parent_point_praise_teen"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_praise_teen_image",
-                    "matchedExpression": "@global.parent_point_praise_teen_image",
-                    "type": "global",
-                    "fieldName": "parent_point_praise_teen_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_praise_teen": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_praise_teen_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_breathe",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_breathe",
-              "icon_src": "@global.parent_point_breathe_image"
-            },
-            "_nested_name": "Points.parent_point_breathe",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_breathe",
-                    "matchedExpression": "@global.parent_point_breathe",
-                    "type": "global",
-                    "fieldName": "parent_point_breathe"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_breathe_image",
-                    "matchedExpression": "@global.parent_point_breathe_image",
-                    "type": "global",
-                    "fieldName": "parent_point_breathe_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_breathe": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_breathe_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_money",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_money",
-              "icon_src": "@global.parent_point_money_image"
-            },
-            "_nested_name": "Points.parent_point_money",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_money",
-                    "matchedExpression": "@global.parent_point_money",
-                    "type": "global",
-                    "fieldName": "parent_point_money"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_money_image",
-                    "matchedExpression": "@global.parent_point_money_image",
-                    "type": "global",
-                    "fieldName": "parent_point_money_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_money": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_money_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_consequence",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_consequence",
-              "icon_src": "@global.parent_point_consequence_image"
-            },
-            "_nested_name": "Points.parent_point_consequence",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_consequence",
-                    "matchedExpression": "@global.parent_point_consequence",
-                    "type": "global",
-                    "fieldName": "parent_point_consequence"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_consequence_image",
-                    "matchedExpression": "@global.parent_point_consequence_image",
-                    "type": "global",
-                    "fieldName": "parent_point_consequence_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_consequence": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_consequence_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_safe",
-            "value": 0,
-            "parameter_list": {
-              "text": "@global.parent_point_safe",
-              "icon_src": "@global.parent_point_safe_image"
-            },
-            "_nested_name": "Points.parent_point_safe",
-            "_dynamicFields": {
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_safe",
-                    "matchedExpression": "@global.parent_point_safe",
-                    "type": "global",
-                    "fieldName": "parent_point_safe"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_safe_image",
-                    "matchedExpression": "@global.parent_point_safe_image",
-                    "type": "global",
-                    "fieldName": "parent_point_safe_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@global.parent_point_safe": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_safe_image": [
-                "parameter_list.icon_src"
-              ]
-            }
-          }
-        ],
-        "_nested_name": "Points"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "parent_points_non_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "display_group",
-        "name": "heading",
-        "rows": [
-          {
-            "type": "title",
-            "name": "temp_name_0",
-            "value": "@global.parent_points",
-            "parameter_list": {
-              "style": "tiny"
-            },
-            "_nested_name": "heading.temp_name_0",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@global.parent_points",
-                  "matchedExpression": "@global.parent_points",
-                  "type": "global",
-                  "fieldName": "parent_points"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@global.parent_points": [
-                "value"
-              ]
-            }
-          },
-          {
-            "type": "button",
-            "name": "options_button",
-            "value": "Options",
-            "hidden": true,
-            "parameter_list": {
-              "style": "options short flexible"
-            },
-            "_nested_name": "heading.options_button"
-          }
-        ],
-        "_nested_name": "heading"
-      },
-      {
-        "type": "display_group",
-        "name": "quick_buttons",
-        "rows": [
-          {
-            "type": "button",
-            "name": "make_me_smile",
-            "value": "@global.parent_points_make_me_smile",
-            "parameter_list": {
-              "style": "make_me_smile"
-            },
-            "_nested_name": "quick_buttons.make_me_smile",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@global.parent_points_make_me_smile",
-                  "matchedExpression": "@global.parent_points_make_me_smile",
-                  "type": "global",
-                  "fieldName": "parent_points_make_me_smile"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@global.parent_points_make_me_smile": [
-                "value"
-              ]
-            }
-          },
-          {
-            "type": "button",
-            "name": "get_me_going",
-            "value": "@global.parent_points_get_me_going",
-            "parameter_list": {
-              "style": "get_me_going"
-            },
-            "_nested_name": "quick_buttons.get_me_going",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@global.parent_points_get_me_going",
-                  "matchedExpression": "@global.parent_points_get_me_going",
-                  "type": "global",
-                  "fieldName": "parent_points_get_me_going"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@global.parent_points_get_me_going": [
-                "value"
-              ]
-            }
-          }
-        ],
-        "_nested_name": "quick_buttons"
-      },
-      {
-        "type": "display_group",
-        "name": "Points",
-        "parameter_list": {
-          "style": "parent_point"
-        },
-        "rows": [
-          {
-            "type": "parent_point_box",
-            "name": "parent_point_relax",
             "value": "@field.total_parent_point_relax",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "total_parent_point_relax",
-                  "@local.parent_point_relax"
+                  "@field.total_parent_point_relax+1"
                 ],
-                "_raw": "changed | set_field: total_parent_point_relax: @local.parent_point_relax",
-                "_cleaned": "changed | set_field: total_parent_point_relax: @local.parent_point_relax"
+                "_raw": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                "_cleaned": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_relax",
-                  "@local.parent_point_relax"
+                  "@field.weekly_parent_point_relax+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_relax: @local.parent_point_relax",
-                "_cleaned": "changed | set_field: weekly_parent_point_relax: @local.parent_point_relax"
+                "_raw": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                "_cleaned": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1"
               }
             ],
             "parameter_list": {
@@ -3335,27 +2741,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_relax",
-                        "matchedExpression": "@local.parent_point_relax",
-                        "type": "local",
-                        "fieldName": "parent_point_relax"
+                        "fullExpression": "@field.total_parent_point_relax+1",
+                        "matchedExpression": "@field.total_parent_point_relax",
+                        "type": "field",
+                        "fieldName": "total_parent_point_relax"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_relax: @local.parent_point_relax",
-                      "matchedExpression": "@local.parent_point_relax",
-                      "type": "local",
-                      "fieldName": "parent_point_relax"
+                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                      "matchedExpression": "@field.total_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "total_parent_point_relax"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_relax: @local.parent_point_relax",
-                      "matchedExpression": "@local.parent_point_relax",
-                      "type": "local",
-                      "fieldName": "parent_point_relax"
+                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                      "matchedExpression": "@field.total_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "total_parent_point_relax"
                     }
                   ]
                 },
@@ -3363,27 +2769,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_relax",
-                        "matchedExpression": "@local.parent_point_relax",
-                        "type": "local",
-                        "fieldName": "parent_point_relax"
+                        "fullExpression": "@field.weekly_parent_point_relax+1",
+                        "matchedExpression": "@field.weekly_parent_point_relax",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_relax"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_relax: @local.parent_point_relax",
-                      "matchedExpression": "@local.parent_point_relax",
-                      "type": "local",
-                      "fieldName": "parent_point_relax"
+                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                      "matchedExpression": "@field.weekly_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_relax"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_relax: @local.parent_point_relax",
-                      "matchedExpression": "@local.parent_point_relax",
-                      "type": "local",
-                      "fieldName": "parent_point_relax"
+                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                      "matchedExpression": "@field.weekly_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_relax"
                     }
                   ]
                 }
@@ -3409,12 +2815,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_relax": [
-                "value"
-              ],
-              "@local.parent_point_relax": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_relax": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -3433,24 +2839,24 @@
             "value": "@field.total_parent_point_treat_yourself",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "total_parent_point_treat_yourself",
-                  "@local.parent_point_treat_yourself"
+                  "@field.total_parent_point_treat_yourself+1"
                 ],
-                "_raw": "changed | set_field: total_parent_point_treat_yourself: @local.parent_point_treat_yourself",
-                "_cleaned": "changed | set_field: total_parent_point_treat_yourself: @local.parent_point_treat_yourself"
+                "_raw": "click | set_field: total_parent_point_treat_yourself: @field.total_parent_point_treat_yourself+1",
+                "_cleaned": "click | set_field: total_parent_point_treat_yourself: @field.total_parent_point_treat_yourself+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_treat_yourself",
-                  "@local.parent_point_treat_yourself"
+                  "@field.weekly_parent_point_treat_yourself+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_treat_yourself: @local.parent_point_treat_yourself",
-                "_cleaned": "changed | set_field: weekly_parent_point_treat_yourself: @local.parent_point_treat_yourself"
+                "_raw": "click | set_field: weekly_parent_point_treat_yourself: @field.weekly_parent_point_treat_yourself+1",
+                "_cleaned": "click | set_field: weekly_parent_point_treat_yourself: @field.weekly_parent_point_treat_yourself+1"
               }
             ],
             "parameter_list": {
@@ -3472,27 +2878,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_treat_yourself",
-                        "matchedExpression": "@local.parent_point_treat_yourself",
-                        "type": "local",
-                        "fieldName": "parent_point_treat_yourself"
+                        "fullExpression": "@field.total_parent_point_treat_yourself+1",
+                        "matchedExpression": "@field.total_parent_point_treat_yourself",
+                        "type": "field",
+                        "fieldName": "total_parent_point_treat_yourself"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_treat_yourself: @local.parent_point_treat_yourself",
-                      "matchedExpression": "@local.parent_point_treat_yourself",
-                      "type": "local",
-                      "fieldName": "parent_point_treat_yourself"
+                      "fullExpression": "click | set_field: total_parent_point_treat_yourself: @field.total_parent_point_treat_yourself+1",
+                      "matchedExpression": "@field.total_parent_point_treat_yourself",
+                      "type": "field",
+                      "fieldName": "total_parent_point_treat_yourself"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_treat_yourself: @local.parent_point_treat_yourself",
-                      "matchedExpression": "@local.parent_point_treat_yourself",
-                      "type": "local",
-                      "fieldName": "parent_point_treat_yourself"
+                      "fullExpression": "click | set_field: total_parent_point_treat_yourself: @field.total_parent_point_treat_yourself+1",
+                      "matchedExpression": "@field.total_parent_point_treat_yourself",
+                      "type": "field",
+                      "fieldName": "total_parent_point_treat_yourself"
                     }
                   ]
                 },
@@ -3500,27 +2906,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_treat_yourself",
-                        "matchedExpression": "@local.parent_point_treat_yourself",
-                        "type": "local",
-                        "fieldName": "parent_point_treat_yourself"
+                        "fullExpression": "@field.weekly_parent_point_treat_yourself+1",
+                        "matchedExpression": "@field.weekly_parent_point_treat_yourself",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_treat_yourself"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_treat_yourself: @local.parent_point_treat_yourself",
-                      "matchedExpression": "@local.parent_point_treat_yourself",
-                      "type": "local",
-                      "fieldName": "parent_point_treat_yourself"
+                      "fullExpression": "click | set_field: weekly_parent_point_treat_yourself: @field.weekly_parent_point_treat_yourself+1",
+                      "matchedExpression": "@field.weekly_parent_point_treat_yourself",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_treat_yourself"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_treat_yourself: @local.parent_point_treat_yourself",
-                      "matchedExpression": "@local.parent_point_treat_yourself",
-                      "type": "local",
-                      "fieldName": "parent_point_treat_yourself"
+                      "fullExpression": "click | set_field: weekly_parent_point_treat_yourself: @field.weekly_parent_point_treat_yourself+1",
+                      "matchedExpression": "@field.weekly_parent_point_treat_yourself",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_treat_yourself"
                     }
                   ]
                 }
@@ -3546,12 +2952,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_treat_yourself": [
-                "value"
-              ],
-              "@local.parent_point_treat_yourself": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_treat_yourself": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -3570,24 +2976,24 @@
             "value": "@field.total_parent_point_praise_yourself",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "total_parent_point_praise_yourself",
-                  "@local.parent_point_praise_yourself"
+                  "@field.total_parent_point_praise_yourself+1"
                 ],
-                "_raw": "changed | set_field: total_parent_point_praise_yourself: @local.parent_point_praise_yourself",
-                "_cleaned": "changed | set_field: total_parent_point_praise_yourself: @local.parent_point_praise_yourself"
+                "_raw": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                "_cleaned": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_praise_yourself",
-                  "@local.parent_point_praise_yourself"
+                  "@field.weekly_parent_point_praise_yourself+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_praise_yourself: @local.parent_point_praise_yourself",
-                "_cleaned": "changed | set_field: weekly_parent_point_praise_yourself: @local.parent_point_praise_yourself"
+                "_raw": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                "_cleaned": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1"
               }
             ],
             "parameter_list": {
@@ -3609,27 +3015,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_praise_yourself",
-                        "matchedExpression": "@local.parent_point_praise_yourself",
-                        "type": "local",
-                        "fieldName": "parent_point_praise_yourself"
+                        "fullExpression": "@field.total_parent_point_praise_yourself+1",
+                        "matchedExpression": "@field.total_parent_point_praise_yourself",
+                        "type": "field",
+                        "fieldName": "total_parent_point_praise_yourself"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_praise_yourself: @local.parent_point_praise_yourself",
-                      "matchedExpression": "@local.parent_point_praise_yourself",
-                      "type": "local",
-                      "fieldName": "parent_point_praise_yourself"
+                      "fullExpression": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                      "matchedExpression": "@field.total_parent_point_praise_yourself",
+                      "type": "field",
+                      "fieldName": "total_parent_point_praise_yourself"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_praise_yourself: @local.parent_point_praise_yourself",
-                      "matchedExpression": "@local.parent_point_praise_yourself",
-                      "type": "local",
-                      "fieldName": "parent_point_praise_yourself"
+                      "fullExpression": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                      "matchedExpression": "@field.total_parent_point_praise_yourself",
+                      "type": "field",
+                      "fieldName": "total_parent_point_praise_yourself"
                     }
                   ]
                 },
@@ -3637,27 +3043,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_praise_yourself",
-                        "matchedExpression": "@local.parent_point_praise_yourself",
-                        "type": "local",
-                        "fieldName": "parent_point_praise_yourself"
+                        "fullExpression": "@field.weekly_parent_point_praise_yourself+1",
+                        "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_praise_yourself"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_praise_yourself: @local.parent_point_praise_yourself",
-                      "matchedExpression": "@local.parent_point_praise_yourself",
-                      "type": "local",
-                      "fieldName": "parent_point_praise_yourself"
+                      "fullExpression": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                      "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_praise_yourself"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_praise_yourself: @local.parent_point_praise_yourself",
-                      "matchedExpression": "@local.parent_point_praise_yourself",
-                      "type": "local",
-                      "fieldName": "parent_point_praise_yourself"
+                      "fullExpression": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                      "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_praise_yourself"
                     }
                   ]
                 }
@@ -3683,12 +3089,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_praise_yourself": [
-                "value"
-              ],
-              "@local.parent_point_praise_yourself": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_praise_yourself": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -3707,24 +3113,24 @@
             "value": "@field.total_parent_point_spend_time",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "total_parent_point_spend_time",
-                  "@local.parent_point_spend_time"
+                  "@field.total_parent_point_spend_time+1"
                 ],
-                "_raw": "changed | set_field: total_parent_point_spend_time: @local.parent_point_spend_time",
-                "_cleaned": "changed | set_field: total_parent_point_spend_time: @local.parent_point_spend_time"
+                "_raw": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+                "_cleaned": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_spend_time",
-                  "@local.parent_point_spend_time"
+                  "@field.weekly_parent_point_spend_time+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_spend_time: @local.parent_point_spend_time",
-                "_cleaned": "changed | set_field: weekly_parent_point_spend_time: @local.parent_point_spend_time"
+                "_raw": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+                "_cleaned": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1"
               }
             ],
             "parameter_list": {
@@ -3746,27 +3152,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_spend_time",
-                        "matchedExpression": "@local.parent_point_spend_time",
-                        "type": "local",
-                        "fieldName": "parent_point_spend_time"
+                        "fullExpression": "@field.total_parent_point_spend_time+1",
+                        "matchedExpression": "@field.total_parent_point_spend_time",
+                        "type": "field",
+                        "fieldName": "total_parent_point_spend_time"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_spend_time: @local.parent_point_spend_time",
-                      "matchedExpression": "@local.parent_point_spend_time",
-                      "type": "local",
-                      "fieldName": "parent_point_spend_time"
+                      "fullExpression": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+                      "matchedExpression": "@field.total_parent_point_spend_time",
+                      "type": "field",
+                      "fieldName": "total_parent_point_spend_time"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_spend_time: @local.parent_point_spend_time",
-                      "matchedExpression": "@local.parent_point_spend_time",
-                      "type": "local",
-                      "fieldName": "parent_point_spend_time"
+                      "fullExpression": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+                      "matchedExpression": "@field.total_parent_point_spend_time",
+                      "type": "field",
+                      "fieldName": "total_parent_point_spend_time"
                     }
                   ]
                 },
@@ -3774,27 +3180,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_spend_time",
-                        "matchedExpression": "@local.parent_point_spend_time",
-                        "type": "local",
-                        "fieldName": "parent_point_spend_time"
+                        "fullExpression": "@field.weekly_parent_point_spend_time+1",
+                        "matchedExpression": "@field.weekly_parent_point_spend_time",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_spend_time"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_spend_time: @local.parent_point_spend_time",
-                      "matchedExpression": "@local.parent_point_spend_time",
-                      "type": "local",
-                      "fieldName": "parent_point_spend_time"
+                      "fullExpression": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+                      "matchedExpression": "@field.weekly_parent_point_spend_time",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_spend_time"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_spend_time: @local.parent_point_spend_time",
-                      "matchedExpression": "@local.parent_point_spend_time",
-                      "type": "local",
-                      "fieldName": "parent_point_spend_time"
+                      "fullExpression": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+                      "matchedExpression": "@field.weekly_parent_point_spend_time",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_spend_time"
                     }
                   ]
                 }
@@ -3820,12 +3226,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_spend_time": [
-                "value"
-              ],
-              "@local.parent_point_spend_time": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_spend_time": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -3844,24 +3250,24 @@
             "value": "@field.total_parent_point_praise_teen",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "total_parent_point_praise_teen",
-                  "@local.parent_point_praise_teen"
+                  "@field.total_parent_point_praise_teen+1"
                 ],
-                "_raw": "changed | set_field: total_parent_point_praise_teen: @local.parent_point_praise_teen",
-                "_cleaned": "changed | set_field: total_parent_point_praise_teen: @local.parent_point_praise_teen"
+                "_raw": "click | set_field: total_parent_point_praise_teen: @field.total_parent_point_praise_teen+1",
+                "_cleaned": "click | set_field: total_parent_point_praise_teen: @field.total_parent_point_praise_teen+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_praise_teen",
-                  "@local.parent_point_praise_teen"
+                  "@field.weekly_parent_point_praise_teen+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_praise_teen: @local.parent_point_praise_teen",
-                "_cleaned": "changed | set_field: weekly_parent_point_praise_teen: @local.parent_point_praise_teen"
+                "_raw": "click | set_field: weekly_parent_point_praise_teen: @field.weekly_parent_point_praise_teen+1",
+                "_cleaned": "click | set_field: weekly_parent_point_praise_teen: @field.weekly_parent_point_praise_teen+1"
               }
             ],
             "parameter_list": {
@@ -3883,27 +3289,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_praise_teen",
-                        "matchedExpression": "@local.parent_point_praise_teen",
-                        "type": "local",
-                        "fieldName": "parent_point_praise_teen"
+                        "fullExpression": "@field.total_parent_point_praise_teen+1",
+                        "matchedExpression": "@field.total_parent_point_praise_teen",
+                        "type": "field",
+                        "fieldName": "total_parent_point_praise_teen"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_praise_teen: @local.parent_point_praise_teen",
-                      "matchedExpression": "@local.parent_point_praise_teen",
-                      "type": "local",
-                      "fieldName": "parent_point_praise_teen"
+                      "fullExpression": "click | set_field: total_parent_point_praise_teen: @field.total_parent_point_praise_teen+1",
+                      "matchedExpression": "@field.total_parent_point_praise_teen",
+                      "type": "field",
+                      "fieldName": "total_parent_point_praise_teen"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_praise_teen: @local.parent_point_praise_teen",
-                      "matchedExpression": "@local.parent_point_praise_teen",
-                      "type": "local",
-                      "fieldName": "parent_point_praise_teen"
+                      "fullExpression": "click | set_field: total_parent_point_praise_teen: @field.total_parent_point_praise_teen+1",
+                      "matchedExpression": "@field.total_parent_point_praise_teen",
+                      "type": "field",
+                      "fieldName": "total_parent_point_praise_teen"
                     }
                   ]
                 },
@@ -3911,27 +3317,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_praise_teen",
-                        "matchedExpression": "@local.parent_point_praise_teen",
-                        "type": "local",
-                        "fieldName": "parent_point_praise_teen"
+                        "fullExpression": "@field.weekly_parent_point_praise_teen+1",
+                        "matchedExpression": "@field.weekly_parent_point_praise_teen",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_praise_teen"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_praise_teen: @local.parent_point_praise_teen",
-                      "matchedExpression": "@local.parent_point_praise_teen",
-                      "type": "local",
-                      "fieldName": "parent_point_praise_teen"
+                      "fullExpression": "click | set_field: weekly_parent_point_praise_teen: @field.weekly_parent_point_praise_teen+1",
+                      "matchedExpression": "@field.weekly_parent_point_praise_teen",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_praise_teen"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_praise_teen: @local.parent_point_praise_teen",
-                      "matchedExpression": "@local.parent_point_praise_teen",
-                      "type": "local",
-                      "fieldName": "parent_point_praise_teen"
+                      "fullExpression": "click | set_field: weekly_parent_point_praise_teen: @field.weekly_parent_point_praise_teen+1",
+                      "matchedExpression": "@field.weekly_parent_point_praise_teen",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_praise_teen"
                     }
                   ]
                 }
@@ -3957,12 +3363,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_praise_teen": [
-                "value"
-              ],
-              "@local.parent_point_praise_teen": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_praise_teen": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -3981,24 +3387,24 @@
             "value": "@field.total_parent_point_breathe",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "total_parent_point_breathe",
-                  "@local.parent_point_breathe"
+                  "@field.total_parent_point_breathe+1"
                 ],
-                "_raw": "changed | set_field: total_parent_point_breathe: @local.parent_point_breathe",
-                "_cleaned": "changed | set_field: total_parent_point_breathe: @local.parent_point_breathe"
+                "_raw": "click | set_field: total_parent_point_breathe: @field.total_parent_point_breathe+1",
+                "_cleaned": "click | set_field: total_parent_point_breathe: @field.total_parent_point_breathe+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_breathe",
-                  "@local.parent_point_breathe"
+                  "@field.weekly_parent_point_breathe+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_breathe: @local.parent_point_breathe",
-                "_cleaned": "changed | set_field: weekly_parent_point_breathe: @local.parent_point_breathe"
+                "_raw": "click | set_field: weekly_parent_point_breathe: @field.weekly_parent_point_breathe+1",
+                "_cleaned": "click | set_field: weekly_parent_point_breathe: @field.weekly_parent_point_breathe+1"
               }
             ],
             "parameter_list": {
@@ -4020,27 +3426,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_breathe",
-                        "matchedExpression": "@local.parent_point_breathe",
-                        "type": "local",
-                        "fieldName": "parent_point_breathe"
+                        "fullExpression": "@field.total_parent_point_breathe+1",
+                        "matchedExpression": "@field.total_parent_point_breathe",
+                        "type": "field",
+                        "fieldName": "total_parent_point_breathe"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_breathe: @local.parent_point_breathe",
-                      "matchedExpression": "@local.parent_point_breathe",
-                      "type": "local",
-                      "fieldName": "parent_point_breathe"
+                      "fullExpression": "click | set_field: total_parent_point_breathe: @field.total_parent_point_breathe+1",
+                      "matchedExpression": "@field.total_parent_point_breathe",
+                      "type": "field",
+                      "fieldName": "total_parent_point_breathe"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_point_breathe: @local.parent_point_breathe",
-                      "matchedExpression": "@local.parent_point_breathe",
-                      "type": "local",
-                      "fieldName": "parent_point_breathe"
+                      "fullExpression": "click | set_field: total_parent_point_breathe: @field.total_parent_point_breathe+1",
+                      "matchedExpression": "@field.total_parent_point_breathe",
+                      "type": "field",
+                      "fieldName": "total_parent_point_breathe"
                     }
                   ]
                 },
@@ -4048,27 +3454,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_breathe",
-                        "matchedExpression": "@local.parent_point_breathe",
-                        "type": "local",
-                        "fieldName": "parent_point_breathe"
+                        "fullExpression": "@field.weekly_parent_point_breathe+1",
+                        "matchedExpression": "@field.weekly_parent_point_breathe",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_breathe"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_breathe: @local.parent_point_breathe",
-                      "matchedExpression": "@local.parent_point_breathe",
-                      "type": "local",
-                      "fieldName": "parent_point_breathe"
+                      "fullExpression": "click | set_field: weekly_parent_point_breathe: @field.weekly_parent_point_breathe+1",
+                      "matchedExpression": "@field.weekly_parent_point_breathe",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_breathe"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_breathe: @local.parent_point_breathe",
-                      "matchedExpression": "@local.parent_point_breathe",
-                      "type": "local",
-                      "fieldName": "parent_point_breathe"
+                      "fullExpression": "click | set_field: weekly_parent_point_breathe: @field.weekly_parent_point_breathe+1",
+                      "matchedExpression": "@field.weekly_parent_point_breathe",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_breathe"
                     }
                   ]
                 }
@@ -4094,12 +3500,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_breathe": [
-                "value"
-              ],
-              "@local.parent_point_breathe": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_breathe": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -4118,24 +3524,24 @@
             "value": "@field.total_parent_point_money",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
-                  "total_parent_money",
-                  "@local.parent_point_money"
+                  "total_parent_point_money",
+                  "@field.total_parent_point_money+1"
                 ],
-                "_raw": "changed | set_field: total_parent_money: @local.parent_point_money",
-                "_cleaned": "changed | set_field: total_parent_money: @local.parent_point_money"
+                "_raw": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                "_cleaned": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_money",
-                  "@local.parent_point_money"
+                  "@field.weekly_parent_point_money+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_money: @local.parent_point_money",
-                "_cleaned": "changed | set_field: weekly_parent_point_money: @local.parent_point_money"
+                "_raw": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_money+1",
+                "_cleaned": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_money+1"
               }
             ],
             "parameter_list": {
@@ -4157,27 +3563,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_money",
-                        "matchedExpression": "@local.parent_point_money",
-                        "type": "local",
-                        "fieldName": "parent_point_money"
+                        "fullExpression": "@field.total_parent_point_money+1",
+                        "matchedExpression": "@field.total_parent_point_money",
+                        "type": "field",
+                        "fieldName": "total_parent_point_money"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_money: @local.parent_point_money",
-                      "matchedExpression": "@local.parent_point_money",
-                      "type": "local",
-                      "fieldName": "parent_point_money"
+                      "fullExpression": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                      "matchedExpression": "@field.total_parent_point_money",
+                      "type": "field",
+                      "fieldName": "total_parent_point_money"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_money: @local.parent_point_money",
-                      "matchedExpression": "@local.parent_point_money",
-                      "type": "local",
-                      "fieldName": "parent_point_money"
+                      "fullExpression": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                      "matchedExpression": "@field.total_parent_point_money",
+                      "type": "field",
+                      "fieldName": "total_parent_point_money"
                     }
                   ]
                 },
@@ -4185,27 +3591,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_money",
-                        "matchedExpression": "@local.parent_point_money",
-                        "type": "local",
-                        "fieldName": "parent_point_money"
+                        "fullExpression": "@field.weekly_parent_point_money+1",
+                        "matchedExpression": "@field.weekly_parent_point_money",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_money"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_money: @local.parent_point_money",
-                      "matchedExpression": "@local.parent_point_money",
-                      "type": "local",
-                      "fieldName": "parent_point_money"
+                      "fullExpression": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_money+1",
+                      "matchedExpression": "@field.weekly_parent_point_money",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_money"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_money: @local.parent_point_money",
-                      "matchedExpression": "@local.parent_point_money",
-                      "type": "local",
-                      "fieldName": "parent_point_money"
+                      "fullExpression": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_money+1",
+                      "matchedExpression": "@field.weekly_parent_point_money",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_money"
                     }
                   ]
                 }
@@ -4231,12 +3637,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_money": [
-                "value"
-              ],
-              "@local.parent_point_money": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_money": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -4255,24 +3661,24 @@
             "value": "@field.total_parent_point_consequence",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
-                  "total_parent_consequence",
-                  "@local.parent_point_consequence"
+                  "total_parent_point_consequence",
+                  "@field.total_parent_point_consequence+1"
                 ],
-                "_raw": "changed | set_field: total_parent_consequence: @local.parent_point_consequence",
-                "_cleaned": "changed | set_field: total_parent_consequence: @local.parent_point_consequence"
+                "_raw": "click | set_field: total_parent_point_consequence: @field.total_parent_point_consequence+1",
+                "_cleaned": "click | set_field: total_parent_point_consequence: @field.total_parent_point_consequence+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_consequence",
-                  "@local.parent_point_consequence"
+                  "@field.weekly_parent_point_consequence+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_consequence: @local.parent_point_consequence",
-                "_cleaned": "changed | set_field: weekly_parent_point_consequence: @local.parent_point_consequence"
+                "_raw": "click | set_field: weekly_parent_point_consequence: @field.weekly_parent_point_consequence+1",
+                "_cleaned": "click | set_field: weekly_parent_point_consequence: @field.weekly_parent_point_consequence+1"
               }
             ],
             "parameter_list": {
@@ -4294,27 +3700,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_consequence",
-                        "matchedExpression": "@local.parent_point_consequence",
-                        "type": "local",
-                        "fieldName": "parent_point_consequence"
+                        "fullExpression": "@field.total_parent_point_consequence+1",
+                        "matchedExpression": "@field.total_parent_point_consequence",
+                        "type": "field",
+                        "fieldName": "total_parent_point_consequence"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_consequence: @local.parent_point_consequence",
-                      "matchedExpression": "@local.parent_point_consequence",
-                      "type": "local",
-                      "fieldName": "parent_point_consequence"
+                      "fullExpression": "click | set_field: total_parent_point_consequence: @field.total_parent_point_consequence+1",
+                      "matchedExpression": "@field.total_parent_point_consequence",
+                      "type": "field",
+                      "fieldName": "total_parent_point_consequence"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_consequence: @local.parent_point_consequence",
-                      "matchedExpression": "@local.parent_point_consequence",
-                      "type": "local",
-                      "fieldName": "parent_point_consequence"
+                      "fullExpression": "click | set_field: total_parent_point_consequence: @field.total_parent_point_consequence+1",
+                      "matchedExpression": "@field.total_parent_point_consequence",
+                      "type": "field",
+                      "fieldName": "total_parent_point_consequence"
                     }
                   ]
                 },
@@ -4322,27 +3728,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_consequence",
-                        "matchedExpression": "@local.parent_point_consequence",
-                        "type": "local",
-                        "fieldName": "parent_point_consequence"
+                        "fullExpression": "@field.weekly_parent_point_consequence+1",
+                        "matchedExpression": "@field.weekly_parent_point_consequence",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_consequence"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_consequence: @local.parent_point_consequence",
-                      "matchedExpression": "@local.parent_point_consequence",
-                      "type": "local",
-                      "fieldName": "parent_point_consequence"
+                      "fullExpression": "click | set_field: weekly_parent_point_consequence: @field.weekly_parent_point_consequence+1",
+                      "matchedExpression": "@field.weekly_parent_point_consequence",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_consequence"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_consequence: @local.parent_point_consequence",
-                      "matchedExpression": "@local.parent_point_consequence",
-                      "type": "local",
-                      "fieldName": "parent_point_consequence"
+                      "fullExpression": "click | set_field: weekly_parent_point_consequence: @field.weekly_parent_point_consequence+1",
+                      "matchedExpression": "@field.weekly_parent_point_consequence",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_consequence"
                     }
                   ]
                 }
@@ -4368,12 +3774,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_consequence": [
-                "value"
-              ],
-              "@local.parent_point_consequence": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_consequence": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -4392,24 +3798,24 @@
             "value": "@field.total_parent_point_safe",
             "action_list": [
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
-                  "total_parent_safe",
-                  "@local.parent_point_safe"
+                  "total_parent_point_safe",
+                  "@field.total_parent_point_safe+1"
                 ],
-                "_raw": "changed | set_field: total_parent_safe: @local.parent_point_safe",
-                "_cleaned": "changed | set_field: total_parent_safe: @local.parent_point_safe"
+                "_raw": "click | set_field: total_parent_point_safe: @field.total_parent_point_safe+1",
+                "_cleaned": "click | set_field: total_parent_point_safe: @field.total_parent_point_safe+1"
               },
               {
-                "trigger": "changed",
+                "trigger": "click",
                 "action_id": "set_field",
                 "args": [
                   "weekly_parent_point_safe",
-                  "@local.parent_point_safe"
+                  "@field.weekly_parent_point_safe+1"
                 ],
-                "_raw": "changed | set_field: weekly_parent_point_safe: @local.parent_point_safe",
-                "_cleaned": "changed | set_field: weekly_parent_point_safe: @local.parent_point_safe"
+                "_raw": "click | set_field: weekly_parent_point_safe: @field.weekly_parent_point_safe+1",
+                "_cleaned": "click | set_field: weekly_parent_point_safe: @field.weekly_parent_point_safe+1"
               }
             ],
             "parameter_list": {
@@ -4431,27 +3837,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_safe",
-                        "matchedExpression": "@local.parent_point_safe",
-                        "type": "local",
-                        "fieldName": "parent_point_safe"
+                        "fullExpression": "@field.total_parent_point_safe+1",
+                        "matchedExpression": "@field.total_parent_point_safe",
+                        "type": "field",
+                        "fieldName": "total_parent_point_safe"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_safe: @local.parent_point_safe",
-                      "matchedExpression": "@local.parent_point_safe",
-                      "type": "local",
-                      "fieldName": "parent_point_safe"
+                      "fullExpression": "click | set_field: total_parent_point_safe: @field.total_parent_point_safe+1",
+                      "matchedExpression": "@field.total_parent_point_safe",
+                      "type": "field",
+                      "fieldName": "total_parent_point_safe"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: total_parent_safe: @local.parent_point_safe",
-                      "matchedExpression": "@local.parent_point_safe",
-                      "type": "local",
-                      "fieldName": "parent_point_safe"
+                      "fullExpression": "click | set_field: total_parent_point_safe: @field.total_parent_point_safe+1",
+                      "matchedExpression": "@field.total_parent_point_safe",
+                      "type": "field",
+                      "fieldName": "total_parent_point_safe"
                     }
                   ]
                 },
@@ -4459,27 +3865,27 @@
                   "args": {
                     "1": [
                       {
-                        "fullExpression": "@local.parent_point_safe",
-                        "matchedExpression": "@local.parent_point_safe",
-                        "type": "local",
-                        "fieldName": "parent_point_safe"
+                        "fullExpression": "@field.weekly_parent_point_safe+1",
+                        "matchedExpression": "@field.weekly_parent_point_safe",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_safe"
                       }
                     ]
                   },
                   "_raw": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_safe: @local.parent_point_safe",
-                      "matchedExpression": "@local.parent_point_safe",
-                      "type": "local",
-                      "fieldName": "parent_point_safe"
+                      "fullExpression": "click | set_field: weekly_parent_point_safe: @field.weekly_parent_point_safe+1",
+                      "matchedExpression": "@field.weekly_parent_point_safe",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_safe"
                     }
                   ],
                   "_cleaned": [
                     {
-                      "fullExpression": "changed | set_field: weekly_parent_point_safe: @local.parent_point_safe",
-                      "matchedExpression": "@local.parent_point_safe",
-                      "type": "local",
-                      "fieldName": "parent_point_safe"
+                      "fullExpression": "click | set_field: weekly_parent_point_safe: @field.weekly_parent_point_safe+1",
+                      "matchedExpression": "@field.weekly_parent_point_safe",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_safe"
                     }
                   ]
                 }
@@ -4505,12 +3911,12 @@
             },
             "_dynamicDependencies": {
               "@field.total_parent_point_safe": [
-                "value"
-              ],
-              "@local.parent_point_safe": [
+                "value",
                 "action_list.0.args.1",
                 "action_list.0._raw",
-                "action_list.0._cleaned",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_safe": [
                 "action_list.1.args.1",
                 "action_list.1._raw",
                 "action_list.1._cleaned"
@@ -31869,7 +31275,7 @@
         "name": "round_button_3",
         "value": "Value",
         "parameter_list": {
-          "icon_src": "/plh_images/icons/letter_outline.svg",
+          "icon_src": "/plh_images/icons/cross_outline.svg",
           "style": "alternative"
         },
         "_nested_name": "round_button_3"
