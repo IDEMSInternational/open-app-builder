@@ -266,10 +266,18 @@ p {
     plh-template-component:first-child {
       margin-bottom: 55px;
       padding-left: var(--large-padding);
-      max-width: 50%;
-      position: relative;
+      max-width: 15%;
+      @media (max-width: 1024px) {
+        max-width: 20%;
+      }
+      @media (max-width: 768px) {
+        max-width: 25%;
+      }
+      @media (max-width: 414px) {
+        max-width: 50%;
+      }
       @media (max-width: 375px) {
-        width: 52%;
+        max-width: 52%;
       }
       .plh-tmpl-comp {
         plh-tmpl-lottie-animation {

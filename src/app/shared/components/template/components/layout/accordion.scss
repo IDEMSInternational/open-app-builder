@@ -28,7 +28,7 @@
     background: var(--ion-color-primary-contrast);
     z-index: 2;
     &.inProgress {
-      background: var(--ion-accordion-progress-secondary-gradient);
+      background: var(--ion-accordion-bg);
     }
     &.disabled {
       background: var(--ion-color-primary-contrast);
@@ -51,6 +51,7 @@
     overflow-y: hidden;
     &.completed {
       background: var(--ion-accordion-bg);
+      color: var(--ion-color-primary);
       .progress {
         opacity: 0;
       }
@@ -70,7 +71,6 @@
       max-height: 600px !important;
       background: var(--ion-accordion-bg);
       transition: max-height 0.4s;
-      color: var(--ion-color-primary-contrast);
       .progress {
         opacity: 0;
         transition: none !important;
@@ -80,9 +80,8 @@
       position: absolute;
       height: 100%;
       left: 0;
-      border-radius: 0 13px 13px 0;
       z-index: 1;
-      background: var(--ion-accordion-progress-secondary-gradient);
+      background: var(--ion-accordion-bg);
       opacity: 1;
       transition: opacity 0.4s ease-in;
     }

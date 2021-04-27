@@ -100,9 +100,6 @@ $horizontal: 90deg;
   --combo-box-passive-no-answer-bg: transparent;
   --combo-box-no-answer-bg: transparent;
   --combo-box-with-answer-bg: transparent;
-  // radio-group
-  --radio-group-active-bg: linear-gradient(179.77deg, #ffe895 34.6%, #fbc70f 105.68%);
-  --radio-group-passive-bg: linear-gradient(179.77deg, #b7e3ff 34.6%, #029eff 105.68%);
 
   --combo-box-gradient-active-start: #{color.adjust($tertiary, $lightness: -13%)};
   --combo-box-gradient-active-end: #{color.adjust($tertiary, $saturation: -3%, $lightness: -40%)};
@@ -191,17 +188,19 @@ $horizontal: 90deg;
   );
   //ACCORDION
   --accordion-section-padding: var(--large-padding) 0 var(--large-padding) 0;
-  --ion-accordion-gradient-start: #{color.adjust(
-      $primary,
-      $hue: -8,
-      $saturation: 8%,
-      $lightness: 17%
-    )};
-  --ion-accordion-gradient-end: var(--ion-color-primary);
+  --ion-accordion-status-bg-start: #{color.adjust($primary, $saturation: -3%, $lightness: 31%)};
+  --ion-accordion-status-bg-end: #{color.adjust($primary, $saturation: 13%, $lightness: 12%)};
+  --ion-accrodion-status-gradient: linear-gradient(
+    180deg,
+    var(--ion-accordion-status-bg-start) 0%,
+    var(--ion-accordion-status-bg-end) 100%
+  );
+  --ion-accordion-gradient-start: #{color.adjust($primary, $saturation: 14%, $lightness: 65%)};
+  --ion-accordion-gradient-end: #{color.adjust($primary, $saturation: 14%, $lightness: 29%)};
   --ion-accordion-bg: linear-gradient(
-    #{$vertical},
-    var(--ion-accordion-gradient-start) 28.12%,
-    var(--ion-accordion-gradient-end) 100%
+    179.77deg,
+    var(--ion-accordion-gradient-start) 34.6%,
+    var(--ion-accordion-gradient-end) 105.68%
   );
   --ion-accordion-progress-gradient-primery-start: #{color.adjust(
       $primary,
@@ -274,6 +273,8 @@ $horizontal: 90deg;
     var(--radio-group-gradient-primary-start) 28.12%,
     var(--radio-group-gradient-primary-end) 100%
   );
+  --radio-group-active-bg: var(--radio-group-gradient-secondary);
+  --radio-group-passive-bg: var(--radio-group-gradient-primary);
   // ROUND ICON BUTTON
   --round-icon-button-light: #{color.adjust($tertiary, $lightness: -42%)}; //#FFCA41
   --round-icon-button: var(--ion-color-secondary); //#F49D04
