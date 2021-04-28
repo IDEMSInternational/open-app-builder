@@ -1631,21 +1631,21 @@
     "rows": [
       {
         "name": "label_group",
-        "value": "@global.together",
+        "value": "@global.together_alternative",
         "type": "set_variable",
         "_nested_name": "label_group",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
+              "fullExpression": "@global.together_alternative",
+              "matchedExpression": "@global.together_alternative",
               "type": "global",
-              "fieldName": "together"
+              "fieldName": "together_alternative"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.together": [
+          "@global.together_alternative": [
             "value"
           ]
         }
@@ -1658,21 +1658,21 @@
       },
       {
         "name": "label_individual",
-        "value": "@global.individual",
+        "value": "@global.individual_alternative",
         "type": "set_variable",
         "_nested_name": "label_individual",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
+              "fullExpression": "@global.individual_alternative",
+              "matchedExpression": "@global.individual_alternative",
               "type": "global",
-              "fieldName": "individual"
+              "fieldName": "individual_alternative"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.individual": [
+          "@global.individual_alternative": [
             "value"
           ]
         }
@@ -1692,9 +1692,6 @@
         "type": "text",
         "name": "text",
         "value": "How would you like to do this workshop?",
-        "parameter_list": {
-          "style": "alternative"
-        },
         "_nested_name": "text"
       },
       {

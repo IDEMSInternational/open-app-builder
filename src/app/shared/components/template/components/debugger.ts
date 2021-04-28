@@ -86,6 +86,7 @@ export class TemplateDebuggerComponent extends TemplateBaseComponent {
     console.log("parent rows", mapToJson(this.parent.templateRowMap));
     console.log("local overrides", this.parent.localVariables);
     console.log("fields", fields);
+    console.log("globals", this.templateService.globals);
     console.log("parent", this.parent);
     console.log("children", this._row.rows);
     console.groupEnd();
