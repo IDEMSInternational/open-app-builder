@@ -62,7 +62,7 @@ export class RoundIconButtonComponent
       this.disabled = true;
     }
     this.text = getStringParamFromTemplateRow(this._row, "text", "");
-    this.icon_src = this.getPathImg(getStringParamFromTemplateRow(this._row, "icon_src", ""));
+    this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
     this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
     this.isHomeScreen = this.style.includes("home_screen");
     this.isCustomIcon = this.icon_src.includes("/");
