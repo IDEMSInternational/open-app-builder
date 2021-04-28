@@ -3,114 +3,6 @@
   export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
-    "flow_name": "splash_screen",
-    "status": "released",
-    "rows": [
-      {
-        "type": "animated_section",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_1",
-            "value": "plh_images/first_app_launch/frustrated.svg",
-            "_nested_name": "animated_section.image_1"
-          },
-          {
-            "type": "text",
-            "name": "slogan_1",
-            "value": "Bringing teenagers up is hard",
-            "parameter_list": {
-              "style": "large center"
-            },
-            "_nested_name": "animated_section.slogan_1"
-          }
-        ],
-        "name": "animated_section",
-        "_nested_name": "animated_section"
-      },
-      {
-        "type": "animated_section",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_2",
-            "value": "plh_images/first_app_launch/loving_parent.svg",
-            "_nested_name": "animated_section.image_2"
-          },
-          {
-            "type": "text",
-            "name": "slogan_2",
-            "value": "You are the best parent your teen could have",
-            "parameter_list": {
-              "style": "large center"
-            },
-            "_nested_name": "animated_section.slogan_2"
-          }
-        ],
-        "name": "animated_section",
-        "_nested_name": "animated_section"
-      },
-      {
-        "type": "animated_section",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_3",
-            "value": "plh_images/first_app_launch/parent_group.svg",
-            "_nested_name": "animated_section.image_3"
-          },
-          {
-            "type": "text",
-            "name": "slogan_3",
-            "value": "Join the 152.4 million parents who have used our resources",
-            "parameter_list": {
-              "style": "large center"
-            },
-            "_nested_name": "animated_section.slogan_3"
-          }
-        ],
-        "name": "animated_section",
-        "_nested_name": "animated_section"
-      },
-      {
-        "type": "animated_section",
-        "rows": [
-          {
-            "type": "text",
-            "value": "Powered by Parenting for Lifelong Health and partners",
-            "parameter_list": {
-              "style": "large center"
-            },
-            "name": "text",
-            "_nested_name": "animated_section.text"
-          },
-          {
-            "type": "image",
-            "name": "logo_1",
-            "value": "plh_images/logos/plh_light.svg",
-            "_nested_name": "animated_section.logo_1"
-          },
-          {
-            "type": "image",
-            "name": "logo_2",
-            "value": "plh_images/logos/unicef_light.svg",
-            "_nested_name": "animated_section.logo_2"
-          },
-          {
-            "type": "image",
-            "name": "logo_3",
-            "value": "plh_images/logos/who_light.svg",
-            "_nested_name": "animated_section.logo_3"
-          }
-        ],
-        "name": "animated_section",
-        "_nested_name": "animated_section"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_template_splash_screen.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "box_tools",
     "status": "released",
     "rows": [
@@ -1798,40 +1690,21 @@
       },
       {
         "type": "text",
-        "name": "text_1",
-        "value": "How would you like to access this workshop?",
+        "name": "text",
+        "value": "How would you like to do this workshop?",
         "parameter_list": {
           "style": "alternative"
         },
-        "_nested_name": "text_1"
+        "_nested_name": "text"
       },
       {
         "type": "display_group",
+        "name": "temp_name_15",
         "rows": [
           {
             "type": "tile_component",
             "name": "individual_workshop",
             "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "group_name",
-                  "Friends"
-                ],
-                "_raw": "click | set_field:group_name:Friends",
-                "_cleaned": "click | set_field:group_name:Friends"
-              },
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "user_name",
-                  "Lucie"
-                ],
-                "_raw": "click | set_field:user_name:Lucie",
-                "_cleaned": "click | set_field:user_name:Lucie"
-              },
               {
                 "trigger": "click",
                 "action_id": "set_field",
@@ -1857,10 +1730,10 @@
               "style": "workshop_page",
               "icon_src": "@local.image_individual"
             },
-            "_nested_name": "display_group.individual_workshop",
+            "_nested_name": "temp_name_15.individual_workshop",
             "_dynamicFields": {
               "action_list": {
-                "3": {
+                "1": {
                   "args": {
                     "0": [
                       {
@@ -1910,9 +1783,9 @@
             },
             "_dynamicDependencies": {
               "@local.target_workshop_stepper": [
-                "action_list.3.args.0",
-                "action_list.3._raw",
-                "action_list.3._cleaned"
+                "action_list.1.args.0",
+                "action_list.1._raw",
+                "action_list.1._cleaned"
               ],
               "@local.label_individual": [
                 "parameter_list.first_line_text"
@@ -1926,26 +1799,6 @@
             "type": "tile_component",
             "name": "group_workshop",
             "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "group_name",
-                  "Friends"
-                ],
-                "_raw": "click | set_field:group_name:Friends",
-                "_cleaned": "click | set_field:group_name:Friends"
-              },
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "user_name",
-                  "Lucie"
-                ],
-                "_raw": "click | set_field:user_name:Lucie",
-                "_cleaned": "click | set_field:user_name:Lucie"
-              },
               {
                 "trigger": "click",
                 "action_id": "set_field",
@@ -1971,10 +1824,10 @@
               "style": "workshop_page",
               "icon_src": "@local.image_group"
             },
-            "_nested_name": "display_group.group_workshop",
+            "_nested_name": "temp_name_15.group_workshop",
             "_dynamicFields": {
               "action_list": {
-                "3": {
+                "1": {
                   "args": {
                     "0": [
                       {
@@ -2024,9 +1877,9 @@
             },
             "_dynamicDependencies": {
               "@local.target_workshop_stepper": [
-                "action_list.3.args.0",
-                "action_list.3._raw",
-                "action_list.3._cleaned"
+                "action_list.1.args.0",
+                "action_list.1._raw",
+                "action_list.1._cleaned"
               ],
               "@local.label_group": [
                 "parameter_list.first_line_text"
@@ -2037,11 +1890,10 @@
             }
           }
         ],
-        "name": "display_group",
-        "_nested_name": "display_group"
+        "_nested_name": "temp_name_15"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_workshops_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
   },
   {
     "flow_type": "template",
@@ -2064,151 +1916,195 @@
       },
       {
         "name": "answer_list_3",
-        "value": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+        "value": [
+          "@global.w_self_care",
+          "@global.w_1on1",
+          "@global.w_praise",
+          "@global.w_instruct",
+          "@global.w_stress",
+          "@global.w_money",
+          "@local.w_rules",
+          "@global.w_consequence",
+          "@global.w_solve",
+          "@global.w_safe",
+          "@global.w_crisis",
+          "@global.w_celebrate"
+        ],
         "type": "set_variable",
         "_nested_name": "answer_list_3",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_self_care",
-              "type": "global",
-              "fieldName": "w_self_care"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_1on1",
-              "type": "global",
-              "fieldName": "w_1on1"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_praise",
-              "type": "global",
-              "fieldName": "w_praise"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_instruct",
-              "type": "global",
-              "fieldName": "w_instruct"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_stress",
-              "type": "global",
-              "fieldName": "w_stress"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_money",
-              "type": "global",
-              "fieldName": "w_money"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@local.w_rules",
-              "type": "local",
-              "fieldName": "w_rules"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_consequence",
-              "type": "global",
-              "fieldName": "w_consequence"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_solve",
-              "type": "global",
-              "fieldName": "w_solve"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_safe",
-              "type": "global",
-              "fieldName": "w_safe"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_crisis",
-              "type": "global",
-              "fieldName": "w_crisis"
-            },
-            {
-              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
-              "matchedExpression": "@global.w_celebrate",
-              "type": "global",
-              "fieldName": "w_celebrate"
-            }
-          ]
+          "value": {
+            "0": [
+              {
+                "fullExpression": "@global.w_self_care",
+                "matchedExpression": "@global.w_self_care",
+                "type": "global",
+                "fieldName": "w_self_care"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "@global.w_1on1",
+                "matchedExpression": "@global.w_1on1",
+                "type": "global",
+                "fieldName": "w_1on1"
+              }
+            ],
+            "2": [
+              {
+                "fullExpression": "@global.w_praise",
+                "matchedExpression": "@global.w_praise",
+                "type": "global",
+                "fieldName": "w_praise"
+              }
+            ],
+            "3": [
+              {
+                "fullExpression": "@global.w_instruct",
+                "matchedExpression": "@global.w_instruct",
+                "type": "global",
+                "fieldName": "w_instruct"
+              }
+            ],
+            "4": [
+              {
+                "fullExpression": "@global.w_stress",
+                "matchedExpression": "@global.w_stress",
+                "type": "global",
+                "fieldName": "w_stress"
+              }
+            ],
+            "5": [
+              {
+                "fullExpression": "@global.w_money",
+                "matchedExpression": "@global.w_money",
+                "type": "global",
+                "fieldName": "w_money"
+              }
+            ],
+            "6": [
+              {
+                "fullExpression": "@local.w_rules",
+                "matchedExpression": "@local.w_rules",
+                "type": "local",
+                "fieldName": "w_rules"
+              }
+            ],
+            "7": [
+              {
+                "fullExpression": "@global.w_consequence",
+                "matchedExpression": "@global.w_consequence",
+                "type": "global",
+                "fieldName": "w_consequence"
+              }
+            ],
+            "8": [
+              {
+                "fullExpression": "@global.w_solve",
+                "matchedExpression": "@global.w_solve",
+                "type": "global",
+                "fieldName": "w_solve"
+              }
+            ],
+            "9": [
+              {
+                "fullExpression": "@global.w_safe",
+                "matchedExpression": "@global.w_safe",
+                "type": "global",
+                "fieldName": "w_safe"
+              }
+            ],
+            "10": [
+              {
+                "fullExpression": "@global.w_crisis",
+                "matchedExpression": "@global.w_crisis",
+                "type": "global",
+                "fieldName": "w_crisis"
+              }
+            ],
+            "11": [
+              {
+                "fullExpression": "@global.w_celebrate",
+                "matchedExpression": "@global.w_celebrate",
+                "type": "global",
+                "fieldName": "w_celebrate"
+              }
+            ]
+          }
         },
         "_dynamicDependencies": {
           "@global.w_self_care": [
-            "value"
+            "value.0"
           ],
           "@global.w_1on1": [
-            "value"
+            "value.1"
           ],
           "@global.w_praise": [
-            "value"
+            "value.2"
           ],
           "@global.w_instruct": [
-            "value"
+            "value.3"
           ],
           "@global.w_stress": [
-            "value"
+            "value.4"
           ],
           "@global.w_money": [
-            "value"
+            "value.5"
           ],
           "@local.w_rules": [
-            "value"
+            "value.6"
           ],
           "@global.w_consequence": [
-            "value"
+            "value.7"
           ],
           "@global.w_solve": [
-            "value"
+            "value.8"
           ],
           "@global.w_safe": [
-            "value"
+            "value.9"
           ],
           "@global.w_crisis": [
-            "value"
+            "value.10"
           ],
           "@global.w_celebrate": [
-            "value"
+            "value.11"
           ]
         }
       },
       {
         "name": "answer_list_4",
-        "value": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg; \nname:true | text:@global.together | image:plh_images/workshops/options/together.svg",
+        "value": [
+          "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg",
+          "name:true | text:@global.together | image:plh_images/workshops/options/together.svg"
+        ],
         "type": "set_variable",
         "_nested_name": "answer_list_4",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg; \nname:true | text:@global.together | image:plh_images/workshops/options/together.svg",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            },
-            {
-              "fullExpression": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg; \nname:true | text:@global.together | image:plh_images/workshops/options/together.svg",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
+          "value": {
+            "0": [
+              {
+                "fullExpression": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg",
+                "matchedExpression": "@global.individual",
+                "type": "global",
+                "fieldName": "individual"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "name:true | text:@global.together | image:plh_images/workshops/options/together.svg",
+                "matchedExpression": "@global.together",
+                "type": "global",
+                "fieldName": "together"
+              }
+            ]
+          }
         },
         "_dynamicDependencies": {
           "@global.individual": [
-            "value"
+            "value.0"
           ],
           "@global.together": [
-            "value"
+            "value.1"
           ]
         }
       },
@@ -6823,6 +6719,91 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "survey_stepper",
+    "status": "released",
+    "rows": [
+      {
+        "name": "progress_bar_value",
+        "type": "set_variable",
+        "_nested_name": "progress_bar_value"
+      },
+      {
+        "name": "progress_bar_num_items",
+        "type": "set_variable",
+        "_nested_name": "progress_bar_num_items"
+      },
+      {
+        "name": "progress_bar",
+        "value": "@local.progress_bar_value",
+        "parameter_list": {
+          "num_items": "@local.progress_bar_num_items"
+        },
+        "type": "set_variable",
+        "_nested_name": "progress_bar",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.progress_bar_value",
+              "matchedExpression": "@local.progress_bar_value",
+              "type": "local",
+              "fieldName": "progress_bar_value"
+            }
+          ],
+          "parameter_list": {
+            "num_items": [
+              {
+                "fullExpression": "@local.progress_bar_num_items",
+                "matchedExpression": "@local.progress_bar_num_items",
+                "type": "local",
+                "fieldName": "progress_bar_num_items"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.progress_bar_value": [
+            "value"
+          ],
+          "@local.progress_bar_num_items": [
+            "parameter_list.num_items"
+          ]
+        }
+      },
+      {
+        "name": "progress_field_name",
+        "type": "set_variable",
+        "_nested_name": "progress_field_name"
+      },
+      {
+        "type": "nav_group",
+        "name": "nav_template_list",
+        "parameter_list": {
+          "progress_field": "@local.progress_field_name"
+        },
+        "_nested_name": "nav_template_list",
+        "_dynamicFields": {
+          "parameter_list": {
+            "progress_field": [
+              {
+                "fullExpression": "@local.progress_field_name",
+                "matchedExpression": "@local.progress_field_name",
+                "type": "local",
+                "fieldName": "progress_field_name"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.progress_field_name": [
+            "parameter_list.progress_field"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_surveys.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "box_slider",
     "status": "released",
     "rows": [
@@ -11076,91 +11057,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "survey_stepper",
-    "status": "released",
-    "rows": [
-      {
-        "name": "progress_bar_value",
-        "type": "set_variable",
-        "_nested_name": "progress_bar_value"
-      },
-      {
-        "name": "progress_bar_num_items",
-        "type": "set_variable",
-        "_nested_name": "progress_bar_num_items"
-      },
-      {
-        "name": "progress_bar",
-        "value": "@local.progress_bar_value",
-        "parameter_list": {
-          "num_items": "@local.progress_bar_num_items"
-        },
-        "type": "set_variable",
-        "_nested_name": "progress_bar",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@local.progress_bar_value",
-              "matchedExpression": "@local.progress_bar_value",
-              "type": "local",
-              "fieldName": "progress_bar_value"
-            }
-          ],
-          "parameter_list": {
-            "num_items": [
-              {
-                "fullExpression": "@local.progress_bar_num_items",
-                "matchedExpression": "@local.progress_bar_num_items",
-                "type": "local",
-                "fieldName": "progress_bar_num_items"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.progress_bar_value": [
-            "value"
-          ],
-          "@local.progress_bar_num_items": [
-            "parameter_list.num_items"
-          ]
-        }
-      },
-      {
-        "name": "progress_field_name",
-        "type": "set_variable",
-        "_nested_name": "progress_field_name"
-      },
-      {
-        "type": "nav_group",
-        "name": "nav_template_list",
-        "parameter_list": {
-          "progress_field": "@local.progress_field_name"
-        },
-        "_nested_name": "nav_template_list",
-        "_dynamicFields": {
-          "parameter_list": {
-            "progress_field": [
-              {
-                "fullExpression": "@local.progress_field_name",
-                "matchedExpression": "@local.progress_field_name",
-                "type": "local",
-                "fieldName": "progress_field_name"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.progress_field_name": [
-            "parameter_list.progress_field"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_surveys.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "widget_audio",
     "status": "released",
     "rows": [
@@ -11472,957 +11368,6 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_widgets.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_video",
-    "status": "released",
-    "rows": [
-      {
-        "name": "video_src",
-        "type": "set_variable",
-        "_nested_name": "video_src"
-      },
-      {
-        "name": "video_title",
-        "value": "Video",
-        "type": "set_variable",
-        "_nested_name": "video_title"
-      },
-      {
-        "name": "video_help",
-        "type": "set_variable",
-        "_nested_name": "video_help"
-      },
-      {
-        "type": "template",
-        "name": "widget_video",
-        "value": "widget_video",
-        "rows": [
-          {
-            "name": "video_src",
-            "value": "plh_video/lets_slow_down.mp4",
-            "type": "set_variable",
-            "_nested_name": "widget_video.video_src"
-          },
-          {
-            "name": "title",
-            "value": "@local.video_title",
-            "type": "set_variable",
-            "_nested_name": "widget_video.title",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.video_title",
-                  "matchedExpression": "@local.video_title",
-                  "type": "local",
-                  "fieldName": "video_title"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.video_title": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "help",
-            "value": "@local.video_help",
-            "type": "set_variable",
-            "_nested_name": "widget_video.help",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.video_help",
-                  "matchedExpression": "@local.video_help",
-                  "type": "local",
-                  "fieldName": "video_help"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.video_help": [
-                "value"
-              ]
-            }
-          }
-        ],
-        "_nested_name": "widget_video"
-      },
-      {
-        "name": "bottom_text",
-        "hidden": true,
-        "type": "set_variable",
-        "_nested_name": "bottom_text"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_audio",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "text",
-        "_nested_name": "text"
-      },
-      {
-        "type": "lottie_animation",
-        "name": "lottie_src",
-        "hidden": true,
-        "_nested_name": "lottie_src"
-      },
-      {
-        "type": "template",
-        "name": "widget_audio",
-        "value": "widget_audio",
-        "rows": [
-          {
-            "type": "set_variable",
-            "name": "audio_title",
-            "value": "Box title",
-            "_nested_name": "widget_audio.audio_title"
-          }
-        ],
-        "_nested_name": "widget_audio"
-      },
-      {
-        "type": "button",
-        "name": "button",
-        "hidden": true,
-        "_nested_name": "button"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_image",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": true,
-        "_nested_name": "title"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "parameter_list": {
-          "style": "rounded_corners"
-        },
-        "_nested_name": "image_src"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "_nested_name": "text"
-      },
-      {
-        "type": "dashed_box",
-        "name": "dashed_box",
-        "hidden": true,
-        "_nested_name": "dashed_box"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_image_more",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": true,
-        "_nested_name": "title"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "parameter_list": {
-          "style": "rounded_corners"
-        },
-        "_nested_name": "image_src"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "_nested_name": "text"
-      },
-      {
-        "type": "dashed_box",
-        "name": "dashed_box",
-        "hidden": true,
-        "_nested_name": "dashed_box"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [
-          {
-            "name": "button_completed",
-            "value": "@global.more_button",
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_completed",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@global.more_button",
-                  "matchedExpression": "@global.more_button",
-                  "type": "global",
-                  "fieldName": "more_button"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@global.more_button": [
-                "value"
-              ]
-            }
-          }
-        ],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_story",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": true,
-        "_nested_name": "title"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "parameter_list": {
-          "style": "rounded_corners"
-        },
-        "_nested_name": "image_src"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "_nested_name": "text"
-      },
-      {
-        "type": "dashed_box",
-        "name": "dashed_box",
-        "hidden": true,
-        "_nested_name": "dashed_box"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [
-          {
-            "name": "use_completed_chevron",
-            "value": true,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.use_completed_chevron"
-          }
-        ],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_buttons",
-    "status": "released",
-    "rows": [
-      {
-        "type": "image",
-        "name": "image_src",
-        "hidden": true,
-        "parameter_list": {
-          "style": "rounded_corners"
-        },
-        "_nested_name": "image_src"
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "_nested_name": "text_1"
-      },
-      {
-        "type": "button",
-        "name": "button_1",
-        "_nested_name": "button_1"
-      },
-      {
-        "type": "text",
-        "name": "text_2",
-        "hidden": true,
-        "_nested_name": "text_2"
-      },
-      {
-        "type": "button",
-        "name": "button_2",
-        "hidden": true,
-        "_nested_name": "button_2"
-      },
-      {
-        "type": "text",
-        "name": "text_3",
-        "hidden": true,
-        "_nested_name": "text_3"
-      },
-      {
-        "type": "button",
-        "name": "button_3",
-        "hidden": true,
-        "_nested_name": "button_3"
-      },
-      {
-        "type": "dashed_box",
-        "name": "habit_text",
-        "hidden": true,
-        "parameter_list": {
-          "icon_src": "plh_images/icons/star_circle.svg",
-          "icon_position": "top-left"
-        },
-        "_nested_name": "habit_text"
-      },
-      {
-        "type": "text",
-        "name": "bottom_text",
-        "hidden": true,
-        "_nested_name": "bottom_text"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_timer",
-    "status": "released",
-    "rows": [
-      {
-        "name": "timer_duration",
-        "value": 10,
-        "type": "set_variable",
-        "_nested_name": "timer_duration"
-      },
-      {
-        "name": "timer_duration_extension",
-        "value": 1,
-        "type": "set_variable",
-        "_nested_name": "timer_duration_extension"
-      },
-      {
-        "name": "timer_title",
-        "value": "Timer",
-        "type": "set_variable",
-        "_nested_name": "timer_title"
-      },
-      {
-        "name": "timer_help",
-        "type": "set_variable",
-        "_nested_name": "timer_help"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "_nested_name": "text"
-      },
-      {
-        "type": "button",
-        "name": "button_1",
-        "hidden": true,
-        "_nested_name": "button_1"
-      },
-      {
-        "type": "button",
-        "name": "button_2",
-        "hidden": true,
-        "_nested_name": "button_2"
-      },
-      {
-        "type": "button",
-        "name": "button_3",
-        "hidden": true,
-        "_nested_name": "button_3"
-      },
-      {
-        "type": "template",
-        "name": "widget_timer",
-        "value": "widget_timer",
-        "rows": [
-          {
-            "name": "duration",
-            "value": "@local.timer_duration",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.duration",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_duration",
-                  "matchedExpression": "@local.timer_duration",
-                  "type": "local",
-                  "fieldName": "timer_duration"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_duration": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "duration_extension",
-            "value": "@local.timer_duration_extension",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.duration_extension",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_duration_extension",
-                  "matchedExpression": "@local.timer_duration_extension",
-                  "type": "local",
-                  "fieldName": "timer_duration_extension"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_duration_extension": [
-                "value"
-              ]
-            }
-          },
-          {
-            "value": "@local.timer_title",
-            "type": "set_variable",
-            "name": "set_variable",
-            "_nested_name": "widget_timer.set_variable",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_title",
-                  "matchedExpression": "@local.timer_title",
-                  "type": "local",
-                  "fieldName": "timer_title"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_title": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "title",
-            "value": "@local.timer_help",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.title",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_help",
-                  "matchedExpression": "@local.timer_help",
-                  "type": "local",
-                  "fieldName": "timer_help"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_help": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "help",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.help"
-          }
-        ],
-        "_nested_name": "widget_timer"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_duo_combo_box",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "combo_box_1",
-        "value": "box_combo_box",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": true,
-            "rows": [],
-            "_nested_name": "combo_box_1.nav_buttons"
-          }
-        ],
-        "_nested_name": "combo_box_1"
-      },
-      {
-        "type": "template",
-        "name": "combo_box_2",
-        "value": "box_combo_box",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": true,
-            "rows": [],
-            "_nested_name": "combo_box_2.nav_buttons"
-          }
-        ],
-        "_nested_name": "combo_box_2"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_duo_radio_buttons",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "radio_buttons_1",
-        "value": "box_radio_buttons",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": true,
-            "rows": [],
-            "_nested_name": "radio_buttons_1.nav_buttons"
-          }
-        ],
-        "_nested_name": "radio_buttons_1"
-      },
-      {
-        "type": "template",
-        "name": "radio_buttons_2",
-        "value": "box_radio_buttons",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": true,
-            "rows": [],
-            "_nested_name": "radio_buttons_2.nav_buttons"
-          }
-        ],
-        "_nested_name": "radio_buttons_2"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_multi_radio_buttons",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "radio_buttons_1",
-        "value": "box_radio_buttons",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": true,
-            "rows": [],
-            "_nested_name": "radio_buttons_1.nav_buttons"
-          }
-        ],
-        "_nested_name": "radio_buttons_1"
-      },
-      {
-        "type": "template",
-        "name": "radio_buttons_2",
-        "value": "box_radio_buttons",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": true,
-            "rows": [],
-            "_nested_name": "radio_buttons_2.nav_buttons"
-          }
-        ],
-        "_nested_name": "radio_buttons_2"
-      },
-      {
-        "type": "template",
-        "name": "radio_buttons_3",
-        "value": "box_radio_buttons",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": true,
-            "rows": [],
-            "_nested_name": "radio_buttons_3.nav_buttons"
-          }
-        ],
-        "_nested_name": "radio_buttons_3"
-      },
-      {
-        "type": "template",
-        "name": "radio_buttons_4",
-        "value": "box_radio_buttons",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "nav_buttons",
-            "hidden": true,
-            "rows": [],
-            "_nested_name": "radio_buttons_4.nav_buttons"
-          }
-        ],
-        "_nested_name": "radio_buttons_4"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_parent_points_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "text",
-        "name": "top_text",
-        "_nested_name": "top_text"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "value": "Your marked @global.parent_points for this week will appear here.",
-        "_nested_name": "text",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "Your marked @global.parent_points for this week will appear here.",
-              "matchedExpression": "@global.parent_points",
-              "type": "global",
-              "fieldName": "parent_points"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.parent_points": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "bottom_text",
-        "_nested_name": "bottom_text"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
   },
   {
     "flow_type": "template",
@@ -13455,206 +12400,1062 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "workshops_navigation_page",
+    "flow_name": "box_video",
     "status": "released",
     "rows": [
       {
-        "type": "display_group",
-        "rows": [
-          {
-            "type": "title",
-            "value": "Weekly Workshops",
-            "parameter_list": {
-              "help": "some help"
-            },
-            "name": "title",
-            "_nested_name": "display_group.title"
-          },
-          {
-            "type": "button",
-            "name": "options_button",
-            "value": "Options",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "pop_up",
-                "args": [],
-                "_raw": "pop_up | workshop_options_popup",
-                "_cleaned": "click | pop_up | workshop_options_popup"
-              }
-            ],
-            "_nested_name": "display_group.options_button"
-          }
-        ],
-        "name": "display_group",
-        "_nested_name": "display_group"
+        "name": "video_src",
+        "type": "set_variable",
+        "_nested_name": "video_src"
       },
       {
-        "type": "tile_component",
-        "name": "quick_start",
-        "value": "@local.group_name\nStart @local.next_workshop_name",
-        "action_list": [
+        "name": "video_title",
+        "value": "Video",
+        "type": "set_variable",
+        "_nested_name": "video_title"
+      },
+      {
+        "name": "video_help",
+        "type": "set_variable",
+        "_nested_name": "video_help"
+      },
+      {
+        "type": "template",
+        "name": "widget_video",
+        "value": "widget_video",
+        "rows": [
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "@field.next_workshop"
-            ],
-            "_raw": "click | go_to:@field.next_workshop",
-            "_cleaned": "click | go_to:@field.next_workshop"
-          }
-        ],
-        "hidden": " ",
-        "parameter_list": {
-          "first_line_text": "My Group",
-          "second_line_text": "Start week one",
-          "style": "quick_start",
-          "icon_src": "plh_images/icons/star.svg"
-        },
-        "_nested_name": "quick_start",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@local.group_name\nStart @local.next_workshop_name",
-              "matchedExpression": "@local.group_name",
-              "type": "local",
-              "fieldName": "group_name"
+            "name": "video_src",
+            "value": "plh_video/lets_slow_down.mp4",
+            "type": "set_variable",
+            "_nested_name": "widget_video.video_src"
+          },
+          {
+            "name": "title",
+            "value": "@local.video_title",
+            "type": "set_variable",
+            "_nested_name": "widget_video.title",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@local.video_title",
+                  "matchedExpression": "@local.video_title",
+                  "type": "local",
+                  "fieldName": "video_title"
+                }
+              ]
             },
-            {
-              "fullExpression": "@local.group_name\nStart @local.next_workshop_name",
-              "matchedExpression": "@local.next_workshop_name",
-              "type": "local",
-              "fieldName": "next_workshop_name"
+            "_dynamicDependencies": {
+              "@local.video_title": [
+                "value"
+              ]
             }
-          ],
-          "action_list": {
-            "0": {
-              "args": {
-                "0": [
-                  {
-                    "fullExpression": "@field.next_workshop",
-                    "matchedExpression": "@field.next_workshop",
-                    "type": "field",
-                    "fieldName": "next_workshop"
-                  }
-                ]
-              },
-              "_raw": [
+          },
+          {
+            "name": "help",
+            "value": "@local.video_help",
+            "type": "set_variable",
+            "_nested_name": "widget_video.help",
+            "_dynamicFields": {
+              "value": [
                 {
-                  "fullExpression": "click | go_to:@field.next_workshop",
-                  "matchedExpression": "@field.next_workshop",
-                  "type": "field",
-                  "fieldName": "next_workshop"
+                  "fullExpression": "@local.video_help",
+                  "matchedExpression": "@local.video_help",
+                  "type": "local",
+                  "fieldName": "video_help"
                 }
-              ],
-              "_cleaned": [
-                {
-                  "fullExpression": "click | go_to:@field.next_workshop",
-                  "matchedExpression": "@field.next_workshop",
-                  "type": "field",
-                  "fieldName": "next_workshop"
-                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.video_help": [
+                "value"
               ]
             }
           }
+        ],
+        "_nested_name": "widget_video"
+      },
+      {
+        "name": "bottom_text",
+        "hidden": true,
+        "type": "set_variable",
+        "_nested_name": "bottom_text"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_audio",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text",
+        "_nested_name": "text"
+      },
+      {
+        "type": "lottie_animation",
+        "name": "lottie_src",
+        "hidden": true,
+        "_nested_name": "lottie_src"
+      },
+      {
+        "type": "template",
+        "name": "widget_audio",
+        "value": "widget_audio",
+        "rows": [
+          {
+            "type": "set_variable",
+            "name": "audio_title",
+            "value": "Box title",
+            "_nested_name": "widget_audio.audio_title"
+          }
+        ],
+        "_nested_name": "widget_audio"
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "hidden": true,
+        "_nested_name": "button"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_image",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "hidden": true,
+        "_nested_name": "title"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "parameter_list": {
+          "style": "rounded_corners"
+        },
+        "_nested_name": "image_src"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "_nested_name": "text"
+      },
+      {
+        "type": "dashed_box",
+        "name": "dashed_box",
+        "hidden": true,
+        "_nested_name": "dashed_box"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_image_more",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "hidden": true,
+        "_nested_name": "title"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "parameter_list": {
+          "style": "rounded_corners"
+        },
+        "_nested_name": "image_src"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "_nested_name": "text"
+      },
+      {
+        "type": "dashed_box",
+        "name": "dashed_box",
+        "hidden": true,
+        "_nested_name": "dashed_box"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [
+          {
+            "name": "button_completed",
+            "value": "@global.more_button",
+            "type": "set_variable",
+            "_nested_name": "nav_buttons.button_completed",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.more_button",
+                  "matchedExpression": "@global.more_button",
+                  "type": "global",
+                  "fieldName": "more_button"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.more_button": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_story",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "hidden": true,
+        "_nested_name": "title"
+      },
+      {
+        "type": "image",
+        "name": "image_src",
+        "parameter_list": {
+          "style": "rounded_corners"
+        },
+        "_nested_name": "image_src"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "_nested_name": "text"
+      },
+      {
+        "type": "dashed_box",
+        "name": "dashed_box",
+        "hidden": true,
+        "_nested_name": "dashed_box"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [
+          {
+            "name": "use_completed_chevron",
+            "value": true,
+            "type": "set_variable",
+            "_nested_name": "nav_buttons.use_completed_chevron"
+          }
+        ],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "image",
+        "name": "image_src",
+        "hidden": true,
+        "parameter_list": {
+          "style": "rounded_corners"
+        },
+        "_nested_name": "image_src"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "_nested_name": "text_1"
+      },
+      {
+        "type": "button",
+        "name": "button_1",
+        "_nested_name": "button_1"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "hidden": true,
+        "_nested_name": "text_2"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "hidden": true,
+        "_nested_name": "button_2"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "hidden": true,
+        "_nested_name": "text_3"
+      },
+      {
+        "type": "button",
+        "name": "button_3",
+        "hidden": true,
+        "_nested_name": "button_3"
+      },
+      {
+        "type": "dashed_box",
+        "name": "habit_text",
+        "hidden": true,
+        "parameter_list": {
+          "icon_src": "plh_images/icons/star_circle.svg",
+          "icon_position": "top-left"
+        },
+        "_nested_name": "habit_text"
+      },
+      {
+        "type": "text",
+        "name": "bottom_text",
+        "hidden": true,
+        "_nested_name": "bottom_text"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_timer",
+    "status": "released",
+    "rows": [
+      {
+        "name": "timer_duration",
+        "value": 10,
+        "type": "set_variable",
+        "_nested_name": "timer_duration"
+      },
+      {
+        "name": "timer_duration_extension",
+        "value": 1,
+        "type": "set_variable",
+        "_nested_name": "timer_duration_extension"
+      },
+      {
+        "name": "timer_title",
+        "value": "Timer",
+        "type": "set_variable",
+        "_nested_name": "timer_title"
+      },
+      {
+        "name": "timer_help",
+        "type": "set_variable",
+        "_nested_name": "timer_help"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "_nested_name": "text"
+      },
+      {
+        "type": "button",
+        "name": "button_1",
+        "hidden": true,
+        "_nested_name": "button_1"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "hidden": true,
+        "_nested_name": "button_2"
+      },
+      {
+        "type": "button",
+        "name": "button_3",
+        "hidden": true,
+        "_nested_name": "button_3"
+      },
+      {
+        "type": "template",
+        "name": "widget_timer",
+        "value": "widget_timer",
+        "rows": [
+          {
+            "name": "duration",
+            "value": "@local.timer_duration",
+            "type": "set_variable",
+            "_nested_name": "widget_timer.duration",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@local.timer_duration",
+                  "matchedExpression": "@local.timer_duration",
+                  "type": "local",
+                  "fieldName": "timer_duration"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.timer_duration": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "duration_extension",
+            "value": "@local.timer_duration_extension",
+            "type": "set_variable",
+            "_nested_name": "widget_timer.duration_extension",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@local.timer_duration_extension",
+                  "matchedExpression": "@local.timer_duration_extension",
+                  "type": "local",
+                  "fieldName": "timer_duration_extension"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.timer_duration_extension": [
+                "value"
+              ]
+            }
+          },
+          {
+            "value": "@local.timer_title",
+            "type": "set_variable",
+            "name": "set_variable",
+            "_nested_name": "widget_timer.set_variable",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@local.timer_title",
+                  "matchedExpression": "@local.timer_title",
+                  "type": "local",
+                  "fieldName": "timer_title"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.timer_title": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "title",
+            "value": "@local.timer_help",
+            "type": "set_variable",
+            "_nested_name": "widget_timer.title",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@local.timer_help",
+                  "matchedExpression": "@local.timer_help",
+                  "type": "local",
+                  "fieldName": "timer_help"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.timer_help": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "help",
+            "type": "set_variable",
+            "_nested_name": "widget_timer.help"
+          }
+        ],
+        "_nested_name": "widget_timer"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_duo_combo_box",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "combo_box_1",
+        "value": "box_combo_box",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": true,
+            "rows": [],
+            "_nested_name": "combo_box_1.nav_buttons"
+          }
+        ],
+        "_nested_name": "combo_box_1"
+      },
+      {
+        "type": "template",
+        "name": "combo_box_2",
+        "value": "box_combo_box",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": true,
+            "rows": [],
+            "_nested_name": "combo_box_2.nav_buttons"
+          }
+        ],
+        "_nested_name": "combo_box_2"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_duo_radio_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "radio_buttons_1",
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": true,
+            "rows": [],
+            "_nested_name": "radio_buttons_1.nav_buttons"
+          }
+        ],
+        "_nested_name": "radio_buttons_1"
+      },
+      {
+        "type": "template",
+        "name": "radio_buttons_2",
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": true,
+            "rows": [],
+            "_nested_name": "radio_buttons_2.nav_buttons"
+          }
+        ],
+        "_nested_name": "radio_buttons_2"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_multi_radio_buttons",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "radio_buttons_1",
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": true,
+            "rows": [],
+            "_nested_name": "radio_buttons_1.nav_buttons"
+          }
+        ],
+        "_nested_name": "radio_buttons_1"
+      },
+      {
+        "type": "template",
+        "name": "radio_buttons_2",
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": true,
+            "rows": [],
+            "_nested_name": "radio_buttons_2.nav_buttons"
+          }
+        ],
+        "_nested_name": "radio_buttons_2"
+      },
+      {
+        "type": "template",
+        "name": "radio_buttons_3",
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": true,
+            "rows": [],
+            "_nested_name": "radio_buttons_3.nav_buttons"
+          }
+        ],
+        "_nested_name": "radio_buttons_3"
+      },
+      {
+        "type": "template",
+        "name": "radio_buttons_4",
+        "value": "box_radio_buttons",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "hidden": true,
+            "rows": [],
+            "_nested_name": "radio_buttons_4.nav_buttons"
+          }
+        ],
+        "_nested_name": "radio_buttons_4"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "box_parent_points_temp",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "top_text",
+        "_nested_name": "top_text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Your marked @global.parent_points for this week will appear here.",
+        "_nested_name": "text",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Your marked @global.parent_points for this week will appear here.",
+              "matchedExpression": "@global.parent_points",
+              "type": "global",
+              "fieldName": "parent_points"
+            }
+          ]
         },
         "_dynamicDependencies": {
-          "@local.group_name": [
+          "@global.parent_points": [
             "value"
-          ],
-          "@local.next_workshop_name": [
-            "value"
-          ],
-          "@field.next_workshop": [
-            "action_list.0.args.0",
-            "action_list.0._raw",
-            "action_list.0._cleaned"
           ]
         }
       },
       {
-        "type": "workshops_accordion",
-        "parameter_list": {
-          "current_workshop_num": "3"
-        },
-        "rows": [
+        "type": "text",
+        "name": "bottom_text",
+        "_nested_name": "bottom_text"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
           {
-            "type": "accordion_section",
-            "value": 100,
-            "disabled": false,
-            "parameter_list": {
-              "state": "open",
-              "completed": "true",
-              "title": "Description of week one"
-            },
-            "rows": [
-              {
-                "type": "template",
-                "name": "workshop_1",
-                "value": "workshop_accordion_item",
-                "rows": [
-                  {
-                    "name": "target_workshop_stepper",
-                    "value": "w_self_care_stepper",
-                    "type": "set_variable",
-                    "_nested_name": "workshops_accordion.accordion_section.workshop_1.target_workshop_stepper"
-                  }
-                ],
-                "_nested_name": "workshops_accordion.accordion_section.workshop_1"
-              }
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
             ],
-            "name": "accordion_section",
-            "_nested_name": "workshops_accordion.accordion_section"
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
           },
           {
-            "type": "accordion_section",
-            "value": 70,
-            "disabled": false,
-            "parameter_list": {
-              "state": "closed",
-              "title": "Description of week four"
-            },
-            "rows": [
-              {
-                "type": "button",
-                "name": "btn_example_1",
-                "value": "First",
-                "parameter_list": {
-                  "style": "active"
-                },
-                "_nested_name": "workshops_accordion.accordion_section.btn_example_1"
-              }
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
             ],
-            "name": "accordion_section",
-            "_nested_name": "workshops_accordion.accordion_section"
-          },
-          {
-            "type": "accordion_section",
-            "disabled": true,
-            "parameter_list": {
-              "state": "closed",
-              "title": "Description of week five"
-            },
-            "rows": [
-              {
-                "type": "button",
-                "name": "btn_example_1",
-                "value": "First",
-                "parameter_list": {
-                  "style": "active"
-                },
-                "_nested_name": "workshops_accordion.accordion_section.btn_example_1"
-              }
-            ],
-            "name": "accordion_section",
-            "_nested_name": "workshops_accordion.accordion_section"
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "name": "workshops_accordion",
-        "_nested_name": "workshops_accordion"
+        "rows": [],
+        "_nested_name": "nav_buttons"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_workshops_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "splash_screen",
+    "status": "released",
+    "rows": [
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_1",
+            "value": "plh_images/first_app_launch/frustrated.svg",
+            "_nested_name": "animated_section.image_1"
+          },
+          {
+            "type": "text",
+            "name": "slogan_1",
+            "value": "Bringing teenagers up is hard",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_1"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_2",
+            "value": "plh_images/first_app_launch/loving_parent.svg",
+            "_nested_name": "animated_section.image_2"
+          },
+          {
+            "type": "text",
+            "name": "slogan_2",
+            "value": "You are the best parent your teen could have",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_2"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_3",
+            "value": "plh_images/first_app_launch/parent_group.svg",
+            "_nested_name": "animated_section.image_3"
+          },
+          {
+            "type": "text",
+            "name": "slogan_3",
+            "value": "Join the 152.4 million parents who have used our resources",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_3"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "text",
+            "value": "Powered by Parenting for Lifelong Health and partners",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "name": "text",
+            "_nested_name": "animated_section.text"
+          },
+          {
+            "type": "image",
+            "name": "logo_1",
+            "value": "plh_images/logos/plh_light.svg",
+            "_nested_name": "animated_section.logo_1"
+          },
+          {
+            "type": "image",
+            "name": "logo_2",
+            "value": "plh_images/logos/unicef_light.svg",
+            "_nested_name": "animated_section.logo_2"
+          },
+          {
+            "type": "image",
+            "name": "logo_3",
+            "value": "plh_images/logos/who_light.svg",
+            "_nested_name": "animated_section.logo_3"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_template_splash_screen.xlsx"
   },
   {
     "flow_type": "template",
@@ -13928,6 +13729,103 @@
               }
             ],
             "_nested_name": "workshop_activity.content_box"
+          }
+        ],
+        "_nested_name": "workshop_activity"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/home_practice.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "home_practice_review",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [
+          {
+            "name": "activity_image",
+            "value": "plh_images/workshop_modes/group/with_teen.svg",
+            "condition": "@field.do_workshops_together",
+            "type": "set_variable",
+            "_nested_name": "workshop_activity.activity_image",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "@field.do_workshops_together",
+                  "matchedExpression": "@field.do_workshops_together",
+                  "type": "field",
+                  "fieldName": "do_workshops_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_workshops_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "activity_image",
+            "value": "plh_images/workshop_modes/guide_2/with_teen.svg",
+            "condition": "!@field.do_workshops_together",
+            "type": "set_variable",
+            "_nested_name": "workshop_activity.activity_image",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "!@field.do_workshops_together",
+                  "matchedExpression": "@field.do_workshops_together",
+                  "type": "field",
+                  "fieldName": "do_workshops_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_workshops_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "activity_title",
+            "value": "Home Practice Review",
+            "type": "set_variable",
+            "_nested_name": "workshop_activity.activity_title"
+          },
+          {
+            "name": "intro_text",
+            "type": "set_variable",
+            "_nested_name": "workshop_activity.intro_text"
+          },
+          {
+            "name": "activity_banner",
+            "hidden": false,
+            "type": "set_variable",
+            "_nested_name": "workshop_activity.activity_banner"
           }
         ],
         "_nested_name": "workshop_activity"
@@ -20444,14 +20342,14 @@
     "status": "released",
     "rows": [
       {
-        "name": "answer_list_1",
+        "name": "answer_1_list",
         "value": [
           "First",
           "Second",
           "Third"
         ],
         "type": "set_variable",
-        "_nested_name": "answer_list_1"
+        "_nested_name": "answer_1_list"
       },
       {
         "name": "option_1",
@@ -20472,175 +20370,192 @@
         "_nested_name": "option_3"
       },
       {
-        "name": "answer_list_2",
-        "value": "@local.option_1;  @local.option_2;  @local.option_3",
+        "name": "answer_2_list",
+        "value": [
+          "@local.option_1",
+          "@local.option_2",
+          "@local.option_3"
+        ],
         "type": "set_variable",
-        "_nested_name": "answer_list_2",
+        "_nested_name": "answer_2_list",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
-              "matchedExpression": "@local.option_1",
-              "type": "local",
-              "fieldName": "option_1"
-            },
-            {
-              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
-              "matchedExpression": "@local.option_2",
-              "type": "local",
-              "fieldName": "option_2"
-            },
-            {
-              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
-              "matchedExpression": "@local.option_3",
-              "type": "local",
-              "fieldName": "option_3"
-            }
-          ]
+          "value": {
+            "0": [
+              {
+                "fullExpression": "@local.option_1",
+                "matchedExpression": "@local.option_1",
+                "type": "local",
+                "fieldName": "option_1"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "@local.option_2",
+                "matchedExpression": "@local.option_2",
+                "type": "local",
+                "fieldName": "option_2"
+              }
+            ],
+            "2": [
+              {
+                "fullExpression": "@local.option_3",
+                "matchedExpression": "@local.option_3",
+                "type": "local",
+                "fieldName": "option_3"
+              }
+            ]
+          }
         },
         "_dynamicDependencies": {
           "@local.option_1": [
-            "value"
+            "value.0"
           ],
           "@local.option_2": [
-            "value"
+            "value.1"
           ],
           "@local.option_3": [
-            "value"
+            "value.2"
           ]
         }
       },
       {
-        "name": "answer_list_3",
-        "value": "@global.example_global_constant_text; @global.example_global_constant_title;",
+        "name": "answer_3_list",
+        "value": [
+          "@global.example_global_constant_text",
+          "@global.example_global_constant_title"
+        ],
         "type": "set_variable",
-        "_nested_name": "answer_list_3",
+        "_nested_name": "answer_3_list",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.example_global_constant_text; @global.example_global_constant_title;",
-              "matchedExpression": "@global.example_global_constant_text",
-              "type": "global",
-              "fieldName": "example_global_constant_text"
-            },
-            {
-              "fullExpression": "@global.example_global_constant_text; @global.example_global_constant_title;",
-              "matchedExpression": "@global.example_global_constant_title",
-              "type": "global",
-              "fieldName": "example_global_constant_title"
-            }
-          ]
+          "value": {
+            "0": [
+              {
+                "fullExpression": "@global.example_global_constant_text",
+                "matchedExpression": "@global.example_global_constant_text",
+                "type": "global",
+                "fieldName": "example_global_constant_text"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "@global.example_global_constant_title",
+                "matchedExpression": "@global.example_global_constant_title",
+                "type": "global",
+                "fieldName": "example_global_constant_title"
+              }
+            ]
+          }
         },
         "_dynamicDependencies": {
           "@global.example_global_constant_text": [
-            "value"
+            "value.0"
           ],
           "@global.example_global_constant_title": [
-            "value"
+            "value.1"
           ]
         }
       },
       {
         "type": "text",
-        "name": "text",
+        "name": "text_1",
         "value": "This is the combo box variables debug template",
-        "_nested_name": "text"
+        "_nested_name": "text_1"
       },
       {
         "type": "text",
-        "name": "text",
+        "name": "text_2",
         "value": "Direct answer list (set through local variable)",
-        "_nested_name": "text"
+        "_nested_name": "text_2"
       },
       {
         "type": "combo_box",
         "name": "combo_box_1",
         "parameter_list": {
-          "answer_list": "@local.answer_list_1"
+          "answer_list": "@local.answer_1_list"
         },
         "_nested_name": "combo_box_1",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
               {
-                "fullExpression": "@local.answer_list_1",
-                "matchedExpression": "@local.answer_list_1",
+                "fullExpression": "@local.answer_1_list",
+                "matchedExpression": "@local.answer_1_list",
                 "type": "local",
-                "fieldName": "answer_list_1"
+                "fieldName": "answer_1_list"
               }
             ]
           }
         },
         "_dynamicDependencies": {
-          "@local.answer_list_1": [
+          "@local.answer_1_list": [
             "parameter_list.answer_list"
           ]
         }
       },
       {
         "type": "text",
-        "name": "text",
+        "name": "text_3",
         "value": "Answer list contains local variables",
-        "_nested_name": "text"
+        "_nested_name": "text_3"
       },
       {
         "type": "combo_box",
         "name": "combo_box_2",
         "parameter_list": {
-          "answer_list": "@local.answer_list_2"
+          "answer_list": "@local.answer_2_list"
         },
         "_nested_name": "combo_box_2",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
               {
-                "fullExpression": "@local.answer_list_2",
-                "matchedExpression": "@local.answer_list_2",
+                "fullExpression": "@local.answer_2_list",
+                "matchedExpression": "@local.answer_2_list",
                 "type": "local",
-                "fieldName": "answer_list_2"
+                "fieldName": "answer_2_list"
               }
             ]
           }
         },
         "_dynamicDependencies": {
-          "@local.answer_list_2": [
+          "@local.answer_2_list": [
             "parameter_list.answer_list"
           ]
         }
       },
       {
         "type": "text",
-        "name": "text",
+        "name": "text_4",
         "value": "Answer list contains global variables",
-        "_nested_name": "text"
+        "_nested_name": "text_4"
       },
       {
         "type": "combo_box",
         "name": "combo_box_3",
         "parameter_list": {
-          "answer_list": "@local.answer_list_3"
+          "answer_list": "@local.answer_3_list"
         },
         "_nested_name": "combo_box_3",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
               {
-                "fullExpression": "@local.answer_list_3",
-                "matchedExpression": "@local.answer_list_3",
+                "fullExpression": "@local.answer_3_list",
+                "matchedExpression": "@local.answer_3_list",
                 "type": "local",
-                "fieldName": "answer_list_3"
+                "fieldName": "answer_3_list"
               }
             ]
           }
         },
         "_dynamicDependencies": {
-          "@local.answer_list_3": [
+          "@local.answer_3_list": [
             "parameter_list.answer_list"
           ]
         }
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_combo_box_variables.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_component_variables.xlsx"
   },
   {
     "flow_type": "template",
@@ -20667,40 +20582,50 @@
       },
       {
         "name": "answer_list_2",
-        "value": "@local.option_1;  @local.option_2;  @local.option_3",
+        "value": [
+          "@local.option_1",
+          "@local.option_2",
+          "@local.option_3"
+        ],
         "type": "set_variable",
         "_nested_name": "answer_list_2",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
-              "matchedExpression": "@local.option_1",
-              "type": "local",
-              "fieldName": "option_1"
-            },
-            {
-              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
-              "matchedExpression": "@local.option_2",
-              "type": "local",
-              "fieldName": "option_2"
-            },
-            {
-              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
-              "matchedExpression": "@local.option_3",
-              "type": "local",
-              "fieldName": "option_3"
-            }
-          ]
+          "value": {
+            "0": [
+              {
+                "fullExpression": "@local.option_1",
+                "matchedExpression": "@local.option_1",
+                "type": "local",
+                "fieldName": "option_1"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "@local.option_2",
+                "matchedExpression": "@local.option_2",
+                "type": "local",
+                "fieldName": "option_2"
+              }
+            ],
+            "2": [
+              {
+                "fullExpression": "@local.option_3",
+                "matchedExpression": "@local.option_3",
+                "type": "local",
+                "fieldName": "option_3"
+              }
+            ]
+          }
         },
         "_dynamicDependencies": {
           "@local.option_1": [
-            "value"
+            "value.0"
           ],
           "@local.option_2": [
-            "value"
+            "value.1"
           ],
           "@local.option_3": [
-            "value"
+            "value.2"
           ]
         }
       },
@@ -20730,7 +20655,215 @@
         }
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_combo_box_variables.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_component_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_radio_group_variables",
+    "status": "released",
+    "rows": [
+      {
+        "name": "option_1",
+        "value": "Option 1",
+        "type": "set_variable",
+        "_nested_name": "option_1"
+      },
+      {
+        "name": "option_2",
+        "value": "Option 2",
+        "type": "set_variable",
+        "_nested_name": "option_2"
+      },
+      {
+        "name": "option_3",
+        "value": "Option 3",
+        "type": "set_variable",
+        "_nested_name": "option_3"
+      },
+      {
+        "name": "answer_1_list",
+        "value": [
+          "name:name_1 | text:Text 1",
+          "name:name_2 | text: Text 2"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_1_list"
+      },
+      {
+        "name": "answer_2_list",
+        "value": [
+          "name:name_1 | text:@local.option_1",
+          "name:name_2 | text:@local.option_2"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_2_list",
+        "_dynamicFields": {
+          "value": {
+            "0": [
+              {
+                "fullExpression": "name:name_1 | text:@local.option_1",
+                "matchedExpression": "@local.option_1",
+                "type": "local",
+                "fieldName": "option_1"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "name:name_2 | text:@local.option_2",
+                "matchedExpression": "@local.option_2",
+                "type": "local",
+                "fieldName": "option_2"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.option_1": [
+            "value.0"
+          ],
+          "@local.option_2": [
+            "value.1"
+          ]
+        }
+      },
+      {
+        "name": "answer_3_list",
+        "value": [
+          "name:name_1 | text:@global.example_global_constant_text",
+          "name:name_2 | text:@global.example_global_constant_title"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_3_list",
+        "_dynamicFields": {
+          "value": {
+            "0": [
+              {
+                "fullExpression": "name:name_1 | text:@global.example_global_constant_text",
+                "matchedExpression": "@global.example_global_constant_text",
+                "type": "global",
+                "fieldName": "example_global_constant_text"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "name:name_2 | text:@global.example_global_constant_title",
+                "matchedExpression": "@global.example_global_constant_title",
+                "type": "global",
+                "fieldName": "example_global_constant_title"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@global.example_global_constant_text": [
+            "value.0"
+          ],
+          "@global.example_global_constant_title": [
+            "value.1"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "This is the radio group variables debug template",
+        "_nested_name": "text_1"
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "Direct answer list (set through local variable)",
+        "_nested_name": "text_2"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_1",
+        "parameter_list": {
+          "answer_list": "@local.answer_1_list"
+        },
+        "_nested_name": "radio_group_1",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_1_list",
+                "matchedExpression": "@local.answer_1_list",
+                "type": "local",
+                "fieldName": "answer_1_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_1_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "Answer list contains local variables",
+        "_nested_name": "text_3"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_2",
+        "parameter_list": {
+          "answer_list": "@local.answer_2_list"
+        },
+        "_nested_name": "radio_group_2",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_2_list",
+                "matchedExpression": "@local.answer_2_list",
+                "type": "local",
+                "fieldName": "answer_2_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_2_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_4",
+        "value": "Answer list contains global variables",
+        "_nested_name": "text_4"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_3",
+        "parameter_list": {
+          "answer_list": "@local.answer_3_list"
+        },
+        "_nested_name": "radio_group_3",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_3_list",
+                "matchedExpression": "@local.answer_3_list",
+                "type": "local",
+                "fieldName": "answer_3_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_3_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_component_variables.xlsx"
   },
   {
     "flow_type": "template",
@@ -21027,22 +21160,26 @@
           },
           {
             "name": "answer_list",
-            "value": "@local.answer_list_1_list",
+            "value": [
+              "@local.answer_list_1_list"
+            ],
             "type": "set_variable",
             "_nested_name": "debug_radio_group_1.answer_list",
             "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.answer_list_1_list",
-                  "matchedExpression": "@local.answer_list_1_list",
-                  "type": "local",
-                  "fieldName": "answer_list_1_list"
-                }
-              ]
+              "value": {
+                "0": [
+                  {
+                    "fullExpression": "@local.answer_list_1_list",
+                    "matchedExpression": "@local.answer_list_1_list",
+                    "type": "local",
+                    "fieldName": "answer_list_1_list"
+                  }
+                ]
+              }
             },
             "_dynamicDependencies": {
               "@local.answer_list_1_list": [
-                "value"
+                "value.0"
               ]
             }
           }
@@ -21062,22 +21199,26 @@
           },
           {
             "name": "answer_list",
-            "value": "@local.answer_list_2_list",
+            "value": [
+              "@local.answer_list_2_list"
+            ],
             "type": "set_variable",
             "_nested_name": "debug_radio_group_2.answer_list",
             "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.answer_list_2_list",
-                  "matchedExpression": "@local.answer_list_2_list",
-                  "type": "local",
-                  "fieldName": "answer_list_2_list"
-                }
-              ]
+              "value": {
+                "0": [
+                  {
+                    "fullExpression": "@local.answer_list_2_list",
+                    "matchedExpression": "@local.answer_list_2_list",
+                    "type": "local",
+                    "fieldName": "answer_list_2_list"
+                  }
+                ]
+              }
             },
             "_dynamicDependencies": {
               "@local.answer_list_2_list": [
-                "value"
+                "value.0"
               ]
             }
           }
@@ -23329,42 +23470,50 @@
       {
         "type": "set_variable",
         "name": "var_list_1",
-        "value": "@data.debug_vars.list_1.value_list",
+        "value": [
+          "@data.debug_vars.list_1.value_list"
+        ],
         "_nested_name": "var_list_1",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@data.debug_vars.list_1.value_list",
-              "matchedExpression": "@data.debug_vars.list_1.value_list",
-              "type": "data",
-              "fieldName": "debug_vars"
-            }
-          ]
+          "value": {
+            "0": [
+              {
+                "fullExpression": "@data.debug_vars.list_1.value_list",
+                "matchedExpression": "@data.debug_vars.list_1.value_list",
+                "type": "data",
+                "fieldName": "debug_vars"
+              }
+            ]
+          }
         },
         "_dynamicDependencies": {
           "@data.debug_vars.list_1.value_list": [
-            "value"
+            "value.0"
           ]
         }
       },
       {
         "type": "set_variable",
         "name": "var_list_1_length",
-        "value": "@local.var_list_1.length",
+        "value": [
+          "@local.var_list_1.length"
+        ],
         "_nested_name": "var_list_1_length",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@local.var_list_1.length",
-              "matchedExpression": "@local.var_list_1.length",
-              "type": "local",
-              "fieldName": "var_list_1"
-            }
-          ]
+          "value": {
+            "0": [
+              {
+                "fullExpression": "@local.var_list_1.length",
+                "matchedExpression": "@local.var_list_1.length",
+                "type": "local",
+                "fieldName": "var_list_1"
+              }
+            ]
+          }
         },
         "_dynamicDependencies": {
           "@local.var_list_1.length": [
-            "value"
+            "value.0"
           ]
         }
       },
@@ -23392,23 +23541,8 @@
       {
         "type": "set_variable",
         "name": "var_collection_1",
-        "value": "@data.debug_vars.collection_1.value_collection",
-        "_nested_name": "var_collection_1",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@data.debug_vars.collection_1.value_collection",
-              "matchedExpression": "@data.debug_vars.collection_1.value_collection",
-              "type": "data",
-              "fieldName": "debug_vars"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@data.debug_vars.collection_1.value_collection": [
-            "value"
-          ]
-        }
+        "value": {},
+        "_nested_name": "var_collection_1"
       },
       {
         "type": "set_variable",
@@ -26248,21 +26382,21 @@
       },
       {
         "type": "text",
-        "name": "text_1",
-        "value": "@data.example.example3.value_list",
-        "_nested_name": "text_1",
+        "name": "broken_1",
+        "value": "@data.example.example1",
+        "_nested_name": "broken_1",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@data.example.example3.value_list",
-              "matchedExpression": "@data.example.example3.value_list",
+              "fullExpression": "@data.example.example1",
+              "matchedExpression": "@data.example.example1",
               "type": "data",
               "fieldName": "example"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@data.example.example3.value_list": [
+          "@data.example.example1": [
             "value"
           ]
         }
@@ -26271,15 +26405,15 @@
         "type": "radio_group",
         "name": "radio_group_1",
         "parameter_list": {
-          "answer_list": "@data.example.example2.value"
+          "answer_list": "@data.example.example3.value_list"
         },
         "_nested_name": "radio_group_1",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
               {
-                "fullExpression": "@data.example.example2.value",
-                "matchedExpression": "@data.example.example2.value",
+                "fullExpression": "@data.example.example3.value_list",
+                "matchedExpression": "@data.example.example3.value_list",
                 "type": "data",
                 "fieldName": "example"
               }
@@ -26287,7 +26421,7 @@
           }
         },
         "_dynamicDependencies": {
-          "@data.example.example2.value": [
+          "@data.example.example3.value_list": [
             "parameter_list.answer_list"
           ]
         }
@@ -32448,6 +32582,4220 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/daily_relax.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "self_care",
+    "flow_name": "m_self_care_encouragement",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Remember – this week is about YOU!  We hope you are treating yourself well. You deserve this! When you do it, mark your @global.parent_points! ",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Remember – this week is about YOU!  We hope you are treating yourself well. You deserve this! When you do it, mark your @global.parent_points! ",
+              "matchedExpression": "@global.parent_points",
+              "type": "global",
+              "fieldName": "parent_points"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_points": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "self_care",
+    "flow_name": "m_self_care_intro",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "To maximise benefits, start your first @global.parent_app workshop tomorrow!",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "To maximise benefits, start your first @global.parent_app workshop tomorrow!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Have you told your @global.parent_app partner about the app yet? You can both start your first @global.parent_app workshop tomorrow! ",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Have you told your @global.parent_app partner about the app yet? You can both start your first @global.parent_app workshop tomorrow! ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            },
+            {
+              "fullExpression": "Have you told your @global.parent_app partner about the app yet? You can both start your first @global.parent_app workshop tomorrow! ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value",
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Have you told your @global.parent_app partners about the app yet? You can all start your first @global.parent_app workshop tomorrow!",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Have you told your @global.parent_app partners about the app yet? You can all start your first @global.parent_app workshop tomorrow!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            },
+            {
+              "fullExpression": "Have you told your @global.parent_app partners about the app yet? You can all start your first @global.parent_app workshop tomorrow!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value",
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "m_1on1_ready",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! Your first parenting workshop @global.w_1on1 is ready for you! ",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! Your first parenting workshop @global.w_1on1 is ready for you! ",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_1on1": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi awesome parents! Your first parenting workshop @global.w_1on1 is ready for you! Click here to start your @global.parent_app journey!",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parents! Your first parenting workshop @global.w_1on1 is ready for you! Click here to start your @global.parent_app journey!",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            },
+            {
+              "fullExpression": "Hi awesome parents! Your first parenting workshop @global.w_1on1 is ready for you! Click here to start your @global.parent_app journey!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_1on1": [
+            "value"
+          ],
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi awesome @field.group_name! Your first parenting workshop @global.w_1on1 is ready for you!",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome @field.group_name! Your first parenting workshop @global.w_1on1 is ready for you!",
+              "matchedExpression": "@field.group_name",
+              "type": "field",
+              "fieldName": "group_name"
+            },
+            {
+              "fullExpression": "Hi awesome @field.group_name! Your first parenting workshop @global.w_1on1 is ready for you!",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.group_name": [
+            "value"
+          ],
+          "@global.w_1on1": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_individual",
+        "value": "Start your @global.parent_app journey!",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_stepper"
+            ],
+            "_raw": "click | go_to : w_1on1_stepper",
+            "_cleaned": "click | go_to : w_1on1_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Start your @global.parent_app journey!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "m_1on1_cochef",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun - co-chef>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "m_1on1_start_journey",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Spending time with your teen helps build trust between you. Click here to start your @global.parent_app journey now and to experience the best of what we have for you!",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Spending time with your teen helps build trust between you. Click here to start your @global.parent_app journey now and to experience the best of what we have for you!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "_nested_name": "button"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "m_1on1_thank_you",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Thank you for putting so much effort into being a better parent. You are loved and appreciated!",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "m_1on1_mark_points",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Have you spent time with your teen already? If you have, mark your @global.parent_points!",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Have you spent time with your teen already? If you have, mark your @global.parent_points!",
+              "matchedExpression": "@global.parent_points",
+              "type": "global",
+              "fieldName": "parent_points"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_points": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "m_1on1_checkin_active",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            },
+            {
+              "fullExpression": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            },
+            {
+              "fullExpression": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value",
+            "value"
+          ],
+          "@global.w_1on1": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "1on1",
+    "flow_name": "m_1on1_checkin_inactive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            },
+            {
+              "fullExpression": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_1on1": [
+            "value"
+          ],
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "m_praise_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <name of group>! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <name of group>! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi awesome parents! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parents! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "m_praise_chat",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun -Chat together1>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "m_praise_well_done",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Well done for using @global.parent_app! Remember that it’s the small things that make a big difference.",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Well done for using @global.parent_app! Remember that it’s the small things that make a big difference.",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "m_praise_praise",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Praise time! \n Look at your teen and praise them for one thing they are doing well! \n And when was the last time you praised yourself or another adult in your household? Try it!\n Every time you praise your teen or yourself, mark your @global.parent_points to track your success!",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Praise time! \n Look at your teen and praise them for one thing they are doing well! \n And when was the last time you praised yourself or another adult in your household? Try it!\n Every time you praise your teen or yourself, mark your @global.parent_points to track your success!",
+              "matchedExpression": "@global.parent_points",
+              "type": "global",
+              "fieldName": "parent_points"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_points": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "praise",
+    "flow_name": "m_praise_inactive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            },
+            {
+              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            },
+            {
+              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+              "matchedExpression": "@global.w_praise",
+              "type": "global",
+              "fieldName": "w_praise"
+            },
+            {
+              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value",
+            "value"
+          ],
+          "@global.w_1on1": [
+            "value"
+          ],
+          "@global.w_praise": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "m_instruct_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Hi awesome parent! Congrats for starting your fourth week using @global.parent_app. This week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! Congrats for starting your fourth week using @global.parent_app. This week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "m_instruct_dance_moves",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun -Dance moves>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "m_instruct_encouragement",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Speak kindly to yourself about what a great job you are doing. There is no such thing as a perfect parent, and we think you’re doing great!",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "m_instruct_get_positive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "You’ve not marked any ‘Get Positive’ this week yet. If you gave positive instructions to your teen, mark your @global.parent_points. If you didn’t – give it a try today! Here is how (link to the ‘Get Positive’ module).",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "You’ve not marked any ‘Get Positive’ this week yet. If you gave positive instructions to your teen, mark your @global.parent_points. If you didn’t – give it a try today! Here is how (link to the ‘Get Positive’ module).",
+              "matchedExpression": "@global.parent_points.",
+              "type": "global",
+              "fieldName": "parent_points"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_points.": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "instruct",
+    "flow_name": "m_instruct_got_positive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Hey, well done! You’ve marked ‘Get Positive’ X times already – so you’ve been doing some great learning.",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "m_stress_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! Congrats for starting your fifth week on @global.parent_app. A new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! Congrats for starting your fifth week on @global.parent_app. A new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <names of participants>! Congrats for starting your fifth week on @global.parent_app. A new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <names of participants>! Congrats for starting your fifth week on @global.parent_app. A new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi <name of group>! Congrats for starting your fifth week on @global.parent_app. A new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <name of group>! Congrats for starting your fifth week on @global.parent_app. A new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "m_stress_chat",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun -CHAT TOGETHER2>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "m_stress_inactive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "We also wanted to remind you that we have a new workshop for you. This week’s workshop is about managing anger and stress. It will help you take better care of yourself. Click here to start the workshop!",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "m_stress_recognize",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Happy, sad, angry, excited, worried? Well done for recognizing how you and others felt today! And remember, tomorrow is a brand new day.",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "m_stress_breath",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Well done for taking a big breath before responding to your teen! Each time you are taking a pause, you are getting back control.",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "stress",
+    "flow_name": "m_stress_deep_breath",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "How have your stress levels been this week? Try to take a few deep breaths before responding to your teen; it makes a big difference. Keep up the great work and mark your @global.parent_point habit to track your success.",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "How have your stress levels been this week? Try to take a few deep breaths before responding to your teen; it makes a big difference. Keep up the great work and mark your @global.parent_point habit to track your success.",
+              "matchedExpression": "@global.parent_point",
+              "type": "global",
+              "fieldName": "parent_point"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_point": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "m_money_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <name of participants>! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <name of participants>! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi <group name>! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <group name>! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "m_money_dream_travel",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun -DREAM TRAVEL>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "m_money_inactive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? This week’s workshop deals with money and budgeting. Click here to start.  ",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "m_money_encouragement",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Whenever you feel alone or overwhelmed, know that you are not alone. There are parents all over the world who are going through the same struggles as you. You are doing your best every day and we’re all proud of you!",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "m_money_needs_and_wants",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "You are on the right path to creating a family budget! Ask your teen about his ’needs’ and ‘wants’ and plan together! Click here to see how.",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "m_money_budget",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "You are close to creating your family budget! Use beans or stones to represent your monthly income and decide with your teen what you will spend on. Click here for instructions.",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "m_money_save",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Congratulations for making a budget with your teen! Now plan for the future by trying to save a bit. Click here to see how.",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "money",
+    "flow_name": "m_money_completed",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Well done on making your family budget. Remember to mark your @global.parent_point for this. Also, whenever you make a good money choice, whether those are needs, wants or savings, mark your @global.parent_point to track your success!’",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Well done on making your family budget. Remember to mark your @global.parent_point for this. Also, whenever you make a good money choice, whether those are needs, wants or savings, mark your @global.parent_point to track your success!’",
+              "matchedExpression": "@global.parent_point",
+              "type": "global",
+              "fieldName": "parent_point"
+            },
+            {
+              "fullExpression": "Well done on making your family budget. Remember to mark your @global.parent_point for this. Also, whenever you make a good money choice, whether those are needs, wants or savings, mark your @global.parent_point to track your success!’",
+              "matchedExpression": "@global.parent_point",
+              "type": "global",
+              "fieldName": "parent_point"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_point": [
+            "value",
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "m_rules_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <names of participants>! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
+        "hidden": true,
+        "_nested_name": "message_pair"
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi <name of group>! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "m_rules_famous_party",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun -FAMOUS PARTY>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "m_rules_grumpy",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Sometimes it feels like your teens are still grumpy even when you’ve done the best you can. Remember that you are doing an amazing job, and that there will be good times with them too!",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "m_rules_inactive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. Click here to start the workshop.",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. Click here to start the workshop.",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            },
+            {
+              "fullExpression": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. Click here to start the workshop.",
+              "matchedExpression": "@global.w_rules",
+              "type": "global",
+              "fieldName": "w_rules"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@global.w_rules": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "m_rules_set_rule",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "You are close to gaining another parenting tool! Complete the ‘@global.w_rules’ module, set ONE simple and realistic rule with your teen, and see the difference! ",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "You are close to gaining another parenting tool! Complete the ‘@global.w_rules’ module, set ONE simple and realistic rule with your teen, and see the difference! ",
+              "matchedExpression": "@global.w_rules",
+              "type": "global",
+              "fieldName": "w_rules"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_rules": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "rules",
+    "flow_name": "m_rules_ideas",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Have you managed to set a rule together with your teen? If not, <click here> for some ideas!",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "m_consequence_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! Today we are celebrating two months of using @global.parent_app! You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! Today we are celebrating two months of using @global.parent_app! You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <names of participants>! Today we are celebrating two months of using @global.parent_app!  You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <names of participants>! Today we are celebrating two months of using @global.parent_app!  You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi <name of group>! Today we are celebrating two months of using @global.parent_app! You are all doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <name of group>! Today we are celebrating two months of using @global.parent_app! You are all doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "m_consequence_2t1l",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun -2 Truths, 1 Lie>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "m_consequence_encouragement",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "This has been the hardest of times to be a parent. You should be so proud of yourself for everything you have done. Think about every time you have made your teen smile and all the care you have given them. Parents are incredible, and you are incredible!",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "m_consequence_status",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "It’s great that you’ve been using @global.parent_app. You’ve gained X parenting tools already! Take the next workshop to get another parenting tool!  ",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "It’s great that you’ve been using @global.parent_app. You’ve gained X parenting tools already! Take the next workshop to get another parenting tool!  ",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "m_consequence_pos_neg",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Nice progress! Complete the workshop and try to discuss with your teen and come up with one positive and one negative consequence of a behaviour together. Click here for some ideas: Suggestions for behaviours/consequences button ",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "m_consequence_pos_neg_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Have you managed to come up with one positive and one negative consequence of a behaviour with your teen yet? ",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_solve_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! You have completed seven out of ten workshops! That’s amazing! Having a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.  ",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <names of participants>! You have completed seven out of ten workshops! That’s amazing! \nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.  ",
+        "hidden": true,
+        "_nested_name": "message_pair"
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi <name of group>! You have all completed seven out of ten workshops! That’s amazing! \nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.  ",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_solve_reminder",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <names of participants>! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <names of participants>! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi <name of group>! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to all complete the previous workshop before starting this one.",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <name of group>! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to all complete the previous workshop before starting this one.",
+              "matchedExpression": "@global.parent_app.",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app.": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_solve_mirror",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun MIRROR>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_solve_encouragement",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Your commitment is an inspiration to everyone. Keep calm and carry on!  ",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_solve_inactive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "With teenagers, and in life, unexpected problems come up and we have to deal with them. Start workshop eight to learn how to address these problems properly. ",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_solve_active",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "You are on the right track to learning how to problem-solve with your teen! Complete the ‘@global.w_solve’ workshop and gain another important parenting tool! \n ",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "You are on the right track to learning how to problem-solve with your teen! Complete the ‘@global.w_solve’ workshop and gain another important parenting tool! \n ",
+              "matchedExpression": "@global.w_solve",
+              "type": "global",
+              "fieldName": "w_solve"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_solve": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_solve_finished",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "see comment on the top right corner - too much text and yes/no questions",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_safe_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. This week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. This week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <names of participants> You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. This week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <names of participants> You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. This week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi <name of group>! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. This week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <name of group>! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. This week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_safe_time_machine",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun - TIME MACHINE>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_safe_inactive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "You have been using @global.parent_app and you have gained X parenting tools already! Complete the next workshop to gain another tool!  ",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "You have been using @global.parent_app and you have gained X parenting tools already! Complete the next workshop to gain another tool!  ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_safe_active",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Nice progress! We encourage you to complete the workshop and try to introduce one positive and one negative consequence to your teen. If you need some ideas for this, click here:\nSuggestions for behaviours/consequences button \n ",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "m_safe_finished",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Have you managed to introduce one positive and one negative consequence to your teen? \nSuggestions for behaviours/consequences button ",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "crisis",
+    "flow_name": "m_crisis_start",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message_individual",
+        "value": "Hi awesome parent! We can’t foresee when a crisis will happen, but we definitely can make a plan on how to cope when it does happen. Your tenth parenting workshop will show you how. Click here to continue your @global.parent_app journey. ",
+        "hidden": "@field.do_workshops_together",
+        "_nested_name": "message_individual",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi awesome parent! We can’t foresee when a crisis will happen, but we definitely can make a plan on how to cope when it does happen. Your tenth parenting workshop will show you how. Click here to continue your @global.parent_app journey. ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_pair",
+        "value": "Hi <names of participants> We can’t foresee when a crisis will happen, but we definitely can make a plan on how to cope when it does happen. Your tenth parenting workshop will show you how. Click here to continue your @global.parent_app journey. ",
+        "hidden": true,
+        "_nested_name": "message_pair",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <names of participants> We can’t foresee when a crisis will happen, but we definitely can make a plan on how to cope when it does happen. Your tenth parenting workshop will show you how. Click here to continue your @global.parent_app journey. ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "message_group",
+        "value": "Hi <name of group>! We can’t foresee when a crisis will happen, but we definitely can make a plan on how to cope when it does happen. Your tenth parenting workshop will show you how. Click here to continue your @global.parent_app journey. ",
+        "hidden": "!@field.do_workshops_together",
+        "_nested_name": "message_group",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Hi <name of group>! We can’t foresee when a crisis will happen, but we definitely can make a plan on how to cope when it does happen. Your tenth parenting workshop will show you how. Click here to continue your @global.parent_app journey. ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@field.do_workshops_together",
+              "matchedExpression": "@field.do_workshops_together",
+              "type": "field",
+              "fieldName": "do_workshops_together"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@field.do_workshops_together": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "crisis",
+    "flow_name": "m_crisis_superpowers",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "<Something fun - SUPERPOWERS>",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "crisis",
+    "flow_name": "m_crisis_encouragement",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "You are a committed parent. Be proud of yourself and don’t take this for granted!",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "crisis",
+    "flow_name": "m_crisis_inactive",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "TBD",
+        "_nested_name": "message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "crisis",
+    "flow_name": "m_crisis_active",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "We are happy you find @global.parent_app useful. We encourage you to complete the ‘@global.w_crisis’ module and learn the best way to react when your teen needs you the most.  ",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "We are happy you find @global.parent_app useful. We encourage you to complete the ‘@global.w_crisis’ module and learn the best way to react when your teen needs you the most.  ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            },
+            {
+              "fullExpression": "We are happy you find @global.parent_app useful. We encourage you to complete the ‘@global.w_crisis’ module and learn the best way to react when your teen needs you the most.  ",
+              "matchedExpression": "@global.w_crisis",
+              "type": "global",
+              "fieldName": "w_crisis"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@global.w_crisis": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "crisis",
+    "flow_name": "m_crisis_finished",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "message",
+        "value": "Have you talked with your teen about safety measures? If you have, mark your @global.parent_points!",
+        "_nested_name": "message",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Have you talked with your teen about safety measures? If you have, mark your @global.parent_points!",
+              "matchedExpression": "@global.parent_points",
+              "type": "global",
+              "fieldName": "parent_points"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_points": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "message_navigation",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "In Week Content",
+        "_nested_name": "title"
+      },
+      {
+        "type": "button",
+        "name": "week_1_messages",
+        "value": "@global.w_self_care",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_self_care_messages"
+            ],
+            "_raw": "click | go_to:w_self_care_messages",
+            "_cleaned": "click | go_to:w_self_care_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_1_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_self_care",
+              "matchedExpression": "@global.w_self_care",
+              "type": "global",
+              "fieldName": "w_self_care"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_self_care": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_2_messages",
+        "value": "@global.w_1on1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "1w_on1_messages"
+            ],
+            "_raw": "click | go_to:1w_on1_messages",
+            "_cleaned": "click | go_to:1w_on1_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_2_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_1on1",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_1on1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_3_messages",
+        "value": "@global.w_praise",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_praise_messages"
+            ],
+            "_raw": "click | go_to:w_praise_messages",
+            "_cleaned": "click | go_to:w_praise_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_3_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_praise",
+              "matchedExpression": "@global.w_praise",
+              "type": "global",
+              "fieldName": "w_praise"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_praise": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_4_messages",
+        "value": "@global.w_instruct",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_instruct_messages"
+            ],
+            "_raw": "click | go_to:w_instruct_messages",
+            "_cleaned": "click | go_to:w_instruct_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_4_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_instruct",
+              "matchedExpression": "@global.w_instruct",
+              "type": "global",
+              "fieldName": "w_instruct"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_instruct": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_5_messages",
+        "value": "@global.w_stress",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_stress_messages"
+            ],
+            "_raw": "click | go_to:w_stress_messages",
+            "_cleaned": "click | go_to:w_stress_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_5_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_stress",
+              "matchedExpression": "@global.w_stress",
+              "type": "global",
+              "fieldName": "w_stress"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_stress": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_6_messages",
+        "value": "@global.w_money",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "money_messages"
+            ],
+            "_raw": "click | go_to:money_messages",
+            "_cleaned": "click | go_to:money_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_6_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_money",
+              "matchedExpression": "@global.w_money",
+              "type": "global",
+              "fieldName": "w_money"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_money": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_7_messages",
+        "value": "@global.w_rules",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_rules_messages"
+            ],
+            "_raw": "click | go_to:w_rules_messages",
+            "_cleaned": "click | go_to:w_rules_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_7_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_rules",
+              "matchedExpression": "@global.w_rules",
+              "type": "global",
+              "fieldName": "w_rules"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_rules": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_8_messages",
+        "value": "@global.w_consequence",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_consequence_messages"
+            ],
+            "_raw": "click | go_to:w_consequence_messages",
+            "_cleaned": "click | go_to:w_consequence_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_8_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence",
+              "matchedExpression": "@global.w_consequence",
+              "type": "global",
+              "fieldName": "w_consequence"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_9_messages",
+        "value": "@global.w_solve",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_solve_messages"
+            ],
+            "_raw": "click | go_to:w_solve_messages",
+            "_cleaned": "click | go_to:w_solve_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_9_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_solve",
+              "matchedExpression": "@global.w_solve",
+              "type": "global",
+              "fieldName": "w_solve"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_solve": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_10_messages",
+        "value": "@global.w_safe",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "safe_messages"
+            ],
+            "_raw": "click | go_to:safe_messages",
+            "_cleaned": "click | go_to:safe_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_10_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_safe",
+              "matchedExpression": "@global.w_safe",
+              "type": "global",
+              "fieldName": "w_safe"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_safe": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_11_messages",
+        "value": "@global.w_crisis",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_crisis_messages"
+            ],
+            "_raw": "click | go_to:w_crisis_messages",
+            "_cleaned": "click | go_to:w_crisis_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_11_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_crisis",
+              "matchedExpression": "@global.w_crisis",
+              "type": "global",
+              "fieldName": "w_crisis"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_crisis": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "week_12_messages",
+        "value": "@global.w_celebrate",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_celebrate_messages"
+            ],
+            "_raw": "click | go_to:w_celebrate_messages",
+            "_cleaned": "click | go_to:w_celebrate_messages"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "week_12_messages",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_celebrate",
+              "matchedExpression": "@global.w_celebrate",
+              "type": "global",
+              "fieldName": "w_celebrate"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_celebrate": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_self_care_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_self_care In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_self_care In Week Messages",
+              "matchedExpression": "@global.w_self_care",
+              "type": "global",
+              "fieldName": "w_self_care"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_self_care": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "encourage_message",
+        "value": "Mid week encouragement",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_self_care_encouragement"
+            ],
+            "_raw": "click | pop_up:m_self_care_encouragement",
+            "_cleaned": "click | pop_up:m_self_care_encouragement"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "encourage_message"
+      },
+      {
+        "type": "button",
+        "name": "transition_message",
+        "value": "Transition message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_self_care_intro"
+            ],
+            "_raw": "click | pop_up:m_self_care_intro",
+            "_cleaned": "click | pop_up:m_self_care_intro"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "transition_message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_1on1_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_1on1 In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_1on1 In Week Messages",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_1on1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "ready_message",
+        "value": "Ready message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_1on1_ready"
+            ],
+            "_raw": "click | pop_up:m_1on1_ready",
+            "_cleaned": "click | pop_up:m_1on1_ready"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "ready_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_1on1_cochef"
+            ],
+            "_raw": "click | pop_up:m_1on1_cochef",
+            "_cleaned": "click | pop_up:m_1on1_cochef"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_1on1_start_journey"
+            ],
+            "_raw": "click | pop_up:m_1on1_start_journey",
+            "_cleaned": "click | pop_up:m_1on1_start_journey"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "thank_you_message",
+        "value": "Appreciation message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_1on1_thank_you"
+            ],
+            "_raw": "click | pop_up:m_1on1_thank_you",
+            "_cleaned": "click | pop_up:m_1on1_thank_you"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "thank_you_message"
+      },
+      {
+        "type": "button",
+        "name": "mark_points_message",
+        "value": "Mark points reminder",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_1on1_mark_points"
+            ],
+            "_raw": "click | pop_up:m_1on1_mark_points",
+            "_cleaned": "click | pop_up:m_1on1_mark_points"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "mark_points_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_active_message",
+        "value": "Check in when active",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_1on1_checkin_active"
+            ],
+            "_raw": "click | pop_up:m_1on1_checkin_active",
+            "_cleaned": "click | pop_up:m_1on1_checkin_active"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_active_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_inactive_message",
+        "value": "Check in when inactive",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_1on1_checkin_inactive"
+            ],
+            "_raw": "click | pop_up:m_1on1_checkin_inactive",
+            "_cleaned": "click | pop_up:m_1on1_checkin_inactive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_inactive_message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_praise_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_praise In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_praise In Week Messages",
+              "matchedExpression": "@global.w_praise",
+              "type": "global",
+              "fieldName": "w_praise"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_praise": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_praise_start"
+            ],
+            "_raw": "click | pop_up:m_praise_start",
+            "_cleaned": "click | pop_up:m_praise_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_praise_chat"
+            ],
+            "_raw": "click | pop_up:m_praise_chat",
+            "_cleaned": "click | pop_up:m_praise_chat"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "encouragement_message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_praise_well_done"
+            ],
+            "_raw": "click | pop_up:m_praise_well_done",
+            "_cleaned": "click | pop_up:m_praise_well_done"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "encouragement_message"
+      },
+      {
+        "type": "button",
+        "name": "encouragement_message_2",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_praise_praise"
+            ],
+            "_raw": "click | pop_up:m_praise_praise",
+            "_cleaned": "click | pop_up:m_praise_praise"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "encouragement_message_2"
+      },
+      {
+        "type": "button",
+        "name": "check_in_inactive_message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_praise_inactive"
+            ],
+            "_raw": "click | pop_up:m_praise_inactive",
+            "_cleaned": "click | pop_up:m_praise_inactive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_inactive_message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_instruct_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_instruct In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_instruct In Week Messages",
+              "matchedExpression": "@global.w_instruct",
+              "type": "global",
+              "fieldName": "w_instruct"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_instruct": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_instruct_start"
+            ],
+            "_raw": "click | pop_up:m_instruct_start",
+            "_cleaned": "click | pop_up:m_instruct_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_instruct_dance_moves"
+            ],
+            "_raw": "click | pop_up:m_instruct_dance_moves",
+            "_cleaned": "click | pop_up:m_instruct_dance_moves"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "encouragement_message",
+        "value": "Encouragement message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_instruct_encouragement"
+            ],
+            "_raw": "click | pop_up:m_instruct_encouragement",
+            "_cleaned": "click | pop_up:m_instruct_encouragement"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "encouragement_message"
+      },
+      {
+        "type": "button",
+        "name": "get_positive_message",
+        "value": "Get positive",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_instruct_get_positive"
+            ],
+            "_raw": "click | pop_up:m_instruct_get_positive",
+            "_cleaned": "click | pop_up:m_instruct_get_positive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "get_positive_message"
+      },
+      {
+        "type": "button",
+        "name": "got_positive_message",
+        "value": "Got positive",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_instruct_got_positive"
+            ],
+            "_raw": "click | pop_up:m_instruct_got_positive",
+            "_cleaned": "click | pop_up:m_instruct_got_positive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "got_positive_message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_stress_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_stress In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_stress In Week Messages",
+              "matchedExpression": "@global.w_stress",
+              "type": "global",
+              "fieldName": "w_stress"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_stress": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_stress_start"
+            ],
+            "_raw": "click | pop_up:m_stress_start",
+            "_cleaned": "click | pop_up:m_stress_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_stress_chat"
+            ],
+            "_raw": "click | pop_up:m_stress_chat",
+            "_cleaned": "click | pop_up:m_stress_chat"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_inactive_message",
+        "value": "Inactive check in message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_stress_inactive"
+            ],
+            "_raw": "click | pop_up:m_stress_inactive",
+            "_cleaned": "click | pop_up:m_stress_inactive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_inactive_message"
+      },
+      {
+        "type": "button",
+        "name": "recognize_message",
+        "value": "Recognize message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_stress_recognize"
+            ],
+            "_raw": "click | pop_up:m_stress_recognize",
+            "_cleaned": "click | pop_up:m_stress_recognize"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "recognize_message"
+      },
+      {
+        "type": "button",
+        "name": "breath_message",
+        "value": "Breath Message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_stress_breath"
+            ],
+            "_raw": "click | pop_up:m_stress_breath",
+            "_cleaned": "click | pop_up:m_stress_breath"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "breath_message"
+      },
+      {
+        "type": "button",
+        "name": "breath_message_2",
+        "value": "Deep breath message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_stress_deep_breath"
+            ],
+            "_raw": "click | pop_up:m_stress_deep_breath",
+            "_cleaned": "click | pop_up:m_stress_deep_breath"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "breath_message_2"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_money_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_money In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_money In Week Messages",
+              "matchedExpression": "@global.w_money",
+              "type": "global",
+              "fieldName": "w_money"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_money": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_money_start"
+            ],
+            "_raw": "click | pop_up:m_money_start",
+            "_cleaned": "click | pop_up:m_money_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_money_dream_travel"
+            ],
+            "_raw": "click | pop_up:m_money_dream_travel",
+            "_cleaned": "click | pop_up:m_money_dream_travel"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_inactive_message",
+        "value": "Inactive Check In",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_money_inactive"
+            ],
+            "_raw": "click | pop_up:m_money_inactive",
+            "_cleaned": "click | pop_up:m_money_inactive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_inactive_message"
+      },
+      {
+        "type": "button",
+        "name": "encouragement_message",
+        "value": "Encouragement message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_money_encouragement"
+            ],
+            "_raw": "click | pop_up:m_money_encouragement",
+            "_cleaned": "click | pop_up:m_money_encouragement"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "encouragement_message"
+      },
+      {
+        "type": "button",
+        "name": "budget_message_1",
+        "value": "Budget Activity Part 1 message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_money_needs_and_wants"
+            ],
+            "_raw": "click | pop_up:m_money_needs_and_wants",
+            "_cleaned": "click | pop_up:m_money_needs_and_wants"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "budget_message_1"
+      },
+      {
+        "type": "button",
+        "name": "budget_message_2",
+        "value": "Budget Activity Part 2 message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_money_budget"
+            ],
+            "_raw": "click | pop_up:m_money_budget",
+            "_cleaned": "click | pop_up:m_money_budget"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "budget_message_2"
+      },
+      {
+        "type": "button",
+        "name": "budget_message_3",
+        "value": "Budget Activity Part 3 message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_money_save"
+            ],
+            "_raw": "click | pop_up:m_money_save",
+            "_cleaned": "click | pop_up:m_money_save"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "budget_message_3"
+      },
+      {
+        "type": "button",
+        "name": "budget_message_4",
+        "value": "Budget Activity Part 4 message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_money_completed"
+            ],
+            "_raw": "click | pop_up:m_money_completed",
+            "_cleaned": "click | pop_up:m_money_completed"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "budget_message_4"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_rules_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_rules In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_rules In Week Messages",
+              "matchedExpression": "@global.w_rules",
+              "type": "global",
+              "fieldName": "w_rules"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_rules": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_rules_start"
+            ],
+            "_raw": "click | pop_up:m_rules_start",
+            "_cleaned": "click | pop_up:m_rules_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_rules_famous_party"
+            ],
+            "_raw": "click | pop_up:m_rules_famous_party",
+            "_cleaned": "click | pop_up:m_rules_famous_party"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "grumpy_message",
+        "value": "Grumpy message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_rules_grumpy"
+            ],
+            "_raw": "click | pop_up:m_rules_grumpy",
+            "_cleaned": "click | pop_up:m_rules_grumpy"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "grumpy_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_inactive_message",
+        "value": "Inactive check in",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_rules_inactive"
+            ],
+            "_raw": "click | pop_up:m_rules_inactive",
+            "_cleaned": "click | pop_up:m_rules_inactive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_inactive_message"
+      },
+      {
+        "type": "button",
+        "name": "set_rule_message",
+        "value": "Set rules message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_rules_set_rule"
+            ],
+            "_raw": "click | pop_up:m_rules_set_rule",
+            "_cleaned": "click | pop_up:m_rules_set_rule"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "set_rule_message"
+      },
+      {
+        "type": "button",
+        "name": "ideas_message",
+        "value": "Reminder to suggest ideas",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_rules_ideas"
+            ],
+            "_raw": "click | pop_up:m_rules_ideas",
+            "_cleaned": "click | pop_up:m_rules_ideas"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "ideas_message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_consequence_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_consequence In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence In Week Messages",
+              "matchedExpression": "@global.w_consequence",
+              "type": "global",
+              "fieldName": "w_consequence"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_consequence_start"
+            ],
+            "_raw": "click | pop_up:m_consequence_start",
+            "_cleaned": "click | pop_up:m_consequence_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "2 truths and a lie",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_consequence_2t1l"
+            ],
+            "_raw": "click | pop_up:m_consequence_2t1l",
+            "_cleaned": "click | pop_up:m_consequence_2t1l"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "encouragement_message",
+        "value": "Encouragement",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_consequence_encouragement"
+            ],
+            "_raw": "click | pop_up:m_consequence_encouragement",
+            "_cleaned": "click | pop_up:m_consequence_encouragement"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "encouragement_message"
+      },
+      {
+        "type": "button",
+        "name": "status_message",
+        "value": "Midweek status",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_consequence_status"
+            ],
+            "_raw": "click | pop_up:m_consequence_status",
+            "_cleaned": "click | pop_up:m_consequence_status"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "status_message"
+      },
+      {
+        "type": "button",
+        "name": "pos_neg_message",
+        "value": "first positive negative message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_consequence_pos_neg"
+            ],
+            "_raw": "click | pop_up:m_consequence_pos_neg",
+            "_cleaned": "click | pop_up:m_consequence_pos_neg"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "pos_neg_message"
+      },
+      {
+        "type": "button",
+        "name": "pos_neg_message_2",
+        "value": "second positive negative message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_consequence_pos_neg_2"
+            ],
+            "_raw": "click | pop_up:m_consequence_pos_neg_2",
+            "_cleaned": "click | pop_up:m_consequence_pos_neg_2"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "pos_neg_message_2"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_solve_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_solve In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_solve In Week Messages",
+              "matchedExpression": "@global.w_solve",
+              "type": "global",
+              "fieldName": "w_solve"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_solve": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_solve_start"
+            ],
+            "_raw": "click | pop_up:m_solve_start",
+            "_cleaned": "click | pop_up:m_solve_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "reminder_message",
+        "value": "Midweek reminder",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_solve_reminder"
+            ],
+            "_raw": "click | pop_up:m_solve_reminder",
+            "_cleaned": "click | pop_up:m_solve_reminder"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "reminder_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun: mirror",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_solve_mirror"
+            ],
+            "_raw": "click | pop_up:m_solve_mirror",
+            "_cleaned": "click | pop_up:m_solve_mirror"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "encouragement_message",
+        "value": "Midweek encouragement",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_solve_encouragement"
+            ],
+            "_raw": "click | pop_up:m_solve_encouragement",
+            "_cleaned": "click | pop_up:m_solve_encouragement"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "encouragement_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_inactive_message",
+        "value": "Inactive checkin",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_solve_inactive"
+            ],
+            "_raw": "click | pop_up:m_solve_inactive",
+            "_cleaned": "click | pop_up:m_solve_inactive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_inactive_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_active_message",
+        "value": "Active checkin",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_solve_active"
+            ],
+            "_raw": "click | pop_up:m_solve_active",
+            "_cleaned": "click | pop_up:m_solve_active"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_active_message"
+      },
+      {
+        "type": "button",
+        "name": "finished_message",
+        "value": "Finished message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_solve_finished"
+            ],
+            "_raw": "click | pop_up:m_solve_finished",
+            "_cleaned": "click | pop_up:m_solve_finished"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "finished_message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_safe_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_safe In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_safe In Week Messages",
+              "matchedExpression": "@global.w_safe",
+              "type": "global",
+              "fieldName": "w_safe"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_safe": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "value": "Start message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_safe_start"
+            ],
+            "_raw": "click | pop_up:m_safe_start",
+            "_cleaned": "click | pop_up:m_safe_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun: time machine",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_safe_time_machine"
+            ],
+            "_raw": "click | pop_up:m_safe_time_machine",
+            "_cleaned": "click | pop_up:m_safe_time_machine"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_inactive_message",
+        "value": "Inactive check-in",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_safe_inactive"
+            ],
+            "_raw": "click | pop_up:m_safe_inactive",
+            "_cleaned": "click | pop_up:m_safe_inactive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_inactive_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_active_message",
+        "value": "Active check_in",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_safe_active"
+            ],
+            "_raw": "click | pop_up:m_safe_active",
+            "_cleaned": "click | pop_up:m_safe_active"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_active_message"
+      },
+      {
+        "type": "button",
+        "name": "finsihed_message",
+        "value": "Finished message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_safe_finished"
+            ],
+            "_raw": "click | pop_up:m_safe_finished",
+            "_cleaned": "click | pop_up:m_safe_finished"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "finsihed_message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "w_crisis_messages",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.w_crisis In Week Messages",
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_crisis In Week Messages",
+              "matchedExpression": "@global.w_crisis",
+              "type": "global",
+              "fieldName": "w_crisis"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_crisis": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "start_message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_crisis_start"
+            ],
+            "_raw": "click | pop_up:m_crisis_start",
+            "_cleaned": "click | pop_up:m_crisis_start"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "start_message"
+      },
+      {
+        "type": "button",
+        "name": "something_fun_message",
+        "value": "Something fun: superpowers",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_crisis_superpowers"
+            ],
+            "_raw": "click | pop_up:m_crisis_superpowers",
+            "_cleaned": "click | pop_up:m_crisis_superpowers"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "something_fun_message"
+      },
+      {
+        "type": "button",
+        "name": "encouragement_message",
+        "value": "Midweek encouragement",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_crisis_encouragement"
+            ],
+            "_raw": "click | pop_up:m_crisis_encouragement",
+            "_cleaned": "click | pop_up:m_crisis_encouragement"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "encouragement_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_inactive_message",
+        "value": "Inactive check-in",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_crisis_inactive"
+            ],
+            "_raw": "click | pop_up:m_crisis_inactive",
+            "_cleaned": "click | pop_up:m_crisis_inactive"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_inactive_message"
+      },
+      {
+        "type": "button",
+        "name": "check_in_active_message",
+        "value": "Active check-in",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_crisis_active"
+            ],
+            "_raw": "click | pop_up:m_crisis_active",
+            "_cleaned": "click | pop_up:m_crisis_active"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "check_in_active_message"
+      },
+      {
+        "type": "button",
+        "name": "finished_message",
+        "value": "Finished message",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "m_crisis_finished"
+            ],
+            "_raw": "click | pop_up:m_crisis_finished",
+            "_cleaned": "click | pop_up:m_crisis_finished"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "finished_message"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/weekly_messages.xlsx"
   },
   {
     "flow_type": "template",
@@ -39100,45 +43448,56 @@
                   },
                   {
                     "name": "answer_list",
-                    "value": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
+                    "value": [
+                      "@global.w_consequence_male_caregiver was angry",
+                      "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                      "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+                      "The consequence was too strong"
+                    ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
                     "_dynamicFields": {
-                      "value": [
-                        {
-                          "fullExpression": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
-                          "matchedExpression": "@global.w_consequence_male_caregiver",
-                          "type": "global",
-                          "fieldName": "w_consequence_male_caregiver"
-                        },
-                        {
-                          "fullExpression": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
-                          "matchedExpression": "@global.w_consequence_male_caregiver",
-                          "type": "global",
-                          "fieldName": "w_consequence_male_caregiver"
-                        },
-                        {
-                          "fullExpression": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
-                          "matchedExpression": "@global.w_consequence_teen_boy_1",
-                          "type": "global",
-                          "fieldName": "w_consequence_teen_boy_1"
-                        },
-                        {
-                          "fullExpression": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
-                          "matchedExpression": "@global.w_consequence_teen_boy_1",
-                          "type": "global",
-                          "fieldName": "w_consequence_teen_boy_1"
-                        }
-                      ]
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver was angry",
+                            "matchedExpression": "@global.w_consequence_male_caregiver",
+                            "type": "global",
+                            "fieldName": "w_consequence_male_caregiver"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                            "matchedExpression": "@global.w_consequence_male_caregiver",
+                            "type": "global",
+                            "fieldName": "w_consequence_male_caregiver"
+                          },
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                            "matchedExpression": "@global.w_consequence_teen_boy_1",
+                            "type": "global",
+                            "fieldName": "w_consequence_teen_boy_1"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+                            "matchedExpression": "@global.w_consequence_teen_boy_1",
+                            "type": "global",
+                            "fieldName": "w_consequence_teen_boy_1"
+                          }
+                        ]
+                      }
                     },
                     "_dynamicDependencies": {
                       "@global.w_consequence_male_caregiver": [
-                        "value",
-                        "value"
+                        "value.0",
+                        "value.1"
                       ],
                       "@global.w_consequence_teen_boy_1": [
-                        "value",
-                        "value"
+                        "value.1",
+                        "value.2"
                       ]
                     }
                   },
@@ -41031,59 +45390,71 @@
                   },
                   {
                     "name": "answer_list",
-                    "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
+                    "value": [
+                      "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+                      "They agreed on consequences together",
+                      "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                      "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                      "The consequence was realistic and appropriate"
+                    ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
                     "_dynamicFields": {
-                      "value": [
-                        {
-                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
-                          "matchedExpression": "@global.w_consequence_teen_boy_1",
-                          "type": "global",
-                          "fieldName": "w_consequence_teen_boy_1"
-                        },
-                        {
-                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
-                          "matchedExpression": "@global.w_consequence_male_caregiver",
-                          "type": "global",
-                          "fieldName": "w_consequence_male_caregiver"
-                        },
-                        {
-                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
-                          "matchedExpression": "@global.w_consequence_male_caregiver",
-                          "type": "global",
-                          "fieldName": "w_consequence_male_caregiver"
-                        },
-                        {
-                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
-                          "matchedExpression": "@global.w_consequence_teen_boy_1",
-                          "type": "global",
-                          "fieldName": "w_consequence_teen_boy_1"
-                        },
-                        {
-                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
-                          "matchedExpression": "@global.w_consequence_male_caregiver",
-                          "type": "global",
-                          "fieldName": "w_consequence_male_caregiver"
-                        },
-                        {
-                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
-                          "matchedExpression": "@global.w_consequence_teen_boy_1",
-                          "type": "global",
-                          "fieldName": "w_consequence_teen_boy_1"
-                        }
-                      ]
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+                            "matchedExpression": "@global.w_consequence_teen_boy_1",
+                            "type": "global",
+                            "fieldName": "w_consequence_teen_boy_1"
+                          },
+                          {
+                            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+                            "matchedExpression": "@global.w_consequence_male_caregiver",
+                            "type": "global",
+                            "fieldName": "w_consequence_male_caregiver"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                            "matchedExpression": "@global.w_consequence_male_caregiver",
+                            "type": "global",
+                            "fieldName": "w_consequence_male_caregiver"
+                          },
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                            "matchedExpression": "@global.w_consequence_teen_boy_1",
+                            "type": "global",
+                            "fieldName": "w_consequence_teen_boy_1"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                            "matchedExpression": "@global.w_consequence_male_caregiver",
+                            "type": "global",
+                            "fieldName": "w_consequence_male_caregiver"
+                          },
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                            "matchedExpression": "@global.w_consequence_teen_boy_1",
+                            "type": "global",
+                            "fieldName": "w_consequence_teen_boy_1"
+                          }
+                        ]
+                      }
                     },
                     "_dynamicDependencies": {
                       "@global.w_consequence_teen_boy_1": [
-                        "value",
-                        "value",
-                        "value"
+                        "value.0",
+                        "value.2",
+                        "value.3"
                       ],
                       "@global.w_consequence_male_caregiver": [
-                        "value",
-                        "value",
-                        "value"
+                        "value.0",
+                        "value.2",
+                        "value.3"
                       ]
                     }
                   },
@@ -45572,29 +49943,37 @@
                       },
                       {
                         "name": "answer_list",
-                        "value": "Said something nice first;\nSpoken to @global.w_instruct_teen_girl in a calm voice;\nTold @global.w_instruct_teen_girl what she wants her to do ",
+                        "value": [
+                          "Said something nice first",
+                          "Spoken to @global.w_instruct_teen_girl in a calm voice",
+                          "Told @global.w_instruct_teen_girl what she wants her to do"
+                        ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
                         "_dynamicFields": {
-                          "value": [
-                            {
-                              "fullExpression": "Said something nice first;\nSpoken to @global.w_instruct_teen_girl in a calm voice;\nTold @global.w_instruct_teen_girl what she wants her to do ",
-                              "matchedExpression": "@global.w_instruct_teen_girl",
-                              "type": "global",
-                              "fieldName": "w_instruct_teen_girl"
-                            },
-                            {
-                              "fullExpression": "Said something nice first;\nSpoken to @global.w_instruct_teen_girl in a calm voice;\nTold @global.w_instruct_teen_girl what she wants her to do ",
-                              "matchedExpression": "@global.w_instruct_teen_girl",
-                              "type": "global",
-                              "fieldName": "w_instruct_teen_girl"
-                            }
-                          ]
+                          "value": {
+                            "1": [
+                              {
+                                "fullExpression": "Spoken to @global.w_instruct_teen_girl in a calm voice",
+                                "matchedExpression": "@global.w_instruct_teen_girl",
+                                "type": "global",
+                                "fieldName": "w_instruct_teen_girl"
+                              }
+                            ],
+                            "2": [
+                              {
+                                "fullExpression": "Told @global.w_instruct_teen_girl what she wants her to do",
+                                "matchedExpression": "@global.w_instruct_teen_girl",
+                                "type": "global",
+                                "fieldName": "w_instruct_teen_girl"
+                              }
+                            ]
+                          }
                         },
                         "_dynamicDependencies": {
                           "@global.w_instruct_teen_girl": [
-                            "value",
-                            "value"
+                            "value.1",
+                            "value.2"
                           ]
                         }
                       },
@@ -46247,45 +50626,55 @@
                       },
                       {
                         "name": "answer_list",
-                        "value": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
+                        "value": [
+                          "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+                          "@global.w_instruct_female_caregiver was able to stay calm",
+                          "@global.w_instruct_female_caregiver kept a positive attitude"
+                        ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
                         "_dynamicFields": {
-                          "value": [
-                            {
-                              "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
-                              "matchedExpression": "@global.w_instruct_teen_girl",
-                              "type": "global",
-                              "fieldName": "w_instruct_teen_girl"
-                            },
-                            {
-                              "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
-                              "matchedExpression": "@global.w_instruct_female_caregiver",
-                              "type": "global",
-                              "fieldName": "w_instruct_female_caregiver"
-                            },
-                            {
-                              "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
-                              "matchedExpression": "@global.w_instruct_female_caregiver",
-                              "type": "global",
-                              "fieldName": "w_instruct_female_caregiver"
-                            },
-                            {
-                              "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
-                              "matchedExpression": "@global.w_instruct_female_caregiver",
-                              "type": "global",
-                              "fieldName": "w_instruct_female_caregiver"
-                            }
-                          ]
+                          "value": {
+                            "0": [
+                              {
+                                "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+                                "matchedExpression": "@global.w_instruct_teen_girl",
+                                "type": "global",
+                                "fieldName": "w_instruct_teen_girl"
+                              },
+                              {
+                                "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+                                "matchedExpression": "@global.w_instruct_female_caregiver",
+                                "type": "global",
+                                "fieldName": "w_instruct_female_caregiver"
+                              }
+                            ],
+                            "1": [
+                              {
+                                "fullExpression": "@global.w_instruct_female_caregiver was able to stay calm",
+                                "matchedExpression": "@global.w_instruct_female_caregiver",
+                                "type": "global",
+                                "fieldName": "w_instruct_female_caregiver"
+                              }
+                            ],
+                            "2": [
+                              {
+                                "fullExpression": "@global.w_instruct_female_caregiver kept a positive attitude",
+                                "matchedExpression": "@global.w_instruct_female_caregiver",
+                                "type": "global",
+                                "fieldName": "w_instruct_female_caregiver"
+                              }
+                            ]
+                          }
                         },
                         "_dynamicDependencies": {
                           "@global.w_instruct_teen_girl": [
-                            "value"
+                            "value.0"
                           ],
                           "@global.w_instruct_female_caregiver": [
-                            "value",
-                            "value",
-                            "value"
+                            "value.0",
+                            "value.1",
+                            "value.2"
                           ]
                         }
                       },
@@ -53642,45 +58031,54 @@
                       },
                       {
                         "name": "answer_list",
-                        "value": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
+                        "value": [
+                          "They discussed the reasons behind the rule",
+                          "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+                          "The rule was clear, specific and fair",
+                          "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule"
+                        ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.answer_list",
                         "_dynamicFields": {
-                          "value": [
-                            {
-                              "fullExpression": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
-                              "matchedExpression": "@global.w_rules_female_caregiver_1",
-                              "type": "global",
-                              "fieldName": "w_rules_female_caregiver_1"
-                            },
-                            {
-                              "fullExpression": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
-                              "matchedExpression": "@global.w_rules_teen_boy",
-                              "type": "global",
-                              "fieldName": "w_rules_teen_boy"
-                            },
-                            {
-                              "fullExpression": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
-                              "matchedExpression": "@global.w_rules_female_caregiver_1",
-                              "type": "global",
-                              "fieldName": "w_rules_female_caregiver_1"
-                            },
-                            {
-                              "fullExpression": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
-                              "matchedExpression": "@global.w_rules_teen_boy",
-                              "type": "global",
-                              "fieldName": "w_rules_teen_boy"
-                            }
-                          ]
+                          "value": {
+                            "1": [
+                              {
+                                "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+                                "matchedExpression": "@global.w_rules_female_caregiver_1",
+                                "type": "global",
+                                "fieldName": "w_rules_female_caregiver_1"
+                              },
+                              {
+                                "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+                                "matchedExpression": "@global.w_rules_teen_boy",
+                                "type": "global",
+                                "fieldName": "w_rules_teen_boy"
+                              }
+                            ],
+                            "3": [
+                              {
+                                "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
+                                "matchedExpression": "@global.w_rules_female_caregiver_1",
+                                "type": "global",
+                                "fieldName": "w_rules_female_caregiver_1"
+                              },
+                              {
+                                "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
+                                "matchedExpression": "@global.w_rules_teen_boy",
+                                "type": "global",
+                                "fieldName": "w_rules_teen_boy"
+                              }
+                            ]
+                          }
                         },
                         "_dynamicDependencies": {
                           "@global.w_rules_female_caregiver_1": [
-                            "value",
-                            "value"
+                            "value.1",
+                            "value.3"
                           ],
                           "@global.w_rules_teen_boy": [
-                            "value",
-                            "value"
+                            "value.1",
+                            "value.3"
                           ]
                         }
                       },
@@ -55900,43 +60298,57 @@
                   },
                   {
                     "name": "answer_list",
-                    "value": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                    "value": [
+                      "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
+                      "@global.w_safe_teen_girl_1's friend was encouraging her",
+                      "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
+                      "Many girls in our communities get pregnant or catch HIV from older men",
+                      "There were no other trusted adults to advise @global.w_safe_teen_girl_1"
+                    ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
                     "_dynamicFields": {
-                      "value": [
-                        {
-                          "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
-                          "matchedExpression": "@global.w_safe_teen_girl_1",
-                          "type": "global",
-                          "fieldName": "w_safe_teen_girl_1"
-                        },
-                        {
-                          "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
-                          "matchedExpression": "@global.w_safe_teen_girl_1",
-                          "type": "global",
-                          "fieldName": "w_safe_teen_girl_1"
-                        },
-                        {
-                          "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
-                          "matchedExpression": "@global.w_safe_teen_girl_1",
-                          "type": "global",
-                          "fieldName": "w_safe_teen_girl_1"
-                        },
-                        {
-                          "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
-                          "matchedExpression": "@global.w_safe_teen_girl_1",
-                          "type": "global",
-                          "fieldName": "w_safe_teen_girl_1"
-                        }
-                      ]
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
+                            "matchedExpression": "@global.w_safe_teen_girl_1",
+                            "type": "global",
+                            "fieldName": "w_safe_teen_girl_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "@global.w_safe_teen_girl_1's friend was encouraging her",
+                            "matchedExpression": "@global.w_safe_teen_girl_1",
+                            "type": "global",
+                            "fieldName": "w_safe_teen_girl_1"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
+                            "matchedExpression": "@global.w_safe_teen_girl_1",
+                            "type": "global",
+                            "fieldName": "w_safe_teen_girl_1"
+                          }
+                        ],
+                        "4": [
+                          {
+                            "fullExpression": "There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                            "matchedExpression": "@global.w_safe_teen_girl_1",
+                            "type": "global",
+                            "fieldName": "w_safe_teen_girl_1"
+                          }
+                        ]
+                      }
                     },
                     "_dynamicDependencies": {
                       "@global.w_safe_teen_girl_1": [
-                        "value",
-                        "value",
-                        "value",
-                        "value"
+                        "value.0",
+                        "value.1",
+                        "value.2",
+                        "value.4"
                       ]
                     }
                   },
@@ -63294,29 +67706,39 @@
                       },
                       {
                         "name": "answer_list",
-                        "value": "Recognise why he feels stressed;\nTake a deep breath and speak calmly;\nShow he understands his teen’s feelings;\nThink about solutions together with @global.w_stress_teen_boy_1;\nDo something positive together with @global.w_stress_teen_boy_1",
+                        "value": [
+                          "Recognise why he feels stressed",
+                          "Take a deep breath and speak calmly",
+                          "Show he understands his teen’s feelings",
+                          "Think about solutions together with @global.w_stress_teen_boy_1",
+                          "Do something positive together with @global.w_stress_teen_boy_1"
+                        ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.answer_list",
                         "_dynamicFields": {
-                          "value": [
-                            {
-                              "fullExpression": "Recognise why he feels stressed;\nTake a deep breath and speak calmly;\nShow he understands his teen’s feelings;\nThink about solutions together with @global.w_stress_teen_boy_1;\nDo something positive together with @global.w_stress_teen_boy_1",
-                              "matchedExpression": "@global.w_stress_teen_boy_1",
-                              "type": "global",
-                              "fieldName": "w_stress_teen_boy_1"
-                            },
-                            {
-                              "fullExpression": "Recognise why he feels stressed;\nTake a deep breath and speak calmly;\nShow he understands his teen’s feelings;\nThink about solutions together with @global.w_stress_teen_boy_1;\nDo something positive together with @global.w_stress_teen_boy_1",
-                              "matchedExpression": "@global.w_stress_teen_boy_1",
-                              "type": "global",
-                              "fieldName": "w_stress_teen_boy_1"
-                            }
-                          ]
+                          "value": {
+                            "3": [
+                              {
+                                "fullExpression": "Think about solutions together with @global.w_stress_teen_boy_1",
+                                "matchedExpression": "@global.w_stress_teen_boy_1",
+                                "type": "global",
+                                "fieldName": "w_stress_teen_boy_1"
+                              }
+                            ],
+                            "4": [
+                              {
+                                "fullExpression": "Do something positive together with @global.w_stress_teen_boy_1",
+                                "matchedExpression": "@global.w_stress_teen_boy_1",
+                                "type": "global",
+                                "fieldName": "w_stress_teen_boy_1"
+                              }
+                            ]
+                          }
                         },
                         "_dynamicDependencies": {
                           "@global.w_stress_teen_boy_1": [
-                            "value",
-                            "value"
+                            "value.3",
+                            "value.4"
                           ]
                         }
                       },
