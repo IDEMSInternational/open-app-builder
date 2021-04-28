@@ -77,23 +77,23 @@ ion-tab-button {
   width: 94px;
   height: 94px;
   border-radius: var(--ion-border-radius-rounded);
-  background: #e3f4ff;
+  background: var(--ion-color-quaternary);
   position: relative;
   margin-left: auto;
-  margin-right: -10px;
+  margin-right: -13px;
   @media (max-width: 375px) {
     width: 84px;
     height: 84px;
   }
 }
 .yellow {
-  background: var(--button-icon-secondary-light);
+  background: var(--round-icon-button-light);
 }
 .orange {
-  background: var(--button-icon-secondary);
+  background: var(--round-icon-button);
 }
 .dark_orange {
-  background: var(--button-icon-secondary-dark);
+  background: var(--round-icon-button-dark);
 }
 
 .navigation {
