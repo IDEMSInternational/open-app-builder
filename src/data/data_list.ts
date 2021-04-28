@@ -160,16 +160,13 @@
         "comments": "This text should be accessible in templates via @data.example.example1.text"
       },
       {
-        "id": "example2",
-        "value": "name:name_var_1 | text:Option 1, name:name_var_2 | text: Option 2"
-      },
-      {
         "id": "example3",
         "value_list": [
           "name:name_var_1 | text:Option 1",
           "name:name_var_2 | text: Option 2"
         ],
-        "text": "any arbritary fields can be accessed"
+        "text": "any fields can be accessed",
+        "comments": "If a column ends in _list it will be parsed as an array"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx"

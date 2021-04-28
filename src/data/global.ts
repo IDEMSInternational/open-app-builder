@@ -1059,7 +1059,7 @@
         "value": "Group"
       },
       {
-        "type": "declare_field_default",
+        "type": "declare_global_constant",
         "name": "together_alternative",
         "value": "In my group"
       },
@@ -1069,7 +1069,7 @@
         "value": "Me"
       },
       {
-        "type": "declare_field_default",
+        "type": "declare_global_constant",
         "name": "individual_alternative",
         "value": "On my own"
       },
