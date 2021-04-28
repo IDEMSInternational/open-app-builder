@@ -29,9 +29,8 @@ export class TemplateParser extends DefaultParser {
     row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
 
     // convert any variables (local/global) list or collection strings
-    // // ignore rows which reference dynamic values (e.g. @local.some_var)
-    // if (row.value && typeof row.value === "string" && !row.value.includes("@")) {
-    if (row.value && typeof row.value === "string") {
+    // ignore rows which reference dynamic values (e.g. @local.some_var)
+    if (row.value && typeof row.value === "string" && !row.value.includes("@")) {
       if (row.name?.includes("_list") && row.value && typeof row.value === "string") {
         row.value = parsePLHListString(row.value);
       }

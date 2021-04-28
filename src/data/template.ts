@@ -1916,195 +1916,151 @@
       },
       {
         "name": "answer_list_3",
-        "value": [
-          "@global.w_self_care",
-          "@global.w_1on1",
-          "@global.w_praise",
-          "@global.w_instruct",
-          "@global.w_stress",
-          "@global.w_money",
-          "@local.w_rules",
-          "@global.w_consequence",
-          "@global.w_solve",
-          "@global.w_safe",
-          "@global.w_crisis",
-          "@global.w_celebrate"
-        ],
+        "value": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
         "type": "set_variable",
         "_nested_name": "answer_list_3",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "@global.w_self_care",
-                "matchedExpression": "@global.w_self_care",
-                "type": "global",
-                "fieldName": "w_self_care"
-              }
-            ],
-            "1": [
-              {
-                "fullExpression": "@global.w_1on1",
-                "matchedExpression": "@global.w_1on1",
-                "type": "global",
-                "fieldName": "w_1on1"
-              }
-            ],
-            "2": [
-              {
-                "fullExpression": "@global.w_praise",
-                "matchedExpression": "@global.w_praise",
-                "type": "global",
-                "fieldName": "w_praise"
-              }
-            ],
-            "3": [
-              {
-                "fullExpression": "@global.w_instruct",
-                "matchedExpression": "@global.w_instruct",
-                "type": "global",
-                "fieldName": "w_instruct"
-              }
-            ],
-            "4": [
-              {
-                "fullExpression": "@global.w_stress",
-                "matchedExpression": "@global.w_stress",
-                "type": "global",
-                "fieldName": "w_stress"
-              }
-            ],
-            "5": [
-              {
-                "fullExpression": "@global.w_money",
-                "matchedExpression": "@global.w_money",
-                "type": "global",
-                "fieldName": "w_money"
-              }
-            ],
-            "6": [
-              {
-                "fullExpression": "@local.w_rules",
-                "matchedExpression": "@local.w_rules",
-                "type": "local",
-                "fieldName": "w_rules"
-              }
-            ],
-            "7": [
-              {
-                "fullExpression": "@global.w_consequence",
-                "matchedExpression": "@global.w_consequence",
-                "type": "global",
-                "fieldName": "w_consequence"
-              }
-            ],
-            "8": [
-              {
-                "fullExpression": "@global.w_solve",
-                "matchedExpression": "@global.w_solve",
-                "type": "global",
-                "fieldName": "w_solve"
-              }
-            ],
-            "9": [
-              {
-                "fullExpression": "@global.w_safe",
-                "matchedExpression": "@global.w_safe",
-                "type": "global",
-                "fieldName": "w_safe"
-              }
-            ],
-            "10": [
-              {
-                "fullExpression": "@global.w_crisis",
-                "matchedExpression": "@global.w_crisis",
-                "type": "global",
-                "fieldName": "w_crisis"
-              }
-            ],
-            "11": [
-              {
-                "fullExpression": "@global.w_celebrate",
-                "matchedExpression": "@global.w_celebrate",
-                "type": "global",
-                "fieldName": "w_celebrate"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_self_care",
+              "type": "global",
+              "fieldName": "w_self_care"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_1on1",
+              "type": "global",
+              "fieldName": "w_1on1"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_praise",
+              "type": "global",
+              "fieldName": "w_praise"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_instruct",
+              "type": "global",
+              "fieldName": "w_instruct"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_stress",
+              "type": "global",
+              "fieldName": "w_stress"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_money",
+              "type": "global",
+              "fieldName": "w_money"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@local.w_rules",
+              "type": "local",
+              "fieldName": "w_rules"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_consequence",
+              "type": "global",
+              "fieldName": "w_consequence"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_solve",
+              "type": "global",
+              "fieldName": "w_solve"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_safe",
+              "type": "global",
+              "fieldName": "w_safe"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_crisis",
+              "type": "global",
+              "fieldName": "w_crisis"
+            },
+            {
+              "fullExpression": "@global.w_self_care; @global.w_1on1; @global.w_praise; @global.w_instruct; @global.w_stress; @global.w_money; @local.w_rules; @global.w_consequence; @global.w_solve; @global.w_safe; @global.w_crisis; @global.w_celebrate",
+              "matchedExpression": "@global.w_celebrate",
+              "type": "global",
+              "fieldName": "w_celebrate"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@global.w_self_care": [
-            "value.0"
+            "value"
           ],
           "@global.w_1on1": [
-            "value.1"
+            "value"
           ],
           "@global.w_praise": [
-            "value.2"
+            "value"
           ],
           "@global.w_instruct": [
-            "value.3"
+            "value"
           ],
           "@global.w_stress": [
-            "value.4"
+            "value"
           ],
           "@global.w_money": [
-            "value.5"
+            "value"
           ],
           "@local.w_rules": [
-            "value.6"
+            "value"
           ],
           "@global.w_consequence": [
-            "value.7"
+            "value"
           ],
           "@global.w_solve": [
-            "value.8"
+            "value"
           ],
           "@global.w_safe": [
-            "value.9"
+            "value"
           ],
           "@global.w_crisis": [
-            "value.10"
+            "value"
           ],
           "@global.w_celebrate": [
-            "value.11"
+            "value"
           ]
         }
       },
       {
         "name": "answer_list_4",
-        "value": [
-          "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg",
-          "name:true | text:@global.together | image:plh_images/workshops/options/together.svg"
-        ],
+        "value": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg; \nname:true | text:@global.together | image:plh_images/workshops/options/together.svg",
         "type": "set_variable",
         "_nested_name": "answer_list_4",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg",
-                "matchedExpression": "@global.individual",
-                "type": "global",
-                "fieldName": "individual"
-              }
-            ],
-            "1": [
-              {
-                "fullExpression": "name:true | text:@global.together | image:plh_images/workshops/options/together.svg",
-                "matchedExpression": "@global.together",
-                "type": "global",
-                "fieldName": "together"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg; \nname:true | text:@global.together | image:plh_images/workshops/options/together.svg",
+              "matchedExpression": "@global.individual",
+              "type": "global",
+              "fieldName": "individual"
+            },
+            {
+              "fullExpression": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg; \nname:true | text:@global.together | image:plh_images/workshops/options/together.svg",
+              "matchedExpression": "@global.together",
+              "type": "global",
+              "fieldName": "together"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@global.individual": [
-            "value.0"
+            "value"
           ],
           "@global.together": [
-            "value.1"
+            "value"
           ]
         }
       },
@@ -20371,87 +20327,70 @@
       },
       {
         "name": "answer_2_list",
-        "value": [
-          "@local.option_1",
-          "@local.option_2",
-          "@local.option_3"
-        ],
+        "value": "@local.option_1;  @local.option_2;  @local.option_3",
         "type": "set_variable",
         "_nested_name": "answer_2_list",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "@local.option_1",
-                "matchedExpression": "@local.option_1",
-                "type": "local",
-                "fieldName": "option_1"
-              }
-            ],
-            "1": [
-              {
-                "fullExpression": "@local.option_2",
-                "matchedExpression": "@local.option_2",
-                "type": "local",
-                "fieldName": "option_2"
-              }
-            ],
-            "2": [
-              {
-                "fullExpression": "@local.option_3",
-                "matchedExpression": "@local.option_3",
-                "type": "local",
-                "fieldName": "option_3"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
+              "matchedExpression": "@local.option_1",
+              "type": "local",
+              "fieldName": "option_1"
+            },
+            {
+              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
+              "matchedExpression": "@local.option_2",
+              "type": "local",
+              "fieldName": "option_2"
+            },
+            {
+              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
+              "matchedExpression": "@local.option_3",
+              "type": "local",
+              "fieldName": "option_3"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@local.option_1": [
-            "value.0"
+            "value"
           ],
           "@local.option_2": [
-            "value.1"
+            "value"
           ],
           "@local.option_3": [
-            "value.2"
+            "value"
           ]
         }
       },
       {
         "name": "answer_3_list",
-        "value": [
-          "@global.example_global_constant_text",
-          "@global.example_global_constant_title"
-        ],
+        "value": "@global.example_global_constant_text; @global.example_global_constant_title;",
         "type": "set_variable",
         "_nested_name": "answer_3_list",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "@global.example_global_constant_text",
-                "matchedExpression": "@global.example_global_constant_text",
-                "type": "global",
-                "fieldName": "example_global_constant_text"
-              }
-            ],
-            "1": [
-              {
-                "fullExpression": "@global.example_global_constant_title",
-                "matchedExpression": "@global.example_global_constant_title",
-                "type": "global",
-                "fieldName": "example_global_constant_title"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "@global.example_global_constant_text; @global.example_global_constant_title;",
+              "matchedExpression": "@global.example_global_constant_text",
+              "type": "global",
+              "fieldName": "example_global_constant_text"
+            },
+            {
+              "fullExpression": "@global.example_global_constant_text; @global.example_global_constant_title;",
+              "matchedExpression": "@global.example_global_constant_title",
+              "type": "global",
+              "fieldName": "example_global_constant_title"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@global.example_global_constant_text": [
-            "value.0"
+            "value"
           ],
           "@global.example_global_constant_title": [
-            "value.1"
+            "value"
           ]
         }
       },
@@ -20582,50 +20521,40 @@
       },
       {
         "name": "answer_list_2",
-        "value": [
-          "@local.option_1",
-          "@local.option_2",
-          "@local.option_3"
-        ],
+        "value": "@local.option_1;  @local.option_2;  @local.option_3",
         "type": "set_variable",
         "_nested_name": "answer_list_2",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "@local.option_1",
-                "matchedExpression": "@local.option_1",
-                "type": "local",
-                "fieldName": "option_1"
-              }
-            ],
-            "1": [
-              {
-                "fullExpression": "@local.option_2",
-                "matchedExpression": "@local.option_2",
-                "type": "local",
-                "fieldName": "option_2"
-              }
-            ],
-            "2": [
-              {
-                "fullExpression": "@local.option_3",
-                "matchedExpression": "@local.option_3",
-                "type": "local",
-                "fieldName": "option_3"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
+              "matchedExpression": "@local.option_1",
+              "type": "local",
+              "fieldName": "option_1"
+            },
+            {
+              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
+              "matchedExpression": "@local.option_2",
+              "type": "local",
+              "fieldName": "option_2"
+            },
+            {
+              "fullExpression": "@local.option_1;  @local.option_2;  @local.option_3",
+              "matchedExpression": "@local.option_3",
+              "type": "local",
+              "fieldName": "option_3"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@local.option_1": [
-            "value.0"
+            "value"
           ],
           "@local.option_2": [
-            "value.1"
+            "value"
           ],
           "@local.option_3": [
-            "value.2"
+            "value"
           ]
         }
       },
@@ -20691,75 +20620,61 @@
       },
       {
         "name": "answer_2_list",
-        "value": [
-          "name:name_1 | text:@local.option_1",
-          "name:name_2 | text:@local.option_2"
-        ],
+        "value": "name:name_1 | text:@local.option_1;  name:name_2 | text:@local.option_2",
         "type": "set_variable",
         "_nested_name": "answer_2_list",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "name:name_1 | text:@local.option_1",
-                "matchedExpression": "@local.option_1",
-                "type": "local",
-                "fieldName": "option_1"
-              }
-            ],
-            "1": [
-              {
-                "fullExpression": "name:name_2 | text:@local.option_2",
-                "matchedExpression": "@local.option_2",
-                "type": "local",
-                "fieldName": "option_2"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "name:name_1 | text:@local.option_1;  name:name_2 | text:@local.option_2",
+              "matchedExpression": "@local.option_1",
+              "type": "local",
+              "fieldName": "option_1"
+            },
+            {
+              "fullExpression": "name:name_1 | text:@local.option_1;  name:name_2 | text:@local.option_2",
+              "matchedExpression": "@local.option_2",
+              "type": "local",
+              "fieldName": "option_2"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@local.option_1": [
-            "value.0"
+            "value"
           ],
           "@local.option_2": [
-            "value.1"
+            "value"
           ]
         }
       },
       {
         "name": "answer_3_list",
-        "value": [
-          "name:name_1 | text:@global.example_global_constant_text",
-          "name:name_2 | text:@global.example_global_constant_title"
-        ],
+        "value": "name:name_1 | text:@global.example_global_constant_text;  name:name_2 | text:@global.example_global_constant_title",
         "type": "set_variable",
         "_nested_name": "answer_3_list",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "name:name_1 | text:@global.example_global_constant_text",
-                "matchedExpression": "@global.example_global_constant_text",
-                "type": "global",
-                "fieldName": "example_global_constant_text"
-              }
-            ],
-            "1": [
-              {
-                "fullExpression": "name:name_2 | text:@global.example_global_constant_title",
-                "matchedExpression": "@global.example_global_constant_title",
-                "type": "global",
-                "fieldName": "example_global_constant_title"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "name:name_1 | text:@global.example_global_constant_text;  name:name_2 | text:@global.example_global_constant_title",
+              "matchedExpression": "@global.example_global_constant_text",
+              "type": "global",
+              "fieldName": "example_global_constant_text"
+            },
+            {
+              "fullExpression": "name:name_1 | text:@global.example_global_constant_text;  name:name_2 | text:@global.example_global_constant_title",
+              "matchedExpression": "@global.example_global_constant_title",
+              "type": "global",
+              "fieldName": "example_global_constant_title"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@global.example_global_constant_text": [
-            "value.0"
+            "value"
           ],
           "@global.example_global_constant_title": [
-            "value.1"
+            "value"
           ]
         }
       },
@@ -21160,26 +21075,22 @@
           },
           {
             "name": "answer_list",
-            "value": [
-              "@local.answer_list_1_list"
-            ],
+            "value": "@local.answer_list_1_list",
             "type": "set_variable",
             "_nested_name": "debug_radio_group_1.answer_list",
             "_dynamicFields": {
-              "value": {
-                "0": [
-                  {
-                    "fullExpression": "@local.answer_list_1_list",
-                    "matchedExpression": "@local.answer_list_1_list",
-                    "type": "local",
-                    "fieldName": "answer_list_1_list"
-                  }
-                ]
-              }
+              "value": [
+                {
+                  "fullExpression": "@local.answer_list_1_list",
+                  "matchedExpression": "@local.answer_list_1_list",
+                  "type": "local",
+                  "fieldName": "answer_list_1_list"
+                }
+              ]
             },
             "_dynamicDependencies": {
               "@local.answer_list_1_list": [
-                "value.0"
+                "value"
               ]
             }
           }
@@ -21199,26 +21110,22 @@
           },
           {
             "name": "answer_list",
-            "value": [
-              "@local.answer_list_2_list"
-            ],
+            "value": "@local.answer_list_2_list",
             "type": "set_variable",
             "_nested_name": "debug_radio_group_2.answer_list",
             "_dynamicFields": {
-              "value": {
-                "0": [
-                  {
-                    "fullExpression": "@local.answer_list_2_list",
-                    "matchedExpression": "@local.answer_list_2_list",
-                    "type": "local",
-                    "fieldName": "answer_list_2_list"
-                  }
-                ]
-              }
+              "value": [
+                {
+                  "fullExpression": "@local.answer_list_2_list",
+                  "matchedExpression": "@local.answer_list_2_list",
+                  "type": "local",
+                  "fieldName": "answer_list_2_list"
+                }
+              ]
             },
             "_dynamicDependencies": {
               "@local.answer_list_2_list": [
-                "value.0"
+                "value"
               ]
             }
           }
@@ -23470,50 +23377,42 @@
       {
         "type": "set_variable",
         "name": "var_list_1",
-        "value": [
-          "@data.debug_vars.list_1.value_list"
-        ],
+        "value": "@data.debug_vars.list_1.value_list",
         "_nested_name": "var_list_1",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "@data.debug_vars.list_1.value_list",
-                "matchedExpression": "@data.debug_vars.list_1.value_list",
-                "type": "data",
-                "fieldName": "debug_vars"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "@data.debug_vars.list_1.value_list",
+              "matchedExpression": "@data.debug_vars.list_1.value_list",
+              "type": "data",
+              "fieldName": "debug_vars"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@data.debug_vars.list_1.value_list": [
-            "value.0"
+            "value"
           ]
         }
       },
       {
         "type": "set_variable",
         "name": "var_list_1_length",
-        "value": [
-          "@local.var_list_1.length"
-        ],
+        "value": "@local.var_list_1.length",
         "_nested_name": "var_list_1_length",
         "_dynamicFields": {
-          "value": {
-            "0": [
-              {
-                "fullExpression": "@local.var_list_1.length",
-                "matchedExpression": "@local.var_list_1.length",
-                "type": "local",
-                "fieldName": "var_list_1"
-              }
-            ]
-          }
+          "value": [
+            {
+              "fullExpression": "@local.var_list_1.length",
+              "matchedExpression": "@local.var_list_1.length",
+              "type": "local",
+              "fieldName": "var_list_1"
+            }
+          ]
         },
         "_dynamicDependencies": {
           "@local.var_list_1.length": [
-            "value.0"
+            "value"
           ]
         }
       },
@@ -23541,8 +23440,23 @@
       {
         "type": "set_variable",
         "name": "var_collection_1",
-        "value": {},
-        "_nested_name": "var_collection_1"
+        "value": "@data.debug_vars.collection_1.value_collection",
+        "_nested_name": "var_collection_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.debug_vars.collection_1.value_collection",
+              "matchedExpression": "@data.debug_vars.collection_1.value_collection",
+              "type": "data",
+              "fieldName": "debug_vars"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.debug_vars.collection_1.value_collection": [
+            "value"
+          ]
+        }
       },
       {
         "type": "set_variable",
@@ -43448,56 +43362,45 @@
                   },
                   {
                     "name": "answer_list",
-                    "value": [
-                      "@global.w_consequence_male_caregiver was angry",
-                      "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                      "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
-                      "The consequence was too strong"
-                    ],
+                    "value": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
                     "_dynamicFields": {
-                      "value": {
-                        "0": [
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver was angry",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          }
-                        ],
-                        "1": [
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
-                          }
-                        ],
-                        "2": [
-                          {
-                            "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
-                          }
-                        ]
-                      }
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver was angry;\n@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain;\nThe consequence was not discussed beforehand with @global.w_consequence_teen_boy_1;\nThe consequence was too strong ",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
                     },
                     "_dynamicDependencies": {
                       "@global.w_consequence_male_caregiver": [
-                        "value.0",
-                        "value.1"
+                        "value",
+                        "value"
                       ],
                       "@global.w_consequence_teen_boy_1": [
-                        "value.1",
-                        "value.2"
+                        "value",
+                        "value"
                       ]
                     }
                   },
@@ -45390,71 +45293,59 @@
                   },
                   {
                     "name": "answer_list",
-                    "value": [
-                      "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                      "They agreed on consequences together",
-                      "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                      "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                      "The consequence was realistic and appropriate"
-                    ],
+                    "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
                     "_dynamicFields": {
-                      "value": {
-                        "0": [
-                          {
-                            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
-                          },
-                          {
-                            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          }
-                        ],
-                        "2": [
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
-                          }
-                        ],
-                        "3": [
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
-                          }
-                        ]
-                      }
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm;\nThey agreed on consequences together;\n@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule;\n@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1;\nThe consequence was realistic and appropriate",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
                     },
                     "_dynamicDependencies": {
                       "@global.w_consequence_teen_boy_1": [
-                        "value.0",
-                        "value.2",
-                        "value.3"
+                        "value",
+                        "value",
+                        "value"
                       ],
                       "@global.w_consequence_male_caregiver": [
-                        "value.0",
-                        "value.2",
-                        "value.3"
+                        "value",
+                        "value",
+                        "value"
                       ]
                     }
                   },
@@ -49943,37 +49834,29 @@
                       },
                       {
                         "name": "answer_list",
-                        "value": [
-                          "Said something nice first",
-                          "Spoken to @global.w_instruct_teen_girl in a calm voice",
-                          "Told @global.w_instruct_teen_girl what she wants her to do"
-                        ],
+                        "value": "Said something nice first;\nSpoken to @global.w_instruct_teen_girl in a calm voice;\nTold @global.w_instruct_teen_girl what she wants her to do ",
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
                         "_dynamicFields": {
-                          "value": {
-                            "1": [
-                              {
-                                "fullExpression": "Spoken to @global.w_instruct_teen_girl in a calm voice",
-                                "matchedExpression": "@global.w_instruct_teen_girl",
-                                "type": "global",
-                                "fieldName": "w_instruct_teen_girl"
-                              }
-                            ],
-                            "2": [
-                              {
-                                "fullExpression": "Told @global.w_instruct_teen_girl what she wants her to do",
-                                "matchedExpression": "@global.w_instruct_teen_girl",
-                                "type": "global",
-                                "fieldName": "w_instruct_teen_girl"
-                              }
-                            ]
-                          }
+                          "value": [
+                            {
+                              "fullExpression": "Said something nice first;\nSpoken to @global.w_instruct_teen_girl in a calm voice;\nTold @global.w_instruct_teen_girl what she wants her to do ",
+                              "matchedExpression": "@global.w_instruct_teen_girl",
+                              "type": "global",
+                              "fieldName": "w_instruct_teen_girl"
+                            },
+                            {
+                              "fullExpression": "Said something nice first;\nSpoken to @global.w_instruct_teen_girl in a calm voice;\nTold @global.w_instruct_teen_girl what she wants her to do ",
+                              "matchedExpression": "@global.w_instruct_teen_girl",
+                              "type": "global",
+                              "fieldName": "w_instruct_teen_girl"
+                            }
+                          ]
                         },
                         "_dynamicDependencies": {
                           "@global.w_instruct_teen_girl": [
-                            "value.1",
-                            "value.2"
+                            "value",
+                            "value"
                           ]
                         }
                       },
@@ -50626,55 +50509,45 @@
                       },
                       {
                         "name": "answer_list",
-                        "value": [
-                          "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-                          "@global.w_instruct_female_caregiver was able to stay calm",
-                          "@global.w_instruct_female_caregiver kept a positive attitude"
-                        ],
+                        "value": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
                         "_dynamicFields": {
-                          "value": {
-                            "0": [
-                              {
-                                "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-                                "matchedExpression": "@global.w_instruct_teen_girl",
-                                "type": "global",
-                                "fieldName": "w_instruct_teen_girl"
-                              },
-                              {
-                                "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-                                "matchedExpression": "@global.w_instruct_female_caregiver",
-                                "type": "global",
-                                "fieldName": "w_instruct_female_caregiver"
-                              }
-                            ],
-                            "1": [
-                              {
-                                "fullExpression": "@global.w_instruct_female_caregiver was able to stay calm",
-                                "matchedExpression": "@global.w_instruct_female_caregiver",
-                                "type": "global",
-                                "fieldName": "w_instruct_female_caregiver"
-                              }
-                            ],
-                            "2": [
-                              {
-                                "fullExpression": "@global.w_instruct_female_caregiver kept a positive attitude",
-                                "matchedExpression": "@global.w_instruct_female_caregiver",
-                                "type": "global",
-                                "fieldName": "w_instruct_female_caregiver"
-                              }
-                            ]
-                          }
+                          "value": [
+                            {
+                              "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
+                              "matchedExpression": "@global.w_instruct_teen_girl",
+                              "type": "global",
+                              "fieldName": "w_instruct_teen_girl"
+                            },
+                            {
+                              "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
+                              "matchedExpression": "@global.w_instruct_female_caregiver",
+                              "type": "global",
+                              "fieldName": "w_instruct_female_caregiver"
+                            },
+                            {
+                              "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
+                              "matchedExpression": "@global.w_instruct_female_caregiver",
+                              "type": "global",
+                              "fieldName": "w_instruct_female_caregiver"
+                            },
+                            {
+                              "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver; @global.w_instruct_female_caregiver was able to stay calm;  @global.w_instruct_female_caregiver kept a positive attitude",
+                              "matchedExpression": "@global.w_instruct_female_caregiver",
+                              "type": "global",
+                              "fieldName": "w_instruct_female_caregiver"
+                            }
+                          ]
                         },
                         "_dynamicDependencies": {
                           "@global.w_instruct_teen_girl": [
-                            "value.0"
+                            "value"
                           ],
                           "@global.w_instruct_female_caregiver": [
-                            "value.0",
-                            "value.1",
-                            "value.2"
+                            "value",
+                            "value",
+                            "value"
                           ]
                         }
                       },
@@ -58031,54 +57904,45 @@
                       },
                       {
                         "name": "answer_list",
-                        "value": [
-                          "They discussed the reasons behind the rule",
-                          "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-                          "The rule was clear, specific and fair",
-                          "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule"
-                        ],
+                        "value": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.answer_list",
                         "_dynamicFields": {
-                          "value": {
-                            "1": [
-                              {
-                                "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-                                "matchedExpression": "@global.w_rules_female_caregiver_1",
-                                "type": "global",
-                                "fieldName": "w_rules_female_caregiver_1"
-                              },
-                              {
-                                "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-                                "matchedExpression": "@global.w_rules_teen_boy",
-                                "type": "global",
-                                "fieldName": "w_rules_teen_boy"
-                              }
-                            ],
-                            "3": [
-                              {
-                                "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
-                                "matchedExpression": "@global.w_rules_female_caregiver_1",
-                                "type": "global",
-                                "fieldName": "w_rules_female_caregiver_1"
-                              },
-                              {
-                                "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
-                                "matchedExpression": "@global.w_rules_teen_boy",
-                                "type": "global",
-                                "fieldName": "w_rules_teen_boy"
-                              }
-                            ]
-                          }
+                          "value": [
+                            {
+                              "fullExpression": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
+                              "matchedExpression": "@global.w_rules_female_caregiver_1",
+                              "type": "global",
+                              "fieldName": "w_rules_female_caregiver_1"
+                            },
+                            {
+                              "fullExpression": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
+                              "matchedExpression": "@global.w_rules_teen_boy",
+                              "type": "global",
+                              "fieldName": "w_rules_teen_boy"
+                            },
+                            {
+                              "fullExpression": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
+                              "matchedExpression": "@global.w_rules_female_caregiver_1",
+                              "type": "global",
+                              "fieldName": "w_rules_female_caregiver_1"
+                            },
+                            {
+                              "fullExpression": "They discussed the reasons behind the rule;\n@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions;\nThe rule was clear, specific and fair;\n@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule;",
+                              "matchedExpression": "@global.w_rules_teen_boy",
+                              "type": "global",
+                              "fieldName": "w_rules_teen_boy"
+                            }
+                          ]
                         },
                         "_dynamicDependencies": {
                           "@global.w_rules_female_caregiver_1": [
-                            "value.1",
-                            "value.3"
+                            "value",
+                            "value"
                           ],
                           "@global.w_rules_teen_boy": [
-                            "value.1",
-                            "value.3"
+                            "value",
+                            "value"
                           ]
                         }
                       },
@@ -60298,57 +60162,43 @@
                   },
                   {
                     "name": "answer_list",
-                    "value": [
-                      "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
-                      "@global.w_safe_teen_girl_1's friend was encouraging her",
-                      "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
-                      "Many girls in our communities get pregnant or catch HIV from older men",
-                      "There were no other trusted adults to advise @global.w_safe_teen_girl_1"
-                    ],
+                    "value": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
                     "_dynamicFields": {
-                      "value": {
-                        "0": [
-                          {
-                            "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
-                            "matchedExpression": "@global.w_safe_teen_girl_1",
-                            "type": "global",
-                            "fieldName": "w_safe_teen_girl_1"
-                          }
-                        ],
-                        "1": [
-                          {
-                            "fullExpression": "@global.w_safe_teen_girl_1's friend was encouraging her",
-                            "matchedExpression": "@global.w_safe_teen_girl_1",
-                            "type": "global",
-                            "fieldName": "w_safe_teen_girl_1"
-                          }
-                        ],
-                        "2": [
-                          {
-                            "fullExpression": "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
-                            "matchedExpression": "@global.w_safe_teen_girl_1",
-                            "type": "global",
-                            "fieldName": "w_safe_teen_girl_1"
-                          }
-                        ],
-                        "4": [
-                          {
-                            "fullExpression": "There were no other trusted adults to advise @global.w_safe_teen_girl_1",
-                            "matchedExpression": "@global.w_safe_teen_girl_1",
-                            "type": "global",
-                            "fieldName": "w_safe_teen_girl_1"
-                          }
-                        ]
-                      }
+                      "value": [
+                        {
+                          "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                          "matchedExpression": "@global.w_safe_teen_girl_1",
+                          "type": "global",
+                          "fieldName": "w_safe_teen_girl_1"
+                        },
+                        {
+                          "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                          "matchedExpression": "@global.w_safe_teen_girl_1",
+                          "type": "global",
+                          "fieldName": "w_safe_teen_girl_1"
+                        },
+                        {
+                          "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                          "matchedExpression": "@global.w_safe_teen_girl_1",
+                          "type": "global",
+                          "fieldName": "w_safe_teen_girl_1"
+                        },
+                        {
+                          "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts; \n@global.w_safe_teen_girl_1's friend was encouraging her;  \nGoing with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things; \nMany girls in our communities get pregnant or catch HIV from older men; \nThere were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                          "matchedExpression": "@global.w_safe_teen_girl_1",
+                          "type": "global",
+                          "fieldName": "w_safe_teen_girl_1"
+                        }
+                      ]
                     },
                     "_dynamicDependencies": {
                       "@global.w_safe_teen_girl_1": [
-                        "value.0",
-                        "value.1",
-                        "value.2",
-                        "value.4"
+                        "value",
+                        "value",
+                        "value",
+                        "value"
                       ]
                     }
                   },
@@ -67706,39 +67556,29 @@
                       },
                       {
                         "name": "answer_list",
-                        "value": [
-                          "Recognise why he feels stressed",
-                          "Take a deep breath and speak calmly",
-                          "Show he understands his teen’s feelings",
-                          "Think about solutions together with @global.w_stress_teen_boy_1",
-                          "Do something positive together with @global.w_stress_teen_boy_1"
-                        ],
+                        "value": "Recognise why he feels stressed;\nTake a deep breath and speak calmly;\nShow he understands his teen’s feelings;\nThink about solutions together with @global.w_stress_teen_boy_1;\nDo something positive together with @global.w_stress_teen_boy_1",
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.answer_list",
                         "_dynamicFields": {
-                          "value": {
-                            "3": [
-                              {
-                                "fullExpression": "Think about solutions together with @global.w_stress_teen_boy_1",
-                                "matchedExpression": "@global.w_stress_teen_boy_1",
-                                "type": "global",
-                                "fieldName": "w_stress_teen_boy_1"
-                              }
-                            ],
-                            "4": [
-                              {
-                                "fullExpression": "Do something positive together with @global.w_stress_teen_boy_1",
-                                "matchedExpression": "@global.w_stress_teen_boy_1",
-                                "type": "global",
-                                "fieldName": "w_stress_teen_boy_1"
-                              }
-                            ]
-                          }
+                          "value": [
+                            {
+                              "fullExpression": "Recognise why he feels stressed;\nTake a deep breath and speak calmly;\nShow he understands his teen’s feelings;\nThink about solutions together with @global.w_stress_teen_boy_1;\nDo something positive together with @global.w_stress_teen_boy_1",
+                              "matchedExpression": "@global.w_stress_teen_boy_1",
+                              "type": "global",
+                              "fieldName": "w_stress_teen_boy_1"
+                            },
+                            {
+                              "fullExpression": "Recognise why he feels stressed;\nTake a deep breath and speak calmly;\nShow he understands his teen’s feelings;\nThink about solutions together with @global.w_stress_teen_boy_1;\nDo something positive together with @global.w_stress_teen_boy_1",
+                              "matchedExpression": "@global.w_stress_teen_boy_1",
+                              "type": "global",
+                              "fieldName": "w_stress_teen_boy_1"
+                            }
+                          ]
                         },
                         "_dynamicDependencies": {
                           "@global.w_stress_teen_boy_1": [
-                            "value.3",
-                            "value.4"
+                            "value",
+                            "value"
                           ]
                         }
                       },
