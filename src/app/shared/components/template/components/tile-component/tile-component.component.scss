@@ -5,7 +5,7 @@
   .text {
     div {
       font-weight: 700;
-      font-size: 24px;
+      font-size: 20px;
       line-height: 28px;
       color: var(--ion-color-primary-contrast);
     }
@@ -91,20 +91,20 @@
 }
 
 .quick_start {
-  background: linear-gradient(281.65deg, #ffd943 41.02%, #f49d04 102.14%);
+  background: var(--tile-secondary-light-gradient);
 }
 
 .quick_start_passive {
-  background: linear-gradient(168.87deg, #0f8ab2 28.12%, #0d4060 100%);
+  background: var(--tile-primary-gradient);
 }
 .quick_start_blue {
-  background: linear-gradient(281.65deg, #b3edfd 41.02%, #08a6d1 102.14%);
+  background: var(--tile-primary-light-gradient);
   .text {
     div {
       color: var(--ion-color-primary);
     }
   }
 }
-.quick_start_red {
-  background: linear-gradient(168.87deg, #ff7a00 28.12%, hsl(10, 81%, 49%) 100%);
+.quick_start_dark {
+  background: var(--tile-secondary-gradient);
 }
