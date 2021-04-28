@@ -65,8 +65,8 @@ export class TmplComboBoxComponent
     });
 
     modal.onDidDismiss().then(async (data) => {
-      const value = data?.data?.answer.name;
-      this.text = data?.data?.answer.text;
+      const value = data?.data?.answer?.name;
+      this.text = data?.data?.answer?.text;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
       await this.setValue(value);
       await this.triggerActions("changed");
