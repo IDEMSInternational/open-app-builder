@@ -1056,7 +1056,7 @@
       {
         "type": "declare_global_constant",
         "name": "together",
-        "value": "Group"
+        "value": "In my group"
       },
       {
         "type": "declare_field_default",
@@ -1066,7 +1066,7 @@
       {
         "type": "declare_global_constant",
         "name": "individual",
-        "value": "Me"
+        "value": "On my own"
       },
       {
         "type": "declare_field_default",
