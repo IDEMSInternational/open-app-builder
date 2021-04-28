@@ -9,6 +9,11 @@ import {
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
 
+interface AnswerBody {
+  name: string | null;
+  text: string | null;
+}
+
 @Component({
   selector: "plh-ion-modal",
   templateUrl: "./combo-box-modal.component.html",
@@ -22,7 +27,7 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() customAnswerSelected: boolean;
   @Input() style: string;
   formData: FormGroup | null;
-  valuesFromListAnswers: string[];
+  valuesFromListAnswers: AnswerBody[];
   textTitle: string | null;
   inputAllowed: boolean = false;
   form: FormGroup;
@@ -37,7 +42,9 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   getParams() {
-    this.valuesFromListAnswers = getParamFromTemplateRow(this.row, "answer_list", null);
+    this.valuesFromListAnswers = this.convertToObject(
+      getParamFromTemplateRow(this.row, "answer_list", null)
+    );
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
     this.inputPosition =
@@ -59,6 +66,27 @@ export class ComboBoxModalComponent implements OnInit {
     }
   }
 
+  convertToObject(answers_list: string[]): AnswerBody[] {
+    let answers: AnswerBody[] = [];
+    if (answers_list) {
+      answers_list.map((item) => {
+        const obj: AnswerBody = {
+          text: null,
+          name: null,
+        };
+        const stringProperties = item.split("|");
+        stringProperties.forEach((s) => {
+          const [field, value] = s.split(":").map((v) => v.trim());
+          if (field && value) {
+            obj[field] = value;
+          }
+        });
+        answers.push(obj);
+      });
+      return answers;
+    }
+  }
+
   buildForm() {
     this.form = this.fb.group({
       answer: new FormControl(null, []),
@@ -69,7 +97,7 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   check(el) {
-    if (this.form.get("answer").value === el) {
+    if (this.form.get("answer").value === el.name) {
       this.form.get("answer").setValue(null);
       this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: null });
     } else {
