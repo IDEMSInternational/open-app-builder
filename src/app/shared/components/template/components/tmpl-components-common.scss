@@ -267,8 +267,40 @@ p {
       margin-bottom: var(--huge-margin);
       padding-left: var(--large-padding);
       max-width: 50%;
+      position: relative;
       @media (max-width: 375px) {
         width: 52%;
+      }
+      .plh-tmpl-comp {
+        plh-tmpl-lottie-animation {
+          position: absolute;
+          top: -144px;
+          width: 204%;
+          height: 133%;
+          left: -93px;
+          @media (max-width: 1024px) {
+            top: -200px;
+            width: 83%;
+            left: -113px;
+          }
+          @media (max-width: 769px) {
+            top: -198px;
+            width: 114%;
+          }
+          @media (max-width: 414px) {
+            top: -177px;
+            width: 211%;
+          }
+          @media (max-width: 375px) {
+            top: -172px;
+            width: 226%;
+          }
+          @media (max-width: 320px) {
+            top: -148px;
+            width: 226%;
+            left: -99px;
+          }
+        }
       }
     }
     plh-template-component:last-child {
