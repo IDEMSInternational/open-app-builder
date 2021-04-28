@@ -135,9 +135,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
     // once all actions have been processed re-render rows
     if (processedActions.length > 0) {
-      // assume rows might need re-evaluation if actions contain at least 1 non-emit event
-      // TODO - further optimise
-      if (processedActions.find((a) => a.action_id === "set_local")) this.processRowUpdates();
+      // assume rows might need re-evaluation if actions contain set_field or set_local
+      // TODO - further optimise (link to specific row dynamic dependencies)
+      const reprocessActions: FlowTypes.TemplateRowAction["action_id"][] = [
+        "set_field",
+        "set_local",
+      ];
+      if (processedActions.find((a) => reprocessActions.includes(a.action_id))) {
+        this.processRowUpdates();
+      }
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
