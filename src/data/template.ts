@@ -3,6 +3,114 @@
   export const template: FlowTypes.Template[] = [
   {
     "flow_type": "template",
+    "flow_name": "splash_screen",
+    "status": "released",
+    "rows": [
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_1",
+            "value": "plh_images/first_app_launch/frustrated.svg",
+            "_nested_name": "animated_section.image_1"
+          },
+          {
+            "type": "text",
+            "name": "slogan_1",
+            "value": "Bringing teenagers up is hard",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_1"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_2",
+            "value": "plh_images/first_app_launch/loving_parent.svg",
+            "_nested_name": "animated_section.image_2"
+          },
+          {
+            "type": "text",
+            "name": "slogan_2",
+            "value": "You are the best parent your teen could have",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_2"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "image",
+            "name": "image_3",
+            "value": "plh_images/first_app_launch/parent_group.svg",
+            "_nested_name": "animated_section.image_3"
+          },
+          {
+            "type": "text",
+            "name": "slogan_3",
+            "value": "Join the 152.4 million parents who have used our resources",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "_nested_name": "animated_section.slogan_3"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      },
+      {
+        "type": "animated_section",
+        "rows": [
+          {
+            "type": "text",
+            "value": "Powered by Parenting for Lifelong Health and partners",
+            "parameter_list": {
+              "style": "large center"
+            },
+            "name": "text",
+            "_nested_name": "animated_section.text"
+          },
+          {
+            "type": "image",
+            "name": "logo_1",
+            "value": "plh_images/logos/plh_light.svg",
+            "_nested_name": "animated_section.logo_1"
+          },
+          {
+            "type": "image",
+            "name": "logo_2",
+            "value": "plh_images/logos/unicef_light.svg",
+            "_nested_name": "animated_section.logo_2"
+          },
+          {
+            "type": "image",
+            "name": "logo_3",
+            "value": "plh_images/logos/who_light.svg",
+            "_nested_name": "animated_section.logo_3"
+          }
+        ],
+        "name": "animated_section",
+        "_nested_name": "animated_section"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_template_splash_screen.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "box_tools",
     "status": "released",
     "rows": [
@@ -9338,6 +9446,9 @@
         "type": "image",
         "name": "image_src",
         "hidden": true,
+        "style_list": [
+          "max-height: 150px"
+        ],
         "_nested_name": "image_src"
       },
       {
@@ -9356,6 +9467,9 @@
         "type": "image",
         "name": "image_src",
         "hidden": true,
+        "style_list": [
+          "max-height: 150px"
+        ],
         "_nested_name": "image_src"
       },
       {
@@ -10133,6 +10247,9 @@
       {
         "type": "image",
         "name": "image_src",
+        "style_list": [
+          "max-height: 150px"
+        ],
         "_nested_name": "image_src"
       },
       {
@@ -11679,91 +11796,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "box_story_start",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": true,
-        "_nested_name": "title"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "parameter_list": {
-          "style": "rounded_corners"
-        },
-        "_nested_name": "image_src"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "_nested_name": "text"
-      },
-      {
-        "type": "dashed_box",
-        "name": "dashed_box",
-        "hidden": true,
-        "_nested_name": "dashed_box"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [
-          {
-            "name": "button_previous",
-            "hidden": true,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_previous"
-          },
-          {
-            "name": "button_uncompleted",
-            "hidden": false,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_uncompleted"
-          },
-          {
-            "name": "button_completed",
-            "hidden": true,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_completed"
-          },
-          {
-            "name": "button_next",
-            "hidden": false,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_next"
-          }
-        ],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "box_story",
     "status": "released",
     "rows": [
@@ -11818,95 +11850,10 @@
         ],
         "rows": [
           {
-            "name": "use_arrows",
+            "name": "use_completed_chevron",
             "value": true,
             "type": "set_variable",
-            "_nested_name": "nav_buttons.use_arrows"
-          }
-        ],
-        "_nested_name": "nav_buttons"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_story_end",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title",
-        "hidden": true,
-        "_nested_name": "title"
-      },
-      {
-        "type": "image",
-        "name": "image_src",
-        "parameter_list": {
-          "style": "rounded_corners"
-        },
-        "_nested_name": "image_src"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "_nested_name": "text"
-      },
-      {
-        "type": "dashed_box",
-        "name": "dashed_box",
-        "hidden": true,
-        "_nested_name": "dashed_box"
-      },
-      {
-        "type": "template",
-        "name": "nav_buttons",
-        "value": "nav_buttons",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [
-          {
-            "name": "button_previous",
-            "hidden": false,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_previous"
-          },
-          {
-            "name": "button_uncompleted",
-            "hidden": true,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_uncompleted"
-          },
-          {
-            "name": "button_completed",
-            "hidden": false,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_completed"
-          },
-          {
-            "name": "button_next",
-            "hidden": true,
-            "type": "set_variable",
-            "_nested_name": "nav_buttons.button_next"
+            "_nested_name": "nav_buttons.use_completed_chevron"
           }
         ],
         "_nested_name": "nav_buttons"
@@ -12712,16 +12659,31 @@
             ],
             "rows": [
               {
-                "name": "display_back",
+                "name": "use_uncompleted_chevron",
                 "value": false,
                 "type": "set_variable",
-                "_nested_name": "intro.intro_nav_buttons.display_back"
+                "_nested_name": "intro.intro_nav_buttons.use_uncompleted_chevron"
               },
               {
                 "name": "button_completed",
-                "value": "Let's go!",
+                "value": "@global.lets_go_button",
                 "type": "set_variable",
-                "_nested_name": "intro.intro_nav_buttons.button_completed"
+                "_nested_name": "intro.intro_nav_buttons.button_completed",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.lets_go_button",
+                      "matchedExpression": "@global.lets_go_button",
+                      "type": "global",
+                      "fieldName": "lets_go_button"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.lets_go_button": [
+                    "value"
+                  ]
+                }
               }
             ],
             "_nested_name": "intro.intro_nav_buttons"
@@ -13091,10 +13053,16 @@
     "status": "released",
     "rows": [
       {
-        "name": "use_arrows",
+        "name": "use_completed_chevron",
         "value": false,
         "type": "set_variable",
-        "_nested_name": "use_arrows"
+        "_nested_name": "use_completed_chevron"
+      },
+      {
+        "name": "use_uncompleted_chevron",
+        "value": true,
+        "type": "set_variable",
+        "_nested_name": "use_uncompleted_chevron"
       },
       {
         "name": "display_back",
@@ -13135,7 +13103,7 @@
         "rows": [
           {
             "type": "round_button",
-            "name": "button_previous",
+            "name": "button_uncompleted_chevron",
             "action_list": [
               {
                 "trigger": "click",
@@ -13147,7 +13115,7 @@
                 "_cleaned": "click | emit:uncompleted"
               }
             ],
-            "hidden": "(!@local.use_arrows) || (!@local.display_back)",
+            "hidden": "(!@local.use_uncompleted_chevron) || (!@local.display_back)",
             "parameter_list": {
               "icon_src": "chevron-back",
               "style": "navigation"
@@ -13155,17 +13123,17 @@
             "style_list": [
               "flex:1"
             ],
-            "_nested_name": "display_group.button_previous",
+            "_nested_name": "display_group.button_uncompleted_chevron",
             "_dynamicFields": {
               "hidden": [
                 {
-                  "fullExpression": "(!@local.use_arrows) || (!@local.display_back)",
-                  "matchedExpression": "@local.use_arrows",
+                  "fullExpression": "(!@local.use_uncompleted_chevron) || (!@local.display_back)",
+                  "matchedExpression": "@local.use_uncompleted_chevron",
                   "type": "local",
-                  "fieldName": "use_arrows"
+                  "fieldName": "use_uncompleted_chevron"
                 },
                 {
-                  "fullExpression": "(!@local.use_arrows) || (!@local.display_back)",
+                  "fullExpression": "(!@local.use_uncompleted_chevron) || (!@local.display_back)",
                   "matchedExpression": "@local.display_back",
                   "type": "local",
                   "fieldName": "display_back"
@@ -13173,7 +13141,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@local.use_arrows": [
+              "@local.use_uncompleted_chevron": [
                 "hidden"
               ],
               "@local.display_back": [
@@ -13182,9 +13150,8 @@
             }
           },
           {
-            "type": "button",
+            "type": "round_button",
             "name": "button_uncompleted",
-            "value": "Back",
             "action_list": [
               {
                 "trigger": "click",
@@ -13196,8 +13163,9 @@
                 "_cleaned": "click | emit:uncompleted"
               }
             ],
-            "hidden": "@local.use_arrows || (!@local.display_back)",
+            "hidden": "@local.use_uncompleted_chevron || (!@local.display_back)",
             "parameter_list": {
+              "icon_src": "caret-back",
               "style": "navigation"
             },
             "style_list": [
@@ -13207,13 +13175,13 @@
             "_dynamicFields": {
               "hidden": [
                 {
-                  "fullExpression": "@local.use_arrows || (!@local.display_back)",
-                  "matchedExpression": "@local.use_arrows",
+                  "fullExpression": "@local.use_uncompleted_chevron || (!@local.display_back)",
+                  "matchedExpression": "@local.use_uncompleted_chevron",
                   "type": "local",
-                  "fieldName": "use_arrows"
+                  "fieldName": "use_uncompleted_chevron"
                 },
                 {
-                  "fullExpression": "@local.use_arrows || (!@local.display_back)",
+                  "fullExpression": "@local.use_uncompleted_chevron || (!@local.display_back)",
                   "matchedExpression": "@local.display_back",
                   "type": "local",
                   "fieldName": "display_back"
@@ -13221,7 +13189,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@local.use_arrows": [
+              "@local.use_uncompleted_chevron": [
                 "hidden"
               ],
               "@local.display_back": [
@@ -13232,7 +13200,7 @@
           {
             "type": "button",
             "name": "button_completed",
-            "value": "Done!",
+            "value": "@global.done_button",
             "action_list": [
               {
                 "trigger": "click",
@@ -13244,7 +13212,7 @@
                 "_cleaned": "click | emit:completed"
               }
             ],
-            "hidden": "@local.use_arrows",
+            "hidden": "@local.use_completed_chevron",
             "parameter_list": {
               "style": "navigation"
             },
@@ -13253,24 +13221,35 @@
             ],
             "_nested_name": "display_group.button_completed",
             "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.done_button",
+                  "matchedExpression": "@global.done_button",
+                  "type": "global",
+                  "fieldName": "done_button"
+                }
+              ],
               "hidden": [
                 {
-                  "fullExpression": "@local.use_arrows",
-                  "matchedExpression": "@local.use_arrows",
+                  "fullExpression": "@local.use_completed_chevron",
+                  "matchedExpression": "@local.use_completed_chevron",
                   "type": "local",
-                  "fieldName": "use_arrows"
+                  "fieldName": "use_completed_chevron"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@local.use_arrows": [
+              "@global.done_button": [
+                "value"
+              ],
+              "@local.use_completed_chevron": [
                 "hidden"
               ]
             }
           },
           {
             "type": "round_button",
-            "name": "button_next",
+            "name": "button_completed_chevron",
             "action_list": [
               {
                 "trigger": "click",
@@ -13282,7 +13261,7 @@
                 "_cleaned": "click | emit:completed"
               }
             ],
-            "hidden": "!@local.use_arrows",
+            "hidden": "!@local.use_completed_chevron",
             "parameter_list": {
               "icon_src": "chevron-forward",
               "style": "navigation"
@@ -13290,19 +13269,19 @@
             "style_list": [
               "flex:1"
             ],
-            "_nested_name": "display_group.button_next",
+            "_nested_name": "display_group.button_completed_chevron",
             "_dynamicFields": {
               "hidden": [
                 {
-                  "fullExpression": "!@local.use_arrows",
-                  "matchedExpression": "@local.use_arrows",
+                  "fullExpression": "!@local.use_completed_chevron",
+                  "matchedExpression": "@local.use_completed_chevron",
                   "type": "local",
-                  "fieldName": "use_arrows"
+                  "fieldName": "use_completed_chevron"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@local.use_arrows": [
+              "@local.use_completed_chevron": [
                 "hidden"
               ]
             }
@@ -13897,9 +13876,24 @@
             "rows": [
               {
                 "name": "button_completed",
-                "value": "Check it out! ",
+                "value": "@global.check_it_out_button",
                 "type": "set_variable",
-                "_nested_name": "workshop_activity.intro_nav_buttons.button_completed"
+                "_nested_name": "workshop_activity.intro_nav_buttons.button_completed",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.check_it_out_button",
+                      "matchedExpression": "@global.check_it_out_button",
+                      "type": "global",
+                      "fieldName": "check_it_out_button"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.check_it_out_button": [
+                    "value"
+                  ]
+                }
               }
             ],
             "_nested_name": "workshop_activity.intro_nav_buttons"
@@ -18007,35 +18001,22 @@
                 "_nested_name": "workshop_activity.content_box.widget_audio"
               },
               {
-                "type": "nested_properties",
-                "name": "nav_buttons",
-                "rows": [
+                "name": "button",
+                "value": "Read and relax",
+                "action_list": [
                   {
-                    "name": "button_info",
-                    "value": "Read and relax",
-                    "action_list": [
-                      {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "relax_text_1"
-                        ],
-                        "_raw": "click | pop_up:relax_text_1",
-                        "_cleaned": "click | pop_up:relax_text_1"
-                      }
+                    "trigger": "click",
+                    "action_id": "pop_up",
+                    "args": [
+                      "relax_text_1"
                     ],
-                    "hidden": false,
-                    "type": "set_variable",
-                    "_nested_name": "workshop_activity.content_box.nav_buttons.button_info"
-                  },
-                  {
-                    "name": "button_completed",
-                    "value": "Done!",
-                    "type": "set_variable",
-                    "_nested_name": "workshop_activity.content_box.nav_buttons.button_completed"
+                    "_raw": "click | pop_up:relax_text_1",
+                    "_cleaned": "click | pop_up:relax_text_1"
                   }
                 ],
-                "_nested_name": "workshop_activity.content_box.nav_buttons"
+                "hidden": false,
+                "type": "set_variable",
+                "_nested_name": "workshop_activity.content_box.button"
               }
             ],
             "_nested_name": "workshop_activity.content_box"
@@ -21105,6 +21086,499 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_double_radio_group.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_slider_dynamic",
+    "status": "released",
+    "rows": [
+      {
+        "type": "slider",
+        "name": "slider_1",
+        "parameter_list": {
+          "title": "Slider 1"
+        },
+        "_nested_name": "slider_1"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "local variable for slider 1: @local.slider_1",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "local variable for slider 1: @local.slider_1",
+              "matchedExpression": "@local.slider_1",
+              "type": "local",
+              "fieldName": "slider_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.slider_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "slider",
+        "name": "slider_2",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "slider_2_field",
+              "@local.slider_2"
+            ],
+            "_raw": "changed | set_field:slider_2_field:@local.slider_2",
+            "_cleaned": "changed | set_field:slider_2_field:@local.slider_2"
+          }
+        ],
+        "parameter_list": {
+          "title": "Slider 2"
+        },
+        "_nested_name": "slider_2",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.slider_2",
+                    "matchedExpression": "@local.slider_2",
+                    "type": "local",
+                    "fieldName": "slider_2"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:slider_2_field:@local.slider_2",
+                  "matchedExpression": "@local.slider_2",
+                  "type": "local",
+                  "fieldName": "slider_2"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:slider_2_field:@local.slider_2",
+                  "matchedExpression": "@local.slider_2",
+                  "type": "local",
+                  "fieldName": "slider_2"
+                }
+              ]
+            }
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.slider_2": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "local variable for slider 2: @local.slider_2",
+        "_nested_name": "text_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "local variable for slider 2: @local.slider_2",
+              "matchedExpression": "@local.slider_2",
+              "type": "local",
+              "fieldName": "slider_2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.slider_2": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "field for slider 2: @field.slider_2_field",
+        "_nested_name": "text_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "field for slider 2: @field.slider_2_field",
+              "matchedExpression": "@field.slider_2_field",
+              "type": "field",
+              "fieldName": "slider_2_field"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.slider_2_field": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_dynamic.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_radio_group_dynamic",
+    "status": "released",
+    "rows": [
+      {
+        "name": "answer_list",
+        "value": [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_1",
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        },
+        "_nested_name": "radio_group_1",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list",
+                "matchedExpression": "@local.answer_list",
+                "type": "local",
+                "fieldName": "answer_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "local variable for radio group 1: @local.radio_group_1",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "local variable for radio group 1: @local.radio_group_1",
+              "matchedExpression": "@local.radio_group_1",
+              "type": "local",
+              "fieldName": "radio_group_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.radio_group_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_2",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "radio_group_2_field",
+              "@local.radio_group_2"
+            ],
+            "_raw": "changed | set_field:radio_group_2_field:@local.radio_group_2",
+            "_cleaned": "changed | set_field:radio_group_2_field:@local.radio_group_2"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        },
+        "_nested_name": "radio_group_2",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.radio_group_2",
+                    "matchedExpression": "@local.radio_group_2",
+                    "type": "local",
+                    "fieldName": "radio_group_2"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:radio_group_2_field:@local.radio_group_2",
+                  "matchedExpression": "@local.radio_group_2",
+                  "type": "local",
+                  "fieldName": "radio_group_2"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:radio_group_2_field:@local.radio_group_2",
+                  "matchedExpression": "@local.radio_group_2",
+                  "type": "local",
+                  "fieldName": "radio_group_2"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list",
+                "matchedExpression": "@local.answer_list",
+                "type": "local",
+                "fieldName": "answer_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.radio_group_2": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.answer_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "local variable for radio group 2: @local.radio_group_2",
+        "_nested_name": "text_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "local variable for radio group 2: @local.radio_group_2",
+              "matchedExpression": "@local.radio_group_2",
+              "type": "local",
+              "fieldName": "radio_group_2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.radio_group_2": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "field for radio group 2: @field.radio_group_2_field",
+        "_nested_name": "text_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "field for radio group 2: @field.radio_group_2_field",
+              "matchedExpression": "@field.radio_group_2_field",
+              "type": "field",
+              "fieldName": "radio_group_2_field"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.radio_group_2_field": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_dynamic.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_combo_box_dynamic",
+    "status": "released",
+    "rows": [
+      {
+        "name": "answer_list",
+        "value": [
+          "First",
+          "Second",
+          "Third"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_1",
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        },
+        "_nested_name": "combo_box_1",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list",
+                "matchedExpression": "@local.answer_list",
+                "type": "local",
+                "fieldName": "answer_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "local variable for combo box 1: @local.combo_box_1",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "local variable for combo box 1: @local.combo_box_1",
+              "matchedExpression": "@local.combo_box_1",
+              "type": "local",
+              "fieldName": "combo_box_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_2",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "combo_box_2_field",
+              "@local.combo_box_2"
+            ],
+            "_raw": "changed | set_field:combo_box_2_field:@local.combo_box_2",
+            "_cleaned": "changed | set_field:combo_box_2_field:@local.combo_box_2"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        },
+        "_nested_name": "combo_box_2",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.combo_box_2",
+                    "matchedExpression": "@local.combo_box_2",
+                    "type": "local",
+                    "fieldName": "combo_box_2"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:combo_box_2_field:@local.combo_box_2",
+                  "matchedExpression": "@local.combo_box_2",
+                  "type": "local",
+                  "fieldName": "combo_box_2"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:combo_box_2_field:@local.combo_box_2",
+                  "matchedExpression": "@local.combo_box_2",
+                  "type": "local",
+                  "fieldName": "combo_box_2"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list",
+                "matchedExpression": "@local.answer_list",
+                "type": "local",
+                "fieldName": "answer_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box_2": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.answer_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "local variable for combo box 2: @local.combo_box_2",
+        "_nested_name": "text_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "local variable for combo box 2: @local.combo_box_2",
+              "matchedExpression": "@local.combo_box_2",
+              "type": "local",
+              "fieldName": "combo_box_2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box_2": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "field for combo box 2: @field.combo_box_2_field",
+        "_nested_name": "text_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "field for combo box 2: @field.combo_box_2_field",
+              "matchedExpression": "@field.combo_box_2_field",
+              "type": "field",
+              "fieldName": "combo_box_2_field"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.combo_box_2_field": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_dynamic.xlsx"
   },
   {
     "flow_type": "template",
@@ -26576,10 +27050,10 @@
       },
       {
         "type": "text",
-        "name": "text_reply",
+        "name": "text_reply_1",
         "value": "This is the feedback for option 1",
         "condition": "\"@local.radio_group_defaults\" == \"name_var_1\"",
-        "_nested_name": "text_reply",
+        "_nested_name": "text_reply_1",
         "_dynamicFields": {
           "condition": [
             {
@@ -26598,10 +27072,10 @@
       },
       {
         "type": "text",
-        "name": "text_reply",
+        "name": "text_reply_2",
         "value": "This is the feedback for option 2",
         "condition": "\"@local.radio_group_defaults\" == \"name_var_2\"",
-        "_nested_name": "text_reply",
+        "_nested_name": "text_reply_2",
         "_dynamicFields": {
           "condition": [
             {
@@ -26620,10 +27094,10 @@
       },
       {
         "type": "text",
-        "name": "text_reply",
+        "name": "text_reply_3",
         "value": "This is the feedback for option 3",
         "condition": "\"@local.radio_group_defaults\" == \"name_var_3\"",
-        "_nested_name": "text_reply",
+        "_nested_name": "text_reply_3",
         "_dynamicFields": {
           "condition": [
             {
@@ -27939,136 +28413,6 @@
     "status": "released",
     "rows": [
       {
-        "type": "slider",
-        "name": "slider_1",
-        "parameter_list": {
-          "title": "Slider 1"
-        },
-        "_nested_name": "slider_1"
-      },
-      {
-        "type": "text",
-        "name": "text_1",
-        "value": "local variable for slider 1: @local.slider_1",
-        "_nested_name": "text_1",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "local variable for slider 1: @local.slider_1",
-              "matchedExpression": "@local.slider_1",
-              "type": "local",
-              "fieldName": "slider_1"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@local.slider_1": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "slider",
-        "name": "slider_2",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "slider_2_field",
-              "@local.slider_2"
-            ],
-            "_raw": "changed | set_field:slider_2_field:@local.slider_2",
-            "_cleaned": "changed | set_field:slider_2_field:@local.slider_2"
-          }
-        ],
-        "parameter_list": {
-          "title": "Slider 2"
-        },
-        "_nested_name": "slider_2",
-        "_dynamicFields": {
-          "action_list": {
-            "0": {
-              "args": {
-                "1": [
-                  {
-                    "fullExpression": "@local.slider_2",
-                    "matchedExpression": "@local.slider_2",
-                    "type": "local",
-                    "fieldName": "slider_2"
-                  }
-                ]
-              },
-              "_raw": [
-                {
-                  "fullExpression": "changed | set_field:slider_2_field:@local.slider_2",
-                  "matchedExpression": "@local.slider_2",
-                  "type": "local",
-                  "fieldName": "slider_2"
-                }
-              ],
-              "_cleaned": [
-                {
-                  "fullExpression": "changed | set_field:slider_2_field:@local.slider_2",
-                  "matchedExpression": "@local.slider_2",
-                  "type": "local",
-                  "fieldName": "slider_2"
-                }
-              ]
-            }
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.slider_2": [
-            "action_list.0.args.1",
-            "action_list.0._raw",
-            "action_list.0._cleaned"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_2",
-        "value": "local variable for slider 2: @local.slider_2",
-        "_nested_name": "text_2",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "local variable for slider 2: @local.slider_2",
-              "matchedExpression": "@local.slider_2",
-              "type": "local",
-              "fieldName": "slider_2"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@local.slider_2": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "text_3",
-        "value": "field for slider 2: @field.slider_2_field",
-        "_nested_name": "text_3",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "field for slider 2: @field.slider_2_field",
-              "matchedExpression": "@field.slider_2_field",
-              "type": "field",
-              "fieldName": "slider_2_field"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@field.slider_2_field": [
-            "value"
-          ]
-        }
-      },
-      {
         "name": "help_text",
         "value": "some help",
         "type": "set_variable",
@@ -28451,9 +28795,9 @@
       {
         "name": "answer_list",
         "value": [
-          "First",
-          "Second",
-          "Third"
+          "name: name_1 | text: This is text 1",
+          "name: name_2 | text: This is text 2",
+          "name: name_3 | text: This is text 3."
         ],
         "type": "set_variable",
         "_nested_name": "answer_list"
@@ -31340,10 +31684,10 @@
         ],
         "rows": [
           {
-            "type": "image",
-            "name": "image",
-            "value": "plh_images/home_page/home_page_workshops.svg",
-            "_nested_name": "dg_example_7.image"
+            "type": "lottie_animation",
+            "name": "lottie_src",
+            "value": "lottie_animations/relax_individual.json",
+            "_nested_name": "dg_example_7.lottie_src"
           },
           {
             "type": "display_group",
@@ -31427,10 +31771,10 @@
         ],
         "rows": [
           {
-            "type": "image",
-            "name": "image",
-            "value": "plh_images/home_page/home_page_parent_points.svg",
-            "_nested_name": "dg_example_7.image"
+            "type": "lottie_animation",
+            "name": "lottie_src",
+            "value": "lottie_animations/relax_individual.json",
+            "_nested_name": "dg_example_7.lottie_src"
           },
           {
             "type": "display_group",
@@ -31515,7 +31859,7 @@
           {
             "type": "image",
             "name": "image",
-            "value": "plh_images/home_page/home_page_parent_center.svg",
+            "value": "plh_images/home_screen/parent_centre.svg",
             "_nested_name": "dg_example_7.image"
           },
           {
@@ -32018,16 +32362,28 @@
     "status": "released",
     "rows": [
       {
+        "type": "title",
+        "name": "title",
+        "value": "Your daily relax",
+        "parameter_list": {
+          "style": "center"
+        },
+        "_nested_name": "title"
+      },
+      {
         "type": "lottie_animation",
         "name": "lottie_src",
         "value": "lottie_animations/relax_individual.json",
         "_nested_name": "lottie_src"
       },
       {
-        "type": "title",
-        "name": "daily_relax_title",
-        "value": "Your daily relax",
-        "_nested_name": "daily_relax_title"
+        "type": "text",
+        "name": "text_1",
+        "value": "Remember to sit down and relax today - taking care of yourself is an important parenting skill.\n\nIf you like we can do a relaxation activity together now!",
+        "parameter_list": {
+          "style": "center"
+        },
+        "_nested_name": "text_1"
       },
       {
         "type": "display_group",
@@ -32035,7 +32391,7 @@
           {
             "type": "button",
             "name": "do_relax",
-            "value": "Let's go!",
+            "value": "@global.lets_go_button",
             "action_list": [
               {
                 "trigger": "click",
@@ -32066,34 +32422,25 @@
                 "_cleaned": "click | set_field:daily_relax_done:true"
               }
             ],
-            "_nested_name": "display_group.do_relax"
-          },
-          {
-            "type": "button",
-            "name": "mark_relax",
-            "value": "Done!",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "emit",
-                "args": [
-                  "completed"
-                ],
-                "_raw": "click | emit:completed",
-                "_cleaned": "click | emit:completed"
-              },
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "daily_relax_done",
-                  "true"
-                ],
-                "_raw": "click | set_field:daily_relax_done:true",
-                "_cleaned": "click | set_field:daily_relax_done:true"
-              }
-            ],
-            "_nested_name": "display_group.mark_relax"
+            "parameter_list": {
+              "style": "navigation"
+            },
+            "_nested_name": "display_group.do_relax",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.lets_go_button",
+                  "matchedExpression": "@global.lets_go_button",
+                  "type": "global",
+                  "fieldName": "lets_go_button"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.lets_go_button": [
+                "value"
+              ]
+            }
           }
         ],
         "name": "display_group",
@@ -32651,6 +32998,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -32696,6 +33052,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -32723,6 +33088,34 @@
             },
             "type": "set_variable",
             "_nested_name": "box_image.text"
+          },
+          {
+            "type": "nested_properties",
+            "name": "nav_buttons",
+            "rows": [
+              {
+                "name": "button_completed",
+                "value": "@global.lets_go_button",
+                "type": "set_variable",
+                "_nested_name": "box_image.nav_buttons.button_completed",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.lets_go_button",
+                      "matchedExpression": "@global.lets_go_button",
+                      "type": "global",
+                      "fieldName": "lets_go_button"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.lets_go_button": [
+                    "value"
+                  ]
+                }
+              }
+            ],
+            "_nested_name": "box_image.nav_buttons"
           }
         ],
         "_nested_name": "box_image"
@@ -32748,6 +33141,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -32862,6 +33264,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -32959,6 +33370,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -33046,6 +33466,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -33152,6 +33581,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -33287,6 +33725,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -33386,6 +33833,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -33587,6 +34043,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -33741,6 +34206,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -33847,6 +34321,15 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
         "rows": [
@@ -38181,7 +38664,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -38230,7 +38713,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -38286,7 +38769,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -39797,7 +40280,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -39853,7 +40336,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -39902,7 +40385,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -39951,7 +40434,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -40007,7 +40490,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image_more",
+                                    "value": "box_story",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -40056,7 +40539,7 @@
                                       {
                                         "type": "nested_properties",
                                         "name": "box_1",
-                                        "value": "box_image_more",
+                                        "value": "box_story",
                                         "rows": [
                                           {
                                             "name": "image_src",
@@ -40112,7 +40595,7 @@
                                           {
                                             "type": "nested_properties",
                                             "name": "box_1",
-                                            "value": "box_image_more",
+                                            "value": "box_story",
                                             "rows": [
                                               {
                                                 "name": "image_src",
@@ -40184,7 +40667,7 @@
                                               {
                                                 "type": "nested_properties",
                                                 "name": "box_1",
-                                                "value": "box_image_more",
+                                                "value": "box_story",
                                                 "rows": [
                                                   {
                                                     "name": "image_src",
@@ -41674,7 +42157,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -41714,7 +42197,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -41770,7 +42253,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -41819,7 +42302,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -41884,7 +42367,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image_more",
+                                    "value": "box_story",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -42332,7 +42815,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -42381,7 +42864,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -42430,7 +42913,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -42479,7 +42962,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -42519,7 +43002,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image_more",
+                                    "value": "box_story",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -44601,7 +45084,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -44657,7 +45140,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -45206,7 +45689,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -45283,7 +45766,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -45308,7 +45791,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -46958,7 +47441,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -47976,7 +48459,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -48001,7 +48484,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -48026,7 +48509,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -48051,7 +48534,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -50734,7 +51217,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -52394,7 +52877,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -52474,7 +52957,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -52539,7 +53022,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -52579,7 +53062,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -52628,7 +53111,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -52677,7 +53160,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image_more",
+                                    "value": "box_story",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -53539,7 +54022,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -53611,7 +54094,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -53667,7 +54150,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -53725,7 +54208,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -53769,7 +54252,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_2",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -54852,7 +55335,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -54924,7 +55407,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -54973,7 +55456,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -55020,7 +55503,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -55060,7 +55543,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image_more",
+                                    "value": "box_story",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -55111,7 +55594,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_2",
-                                    "value": "box_image_more",
+                                    "value": "box_image",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -55524,7 +56007,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -55564,7 +56047,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -59300,7 +59783,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -59372,7 +59855,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -59755,7 +60238,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -59802,7 +60285,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -59851,7 +60334,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -59907,7 +60390,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -59970,7 +60453,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image_more",
+                                    "value": "box_story",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -60019,7 +60502,7 @@
                                       {
                                         "type": "nested_properties",
                                         "name": "box_1",
-                                        "value": "box_image_more",
+                                        "value": "box_story",
                                         "rows": [
                                           {
                                             "name": "image_src",
@@ -60082,7 +60565,7 @@
                                           {
                                             "type": "nested_properties",
                                             "name": "box_1",
-                                            "value": "box_image_more",
+                                            "value": "box_story",
                                             "rows": [
                                               {
                                                 "name": "image_src",
@@ -60131,7 +60614,7 @@
                                               {
                                                 "type": "nested_properties",
                                                 "name": "box_1",
-                                                "value": "box_image_more",
+                                                "value": "box_story",
                                                 "rows": [
                                                   {
                                                     "name": "image_src",
@@ -60180,7 +60663,7 @@
                                                   {
                                                     "type": "nested_properties",
                                                     "name": "box_1",
-                                                    "value": "box_image_more",
+                                                    "value": "box_story",
                                                     "rows": [
                                                       {
                                                         "name": "image_src",
@@ -60236,7 +60719,7 @@
                                                       {
                                                         "type": "nested_properties",
                                                         "name": "box_1",
-                                                        "value": "box_image_more",
+                                                        "value": "box_story",
                                                         "rows": [
                                                           {
                                                             "name": "image_src",
@@ -60299,7 +60782,7 @@
                                                           {
                                                             "type": "nested_properties",
                                                             "name": "box_1",
-                                                            "value": "box_image_more",
+                                                            "value": "box_story",
                                                             "rows": [
                                                               {
                                                                 "name": "image_src",
@@ -62179,7 +62662,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -62228,7 +62711,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -62277,7 +62760,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -62326,7 +62809,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -62366,7 +62849,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image_more",
+                                    "value": "box_story",
                                     "rows": [
                                       {
                                         "name": "image_src",
@@ -63007,7 +63490,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -63056,7 +63539,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -63105,7 +63588,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -63163,7 +63646,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -63221,7 +63704,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_2",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -63425,7 +63908,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "box_image_more",
+                    "value": "box_story",
                     "rows": [
                       {
                         "name": "image_src",
@@ -63474,7 +63957,7 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_image_more",
+                        "value": "box_story",
                         "rows": [
                           {
                             "name": "image_src",
@@ -63514,7 +63997,7 @@
                           {
                             "type": "nested_properties",
                             "name": "box_1",
-                            "value": "box_image_more",
+                            "value": "box_story",
                             "rows": [
                               {
                                 "name": "image_src",
@@ -63554,7 +64037,7 @@
                               {
                                 "type": "nested_properties",
                                 "name": "box_1",
-                                "value": "box_image_more",
+                                "value": "box_story",
                                 "rows": [
                                   {
                                     "name": "image_src",
@@ -63612,7 +64095,7 @@
                                   {
                                     "type": "nested_properties",
                                     "name": "box_1",
-                                    "value": "box_image_more",
+                                    "value": "box_story",
                                     "rows": [
                                       {
                                         "name": "image_src",
