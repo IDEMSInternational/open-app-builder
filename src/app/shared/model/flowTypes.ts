@@ -353,6 +353,7 @@ export namespace FlowTypes {
     | "animated_section"
     | "accordion_section"
     | "workshops_accordion"
+    | "splash_screens"
     | "animated_section_group"
     | "display_group"
     | "set_variable"

@@ -21,6 +21,7 @@ import { TmplTextComponent } from "./text";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplSubtitleComponent } from "./subtitle";
+import { TmplSplashScreensComponent } from "./splash-screens";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
@@ -47,6 +48,7 @@ export const TEMPLATE_COMPONENTS = [
   WorkshopsComponent,
   TmplTitleComponent,
   TmplSubtitleComponent,
+  TmplSplashScreensComponent,
   TmplDisplayGroupComponent,
   TmplAudioComponent,
   TmplButtonComponent,
@@ -83,6 +85,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   text: TmplTextComponent,
   title: TmplTitleComponent,
   subtitle: TmplSubtitleComponent,
+  splash_screens: TmplSplashScreensComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   workshops_accordion: WorkshopsComponent,
   accordion_section: AccordionSectionComponent,
