@@ -40,8 +40,9 @@ export function recursiveFindByExtension(
  * Take an array of json object and return grouped by specific key
  * @param json array of objects containing key field
  * @param key lookup field for grouping
+ * @param defaultGroup optional group to assign any values that do not have the defined key
  */
-export function groupJsonByKey<T>(json: T[], key: string) {
+export function groupJsonByKey<T>(json: T[], key: string, defaultGroup?: string) {
   const byKey: { [keyValue: string]: T[] } = {};
   json.forEach((el) => {
     if (el.hasOwnProperty(key)) {
@@ -50,7 +51,30 @@ export function groupJsonByKey<T>(json: T[], key: string) {
         byKey[keyValue] = [];
       }
       byKey[keyValue].push(el);
+    } else {
+      if (defaultGroup) {
+        if (!byKey.hasOwnProperty(defaultGroup)) {
+          byKey[defaultGroup] = [];
+        }
+        byKey[defaultGroup].push(el);
+      }
     }
+  });
+  return byKey;
+}
+
+/** Similar function as above, but allow to group based on concatenation of multiple key values */
+export function groupJsonByMultipleKeys<T>(json: T[], keys: string[], joinCharacter = ".") {
+  const byKey: { [keyValue: string]: T[] } = {};
+  json.forEach((el) => {
+    const keyValue = keys
+      .map((key) => el[key])
+      .filter((v) => (v === undefined ? false : true))
+      .join(joinCharacter);
+    if (!byKey.hasOwnProperty(keyValue)) {
+      byKey[keyValue] = [];
+    }
+    byKey[keyValue].push(el);
   });
   return byKey;
 }
