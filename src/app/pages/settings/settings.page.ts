@@ -67,7 +67,12 @@ export class SettingsPage {
   }
 
   openWelcomeSurvey() {
-    this.surveyService.runSurvey("welcome");
+    //  this.surveyService.runSurvey("welcome");
+    this.router.navigateByUrl("/template/setup_and_survey_stepper");
+  }
+
+  openWorkshopOptions() {
+    this.router.navigateByUrl("/template/workshop_options_page");
   }
 
   navigateByUrl(url: string) {
