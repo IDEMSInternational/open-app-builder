@@ -8,6 +8,18 @@ export class TemplateParser extends DefaultParser {
     this.groupSuffix = "";
   }
   postProcess(row: FlowTypes.TemplateRow, nestedPath?: string) {
+    // delete deep meta fields (e.g. __empty)
+    Object.keys(row).forEach((k) => {
+      if (k.startsWith("__")) {
+        delete row[k];
+      }
+    });
+    // remove any comments
+    delete row["comments"];
+    // remove empty rows
+    if (Object.keys(row).length === 0) {
+      return;
+    }
     // set all empty row and nested row types to 'set_variable' type
     if (!row.type) {
       row.type = "set_variable";
@@ -37,8 +49,6 @@ export class TemplateParser extends DefaultParser {
         row.value = parsePLHCollectionString(row.value);
       }
     }
-    // remove any comments
-    delete row["comments"];
 
     // parse action list
     if (row.action_list) {
