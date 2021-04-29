@@ -339,7 +339,7 @@
           {
             "type": "image",
             "name": "image_weekly_workshops",
-            "value": "plh_images/home_screen/weekly_workshops.svg",
+            "value": "plh_images/home_screen/weekly_workshops_shadow.svg",
             "_nested_name": "tile_weekly_workshops.image_weekly_workshops"
           },
           {
@@ -397,7 +397,7 @@
                 ],
                 "hidden": "\"@fields.w_self_care_status\" == \"completed\"",
                 "parameter_list": {
-                  "icon_src": "plh_images/icons/play_outline_white.svg",
+                  "icon_src": "plh_images/icons/play_white.svg",
                   "text": "Start",
                   "style": "home_screen yellow"
                 },
@@ -451,7 +451,7 @@
           {
             "type": "image",
             "name": "image_parent_points",
-            "value": "plh_images/home_screen/parent_points.svg",
+            "value": "plh_images/home_screen/parent_points_shadow.svg",
             "_nested_name": "tile_parent_points.image_parent_points"
           },
           {
@@ -509,7 +509,7 @@
                 ],
                 "hidden": "@fields.daily_relax_done",
                 "parameter_list": {
-                  "icon_src": "plh_images/icons/smile_outline_white.svg",
+                  "icon_src": "plh_images/icons/smile_eyes_down_white.svg",
                   "style": "home_screen orange"
                 },
                 "style_list": [
@@ -562,7 +562,7 @@
           {
             "type": "image",
             "name": "image_parent_centre",
-            "value": "plh_images/home_screen/parent_centre.svg",
+            "value": "plh_images/home_screen/parent_centre_shadow.svg",
             "_nested_name": "tile_parent_centre.image_parent_centre"
           },
           {
@@ -620,7 +620,7 @@
                 ],
                 "hidden": "@fields.no_mail",
                 "parameter_list": {
-                  "icon_src": "plh_images/icons/letter_outline.svg",
+                  "icon_src": "plh_images/icons/letter_white.svg",
                   "text": "Message",
                   "style": "home_screen dark_orange"
                 },
@@ -1900,13 +1900,13 @@
       {
         "name": "answer_list_2",
         "value": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
+          "name:monday | text:Monday",
+          "name:tuesday | text:Tuesday",
+          "name:wednesday | text:Wednesday",
+          "name:thursday | text:Thursday",
+          "name:friday | text:Friday",
+          "name:saturday | text:Saturday",
+          "name:sunday | text:Sunday"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list_2"
@@ -1914,18 +1914,18 @@
       {
         "name": "answer_list_3",
         "value": [
-          "@global.w_self_care",
-          "@global.w_1on1",
-          "@global.w_praise",
-          "@global.w_instruct",
-          "@global.w_stress",
-          "@global.w_money",
-          "@local.w_rules",
-          "@global.w_consequence",
-          "@global.w_solve",
-          "@global.w_safe",
-          "@global.w_crisis",
-          "@global.w_celebrate"
+          "name:workshop_1 | text:@global.w_self_care",
+          "name:workshop_2| text:@global.w_1on1",
+          "name:workshop_3 | text:@global.w_praise",
+          "name:workshop_4 | text:@global.w_instruct",
+          "name:workshop_5 | text:@global.w_stress",
+          "name:workshop_6 | text:@global.w_money",
+          "name:workshop_7 | text:@global.w_rules",
+          "name:workshop_8 | text:@global.w_consequence",
+          "name:workshop_9 | text:@global.w_solve",
+          "name:workshop_10 | text:@global.w_safe",
+          "name:workshop_11 | text:@global.w_crisis",
+          "name:workshop_12 | text:@global.w_celebrate"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list_3",
@@ -1933,7 +1933,7 @@
           "value": {
             "0": [
               {
-                "fullExpression": "@global.w_self_care",
+                "fullExpression": "name:workshop_1 | text:@global.w_self_care",
                 "matchedExpression": "@global.w_self_care",
                 "type": "global",
                 "fieldName": "w_self_care"
@@ -1941,7 +1941,7 @@
             ],
             "1": [
               {
-                "fullExpression": "@global.w_1on1",
+                "fullExpression": "name:workshop_2| text:@global.w_1on1",
                 "matchedExpression": "@global.w_1on1",
                 "type": "global",
                 "fieldName": "w_1on1"
@@ -1949,7 +1949,7 @@
             ],
             "2": [
               {
-                "fullExpression": "@global.w_praise",
+                "fullExpression": "name:workshop_3 | text:@global.w_praise",
                 "matchedExpression": "@global.w_praise",
                 "type": "global",
                 "fieldName": "w_praise"
@@ -1957,7 +1957,7 @@
             ],
             "3": [
               {
-                "fullExpression": "@global.w_instruct",
+                "fullExpression": "name:workshop_4 | text:@global.w_instruct",
                 "matchedExpression": "@global.w_instruct",
                 "type": "global",
                 "fieldName": "w_instruct"
@@ -1965,7 +1965,7 @@
             ],
             "4": [
               {
-                "fullExpression": "@global.w_stress",
+                "fullExpression": "name:workshop_5 | text:@global.w_stress",
                 "matchedExpression": "@global.w_stress",
                 "type": "global",
                 "fieldName": "w_stress"
@@ -1973,7 +1973,7 @@
             ],
             "5": [
               {
-                "fullExpression": "@global.w_money",
+                "fullExpression": "name:workshop_6 | text:@global.w_money",
                 "matchedExpression": "@global.w_money",
                 "type": "global",
                 "fieldName": "w_money"
@@ -1981,15 +1981,15 @@
             ],
             "6": [
               {
-                "fullExpression": "@local.w_rules",
-                "matchedExpression": "@local.w_rules",
-                "type": "local",
+                "fullExpression": "name:workshop_7 | text:@global.w_rules",
+                "matchedExpression": "@global.w_rules",
+                "type": "global",
                 "fieldName": "w_rules"
               }
             ],
             "7": [
               {
-                "fullExpression": "@global.w_consequence",
+                "fullExpression": "name:workshop_8 | text:@global.w_consequence",
                 "matchedExpression": "@global.w_consequence",
                 "type": "global",
                 "fieldName": "w_consequence"
@@ -1997,7 +1997,7 @@
             ],
             "8": [
               {
-                "fullExpression": "@global.w_solve",
+                "fullExpression": "name:workshop_9 | text:@global.w_solve",
                 "matchedExpression": "@global.w_solve",
                 "type": "global",
                 "fieldName": "w_solve"
@@ -2005,7 +2005,7 @@
             ],
             "9": [
               {
-                "fullExpression": "@global.w_safe",
+                "fullExpression": "name:workshop_10 | text:@global.w_safe",
                 "matchedExpression": "@global.w_safe",
                 "type": "global",
                 "fieldName": "w_safe"
@@ -2013,7 +2013,7 @@
             ],
             "10": [
               {
-                "fullExpression": "@global.w_crisis",
+                "fullExpression": "name:workshop_11 | text:@global.w_crisis",
                 "matchedExpression": "@global.w_crisis",
                 "type": "global",
                 "fieldName": "w_crisis"
@@ -2021,7 +2021,7 @@
             ],
             "11": [
               {
-                "fullExpression": "@global.w_celebrate",
+                "fullExpression": "name:workshop_12 | text:@global.w_celebrate",
                 "matchedExpression": "@global.w_celebrate",
                 "type": "global",
                 "fieldName": "w_celebrate"
@@ -2048,7 +2048,7 @@
           "@global.w_money": [
             "value.5"
           ],
-          "@local.w_rules": [
+          "@global.w_rules": [
             "value.6"
           ],
           "@global.w_consequence": [
@@ -8975,9 +8975,9 @@
       {
         "name": "answer_list",
         "value": [
-          "First",
-          "Second",
-          "Third"
+          "name: name_1 | text: This is text 1",
+          "name: name_2 | text: This is text 2",
+          "name: name_3 | text: This is text 3"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list"
@@ -12013,31 +12013,6 @@
         "_nested_name": "display_back"
       },
       {
-        "type": "button",
-        "name": "button_info",
-        "value": "@global.ideas_button",
-        "hidden": true,
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "button_info",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.ideas_button",
-              "matchedExpression": "@global.ideas_button",
-              "type": "global",
-              "fieldName": "ideas_button"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.ideas_button": [
-            "value"
-          ]
-        }
-      },
-      {
         "type": "display_group",
         "parameter_list": {
           "style": "navigation"
@@ -12902,8 +12877,24 @@
       },
       {
         "name": "timer_help",
+        "value": "Press the triangle to help you keep this discussion to @local.timer_duration minutes.",
         "type": "set_variable",
-        "_nested_name": "timer_help"
+        "_nested_name": "timer_help",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Press the triangle to help you keep this discussion to @local.timer_duration minutes.",
+              "matchedExpression": "@local.timer_duration",
+              "type": "local",
+              "fieldName": "timer_duration"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.timer_duration": [
+            "value"
+          ]
+        }
       },
       {
         "type": "text",
@@ -12929,101 +12920,65 @@
         "_nested_name": "button_3"
       },
       {
-        "type": "template",
-        "name": "widget_timer",
-        "value": "widget_timer",
-        "rows": [
-          {
-            "name": "duration",
-            "value": "@local.timer_duration",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.duration",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_duration",
-                  "matchedExpression": "@local.timer_duration",
-                  "type": "local",
-                  "fieldName": "timer_duration"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_duration": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "duration_extension",
-            "value": "@local.timer_duration_extension",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.duration_extension",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_duration_extension",
-                  "matchedExpression": "@local.timer_duration_extension",
-                  "type": "local",
-                  "fieldName": "timer_duration_extension"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_duration_extension": [
-                "value"
-              ]
-            }
-          },
-          {
-            "value": "@local.timer_title",
-            "type": "set_variable",
-            "name": "set_variable",
-            "_nested_name": "widget_timer.set_variable",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_title",
-                  "matchedExpression": "@local.timer_title",
-                  "type": "local",
-                  "fieldName": "timer_title"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_title": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "title",
-            "value": "@local.timer_help",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.title",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_help",
-                  "matchedExpression": "@local.timer_help",
-                  "type": "local",
-                  "fieldName": "timer_help"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_help": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "help",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.help"
+        "type": "timer",
+        "name": "timer",
+        "parameter_list": {
+          "title": "@local.timer_title",
+          "starting_minutes": "@local.timer_duration",
+          "duration_extension": "@local.timer_duration_extension",
+          "help": "@local.timer_help"
+        },
+        "_nested_name": "timer",
+        "_dynamicFields": {
+          "parameter_list": {
+            "title": [
+              {
+                "fullExpression": "@local.timer_title",
+                "matchedExpression": "@local.timer_title",
+                "type": "local",
+                "fieldName": "timer_title"
+              }
+            ],
+            "starting_minutes": [
+              {
+                "fullExpression": "@local.timer_duration",
+                "matchedExpression": "@local.timer_duration",
+                "type": "local",
+                "fieldName": "timer_duration"
+              }
+            ],
+            "duration_extension": [
+              {
+                "fullExpression": "@local.timer_duration_extension",
+                "matchedExpression": "@local.timer_duration_extension",
+                "type": "local",
+                "fieldName": "timer_duration_extension"
+              }
+            ],
+            "help": [
+              {
+                "fullExpression": "@local.timer_help",
+                "matchedExpression": "@local.timer_help",
+                "type": "local",
+                "fieldName": "timer_help"
+              }
+            ]
           }
-        ],
-        "_nested_name": "widget_timer"
+        },
+        "_dynamicDependencies": {
+          "@local.timer_title": [
+            "parameter_list.title"
+          ],
+          "@local.timer_duration": [
+            "parameter_list.starting_minutes"
+          ],
+          "@local.timer_duration_extension": [
+            "parameter_list.duration_extension"
+          ],
+          "@local.timer_help": [
+            "parameter_list.help"
+          ]
+        }
       },
       {
         "type": "template",
@@ -13345,114 +13300,6 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "splash_screen",
-    "status": "released",
-    "rows": [
-      {
-        "type": "animated_section",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_1",
-            "value": "plh_images/first_app_launch/frustrated.svg",
-            "_nested_name": "animated_section.image_1"
-          },
-          {
-            "type": "text",
-            "name": "slogan_1",
-            "value": "Bringing teenagers up is hard",
-            "parameter_list": {
-              "style": "large center"
-            },
-            "_nested_name": "animated_section.slogan_1"
-          }
-        ],
-        "name": "animated_section",
-        "_nested_name": "animated_section"
-      },
-      {
-        "type": "animated_section",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_2",
-            "value": "plh_images/first_app_launch/loving_parent.svg",
-            "_nested_name": "animated_section.image_2"
-          },
-          {
-            "type": "text",
-            "name": "slogan_2",
-            "value": "You are the best parent your teen could have",
-            "parameter_list": {
-              "style": "large center"
-            },
-            "_nested_name": "animated_section.slogan_2"
-          }
-        ],
-        "name": "animated_section",
-        "_nested_name": "animated_section"
-      },
-      {
-        "type": "animated_section",
-        "rows": [
-          {
-            "type": "image",
-            "name": "image_3",
-            "value": "plh_images/first_app_launch/parent_group.svg",
-            "_nested_name": "animated_section.image_3"
-          },
-          {
-            "type": "text",
-            "name": "slogan_3",
-            "value": "Join the 152.4 million parents who have used our resources",
-            "parameter_list": {
-              "style": "large center"
-            },
-            "_nested_name": "animated_section.slogan_3"
-          }
-        ],
-        "name": "animated_section",
-        "_nested_name": "animated_section"
-      },
-      {
-        "type": "animated_section",
-        "rows": [
-          {
-            "type": "text",
-            "value": "Powered by Parenting for Lifelong Health and partners",
-            "parameter_list": {
-              "style": "large center"
-            },
-            "name": "text",
-            "_nested_name": "animated_section.text"
-          },
-          {
-            "type": "image",
-            "name": "logo_1",
-            "value": "plh_images/logos/plh_light.svg",
-            "_nested_name": "animated_section.logo_1"
-          },
-          {
-            "type": "image",
-            "name": "logo_2",
-            "value": "plh_images/logos/unicef_light.svg",
-            "_nested_name": "animated_section.logo_2"
-          },
-          {
-            "type": "image",
-            "name": "logo_3",
-            "value": "plh_images/logos/who_light.svg",
-            "_nested_name": "animated_section.logo_3"
-          }
-        ],
-        "name": "animated_section",
-        "_nested_name": "animated_section"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_template_splash_screen.xlsx"
   },
   {
     "flow_type": "template",
@@ -20341,9 +20188,9 @@
       {
         "name": "answer_1_list",
         "value": [
-          "First",
-          "Second",
-          "Third"
+          "name: name_1 | text: This is text 1",
+          "name: name_2 | text: This is text 2",
+          "name: name_3 | text: This is text 3"
         ],
         "type": "set_variable",
         "_nested_name": "answer_1_list"
@@ -20369,9 +20216,9 @@
       {
         "name": "answer_2_list",
         "value": [
-          "@local.option_1",
-          "@local.option_2",
-          "@local.option_3"
+          "name: name_1 | text: @local.option_1",
+          "name: name_2 | text: @local.option_2",
+          "name: name_3 | text: @local.option_3"
         ],
         "type": "set_variable",
         "_nested_name": "answer_2_list",
@@ -20379,7 +20226,7 @@
           "value": {
             "0": [
               {
-                "fullExpression": "@local.option_1",
+                "fullExpression": "name: name_1 | text: @local.option_1",
                 "matchedExpression": "@local.option_1",
                 "type": "local",
                 "fieldName": "option_1"
@@ -20387,7 +20234,7 @@
             ],
             "1": [
               {
-                "fullExpression": "@local.option_2",
+                "fullExpression": "name: name_2 | text: @local.option_2",
                 "matchedExpression": "@local.option_2",
                 "type": "local",
                 "fieldName": "option_2"
@@ -20395,7 +20242,7 @@
             ],
             "2": [
               {
-                "fullExpression": "@local.option_3",
+                "fullExpression": "name: name_3 | text: @local.option_3",
                 "matchedExpression": "@local.option_3",
                 "type": "local",
                 "fieldName": "option_3"
@@ -20418,8 +20265,8 @@
       {
         "name": "answer_3_list",
         "value": [
-          "@global.example_global_constant_text",
-          "@global.example_global_constant_title"
+          "name: name_1 | text: @global.example_global_constant_text",
+          "name: name_2 | text: @global.example_global_constant_title"
         ],
         "type": "set_variable",
         "_nested_name": "answer_3_list",
@@ -20427,7 +20274,7 @@
           "value": {
             "0": [
               {
-                "fullExpression": "@global.example_global_constant_text",
+                "fullExpression": "name: name_1 | text: @global.example_global_constant_text",
                 "matchedExpression": "@global.example_global_constant_text",
                 "type": "global",
                 "fieldName": "example_global_constant_text"
@@ -20435,7 +20282,7 @@
             ],
             "1": [
               {
-                "fullExpression": "@global.example_global_constant_title",
+                "fullExpression": "name: name_2 | text: @global.example_global_constant_title",
                 "matchedExpression": "@global.example_global_constant_title",
                 "type": "global",
                 "fieldName": "example_global_constant_title"
@@ -20550,103 +20397,221 @@
             "parameter_list.answer_list"
           ]
         }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_component_variables.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "debug_combo_box_variables_1",
-    "status": "released",
-    "rows": [
-      {
-        "name": "option_1",
-        "value": "Option 1",
-        "type": "set_variable",
-        "_nested_name": "option_1"
       },
       {
-        "name": "option_2",
-        "value": "Option 2",
+        "name": "spend_time_idea_1",
+        "value": "Walking to the shops",
         "type": "set_variable",
-        "_nested_name": "option_2"
+        "_nested_name": "spend_time_idea_1"
       },
       {
-        "name": "option_3",
-        "value": "Option 3",
+        "name": "spend_time_idea_2",
+        "value": "Get water together ",
         "type": "set_variable",
-        "_nested_name": "option_3"
+        "_nested_name": "spend_time_idea_2"
       },
       {
-        "name": "answer_list_2",
+        "name": "spend_time_idea_3",
+        "value": "Doing a chore together",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_3"
+      },
+      {
+        "name": "spend_time_idea_4",
+        "value": "Prepare dinner",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_4"
+      },
+      {
+        "name": "spend_time_idea_5",
+        "value": "Eat breakfast/lunch/dinner",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_5"
+      },
+      {
+        "name": "spend_time_idea_6",
+        "value": "Have tea after school",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_6"
+      },
+      {
+        "name": "spend_time_idea_7",
+        "value": "Watch a T.V. show",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_7"
+      },
+      {
+        "name": "spend_time_idea_8",
+        "value": "Review homework",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_8"
+      },
+      {
+        "name": "spend_time_idea_9",
+        "value": "Chat before bedtime",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_9"
+      },
+      {
+        "name": "spend_time_idea_10",
+        "value": "Play a game/sport",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_10"
+      },
+      {
+        "name": "answer_list",
         "value": [
-          "@local.option_1",
-          "@local.option_2",
-          "@local.option_3"
+          "name:name_1 | text:@local.spend_time_idea_1",
+          "name:name_2 | text:@local.spend_time_idea_2",
+          "name:name_3 | text:@local.spend_time_idea_3",
+          "name:name_4 | text:@local.spend_time_idea_4",
+          "name:name_5 | text:@local.spend_time_idea_5",
+          "name:name_6 | text:@local.spend_time_idea_6",
+          "name:name_7 | text:@local.spend_time_idea_7",
+          "name:name_8 | text:@local.spend_time_idea_8",
+          "name:name_9 | text:@local.spend_time_idea_9",
+          "name:name_10 | text:@local.spend_time_idea_10"
         ],
         "type": "set_variable",
-        "_nested_name": "answer_list_2",
+        "_nested_name": "answer_list",
         "_dynamicFields": {
           "value": {
             "0": [
               {
-                "fullExpression": "@local.option_1",
-                "matchedExpression": "@local.option_1",
+                "fullExpression": "name:name_1 | text:@local.spend_time_idea_1",
+                "matchedExpression": "@local.spend_time_idea_1",
                 "type": "local",
-                "fieldName": "option_1"
+                "fieldName": "spend_time_idea_1"
               }
             ],
             "1": [
               {
-                "fullExpression": "@local.option_2",
-                "matchedExpression": "@local.option_2",
+                "fullExpression": "name:name_2 | text:@local.spend_time_idea_2",
+                "matchedExpression": "@local.spend_time_idea_2",
                 "type": "local",
-                "fieldName": "option_2"
+                "fieldName": "spend_time_idea_2"
               }
             ],
             "2": [
               {
-                "fullExpression": "@local.option_3",
-                "matchedExpression": "@local.option_3",
+                "fullExpression": "name:name_3 | text:@local.spend_time_idea_3",
+                "matchedExpression": "@local.spend_time_idea_3",
                 "type": "local",
-                "fieldName": "option_3"
+                "fieldName": "spend_time_idea_3"
+              }
+            ],
+            "3": [
+              {
+                "fullExpression": "name:name_4 | text:@local.spend_time_idea_4",
+                "matchedExpression": "@local.spend_time_idea_4",
+                "type": "local",
+                "fieldName": "spend_time_idea_4"
+              }
+            ],
+            "4": [
+              {
+                "fullExpression": "name:name_5 | text:@local.spend_time_idea_5",
+                "matchedExpression": "@local.spend_time_idea_5",
+                "type": "local",
+                "fieldName": "spend_time_idea_5"
+              }
+            ],
+            "5": [
+              {
+                "fullExpression": "name:name_6 | text:@local.spend_time_idea_6",
+                "matchedExpression": "@local.spend_time_idea_6",
+                "type": "local",
+                "fieldName": "spend_time_idea_6"
+              }
+            ],
+            "6": [
+              {
+                "fullExpression": "name:name_7 | text:@local.spend_time_idea_7",
+                "matchedExpression": "@local.spend_time_idea_7",
+                "type": "local",
+                "fieldName": "spend_time_idea_7"
+              }
+            ],
+            "7": [
+              {
+                "fullExpression": "name:name_8 | text:@local.spend_time_idea_8",
+                "matchedExpression": "@local.spend_time_idea_8",
+                "type": "local",
+                "fieldName": "spend_time_idea_8"
+              }
+            ],
+            "8": [
+              {
+                "fullExpression": "name:name_9 | text:@local.spend_time_idea_9",
+                "matchedExpression": "@local.spend_time_idea_9",
+                "type": "local",
+                "fieldName": "spend_time_idea_9"
+              }
+            ],
+            "9": [
+              {
+                "fullExpression": "name:name_10 | text:@local.spend_time_idea_10",
+                "matchedExpression": "@local.spend_time_idea_10",
+                "type": "local",
+                "fieldName": "spend_time_idea_10"
               }
             ]
           }
         },
         "_dynamicDependencies": {
-          "@local.option_1": [
+          "@local.spend_time_idea_1": [
             "value.0"
           ],
-          "@local.option_2": [
+          "@local.spend_time_idea_2": [
             "value.1"
           ],
-          "@local.option_3": [
+          "@local.spend_time_idea_3": [
             "value.2"
+          ],
+          "@local.spend_time_idea_4": [
+            "value.3"
+          ],
+          "@local.spend_time_idea_5": [
+            "value.4"
+          ],
+          "@local.spend_time_idea_6": [
+            "value.5"
+          ],
+          "@local.spend_time_idea_7": [
+            "value.6"
+          ],
+          "@local.spend_time_idea_8": [
+            "value.7"
+          ],
+          "@local.spend_time_idea_9": [
+            "value.8"
+          ],
+          "@local.spend_time_idea_10": [
+            "value.9"
           ]
         }
       },
       {
         "type": "combo_box",
-        "name": "combo_box_2",
+        "name": "combo_box_4",
         "parameter_list": {
-          "answer_list": "@local.answer_list_2"
+          "answer_list": "@local.answer_list"
         },
-        "_nested_name": "combo_box_2",
+        "_nested_name": "combo_box_4",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
               {
-                "fullExpression": "@local.answer_list_2",
-                "matchedExpression": "@local.answer_list_2",
+                "fullExpression": "@local.answer_list",
+                "matchedExpression": "@local.answer_list",
                 "type": "local",
-                "fieldName": "answer_list_2"
+                "fieldName": "answer_list"
               }
             ]
           }
         },
         "_dynamicDependencies": {
-          "@local.answer_list_2": [
+          "@local.answer_list": [
             "parameter_list.answer_list"
           ]
         }
@@ -21548,9 +21513,9 @@
       {
         "name": "answer_list",
         "value": [
-          "First",
-          "Second",
-          "Third"
+          "name: name_1 | text: This is text 1",
+          "name: name_2 | text: This is text 2",
+          "name: name_3 | text: This is text 3"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list"
@@ -28370,7 +28335,7 @@
     "rows": [
       {
         "name": "help_text",
-        "value": "some help",
+        "value": "Click <img src=\"plh_images/icons/play_outline.svg\" width=\"30\" height=\"30\"> to start the timer",
         "type": "set_variable",
         "_nested_name": "help_text"
       },
@@ -28928,7 +28893,7 @@
         "value": [
           "name: name_1 | text: This is text 1",
           "name: name_2 | text: This is text 2",
-          "name: name_3 | text: This is text 3."
+          "name: name_3 | text: This is text 3"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list"
@@ -32589,12 +32554,12 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Remember – this week is about YOU!  We hope you are treating yourself well. You deserve this! When you do it, mark your @global.parent_points! ",
+        "value": "Remember – this week is about YOU!  We hope you are treating yourself well. You deserve this! When you do it, mark your @global.parent_points ! ",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Remember – this week is about YOU!  We hope you are treating yourself well. You deserve this! When you do it, mark your @global.parent_points! ",
+              "fullExpression": "Remember – this week is about YOU!  We hope you are treating yourself well. You deserve this! When you do it, mark your @global.parent_points ! ",
               "matchedExpression": "@global.parent_points",
               "type": "global",
               "fieldName": "parent_points"
@@ -32835,7 +32800,7 @@
       },
       {
         "type": "button",
-        "name": "button_individual",
+        "name": "button_all",
         "value": "Start your @global.parent_app journey!",
         "action_list": [
           {
@@ -32851,7 +32816,7 @@
         "parameter_list": {
           "style": "navigation"
         },
-        "_nested_name": "button_individual",
+        "_nested_name": "button_all",
         "_dynamicFields": {
           "value": [
             {
@@ -32895,12 +32860,12 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Spending time with your teen helps build trust between you. Click here to start your @global.parent_app journey now and to experience the best of what we have for you!",
+        "value": "Spending time with your teen helps build trust between you. Begin your @global.parent_app journey now and experience the best of what we have for you.",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Spending time with your teen helps build trust between you. Click here to start your @global.parent_app journey now and to experience the best of what we have for you!",
+              "fullExpression": "Spending time with your teen helps build trust between you. Begin your @global.parent_app journey now and experience the best of what we have for you.",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -32916,6 +32881,21 @@
       {
         "type": "button",
         "name": "button",
+        "value": "Start now",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_stepper"
+            ],
+            "_raw": "click | go_to : w_1on1_stepper",
+            "_cleaned": "click | go_to : w_1on1_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
         "_nested_name": "button"
       }
     ],
@@ -32945,12 +32925,12 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Have you spent time with your teen already? If you have, mark your @global.parent_points!",
+        "value": "Have you spent time with your teen already? If you have, mark your @global.parent_points !",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Have you spent time with your teen already? If you have, mark your @global.parent_points!",
+              "fullExpression": "Have you spent time with your teen already? If you have, mark your @global.parent_points !",
               "matchedExpression": "@global.parent_points",
               "type": "global",
               "fieldName": "parent_points"
@@ -32975,24 +32955,56 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+        "value": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! ",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "fullExpression": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! ",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             },
             {
-              "fullExpression": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "fullExpression": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! ",
               "matchedExpression": "@global.w_1on1",
               "type": "global",
               "fieldName": "w_1on1"
-            },
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@global.w_1on1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "value": "Start your @global.parent_app journey!",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_stepper"
+            ],
+            "_raw": "click | go_to : w_1on1_stepper",
+            "_cleaned": "click | go_to : w_1on1_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button",
+        "_dynamicFields": {
+          "value": [
             {
-              "fullExpression": "Thank you for using @global.parent_app and committing to your parenting. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "fullExpression": "Start your @global.parent_app journey!",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -33001,10 +33013,6 @@
         },
         "_dynamicDependencies": {
           "@global.parent_app": [
-            "value",
-            "value"
-          ],
-          "@global.w_1on1": [
             "value"
           ]
         }
@@ -33021,18 +33029,47 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+        "value": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop “@global.w_1on1” is ready for you! ",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "fullExpression": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop “@global.w_1on1” is ready for you! ",
               "matchedExpression": "@global.w_1on1",
               "type": "global",
               "fieldName": "w_1on1"
-            },
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_1on1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "value": "Start your @global.parent_app journey!",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_stepper"
+            ],
+            "_raw": "click | go_to : w_1on1_stepper",
+            "_cleaned": "click | go_to : w_1on1_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button",
+        "_dynamicFields": {
+          "value": [
             {
-              "fullExpression": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop “@global.w_1on1” is ready for you! Click here to start your @global.parent_app journey!",
+              "fullExpression": "Start your @global.parent_app journey!",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -33040,9 +33077,6 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.w_1on1": [
-            "value"
-          ],
           "@global.parent_app": [
             "value"
           ]
@@ -33060,14 +33094,14 @@
       {
         "type": "text",
         "name": "message_individual",
-        "value": "Hi awesome parent! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+        "value": "Hi awesome parent! Congrats for starting your third week on @global.parent_app . A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? ",
         "hidden": "@field.do_workshops_together",
         "_nested_name": "message_individual",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi awesome parent! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi awesome parent! Congrats for starting your third week on @global.parent_app . A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? ",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
@@ -33082,7 +33116,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ],
           "@field.do_workshops_together": [
@@ -33093,21 +33127,21 @@
       {
         "type": "text",
         "name": "message_pair",
-        "value": "Hi <name of group>! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+        "value": "Hi <name of group>! Congrats for starting your third week on @global.parent_app . A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
         "hidden": true,
         "_nested_name": "message_pair",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi <name of group>! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi <name of group>! Congrats for starting your third week on @global.parent_app . A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ]
         }
@@ -33115,14 +33149,14 @@
       {
         "type": "text",
         "name": "message_group",
-        "value": "Hi awesome parents! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+        "value": "Hi awesome parents! Congrats for starting your third week on @global.parent_app . A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
         "hidden": "!@field.do_workshops_together",
         "_nested_name": "message_group",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi awesome parents! Congrats for starting your third week on @global.parent_app. A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi awesome parents! Congrats for starting your third week on @global.parent_app . A new parenting workshop awaits you! Can you guess the topic of the workshop from this picture? Click here to start!",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
@@ -33137,7 +33171,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ],
           "@field.do_workshops_together": [
@@ -33172,12 +33206,12 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Well done for using @global.parent_app! Remember that it’s the small things that make a big difference.",
+        "value": "Well done for using @global.parent_app ! Remember that it’s the small things that make a big difference.",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Well done for using @global.parent_app! Remember that it’s the small things that make a big difference.",
+              "fullExpression": "Well done for using @global.parent_app ! Remember that it’s the small things that make a big difference.",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -33232,30 +33266,65 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+        "value": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n ",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n ",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             },
             {
-              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n ",
               "matchedExpression": "@global.w_1on1",
               "type": "global",
               "fieldName": "w_1on1"
             },
             {
-              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n ",
               "matchedExpression": "@global.w_praise",
               "type": "global",
               "fieldName": "w_praise"
-            },
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ],
+          "@global.w_1on1": [
+            "value"
+          ],
+          "@global.w_praise": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "value": "Start your @global.parent_app journey .",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_praise_stepper"
+            ],
+            "_raw": "click | go_to : w_praise_stepper",
+            "_cleaned": "click | go_to : w_praise_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button",
+        "_dynamicFields": {
+          "value": [
             {
-              "fullExpression": "Thank you again for using @global.parent_app and committing to your parenting. Why don’t you try our parenting workshops? Click on either “@global.w_1on1” or “@global.w_praise” and add some valuable parenting tools to your toolbox! \n Click here to start your @global.parent_app journey.",
+              "fullExpression": "Start your @global.parent_app journey .",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -33264,13 +33333,6 @@
         },
         "_dynamicDependencies": {
           "@global.parent_app": [
-            "value",
-            "value"
-          ],
-          "@global.w_1on1": [
-            "value"
-          ],
-          "@global.w_praise": [
             "value"
           ]
         }
@@ -33287,20 +33349,20 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Hi awesome parent! Congrats for starting your fourth week using @global.parent_app. This week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+        "value": "Hi awesome parent! Congrats for starting your fourth week using @global.parent_app . This week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi awesome parent! Congrats for starting your fourth week using @global.parent_app. This week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi awesome parent! Congrats for starting your fourth week using @global.parent_app . This week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ]
         }
@@ -33347,20 +33409,20 @@
       {
         "type": "text",
         "name": "message",
-        "value": "You’ve not marked any ‘Get Positive’ this week yet. If you gave positive instructions to your teen, mark your @global.parent_points. If you didn’t – give it a try today! Here is how (link to the ‘Get Positive’ module).",
+        "value": "You’ve not marked any ‘Get Positive’ this week yet. If you gave positive instructions to your teen, mark your @global.parent_points . If you didn’t – give it a try today! Here is how (link to the ‘Get Positive’ module).",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "You’ve not marked any ‘Get Positive’ this week yet. If you gave positive instructions to your teen, mark your @global.parent_points. If you didn’t – give it a try today! Here is how (link to the ‘Get Positive’ module).",
-              "matchedExpression": "@global.parent_points.",
+              "fullExpression": "You’ve not marked any ‘Get Positive’ this week yet. If you gave positive instructions to your teen, mark your @global.parent_points . If you didn’t – give it a try today! Here is how (link to the ‘Get Positive’ module).",
+              "matchedExpression": "@global.parent_points",
               "type": "global",
               "fieldName": "parent_points"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_points.": [
+          "@global.parent_points": [
             "value"
           ]
         }
@@ -33579,14 +33641,14 @@
       {
         "type": "text",
         "name": "message_individual",
-        "value": "Hi awesome parent! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+        "value": "Hi awesome parent! You are starting your second month of using @global.parent_app . Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
         "hidden": "@field.do_workshops_together",
         "_nested_name": "message_individual",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi awesome parent! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi awesome parent! You are starting your second month of using @global.parent_app . Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
@@ -33601,7 +33663,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ],
           "@field.do_workshops_together": [
@@ -33612,21 +33674,21 @@
       {
         "type": "text",
         "name": "message_pair",
-        "value": "Hi <name of participants>! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+        "value": "Hi <name of participants>! You are starting your second month of using @global.parent_app . Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
         "hidden": true,
         "_nested_name": "message_pair",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi <name of participants>! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi <name of participants>! You are starting your second month of using @global.parent_app . Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ]
         }
@@ -33634,14 +33696,14 @@
       {
         "type": "text",
         "name": "message_group",
-        "value": "Hi <group name>! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+        "value": "Hi <group name>! You are starting your second month of using @global.parent_app . Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
         "hidden": "!@field.do_workshops_together",
         "_nested_name": "message_group",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi <group name>! You are starting your second month of using @global.parent_app. Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi <group name>! You are starting your second month of using @global.parent_app . Amazing! Almost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
@@ -33656,7 +33718,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ],
           "@field.do_workshops_together": [
@@ -33691,8 +33753,28 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? This week’s workshop deals with money and budgeting. Click here to start.  ",
+        "value": "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? This week’s workshop deals with money and budgeting.  ",
         "_nested_name": "message"
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "value": "Start here.",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_money_stepper"
+            ],
+            "_raw": "click | go_to : w_money_stepper",
+            "_cleaned": "click | go_to : w_money_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
@@ -33893,18 +33975,18 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. Click here to start the workshop.",
+        "value": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. ",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. Click here to start the workshop.",
+              "fullExpression": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. ",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             },
             {
-              "fullExpression": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. Click here to start the workshop.",
+              "fullExpression": "Thank you again for using @global.parent_app and for committing to your parenting journey. The ‘@global.w_rules’ workshop will show you how to set rules in a way that your teen will understand and comply with. ",
               "matchedExpression": "@global.w_rules",
               "type": "global",
               "fieldName": "w_rules"
@@ -33919,6 +34001,26 @@
             "value"
           ]
         }
+      },
+      {
+        "type": "button",
+        "name": "button",
+        "value": "Start the workshop.",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_rules_stepper"
+            ],
+            "_raw": "click | go_to : w_rules_stepper",
+            "_cleaned": "click | go_to : w_rules_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
@@ -33977,13 +34079,13 @@
       {
         "type": "text",
         "name": "message_individual",
-        "value": "Hi awesome parent! Today we are celebrating two months of using @global.parent_app! You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+        "value": "Hi awesome parent! Today we are celebrating two months of using @global.parent_app! You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. ",
         "hidden": "@field.do_workshops_together",
         "_nested_name": "message_individual",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi awesome parent! Today we are celebrating two months of using @global.parent_app! You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+              "fullExpression": "Hi awesome parent! Today we are celebrating two months of using @global.parent_app! You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. ",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -34010,13 +34112,13 @@
       {
         "type": "text",
         "name": "message_pair",
-        "value": "Hi <names of participants>! Today we are celebrating two months of using @global.parent_app!  You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+        "value": "Hi <names of participants>! Today we are celebrating two months of using @global.parent_app!  You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. ",
         "hidden": true,
         "_nested_name": "message_pair",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi <names of participants>! Today we are celebrating two months of using @global.parent_app!  You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+              "fullExpression": "Hi <names of participants>! Today we are celebrating two months of using @global.parent_app!  You are doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. ",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -34032,13 +34134,13 @@
       {
         "type": "text",
         "name": "message_group",
-        "value": "Hi <name of group>! Today we are celebrating two months of using @global.parent_app! You are all doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+        "value": "Hi <name of group>! Today we are celebrating two months of using @global.parent_app! You are all doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. ",
         "hidden": "!@field.do_workshops_together",
         "_nested_name": "message_group",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi <name of group>! Today we are celebrating two months of using @global.parent_app! You are all doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. Click here to learn more!  ",
+              "fullExpression": "Hi <name of group>! Today we are celebrating two months of using @global.parent_app! You are all doing great! This week’s workshop will teach you how to react when your teen is not following the household rules. ",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -34061,6 +34163,26 @@
             "hidden"
           ]
         }
+      },
+      {
+        "type": "button",
+        "name": "button_all",
+        "value": "Click here to learn more!",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_consequence_stepper"
+            ],
+            "_raw": "click | go_to : w_consequence_stepper",
+            "_cleaned": "click | go_to : w_consequence_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button_all"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
@@ -34104,20 +34226,20 @@
       {
         "type": "text",
         "name": "message",
-        "value": "It’s great that you’ve been using @global.parent_app. You’ve gained X parenting tools already! Take the next workshop to get another parenting tool!  ",
+        "value": "It’s great that you’ve been using @global.parent_app . You’ve gained X parenting tools already! Take the next workshop to get another parenting tool!  ",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "It’s great that you’ve been using @global.parent_app. You’ve gained X parenting tools already! Take the next workshop to get another parenting tool!  ",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "It’s great that you’ve been using @global.parent_app . You’ve gained X parenting tools already! Take the next workshop to get another parenting tool!  ",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ]
         }
@@ -34224,14 +34346,14 @@
       {
         "type": "text",
         "name": "message_individual",
-        "value": "Hi awesome parent! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
+        "value": "Hi awesome parent! You are starting your eighth week of using @global.parent_app . How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
         "hidden": "@field.do_workshops_together",
         "_nested_name": "message_individual",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi awesome parent! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi awesome parent! You are starting your eighth week of using @global.parent_app . How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
@@ -34246,7 +34368,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ],
           "@field.do_workshops_together": [
@@ -34257,21 +34379,21 @@
       {
         "type": "text",
         "name": "message_pair",
-        "value": "Hi <names of participants>! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
+        "value": "Hi <names of participants>! You are starting your eighth week of using @global.parent_app . How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
         "hidden": true,
         "_nested_name": "message_pair",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi <names of participants>! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi <names of participants>! You are starting your eighth week of using @global.parent_app . How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to complete the previous workshop before starting this one.\nKeep up the good work!",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ]
         }
@@ -34279,14 +34401,14 @@
       {
         "type": "text",
         "name": "message_group",
-        "value": "Hi <name of group>! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to all complete the previous workshop before starting this one.",
+        "value": "Hi <name of group>! You are starting your eighth week of using @global.parent_app . How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to all complete the previous workshop before starting this one.",
         "hidden": "!@field.do_workshops_together",
         "_nested_name": "message_group",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Hi <name of group>! You are starting your eighth week of using @global.parent_app. How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to all complete the previous workshop before starting this one.",
-              "matchedExpression": "@global.parent_app.",
+              "fullExpression": "Hi <name of group>! You are starting your eighth week of using @global.parent_app . How time flies! \nThis week’s workshop is about dealing with unexpected problems. We advise you to all complete the previous workshop before starting this one.",
+              "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
             }
@@ -34301,7 +34423,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.parent_app.": [
+          "@global.parent_app": [
             "value"
           ],
           "@field.do_workshops_together": [
@@ -34667,6 +34789,41 @@
             "hidden"
           ]
         }
+      },
+      {
+        "type": "button",
+        "name": "button_all",
+        "value": "Coninue your @global.parent_app journey",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_rules_stepper"
+            ],
+            "_raw": "click | go_to : w_rules_stepper",
+            "_cleaned": "click | go_to : w_rules_stepper"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button_all",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Coninue your @global.parent_app journey",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
@@ -34764,12 +34921,12 @@
       {
         "type": "text",
         "name": "message",
-        "value": "Have you talked with your teen about safety measures? If you have, mark your @global.parent_points!",
+        "value": "Have you talked with your teen about safety measures? If you have, mark your @global.parent_points !",
         "_nested_name": "message",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Have you talked with your teen about safety measures? If you have, mark your @global.parent_points!",
+              "fullExpression": "Have you talked with your teen about safety measures? If you have, mark your @global.parent_points !",
               "matchedExpression": "@global.parent_points",
               "type": "global",
               "fieldName": "parent_points"
@@ -38675,6 +38832,16 @@
             ],
             "_raw": "uncompleted | emit:uncompleted",
             "_cleaned": "uncompleted | emit:uncompleted"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "no_mail",
+              "true"
+            ],
+            "_raw": "completed | set_field:no_mail:true",
+            "_cleaned": "completed | set_field:no_mail:true"
           }
         ],
         "rows": [
@@ -40413,13 +40580,13 @@
                   },
                   {
                     "type": "nested_properties",
-                    "name": "nav_buttons",
+                    "name": "intro_nav_buttons",
                     "rows": [
                       {
                         "name": "button_completed",
                         "value": "@global.more_button",
                         "type": "set_variable",
-                        "_nested_name": "topic_intro.listen.workshop_activity.nav_buttons.button_completed",
+                        "_nested_name": "topic_intro.listen.workshop_activity.intro_nav_buttons.button_completed",
                         "_dynamicFields": {
                           "value": [
                             {
@@ -40437,7 +40604,7 @@
                         }
                       }
                     ],
-                    "_nested_name": "topic_intro.listen.workshop_activity.nav_buttons"
+                    "_nested_name": "topic_intro.listen.workshop_activity.intro_nav_buttons"
                   },
                   {
                     "type": "nested_properties",
@@ -40648,9 +40815,105 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- Walking to the shops\n- Get water together \n- Doing a chore together \n- Prepare dinner \n- Eat breakfast/lunch/dinner \n- Have tea after school \n- Watch a T.V. show  \n- Review homework \n- Chat before bedtime \n- Play a game/sport ",
+            "value": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_1",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_1"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_2",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_2"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_3",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_3"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_4",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_4"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_5",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_5"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_6",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_6"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_7",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_7"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_8",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_8"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_9",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_9"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_10",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_10"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.spend_time_idea_1": [
+                "value"
+              ],
+              "@global.spend_time_idea_2": [
+                "value"
+              ],
+              "@global.spend_time_idea_3": [
+                "value"
+              ],
+              "@global.spend_time_idea_4": [
+                "value"
+              ],
+              "@global.spend_time_idea_5": [
+                "value"
+              ],
+              "@global.spend_time_idea_6": [
+                "value"
+              ],
+              "@global.spend_time_idea_7": [
+                "value"
+              ],
+              "@global.spend_time_idea_8": [
+                "value"
+              ],
+              "@global.spend_time_idea_9": [
+                "value"
+              ],
+              "@global.spend_time_idea_10": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -40725,19 +40988,135 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "Walking to the shops",
-                      "Get water together",
-                      "Doing a chore together",
-                      "Prepare dinner",
-                      "Eat breakfast/lunch/dinner",
-                      "Have tea after school",
-                      "Watch a T.V. show",
-                      "Review homework",
-                      "Chat before bedtime",
-                      "Play a game/sport"
+                      "name:name_1 | text:@global.spend_time_idea_1",
+                      "name:name_2 | text:@global.spend_time_idea_2",
+                      "name:name_3 | text:@global.spend_time_idea_3",
+                      "name:name_4 | text:@global.spend_time_idea_4",
+                      "name:name_5 | text:@global.spend_time_idea_5",
+                      "name:name_6 | text:@global.spend_time_idea_6",
+                      "name:name_7 | text:@global.spend_time_idea_7",
+                      "name:name_8 | text:@global.spend_time_idea_8",
+                      "name:name_9 | text:@global.spend_time_idea_9",
+                      "name:name_10 | text:@global.spend_time_idea_10"
                     ],
                     "type": "set_variable",
-                    "_nested_name": "question_time.workshop_activity.content_box.answer_list"
+                    "_nested_name": "question_time.workshop_activity.content_box.answer_list",
+                    "_dynamicFields": {
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "name:name_1 | text:@global.spend_time_idea_1",
+                            "matchedExpression": "@global.spend_time_idea_1",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "name:name_2 | text:@global.spend_time_idea_2",
+                            "matchedExpression": "@global.spend_time_idea_2",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_2"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "name:name_3 | text:@global.spend_time_idea_3",
+                            "matchedExpression": "@global.spend_time_idea_3",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@global.spend_time_idea_4",
+                            "matchedExpression": "@global.spend_time_idea_4",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_4"
+                          }
+                        ],
+                        "4": [
+                          {
+                            "fullExpression": "name:name_5 | text:@global.spend_time_idea_5",
+                            "matchedExpression": "@global.spend_time_idea_5",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_5"
+                          }
+                        ],
+                        "5": [
+                          {
+                            "fullExpression": "name:name_6 | text:@global.spend_time_idea_6",
+                            "matchedExpression": "@global.spend_time_idea_6",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_6"
+                          }
+                        ],
+                        "6": [
+                          {
+                            "fullExpression": "name:name_7 | text:@global.spend_time_idea_7",
+                            "matchedExpression": "@global.spend_time_idea_7",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_7"
+                          }
+                        ],
+                        "7": [
+                          {
+                            "fullExpression": "name:name_8 | text:@global.spend_time_idea_8",
+                            "matchedExpression": "@global.spend_time_idea_8",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_8"
+                          }
+                        ],
+                        "8": [
+                          {
+                            "fullExpression": "name:name_9 | text:@global.spend_time_idea_9",
+                            "matchedExpression": "@global.spend_time_idea_9",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_9"
+                          }
+                        ],
+                        "9": [
+                          {
+                            "fullExpression": "name:name_10 | text:@global.spend_time_idea_10",
+                            "matchedExpression": "@global.spend_time_idea_10",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_10"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@global.spend_time_idea_1": [
+                        "value.0"
+                      ],
+                      "@global.spend_time_idea_2": [
+                        "value.1"
+                      ],
+                      "@global.spend_time_idea_3": [
+                        "value.2"
+                      ],
+                      "@global.spend_time_idea_4": [
+                        "value.3"
+                      ],
+                      "@global.spend_time_idea_5": [
+                        "value.4"
+                      ],
+                      "@global.spend_time_idea_6": [
+                        "value.5"
+                      ],
+                      "@global.spend_time_idea_7": [
+                        "value.6"
+                      ],
+                      "@global.spend_time_idea_8": [
+                        "value.7"
+                      ],
+                      "@global.spend_time_idea_9": [
+                        "value.8"
+                      ],
+                      "@global.spend_time_idea_10": [
+                        "value.9"
+                      ]
+                    }
                   },
                   {
                     "name": "reply",
@@ -43325,6 +43704,84 @@
     "status": "released",
     "rows": [
       {
+        "name": "idea_1",
+        "value": "@global.w_consequence_male_caregiver was angry",
+        "type": "set_variable",
+        "_nested_name": "idea_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver was angry",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_2",
+        "value": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+        "type": "set_variable",
+        "_nested_name": "idea_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            },
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ],
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_3",
+        "value": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+        "type": "set_variable",
+        "_nested_name": "idea_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_4",
+        "value": "The consequence was too strong",
+        "type": "set_variable",
+        "_nested_name": "idea_4"
+      },
+      {
         "type": "template",
         "name": "suggestions",
         "value": "suggestions",
@@ -43337,44 +43794,48 @@
           },
           {
             "name": "list_text",
-            "value": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
+            "value": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+                  "matchedExpression": "@local.idea_1",
+                  "type": "local",
+                  "fieldName": "idea_1"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+                  "matchedExpression": "@local.idea_2",
+                  "type": "local",
+                  "fieldName": "idea_2"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+                  "matchedExpression": "@local.idea_3",
+                  "type": "local",
+                  "fieldName": "idea_3"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+                  "matchedExpression": "@local.idea_4",
+                  "type": "local",
+                  "fieldName": "idea_4"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@global.w_consequence_male_caregiver": [
-                "value",
+              "@local.idea_1": [
                 "value"
               ],
-              "@global.w_consequence_teen_boy_1": [
-                "value",
+              "@local.idea_2": [
+                "value"
+              ],
+              "@local.idea_3": [
+                "value"
+              ],
+              "@local.idea_4": [
                 "value"
               ]
             }
@@ -43444,12 +43905,90 @@
                     "_nested_name": "question_time.workshop_activity.content_box.question_text"
                   },
                   {
+                    "name": "idea_1",
+                    "value": "@global.w_consequence_male_caregiver was angry",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_1",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver was angry",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_2",
+                    "value": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_2",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ],
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_3",
+                    "value": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_3",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_4",
+                    "value": "The consequence was too strong",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_4"
+                  },
+                  {
                     "name": "answer_list",
                     "value": [
-                      "@global.w_consequence_male_caregiver was angry",
-                      "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                      "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
-                      "The consequence was too strong"
+                      "name:name_1 | text:@local.idea_1",
+                      "name:name_2 | text:@local.idea_2",
+                      "name:name_3 | text:@local.idea_3",
+                      "name:name_4 | text:@local.idea_4"
                     ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
@@ -43457,44 +43996,50 @@
                       "value": {
                         "0": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver was angry",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
+                            "fullExpression": "name:name_1 | text:@local.idea_1",
+                            "matchedExpression": "@local.idea_1",
+                            "type": "local",
+                            "fieldName": "idea_1"
                           }
                         ],
                         "1": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
+                            "fullExpression": "name:name_2 | text:@local.idea_2",
+                            "matchedExpression": "@local.idea_2",
+                            "type": "local",
+                            "fieldName": "idea_2"
                           }
                         ],
                         "2": [
                           {
-                            "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
+                            "fullExpression": "name:name_3 | text:@local.idea_3",
+                            "matchedExpression": "@local.idea_3",
+                            "type": "local",
+                            "fieldName": "idea_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@local.idea_4",
+                            "matchedExpression": "@local.idea_4",
+                            "type": "local",
+                            "fieldName": "idea_4"
                           }
                         ]
                       }
                     },
                     "_dynamicDependencies": {
-                      "@global.w_consequence_male_caregiver": [
-                        "value.0",
+                      "@local.idea_1": [
+                        "value.0"
+                      ],
+                      "@local.idea_2": [
                         "value.1"
                       ],
-                      "@global.w_consequence_teen_boy_1": [
-                        "value.1",
+                      "@local.idea_3": [
                         "value.2"
+                      ],
+                      "@local.idea_4": [
+                        "value.3"
                       ]
                     }
                   },
@@ -43578,7 +44123,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "consequence_1",
+                    "value": "w_consequence_example_1",
                     "rows": [],
                     "_nested_name": "learn_temp.workshop_activity.content_box.box_1"
                   },
@@ -43590,14 +44135,14 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "consequence_2",
+                        "value": "w_consequence_example_2",
                         "rows": [],
                         "_nested_name": "learn_temp.workshop_activity.content_box.box_2.box_1"
                       },
                       {
                         "type": "nested_properties",
                         "name": "box_2",
-                        "value": "consequence_3",
+                        "value": "w_consequence_example_3",
                         "rows": [],
                         "_nested_name": "learn_temp.workshop_activity.content_box.box_2.box_2"
                       }
@@ -43647,7 +44192,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_1",
+    "flow_name": "w_consequence_example_1",
     "status": "released",
     "rows": [
       {
@@ -43719,14 +44264,75 @@
           {
             "name": "answer_list",
             "value": [
-              "No gadget use the next day",
-              "Take 5 minutes pause in separate part of the room",
-              "Write a letter of apology",
-              "Cannot see friends the next day",
-              "Cannot play with phone after dinner (or next hour)"
+              "name:name_1 | text:@global.negative_consequence_1",
+              "name:name_2 | text:@global.negative_consequence_2",
+              "name:name_3 | text:@global.negative_consequence_3",
+              "name:name_4 | text:@global.negative_consequence_4",
+              "name:name_5 | text:@global.negative_consequence_5"
             ],
             "type": "set_variable",
-            "_nested_name": "box_combo_box.answer_list"
+            "_nested_name": "box_combo_box.answer_list",
+            "_dynamicFields": {
+              "value": {
+                "0": [
+                  {
+                    "fullExpression": "name:name_1 | text:@global.negative_consequence_1",
+                    "matchedExpression": "@global.negative_consequence_1",
+                    "type": "global",
+                    "fieldName": "negative_consequence_1"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "name:name_2 | text:@global.negative_consequence_2",
+                    "matchedExpression": "@global.negative_consequence_2",
+                    "type": "global",
+                    "fieldName": "negative_consequence_2"
+                  }
+                ],
+                "2": [
+                  {
+                    "fullExpression": "name:name_3 | text:@global.negative_consequence_3",
+                    "matchedExpression": "@global.negative_consequence_3",
+                    "type": "global",
+                    "fieldName": "negative_consequence_3"
+                  }
+                ],
+                "3": [
+                  {
+                    "fullExpression": "name:name_4 | text:@global.negative_consequence_4",
+                    "matchedExpression": "@global.negative_consequence_4",
+                    "type": "global",
+                    "fieldName": "negative_consequence_4"
+                  }
+                ],
+                "4": [
+                  {
+                    "fullExpression": "name:name_5 | text:@global.negative_consequence_5",
+                    "matchedExpression": "@global.negative_consequence_5",
+                    "type": "global",
+                    "fieldName": "negative_consequence_5"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.negative_consequence_1": [
+                "value.0"
+              ],
+              "@global.negative_consequence_2": [
+                "value.1"
+              ],
+              "@global.negative_consequence_3": [
+                "value.2"
+              ],
+              "@global.negative_consequence_4": [
+                "value.3"
+              ],
+              "@global.negative_consequence_5": [
+                "value.4"
+              ]
+            }
           },
           {
             "name": "reply",
@@ -43794,10 +44400,10 @@
                 "trigger": "click",
                 "action_id": "pop_up",
                 "args": [
-                  "consequence_1_pop"
+                  "w_consequence_example_1_pop"
                 ],
-                "_raw": "click | pop_up:consequence_1_pop",
-                "_cleaned": "click | pop_up:consequence_1_pop"
+                "_raw": "click | pop_up:w_consequence_example_1_pop",
+                "_cleaned": "click | pop_up:w_consequence_example_1_pop"
               }
             ],
             "type": "set_variable",
@@ -43849,7 +44455,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_1_pop",
+    "flow_name": "w_consequence_example_1_pop",
     "status": "released",
     "rows": [
       {
@@ -43859,9 +44465,60 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- No gadget use the next day\nTake 5 minutes pause in separate part of the room\n- Write a letter of apology\n- Cannot see friends the next day\n- Cannot play with phone after dinner (or next hour)",
+            "value": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_1",
+                  "type": "global",
+                  "fieldName": "negative_consequence_1"
+                },
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_2",
+                  "type": "global",
+                  "fieldName": "negative_consequence_2"
+                },
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_3",
+                  "type": "global",
+                  "fieldName": "negative_consequence_3"
+                },
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_4",
+                  "type": "global",
+                  "fieldName": "negative_consequence_4"
+                },
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_5",
+                  "type": "global",
+                  "fieldName": "negative_consequence_5"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.negative_consequence_1": [
+                "value"
+              ],
+              "@global.negative_consequence_2": [
+                "value"
+              ],
+              "@global.negative_consequence_3": [
+                "value"
+              ],
+              "@global.negative_consequence_4": [
+                "value"
+              ],
+              "@global.negative_consequence_5": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -43872,7 +44529,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_2",
+    "flow_name": "w_consequence_example_2",
     "status": "released",
     "rows": [
       {
@@ -43953,14 +44610,75 @@
           {
             "name": "answer_list",
             "value": [
-              "No gadget use the next day",
-              "Take 5 minutes pause in separate part of the room",
-              "Write a letter of apology",
-              "Cannot see friends the next day",
-              "Cannot play with phone after dinner (or next hour)"
+              "name:name_1 | text:@global.negative_consequence_1",
+              "name:name_2 | text:@global.negative_consequence_2",
+              "name:name_3 | text:@global.negative_consequence_3",
+              "name:name_4 | text:@global.negative_consequence_4",
+              "name:name_5 | text:@global.negative_consequence_5"
             ],
             "type": "set_variable",
-            "_nested_name": "box_combo_box.answer_list"
+            "_nested_name": "box_combo_box.answer_list",
+            "_dynamicFields": {
+              "value": {
+                "0": [
+                  {
+                    "fullExpression": "name:name_1 | text:@global.negative_consequence_1",
+                    "matchedExpression": "@global.negative_consequence_1",
+                    "type": "global",
+                    "fieldName": "negative_consequence_1"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "name:name_2 | text:@global.negative_consequence_2",
+                    "matchedExpression": "@global.negative_consequence_2",
+                    "type": "global",
+                    "fieldName": "negative_consequence_2"
+                  }
+                ],
+                "2": [
+                  {
+                    "fullExpression": "name:name_3 | text:@global.negative_consequence_3",
+                    "matchedExpression": "@global.negative_consequence_3",
+                    "type": "global",
+                    "fieldName": "negative_consequence_3"
+                  }
+                ],
+                "3": [
+                  {
+                    "fullExpression": "name:name_4 | text:@global.negative_consequence_4",
+                    "matchedExpression": "@global.negative_consequence_4",
+                    "type": "global",
+                    "fieldName": "negative_consequence_4"
+                  }
+                ],
+                "4": [
+                  {
+                    "fullExpression": "name:name_5 | text:@global.negative_consequence_5",
+                    "matchedExpression": "@global.negative_consequence_5",
+                    "type": "global",
+                    "fieldName": "negative_consequence_5"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.negative_consequence_1": [
+                "value.0"
+              ],
+              "@global.negative_consequence_2": [
+                "value.1"
+              ],
+              "@global.negative_consequence_3": [
+                "value.2"
+              ],
+              "@global.negative_consequence_4": [
+                "value.3"
+              ],
+              "@global.negative_consequence_5": [
+                "value.4"
+              ]
+            }
           },
           {
             "name": "reply",
@@ -44037,10 +44755,10 @@
                 "trigger": "click",
                 "action_id": "pop_up",
                 "args": [
-                  "consequence_1_pop"
+                  "w_consequence_example_1_pop"
                 ],
-                "_raw": "click | pop_up:consequence_1_pop",
-                "_cleaned": "click | pop_up:consequence_1_pop"
+                "_raw": "click | pop_up:w_consequence_example_1_pop",
+                "_cleaned": "click | pop_up:w_consequence_example_1_pop"
               }
             ],
             "type": "set_variable",
@@ -44092,7 +44810,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_3",
+    "flow_name": "w_consequence_example_3",
     "status": "released",
     "rows": [
       {
@@ -44164,14 +44882,75 @@
           {
             "name": "answer_list",
             "value": [
-              "Extra time with friends on weekend (1hr)",
-              "Cooking teen’s favourite meal",
-              "Extra time with phone after dinner (30 min)",
-              "Watching teen’s T.V. show together",
-              "Extra one-on-one time on Sunday (30 min)"
+              "name:name_1 | text:@global.positive_consequence_1",
+              "name:name_2 | text:@global.positive_consequence_2",
+              "name:name_3 | text:@global.positive_consequence_3",
+              "name:name_4 | text:@global.positive_consequence_4",
+              "name:name_5 | text:@global.positive_consequence_5"
             ],
             "type": "set_variable",
-            "_nested_name": "box_combo_box.answer_list"
+            "_nested_name": "box_combo_box.answer_list",
+            "_dynamicFields": {
+              "value": {
+                "0": [
+                  {
+                    "fullExpression": "name:name_1 | text:@global.positive_consequence_1",
+                    "matchedExpression": "@global.positive_consequence_1",
+                    "type": "global",
+                    "fieldName": "positive_consequence_1"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "name:name_2 | text:@global.positive_consequence_2",
+                    "matchedExpression": "@global.positive_consequence_2",
+                    "type": "global",
+                    "fieldName": "positive_consequence_2"
+                  }
+                ],
+                "2": [
+                  {
+                    "fullExpression": "name:name_3 | text:@global.positive_consequence_3",
+                    "matchedExpression": "@global.positive_consequence_3",
+                    "type": "global",
+                    "fieldName": "positive_consequence_3"
+                  }
+                ],
+                "3": [
+                  {
+                    "fullExpression": "name:name_4 | text:@global.positive_consequence_4",
+                    "matchedExpression": "@global.positive_consequence_4",
+                    "type": "global",
+                    "fieldName": "positive_consequence_4"
+                  }
+                ],
+                "4": [
+                  {
+                    "fullExpression": "name:name_5 | text:@global.positive_consequence_5",
+                    "matchedExpression": "@global.positive_consequence_5",
+                    "type": "global",
+                    "fieldName": "positive_consequence_5"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.positive_consequence_1": [
+                "value.0"
+              ],
+              "@global.positive_consequence_2": [
+                "value.1"
+              ],
+              "@global.positive_consequence_3": [
+                "value.2"
+              ],
+              "@global.positive_consequence_4": [
+                "value.3"
+              ],
+              "@global.positive_consequence_5": [
+                "value.4"
+              ]
+            }
           },
           {
             "name": "reply",
@@ -44239,10 +45018,10 @@
                 "trigger": "click",
                 "action_id": "pop_up",
                 "args": [
-                  "consequence_3_pop"
+                  "w_consequence_example_3_pop"
                 ],
-                "_raw": "click | pop_up:consequence_3_pop",
-                "_cleaned": "click | pop_up:consequence_3_pop"
+                "_raw": "click | pop_up:w_consequence_example_3_pop",
+                "_cleaned": "click | pop_up:w_consequence_example_3_pop"
               }
             ],
             "type": "set_variable",
@@ -44287,7 +45066,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_3_pop",
+    "flow_name": "w_consequence_example_3_pop",
     "status": "released",
     "rows": [
       {
@@ -44297,9 +45076,60 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- Extra time with friends on weekend (1hr)\n- Cooking teen’s favourite meal\n- Extra time with phone after dinner (30 min)\n- Watching teen’s T.V. show together\n- Extra one-on-one time on Sunday (30 min)",
+            "value": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_1",
+                  "type": "global",
+                  "fieldName": "positive_consequence_1"
+                },
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_2",
+                  "type": "global",
+                  "fieldName": "positive_consequence_2"
+                },
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_3",
+                  "type": "global",
+                  "fieldName": "positive_consequence_3"
+                },
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_4",
+                  "type": "global",
+                  "fieldName": "positive_consequence_4"
+                },
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_5",
+                  "type": "global",
+                  "fieldName": "positive_consequence_5"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.positive_consequence_1": [
+                "value"
+              ],
+              "@global.positive_consequence_2": [
+                "value"
+              ],
+              "@global.positive_consequence_3": [
+                "value"
+              ],
+              "@global.positive_consequence_4": [
+                "value"
+              ],
+              "@global.positive_consequence_5": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -45253,6 +46083,108 @@
     "status": "released",
     "rows": [
       {
+        "name": "idea_1",
+        "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+        "type": "set_variable",
+        "_nested_name": "idea_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            },
+            {
+              "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ],
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_2",
+        "value": "They agreed on consequences together ",
+        "type": "set_variable",
+        "_nested_name": "idea_2"
+      },
+      {
+        "name": "idea_3",
+        "value": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+        "type": "set_variable",
+        "_nested_name": "idea_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            },
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ],
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_4",
+        "value": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+        "type": "set_variable",
+        "_nested_name": "idea_4",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            },
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ],
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_5",
+        "value": "The consequence was realistic and appropriate",
+        "type": "set_variable",
+        "_nested_name": "idea_5"
+      },
+      {
         "type": "template",
         "name": "suggestions",
         "value": "suggestions",
@@ -45265,58 +46197,57 @@
           },
           {
             "name": "list_text",
-            "value": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
+            "value": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_1",
+                  "type": "local",
+                  "fieldName": "idea_1"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_2",
+                  "type": "local",
+                  "fieldName": "idea_2"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_3",
+                  "type": "local",
+                  "fieldName": "idea_3"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_4",
+                  "type": "local",
+                  "fieldName": "idea_4"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
-                },
-                {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_5",
+                  "type": "local",
+                  "fieldName": "idea_5"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@global.w_consequence_teen_boy_1": [
-                "value",
-                "value",
+              "@local.idea_1": [
                 "value"
               ],
-              "@global.w_consequence_male_caregiver": [
-                "value",
-                "value",
+              "@local.idea_2": [
+                "value"
+              ],
+              "@local.idea_3": [
+                "value"
+              ],
+              "@local.idea_4": [
+                "value"
+              ],
+              "@local.idea_5": [
                 "value"
               ]
             }
@@ -45386,13 +46317,115 @@
                     "_nested_name": "question_time.workshop_activity.content_box.question_text"
                   },
                   {
+                    "name": "idea_1",
+                    "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_1",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ],
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_2",
+                    "value": "They agreed on consequences together ",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_2"
+                  },
+                  {
+                    "name": "idea_3",
+                    "value": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_3",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ],
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_4",
+                    "value": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_4",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ],
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_5",
+                    "value": "The consequence was realistic and appropriate",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_5"
+                  },
+                  {
                     "name": "answer_list",
                     "value": [
-                      "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                      "They agreed on consequences together",
-                      "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                      "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                      "The consequence was realistic and appropriate"
+                      "name:name_1 | text:@local.idea_1",
+                      "name:name_2 | text:@local.idea_2",
+                      "name:name_3 | text:@local.idea_3",
+                      "name:name_4 | text:@local.idea_4",
+                      "name:name_5 | text:@local.idea_5"
                     ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
@@ -45400,58 +46433,61 @@
                       "value": {
                         "0": [
                           {
-                            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
-                          },
+                            "fullExpression": "name:name_1 | text:@local.idea_1",
+                            "matchedExpression": "@local.idea_1",
+                            "type": "local",
+                            "fieldName": "idea_1"
+                          }
+                        ],
+                        "1": [
                           {
-                            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
+                            "fullExpression": "name:name_2 | text:@local.idea_2",
+                            "matchedExpression": "@local.idea_2",
+                            "type": "local",
+                            "fieldName": "idea_2"
                           }
                         ],
                         "2": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
+                            "fullExpression": "name:name_3 | text:@local.idea_3",
+                            "matchedExpression": "@local.idea_3",
+                            "type": "local",
+                            "fieldName": "idea_3"
                           }
                         ],
                         "3": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
+                            "fullExpression": "name:name_4 | text:@local.idea_4",
+                            "matchedExpression": "@local.idea_4",
+                            "type": "local",
+                            "fieldName": "idea_4"
+                          }
+                        ],
+                        "4": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
+                            "fullExpression": "name:name_5 | text:@local.idea_5",
+                            "matchedExpression": "@local.idea_5",
+                            "type": "local",
+                            "fieldName": "idea_5"
                           }
                         ]
                       }
                     },
                     "_dynamicDependencies": {
-                      "@global.w_consequence_teen_boy_1": [
-                        "value.0",
-                        "value.2",
+                      "@local.idea_1": [
+                        "value.0"
+                      ],
+                      "@local.idea_2": [
+                        "value.1"
+                      ],
+                      "@local.idea_3": [
+                        "value.2"
+                      ],
+                      "@local.idea_4": [
                         "value.3"
                       ],
-                      "@global.w_consequence_male_caregiver": [
-                        "value.0",
-                        "value.2",
-                        "value.3"
+                      "@local.idea_5": [
+                        "value.4"
                       ]
                     }
                   },
