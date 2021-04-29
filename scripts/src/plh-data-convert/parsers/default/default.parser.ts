@@ -35,7 +35,9 @@ export class DefaultParser implements AbstractParser {
       // some rows may be omitted during processing so ignore
       if (processed) {
         const postProcessed = this.postProcess(processed);
-        processedRows.push(postProcessed);
+        if (postProcessed) {
+          processedRows.push(postProcessed);
+        }
       }
       this.queue.shift();
     }
