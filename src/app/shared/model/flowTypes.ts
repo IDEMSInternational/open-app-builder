@@ -37,6 +37,8 @@ export namespace FlowTypes {
   export interface FlowTypeBase {
     flow_type: FlowType;
     flow_name: string;
+    /** allows further level of grouping within flows */
+    flow_subtype?: string;
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
     /** Events triggered from the flow that would ordinarily write to the db (e.g. emit completed) will be ignored */
