@@ -28,13 +28,13 @@
     background: var(--ion-color-primary-contrast);
     z-index: 2;
     &.inProgress {
-      background: var(--ion-accordion-bg);
+      background: var(--ion-accrodion-status-gradient);
     }
     &.disabled {
       background: var(--ion-color-primary-contrast);
     }
     &.completed {
-      background: var(--ion-accordion-bg);
+      background: var(--ion-accrodion-status-gradient);
     }
   }
   .accordion-section {
