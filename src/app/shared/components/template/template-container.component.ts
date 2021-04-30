@@ -426,7 +426,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       );
       const { name, value, condition, hidden, type } = parsedRow;
 
-      log("parsedRow", { ...parsedRow });
+      log("parsedRow", name, { ...parsedRow });
 
       // Filter out if specified by condition. This might be string or boolean
       // depending on the parser and related calculations (so check for both)
@@ -480,6 +480,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       // will be used as part of child template overrides
       if (parsedRow.hasOwnProperty("rows")) {
         parsedRow.rows = this.processRows(parsedRow.rows, template, isNestedRows);
+      }
+
+      // we don't want to re-evaluate these from within child template so remove dynamic references
+      if (isNestedRows) {
+        delete parsedRow._dynamicDependencies;
+        delete parsedRow._dynamicFields;
       }
 
       log("[Row end]", name, "(push)", { ...parsedRow });
