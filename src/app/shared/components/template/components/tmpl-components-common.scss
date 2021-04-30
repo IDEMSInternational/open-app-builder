@@ -264,7 +264,7 @@ p {
   & .offset {
     width: 100%;
     plh-template-component:first-child {
-      margin-bottom: 55px;
+      margin-bottom: 45px;
       padding-left: var(--large-padding);
       max-width: 15%;
       @media (max-width: 1024px) {
@@ -274,41 +274,10 @@ p {
         max-width: 25%;
       }
       @media (max-width: 414px) {
-        max-width: 50%;
+        max-width: 48%;
       }
       @media (max-width: 375px) {
-        max-width: 52%;
-      }
-      .plh-tmpl-comp {
-        plh-tmpl-lottie-animation {
-          position: absolute;
-          top: -144px;
-          width: 204%;
-          height: 133%;
-          left: -93px;
-          @media (max-width: 1024px) {
-            top: -200px;
-            width: 83%;
-            left: -113px;
-          }
-          @media (max-width: 769px) {
-            top: -198px;
-            width: 114%;
-          }
-          @media (max-width: 414px) {
-            top: -177px;
-            width: 211%;
-          }
-          @media (max-width: 375px) {
-            top: -172px;
-            width: 226%;
-          }
-          @media (max-width: 320px) {
-            top: -148px;
-            width: 226%;
-            left: -99px;
-          }
-        }
+        max-width: 50%;
       }
     }
     plh-template-component:last-child {

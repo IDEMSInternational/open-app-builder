@@ -539,7 +539,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_self_care",
-        "value": "Self-Care"
+        "value": "Welcome and Self-Care"
       },
       {
         "type": "declare_global_constant",
