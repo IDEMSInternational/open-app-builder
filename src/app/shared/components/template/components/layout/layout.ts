@@ -42,6 +42,23 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   }
 
   /**
+   * As content can be nested within containers or pages, a general
+   * method that scrolls everything scrollable (all parent containers and page content)
+   * to the top
+   */
+  public scrollToTop() {
+    let parent = this.parent;
+    while (parent) {
+      parent.elRef.nativeElement.scrollTop = 0;
+      parent = parent.parent;
+    }
+    const ionContentContainers = document.querySelectorAll("ion-content") || [];
+    ionContentContainers.forEach((el) => {
+      el.shadowRoot.querySelector(".inner-scroll").scrollTop = 0;
+    });
+  }
+
+  /**
    * Apply any changes here to be applied the row @Input() set operation
    */
   public modifyRowSetter(row: FlowTypes.TemplateRow) {
