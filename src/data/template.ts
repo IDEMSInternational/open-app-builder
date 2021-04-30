@@ -7696,7 +7696,7 @@
         "type": "text",
         "name": "reply_less",
         "value": "You selected less than @local.threshold",
-        "hidden": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+        "hidden": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
         "parameter_list": {
           "style": "center"
         },
@@ -7712,67 +7712,67 @@
           ],
           "hidden": [
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.less_includes_zero",
               "type": "local",
               "fieldName": "less_includes_zero"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.less_includes_zero",
               "type": "local",
               "fieldName": "less_includes_zero"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
@@ -7804,7 +7804,7 @@
         "type": "dashed_box",
         "name": "unlock_less",
         "value": "Unlock for less than @local.threshold",
-        "hidden": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+        "hidden": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
         "parameter_list": {
           "icon_src": "plh_images/icons/unlock_circle.svg",
           "icon_position": "top-left"
@@ -7821,67 +7821,67 @@
           ],
           "hidden": [
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.less_includes_zero",
               "type": "local",
               "fieldName": "less_includes_zero"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.less_includes_zero",
               "type": "local",
               "fieldName": "less_includes_zero"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
+              "fullExpression": "(@local.less_includes_zero && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\")) \n||\n((!@local.less_includes_zero) && (\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" || \"@local.slider\"==0 )) ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
@@ -7913,7 +7913,7 @@
         "type": "text",
         "name": "reply_greater_equal",
         "value": "You selected @local.threshold or more",
-        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
         "parameter_list": {
           "style": "center"
         },
@@ -7929,25 +7929,25 @@
           ],
           "hidden": [
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
@@ -7970,7 +7970,7 @@
         "type": "dashed_box",
         "name": "unlock_greater_equal",
         "value": "Unlock for greater than or equal to @local.threshold",
-        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
         "parameter_list": {
           "icon_src": "plh_images/icons/unlock_circle.svg",
           "icon_position": "top-left"
@@ -7987,25 +7987,25 @@
           ],
           "hidden": [
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
@@ -8270,7 +8270,7 @@
         "type": "text",
         "name": "reply_less",
         "value": "You selected less than @local.threshold",
-        "hidden": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+        "hidden": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
         "parameter_list": {
           "style": "center"
         },
@@ -8286,25 +8286,25 @@
           ],
           "hidden": [
             {
-              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
@@ -8327,7 +8327,7 @@
         "type": "dashed_box",
         "name": "unlock_less",
         "value": "Unlock for less than @local.threshold",
-        "hidden": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+        "hidden": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
         "parameter_list": {
           "icon_src": "plh_images/icons/unlock_circle.svg",
           "icon_position": "top-left"
@@ -8344,25 +8344,25 @@
           ],
           "hidden": [
             {
-              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" >= @local.threshold || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
@@ -8385,7 +8385,7 @@
         "type": "text",
         "name": "reply_greater_equal",
         "value": "You selected @local.threshold or more",
-        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
         "parameter_list": {
           "style": "center"
         },
@@ -8401,25 +8401,25 @@
           ],
           "hidden": [
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
@@ -8442,7 +8442,7 @@
         "type": "dashed_box",
         "name": "unlock_greater_equal",
         "value": "Unlock for greater than or equal to @local.threshold",
-        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+        "hidden": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
         "parameter_list": {
           "icon_src": "plh_images/icons/unlock_circle.svg",
           "icon_position": "top-left"
@@ -8459,25 +8459,25 @@
           ],
           "hidden": [
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.threshold",
               "type": "local",
               "fieldName": "threshold"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
             },
             {
-              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"{{local.slider}}\" || \"@local.slider\"==\"no_value\" ",
+              "fullExpression": "\"@local.slider\" < @local.threshold  || \"@local.slider\"==\"undefined\" || \"@local.slider\"==\"no_value\" ",
               "matchedExpression": "@local.slider",
               "type": "local",
               "fieldName": "slider"
@@ -9077,18 +9077,12 @@
         "type": "text",
         "name": "reply_happy",
         "value": "Reply happy",
-        "hidden": "\"@local.radio_group\"!=\"happy\" || \"@local.radio_group\"==\"{{local.radio_group}}\" ",
+        "hidden": "\"@local.radio_group\"!=\"happy\"",
         "_nested_name": "reply_happy",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.radio_group\"!=\"happy\" || \"@local.radio_group\"==\"{{local.radio_group}}\" ",
-              "matchedExpression": "@local.radio_group",
-              "type": "local",
-              "fieldName": "radio_group"
-            },
-            {
-              "fullExpression": "\"@local.radio_group\"!=\"happy\" || \"@local.radio_group\"==\"{{local.radio_group}}\" ",
+              "fullExpression": "\"@local.radio_group\"!=\"happy\"",
               "matchedExpression": "@local.radio_group",
               "type": "local",
               "fieldName": "radio_group"
@@ -9097,7 +9091,6 @@
         },
         "_dynamicDependencies": {
           "@local.radio_group": [
-            "hidden",
             "hidden"
           ]
         }
@@ -9106,18 +9099,12 @@
         "type": "text",
         "name": "reply_ok",
         "value": "Reply ok",
-        "hidden": "\"@local.radio_group\"!=\"ok\" ||\"@local.radio_group\"==\"{{local.radio_group}}\" ",
+        "hidden": "\"@local.radio_group\"!=\"ok\" ",
         "_nested_name": "reply_ok",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.radio_group\"!=\"ok\" ||\"@local.radio_group\"==\"{{local.radio_group}}\" ",
-              "matchedExpression": "@local.radio_group",
-              "type": "local",
-              "fieldName": "radio_group"
-            },
-            {
-              "fullExpression": "\"@local.radio_group\"!=\"ok\" ||\"@local.radio_group\"==\"{{local.radio_group}}\" ",
+              "fullExpression": "\"@local.radio_group\"!=\"ok\" ",
               "matchedExpression": "@local.radio_group",
               "type": "local",
               "fieldName": "radio_group"
@@ -9126,7 +9113,6 @@
         },
         "_dynamicDependencies": {
           "@local.radio_group": [
-            "hidden",
             "hidden"
           ]
         }
@@ -9135,18 +9121,12 @@
         "type": "text",
         "name": "reply_sad",
         "value": "Reply sad",
-        "hidden": "\"@local.radio_group\"!=\"sad\" || \"@local.radio_group\"==\"{{local.radio_group}}\" ",
+        "hidden": "\"@local.radio_group\"!=\"sad\"",
         "_nested_name": "reply_sad",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.radio_group\"!=\"sad\" || \"@local.radio_group\"==\"{{local.radio_group}}\" ",
-              "matchedExpression": "@local.radio_group",
-              "type": "local",
-              "fieldName": "radio_group"
-            },
-            {
-              "fullExpression": "\"@local.radio_group\"!=\"sad\" || \"@local.radio_group\"==\"{{local.radio_group}}\" ",
+              "fullExpression": "\"@local.radio_group\"!=\"sad\"",
               "matchedExpression": "@local.radio_group",
               "type": "local",
               "fieldName": "radio_group"
@@ -9155,7 +9135,6 @@
         },
         "_dynamicDependencies": {
           "@local.radio_group": [
-            "hidden",
             "hidden"
           ]
         }
@@ -9352,9 +9331,9 @@
       {
         "name": "answer_list",
         "value": [
-          "First",
-          "Second",
-          "Third"
+          "name: name_1 | text: This is text 1",
+          "name: name_2 | text: This is text 2",
+          "name: name_3 | text: This is text 3"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list"
@@ -12338,8 +12317,24 @@
       },
       {
         "name": "timer_help",
+        "value": "Press the triangle to help you keep this discussion to @local.timer_duration minutes.",
         "type": "set_variable",
-        "_nested_name": "timer_help"
+        "_nested_name": "timer_help",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Press the triangle to help you keep this discussion to @local.timer_duration minutes.",
+              "matchedExpression": "@local.timer_duration",
+              "type": "local",
+              "fieldName": "timer_duration"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.timer_duration": [
+            "value"
+          ]
+        }
       },
       {
         "type": "text",
@@ -12365,101 +12360,65 @@
         "_nested_name": "button_3"
       },
       {
-        "type": "template",
-        "name": "widget_timer",
-        "value": "widget_timer",
-        "rows": [
-          {
-            "name": "duration",
-            "value": "@local.timer_duration",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.duration",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_duration",
-                  "matchedExpression": "@local.timer_duration",
-                  "type": "local",
-                  "fieldName": "timer_duration"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_duration": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "duration_extension",
-            "value": "@local.timer_duration_extension",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.duration_extension",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_duration_extension",
-                  "matchedExpression": "@local.timer_duration_extension",
-                  "type": "local",
-                  "fieldName": "timer_duration_extension"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_duration_extension": [
-                "value"
-              ]
-            }
-          },
-          {
-            "value": "@local.timer_title",
-            "type": "set_variable",
-            "name": "set_variable",
-            "_nested_name": "widget_timer.set_variable",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_title",
-                  "matchedExpression": "@local.timer_title",
-                  "type": "local",
-                  "fieldName": "timer_title"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_title": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "title",
-            "value": "@local.timer_help",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.title",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@local.timer_help",
-                  "matchedExpression": "@local.timer_help",
-                  "type": "local",
-                  "fieldName": "timer_help"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@local.timer_help": [
-                "value"
-              ]
-            }
-          },
-          {
-            "name": "help",
-            "type": "set_variable",
-            "_nested_name": "widget_timer.help"
+        "type": "timer",
+        "name": "timer",
+        "parameter_list": {
+          "title": "@local.timer_title",
+          "starting_minutes": "@local.timer_duration",
+          "duration_extension": "@local.timer_duration_extension",
+          "help": "@local.timer_help"
+        },
+        "_nested_name": "timer",
+        "_dynamicFields": {
+          "parameter_list": {
+            "title": [
+              {
+                "fullExpression": "@local.timer_title",
+                "matchedExpression": "@local.timer_title",
+                "type": "local",
+                "fieldName": "timer_title"
+              }
+            ],
+            "starting_minutes": [
+              {
+                "fullExpression": "@local.timer_duration",
+                "matchedExpression": "@local.timer_duration",
+                "type": "local",
+                "fieldName": "timer_duration"
+              }
+            ],
+            "duration_extension": [
+              {
+                "fullExpression": "@local.timer_duration_extension",
+                "matchedExpression": "@local.timer_duration_extension",
+                "type": "local",
+                "fieldName": "timer_duration_extension"
+              }
+            ],
+            "help": [
+              {
+                "fullExpression": "@local.timer_help",
+                "matchedExpression": "@local.timer_help",
+                "type": "local",
+                "fieldName": "timer_help"
+              }
+            ]
           }
-        ],
-        "_nested_name": "widget_timer"
+        },
+        "_dynamicDependencies": {
+          "@local.timer_title": [
+            "parameter_list.title"
+          ],
+          "@local.timer_duration": [
+            "parameter_list.starting_minutes"
+          ],
+          "@local.timer_duration_extension": [
+            "parameter_list.duration_extension"
+          ],
+          "@local.timer_help": [
+            "parameter_list.help"
+          ]
+        }
       },
       {
         "type": "template",
@@ -13427,31 +13386,6 @@
         "value": true,
         "type": "set_variable",
         "_nested_name": "display_back"
-      },
-      {
-        "type": "button",
-        "name": "button_info",
-        "value": "@global.ideas_button",
-        "hidden": true,
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "button_info",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.ideas_button",
-              "matchedExpression": "@global.ideas_button",
-              "type": "global",
-              "fieldName": "ideas_button"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.ideas_button": [
-            "value"
-          ]
-        }
       },
       {
         "type": "display_group",
@@ -18009,6 +17943,18 @@
     "status": "released",
     "rows": [
       {
+        "name": "text",
+        "value": "_text",
+        "type": "set_variable",
+        "_nested_name": "text"
+      },
+      {
+        "name": "audio",
+        "value": "_audio.mp3",
+        "type": "set_variable",
+        "_nested_name": "audio"
+      },
+      {
         "name": "text_template",
         "value": ".text_template",
         "type": "set_variable",
@@ -18022,20 +17968,69 @@
       },
       {
         "name": "relax",
+        "value": "relax_1",
         "type": "set_variable",
         "_nested_name": "relax"
       },
       {
         "name": "relax_text",
-        "value": "relax_text_1",
+        "value": "@local.relax@local.text",
         "type": "set_variable",
-        "_nested_name": "relax_text"
+        "_nested_name": "relax_text",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.relax@local.text",
+              "matchedExpression": "@local.relax",
+              "type": "local",
+              "fieldName": "relax"
+            },
+            {
+              "fullExpression": "@local.relax@local.text",
+              "matchedExpression": "@local.text",
+              "type": "local",
+              "fieldName": "text"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.relax": [
+            "value"
+          ],
+          "@local.text": [
+            "value"
+          ]
+        }
       },
       {
         "name": "relax_audio",
-        "value": "plh_audio/relax/relax_audio_1.mp3",
+        "value": "plh_audio/relax/@local.relax@local.audio",
         "type": "set_variable",
-        "_nested_name": "relax_audio"
+        "_nested_name": "relax_audio",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "plh_audio/relax/@local.relax@local.audio",
+              "matchedExpression": "@local.relax",
+              "type": "local",
+              "fieldName": "relax"
+            },
+            {
+              "fullExpression": "plh_audio/relax/@local.relax@local.audio",
+              "matchedExpression": "@local.audio",
+              "type": "local",
+              "fieldName": "audio"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.relax": [
+            "value"
+          ],
+          "@local.audio": [
+            "value"
+          ]
+        }
       },
       {
         "type": "template",
@@ -18180,7 +18175,7 @@
           },
           {
             "name": "intro_text",
-            "value": "Let’s do a 30 second relaxation activity.",
+            "value": "Let’s do a 30 second relaxation activity. ",
             "condition": "!@field.do_workshops_together",
             "type": "set_variable",
             "_nested_name": "workshop_activity.intro_text",
@@ -18230,9 +18225,24 @@
                   },
                   {
                     "name": "audio_src",
-                    "value": "plh_audio/relax/relax_audio_1.mp3",
+                    "value": "@local.relax_audio",
                     "type": "set_variable",
-                    "_nested_name": "workshop_activity.content_box.widget_audio.audio_src"
+                    "_nested_name": "workshop_activity.content_box.widget_audio.audio_src",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@local.relax_audio",
+                          "matchedExpression": "@local.relax_audio",
+                          "type": "local",
+                          "fieldName": "relax_audio"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@local.relax_audio": [
+                        "value"
+                      ]
+                    }
                   }
                 ],
                 "_nested_name": "workshop_activity.content_box.widget_audio"
@@ -18245,15 +18255,54 @@
                     "trigger": "click",
                     "action_id": "pop_up",
                     "args": [
-                      "relax_text_1"
+                      "@local.relax_text"
                     ],
-                    "_raw": "click | pop_up:relax_text_1",
-                    "_cleaned": "click | pop_up:relax_text_1"
+                    "_raw": "click | pop_up:@local.relax_text",
+                    "_cleaned": "click | pop_up:@local.relax_text"
                   }
                 ],
                 "hidden": false,
                 "type": "set_variable",
-                "_nested_name": "workshop_activity.content_box.button"
+                "_nested_name": "workshop_activity.content_box.button",
+                "_dynamicFields": {
+                  "action_list": {
+                    "0": {
+                      "args": {
+                        "0": [
+                          {
+                            "fullExpression": "@local.relax_text",
+                            "matchedExpression": "@local.relax_text",
+                            "type": "local",
+                            "fieldName": "relax_text"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | pop_up:@local.relax_text",
+                          "matchedExpression": "@local.relax_text",
+                          "type": "local",
+                          "fieldName": "relax_text"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | pop_up:@local.relax_text",
+                          "matchedExpression": "@local.relax_text",
+                          "type": "local",
+                          "fieldName": "relax_text"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "_dynamicDependencies": {
+                  "@local.relax_text": [
+                    "action_list.0.args.0",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned"
+                  ]
+                }
               }
             ],
             "_nested_name": "workshop_activity.content_box"
@@ -19325,7 +19374,6 @@
           {
             "name": "activity_title",
             "value": "@global.parent_points",
-            "__EMPTY": "placeholder",
             "type": "set_variable",
             "_nested_name": "workshop_activity.activity_title",
             "_dynamicFields": {
@@ -19347,7 +19395,6 @@
           {
             "name": "intro_text",
             "value": "Let's see how this week has been.",
-            "__EMPTY": "placeholder",
             "type": "set_variable",
             "_nested_name": "workshop_activity.intro_text"
           },
@@ -19365,7 +19412,6 @@
               {
                 "name": "top_text",
                 "value": "This week you have done...",
-                "__EMPTY": "placeholder",
                 "type": "set_variable",
                 "_nested_name": "workshop_activity.content_box.top_text"
               },
@@ -20862,6 +20908,224 @@
             "parameter_list.answer_list"
           ]
         }
+      },
+      {
+        "name": "spend_time_idea_1",
+        "value": "Walking to the shops",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_1"
+      },
+      {
+        "name": "spend_time_idea_2",
+        "value": "Get water together ",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_2"
+      },
+      {
+        "name": "spend_time_idea_3",
+        "value": "Doing a chore together",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_3"
+      },
+      {
+        "name": "spend_time_idea_4",
+        "value": "Prepare dinner",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_4"
+      },
+      {
+        "name": "spend_time_idea_5",
+        "value": "Eat breakfast/lunch/dinner",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_5"
+      },
+      {
+        "name": "spend_time_idea_6",
+        "value": "Have tea after school",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_6"
+      },
+      {
+        "name": "spend_time_idea_7",
+        "value": "Watch a T.V. show",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_7"
+      },
+      {
+        "name": "spend_time_idea_8",
+        "value": "Review homework",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_8"
+      },
+      {
+        "name": "spend_time_idea_9",
+        "value": "Chat before bedtime",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_9"
+      },
+      {
+        "name": "spend_time_idea_10",
+        "value": "Play a game/sport",
+        "type": "set_variable",
+        "_nested_name": "spend_time_idea_10"
+      },
+      {
+        "name": "answer_list",
+        "value": [
+          "name:name_1 | text:@local.spend_time_idea_1",
+          "name:name_2 | text:@local.spend_time_idea_2",
+          "name:name_3 | text:@local.spend_time_idea_3",
+          "name:name_4 | text:@local.spend_time_idea_4",
+          "name:name_5 | text:@local.spend_time_idea_5",
+          "name:name_6 | text:@local.spend_time_idea_6",
+          "name:name_7 | text:@local.spend_time_idea_7",
+          "name:name_8 | text:@local.spend_time_idea_8",
+          "name:name_9 | text:@local.spend_time_idea_9",
+          "name:name_10 | text:@local.spend_time_idea_10"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list",
+        "_dynamicFields": {
+          "value": {
+            "0": [
+              {
+                "fullExpression": "name:name_1 | text:@local.spend_time_idea_1",
+                "matchedExpression": "@local.spend_time_idea_1",
+                "type": "local",
+                "fieldName": "spend_time_idea_1"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "name:name_2 | text:@local.spend_time_idea_2",
+                "matchedExpression": "@local.spend_time_idea_2",
+                "type": "local",
+                "fieldName": "spend_time_idea_2"
+              }
+            ],
+            "2": [
+              {
+                "fullExpression": "name:name_3 | text:@local.spend_time_idea_3",
+                "matchedExpression": "@local.spend_time_idea_3",
+                "type": "local",
+                "fieldName": "spend_time_idea_3"
+              }
+            ],
+            "3": [
+              {
+                "fullExpression": "name:name_4 | text:@local.spend_time_idea_4",
+                "matchedExpression": "@local.spend_time_idea_4",
+                "type": "local",
+                "fieldName": "spend_time_idea_4"
+              }
+            ],
+            "4": [
+              {
+                "fullExpression": "name:name_5 | text:@local.spend_time_idea_5",
+                "matchedExpression": "@local.spend_time_idea_5",
+                "type": "local",
+                "fieldName": "spend_time_idea_5"
+              }
+            ],
+            "5": [
+              {
+                "fullExpression": "name:name_6 | text:@local.spend_time_idea_6",
+                "matchedExpression": "@local.spend_time_idea_6",
+                "type": "local",
+                "fieldName": "spend_time_idea_6"
+              }
+            ],
+            "6": [
+              {
+                "fullExpression": "name:name_7 | text:@local.spend_time_idea_7",
+                "matchedExpression": "@local.spend_time_idea_7",
+                "type": "local",
+                "fieldName": "spend_time_idea_7"
+              }
+            ],
+            "7": [
+              {
+                "fullExpression": "name:name_8 | text:@local.spend_time_idea_8",
+                "matchedExpression": "@local.spend_time_idea_8",
+                "type": "local",
+                "fieldName": "spend_time_idea_8"
+              }
+            ],
+            "8": [
+              {
+                "fullExpression": "name:name_9 | text:@local.spend_time_idea_9",
+                "matchedExpression": "@local.spend_time_idea_9",
+                "type": "local",
+                "fieldName": "spend_time_idea_9"
+              }
+            ],
+            "9": [
+              {
+                "fullExpression": "name:name_10 | text:@local.spend_time_idea_10",
+                "matchedExpression": "@local.spend_time_idea_10",
+                "type": "local",
+                "fieldName": "spend_time_idea_10"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.spend_time_idea_1": [
+            "value.0"
+          ],
+          "@local.spend_time_idea_2": [
+            "value.1"
+          ],
+          "@local.spend_time_idea_3": [
+            "value.2"
+          ],
+          "@local.spend_time_idea_4": [
+            "value.3"
+          ],
+          "@local.spend_time_idea_5": [
+            "value.4"
+          ],
+          "@local.spend_time_idea_6": [
+            "value.5"
+          ],
+          "@local.spend_time_idea_7": [
+            "value.6"
+          ],
+          "@local.spend_time_idea_8": [
+            "value.7"
+          ],
+          "@local.spend_time_idea_9": [
+            "value.8"
+          ],
+          "@local.spend_time_idea_10": [
+            "value.9"
+          ]
+        }
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_4",
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        },
+        "_nested_name": "combo_box_4",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list",
+                "matchedExpression": "@local.answer_list",
+                "type": "local",
+                "fieldName": "answer_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_list": [
+            "parameter_list.answer_list"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_component_variables.xlsx"
@@ -21474,6 +21738,7 @@
       {
         "type": "slider",
         "name": "slider_2",
+        "value": 3,
         "action_list": [
           {
             "trigger": "changed",
@@ -25539,21 +25804,6 @@
         "name": "text_with_double_ref_options",
         "value": "text should be what is in the comment",
         "_nested_name": "text_with_double_ref_options"
-      },
-      {
-        "type": "set_variable",
-        "name": "set_variable",
-        "_nested_name": "set_variable"
-      },
-      {
-        "type": "set_variable",
-        "name": "set_variable",
-        "_nested_name": "set_variable"
-      },
-      {
-        "type": "set_variable",
-        "name": "set_variable",
-        "_nested_name": "set_variable"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_component_variables.xlsx"
@@ -27999,11 +28249,6 @@
     "status": "released",
     "rows": [
       {
-        "type": "set_variable",
-        "name": "set_variable",
-        "_nested_name": "set_variable"
-      },
-      {
         "type": "tile_component",
         "name": "tile_example_1",
         "parameter_list": {
@@ -28169,7 +28414,7 @@
     "rows": [
       {
         "name": "help_text",
-        "value": "some help",
+        "value": "Click <img src=\"plh_images/icons/play_outline.svg\" width=\"30\" height=\"30\"> to start the timer",
         "type": "set_variable",
         "_nested_name": "help_text"
       },
@@ -30077,11 +30322,6 @@
     "flow_name": "feature_buttons",
     "status": "released",
     "rows": [
-      {
-        "type": "set_variable",
-        "name": "set_variable",
-        "_nested_name": "set_variable"
-      },
       {
         "type": "button",
         "name": "btn_example_1",
@@ -36787,7 +37027,7 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "relax_text_1",
+    "flow_name": "relax_1_text",
     "status": "released",
     "rows": [
       {
@@ -36816,7 +37056,7 @@
   {
     "flow_type": "template",
     "module": "1on1",
-    "flow_name": "relax_text_2",
+    "flow_name": "relax_2_text",
     "status": "released",
     "rows": [
       {
@@ -36851,7 +37091,7 @@
   {
     "flow_type": "template",
     "module": "praise",
-    "flow_name": "relax_text_3",
+    "flow_name": "relax_3_text",
     "status": "released",
     "rows": [
       {
@@ -36886,7 +37126,7 @@
   {
     "flow_type": "template",
     "module": "instruct",
-    "flow_name": "relax_text_4",
+    "flow_name": "relax_4_text",
     "status": "released",
     "rows": [
       {
@@ -36921,7 +37161,7 @@
   {
     "flow_type": "template",
     "module": "self_care",
-    "flow_name": "relax_text_5",
+    "flow_name": "relax_5_text",
     "status": "released",
     "rows": [
       {
@@ -36955,7 +37195,7 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "relax_text_6",
+    "flow_name": "relax_6_text",
     "status": "released",
     "rows": [
       {
@@ -36990,7 +37230,7 @@
   {
     "flow_type": "template",
     "module": "stress",
-    "flow_name": "relax_text_7",
+    "flow_name": "relax_7_text",
     "status": "released",
     "rows": [
       {
@@ -37025,7 +37265,7 @@
   {
     "flow_type": "template",
     "module": "money",
-    "flow_name": "relax_text_8",
+    "flow_name": "relax_8_text",
     "status": "released",
     "rows": [
       {
@@ -37060,7 +37300,7 @@
   {
     "flow_type": "template",
     "module": "rules",
-    "flow_name": "relax_text_9",
+    "flow_name": "relax_9_text",
     "status": "released",
     "rows": [
       {
@@ -37095,7 +37335,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "relax_text_10",
+    "flow_name": "relax_10_text",
     "status": "released",
     "rows": [
       {
@@ -37130,7 +37370,7 @@
   {
     "flow_type": "template",
     "module": "solve",
-    "flow_name": "relax_text_11",
+    "flow_name": "relax_11_text",
     "status": "released",
     "rows": [
       {
@@ -37165,7 +37405,7 @@
   {
     "flow_type": "template",
     "module": "safe",
-    "flow_name": "relax_text_12",
+    "flow_name": "relax_12_text",
     "status": "released",
     "rows": [
       {
@@ -37200,7 +37440,7 @@
   {
     "flow_type": "template",
     "module": "crisis",
-    "flow_name": "relax_text_13",
+    "flow_name": "relax_13_text",
     "status": "released",
     "rows": [
       {
@@ -37235,7 +37475,7 @@
   {
     "flow_type": "template",
     "module": "celebrate",
-    "flow_name": "relax_text_14",
+    "flow_name": "relax_14_text",
     "status": "released",
     "rows": [
       {
@@ -38666,6 +38906,16 @@
             ],
             "_raw": "uncompleted | emit:uncompleted",
             "_cleaned": "uncompleted | emit:uncompleted"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "no_mail",
+              "true"
+            ],
+            "_raw": "completed | set_field:no_mail:true",
+            "_cleaned": "completed | set_field:no_mail:true"
           }
         ],
         "rows": [
@@ -40404,13 +40654,13 @@
                   },
                   {
                     "type": "nested_properties",
-                    "name": "nav_buttons",
+                    "name": "intro_nav_buttons",
                     "rows": [
                       {
                         "name": "button_completed",
                         "value": "@global.more_button",
                         "type": "set_variable",
-                        "_nested_name": "topic_intro.listen.workshop_activity.nav_buttons.button_completed",
+                        "_nested_name": "topic_intro.listen.workshop_activity.intro_nav_buttons.button_completed",
                         "_dynamicFields": {
                           "value": [
                             {
@@ -40428,7 +40678,7 @@
                         }
                       }
                     ],
-                    "_nested_name": "topic_intro.listen.workshop_activity.nav_buttons"
+                    "_nested_name": "topic_intro.listen.workshop_activity.intro_nav_buttons"
                   },
                   {
                     "type": "nested_properties",
@@ -40639,9 +40889,105 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- Walking to the shops\n- Get water together \n- Doing a chore together \n- Prepare dinner \n- Eat breakfast/lunch/dinner \n- Have tea after school \n- Watch a T.V. show  \n- Review homework \n- Chat before bedtime \n- Play a game/sport ",
+            "value": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_1",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_1"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_2",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_2"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_3",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_3"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_4",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_4"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_5",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_5"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_6",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_6"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_7",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_7"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_8",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_8"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_9",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_9"
+                },
+                {
+                  "fullExpression": "- @global.spend_time_idea_1\n- @global.spend_time_idea_2\n- @global.spend_time_idea_3\n- @global.spend_time_idea_4\n- @global.spend_time_idea_5\n- @global.spend_time_idea_6\n- @global.spend_time_idea_7\n- @global.spend_time_idea_8\n- @global.spend_time_idea_9\n- @global.spend_time_idea_10",
+                  "matchedExpression": "@global.spend_time_idea_10",
+                  "type": "global",
+                  "fieldName": "spend_time_idea_10"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.spend_time_idea_1": [
+                "value"
+              ],
+              "@global.spend_time_idea_2": [
+                "value"
+              ],
+              "@global.spend_time_idea_3": [
+                "value"
+              ],
+              "@global.spend_time_idea_4": [
+                "value"
+              ],
+              "@global.spend_time_idea_5": [
+                "value"
+              ],
+              "@global.spend_time_idea_6": [
+                "value"
+              ],
+              "@global.spend_time_idea_7": [
+                "value"
+              ],
+              "@global.spend_time_idea_8": [
+                "value"
+              ],
+              "@global.spend_time_idea_9": [
+                "value"
+              ],
+              "@global.spend_time_idea_10": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -40716,19 +41062,135 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "Walking to the shops",
-                      "Get water together",
-                      "Doing a chore together",
-                      "Prepare dinner",
-                      "Eat breakfast/lunch/dinner",
-                      "Have tea after school",
-                      "Watch a T.V. show",
-                      "Review homework",
-                      "Chat before bedtime",
-                      "Play a game/sport"
+                      "name:name_1 | text:@global.spend_time_idea_1",
+                      "name:name_2 | text:@global.spend_time_idea_2",
+                      "name:name_3 | text:@global.spend_time_idea_3",
+                      "name:name_4 | text:@global.spend_time_idea_4",
+                      "name:name_5 | text:@global.spend_time_idea_5",
+                      "name:name_6 | text:@global.spend_time_idea_6",
+                      "name:name_7 | text:@global.spend_time_idea_7",
+                      "name:name_8 | text:@global.spend_time_idea_8",
+                      "name:name_9 | text:@global.spend_time_idea_9",
+                      "name:name_10 | text:@global.spend_time_idea_10"
                     ],
                     "type": "set_variable",
-                    "_nested_name": "question_time.workshop_activity.content_box.answer_list"
+                    "_nested_name": "question_time.workshop_activity.content_box.answer_list",
+                    "_dynamicFields": {
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "name:name_1 | text:@global.spend_time_idea_1",
+                            "matchedExpression": "@global.spend_time_idea_1",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "name:name_2 | text:@global.spend_time_idea_2",
+                            "matchedExpression": "@global.spend_time_idea_2",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_2"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "name:name_3 | text:@global.spend_time_idea_3",
+                            "matchedExpression": "@global.spend_time_idea_3",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@global.spend_time_idea_4",
+                            "matchedExpression": "@global.spend_time_idea_4",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_4"
+                          }
+                        ],
+                        "4": [
+                          {
+                            "fullExpression": "name:name_5 | text:@global.spend_time_idea_5",
+                            "matchedExpression": "@global.spend_time_idea_5",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_5"
+                          }
+                        ],
+                        "5": [
+                          {
+                            "fullExpression": "name:name_6 | text:@global.spend_time_idea_6",
+                            "matchedExpression": "@global.spend_time_idea_6",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_6"
+                          }
+                        ],
+                        "6": [
+                          {
+                            "fullExpression": "name:name_7 | text:@global.spend_time_idea_7",
+                            "matchedExpression": "@global.spend_time_idea_7",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_7"
+                          }
+                        ],
+                        "7": [
+                          {
+                            "fullExpression": "name:name_8 | text:@global.spend_time_idea_8",
+                            "matchedExpression": "@global.spend_time_idea_8",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_8"
+                          }
+                        ],
+                        "8": [
+                          {
+                            "fullExpression": "name:name_9 | text:@global.spend_time_idea_9",
+                            "matchedExpression": "@global.spend_time_idea_9",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_9"
+                          }
+                        ],
+                        "9": [
+                          {
+                            "fullExpression": "name:name_10 | text:@global.spend_time_idea_10",
+                            "matchedExpression": "@global.spend_time_idea_10",
+                            "type": "global",
+                            "fieldName": "spend_time_idea_10"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@global.spend_time_idea_1": [
+                        "value.0"
+                      ],
+                      "@global.spend_time_idea_2": [
+                        "value.1"
+                      ],
+                      "@global.spend_time_idea_3": [
+                        "value.2"
+                      ],
+                      "@global.spend_time_idea_4": [
+                        "value.3"
+                      ],
+                      "@global.spend_time_idea_5": [
+                        "value.4"
+                      ],
+                      "@global.spend_time_idea_6": [
+                        "value.5"
+                      ],
+                      "@global.spend_time_idea_7": [
+                        "value.6"
+                      ],
+                      "@global.spend_time_idea_8": [
+                        "value.7"
+                      ],
+                      "@global.spend_time_idea_9": [
+                        "value.8"
+                      ],
+                      "@global.spend_time_idea_10": [
+                        "value.9"
+                      ]
+                    }
                   },
                   {
                     "name": "reply",
@@ -43316,6 +43778,84 @@
     "status": "released",
     "rows": [
       {
+        "name": "idea_1",
+        "value": "@global.w_consequence_male_caregiver was angry",
+        "type": "set_variable",
+        "_nested_name": "idea_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver was angry",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_2",
+        "value": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+        "type": "set_variable",
+        "_nested_name": "idea_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            },
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ],
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_3",
+        "value": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+        "type": "set_variable",
+        "_nested_name": "idea_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_4",
+        "value": "The consequence was too strong",
+        "type": "set_variable",
+        "_nested_name": "idea_4"
+      },
+      {
         "type": "template",
         "name": "suggestions",
         "value": "suggestions",
@@ -43328,44 +43868,48 @@
           },
           {
             "name": "list_text",
-            "value": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
+            "value": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+                  "matchedExpression": "@local.idea_1",
+                  "type": "local",
+                  "fieldName": "idea_1"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+                  "matchedExpression": "@local.idea_2",
+                  "type": "local",
+                  "fieldName": "idea_2"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+                  "matchedExpression": "@local.idea_3",
+                  "type": "local",
+                  "fieldName": "idea_3"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_male_caregiver was angry \n- @global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain \n- The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1 \n- The consequence was too strong ",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+                  "matchedExpression": "@local.idea_4",
+                  "type": "local",
+                  "fieldName": "idea_4"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@global.w_consequence_male_caregiver": [
-                "value",
+              "@local.idea_1": [
                 "value"
               ],
-              "@global.w_consequence_teen_boy_1": [
-                "value",
+              "@local.idea_2": [
+                "value"
+              ],
+              "@local.idea_3": [
+                "value"
+              ],
+              "@local.idea_4": [
                 "value"
               ]
             }
@@ -43435,12 +43979,90 @@
                     "_nested_name": "question_time.workshop_activity.content_box.question_text"
                   },
                   {
+                    "name": "idea_1",
+                    "value": "@global.w_consequence_male_caregiver was angry",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_1",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver was angry",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_2",
+                    "value": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_2",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ],
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_3",
+                    "value": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_3",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_4",
+                    "value": "The consequence was too strong",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_4"
+                  },
+                  {
                     "name": "answer_list",
                     "value": [
-                      "@global.w_consequence_male_caregiver was angry",
-                      "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                      "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
-                      "The consequence was too strong"
+                      "name:name_1 | text:@local.idea_1",
+                      "name:name_2 | text:@local.idea_2",
+                      "name:name_3 | text:@local.idea_3",
+                      "name:name_4 | text:@local.idea_4"
                     ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
@@ -43448,44 +44070,50 @@
                       "value": {
                         "0": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver was angry",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
+                            "fullExpression": "name:name_1 | text:@local.idea_1",
+                            "matchedExpression": "@local.idea_1",
+                            "type": "local",
+                            "fieldName": "idea_1"
                           }
                         ],
                         "1": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
+                            "fullExpression": "name:name_2 | text:@local.idea_2",
+                            "matchedExpression": "@local.idea_2",
+                            "type": "local",
+                            "fieldName": "idea_2"
                           }
                         ],
                         "2": [
                           {
-                            "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
+                            "fullExpression": "name:name_3 | text:@local.idea_3",
+                            "matchedExpression": "@local.idea_3",
+                            "type": "local",
+                            "fieldName": "idea_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@local.idea_4",
+                            "matchedExpression": "@local.idea_4",
+                            "type": "local",
+                            "fieldName": "idea_4"
                           }
                         ]
                       }
                     },
                     "_dynamicDependencies": {
-                      "@global.w_consequence_male_caregiver": [
-                        "value.0",
+                      "@local.idea_1": [
+                        "value.0"
+                      ],
+                      "@local.idea_2": [
                         "value.1"
                       ],
-                      "@global.w_consequence_teen_boy_1": [
-                        "value.1",
+                      "@local.idea_3": [
                         "value.2"
+                      ],
+                      "@local.idea_4": [
+                        "value.3"
                       ]
                     }
                   },
@@ -43569,7 +44197,7 @@
                   {
                     "type": "nested_properties",
                     "name": "box_1",
-                    "value": "consequence_1",
+                    "value": "w_consequence_example_1",
                     "rows": [],
                     "_nested_name": "learn_temp.workshop_activity.content_box.box_1"
                   },
@@ -43581,14 +44209,14 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "consequence_2",
+                        "value": "w_consequence_example_2",
                         "rows": [],
                         "_nested_name": "learn_temp.workshop_activity.content_box.box_2.box_1"
                       },
                       {
                         "type": "nested_properties",
                         "name": "box_2",
-                        "value": "consequence_3",
+                        "value": "w_consequence_example_3",
                         "rows": [],
                         "_nested_name": "learn_temp.workshop_activity.content_box.box_2.box_2"
                       }
@@ -43638,7 +44266,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_1",
+    "flow_name": "w_consequence_example_1",
     "status": "released",
     "rows": [
       {
@@ -43710,14 +44338,75 @@
           {
             "name": "answer_list",
             "value": [
-              "No gadget use the next day",
-              "Take 5 minutes pause in separate part of the room",
-              "Write a letter of apology",
-              "Cannot see friends the next day",
-              "Cannot play with phone after dinner (or next hour)"
+              "name:name_1 | text:@global.negative_consequence_1",
+              "name:name_2 | text:@global.negative_consequence_2",
+              "name:name_3 | text:@global.negative_consequence_3",
+              "name:name_4 | text:@global.negative_consequence_4",
+              "name:name_5 | text:@global.negative_consequence_5"
             ],
             "type": "set_variable",
-            "_nested_name": "box_combo_box.answer_list"
+            "_nested_name": "box_combo_box.answer_list",
+            "_dynamicFields": {
+              "value": {
+                "0": [
+                  {
+                    "fullExpression": "name:name_1 | text:@global.negative_consequence_1",
+                    "matchedExpression": "@global.negative_consequence_1",
+                    "type": "global",
+                    "fieldName": "negative_consequence_1"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "name:name_2 | text:@global.negative_consequence_2",
+                    "matchedExpression": "@global.negative_consequence_2",
+                    "type": "global",
+                    "fieldName": "negative_consequence_2"
+                  }
+                ],
+                "2": [
+                  {
+                    "fullExpression": "name:name_3 | text:@global.negative_consequence_3",
+                    "matchedExpression": "@global.negative_consequence_3",
+                    "type": "global",
+                    "fieldName": "negative_consequence_3"
+                  }
+                ],
+                "3": [
+                  {
+                    "fullExpression": "name:name_4 | text:@global.negative_consequence_4",
+                    "matchedExpression": "@global.negative_consequence_4",
+                    "type": "global",
+                    "fieldName": "negative_consequence_4"
+                  }
+                ],
+                "4": [
+                  {
+                    "fullExpression": "name:name_5 | text:@global.negative_consequence_5",
+                    "matchedExpression": "@global.negative_consequence_5",
+                    "type": "global",
+                    "fieldName": "negative_consequence_5"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.negative_consequence_1": [
+                "value.0"
+              ],
+              "@global.negative_consequence_2": [
+                "value.1"
+              ],
+              "@global.negative_consequence_3": [
+                "value.2"
+              ],
+              "@global.negative_consequence_4": [
+                "value.3"
+              ],
+              "@global.negative_consequence_5": [
+                "value.4"
+              ]
+            }
           },
           {
             "name": "reply",
@@ -43785,10 +44474,10 @@
                 "trigger": "click",
                 "action_id": "pop_up",
                 "args": [
-                  "consequence_1_pop"
+                  "w_consequence_example_1_pop"
                 ],
-                "_raw": "click | pop_up:consequence_1_pop",
-                "_cleaned": "click | pop_up:consequence_1_pop"
+                "_raw": "click | pop_up:w_consequence_example_1_pop",
+                "_cleaned": "click | pop_up:w_consequence_example_1_pop"
               }
             ],
             "type": "set_variable",
@@ -43840,7 +44529,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_1_pop",
+    "flow_name": "w_consequence_example_1_pop",
     "status": "released",
     "rows": [
       {
@@ -43850,9 +44539,60 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- No gadget use the next day\nTake 5 minutes pause in separate part of the room\n- Write a letter of apology\n- Cannot see friends the next day\n- Cannot play with phone after dinner (or next hour)",
+            "value": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_1",
+                  "type": "global",
+                  "fieldName": "negative_consequence_1"
+                },
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_2",
+                  "type": "global",
+                  "fieldName": "negative_consequence_2"
+                },
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_3",
+                  "type": "global",
+                  "fieldName": "negative_consequence_3"
+                },
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_4",
+                  "type": "global",
+                  "fieldName": "negative_consequence_4"
+                },
+                {
+                  "fullExpression": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+                  "matchedExpression": "@global.negative_consequence_5",
+                  "type": "global",
+                  "fieldName": "negative_consequence_5"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.negative_consequence_1": [
+                "value"
+              ],
+              "@global.negative_consequence_2": [
+                "value"
+              ],
+              "@global.negative_consequence_3": [
+                "value"
+              ],
+              "@global.negative_consequence_4": [
+                "value"
+              ],
+              "@global.negative_consequence_5": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -43863,7 +44603,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_2",
+    "flow_name": "w_consequence_example_2",
     "status": "released",
     "rows": [
       {
@@ -43944,14 +44684,75 @@
           {
             "name": "answer_list",
             "value": [
-              "No gadget use the next day",
-              "Take 5 minutes pause in separate part of the room",
-              "Write a letter of apology",
-              "Cannot see friends the next day",
-              "Cannot play with phone after dinner (or next hour)"
+              "name:name_1 | text:@global.negative_consequence_1",
+              "name:name_2 | text:@global.negative_consequence_2",
+              "name:name_3 | text:@global.negative_consequence_3",
+              "name:name_4 | text:@global.negative_consequence_4",
+              "name:name_5 | text:@global.negative_consequence_5"
             ],
             "type": "set_variable",
-            "_nested_name": "box_combo_box.answer_list"
+            "_nested_name": "box_combo_box.answer_list",
+            "_dynamicFields": {
+              "value": {
+                "0": [
+                  {
+                    "fullExpression": "name:name_1 | text:@global.negative_consequence_1",
+                    "matchedExpression": "@global.negative_consequence_1",
+                    "type": "global",
+                    "fieldName": "negative_consequence_1"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "name:name_2 | text:@global.negative_consequence_2",
+                    "matchedExpression": "@global.negative_consequence_2",
+                    "type": "global",
+                    "fieldName": "negative_consequence_2"
+                  }
+                ],
+                "2": [
+                  {
+                    "fullExpression": "name:name_3 | text:@global.negative_consequence_3",
+                    "matchedExpression": "@global.negative_consequence_3",
+                    "type": "global",
+                    "fieldName": "negative_consequence_3"
+                  }
+                ],
+                "3": [
+                  {
+                    "fullExpression": "name:name_4 | text:@global.negative_consequence_4",
+                    "matchedExpression": "@global.negative_consequence_4",
+                    "type": "global",
+                    "fieldName": "negative_consequence_4"
+                  }
+                ],
+                "4": [
+                  {
+                    "fullExpression": "name:name_5 | text:@global.negative_consequence_5",
+                    "matchedExpression": "@global.negative_consequence_5",
+                    "type": "global",
+                    "fieldName": "negative_consequence_5"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.negative_consequence_1": [
+                "value.0"
+              ],
+              "@global.negative_consequence_2": [
+                "value.1"
+              ],
+              "@global.negative_consequence_3": [
+                "value.2"
+              ],
+              "@global.negative_consequence_4": [
+                "value.3"
+              ],
+              "@global.negative_consequence_5": [
+                "value.4"
+              ]
+            }
           },
           {
             "name": "reply",
@@ -44028,10 +44829,10 @@
                 "trigger": "click",
                 "action_id": "pop_up",
                 "args": [
-                  "consequence_1_pop"
+                  "w_consequence_example_1_pop"
                 ],
-                "_raw": "click | pop_up:consequence_1_pop",
-                "_cleaned": "click | pop_up:consequence_1_pop"
+                "_raw": "click | pop_up:w_consequence_example_1_pop",
+                "_cleaned": "click | pop_up:w_consequence_example_1_pop"
               }
             ],
             "type": "set_variable",
@@ -44083,7 +44884,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_3",
+    "flow_name": "w_consequence_example_3",
     "status": "released",
     "rows": [
       {
@@ -44155,14 +44956,75 @@
           {
             "name": "answer_list",
             "value": [
-              "Extra time with friends on weekend (1hr)",
-              "Cooking teen’s favourite meal",
-              "Extra time with phone after dinner (30 min)",
-              "Watching teen’s T.V. show together",
-              "Extra one-on-one time on Sunday (30 min)"
+              "name:name_1 | text:@global.positive_consequence_1",
+              "name:name_2 | text:@global.positive_consequence_2",
+              "name:name_3 | text:@global.positive_consequence_3",
+              "name:name_4 | text:@global.positive_consequence_4",
+              "name:name_5 | text:@global.positive_consequence_5"
             ],
             "type": "set_variable",
-            "_nested_name": "box_combo_box.answer_list"
+            "_nested_name": "box_combo_box.answer_list",
+            "_dynamicFields": {
+              "value": {
+                "0": [
+                  {
+                    "fullExpression": "name:name_1 | text:@global.positive_consequence_1",
+                    "matchedExpression": "@global.positive_consequence_1",
+                    "type": "global",
+                    "fieldName": "positive_consequence_1"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "name:name_2 | text:@global.positive_consequence_2",
+                    "matchedExpression": "@global.positive_consequence_2",
+                    "type": "global",
+                    "fieldName": "positive_consequence_2"
+                  }
+                ],
+                "2": [
+                  {
+                    "fullExpression": "name:name_3 | text:@global.positive_consequence_3",
+                    "matchedExpression": "@global.positive_consequence_3",
+                    "type": "global",
+                    "fieldName": "positive_consequence_3"
+                  }
+                ],
+                "3": [
+                  {
+                    "fullExpression": "name:name_4 | text:@global.positive_consequence_4",
+                    "matchedExpression": "@global.positive_consequence_4",
+                    "type": "global",
+                    "fieldName": "positive_consequence_4"
+                  }
+                ],
+                "4": [
+                  {
+                    "fullExpression": "name:name_5 | text:@global.positive_consequence_5",
+                    "matchedExpression": "@global.positive_consequence_5",
+                    "type": "global",
+                    "fieldName": "positive_consequence_5"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.positive_consequence_1": [
+                "value.0"
+              ],
+              "@global.positive_consequence_2": [
+                "value.1"
+              ],
+              "@global.positive_consequence_3": [
+                "value.2"
+              ],
+              "@global.positive_consequence_4": [
+                "value.3"
+              ],
+              "@global.positive_consequence_5": [
+                "value.4"
+              ]
+            }
           },
           {
             "name": "reply",
@@ -44230,10 +45092,10 @@
                 "trigger": "click",
                 "action_id": "pop_up",
                 "args": [
-                  "consequence_3_pop"
+                  "w_consequence_example_3_pop"
                 ],
-                "_raw": "click | pop_up:consequence_3_pop",
-                "_cleaned": "click | pop_up:consequence_3_pop"
+                "_raw": "click | pop_up:w_consequence_example_3_pop",
+                "_cleaned": "click | pop_up:w_consequence_example_3_pop"
               }
             ],
             "type": "set_variable",
@@ -44278,7 +45140,7 @@
   {
     "flow_type": "template",
     "module": "consequence",
-    "flow_name": "consequence_3_pop",
+    "flow_name": "w_consequence_example_3_pop",
     "status": "released",
     "rows": [
       {
@@ -44288,9 +45150,60 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- Extra time with friends on weekend (1hr)\n- Cooking teen’s favourite meal\n- Extra time with phone after dinner (30 min)\n- Watching teen’s T.V. show together\n- Extra one-on-one time on Sunday (30 min)",
+            "value": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_1",
+                  "type": "global",
+                  "fieldName": "positive_consequence_1"
+                },
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_2",
+                  "type": "global",
+                  "fieldName": "positive_consequence_2"
+                },
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_3",
+                  "type": "global",
+                  "fieldName": "positive_consequence_3"
+                },
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_4",
+                  "type": "global",
+                  "fieldName": "positive_consequence_4"
+                },
+                {
+                  "fullExpression": "- @global.positive_consequence_1\n- @global.positive_consequence_2\n- @global.positive_consequence_3\n- @global.positive_consequence_4\n- @global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_5",
+                  "type": "global",
+                  "fieldName": "positive_consequence_5"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.positive_consequence_1": [
+                "value"
+              ],
+              "@global.positive_consequence_2": [
+                "value"
+              ],
+              "@global.positive_consequence_3": [
+                "value"
+              ],
+              "@global.positive_consequence_4": [
+                "value"
+              ],
+              "@global.positive_consequence_5": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -45244,6 +46157,108 @@
     "status": "released",
     "rows": [
       {
+        "name": "idea_1",
+        "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+        "type": "set_variable",
+        "_nested_name": "idea_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            },
+            {
+              "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ],
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_2",
+        "value": "They agreed on consequences together ",
+        "type": "set_variable",
+        "_nested_name": "idea_2"
+      },
+      {
+        "name": "idea_3",
+        "value": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+        "type": "set_variable",
+        "_nested_name": "idea_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            },
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ],
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_4",
+        "value": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+        "type": "set_variable",
+        "_nested_name": "idea_4",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+              "matchedExpression": "@global.w_consequence_male_caregiver",
+              "type": "global",
+              "fieldName": "w_consequence_male_caregiver"
+            },
+            {
+              "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+              "matchedExpression": "@global.w_consequence_teen_boy_1",
+              "type": "global",
+              "fieldName": "w_consequence_teen_boy_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.w_consequence_male_caregiver": [
+            "value"
+          ],
+          "@global.w_consequence_teen_boy_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "idea_5",
+        "value": "The consequence was realistic and appropriate",
+        "type": "set_variable",
+        "_nested_name": "idea_5"
+      },
+      {
         "type": "template",
         "name": "suggestions",
         "value": "suggestions",
@@ -45256,58 +46271,57 @@
           },
           {
             "name": "list_text",
-            "value": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
+            "value": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_1",
+                  "type": "local",
+                  "fieldName": "idea_1"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_2",
+                  "type": "local",
+                  "fieldName": "idea_2"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_3",
+                  "type": "local",
+                  "fieldName": "idea_3"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_4",
+                  "type": "local",
+                  "fieldName": "idea_4"
                 },
                 {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_male_caregiver",
-                  "type": "global",
-                  "fieldName": "w_consequence_male_caregiver"
-                },
-                {
-                  "fullExpression": "- @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm \n- They agreed on consequences together\n- @global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule \n- @global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1\n- The consequence was realistic and appropriate",
-                  "matchedExpression": "@global.w_consequence_teen_boy_1",
-                  "type": "global",
-                  "fieldName": "w_consequence_teen_boy_1"
+                  "fullExpression": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+                  "matchedExpression": "@local.idea_5",
+                  "type": "local",
+                  "fieldName": "idea_5"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@global.w_consequence_teen_boy_1": [
-                "value",
-                "value",
+              "@local.idea_1": [
                 "value"
               ],
-              "@global.w_consequence_male_caregiver": [
-                "value",
-                "value",
+              "@local.idea_2": [
+                "value"
+              ],
+              "@local.idea_3": [
+                "value"
+              ],
+              "@local.idea_4": [
+                "value"
+              ],
+              "@local.idea_5": [
                 "value"
               ]
             }
@@ -45377,13 +46391,115 @@
                     "_nested_name": "question_time.workshop_activity.content_box.question_text"
                   },
                   {
+                    "name": "idea_1",
+                    "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_1",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm ",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ],
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_2",
+                    "value": "They agreed on consequences together ",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_2"
+                  },
+                  {
+                    "name": "idea_3",
+                    "value": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_3",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ],
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_4",
+                    "value": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_4",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                          "matchedExpression": "@global.w_consequence_male_caregiver",
+                          "type": "global",
+                          "fieldName": "w_consequence_male_caregiver"
+                        },
+                        {
+                          "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+                          "matchedExpression": "@global.w_consequence_teen_boy_1",
+                          "type": "global",
+                          "fieldName": "w_consequence_teen_boy_1"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@global.w_consequence_male_caregiver": [
+                        "value"
+                      ],
+                      "@global.w_consequence_teen_boy_1": [
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "idea_5",
+                    "value": "The consequence was realistic and appropriate",
+                    "type": "set_variable",
+                    "_nested_name": "question_time.workshop_activity.content_box.idea_5"
+                  },
+                  {
                     "name": "answer_list",
                     "value": [
-                      "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                      "They agreed on consequences together",
-                      "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                      "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                      "The consequence was realistic and appropriate"
+                      "name:name_1 | text:@local.idea_1",
+                      "name:name_2 | text:@local.idea_2",
+                      "name:name_3 | text:@local.idea_3",
+                      "name:name_4 | text:@local.idea_4",
+                      "name:name_5 | text:@local.idea_5"
                     ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
@@ -45391,58 +46507,61 @@
                       "value": {
                         "0": [
                           {
-                            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
-                          },
+                            "fullExpression": "name:name_1 | text:@local.idea_1",
+                            "matchedExpression": "@local.idea_1",
+                            "type": "local",
+                            "fieldName": "idea_1"
+                          }
+                        ],
+                        "1": [
                           {
-                            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
+                            "fullExpression": "name:name_2 | text:@local.idea_2",
+                            "matchedExpression": "@local.idea_2",
+                            "type": "local",
+                            "fieldName": "idea_2"
                           }
                         ],
                         "2": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
-                          {
-                            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
+                            "fullExpression": "name:name_3 | text:@local.idea_3",
+                            "matchedExpression": "@local.idea_3",
+                            "type": "local",
+                            "fieldName": "idea_3"
                           }
                         ],
                         "3": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_consequence_male_caregiver"
-                          },
+                            "fullExpression": "name:name_4 | text:@local.idea_4",
+                            "matchedExpression": "@local.idea_4",
+                            "type": "local",
+                            "fieldName": "idea_4"
+                          }
+                        ],
+                        "4": [
                           {
-                            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
-                            "matchedExpression": "@global.w_consequence_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_consequence_teen_boy_1"
+                            "fullExpression": "name:name_5 | text:@local.idea_5",
+                            "matchedExpression": "@local.idea_5",
+                            "type": "local",
+                            "fieldName": "idea_5"
                           }
                         ]
                       }
                     },
                     "_dynamicDependencies": {
-                      "@global.w_consequence_teen_boy_1": [
-                        "value.0",
-                        "value.2",
+                      "@local.idea_1": [
+                        "value.0"
+                      ],
+                      "@local.idea_2": [
+                        "value.1"
+                      ],
+                      "@local.idea_3": [
+                        "value.2"
+                      ],
+                      "@local.idea_4": [
                         "value.3"
                       ],
-                      "@global.w_consequence_male_caregiver": [
-                        "value.0",
-                        "value.2",
-                        "value.3"
+                      "@local.idea_5": [
+                        "value.4"
                       ]
                     }
                   },
@@ -45847,6 +46966,7 @@
     "rows": [
       {
         "type": "template",
+        "name": "ending",
         "value": "ending",
         "action_list": [
           {
@@ -45869,7 +46989,6 @@
           }
         ],
         "rows": [],
-        "name": "ending",
         "_nested_name": "ending"
       }
     ],
@@ -50917,10 +52036,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_instruct_talk_3_pop"
+                          "w_instruct_try_pop"
                         ],
-                        "_raw": "click | pop_up:w_instruct_talk_3_pop",
-                        "_cleaned": "click | pop_up:w_instruct_talk_3_pop"
+                        "_raw": "click | pop_up:w_instruct_try_pop",
+                        "_cleaned": "click | pop_up:w_instruct_try_pop"
                       }
                     ],
                     "hidden": false,
@@ -51021,10 +52140,10 @@
                         "trigger": "click",
                         "action_id": "pop_up",
                         "args": [
-                          "w_instruct_talk_3_pop"
+                          "w_instruct_try_pop"
                         ],
-                        "_raw": "click | pop_up:w_instruct_talk_3_pop",
-                        "_cleaned": "click | pop_up:w_instruct_talk_3_pop"
+                        "_raw": "click | pop_up:w_instruct_try_pop",
+                        "_cleaned": "click | pop_up:w_instruct_try_pop"
                       }
                     ],
                     "type": "set_variable",
@@ -51098,6 +52217,7 @@
     "rows": [
       {
         "type": "template",
+        "name": "ending",
         "value": "ending",
         "action_list": [
           {
@@ -51120,7 +52240,6 @@
           }
         ],
         "rows": [],
-        "name": "ending",
         "_nested_name": "ending"
       }
     ],
@@ -54570,6 +55689,7 @@
     "rows": [
       {
         "type": "template",
+        "name": "ending",
         "value": "ending",
         "action_list": [
           {
@@ -54592,7 +55712,6 @@
           }
         ],
         "rows": [],
-        "name": "ending",
         "_nested_name": "ending"
       }
     ],
@@ -56253,7 +57372,7 @@
               },
               {
                 "name": "text_1",
-                "value": "Try to find something every day to thank them for. Even something really small.",
+                "value": "Try to find something to thank them for every day. Even something really small.",
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_3.text_1"
               }
@@ -56539,6 +57658,7 @@
     "rows": [
       {
         "type": "template",
+        "name": "ending",
         "value": "ending",
         "action_list": [
           {
@@ -56561,7 +57681,6 @@
           }
         ],
         "rows": [],
-        "name": "ending",
         "_nested_name": "ending"
       }
     ],
@@ -59087,6 +60206,7 @@
     "rows": [
       {
         "type": "template",
+        "name": "ending",
         "value": "ending",
         "action_list": [
           {
@@ -59109,7 +60229,6 @@
           }
         ],
         "rows": [],
-        "name": "ending",
         "_nested_name": "ending"
       }
     ],
@@ -61686,10 +62805,10 @@
                     "trigger": "click",
                     "action_id": "go_to",
                     "args": [
-                      "w_safe_learn_temp"
+                      "w_safe_learn_individual_temp"
                     ],
-                    "_raw": "click | go_to:w_safe_learn_temp",
-                    "_cleaned": "click | go_to:w_safe_learn_temp"
+                    "_raw": "click | go_to:w_safe_learn_individual_temp",
+                    "_cleaned": "click | go_to:w_safe_learn_individual_temp"
                   }
                 ],
                 "hidden": false,
@@ -61891,10 +63010,10 @@
                         "trigger": "click",
                         "action_id": "go_to",
                         "args": [
-                          "w_safe_learn_temp"
+                          "w_safe_learn_individual_temp"
                         ],
-                        "_raw": "click | go_to:w_safe_learn_temp",
-                        "_cleaned": "click | go_to:w_safe_learn_temp"
+                        "_raw": "click | go_to:w_safe_learn_individual_temp",
+                        "_cleaned": "click | go_to:w_safe_learn_individual_temp"
                       }
                     ],
                     "type": "set_variable",
@@ -61974,6 +63093,7 @@
     "rows": [
       {
         "type": "template",
+        "name": "ending",
         "value": "ending",
         "action_list": [
           {
@@ -61996,7 +63116,6 @@
           }
         ],
         "rows": [],
-        "name": "ending",
         "_nested_name": "ending"
       }
     ],
@@ -66371,6 +67490,7 @@
     "rows": [
       {
         "type": "template",
+        "name": "ending",
         "value": "ending",
         "action_list": [
           {
@@ -66393,7 +67513,6 @@
           }
         ],
         "rows": [],
-        "name": "ending",
         "_nested_name": "ending"
       }
     ],
