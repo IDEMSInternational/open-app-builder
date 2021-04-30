@@ -12,18 +12,17 @@
   ></ion-icon>
   <div class="slider-container">
     <nouislider
-      (slide)="changeValue()"
-      [class.custom-slider]="!rangeBarTouched || disabled"
-      [config]="someKeyboardConfig"
+      #slider
+      (change)="changeValue($event)"
+      [class.hide-handle]="_row.value === 'no_value' || _row.value === undefined"
+      [config]="sliderConfig"
       [style.width.%]="100"
-      [disabled]="disabled"
-      [(ngModel)]="value"
+      [(ngModel)]="sliderValue"
     ></nouislider>
-    <div class="checkbox-block" (click)="disableSlider()">
+    <div class="checkbox-block" (click)="toggleNACheckbox()">
       <ion-checkbox
         class="custom-checkbox"
-        [value]="no_value"
-        [checked]="no_value"
+        [checked]="_row.value === 'no_value'"
         color="primary"
       ></ion-checkbox>
     </div>
