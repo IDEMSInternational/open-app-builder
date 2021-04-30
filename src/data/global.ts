@@ -423,7 +423,7 @@
       {
         "type": "declare_global_constant",
         "name": "spend_time_idea_1",
-        "value": "Walking to the shops"
+        "value": "Walk to the shops"
       },
       {
         "type": "declare_global_constant",
@@ -433,7 +433,7 @@
       {
         "type": "declare_global_constant",
         "name": "spend_time_idea_3",
-        "value": "Doing a chore together"
+        "value": "Do a chore together"
       },
       {
         "type": "declare_global_constant",
