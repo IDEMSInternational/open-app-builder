@@ -35904,6 +35904,12 @@
             "value"
           ]
         }
+      },
+      {
+        "value": "\\",
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/reminders_and_praise.xlsx"
@@ -38625,13 +38631,19 @@
           },
           {
             "name": "reply_less",
-            "value": "We know this is hard. We'll unlock a @global.weekly_workshop for you now that will help – it builds a foundation for all other parenting tools.",
+            "value": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to ‘’My Tips’’ (in the @global.parent_centre), so you can access it right away. \n\nBecause One-on-One Time builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
             "type": "set_variable",
             "_nested_name": "box_slider.reply_less",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "We know this is hard. We'll unlock a @global.weekly_workshop for you now that will help – it builds a foundation for all other parenting tools.",
+                  "fullExpression": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to ‘’My Tips’’ (in the @global.parent_centre), so you can access it right away. \n\nBecause One-on-One Time builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
+                  "matchedExpression": "@global.parent_centre",
+                  "type": "global",
+                  "fieldName": "parent_centre"
+                },
+                {
+                  "fullExpression": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to ‘’My Tips’’ (in the @global.parent_centre), so you can access it right away. \n\nBecause One-on-One Time builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
                   "matchedExpression": "@global.weekly_workshop",
                   "type": "global",
                   "fieldName": "weekly_workshop"
@@ -38639,6 +38651,9 @@
               ]
             },
             "_dynamicDependencies": {
+              "@global.parent_centre": [
+                "value"
+              ],
               "@global.weekly_workshop": [
                 "value"
               ]
@@ -38646,39 +38661,46 @@
           },
           {
             "name": "unlock_less",
-            "value": "@global.weekly_workshop @global.w_1on1 unlocked",
+            "value": "@global.w_1on1_tools added to \"My Tips\"",
+            "hidden": true,
             "type": "set_variable",
             "_nested_name": "box_slider.unlock_less",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "@global.weekly_workshop @global.w_1on1 unlocked",
-                  "matchedExpression": "@global.weekly_workshop",
+                  "fullExpression": "@global.w_1on1_tools added to \"My Tips\"",
+                  "matchedExpression": "@global.w_1on1_tools",
                   "type": "global",
-                  "fieldName": "weekly_workshop"
-                },
-                {
-                  "fullExpression": "@global.weekly_workshop @global.w_1on1 unlocked",
-                  "matchedExpression": "@global.w_1on1",
-                  "type": "global",
-                  "fieldName": "w_1on1"
+                  "fieldName": "w_1on1_tools"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@global.weekly_workshop": [
-                "value"
-              ],
-              "@global.w_1on1": [
+              "@global.w_1on1_tools": [
                 "value"
               ]
             }
           },
           {
             "name": "reply_greater_equal",
-            "value": "Well done! We'll give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!",
+            "value": "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!",
             "type": "set_variable",
-            "_nested_name": "box_slider.reply_greater_equal"
+            "_nested_name": "box_slider.reply_greater_equal",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!",
+                  "matchedExpression": "@global.weekly_workshop",
+                  "type": "global",
+                  "fieldName": "weekly_workshop"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.weekly_workshop": [
+                "value"
+              ]
+            }
           },
           {
             "name": "unlock_greater_equal",
@@ -38755,36 +38777,93 @@
           },
           {
             "name": "reply_less",
-            "value": "Using this app shows us that you care about your teen. \n\nYou’ll learn in our @global.weekly_workshop how to use praise as a key parenting tool.   ",
+            "value": "Using this app shows us that you care about your teen. We have added some essential tools on how to use praise to “My Tips” for quick access. You can find “My Tips” in the @global.parent_centre .\n\nIn our @global.weekly_workshop on @global.w_praise, you will learn even more on how to use this skill well.",
             "type": "set_variable",
             "_nested_name": "box_slider.reply_less",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "Using this app shows us that you care about your teen. \n\nYou’ll learn in our @global.weekly_workshop how to use praise as a key parenting tool.   ",
+                  "fullExpression": "Using this app shows us that you care about your teen. We have added some essential tools on how to use praise to “My Tips” for quick access. You can find “My Tips” in the @global.parent_centre .\n\nIn our @global.weekly_workshop on @global.w_praise, you will learn even more on how to use this skill well.",
+                  "matchedExpression": "@global.parent_centre",
+                  "type": "global",
+                  "fieldName": "parent_centre"
+                },
+                {
+                  "fullExpression": "Using this app shows us that you care about your teen. We have added some essential tools on how to use praise to “My Tips” for quick access. You can find “My Tips” in the @global.parent_centre .\n\nIn our @global.weekly_workshop on @global.w_praise, you will learn even more on how to use this skill well.",
                   "matchedExpression": "@global.weekly_workshop",
                   "type": "global",
                   "fieldName": "weekly_workshop"
+                },
+                {
+                  "fullExpression": "Using this app shows us that you care about your teen. We have added some essential tools on how to use praise to “My Tips” for quick access. You can find “My Tips” in the @global.parent_centre .\n\nIn our @global.weekly_workshop on @global.w_praise, you will learn even more on how to use this skill well.",
+                  "matchedExpression": "@global.w_praise",
+                  "type": "global",
+                  "fieldName": "w_praise"
                 }
               ]
             },
             "_dynamicDependencies": {
+              "@global.parent_centre": [
+                "value"
+              ],
               "@global.weekly_workshop": [
+                "value"
+              ],
+              "@global.w_praise": [
                 "value"
               ]
             }
           },
           {
             "name": "unlock_less",
-            "hidden": true,
+            "value": "@global.w_praise_tools added to \"My Tips\"",
             "type": "set_variable",
-            "_nested_name": "box_slider.unlock_less"
+            "_nested_name": "box_slider.unlock_less",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_praise_tools added to \"My Tips\"",
+                  "matchedExpression": "@global.w_praise_tools",
+                  "type": "global",
+                  "fieldName": "w_praise_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_praise_tools": [
+                "value"
+              ]
+            }
           },
           {
             "name": "reply_greater_equal",
-            "value": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot.",
+            "value": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @global.weekly_workshop on @global.w_praise, you will learn even more how to use this skill well.",
             "type": "set_variable",
-            "_nested_name": "box_slider.reply_greater_equal"
+            "_nested_name": "box_slider.reply_greater_equal",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @global.weekly_workshop on @global.w_praise, you will learn even more how to use this skill well.",
+                  "matchedExpression": "@global.weekly_workshop",
+                  "type": "global",
+                  "fieldName": "weekly_workshop"
+                },
+                {
+                  "fullExpression": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @global.weekly_workshop on @global.w_praise, you will learn even more how to use this skill well.",
+                  "matchedExpression": "@global.w_praise",
+                  "type": "global",
+                  "fieldName": "w_praise"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.weekly_workshop": [
+                "value"
+              ],
+              "@global.w_praise": [
+                "value"
+              ]
+            }
           },
           {
             "name": "unlock_greater_equal",
@@ -38878,15 +38957,45 @@
           },
           {
             "name": "reply_greater_equal",
-            "value": "We understand how stressful life can be. Remember that you are not alone. \n\nWe’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.",
+            "value": "We understand how stressful life can be. We’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops - but you can already access some helpful tools under “My Tips” to get you started! ",
             "type": "set_variable",
-            "_nested_name": "box_slider.reply_greater_equal"
+            "_nested_name": "box_slider.reply_greater_equal",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "We understand how stressful life can be. We’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops - but you can already access some helpful tools under “My Tips” to get you started! ",
+                  "matchedExpression": "@global.weekly_workshops",
+                  "type": "global",
+                  "fieldName": "weekly_workshops"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.weekly_workshops": [
+                "value"
+              ]
+            }
           },
           {
             "name": "unlock_greater_equal",
-            "hidden": true,
+            "value": "@global.w_stress_tools added to \"My Tips\"",
             "type": "set_variable",
-            "_nested_name": "box_slider.unlock_greater_equal"
+            "_nested_name": "box_slider.unlock_greater_equal",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_stress_tools added to \"My Tips\"",
+                  "matchedExpression": "@global.w_stress_tools",
+                  "type": "global",
+                  "fieldName": "w_stress_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_stress_tools": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "box_slider"
@@ -38969,36 +39078,51 @@
           },
           {
             "name": "reply_greater_equal",
-            "value": "Thank you for being honest. It can be so difficult to control our stress. \n\nOur workshop on managing stress and anger is in four weeks, but we will unlock it for you now so it’s available anytime you want it.  ",
+            "value": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the Weekly Workshops, but you can already access some helpful tools under “My Tips” to get started.",
+            "condition": true,
             "type": "set_variable",
             "_nested_name": "box_slider.reply_greater_equal"
           },
           {
+            "name": "reply_greater_equal",
+            "value": "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under “My Tips” in the @global.parent_centre .",
+            "condition": false,
+            "type": "set_variable",
+            "_nested_name": "box_slider.reply_greater_equal",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under “My Tips” in the @global.parent_centre .",
+                  "matchedExpression": "@global.parent_centre",
+                  "type": "global",
+                  "fieldName": "parent_centre"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.parent_centre": [
+                "value"
+              ]
+            }
+          },
+          {
             "name": "unlock_greater_equal",
-            "value": "@global.weekly_workshop @global.w_stress unlocked",
+            "value": "@global.w_stress_tools added to \"My Tips\"",
+            "condition": false,
             "type": "set_variable",
             "_nested_name": "box_slider.unlock_greater_equal",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "@global.weekly_workshop @global.w_stress unlocked",
-                  "matchedExpression": "@global.weekly_workshop",
+                  "fullExpression": "@global.w_stress_tools added to \"My Tips\"",
+                  "matchedExpression": "@global.w_stress_tools",
                   "type": "global",
-                  "fieldName": "weekly_workshop"
-                },
-                {
-                  "fullExpression": "@global.weekly_workshop @global.w_stress unlocked",
-                  "matchedExpression": "@global.w_stress",
-                  "type": "global",
-                  "fieldName": "w_stress"
+                  "fieldName": "w_stress_tools"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@global.weekly_workshop": [
-                "value"
-              ],
-              "@global.w_stress": [
+              "@global.w_stress_tools": [
                 "value"
               ]
             }
@@ -39098,13 +39222,13 @@
           },
           {
             "name": "reply_greater_equal",
-            "value": "Money stress can be overwhelming. \n\nWe have a @global.weekly_workshop on family budgeting in five weeks, but we will unlock it now to help you.",
+            "value": "Money stress can be overwhelming. \n\nWe have a @global.weekly_workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under “My Tips”!\n",
             "type": "set_variable",
             "_nested_name": "box_multi_3_temp.reply_greater_equal",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "Money stress can be overwhelming. \n\nWe have a @global.weekly_workshop on family budgeting in five weeks, but we will unlock it now to help you.",
+                  "fullExpression": "Money stress can be overwhelming. \n\nWe have a @global.weekly_workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under “My Tips”!\n",
                   "matchedExpression": "@global.weekly_workshop",
                   "type": "global",
                   "fieldName": "weekly_workshop"
@@ -39119,30 +39243,21 @@
           },
           {
             "name": "unlock_greater_equal",
-            "value": "@global.weekly_workshop @global.w_money unlocked",
+            "value": "@global.w_money_tools added to \"My Tips\"",
             "type": "set_variable",
             "_nested_name": "box_multi_3_temp.unlock_greater_equal",
             "_dynamicFields": {
               "value": [
                 {
-                  "fullExpression": "@global.weekly_workshop @global.w_money unlocked",
-                  "matchedExpression": "@global.weekly_workshop",
+                  "fullExpression": "@global.w_money_tools added to \"My Tips\"",
+                  "matchedExpression": "@global.w_money_tools",
                   "type": "global",
-                  "fieldName": "weekly_workshop"
-                },
-                {
-                  "fullExpression": "@global.weekly_workshop @global.w_money unlocked",
-                  "matchedExpression": "@global.w_money",
-                  "type": "global",
-                  "fieldName": "w_money"
+                  "fieldName": "w_money_tools"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@global.weekly_workshop": [
-                "value"
-              ],
-              "@global.w_money": [
+              "@global.w_money_tools": [
                 "value"
               ]
             }

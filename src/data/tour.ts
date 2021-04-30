@@ -23,7 +23,7 @@
       {
         "type": "step",
         "title": "Set up your @global.weekly_workshops",
-        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"plh_images/icons/play_white.svg\" width=\"30\" height=\"30\"> to tell us more about yourself, and choose when and how to do your @global.weekly_workshops  </p>",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"plh_images/icons/play_outline.svg\" width=\"30\" height=\"30\"> to tell us more about yourself, and choose when and how to do your @global.weekly_workshops  </p>",
         "template_component_name": "tile_weekly_workshops",
         "route": "template/home_screen"
       },
@@ -37,7 +37,7 @@
       {
         "type": "step",
         "title": "Do a relaxation activity",
-        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"plh_images/icons/smile_eyes_down_white.svg\" width=\"30\" height=\"30\">  to try out a quick relaxation activity </p>",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"plh_images/icons/smile_eyes_down.svg\" width=\"30\" height=\"30\">  to try out a quick relaxation activity </p>",
         "template_component_name": "tile_parent_points",
         "route": "template/home_screen"
       },
@@ -51,7 +51,7 @@
       {
         "type": "step",
         "title": "Customise your @global.parent_app",
-        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"plh_images/icons/letter_white.svg\" width=\"30\" height=\"30\"> to customise your app experience </p>",
+        "message_text": "<p>The round button appears whenever there is something ready for you to do.</p> \n\n<p>Click <img src=\"plh_images/icons/letter.svg\" width=\"30\" height=\"30\"> to customise your app experience </p>",
         "template_component_name": "tile_parent_centre",
         "route": "template/home_screen"
       },
