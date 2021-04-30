@@ -37,6 +37,8 @@ export namespace FlowTypes {
   export interface FlowTypeBase {
     flow_type: FlowType;
     flow_name: string;
+    /** allows further level of grouping within flows */
+    flow_subtype?: string;
     /** Used to hide unfinished content from the app */
     status: "draft" | "released";
     /** Events triggered from the flow that would ordinarily write to the db (e.g. emit completed) will be ignored */
@@ -46,8 +48,7 @@ export namespace FlowTypes {
     module?: string;
     /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
     data_list_name?: string;
-    // debug info
-    _xlsxPath?: string;
+    _xlsxPath?: string; // debug info
   }
 
   /**
@@ -408,8 +409,7 @@ export namespace FlowTypes {
     _dynamicFields?: IDynamicField;
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
-    /** excel sheets may supply empty columns on occasion */
-    __EMPTY?: any;
+    __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
