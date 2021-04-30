@@ -5,22 +5,36 @@
       <div class="slide">
         <img src="assets/images/privacy-policy.svg" />
         <p>
-          By proceeding you agree to our
-          <span class="link" (click)="showTerms()">App Terms</span>
+          By clicking "continue"’, you acknowledge reading and accepting the
+          <span class="link" (click)="showTerms()">Terms and Conditions</span>
           <span> and </span>
-          <span class="link" (click)="showPrivacyPolicy()">Privacy Policy</span
-          >.
+          <span class="link" (click)="showPrivacyPolicy()">Privacy Policy</span>. The most important
+          commitments are:
         </p>
+        <p align="left">
+          1. This is, and always be, a fully free app
+          <br />
+          2. We can’t know who you really are
+          <br />
+          3. Anonymised user experiences we gather will make the app better for you and others
+        </p>
+        <p>
+          These policies are still under construction. We value advice and input to improve them.
+        </p>
+        <!-- Added the dismiss() function to the click action to go to the app when clicked as the 
+          second slide is disabled-->
         <ion-button
           button
           (click)="setPrivacyConsent(true)"
+          (click)="dismiss()"
           aria-label="privacy-consent-true"
         >
-          I Agree
+          Continue
         </ion-button>
       </div>
     </ion-slide>
     <!-- Sync Slide -->
+    <!-- Temporarily disabled
     <ion-slide>
       <div class="slide">
         <img src="assets/images/sync.svg" style="padding: 20px" />
@@ -45,5 +59,6 @@
         </ion-button>
       </div>
     </ion-slide>
+  -->
   </ion-slides>
 </ion-content>
