@@ -212,7 +212,7 @@ p {
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
-  background: var(--ion-banner-primary);
+  background: var(--ion-dg-bg-default);
   .offset {
     margin-bottom: -30px !important;
   }
@@ -224,12 +224,6 @@ p {
       }
     }
   }
-  &.active {
-    background: var(--ion-banner-secondary);
-  }
-  &.passive {
-    background: var(--ion-banner-primary);
-  }
 }
 
 .banner_short {
@@ -237,8 +231,8 @@ p {
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
-  background: var(--ion-banner-primary);
   padding: 0 24px;
+  background: var(--ion-dg-bg-default);
   min-height: var(--banner-short-height);
   max-height: var(--banner-short-height);
   .offset {
@@ -257,12 +251,6 @@ p {
       }
     }
   }
-  &.active {
-    background: var(--ion-banner-secondary);
-  }
-  &.passive {
-    background: var(--ion-banner-primary);
-  }
 }
 
 .home_screen {
@@ -276,11 +264,51 @@ p {
   & .offset {
     width: 100%;
     plh-template-component:first-child {
-      margin-bottom: var(--huge-margin);
+      margin-bottom: 55px;
       padding-left: var(--large-padding);
-      max-width: 50%;
+      max-width: 15%;
+      @media (max-width: 1024px) {
+        max-width: 20%;
+      }
+      @media (max-width: 768px) {
+        max-width: 25%;
+      }
+      @media (max-width: 414px) {
+        max-width: 50%;
+      }
       @media (max-width: 375px) {
-        width: 52%;
+        max-width: 52%;
+      }
+      .plh-tmpl-comp {
+        plh-tmpl-lottie-animation {
+          position: absolute;
+          top: -144px;
+          width: 204%;
+          height: 133%;
+          left: -93px;
+          @media (max-width: 1024px) {
+            top: -200px;
+            width: 83%;
+            left: -113px;
+          }
+          @media (max-width: 769px) {
+            top: -198px;
+            width: 114%;
+          }
+          @media (max-width: 414px) {
+            top: -177px;
+            width: 211%;
+          }
+          @media (max-width: 375px) {
+            top: -172px;
+            width: 226%;
+          }
+          @media (max-width: 320px) {
+            top: -148px;
+            width: 226%;
+            left: -99px;
+          }
+        }
       }
     }
     plh-template-component:last-child {

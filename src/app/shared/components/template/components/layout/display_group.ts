@@ -69,19 +69,37 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   }
 
   setBackground() {
-    switch (this.style) {
-      case "tool_1":
-        return "#F89B2D";
-      case "tool_2":
-        return "#FF7A00";
-      case "tool_3":
-        return "#0F8AB2";
-      case "tool_4":
-        return "#096B8B";
-      case "tool_5":
-        return "#0D3F60";
-      default:
-        return "#0D4060";
+    if (this.style) {
+      switch (true) {
+        case this.style.includes("tool_1"):
+          return "#F89B2D";
+        case this.style.includes("tool_2"):
+          return "#FF7A00";
+        case this.style.includes("tool_3"):
+          return "#0F8AB2";
+        case this.style.includes("tool_4"):
+          return "#096B8B";
+        case this.style.includes("tool_5"):
+          return "#0D3F60";
+        case this.style.includes("white_box"):
+          return "#fff";
+        case this.style.includes("active_banner"):
+          return;
+        case this.style.includes("passive_banner"):
+          return;
+        case this.style.includes("banner"):
+          const currentBgColor = document.body.style
+            .getPropertyValue("--ion-background-color")
+            .toLocaleLowerCase();
+          const nameBgColor: string =
+            currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
+          return this.elRef.nativeElement.style.setProperty(
+            "background",
+            `var(--combo-box-${nameBgColor}-with-answer-bg)`
+          );
+        default:
+          break;
+      }
     }
   }
 }

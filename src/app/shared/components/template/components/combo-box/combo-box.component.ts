@@ -21,6 +21,7 @@ export class TmplComboBoxComponent
   @Input() localVariables: { [name: string]: any };
   placeholder: string;
   style: string;
+  text = "";
   customAnswerSelected: boolean = false;
   checkIfContainsDefaultStyles: boolean = false;
   destroy$ = new ReplaySubject(1);
@@ -38,6 +39,7 @@ export class TmplComboBoxComponent
       this.setCustomStyle();
     }
     this.checkTheme();
+    this.text = this._row.value;
   }
 
   getParams() {
@@ -63,8 +65,8 @@ export class TmplComboBoxComponent
     });
 
     modal.onDidDismiss().then(async (data) => {
-      const value = data?.data?.answer;
-      this._row.value = data?.data?.answer;
+      const value = data?.data?.answer?.name;
+      this.text = data?.data?.answer?.text;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
       await this.setValue(value);
       await this.triggerActions("changed");

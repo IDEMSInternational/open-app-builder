@@ -4,100 +4,104 @@
   {
     "flow_type": "data_list",
     "flow_name": "relax_list",
-    "data_list_name": "relax_list",
+    "data_list_name": "relax",
     "status": "released",
     "rows": [
       {
         "id": "relax_1",
-        "title": "Breathe",
         "task_id": "task_relax",
         "text_template": "relax_text_1",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_1.mp3"
       },
       {
         "id": "relax_2",
-        "title": "Senses",
+        "module": "1on1",
         "task_id": "task_relax",
         "text_template": "relax_text_2",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_2.mp3"
       },
       {
         "id": "relax_3",
-        "title": "Think about the day",
+        "module": "praise",
         "task_id": "task_relax",
         "text_template": "relax_text_3",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_3.mp3"
       },
       {
         "id": "relax_4",
-        "title": "Breathe",
+        "module": "instruct",
         "task_id": "task_relax",
         "text_template": "relax_text_4",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_4.mp3"
       },
       {
         "id": "relax_5",
-        "title": "Breathe",
+        "module": "self_care",
         "task_id": "task_relax",
         "text_template": "relax_text_5",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_5.mp3"
       },
       {
         "id": "relax_6",
-        "title": "Think about the day",
         "task_id": "task_relax",
         "text_template": "relax_text_6",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_6.mp3"
       },
       {
         "id": "relax_7",
-        "title": "Breathe",
+        "module": "stress",
         "task_id": "task_relax",
         "text_template": "relax_text_7",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_7.mp3"
       },
       {
         "id": "relax_8",
-        "title": "Take a moment",
+        "module": "money",
         "task_id": "task_relax",
         "text_template": "relax_text_8",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_8.mp3"
       },
       {
         "id": "relax_9",
+        "module": "rules",
         "task_id": "task_relax",
         "text_template": "relax_text_9",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp3"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_9.mp3"
       },
       {
         "id": "relax_10",
+        "module": "consequence",
         "task_id": "task_relax",
         "text_template": "relax_text_10",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp4"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_10.mp3"
       },
       {
         "id": "relax_11",
+        "module": "solve",
         "task_id": "task_relax",
         "text_template": "relax_text_11",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp5"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_11.mp3"
       },
       {
         "id": "relax_12",
+        "module": "safe",
         "task_id": "task_relax",
         "text_template": "relax_text_12",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp6"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_12.mp3"
       },
       {
         "id": "relax_13",
+        "module": "crisis",
         "task_id": "task_relax",
         "text_template": "relax_text_13",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp7"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_13.mp3"
       },
       {
         "id": "relax_14",
+        "module": "celebrate",
         "task_id": "task_relax",
         "text_template": "relax_text_14",
-        "audio_asset": "assets/plh_assets/plh_audio/sample.mp8"
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_audio_14.mp3"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_relax.xlsx"
@@ -160,16 +164,13 @@
         "comments": "This text should be accessible in templates via @data.example.example1.text"
       },
       {
-        "id": "example2",
-        "value": "name:name_var_1 | text:Option 1, name:name_var_2 | text: Option 2"
-      },
-      {
         "id": "example3",
         "value_list": [
           "name:name_var_1 | text:Option 1",
           "name:name_var_2 | text: Option 2"
         ],
-        "text": "any arbritary fields can be accessed"
+        "text": "any fields can be accessed",
+        "comments": "If a column ends in _list it will be parsed as an array"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx"

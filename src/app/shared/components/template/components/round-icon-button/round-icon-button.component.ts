@@ -35,6 +35,7 @@ export class RoundIconButtonComponent
   buttonAlign: string;
   isHomeScreen: boolean = false;
   isCustomIcon: boolean = false;
+  assetsPrefix = "/assets/plh_assets/";
   constructor(private elRef: ElementRef) {
     super();
   }
@@ -65,5 +66,10 @@ export class RoundIconButtonComponent
     this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
     this.isHomeScreen = this.style.includes("home_screen");
     this.isCustomIcon = this.icon_src.includes("/");
+  }
+
+  getPathImg(iconSrc: string): string {
+    const src = this.assetsPrefix + iconSrc;
+    return src.replace("//", "/");
   }
 }

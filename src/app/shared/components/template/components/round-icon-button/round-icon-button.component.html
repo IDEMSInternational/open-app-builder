@@ -8,9 +8,8 @@
     <ion-icon
       [name]="icon_src"
       [style.place-items]="text ? 'flex-end' : 'center'"
-      appendStyleSvg
-      [isCustomIcon]="isCustomIcon"
-      [src]="icon_src"
+      [style.margin-top]="text ? '5px' : '0'"
+      [src]="isCustomIcon ? getPathImg(icon_src) : icon_src"
     ></ion-icon>
     <div *ngIf="text">{{ text }}</div>
   </ion-tab-button>

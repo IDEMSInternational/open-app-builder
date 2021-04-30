@@ -15,7 +15,7 @@ $secondary-light: color.change($secondary, $lightness: 80%);
 $secondary-lighter: color.change($secondary, $lightness: 95%);
 
 $tertiary: hsl(47, 100%, 92%);
-$some: hsl(204, 88%, 94%);
+$quaternary: hsl(204, 88%, 94%);
 $light: #ffffff;
 $dark: #00000040;
 $worning: hsl(10, 81%, 49%);
@@ -42,7 +42,7 @@ $horizontal: 90deg;
   --large-margin: 24px;
   --largest-margin: 30px;
   --huge-margin: 40px;
-  --ion-main-bg-passive: #{$some};
+  --ion-main-bg-passive: #{$quaternary};
   --ion-main-bg-active: #{$tertiary};
   --ion-border-standard: 2px solid #{$primary};
   --border-dashed: #{$border-dashed};
@@ -96,18 +96,28 @@ $horizontal: 90deg;
   // combo box
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
   --combo-box-font-size-standard: 20px;
-
-  --combo-box-active-no-answer-bg: #fff;
-  --combo-box-active-with-answer-bg: linear-gradient(179.77deg, #ffe895 34.6%, #fbc70f 105.68%);
-
+  --combo-box-active-no-answer-bg: var(--ion-color-primary-contrast);
   --combo-box-passive-no-answer-bg: transparent;
-  --combo-box-passive-with-answer-bg: linear-gradient(179.77deg, #b7e3ff 34.6%, #029eff 105.68%);
-
   --combo-box-no-answer-bg: transparent;
   --combo-box-with-answer-bg: transparent;
-  // radio-group
-  --radio-group-active-bg: linear-gradient(179.77deg, #ffe895 34.6%, #fbc70f 105.68%);
-  --radio-group-passive-bg: linear-gradient(179.77deg, #b7e3ff 34.6%, #029eff 105.68%);
+
+  --combo-box-gradient-active-start: #{color.adjust($tertiary, $lightness: -13%)};
+  --combo-box-gradient-active-end: #{color.adjust($tertiary, $saturation: -3%, $lightness: -40%)};
+
+  --combo-box-gradient-passive-start: #{color.adjust($quaternary, $saturation: 12%, $lightness: -8%)};
+  --combo-box-gradient-passive-end: #{color.adjust($quaternary, $saturation: 12%, $lightness: -44%)};
+
+  --combo-box-active-with-answer-bg: linear-gradient(
+    #{$vertical},
+    var(--combo-box-gradient-active-start) 34.6%,
+    var(--combo-box-gradient-active-end) 105.68%
+  );
+  --combo-box-passive-with-answer-bg: linear-gradient(
+    #{$vertical},
+    var(--combo-box-gradient-passive-start) 34.6%,
+    var(--combo-box-gradient-passive-end) 105.68%
+  );
+
   //* Help icon **/
   --help-icon-standard-size: 35px;
   --help-icon-small-size: 30px;
@@ -120,12 +130,12 @@ $horizontal: 90deg;
   --tool-four-bg: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 8%)}; //#096A8B
   --tool-five-bg: var(--ion-color-primary);
   //BUTTONS
-  --ion-play-btn-default-bg: hsl(193, 100%, 40%);
+  --ion-btn-control-bg: #{color.adjust($primary, $saturation: -3%, $lightness: 31%)}; //#2B99DE
   --ion-btn-tmpl-components-size: 64px;
-  --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)};
-  --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)};
-  --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)};
-  --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)};
+  --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
+  --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
+  --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)}; //#FE8E27
+  --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)}; //#C35E00
   --ion-btn-primary: linear-gradient(
     #{$vertical},
     var(--ion-gradient-primary-start) 0.43%,
@@ -138,7 +148,7 @@ $horizontal: 90deg;
   );
 
   //OPTION BUTTONS
-  --ion-gradient-primary-option-start: #{color.adjust($primary, $saturation: 8%, $lightness: 17%)};
+  --ion-gradient-primary-option-start: #{color.adjust($primary, $saturation: 8%, $lightness: 17%)}; //#0F8AB2
   --ion-gradient-primary-option-end: #{$primary};
 
   --ion-gradient-option-btn: linear-gradient(
@@ -153,17 +163,17 @@ $horizontal: 90deg;
       $hue: 17,
       $saturation: 5%,
       $lightness: 14%
-    )};
+    )}; //#FFE16A
   --ion-banner-gradient-secondary-end: #{color.adjust(
       $secondary,
       $hue: 8,
       $saturation: 5%,
       $lightness: 3%
-    )};
+    )}; //#FFB833
 
-  --ion-banner-gradient-primary-start: #{color.adjust($primary, $saturation: 19%, $lightness: 64%)};
-  --ion-banner-gradient-primary-middle: #{color.adjust($primary, $saturation: 24%, $lightness: 48%)};
-  --ion-banner-gradient-primary-end: #{color.adjust($primary, $saturation: 17%, $lightness: 26%)};
+  --ion-banner-gradient-primary-start: #{color.adjust($primary, $saturation: 19%, $lightness: 64%)}; //#B3EDFD
+  --ion-banner-gradient-primary-middle: #{color.adjust($primary, $saturation: 24%, $lightness: 48%)}; //#60DDFF
+  --ion-banner-gradient-primary-end: #{color.adjust($primary, $saturation: 17%, $lightness: 26%)}; //#09B9E9
 
   --ion-banner-secondary: linear-gradient(
     #{$vertical},
@@ -178,17 +188,19 @@ $horizontal: 90deg;
   );
   //ACCORDION
   --accordion-section-padding: var(--large-padding) 0 var(--large-padding) 0;
-  --ion-accordion-gradient-start: #{color.adjust(
-      $primary,
-      $hue: -8,
-      $saturation: 8%,
-      $lightness: 17%
-    )};
-  --ion-accordion-gradient-end: var(--ion-color-primary);
+  --ion-accordion-status-bg-start: #{color.adjust($primary, $saturation: -3%, $lightness: 31%)};
+  --ion-accordion-status-bg-end: #{color.adjust($primary, $saturation: 13%, $lightness: 12%)};
+  --ion-accrodion-status-gradient: linear-gradient(
+    180deg,
+    var(--ion-accordion-status-bg-start) 0%,
+    var(--ion-accordion-status-bg-end) 100%
+  );
+  --ion-accordion-gradient-start: #{color.adjust($primary, $saturation: 14%, $lightness: 65%)};
+  --ion-accordion-gradient-end: #{color.adjust($primary, $saturation: 14%, $lightness: 29%)};
   --ion-accordion-bg: linear-gradient(
-    #{$vertical},
-    var(--ion-accordion-gradient-start) 28.12%,
-    var(--ion-accordion-gradient-end) 100%
+    179.77deg,
+    var(--ion-accordion-gradient-start) 34.6%,
+    var(--ion-accordion-gradient-end) 105.68%
   );
   --ion-accordion-progress-gradient-primery-start: #{color.adjust(
       $primary,
@@ -215,94 +227,108 @@ $horizontal: 90deg;
     var(--ion-accordion-progress-gradient-secondary-end) 102.14%
   );
   //HOME SCREEN
-  --home-screen-light-gradient-start: #{color.adjust(
-      $primary,
-      $hue: -10,
-      $saturation: 19%,
-      $lightness: 64%
-    )};
-  --home-screen-light-gradient-end: #{color.adjust(
-      $primary,
-      $hue: -10,
-      $saturation: 17%,
-      $lightness: 22%
-    )};
-  --home-screen-shade-gradient-start: #{color.adjust(
-      $primary,
-      $hue: -10,
-      $saturation: -4%,
-      $lightness: 45%
-    )};
-  --home-screen-shade-gradient-end: #{color.adjust(
-      $primary,
-      $hue: -10,
-      $saturation: 14%,
-      $lightness: 4%
-    )};
-  --home-screen-dark-gradient-start: #{color.adjust(
-      $primary,
-      $hue: -10,
-      $saturation: 11%,
-      $lightness: 16%
-    )};
-  --home-screen-dark-gradient-end: #{color.adjust(
-      $primary,
-      $hue: -10,
-      $saturation: 14%,
-      $lightness: -11%
-    )};
+  --home-screen-light-gradient-start: #{color.adjust($primary, $saturation: 12%, $lightness: 62%)}; //#ABDEFE
+  --home-screen-light-gradient-end: #{color.adjust($primary, $saturation: 12%, $lightness: 17%)}; //#0277C0
+  --home-screen-shade-gradient-start: #{color.adjust($primary, $saturation: 17%, $lightness: 24%)}; //#088BDD
+  --home-screen-shade-gradient-end: #{color.adjust($primary, $saturation: 17%, $lightness: 3%)}; //#044974
+  --home-screen-dark-gradient-start: #{color.adjust($primary, $saturation: 16%, $lightness: 9%)}; //#065E95
+  --home-screen-dark-gradient-end: #{color.adjust($primary, $saturation: 14%, $lightness: -9%)}; //#00263E
   --home-screen-light-bg: linear-gradient(
     to right,
     var(--home-screen-light-gradient-start),
     var(--home-screen-light-gradient-end)
   );
   --home-screen-shade-bg: linear-gradient(
-    168.11deg,
+    #{$horizontal},
     var(--home-screen-shade-gradient-start) 36%,
     var(--home-screen-shade-gradient-end) 111.65%
   );
   --home-screen-dark-bg: linear-gradient(
-    172.6deg,
+    #{$horizontal},
     var(--home-screen-dark-gradient-start) 20.92%,
     var(--home-screen-dark-gradient-end) 96.06%
   );
   //RADIO GROUP
-  --radio-group-gradient-primary-start: #{color.adjust(
-      $primary,
-      $hue: -8,
-      $saturation: 8%,
-      $lightness: 17%
+  --radio-group-gradient-active-start: #{color.adjust($tertiary, $lightness: -13%)};
+  --radio-group-gradient-active-end: #{color.adjust($tertiary, $saturation: -3%, $lightness: -40%)};
+
+  --radio-group-gradient-passive-start: #{color.adjust(
+      $quaternary,
+      $saturation: 12%,
+      $lightness: -8%
     )};
-  --radio-group-gradient-primary-end: #{$primary};
-  --radio-group-gradient-secondary-start: #{color.adjust(
-      $secondary,
-      $hue: 8,
-      $saturation: 5%,
-      $lightness: 3%
+  --radio-group-gradient-passive-end: #{color.adjust(
+      $quaternary,
+      $saturation: 12%,
+      $lightness: -44%
     )};
-  --radio-group-gradient-secondary-end: #{$secondary};
+
   --radio-group-gradient-secondary: linear-gradient(
-    168.87deg,
-    var(--radio-group-gradient-secondary-start) 28.12%,
-    var(--radio-group-gradient-secondary-end) 100%
+    #{$vertical},
+    var(--radio-group-gradient-active-start) 34.6%,
+    var(--radio-group-gradient-active-end) 105.68%
   );
   --radio-group-gradient-primary: linear-gradient(
-    168.87deg,
-    var(--radio-group-gradient-primary-start) 28.12%,
-    var(--radio-group-gradient-primary-end) 100%
+    #{$vertical},
+    var(--radio-group-gradient-passive-start) 34.6%,
+    var(--radio-group-gradient-passive-end) 105.68%
   );
+  --radio-group-active-bg: var(--radio-group-gradient-secondary);
+  --radio-group-passive-bg: var(--radio-group-gradient-primary);
   // ROUND ICON BUTTON
-  --button-icon-secondary-light: #{color.adjust($tertiary, $lightness: -42%)};
-  --button-icon-secondary: var(--ion-color-secondary);
-  --button-icon-secondary-dark: #{color.adjust($secondary, $lightness: -7%)};
+  --round-icon-button-light: #{color.adjust($tertiary, $lightness: -42%)}; //#FFCA41
+  --round-icon-button: var(--ion-color-secondary); //#F49D04
+  --round-icon-button-dark: #{color.adjust($secondary, $lightness: -7%)}; //#F87023
+
+  // POINTS ITEM
+  --points-item-bg: #{color.adjust($quaternary, $saturation: 12%, $lightness: -9%)}; //#B2E2FF
+
+  // TILES
+  --tile-primary-light-gradient-start: #{color.adjust(
+      $quaternary,
+      $saturation: 6%,
+      $lightness: -15%
+    )}; // #97d5fc
+  --tile-primary-light-gradient-end: #{color.adjust($quaternary, $saturation: 12%, $lightness: -44%)}; // #009dff;
+  --tile-primary-light-gradient: linear-gradient(
+    179.77deg,
+    var(--tile-primary-light-gradient-start) 34.6%,
+    var(--tile-primary-light-gradient-end) 105.68%
+  );
+
+  --tile-primary-gradient-start: #{color.adjust($primary, $saturation: 17%, $lightness: 39%)}; // #3aaff8
+  --tile-primary-gradient-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; // #13669a
+  --tile-primary-gradient: linear-gradient(
+    170.54deg,
+    var(--tile-primary-gradient-start) 0.43%,
+    var(--tile-primary-gradient-end) 74.07%
+  );
+
+  --tile-secondary-light-gradient-start: #{color.adjust(
+      $tertiary,
+      $saturation: -1%,
+      $lightness: -27%
+    )}; // #fed84d
+  --tile-secondary-light-gradient-end: #{color.adjust($tertiary, $lightness: -47%)}; // #e6b400
+  --tile-secondary-light-gradient: linear-gradient(
+    168.87deg,
+    var(--tile-secondary-light-gradient-start) 28.12%,
+    var(--tile-secondary-light-gradient-end) 100%
+  );
+
+  --tile-secondary-gradient-start: #{color.adjust($secondary, $saturation: 4%)}; // #fe9525
+  --tile-secondary-gradient-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)}; // #c26400
+  --tile-secondary-gradient: linear-gradient(
+    168.87deg,
+    var(--tile-secondary-gradient-start) 28.12%,
+    var(--tile-secondary-gradient-end) 100%
+  );
+
   --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
   --ion-color-slider: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
 
   --ion-dg-bg-default: var(--ion-banner-primary);
   --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};
-
-  --ion-background-passive: #{some};
-  --ion-background-active: #{some};
 
   --ion-color-primary: #{$primary};
   --ion-color-primary-light: #{$primary-light};
@@ -322,12 +348,14 @@ $horizontal: 90deg;
   --ion-color-secondary-rgb: 243, 214, 104;
   --ion-color-secondary-tint: #f4da77;
 
-  --ion-color-tertiary: #00a1cd;
+  --ion-color-tertiary: #{$tertiary};
   --ion-color-tertiary-rgb: 0, 161, 205;
   --ion-color-tertiary-contrast: #ffffff;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
   --ion-color-tertiary-shade: #008eb4;
   --ion-color-tertiary-tint: #1aaad2;
+
+  --ion-color-quaternary: #{$quaternary};
 
   --ion-color-success: #2dd36f;
   --ion-color-success-rgb: 45, 211, 111;
@@ -350,7 +378,7 @@ $horizontal: 90deg;
   --ion-color-danger-shade: #cf3c4f;
   --ion-color-danger-tint: #ed576b;
 
-  --ion-color-dark: #222428;
+  --ion-color-dark: #{$dark};
   --ion-color-dark-rgb: 34, 36, 40;
   --ion-color-dark-contrast: #ffffff;
   --ion-color-dark-contrast-rgb: 255, 255, 255;

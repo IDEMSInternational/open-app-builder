@@ -134,7 +134,7 @@
       {
         "type": "declare_global_constant",
         "name": "help_icon",
-        "value": "plh_images/parent_centre/hug_heart_white.svg",
+        "value": "plh_images/icons/hug_heart_white.svg",
         "comments": "placeholder"
       },
       {
@@ -145,7 +145,7 @@
       {
         "type": "declare_global_constant",
         "name": "essential_tools_icon",
-        "value": "plh_images/parent_centre/light_bulb_white.svg",
+        "value": "plh_images/icons/light_bulb_white.svg",
         "comments": "placeholder"
       },
       {
@@ -156,7 +156,7 @@
       {
         "type": "declare_global_constant",
         "name": "covid_icon",
-        "value": "plh_images/parent_centre/ask_white.svg",
+        "value": "plh_images/icons/ask_question_white.svg",
         "comments": "placeholder"
       },
       {
@@ -167,7 +167,7 @@
       {
         "type": "declare_global_constant",
         "name": "relax_and_activities_icon",
-        "value": "plh_images/parent_centre/smile_white.svg",
+        "value": "plh_images/icons/smile_eyes_up_white.svg",
         "comments": "placeholder"
       },
       {
@@ -178,7 +178,7 @@
       {
         "type": "declare_global_constant",
         "name": "extra_icon",
-        "value": "plh_images/parent_centre/info_circle_white.svg",
+        "value": "plh_images/icons/info_white.svg",
         "comments": "placeholder"
       },
       {
@@ -189,7 +189,7 @@
       {
         "type": "declare_global_constant",
         "name": "support_contacts_icon",
-        "value": "plh_images/parent_centre/hands_carrying_heart_white.svg",
+        "value": "plh_images/icons/hands_support_heart_white.svg",
         "comments": "placeholder"
       },
       {
@@ -200,7 +200,7 @@
       {
         "type": "declare_global_constant",
         "name": "evidence_base_icon",
-        "value": "plh_images/parent_centre/paper_stack_white.svg",
+        "value": "plh_images/icons/documents_white.svg",
         "comments": "placeholder"
       },
       {
@@ -211,11 +211,11 @@
       {
         "type": "declare_global_constant",
         "name": "technical_support_icon",
-        "value": "plh_images/parent_centre/info_phone_white.svg",
+        "value": "plh_images/icons/info_phone_white.svg",
         "comments": "placeholder"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/navigation_templates/global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_centre_templates/global_parent_centre.xlsx"
   },
   {
     "flow_type": "global",
@@ -417,6 +417,122 @@
   },
   {
     "flow_type": "global",
+    "flow_name": "spend_time_ideas",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_1",
+        "value": "Walk to the shops"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_2",
+        "value": "Get water together "
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_3",
+        "value": "Do a chore together"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_4",
+        "value": "Prepare dinner"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_5",
+        "value": "Eat breakfast/lunch/dinner"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_6",
+        "value": "Have tea after school"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_7",
+        "value": "Watch a T.V. show"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_8",
+        "value": "Review homework"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_9",
+        "value": "Chat before bedtime"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "spend_time_idea_10",
+        "value": "Play a game/sport"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_suggestions.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "consequences",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "negative_consequence_1",
+        "value": "No gadget use the next day"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "negative_consequence_2",
+        "value": "Take 5 minutes pause in separate part of the room"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "negative_consequence_3",
+        "value": "Write a letter of apology"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "negative_consequence_4",
+        "value": "Cannot see friends the next day"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "negative_consequence_5",
+        "value": "Cannot play with phone after dinner (or next hour)"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "positive_consequence_1",
+        "value": "Extra time with friends on weekend (1hr)"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "positive_consequence_2",
+        "value": "Cooking teen’s favourite meal"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "positive_consequence_3",
+        "value": "Extra time with phone after dinner (30 min)"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "positive_consequence_4",
+        "value": "Watching teen’s T.V. show together"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "positive_consequence_5",
+        "value": "Extra one-on-one time on Sunday (30 min)"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_suggestions.xlsx"
+  },
+  {
+    "flow_type": "global",
     "flow_name": "workshop_titles",
     "status": "released",
     "rows": [
@@ -433,7 +549,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_1on1",
-        "value": "One-on-One Time"
+        "value": "One-on-One Time",
+        "comments": "combo boxes updated"
       },
       {
         "type": "declare_global_constant",
@@ -493,7 +610,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_consequence",
-        "value": "Calm Consequences"
+        "value": "Calm Consequences",
+        "comments": "combo boxes updated"
       },
       {
         "type": "declare_global_constant",
@@ -533,7 +651,8 @@
       {
         "type": "declare_global_constant",
         "name": "w_celebrate",
-        "value": "Celebration and Next Steps"
+        "value": "Celebration and Next Steps",
+        "comments": "combo boxes updated"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_workshops.xlsx"
@@ -1059,7 +1178,7 @@
         "value": "Group"
       },
       {
-        "type": "declare_field_default",
+        "type": "declare_global_constant",
         "name": "together_alternative",
         "value": "In my group"
       },
@@ -1069,7 +1188,7 @@
         "value": "Me"
       },
       {
-        "type": "declare_field_default",
+        "type": "declare_global_constant",
         "name": "individual_alternative",
         "value": "On my own"
       },
@@ -1091,7 +1210,7 @@
       {
         "type": "declare_field_default",
         "name": "workshop_day",
-        "value": "Friday"
+        "value": "friday"
       },
       {
         "type": "declare_field_default",
