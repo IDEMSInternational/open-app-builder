@@ -188,8 +188,8 @@ $horizontal: 90deg;
   );
   //ACCORDION
   --accordion-section-padding: var(--large-padding) 0 var(--large-padding) 0;
-  --ion-accordion-status-bg-start: #{color.adjust($primary, $saturation: -3%, $lightness: 31%)};
-  --ion-accordion-status-bg-end: #{color.adjust($primary, $saturation: 13%, $lightness: 12%)};
+  --ion-accordion-status-bg-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
+  --ion-accordion-status-bg-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
   --ion-accrodion-status-gradient: linear-gradient(
     180deg,
     var(--ion-accordion-status-bg-start) 0%,
