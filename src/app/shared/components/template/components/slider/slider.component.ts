@@ -8,6 +8,7 @@ import {
   getStringParamFromTemplateRow,
 } from "../../../../utils";
 import { NouisliderComponent } from "ng2-nouislider";
+import { Options } from "nouislider";
 
 @Component({
   selector: "plh-slider-new",
@@ -35,7 +36,7 @@ export class TmplSliderComponent
   labels_count: number | null = 8;
 
   // Note - not all config options are actually supported by ng2-nouislider (need to dig into code to see what is)
-  sliderConfig: noUiSlider.Options = {
+  sliderConfig: Options = {
     connect: true,
     start: 0,
     tooltips: true,
