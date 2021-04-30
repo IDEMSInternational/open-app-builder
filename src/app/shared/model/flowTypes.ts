@@ -48,9 +48,7 @@ export namespace FlowTypes {
     module?: string;
     /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
     data_list_name?: string;
-
     _xlsxPath?: string; // debug info
-    __EMPTY?: string; // empty cells (can be removed after pr 679 merged)
   }
 
   /**
@@ -411,6 +409,7 @@ export namespace FlowTypes {
     _dynamicFields?: IDynamicField;
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
+    __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
