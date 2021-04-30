@@ -7,7 +7,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-image",
   template: `
-    <div class="tmpl-image-container" [class]="style">
+    <div class="tmpl-image-container margin-t-regular" [class]="style">
       <img *ngIf="imageSrc" [src]="imageSrc" />
     </div>
   `,
@@ -37,7 +37,6 @@ export class TmplImageComponent extends TemplateBaseComponent implements OnInit 
         .toPromise()
         .then(() => {
           this.imageSrc = this.assetsPrefix + r.value;
-          this.style = r.parameter_list.style || "";
         })
         .catch(() => {
           this.imageSrc = r.value.replace("//", "/");
