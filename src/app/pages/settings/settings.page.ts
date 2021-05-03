@@ -75,6 +75,10 @@ export class SettingsPage {
     this.router.navigateByUrl("/template/workshop_options_page");
   }
 
+  openUnlockWorkshops() {
+    this.router.navigateByUrl("/template/workshop_unlock");
+  }
+
   navigateByUrl(url: string) {
     this.router.navigateByUrl(url);
   }
