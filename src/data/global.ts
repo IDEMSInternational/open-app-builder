@@ -546,6 +546,74 @@
   },
   {
     "flow_type": "global",
+    "flow_name": "tips_disabled",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_field_default",
+        "name": "w_self_care_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_1on1_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_praise_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_instruct_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_stress_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_money_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_rules_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_consequence_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_solve_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_safe_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_crisis_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_celebrate_tools_disabled",
+        "value": true
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_suggestions.xlsx"
+  },
+  {
+    "flow_type": "global",
     "flow_name": "workshop_titles",
     "status": "released",
     "rows": [
