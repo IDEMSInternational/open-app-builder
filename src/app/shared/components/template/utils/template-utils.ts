@@ -36,7 +36,7 @@ function mergeNestedTemplateRows(
       mergedRow = { ...secondaryRow, ...primaryRow };
     }
     if (mergedRow.rows) {
-      mergedRow.rows = mergeNestedTemplateRows(primaryRow.rows, secondaryRow.rows);
+      mergedRow.rows = mergeNestedTemplateRows(primaryRow?.rows, secondaryRow.rows);
     }
     merged.push(mergedRow);
   });
