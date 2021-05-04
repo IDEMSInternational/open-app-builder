@@ -533,6 +533,19 @@
   },
   {
     "flow_type": "global",
+    "flow_name": "survey_completed",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_field_default",
+        "name": "survey_completed",
+        "value": false
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_suggestions.xlsx"
+  },
+  {
+    "flow_type": "global",
     "flow_name": "workshop_titles",
     "status": "released",
     "rows": [
@@ -540,6 +553,11 @@
         "type": "declare_global_constant",
         "name": "w_self_care",
         "value": "Welcome and Self-Care"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_self_care_only",
+        "value": "Self-Care"
       },
       {
         "type": "declare_global_constant",
@@ -959,7 +977,7 @@
       {
         "type": "declare_global_constant",
         "name": "done_button",
-        "value": "Done! "
+        "value": "Next"
       },
       {
         "type": "declare_global_constant",
@@ -1041,7 +1059,7 @@
       },
       {
         "type": "declare_field_default",
-        "name": "w_self_care_status",
+        "name": "w_self_care_completion_status",
         "value": "uncompleted"
       },
       {
