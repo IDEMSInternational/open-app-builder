@@ -19,6 +19,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   is_play_icon: boolean;
   windowWidth: number;
   scaleFactor: number = 1;
+  isParentPointStyle = false;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
     this.getScaleFactor();
@@ -42,6 +43,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
     this.value = this._row.value;
     this.windowWidth = window.innerWidth;
     this.style = getStringParamFromTemplateRow(this._row, "style", "quick_start");
+    this.isParentPointStyle = this._row.parameter_list?.style.includes("parent_point");
     this.icon_result = this.getPathImg();
     this.is_play_icon = this.isPlayIcon(this.icon_src);
   }
@@ -56,7 +58,10 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   }
 
   getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / 400 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
+    this.scaleFactor =
+      this.windowWidth / (this.isParentPointStyle ? 470 : 400) > 1
+        ? 1
+        : this.windowWidth / (((this.isParentPointStyle ? 220 : 200) + 20) * 2);
     return this.scaleFactor;
   }
 }
