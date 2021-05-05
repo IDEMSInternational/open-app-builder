@@ -57,6 +57,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
 
   ngOnInit() {
     this.getParams();
+    this.setStyleForTile();
   }
 
   clickDisplayGroup() {
@@ -66,6 +67,14 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
+  }
+
+  setStyleForTile(): void {
+    if (this._row.parameter_list && this._row.parameter_list.style.includes("parent_point")) {
+      this._row.rows.forEach((r) => {
+        if ((r.type = "tile_component")) r.parameter_list.style += ` parent_point`;
+      });
+    }
   }
 
   setBackground() {
