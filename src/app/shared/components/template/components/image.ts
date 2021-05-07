@@ -22,7 +22,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 })
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
   assetsPrefix = "/assets/plh_assets/";
-  style: string;
+  style = "";
 
   constructor(private http: HttpClient) {
     super();
@@ -37,7 +37,7 @@ export class TmplImageComponent extends TemplateBaseComponent implements OnInit 
         .toPromise()
         .then(() => {
           this.imageSrc = this.assetsPrefix + r.value;
-          this.style = r.parameter_list.style || "";
+          this.style += ` ${r.parameter_list?.style}`;
         })
         .catch(() => {
           this.imageSrc = r.value.replace("//", "/");

@@ -533,12 +533,98 @@
   },
   {
     "flow_type": "global",
+    "flow_name": "survey_completed",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_field_default",
+        "name": "survey_completed",
+        "value": false
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_suggestions.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "tips_disabled",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_field_default",
+        "name": "w_self_care_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_1on1_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_praise_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_instruct_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_stress_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_money_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_rules_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_consequence_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_solve_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_safe_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_crisis_tools_disabled",
+        "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_celebrate_tools_disabled",
+        "value": true
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/global_variables_suggestions.xlsx"
+  },
+  {
+    "flow_type": "global",
     "flow_name": "workshop_titles",
     "status": "released",
     "rows": [
       {
         "type": "declare_global_constant",
         "name": "w_self_care",
+        "value": "Welcome and Self-Care"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "w_self_care_only",
         "value": "Self-Care"
       },
       {
@@ -959,7 +1045,7 @@
       {
         "type": "declare_global_constant",
         "name": "done_button",
-        "value": "Done! "
+        "value": "Next"
       },
       {
         "type": "declare_global_constant",
@@ -1041,7 +1127,7 @@
       },
       {
         "type": "declare_field_default",
-        "name": "w_self_care_status",
+        "name": "w_self_care_completion_status",
         "value": "uncompleted"
       },
       {
