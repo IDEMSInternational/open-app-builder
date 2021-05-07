@@ -37,6 +37,7 @@ export class TmplImageComponent extends TemplateBaseComponent implements OnInit 
         .toPromise()
         .then(() => {
           this.imageSrc = this.assetsPrefix + r.value;
+          this.style += ` ${r.parameter_list?.style}`;
         })
         .catch(() => {
           this.imageSrc = r.value.replace("//", "/");
