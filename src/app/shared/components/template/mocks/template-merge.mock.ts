@@ -197,13 +197,14 @@ function mergeNestedTemplateRows(
   // make sure all secondary rows exist are overridden
   secondary.forEach((secondaryRow) => {
     const primaryRow = primaryHashmap[secondaryRow.name];
+    let mergedRow = { ...secondaryRow };
     if (primaryRow) {
-      secondaryRow = { ...secondaryRow, ...primaryRow };
+      mergedRow = { ...secondaryRow, ...primaryRow };
     }
-    if (secondaryRow.rows) {
-      secondaryRow.rows = mergeNestedTemplateRows(primaryRow.rows, secondaryRow.rows);
+    if (mergedRow.rows) {
+      mergedRow.rows = mergeNestedTemplateRows(primaryRow?.rows, secondaryRow.rows);
     }
-    merged.push(secondaryRow);
+    merged.push(mergedRow);
   });
   // make sure all primary rows exist
   Object.keys(primaryHashmap).forEach((name) => {

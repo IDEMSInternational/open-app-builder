@@ -84,10 +84,8 @@
   display: flex;
   justify-content: center;
   padding: 25px 0 10px 0;
-  &.rounded_corners {
-    img {
-      border-radius: var(--ion-border-radius-standard);
-    }
+  & .rounded_corners {
+    border-radius: var(--ion-border-radius-standard);
   }
 }
 
