@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit } from "@angular/core";
-import { TemplateBaseComponent } from "../base";
+import { Component, ElementRef, OnInit } from "@angular/core";
+import { TemplateLayoutComponent } from "./layout";
 
 @Component({
   selector: "plh-tmpl-animated-section",
@@ -21,18 +21,20 @@ import { TemplateBaseComponent } from "../base";
         width: 100%;
         height: 100%;
       }
-      /*:host ::ng-deep plh-template-component{*/
-      /*   height: 100%;*/
-      /* }*/
     `,
   ],
 })
-export class AnimatedSectionComponent extends TemplateBaseComponent implements AfterViewInit {
+export class AnimatedSectionComponent extends TemplateLayoutComponent implements OnInit {
   constructor(private elRef: ElementRef) {
     super();
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
+    this.parent.handleActionsCallback = async () => {
+      // Temporary workaround to always scroll to top after actions triggered within animated section (uncomment)
+      // this.scrollToTop();
+    };
+    // 2021-05-07 - to confirm, assume this is to ensure buttons appear at bottom of screen...
     this.elRef.nativeElement.style.setProperty("height", "100%");
     this.elRef.nativeElement.parentElement.parentElement.style.setProperty("height", "100%");
   }

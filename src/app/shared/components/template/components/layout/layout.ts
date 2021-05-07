@@ -27,7 +27,7 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   /** specific data used in component rendering */
   @Input() set row(row: FlowTypes.TemplateRow) {
     row.rows = (row.rows || []).map((r) => {
-      r.action_list = this.addRowDefaultActions(r.action_list);
+      // r.action_list = this.addRowDefaultActions(r.action_list);
       return r;
     });
     row = this.modifyRowSetter(row);
@@ -75,23 +75,24 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
     return true;
   }
 
-  private addRowDefaultActions(actions?: FlowTypes.TemplateRowAction[]) {
-    if (!actions) {
-      actions = [
-        {
-          trigger: "completed",
-          action_id: "emit",
-          args: ["completed"],
-        },
-        {
-          trigger: "uncompleted",
-          action_id: "emit",
-          args: ["uncompleted"],
-        },
-      ];
-      return actions;
-    }
-  }
+  // CC - 2021-05-07 - Assumed legacy but to verify (?)
+  // private addRowDefaultActions(actions?: FlowTypes.TemplateRowAction[]) {
+  //   if (!actions) {
+  //     actions = [
+  //       {
+  //         trigger: "completed",
+  //         action_id: "emit",
+  //         args: ["completed"],
+  //       },
+  //       {
+  //         trigger: "uncompleted",
+  //         action_id: "emit",
+  //         args: ["uncompleted"],
+  //       },
+  //     ];
+  //     return actions;
+  //   }
+  // }
 
   private addParentActionsFilter() {
     this.parent.handleActionsInterceptor = async (actions) => {
