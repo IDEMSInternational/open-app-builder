@@ -7,7 +7,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-image",
   template: `
-    <div class="tmpl-image-container margin-t-regular" [class]="style">
+    <div class="tmpl-image-container" [class]="style">
       <img *ngIf="imageSrc" [src]="imageSrc" />
     </div>
   `,
@@ -22,7 +22,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 })
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
   assetsPrefix = "/assets/plh_assets/";
-  style: string;
+  style = "";
 
   constructor(private http: HttpClient) {
     super();
