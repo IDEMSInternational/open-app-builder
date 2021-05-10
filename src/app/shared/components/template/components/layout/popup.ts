@@ -39,6 +39,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
         border: 2px solid black;
         border-radius: 40px;
         padding: 20px;
+        overflow: auto;
       }
       .close-button {
         margin-left: auto;
