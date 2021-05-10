@@ -2309,20 +2309,20 @@
       {
         "type": "title",
         "name": "title",
-        "value": "@global.weekly_workshops Options",
+        "value": "@global.weekly_workshop_options",
         "_nested_name": "title",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@global.weekly_workshops Options",
-              "matchedExpression": "@global.weekly_workshops",
+              "fullExpression": "@global.weekly_workshop_options",
+              "matchedExpression": "@global.weekly_workshop_options",
               "type": "global",
-              "fieldName": "weekly_workshops"
+              "fieldName": "weekly_workshop_options"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.weekly_workshops": [
+          "@global.weekly_workshop_options": [
             "value"
           ]
         }
@@ -2368,7 +2368,7 @@
         ],
         "parameter_list": {
           "text_align": "center",
-          "placeholder": "Click to change your name"
+          "placeholder": "Tap to change your name"
         },
         "_nested_name": "text_box_1",
         "_dynamicFields": {
@@ -2732,7 +2732,7 @@
         "hidden": "!@field.do_workshops_together",
         "parameter_list": {
           "text_align": "center",
-          "placeholder": "Click to change your group name"
+          "placeholder": "Tap to change your group name"
         },
         "_nested_name": "text_box_5",
         "_dynamicFields": {
@@ -14539,141 +14539,9 @@
           },
           {
             "type": "parent_point_box",
-            "name": "parent_point_relax",
-            "value": "@field.total_parent_point_relax",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "total_parent_point_relax",
-                  "@field.total_parent_point_relax+1"
-                ],
-                "_raw": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
-                "_cleaned": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1"
-              },
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "weekly_parent_point_relax",
-                  "@field.weekly_parent_point_relax+1"
-                ],
-                "_raw": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
-                "_cleaned": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1"
-              }
-            ],
+            "name": "outro_habit_tracker",
             "hidden": true,
-            "parameter_list": {
-              "text": "@global.parent_point_relax",
-              "icon_src": "@global.parent_point_relax_image"
-            },
-            "_nested_name": "outro.parent_point_relax",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@field.total_parent_point_relax",
-                  "matchedExpression": "@field.total_parent_point_relax",
-                  "type": "field",
-                  "fieldName": "total_parent_point_relax"
-                }
-              ],
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@field.total_parent_point_relax+1",
-                        "matchedExpression": "@field.total_parent_point_relax",
-                        "type": "field",
-                        "fieldName": "total_parent_point_relax"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
-                      "matchedExpression": "@field.total_parent_point_relax",
-                      "type": "field",
-                      "fieldName": "total_parent_point_relax"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
-                      "matchedExpression": "@field.total_parent_point_relax",
-                      "type": "field",
-                      "fieldName": "total_parent_point_relax"
-                    }
-                  ]
-                },
-                "1": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@field.weekly_parent_point_relax+1",
-                        "matchedExpression": "@field.weekly_parent_point_relax",
-                        "type": "field",
-                        "fieldName": "weekly_parent_point_relax"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
-                      "matchedExpression": "@field.weekly_parent_point_relax",
-                      "type": "field",
-                      "fieldName": "weekly_parent_point_relax"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
-                      "matchedExpression": "@field.weekly_parent_point_relax",
-                      "type": "field",
-                      "fieldName": "weekly_parent_point_relax"
-                    }
-                  ]
-                }
-              },
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_relax",
-                    "matchedExpression": "@global.parent_point_relax",
-                    "type": "global",
-                    "fieldName": "parent_point_relax"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_relax_image",
-                    "matchedExpression": "@global.parent_point_relax_image",
-                    "type": "global",
-                    "fieldName": "parent_point_relax_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@field.total_parent_point_relax": [
-                "value",
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ],
-              "@field.weekly_parent_point_relax": [
-                "action_list.1.args.1",
-                "action_list.1._raw",
-                "action_list.1._cleaned"
-              ],
-              "@global.parent_point_relax": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_relax_image": [
-                "parameter_list.icon_src"
-              ]
-            }
+            "_nested_name": "outro.outro_habit_tracker"
           },
           {
             "type": "template",
@@ -19685,16 +19553,152 @@
           },
           {
             "name": "outro_habit_text",
-            "value": "Click it!",
+            "value": "@data.habit.relax.short_mark_text",
             "hidden": false,
             "type": "set_variable",
-            "_nested_name": "workshop_activity.outro_habit_text"
+            "_nested_name": "workshop_activity.outro_habit_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.habit.relax.short_mark_text",
+                  "matchedExpression": "@data.habit.relax.short_mark_text",
+                  "type": "data",
+                  "fieldName": "habit"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.habit.relax.short_mark_text": [
+                "value"
+              ]
+            }
           },
           {
-            "name": "parent_point_relax",
+            "name": "outro_habit_tracker",
+            "value": "@field.total_parent_point_relax",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "total_parent_point_relax",
+                  "@field.total_parent_point_relax+1"
+                ],
+                "_raw": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                "_cleaned": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1"
+              },
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "weekly_parent_point_relax",
+                  "@field.weekly_parent_point_relax+1"
+                ],
+                "_raw": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                "_cleaned": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1"
+              }
+            ],
             "hidden": false,
+            "parameter_list": {
+              "text": "@data.habit.relax.title",
+              "icon_src": "plh_images/habits/habit_relax_image.svg"
+            },
             "type": "set_variable",
-            "_nested_name": "workshop_activity.parent_point_relax"
+            "_nested_name": "workshop_activity.outro_habit_tracker",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@field.total_parent_point_relax",
+                  "matchedExpression": "@field.total_parent_point_relax",
+                  "type": "field",
+                  "fieldName": "total_parent_point_relax"
+                }
+              ],
+              "action_list": {
+                "0": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@field.total_parent_point_relax+1",
+                        "matchedExpression": "@field.total_parent_point_relax",
+                        "type": "field",
+                        "fieldName": "total_parent_point_relax"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                      "matchedExpression": "@field.total_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "total_parent_point_relax"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                      "matchedExpression": "@field.total_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "total_parent_point_relax"
+                    }
+                  ]
+                },
+                "1": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@field.weekly_parent_point_relax+1",
+                        "matchedExpression": "@field.weekly_parent_point_relax",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_relax"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                      "matchedExpression": "@field.weekly_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_relax"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                      "matchedExpression": "@field.weekly_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_relax"
+                    }
+                  ]
+                }
+              },
+              "parameter_list": {
+                "text": [
+                  {
+                    "fullExpression": "@data.habit.relax.title",
+                    "matchedExpression": "@data.habit.relax.title",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@field.total_parent_point_relax": [
+                "value",
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_relax": [
+                "action_list.1.args.1",
+                "action_list.1._raw",
+                "action_list.1._cleaned"
+              ],
+              "@data.habit.relax.title": [
+                "parameter_list.text"
+              ]
+            }
           }
         ],
         "_nested_name": "workshop_activity"
@@ -20115,10 +20119,25 @@
           },
           {
             "name": "outro_habit_text",
-            "value": "Click it!",
+            "value": "@data.habit.relax.short_mark_text",
             "hidden": false,
             "type": "set_variable",
-            "_nested_name": "workshop_activity.outro_habit_text"
+            "_nested_name": "workshop_activity.outro_habit_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.habit.relax.short_mark_text",
+                  "matchedExpression": "@data.habit.relax.short_mark_text",
+                  "type": "data",
+                  "fieldName": "habit"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.habit.relax.short_mark_text": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "workshop_activity"
@@ -23155,6 +23174,301 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_conditional_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_data_image",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Print text  and image of item 1:\n\n@data.debug.item_1.text",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Print text  and image of item 1:\n\n@data.debug.item_1.text",
+              "matchedExpression": "@data.debug.item_1.text",
+              "type": "data",
+              "fieldName": "debug"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "image",
+        "name": "image_1",
+        "value": "@data.debug.item_1.image_asset",
+        "_nested_name": "image_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.debug.item_1.image_asset",
+              "matchedExpression": "@data.debug.item_1.image_asset",
+              "type": "data",
+              "fieldName": "debug"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.image_asset": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "The parent point box below shows that the icon_src is NOT found when called through a data field",
+        "_nested_name": "text_2"
+      },
+      {
+        "type": "parent_point_box",
+        "name": "parent_point_box_1",
+        "parameter_list": {
+          "text": "@data.debug.item_1.text",
+          "icon_src": "@data.debug.item_1.image_asset"
+        },
+        "_nested_name": "parent_point_box_1",
+        "_dynamicFields": {
+          "parameter_list": {
+            "text": [
+              {
+                "fullExpression": "@data.debug.item_1.text",
+                "matchedExpression": "@data.debug.item_1.text",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ],
+            "icon_src": [
+              {
+                "fullExpression": "@data.debug.item_1.image_asset",
+                "matchedExpression": "@data.debug.item_1.image_asset",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "parameter_list.text"
+          ],
+          "@data.debug.item_1.image_asset": [
+            "parameter_list.icon_src"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "The parent point box below shows that the icon_src IS found when called directly",
+        "_nested_name": "text_3"
+      },
+      {
+        "type": "parent_point_box",
+        "name": "parent_point_box_2",
+        "parameter_list": {
+          "text": "@data.debug.item_1.text",
+          "icon_src": "plh_images/habits/habit_relax_image.svg"
+        },
+        "_nested_name": "parent_point_box_2",
+        "_dynamicFields": {
+          "parameter_list": {
+            "text": [
+              {
+                "fullExpression": "@data.debug.item_1.text",
+                "matchedExpression": "@data.debug.item_1.text",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "parameter_list.text"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_data_bottom",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@data.debug.item_1.text",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.debug.item_1.text",
+              "matchedExpression": "@data.debug.item_1.text",
+              "type": "data",
+              "fieldName": "debug"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "This text is directly authored in the value",
+        "_nested_name": "text_2"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "This text is directly authored in the value",
+        "_nested_name": "text_3"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_data_middle",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "debug_data_bottom",
+        "value": "debug_data_bottom",
+        "rows": [
+          {
+            "name": "text_1",
+            "value": "@data.debug.item_2.text",
+            "type": "set_variable",
+            "_nested_name": "debug_data_bottom.text_1",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.debug.item_2.text",
+                  "matchedExpression": "@data.debug.item_2.text",
+                  "type": "data",
+                  "fieldName": "debug"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.debug.item_2.text": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_2",
+            "value": "@data.debug.item_2.text",
+            "type": "set_variable",
+            "_nested_name": "debug_data_bottom.text_2",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.debug.item_2.text",
+                  "matchedExpression": "@data.debug.item_2.text",
+                  "type": "data",
+                  "fieldName": "debug"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.debug.item_2.text": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_3",
+            "value": "This text is overridden directly in the value",
+            "type": "set_variable",
+            "_nested_name": "debug_data_bottom.text_3"
+          }
+        ],
+        "_nested_name": "debug_data_bottom"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_data_top",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "debug_data_middle",
+        "value": "debug_data_middle",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "debug_data_bottom",
+            "rows": [
+              {
+                "name": "text_2",
+                "value": "@data.debug.item_3.text",
+                "type": "set_variable",
+                "_nested_name": "debug_data_middle.debug_data_bottom.text_2",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@data.debug.item_3.text",
+                      "matchedExpression": "@data.debug.item_3.text",
+                      "type": "data",
+                      "fieldName": "debug"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@data.debug.item_3.text": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "text_3",
+                "value": "@data.debug.item_3.text",
+                "type": "set_variable",
+                "_nested_name": "debug_data_middle.debug_data_bottom.text_3",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@data.debug.item_3.text",
+                      "matchedExpression": "@data.debug.item_3.text",
+                      "type": "data",
+                      "fieldName": "debug"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@data.debug.item_3.text": [
+                    "value"
+                  ]
+                }
+              }
+            ],
+            "_nested_name": "debug_data_middle.debug_data_bottom"
+          }
+        ],
+        "_nested_name": "debug_data_middle"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
   },
   {
     "flow_type": "template",
@@ -43469,8 +43783,10 @@
           {
             "name": "nav_template_list",
             "value": [
-              "w_self_care_care_together",
-              "w_1on1_relax",
+              "w_1on1_care_together",
+              "w_self_care_relax",
+              "w_self_care_recognise",
+              "w_self_care_reward",
               "w_1on1_intro",
               "w_1on1_talk",
               "w_1on1_tools_activity",
@@ -43528,42 +43844,6 @@
           }
         ],
         "_nested_name": "workshop_stepper"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_1on1.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "1on1",
-    "flow_name": "w_1on1_welcome_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "welcome_together",
-        "value": "welcome_together",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "welcome_together"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_1on1.xlsx"
@@ -43667,7 +43947,149 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "rows": [],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "activity_title",
+                "value": "Using the app together",
+                "type": "set_variable",
+                "_nested_name": "care_together.workshop_activity.activity_title"
+              },
+              {
+                "name": "intro_text",
+                "value": "It’s great to see you!\n\nFirst, let’s help your group get started.",
+                "type": "set_variable",
+                "_nested_name": "care_together.workshop_activity.intro_text"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": false,
+                "type": "set_variable",
+                "_nested_name": "care_together.workshop_activity.activity_banner"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_timer",
+                    "rows": [
+                      {
+                        "name": "text",
+                        "value": "Agree on your ground rules together:\n- Which day(s)/time(s) will we meet in the week?\n- Who will hold the phone(s) during our activities?\n- How can we make sure everyone can share freely?\n- What can we do so we all feel respected?",
+                        "type": "set_variable",
+                        "_nested_name": "care_together.workshop_activity.content_box.box_1.text"
+                      },
+                      {
+                        "name": "button_1",
+                        "value": "@global.ideas_button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_1on1_care_together_pop"
+                            ],
+                            "_raw": "click | pop_up:w_1on1_care_together_pop",
+                            "_cleaned": "click | pop_up:w_1on1_care_together_pop"
+                          }
+                        ],
+                        "hidden": false,
+                        "type": "set_variable",
+                        "_nested_name": "care_together.workshop_activity.content_box.box_1.button_1",
+                        "_dynamicFields": {
+                          "value": [
+                            {
+                              "fullExpression": "@global.ideas_button",
+                              "matchedExpression": "@global.ideas_button",
+                              "type": "global",
+                              "fieldName": "ideas_button"
+                            }
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@global.ideas_button": [
+                            "value"
+                          ]
+                        }
+                      }
+                    ],
+                    "_nested_name": "care_together.workshop_activity.content_box.box_1"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "box_buttons",
+                    "rows": [
+                      {
+                        "name": "text_1",
+                        "value": "You always can change your workshop day and your group name in the @global.weekly_workshop_options .",
+                        "type": "set_variable",
+                        "_nested_name": "care_together.workshop_activity.content_box.box_2.text_1",
+                        "_dynamicFields": {
+                          "value": [
+                            {
+                              "fullExpression": "You always can change your workshop day and your group name in the @global.weekly_workshop_options .",
+                              "matchedExpression": "@global.weekly_workshop_options",
+                              "type": "global",
+                              "fieldName": "weekly_workshop_options"
+                            }
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@global.weekly_workshop_options": [
+                            "value"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "button_1",
+                        "value": "@global.show_me_how_button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "go_to",
+                            "args": [
+                              "workshop_options_page"
+                            ],
+                            "_raw": "click | go_to:workshop_options_page",
+                            "_cleaned": "click | go_to:workshop_options_page"
+                          }
+                        ],
+                        "type": "set_variable",
+                        "_nested_name": "care_together.workshop_activity.content_box.box_2.button_1",
+                        "_dynamicFields": {
+                          "value": [
+                            {
+                              "fullExpression": "@global.show_me_how_button",
+                              "matchedExpression": "@global.show_me_how_button",
+                              "type": "global",
+                              "fieldName": "show_me_how_button"
+                            }
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@global.show_me_how_button": [
+                            "value"
+                          ]
+                        }
+                      }
+                    ],
+                    "_nested_name": "care_together.workshop_activity.content_box.box_2"
+                  }
+                ],
+                "_nested_name": "care_together.workshop_activity.content_box"
+              }
+            ],
+            "_nested_name": "care_together.workshop_activity"
+          }
+        ],
         "_nested_name": "care_together"
       }
     ],
@@ -44019,22 +44441,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.spend_time.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "talk_together.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.spend_time.mark_text",
+                      "matchedExpression": "@data.habit.spend_time.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.spend_time.mark_text": [
                     "value"
                   ]
                 }
@@ -44381,22 +44803,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.spend_time.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.spend_time.mark_text",
+                      "matchedExpression": "@data.habit.spend_time.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.spend_time.mark_text": [
                     "value"
                   ]
                 }
@@ -44697,23 +45119,46 @@
                     }
                   },
                   {
+                    "name": "text_3",
+                    "value": "Remember - whenever you can, relax, recognise and reward yourself. \n\nCare for yourself every day. You matter!",
+                    "hidden": false,
+                    "condition": "@fields.do_workshops_together",
+                    "type": "set_variable",
+                    "_nested_name": "home_practice.workshop_activity.content_box.text_3",
+                    "_dynamicFields": {
+                      "condition": [
+                        {
+                          "fullExpression": "@fields.do_workshops_together",
+                          "matchedExpression": "@fields.do_workshops_together",
+                          "type": "fields",
+                          "fieldName": "do_workshops_together"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@fields.do_workshops_together": [
+                        "condition"
+                      ]
+                    }
+                  },
+                  {
                     "name": "habit_text",
-                    "value": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
+                    "value": "@data.habit.spend_time.mark_text",
                     "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.habit_text",
                     "_dynamicFields": {
                       "value": [
                         {
-                          "fullExpression": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
-                          "matchedExpression": "@global.parent_point",
-                          "type": "global",
-                          "fieldName": "parent_point"
+                          "fullExpression": "@data.habit.spend_time.mark_text",
+                          "matchedExpression": "@data.habit.spend_time.mark_text",
+                          "type": "data",
+                          "fieldName": "habit"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@global.parent_point": [
+                      "@data.habit.spend_time.mark_text": [
                         "value"
                       ]
                     }
@@ -66363,62 +66808,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self_care_welcome_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "welcome_together",
-        "value": "welcome_together",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "watch",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "workshop_activity",
-                "rows": [
-                  {
-                    "name": "intro_text",
-                    "value": "It’s great to have you here. \n\nLet’s start with a song for families everywhere.",
-                    "type": "set_variable",
-                    "_nested_name": "welcome_together.watch.workshop_activity.intro_text"
-                  }
-                ],
-                "_nested_name": "welcome_together.watch.workshop_activity"
-              }
-            ],
-            "_nested_name": "welcome_together.watch"
-          }
-        ],
-        "_nested_name": "welcome_together"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "w_self_care_welcome_individual",
     "status": "released",
     "rows": [
@@ -66487,244 +66876,6 @@
           }
         ],
         "_nested_name": "welcome_individual"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_self_care_care_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "care_together",
-        "value": "care_together",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "workshop_activity",
-            "rows": [
-              {
-                "name": "activity_title",
-                "value": "Using the app together",
-                "type": "set_variable",
-                "_nested_name": "care_together.workshop_activity.activity_title"
-              },
-              {
-                "name": "intro_text",
-                "value": "It’s great to see you!\n\nFirst, let’s help your group get started.",
-                "type": "set_variable",
-                "_nested_name": "care_together.workshop_activity.intro_text"
-              },
-              {
-                "name": "activity_banner",
-                "hidden": false,
-                "type": "set_variable",
-                "_nested_name": "care_together.workshop_activity.activity_banner"
-              },
-              {
-                "type": "nested_properties",
-                "name": "content_box",
-                "value": "pair",
-                "rows": [
-                  {
-                    "type": "nested_properties",
-                    "name": "box_1",
-                    "value": "box_timer",
-                    "rows": [
-                      {
-                        "name": "text",
-                        "value": "Agree on your ground rules together:\n- Which day(s)/time(s) will we meet in the week?\n- Who will hold the phone(s) during our activities?\n- How can we make sure everyone can share freely?\n- What can we do so we all feel respected?",
-                        "type": "set_variable",
-                        "_nested_name": "care_together.workshop_activity.content_box.box_1.text"
-                      },
-                      {
-                        "name": "button_1",
-                        "value": "@global.ideas_button",
-                        "action_list": [
-                          {
-                            "trigger": "click",
-                            "action_id": "pop_up",
-                            "args": [
-                              "w_self_care_care_together_pop"
-                            ],
-                            "_raw": "click | pop_up:w_self_care_care_together_pop",
-                            "_cleaned": "click | pop_up:w_self_care_care_together_pop"
-                          }
-                        ],
-                        "hidden": false,
-                        "type": "set_variable",
-                        "_nested_name": "care_together.workshop_activity.content_box.box_1.button_1",
-                        "_dynamicFields": {
-                          "value": [
-                            {
-                              "fullExpression": "@global.ideas_button",
-                              "matchedExpression": "@global.ideas_button",
-                              "type": "global",
-                              "fieldName": "ideas_button"
-                            }
-                          ]
-                        },
-                        "_dynamicDependencies": {
-                          "@global.ideas_button": [
-                            "value"
-                          ]
-                        }
-                      }
-                    ],
-                    "_nested_name": "care_together.workshop_activity.content_box.box_1"
-                  },
-                  {
-                    "type": "nested_properties",
-                    "name": "box_2",
-                    "value": "box_buttons",
-                    "rows": [
-                      {
-                        "name": "text_1",
-                        "value": "Your workshop day is currently set to @field.workshop_day and your group name is @field.group_name .  \n\nYou always can change these settings in your @global.weekly_workshop_options .",
-                        "type": "set_variable",
-                        "_nested_name": "care_together.workshop_activity.content_box.box_2.text_1",
-                        "_dynamicFields": {
-                          "value": [
-                            {
-                              "fullExpression": "Your workshop day is currently set to @field.workshop_day and your group name is @field.group_name .  \n\nYou always can change these settings in your @global.weekly_workshop_options .",
-                              "matchedExpression": "@field.workshop_day",
-                              "type": "field",
-                              "fieldName": "workshop_day"
-                            },
-                            {
-                              "fullExpression": "Your workshop day is currently set to @field.workshop_day and your group name is @field.group_name .  \n\nYou always can change these settings in your @global.weekly_workshop_options .",
-                              "matchedExpression": "@field.group_name",
-                              "type": "field",
-                              "fieldName": "group_name"
-                            },
-                            {
-                              "fullExpression": "Your workshop day is currently set to @field.workshop_day and your group name is @field.group_name .  \n\nYou always can change these settings in your @global.weekly_workshop_options .",
-                              "matchedExpression": "@global.weekly_workshop_options",
-                              "type": "global",
-                              "fieldName": "weekly_workshop_options"
-                            }
-                          ]
-                        },
-                        "_dynamicDependencies": {
-                          "@field.workshop_day": [
-                            "value"
-                          ],
-                          "@field.group_name": [
-                            "value"
-                          ],
-                          "@global.weekly_workshop_options": [
-                            "value"
-                          ]
-                        }
-                      },
-                      {
-                        "name": "button_1",
-                        "value": "@global.show_me_how_button",
-                        "action_list": [
-                          {
-                            "trigger": "click",
-                            "action_id": "go_to",
-                            "args": [
-                              "workshop_options_page"
-                            ],
-                            "_raw": "click | go_to:workshop_options_page",
-                            "_cleaned": "click | go_to:workshop_options_page"
-                          }
-                        ],
-                        "type": "set_variable",
-                        "_nested_name": "care_together.workshop_activity.content_box.box_2.button_1",
-                        "_dynamicFields": {
-                          "value": [
-                            {
-                              "fullExpression": "@global.show_me_how_button",
-                              "matchedExpression": "@global.show_me_how_button",
-                              "type": "global",
-                              "fieldName": "show_me_how_button"
-                            }
-                          ]
-                        },
-                        "_dynamicDependencies": {
-                          "@global.show_me_how_button": [
-                            "value"
-                          ]
-                        }
-                      }
-                    ],
-                    "_nested_name": "care_together.workshop_activity.content_box.box_2"
-                  }
-                ],
-                "_nested_name": "care_together.workshop_activity.content_box"
-              }
-            ],
-            "_nested_name": "care_together.workshop_activity"
-          }
-        ],
-        "_nested_name": "care_together"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_self_care_care_together_pop",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "suggestions",
-        "value": "suggestions",
-        "rows": [
-          {
-            "name": "description_text",
-            "value": "Some rules that other groups made:",
-            "type": "set_variable",
-            "_nested_name": "suggestions.description_text"
-          },
-          {
-            "name": "list_text",
-            "value": "- Tuesday at 7pm is our @global.parent_app time together\n- Take turns holding the phone (1 activity per person)\n- Accept each other’s experiences. We are all different!\n- Take turns speaking and listening\n- All questions are welcome\n- What we share stays among us",
-            "type": "set_variable",
-            "_nested_name": "suggestions.list_text",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "- Tuesday at 7pm is our @global.parent_app time together\n- Take turns holding the phone (1 activity per person)\n- Accept each other’s experiences. We are all different!\n- Take turns speaking and listening\n- All questions are welcome\n- What we share stays among us",
-                  "matchedExpression": "@global.parent_app",
-                  "type": "global",
-                  "fieldName": "parent_app"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@global.parent_app": [
-                "value"
-              ]
-            }
-          }
-        ],
-        "_nested_name": "suggestions"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
@@ -66940,8 +67091,46 @@
               {
                 "name": "intro_text",
                 "value": "Let's try it out and do a short relaxation activity together!",
+                "condition": "!@field.do_workshops_together",
                 "type": "set_variable",
-                "_nested_name": "relax.workshop_activity.intro_text"
+                "_nested_name": "relax.workshop_activity.intro_text",
+                "_dynamicFields": {
+                  "condition": [
+                    {
+                      "fullExpression": "!@field.do_workshops_together",
+                      "matchedExpression": "@field.do_workshops_together",
+                      "type": "field",
+                      "fieldName": "do_workshops_together"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@field.do_workshops_together": [
+                    "condition"
+                  ]
+                }
+              },
+              {
+                "name": "intro_text",
+                "value": "As parents, we often don’t have time to look after ourselves - but this is so important to do! Reducing our stress helps us AND our teens. \n\nLet’s take a first step and do a short relaxation activity together.",
+                "condition": "@field.do_workshops_together",
+                "type": "set_variable",
+                "_nested_name": "relax.workshop_activity.intro_text",
+                "_dynamicFields": {
+                  "condition": [
+                    {
+                      "fullExpression": "@field.do_workshops_together",
+                      "matchedExpression": "@field.do_workshops_together",
+                      "type": "field",
+                      "fieldName": "do_workshops_together"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@field.do_workshops_together": [
+                    "condition"
+                  ]
+                }
               },
               {
                 "name": "outro_text",
@@ -66951,22 +67140,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you do a relax, record a @global.parent_point and celebrate your success",
+                "value": "@data.habit.relax.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "relax.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you do a relax, record a @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.relax.mark_text",
+                      "matchedExpression": "@data.habit.relax.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.relax.mark_text": [
                     "value"
                   ]
                 }
@@ -67020,7 +67209,7 @@
               },
               {
                 "name": "intro_text",
-                "value": "Let’s take a moment to praise ourselves. We’ll show you how.",
+                "value": "Paying attention to what we do well helps us to focus on the positive. \n\nLet’s take a moment to praise ourselves. We’ll show you how.",
                 "condition": "@field.do_workshops_together",
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.intro_text",
@@ -67065,20 +67254,21 @@
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "box_image",
+                "value": "box_buttons",
                 "condition": "@field.do_workshops_together",
                 "rows": [
                   {
                     "name": "image_src",
                     "value": "plh_images/workshops/self_care/guide_2/recognise.svg",
+                    "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "think.workshop_activity.content_box.image_src"
                   },
                   {
-                    "name": "text",
+                    "name": "text_1",
                     "value": "Think of one thing YOU have done well recently.\n\nSay it aloud to each other: \"Well done to me for…\"\n\nHere is one thing you deserve praise for: Well done for using @global.parent_app!",
                     "type": "set_variable",
-                    "_nested_name": "think.workshop_activity.content_box.text",
+                    "_nested_name": "think.workshop_activity.content_box.text_1",
                     "_dynamicFields": {
                       "value": [
                         {
@@ -67109,7 +67299,6 @@
                         "_cleaned": "click | pop_up:w_self_care_recognise_pop"
                       }
                     ],
-                    "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "think.workshop_activity.content_box.button_1",
                     "_dynamicFields": {
@@ -67231,23 +67420,150 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you praise yourself, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.praise_yourself.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you praise yourself, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.praise_yourself.mark_text",
+                      "matchedExpression": "@data.habit.praise_yourself.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.praise_yourself.mark_text": [
                     "value"
+                  ]
+                }
+              },
+              {
+                "name": "outro_habit_tracker",
+                "value": "@field.total_parent_point_praise_yourself",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "total_parent_point_praise_yourself",
+                      "@field.total_parent_point_praise_yourself+1"
+                    ],
+                    "_raw": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                    "_cleaned": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "weekly_parent_point_praise_yourself",
+                      "@field.weekly_parent_point_praise_yourself+1"
+                    ],
+                    "_raw": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                    "_cleaned": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1"
+                  }
+                ],
+                "hidden": false,
+                "parameter_list": {
+                  "text": "@data.habit.praise_yourself.title",
+                  "icon_src": "plh_images/habits/habit_praise_yourself_image.svg"
+                },
+                "type": "set_variable",
+                "_nested_name": "think.workshop_activity.outro_habit_tracker",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@field.total_parent_point_praise_yourself",
+                      "matchedExpression": "@field.total_parent_point_praise_yourself",
+                      "type": "field",
+                      "fieldName": "total_parent_point_praise_yourself"
+                    }
+                  ],
+                  "action_list": {
+                    "0": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.total_parent_point_praise_yourself+1",
+                            "matchedExpression": "@field.total_parent_point_praise_yourself",
+                            "type": "field",
+                            "fieldName": "total_parent_point_praise_yourself"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                          "matchedExpression": "@field.total_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "total_parent_point_praise_yourself"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                          "matchedExpression": "@field.total_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "total_parent_point_praise_yourself"
+                        }
+                      ]
+                    },
+                    "1": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.weekly_parent_point_praise_yourself+1",
+                            "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                            "type": "field",
+                            "fieldName": "weekly_parent_point_praise_yourself"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                          "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "weekly_parent_point_praise_yourself"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                          "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "weekly_parent_point_praise_yourself"
+                        }
+                      ]
+                    }
+                  },
+                  "parameter_list": {
+                    "text": [
+                      {
+                        "fullExpression": "@data.habit.praise_yourself.title",
+                        "matchedExpression": "@data.habit.praise_yourself.title",
+                        "type": "data",
+                        "fieldName": "habit"
+                      }
+                    ]
+                  }
+                },
+                "_dynamicDependencies": {
+                  "@field.total_parent_point_praise_yourself": [
+                    "value",
+                    "action_list.0.args.1",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned"
+                  ],
+                  "@field.weekly_parent_point_praise_yourself": [
+                    "action_list.1.args.1",
+                    "action_list.1._raw",
+                    "action_list.1._cleaned"
+                  ],
+                  "@data.habit.praise_yourself.title": [
+                    "parameter_list.text"
                   ]
                 }
               }
@@ -67464,11 +67780,19 @@
               },
               {
                 "name": "outro_text",
-                "value": "Try to do something to reward yourself every day.",
+                "value": "Try to do something to reward yourself every day.\n\nYou can use these skills at home and find them anytime in your @global.parent_centre!",
                 "condition": "@field.do_workshops_together",
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_text",
                 "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "Try to do something to reward yourself every day.\n\nYou can use these skills at home and find them anytime in your @global.parent_centre!",
+                      "matchedExpression": "@global.parent_centre",
+                      "type": "global",
+                      "fieldName": "parent_centre"
+                    }
+                  ],
                   "condition": [
                     {
                       "fullExpression": "@field.do_workshops_together",
@@ -67479,6 +67803,9 @@
                   ]
                 },
                 "_dynamicDependencies": {
+                  "@global.parent_centre": [
+                    "value"
+                  ],
                   "@field.do_workshops_together": [
                     "condition"
                   ]
@@ -67519,22 +67846,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you treat yourself well, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.treat_yourself.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you treat yourself well, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.treat_yourself.mark_text",
+                      "matchedExpression": "@data.habit.treat_yourself.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.treat_yourself.mark_text": [
                     "value"
                   ]
                 }
@@ -67802,12 +68129,12 @@
       {
         "type": "title",
         "name": "title",
-        "value": "Customisation your @global.parent_app",
+        "value": "Customise your @global.parent_app",
         "_nested_name": "title",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Customisation your @global.parent_app",
+              "fullExpression": "Customise your @global.parent_app",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
