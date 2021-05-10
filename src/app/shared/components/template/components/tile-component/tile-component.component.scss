@@ -2,36 +2,19 @@
 
 .tile-wrapper {
   @include flex-space-between;
-  &.parent_point {
-    padding: calc(17px * var(--scale-factor-tile)) 10px;
-    width: calc(200px * var(--scale-factor-tile));
-    height: calc(104px * var(--scale-factor-tile));
-    min-height: unset;
-    max-width: unset;
-    .button-wrapper {
-      .btn-tile {
-        width: calc(63px * var(--scale-factor-tile));
-        height: calc(63px * var(--scale-factor-tile));
-        img {
-          width: calc(50px * var(--scale-factor-tile));
-          height: calc(50px * var(--scale-factor-tile));
-        }
-      }
-    }
-  }
   .text {
     div {
       font-weight: 700;
-      font-size: calc(20px * var(--scale-factor-tile));
-      line-height: calc(28px * var(--scale-factor-tile));
+      font-size: 20px;
+      line-height: 28px;
       color: var(--ion-color-primary-contrast);
     }
   }
 
   .button-wrapper {
     .btn-tile {
-      width: calc(73px * var(--scale-factor-tile));
-      height: calc(73px * var(--scale-factor-tile));
+      width: 73px;
+      height: 73px;
       --background: transparent;
       --box-shadow: none;
       border: 1px solid #fff;
@@ -119,6 +102,33 @@
 }
 .quick_start_dark {
   background: var(--tile-secondary-gradient);
+}
+// PARENT CENTRE
+.parent_point {
+  padding: calc(17px * var(--scale-factor-tile)) 10px;
+  width: calc(200px * var(--scale-factor-tile));
+  height: calc(104px * var(--scale-factor-tile));
+  min-height: unset;
+  max-width: unset;
+  &.tile-wrapper {
+    .text {
+      div {
+        font-size: calc(20px * var(--scale-factor-tile));
+        line-height: calc(28px * var(--scale-factor-tile));
+      }
+    }
+    .button-wrapper {
+      .btn-tile {
+        width: calc(63px * var(--scale-factor-tile));
+        height: calc(63px * var(--scale-factor-tile));
+        border: none;
+        img {
+          width: calc(50px * var(--scale-factor-tile));
+          height: calc(50px * var(--scale-factor-tile));
+        }
+      }
+    }
+  }
 }
 .parent_centre_1 {
   background: var(--parent-centre-primary-light-gradient);
