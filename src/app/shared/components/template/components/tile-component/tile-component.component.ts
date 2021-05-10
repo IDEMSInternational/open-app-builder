@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, OnInit } from "@angular/core";
+import { Component, ElementRef, HostBinding, HostListener, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow } from "../../../../utils";
@@ -19,7 +19,6 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   is_play_icon: boolean;
   windowWidth: number;
   scaleFactor: number = 1;
-  isParentPointStyle = false;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
     this.getScaleFactor();
@@ -27,7 +26,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   @HostBinding("style.--scale-factor-tile") get scale() {
     return this.scaleFactor;
   }
-  constructor() {
+  constructor(private elRef: ElementRef) {
     super();
   }
 
@@ -42,10 +41,21 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
     this.value = this._row.value;
     this.windowWidth = window.innerWidth;
-    this.style = getStringParamFromTemplateRow(this._row, "style", "quick_start");
-    this.isParentPointStyle = this._row.parameter_list?.style.includes("parent_point");
+    this.style = `
+      ${getStringParamFromTemplateRow(this._row, "style", "quick_start")} 
+      ${this.isParentPoint() ? "parent_point" : ""}
+      `;
     this.icon_result = this.getPathImg();
     this.is_play_icon = this.isPlayIcon(this.icon_src);
+  }
+
+  private isParentPoint(): boolean {
+    const displayGroupElement = this.elRef.nativeElement.closest(".display-group");
+    if (displayGroupElement) {
+      return displayGroupElement.classList.contains("parent_point");
+    } else {
+      return false;
+    }
   }
 
   isPlayIcon(iconSrc: string): boolean {
@@ -59,9 +69,9 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
 
   getScaleFactor(): number {
     this.scaleFactor =
-      this.windowWidth / (this.isParentPointStyle ? 470 : 400) > 1
+      this.windowWidth / (this.isParentPoint() ? 470 : 400) > 1
         ? 1
-        : this.windowWidth / (((this.isParentPointStyle ? 220 : 200) + 20) * 2);
+        : this.windowWidth / (((this.isParentPoint() ? 220 : 200) + 20) * 2);
     return this.scaleFactor;
   }
 }
