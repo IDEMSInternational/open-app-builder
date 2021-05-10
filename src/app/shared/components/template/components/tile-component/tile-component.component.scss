@@ -99,12 +99,46 @@
 }
 .quick_start_blue {
   background: var(--tile-primary-light-gradient);
-  .text {
-    div {
-      color: var(--ion-color-primary);
-    }
-  }
 }
 .quick_start_dark {
   background: var(--tile-secondary-gradient);
+}
+// PARENT CENTRE
+.parent_point {
+  padding: calc(17px * var(--scale-factor-tile)) 10px;
+  width: calc(200px * var(--scale-factor-tile));
+  height: calc(104px * var(--scale-factor-tile));
+  min-height: unset;
+  max-width: unset;
+  &.tile-wrapper {
+    .text {
+      div {
+        font-size: calc(20px * var(--scale-factor-tile));
+        line-height: calc(28px * var(--scale-factor-tile));
+      }
+    }
+    .button-wrapper {
+      .btn-tile {
+        width: calc(63px * var(--scale-factor-tile));
+        height: calc(63px * var(--scale-factor-tile));
+        border: none;
+        img {
+          width: calc(50px * var(--scale-factor-tile));
+          height: calc(50px * var(--scale-factor-tile));
+        }
+      }
+    }
+  }
+}
+.parent_centre_1 {
+  background: var(--parent-centre-primary-light-gradient);
+}
+.parent_centre_2 {
+  background: var(--parent-centre-secondary-light-gradient);
+}
+.parent_centre_3 {
+  background: var(--parent-centre-secondary-gradient);
+}
+.parent_centre_4 {
+  background: var(--parent-centre-primary-gradient);
 }
