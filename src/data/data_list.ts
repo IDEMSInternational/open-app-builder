@@ -108,6 +108,28 @@
   },
   {
     "flow_type": "data_list",
+    "flow_name": "debug_data_list",
+    "status": "released",
+    "data_list_name": "debug",
+    "rows": [
+      {
+        "id": "item_1",
+        "text": "Item 1 text",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+      },
+      {
+        "id": "item_2",
+        "text": "Item 2 text"
+      },
+      {
+        "id": "item_3",
+        "text": "Item 3 text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
+  },
+  {
+    "flow_type": "data_list",
     "flow_name": "debug_variable_data",
     "status": "released",
     "data_list_name": "debug_vars",
@@ -174,5 +196,104 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_name": "habit_data_list",
+    "status": "released",
+    "data_list_name": "habit",
+    "rows": [
+      {
+        "id": "relax",
+        "title": "Relax",
+        "description": "Doing a relaxation activity",
+        "task_id": "task_habit_relax",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg",
+        "mark_text": "Every time you do a relax, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "treat_yourself",
+        "title": "Treat yourself well",
+        "description": "Doing something they like for themselves",
+        "task_id": "task_habit_treat_yourself",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself_image.svg",
+        "mark_text": "Every time you treat yourself well, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "praise_yourself",
+        "title": "Praise yourself",
+        "description": "Praising themselves",
+        "task_id": "task_habit_praise_yourself",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself_image.svg",
+        "mark_text": "Every time you praise yourself, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "spend_time",
+        "title": "One on one time",
+        "description": "Spending time with their teen",
+        "task_id": "task_habit_spend_time",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time_image.svg",
+        "mark_text": "Every time you do one-on-one time, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "praise_teen",
+        "title": "Praise your teen",
+        "description": "Praising their teen when they did positive thing",
+        "task_id": "task_habit_praise_teen",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen_image.svg",
+        "mark_text": "Every time you praise your teen, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "instruct_positively",
+        "title": "Get positive",
+        "description": "Giving their teen a positive instruction",
+        "task_id": "task_habit_instruct_positively",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen_image.svg",
+        "mark_text": "Every time you give a positive instruction, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "breathe",
+        "title": "Breathe not yell",
+        "description": "Taking a pause before responding",
+        "task_id": "task_habit_breathe",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe_image.svg",
+        "mark_text": "Every time you take a pause before responding, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "money",
+        "title": "Good money choice",
+        "description": "Keeping the budget",
+        "task_id": "task_habit_money",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_money_image.svg",
+        "mark_text": "Every time you make a good choice about needs, wants and savings, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "consequence",
+        "title": "Calm consequence",
+        "description": "Giving their teen a consequence in a calm way",
+        "task_id": "task_habit_consequence",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence_image.svg",
+        "mark_text": "Every time you give a calm consequence, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      },
+      {
+        "id": "safe",
+        "title": "Safe",
+        "description": "Planning or keeping a family safety plan",
+        "task_id": "task_habit_safe",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_safe_image.svg",
+        "mark_text": "Every time you do something to keep your teen safe, tap the ParentPoint and celebrate your success!",
+        "short_mark_text": "Tap it!"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/habit_list.xlsx"
   }
 ]
