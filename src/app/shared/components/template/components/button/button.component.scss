@@ -99,3 +99,9 @@ ion-button[disabled] {
 .no_shadow {
   --box-shadow: none;
 }
+.two_columns {
+  max-width: 12rem;
+  font-size: calc(25px * var(--scale-factor-btn));
+  min-width: calc(64px * var(--scale-factor-btn));
+  min-height: calc(71px * var(--scale-factor-btn));
+}
