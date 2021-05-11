@@ -58,9 +58,25 @@ export class AppComponent {
       this.menuController.enable(true, "main-side-menu");
       let old_date = this.userMetaService.getUserMeta("current_date");
       await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
-      if (old_date != this.userMetaService.getUserMeta("current_date")) {
+      let current_date = this.userMetaService.getUserMeta("current_date");
+      this.templateService.setField("first_app_open", user.first_app_open);
+      this.templateService.setField("current_date", current_date);
+      if (old_date != current_date) {
         this.templateService.setField("daily_relax_done", "false");
       }
+      if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
+        this.templateService.setField("second_week", "true");
+        this.templateService.setField("w_1on1_disabled", "false");
+      } else {
+        this.templateService.setField("second_week", "false");
+      }
+      this.templateService.setField(
+        "days_since_start",
+        (
+          (Date.parse(current_date) - Date.parse(user.first_app_open)) /
+          (24 * 60 * 60 * 1000)
+        ).toString()
+      );
       if (Capacitor.isNative) {
         SplashScreen.hide();
         this.notifications.init();
