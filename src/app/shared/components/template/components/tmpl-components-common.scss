@@ -83,7 +83,10 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  padding: 25px 0 10px 0;
+  & .rounded_corners {
+    border-radius: var(--ion-border-radius-standard);
+  }
 }
 
 .tmpl-video-container {

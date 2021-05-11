@@ -387,6 +387,16 @@
                 "action_list": [
                   {
                     "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "do_this_workshop_together",
+                      "false"
+                    ],
+                    "_raw": "click | set_field:do_this_workshop_together:false",
+                    "_cleaned": "click | set_field:do_this_workshop_together:false"
+                  },
+                  {
+                    "trigger": "click",
                     "action_id": "go_to",
                     "args": [
                       "w_self_care_stepper"
@@ -417,6 +427,65 @@
                 },
                 "_dynamicDependencies": {
                   "@fields.w_self_care_completion_status": [
+                    "hidden"
+                  ]
+                }
+              },
+              {
+                "type": "round_button",
+                "name": "quick_start_weekly_workshops",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "do_this_workshop_together",
+                      "false"
+                    ],
+                    "_raw": "click | set_field:do_this_workshop_together:false",
+                    "_cleaned": "click | set_field:do_this_workshop_together:false"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "go_to",
+                    "args": [
+                      "w_self_care_stepper"
+                    ],
+                    "_raw": "click | go_to: w_self_care_stepper",
+                    "_cleaned": "click | go_to: w_self_care_stepper"
+                  }
+                ],
+                "hidden": "!@field.second_week || \"@fields.w_1on1_completion_status\" == \"completed\"",
+                "parameter_list": {
+                  "icon_src": "plh_images/icons/play_white.svg",
+                  "text": "Start",
+                  "style": "home_screen yellow"
+                },
+                "style_list": [
+                  "padding: 0"
+                ],
+                "_nested_name": "tile_weekly_workshops.dg_weekly_workshops.quick_start_weekly_workshops",
+                "_dynamicFields": {
+                  "hidden": [
+                    {
+                      "fullExpression": "!@field.second_week || \"@fields.w_1on1_completion_status\" == \"completed\"",
+                      "matchedExpression": "@field.second_week",
+                      "type": "field",
+                      "fieldName": "second_week"
+                    },
+                    {
+                      "fullExpression": "!@field.second_week || \"@fields.w_1on1_completion_status\" == \"completed\"",
+                      "matchedExpression": "@fields.w_1on1_completion_status",
+                      "type": "fields",
+                      "fieldName": "w_1on1_completion_status"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@field.second_week": [
+                    "hidden"
+                  ],
+                  "@fields.w_1on1_completion_status": [
                     "hidden"
                   ]
                 }
@@ -629,60 +698,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "workshop_page",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "weekly_workshops",
-        "value": "weekly_workshops",
-        "hidden": "!@fields.workshops_setup",
-        "rows": [],
-        "_nested_name": "weekly_workshops",
-        "_dynamicFields": {
-          "hidden": [
-            {
-              "fullExpression": "!@fields.workshops_setup",
-              "matchedExpression": "@fields.workshops_setup",
-              "type": "fields",
-              "fieldName": "workshops_setup"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@fields.workshops_setup": [
-            "hidden"
-          ]
-        }
-      },
-      {
-        "type": "template",
-        "name": "workshop_setup_stepper",
-        "value": "workshop_setup_stepper",
-        "hidden": "@fields.workshops_setup",
-        "rows": [],
-        "_nested_name": "workshop_setup_stepper",
-        "_dynamicFields": {
-          "hidden": [
-            {
-              "fullExpression": "@fields.workshops_setup",
-              "matchedExpression": "@fields.workshops_setup",
-              "type": "fields",
-              "fieldName": "workshops_setup"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@fields.workshops_setup": [
-            "hidden"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "weekly_workshops",
     "status": "released",
     "rows": [
@@ -749,8 +764,17 @@
       {
         "type": "tile_component",
         "name": "quick_start",
-        "value": "@local.group_name\nStart @local.next_workshop_name",
         "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_this_workshop_together",
+              "@local.do_workshops_together"
+            ],
+            "_raw": "click | set_field:do_this_workshop_together:@local.do_workshops_together",
+            "_cleaned": "click | set_field:do_this_workshop_together:@local.do_workshops_together"
+          },
           {
             "trigger": "click",
             "action_id": "go_to",
@@ -761,70 +785,74 @@
             "_cleaned": "click | go_to:w_self_care_stepper"
           }
         ],
-        "hidden": "@field.do_workshops_together",
+        "hidden": "@field.second_week",
         "parameter_list": {
           "style": "quick_start_dark",
-          "first_line_text": "Welcome @field.user_name",
-          "second_line_text": "Start @field.current_workshop workshop",
+          "first_line_text": "Start workshop",
+          "second_line_text": "@global.w_self_care",
           "icon_src": "plh_images/icons/play_white.svg"
         },
         "_nested_name": "quick_start",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@local.group_name\nStart @local.next_workshop_name",
-              "matchedExpression": "@local.group_name",
-              "type": "local",
-              "fieldName": "group_name"
-            },
-            {
-              "fullExpression": "@local.group_name\nStart @local.next_workshop_name",
-              "matchedExpression": "@local.next_workshop_name",
-              "type": "local",
-              "fieldName": "next_workshop_name"
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.do_workshops_together",
+                    "matchedExpression": "@local.do_workshops_together",
+                    "type": "local",
+                    "fieldName": "do_workshops_together"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "click | set_field:do_this_workshop_together:@local.do_workshops_together",
+                  "matchedExpression": "@local.do_workshops_together",
+                  "type": "local",
+                  "fieldName": "do_workshops_together"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "click | set_field:do_this_workshop_together:@local.do_workshops_together",
+                  "matchedExpression": "@local.do_workshops_together",
+                  "type": "local",
+                  "fieldName": "do_workshops_together"
+                }
+              ]
             }
-          ],
+          },
           "hidden": [
             {
-              "fullExpression": "@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.second_week",
+              "matchedExpression": "@field.second_week",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "second_week"
             }
           ],
           "parameter_list": {
-            "first_line_text": [
-              {
-                "fullExpression": "Welcome @field.user_name",
-                "matchedExpression": "@field.user_name",
-                "type": "field",
-                "fieldName": "user_name"
-              }
-            ],
             "second_line_text": [
               {
-                "fullExpression": "Start @field.current_workshop workshop",
-                "matchedExpression": "@field.current_workshop",
-                "type": "field",
-                "fieldName": "current_workshop"
+                "fullExpression": "@global.w_self_care",
+                "matchedExpression": "@global.w_self_care",
+                "type": "global",
+                "fieldName": "w_self_care"
               }
             ]
           }
         },
         "_dynamicDependencies": {
-          "@local.group_name": [
-            "value"
+          "@local.do_workshops_together": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
           ],
-          "@local.next_workshop_name": [
-            "value"
-          ],
-          "@field.do_workshops_together": [
+          "@field.second_week": [
             "hidden"
           ],
-          "@field.user_name": [
-            "parameter_list.first_line_text"
-          ],
-          "@field.current_workshop": [
+          "@global.w_self_care": [
             "parameter_list.second_line_text"
           ]
         }
@@ -832,82 +860,95 @@
       {
         "type": "tile_component",
         "name": "quick_start",
-        "value": "@local.group_name\nStart @local.next_workshop_name",
         "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_this_workshop_together",
+              "@local.do_workshops_together"
+            ],
+            "_raw": "click | set_field:do_this_workshop_together:@local.do_workshops_together",
+            "_cleaned": "click | set_field:do_this_workshop_together:@local.do_workshops_together"
+          },
           {
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "w_self_care_stepper"
+              "w_1on1_stepper"
             ],
-            "_raw": "click | go_to:w_self_care_stepper",
-            "_cleaned": "click | go_to:w_self_care_stepper"
+            "_raw": "click | go_to:w_1on1_stepper",
+            "_cleaned": "click | go_to:w_1on1_stepper"
           }
         ],
-        "hidden": "!@field.do_workshops_together",
+        "hidden": "!@field.second_week",
         "parameter_list": {
           "style": "quick_start_dark",
-          "first_line_text": "Welcome @field.group_name",
-          "second_line_text": "Start @field.current_workshop",
+          "first_line_text": "Start workshop",
+          "second_line_text": "@global.w_1on1",
           "icon_src": "plh_images/icons/play_white.svg"
         },
         "_nested_name": "quick_start",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@local.group_name\nStart @local.next_workshop_name",
-              "matchedExpression": "@local.group_name",
-              "type": "local",
-              "fieldName": "group_name"
-            },
-            {
-              "fullExpression": "@local.group_name\nStart @local.next_workshop_name",
-              "matchedExpression": "@local.next_workshop_name",
-              "type": "local",
-              "fieldName": "next_workshop_name"
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.do_workshops_together",
+                    "matchedExpression": "@local.do_workshops_together",
+                    "type": "local",
+                    "fieldName": "do_workshops_together"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "click | set_field:do_this_workshop_together:@local.do_workshops_together",
+                  "matchedExpression": "@local.do_workshops_together",
+                  "type": "local",
+                  "fieldName": "do_workshops_together"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "click | set_field:do_this_workshop_together:@local.do_workshops_together",
+                  "matchedExpression": "@local.do_workshops_together",
+                  "type": "local",
+                  "fieldName": "do_workshops_together"
+                }
+              ]
             }
-          ],
+          },
           "hidden": [
             {
-              "fullExpression": "!@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "!@field.second_week",
+              "matchedExpression": "@field.second_week",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "second_week"
             }
           ],
           "parameter_list": {
-            "first_line_text": [
-              {
-                "fullExpression": "Welcome @field.group_name",
-                "matchedExpression": "@field.group_name",
-                "type": "field",
-                "fieldName": "group_name"
-              }
-            ],
             "second_line_text": [
               {
-                "fullExpression": "Start @field.current_workshop",
-                "matchedExpression": "@field.current_workshop",
-                "type": "field",
-                "fieldName": "current_workshop"
+                "fullExpression": "@global.w_1on1",
+                "matchedExpression": "@global.w_1on1",
+                "type": "global",
+                "fieldName": "w_1on1"
               }
             ]
           }
         },
         "_dynamicDependencies": {
-          "@local.group_name": [
-            "value"
+          "@local.do_workshops_together": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
           ],
-          "@local.next_workshop_name": [
-            "value"
-          ],
-          "@field.do_workshops_together": [
+          "@field.second_week": [
             "hidden"
           ],
-          "@field.group_name": [
-            "parameter_list.first_line_text"
-          ],
-          "@field.current_workshop": [
+          "@global.w_1on1": [
             "parameter_list.second_line_text"
           ]
         }
@@ -1907,11 +1948,11 @@
                 "trigger": "click",
                 "action_id": "set_field",
                 "args": [
-                  "do_workshops_together",
+                  "do_this_workshop_together",
                   "false"
                 ],
-                "_raw": "click | set_field:do_workshops_together:false",
-                "_cleaned": "click | set_field:do_workshops_together:false"
+                "_raw": "click | set_field:do_this_workshop_together:false",
+                "_cleaned": "click | set_field:do_this_workshop_together:false"
               },
               {
                 "trigger": "click",
@@ -2001,11 +2042,11 @@
                 "trigger": "click",
                 "action_id": "set_field",
                 "args": [
-                  "do_workshops_together",
+                  "do_this_workshop_together",
                   "true"
                 ],
-                "_raw": "click | set_field:do_workshops_together:true",
-                "_cleaned": "click | set_field:do_workshops_together:true"
+                "_raw": "click | set_field:do_this_workshop_together:true",
+                "_cleaned": "click | set_field:do_this_workshop_together:true"
               },
               {
                 "trigger": "click",
@@ -2309,20 +2350,20 @@
       {
         "type": "title",
         "name": "title",
-        "value": "@global.weekly_workshops Options",
+        "value": "@global.weekly_workshop_options",
         "_nested_name": "title",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@global.weekly_workshops Options",
-              "matchedExpression": "@global.weekly_workshops",
+              "fullExpression": "@global.weekly_workshop_options",
+              "matchedExpression": "@global.weekly_workshop_options",
               "type": "global",
-              "fieldName": "weekly_workshops"
+              "fieldName": "weekly_workshop_options"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.weekly_workshops": [
+          "@global.weekly_workshop_options": [
             "value"
           ]
         }
@@ -2368,7 +2409,7 @@
         ],
         "parameter_list": {
           "text_align": "center",
-          "placeholder": "Click to change your name"
+          "placeholder": "Tap to change your name"
         },
         "_nested_name": "text_box_1",
         "_dynamicFields": {
@@ -2732,7 +2773,7 @@
         "hidden": "!@field.do_workshops_together",
         "parameter_list": {
           "text_align": "center",
-          "placeholder": "Click to change your group name"
+          "placeholder": "Tap to change your group name"
         },
         "_nested_name": "text_box_5",
         "_dynamicFields": {
@@ -2893,7 +2934,7 @@
       },
       {
         "type": "display_group",
-        "name": "Points",
+        "name": "points",
         "parameter_list": {
           "style": "parent_point"
         },
@@ -2925,10 +2966,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_relax",
-              "icon_src": "@global.parent_point_relax_image"
+              "text": "@data.habit.relax.title",
+              "icon_src": "plh_images/habits/habit_relax_image.svg"
             },
-            "_nested_name": "Points.parent_point_relax",
+            "_nested_name": "points.parent_point_relax",
             "_dynamicFields": {
               "value": [
                 {
@@ -2999,18 +3040,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_relax",
-                    "matchedExpression": "@global.parent_point_relax",
-                    "type": "global",
-                    "fieldName": "parent_point_relax"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_relax_image",
-                    "matchedExpression": "@global.parent_point_relax_image",
-                    "type": "global",
-                    "fieldName": "parent_point_relax_image"
+                    "fullExpression": "@data.habit.relax.title",
+                    "matchedExpression": "@data.habit.relax.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -3027,11 +3060,8 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_relax": [
+              "@data.habit.relax.title": [
                 "parameter_list.text"
-              ],
-              "@global.parent_point_relax_image": [
-                "parameter_list.icon_src"
               ]
             }
           },
@@ -3062,10 +3092,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_treat_yourself",
-              "icon_src": "@global.parent_point_treat_yourself_image"
+              "text": "@data.habit.treat_yourself.title",
+              "icon_src": "plh_images/habits/habit_treat_yourself_image.svg"
             },
-            "_nested_name": "Points.parent_point_treat_yourself",
+            "_nested_name": "points.parent_point_treat_yourself",
             "_dynamicFields": {
               "value": [
                 {
@@ -3136,18 +3166,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_treat_yourself",
-                    "matchedExpression": "@global.parent_point_treat_yourself",
-                    "type": "global",
-                    "fieldName": "parent_point_treat_yourself"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_treat_yourself_image",
-                    "matchedExpression": "@global.parent_point_treat_yourself_image",
-                    "type": "global",
-                    "fieldName": "parent_point_treat_yourself_image"
+                    "fullExpression": "@data.habit.treat_yourself.title",
+                    "matchedExpression": "@data.habit.treat_yourself.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -3164,11 +3186,8 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_treat_yourself": [
+              "@data.habit.treat_yourself.title": [
                 "parameter_list.text"
-              ],
-              "@global.parent_point_treat_yourself_image": [
-                "parameter_list.icon_src"
               ]
             }
           },
@@ -3199,10 +3218,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_praise_yourself",
-              "icon_src": "@global.parent_point_praise_yourself_image"
+              "text": "@data.habit.praise_yourself.title",
+              "icon_src": "plh_images/habits/habit_praise_yourself_image.svg"
             },
-            "_nested_name": "Points.parent_point_praise_yourself",
+            "_nested_name": "points.parent_point_praise_yourself",
             "_dynamicFields": {
               "value": [
                 {
@@ -3273,18 +3292,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_praise_yourself",
-                    "matchedExpression": "@global.parent_point_praise_yourself",
-                    "type": "global",
-                    "fieldName": "parent_point_praise_yourself"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_praise_yourself_image",
-                    "matchedExpression": "@global.parent_point_praise_yourself_image",
-                    "type": "global",
-                    "fieldName": "parent_point_praise_yourself_image"
+                    "fullExpression": "@data.habit.praise_yourself.title",
+                    "matchedExpression": "@data.habit.praise_yourself.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -3301,11 +3312,8 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_praise_yourself": [
+              "@data.habit.praise_yourself.title": [
                 "parameter_list.text"
-              ],
-              "@global.parent_point_praise_yourself_image": [
-                "parameter_list.icon_src"
               ]
             }
           },
@@ -3336,10 +3344,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_spend_time",
-              "icon_src": "@global.parent_point_spend_time_image"
+              "text": "@data.habit.spend_time.title",
+              "icon_src": "plh_images/habits/habit_spend_time_image.svg"
             },
-            "_nested_name": "Points.parent_point_spend_time",
+            "_nested_name": "points.parent_point_spend_time",
             "_dynamicFields": {
               "value": [
                 {
@@ -3410,18 +3418,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_spend_time",
-                    "matchedExpression": "@global.parent_point_spend_time",
-                    "type": "global",
-                    "fieldName": "parent_point_spend_time"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_spend_time_image",
-                    "matchedExpression": "@global.parent_point_spend_time_image",
-                    "type": "global",
-                    "fieldName": "parent_point_spend_time_image"
+                    "fullExpression": "@data.habit.spend_time.title",
+                    "matchedExpression": "@data.habit.spend_time.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -3438,11 +3438,8 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_spend_time": [
+              "@data.habit.spend_time.title": [
                 "parameter_list.text"
-              ],
-              "@global.parent_point_spend_time_image": [
-                "parameter_list.icon_src"
               ]
             }
           },
@@ -3473,10 +3470,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_praise_teen",
-              "icon_src": "@global.parent_point_praise_teen_image"
+              "text": "@data.habit.praise_teen.title",
+              "icon_src": "plh_images/habits/habit_praise_teen_image.svg"
             },
-            "_nested_name": "Points.parent_point_praise_teen",
+            "_nested_name": "points.parent_point_praise_teen",
             "_dynamicFields": {
               "value": [
                 {
@@ -3547,18 +3544,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_praise_teen",
-                    "matchedExpression": "@global.parent_point_praise_teen",
-                    "type": "global",
-                    "fieldName": "parent_point_praise_teen"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_praise_teen_image",
-                    "matchedExpression": "@global.parent_point_praise_teen_image",
-                    "type": "global",
-                    "fieldName": "parent_point_praise_teen_image"
+                    "fullExpression": "@data.habit.praise_teen.title",
+                    "matchedExpression": "@data.habit.praise_teen.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -3575,11 +3564,134 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_praise_teen": [
+              "@data.habit.praise_teen.title": [
                 "parameter_list.text"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_box",
+            "name": "parent_point_instruct_positively",
+            "value": "@field.total_parent_point_instruct_positively",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "total_parent_point_instruct_positively",
+                  "@field.total_parent_point_instruct_positively+1"
+                ],
+                "_raw": "click | set_field: total_parent_point_instruct_positively: @field.total_parent_point_instruct_positively+1",
+                "_cleaned": "click | set_field: total_parent_point_instruct_positively: @field.total_parent_point_instruct_positively+1"
+              },
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "weekly_parent_point_instruct_positively",
+                  "@field.weekly_parent_point_instruct_positively+1"
+                ],
+                "_raw": "click | set_field: weekly_parent_point_instruct_positively: @field.weekly_parent_point_instruct_positively+1",
+                "_cleaned": "click | set_field: weekly_parent_point_instruct_positively: @field.weekly_parent_point_instruct_positively+1"
+              }
+            ],
+            "parameter_list": {
+              "text": "@data.habit.instruct_positively.title",
+              "icon_src": "plh_images/habits/habit_praise_teen_image.svg"
+            },
+            "_nested_name": "points.parent_point_instruct_positively",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@field.total_parent_point_instruct_positively",
+                  "matchedExpression": "@field.total_parent_point_instruct_positively",
+                  "type": "field",
+                  "fieldName": "total_parent_point_instruct_positively"
+                }
               ],
-              "@global.parent_point_praise_teen_image": [
-                "parameter_list.icon_src"
+              "action_list": {
+                "0": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@field.total_parent_point_instruct_positively+1",
+                        "matchedExpression": "@field.total_parent_point_instruct_positively",
+                        "type": "field",
+                        "fieldName": "total_parent_point_instruct_positively"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "click | set_field: total_parent_point_instruct_positively: @field.total_parent_point_instruct_positively+1",
+                      "matchedExpression": "@field.total_parent_point_instruct_positively",
+                      "type": "field",
+                      "fieldName": "total_parent_point_instruct_positively"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "click | set_field: total_parent_point_instruct_positively: @field.total_parent_point_instruct_positively+1",
+                      "matchedExpression": "@field.total_parent_point_instruct_positively",
+                      "type": "field",
+                      "fieldName": "total_parent_point_instruct_positively"
+                    }
+                  ]
+                },
+                "1": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@field.weekly_parent_point_instruct_positively+1",
+                        "matchedExpression": "@field.weekly_parent_point_instruct_positively",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_instruct_positively"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "click | set_field: weekly_parent_point_instruct_positively: @field.weekly_parent_point_instruct_positively+1",
+                      "matchedExpression": "@field.weekly_parent_point_instruct_positively",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_instruct_positively"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "click | set_field: weekly_parent_point_instruct_positively: @field.weekly_parent_point_instruct_positively+1",
+                      "matchedExpression": "@field.weekly_parent_point_instruct_positively",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_instruct_positively"
+                    }
+                  ]
+                }
+              },
+              "parameter_list": {
+                "text": [
+                  {
+                    "fullExpression": "@data.habit.instruct_positively.title",
+                    "matchedExpression": "@data.habit.instruct_positively.title",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@field.total_parent_point_instruct_positively": [
+                "value",
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_instruct_positively": [
+                "action_list.1.args.1",
+                "action_list.1._raw",
+                "action_list.1._cleaned"
+              ],
+              "@data.habit.instruct_positively.title": [
+                "parameter_list.text"
               ]
             }
           },
@@ -3610,10 +3722,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_breathe",
-              "icon_src": "@global.parent_point_breathe_image"
+              "text": "@data.habit.breathe.title",
+              "icon_src": "plh_images/habits/habit_breathe_image.svg"
             },
-            "_nested_name": "Points.parent_point_breathe",
+            "_nested_name": "points.parent_point_breathe",
             "_dynamicFields": {
               "value": [
                 {
@@ -3684,18 +3796,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_breathe",
-                    "matchedExpression": "@global.parent_point_breathe",
-                    "type": "global",
-                    "fieldName": "parent_point_breathe"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_breathe_image",
-                    "matchedExpression": "@global.parent_point_breathe_image",
-                    "type": "global",
-                    "fieldName": "parent_point_breathe_image"
+                    "fullExpression": "@data.habit.breathe.title",
+                    "matchedExpression": "@data.habit.breathe.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -3712,11 +3816,8 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_breathe": [
+              "@data.habit.breathe.title": [
                 "parameter_list.text"
-              ],
-              "@global.parent_point_breathe_image": [
-                "parameter_list.icon_src"
               ]
             }
           },
@@ -3747,10 +3848,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_money",
-              "icon_src": "@global.parent_point_money_image"
+              "text": "@data.habit.money.title",
+              "icon_src": "plh_images/habits/habit_money_image.svg"
             },
-            "_nested_name": "Points.parent_point_money",
+            "_nested_name": "points.parent_point_money",
             "_dynamicFields": {
               "value": [
                 {
@@ -3821,18 +3922,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_money",
-                    "matchedExpression": "@global.parent_point_money",
-                    "type": "global",
-                    "fieldName": "parent_point_money"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_money_image",
-                    "matchedExpression": "@global.parent_point_money_image",
-                    "type": "global",
-                    "fieldName": "parent_point_money_image"
+                    "fullExpression": "@data.habit.money.title",
+                    "matchedExpression": "@data.habit.money.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -3849,11 +3942,8 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_money": [
+              "@data.habit.money.title": [
                 "parameter_list.text"
-              ],
-              "@global.parent_point_money_image": [
-                "parameter_list.icon_src"
               ]
             }
           },
@@ -3884,10 +3974,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_consequence",
-              "icon_src": "@global.parent_point_consequence_image"
+              "text": "@data.habit.consequence.title",
+              "icon_src": "plh_images/habits/habit_consequence_image.svg"
             },
-            "_nested_name": "Points.parent_point_consequence",
+            "_nested_name": "points.parent_point_consequence",
             "_dynamicFields": {
               "value": [
                 {
@@ -3958,18 +4048,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_consequence",
-                    "matchedExpression": "@global.parent_point_consequence",
-                    "type": "global",
-                    "fieldName": "parent_point_consequence"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_consequence_image",
-                    "matchedExpression": "@global.parent_point_consequence_image",
-                    "type": "global",
-                    "fieldName": "parent_point_consequence_image"
+                    "fullExpression": "@data.habit.consequence.title",
+                    "matchedExpression": "@data.habit.consequence.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -3986,11 +4068,8 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_consequence": [
+              "@data.habit.consequence.title": [
                 "parameter_list.text"
-              ],
-              "@global.parent_point_consequence_image": [
-                "parameter_list.icon_src"
               ]
             }
           },
@@ -4021,10 +4100,10 @@
               }
             ],
             "parameter_list": {
-              "text": "@global.parent_point_safe",
-              "icon_src": "@global.parent_point_safe_image"
+              "text": "@data.habit.safe.title",
+              "icon_src": "plh_images/habits/habit_safe_image.svg"
             },
-            "_nested_name": "Points.parent_point_safe",
+            "_nested_name": "points.parent_point_safe",
             "_dynamicFields": {
               "value": [
                 {
@@ -4095,18 +4174,10 @@
               "parameter_list": {
                 "text": [
                   {
-                    "fullExpression": "@global.parent_point_safe",
-                    "matchedExpression": "@global.parent_point_safe",
-                    "type": "global",
-                    "fieldName": "parent_point_safe"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_safe_image",
-                    "matchedExpression": "@global.parent_point_safe_image",
-                    "type": "global",
-                    "fieldName": "parent_point_safe_image"
+                    "fullExpression": "@data.habit.safe.title",
+                    "matchedExpression": "@data.habit.safe.title",
+                    "type": "data",
+                    "fieldName": "habit"
                   }
                 ]
               }
@@ -4123,16 +4194,161 @@
                 "action_list.1._raw",
                 "action_list.1._cleaned"
               ],
-              "@global.parent_point_safe": [
+              "@data.habit.safe.title": [
                 "parameter_list.text"
-              ],
-              "@global.parent_point_safe_image": [
-                "parameter_list.icon_src"
               ]
             }
           }
         ],
-        "_nested_name": "Points"
+        "_nested_name": "points"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "workshop_unlock",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "Unlock Workshops",
+        "_nested_name": "title"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Are you sure you want to unlock all the workshops? Once you do this you will not be able to lock them back",
+        "_nested_name": "text"
+      },
+      {
+        "type": "button",
+        "name": "unlock_button",
+        "value": "Unlock Workshops",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_self_care_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_self_care_disabled:false",
+            "_cleaned": "click | set_field:w_self_care_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_1on1_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_1on1_disabled:false",
+            "_cleaned": "click | set_field:w_1on1_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_praise_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_praise_disabled:false",
+            "_cleaned": "click | set_field:w_praise_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_instruct_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_instruct_disabled:false",
+            "_cleaned": "click | set_field:w_instruct_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_stress_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_stress_disabled:false",
+            "_cleaned": "click | set_field:w_stress_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_money_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_money_disabled:false",
+            "_cleaned": "click | set_field:w_money_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_rules_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_rules_disabled:false",
+            "_cleaned": "click | set_field:w_rules_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_consequence_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_consequence_disabled:false",
+            "_cleaned": "click | set_field:w_consequence_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_solve_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_solve_disabled:false",
+            "_cleaned": "click | set_field:w_solve_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_safe_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_safe_disabled:false",
+            "_cleaned": "click | set_field:w_safe_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_crisis_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_crisis_disabled:false",
+            "_cleaned": "click | set_field:w_crisis_disabled:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_celebrate_disabled",
+              "false"
+            ],
+            "_raw": "click | set_field:w_celebrate_disabled:false",
+            "_cleaned": "click | set_field:w_celebrate_disabled:false"
+          }
+        ],
+        "_nested_name": "unlock_button"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
@@ -4174,437 +4390,461 @@
         "_nested_name": "display_group"
       },
       {
-        "type": "tile_component",
-        "name": "tile_help",
-        "action_list": [
+        "type": "display_group",
+        "parameter_list": {
+          "style": "parent_point"
+        },
+        "rows": [
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_help"
+            "type": "tile_component",
+            "name": "tile_help",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_help"
+                ],
+                "_raw": "click | go_to:parent_centre_help",
+                "_cleaned": "click | go_to:parent_centre_help"
+              }
             ],
-            "_raw": "click | go_to:parent_centre_help",
-            "_cleaned": "click | go_to:parent_centre_help"
+            "hidden": true,
+            "parameter_list": {
+              "style": "parent_centre_1",
+              "icon_src": "@global.help_icon",
+              "first_line_text": "@global.help"
+            },
+            "_nested_name": "display_group.tile_help",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.help_icon",
+                    "matchedExpression": "@global.help_icon",
+                    "type": "global",
+                    "fieldName": "help_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.help",
+                    "matchedExpression": "@global.help",
+                    "type": "global",
+                    "fieldName": "help"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.help_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.help": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_my_tips",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_my_tips"
+                ],
+                "_raw": "click | go_to:parent_centre_my_tips",
+                "_cleaned": "click | go_to:parent_centre_my_tips"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_2",
+              "icon_src": "@global.my_tips_icon",
+              "first_line_text": "@global.my_tips"
+            },
+            "_nested_name": "display_group.tile_my_tips",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.my_tips_icon",
+                    "matchedExpression": "@global.my_tips_icon",
+                    "type": "global",
+                    "fieldName": "my_tips_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.my_tips",
+                    "matchedExpression": "@global.my_tips",
+                    "type": "global",
+                    "fieldName": "my_tips"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.my_tips_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.my_tips": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_essential_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_essential_tools"
+                ],
+                "_raw": "click | go_to:parent_centre_essential_tools",
+                "_cleaned": "click | go_to:parent_centre_essential_tools"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_3",
+              "icon_src": "@global.essential_tools_icon",
+              "first_line_text": "@global.essential_tools"
+            },
+            "_nested_name": "display_group.tile_essential_tools",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.essential_tools_icon",
+                    "matchedExpression": "@global.essential_tools_icon",
+                    "type": "global",
+                    "fieldName": "essential_tools_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.essential_tools",
+                    "matchedExpression": "@global.essential_tools",
+                    "type": "global",
+                    "fieldName": "essential_tools"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.essential_tools_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.essential_tools": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_covid",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_covid"
+                ],
+                "_raw": "click | go_to:parent_centre_covid",
+                "_cleaned": "click | go_to:parent_centre_covid"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_4",
+              "icon_src": "@global.covid_icon",
+              "first_line_text": "@global.covid"
+            },
+            "_nested_name": "display_group.tile_covid",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.covid_icon",
+                    "matchedExpression": "@global.covid_icon",
+                    "type": "global",
+                    "fieldName": "covid_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.covid",
+                    "matchedExpression": "@global.covid",
+                    "type": "global",
+                    "fieldName": "covid"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.covid_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.covid": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_extra",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "survey_welcome_stepper"
+                ],
+                "_raw": "click | go_to:survey_welcome_stepper",
+                "_cleaned": "click | go_to:survey_welcome_stepper"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_1",
+              "icon_src": "@global.extra_icon",
+              "first_line_text": "@global.extra"
+            },
+            "_nested_name": "display_group.tile_extra",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.extra_icon",
+                    "matchedExpression": "@global.extra_icon",
+                    "type": "global",
+                    "fieldName": "extra_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.extra",
+                    "matchedExpression": "@global.extra",
+                    "type": "global",
+                    "fieldName": "extra"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.extra_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.extra": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_relax_and_activities",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_relax"
+                ],
+                "_raw": "click | go_to:parent_centre_relax",
+                "_cleaned": "click | go_to:parent_centre_relax"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_2",
+              "icon_src": "@global.relax_and_activities_icon",
+              "first_line_text": "@global.relax_and_activities"
+            },
+            "_nested_name": "display_group.tile_relax_and_activities",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.relax_and_activities_icon",
+                    "matchedExpression": "@global.relax_and_activities_icon",
+                    "type": "global",
+                    "fieldName": "relax_and_activities_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.relax_and_activities",
+                    "matchedExpression": "@global.relax_and_activities",
+                    "type": "global",
+                    "fieldName": "relax_and_activities"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.relax_and_activities_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.relax_and_activities": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_support_contacts",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_support_contacts"
+                ],
+                "_raw": "click | go_to:parent_centre_support_contacts",
+                "_cleaned": "click | go_to:parent_centre_support_contacts"
+              }
+            ],
+            "hidden": true,
+            "parameter_list": {
+              "style": "parent_centre_3",
+              "icon_src": "@global.support_contacts_icon",
+              "first_line_text": "@global.support_contacts"
+            },
+            "_nested_name": "display_group.tile_support_contacts",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.support_contacts_icon",
+                    "matchedExpression": "@global.support_contacts_icon",
+                    "type": "global",
+                    "fieldName": "support_contacts_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.support_contacts",
+                    "matchedExpression": "@global.support_contacts",
+                    "type": "global",
+                    "fieldName": "support_contacts"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.support_contacts_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.support_contacts": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_evidence_base",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_evidence_base"
+                ],
+                "_raw": "click | go_to:parent_centre_evidence_base",
+                "_cleaned": "click | go_to:parent_centre_evidence_base"
+              }
+            ],
+            "hidden": true,
+            "parameter_list": {
+              "style": "parent_centre_4",
+              "icon_src": "@global.evidence_base_icon",
+              "first_line_text": "@global.evidence_base"
+            },
+            "_nested_name": "display_group.tile_evidence_base",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.evidence_base_icon",
+                    "matchedExpression": "@global.evidence_base_icon",
+                    "type": "global",
+                    "fieldName": "evidence_base_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.evidence_base",
+                    "matchedExpression": "@global.evidence_base",
+                    "type": "global",
+                    "fieldName": "evidence_base"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.evidence_base_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.evidence_base": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_technical_support",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_technical_support"
+                ],
+                "_raw": "click | go_to:parent_centre_technical_support",
+                "_cleaned": "click | go_to:parent_centre_technical_support"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_1",
+              "icon_src": "@global.technical_support_icon",
+              "first_line_text": "@global.technical_support"
+            },
+            "_nested_name": "display_group.tile_technical_support",
+            "_dynamicFields": {
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@global.technical_support_icon",
+                    "matchedExpression": "@global.technical_support_icon",
+                    "type": "global",
+                    "fieldName": "technical_support_icon"
+                  }
+                ],
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.technical_support",
+                    "matchedExpression": "@global.technical_support",
+                    "type": "global",
+                    "fieldName": "technical_support"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.technical_support_icon": [
+                "parameter_list.icon_src"
+              ],
+              "@global.technical_support": [
+                "parameter_list.first_line_text"
+              ]
+            }
           }
         ],
-        "parameter_list": {
-          "style": "quick_start",
-          "icon_src": "@global.help_icon",
-          "first_line_text": "@global.help"
-        },
-        "_nested_name": "tile_help",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.help_icon",
-                "matchedExpression": "@global.help_icon",
-                "type": "global",
-                "fieldName": "help_icon"
-              }
-            ],
-            "first_line_text": [
-              {
-                "fullExpression": "@global.help",
-                "matchedExpression": "@global.help",
-                "type": "global",
-                "fieldName": "help"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.help_icon": [
-            "parameter_list.icon_src"
-          ],
-          "@global.help": [
-            "parameter_list.first_line_text"
-          ]
-        }
-      },
-      {
-        "type": "tile_component",
-        "name": "tile_my_tips",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_my_tips"
-            ],
-            "_raw": "click | go_to:parent_centre_my_tips",
-            "_cleaned": "click | go_to:parent_centre_my_tips"
-          }
-        ],
-        "parameter_list": {
-          "style": "quick_start_blue",
-          "icon_src": "@global.essential_tools_icon",
-          "first_line_text": "My Tips"
-        },
-        "_nested_name": "tile_my_tips",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.essential_tools_icon",
-                "matchedExpression": "@global.essential_tools_icon",
-                "type": "global",
-                "fieldName": "essential_tools_icon"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.essential_tools_icon": [
-            "parameter_list.icon_src"
-          ]
-        }
-      },
-      {
-        "type": "tile_component",
-        "name": "tile_essential_tools",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_essential_tools"
-            ],
-            "_raw": "click | go_to:parent_centre_essential_tools",
-            "_cleaned": "click | go_to:parent_centre_essential_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "quick_start_blue",
-          "icon_src": "@global.essential_tools_icon",
-          "first_line_text": "@global.essential_tools"
-        },
-        "_nested_name": "tile_essential_tools",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.essential_tools_icon",
-                "matchedExpression": "@global.essential_tools_icon",
-                "type": "global",
-                "fieldName": "essential_tools_icon"
-              }
-            ],
-            "first_line_text": [
-              {
-                "fullExpression": "@global.essential_tools",
-                "matchedExpression": "@global.essential_tools",
-                "type": "global",
-                "fieldName": "essential_tools"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.essential_tools_icon": [
-            "parameter_list.icon_src"
-          ],
-          "@global.essential_tools": [
-            "parameter_list.first_line_text"
-          ]
-        }
-      },
-      {
-        "type": "tile_component",
-        "name": "tile_covid",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_covid"
-            ],
-            "_raw": "click | go_to:parent_centre_covid",
-            "_cleaned": "click | go_to:parent_centre_covid"
-          }
-        ],
-        "parameter_list": {
-          "style": "quick_start_red",
-          "icon_src": "@global.covid_icon",
-          "first_line_text": "@global.covid"
-        },
-        "_nested_name": "tile_covid",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.covid_icon",
-                "matchedExpression": "@global.covid_icon",
-                "type": "global",
-                "fieldName": "covid_icon"
-              }
-            ],
-            "first_line_text": [
-              {
-                "fullExpression": "@global.covid",
-                "matchedExpression": "@global.covid",
-                "type": "global",
-                "fieldName": "covid"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.covid_icon": [
-            "parameter_list.icon_src"
-          ],
-          "@global.covid": [
-            "parameter_list.first_line_text"
-          ]
-        }
-      },
-      {
-        "type": "tile_component",
-        "name": "tile_extra",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_extra"
-            ],
-            "_raw": "click | go_to:parent_centre_extra",
-            "_cleaned": "click | go_to:parent_centre_extra"
-          }
-        ],
-        "parameter_list": {
-          "style": "quick_start",
-          "icon_src": "@global.extra_icon",
-          "first_line_text": "@global.extra"
-        },
-        "_nested_name": "tile_extra",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.extra_icon",
-                "matchedExpression": "@global.extra_icon",
-                "type": "global",
-                "fieldName": "extra_icon"
-              }
-            ],
-            "first_line_text": [
-              {
-                "fullExpression": "@global.extra",
-                "matchedExpression": "@global.extra",
-                "type": "global",
-                "fieldName": "extra"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.extra_icon": [
-            "parameter_list.icon_src"
-          ],
-          "@global.extra": [
-            "parameter_list.first_line_text"
-          ]
-        }
-      },
-      {
-        "type": "tile_component",
-        "name": "tile_relax_and_activities",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_relax"
-            ],
-            "_raw": "click | go_to:parent_centre_relax",
-            "_cleaned": "click | go_to:parent_centre_relax"
-          }
-        ],
-        "parameter_list": {
-          "style": "quick_start_blue",
-          "icon_src": "@global.relax_and_activities_icon",
-          "first_line_text": "@global.relax_and_activities"
-        },
-        "_nested_name": "tile_relax_and_activities",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.relax_and_activities_icon",
-                "matchedExpression": "@global.relax_and_activities_icon",
-                "type": "global",
-                "fieldName": "relax_and_activities_icon"
-              }
-            ],
-            "first_line_text": [
-              {
-                "fullExpression": "@global.relax_and_activities",
-                "matchedExpression": "@global.relax_and_activities",
-                "type": "global",
-                "fieldName": "relax_and_activities"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.relax_and_activities_icon": [
-            "parameter_list.icon_src"
-          ],
-          "@global.relax_and_activities": [
-            "parameter_list.first_line_text"
-          ]
-        }
-      },
-      {
-        "type": "tile_component",
-        "name": "tile_support_contacts",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_support_contacts"
-            ],
-            "_raw": "click | go_to:parent_centre_support_contacts",
-            "_cleaned": "click | go_to:parent_centre_support_contacts"
-          }
-        ],
-        "parameter_list": {
-          "style": "quick_start_red",
-          "icon_src": "@global.support_contacts_icon",
-          "first_line_text": "@global.support_contacts"
-        },
-        "_nested_name": "tile_support_contacts",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.support_contacts_icon",
-                "matchedExpression": "@global.support_contacts_icon",
-                "type": "global",
-                "fieldName": "support_contacts_icon"
-              }
-            ],
-            "first_line_text": [
-              {
-                "fullExpression": "@global.support_contacts",
-                "matchedExpression": "@global.support_contacts",
-                "type": "global",
-                "fieldName": "support_contacts"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.support_contacts_icon": [
-            "parameter_list.icon_src"
-          ],
-          "@global.support_contacts": [
-            "parameter_list.first_line_text"
-          ]
-        }
-      },
-      {
-        "type": "tile_component",
-        "name": "tile_evidence_base",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_evidence_base"
-            ],
-            "_raw": "click | go_to:parent_centre_evidence_base",
-            "_cleaned": "click | go_to:parent_centre_evidence_base"
-          }
-        ],
-        "parameter_list": {
-          "style": "quick_start",
-          "icon_src": "@global.evidence_base_icon",
-          "first_line_text": "@global.evidence_base"
-        },
-        "_nested_name": "tile_evidence_base",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.evidence_base_icon",
-                "matchedExpression": "@global.evidence_base_icon",
-                "type": "global",
-                "fieldName": "evidence_base_icon"
-              }
-            ],
-            "first_line_text": [
-              {
-                "fullExpression": "@global.evidence_base",
-                "matchedExpression": "@global.evidence_base",
-                "type": "global",
-                "fieldName": "evidence_base"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.evidence_base_icon": [
-            "parameter_list.icon_src"
-          ],
-          "@global.evidence_base": [
-            "parameter_list.first_line_text"
-          ]
-        }
-      },
-      {
-        "type": "tile_component",
-        "name": "tile_technical_support",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "parent_centre_technical_support"
-            ],
-            "_raw": "click | go_to:parent_centre_technical_support",
-            "_cleaned": "click | go_to:parent_centre_technical_support"
-          }
-        ],
-        "parameter_list": {
-          "style": "quick_start_blue",
-          "icon_src": "@global.technical_support_icon",
-          "first_line_text": "@global.technical_support"
-        },
-        "_nested_name": "tile_technical_support",
-        "_dynamicFields": {
-          "parameter_list": {
-            "icon_src": [
-              {
-                "fullExpression": "@global.technical_support_icon",
-                "matchedExpression": "@global.technical_support_icon",
-                "type": "global",
-                "fieldName": "technical_support_icon"
-              }
-            ],
-            "first_line_text": [
-              {
-                "fullExpression": "@global.technical_support",
-                "matchedExpression": "@global.technical_support",
-                "type": "global",
-                "fieldName": "technical_support"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@global.technical_support_icon": [
-            "parameter_list.icon_src"
-          ],
-          "@global.technical_support": [
-            "parameter_list.first_line_text"
-          ]
-        }
+        "name": "display_group",
+        "_nested_name": "display_group"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -4642,7 +4882,7 @@
         "_nested_name": "text"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -5220,7 +5460,7 @@
         }
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -5669,7 +5909,7 @@
         }
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -5703,11 +5943,44 @@
       {
         "type": "text",
         "name": "text",
-        "value": "Content coming soon",
+        "value": "Parenting during COVID is hard. Be proud of yourself for making it this far.\n\nWe are working on new content here to support you with talking to your teens and children about COVID.\n\nThe most up to date information on COVID-19 can be found on the WHO and UNICEF websites:",
         "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "https://www.unicef.org/coronavirus/covid-19",
+        "_nested_name": "text"
+      },
+      {
+        "type": "dashed_box",
+        "name": "warning",
+        "value": "These websites are not part of @global.parent_app, and require internet access. Visiting these websites when your phone is not connected to WiFi will use some of your data plan.",
+        "_nested_name": "warning",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "These websites are not part of @global.parent_app, and require internet access. Visiting these websites when your phone is not connected to WiFi will use some of your data plan.",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -5745,7 +6018,7 @@
         "_nested_name": "text"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -5783,7 +6056,7 @@
         "_nested_name": "text"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -5821,7 +6094,7 @@
         "_nested_name": "text"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -5859,7 +6132,7 @@
         "_nested_name": "text"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -5897,1759 +6170,7 @@
         "_nested_name": "text"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_unlock",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "name": "title",
-        "value": "Unlock Workshops",
-        "_nested_name": "title"
-      },
-      {
-        "type": "text",
-        "name": "text",
-        "value": "Are you sure you want to unlock all the workshops? Once you do this you will not be able to lock them back",
-        "_nested_name": "text"
-      },
-      {
-        "type": "button",
-        "name": "unlock_button",
-        "value": "Unlock Workshops",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_self_care_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_self_care_disabled:false",
-            "_cleaned": "click | set_field:w_self_care_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_1on1_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_1on1_disabled:false",
-            "_cleaned": "click | set_field:w_1on1_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_praise_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_praise_disabled:false",
-            "_cleaned": "click | set_field:w_praise_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_instruct_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_instruct_disabled:false",
-            "_cleaned": "click | set_field:w_instruct_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_stress_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_stress_disabled:false",
-            "_cleaned": "click | set_field:w_stress_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_money_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_money_disabled:false",
-            "_cleaned": "click | set_field:w_money_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_rules_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_rules_disabled:false",
-            "_cleaned": "click | set_field:w_rules_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_consequence_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_consequence_disabled:false",
-            "_cleaned": "click | set_field:w_consequence_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_solve_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_solve_disabled:false",
-            "_cleaned": "click | set_field:w_solve_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_safe_disables",
-              "false"
-            ],
-            "_raw": "click | set_field:w_safe_disables:false",
-            "_cleaned": "click | set_field:w_safe_disables:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_crisis_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_crisis_disabled:false",
-            "_cleaned": "click | set_field:w_crisis_disabled:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_celebrate_disabled",
-              "false"
-            ],
-            "_raw": "click | set_field:w_celebrate_disabled:false",
-            "_cleaned": "click | set_field:w_celebrate_disabled:false"
-          }
-        ],
-        "_nested_name": "unlock_button"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "workshop_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "workshop_button_0",
-        "value": "@global.w_self_care",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_self_care_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_self_care_buttons_temp",
-            "_cleaned": "click | go_to:w_self_care_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_0",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_self_care",
-              "matchedExpression": "@global.w_self_care",
-              "type": "global",
-              "fieldName": "w_self_care"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_self_care": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_1",
-        "value": "@global.w_1on1",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_1on1_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_1on1_buttons_temp",
-            "_cleaned": "click | go_to:w_1on1_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_1",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_1on1",
-              "matchedExpression": "@global.w_1on1",
-              "type": "global",
-              "fieldName": "w_1on1"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_1on1": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_2",
-        "value": "@global.w_praise",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_praise_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_praise_buttons_temp",
-            "_cleaned": "click | go_to:w_praise_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_2",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_praise",
-              "matchedExpression": "@global.w_praise",
-              "type": "global",
-              "fieldName": "w_praise"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_praise": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_3",
-        "value": "@global.w_instruct",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_instruct_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_instruct_buttons_temp",
-            "_cleaned": "click | go_to:w_instruct_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_3",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_instruct",
-              "matchedExpression": "@global.w_instruct",
-              "type": "global",
-              "fieldName": "w_instruct"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_instruct": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_4",
-        "value": "@global.w_stress",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_stress_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_stress_buttons_temp",
-            "_cleaned": "click | go_to:w_stress_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_4",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_stress",
-              "matchedExpression": "@global.w_stress",
-              "type": "global",
-              "fieldName": "w_stress"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_stress": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_5",
-        "value": "@global.w_money",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_money_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_money_buttons_temp",
-            "_cleaned": "click | go_to:w_money_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_5",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_money",
-              "matchedExpression": "@global.w_money",
-              "type": "global",
-              "fieldName": "w_money"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_money": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_6",
-        "value": "@global.w_rules",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_rules_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_rules_buttons_temp",
-            "_cleaned": "click | go_to:w_rules_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_6",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_rules",
-              "matchedExpression": "@global.w_rules",
-              "type": "global",
-              "fieldName": "w_rules"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_rules": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_7",
-        "value": "@global.w_consequence",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_consequence_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_consequence_buttons_temp",
-            "_cleaned": "click | go_to:w_consequence_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_7",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_consequence",
-              "matchedExpression": "@global.w_consequence",
-              "type": "global",
-              "fieldName": "w_consequence"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_consequence": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_8",
-        "value": "@global.w_solve",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_solve_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_solve_buttons_temp",
-            "_cleaned": "click | go_to:w_solve_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_8",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_solve",
-              "matchedExpression": "@global.w_solve",
-              "type": "global",
-              "fieldName": "w_solve"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_solve": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_9",
-        "value": "@global.w_safe",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_safe_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_safe_buttons_temp",
-            "_cleaned": "click | go_to:w_safe_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_9",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_safe",
-              "matchedExpression": "@global.w_safe",
-              "type": "global",
-              "fieldName": "w_safe"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_safe": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_10",
-        "value": "@global.w_crisis",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_crisis_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_crisis_buttons_temp",
-            "_cleaned": "click | go_to:w_crisis_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_10",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_crisis",
-              "matchedExpression": "@global.w_crisis",
-              "type": "global",
-              "fieldName": "w_crisis"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_crisis": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_button_11",
-        "value": "@global.w_celebrate",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_celebrate_buttons_temp"
-            ],
-            "_raw": "click | go_to:w_celebrate_buttons_temp",
-            "_cleaned": "click | go_to:w_celebrate_buttons_temp"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "workshop_button_11",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_celebrate",
-              "matchedExpression": "@global.w_celebrate",
-              "type": "global",
-              "fieldName": "w_celebrate"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_celebrate": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_self_care_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_self_care_stepper"
-            ],
-            "_raw": "click | go_to:w_self_care_stepper",
-            "_cleaned": "click | go_to:w_self_care_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_self_care_stepper"
-            ],
-            "_raw": "click | go_to:w_self_care_stepper",
-            "_cleaned": "click | go_to:w_self_care_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_1on1_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_1on1_stepper"
-            ],
-            "_raw": "click | go_to:w_1on1_stepper",
-            "_cleaned": "click | go_to:w_1on1_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_1on1_stepper"
-            ],
-            "_raw": "click | go_to:w_1on1_stepper",
-            "_cleaned": "click | go_to:w_1on1_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_praise_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_praise_stepper"
-            ],
-            "_raw": "click | go_to:w_praise_stepper",
-            "_cleaned": "click | go_to:w_praise_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_praise_stepper"
-            ],
-            "_raw": "click | go_to:w_praise_stepper",
-            "_cleaned": "click | go_to:w_praise_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_instruct_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_instruct_stepper"
-            ],
-            "_raw": "click | go_to:w_instruct_stepper",
-            "_cleaned": "click | go_to:w_instruct_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_instruct_stepper"
-            ],
-            "_raw": "click | go_to:w_instruct_stepper",
-            "_cleaned": "click | go_to:w_instruct_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_stress_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_stress_stepper"
-            ],
-            "_raw": "click | go_to:w_stress_stepper",
-            "_cleaned": "click | go_to:w_stress_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_stress_stepper"
-            ],
-            "_raw": "click | go_to:w_stress_stepper",
-            "_cleaned": "click | go_to:w_stress_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_money_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_money_stepper"
-            ],
-            "_raw": "click | go_to:w_money_stepper",
-            "_cleaned": "click | go_to:w_money_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_money_stepper"
-            ],
-            "_raw": "click | go_to:w_money_stepper",
-            "_cleaned": "click | go_to:w_money_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_rules_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_rules_stepper"
-            ],
-            "_raw": "click | go_to:w_rules_stepper",
-            "_cleaned": "click | go_to:w_rules_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_rules_stepper"
-            ],
-            "_raw": "click | go_to:w_rules_stepper",
-            "_cleaned": "click | go_to:w_rules_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_consequence_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_consequence_stepper"
-            ],
-            "_raw": "click | go_to:w_consequence_stepper",
-            "_cleaned": "click | go_to:w_consequence_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_consequence_stepper"
-            ],
-            "_raw": "click | go_to:w_consequence_stepper",
-            "_cleaned": "click | go_to:w_consequence_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_solve_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_solve_stepper"
-            ],
-            "_raw": "click | go_to:w_solve_stepper",
-            "_cleaned": "click | go_to:w_solve_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_solve_stepper"
-            ],
-            "_raw": "click | go_to:w_solve_stepper",
-            "_cleaned": "click | go_to:w_solve_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_safe_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_safe_stepper"
-            ],
-            "_raw": "click | go_to:w_safe_stepper",
-            "_cleaned": "click | go_to:w_safe_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_safe_stepper"
-            ],
-            "_raw": "click | go_to:w_safe_stepper",
-            "_cleaned": "click | go_to:w_safe_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_crisis_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_crisis_stepper"
-            ],
-            "_raw": "click | go_to:w_crisis_stepper",
-            "_cleaned": "click | go_to:w_crisis_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_crisis_stepper"
-            ],
-            "_raw": "click | go_to:w_crisis_stepper",
-            "_cleaned": "click | go_to:w_crisis_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_celebrate_buttons_temp",
-    "status": "released",
-    "rows": [
-      {
-        "type": "button",
-        "name": "individual_button",
-        "value": "@global.individual",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "false"
-            ],
-            "_raw": "click | set_field:do_workshops_together:false",
-            "_cleaned": "click | set_field:do_workshops_together:false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_celebrate_stepper"
-            ],
-            "_raw": "click | go_to:w_celebrate_stepper",
-            "_cleaned": "click | go_to:w_celebrate_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "individual_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.individual": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "together_button",
-        "value": "@global.together",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_workshops_together",
-              "true"
-            ],
-            "_raw": "click | set_field:do_workshops_together:true",
-            "_cleaned": "click | set_field:do_workshops_together:true"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_celebrate_stepper"
-            ],
-            "_raw": "click | go_to:w_celebrate_stepper",
-            "_cleaned": "click | go_to:w_celebrate_stepper"
-          }
-        ],
-        "parameter_list": {
-          "style": "passive full-width"
-        },
-        "_nested_name": "together_button",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.together": [
-            "value"
-          ]
-        }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
   },
   {
     "flow_type": "template",
@@ -9412,11 +7933,13 @@
     "rows": [
       {
         "name": "radio_group_tracker",
+        "value": "radio_group_tracker",
         "type": "set_variable",
         "_nested_name": "radio_group_tracker"
       },
       {
         "name": "radio_group_final",
+        "value": "radio_group_final",
         "type": "set_variable",
         "_nested_name": "radio_group_final"
       },
@@ -9593,6 +8116,16 @@
         "action_list": [
           {
             "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.radio_group_final",
+              "@local.radio_group"
+            ],
+            "_raw": "completed | set_field:@local.radio_group_final:@local.radio_group",
+            "_cleaned": "completed | set_field:@local.radio_group_final:@local.radio_group"
+          },
+          {
+            "trigger": "completed",
             "action_id": "emit",
             "args": [
               "completed"
@@ -9608,16 +8141,6 @@
             ],
             "_raw": "uncompleted | emit:uncompleted",
             "_cleaned": "uncompleted | emit:uncompleted"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.radio_group_final",
-              "@local.radio_group"
-            ],
-            "_raw": "completed | set_field:@local.radio_group_final:@local.radio_group",
-            "_cleaned": "completed | set_field:@local.radio_group_final:@local.radio_group"
           }
         ],
         "rows": [
@@ -9631,7 +8154,7 @@
         "_nested_name": "nav_buttons",
         "_dynamicFields": {
           "action_list": {
-            "2": {
+            "0": {
               "args": {
                 "0": [
                   {
@@ -9683,14 +8206,14 @@
         },
         "_dynamicDependencies": {
           "@local.radio_group_final": [
-            "action_list.2.args.0",
-            "action_list.2._raw",
-            "action_list.2._cleaned"
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
           ],
           "@local.radio_group": [
-            "action_list.2.args.1",
-            "action_list.2._raw",
-            "action_list.2._cleaned"
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
           ]
         }
       }
@@ -10255,13 +8778,21 @@
     "rows": [
       {
         "name": "combo_box_tracker",
+        "value": "combo_box_tracker",
         "type": "set_variable",
         "_nested_name": "combo_box_tracker"
       },
       {
         "name": "combo_box_final",
+        "value": "combo_box_final",
         "type": "set_variable",
         "_nested_name": "combo_box_final"
+      },
+      {
+        "name": "combo_box_text",
+        "value": "combo_box_text",
+        "type": "set_variable",
+        "_nested_name": "combo_box_text"
       },
       {
         "name": "input_allowed",
@@ -10270,14 +8801,71 @@
         "_nested_name": "input_allowed"
       },
       {
+        "name": "name_1",
+        "value": "This is text 1 ",
+        "type": "set_variable",
+        "_nested_name": "name_1"
+      },
+      {
+        "name": "name_2",
+        "value": "This is text 2",
+        "type": "set_variable",
+        "_nested_name": "name_2"
+      },
+      {
+        "name": "name_3",
+        "value": "This is text 3",
+        "type": "set_variable",
+        "_nested_name": "name_3"
+      },
+      {
         "name": "answer_list",
         "value": [
-          "name: name_1 | text: This is text 1",
-          "name: name_2 | text: This is text 2",
-          "name: name_3 | text: This is text 3"
+          "name: name_1 | text:@local.name_1",
+          "name: name_2 | text:@local.name_2",
+          "name: name_3 | text:@local.name_3"
         ],
         "type": "set_variable",
-        "_nested_name": "answer_list"
+        "_nested_name": "answer_list",
+        "_dynamicFields": {
+          "value": {
+            "0": [
+              {
+                "fullExpression": "name: name_1 | text:@local.name_1",
+                "matchedExpression": "@local.name_1",
+                "type": "local",
+                "fieldName": "name_1"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "name: name_2 | text:@local.name_2",
+                "matchedExpression": "@local.name_2",
+                "type": "local",
+                "fieldName": "name_2"
+              }
+            ],
+            "2": [
+              {
+                "fullExpression": "name: name_3 | text:@local.name_3",
+                "matchedExpression": "@local.name_3",
+                "type": "local",
+                "fieldName": "name_3"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.name_1": [
+            "value.0"
+          ],
+          "@local.name_2": [
+            "value.1"
+          ],
+          "@local.name_3": [
+            "value.2"
+          ]
+        }
       },
       {
         "name": "placeholder",
@@ -10484,6 +9072,16 @@
         "action_list": [
           {
             "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "@local.combo_box_final",
+              "@local.combo_box"
+            ],
+            "_raw": "completed | set_field:@local.combo_box_final:@local.combo_box",
+            "_cleaned": "completed | set_field:@local.combo_box_final:@local.combo_box"
+          },
+          {
+            "trigger": "completed",
             "action_id": "emit",
             "args": [
               "completed"
@@ -10499,23 +9097,13 @@
             ],
             "_raw": "uncompleted | emit:uncompleted",
             "_cleaned": "uncompleted | emit:uncompleted"
-          },
-          {
-            "trigger": "completed",
-            "action_id": "set_field",
-            "args": [
-              "@local.combo_box_final",
-              "@local.combo_box"
-            ],
-            "_raw": "completed | set_field:@local.combo_box_final:@local.combo_box",
-            "_cleaned": "completed | set_field:@local.combo_box_final:@local.combo_box"
           }
         ],
         "rows": [],
         "_nested_name": "nav_buttons",
         "_dynamicFields": {
           "action_list": {
-            "2": {
+            "0": {
               "args": {
                 "0": [
                   {
@@ -10567,14 +9155,14 @@
         },
         "_dynamicDependencies": {
           "@local.combo_box_final": [
-            "action_list.2.args.0",
-            "action_list.2._raw",
-            "action_list.2._cleaned"
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
           ],
           "@local.combo_box": [
-            "action_list.2.args.1",
-            "action_list.2._raw",
-            "action_list.2._cleaned"
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
           ]
         }
       }
@@ -13551,141 +12139,9 @@
           },
           {
             "type": "parent_point_box",
-            "name": "parent_point_relax",
-            "value": "@field.total_parent_point_relax",
-            "action_list": [
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "total_parent_point_relax",
-                  "@field.total_parent_point_relax+1"
-                ],
-                "_raw": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
-                "_cleaned": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1"
-              },
-              {
-                "trigger": "click",
-                "action_id": "set_field",
-                "args": [
-                  "weekly_parent_point_relax",
-                  "@field.weekly_parent_point_relax+1"
-                ],
-                "_raw": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
-                "_cleaned": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1"
-              }
-            ],
+            "name": "outro_habit_tracker",
             "hidden": true,
-            "parameter_list": {
-              "text": "@global.parent_point_relax",
-              "icon_src": "@global.parent_point_relax_image"
-            },
-            "_nested_name": "outro.parent_point_relax",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@field.total_parent_point_relax",
-                  "matchedExpression": "@field.total_parent_point_relax",
-                  "type": "field",
-                  "fieldName": "total_parent_point_relax"
-                }
-              ],
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@field.total_parent_point_relax+1",
-                        "matchedExpression": "@field.total_parent_point_relax",
-                        "type": "field",
-                        "fieldName": "total_parent_point_relax"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
-                      "matchedExpression": "@field.total_parent_point_relax",
-                      "type": "field",
-                      "fieldName": "total_parent_point_relax"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
-                      "matchedExpression": "@field.total_parent_point_relax",
-                      "type": "field",
-                      "fieldName": "total_parent_point_relax"
-                    }
-                  ]
-                },
-                "1": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@field.weekly_parent_point_relax+1",
-                        "matchedExpression": "@field.weekly_parent_point_relax",
-                        "type": "field",
-                        "fieldName": "weekly_parent_point_relax"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
-                      "matchedExpression": "@field.weekly_parent_point_relax",
-                      "type": "field",
-                      "fieldName": "weekly_parent_point_relax"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
-                      "matchedExpression": "@field.weekly_parent_point_relax",
-                      "type": "field",
-                      "fieldName": "weekly_parent_point_relax"
-                    }
-                  ]
-                }
-              },
-              "parameter_list": {
-                "text": [
-                  {
-                    "fullExpression": "@global.parent_point_relax",
-                    "matchedExpression": "@global.parent_point_relax",
-                    "type": "global",
-                    "fieldName": "parent_point_relax"
-                  }
-                ],
-                "icon_src": [
-                  {
-                    "fullExpression": "@global.parent_point_relax_image",
-                    "matchedExpression": "@global.parent_point_relax_image",
-                    "type": "global",
-                    "fieldName": "parent_point_relax_image"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@field.total_parent_point_relax": [
-                "value",
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ],
-              "@field.weekly_parent_point_relax": [
-                "action_list.1.args.1",
-                "action_list.1._raw",
-                "action_list.1._cleaned"
-              ],
-              "@global.parent_point_relax": [
-                "parameter_list.text"
-              ],
-              "@global.parent_point_relax_image": [
-                "parameter_list.icon_src"
-              ]
-            }
+            "_nested_name": "outro.outro_habit_tracker"
           },
           {
             "type": "template",
@@ -19628,16 +18084,152 @@
           },
           {
             "name": "outro_habit_text",
-            "value": "Click it!",
+            "value": "@data.habit.relax.short_mark_text",
             "hidden": false,
             "type": "set_variable",
-            "_nested_name": "workshop_activity.outro_habit_text"
+            "_nested_name": "workshop_activity.outro_habit_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.habit.relax.short_mark_text",
+                  "matchedExpression": "@data.habit.relax.short_mark_text",
+                  "type": "data",
+                  "fieldName": "habit"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.habit.relax.short_mark_text": [
+                "value"
+              ]
+            }
           },
           {
-            "name": "parent_point_relax",
+            "name": "outro_habit_tracker",
+            "value": "@field.total_parent_point_relax",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "total_parent_point_relax",
+                  "@field.total_parent_point_relax+1"
+                ],
+                "_raw": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                "_cleaned": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1"
+              },
+              {
+                "trigger": "click",
+                "action_id": "set_field",
+                "args": [
+                  "weekly_parent_point_relax",
+                  "@field.weekly_parent_point_relax+1"
+                ],
+                "_raw": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                "_cleaned": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1"
+              }
+            ],
             "hidden": false,
+            "parameter_list": {
+              "text": "@data.habit.relax.title",
+              "icon_src": "plh_images/habits/habit_relax_image.svg"
+            },
             "type": "set_variable",
-            "_nested_name": "workshop_activity.parent_point_relax"
+            "_nested_name": "workshop_activity.outro_habit_tracker",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@field.total_parent_point_relax",
+                  "matchedExpression": "@field.total_parent_point_relax",
+                  "type": "field",
+                  "fieldName": "total_parent_point_relax"
+                }
+              ],
+              "action_list": {
+                "0": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@field.total_parent_point_relax+1",
+                        "matchedExpression": "@field.total_parent_point_relax",
+                        "type": "field",
+                        "fieldName": "total_parent_point_relax"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                      "matchedExpression": "@field.total_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "total_parent_point_relax"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                      "matchedExpression": "@field.total_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "total_parent_point_relax"
+                    }
+                  ]
+                },
+                "1": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@field.weekly_parent_point_relax+1",
+                        "matchedExpression": "@field.weekly_parent_point_relax",
+                        "type": "field",
+                        "fieldName": "weekly_parent_point_relax"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                      "matchedExpression": "@field.weekly_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_relax"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                      "matchedExpression": "@field.weekly_parent_point_relax",
+                      "type": "field",
+                      "fieldName": "weekly_parent_point_relax"
+                    }
+                  ]
+                }
+              },
+              "parameter_list": {
+                "text": [
+                  {
+                    "fullExpression": "@data.habit.relax.title",
+                    "matchedExpression": "@data.habit.relax.title",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@field.total_parent_point_relax": [
+                "value",
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ],
+              "@field.weekly_parent_point_relax": [
+                "action_list.1.args.1",
+                "action_list.1._raw",
+                "action_list.1._cleaned"
+              ],
+              "@data.habit.relax.title": [
+                "parameter_list.text"
+              ]
+            }
           }
         ],
         "_nested_name": "workshop_activity"
@@ -20058,10 +18650,25 @@
           },
           {
             "name": "outro_habit_text",
-            "value": "Click it!",
+            "value": "@data.habit.relax.short_mark_text",
             "hidden": false,
             "type": "set_variable",
-            "_nested_name": "workshop_activity.outro_habit_text"
+            "_nested_name": "workshop_activity.outro_habit_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.habit.relax.short_mark_text",
+                  "matchedExpression": "@data.habit.relax.short_mark_text",
+                  "type": "data",
+                  "fieldName": "habit"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.habit.relax.short_mark_text": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "workshop_activity"
@@ -20550,11 +19157,6 @@
                 "value": "Take turns:\n- Share: How are you feeling today?\n- Praise someone in your group for something they did well this week!\n\nRemember that no matter how you feel, it’s great you are here. You all deserve praise.",
                 "type": "set_variable",
                 "_nested_name": "workshop_activity.content_box.text"
-              },
-              {
-                "name": "button_1",
-                "type": "set_variable",
-                "_nested_name": "workshop_activity.content_box.button_1"
               }
             ],
             "_nested_name": "workshop_activity.content_box"
@@ -22722,6 +21324,727 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "debug_conditional_messages_q1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "answer_q1",
+        "value": "NA",
+        "_nested_name": "answer_q1"
+      },
+      {
+        "type": "slider",
+        "name": "slider_q1",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "answer_q1",
+              "@local.slider_q1"
+            ],
+            "_raw": "changed | set_field:answer_q1:@local.slider_q1",
+            "_cleaned": "changed | set_field:answer_q1:@local.slider_q1"
+          }
+        ],
+        "parameter_list": {
+          "title": "Question 1"
+        },
+        "_nested_name": "slider_q1",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.slider_q1",
+                    "matchedExpression": "@local.slider_q1",
+                    "type": "local",
+                    "fieldName": "slider_q1"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:answer_q1:@local.slider_q1",
+                  "matchedExpression": "@local.slider_q1",
+                  "type": "local",
+                  "fieldName": "slider_q1"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:answer_q1:@local.slider_q1",
+                  "matchedExpression": "@local.slider_q1",
+                  "type": "local",
+                  "fieldName": "slider_q1"
+                }
+              ]
+            }
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.slider_q1": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_q1",
+        "value": "answer to q1 saved in field answer_q1: @field.answer_q1",
+        "_nested_name": "text_q1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "answer to q1 saved in field answer_q1: @field.answer_q1",
+              "matchedExpression": "@field.answer_q1",
+              "type": "field",
+              "fieldName": "answer_q1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "go_to_q2",
+        "value": "Go to Q2",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "debug_conditional_messages_q2"
+            ],
+            "_raw": "click | go_to:debug_conditional_messages_q2",
+            "_cleaned": "click | go_to:debug_conditional_messages_q2"
+          }
+        ],
+        "_nested_name": "go_to_q2"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_conditional_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_conditional_messages_q2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "set_field",
+        "name": "answer_q2",
+        "value": "NA",
+        "_nested_name": "answer_q2"
+      },
+      {
+        "type": "slider",
+        "name": "slider_q2",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "answer_q2",
+              "@local.slider_q2"
+            ],
+            "_raw": "changed | set_field:answer_q2:@local.slider_q2",
+            "_cleaned": "changed | set_field:answer_q2:@local.slider_q2"
+          }
+        ],
+        "parameter_list": {
+          "title": "Question 2"
+        },
+        "_nested_name": "slider_q2",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.slider_q2",
+                    "matchedExpression": "@local.slider_q2",
+                    "type": "local",
+                    "fieldName": "slider_q2"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:answer_q2:@local.slider_q2",
+                  "matchedExpression": "@local.slider_q2",
+                  "type": "local",
+                  "fieldName": "slider_q2"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:answer_q2:@local.slider_q2",
+                  "matchedExpression": "@local.slider_q2",
+                  "type": "local",
+                  "fieldName": "slider_q2"
+                }
+              ]
+            }
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.slider_q2": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_q2",
+        "value": "answer to q2 saved in field answer_q2: @field.answer_q2",
+        "_nested_name": "text_q2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "answer to q2 saved in field answer_q2: @field.answer_q2",
+              "matchedExpression": "@field.answer_q2",
+              "type": "field",
+              "fieldName": "answer_q2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q2": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "back_to_q1",
+        "value": "Back to Q1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "debug_conditional_messages_q1"
+            ],
+            "_raw": "click | go_to:debug_conditional_messages_q1",
+            "_cleaned": "click | go_to:debug_conditional_messages_q1"
+          }
+        ],
+        "_nested_name": "back_to_q1"
+      },
+      {
+        "type": "button",
+        "name": "conditional_texts",
+        "value": "Go to conditional texts",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "debug_conditional_texts"
+            ],
+            "_raw": "click | go_to:debug_conditional_texts",
+            "_cleaned": "click | go_to:debug_conditional_texts"
+          }
+        ],
+        "_nested_name": "conditional_texts"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_conditional_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_conditional_texts",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_q1",
+        "value": "answer to q1 saved in field answer_q1: @field.answer_q1",
+        "parameter_list": {
+          "title": "Question 2"
+        },
+        "_nested_name": "text_q1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "answer to q1 saved in field answer_q1: @field.answer_q1",
+              "matchedExpression": "@field.answer_q1",
+              "type": "field",
+              "fieldName": "answer_q1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_q2",
+        "value": "answer to q2 saved in field answer_q2: @field.answer_q2",
+        "_nested_name": "text_q2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "answer to q2 saved in field answer_q2: @field.answer_q2",
+              "matchedExpression": "@field.answer_q2",
+              "type": "field",
+              "fieldName": "answer_q2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q2": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "conditional_text_1",
+        "value": "This text shows if the answer to Q1 is less than 4",
+        "hidden": "!@field.answer_q1<4",
+        "_nested_name": "conditional_text_1",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "!@field.answer_q1<4",
+              "matchedExpression": "@field.answer_q1",
+              "type": "field",
+              "fieldName": "answer_q1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q1": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "conditional_text_2",
+        "value": "This text shows if the answer to Q2 is less than 4",
+        "hidden": "!@field.answer_q2<4",
+        "_nested_name": "conditional_text_2",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "!@field.answer_q2<4",
+              "matchedExpression": "@field.answer_q2",
+              "type": "field",
+              "fieldName": "answer_q2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q2": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "conditional_text_3",
+        "value": "This text shows if the answer to Q1 is greater than or equal to 4 and the answer to Q2 is greater than or equal to 4",
+        "hidden": "!@field.answer_q1>=4 || !@field.answer_q2>=4",
+        "_nested_name": "conditional_text_3",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "!@field.answer_q1>=4 || !@field.answer_q2>=4",
+              "matchedExpression": "@field.answer_q1",
+              "type": "field",
+              "fieldName": "answer_q1"
+            },
+            {
+              "fullExpression": "!@field.answer_q1>=4 || !@field.answer_q2>=4",
+              "matchedExpression": "@field.answer_q2",
+              "type": "field",
+              "fieldName": "answer_q2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q1": [
+            "hidden"
+          ],
+          "@field.answer_q2": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "back_to_q1",
+        "value": "Back to Q2",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "debug_conditional_messages_q2"
+            ],
+            "_raw": "click | go_to:debug_conditional_messages_q2",
+            "_cleaned": "click | go_to:debug_conditional_messages_q2"
+          }
+        ],
+        "_nested_name": "back_to_q1"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_conditional_messages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_data_image",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "Print text  and image of item 1:\n\n@data.debug.item_1.text",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Print text  and image of item 1:\n\n@data.debug.item_1.text",
+              "matchedExpression": "@data.debug.item_1.text",
+              "type": "data",
+              "fieldName": "debug"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "image",
+        "name": "image_1",
+        "value": "@data.debug.item_1.image_asset",
+        "_nested_name": "image_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.debug.item_1.image_asset",
+              "matchedExpression": "@data.debug.item_1.image_asset",
+              "type": "data",
+              "fieldName": "debug"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.image_asset": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "The parent point box below shows that the icon_src is NOT found when called through a data field",
+        "_nested_name": "text_2"
+      },
+      {
+        "type": "parent_point_box",
+        "name": "parent_point_box_1",
+        "parameter_list": {
+          "text": "@data.debug.item_1.text",
+          "icon_src": "@data.debug.item_1.image_asset"
+        },
+        "_nested_name": "parent_point_box_1",
+        "_dynamicFields": {
+          "parameter_list": {
+            "text": [
+              {
+                "fullExpression": "@data.debug.item_1.text",
+                "matchedExpression": "@data.debug.item_1.text",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ],
+            "icon_src": [
+              {
+                "fullExpression": "@data.debug.item_1.image_asset",
+                "matchedExpression": "@data.debug.item_1.image_asset",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "parameter_list.text"
+          ],
+          "@data.debug.item_1.image_asset": [
+            "parameter_list.icon_src"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "The parent point box below shows that the icon_src IS found when called directly",
+        "_nested_name": "text_3"
+      },
+      {
+        "type": "parent_point_box",
+        "name": "parent_point_box_2",
+        "parameter_list": {
+          "text": "@data.debug.item_1.text",
+          "icon_src": "plh_images/habits/habit_relax_image.svg"
+        },
+        "_nested_name": "parent_point_box_2",
+        "_dynamicFields": {
+          "parameter_list": {
+            "text": [
+              {
+                "fullExpression": "@data.debug.item_1.text",
+                "matchedExpression": "@data.debug.item_1.text",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "parameter_list.text"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_data_bottom",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@data.debug.item_1.text",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.debug.item_1.text",
+              "matchedExpression": "@data.debug.item_1.text",
+              "type": "data",
+              "fieldName": "debug"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "This text is directly authored in the value",
+        "_nested_name": "text_2"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "This text is directly authored in the value",
+        "_nested_name": "text_3"
+      },
+      {
+        "type": "text",
+        "name": "text_4",
+        "value": "@data.debug.item_1.text",
+        "_nested_name": "text_4",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.debug.item_1.text",
+              "matchedExpression": "@data.debug.item_1.text",
+              "type": "data",
+              "fieldName": "debug"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_1.text": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_data_middle",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "debug_data_bottom",
+        "value": "debug_data_bottom",
+        "rows": [
+          {
+            "name": "text_1",
+            "value": "@data.debug.item_2.text",
+            "type": "set_variable",
+            "_nested_name": "debug_data_bottom.text_1",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.debug.item_2.text",
+                  "matchedExpression": "@data.debug.item_2.text",
+                  "type": "data",
+                  "fieldName": "debug"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.debug.item_2.text": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_2",
+            "value": "@data.debug.item_2.text",
+            "type": "set_variable",
+            "_nested_name": "debug_data_bottom.text_2",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.debug.item_2.text",
+                  "matchedExpression": "@data.debug.item_2.text",
+                  "type": "data",
+                  "fieldName": "debug"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.debug.item_2.text": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_3",
+            "value": "This text is overridden directly in the value",
+            "type": "set_variable",
+            "_nested_name": "debug_data_bottom.text_3"
+          }
+        ],
+        "_nested_name": "debug_data_bottom"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_data_top",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "debug_data_middle",
+        "value": "debug_data_middle",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "debug_data_bottom",
+            "rows": [
+              {
+                "name": "text_2",
+                "value": "@data.debug.item_3.text",
+                "type": "set_variable",
+                "_nested_name": "debug_data_middle.debug_data_bottom.text_2",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@data.debug.item_3.text",
+                      "matchedExpression": "@data.debug.item_3.text",
+                      "type": "data",
+                      "fieldName": "debug"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@data.debug.item_3.text": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "text_3",
+                "value": "@data.debug.item_3.text",
+                "type": "set_variable",
+                "_nested_name": "debug_data_middle.debug_data_bottom.text_3",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@data.debug.item_3.text",
+                      "matchedExpression": "@data.debug.item_3.text",
+                      "type": "data",
+                      "fieldName": "debug"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@data.debug.item_3.text": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "text_4",
+                "value": "@data.debug.item_3.text",
+                "type": "set_variable",
+                "_nested_name": "debug_data_middle.debug_data_bottom.text_4",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@data.debug.item_3.text",
+                      "matchedExpression": "@data.debug.item_3.text",
+                      "type": "data",
+                      "fieldName": "debug"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@data.debug.item_3.text": [
+                    "value"
+                  ]
+                }
+              }
+            ],
+            "_nested_name": "debug_data_middle.debug_data_bottom"
+          }
+        ],
+        "_nested_name": "debug_data_middle"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_data_lists.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "debug_go_to_1",
     "status": "released",
     "rows": [
@@ -23414,6 +22737,12 @@
         "_nested_name": "answer_list"
       },
       {
+        "name": "combo_box_2_var",
+        "value": "combo_box_2_field",
+        "type": "set_variable",
+        "_nested_name": "combo_box_2_var"
+      },
+      {
         "type": "combo_box",
         "name": "combo_box_1",
         "parameter_list": {
@@ -23467,11 +22796,11 @@
             "trigger": "changed",
             "action_id": "set_field",
             "args": [
-              "combo_box_2_field",
+              "@local.combo_box_2_var",
               "@local.combo_box_2"
             ],
-            "_raw": "changed | set_field:combo_box_2_field:@local.combo_box_2",
-            "_cleaned": "changed | set_field:combo_box_2_field:@local.combo_box_2"
+            "_raw": "changed | set_field:@local.combo_box_2_var:@local.combo_box_2",
+            "_cleaned": "changed | set_field:@local.combo_box_2_var:@local.combo_box_2"
           }
         ],
         "parameter_list": {
@@ -23482,6 +22811,14 @@
           "action_list": {
             "0": {
               "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.combo_box_2_var",
+                    "matchedExpression": "@local.combo_box_2_var",
+                    "type": "local",
+                    "fieldName": "combo_box_2_var"
+                  }
+                ],
                 "1": [
                   {
                     "fullExpression": "@local.combo_box_2",
@@ -23493,7 +22830,13 @@
               },
               "_raw": [
                 {
-                  "fullExpression": "changed | set_field:combo_box_2_field:@local.combo_box_2",
+                  "fullExpression": "changed | set_field:@local.combo_box_2_var:@local.combo_box_2",
+                  "matchedExpression": "@local.combo_box_2_var",
+                  "type": "local",
+                  "fieldName": "combo_box_2_var"
+                },
+                {
+                  "fullExpression": "changed | set_field:@local.combo_box_2_var:@local.combo_box_2",
                   "matchedExpression": "@local.combo_box_2",
                   "type": "local",
                   "fieldName": "combo_box_2"
@@ -23501,7 +22844,13 @@
               ],
               "_cleaned": [
                 {
-                  "fullExpression": "changed | set_field:combo_box_2_field:@local.combo_box_2",
+                  "fullExpression": "changed | set_field:@local.combo_box_2_var:@local.combo_box_2",
+                  "matchedExpression": "@local.combo_box_2_var",
+                  "type": "local",
+                  "fieldName": "combo_box_2_var"
+                },
+                {
+                  "fullExpression": "changed | set_field:@local.combo_box_2_var:@local.combo_box_2",
                   "matchedExpression": "@local.combo_box_2",
                   "type": "local",
                   "fieldName": "combo_box_2"
@@ -23521,6 +22870,11 @@
           }
         },
         "_dynamicDependencies": {
+          "@local.combo_box_2_var": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
           "@local.combo_box_2": [
             "action_list.0.args.1",
             "action_list.0._raw",
@@ -23534,12 +22888,12 @@
       {
         "type": "text",
         "name": "text_2",
-        "value": "local variable for combo box 2: @local.combo_box_2",
+        "value": "Local variable for combo box 2: @local.combo_box_2",
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "local variable for combo box 2: @local.combo_box_2",
+              "fullExpression": "Local variable for combo box 2: @local.combo_box_2",
               "matchedExpression": "@local.combo_box_2",
               "type": "local",
               "fieldName": "combo_box_2"
@@ -28152,6 +27506,220 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "example_multiple_locals",
+    "status": "released",
+    "rows": [
+      {
+        "name": "name_1",
+        "value": "This is text 1",
+        "type": "set_variable",
+        "_nested_name": "name_1"
+      },
+      {
+        "name": "name_2",
+        "value": "This is text 2",
+        "type": "set_variable",
+        "_nested_name": "name_2"
+      },
+      {
+        "name": "name_3",
+        "value": "This is text 3",
+        "type": "set_variable",
+        "_nested_name": "name_3"
+      },
+      {
+        "name": "answer_list",
+        "value": [
+          "name: name_1 | text: @local.name_1",
+          "name: name_2 | text: @local.name_2",
+          "name: name_3 | text: @local.name_3"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list",
+        "_dynamicFields": {
+          "value": {
+            "0": [
+              {
+                "fullExpression": "name: name_1 | text: @local.name_1",
+                "matchedExpression": "@local.name_1",
+                "type": "local",
+                "fieldName": "name_1"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "name: name_2 | text: @local.name_2",
+                "matchedExpression": "@local.name_2",
+                "type": "local",
+                "fieldName": "name_2"
+              }
+            ],
+            "2": [
+              {
+                "fullExpression": "name: name_3 | text: @local.name_3",
+                "matchedExpression": "@local.name_3",
+                "type": "local",
+                "fieldName": "name_3"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.name_1": [
+            "value.0"
+          ],
+          "@local.name_2": [
+            "value.1"
+          ],
+          "@local.name_3": [
+            "value.2"
+          ]
+        }
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_defaults",
+        "parameter_list": {
+          "answer_list": "@local.answer_list",
+          "style": "active"
+        },
+        "_nested_name": "combo_box_defaults",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list",
+                "matchedExpression": "@local.answer_list",
+                "type": "local",
+                "fieldName": "answer_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "@local.@local.combo_box_defaults",
+        "_nested_name": "text",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.@local.combo_box_defaults",
+              "matchedExpression": "@local.combo_box_defaults",
+              "type": "local",
+              "fieldName": "combo_box_defaults"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box_defaults": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_multiple_locals.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_dates",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "first",
+        "value": "@field.first_app_open is the first time it opened",
+        "_nested_name": "first",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@field.first_app_open is the first time it opened",
+              "matchedExpression": "@field.first_app_open",
+              "type": "field",
+              "fieldName": "first_app_open"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.first_app_open": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "today",
+        "value": "@field.current_date is today",
+        "_nested_name": "today",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@field.current_date is today",
+              "matchedExpression": "@field.current_date",
+              "type": "field",
+              "fieldName": "current_date"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.current_date": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "week",
+        "value": "second_week is @field.second_week",
+        "_nested_name": "week",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "second_week is @field.second_week",
+              "matchedExpression": "@field.second_week",
+              "type": "field",
+              "fieldName": "second_week"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.second_week": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "time_difference",
+        "value": "the time difference is @field.time_difference",
+        "_nested_name": "time_difference",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "the time difference is @field.time_difference",
+              "matchedExpression": "@field.time_difference",
+              "type": "field",
+              "fieldName": "time_difference"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.time_difference": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_multiple_locals.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "example_navigation_style",
     "status": "released",
     "rows": [
@@ -29784,6 +29352,115 @@
         "name": "style",
         "type": "set_variable",
         "_nested_name": "style"
+      },
+      {
+        "type": "display_group",
+        "name": "dg",
+        "parameter_list": {
+          "style": "parent_point"
+        },
+        "rows": [
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "first_line_text": "First itemt",
+              "second_line_text": "Second",
+              "style": "parent_centre_2"
+            },
+            "_nested_name": "dg.tile_example_1"
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "first_line_text": "First item",
+              "second_line_text": "Second",
+              "style": "parent_centre_3"
+            },
+            "_nested_name": "dg.tile_example_1"
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "first_line_text": "First itemt",
+              "second_line_text": "Second",
+              "style": "parent_centre_4"
+            },
+            "_nested_name": "dg.tile_example_1"
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "first_line_text": "First",
+              "second_line_text": "Second",
+              "style": "parent_centre_1"
+            },
+            "_nested_name": "dg.tile_example_1"
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "first_line_text": "First itemt",
+              "second_line_text": "Second",
+              "style": "parent_centre_1"
+            },
+            "_nested_name": "dg.tile_example_1"
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "first_line_text": "First item",
+              "second_line_text": "Second",
+              "style": "parent_centre_2"
+            },
+            "_nested_name": "dg.tile_example_1"
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "first_line_text": "First itemt",
+              "second_line_text": "Second",
+              "style": "parent_centre_3"
+            },
+            "_nested_name": "dg.tile_example_1"
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "first_line_text": "First",
+              "icon_src": "plh_images/icons/star.svg",
+              "second_line_text": "Second",
+              "style": "parent_centre_4"
+            },
+            "_nested_name": "dg.tile_example_1"
+          },
+          {
+            "type": "tile_component",
+            "name": "tile_example_1",
+            "parameter_list": {
+              "first_line_text": "First",
+              "icon_src": "plh_images/icons/star.svg",
+              "second_line_text": "Second",
+              "style": "parent_centre_4"
+            },
+            "_nested_name": "dg.tile_example_1"
+          }
+        ],
+        "_nested_name": "dg"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -30810,36 +30487,12 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_preselected",
+        "name": "radio_group_four_per_row",
         "parameter_list": {
-          "answer_list": "@local.answer_list_1"
+          "answer_list": "@local.answer_list_1",
+          "options_per_row": "4"
         },
-        "_nested_name": "radio_group_preselected",
-        "_dynamicFields": {
-          "parameter_list": {
-            "answer_list": [
-              {
-                "fullExpression": "@local.answer_list_1",
-                "matchedExpression": "@local.answer_list_1",
-                "type": "local",
-                "fieldName": "answer_list_1"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.answer_list_1": [
-            "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_active",
-        "parameter_list": {
-          "answer_list": "@local.answer_list_1"
-        },
-        "_nested_name": "radio_group_active",
+        "_nested_name": "radio_group_four_per_row",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -30886,11 +30539,11 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_both",
+        "name": "radio_group_two_options_1",
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
-        "_nested_name": "radio_group_both",
+        "_nested_name": "radio_group_two_options_1",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -30911,36 +30564,12 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_both_with_tick",
+        "name": "radio_group_two_options_2",
         "parameter_list": {
-          "answer_list": "@local.answer_list_3"
+          "answer_list": "@local.answer_list_2",
+          "options_per_row": "2"
         },
-        "_nested_name": "radio_group_both_with_tick",
-        "_dynamicFields": {
-          "parameter_list": {
-            "answer_list": [
-              {
-                "fullExpression": "@local.answer_list_3",
-                "matchedExpression": "@local.answer_list_3",
-                "type": "local",
-                "fieldName": "answer_list_3"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.answer_list_3": [
-            "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_both_active",
-        "parameter_list": {
-          "answer_list": "@local.answer_list_2"
-        },
-        "_nested_name": "radio_group_both_active",
+        "_nested_name": "radio_group_two_options_2",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -30961,61 +30590,11 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_both_active_with_tick",
+        "name": "radio_group_with_tick",
         "parameter_list": {
           "answer_list": "@local.answer_list_3"
         },
-        "_nested_name": "radio_group_both_active_with_tick",
-        "_dynamicFields": {
-          "parameter_list": {
-            "answer_list": [
-              {
-                "fullExpression": "@local.answer_list_3",
-                "matchedExpression": "@local.answer_list_3",
-                "type": "local",
-                "fieldName": "answer_list_3"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.answer_list_3": [
-            "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_both_outline",
-        "parameter_list": {
-          "answer_list": "@local.answer_list_2"
-        },
-        "_nested_name": "radio_group_both_outline",
-        "_dynamicFields": {
-          "parameter_list": {
-            "answer_list": [
-              {
-                "fullExpression": "@local.answer_list_2",
-                "matchedExpression": "@local.answer_list_2",
-                "type": "local",
-                "fieldName": "answer_list_2"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.answer_list_2": [
-            "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_both_outline_with_tick",
-        "parameter_list": {
-          "answer_list": "@local.answer_list_3"
-        },
-        "_nested_name": "radio_group_both_outline_with_tick",
+        "_nested_name": "radio_group_with_tick",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -31062,9 +30641,9 @@
       },
       {
         "type": "text",
-        "name": "text_result",
+        "name": "name_result_1",
         "value": "@local.radio_group_text",
-        "_nested_name": "text_result",
+        "_nested_name": "name_result_1",
         "_dynamicFields": {
           "value": [
             {
@@ -31109,21 +30688,21 @@
       },
       {
         "type": "text",
-        "name": "text_result",
-        "value": "@local.radio_group_image",
-        "_nested_name": "text_result",
+        "name": "name_result_2",
+        "value": "@local.radio_group_image_1",
+        "_nested_name": "name_result_2",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@local.radio_group_image",
-              "matchedExpression": "@local.radio_group_image",
+              "fullExpression": "@local.radio_group_image_1",
+              "matchedExpression": "@local.radio_group_image_1",
               "type": "local",
-              "fieldName": "radio_group_image"
+              "fieldName": "radio_group_image_1"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@local.radio_group_image": [
+          "@local.radio_group_image_1": [
             "value"
           ]
         }
@@ -31155,11 +30734,12 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_image_outline_1",
+        "name": "radio_group_image_1",
+        "value": "nothing selected",
         "parameter_list": {
           "answer_list": "@local.answer_list_5"
         },
-        "_nested_name": "radio_group_image_outline_1",
+        "_nested_name": "radio_group_image_1",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -31174,56 +30754,6 @@
         },
         "_dynamicDependencies": {
           "@local.answer_list_5": [
-            "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_image_outline_2",
-        "parameter_list": {
-          "answer_list": "@local.answer_list_6"
-        },
-        "_nested_name": "radio_group_image_outline_2",
-        "_dynamicFields": {
-          "parameter_list": {
-            "answer_list": [
-              {
-                "fullExpression": "@local.answer_list_6",
-                "matchedExpression": "@local.answer_list_6",
-                "type": "local",
-                "fieldName": "answer_list_6"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.answer_list_6": [
-            "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group_image_outline_2",
-        "parameter_list": {
-          "answer_list": "@local.answer_list_6"
-        },
-        "_nested_name": "radio_group_image_outline_2",
-        "_dynamicFields": {
-          "parameter_list": {
-            "answer_list": [
-              {
-                "fullExpression": "@local.answer_list_6",
-                "matchedExpression": "@local.answer_list_6",
-                "type": "local",
-                "fieldName": "answer_list_6"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.answer_list_6": [
             "parameter_list.answer_list"
           ]
         }
@@ -31749,7 +31279,8 @@
         "name": "btn_example_9",
         "value": "options",
         "parameter_list": {
-          "style": "options\ntext_align"
+          "style": "options",
+          "text_align": "center"
         },
         "_nested_name": "btn_example_9"
       },
@@ -31764,27 +31295,86 @@
         "_nested_name": "btn_example_9"
       },
       {
+        "type": "button",
+        "value": "Example title orange button big",
+        "name": "button",
+        "_nested_name": "button"
+      },
+      {
+        "type": "button",
+        "value": "text",
+        "name": "button",
+        "_nested_name": "button"
+      },
+      {
+        "type": "title",
+        "value": "Display group ",
+        "name": "title",
+        "_nested_name": "title"
+      },
+      {
         "type": "display_group",
-        "name": "dg_example_2",
         "parameter_list": {
-          "style": "orange"
+          "style": "two_columns"
         },
-        "style_list": [],
         "rows": [
           {
             "type": "button",
-            "value": "Example title orange button big",
-            "name": "button",
-            "_nested_name": "dg_example_2.button"
+            "name": "btn_example_3",
+            "value": "make me smile",
+            "_nested_name": "display_group.btn_example_3"
           },
           {
             "type": "button",
-            "value": "text",
-            "name": "button",
-            "_nested_name": "dg_example_2.button"
+            "name": "btn_example_4",
+            "value": "get me going",
+            "_nested_name": "display_group.btn_example_4"
+          },
+          {
+            "type": "button",
+            "name": "btn_example_9",
+            "value": "options",
+            "_nested_name": "display_group.btn_example_9"
+          },
+          {
+            "type": "button",
+            "name": "btn_example_9",
+            "value": "some text as an example ",
+            "_nested_name": "display_group.btn_example_9"
+          },
+          {
+            "type": "button",
+            "name": "btn_example_3",
+            "value": "make me smile",
+            "_nested_name": "display_group.btn_example_3"
+          },
+          {
+            "type": "button",
+            "name": "btn_example_4",
+            "value": "get me going",
+            "_nested_name": "display_group.btn_example_4"
+          },
+          {
+            "type": "button",
+            "name": "btn_example_9",
+            "value": "options",
+            "_nested_name": "display_group.btn_example_9"
+          },
+          {
+            "type": "button",
+            "name": "btn_example_9",
+            "value": "some text as an example ",
+            "_nested_name": "display_group.btn_example_9"
+          },
+          {
+            "type": "button",
+            "name": "btn_example_9",
+            "value": "some text as an example ",
+            "_nested_name": "display_group.btn_example_9"
           }
         ],
-        "_nested_name": "dg_example_2"
+        "name": "display_group",
+        "_nested_name": "display_group"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -32929,9 +32519,55 @@
         "name": "white color ",
         "value": "Center aligned",
         "parameter_list": {
-          "style": "center alternative"
+          "style": "alternative"
         },
         "_nested_name": "white color "
+      },
+      {
+        "type": "title",
+        "value": "Display group",
+        "name": "title",
+        "_nested_name": "title"
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "two_columns"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "text",
+            "value": "some text",
+            "_nested_name": "display_group.text"
+          },
+          {
+            "type": "text",
+            "name": "text",
+            "value": "some text",
+            "_nested_name": "display_group.text"
+          },
+          {
+            "type": "text",
+            "name": "text",
+            "value": "some text",
+            "_nested_name": "display_group.text"
+          },
+          {
+            "type": "text",
+            "name": "text",
+            "value": "some text",
+            "_nested_name": "display_group.text"
+          },
+          {
+            "type": "text",
+            "name": "white color ",
+            "value": "some text",
+            "_nested_name": "display_group.white color "
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -42391,22 +42027,14 @@
       },
       {
         "type": "text",
-        "name": "text_q_3_group",
-        "value": "Which day of the week would you like to do your first @global.weekly_workshop with your group?",
+        "name": "text_q_2",
+        "value": "Can you think of a name for your group?",
         "hidden": "\"@local.radio_group\"!=\"true\"",
         "parameter_list": {
           "style": "medium emphasised center"
         },
-        "_nested_name": "text_q_3_group",
+        "_nested_name": "text_q_2",
         "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "Which day of the week would you like to do your first @global.weekly_workshop with your group?",
-              "matchedExpression": "@global.weekly_workshop",
-              "type": "global",
-              "fieldName": "weekly_workshop"
-            }
-          ],
           "hidden": [
             {
               "fullExpression": "\"@local.radio_group\"!=\"true\"",
@@ -42417,8 +42045,76 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.weekly_workshop": [
-            "value"
+          "@local.radio_group": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "group_name_tracker",
+              "@local.text_box"
+            ],
+            "_raw": "changed | set_field:group_name_tracker:@local.text_box",
+            "_cleaned": "changed | set_field:group_name_tracker:@local.text_box"
+          }
+        ],
+        "hidden": "\"@local.radio_group\"!=\"true\"",
+        "parameter_list": {
+          "placeholder": "Click and type"
+        },
+        "_nested_name": "text_box",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.text_box",
+                    "matchedExpression": "@local.text_box",
+                    "type": "local",
+                    "fieldName": "text_box"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:group_name_tracker:@local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:group_name_tracker:@local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ]
+            }
+          },
+          "hidden": [
+            {
+              "fullExpression": "\"@local.radio_group\"!=\"true\"",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.text_box": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
           ],
           "@local.radio_group": [
             "hidden"
@@ -42427,13 +42123,12 @@
       },
       {
         "type": "text",
-        "name": "text_q_3_individual",
+        "name": "text_q_3",
         "value": "Which day of the week would you like to do your @global.weekly_workshops?",
-        "hidden": "\"@local.radio_group\"!=\"false\"",
         "parameter_list": {
           "style": "medium emphasised center"
         },
-        "_nested_name": "text_q_3_individual",
+        "_nested_name": "text_q_3",
         "_dynamicFields": {
           "value": [
             {
@@ -42442,22 +42137,11 @@
               "type": "global",
               "fieldName": "weekly_workshops"
             }
-          ],
-          "hidden": [
-            {
-              "fullExpression": "\"@local.radio_group\"!=\"false\"",
-              "matchedExpression": "@local.radio_group",
-              "type": "local",
-              "fieldName": "radio_group"
-            }
           ]
         },
         "_dynamicDependencies": {
           "@global.weekly_workshops": [
             "value"
-          ],
-          "@local.radio_group": [
-            "hidden"
           ]
         }
       },
@@ -42564,13 +42248,21 @@
       {
         "type": "text",
         "name": "text_group",
-        "value": "Great! We will unlock a new workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
+        "value": "Great! We will unlock a new workshop for your group every week on @local.combo_box . This allows all of you to try what you learned with your families before building the next skill.",
         "hidden": "\"@local.radio_group\"!=\"true\" || \"@local.combo_box\"==\"undefined\"",
         "parameter_list": {
           "style": "center"
         },
         "_nested_name": "text_group",
         "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Great! We will unlock a new workshop for your group every week on @local.combo_box . This allows all of you to try what you learned with your families before building the next skill.",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            }
+          ],
           "hidden": [
             {
               "fullExpression": "\"@local.radio_group\"!=\"true\" || \"@local.combo_box\"==\"undefined\"",
@@ -42587,10 +42279,11 @@
           ]
         },
         "_dynamicDependencies": {
-          "@local.radio_group": [
+          "@local.combo_box": [
+            "value",
             "hidden"
           ],
-          "@local.combo_box": [
+          "@local.radio_group": [
             "hidden"
           ]
         }
@@ -42847,29 +42540,31 @@
           {
             "name": "nav_template_list",
             "value": [
-              "w_self_care_care_together",
-              "w_1on1_relax",
+              "w_1on1_care_together",
+              "w_self_care_relax",
+              "w_self_care_recognise",
+              "w_self_care_reward",
               "w_1on1_intro",
               "w_1on1_talk",
               "w_1on1_tools_activity",
               "w_1on1_home_practice",
               "w_1on1_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -42885,63 +42580,27 @@
               "w_1on1_home_practice",
               "w_1on1_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
           }
         ],
         "_nested_name": "workshop_stepper"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_1on1.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "module": "1on1",
-    "flow_name": "w_1on1_welcome_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "welcome_together",
-        "value": "welcome_together",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [],
-        "_nested_name": "welcome_together"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_1on1.xlsx"
@@ -43045,7 +42704,149 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "rows": [],
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "workshop_activity",
+            "rows": [
+              {
+                "name": "activity_title",
+                "value": "Using the app together",
+                "type": "set_variable",
+                "_nested_name": "care_together.workshop_activity.activity_title"
+              },
+              {
+                "name": "intro_text",
+                "value": "It’s great to see you!\n\nFirst, let’s help your group get started.",
+                "type": "set_variable",
+                "_nested_name": "care_together.workshop_activity.intro_text"
+              },
+              {
+                "name": "activity_banner",
+                "hidden": false,
+                "type": "set_variable",
+                "_nested_name": "care_together.workshop_activity.activity_banner"
+              },
+              {
+                "type": "nested_properties",
+                "name": "content_box",
+                "value": "pair",
+                "rows": [
+                  {
+                    "type": "nested_properties",
+                    "name": "box_1",
+                    "value": "box_timer",
+                    "rows": [
+                      {
+                        "name": "text",
+                        "value": "Agree on your ground rules together:\n- Which day(s)/time(s) will we meet in the week?\n- Who will hold the phone(s) during our activities?\n- How can we make sure everyone can share freely?\n- What can we do so we all feel respected?",
+                        "type": "set_variable",
+                        "_nested_name": "care_together.workshop_activity.content_box.box_1.text"
+                      },
+                      {
+                        "name": "button_1",
+                        "value": "@global.ideas_button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_1on1_care_together_pop"
+                            ],
+                            "_raw": "click | pop_up:w_1on1_care_together_pop",
+                            "_cleaned": "click | pop_up:w_1on1_care_together_pop"
+                          }
+                        ],
+                        "hidden": false,
+                        "type": "set_variable",
+                        "_nested_name": "care_together.workshop_activity.content_box.box_1.button_1",
+                        "_dynamicFields": {
+                          "value": [
+                            {
+                              "fullExpression": "@global.ideas_button",
+                              "matchedExpression": "@global.ideas_button",
+                              "type": "global",
+                              "fieldName": "ideas_button"
+                            }
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@global.ideas_button": [
+                            "value"
+                          ]
+                        }
+                      }
+                    ],
+                    "_nested_name": "care_together.workshop_activity.content_box.box_1"
+                  },
+                  {
+                    "type": "nested_properties",
+                    "name": "box_2",
+                    "value": "box_buttons",
+                    "rows": [
+                      {
+                        "name": "text_1",
+                        "value": "You always can change your workshop day and your group name in the @global.weekly_workshop_options .",
+                        "type": "set_variable",
+                        "_nested_name": "care_together.workshop_activity.content_box.box_2.text_1",
+                        "_dynamicFields": {
+                          "value": [
+                            {
+                              "fullExpression": "You always can change your workshop day and your group name in the @global.weekly_workshop_options .",
+                              "matchedExpression": "@global.weekly_workshop_options",
+                              "type": "global",
+                              "fieldName": "weekly_workshop_options"
+                            }
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@global.weekly_workshop_options": [
+                            "value"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "button_1",
+                        "value": "@global.show_me_how_button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "go_to",
+                            "args": [
+                              "workshop_options_page"
+                            ],
+                            "_raw": "click | go_to:workshop_options_page",
+                            "_cleaned": "click | go_to:workshop_options_page"
+                          }
+                        ],
+                        "type": "set_variable",
+                        "_nested_name": "care_together.workshop_activity.content_box.box_2.button_1",
+                        "_dynamicFields": {
+                          "value": [
+                            {
+                              "fullExpression": "@global.show_me_how_button",
+                              "matchedExpression": "@global.show_me_how_button",
+                              "type": "global",
+                              "fieldName": "show_me_how_button"
+                            }
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@global.show_me_how_button": [
+                            "value"
+                          ]
+                        }
+                      }
+                    ],
+                    "_nested_name": "care_together.workshop_activity.content_box.box_2"
+                  }
+                ],
+                "_nested_name": "care_together.workshop_activity.content_box"
+              }
+            ],
+            "_nested_name": "care_together.workshop_activity"
+          }
+        ],
         "_nested_name": "care_together"
       }
     ],
@@ -43303,9 +43104,47 @@
           },
           {
             "name": "list_text",
-            "value": "- Ideas for one-on-one time\n- Tools: How to spend one-on-one time\n- Home practice suggestions",
+            "value": "- Ideas for one-on-one time\n- Tools: How to spend one-on-one time\nDAY - PLAY - STAY\n- Home practice suggestions",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "list_text",
+            "value": "- Self-care activities\n- Ideas for one-on-one time\n- Tools: How to spend one-on-one time\nDAY - PLAY - STAY\n- Home practice suggestions",
+            "condition": "@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -43397,22 +43236,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.spend_time.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "talk_together.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.spend_time.mark_text",
+                      "matchedExpression": "@data.habit.spend_time.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.spend_time.mark_text": [
                     "value"
                   ]
                 }
@@ -43759,22 +43598,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.spend_time.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.spend_time.mark_text",
+                      "matchedExpression": "@data.habit.spend_time.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.spend_time.mark_text": [
                     "value"
                   ]
                 }
@@ -44075,23 +43914,46 @@
                     }
                   },
                   {
+                    "name": "text_3",
+                    "value": "Remember - whenever you can, relax, recognise and reward yourself. \n\nCare for yourself every day. You matter!",
+                    "hidden": false,
+                    "condition": "@fields.do_this_workshop_together",
+                    "type": "set_variable",
+                    "_nested_name": "home_practice.workshop_activity.content_box.text_3",
+                    "_dynamicFields": {
+                      "condition": [
+                        {
+                          "fullExpression": "@fields.do_this_workshop_together",
+                          "matchedExpression": "@fields.do_this_workshop_together",
+                          "type": "fields",
+                          "fieldName": "do_this_workshop_together"
+                        }
+                      ]
+                    },
+                    "_dynamicDependencies": {
+                      "@fields.do_this_workshop_together": [
+                        "condition"
+                      ]
+                    }
+                  },
+                  {
                     "name": "habit_text",
-                    "value": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
+                    "value": "@data.habit.spend_time.mark_text",
                     "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.habit_text",
                     "_dynamicFields": {
                       "value": [
                         {
-                          "fullExpression": "Every time you do one-on-one time, click the @global.parent_point and celebrate your success",
-                          "matchedExpression": "@global.parent_point",
-                          "type": "global",
-                          "fieldName": "parent_point"
+                          "fullExpression": "@data.habit.spend_time.mark_text",
+                          "matchedExpression": "@data.habit.spend_time.mark_text",
+                          "type": "data",
+                          "fieldName": "habit"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@global.parent_point": [
+                      "@data.habit.spend_time.mark_text": [
                         "value"
                       ]
                     }
@@ -44200,25 +44062,25 @@
               "w_celebrate_intro",
               "w_celebrate_think",
               "w_celebrate_talk_1",
-              "w_celebrate_read_temp",
+              "w_celebrate_tools_activity",
               "w_celebrate_talk_2",
               "w_celebrate_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper_together.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -44232,21 +44094,21 @@
               "w_celebrate_think",
               "w_celebrate_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper_together.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -44489,21 +44351,21 @@
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/group/final/relax.svg",
-                "condition": "@field.do_workshops_together",
+                "condition": "@field.do_this_workshop_together",
                 "type": "set_variable",
                 "_nested_name": "relax.workshop_activity.activity_image",
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -44511,21 +44373,21 @@
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/guide_2/final/relax.svg",
-                "condition": "!@field.do_workshops_together",
+                "condition": "!@field.do_this_workshop_together",
                 "type": "set_variable",
                 "_nested_name": "relax.workshop_activity.activity_image",
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "!@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "!@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -44751,21 +44613,21 @@
                   {
                     "name": "intro_text",
                     "value": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future parenting support.",
-                    "condition": "@field.do_workshops_together",
+                    "condition": "@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "topic_intro.listen.workshop_activity.intro_text",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -44773,21 +44635,21 @@
                   {
                     "name": "intro_text",
                     "value": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future ParentApp support.",
-                    "condition": "!@field.do_workshops_together",
+                    "condition": "!@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "topic_intro.listen.workshop_activity.intro_text",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "!@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "!@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -44808,6 +44670,22 @@
                           }
                         ],
                         "_nested_name": "topic_intro.listen.workshop_activity.content_box.widget_audio"
+                      },
+                      {
+                        "name": "button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_celebrate_summary"
+                            ],
+                            "_raw": "click | pop_up:w_celebrate_summary",
+                            "_cleaned": "click | pop_up:w_celebrate_summary"
+                          }
+                        ],
+                        "type": "set_variable",
+                        "_nested_name": "topic_intro.listen.workshop_activity.content_box.button"
                       }
                     ],
                     "_nested_name": "topic_intro.listen.workshop_activity.content_box"
@@ -44820,6 +44698,111 @@
           }
         ],
         "_nested_name": "topic_intro"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_celebrate.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "celebrate",
+    "flow_name": "w_celebrate_summary",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Today you will celebrate, look back and look ahead:",
+            "condition": "@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.description_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "list_text",
+            "value": "- Reflection & discussion\n- Tools: How to support each other\nMEET - CALL - TEXT - SHARE\n- Planning support",
+            "condition": "@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "description_text",
+            "value": "Today you celebrate and reflect on your experiences.",
+            "condition": "!@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.description_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "list_text",
+            "hidden": true,
+            "condition": "!@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "suggestions"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_celebrate.xlsx"
@@ -44862,21 +44845,21 @@
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/group/final/talk.svg",
-                "condition": "@field.do_workshops_together",
+                "condition": "@field.do_this_workshop_together",
                 "type": "set_variable",
                 "_nested_name": "think_temp.workshop_activity.activity_image",
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -44884,21 +44867,21 @@
               {
                 "name": "activity_image",
                 "value": "plh_images/workshop_modes/guide_2/final/wave.svg",
-                "condition": "!@field.do_workshops_together",
+                "condition": "!@field.do_this_workshop_together",
                 "type": "set_variable",
                 "_nested_name": "think_temp.workshop_activity.activity_image",
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "!@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "!@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -45017,13 +45000,13 @@
   {
     "flow_type": "template",
     "module": "celebrate",
-    "flow_name": "w_celebrate_read_temp",
+    "flow_name": "w_celebrate_tools_activity",
     "status": "released",
     "rows": [
       {
         "type": "template",
-        "name": "read",
-        "value": "read_temp",
+        "name": "tools_activity",
+        "value": "tools_activity",
         "action_list": [
           {
             "trigger": "completed",
@@ -45050,175 +45033,201 @@
             "name": "workshop_activity",
             "rows": [
               {
-                "name": "activity_title",
-                "value": "Supporting Each Other",
-                "type": "set_variable",
-                "_nested_name": "read.workshop_activity.activity_title"
-              },
-              {
-                "name": "activity_image",
-                "value": "plh_images/workshop_modes/group/final/read.svg",
-                "type": "set_variable",
-                "_nested_name": "read.workshop_activity.activity_image"
-              },
-              {
                 "name": "intro_text",
                 "value": "How will you support each other going forward? \n\nHere are some ideas from other families:",
                 "type": "set_variable",
-                "_nested_name": "read.workshop_activity.intro_text"
+                "_nested_name": "tools_activity.workshop_activity.intro_text"
               },
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "pair",
-                "rows": [
-                  {
-                    "type": "nested_properties",
-                    "name": "box_1",
-                    "value": "box_image_more",
-                    "rows": [
-                      {
-                        "name": "image_src",
-                        "value": "plh_images/workshops/celebrate/read/slide_1.svg",
-                        "type": "set_variable",
-                        "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
-                      },
-                      {
-                        "name": "title",
-                        "value": "Idea 1",
-                        "hidden": false,
-                        "type": "set_variable",
-                        "_nested_name": "read.workshop_activity.content_box.box_1.title"
-                      },
-                      {
-                        "name": "text",
-                        "value": "Keep meeting regularly to give each other parenting support.",
-                        "type": "set_variable",
-                        "_nested_name": "read.workshop_activity.content_box.box_1.text"
-                      }
-                    ],
-                    "_nested_name": "read.workshop_activity.content_box.box_1"
-                  },
-                  {
-                    "type": "nested_properties",
-                    "name": "box_2",
-                    "value": "pair",
-                    "rows": [
-                      {
-                        "type": "nested_properties",
-                        "name": "box_1",
-                        "value": "box_image_more",
-                        "rows": [
-                          {
-                            "name": "image_src",
-                            "value": "plh_images/workshops/celebrate/read/slide_2.svg",
-                            "type": "set_variable",
-                            "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
-                          },
-                          {
-                            "name": "title",
-                            "value": "Idea 2",
-                            "hidden": false,
-                            "type": "set_variable",
-                            "_nested_name": "read.workshop_activity.content_box.box_2.box_1.title"
-                          },
-                          {
-                            "name": "text",
-                            "value": "Be ‘parenting buddies’ to call when you are upset or don’t know what to do.",
-                            "type": "set_variable",
-                            "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text"
-                          }
-                        ],
-                        "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
-                      },
-                      {
-                        "type": "nested_properties",
-                        "name": "box_2",
-                        "value": "pair",
-                        "rows": [
-                          {
-                            "type": "nested_properties",
-                            "name": "box_1",
-                            "value": "box_image_more",
-                            "rows": [
-                              {
-                                "name": "image_src",
-                                "value": "plh_images/workshops/celebrate/read/slide_3.svg",
-                                "type": "set_variable",
-                                "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
-                              },
-                              {
-                                "name": "title",
-                                "value": "Idea 3",
-                                "hidden": false,
-                                "type": "set_variable",
-                                "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.title"
-                              },
-                              {
-                                "name": "text",
-                                "value": "Text each other every week to share what you’ve done well.",
-                                "type": "set_variable",
-                                "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text"
-                              }
-                            ],
-                            "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
-                          },
-                          {
-                            "type": "nested_properties",
-                            "name": "box_2",
-                            "value": "box_image",
-                            "rows": [
-                              {
-                                "name": "image_src",
-                                "value": "plh_images/workshops/celebrate/read/slide_4.svg",
-                                "type": "set_variable",
-                                "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.image_src"
-                              },
-                              {
-                                "name": "title",
-                                "value": "Idea 4",
-                                "hidden": false,
-                                "type": "set_variable",
-                                "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.title"
-                              },
-                              {
-                                "name": "text",
-                                "value": "Share @global.parent_app and help other families start their journey.",
-                                "type": "set_variable",
-                                "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.text",
-                                "_dynamicFields": {
-                                  "value": [
-                                    {
-                                      "fullExpression": "Share @global.parent_app and help other families start their journey.",
-                                      "matchedExpression": "@global.parent_app",
-                                      "type": "global",
-                                      "fieldName": "parent_app"
-                                    }
-                                  ]
-                                },
-                                "_dynamicDependencies": {
-                                  "@global.parent_app": [
-                                    "value"
-                                  ]
-                                }
-                              }
-                            ],
-                            "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
-                          }
-                        ],
-                        "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
-                      }
-                    ],
-                    "_nested_name": "read.workshop_activity.content_box.box_2"
-                  }
-                ],
-                "_nested_name": "read.workshop_activity.content_box"
+                "value": "w_celebrate_tools",
+                "rows": [],
+                "_nested_name": "tools_activity.workshop_activity.content_box"
               }
             ],
-            "_nested_name": "read.workshop_activity"
+            "_nested_name": "tools_activity.workshop_activity"
           }
         ],
-        "_nested_name": "read"
+        "_nested_name": "tools_activity"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_celebrate.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "celebrate",
+    "flow_name": "w_celebrate_tools",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "box_tools",
+        "value": "box_tools",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [
+          {
+            "name": "tools_title",
+            "value": "@global.w_celebrate_tools",
+            "type": "set_variable",
+            "_nested_name": "box_tools.tools_title",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_celebrate_tools",
+                  "matchedExpression": "@global.w_celebrate_tools",
+                  "type": "global",
+                  "fieldName": "w_celebrate_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_celebrate_tools": [
+                "value"
+              ]
+            }
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_1",
+            "rows": [
+              {
+                "name": "title",
+                "value": "MEET",
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_1.title"
+              },
+              {
+                "name": "text_1",
+                "value": "Keep meeting regularly to give each other parenting support.",
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_1.text_1"
+              },
+              {
+                "name": "image_src",
+                "value": "plh_images/workshops/celebrate/read/slide_1.svg",
+                "hidden": false,
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_1.image_src"
+              }
+            ],
+            "_nested_name": "box_tools.tool_1"
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_2",
+            "rows": [
+              {
+                "name": "title",
+                "value": "CALL",
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_2.title"
+              },
+              {
+                "name": "text_1",
+                "value": "Be ‘parenting buddies’ to call when you are upset or don’t know what to do.",
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_2.text_1"
+              },
+              {
+                "name": "image_src",
+                "value": "plh_images/workshops/celebrate/read/slide_2.svg",
+                "hidden": false,
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_2.image_src"
+              }
+            ],
+            "_nested_name": "box_tools.tool_2"
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_3",
+            "rows": [
+              {
+                "name": "title",
+                "value": "TEXT ",
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_3.title"
+              },
+              {
+                "name": "text_1",
+                "value": "Text each other every week to share what you’ve done well.",
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_3.text_1"
+              },
+              {
+                "name": "image_src",
+                "value": "plh_images/workshops/celebrate/read/slide_3.svg",
+                "hidden": false,
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_3.image_src"
+              }
+            ],
+            "_nested_name": "box_tools.tool_3"
+          },
+          {
+            "type": "nested_properties",
+            "name": "tool_4",
+            "hidden": false,
+            "rows": [
+              {
+                "name": "title",
+                "value": "SHARE",
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_4.title"
+              },
+              {
+                "name": "text_1",
+                "value": "Share @global.parent_app and help other families start their journey.",
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_4.text_1",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "Share @global.parent_app and help other families start their journey.",
+                      "matchedExpression": "@global.parent_app",
+                      "type": "global",
+                      "fieldName": "parent_app"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.parent_app": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "image_src",
+                "value": "plh_images/workshops/celebrate/read/slide_4.svg",
+                "hidden": false,
+                "type": "set_variable",
+                "_nested_name": "box_tools.tool_4.image_src"
+              }
+            ],
+            "_nested_name": "box_tools.tool_4"
+          }
+        ],
+        "_nested_name": "box_tools"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_celebrate.xlsx"
@@ -45328,21 +45337,21 @@
                   {
                     "name": "activity_image",
                     "value": "plh_images/workshop_modes/group/final/cup.svg",
-                    "condition": "@field.do_workshops_together",
+                    "condition": "@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "ending.watch.workshop_activity.activity_image",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -45350,21 +45359,21 @@
                   {
                     "name": "activity_image",
                     "value": "plh_images/workshop_modes/guide_2/final/cup.svg",
-                    "condition": "!@field.do_workshops_together",
+                    "condition": "!@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "ending.watch.workshop_activity.activity_image",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "!@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "!@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -45372,21 +45381,21 @@
                   {
                     "name": "intro_text",
                     "value": "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance together and celebrate yourselves!  ",
-                    "condition": "@field.do_workshops_together",
+                    "condition": "@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "ending.watch.workshop_activity.intro_text",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -45394,21 +45403,21 @@
                   {
                     "name": "intro_text",
                     "value": "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance and celebrate yourself!  ",
-                    "condition": "!@field.do_workshops_together",
+                    "condition": "!@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "ending.watch.workshop_activity.intro_text",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "!@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "!@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -45490,21 +45499,21 @@
               "w_consequence_home_practice",
               "w_consequence_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -45525,21 +45534,21 @@
               "w_consequence_home_practice",
               "w_consequence_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -45923,6 +45932,22 @@
                           }
                         ],
                         "_nested_name": "topic_intro.listen.workshop_activity.content_box.widget_audio"
+                      },
+                      {
+                        "name": "button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_consequence_summary"
+                            ],
+                            "_raw": "click | pop_up:w_consequence_summary",
+                            "_cleaned": "click | pop_up:w_consequence_summary"
+                          }
+                        ],
+                        "type": "set_variable",
+                        "_nested_name": "topic_intro.listen.workshop_activity.content_box.button"
                       }
                     ],
                     "_nested_name": "topic_intro.listen.workshop_activity.content_box"
@@ -45935,6 +45960,73 @@
           }
         ],
         "_nested_name": "topic_intro"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "consequence",
+    "flow_name": "w_consequence_summary",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Today you will explore: ",
+            "type": "set_variable",
+            "_nested_name": "suggestions.description_text"
+          },
+          {
+            "name": "list_text",
+            "value": "- Story & discussion – that didn’t work…\n- Examples of consequences\n- Tools: How to give calm consequences\nEXPLAIN - AGREE - ACT\n- Discussion on rules & consequences\n- Story & discussion – that worked!\n- Try it out!\n- Home practice suggestions",
+            "condition": "@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "list_text",
+            "value": "- Story & reflection – that didn’t work…\n- Examples of consequences\n- Tools: How to give calm consequences\nEXPLAIN - AGREE - ACT\n- Discussion on rules & consequences\n- Story & reflection – that worked!\n- Try it out!\n- Home practice suggestions",
+            "condition": "!@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "suggestions"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_consequence.xlsx"
@@ -46784,22 +46876,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you do a calm consequence, click the @global.parent_point and celebrate your success!",
+                "value": "@data.habit.consequence.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "learn_temp.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you do a calm consequence, click the @global.parent_point and celebrate your success!",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.consequence.mark_text",
+                      "matchedExpression": "@data.habit.consequence.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.consequence.mark_text": [
                     "value"
                   ]
                 }
@@ -46843,7 +46935,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "condition": "!@field.do_workshops_together",
+        "condition": "!@field.do_this_workshop_together",
         "rows": [
           {
             "name": "image_src",
@@ -46969,15 +47061,15 @@
         "_dynamicFields": {
           "condition": [
             {
-              "fullExpression": "!@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "!@field.do_this_workshop_together",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "condition"
           ]
         }
@@ -46986,7 +47078,7 @@
         "type": "template",
         "name": "box_buttons",
         "value": "box_buttons",
-        "condition": "@field.do_workshops_together",
+        "condition": "@field.do_this_workshop_together",
         "rows": [
           {
             "name": "image_src",
@@ -47060,15 +47152,15 @@
         "_dynamicFields": {
           "condition": [
             {
-              "fullExpression": "@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "condition"
           ]
         }
@@ -47180,7 +47272,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "condition": "!@field.do_workshops_together",
+        "condition": "!@field.do_this_workshop_together",
         "rows": [
           {
             "name": "image_src",
@@ -47315,15 +47407,15 @@
         "_dynamicFields": {
           "condition": [
             {
-              "fullExpression": "!@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "!@field.do_this_workshop_together",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "condition"
           ]
         }
@@ -47332,7 +47424,7 @@
         "type": "template",
         "name": "box_buttons",
         "value": "box_buttons",
-        "condition": "@field.do_workshops_together",
+        "condition": "@field.do_this_workshop_together",
         "rows": [
           {
             "name": "image_src",
@@ -47415,15 +47507,15 @@
         "_dynamicFields": {
           "condition": [
             {
-              "fullExpression": "@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "condition"
           ]
         }
@@ -47461,7 +47553,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "condition": "!@field.do_workshops_together",
+        "condition": "!@field.do_this_workshop_together",
         "rows": [
           {
             "name": "image_src",
@@ -47587,15 +47679,15 @@
         "_dynamicFields": {
           "condition": [
             {
-              "fullExpression": "!@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "!@field.do_this_workshop_together",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "condition"
           ]
         }
@@ -47604,7 +47696,7 @@
         "type": "template",
         "name": "box_buttons",
         "value": "box_buttons",
-        "condition": "@field.do_workshops_together",
+        "condition": "@field.do_this_workshop_together",
         "rows": [
           {
             "name": "image_src",
@@ -47671,15 +47763,15 @@
         "_dynamicFields": {
           "condition": [
             {
-              "fullExpression": "@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "condition"
           ]
         }
@@ -47915,7 +48007,7 @@
             "rows": [
               {
                 "name": "title",
-                "value": "CALM CONSEQUENCE",
+                "value": "ACT",
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_3.title"
               },
@@ -49607,21 +49699,21 @@
               "w_crisis_home_practice",
               "w_crisis_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -49641,21 +49733,21 @@
               "w_crisis_home_practice",
               "w_crisis_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -49761,13 +49853,13 @@
                   },
                   {
                     "name": "reply_ok",
-                    "value": "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family ",
+                    "value": "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family.",
                     "type": "set_variable",
                     "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
                   },
                   {
                     "name": "reply_sad",
-                    "value": "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family ",
+                    "value": "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family.",
                     "type": "set_variable",
                     "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
                   }
@@ -50096,6 +50188,22 @@
                           }
                         ],
                         "_nested_name": "topic_intro.listen.workshop_activity.content_box.widget_audio"
+                      },
+                      {
+                        "name": "button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_crisis_summary"
+                            ],
+                            "_raw": "click | pop_up:w_crisis_summary",
+                            "_cleaned": "click | pop_up:w_crisis_summary"
+                          }
+                        ],
+                        "type": "set_variable",
+                        "_nested_name": "topic_intro.listen.workshop_activity.content_box.button"
                       }
                     ],
                     "_nested_name": "topic_intro.listen.workshop_activity.content_box"
@@ -50636,9 +50744,60 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- Take a deep breath and pause before responding \n- Listen to your teen \n- Praise your teen for sharing \n- Use problem solving skills \n- Work out where you can get help",
+            "value": "- @global.crisis_skill_1\n- @global.crisis_skill_2\n- @global.crisis_skill_3\n- @global.crisis_skill_4\n- @global.crisis_skill_5",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.crisis_skill_1\n- @global.crisis_skill_2\n- @global.crisis_skill_3\n- @global.crisis_skill_4\n- @global.crisis_skill_5",
+                  "matchedExpression": "@global.crisis_skill_1",
+                  "type": "global",
+                  "fieldName": "crisis_skill_1"
+                },
+                {
+                  "fullExpression": "- @global.crisis_skill_1\n- @global.crisis_skill_2\n- @global.crisis_skill_3\n- @global.crisis_skill_4\n- @global.crisis_skill_5",
+                  "matchedExpression": "@global.crisis_skill_2",
+                  "type": "global",
+                  "fieldName": "crisis_skill_2"
+                },
+                {
+                  "fullExpression": "- @global.crisis_skill_1\n- @global.crisis_skill_2\n- @global.crisis_skill_3\n- @global.crisis_skill_4\n- @global.crisis_skill_5",
+                  "matchedExpression": "@global.crisis_skill_3",
+                  "type": "global",
+                  "fieldName": "crisis_skill_3"
+                },
+                {
+                  "fullExpression": "- @global.crisis_skill_1\n- @global.crisis_skill_2\n- @global.crisis_skill_3\n- @global.crisis_skill_4\n- @global.crisis_skill_5",
+                  "matchedExpression": "@global.crisis_skill_4",
+                  "type": "global",
+                  "fieldName": "crisis_skill_4"
+                },
+                {
+                  "fullExpression": "- @global.crisis_skill_1\n- @global.crisis_skill_2\n- @global.crisis_skill_3\n- @global.crisis_skill_4\n- @global.crisis_skill_5",
+                  "matchedExpression": "@global.crisis_skill_5",
+                  "type": "global",
+                  "fieldName": "crisis_skill_5"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.crisis_skill_1": [
+                "value"
+              ],
+              "@global.crisis_skill_2": [
+                "value"
+              ],
+              "@global.crisis_skill_3": [
+                "value"
+              ],
+              "@global.crisis_skill_4": [
+                "value"
+              ],
+              "@global.crisis_skill_5": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -50746,14 +50905,75 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "Take a deep breath and pause before responding",
-                      "Listen to your teen",
-                      "Praise your teen for sharing",
-                      "Use problem solving skills",
-                      "Work out where you can get help"
+                      "name:name_1 | text:@global.crisis_skill_1",
+                      "name:name_2 | text:@global.crisis_skill_2",
+                      "name:name_3 | text:@global.crisis_skill_3",
+                      "name:name_4 | text:@global.crisis_skill_4",
+                      "name:name_5 | text:@global.crisis_skill_5"
                     ],
                     "type": "set_variable",
-                    "_nested_name": "question_time.workshop_activity.content_box.answer_list"
+                    "_nested_name": "question_time.workshop_activity.content_box.answer_list",
+                    "_dynamicFields": {
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "name:name_1 | text:@global.crisis_skill_1",
+                            "matchedExpression": "@global.crisis_skill_1",
+                            "type": "global",
+                            "fieldName": "crisis_skill_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "name:name_2 | text:@global.crisis_skill_2",
+                            "matchedExpression": "@global.crisis_skill_2",
+                            "type": "global",
+                            "fieldName": "crisis_skill_2"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "name:name_3 | text:@global.crisis_skill_3",
+                            "matchedExpression": "@global.crisis_skill_3",
+                            "type": "global",
+                            "fieldName": "crisis_skill_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@global.crisis_skill_4",
+                            "matchedExpression": "@global.crisis_skill_4",
+                            "type": "global",
+                            "fieldName": "crisis_skill_4"
+                          }
+                        ],
+                        "4": [
+                          {
+                            "fullExpression": "name:name_5 | text:@global.crisis_skill_5",
+                            "matchedExpression": "@global.crisis_skill_5",
+                            "type": "global",
+                            "fieldName": "crisis_skill_5"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@global.crisis_skill_1": [
+                        "value.0"
+                      ],
+                      "@global.crisis_skill_2": [
+                        "value.1"
+                      ],
+                      "@global.crisis_skill_3": [
+                        "value.2"
+                      ],
+                      "@global.crisis_skill_4": [
+                        "value.3"
+                      ],
+                      "@global.crisis_skill_5": [
+                        "value.4"
+                      ]
+                    }
                   },
                   {
                     "name": "input_allowed",
@@ -51365,14 +51585,75 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "Take a deep breath and pause before responding",
-                      "Listen to your teen",
-                      "Praise your teen for sharing",
-                      "Use problem solving skills",
-                      "Work out where you can get help"
+                      "name:name_1 | text:@global.crisis_skill_1",
+                      "name:name_2 | text:@global.crisis_skill_2",
+                      "name:name_3 | text:@global.crisis_skill_3",
+                      "name:name_4 | text:@global.crisis_skill_4",
+                      "name:name_5 | text:@global.crisis_skill_5"
                     ],
                     "type": "set_variable",
-                    "_nested_name": "question_time.workshop_activity.content_box.answer_list"
+                    "_nested_name": "question_time.workshop_activity.content_box.answer_list",
+                    "_dynamicFields": {
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "name:name_1 | text:@global.crisis_skill_1",
+                            "matchedExpression": "@global.crisis_skill_1",
+                            "type": "global",
+                            "fieldName": "crisis_skill_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "name:name_2 | text:@global.crisis_skill_2",
+                            "matchedExpression": "@global.crisis_skill_2",
+                            "type": "global",
+                            "fieldName": "crisis_skill_2"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "name:name_3 | text:@global.crisis_skill_3",
+                            "matchedExpression": "@global.crisis_skill_3",
+                            "type": "global",
+                            "fieldName": "crisis_skill_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@global.crisis_skill_4",
+                            "matchedExpression": "@global.crisis_skill_4",
+                            "type": "global",
+                            "fieldName": "crisis_skill_4"
+                          }
+                        ],
+                        "4": [
+                          {
+                            "fullExpression": "name:name_5 | text:@global.crisis_skill_5",
+                            "matchedExpression": "@global.crisis_skill_5",
+                            "type": "global",
+                            "fieldName": "crisis_skill_5"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@global.crisis_skill_1": [
+                        "value.0"
+                      ],
+                      "@global.crisis_skill_2": [
+                        "value.1"
+                      ],
+                      "@global.crisis_skill_3": [
+                        "value.2"
+                      ],
+                      "@global.crisis_skill_4": [
+                        "value.3"
+                      ],
+                      "@global.crisis_skill_5": [
+                        "value.4"
+                      ]
+                    }
                   },
                   {
                     "name": "input_allowed",
@@ -52007,28 +52288,28 @@
               },
               {
                 "name": "outro_text",
-                "value": "\nRemember to support and encourage each other. It is hard to remain calm and listen to each other in a crisis - we are proud of you.\n",
+                "value": "Remember to support and encourage each other. It is hard to remain calm and listen to each other in a crisis - we are proud of you.",
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.outro_text"
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you respond in a calm way to a crisis, click the @global.parent_point and celebrate your success!",
+                "value": "@data.habit.breathe.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you respond in a calm way to a crisis, click the @global.parent_point and celebrate your success!",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.breathe.mark_text",
+                      "matchedExpression": "@data.habit.breathe.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.breathe.mark_text": [
                     "value"
                   ]
                 }
@@ -52139,22 +52420,22 @@
                   },
                   {
                     "name": "habit_text",
-                    "value": "Whenever you give a safety amnesty, talk about keeping safe, or respond calmly to a crisis, click the @global.parent_point and celebrate your success!",
+                    "value": "@data.habit.safe.mark_text",
                     "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.habit_text",
                     "_dynamicFields": {
                       "value": [
                         {
-                          "fullExpression": "Whenever you give a safety amnesty, talk about keeping safe, or respond calmly to a crisis, click the @global.parent_point and celebrate your success!",
-                          "matchedExpression": "@global.parent_point",
-                          "type": "global",
-                          "fieldName": "parent_point"
+                          "fullExpression": "@data.habit.safe.mark_text",
+                          "matchedExpression": "@data.habit.safe.mark_text",
+                          "type": "data",
+                          "fieldName": "habit"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@global.parent_point": [
+                      "@data.habit.safe.mark_text": [
                         "value"
                       ]
                     }
@@ -52213,21 +52494,21 @@
                   {
                     "name": "intro_text",
                     "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
-                    "condition": "@field.do_workshops_together",
+                    "condition": "@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "ending.watch.workshop_activity.intro_text",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -52235,21 +52516,21 @@
                   {
                     "name": "intro_text",
                     "value": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you, and you can choose the support you want going forward. \n\nYou can prepare a treat to celebrate – something you like to eat, or music you like to listen to!",
-                    "condition": "!@field.do_workshops_together",
+                    "condition": "!@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "ending.watch.workshop_activity.intro_text",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "!@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "!@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -52330,21 +52611,21 @@
               "w_instruct_home_practice",
               "w_instruct_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -52364,21 +52645,21 @@
               "w_instruct_home_practice",
               "w_instruct_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -52837,44 +53118,44 @@
           },
           {
             "name": "list_text",
-            "value": "- Thought experiment\n- Story & discussion – that didn’t work…\n- Story & discussion – that worked!\n- Tools: How to give positive instructions\n- Try it out!\n- Home practice suggestions",
-            "condition": "@field.do_workshops_together",
+            "value": "- Thought experiment\n- Story & discussion – that didn’t work…\n- Story & discussion – that worked!\n- Tools: How to give positive instructions\nGET REAL - GET POSITIVE - GET CLEAR\n- Try it out!\n- Home practice suggestions",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
           },
           {
             "name": "list_text",
-            "value": "- Thought experiment\n- Story & reflection – that didn’t work…\n- Story & reflection – that worked!\n- Tools: How to give positive instructions\n- Home practice suggestions",
-            "condition": "!@field.do_workshops_together",
+            "value": "- Thought experiment\n- Story & reflection – that didn’t work…\n- Story & reflection – that worked!\n- Tools: How to give positive instructions\nGET REAL - GET POSITIVE - GET CLEAR\n- Home practice suggestions",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -53601,9 +53882,9 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "Said something nice first",
-                          "Spoken to @global.w_instruct_teen_girl in a calm voice",
-                          "Told @global.w_instruct_teen_girl what she wants her to do"
+                          "name:name_1 | text:Said something nice first",
+                          "name:name_2 | text:Spoken to @global.w_instruct_teen_girl in a calm voice",
+                          "name:name_3 | text:Told @global.w_instruct_teen_girl what she wants her to do"
                         ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
@@ -53611,7 +53892,7 @@
                           "value": {
                             "1": [
                               {
-                                "fullExpression": "Spoken to @global.w_instruct_teen_girl in a calm voice",
+                                "fullExpression": "name:name_2 | text:Spoken to @global.w_instruct_teen_girl in a calm voice",
                                 "matchedExpression": "@global.w_instruct_teen_girl",
                                 "type": "global",
                                 "fieldName": "w_instruct_teen_girl"
@@ -53619,7 +53900,7 @@
                             ],
                             "2": [
                               {
-                                "fullExpression": "Told @global.w_instruct_teen_girl what she wants her to do",
+                                "fullExpression": "name:name_3 | text:Told @global.w_instruct_teen_girl what she wants her to do",
                                 "matchedExpression": "@global.w_instruct_teen_girl",
                                 "type": "global",
                                 "fieldName": "w_instruct_teen_girl"
@@ -54284,9 +54565,9 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-                          "@global.w_instruct_female_caregiver was able to stay calm",
-                          "@global.w_instruct_female_caregiver kept a positive attitude"
+                          "name:name_1 | text:@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+                          "name:name_2 | text:@global.w_instruct_female_caregiver was able to stay calm",
+                          "name:name_3 | text:@global.w_instruct_female_caregiver kept a positive attitude"
                         ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
@@ -54294,13 +54575,13 @@
                           "value": {
                             "0": [
                               {
-                                "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+                                "fullExpression": "name:name_1 | text:@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
                                 "matchedExpression": "@global.w_instruct_teen_girl",
                                 "type": "global",
                                 "fieldName": "w_instruct_teen_girl"
                               },
                               {
-                                "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+                                "fullExpression": "name:name_1 | text:@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
                                 "matchedExpression": "@global.w_instruct_female_caregiver",
                                 "type": "global",
                                 "fieldName": "w_instruct_female_caregiver"
@@ -54308,7 +54589,7 @@
                             ],
                             "1": [
                               {
-                                "fullExpression": "@global.w_instruct_female_caregiver was able to stay calm",
+                                "fullExpression": "name:name_2 | text:@global.w_instruct_female_caregiver was able to stay calm",
                                 "matchedExpression": "@global.w_instruct_female_caregiver",
                                 "type": "global",
                                 "fieldName": "w_instruct_female_caregiver"
@@ -54316,7 +54597,7 @@
                             ],
                             "2": [
                               {
-                                "fullExpression": "@global.w_instruct_female_caregiver kept a positive attitude",
+                                "fullExpression": "name:name_3 | text:@global.w_instruct_female_caregiver kept a positive attitude",
                                 "matchedExpression": "@global.w_instruct_female_caregiver",
                                 "type": "global",
                                 "fieldName": "w_instruct_female_caregiver"
@@ -54864,21 +55145,21 @@
               "w_money_home_practice",
               "w_money_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -54904,21 +55185,21 @@
               "w_money_home_practice",
               "w_money_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -55404,44 +55685,44 @@
           },
           {
             "name": "list_text",
-            "value": "- Story – that didn’t work… \n- Budgeting exercise\n- Story & discussion – that worked!\n- Story & discussion – that didn’t work…\n- Discussion on saving options\n- Saving exercise\n- Tools: How to budget & save\n- Home practice suggestions",
-            "condition": "@field.do_workshops_together",
+            "value": "- Story – that didn’t work… \n- Budgeting exercise\n- Story & discussion – that worked!\n- Story & discussion – that didn’t work…\n- Discussion on saving options\n- Saving exercise\n- Tools: How to budget & save\nTHINK - CHOOSE - BUILD - PLAN\n- Home practice suggestions",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
           },
           {
             "name": "list_text",
-            "value": "- Story – that didn’t work… \n- Budgeting exercise\n- Story & discussion – that worked!\n- Story & discussion – that didn’t work…\n- Discussion on saving options\n- Saving exercise\n- Tools: How to budget & save\n- Home practice suggestions",
-            "condition": "!@field.do_workshops_together",
+            "value": "- Story – that didn’t work… \n- Budgeting exercise\n- Story & discussion – that worked!\n- Story & discussion – that didn’t work…\n- Discussion on saving options\n- Saving exercise\n- Tools: How to budget & save\nTHINK - CHOOSE - BUILD - PLAN\n- Home practice suggestions",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -55679,7 +55960,7 @@
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_image",
-                "condition": "@field.do_workshops_together",
+                "condition": "@field.do_this_workshop_together",
                 "rows": [
                   {
                     "name": "image_src",
@@ -55698,15 +55979,15 @@
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -55715,14 +55996,8 @@
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_radio_buttons",
-                "condition": "!@field.do_workshops_together",
+                "condition": "!@field.do_this_workshop_together",
                 "rows": [
-                  {
-                    "name": "image_src",
-                    "hidden": true,
-                    "type": "set_variable",
-                    "_nested_name": "learn.workshop_activity.content_box.image_src"
-                  },
                   {
                     "name": "text",
                     "value": "There are four steps for doing a family budget: \n\nStep 1: THINK\nStep 2: CHOOSE\nStep 3: BUILD\nStep 4: PLAN\n\nLet’s go through the steps together. ",
@@ -55736,6 +56011,12 @@
                     "_nested_name": "learn.workshop_activity.content_box.question_text"
                   },
                   {
+                    "name": "options_per_row",
+                    "value": 2,
+                    "type": "set_variable",
+                    "_nested_name": "learn.workshop_activity.content_box.options_per_row"
+                  },
+                  {
                     "name": "answer_list",
                     "value": [
                       "name:family | text:My family can join in now!",
@@ -55745,60 +56026,10 @@
                     "_nested_name": "learn.workshop_activity.content_box.answer_list"
                   },
                   {
-                    "name": "radio_group",
-                    "action_list": [
-                      {
-                        "trigger": "changed",
-                        "action_id": "set_field",
-                        "args": [
-                          "w_money_path",
-                          "@local.radio_group"
-                        ],
-                        "_raw": "changed | set_field: w_money_path: @local.radio_group",
-                        "_cleaned": "changed | set_field: w_money_path: @local.radio_group"
-                      }
-                    ],
+                    "name": "radio_group_tracker",
+                    "value": "w_money_path",
                     "type": "set_variable",
-                    "_nested_name": "learn.workshop_activity.content_box.radio_group",
-                    "_dynamicFields": {
-                      "action_list": {
-                        "0": {
-                          "args": {
-                            "1": [
-                              {
-                                "fullExpression": "@local.radio_group",
-                                "matchedExpression": "@local.radio_group",
-                                "type": "local",
-                                "fieldName": "radio_group"
-                              }
-                            ]
-                          },
-                          "_raw": [
-                            {
-                              "fullExpression": "changed | set_field: w_money_path: @local.radio_group",
-                              "matchedExpression": "@local.radio_group",
-                              "type": "local",
-                              "fieldName": "radio_group"
-                            }
-                          ],
-                          "_cleaned": [
-                            {
-                              "fullExpression": "changed | set_field: w_money_path: @local.radio_group",
-                              "matchedExpression": "@local.radio_group",
-                              "type": "local",
-                              "fieldName": "radio_group"
-                            }
-                          ]
-                        }
-                      }
-                    },
-                    "_dynamicDependencies": {
-                      "@local.radio_group": [
-                        "action_list.0.args.1",
-                        "action_list.0._raw",
-                        "action_list.0._cleaned"
-                      ]
-                    }
+                    "_nested_name": "learn.workshop_activity.content_box.radio_group_tracker"
                   },
                   {
                     "name": "radio_button_type",
@@ -55817,15 +56048,15 @@
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "!@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "!@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -56099,7 +56330,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+        "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -56136,7 +56367,7 @@
                   },
                   {
                     "name": "text",
-                    "value": "Look at your lists of things you spend money on and choose:\n\n- Which are NEEDS that you can’t live without? Why?\n- Which are WANTS which are nice to have but not essential? Why? \n- Which things could you try to spend less money on?",
+                    "value": "Look at your list of things you spend money on and choose:\n\n- Which are NEEDS that you can’t live without? Why?\n- Which are WANTS which are nice to have but not essential? Why? \n- Which things could you try to spend less money on?",
                     "type": "set_variable",
                     "_nested_name": "learn_alone.workshop_activity.content_box.text"
                   }
@@ -56151,13 +56382,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             },
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
               "matchedExpression": "@field.w_money_path",
               "type": "field",
               "fieldName": "w_money_path"
@@ -56165,7 +56396,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "hidden"
           ],
           "@field.w_money_path": [
@@ -56206,7 +56437,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+        "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -56258,13 +56489,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             },
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
               "matchedExpression": "@field.w_money_path",
               "type": "field",
               "fieldName": "w_money_path"
@@ -56272,7 +56503,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "hidden"
           ],
           "@field.w_money_path": [
@@ -56304,7 +56535,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "hidden": "!@field.do_workshops_together",
+        "hidden": "!@field.do_this_workshop_together",
         "rows": [
           {
             "type": "nested_properties",
@@ -56356,15 +56587,15 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "!@field.do_workshops_together",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "!@field.do_this_workshop_together",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "hidden"
           ]
         }
@@ -56393,7 +56624,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
+        "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"alone\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -56445,13 +56676,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"alone\"",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             },
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"alone\"",
               "matchedExpression": "@field.w_money_path",
               "type": "field",
               "fieldName": "w_money_path"
@@ -56459,7 +56690,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "hidden"
           ],
           "@field.w_money_path": [
@@ -56835,7 +57066,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+        "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -56882,13 +57113,63 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "Teens completing school/university",
-                      "Building/expanding a house for my family",
-                      "Starting a business",
-                      "Buying a car for my family"
+                      "name:name_1 | text:@global.saving_goal_1",
+                      "name:name_2 | text:@global.saving_goal_2",
+                      "name:name_3 | text:@global.saving_goal_3",
+                      "name:name_4 | text:@global.saving_goal_4"
                     ],
                     "type": "set_variable",
-                    "_nested_name": "question_alone.workshop_activity.content_box.answer_list"
+                    "_nested_name": "question_alone.workshop_activity.content_box.answer_list",
+                    "_dynamicFields": {
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "name:name_1 | text:@global.saving_goal_1",
+                            "matchedExpression": "@global.saving_goal_1",
+                            "type": "global",
+                            "fieldName": "saving_goal_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "name:name_2 | text:@global.saving_goal_2",
+                            "matchedExpression": "@global.saving_goal_2",
+                            "type": "global",
+                            "fieldName": "saving_goal_2"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "name:name_3 | text:@global.saving_goal_3",
+                            "matchedExpression": "@global.saving_goal_3",
+                            "type": "global",
+                            "fieldName": "saving_goal_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@global.saving_goal_4",
+                            "matchedExpression": "@global.saving_goal_4",
+                            "type": "global",
+                            "fieldName": "saving_goal_4"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@global.saving_goal_1": [
+                        "value.0"
+                      ],
+                      "@global.saving_goal_2": [
+                        "value.1"
+                      ],
+                      "@global.saving_goal_3": [
+                        "value.2"
+                      ],
+                      "@global.saving_goal_4": [
+                        "value.3"
+                      ]
+                    }
                   },
                   {
                     "name": "reply",
@@ -56907,13 +57188,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             },
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
               "matchedExpression": "@field.w_money_path",
               "type": "field",
               "fieldName": "w_money_path"
@@ -56921,7 +57202,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "hidden"
           ],
           "@field.w_money_path": [
@@ -56945,9 +57226,51 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- Teens completing school/university \n- Building/expanding a house for my family \n- Starting a business \n- Buying a car for my family ",
+            "value": "- @global.saving_goal_1\n- @global.saving_goal_2\n- @global.saving_goal_3\n- @global.saving_goal_4",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.saving_goal_1\n- @global.saving_goal_2\n- @global.saving_goal_3\n- @global.saving_goal_4",
+                  "matchedExpression": "@global.saving_goal_1",
+                  "type": "global",
+                  "fieldName": "saving_goal_1"
+                },
+                {
+                  "fullExpression": "- @global.saving_goal_1\n- @global.saving_goal_2\n- @global.saving_goal_3\n- @global.saving_goal_4",
+                  "matchedExpression": "@global.saving_goal_2",
+                  "type": "global",
+                  "fieldName": "saving_goal_2"
+                },
+                {
+                  "fullExpression": "- @global.saving_goal_1\n- @global.saving_goal_2\n- @global.saving_goal_3\n- @global.saving_goal_4",
+                  "matchedExpression": "@global.saving_goal_3",
+                  "type": "global",
+                  "fieldName": "saving_goal_3"
+                },
+                {
+                  "fullExpression": "- @global.saving_goal_1\n- @global.saving_goal_2\n- @global.saving_goal_3\n- @global.saving_goal_4",
+                  "matchedExpression": "@global.saving_goal_4",
+                  "type": "global",
+                  "fieldName": "saving_goal_4"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.saving_goal_1": [
+                "value"
+              ],
+              "@global.saving_goal_2": [
+                "value"
+              ],
+              "@global.saving_goal_3": [
+                "value"
+              ],
+              "@global.saving_goal_4": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -57184,7 +57507,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+        "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -57231,15 +57554,87 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "Severe illness or death of a friend or family member",
-                      "Robbery",
-                      "Flooding",
-                      "Political violence",
-                      "Losing my job",
-                      "Pandemic (COVID-19)"
+                      "name:name_1 | text:@global.financial_emergency_1",
+                      "name:name_2 | text:@global.financial_emergency_2",
+                      "name:name_3 | text:@global.financial_emergency_3",
+                      "name:name_4 | text:@global.financial_emergency_4",
+                      "name:name_5 | text:@global.financial_emergency_5",
+                      "name:name_6 | text:@global.financial_emergency_6"
                     ],
                     "type": "set_variable",
-                    "_nested_name": "question_alone.workshop_activity.content_box.answer_list"
+                    "_nested_name": "question_alone.workshop_activity.content_box.answer_list",
+                    "_dynamicFields": {
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "name:name_1 | text:@global.financial_emergency_1",
+                            "matchedExpression": "@global.financial_emergency_1",
+                            "type": "global",
+                            "fieldName": "financial_emergency_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "name:name_2 | text:@global.financial_emergency_2",
+                            "matchedExpression": "@global.financial_emergency_2",
+                            "type": "global",
+                            "fieldName": "financial_emergency_2"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "name:name_3 | text:@global.financial_emergency_3",
+                            "matchedExpression": "@global.financial_emergency_3",
+                            "type": "global",
+                            "fieldName": "financial_emergency_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@global.financial_emergency_4",
+                            "matchedExpression": "@global.financial_emergency_4",
+                            "type": "global",
+                            "fieldName": "financial_emergency_4"
+                          }
+                        ],
+                        "4": [
+                          {
+                            "fullExpression": "name:name_5 | text:@global.financial_emergency_5",
+                            "matchedExpression": "@global.financial_emergency_5",
+                            "type": "global",
+                            "fieldName": "financial_emergency_5"
+                          }
+                        ],
+                        "5": [
+                          {
+                            "fullExpression": "name:name_6 | text:@global.financial_emergency_6",
+                            "matchedExpression": "@global.financial_emergency_6",
+                            "type": "global",
+                            "fieldName": "financial_emergency_6"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@global.financial_emergency_1": [
+                        "value.0"
+                      ],
+                      "@global.financial_emergency_2": [
+                        "value.1"
+                      ],
+                      "@global.financial_emergency_3": [
+                        "value.2"
+                      ],
+                      "@global.financial_emergency_4": [
+                        "value.3"
+                      ],
+                      "@global.financial_emergency_5": [
+                        "value.4"
+                      ],
+                      "@global.financial_emergency_6": [
+                        "value.5"
+                      ]
+                    }
                   },
                   {
                     "name": "reply",
@@ -57258,13 +57653,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             },
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
               "matchedExpression": "@field.w_money_path",
               "type": "field",
               "fieldName": "w_money_path"
@@ -57272,7 +57667,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "hidden"
           ],
           "@field.w_money_path": [
@@ -57296,9 +57691,69 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- Severe illness or death of a friend or family member  \n- Robbery \n- Flooding \n- Political violence \n- Losing my job\n- Pandemic (COVID-19) ",
+            "value": "- @global.financial_emergency_1\n- @global.financial_emergency_2\n- @global.financial_emergency_3\n- @global.financial_emergency_4\n- @global.financial_emergency_5\n- @global.financial_emergency_6",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.financial_emergency_1\n- @global.financial_emergency_2\n- @global.financial_emergency_3\n- @global.financial_emergency_4\n- @global.financial_emergency_5\n- @global.financial_emergency_6",
+                  "matchedExpression": "@global.financial_emergency_1",
+                  "type": "global",
+                  "fieldName": "financial_emergency_1"
+                },
+                {
+                  "fullExpression": "- @global.financial_emergency_1\n- @global.financial_emergency_2\n- @global.financial_emergency_3\n- @global.financial_emergency_4\n- @global.financial_emergency_5\n- @global.financial_emergency_6",
+                  "matchedExpression": "@global.financial_emergency_2",
+                  "type": "global",
+                  "fieldName": "financial_emergency_2"
+                },
+                {
+                  "fullExpression": "- @global.financial_emergency_1\n- @global.financial_emergency_2\n- @global.financial_emergency_3\n- @global.financial_emergency_4\n- @global.financial_emergency_5\n- @global.financial_emergency_6",
+                  "matchedExpression": "@global.financial_emergency_3",
+                  "type": "global",
+                  "fieldName": "financial_emergency_3"
+                },
+                {
+                  "fullExpression": "- @global.financial_emergency_1\n- @global.financial_emergency_2\n- @global.financial_emergency_3\n- @global.financial_emergency_4\n- @global.financial_emergency_5\n- @global.financial_emergency_6",
+                  "matchedExpression": "@global.financial_emergency_4",
+                  "type": "global",
+                  "fieldName": "financial_emergency_4"
+                },
+                {
+                  "fullExpression": "- @global.financial_emergency_1\n- @global.financial_emergency_2\n- @global.financial_emergency_3\n- @global.financial_emergency_4\n- @global.financial_emergency_5\n- @global.financial_emergency_6",
+                  "matchedExpression": "@global.financial_emergency_5",
+                  "type": "global",
+                  "fieldName": "financial_emergency_5"
+                },
+                {
+                  "fullExpression": "- @global.financial_emergency_1\n- @global.financial_emergency_2\n- @global.financial_emergency_3\n- @global.financial_emergency_4\n- @global.financial_emergency_5\n- @global.financial_emergency_6",
+                  "matchedExpression": "@global.financial_emergency_6",
+                  "type": "global",
+                  "fieldName": "financial_emergency_6"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.financial_emergency_1": [
+                "value"
+              ],
+              "@global.financial_emergency_2": [
+                "value"
+              ],
+              "@global.financial_emergency_3": [
+                "value"
+              ],
+              "@global.financial_emergency_4": [
+                "value"
+              ],
+              "@global.financial_emergency_5": [
+                "value"
+              ],
+              "@global.financial_emergency_6": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -57354,7 +57809,7 @@
                 "rows": [
                   {
                     "name": "text",
-                    "value": "Discuss together: \n\n- In which different ways can we save?  \n- What are the advantages and disadvantages of each savings option? \n\nUnderstanding each option well will help you to decide what is the best saving option for your family.  \n\nWhatever savings plan you choose, it will really help your family move forward!",
+                    "value": "Discuss together: \n- In which different ways can we save?  \n- What are the advantages and disadvantages of each savings option? \n\nUnderstanding each option well will help you to decide what is the best saving option for your family.  \n\nWhatever savings plan you choose, it will really help your family move forward!",
                     "type": "set_variable",
                     "_nested_name": "talk_group_family.workshop_activity.content_box.text"
                   },
@@ -57423,7 +57878,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+        "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -57455,13 +57910,63 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "At home",
-                      "Buy things we can sell",
-                      "At a bank",
-                      "In a savings group"
+                      "name:name_1 | text:@global.savings_option_1",
+                      "name:name_2 | text:@global.savings_option_2",
+                      "name:name_3 | text:@global.savings_option_3",
+                      "name:name_4 | text:@global.savings_option_4"
                     ],
                     "type": "set_variable",
-                    "_nested_name": "question_alone.workshop_activity.content_box.answer_list"
+                    "_nested_name": "question_alone.workshop_activity.content_box.answer_list",
+                    "_dynamicFields": {
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "name:name_1 | text:@global.savings_option_1",
+                            "matchedExpression": "@global.savings_option_1",
+                            "type": "global",
+                            "fieldName": "savings_option_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "name:name_2 | text:@global.savings_option_2",
+                            "matchedExpression": "@global.savings_option_2",
+                            "type": "global",
+                            "fieldName": "savings_option_2"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "name:name_3 | text:@global.savings_option_3",
+                            "matchedExpression": "@global.savings_option_3",
+                            "type": "global",
+                            "fieldName": "savings_option_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@global.savings_option_4",
+                            "matchedExpression": "@global.savings_option_4",
+                            "type": "global",
+                            "fieldName": "savings_option_4"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@global.savings_option_1": [
+                        "value.0"
+                      ],
+                      "@global.savings_option_2": [
+                        "value.1"
+                      ],
+                      "@global.savings_option_3": [
+                        "value.2"
+                      ],
+                      "@global.savings_option_4": [
+                        "value.3"
+                      ]
+                    }
                   },
                   {
                     "name": "reply",
@@ -57480,13 +57985,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             },
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
               "matchedExpression": "@field.w_money_path",
               "type": "field",
               "fieldName": "w_money_path"
@@ -57494,7 +57999,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "hidden"
           ],
           "@field.w_money_path": [
@@ -57518,9 +58023,51 @@
         "rows": [
           {
             "name": "list_text",
-            "value": "- At home\n- Buy things we can sell\n- At a bank\n- In a savings group",
+            "value": "- @global.savings_option_1\n- @global.savings_option_2\n- @global.savings_option_3\n- @global.savings_option_4",
             "type": "set_variable",
-            "_nested_name": "suggestions.list_text"
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "- @global.savings_option_1\n- @global.savings_option_2\n- @global.savings_option_3\n- @global.savings_option_4",
+                  "matchedExpression": "@global.savings_option_1",
+                  "type": "global",
+                  "fieldName": "savings_option_1"
+                },
+                {
+                  "fullExpression": "- @global.savings_option_1\n- @global.savings_option_2\n- @global.savings_option_3\n- @global.savings_option_4",
+                  "matchedExpression": "@global.savings_option_2",
+                  "type": "global",
+                  "fieldName": "savings_option_2"
+                },
+                {
+                  "fullExpression": "- @global.savings_option_1\n- @global.savings_option_2\n- @global.savings_option_3\n- @global.savings_option_4",
+                  "matchedExpression": "@global.savings_option_3",
+                  "type": "global",
+                  "fieldName": "savings_option_3"
+                },
+                {
+                  "fullExpression": "- @global.savings_option_1\n- @global.savings_option_2\n- @global.savings_option_3\n- @global.savings_option_4",
+                  "matchedExpression": "@global.savings_option_4",
+                  "type": "global",
+                  "fieldName": "savings_option_4"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.savings_option_1": [
+                "value"
+              ],
+              "@global.savings_option_2": [
+                "value"
+              ],
+              "@global.savings_option_3": [
+                "value"
+              ],
+              "@global.savings_option_4": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "suggestions"
@@ -57601,7 +58148,7 @@
                   },
                   {
                     "name": "text",
-                    "value": "If you can save even a tiny amount for the future or emergency - it can make a big difference over time. \n\n- Add a circle called “emergencies”.\n- Add a circle called “family goals”.\n- Now try to move your money around so you can save a bit every month for each of these.  ",
+                    "value": "If you can save even a tiny amount for the future or emergency - it can make a big difference over time. \n- Add a circle called “emergencies”.\n- Add a circle called “family goals”.\n- Now try to move your money around so you can save a bit every month for each of these.  ",
                     "type": "set_variable",
                     "_nested_name": "learn_group_family.workshop_activity.content_box.text"
                   }
@@ -57616,23 +58163,150 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "When you’ve done your budget, or anytime you make a good choice about needs, wants and savings, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.money.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "learn_group_family.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "When you’ve done your budget, or anytime you make a good choice about needs, wants and savings, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.money.mark_text",
+                      "matchedExpression": "@data.habit.money.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.money.mark_text": [
                     "value"
+                  ]
+                }
+              },
+              {
+                "name": "outro_habit_tracker",
+                "value": "@field.total_parent_point_money",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "total_parent_point_money",
+                      "@field.total_parent_point_money+1"
+                    ],
+                    "_raw": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                    "_cleaned": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "weekly_parent_point_money",
+                      "@field.weekly_parent_point_,money+1"
+                    ],
+                    "_raw": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_,money+1",
+                    "_cleaned": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_,money+1"
+                  }
+                ],
+                "hidden": false,
+                "parameter_list": {
+                  "text": "@data.habit.money.title",
+                  "icon_src": "plh_images/habits/habit_money_image.svg"
+                },
+                "type": "set_variable",
+                "_nested_name": "learn_group_family.workshop_activity.outro_habit_tracker",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@field.total_parent_point_money",
+                      "matchedExpression": "@field.total_parent_point_money",
+                      "type": "field",
+                      "fieldName": "total_parent_point_money"
+                    }
+                  ],
+                  "action_list": {
+                    "0": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.total_parent_point_money+1",
+                            "matchedExpression": "@field.total_parent_point_money",
+                            "type": "field",
+                            "fieldName": "total_parent_point_money"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                          "matchedExpression": "@field.total_parent_point_money",
+                          "type": "field",
+                          "fieldName": "total_parent_point_money"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                          "matchedExpression": "@field.total_parent_point_money",
+                          "type": "field",
+                          "fieldName": "total_parent_point_money"
+                        }
+                      ]
+                    },
+                    "1": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.weekly_parent_point_,money+1",
+                            "matchedExpression": "@field.weekly_parent_point_",
+                            "type": "field",
+                            "fieldName": "weekly_parent_point_"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_,money+1",
+                          "matchedExpression": "@field.weekly_parent_point_",
+                          "type": "field",
+                          "fieldName": "weekly_parent_point_"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_,money+1",
+                          "matchedExpression": "@field.weekly_parent_point_",
+                          "type": "field",
+                          "fieldName": "weekly_parent_point_"
+                        }
+                      ]
+                    }
+                  },
+                  "parameter_list": {
+                    "text": [
+                      {
+                        "fullExpression": "@data.habit.money.title",
+                        "matchedExpression": "@data.habit.money.title",
+                        "type": "data",
+                        "fieldName": "habit"
+                      }
+                    ]
+                  }
+                },
+                "_dynamicDependencies": {
+                  "@field.total_parent_point_money": [
+                    "value",
+                    "action_list.0.args.1",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned"
+                  ],
+                  "@field.weekly_parent_point_": [
+                    "action_list.1.args.1",
+                    "action_list.1._raw",
+                    "action_list.1._cleaned"
+                  ],
+                  "@data.habit.money.title": [
+                    "parameter_list.text"
                   ]
                 }
               }
@@ -57681,7 +58355,7 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
-        "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+        "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
         "rows": [
           {
             "type": "nested_properties",
@@ -57724,7 +58398,7 @@
                   },
                   {
                     "name": "text",
-                    "value": "If you can save even a tiny amount for the future or emergency - it can make a big difference over time. \n\n- Add a circle called “emergencies”.\n- Add a circle called “family goals”.\n- Now try to move your money around so you can save a bit every month for each of these.  ",
+                    "value": "If you can save even a tiny amount for the future or emergency - it can make a big difference over time. \n- Add a circle called “emergencies”.\n- Add a circle called “family goals”.\n- Now try to move your money around so you can save a bit every month for each of these.  ",
                     "type": "set_variable",
                     "_nested_name": "learn_alone.workshop_activity.content_box.text"
                   }
@@ -57739,22 +58413,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "When you’ve done your budget, or anytime you make a good choice about needs, wants and savings, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.money.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "learn_alone.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "When you’ve done your budget, or anytime you make a good choice about needs, wants and savings, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.money.mark_text",
+                      "matchedExpression": "@data.habit.money.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.money.mark_text": [
                     "value"
                   ]
                 }
@@ -57767,13 +58441,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
-              "matchedExpression": "@field.do_workshops_together",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
+              "matchedExpression": "@field.do_this_workshop_together",
               "type": "field",
-              "fieldName": "do_workshops_together"
+              "fieldName": "do_this_workshop_together"
             },
             {
-              "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+              "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
               "matchedExpression": "@field.w_money_path",
               "type": "field",
               "fieldName": "w_money_path"
@@ -57781,7 +58455,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@field.do_workshops_together": [
+          "@field.do_this_workshop_together": [
             "hidden"
           ],
           "@field.w_money_path": [
@@ -57923,6 +58597,16 @@
                     ],
                     "_raw": "click | go_to:w_money_learn_2_temp",
                     "_cleaned": "click | go_to:w_money_learn_2_temp"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "w_money_path",
+                      "family"
+                    ],
+                    "_raw": "click | set_field:w_money_path:family",
+                    "_cleaned": "click | set_field:w_money_path:family"
                   }
                 ],
                 "hidden": false,
@@ -57960,6 +58644,16 @@
                     ],
                     "_raw": "click | go_to:w_money_learn_3_temp",
                     "_cleaned": "click | go_to:w_money_learn_3_temp"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "w_money_path",
+                      "family"
+                    ],
+                    "_raw": "click | set_field:w_money_path:family",
+                    "_cleaned": "click | set_field:w_money_path:family"
                   }
                 ],
                 "hidden": false,
@@ -57997,6 +58691,16 @@
                     ],
                     "_raw": "click | go_to:w_money_learn_4_temp",
                     "_cleaned": "click | go_to:w_money_learn_4_temp"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "w_money_path",
+                      "family"
+                    ],
+                    "_raw": "click | set_field:w_money_path:family",
+                    "_cleaned": "click | set_field:w_money_path:family"
                   }
                 ],
                 "hidden": false,
@@ -58035,6 +58739,16 @@
                     ],
                     "_raw": "click | go_to:w_money_learn_5_temp",
                     "_cleaned": "click | go_to:w_money_learn_5_temp"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "w_money_path",
+                      "family"
+                    ],
+                    "_raw": "click | set_field:w_money_path:family",
+                    "_cleaned": "click | set_field:w_money_path:family"
                   }
                 ],
                 "hidden": false,
@@ -58092,19 +58806,19 @@
                   {
                     "name": "text_1",
                     "value": "Make a budget again - this time WITH your teen and family! \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
-                    "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+                    "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.text_1",
                     "_dynamicFields": {
                       "hidden": [
                         {
-                          "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         },
                         {
-                          "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"family\"",
+                          "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"family\"",
                           "matchedExpression": "@field.w_money_path",
                           "type": "field",
                           "fieldName": "w_money_path"
@@ -58112,7 +58826,7 @@
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "hidden"
                       ],
                       "@field.w_money_path": [
@@ -58123,21 +58837,21 @@
                   {
                     "name": "text_2",
                     "value": "Make a budget with your teen and family. \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
-                    "hidden": "!@field.do_workshops_together",
+                    "hidden": "!@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.text_2",
                     "_dynamicFields": {
                       "hidden": [
                         {
-                          "fullExpression": "!@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "!@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "hidden"
                       ]
                     }
@@ -58145,19 +58859,19 @@
                   {
                     "name": "text_3",
                     "value": "Review your budget with your teen and family. This will remind everyone that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped millions of families.",
-                    "hidden": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
+                    "hidden": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"alone\"",
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.text_3",
                     "_dynamicFields": {
                       "hidden": [
                         {
-                          "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"alone\"",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         },
                         {
-                          "fullExpression": "@field.do_workshops_together || \"@field.w_money_path\"==\"alone\"",
+                          "fullExpression": "@field.do_this_workshop_together || \"@field.w_money_path\"==\"alone\"",
                           "matchedExpression": "@field.w_money_path",
                           "type": "field",
                           "fieldName": "w_money_path"
@@ -58165,7 +58879,7 @@
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "hidden"
                       ],
                       "@field.w_money_path": [
@@ -58199,22 +58913,22 @@
                   },
                   {
                     "name": "habit_text",
-                    "value": "When you’ve done your budget, or anytime you make a good choice about needs, wants and savings, click the @global.parent_point and celebrate your success",
+                    "value": "@data.habit.money.mark_text",
                     "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.habit_text",
                     "_dynamicFields": {
                       "value": [
                         {
-                          "fullExpression": "When you’ve done your budget, or anytime you make a good choice about needs, wants and savings, click the @global.parent_point and celebrate your success",
-                          "matchedExpression": "@global.parent_point",
-                          "type": "global",
-                          "fieldName": "parent_point"
+                          "fullExpression": "@data.habit.money.mark_text",
+                          "matchedExpression": "@data.habit.money.mark_text",
+                          "type": "data",
+                          "fieldName": "habit"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@global.parent_point": [
+                      "@data.habit.money.mark_text": [
                         "value"
                       ]
                     }
@@ -58329,21 +59043,21 @@
               "w_praise_home_practice",
               "w_praise_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -58361,21 +59075,21 @@
               "w_praise_home_practice",
               "w_praise_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -59001,44 +59715,44 @@
           },
           {
             "name": "list_text",
-            "value": "- Effects of praise\n- Story & discussion – that worked!\n- Tools: How to praise\n- Try it out!\n- Home practice suggestions",
-            "condition": "@field.do_workshops_together",
+            "value": "- Effects of praise\n- Story & discussion – that worked!\n- Tools: How to praise\nSEE IT - SAY IT - REPEAT IT\n- Try it out!\n- Home practice suggestions",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
           },
           {
             "name": "list_text",
-            "value": "- Effects of praise\n- Story & reflection – that worked!\n- Tools: How to praise\n- Home practice suggestions",
-            "condition": "!@field.do_workshops_together",
+            "value": "- Effects of praise\n- Story & reflection – that worked!\n- Tools: How to praise\nSEE IT - SAY IT - REPEAT IT\n- Home practice suggestions",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -59691,10 +60405,10 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "To get them to do it more often",
-                          "To help her finish her work",
-                          "To make them feel good",
-                          "To make herself feel good"
+                          "name:name_1 | text:To get them to do it more often",
+                          "name:name_2 | text:To help her finish her work",
+                          "name:name_3 | text:To make them feel good",
+                          "name:name_4 | text:To make herself feel good"
                         ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list"
@@ -59740,22 +60454,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you praise your teen, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.praise_teen.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you praise your teen, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.praise_teen.mark_text",
+                      "matchedExpression": "@data.habit.praise_teen.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.praise_teen.mark_text": [
                     "value"
                   ]
                 }
@@ -60168,22 +60882,22 @@
                   },
                   {
                     "name": "habit_text",
-                    "value": "Every time you praise your teen, click the @global.parent_point and celebrate your success",
+                    "value": "@data.habit.praise_teen.mark_text",
                     "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.habit_text",
                     "_dynamicFields": {
                       "value": [
                         {
-                          "fullExpression": "Every time you praise your teen, click the @global.parent_point and celebrate your success",
-                          "matchedExpression": "@global.parent_point",
-                          "type": "global",
-                          "fieldName": "parent_point"
+                          "fullExpression": "@data.habit.praise_teen.mark_text",
+                          "matchedExpression": "@data.habit.praise_teen.mark_text",
+                          "type": "data",
+                          "fieldName": "habit"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@global.parent_point": [
+                      "@data.habit.praise_teen.mark_text": [
                         "value"
                       ]
                     }
@@ -60298,21 +61012,21 @@
               "w_rules_home_practice",
               "w_rules_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -60331,21 +61045,21 @@
               "w_rules_home_practice",
               "w_rules_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -60831,44 +61545,44 @@
           },
           {
             "name": "list_text",
-            "value": "- Story & discussion – that didn’t work… \n- Story & discussion – that worked!\n- Tools: How to create rules\n- Online safety story – that worked!\n- Try it out!\n- Home practice suggestions",
-            "condition": "@field.do_workshops_together",
+            "value": "- Story & discussion – that didn’t work… \n- Story & discussion – that worked!\n- Tools: How to create rules\nTEAM RULES - REAL RULES - PRAISE RULES!\n- Online safety story – that worked!\n- Try it out!\n- Home practice suggestions",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
           },
           {
             "name": "list_text",
-            "value": "- Story & reflection – that didn’t work… \n- Story & reflection – that worked!\n- Tools: How to create rules\n- Online safety story – that worked!\n- Try it out!\n- Home practice suggestions",
-            "condition": "!@field.do_workshops_together",
+            "value": "- Story & reflection – that didn’t work… \n- Story & reflection – that worked!\n- Tools: How to create rules\nTEAM RULES - REAL RULES - PRAISE RULES!\n- Online safety story – that worked!\n- Try it out!\n- Home practice suggestions",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -61718,10 +62432,10 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "They discussed the reasons behind the rule",
-                          "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-                          "The rule was clear, specific and fair",
-                          "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule"
+                          "name:name_1 | text:They discussed the reasons behind the rule",
+                          "name:name_2 | text:@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+                          "name:name_3 | text:The rule was clear, specific and fair",
+                          "name:name_4 | text:@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule"
                         ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.answer_list",
@@ -61729,13 +62443,13 @@
                           "value": {
                             "1": [
                               {
-                                "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+                                "fullExpression": "name:name_2 | text:@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
                                 "matchedExpression": "@global.w_rules_female_caregiver_1",
                                 "type": "global",
                                 "fieldName": "w_rules_female_caregiver_1"
                               },
                               {
-                                "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+                                "fullExpression": "name:name_2 | text:@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
                                 "matchedExpression": "@global.w_rules_teen_boy",
                                 "type": "global",
                                 "fieldName": "w_rules_teen_boy"
@@ -61743,13 +62457,13 @@
                             ],
                             "3": [
                               {
-                                "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
+                                "fullExpression": "name:name_4 | text:@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
                                 "matchedExpression": "@global.w_rules_female_caregiver_1",
                                 "type": "global",
                                 "fieldName": "w_rules_female_caregiver_1"
                               },
                               {
-                                "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
+                                "fullExpression": "name:name_4 | text:@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
                                 "matchedExpression": "@global.w_rules_teen_boy",
                                 "type": "global",
                                 "fieldName": "w_rules_teen_boy"
@@ -61833,8 +62547,8 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "She praised him",
-                          "She rewarded him when he followed the rule"
+                          "name:name_1 | text:She praised him",
+                          "name:name_1 | text:She rewarded him when he followed the rule"
                         ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list"
@@ -62391,22 +63105,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you do something to keep your teen safe, click the @global.parent_point and celebrate your success!",
+                "value": "@data.habit.safe.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "read.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you do something to keep your teen safe, click the @global.parent_point and celebrate your success!",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.safe.mark_text",
+                      "matchedExpression": "@data.habit.safe.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.safe.mark_text": [
                     "value"
                   ]
                 }
@@ -62847,21 +63561,21 @@
               "w_safe_home_practice",
               "w_safe_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -62881,21 +63595,21 @@
               "w_safe_home_practice",
               "w_safe_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -63330,6 +64044,22 @@
                           }
                         ],
                         "_nested_name": "topic_intro.listen.workshop_activity.content_box.widget_audio"
+                      },
+                      {
+                        "name": "button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_safe_summary"
+                            ],
+                            "_raw": "click | pop_up:w_safe_summary",
+                            "_cleaned": "click | pop_up:w_safe_summary"
+                          }
+                        ],
+                        "type": "set_variable",
+                        "_nested_name": "topic_intro.listen.workshop_activity.content_box.button"
                       }
                     ],
                     "_nested_name": "topic_intro.listen.workshop_activity.content_box"
@@ -63342,6 +64072,73 @@
           }
         ],
         "_nested_name": "topic_intro"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_safe.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "safe",
+    "flow_name": "w_safe_summary",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Today you will explore: ",
+            "type": "set_variable",
+            "_nested_name": "suggestions.description_text"
+          },
+          {
+            "name": "list_text",
+            "value": "- Story & discussion – that worked!\n- Story & discussion – that worked!\n- Mapping exercise\n- Tools: How to keep your teen safe\nMAPS - RULES - AMNESTY\n- Home practice suggestions                                                                                                                                                                                                                                                                                                                                                                                                   ",
+            "condition": "@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "list_text",
+            "value": "- Story & reflection – that worked!\n- Story & reflection – that worked!\n- Mapping exercise\n- Tools: How to keep your teen safe\nMAPS - RULES - AMNESTY\n- Home practice suggestions                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ",
+            "condition": "!@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "suggestions"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_safe.xlsx"
@@ -63985,11 +64782,11 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
-                      "@global.w_safe_teen_girl_1's friend was encouraging her",
-                      "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
-                      "Many girls in our communities get pregnant or catch HIV from older men",
-                      "There were no other trusted adults to advise @global.w_safe_teen_girl_1"
+                      "name:name_1 | text:The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
+                      "name:name_2 | text:@global.w_safe_teen_girl_1's friend was encouraging her",
+                      "name:name_3 | text:Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
+                      "name:name_4 | text:Many girls in our communities get pregnant or catch HIV from older men",
+                      "name:name_5 | text:There were no other trusted adults to advise @global.w_safe_teen_girl_1"
                     ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list",
@@ -63997,7 +64794,7 @@
                       "value": {
                         "0": [
                           {
-                            "fullExpression": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
+                            "fullExpression": "name:name_1 | text:The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
                             "matchedExpression": "@global.w_safe_teen_girl_1",
                             "type": "global",
                             "fieldName": "w_safe_teen_girl_1"
@@ -64005,7 +64802,7 @@
                         ],
                         "1": [
                           {
-                            "fullExpression": "@global.w_safe_teen_girl_1's friend was encouraging her",
+                            "fullExpression": "name:name_2 | text:@global.w_safe_teen_girl_1's friend was encouraging her",
                             "matchedExpression": "@global.w_safe_teen_girl_1",
                             "type": "global",
                             "fieldName": "w_safe_teen_girl_1"
@@ -64013,7 +64810,7 @@
                         ],
                         "2": [
                           {
-                            "fullExpression": "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
+                            "fullExpression": "name:name_3 | text:Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
                             "matchedExpression": "@global.w_safe_teen_girl_1",
                             "type": "global",
                             "fieldName": "w_safe_teen_girl_1"
@@ -64021,7 +64818,7 @@
                         ],
                         "4": [
                           {
-                            "fullExpression": "There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                            "fullExpression": "name:name_5 | text:There were no other trusted adults to advise @global.w_safe_teen_girl_1",
                             "matchedExpression": "@global.w_safe_teen_girl_1",
                             "type": "global",
                             "fieldName": "w_safe_teen_girl_1"
@@ -64390,11 +65187,11 @@
                   {
                     "name": "answer_list",
                     "value": [
-                      "Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things",
-                      "People put things online to make us hurt other people – like making violence seem cool, or hating people from another race or country",
-                      "People put things online to persuade teenagers to hurt themselves or commit suicide",
-                      "Teenagers share sexy videos or photos or information about themselves, and people show it to others or use it to upset them",
-                      "People can often be nasty to teenagers online – they feel like they can bully people safely"
+                      "name:name_1 | text:Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things",
+                      "name:name_2 | text:People put things online to make us hurt other people – like making violence seem cool, or hating people from another race or country",
+                      "name:name_3 | text:People put things online to persuade teenagers to hurt themselves or commit suicide",
+                      "name:name_4 | text:Teenagers share sexy videos or photos or information about themselves, and people show it to others or use it to upset them",
+                      "name:name_5 | text:People can often be nasty to teenagers online – they feel like they can bully people safely"
                     ],
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.answer_list"
@@ -64638,22 +65435,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!",
+                "value": "@data.habit.safe.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.safe.mark_text",
+                      "matchedExpression": "@data.habit.safe.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.safe.mark_text": [
                     "value"
                   ]
                 }
@@ -65511,21 +66308,21 @@
                   {
                     "name": "text_1",
                     "value": "Make two maps with your teen of safe and unsafe places:\n- Map of your community\n- Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!",
-                    "condition": "@field.do_workshops_together",
+                    "condition": "@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.text_1",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -65533,21 +66330,21 @@
                   {
                     "name": "text_1",
                     "value": "If you have not done it together yet, make two maps with your teen of safe and unsafe places:\n- Map of your community\n- Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!",
-                    "condition": "!@field.do_workshops_together",
+                    "condition": "!@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.text_1",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "!@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "!@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }
@@ -65604,21 +66401,21 @@
                   },
                   {
                     "name": "habit_text",
-                    "value": "Every time you do something to keep your teen safe, click the @global.parent_point and celebrate your success!",
+                    "value": "@data.habit.safe.mark_text",
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.habit_text",
                     "_dynamicFields": {
                       "value": [
                         {
-                          "fullExpression": "Every time you do something to keep your teen safe, click the @global.parent_point and celebrate your success!",
-                          "matchedExpression": "@global.parent_point",
-                          "type": "global",
-                          "fieldName": "parent_point"
+                          "fullExpression": "@data.habit.safe.mark_text",
+                          "matchedExpression": "@data.habit.safe.mark_text",
+                          "type": "data",
+                          "fieldName": "habit"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@global.parent_point": [
+                      "@data.habit.safe.mark_text": [
                         "value"
                       ]
                     }
@@ -65741,62 +66538,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "w_self_care_welcome_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "welcome_together",
-        "value": "welcome_together",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "watch",
-            "rows": [
-              {
-                "type": "nested_properties",
-                "name": "workshop_activity",
-                "rows": [
-                  {
-                    "name": "intro_text",
-                    "value": "It’s great to have you here. \n\nLet’s start with a song for families everywhere.",
-                    "type": "set_variable",
-                    "_nested_name": "welcome_together.watch.workshop_activity.intro_text"
-                  }
-                ],
-                "_nested_name": "welcome_together.watch.workshop_activity"
-              }
-            ],
-            "_nested_name": "welcome_together.watch"
-          }
-        ],
-        "_nested_name": "welcome_together"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "w_self_care_welcome_individual",
     "status": "released",
     "rows": [
@@ -65865,141 +66606,6 @@
           }
         ],
         "_nested_name": "welcome_individual"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_self_care_care_together",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "care_together",
-        "value": "care_together",
-        "action_list": [
-          {
-            "trigger": "completed",
-            "action_id": "emit",
-            "args": [
-              "completed"
-            ],
-            "_raw": "completed | emit:completed",
-            "_cleaned": "completed | emit:completed"
-          },
-          {
-            "trigger": "uncompleted",
-            "action_id": "emit",
-            "args": [
-              "uncompleted"
-            ],
-            "_raw": "uncompleted | emit:uncompleted",
-            "_cleaned": "uncompleted | emit:uncompleted"
-          }
-        ],
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "workshop_activity",
-            "rows": [
-              {
-                "name": "activity_title",
-                "value": "Using the app together",
-                "type": "set_variable",
-                "_nested_name": "care_together.workshop_activity.activity_title"
-              },
-              {
-                "name": "intro_text",
-                "value": "It’s great to have you here.",
-                "type": "set_variable",
-                "_nested_name": "care_together.workshop_activity.intro_text"
-              },
-              {
-                "name": "activity_banner",
-                "hidden": false,
-                "type": "set_variable",
-                "_nested_name": "care_together.workshop_activity.activity_banner"
-              },
-              {
-                "type": "nested_properties",
-                "name": "content_box",
-                "value": "box_timer",
-                "rows": [
-                  {
-                    "name": "text",
-                    "value": "Agree on your ground rules together:\n- Which day(s)/time(s) will we meet in the week?\n- Who will hold the phone(s) during our activities?\n- How can we make sure everyone can share freely?\n- What can we do so we all feel respected?",
-                    "type": "set_variable",
-                    "_nested_name": "care_together.workshop_activity.content_box.text"
-                  },
-                  {
-                    "name": "button_1",
-                    "action_list": [
-                      {
-                        "trigger": "click",
-                        "action_id": "pop_up",
-                        "args": [
-                          "w_self_care_care_together_pop"
-                        ],
-                        "_raw": "click | pop_up:w_self_care_care_together_pop",
-                        "_cleaned": "click | pop_up:w_self_care_care_together_pop"
-                      }
-                    ],
-                    "hidden": false,
-                    "type": "set_variable",
-                    "_nested_name": "care_together.workshop_activity.content_box.button_1"
-                  }
-                ],
-                "_nested_name": "care_together.workshop_activity.content_box"
-              }
-            ],
-            "_nested_name": "care_together.workshop_activity"
-          }
-        ],
-        "_nested_name": "care_together"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "w_self_care_care_together_pop",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "suggestions",
-        "value": "suggestions",
-        "rows": [
-          {
-            "name": "description_text",
-            "value": "Some rules that other groups made:",
-            "type": "set_variable",
-            "_nested_name": "suggestions.description_text"
-          },
-          {
-            "name": "list_text",
-            "value": "- Tuesday at 7pm is our @global.parent_app time together\n- Take turns holding the phone (1 activity per person)\n- Accept each other’s experiences. We are all different!\n- Take turns speaking and listening\n- All questions are welcome\n- What we share stays among us",
-            "type": "set_variable",
-            "_nested_name": "suggestions.list_text",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "- Tuesday at 7pm is our @global.parent_app time together\n- Take turns holding the phone (1 activity per person)\n- Accept each other’s experiences. We are all different!\n- Take turns speaking and listening\n- All questions are welcome\n- What we share stays among us",
-                  "matchedExpression": "@global.parent_app",
-                  "type": "global",
-                  "fieldName": "parent_app"
-                }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@global.parent_app": [
-                "value"
-              ]
-            }
-          }
-        ],
-        "_nested_name": "suggestions"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_self_care.xlsx"
@@ -66109,12 +66715,6 @@
                             "value": "plh_audio/topic_intros/self_care.mp3",
                             "type": "set_variable",
                             "_nested_name": "topic_intro.listen.workshop_activity.content_box.widget_audio.audio_src"
-                          },
-                          {
-                            "name": "audio_title",
-                            "value": "Hear Sbo's message",
-                            "type": "set_variable",
-                            "_nested_name": "topic_intro.listen.workshop_activity.content_box.widget_audio.audio_title"
                           }
                         ],
                         "_nested_name": "topic_intro.listen.workshop_activity.content_box.widget_audio"
@@ -66162,13 +66762,13 @@
         "rows": [
           {
             "name": "description_text",
-            "value": "Today you will experience 3 activities that can help you care for yourself – relaxing in 30 seconds, praising yourself, and rewarding yourself:",
+            "value": "Today you will experience 3 activities that can help you care for yourself, and we will ask you a few\nquestions to ensure the app is exactly right for you.",
             "type": "set_variable",
             "_nested_name": "suggestions.description_text"
           },
           {
             "name": "list_text",
-            "value": "- Relax activity\n- Recognise activity\n- Reward activity\n- Tools: How to add self-care\n- Home practice suggestions",
+            "value": "(-) Relax activity\n(-) Recognise activity\n(-) Reward activity\n(-) Tools: How to add self-care\n(-) Customise the app\n(-) Home practice suggestions",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text"
           }
@@ -66221,8 +66821,46 @@
               {
                 "name": "intro_text",
                 "value": "Let's try it out and do a short relaxation activity together!",
+                "condition": "!@field.do_this_workshop_together",
                 "type": "set_variable",
-                "_nested_name": "relax.workshop_activity.intro_text"
+                "_nested_name": "relax.workshop_activity.intro_text",
+                "_dynamicFields": {
+                  "condition": [
+                    {
+                      "fullExpression": "!@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
+                      "type": "field",
+                      "fieldName": "do_this_workshop_together"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@field.do_this_workshop_together": [
+                    "condition"
+                  ]
+                }
+              },
+              {
+                "name": "intro_text",
+                "value": "As parents, we often don’t have time to look after ourselves - but this is so important to do! Reducing our stress helps us AND our teens. \n\nLet’s take a first step and do a short relaxation activity together.",
+                "condition": "@field.do_this_workshop_together",
+                "type": "set_variable",
+                "_nested_name": "relax.workshop_activity.intro_text",
+                "_dynamicFields": {
+                  "condition": [
+                    {
+                      "fullExpression": "@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
+                      "type": "field",
+                      "fieldName": "do_this_workshop_together"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@field.do_this_workshop_together": [
+                    "condition"
+                  ]
+                }
               },
               {
                 "name": "outro_text",
@@ -66232,22 +66870,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you do a relax, record a @global.parent_point and celebrate your success",
+                "value": "@data.habit.relax.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "relax.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you do a relax, record a @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.relax.mark_text",
+                      "matchedExpression": "@data.habit.relax.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.relax.mark_text": [
                     "value"
                   ]
                 }
@@ -66301,22 +66939,22 @@
               },
               {
                 "name": "intro_text",
-                "value": "Let’s take a moment to praise ourselves. We’ll show you how.",
-                "condition": "@field.do_workshops_together",
+                "value": "Paying attention to what we do well helps us to focus on the positive. \n\nLet’s take a moment to praise ourselves. We’ll show you how.",
+                "condition": "@field.do_this_workshop_together",
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.intro_text",
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -66324,21 +66962,21 @@
               {
                 "name": "intro_text",
                 "value": "Take a moment to praise yourself. \n\nWe will now show you how.",
-                "condition": "!@field.do_workshops_together",
+                "condition": "!@field.do_this_workshop_together",
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.intro_text",
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "!@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "!@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -66346,20 +66984,21 @@
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "box_image",
-                "condition": "@field.do_workshops_together",
+                "value": "box_buttons",
+                "condition": "@field.do_this_workshop_together",
                 "rows": [
                   {
                     "name": "image_src",
                     "value": "plh_images/workshops/self_care/guide_2/recognise.svg",
+                    "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "think.workshop_activity.content_box.image_src"
                   },
                   {
-                    "name": "text",
+                    "name": "text_1",
                     "value": "Think of one thing YOU have done well recently.\n\nSay it aloud to each other: \"Well done to me for…\"\n\nHere is one thing you deserve praise for: Well done for using @global.parent_app!",
                     "type": "set_variable",
-                    "_nested_name": "think.workshop_activity.content_box.text",
+                    "_nested_name": "think.workshop_activity.content_box.text_1",
                     "_dynamicFields": {
                       "value": [
                         {
@@ -66390,7 +67029,6 @@
                         "_cleaned": "click | pop_up:w_self_care_recognise_pop"
                       }
                     ],
-                    "hidden": false,
                     "type": "set_variable",
                     "_nested_name": "think.workshop_activity.content_box.button_1",
                     "_dynamicFields": {
@@ -66414,15 +67052,15 @@
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -66431,7 +67069,7 @@
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_combo_box",
-                "condition": "!@field.do_workshops_together",
+                "condition": "!@field.do_this_workshop_together",
                 "rows": [
                   {
                     "name": "image_src",
@@ -66491,15 +67129,15 @@
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "!@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "!@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -66512,23 +67150,150 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you praise yourself, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.praise_yourself.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you praise yourself, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.praise_yourself.mark_text",
+                      "matchedExpression": "@data.habit.praise_yourself.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.praise_yourself.mark_text": [
                     "value"
+                  ]
+                }
+              },
+              {
+                "name": "outro_habit_tracker",
+                "value": "@field.total_parent_point_praise_yourself",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "total_parent_point_praise_yourself",
+                      "@field.total_parent_point_praise_yourself+1"
+                    ],
+                    "_raw": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                    "_cleaned": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "weekly_parent_point_praise_yourself",
+                      "@field.weekly_parent_point_praise_yourself+1"
+                    ],
+                    "_raw": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                    "_cleaned": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1"
+                  }
+                ],
+                "hidden": false,
+                "parameter_list": {
+                  "text": "@data.habit.praise_yourself.title",
+                  "icon_src": "plh_images/habits/habit_praise_yourself_image.svg"
+                },
+                "type": "set_variable",
+                "_nested_name": "think.workshop_activity.outro_habit_tracker",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@field.total_parent_point_praise_yourself",
+                      "matchedExpression": "@field.total_parent_point_praise_yourself",
+                      "type": "field",
+                      "fieldName": "total_parent_point_praise_yourself"
+                    }
+                  ],
+                  "action_list": {
+                    "0": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.total_parent_point_praise_yourself+1",
+                            "matchedExpression": "@field.total_parent_point_praise_yourself",
+                            "type": "field",
+                            "fieldName": "total_parent_point_praise_yourself"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                          "matchedExpression": "@field.total_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "total_parent_point_praise_yourself"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                          "matchedExpression": "@field.total_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "total_parent_point_praise_yourself"
+                        }
+                      ]
+                    },
+                    "1": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.weekly_parent_point_praise_yourself+1",
+                            "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                            "type": "field",
+                            "fieldName": "weekly_parent_point_praise_yourself"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                          "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "weekly_parent_point_praise_yourself"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                          "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "weekly_parent_point_praise_yourself"
+                        }
+                      ]
+                    }
+                  },
+                  "parameter_list": {
+                    "text": [
+                      {
+                        "fullExpression": "@data.habit.praise_yourself.title",
+                        "matchedExpression": "@data.habit.praise_yourself.title",
+                        "type": "data",
+                        "fieldName": "habit"
+                      }
+                    ]
+                  }
+                },
+                "_dynamicDependencies": {
+                  "@field.total_parent_point_praise_yourself": [
+                    "value",
+                    "action_list.0.args.1",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned"
+                  ],
+                  "@field.weekly_parent_point_praise_yourself": [
+                    "action_list.1.args.1",
+                    "action_list.1._raw",
+                    "action_list.1._cleaned"
+                  ],
+                  "@data.habit.praise_yourself.title": [
+                    "parameter_list.text"
                   ]
                 }
               }
@@ -66575,6 +67340,42 @@
     "status": "released",
     "rows": [
       {
+        "name": "name_1",
+        "value": "Have a hot drink",
+        "type": "set_variable",
+        "_nested_name": "name_1"
+      },
+      {
+        "name": "name_2",
+        "value": "Call a friend or relative",
+        "type": "set_variable",
+        "_nested_name": "name_2"
+      },
+      {
+        "name": "name_3",
+        "value": "Have a relaxing bath",
+        "type": "set_variable",
+        "_nested_name": "name_3"
+      },
+      {
+        "name": "name_4",
+        "value": "Read",
+        "type": "set_variable",
+        "_nested_name": "name_4"
+      },
+      {
+        "name": "name_5",
+        "value": "Watch TV",
+        "type": "set_variable",
+        "_nested_name": "name_5"
+      },
+      {
+        "name": "combo_box",
+        "value": "initialise",
+        "type": "set_variable",
+        "_nested_name": "combo_box"
+      },
+      {
         "type": "template",
         "name": "think",
         "value": "think_temp",
@@ -66611,7 +67412,7 @@
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_buttons",
-                "condition": "@field.do_workshops_together",
+                "condition": "@field.do_this_workshop_together",
                 "rows": [
                   {
                     "name": "image_src",
@@ -66663,15 +67464,15 @@
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
@@ -66680,11 +67481,11 @@
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_combo_box",
-                "condition": "!@field.do_workshops_together",
+                "condition": "!@field.do_this_workshop_together",
                 "rows": [
                   {
                     "name": "combo_box_tracker",
-                    "value": "w_think_reward",
+                    "value": "w_self_care_reward",
                     "type": "set_variable",
                     "_nested_name": "think.workshop_activity.content_box.combo_box_tracker"
                   },
@@ -66703,21 +67504,82 @@
                   },
                   {
                     "name": "question_text",
-                    "value": "What small thing make you happy?",
+                    "value": "What small thing makes you happy?",
                     "type": "set_variable",
                     "_nested_name": "think.workshop_activity.content_box.question_text"
                   },
                   {
                     "name": "answer_list",
                     "value": [
-                      "name:name_1 | text:Have a hot drink",
-                      "name:name_2 | text:Call a friend or relative",
-                      "name:name_3 | text:Have a relaxing bath",
-                      "name:name_4 | text:Read",
-                      "name:name_5 | text:Watch TV"
+                      "name:name_1 | text:@local.name_1",
+                      "name:name_2 | text:@local.name_2",
+                      "name:name_3 | text:@local.name_3",
+                      "name:name_4 | text:@local.name_4",
+                      "name:name_5 | text:@local.name_5"
                     ],
                     "type": "set_variable",
-                    "_nested_name": "think.workshop_activity.content_box.answer_list"
+                    "_nested_name": "think.workshop_activity.content_box.answer_list",
+                    "_dynamicFields": {
+                      "value": {
+                        "0": [
+                          {
+                            "fullExpression": "name:name_1 | text:@local.name_1",
+                            "matchedExpression": "@local.name_1",
+                            "type": "local",
+                            "fieldName": "name_1"
+                          }
+                        ],
+                        "1": [
+                          {
+                            "fullExpression": "name:name_2 | text:@local.name_2",
+                            "matchedExpression": "@local.name_2",
+                            "type": "local",
+                            "fieldName": "name_2"
+                          }
+                        ],
+                        "2": [
+                          {
+                            "fullExpression": "name:name_3 | text:@local.name_3",
+                            "matchedExpression": "@local.name_3",
+                            "type": "local",
+                            "fieldName": "name_3"
+                          }
+                        ],
+                        "3": [
+                          {
+                            "fullExpression": "name:name_4 | text:@local.name_4",
+                            "matchedExpression": "@local.name_4",
+                            "type": "local",
+                            "fieldName": "name_4"
+                          }
+                        ],
+                        "4": [
+                          {
+                            "fullExpression": "name:name_5 | text:@local.name_5",
+                            "matchedExpression": "@local.name_5",
+                            "type": "local",
+                            "fieldName": "name_5"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@local.name_1": [
+                        "value.0"
+                      ],
+                      "@local.name_2": [
+                        "value.1"
+                      ],
+                      "@local.name_3": [
+                        "value.2"
+                      ],
+                      "@local.name_4": [
+                        "value.3"
+                      ],
+                      "@local.name_5": [
+                        "value.4"
+                      ]
+                    }
                   },
                   {
                     "name": "reply",
@@ -66730,92 +67592,103 @@
                 "_dynamicFields": {
                   "condition": [
                     {
-                      "fullExpression": "!@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "!@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
               },
               {
                 "name": "outro_text",
-                "value": "Try to do something to reward yourself every day.",
-                "condition": "@field.do_workshops_together",
-                "type": "set_variable",
-                "_nested_name": "think.workshop_activity.outro_text",
-                "_dynamicFields": {
-                  "condition": [
-                    {
-                      "fullExpression": "@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
-                      "type": "field",
-                      "fieldName": "do_workshops_together"
-                    }
-                  ]
-                },
-                "_dynamicDependencies": {
-                  "@field.do_workshops_together": [
-                    "condition"
-                  ]
-                }
-              },
-              {
-                "name": "outro_text",
-                "value": "Try to do something to reward yourself every day. This could be to @field.w_think_reward or anything else that you enjoy.",
-                "condition": "!@field.do_workshops_together",
+                "value": "Try to do something to reward yourself every day.\n\nYou can use these skills at home and find them anytime in your @global.parent_centre!",
+                "condition": "@field.do_this_workshop_together",
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Try to do something to reward yourself every day. This could be to @field.w_think_reward or anything else that you enjoy.",
-                      "matchedExpression": "@field.w_think_reward",
-                      "type": "field",
-                      "fieldName": "w_think_reward"
+                      "fullExpression": "Try to do something to reward yourself every day.\n\nYou can use these skills at home and find them anytime in your @global.parent_centre!",
+                      "matchedExpression": "@global.parent_centre",
+                      "type": "global",
+                      "fieldName": "parent_centre"
                     }
                   ],
                   "condition": [
                     {
-                      "fullExpression": "!@field.do_workshops_together",
-                      "matchedExpression": "@field.do_workshops_together",
+                      "fullExpression": "@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
                       "type": "field",
-                      "fieldName": "do_workshops_together"
+                      "fieldName": "do_this_workshop_together"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@field.w_think_reward": [
+                  "@global.parent_centre": [
                     "value"
                   ],
-                  "@field.do_workshops_together": [
+                  "@field.do_this_workshop_together": [
+                    "condition"
+                  ]
+                }
+              },
+              {
+                "name": "outro_text",
+                "value": "Try to do something to reward yourself every day. This could be to @local.combo_box or anything else that you enjoy.",
+                "condition": "!@field.do_this_workshop_together",
+                "type": "set_variable",
+                "_nested_name": "think.workshop_activity.outro_text",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "Try to do something to reward yourself every day. This could be to @local.combo_box or anything else that you enjoy.",
+                      "matchedExpression": "@local.combo_box",
+                      "type": "local",
+                      "fieldName": "combo_box"
+                    }
+                  ],
+                  "condition": [
+                    {
+                      "fullExpression": "!@field.do_this_workshop_together",
+                      "matchedExpression": "@field.do_this_workshop_together",
+                      "type": "field",
+                      "fieldName": "do_this_workshop_together"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@local.combo_box": [
+                    "value"
+                  ],
+                  "@field.do_this_workshop_together": [
                     "condition"
                   ]
                 }
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you treat yourself well, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.treat_yourself.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you treat yourself well, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.treat_yourself.mark_text",
+                      "matchedExpression": "@data.habit.treat_yourself.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.treat_yourself.mark_text": [
                     "value"
                   ]
                 }
@@ -67083,12 +67956,12 @@
       {
         "type": "title",
         "name": "title",
-        "value": "Customisation your @global.parent_app",
+        "value": "Customise your @global.parent_app",
         "_nested_name": "title",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Customisation your @global.parent_app",
+              "fullExpression": "Customise your @global.parent_app",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -67388,21 +68261,21 @@
                   {
                     "name": "intro_text",
                     "value": "You've completed this week's workshop.\n\nWe’ll do some of the self-care activities again when you get together with your group for the first time - you all deserve some extra self-care!",
-                    "hidden": "!@field.do_workshops_together",
+                    "hidden": "!@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "ending.watch.workshop_activity.intro_text",
                     "_dynamicFields": {
                       "hidden": [
                         {
-                          "fullExpression": "!@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "!@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "hidden"
                       ]
                     }
@@ -67482,21 +68355,21 @@
               "w_solve_home_practice",
               "w_solve_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -67515,21 +68388,21 @@
               "w_solve_home_practice",
               "w_solve_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -67964,6 +68837,22 @@
                           }
                         ],
                         "_nested_name": "topic_intro.listen.workshop_activity.content_box.widget_audio"
+                      },
+                      {
+                        "name": "button",
+                        "action_list": [
+                          {
+                            "trigger": "click",
+                            "action_id": "pop_up",
+                            "args": [
+                              "w_solve_summary"
+                            ],
+                            "_raw": "click | pop_up:w_solve_summary",
+                            "_cleaned": "click | pop_up:w_solve_summary"
+                          }
+                        ],
+                        "type": "set_variable",
+                        "_nested_name": "topic_intro.listen.workshop_activity.content_box.button"
                       }
                     ],
                     "_nested_name": "topic_intro.listen.workshop_activity.content_box"
@@ -67976,6 +68865,73 @@
           }
         ],
         "_nested_name": "topic_intro"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_solve.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "module": "solve",
+    "flow_name": "w_solve_summary",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "suggestions",
+        "value": "suggestions",
+        "rows": [
+          {
+            "name": "description_text",
+            "value": "Today you will explore: ",
+            "type": "set_variable",
+            "_nested_name": "suggestions.description_text"
+          },
+          {
+            "name": "list_text",
+            "value": "- Story & discussion – that didn’t work…\n- Tools: How to solve problems\nKNOW IT – SOLVE IT – TRY IT – TEST IT\n- Story & discussion – that worked!\n- Try it out!\n- Home practice suggestions                                                                                                                         ",
+            "condition": "@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "name": "list_text",
+            "value": "- Story & reflection – that didn’t work…\n- Tools: How to solve problems\nKNOW IT – SOLVE IT – TRY IT – TEST IT\n- Story & reflection – that worked!\n- Try it out!\n- Home practice suggestions                                                                                                                         ",
+            "condition": "!@field.do_this_workshop_together",
+            "type": "set_variable",
+            "_nested_name": "suggestions.list_text",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
+                  "type": "field",
+                  "fieldName": "do_this_workshop_together"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@field.do_this_workshop_together": [
+                "condition"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "suggestions"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/workshop_templates/workshop_solve.xlsx"
@@ -69686,22 +70642,22 @@
               },
               {
                 "name": "outro_habit_text",
-                "value": "Every time you problem-solve to keep your teen safe, click the @global.parent_point and celebrate your success",
+                "value": "@data.habit.safe.mark_text",
                 "hidden": false,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.outro_habit_text",
                 "_dynamicFields": {
                   "value": [
                     {
-                      "fullExpression": "Every time you problem-solve to keep your teen safe, click the @global.parent_point and celebrate your success",
-                      "matchedExpression": "@global.parent_point",
-                      "type": "global",
-                      "fieldName": "parent_point"
+                      "fullExpression": "@data.habit.safe.mark_text",
+                      "matchedExpression": "@data.habit.safe.mark_text",
+                      "type": "data",
+                      "fieldName": "habit"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@global.parent_point": [
+                  "@data.habit.safe.mark_text": [
                     "value"
                   ]
                 }
@@ -70309,21 +71265,21 @@
               "w_stress_home_practice",
               "w_stress_ending"
             ],
-            "condition": "@field.do_workshops_together",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -70342,21 +71298,21 @@
               "w_stress_home_practice",
               "w_stress_ending"
             ],
-            "condition": "!@field.do_workshops_together",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -70842,44 +71798,44 @@
           },
           {
             "name": "list_text",
-            "value": "- Story & discussion – that didn’t work…\n- Story & discussion – that worked!\n- Safety Amnesty story & discussion – that worked!\n- Tools: How to manage stress\n- Home practice suggestions",
-            "condition": "@field.do_workshops_together",
+            "value": "- Story & discussion – that didn’t work…\n- Story & discussion – that worked!\n- Safety Amnesty story & discussion – that worked!\n- Tools: How to manage stress\nBREATHE - SHARE - SHOW\n- Home practice suggestions",
+            "condition": "@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
           },
           {
             "name": "list_text",
-            "value": "- Story & reflection – that didn’t work…\n- Story & reflection – that worked!\n- Safety Amnesty story & reflection – that worked!\n- Tools: How to manage stress\n- Home practice suggestions",
-            "condition": "!@field.do_workshops_together",
+            "value": "- Story & reflection – that didn’t work…\n- Story & reflection – that worked!\n- Safety Amnesty story & reflection – that worked!\n- Tools: How to manage stress\nBREATHE - SHARE - SHOW\n- Home practice suggestions",
+            "condition": "!@field.do_this_workshop_together",
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
               "condition": [
                 {
-                  "fullExpression": "!@field.do_workshops_together",
-                  "matchedExpression": "@field.do_workshops_together",
+                  "fullExpression": "!@field.do_this_workshop_together",
+                  "matchedExpression": "@field.do_this_workshop_together",
                   "type": "field",
-                  "fieldName": "do_workshops_together"
+                  "fieldName": "do_this_workshop_together"
                 }
               ]
             },
             "_dynamicDependencies": {
-              "@field.do_workshops_together": [
+              "@field.do_this_workshop_together": [
                 "condition"
               ]
             }
@@ -71416,6 +72372,12 @@
                         }
                       },
                       {
+                        "name": "options_per_row",
+                        "value": 4,
+                        "type": "set_variable",
+                        "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.options_per_row"
+                      },
+                      {
                         "name": "answer_list",
                         "value": [
                           "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg",
@@ -71467,6 +72429,12 @@
                         }
                       },
                       {
+                        "name": "options_per_row",
+                        "value": 4,
+                        "type": "set_variable",
+                        "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.options_per_row"
+                      },
+                      {
                         "name": "answer_list",
                         "value": [
                           "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg",
@@ -71516,6 +72484,12 @@
                             "value"
                           ]
                         }
+                      },
+                      {
+                        "name": "options_per_row",
+                        "value": 4,
+                        "type": "set_variable",
+                        "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.options_per_row"
                       },
                       {
                         "name": "answer_list",
@@ -71572,11 +72546,11 @@
                       {
                         "name": "answer_list",
                         "value": [
-                          "Recognise why he feels stressed",
-                          "Take a deep breath and speak calmly",
-                          "Show he understands his teen’s feelings",
-                          "Think about solutions together with @global.w_stress_teen_boy_1",
-                          "Do something positive together with @global.w_stress_teen_boy_1"
+                          "name:name_1 | text:Recognise why he feels stressed",
+                          "name:name_2 | text:Take a deep breath and speak calmly",
+                          "name:name_3 | text:Show he understands his teen’s feelings",
+                          "name:name_4 | text:Think about solutions together with @global.w_stress_teen_boy_1",
+                          "name:name_5 | text:Do something positive together with @global.w_stress_teen_boy_1"
                         ],
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.answer_list",
@@ -71584,7 +72558,7 @@
                           "value": {
                             "3": [
                               {
-                                "fullExpression": "Think about solutions together with @global.w_stress_teen_boy_1",
+                                "fullExpression": "name:name_4 | text:Think about solutions together with @global.w_stress_teen_boy_1",
                                 "matchedExpression": "@global.w_stress_teen_boy_1",
                                 "type": "global",
                                 "fieldName": "w_stress_teen_boy_1"
@@ -71592,7 +72566,7 @@
                             ],
                             "4": [
                               {
-                                "fullExpression": "Do something positive together with @global.w_stress_teen_boy_1",
+                                "fullExpression": "name:name_5 | text:Do something positive together with @global.w_stress_teen_boy_1",
                                 "matchedExpression": "@global.w_stress_teen_boy_1",
                                 "type": "global",
                                 "fieldName": "w_stress_teen_boy_1"
@@ -72867,21 +73841,21 @@
                   {
                     "name": "intro_text",
                     "value": "You've completed this week's workshop.\n\nNext week, we will talk about money - you will need:\n- a sheet of paper/cardboard\n- a pen\n- 20 small rocks/beans/kernels\n\nIt will be fun! See you soon.",
-                    "condition": "@field.do_workshops_together",
+                    "condition": "@field.do_this_workshop_together",
                     "type": "set_variable",
                     "_nested_name": "ending.watch.workshop_activity.intro_text",
                     "_dynamicFields": {
                       "condition": [
                         {
-                          "fullExpression": "@field.do_workshops_together",
-                          "matchedExpression": "@field.do_workshops_together",
+                          "fullExpression": "@field.do_this_workshop_together",
+                          "matchedExpression": "@field.do_this_workshop_together",
                           "type": "field",
-                          "fieldName": "do_workshops_together"
+                          "fieldName": "do_this_workshop_together"
                         }
                       ]
                     },
                     "_dynamicDependencies": {
-                      "@field.do_workshops_together": [
+                      "@field.do_this_workshop_together": [
                         "condition"
                       ]
                     }

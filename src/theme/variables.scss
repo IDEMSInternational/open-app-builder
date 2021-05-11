@@ -45,9 +45,11 @@ $horizontal: 90deg;
   --ion-main-bg-passive: #{$quaternary};
   --ion-main-bg-active: #{$tertiary};
   --ion-border-standard: 2px solid #{$primary};
+  --ion-tour-border-standard: 1px solid #{$primary};
   --border-dashed: #{$border-dashed};
   --ion-border-color-secondary: 2px solid #{$secondary};
   --ion-default-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  --ion-border-radius-small: 8px;
   --ion-border-radius-standard: #{$border-radius-standard};
   --ion-border-radius-secondary: #{$border-radius-secondary};
   --ion-border-radius-rounded: 50%;
@@ -315,13 +317,64 @@ $horizontal: 90deg;
     var(--tile-secondary-light-gradient-start) 28.12%,
     var(--tile-secondary-light-gradient-end) 100%
   );
-
   --tile-secondary-gradient-start: #{color.adjust($secondary, $saturation: 4%)}; // #fe9525
   --tile-secondary-gradient-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)}; // #c26400
   --tile-secondary-gradient: linear-gradient(
     168.87deg,
     var(--tile-secondary-gradient-start) 28.12%,
     var(--tile-secondary-gradient-end) 100%
+  );
+  //PARENT CENTRE
+  --parent-centre-primary-light-gradient-start: #{color.adjust(
+      $quaternary,
+      $saturation: 6%,
+      $lightness: -15%
+    )}; // #97d5fc
+  --parent-centre-primary-light-gradient-end: #{color.adjust(
+      $quaternary,
+      $saturation: 12%,
+      $lightness: -44%
+    )}; // #009dff;
+  --parent-centre-primary-light-gradient: linear-gradient(
+    179.77deg,
+    var(--parent-centre-primary-light-gradient-start) 34.6%,
+    var(--parent-centre-primary-light-gradient-end) 105.68%
+  );
+
+  --parent-centre-primary-gradient-start: #{color.adjust(
+      $primary,
+      $saturation: 17%,
+      $lightness: 39%
+    )}; // #3aaff8
+  --parent-centre-primary-gradient-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; // #13669a
+  --parent-centre-primary-gradient: linear-gradient(
+    170.54deg,
+    var(--parent-centre-primary-gradient-start) 0.43%,
+    var(--parent-centre-primary-gradient-end) 74.07%
+  );
+
+  --parent-centre-secondary-light-gradient-start: #{color.adjust(
+      $tertiary,
+      $saturation: -1%,
+      $lightness: -27%
+    )}; // #fed84d
+  --parent-centre-secondary-light-gradient-end: #{color.adjust($tertiary, $lightness: -47%)}; // #e6b400
+  --parent-centre-secondary-light-gradient: linear-gradient(
+    168.87deg,
+    var(--parent-centre-secondary-light-gradient-start) 28.12%,
+    var(--parent-centre-secondary-light-gradient-end) 100%
+  );
+
+  --parent-centre-secondary-gradient-start: #{color.adjust($secondary, $saturation: 4%)}; // #fe9525
+  --parent-centre-secondary-gradient-end: #{color.adjust(
+      $secondary,
+      $saturation: 5%,
+      $lightness: -19%
+    )}; // #c26400
+  --parent-centre-secondary-gradient: linear-gradient(
+    168.87deg,
+    var(--parent-centre-secondary-gradient-start) 28.12%,
+    var(--parent-centre-secondary-gradient-end) 100%
   );
 
   --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};

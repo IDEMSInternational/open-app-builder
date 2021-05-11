@@ -24,6 +24,8 @@ export class TourService {
 
     if (matchingTour && matchingTour.rows && matchingTour.rows.length > 0) {
       this.introJS.setOptions({
+        tooltipClass: "tooltipClass",
+        buttonClass: "buttonClass",
         steps: matchingTour.rows.map((row) => {
           let elementSelector = row.element;
           if (row.template_component_name && row.template_component_name.trim().length > 0) {
