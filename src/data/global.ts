@@ -417,6 +417,36 @@
       },
       {
         "type": "declare_global_constant",
+        "name": "my_relaxes",
+        "value": "My relaxes"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "all_relaxes",
+        "value": "All relaxes"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "random_relax",
+        "value": "Random relax"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "my_activities",
+        "value": "My activities"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "all_activities",
+        "value": "All activities"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "random_activity",
+        "value": "Random activity"
+      },
+      {
+        "type": "declare_global_constant",
         "name": "extra",
         "value": "Customise Again"
       },
@@ -540,6 +570,11 @@
         "type": "declare_global_constant",
         "name": "parent_points_get_me_going",
         "value": "Get me going"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "which_relax",
+        "value": "relax_1"
       },
       {
         "type": "declare_field_default",
@@ -1314,6 +1349,29 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_workshops.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "debug_some_globals",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "debug_item_1",
+        "value": "Item 1 text"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "debug_item_2",
+        "value": "Item 2 text"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "debug_item_3",
+        "value": "Item 3 text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_overriding_global.xlsx"
   },
   {
     "flow_type": "global",
