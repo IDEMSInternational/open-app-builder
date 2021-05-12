@@ -52,6 +52,9 @@ export class AppComponent {
         await this.surveyService.runSurvey("introSplash");
         await this.surveyService.runSurvey("analytics");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
+        // temporary fix: set initial fields to avoid doubling up of quickstart buttons
+        this.templateService.setField(".w_1on1_completion_status", "uncompleted");
+        this.templateService.setField("second_week", "false");
         await this.tourService.startTour("intro_tour");
       }
       this.skipTutorial = true;
