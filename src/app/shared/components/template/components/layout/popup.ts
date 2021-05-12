@@ -4,7 +4,7 @@ import { FlowTypes, ITemplateContainerProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 
 @Component({
-  template: `<div class="popup-backdrop">
+  template: `<div class="popup-backdrop" (click)="dismissOnBackdrop($event.target)">
     <div class="popup-content">
       <ion-button (click)="dismiss()" class="close-button" fill="clear">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -41,6 +41,9 @@ import { TemplateContainerComponent } from "../../template-container.component";
         padding: 20px;
         overflow: auto;
       }
+      .popup-content::-webkit-scrollbar {
+        display: none;
+      }
       .close-button {
         margin-left: auto;
         margin-top: -10px;
@@ -67,6 +70,12 @@ export class TemplatePopupComponent implements ITemplateContainerProps, OnInit {
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {}
+
+  dismissOnBackdrop(el: HTMLElement) {
+    if (el.classList.contains("popup-backdrop")) {
+      this.dismiss();
+    }
+  }
 
   dismiss(emit?: string) {
     this.modalCtrl.dismiss(emit);
