@@ -405,7 +405,7 @@
                     "_cleaned": "click | go_to: w_self_care_stepper"
                   }
                 ],
-                "hidden": "\"@fields.w_self_care_completion_status\" == \"completed\"",
+                "hidden": "@field.second_week || \"@field.w_self_care_completion_status\" == \"completed\"",
                 "parameter_list": {
                   "icon_src": "plh_images/icons/play_white.svg",
                   "text": "Start",
@@ -418,15 +418,24 @@
                 "_dynamicFields": {
                   "hidden": [
                     {
-                      "fullExpression": "\"@fields.w_self_care_completion_status\" == \"completed\"",
-                      "matchedExpression": "@fields.w_self_care_completion_status",
-                      "type": "fields",
+                      "fullExpression": "@field.second_week || \"@field.w_self_care_completion_status\" == \"completed\"",
+                      "matchedExpression": "@field.second_week",
+                      "type": "field",
+                      "fieldName": "second_week"
+                    },
+                    {
+                      "fullExpression": "@field.second_week || \"@field.w_self_care_completion_status\" == \"completed\"",
+                      "matchedExpression": "@field.w_self_care_completion_status",
+                      "type": "field",
                       "fieldName": "w_self_care_completion_status"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
-                  "@fields.w_self_care_completion_status": [
+                  "@field.second_week": [
+                    "hidden"
+                  ],
+                  "@field.w_self_care_completion_status": [
                     "hidden"
                   ]
                 }
@@ -440,22 +449,22 @@
                     "action_id": "set_field",
                     "args": [
                       "do_this_workshop_together",
-                      "false"
+                      "@field.do_workshop_together"
                     ],
-                    "_raw": "click | set_field:do_this_workshop_together:false",
-                    "_cleaned": "click | set_field:do_this_workshop_together:false"
+                    "_raw": "click | set_field:do_this_workshop_together:@field.do_workshop_together",
+                    "_cleaned": "click | set_field:do_this_workshop_together:@field.do_workshop_together"
                   },
                   {
                     "trigger": "click",
                     "action_id": "go_to",
                     "args": [
-                      "w_self_care_stepper"
+                      "w_1on1_stepper"
                     ],
-                    "_raw": "click | go_to: w_self_care_stepper",
-                    "_cleaned": "click | go_to: w_self_care_stepper"
+                    "_raw": "click | go_to: w_1on1_stepper",
+                    "_cleaned": "click | go_to: w_1on1_stepper"
                   }
                 ],
-                "hidden": "!@field.second_week || \"@fields.w_1on1_completion_status\" == \"completed\"",
+                "hidden": "!@field.second_week || \"@field.w_1on1_completion_status\" == \"completed\"",
                 "parameter_list": {
                   "icon_src": "plh_images/icons/play_white.svg",
                   "text": "Start",
@@ -466,26 +475,61 @@
                 ],
                 "_nested_name": "tile_weekly_workshops.dg_weekly_workshops.quick_start_weekly_workshops",
                 "_dynamicFields": {
+                  "action_list": {
+                    "0": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.do_workshop_together",
+                            "matchedExpression": "@field.do_workshop_together",
+                            "type": "field",
+                            "fieldName": "do_workshop_together"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field:do_this_workshop_together:@field.do_workshop_together",
+                          "matchedExpression": "@field.do_workshop_together",
+                          "type": "field",
+                          "fieldName": "do_workshop_together"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field:do_this_workshop_together:@field.do_workshop_together",
+                          "matchedExpression": "@field.do_workshop_together",
+                          "type": "field",
+                          "fieldName": "do_workshop_together"
+                        }
+                      ]
+                    }
+                  },
                   "hidden": [
                     {
-                      "fullExpression": "!@field.second_week || \"@fields.w_1on1_completion_status\" == \"completed\"",
+                      "fullExpression": "!@field.second_week || \"@field.w_1on1_completion_status\" == \"completed\"",
                       "matchedExpression": "@field.second_week",
                       "type": "field",
                       "fieldName": "second_week"
                     },
                     {
-                      "fullExpression": "!@field.second_week || \"@fields.w_1on1_completion_status\" == \"completed\"",
-                      "matchedExpression": "@fields.w_1on1_completion_status",
-                      "type": "fields",
+                      "fullExpression": "!@field.second_week || \"@field.w_1on1_completion_status\" == \"completed\"",
+                      "matchedExpression": "@field.w_1on1_completion_status",
+                      "type": "field",
                       "fieldName": "w_1on1_completion_status"
                     }
                   ]
                 },
                 "_dynamicDependencies": {
+                  "@field.do_workshop_together": [
+                    "action_list.0.args.1",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned"
+                  ],
                   "@field.second_week": [
                     "hidden"
                   ],
-                  "@fields.w_1on1_completion_status": [
+                  "@field.w_1on1_completion_status": [
                     "hidden"
                   ]
                 }
@@ -2967,7 +3011,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.relax.title",
-              "icon_src": "plh_images/habits/habit_relax_image.svg"
+              "icon_src": "plh_images/habits/habit_relax.svg"
             },
             "_nested_name": "points.parent_point_relax",
             "_dynamicFields": {
@@ -3093,7 +3137,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.treat_yourself.title",
-              "icon_src": "plh_images/habits/habit_treat_yourself_image.svg"
+              "icon_src": "plh_images/habits/habit_treat_yourself.svg"
             },
             "_nested_name": "points.parent_point_treat_yourself",
             "_dynamicFields": {
@@ -3219,7 +3263,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.praise_yourself.title",
-              "icon_src": "plh_images/habits/habit_praise_yourself_image.svg"
+              "icon_src": "plh_images/habits/habit_praise_yourself.svg"
             },
             "_nested_name": "points.parent_point_praise_yourself",
             "_dynamicFields": {
@@ -3345,7 +3389,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.spend_time.title",
-              "icon_src": "plh_images/habits/habit_spend_time_image.svg"
+              "icon_src": "plh_images/habits/habit_spend_time.svg"
             },
             "_nested_name": "points.parent_point_spend_time",
             "_dynamicFields": {
@@ -3471,7 +3515,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.praise_teen.title",
-              "icon_src": "plh_images/habits/habit_praise_teen_image.svg"
+              "icon_src": "plh_images/habits/habit_praise_teen.svg"
             },
             "_nested_name": "points.parent_point_praise_teen",
             "_dynamicFields": {
@@ -3597,7 +3641,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.instruct_positively.title",
-              "icon_src": "plh_images/habits/habit_praise_teen_image.svg"
+              "icon_src": "plh_images/habits/habit_instruct_positively.svg"
             },
             "_nested_name": "points.parent_point_instruct_positively",
             "_dynamicFields": {
@@ -3723,7 +3767,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.breathe.title",
-              "icon_src": "plh_images/habits/habit_breathe_image.svg"
+              "icon_src": "plh_images/habits/habit_breathe.svg"
             },
             "_nested_name": "points.parent_point_breathe",
             "_dynamicFields": {
@@ -3849,7 +3893,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.money.title",
-              "icon_src": "plh_images/habits/habit_money_image.svg"
+              "icon_src": "plh_images/habits/habit_money.svg"
             },
             "_nested_name": "points.parent_point_money",
             "_dynamicFields": {
@@ -3975,7 +4019,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.consequence.title",
-              "icon_src": "plh_images/habits/habit_consequence_image.svg"
+              "icon_src": "plh_images/habits/habit_consequence.svg"
             },
             "_nested_name": "points.parent_point_consequence",
             "_dynamicFields": {
@@ -4101,7 +4145,7 @@
             ],
             "parameter_list": {
               "text": "@data.habit.safe.title",
-              "icon_src": "plh_images/habits/habit_safe_image.svg"
+              "icon_src": "plh_images/habits/habit_safe.svg"
             },
             "_nested_name": "points.parent_point_safe",
             "_dynamicFields": {
@@ -4649,10 +4693,10 @@
                 "trigger": "click",
                 "action_id": "go_to",
                 "args": [
-                  "parent_centre_relax"
+                  "parent_centre_relax_and_act"
                 ],
-                "_raw": "click | go_to:parent_centre_relax",
-                "_cleaned": "click | go_to:parent_centre_relax"
+                "_raw": "click | go_to:parent_centre_relax_and_act",
+                "_cleaned": "click | go_to:parent_centre_relax_and_act"
               }
             ],
             "parameter_list": {
@@ -6022,7 +6066,7 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "parent_centre_relax",
+    "flow_name": "parent_centre_relax_and_act",
     "status": "released",
     "rows": [
       {
@@ -6050,10 +6094,2340 @@
         }
       },
       {
-        "type": "text",
-        "name": "text",
-        "value": "Content coming soon",
-        "_nested_name": "text"
+        "type": "subtitle",
+        "name": "subtitle_1",
+        "value": "Relaxation activities",
+        "_nested_name": "subtitle_1"
+      },
+      {
+        "type": "tile_component",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_1"
+            ],
+            "_raw": "click | set_field:which_relax:relax_1",
+            "_cleaned": "click | set_field:which_relax:relax_1"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "parameter_list": {
+          "style": "quick_start_dark",
+          "icon_src": "plh_images/icons/smile_eyes_down_white.svg",
+          "first_line_text": "@global.random_relax"
+        },
+        "name": "tile_component",
+        "_nested_name": "tile_component",
+        "_dynamicFields": {
+          "parameter_list": {
+            "first_line_text": [
+              {
+                "fullExpression": "@global.random_relax",
+                "matchedExpression": "@global.random_relax",
+                "type": "global",
+                "fieldName": "random_relax"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@global.random_relax": [
+            "parameter_list.first_line_text"
+          ]
+        }
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "parent_point"
+        },
+        "rows": [
+          {
+            "type": "tile_component",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_my_relaxes"
+                ],
+                "_raw": "click | go_to:parent_centre_my_relaxes",
+                "_cleaned": "click | go_to:parent_centre_my_relaxes"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_1",
+              "icon_src": "plh_images/icons/smile_eyes_down_white.svg",
+              "first_line_text": "@global.my_relaxes"
+            },
+            "name": "tile_component",
+            "_nested_name": "display_group.tile_component",
+            "_dynamicFields": {
+              "parameter_list": {
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.my_relaxes",
+                    "matchedExpression": "@global.my_relaxes",
+                    "type": "global",
+                    "fieldName": "my_relaxes"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.my_relaxes": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_relaxes"
+                ],
+                "_raw": "click | go_to:parent_centre_relaxes",
+                "_cleaned": "click | go_to:parent_centre_relaxes"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_1",
+              "icon_src": "plh_images/icons/smile_eyes_down_white.svg",
+              "first_line_text": "@global.all_relaxes"
+            },
+            "name": "tile_component",
+            "_nested_name": "display_group.tile_component",
+            "_dynamicFields": {
+              "parameter_list": {
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.all_relaxes",
+                    "matchedExpression": "@global.all_relaxes",
+                    "type": "global",
+                    "fieldName": "all_relaxes"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.all_relaxes": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
+      },
+      {
+        "type": "subtitle",
+        "name": "subtitle_2",
+        "value": "Something fun to do with your teen",
+        "_nested_name": "subtitle_2"
+      },
+      {
+        "type": "tile_component",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_co_chef"
+            ],
+            "_raw": "click | go_to:activity_co_chef",
+            "_cleaned": "click | go_to:activity_co_chef"
+          }
+        ],
+        "parameter_list": {
+          "style": "quick_start_dark",
+          "icon_src": "plh_images/icons/smile_eyes_up_white.svg",
+          "first_line_text": "@global.random_activity"
+        },
+        "name": "tile_component",
+        "_nested_name": "tile_component",
+        "_dynamicFields": {
+          "parameter_list": {
+            "first_line_text": [
+              {
+                "fullExpression": "@global.random_activity",
+                "matchedExpression": "@global.random_activity",
+                "type": "global",
+                "fieldName": "random_activity"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@global.random_activity": [
+            "parameter_list.first_line_text"
+          ]
+        }
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "parent_point"
+        },
+        "rows": [
+          {
+            "type": "tile_component",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_my_activities"
+                ],
+                "_raw": "click | go_to:parent_centre_my_activities",
+                "_cleaned": "click | go_to:parent_centre_my_activities"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_2",
+              "icon_src": "plh_images/icons/smile_eyes_up_white.svg",
+              "first_line_text": "@global.my_activities"
+            },
+            "name": "tile_component",
+            "_nested_name": "display_group.tile_component",
+            "_dynamicFields": {
+              "parameter_list": {
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.my_activities",
+                    "matchedExpression": "@global.my_activities",
+                    "type": "global",
+                    "fieldName": "my_activities"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.my_activities": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "tile_component",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "parent_centre_activities"
+                ],
+                "_raw": "click | go_to:parent_centre_activities",
+                "_cleaned": "click | go_to:parent_centre_activities"
+              }
+            ],
+            "parameter_list": {
+              "style": "parent_centre_2",
+              "icon_src": "plh_images/icons/smile_eyes_up_white.svg",
+              "first_line_text": "@global.all_activities"
+            },
+            "name": "tile_component",
+            "_nested_name": "display_group.tile_component",
+            "_dynamicFields": {
+              "parameter_list": {
+                "first_line_text": [
+                  {
+                    "fullExpression": "@global.all_activities",
+                    "matchedExpression": "@global.all_activities",
+                    "type": "global",
+                    "fieldName": "all_activities"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@global.all_activities": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "parent_centre_relaxes",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.all_relaxes",
+        "parameter_list": {
+          "style": "tiny"
+        },
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.all_relaxes",
+              "matchedExpression": "@global.all_relaxes",
+              "type": "global",
+              "fieldName": "all_relaxes"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.all_relaxes": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_1",
+        "value": "@data.relax.relax_1.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_1"
+            ],
+            "_raw": "click | set_field:which_relax:relax_1",
+            "_cleaned": "click | set_field:which_relax:relax_1"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_1.title",
+              "matchedExpression": "@data.relax.relax_1.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_1.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_2",
+        "value": "@data.relax.relax_2.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_2"
+            ],
+            "_raw": "click | set_field:which_relax:relax_2",
+            "_cleaned": "click | set_field:which_relax:relax_2"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_2.title",
+              "matchedExpression": "@data.relax.relax_2.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_2.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_3",
+        "value": "@data.relax.relax_3.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_3"
+            ],
+            "_raw": "click | set_field:which_relax:relax_3",
+            "_cleaned": "click | set_field:which_relax:relax_3"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_3.title",
+              "matchedExpression": "@data.relax.relax_3.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_3.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_4",
+        "value": "@data.relax.relax_4.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_4"
+            ],
+            "_raw": "click | set_field:which_relax:relax_4",
+            "_cleaned": "click | set_field:which_relax:relax_4"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_4",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_4.title",
+              "matchedExpression": "@data.relax.relax_4.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_4.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_5",
+        "value": "@data.relax.relax_5.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_5"
+            ],
+            "_raw": "click | set_field:which_relax:relax_5",
+            "_cleaned": "click | set_field:which_relax:relax_5"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_5",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_5.title",
+              "matchedExpression": "@data.relax.relax_5.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_5.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_6",
+        "value": "@data.relax.relax_6.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_6"
+            ],
+            "_raw": "click | set_field:which_relax:relax_6",
+            "_cleaned": "click | set_field:which_relax:relax_6"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_6",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_6.title",
+              "matchedExpression": "@data.relax.relax_6.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_6.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_7",
+        "value": "@data.relax.relax_7.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_7"
+            ],
+            "_raw": "click | set_field:which_relax:relax_7",
+            "_cleaned": "click | set_field:which_relax:relax_7"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_7",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_7.title",
+              "matchedExpression": "@data.relax.relax_7.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_7.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_8",
+        "value": "@data.relax.relax_8.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_8"
+            ],
+            "_raw": "click | set_field:which_relax:relax_8",
+            "_cleaned": "click | set_field:which_relax:relax_8"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_8",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_8.title",
+              "matchedExpression": "@data.relax.relax_8.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_8.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_9",
+        "value": "@data.relax.relax_9.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_9"
+            ],
+            "_raw": "click | set_field:which_relax:relax_9",
+            "_cleaned": "click | set_field:which_relax:relax_9"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_9",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_9.title",
+              "matchedExpression": "@data.relax.relax_9.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_9.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_10",
+        "value": "@data.relax.relax_10.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_10"
+            ],
+            "_raw": "click | set_field:which_relax:relax_10",
+            "_cleaned": "click | set_field:which_relax:relax_10"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_10",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_10.title",
+              "matchedExpression": "@data.relax.relax_10.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_10.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_11",
+        "value": "@data.relax.relax_11.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_11"
+            ],
+            "_raw": "click | set_field:which_relax:relax_11",
+            "_cleaned": "click | set_field:which_relax:relax_11"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_11",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_11.title",
+              "matchedExpression": "@data.relax.relax_11.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_11.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_12",
+        "value": "@data.relax.relax_12.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_12"
+            ],
+            "_raw": "click | set_field:which_relax:relax_12",
+            "_cleaned": "click | set_field:which_relax:relax_12"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_12",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_12.title",
+              "matchedExpression": "@data.relax.relax_12.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_12.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_13",
+        "value": "@data.relax.relax_13.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_13"
+            ],
+            "_raw": "click | set_field:which_relax:relax_13",
+            "_cleaned": "click | set_field:which_relax:relax_13"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_13",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_13.title",
+              "matchedExpression": "@data.relax.relax_13.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_13.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_14",
+        "value": "@data.relax.relax_14.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_14"
+            ],
+            "_raw": "click | set_field:which_relax:relax_14",
+            "_cleaned": "click | set_field:which_relax:relax_14"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "_nested_name": "button_relax_14",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_14.title",
+              "matchedExpression": "@data.relax.relax_14.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_14.title": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "parent_centre_my_relaxes",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.my_relaxes",
+        "parameter_list": {
+          "style": "tiny"
+        },
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.my_relaxes",
+              "matchedExpression": "@global.my_relaxes",
+              "type": "global",
+              "fieldName": "my_relaxes"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.my_relaxes": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_1",
+        "value": "@data.relax.relax_1.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_1"
+            ],
+            "_raw": "click | set_field:which_relax:relax_1",
+            "_cleaned": "click | set_field:which_relax:relax_1"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_1.title",
+              "matchedExpression": "@data.relax.relax_1.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_1.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_2",
+        "value": "@data.relax.relax_2.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_2"
+            ],
+            "_raw": "click | set_field:which_relax:relax_2",
+            "_cleaned": "click | set_field:which_relax:relax_2"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_2.title",
+              "matchedExpression": "@data.relax.relax_2.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_2.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_3",
+        "value": "@data.relax.relax_3.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_3"
+            ],
+            "_raw": "click | set_field:which_relax:relax_3",
+            "_cleaned": "click | set_field:which_relax:relax_3"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_3.title",
+              "matchedExpression": "@data.relax.relax_3.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_3.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_4",
+        "value": "@data.relax.relax_4.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_4"
+            ],
+            "_raw": "click | set_field:which_relax:relax_4",
+            "_cleaned": "click | set_field:which_relax:relax_4"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_4",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_4.title",
+              "matchedExpression": "@data.relax.relax_4.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_4.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_5",
+        "value": "@data.relax.relax_5.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_5"
+            ],
+            "_raw": "click | set_field:which_relax:relax_5",
+            "_cleaned": "click | set_field:which_relax:relax_5"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_5",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_5.title",
+              "matchedExpression": "@data.relax.relax_5.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_5.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_6",
+        "value": "@data.relax.relax_6.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_6"
+            ],
+            "_raw": "click | set_field:which_relax:relax_6",
+            "_cleaned": "click | set_field:which_relax:relax_6"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_6",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_6.title",
+              "matchedExpression": "@data.relax.relax_6.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_6.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_7",
+        "value": "@data.relax.relax_7.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_7"
+            ],
+            "_raw": "click | set_field:which_relax:relax_7",
+            "_cleaned": "click | set_field:which_relax:relax_7"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_7",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_7.title",
+              "matchedExpression": "@data.relax.relax_7.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_7.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_8",
+        "value": "@data.relax.relax_8.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_8"
+            ],
+            "_raw": "click | set_field:which_relax:relax_8",
+            "_cleaned": "click | set_field:which_relax:relax_8"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_8",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_8.title",
+              "matchedExpression": "@data.relax.relax_8.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_8.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_9",
+        "value": "@data.relax.relax_9.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_9"
+            ],
+            "_raw": "click | set_field:which_relax:relax_9",
+            "_cleaned": "click | set_field:which_relax:relax_9"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_9",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_9.title",
+              "matchedExpression": "@data.relax.relax_9.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_9.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_10",
+        "value": "@data.relax.relax_10.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_10"
+            ],
+            "_raw": "click | set_field:which_relax:relax_10",
+            "_cleaned": "click | set_field:which_relax:relax_10"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_10",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_10.title",
+              "matchedExpression": "@data.relax.relax_10.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_10.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_11",
+        "value": "@data.relax.relax_11.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_11"
+            ],
+            "_raw": "click | set_field:which_relax:relax_11",
+            "_cleaned": "click | set_field:which_relax:relax_11"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_11",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_11.title",
+              "matchedExpression": "@data.relax.relax_11.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_11.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_12",
+        "value": "@data.relax.relax_12.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_12"
+            ],
+            "_raw": "click | set_field:which_relax:relax_12",
+            "_cleaned": "click | set_field:which_relax:relax_12"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_12",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_12.title",
+              "matchedExpression": "@data.relax.relax_12.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_12.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_13",
+        "value": "@data.relax.relax_13.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_13"
+            ],
+            "_raw": "click | set_field:which_relax:relax_13",
+            "_cleaned": "click | set_field:which_relax:relax_13"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_13",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_13.title",
+              "matchedExpression": "@data.relax.relax_13.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_13.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_14",
+        "value": "@data.relax.relax_14.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              "false"
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_14"
+            ],
+            "_raw": "click | set_field:which_relax:relax_14",
+            "_cleaned": "click | set_field:which_relax:relax_14"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "hidden": "@field.relax_1_disabled",
+        "_nested_name": "button_relax_14",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_14.title",
+              "matchedExpression": "@data.relax.relax_14.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.relax_1_disabled",
+              "matchedExpression": "@field.relax_1_disabled",
+              "type": "field",
+              "fieldName": "relax_1_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_14.title": [
+            "value"
+          ],
+          "@field.relax_1_disabled": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "parent_centre_activities",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.all_activities",
+        "parameter_list": {
+          "style": "tiny"
+        },
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.all_activities",
+              "matchedExpression": "@global.all_activities",
+              "type": "global",
+              "fieldName": "all_activities"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.all_activities": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_1",
+        "value": "@data.something_fun.co_chef.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_co_chef"
+            ],
+            "_raw": "click | go_to:activity_co_chef",
+            "_cleaned": "click | go_to:activity_co_chef"
+          }
+        ],
+        "_nested_name": "button_something_fun_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.something_fun.co_chef.title",
+              "matchedExpression": "@data.something_fun.co_chef.title",
+              "type": "data",
+              "fieldName": "something_fun"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.co_chef.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_2",
+        "value": "@data.something_fun.dance_moves.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_dance_moves"
+            ],
+            "_raw": "click | go_to:activity_dance_moves",
+            "_cleaned": "click | go_to:activity_dance_moves"
+          }
+        ],
+        "_nested_name": "button_something_fun_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.something_fun.dance_moves.title",
+              "matchedExpression": "@data.something_fun.dance_moves.title",
+              "type": "data",
+              "fieldName": "something_fun"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.dance_moves.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_3",
+        "value": "@data.something_fun.two_truths.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_two_truths"
+            ],
+            "_raw": "click | go_to:activity_two_truths",
+            "_cleaned": "click | go_to:activity_two_truths"
+          }
+        ],
+        "_nested_name": "button_something_fun_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.something_fun.two_truths.title",
+              "matchedExpression": "@data.something_fun.two_truths.title",
+              "type": "data",
+              "fieldName": "something_fun"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.two_truths.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_4",
+        "value": "@data.something_fun.mirror.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_mirror"
+            ],
+            "_raw": "click | go_to:activity_mirror",
+            "_cleaned": "click | go_to:activity_mirror"
+          }
+        ],
+        "_nested_name": "button_something_fun_4",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.something_fun.mirror.title",
+              "matchedExpression": "@data.something_fun.mirror.title",
+              "type": "data",
+              "fieldName": "something_fun"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.mirror.title": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "parent_centre_my_activities",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "@global.my_activities",
+        "parameter_list": {
+          "style": "tiny"
+        },
+        "_nested_name": "title",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.my_activities",
+              "matchedExpression": "@global.my_activities",
+              "type": "global",
+              "fieldName": "my_activities"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.my_activities": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_1",
+        "value": "@data.something_fun.co_chef.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_co_chef"
+            ],
+            "_raw": "click | go_to:activity_co_chef",
+            "_cleaned": "click | go_to:activity_co_chef"
+          }
+        ],
+        "hidden": "@field.activity_co_chef_disabled",
+        "_nested_name": "button_something_fun_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.something_fun.co_chef.title",
+              "matchedExpression": "@data.something_fun.co_chef.title",
+              "type": "data",
+              "fieldName": "something_fun"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.activity_co_chef_disabled",
+              "matchedExpression": "@field.activity_co_chef_disabled",
+              "type": "field",
+              "fieldName": "activity_co_chef_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.co_chef.title": [
+            "value"
+          ],
+          "@field.activity_co_chef_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_2",
+        "value": "@data.something_fun.dance_moves.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_dance_moves"
+            ],
+            "_raw": "click | go_to:activity_dance_moves",
+            "_cleaned": "click | go_to:activity_dance_moves"
+          }
+        ],
+        "hidden": "@field.activity_co_chef_disabled",
+        "_nested_name": "button_something_fun_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.something_fun.dance_moves.title",
+              "matchedExpression": "@data.something_fun.dance_moves.title",
+              "type": "data",
+              "fieldName": "something_fun"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.activity_co_chef_disabled",
+              "matchedExpression": "@field.activity_co_chef_disabled",
+              "type": "field",
+              "fieldName": "activity_co_chef_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.dance_moves.title": [
+            "value"
+          ],
+          "@field.activity_co_chef_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_3",
+        "value": "@data.something_fun.two_truths.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_two_truths"
+            ],
+            "_raw": "click | go_to:activity_two_truths",
+            "_cleaned": "click | go_to:activity_two_truths"
+          }
+        ],
+        "hidden": "@field.activity_co_chef_disabled",
+        "_nested_name": "button_something_fun_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.something_fun.two_truths.title",
+              "matchedExpression": "@data.something_fun.two_truths.title",
+              "type": "data",
+              "fieldName": "something_fun"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.activity_co_chef_disabled",
+              "matchedExpression": "@field.activity_co_chef_disabled",
+              "type": "field",
+              "fieldName": "activity_co_chef_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.two_truths.title": [
+            "value"
+          ],
+          "@field.activity_co_chef_disabled": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_4",
+        "value": "@data.something_fun.mirror.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_mirror"
+            ],
+            "_raw": "click | go_to:activity_mirror",
+            "_cleaned": "click | go_to:activity_mirror"
+          }
+        ],
+        "hidden": "@field.activity_co_chef_disabled",
+        "_nested_name": "button_something_fun_4",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.something_fun.mirror.title",
+              "matchedExpression": "@data.something_fun.mirror.title",
+              "type": "data",
+              "fieldName": "something_fun"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "@field.activity_co_chef_disabled",
+              "matchedExpression": "@field.activity_co_chef_disabled",
+              "type": "field",
+              "fieldName": "activity_co_chef_disabled"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.mirror.title": [
+            "value"
+          ],
+          "@field.activity_co_chef_disabled": [
+            "hidden"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
@@ -6189,6 +8563,175 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_relax.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "something_fun_text",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "activity_title",
+        "_nested_name": "activity_title"
+      },
+      {
+        "type": "text",
+        "name": "activity_text",
+        "_nested_name": "activity_text"
+      },
+      {
+        "type": "dashed_box",
+        "name": "habit_text",
+        "value": "@data.habit.spend_time.mark_text",
+        "parameter_list": {
+          "icon_src": "plh_images/icons/star_circle.svg",
+          "icon_position": "top-left"
+        },
+        "_nested_name": "habit_text",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.habit.spend_time.mark_text",
+              "matchedExpression": "@data.habit.spend_time.mark_text",
+              "type": "data",
+              "fieldName": "habit"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.habit.spend_time.mark_text": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "parent_point_box",
+        "name": "habit_tracker",
+        "value": "@field.total_parent_point_spend_time",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "total_parent_point_spend_time",
+              "@field.total_parent_point_spend_time+1"
+            ],
+            "_raw": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+            "_cleaned": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "weekly_parent_point_spend_time",
+              "@field.weekly_parent_point_spend_time+1"
+            ],
+            "_raw": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+            "_cleaned": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1"
+          }
+        ],
+        "parameter_list": {
+          "text": "@data.habit.spend_time.title",
+          "icon_src": "plh_images/habits/habit_spend_time.svg"
+        },
+        "_nested_name": "habit_tracker",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@field.total_parent_point_spend_time",
+              "matchedExpression": "@field.total_parent_point_spend_time",
+              "type": "field",
+              "fieldName": "total_parent_point_spend_time"
+            }
+          ],
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@field.total_parent_point_spend_time+1",
+                    "matchedExpression": "@field.total_parent_point_spend_time",
+                    "type": "field",
+                    "fieldName": "total_parent_point_spend_time"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+                  "matchedExpression": "@field.total_parent_point_spend_time",
+                  "type": "field",
+                  "fieldName": "total_parent_point_spend_time"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+                  "matchedExpression": "@field.total_parent_point_spend_time",
+                  "type": "field",
+                  "fieldName": "total_parent_point_spend_time"
+                }
+              ]
+            },
+            "1": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@field.weekly_parent_point_spend_time+1",
+                    "matchedExpression": "@field.weekly_parent_point_spend_time",
+                    "type": "field",
+                    "fieldName": "weekly_parent_point_spend_time"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+                  "matchedExpression": "@field.weekly_parent_point_spend_time",
+                  "type": "field",
+                  "fieldName": "weekly_parent_point_spend_time"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+                  "matchedExpression": "@field.weekly_parent_point_spend_time",
+                  "type": "field",
+                  "fieldName": "weekly_parent_point_spend_time"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "text": [
+              {
+                "fullExpression": "@data.habit.spend_time.title",
+                "matchedExpression": "@data.habit.spend_time.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@field.total_parent_point_spend_time": [
+            "value",
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@field.weekly_parent_point_spend_time": [
+            "action_list.1.args.1",
+            "action_list.1._raw",
+            "action_list.1._cleaned"
+          ],
+          "@data.habit.spend_time.title": [
+            "parameter_list.text"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_something_fun.xlsx"
   },
   {
     "flow_type": "template",
@@ -17737,9 +20280,24 @@
       },
       {
         "name": "relax",
-        "value": "relax_1",
+        "value": "@field.which_relax",
         "type": "set_variable",
-        "_nested_name": "relax"
+        "_nested_name": "relax",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@field.which_relax",
+              "matchedExpression": "@field.which_relax",
+              "type": "field",
+              "fieldName": "which_relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.which_relax": [
+            "value"
+          ]
+        }
       },
       {
         "name": "relax_text",
@@ -17814,6 +20372,16 @@
             ],
             "_raw": "completed | emit:completed",
             "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "completed",
+            "action_id": "set_field",
+            "args": [
+              "daily_relax_done",
+              "true"
+            ],
+            "_raw": "completed | set_field:daily_relax_done:true",
+            "_cleaned": "completed | set_field:daily_relax_done:true"
           },
           {
             "trigger": "uncompleted",
@@ -18132,7 +20700,7 @@
             "hidden": false,
             "parameter_list": {
               "text": "@data.habit.relax.title",
-              "icon_src": "plh_images/habits/habit_relax_image.svg"
+              "icon_src": "plh_images/habits/habit_relax.svg"
             },
             "type": "set_variable",
             "_nested_name": "workshop_activity.outro_habit_tracker",
@@ -21570,9 +24138,6 @@
         "type": "text",
         "name": "text_q1",
         "value": "answer to q1 saved in field answer_q1: @field.answer_q1",
-        "parameter_list": {
-          "title": "Question 2"
-        },
         "_nested_name": "text_q1",
         "_dynamicFields": {
           "value": [
@@ -21612,15 +24177,21 @@
         }
       },
       {
+        "type": "title",
+        "name": "title_1",
+        "value": "Conditions to Hide",
+        "_nested_name": "title_1"
+      },
+      {
         "type": "text",
         "name": "conditional_text_1",
         "value": "This text shows if the answer to Q1 is less than 4",
-        "hidden": "!@field.answer_q1<4",
+        "hidden": "@field.answer_q1>=4",
         "_nested_name": "conditional_text_1",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "!@field.answer_q1<4",
+              "fullExpression": "@field.answer_q1>=4",
               "matchedExpression": "@field.answer_q1",
               "type": "field",
               "fieldName": "answer_q1"
@@ -21637,12 +24208,12 @@
         "type": "text",
         "name": "conditional_text_2",
         "value": "This text shows if the answer to Q2 is less than 4",
-        "hidden": "!@field.answer_q2<4",
+        "hidden": "@field.answer_q2>=4",
         "_nested_name": "conditional_text_2",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "!@field.answer_q2<4",
+              "fullExpression": "@field.answer_q2>=4",
               "matchedExpression": "@field.answer_q2",
               "type": "field",
               "fieldName": "answer_q2"
@@ -21659,18 +24230,18 @@
         "type": "text",
         "name": "conditional_text_3",
         "value": "This text shows if the answer to Q1 is greater than or equal to 4 and the answer to Q2 is greater than or equal to 4",
-        "hidden": "!@field.answer_q1>=4 || !@field.answer_q2>=4",
+        "hidden": "@field.answer_q1<4 || @field.answer_q2<4",
         "_nested_name": "conditional_text_3",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "!@field.answer_q1>=4 || !@field.answer_q2>=4",
+              "fullExpression": "@field.answer_q1<4 || @field.answer_q2<4",
               "matchedExpression": "@field.answer_q1",
               "type": "field",
               "fieldName": "answer_q1"
             },
             {
-              "fullExpression": "!@field.answer_q1>=4 || !@field.answer_q2>=4",
+              "fullExpression": "@field.answer_q1<4 || @field.answer_q2<4",
               "matchedExpression": "@field.answer_q2",
               "type": "field",
               "fieldName": "answer_q2"
@@ -21683,6 +24254,56 @@
           ],
           "@field.answer_q2": [
             "hidden"
+          ]
+        }
+      },
+      {
+        "type": "title",
+        "name": "title_2",
+        "value": "Conditional column",
+        "_nested_name": "title_2"
+      },
+      {
+        "type": "text",
+        "name": "conditional_text",
+        "value": "This text is created if the answer to Q1 is greater than or equal to 4",
+        "condition": "@field.answer_q1>=4",
+        "_nested_name": "conditional_text",
+        "_dynamicFields": {
+          "condition": [
+            {
+              "fullExpression": "@field.answer_q1>=4",
+              "matchedExpression": "@field.answer_q1",
+              "type": "field",
+              "fieldName": "answer_q1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q1": [
+            "condition"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "conditional_text",
+        "value": "This text is created if the answer to Q1 is less than 4",
+        "condition": "@field.answer_q1<4",
+        "_nested_name": "conditional_text",
+        "_dynamicFields": {
+          "condition": [
+            {
+              "fullExpression": "@field.answer_q1<4",
+              "matchedExpression": "@field.answer_q1",
+              "type": "field",
+              "fieldName": "answer_q1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.answer_q1": [
+            "condition"
           ]
         }
       },
@@ -21825,6 +24446,85 @@
         "_dynamicDependencies": {
           "@data.debug.item_1.text": [
             "parameter_list.text"
+          ]
+        }
+      },
+      {
+        "value": "The tile below shows that the icon_src is NOT found when called through a data field",
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
+        "type": "tile_component",
+        "name": "quick_start_tile_1",
+        "parameter_list": {
+          "style": "quick_start_dark",
+          "first_line_text": "@data.debug.item_2.text",
+          "second_line_text": "image through data",
+          "icon_src": "@data.debug.item_2.image_asset"
+        },
+        "_nested_name": "quick_start_tile_1",
+        "_dynamicFields": {
+          "parameter_list": {
+            "first_line_text": [
+              {
+                "fullExpression": "@data.debug.item_2.text",
+                "matchedExpression": "@data.debug.item_2.text",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ],
+            "icon_src": [
+              {
+                "fullExpression": "@data.debug.item_2.image_asset",
+                "matchedExpression": "@data.debug.item_2.image_asset",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_2.text": [
+            "parameter_list.first_line_text"
+          ],
+          "@data.debug.item_2.image_asset": [
+            "parameter_list.icon_src"
+          ]
+        }
+      },
+      {
+        "value": "The tile below shows that the icon_src IS found when called directly",
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
+        "type": "tile_component",
+        "name": "quick_start_tile_2",
+        "parameter_list": {
+          "style": "quick_start_dark",
+          "first_line_text": "@data.debug.item_2.text",
+          "second_line_text": "image loaded directly",
+          "icon_src": "plh_images/icons/play_white.svg"
+        },
+        "_nested_name": "quick_start_tile_2",
+        "_dynamicFields": {
+          "parameter_list": {
+            "first_line_text": [
+              {
+                "fullExpression": "@data.debug.item_2.text",
+                "matchedExpression": "@data.debug.item_2.text",
+                "type": "data",
+                "fieldName": "debug"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@data.debug.item_2.text": [
+            "parameter_list.first_line_text"
           ]
         }
       }
@@ -24618,6 +27318,395 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_nesting_variables.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_global_bottom",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@global.debug_item_1",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.debug_item_1",
+              "matchedExpression": "@global.debug_item_1",
+              "type": "global",
+              "fieldName": "debug_item_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.debug_item_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "@global.debug_item_1",
+        "_nested_name": "text_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.debug_item_1",
+              "matchedExpression": "@global.debug_item_1",
+              "type": "global",
+              "fieldName": "debug_item_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.debug_item_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "@global.debug_item_1",
+        "_nested_name": "text_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.debug_item_1",
+              "matchedExpression": "@global.debug_item_1",
+              "type": "global",
+              "fieldName": "debug_item_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.debug_item_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_4",
+        "value": "@global.debug_item_1",
+        "_nested_name": "text_4",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.debug_item_1",
+              "matchedExpression": "@global.debug_item_1",
+              "type": "global",
+              "fieldName": "debug_item_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.debug_item_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_5",
+        "value": "This text is directly authored in the value",
+        "_nested_name": "text_5"
+      },
+      {
+        "type": "text",
+        "name": "text_6",
+        "value": "This text is directly authored in the value",
+        "_nested_name": "text_6"
+      },
+      {
+        "type": "text",
+        "name": "text_7",
+        "value": "This text is directly authored in the value",
+        "_nested_name": "text_7"
+      },
+      {
+        "type": "text",
+        "name": "text_8",
+        "value": "This text is directly authored in the value",
+        "_nested_name": "text_8"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_overriding_global.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_global_middle",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "debug_global_bottom",
+        "value": "debug_global_bottom",
+        "rows": [
+          {
+            "name": "text_2",
+            "value": "@global.debug_item_2",
+            "type": "set_variable",
+            "_nested_name": "debug_global_bottom.text_2",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.debug_item_2",
+                  "matchedExpression": "@global.debug_item_2",
+                  "type": "global",
+                  "fieldName": "debug_item_2"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.debug_item_2": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_3",
+            "value": "@global.debug_item_2",
+            "type": "set_variable",
+            "_nested_name": "debug_global_bottom.text_3",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.debug_item_2",
+                  "matchedExpression": "@global.debug_item_2",
+                  "type": "global",
+                  "fieldName": "debug_item_2"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.debug_item_2": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_4",
+            "value": "This text is overridden directly in the value",
+            "type": "set_variable",
+            "_nested_name": "debug_global_bottom.text_4"
+          },
+          {
+            "name": "text_6",
+            "value": "@global.debug_item_2",
+            "type": "set_variable",
+            "_nested_name": "debug_global_bottom.text_6",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.debug_item_2",
+                  "matchedExpression": "@global.debug_item_2",
+                  "type": "global",
+                  "fieldName": "debug_item_2"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.debug_item_2": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_7",
+            "value": "@global.debug_item_2",
+            "type": "set_variable",
+            "_nested_name": "debug_global_bottom.text_7",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.debug_item_2",
+                  "matchedExpression": "@global.debug_item_2",
+                  "type": "global",
+                  "fieldName": "debug_item_2"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.debug_item_2": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_8",
+            "value": "This text is overridden directly in the value",
+            "type": "set_variable",
+            "_nested_name": "debug_global_bottom.text_8"
+          }
+        ],
+        "_nested_name": "debug_global_bottom"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_overriding_global.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_global_top",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "debug_global_middle",
+        "value": "debug_global_middle",
+        "rows": [
+          {
+            "type": "nested_properties",
+            "name": "debug_global_bottom",
+            "rows": [
+              {
+                "name": "text_1",
+                "value": "@global.debug_item_3",
+                "type": "set_variable",
+                "_nested_name": "debug_global_middle.debug_global_bottom.text_1",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.debug_item_3",
+                      "matchedExpression": "@global.debug_item_3",
+                      "type": "global",
+                      "fieldName": "debug_item_3"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.debug_item_3": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "text_2",
+                "value": "@global.debug_item_3",
+                "type": "set_variable",
+                "_nested_name": "debug_global_middle.debug_global_bottom.text_2",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.debug_item_3",
+                      "matchedExpression": "@global.debug_item_3",
+                      "type": "global",
+                      "fieldName": "debug_item_3"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.debug_item_3": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "text_3",
+                "value": "This text is overridden directly in the value",
+                "type": "set_variable",
+                "_nested_name": "debug_global_middle.debug_global_bottom.text_3"
+              },
+              {
+                "name": "text_4",
+                "value": "@global.debug_item_3",
+                "type": "set_variable",
+                "_nested_name": "debug_global_middle.debug_global_bottom.text_4",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.debug_item_3",
+                      "matchedExpression": "@global.debug_item_3",
+                      "type": "global",
+                      "fieldName": "debug_item_3"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.debug_item_3": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "text_5",
+                "value": "@global.debug_item_3",
+                "type": "set_variable",
+                "_nested_name": "debug_global_middle.debug_global_bottom.text_5",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.debug_item_3",
+                      "matchedExpression": "@global.debug_item_3",
+                      "type": "global",
+                      "fieldName": "debug_item_3"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.debug_item_3": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "text_6",
+                "value": "@global.debug_item_3",
+                "type": "set_variable",
+                "_nested_name": "debug_global_middle.debug_global_bottom.text_6",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.debug_item_3",
+                      "matchedExpression": "@global.debug_item_3",
+                      "type": "global",
+                      "fieldName": "debug_item_3"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.debug_item_3": [
+                    "value"
+                  ]
+                }
+              },
+              {
+                "name": "text_7",
+                "value": "This text is overridden directly in the value",
+                "type": "set_variable",
+                "_nested_name": "debug_global_middle.debug_global_bottom.text_7"
+              },
+              {
+                "name": "text_8",
+                "value": "@global.debug_item_3",
+                "type": "set_variable",
+                "_nested_name": "debug_global_middle.debug_global_bottom.text_8",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@global.debug_item_3",
+                      "matchedExpression": "@global.debug_item_3",
+                      "type": "global",
+                      "fieldName": "debug_item_3"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@global.debug_item_3": [
+                    "value"
+                  ]
+                }
+              }
+            ],
+            "_nested_name": "debug_global_middle.debug_global_bottom"
+          }
+        ],
+        "_nested_name": "debug_global_middle"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_overriding_global.xlsx"
   },
   {
     "flow_type": "template",
@@ -30757,6 +33846,62 @@
             "parameter_list.answer_list"
           ]
         }
+      },
+      {
+        "type": "title",
+        "name": "test",
+        "_nested_name": "test"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_two_options_1",
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2"
+        },
+        "_nested_name": "radio_group_two_options_1",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list_2",
+                "matchedExpression": "@local.answer_list_2",
+                "type": "local",
+                "fieldName": "answer_list_2"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_list_2": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group_two_options_2",
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2",
+          "options_per_row": "2"
+        },
+        "_nested_name": "radio_group_two_options_2",
+        "_dynamicFields": {
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list_2",
+                "matchedExpression": "@local.answer_list_2",
+                "type": "local",
+                "fieldName": "answer_list_2"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.answer_list_2": [
+            "parameter_list.answer_list"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -33141,8 +36286,8 @@
               "demo_changed_field_checkbox",
               "@local.checkbox_1"
             ],
-            "_raw": "changed | set_field: demo_changed_field_checkbox: @local.checkbox_1",
-            "_cleaned": "changed | set_field: demo_changed_field_checkbox: @local.checkbox_1"
+            "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+            "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
           }
         ],
         "parameter_list": {
@@ -33164,7 +36309,7 @@
               },
               "_raw": [
                 {
-                  "fullExpression": "changed | set_field: demo_changed_field_checkbox: @local.checkbox_1",
+                  "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
                   "matchedExpression": "@local.checkbox_1",
                   "type": "local",
                   "fieldName": "checkbox_1"
@@ -33172,7 +36317,7 @@
               ],
               "_cleaned": [
                 {
-                  "fullExpression": "changed | set_field: demo_changed_field_checkbox: @local.checkbox_1",
+                  "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
                   "matchedExpression": "@local.checkbox_1",
                   "type": "local",
                   "fieldName": "checkbox_1"
@@ -33192,20 +36337,74 @@
       {
         "type": "text",
         "name": "text_1",
-        "value": "CheckBox checked: @fields.demo_changed_field_checkbox",
+        "value": "checkbox field: @field.demo_changed_field_checkbox",
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "CheckBox checked: @fields.demo_changed_field_checkbox",
-              "matchedExpression": "@fields.demo_changed_field_checkbox",
-              "type": "fields",
+              "fullExpression": "checkbox field: @field.demo_changed_field_checkbox",
+              "matchedExpression": "@field.demo_changed_field_checkbox",
+              "type": "field",
               "fieldName": "demo_changed_field_checkbox"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@fields.demo_changed_field_checkbox": [
+          "@field.demo_changed_field_checkbox": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "checkbox local: @local.checkbox_1",
+        "_nested_name": "text_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "checkbox local: @local.checkbox_1",
+              "matchedExpression": "@local.checkbox_1",
+              "type": "local",
+              "fieldName": "checkbox_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.checkbox_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "simple_checkbox",
+        "name": "checkbox_2",
+        "value": true,
+        "parameter_list": {
+          "label_text": "Example answer?"
+        },
+        "_nested_name": "checkbox_2"
+      },
+      {
+        "type": "simple_checkbox",
+        "name": "checkbox_3",
+        "value": "@field.demo_changed_field_checkbox",
+        "parameter_list": {
+          "label_text": "Example answer?"
+        },
+        "_nested_name": "checkbox_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@field.demo_changed_field_checkbox",
+              "matchedExpression": "@field.demo_changed_field_checkbox",
+              "type": "field",
+              "fieldName": "demo_changed_field_checkbox"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.demo_changed_field_checkbox": [
             "value"
           ]
         }
@@ -33674,7 +36873,7 @@
               {
                 "type": "nested_properties",
                 "name": "content_box",
-                "value": "duo",
+                "value": "box_duo",
                 "rows": [
                   {
                     "type": "nested_properties",
@@ -33705,33 +36904,23 @@
                   {
                     "type": "nested_properties",
                     "name": "box_2",
-                    "value": "rad",
+                    "value": "radio_buttons_emo_temp",
                     "rows": [
                       {
                         "name": "text",
-                        "value": "Parents usually don’t get thanked or praised enough. ",
+                        "value": "Your goal was to spend one-on-one time with your teen. ",
                         "type": "set_variable",
                         "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.text"
                       },
                       {
                         "name": "question_text",
-                        "value": "How does it make you feel when nobody says \"thank you\"?",
+                        "value": "How did that go?",
                         "type": "set_variable",
                         "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.question_text"
                       },
                       {
-                        "name": "answer_list",
-                        "value": [
-                          "name:sad | text: Sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
-                          "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg | image_checked:plh_images/stickers/faces/angry.svg",
-                          "name:tired | text:Tired | image:plh_images/stickers/faces/tired.svg | image_checked:plh_images/stickers/faces/tired.svg"
-                        ],
-                        "type": "set_variable",
-                        "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.answer_list"
-                      },
-                      {
                         "name": "reply",
-                        "value": "Your teen can feel this way too. That's what makes this week's parenting tool simple but important: Praise them for what they do right.",
+                        "hidden": true,
                         "type": "set_variable",
                         "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.reply"
                       }
@@ -33757,93 +36946,680 @@
     "status": "released",
     "rows": [
       {
-        "type": "template",
-        "name": "duo",
-        "value": "duo",
-        "rows": [
-          {
-            "type": "nested_properties",
-            "name": "box_1",
-            "value": "box_combo_box",
-            "rows": [
+        "name": "choice_1",
+        "value": "DAY – Do it every day.",
+        "hidden": true,
+        "type": "set_variable",
+        "_nested_name": "choice_1"
+      },
+      {
+        "name": "choice_2",
+        "value": "PLAY – Let your teen choose the activity.",
+        "type": "set_variable",
+        "_nested_name": "choice_2"
+      },
+      {
+        "name": "choice_3",
+        "value": "STAY – Give your teen all of your attention.",
+        "type": "set_variable",
+        "_nested_name": "choice_3"
+      },
+      {
+        "name": "choice_4",
+        "value": "None",
+        "type": "set_variable",
+        "_nested_name": "choice_4"
+      },
+      {
+        "name": "answer_list",
+        "value": [
+          "name:choice_1 | text:@local.choice_1",
+          "name:choice_2 | text:@local.choice_2",
+          "name:choice_3 | text:@local.choice_3",
+          "name:choice_4 | text:@local.choice_4"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list",
+        "_dynamicFields": {
+          "value": {
+            "0": [
               {
-                "name": "text",
-                "hidden": true,
-                "type": "set_variable",
-                "_nested_name": "duo.box_1.text"
-              },
-              {
-                "name": "question_text",
-                "value": "Which of my tips have helped you?",
-                "type": "set_variable",
-                "_nested_name": "duo.box_1.question_text"
-              },
-              {
-                "name": "reply_1",
-                "value": "DAY – Do it every day.",
-                "hidden": true,
-                "type": "set_variable",
-                "_nested_name": "duo.box_1.reply_1"
-              },
-              {
-                "name": "reply_2",
-                "value": "PLAY – Let your teen choose the activity.",
-                "type": "set_variable",
-                "_nested_name": "duo.box_1.reply_2"
-              },
-              {
-                "name": "reply_3",
-                "value": "STAY – Give your teen all of your attention.",
-                "type": "set_variable",
-                "_nested_name": "duo.box_1.reply_3"
-              },
-              {
-                "name": "reply_4",
-                "value": "None",
-                "type": "set_variable",
-                "_nested_name": "duo.box_1.reply_4"
+                "fullExpression": "name:choice_1 | text:@local.choice_1",
+                "matchedExpression": "@local.choice_1",
+                "type": "local",
+                "fieldName": "choice_1"
               }
             ],
-            "_nested_name": "duo.box_1"
-          },
-          {
-            "type": "nested_properties",
-            "name": "box_2",
-            "value": "rad",
-            "rows": [
+            "1": [
               {
-                "name": "text",
-                "value": "Parents usually don’t get thanked or praised enough. ",
-                "type": "set_variable",
-                "_nested_name": "duo.box_2.text"
-              },
-              {
-                "name": "question_text",
-                "value": "How does it make you feel when nobody says \"thank you\"?",
-                "type": "set_variable",
-                "_nested_name": "duo.box_2.question_text"
-              },
-              {
-                "name": "answer_list",
-                "value": [
-                  "name:sad | text: Sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
-                  "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg | image_checked:plh_images/stickers/faces/angry.svg",
-                  "name:tired | text:Tired | image:plh_images/stickers/faces/tired.svg | image_checked:plh_images/stickers/faces/tired.svg"
-                ],
-                "type": "set_variable",
-                "_nested_name": "duo.box_2.answer_list"
-              },
-              {
-                "name": "reply",
-                "value": "Your teen can feel this way too. That's what makes this week's parenting tool simple but important: Praise them for what they do right.",
-                "type": "set_variable",
-                "_nested_name": "duo.box_2.reply"
+                "fullExpression": "name:choice_2 | text:@local.choice_2",
+                "matchedExpression": "@local.choice_2",
+                "type": "local",
+                "fieldName": "choice_2"
               }
             ],
-            "_nested_name": "duo.box_2"
+            "2": [
+              {
+                "fullExpression": "name:choice_3 | text:@local.choice_3",
+                "matchedExpression": "@local.choice_3",
+                "type": "local",
+                "fieldName": "choice_3"
+              }
+            ],
+            "3": [
+              {
+                "fullExpression": "name:choice_4 | text:@local.choice_4",
+                "matchedExpression": "@local.choice_4",
+                "type": "local",
+                "fieldName": "choice_4"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.choice_1": [
+            "value.0"
+          ],
+          "@local.choice_2": [
+            "value.1"
+          ],
+          "@local.choice_3": [
+            "value.2"
+          ],
+          "@local.choice_4": [
+            "value.3"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "question_text_1",
+        "value": "Which of my tips have helped you?",
+        "parameter_list": {
+          "style": "emphasised"
+        },
+        "_nested_name": "question_text_1"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.first_combo_box_tracker",
+              "@local.combo_box"
+            ],
+            "_raw": "changed | set_field: @local.first_combo_box_tracker: @local.combo_box",
+            "_cleaned": "changed | set_field: @local.first_combo_box_tracker: @local.combo_box"
           }
         ],
-        "_nested_name": "duo"
+        "parameter_list": {
+          "answer_list": "@local.answer_list"
+        },
+        "_nested_name": "combo_box",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.first_combo_box_tracker",
+                    "matchedExpression": "@local.first_combo_box_tracker",
+                    "type": "local",
+                    "fieldName": "first_combo_box_tracker"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "@local.combo_box",
+                    "matchedExpression": "@local.combo_box",
+                    "type": "local",
+                    "fieldName": "combo_box"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field: @local.first_combo_box_tracker: @local.combo_box",
+                  "matchedExpression": "@local.first_combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "first_combo_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.first_combo_box_tracker: @local.combo_box",
+                  "matchedExpression": "@local.combo_box",
+                  "type": "local",
+                  "fieldName": "combo_box"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field: @local.first_combo_box_tracker: @local.combo_box",
+                  "matchedExpression": "@local.first_combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "first_combo_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.first_combo_box_tracker: @local.combo_box",
+                  "matchedExpression": "@local.combo_box",
+                  "type": "local",
+                  "fieldName": "combo_box"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list",
+                "matchedExpression": "@local.answer_list",
+                "type": "local",
+                "fieldName": "answer_list"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.first_combo_box_tracker": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.combo_box": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.answer_list": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "question_text_2",
+        "value": "Why was this tip helpful for you?",
+        "hidden": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_4\"",
+        "parameter_list": {
+          "style": "emphasised"
+        },
+        "_nested_name": "question_text_2",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_4\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_4\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box": [
+            "hidden",
+            "hidden"
+          ]
+        }
+      },
+      {
+        "name": "answer_list_choice_1",
+        "value": [
+          "name:choice_1_a | text:Having a specific time to do this helps me to remember.",
+          "name:choice_1_b | text:With a routine, my teen and I can both keep our schedule free.",
+          "name:choice_1_c | text:Spending time with my teen every day helps to build trust with them/him/her."
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list_choice_1"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_choice_1",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.second_combo_box_tracker",
+              "@local.combo_box_choice_1"
+            ],
+            "_raw": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_1",
+            "_cleaned": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_1"
+          }
+        ],
+        "hidden": "\"@local.combo_box\"!=\"choice_1\"",
+        "parameter_list": {
+          "answer_list": "@local.answer_list_choice_1"
+        },
+        "_nested_name": "combo_box_choice_1",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.second_combo_box_tracker",
+                    "matchedExpression": "@local.second_combo_box_tracker",
+                    "type": "local",
+                    "fieldName": "second_combo_box_tracker"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "@local.combo_box_choice_1",
+                    "matchedExpression": "@local.combo_box_choice_1",
+                    "type": "local",
+                    "fieldName": "combo_box_choice_1"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_1",
+                  "matchedExpression": "@local.second_combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "second_combo_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_1",
+                  "matchedExpression": "@local.combo_box_choice_1",
+                  "type": "local",
+                  "fieldName": "combo_box_choice_1"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_1",
+                  "matchedExpression": "@local.second_combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "second_combo_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_1",
+                  "matchedExpression": "@local.combo_box_choice_1",
+                  "type": "local",
+                  "fieldName": "combo_box_choice_1"
+                }
+              ]
+            }
+          },
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_1\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            }
+          ],
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list_choice_1",
+                "matchedExpression": "@local.answer_list_choice_1",
+                "type": "local",
+                "fieldName": "answer_list_choice_1"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.second_combo_box_tracker": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.combo_box_choice_1": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.combo_box": [
+            "hidden"
+          ],
+          "@local.answer_list_choice_1": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_choice_1",
+        "value": "Ah yes, even 10 minutes together makes a big difference – that makes it easy to schedule it in next to your work and chores! ",
+        "hidden": "\"@local.combo_box\"!=\"choice_1\" || \"@local.combo_box_choice_1\"==\"undefined\"",
+        "_nested_name": "reply_choice_1",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_1\" || \"@local.combo_box_choice_1\"==\"undefined\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_1\" || \"@local.combo_box_choice_1\"==\"undefined\"",
+              "matchedExpression": "@local.combo_box_choice_1",
+              "type": "local",
+              "fieldName": "combo_box_choice_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box": [
+            "hidden"
+          ],
+          "@local.combo_box_choice_1": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "name": "answer_list_choice_2",
+        "value": [
+          "name:choice_2_a | text:Letting my teen choose what to do builds their confidence.",
+          "name:choice_2_b | text:If my teen chooses, s/he is more likely to want to spend time together.",
+          "name:choice_2_c | text:Letting my teen choose shows that I care about his/her interests.",
+          "name:choice_2_d | text:By accepting my teen’s suggestions, I am showing that I listen to him/her.",
+          "name: choice_2_e | text:Saying something nice about my teen’s choice helps them feel valued."
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list_choice_2"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_choice_2",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.second_combo_box_tracker",
+              "@local.combo_box_choice_2"
+            ],
+            "_raw": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_2",
+            "_cleaned": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_2"
+          }
+        ],
+        "hidden": "\"@local.combo_box\"!=\"choice_2\"",
+        "parameter_list": {
+          "answer_list": "@local.answer_list_choice_2"
+        },
+        "_nested_name": "combo_box_choice_2",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.second_combo_box_tracker",
+                    "matchedExpression": "@local.second_combo_box_tracker",
+                    "type": "local",
+                    "fieldName": "second_combo_box_tracker"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "@local.combo_box_choice_2",
+                    "matchedExpression": "@local.combo_box_choice_2",
+                    "type": "local",
+                    "fieldName": "combo_box_choice_2"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_2",
+                  "matchedExpression": "@local.second_combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "second_combo_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_2",
+                  "matchedExpression": "@local.combo_box_choice_2",
+                  "type": "local",
+                  "fieldName": "combo_box_choice_2"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_2",
+                  "matchedExpression": "@local.second_combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "second_combo_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_2",
+                  "matchedExpression": "@local.combo_box_choice_2",
+                  "type": "local",
+                  "fieldName": "combo_box_choice_2"
+                }
+              ]
+            }
+          },
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_2\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            }
+          ],
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list_choice_2",
+                "matchedExpression": "@local.answer_list_choice_2",
+                "type": "local",
+                "fieldName": "answer_list_choice_2"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.second_combo_box_tracker": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.combo_box_choice_2": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.combo_box": [
+            "hidden"
+          ],
+          "@local.answer_list_choice_2": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_choice_2",
+        "value": "So true! And if our teens choose, they are encouraged to also take responsibility in other areas of their lives.",
+        "hidden": "\"@local.combo_box\"!=\"choice_2\" || \"@local.combo_box_choice_2\"==\"undefined\"",
+        "_nested_name": "reply_choice_2",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_2\" || \"@local.combo_box_choice_2\"==\"undefined\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_2\" || \"@local.combo_box_choice_2\"==\"undefined\"",
+              "matchedExpression": "@local.combo_box_choice_2",
+              "type": "local",
+              "fieldName": "combo_box_choice_2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box": [
+            "hidden"
+          ],
+          "@local.combo_box_choice_2": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "name": "answer_list_choice_3",
+        "value": [
+          "name:choice_3_a | text:By preventing interruptions, I am showing my teen that s/he is most important.",
+          "name:choice_3_b | text:Even if I can’t join my teen’s activity, like sports, I can still cheer them on.",
+          "name:choice_3_c | text:When I pay attention, I can learn so much about my teen’s interests, views and capabilities."
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list_choice_3"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box_choice_3",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.second_combo_box_tracker",
+              "@local.combo_box_choice_3"
+            ],
+            "_raw": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_3",
+            "_cleaned": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_3"
+          }
+        ],
+        "hidden": "\"@local.combo_box\"!=\"choice_3\"",
+        "parameter_list": {
+          "answer_list": "@local.answer_list_choice_3"
+        },
+        "_nested_name": "combo_box_choice_3",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.second_combo_box_tracker",
+                    "matchedExpression": "@local.second_combo_box_tracker",
+                    "type": "local",
+                    "fieldName": "second_combo_box_tracker"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "@local.combo_box_choice_3",
+                    "matchedExpression": "@local.combo_box_choice_3",
+                    "type": "local",
+                    "fieldName": "combo_box_choice_3"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_3",
+                  "matchedExpression": "@local.second_combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "second_combo_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_3",
+                  "matchedExpression": "@local.combo_box_choice_3",
+                  "type": "local",
+                  "fieldName": "combo_box_choice_3"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_3",
+                  "matchedExpression": "@local.second_combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "second_combo_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.second_combo_box_tracker: @local.combo_box_choice_3",
+                  "matchedExpression": "@local.combo_box_choice_3",
+                  "type": "local",
+                  "fieldName": "combo_box_choice_3"
+                }
+              ]
+            }
+          },
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_3\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            }
+          ],
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list_choice_3",
+                "matchedExpression": "@local.answer_list_choice_3",
+                "type": "local",
+                "fieldName": "answer_list_choice_3"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.second_combo_box_tracker": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.combo_box_choice_3": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.combo_box": [
+            "hidden"
+          ],
+          "@local.answer_list_choice_3": [
+            "parameter_list.answer_list"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_choice_3",
+        "value": "Yes! If we give our teens our full attention, they will more likely do the same for us the next time we ask them for something!",
+        "hidden": "\"@local.combo_box\"!=\"choice_3\" || \"@local.combo_box_choice_3\"==\"undefined\"",
+        "_nested_name": "reply_choice_3",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_3\" || \"@local.combo_box_choice_3\"==\"undefined\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_3\" || \"@local.combo_box_choice_3\"==\"undefined\"",
+              "matchedExpression": "@local.combo_box_choice_3",
+              "type": "local",
+              "fieldName": "combo_box_choice_3"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box": [
+            "hidden"
+          ],
+          "@local.combo_box_choice_3": [
+            "hidden"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/home_practice_reviews.xlsx"
@@ -38561,6 +42337,178 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "activity_co_chef",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "something_fun_text",
+        "value": "something_fun_text",
+        "rows": [
+          {
+            "name": "activity_title",
+            "value": "@data.something_fun.co_chef.title",
+            "type": "set_variable",
+            "_nested_name": "something_fun_text.activity_title",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.something_fun.co_chef.title",
+                  "matchedExpression": "@data.something_fun.co_chef.title",
+                  "type": "data",
+                  "fieldName": "something_fun"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.something_fun.co_chef.title": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "activity_text",
+            "value": "- Ask your teen what kind of meal they would like to eat. \n- Prepare it together!    \n- Let them have a turn at being the head chef – they lead, and you follow their instructions. \n- You can even help them to make a budget for the ingredients! \n\nDon’t think it will work? Ask your teens what THEY would like for you and them to do together. Let them lead. Relax. Have fun. ",
+            "type": "set_variable",
+            "_nested_name": "something_fun_text.activity_text"
+          }
+        ],
+        "_nested_name": "something_fun_text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_centre_templates/databank_something_fun.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "activity_dance_moves",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "something_fun_text",
+        "value": "something_fun_text",
+        "rows": [
+          {
+            "name": "activity_title",
+            "value": "@data.something_fun.dance_moves.title",
+            "type": "set_variable",
+            "_nested_name": "something_fun_text.activity_title",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.something_fun.dance_moves.title",
+                  "matchedExpression": "@data.something_fun.dance_moves.title",
+                  "type": "data",
+                  "fieldName": "something_fun"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.something_fun.dance_moves.title": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "activity_text",
+            "value": "- Create a set of dance moves to your teen's favourite songs. \n- One person does a dance move and everyone else copies it.  \n- Everyone takes turns being the leader. \n- Perform it for the household! ",
+            "type": "set_variable",
+            "_nested_name": "something_fun_text.activity_text"
+          }
+        ],
+        "_nested_name": "something_fun_text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_centre_templates/databank_something_fun.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "activity_two_truths",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "something_fun_text",
+        "value": "something_fun_text",
+        "rows": [
+          {
+            "name": "activity_title",
+            "value": "@data.something_fun.two_truths.title",
+            "type": "set_variable",
+            "_nested_name": "something_fun_text.activity_title",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.something_fun.two_truths.title",
+                  "matchedExpression": "@data.something_fun.two_truths.title",
+                  "type": "data",
+                  "fieldName": "something_fun"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.something_fun.two_truths.title": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "activity_text",
+            "value": "- Think of three statements about yourself. Two must be true and one must be a lie.\n- It might help to think of wishes, dreams, experiences at school, likes or dislikes. For example: I hate bananas, my favourite subject is science, and I really wish I could sing. \n- Say them to your teenager and ask them to guess which one is a lie. \n- Did they guess correctly? Was it a surprise?\n- Now ask them to do the same. Did you learn something new about each other?",
+            "type": "set_variable",
+            "_nested_name": "something_fun_text.activity_text"
+          }
+        ],
+        "_nested_name": "something_fun_text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_centre_templates/databank_something_fun.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "activity_mirror",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "something_fun_text",
+        "value": "something_fun_text",
+        "rows": [
+          {
+            "name": "activity_title",
+            "value": "@data.something_fun.mirror.title",
+            "type": "set_variable",
+            "_nested_name": "something_fun_text.activity_title",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.something_fun.mirror.title",
+                  "matchedExpression": "@data.something_fun.mirror.title",
+                  "type": "data",
+                  "fieldName": "something_fun"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.something_fun.mirror.title": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "activity_text",
+            "value": "- This game can be played in pairs or with many people in a group.\n- Stand facing each other or in a circle. \n- One person leads first and everyone else copies them, trying to move exactly at the same time as the leader.\n- Make sure the leader moves slowly enough for everyone else to follow! Explore moving different body parts and in different levels.\n- After a while, switch who is leading. Give everyone a chance to lead.\n- Try it with no leaders!",
+            "type": "set_variable",
+            "_nested_name": "something_fun_text.activity_text"
+          }
+        ],
+        "_nested_name": "something_fun_text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_centre_templates/databank_something_fun.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "relax_1_text",
     "status": "released",
     "rows": [
@@ -38600,7 +42548,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Let's use the magic power of three to stay present and relax. \n\nName three sounds you can hear right now. \nName three smells you can smell right now. \nName your three favourite foods. \n\nWhat are three things you can be grateful for right now? They don't have to be big. ",
+            "value": "Close your eyes. \n\nLet's use the magic power of three to stay present and relax. \n\nName three sounds you can hear right now. \nName three smells you can smell right now. \nName your three favourite foods. \n\nWhat are three things you can be grateful for right now? They don't have to be big. ",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -38670,7 +42618,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Use the magic power of three to stay connected and relax.\n\nBreathe in to the count of three. 1, 2, 3. \nBreathe out to the count of three. 1, 2, 3. \nBreathe in to the count of three. 1, 2, 3. \nBreathe out to the count of three. 1, 2, 3. ",
+            "value": "Close your eyes. \n\nUse the magic power of three to stay connected and relax.\n\nBreathe in to the count of three. 1, 2, 3. \nBreathe out to the count of three. 1, 2, 3. \nBreathe in to the count of three. 1, 2, 3. \nBreathe out to the count of three. 1, 2, 3. ",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -38739,7 +42687,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Take a minute to think about the day.\n\nThink about one positive or fun thing you did.\nPraise yourself for one thing you did well today. \nThink of one thing you can do differently tomorrow.  \nThink of one thing that you are grateful for.  ",
+            "value": "Close your eyes. \n\nTake a minute to think about the day.\n\nThink about one positive or fun thing you did.\nPraise yourself for one thing you did well today. \nThink of one thing you can do differently tomorrow.  \nThink of one thing that you are grateful for.  ",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -38774,7 +42722,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Do your children ever make you feel like screaming? \n\nGive yourself a 10-second pause. Breath in and out slowly 5 times. \n\nThen try responding in a calmer way.",
+            "value": "Close your eyes. \n\nDo your children ever make you feel like screaming? \n\nGive yourself a 10-second pause. Breath in and out slowly 5 times. \n\nThen try responding in a calmer way.",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -38809,7 +42757,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Take a moment to stop what you are doing and connect with your breath.   \n\nWhat is one thing you can be grateful for right now?  \nWhat is one thing that brings you happiness?  \nWhat is one thing that you love?  \n\nThey don't have to be big. Sometimes the small things in life count the most!  ",
+            "value": "Close your eyes.  \n\nTake a moment to stop what you are doing and connect with your breath.   \n\nWhat is one thing you can be grateful for right now?  \nWhat is one thing that brings you happiness?  \nWhat is one thing that you love?  \n\nThey don't have to be big. Sometimes the small things in life count the most!  ",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -38879,7 +42827,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Notice your connection with the ground beneath you.  \nWhat parts of your body touch the ground? What parts of your body don’t?   \nNotice where it feels warm and where it feels cool.  \nFeel the ground underneath you supporting you. Let your body sink into the support of the ground.   ",
+            "value": "Close your eyes.  \n\nNotice your connection with the ground beneath you.  \nWhat parts of your body touch the ground? What parts of your body don’t?   \nNotice where it feels warm and where it feels cool.  \nFeel the ground underneath you supporting you. Let your body sink into the support of the ground.   ",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -38914,7 +42862,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Sit down and close your eyes \nHow many sounds can you hear?  \nListen to the sounds inside and outside the room. Count them on your fingers. \nAfter ten seconds, how many fingers do you have up? What sounds did you hear? \n\nTry again for another ten seconds.  \nDid you hear any new sounds? Did you hear any sounds inside your own body? \nNotice how you feel now. ",
+            "value": "Sit down and close your eyes.\nHow many sounds can you hear?  \nListen to the sounds inside and outside the room. Count them on your fingers. \nAfter ten seconds, how many fingers do you have up? What sounds did you hear? \n\nTry again for another ten seconds.  \nDid you hear any new sounds? Did you hear any sounds inside your own body? \nNotice how you feel now. ",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -38949,7 +42897,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Do you every feel something so strongly that you want to run away from it?  \n\nInstead of moving away from the feeling, let’s move towards it for a moment.  \nIt’s ok. Close your eyes if you feel comfortable. Take a deep breath.  \n\nBecome curious. Where are you feeling it in your body? Is it hot or cold? Hard or soft? Tight or loose?  \nAsk yourself some questions. What is it telling me? What does it need? How can I be kind to myself right now? ",
+            "value": "Close your eyes.  \n\nDo you every feel something so strongly that you want to run away from it?  \n\nInstead of moving away from the feeling, let’s move towards it for a moment.  \nIt’s ok. Close your eyes if you feel comfortable. Take a deep breath.  \n\nBecome curious. Where are you feeling it in your body? Is it hot or cold? Hard or soft? Tight or loose?  \nAsk yourself some questions. What is it telling me? What does it need? How can I be kind to myself right now? ",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -39019,7 +42967,7 @@
         "rows": [
           {
             "name": "activity_text",
-            "value": "Take a moment to feel the ground under your feet  \n\nThink of something you feel grateful for \n\nFocus on your breath \n\nBreathe in and out\n\nIn and out  ",
+            "value": "Close your eyes.  \nTake a moment to feel the ground under your feet. \nThink of something you feel grateful for.\nFocus on your breath.\nBreathe in and out.\n\nIn and out.  ",
             "type": "set_variable",
             "_nested_name": "relax_text.activity_text"
           },
@@ -58211,7 +62159,7 @@
                 "hidden": false,
                 "parameter_list": {
                   "text": "@data.habit.money.title",
-                  "icon_src": "plh_images/habits/habit_money_image.svg"
+                  "icon_src": "plh_images/habits/habit_money.svg"
                 },
                 "type": "set_variable",
                 "_nested_name": "learn_group_family.workshop_activity.outro_habit_tracker",
@@ -58430,6 +62378,133 @@
                 "_dynamicDependencies": {
                   "@data.habit.money.mark_text": [
                     "value"
+                  ]
+                }
+              },
+              {
+                "name": "outro_habit_tracker",
+                "value": "@field.total_parent_point_money",
+                "action_list": [
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "total_parent_point_money",
+                      "@field.total_parent_point_money+1"
+                    ],
+                    "_raw": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                    "_cleaned": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1"
+                  },
+                  {
+                    "trigger": "click",
+                    "action_id": "set_field",
+                    "args": [
+                      "weekly_parent_point_money",
+                      "@field.weekly_parent_point_,money+1"
+                    ],
+                    "_raw": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_,money+1",
+                    "_cleaned": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_,money+1"
+                  }
+                ],
+                "hidden": false,
+                "parameter_list": {
+                  "text": "@data.habit.money.title",
+                  "icon_src": "plh_images/habits/habit_money.svg"
+                },
+                "type": "set_variable",
+                "_nested_name": "learn_alone.workshop_activity.outro_habit_tracker",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "@field.total_parent_point_money",
+                      "matchedExpression": "@field.total_parent_point_money",
+                      "type": "field",
+                      "fieldName": "total_parent_point_money"
+                    }
+                  ],
+                  "action_list": {
+                    "0": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.total_parent_point_money+1",
+                            "matchedExpression": "@field.total_parent_point_money",
+                            "type": "field",
+                            "fieldName": "total_parent_point_money"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                          "matchedExpression": "@field.total_parent_point_money",
+                          "type": "field",
+                          "fieldName": "total_parent_point_money"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                          "matchedExpression": "@field.total_parent_point_money",
+                          "type": "field",
+                          "fieldName": "total_parent_point_money"
+                        }
+                      ]
+                    },
+                    "1": {
+                      "args": {
+                        "1": [
+                          {
+                            "fullExpression": "@field.weekly_parent_point_,money+1",
+                            "matchedExpression": "@field.weekly_parent_point_",
+                            "type": "field",
+                            "fieldName": "weekly_parent_point_"
+                          }
+                        ]
+                      },
+                      "_raw": [
+                        {
+                          "fullExpression": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_,money+1",
+                          "matchedExpression": "@field.weekly_parent_point_",
+                          "type": "field",
+                          "fieldName": "weekly_parent_point_"
+                        }
+                      ],
+                      "_cleaned": [
+                        {
+                          "fullExpression": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_,money+1",
+                          "matchedExpression": "@field.weekly_parent_point_",
+                          "type": "field",
+                          "fieldName": "weekly_parent_point_"
+                        }
+                      ]
+                    }
+                  },
+                  "parameter_list": {
+                    "text": [
+                      {
+                        "fullExpression": "@data.habit.money.title",
+                        "matchedExpression": "@data.habit.money.title",
+                        "type": "data",
+                        "fieldName": "habit"
+                      }
+                    ]
+                  }
+                },
+                "_dynamicDependencies": {
+                  "@field.total_parent_point_money": [
+                    "value",
+                    "action_list.0.args.1",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned"
+                  ],
+                  "@field.weekly_parent_point_": [
+                    "action_list.1.args.1",
+                    "action_list.1._raw",
+                    "action_list.1._cleaned"
+                  ],
+                  "@data.habit.money.title": [
+                    "parameter_list.text"
                   ]
                 }
               }
@@ -67198,7 +71273,7 @@
                 "hidden": false,
                 "parameter_list": {
                   "text": "@data.habit.praise_yourself.title",
-                  "icon_src": "plh_images/habits/habit_praise_yourself_image.svg"
+                  "icon_src": "plh_images/habits/habit_praise_yourself.svg"
                 },
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_habit_tracker",
