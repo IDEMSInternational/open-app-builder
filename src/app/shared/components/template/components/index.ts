@@ -36,6 +36,7 @@ import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplLottieAnimation } from "./lottie-animation";
+import { TmplIconComponent } from "./icon";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -61,6 +62,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplButtonComponent,
   RoundIconButtonComponent,
   TmplRadioGroupComponent,
+  TmplIconComponent,
   TmplTileComponent,
   TmplSimpleCheckboxComponent,
   TmplAnimationComponent,
@@ -91,6 +93,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   image: TmplImageComponent,
+  icon: TmplIconComponent,
   // set variable and nested properties are handled by parent
   set_variable: null as any,
   nested_properties: null as any,

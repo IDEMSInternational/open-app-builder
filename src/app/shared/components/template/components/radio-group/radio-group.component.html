@@ -52,8 +52,9 @@
         [style.flex]="flexWidth"
       >
         <label class="center standard-label" [class.checked]="el.checked">
-          <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
-          </svg-icon>
+          <plh-tmpl-icon
+            [src]="el.checked && item.image_checked ? item.image_checked : item.image"
+          ></plh-tmpl-icon>
           <input
             #el
             type="radio"
