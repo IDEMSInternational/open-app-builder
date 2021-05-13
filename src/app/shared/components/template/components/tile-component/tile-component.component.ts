@@ -14,7 +14,6 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   icon_src: string | null;
   value: any;
   style: string | null;
-  assetsPrefix = "/assets/plh_assets/";
   icon_result: string;
   is_play_icon: boolean;
   windowWidth: number;
@@ -45,7 +44,6 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
       ${getStringParamFromTemplateRow(this._row, "style", "quick_start")} 
       ${this.isParentPoint() ? "parent_point" : ""}
       `;
-    this.icon_result = this.getPathImg();
     this.is_play_icon = this.isPlayIcon(this.icon_src);
   }
 
@@ -60,11 +58,6 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
 
   isPlayIcon(iconSrc: string): boolean {
     if (iconSrc) return iconSrc.includes("play");
-  }
-
-  getPathImg(): string {
-    const src = this.assetsPrefix + this.icon_src;
-    return src.replace("//", "/");
   }
 
   getScaleFactor(): number {
