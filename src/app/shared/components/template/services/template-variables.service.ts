@@ -1,6 +1,10 @@
 import { Injectable } from "@angular/core";
-import { FlowTypes } from "scripts/types";
-import { evaluateJSExpression, getNestedProperty } from "src/app/shared/utils";
+import { FlowTypes } from "src/app/shared/model";
+import {
+  evaluateJSExpression,
+  extractDynamicEvaluators,
+  getNestedProperty,
+} from "src/app/shared/utils";
 import { TemplateService } from "./template.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
@@ -85,7 +89,7 @@ export class TemplateVariablesService {
       ) as FlowTypes.TemplateRowDynamicEvaluator[];
       if (evaluators && evaluators.length > 0) {
         value = this.evaluatePLHString(evaluators, context);
-        log(`[evaluated] ${evaluators[0].fullExpression}`, value, { evaluators, field, context });
+        log("[evaluated]", evaluators[0].fullExpression, { value, evaluators, field, context });
       }
     }
     return value;
@@ -116,6 +120,10 @@ export class TemplateVariablesService {
       const { matchedExpression, type, fieldName } = evaluator;
       // evaluate the core @keyword.someVar part
       const { parsedValue } = this.processDynamicEvaluator(evaluator, context);
+      // if no change simply stop processing and return (e.g. text contains email @example.com that will not be processed)
+      if (parsedValue === evaluator.matchedExpression) {
+        return parsedValue;
+      }
       // replace '@' with 'this.' so we can evaluate as a statement. E.g. @local.someVar => this.local.someVar
       // create a custom context with the correct variables assigned (e.g. this.local = {someVar:'value'}) and evaluate
       const contextExpression = matchedExpression.replace("@", "this.");
@@ -128,6 +136,12 @@ export class TemplateVariablesService {
         }
         // otherwise replace the part of the expression that was matched and evaluated
         parsedExpression = parsedExpression.replace(matchedExpression, evaluatedExpression);
+        // if the expression contains further nested dynamic expressions, create a dynamic evaluator and continue to process
+        // (most are extracted at runtime, except something like @local.@local.dynamicLookup will not be, so recalculate at runtime)
+        const dynamicNested = extractDynamicEvaluators(parsedExpression);
+        if (dynamicNested) {
+          return this.evaluatePLHString(dynamicNested, context);
+        }
       } catch (error) {
         console.error("failed to evaluate expression", { contextExpression, evalContext });
       }

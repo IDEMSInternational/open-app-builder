@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "../model";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
