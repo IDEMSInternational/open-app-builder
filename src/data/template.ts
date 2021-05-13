@@ -1,6 +1,24 @@
 /* eslint-disable */
   import { FlowTypes } from "src/app/shared/model/flowTypes";
   export const template: FlowTypes.Template[] = [
+    {"flow_type": "template",
+    "flow_name": "example_tour_action",
+    "status": "released",
+    "rows": [{
+      "name":"start_tour_button",
+      "type":"button",
+      _nested_name:"start_tour_button",
+      "value":"Start Tour",
+      "action_list":[
+         {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "intro_tour"
+          ],
+        },
+      ]
+    }]},
   {
     "flow_type": "template",
     "flow_name": "box_tools",
