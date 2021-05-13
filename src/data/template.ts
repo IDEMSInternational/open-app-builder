@@ -5922,9 +5922,6 @@
                 "_cleaned": "click | go_to:w_crisis_tools"
               }
             ],
-            "parameter_list": {
-              "style": "information"
-            },
             "_nested_name": "display_group.workshop_11",
             "_dynamicFields": {
               "value": [
@@ -5943,9 +5940,6 @@
             }
           }
         ],
-        "parameter_list": {
-          "style": "information"
-        },
         "_nested_name": "workshop_11",
         "_dynamicFields": {
           "value": [
