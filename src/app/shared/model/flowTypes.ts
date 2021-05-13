@@ -450,7 +450,8 @@ export namespace FlowTypes {
       | "audio_play"
       | "style"
       | "close_pop_up"
-      | "set_theme";
+      | "set_theme"
+      | "start_tour";
     args: string[];
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: TemplateRow;
