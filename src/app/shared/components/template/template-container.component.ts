@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
 import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
+import { TourService } from "../../services/tour/tour.service";
 import { mapToJson } from "../../utils";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateNavService } from "./services/template-nav.service";
@@ -64,6 +65,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   constructor(
     private templateService: TemplateService,
     private templateVariables: TemplateVariablesService,
+    private tourService: TourService,
     public router: Router,
     public route: ActivatedRoute,
     public elRef: ElementRef,
@@ -166,6 +168,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         return this.templateService.setField(key, value);
       case "set_theme":
         return this.templateService.setTheme(this.template, "set_theme", action.args);
+      case "start_tour":
+        return this.tourService.startTour(key);
       case "emit":
         const [emit_value, emit_from] = args;
         let container: TemplateContainerComponent = this;
