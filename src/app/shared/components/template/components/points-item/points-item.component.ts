@@ -12,6 +12,7 @@ import { FlowTypes, ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow } from "../../../../utils";
 import { AnimationOptions } from "ngx-lottie";
 import player from "lottie-web";
+import { getImageAssetPath } from "../../utils/template-utils";
 
 @Component({
   selector: "plh-points-item",
@@ -30,8 +31,6 @@ export class TmplParentPointBoxComponent
   windowWidth: number;
   scaleFactor: number = 1;
   text: string | null;
-  assetsPrefix = "/assets/plh_assets/";
-  img_result: string;
   wasClicked: boolean = false;
   value: number | null = 0;
   animOptions: AnimationOptions;
@@ -51,7 +50,8 @@ export class TmplParentPointBoxComponent
     this.getParams();
     this.getScaleFactor();
     if (this.lottie_src) {
-      this.animOptions = this.setAnimOptions(this.img_result, this.text, false);
+      this.lottie_src = getImageAssetPath(this.lottie_src);
+      this.animOptions = this.setAnimOptions(this.lottie_src, this.text, false);
     }
   }
 
@@ -59,16 +59,10 @@ export class TmplParentPointBoxComponent
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
     this.lottie_src = getStringParamFromTemplateRow(this._row, "lottie_src", null);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
-    this.img_result = this.getPathImg();
     this.windowWidth = window.innerWidth - 10;
     if (!this._row.value) {
       this._row.value = 0;
     }
-  }
-
-  getPathImg(): string {
-    const src = this.assetsPrefix + (this.icon_src || this.lottie_src);
-    return src.replace("//", "/");
   }
 
   async clickPointItem() {
