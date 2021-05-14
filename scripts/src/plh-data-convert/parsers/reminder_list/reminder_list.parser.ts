@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import { FlowTypes } from "../../../../types";
+import { stringToBoolean } from "../../../utils";
 import { DefaultParser } from "../default/default.parser";
 import { parsePLHString } from "../utils";
 
@@ -39,6 +40,7 @@ export class ReminderListParser extends DefaultParser {
  *   [ [ 'event_id' ] , [ 'app_launch' ] ],
  *   [ [ 'before' ], [ '7' ], [ 'day' ] ]
  * ]
+ *
  */
 function extractConditionList(conditionText: string) {
   const txt = conditionText;
@@ -77,6 +79,7 @@ function parseDBLookupCondition(data: any[][]): IConditionList {
   const [condition_type] = typeData;
   const [table_id, orderStr] = tableData;
   const [filter_field, filter_value] = valueData;
+
   let evaluate = null;
   if (evaulateData) {
     const [comparatorText, quantity, unit] = evaulateData as any[];
@@ -84,12 +87,15 @@ function parseDBLookupCondition(data: any[][]): IConditionList {
     evaluate = { operator, value: quantity, unit };
   }
 
+  // convert boolean value strings
+  const value = stringToBoolean(filter_value);
+
   return {
     condition_type,
     condition_args: {
       db_lookup: {
         table_id,
-        filter: { field: filter_field || "id", value: filter_value },
+        filter: { field: filter_field || "id", value },
         order: orderStr === "first" ? "asc" : "desc",
         evaluate,
       },
@@ -109,6 +115,7 @@ function _handleTextExceptions(text: string) {
     app_launch: "db_lookup | app_events:last | event_id:app_launch",
     "task_completed:first": "db_lookup | task_actions:first",
     task_completed: "db_lookup | task_actions:last",
+    "get_field:first": "db_lookup | data_events:first",
   };
   Object.entries(shorthandReplacements).some(([original, replacement]) => {
     // use a regular expression to prevent matching words that have additional content before
@@ -136,7 +143,7 @@ function _handleDataExceptions(data: string[][]) {
  * Convert the text into a logical comparator that will be used during evaluation
  */
 function _extractComparator(text: string) {
-  // : IConditionList["timing"]["comparator"]
+  //
   // when comparing, the target evaluation value will be compared relative to todays date / app day
   // first the difference between the target event and today is calculated, called diffInDays (app or calendar)
   // for an event to happen n days before (or more), diffInDays > n
@@ -150,8 +157,4 @@ function _extractComparator(text: string) {
       console.error(chalk.red(`Reminder timing comparison not defined: ${text}`));
       process.exit(1);
   }
-}
-
-function stringToArray(s: string | string[]): string[] {
-  return typeof s === "string" ? [s] : (s as string[]);
 }
