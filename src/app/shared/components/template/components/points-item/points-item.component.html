@@ -6,8 +6,9 @@
         {{ _row.value }}
       </div>
     </div>
-    <div class="image" *ngIf="icon_src">
-      <img [src]="icon_result" alt="" />
+    <div class="image">
+      <img *ngIf="icon_src" [src]="img_result" alt="" />
+      <ng-lottie *ngIf="lottie_src" [options]="animOptions"></ng-lottie>
     </div>
     <div class="text" *ngIf="text">
       {{ text }}
