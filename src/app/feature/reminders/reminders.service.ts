@@ -2,13 +2,19 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { differenceInHours, subDays, subHours } from "date-fns";
 import { IReminder } from "./reminders.model";
-import { DbService, IDBTable } from "src/app/shared/services/db/db.service";
+import { DbService, IDBTable, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { REMINDER_LIST } from "src/app/shared/services/data/data.service";
 import { FlowTypes } from "scripts/types";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import { AppEventService, IAppEvent } from "src/app/shared/services/app-events/app-events.service";
 import { arrayToHashmapArray, generateTimestamp } from "src/app/shared/utils";
 import { ITaskAction } from "../goals/models/goals.model";
+
+/** Logging Toggle - rewrite default functions to enable or disable inline logs */
+let SHOW_DEBUG_LOGS = true;
+let log = SHOW_DEBUG_LOGS ? console.log : () => null;
+let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
+let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
 @Injectable({
   providedIn: "root",
@@ -20,12 +26,17 @@ import { ITaskAction } from "../goals/models/goals.model";
  * system (and tracking related data stored in the database)
  *
  * It is not currently production-ready (2020-11-15 - Chris)
+ * TODO - 2021-05-14
+ * Ideally most logic could be merged into a common data_list
  */
 export class RemindersService {
   public data: IReminderData;
   public mockData = MOCK_DATA;
   public reminders$ = new BehaviorSubject<IReminder[]>([]);
   public remindersList$ = new BehaviorSubject<FlowTypes.Reminder_listRow[]>([]);
+  public remindersByCampaign$ = new BehaviorSubject<{
+    [campaign_id: string]: FlowTypes.Reminder_listRow[];
+  }>({});
 
   constructor(
     private taskService: TaskService,
@@ -36,7 +47,7 @@ export class RemindersService {
   async init() {
     await this.appEventService.ready();
     await this.loadReminderData();
-    this.processRemindersList();
+    await this.processRemindersList();
   }
 
   /** load all the data that will be required for processing reminders */
@@ -46,18 +57,19 @@ export class RemindersService {
     const task_actions = arrayToHashmapArray<ITaskAction>(taskActions, "task_id");
     const appEvents = await this.dbService.table("app_events").orderBy("_created").toArray();
     const app_events = arrayToHashmapArray<IAppEvent>(appEvents, "event_id");
+    const dataEvents = await this.dbService.table("data_events").orderBy("_created").toArray();
+    const data_events = arrayToHashmapArray<IFlowEvent>(dataEvents, "name");
     const app_day = this.appEventService.summary.app_day;
     // TODO - add db bindings for reminder_events
     const reminder_events = {};
-    this.data = { app_day, dbCache: { task_actions, app_events, reminder_events } };
-    // console.log("reminders data", this.data);
+    this.data = { app_day, dbCache: { task_actions, app_events, reminder_events, data_events } };
   }
 
   /** override local data with testing dataset, or reinitialise from db */
   public async setMockData(data: any) {
     if (data) {
       this.data = { ...this.data, ...data };
-      this.processRemindersList();
+      await this.processRemindersList();
     } else {
       this.init();
     }
@@ -69,32 +81,42 @@ export class RemindersService {
     this.taskService.runAction({ flow_type, id, flow_name: start_action_args, start_action });
   }
 
-  private processRemindersList() {
+  private async processRemindersList() {
     // check pending reminders
     const pendingReminders = this.reminders$.value;
-    // console.log("pending reminders", pendingReminders);
-    // check deactivation
 
-    const remindersList = REMINDER_LIST[0].rows.map((r) => {
-      // TODO - should it be all conditions satisfied or just any? Assume all
-      r.activation_condition_list = r.activation_condition_list.map((condition) => {
-        const evaluation = this.evaluateReminderCondition(condition);
-        return { ...condition, _satisfied: evaluation };
-      });
-      // (r as any)._satisfied = r.activation_condition_list.every(
-      //   (condition) => condition._satisfied
-      // );
-      r.deactivation_condition_list = r.deactivation_condition_list.map((condition) => {
-        const evaluation = this.evaluateReminderCondition(condition);
-        return { ...condition, _satisfied: evaluation };
-      });
-      return r;
-    });
-    this.remindersList$.next(remindersList);
-    // console.log("remindersList", remindersList);
+    // check deactivation
+    const allReminders = [];
+    for (const list of REMINDER_LIST) {
+      for (const r of list.rows) {
+        log_group("[Reminder Process]", r.start_action, r.start_action_args);
+        // TODO - should it be all conditions satisfied or just any? Assume all
+        r.activation_condition_list = await Promise.all(
+          r.activation_condition_list.map(async (condition) => {
+            const evaluation = await this.evaluateReminderCondition(condition);
+            return { ...condition, _satisfied: evaluation };
+          })
+        );
+        // (r as any)._satisfied = r.activation_condition_list.every(
+        //   (condition) => condition._satisfied
+        // );
+        r.deactivation_condition_list = await Promise.all(
+          r.deactivation_condition_list.map(async (condition) => {
+            const evaluation = await this.evaluateReminderCondition(condition);
+            return { ...condition, _satisfied: evaluation };
+          })
+        );
+        log_groupEnd();
+        allReminders.push(r);
+      }
+    }
+    this.remindersList$.next(allReminders);
+    log("[Reminders List] Process", { data: this.data, pendingReminders, allReminders });
   }
 
-  private evaluateReminderCondition(condition: FlowTypes.Reminder_conditionList): boolean {
+  private async evaluateReminderCondition(
+    condition: FlowTypes.Reminder_conditionList
+  ): Promise<boolean> {
     const { condition_type, condition_args } = condition;
     const evaluators: {
       [key in FlowTypes.Reminder_conditionList["condition_type"]]: () => boolean | undefined;
@@ -115,18 +137,20 @@ export class RemindersService {
       return undefined;
     }
     // the action history is already organised by filter field (e.g. event_id, task_id etc.), so select child collection (if entries exist)
-    if (!this.data.dbCache[table_id][filter.value]) {
+    if (!this.data.dbCache[table_id][filter.field]) {
       return false;
     }
-    let results = this.data.dbCache[table_id][filter.value];
+    const results = this.data.dbCache[table_id][filter.field];
+    // TODO - assumes filtering on 'value' field - may want way to specify which field to compare
+    let filteredResults = results.filter((res) => res.value === filter.value);
     // TODO - assumes standard sort order fine, - may need in future (e.g. by _created)
-    // TODO - assumes no filtering required (e.g. _completed) - may need in future
     if (order === "asc") {
-      results = results.reverse();
+      filteredResults = filteredResults.reverse();
     }
+    log("process db condition", { filteredResults, evaluate, results, filter, table_id });
     if (evaluate) {
       // TODO - Assumes all evaluations are based on creation date, possible future syntax to allow more options
-      const evaulateValue = results[0]?._created;
+      const evaulateValue = filteredResults[0]?._created;
       return this.evaluateDBLookupCondition(evaulateValue, evaluate);
     }
     // default - return if entries exist
@@ -138,16 +162,22 @@ export class RemindersService {
     evaluate: FlowTypes.Reminder_conditionList["condition_args"]["db_lookup"]["evaluate"]
   ) {
     const { operator, value, unit } = evaluate;
+    let result = false;
     switch (unit) {
       case "day":
         const dayDiff = differenceInHours(new Date(), new Date(evaluateValue)) / 24;
-        return this._compare(dayDiff, operator, value);
-
+        result = this._compare(dayDiff, operator, value);
+        break;
       case "app_day":
         const appDayToday = this.data.app_day;
         const appDayDiff = appDayToday - (evaluateValue as number);
-        return this._compare(appDayDiff, operator, value);
+        result = this._compare(appDayDiff, operator, value);
+        break;
+      default:
+        console.error("No evaluation function for unit:", unit);
     }
+    log("evaluate", { evaluateValue, evaluate, result });
+    return result;
   }
 
   processFieldEvaluationCondition(
@@ -248,6 +278,8 @@ const MOCK_DATA: Partial<IReminderData & { label: string }>[] = [
       app_events: {
         app_launch: [{ _created: generateTimestamp(), event_id: "app_launch" }],
       },
+      data_events: {},
+      reminder_events: {},
       task_actions: {},
     },
   },
@@ -263,6 +295,16 @@ const MOCK_DATA: Partial<IReminderData & { label: string }>[] = [
           },
         ],
       },
+      data_events: {
+        w_self_care_started: [
+          {
+            _created: generateTimestamp(subHours(subDays(new Date(), 3), 1)),
+            name: "w_self_care_started",
+            value: true,
+          },
+        ],
+      },
+      reminder_events: {},
       task_actions: {},
     },
   },
@@ -278,6 +320,8 @@ const MOCK_DATA: Partial<IReminderData & { label: string }>[] = [
           },
         ],
       },
+      data_events: {},
+      reminder_events: {},
       task_actions: {},
     },
   },
