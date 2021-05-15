@@ -259,7 +259,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   public processRowUpdates() {
     console.group(`[Reprocess Template]`, this.name, { rowMap: mapToJson(this.templateRowMap) });
     this.template.rows = this.processRows(this.template.rows, this.template);
-    this.renderedRows = this.template.rows.filter((r) => r.condition !== false);
+    this.renderedRows = this.filterConditionalTemplateRows(this.template.rows);
     console.groupEnd();
   }
 
@@ -288,7 +288,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       const rowsWithOverrides = this.processParentOverrides(template.rows);
       const processedRows = this.processRows(rowsWithOverrides, template);
       this.template = { ...template, rows: processedRows };
-      this.renderedRows = this.template.rows.filter((r) => r.condition !== false);
+      this.renderedRows = this.filterConditionalTemplateRows(this.template.rows);
       log("[Template] Render", {
         template,
         renderedRows: { ...this.renderedRows },
@@ -306,6 +306,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       console.error(`[Template] - Not Found -`, { ...this });
       this.template = NOT_FOUND_TEMPLATE(this.templatename);
     }
+  }
+  // recursively filter out any rows that have a false condition
+  private filterConditionalTemplateRows(rows: FlowTypes.TemplateRow[]) {
+    return rows
+      .filter((row) => row.condition !== false)
+      .map((row) => {
+        if (row.rows) {
+          row.rows = this.filterConditionalTemplateRows(row.rows);
+        }
+        return row;
+      });
   }
 
   /**
@@ -428,23 +439,27 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         preProcessedRow,
         evalContext
       );
-      const { name, value, condition, hidden, type } = parsedRow;
+      const { name, value, hidden, type } = parsedRow;
 
       log("parsedRow", name, { ...parsedRow });
 
-      // Filter out if specified by condition. This might be string or boolean
-      // depending on the parser and related calculations (so check for both)
+      // Filter out if specified by condition. This might be string or boolean depending on the parser/calcs (check for both)
       // when dealing with nested rows we want to filter out to not pass to child,
       // but if dealing with local rows we want to keep for future processing (will be filtered later)
-      if (condition === (false as any) || condition === "false") {
-        parsedRow.condition = false;
-        log("[Row end (condition)]", name);
-        log_groupEnd();
-        if (isNestedRows) {
-          return;
-        } else {
-          processedRows.push(parsedRow);
-          return;
+      // TODO - CC 2021-05-15 ideally calc column should be processed before rest of parsed row in case filtered out
+      if (parsedRow.hasOwnProperty("condition")) {
+        const condition = parsedRow.condition as any;
+        // check for any falsy value (null, undefined, false) as well as 'false' string
+        if (!condition || condition === "false") {
+          parsedRow.condition = false;
+          log("[Row end (condition)]", name);
+          log_groupEnd();
+          if (isNestedRows) {
+            return;
+          } else {
+            processedRows.push(parsedRow);
+            return;
+          }
         }
       }
 
