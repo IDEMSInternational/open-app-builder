@@ -2,7 +2,7 @@ import chalk from "chalk";
 import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
-import { parsePLHListString, parsePLHCollectionString } from "../utils";
+import { parsePLHListString, parsePLHCollectionString } from "../../utils";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string };
 
