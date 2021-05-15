@@ -1,24 +1,9 @@
 import chalk from "chalk";
-import { FlowTypes } from "../../../../types";
-import { stringToBoolean } from "../../../utils";
-import { DefaultParser } from "../default/default.parser";
-import { parsePLHString } from "../../utils";
+import { FlowTypes } from "../../../types";
+import { stringToBoolean } from "../../utils";
+import { parsePLHString } from "./plh-string.utils";
 
 type IConditionList = FlowTypes.Reminder_conditionList;
-
-export class ReminderListParser extends DefaultParser {
-  constructor() {
-    super();
-  }
-  postProcess(row: FlowTypes.Reminder_listRow) {
-    // extract piped conditions
-    const activationConditions = row.activation_condition_list as any[];
-    row.activation_condition_list = activationConditions.map((c) => extractConditionList(c));
-    const deactivationConditions = row.deactivation_condition_list as any[];
-    row.deactivation_condition_list = deactivationConditions.map((c) => extractConditionList(c));
-    return row;
-  }
-}
 
 /**
  * Take an activation or deactivation criteria and format for use
@@ -42,7 +27,7 @@ export class ReminderListParser extends DefaultParser {
  * ]
  *
  */
-function extractConditionList(conditionText: string) {
+export function extractConditionList(conditionText: string) {
   const txt = conditionText;
   const cleanedTxt = _handleTextExceptions(conditionText);
   let data: string[][] = parsePLHString(cleanedTxt);
