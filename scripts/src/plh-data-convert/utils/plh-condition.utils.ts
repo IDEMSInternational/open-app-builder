@@ -3,6 +3,8 @@ import { FlowTypes } from "../../../types";
 import { stringToBoolean } from "../../utils";
 import { parsePLHString } from "./plh-string.utils";
 
+const DEBUG_MODE = false;
+
 type IConditionList = FlowTypes.Reminder_conditionList;
 
 /**
@@ -26,6 +28,7 @@ type IConditionList = FlowTypes.Reminder_conditionList;
  *   [ [ 'before' ], [ '7' ], [ 'day' ] ]
  * ]
  *
+ * TODO - CC 2021-05-15 ideally this should be refactored and combined with condition handling in templates
  */
 export function extractConditionList(conditionText: string) {
   const txt = conditionText;
@@ -44,9 +47,11 @@ export function extractConditionList(conditionText: string) {
     process.exit(1);
   }
   const condition: IConditionList = conditionExtractors[condition_type](data);
-  condition._raw = txt;
-  condition._cleaned = cleanedTxt;
-  condition._parsed = data;
+  if (DEBUG_MODE) {
+    condition._raw = txt;
+    condition._cleaned = cleanedTxt;
+    condition._parsed = data;
+  }
   return condition;
 }
 
