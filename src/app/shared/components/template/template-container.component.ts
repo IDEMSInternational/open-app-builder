@@ -170,6 +170,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         return this.templateService.setTheme(this.template, "set_theme", action.args);
       case "start_tour":
         return this.tourService.startTour(key);
+      case "trigger_actions":
+        console.log("[TRIGGER ACTIONS]", args);
+        return this.handleActions(args[0] as any, action._triggeredBy);
       case "emit":
         const [emit_value, emit_from] = args;
         let container: TemplateContainerComponent = this;
