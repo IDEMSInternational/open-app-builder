@@ -14,13 +14,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 @Injectable({ providedIn: "root" })
 export class DataEvaluationService {
   public data: ICacheData;
-  constructor(private dbService: DbService, private appEventService: AppEventService) {
-    this.init();
-  }
-
-  private async init() {
-    await this.refreshDBCache();
-  }
+  constructor(private dbService: DbService, private appEventService: AppEventService) {}
 
   /**
    * load all the data that will be required for processing conditions
@@ -40,6 +34,8 @@ export class DataEvaluationService {
     // TODO - add db bindings for reminder_events
     const reminder_events = {};
     this.data = { app_day, dbCache: { task_actions, app_events, reminder_events, data_events } };
+    log("[Data Evaluation] cache updated", this.data);
+    return this.data;
   }
 
   /**
@@ -50,6 +46,11 @@ export class DataEvaluationService {
   public async evaluateReminderCondition(
     condition: FlowTypes.DataEvaluationCondition
   ): Promise<boolean> {
+    log_group("[Data Evaluation] start", condition._raw);
+    if (!this.data) {
+      // TODO - determine if using a cache-first approach is better or just to make the queries live
+      await this.refreshDBCache();
+    }
     const { condition_type, condition_args } = condition;
     const evaluators: {
       [key in FlowTypes.DataEvaluationCondition["condition_type"]]: () => boolean | undefined;
@@ -57,7 +58,10 @@ export class DataEvaluationService {
       db_lookup: () => this.processDBLookupCondition(condition),
       field_evaluation: () => this.processFieldEvaluationCondition(condition_args.field_evaluation),
     };
-    return evaluators[condition_type]();
+    const evaluation = evaluators[condition_type]();
+    log(evaluation);
+    log_groupEnd();
+    return evaluation;
   }
 
   private processDBLookupCondition(condition: FlowTypes.DataEvaluationCondition) {
@@ -113,7 +117,7 @@ export class DataEvaluationService {
     return result;
   }
 
-  processFieldEvaluationCondition(
+  private processFieldEvaluationCondition(
     args: FlowTypes.DataEvaluationCondition["condition_args"]["field_evaluation"]
   ) {
     console.error("Field evaluation not currently implemented");
