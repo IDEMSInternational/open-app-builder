@@ -10,7 +10,6 @@ import { SurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
-import { RemindersService } from "./feature/reminders/reminders.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
@@ -35,7 +34,6 @@ export class AppComponent {
     private surveyService: SurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
-    private remindersService: RemindersService,
     private appEventService: AppEventService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService

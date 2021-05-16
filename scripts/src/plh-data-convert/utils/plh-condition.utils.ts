@@ -5,7 +5,7 @@ import { parsePLHString } from "./plh-string.utils";
 
 const DEBUG_MODE = false;
 
-type IConditionList = FlowTypes.Reminder_conditionList;
+type ICondition = FlowTypes.DataEvaluationCondition;
 
 /**
  * Take an activation or deactivation criteria and format for use
@@ -36,7 +36,7 @@ export function extractConditionList(conditionText: string) {
   let data: string[][] = parsePLHString(cleanedTxt);
   data = _handleDataExceptions(data);
   const conditionExtractors: {
-    [key in IConditionList["condition_type"]]: (data: any[][]) => IConditionList;
+    [key in ICondition["condition_type"]]: (data: any[][]) => ICondition;
   } = {
     field_evaluation: parseFieldEvaluationCondition,
     db_lookup: parseDBLookupCondition,
@@ -46,16 +46,16 @@ export function extractConditionList(conditionText: string) {
     console.error(chalk.red(`cannot extract condition args:`, data));
     process.exit(1);
   }
-  const condition: IConditionList = conditionExtractors[condition_type](data);
+  const condition: ICondition = conditionExtractors[condition_type](data);
   if (DEBUG_MODE) {
-    condition._raw = txt;
     condition._cleaned = cleanedTxt;
     condition._parsed = data;
   }
+  condition._raw = txt;
   return condition;
 }
 
-function parseFieldEvaluationCondition(data: any[][]): IConditionList {
+function parseFieldEvaluationCondition(data: any[][]): ICondition {
   const [[condition_type], [evaluate]] = data;
   return {
     condition_type,
@@ -64,7 +64,7 @@ function parseFieldEvaluationCondition(data: any[][]): IConditionList {
     },
   };
 }
-function parseDBLookupCondition(data: any[][]): IConditionList {
+function parseDBLookupCondition(data: any[][]): ICondition {
   const [typeData, tableData, valueData, evaulateData] = data;
   const [condition_type] = typeData;
   const [table_id, orderStr] = tableData;
