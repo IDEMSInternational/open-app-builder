@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { FlowTypes } from "src/app/shared/model";
 import {
   evaluateJSExpression,
@@ -8,7 +9,7 @@ import {
 import { TemplateService } from "./template.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
-const SHOW_DEBUG_LOGS = true;
+const SHOW_DEBUG_LOGS = false;
 const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 const log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
@@ -29,10 +30,10 @@ export class TemplateVariablesService {
   /**
    *
    *
-   * TODO - ideally we should keep namespaced references to all variables, to make them easier
-   * to read from child components and quickly evaluate on change
+   * TODO - ideally this should be a more general data-lookup/query service, possibly communicating via events
+   * to all campaign service or similar to return a response for @campaign or similar
    */
-  constructor(private templateService: TemplateService) {}
+  constructor(private templateService: TemplateService, private campaignService: CampaignService) {}
 
   /**
    * Data populated in PLH fields may contain references to specific helper or lookup functions,
@@ -220,8 +221,10 @@ export class TemplateVariablesService {
       case "data":
         parsedValue = this.templateService.getDataListByPath(fieldName);
         break;
+      // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
+      // e.g. evaluate conditions, take first etc.
       case "campaign":
-        parsedValue = null;
+        parsedValue = await this.campaignService.getNextCampaignRow(fieldName);
         break;
       default:
         parseSuccess = false;
