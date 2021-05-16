@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { subDays, subHours } from "date-fns";
-import { IReminder } from "./reminders.model";
-import { IDBTable } from "src/app/shared/services/db/db.service";
+
+import { IReminder, IReminderData } from "./reminders.model";
 import { FlowTypes } from "scripts/types";
 import { TaskService } from "src/app/shared/services/task/task.service";
-import { generateTimestamp } from "src/app/shared/utils";
+
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
+import { DATA_LIST } from "src/app/shared/services/data/data.service";
+import { MOCK_REMINDERS } from "./reminder.mock";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = true;
@@ -28,7 +29,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  */
 export class RemindersService {
   public data: IReminderData;
-  public mockData = MOCK_DATA;
+  public mockData = MOCK_REMINDERS;
   public reminders$ = new BehaviorSubject<IReminder[]>([]);
   public remindersList$ = new BehaviorSubject<FlowTypes.Campaign_listRow[]>([]);
   public remindersByCampaign$ = new BehaviorSubject<{
@@ -61,173 +62,39 @@ export class RemindersService {
   }
 
   private async processRemindersList() {
-    await this.dataEvaluationService.refreshDBCache();
-    // TODO - import campaigns
-    const REMINDER_LIST = [];
+    const data = await this.dataEvaluationService.refreshDBCache();
+    this.data = data;
+    // TODO - as reminders mostly deprecated should be merged into other campaigns debug page
+    const reminderRows: FlowTypes.Campaign_listRow[] = [].concat.apply(
+      [],
+      DATA_LIST.filter((list) => list.flow_subtype === "campaign_rows").map((list) => list.rows)
+    );
     // check pending reminders
     const pendingReminders = this.reminders$.value;
-
     // check deactivation
     const allReminders = [];
-    for (const list of REMINDER_LIST) {
-      for (const r of list.rows) {
-        log_group("[Reminder Process]", r.start_action, r.start_action_args);
-        // TODO - should it be all conditions satisfied or just any? Assume all
-        r.activation_condition_list = await Promise.all(
-          r.activation_condition_list.map(async (condition) => {
-            const evaluation = await this.dataEvaluationService.evaluateReminderCondition(
-              condition
-            );
-            return { ...condition, _satisfied: evaluation };
-          })
-        );
-        // (r as any)._satisfied = r.activation_condition_list.every(
-        //   (condition) => condition._satisfied
-        // );
-        r.deactivation_condition_list = await Promise.all(
-          r.deactivation_condition_list.map(async (condition) => {
-            const evaluation = await this.dataEvaluationService.evaluateReminderCondition(
-              condition
-            );
-            return { ...condition, _satisfied: evaluation };
-          })
-        );
-        log_groupEnd();
-        allReminders.push(r);
-      }
+    log("reminder rows", reminderRows);
+    for (const r of reminderRows) {
+      log_group("[Reminder Process]");
+      // TODO - should it be all conditions satisfied or just any? Assume all
+      const activation_condition_list = r.activation_condition_list || [];
+      r.activation_condition_list = await Promise.all(
+        activation_condition_list.map(async (condition) => {
+          const evaluation = await this.dataEvaluationService.evaluateReminderCondition(condition);
+          return { ...condition, _satisfied: evaluation };
+        })
+      );
+      const deactivation_condition_list = r.deactivation_condition_list || [];
+      r.deactivation_condition_list = await Promise.all(
+        deactivation_condition_list.map(async (condition) => {
+          const evaluation = await this.dataEvaluationService.evaluateReminderCondition(condition);
+          return { ...condition, _satisfied: evaluation };
+        })
+      );
+      log_groupEnd();
+      allReminders.push(r);
     }
     this.remindersList$.next(allReminders);
     log("[Reminders List] Process", { data: this.data, pendingReminders, allReminders });
   }
-
-  /************************************************************************************
-   *  Legacy code - to be re-evaluated (CC 2021-02-16)
-   *************************************************************************************/
-
-  //   private async loadDBReminders() {
-  //     const reminders = await this.dbService.table<IReminder>("reminders").toArray();
-  //     this.reminders$.next(reminders);
-  //   }
-
-  async setReminder(reminder: IReminder) {
-    // // reminder form populates an empty placeholder id, which has to be removed
-    // // to allow the db to populate
-    // if (reminder.id === null) {
-    //   delete reminder.id;
-    // }
-    // reminder = await this.setReminderNotifications(reminder);
-    // await this.dbService.table("reminders").put(reminder);
-    // this.loadDBReminders();
-  }
-
-  //   private async setReminderNotifications(reminder: IReminder) {
-  //     // delete old notification
-  //     if (reminder.notifications.length > 0) {
-  //       this.localNotifications.removeNotifications({
-  //         notifications: reminder.notifications,
-  //       });
-  //       reminder.notifications = [];
-  //     }
-  //     const schedule: Partial<LocalNotificationSchedule> = {
-  //       repeats: reminder.repeat !== "never",
-  //       at: new Date(reminder.due),
-  //       every: this._mapRepeatIntervalToNotification(reminder),
-  //     };
-  //     const res = await this.localNotifications.scheduleNotification({
-  //       schedule,
-  //     });
-  //     reminder.notifications = res.notifications;
-  //     return reminder;
-  //   }
-
-  //   async deleteReminder(reminder: IReminder) {
-  //     const { notifications } = reminder;
-  //     await this.localNotifications.removeNotifications({ notifications });
-  //     await this.dbService.table("reminders").delete(reminder.id);
-  //     this.loadDBReminders();
-  //   }
-
-  //   /**
-  //    * Convert form repeat duration to format recognised by capcitor local notifications api
-  //    */
-  //   private _mapRepeatIntervalToNotification(
-  //     reminder: IReminder
-  //   ): LocalNotificationSchedule["every"] {
-  //     switch (reminder.repeat) {
-  //       case "daily":
-  //         return "day";
-  //       case "weekly":
-  //         return "week";
-  //       case "monthly":
-  //         return "month";
-  //       default:
-  //         return null;
-  //     }
-  //   }
-}
-
-const MOCK_DATA: Partial<IReminderData & { label: string }>[] = [
-  {
-    label: "Demo 1 (first load)",
-    app_day: 1,
-    dbCache: {
-      app_events: {
-        app_launch: [{ _created: generateTimestamp(), event_id: "app_launch" }],
-      },
-      data_events: {},
-      reminder_events: {},
-      task_actions: {},
-    },
-  },
-  {
-    label: "Demo 2 (day 4)",
-    app_day: 4,
-    dbCache: {
-      app_events: {
-        app_launch: [
-          {
-            _created: generateTimestamp(subHours(subDays(new Date(), 3), 1)),
-            event_id: "app_launch",
-          },
-        ],
-      },
-      data_events: {
-        w_self_care_started: [
-          {
-            _created: generateTimestamp(subHours(subDays(new Date(), 3), 1)),
-            name: "w_self_care_started",
-            value: true,
-          },
-        ],
-      },
-      reminder_events: {},
-      task_actions: {},
-    },
-  },
-  {
-    label: "Demo 3 (day 8)",
-    app_day: 8,
-    dbCache: {
-      app_events: {
-        app_launch: [
-          {
-            _created: generateTimestamp(subHours(subDays(new Date(), 7), 1)),
-            event_id: "app_launch",
-          },
-        ],
-      },
-      data_events: {},
-      reminder_events: {},
-      task_actions: {},
-    },
-  },
-];
-
-interface IReminderData {
-  app_day: number;
-  /** As database lookups are async and inefficient, store key results in memory (keyed by target field) */
-  dbCache: { [table_id in IDBTable]?: { [filter_id: string]: any[] } };
-  // taskdbCache: { [action_id: string]: ITaskAction[] };
-  // appEventHistory: { [event_id in IAppEvent["event_id"]]?: IAppEvent[] };
-  // reminderHistory: { [reminder_id: string]: IReminder[] };
 }
