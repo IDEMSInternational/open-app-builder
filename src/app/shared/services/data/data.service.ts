@@ -13,7 +13,6 @@ import { care_package_list } from "src/data/care_package_list";
 import { habit_ideas } from "src/data/habit_ideas";
 import { tour } from "src/data/tour";
 import { home_page } from "src/data/home_page";
-import { reminder_list } from "src/data/reminder_list";
 import { template } from "src/data/template";
 import { component_defaults } from "src/data/component_defaults";
 import { global } from "src/data/global";
@@ -31,7 +30,6 @@ export const CARE_PACKAGE_LIST = care_package_list;
 export const HABIT_IDEAS = habit_ideas;
 export const TOUR = tour;
 export const HOME_PAGE = home_page;
-export const REMINDER_LIST = reminder_list;
 export const TEMPLATE = template;
 export const COMPONENT_DEFAULTS = component_defaults;
 export const GLOBAL = global;
@@ -51,7 +49,6 @@ const mapping: { [key in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
   habit_ideas: HABIT_IDEAS,
   tour: TOUR,
   home_page: HOME_PAGE,
-  reminder_list: REMINDER_LIST,
   template: TEMPLATE,
   component_defaults: COMPONENT_DEFAULTS,
   global: GLOBAL,
