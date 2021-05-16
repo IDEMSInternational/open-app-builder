@@ -417,36 +417,6 @@
       },
       {
         "type": "declare_global_constant",
-        "name": "my_relaxes",
-        "value": "My relaxes"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "all_relaxes",
-        "value": "All relaxes"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "random_relax",
-        "value": "Random relax"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "my_activities",
-        "value": "My activities"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "all_activities",
-        "value": "All activities"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "random_activity",
-        "value": "Random activity"
-      },
-      {
-        "type": "declare_global_constant",
         "name": "extra",
         "value": "Customise Again"
       },
@@ -558,6 +528,119 @@
   },
   {
     "flow_type": "global",
+    "flow_name": "relax_variables",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "my_relaxes",
+        "value": "My relaxes"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "all_relaxes",
+        "value": "All relaxes"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "random_relax",
+        "value": "Random relax"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "my_activities",
+        "value": "My activities"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "all_activities",
+        "value": "All activities"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "random_activity",
+        "value": "Random activity"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "which_relax",
+        "value": "relax_1"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "favourite_relax_1",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_2_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_3_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_4_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_5_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_6_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_7_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_8_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_9_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_10_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_11_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_12_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_13_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_14_favourite",
+        "value": false
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_parent_centre.xlsx"
+  },
+  {
+    "flow_type": "global",
     "flow_name": "parent_point_variables",
     "status": "released",
     "rows": [
@@ -570,11 +653,6 @@
         "type": "declare_global_constant",
         "name": "parent_points_get_me_going",
         "value": "Get me going"
-      },
-      {
-        "type": "declare_field_default",
-        "name": "which_relax",
-        "value": "relax_1"
       },
       {
         "type": "declare_field_default",
@@ -937,6 +1015,69 @@
         "type": "declare_field_default",
         "name": "survey_completed",
         "value": false
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "tap_and_type",
+        "value": "Tap and type"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "tap_and_choose",
+        "value": "Tap and choose"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_surveys.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "thresholds",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_1",
+        "value": 4
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_2",
+        "value": 5
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_3",
+        "value": 2
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_4",
+        "value": 2
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_5",
+        "value": 1
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_6",
+        "value": 1
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_7",
+        "value": 7
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_8",
+        "value": 5
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "survey_welcome_t_9",
+        "value": 7
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_surveys.xlsx"
