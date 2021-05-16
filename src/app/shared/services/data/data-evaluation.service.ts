@@ -6,7 +6,7 @@ import { AppEventService } from "../app-events/app-events.service";
 import { DbService, IDBTable } from "../db/db.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
-let SHOW_DEBUG_LOGS = true;
+let SHOW_DEBUG_LOGS = false;
 let log = SHOW_DEBUG_LOGS ? console.log : () => null;
 let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
