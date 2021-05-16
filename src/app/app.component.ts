@@ -84,7 +84,9 @@ export class AppComponent {
         SplashScreen.hide();
         this.notifications.init();
       }
-      this.remindersService.init();
+      // CC 2021-05-14 - disabling reminders service until decide on full implementation
+      // (ideally not requiring evaluation of all reminders on init)
+      // this.remindersService.init();
       this.appEventService.init();
     });
   }

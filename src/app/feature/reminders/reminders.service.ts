@@ -1,14 +1,12 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { differenceInHours, subDays, subHours } from "date-fns";
+import { subDays, subHours } from "date-fns";
 import { IReminder } from "./reminders.model";
-import { DbService, IDBTable, IFlowEvent } from "src/app/shared/services/db/db.service";
-import { REMINDER_LIST } from "src/app/shared/services/data/data.service";
+import { IDBTable } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "scripts/types";
 import { TaskService } from "src/app/shared/services/task/task.service";
-import { AppEventService, IAppEvent } from "src/app/shared/services/app-events/app-events.service";
-import { arrayToHashmapArray, generateTimestamp } from "src/app/shared/utils";
-import { ITaskAction } from "../goals/models/goals.model";
+import { generateTimestamp } from "src/app/shared/utils";
+import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = true;
@@ -25,7 +23,6 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  * This service predominantly is designed to facilitate interactions with the local notifications
  * system (and tracking related data stored in the database)
  *
- * It is not currently production-ready (2020-11-15 - Chris)
  * TODO - 2021-05-14
  * Ideally most logic could be merged into a common data_list
  */
@@ -33,36 +30,18 @@ export class RemindersService {
   public data: IReminderData;
   public mockData = MOCK_DATA;
   public reminders$ = new BehaviorSubject<IReminder[]>([]);
-  public remindersList$ = new BehaviorSubject<FlowTypes.Reminder_listRow[]>([]);
+  public remindersList$ = new BehaviorSubject<FlowTypes.Campaign_listRow[]>([]);
   public remindersByCampaign$ = new BehaviorSubject<{
-    [campaign_id: string]: FlowTypes.Reminder_listRow[];
+    [campaign_id: string]: FlowTypes.Campaign_listRow[];
   }>({});
 
   constructor(
     private taskService: TaskService,
-    private dbService: DbService,
-    private appEventService: AppEventService
+    private dataEvaluationService: DataEvaluationService
   ) {}
 
   async init() {
-    await this.appEventService.ready();
-    await this.loadReminderData();
     await this.processRemindersList();
-  }
-
-  /** load all the data that will be required for processing reminders */
-  private async loadReminderData() {
-    const taskActions = await this.dbService.table("task_actions").orderBy("_created").toArray();
-    // get event histories
-    const task_actions = arrayToHashmapArray<ITaskAction>(taskActions, "task_id");
-    const appEvents = await this.dbService.table("app_events").orderBy("_created").toArray();
-    const app_events = arrayToHashmapArray<IAppEvent>(appEvents, "event_id");
-    const dataEvents = await this.dbService.table("data_events").orderBy("_created").toArray();
-    const data_events = arrayToHashmapArray<IFlowEvent>(dataEvents, "name");
-    const app_day = this.appEventService.summary.app_day;
-    // TODO - add db bindings for reminder_events
-    const reminder_events = {};
-    this.data = { app_day, dbCache: { task_actions, app_events, reminder_events, data_events } };
   }
 
   /** override local data with testing dataset, or reinitialise from db */
@@ -75,13 +54,16 @@ export class RemindersService {
     }
   }
 
-  public triggerReminderAction(r: FlowTypes.Reminder_listRow) {
+  public triggerReminderAction(r: FlowTypes.Campaign_listRow) {
     const { start_action, start_action_args, flow_type, reminder_id } = r;
     const id = `${reminder_id}_action`;
     this.taskService.runAction({ flow_type, id, flow_name: start_action_args, start_action });
   }
 
   private async processRemindersList() {
+    await this.dataEvaluationService.refreshDBCache();
+    // TODO - import campaigns
+    const REMINDER_LIST = [];
     // check pending reminders
     const pendingReminders = this.reminders$.value;
 
@@ -93,7 +75,9 @@ export class RemindersService {
         // TODO - should it be all conditions satisfied or just any? Assume all
         r.activation_condition_list = await Promise.all(
           r.activation_condition_list.map(async (condition) => {
-            const evaluation = await this.evaluateReminderCondition(condition);
+            const evaluation = await this.dataEvaluationService.evaluateReminderCondition(
+              condition
+            );
             return { ...condition, _satisfied: evaluation };
           })
         );
@@ -102,7 +86,9 @@ export class RemindersService {
         // );
         r.deactivation_condition_list = await Promise.all(
           r.deactivation_condition_list.map(async (condition) => {
-            const evaluation = await this.evaluateReminderCondition(condition);
+            const evaluation = await this.dataEvaluationService.evaluateReminderCondition(
+              condition
+            );
             return { ...condition, _satisfied: evaluation };
           })
         );
@@ -112,96 +98,6 @@ export class RemindersService {
     }
     this.remindersList$.next(allReminders);
     log("[Reminders List] Process", { data: this.data, pendingReminders, allReminders });
-  }
-
-  private async evaluateReminderCondition(
-    condition: FlowTypes.Reminder_conditionList
-  ): Promise<boolean> {
-    const { condition_type, condition_args } = condition;
-    const evaluators: {
-      [key in FlowTypes.Reminder_conditionList["condition_type"]]: () => boolean | undefined;
-    } = {
-      db_lookup: () => this.processDBLookupCondition(condition),
-      field_evaluation: () => this.processFieldEvaluationCondition(condition_args.field_evaluation),
-    };
-    return evaluators[condition_type]();
-  }
-
-  private processDBLookupCondition(condition: FlowTypes.Reminder_conditionList) {
-    const { table_id, filter, evaluate, order } = condition.condition_args.db_lookup;
-    if (!this.data.dbCache.hasOwnProperty(table_id)) {
-      console.error(
-        `[${table_id}] has not been included in reminders.service lookup condition`,
-        condition
-      );
-      return undefined;
-    }
-    // the action history is already organised by filter field (e.g. event_id, task_id etc.), so select child collection (if entries exist)
-    if (!this.data.dbCache[table_id][filter.field]) {
-      return false;
-    }
-    const results = this.data.dbCache[table_id][filter.field];
-    // TODO - assumes filtering on 'value' field - may want way to specify which field to compare
-    let filteredResults = results.filter((res) => res.value === filter.value);
-    // TODO - assumes standard sort order fine, - may need in future (e.g. by _created)
-    if (order === "asc") {
-      filteredResults = filteredResults.reverse();
-    }
-    log("process db condition", { filteredResults, evaluate, results, filter, table_id });
-    if (evaluate) {
-      // TODO - Assumes all evaluations are based on creation date, possible future syntax to allow more options
-      const evaulateValue = filteredResults[0]?._created;
-      return this.evaluateDBLookupCondition(evaulateValue, evaluate);
-    }
-    // default - return if entries exist
-    return true;
-  }
-
-  private evaluateDBLookupCondition(
-    evaluateValue: string | number,
-    evaluate: FlowTypes.Reminder_conditionList["condition_args"]["db_lookup"]["evaluate"]
-  ) {
-    const { operator, value, unit } = evaluate;
-    let result = false;
-    switch (unit) {
-      case "day":
-        const dayDiff = differenceInHours(new Date(), new Date(evaluateValue)) / 24;
-        result = this._compare(dayDiff, operator, value);
-        break;
-      case "app_day":
-        const appDayToday = this.data.app_day;
-        const appDayDiff = appDayToday - (evaluateValue as number);
-        result = this._compare(appDayDiff, operator, value);
-        break;
-      default:
-        console.error("No evaluation function for unit:", unit);
-    }
-    log("evaluate", { evaluateValue, evaluate, result });
-    return result;
-  }
-
-  processFieldEvaluationCondition(
-    args: FlowTypes.Reminder_conditionList["condition_args"]["field_evaluation"]
-  ) {
-    console.error("Field evaluation not currently implemented");
-    return undefined;
-  }
-
-  /** As comparison functions are generated as string parse the relevant cases and evaluate */
-  private _compare(
-    a: string | number,
-    operator: FlowTypes.Reminder_conditionList["condition_args"]["db_lookup"]["evaluate"]["operator"],
-    b: string | number
-  ) {
-    switch (operator) {
-      case ">":
-        return a > b;
-      case "<=":
-        return a <= b;
-      default:
-        console.error("operator not included:", operator);
-        break;
-    }
   }
 
   /************************************************************************************
