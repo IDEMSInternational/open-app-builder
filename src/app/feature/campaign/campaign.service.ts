@@ -31,35 +31,53 @@ export class CampaignService {
       });
     });
     this.campaigns = campaignsById;
-    console.log("campaignsById", campaignsById);
   }
 
   async getNextCampaignRow(campaign_id: string) {
     // TODO - decide best way to handle keeping data fresh
     await this.dataEvaluationService.refreshDBCache();
+
     if (!this.campaigns[campaign_id]) {
       console.error("no data exists for campaign", campaign_id);
       return null;
     }
     const campaignRows = this.campaigns[campaign_id];
-    const nextRow = campaignRows.find((row) => {
-      const { activation_condition_list, deactivation_condition_list } = row;
-      // if any deactivation criteria met return false
-      if (
-        (deactivation_condition_list || []).find((condition) => this.evaluateCondition(condition))
-      ) {
-        return false;
+    const evaluatedRows = [];
+    for (const row of campaignRows) {
+      const evaluatedRow = await this.evaluateCampaignRow(row);
+      evaluatedRows.push(evaluatedRow);
+      if (evaluatedRow._active) {
+        console.log("[Campaign] - next row", { campaign_id, evaluatedRow, evaluatedRows });
+        return evaluatedRow;
       }
-      // if all activation criteria met return true
-      return (activation_condition_list || []).every((condition) =>
-        this.evaluateCondition(condition)
-      );
-    });
-    console.log("next campaign row", campaign_id, nextRow);
-    return nextRow;
+    }
+    console.log("[Campaign] - none active", { campaign_id, evaluatedRows });
+    return null;
   }
 
-  private evaluateCondition(condition) {
+  private async evaluateCampaignRow(row: FlowTypes.Campaign_listRow) {
+    const deactivation_condition_list = row.deactivation_condition_list || [];
+    row.deactivation_condition_list = await Promise.all(
+      deactivation_condition_list.map(async (condition) => {
+        const _satisfied = await this.evaluateCondition(condition);
+        return { ...condition, _satisfied };
+      })
+    );
+    const activation_condition_list = row.activation_condition_list || [];
+    row.activation_condition_list = await Promise.all(
+      activation_condition_list.map(async (condition) => {
+        const _satisfied = await this.evaluateCondition(condition);
+        return { ...condition, _satisfied };
+      })
+    );
+    // assume active if all activation criteria met and no deactivation criteria satisfied
+    row._active =
+      row.activation_condition_list.every((c) => c._satisfied === true) &&
+      !row.deactivation_condition_list.find((c) => c._satisfied === true);
+    return row;
+  }
+
+  private evaluateCondition(condition: FlowTypes.DataEvaluationCondition) {
     return this.dataEvaluationService.evaluateReminderCondition(condition);
   }
 }
