@@ -33,7 +33,19 @@ function mergeNestedTemplateRows(
     const primaryRow = primaryHashmap[secondaryRow.name];
     let mergedRow = { ...secondaryRow };
     if (primaryRow) {
+      // merge
       mergedRow = { ...secondaryRow, ...primaryRow };
+      // remove overriden dynamic references
+      // TODO - also remove _dynamicDependencies references
+      // TODO - merge with processRowOverrideMethod
+      Object.keys(primaryRow).forEach((field) => {
+        if (mergedRow._dynamicFields?.[field]) {
+          delete mergedRow._dynamicFields[field];
+          if (Object.keys(mergedRow._dynamicFields).length === 0) {
+            delete mergedRow._dynamicFields;
+          }
+        }
+      });
     }
     if (mergedRow.rows) {
       mergedRow.rows = mergeNestedTemplateRows(primaryRow?.rows, secondaryRow.rows);
