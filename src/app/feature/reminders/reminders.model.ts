@@ -1,9 +1,22 @@
 import { FormControl, Validators } from "@angular/forms";
-import { IDBDoc } from "src/app/shared/services/db/db.service";
+import { IDBDoc, IDBTable } from "src/app/shared/services/db/db.service";
 
 /******************************************************************************************
  * Typings
  ******************************************************************************************/
+export interface IReminderData {
+  app_day: number;
+  /** As database lookups are async and inefficient, store key results in memory (keyed by target field) */
+  dbCache: { [table_id in IDBTable]?: { [filter_id: string]: any[] } };
+  // taskdbCache: { [action_id: string]: ITaskAction[] };
+  // appEventHistory: { [event_id in IAppEvent["event_id"]]?: IAppEvent[] };
+  // reminderHistory: { [reminder_id: string]: IReminder[] };
+}
+
+/******************************************************************************************
+ * Legacy code (to review) CC 2021-05-16
+ ******************************************************************************************/
+
 export interface IReminder extends IDBDoc {
   _created: ISODateString;
   _modified: ISODateString;
@@ -20,15 +33,11 @@ export interface IReminder extends IDBDoc {
   /**
    * Additional metadata to pass to a reminder
    */
-  data: IReminderData;
+  data: { customLabel?: string };
   complete: boolean;
   repeat: IRepeatString;
   notify: boolean;
   notifications: any[];
-}
-
-interface IReminderData {
-  customLabel?: string;
 }
 
 export interface IReminderTypeMeta {

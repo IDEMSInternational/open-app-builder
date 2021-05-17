@@ -74,7 +74,8 @@ export class ChatActionService {
       repeats: null,
       notifications: [],
     };
-    this.remindersService.setReminder(reminder as any);
+    // TODO / DEPRECATED - to review (CC 2021-105-16)
+    // this.remindersService.setReminder(reminder as any);
   }
 
   private navigate(urlParts: URLParts) {

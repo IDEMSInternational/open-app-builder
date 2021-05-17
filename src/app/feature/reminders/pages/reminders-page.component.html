@@ -25,7 +25,7 @@
       *ngFor="let reminder of remindersService.remindersList$ | async"
       class="reminder-list-item"
     >
-      <ion-card-header style="font-weight: 500">{{ reminder.reminder_id }}</ion-card-header>
+      <ion-card-header style="font-weight: 500">{{ reminder.id }}</ion-card-header>
       <ion-card-content>
         <div style="display: flex">
           <div style="flex: 1">
@@ -41,7 +41,7 @@
               >Start Action</ion-button
             >
             <div style="font-size: small; color: var(--ion-color-primary)">
-              {{ reminder.start_action }}<br />{{ reminder.start_action_args }}
+              {{ reminder.start_action }}<br />{{ reminder.click_action_list }}
             </div>
           </div>
         </div>

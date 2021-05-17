@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { FlowTypes } from "src/app/shared/model";
 import {
   evaluateJSExpression,
@@ -29,10 +30,10 @@ export class TemplateVariablesService {
   /**
    *
    *
-   * TODO - ideally we should keep namespaced references to all variables, to make them easier
-   * to read from child components and quickly evaluate on change
+   * TODO - ideally this should be a more general data-lookup/query service, possibly communicating via events
+   * to all campaign service or similar to return a response for @campaign or similar
    */
-  constructor(private templateService: TemplateService) {}
+  constructor(private templateService: TemplateService, private campaignService: CampaignService) {}
 
   /**
    * Data populated in PLH fields may contain references to specific helper or lookup functions,
@@ -45,7 +46,7 @@ export class TemplateVariablesService {
    * @param omitFields Any fields listed here will not be evaluated alongside any metadata fields (prefix '_')
    * and the "comments" field
    */
-  public evaluatePLHData(
+  public async evaluatePLHData(
     data: string | number | boolean | any,
     context: IVariableContext,
     omitFields: string[] = []
@@ -57,14 +58,15 @@ export class TemplateVariablesService {
       // process arrays as json objects and return
       if (Array.isArray(data)) {
         const objData = _arrayToObject(data);
-        value = Object.values(this.evaluatePLHData(objData, context));
+        const evaluatedObjData = await this.evaluatePLHData(objData, context);
+        value = Object.values(evaluatedObjData);
       }
 
       // non-null object - set to recursively evaluate
       else if (data !== null) {
         // only evaluate if there are dynamic fields recorded somewhere in the object
         if (dynamicFields) {
-          Object.keys(data).forEach((k) => {
+          for (const k of Object.keys(data)) {
             value[k] = data[k];
             // ignore evaluation of meta, comment, and specifiedfields. Could provide single list of approved fields, but as dynamic fields
             // also can be found in parameter lists would likely prove too restrictive
@@ -72,10 +74,10 @@ export class TemplateVariablesService {
               // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
               const nestedContext = { ...context };
               nestedContext.field = nestedContext.field ? `${nestedContext.field}.${k}` : k;
-              const evaluated = this.evaluatePLHData(data[k], nestedContext);
+              const evaluated = await this.evaluatePLHData(data[k], nestedContext);
               value[k] = evaluated;
             }
-          });
+          }
         }
       }
     } else {
@@ -88,7 +90,7 @@ export class TemplateVariablesService {
         field
       ) as FlowTypes.TemplateRowDynamicEvaluator[];
       if (evaluators && evaluators.length > 0) {
-        value = this.evaluatePLHString(evaluators, context);
+        value = await this.evaluatePLHString(evaluators, context);
         log("[evaluated]", evaluators[0].fullExpression, { value, evaluators, field, context });
       }
     }
@@ -110,7 +112,7 @@ export class TemplateVariablesService {
    * @param template
    * @returns
    */
-  private evaluatePLHString(
+  private async evaluatePLHString(
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
     context: IVariableContext
   ) {
@@ -119,7 +121,7 @@ export class TemplateVariablesService {
     for (let evaluator of evaluators) {
       const { matchedExpression, type, fieldName } = evaluator;
       // evaluate the core @keyword.someVar part
-      const { parsedValue } = this.processDynamicEvaluator(evaluator, context);
+      const { parsedValue } = await this.processDynamicEvaluator(evaluator, context);
       // if no change simply stop processing and return (e.g. text contains email @example.com that will not be processed)
       if (parsedValue === evaluator.matchedExpression) {
         return parsedValue;
@@ -165,7 +167,7 @@ export class TemplateVariablesService {
    * Lookup evaluators from statements such as @local.someVar or @data.anotherVar and return the
    * value depending on the required method
    */
-  private processDynamicEvaluator(
+  private async processDynamicEvaluator(
     evaluator: FlowTypes.TemplateRowDynamicEvaluator,
     context: IVariableContext
   ) {
@@ -207,10 +209,10 @@ export class TemplateVariablesService {
 
         break;
       case "field":
+        console.warn("To keep consistency with rapidpro, @fields should be used instead of @field");
         parsedValue = this.templateService.getField(fieldName);
         break;
       case "fields":
-        console.warn("@fields is deprecated, please use @field instead");
         parsedValue = this.templateService.getField(fieldName);
         break;
       case "global":
@@ -218,6 +220,11 @@ export class TemplateVariablesService {
         break;
       case "data":
         parsedValue = this.templateService.getDataListByPath(fieldName);
+        break;
+      // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
+      // e.g. evaluate conditions, take first etc.
+      case "campaign":
+        parsedValue = await this.campaignService.getNextCampaignRow(fieldName);
         break;
       default:
         parseSuccess = false;

@@ -1,7 +1,7 @@
 import { FlowTypes } from "../../../../types";
 import { extractDynamicFields } from "../../../utils";
 import { DefaultParser } from "../default/default.parser";
-import { flattenJson, parsePLHCollectionString, parsePLHListString } from "../utils";
+import { flattenJson, parsePLHCollectionString, parsePLHListString } from "../../utils";
 
 export class TemplateParser extends DefaultParser {
   constructor() {
