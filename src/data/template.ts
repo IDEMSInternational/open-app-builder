@@ -4425,216 +4425,6 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "home_screen_campaigns",
-    "status": "released",
-    "rows": [
-      {
-        "name": "active_campaign",
-        "value": "@campaign.weekly_workshops",
-        "type": "set_variable",
-        "_nested_name": "active_campaign",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@campaign.weekly_workshops",
-              "matchedExpression": "@campaign.weekly_workshops",
-              "type": "campaign",
-              "fieldName": "weekly_workshops"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@campaign.weekly_workshops": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "display_group",
-        "name": "tile_weekly_workshops",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "weekly_workshops"
-            ],
-            "_raw": "click | go_to:weekly_workshops",
-            "_cleaned": "click | go_to:weekly_workshops"
-          }
-        ],
-        "parameter_list": {
-          "style": "home_screen light"
-        },
-        "style_list": [
-          "margin: 40px 0px 0px 0px"
-        ],
-        "rows": [
-          {
-            "type": "lottie_animation",
-            "name": "image_weekly_workshops",
-            "value": "lottie_animations/weekly_workshops.json",
-            "_nested_name": "tile_weekly_workshops.image_weekly_workshops"
-          },
-          {
-            "type": "display_group",
-            "name": "dg_weekly_workshops",
-            "parameter_list": {
-              "style": "column"
-            },
-            "style_list": [
-              "padding: 0"
-            ],
-            "rows": [
-              {
-                "type": "title",
-                "name": "title_weekly_workshops",
-                "value": "@global.weekly_workshops",
-                "parameter_list": {
-                  "style": "alternative"
-                },
-                "style_list": [
-                  "align-self: flex-start",
-                  "margin-left: 20px",
-                  "margin-bottom: 0px"
-                ],
-                "_nested_name": "tile_weekly_workshops.dg_weekly_workshops.title_weekly_workshops",
-                "_dynamicFields": {
-                  "value": [
-                    {
-                      "fullExpression": "@global.weekly_workshops",
-                      "matchedExpression": "@global.weekly_workshops",
-                      "type": "global",
-                      "fieldName": "weekly_workshops"
-                    }
-                  ]
-                },
-                "_dynamicDependencies": {
-                  "@global.weekly_workshops": [
-                    "value"
-                  ]
-                }
-              },
-              {
-                "type": "round_button",
-                "name": "quick_start_weekly_workshops",
-                "action_list": [
-                  {
-                    "trigger": "click",
-                    "action_id": "set_field",
-                    "args": [
-                      "do_this_workshop_together",
-                      "false"
-                    ],
-                    "_raw": "click | set_field:do_this_workshop_together:false",
-                    "_cleaned": "click | set_field:do_this_workshop_together:false"
-                  },
-                  {
-                    "trigger": "click",
-                    "action_id": "trigger_actions",
-                    "args": [
-                      "@local.active_campaign.click_action_list"
-                    ],
-                    "_raw": "click | trigger_actions: @local.active_campaign.click_action_list",
-                    "_cleaned": "click | trigger_actions: @local.active_campaign.click_action_list"
-                  }
-                ],
-                "condition": "@local.active_campaign",
-                "parameter_list": {
-                  "icon_src": "@local.active_campaign.icon",
-                  "text": "@local.active_campaign.text",
-                  "style": "home_screen yellow"
-                },
-                "style_list": [
-                  "padding: 0"
-                ],
-                "_nested_name": "tile_weekly_workshops.dg_weekly_workshops.quick_start_weekly_workshops",
-                "_dynamicFields": {
-                  "action_list": {
-                    "1": {
-                      "args": {
-                        "0": [
-                          {
-                            "fullExpression": "@local.active_campaign.click_action_list",
-                            "matchedExpression": "@local.active_campaign.click_action_list",
-                            "type": "local",
-                            "fieldName": "active_campaign"
-                          }
-                        ]
-                      },
-                      "_raw": [
-                        {
-                          "fullExpression": "click | trigger_actions: @local.active_campaign.click_action_list",
-                          "matchedExpression": "@local.active_campaign.click_action_list",
-                          "type": "local",
-                          "fieldName": "active_campaign"
-                        }
-                      ],
-                      "_cleaned": [
-                        {
-                          "fullExpression": "click | trigger_actions: @local.active_campaign.click_action_list",
-                          "matchedExpression": "@local.active_campaign.click_action_list",
-                          "type": "local",
-                          "fieldName": "active_campaign"
-                        }
-                      ]
-                    }
-                  },
-                  "condition": [
-                    {
-                      "fullExpression": "@local.active_campaign",
-                      "matchedExpression": "@local.active_campaign",
-                      "type": "local",
-                      "fieldName": "active_campaign"
-                    }
-                  ],
-                  "parameter_list": {
-                    "icon_src": [
-                      {
-                        "fullExpression": "@local.active_campaign.icon",
-                        "matchedExpression": "@local.active_campaign.icon",
-                        "type": "local",
-                        "fieldName": "active_campaign"
-                      }
-                    ],
-                    "text": [
-                      {
-                        "fullExpression": "@local.active_campaign.text",
-                        "matchedExpression": "@local.active_campaign.text",
-                        "type": "local",
-                        "fieldName": "active_campaign"
-                      }
-                    ]
-                  }
-                },
-                "_dynamicDependencies": {
-                  "@local.active_campaign.click_action_list": [
-                    "action_list.1.args.0",
-                    "action_list.1._raw",
-                    "action_list.1._cleaned"
-                  ],
-                  "@local.active_campaign": [
-                    "condition"
-                  ],
-                  "@local.active_campaign.icon": [
-                    "parameter_list.icon_src"
-                  ],
-                  "@local.active_campaign.text": [
-                    "parameter_list.text"
-                  ]
-                }
-              }
-            ],
-            "_nested_name": "tile_weekly_workshops.dg_weekly_workshops"
-          }
-        ],
-        "_nested_name": "tile_weekly_workshops"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation.xlsx"
-  },
-  {
-    "flow_type": "template",
     "flow_name": "parent_centre",
     "status": "released",
     "rows": [
@@ -23228,6 +23018,227 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "debug_campaign",
+    "status": "released",
+    "rows": [
+      {
+        "name": "active_campaign",
+        "value": "@campaign.debug_campaign",
+        "type": "set_variable",
+        "_nested_name": "active_campaign",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@campaign.debug_campaign",
+              "matchedExpression": "@campaign.debug_campaign",
+              "type": "campaign",
+              "fieldName": "debug_campaign"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@campaign.debug_campaign": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "display_group",
+        "condition": "@local.active_campaign.id",
+        "parameter_list": {
+          "style": "column"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "campaign_text",
+            "value": "Campaign id: @local.active_campaign.id",
+            "_nested_name": "display_group.campaign_text",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "Campaign id: @local.active_campaign.id",
+                  "matchedExpression": "@local.active_campaign.id",
+                  "type": "local",
+                  "fieldName": "active_campaign"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.active_campaign.id": [
+                "value"
+              ]
+            }
+          },
+          {
+            "type": "round_button",
+            "name": "campaign_quickstart",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "trigger_actions",
+                "args": [
+                  "@local.active_campaign.click_action_list"
+                ],
+                "_raw": "click | trigger_actions: @local.active_campaign.click_action_list",
+                "_cleaned": "click | trigger_actions: @local.active_campaign.click_action_list"
+              },
+              {
+                "trigger": "click",
+                "action_id": "set_local",
+                "args": [
+                  "active_campaign",
+                  "false"
+                ],
+                "_raw": "click | set_local: active_campaign : false",
+                "_cleaned": "click | set_local: active_campaign : false"
+              }
+            ],
+            "parameter_list": {
+              "icon_src": "@local.active_campaign.icon",
+              "text": "@local.active_campaign.text",
+              "style": "home_screen yellow"
+            },
+            "style_list": [
+              "padding: 0"
+            ],
+            "_nested_name": "display_group.campaign_quickstart",
+            "_dynamicFields": {
+              "action_list": {
+                "0": {
+                  "args": {
+                    "0": [
+                      {
+                        "fullExpression": "@local.active_campaign.click_action_list",
+                        "matchedExpression": "@local.active_campaign.click_action_list",
+                        "type": "local",
+                        "fieldName": "active_campaign"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "click | trigger_actions: @local.active_campaign.click_action_list",
+                      "matchedExpression": "@local.active_campaign.click_action_list",
+                      "type": "local",
+                      "fieldName": "active_campaign"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "click | trigger_actions: @local.active_campaign.click_action_list",
+                      "matchedExpression": "@local.active_campaign.click_action_list",
+                      "type": "local",
+                      "fieldName": "active_campaign"
+                    }
+                  ]
+                }
+              },
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@local.active_campaign.icon",
+                    "matchedExpression": "@local.active_campaign.icon",
+                    "type": "local",
+                    "fieldName": "active_campaign"
+                  }
+                ],
+                "text": [
+                  {
+                    "fullExpression": "@local.active_campaign.text",
+                    "matchedExpression": "@local.active_campaign.text",
+                    "type": "local",
+                    "fieldName": "active_campaign"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.active_campaign.click_action_list": [
+                "action_list.0.args.0",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ],
+              "@local.active_campaign.icon": [
+                "parameter_list.icon_src"
+              ],
+              "@local.active_campaign.text": [
+                "parameter_list.text"
+              ]
+            }
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group",
+        "_dynamicFields": {
+          "condition": [
+            {
+              "fullExpression": "@local.active_campaign.id",
+              "matchedExpression": "@local.active_campaign.id",
+              "type": "local",
+              "fieldName": "active_campaign"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.active_campaign.id": [
+            "condition"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "clear_reminders",
+        "value": "Clear Reminders",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_default.sent",
+              "false"
+            ],
+            "_raw": "click | set_field : debug_reminder_default.sent : false",
+            "_cleaned": "click | set_field : debug_reminder_default.sent : false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_1.sent",
+              "false"
+            ],
+            "_raw": "click | set_field : debug_reminder_1.sent : false",
+            "_cleaned": "click | set_field : debug_reminder_1.sent : false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_2.sent",
+              "false"
+            ],
+            "_raw": "click | set_field : debug_reminder_2.sent : false",
+            "_cleaned": "click | set_field : debug_reminder_2.sent : false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_3.sent",
+              "false"
+            ],
+            "_raw": "click | set_field : debug_reminder_3.sent : false",
+            "_cleaned": "click | set_field : debug_reminder_3.sent : false"
+          }
+        ],
+        "_nested_name": "clear_reminders"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "debug_changed_radio_group_1",
     "status": "released",
     "rows": [
@@ -33562,7 +33573,7 @@
       {
         "type": "set_field",
         "name": "feature_default_input",
-        "value": "default_input",
+        "value": "Default input",
         "_nested_name": "feature_default_input"
       },
       {
@@ -33661,12 +33672,12 @@
       {
         "type": "text",
         "name": "text_2",
-        "value": "Text box 2: \nShows @fields.feature_default_input  before user input is given.",
+        "value": "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Text box 2: \nShows @fields.feature_default_input  before user input is given.",
+              "fullExpression": "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
               "matchedExpression": "@fields.feature_default_input",
               "type": "fields",
               "fieldName": "feature_default_input"
@@ -34106,12 +34117,12 @@
       {
         "type": "text",
         "name": "text_2",
-        "value": "Combo box 2: \nShows @fields.feature_default_choice before user input is given.",
+        "value": "Combo box 2: \nShows the text associated to @fields.feature_default_choice before user input is given.",
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Combo box 2: \nShows @fields.feature_default_choice before user input is given.",
+              "fullExpression": "Combo box 2: \nShows the text associated to @fields.feature_default_choice before user input is given.",
               "matchedExpression": "@fields.feature_default_choice",
               "type": "fields",
               "fieldName": "feature_default_choice"
@@ -34211,29 +34222,20 @@
       {
         "type": "text",
         "name": "text_3",
-        "value": "Combo box 3: \nShows @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
+        "value": "Combo box 3: \nShows the text associated to @fields.feature_default_choice before user input is given.",
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Combo box 3: \nShows @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
+              "fullExpression": "Combo box 3: \nShows the text associated to @fields.feature_default_choice before user input is given.",
               "matchedExpression": "@fields.feature_default_choice",
               "type": "fields",
               "fieldName": "feature_default_choice"
-            },
-            {
-              "fullExpression": "Combo box 3: \nShows @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
-              "matchedExpression": "@local.placeholder",
-              "type": "local",
-              "fieldName": "placeholder"
             }
           ]
         },
         "_dynamicDependencies": {
           "@fields.feature_default_choice": [
-            "value"
-          ],
-          "@local.placeholder": [
             "value"
           ]
         }
@@ -34338,12 +34340,12 @@
       {
         "type": "text",
         "name": "text_4",
-        "value": "Combo box 4: \nShows @local.placeholder before user input is given and when user input is deleted.",
+        "value": "Combo box 4: \nShows @local.placeholder before user input is given.",
         "_nested_name": "text_4",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Combo box 4: \nShows @local.placeholder before user input is given and when user input is deleted.",
+              "fullExpression": "Combo box 4: \nShows @local.placeholder before user input is given.",
               "matchedExpression": "@local.placeholder",
               "type": "local",
               "fieldName": "placeholder"

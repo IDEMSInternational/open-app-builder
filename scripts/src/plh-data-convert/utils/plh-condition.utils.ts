@@ -99,13 +99,15 @@ function parseDBLookupCondition(data: any[][]): ICondition {
  */
 function _handleTextExceptions(text: string) {
   // a maximum of 1 replacement will be made, so order in terms of specifivity
+  // TODO CC 2021-05-17 - All needs review
   const shorthandReplacements = {
-    sent: "db_lookup | reminder_events:last | reminder_id:sent",
+    sent: "db_lookup | reminder_events:last | reminder_id:sent", // Deprecated
     first_launch: "db_lookup |app_events:first | event_id:app_launch",
     app_launch: "db_lookup | app_events:last | event_id:app_launch",
     "task_completed:first": "db_lookup | task_actions:first",
     task_completed: "db_lookup | task_actions:last",
     "get_field:first": "db_lookup | data_events:first",
+    get_field: "field_evaluation",
   };
   Object.entries(shorthandReplacements).some(([original, replacement]) => {
     // use a regular expression to prevent matching words that have additional content before

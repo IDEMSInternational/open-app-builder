@@ -251,6 +251,8 @@ export namespace FlowTypes {
     campaign_list: string[]; // ids of campaigns where to run
     priority?: number; // higher numbers will be given more priority
 
+    _active?: boolean; // calculated from activation and deactivation conditions
+
     // additional fields for current data_list but not required
     click_action_list?: TemplateRowAction[];
     icon?: string;
