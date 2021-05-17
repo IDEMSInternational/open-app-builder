@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { differenceInHours } from "date-fns";
 import { FlowTypes } from "src/app/shared/model";
+import { TemplateService } from "../../components/template/services/template.service";
 import { arrayToHashmapArray } from "../../utils";
 import { AppEventService } from "../app-events/app-events.service";
 import { DbService, IDBTable } from "../db/db.service";
@@ -14,7 +15,11 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 @Injectable({ providedIn: "root" })
 export class DataEvaluationService {
   public data: ICacheData;
-  constructor(private dbService: DbService, private appEventService: AppEventService) {}
+  constructor(
+    private dbService: DbService,
+    private appEventService: AppEventService,
+    private templateService: TemplateService
+  ) {}
 
   /**
    * load all the data that will be required for processing conditions
@@ -77,13 +82,15 @@ export class DataEvaluationService {
     if (!this.data.dbCache[table_id][filter.field]) {
       return false;
     }
-    const results = this.data.dbCache[table_id][filter.field];
-    // TODO - assumes filtering on 'value' field - may want way to specify which field to compare
-    let filteredResults = results.filter((res) => res.value === filter.value);
+    let results = this.data.dbCache[table_id][filter.field];
     // TODO - assumes standard sort order fine, - may need in future (e.g. by _created)
     if (order === "asc") {
-      filteredResults = filteredResults.reverse();
+      results = results.reverse();
     }
+    // TODO - assumes filtering on 'value' field - may want way to specify which field to compare
+    // TODO - if evaluating on value might need to compare to first value before filter
+    let filteredResults = results.filter((res) => res.value === filter.value);
+
     log("process db condition", { filteredResults, evaluate, results, filter, table_id });
     if (evaluate) {
       // TODO - Assumes all evaluations are based on creation date, possible future syntax to allow more options
@@ -91,7 +98,7 @@ export class DataEvaluationService {
       return this.evaluateDBLookupCondition(evaulateValue, evaluate);
     }
     // default - return if entries exist
-    return true;
+    return filteredResults.length > 0;
   }
 
   private evaluateDBLookupCondition(
@@ -120,8 +127,9 @@ export class DataEvaluationService {
   private processFieldEvaluationCondition(
     args: FlowTypes.DataEvaluationCondition["condition_args"]["field_evaluation"]
   ) {
-    console.error("Field evaluation not currently implemented");
-    return undefined;
+    log("field evaluate", args.evaluate);
+    // TODO - ideally this should be a shared method, not related to template service
+    return this.templateService.getField(args.evaluate);
   }
 
   /** As comparison functions are generated as string parse the relevant cases and evaluate */
