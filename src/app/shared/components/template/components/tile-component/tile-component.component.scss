@@ -17,7 +17,7 @@
       height: 73px;
       --background: transparent;
       --box-shadow: none;
-      border: 1px solid #fff;
+      border: var(--ion-border-light);
       --border-radius: 50%;
       border-radius: var(--ion-border-radius-rounded);
       box-shadow: none;

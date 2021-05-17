@@ -1,7 +1,7 @@
 @import "../../../../../../theme/mixins.scss";
 .container {
   width: calc(100% - 10px);
-  background: #ffffff;
+  background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-secondary);
