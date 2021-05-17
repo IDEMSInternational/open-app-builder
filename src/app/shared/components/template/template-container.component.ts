@@ -142,6 +142,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       const reprocessActions: FlowTypes.TemplateRowAction["action_id"][] = [
         "set_field",
         "set_local",
+        "trigger_actions",
       ];
       if (processedActions.find((a) => reprocessActions.includes(a.action_id))) {
         await this.processRowUpdates();
@@ -171,8 +172,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       case "start_tour":
         return this.tourService.startTour(key);
       case "trigger_actions":
-        console.log("[TRIGGER ACTIONS]", args);
-        return this.handleActions(args[0] as any, action._triggeredBy);
+        const triggeredActions: FlowTypes.TemplateRowAction[] = args[0] as any;
+        // add actions to end of existing action queue for processing after current queue complete
+        triggeredActions.forEach((a) =>
+          this.actionsQueue.push({ ...a, _triggeredBy: action._triggeredBy })
+        );
+        return;
       case "emit":
         const [emit_value, emit_from] = args;
         let container: TemplateContainerComponent = this;
@@ -260,9 +265,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
   private async processRowUpdates() {
-    console.group(`[Reprocess Template]`, this.name, { rowMap: mapToJson(this.templateRowMap) });
+    console.group(`[Reprocess Template]`, this.name, {
+      rowMap: mapToJson(this.templateRowMap),
+      rows: this.template.rows,
+      template: this.template,
+    });
     this.template.rows = await this.processRows(this.template.rows, this.template);
     this.renderedRows = this.filterConditionalTemplateRows(this.template.rows);
+    log("[Reprocess Complete]", this.renderedRows);
     console.groupEnd();
   }
 
