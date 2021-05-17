@@ -2,7 +2,7 @@ import chalk from "chalk";
 import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
-import { parsePLHListString, parsePLHCollectionString } from "../utils";
+import { parsePLHListString, parsePLHCollectionString } from "../../utils";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string };
 
@@ -58,6 +58,16 @@ export class DefaultParser implements AbstractParser {
   private processRow(row: IRowData, flow: FlowTypes.FlowTypeWithData) {
     // Handle specific data manipulations for fields
     Object.keys(row).forEach((field) => {
+      // replace any self references, i.e "hello @row.id" => "hello someValue"
+      if (typeof row[field] === "string") {
+        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_]+)/gim)];
+        for (const replacement of rowReplacements) {
+          const [expression, replaceField] = replacement;
+          const replaceValue = row[replaceField];
+          row[field] = row[field].replace(expression, replaceValue);
+        }
+      }
+      // handle other data structures
       if (field.endsWith("_asset")) {
         row[field] = this.handleAssetLinks(row[field], flow.flow_name);
       }

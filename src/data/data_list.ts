@@ -145,6 +145,36 @@
         "id": "mirror",
         "title": "Mirror",
         "text_template": "activity_mirror"
+      },
+      {
+        "id": "dream_travel",
+        "title": "Dream Travel",
+        "text_template": "activity_dream_travel"
+      },
+      {
+        "id": "famous_party",
+        "title": "Famous Party",
+        "text_template": "activity_famous_party"
+      },
+      {
+        "id": "time_machine",
+        "title": "Time Machine",
+        "text_template": "activity_time_machine"
+      },
+      {
+        "id": "superpowers",
+        "title": "Superpowers",
+        "text_template": "activity_superpowers"
+      },
+      {
+        "id": "chat_together",
+        "title": "Chat Together",
+        "text_template": "activity_chat_together"
+      },
+      {
+        "id": "chat_together_2",
+        "title": "Chat Together: How was your day?",
+        "text_template": "activity_chat_together_2"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_something_fun.xlsx"
@@ -158,7 +188,7 @@
       {
         "id": "item_1",
         "text": "Item 1 text",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_relax_image.svg"
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_relax.svg"
       },
       {
         "id": "item_2",
@@ -243,6 +273,3647 @@
   },
   {
     "flow_type": "data_list",
+    "flow_subtype": "campaign_rows",
+    "flow_name": "reminders_and_praise_list",
+    "status": "released",
+    "rows": [
+      {
+        "id": "test_weekly_workshops",
+        "click_action_list": [
+          "set_field: test_weekly_workshops.sent : true"
+        ],
+        "priority": -1,
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_self_care_encouragement",
+        "click_action_list": [
+          "go_to: m_self_care_encouragement",
+          "set_field: m_self_care_encouragement.sent : true"
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_self_care_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_self_care_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_self_care_w_intro",
+        "click_action_list": [
+          "go_to: m_self_care_w_intro",
+          "set_field: m_self_care_w_intro.sent : true"
+        ],
+        "priority": 2,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_self_care_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "6",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_self_care_started:TRUE | within : 6 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_1on1_ready",
+        "click_action_list": [
+          "go_to: m_1on1_ready",
+          "set_field: m_1on1_ready.sent : true"
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_1on1_cochef",
+        "click_action_list": [
+          "go_to: m_1on1_cochef",
+          "set_field: m_1on1_cochef.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_self_care_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_self_care_completion_status:completed"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_1on1_start_journey",
+        "click_action_list": [
+          "go_to: m_1on1_start_journey",
+          "set_field: m_1on1_start_journey.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_1on1_thank_you",
+        "click_action_list": [
+          "go_to: m_1on1_thank_you",
+          "set_field: m_1on1_thank_you.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "3",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE | within : 3 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_1on1_completion_status:completed"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_1on1_mark_points",
+        "click_action_list": [
+          "go_to: m_1on1_mark_points",
+          "set_field: m_1on1_mark_points.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "habit_spend_time_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | habit_spend_time_completion_status:completed"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre",
+          "parent_points",
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_1on1_checkin_active",
+        "click_action_list": [
+          "go_to: m_1on1_checkin_active",
+          "set_field: m_1on1_checkin_active.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_1on1_completion_status:completed"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_1on1_checkin_inactive",
+        "click_action_list": [
+          "go_to: m_1on1_checkin_inactive",
+          "set_field: m_1on1_checkin_inactive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_praise_start",
+        "click_action_list": [
+          "go_to: m_praise_start",
+          "set_field: m_praise_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_praise_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_praise_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_praise_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_praise_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_praise_chat",
+        "click_action_list": [
+          "go_to: m_praise_chat",
+          "set_field: m_praise_chat.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_praise_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_praise_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_praise_well_done",
+        "click_action_list": [
+          "go_to: m_praise_well_done",
+          "set_field: m_praise_well_done.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_praise_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "3",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_praise_started:TRUE | within : 3 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_praise_praise",
+        "click_action_list": [
+          "go_to: m_praise_praise",
+          "set_field: m_praise_praise.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_praise_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_praise_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "habit_praise_teen_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | habit_praise_teen_completion_status:completed"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "habit_praise_yourself_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | habit_praise_yourself_completion_status:completed"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_praise_inactive",
+        "click_action_list": [
+          "go_to: m_praise_inactive",
+          "set_field: m_praise_inactive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_praise_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_praise_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_1on1_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_1on1_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_instruct_start",
+        "click_action_list": [
+          "go_to: m_instruct_start",
+          "set_field: m_instruct_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_instruct_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_instruct_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_praise_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_praise_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_instruct_dance_moves",
+        "click_action_list": [
+          "go_to: m_instruct_dance_moves",
+          "set_field: m_instruct_dance_moves.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_instruct_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_instruct_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_instruct_encouragement",
+        "click_action_list": [
+          "go_to: m_instruct_encouragement",
+          "set_field: m_instruct_encouragement.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_instruct_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_instruct_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_instruct_get_positive",
+        "click_action_list": [
+          "go_to: m_instruct_get_positive",
+          "set_field: m_instruct_get_positive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_instruct_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_instruct_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_instruct_got_positive",
+        "click_action_list": [
+          "go_to: m_instruct_got_positive",
+          "set_field: m_instruct_got_positive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_instruct_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_instruct_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_stress_start",
+        "click_action_list": [
+          "go_to: m_stress_start",
+          "set_field: m_stress_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_stress_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_stress_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_stress_chat",
+        "click_action_list": [
+          "go_to: m_stress_chat",
+          "set_field: m_stress_chat.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_stress_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_stress_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_stress_inactive",
+        "click_action_list": [
+          "go_to: m_stress_inactive",
+          "set_field: m_stress_inactive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_stress_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_stress_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_stress_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_stress_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_stress_recognize",
+        "click_action_list": [
+          "go_to: m_stress_recognize",
+          "set_field: m_stress_recognize.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_stress_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "3",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_stress_started:TRUE | within : 3 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_stress_breath",
+        "click_action_list": [
+          "go_to: m_stress_breath",
+          "set_field: m_stress_breath.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_stress_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_stress_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_stress_deep_breath",
+        "click_action_list": [
+          "go_to: m_stress_deep_breath",
+          "set_field: m_stress_deep_breath.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_stress_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_stress_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "habit_breathe_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | habit_breathe_completion_status:completed"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_money_start",
+        "click_action_list": [
+          "go_to: m_money_start",
+          "set_field: m_money_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_money_dream_travel",
+        "click_action_list": [
+          "go_to: m_money_dream_travel",
+          "set_field: m_money_dream_travel.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_money_inactive",
+        "click_action_list": [
+          "go_to: m_money_inactive",
+          "set_field: m_money_inactive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_money_encouragement",
+        "click_action_list": [
+          "go_to: m_money_encouragement",
+          "set_field: m_money_encouragement.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "3",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE | within : 3 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_money_needs_and_wants",
+        "click_action_list": [
+          "go_to: m_money_needs_and_wants",
+          "set_field: m_money_needs_and_wants.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_money_budget",
+        "click_action_list": [
+          "go_to: m_money_budget",
+          "set_field: m_money_budget.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_money_save",
+        "click_action_list": [
+          "go_to: m_money_save",
+          "set_field: m_money_save.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_money_completed",
+        "click_action_list": [
+          "go_to: m_money_completed",
+          "set_field: m_money_completed.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_money_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_money_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_rules_start",
+        "click_action_list": [
+          "go_to: m_rules_start",
+          "set_field: m_rules_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_rules_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_rules_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_rules_famous_party",
+        "click_action_list": [
+          "go_to: m_rules_famous_party",
+          "set_field: m_rules_famous_party.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_rules_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_rules_grumpy",
+        "click_action_list": [
+          "go_to: m_rules_grumpy",
+          "set_field: m_rules_grumpy.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "3",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_rules_started:TRUE | within : 3 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_rules_inactive",
+        "click_action_list": [
+          "go_to: m_rules_inactive",
+          "set_field: m_rules_inactive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_rules_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_rules_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_rules_set_rule",
+        "click_action_list": [
+          "go_to: m_rules_set_rule",
+          "set_field: m_rules_set_rule.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_rules_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_rules_completion_status:completed"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_rules_ideas",
+        "click_action_list": [
+          "go_to: m_rules_ideas",
+          "set_field: m_rules_ideas.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_rules_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_rules_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_consequence_start",
+        "click_action_list": [
+          "go_to: m_consequence_start",
+          "set_field: m_consequence_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_consequence_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_completion_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_consequence_completion_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_consequence_2t1l",
+        "click_action_list": [
+          "go_to: m_consequence_2t1l",
+          "set_field: m_consequence_2t1l.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_consequence_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_consequence_encouragement",
+        "click_action_list": [
+          "go_to: m_consequence_encouragement",
+          "set_field: m_consequence_encouragement.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "3",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_consequence_started:TRUE | within : 3 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_consequence_status",
+        "click_action_list": [
+          "go_to: m_consequence_status",
+          "set_field: m_consequence_status.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_consequence_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_consequence_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_consequence_pos_neg",
+        "click_action_list": [
+          "go_to: m_consequence_pos_neg",
+          "set_field: m_consequence_pos_neg.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_consequence_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_consequence_completion_status:completed"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_consequence_pos_neg_2",
+        "click_action_list": [
+          "go_to: m_consequence_pos_neg_2",
+          "set_field: m_consequence_pos_neg_2.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_consequence_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_consequence_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_solve_start",
+        "click_action_list": [
+          "go_to: m_solve_start",
+          "set_field: m_solve_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_solve_reminder",
+        "click_action_list": [
+          "go_to: m_solve_reminder",
+          "set_field: m_solve_reminder.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_solve_mirror",
+        "click_action_list": [
+          "go_to: m_solve_mirror",
+          "set_field: m_solve_mirror.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_solve_encouragement",
+        "click_action_list": [
+          "go_to: m_solve_encouragement",
+          "set_field: m_solve_encouragement.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "3",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE | within : 3 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_solve_inactive",
+        "click_action_list": [
+          "go_to: m_solve_inactive",
+          "set_field: m_solve_inactive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_solve_active",
+        "click_action_list": [
+          "go_to: m_solve_active",
+          "set_field: m_solve_active.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_solve_finished",
+        "click_action_list": [
+          "go_to: m_solve_finished",
+          "set_field: m_solve_finished.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_solve_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_solve_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_solve_completion_status:completed"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_safe_start",
+        "click_action_list": [
+          "go_to: m_safe_start",
+          "set_field: m_safe_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_safe_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_safe_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_safe_time_machine",
+        "click_action_list": [
+          "go_to: m_safe_time_machine",
+          "set_field: m_safe_time_machine.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_safe_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_safe_inactive",
+        "click_action_list": [
+          "go_to: m_safe_inactive",
+          "set_field: m_safe_inactive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_safe_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_safe_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_safe_active",
+        "click_action_list": [
+          "go_to: m_safe_active",
+          "set_field: m_safe_active.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_safe_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_safe_completion_status:completed"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_safe_finished",
+        "click_action_list": [
+          "go_to: m_safe_finished",
+          "set_field: m_safe_finished.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_safe_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_safe_completion_status",
+                  "value": "uncompleted"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_safe_completion_status:uncompleted"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_crisis_start",
+        "click_action_list": [
+          "go_to: m_crisis_start",
+          "set_field: m_crisis_start.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "1",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_crisis_started:TRUE | within : 1 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_crisis_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_crisis_superpowers",
+        "click_action_list": [
+          "go_to: m_crisis_superpowers",
+          "set_field: m_crisis_superpowers.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "2",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_crisis_started:TRUE | within : 2 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_crisis_encouragement",
+        "click_action_list": [
+          "go_to: m_crisis_encouragement",
+          "set_field: m_crisis_encouragement.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "3",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_crisis_started:TRUE | within : 3 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_crisis_inactive",
+        "click_action_list": [
+          "go_to: m_crisis_inactive",
+          "set_field: m_crisis_inactive.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_crisis_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_crisis_started:TRUE"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_crisis_active",
+        "click_action_list": [
+          "go_to: m_crisis_active",
+          "set_field: m_crisis_active.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_crisis_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_completion_status",
+                  "value": "completed"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_crisis_completion_status:completed"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      },
+      {
+        "id": "m_crisis_finished",
+        "click_action_list": [
+          "go_to: m_crisis_finished",
+          "set_field: m_crisis_finished.sent : true"
+        ],
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_started",
+                  "value": true
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": "<=",
+                  "value": "4",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "get_field:first | w_crisis_started:TRUE | within : 4 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "reminder_events",
+                "filter": {
+                  "field": "reminder_id",
+                  "value": "sent"
+                },
+                "order": "desc",
+                "evaluate": null
+              }
+            },
+            "_raw": "sent"
+          },
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "data_events",
+                "filter": {
+                  "field": "w_crisis_completion_stataus",
+                  "value": "uncompleted"
+                },
+                "order": "asc",
+                "evaluate": null
+              }
+            },
+            "_raw": "get_field:first | w_crisis_completion_stataus:uncompleted"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "start"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/in_week_messages/in_week_reminders.xlsx"
+  },
+  {
+    "flow_type": "data_list",
     "flow_name": "habit_data_list",
     "status": "released",
     "data_list_name": "habit",
@@ -253,7 +3924,7 @@
         "description": "Doing a relaxation activity",
         "task_id": "task_habit_relax",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_relax.svg",
-        "mark_text": "Every time you do a relax, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -262,7 +3933,7 @@
         "description": "Doing something they like for themselves",
         "task_id": "task_habit_treat_yourself",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
-        "mark_text": "Every time you treat yourself well, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -271,7 +3942,7 @@
         "description": "Praising themselves",
         "task_id": "task_habit_praise_yourself",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
-        "mark_text": "Every time you praise yourself, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -280,7 +3951,7 @@
         "description": "Spending time with their teen",
         "task_id": "task_habit_spend_time",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
-        "mark_text": "Every time you do one-on-one time, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -289,7 +3960,7 @@
         "description": "Praising their teen when they did positive thing",
         "task_id": "task_habit_praise_teen",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen.svg",
-        "mark_text": "Every time you praise your teen, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -298,7 +3969,7 @@
         "description": "Giving their teen a positive instruction",
         "task_id": "task_habit_instruct_positively",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
-        "mark_text": "Every time you give a positive instruction, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -307,7 +3978,7 @@
         "description": "Taking a pause before responding",
         "task_id": "task_habit_breathe",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe.svg",
-        "mark_text": "Every time you take a pause before responding, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -316,7 +3987,7 @@
         "description": "Keeping the budget",
         "task_id": "task_habit_money",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_money.svg",
-        "mark_text": "Every time you make a good choice about needs, wants and savings, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -325,7 +3996,7 @@
         "description": "Giving their teen a consequence in a calm way",
         "task_id": "task_habit_consequence",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence.svg",
-        "mark_text": "Every time you give a calm consequence, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       },
       {
@@ -334,10 +4005,10 @@
         "description": "Planning or keeping a family safety plan",
         "task_id": "task_habit_safe",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_safe.svg",
-        "mark_text": "Every time you do something to keep your teen safe, tap the ParentPoint and celebrate your success!",
+        "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Tap it!"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/habit_list.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/habit_data_list.xlsx"
   }
 ]
