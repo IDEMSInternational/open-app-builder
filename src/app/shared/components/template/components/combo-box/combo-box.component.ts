@@ -2,7 +2,11 @@ import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "../../../common/components/combo-box-modal/combo-box-modal.component";
-import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { TemplateService } from "../../services/template.service";
@@ -20,6 +24,7 @@ export class TmplComboBoxComponent
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   placeholder: string;
+  prioritisePlaceholder: boolean;
   style: string;
   text = "";
   customAnswerSelected: boolean = false;
@@ -44,6 +49,11 @@ export class TmplComboBoxComponent
 
   getParams() {
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
+    this.prioritisePlaceholder = getBooleanParamFromTemplateRow(
+      this._row,
+      "prioritise_placeholder",
+      false
+    );
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
     this.checkIfContainsDefaultStyles =
       this.style.includes("active") || this.style.includes("passive");
@@ -65,6 +75,7 @@ export class TmplComboBoxComponent
     });
 
     modal.onDidDismiss().then(async (data) => {
+      this.prioritisePlaceholder = false;
       const value = data?.data?.answer?.name;
       this.text = data?.data?.answer?.text;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
