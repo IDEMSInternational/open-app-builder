@@ -18,6 +18,7 @@ export class TmplTextBoxComponent
   implements ITemplateRowProps, OnInit {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
+  prioritisePlaceholder: boolean;
   isNumberInput = false;
   placeholder: string;
   textAlign: string;
@@ -37,5 +38,10 @@ export class TmplTextBoxComponent
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "center");
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.isNumberInput = getBooleanParamFromTemplateRow(this._row, "number_input", false);
+    this.prioritisePlaceholder = getBooleanParamFromTemplateRow(
+      this._row,
+      "prioritise_placeholder",
+      false
+    );
   }
 }
