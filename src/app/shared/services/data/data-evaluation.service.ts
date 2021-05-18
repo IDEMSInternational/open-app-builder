@@ -124,12 +124,15 @@ export class DataEvaluationService {
     return result;
   }
 
+  /**
+   * Simple check that a field exists and is truthy
+   */
   private processFieldEvaluationCondition(
     args: FlowTypes.DataEvaluationCondition["condition_args"]["field_evaluation"]
   ) {
     log("field evaluate", args.evaluate);
     // TODO - ideally this should be a shared method, not related to template service
-    return this.templateService.getField(args.evaluate);
+    return this.templateService.getField(args.evaluate) || false;
   }
 
   /** As comparison functions are generated as string parse the relevant cases and evaluate */
