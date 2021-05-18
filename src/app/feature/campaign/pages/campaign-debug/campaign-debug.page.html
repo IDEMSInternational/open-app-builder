@@ -1,0 +1,79 @@
+<ion-content class="ion-padding">
+  <h2>Campaign Debug</h2>
+  <ion-item>
+    <ion-label>Campaign</ion-label>
+    <ion-select
+      #campaignSelect
+      (ionChange)="setDebugCampaign(campaignSelect.value)"
+      [value]="debugCampaignId"
+    >
+      <ion-select-option *ngFor="let campaign_id of campaignService.campaigns | objectKeys">
+        <span>{{campaign_id}}</span>
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>First Launch</ion-label>
+    <ion-datetime
+      #firstLaunch
+      (ionChange)="setDebugFirstLaunch(firstLaunch.value)"
+      [value]="debugData.first_app_launch"
+    ></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>App Day</ion-label>
+    <ion-input
+      #appDay
+      type="number"
+      [value]="debugData.app_day"
+      style="text-align: right"
+      (ionChange)="setDebugAppDay(appDay.value)"
+    ></ion-input>
+  </ion-item>
+
+  <ion-card *ngFor="let row of debugCampaignRows">
+    <ion-card-header class="row-header" [attr.data-active]="row._active"
+      >{{ row.id }}</ion-card-header
+    >
+    <ion-card-content>
+      <div style="display: flex">
+        <div style="flex: 1">
+          <div>Priority: {{ row.priority }}</div>
+        </div>
+        <div style="text-align: right">
+          <ion-button
+            fill="clear"
+            (click)="triggerRowActions(row)"
+            class="no-padding"
+            style="margin: 0"
+            [disabled]="!row._active"
+            >Trigger Actions</ion-button
+          >
+        </div>
+      </div>
+      <div style="margin: 1em 0; border-top: 1px solid var(--ion-color-medium)">
+        <div>Activation</div>
+        <div *ngFor="let condition of row.activation_condition_list">
+          <span class="condition" [attr.data-satisfied]="condition._satisfied"
+            >{{ condition._raw }}</span
+          >
+          <span *ngIf="condition.timing as timing">
+            <span>{{ timing.comparator }}{{ timing.quantity }}{{ timing.unit }}</span>
+          </span>
+        </div>
+      </div>
+      <div style="margin: 1em 0; border-top: 1px solid var(--ion-color-medium)">
+        <div>Deactivation</div>
+        <div *ngFor="let condition of row.deactivation_condition_list">
+          <span class="condition" [attr.data-satisfied]="condition._satisfied"
+            >{{ condition._raw }}</span
+          >
+          <span *ngIf="condition.timing as timing">
+            <span>{{ timing.comparator }}{{ timing.quantity }}{{ timing.unit }}</span>
+          </span>
+        </div>
+      </div>
+      <ion-button fill="clear" (click)="logDebugInfo(row)">(log full details)</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
