@@ -99,7 +99,8 @@ function parseDBLookupCondition(data: any[][]): ICondition {
  */
 function _handleTextExceptions(text: string) {
   // a maximum of 1 replacement will be made, so order in terms of specifivity
-  // TODO CC 2021-05-17 - All needs review
+  // TODO CC 2021-05-17 - All needs review - ideally should just take a list of params as args,
+  // e.g. table_id: 'app_events'; sort: 'asc', or perhaps where:{...}
   const shorthandReplacements = {
     sent: "db_lookup | reminder_events:last | reminder_id:sent", // Deprecated
     first_launch: "db_lookup |app_events:first | event_id:app_launch",
