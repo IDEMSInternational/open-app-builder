@@ -39,6 +39,13 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       .parent_point > .offset > :nth-child(1n) {
         flex: 1 0 45%;
       }
+      .two_columns .offset {
+        flex-wrap: wrap;
+        padding: 10px 0;
+      }
+      .two_columns > .offset > :nth-child(1n) {
+        flex: 1 0 45%;
+      }
     `,
   ],
 })
