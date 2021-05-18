@@ -12,7 +12,7 @@
             #el
             type="radio"
             [value]="item.name"
-            [checked]="el.value === value"
+            [checked]="el.value === _row.value"
             (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
@@ -35,7 +35,7 @@
             #el
             type="radio"
             [value]="item.name"
-            [checked]="el.value === value"
+            [checked]="el.value === _row.value"
             (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
@@ -59,7 +59,7 @@
             #el
             type="radio"
             [value]="item.name"
-            [checked]="el.value === value"
+            [checked]="el.value === _row.value"
             (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
