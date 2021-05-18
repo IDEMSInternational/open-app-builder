@@ -62,11 +62,13 @@ export class TmplComboBoxComponent
   }
 
   getText(aValue: string, listAnswers: string[]): string {
-    const textFromList = listAnswers
-      .find((answer: string) => answer.includes(aValue))
-      .match(/(?<=text:).+/)[0]
-      .trim();
-    return textFromList ? textFromList : aValue;
+    if (aValue) {
+      const textFromList = listAnswers
+        .find((answer: string) => answer.includes(aValue))
+        .match(/(?<=text:).+/)[0]
+        .trim();
+      return textFromList ? textFromList : aValue;
+    }
   }
 
   async openModal() {
