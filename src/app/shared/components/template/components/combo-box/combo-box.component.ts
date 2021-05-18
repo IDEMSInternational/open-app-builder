@@ -39,12 +39,14 @@ export class TmplComboBoxComponent
     const listAnswers: string[] = getParamFromTemplateRow(this._row, "answer_list", null);
 
     this.customAnswerSelected =
-      listAnswers && this._row.value ? !listAnswers.find((x) => x === this._row.value) : false;
+      listAnswers && this._row.value
+        ? !listAnswers.find((x) => x.includes(this._row.value))
+        : false;
     if (!this.checkIfContainsDefaultStyles) {
       this.setCustomStyle();
     }
     this.checkTheme();
-    this.text = this._row.value;
+    this.text = this.getText(this._row.value, listAnswers);
   }
 
   getParams() {
@@ -57,6 +59,14 @@ export class TmplComboBoxComponent
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
     this.checkIfContainsDefaultStyles =
       this.style.includes("active") || this.style.includes("passive");
+  }
+
+  getText(aValue: string, listAnswers: string[]): string {
+    const textFromList = listAnswers
+      .find((answer: string) => answer.includes(aValue))
+      .match(/(?<=text:).+/)[0]
+      .trim();
+    return textFromList ? textFromList : aValue;
   }
 
   async openModal() {
