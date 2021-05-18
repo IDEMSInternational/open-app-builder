@@ -24,7 +24,7 @@
   background: var(--combo-box-active-with-answer-bg);
 }
 .active-no-value {
-  background: #fff;
+  background: var(--ion-color-primary-contrast);
 }
 .passive {
   background: var(--combo-box-passive-with-answer-bg);
