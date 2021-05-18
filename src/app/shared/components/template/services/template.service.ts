@@ -44,7 +44,7 @@ export class TemplateService {
     // provide a fallback if the target variable does not exist in local storage
     if (val === null) {
       console.warn("field value not found for key:", key);
-      val = `{{field.${key}}}`;
+      val = undefined;
     }
     // convert boolean strings if required
     if (val === "true") val = true;
@@ -87,7 +87,7 @@ export class TemplateService {
     // provide a fallback if the target global variable has never been set
     if (!this.globals.hasOwnProperty(key)) {
       console.warn("global value not found for key:", key);
-      val = `{{global.${key}}}`;
+      val = undefined;
     }
     return val;
   }
