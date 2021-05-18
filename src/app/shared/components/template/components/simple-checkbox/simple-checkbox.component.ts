@@ -24,7 +24,8 @@ export class TmplSimpleCheckboxComponent
     this.getParams();
   }
   public async handleChange(isChecked: boolean) {
-    await this.setValue(isChecked);
+    // keep checked values as TRUE but mark uncheckecked as undefined
+    await this.setValue(isChecked ? isChecked : undefined);
     this.triggerActions("changed");
   }
 
