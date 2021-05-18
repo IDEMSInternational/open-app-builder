@@ -53,6 +53,8 @@ export class AppComponent {
         // temporary fix: set initial fields to avoid doubling up of quickstart buttons
         this.templateService.setField(".w_1on1_completion_status", "uncompleted");
         this.templateService.setField("second_week", "false");
+        this.templateService.setField(".w_praise_completion_status", "uncompleted");
+        this.templateService.setField("third_week", "false");
         await this.tourService.startTour("intro_tour");
       }
       this.skipTutorial = true;
@@ -65,11 +67,18 @@ export class AppComponent {
       if (old_date != current_date) {
         this.templateService.setField("daily_relax_done", "false");
       }
+      this.templateService.setField("first_week", "true");
       if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
         this.templateService.setField("second_week", "true");
         this.templateService.setField("w_1on1_disabled", "false");
       } else {
         this.templateService.setField("second_week", "false");
+      }
+      if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
+        this.templateService.setField("third_week", "true");
+        this.templateService.setField("w_praise_disabled", "false");
+      } else {
+        this.templateService.setField("third_week", "false");
       }
       this.templateService.setField(
         "days_since_start",
