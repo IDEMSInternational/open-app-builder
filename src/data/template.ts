@@ -5559,373 +5559,395 @@
         }
       },
       {
-        "type": "button",
-        "name": "workshop_1",
-        "value": "@global.w_self_care_tools",
-        "action_list": [
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_self_care_tools"
-            ],
-            "_raw": "click | go_to:w_self_care_tools",
-            "_cleaned": "click | go_to:w_self_care_tools"
-          }
-        ],
+        "type": "display_group",
+        "name": "display_group",
         "parameter_list": {
-          "style": "information"
+          "style": "parent_point"
         },
-        "_nested_name": "workshop_1",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_self_care_tools",
-              "matchedExpression": "@global.w_self_care_tools",
-              "type": "global",
-              "fieldName": "w_self_care_tools"
+        "rows": [
+          {
+            "type": "button",
+            "name": "workshop_1",
+            "value": "@global.w_self_care_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_self_care_tools"
+                ],
+                "_raw": "click | go_to:w_self_care_tools",
+                "_cleaned": "click | go_to:w_self_care_tools"
+              }
+            ],
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_1",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_self_care_tools",
+                  "matchedExpression": "@global.w_self_care_tools",
+                  "type": "global",
+                  "fieldName": "w_self_care_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_self_care_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_self_care_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_2",
-        "value": "@global.w_1on1_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_1on1_tools"
+            "type": "button",
+            "name": "workshop_2",
+            "value": "@global.w_1on1_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_1on1_tools"
+                ],
+                "_raw": "click | go_to:w_1on1_tools",
+                "_cleaned": "click | go_to:w_1on1_tools"
+              }
             ],
-            "_raw": "click | go_to:w_1on1_tools",
-            "_cleaned": "click | go_to:w_1on1_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_2",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_1on1_tools",
-              "matchedExpression": "@global.w_1on1_tools",
-              "type": "global",
-              "fieldName": "w_1on1_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_2",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_1on1_tools",
+                  "matchedExpression": "@global.w_1on1_tools",
+                  "type": "global",
+                  "fieldName": "w_1on1_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_1on1_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_1on1_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_3",
-        "value": "@global.w_praise_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_praise_tools"
+            "type": "button",
+            "name": "workshop_3",
+            "value": "@global.w_praise_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_praise_tools"
+                ],
+                "_raw": "click | go_to:w_praise_tools",
+                "_cleaned": "click | go_to:w_praise_tools"
+              }
             ],
-            "_raw": "click | go_to:w_praise_tools",
-            "_cleaned": "click | go_to:w_praise_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_3",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_praise_tools",
-              "matchedExpression": "@global.w_praise_tools",
-              "type": "global",
-              "fieldName": "w_praise_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_3",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_praise_tools",
+                  "matchedExpression": "@global.w_praise_tools",
+                  "type": "global",
+                  "fieldName": "w_praise_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_praise_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_praise_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_4",
-        "value": "@global.w_instruct_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_instruct_tools"
+            "type": "button",
+            "name": "workshop_4",
+            "value": "@global.w_instruct_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_instruct_tools"
+                ],
+                "_raw": "click | go_to:w_instruct_tools",
+                "_cleaned": "click | go_to:w_instruct_tools"
+              }
             ],
-            "_raw": "click | go_to:w_instruct_tools",
-            "_cleaned": "click | go_to:w_instruct_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_4",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_instruct_tools",
-              "matchedExpression": "@global.w_instruct_tools",
-              "type": "global",
-              "fieldName": "w_instruct_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_4",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_instruct_tools",
+                  "matchedExpression": "@global.w_instruct_tools",
+                  "type": "global",
+                  "fieldName": "w_instruct_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_instruct_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_instruct_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_5",
-        "value": "@global.w_stress_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_stress_tools"
+            "type": "button",
+            "name": "workshop_5",
+            "value": "@global.w_stress_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_stress_tools"
+                ],
+                "_raw": "click | go_to:w_stress_tools",
+                "_cleaned": "click | go_to:w_stress_tools"
+              }
             ],
-            "_raw": "click | go_to:w_stress_tools",
-            "_cleaned": "click | go_to:w_stress_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_5",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_stress_tools",
-              "matchedExpression": "@global.w_stress_tools",
-              "type": "global",
-              "fieldName": "w_stress_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_5",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_stress_tools",
+                  "matchedExpression": "@global.w_stress_tools",
+                  "type": "global",
+                  "fieldName": "w_stress_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_stress_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_stress_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_6",
-        "value": "@global.w_money_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_money_tools"
+            "type": "button",
+            "name": "workshop_6",
+            "value": "@global.w_money_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_money_tools"
+                ],
+                "_raw": "click | go_to:w_money_tools",
+                "_cleaned": "click | go_to:w_money_tools"
+              }
             ],
-            "_raw": "click | go_to:w_money_tools",
-            "_cleaned": "click | go_to:w_money_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_6",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_money_tools",
-              "matchedExpression": "@global.w_money_tools",
-              "type": "global",
-              "fieldName": "w_money_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_6",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_money_tools",
+                  "matchedExpression": "@global.w_money_tools",
+                  "type": "global",
+                  "fieldName": "w_money_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_money_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_money_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_7",
-        "value": "@global.w_rules_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_rules_tools"
+            "type": "button",
+            "name": "workshop_7",
+            "value": "@global.w_rules_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_rules_tools"
+                ],
+                "_raw": "click | go_to:w_rules_tools",
+                "_cleaned": "click | go_to:w_rules_tools"
+              }
             ],
-            "_raw": "click | go_to:w_rules_tools",
-            "_cleaned": "click | go_to:w_rules_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_7",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_rules_tools",
-              "matchedExpression": "@global.w_rules_tools",
-              "type": "global",
-              "fieldName": "w_rules_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_7",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_rules_tools",
+                  "matchedExpression": "@global.w_rules_tools",
+                  "type": "global",
+                  "fieldName": "w_rules_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_rules_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_rules_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_8",
-        "value": "@global.w_consequence_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_consequence_tools"
+            "type": "button",
+            "name": "workshop_8",
+            "value": "@global.w_consequence_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_consequence_tools"
+                ],
+                "_raw": "click | go_to:w_consequence_tools",
+                "_cleaned": "click | go_to:w_consequence_tools"
+              }
             ],
-            "_raw": "click | go_to:w_consequence_tools",
-            "_cleaned": "click | go_to:w_consequence_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_8",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_consequence_tools",
-              "matchedExpression": "@global.w_consequence_tools",
-              "type": "global",
-              "fieldName": "w_consequence_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_8",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_consequence_tools",
+                  "matchedExpression": "@global.w_consequence_tools",
+                  "type": "global",
+                  "fieldName": "w_consequence_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_consequence_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_consequence_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_9",
-        "value": "@global.w_solve_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_solve_tools"
+            "type": "button",
+            "name": "workshop_9",
+            "value": "@global.w_solve_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_solve_tools"
+                ],
+                "_raw": "click | go_to:w_solve_tools",
+                "_cleaned": "click | go_to:w_solve_tools"
+              }
             ],
-            "_raw": "click | go_to:w_solve_tools",
-            "_cleaned": "click | go_to:w_solve_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_9",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_solve_tools",
-              "matchedExpression": "@global.w_solve_tools",
-              "type": "global",
-              "fieldName": "w_solve_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_9",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_solve_tools",
+                  "matchedExpression": "@global.w_solve_tools",
+                  "type": "global",
+                  "fieldName": "w_solve_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_solve_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_solve_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_10",
-        "value": "@global.w_safe_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_safe_tools"
+            "type": "button",
+            "name": "workshop_10",
+            "value": "@global.w_safe_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_safe_tools"
+                ],
+                "_raw": "click | go_to:w_safe_tools",
+                "_cleaned": "click | go_to:w_safe_tools"
+              }
             ],
-            "_raw": "click | go_to:w_safe_tools",
-            "_cleaned": "click | go_to:w_safe_tools"
-          }
-        ],
-        "parameter_list": {
-          "style": "information"
-        },
-        "_nested_name": "workshop_10",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.w_safe_tools",
-              "matchedExpression": "@global.w_safe_tools",
-              "type": "global",
-              "fieldName": "w_safe_tools"
+            "parameter_list": {
+              "style": "information"
+            },
+            "_nested_name": "display_group.workshop_10",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_safe_tools",
+                  "matchedExpression": "@global.w_safe_tools",
+                  "type": "global",
+                  "fieldName": "w_safe_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_safe_tools": [
+                "value"
+              ]
             }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.w_safe_tools": [
-            "value"
-          ]
-        }
-      },
-      {
-        "type": "button",
-        "name": "workshop_11",
-        "value": "@global.w_crisis_tools",
-        "action_list": [
+          },
           {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_crisis_tools"
+            "type": "button",
+            "name": "workshop_11",
+            "value": "@global.w_crisis_tools",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "w_crisis_tools"
+                ],
+                "_raw": "click | go_to:w_crisis_tools",
+                "_cleaned": "click | go_to:w_crisis_tools"
+              }
             ],
-            "_raw": "click | go_to:w_crisis_tools",
-            "_cleaned": "click | go_to:w_crisis_tools"
+            "_nested_name": "display_group.workshop_11",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.w_crisis_tools",
+                  "matchedExpression": "@global.w_crisis_tools",
+                  "type": "global",
+                  "fieldName": "w_crisis_tools"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.w_crisis_tools": [
+                "value"
+              ]
+            }
           }
         ],
-        "parameter_list": {
-          "style": "information"
-        },
         "_nested_name": "workshop_11",
         "_dynamicFields": {
           "value": [
