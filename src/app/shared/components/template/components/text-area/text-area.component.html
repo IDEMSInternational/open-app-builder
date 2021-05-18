@@ -1,3 +1,8 @@
 <div class="wrapper margin-t-regular">
-  <ion-textarea class="text_area" [placeholder]="placeholder"></ion-textarea>
+  <ion-textarea
+    class="text_area"
+    [placeholder]="placeholder"
+    (ionBlur)="setValue(_row.value)"
+    [(ngModel)]="_row.value"
+  ></ion-textarea>
 </div>
