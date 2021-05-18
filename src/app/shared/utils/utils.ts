@@ -177,3 +177,15 @@ export function evaluateJSExpression(expression: string, context = {}): any {
   const func = new Function(funcString);
   return func.apply(context);
 }
+
+/**
+ * convert strings containing "TRUE", "true", "FALSE" or "false" to booleans
+ * TODO - combine with script util
+ */
+export function booleanStringToBoolean(str: string) {
+  if (typeof str === "string") {
+    if (str.match(/^true$/gi)) return true;
+    if (str.match(/^false$/gi)) return false;
+  }
+  return str;
+}

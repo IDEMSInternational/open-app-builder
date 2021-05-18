@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { FlowTypes } from "../../../types";
-import { stringToBoolean } from "../../utils";
+import { booleanStringToBoolean } from "../../utils";
 import { parsePLHString } from "./plh-string.utils";
 
 const DEBUG_MODE = false;
@@ -78,7 +78,7 @@ function parseDBLookupCondition(data: any[][]): ICondition {
   }
 
   // convert boolean value strings
-  const value = stringToBoolean(filter_value);
+  const value = booleanStringToBoolean(filter_value);
 
   return {
     condition_type,
