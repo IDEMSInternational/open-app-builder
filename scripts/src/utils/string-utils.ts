@@ -4,8 +4,10 @@ export function capitalizeFirstLetter(str: string) {
 /**
  * convert strings containing "TRUE", "true", "FALSE" or "false" to booleans
  */
-export function stringToBoolean(str: string) {
-  if (str.match(/^true$/gi)) return true;
-  if (str.match(/^false$/gi)) return false;
+export function booleanStringToBoolean(str: string) {
+  if (typeof str === "string") {
+    if (str.match(/^true$/gi)) return true;
+    if (str.match(/^false$/gi)) return false;
+  }
   return str;
 }
