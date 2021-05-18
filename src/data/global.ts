@@ -290,14 +290,12 @@
       {
         "type": "declare_field_default",
         "name": "workshops_setup",
-        "value": false,
-        "comments": "This ensures that the first time weekly workshops is pressed the workshop_setup is launched."
+        "value": false
       },
       {
         "type": "declare_field_default",
         "name": "no_mail",
-        "value": false,
-        "comments": "This hides the parent library quick start when true"
+        "value": false
       },
       {
         "type": "declare_field_default",
@@ -418,6 +416,11 @@
       {
         "type": "declare_global_constant",
         "name": "extra",
+        "value": "Customise @global.parent_app"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "extra_if_survey_completed",
         "value": "Customise Again"
       },
       {
@@ -568,7 +571,7 @@
       },
       {
         "type": "declare_field_default",
-        "name": "favourite_relax_1",
+        "name": "relax_1_favourite",
         "value": false
       },
       {
@@ -1095,8 +1098,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_self_care_only",
-        "value": "Self-Care",
-        "comments": "combo boxes updated, but could be done through variables"
+        "value": "Self-Care"
       },
       {
         "type": "declare_global_constant",
@@ -1106,8 +1108,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_1on1",
-        "value": "One-on-One Time",
-        "comments": "combo boxes updated"
+        "value": "One-on-One Time"
       },
       {
         "type": "declare_global_constant",
@@ -1117,8 +1118,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_praise",
-        "value": "Praise",
-        "comments": "combo boxes updated"
+        "value": "Praise"
       },
       {
         "type": "declare_global_constant",
@@ -1128,8 +1128,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_instruct",
-        "value": "Positive Instructions",
-        "comments": "combo boxes updated"
+        "value": "Positive Instructions"
       },
       {
         "type": "declare_global_constant",
@@ -1139,8 +1138,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_stress",
-        "value": "Managing Stress",
-        "comments": "combo boxes updated"
+        "value": "Managing Stress"
       },
       {
         "type": "declare_global_constant",
@@ -1150,8 +1148,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_money",
-        "value": "Family Budgets",
-        "comments": "combo boxes updated"
+        "value": "Family Budgets"
       },
       {
         "type": "declare_global_constant",
@@ -1161,8 +1158,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_rules",
-        "value": "Rules",
-        "comments": "combo boxes updated"
+        "value": "Rules"
       },
       {
         "type": "declare_global_constant",
@@ -1172,8 +1168,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_consequence",
-        "value": "Calm Consequences",
-        "comments": "combo boxes updated"
+        "value": "Calm Consequences"
       },
       {
         "type": "declare_global_constant",
@@ -1183,8 +1178,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_solve",
-        "value": "Problem Solving",
-        "comments": "combo boxes updated"
+        "value": "Problem Solving"
       },
       {
         "type": "declare_global_constant",
@@ -1194,8 +1188,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_safe",
-        "value": "Teen Safety",
-        "comments": "combo boxes updated"
+        "value": "Teen Safety"
       },
       {
         "type": "declare_global_constant",
@@ -1205,8 +1198,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_crisis",
-        "value": "Dealing with Crisis",
-        "comments": "combo boxes updated"
+        "value": "Dealing with Crisis"
       },
       {
         "type": "declare_global_constant",
@@ -1216,8 +1208,7 @@
       {
         "type": "declare_global_constant",
         "name": "w_celebrate",
-        "value": "Celebration and Next Steps",
-        "comments": "combo boxes updated"
+        "value": "Celebration and Next Steps"
       },
       {
         "type": "declare_global_constant",
@@ -1535,26 +1526,22 @@
       {
         "type": "declare_global_constant",
         "name": "example_global_constant_text",
-        "value": "Example Global Constant Text",
-        "comments": "I'm setting a new global constant"
+        "value": "Example Global Constant Text"
       },
       {
         "type": "declare_global_constant",
         "name": "example_global_constant_title",
-        "value": "Example Global Constant Title",
-        "comments": "I'm setting a new global constant"
+        "value": "Example Global Constant Title"
       },
       {
         "type": "declare_global_constant",
         "name": "example_global_constant_image",
-        "value": "plh_images/habits/habit_relax_image.svg",
-        "comments": "I'm setting a new global constant"
+        "value": "plh_images/habits/habit_relax_image.svg"
       },
       {
         "type": "declare_field_default",
         "name": "field_1",
-        "value": "Value of Field 1",
-        "comments": "This should be defined in one template and persist to another"
+        "value": "Value of Field 1"
       },
       {
         "type": "declare_field_default",
