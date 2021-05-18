@@ -265,7 +265,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
   private async processRowUpdates() {
-    console.group(`[Reprocess Template]`, this.name, {
+    log_group(`[Reprocess Template]`, this.name, {
       rowMap: mapToJson(this.templateRowMap),
       rows: this.template.rows,
       template: this.template,
@@ -273,7 +273,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.template.rows = await this.processRows(this.template.rows, this.template);
     this.renderedRows = this.filterConditionalTemplateRows(this.template.rows);
     log("[Reprocess Complete]", this.renderedRows);
-    console.groupEnd();
+    log_groupEnd();
   }
 
   /***************************************************************************************
@@ -296,7 +296,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       // try to restore previous state (WiP - TODO / Re-evaluate CC 2021-04-21)
       const cachedRender = this.parent?.children?.[this.name];
       log_group("[Template Render Start]", this.name);
-
       log("[Process Template]", { template: { ...template }, ctxt: { ...this } });
       const rowsWithOverrides = this.processParentOverrides(template.rows);
       const processedRows = await this.processRows(rowsWithOverrides, template);
@@ -432,7 +431,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     template: FlowTypes.Template,
     isNestedRows = false
   ) {
-    log("[Process Rows Start]", [...rows]);
+    log("[Process Rows Start]", { rows: [...rows], rowMap: mapToJson(this.templateRowMap) });
     const processedRows = [];
     for (const preProcessedRow of rows) {
       // call an anonymous function so that we can return/break the async for-of loop if required
@@ -512,18 +511,18 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           parsedRow.rows = await this.processRows(parsedRow.rows, template, isNestedRows);
         }
 
-        // we don't want to re-evaluate these from within child template so remove dynamic references
-        if (isNestedRows) {
-          delete parsedRow._dynamicDependencies;
-          delete parsedRow._dynamicFields;
-        }
+        // NOTE - parsedRow._dynamic fields will be ignored within child (retain here for updates)
+        // if (isNestedRows) {
+        //   delete parsedRow._dynamicDependencies;
+        //   delete parsedRow._dynamicFields;
+        // }
 
         log("[Row end]", name, "(push)", { ...parsedRow });
         log_groupEnd();
         processedRows.push(parsedRow);
       })();
     }
-    log("[Process Rows End]", [...processedRows], { map: mapToJson(this.templateRowMap) });
+    log("[Process Rows End]", { rows: [...processedRows], rowMap: mapToJson(this.templateRowMap) });
     return processedRows;
   }
 
