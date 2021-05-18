@@ -47,54 +47,54 @@ export class RemindersService {
 
   /** override local data with testing dataset, or reinitialise from db */
   public async setMockData(data: any) {
-    if (data) {
-      this.data = { ...this.data, ...data };
-      await this.processRemindersList();
-    } else {
-      this.init();
-    }
+    // if (data) {
+    //   this.data = { ...this.data, ...data };
+    //   await this.processRemindersList();
+    // } else {
+    //   this.init();
+    // }
   }
 
   public triggerReminderAction(r: FlowTypes.Campaign_listRow) {
-    const { start_action, start_action_args, flow_type, reminder_id } = r;
-    const id = `${reminder_id}_action`;
-    this.taskService.runAction({ flow_type, id, flow_name: start_action_args, start_action });
+    // const { start_action, start_action_args, flow_type, reminder_id } = r;
+    // const id = `${reminder_id}_action`;
+    // this.taskService.runAction({ flow_type, id, flow_name: start_action_args, start_action });
   }
 
   private async processRemindersList() {
-    const data = await this.dataEvaluationService.refreshDBCache();
-    this.data = data;
-    // TODO - as reminders mostly deprecated should be merged into other campaigns debug page
-    const reminderRows: FlowTypes.Campaign_listRow[] = [].concat.apply(
-      [],
-      DATA_LIST.filter((list) => list.flow_subtype === "campaign_rows").map((list) => list.rows)
-    );
-    // check pending reminders
-    const pendingReminders = this.reminders$.value;
-    // check deactivation
-    const allReminders = [];
-    log("reminder rows", reminderRows);
-    for (const r of reminderRows) {
-      log_group("[Reminder Process]");
-      // TODO - should it be all conditions satisfied or just any? Assume all
-      const activation_condition_list = r.activation_condition_list || [];
-      r.activation_condition_list = await Promise.all(
-        activation_condition_list.map(async (condition) => {
-          const evaluation = await this.dataEvaluationService.evaluateReminderCondition(condition);
-          return { ...condition, _satisfied: evaluation };
-        })
-      );
-      const deactivation_condition_list = r.deactivation_condition_list || [];
-      r.deactivation_condition_list = await Promise.all(
-        deactivation_condition_list.map(async (condition) => {
-          const evaluation = await this.dataEvaluationService.evaluateReminderCondition(condition);
-          return { ...condition, _satisfied: evaluation };
-        })
-      );
-      log_groupEnd();
-      allReminders.push(r);
-    }
-    this.remindersList$.next(allReminders);
-    log("[Reminders List] Process", { data: this.data, pendingReminders, allReminders });
+    // const data = await this.dataEvaluationService.refreshDBCache();
+    // this.data = data;
+    // // TODO - as reminders mostly deprecated should be merged into other campaigns debug page
+    // const reminderRows: FlowTypes.Campaign_listRow[] = [].concat.apply(
+    //   [],
+    //   DATA_LIST.filter((list) => list.flow_subtype === "campaign_rows").map((list) => list.rows)
+    // );
+    // // check pending reminders
+    // const pendingReminders = this.reminders$.value;
+    // // check deactivation
+    // const allReminders = [];
+    // log("reminder rows", reminderRows);
+    // for (const r of reminderRows) {
+    //   log_group("[Reminder Process]");
+    //   // TODO - should it be all conditions satisfied or just any? Assume all
+    //   const activation_condition_list = r.activation_condition_list || [];
+    //   r.activation_condition_list = await Promise.all(
+    //     activation_condition_list.map(async (condition) => {
+    //       const evaluation = await this.dataEvaluationService.evaluateReminderCondition(condition);
+    //       return { ...condition, _satisfied: evaluation };
+    //     })
+    //   );
+    //   const deactivation_condition_list = r.deactivation_condition_list || [];
+    //   r.deactivation_condition_list = await Promise.all(
+    //     deactivation_condition_list.map(async (condition) => {
+    //       const evaluation = await this.dataEvaluationService.evaluateReminderCondition(condition);
+    //       return { ...condition, _satisfied: evaluation };
+    //     })
+    //   );
+    //   log_groupEnd();
+    //   allReminders.push(r);
+    // }
+    // this.remindersList$.next(allReminders);
+    // log("[Reminders List] Process", { data: this.data, pendingReminders, allReminders });
   }
 }

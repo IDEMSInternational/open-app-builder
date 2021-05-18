@@ -78,14 +78,14 @@ function parseDBLookupCondition(data: any[][]): ICondition {
   }
 
   // convert boolean value strings
-  const value = stringToBoolean(filter_value);
+  // const value = stringToBoolean(filter_value);
 
   return {
     condition_type,
     condition_args: {
       db_lookup: {
         table_id,
-        filter: { field: filter_field || "id", value },
+        filter: { field: filter_field || "id", value: filter_value },
         order: orderStr === "first" ? "asc" : "desc",
         evaluate,
       },
