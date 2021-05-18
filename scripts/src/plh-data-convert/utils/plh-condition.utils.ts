@@ -14,7 +14,7 @@ type ICondition = FlowTypes.DataEvaluationCondition;
  *
  * @param c condition string formatted with pipe and colon characters to handle properties, and keywords for replacement
  *
- * @example
+ * @example (TODO CC 2021-05-18 - first_launch specific example no longer relevent, but general idea same)
  * ```
  * first_launch | before:7:day; task_completed | some_task
  * ```
@@ -102,7 +102,6 @@ function _handleTextExceptions(text: string) {
   // TODO CC 2021-05-17 - All needs review
   const shorthandReplacements = {
     sent: "db_lookup | reminder_events:last | reminder_id:sent", // Deprecated
-    first_launch: "db_lookup |app_events:first | event_id:app_launch",
     app_launch: "db_lookup | app_events:last | event_id:app_launch",
     "task_completed:first": "db_lookup | task_actions:first",
     task_completed: "db_lookup | task_actions:last",

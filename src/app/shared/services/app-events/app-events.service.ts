@@ -91,6 +91,12 @@ export class AppEventService {
   /** Update cached valuese and save to localstorage */
   private setSummaryValues(values: Partial<IAppEventSummary>) {
     this.summary = { ...DEFAULT_SUMMARY, ...this.summary, ...values };
+    // populate summary to individual field values
+    Object.entries(this.summary).forEach(([key, value]) => {
+      if (this.localStorageService.getString(key) !== value) {
+        this.localStorageService.setString(key, value);
+      }
+    });
     return this.localStorageService.setJSON("app_events_summary", this.summary);
   }
 
