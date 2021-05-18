@@ -3,7 +3,7 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "scripts/types";
-import { getNestedProperty } from "src/app/shared/utils";
+import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
 import { BehaviorSubject } from "rxjs";
 
 @Injectable({
@@ -47,8 +47,7 @@ export class TemplateService {
       val = undefined;
     }
     // convert boolean strings if required
-    if (val === "true") val = true;
-    if (val === "false") val = false;
+    val = booleanStringToBoolean(val);
     // console.log("[Field Retrieved]", key, val);
     return val;
   }

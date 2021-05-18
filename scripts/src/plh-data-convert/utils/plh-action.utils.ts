@@ -1,4 +1,5 @@
 import { FlowTypes } from "../../../types";
+import { booleanStringToBoolean } from "../../utils";
 /**
  * Convert action_list string to row action object, e.g.
  *
@@ -41,7 +42,9 @@ export function parsePLHActionString(actionString: string): FlowTypes.TemplateRo
   const parts = actionString.split("|").map((s) => s.trim());
   const trigger = parts[0] as any;
   if (parts[1]) {
-    const [action_id, ...args] = parts[1].split(":").map((s) => s.trim()) as any;
+    let [action_id, ...args] = parts[1].split(":").map((s) => s.trim()) as any;
+    // ensure any boolean values are parsed correctly
+    args = args.map((arg) => booleanStringToBoolean(arg));
     return { trigger, action_id, args, _raw, _cleaned };
   } else {
     return { trigger, action_id: null, args: [], _raw, _cleaned };

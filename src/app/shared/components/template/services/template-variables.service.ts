@@ -209,7 +209,7 @@ export class TemplateVariablesService {
 
         break;
       case "field":
-        console.warn("To keep consistency with rapidpro, @fields should be used instead of @field");
+        // console.warn("To keep consistency with rapidpro, @fields should be used instead of @field");
         parsedValue = this.templateService.getField(fieldName);
         break;
       case "fields":
