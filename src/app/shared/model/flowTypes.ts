@@ -452,7 +452,7 @@ export namespace FlowTypes {
       | "set_theme"
       | "start_tour"
       | "trigger_actions";
-    args: (string | boolean)[];
+    args: any[]; // should be string | boolean, but breaks type-checking for templates;
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: TemplateRow;
     // debug info
