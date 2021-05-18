@@ -7,7 +7,9 @@ import { RemindersService } from "../reminders.service";
   styleUrls: ["./reminders-page.component.scss"],
 })
 export class RemindersPageComponent implements OnInit {
-  constructor(public remindersService: RemindersService) {}
+  constructor(public remindersService: RemindersService) {
+    this.remindersService.init();
+  }
 
   ngOnInit(): void {}
 }

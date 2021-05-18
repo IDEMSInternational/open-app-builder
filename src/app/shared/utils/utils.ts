@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "../model";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -176,4 +176,16 @@ export function evaluateJSExpression(expression: string, context = {}): any {
   const funcString = `"use strict"; return (${expression});`;
   const func = new Function(funcString);
   return func.apply(context);
+}
+
+/**
+ * convert strings containing "TRUE", "true", "FALSE" or "false" to booleans
+ * TODO - combine with script util
+ */
+export function booleanStringToBoolean(str: string) {
+  if (typeof str === "string") {
+    if (str.match(/^true$/gi)) return true;
+    if (str.match(/^false$/gi)) return false;
+  }
+  return str;
 }

@@ -1,6 +1,6 @@
 @import "../../../../../../theme/mixins.scss";
 .container-player {
-  background: #fff;
+  background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
   box-sizing: border-box;
   box-shadow: var(--ion-default-box-shadow);

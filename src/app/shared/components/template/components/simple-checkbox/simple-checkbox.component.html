@@ -1,8 +1,8 @@
 <div class="checkbox-wrapper margin-t-large" [class]="style" [class.reverse]="position">
   <ion-checkbox
-    (ionChange)="triggerActions('changed')"
-    [(ngModel)]="_row.value"
-    [checked]="this._row.value"
+    #checkbox
+    [checked]="_row.value"
+    (ionChange)="handleChange(checkbox.checked)"
     color="primary"
   ></ion-checkbox>
   <label *ngIf="label_text">{{ label_text }}</label>

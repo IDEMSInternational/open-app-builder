@@ -10,7 +10,6 @@ import { SurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
-import { RemindersService } from "./feature/reminders/reminders.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
@@ -35,7 +34,6 @@ export class AppComponent {
     private surveyService: SurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
-    private remindersService: RemindersService,
     private appEventService: AppEventService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService
@@ -55,6 +53,8 @@ export class AppComponent {
         // temporary fix: set initial fields to avoid doubling up of quickstart buttons
         this.templateService.setField(".w_1on1_completion_status", "uncompleted");
         this.templateService.setField("second_week", "false");
+        this.templateService.setField(".w_praise_completion_status", "uncompleted");
+        this.templateService.setField("third_week", "false");
         await this.tourService.startTour("intro_tour");
       }
       this.skipTutorial = true;
@@ -67,11 +67,18 @@ export class AppComponent {
       if (old_date != current_date) {
         this.templateService.setField("daily_relax_done", "false");
       }
+      this.templateService.setField("first_week", "true");
       if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
         this.templateService.setField("second_week", "true");
         this.templateService.setField("w_1on1_disabled", "false");
       } else {
         this.templateService.setField("second_week", "false");
+      }
+      if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
+        this.templateService.setField("third_week", "true");
+        this.templateService.setField("w_praise_disabled", "false");
+      } else {
+        this.templateService.setField("third_week", "false");
       }
       this.templateService.setField(
         "days_since_start",
@@ -84,7 +91,9 @@ export class AppComponent {
         SplashScreen.hide();
         this.notifications.init();
       }
-      this.remindersService.init();
+      // CC 2021-05-14 - disabling reminders service until decide on full implementation
+      // (ideally not requiring evaluation of all reminders on init)
+      // this.remindersService.init();
       this.appEventService.init();
     });
   }

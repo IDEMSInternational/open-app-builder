@@ -47,7 +47,6 @@ export class TmplRadioGroupComponent
   baseSrcAssets = "/assets/plh_assets/";
   windowWidth: number;
   scaleFactor: number = 1;
-  value: any;
   style: string;
   destroy$ = new ReplaySubject(1);
   imageCheckedColor = "#0D3F60";
@@ -83,8 +82,6 @@ export class TmplRadioGroupComponent
 
   getParams() {
     const row = this._row;
-    console.log("getting params", row);
-
     // extract properties from parameters
     this.radioButtonType = getParamFromTemplateRow(row, "radio_button_type", "btn_text");
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
