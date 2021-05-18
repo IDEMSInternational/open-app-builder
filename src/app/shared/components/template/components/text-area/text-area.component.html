@@ -2,7 +2,7 @@
   <ion-textarea
     class="text_area"
     [placeholder]="placeholder"
-    (ionBlur)="setValue(_row.value)"
+    (ionBlur)="handleChange()"
     [(ngModel)]="_row.value"
   ></ion-textarea>
 </div>
