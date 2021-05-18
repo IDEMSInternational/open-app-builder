@@ -7,7 +7,7 @@
         [class]="style"
         *ngFor="let item of arrayOfBtn"
       >
-        <label class="center standard-label" [class.checked]="el.checked">
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
           <input
             #el
             type="radio"
@@ -28,7 +28,7 @@
         *ngFor="let item of arrayOfBtn"
         [style.flex]="flexWidth"
       >
-        <label class="center standard-label" [class.checked]="el.checked">
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
           <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
           </svg-icon>
           <input
@@ -51,7 +51,7 @@
         *ngFor="let item of arrayOfBtn"
         [style.flex]="flexWidth"
       >
-        <label class="center standard-label" [class.checked]="el.checked">
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
           <plh-tmpl-icon
             [src]="el.checked && item.image_checked ? item.image_checked : item.image"
           ></plh-tmpl-icon>
