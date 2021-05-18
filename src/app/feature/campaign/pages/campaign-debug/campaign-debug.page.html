@@ -32,15 +32,17 @@
   </ion-item>
 
   <ion-card *ngFor="let row of debugCampaignRows">
-    <ion-card-header class="row-header" [attr.data-active]="row._active"
-      >{{ row.id }}</ion-card-header
-    >
+    <ion-card-header class="row-header" [attr.data-active]="row._active">
+      <span>{{ row.id }}</span>
+      <span style="float: right">Priority: {{ row.priority }}</span>
+    </ion-card-header>
     <ion-card-content>
       <div style="display: flex">
         <div style="flex: 1">
-          <div>Priority: {{ row.priority }}</div>
+          <div>Click Action List</div>
+          <div *ngFor="let action of row.click_action_list">{{action._raw}}</div>
         </div>
-        <div style="text-align: right">
+        <div style="text-align: right" *ngIf="row.click_action_list">
           <ion-button
             fill="clear"
             (click)="triggerRowActions(row)"
