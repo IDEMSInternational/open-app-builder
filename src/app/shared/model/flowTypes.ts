@@ -375,6 +375,7 @@ export namespace FlowTypes {
     | "simple_checkbox"
     | "set_default"
     | "text_box"
+    | "text_area"
     | "radio_group"
     | "tile_component"
     | "css_anim"

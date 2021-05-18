@@ -38932,6 +38932,27 @@
         "_nested_name": "checkbox_2"
       },
       {
+        "type": "text",
+        "name": "text_3",
+        "value": "checkbox local: @local.checkbox_2",
+        "_nested_name": "text_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "checkbox local: @local.checkbox_2",
+              "matchedExpression": "@local.checkbox_2",
+              "type": "local",
+              "fieldName": "checkbox_2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.checkbox_2": [
+            "value"
+          ]
+        }
+      },
+      {
         "type": "simple_checkbox",
         "name": "checkbox_3",
         "value": "@field.demo_changed_field_checkbox",
@@ -39317,6 +39338,22 @@
           }
         ],
         "_nested_name": "dg_example_7"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_text_area",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text_area",
+        "parameter_list": {
+          "placeholder": "example placeholder"
+        },
+        "name": "text_area",
+        "_nested_name": "text_area"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"

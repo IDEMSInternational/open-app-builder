@@ -30,6 +30,7 @@ import { TmplTileComponent } from "./tile-component/tile-component.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplAnimationComponent } from "./animation";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
+import { TmplTextAreaComponent } from "./text-area/text-area.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TemplatePopupComponent } from "./layout/popup";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
@@ -67,6 +68,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplSimpleCheckboxComponent,
   TmplAnimationComponent,
   TmplTextBoxComponent,
+  TmplTextAreaComponent,
   TmplComboBoxComponent,
   TmplIconBannerComponent,
   TmplDashedBoxComponent,
@@ -104,6 +106,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   combo_box: TmplComboBoxComponent,
   set_default: null as any,
   text_box: TmplTextBoxComponent,
+  text_area: TmplTextAreaComponent,
   // TODO - handle display_theme and other properties that should be inherited to child components
   display_theme: null as any,
   template: TemplateContainerComponent as any,
