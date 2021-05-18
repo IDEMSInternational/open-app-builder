@@ -79,7 +79,7 @@ export class TmplComboBoxComponent
         row: this._row,
         template: this.template,
         localVariables: this.localVariables,
-        selectedValue: this._row.value,
+        selectedValue: this.customAnswerSelected ? this.text : this._row.value,
         customAnswerSelected: this.customAnswerSelected,
         style: this.style,
       },
