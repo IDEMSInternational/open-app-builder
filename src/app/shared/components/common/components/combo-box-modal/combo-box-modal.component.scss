@@ -9,7 +9,7 @@
     //padding: 20% 10%  !important;
     .modal-wrapper {
       max-width: 90vw;
-      background: #fff;
+      background: var(--ion-color-primary-contrast);
       border: var(--ion-border-standard);
       border-radius: var(--ion-border-radius-secondary);
       .ion-page {
@@ -22,7 +22,7 @@
   .wrapper {
     padding: 0;
     .text-box-input {
-      background: #fff;
+      background: var(--ion-color-primary-contrast);
       border: var(--ion-border-standard);
       border-radius: var(--ion-border-radius-secondary);
       width: 100%;
@@ -64,7 +64,7 @@
       margin-bottom: 20px;
       min-height: 55px;
       width: 100%;
-      background: #ffffff;
+      background: var(--ion-color-primary-contrast);
       border: var(--ion-border-standard);
       border-radius: var(--ion-border-radius-secondary);
       box-shadow: var(--ion-default-box-shadow);
