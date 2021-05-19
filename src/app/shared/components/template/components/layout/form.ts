@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewChildren } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { Plugins } from "@capacitor/core";
+import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
 
 const { Device } = Plugins;
 
@@ -19,19 +20,27 @@ const { Device } = Plugins;
 export class FormComponent extends TemplateBaseComponent implements OnInit {
   private deviceInfo;
   private form = {};
+  private isAllowedDeviceInfo: boolean;
+
   constructor() {
     super();
     this.deviceInfo = Device.getInfo();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getParams();
+  }
 
-  public submit() {
+  public submit(): void {
     this.fillInForm();
     console.log(this.form);
   }
 
-  private fillInForm() {
+  private getParams(): void {
+    this.isAllowedDeviceInfo = getBooleanParamFromTemplateRow(this._row, "get_device_info", false);
+  }
+
+  private fillInForm(): void {
     this._row.rows.forEach((r) => {
       if (
         r.value &&
@@ -40,6 +49,8 @@ export class FormComponent extends TemplateBaseComponent implements OnInit {
         this.form[r.name] = r.value;
       }
     });
-    this.form["device_info"] = this.deviceInfo["__zone_symbol__value"];
+    if (this.isAllowedDeviceInfo) {
+      this.form["device_info"] = this.deviceInfo["__zone_symbol__value"];
+    }
   }
 }
