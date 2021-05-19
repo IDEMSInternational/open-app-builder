@@ -10,6 +10,7 @@ import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AccordionSectionComponent } from "./layout/accordion_section";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
+import { FormComponent } from "./layout/form";
 import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TemplateBaseComponent } from "./base";
@@ -47,6 +48,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplTextComponent,
   AnimatedSectionGroupComponent,
   WorkshopsComponent,
+  FormComponent,
   TmplTitleComponent,
   TmplSubtitleComponent,
   TmplDisplayGroupComponent,
@@ -89,6 +91,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   subtitle: TmplSubtitleComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   workshops_accordion: WorkshopsComponent,
+  form: FormComponent,
   accordion_section: AccordionSectionComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,

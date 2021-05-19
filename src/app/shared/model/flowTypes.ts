@@ -349,6 +349,7 @@ export namespace FlowTypes {
     | "animated_section"
     | "accordion_section"
     | "workshops_accordion"
+    | "form"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
