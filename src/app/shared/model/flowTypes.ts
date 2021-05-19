@@ -268,7 +268,7 @@ export namespace FlowTypes {
     condition_args: {
       db_lookup?: {
         table_id: IDBTable;
-        filter: { field: string; value: string | number | boolean };
+        filter: { field: string; value: string }; // filter value is misleading, e.g. field:event_id, value:app_launch ;
         order?: "asc" | "desc";
         evaluate?: {
           operator: ">" | "<=";

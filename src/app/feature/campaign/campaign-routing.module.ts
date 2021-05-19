@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { RemindersPageComponent } from "./pages/reminders-page.component";
+import { CampaignDebugPage } from "./pages/campaign-debug/campaign-debug.page";
 
 const routes: Routes = [
   {
     path: "",
-    component: RemindersPageComponent,
+    component: CampaignDebugPage,
   },
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class RemindersPageRoutingModule {}
+export class CampaignPageRoutingModule {}

@@ -11,29 +11,7 @@ export class CampaignService {
     this.loadCampaigns();
   }
 
-  loadCampaigns() {
-    // merge all campaign_row data lists
-    const allCampaignRows: FlowTypes.Campaign_listRow[] = [].concat.apply(
-      [],
-      DATA_LIST.filter((list) => list.flow_subtype === "campaign_rows").map((list) => list.rows)
-    );
-    const allCampaignRowsByPriority = allCampaignRows.sort(
-      (a, b) => (b.priority || 0) - (a.priority || 0)
-    );
-    const campaignsById: ICampaigns = {};
-    allCampaignRowsByPriority.forEach((row) => {
-      const campaign_list = row.campaign_list || [];
-      campaign_list.forEach((campaign_id) => {
-        if (!campaignsById[campaign_id]) {
-          campaignsById[campaign_id] = [];
-        }
-        campaignsById[campaign_id].push(row);
-      });
-    });
-    this.campaigns = campaignsById;
-  }
-
-  async getNextCampaignRow(campaign_id: string) {
+  public async getNextCampaignRow(campaign_id: string) {
     // TODO - decide best way to handle keeping data fresh
     await this.dataEvaluationService.refreshDBCache();
 
@@ -55,7 +33,29 @@ export class CampaignService {
     return null;
   }
 
-  private async evaluateCampaignRow(row: FlowTypes.Campaign_listRow) {
+  private loadCampaigns() {
+    // merge all campaign_row data lists
+    const allCampaignRows: FlowTypes.Campaign_listRow[] = [].concat.apply(
+      [],
+      DATA_LIST.filter((list) => list.flow_subtype === "campaign_rows").map((list) => list.rows)
+    );
+    const allCampaignRowsByPriority = allCampaignRows.sort(
+      (a, b) => (b.priority || 0) - (a.priority || 0)
+    );
+    const campaignsById: ICampaigns = {};
+    allCampaignRowsByPriority.forEach((row) => {
+      const campaign_list = row.campaign_list || [];
+      campaign_list.forEach((campaign_id) => {
+        if (!campaignsById[campaign_id]) {
+          campaignsById[campaign_id] = [];
+        }
+        campaignsById[campaign_id].push(row);
+      });
+    });
+    this.campaigns = campaignsById;
+  }
+
+  public async evaluateCampaignRow(row: FlowTypes.Campaign_listRow) {
     const deactivation_condition_list = row.deactivation_condition_list || [];
     row.deactivation_condition_list = await Promise.all(
       deactivation_condition_list.map(async (condition) => {
