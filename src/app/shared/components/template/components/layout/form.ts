@@ -14,8 +14,26 @@ const { Device } = Plugins;
       [parent]="parent"
     >
     </plh-template-component>
-    <ion-button style="width: 100%; margin-top: 20px;" (click)="submit()">Submit</ion-button>
+    <ion-button (click)="submit()">Submit</ion-button>
   </div>`,
+  styles: [
+    `
+      ion-button {
+        font-size: 25px;
+        font-family: Roboto, sans-serif;
+        font-weight: 500;
+        color: var(--ion-color-primary-contrast);
+        text-transform: none;
+        white-space: pre-line;
+        min-height: 71px;
+        padding: var(--regular-margin) var(--regular-padding) 0;
+        --border-radius: 15px;
+        --box-shadow: var(--ion-btn-dark-box-shadow);
+        min-width: 100%;
+        --background: var(--ion-btn-primary);
+      }
+    `,
+  ],
 })
 export class FormComponent extends TemplateBaseComponent implements OnInit {
   private deviceInfo;
