@@ -39906,6 +39906,228 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "feature_text_area",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text_area",
+        "name": "text_area",
+        "parameter_list": {
+          "placeholder": "example placeholder"
+        },
+        "_nested_name": "text_area"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "the text entered is:\n\n@local.text_area",
+        "_nested_name": "text",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "the text entered is:\n\n@local.text_area",
+              "matchedExpression": "@local.text_area",
+              "type": "local",
+              "fieldName": "text_area"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.text_area": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_ technical_support ",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "value": "Technically Suport",
+        "name": "title",
+        "_nested_name": "title"
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_1",
+        "parameter_list": {
+          "help": "some help text",
+          "text_align": "right",
+          "placeholder": "Add your answer"
+        },
+        "_nested_name": "text_box_1"
+      },
+      {
+        "type": "text_box",
+        "name": "text_box_2",
+        "parameter_list": {
+          "help": "some help text",
+          "text_align": "right",
+          "placeholder": "Add your answer"
+        },
+        "_nested_name": "text_box_2"
+      },
+      {
+        "type": "simple_checkbox",
+        "name": "checkbox_1",
+        "value": false,
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "demo_changed_field_checkbox",
+              "@local.checkbox_1"
+            ],
+            "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+            "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
+          }
+        ],
+        "parameter_list": {
+          "label_text": "Example answer?"
+        },
+        "_nested_name": "checkbox_1",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.checkbox_1",
+                    "matchedExpression": "@local.checkbox_1",
+                    "type": "local",
+                    "fieldName": "checkbox_1"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                  "matchedExpression": "@local.checkbox_1",
+                  "type": "local",
+                  "fieldName": "checkbox_1"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                  "matchedExpression": "@local.checkbox_1",
+                  "type": "local",
+                  "fieldName": "checkbox_1"
+                }
+              ]
+            }
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.checkbox_1": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "checkbox field: @field.demo_changed_field_checkbox",
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "checkbox field: @field.demo_changed_field_checkbox",
+              "matchedExpression": "@field.demo_changed_field_checkbox",
+              "type": "field",
+              "fieldName": "demo_changed_field_checkbox"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@field.demo_changed_field_checkbox": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "checkbox local: @local.checkbox_1",
+        "_nested_name": "text_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "checkbox local: @local.checkbox_1",
+              "matchedExpression": "@local.checkbox_1",
+              "type": "local",
+              "fieldName": "checkbox_1"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.checkbox_1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "simple_checkbox",
+        "name": "checkbox_2",
+        "value": true,
+        "parameter_list": {
+          "label_text": "Example answer?"
+        },
+        "_nested_name": "checkbox_2"
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "checkbox local: @local.checkbox_2",
+        "_nested_name": "text_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "checkbox local: @local.checkbox_2",
+              "matchedExpression": "@local.checkbox_2",
+              "type": "local",
+              "fieldName": "checkbox_2"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.checkbox_2": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text_area",
+        "name": "text_area",
+        "parameter_list": {
+          "placeholder": "example placeholder"
+        },
+        "_nested_name": "text_area"
+      },
+      {
+        "type": "button",
+        "name": "btn_example_2",
+        "value": "information",
+        "parameter_list": {
+          "style": "information flexible",
+          "text_align": "left",
+          "button_align": "left"
+        },
+        "_nested_name": "btn_example_2"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "daily_relax_pop_up",
     "status": "released",
     "rows": [

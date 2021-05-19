@@ -12,9 +12,6 @@ import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 export class TmplTextAreaComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit {
-  @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
-
   public placeholder: string;
 
   constructor() {
@@ -27,5 +24,10 @@ export class TmplTextAreaComponent
 
   getParams() {
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
+  }
+
+  public handleChange(): void {
+    this.setValue(this._row.value);
+    this.triggerActions("changed");
   }
 }
