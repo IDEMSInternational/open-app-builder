@@ -138,6 +138,9 @@ export class DataEvaluationService {
     return result;
   }
 
+  /**
+   * Simple check that a field exists and is truthy
+   */
   private processFieldEvaluationCondition(
     args: FlowTypes.DataEvaluationCondition["condition_args"]["field_evaluation"]
   ) {
