@@ -3,6 +3,410 @@
   export const data_list: FlowTypes.Data_list[] = [
   {
     "flow_type": "data_list",
+    "flow_subtype": "campaign_rows",
+    "flow_name": "campaign_unlock_workshops",
+    "status": "released",
+    "rows": [
+      {
+        "id": "unlock_w_self_care",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_self_care_disabled",
+              false
+            ],
+            "_raw": "set_field: w_self_care_disabled : FALSE",
+            "_cleaned": "click | set_field: w_self_care_disabled : FALSE"
+          }
+        ],
+        "priority": -1,
+        "campaign_list": [
+          "unlock_workshops"
+        ]
+      },
+      {
+        "id": "unlock_w_1on1",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_1on1_disabled",
+              false
+            ],
+            "_raw": "set_field: w_1on1_disabled : FALSE",
+            "_cleaned": "click | set_field: w_1on1_disabled : FALSE"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "unlock_w_1on1.sent",
+              true
+            ],
+            "_raw": "set_field: unlock_w_1on1.sent : TRUE",
+            "_cleaned": "click | set_field: unlock_w_1on1.sent : TRUE"
+          }
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "second_week"
+              }
+            },
+            "_raw": "get_field | second_week : TRUE"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "unlock_w_1on1.sent"
+              }
+            },
+            "_raw": "get_field | unlock_w_1on1.sent : TRUE"
+          }
+        ],
+        "campaign_list": [
+          "unlock_workshops"
+        ]
+      },
+      {
+        "id": "unlock_w_praise",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_praise_disabled",
+              false
+            ],
+            "_raw": "set_field: w_praise_disabled : FALSE",
+            "_cleaned": "click | set_field: w_praise_disabled : FALSE"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "unlock_w_praise.sent",
+              true
+            ],
+            "_raw": "set_field: unlock_w_praise.sent : TRUE",
+            "_cleaned": "click | set_field: unlock_w_praise.sent : TRUE"
+          }
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "third_week"
+              }
+            },
+            "_raw": "get_field | third_week : TRUE"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "unlock_w_praise.sent"
+              }
+            },
+            "_raw": "get_field | unlock_w_praise.sent : TRUE"
+          }
+        ],
+        "campaign_list": [
+          "unlock_workshops"
+        ]
+      },
+      {
+        "id": "unlock_w_instruct",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_instruct_disabled",
+              false
+            ],
+            "_raw": "set_field: w_instruct_disabled : FALSE",
+            "_cleaned": "click | set_field: w_instruct_disabled : FALSE"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "unlock_w_instruct.sent",
+              true
+            ],
+            "_raw": "set_field: unlock_w_instruct.sent : TRUE",
+            "_cleaned": "click | set_field: unlock_w_instruct.sent : TRUE"
+          }
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "first_app_open"
+              }
+            },
+            "_raw": "get_field | first_app_open | before: 20 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "unlock_w_instruct.sent"
+              }
+            },
+            "_raw": "get_field | unlock_w_instruct.sent : TRUE"
+          }
+        ],
+        "campaign_list": [
+          "unlock_workshops"
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_unlock_workshops.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_subtype": "campaign_rows",
+    "flow_name": "campaign_w_quickstart",
+    "status": "released",
+    "rows": [
+      {
+        "id": "default",
+        "priority": -1,
+        "campaign_list": [
+          "quick_start_weekly_workshops"
+        ]
+      },
+      {
+        "id": "w_self_care_quick_start",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_this_workshop_together",
+              false
+            ],
+            "_raw": "set_field:do_this_workshop_together:false",
+            "_cleaned": "click | set_field:do_this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_self_care_stepper"
+            ],
+            "_raw": "go_to: w_self_care_stepper",
+            "_cleaned": "click | go_to: w_self_care_stepper"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_self_care_quick_start.sent",
+              true
+            ],
+            "_raw": "set_field: w_self_care_quick_start.sent:TRUE",
+            "_cleaned": "click | set_field: w_self_care_quick_start.sent:TRUE"
+          }
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "first_week"
+              }
+            },
+            "_raw": "get_field | first_week : TRUE"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_self_care_quick_start.sent"
+              }
+            },
+            "_raw": "get_field | w_self_care_quick_start.sent : true"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "@w_self_care_completion_level"
+              }
+            },
+            "_raw": "get_field | @w_self_care_completion_level : 100"
+          }
+        ],
+        "campaign_list": [
+          "quick_start_weekly_workshops"
+        ]
+      },
+      {
+        "id": "w_1on1_quick_start",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_this_workshop_together",
+              "@field.do_workshop_together"
+            ],
+            "_raw": "set_field:do_this_workshop_together:@field.do_workshop_together",
+            "_cleaned": "click | set_field:do_this_workshop_together:@field.do_workshop_together"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_stepper"
+            ],
+            "_raw": "go_to: w_1on1_stepper",
+            "_cleaned": "click | go_to: w_1on1_stepper"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_1on1_quick_start.sent",
+              true
+            ],
+            "_raw": "set_field: w_1on1_quick_start.sent:TRUE",
+            "_cleaned": "click | set_field: w_1on1_quick_start.sent:TRUE"
+          }
+        ],
+        "priority": 2,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "second_week"
+              }
+            },
+            "_raw": "get_field | second_week:TRUE"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_1on1_quick_start.sent"
+              }
+            },
+            "_raw": "get_field | w_1on1_quick_start.sent : true"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "@w_1on1_completion_level"
+              }
+            },
+            "_raw": "get_field | @w_1on1_completion_level : 100"
+          }
+        ],
+        "campaign_list": [
+          "quick_start_weekly_workshops"
+        ]
+      },
+      {
+        "id": "w_praise_quick_start",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_this_workshop_together",
+              "@field.do_workshop_together"
+            ],
+            "_raw": "set_field:do_this_workshop_together:@field.do_workshop_together",
+            "_cleaned": "click | set_field:do_this_workshop_together:@field.do_workshop_together"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_praise_stepper"
+            ],
+            "_raw": "go_to: w_praise_stepper",
+            "_cleaned": "click | go_to: w_praise_stepper"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_praise_quick_start.sent",
+              true
+            ],
+            "_raw": "set_field: w_praise_quick_start.sent:TRUE",
+            "_cleaned": "click | set_field: w_praise_quick_start.sent:TRUE"
+          }
+        ],
+        "priority": 3,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "third_week"
+              }
+            },
+            "_raw": "get_field | third_week:TRUE"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_quick_start.sent"
+              }
+            },
+            "_raw": "get_field | w_praise_quick_start.sent : true"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "@w_praise_completion_level"
+              }
+            },
+            "_raw": "get_field | @w_praise_completion_level : 100"
+          }
+        ],
+        "campaign_list": [
+          "quick_start_weekly_workshops"
+        ]
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_workshop_quick_starts.xlsx"
+  },
+  {
+    "flow_type": "data_list",
     "flow_name": "relax_list",
     "data_list_name": "relax",
     "status": "released",
@@ -186,6 +590,45 @@
     "status": "released",
     "rows": [
       {
+        "id": "debug_reminder_reset",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_1.sent",
+              false
+            ],
+            "_raw": "set_field: debug_reminder_1.sent: false",
+            "_cleaned": "click | set_field: debug_reminder_1.sent: false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_2.sent",
+              false
+            ],
+            "_raw": "set_field: debug_reminder_2.sent: false",
+            "_cleaned": "click | set_field: debug_reminder_2.sent: false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_3.sent",
+              false
+            ],
+            "_raw": "set_field: debug_reminder_3.sent: false",
+            "_cleaned": "click | set_field: debug_reminder_3.sent: false"
+          }
+        ],
+        "priority": -2,
+        "campaign_list": [
+          "debug_campaign"
+        ]
+      },
+      {
         "id": "debug_reminder_default",
         "click_action_list": [
           {
@@ -193,7 +636,7 @@
             "action_id": "set_field",
             "args": [
               "debug_reminder_default.sent",
-              "true"
+              true
             ],
             "_raw": "set_field: debug_reminder_default.sent : true",
             "_cleaned": "click | set_field: debug_reminder_default.sent : true"
@@ -214,7 +657,7 @@
             "action_id": "set_field",
             "args": [
               "debug_reminder_1.sent",
-              "true"
+              true
             ],
             "_raw": "set_field: debug_reminder_1.sent : true",
             "_cleaned": "click | set_field: debug_reminder_1.sent : true"
@@ -257,7 +700,7 @@
             "action_id": "set_field",
             "args": [
               "debug_reminder_2.sent",
-              "true"
+              true
             ],
             "_raw": "set_field: debug_reminder_2.sent : true",
             "_cleaned": "click | set_field: debug_reminder_2.sent : true"
@@ -300,7 +743,7 @@
             "action_id": "set_field",
             "args": [
               "debug_reminder_3.sent",
-              "true"
+              true
             ],
             "_raw": "set_field: debug_reminder_3.sent : true",
             "_cleaned": "click | set_field: debug_reminder_3.sent : true"
@@ -344,6 +787,34 @@
         ],
         "icon": "plh_images/icons/play_white.svg",
         "text": 3
+      },
+      {
+        "id": "debug_reminder_4",
+        "priority": 4,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "5",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 5 : day"
+          }
+        ],
+        "campaign_list": [
+          "debug_campaign"
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx"
