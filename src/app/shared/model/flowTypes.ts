@@ -350,6 +350,7 @@ export namespace FlowTypes {
     | "accordion_section"
     | "advanced_dashed_box"
     | "workshops_accordion"
+    | "toggle_bar"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
