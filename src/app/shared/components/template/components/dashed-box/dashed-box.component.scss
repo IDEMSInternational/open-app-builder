@@ -18,8 +18,8 @@
       line-height: 25px;
     }
     .icon {
-      width: 56px;
-      height: 56px;
+      width: 38px;
+      height: 38px;
       position: absolute;
       img {
         width: 100%;
@@ -27,24 +27,24 @@
       }
     }
     .top-left {
-      left: -23px;
-      top: -23px;
+      left: -8px;
+      top: -10px;
     }
     .top-right {
-      right: -23px;
-      top: -23px;
+      right: -8px;
+      top: -10px;
     }
     .bottom-left {
-      left: -23px;
-      bottom: -23px;
+      left: -8px;
+      bottom: -10px;
     }
     .bottom-right {
-      right: -23px;
-      bottom: -23px;
+      right: -8px;
+      bottom: -10px;
     }
   }
   .default {
-    background: transparent;
+    background: var(--ion-color-primary-contrast);
     border-color: var(--ion-color-primary);
     .text {
       color: var(--ion-color-primary);
