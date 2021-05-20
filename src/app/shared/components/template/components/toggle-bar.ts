@@ -7,24 +7,43 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   selector: "plh-tmpl-toggle-bar",
   template: `
     <div class="container margin-t-regular" [class]="position">
-      <ion-toggle #toggleEl (ionChange)="handleChange(toggleEl.checked)"></ion-toggle>
-      <span class="label">{{ label }}</span>
+      <div class="toggle_wrapper">
+        <ion-toggle
+          [checked]="_row.value"
+          #toggleEl
+          (ionChange)="handleChange(toggleEl.checked)"
+        ></ion-toggle>
+      </div>
+      <span class="label">{{ _row.value ? true_text : false_text }}</span>
     </div>
   `,
   styles: [
     `
       .container {
+        position: relative;
         display: flex;
         align-items: center;
       }
       .label {
         margin-left: var(--small-margin);
+        margin-right: var(--small-margin);
       }
       .center {
         justify-content: center;
       }
-      .rignt {
+      .center .label {
+        position: absolute;
+        right: 0;
+        max-width: 35%;
+      }
+      .right {
         justify-content: flex-end;
+      }
+      .right .label {
+        order: 1;
+      }
+      .right .toggle_wrapper {
+        order: 2;
       }
     `,
   ],
@@ -32,7 +51,8 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 export class TmplToggleBarComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit {
-  public label: string;
+  public false_text: string;
+  public true_text: string;
   public position: string;
 
   constructor() {
@@ -49,7 +69,8 @@ export class TmplToggleBarComponent
   }
 
   getParams() {
-    this.label = getStringParamFromTemplateRow(this._row, "label", "");
+    this.false_text = getStringParamFromTemplateRow(this._row, "false_text", "");
+    this.true_text = getStringParamFromTemplateRow(this._row, "true_text", "");
     this.position = getStringParamFromTemplateRow(this._row, "position", "left");
   }
 }
