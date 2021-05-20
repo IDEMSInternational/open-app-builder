@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
 import { ITemplateRowProps } from "../models";
 import { getStringParamFromTemplateRow } from "../../../utils";
+import { Platform } from "@ionic/angular";
 
 @Component({
   selector: "plh-tmpl-toggle-bar",
@@ -9,6 +10,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
     <div class="container margin-t-regular" [class]="position">
       <div class="toggle_wrapper">
         <ion-toggle
+          [mode]="mode"
           [checked]="_row.value"
           #toggleEl
           (ionChange)="handleChange(toggleEl.checked)"
@@ -34,7 +36,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
       .center .label {
         position: absolute;
         right: 0;
-        max-width: 35%;
+        max-width: calc(50% - 45px);
       }
       .right {
         justify-content: flex-end;
@@ -54,9 +56,11 @@ export class TmplToggleBarComponent
   public false_text: string;
   public true_text: string;
   public position: string;
+  public mode: string;
 
-  constructor() {
+  constructor(private platform: Platform) {
     super();
+    this.mode = this.platform.is("android") ? "md" : "ios" || "ios";
   }
 
   ngOnInit() {
