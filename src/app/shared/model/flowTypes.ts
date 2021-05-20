@@ -348,6 +348,7 @@ export namespace FlowTypes {
     | "text"
     | "animated_section"
     | "accordion_section"
+    | "advanced_dashed_box"
     | "workshops_accordion"
     | "animated_section_group"
     | "display_group"

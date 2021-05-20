@@ -8,6 +8,7 @@ import { Type } from "@angular/core";
 
 import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AccordionSectionComponent } from "./layout/accordion_section";
+import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { NavGroupComponent } from "./layout/nav_group";
@@ -56,6 +57,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplVideoComponent,
   AnimatedSectionComponent,
   AccordionSectionComponent,
+  TmplAdvancedDashedBoxComponent,
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
@@ -90,6 +92,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   animated_section_group: AnimatedSectionGroupComponent,
   workshops_accordion: WorkshopsComponent,
   accordion_section: AccordionSectionComponent,
+  advanced_dashed_box: TmplAdvancedDashedBoxComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
