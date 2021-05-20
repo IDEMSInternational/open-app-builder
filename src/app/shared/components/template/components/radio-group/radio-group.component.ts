@@ -4,7 +4,6 @@ import {
   EventEmitter,
   HostBinding,
   HostListener,
-  Inject,
   Input,
   OnDestroy,
   OnInit,
@@ -21,7 +20,7 @@ import {
 import { takeUntil } from "rxjs/operators";
 import { ReplaySubject } from "rxjs";
 import { TemplateService } from "../../services/template.service";
-import { PLHAssetPipe } from "../../pipes/plh-asset.pipe";
+import { getImageAssetPath } from "../../utils/template-utils";
 
 interface IButton {
   name: string | null;
@@ -34,7 +33,6 @@ interface IButton {
   selector: "plh-radio-group",
   templateUrl: "./radio-group.component.html",
   styleUrls: ["./radio-group.component.scss"],
-  providers: [PLHAssetPipe],
 })
 export class TmplRadioGroupComponent
   extends TemplateBaseComponent
@@ -62,7 +60,7 @@ export class TmplRadioGroupComponent
     return this.scaleFactor;
   }
 
-  constructor(private templateService: TemplateService, private assetsPipe: PLHAssetPipe) {
+  constructor(private templateService: TemplateService) {
     super();
   }
 
@@ -130,10 +128,10 @@ export class TmplRadioGroupComponent
           if (field && value) {
             switch (field) {
               case "image":
-                obj[field] = this.assetsPipe.transform(value);
+                obj[field] = getImageAssetPath(value);
                 break;
               case "image_checked":
-                obj[field] = this.assetsPipe.transform(value);
+                obj[field] = getImageAssetPath(value);
                 break;
 
               default:
