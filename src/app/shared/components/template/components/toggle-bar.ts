@@ -25,7 +25,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 })
 export class TmplToggleBarComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, AfterViewInit {
+  implements ITemplateRowProps, OnInit {
   label: string;
   constructor() {
     super();
@@ -33,11 +33,6 @@ export class TmplToggleBarComponent
 
   ngOnInit() {
     this.getParams();
-  }
-
-  ngAfterViewInit() {
-    // this.setValue(this._row.value);
-    this.triggerActions("changed");
   }
 
   public async handleChange(isChecked: boolean) {
