@@ -49,7 +49,10 @@
       <ion-button class="btn-play" (click)="togglePlayer()">
         <img
           [class.ml-5]="!isPlayed"
-          [src]="!isPlayed ? '/assets/icon/audio/play.svg' : '/assets/icon/audio/pause.svg'"
+          [src]="
+            (!isPlayed ? 'plh_images/icons/play_white.svg' : 'plh_images/icons/pause_white.svg')
+              | plhAsset
+          "
           alt=""
         />
       </ion-button>
