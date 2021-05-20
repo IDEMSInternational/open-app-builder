@@ -29,20 +29,24 @@ export class TmplVideoComponent extends TemplateBaseComponent implements OnInit 
 
   videoSrc: string;
   @Input() set row(r: FlowTypes.TemplateRow) {
-    const videoSrc = getImageAssetPath(r.value);
-    if (r.value.indexOf("http") < 0) {
-      this.http
-        .get(videoSrc, { responseType: "arraybuffer" })
-        .toPromise()
-        .then(() => {
-          this.videoSrc = videoSrc;
-        })
-        .catch(() => {
-          console.error("image not found", r.value, videoSrc);
-          // could add fallback image here if desired
-        });
+    if (r.value) {
+      const videoSrc = getImageAssetPath(r.value);
+      if (r.value.indexOf("http") < 0) {
+        this.http
+          .get(videoSrc, { responseType: "arraybuffer" })
+          .toPromise()
+          .then(() => {
+            this.videoSrc = videoSrc;
+          })
+          .catch(() => {
+            console.error("image not found", r.value, videoSrc);
+            // could add fallback image here if desired
+          });
+      } else {
+        this.videoSrc = videoSrc;
+      }
     } else {
-      this.videoSrc = videoSrc;
+      console.warn("No video specified", { ...r });
     }
   }
   @Input() template: FlowTypes.Template;
