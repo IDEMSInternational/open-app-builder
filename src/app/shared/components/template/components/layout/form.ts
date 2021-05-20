@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild, ViewChildren } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { Plugins } from "@capacitor/core";
-import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 
 const { Device } = Plugins;
 
@@ -14,7 +17,7 @@ const { Device } = Plugins;
       [parent]="parent"
     >
     </plh-template-component>
-    <ion-button (click)="submit()">Submit</ion-button>
+    <ion-button (click)="submit()">{{ button_text }}</ion-button>
   </div>`,
   styles: [
     `
@@ -36,6 +39,7 @@ const { Device } = Plugins;
   ],
 })
 export class FormComponent extends TemplateBaseComponent implements OnInit {
+  public button_text: string;
   private deviceInfo;
   private form = {};
   private isAllowedDeviceInfo: boolean;
@@ -55,6 +59,7 @@ export class FormComponent extends TemplateBaseComponent implements OnInit {
   }
 
   private getParams(): void {
+    this.button_text = getStringParamFromTemplateRow(this._row, "button_text", "Submit");
     this.isAllowedDeviceInfo = getBooleanParamFromTemplateRow(this._row, "get_device_info", false);
   }
 
