@@ -21,6 +21,7 @@ import {
 import { takeUntil } from "rxjs/operators";
 import { ReplaySubject } from "rxjs";
 import { TemplateService } from "../../services/template.service";
+import { PLHAssetPipe } from "../../pipes/plh-asset.pipe";
 
 interface IButton {
   name: string | null;
@@ -33,6 +34,7 @@ interface IButton {
   selector: "plh-radio-group",
   templateUrl: "./radio-group.component.html",
   styleUrls: ["./radio-group.component.scss"],
+  providers: [PLHAssetPipe],
 })
 export class TmplRadioGroupComponent
   extends TemplateBaseComponent
@@ -44,7 +46,6 @@ export class TmplRadioGroupComponent
   groupName: string;
   radioButtonType: string | null;
   options_per_row: number = 2;
-  baseSrcAssets = "/assets/plh_assets/";
   windowWidth: number;
   scaleFactor: number = 1;
   style: string;
@@ -61,7 +62,7 @@ export class TmplRadioGroupComponent
     return this.scaleFactor;
   }
 
-  constructor(private templateService: TemplateService) {
+  constructor(private templateService: TemplateService, private assetsPipe: PLHAssetPipe) {
     super();
   }
 
@@ -129,10 +130,10 @@ export class TmplRadioGroupComponent
           if (field && value) {
             switch (field) {
               case "image":
-                obj[field] = this.getPathImg(value);
+                obj[field] = this.assetsPipe.transform(value);
                 break;
               case "image_checked":
-                obj[field] = this.getPathImg(value);
+                obj[field] = this.assetsPipe.transform(value);
                 break;
 
               default:
@@ -154,12 +155,6 @@ export class TmplRadioGroupComponent
       });
     }
   }
-
-  getPathImg(path: string): string {
-    const src = this.baseSrcAssets + path;
-    return src.replace("//", "/");
-  }
-
   getFlexWidth() {
     this.flexWidth = `0 1 ${100 / this.options_per_row - 7}%`;
   }
