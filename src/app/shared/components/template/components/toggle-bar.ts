@@ -6,19 +6,25 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-toggle-bar",
   template: `
-    <div class="wrapper margin-t-regular">
+    <div class="container margin-t-regular" [class]="position">
       <ion-toggle #toggleEl (ionChange)="handleChange(toggleEl.checked)"></ion-toggle>
       <span class="label">{{ label }}</span>
     </div>
   `,
   styles: [
     `
-      .wrapper {
+      .container {
         display: flex;
         align-items: center;
       }
       .label {
         margin-left: var(--small-margin);
+      }
+      .center {
+        justify-content: center;
+      }
+      .rignt {
+        justify-content: flex-end;
       }
     `,
   ],
@@ -26,7 +32,9 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 export class TmplToggleBarComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit {
-  label: string;
+  public label: string;
+  public position: string;
+
   constructor() {
     super();
   }
@@ -42,5 +50,6 @@ export class TmplToggleBarComponent
 
   getParams() {
     this.label = getStringParamFromTemplateRow(this._row, "label", "");
+    this.position = getStringParamFromTemplateRow(this._row, "position", "left");
   }
 }
