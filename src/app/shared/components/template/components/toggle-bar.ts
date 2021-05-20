@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
 import { ITemplateRowProps } from "../models";
 import { getStringParamFromTemplateRow } from "../../../utils";
@@ -6,13 +6,26 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-toggle-bar",
   template: `
-    <ion-toggle #toggleEl (ionChange)="handleChange(toggleEl.checked)"></ion-toggle>
-    <span>{{ label }}</span>
+    <div class="wrapper margin-t-regular">
+      <ion-toggle #toggleEl (ionChange)="handleChange(toggleEl.checked)"></ion-toggle>
+      <span class="label">{{ label }}</span>
+    </div>
   `,
+  styles: [
+    `
+      .wrapper {
+        display: flex;
+        align-items: center;
+      }
+      .label {
+        margin-left: var(--small-margin);
+      }
+    `,
+  ],
 })
 export class TmplToggleBarComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit, AfterViewInit {
   label: string;
   constructor() {
     super();
@@ -20,6 +33,11 @@ export class TmplToggleBarComponent
 
   ngOnInit() {
     this.getParams();
+  }
+
+  ngAfterViewInit() {
+    // this.setValue(this._row.value);
+    this.triggerActions("changed");
   }
 
   public async handleChange(isChecked: boolean) {
