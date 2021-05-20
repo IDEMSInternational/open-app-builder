@@ -4,6 +4,7 @@ import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { TemplateBaseComponent } from "./base";
 import { getStringParamFromTemplateRow } from "../../../utils";
 import { AnimationOptions } from "ngx-lottie";
+import { getImageAssetPath } from "../utils/template-utils";
 
 @Component({
   selector: "plh-tmpl-lottie-animation",
@@ -22,7 +23,6 @@ import { AnimationOptions } from "ngx-lottie";
   ],
 })
 export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit {
-  assetsPrefix = "/assets/plh_assets/";
   style: string;
   animOptions: AnimationOptions;
 
@@ -34,19 +34,20 @@ export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit
     // Loop by default
     const loop = r?.parameter_list?.loop === "false" ? false : true;
     if (r.value) {
+      const path = getImageAssetPath(r.value);
       this.http
-        .get(this.assetsPrefix + r.value)
+        .get(path)
         .toPromise()
         .then(() => {
           this.animOptions = {
-            path: this.assetsPrefix + r.value,
-            loop: loop,
+            path,
+            loop,
           };
         })
         .catch(() => {
           this.animOptions = {
             path: r.value.replace("//", "/"),
-            loop: loop,
+            loop,
           };
         });
     }
