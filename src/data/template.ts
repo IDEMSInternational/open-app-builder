@@ -40363,7 +40363,7 @@
         "type": "advanced_dashed_box",
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
         "parameter_list": {
-          "icon_src": "plh_images/icons/star.svg",
+          "icon_src": "plh_images/icons/star_circle.svg",
           "icon_position": "top-left"
         },
         "rows": [
@@ -40381,7 +40381,7 @@
         "type": "advanced_dashed_box",
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
         "parameter_list": {
-          "icon_src": "plh_images/icons/star.svg",
+          "icon_src": "plh_images/icons/star_circle.svg",
           "icon_position": "top-left"
         },
         "rows": [
