@@ -55,8 +55,7 @@ export class CampaignDebugPage implements OnInit {
   }
 
   public scheduleNotification(row: FlowTypes.Campaign_listRow) {
-    const { id, notification_schedule } = row;
-    return this.localNotificationService.schedulePLHNotification(id, notification_schedule, row);
+    return this.campaignService.scheduleCampaignNotification(row);
   }
 
   /**

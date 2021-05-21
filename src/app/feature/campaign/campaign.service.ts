@@ -4,12 +4,17 @@ import { addHours, addMinutes } from "date-fns";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
+import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
+import { stringToIntegerHash } from "src/app/shared/utils";
 type ICampaigns = { [campaign_id: string]: FlowTypes.Campaign_listRow[] };
 @Injectable({ providedIn: "root" })
 export class CampaignService {
   campaigns: ICampaigns;
 
-  constructor(private dataEvaluationService: DataEvaluationService) {
+  constructor(
+    private dataEvaluationService: DataEvaluationService,
+    private localNotificationService: LocalNotificationService
+  ) {
     this.loadCampaigns();
   }
 
@@ -33,6 +38,25 @@ export class CampaignService {
     }
     console.log("[Campaign] - none active", { campaign_id, evaluatedRows });
     return null;
+  }
+
+  /**
+   * Convert PLH notification schedule data and create local notification
+   * @param id string identifier for the notification. Will be converted to integer hash
+   * @param schedule
+   * @param data any additional data to be stored with the notification
+   * @returns list of all currently scheduled notifications
+   */
+  public async scheduleCampaignNotification(row: FlowTypes.Campaign_listRow) {
+    const { id, notification_schedule } = row;
+    const { _schedule_at, text, title } = notification_schedule;
+    return this.localNotificationService.scheduleNotification({
+      schedule: { at: _schedule_at },
+      body: text || "You have a new message from PLH",
+      title: title || "Notification",
+      extra: row,
+      id: stringToIntegerHash(id),
+    });
   }
 
   private loadCampaigns() {
