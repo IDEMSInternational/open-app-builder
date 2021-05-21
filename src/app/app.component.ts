@@ -13,6 +13,7 @@ import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
+import { CampaignService } from "./feature/campaign/campaign.service";
 
 @Component({
   selector: "app-root",
@@ -35,6 +36,7 @@ export class AppComponent {
     private tourService: TourService,
     private templateService: TemplateService,
     private appEventService: AppEventService,
+    private campaignService: CampaignService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService
   ) {
@@ -91,6 +93,7 @@ export class AppComponent {
         SplashScreen.hide();
         this.notifications.init();
       }
+      this.scheduleCampaignNotifications();
       // CC 2021-05-14 - disabling reminders service until decide on full implementation
       // (ideally not requiring evaluation of all reminders on init)
       // this.remindersService.init();
@@ -101,5 +104,21 @@ export class AppComponent {
   clickOnMenuItem(id: string) {
     this.menuController.close("main-side-menu");
     this.router.navigateByUrl("/" + id);
+  }
+
+  /**
+   * Manually schedule specific campaign notifications
+   * TODO CC 2021-05-14 - Ideally these should be triggered from a template or other general method
+   */
+  async scheduleCampaignNotifications() {
+    const inactiveNotification = await this.campaignService.getNextCampaignRow(
+      "m_inactive_campaign"
+    );
+    if (inactiveNotification) {
+      const notifications = await this.campaignService.scheduleCampaignNotification(
+        inactiveNotification
+      );
+      console.log("scheduled notifications", notifications);
+    }
   }
 }
