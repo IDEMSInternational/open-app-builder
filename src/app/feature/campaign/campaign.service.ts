@@ -82,7 +82,7 @@ export class CampaignService {
     return row;
   }
 
-  private evaluateCampaignNotification(schedule: FlowTypes.Campaign_notificationSchedule) {
+  private evaluateCampaignNotification(schedule: FlowTypes.NotificationSchedule) {
     const { time, delay } = schedule;
     let d = new Date();
     if (time) {
