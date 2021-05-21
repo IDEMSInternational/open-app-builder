@@ -16,6 +16,17 @@
             <div>{{notification.body}}</div>
           </div>
           <div style="text-align: right">
+            <div>
+              <ion-button
+                (click)="showCustomNotificationSchedule(notification, picker)"
+                fill="clear"
+                class="no-padding"
+                style="margin: 0"
+              >
+                {{notification.schedule.at | date:'MMM d, h:mm a'}}
+              </ion-button>
+              <div class="divider"></div>
+            </div>
             <ion-button
               fill="clear"
               (click)="removeNotification(notification)"
@@ -23,8 +34,6 @@
               style="margin: 0"
               >Remove</ion-button
             >
-            <div>{{notification.schedule.at | date:'shortDate'}}</div>
-            <div>{{notification.schedule.at | date:'shortTime'}}</div>
           </div>
         </div>
       </div>
@@ -35,4 +44,12 @@
   <ion-card *ngIf="localNotificationService.notificationsList.length===0">
     <ion-card-header>No Scheduled Notifications</ion-card-header>
   </ion-card>
+  <!-- Hidden picker used when creating custom datetime -->
+  <ion-datetime
+    style="display: none"
+    (ionChange)="setCustomNotificationSchedule()"
+    [(ngModel)]="editablePickerValue"
+    #picker
+    displayFormat="MMM DD, h:mm A"
+  ></ion-datetime>
 </ion-content>
