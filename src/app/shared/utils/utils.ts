@@ -189,3 +189,19 @@ export function booleanStringToBoolean(str: string) {
   }
   return str;
 }
+
+/**
+ * Convert a string to an integer hashcode (note, may be positive or negative)
+ * https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
+ * https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
+ */
+export function stringToIntegerHash(str: string) {
+  let hash = 0;
+  let i = 0;
+  let len = str.length;
+  while (i < len) {
+    /* eslint-disable no-bitwise */
+    hash = ((hash << 5) - hash + str.charCodeAt(i++)) << 0;
+  }
+  return hash;
+}
