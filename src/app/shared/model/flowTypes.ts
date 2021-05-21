@@ -250,7 +250,7 @@ export namespace FlowTypes {
     deactivation_condition_list: DataEvaluationCondition[];
     campaign_list: string[]; // ids of campaigns where to run
     priority?: number; // higher numbers will be given more priority
-
+    notification_schedule?: Campaign_notificationSchedule;
     _active?: boolean; // calculated from activation and deactivation conditions
 
     // additional fields for current data_list but not required
@@ -260,6 +260,13 @@ export namespace FlowTypes {
 
     // placeholder for any extra fields to be added
     [field: string]: any;
+  }
+  export interface Campaign_notificationSchedule {
+    text?: string;
+    time?: { minute?: string; hour?: string }; // specified time for notification, e.g. 19:30
+    delay?: { days?: string; hours?: string; minutes?: string }; // delay until first notification, e.g. 7 day
+
+    _schedule_at?: Date; // calculated from above info
   }
   export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */

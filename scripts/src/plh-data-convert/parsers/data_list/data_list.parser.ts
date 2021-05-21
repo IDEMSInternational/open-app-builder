@@ -1,5 +1,5 @@
 import { FlowTypes } from "../../../../types";
-import { extractConditionList } from "../../utils";
+import { extractConditionList, parsePLHCollectionString } from "../../utils";
 import { DefaultParser } from "../default/default.parser";
 
 export class DataListParser extends DefaultParser {
@@ -11,6 +11,9 @@ export class DataListParser extends DefaultParser {
       // handle other data structures
       if (field.endsWith("_condition_list")) {
         row[field] = row[field].map((value) => extractConditionList(value));
+      }
+      if (field.endsWith("notification_schedule")) {
+        row[field] = parsePLHCollectionString(row[field]);
       }
     });
     return row;

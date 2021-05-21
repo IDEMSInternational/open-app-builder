@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import { setNestedProperty } from "../../../../src/app/shared/utils";
 
 /**
  * Xls data represents nested objects in the following ways
@@ -63,8 +64,15 @@ export function parsePLHCollectionString(str: string): { [key: string]: string }
   const collection = {};
   const entryList = parsePLHListString(str);
   entryList.forEach((el) => {
-    const [key, value] = el.split(":");
-    collection[key] = value;
+    let [key, value] = el.split(":");
+    value = value ? value.trim() : value;
+    // handle keys that define deeper nesting, such as time.hours: 7
+    if (key.includes(".")) {
+      const [base, ...nested] = key.split(".");
+      collection[base] = setNestedProperty(nested.join("."), value, collection[base]);
+    } else {
+      collection[key] = value ? value.trim() : value;
+    }
   });
   return collection;
 }
