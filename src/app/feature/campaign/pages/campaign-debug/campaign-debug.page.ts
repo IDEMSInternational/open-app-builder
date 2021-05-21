@@ -6,6 +6,11 @@ import {
   DataEvaluationService,
   IDataEvaluationCache,
 } from "src/app/shared/services/data/data-evaluation.service";
+import {
+  ILocalNotificationStorage,
+  LocalNotificationService,
+} from "src/app/shared/services/notification/local-notification.service";
+import { stringToIntegerHash } from "src/app/shared/utils";
 import { CampaignService } from "../../campaign.service";
 
 @Component({
@@ -16,8 +21,10 @@ export class CampaignDebugPage implements OnInit {
   debugCampaignId: string;
   debugCampaignRows: FlowTypes.Campaign_listRow[] = [];
   debugData: IDataEvaluationCache = {} as any;
+  notificationsHash: ILocalNotificationStorage = {};
   constructor(
     public campaignService: CampaignService,
+    private localNotificationService: LocalNotificationService,
     private dataEvaluationService: DataEvaluationService,
     private templateService: TemplateService,
     private router: Router,
@@ -25,12 +32,42 @@ export class CampaignDebugPage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.listNotifications();
     this.debugData = await this.dataEvaluationService.refreshDBCache();
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {
       this.setDebugCampaign(campaign_id);
     }
   }
+
+  /***************************************************************************************
+   *  Notifications
+   **************************************************************************************/
+
+  public async scheduleNotification(row: FlowTypes.Campaign_listRow) {
+    console.log("scheduling notifications", row);
+    const { notification_schedule, id } = row;
+    const { _schedule_at, text } = notification_schedule;
+    await this.localNotificationService.scheduleNotification({
+      schedule: { at: _schedule_at },
+      body: text || "TODO - provide fallback",
+      title: "TODO",
+      extra: { row },
+      id: stringToIntegerHash(id),
+    });
+    await this.listNotifications();
+  }
+  public logNotifications() {
+    console.log("[Notifications]", this.notificationsHash);
+  }
+  private async listNotifications() {
+    const notifications = await this.localNotificationService.getPendingNotifications();
+    this.notificationsHash = notifications;
+  }
+
+  /***************************************************************************************
+   *  Campaign Methods
+   **************************************************************************************/
 
   public setDebugCampaign(debug_campaign: string) {
     if (debug_campaign !== this.debugCampaignId) {
@@ -69,6 +106,24 @@ export class CampaignDebugPage implements OnInit {
     // TODO - reload cache after trigger
   }
 
+  private async processCampaign() {
+    this.debugCampaignRows = [];
+    const campaign_id = this.debugCampaignId;
+    const campaignRows = this.campaignService.campaigns[campaign_id];
+    this.dataEvaluationService.setDBCache(this.debugData as any);
+    const evaluated = await Promise.all(
+      campaignRows.map(async (row) => {
+        return await this.campaignService.evaluateCampaignRow(row);
+      })
+    );
+    this.debugCampaignRows = evaluated;
+    console.log("[Campaign] processed", { data: this.dataEvaluationService.data, evaluated });
+  }
+
+  /***************************************************************************************
+   *  Debug Methods
+   **************************************************************************************/
+
   public logDebugInfo(row: FlowTypes.Campaign_listRow) {
     console.group(row._id);
     console.log(row);
@@ -88,19 +143,5 @@ export class CampaignDebugPage implements OnInit {
       this.debugData.app_day = Number(value);
       await this.processCampaign();
     }
-  }
-
-  private async processCampaign() {
-    this.debugCampaignRows = [];
-    const campaign_id = this.debugCampaignId;
-    const campaignRows = this.campaignService.campaigns[campaign_id];
-    this.dataEvaluationService.setDBCache(this.debugData as any);
-    const evaluated = await Promise.all(
-      campaignRows.map(async (row) => {
-        return await this.campaignService.evaluateCampaignRow(row);
-      })
-    );
-    this.debugCampaignRows = evaluated;
-    console.log("[Campaign] processed", { data: this.dataEvaluationService.data, evaluated });
   }
 }
