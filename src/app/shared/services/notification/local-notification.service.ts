@@ -7,8 +7,6 @@ import {
   Capacitor,
   LocalNotificationPendingList,
 } from "@capacitor/core";
-import { FlowTypes } from "src/app/shared/model";
-import { stringToIntegerHash } from "../../utils";
 const { LocalNotifications } = Plugins;
 
 const LOCAL_STORAGE_KEY = "local_notifications";
@@ -80,34 +78,13 @@ export class LocalNotificationService {
   }
 
   /**
-   * Convert PLH notification schedule data and create local notification
-   * @param id string identifier for the notification. Will be converted to integer hash
-   * @param schedule
-   * @param data any additional data to be stored with the notification
-   */
-  public async schedulePLHNotification(
-    id: string,
-    schedule: FlowTypes.NotificationSchedule,
-    data?: any
-  ) {
-    const { _schedule_at, text, title } = schedule;
-    await this.scheduleNotification({
-      schedule: { at: _schedule_at },
-      body: text || "You have a new message from PLH",
-      title: title || "Notification",
-      extra: data,
-      id: stringToIntegerHash(id),
-    });
-  }
-
-  /**
    * Schedule a local notification
    * @param options - Supports full notification options,
    * with a minimum of schedule required and a named action type
    * see full scheduling options in type interface
    * see named actions below for configurations
    */
-  private async scheduleNotification(
+  public async scheduleNotification(
     options: Partial<LocalNotification> & {
       schedule: LocalNotification["schedule"];
     }
