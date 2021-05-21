@@ -1,1 +1,38 @@
-<p>notifications-debug works!</p>
+<ion-content class="ion-padding">
+  <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">Notifications Debug</h2>
+  </div>
+
+  <ion-card *ngFor="let notification of localNotificationService.notificationsList">
+    <ion-card-header class="row-header">
+      <span>{{notification.extra.id}}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Notification -->
+      <div>
+        <div style="display: flex">
+          <div style="flex: 1; margin-right: 8px">
+            <h2>{{notification.title}}</h2>
+            <div>{{notification.body}}</div>
+          </div>
+          <div style="text-align: right">
+            <ion-button
+              fill="clear"
+              (click)="removeNotification(notification)"
+              class="no-padding"
+              style="margin: 0"
+              >Remove</ion-button
+            >
+            <div>{{notification.schedule.at | date:'shortDate'}}</div>
+            <div>{{notification.schedule.at | date:'shortTime'}}</div>
+          </div>
+        </div>
+      </div>
+
+      <ion-button fill="clear" (click)="logDebugInfo(notification)">(log full details)</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="localNotificationService.notificationsList.length===0">
+    <ion-card-header>No Scheduled Notifications</ion-card-header>
+  </ion-card>
+</ion-content>
