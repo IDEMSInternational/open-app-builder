@@ -17,6 +17,7 @@ export class CampaignDebugPage implements OnInit {
   debugCampaignId: string;
   debugCampaignRows: FlowTypes.Campaign_listRow[] = [];
   debugData: IDataEvaluationCache = {} as any;
+
   constructor(
     public campaignService: CampaignService,
     public localNotificationService: LocalNotificationService,
@@ -49,7 +50,6 @@ export class CampaignDebugPage implements OnInit {
         queryParamsHandling: "merge",
         replaceUrl: true,
       });
-      console.log("set debug campaign", debug_campaign);
       return this.processCampaign();
     }
   }
@@ -99,13 +99,12 @@ export class CampaignDebugPage implements OnInit {
    **************************************************************************************/
 
   public logDebugInfo(row: FlowTypes.Campaign_listRow) {
-    console.group(row._id);
+    console.group(row.id);
     console.log(row);
     console.groupEnd();
   }
   public async setDebugFirstLaunch(value: any) {
     if (value && value !== this.debugData.first_app_launch) {
-      console.log("set debug first launch", value);
       this.debugData.first_app_launch = value;
       this.debugData.dbCache.app_events = { app_launch: [{ _created: value }] };
       await this.processCampaign();

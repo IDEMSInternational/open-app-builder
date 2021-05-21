@@ -112,8 +112,8 @@
               [disabled]="!row._active"
               >Schedule</ion-button
             >
-            <div>{{row.notification_schedule._schedule_at | date:'shortDate'}}</div>
-            <div>{{row.notification_schedule._schedule_at | date:'shortTime'}}</div>
+            <div>{{row.notification_schedule._schedule_at | date:'MMM d'}}</div>
+            <div>{{row.notification_schedule._schedule_at | date:'h:mm a'}}</div>
           </div>
         </div>
       </div>
