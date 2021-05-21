@@ -1,4 +1,6 @@
 import { Injectable } from "@angular/core";
+import { addDays } from "@fullcalendar/angular";
+import { addHours, addMinutes } from "date-fns";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
@@ -70,11 +72,30 @@ export class CampaignService {
         return { ...condition, _satisfied };
       })
     );
+    if (row.notification_schedule) {
+      row.notification_schedule = this.evaluateCampaignNotification(row.notification_schedule);
+    }
     // assume active if all activation criteria met and no deactivation criteria satisfied
     row._active =
       row.activation_condition_list.every((c) => c._satisfied === true) &&
       !row.deactivation_condition_list.find((c) => c._satisfied === true);
     return row;
+  }
+
+  private evaluateCampaignNotification(schedule: FlowTypes.Campaign_notificationSchedule) {
+    const { time, delay } = schedule;
+    let d = new Date();
+    if (time) {
+      d.setHours(Number(time.hour || d.getHours()));
+      d.setMinutes(Number(time.minute || d.getMinutes()));
+    }
+    if (delay) {
+      d = addDays(d, Number(delay.days || 0));
+      d = addHours(d, Number(delay.hours || 0));
+      d = addMinutes(d, Number(delay.minutes || 0));
+    }
+    schedule._schedule_at = d;
+    return schedule;
   }
 
   private evaluateCondition(condition: FlowTypes.DataEvaluationCondition) {
