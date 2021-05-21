@@ -13,3 +13,7 @@ ion-button.no-padding {
 .condition[data-satisfied="false"] {
   color: #a30000;
 }
+.divider {
+  margin: 1em 0;
+  border-top: 1px solid var(--ion-color-medium);
+}

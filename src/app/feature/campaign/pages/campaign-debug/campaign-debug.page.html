@@ -1,5 +1,12 @@
 <ion-content class="ion-padding">
-  <h2>Campaign Debug</h2>
+  <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">Campaign Debug</h2>
+    <ion-button fill="outline" (click)="logNotifications()" routerLink="notifications">
+      <ion-icon name="notifications" slot="start"></ion-icon>
+      <span>{{(notificationsHash | objectValues).length}}</span>
+    </ion-button>
+  </div>
+
   <ion-item>
     <ion-label>Campaign</ion-label>
     <ion-select
@@ -37,24 +44,30 @@
       <span style="float: right">Priority: {{ row.priority }}</span>
     </ion-card-header>
     <ion-card-content>
-      <div style="display: flex">
-        <div style="flex: 1">
-          <div>Click Action List</div>
-          <div *ngFor="let action of row.click_action_list">{{action._raw}}</div>
-        </div>
-        <div style="text-align: right" *ngIf="row.click_action_list">
-          <ion-button
-            fill="clear"
-            (click)="triggerRowActions(row)"
-            class="no-padding"
-            style="margin: 0"
-            [disabled]="!row._active"
-            >Trigger Actions</ion-button
-          >
+      <!-- Click Action List -->
+      <div *ngIf="row.click_action_list && row.click_action_list.length>0">
+        <div class="divider"></div>
+        <h2>Click Action List</h2>
+        <div style="display: flex">
+          <div style="flex: 1">
+            <div *ngFor="let action of row.click_action_list">{{action._raw}}</div>
+          </div>
+          <div style="text-align: right">
+            <ion-button
+              fill="clear"
+              (click)="triggerRowActions(row)"
+              class="no-padding"
+              style="margin: 0"
+              [disabled]="!row._active"
+              >Trigger Actions</ion-button
+            >
+          </div>
         </div>
       </div>
-      <div style="margin: 1em 0; border-top: 1px solid var(--ion-color-medium)">
-        <div>Activation</div>
+      <!-- Activation -->
+      <div *ngIf="row.activation_condition_list && row.activation_condition_list.length>0">
+        <div class="divider"></div>
+        <h2>Activation</h2>
         <div *ngFor="let condition of row.activation_condition_list">
           <span class="condition" [attr.data-satisfied]="condition._satisfied"
             >{{ condition._raw }}</span
@@ -64,8 +77,10 @@
           </span>
         </div>
       </div>
-      <div style="margin: 1em 0; border-top: 1px solid var(--ion-color-medium)">
-        <div>Deactivation</div>
+      <!-- Deactivation -->
+      <div *ngIf="row.deactivation_condition_list && row.deactivation_condition_list.length>0">
+        <div class="divider"></div>
+        <h2>Deactivation</h2>
         <div *ngFor="let condition of row.deactivation_condition_list">
           <span class="condition" [attr.data-satisfied]="condition._satisfied"
             >{{ condition._raw }}</span
@@ -75,6 +90,30 @@
           </span>
         </div>
       </div>
+      <!-- Notification -->
+      <div *ngIf="row.notification_schedule">
+        <div class="divider"></div>
+        <div style="display: flex">
+          <div style="flex: 1; margin-right: 8px">
+            <h2>Notification</h2>
+            <div *ngIf="!row.notification_schedule.text">⚠️ No notification text specified</div>
+            <div>{{row.notification_schedule.text}}</div>
+          </div>
+          <div style="text-align: right">
+            <ion-button
+              fill="clear"
+              (click)="scheduleNotification(row)"
+              class="no-padding"
+              style="margin: 0"
+              [disabled]="!row._active"
+              >Schedule</ion-button
+            >
+            <div>{{row.notification_schedule._schedule_at | date:'shortDate'}}</div>
+            <div>{{row.notification_schedule._schedule_at | date:'shortTime'}}</div>
+          </div>
+        </div>
+      </div>
+
       <ion-button fill="clear" (click)="logDebugInfo(row)">(log full details)</ion-button>
     </ion-card-content>
   </ion-card>
