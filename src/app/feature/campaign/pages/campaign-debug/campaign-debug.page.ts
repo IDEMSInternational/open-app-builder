@@ -6,11 +6,7 @@ import {
   DataEvaluationService,
   IDataEvaluationCache,
 } from "src/app/shared/services/data/data-evaluation.service";
-import {
-  ILocalNotificationStorage,
-  LocalNotificationService,
-} from "src/app/shared/services/notification/local-notification.service";
-import { stringToIntegerHash } from "src/app/shared/utils";
+import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
 import { CampaignService } from "../../campaign.service";
 
 @Component({
@@ -21,10 +17,9 @@ export class CampaignDebugPage implements OnInit {
   debugCampaignId: string;
   debugCampaignRows: FlowTypes.Campaign_listRow[] = [];
   debugData: IDataEvaluationCache = {} as any;
-  notificationsHash: ILocalNotificationStorage = {};
   constructor(
     public campaignService: CampaignService,
-    private localNotificationService: LocalNotificationService,
+    public localNotificationService: LocalNotificationService,
     private dataEvaluationService: DataEvaluationService,
     private templateService: TemplateService,
     private router: Router,
@@ -32,37 +27,12 @@ export class CampaignDebugPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.listNotifications();
+    this.localNotificationService.loadNotifications();
     this.debugData = await this.dataEvaluationService.refreshDBCache();
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {
       this.setDebugCampaign(campaign_id);
     }
-  }
-
-  /***************************************************************************************
-   *  Notifications
-   **************************************************************************************/
-
-  public async scheduleNotification(row: FlowTypes.Campaign_listRow) {
-    console.log("scheduling notifications", row);
-    const { notification_schedule, id } = row;
-    const { _schedule_at, text } = notification_schedule;
-    await this.localNotificationService.scheduleNotification({
-      schedule: { at: _schedule_at },
-      body: text || "TODO - provide fallback",
-      title: "TODO",
-      extra: { row },
-      id: stringToIntegerHash(id),
-    });
-    await this.listNotifications();
-  }
-  public logNotifications() {
-    console.log("[Notifications]", this.notificationsHash);
-  }
-  private async listNotifications() {
-    const notifications = await this.localNotificationService.getPendingNotifications();
-    this.notificationsHash = notifications;
   }
 
   /***************************************************************************************
@@ -82,6 +52,11 @@ export class CampaignDebugPage implements OnInit {
       console.log("set debug campaign", debug_campaign);
       return this.processCampaign();
     }
+  }
+
+  public scheduleNotification(row: FlowTypes.Campaign_listRow) {
+    const { id, notification_schedule } = row;
+    return this.localNotificationService.schedulePLHNotification(id, notification_schedule, row);
   }
 
   /**

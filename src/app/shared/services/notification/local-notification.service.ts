@@ -7,6 +7,8 @@ import {
   Capacitor,
   LocalNotificationPendingList,
 } from "@capacitor/core";
+import { FlowTypes } from "src/app/shared/model";
+import { stringToIntegerHash } from "../../utils";
 const { LocalNotifications } = Plugins;
 
 const LOCAL_STORAGE_KEY = "local_notifications";
@@ -25,6 +27,10 @@ export type ILocalNotificationStorage = { [id: string]: Partial<LocalNotificatio
  */
 export class LocalNotificationService {
   enabled = false;
+
+  public notificationsList: LocalNotification[] = [];
+  public notificationsHash: ILocalNotificationStorage = {};
+
   constructor(private router: Router) {
     this.init();
     this._addListeners();
@@ -49,14 +55,13 @@ export class LocalNotificationService {
   /**
    * Retrieve a list of pending notification IDs from
    */
-  public async getPendingNotifications() {
+  public async loadNotifications() {
     const { notifications } = await LocalNotifications.getPending();
     const pendingNotificationIds = Object.values(notifications).map((n) => n.id);
     const localNotifications = this.getLocalStorageNotifications();
     // remove local notifications no longer listed in pending
     Object.keys(localNotifications).forEach((k) => {
       if (!pendingNotificationIds.includes(k)) {
-        console.log("removing notification", k);
         delete localNotifications[k];
       }
     });
@@ -67,7 +72,32 @@ export class LocalNotificationService {
       }
     });
     this.setLocalStorageNotifications(localNotifications);
+    // store variables
+    this.notificationsHash = localNotifications;
+    const list = Object.values(localNotifications) as LocalNotification[];
+    this.notificationsList = list.sort((a, b) => (a.schedule.at > b.schedule.at ? -1 : 1));
     return localNotifications;
+  }
+
+  /**
+   * Convert PLH notification schedule data and create local notification
+   * @param id string identifier for the notification. Will be converted to integer hash
+   * @param schedule
+   * @param data any additional data to be stored with the notification
+   */
+  public async schedulePLHNotification(
+    id: string,
+    schedule: FlowTypes.NotificationSchedule,
+    data?: any
+  ) {
+    const { _schedule_at, text, title } = schedule;
+    await this.scheduleNotification({
+      schedule: { at: _schedule_at },
+      body: text || "You have a new message from PLH",
+      title: title || "Notification",
+      extra: data,
+      id: stringToIntegerHash(id),
+    });
   }
 
   /**
@@ -77,25 +107,29 @@ export class LocalNotificationService {
    * see full scheduling options in type interface
    * see named actions below for configurations
    */
-  async scheduleNotification(
+  private async scheduleNotification(
     options: Partial<LocalNotification> & {
       schedule: LocalNotification["schedule"];
     }
   ) {
-    const result = await LocalNotifications.schedule({
-      notifications: [
-        {
-          ...NOTIFICATION_DEFAULTS,
-          ...options,
-        },
-      ],
-    });
+    const notifications = [{ ...NOTIFICATION_DEFAULTS, ...options }];
+    const result = await LocalNotifications.schedule({ notifications });
     const { id } = options;
     // when retrieved the numeric id has been converted back to string (for some reason)
     if (result?.notifications?.[0].id === `${id}`) {
       this.storeNotificationDetail(id, options);
     }
-    await this.getPendingNotifications();
+    return this.loadNotifications();
+  }
+
+  /**
+   *
+   */
+  public async removeNotification(notification: Partial<LocalNotification>) {
+    const { id } = notification;
+    const list: LocalNotificationPendingList = { notifications: [{ id: `${id}` }] };
+    await LocalNotifications.cancel(list);
+    return this.loadNotifications();
   }
 
   /**
@@ -114,14 +148,6 @@ export class LocalNotificationService {
   }
   private setLocalStorageNotifications(localNotifications: ILocalNotificationStorage) {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localNotifications));
-  }
-
-  /**
-   *
-   * @example this.removeNotifications({notifications:[{id:"103"}]})
-   */
-  removeNotifications(notifications: LocalNotificationPendingList) {
-    return LocalNotifications.cancel(notifications);
   }
 
   async _addListeners() {

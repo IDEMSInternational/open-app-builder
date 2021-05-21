@@ -1,9 +1,13 @@
 <ion-content class="ion-padding">
   <div style="display: flex; align-items: center">
     <h2 style="flex: 1">Campaign Debug</h2>
-    <ion-button fill="outline" (click)="logNotifications()" routerLink="notifications">
+    <ion-button
+      fill="outline"
+      [routerLink]="['/','campaigns','notifications']"
+      [disabled]="localNotificationService.notificationsList.length===0"
+    >
       <ion-icon name="notifications" slot="start"></ion-icon>
-      <span>{{(notificationsHash | objectValues).length}}</span>
+      <span>{{localNotificationService.notificationsList.length}}</span>
     </ion-button>
   </div>
 
