@@ -8,8 +8,7 @@ import { LocalNotificationService } from "src/app/shared/services/notification/l
   styleUrls: ["./notifications-debug.page.scss"],
 })
 export class NotificationsDebugPage implements OnInit {
-  private editableNotification: LocalNotification;
-  public editablePickerValue = new Date().toISOString();
+  public editableNotification: LocalNotification;
 
   constructor(public localNotificationService: LocalNotificationService) {}
 
@@ -24,15 +23,13 @@ export class NotificationsDebugPage implements OnInit {
   public showCustomNotificationSchedule(notification: LocalNotification, picker: IonDatetime) {
     this.editableNotification = notification;
     const pickerValue = new Date(notification.schedule.at).toISOString();
-    this.editablePickerValue = pickerValue;
     picker.value = pickerValue;
     picker.open();
   }
 
-  public async setCustomNotificationSchedule() {
-    const newTime = new Date(this.editablePickerValue);
-    if (newTime.getTime() !== new Date(this.editableNotification.schedule.at).getTime()) {
-      this.editableNotification.schedule.at = new Date(this.editablePickerValue);
+  public async setCustomNotificationSchedule(pickerValue: string) {
+    if (this.editableNotification) {
+      this.editableNotification.schedule.at = new Date(pickerValue);
       await this.localNotificationService.scheduleNotification(this.editableNotification as any);
       await this.localNotificationService.loadNotifications();
     }
