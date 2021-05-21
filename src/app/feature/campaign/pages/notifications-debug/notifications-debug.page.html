@@ -47,8 +47,7 @@
   <!-- Hidden picker used when creating custom datetime -->
   <ion-datetime
     style="display: none"
-    (ionChange)="setCustomNotificationSchedule()"
-    [(ngModel)]="editablePickerValue"
+    (ionChange)="setCustomNotificationSchedule(picker.value)"
     #picker
     displayFormat="MMM DD, h:mm A"
   ></ion-datetime>
