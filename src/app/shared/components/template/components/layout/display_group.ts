@@ -18,9 +18,12 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
           [parent]="parent"
         ></plh-template-component>
       </ng-container>
-      <ng-container *ngSwitchCase="'dashed_box'">
-        <plh-advanced-dashed-box [templateRow]="_row" [parent]="parent"></plh-advanced-dashed-box>
-      </ng-container>
+      <plh-advanced-dashed-box
+        *ngSwitchCase="'dashed_box'"
+        [templateRow]="_row"
+        [parent]="parent"
+      ></plh-advanced-dashed-box>
+      <plh-tmpl-form *ngSwitchCase="'form'" [templateRow]="_row" [parent]="parent"></plh-tmpl-form>
     </div>
   </div>`,
   styleUrls: ["../tmpl-components-common.scss"],

@@ -37759,9 +37759,6 @@
             "type": "button",
             "name": "btn_example",
             "value": "Continue",
-            "parameter_list": {
-              "style": "blue"
-            },
             "_nested_name": "dg_example_dashed_box.btn_example"
           }
         ],
@@ -37771,7 +37768,9 @@
         "type": "display_group",
         "name": "dg_example_form",
         "parameter_list": {
-          "type": "form"
+          "type": "form",
+          "get_device_info": "true",
+          "button_text": "Send"
         },
         "rows": [
           {
