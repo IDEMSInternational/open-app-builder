@@ -42,7 +42,7 @@
     flex-direction: column;
     position: relative;
     width: 85%;
-    border-radius: $border-radius-standard;
+    border-radius: var(--ion-border-radius-standard);
     overflow: hidden;
     max-height: 43px;
     padding: 0 10px 10px 10px;
