@@ -37062,7 +37062,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_text",
-        "value": "nothing selected",
+        "value": "name_var_2",
         "parameter_list": {
           "answer_list": "@local.answer_list_4"
         },
@@ -37109,7 +37109,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_image_1",
-        "value": "nothing selected",
+        "value": "happy",
         "parameter_list": {
           "answer_list": "@local.answer_list_5"
         },
@@ -37180,12 +37180,12 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_image_1",
-        "value": "nothing selected",
+        "name": "radio_group_image_3",
+        "value": "happiest",
         "parameter_list": {
           "answer_list": "@local.answer_list_5"
         },
-        "_nested_name": "radio_group_image_1",
+        "_nested_name": "radio_group_image_3",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -37218,11 +37218,11 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_two_options_1",
+        "name": "radio_group_two_options_3",
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
-        "_nested_name": "radio_group_two_options_1",
+        "_nested_name": "radio_group_two_options_3",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -37249,12 +37249,12 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_two_options_2",
+        "name": "radio_group_two_options_4",
         "parameter_list": {
           "answer_list": "@local.answer_list_2",
           "options_per_row": "2"
         },
-        "_nested_name": "radio_group_two_options_2",
+        "_nested_name": "radio_group_two_options_4",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -37281,12 +37281,12 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_image_2",
+        "name": "radio_group_image_4",
         "parameter_list": {
           "answer_list": "@local.answer_list_7",
           "options_per_row": "2"
         },
-        "_nested_name": "radio_group_image_2",
+        "_nested_name": "radio_group_image_4",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -37313,11 +37313,11 @@
       },
       {
         "type": "radio_group",
-        "name": "radio_group_image_2",
+        "name": "radio_group_image_5",
         "parameter_list": {
           "answer_list": "@local.answer_list_7"
         },
-        "_nested_name": "radio_group_image_2",
+        "_nested_name": "radio_group_image_5",
         "_dynamicFields": {
           "parameter_list": {
             "answer_list": [
@@ -37731,6 +37731,152 @@
           }
         ],
         "_nested_name": "dg_example_7"
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_dashed_box",
+        "parameter_list": {
+          "type": "dashed_box"
+        },
+        "rows": [
+          {
+            "type": "subtitle",
+            "value": "Subtitle",
+            "name": "subtitle",
+            "_nested_name": "dg_example_dashed_box.subtitle"
+          },
+          {
+            "type": "parent_point_box",
+            "name": "points_example_1",
+            "value": 3,
+            "parameter_list": {
+              "lottie_src": "lottie_animations/parent_centre.json",
+              "text": "text two"
+            },
+            "_nested_name": "dg_example_dashed_box.points_example_1"
+          },
+          {
+            "type": "button",
+            "name": "btn_example",
+            "value": "Continue",
+            "parameter_list": {
+              "style": "blue"
+            },
+            "_nested_name": "dg_example_dashed_box.btn_example"
+          }
+        ],
+        "_nested_name": "dg_example_dashed_box"
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_form",
+        "parameter_list": {
+          "type": "form"
+        },
+        "rows": [
+          {
+            "type": "text_box",
+            "name": "user_name",
+            "parameter_list": {
+              "help": "some help text",
+              "placeholder": "Add your name"
+            },
+            "_nested_name": "dg_example_form.user_name"
+          },
+          {
+            "type": "text_box",
+            "name": "user_phone",
+            "parameter_list": {
+              "help": "some help text",
+              "placeholder": "Add your phone number"
+            },
+            "_nested_name": "dg_example_form.user_phone"
+          },
+          {
+            "type": "simple_checkbox",
+            "name": "checkbox_1",
+            "value": false,
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "demo_changed_field_checkbox",
+                  "@local.checkbox_1"
+                ],
+                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
+              }
+            ],
+            "parameter_list": {
+              "label_text": "Example answer?"
+            },
+            "_nested_name": "dg_example_form.checkbox_1",
+            "_dynamicFields": {
+              "action_list": {
+                "0": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@local.checkbox_1",
+                        "matchedExpression": "@local.checkbox_1",
+                        "type": "local",
+                        "fieldName": "checkbox_1"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      "matchedExpression": "@local.checkbox_1",
+                      "type": "local",
+                      "fieldName": "checkbox_1"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      "matchedExpression": "@local.checkbox_1",
+                      "type": "local",
+                      "fieldName": "checkbox_1"
+                    }
+                  ]
+                }
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.checkbox_1": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ]
+            }
+          },
+          {
+            "type": "simple_checkbox",
+            "name": "checkbox_2",
+            "value": true,
+            "parameter_list": {
+              "label_text": "Example answer?"
+            },
+            "_nested_name": "dg_example_form.checkbox_2"
+          },
+          {
+            "type": "title",
+            "value": "Some text here",
+            "name": "title",
+            "_nested_name": "dg_example_form.title"
+          },
+          {
+            "type": "text_area",
+            "name": "text_area",
+            "parameter_list": {
+              "placeholder": "example placeholder"
+            },
+            "_nested_name": "dg_example_form.text_area"
+          }
+        ],
+        "_nested_name": "dg_example_form"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -40356,54 +40502,255 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "feature_advanced_dashed_box",
+    "flow_name": "feature_toggle_bar ",
     "status": "released",
     "rows": [
       {
-        "type": "advanced_dashed_box",
-        "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
-        "parameter_list": {
-          "icon_src": "plh_images/icons/star_circle.svg",
-          "icon_position": "top-left"
-        },
-        "rows": [
+        "type": "toggle_bar",
+        "name": "toggle_1",
+        "value": false,
+        "action_list": [
           {
-            "type": "button",
-            "name": "btn_example_1",
-            "value": "some text as an example ",
-            "_nested_name": "advanced_dashed_box.btn_example_1"
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "changed_field_toggle",
+              "@local.toggle_1"
+            ],
+            "_raw": "changed | set_field:changed_field_toggle:@local.toggle_1",
+            "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
           }
         ],
-        "name": "advanced_dashed_box",
-        "_nested_name": "advanced_dashed_box"
+        "parameter_list": {
+          "label": "some text",
+          "position": "right",
+          "true_text": "some text for true value",
+          "false_text": "text for false"
+        },
+        "_nested_name": "toggle_1",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.toggle_1",
+                    "matchedExpression": "@local.toggle_1",
+                    "type": "local",
+                    "fieldName": "toggle_1"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  "matchedExpression": "@local.toggle_1",
+                  "type": "local",
+                  "fieldName": "toggle_1"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  "matchedExpression": "@local.toggle_1",
+                  "type": "local",
+                  "fieldName": "toggle_1"
+                }
+              ]
+            }
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.toggle_1": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ]
+        }
       },
       {
-        "type": "advanced_dashed_box",
-        "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
-        "parameter_list": {
-          "icon_src": "plh_images/icons/star_circle.svg",
-          "icon_position": "top-left"
-        },
-        "rows": [
+        "type": "toggle_bar",
+        "name": "toggle_2",
+        "value": false,
+        "action_list": [
           {
-            "type": "subtitle",
-            "value": "Subtitle",
-            "name": "subtitle",
-            "_nested_name": "advanced_dashed_box.subtitle"
-          },
-          {
-            "type": "parent_point_box",
-            "name": "points_example_1",
-            "value": 3,
-            "parameter_list": {
-              "lottie_src": "lottie_animations/parent_centre.json",
-              "text": "text two"
-            },
-            "_nested_name": "advanced_dashed_box.points_example_1"
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "changed_field_toggle",
+              "@local.toggle_1"
+            ],
+            "_raw": "changed | set_field:changed_field_toggle:@local.toggle_1",
+            "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
           }
         ],
-        "name": "advanced_dashed_box",
-        "_nested_name": "advanced_dashed_box"
+        "parameter_list": {
+          "label": "some text",
+          "position": "center",
+          "true_text": "some text for true value"
+        },
+        "_nested_name": "toggle_2",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.toggle_1",
+                    "matchedExpression": "@local.toggle_1",
+                    "type": "local",
+                    "fieldName": "toggle_1"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  "matchedExpression": "@local.toggle_1",
+                  "type": "local",
+                  "fieldName": "toggle_1"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  "matchedExpression": "@local.toggle_1",
+                  "type": "local",
+                  "fieldName": "toggle_1"
+                }
+              ]
+            }
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.toggle_1": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ]
+        }
+      },
+      {
+        "type": "toggle_bar",
+        "name": "toggle_3",
+        "value": false,
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "changed_field_toggle",
+              "@local.toggle_1"
+            ],
+            "_raw": "changed | set_field:changed_field_toggle:@local.toggle_1",
+            "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
+          }
+        ],
+        "parameter_list": {
+          "label": "some text",
+          "false_text": "false text"
+        },
+        "_nested_name": "toggle_3",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.toggle_1",
+                    "matchedExpression": "@local.toggle_1",
+                    "type": "local",
+                    "fieldName": "toggle_1"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  "matchedExpression": "@local.toggle_1",
+                  "type": "local",
+                  "fieldName": "toggle_1"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  "matchedExpression": "@local.toggle_1",
+                  "type": "local",
+                  "fieldName": "toggle_1"
+                }
+              ]
+            }
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.toggle_1": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ]
+        }
+      },
+      {
+        "type": "toggle_bar",
+        "name": "toggle_4",
+        "value": true,
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "changed_field_toggle",
+              "@local.toggle_1"
+            ],
+            "_raw": "changed | set_field:changed_field_toggle:@local.toggle_1",
+            "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
+          }
+        ],
+        "parameter_list": {
+          "label": "some text",
+          "false_text": "false text"
+        },
+        "_nested_name": "toggle_4",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "1": [
+                  {
+                    "fullExpression": "@local.toggle_1",
+                    "matchedExpression": "@local.toggle_1",
+                    "type": "local",
+                    "fieldName": "toggle_1"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  "matchedExpression": "@local.toggle_1",
+                  "type": "local",
+                  "fieldName": "toggle_1"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  "matchedExpression": "@local.toggle_1",
+                  "type": "local",
+                  "fieldName": "toggle_1"
+                }
+              ]
+            }
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.toggle_1": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -51530,11 +51877,39 @@
       {
         "name": "answer_list_1",
         "value": [
-          "name:false | text: On my own | image:plh_images/workshops/options/individual.svg | image_selected:plh_images/workshops/options/individual.svg",
-          "name:true | text:In my group | image:plh_images/workshops/options/together.svg | image_selected:plh_images/workshops/options/together.svg"
+          "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg | image_selected:plh_images/workshops/options/individual.svg",
+          "name:true | text: @global.together | image:plh_images/workshops/options/together.svg | image_selected:plh_images/workshops/options/together.svg"
         ],
         "type": "set_variable",
-        "_nested_name": "answer_list_1"
+        "_nested_name": "answer_list_1",
+        "_dynamicFields": {
+          "value": {
+            "0": [
+              {
+                "fullExpression": "name:false | text: @global.individual | image:plh_images/workshops/options/individual.svg | image_selected:plh_images/workshops/options/individual.svg",
+                "matchedExpression": "@global.individual",
+                "type": "global",
+                "fieldName": "individual"
+              }
+            ],
+            "1": [
+              {
+                "fullExpression": "name:true | text: @global.together | image:plh_images/workshops/options/together.svg | image_selected:plh_images/workshops/options/together.svg",
+                "matchedExpression": "@global.together",
+                "type": "global",
+                "fieldName": "together"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@global.individual": [
+            "value.0"
+          ],
+          "@global.together": [
+            "value.1"
+          ]
+        }
       },
       {
         "type": "radio_group",

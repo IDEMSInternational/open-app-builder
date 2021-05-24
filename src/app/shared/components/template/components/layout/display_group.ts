@@ -10,12 +10,17 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     [class]="style"
     [style.marginBottom.px]="offset"
   >
-    <div [style.marginBottom.px]="-offset" class="offset">
-      <plh-template-component
-        *ngFor="let childRow of _row.rows"
-        [row]="childRow"
-        [parent]="parent"
-      ></plh-template-component>
+    <div [style.marginBottom.px]="-offset" class="offset" [ngSwitch]="type">
+      <ng-container *ngSwitchCase="'default'">
+        <plh-template-component
+          *ngFor="let childRow of _row.rows"
+          [row]="childRow"
+          [parent]="parent"
+        ></plh-template-component>
+      </ng-container>
+      <ng-container *ngSwitchCase="'dashed_box'">
+        <plh-advanced-dashed-box [templateRow]="_row" [parent]="parent"></plh-advanced-dashed-box>
+      </ng-container>
     </div>
   </div>`,
   styleUrls: ["../tmpl-components-common.scss"],
@@ -53,6 +58,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   style: string | null;
   offset: number = 0;
   bgColor: string;
+  type: string;
 
   constructor(private elRef: ElementRef) {
     super();
@@ -73,6 +79,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
+    this.type = getStringParamFromTemplateRow(this._row, "type", "default");
   }
 
   setBackground() {
