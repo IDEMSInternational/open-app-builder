@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -51,6 +54,7 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
   public completed: boolean;
   public percentComplete: number;
   public title: string;
+  private launch_when_locked: boolean;
 
   @Input() id: string;
   @Output() toggleState = new EventEmitter<string>();
@@ -63,12 +67,19 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
     console.log("ROW??", this._row);
     if (!this._row.disabled) {
       this.toggleState.emit(this.id);
+    } else if (this._row.disabled && this.launch_when_locked) {
+      this.triggerActions("click");
     }
   }
 
   private getParams() {
     this.completed = getStringParamFromTemplateRow(this._row, "completed", "false") === "true";
     this.title = getStringParamFromTemplateRow(this._row, "title", null);
+    this.launch_when_locked = getBooleanParamFromTemplateRow(
+      this._row,
+      "launch_when_locked",
+      false
+    );
     this.percentComplete = this._row.value ? this._row.value : 0;
     this.updateStatus(this.percentComplete);
   }
