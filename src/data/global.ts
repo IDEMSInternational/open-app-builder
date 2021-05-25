@@ -3,6 +3,59 @@
   export const global: FlowTypes.Global[] = [
   {
     "flow_type": "global",
+    "flow_name": "in_week_message_titles",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "m_workshop_tomorrow",
+        "value": "New @global.weekly_workshop ready tomorrow!"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "m_workshop_released",
+        "value": "New @global.weekly_workshop!"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "m_workshop_reminder",
+        "value": "Workshop reminder"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "m_workshop_in_progress",
+        "value": "Nice progress!"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "m_praise",
+        "value": "You are appreciated!"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "m_something_fun",
+        "value": "Something fun"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "m_parent_points_overview",
+        "value": "Your @global.parent_points"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "m_hp_reminder",
+        "value": "Home practice reminder"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "m_hp_review",
+        "value": "Home practice review"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_in_week_messages.xlsx"
+  },
+  {
+    "flow_type": "global",
     "flow_name": "names_of_characters",
     "status": "released",
     "rows": [
@@ -551,6 +604,11 @@
       },
       {
         "type": "declare_global_constant",
+        "name": "current_relax",
+        "value": "This week's relax"
+      },
+      {
+        "type": "declare_global_constant",
         "name": "my_activities",
         "value": "My activities"
       },
@@ -563,6 +621,11 @@
         "type": "declare_global_constant",
         "name": "random_activity",
         "value": "Random activity"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "current_activity",
+        "value": "This week's activity"
       },
       {
         "type": "declare_field_default",
@@ -1225,13 +1288,13 @@
     "rows": [
       {
         "type": "declare_global_constant",
-        "name": "home_practice_problem_solving",
-        "value": "Talk about Home Practice"
+        "name": "home_practice",
+        "value": "Home Practice"
       },
       {
         "type": "declare_global_constant",
-        "name": "home_practice",
-        "value": "Home Practice"
+        "name": "home_practice_problem_solving",
+        "value": "Talk about @global.home_practice"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_workshops.xlsx"
@@ -1241,11 +1304,6 @@
     "flow_name": "workshop_completion_levels",
     "status": "released",
     "rows": [
-      {
-        "type": "declare_field_default",
-        "name": "w_self_care_started",
-        "value": false
-      },
       {
         "type": "declare_field_default",
         "name": "w_self_care_completion_level",
@@ -1368,6 +1426,126 @@
       },
       {
         "type": "declare_field_default",
+        "name": "w_self_care_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_1on1_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_praise_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_instruct_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_stress_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_money_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_rules_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_consequence_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_solve_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_safe_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_crisis_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_celebrate_started",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_self_care_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_1on1_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_praise_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_instruct_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_stress_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_money_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_rules_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_consequence_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_solve_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_safe_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_crisis_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_celebrate_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
         "name": "w_self_care_disabled",
         "value": false
       },
@@ -1442,22 +1620,12 @@
       {
         "type": "declare_global_constant",
         "name": "together",
-        "value": "Group"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "together_alternative",
         "value": "In my group"
       },
       {
         "type": "declare_global_constant",
         "name": "individual",
-        "value": "Me"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "individual_alternative",
-        "value": "On my own"
+        "value": "By myself"
       },
       {
         "type": "declare_field_default",
@@ -1467,12 +1635,12 @@
       {
         "type": "declare_field_default",
         "name": "group_name",
-        "value": "Friends"
+        "value": "friends"
       },
       {
         "type": "declare_field_default",
         "name": "user_name",
-        "value": "Awesome Parent"
+        "value": "awesome parent"
       },
       {
         "type": "declare_field_default",
