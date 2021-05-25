@@ -360,6 +360,7 @@
       {
         "type": "display_group",
         "name": "tile_weekly_workshops",
+        "value": "tile_weekly_workshops",
         "action_list": [
           {
             "trigger": "click",
@@ -555,6 +556,7 @@
       {
         "type": "display_group",
         "name": "tile_parent_points",
+        "value": "tile_parent_points",
         "action_list": [
           {
             "trigger": "click",
@@ -626,10 +628,10 @@
                     "trigger": "click",
                     "action_id": "pop_up",
                     "args": [
-                      "daily_relax_pop_up"
+                      "m_relax"
                     ],
-                    "_raw": "click | pop_up: daily_relax_pop_up",
-                    "_cleaned": "click | pop_up: daily_relax_pop_up"
+                    "_raw": "click | pop_up: m_relax",
+                    "_cleaned": "click | pop_up: m_relax"
                   }
                 ],
                 "hidden": "@fields.daily_relax_done",
@@ -666,6 +668,7 @@
       {
         "type": "display_group",
         "name": "tile_parent_centre",
+        "value": "tile_parent_centre",
         "action_list": [
           {
             "trigger": "click",
@@ -819,7 +822,7 @@
       },
       {
         "type": "tile_component",
-        "name": "quick_start",
+        "name": "quick_start_first_week",
         "action_list": [
           {
             "trigger": "click",
@@ -848,7 +851,7 @@
           "second_line_text": "@global.w_self_care",
           "icon_src": "plh_images/icons/play_white.svg"
         },
-        "_nested_name": "quick_start",
+        "_nested_name": "quick_start_first_week",
         "_dynamicFields": {
           "action_list": {
             "0": {
@@ -915,7 +918,7 @@
       },
       {
         "type": "tile_component",
-        "name": "quick_start",
+        "name": "quick_start_second_week",
         "action_list": [
           {
             "trigger": "click",
@@ -944,7 +947,7 @@
           "second_line_text": "@global.w_1on1",
           "icon_src": "plh_images/icons/play_white.svg"
         },
-        "_nested_name": "quick_start",
+        "_nested_name": "quick_start_second_week",
         "_dynamicFields": {
           "action_list": {
             "0": {
@@ -1218,8 +1221,20 @@
             "type": "accordion_section",
             "name": "temp_name_6",
             "value": "@field.w_instruct_completion_level",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "pop_up",
+                "args": [
+                  "workshop_accordion_item"
+                ],
+                "_raw": "click | pop_up:workshop_accordion_item",
+                "_cleaned": "click | pop_up:workshop_accordion_item"
+              }
+            ],
             "parameter_list": {
               "state": "closed",
+              "launch_when_locked": "true",
               "title": "@global.w_instruct"
             },
             "disabled": "@field.w_instruct_disabled",
@@ -1286,6 +1301,7 @@
             "value": "@field.w_stress_completion_level",
             "parameter_list": {
               "state": "closed",
+              "launch_when_locked": "true",
               "title": "@global.w_stress"
             },
             "disabled": "@field.w_stress_disabled",
@@ -1820,6 +1836,11 @@
     "status": "released",
     "rows": [
       {
+        "name": "target_workshop_stepper",
+        "type": "set_variable",
+        "_nested_name": "target_workshop_stepper"
+      },
+      {
         "name": "image_individual",
         "value": "plh_images/workshops/options/individual.svg",
         "type": "set_variable",
@@ -1828,12 +1849,12 @@
       {
         "type": "text",
         "name": "text",
-        "value": "Start the @global.w_self_care workshop",
+        "value": "Start workshop @global.w_self_care",
         "_nested_name": "text",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Start the @global.w_self_care workshop",
+              "fullExpression": "Start workshop @global.w_self_care",
               "matchedExpression": "@global.w_self_care",
               "type": "global",
               "fieldName": "w_self_care"
@@ -1852,6 +1873,16 @@
         "action_list": [
           {
             "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "do_this_workshop_together",
+              false
+            ],
+            "_raw": "click | set_field:do_this_workshop_together:false",
+            "_cleaned": "click | set_field:do_this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
             "action_id": "go_to",
             "args": [
               "@local.target_workshop_stepper"
@@ -1868,7 +1899,7 @@
         "_nested_name": "individual_workshop",
         "_dynamicFields": {
           "action_list": {
-            "0": {
+            "1": {
               "args": {
                 "0": [
                   {
@@ -1910,9 +1941,9 @@
         },
         "_dynamicDependencies": {
           "@local.target_workshop_stepper": [
-            "action_list.0.args.0",
-            "action_list.0._raw",
-            "action_list.0._cleaned"
+            "action_list.1.args.0",
+            "action_list.1._raw",
+            "action_list.1._cleaned"
           ],
           "@local.image_individual": [
             "parameter_list.icon_src"
@@ -1929,21 +1960,21 @@
     "rows": [
       {
         "name": "label_group",
-        "value": "@global.together_alternative",
+        "value": "@global.together",
         "type": "set_variable",
         "_nested_name": "label_group",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@global.together_alternative",
-              "matchedExpression": "@global.together_alternative",
+              "fullExpression": "@global.together",
+              "matchedExpression": "@global.together",
               "type": "global",
-              "fieldName": "together_alternative"
+              "fieldName": "together"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.together_alternative": [
+          "@global.together": [
             "value"
           ]
         }
@@ -1956,21 +1987,21 @@
       },
       {
         "name": "label_individual",
-        "value": "@global.individual_alternative",
+        "value": "@global.individual",
         "type": "set_variable",
         "_nested_name": "label_individual",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@global.individual_alternative",
-              "matchedExpression": "@global.individual_alternative",
+              "fullExpression": "@global.individual",
+              "matchedExpression": "@global.individual",
               "type": "global",
-              "fieldName": "individual_alternative"
+              "fieldName": "individual"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@global.individual_alternative": [
+          "@global.individual": [
             "value"
           ]
         }
