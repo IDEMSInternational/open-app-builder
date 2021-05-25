@@ -40918,13 +40918,56 @@
                   "type": "fields",
                   "fieldName": "do_workshops_together"
                 }
-              ]
+              },
+              "parameter_list": {
+                "icon_src": [
+                  {
+                    "fullExpression": "@local.active_campaign.icon",
+                    "matchedExpression": "@local.active_campaign.icon",
+                    "type": "local",
+                    "fieldName": "active_campaign"
+                  }
+                ],
+                "text": [
+                  {
+                    "fullExpression": "@local.active_campaign.text",
+                    "matchedExpression": "@local.active_campaign.text",
+                    "type": "local",
+                    "fieldName": "active_campaign"
+                  }
+                ]
+              }
             },
             "_dynamicDependencies": {
               "@fields.do_workshops_together": [
                 "condition"
               ]
             }
+          }
+        ],
+        "_nested_name": "workshop_activity"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/survey_activity.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "talk_together",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "workshop_activity",
+        "value": "workshop_activity",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
           },
           {
             "name": "activity_image",
@@ -50135,7 +50178,15 @@
             "value"
           ]
         }
-      },
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_small_issues.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "debug_text",
+    "status": "released",
+    "rows": [
       {
         "type": "set_variable",
         "name": "var_number_0",
@@ -65001,7 +65052,15 @@
             "parameter_list.answer_list"
           ]
         }
-      },
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_set_theme_2",
+    "status": "released",
+    "rows": [
       {
         "type": "combo_box",
         "name": "combo_box_with_placeholder_1",

@@ -8,7 +8,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
     *ngIf="_row.value"
     class="small standard normal margin-t-large"
     [class]="style"
-    [innerHTML]="_row.value | markdown"
+    [innerHTML]="type === 'marked' ? (_row.value | markdown) : (_row.value | number)"
     [style.textAlign]="textAlign"
   ></p>`,
   styleUrls: ["./tmpl-components-common.scss"],
@@ -44,6 +44,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   textAlign: string | null;
   style: string | null;
+  type: string;
   constructor() {
     super();
   }
@@ -54,6 +55,7 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
 
   getParams() {
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null);
+    this.type = getStringParamFromTemplateRow(this._row, "type", "marked");
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
   }
 }
