@@ -1,7 +1,3 @@
-ion-button.no-padding {
-  --padding-start: 0;
-  --padding-end: 0;
-}
 .row-header {
   font-weight: 500;
 }
@@ -12,4 +8,8 @@ ion-button.no-padding {
 .row-header[data-active="false"],
 .condition[data-satisfied="false"] {
   color: #a30000;
+}
+.divider {
+  margin: 1em 0;
+  border-top: 1px solid var(--ion-color-medium);
 }
