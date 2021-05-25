@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HTTP } from "@ionic-native/http/ngx";
 import { Device } from "@ionic-native/device/ngx";
-import { Subject, BehaviorSubject } from "rxjs";
+import { Subject } from "rxjs";
 import { environment } from "src/environments/environment";
 import {
   Plugins,
@@ -20,12 +20,7 @@ export class NotificationService {
   initializing = false;
   token: string;
   public messages$: Subject<IRapidProMessage> = new Subject();
-  constructor(
-    private device: Device,
-    private http: HTTP
-  ) {
-    console.log("hello notification service");
-  }
+  constructor(private device: Device, private http: HTTP) {}
 
   /**
    * Initialisation is called from app.component.ts after platform ready
@@ -43,14 +38,11 @@ export class NotificationService {
       } else {
         // Show some error
       }
-      PushNotifications.addListener(
-        "registration",
-        (token: PushNotificationToken) => {
-          this.token = token.value;
-          console.log(`The token is ${token.value}`);
-          this.registerRapidproToken(token.value);
-        }
-      );
+      PushNotifications.addListener("registration", (token: PushNotificationToken) => {
+        this.token = token.value;
+        console.log(`The token is ${token.value}`);
+        this.registerRapidproToken(token.value);
+      });
 
       PushNotifications.addListener("registrationError", (error: any) => {
         console.error("Error on registration: " + JSON.stringify(error));

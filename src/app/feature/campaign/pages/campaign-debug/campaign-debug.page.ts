@@ -6,6 +6,7 @@ import {
   DataEvaluationService,
   IDataEvaluationCache,
 } from "src/app/shared/services/data/data-evaluation.service";
+import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
 import { CampaignService } from "../../campaign.service";
 
 @Component({
@@ -16,8 +17,10 @@ export class CampaignDebugPage implements OnInit {
   debugCampaignId: string;
   debugCampaignRows: FlowTypes.Campaign_listRow[] = [];
   debugData: IDataEvaluationCache = {} as any;
+
   constructor(
     public campaignService: CampaignService,
+    public localNotificationService: LocalNotificationService,
     private dataEvaluationService: DataEvaluationService,
     private templateService: TemplateService,
     private router: Router,
@@ -25,12 +28,17 @@ export class CampaignDebugPage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.localNotificationService.loadNotifications();
     this.debugData = await this.dataEvaluationService.refreshDBCache();
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {
       this.setDebugCampaign(campaign_id);
     }
   }
+
+  /***************************************************************************************
+   *  Campaign Methods
+   **************************************************************************************/
 
   public setDebugCampaign(debug_campaign: string) {
     if (debug_campaign !== this.debugCampaignId) {
@@ -42,9 +50,12 @@ export class CampaignDebugPage implements OnInit {
         queryParamsHandling: "merge",
         replaceUrl: true,
       });
-      console.log("set debug campaign", debug_campaign);
       return this.processCampaign();
     }
+  }
+
+  public scheduleNotification(row: FlowTypes.Campaign_listRow) {
+    return this.campaignService.scheduleCampaignNotification(row);
   }
 
   /**
@@ -69,27 +80,6 @@ export class CampaignDebugPage implements OnInit {
     // TODO - reload cache after trigger
   }
 
-  public logDebugInfo(row: FlowTypes.Campaign_listRow) {
-    console.group(row._id);
-    console.log(row);
-    console.groupEnd();
-  }
-  public async setDebugFirstLaunch(value: any) {
-    if (value && value !== this.debugData.first_app_launch) {
-      console.log("set debug first launch", value);
-      this.debugData.first_app_launch = value;
-      this.debugData.dbCache.app_events = { app_launch: [{ _created: value }] };
-      await this.processCampaign();
-    }
-  }
-  public async setDebugAppDay(value: any) {
-    if (value && Number(value) !== this.debugData.app_day) {
-      console.log("set debug app day", value);
-      this.debugData.app_day = Number(value);
-      await this.processCampaign();
-    }
-  }
-
   private async processCampaign() {
     this.debugCampaignRows = [];
     const campaign_id = this.debugCampaignId;
@@ -102,5 +92,29 @@ export class CampaignDebugPage implements OnInit {
     );
     this.debugCampaignRows = evaluated;
     console.log("[Campaign] processed", { data: this.dataEvaluationService.data, evaluated });
+  }
+
+  /***************************************************************************************
+   *  Debug Methods
+   **************************************************************************************/
+
+  public logDebugInfo(row: FlowTypes.Campaign_listRow) {
+    console.group(row.id);
+    console.log(row);
+    console.groupEnd();
+  }
+  public async setDebugFirstLaunch(value: any) {
+    if (value && value !== this.debugData.first_app_launch) {
+      this.debugData.first_app_launch = value;
+      this.debugData.dbCache.app_events = { app_launch: [{ _created: value }] };
+      await this.processCampaign();
+    }
+  }
+  public async setDebugAppDay(value: any) {
+    if (value && Number(value) !== this.debugData.app_day) {
+      console.log("set debug app day", value);
+      this.debugData.app_day = Number(value);
+      await this.processCampaign();
+    }
   }
 }
