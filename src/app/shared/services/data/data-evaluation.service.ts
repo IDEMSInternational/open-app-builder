@@ -14,7 +14,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
 @Injectable({ providedIn: "root" })
 export class DataEvaluationService {
-  public data: ICacheData;
+  public data: IDataEvaluationCache;
   constructor(
     private dbService: DbService,
     private appEventService: AppEventService,
@@ -35,12 +35,24 @@ export class DataEvaluationService {
     const app_events = arrayToHashmapArray(appEvents, "event_id");
     const dataEvents = await this.dbService.table("data_events").orderBy("_created").toArray();
     const data_events = arrayToHashmapArray(dataEvents, "name");
-    const app_day = this.appEventService.summary.app_day;
+    const { app_day, first_app_launch } = this.appEventService.summary;
     // TODO - add db bindings for reminder_events
     const reminder_events = {};
-    this.data = { app_day, dbCache: { task_actions, app_events, reminder_events, data_events } };
+    this.setDBCache({
+      app_day,
+      first_app_launch,
+      dbCache: { task_actions, app_events, reminder_events, data_events },
+    });
     log("[Data Evaluation] cache updated", this.data);
     return this.data;
+  }
+
+  /**
+   * Expose public method for setting cached data so that debug services can overwrite
+   * default values read from DB
+   */
+  public setDBCache(data: IDataEvaluationCache) {
+    this.data = data;
   }
 
   /**
@@ -52,6 +64,7 @@ export class DataEvaluationService {
     condition: FlowTypes.DataEvaluationCondition
   ): Promise<boolean> {
     log_group("[Data Evaluation] start", condition._raw);
+    log(condition);
     if (!this.data) {
       // TODO - determine if using a cache-first approach is better or just to make the queries live
       await this.refreshDBCache();
@@ -79,26 +92,27 @@ export class DataEvaluationService {
       return undefined;
     }
     // the action history is already organised by filter field (e.g. event_id, task_id etc.), so select child collection (if entries exist)
-    if (!this.data.dbCache[table_id][filter.field]) {
+    if (!this.data.dbCache[table_id][filter.value]) {
+      log("no table data", { table_id, field: filter.value, data: this.data.dbCache });
       return false;
     }
-    let results = this.data.dbCache[table_id][filter.field];
+    let results = this.data.dbCache[table_id][filter.value];
     // TODO - assumes standard sort order fine, - may need in future (e.g. by _created)
     if (order === "asc") {
       results = results.reverse();
     }
     // TODO - assumes filtering on 'value' field - may want way to specify which field to compare
     // TODO - if evaluating on value might need to compare to first value before filter
-    let filteredResults = results.filter((res) => res.value === filter.value);
+    // let filteredResults = results.filter((res) => res.value === filter.value);
 
-    log("process db condition", { filteredResults, evaluate, results, filter, table_id });
+    log("process db condition", { results, evaluate, filter, table_id });
     if (evaluate) {
       // TODO - Assumes all evaluations are based on creation date, possible future syntax to allow more options
-      const evaulateValue = filteredResults[0]?._created;
+      const evaulateValue = results[0]?._created;
       return this.evaluateDBLookupCondition(evaulateValue, evaluate);
     }
     // default - return if entries exist
-    return filteredResults.length > 0;
+    return results.length > 0;
   }
 
   private evaluateDBLookupCondition(
@@ -153,8 +167,9 @@ export class DataEvaluationService {
   }
 }
 
-interface ICacheData {
+export interface IDataEvaluationCache {
   app_day: number;
+  first_app_launch: string;
   /** As database lookups are async and inefficient, store key results in memory (keyed by target field) */
   dbCache: { [table_id in IDBTable]?: { [filter_id: string]: any[] } };
   // taskdbCache: { [action_id: string]: ITaskAction[] };

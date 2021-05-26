@@ -9,6 +9,9 @@ import {
 } from "@capacitor/core";
 const { LocalNotifications } = Plugins;
 
+const LOCAL_STORAGE_KEY = "local_notifications";
+export type ILocalNotificationStorage = { [id: string]: Partial<LocalNotification> };
+
 @Injectable({
   providedIn: "root",
 })
@@ -22,6 +25,10 @@ const { LocalNotifications } = Plugins;
  */
 export class LocalNotificationService {
   enabled = false;
+
+  public notificationsList: LocalNotification[] = [];
+  public notificationsHash: ILocalNotificationStorage = {};
+
   constructor(private router: Router) {
     this.init();
     this._addListeners();
@@ -44,35 +51,80 @@ export class LocalNotificationService {
   }
 
   /**
+   * Retrieve a list of pending notification IDs from
+   */
+  public async loadNotifications() {
+    const { notifications } = await LocalNotifications.getPending();
+    const pendingNotificationIds = Object.values(notifications).map((n) => n.id);
+    const localNotifications = this.getLocalStorageNotifications();
+    // remove local notifications no longer listed in pending
+    Object.keys(localNotifications).forEach((k) => {
+      if (!pendingNotificationIds.includes(k)) {
+        delete localNotifications[k];
+      }
+    });
+    // check for pending notifications with no local data stored (simply log error)
+    pendingNotificationIds.forEach((id) => {
+      if (!localNotifications.hasOwnProperty(id)) {
+        console.error("No local notification meta saved for id", id);
+      }
+    });
+    this.setLocalStorageNotifications(localNotifications);
+    // store variables
+    this.notificationsHash = localNotifications;
+    const list = Object.values(localNotifications) as LocalNotification[];
+    this.notificationsList = list.sort((a, b) => (a.schedule.at > b.schedule.at ? -1 : 1));
+    return localNotifications;
+  }
+
+  /**
    * Schedule a local notification
    * @param options - Supports full notification options,
    * with a minimum of schedule required and a named action type
    * see full scheduling options in type interface
    * see named actions below for configurations
    */
-  async scheduleNotification(
+  public async scheduleNotification(
     options: Partial<LocalNotification> & {
       schedule: LocalNotification["schedule"];
     }
   ) {
-    const result = await LocalNotifications.schedule({
-      notifications: [
-        {
-          ...NOTIFICATION_DEFAULTS,
-          ...options,
-        },
-      ],
-    });
-    console.log("scheduled notifications", result);
-    return result;
+    const notifications = [{ ...NOTIFICATION_DEFAULTS, ...options }];
+    const result = await LocalNotifications.schedule({ notifications });
+    const { id } = options;
+    // when retrieved the numeric id has been converted back to string (for some reason)
+    if (result?.notifications?.[0].id === `${id}`) {
+      this.storeNotificationDetail(id, options);
+    }
+    return this.loadNotifications();
   }
 
   /**
    *
-   * @example this.removeNotifications({notifications:[{id:"103"}]})
    */
-  removeNotifications(notifications: LocalNotificationPendingList) {
-    return LocalNotifications.cancel(notifications);
+  public async removeNotification(notification: Partial<LocalNotification>) {
+    const { id } = notification;
+    const list: LocalNotificationPendingList = { notifications: [{ id: `${id}` }] };
+    await LocalNotifications.cancel(list);
+    return this.loadNotifications();
+  }
+
+  /**
+   * When notifications are scheduled only the ID number (as string) is returned when querying
+   * Store full details in localstorage for future retrieval
+   */
+  private storeNotificationDetail(id: number, notification: Partial<LocalNotification>) {
+    const localNotifications = this.getLocalStorageNotifications();
+    localNotifications[`${id}`] = notification;
+    this.setLocalStorageNotifications(localNotifications);
+  }
+  private getLocalStorageNotifications() {
+    const storedNotifications = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const notificationsByKey: ILocalNotificationStorage = JSON.parse(storedNotifications || "{}");
+    return notificationsByKey;
+  }
+  private setLocalStorageNotifications(localNotifications: ILocalNotificationStorage) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localNotifications));
   }
 
   async _addListeners() {
@@ -89,9 +141,8 @@ export class LocalNotificationService {
       // good to have default as can only ever have 1 listener for each type
     );
     // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
-    LocalNotifications.addListener(
-      "localNotificationReceived",
-      (notification) => console.log(["NOTIFICATION RECEIVED"], notification)
+    LocalNotifications.addListener("localNotificationReceived", (notification) =>
+      console.log(["NOTIFICATION RECEIVED"], notification)
     );
   }
 }

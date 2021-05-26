@@ -1,9 +1,10 @@
-@import "../../../../../../theme/mixins.scss";
+@import "../../../../../../../theme/mixins.scss";
 
 .box-wrapper {
   padding: 25px;
   .item {
     @include flex-centered;
+    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
     width: 100%;

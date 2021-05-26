@@ -8,7 +8,9 @@ import { Type } from "@angular/core";
 
 import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AccordionSectionComponent } from "./layout/accordion_section";
+import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
+import { FormComponent } from "./layout/form";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
@@ -21,6 +23,7 @@ import { TmplTextComponent } from "./text";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplSubtitleComponent } from "./subtitle";
+import { TmplToggleBarComponent } from "./toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
@@ -49,6 +52,7 @@ export const TEMPLATE_COMPONENTS = [
   WorkshopsComponent,
   TmplTitleComponent,
   TmplSubtitleComponent,
+  TmplToggleBarComponent,
   TmplDisplayGroupComponent,
   TmplAudioComponent,
   TmplButtonComponent,
@@ -56,6 +60,8 @@ export const TEMPLATE_COMPONENTS = [
   TmplVideoComponent,
   AnimatedSectionComponent,
   AccordionSectionComponent,
+  TmplAdvancedDashedBoxComponent,
+  FormComponent,
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
@@ -87,9 +93,12 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   text: TmplTextComponent,
   title: TmplTitleComponent,
   subtitle: TmplSubtitleComponent,
+  toggle_bar: TmplToggleBarComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   workshops_accordion: WorkshopsComponent,
   accordion_section: AccordionSectionComponent,
+  advanced_dashed_box: TmplAdvancedDashedBoxComponent,
+  form: FormComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
