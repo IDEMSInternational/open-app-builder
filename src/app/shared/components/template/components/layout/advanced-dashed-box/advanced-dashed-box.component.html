@@ -4,9 +4,10 @@
       <img [src]="icon_result" alt="" />
     </div>
     <plh-template-component
-      *ngFor="let childRow of templateRow.rows"
+      *ngFor="let childRow of inputRow ? inputRow.rows : _row.rows"
       [row]="childRow"
       [parent]="parent"
+      style="width: 100%"
     >
     </plh-template-component>
   </div>
