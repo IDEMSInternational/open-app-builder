@@ -56,9 +56,12 @@ export class TemplateParser extends DefaultParser {
     if (row.rows) {
       row.rows = row.rows.map((r) => this.postProcess(r, row._nested_name));
     }
-    row.exclude_from_translation = this.parseExcludeFromTranslation(
-      row.exclude_from_translation as any
-    );
+
+    if (row.exclude_from_translation) {
+      row.exclude_from_translation = this.parseExcludeFromTranslation(
+        row.exclude_from_translation as any
+      );
+    }
     return row;
   }
 
