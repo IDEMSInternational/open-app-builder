@@ -79,7 +79,7 @@ export class TemplateParser extends DefaultParser {
   }
 
   private parseExcludeFromTranslation(value: boolean) {
-    const result = value || false;
+    const result = value;
     return result;
   }
 
