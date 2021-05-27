@@ -9320,10 +9320,10 @@
             "action_id": "set_field",
             "args": [
               "which_relax",
-              "relax_14"
+              "relax_20"
             ],
-            "_raw": "click | set_field:which_relax:relax_14",
-            "_cleaned": "click | set_field:which_relax:relax_14"
+            "_raw": "click | set_field:which_relax:relax_20",
+            "_cleaned": "click | set_field:which_relax:relax_20"
           },
           {
             "trigger": "click",
@@ -9335,19 +9335,242 @@
             "_cleaned": "click | go_to:relax"
           }
         ],
-        "_nested_name": "button_relax_14",
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button_relax_20",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "@data.relax.relax_14.title",
-              "matchedExpression": "@data.relax.relax_14.title",
+              "fullExpression": "@data.relax.relax_20.title",
+              "matchedExpression": "@data.relax.relax_20.title",
               "type": "data",
               "fieldName": "relax"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@data.relax.relax_14.title": [
+          "@data.relax.relax_20.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_21",
+        "value": "@data.relax.relax_21.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              false
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_21"
+            ],
+            "_raw": "click | set_field:which_relax:relax_21",
+            "_cleaned": "click | set_field:which_relax:relax_21"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button_relax_21",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_21.title",
+              "matchedExpression": "@data.relax.relax_21.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_21.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_22",
+        "value": "@data.relax.relax_22.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              false
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_22"
+            ],
+            "_raw": "click | set_field:which_relax:relax_22",
+            "_cleaned": "click | set_field:which_relax:relax_22"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button_relax_22",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_22.title",
+              "matchedExpression": "@data.relax.relax_22.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_22.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_23",
+        "value": "@data.relax.relax_23.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              false
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_23"
+            ],
+            "_raw": "click | set_field:which_relax:relax_23",
+            "_cleaned": "click | set_field:which_relax:relax_23"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button_relax_23",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_23.title",
+              "matchedExpression": "@data.relax.relax_23.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_23.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_relax_24",
+        "value": "@data.relax.relax_24.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              false
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_24"
+            ],
+            "_raw": "click | set_field:which_relax:relax_24",
+            "_cleaned": "click | set_field:which_relax:relax_24"
+          },
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "relax"
+            ],
+            "_raw": "click | go_to:relax",
+            "_cleaned": "click | go_to:relax"
+          }
+        ],
+        "parameter_list": {
+          "style": "navigation"
+        },
+        "_nested_name": "button_relax_24",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.relax.relax_24.title",
+              "matchedExpression": "@data.relax.relax_24.title",
+              "type": "data",
+              "fieldName": "relax"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.relax.relax_24.title": [
             "value"
           ]
         }
@@ -10741,6 +10964,26 @@
           },
           {
             "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              false
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_21"
+            ],
+            "_raw": "click | set_field:which_relax:relax_21",
+            "_cleaned": "click | set_field:which_relax:relax_21"
+          },
+          {
+            "trigger": "click",
             "action_id": "go_to",
             "args": [
               "relax"
@@ -10802,6 +11045,26 @@
             ],
             "_raw": "click | set_field:which_relax:relax_5",
             "_cleaned": "click | set_field:which_relax:relax_5"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "this_workshop_together",
+              false
+            ],
+            "_raw": "click | set_field:this_workshop_together:false",
+            "_cleaned": "click | set_field:this_workshop_together:false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "which_relax",
+              "relax_24"
+            ],
+            "_raw": "click | set_field:which_relax:relax_24",
+            "_cleaned": "click | set_field:which_relax:relax_24"
           },
           {
             "trigger": "click",
@@ -11463,8 +11726,32 @@
               "type": "data",
               "fieldName": "relax"
             }
-          ],
-          "hidden": [
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.something_fun.three_options.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_something_fun_11",
+        "value": "@data.something_fun.yes_no_maybe.title",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_yes_no_maybe"
+            ],
+            "_raw": "click | go_to: activity_yes_no_maybe",
+            "_cleaned": "click | go_to: activity_yes_no_maybe"
+          }
+        ],
+        "_nested_name": "button_something_fun_11",
+        "_dynamicFields": {
+          "value": [
             {
               "fullExpression": "!@field.relax_16_favourite",
               "matchedExpression": "@field.relax_16_favourite",
