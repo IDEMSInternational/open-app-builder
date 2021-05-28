@@ -10,6 +10,13 @@
   align-items: center;
 }
 
+@mixin absolute-centered {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%) translateX(50%);
+}
+
 @mixin banner {
   border-radius: var(--ion-border-radius-secondary);
   margin-top: var(--regular-margin);
@@ -28,7 +35,6 @@
   width: 27px;
   height: 27px;
 }
-
 @mixin small-square {
   height: 36px;
   width: 36px;
@@ -40,4 +46,8 @@
 @mixin large-square {
   height: 64px;
   width: 64px;
+}
+@mixin largest-square {
+  height: 80px;
+  width: 80px;
 }
