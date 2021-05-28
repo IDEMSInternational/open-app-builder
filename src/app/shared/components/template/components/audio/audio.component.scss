@@ -78,8 +78,7 @@
     .rewind,
     .forward {
       ion-button {
-        width: var(--ion-btn-tmpl-components-size);
-        height: var(--ion-btn-tmpl-components-size);
+        @include regular-square;
         --background: transparent;
         --padding: 0;
         --border-radius: var(--ion-border-radius-rounded);
@@ -97,8 +96,7 @@
     }
     .play {
       .btn-play {
-        width: var(--ion-btn-tmpl-components-size);
-        height: var(--ion-btn-tmpl-components-size);
+        @include regular-square;
         --background: var(--ion-btn-control-bg);
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
