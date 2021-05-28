@@ -187,7 +187,7 @@ p {
     margin: 0;
     font-size: var(--font-size-subtitle-small);
     font-weight: var(--font-weight-bold);
-    padding: var(--accordion-section-padding);
+    padding: var(--accordion-section-title-padding);
     @media (max-width: 320px) {
       font-size: var(--font-size-subtitle-small-device);
     }

@@ -39,7 +39,7 @@
   display: flex;
 }
 .add-min {
-  @include medium-square;
+  @include large-square;
   min-width: var(--buttons-size);
   position: relative;
   --background: hsl(193, 100%, 40%);
