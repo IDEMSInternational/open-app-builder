@@ -80,6 +80,7 @@ $horizontal: 90deg;
   --font-size-text-small: 16px;
   --font-size-text-medium: 18px;
   --font-size-text-large: 20px;
+  --line-height-text-tiny: 15px;
   --line-height-text-small: 20px;
   --line-height-text: 22px;
   --line-height-text-large: 22px;
@@ -100,6 +101,12 @@ $horizontal: 90deg;
 
   // Banner //
   --banner-short-height: 95px;
+
+  // Number selector //
+  --number-selector-title-max-width: 150px;
+  --number-selector-category-max-width: 150px;
+  --number-selector-short-min-height: 44px;
+  --number-selector-mormal-min-height: 59px;
 
   // Dashed-box //
   --dashed-box-item-min-height: 60px;
