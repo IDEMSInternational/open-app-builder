@@ -29,6 +29,10 @@
   width: 36px;
 }
 @mixin medium-square {
+  height: 40px;
+  width: 40px;
+}
+@mixin large-square {
   height: 64px;
   width: 64px;
 }
