@@ -205,6 +205,20 @@ $horizontal: 90deg;
     var(--ion-gradient-primary-option-end) 100%
   );
 
+  // Round button //
+  --round-button-min-height: 58px;
+  --round-button-width: 58px;
+  --round-button-wrapper-height: 94px;
+  --round-button-wrapper-width: 94px;
+  --round-button-small-device-height: 70px;
+  --round-button-small-device-width: 70px;
+  --round-button-wrapper-small-device-height: 84px;
+  --round-button-wrapper-small-device-width: 84px;
+  --round-button-navigation-width: 50px;
+  --round-button-navigation-min-height: 50px;
+  --round-button-font-size: 12px;
+  --round-button-home-screen-font-size: 11px;
+
   //BANNER
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,
