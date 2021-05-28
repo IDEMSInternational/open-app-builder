@@ -4,7 +4,7 @@
     height: 100%;
   }
   span {
-    padding: var(--regular-padding) 0;
+    padding: var(--tiny-padding) 0;
   }
 }
 ion-button {
@@ -15,7 +15,7 @@ ion-button {
   text-transform: none;
   white-space: pre-line;
   min-height: var(--buttons-min-height);
-  padding: var(--regular-margin) var(--regular-padding) 0;
+  padding: var(--regular-margin) var(--tiny-padding) 0;
   --border-radius: var(--ion-border-radius-standard);
   --box-shadow: var(--ion-btn-dark-box-shadow);
   display: flex;

@@ -19,7 +19,7 @@
 
 @mixin essential-tool {
   margin-top: var(--regular-margin);
-  padding: var(--largest-padding);
+  padding: var(--regular-padding);
   flex-direction: column;
   border-radius: var(--ion-border-radius-secondary);
 }

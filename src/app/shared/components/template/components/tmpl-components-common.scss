@@ -54,7 +54,7 @@
 }
 .banner {
   margin-top: var(--regular-margin);
-  padding: var(--largest-padding);
+  padding: var(--regular-padding);
   border-radius: var(--ion-border-radius-secondary);
   background: var(--ion-dg-bg-default);
   margin-bottom: var(--regular-margin);
@@ -268,7 +268,7 @@ p {
     width: 100%;
     plh-template-component:first-child {
       margin-bottom: 45px;
-      padding-left: var(--large-padding);
+      padding-left: var(--small-padding);
       max-width: 15%;
       @media (max-width: 1024px) {
         max-width: 20%;
