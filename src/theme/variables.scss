@@ -49,7 +49,7 @@ $horizontal: 90deg;
 
   // Borders //
   --ion-border-color-secondary: 2px solid #{$secondary};
-  --ion-tour-border-standard: 1px solid #{$primary};
+  --ion-border-thin-standard: 1px solid #{$primary};
   --ion-border-standard: 2px solid #{$primary};
   --ion-border-light: 1px solid #{$light};
   --border-dashed: 2px dashed $primary;
@@ -78,6 +78,7 @@ $horizontal: 90deg;
   --font-size-text-small: 16px;
   --font-size-text-medium: 18px;
   --font-size-text-large: 20px;
+  --line-height-text-small: 20px;
   --line-height-text: 22px;
 
   // Font Weight //
@@ -106,6 +107,11 @@ $horizontal: 90deg;
   // Audio //
   --audio-container-padding: 17px 14px 16px 20px;
   --audio-title-size: 22px;
+  --audio-title-and-help-height: 30px;
+  --audio-bar-height: 10px;
+  --audio-play-img-width: 35px;
+  --audio-controls-width: 240px;
+  --audio-controls-img-width: 48px;
 
   // Combo box //
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);

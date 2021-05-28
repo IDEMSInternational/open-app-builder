@@ -23,3 +23,8 @@
   flex-direction: column;
   border-radius: var(--ion-border-radius-secondary);
 }
+
+@mixin small-square {
+  height: 36px;
+  width: 36px;
+}
