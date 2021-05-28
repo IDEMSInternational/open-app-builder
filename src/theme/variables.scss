@@ -80,6 +80,7 @@ $horizontal: 90deg;
   --font-size-text-large: 20px;
   --line-height-text-small: 20px;
   --line-height-text: 22px;
+  --line-height-text-tall: 22px;
 
   // Font Weight //
   --font-weight-standard: 500;
@@ -116,6 +117,8 @@ $horizontal: 90deg;
   // Combo box //
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
   --combo-box-font-size-standard: 20px;
+  --combo-box-min-height: 55px;
+  --combo-box-min-width: 260px;
   --combo-box-active-no-answer-bg: var(--ion-color-primary-contrast);
   --combo-box-passive-no-answer-bg: transparent;
   --combo-box-no-answer-bg: transparent;
