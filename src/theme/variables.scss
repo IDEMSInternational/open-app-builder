@@ -143,24 +143,34 @@ $horizontal: 90deg;
   --help-icon-small-size: 30px;
   --help-icon-standard-color: $primary;
   --help-icon-alternative-color: $light;
+
   //TOOLS
   --tool-one-bg: #{color.adjust($secondary, $hue: -2)}; // #FA8E29
   --tool-two-bg: #{color.adjust($secondary, $hue: -2, $saturation: 5%, $lightness: -7%)}; // #FF7B00
   --tool-three-bg: #{color.adjust($primary, $hue: -8, $saturation: 8%, $lightness: 17%)}; // #108AB2
   --tool-four-bg: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 8%)}; //#096A8B
   --tool-five-bg: var(--ion-color-primary);
+
   //BUTTONS
+  --buttons-min-height: 71px;
+  --buttons-short-height: 50px;
+  --buttons-medium-height: 65px;
+  --buttons-tall-height: 80px;
+  --buttons-font-size-small: 20px;
+  --buttons-font-size: 25px;
+  --buttons-size: 64px;
+  //primary-gradient
   --ion-btn-control-bg: #{color.adjust($primary, $saturation: -3%, $lightness: 31%)}; //#2B99DE
-  --ion-btn-tmpl-components-size: 64px;
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
   --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
-  --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)}; //#FE8E27
-  --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)}; //#C35E00
   --ion-btn-primary: linear-gradient(
     #{$vertical},
     var(--ion-gradient-primary-start) 0.43%,
     var(--ion-gradient-primary-end) 74.07%
   );
+  //secondary-gradient
+  --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)}; //#FE8E27
+  --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)}; //#C35E00
   --ion-btn-secondary: linear-gradient(
     #{$vertical},
     var(--ion-gradient-secondary-start) 28.12%,
