@@ -65,7 +65,7 @@ export class TmplComboBoxComponent
     if (aValue) {
       const textFromList = listAnswers
         .find((answer: string) => answer.includes(aValue))
-        .match(/(?<=text:).+/)[0]
+        ?.match(/(?<=text:).+/)[0]
         .trim();
       return textFromList ? textFromList : aValue;
     }
