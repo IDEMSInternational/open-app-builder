@@ -48,7 +48,7 @@
   border-radius: var(--ion-border-radius-standard);
   background: var(--ion-color-primary-contrast);
   text-align: center;
-  padding: var(--large-padding);
+  padding: var(--small-padding);
   box-shadow: var(--ion-default-box-shadow);
   @media (max-width: 375px) {
     width: calc(122px * var(--scale-factor-tile));

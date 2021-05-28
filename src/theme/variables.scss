@@ -38,9 +38,11 @@ $horizontal: 90deg;
   --huge-margin: 40px;
 
   // Paddings //
-  --regular-padding: 5px;
-  --large-padding: 10px;
-  --largest-padding: 15px;
+  --tiny-padding: 5px;
+  --small-padding: 10px;
+  --regular-padding: 15px;
+  --large-padding: 25px;
+  --largest-padding: 30px;
   --huge-padding: 40px;
   --main-container-padding: 0 var(--large-margin);
 
@@ -80,7 +82,8 @@ $horizontal: 90deg;
   --font-size-text-large: 20px;
   --line-height-text-small: 20px;
   --line-height-text: 22px;
-  --line-height-text-tall: 22px;
+  --line-height-text-large: 22px;
+  --line-height-text-largest: 25px;
 
   // Font Weight //
   --font-weight-standard: 500;
@@ -99,6 +102,7 @@ $horizontal: 90deg;
   --banner-short-height: 95px;
 
   // Dashed-box //
+  --dashed-box-item-min-height: 60px;
   --dashed-box-icon-border: 0.7px solid #{$primary};
 
   // Home screen //
@@ -220,7 +224,7 @@ $horizontal: 90deg;
     var(--ion-banner-gradient-primary-end) 105.68%
   );
   //ACCORDION
-  --accordion-section-padding: var(--large-padding) 0 var(--large-padding) 0;
+  --accordion-section-padding: var(--small-padding) 0 var(--small-padding) 0;
   --ion-accordion-status-bg-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
   --ion-accordion-status-bg-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
   --ion-accrodion-status-gradient: linear-gradient(
