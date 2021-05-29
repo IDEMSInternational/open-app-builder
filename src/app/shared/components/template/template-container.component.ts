@@ -13,7 +13,7 @@ import { TemplateVariablesService } from "./services/template-variables.service"
 import { TemplateService } from "./services/template.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
-let SHOW_DEBUG_LOGS = false;
+let SHOW_DEBUG_LOGS = true;
 let log = SHOW_DEBUG_LOGS ? console.log : () => null;
 let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
@@ -114,14 +114,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
 
       this.template = template;
-      await this.templateRowService.processInitialTemplateRows();
 
       // If the template has previously been rendered but forced to re-initialise from parent
       // try to restore previous state (WiP - TODO / Re-evaluate CC 2021-04-21)
       const cachedRender = this.parent?.children?.[this.name];
+
       log_group("[Template Render Start]", this.name);
       log("[Process Template]", { template: { ...template }, ctxt: { ...this } });
 
+      await this.templateRowService.processInitialTemplateRows();
       this.template = { ...template, rows: this.templateRowService.processedRows };
 
       log("[Template] Render", {
