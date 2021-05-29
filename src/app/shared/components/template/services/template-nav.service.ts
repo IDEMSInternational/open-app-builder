@@ -1,7 +1,7 @@
 import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray } from "src/app/shared/utils";
 import { TemplatePopupComponent } from "../components/layout/popup";
 import { ITemplateContainerProps } from "../models";
@@ -94,7 +94,7 @@ export class TemplateNavService {
       if (triggerRow) {
         log("trigger row", triggerRow);
         const triggeredActions = triggerRow.action_list.filter((a) => a.trigger === nav_child_emit);
-        await container.handleActions(triggeredActions, triggerRow);
+        await container.templateActionService.handleActions(triggeredActions, triggerRow);
         // back history will have changed (2 duplicate pages), so nav back to restore correct back button
         history.back();
       } else {
@@ -198,7 +198,7 @@ export class TemplateNavService {
         // process any completed/uncompleted actions as specified
         const emittedActions = actionsByTrigger[nav_child_emit];
         if (emittedActions) {
-          await container.handleActions(emittedActions, triggerRow);
+          await container.templateActionService.handleActions(emittedActions, triggerRow);
           await this.modalCtrl.dismiss(nav_child_emit);
         }
         // if the popup does not have any actions triggered by the nav_emit, leave open if there
