@@ -10,20 +10,25 @@ export function mergeTemplateRows(
   secondaryRow?: FlowTypes.TemplateRow
 ) {
   let mergedRow = { ...secondaryRow };
-  if (primaryRow) {
-    // merge
-    mergedRow = { ...secondaryRow, ...primaryRow };
-    // remove overriden dynamic references
-    // TODO - also remove _dynamicDependencies references (or recalc at end)
-    Object.keys(primaryRow).forEach((field) => {
-      if (mergedRow._dynamicFields?.[field]) {
-        delete mergedRow._dynamicFields[field];
-        if (Object.keys(mergedRow._dynamicFields).length === 0) {
-          delete mergedRow._dynamicFields;
-        }
-      }
-    });
-  }
+  const dynamicFields = mergedRow._dynamicFields || {};
+  Object.keys(primaryRow || {}).forEach((field) => {
+    // merge primary rows on top of base merge (secondary)
+    mergedRow[field] = primaryRow[field];
+    // remove any old dynamic references
+    if (dynamicFields[field]) {
+      delete dynamicFields[field];
+    }
+    // add any new dynamic references
+    if (primaryRow?._dynamicFields?.[field]) {
+      dynamicFields[field] = primaryRow._dynamicFields[field];
+    }
+    // assign back any dynamic references
+    if (Object.keys(dynamicFields).length > 0) {
+      mergedRow._dynamicFields = dynamicFields;
+    }
+    mergedRow._dynamicDependencies = extractDynamicDependencies(mergedRow._dynamicFields);
+  });
+  // deep merge nested rows
   if (mergedRow.rows) {
     mergedRow.rows = mergeTemplateNestedRows(primaryRow?.rows, secondaryRow.rows);
   }
@@ -53,4 +58,28 @@ function mergeTemplateNestedRows(
     }
   });
   return merged;
+}
+
+// TODO - combine with scripts methods
+function extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow["_dynamicFields"] = {}) {
+  const dynamicDependencies = {};
+  const flatFields = flattenJson<FlowTypes.TemplateRowDynamicEvaluator[]>(dynamicFields);
+  Object.entries(flatFields).forEach(([key, fields]) => {
+    fields.forEach((field) => {
+      const deps = dynamicDependencies[field.matchedExpression] || [];
+      dynamicDependencies[field.matchedExpression] = [...deps, key];
+    });
+  });
+  return dynamicDependencies;
+}
+function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [key: string]: T } {
+  Object.entries<T>(json).forEach(([key, value]) => {
+    const nestedName = nestedPath ? `${nestedPath}.${key}` : key;
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      tree = { ...tree, ...flattenJson(value, tree, nestedName) };
+    } else {
+      tree[nestedName] = value;
+    }
+  });
+  return tree;
 }
