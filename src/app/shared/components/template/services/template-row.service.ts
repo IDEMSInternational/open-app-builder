@@ -4,14 +4,17 @@ import { TemplateContainerComponent } from "../template-container.component";
 import { mergeTemplateRows } from "../utils/template-utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
-let SHOW_DEBUG_LOGS = true;
+let SHOW_DEBUG_LOGS = false;
 let log = SHOW_DEBUG_LOGS ? console.log : () => null;
 let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
 /**
+ * This service handles template row initialisation (with parent override merging)
+ * and dynamic row processing.
  *
- *
+ * NOTE - the service is not injected as every template should instantiate their own copy
+ * for processed row tracking *
  */
 export class TemplateRowService {
   /** List of overrides set by parent templates for access during parent processing */
@@ -28,13 +31,23 @@ export class TemplateRowService {
    *  Row Initialisation
    **************************************************************************************/
 
+  /**
+   * On template init combine any inherited row overrides with template rows,
+   * process dynamic variables and filter conditions
+   */
   public async processInitialTemplateRows() {
+    log_group(this.container.name);
     this.parentRowOverrides = this.getParentOverridesHashmap(this.container.row?.rows);
     const rowsWithOverrides = this.processParentOverrides(this.container.template?.rows);
-    const allProcessedRows = this.processMissingParentOverrides(rowsWithOverrides);
-    this.processedRows = await this.processRows(allProcessedRows, this.container.template);
+    const rowWithAdditionalMissing = this.processMissingParentOverrides(rowsWithOverrides);
+    this.processedRows = await this.processRows(rowWithAdditionalMissing);
     this.renderedRows = this.filterConditionalTemplateRows(this.processedRows);
+    log_groupEnd();
   }
+
+  /***************************************************************************************
+   *  Parent Overrides
+   **************************************************************************************/
 
   /**
    * Create a list of any inherited rows that were passed with the original parent template row
@@ -54,38 +67,34 @@ export class TemplateRowService {
    * Lookup list of template row overrides from parent and use to merge into existing rows,
    * logging any mismatches and adding as additional set_variable
    */
-  private processParentOverrides(originalRows: FlowTypes.TemplateRow[]) {
+  private processParentOverrides(originalRows: FlowTypes.TemplateRow[], logName = "") {
     if (Object.keys(this.parentRowOverrides).length > 0) {
-      log("[Overrides Start]", {
-        overrides: { ...this.parentRowOverrides },
-        originalRows: [...originalRows],
-      });
       const processedRows = originalRows.map((r) => {
         const processed = this.processRowOverride(r);
         // Note, whilst the main template merge function performs a recursive merge
         // we also want to process any nested overrides
-        if (processed.rows) {
-          processed.rows = this.processParentOverrides(processed.rows);
+        if (processed.rows && processed.rows.length > 0) {
+          processed.rows = this.processParentOverrides(processed.rows, processed.name);
         }
         return processed;
       });
-      log("[Overrides End]", { rows: { ...processedRows } });
+      const overrides = { ...this.parentRowOverrides };
+      log("[Overrides Processed]", logName, { originalRows, overrides, processedRows });
       return processedRows;
     } else {
-      log("[Overrides Skip]", { parentRowOverrides: { ...this.parentRowOverrides } });
+      log("[Overrides Skipped]", logName, { originalRows });
       return originalRows;
     }
   }
 
-  /**
-   *  Lookup any overrides for a row or a row's nested child rows and apply
-   */
+  /** Lookup any overrides for a row or a row's nested child rows and apply */
   private processRowOverride(originalRow: FlowTypes.TemplateRow) {
     const override = this.parentRowOverrides[originalRow.name];
     if (override) {
       this.parentRowOverrides[originalRow.name]._processed = true;
+      return mergeTemplateRows(override as any, originalRow);
     }
-    return mergeTemplateRows(override as any, originalRow);
+    return originalRow;
   }
 
   /**
@@ -97,7 +106,8 @@ export class TemplateRowService {
       (o) => !o._processed
     );
     if (unprocessedOverrides.length > 0) {
-      console.warn("[W] Overrides could not find target row; Assuming set_variables", {
+      const names = unprocessedOverrides.map((o) => o.name).join(",");
+      console.warn(`[W] Overrides could not find [${names}]; \n Assuming set_variables`, {
         unprocessedOverrides,
         rows: { ...processedRows },
       });
@@ -118,81 +128,72 @@ export class TemplateRowService {
   /**
    * Process the main template rows, filtering by condition, processing variables
    * and extracting template references for child overrides
-   *
-   * @param template used only during dynamic row evaluation for sibling lookup
-   * @param isNestedRows if processing rows for use in the a nested template, specify
-   * to prevent the variables being processed within the current template
-   *
    */
-  private async processRows(rows: FlowTypes.TemplateRow[], template: FlowTypes.Template) {
-    log("[Process Rows Start]", {
-      rows: [...rows],
-      rowMap: mapToJson(this.templateRowMap),
-    });
+  private async processRows(rows: FlowTypes.TemplateRow[], logName = "") {
+    logName = logName || this.container.name;
     const processedRows = [];
     for (const preProcessedRow of rows) {
       // call an anonymous function so that we can return/break the async for-of loop if required
       // and still push to the processedRows variable
       await (async () => {
         const { _nested_name } = preProcessedRow;
-        log_group("[Row start]", preProcessedRow.name, { preProcessedRow });
         // Evaluate row variables in context of current local state
         const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
         // create a new object with data from evaluation
-        const parsedRow: FlowTypes.TemplateRow = await this.container.templateVariables.evaluatePLHData(
+        let parsedRow: FlowTypes.TemplateRow = await this.container.templateVariables.evaluatePLHData(
           preProcessedRow,
           evalContext
         );
         const { name, value, hidden, type } = parsedRow;
-        log("parsedRow", name, { ...parsedRow });
         // Filter out if specified by condition. This might be string or boolean depending on the parser/calcs (check for both)
         // when dealing with nested rows we want to filter out to not pass to child,
         // but if dealing with local rows we want to keep for future processing (will be filtered later)
-        // TODO - CC 2021-05-15 ideally calc column should be processed before rest of parsed row in case filtered out
+        // TODO - CC 2021-05-15 ideally condition column should be processed before rest of parsed row in case filtered out
         if (parsedRow.hasOwnProperty("condition")) {
           const condition = parsedRow.condition as any;
           // check for any falsy value (null, undefined, false) as well as 'false' string
           if (!condition || condition === "false") {
             parsedRow.condition = false;
-            log("[Row end (condition)]", name);
-            log_groupEnd();
             processedRows.push(parsedRow);
             // return now so that set_variable or set_field is not recorded when condition false
             return;
           }
         }
         // Make type assigned to hidden consistent
-        if (hidden === (true as any) || hidden === "true") {
-          parsedRow.hidden = true;
-        }
+        if (hidden === (true as any) || hidden === "true") parsedRow.hidden = true;
+
         // Keep track of rows that should only ever be processed one time
         let omitFromProcessedRows = false;
+
         // Handle rows that set external data and filter out
         // TODO - confirm no other externally processed rows
         if (type === "set_field") {
           console.warn("[W] Setting fields from template rows is not advised", { ...parsedRow });
           this.container.templateService.setField(name, value);
-          // stop processing and remove from future processing
           omitFromProcessedRows = true;
         }
-        // store global reference for use in future initialisation logic
-        // Note - child templates handle their own initialisation
-        if (type !== "template") {
-          this.templateRowMap.set(_nested_name, parsedRow);
-        }
-        // once set_variable rows have been processed they can be removed from the row list
+        // set_variable rows will only have their value stored to the templateRowMap on first render
         if (type === "set_variable") {
           omitFromProcessedRows = true;
         }
-        log("[Row end]", name, { ...parsedRow });
-        log_groupEnd();
+
+        // process any nested rows in same way, except for templates which will be handled on own initialisation
+        // NOTE - template nested rows still will have been evaluated during above stages
+        if (parsedRow.rows && type !== "template") {
+          parsedRow.rows = await this.processRows(parsedRow.rows, _nested_name);
+        }
+
+        // store global reference for use in future initialisation logic
+        this.templateRowMap.set(_nested_name, parsedRow);
+
         if (!omitFromProcessedRows) {
           processedRows.push(parsedRow);
         }
       })();
     }
-    log("[Process Rows End]", {
-      rows: [...processedRows],
+    log("[Rows Processed]", logName, {
+      original: [...rows],
+      processed: [...processedRows],
       rowMap: mapToJson(this.templateRowMap),
     });
     return processedRows;
@@ -208,10 +209,7 @@ export class TemplateRowService {
       rows: this.container.template.rows,
       template: this.container.template,
     });
-    this.container.template.rows = await this.processRows(
-      this.container.template.rows,
-      this.container.template
-    );
+    this.container.template.rows = await this.processRows(this.container.template.rows);
     this.renderedRows = this.filterConditionalTemplateRows(this.container.template.rows);
     log("[Reprocess Complete]", this.renderedRows);
     log_groupEnd();
