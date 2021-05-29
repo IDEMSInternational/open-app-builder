@@ -4,7 +4,7 @@ import { TemplateContainerComponent } from "../template-container.component";
 import { mergeTemplateRows } from "../utils/template-utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
-let SHOW_DEBUG_LOGS = false;
+let SHOW_DEBUG_LOGS = true;
 let log = SHOW_DEBUG_LOGS ? console.log : () => null;
 let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
@@ -18,17 +18,15 @@ export class TemplateRowService {
   private parentRowOverrides: {
     [row_nested_name: string]: Partial<FlowTypes.TemplateRow> & { _processed?: boolean };
   };
-
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: Map<string, FlowTypes.TemplateRow> = new Map();
-
-  /** */
   public processedRows: FlowTypes.TemplateRow[];
-
-  /** List of rows that have passed the condition statement for rendering */
-  public renderedRows: FlowTypes.TemplateRow[];
-
+  public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
   constructor(public container: TemplateContainerComponent) {}
+
+  /***************************************************************************************
+   *  Row Initialisation
+   **************************************************************************************/
 
   public async processInitialTemplateRows() {
     this.parentRowOverrides = this.getParentOverridesHashmap(this.container.row?.rows);
@@ -36,25 +34,6 @@ export class TemplateRowService {
     const allProcessedRows = this.processMissingParentOverrides(rowsWithOverrides);
     this.processedRows = await this.processRows(allProcessedRows, this.container.template);
     this.renderedRows = this.filterConditionalTemplateRows(this.processedRows);
-  }
-
-  /**
-   * When actions have triggered updates this method is called to handle updating the current template
-   * TODO - Design more efficient way to determine if re-rendering necessary
-   */
-  public async processRowUpdates() {
-    log_group(`[Reprocess Template]`, this.container.name, {
-      rowMap: mapToJson(this.templateRowMap),
-      rows: this.container.template.rows,
-      template: this.container.template,
-    });
-    this.container.template.rows = await this.processRows(
-      this.container.template.rows,
-      this.container.template
-    );
-    this.renderedRows = this.filterConditionalTemplateRows(this.container.template.rows);
-    log("[Reprocess Complete]", this.renderedRows);
-    log_groupEnd();
   }
 
   /**
@@ -81,13 +60,32 @@ export class TemplateRowService {
         overrides: { ...this.parentRowOverrides },
         originalRows: [...originalRows],
       });
-      const processedRows = originalRows.map((r) => this.processRowOverride(r));
+      const processedRows = originalRows.map((r) => {
+        const processed = this.processRowOverride(r);
+        // Note, whilst the main template merge function performs a recursive merge
+        // we also want to process any nested overrides
+        if (processed.rows) {
+          processed.rows = this.processParentOverrides(processed.rows);
+        }
+        return processed;
+      });
       log("[Overrides End]", { rows: { ...processedRows } });
       return processedRows;
     } else {
       log("[Overrides Skip]", { parentRowOverrides: { ...this.parentRowOverrides } });
       return originalRows;
     }
+  }
+
+  /**
+   *  Lookup any overrides for a row or a row's nested child rows and apply
+   */
+  private processRowOverride(originalRow: FlowTypes.TemplateRow) {
+    const override = this.parentRowOverrides[originalRow.name];
+    if (override) {
+      this.parentRowOverrides[originalRow.name]._processed = true;
+    }
+    return mergeTemplateRows(override as any, originalRow);
   }
 
   /**
@@ -113,18 +111,9 @@ export class TemplateRowService {
     return processedRows;
   }
 
-  /**
-   *  Lookup any overrides for a row or a row's nested child rows and apply
-   */
-  private processRowOverride(originalRow: FlowTypes.TemplateRow) {
-    const override = this.parentRowOverrides[originalRow.name];
-    if (override) {
-      this.parentRowOverrides[originalRow.name]._processed = true;
-    }
-    if (originalRow.rows) {
-    }
-    return mergeTemplateRows(override as any, originalRow);
-  }
+  /***************************************************************************************
+   *  Row Processing
+   **************************************************************************************/
 
   /**
    * Process the main template rows, filtering by condition, processing variables
@@ -135,7 +124,7 @@ export class TemplateRowService {
    * to prevent the variables being processed within the current template
    *
    */
-  public async processRows(rows: FlowTypes.TemplateRow[], template: FlowTypes.Template) {
+  private async processRows(rows: FlowTypes.TemplateRow[], template: FlowTypes.Template) {
     log("[Process Rows Start]", {
       rows: [...rows],
       rowMap: mapToJson(this.templateRowMap),
@@ -209,6 +198,29 @@ export class TemplateRowService {
     return processedRows;
   }
 
+  /**
+   * When actions have triggered updates this method is called to handle updating the current template
+   * TODO - Design more efficient way to determine if re-rendering necessary
+   */
+  public async processRowUpdates() {
+    log_group(`[Reprocess Template]`, this.container.name, {
+      rowMap: mapToJson(this.templateRowMap),
+      rows: this.container.template.rows,
+      template: this.container.template,
+    });
+    this.container.template.rows = await this.processRows(
+      this.container.template.rows,
+      this.container.template
+    );
+    this.renderedRows = this.filterConditionalTemplateRows(this.container.template.rows);
+    log("[Reprocess Complete]", this.renderedRows);
+    log_groupEnd();
+  }
+
+  /***************************************************************************************
+   *  Utils
+   **************************************************************************************/
+
   /** recursively filter out any rows that have a false condition */
   private filterConditionalTemplateRows(rows: FlowTypes.TemplateRow[] = []) {
     return rows
@@ -219,5 +231,11 @@ export class TemplateRowService {
         }
         return row;
       });
+  }
+  public setLogging(showLogs: boolean) {
+    SHOW_DEBUG_LOGS = showLogs;
+    log = SHOW_DEBUG_LOGS ? console.log : () => null;
+    log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
+    log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
   }
 }
