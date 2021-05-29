@@ -72,6 +72,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     // add logging if default disabled and in debug view
     if (this.debugMode) {
       this.setLogging(true);
+      this.templateRowService.setLogging(true);
     }
     await this.renderTemplate();
   }
@@ -121,7 +122,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       log_group("[Template Render Start]", this.name);
       log("[Process Template]", { template: { ...template }, ctxt: { ...this } });
 
-      this.template = { ...template, rows: this.templateRowService.processRows };
+      this.template = { ...template, rows: this.templateRowService.processedRows };
 
       log("[Template] Render", {
         template,
