@@ -1,6 +1,10 @@
 import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmap } from "src/app/shared/utils";
 
+/**
+ * Take 2 template rows and perform a deep merge, including deep merge of nested row.rows
+ * and removal of dynamic references on overwrite
+ */
 export function mergeTemplateRows(
   primaryRow?: FlowTypes.TemplateRow,
   secondaryRow?: FlowTypes.TemplateRow
@@ -40,7 +44,6 @@ function mergeTemplateNestedRows(
   secondary.forEach((secondaryRow) => {
     const primaryRow = primaryHashmap[secondaryRow.name];
     const mergedRow = mergeTemplateRows(primaryRow, secondaryRow);
-
     merged.push(mergedRow);
   });
   // make sure all primary rows exist
