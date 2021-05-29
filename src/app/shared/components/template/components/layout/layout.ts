@@ -77,7 +77,7 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   }
 
   private addParentActionsFilter() {
-    this.parent.handleActionsInterceptor = async (actions) => {
+    this.parent.templateActionService.handleActionsInterceptor = async (actions) => {
       return actions.filter((action) => {
         const shouldHandleByParent = this.interceptTemplateContainerAction(action);
         // continue to process on parent unless specific return says not to
