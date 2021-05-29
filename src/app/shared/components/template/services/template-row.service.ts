@@ -128,8 +128,10 @@ export class TemplateRowService {
   /**
    * Process the main template rows, filtering by condition, processing variables
    * and extracting template references for child overrides
+   *
+   * @param isNestedTemplate indicate if processing child rows of a template row to skip specific functions
    */
-  private async processRows(rows: FlowTypes.TemplateRow[], logName = "") {
+  private async processRows(rows: FlowTypes.TemplateRow[], isNestedTemplate = false, logName = "") {
     logName = logName || this.container.name;
     const processedRows = [];
     for (const preProcessedRow of rows) {
@@ -162,33 +164,32 @@ export class TemplateRowService {
         // Make type assigned to hidden consistent
         if (hidden === (true as any) || hidden === "true") parsedRow.hidden = true;
 
-        // Keep track of rows that should only ever be processed one time
-        let omitFromProcessedRows = false;
+        if (type === "template") isNestedTemplate = true;
 
-        // Handle rows that set external data and filter out
-        // TODO - confirm no other externally processed rows
-        if (type === "set_field") {
-          console.warn("[W] Setting fields from template rows is not advised", { ...parsedRow });
-          this.container.templateService.setField(name, value);
-          omitFromProcessedRows = true;
-        }
-        // set_variable rows will only have their value stored to the templateRowMap on first render
-        if (type === "set_variable") {
-          omitFromProcessedRows = true;
+        // process any nested rows in same way
+        if (parsedRow.rows) {
+          parsedRow.rows = await this.processRows(parsedRow.rows, isNestedTemplate, _nested_name);
         }
 
-        // process any nested rows in same way, except for templates which will be handled on own initialisation
-        // NOTE - template nested rows still will have been evaluated during above stages
-        if (parsedRow.rows && type !== "template") {
-          parsedRow.rows = await this.processRows(parsedRow.rows, _nested_name);
+        // Handle rows that should only be initialised once
+        // Only process rows if not part of a nested template row (which will be handled in own template initialisation)
+        if (!isNestedTemplate) {
+          // TODO - confirm no other externally processed rows
+          if (type === "set_field") {
+            console.warn("[W] Setting fields from template rows is not advised", { ...parsedRow });
+            this.container.templateService.setField(name, value);
+            return;
+          }
+          // ensure set_variables are recorded via their name (instead of default nested name)
+          if (type === "set_variable") {
+            this.templateRowMap.set(name, parsedRow);
+            return;
+          }
+          // all other types should just set own value for use in future processing
+          this.templateRowMap.set(_nested_name, parsedRow);
         }
 
-        // store global reference for use in future initialisation logic
-        this.templateRowMap.set(_nested_name, parsedRow);
-
-        if (!omitFromProcessedRows) {
-          processedRows.push(parsedRow);
-        }
+        processedRows.push(parsedRow);
       })();
     }
     log("[Rows Processed]", logName, {

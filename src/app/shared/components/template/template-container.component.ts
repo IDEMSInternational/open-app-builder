@@ -120,13 +120,13 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       const cachedRender = this.parent?.children?.[this.name];
 
       log_group("[Template Render Start]", this.name);
-      log("[Process Template]", { template: { ...template }, ctxt: { ...this } });
 
       await this.templateRowService.processInitialTemplateRows();
-      this.template = { ...template, rows: this.templateRowService.processedRows };
+      this.template.rows = this.templateRowService.processedRows;
 
-      log("[Template] Render", {
+      log("[Template] Rendered", this.name, {
         template,
+        ctxt: { ...this },
         renderedRows: { ...this.templateRowService.renderedRows },
         rowMap: mapToJson(this.templateRowService.templateRowMap),
       });
