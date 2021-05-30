@@ -141,28 +141,29 @@ export class TemplateRowService {
         const { _nested_name } = preProcessedRow;
         // Evaluate row variables in context of current local state
         const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
-        // create a new object with data from evaluation
-        let parsedRow: FlowTypes.TemplateRow = await this.container.templateVariables.evaluatePLHData(
+        const { templateVariables } = this.container;
+
+        // First process any dynamic condition. If evaluates as false can stop processing any further
+        if (preProcessedRow.hasOwnProperty("condition")) {
+          const { condition } = await templateVariables.evaluatePLHData(
+            { condition: preProcessedRow.condition },
+            evalContext
+          );
+          if (!condition || condition === "false") {
+            processedRows.push({ ...preProcessedRow, condition: false });
+            return;
+          }
+        }
+
+        // Continue processing full row
+        let parsedRow: FlowTypes.TemplateRow = await templateVariables.evaluatePLHData(
           preProcessedRow,
           evalContext
         );
         const { name, value, hidden, type } = parsedRow;
-        // Filter out if specified by condition. This might be string or boolean depending on the parser/calcs (check for both)
-        // when dealing with nested rows we want to filter out to not pass to child,
-        // but if dealing with local rows we want to keep for future processing (will be filtered later)
-        // TODO - CC 2021-05-15 ideally condition column should be processed before rest of parsed row in case filtered out
-        if (parsedRow.hasOwnProperty("condition")) {
-          const condition = parsedRow.condition as any;
-          // check for any falsy value (null, undefined, false) as well as 'false' string
-          if (!condition || condition === "false") {
-            parsedRow.condition = false;
-            processedRows.push(parsedRow);
-            // return now so that set_variable or set_field is not recorded when condition false
-            return;
-          }
-        }
+
         // Make type assigned to hidden consistent
-        if (hidden === (true as any) || hidden === "true") parsedRow.hidden = true;
+        if (hidden === "true") parsedRow.hidden = true;
 
         if (type === "template") isNestedTemplate = true;
 
@@ -174,21 +175,21 @@ export class TemplateRowService {
         // Handle rows that should only be initialised once
         // Only process rows if not part of a nested template row (which will be handled in own template initialisation)
         if (!isNestedTemplate) {
-          // TODO - confirm no other externally processed rows
-          if (type === "set_field") {
-            console.warn("[W] Setting fields from template rows is not advised", { ...parsedRow });
-            this.container.templateService.setField(name, value);
-            return;
+          switch (type) {
+            case "set_field":
+              console.warn("[W] Setting fields from template is not advised", parsedRow);
+              this.container.templateService.setField(name, value);
+              return;
+            // ensure set_variables are recorded via their name (instead of default nested name)
+            case "set_variable":
+              this.templateRowMap.set(name, parsedRow);
+              return;
+            default:
+              // all other types should just set own value for use in future processing
+              this.templateRowMap.set(_nested_name, parsedRow);
+              break;
           }
-          // ensure set_variables are recorded via their name (instead of default nested name)
-          if (type === "set_variable") {
-            this.templateRowMap.set(name, parsedRow);
-            return;
-          }
-          // all other types should just set own value for use in future processing
-          this.templateRowMap.set(_nested_name, parsedRow);
         }
-
         processedRows.push(parsedRow);
       })();
     }
