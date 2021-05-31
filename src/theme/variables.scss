@@ -139,6 +139,12 @@ $horizontal: 90deg;
   --slider-title-max-width: 258px;
   --slider-labels-max-width: 275px;
 
+  // Timer //
+  --timer-counter-height: 73px;
+  --timer-counter-font-size: 40px;
+  --timer-title-width: 298px;
+  --timer-buttons-color: #{color.adjust($primary, $hue: -10, $saturation: 14%, $lightness: 19%)};
+
   // Combo box //
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
   --combo-box-font-size-standard: 20px;

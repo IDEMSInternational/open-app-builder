@@ -1,16 +1,13 @@
 @import "../../../../../../theme/mixins.scss";
 
-:host {
-  min-height: 183px;
-}
 .timer-counter {
   @include flex-centered;
   width: calc(100% - 10px);
-  height: 73px;
-  margin: 0 5px;
+  height: var(--timer-counter-height);
+  margin: 0 var(--tiny-margin);
   div {
     font-weight: var(--font-weight-bold);
-    font-size: 40px;
+    font-size: var(--timer-counter-font-size);
     color: var(--ion-color-primary);
     @media (max-width: 320px) {
       font-size: 30px;
@@ -21,8 +18,8 @@
   @include flex-space-between;
 }
 .timer-title {
-  margin-left: 8px;
-  max-width: 298px;
+  margin-left: var(--tiny-margin);
+  max-width: var(--timer-title-width);
   font-size: var(--timer-title-size);
   color: var(--ion-color-primary);
 }
@@ -42,9 +39,9 @@
   @include large-square;
   min-width: var(--buttons-size);
   position: relative;
-  --background: hsl(193, 100%, 40%);
+  --background: var(--timer-buttons-color);
   --background-size: cover;
-  --border-radius: 50%;
+  --border-radius: var(--ion-border-radius-rounded);
   --padding: 0;
   .right-icon {
     max-width: none;
@@ -52,9 +49,8 @@
   }
   .time-rewind-value {
     position: absolute;
-    margin-top: 2px;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: var(--font-size-text-tiny);
+    font-weight: var(--font-weight-bold);
   }
 }
 
