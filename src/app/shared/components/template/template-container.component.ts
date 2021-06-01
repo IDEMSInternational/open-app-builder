@@ -299,15 +299,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         await this.processRowUpdates();
       }
       for (const child of Object.values(this.children || {})) {
-        await child.forceRerender(full, true);
+        await child.forceRerender(full, shouldProcess);
       }
     } else {
       // ensure we start from the top-most parent template for rendering
       if (this.parent) {
-        return this.parent.forceRerender();
+        return this.parent.forceRerender(full, shouldProcess);
       } else {
-        console.log("[Force Rerender]", this);
-        return this.forceRerender(full, true);
+        shouldProcess = true;
+        return this.forceRerender(full, shouldProcess);
       }
     }
   }
@@ -609,7 +609,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         this.debugMode = params.debugMode ? true : false;
         // allow templateNavService to process actions based on query param change
         await this.templateNavService.handleQueryParamChange(params, this);
-        console.log("query params change", params);
       });
   }
 
