@@ -82,7 +82,23 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
-    this.type = getStringParamFromTemplateRow(this._row, "type", "default");
+    this.type = this.getTypeFromStyles(this.style);
+  }
+
+  private getTypeFromStyles(styles: string): string {
+    let result: string;
+    switch (true) {
+      case styles.includes("form"):
+        result = "form";
+        break;
+      case styles.includes("dashed_box"):
+        result = "dashed_box";
+        break;
+      default:
+        result = "default";
+        break;
+    }
+    return result;
   }
 
   setBackground() {
