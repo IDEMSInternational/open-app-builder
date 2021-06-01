@@ -145,8 +145,6 @@ export class TemplateActionService {
             parent.templateActionService.handleActions(actionsForEmittedEvent, row);
           } else {
             log("No action list for row ", row, "on template name ", name);
-            // NOTE - CC 2021-08-05 - Remove default action passing to parent
-            // parent.handleActions([action], row);
           }
         }
         break;
