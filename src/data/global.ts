@@ -3,6 +3,124 @@
   export const global: FlowTypes.Global[] = [
   {
     "flow_type": "global",
+    "flow_name": "parent_point_variables",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "parent_points_make_me_smile",
+        "value": "Make me smile"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "parent_points_get_me_going",
+        "value": "Get me going"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_relax",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_relax",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_treat_yourself",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_treat_yourself",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_praise_yourself",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_praise_yourself",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_spend_time",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_spend_time",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_praise_teen",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_praise_teen",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_instruct_positively",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_instruct_positively",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_breathe",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_breathe",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_money",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_money",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_consequence",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_consequence",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "weekly_parent_point_safe",
+        "value": 0
+      },
+      {
+        "type": "declare_field_default",
+        "name": "total_parent_point_safe",
+        "value": 0
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/habit_globals.xlsx"
+  },
+  {
+    "flow_type": "global",
     "flow_name": "in_week_message_titles",
     "status": "released",
     "rows": [
@@ -45,14 +163,9 @@
         "type": "declare_global_constant",
         "name": "m_hp_reminder",
         "value": "Home practice reminder"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "m_hp_review",
-        "value": "Home practice review"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_in_week_messages.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/in_week_message_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -285,7 +398,7 @@
         "value": "Grandpa"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_localisation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/localisation_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -296,9 +409,19 @@
         "type": "declare_global_constant",
         "name": "teen_social_medium",
         "value": "TikTok"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "data_warning_video",
+        "value": "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi."
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "data_warning_websites",
+        "value": "Visiting these websites requires internet access. To limit data use, visit these websites when on WiFi."
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_localisation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/localisation_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -356,7 +479,7 @@
         "value": true
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -390,6 +513,11 @@
       },
       {
         "type": "declare_global_constant",
+        "name": "tell_me_more_button",
+        "value": "Tell me more!"
+      },
+      {
+        "type": "declare_global_constant",
         "name": "lets_go_button",
         "value": "Let's go! "
       },
@@ -409,7 +537,7 @@
         "value": "Previous"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_navigation.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -512,7 +640,7 @@
         "value": "plh_images/icons/info_phone_white.svg"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_parent_centre.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/parent_centre_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -580,7 +708,7 @@
         "value": true
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_parent_centre.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/parent_centre_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -590,7 +718,7 @@
       {
         "type": "declare_global_constant",
         "name": "my_relaxes",
-        "value": "My relaxes"
+        "value": "Favourite relaxes"
       },
       {
         "type": "declare_global_constant",
@@ -608,29 +736,24 @@
         "value": "This week's relax"
       },
       {
-        "type": "declare_global_constant",
-        "name": "my_activities",
-        "value": "My activities"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "all_activities",
-        "value": "All activities"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "random_activity",
-        "value": "Random activity"
-      },
-      {
-        "type": "declare_global_constant",
-        "name": "current_activity",
-        "value": "This week's activity"
-      },
-      {
         "type": "declare_field_default",
         "name": "which_relax",
         "value": "relax_1"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "relax_passive_short",
+        "value": "Listen & relax (1-2 minutes)"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "relax_passive_long",
+        "value": "Listen & relax (3-5 minutes)"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "relax_active",
+        "value": "Do & relax (5-10 minutes)"
       },
       {
         "type": "declare_field_default",
@@ -703,125 +826,175 @@
         "value": false
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_parent_centre.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/parent_centre_globals.xlsx"
   },
   {
     "flow_type": "global",
-    "flow_name": "parent_point_variables",
+    "flow_name": "activity_variables",
     "status": "released",
     "rows": [
       {
         "type": "declare_global_constant",
-        "name": "parent_points_make_me_smile",
-        "value": "Make me smile"
+        "name": "my_activities",
+        "value": "Favourite activities"
       },
       {
         "type": "declare_global_constant",
-        "name": "parent_points_get_me_going",
-        "value": "Get me going"
+        "name": "all_activities",
+        "value": "All activities"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "random_activity",
+        "value": "Random activity"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "current_activity",
+        "value": "This week's activity"
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_relax",
-        "value": 0
+        "name": "which_activity",
+        "value": "co_chef"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "chat_together",
+        "value": "Chat together"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "do_together",
+        "value": "Do together"
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_relax",
-        "value": 0
+        "name": "activity_reflect_positive_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_treat_yourself",
-        "value": 0
+        "name": "activity_check_in_chat_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_treat_yourself",
-        "value": 0
+        "name": "activity_dream_travel_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_praise_yourself",
-        "value": 0
+        "name": "activity_famous_party_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_praise_yourself",
-        "value": 0
+        "name": "activity_two_truths_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_spend_time",
-        "value": 0
+        "name": "activity_time_machine_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_spend_time",
-        "value": 0
+        "name": "activity_superpowers_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_praise_teen",
-        "value": 0
+        "name": "activity_friendly_chat_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_praise_teen",
-        "value": 0
+        "name": "activity_interrupter_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_instruct_positively",
-        "value": 0
+        "name": "activity_three_options_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_instruct_positively",
-        "value": 0
+        "name": "activity_yes_no_maybe_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_breathe",
-        "value": 0
+        "name": "activity_memory_game_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_breathe",
-        "value": 0
+        "name": "activity_invent_story_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_money",
-        "value": 0
+        "name": "activity_co_chef_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_money",
-        "value": 0
+        "name": "activity_dance_moves_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_consequence",
-        "value": 0
+        "name": "activity_mirror_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_consequence",
-        "value": 0
+        "name": "activity_praise_time_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "weekly_parent_point_safe",
-        "value": 0
+        "name": "activity_whats_new_favourite",
+        "value": false
       },
       {
         "type": "declare_field_default",
-        "name": "total_parent_point_safe",
-        "value": 0
+        "name": "activity_get_active_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "activity_name_that_tune_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "activity_pass_the_snap_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "activity_family_workout_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "activity_housework_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "activity_doing_what_favourite",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "activity_crazy_chicken_favourite",
+        "value": false
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_parent_points.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/parent_centre_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -880,7 +1053,7 @@
         "value": "Play a game/sport"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_suggestions.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -909,7 +1082,7 @@
         "value": "Buying a car for my family"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_suggestions.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -948,7 +1121,7 @@
         "value": "Pandemic (COVID-19)"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_suggestions.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -977,7 +1150,7 @@
         "value": "In a savings group"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_suggestions.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -1036,7 +1209,7 @@
         "value": "Extra one-on-one time on Sunday (30 min)"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_suggestions.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -1070,7 +1243,7 @@
         "value": "Work out where you can get help"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_suggestions.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -1093,7 +1266,7 @@
         "value": "Tap and choose"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_surveys.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/survey_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -1146,7 +1319,7 @@
         "value": 7
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_surveys.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/survey_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -1279,7 +1452,7 @@
         "value": "How to support each other"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -1295,9 +1468,14 @@
         "type": "declare_global_constant",
         "name": "home_practice_problem_solving",
         "value": "Talk about @global.home_practice"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "hp_review",
+        "value": "Home Practice Review"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -1603,9 +1781,69 @@
         "type": "declare_field_default",
         "name": "w_celebrate_disabled",
         "value": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_self_care_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_1on1_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_praise_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_instruct_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_stress_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_money_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_rules_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_consequence_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_solve_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_safe_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_crisis_hp_review_completed",
+        "value": false
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_celebrate_hp_review_completed",
+        "value": false
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx"
   },
   {
     "flow_type": "global",
@@ -1646,9 +1884,37 @@
         "type": "declare_field_default",
         "name": "workshop_day",
         "value": "friday"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_money_path",
+        "value": "alone"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "w_safe_path",
+        "value": "alone"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/global_variables/global_workshops.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "debug_campaign_global",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "example_text",
+        "value": "example_text"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "some_global",
+        "value": "some_field"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx"
   },
   {
     "flow_type": "global",

@@ -4,7 +4,7 @@
   {
     "flow_type": "data_list",
     "flow_subtype": "campaign_rows",
-    "flow_name": "campaign_quick_starts",
+    "flow_name": "campaign_home_screen",
     "status": "released",
     "rows": [
       {
@@ -28,58 +28,6 @@
           "parent_centre"
         ],
         "icon": "plh_images/icons/play_white.svg"
-      },
-      {
-        "id": "w_self_care_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_self_care_stepper"
-            ],
-            "_raw": "go_to: w_self_care_stepper",
-            "_cleaned": "click | go_to: w_self_care_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_self_care_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_self_care_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_self_care_quick_start.sent : true"
-          }
-        ],
-        "priority": 0,
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_self_care_completed"
-              }
-            },
-            "_raw": "get_field | w_self_care_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_self_care"
       },
       {
         "id": "w_self_care_relax",
@@ -210,7 +158,7 @@
         "campaign_list": [
           "parent_centre"
         ],
-        "icon": "plh_images/icons/cogwheel_white.svg"
+        "icon": "plh_images/icons/phone_heart_white.svg"
       },
       {
         "id": "w_self_care_m_workshop_tomorrow",
@@ -383,80 +331,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_1on1_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_1on1_stepper"
-            ],
-            "_raw": "go_to: w_1on1_stepper",
-            "_cleaned": "click | go_to: w_1on1_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_1on1_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_1on1_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_1on1_quick_start.sent : true"
-          }
-        ],
-        "priority": 1,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "6",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 6 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_1on1_completed"
-              }
-            },
-            "_raw": "get_field | w_1on1_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_1on1"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_1on1_relax",
@@ -1115,80 +990,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_praise_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_praise_stepper"
-            ],
-            "_raw": "go_to: w_praise_stepper",
-            "_cleaned": "click | go_to: w_praise_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_praise_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_praise_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_praise_quick_start.sent : true"
-          }
-        ],
-        "priority": 2,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "13",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 13 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_praise_completed"
-              }
-            },
-            "_raw": "get_field | w_praise_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_praise"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_praise_relax",
@@ -1622,6 +1424,85 @@
         "icon": "plh_images/icons/bell_white.svg"
       },
       {
+        "id": "w_praise_m_workshop_in_pro",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "w_praise_m_workshop_in_pro"
+            ],
+            "_raw": "pop_up: w_praise_m_workshop_in_pro",
+            "_cleaned": "click | pop_up: w_praise_m_workshop_in_pro"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_praise_m_workshop_in_pro.sent",
+              true
+            ],
+            "_raw": "set_field: w_praise_m_workshop_in_pro.sent : true",
+            "_cleaned": "click | set_field: w_praise_m_workshop_in_pro.sent : true"
+          }
+        ],
+        "priority": 2.7,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "16",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 16 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_m_workshop_in_pro.sent"
+              }
+            },
+            "_raw": "get_field | w_praise_m_workshop_in_pro.sent : true"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_started"
+              }
+            },
+            "_raw": "get_field | w_praise_started : false"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_completed"
+              }
+            },
+            "_raw": "get_field | w_praise_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/bell_white.svg"
+      },
+      {
         "id": "w_praise_m_hp_reminder",
         "click_action_list": [
           {
@@ -1750,80 +1631,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_instruct_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_instruct_stepper"
-            ],
-            "_raw": "go_to: w_instruct_stepper",
-            "_cleaned": "click | go_to: w_instruct_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_instruct_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_instruct_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_instruct_quick_start.sent : true"
-          }
-        ],
-        "priority": 3,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "20",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 20 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_instruct_completed"
-              }
-            },
-            "_raw": "get_field | w_instruct_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_instruct"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_instruct_relax",
@@ -2196,6 +2004,155 @@
         "icon": "plh_images/icons/heart_white.svg"
       },
       {
+        "id": "w_instruct_m_workshop_reminder",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "w_instruct_m_workshop_reminder"
+            ],
+            "_raw": "pop_up: w_instruct_m_workshop_reminder",
+            "_cleaned": "click | pop_up: w_instruct_m_workshop_reminder"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_instruct_m_workshop_reminder.sent",
+              true
+            ],
+            "_raw": "set_field: w_instruct_m_workshop_reminder.sent : true",
+            "_cleaned": "click | set_field: w_instruct_m_workshop_reminder.sent : true"
+          }
+        ],
+        "priority": 3.6,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "23",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 23 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_started"
+              }
+            },
+            "_raw": "get_field | w_instruct_started : false"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_m_workshop_reminder.sent"
+              }
+            },
+            "_raw": "get_field | w_instruct_m_workshop_reminder.sent : true | before : 1 : day"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/bell_white.svg"
+      },
+      {
+        "id": "w_instruct_m_workshop_in_pro",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "w_instruct_m_workshop_in_pro"
+            ],
+            "_raw": "pop_up: w_instruct_m_workshop_in_pro",
+            "_cleaned": "click | pop_up: w_instruct_m_workshop_in_pro"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_instruct_m_workshop_in_pro.sent",
+              true
+            ],
+            "_raw": "set_field: w_instruct_m_workshop_in_pro.sent : true",
+            "_cleaned": "click | set_field: w_instruct_m_workshop_in_pro.sent : true"
+          }
+        ],
+        "priority": 3.7,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "23",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 23 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_m_workshop_in_pro.sent"
+              }
+            },
+            "_raw": "get_field | w_instruct_m_workshop_in_pro.sent : true"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_started"
+              }
+            },
+            "_raw": "get_field | w_instruct_started : false"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_completed"
+              }
+            },
+            "_raw": "get_field | w_instruct_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/bell_white.svg"
+      },
+      {
         "id": "w_instruct_m_hp_reminder",
         "click_action_list": [
           {
@@ -2324,80 +2281,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_stress_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_stress_stepper"
-            ],
-            "_raw": "go_to: w_stress_stepper",
-            "_cleaned": "click | go_to: w_stress_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_stress_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_stress_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_stress_quick_start.sent : true"
-          }
-        ],
-        "priority": 4,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "27",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 27 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_stress_completed"
-              }
-            },
-            "_raw": "get_field | w_stress_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_stress"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_stress_relax",
@@ -2840,6 +2724,85 @@
         "icon": "plh_images/icons/bell_white.svg"
       },
       {
+        "id": "w_stress_m_workshop_in_progress",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "w_stress_m_workshop_in_progress"
+            ],
+            "_raw": "pop_up: w_stress_m_workshop_in_progress",
+            "_cleaned": "click | pop_up: w_stress_m_workshop_in_progress"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_stress_m_workshop_in_progress.sent",
+              true
+            ],
+            "_raw": "set_field: w_stress_m_workshop_in_progress.sent : true",
+            "_cleaned": "click | set_field: w_stress_m_workshop_in_progress.sent : true"
+          }
+        ],
+        "priority": 4.7,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "30",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 30 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_stress_m_workshop_in_progress.sent"
+              }
+            },
+            "_raw": "get_field | w_stress_m_workshop_in_progress.sent : true"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_stress_started"
+              }
+            },
+            "_raw": "get_field | w_stress_started : false"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_stress_completed"
+              }
+            },
+            "_raw": "get_field | w_stress_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/bell_white.svg"
+      },
+      {
         "id": "w_stress_m_hp_reminder",
         "click_action_list": [
           {
@@ -2968,80 +2931,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_money_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_money_stepper"
-            ],
-            "_raw": "go_to: w_money_stepper",
-            "_cleaned": "click | go_to: w_money_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_money_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_money_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_money_quick_start.sent : true"
-          }
-        ],
-        "priority": 5,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "27",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 27 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_money_completed"
-              }
-            },
-            "_raw": "get_field | w_money_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_money"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_money_relax",
@@ -3484,6 +3374,85 @@
         "icon": "plh_images/icons/bell_white.svg"
       },
       {
+        "id": "w_money_m_workshop_in_progress",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "w_money_m_workshop_in_progress"
+            ],
+            "_raw": "pop_up: w_money_m_workshop_in_progress",
+            "_cleaned": "click | pop_up: w_money_m_workshop_in_progress"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_money_m_workshop_in_progress.sent",
+              true
+            ],
+            "_raw": "set_field: w_money_m_workshop_in_progress.sent : true",
+            "_cleaned": "click | set_field: w_money_m_workshop_in_progress.sent : true"
+          }
+        ],
+        "priority": 5.7,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "30",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 30 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_money_m_workshop_in_progress.sent"
+              }
+            },
+            "_raw": "get_field | w_money_m_workshop_in_progress.sent : true"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_money_started"
+              }
+            },
+            "_raw": "get_field | w_money_started : false"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_money_completed"
+              }
+            },
+            "_raw": "get_field | w_money_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/bell_white.svg"
+      },
+      {
         "id": "w_money_m_hp_reminder",
         "click_action_list": [
           {
@@ -3612,80 +3581,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_rules_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_rules_stepper"
-            ],
-            "_raw": "go_to: w_rules_stepper",
-            "_cleaned": "click | go_to: w_rules_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_rules_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_rules_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_rules_quick_start.sent : true"
-          }
-        ],
-        "priority": 6,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "27",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 27 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_rules_completed"
-              }
-            },
-            "_raw": "get_field | w_rules_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_rules"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_rules_relax",
@@ -4317,80 +4213,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_consequence_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_consequence_stepper"
-            ],
-            "_raw": "go_to: w_consequence_stepper",
-            "_cleaned": "click | go_to: w_consequence_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_consequence_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_consequence_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_consequence_quick_start.sent : true"
-          }
-        ],
-        "priority": 7,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "27",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 27 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_consequence_completed"
-              }
-            },
-            "_raw": "get_field | w_consequence_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_consequence"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_consequence_relax",
@@ -5022,80 +4845,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_solve_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_solve_stepper"
-            ],
-            "_raw": "go_to: w_solve_stepper",
-            "_cleaned": "click | go_to: w_solve_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_solve_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_solve_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_solve_quick_start.sent : true"
-          }
-        ],
-        "priority": 8,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "27",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 27 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_solve_completed"
-              }
-            },
-            "_raw": "get_field | w_solve_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_solve"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_solve_relax",
@@ -5727,80 +5477,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_safe_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_safe_stepper"
-            ],
-            "_raw": "go_to: w_safe_stepper",
-            "_cleaned": "click | go_to: w_safe_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_safe_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_safe_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_safe_quick_start.sent : true"
-          }
-        ],
-        "priority": 9,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "27",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 27 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_safe_completed"
-              }
-            },
-            "_raw": "get_field | w_safe_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_safe"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_safe_relax",
@@ -6225,6 +5902,85 @@
         "icon": "plh_images/icons/bell_white.svg"
       },
       {
+        "id": "w_safe_m_workshop_in_progress",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "w_safe_m_workshop_in_progress"
+            ],
+            "_raw": "pop_up: w_safe_m_workshop_in_progress",
+            "_cleaned": "click | pop_up: w_safe_m_workshop_in_progress"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_safe_m_workshop_in_progress.sent",
+              true
+            ],
+            "_raw": "set_field: w_safe_m_workshop_in_progress.sent : true",
+            "_cleaned": "click | set_field: w_safe_m_workshop_in_progress.sent : true"
+          }
+        ],
+        "priority": 9.7,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "30",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 30 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_safe_m_workshop_in_progress.sent"
+              }
+            },
+            "_raw": "get_field | w_safe_m_workshop_in_progress.sent : true"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_safe_started"
+              }
+            },
+            "_raw": "get_field | w_safe_started : false"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_safe_completed"
+              }
+            },
+            "_raw": "get_field | w_safe_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/bell_white.svg"
+      },
+      {
         "id": "w_safe_m_hp_reminder",
         "click_action_list": [
           {
@@ -6353,80 +6109,7 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
-      {
-        "id": "w_crisis_quick_start",
-        "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "do_this_workshop_together",
-              false
-            ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
-          {
-            "trigger": "click",
-            "action_id": "go_to",
-            "args": [
-              "w_crisis_stepper"
-            ],
-            "_raw": "go_to: w_crisis_stepper",
-            "_cleaned": "click | go_to: w_crisis_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_crisis_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_crisis_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_crisis_quick_start.sent : true"
-          }
-        ],
-        "priority": 10,
-        "activation_condition_list": [
-          {
-            "condition_type": "db_lookup",
-            "condition_args": {
-              "db_lookup": {
-                "table_id": "app_events",
-                "filter": {
-                  "field": "event_id",
-                  "value": "app_launch"
-                },
-                "order": "asc",
-                "evaluate": {
-                  "operator": ">",
-                  "value": "27",
-                  "unit": "day"
-                }
-              }
-            },
-            "_raw": "first_launch | before: 27 : day"
-          }
-        ],
-        "deactivation_condition_list": [
-          {
-            "condition_type": "field_evaluation",
-            "condition_args": {
-              "field_evaluation": {
-                "evaluate": "w_crisis_completed"
-              }
-            },
-            "_raw": "get_field | w_crisis_completed : true"
-          }
-        ],
-        "campaign_list": [
-          "weekly_workshops",
-          "workshop_quick_start"
-        ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_crisis"
+        "icon": "plh_images/icons/star_white.svg"
       },
       {
         "id": "w_crisis_relax",
@@ -6781,6 +6464,76 @@
         "icon": "plh_images/icons/heart_white.svg"
       },
       {
+        "id": "w_crisis_m_workshop_reminder",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "w_crisis_m_workshop_reminder"
+            ],
+            "_raw": "pop_up: w_crisis_m_workshop_reminder",
+            "_cleaned": "click | pop_up: w_crisis_m_workshop_reminder"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_crisis_m_workshop_reminder.sent",
+              true
+            ],
+            "_raw": "set_field: w_crisis_m_workshop_reminder.sent : true",
+            "_cleaned": "click | set_field: w_crisis_m_workshop_reminder.sent : true"
+          }
+        ],
+        "priority": 10.6,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "30",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 30 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_started"
+              }
+            },
+            "_raw": "get_field | w_crisis_started : false"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_m_workshop_reminder.sent"
+              }
+            },
+            "_raw": "get_field | w_crisis_m_workshop_reminder.sent : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops"
+        ],
+        "icon": "plh_images/icons/bell_white.svg"
+      },
+      {
         "id": "w_crisis_m_workshop_in_progress",
         "click_action_list": [
           {
@@ -6860,6 +6613,76 @@
         "icon": "plh_images/icons/bell_white.svg"
       },
       {
+        "id": "w_crisis_m_hp_reminder",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "w_crisis_m_hp_reminder"
+            ],
+            "_raw": "pop_up: w_crisis_m_hp_reminder",
+            "_cleaned": "click | pop_up: w_crisis_m_hp_reminder"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_crisis_m_hp_reminder.sent",
+              true
+            ],
+            "_raw": "set_field: w_crisis_m_hp_reminder.sent : true",
+            "_cleaned": "click | set_field: w_crisis_m_hp_reminder.sent : true"
+          }
+        ],
+        "priority": 10.8,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "30",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 30 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_completed"
+              }
+            },
+            "_raw": "get_field | w_crisis_completed: true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_m_hp_reminder.sent"
+              }
+            },
+            "_raw": "get_field | w_crisis_m_hp_reminder.sent : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_points"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
         "id": "w_crisis_m_parent_points_overview",
         "click_action_list": [
           {
@@ -6918,42 +6741,481 @@
         "campaign_list": [
           "parent_points"
         ],
-        "icon": "plh_images/icons/star_outine.svg"
-      },
+        "icon": "plh_images/icons/star_white.svg"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_subtype": "campaign_rows",
+    "flow_name": "campaign_workshop_quick_start",
+    "status": "released",
+    "rows": [
       {
-        "id": "w_celebrate_quick_start",
+        "id": "default",
         "click_action_list": [
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "do_this_workshop_together",
-              false
+              "default.sent",
+              true
             ],
-            "_raw": "set_field: do_this_workshop_together : false",
-            "_cleaned": "click | set_field: do_this_workshop_together : false"
-          },
+            "_raw": "set_field: default.sent : true",
+            "_cleaned": "click | set_field: default.sent : true"
+          }
+        ],
+        "priority": -1,
+        "campaign_list": [
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_self_care_quick_start",
+        "workshop": "w_self_care",
+        "workshop_data": "@data.workshop.w_self_care",
+        "click_action_list": [
           {
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "w_celebrate_stepper"
+              "w_self_care_stepper"
             ],
-            "_raw": "go_to: w_celebrate_stepper",
-            "_cleaned": "click | go_to: w_celebrate_stepper"
-          },
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "w_celebrate_quick_start.sent",
-              true
-            ],
-            "_raw": "set_field: w_celebrate_quick_start.sent : true",
-            "_cleaned": "click | set_field: w_celebrate_quick_start.sent : true"
+            "_raw": "go_to: w_self_care_stepper",
+            "_cleaned": "click | go_to: w_self_care_stepper"
           }
         ],
-        "priority": 10,
+        "priority": 0,
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_self_care_started"
+              }
+            },
+            "_raw": "get_field | w_self_care_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_self_care_continue",
+        "workshop": "w_self_care",
+        "workshop_data": "@data.workshop.w_self_care",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_self_care_stepper"
+            ],
+            "_raw": "go_to: w_self_care_stepper",
+            "_cleaned": "click | go_to: w_self_care_stepper"
+          }
+        ],
+        "priority": 0,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_self_care_started"
+              }
+            },
+            "_raw": "get_field | w_self_care_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_self_care_completed"
+              }
+            },
+            "_raw": "get_field | w_self_care_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_1on1_quick_start",
+        "workshop": "w_1on1",
+        "workshop_data": "@data.workshop.w_1on1",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_stepper"
+            ],
+            "_raw": "go_to: w_1on1_stepper",
+            "_cleaned": "click | go_to: w_1on1_stepper"
+          }
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "6",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 6 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_1on1_started"
+              }
+            },
+            "_raw": "get_field | w_1on1_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_1on1_continue",
+        "workshop": "w_1on1",
+        "workshop_data": "@data.workshop.w_1on1",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_stepper"
+            ],
+            "_raw": "go_to: w_1on1_stepper",
+            "_cleaned": "click | go_to: w_1on1_stepper"
+          }
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "6",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 6 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_1on1_started"
+              }
+            },
+            "_raw": "get_field | w_1on1_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_1on1_completed"
+              }
+            },
+            "_raw": "get_field | w_1on1_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_praise_quick_start",
+        "workshop": "w_praise",
+        "workshop_data": "@data.workshop.w_praise",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_praise_stepper"
+            ],
+            "_raw": "go_to: w_praise_stepper",
+            "_cleaned": "click | go_to: w_praise_stepper"
+          }
+        ],
+        "priority": 2,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "13",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 13 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_started"
+              }
+            },
+            "_raw": "get_field | w_praise_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_praise_continue",
+        "workshop": "w_praise",
+        "workshop_data": "@data.workshop.w_praise",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_praise_stepper"
+            ],
+            "_raw": "go_to: w_praise_stepper",
+            "_cleaned": "click | go_to: w_praise_stepper"
+          }
+        ],
+        "priority": 2,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "13",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 13 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_started"
+              }
+            },
+            "_raw": "get_field | w_praise_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_completed"
+              }
+            },
+            "_raw": "get_field | w_praise_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_instruct_quick_start",
+        "workshop": "w_instruct",
+        "workshop_data": "@data.workshop.w_instruct",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_instruct_stepper"
+            ],
+            "_raw": "go_to: w_instruct_stepper",
+            "_cleaned": "click | go_to: w_instruct_stepper"
+          }
+        ],
+        "priority": 3,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "20",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 20 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_started"
+              }
+            },
+            "_raw": "get_field | w_instruct_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_instruct_continue",
+        "workshop": "w_instruct",
+        "workshop_data": "@data.workshop.w_instruct",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_instruct_stepper"
+            ],
+            "_raw": "go_to: w_instruct_stepper",
+            "_cleaned": "click | go_to: w_instruct_stepper"
+          }
+        ],
+        "priority": 3,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "20",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 20 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_started"
+              }
+            },
+            "_raw": "get_field | w_instruct_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_completed"
+              }
+            },
+            "_raw": "get_field | w_instruct_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_stress_quick_start",
+        "workshop": "w_stress",
+        "workshop_data": "@data.workshop.w_stress",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_stress_stepper"
+            ],
+            "_raw": "go_to: w_stress_stepper",
+            "_cleaned": "click | go_to: w_stress_stepper"
+          }
+        ],
+        "priority": 4,
         "activation_condition_list": [
           {
             "condition_type": "db_lookup",
@@ -6980,18 +7242,899 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_celebrate_completed"
+                "evaluate": "w_stress_started"
               }
             },
-            "_raw": "get_field | w_celebrate_completed : true"
+            "_raw": "get_field | w_stress_started : true"
           }
         ],
         "campaign_list": [
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg",
-        "text": "Start workshop @global.w_celebrate"
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_stress_continue",
+        "workshop": "w_stress",
+        "workshop_data": "@data.workshop.w_stress",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_stress_stepper"
+            ],
+            "_raw": "go_to: w_stress_stepper",
+            "_cleaned": "click | go_to: w_stress_stepper"
+          }
+        ],
+        "priority": 4,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "27",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 27 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_stress_started"
+              }
+            },
+            "_raw": "get_field | w_stress_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_stress_completed"
+              }
+            },
+            "_raw": "get_field | w_stress_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_money_quick_start",
+        "workshop": "w_money",
+        "workshop_data": "@data.workshop.w_money",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_money_stepper"
+            ],
+            "_raw": "go_to: w_money_stepper",
+            "_cleaned": "click | go_to: w_money_stepper"
+          }
+        ],
+        "priority": 5,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_money_started"
+              }
+            },
+            "_raw": "get_field | w_money_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_money_continue",
+        "workshop": "w_money",
+        "workshop_data": "@data.workshop.w_money",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_money_stepper"
+            ],
+            "_raw": "go_to: w_money_stepper",
+            "_cleaned": "click | go_to: w_money_stepper"
+          }
+        ],
+        "priority": 5,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_money_started"
+              }
+            },
+            "_raw": "get_field | w_money_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_money_completed"
+              }
+            },
+            "_raw": "get_field | w_money_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_rules_quick_start",
+        "workshop": "w_rules",
+        "workshop_data": "@data.workshop.w_rules",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_rules_stepper"
+            ],
+            "_raw": "go_to: w_rules_stepper",
+            "_cleaned": "click | go_to: w_rules_stepper"
+          }
+        ],
+        "priority": 6,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_rules_started"
+              }
+            },
+            "_raw": "get_field | w_rules_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_rules_continue",
+        "workshop": "w_rules",
+        "workshop_data": "@data.workshop.w_rules",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_rules_stepper"
+            ],
+            "_raw": "go_to: w_rules_stepper",
+            "_cleaned": "click | go_to: w_rules_stepper"
+          }
+        ],
+        "priority": 6,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_rules_started"
+              }
+            },
+            "_raw": "get_field | w_rules_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_rules_completed"
+              }
+            },
+            "_raw": "get_field | w_rules_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_consequence_quick_start",
+        "workshop": "w_consequence",
+        "workshop_data": "@data.workshop.w_consequence",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_consequence_stepper"
+            ],
+            "_raw": "go_to: w_consequence_stepper",
+            "_cleaned": "click | go_to: w_consequence_stepper"
+          }
+        ],
+        "priority": 7,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_consequence_started"
+              }
+            },
+            "_raw": "get_field | w_consequence_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_consequence_continue",
+        "workshop": "w_consequence",
+        "workshop_data": "@data.workshop.w_consequence",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_consequence_stepper"
+            ],
+            "_raw": "go_to: w_consequence_stepper",
+            "_cleaned": "click | go_to: w_consequence_stepper"
+          }
+        ],
+        "priority": 7,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_consequence_started"
+              }
+            },
+            "_raw": "get_field | w_consequence_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_consequence_completed"
+              }
+            },
+            "_raw": "get_field | w_consequence_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_solve_quick_start",
+        "workshop": "w_solve",
+        "workshop_data": "@data.workshop.w_solve",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_solve_stepper"
+            ],
+            "_raw": "go_to: w_solve_stepper",
+            "_cleaned": "click | go_to: w_solve_stepper"
+          }
+        ],
+        "priority": 8,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_solve_started"
+              }
+            },
+            "_raw": "get_field | w_solve_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_solve_continue",
+        "workshop": "w_solve",
+        "workshop_data": "@data.workshop.w_solve",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_solve_stepper"
+            ],
+            "_raw": "go_to: w_solve_stepper",
+            "_cleaned": "click | go_to: w_solve_stepper"
+          }
+        ],
+        "priority": 8,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_solve_started"
+              }
+            },
+            "_raw": "get_field | w_solve_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_solve_completed"
+              }
+            },
+            "_raw": "get_field | w_solve_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_safe_quick_start",
+        "workshop": "w_safe",
+        "workshop_data": "@data.workshop.w_safe",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_safe_stepper"
+            ],
+            "_raw": "go_to: w_safe_stepper",
+            "_cleaned": "click | go_to: w_safe_stepper"
+          }
+        ],
+        "priority": 9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_safe_started"
+              }
+            },
+            "_raw": "get_field | w_safe_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_safe_continue",
+        "workshop": "w_safe",
+        "workshop_data": "@data.workshop.w_safe",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_safe_stepper"
+            ],
+            "_raw": "go_to: w_safe_stepper",
+            "_cleaned": "click | go_to: w_safe_stepper"
+          }
+        ],
+        "priority": 9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_safe_started"
+              }
+            },
+            "_raw": "get_field | w_safe_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_safe_completed"
+              }
+            },
+            "_raw": "get_field | w_safe_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_crisis_quick_start",
+        "workshop": "w_crisis",
+        "workshop_data": "@data.workshop.w_crisis",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_crisis_stepper"
+            ],
+            "_raw": "go_to: w_crisis_stepper",
+            "_cleaned": "click | go_to: w_crisis_stepper"
+          }
+        ],
+        "priority": 10,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_started"
+              }
+            },
+            "_raw": "get_field | w_crisis_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_crisis_continue",
+        "workshop": "w_crisis",
+        "workshop_data": "@data.workshop.w_crisis",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_crisis_stepper"
+            ],
+            "_raw": "go_to: w_crisis_stepper",
+            "_cleaned": "click | go_to: w_crisis_stepper"
+          }
+        ],
+        "priority": 10,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_started"
+              }
+            },
+            "_raw": "get_field | w_crisis_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_completed"
+              }
+            },
+            "_raw": "get_field | w_crisis_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_celebrate_quick_start",
+        "workshop": "w_celebrate",
+        "workshop_data": "@data.workshop.w_celebrate",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_celebrate_stepper"
+            ],
+            "_raw": "go_to: w_celebrate_stepper",
+            "_cleaned": "click | go_to: w_celebrate_stepper"
+          }
+        ],
+        "priority": 11,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_celebrate_started"
+              }
+            },
+            "_raw": "get_field | w_celebrate_started : true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
+      },
+      {
+        "id": "w_celebrate_continue",
+        "workshop": "w_celebrate",
+        "workshop_data": "@data.workshop.w_celebrate",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_celebrate_stepper"
+            ],
+            "_raw": "go_to: w_celebrate_stepper",
+            "_cleaned": "click | go_to: w_celebrate_stepper"
+          }
+        ],
+        "priority": 11,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "34",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 34 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_celebrate_started"
+              }
+            },
+            "_raw": "get_field | w_celebrate_started : true"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_celebrate_completed"
+              }
+            },
+            "_raw": "get_field | w_celebrate_completed: true"
+          }
+        ],
+        "campaign_list": [
+          "weekly_workshops",
+          "workshop_quick_start"
+        ],
+        "icon": "plh_images/icons/play_white.svg"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx"
@@ -7969,12 +9112,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "7",
+                  "value": "6",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 7 : day"
+            "_raw": "first_launch | before: 6 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -7990,12 +9133,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "14",
+                  "value": "13",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 14 : day"
+            "_raw": "first_launch | before : 13 : day"
           }
         ],
         "campaign_list": [
@@ -8010,10 +9153,10 @@
             "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "activity_dance_moves"
+              "activity_reflect_positive"
             ],
-            "_raw": "go_to: activity_dance_moves",
-            "_cleaned": "click | go_to: activity_dance_moves"
+            "_raw": "go_to: activity_reflect_positive",
+            "_cleaned": "click | go_to: activity_reflect_positive"
           },
           {
             "trigger": "click",
@@ -8040,12 +9183,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "14",
+                  "value": "13",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 14 : day"
+            "_raw": "first_launch | before: 13 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8061,12 +9204,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "21",
+                  "value": "20",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 21 : day"
+            "_raw": "first_launch | before : 20 : day"
           }
         ],
         "campaign_list": [
@@ -8079,12 +9222,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "pop_up",
+            "action_id": "go_to",
             "args": [
-              "w_instruct_m_something_fun"
+              "activity_dance_moves"
             ],
-            "_raw": "pop_up: w_instruct_m_something_fun",
-            "_cleaned": "click | pop_up: w_instruct_m_something_fun"
+            "_raw": "go_to: activity_dance_moves",
+            "_cleaned": "click | go_to: activity_dance_moves"
           },
           {
             "trigger": "click",
@@ -8111,12 +9254,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "21",
+                  "value": "20",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 21 : day"
+            "_raw": "first_launch | before: 20 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8132,12 +9275,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "28",
+                  "value": "27",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 28 : day"
+            "_raw": "first_launch | before : 27 : day"
           }
         ],
         "campaign_list": [
@@ -8150,12 +9293,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "pop_up",
+            "action_id": "go_to",
             "args": [
-              "w_stress_m_something_fun"
+              "activity_check_in_chat"
             ],
-            "_raw": "pop_up: w_stress_m_something_fun",
-            "_cleaned": "click | pop_up: w_stress_m_something_fun"
+            "_raw": "go_to: activity_check_in_chat",
+            "_cleaned": "click | go_to: activity_check_in_chat"
           },
           {
             "trigger": "click",
@@ -8182,12 +9325,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "28",
+                  "value": "27",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 28 : day"
+            "_raw": "first_launch | before: 27 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8203,12 +9346,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "35",
+                  "value": "34",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 35 : day"
+            "_raw": "first_launch | before : 34 : day"
           }
         ],
         "campaign_list": [
@@ -8221,12 +9364,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "pop_up",
+            "action_id": "go_to",
             "args": [
-              "w_money_m_something_fun"
+              "activity_dream_travel"
             ],
-            "_raw": "pop_up: w_money_m_something_fun",
-            "_cleaned": "click | pop_up: w_money_m_something_fun"
+            "_raw": "go_to: activity_dream_travel",
+            "_cleaned": "click | go_to: activity_dream_travel"
           },
           {
             "trigger": "click",
@@ -8253,12 +9396,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "28",
+                  "value": "27",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 28 : day"
+            "_raw": "first_launch | before: 27 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8274,12 +9417,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "35",
+                  "value": "34",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 35 : day"
+            "_raw": "first_launch | before : 34 : day"
           }
         ],
         "campaign_list": [
@@ -8292,12 +9435,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "pop_up",
+            "action_id": "go_to",
             "args": [
-              "w_rules_m_something_fun"
+              "activity_famous_party"
             ],
-            "_raw": "pop_up: w_rules_m_something_fun",
-            "_cleaned": "click | pop_up: w_rules_m_something_fun"
+            "_raw": "go_to: activity_famous_party",
+            "_cleaned": "click | go_to: activity_famous_party"
           },
           {
             "trigger": "click",
@@ -8324,12 +9467,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "28",
+                  "value": "27",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 28 : day"
+            "_raw": "first_launch | before: 27 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8345,12 +9488,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "35",
+                  "value": "34",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 35 : day"
+            "_raw": "first_launch | before : 34 : day"
           }
         ],
         "campaign_list": [
@@ -8363,12 +9506,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "pop_up",
+            "action_id": "go_to",
             "args": [
-              "w_consequence_m_something_fun"
+              "activity_two_truths"
             ],
-            "_raw": "pop_up: w_consequence_m_something_fun",
-            "_cleaned": "click | pop_up: w_consequence_m_something_fun"
+            "_raw": "go_to: activity_two_truths",
+            "_cleaned": "click | go_to: activity_two_truths"
           },
           {
             "trigger": "click",
@@ -8395,12 +9538,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "28",
+                  "value": "27",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 28 : day"
+            "_raw": "first_launch | before: 27 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8416,12 +9559,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "35",
+                  "value": "34",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 35 : day"
+            "_raw": "first_launch | before : 34 : day"
           }
         ],
         "campaign_list": [
@@ -8434,12 +9577,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "pop_up",
+            "action_id": "go_to",
             "args": [
-              "w_solve_m_something_fun"
+              "activity_mirror"
             ],
-            "_raw": "pop_up: w_solve_m_something_fun",
-            "_cleaned": "click | pop_up: w_solve_m_something_fun"
+            "_raw": "go_to: activity_mirror",
+            "_cleaned": "click | go_to: activity_mirror"
           },
           {
             "trigger": "click",
@@ -8466,12 +9609,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "28",
+                  "value": "27",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 28 : day"
+            "_raw": "first_launch | before: 27 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8487,12 +9630,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "35",
+                  "value": "34",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 35 : day"
+            "_raw": "first_launch | before : 34 : day"
           }
         ],
         "campaign_list": [
@@ -8505,12 +9648,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "pop_up",
+            "action_id": "go_to",
             "args": [
-              "w_safe_m_something_fun"
+              "activity_time_machine"
             ],
-            "_raw": "pop_up: w_safe_m_something_fun",
-            "_cleaned": "click | pop_up: w_safe_m_something_fun"
+            "_raw": "go_to: activity_time_machine",
+            "_cleaned": "click | go_to: activity_time_machine"
           },
           {
             "trigger": "click",
@@ -8537,12 +9680,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "28",
+                  "value": "27",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 28 : day"
+            "_raw": "first_launch | before: 27 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8558,12 +9701,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "35",
+                  "value": "34",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 35 : day"
+            "_raw": "first_launch | before : 34 : day"
           }
         ],
         "campaign_list": [
@@ -8576,12 +9719,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "pop_up",
+            "action_id": "go_to",
             "args": [
-              "w_crisis_m_something_fun"
+              "activity_superpowers"
             ],
-            "_raw": "pop_up: w_crisis_m_something_fun",
-            "_cleaned": "click | pop_up: w_crisis_m_something_fun"
+            "_raw": "go_to: activity_superpowers",
+            "_cleaned": "click | go_to: activity_superpowers"
           },
           {
             "trigger": "click",
@@ -8608,12 +9751,12 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "28",
+                  "value": "27",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 28 : day"
+            "_raw": "first_launch | before: 27 : day"
           }
         ],
         "deactivation_condition_list": [
@@ -8629,18 +9772,637 @@
                 "order": "asc",
                 "evaluate": {
                   "operator": ">",
-                  "value": "35",
+                  "value": "34",
                   "unit": "day"
                 }
               }
             },
-            "_raw": "first_launch | before: 35 : day"
+            "_raw": "first_launch | before : 34 : day"
           }
         ],
         "campaign_list": [
           "something_fun"
         ],
         "icon": "plh_images/icons/smile_eyes_up_white.svg"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_subtype": "campaign_rows",
+    "flow_name": "campaign_hp_review",
+    "status": "released",
+    "rows": [
+      {
+        "id": "w_1on1_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_1on1_hp_review"
+            ],
+            "_raw": "go_to: w_1on1_hp_review",
+            "_cleaned": "click | go_to: w_1on1_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_1on1_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_1on1_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_1on1_hp_review.sent : true"
+          }
+        ],
+        "priority": 1.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "12",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 12 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_1on1_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_1on1_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_praise_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_praise_hp_review"
+            ],
+            "_raw": "go_to: w_praise_hp_review",
+            "_cleaned": "click | go_to: w_praise_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_praise_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_praise_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_praise_hp_review.sent : true"
+          }
+        ],
+        "priority": 2.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "19",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 19 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_praise_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_instruct_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_instruct_hp_review"
+            ],
+            "_raw": "go_to: w_instruct_hp_review",
+            "_cleaned": "click | go_to: w_instruct_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_instruct_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_instruct_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_instruct_hp_review.sent : true"
+          }
+        ],
+        "priority": 3.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "26",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 26 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_instruct_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_stress_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_stress_hp_review"
+            ],
+            "_raw": "go_to: w_stress_hp_review",
+            "_cleaned": "click | go_to: w_stress_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_stress_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_stress_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_stress_hp_review.sent : true"
+          }
+        ],
+        "priority": 4.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "33",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 33 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_stress_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_stress_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_money_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_money_hp_review"
+            ],
+            "_raw": "go_to: w_money_hp_review",
+            "_cleaned": "click | go_to: w_money_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_money_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_money_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_money_hp_review.sent : true"
+          }
+        ],
+        "priority": 5.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "33",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 33 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_money_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_money_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_rules_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_rules_hp_review"
+            ],
+            "_raw": "go_to: w_rules_hp_review",
+            "_cleaned": "click | go_to: w_rules_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_rules_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_rules_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_rules_hp_review.sent : true"
+          }
+        ],
+        "priority": 6.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "33",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 33 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_rules_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_rules_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_consequence_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_consequence_hp_review"
+            ],
+            "_raw": "go_to: w_consequence_hp_review",
+            "_cleaned": "click | go_to: w_consequence_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_consequence_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_consequence_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_consequence_hp_review.sent : true"
+          }
+        ],
+        "priority": 7.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "33",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 33 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_consequence_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_consequence_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_solve_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_solve_hp_review"
+            ],
+            "_raw": "go_to: w_solve_hp_review",
+            "_cleaned": "click | go_to: w_solve_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_solve_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_solve_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_solve_hp_review.sent : true"
+          }
+        ],
+        "priority": 8.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "33",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 33 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_solve_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_solve_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_safe_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_safe_hp_review"
+            ],
+            "_raw": "go_to: w_safe_hp_review",
+            "_cleaned": "click | go_to: w_safe_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_safe_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_safe_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_safe_hp_review.sent : true"
+          }
+        ],
+        "priority": 9.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "33",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 33 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_safe_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_safe_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
+      },
+      {
+        "id": "w_crisis_hp_review",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_crisis_hp_review"
+            ],
+            "_raw": "go_to: w_crisis_hp_review",
+            "_cleaned": "click | go_to: w_crisis_hp_review"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_crisis_hp_review.sent",
+              true
+            ],
+            "_raw": "set_field: w_crisis_hp_review.sent : true",
+            "_cleaned": "click | set_field: w_crisis_hp_review.sent : true"
+          }
+        ],
+        "priority": 10.9,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "33",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 33 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_hp_review_completed"
+              }
+            },
+            "_raw": "get_field | w_crisis_hp_review_completed : true"
+          }
+        ],
+        "campaign_list": [
+          "parent_centre"
+        ],
+        "icon": "plh_images/icons/parent_heart_white.svg"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx"
@@ -8858,194 +10620,6 @@
   },
   {
     "flow_type": "data_list",
-    "flow_name": "relax_list",
-    "data_list_name": "relax",
-    "status": "released",
-    "rows": [
-      {
-        "id": "relax_1",
-        "title": "Quick pause",
-        "task_id": "task_relax",
-        "text_template": "relax_1_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_1_audio.mp3"
-      },
-      {
-        "id": "relax_2",
-        "module": "1on1",
-        "title": "Power of three",
-        "task_id": "task_relax",
-        "text_template": "relax_2_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_2_audio.mp3"
-      },
-      {
-        "id": "relax_3",
-        "module": "praise",
-        "title": "One thing today",
-        "task_id": "task_relax",
-        "text_template": "relax_3_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_3_audio.mp3"
-      },
-      {
-        "id": "relax_4",
-        "module": "instruct",
-        "title": "Breathe to three",
-        "task_id": "task_relax",
-        "text_template": "relax_4_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_4_audio.mp3"
-      },
-      {
-        "id": "relax_5",
-        "module": "self_care",
-        "title": "In and out",
-        "task_id": "task_relax",
-        "text_template": "relax_5_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_5_audio.mp3"
-      },
-      {
-        "id": "relax_6",
-        "title": "Think about today",
-        "task_id": "task_relax",
-        "text_template": "relax_6_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_6_audio.mp3"
-      },
-      {
-        "id": "relax_7",
-        "module": "stress",
-        "title": "Pause to respond",
-        "task_id": "task_relax",
-        "text_template": "relax_7_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_7_audio.mp3"
-      },
-      {
-        "id": "relax_8",
-        "module": "money",
-        "title": "Small things",
-        "task_id": "task_relax",
-        "text_template": "relax_8_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_8_audio.mp3"
-      },
-      {
-        "id": "relax_9",
-        "module": "rules",
-        "title": "Body scan",
-        "task_id": "task_relax",
-        "text_template": "relax_9_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_9_audio.mp3"
-      },
-      {
-        "id": "relax_10",
-        "module": "consequence",
-        "title": "Feel the ground",
-        "task_id": "task_relax",
-        "text_template": "relax_10_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_10_audio.mp3"
-      },
-      {
-        "id": "relax_11",
-        "module": "solve",
-        "title": "Counting sounds",
-        "task_id": "task_relax",
-        "text_template": "relax_11_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_11_audio.mp3"
-      },
-      {
-        "id": "relax_12",
-        "module": "safe",
-        "title": "Feel your feeling",
-        "task_id": "task_relax",
-        "text_template": "relax_12_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_12_audio.mp3"
-      },
-      {
-        "id": "relax_13",
-        "module": "crisis",
-        "title": "Your song",
-        "task_id": "task_relax",
-        "text_template": "relax_13_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_13_audio.mp3"
-      },
-      {
-        "id": "relax_14",
-        "module": "celebrate",
-        "title": "Ground & gratitude",
-        "task_id": "task_relax",
-        "text_template": "relax_14_text",
-        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_14_audio.mp3"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_relax.xlsx"
-  },
-  {
-    "flow_type": "data_list",
-    "flow_name": "something_fun_list",
-    "data_list_name": "something_fun",
-    "status": "released",
-    "rows": [
-      {
-        "id": "co_chef",
-        "module": "1on1",
-        "title": "Co-chef",
-        "text_template": "activity_co_chef"
-      },
-      {
-        "id": "reflect_positive",
-        "module": "praise",
-        "title": "Reflect on the positive",
-        "text_template": "activity_reflect_positive"
-      },
-      {
-        "id": "dance_moves",
-        "module": "instruct",
-        "title": "Dance moves",
-        "text_template": "activity_dance_moves"
-      },
-      {
-        "id": "check_in_chat",
-        "module": "stress",
-        "title": "Check-in chat",
-        "text_template": "activity_check_in_chat"
-      },
-      {
-        "id": "dream_travel",
-        "module": "money",
-        "title": "Dream Travel",
-        "text_template": "activity_dream_travel"
-      },
-      {
-        "id": "famous_party",
-        "module": "rules",
-        "title": "Famous Party",
-        "text_template": "activity_famous_party"
-      },
-      {
-        "id": "two_truths",
-        "module": "consequence",
-        "title": "Two truths, one lie",
-        "text_template": "activity_two_truths"
-      },
-      {
-        "id": "mirror",
-        "module": "solve",
-        "title": "Mirror",
-        "text_template": "activity_mirror"
-      },
-      {
-        "id": "time_machine",
-        "module": "safe",
-        "title": "Time Machine",
-        "text_template": "activity_time_machine"
-      },
-      {
-        "id": "superpowers",
-        "module": "crisis",
-        "title": "Superpowers",
-        "text_template": "activity_superpowers"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_something_fun.xlsx"
-  },
-  {
-    "flow_type": "data_list",
     "flow_subtype": "campaign_rows",
     "flow_name": "m_inactive_data",
     "status": "released",
@@ -9077,7 +10651,7 @@
           }
         ],
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9097,7 +10671,7 @@
         "id": "inactive_1",
         "priority": 1,
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9117,7 +10691,7 @@
         "id": "inactive_2",
         "priority": 2,
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9137,7 +10711,7 @@
         "id": "inactive_3",
         "priority": -1,
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9157,7 +10731,7 @@
         "id": "inactive_4",
         "priority": -2,
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9177,7 +10751,7 @@
         "id": "inactive_5",
         "priority": -3,
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9197,7 +10771,7 @@
         "id": "inactive_6",
         "priority": -4,
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9217,7 +10791,7 @@
         "id": "inactive_7",
         "priority": -5,
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9237,7 +10811,7 @@
         "id": "inactive_8",
         "priority": -6,
         "campaign_list": [
-          "inactive_campaign"
+          "m_inactive_campaign"
         ],
         "notification_schedule": {
           "title": "New message from PLH",
@@ -9254,7 +10828,805 @@
         "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/in_week_messages/no_app_activity.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/no_app_activity.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_name": "activity_data_list",
+    "data_list_name": "something_fun",
+    "status": "released",
+    "rows": [
+      {
+        "id": "reflect_positive",
+        "workshop": "praise",
+        "title": "Reflect on the positive",
+        "text_template": "activity_reflect_positive",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "check_in_chat",
+        "workshop": "stress",
+        "title": "Check-in chat",
+        "text_template": "activity_check_in_chat",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "dream_travel",
+        "workshop": "money",
+        "title": "Dream Travel",
+        "text_template": "activity_dream_travel",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "famous_party",
+        "workshop": "rules",
+        "title": "Famous Party",
+        "text_template": "activity_famous_party",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "two_truths",
+        "workshop": "consequence",
+        "title": "Two truths, one lie",
+        "text_template": "activity_two_truths",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "time_machine",
+        "workshop": "safe",
+        "title": "Time Machine",
+        "text_template": "activity_time_machine",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "superpowers",
+        "workshop": "crisis",
+        "title": "Superpowers",
+        "text_template": "activity_superpowers",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "friendly_chat",
+        "title": "Just a friendly chat",
+        "text_template": "activity_friendly_chat",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "interrupter",
+        "title": "The Interrupter",
+        "text_template": "activity_interrupter",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "three_options",
+        "title": "Three options",
+        "text_template": "activity_three_options",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "yes_no_maybe",
+        "title": "Yes, No or Maybe",
+        "text_template": "activity_yes_no_maybe",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "memory_game",
+        "title": "Memory game - \"On Saturday...\"",
+        "text_template": "activity_memory_game",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "invent_story",
+        "title": "Make up a story",
+        "text_template": "activity_invent_story",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "chat_together"
+      },
+      {
+        "id": "co_chef",
+        "workshop": "1on1",
+        "title": "Co-chef",
+        "text_template": "activity_co_chef",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together"
+      },
+      {
+        "id": "dance_moves",
+        "workshop": "instruct",
+        "title": "Dance moves",
+        "text_template": "activity_dance_moves",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together"
+      },
+      {
+        "id": "mirror",
+        "workshop": "solve",
+        "title": "Mirror",
+        "text_template": "activity_mirror",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together"
+      },
+      {
+        "id": "whats_new",
+        "title": "What's new?",
+        "text_template": "activity_whats_new",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together"
+      },
+      {
+        "id": "get_active",
+        "title": "Get active!",
+        "text_template": "activity_get_active",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together"
+      },
+      {
+        "id": "name_that_tune",
+        "title": "Name that tune",
+        "text_template": "activity_name_that_tune",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together"
+      },
+      {
+        "id": "pass_the_snap",
+        "title": "Pass the snap",
+        "text_template": "activity_pass_the_snap",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together",
+        "intro_text": "Here is a fun game you can do with your family!"
+      },
+      {
+        "id": "family_workout",
+        "title": "Family workout",
+        "text_template": "activity_family_workout",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together"
+      },
+      {
+        "id": "housework",
+        "title": "Make housework fun",
+        "text_template": "activity_housework",
+        "fields::favourite": false,
+        "spend_time": true,
+        "has_recording": true,
+        "type": "do_together",
+        "intro_text": "Household chores aren’t fun… or are they? You can make them into a game!"
+      },
+      {
+        "id": "doing_what",
+        "title": "What are you doing?",
+        "text_template": "activity_doing_what",
+        "fields::favourite": false,
+        "spend_time": true,
+        "has_recording": true,
+        "type": "do_together",
+        "intro_text": "Here is a fun game you can do with your family!"
+      },
+      {
+        "id": "crazy_chicken",
+        "title": "Crazy chicken",
+        "text_template": "activity_crazy_chicken",
+        "fields::favourite": false,
+        "spend_time": true,
+        "type": "do_together"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/activity_data_list.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_name": "habit_data_list",
+    "status": "released",
+    "data_list_name": "habit",
+    "rows": [
+      {
+        "id": "relax",
+        "title": "Relax",
+        "description": "Doing a relaxation activity",
+        "task_id": "task_habit_relax",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_relax.svg",
+        "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "treat_yourself",
+        "title": "Treat yourself well",
+        "description": "Doing something they like for themselves",
+        "task_id": "task_habit_treat_yourself",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
+        "mark_text": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "praise_yourself",
+        "title": "Praise yourself",
+        "description": "Praising themselves",
+        "task_id": "task_habit_praise_yourself",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
+        "mark_text": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "spend_time",
+        "title": "One-on-one time",
+        "description": "Spending time with their teen",
+        "task_id": "task_habit_spend_time",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
+        "mark_text": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "praise_teen",
+        "title": "Praise your teen",
+        "description": "Praising their teen when they did positive thing",
+        "task_id": "task_habit_praise_teen",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen.svg",
+        "mark_text": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "instruct_positively",
+        "title": "Get positive",
+        "description": "Giving their teen a positive instruction",
+        "task_id": "task_habit_instruct_positively",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
+        "mark_text": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "breathe",
+        "title": "Breathe not yell",
+        "description": "Taking a pause before responding",
+        "task_id": "task_habit_breathe",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe.svg",
+        "mark_text": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "money",
+        "title": "Good money choice",
+        "description": "Keeping the budget",
+        "task_id": "task_habit_money",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_money.svg",
+        "mark_text": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "consequence",
+        "title": "Calm consequence",
+        "description": "Giving their teen a consequence in a calm way",
+        "task_id": "task_habit_consequence",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence.svg",
+        "mark_text": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      },
+      {
+        "id": "safe",
+        "title": "Safe",
+        "description": "Planning or keeping a family safety plan",
+        "task_id": "task_habit_safe",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_safe.svg",
+        "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!",
+        "fields::weekly_count": 0,
+        "fields::total_count": 0
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/habit_data_list.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_name": "hp_praise_messages",
+    "status": "released",
+    "data_list_name": "praise",
+    "rows": [
+      {
+        "id": "hp_praise_message_1",
+        "text": "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
+        "workshop": "w_1on1",
+        "mood": "happy"
+      },
+      {
+        "id": "hp_praise_message_2",
+        "text": "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!",
+        "workshop": "w_1on1",
+        "mood": "happy"
+      },
+      {
+        "id": "hp_praise_message_3",
+        "text": "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!",
+        "workshop": "w_1on1",
+        "mood": "happy"
+      },
+      {
+        "id": "hp_praise_message_4",
+        "text": "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!",
+        "workshop": "w_1on1",
+        "mood": "happy"
+      },
+      {
+        "id": "hp_praise_message_5",
+        "text": "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.",
+        "workshop": "w_1on1",
+        "mood": "happy"
+      },
+      {
+        "id": "hp_praise_message_6",
+        "text": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
+        "workshop": "w_1on1",
+        "mood": "ok"
+      },
+      {
+        "id": "hp_praise_message_7",
+        "text": "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
+        "workshop": "w_1on1",
+        "mood": "sad"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/praise_data_list.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_name": "relax_list",
+    "data_list_name": "relax",
+    "status": "released",
+    "rows": [
+      {
+        "id": "relax_1",
+        "title": "Quick pause",
+        "task_id": "task_relax",
+        "text_template": "relax_1_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_1_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_2",
+        "title": "Power of three",
+        "workshop": "1on1",
+        "task_id": "task_relax",
+        "text_template": "relax_2_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_2_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_3",
+        "title": "One thing today",
+        "workshop": "praise",
+        "task_id": "task_relax",
+        "text_template": "relax_3_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_3_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_4",
+        "title": "Breathe to three",
+        "workshop": "instruct",
+        "task_id": "task_relax",
+        "text_template": "relax_4_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_4_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_5",
+        "title": "In and out",
+        "workshop": "self_care",
+        "task_id": "task_relax",
+        "text_template": "relax_5_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_5_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_6",
+        "title": "Think about today",
+        "task_id": "task_relax",
+        "text_template": "relax_6_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_6_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_7",
+        "title": "Pause to respond",
+        "workshop": "stress",
+        "task_id": "task_relax",
+        "text_template": "relax_7_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_7_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_8",
+        "title": "Small things",
+        "workshop": "money",
+        "task_id": "task_relax",
+        "text_template": "relax_8_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_8_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_9",
+        "title": "Body scan",
+        "workshop": "rules",
+        "task_id": "task_relax",
+        "text_template": "relax_9_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_9_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_10",
+        "title": "Feel the ground",
+        "workshop": "consequence",
+        "task_id": "task_relax",
+        "text_template": "relax_10_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_10_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_11",
+        "title": "Counting sounds",
+        "workshop": "solve",
+        "task_id": "task_relax",
+        "text_template": "relax_11_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_11_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_12",
+        "title": "Feel your feeling",
+        "workshop": "safe",
+        "task_id": "task_relax",
+        "text_template": "relax_12_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_12_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_13",
+        "title": "Your song",
+        "workshop": "crisis",
+        "task_id": "task_relax",
+        "text_template": "relax_13_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_13_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_active"
+      },
+      {
+        "id": "relax_14",
+        "title": "Ground & gratitude",
+        "workshop": "celebrate",
+        "task_id": "task_relax",
+        "text_template": "relax_14_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_14_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_15",
+        "title": "Notice how you feel",
+        "task_id": "task_relax",
+        "text_template": "relax_15_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_15_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_16",
+        "title": "Pause power",
+        "task_id": "task_relax",
+        "text_template": "relax_16_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_16_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_17",
+        "title": "Praise yourself",
+        "task_id": "task_relax",
+        "text_template": "relax_17_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_17_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_short"
+      },
+      {
+        "id": "relax_18",
+        "title": "Taking care of yourself",
+        "task_id": "task_relax",
+        "text_template": "relax_18_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_18_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_long",
+        "intro_text": "Let’s do a short activity that can help when you are feeling you need some more support to get through the day."
+      },
+      {
+        "id": "relax_19",
+        "title": "Take a pause",
+        "task_id": "task_relax",
+        "text_template": "relax_19_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_19_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_passive_long",
+        "intro_text": "Let’s do a short activity that you can do whenever you are feeling stressed or worried."
+      },
+      {
+        "id": "relax_20",
+        "title": "Physical activity",
+        "task_id": "task_relax",
+        "text_template": "relax_20_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_20_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_active",
+        "intro_text": "Let’s do a fun physical activity that can help release stress and keep healthy."
+      },
+      {
+        "id": "relax_21",
+        "title": "List of things",
+        "task_id": "task_relax",
+        "text_template": "relax_21_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_21_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_active"
+      },
+      {
+        "id": "relax_22",
+        "title": "Connect",
+        "task_id": "task_relax",
+        "text_template": "relax_22_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_22_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_active"
+      },
+      {
+        "id": "relax_23",
+        "title": "Prevent anger",
+        "task_id": "task_relax",
+        "text_template": "relax_23_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_23_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_active"
+      },
+      {
+        "id": "relax_24",
+        "title": "Angry? Take a break.",
+        "task_id": "task_relax",
+        "text_template": "relax_24_text",
+        "audio_asset": "assets/plh_assets/plh_audio/relax/relax_24_audio.mp3",
+        "fields::favourite": false,
+        "type": "relax_active"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/relax_data_list.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_name": "workshop_data_list",
+    "status": "released",
+    "data_list_name": "workshop",
+    "rows": [
+      {
+        "id": "w_self_care",
+        "number": 1,
+        "title": "Welcome and Self-Care",
+        "in_text_title": "\"Welcome and Self-Care\" workshop",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
+        "short_title": "Self-Care",
+        "tools": "How to add self-care",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": false,
+        "relax": "relax_5"
+      },
+      {
+        "id": "w_1on1",
+        "number": 2,
+        "title": "One-on-One Time",
+        "in_text_title": "\"One-on-One Time\" workshop",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
+        "tools": "How to spend one-on-one time",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_2",
+        "something_fun": "co_chef"
+      },
+      {
+        "id": "w_praise",
+        "number": 3,
+        "title": "Praise",
+        "in_text_title": "\"Praise\" workshop",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
+        "tools": "How to praise",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_3",
+        "something_fun": "reflect_positive"
+      },
+      {
+        "id": "w_instruct",
+        "number": 4,
+        "title": "Positive Instructions",
+        "in_text_title": "\"Positive Instructions\" workshop",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
+        "tools": "How to give positive instructions",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_4",
+        "something_fun": "dance_moves"
+      },
+      {
+        "id": "w_stress",
+        "number": 5,
+        "title": "Managing Stress",
+        "in_text_title": "\"Managing Stress\" workshop",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe.svg",
+        "tools": "How to manage stress",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_7",
+        "something_fun": "check_in_chat"
+      },
+      {
+        "id": "w_money",
+        "number": 6,
+        "title": "Family Budgets",
+        "in_text_title": "\"Family Budgets\" workshop",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_money.svg",
+        "tools": "How to budget & save",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_8",
+        "something_fun": "dream_travel"
+      },
+      {
+        "id": "w_rules",
+        "number": 7,
+        "title": "Rules",
+        "in_text_title": "\"Rules\" workshop",
+        "tools": "How to create rules",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_9",
+        "something_fun": "famous_party"
+      },
+      {
+        "id": "w_consequence",
+        "number": 8,
+        "title": "Calm Consequences",
+        "in_text_title": "\"Calm Consequences\" workshop",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence.svg",
+        "tools": "How to give calm consequences",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_10",
+        "something_fun": "two_truths"
+      },
+      {
+        "id": "w_solve",
+        "number": 9,
+        "title": "Problem Solving",
+        "in_text_title": "\"Problem Solving\" workshop",
+        "tools": "How to solve problems",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_11",
+        "something_fun": "mirror"
+      },
+      {
+        "id": "w_safe",
+        "number": 10,
+        "title": "Teen Safety",
+        "in_text_title": "\"Teen Safety\" workshop",
+        "image_asset": "assets/plh_assets/plh_images/habits/habit_safe.svg",
+        "tools": "How to keep your teen safe",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_12",
+        "something_fun": "time_machine"
+      },
+      {
+        "id": "w_crisis",
+        "number": 11,
+        "title": "Dealing with Crisis",
+        "in_text_title": "\"Dealing with Crisis\" workshop",
+        "tools": "How to deal with crisis",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_13",
+        "something_fun": "superpowers"
+      },
+      {
+        "id": "w_celebrate",
+        "number": 12,
+        "title": "Celebration and Next Steps",
+        "in_text_title": "\"Celebration and Next Steps\" workshop",
+        "tools": "How to support each other",
+        "completion_level": 0,
+        "fields::started": false,
+        "fields::completed": false,
+        "fields::disabled": true,
+        "relax": "relax_14"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/workshop_data_list.xlsx"
   },
   {
     "flow_type": "data_list",
@@ -9317,7 +11689,8 @@
         ],
         "priority": -1,
         "campaign_list": [
-          "debug_campaign"
+          "debug_campaign",
+          "debug_campaign_2"
         ],
         "icon": "plh_images/icons/play_white.svg",
         "text": "Default"
@@ -9488,6 +11861,152 @@
         "campaign_list": [
           "debug_campaign"
         ]
+      },
+      {
+        "id": "debug_reminder_5",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "@global.example_text"
+            ],
+            "_raw": "pop_up: @global.example_text",
+            "_cleaned": "click | pop_up: @global.example_text"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_5.sent",
+              true
+            ],
+            "_raw": "set_field: debug_reminder_5.sent : true",
+            "_cleaned": "click | set_field: debug_reminder_5.sent : true"
+          }
+        ],
+        "priority": 1,
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "debug_reminder_5.sent"
+              }
+            },
+            "_raw": "get_field | debug_reminder_5.sent : true"
+          }
+        ],
+        "campaign_list": [
+          "debug_campaign_2"
+        ],
+        "icon": "plh_images/icons/bell_white.svg",
+        "text": 5
+      },
+      {
+        "id": "debug_reminder_6",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "@global.some_global",
+              "some_value"
+            ],
+            "_raw": "set_field: @global.some_global : some_value",
+            "_cleaned": "click | set_field: @global.some_global : some_value"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_6.sent",
+              true
+            ],
+            "_raw": "set_field: debug_reminder_6.sent : true",
+            "_cleaned": "click | set_field: debug_reminder_6.sent : true"
+          }
+        ],
+        "priority": 2,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "debug_reminder_5.sent"
+              }
+            },
+            "_raw": "get_field | debug_reminder_5.sent:TRUE"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "debug_reminder_6.sent"
+              }
+            },
+            "_raw": "get_field | debug_reminder_6.sent : true"
+          }
+        ],
+        "campaign_list": [
+          "debug_campaign_2"
+        ],
+        "icon": "plh_images/icons/bell_white.svg",
+        "text": 6
+      },
+      {
+        "id": "debug_reminder_7",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "activity_@data.workshop.1on1.something_fun"
+            ],
+            "_raw": "go_to: activity_@data.workshop.1on1.something_fun",
+            "_cleaned": "click | go_to: activity_@data.workshop.1on1.something_fun"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_7.sent",
+              true
+            ],
+            "_raw": "set_field: debug_reminder_7.sent : true",
+            "_cleaned": "click | set_field: debug_reminder_7.sent : true"
+          }
+        ],
+        "priority": 3,
+        "activation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "debug_reminder_6.sent"
+              }
+            },
+            "_raw": "get_field | debug_reminder_6.sent:TRUE"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "debug_reminder_7.sent"
+              }
+            },
+            "_raw": "get_field | debug_reminder_7.sent : true"
+          }
+        ],
+        "campaign_list": [
+          "debug_campaign_2"
+        ],
+        "icon": "plh_images/icons/bell_white.svg",
+        "text": 7
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx"
@@ -9655,104 +12174,5 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_notifications.xlsx"
-  },
-  {
-    "flow_type": "data_list",
-    "flow_name": "habit_data_list",
-    "status": "released",
-    "data_list_name": "habit",
-    "rows": [
-      {
-        "id": "relax",
-        "title": "Relax",
-        "description": "Doing a relaxation activity",
-        "task_id": "task_habit_relax",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_relax.svg",
-        "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "treat_yourself",
-        "title": "Treat yourself well",
-        "description": "Doing something they like for themselves",
-        "task_id": "task_habit_treat_yourself",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
-        "mark_text": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "praise_yourself",
-        "title": "Praise yourself",
-        "description": "Praising themselves",
-        "task_id": "task_habit_praise_yourself",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
-        "mark_text": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "spend_time",
-        "title": "One-on-one time",
-        "description": "Spending time with their teen",
-        "task_id": "task_habit_spend_time",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
-        "mark_text": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "praise_teen",
-        "title": "Praise your teen",
-        "description": "Praising their teen when they did positive thing",
-        "task_id": "task_habit_praise_teen",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen.svg",
-        "mark_text": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "instruct_positively",
-        "title": "Get positive",
-        "description": "Giving their teen a positive instruction",
-        "task_id": "task_habit_instruct_positively",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
-        "mark_text": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "breathe",
-        "title": "Breathe not yell",
-        "description": "Taking a pause before responding",
-        "task_id": "task_habit_breathe",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe.svg",
-        "mark_text": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "money",
-        "title": "Good money choice",
-        "description": "Keeping the budget",
-        "task_id": "task_habit_money",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_money.svg",
-        "mark_text": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "consequence",
-        "title": "Calm consequence",
-        "description": "Giving their teen a consequence in a calm way",
-        "task_id": "task_habit_consequence",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence.svg",
-        "mark_text": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      },
-      {
-        "id": "safe",
-        "title": "Safe",
-        "description": "Planning or keeping a family safety plan",
-        "task_id": "task_habit_safe",
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_safe.svg",
-        "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!"
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/top_templates/parent_point_templates/habit_data_list.xlsx"
   }
 ]
