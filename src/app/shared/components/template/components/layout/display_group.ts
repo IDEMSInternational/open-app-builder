@@ -20,7 +20,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       </ng-container>
       <plh-advanced-dashed-box
         *ngSwitchCase="'dashed_box'"
-        [templateRow]="_row"
+        [inputRow]="_row"
         [parent]="parent"
       ></plh-advanced-dashed-box>
       <plh-tmpl-form *ngSwitchCase="'form'" [templateRow]="_row" [parent]="parent"></plh-tmpl-form>
