@@ -194,6 +194,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           // write completions to the database for data tracking
           await this.templateService.recordEvent(template, "emit", emit_value);
         }
+        // Handle a forced rerender
+        // TODO - CC 2021-06-01 merge with refactored code after nav-actions.service pr merge
+        if (emit_value === "force_rerender") {
+          console.log("force rerender", this);
+          await this.forceRerender();
+        }
         if (parent) {
           // continue to emit any actions to parent where defined
           log(
@@ -274,6 +280,28 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.renderedRows = this.filterConditionalTemplateRows(this.template.rows);
     log("[Reprocess Complete]", this.renderedRows);
     log_groupEnd();
+  }
+
+  /**
+   * Brute force method to force all parent and child templates to rerender
+   * e.g. in case where a nested child sets a field that needs to be shown on parent
+   * @param shouldProcess by default we only start processing after we have reached
+   * the top-most parent template, and then render down
+   */
+  public async forceRerender(shouldProcess = false) {
+    if (shouldProcess) {
+      await this.processRowUpdates();
+      for (const child of Object.values(this.children || {})) {
+        await child.forceRerender(true);
+      }
+    } else {
+      // ensure we start from the top-most parent template for rendering
+      if (this.parent) {
+        return this.parent.forceRerender();
+      } else {
+        return this.forceRerender(true);
+      }
+    }
   }
 
   /***************************************************************************************
@@ -573,6 +601,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         this.debugMode = params.debugMode ? true : false;
         // allow templateNavService to process actions based on query param change
         await this.templateNavService.handleQueryParamChange(params, this);
+        console.log("query params change", params);
       });
   }
 
