@@ -40918,25 +40918,7 @@
                   "type": "fields",
                   "fieldName": "do_workshops_together"
                 }
-              },
-              "parameter_list": {
-                "icon_src": [
-                  {
-                    "fullExpression": "@local.active_campaign.icon",
-                    "matchedExpression": "@local.active_campaign.icon",
-                    "type": "local",
-                    "fieldName": "active_campaign"
-                  }
-                ],
-                "text": [
-                  {
-                    "fullExpression": "@local.active_campaign.text",
-                    "matchedExpression": "@local.active_campaign.text",
-                    "type": "local",
-                    "fieldName": "active_campaign"
-                  }
-                ]
-              }
+              ]
             },
             "_dynamicDependencies": {
               "@fields.do_workshops_together": [
@@ -65052,15 +65034,7 @@
             "parameter_list.answer_list"
           ]
         }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "feature_set_theme_2",
-    "status": "released",
-    "rows": [
+      },
       {
         "type": "combo_box",
         "name": "combo_box_with_placeholder_1",
