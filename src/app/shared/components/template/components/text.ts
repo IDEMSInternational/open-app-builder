@@ -55,7 +55,7 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
 
   getParams() {
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null);
-    this.type = getStringParamFromTemplateRow(this._row, "type", "marked");
+    this.type = this._row.parameter_list.style.includes("numbered") ? "numbered" : "marked";
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
   }
 }
