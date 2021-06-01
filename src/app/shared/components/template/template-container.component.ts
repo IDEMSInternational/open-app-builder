@@ -194,6 +194,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
           // write completions to the database for data tracking
           await this.templateService.recordEvent(template, "emit", emit_value);
         }
+        // Handle a forced rerender
+        // TODO - CC 2021-06-01 merge with refactored code after nav-actions.service pr merge
+        if (emit_value === "force_rerender") {
+          await this.forceRerender(args[1] === "full");
+        }
         if (parent) {
           // continue to emit any actions to parent where defined
           log(
@@ -274,6 +279,37 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     this.renderedRows = this.filterConditionalTemplateRows(this.template.rows);
     log("[Reprocess Complete]", this.renderedRows);
     log_groupEnd();
+  }
+
+  /**
+   * Brute force method to force all parent and child templates to rerender
+   * e.g. in case where a nested child sets a field that needs to be shown on parent
+   * @param shouldProcess by default we only start processing after we have reached
+   * the top-most parent template, and then render down
+   * @param full specify whether to re-render fully as if template first load
+   * (including set_variable statements) or just to reprocess existing rows
+   */
+  public async forceRerender(full = false, shouldProcess = false) {
+    if (shouldProcess) {
+      console.log("[Force Rerender]", this.name, full);
+      if (full) {
+        this.renderedRows = [];
+        await this.renderTemplate();
+      } else {
+        await this.processRowUpdates();
+      }
+      for (const child of Object.values(this.children || {})) {
+        await child.forceRerender(full, shouldProcess);
+      }
+    } else {
+      // ensure we start from the top-most parent template for rendering
+      if (this.parent) {
+        return this.parent.forceRerender(full, shouldProcess);
+      } else {
+        shouldProcess = true;
+        return this.forceRerender(full, shouldProcess);
+      }
+    }
   }
 
   /***************************************************************************************
