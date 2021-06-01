@@ -20,15 +20,12 @@ import { TemplateBaseComponent } from "../base";
       <img
         *ngIf="completed && !_row.disabled"
         class="tick-icon"
-        src="/assets/icon/accordion/tick_light.svg"
+        [src]="'plh_images/icons/tick_white.svg' | plhAsset"
       />
-      <img
-        *ngIf="_row.disabled"
-        src="/assets/plh_assets/plh_images/icons/temporarily_disabled.svg"
-      />
+      <img *ngIf="_row.disabled" [src]="'plh_images/icons/temporarily_disabled.svg' | plhAsset" />
       <img
         *ngIf="!completed && !_row.disabled && percentComplete == 0"
-        src="/assets/plh_assets/plh_images/icons/in_progress.svg"
+        [src]="'plh_images/icons/in_progress.svg' | plhAsset"
       />
     </div>
     <div

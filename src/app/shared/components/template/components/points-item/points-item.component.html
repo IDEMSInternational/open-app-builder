@@ -1,13 +1,13 @@
 <div class="wrapper-point">
   <div class="item" #item (click)="clickPointItem()">
     <div class="star" #star>
-      <img src="/assets/plh_assets/plh_images/icons/star.svg" alt="" />
+      <img [src]="'plh_images/icons/star.svg' | plhAsset" alt="" />
       <div class="star-value">
         {{ _row.value }}
       </div>
     </div>
     <div class="image">
-      <img *ngIf="icon_src" [src]="img_result" alt="" />
+      <img *ngIf="icon_src" [src]="icon_src | plhAsset" alt="" />
       <ng-lottie *ngIf="lottie_src" [options]="animOptions"></ng-lottie>
     </div>
     <div class="text" *ngIf="text">
