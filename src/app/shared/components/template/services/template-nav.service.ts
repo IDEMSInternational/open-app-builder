@@ -25,7 +25,7 @@ export class TemplateNavService {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    log(`[Query Param Change] - ${container.name}`, { ...params });
+    log(`[Query Param Change] - ${container.name}`, { params, container });
     const { nav_child, nav_parent, popup_child, popup_parent } = params;
     const { parent, name } = container;
     // handle nav delegation
@@ -46,7 +46,7 @@ export class TemplateNavService {
     // TODO - merge with hacks folder on merge
     // TODO - CC 2021-06-01 this will require refactor after nav-actions.service merge
     if (!popup_child && !popup_parent && container.template) {
-      await container.forceRerender();
+      await container.forceRerender(true);
     }
   }
   /*****************************************************************************************************
