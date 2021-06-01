@@ -56,6 +56,12 @@ export class TemplateParser extends DefaultParser {
     if (row.rows) {
       row.rows = row.rows.map((r) => this.postProcess(r, row._nested_name));
     }
+
+    if (row.exclude_from_translation) {
+      row.exclude_from_translation = this.parseExcludeFromTranslation(
+        row.exclude_from_translation as any
+      );
+    }
     return row;
   }
 
@@ -70,6 +76,11 @@ export class TemplateParser extends DefaultParser {
       parameterObj[key] = value;
     });
     return parameterObj;
+  }
+
+  private parseExcludeFromTranslation(value: boolean) {
+    const result = value;
+    return result;
   }
 
   private extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow["_dynamicFields"]) {

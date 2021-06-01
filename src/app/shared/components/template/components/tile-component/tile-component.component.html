@@ -8,7 +8,7 @@
       <img
         [style.max-width]="is_play_icon ? '' : 'initial'"
         [style.margin-left]="is_play_icon ? '5px' : '0'"
-        [src]="icon_result"
+        [src]="icon_src | plhAsset"
         alt=""
       />
     </ion-button>
