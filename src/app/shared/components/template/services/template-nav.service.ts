@@ -8,7 +8,7 @@ import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
-const SHOW_DEBUG_LOGS = false;
+const SHOW_DEBUG_LOGS = true;
 const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 
 @Injectable({
@@ -41,6 +41,11 @@ export class TemplateNavService {
     }
     if (popup_child && popup_child === name) {
       await this.handlePopupActionsFromChild(params, container);
+    }
+    // HACK - handle rerender on return
+    // TODO - merge with hacks folder after merge
+    if (!popup_child && !popup_parent && container.template) {
+      await container.processRowUpdates();
     }
   }
   /*****************************************************************************************************
