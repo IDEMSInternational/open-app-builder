@@ -33,7 +33,7 @@ export class TmplAdvancedDashedBoxComponent extends TemplateBaseComponent implem
     this.style = getStringParamFromTemplateRow(
       this.inputRow ? this.inputRow : this._row,
       "style",
-      "default"
+      ""
     );
     this.icon_result = this.getPathImg();
     this.icon_position = getStringParamFromTemplateRow(
