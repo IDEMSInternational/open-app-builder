@@ -1,0 +1,23 @@
+.point_wrapper {
+  display: flex;
+  align-items: center;
+  .icon {
+    position: relative;
+    width: 40px;
+    margin-right: var(--regular-margin);
+    img {
+      width: 100%;
+    }
+    .count {
+      position: absolute;
+      color: var(--ion-color-primary);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .text {
+    font-size: var(--font-size-text-large);
+    color: var(--ion-color-primary);
+  }
+}
