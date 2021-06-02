@@ -358,6 +358,7 @@ export namespace FlowTypes {
     | "animated_section"
     | "accordion_section"
     | "advanced_dashed_box"
+    | "parent_point_counter"
     | "workshops_accordion"
     | "form"
     | "toggle_bar"
