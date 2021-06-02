@@ -1,21 +1,9 @@
-import {
-  AfterViewInit,
-  Component,
-  Directive,
-  ElementRef,
-  Inject,
-  Input,
-  OnDestroy,
-  OnInit,
-  PLATFORM_ID,
-  ViewEncapsulation,
-} from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateBaseComponent } from "../base";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
-import { isPlatformBrowser } from "@angular/common";
 
 @Component({
   selector: "plh-round-button",

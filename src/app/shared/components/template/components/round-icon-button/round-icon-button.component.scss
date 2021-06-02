@@ -4,10 +4,10 @@ ion-tab-button {
   color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
-  min-height: 58px;
+  min-height: var(--round-button-min-height);
   background: var(--ion-btn-primary);
   box-shadow: var(--ion-btn-dark-box-shadow);
-  width: 58px;
+  width: var(--round-button-width);
   margin: 0 auto;
   padding: 0;
   display: flex;
@@ -38,35 +38,31 @@ ion-tab-button.round-icon-button::part(native) {
 }
 ion-tab-button {
   div {
-    font-size: 12px;
+    font-size: var(--round-button-font-size);
     white-space: pre-line;
     margin-top: var(--tiny-margin);
-    margin-bottom: 11px;
+    margin-bottom: var(--small-margin);
     display: flex;
     align-items: center;
     text-transform: none;
   }
 }
 .home_screen {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translateY(-50%) translateX(50%);
-  padding: 5px;
+  @include largest-square;
+  @include absolute-centered;
+  padding: var(--tiny-padding);
   @media (max-width: 375px) {
-    width: 70px;
-    height: 70px;
+    width: var(--round-button-small-device-width);
+    height: var(--round-button-small-device-height);
   }
   ion-icon {
     width: 75%;
   }
   div {
     margin-top: unset;
-    margin-bottom: 8px;
+    margin-bottom: var(--tiny-margin);
     display: block;
-    font-size: 11px;
+    font-size: var(--round-button-home-screen-font-size);
   }
 }
 .wrapper {
@@ -74,16 +70,16 @@ ion-tab-button {
   width: fit-content;
 }
 .home_screen_wrapper {
-  width: 94px;
-  height: 94px;
+  width: var(--round-button-wrapper-width);
+  height: var(--round-button-wrapper-height);
   border-radius: var(--ion-border-radius-rounded);
   background: var(--ion-color-quaternary);
   position: relative;
   margin-left: auto;
   margin-right: -13px;
   @media (max-width: 375px) {
-    width: 84px;
-    height: 84px;
+    width: var(--round-button-wrapper-small-device-width);
+    height: var(--round-button-wrapper-small-device-height);
   }
 }
 .yellow {
@@ -97,8 +93,8 @@ ion-tab-button {
 }
 
 .navigation {
-  width: 50px;
-  min-height: 50px;
+  width: var(--round-button-navigation-width);
+  min-height: var(--round-button-navigation-min-height);
   background: var(--ion-btn-secondary);
 }
 

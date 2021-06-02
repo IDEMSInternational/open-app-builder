@@ -6,9 +6,9 @@
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-secondary);
   @include flex-space-between;
-  padding: 0 6px;
-  margin-left: 5px;
-  margin-right: 5px;
+  padding: 0 var(--tiny-padding);
+  margin-left: var(--tiny-margin);
+  margin-right: var(--tiny-margin);
   .left,
   .right {
     flex: 1 1 20%;
@@ -25,8 +25,7 @@
     --box-shadow: none;
     border-radius: var(--ion-border-radius-rounded);
     border: var(--ion-border-standard);
-    width: 27px;
-    height: 27px;
+    @include tiny-square;
     @include flex-centered;
     .line {
       position: absolute;
@@ -46,21 +45,21 @@
       text-align: center;
       font-weight: var(--font-weight-standard);
       color: var(--ion-color-primary);
-      max-width: 150px;
+      max-width: var(--number-selector-title-max-width);
     }
     .category {
-      max-width: 150px;
+      max-width: var(--number-selector-category-max-width);
       span {
         font-weight: var(--font-weight-standard);
-        font-size: 15px;
-        line-height: 18px;
+        font-size: var(--font-size-text-small);
+        line-height: var(--line-height-text-tiny);
         color: var(--ion-color-primary);
       }
     }
   }
 }
 .short {
-  min-height: 44px;
+  min-height: var(--number-selector-short-min-heigh);
   .center {
     .title,
     .num {
@@ -68,8 +67,7 @@
     }
   }
   ion-button {
-    width: 37px;
-    height: 37px;
+    @include small-square;
     .line {
       width: 15px;
       height: 3px;
@@ -77,7 +75,7 @@
   }
 }
 .normal {
-  min-height: 59px;
+  min-height: var(--number-selector-mormal-min-height);
   .center {
     .title,
     .num {

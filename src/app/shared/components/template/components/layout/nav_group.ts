@@ -57,7 +57,7 @@ import { TemplateLayoutComponent } from "./layout";
         flex-direction: row;
         justify-content: space-evenly;
         gap: 5px;
-        padding: var(--large-padding) 0;
+        padding: var(--small-padding) 0;
       }
       .nav-section :nth-child(1) {
         height: 100%;
