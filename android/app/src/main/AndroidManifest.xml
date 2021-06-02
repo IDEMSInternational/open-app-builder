@@ -26,20 +26,40 @@
 
   <!-- Permissions -->
 
+  <!-- Normal permissions, granted at install, don't require prompt -->
+  <!-- https://developer.android.com/training/basics/network-ops/connecting -->
   <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Network API -->
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+  <!-- Requested permissions, required in the app -->
   <!-- Camera, Photos, input file -->
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <!-- Geolocation API -->
-  <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
-  <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
-  <uses-feature android:name="android.hardware.location.gps" />
-  <!-- Network API -->
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <!-- Navigator.getUserMedia -->
   <!-- Video -->
   <uses-permission android:name="android.permission.CAMERA" />
   <!-- Audio -->
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+
+
+  <!-- Optional permissions, features we might make optional -->
+  <!-- CC NOTE - 2021-06-02
+      As we don't currrently need GeoLocation have removed permission
+      (some installs on unsupported tester devices, e.g. Tecno-wx3p 
+      
+      If we want to put back we should make non-required and add runtime check
+      in the app before using feature
+      https://stackoverflow.com/questions/30391355/can-i-get-access-to-nfc-without-manifest-permission-in-android
+    -->
+  <!-- <uses-feature android:name="android.hardware.location.gps" /> -->
+
+
+  <!-- Not required permissions, features we have decided we don't want -->
+  <!-- Geolocation API -->
+  <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+  <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+
 </manifest>
