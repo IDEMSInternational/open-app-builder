@@ -20,51 +20,48 @@ $light: #ffffff;
 $dark: #00000040;
 $worning: hsl(10, 81%, 49%);
 
-/** Borders **/
-$border-dashed: 2px dashed $primary;
-$border-radius-standard: 15px;
-$border-radius-secondary: 20px;
-
 /** Gradient direction **/
 $vertical: 180deg;
 $horizontal: 90deg;
 
 /** Ionic CSS Variables **/
 :root {
-  --main-container-padding: 0 var(--large-margin);
-  --regular-padding: 5px;
-  --large-padding: 10px;
-  --largest-padding: 15px;
-  --huge-padding: 40px;
+  --ion-main-bg-passive: #{$quaternary};
+  --ion-main-bg-active: #{$tertiary};
+
+  // Margins //
   --tiny-margin: 5px;
   --small-margin: 10px;
   --regular-margin: 15px;
   --large-margin: 24px;
   --largest-margin: 30px;
   --huge-margin: 40px;
-  --ion-main-bg-passive: #{$quaternary};
-  --ion-main-bg-active: #{$tertiary};
-  --ion-border-standard: 2px solid #{$primary};
-  --ion-tour-border-standard: 1px solid #{$primary};
-  --ion-border-light: 1px solid #{$light};
-  --border-dashed: #{$border-dashed};
-  --ion-border-color-secondary: 2px solid #{$secondary};
+
+  // Paddings //
+  --tiny-padding: 5px;
+  --small-padding: 10px;
+  --regular-padding: 15px;
+  --large-padding: 25px;
+  --largest-padding: 30px;
+  --huge-padding: 40px;
+  --main-container-padding: 0 var(--large-margin);
+
+  // Box shadow //
   --ion-default-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+  // Borders //
+  --ion-border-color-secondary: 2px solid #{$secondary};
+  --ion-border-thin-standard: 1px solid #{$primary};
+  --ion-border-standard: 2px solid #{$primary};
+  --ion-border-light: 1px solid #{$light};
+  --border-dashed: 2px dashed $primary;
+  // --- border-radiuses
   --ion-border-radius-small: 8px;
-  --ion-border-radius-standard: #{$border-radius-standard};
-  --ion-border-radius-secondary: #{$border-radius-secondary};
+  --ion-border-radius-standard: 15px;
+  --ion-border-radius-secondary: 20px;
   --ion-border-radius-rounded: 50%;
-  --dashed-box-icon-border: 0.7px solid #{$primary};
-  --banner-short-height: 95px;
-  --home-screen-height: 154px;
-  --home-screen-height-small: 130px;
-  --text-box-font-size: 18px;
 
-  --p-margin-standard: 0.75em;
-
-  --line-height-text: 22px;
-
-  /** Title **/
+  // Title //
   --font-size-title-small-device: 20px;
   --font-size-title-tiny: 24px;
   --font-size-title-small: 26px;
@@ -72,34 +69,91 @@ $horizontal: 90deg;
   --font-size-title-large: 34px;
   --font-size-title-largest: 36px;
 
-  /** Subtitle **/
+  // Subtitle //
   --font-size-subtitle-small-device: 17px;
   --font-size-subtitle-small: 18px;
   --font-size-subtitle-medium: 20px;
   --font-size-subtitle-large: 22px;
 
-  /** Text **/
+  // Text //
   --font-size-text-tiny: 14px;
   --font-size-text-small: 16px;
   --font-size-text-medium: 18px;
   --font-size-text-large: 20px;
+  --line-height-text-tiny: 15px;
+  --line-height-text-small: 20px;
+  --line-height-text: 22px;
+  --line-height-text-large: 22px;
+  --line-height-text-largest: 25px;
 
-  /** Font Weight **/
+  // Font Weight //
   --font-weight-standard: 500;
   --font-weight-bold: 700;
 
-  /** Line Height **/
-  --line-height-text: 22px;
+  // Text box //
+  --text-box-font-size: 18px;
 
   // Components variables //
-  --audio-title-size: 22px;
   --timer-title-size: 22px;
 
   --number-selector-short-font-size: 15px;
   --number-selector-normal-font-size: 20px;
-  // combo box
+
+  // Banner //
+  --banner-short-height: 95px;
+  --banner-short-image-width: 75px;
+
+  // Number selector //
+  --number-selector-title-max-width: 150px;
+  --number-selector-category-max-width: 150px;
+  --number-selector-short-min-height: 44px;
+  --number-selector-mormal-min-height: 59px;
+
+  // Video //
+  --video-max-width: 600px;
+
+  // Dashed-box //
+  --dashed-box-item-min-height: 60px;
+  --dashed-box-icon-border: 0.7px solid #{$primary};
+
+  // Checkbox //
+  --checkbox-border-width: 2px;
+  --checkbox-border-radius: 5px;
+  --checkbox-border-size: 39px;
+  --checkbox-label-max-width: 290px;
+
+  // Text box //
+  --text-box-height: 44px;
+
+  // Home screen //
+  --home-screen-height: 154px;
+  --home-screen-height-small: 130px;
+
+  // Audio //
+  --audio-container-padding: 17px 14px 16px 20px;
+  --audio-title-size: 22px;
+  --audio-title-and-help-height: 30px;
+  --audio-bar-height: 10px;
+  --audio-play-img-width: 35px;
+  --audio-controls-width: 240px;
+  --audio-controls-img-width: 48px;
+
+  // Slider //
+  --slider-wrapper-min-height: 139px;
+  --slider-title-max-width: 258px;
+  --slider-labels-max-width: 275px;
+
+  // Timer //
+  --timer-counter-height: 73px;
+  --timer-counter-font-size: 40px;
+  --timer-title-width: 298px;
+  --timer-buttons-color: #{color.adjust($primary, $hue: -10, $saturation: 14%, $lightness: 19%)};
+
+  // Combo box //
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
   --combo-box-font-size-standard: 20px;
+  --combo-box-min-height: 55px;
+  --combo-box-min-width: 260px;
   --combo-box-active-no-answer-bg: var(--ion-color-primary-contrast);
   --combo-box-passive-no-answer-bg: transparent;
   --combo-box-no-answer-bg: transparent;
@@ -122,29 +176,43 @@ $horizontal: 90deg;
     var(--combo-box-gradient-passive-end) 105.68%
   );
 
+  // Points iten //
+  --points-item-height: 152px;
+  --points-item-width: 176px;
+
   //* Help icon **/
   --help-icon-standard-size: 35px;
   --help-icon-small-size: 30px;
   --help-icon-standard-color: $primary;
   --help-icon-alternative-color: $light;
+
   //TOOLS
   --tool-one-bg: #{color.adjust($secondary, $hue: -2)}; // #FA8E29
   --tool-two-bg: #{color.adjust($secondary, $hue: -2, $saturation: 5%, $lightness: -7%)}; // #FF7B00
   --tool-three-bg: #{color.adjust($primary, $hue: -8, $saturation: 8%, $lightness: 17%)}; // #108AB2
   --tool-four-bg: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 8%)}; //#096A8B
   --tool-five-bg: var(--ion-color-primary);
+
   //BUTTONS
+  --buttons-min-height: 71px;
+  --buttons-short-height: 50px;
+  --buttons-medium-height: 65px;
+  --buttons-tall-height: 80px;
+  --buttons-font-size-small: 20px;
+  --buttons-font-size: 25px;
+  --buttons-size: 64px;
+  //primary-gradient
   --ion-btn-control-bg: #{color.adjust($primary, $saturation: -3%, $lightness: 31%)}; //#2B99DE
-  --ion-btn-tmpl-components-size: 64px;
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
   --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
-  --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)}; //#FE8E27
-  --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)}; //#C35E00
   --ion-btn-primary: linear-gradient(
     #{$vertical},
     var(--ion-gradient-primary-start) 0.43%,
     var(--ion-gradient-primary-end) 74.07%
   );
+  //secondary-gradient
+  --ion-gradient-secondary-start: #{color.adjust($secondary, $saturation: 4%)}; //#FE8E27
+  --ion-gradient-secondary-end: #{color.adjust($secondary, $saturation: 5%, $lightness: -19%)}; //#C35E00
   --ion-btn-secondary: linear-gradient(
     #{$vertical},
     var(--ion-gradient-secondary-start) 28.12%,
@@ -160,6 +228,20 @@ $horizontal: 90deg;
     var(--ion-gradient-primary-option-start) 28.12%,
     var(--ion-gradient-primary-option-end) 100%
   );
+
+  // Round button //
+  --round-button-min-height: 58px;
+  --round-button-width: 58px;
+  --round-button-wrapper-height: 94px;
+  --round-button-wrapper-width: 94px;
+  --round-button-small-device-height: 70px;
+  --round-button-small-device-width: 70px;
+  --round-button-wrapper-small-device-height: 84px;
+  --round-button-wrapper-small-device-width: 84px;
+  --round-button-navigation-width: 50px;
+  --round-button-navigation-min-height: 50px;
+  --round-button-font-size: 12px;
+  --round-button-home-screen-font-size: 11px;
 
   //BANNER
   --ion-banner-gradient-secondary-start: #{color.adjust(
@@ -191,7 +273,11 @@ $horizontal: 90deg;
     var(--ion-banner-gradient-primary-end) 105.68%
   );
   //ACCORDION
-  --accordion-section-padding: var(--large-padding) 0 var(--large-padding) 0;
+  --accordion-section-title-padding: var(--small-padding) 0 var(--small-padding) 0;
+  --accordion-section-padding: 0 10px 10px 10px;
+  --accordion-section-max-height: 43px;
+  --accordion-section-open-height: 400px;
+  --accordion-section-width: 85%;
   --ion-accordion-status-bg-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
   --ion-accordion-status-bg-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
   --ion-accrodion-status-gradient: linear-gradient(
@@ -288,6 +374,17 @@ $horizontal: 90deg;
   --points-item-bg: #{color.adjust($quaternary, $saturation: 12%, $lightness: -9%)}; //#B2E2FF
 
   // TILES
+  --tile-default-height: 104px;
+  --tile-default-width: 371px;
+  --tile-button-height: 73px;
+  --tile-button-width: 73px;
+  --tile-workshop-page-height: 100px;
+  --tile-workshop-page-width: 132px;
+  --tile-workshop-page-button-height: 55px;
+  --tile-workshop-page-button-width: 100%;
+  --tile-parent-point-width: 200px;
+  --tile-parent-point-height: 104px;
+
   --tile-primary-light-gradient-start: #{color.adjust(
       $quaternary,
       $saturation: 6%,
