@@ -1,21 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FlowTypes } from 'scripts/types';
-import { HABIT_LIST } from 'src/app/shared/services/data/data.service';
-import { HabitService } from 'src/app/shared/services/habit/habit.service';
+import { Component, OnInit } from "@angular/core";
+import { FlowTypes } from "src/app/shared/model";
+import { HABIT_LIST } from "src/app/shared/services/data/data.service";
+import { HabitService } from "src/app/shared/services/habit/habit.service";
 
 @Component({
-  selector: 'plh-parent-points',
-  templateUrl: './parent-points.page.html',
-  styleUrls: ['./parent-points.page.scss'],
+  selector: "plh-parent-points",
+  templateUrl: "./parent-points.page.html",
+  styleUrls: ["./parent-points.page.scss"],
 })
 export class ParentPointsPage implements OnInit {
-
   habits = HABIT_LIST[0].rows;
 
-  constructor(private habitService: HabitService) { }
+  constructor(private habitService: HabitService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectHabit(habit: FlowTypes.Habit_listRow) {
     if (!habit._count) {
@@ -29,7 +27,5 @@ export class ParentPointsPage implements OnInit {
     habit._animate_timeout_ref = setTimeout(() => {
       habit._animating_on_add = false;
     }, 1000);
-
   }
-
 }

@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FlowTypes } from 'scripts/types';
-import { CARE_PACKAGE_LIST } from 'src/app/shared/services/data/data.service';
+import { Component, OnInit } from "@angular/core";
+import { FlowTypes } from "src/app/shared/model";
+import { CARE_PACKAGE_LIST } from "src/app/shared/services/data/data.service";
 
 @Component({
-  selector: 'plh-care-packages',
-  templateUrl: './care-packages.page.html',
-  styleUrls: ['./care-packages.page.scss'],
+  selector: "plh-care-packages",
+  templateUrl: "./care-packages.page.html",
+  styleUrls: ["./care-packages.page.scss"],
 })
 export class CarePackagesPage implements OnInit {
-
   carePackages: FlowTypes.CarePackage[] = [];
 
   constructor() {
@@ -17,7 +16,5 @@ export class CarePackagesPage implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

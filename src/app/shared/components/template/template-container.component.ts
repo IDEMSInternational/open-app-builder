@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
-import { Subject } from "scripts/node_modules/rxjs";
+import { Subject } from "rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { TourService } from "../../services/tour/tour.service";
 import { mapToJson } from "../../utils";
@@ -51,7 +51,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   /** track path to template from top parent (not currently used) */
   templateBreadcrumbs: string[] = [];
-  componentDestroyed$ = new Subject();
+  componentDestroyed$ = new Subject<boolean>();
   debugMode: boolean;
 
   constructor(
