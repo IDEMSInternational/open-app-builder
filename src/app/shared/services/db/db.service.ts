@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
-import { Subject } from "scripts/node_modules/rxjs";
-import { FlowTypes } from "scripts/types";
+import { Subject } from "rxjs";
+import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray, generateTimestamp } from "../../utils";
 import { EventService } from "../event/event.service";
 
@@ -87,15 +87,15 @@ export class DbService {
       console.error("could not open db", err);
       // NOTE - invalid state error suggests dexie not supported, so
       // try reloading with cachedb disabled (see db index for implementation)
-      if (err.name === Dexie.errnames.InvalidStateError) {
-        if (err.inner.name === Dexie.errnames.InvalidStateError) {
+      if (err.name === Dexie.errnames.InvalidState) {
+        if (err.inner.name === Dexie.errnames.InvalidState) {
           // TODO
           // location.replace(location.href + "?no-cache");
         }
       }
       // NOTE - upgrade error can be avoided by defining legacy db caches
       // with corresponding upgrade functions (see below method TODO)
-      if (err.name === Dexie.errnames.UpgradeError) {
+      if (err.name === Dexie.errnames.Upgrade) {
         console.log("upgrade error");
         // TODO - backup db elsewhere, delete and reload
         // await Dexie.delete(CACHE_DB_NAME).catch(() => location.reload());

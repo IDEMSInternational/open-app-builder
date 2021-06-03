@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
-import { Subscription } from "scripts/node_modules/rxjs";
+import { Subscription } from "rxjs";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { TaskService } from "src/app/shared/services/task/task.service";
 
