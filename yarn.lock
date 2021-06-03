@@ -4297,11 +4297,6 @@ copy-webpack-plugin@^6.0.3:
     serialize-javascript "^5.0.1"
     webpack-sources "^1.4.3"
 
-cordova-plugin-file@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-file/-/cordova-plugin-file-6.0.2.tgz#f3911479f8357e9aacb5576674f8d95b31a1fb20"
-  integrity sha512-m7cughw327CjONN/qjzsTpSesLaeybksQh420/gRuSXJX5Zt9NfgsSbqqKDon6jnQ9Mm7h7imgyO2uJ34XMBtA==
-
 core-js-compat@^3.8.0:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.13.1.tgz#05444caa8f153be0c67db03cf8adb8ec0964e58e"
