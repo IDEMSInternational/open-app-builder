@@ -4,21 +4,21 @@
   @include flex-space-between;
   .text {
     div {
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 28px;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-text-large);
+      line-height: var(--line-height-text-largest);
       color: var(--ion-color-primary-contrast);
     }
   }
 
   .button-wrapper {
     .btn-tile {
-      width: 73px;
-      height: 73px;
+      width: var(--tile-button-width);
+      height: var(--tile-button-height);
       --background: transparent;
       --box-shadow: none;
       border: var(--ion-border-light);
-      --border-radius: 50%;
+      --border-radius: var(--ion-border-radius-rounded);
       border-radius: var(--ion-border-radius-rounded);
       box-shadow: none;
       --ripple-color: transparent;
@@ -30,10 +30,10 @@
   }
 }
 .default_style {
-  padding: 17px 27px;
+  padding: var(--regular-padding) var(--large-padding);
   box-shadow: var(--ion-default-box-shadow);
-  min-height: 104px;
-  max-width: 371px;
+  min-height: var(--tile-default-height);
+  max-width: var(--tile-default-width);
   border-radius: var(--ion-border-radius-standard);
   margin: var(--regular-margin) auto;
 }
@@ -42,28 +42,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: calc(132px * var(--scale-factor-tile));
-  max-height: calc(111px * var(--scale-factor-tile));
-  background: white;
+  max-width: calc(var(--tile-workshop-page-width) * var(--scale-factor-tile));
+  max-height: calc(var(--tile-workshop-page-height) * var(--scale-factor-tile));
   border-radius: var(--ion-border-radius-standard);
   background: var(--ion-color-primary-contrast);
   text-align: center;
-  padding: var(--large-padding);
+  padding: var(--small-padding);
   box-shadow: var(--ion-default-box-shadow);
   @media (max-width: 375px) {
-    width: calc(122px * var(--scale-factor-tile));
-    max-height: calc(101px * var(--scale-factor-tile));
+    padding: calc(var(--tiny-padding) * var(--scale-factor-tile));
     &.default_style {
-      min-height: calc(101px * var(--scale-factor-tile));
-    }
-  }
-  @media (max-width: 320px) {
-    width: calc(102px * var(--scale-factor-tile));
-    max-height: calc(91px * var(--scale-factor-tile));
-    padding: calc(5px * var(--scale-factor-tile));
-    resize: both;
-    &.default_style {
-      min-height: calc(91px * var(--scale-factor-tile));
+      min-height: calc(var(--tile-workshop-page-height) * var(--scale-factor-tile));
     }
   }
   .button-wrapper {
@@ -74,17 +63,15 @@
       border: 0;
       --border-radius: unset;
       border-radius: unset;
-      width: calc(100% * var(--scale-factor-tile));
-      height: calc(55px * var(--scale-factor-tile));
-      img {
-      }
+      width: calc(var(--tile-workshop-page-button-width) * var(--scale-factor-tile));
+      height: calc(var(--tile-workshop-page-button-height) * var(--scale-factor-tile));
     }
   }
   .text {
     order: 2;
     div {
       font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));
-      line-height: calc(16px * var(--scale-factor-tile));
+      line-height: calc(var(--line-height-text-tiny) * var(--scale-factor-tile));
       color: var(--ion-color-primary);
     }
   }
@@ -105,16 +92,16 @@
 }
 // PARENT CENTRE
 .parent_point {
-  padding: calc(17px * var(--scale-factor-tile)) 10px;
-  width: calc(200px * var(--scale-factor-tile));
-  height: calc(104px * var(--scale-factor-tile));
+  padding: calc(var(--regular-padding) * var(--scale-factor-tile)) var(--small-padding);
+  width: calc(var(--tile-parent-point-width) * var(--scale-factor-tile));
+  height: calc(var(--tile-parent-point-height) * var(--scale-factor-tile));
   min-height: unset;
   max-width: unset;
   &.tile-wrapper {
     .text {
       div {
-        font-size: calc(20px * var(--scale-factor-tile));
-        line-height: calc(28px * var(--scale-factor-tile));
+        font-size: calc(var(--font-size-text-large) * var(--scale-factor-tile));
+        line-height: calc(var(--line-height-text-largest) * var(--scale-factor-tile));
       }
     }
     .button-wrapper {
