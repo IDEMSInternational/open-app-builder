@@ -128,6 +128,10 @@ export class TemplateActionService {
           // write completions to the database for data tracking
           await this.container.templateService.recordEvent(template, "emit", emit_value);
         }
+        // Handle a forced rerender
+        if (emit_value === "force_rerender") {
+          await this.container.forceRerender(args[1] === "full");
+        }
         if (parent) {
           // continue to emit any actions to parent where defined
           log(
