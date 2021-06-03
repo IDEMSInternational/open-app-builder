@@ -1,18 +1,17 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { FlowTypes } from 'scripts/types';
-import { HABIT_IDEAS, TIPS } from 'src/app/shared/services/data/data.service';
-import { HabitService } from 'src/app/shared/services/habit/habit.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { AlertController } from "@ionic/angular";
+import { FlowTypes } from "src/app/shared/model";
+import { HABIT_IDEAS, TIPS } from "src/app/shared/services/data/data.service";
+import { HabitService } from "src/app/shared/services/habit/habit.service";
 
 @Component({
-  selector: 'plh-habit-ideas',
-  templateUrl: './habit-ideas.page.html',
-  styleUrls: ['./habit-ideas.page.scss'],
+  selector: "plh-habit-ideas",
+  templateUrl: "./habit-ideas.page.html",
+  styleUrls: ["./habit-ideas.page.scss"],
 })
 export class HabitIdeasPage implements OnInit {
-
   public flowName: string;
   public title: string;
   public suggestedIdeas: string[] = [];
@@ -21,8 +20,11 @@ export class HabitIdeasPage implements OnInit {
   public console = console;
   public habitIdea: FlowTypes.Habit_ideas;
 
-  constructor(protected route: ActivatedRoute, protected habitService: HabitService,
-    protected alertCtrl: AlertController) {
+  constructor(
+    protected route: ActivatedRoute,
+    protected habitService: HabitService,
+    protected alertCtrl: AlertController
+  ) {
     this.processRouteParams();
   }
 
@@ -39,12 +41,11 @@ export class HabitIdeasPage implements OnInit {
   populateSuggestedIdeas(flowName: string) {
     this.habitIdea = HABIT_IDEAS.find((hi) => hi.flow_name === flowName);
     const userIdeasMap = {};
-    this.userIdeas.forEach((i) => userIdeasMap[i] = true);
+    this.userIdeas.forEach((i) => (userIdeasMap[i] = true));
     this.suggestedIdeas = this.habitIdea.rows
-    .filter((row) => !userIdeasMap[row.message_text])
-    .map((row) => row.message_text);
+      .filter((row) => !userIdeasMap[row.message_text])
+      .map((row) => row.message_text);
   }
-
 
   populateUserIdeas(flowName: string) {
     return this.habitService.getUserHabitActivityIdeas(flowName).then((ideas) => {
@@ -57,27 +58,27 @@ export class HabitIdeasPage implements OnInit {
       header: "Enter your own idea",
       inputs: [
         {
-          name: 'idea',
-          placeholder: 'Enter your idea'
-        }
+          name: "idea",
+          placeholder: "Enter your idea",
+        },
       ],
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel'
+          text: "Cancel",
+          role: "cancel",
         },
         {
-          text: 'Save',
-          handler: async data => {
+          text: "Save",
+          handler: async (data) => {
             if (data.idea && data.idea.length > 0) {
               await this.habitService.addUserHabitActivityIdea(this.flowName, data.idea);
               this.populateUserIdeas(this.flowName);
               return true;
             }
             return false;
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     await alert.present();
   }
@@ -89,8 +90,7 @@ export class HabitIdeasPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer !== event.container) {
@@ -100,5 +100,4 @@ export class HabitIdeasPage implements OnInit {
       this.habitService.addUserHabitActivityIdea(this.flowName, idea);
     }
   }
-
 }

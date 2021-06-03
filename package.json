@@ -47,7 +47,7 @@
     "date-fns": "^2.16.1",
     "dexie": "^3.0.2",
     "dexie-observable": "^3.0.0-beta.9",
-    "firebase": ">= 5.5.7 <8",
+    "firebase": "^7.24.0",
     "howler": "^2.2.1",
     "intro.js": "^3.2.1",
     "jasmine-ts": "^0.3.0",
@@ -58,7 +58,7 @@
     "ngx-color": "^6.1.0",
     "ngx-lottie": "^6.4.0",
     "nouislider": "^14.6.3",
-    "rxjs": "~6.6.3",
+    "rxjs": "^6.6.7",
     "survey-angular": "^1.8.12",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

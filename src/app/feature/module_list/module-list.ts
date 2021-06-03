@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { IAppSkin } from "src/app/shared/model";
 import { MODULE_LIST } from "src/app/shared/services/data/data.service";
 import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";

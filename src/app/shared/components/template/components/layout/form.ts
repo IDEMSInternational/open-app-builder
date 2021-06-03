@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild, ViewChildren } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { Plugins } from "@capacitor/core";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import {
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
