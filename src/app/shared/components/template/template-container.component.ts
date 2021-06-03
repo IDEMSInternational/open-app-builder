@@ -108,7 +108,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    */
   public async forceRerender(full = false, shouldProcess = false) {
     if (shouldProcess) {
-      console.log("[Force Rerender]", this.name, full);
+      console.log("[Force Rerender]", this.name);
       if (full) {
         this.templateRowService.renderedRows = [];
         await this.renderTemplate();

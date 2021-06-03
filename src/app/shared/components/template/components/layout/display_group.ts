@@ -82,10 +82,10 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
-    this.type = this.getTypeFromStyles(this.style);
+    this.type = this.getTypeFromStyles(this.style || "");
   }
 
-  private getTypeFromStyles(styles: string): string {
+  private getTypeFromStyles(styles: string = ""): string {
     let result: string;
     switch (true) {
       case styles.includes("form"):
