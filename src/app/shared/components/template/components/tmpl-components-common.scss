@@ -54,7 +54,7 @@
 }
 .banner {
   margin-top: var(--regular-margin);
-  padding: var(--largest-padding);
+  padding: var(--regular-padding);
   border-radius: var(--ion-border-radius-secondary);
   background: var(--ion-dg-bg-default);
   margin-bottom: var(--regular-margin);
@@ -83,7 +83,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 25px 0 10px 0;
+  padding: var(--large-padding) 0 var(--small-padding) 0;
   & .rounded_corners {
     border-radius: var(--ion-border-radius-standard);
   }
@@ -96,8 +96,8 @@
 
   video {
     width: 100%;
-    max-width: 600px;
-    border-radius: 20px;
+    max-width: var(--video-max-width);
+    border-radius: var(--ion-border-radius-secondary);
   }
 }
 
@@ -118,7 +118,7 @@ p {
   margin-top: var(--large-margin);
   h1 {
     margin: 0;
-    line-height: 29px;
+    line-height: var(--line-height-text-largest);
     font-weight: var(--font-weight-bold);
     @media (max-width: 375px) {
       font-size: var(--font-size-title-tiny);
@@ -128,7 +128,7 @@ p {
     }
   }
   .alternative {
-    line-height: 26px;
+    line-height: var(--line-height-text-largest);
     color: var(--ion-color-primary-contrast);
     @media (max-width: 320px) {
       font-size: var(--font-size-title-small-device);
@@ -154,10 +154,9 @@ p {
   }
 
   .title-help {
-    margin-left: 8px;
+    margin-left: var(--tiny-margin);
     color: var(--ion-color-primary);
-    height: 32px;
-    width: 32px;
+    @include small-square;
   }
 }
 
@@ -187,7 +186,7 @@ p {
     margin: 0;
     font-size: var(--font-size-subtitle-small);
     font-weight: var(--font-weight-bold);
-    padding: var(--accordion-section-padding);
+    padding: var(--accordion-section-title-padding);
     @media (max-width: 320px) {
       font-size: var(--font-size-subtitle-small-device);
     }
@@ -234,18 +233,18 @@ p {
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
-  padding: 0 24px;
+  padding: 0 var(--large-padding);
   background: var(--ion-dg-bg-default);
   min-height: var(--banner-short-height);
   max-height: var(--banner-short-height);
   .offset {
     plh-template-component:first-child {
       flex: 2;
-      padding: 0 15px 15px 0;
+      padding: 0 var(--regular-padding) var(--regular-padding) 0;
     }
     plh-template-component:last-child {
       flex: 1;
-      min-width: 75px;
+      min-width: var(--banner-short-image-width);
       max-width: fit-content;
       .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
         &.margin-t-regular {
@@ -267,8 +266,8 @@ p {
   & .offset {
     width: 100%;
     plh-template-component:first-child {
-      margin-bottom: 45px;
-      padding-left: var(--large-padding);
+      margin-bottom: var(--huge-margin);
+      padding-left: var(--small-padding);
       max-width: 15%;
       @media (max-width: 1024px) {
         max-width: 20%;

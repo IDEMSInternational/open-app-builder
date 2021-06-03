@@ -93,8 +93,40 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   ) {
     return this.templateActionService.handleActions(actions, _triggeredBy);
   }
+
   get templateRowMap() {
     return this.templateRowService.templateRowMap;
+  }
+
+  /**
+   * Brute force method to force all parent and child templates to rerender
+   * e.g. in case where a nested child sets a field that needs to be shown on parent
+   * @param shouldProcess by default we only start processing after we have reached
+   * the top-most parent template, and then render down
+   * @param full specify whether to re-render fully as if template first load
+   * (including set_variable statements) or just to reprocess existing rows
+   */
+  public async forceRerender(full = false, shouldProcess = false) {
+    if (shouldProcess) {
+      console.log("[Force Rerender]", this.name, full);
+      if (full) {
+        this.templateRowService.renderedRows = [];
+        await this.renderTemplate();
+      } else {
+        await this.templateRowService.processRowUpdates();
+      }
+      for (const child of Object.values(this.children || {})) {
+        await child.forceRerender(full, shouldProcess);
+      }
+    } else {
+      // ensure we start from the top-most parent template for rendering
+      if (this.parent) {
+        return this.parent.forceRerender(full, shouldProcess);
+      } else {
+        shouldProcess = true;
+        return this.forceRerender(full, shouldProcess);
+      }
+    }
   }
 
   /***************************************************************************************

@@ -9,7 +9,7 @@ import { TemplateBaseComponent } from "../../base";
   styleUrls: ["./advanced-dashed-box.component.scss"],
 })
 export class TmplAdvancedDashedBoxComponent extends TemplateBaseComponent implements OnInit {
-  @Input() templateRow: FlowTypes.TemplateRow;
+  @Input() inputRow: FlowTypes.TemplateRow;
   style: string;
   icon_src: string | null;
   assetsPrefix = "/assets/plh_assets/";
@@ -25,11 +25,19 @@ export class TmplAdvancedDashedBoxComponent extends TemplateBaseComponent implem
   }
 
   getParams() {
-    this.icon_src = getStringParamFromTemplateRow(this.templateRow, "icon_src", "");
-    this.style = getStringParamFromTemplateRow(this.templateRow, "style", "default");
+    this.icon_src = getStringParamFromTemplateRow(
+      this.inputRow ? this.inputRow : this._row,
+      "icon_src",
+      ""
+    );
+    this.style = getStringParamFromTemplateRow(
+      this.inputRow ? this.inputRow : this._row,
+      "style",
+      ""
+    );
     this.icon_result = this.getPathImg();
     this.icon_position = getStringParamFromTemplateRow(
-      this.templateRow,
+      this.inputRow ? this.inputRow : this._row,
       "icon_position",
       "top-left"
     );
