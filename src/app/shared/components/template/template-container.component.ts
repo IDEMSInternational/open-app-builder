@@ -132,7 +132,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         return this.parent.forceRerender(full, shouldProcess);
       } else {
         shouldProcess = true;
-        return this.forceRerender(full, shouldProcess);
+        const scrollTop = this.elRef.nativeElement.scrollTop;
+        await this.forceRerender(full, shouldProcess);
+        // try to reset any previous scroll position (note - does not work on chrome device inspector)
+        setTimeout(() => {
+          this.elRef.nativeElement.scrollTop = scrollTop;
+        }, 50);
       }
     }
   }
