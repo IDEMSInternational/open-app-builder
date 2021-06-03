@@ -1,10 +1,16 @@
 .point_wrapper {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  .container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+  }
   .icon {
     position: relative;
     width: 40px;
     margin-right: var(--regular-margin);
+    margin-left: var(--regular-margin);
     img {
       width: 100%;
     }
