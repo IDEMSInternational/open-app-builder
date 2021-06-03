@@ -28015,6 +28015,7 @@
             "_cleaned": "changed | set_field: @local.main_combo_box_tracker: @local.combo_box"
           }
         ],
+        "hidden": "\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\"",
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "@global.tap_and_choose"
@@ -28071,6 +28072,20 @@
               ]
             }
           },
+          "hidden": [
+            {
+              "fullExpression": "\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\"",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\"",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
+            }
+          ],
           "parameter_list": {
             "answer_list": [
               {
@@ -28101,6 +28116,12 @@
             "action_list.0._raw",
             "action_list.0._cleaned"
           ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
+            "hidden"
+          ],
           "@local.answer_list": [
             "parameter_list.answer_list"
           ],
@@ -28113,20 +28134,38 @@
         "type": "text",
         "name": "reply_challenge_1",
         "value": "I know; our children need time to learn to follow instructions. Be patient, try again, and remember to praise them every time they follow an instruction!",
-        "hidden": "\"@local.combo_box\"!=\"challenge_1\"",
+        "hidden": "\"@local.combo_box\"!=\"challenge_1\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
         "_nested_name": "reply_challenge_1",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_1\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_1\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_1\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_1\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
             }
           ]
         },
         "_dynamicDependencies": {
           "@local.combo_box": [
+            "hidden"
+          ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
             "hidden"
           ]
         }
@@ -28135,7 +28174,7 @@
         "type": "text",
         "name": "question_text_challenge_2",
         "value": "Do you want to try one of the following things?   ",
-        "hidden": "\"@local.combo_box\"!=\"challenge_2\"",
+        "hidden": "\"@local.combo_box\"!=\"challenge_2\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
         "parameter_list": {
           "style": "emphasised"
         },
@@ -28143,15 +28182,33 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
             }
           ]
         },
         "_dynamicDependencies": {
           "@local.combo_box": [
+            "hidden"
+          ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
             "hidden"
           ]
         }
@@ -28181,7 +28238,7 @@
             "_cleaned": "changed | set_field: @local.combo_box_challenge_2_tracker: @local.combo_box_challenge_2"
           }
         ],
-        "hidden": "\"@local.combo_box\"!=\"challenge_2\"",
+        "hidden": "\"@local.combo_box\"!=\"challenge_2\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
         "parameter_list": {
           "answer_list": "@local.answer_list_challenge_2",
           "placeholder": "@global.tap_and_choose"
@@ -28240,10 +28297,22 @@
           },
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
             }
           ],
           "parameter_list": {
@@ -28279,6 +28348,12 @@
           "@local.combo_box": [
             "hidden"
           ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
+            "hidden"
+          ],
           "@local.answer_list_challenge_2": [
             "parameter_list.answer_list"
           ],
@@ -28291,21 +28366,33 @@
         "type": "text",
         "name": "reply_choice_2_a",
         "value": "Perfect; even spending 5 minutes makes a big difference, and if you do it at the same time every day (like at breakfast or before bed), it will be easier to keep it up!  ",
-        "hidden": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_a\"",
+        "hidden": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_a\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
         "_nested_name": "reply_choice_2_a",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_a\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_a\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
             },
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_a\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_a\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
               "matchedExpression": "@local.combo_box_challenge_2",
               "type": "local",
               "fieldName": "combo_box_challenge_2"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_a\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_a\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
             }
           ]
         },
@@ -28314,6 +28401,12 @@
             "hidden"
           ],
           "@local.combo_box_challenge_2": [
+            "hidden"
+          ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
             "hidden"
           ]
         }
@@ -28337,6 +28430,18 @@
               "matchedExpression": "@local.combo_box_challenge_2",
               "type": "local",
               "fieldName": "combo_box_challenge_2"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_b\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_b\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
             }
           ]
         },
@@ -28345,6 +28450,12 @@
             "hidden"
           ],
           "@local.combo_box_challenge_2": [
+            "hidden"
+          ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
             "hidden"
           ]
         }
@@ -28368,6 +28479,18 @@
               "matchedExpression": "@local.combo_box_challenge_2",
               "type": "local",
               "fieldName": "combo_box_challenge_2"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_c\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_c\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
             }
           ]
         },
@@ -28376,6 +28499,12 @@
             "hidden"
           ],
           "@local.combo_box_challenge_2": [
+            "hidden"
+          ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
             "hidden"
           ]
         }
@@ -28406,20 +28535,38 @@
         "type": "text",
         "name": "reply_challenge_4",
         "value": "It is difficult to come up with instructions while we are still angry. Try and find a time when you are calm to introduce a positive instruction to your teen. \n\nNext time we chat, we’ll talk more about how we can manage our emotions! ",
-        "hidden": "\"@local.combo_box\"!=\"challenge_4\"",
+        "hidden": "\"@local.combo_box\"!=\"challenge_4\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
         "_nested_name": "reply_challenge_4",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_4\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_4\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_4\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_4\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
             }
           ]
         },
         "_dynamicDependencies": {
           "@local.combo_box": [
+            "hidden"
+          ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
             "hidden"
           ]
         }
@@ -28439,7 +28586,7 @@
             "_cleaned": "click | go_to: parent_centre_relax_and_act"
           }
         ],
-        "hidden": "\"@local.combo_box\"!=\"challenge_4\"",
+        "hidden": "\"@local.combo_box\"!=\"challenge_4\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
         "parameter_list": {
           "style": "information"
         },
@@ -28447,15 +28594,33 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_4\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_4\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_4\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@fields.w_instruct_hp_review",
+              "type": "fields",
+              "fieldName": "w_instruct_hp_review"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_4\" || (\"@fields.w_instruct_hp_review\" == \"happy\" && \"@local.radio_group\" != \"yes\")",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
             }
           ]
         },
         "_dynamicDependencies": {
           "@local.combo_box": [
+            "hidden"
+          ],
+          "@fields.w_instruct_hp_review": [
+            "hidden"
+          ],
+          "@local.radio_group": [
             "hidden"
           ]
         }
