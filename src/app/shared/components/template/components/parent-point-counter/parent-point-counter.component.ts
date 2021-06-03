@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnChanges, OnInit } from "@angular/core";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 
@@ -7,7 +7,9 @@ import { TemplateBaseComponent } from "../base";
   templateUrl: "./parent-point-counter.component.html",
   styleUrls: ["./parent-point-counter.component.scss"],
 })
-export class TmplParentPointCounterComponent extends TemplateBaseComponent implements OnInit {
+export class TmplParentPointCounterComponent
+  extends TemplateBaseComponent
+  implements OnInit, OnChanges {
   public icon_src: string | null;
   public count: number | null;
 
@@ -17,6 +19,10 @@ export class TmplParentPointCounterComponent extends TemplateBaseComponent imple
 
   ngOnInit() {
     this.getParams();
+  }
+
+  ngOnChanges() {
+    this.count = getNumberParamFromTemplateRow(this._row, "count", null);
   }
 
   getParams() {
