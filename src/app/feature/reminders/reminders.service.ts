@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
 import { IReminder, IReminderData } from "./reminders.model";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { TaskService } from "src/app/shared/services/task/task.service";
 
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
