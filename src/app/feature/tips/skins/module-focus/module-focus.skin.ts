@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 
 @Component({
   selector: "plh-tips-module-focus-skin",

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { HOME_PAGE } from "src/app/shared/services/data/data.service";
 
 @Component({

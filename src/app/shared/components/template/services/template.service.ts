@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
 import { BehaviorSubject } from "rxjs";
 
