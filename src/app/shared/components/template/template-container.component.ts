@@ -11,6 +11,7 @@ import { TemplateNavService } from "./services/template-nav.service";
 import { TemplateRowService } from "./services/template-row.service";
 import { TemplateVariablesService } from "./services/template-variables.service";
 import { TemplateService } from "./services/template.service";
+import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -131,13 +132,21 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       if (this.parent) {
         return this.parent.forceRerender(full, shouldProcess);
       } else {
+        // we have the top-most parent. Process re-renders, taking note of current
+        // page scroll position and trying to return to it once complete
         shouldProcess = true;
-        const scrollTop = this.elRef.nativeElement.scrollTop;
+        const top = getIonContentScrollTop(this.elRef);
+        // if page scrolled, fade the content out and in during re-render to avoid ugly content flicker
+        if (top > 0) {
+          await setElStyleAnimated(this.elRef, "opacity", 0, { duration: 100 });
+        }
         await this.forceRerender(full, shouldProcess);
-        // try to reset any previous scroll position (note - does not work on chrome device inspector)
-        setTimeout(() => {
-          this.elRef.nativeElement.scrollTop = scrollTop;
-        }, 50);
+        if (top > 0) {
+          setTimeout(async () => {
+            setIonContentScrollTop(this.elRef, top);
+            await setElStyleAnimated(this.elRef, "opacity", 1, { duration: 200 });
+          }, 0);
+        }
       }
     }
   }
