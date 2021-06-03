@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
@@ -61,7 +61,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public router: Router,
     public route: ActivatedRoute,
     public elRef: ElementRef,
-    public templateNavService: TemplateNavService
+    public templateNavService: TemplateNavService,
+    public cdr: ChangeDetectorRef
   ) {
     this.templateActionService = new TemplateActionService(this);
     this.templateRowService = new TemplateRowService(this);
@@ -105,18 +106,25 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * the top-most parent template, and then render down
    * @param full specify whether to re-render fully as if template first load
    * (including set_variable statements) or just to reprocess existing rows
+   * This is currently distinguished in emit statements as
+   * ```
+   * emit:force_rerender    // full rerender
+   * emit:force_reprocess   // only recalculate existing rows (not set_variable/set_nested)
+   * ```
    */
-  public async forceRerender(full = false, shouldProcess = false) {
+  public async forceRerender(full = true, shouldProcess = false) {
     if (shouldProcess) {
       console.log("[Force Rerender]", this.name);
       if (full) {
+        // ensure angular destroys previous row components before rendering new
         this.templateRowService.renderedRows = [];
+        this.cdr.detectChanges();
         await this.renderTemplate();
       } else {
         await this.templateRowService.processRowUpdates();
-      }
-      for (const child of Object.values(this.children || {})) {
-        await child.forceRerender(full, shouldProcess);
+        for (const child of Object.values(this.children || {})) {
+          await child.forceRerender(full, shouldProcess);
+        }
       }
     } else {
       // ensure we start from the top-most parent template for rendering
