@@ -326,6 +326,7 @@ export namespace FlowTypes {
     template_component_name?: string;
     element?: string;
     route?: string;
+    exclude_from_translation?: boolean | string;
   }
 
   export interface Home_page extends FlowTypeBase {
@@ -483,6 +484,7 @@ export namespace FlowTypes {
     value: any;
     comments?: string;
     __EMPTY?: string;
+    exclude_from_translation?: boolean | string;
   }
 
   /* Used for setting default parameters for template components */
