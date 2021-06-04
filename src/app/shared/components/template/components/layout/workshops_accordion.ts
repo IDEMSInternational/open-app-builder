@@ -1,5 +1,5 @@
 import { Component, OnInit, QueryList, ViewChild, ViewChildren } from "@angular/core";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { TemplateBaseComponent } from "../base";
 import { AccordionSectionComponent } from "./accordion_section";
 

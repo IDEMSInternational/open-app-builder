@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
-import { FlowTypes } from "scripts/types";
-import { getNestedProperty } from "src/app/shared/utils";
+import { FlowTypes } from "src/app/shared/model";
+import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
 import { BehaviorSubject } from "rxjs";
 
 @Injectable({
@@ -44,11 +44,10 @@ export class TemplateService {
     // provide a fallback if the target variable does not exist in local storage
     if (val === null) {
       console.warn("field value not found for key:", key);
-      val = `{{field.${key}}}`;
+      val = undefined;
     }
     // convert boolean strings if required
-    if (val === "true") val = true;
-    if (val === "false") val = false;
+    val = booleanStringToBoolean(val);
     // console.log("[Field Retrieved]", key, val);
     return val;
   }
@@ -87,7 +86,7 @@ export class TemplateService {
     // provide a fallback if the target global variable has never been set
     if (!this.globals.hasOwnProperty(key)) {
       console.warn("global value not found for key:", key);
-      val = `{{global.${key}}}`;
+      val = undefined;
     }
     return val;
   }

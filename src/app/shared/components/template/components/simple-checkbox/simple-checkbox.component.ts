@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { FlowTypes, ITemplateRowProps } from "../../models";
+import { ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
-import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
+import { getStringParamFromTemplateRow } from "../../../../utils";
 
 @Component({
   selector: "plh-simple-checkbox",
@@ -22,6 +22,10 @@ export class TmplSimpleCheckboxComponent
 
   ngOnInit() {
     this.getParams();
+  }
+  public async handleChange(isChecked: boolean) {
+    await this.setValue(isChecked);
+    this.triggerActions("changed");
   }
 
   getParams() {

@@ -8,7 +8,9 @@ import { Type } from "@angular/core";
 
 import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AccordionSectionComponent } from "./layout/accordion_section";
+import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
+import { FormComponent } from "./layout/form";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
@@ -21,6 +23,7 @@ import { TmplTextComponent } from "./text";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplSubtitleComponent } from "./subtitle";
+import { TmplToggleBarComponent } from "./toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
@@ -30,12 +33,14 @@ import { TmplTileComponent } from "./tile-component/tile-component.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplAnimationComponent } from "./animation";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
+import { TmplTextAreaComponent } from "./text-area/text-area.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TemplatePopupComponent } from "./layout/popup";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplLottieAnimation } from "./lottie-animation";
+import { TmplIconComponent } from "./icon";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -47,6 +52,7 @@ export const TEMPLATE_COMPONENTS = [
   WorkshopsComponent,
   TmplTitleComponent,
   TmplSubtitleComponent,
+  TmplToggleBarComponent,
   TmplDisplayGroupComponent,
   TmplAudioComponent,
   TmplButtonComponent,
@@ -54,6 +60,8 @@ export const TEMPLATE_COMPONENTS = [
   TmplVideoComponent,
   AnimatedSectionComponent,
   AccordionSectionComponent,
+  TmplAdvancedDashedBoxComponent,
+  FormComponent,
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
@@ -61,10 +69,12 @@ export const TEMPLATE_COMPONENTS = [
   TmplButtonComponent,
   RoundIconButtonComponent,
   TmplRadioGroupComponent,
+  TmplIconComponent,
   TmplTileComponent,
   TmplSimpleCheckboxComponent,
   TmplAnimationComponent,
   TmplTextBoxComponent,
+  TmplTextAreaComponent,
   TmplComboBoxComponent,
   TmplIconBannerComponent,
   TmplDashedBoxComponent,
@@ -83,14 +93,18 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   text: TmplTextComponent,
   title: TmplTitleComponent,
   subtitle: TmplSubtitleComponent,
+  toggle_bar: TmplToggleBarComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   workshops_accordion: WorkshopsComponent,
   accordion_section: AccordionSectionComponent,
+  advanced_dashed_box: TmplAdvancedDashedBoxComponent,
+  form: FormComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   image: TmplImageComponent,
+  icon: TmplIconComponent,
   // set variable and nested properties are handled by parent
   set_variable: null as any,
   nested_properties: null as any,
@@ -101,6 +115,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   combo_box: TmplComboBoxComponent,
   set_default: null as any,
   text_box: TmplTextBoxComponent,
+  text_area: TmplTextAreaComponent,
   // TODO - handle display_theme and other properties that should be inherited to child components
   display_theme: null as any,
   template: TemplateContainerComponent as any,

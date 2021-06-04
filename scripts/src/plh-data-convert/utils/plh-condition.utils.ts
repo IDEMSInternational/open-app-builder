@@ -1,23 +1,11 @@
 import chalk from "chalk";
-import { FlowTypes } from "../../../../types";
-import { DefaultParser } from "../default/default.parser";
-import { parsePLHString } from "../utils";
+import { FlowTypes } from "../../../types";
+import { booleanStringToBoolean } from "../../utils";
+import { parsePLHString } from "./plh-string.utils";
 
-type IConditionList = FlowTypes.Reminder_conditionList;
+const DEBUG_MODE = false;
 
-export class ReminderListParser extends DefaultParser {
-  constructor() {
-    super();
-  }
-  postProcess(row: FlowTypes.Reminder_listRow) {
-    // extract piped conditions
-    const activationConditions = row.activation_condition_list as any[];
-    row.activation_condition_list = activationConditions.map((c) => extractConditionList(c));
-    const deactivationConditions = row.deactivation_condition_list as any[];
-    row.deactivation_condition_list = deactivationConditions.map((c) => extractConditionList(c));
-    return row;
-  }
-}
+type ICondition = FlowTypes.DataEvaluationCondition;
 
 /**
  * Take an activation or deactivation criteria and format for use
@@ -39,14 +27,16 @@ export class ReminderListParser extends DefaultParser {
  *   [ [ 'event_id' ] , [ 'app_launch' ] ],
  *   [ [ 'before' ], [ '7' ], [ 'day' ] ]
  * ]
+ *
+ * TODO - CC 2021-05-15 ideally this should be refactored and combined with condition handling in templates
  */
-function extractConditionList(conditionText: string) {
+export function extractConditionList(conditionText: string) {
   const txt = conditionText;
   const cleanedTxt = _handleTextExceptions(conditionText);
   let data: string[][] = parsePLHString(cleanedTxt);
   data = _handleDataExceptions(data);
   const conditionExtractors: {
-    [key in IConditionList["condition_type"]]: (data: any[][]) => IConditionList;
+    [key in ICondition["condition_type"]]: (data: any[][]) => ICondition;
   } = {
     field_evaluation: parseFieldEvaluationCondition,
     db_lookup: parseDBLookupCondition,
@@ -56,14 +46,16 @@ function extractConditionList(conditionText: string) {
     console.error(chalk.red(`cannot extract condition args:`, data));
     process.exit(1);
   }
-  const condition: IConditionList = conditionExtractors[condition_type](data);
+  const condition: ICondition = conditionExtractors[condition_type](data);
+  if (DEBUG_MODE) {
+    condition._cleaned = cleanedTxt;
+    condition._parsed = data;
+  }
   condition._raw = txt;
-  condition._cleaned = cleanedTxt;
-  condition._parsed = data;
   return condition;
 }
 
-function parseFieldEvaluationCondition(data: any[][]): IConditionList {
+function parseFieldEvaluationCondition(data: any[][]): ICondition {
   const [[condition_type], [evaluate]] = data;
   return {
     condition_type,
@@ -72,17 +64,21 @@ function parseFieldEvaluationCondition(data: any[][]): IConditionList {
     },
   };
 }
-function parseDBLookupCondition(data: any[][]): IConditionList {
+function parseDBLookupCondition(data: any[][]): ICondition {
   const [typeData, tableData, valueData, evaulateData] = data;
   const [condition_type] = typeData;
   const [table_id, orderStr] = tableData;
   const [filter_field, filter_value] = valueData;
+
   let evaluate = null;
   if (evaulateData) {
     const [comparatorText, quantity, unit] = evaulateData as any[];
     const operator = _extractComparator(comparatorText);
     evaluate = { operator, value: quantity, unit };
   }
+
+  // // convert boolean value strings
+  // const value = stringToBoolean(filter_value);
 
   return {
     condition_type,
@@ -103,12 +99,16 @@ function parseDBLookupCondition(data: any[][]): IConditionList {
  */
 function _handleTextExceptions(text: string) {
   // a maximum of 1 replacement will be made, so order in terms of specifivity
+  // TODO CC 2021-05-17 - All needs review - ideally should just take a list of params as args,
+  // e.g. table_id: 'app_events'; sort: 'asc', or perhaps where:{...}
   const shorthandReplacements = {
-    sent: "db_lookup | reminder_events:last | reminder_id:sent",
+    sent: "db_lookup | reminder_events:last | reminder_id:sent", // Deprecated
     first_launch: "db_lookup |app_events:first | event_id:app_launch",
     app_launch: "db_lookup | app_events:last | event_id:app_launch",
     "task_completed:first": "db_lookup | task_actions:first",
     task_completed: "db_lookup | task_actions:last",
+    "get_field:first": "db_lookup | data_events:first",
+    get_field: "field_evaluation",
   };
   Object.entries(shorthandReplacements).some(([original, replacement]) => {
     // use a regular expression to prevent matching words that have additional content before
@@ -136,7 +136,7 @@ function _handleDataExceptions(data: string[][]) {
  * Convert the text into a logical comparator that will be used during evaluation
  */
 function _extractComparator(text: string) {
-  // : IConditionList["timing"]["comparator"]
+  //
   // when comparing, the target evaluation value will be compared relative to todays date / app day
   // first the difference between the target event and today is calculated, called diffInDays (app or calendar)
   // for an event to happen n days before (or more), diffInDays > n
@@ -150,8 +150,4 @@ function _extractComparator(text: string) {
       console.error(chalk.red(`Reminder timing comparison not defined: ${text}`));
       process.exit(1);
   }
-}
-
-function stringToArray(s: string | string[]): string[] {
-  return typeof s === "string" ? [s] : (s as string[]);
 }

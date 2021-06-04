@@ -2,7 +2,7 @@ import * as fs from "fs-extra";
 import * as xlsx from "xlsx";
 import * as path from "path";
 import chalk from "chalk";
-import { ConversationParser, DefaultParser, TemplateParser } from "./parsers";
+import * as Parsers from "./parsers";
 import {
   recursiveFindByExtension,
   capitalizeFirstLetter,
@@ -10,9 +10,6 @@ import {
   groupJsonByKey,
 } from "../utils";
 import { FlowTypes } from "../../types";
-import { AbstractParser } from "./parsers/abstract.parser";
-import { TaskListParser } from "./parsers/task_list/task_list.parser";
-import { ReminderListParser } from "./parsers/reminder_list/reminder_list.parser";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
@@ -88,15 +85,15 @@ function applyDataParsers(
     (dataByFlowType.task_list || []).reduce((a, b) => [...a, ...b.rows], []),
     "id"
   );
-  const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
-    conversation: new ConversationParser(),
-    task_list: new TaskListParser(dataByFlowType, allTasksById),
-    reminder_list: new ReminderListParser(),
-    template: new TemplateParser(),
+  const customParsers: { [flowType in FlowTypes.FlowType]?: Parsers.AbstractParser } = {
+    conversation: new Parsers.ConversationParser(),
+    task_list: new Parsers.TaskListParser(dataByFlowType, allTasksById),
+    template: new Parsers.TemplateParser(),
+    data_list: new Parsers.DataListParser(),
   };
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
-    const parser = customParsers[key] ? customParsers[key] : new DefaultParser();
+    const parser = customParsers[key] ? customParsers[key] : new Parsers.DefaultParser();
     // add intermediate parsed flow for logging/debugging
     fs.ensureDirSync(`${INTERMEDIATES_FOLDER}/${key}`);
     // parse all flows through the parser

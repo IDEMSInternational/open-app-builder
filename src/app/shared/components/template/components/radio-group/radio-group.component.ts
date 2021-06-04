@@ -4,7 +4,6 @@ import {
   EventEmitter,
   HostBinding,
   HostListener,
-  Inject,
   Input,
   OnDestroy,
   OnInit,
@@ -21,6 +20,7 @@ import {
 import { takeUntil } from "rxjs/operators";
 import { ReplaySubject } from "rxjs";
 import { TemplateService } from "../../services/template.service";
+import { getImageAssetPath } from "../../utils/template-utils";
 
 interface IButton {
   name: string | null;
@@ -44,10 +44,8 @@ export class TmplRadioGroupComponent
   groupName: string;
   radioButtonType: string | null;
   options_per_row: number = 2;
-  baseSrcAssets = "/assets/plh_assets/";
   windowWidth: number;
   scaleFactor: number = 1;
-  value: any;
   style: string;
   destroy$ = new ReplaySubject(1);
   imageCheckedColor = "#0D3F60";
@@ -83,8 +81,6 @@ export class TmplRadioGroupComponent
 
   getParams() {
     const row = this._row;
-    console.log("getting params", row);
-
     // extract properties from parameters
     this.radioButtonType = getParamFromTemplateRow(row, "radio_button_type", "btn_text");
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
@@ -132,10 +128,10 @@ export class TmplRadioGroupComponent
           if (field && value) {
             switch (field) {
               case "image":
-                obj[field] = this.getPathImg(value);
+                obj[field] = getImageAssetPath(value);
                 break;
               case "image_checked":
-                obj[field] = this.getPathImg(value);
+                obj[field] = getImageAssetPath(value);
                 break;
 
               default:
@@ -157,12 +153,6 @@ export class TmplRadioGroupComponent
       });
     }
   }
-
-  getPathImg(path: string): string {
-    const src = this.baseSrcAssets + path;
-    return src.replace("//", "/");
-  }
-
   getFlexWidth() {
     this.flexWidth = `0 1 ${100 / this.options_per_row - 7}%`;
   }

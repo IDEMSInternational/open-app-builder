@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { IAppSkin } from "src/app/shared/model";
 import { TIPS } from "src/app/shared/services/data/data.service";
 import { TaskActionService } from "src/app/shared/services/task/task-action.service";

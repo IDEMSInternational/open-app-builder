@@ -1,12 +1,11 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
 import { TourService } from "src/app/shared/services/tour/tour.service";
 
 @Component({
   template: ` <ion-content class="ion-padding">
     <h3>Start a tour</h3>
     <ion-list>
-      <ion-item *ngFor="let tourName of tourNames" [routerLink]="[tourName]">
+      <ion-item *ngFor="let tourName of tourNames" (click)="startTour(tourName)">
         {{ tourName }}
       </ion-item>
     </ion-list>
@@ -15,9 +14,11 @@ import { TourService } from "src/app/shared/services/tour/tour.service";
 export class TourComponent {
   tourNames: string[] = [];
 
-  constructor(private tourService: TourService, private activatedRoute: ActivatedRoute) {
+  constructor(private tourService: TourService) {
     this.tourNames = this.tourService.listTourNames();
-    const tourName = activatedRoute.snapshot.params["tourName"];
+  }
+
+  public startTour(tourName: string): void {
     if (tourName) {
       this.tourService.startTour(tourName);
     }

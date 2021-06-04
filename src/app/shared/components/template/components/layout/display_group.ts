@@ -10,12 +10,20 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     [class]="style"
     [style.marginBottom.px]="offset"
   >
-    <div [style.marginBottom.px]="-offset" class="offset">
-      <plh-template-component
-        *ngFor="let childRow of _row.rows"
-        [row]="childRow"
+    <div [style.marginBottom.px]="-offset" class="offset" [ngSwitch]="type">
+      <ng-container *ngSwitchCase="'default'">
+        <plh-template-component
+          *ngFor="let childRow of _row.rows"
+          [row]="childRow"
+          [parent]="parent"
+        ></plh-template-component>
+      </ng-container>
+      <plh-advanced-dashed-box
+        *ngSwitchCase="'dashed_box'"
+        [inputRow]="_row"
         [parent]="parent"
-      ></plh-template-component>
+      ></plh-advanced-dashed-box>
+      <plh-tmpl-form *ngSwitchCase="'form'" [templateRow]="_row" [parent]="parent"></plh-tmpl-form>
     </div>
   </div>`,
   styleUrls: ["../tmpl-components-common.scss"],
@@ -39,6 +47,13 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       .parent_point > .offset > :nth-child(1n) {
         flex: 1 0 45%;
       }
+      .two_columns .offset {
+        flex-wrap: wrap;
+        padding: 10px 0;
+      }
+      .two_columns > .offset > :nth-child(1n) {
+        flex: 1 0 45%;
+      }
     `,
   ],
 })
@@ -46,6 +61,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   style: string | null;
   offset: number = 0;
   bgColor: string;
+  type: string;
 
   constructor(private elRef: ElementRef) {
     super();
@@ -66,6 +82,23 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
+    this.type = this.getTypeFromStyles(this.style);
+  }
+
+  private getTypeFromStyles(styles: string): string {
+    let result: string;
+    switch (true) {
+      case styles.includes("form"):
+        result = "form";
+        break;
+      case styles.includes("dashed_box"):
+        result = "dashed_box";
+        break;
+      default:
+        result = "default";
+        break;
+    }
+    return result;
   }
 
   setBackground() {

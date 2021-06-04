@@ -63,6 +63,10 @@ ion-modal.template-popup-modal {
     z-index: -1 !important;
   }
 }
+ion-button.no-padding {
+  --padding-start: 0;
+  --padding-end: 0;
+}
 
 .margin-t-small {
   margin-top: var(--small-margin);

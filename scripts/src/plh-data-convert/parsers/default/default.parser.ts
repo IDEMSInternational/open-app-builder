@@ -2,9 +2,9 @@ import chalk from "chalk";
 import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
-import { parsePLHListString, parsePLHCollectionString } from "../utils";
+import { parsePLHListString, parsePLHCollectionString, parsePLHActionString } from "../../utils";
 // When running this parser assumes there is a 'type' column
-type IRowData = { type: string; name?: string };
+type IRowData = { type: string; name?: string; rows?: IRowData };
 
 /** Prefix for use with images in the app */
 const ASSETS_BASE = "assets/plh_assets";
@@ -35,7 +35,9 @@ export class DefaultParser implements AbstractParser {
       // some rows may be omitted during processing so ignore
       if (processed) {
         const postProcessed = this.postProcess(processed);
-        processedRows.push(postProcessed);
+        if (postProcessed) {
+          processedRows.push(postProcessed);
+        }
       }
       this.queue.shift();
     }
@@ -56,6 +58,20 @@ export class DefaultParser implements AbstractParser {
   private processRow(row: IRowData, flow: FlowTypes.FlowTypeWithData) {
     // Handle specific data manipulations for fields
     Object.keys(row).forEach((field) => {
+      // delete metadata (e.g. __empty)
+      if (field.startsWith("__")) {
+        delete row[field];
+      }
+      // replace any self references, i.e "hello @row.id" => "hello someValue"
+      if (typeof row[field] === "string") {
+        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_]+)/gim)];
+        for (const replacement of rowReplacements) {
+          const [expression, replaceField] = replacement;
+          const replaceValue = row[replaceField];
+          row[field] = row[field].replace(expression, replaceValue);
+        }
+      }
+      // handle other data structures
       if (field.endsWith("_asset")) {
         row[field] = this.handleAssetLinks(row[field], flow.flow_name);
       }
@@ -65,7 +81,18 @@ export class DefaultParser implements AbstractParser {
       if (field.endsWith("_collection")) {
         row[field] = parsePLHCollectionString(row[field]);
       }
+      // parse action list
+      if (field.endsWith("action_list")) {
+        console.log("map row action list", row, field);
+        row[field] = row[field]
+          .map((actionString) => parsePLHActionString(actionString))
+          .filter((action) => action != null);
+      }
     });
+    // remove any comments
+    delete row["comments"];
+    delete row["comment"];
+
     /**
      * TODO - some specific sheet types (e.g. template data_list and derivatives)
      * will likely perfer to convert depending on the name or id of the row (ending in _list or _collection)
@@ -91,6 +118,7 @@ export class DefaultParser implements AbstractParser {
     if (type.startsWith("end_")) {
       return;
     }
+
     return row;
   }
 

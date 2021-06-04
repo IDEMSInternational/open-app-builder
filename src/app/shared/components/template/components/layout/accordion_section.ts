@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -7,31 +10,31 @@ import { TemplateBaseComponent } from "../base";
   template: `<div class="accordion-wrapper">
     <div
       [ngClass]="{
-        completed: completed && _row.disabled !== 'true',
-        disabled: _row.disabled === 'true',
-        inProgress: !completed && _row.disabled !== 'true' && percentComplete > 0,
-        notStarted: !completed && _row.disabled !== 'true' && percentComplete == 0
+        completed: completed && !_row.disabled,
+        disabled: _row.disabled,
+        inProgress: !completed && !_row.disabled && percentComplete > 0,
+        notStarted: !completed && !_row.disabled && percentComplete == 0
       }"
       class="accordion-status"
     >
       <img
-        *ngIf="completed && _row.disabled !== 'true'"
+        *ngIf="completed && !_row.disabled"
         class="tick-icon"
-        src="/assets/icon/accordion/tick_light.svg"
+        [src]="'plh_images/icons/tick_white.svg' | plhAsset"
       />
-      <img *ngIf="_row.disabled === 'true'" src="/assets/plh_assets/plh_images/icons/lock.svg" />
+      <img *ngIf="_row.disabled" [src]="'plh_images/icons/temporarily_disabled.svg' | plhAsset" />
       <img
-        *ngIf="!completed && _row.disabled !== 'true' && percentComplete == 0"
-        src="/assets/plh_assets/plh_images/icons/unlock.svg"
+        *ngIf="!completed && !_row.disabled && percentComplete == 0"
+        [src]="'plh_images/icons/in_progress.svg' | plhAsset"
       />
     </div>
     <div
       class="accordion-section"
       [ngClass]="{
         openSection: _row.parameter_list.state === 'open',
-        disabled: _row.disabled === 'true',
+        disabled: _row.disabled,
         completed: completed,
-        inProgress: !completed && _row.disabled !== 'true'
+        inProgress: !completed && !_row.disabled
       }"
     >
       <div class="progress" [ngStyle]="{ width: percentComplete + '%' }"></div>
@@ -51,6 +54,7 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
   public completed: boolean;
   public percentComplete: number;
   public title: string;
+  private launch_when_locked: boolean;
 
   @Input() id: string;
   @Output() toggleState = new EventEmitter<string>();
@@ -61,14 +65,21 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
 
   public toggleOpen() {
     console.log("ROW??", this._row);
-    if (this._row.disabled !== "true") {
+    if (!this._row.disabled) {
       this.toggleState.emit(this.id);
+    } else if (this._row.disabled && this.launch_when_locked) {
+      this.triggerActions("click");
     }
   }
 
   private getParams() {
     this.completed = getStringParamFromTemplateRow(this._row, "completed", "false") === "true";
     this.title = getStringParamFromTemplateRow(this._row, "title", null);
+    this.launch_when_locked = getBooleanParamFromTemplateRow(
+      this._row,
+      "launch_when_locked",
+      false
+    );
     this.percentComplete = this._row.value ? this._row.value : 0;
     this.updateStatus(this.percentComplete);
   }

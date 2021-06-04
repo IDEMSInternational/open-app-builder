@@ -1,21 +1,9 @@
-import {
-  AfterViewInit,
-  Component,
-  Directive,
-  ElementRef,
-  Inject,
-  Input,
-  OnDestroy,
-  OnInit,
-  PLATFORM_ID,
-  ViewEncapsulation,
-} from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateBaseComponent } from "../base";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
-import { isPlatformBrowser } from "@angular/common";
 
 @Component({
   selector: "plh-round-button",
@@ -35,7 +23,6 @@ export class RoundIconButtonComponent
   buttonAlign: string;
   isHomeScreen: boolean = false;
   isCustomIcon: boolean = false;
-  assetsPrefix = "/assets/plh_assets/";
   constructor(private elRef: ElementRef) {
     super();
   }
@@ -66,10 +53,5 @@ export class RoundIconButtonComponent
     this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
     this.isHomeScreen = this.style.includes("home_screen");
     this.isCustomIcon = this.icon_src.includes("/");
-  }
-
-  getPathImg(iconSrc: string): string {
-    const src = this.assetsPrefix + iconSrc;
-    return src.replace("//", "/");
   }
 }

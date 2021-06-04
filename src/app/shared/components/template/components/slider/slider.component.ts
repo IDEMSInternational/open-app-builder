@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
@@ -7,6 +7,8 @@ import {
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
+import { NouisliderComponent } from "ng2-nouislider";
+import { Options } from "nouislider";
 
 @Component({
   selector: "plh-slider-new",
@@ -18,6 +20,7 @@ export class TmplSliderComponent
   implements ITemplateRowProps, OnInit {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: string };
+  @ViewChild("slider") slider: NouisliderComponent;
   help: string | null;
   no_value_text: string = "no_value";
   minValue: number = 0;
@@ -25,25 +28,20 @@ export class TmplSliderComponent
   disabled: boolean = false;
   title: string | null;
   step: number = 1;
-  value: number | null = 0;
+  sliderValue: number | null = 0;
   min_value_label: string | null;
   max_value_label: string | null;
   listNumbers: Array<number> = [];
   no_value: boolean = false;
-  rangeBarTouched: boolean = false;
-  sliderRange;
   labels_count: number | null = 8;
-  constructor() {
-    super();
-  }
 
-  someKeyboardConfig: any = {
+  // Note - not all config options are actually supported by ng2-nouislider (need to dig into code to see what is)
+  sliderConfig: Options = {
     connect: true,
-    start: this.value,
+    start: 0,
     tooltips: true,
     step: this.step,
     behaviour: "tap",
-    pageSteps: 6, // number of page steps, defaults to 10
     range: {
       min: this.minValue,
       max: this.maxValue,
@@ -68,34 +66,33 @@ export class TmplSliderComponent
     this.step = getNumberParamFromTemplateRow(this._row, "step", this.step);
     this.min_value_label = getStringParamFromTemplateRow(this._row, "min_value_label", null);
     this.max_value_label = getStringParamFromTemplateRow(this._row, "max_value_label", null);
-    this.value = this._row.value > this.maxValue ? 0 : this._row.value ? this._row.value : 0;
+    this.sliderValue = this._row.value > this.maxValue ? undefined : this._row.value;
     this.labels_count = getNumberParamFromTemplateRow(this._row, "labels_count", 8);
     this.no_value_text = getStringParamFromTemplateRow(this._row, "no_value_text", "no_value");
     this.updateConfigParams();
-    this.rangeBarTouched = this.value !== 0;
     this.no_value = getBooleanParamFromTemplateRow(this._row, "no_value", false);
   }
 
-  disableSlider() {
-    this.no_value = !this.no_value;
-    this.rangeBarTouched = !this.rangeBarTouched;
-    this.disabled = !this.disabled;
-    this._row.value = this.no_value ? this.no_value_text : "null";
-    this.triggerActions("changed");
+  async toggleNACheckbox() {
+    if (this._row.value === "no_value") {
+      // if restoring functionality assume the value reverts to last known or undefined
+      await this.changeValue(this.sliderValue);
+    } else {
+      // if removing functionality specify the value as no_value
+      await this.changeValue("no_value");
+    }
   }
 
-  async changeValue() {
-    this.rangeBarTouched = true;
-    this._row.value = this.value;
-    await this.setValue(`${this.value}`);
+  async changeValue(value: number | "no_value") {
+    await this.setValue(value);
     await this.triggerActions("changed");
   }
 
   updateConfigParams() {
-    this.someKeyboardConfig.range.min = this.minValue;
-    this.someKeyboardConfig.range.max = this.maxValue;
-    this.someKeyboardConfig.step = this.step;
-    this.someKeyboardConfig.start = this.value;
-    this.someKeyboardConfig.pips.values = this.labels_count;
+    this.sliderConfig.range.min = this.minValue;
+    this.sliderConfig.range.max = this.maxValue;
+    this.sliderConfig.step = this.step;
+    this.sliderConfig.start = this.sliderValue || 0;
+    this.sliderConfig.pips.values = this.labels_count;
   }
 }

@@ -7,12 +7,12 @@
         [class]="style"
         *ngFor="let item of arrayOfBtn"
       >
-        <label class="center standard-label" [class.checked]="el.checked">
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
           <input
             #el
             type="radio"
             [value]="item.name"
-            [checked]="el.value === value"
+            [checked]="el.value === _row.value"
             (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
@@ -28,14 +28,14 @@
         *ngFor="let item of arrayOfBtn"
         [style.flex]="flexWidth"
       >
-        <label class="center standard-label" [class.checked]="el.checked">
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
           <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
           </svg-icon>
           <input
             #el
             type="radio"
             [value]="item.name"
-            [checked]="el.value === value"
+            [checked]="el.value === _row.value"
             (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
@@ -51,14 +51,15 @@
         *ngFor="let item of arrayOfBtn"
         [style.flex]="flexWidth"
       >
-        <label class="center standard-label" [class.checked]="el.checked">
-          <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
-          </svg-icon>
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
+          <plh-tmpl-icon
+            [src]="el.checked && item.image_checked ? item.image_checked : item.image"
+          ></plh-tmpl-icon>
           <input
             #el
             type="radio"
             [value]="item.name"
-            [checked]="el.value === value"
+            [checked]="el.value === _row.value"
             (click)="handleRadioButtonClick(el.value)"
             [name]="groupName"
             [disabled]="_row.disabled"
