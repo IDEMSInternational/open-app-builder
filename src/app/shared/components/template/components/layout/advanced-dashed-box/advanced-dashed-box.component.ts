@@ -21,26 +21,15 @@ export class TmplAdvancedDashedBoxComponent extends TemplateBaseComponent implem
   }
 
   ngOnInit() {
+    if (this.inputRow) this._row = this.inputRow;
     this.getParams();
   }
 
   getParams() {
-    this.icon_src = getStringParamFromTemplateRow(
-      this.inputRow ? this.inputRow : this._row,
-      "icon_src",
-      ""
-    );
-    this.style = getStringParamFromTemplateRow(
-      this.inputRow ? this.inputRow : this._row,
-      "style",
-      ""
-    );
+    this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
     this.icon_result = this.getPathImg();
-    this.icon_position = getStringParamFromTemplateRow(
-      this.inputRow ? this.inputRow : this._row,
-      "icon_position",
-      "top-left"
-    );
+    this.icon_position = getStringParamFromTemplateRow(this._row, "icon_position", "top-left");
   }
 
   getPathImg(): string {
