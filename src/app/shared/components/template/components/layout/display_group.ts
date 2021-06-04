@@ -86,17 +86,16 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   }
 
   private getTypeFromStyles(styles: string): string {
-    let result: string;
-    switch (true) {
-      case styles.includes("form"):
-        result = "form";
-        break;
-      case styles.includes("dashed_box"):
-        result = "dashed_box";
-        break;
-      default:
-        result = "default";
-        break;
+    let result = "default";
+    if (styles) {
+      switch (true) {
+        case styles.includes("form"):
+          result = "form";
+          break;
+        case styles.includes("dashed_box"):
+          result = "dashed_box";
+          break;
+      }
     }
     return result;
   }
