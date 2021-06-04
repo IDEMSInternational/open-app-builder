@@ -130,7 +130,7 @@ export class TemplateActionService {
         }
         // Handle a forced rerender
         if (emit_value === "force_reload") {
-          await this.container.forceRerender();
+          await this.container.forceRerender(true);
         }
         if (emit_value === "force_reprocess") {
           await this.container.forceRerender(false);

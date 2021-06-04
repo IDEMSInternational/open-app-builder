@@ -113,7 +113,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * emit:force_reprocess   // only recalculate existing rows (not set_variable/set_nested)
    * ```
    */
-  public async forceRerender(full = true, shouldProcess = false) {
+  public async forceRerender(full = false, shouldProcess = false) {
     if (shouldProcess) {
       if (full) {
         console.log("[Force Reload]", this.name);
