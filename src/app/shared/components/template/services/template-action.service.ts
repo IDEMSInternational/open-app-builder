@@ -129,7 +129,7 @@ export class TemplateActionService {
           await this.container.templateService.recordEvent(template, "emit", emit_value);
         }
         // Handle a forced rerender
-        if (emit_value === "force_rerender") {
+        if (emit_value === "force_reload") {
           await this.container.forceRerender();
         }
         if (emit_value === "force_reprocess") {
