@@ -109,19 +109,20 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * (including set_variable statements) or just to reprocess existing rows
    * This is currently distinguished in emit statements as
    * ```
-   * emit:force_rerender    // full rerender
+   * emit:force_reload    // full rerender
    * emit:force_reprocess   // only recalculate existing rows (not set_variable/set_nested)
    * ```
    */
   public async forceRerender(full = true, shouldProcess = false) {
     if (shouldProcess) {
-      console.log("[Force Rerender]", this.name);
       if (full) {
+        console.log("[Force Reload]", this.name);
         // ensure angular destroys previous row components before rendering new
         this.templateRowService.renderedRows = [];
         this.cdr.detectChanges();
         await this.renderTemplate();
       } else {
+        console.log("[Force Reprocess]", this.name);
         await this.templateRowService.processRowUpdates();
         for (const child of Object.values(this.children || {})) {
           await child.forceRerender(full, shouldProcess);
@@ -137,11 +138,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         shouldProcess = true;
         const top = getIonContentScrollTop(this.elRef);
         // if page scrolled, fade the content out and in during re-render to avoid ugly content flicker
-        if (top > 0) {
+        if (full && top > 0) {
           await setElStyleAnimated(this.elRef, "opacity", 0, { duration: 100 });
         }
         await this.forceRerender(full, shouldProcess);
-        if (top > 0) {
+        if (full && top > 0) {
           setTimeout(async () => {
             setIonContentScrollTop(this.elRef, top);
             await setElStyleAnimated(this.elRef, "opacity", 1, { duration: 200 });
