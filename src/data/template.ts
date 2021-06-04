@@ -61364,7 +61364,7 @@
         "exclude_from_translation": true,
         "parameter_list": {
           "label_text": "Example answer?",
-          "align-items": "left"
+          "align": "left"
         },
         "_nested_name": "checkbox_2"
       },
@@ -61397,7 +61397,7 @@
         "exclude_from_translation": true,
         "parameter_list": {
           "label_text": "Example answer?",
-          "align-items": "center"
+          "align": "center"
         },
         "_nested_name": "checkbox_3",
         "_dynamicFields": {
@@ -61465,7 +61465,7 @@
         "exclude_from_translation": true,
         "parameter_list": {
           "label_text": "@local.label_text",
-          "align-items": "right"
+          "align": "right"
         },
         "_nested_name": "checkbox_7",
         "_dynamicFields": {

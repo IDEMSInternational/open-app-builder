@@ -31,7 +31,7 @@ export class TmplSimpleCheckboxComponent
 
   getParams() {
     this.reverse = getBooleanParamFromTemplateRow(this._row, "reverse", false);
-    this.position = getStringParamFromTemplateRow(this._row, "align-items", "center");
+    this.position = getStringParamFromTemplateRow(this._row, "align", "center");
     this.label_text = getStringParamFromTemplateRow(this._row, "label_text", null);
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
   }
