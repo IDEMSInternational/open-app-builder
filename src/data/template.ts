@@ -518,6 +518,7 @@
                   }
                 ],
                 "hidden": "\"@local.weekly_workshops_campaign.id\" == \"default\"",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "icon_src": "@local.weekly_workshops_campaign.icon",
                   "style": "home_screen yellow"
@@ -717,6 +718,7 @@
                   }
                 ],
                 "hidden": "\"@local.parent_points_campaign.id\" == \"default\"",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "icon_src": "@local.parent_points_campaign.icon",
                   "style": "home_screen orange"
@@ -877,6 +879,7 @@
                   }
                 ],
                 "hidden": "\"@local.parent_centre_campaign.id\" == \"default\"",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "icon_src": "@local.parent_centre_campaign.icon",
                   "style": "home_screen dark_orange"
@@ -1152,6 +1155,7 @@
             "_cleaned": "click | trigger_actions: @local.quick_start_campaign.click_action_list"
           }
         ],
+        "exclude_from_translation": true,
         "hidden": "(@fields.do_workshops_together && !(\"@local.current_workshop\" == \"w_self_care\")) || \"@local.quick_start_campaign.id\" == \"default\"",
         "parameter_list": {
           "style": "quick_start_dark",
@@ -1297,6 +1301,7 @@
             "_cleaned": "click | trigger_actions: @local.quick_start_campaign.click_action_list"
           }
         ],
+        "exclude_from_translation": true,
         "hidden": "!@fields.do_workshops_together || \"@local.current_workshop\" == \"w_self_care\"  || \"@local.quick_start_campaign.id\" == \"default\"",
         "parameter_list": {
           "style": "quick_start_dark",
@@ -1421,6 +1426,7 @@
       {
         "type": "workshops_accordion",
         "name": "temp_name_222",
+        "exclude_from_translation": true,
         "parameter_list": {
           "current_workshop_num": "@local.current_workshop_number"
         },
@@ -1429,6 +1435,7 @@
             "type": "accordion_section",
             "name": "temp_name_3",
             "value": "@fields.w_self_care_completion_level",
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_self_care"
@@ -1443,6 +1450,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_self_care_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_3.workshop_1.target_workshop_stepper"
                   }
@@ -1526,6 +1534,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_1on1",
@@ -1541,6 +1550,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_1on1_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_4.workshop_2.target_workshop_stepper"
                   }
@@ -1657,6 +1667,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_praise",
@@ -1672,6 +1683,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_praise_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_5.workshop_3.target_workshop_stepper"
                   }
@@ -1788,6 +1800,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "launch_when_locked": "true",
@@ -1803,6 +1816,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_instruct_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_6.workshop_4.target_workshop_stepper"
                   }
@@ -1919,6 +1933,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "launch_when_locked": "true",
@@ -1934,6 +1949,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_stress_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_7.workshop_5.target_workshop_stepper"
                   }
@@ -2050,6 +2066,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_money",
@@ -2065,6 +2082,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_money_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_8.workshop_6.target_workshop_stepper"
                   }
@@ -2181,6 +2199,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_rules",
@@ -2196,6 +2215,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_rules_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_9.workshop_7.target_workshop_stepper"
                   }
@@ -2312,6 +2332,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_consequence",
@@ -2327,6 +2348,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_consequence_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_10.workshop_8.target_workshop_stepper"
                   }
@@ -2443,6 +2465,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_solve",
@@ -2458,6 +2481,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_solve_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_11.workshop_9.target_workshop_stepper"
                   }
@@ -2574,6 +2598,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_safe",
@@ -2589,6 +2614,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_safe_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_12.workshop_10.target_workshop_stepper"
                   }
@@ -2705,6 +2731,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_crisis",
@@ -2720,6 +2747,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_crisis_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_13.workshop_11.target_workshop_stepper"
                   }
@@ -2836,6 +2864,7 @@
                 "_cleaned": "click | pop_up:workshop_accordion_item_locked"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "state": "closed",
               "title": "@global.w_celebrate",
@@ -2851,6 +2880,7 @@
                   {
                     "name": "target_workshop_stepper",
                     "value": "w_celebrate_stepper",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "temp_name_222.temp_name_14.workshop_12.target_workshop_stepper"
                   }
@@ -3016,6 +3046,7 @@
             "_cleaned": "click | go_to:@local.target_workshop_stepper"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "first_line_text": "Start",
           "style": "workshop_page",
@@ -3176,6 +3207,7 @@
                 "_cleaned": "click | go_to:@local.target_workshop_stepper"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "first_line_text": "@local.label_individual",
               "style": "workshop_page",
@@ -3270,6 +3302,7 @@
                 "_cleaned": "click | go_to:@local.target_workshop_stepper"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "first_line_text": "@local.label_group",
               "style": "workshop_page",
@@ -5802,6 +5835,7 @@
               }
             ],
             "hidden": true,
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_1",
               "icon_src": "@global.help_icon",
@@ -5851,6 +5885,7 @@
                 "_cleaned": "click | go_to:parent_centre_my_tips"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_1",
               "icon_src": "@global.my_tips_icon",
@@ -5900,6 +5935,7 @@
                 "_cleaned": "click | go_to:parent_centre_essential_tools"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_3",
               "icon_src": "@global.essential_tools_icon",
@@ -5949,6 +5985,7 @@
                 "_cleaned": "click | go_to:parent_centre_covid"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_2",
               "icon_src": "@global.covid_icon",
@@ -5998,6 +6035,7 @@
                 "_cleaned": "click | go_to:setup_and_survey_stepper"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_4",
               "icon_src": "plh_images/icons/phone_heart_white.svg",
@@ -6048,6 +6086,7 @@
                 "_cleaned": "click | go_to:parent_centre_extra"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_4",
               "icon_src": "plh_images/icons/phone_heart_white.svg",
@@ -6098,6 +6137,7 @@
                 "_cleaned": "click | go_to:parent_centre_relax_and_act"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_3",
               "icon_src": "@global.relax_and_activities_icon",
@@ -6148,6 +6188,7 @@
               }
             ],
             "hidden": true,
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_3",
               "icon_src": "@global.support_contacts_icon",
@@ -6198,6 +6239,7 @@
               }
             ],
             "hidden": true,
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_4",
               "icon_src": "@global.evidence_base_icon",
@@ -6247,6 +6289,7 @@
                 "_cleaned": "click | go_to:parent_centre_technical_support"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_1",
               "icon_src": "plh_images/icons/cogwheel_white.svg",
@@ -7044,6 +7087,7 @@
                 "_cleaned": "click | go_to:setup_and_survey_stepper"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_4",
               "icon_src": "plh_images/icons/phone_heart_white.svg",
@@ -7575,12 +7619,14 @@
         "type": "text",
         "name": "text",
         "value": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
         "type": "text",
         "name": "text",
         "value": "https://www.unicef.org/coronavirus/covid-19",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
@@ -7798,8 +7844,492 @@
       {
         "type": "text",
         "name": "text",
-        "value": "Content coming soon",
-        "_nested_name": "text"
+        "value": "Are you experiencing any technical issues? Contact us and help to make @global.parent_app better! ",
+        "_nested_name": "text",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "Are you experiencing any technical issues? Contact us and help to make @global.parent_app better! ",
+              "matchedExpression": "@global.parent_app",
+              "type": "global",
+              "fieldName": "parent_app"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.parent_app": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "display_group",
+        "name": "form",
+        "value": "form",
+        "parameter_list": {
+          "style": "form",
+          "get_device_info": "true",
+          "button_text": "Send"
+        },
+        "rows": [
+          {
+            "name": "text_type_name",
+            "value": "Type your name",
+            "type": "set_variable",
+            "_nested_name": "form.text_type_name"
+          },
+          {
+            "type": "text_box",
+            "name": "name",
+            "parameter_list": {
+              "placeholder": "@local.text_type_name"
+            },
+            "_nested_name": "form.name",
+            "_dynamicFields": {
+              "parameter_list": {
+                "placeholder": [
+                  {
+                    "fullExpression": "@local.text_type_name",
+                    "matchedExpression": "@local.text_type_name",
+                    "type": "local",
+                    "fieldName": "text_type_name"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.text_type_name": [
+                "parameter_list.placeholder"
+              ]
+            }
+          },
+          {
+            "name": "text_checkbox_text",
+            "value": "Contact me via text message",
+            "type": "set_variable",
+            "_nested_name": "form.text_checkbox_text"
+          },
+          {
+            "type": "simple_checkbox",
+            "name": "checkbox_text",
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "contact_via_text",
+                  "@local.checkbox_text"
+                ],
+                "_raw": "changed | set_field:contact_via_text:@local.checkbox_text",
+                "_cleaned": "changed | set_field:contact_via_text:@local.checkbox_text"
+              }
+            ],
+            "parameter_list": {
+              "label_text": "@local.text_checkbox_text",
+              "position": "left"
+            },
+            "_nested_name": "form.checkbox_text",
+            "_dynamicFields": {
+              "action_list": {
+                "0": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@local.checkbox_text",
+                        "matchedExpression": "@local.checkbox_text",
+                        "type": "local",
+                        "fieldName": "checkbox_text"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "changed | set_field:contact_via_text:@local.checkbox_text",
+                      "matchedExpression": "@local.checkbox_text",
+                      "type": "local",
+                      "fieldName": "checkbox_text"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "changed | set_field:contact_via_text:@local.checkbox_text",
+                      "matchedExpression": "@local.checkbox_text",
+                      "type": "local",
+                      "fieldName": "checkbox_text"
+                    }
+                  ]
+                }
+              },
+              "parameter_list": {
+                "label_text": [
+                  {
+                    "fullExpression": "@local.text_checkbox_text",
+                    "matchedExpression": "@local.text_checkbox_text",
+                    "type": "local",
+                    "fieldName": "text_checkbox_text"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.checkbox_text": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ],
+              "@local.text_checkbox_text": [
+                "parameter_list.label_text"
+              ]
+            }
+          },
+          {
+            "name": "text_checkbox_whatsapp",
+            "value": "Contact me on WhatsApp",
+            "type": "set_variable",
+            "_nested_name": "form.text_checkbox_whatsapp"
+          },
+          {
+            "type": "simple_checkbox",
+            "name": "checkbox_whatsapp",
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "contact_on_whatsapp",
+                  "@local.checkbox_whatsapp"
+                ],
+                "_raw": "changed | set_field:contact_on_whatsapp:@local.checkbox_whatsapp",
+                "_cleaned": "changed | set_field:contact_on_whatsapp:@local.checkbox_whatsapp"
+              }
+            ],
+            "parameter_list": {
+              "label_text": "@local.text_checkbox_whatsapp",
+              "position": "left"
+            },
+            "_nested_name": "form.checkbox_whatsapp",
+            "_dynamicFields": {
+              "action_list": {
+                "0": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@local.checkbox_whatsapp",
+                        "matchedExpression": "@local.checkbox_whatsapp",
+                        "type": "local",
+                        "fieldName": "checkbox_whatsapp"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "changed | set_field:contact_on_whatsapp:@local.checkbox_whatsapp",
+                      "matchedExpression": "@local.checkbox_whatsapp",
+                      "type": "local",
+                      "fieldName": "checkbox_whatsapp"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "changed | set_field:contact_on_whatsapp:@local.checkbox_whatsapp",
+                      "matchedExpression": "@local.checkbox_whatsapp",
+                      "type": "local",
+                      "fieldName": "checkbox_whatsapp"
+                    }
+                  ]
+                }
+              },
+              "parameter_list": {
+                "label_text": [
+                  {
+                    "fullExpression": "@local.text_checkbox_whatsapp",
+                    "matchedExpression": "@local.text_checkbox_whatsapp",
+                    "type": "local",
+                    "fieldName": "text_checkbox_whatsapp"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.checkbox_whatsapp": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ],
+              "@local.text_checkbox_whatsapp": [
+                "parameter_list.label_text"
+              ]
+            }
+          },
+          {
+            "name": "text_checkbox_email",
+            "value": "Contact me via email",
+            "type": "set_variable",
+            "_nested_name": "form.text_checkbox_email"
+          },
+          {
+            "type": "simple_checkbox",
+            "name": "checkbox_email",
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "contact_via_email",
+                  "@local.checkbox_email"
+                ],
+                "_raw": "changed | set_field:contact_via_email:@local.checkbox_email",
+                "_cleaned": "changed | set_field:contact_via_email:@local.checkbox_email"
+              }
+            ],
+            "parameter_list": {
+              "label_text": "@local.text_checkbox_email",
+              "position": "left"
+            },
+            "_nested_name": "form.checkbox_email",
+            "_dynamicFields": {
+              "action_list": {
+                "0": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@local.checkbox_email",
+                        "matchedExpression": "@local.checkbox_email",
+                        "type": "local",
+                        "fieldName": "checkbox_email"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "changed | set_field:contact_via_email:@local.checkbox_email",
+                      "matchedExpression": "@local.checkbox_email",
+                      "type": "local",
+                      "fieldName": "checkbox_email"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "changed | set_field:contact_via_email:@local.checkbox_email",
+                      "matchedExpression": "@local.checkbox_email",
+                      "type": "local",
+                      "fieldName": "checkbox_email"
+                    }
+                  ]
+                }
+              },
+              "parameter_list": {
+                "label_text": [
+                  {
+                    "fullExpression": "@local.text_checkbox_email",
+                    "matchedExpression": "@local.text_checkbox_email",
+                    "type": "local",
+                    "fieldName": "text_checkbox_email"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.checkbox_email": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ],
+              "@local.text_checkbox_email": [
+                "parameter_list.label_text"
+              ]
+            }
+          },
+          {
+            "name": "text_type_phone_number",
+            "value": "Type your phone number",
+            "hidden": "!(@fields.contact_via_text || @fields.contact_on_whatsapp)",
+            "type": "set_variable",
+            "_nested_name": "form.text_type_phone_number",
+            "_dynamicFields": {
+              "hidden": [
+                {
+                  "fullExpression": "!(@fields.contact_via_text || @fields.contact_on_whatsapp)",
+                  "matchedExpression": "@fields.contact_via_text",
+                  "type": "fields",
+                  "fieldName": "contact_via_text"
+                },
+                {
+                  "fullExpression": "!(@fields.contact_via_text || @fields.contact_on_whatsapp)",
+                  "matchedExpression": "@fields.contact_on_whatsapp",
+                  "type": "fields",
+                  "fieldName": "contact_on_whatsapp"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@fields.contact_via_text": [
+                "hidden"
+              ],
+              "@fields.contact_on_whatsapp": [
+                "hidden"
+              ]
+            }
+          },
+          {
+            "type": "text_box",
+            "name": "phone_number",
+            "hidden": "!(@fields.contact_via_text || @fields.contact_on_whatsapp)",
+            "parameter_list": {
+              "placeholder": "@local.text_type_phone_number"
+            },
+            "_nested_name": "form.phone_number",
+            "_dynamicFields": {
+              "hidden": [
+                {
+                  "fullExpression": "!(@fields.contact_via_text || @fields.contact_on_whatsapp)",
+                  "matchedExpression": "@fields.contact_via_text",
+                  "type": "fields",
+                  "fieldName": "contact_via_text"
+                },
+                {
+                  "fullExpression": "!(@fields.contact_via_text || @fields.contact_on_whatsapp)",
+                  "matchedExpression": "@fields.contact_on_whatsapp",
+                  "type": "fields",
+                  "fieldName": "contact_on_whatsapp"
+                }
+              ],
+              "parameter_list": {
+                "placeholder": [
+                  {
+                    "fullExpression": "@local.text_type_phone_number",
+                    "matchedExpression": "@local.text_type_phone_number",
+                    "type": "local",
+                    "fieldName": "text_type_phone_number"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.contact_via_text": [
+                "hidden"
+              ],
+              "@fields.contact_on_whatsapp": [
+                "hidden"
+              ],
+              "@local.text_type_phone_number": [
+                "parameter_list.placeholder"
+              ]
+            }
+          },
+          {
+            "name": "text_type_email",
+            "value": "Type your email address",
+            "hidden": "!@fields.contact_via_email",
+            "type": "set_variable",
+            "_nested_name": "form.text_type_email",
+            "_dynamicFields": {
+              "hidden": [
+                {
+                  "fullExpression": "!@fields.contact_via_email",
+                  "matchedExpression": "@fields.contact_via_email",
+                  "type": "fields",
+                  "fieldName": "contact_via_email"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@fields.contact_via_email": [
+                "hidden"
+              ]
+            }
+          },
+          {
+            "type": "text_box",
+            "name": "email_address",
+            "hidden": "!@fields.contact_via_email",
+            "parameter_list": {
+              "placeholder": "@local.text_type_email"
+            },
+            "_nested_name": "form.email_address",
+            "_dynamicFields": {
+              "hidden": [
+                {
+                  "fullExpression": "!@fields.contact_via_email",
+                  "matchedExpression": "@fields.contact_via_email",
+                  "type": "fields",
+                  "fieldName": "contact_via_email"
+                }
+              ],
+              "parameter_list": {
+                "placeholder": [
+                  {
+                    "fullExpression": "@local.text_type_email",
+                    "matchedExpression": "@local.text_type_email",
+                    "type": "local",
+                    "fieldName": "text_type_email"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.contact_via_email": [
+                "hidden"
+              ],
+              "@local.text_type_email": [
+                "parameter_list.placeholder"
+              ]
+            }
+          },
+          {
+            "name": "text_issue",
+            "value": "Describe your issue",
+            "type": "set_variable",
+            "_nested_name": "form.text_issue"
+          },
+          {
+            "type": "text_area",
+            "name": "text_area",
+            "parameter_list": {
+              "placeholder": "@local.text_issue"
+            },
+            "_nested_name": "form.text_area",
+            "_dynamicFields": {
+              "parameter_list": {
+                "placeholder": [
+                  {
+                    "fullExpression": "@local.text_issue",
+                    "matchedExpression": "@local.text_issue",
+                    "type": "local",
+                    "fieldName": "text_issue"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.text_issue": [
+                "parameter_list.placeholder"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "form"
+      },
+      {
+        "type": "dashed_box",
+        "name": "warning",
+        "value": "@global.data_warning_send_message",
+        "_nested_name": "warning",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.data_warning_send_message",
+              "matchedExpression": "@global.data_warning_send_message",
+              "type": "global",
+              "fieldName": "data_warning_send_message"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.data_warning_send_message": [
+            "value"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
@@ -7851,12 +8381,14 @@
       {
         "name": "favourite",
         "value": "_favourite",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "favourite"
       },
       {
         "name": "activity",
         "value": "activity_@local.activity_data.id",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "activity",
         "_dynamicFields": {
@@ -7938,7 +8470,7 @@
         "parameter_list": {
           "icon_src": "plh_images/icons/star_circle.svg",
           "icon_position": "top-left",
-          "type": "dashed_box"
+          "style": "dashed_box"
         },
         "rows": [
           {
@@ -7988,6 +8520,7 @@
                 "_cleaned": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "text": "@data.habit.spend_time.title",
               "icon_src": "plh_images/habits/habit_spend_time.svg"
@@ -8122,6 +8655,7 @@
             "_cleaned": "changed | set_field : @local.activity_favourite : @local.checkbox"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label_text": "Add this activity to @global.my_activities"
         },
@@ -8307,6 +8841,7 @@
           }
         ],
         "hidden": "\"@local.relax_campaign.id\" == \"default\"",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "quick_start_dark",
           "icon_src": "@local.relax_campaign.icon",
@@ -8397,6 +8932,7 @@
         "rows": [
           {
             "type": "tile_component",
+            "name": "tile_1",
             "action_list": [
               {
                 "trigger": "click",
@@ -8408,12 +8944,12 @@
                 "_cleaned": "click | go_to:parent_centre_my_relaxes"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_1",
               "first_line_text": "@global.my_relaxes"
             },
-            "name": "tile_component",
-            "_nested_name": "display_group.tile_component",
+            "_nested_name": "display_group.tile_1",
             "_dynamicFields": {
               "parameter_list": {
                 "first_line_text": [
@@ -8434,6 +8970,7 @@
           },
           {
             "type": "tile_component",
+            "name": "tile_2",
             "action_list": [
               {
                 "trigger": "click",
@@ -8445,12 +8982,12 @@
                 "_cleaned": "click | go_to:parent_centre_relaxes"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_1",
               "first_line_text": "@global.all_relaxes"
             },
-            "name": "tile_component",
-            "_nested_name": "display_group.tile_component",
+            "_nested_name": "display_group.tile_2",
             "_dynamicFields": {
               "parameter_list": {
                 "first_line_text": [
@@ -8481,6 +9018,7 @@
       },
       {
         "type": "tile_component",
+        "name": "tile_3",
         "action_list": [
           {
             "trigger": "click",
@@ -8493,13 +9031,13 @@
           }
         ],
         "hidden": "\"@local.activity_campaign.id\" == \"default\"",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "quick_start_dark",
           "icon_src": "@local.activity_campaign.icon",
           "first_line_text": "@global.current_activity"
         },
-        "name": "tile_component",
-        "_nested_name": "tile_component",
+        "_nested_name": "tile_3",
         "_dynamicFields": {
           "action_list": {
             "0": {
@@ -8583,6 +9121,7 @@
         "rows": [
           {
             "type": "tile_component",
+            "name": "tile_4",
             "action_list": [
               {
                 "trigger": "click",
@@ -8594,12 +9133,12 @@
                 "_cleaned": "click | go_to:parent_centre_my_activities"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_2",
               "first_line_text": "@global.my_activities"
             },
-            "name": "tile_component",
-            "_nested_name": "display_group.tile_component",
+            "_nested_name": "display_group.tile_4",
             "_dynamicFields": {
               "parameter_list": {
                 "first_line_text": [
@@ -8620,6 +9159,7 @@
           },
           {
             "type": "tile_component",
+            "name": "tile_5",
             "action_list": [
               {
                 "trigger": "click",
@@ -8631,12 +9171,12 @@
                 "_cleaned": "click | go_to:parent_centre_activities"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_2",
               "first_line_text": "@global.all_activities"
             },
-            "name": "tile_component",
-            "_nested_name": "display_group.tile_component",
+            "_nested_name": "display_group.tile_5",
             "_dynamicFields": {
               "parameter_list": {
                 "first_line_text": [
@@ -10312,6 +10852,7 @@
               }
             ],
             "hidden": "@field.relax_1_favourite ||\n@field.relax_2_favourite ||\n@field.relax_3_favourite ||\n@field.relax_4_favourite ||\n@field.relax_5_favourite ||\n@field.relax_6_favourite ||\n@field.relax_7_favourite ||\n@field.relax_8_favourite ||\n@field.relax_9_favourite ||\n@field.relax_10_favourite ||\n@field.relax_11_favourite ||\n@field.relax_12_favourite ||\n@field.relax_14_favourite ||\n@field.relax_15_favourite ||\n@field.relax_16_favourite ||\n@field.relax_17_favourite || \n@field.relax_18_favourite ||\n@field.relax_19_favourite ||\n@field.relax_13_favourite ||\n@field.relax_20_favourite ||\n@field.relax_21_favourite ||\n@field.relax_22_favourite ||\n@field.relax_23_favourite ||\n@field.relax_24_favourite ",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_1",
               "first_line_text": "@global.all_relaxes"
@@ -13279,6 +13820,7 @@
               }
             ],
             "hidden": "@fields.activity_reflect_positive_favourite ||\n@fields.activity_check_in_chat_favourite ||\n@fields.activity_dream_travel_favourite ||\n@fields.activity_famous_party_favourite ||\n@fields.activity_two_truths_favourite ||\n@fields.activity_time_machine_favourite ||\n@fields.activity_superpowers_favourite ||\n@fields.activity_friendly_chat_favourite ||\n@fields.activity_interrupter_favourite ||\n@fields.activity_three_options_favourite ||\n@fields.activity_yes_no_maybe_favourite ||\n@fields.activity_memory_game_favourite ||\n@fields.activity_invent_story_favourite ||\n@fields.activity_co_chef_favourite ||\n@fields.activity_dance_moves_favourite ||\n@fields.activity_mirror_favourite ||\n@fields.activity_whats_new_favourite ||\n@fields.activity_get_active_favourite ||\n@fields.activity_name_that_tune_favourite ||\n@fields.activity_pass_the_snap_favourite ||\n@fields.activity_family_workout_favourite ||\n@fields.activity_housework_favourite ||\n@fields.activity_doing_what_favourite ||\n@fields.activity_crazy_chicken_favourite ",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "parent_centre_2",
               "first_line_text": "@global.all_activities"
@@ -14646,6 +15188,7 @@
       {
         "name": "min_value",
         "value": 0,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "min_value"
       },
@@ -14658,6 +15201,7 @@
       {
         "name": "max_value",
         "value": 7,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "max_value"
       },
@@ -14669,18 +15213,21 @@
       {
         "name": "step",
         "value": 1,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "step"
       },
       {
         "name": "labels_count",
         "value": 8,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "labels_count"
       },
       {
         "name": "threshold",
         "value": 3,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "threshold"
       },
@@ -14723,6 +15270,7 @@
             "_cleaned": "changed | set_field:@local.slider_tracker:@local.slider"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "min": "@local.min_value",
@@ -14975,6 +15523,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -15066,12 +15615,14 @@
       {
         "name": "threshold",
         "value": 3,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "threshold"
       },
       {
         "name": "less_includes_zero",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "less_includes_zero"
       },
@@ -15088,6 +15639,7 @@
         "type": "text",
         "name": "text",
         "value": "Text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center"
         },
@@ -15097,6 +15649,7 @@
         "type": "text",
         "name": "question_text",
         "value": "Question text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center emphasised"
         },
@@ -15117,6 +15670,7 @@
             "_cleaned": "changed | set_field:@local.slider_tracker:@local.slider"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "min": "0",
           "min_value_label": "Days in the past week",
@@ -15592,6 +16146,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -15683,6 +16238,7 @@
       {
         "name": "threshold",
         "value": 5,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "threshold"
       },
@@ -15696,6 +16252,7 @@
         "type": "text",
         "name": "text",
         "value": "Text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center"
         },
@@ -15705,6 +16262,7 @@
         "type": "text",
         "name": "question_text",
         "value": "Question text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center emphasised"
         },
@@ -15715,6 +16273,7 @@
         "name": "example_text",
         "value": "Example text",
         "hidden": true,
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center"
         },
@@ -15735,6 +16294,7 @@
             "_cleaned": "changed | set_field:@local.slider_tracker:@local.slider"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "min": "0",
           "min_value_label": "Days in the past month",
@@ -16075,6 +16635,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -16166,24 +16727,28 @@
       {
         "name": "number_selector_min_value",
         "value": 0,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "number_selector_min_value"
       },
       {
         "name": "number_selector_max_value",
         "value": 30,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "number_selector_max_value"
       },
       {
         "name": "number_selector_step",
         "value": 1,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "number_selector_step"
       },
       {
         "name": "number_selector_category_size",
         "value": 1,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "number_selector_category_size"
       },
@@ -16195,12 +16760,14 @@
       {
         "name": "number_selector_first_display_term",
         "value": 1,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "number_selector_first_display_term"
       },
       {
         "name": "number_selector_height",
         "value": "normal",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "number_selector_height"
       },
@@ -16259,6 +16826,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -16276,12 +16844,14 @@
       {
         "name": "radio_group_tracker",
         "value": "radio_group_tracker",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "radio_group_tracker"
       },
       {
         "name": "radio_group_final",
         "value": "radio_group_final",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "radio_group_final"
       },
@@ -16298,6 +16868,7 @@
       {
         "name": "options_per_row",
         "value": 3,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "options_per_row"
       },
@@ -16489,6 +17060,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -16590,6 +17162,7 @@
       {
         "name": "options_per_row",
         "value": 3,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "options_per_row"
       },
@@ -16735,6 +17308,7 @@
         "name": "reply_happy",
         "value": "Reply happy",
         "hidden": "\"@local.radio_group\"!=\"happy\"",
+        "exclude_from_translation": true,
         "_nested_name": "reply_happy",
         "_dynamicFields": {
           "hidden": [
@@ -16757,6 +17331,7 @@
         "name": "reply_ok",
         "value": "Reply ok",
         "hidden": "\"@local.radio_group\"!=\"ok\" ",
+        "exclude_from_translation": true,
         "_nested_name": "reply_ok",
         "_dynamicFields": {
           "hidden": [
@@ -16779,6 +17354,7 @@
         "name": "reply_sad",
         "value": "Reply sad",
         "hidden": "\"@local.radio_group\"!=\"sad\"",
+        "exclude_from_translation": true,
         "_nested_name": "reply_sad",
         "_dynamicFields": {
           "hidden": [
@@ -17130,42 +17706,49 @@
       {
         "name": "combo_box_tracker",
         "value": "combo_box_tracker",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "combo_box_tracker"
       },
       {
         "name": "combo_box_final",
         "value": "combo_box_final",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "combo_box_final"
       },
       {
         "name": "combo_box_text",
         "value": "combo_box_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "combo_box_text"
       },
       {
         "name": "input_allowed",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "input_allowed"
       },
       {
         "name": "name_1",
         "value": "This is text 1 ",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "name_1"
       },
       {
         "name": "name_2",
         "value": "This is text 2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "name_2"
       },
       {
         "name": "name_3",
         "value": "This is text 3",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "name_3"
       },
@@ -17768,6 +18351,7 @@
       {
         "name": "threshold",
         "value": 1,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "threshold"
       },
@@ -17784,6 +18368,7 @@
         "type": "text",
         "name": "text",
         "value": "Text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center"
         },
@@ -17793,6 +18378,7 @@
         "type": "text",
         "name": "question_text_1",
         "value": "Question text 1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center emphasised"
         },
@@ -17889,6 +18475,7 @@
         "name": "question_text_2",
         "value": "Question text 2",
         "hidden": "\"@local.slider_1\"==\"undefined\"",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center emphasised"
         },
@@ -18402,6 +18989,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -18571,6 +19159,7 @@
       {
         "name": "threshold",
         "value": 7,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "threshold"
       },
@@ -18586,6 +19175,7 @@
         "type": "text",
         "name": "text",
         "value": "Text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center"
         },
@@ -18595,6 +19185,7 @@
         "type": "text",
         "name": "question_text",
         "value": "Question text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center emphasised"
         },
@@ -18615,6 +19206,7 @@
             "_cleaned": "changed | set_field:@local.slider_1_tracker:@local.slider_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "min": "0",
           "min_value_label": "Days in the past week",
@@ -18863,6 +19455,7 @@
         "name": "question_greater_equal_1",
         "value": "Question text",
         "hidden": "\"@local.slider_1\" < @local.threshold  || \"@local.slider_1\"==\"undefined\"",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center emphasised"
         },
@@ -19038,6 +19631,7 @@
         "name": "reply_no",
         "value": "Reply no",
         "hidden": "\"@local.radio_group\"!=\"no\" || \"@local.radio_group\"==\"undefined\"",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center"
         },
@@ -19070,6 +19664,7 @@
         "name": "question_yes",
         "value": "Question yes",
         "hidden": "\"@local.radio_group\"!=\"yes\" ||\"@local.radio_group\"==\"undefined\" ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center emphasised"
         },
@@ -19432,6 +20027,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -20068,6 +20664,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -20179,12 +20776,14 @@
       {
         "name": "timer_duration",
         "value": 10,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "timer_duration"
       },
       {
         "name": "timer_duration_extension",
         "value": 1,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "timer_duration_extension"
       },
@@ -20719,30 +21318,35 @@
       {
         "name": "activity_title",
         "value": "Title of this activity",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "activity_title"
       },
       {
         "name": "include_outro",
         "value": false,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "include_outro"
       },
       {
         "name": "hide_intro",
         "value": false,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "hide_intro"
       },
       {
         "name": "hide_content",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "hide_content"
       },
       {
         "name": "hide_outro",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "hide_outro"
       },
@@ -20755,6 +21359,7 @@
         "type": "display_theme",
         "name": "display_theme",
         "value": "passive_theme",
+        "exclude_from_translation": true,
         "_nested_name": "display_theme"
       },
       {
@@ -20762,6 +21367,7 @@
         "name": "intro",
         "value": "fade_in_out",
         "hidden": "@local.hide_intro",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "display_group",
@@ -20862,6 +21468,7 @@
               {
                 "name": "use_uncompleted_chevron",
                 "value": false,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "intro.intro_nav_buttons.use_uncompleted_chevron"
               },
@@ -21111,6 +21718,7 @@
         "name": "outro",
         "value": "fade_in_out",
         "hidden": "@local.hide_outro",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "display_group",
@@ -21196,7 +21804,7 @@
             "parameter_list": {
               "icon_src": "plh_images/icons/star_circle.svg",
               "icon_position": "top-left",
-              "type": "dashed_box"
+              "style": "dashed_box"
             },
             "rows": [
               {
@@ -22817,18 +23425,21 @@
       {
         "name": "use_completed_chevron",
         "value": false,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "use_completed_chevron"
       },
       {
         "name": "use_uncompleted_chevron",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "use_uncompleted_chevron"
       },
       {
         "name": "display_back",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "display_back"
       },
@@ -23038,12 +23649,14 @@
       {
         "name": "hide_animated_section_1",
         "value": false,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "hide_animated_section_1"
       },
       {
         "name": "hide_animated_section_2",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "hide_animated_section_2"
       },
@@ -23243,7 +23856,8 @@
                     "rows": [
                       {
                         "name": "radio_group_tracker",
-                        "value": "w_1on1_hp_review",
+                        "value": "w_1on1_hp_review_mood",
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.radio_group_tracker"
                       },
@@ -23339,28 +23953,21 @@
                             "type": "nested_properties",
                             "name": "box_1",
                             "value": "w_1on1_hp_challenges",
-                            "hidden": "\"@fields.w_1on1_hp_review\" == \"happy\" || \n\"@fields.w_1on1_hp_review\" == \"ok\" ",
+                            "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"happy\"",
                             "rows": [],
                             "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.box_1",
                             "_dynamicFields": {
                               "hidden": [
                                 {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review\" == \"happy\" || \n\"@fields.w_1on1_hp_review\" == \"ok\" ",
-                                  "matchedExpression": "@fields.w_1on1_hp_review",
+                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\"",
+                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
                                   "type": "fields",
-                                  "fieldName": "w_1on1_hp_review"
-                                },
-                                {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review\" == \"happy\" || \n\"@fields.w_1on1_hp_review\" == \"ok\" ",
-                                  "matchedExpression": "@fields.w_1on1_hp_review",
-                                  "type": "fields",
-                                  "fieldName": "w_1on1_hp_review"
+                                  "fieldName": "w_1on1_hp_review_mood"
                                 }
                               ]
                             },
                             "_dynamicDependencies": {
-                              "@fields.w_1on1_hp_review": [
-                                "hidden",
+                              "@fields.w_1on1_hp_review_mood": [
                                 "hidden"
                               ]
                             }
@@ -23369,21 +23976,28 @@
                             "type": "nested_properties",
                             "name": "box_2",
                             "value": "w_1on1_hp_highlights",
-                            "hidden": "\"@fields.w_1on1_hp_review\" == \"sad\"",
+                            "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
                             "rows": [],
                             "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.box_2",
                             "_dynamicFields": {
                               "hidden": [
                                 {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review\" == \"sad\"",
-                                  "matchedExpression": "@fields.w_1on1_hp_review",
+                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
                                   "type": "fields",
-                                  "fieldName": "w_1on1_hp_review"
+                                  "fieldName": "w_1on1_hp_review_mood"
+                                },
+                                {
+                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                                  "type": "fields",
+                                  "fieldName": "w_1on1_hp_review_mood"
                                 }
                               ]
                             },
                             "_dynamicDependencies": {
-                              "@fields.w_1on1_hp_review": [
+                              "@fields.w_1on1_hp_review_mood": [
+                                "hidden",
                                 "hidden"
                               ]
                             }
@@ -23400,28 +24014,21 @@
                             "type": "nested_properties",
                             "name": "box_1",
                             "value": "w_1on1_hp_highlights",
-                            "hidden": "\"@fields.w_1on1_hp_review\" == \"happy\" || \n\"@fields.w_1on1_hp_review\" == \"ok\" ",
+                            "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"happy\"",
                             "rows": [],
                             "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2.box_1",
                             "_dynamicFields": {
                               "hidden": [
                                 {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review\" == \"happy\" || \n\"@fields.w_1on1_hp_review\" == \"ok\" ",
-                                  "matchedExpression": "@fields.w_1on1_hp_review",
+                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\"",
+                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
                                   "type": "fields",
-                                  "fieldName": "w_1on1_hp_review"
-                                },
-                                {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review\" == \"happy\" || \n\"@fields.w_1on1_hp_review\" == \"ok\" ",
-                                  "matchedExpression": "@fields.w_1on1_hp_review",
-                                  "type": "fields",
-                                  "fieldName": "w_1on1_hp_review"
+                                  "fieldName": "w_1on1_hp_review_mood"
                                 }
                               ]
                             },
                             "_dynamicDependencies": {
-                              "@fields.w_1on1_hp_review": [
-                                "hidden",
+                              "@fields.w_1on1_hp_review_mood": [
                                 "hidden"
                               ]
                             }
@@ -23430,21 +24037,28 @@
                             "type": "nested_properties",
                             "name": "box_2",
                             "value": "w_1on1_hp_challenges",
-                            "hidden": "\"@fields.w_1on1_hp_review\" == \"sad\"",
+                            "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
                             "rows": [],
                             "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2.box_2",
                             "_dynamicFields": {
                               "hidden": [
                                 {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review\" == \"sad\"",
-                                  "matchedExpression": "@fields.w_1on1_hp_review",
+                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
                                   "type": "fields",
-                                  "fieldName": "w_1on1_hp_review"
+                                  "fieldName": "w_1on1_hp_review_mood"
+                                },
+                                {
+                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                                  "type": "fields",
+                                  "fieldName": "w_1on1_hp_review_mood"
                                 }
                               ]
                             },
                             "_dynamicDependencies": {
-                              "@fields.w_1on1_hp_review": [
+                              "@fields.w_1on1_hp_review_mood": [
+                                "hidden",
                                 "hidden"
                               ]
                             }
@@ -23482,7 +24096,7 @@
       {
         "type": "text",
         "name": "question_text_1",
-        "value": "Which of my tips have helped you?",
+        "value": "Which of the tips have helped you?",
         "parameter_list": {
           "style": "emphasised"
         },
@@ -23508,10 +24122,10 @@
         "_nested_name": "choice_3"
       },
       {
-        "name": "choice_4",
+        "name": "choice_none",
         "value": "None",
         "type": "set_variable",
-        "_nested_name": "choice_4"
+        "_nested_name": "choice_none"
       },
       {
         "name": "answer_list",
@@ -23519,7 +24133,7 @@
           "name:choice_1 | text:@local.choice_1",
           "name:choice_2 | text:@local.choice_2",
           "name:choice_3 | text:@local.choice_3",
-          "name:choice_4 | text:@local.choice_4"
+          "name: choice_none | text:@local.choice_none"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list",
@@ -23551,10 +24165,10 @@
             ],
             "3": [
               {
-                "fullExpression": "name:choice_4 | text:@local.choice_4",
-                "matchedExpression": "@local.choice_4",
+                "fullExpression": "name: choice_none | text:@local.choice_none",
+                "matchedExpression": "@local.choice_none",
                 "type": "local",
-                "fieldName": "choice_4"
+                "fieldName": "choice_none"
               }
             ]
           }
@@ -23569,7 +24183,7 @@
           "@local.choice_3": [
             "value.2"
           ],
-          "@local.choice_4": [
+          "@local.choice_none": [
             "value.3"
           ]
         }
@@ -23687,7 +24301,7 @@
         "type": "text",
         "name": "question_text_2",
         "value": "Why was this tip helpful for you?",
-        "hidden": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_4\"",
+        "hidden": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_none\"",
         "parameter_list": {
           "style": "emphasised"
         },
@@ -23695,13 +24309,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_4\"",
+              "fullExpression": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_none\"",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
             },
             {
-              "fullExpression": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_4\"",
+              "fullExpression": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"choice_none\"",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
@@ -24204,15 +24818,38 @@
         }
       },
       {
-        "type": "text",
-        "name": "reply_choice_4",
-        "value": "Sorry to hear my tips did not help you.",
-        "hidden": "\"@local.combo_box\"!=\"choice_4\"",
-        "_nested_name": "reply_choice_4",
+        "type": "template",
+        "name": "hp_review_tips_feedback",
+        "value": "hp_review_tips_feedback",
+        "hidden": "\"@local.combo_box\"!=\"choice_none\"",
+        "rows": [
+          {
+            "name": "workshop_data",
+            "value": "@data.workshop.w_1on1",
+            "type": "set_variable",
+            "_nested_name": "hp_review_tips_feedback.workshop_data",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.workshop.w_1on1",
+                  "matchedExpression": "@data.workshop.w_1on1",
+                  "type": "data",
+                  "fieldName": "workshop"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.workshop.w_1on1": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "hp_review_tips_feedback",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"choice_4\"",
+              "fullExpression": "\"@local.combo_box\"!=\"choice_none\"",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
@@ -24269,31 +24906,31 @@
       },
       {
         "type": "text",
-        "name": "question_text_1",
+        "name": "question_text_1a",
         "value": "Did you have any challenges when trying to spend time with your teen?",
-        "hidden": "\"@fields.w_1on1_hp_review\" == \"ok\" || \"@fields.w_1on1_hp_review\" == \"sad\" ",
+        "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"ok\" || \"@fields.w_1on1_hp_review_mood\" == \"sad\" ",
         "parameter_list": {
           "style": "emphasised"
         },
-        "_nested_name": "question_text_1",
+        "_nested_name": "question_text_1a",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@fields.w_1on1_hp_review\" == \"ok\" || \"@fields.w_1on1_hp_review\" == \"sad\" ",
-              "matchedExpression": "@fields.w_1on1_hp_review",
+              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"ok\" || \"@fields.w_1on1_hp_review_mood\" == \"sad\" ",
+              "matchedExpression": "@fields.w_1on1_hp_review_mood",
               "type": "fields",
-              "fieldName": "w_1on1_hp_review"
+              "fieldName": "w_1on1_hp_review_mood"
             },
             {
-              "fullExpression": "\"@fields.w_1on1_hp_review\" == \"ok\" || \"@fields.w_1on1_hp_review\" == \"sad\" ",
-              "matchedExpression": "@fields.w_1on1_hp_review",
+              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"ok\" || \"@fields.w_1on1_hp_review_mood\" == \"sad\" ",
+              "matchedExpression": "@fields.w_1on1_hp_review_mood",
               "type": "fields",
-              "fieldName": "w_1on1_hp_review"
+              "fieldName": "w_1on1_hp_review_mood"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@fields.w_1on1_hp_review": [
+          "@fields.w_1on1_hp_review_mood": [
             "hidden",
             "hidden"
           ]
@@ -24301,25 +24938,32 @@
       },
       {
         "type": "text",
-        "name": "question_text_1",
+        "name": "question_text_1b",
         "value": "What challenge did you have when trying to spend time with your teen?   ",
-        "hidden": "\"@fields.w_1on1_hp_review\" == \"happy\"",
+        "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\" == \"undefined\"",
         "parameter_list": {
           "style": "emphasised"
         },
-        "_nested_name": "question_text_1",
+        "_nested_name": "question_text_1b",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@fields.w_1on1_hp_review\" == \"happy\"",
-              "matchedExpression": "@fields.w_1on1_hp_review",
+              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\" == \"undefined\"",
+              "matchedExpression": "@fields.w_1on1_hp_review_mood",
               "type": "fields",
-              "fieldName": "w_1on1_hp_review"
+              "fieldName": "w_1on1_hp_review_mood"
+            },
+            {
+              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\" == \"undefined\"",
+              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+              "type": "fields",
+              "fieldName": "w_1on1_hp_review_mood"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@fields.w_1on1_hp_review": [
+          "@fields.w_1on1_hp_review_mood": [
+            "hidden",
             "hidden"
           ]
         }
@@ -24788,7 +25432,7 @@
         "type": "text",
         "name": "question_text_2",
         "value": "Do you want to try one of the following things?   ",
-        "hidden": "\"@local.combo_box\"==\"undefined\"",
+        "hidden": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"other_challenge\"",
         "parameter_list": {
           "style": "emphasised"
         },
@@ -24796,7 +25440,13 @@
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"==\"undefined\"",
+              "fullExpression": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"other_challenge\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            },
+            {
+              "fullExpression": "\"@local.combo_box\"==\"undefined\" || \"@local.combo_box\"==\"other_challenge\"",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
@@ -24805,6 +25455,7 @@
         },
         "_dynamicDependencies": {
           "@local.combo_box": [
+            "hidden",
             "hidden"
           ]
         }
@@ -26528,123 +27179,35 @@
         }
       },
       {
-        "type": "text",
-        "name": "reply_other_challenge",
-        "value": "Sorry we missed this! ",
+        "type": "template",
+        "name": "hp_review_other_challenge",
+        "value": "hp_review_other_challenge",
         "hidden": "\"@local.combo_box\"!=\"other_challenge\"",
-        "_nested_name": "reply_other_challenge",
-        "_dynamicFields": {
-          "hidden": [
-            {
-              "fullExpression": "\"@local.combo_box\"!=\"other_challenge\"",
-              "matchedExpression": "@local.combo_box",
-              "type": "local",
-              "fieldName": "combo_box"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@local.combo_box": [
-            "hidden"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "question_other_challenge",
-        "value": "Do you want to share it with us? ",
-        "hidden": "\"@local.combo_box\"!=\"other_challenge\"",
-        "parameter_list": {
-          "style": "emphasised"
-        },
-        "_nested_name": "question_other_challenge",
-        "_dynamicFields": {
-          "hidden": [
-            {
-              "fullExpression": "\"@local.combo_box\"!=\"other_challenge\"",
-              "matchedExpression": "@local.combo_box",
-              "type": "local",
-              "fieldName": "combo_box"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@local.combo_box": [
-            "hidden"
-          ]
-        }
-      },
-      {
-        "type": "text_box",
-        "name": "text_box",
-        "action_list": [
+        "rows": [
           {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "@local.text_box_tracker",
-              "@local.text_box"
-            ],
-            "_raw": "changed | set_field: @local.text_box_tracker: @local.text_box",
-            "_cleaned": "changed | set_field: @local.text_box_tracker: @local.text_box"
-          }
-        ],
-        "hidden": "\"@local.combo_box\"!=\"other_challenge\"",
-        "parameter_list": {
-          "placeholder": "@global.tap_and_type"
-        },
-        "_nested_name": "text_box",
-        "_dynamicFields": {
-          "action_list": {
-            "0": {
-              "args": {
-                "0": [
-                  {
-                    "fullExpression": "@local.text_box_tracker",
-                    "matchedExpression": "@local.text_box_tracker",
-                    "type": "local",
-                    "fieldName": "text_box_tracker"
-                  }
-                ],
-                "1": [
-                  {
-                    "fullExpression": "@local.text_box",
-                    "matchedExpression": "@local.text_box",
-                    "type": "local",
-                    "fieldName": "text_box"
-                  }
-                ]
-              },
-              "_raw": [
+            "name": "workshop_data",
+            "value": "@data.workshop.w_1on1",
+            "type": "set_variable",
+            "_nested_name": "hp_review_other_challenge.workshop_data",
+            "_dynamicFields": {
+              "value": [
                 {
-                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
-                  "matchedExpression": "@local.text_box_tracker",
-                  "type": "local",
-                  "fieldName": "text_box_tracker"
-                },
-                {
-                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
-                  "matchedExpression": "@local.text_box",
-                  "type": "local",
-                  "fieldName": "text_box"
-                }
-              ],
-              "_cleaned": [
-                {
-                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
-                  "matchedExpression": "@local.text_box_tracker",
-                  "type": "local",
-                  "fieldName": "text_box_tracker"
-                },
-                {
-                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
-                  "matchedExpression": "@local.text_box",
-                  "type": "local",
-                  "fieldName": "text_box"
+                  "fullExpression": "@data.workshop.w_1on1",
+                  "matchedExpression": "@data.workshop.w_1on1",
+                  "type": "data",
+                  "fieldName": "workshop"
                 }
               ]
+            },
+            "_dynamicDependencies": {
+              "@data.workshop.w_1on1": [
+                "value"
+              ]
             }
-          },
+          }
+        ],
+        "_nested_name": "hp_review_other_challenge",
+        "_dynamicFields": {
           "hidden": [
             {
               "fullExpression": "\"@local.combo_box\"!=\"other_challenge\"",
@@ -26652,55 +27215,10 @@
               "type": "local",
               "fieldName": "combo_box"
             }
-          ],
-          "parameter_list": {
-            "placeholder": [
-              {
-                "fullExpression": "@global.tap_and_type",
-                "matchedExpression": "@global.tap_and_type",
-                "type": "global",
-                "fieldName": "tap_and_type"
-              }
-            ]
-          }
+          ]
         },
         "_dynamicDependencies": {
-          "@local.text_box_tracker": [
-            "action_list.0.args.0",
-            "action_list.0._raw",
-            "action_list.0._cleaned"
-          ],
-          "@local.text_box": [
-            "action_list.0.args.1",
-            "action_list.0._raw",
-            "action_list.0._cleaned"
-          ],
           "@local.combo_box": [
-            "hidden"
-          ],
-          "@global.tap_and_type": [
-            "parameter_list.placeholder"
-          ]
-        }
-      },
-      {
-        "type": "text",
-        "name": "reply_text_box",
-        "value": "Thank you for sharing! You are an awesome parent for trying to spend time with your teen. It makes all the difference. Keep up the good work, and remember, I am always here to support! ",
-        "hidden": "\"@local.text_box\"==\"undefined\"",
-        "_nested_name": "reply_text_box",
-        "_dynamicFields": {
-          "hidden": [
-            {
-              "fullExpression": "\"@local.text_box\"==\"undefined\"",
-              "matchedExpression": "@local.text_box",
-              "type": "local",
-              "fieldName": "text_box"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@local.text_box": [
             "hidden"
           ]
         }
@@ -26788,7 +27306,8 @@
                     "rows": [
                       {
                         "name": "radio_group_tracker",
-                        "value": "w_instruct_hp_review",
+                        "value": "w_instruct_hp_review_mood",
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.radio_group_tracker"
                       },
@@ -27036,7 +27555,6 @@
       {
         "name": "choice_1",
         "value": "GET REAL – Can your teen do what you are about to ask?  ",
-        "hidden": true,
         "type": "set_variable",
         "_nested_name": "choice_1"
       },
@@ -27053,11 +27571,18 @@
         "_nested_name": "choice_3"
       },
       {
+        "name": "choice_none",
+        "value": "None",
+        "type": "set_variable",
+        "_nested_name": "choice_none"
+      },
+      {
         "name": "answer_list",
         "value": [
           "name:choice_1 | text:@local.choice_1",
           "name:choice_2 | text:@local.choice_2",
-          "name:choice_3 | text:@local.choice_3"
+          "name:choice_3 | text:@local.choice_3",
+          "name: choice_none | text:@local.choice_none"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list",
@@ -27086,6 +27611,14 @@
                 "type": "local",
                 "fieldName": "choice_3"
               }
+            ],
+            "3": [
+              {
+                "fullExpression": "name: choice_none | text:@local.choice_none",
+                "matchedExpression": "@local.choice_none",
+                "type": "local",
+                "fieldName": "choice_none"
+              }
             ]
           }
         },
@@ -27098,6 +27631,9 @@
           ],
           "@local.choice_3": [
             "value.2"
+          ],
+          "@local.choice_none": [
+            "value.3"
           ]
         }
       },
@@ -27278,6 +27814,51 @@
       },
       {
         "type": "template",
+        "name": "hp_review_tips_feedback",
+        "value": "hp_review_tips_feedback",
+        "hidden": "\"@local.combo_box\"!=\"choice_none\"",
+        "rows": [
+          {
+            "name": "workshop_data",
+            "value": "@data.workshop.w_instruct",
+            "type": "set_variable",
+            "_nested_name": "hp_review_tips_feedback.workshop_data",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.workshop.w_instruct",
+                  "matchedExpression": "@data.workshop.w_instruct",
+                  "type": "data",
+                  "fieldName": "workshop"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.workshop.w_instruct": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "hp_review_tips_feedback",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"choice_none\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "template",
         "name": "nav_buttons",
         "value": "nav_buttons",
         "action_list": [
@@ -27314,184 +27895,9 @@
     "rows": [
       {
         "type": "text",
-        "name": "question_text_1",
-        "value": "Did you have any challenges? ",
-        "hidden": "\"@fields.w_instruct_hp_review\" == \"ok\" || \"@fields.w_instruct_hp_review\" == \"sad\" ",
-        "parameter_list": {
-          "style": "emphasised"
-        },
-        "_nested_name": "question_text_1",
-        "_dynamicFields": {
-          "hidden": [
-            {
-              "fullExpression": "\"@fields.w_instruct_hp_review\" == \"ok\" || \"@fields.w_instruct_hp_review\" == \"sad\" ",
-              "matchedExpression": "@fields.w_instruct_hp_review",
-              "type": "fields",
-              "fieldName": "w_instruct_hp_review"
-            },
-            {
-              "fullExpression": "\"@fields.w_instruct_hp_review\" == \"ok\" || \"@fields.w_instruct_hp_review\" == \"sad\" ",
-              "matchedExpression": "@fields.w_instruct_hp_review",
-              "type": "fields",
-              "fieldName": "w_instruct_hp_review"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@fields.w_instruct_hp_review": [
-            "hidden",
-            "hidden"
-          ]
-        }
-      },
-      {
-        "name": "answer_list_1",
-        "value": [
-          "name: yes | text: Yes",
-          "name: no | text: No"
-        ],
-        "type": "set_variable",
-        "_nested_name": "answer_list_1"
-      },
-      {
-        "type": "radio_group",
-        "name": "radio_group",
-        "action_list": [
-          {
-            "trigger": "changed",
-            "action_id": "set_field",
-            "args": [
-              "@local.radio_group_tracker",
-              "@local.radio_group"
-            ],
-            "_raw": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
-            "_cleaned": "changed | set_field:@local.radio_group_tracker:@local.radio_group"
-          }
-        ],
-        "hidden": "\"@fields.w_instruct_hp_review\" == \"ok\" || \"@fields.w_instruct_hp_review\" == \"sad\" ",
-        "parameter_list": {
-          "answer_list": "@local.answer_list_1",
-          "radio_button_type": "btn_text",
-          "options_per_row": "2"
-        },
-        "_nested_name": "radio_group",
-        "_dynamicFields": {
-          "action_list": {
-            "0": {
-              "args": {
-                "0": [
-                  {
-                    "fullExpression": "@local.radio_group_tracker",
-                    "matchedExpression": "@local.radio_group_tracker",
-                    "type": "local",
-                    "fieldName": "radio_group_tracker"
-                  }
-                ],
-                "1": [
-                  {
-                    "fullExpression": "@local.radio_group",
-                    "matchedExpression": "@local.radio_group",
-                    "type": "local",
-                    "fieldName": "radio_group"
-                  }
-                ]
-              },
-              "_raw": [
-                {
-                  "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
-                  "matchedExpression": "@local.radio_group_tracker",
-                  "type": "local",
-                  "fieldName": "radio_group_tracker"
-                },
-                {
-                  "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
-                  "matchedExpression": "@local.radio_group",
-                  "type": "local",
-                  "fieldName": "radio_group"
-                }
-              ],
-              "_cleaned": [
-                {
-                  "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
-                  "matchedExpression": "@local.radio_group_tracker",
-                  "type": "local",
-                  "fieldName": "radio_group_tracker"
-                },
-                {
-                  "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
-                  "matchedExpression": "@local.radio_group",
-                  "type": "local",
-                  "fieldName": "radio_group"
-                }
-              ]
-            }
-          },
-          "hidden": [
-            {
-              "fullExpression": "\"@fields.w_instruct_hp_review\" == \"ok\" || \"@fields.w_instruct_hp_review\" == \"sad\" ",
-              "matchedExpression": "@fields.w_instruct_hp_review",
-              "type": "fields",
-              "fieldName": "w_instruct_hp_review"
-            },
-            {
-              "fullExpression": "\"@fields.w_instruct_hp_review\" == \"ok\" || \"@fields.w_instruct_hp_review\" == \"sad\" ",
-              "matchedExpression": "@fields.w_instruct_hp_review",
-              "type": "fields",
-              "fieldName": "w_instruct_hp_review"
-            }
-          ],
-          "parameter_list": {
-            "answer_list": [
-              {
-                "fullExpression": "@local.answer_list_1",
-                "matchedExpression": "@local.answer_list_1",
-                "type": "local",
-                "fieldName": "answer_list_1"
-              }
-            ]
-          }
-        },
-        "_dynamicDependencies": {
-          "@local.radio_group_tracker": [
-            "action_list.0.args.0",
-            "action_list.0._raw",
-            "action_list.0._cleaned"
-          ],
-          "@local.radio_group": [
-            "action_list.0.args.1",
-            "action_list.0._raw",
-            "action_list.0._cleaned"
-          ],
-          "@fields.w_instruct_hp_review": [
-            "hidden",
-            "hidden"
-          ],
-          "@local.answer_list_1": [
-            "parameter_list.answer_list"
-          ]
-        }
-      },
-      {
-        "type": "text",
         "name": "text_1",
         "value": "Here are some challenges that thousands of parents have when trying to give a realistic, positive and exact instruction:   ",
-        "hidden": "\"@local.radio_group\" != \"yes\"",
-        "_nested_name": "text_1",
-        "_dynamicFields": {
-          "hidden": [
-            {
-              "fullExpression": "\"@local.radio_group\" != \"yes\"",
-              "matchedExpression": "@local.radio_group",
-              "type": "local",
-              "fieldName": "radio_group"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@local.radio_group": [
-            "hidden"
-          ]
-        }
+        "_nested_name": "text_1"
       },
       {
         "name": "text_challenge_1",
@@ -27507,15 +27913,21 @@
       },
       {
         "name": "text_challenge_3",
-        "value": "I shouted at my teen when they behaved negatively, instead of giving them a positive instruction for what they should do. ",
+        "value": "I gave a negative instead of a positive instruction.",
         "type": "set_variable",
         "_nested_name": "text_challenge_3"
       },
       {
         "name": "text_challenge_4",
-        "value": "My teen wants to do things that are not safe or that cost money.",
+        "value": "I shouted at my teen when they behaved negatively, instead of giving them a positive instruction for what they should do. ",
         "type": "set_variable",
         "_nested_name": "text_challenge_4"
+      },
+      {
+        "name": "text_other_challenge",
+        "value": "My challenge is not listed here.",
+        "type": "set_variable",
+        "_nested_name": "text_other_challenge"
       },
       {
         "name": "answer_list",
@@ -27523,7 +27935,8 @@
           "name:challenge_1 | text:@local.text_challenge_1",
           "name:challenge_2 | text:@local.text_challenge_2",
           "name:challenge_3 | text:@local.text_challenge_3",
-          "name:challenge_4 | text:@local.text_challenge_4"
+          "name:challenge_4 | text:@local.text_challenge_4",
+          "name:other_challenge | text: @local.text_other_challenge"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list",
@@ -27560,6 +27973,14 @@
                 "type": "local",
                 "fieldName": "text_challenge_4"
               }
+            ],
+            "4": [
+              {
+                "fullExpression": "name:other_challenge | text: @local.text_other_challenge",
+                "matchedExpression": "@local.text_other_challenge",
+                "type": "local",
+                "fieldName": "text_other_challenge"
+              }
             ]
           }
         },
@@ -27575,6 +27996,9 @@
           ],
           "@local.text_challenge_4": [
             "value.3"
+          ],
+          "@local.text_other_challenge": [
+            "value.4"
           ]
         }
       },
@@ -27900,18 +28324,18 @@
         "type": "text",
         "name": "reply_choice_2_b",
         "value": "Great! That way you get your work done and have a fun time together with your teen!  ",
-        "hidden": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_b\"",
+        "hidden": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_b\" ",
         "_nested_name": "reply_choice_2_b",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_b\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_b\" ",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
             },
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_b\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_b\" ",
               "matchedExpression": "@local.combo_box_challenge_2",
               "type": "local",
               "fieldName": "combo_box_challenge_2"
@@ -27931,18 +28355,18 @@
         "type": "text",
         "name": "reply_choice_2_c",
         "value": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it’s so important!",
-        "hidden": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_c\"",
+        "hidden": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_c\" ",
         "_nested_name": "reply_choice_2_c",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_c\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_c\" ",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
             },
             {
-              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_c\"",
+              "fullExpression": "\"@local.combo_box\"!=\"challenge_2\" || \n\"@local.combo_box_challenge_2\"!=\"choice_2_c\" ",
               "matchedExpression": "@local.combo_box_challenge_2",
               "type": "local",
               "fieldName": "combo_box_challenge_2"
@@ -28026,6 +28450,51 @@
           "hidden": [
             {
               "fullExpression": "\"@local.combo_box\"!=\"challenge_4\"",
+              "matchedExpression": "@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "template",
+        "name": "hp_review_other_challenge",
+        "value": "hp_review_other_challenge",
+        "hidden": "\"@local.combo_box\"!=\"other_challenge\"",
+        "rows": [
+          {
+            "name": "workshop_data",
+            "value": "@data.workshop.w_instruct",
+            "type": "set_variable",
+            "_nested_name": "hp_review_other_challenge.workshop_data",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.workshop.w_instruct",
+                  "matchedExpression": "@data.workshop.w_instruct",
+                  "type": "data",
+                  "fieldName": "workshop"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.workshop.w_instruct": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "hp_review_other_challenge",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.combo_box\"!=\"other_challenge\"",
               "matchedExpression": "@local.combo_box",
               "type": "local",
               "fieldName": "combo_box"
@@ -28180,12 +28649,14 @@
       {
         "name": "radio_group_tracker",
         "value": "w_praise_hp_review_1",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "radio_group_tracker"
       },
       {
         "name": "combo_box_tracker",
         "value": "w_praise_hp_review_2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "combo_box_tracker"
       },
@@ -28327,7 +28798,7 @@
       {
         "type": "text",
         "name": "question_text_1",
-        "value": "Did you praise your teen this week?",
+        "value": "Did you have a chance to praise your teen this week?",
         "hidden": "@local.praise_teen_count >= 1",
         "parameter_list": {
           "style": "emphasised"
@@ -29222,6 +29693,7 @@
           {
             "name": "activity",
             "value": "co_chef",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -29373,6 +29845,7 @@
               {
                 "name": "habit",
                 "value": "spend_time",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "m_hp_reminder.in_week_message.habit"
               }
@@ -29603,6 +30076,7 @@
           {
             "name": "activity",
             "value": "two_truths",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -29947,6 +30421,7 @@
           {
             "name": "activity",
             "value": "superpowers",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -30127,6 +30602,7 @@
               {
                 "name": "habit",
                 "value": "safe",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "m_hp_reminder.in_week_message.habit"
               },
@@ -30321,6 +30797,7 @@
           {
             "name": "activity",
             "value": "dance_moves",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -30499,6 +30976,7 @@
                 "name": "habit",
                 "value": "instruct_positively",
                 "condition": "@field.total_parent_point_instruct_positively == 0",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "m_hp_reminder.in_week_message.habit",
                 "_dynamicFields": {
@@ -30932,6 +31410,7 @@
           {
             "name": "activity",
             "value": "dream_travel",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -31167,6 +31646,7 @@
               {
                 "name": "habit",
                 "value": "money",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "m_hp_reminder.in_week_message.habit"
               }
@@ -31322,6 +31802,7 @@
           {
             "name": "activity",
             "value": "reflect_positive",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -31428,6 +31909,7 @@
               {
                 "name": "habit",
                 "value": "praise_teen",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "m_hp_reminder.in_week_message.habit"
               },
@@ -31712,6 +32194,7 @@
           {
             "name": "activity",
             "value": "famous_party",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -32098,6 +32581,7 @@
           {
             "name": "activity",
             "value": "time_machine",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -32293,6 +32777,7 @@
               {
                 "name": "habit",
                 "value": "safe",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "m_hp_reminder.in_week_message.habit"
               },
@@ -32350,6 +32835,7 @@
               {
                 "name": "habit",
                 "value": "treat_yourself",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "m_hp_reminder.in_week_message.habit"
               },
@@ -32647,6 +33133,7 @@
           {
             "name": "activity",
             "value": "mirror",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -33042,6 +33529,7 @@
           {
             "name": "activity",
             "value": "check_in_chat",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "m_something_fun.activity"
           }
@@ -33272,6 +33760,7 @@
                 "name": "habit",
                 "value": "breathe",
                 "condition": "@field.total_parent_point_breathe == 0",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "m_hp_reminder.in_week_message.habit",
                 "_dynamicFields": {
@@ -33432,7 +33921,7 @@
         "parameter_list": {
           "icon_src": "plh_images/icons/star_circle.svg",
           "icon_position": "top-left",
-          "type": "dashed_box"
+          "style": "dashed_box"
         },
         "rows": [
           {
@@ -35070,6 +35559,7 @@
       {
         "name": "stepper",
         "value": "_stepper",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "stepper"
       },
@@ -35592,6 +36082,7 @@
       {
         "name": "stepper",
         "value": "_stepper",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "stepper"
       },
@@ -35826,6 +36317,7 @@
       {
         "name": "stepper",
         "value": "_stepper",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "stepper"
       },
@@ -36989,6 +37481,7 @@
           {
             "name": "habit",
             "value": "relax",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "in_week_message.habit"
           },
@@ -38423,6 +38916,41 @@
         },
         "_dynamicDependencies": {
           "@global.m_parent_points_overview": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "hp_review",
+        "value": "@global.hp_review",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "go_to",
+            "args": [
+              "w_instruct_hp_review"
+            ],
+            "_raw": "click | go_to:w_instruct_hp_review",
+            "_cleaned": "click | go_to:w_instruct_hp_review"
+          }
+        ],
+        "parameter_list": {
+          "style": "information"
+        },
+        "_nested_name": "hp_review",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.hp_review",
+              "matchedExpression": "@global.hp_review",
+              "type": "global",
+              "fieldName": "hp_review"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.hp_review": [
             "value"
           ]
         }
@@ -40737,6 +41265,7 @@
           {
             "name": "include_outro",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_activity.include_outro"
           },
@@ -40748,6 +41277,586 @@
           }
         ],
         "_nested_name": "workshop_activity"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/home_practice.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "hp_review_other_challenge",
+    "status": "released",
+    "rows": [
+      {
+        "name": "workshop_data",
+        "type": "set_variable",
+        "_nested_name": "workshop_data"
+      },
+      {
+        "name": "workshop",
+        "value": "@local.workshop_data.id",
+        "type": "set_variable",
+        "_nested_name": "workshop",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.workshop_data.id",
+              "matchedExpression": "@local.workshop_data.id",
+              "type": "local",
+              "fieldName": "workshop_data"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop_data.id": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "hp_review",
+        "value": "_hp_review",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "hp_review"
+      },
+      {
+        "name": "other_challenge",
+        "value": "_other_challenge",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "other_challenge"
+      },
+      {
+        "name": "text_box_tracker",
+        "value": "@fields.@local.workshop@local.hp_review@local.other_challenge",
+        "type": "set_variable",
+        "_nested_name": "text_box_tracker",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@fields.@local.workshop@local.hp_review@local.other_challenge",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            },
+            {
+              "fullExpression": "@fields.@local.workshop@local.hp_review@local.other_challenge",
+              "matchedExpression": "@local.hp_review",
+              "type": "local",
+              "fieldName": "hp_review"
+            },
+            {
+              "fullExpression": "@fields.@local.workshop@local.hp_review@local.other_challenge",
+              "matchedExpression": "@local.other_challenge",
+              "type": "local",
+              "fieldName": "other_challenge"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop": [
+            "value"
+          ],
+          "@local.hp_review": [
+            "value"
+          ],
+          "@local.other_challenge": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Sorry we missed this! ",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "question_text",
+        "value": "Do you want to share it with us? ",
+        "parameter_list": {
+          "style": "emphasised"
+        },
+        "_nested_name": "question_text"
+      },
+      {
+        "type": "text_box",
+        "name": "text_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.text_box_tracker",
+              "@local.text_box"
+            ],
+            "_raw": "changed | set_field: @local.text_box_tracker: @local.text_box",
+            "_cleaned": "changed | set_field: @local.text_box_tracker: @local.text_box"
+          }
+        ],
+        "parameter_list": {
+          "placeholder": "@global.tap_and_type"
+        },
+        "_nested_name": "text_box",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.text_box_tracker",
+                    "matchedExpression": "@local.text_box_tracker",
+                    "type": "local",
+                    "fieldName": "text_box_tracker"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "@local.text_box",
+                    "matchedExpression": "@local.text_box",
+                    "type": "local",
+                    "fieldName": "text_box"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box_tracker",
+                  "type": "local",
+                  "fieldName": "text_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box_tracker",
+                  "type": "local",
+                  "fieldName": "text_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "placeholder": [
+              {
+                "fullExpression": "@global.tap_and_type",
+                "matchedExpression": "@global.tap_and_type",
+                "type": "global",
+                "fieldName": "tap_and_type"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.text_box_tracker": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.text_box": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@global.tap_and_type": [
+            "parameter_list.placeholder"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply",
+        "value": "Thank you for sharing! You are an awesome parent for trying to spend time with your teen. It makes all the difference. Keep up the good work, and remember, I am always here to support! ",
+        "hidden": "\"@local.text_box\"==\"undefined\"",
+        "_nested_name": "reply",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.text_box\"==\"undefined\"",
+              "matchedExpression": "@local.text_box",
+              "type": "local",
+              "fieldName": "text_box"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.text_box": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/home_practice.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "hp_review_tips_feedback",
+    "status": "released",
+    "rows": [
+      {
+        "name": "workshop_data",
+        "value": "@data.workshop.w_1on1",
+        "type": "set_variable",
+        "_nested_name": "workshop_data",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.workshop.w_1on1",
+              "matchedExpression": "@data.workshop.w_1on1",
+              "type": "data",
+              "fieldName": "workshop"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.workshop.w_1on1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "workshop",
+        "value": "@local.workshop_data.id",
+        "type": "set_variable",
+        "_nested_name": "workshop",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.workshop_data.id",
+              "matchedExpression": "@local.workshop_data.id",
+              "type": "local",
+              "fieldName": "workshop_data"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop_data.id": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "hp_review",
+        "value": "_hp_review",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "hp_review"
+      },
+      {
+        "name": "mood",
+        "value": "_mood",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "mood"
+      },
+      {
+        "name": "tips_feedback",
+        "value": "_tips_feedback",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "tips_feedback"
+      },
+      {
+        "name": "current_mood_field",
+        "value": "@local.workshop@local.hp_review@local.mood",
+        "type": "set_variable",
+        "_nested_name": "current_mood_field",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.mood",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.mood",
+              "matchedExpression": "@local.hp_review",
+              "type": "local",
+              "fieldName": "hp_review"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.mood",
+              "matchedExpression": "@local.mood",
+              "type": "local",
+              "fieldName": "mood"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop": [
+            "value"
+          ],
+          "@local.hp_review": [
+            "value"
+          ],
+          "@local.mood": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "current_mood",
+        "value": "@fields.@local.current_mood_field",
+        "type": "set_variable",
+        "_nested_name": "current_mood",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@fields.@local.current_mood_field",
+              "matchedExpression": "@local.current_mood_field",
+              "type": "local",
+              "fieldName": "current_mood_field"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.current_mood_field": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "text_box_tracker",
+        "value": "@local.workshop@local.hp_review@local.tips_feedback",
+        "type": "set_variable",
+        "_nested_name": "text_box_tracker",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.tips_feedback",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.tips_feedback",
+              "matchedExpression": "@local.hp_review",
+              "type": "local",
+              "fieldName": "hp_review"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.tips_feedback",
+              "matchedExpression": "@local.tips_feedback",
+              "type": "local",
+              "fieldName": "tips_feedback"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop": [
+            "value"
+          ],
+          "@local.hp_review": [
+            "value"
+          ],
+          "@local.tips_feedback": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Sorry to hear my tips did not help you.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "question_text_1a",
+        "value": "Can you share with us your tip to other parents?",
+        "hidden": "\"@local.current_mood\" == \"ok\" || \"@local.current_mood\" == \"sad\"  || \"@local.current_mood\" == \"undefined\"",
+        "parameter_list": {
+          "style": "emphasised"
+        },
+        "_nested_name": "question_text_1a",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.current_mood\" == \"ok\" || \"@local.current_mood\" == \"sad\"  || \"@local.current_mood\" == \"undefined\"",
+              "matchedExpression": "@local.current_mood",
+              "type": "local",
+              "fieldName": "current_mood"
+            },
+            {
+              "fullExpression": "\"@local.current_mood\" == \"ok\" || \"@local.current_mood\" == \"sad\"  || \"@local.current_mood\" == \"undefined\"",
+              "matchedExpression": "@local.current_mood",
+              "type": "local",
+              "fieldName": "current_mood"
+            },
+            {
+              "fullExpression": "\"@local.current_mood\" == \"ok\" || \"@local.current_mood\" == \"sad\"  || \"@local.current_mood\" == \"undefined\"",
+              "matchedExpression": "@local.current_mood",
+              "type": "local",
+              "fieldName": "current_mood"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.current_mood": [
+            "hidden",
+            "hidden",
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "question_text_1b",
+        "value": "Do you want to share with us what you think would help you?",
+        "hidden": "\"@local.current_mood\" == \"happy\"",
+        "parameter_list": {
+          "style": "emphasised"
+        },
+        "_nested_name": "question_text_1b",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.current_mood\" == \"happy\"",
+              "matchedExpression": "@local.current_mood",
+              "type": "local",
+              "fieldName": "current_mood"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.current_mood": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.text_box_tracker",
+              "@local.text_box"
+            ],
+            "_raw": "changed | set_field: @local.text_box_tracker: @local.text_box",
+            "_cleaned": "changed | set_field: @local.text_box_tracker: @local.text_box"
+          }
+        ],
+        "parameter_list": {
+          "placeholder": "@global.tap_and_type"
+        },
+        "_nested_name": "text_box",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.text_box_tracker",
+                    "matchedExpression": "@local.text_box_tracker",
+                    "type": "local",
+                    "fieldName": "text_box_tracker"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "@local.text_box",
+                    "matchedExpression": "@local.text_box",
+                    "type": "local",
+                    "fieldName": "text_box"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box_tracker",
+                  "type": "local",
+                  "fieldName": "text_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box_tracker",
+                  "type": "local",
+                  "fieldName": "text_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "placeholder": [
+              {
+                "fullExpression": "@global.tap_and_type",
+                "matchedExpression": "@global.tap_and_type",
+                "type": "global",
+                "fieldName": "tap_and_type"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.text_box_tracker": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.text_box": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@global.tap_and_type": [
+            "parameter_list.placeholder"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_text_box",
+        "value": "Thank you for sharing! You are an awesome parent for trying to spend time with your teen. It makes all the difference. Keep up the good work, and remember, I am always here to support! ",
+        "hidden": "\"@local.text_box\"==\"undefined\"",
+        "_nested_name": "reply_text_box",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.text_box\"==\"undefined\"",
+              "matchedExpression": "@local.text_box",
+              "type": "local",
+              "fieldName": "text_box"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.text_box": [
+            "hidden"
+          ]
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/home_practice.xlsx"
@@ -41612,7 +42721,6 @@
       {
         "name": "relax",
         "value": "@fields.which_relax",
-        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "relax",
         "_dynamicFields": {
@@ -41634,7 +42742,6 @@
       {
         "name": "relax_favourite",
         "value": "@local.relax@local.favourite",
-        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "relax_favourite",
         "_dynamicFields": {
@@ -41666,7 +42773,6 @@
         "type": "set_field",
         "name": "relax_text",
         "value": "@local.relax@local.text",
-        "exclude_from_translation": true,
         "_nested_name": "relax_text",
         "_dynamicFields": {
           "value": [
@@ -41906,7 +43012,6 @@
           {
             "name": "checkbox_field",
             "value": "@local.relax_favourite",
-            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_activity.checkbox_field",
             "_dynamicFields": {
@@ -42084,7 +43189,6 @@
             "name": "checkbox",
             "value": "@fields.@local.relax_favourite",
             "hidden": false,
-            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_activity.checkbox",
             "_dynamicFields": {
@@ -43274,6 +44378,7 @@
       {
         "type": "advanced_dashed_box",
         "name": "dashed_box_test",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "subtitle",
@@ -43288,10 +44393,12 @@
           {
             "type": "display_group",
             "name": "display_group",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "type": "button",
                 "value": "test",
+                "exclude_from_translation": true,
                 "name": "button",
                 "_nested_name": "dashed_box_test.display_group.button"
               }
@@ -43302,11 +44409,24 @@
         "_nested_name": "dashed_box_test"
       },
       {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
         "type": "display_group",
         "name": "display_group",
         "parameter_list": {
           "type": "dashed_box"
         },
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "subtitle",
@@ -43327,10 +44447,17 @@
               "lottie_src": "lottie_animations/parent_centre.json",
               "text": "text two"
             },
+            "exclude_from_translation": true,
             "_nested_name": "display_group.points_example_1"
           }
         ],
         "_nested_name": "display_group"
+      },
+      {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
       },
       {
         "type": "display_group",
@@ -43338,6 +44465,7 @@
         "parameter_list": {
           "type": "dashed_box"
         },
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "subtitle",
@@ -43345,6 +44473,7 @@
             "parameter_list": {
               "style": "emphasised center"
             },
+            "exclude_from_translation": true,
             "name": "subtitle",
             "_nested_name": "display_group.subtitle"
           },
@@ -43356,6 +44485,7 @@
               "lottie_src": "lottie_animations/parent_centre.json",
               "text": "text two"
             },
+            "exclude_from_translation": true,
             "_nested_name": "display_group.points_example_1"
           }
         ],
@@ -43372,6 +44502,7 @@
       {
         "type": "advanced_dashed_box",
         "name": "dashed_box",
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "dashed_box"
       }
@@ -43386,6 +44517,7 @@
       {
         "name": "active_campaign",
         "value": "@campaign.debug_campaign",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "active_campaign",
         "_dynamicFields": {
@@ -43407,6 +44539,7 @@
       {
         "type": "display_group",
         "condition": "@local.active_campaign.id",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "column"
         },
@@ -43415,6 +44548,7 @@
             "type": "text",
             "name": "campaign_id",
             "value": "Campaign id: @local.active_campaign.id",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.campaign_id",
             "_dynamicFields": {
               "value": [
@@ -43456,6 +44590,7 @@
                 "_cleaned": "click | set_local: active_campaign : false"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "@local.active_campaign.icon",
               "text": "@local.active_campaign.text",
@@ -43594,6 +44729,7 @@
             "_cleaned": "click | set_field : debug_reminder_3.sent : false"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "clear_reminders"
       }
     ],
@@ -43607,6 +44743,7 @@
       {
         "name": "active_campaign_2",
         "value": "@campaign.debug_campaign_2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "active_campaign_2",
         "_dynamicFields": {
@@ -43627,6 +44764,7 @@
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "column"
         },
@@ -43635,6 +44773,7 @@
             "type": "text",
             "name": "campaign_id",
             "value": "Campaign id: @local.active_campaign_2.id",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.campaign_id",
             "_dynamicFields": {
               "value": [
@@ -43666,6 +44805,7 @@
                 "_cleaned": "click | trigger_actions: @local.active_campaign_2.click_action_list"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "@local.active_campaign_2.icon",
               "text": "@local.active_campaign_2.text",
@@ -43789,6 +44929,7 @@
             "_cleaned": "click | set_field : debug_reminder_7.sent : false"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "clear_reminders"
       }
     ],
@@ -43803,11 +44944,13 @@
         "type": "set_field",
         "name": "demo_changed_field_1",
         "value": false,
+        "exclude_from_translation": true,
         "_nested_name": "demo_changed_field_1"
       },
       {
         "name": "demo_changed_local",
         "value": "demo_changed_field_2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "demo_changed_local"
       },
@@ -43817,6 +44960,7 @@
           "name:name_var_1 | text:First",
           "name:name_var_2 | text:Second"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_2"
       },
@@ -43835,6 +44979,7 @@
             "_cleaned": "changed | set_field: @local.demo_changed_local: @local.radio_group"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
@@ -43922,6 +45067,7 @@
         "name": "text_1",
         "value": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_1\"",
         "hidden": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_1\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -43969,6 +45115,7 @@
         "name": "text_2",
         "value": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_2\"",
         "hidden": "@field.demo_changed_field_1 || \"@field.demo_changed_field_2\"==\"name_var_2\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -44023,6 +45170,7 @@
         "type": "set_field",
         "name": "demo_changed_field_3",
         "value": false,
+        "exclude_from_translation": true,
         "_nested_name": "demo_changed_field_3"
       },
       {
@@ -44031,6 +45179,7 @@
           "name:name_var_1 | text:First",
           "name:name_var_2 | text:Second"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_2"
       },
@@ -44049,6 +45198,7 @@
             "_cleaned": "changed | set_field: demo_changed_field_4: @local.radio_group"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
@@ -44111,6 +45261,7 @@
         "name": "text_1",
         "value": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_1\"",
         "hidden": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_1\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -44158,6 +45309,7 @@
         "name": "text_2",
         "value": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_2\"",
         "hidden": "@field.demo_changed_field_3 || \"@field.demo_changed_field_4\"==\"name_var_2\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -44212,6 +45364,7 @@
         "type": "set_field",
         "name": "demo_changed_field_5",
         "value": false,
+        "exclude_from_translation": true,
         "_nested_name": "demo_changed_field_5"
       },
       {
@@ -44220,6 +45373,7 @@
           "name:name_var_1 | text:First",
           "name:name_var_2 | text:Second"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_2"
       },
@@ -44238,6 +45392,7 @@
             "_cleaned": "changed | set_field: demo_changed_field_6: @local.radio_group"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
@@ -44300,10 +45455,12 @@
         "name": "example_text_1",
         "value": "example_text",
         "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_1\"",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_1.text",
             "_dynamicFields": {
@@ -44363,10 +45520,12 @@
         "name": "example_text_2",
         "value": "example_text",
         "hidden": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "@field.demo_changed_field_5 || \"@field.demo_changed_field_6\"==\"name_var_2\"",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_2.text",
             "_dynamicFields": {
@@ -44433,6 +45592,7 @@
         "type": "set_field",
         "name": "demo_changed_field_7",
         "value": false,
+        "exclude_from_translation": true,
         "_nested_name": "demo_changed_field_7"
       },
       {
@@ -44441,6 +45601,7 @@
           "name:name_var_1 | text:First",
           "name:name_var_2 | text:Second"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_2"
       },
@@ -44459,6 +45620,7 @@
             "_cleaned": "changed | set_field: demo_changed_field_8: @local.radio_group"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
@@ -44520,16 +45682,19 @@
         "type": "template",
         "name": "box_duo",
         "value": "box_duo",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "box_1",
             "value": "example_text",
             "hidden": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_1\"",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "text",
                 "value": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_1\"",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_duo.box_1.text",
                 "_dynamicFields": {
@@ -44589,10 +45754,12 @@
             "name": "box_2",
             "value": "example_text",
             "hidden": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_2\"",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "text",
                 "value": "@field.demo_changed_field_7 || \"@field.demo_changed_field_8\"==\"name_var_2\"",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_duo.box_2.text",
                 "_dynamicFields": {
@@ -44665,6 +45832,7 @@
           "name: name_2 | text: This is text 2",
           "name: name_3 | text: This is text 3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
@@ -44672,6 +45840,7 @@
         "type": "combo_box",
         "name": "combo_box",
         "value": "name_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -44709,12 +45878,14 @@
           "name: name_2 | text: This is text 2",
           "name: name_3 | text: This is text 3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
       {
         "type": "combo_box",
         "name": "combo_box",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "Click here to answer",
@@ -44744,6 +45915,7 @@
         "type": "text",
         "name": "text_result",
         "value": "Local combo box variable: @local.combo_box",
+        "exclude_from_translation": true,
         "_nested_name": "text_result",
         "_dynamicFields": {
           "value": [
@@ -44776,24 +45948,28 @@
           "name: name_2 | text: This is text 2",
           "name: name_3 | text: This is text 3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_1_list"
       },
       {
         "name": "option_1",
         "value": "Option 1",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "option_1"
       },
       {
         "name": "option_2",
         "value": "Option 2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "option_2"
       },
       {
         "name": "option_3",
         "value": "Option 3",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "option_3"
       },
@@ -44804,6 +45980,7 @@
           "name: name_2 | text: @local.option_2",
           "name: name_3 | text: @local.option_3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_2_list",
         "_dynamicFields": {
@@ -44852,6 +46029,7 @@
           "name: name_1 | text: @global.example_global_constant_text",
           "name: name_2 | text: @global.example_global_constant_title"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_3_list",
         "_dynamicFields": {
@@ -44887,17 +46065,20 @@
         "type": "text",
         "name": "text_1",
         "value": "This is the combo box variables debug template",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
         "type": "text",
         "name": "text_2",
         "value": "Direct answer list (set through local variable)",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
         "type": "combo_box",
         "name": "combo_box_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_1_list"
         },
@@ -44924,11 +46105,13 @@
         "type": "text",
         "name": "text_3",
         "value": "Answer list contains local variables",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
         "type": "combo_box",
         "name": "combo_box_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_2_list"
         },
@@ -44955,11 +46138,13 @@
         "type": "text",
         "name": "text_4",
         "value": "Answer list contains global variables",
+        "exclude_from_translation": true,
         "_nested_name": "text_4"
       },
       {
         "type": "combo_box",
         "name": "combo_box_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_3_list"
         },
@@ -44985,60 +46170,70 @@
       {
         "name": "spend_time_idea_1",
         "value": "Walking to the shops",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_1"
       },
       {
         "name": "spend_time_idea_2",
         "value": "Get water together ",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_2"
       },
       {
         "name": "spend_time_idea_3",
         "value": "Doing a chore together",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_3"
       },
       {
         "name": "spend_time_idea_4",
         "value": "Prepare dinner",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_4"
       },
       {
         "name": "spend_time_idea_5",
         "value": "Eat breakfast/lunch/dinner",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_5"
       },
       {
         "name": "spend_time_idea_6",
         "value": "Have tea after school",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_6"
       },
       {
         "name": "spend_time_idea_7",
         "value": "Watch a T.V. show",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_7"
       },
       {
         "name": "spend_time_idea_8",
         "value": "Review homework",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_8"
       },
       {
         "name": "spend_time_idea_9",
         "value": "Chat before bedtime",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_9"
       },
       {
         "name": "spend_time_idea_10",
         "value": "Play a game/sport",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "spend_time_idea_10"
       },
@@ -45056,6 +46251,7 @@
           "name:name_9 | text:@local.spend_time_idea_9",
           "name:name_10 | text:@local.spend_time_idea_10"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list",
         "_dynamicFields": {
@@ -45178,6 +46374,7 @@
       {
         "type": "combo_box",
         "name": "combo_box_4",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -45211,18 +46408,21 @@
       {
         "name": "option_1",
         "value": "Option 1",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "option_1"
       },
       {
         "name": "option_2",
         "value": "Option 2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "option_2"
       },
       {
         "name": "option_3",
         "value": "Option 3",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "option_3"
       },
@@ -45232,6 +46432,7 @@
           "name:name_1 | text:Text 1",
           "name:name_2 | text: Text 2"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_1_list"
       },
@@ -45241,6 +46442,7 @@
           "name:name_1 | text:@local.option_1",
           "name:name_2 | text:@local.option_2"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_2_list",
         "_dynamicFields": {
@@ -45278,6 +46480,7 @@
           "name:name_1 | text:@global.example_global_constant_text",
           "name:name_2 | text:@global.example_global_constant_title"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_3_list",
         "_dynamicFields": {
@@ -45313,17 +46516,20 @@
         "type": "text",
         "name": "text_1",
         "value": "This is the radio group variables debug template",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
         "type": "text",
         "name": "text_2",
         "value": "Direct answer list (set through local variable)",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
         "type": "radio_group",
         "name": "radio_group_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_1_list"
         },
@@ -45350,11 +46556,13 @@
         "type": "text",
         "name": "text_3",
         "value": "Answer list contains local variables",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
         "type": "radio_group",
         "name": "radio_group_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_2_list"
         },
@@ -45381,11 +46589,13 @@
         "type": "text",
         "name": "text_4",
         "value": "Answer list contains global variables",
+        "exclude_from_translation": true,
         "_nested_name": "text_4"
       },
       {
         "type": "radio_group",
         "name": "radio_group_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_3_list"
         },
@@ -45420,6 +46630,7 @@
         "type": "set_field",
         "name": "answer_q1",
         "value": "NA",
+        "exclude_from_translation": true,
         "_nested_name": "answer_q1"
       },
       {
@@ -45437,6 +46648,7 @@
             "_cleaned": "changed | set_field:answer_q1:@local.slider_q1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "title": "Question 1"
         },
@@ -45485,6 +46697,7 @@
         "type": "text",
         "name": "text_q1",
         "value": "answer to q1 saved in field answer_q1: @field.answer_q1",
+        "exclude_from_translation": true,
         "_nested_name": "text_q1",
         "_dynamicFields": {
           "value": [
@@ -45517,6 +46730,7 @@
             "_cleaned": "click | go_to:debug_conditional_messages_q2"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "go_to_q2"
       }
     ],
@@ -45531,6 +46745,7 @@
         "type": "set_field",
         "name": "answer_q2",
         "value": "NA",
+        "exclude_from_translation": true,
         "_nested_name": "answer_q2"
       },
       {
@@ -45548,6 +46763,7 @@
             "_cleaned": "changed | set_field:answer_q2:@local.slider_q2"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "title": "Question 2"
         },
@@ -45596,6 +46812,7 @@
         "type": "text",
         "name": "text_q2",
         "value": "answer to q2 saved in field answer_q2: @field.answer_q2",
+        "exclude_from_translation": true,
         "_nested_name": "text_q2",
         "_dynamicFields": {
           "value": [
@@ -45628,6 +46845,7 @@
             "_cleaned": "click | go_to:debug_conditional_messages_q1"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "back_to_q1"
       },
       {
@@ -45645,6 +46863,7 @@
             "_cleaned": "click | go_to:debug_conditional_texts"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "conditional_texts"
       }
     ],
@@ -45659,6 +46878,7 @@
         "type": "text",
         "name": "text_q1",
         "value": "answer to q1 saved in field answer_q1: @field.answer_q1",
+        "exclude_from_translation": true,
         "_nested_name": "text_q1",
         "_dynamicFields": {
           "value": [
@@ -45680,6 +46900,7 @@
         "type": "text",
         "name": "text_q2",
         "value": "answer to q2 saved in field answer_q2: @field.answer_q2",
+        "exclude_from_translation": true,
         "_nested_name": "text_q2",
         "_dynamicFields": {
           "value": [
@@ -45701,6 +46922,7 @@
         "type": "title",
         "name": "title_1",
         "value": "Hidden column",
+        "exclude_from_translation": true,
         "_nested_name": "title_1"
       },
       {
@@ -45708,6 +46930,7 @@
         "name": "conditional_text_1",
         "value": "This text shows if the answer to Q1 is less than 4",
         "hidden": "@field.answer_q1>=4",
+        "exclude_from_translation": true,
         "_nested_name": "conditional_text_1",
         "_dynamicFields": {
           "hidden": [
@@ -45730,6 +46953,7 @@
         "name": "conditional_text_2",
         "value": "This text shows if the answer to Q2 is less than 4",
         "hidden": "@field.answer_q2>=4",
+        "exclude_from_translation": true,
         "_nested_name": "conditional_text_2",
         "_dynamicFields": {
           "hidden": [
@@ -45752,6 +46976,7 @@
         "name": "conditional_text_3",
         "value": "This text shows if the answer to Q1 is greater than or equal to 4 and the answer to Q2 is greater than or equal to 4",
         "hidden": "@field.answer_q1<4 || @field.answer_q2<4",
+        "exclude_from_translation": true,
         "_nested_name": "conditional_text_3",
         "_dynamicFields": {
           "hidden": [
@@ -45782,6 +47007,7 @@
         "type": "title",
         "name": "title_2",
         "value": "Condition column ",
+        "exclude_from_translation": true,
         "_nested_name": "title_2"
       },
       {
@@ -45789,6 +47015,7 @@
         "name": "conditional_text",
         "value": "This text is created if the answer to Q1 is greater than or equal to 4",
         "condition": "@field.answer_q1>=4",
+        "exclude_from_translation": true,
         "_nested_name": "conditional_text",
         "_dynamicFields": {
           "condition": [
@@ -45811,6 +47038,7 @@
         "name": "conditional_text",
         "value": "This text is created if the answer to Q1 is less than 4",
         "condition": "!(@field.answer_q1>=4)",
+        "exclude_from_translation": true,
         "_nested_name": "conditional_text",
         "_dynamicFields": {
           "condition": [
@@ -45832,17 +47060,20 @@
         "type": "title",
         "name": "title_2",
         "value": "Condition column through a nested template",
+        "exclude_from_translation": true,
         "_nested_name": "title_2"
       },
       {
         "type": "template",
         "name": "example_text_1",
         "value": "example_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "This text is created if the answer to Q1 is greater than or equal to 4",
             "condition": "@field.answer_q1>=4",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_1.text",
             "_dynamicFields": {
@@ -45865,6 +47096,7 @@
             "name": "text",
             "value": "This text is created if the answer to Q1 is less than 4",
             "condition": "!(@field.answer_q1>=4)",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_1.text",
             "_dynamicFields": {
@@ -45901,17 +47133,20 @@
             "_cleaned": "click | go_to:debug_conditional_messages_q2"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "back_to_q1"
       },
       {
         "type": "template",
         "name": "example_text_2",
         "value": "example_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "not printed",
             "condition": "1>2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_2.text"
           },
@@ -45919,6 +47154,7 @@
             "name": "text",
             "value": "printed",
             "condition": "2>1",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_2.text"
           }
@@ -45929,11 +47165,13 @@
         "type": "template",
         "name": "example_text_3",
         "value": "example_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "printed",
             "condition": "2>1",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_3.text"
           },
@@ -45941,6 +47179,7 @@
             "name": "text",
             "value": "not printed",
             "condition": "1>2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_3.text"
           }
@@ -45959,6 +47198,7 @@
         "type": "text",
         "name": "text_1",
         "value": "Print text  and image of item 1:\n\n@data.debug.item_1.text",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -45980,6 +47220,7 @@
         "type": "image",
         "name": "image_1",
         "value": "@data.debug.item_1.image_asset",
+        "exclude_from_translation": true,
         "_nested_name": "image_1",
         "_dynamicFields": {
           "value": [
@@ -46001,11 +47242,13 @@
         "type": "text",
         "name": "text_2",
         "value": "The parent point box below shows that the icon_src is NOT found when called through a data field",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
         "type": "parent_point_box",
         "name": "parent_point_box_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "text": "@data.debug.item_1.text",
           "icon_src": "@data.debug.item_1.image_asset"
@@ -46044,11 +47287,13 @@
         "type": "text",
         "name": "text_3",
         "value": "The parent point box below shows that the icon_src IS found when called directly",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
         "type": "parent_point_box",
         "name": "parent_point_box_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "text": "@data.debug.item_1.text",
           "icon_src": "plh_images/habits/habit_relax.svg"
@@ -46074,6 +47319,7 @@
       },
       {
         "value": "The tile below shows that the icon_src is NOT found when called through a data field",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "name": "set_variable",
         "_nested_name": "set_variable"
@@ -46081,6 +47327,7 @@
       {
         "type": "tile_component",
         "name": "quick_start_tile_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "quick_start_dark",
           "first_line_text": "@data.debug.item_2.text",
@@ -46119,6 +47366,7 @@
       },
       {
         "value": "The tile below shows that the icon_src IS found when called directly",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "name": "set_variable",
         "_nested_name": "set_variable"
@@ -46126,6 +47374,7 @@
       {
         "type": "tile_component",
         "name": "quick_start_tile_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "quick_start_dark",
           "first_line_text": "@data.debug.item_2.text",
@@ -46163,6 +47412,7 @@
         "type": "text",
         "name": "text_1",
         "value": "@data.debug.item_1.text",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -46184,18 +47434,21 @@
         "type": "text",
         "name": "text_2",
         "value": "This text is directly authored in the value",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
         "type": "text",
         "name": "text_3",
         "value": "This text is directly authored in the value",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
         "type": "text",
         "name": "text_4",
         "value": "@data.debug.item_1.text",
+        "exclude_from_translation": true,
         "_nested_name": "text_4",
         "_dynamicFields": {
           "value": [
@@ -46225,10 +47478,12 @@
         "type": "template",
         "name": "debug_data_bottom",
         "value": "debug_data_bottom",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "@data.debug.item_2.text",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_data_bottom.text_1",
             "_dynamicFields": {
@@ -46250,6 +47505,7 @@
           {
             "name": "text_2",
             "value": "@data.debug.item_2.text",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_data_bottom.text_2",
             "_dynamicFields": {
@@ -46271,6 +47527,7 @@
           {
             "name": "text_3",
             "value": "This text is overridden directly in the value",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_data_bottom.text_3"
           }
@@ -46289,14 +47546,17 @@
         "type": "template",
         "name": "debug_data_middle",
         "value": "debug_data_middle",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "debug_data_bottom",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "text_2",
                 "value": "@data.debug.item_3.text",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_data_middle.debug_data_bottom.text_2",
                 "_dynamicFields": {
@@ -46318,6 +47578,7 @@
               {
                 "name": "text_3",
                 "value": "@data.debug.item_3.text",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_data_middle.debug_data_bottom.text_3",
                 "_dynamicFields": {
@@ -46339,6 +47600,7 @@
               {
                 "name": "text_4",
                 "value": "@data.debug.item_3.text",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_data_middle.debug_data_bottom.text_4",
                 "_dynamicFields": {
@@ -46375,6 +47637,7 @@
         "type": "text",
         "name": "text",
         "value": "This is the first template",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
@@ -46392,12 +47655,14 @@
             "_cleaned": "click | go_to:debug_go_to_2"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to_1"
       },
       {
         "type": "text",
         "name": "go_to_field",
         "value": "Value of debug_go_to_field: @fields.debug_go_to_field",
+        "exclude_from_translation": true,
         "_nested_name": "go_to_field",
         "_dynamicFields": {
           "value": [
@@ -46427,6 +47692,7 @@
         "type": "text",
         "name": "text",
         "value": "This is the second template",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
@@ -46445,6 +47711,7 @@
             "_cleaned": "changed | set_field:debug_go_to_field:@local.debug_text_box"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "debug_text_box",
         "_dynamicFields": {
           "value": [
@@ -46501,6 +47768,7 @@
         "type": "text",
         "name": "go_to_field",
         "value": "Value of debug_go_to_field: \nlocal: @local.debug_text_box;\nfield: @fields.debug_go_to_field",
+        "exclude_from_translation": true,
         "_nested_name": "go_to_field",
         "_dynamicFields": {
           "value": [
@@ -46542,6 +47810,7 @@
             "_cleaned": "click | go_to:debug_go_to_3"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to_1"
       },
       {
@@ -46559,6 +47828,7 @@
             "_cleaned": "click | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_completed"
       }
     ],
@@ -46573,6 +47843,7 @@
         "type": "text",
         "name": "text",
         "value": "This is the third template",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
@@ -46590,6 +47861,7 @@
             "_cleaned": "click | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_completed"
       }
     ],
@@ -46607,6 +47879,7 @@
           "name:name_var_2 | text:Second",
           "name:name_var_3 | text:Third"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
@@ -46614,11 +47887,13 @@
         "type": "text",
         "name": "text",
         "value": "This is the radio group debug template",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
         "type": "radio_group",
         "name": "radio_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -46652,6 +47927,7 @@
       {
         "name": "template_name",
         "value": "debug_radio_group",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "template_name"
       },
@@ -46659,10 +47935,12 @@
         "type": "template",
         "name": "debug_radio_group_1",
         "value": "debug_radio_group",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "This is the first instance of @local.template_name",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_radio_group_1.text",
             "_dynamicFields": {
@@ -46688,6 +47966,7 @@
               "name:name_var_2 | text:Second",
               "name:name_var_3 | text:Third"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_radio_group_1.answer_list"
           }
@@ -46698,10 +47977,12 @@
         "type": "template",
         "name": "debug_radio_group_2",
         "value": "debug_radio_group",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "This is the second instance of debug_radio_group",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_radio_group_2.text"
           },
@@ -46712,6 +47993,7 @@
               "name:name_var_5 | text:2",
               "name:name_var_6 | text:3"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_radio_group_2.answer_list"
           }
@@ -46729,6 +48011,7 @@
       {
         "name": "template_name",
         "value": "debug_radio_group",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "template_name"
       },
@@ -46739,6 +48022,7 @@
           "name:name_var_2 | text:Second",
           "name:name_var_3 | text:Third"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_1_list"
       },
@@ -46749,6 +48033,7 @@
           "name:name_var_2 | text:2",
           "name:name_var_3 | text:3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_2_list"
       },
@@ -46756,10 +48041,12 @@
         "type": "template",
         "name": "debug_radio_group_1",
         "value": "debug_radio_group",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "This is the first instance of @local.template_name",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_radio_group_1.text",
             "_dynamicFields": {
@@ -46783,6 +48070,7 @@
             "value": [
               "@local.answer_list_1_list"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_radio_group_1.answer_list",
             "_dynamicFields": {
@@ -46810,10 +48098,12 @@
         "type": "template",
         "name": "debug_radio_group_2",
         "value": "debug_radio_group",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "This is the second instance of debug_radio_group",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_radio_group_2.text"
           },
@@ -46822,6 +48112,7 @@
             "value": [
               "@local.answer_list_2_list"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_radio_group_2.answer_list",
             "_dynamicFields": {
@@ -46856,6 +48147,7 @@
       {
         "type": "slider",
         "name": "slider_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "title": "Slider 1"
         },
@@ -46865,6 +48157,7 @@
         "type": "text",
         "name": "text_1",
         "value": "local variable for slider 1: @local.slider_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -46897,6 +48190,7 @@
             "_cleaned": "changed | set_field:slider_2_field:@local.slider_2"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "title": "Slider 2"
         },
@@ -46945,6 +48239,7 @@
         "type": "text",
         "name": "text_2",
         "value": "local variable for slider 2: @local.slider_2",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -46966,6 +48261,7 @@
         "type": "text",
         "name": "text_3",
         "value": "field for slider 2: @field.slider_2_field",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -46997,12 +48293,14 @@
           "name:name_var_1 | text:First",
           "name:name_var_2 | text:Second"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
       {
         "type": "radio_group",
         "name": "radio_group_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -47029,6 +48327,7 @@
         "type": "text",
         "name": "text_1",
         "value": "local variable for radio group 1: @local.radio_group_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -47061,6 +48360,7 @@
             "_cleaned": "changed | set_field:radio_group_2_field:@local.radio_group_2"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -47122,6 +48422,7 @@
         "type": "text",
         "name": "text_2",
         "value": "local variable for radio group 2: @local.radio_group_2",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -47143,6 +48444,7 @@
         "type": "text",
         "name": "text_3",
         "value": "field for radio group 2: @field.radio_group_2_field",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -47175,18 +48477,21 @@
           "name: name_2 | text: This is text 2",
           "name: name_3 | text: This is text 3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
       {
         "name": "combo_box_2_var",
         "value": "combo_box_2_field",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "combo_box_2_var"
       },
       {
         "type": "combo_box",
         "name": "combo_box_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -47213,6 +48518,7 @@
         "type": "text",
         "name": "text_1",
         "value": "local variable for combo box 1: @local.combo_box_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -47245,6 +48551,7 @@
             "_cleaned": "changed | set_field:@local.combo_box_2_var:@local.combo_box_2"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -47331,6 +48638,7 @@
         "type": "text",
         "name": "text_2",
         "value": "Local variable for combo box 2: @local.combo_box_2",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -47352,6 +48660,7 @@
         "type": "text",
         "name": "text_3",
         "value": "field for combo box 2: @field.combo_box_2_field",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -47381,12 +48690,14 @@
         "type": "text",
         "name": "text",
         "value": "This text is followed by the template debug_go_to_nest_bottom",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
         "type": "template",
         "name": "name_debug_go_to_nest_bottom",
         "value": "debug_go_to_nest_bottom",
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "name_debug_go_to_nest_bottom"
       }
@@ -47413,6 +48724,7 @@
             "_cleaned": "click | go_to:example_emit"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button"
       }
     ],
@@ -47427,6 +48739,7 @@
         "type": "title",
         "name": "title",
         "value": "Title of debug_nesting_sheet_1",
+        "exclude_from_translation": true,
         "_nested_name": "title"
       }
     ],
@@ -47441,10 +48754,12 @@
         "type": "template",
         "name": "name_1",
         "value": "debug_nesting_sheet_1",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "title",
             "value": "This title was overwritten",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "name_1.title"
           }
@@ -47455,10 +48770,12 @@
         "type": "template",
         "name": "name_2",
         "value": "debug_nesting_sheet_1",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "title",
             "value": "This title was overwritten as well",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "name_2.title"
           }
@@ -47477,12 +48794,14 @@
         "type": "title",
         "name": "title",
         "value": "fail: title debug_nesting_sheet_2",
+        "exclude_from_translation": true,
         "_nested_name": "title"
       },
       {
         "type": "text",
         "name": "text",
         "value": "fail: text debug_nesting_sheet_2",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       }
     ],
@@ -47497,14 +48816,17 @@
         "type": "template",
         "name": "other_name",
         "value": "debug_test_1",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "name_1",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "title",
                 "value": "title for sheet 1 was overwritten twice",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "other_name.name_1.title"
               }
@@ -47526,10 +48848,12 @@
         "type": "template",
         "name": "debug_sheet_1a",
         "value": "debug_nesting_sheet_1",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "title",
             "value": "title for sheet 1a was overwritten",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_sheet_1a.title"
           }
@@ -47540,10 +48864,12 @@
         "type": "template",
         "name": "debug_sheet_2a",
         "value": "debug_nesting_sheet_2",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "title",
             "value": "title for sheet 2 was overwritten",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_sheet_2a.title"
           }
@@ -47554,10 +48880,12 @@
         "type": "template",
         "name": "debug_sheet_2b",
         "value": "debug_nesting_sheet_2",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "text for sheet 2 was overwritten",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_sheet_2b.text"
           }
@@ -47575,6 +48903,7 @@
       {
         "type": "text",
         "value": "Test 1",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text"
       },
@@ -47582,27 +48911,32 @@
         "type": "set_variable",
         "name": "test_1_text",
         "value": "success: test1 text",
+        "exclude_from_translation": true,
         "_nested_name": "test_1_text"
       },
       {
         "type": "template",
         "name": "debug_override_1",
         "value": "debug_nesting_override_1",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "template_wrapper",
             "value": "debug_nesting_sheet_2",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "title",
                 "value": "success: test1 title",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_override_1.template_wrapper.title"
               },
               {
                 "name": "text",
                 "value": "@local.test_1_text",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_override_1.template_wrapper.text",
                 "_dynamicFields": {
@@ -47630,6 +48964,7 @@
       {
         "type": "text",
         "value": "Test 2",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text"
       },
@@ -47637,22 +48972,26 @@
         "type": "set_variable",
         "name": "test_2_text",
         "value": "success: test2 text",
+        "exclude_from_translation": true,
         "_nested_name": "test_2_text"
       },
       {
         "type": "template",
         "name": "debug_sheet_2",
         "value": "debug_nesting_sheet_2",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "title",
             "value": "sucess: test2 title",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_sheet_2.title"
           },
           {
             "name": "text",
             "value": "@local.test_2_text",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_sheet_2.text",
             "_dynamicFields": {
@@ -47678,11 +49017,13 @@
         "type": "set_variable",
         "name": "test_3_text",
         "value": "success: text3_text",
+        "exclude_from_translation": true,
         "_nested_name": "test_3_text"
       },
       {
         "type": "text",
         "value": "Test 3",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text"
       },
@@ -47690,26 +49031,31 @@
         "type": "template",
         "name": "wrapper",
         "value": "debug_nesting_override_1",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "template_wrapper",
             "value": "debug_nesting_override_1",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "type": "nested_properties",
                 "name": "template_wrapper",
                 "value": "debug_nesting_sheet_2",
+                "exclude_from_translation": true,
                 "rows": [
                   {
                     "name": "title",
                     "value": "success: text3_title",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "wrapper.template_wrapper.template_wrapper.title"
                   },
                   {
                     "name": "text",
                     "value": "@local.test_3_text",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "wrapper.template_wrapper.template_wrapper.text",
                     "_dynamicFields": {
@@ -47763,28 +49109,33 @@
         "type": "template",
         "name": "example_pop_ups",
         "value": "example_pop_ups",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "This is template shows how buttons can be overwritten.",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_pop_ups.text_1"
           },
           {
             "name": "text_2",
             "value": "Button 1 has a new button text, but the action_list is unaltered.",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_pop_ups.text_2"
           },
           {
             "name": "button_pop_up_1",
             "value": "New Button 1 ",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_pop_ups.button_pop_up_1"
           },
           {
             "name": "text_3",
             "value": "Button 2 has an altered action_list. It now launches a simple text pop-up.",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_pop_ups.text_3"
           },
@@ -47801,12 +49152,14 @@
                 "_cleaned": "click | pop_up:example_text"
               }
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_pop_ups.button_pop_up_2"
           },
           {
             "name": "text_4",
             "value": "Button 3 is unaltered. ",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_pop_ups.text_4"
           }
@@ -47825,23 +49178,27 @@
         "type": "text",
         "name": "heading_1",
         "value": "TEST 1: Override template variables",
+        "exclude_from_translation": true,
         "_nested_name": "heading_1"
       },
       {
         "type": "template",
         "name": "two_texts_a",
         "value": "debug_two_texts",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "set_variable",
             "name": "child_local_variable",
             "value": "Success: nesting local variable",
+            "exclude_from_translation": true,
             "_nested_name": "two_texts_a.child_local_variable"
           },
           {
             "type": "set_variable",
             "name": "child_text_1",
             "value": "Success: text_1",
+            "exclude_from_translation": true,
             "_nested_name": "two_texts_a.child_text_1"
           }
         ],
@@ -47851,29 +49208,34 @@
         "type": "text",
         "name": "heading_2",
         "value": "TEST 2: Override template variables dynamic",
+        "exclude_from_translation": true,
         "_nested_name": "heading_2"
       },
       {
         "type": "set_variable",
         "name": "var_text_1",
         "value": "Success: text_1",
+        "exclude_from_translation": true,
         "_nested_name": "var_text_1"
       },
       {
         "type": "template",
         "name": "two_texts_b",
         "value": "debug_two_texts",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "set_variable",
             "name": "child_local_variable",
             "value": "Success: nesting local variable",
+            "exclude_from_translation": true,
             "_nested_name": "two_texts_b.child_local_variable"
           },
           {
             "type": "set_variable",
             "name": "child_text_1",
             "value": "@local.var_text_1",
+            "exclude_from_translation": true,
             "_nested_name": "two_texts_b.child_text_1",
             "_dynamicFields": {
               "value": [
@@ -47906,34 +49268,40 @@
         "type": "set_variable",
         "name": "var_text_1",
         "value": "Success: text_1",
+        "exclude_from_translation": true,
         "_nested_name": "var_text_1"
       },
       {
         "type": "text",
         "name": "heading_1",
         "value": "TEST 1 - Overwrite a general wrapper to display a named template",
+        "exclude_from_translation": true,
         "_nested_name": "heading_1"
       },
       {
         "type": "template",
         "name": "debug_wrapper_1",
         "value": "debug_wrapper",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "wrapper_template",
             "value": "debug_two_texts",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "type": "set_variable",
                 "name": "child_local_variable",
                 "value": "Success: nesting local variable",
+                "exclude_from_translation": true,
                 "_nested_name": "debug_wrapper_1.wrapper_template.child_local_variable"
               },
               {
                 "type": "set_variable",
                 "name": "child_text_1",
                 "value": "@local.var_text_1",
+                "exclude_from_translation": true,
                 "_nested_name": "debug_wrapper_1.wrapper_template.child_text_1",
                 "_dynamicFields": {
                   "value": [
@@ -47961,6 +49329,7 @@
         "type": "text",
         "name": "heading_2",
         "value": "The template below should match the template above, and has been set by 2 levels of nested_properties",
+        "exclude_from_translation": true,
         "condition": false,
         "_nested_name": "heading_2"
       },
@@ -47968,28 +49337,33 @@
         "type": "template",
         "name": "debug_wrapper_2",
         "value": "debug_wrapper",
+        "exclude_from_translation": true,
         "condition": false,
         "rows": [
           {
             "type": "nested_properties",
             "name": "wrapper_template",
             "value": "debug_wrapper",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "type": "nested_properties",
                 "name": "wrapper_template",
                 "value": "debug_two_texts",
+                "exclude_from_translation": true,
                 "rows": [
                   {
                     "type": "set_variable",
                     "name": "child_local_variable",
                     "value": "Success: nesting local variable",
+                    "exclude_from_translation": true,
                     "_nested_name": "debug_wrapper_2.wrapper_template.wrapper_template.child_local_variable"
                   },
                   {
                     "type": "set_variable",
                     "name": "child_text_1",
                     "value": "@local.var_text_1",
+                    "exclude_from_translation": true,
                     "_nested_name": "debug_wrapper_2.wrapper_template.wrapper_template.child_text_1",
                     "_dynamicFields": {
                       "value": [
@@ -48020,28 +49394,33 @@
         "type": "text",
         "name": "heading_3",
         "value": "The content below adds additional content to the template",
+        "exclude_from_translation": true,
         "_nested_name": "heading_3"
       },
       {
         "type": "template",
         "name": "debug_wrapper_1",
         "value": "debug_wrapper",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "wrapper_template",
             "value": "debug_two_texts",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "type": "set_variable",
                 "name": "child_local_variable",
                 "value": "Success: nesting local variable",
+                "exclude_from_translation": true,
                 "_nested_name": "debug_wrapper_1.wrapper_template.child_local_variable"
               },
               {
                 "type": "set_variable",
                 "name": "child_text_1",
                 "value": "@local.var_text_1",
+                "exclude_from_translation": true,
                 "_nested_name": "debug_wrapper_1.wrapper_template.child_text_1",
                 "_dynamicFields": {
                   "value": [
@@ -48077,12 +49456,14 @@
         "type": "text",
         "name": "heading_1",
         "value": "TEST 1: Conditional properties",
+        "exclude_from_translation": true,
         "_nested_name": "heading_1"
       },
       {
         "type": "set_variable",
         "name": "toggle_value",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "toggle_value"
       },
       {
@@ -48101,6 +49482,7 @@
             "_cleaned": "click | set_local : toggle_value:!@local.toggle_value"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "toggle_button",
         "_dynamicFields": {
           "value": [
@@ -48155,11 +49537,13 @@
         "type": "template",
         "name": "two_texts_a",
         "value": "debug_two_texts",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "set_variable",
             "name": "child_local_variable",
             "value": "Text variant 1 (toggle to change)",
+            "exclude_from_translation": true,
             "condition": "@local.toggle_value",
             "_nested_name": "two_texts_a.child_local_variable",
             "_dynamicFields": {
@@ -48182,6 +49566,7 @@
             "type": "set_variable",
             "name": "child_local_variable",
             "value": "Text variant 2 (toggle to change)",
+            "exclude_from_translation": true,
             "condition": "!@local.toggle_value",
             "_nested_name": "two_texts_a.child_local_variable",
             "_dynamicFields": {
@@ -48204,6 +49589,7 @@
             "type": "set_variable",
             "name": "child_text_1",
             "value": "Success: text_1",
+            "exclude_from_translation": true,
             "_nested_name": "two_texts_a.child_text_1"
           }
         ],
@@ -48220,12 +49606,14 @@
       {
         "name": "text_2",
         "value": "Success: text_2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "text_2"
       },
       {
         "name": "text_1_toggle",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "text_1_toggle"
       },
@@ -48233,6 +49621,7 @@
         "type": "text",
         "name": "var_toggle_text",
         "value": "The value of the toggle is: @local.text_1_toggle",
+        "exclude_from_translation": true,
         "_nested_name": "var_toggle_text",
         "_dynamicFields": {
           "value": [
@@ -48254,17 +49643,20 @@
         "type": "text",
         "name": "intro_1",
         "value": "The following template should change text_1 value depending on the value of a variable",
+        "exclude_from_translation": true,
         "_nested_name": "intro_1"
       },
       {
         "type": "template",
         "name": "direct_template_2",
         "value": "debug_two_texts",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "set_variable",
             "name": "child_text_1",
             "value": "Success: text_1 - toggle TRUE",
+            "exclude_from_translation": true,
             "condition": "@local.text_1_toggle",
             "_nested_name": "direct_template_2.child_text_1",
             "_dynamicFields": {
@@ -48287,6 +49679,7 @@
             "type": "set_variable",
             "name": "child_text_1",
             "value": "Success: text_1 - toggle FALSE",
+            "exclude_from_translation": true,
             "condition": "!@local.text_1_toggle",
             "_nested_name": "direct_template_2.child_text_1",
             "_dynamicFields": {
@@ -48309,6 +49702,7 @@
             "type": "set_variable",
             "name": "child_text_2",
             "value": "Expected: \"Success: text_2\"\nResult: @local.text_2",
+            "exclude_from_translation": true,
             "_nested_name": "direct_template_2.child_text_2",
             "_dynamicFields": {
               "value": [
@@ -48330,6 +49724,7 @@
             "type": "set_variable",
             "name": "child_local_variable",
             "value": "Success: nesting local variable",
+            "exclude_from_translation": true,
             "_nested_name": "direct_template_2.child_local_variable"
           }
         ],
@@ -48348,6 +49743,7 @@
             "_cleaned": "click | set_local | var_toggle: !@local.var_toggle"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "toggle text",
         "_dynamicFields": {
           "action_list": {
@@ -48388,6 +49784,7 @@
     "rows": [
       {
         "name": "child_local_variable",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "child_local_variable"
       },
@@ -48395,6 +49792,7 @@
         "type": "text",
         "name": "child_text_1",
         "value": "Failed: \"text_1\" has not been overwritten",
+        "exclude_from_translation": true,
         "_nested_name": "child_text_1"
       },
       {
@@ -48412,6 +49810,7 @@
             "_cleaned": "click | emit:@local.child_local_variable"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "key_1": "@local.child_local_variable"
         },
@@ -48487,12 +49886,14 @@
       {
         "name": "var_text_2",
         "value": "This is text_2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_text_2"
       },
       {
         "name": "var_text_4",
         "value": "This is text_4",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_text_4"
       },
@@ -48500,16 +49901,19 @@
         "type": "template",
         "name": "debug_two_texts",
         "value": "debug_two_texts",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "child_text_1",
             "value": "This is text_1 overridden directly in the value",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_two_texts.child_text_1"
           },
           {
             "name": "child_text_2",
             "value": "@global.teen_girl_1 overridden by calling a variable",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_two_texts.child_text_2",
             "_dynamicFields": {
@@ -48535,12 +49939,14 @@
         "type": "text",
         "name": "text_3",
         "value": "This is text_3 written directly in the value",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
         "type": "text",
         "name": "text_4",
         "value": "@local.var_text_4 calling a variable",
+        "exclude_from_translation": true,
         "_nested_name": "text_4",
         "_dynamicFields": {
           "value": [
@@ -48570,12 +49976,14 @@
         "type": "set_variable",
         "name": "var_counter",
         "value": 1,
+        "exclude_from_translation": true,
         "_nested_name": "var_counter"
       },
       {
         "type": "set_variable",
         "name": "var_counter_calc",
         "value": "10*@local.var_counter",
+        "exclude_from_translation": true,
         "_nested_name": "var_counter_calc",
         "_dynamicFields": {
           "value": [
@@ -48597,6 +50005,7 @@
         "type": "set_variable",
         "name": "var_counter_addition",
         "value": "@local.var_counter + @local.var_counter",
+        "exclude_from_translation": true,
         "_nested_name": "var_counter_addition",
         "_dynamicFields": {
           "value": [
@@ -48625,6 +50034,7 @@
         "type": "set_variable",
         "name": "var_bool_true",
         "value": "@data.debug_vars.bool_true.value",
+        "exclude_from_translation": true,
         "_nested_name": "var_bool_true",
         "_dynamicFields": {
           "value": [
@@ -48646,6 +50056,7 @@
         "type": "set_variable",
         "name": "var_recursive_lookup",
         "value": "@local.var_bool_true",
+        "exclude_from_translation": true,
         "_nested_name": "var_recursive_lookup",
         "_dynamicFields": {
           "value": [
@@ -48667,6 +50078,7 @@
         "type": "set_variable",
         "name": "var_bool_false",
         "value": "@data.debug_vars.bool_false.value",
+        "exclude_from_translation": true,
         "_nested_name": "var_bool_false",
         "_dynamicFields": {
           "value": [
@@ -48688,6 +50100,7 @@
         "type": "set_variable",
         "name": "var_number_0",
         "value": "@data.debug_vars.number_0.value",
+        "exclude_from_translation": true,
         "_nested_name": "var_number_0",
         "_dynamicFields": {
           "value": [
@@ -48711,6 +50124,7 @@
         "value": [
           "@data.debug_vars.list_1.value_list"
         ],
+        "exclude_from_translation": true,
         "_nested_name": "var_list_1",
         "_dynamicFields": {
           "value": {
@@ -48736,6 +50150,7 @@
         "value": [
           "@local.var_list_1.length"
         ],
+        "exclude_from_translation": true,
         "_nested_name": "var_list_1_length",
         "_dynamicFields": {
           "value": {
@@ -48759,6 +50174,7 @@
         "type": "set_variable",
         "name": "var_text_1",
         "value": "@data.debug_vars.text_1.value",
+        "exclude_from_translation": true,
         "_nested_name": "var_text_1",
         "_dynamicFields": {
           "value": [
@@ -48786,12 +50202,14 @@
             }
           }
         },
+        "exclude_from_translation": true,
         "_nested_name": "var_collection_1"
       },
       {
         "type": "set_variable",
         "name": "global_text",
         "value": "@global.debug_variable_1",
+        "exclude_from_translation": true,
         "_nested_name": "global_text",
         "_dynamicFields": {
           "value": [
@@ -48813,6 +50231,7 @@
         "type": "text",
         "name": "text_2",
         "value": "List length Test: @local.var_list_1_length",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -48834,6 +50253,7 @@
         "type": "text",
         "name": "text_4wrong",
         "value": "Expected fail calculation: 10*@local.var_counter",
+        "exclude_from_translation": true,
         "_nested_name": "text_4wrong",
         "_dynamicFields": {
           "value": [
@@ -48855,6 +50275,7 @@
         "type": "text",
         "name": "text_4right",
         "value": "Expected pass calculation: @local.var_counter_calc",
+        "exclude_from_translation": true,
         "_nested_name": "text_4right",
         "_dynamicFields": {
           "value": [
@@ -48876,12 +50297,14 @@
         "type": "text",
         "name": "text_5",
         "value": "Basic Text",
+        "exclude_from_translation": true,
         "_nested_name": "text_5"
       },
       {
         "type": "text",
         "name": "text_6",
         "value": "Multiple values: @local.var_bool_true and @local.var_bool_false",
+        "exclude_from_translation": true,
         "_nested_name": "text_6",
         "_dynamicFields": {
           "value": [
@@ -48912,6 +50335,7 @@
         "type": "text",
         "name": "text_7",
         "value": "Recursive lookup: @local.var_recursive_lookup",
+        "exclude_from_translation": true,
         "_nested_name": "text_7",
         "_dynamicFields": {
           "value": [
@@ -48945,6 +50369,7 @@
             "_cleaned": "click | set_local:var_counter:@local.var_counter+ 1"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_number_1_increment",
         "_dynamicFields": {
           "value": [
@@ -48999,12 +50424,14 @@
         "type": "text",
         "name": "text_7",
         "value": "TODO - nested rows",
+        "exclude_from_translation": true,
         "_nested_name": "text_7"
       },
       {
         "type": "text",
         "name": "text_8",
         "value": "Expected: global.debug_variable_1 lookup\nResult: @local.global_text",
+        "exclude_from_translation": true,
         "_nested_name": "text_8",
         "_dynamicFields": {
           "value": [
@@ -49026,6 +50453,7 @@
         "type": "text",
         "name": "text_9",
         "value": "Global text test: @global.debug_variable_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_9",
         "_dynamicFields": {
           "value": [
@@ -49054,10 +50482,12 @@
       {
         "type": "template",
         "name": "wrapper_template",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "No text to display in wrapper_template",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "wrapper_template.text_1"
           }
@@ -49076,27 +50506,28 @@
         "type": "title",
         "name": "title_unordered",
         "value": "This is a bulleted list",
+        "exclude_from_translation": true,
         "_nested_name": "title_unordered"
       },
       {
         "type": "text",
         "name": "text_unordered",
         "value": "These are some ideas you can try:\n\n- first idea\n- second idea\n- third idea",
-        "parameter_list": {
-          "style": "marked"
-        },
+        "exclude_from_translation": true,
         "_nested_name": "text_unordered"
       },
       {
         "type": "title",
         "name": "title_ordered",
         "value": "This should be a numbered list",
+        "exclude_from_translation": true,
         "_nested_name": "title_ordered"
       },
       {
         "type": "text",
         "name": "text_ordered",
         "value": "These are some ideas you can try:\n\n- first idea\n- second idea\n- third idea",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "numbered"
         },
@@ -49106,12 +50537,14 @@
         "type": "title",
         "name": "title_ordered",
         "value": "This should be a numbered list",
+        "exclude_from_translation": true,
         "_nested_name": "title_ordered"
       },
       {
         "type": "text",
         "name": "text_ordered2",
         "value": "- first idea\n- second idea\n- third idea",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "numbered"
         },
@@ -49140,6 +50573,7 @@
             "_cleaned": "click | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button"
       }
     ],
@@ -49153,12 +50587,14 @@
       {
         "name": "field_1",
         "value": "debug_actions_middle_1",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "field_1"
       },
       {
         "name": "value_1",
         "value": "Value 1",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "value_1"
       },
@@ -49166,6 +50602,7 @@
         "type": "text",
         "name": "text_1",
         "value": "Set the field debug_actions_middle_1 through a local variable",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
@@ -49193,6 +50630,7 @@
             "_cleaned": "completed | emit: completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "debug_actions_bottom_1",
         "_dynamicFields": {
@@ -49264,6 +50702,7 @@
         "type": "text",
         "name": "text_2",
         "value": "Set the field debug_actions_middle_2 directly",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
@@ -49291,6 +50730,7 @@
             "_cleaned": "completed | emit: completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "debug_actions_bottom_2"
       }
@@ -49306,22 +50746,26 @@
         "type": "title",
         "name": "title_0",
         "value": "Example 0",
+        "exclude_from_translation": true,
         "_nested_name": "title_0"
       },
       {
         "type": "template",
         "name": "debug_actions_middle_0",
         "value": "debug_actions_middle",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "Do not override the action list",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_actions_middle_0.text_1"
           },
           {
             "name": "text_2",
             "value": "Do not override the action list",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_actions_middle_0.text_2"
           }
@@ -49332,16 +50776,19 @@
         "type": "title",
         "name": "title_1",
         "value": "Example 1",
+        "exclude_from_translation": true,
         "_nested_name": "title_1"
       },
       {
         "type": "template",
         "name": "debug_actions_middle_1",
         "value": "debug_actions_middle",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "Set the field debug_actions_top_1 ",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_actions_middle_1.text_1"
           },
@@ -49360,12 +50807,14 @@
                 "_cleaned": "completed | set_field: debug_actions_top_1 : Value 1"
               }
             ],
+            "exclude_from_translation": true,
             "rows": [],
             "_nested_name": "debug_actions_middle_1.debug_actions_bottom_1"
           },
           {
             "name": "text_2",
             "value": "Set the field debug_actions_top_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_actions_middle_1.text_2"
           },
@@ -49384,6 +50833,7 @@
                 "_cleaned": "completed | set_field: debug_actions_top_2 : Value 2"
               }
             ],
+            "exclude_from_translation": true,
             "rows": [],
             "_nested_name": "debug_actions_middle_1.debug_actions_bottom_2"
           }
@@ -49394,16 +50844,19 @@
         "type": "title",
         "name": "title_2",
         "value": "Example 2",
+        "exclude_from_translation": true,
         "_nested_name": "title_2"
       },
       {
         "type": "template",
         "name": "debug_actions_middle_2",
         "value": "debug_actions_middle",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "Set the field debug_actions_top_3 and emit completed",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_actions_middle_2.text_1"
           },
@@ -49431,12 +50884,14 @@
                 "_cleaned": "completed | emit: completed"
               }
             ],
+            "exclude_from_translation": true,
             "rows": [],
             "_nested_name": "debug_actions_middle_2.debug_actions_bottom_1"
           },
           {
             "name": "text_2",
             "value": "Set the field debug_actions_top_4 and emit completed",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_actions_middle_2.text_2"
           },
@@ -49464,6 +50919,7 @@
                 "_cleaned": "completed | emit: completed"
               }
             ],
+            "exclude_from_translation": true,
             "rows": [],
             "_nested_name": "debug_actions_middle_2.debug_actions_bottom_2"
           }
@@ -49474,16 +50930,19 @@
         "type": "title",
         "name": "title_3",
         "value": "Example 3",
+        "exclude_from_translation": true,
         "_nested_name": "title_3"
       },
       {
         "type": "template",
         "name": "debug_actions_middle_3",
         "value": "debug_actions_middle",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "Emit completed",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_actions_middle_3.text_1"
           },
@@ -49501,12 +50960,14 @@
                 "_cleaned": "completed | emit: completed"
               }
             ],
+            "exclude_from_translation": true,
             "rows": [],
             "_nested_name": "debug_actions_middle_3.debug_actions_bottom_1"
           },
           {
             "name": "text_2",
             "value": "Emit completed",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_actions_middle_3.text_2"
           },
@@ -49524,6 +50985,7 @@
                 "_cleaned": "completed | emit: completed"
               }
             ],
+            "exclude_from_translation": true,
             "rows": [],
             "_nested_name": "debug_actions_middle_3.debug_actions_bottom_2"
           }
@@ -49542,6 +51004,7 @@
         "type": "text",
         "name": "text_1",
         "value": "@global.debug_item_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -49563,6 +51026,7 @@
         "type": "text",
         "name": "text_2",
         "value": "@global.debug_item_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -49584,6 +51048,7 @@
         "type": "text",
         "name": "text_3",
         "value": "@global.debug_item_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -49605,6 +51070,7 @@
         "type": "text",
         "name": "text_4",
         "value": "@global.debug_item_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_4",
         "_dynamicFields": {
           "value": [
@@ -49626,24 +51092,28 @@
         "type": "text",
         "name": "text_5",
         "value": "This text is directly authored in the value",
+        "exclude_from_translation": true,
         "_nested_name": "text_5"
       },
       {
         "type": "text",
         "name": "text_6",
         "value": "This text is directly authored in the value",
+        "exclude_from_translation": true,
         "_nested_name": "text_6"
       },
       {
         "type": "text",
         "name": "text_7",
         "value": "This text is directly authored in the value",
+        "exclude_from_translation": true,
         "_nested_name": "text_7"
       },
       {
         "type": "text",
         "name": "text_8",
         "value": "This text is directly authored in the value",
+        "exclude_from_translation": true,
         "_nested_name": "text_8"
       }
     ],
@@ -49658,10 +51128,12 @@
         "type": "template",
         "name": "debug_global_bottom",
         "value": "debug_global_bottom",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_2",
             "value": "@global.debug_item_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_global_bottom.text_2",
             "_dynamicFields": {
@@ -49683,6 +51155,7 @@
           {
             "name": "text_3",
             "value": "@global.debug_item_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_global_bottom.text_3",
             "_dynamicFields": {
@@ -49704,12 +51177,14 @@
           {
             "name": "text_4",
             "value": "This text is overridden directly in the value",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_global_bottom.text_4"
           },
           {
             "name": "text_6",
             "value": "@global.debug_item_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_global_bottom.text_6",
             "_dynamicFields": {
@@ -49731,6 +51206,7 @@
           {
             "name": "text_7",
             "value": "@global.debug_item_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_global_bottom.text_7",
             "_dynamicFields": {
@@ -49752,6 +51228,7 @@
           {
             "name": "text_8",
             "value": "This text is overridden directly in the value",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "debug_global_bottom.text_8"
           }
@@ -49770,14 +51247,17 @@
         "type": "template",
         "name": "debug_global_middle",
         "value": "debug_global_middle",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "debug_global_bottom",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "text_1",
                 "value": "@global.debug_item_3",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_global_middle.debug_global_bottom.text_1",
                 "_dynamicFields": {
@@ -49799,6 +51279,7 @@
               {
                 "name": "text_2",
                 "value": "@global.debug_item_3",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_global_middle.debug_global_bottom.text_2",
                 "_dynamicFields": {
@@ -49820,12 +51301,14 @@
               {
                 "name": "text_3",
                 "value": "This text is overridden directly in the value",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_global_middle.debug_global_bottom.text_3"
               },
               {
                 "name": "text_4",
                 "value": "@global.debug_item_3",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_global_middle.debug_global_bottom.text_4",
                 "_dynamicFields": {
@@ -49847,6 +51330,7 @@
               {
                 "name": "text_5",
                 "value": "@global.debug_item_3",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_global_middle.debug_global_bottom.text_5",
                 "_dynamicFields": {
@@ -49868,6 +51352,7 @@
               {
                 "name": "text_6",
                 "value": "@global.debug_item_3",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_global_middle.debug_global_bottom.text_6",
                 "_dynamicFields": {
@@ -49889,12 +51374,14 @@
               {
                 "name": "text_7",
                 "value": "This text is overridden directly in the value",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_global_middle.debug_global_bottom.text_7"
               },
               {
                 "name": "text_8",
                 "value": "@global.debug_item_3",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "debug_global_middle.debug_global_bottom.text_8",
                 "_dynamicFields": {
@@ -49930,6 +51417,7 @@
       {
         "name": "template_name",
         "value": "example_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "template_name"
       },
@@ -49937,6 +51425,7 @@
         "type": "text",
         "name": "text_1",
         "value": "Button 1 pops up the template example_text directly",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
@@ -49954,12 +51443,14 @@
             "_cleaned": "click | pop_up:example_text"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_pop_up_1"
       },
       {
         "type": "text",
         "name": "text_2",
         "value": "Button 2 pops up the template example_text using a local variable \"template_name\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
@@ -49977,6 +51468,7 @@
             "_cleaned": "click | pop_up:@local.template_name"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_pop_up_2",
         "_dynamicFields": {
           "action_list": {
@@ -50030,23 +51522,27 @@
         "type": "set_field",
         "name": "relax_3_favourite",
         "value": false,
+        "exclude_from_translation": true,
         "_nested_name": "relax_3_favourite"
       },
       {
         "type": "set_field",
         "name": "which_relax",
         "value": "relax_3",
+        "exclude_from_translation": true,
         "_nested_name": "which_relax"
       },
       {
         "name": "favourite",
         "value": "_favourite",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "favourite"
       },
       {
         "name": "relax",
         "value": "@field.which_relax",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "relax",
         "_dynamicFields": {
@@ -50068,6 +51564,7 @@
       {
         "name": "relax_favourite",
         "value": "@local.relax@local.favourite",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "relax_favourite",
         "_dynamicFields": {
@@ -50099,6 +51596,7 @@
         "type": "text",
         "name": "text_1",
         "value": "@local.relax_favourite",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -50120,6 +51618,7 @@
         "type": "text",
         "name": "text_2",
         "value": "This is @field.@local.relax_favourite",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -50141,6 +51640,7 @@
         "type": "text",
         "name": "text_3",
         "value": "@field.@local.relax@local.favourite",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -50183,6 +51683,7 @@
             "_cleaned": "changed | set_field:@local.relax_favourite:@local.checkbox_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label_text": "checkbox 1"
         },
@@ -50265,6 +51766,7 @@
         "type": "text",
         "name": "local_text_1",
         "value": "checkbox local: @local.checkbox_1",
+        "exclude_from_translation": true,
         "_nested_name": "local_text_1",
         "_dynamicFields": {
           "value": [
@@ -50298,6 +51800,7 @@
             "_cleaned": "changed | set_field:relax_3_favourite:@local.checkbox_2"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label_text": "checkbox 2"
         },
@@ -50357,6 +51860,7 @@
         "type": "text",
         "name": "local_text_2",
         "value": "checkbox local: @local.checkbox_2",
+        "exclude_from_translation": true,
         "_nested_name": "local_text_2",
         "_dynamicFields": {
           "value": [
@@ -50389,6 +51893,7 @@
             "_cleaned": "changed | set_field:relax_3_favourite:@local.checkbox_3"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label_text": "checkbox 3"
         },
@@ -50437,6 +51942,7 @@
         "type": "text",
         "name": "local_text_3",
         "value": "checkbox local: @local.checkbox_3",
+        "exclude_from_translation": true,
         "_nested_name": "local_text_3",
         "_dynamicFields": {
           "value": [
@@ -50469,6 +51975,7 @@
             "_cleaned": "changed | set_field:@local.relax_favourite:@local.checkbox_4"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label_text": "checkbox 4"
         },
@@ -50542,6 +52049,7 @@
         "type": "text",
         "name": "local_text_4",
         "value": "checkbox local: @local.checkbox_4",
+        "exclude_from_translation": true,
         "_nested_name": "local_text_4",
         "_dynamicFields": {
           "value": [
@@ -50562,6 +52070,7 @@
       {
         "type": "animated_section",
         "name": "dave",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "simple_checkbox",
@@ -50578,6 +52087,7 @@
                 "_cleaned": "changed | set_field:checkbox_a_s_test:@local.checkbox_5"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "label_text": "checkbox 5"
             },
@@ -50629,6 +52139,7 @@
         "type": "text",
         "name": "text_5",
         "value": "the local for checkbox 5 in animates section is @local.checkbox_5 and the field is @fields.checkbox_a_s_test",
+        "exclude_from_translation": true,
         "_nested_name": "text_5",
         "_dynamicFields": {
           "value": [
@@ -50667,19 +52178,15 @@
         "type": "title",
         "name": "title",
         "value": "Parent",
+        "exclude_from_translation": true,
         "_nested_name": "title"
       },
       {
         "type": "text",
-        "name": "text_1",
-        "value": "Changing either child input should update the other sibling",
-        "_nested_name": "text_1"
-      },
-      {
-        "type": "text",
-        "name": "text_2",
+        "name": "text",
         "value": "Value of test_render_updates_field: \nfield: @fields.test_render_updates_field",
-        "_nested_name": "text_2",
+        "exclude_from_translation": true,
+        "_nested_name": "text",
         "_dynamicFields": {
           "value": [
             {
@@ -50700,28 +52207,32 @@
         "type": "template",
         "name": "debug_render_child",
         "value": "debug_render_child",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
-            "name": "debug_render_grandchild_3",
+            "name": "debug_render_grandchild_2b",
             "value": "debug_render_grandchild_2",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "title",
-                "value": "Grandchild 3",
+                "value": "Grandchild 2b",
+                "exclude_from_translation": true,
                 "type": "set_variable",
-                "_nested_name": "debug_render_child.debug_render_grandchild_3.title"
+                "_nested_name": "debug_render_child.debug_render_grandchild_2b.title"
               },
               {
                 "name": "text_3",
                 "value": "(parent) selected no",
-                "hidden": "\"@fields.test_render_updates_field\"==\"yes\"",
+                "hidden": "\"@fields.test_render_updates_field\"!=\"no\"",
+                "exclude_from_translation": true,
                 "type": "set_variable",
-                "_nested_name": "debug_render_child.debug_render_grandchild_3.text_3",
+                "_nested_name": "debug_render_child.debug_render_grandchild_2b.text_3",
                 "_dynamicFields": {
                   "hidden": [
                     {
-                      "fullExpression": "\"@fields.test_render_updates_field\"==\"yes\"",
+                      "fullExpression": "\"@fields.test_render_updates_field\"!=\"no\"",
                       "matchedExpression": "@fields.test_render_updates_field",
                       "type": "fields",
                       "fieldName": "test_render_updates_field"
@@ -50737,13 +52248,14 @@
               {
                 "name": "text_4",
                 "value": "(parent) selected yes",
-                "hidden": "\"@fields.test_render_updates_field\"==\"no\"",
+                "hidden": "\"@fields.test_render_updates_field\"!=\"yes\"",
+                "exclude_from_translation": true,
                 "type": "set_variable",
-                "_nested_name": "debug_render_child.debug_render_grandchild_3.text_4",
+                "_nested_name": "debug_render_child.debug_render_grandchild_2b.text_4",
                 "_dynamicFields": {
                   "hidden": [
                     {
-                      "fullExpression": "\"@fields.test_render_updates_field\"==\"no\"",
+                      "fullExpression": "\"@fields.test_render_updates_field\"!=\"yes\"",
                       "matchedExpression": "@fields.test_render_updates_field",
                       "type": "fields",
                       "fieldName": "test_render_updates_field"
@@ -50755,56 +52267,57 @@
                     "hidden"
                   ]
                 }
-              }
-            ],
-            "_nested_name": "debug_render_child.debug_render_grandchild_3"
-          },
-          {
-            "type": "nested_properties",
-            "name": "debug_render_grandchild_4",
-            "value": "example_text",
-            "hidden": "\"@fields.test_render_updates_field\"==\"yes\"",
-            "rows": [
+              },
               {
-                "name": "text",
-                "value": "(parent) Grandchild 4 - selected no",
+                "name": "text_5",
+                "value": "(parent) Value of test_render_updates_field: @fields.test_render_updates_field",
+                "exclude_from_translation": true,
                 "type": "set_variable",
-                "_nested_name": "debug_render_child.debug_render_grandchild_4.text"
-              }
-            ],
-            "_nested_name": "debug_render_child.debug_render_grandchild_4",
-            "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "\"@fields.test_render_updates_field\"==\"yes\"",
-                  "matchedExpression": "@fields.test_render_updates_field",
-                  "type": "fields",
-                  "fieldName": "test_render_updates_field"
+                "_nested_name": "debug_render_child.debug_render_grandchild_2b.text_5",
+                "_dynamicFields": {
+                  "value": [
+                    {
+                      "fullExpression": "(parent) Value of test_render_updates_field: @fields.test_render_updates_field",
+                      "matchedExpression": "@fields.test_render_updates_field",
+                      "type": "fields",
+                      "fieldName": "test_render_updates_field"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@fields.test_render_updates_field": [
+                    "value"
+                  ]
                 }
-              ]
-            },
-            "_dynamicDependencies": {
-              "@fields.test_render_updates_field": [
-                "hidden"
-              ]
-            }
+              }
+            ],
+            "_nested_name": "debug_render_child.debug_render_grandchild_2b"
           },
           {
             "type": "nested_properties",
-            "name": "debug_render_grandchild_5",
-            "value": "example_text",
-            "hidden": "\"@fields.test_render_updates_field\"==\"no\"",
+            "name": "debug_render_grandchild_3b",
+            "value": "example_title_text",
+            "condition": "\"@fields.test_render_updates_field\"==\"no\"",
+            "exclude_from_translation": true,
             "rows": [
               {
-                "name": "text",
-                "value": "(parent) Grandchild 5 - selected yes",
+                "name": "title",
+                "value": "Grandchild 3b",
+                "exclude_from_translation": true,
                 "type": "set_variable",
-                "_nested_name": "debug_render_child.debug_render_grandchild_5.text"
+                "_nested_name": "debug_render_child.debug_render_grandchild_3b.title"
+              },
+              {
+                "name": "text",
+                "value": "(parent) selected no",
+                "exclude_from_translation": true,
+                "type": "set_variable",
+                "_nested_name": "debug_render_child.debug_render_grandchild_3b.text"
               }
             ],
-            "_nested_name": "debug_render_child.debug_render_grandchild_5",
+            "_nested_name": "debug_render_child.debug_render_grandchild_3b",
             "_dynamicFields": {
-              "hidden": [
+              "condition": [
                 {
                   "fullExpression": "\"@fields.test_render_updates_field\"==\"no\"",
                   "matchedExpression": "@fields.test_render_updates_field",
@@ -50815,7 +52328,46 @@
             },
             "_dynamicDependencies": {
               "@fields.test_render_updates_field": [
-                "hidden"
+                "condition"
+              ]
+            }
+          },
+          {
+            "type": "nested_properties",
+            "name": "debug_render_grandchild_4b",
+            "value": "example_title_text",
+            "condition": "\"@fields.test_render_updates_field\"==\"yes\"",
+            "exclude_from_translation": true,
+            "rows": [
+              {
+                "name": "title",
+                "value": "Grandchild 4b",
+                "exclude_from_translation": true,
+                "type": "set_variable",
+                "_nested_name": "debug_render_child.debug_render_grandchild_4b.title"
+              },
+              {
+                "name": "text",
+                "value": "(parent) selected yes",
+                "exclude_from_translation": true,
+                "type": "set_variable",
+                "_nested_name": "debug_render_child.debug_render_grandchild_4b.text"
+              }
+            ],
+            "_nested_name": "debug_render_child.debug_render_grandchild_4b",
+            "_dynamicFields": {
+              "condition": [
+                {
+                  "fullExpression": "\"@fields.test_render_updates_field\"==\"yes\"",
+                  "matchedExpression": "@fields.test_render_updates_field",
+                  "type": "fields",
+                  "fieldName": "test_render_updates_field"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@fields.test_render_updates_field": [
+                "condition"
               ]
             }
           }
@@ -50834,30 +52386,41 @@
         "type": "title",
         "name": "title",
         "value": "Child",
+        "exclude_from_translation": true,
         "_nested_name": "title"
       },
       {
         "type": "template",
         "name": "debug_render_grandchild_1",
         "value": "debug_render_grandchild_1",
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "debug_render_grandchild_1"
       },
       {
         "type": "template",
-        "name": "debug_render_grandchild_2",
+        "name": "debug_render_grandchild_2a",
         "value": "debug_render_grandchild_2",
+        "exclude_from_translation": true,
         "rows": [
           {
-            "type": "text",
+            "name": "title",
+            "value": "Grandchild 2a",
+            "exclude_from_translation": true,
+            "type": "set_variable",
+            "_nested_name": "debug_render_grandchild_2a.title"
+          },
+          {
             "name": "text_3",
             "value": "(child) selected no",
-            "hidden": "\"@fields.test_render_updates_field\"==\"yes\"",
-            "_nested_name": "debug_render_grandchild_2.text_3",
+            "hidden": "\"@fields.test_render_updates_field\"!=\"no\"",
+            "exclude_from_translation": true,
+            "type": "set_variable",
+            "_nested_name": "debug_render_grandchild_2a.text_3",
             "_dynamicFields": {
               "hidden": [
                 {
-                  "fullExpression": "\"@fields.test_render_updates_field\"==\"yes\"",
+                  "fullExpression": "\"@fields.test_render_updates_field\"!=\"no\"",
                   "matchedExpression": "@fields.test_render_updates_field",
                   "type": "fields",
                   "fieldName": "test_render_updates_field"
@@ -50871,15 +52434,16 @@
             }
           },
           {
-            "type": "text",
             "name": "text_4",
             "value": "(child) selected yes",
-            "hidden": "\"@fields.test_render_updates_field\"==\"no\"",
-            "_nested_name": "debug_render_grandchild_2.text_4",
+            "hidden": "\"@fields.test_render_updates_field\"!=\"yes\"",
+            "exclude_from_translation": true,
+            "type": "set_variable",
+            "_nested_name": "debug_render_grandchild_2a.text_4",
             "_dynamicFields": {
               "hidden": [
                 {
-                  "fullExpression": "\"@fields.test_render_updates_field\"==\"no\"",
+                  "fullExpression": "\"@fields.test_render_updates_field\"!=\"yes\"",
                   "matchedExpression": "@fields.test_render_updates_field",
                   "type": "fields",
                   "fieldName": "test_render_updates_field"
@@ -50893,10 +52457,11 @@
             }
           },
           {
-            "type": "text",
             "name": "text_5",
             "value": "(child) Value of test_render_updates_field: @fields.test_render_updates_field",
-            "_nested_name": "debug_render_grandchild_2.text_5",
+            "exclude_from_translation": true,
+            "type": "set_variable",
+            "_nested_name": "debug_render_grandchild_2a.text_5",
             "_dynamicFields": {
               "value": [
                 {
@@ -50914,32 +52479,42 @@
             }
           }
         ],
-        "_nested_name": "debug_render_grandchild_2"
+        "_nested_name": "debug_render_grandchild_2a"
       },
       {
         "type": "template",
-        "name": "debug_render_grandchild_3",
+        "name": "debug_render_grandchild_2b",
+        "exclude_from_translation": true,
         "rows": [],
-        "_nested_name": "debug_render_grandchild_3"
+        "_nested_name": "debug_render_grandchild_2b"
       },
       {
         "type": "template",
-        "name": "debug_render_grandchild_4",
-        "value": "example_text",
-        "hidden": "\"@fields.test_render_updates_field\"==\"yes\"",
+        "name": "debug_render_grandchild_3a",
+        "value": "example_title_text",
+        "hidden": "\"@fields.test_render_updates_field\"!=\"no\"",
+        "exclude_from_translation": true,
         "rows": [
           {
-            "name": "text",
-            "value": "(child) Grandchild 4 - selected no",
+            "name": "title",
+            "value": "Grandchild 3a",
+            "exclude_from_translation": true,
             "type": "set_variable",
-            "_nested_name": "debug_render_grandchild_4.text"
+            "_nested_name": "debug_render_grandchild_3a.title"
+          },
+          {
+            "name": "text",
+            "value": "(child) selected no",
+            "exclude_from_translation": true,
+            "type": "set_variable",
+            "_nested_name": "debug_render_grandchild_3a.text"
           }
         ],
-        "_nested_name": "debug_render_grandchild_4",
+        "_nested_name": "debug_render_grandchild_3a",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@fields.test_render_updates_field\"==\"yes\"",
+              "fullExpression": "\"@fields.test_render_updates_field\"!=\"no\"",
               "matchedExpression": "@fields.test_render_updates_field",
               "type": "fields",
               "fieldName": "test_render_updates_field"
@@ -50954,22 +52529,38 @@
       },
       {
         "type": "template",
-        "name": "debug_render_grandchild_5",
-        "value": "example_text",
-        "hidden": "\"@fields.test_render_updates_field\"==\"no\"",
+        "name": "debug_render_grandchild_3b",
+        "exclude_from_translation": true,
+        "rows": [],
+        "_nested_name": "debug_render_grandchild_3b"
+      },
+      {
+        "type": "template",
+        "name": "debug_render_grandchild_4a",
+        "value": "example_title_text",
+        "hidden": "\"@fields.test_render_updates_field\"!=\"yes\"",
+        "exclude_from_translation": true,
         "rows": [
           {
-            "name": "text",
-            "value": "(child) Grandchild 5 - selected yes",
+            "name": "title",
+            "value": "Grandchild 4a",
+            "exclude_from_translation": true,
             "type": "set_variable",
-            "_nested_name": "debug_render_grandchild_5.text"
+            "_nested_name": "debug_render_grandchild_4a.title"
+          },
+          {
+            "name": "text",
+            "value": "(child) selected yes",
+            "exclude_from_translation": true,
+            "type": "set_variable",
+            "_nested_name": "debug_render_grandchild_4a.text"
           }
         ],
-        "_nested_name": "debug_render_grandchild_5",
+        "_nested_name": "debug_render_grandchild_4a",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@fields.test_render_updates_field\"==\"no\"",
+              "fullExpression": "\"@fields.test_render_updates_field\"!=\"yes\"",
               "matchedExpression": "@fields.test_render_updates_field",
               "type": "fields",
               "fieldName": "test_render_updates_field"
@@ -50981,6 +52572,13 @@
             "hidden"
           ]
         }
+      },
+      {
+        "type": "template",
+        "name": "debug_render_grandchild_4b",
+        "exclude_from_translation": true,
+        "rows": [],
+        "_nested_name": "debug_render_grandchild_4b"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild.xlsx"
@@ -50994,6 +52592,7 @@
         "type": "title",
         "name": "title",
         "value": "Grandchild 1",
+        "exclude_from_translation": true,
         "_nested_name": "title"
       },
       {
@@ -51002,12 +52601,14 @@
           "name: yes | text: Yes",
           "name: no | text: No"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_1"
       },
       {
         "type": "radio_group",
         "name": "radio_group",
+        "value": "@fields.test_render_updates_field",
         "action_list": [
           {
             "trigger": "changed",
@@ -51029,6 +52630,7 @@
             "_cleaned": "changed | emit:force_rerender"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_1",
           "radio_button_type": "btn_text",
@@ -51036,6 +52638,14 @@
         },
         "_nested_name": "radio_group",
         "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@fields.test_render_updates_field",
+              "matchedExpression": "@fields.test_render_updates_field",
+              "type": "fields",
+              "fieldName": "test_render_updates_field"
+            }
+          ],
           "action_list": {
             "0": {
               "args": {
@@ -51078,6 +52688,9 @@
           }
         },
         "_dynamicDependencies": {
+          "@fields.test_render_updates_field": [
+            "value"
+          ],
           "@local.radio_group": [
             "action_list.0.args.1",
             "action_list.0._raw",
@@ -51092,6 +52705,7 @@
         "type": "text",
         "name": "go_to_field",
         "value": "Value of test_render_updates_field:  @fields.test_render_updates_field\n\nlocal: @local.radio_group;",
+        "exclude_from_translation": true,
         "_nested_name": "go_to_field",
         "_dynamicFields": {
           "value": [
@@ -51130,12 +52744,14 @@
         "type": "title",
         "name": "title",
         "value": "Grandchild 2",
+        "exclude_from_translation": true,
         "_nested_name": "title"
       },
       {
         "type": "text",
         "name": "text",
         "value": "(grandchild) Value of test_render_updates_field: @fields.test_render_updates_field",
+        "exclude_from_translation": true,
         "_nested_name": "text",
         "_dynamicFields": {
           "value": [
@@ -51157,12 +52773,13 @@
         "type": "text",
         "name": "text_1",
         "value": "(grandchild) selected no",
-        "hidden": "\"@fields.test_render_updates_field\"==\"yes\"",
+        "hidden": "\"@fields.test_render_updates_field\"!=\"no\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@fields.test_render_updates_field\"==\"yes\"",
+              "fullExpression": "\"@fields.test_render_updates_field\"!=\"no\"",
               "matchedExpression": "@fields.test_render_updates_field",
               "type": "fields",
               "fieldName": "test_render_updates_field"
@@ -51179,12 +52796,13 @@
         "type": "text",
         "name": "text_2",
         "value": "(grandchild) selected yes",
-        "hidden": "\"@fields.test_render_updates_field\"==\"no\"",
+        "hidden": "\"@fields.test_render_updates_field\"!=\"yes\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "\"@fields.test_render_updates_field\"==\"no\"",
+              "fullExpression": "\"@fields.test_render_updates_field\"!=\"yes\"",
               "matchedExpression": "@fields.test_render_updates_field",
               "type": "fields",
               "fieldName": "test_render_updates_field"
@@ -51201,19 +52819,44 @@
         "type": "text",
         "name": "text_3",
         "value": "Text 3",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
         "type": "text",
         "name": "text_4",
         "value": "Text 4",
+        "exclude_from_translation": true,
         "_nested_name": "text_4"
       },
       {
         "type": "text",
         "name": "text_5",
         "value": "Text 5",
+        "exclude_from_translation": true,
         "_nested_name": "text_5"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_title_text",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "Example Title",
+        "exclude_from_translation": true,
+        "_nested_name": "title"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Example text",
+        "exclude_from_translation": true,
+        "_nested_name": "text"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild.xlsx"
@@ -51226,18 +52869,21 @@
       {
         "type": "title",
         "value": "Parent",
+        "exclude_from_translation": true,
         "name": "title",
         "_nested_name": "title"
       },
       {
         "type": "text",
         "value": "Changing either child input should update the other sibling",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text"
       },
       {
         "type": "text",
         "value": "Value of debug_render_updates_field: \nfield: @fields.debug_render_updates_field",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text",
         "_dynamicFields": {
@@ -51260,6 +52906,7 @@
         "type": "template",
         "name": "debug_render_updates_child_1",
         "value": "debug_render_updates_child_1",
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "debug_render_updates_child_1"
       },
@@ -51267,6 +52914,7 @@
         "type": "template",
         "name": "debug_render_updates_child_2",
         "value": "debug_render_updates_child_2",
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "debug_render_updates_child_2"
       }
@@ -51281,6 +52929,7 @@
       {
         "type": "title",
         "value": "Child 1",
+        "exclude_from_translation": true,
         "name": "title",
         "_nested_name": "title"
       },
@@ -51309,6 +52958,7 @@
             "_cleaned": "changed | emit:force_rerender"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "debug_render_updates_text",
         "_dynamicFields": {
           "value": [
@@ -51365,6 +53015,7 @@
         "type": "text",
         "name": "go_to_field",
         "value": "Value of debug_render_updates_field: \nlocal: @local.debug_render_updates_text;\nfield: @fields.debug_render_updates_field",
+        "exclude_from_translation": true,
         "_nested_name": "go_to_field",
         "_dynamicFields": {
           "value": [
@@ -51402,12 +53053,14 @@
       {
         "type": "title",
         "value": "Child 2",
+        "exclude_from_translation": true,
         "name": "title",
         "_nested_name": "title"
       },
       {
         "type": "text",
         "value": "Value of debug_render_updates_field: \nfield: @fields.debug_render_updates_field",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text",
         "_dynamicFields": {
@@ -51438,6 +53091,7 @@
         "type": "image",
         "name": "image",
         "value": "plh_images/workshops/solve/read_1/slide_1.svg",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "rounded_corners"
         },
@@ -51467,6 +53121,7 @@
             "_cleaned": "changed | set_field:debug_tracker_text_box:@local.text_box"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "text_box",
         "_dynamicFields": {
           "value": [
@@ -51522,6 +53177,7 @@
       {
         "type": "text",
         "value": "text_box\n---------------------------------------------------\nlocal: @local.text_box   \nfield: @fields.debug_tracker_text_box    \ntriggered: @fields.debug_triggered_text_box",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text",
         "_dynamicFields": {
@@ -51592,10 +53248,12 @@
             "_cleaned": "uncompleted | emit:uncompleted"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -51653,18 +53311,21 @@
         "type": "video",
         "name": "video_src",
         "value": "plh_video/lets_slow_down.mp4",
+        "exclude_from_translation": true,
         "_nested_name": "video_src"
       },
       {
         "type": "video",
         "name": "video_src",
         "value": "https://www.w3schools.com/html/mov_bbb.mp4",
+        "exclude_from_translation": true,
         "_nested_name": "video_src"
       },
       {
         "type": "text",
         "name": "my_text",
         "value": "This is My Text",
+        "exclude_from_translation": true,
         "_nested_name": "my_text"
       }
     ],
@@ -51678,6 +53339,7 @@
       {
         "type": "timer",
         "name": "timer",
+        "exclude_from_translation": true,
         "parameter_list": {
           "duration_extension": "1",
           "duration": "10"
@@ -51695,12 +53357,14 @@
       {
         "name": "var_true",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_true"
       },
       {
         "name": "var_false",
         "value": false,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_false"
       },
@@ -51709,6 +53373,7 @@
         "name": "true_true",
         "value": "Variable true  (this text is hidden)",
         "hidden": "@local.var_true",
+        "exclude_from_translation": true,
         "_nested_name": "true_true",
         "_dynamicFields": {
           "hidden": [
@@ -51731,6 +53396,7 @@
         "name": "true_false",
         "value": "Variable true Hidden negated (this text is visible)",
         "hidden": "!@local.var_true",
+        "exclude_from_translation": true,
         "_nested_name": "true_false",
         "_dynamicFields": {
           "hidden": [
@@ -51753,6 +53419,7 @@
         "name": "false_true",
         "value": "Variable false (this text is visible)",
         "hidden": "@local.var_false",
+        "exclude_from_translation": true,
         "_nested_name": "false_true",
         "_dynamicFields": {
           "hidden": [
@@ -51775,6 +53442,7 @@
         "name": "false_false",
         "value": "Variable false Hidden negated (this text is hidden)",
         "hidden": "!@local.var_false",
+        "exclude_from_translation": true,
         "_nested_name": "false_false",
         "_dynamicFields": {
           "hidden": [
@@ -51803,30 +53471,35 @@
       {
         "name": "debug_variable_one",
         "value": "Value of the first debug variable.",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "debug_variable_one"
       },
       {
         "name": "debug_variable_two",
         "value": "Value of the second debug variable",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "debug_variable_two"
       },
       {
         "name": "debug_variable_3",
         "value": "Value of the third debug variable",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "debug_variable_3"
       },
       {
         "name": "debug_variable_four",
         "value": "Value of the fourth debug variable",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "debug_variable_four"
       },
       {
         "name": "debug_variable_five",
         "value": "Value of the fifth debug variable",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "debug_variable_five"
       },
@@ -51834,6 +53507,7 @@
         "type": "text",
         "name": "debug_text_1",
         "value": "Text that includes @local.debug_variable_one",
+        "exclude_from_translation": true,
         "_nested_name": "debug_text_1",
         "_dynamicFields": {
           "value": [
@@ -51855,6 +53529,7 @@
         "type": "text",
         "name": "debug_text_2",
         "value": "Text that includes @local.debug_variable_two",
+        "exclude_from_translation": true,
         "_nested_name": "debug_text_2",
         "_dynamicFields": {
           "value": [
@@ -51876,6 +53551,7 @@
         "type": "text",
         "name": "debug_text_3",
         "value": "Text that includes @local.debug_variable_3",
+        "exclude_from_translation": true,
         "_nested_name": "debug_text_3",
         "_dynamicFields": {
           "value": [
@@ -51897,6 +53573,7 @@
         "type": "text",
         "name": "debug_text_4",
         "value": "Text that includes @local.debug_variable_four",
+        "exclude_from_translation": true,
         "_nested_name": "debug_text_4",
         "_dynamicFields": {
           "value": [
@@ -51918,6 +53595,7 @@
         "type": "text",
         "name": "debug_text_5",
         "value": "Text that includes @local.debug_variable-five",
+        "exclude_from_translation": true,
         "_nested_name": "debug_text_5",
         "_dynamicFields": {
           "value": [
@@ -51946,6 +53624,7 @@
       {
         "name": "debug_variable",
         "value": "plh_images/workshop_modes/guide_2/wave.svg",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "debug_variable"
       },
@@ -51953,18 +53632,21 @@
         "type": "image",
         "name": "direct_image",
         "value": "plh_images/workshop_modes/guide_2/wave.svg",
+        "exclude_from_translation": true,
         "_nested_name": "direct_image"
       },
       {
         "type": "text",
         "name": "text",
         "value": "Text below the direct image and above the variable image.",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
         "type": "image",
         "name": "variable_image",
         "value": "plh_images/workshop_modes/guide_2/wave.svg",
+        "exclude_from_translation": true,
         "_nested_name": "variable_image"
       }
     ],
@@ -51979,6 +53661,7 @@
         "type": "title",
         "name": "title",
         "value": "@global.debug_variable_1",
+        "exclude_from_translation": true,
         "_nested_name": "title",
         "_dynamicFields": {
           "value": [
@@ -52000,6 +53683,7 @@
         "type": "text",
         "name": "text",
         "value": "Text that includes @global.debug_variable_1",
+        "exclude_from_translation": true,
         "_nested_name": "text",
         "_dynamicFields": {
           "value": [
@@ -52029,12 +53713,14 @@
         "type": "set_field",
         "name": "variable",
         "value": "Value of the field",
+        "exclude_from_translation": true,
         "_nested_name": "variable"
       },
       {
         "type": "text",
         "name": "text_1",
         "value": "Field value is @field.variable",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -52064,6 +53750,7 @@
         "type": "text",
         "name": "text_1",
         "value": "Field value is @field.variable",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -52093,6 +53780,7 @@
         "type": "text",
         "name": "text_1",
         "value": "Some text",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       }
     ],
@@ -52107,11 +53795,13 @@
         "type": "template",
         "name": "box_1",
         "value": "debug_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "First row: This text is hidden",
             "hidden": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_1.text_1"
           },
@@ -52119,6 +53809,7 @@
             "name": "text_1",
             "value": "Second row: This text is visible",
             "hidden": false,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_1.text_1"
           }
@@ -52129,11 +53820,13 @@
         "type": "template",
         "name": "box_2",
         "value": "debug_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_1",
             "value": "First row: This text is visible",
             "hidden": false,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_2.text_1"
           },
@@ -52141,6 +53834,7 @@
             "name": "text_1",
             "value": "Second row: This text is hidden",
             "hidden": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_2.text_1"
           }
@@ -52159,17 +53853,20 @@
         "type": "text",
         "name": "text_1",
         "value": "Placeholder Text to create separation",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
         "type": "text",
         "name": "text_2",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
         "type": "text",
         "name": "text_3",
         "value": "Placeholder Text to create separation",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
@@ -52177,12 +53874,14 @@
         "name": "text_4",
         "value": "This is text_4 which should be hidden as we set hidden to true",
         "hidden": true,
+        "exclude_from_translation": true,
         "_nested_name": "text_4"
       },
       {
         "type": "text",
         "name": "text_5",
         "value": "Placeholder Text to create separation",
+        "exclude_from_translation": true,
         "_nested_name": "text_5"
       }
     ],
@@ -52197,17 +53896,20 @@
         "type": "text",
         "name": "text_1",
         "value": "Placeholder Text to create separation",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
         "type": "button",
         "name": "button_1",
+        "exclude_from_translation": true,
         "_nested_name": "button_1"
       },
       {
         "type": "text",
         "name": "text_2",
         "value": "Placeholder Text to create separation..",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
@@ -52215,12 +53917,14 @@
         "name": "button_2",
         "value": "Hidden Button",
         "hidden": true,
+        "exclude_from_translation": true,
         "_nested_name": "button_2"
       },
       {
         "type": "text",
         "name": "text_3",
         "value": "Placeholder Text to create separation",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       }
     ],
@@ -52235,6 +53939,7 @@
         "type": "audio",
         "name": "audio_src",
         "value": "plh_audio/sample.mp3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "title": "Test title"
         },
@@ -52251,12 +53956,14 @@
       {
         "name": "var_true",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_true"
       },
       {
         "name": "var_number_1",
         "value": 1,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_number_1"
       },
@@ -52265,6 +53972,7 @@
         "name": "true_true",
         "value": "This text is hidden if var_true is true.",
         "hidden": "@local.var_true",
+        "exclude_from_translation": true,
         "_nested_name": "true_true",
         "_dynamicFields": {
           "hidden": [
@@ -52287,6 +53995,7 @@
         "name": "true_false",
         "value": "This text is hidden if var_true is false.",
         "hidden": "!@local.var_true",
+        "exclude_from_translation": true,
         "_nested_name": "true_false",
         "_dynamicFields": {
           "hidden": [
@@ -52309,6 +54018,7 @@
         "name": "number_1",
         "value": "This text is hidden if var_number_1 is 1.",
         "hidden": "@local.var_number_1 == 1",
+        "exclude_from_translation": true,
         "_nested_name": "number_1",
         "_dynamicFields": {
           "hidden": [
@@ -52331,6 +54041,7 @@
         "name": "number_not_1",
         "value": "This text is hidden if var_number_1 not 1.",
         "hidden": "@local.var_number_1 != 1",
+        "exclude_from_translation": true,
         "_nested_name": "number_not_1",
         "_dynamicFields": {
           "hidden": [
@@ -52353,6 +54064,7 @@
         "name": "number_greater_1",
         "value": "This text is hidden if var_number_1 is greater than 1.",
         "hidden": "@local.var_number_1 > 1",
+        "exclude_from_translation": true,
         "_nested_name": "number_greater_1",
         "_dynamicFields": {
           "hidden": [
@@ -52375,6 +54087,7 @@
         "name": "number_not_1",
         "value": "This text is hidden if var_number_1 is not greater than 1.",
         "hidden": "!(@local.var_number_1 > 1)",
+        "exclude_from_translation": true,
         "_nested_name": "number_not_1",
         "_dynamicFields": {
           "hidden": [
@@ -52404,12 +54117,14 @@
         "type": "title",
         "name": "title",
         "value": "Two paragraphs of text",
+        "exclude_from_translation": true,
         "_nested_name": "title"
       },
       {
         "type": "text",
         "name": "text",
         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "standart primary",
           "text_align": "center"
@@ -52420,6 +54135,7 @@
         "type": "text",
         "name": "text_2",
         "value": "This is the first line in first 'paragraph'.\nThis is the second line in first 'paragraph'.\n",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "small",
           "text_align": "left"
@@ -52449,14 +54165,17 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "workshop_activity",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "intro_text",
                 "value": "@global.w_instruct_female_caregiver @global.w_instruct_teen_girl @global.parent_point @global.w_instruct @global.guide_teen_name",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "read.workshop_activity.intro_text",
                 "_dynamicFields": {
@@ -52515,16 +54234,19 @@
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "box_image",
+                "exclude_from_translation": true,
                 "rows": [
                   {
                     "name": "image_src",
                     "value": "plh_images/workshops/instruct/read_1/slide_1.svg",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "read.workshop_activity.content_box.image_src"
                   },
                   {
                     "name": "text",
                     "value": "@global.w_instruct_female_caregiver @global.w_instruct_teen_girl @global.parent_point @global.w_instruct @global.guide_teen_name",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "read.workshop_activity.content_box.text",
                     "_dynamicFields": {
@@ -52597,9 +54319,16 @@
     "status": "released",
     "rows": [
       {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
         "type": "text",
         "name": "text",
         "value": "This template demonstates 4 types of go-to buttons. \n\nWrite x for the template example_emit.",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
@@ -52617,6 +54346,7 @@
             "_cleaned": "click | go_to:example_emit"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to_1"
       },
       {
@@ -52643,6 +54373,7 @@
             "_cleaned": "click | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to_2"
       },
       {
@@ -52669,6 +54400,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to_3"
       },
       {
@@ -52695,6 +54427,7 @@
             "_cleaned": "uncompleted | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to_4"
       }
     ],
@@ -52709,6 +54442,7 @@
         "type": "text",
         "name": "text",
         "value": "This is the example emit template.",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
@@ -52726,6 +54460,7 @@
             "_cleaned": "click | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_completed"
       },
       {
@@ -52743,6 +54478,7 @@
             "_cleaned": "click | emit:uncompleted"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_uncompleted"
       }
     ],
@@ -52757,12 +54493,14 @@
         "type": "text",
         "name": "text_1",
         "value": "This is the main template demonstrating three types of pop-ups.",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
         "type": "text",
         "name": "text_2",
         "value": "Button 1 is a simple text pop-up:",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
@@ -52780,12 +54518,14 @@
             "_cleaned": "click | pop_up:example_text"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_pop_up_1"
       },
       {
         "type": "text",
         "name": "text_3",
         "value": "Button 2 (example_go_to_2) dismisses on all:",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
@@ -52803,12 +54543,14 @@
             "_cleaned": "click | pop_up:example_go_to_2"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_pop_up_2"
       },
       {
         "type": "text",
         "name": "text_4",
         "value": "Button 3 (example_go_to_3) dismisses on completed:",
+        "exclude_from_translation": true,
         "_nested_name": "text_4"
       },
       {
@@ -52835,6 +54577,7 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_pop_up_3"
       }
     ],
@@ -52849,6 +54592,7 @@
         "type": "text",
         "name": "text",
         "value": "This is the example text template.",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       }
     ],
@@ -52863,6 +54607,7 @@
         "type": "text",
         "name": "text_1",
         "value": "Button 1: Go to example emit",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
@@ -52880,12 +54625,14 @@
             "_cleaned": "click | go_to: example_emit"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to_1"
       },
       {
         "type": "text",
         "name": "text_2",
         "value": "Button 2: Go to example_emit and mark as completed",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
@@ -52912,6 +54659,7 @@
             "_cleaned": "click | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to_2"
       }
     ],
@@ -52926,6 +54674,7 @@
         "type": "text",
         "name": "text_1",
         "value": "Button 1: Go to example_emit and emit completed",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
@@ -52952,6 +54701,7 @@
             "_cleaned": "click | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_go_to"
       }
     ],
@@ -52966,24 +54716,28 @@
         "type": "set_field",
         "name": "demo_changed_combo_box",
         "value": "na",
+        "exclude_from_translation": true,
         "_nested_name": "demo_changed_combo_box"
       },
       {
         "type": "set_field",
         "name": "demo_changed_slider",
         "value": "na",
+        "exclude_from_translation": true,
         "_nested_name": "demo_changed_slider"
       },
       {
         "type": "set_field",
         "name": "demo_changed_radio_group",
         "value": "na",
+        "exclude_from_translation": true,
         "_nested_name": "demo_changed_radio_group"
       },
       {
         "type": "set_field",
         "name": "demo_changed_text_box",
         "value": "na",
+        "exclude_from_translation": true,
         "_nested_name": "demo_changed_text_box"
       },
       {
@@ -52993,6 +54747,7 @@
           "Second",
           "Third"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_1"
       },
@@ -53004,6 +54759,7 @@
           "name:name_var_3 | text:Third",
           "name:name_var_4 | text:Fourth"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_2"
       },
@@ -53022,6 +54778,7 @@
             "_cleaned": "changed | set_field: demo_changed_combo_box: @local.combo_box"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_1",
           "placeholder": "Click and choose!"
@@ -53085,6 +54842,7 @@
         "name": "comb_box_text",
         "value": "the selected choice in combo box is @field.demo_changed_combo_box",
         "hidden": "\"@field.demo_changed_combo_box\"==\"na\"",
+        "exclude_from_translation": true,
         "_nested_name": "comb_box_text",
         "_dynamicFields": {
           "value": [
@@ -53126,6 +54884,7 @@
             "_cleaned": "changed | set_field: demo_changed_radio_group: @local.radio_group"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
@@ -53187,6 +54946,7 @@
         "type": "text",
         "name": "radio_group_field_text",
         "value": "The value of demo_changed_radio_group is @field.demo_changed_radio_group",
+        "exclude_from_translation": true,
         "_nested_name": "radio_group_field_text",
         "_dynamicFields": {
           "value": [
@@ -53209,6 +54969,7 @@
         "name": "radio_group_text",
         "value": "the selected choice in radio group is @field.demo_changed_radio_group",
         "hidden": "\"@field.demo_changed_radio_group\"==\"na\"",
+        "exclude_from_translation": true,
         "_nested_name": "radio_group_text",
         "_dynamicFields": {
           "value": [
@@ -53250,6 +55011,7 @@
             "_cleaned": "changed | set_field: demo_changed_text_box: @local.text_box"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "placeholder": "Click and type!"
         },
@@ -53299,6 +55061,7 @@
         "name": "text_box_text",
         "value": "The value in the text box is @field.demo_changed_text_box",
         "hidden": "\"@field.demo_changed_text_box\"==\"na\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_box_text",
         "_dynamicFields": {
           "value": [
@@ -53341,6 +55104,7 @@
             "_cleaned": "changed | set_field: demo_changed_slider: @local.slider"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "min": "0",
           "max": "7",
@@ -53395,6 +55159,7 @@
         "name": "slider_text",
         "value": "the selected choice in slider is @field.demo_changed_slider",
         "hidden": "\"@field.demo_changed_slider\"==\"na\"",
+        "exclude_from_translation": true,
         "_nested_name": "slider_text",
         "_dynamicFields": {
           "value": [
@@ -53433,6 +55198,7 @@
         "type": "template",
         "name": "first_template",
         "value": "example_component_variables",
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "first_template"
       },
@@ -53440,6 +55206,7 @@
         "type": "template",
         "name": "second_template",
         "value": "example_component_variables",
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "second_template"
       },
@@ -53447,6 +55214,7 @@
         "type": "text",
         "name": "text_with_double_ref_options",
         "value": "text should be what is in the comment",
+        "exclude_from_translation": true,
         "_nested_name": "text_with_double_ref_options"
       }
     ],
@@ -53461,11 +55229,13 @@
         "type": "template",
         "name": "nested_options_template",
         "value": "example_double_ref_comp_var",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "first_template",
             "value": "example_component_variables",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "answer_list",
@@ -53474,6 +55244,7 @@
                   "name:name_var_2 | text: Option b",
                   "name:name_var_3 | text: Option c"
                 ],
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "nested_options_template.first_template.answer_list"
               }
@@ -53487,6 +55258,7 @@
         "type": "text",
         "name": "text_with_nested_options",
         "value": "text should be what is in the comment",
+        "exclude_from_translation": true,
         "_nested_name": "text_with_nested_options"
       }
     ],
@@ -53500,18 +55272,21 @@
       {
         "name": "var_1",
         "value": "\"val_1\"",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_1"
       },
       {
         "name": "var_2",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_2"
       },
       {
         "name": "var_3",
         "value": 5,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "var_3"
       },
@@ -53519,11 +55294,13 @@
         "type": "template",
         "name": "example_text_1",
         "value": "example_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "The condition is not satisfied",
             "condition": "@local.var_1==\"val_2\"",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_1.text",
             "_dynamicFields": {
@@ -53546,6 +55323,7 @@
             "name": "text",
             "value": "The condition is satisfied",
             "condition": "@local.var_1==\"val_1\"",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_1.text",
             "_dynamicFields": {
@@ -53571,11 +55349,13 @@
         "type": "template",
         "name": "example_text_2",
         "value": "example_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "The condition is satisfied",
             "condition": "@local.var_3<9",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_2.text",
             "_dynamicFields": {
@@ -53598,6 +55378,7 @@
             "name": "text",
             "value": "The condition is not satisfied",
             "condition": "@local.var_3>9",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_2.text",
             "_dynamicFields": {
@@ -53623,11 +55404,13 @@
         "type": "template",
         "name": "example_text_3",
         "value": "example_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "The condition is satisfied",
             "condition": "@local.var_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_3.text",
             "_dynamicFields": {
@@ -53650,6 +55433,7 @@
             "name": "text",
             "value": "The condition is not satisfied",
             "condition": "!@local.var_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_3.text",
             "_dynamicFields": {
@@ -53675,11 +55459,13 @@
         "type": "template",
         "name": "example_text_4",
         "value": "example_text",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "The condition is not satisfied",
             "condition": "!@local.var_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_4.text",
             "_dynamicFields": {
@@ -53702,6 +55488,7 @@
             "name": "text",
             "value": "The condition is satisfied",
             "condition": "@local.var_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_4.text",
             "_dynamicFields": {
@@ -53735,12 +55522,14 @@
         "type": "text",
         "name": "text",
         "value": "Text",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
         "type": "button",
         "name": "button",
         "value": "Button",
+        "exclude_from_translation": true,
         "_nested_name": "button"
       }
     ],
@@ -53755,10 +55544,12 @@
         "type": "template",
         "name": "example_condition_bottom",
         "value": "example_condition_bottom",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text_result",
             "value": "@local.radio_group_text",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_condition_bottom.text_result",
             "_dynamicFields": {
@@ -53781,6 +55572,7 @@
             "name": "text_reply",
             "value": "Reply for selecting first",
             "condition": "@field.radio_button_field==\"name_var_1\"",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_condition_bottom.text_reply",
             "_dynamicFields": {
@@ -53803,6 +55595,7 @@
             "name": "text_reply",
             "value": "Reply for selecting second",
             "condition": "@field.radio_button_field==\"name_var_2\"",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_condition_bottom.text_reply",
             "_dynamicFields": {
@@ -53825,6 +55618,7 @@
             "name": "text_reply",
             "value": "Reply for selecting third",
             "condition": "@field.radio_button_field==\"name_var_3\"",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_condition_bottom.text_reply",
             "_dynamicFields": {
@@ -53857,6 +55651,7 @@
       {
         "name": "variable",
         "value": "initial_value",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "variable"
       },
@@ -53864,11 +55659,13 @@
         "type": "template",
         "name": "example_text_button",
         "value": "example_text_button",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "text",
             "value": "@local.variable is the secondary value",
             "condition": "@local.variable==secondary_value",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_button.text",
             "_dynamicFields": {
@@ -53900,6 +55697,7 @@
             "name": "text",
             "value": "@local.variable is the initial value",
             "condition": "@local.variable==initial_value",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_button.text",
             "_dynamicFields": {
@@ -53942,6 +55740,7 @@
                 "_cleaned": "click | set_local:variable:secondary_value"
               }
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "example_text_button.button"
           }
@@ -53963,12 +55762,14 @@
           "name:name_var_2 | text:Second",
           "name:name_var_3 | text:Third"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
       {
         "name": "field_name",
         "value": "radio_button_field",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "field_name"
       },
@@ -53976,6 +55777,7 @@
         "type": "radio_group",
         "name": "radio_group_text",
         "value": "nothing",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -54002,6 +55804,7 @@
         "type": "text",
         "name": "text_result",
         "value": "You selected @local.radio_group_text",
+        "exclude_from_translation": true,
         "_nested_name": "text_result",
         "_dynamicFields": {
           "value": [
@@ -54024,6 +55827,7 @@
         "name": "text_reply",
         "value": "Reply text",
         "hidden": "\"@local.radio_group_text\" = \"nothing\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_reply",
         "_dynamicFields": {
           "hidden": [
@@ -54053,6 +55857,7 @@
         "type": "text",
         "name": "text_1",
         "value": "@data.example.example1.value",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -54074,6 +55879,7 @@
         "type": "text",
         "name": "broken_1",
         "value": "@data.example.example1",
+        "exclude_from_translation": true,
         "_nested_name": "broken_1",
         "_dynamicFields": {
           "value": [
@@ -54094,6 +55900,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@data.example.example3.value_list"
         },
@@ -54128,6 +55935,7 @@
         "type": "title",
         "name": "title",
         "value": "@global.example_global_constant_title",
+        "exclude_from_translation": true,
         "_nested_name": "title",
         "_dynamicFields": {
           "value": [
@@ -54149,6 +55957,7 @@
         "type": "text",
         "name": "text_1",
         "value": "Text that includes @global.example_global_constant_text",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -54170,6 +55979,7 @@
         "type": "image",
         "name": "image_src",
         "value": "@global.example_global_constant_image",
+        "exclude_from_translation": true,
         "_nested_name": "image_src",
         "_dynamicFields": {
           "value": [
@@ -54191,6 +56001,7 @@
         "type": "text",
         "name": "text_2",
         "value": "There should be an image above this text, whose source is example_global_image",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       }
     ],
@@ -54205,6 +56016,7 @@
         "type": "text",
         "name": "text_0",
         "value": "The value of field_0 is @field.field_0",
+        "exclude_from_translation": true,
         "_nested_name": "text_0",
         "_dynamicFields": {
           "value": [
@@ -54238,12 +56050,14 @@
             "_cleaned": "click | set_field:field_1:\"New value of Field 1\""
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_1"
       },
       {
         "type": "text",
         "name": "text_1",
         "value": "The value of field_1 is @field.field_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -54277,12 +56091,14 @@
             "_cleaned": "click | set_field:field_2:\"Value of Field 2\""
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "button_2"
       },
       {
         "type": "text",
         "name": "text_2",
         "value": "The value of field_2 is @field.field_2",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -54305,6 +56121,7 @@
         "name": "text_hidden_4",
         "value": "This should be hidden when field_4 is TRUE",
         "hidden": "@field.field_4",
+        "exclude_from_translation": true,
         "_nested_name": "text_hidden_4",
         "_dynamicFields": {
           "hidden": [
@@ -54327,6 +56144,7 @@
         "name": "text_not_hidden_4",
         "value": "This should be hidden when field_4 is FALSE",
         "hidden": "!@field.field_4",
+        "exclude_from_translation": true,
         "_nested_name": "text_not_hidden_4",
         "_dynamicFields": {
           "hidden": [
@@ -54349,6 +56167,7 @@
         "name": "text_hidden_5",
         "value": "This should be hidden when field_5 is more than 2",
         "hidden": "@field.field_5>2",
+        "exclude_from_translation": true,
         "_nested_name": "text_hidden_5",
         "_dynamicFields": {
           "hidden": [
@@ -54371,6 +56190,7 @@
         "name": "text_not_hidden_5_a",
         "value": "This should be hidden when field_5 is less than or equal to 2",
         "hidden": "@field.field_5<=2",
+        "exclude_from_translation": true,
         "_nested_name": "text_not_hidden_5_a",
         "_dynamicFields": {
           "hidden": [
@@ -54393,6 +56213,7 @@
         "name": "text_not_hidden_5_b",
         "value": "This should be hidden when field_5 is less than or equal to 2",
         "hidden": "!@field.field_5>2",
+        "exclude_from_translation": true,
         "_nested_name": "text_not_hidden_5_b",
         "_dynamicFields": {
           "hidden": [
@@ -54421,18 +56242,21 @@
       {
         "name": "name_1",
         "value": "This is text 1",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "name_1"
       },
       {
         "name": "name_2",
         "value": "This is text 2",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "name_2"
       },
       {
         "name": "name_3",
         "value": "This is text 3",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "name_3"
       },
@@ -54443,6 +56267,7 @@
           "name: name_2 | text: @local.name_2",
           "name: name_3 | text: @local.name_3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list",
         "_dynamicFields": {
@@ -54488,6 +56313,7 @@
       {
         "type": "combo_box",
         "name": "combo_box_defaults",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "style": "active"
@@ -54515,6 +56341,7 @@
         "type": "text",
         "name": "text",
         "value": "@local.@local.combo_box_defaults",
+        "exclude_from_translation": true,
         "_nested_name": "text",
         "_dynamicFields": {
           "value": [
@@ -54544,6 +56371,7 @@
         "type": "text",
         "name": "first",
         "value": "@field.first_app_open is the first time it opened",
+        "exclude_from_translation": true,
         "_nested_name": "first",
         "_dynamicFields": {
           "value": [
@@ -54565,6 +56393,7 @@
         "type": "text",
         "name": "today",
         "value": "@field.current_date is today",
+        "exclude_from_translation": true,
         "_nested_name": "today",
         "_dynamicFields": {
           "value": [
@@ -54586,6 +56415,7 @@
         "type": "text",
         "name": "week",
         "value": "second_week is @field.second_week",
+        "exclude_from_translation": true,
         "_nested_name": "week",
         "_dynamicFields": {
           "value": [
@@ -54607,6 +56437,7 @@
         "type": "text",
         "name": "time_difference",
         "value": "the time difference is @field.time_difference",
+        "exclude_from_translation": true,
         "_nested_name": "time_difference",
         "_dynamicFields": {
           "value": [
@@ -54635,12 +56466,14 @@
       {
         "name": "hide_page_1",
         "value": false,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "hide_page_1"
       },
       {
         "name": "hide_page_2",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "hide_page_2"
       },
@@ -54648,17 +56481,20 @@
         "type": "animated_section",
         "name": "page_1",
         "hidden": "@local.hide_page_1",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "title",
             "name": "title_page_1",
             "value": "Page 1",
+            "exclude_from_translation": true,
             "_nested_name": "page_1.title_page_1"
           },
           {
             "type": "text",
             "name": "text_page_1",
             "value": "This is page 1",
+            "exclude_from_translation": true,
             "_nested_name": "page_1.text_page_1"
           },
           {
@@ -54704,10 +56540,12 @@
                 "_cleaned": "uncompleted | emit:uncompleted"
               }
             ],
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "button_completed",
                 "value": "Let's go!",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "page_1.page_1_nav_buttons.button_completed"
               }
@@ -54736,23 +56574,27 @@
         "type": "animated_section",
         "name": "page_2",
         "hidden": "@local.hide_page_2",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "title",
             "name": "title_page_2",
             "value": "Page 2",
+            "exclude_from_translation": true,
             "_nested_name": "page_2.title_page_2"
           },
           {
             "type": "text",
             "name": "text_page_2",
             "value": "This is page 2",
+            "exclude_from_translation": true,
             "_nested_name": "page_2.text_page_2"
           },
           {
             "type": "template",
             "name": "page_2_nav_buttons",
             "value": "nav_buttons",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "navigation"
             },
@@ -54771,6 +56613,7 @@
                     "_cleaned": "click | go_to:home_screen"
                   }
                 ],
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "page_2.page_2_nav_buttons.button_completed"
               }
@@ -54807,16 +56650,19 @@
         "type": "title",
         "name": "page_1_title",
         "value": "This Page",
+        "exclude_from_translation": true,
         "_nested_name": "page_1_title"
       },
       {
         "type": "text",
         "name": "page_1_text",
         "value": "This is the text for this page",
+        "exclude_from_translation": true,
         "_nested_name": "page_1_text"
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "navigation"
         },
@@ -54836,6 +56682,7 @@
                 "_cleaned": "click | go_to:home_screen"
               }
             ],
+            "exclude_from_translation": true,
             "_nested_name": "display_group.button_1"
           },
           {
@@ -54853,6 +56700,7 @@
                 "_cleaned": "click | go_to:home_screen"
               }
             ],
+            "exclude_from_translation": true,
             "_nested_name": "display_group.button_2"
           }
         ],
@@ -54863,6 +56711,7 @@
         "type": "text",
         "name": "hidden",
         "value": "hideme ",
+        "exclude_from_translation": true,
         "_nested_name": "hidden"
       }
     ],
@@ -54875,6 +56724,7 @@
     "rows": [
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner"
         },
@@ -54883,6 +56733,7 @@
             "type": "text",
             "name": "left",
             "value": "left button",
+            "exclude_from_translation": true,
             "style_list": [
               "flex:1"
             ],
@@ -54892,6 +56743,7 @@
             "type": "text",
             "name": "blank_text",
             "value": "\"\"",
+            "exclude_from_translation": true,
             "style_list": [
               "flex:4"
             ],
@@ -54901,6 +56753,7 @@
             "type": "text",
             "name": "right",
             "value": "right button",
+            "exclude_from_translation": true,
             "style_list": [
               "flex:1"
             ],
@@ -54925,6 +56778,7 @@
           "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
           "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_1"
       },
@@ -54932,6 +56786,7 @@
         "type": "radio_group",
         "name": "radio_group_defaults",
         "value": "na",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_1"
         },
@@ -54959,6 +56814,7 @@
         "name": "text_reply_1",
         "value": "This is the feedback for option 1",
         "hidden": "\"@local.radio_group_defaults\" != \"name_var_1\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_reply_1",
         "_dynamicFields": {
           "hidden": [
@@ -54981,6 +56837,7 @@
         "name": "text_reply_2",
         "value": "This is the feedback for option 2",
         "hidden": "\"@local.radio_group_defaults\" != \"name_var_2\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_reply_2",
         "_dynamicFields": {
           "hidden": [
@@ -55003,6 +56860,7 @@
         "name": "text_reply_3",
         "value": "This is the feedback for option 3",
         "hidden": "\"@local.radio_group_defaults\" != \"name_var_3\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_reply_3",
         "_dynamicFields": {
           "hidden": [
@@ -55025,6 +56883,7 @@
         "name": "text_reply_universal",
         "value": "This is the universal feedback",
         "hidden": "\"@local.radio_group_defaults\" == \"na\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_reply_universal",
         "_dynamicFields": {
           "hidden": [
@@ -55057,6 +56916,7 @@
           "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
           "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_1"
       },
@@ -55064,6 +56924,7 @@
         "type": "radio_group",
         "name": "radio_group_defaults",
         "value": "na",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_1"
         },
@@ -55091,6 +56952,7 @@
         "name": "text_reply_1",
         "value": "This is the feedback for option 1",
         "condition": "\"@local.radio_group_defaults\" == \"name_var_1\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_reply_1",
         "_dynamicFields": {
           "condition": [
@@ -55113,6 +56975,7 @@
         "name": "text_reply_2",
         "value": "This is the feedback for option 2",
         "condition": "\"@local.radio_group_defaults\" == \"name_var_2\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_reply_2",
         "_dynamicFields": {
           "condition": [
@@ -55135,6 +56998,7 @@
         "name": "text_reply_3",
         "value": "This is the feedback for option 3",
         "condition": "\"@local.radio_group_defaults\" == \"name_var_3\"",
+        "exclude_from_translation": true,
         "_nested_name": "text_reply_3",
         "_dynamicFields": {
           "condition": [
@@ -55164,17 +57028,20 @@
         "type": "audio",
         "name": "audio_1",
         "value": "plh_audio/sample.mp3",
+        "exclude_from_translation": true,
         "_nested_name": "audio_1"
       },
       {
         "name": "help_text",
         "value": "This is the text for the questionmark icon",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "help_text"
       },
       {
         "type": "audio",
         "name": "audio_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "src": "plh_audio/sample.mp3",
           "title": "New Title Test",
@@ -55205,6 +57072,7 @@
         "type": "audio",
         "name": "audio_3",
         "value": "plh_audio/sample.mp3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "title": "New Title Test",
           "help": "@local.help_text",
@@ -55241,30 +57109,35 @@
       {
         "name": "source_file",
         "value": "plh_audio/sample.mp3",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "source_file"
       },
       {
         "name": "title_name",
         "value": "This title has been overridden correctly",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "title_name"
       },
       {
         "name": "help_msg",
         "value": "This help message has been overriden correctly",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "help_msg"
       },
       {
         "name": "no_range_bar",
         "value": true,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "no_range_bar"
       },
       {
         "name": "rew_time",
         "value": 12,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "rew_time"
       },
@@ -55272,10 +57145,12 @@
         "type": "template",
         "name": "overridden_audio",
         "value": "example_widget_audio_def",
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "audio_1",
             "value": "@local.source_file",
+            "exclude_from_translation": true,
             "parameter_list": {
               "title": "@local.title_name"
             },
@@ -55313,6 +57188,7 @@
           {
             "name": "audio_2",
             "hidden": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "overridden_audio.audio_2"
           }
@@ -55322,6 +57198,7 @@
       {
         "type": "audio",
         "name": "audio_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "title": "@local.title_name",
           "src": "@local.source_file",
@@ -55396,6 +57273,7 @@
         "type": "text",
         "name": "helping_text",
         "value": "@local.title_name",
+        "exclude_from_translation": true,
         "_nested_name": "helping_text",
         "_dynamicFields": {
           "value": [
@@ -55424,6 +57302,7 @@
       {
         "name": "question_text",
         "value": "This is the question",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "question_text"
       },
@@ -55434,6 +57313,7 @@
           "Option 2",
           "Option 3]"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answers_list"
       },
@@ -55441,6 +57321,7 @@
         "type": "text",
         "name": "question",
         "value": "@local.question_text",
+        "exclude_from_translation": true,
         "_nested_name": "question",
         "_dynamicFields": {
           "value": [
@@ -55461,6 +57342,7 @@
       {
         "type": "combo_box",
         "name": "combo_box_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "text": "@local.question_text",
           "input_allowed": "true",
@@ -55514,12 +57396,14 @@
           "name:name_var_2 | text: ok",
           "name:name_var_3 | text: sad"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
       {
         "type": "radio_group",
         "name": "radio_group_square_ex_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "radio_button_type": "btn_triangle",
           "answer_list": "@local.answer_list",
@@ -55568,6 +57452,7 @@
           }
         ],
         "hidden": "!@field.do_workshops_together",
+        "exclude_from_translation": true,
         "parameter_list": {
           "theme": "@global.theme"
         },
@@ -55583,6 +57468,7 @@
               "w_example_home_practice",
               "w_example_ending"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper_together.nav_template_list"
           }
@@ -55633,12 +57519,14 @@
           }
         ],
         "hidden": true,
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "nav_template_list",
             "value": [
               "w_example_listen"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper_individual.nav_template_list"
           }
@@ -55668,18 +57556,22 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "watch",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "type": "nested_properties",
                 "name": "workshop_activity",
+                "exclude_from_translation": true,
                 "rows": [
                   {
                     "name": "intro_text",
                     "value": "This is the introduction text of the welcome together.",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "welcome_together.watch.workshop_activity.intro_text"
                   }
@@ -55715,10 +57607,12 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "audio_src",
             "value": "plh_audio/sample.mp3",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "listen.audio_src"
           }
@@ -55748,46 +57642,54 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "number_of_slides",
             "value": 3,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "read.number_of_slides"
           },
           {
             "name": "slide_image_src_1",
             "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "read.slide_image_src_1"
           },
           {
             "name": "slide_text_1",
             "value": "This is the text on the first slide.",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "read.slide_text_1"
           },
           {
             "name": "slide_image_src_2",
             "value": "plh_images/modules/mod_instruct/thought_experiment/te_2.svg",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "read.slide_image_src_2"
           },
           {
             "name": "slide_text_2",
             "value": "This is the text on the second slide.",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "read.slide_text_2"
           },
           {
             "name": "slide_image_src_3",
             "value": "plh_images/modules/mod_instruct/thought_experiment/te_3.svg",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "read.slide_image_src_3"
           },
           {
             "name": "slide_text_3",
             "value": "This is the text on the third slide.",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "read.slide_text_3"
           }
@@ -55817,10 +57719,12 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "name": "discussion_text",
             "value": "This text describes what should be discussed.",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "talk_together.discussion_text"
           }
@@ -55850,26 +57754,31 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "title",
             "name": "tools_title",
             "value": "Example Workshop",
+            "exclude_from_translation": true,
             "_nested_name": "box_tools.tools_title"
           },
           {
             "type": "nested_properties",
             "name": "tool_1",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "title",
                 "value": "First tool",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_1.title"
               },
               {
                 "name": "text_1",
                 "value": "Text describing the first tool.",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_1.text_1"
               },
@@ -55877,6 +57786,7 @@
                 "name": "button",
                 "value": "Button",
                 "hidden": false,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_1.button"
               }
@@ -55886,10 +57796,12 @@
           {
             "type": "nested_properties",
             "name": "tool_2",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "title",
                 "value": "Second tool",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_2.title"
               },
@@ -55897,12 +57809,14 @@
                 "name": "subtitle_1",
                 "value": "Subtitle 1",
                 "hidden": false,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_2.subtitle_1"
               },
               {
                 "name": "text_1",
                 "value": "Some text.",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_2.text_1"
               },
@@ -55910,6 +57824,7 @@
                 "name": "subtitle_2",
                 "value": "Subtitle 2",
                 "hidden": false,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_2.subtitle_2"
               },
@@ -55917,6 +57832,7 @@
                 "name": "text_2",
                 "value": "More text.",
                 "hidden": false,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_2.text_2"
               }
@@ -55926,16 +57842,19 @@
           {
             "type": "nested_properties",
             "name": "tool_3",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "name": "title",
                 "value": "Third tool",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_3.title"
               },
               {
                 "name": "text_1",
                 "value": "Text describing the third tool.",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_3.text_1"
               },
@@ -55943,6 +57862,7 @@
                 "name": "image",
                 "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
                 "hidden": false,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "box_tools.tool_3.image"
               }
@@ -55975,15 +57895,18 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "workshop_activity",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "type": "nested_properties",
                 "name": "content_box",
                 "value": "w_example_tools",
+                "exclude_from_translation": true,
                 "rows": [],
                 "_nested_name": "tools_activity.workshop_activity.content_box"
               }
@@ -56016,18 +57939,22 @@
             "_cleaned": "completed | emit:completed"
           }
         ],
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "nested_properties",
             "name": "workshop_activity",
+            "exclude_from_translation": true,
             "rows": [
               {
                 "type": "nested_properties",
                 "name": "content_box",
+                "exclude_from_translation": true,
                 "rows": [
                   {
                     "name": "text_1",
                     "value": "First bit of text. The next button takes you to the story.",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.text_1"
                   },
@@ -56046,6 +57973,7 @@
                       }
                     ],
                     "hidden": false,
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.button_1"
                   },
@@ -56053,6 +57981,7 @@
                     "name": "text_2",
                     "value": "Second bit of text. The button below takes you to the audio activity.",
                     "hidden": false,
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.text_2"
                   },
@@ -56071,6 +58000,7 @@
                       }
                     ],
                     "hidden": false,
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "home_practice.workshop_activity.content_box.button_2"
                   }
@@ -56095,6 +58025,7 @@
         "type": "template",
         "name": "ending",
         "value": "ending",
+        "exclude_from_translation": true,
         "rows": [],
         "_nested_name": "ending"
       }
@@ -56110,6 +58041,7 @@
         "type": "round_button",
         "name": "round_button_1",
         "value": "Value",
+        "exclude_from_translation": true,
         "parameter_list": {
           "icon_src": "/plh_images/icons/letter_outline.svg",
           "text": "Message",
@@ -56121,6 +58053,7 @@
         "type": "round_button",
         "name": "round_button_2",
         "value": "Value",
+        "exclude_from_translation": true,
         "parameter_list": {
           "icon_src": "/plh_images/icons/letter_outline.svg",
           "text": "Start",
@@ -56132,6 +58065,7 @@
         "type": "round_button",
         "name": "round_button_2",
         "value": "Value",
+        "exclude_from_translation": true,
         "parameter_list": {
           "icon_src": "/plh_images/icons/letter_outline.svg",
           "style": "home_screen orange"
@@ -56139,9 +58073,16 @@
         "_nested_name": "round_button_2"
       },
       {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
         "type": "round_button",
         "name": "round_button_3",
         "value": "Value",
+        "exclude_from_translation": true,
         "parameter_list": {
           "icon_src": "airplane"
         },
@@ -56166,9 +58107,16 @@
     "status": "released",
     "rows": [
       {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
         "type": "button",
         "name": "btn_example_1",
         "value": "navigation",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "navigation high",
           "button_align": "right"
@@ -56176,9 +58124,16 @@
         "_nested_name": "btn_example_1"
       },
       {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
         "type": "button",
         "name": "btn_example_2",
         "value": "information",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "information flexible",
           "text_align": "left",
@@ -56190,6 +58145,7 @@
         "type": "button",
         "name": "btn_example_3",
         "value": "make me smile",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "make_me_smile",
           "text_align": "right"
@@ -56200,6 +58156,7 @@
         "type": "button",
         "name": "btn_example_4",
         "value": "get me going",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "get_me_going full",
           "text_align": "center"
@@ -56210,6 +58167,7 @@
         "type": "button",
         "name": "btn_example_9",
         "value": "options",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "options",
           "text_align": "center"
@@ -56220,6 +58178,7 @@
         "type": "button",
         "name": "btn_example_9",
         "value": "some text as an example ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "flexible tall alternative information",
           "text_align": "center"
@@ -56229,23 +58188,27 @@
       {
         "type": "button",
         "value": "Example title orange button big",
+        "exclude_from_translation": true,
         "name": "button",
         "_nested_name": "button"
       },
       {
         "type": "button",
         "value": "text",
+        "exclude_from_translation": true,
         "name": "button",
         "_nested_name": "button"
       },
       {
         "type": "title",
         "value": "Display group ",
+        "exclude_from_translation": true,
         "name": "title",
         "_nested_name": "title"
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "two_columns"
         },
@@ -56254,54 +58217,63 @@
             "type": "button",
             "name": "btn_example_3",
             "value": "make me smile",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_3"
           },
           {
             "type": "button",
             "name": "btn_example_4",
             "value": "get me going",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_4"
           },
           {
             "type": "button",
             "name": "btn_example_9",
             "value": "options",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_9"
           },
           {
             "type": "button",
             "name": "btn_example_9",
             "value": "some text as an example ",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_9"
           },
           {
             "type": "button",
             "name": "btn_example_3",
             "value": "make me smile",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_3"
           },
           {
             "type": "button",
             "name": "btn_example_4",
             "value": "get me going",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_4"
           },
           {
             "type": "button",
             "name": "btn_example_9",
             "value": "options",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_9"
           },
           {
             "type": "button",
             "name": "btn_example_9",
             "value": "some text as an example ",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_9"
           },
           {
             "type": "button",
             "name": "btn_example_9",
             "value": "some text as an example ",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.btn_example_9"
           }
         ],
@@ -56313,20 +58285,22 @@
   },
   {
     "flow_type": "template",
-    "flow_name": "feature_dg_dashed_box_type",
+    "flow_name": "feature_dg_dashed_box",
     "status": "released",
     "rows": [
       {
         "type": "display_group",
         "name": "dg_example_dashed_box",
         "value": "dg_example_dashed_box",
+        "exclude_from_translation": true,
         "parameter_list": {
-          "type": "dashed_box"
+          "style": "dashed_box"
         },
         "rows": [
           {
             "type": "subtitle",
             "value": "Subtitle",
+            "exclude_from_translation": true,
             "name": "subtitle",
             "_nested_name": "dg_example_dashed_box.subtitle"
           },
@@ -56334,6 +58308,7 @@
             "type": "parent_point_box",
             "name": "points_example_1",
             "value": 3,
+            "exclude_from_translation": true,
             "parameter_list": {
               "lottie_src": "lottie_animations/parent_centre.json",
               "text": "text two"
@@ -56344,25 +58319,27 @@
             "type": "button",
             "name": "btn_example",
             "value": "Continue",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_dashed_box.btn_example"
           }
         ],
         "_nested_name": "dg_example_dashed_box"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_dg_types.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_dg_styles.xlsx"
   },
   {
     "flow_type": "template",
-    "flow_name": "feature_dg_form_type",
+    "flow_name": "feature_dg_form",
     "status": "released",
     "rows": [
       {
         "type": "display_group",
         "name": "dg_example_form",
         "value": "dg_example_form",
+        "exclude_from_translation": true,
         "parameter_list": {
-          "type": "form",
+          "style": "form",
           "get_device_info": "true",
           "button_text": "Send"
         },
@@ -56370,6 +58347,7 @@
           {
             "type": "text_box",
             "name": "user_name",
+            "exclude_from_translation": true,
             "parameter_list": {
               "help": "some help text",
               "placeholder": "Add your name"
@@ -56379,6 +58357,7 @@
           {
             "type": "text_box",
             "name": "user_phone",
+            "exclude_from_translation": true,
             "parameter_list": {
               "help": "some help text",
               "placeholder": "Add your phone number"
@@ -56401,6 +58380,7 @@
                 "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "label_text": "Example answer?"
             },
@@ -56449,6 +58429,7 @@
             "type": "simple_checkbox",
             "name": "checkbox_2",
             "value": true,
+            "exclude_from_translation": true,
             "parameter_list": {
               "label_text": "Example answer?"
             },
@@ -56457,12 +58438,14 @@
           {
             "type": "title",
             "value": "Some text here",
+            "exclude_from_translation": true,
             "name": "title",
             "_nested_name": "dg_example_form.title"
           },
           {
             "type": "text_area",
             "name": "text_area",
+            "exclude_from_translation": true,
             "parameter_list": {
               "placeholder": "example placeholder"
             },
@@ -56472,7 +58455,7 @@
         "_nested_name": "dg_example_form"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_dg_types.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_dg_styles.xlsx"
   },
   {
     "flow_type": "template",
@@ -56483,96 +58466,112 @@
         "type": "title",
         "name": "title_breathe",
         "value": "Breathe not yell",
+        "exclude_from_translation": true,
         "_nested_name": "title_breathe"
       },
       {
         "type": "lottie_animation",
         "name": "animation_breathe",
         "value": "lottie_animations/parent_points/habit-breathe.json",
+        "exclude_from_translation": true,
         "_nested_name": "animation_breathe"
       },
       {
         "type": "title",
         "name": "title_consequence",
         "value": "Calm consequence",
+        "exclude_from_translation": true,
         "_nested_name": "title_consequence"
       },
       {
         "type": "lottie_animation",
         "name": "animation_consequence",
         "value": "lottie_animations/parent_points/habit-consequence.json",
+        "exclude_from_translation": true,
         "_nested_name": "animation_consequence"
       },
       {
         "type": "title",
         "name": "title_breathe",
         "value": "Good money choice",
+        "exclude_from_translation": true,
         "_nested_name": "title_breathe"
       },
       {
         "type": "lottie_animation",
         "name": "animation_money",
         "value": "lottie_animations/parent_points/habit-money.json",
+        "exclude_from_translation": true,
         "_nested_name": "animation_money"
       },
       {
         "type": "title",
         "name": "title_praise_teen",
         "value": "Praise your teen",
+        "exclude_from_translation": true,
         "_nested_name": "title_praise_teen"
       },
       {
         "type": "lottie_animation",
         "name": "animation_praise_teen",
         "value": "lottie_animations/parent_points/habit-praise-teen.json",
+        "exclude_from_translation": true,
         "_nested_name": "animation_praise_teen"
       },
       {
         "type": "title",
         "name": "title_praise_yourself",
         "value": "Praise Yourself",
+        "exclude_from_translation": true,
         "_nested_name": "title_praise_yourself"
       },
       {
         "type": "lottie_animation",
         "name": "animation_praise_yourself",
         "value": "lottie_animations/parent_points/habit-praise-yourself.json",
+        "exclude_from_translation": true,
         "_nested_name": "animation_praise_yourself"
       },
       {
         "type": "title",
         "name": "title_relax",
         "value": "Relax",
+        "exclude_from_translation": true,
         "_nested_name": "title_relax"
       },
       {
         "type": "lottie_animation",
         "name": "animation_relax",
         "value": "lottie_animations/parent_points/habit-relax.json",
+        "exclude_from_translation": true,
         "_nested_name": "animation_relax"
       },
       {
         "type": "title",
         "name": "title_safe",
         "value": "Safe",
+        "exclude_from_translation": true,
         "_nested_name": "title_safe"
       },
       {
         "type": "lottie_animation",
         "name": "animation_safe",
         "value": "lottie_animations/parent_points/habit-safe.json",
+        "exclude_from_translation": true,
         "_nested_name": "animation_safe"
       },
       {
         "type": "title",
         "name": "title_spend_time",
         "value": "One-on-one time",
+        "exclude_from_translation": true,
         "_nested_name": "title_spend_time"
       },
       {
         "type": "lottie_animation",
         "name": "animation_spend_time",
         "value": "lottie_animations/parent_points/habit-spend-time.json",
+        "exclude_from_translation": true,
         "_nested_name": "animation_spend_time"
       }
     ],
@@ -56587,6 +58586,7 @@
         "type": "display_group",
         "name": "animations",
         "value": "animations",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "two_columns"
         },
@@ -56595,192 +58595,224 @@
             "type": "lottie_animation",
             "name": "animation_breathe",
             "value": "lottie_animations/parent_points/habit-breathe.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_breathe"
           },
           {
             "type": "lottie_animation",
             "name": "animation_consequence",
             "value": "lottie_animations/parent_points/habit-consequence.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_consequence"
           },
           {
             "type": "lottie_animation",
             "name": "animation_money",
             "value": "lottie_animations/parent_points/habit-money.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_money"
           },
           {
             "type": "lottie_animation",
             "name": "animation_praise_teen",
             "value": "lottie_animations/parent_points/habit-praise-teen.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_praise_teen"
           },
           {
             "type": "lottie_animation",
             "name": "animation_praise_yourself",
             "value": "lottie_animations/parent_points/habit-praise-yourself.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_praise_yourself"
           },
           {
             "type": "lottie_animation",
             "name": "animation_relax",
             "value": "lottie_animations/parent_points/habit-relax.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_relax"
           },
           {
             "type": "lottie_animation",
             "name": "animation_safe",
             "value": "lottie_animations/parent_points/habit-safe.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_safe"
           },
           {
             "type": "lottie_animation",
             "name": "animation_spend_time",
             "value": "lottie_animations/parent_points/habit-spend-time.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_spend_time"
           },
           {
             "type": "lottie_animation",
             "name": "animation_breathe",
             "value": "lottie_animations/parent_points/habit-breathe.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_breathe"
           },
           {
             "type": "lottie_animation",
             "name": "animation_consequence",
             "value": "lottie_animations/parent_points/habit-consequence.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_consequence"
           },
           {
             "type": "lottie_animation",
             "name": "animation_money",
             "value": "lottie_animations/parent_points/habit-money.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_money"
           },
           {
             "type": "lottie_animation",
             "name": "animation_praise_teen",
             "value": "lottie_animations/parent_points/habit-praise-teen.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_praise_teen"
           },
           {
             "type": "lottie_animation",
             "name": "animation_praise_yourself",
             "value": "lottie_animations/parent_points/habit-praise-yourself.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_praise_yourself"
           },
           {
             "type": "lottie_animation",
             "name": "animation_relax",
             "value": "lottie_animations/parent_points/habit-relax.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_relax"
           },
           {
             "type": "lottie_animation",
             "name": "animation_safe",
             "value": "lottie_animations/parent_points/habit-safe.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_safe"
           },
           {
             "type": "lottie_animation",
             "name": "animation_spend_time",
             "value": "lottie_animations/parent_points/habit-spend-time.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_spend_time"
           },
           {
             "type": "lottie_animation",
             "name": "animation_breathe",
             "value": "lottie_animations/parent_points/habit-breathe.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_breathe"
           },
           {
             "type": "lottie_animation",
             "name": "animation_consequence",
             "value": "lottie_animations/parent_points/habit-consequence.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_consequence"
           },
           {
             "type": "lottie_animation",
             "name": "animation_money",
             "value": "lottie_animations/parent_points/habit-money.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_money"
           },
           {
             "type": "lottie_animation",
             "name": "animation_praise_teen",
             "value": "lottie_animations/parent_points/habit-praise-teen.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_praise_teen"
           },
           {
             "type": "lottie_animation",
             "name": "animation_praise_yourself",
             "value": "lottie_animations/parent_points/habit-praise-yourself.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_praise_yourself"
           },
           {
             "type": "lottie_animation",
             "name": "animation_relax",
             "value": "lottie_animations/parent_points/habit-relax.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_relax"
           },
           {
             "type": "lottie_animation",
             "name": "animation_safe",
             "value": "lottie_animations/parent_points/habit-safe.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_safe"
           },
           {
             "type": "lottie_animation",
             "name": "animation_spend_time",
             "value": "lottie_animations/parent_points/habit-spend-time.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_spend_time"
           },
           {
             "type": "lottie_animation",
             "name": "animation_breathe",
             "value": "lottie_animations/parent_points/habit-breathe.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_breathe"
           },
           {
             "type": "lottie_animation",
             "name": "animation_consequence",
             "value": "lottie_animations/parent_points/habit-consequence.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_consequence"
           },
           {
             "type": "lottie_animation",
             "name": "animation_money",
             "value": "lottie_animations/parent_points/habit-money.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_money"
           },
           {
             "type": "lottie_animation",
             "name": "animation_praise_teen",
             "value": "lottie_animations/parent_points/habit-praise-teen.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_praise_teen"
           },
           {
             "type": "lottie_animation",
             "name": "animation_praise_yourself",
             "value": "lottie_animations/parent_points/habit-praise-yourself.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_praise_yourself"
           },
           {
             "type": "lottie_animation",
             "name": "animation_relax",
             "value": "lottie_animations/parent_points/habit-relax.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_relax"
           },
           {
             "type": "lottie_animation",
             "name": "animation_safe",
             "value": "lottie_animations/parent_points/habit-safe.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_safe"
           },
           {
             "type": "lottie_animation",
             "name": "animation_spend_time",
             "value": "lottie_animations/parent_points/habit-spend-time.json",
+            "exclude_from_translation": true,
             "_nested_name": "animations.animation_spend_time"
           }
         ],
@@ -56797,6 +58829,7 @@
       {
         "name": "placeholder",
         "value": "placeholder",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "placeholder"
       },
@@ -56804,12 +58837,14 @@
         "type": "set_field",
         "name": "feature_default_input",
         "value": "default input",
+        "exclude_from_translation": true,
         "_nested_name": "feature_default_input"
       },
       {
         "type": "text",
         "name": "text_1",
         "value": "Text box 1: \nShows @local.placeholder before user input is given, and when user input is deleted",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -56842,6 +58877,7 @@
             "_cleaned": "changed | set_field: feature_input_tracker_1:@local.text_box_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "placeholder": "@local.placeholder"
         },
@@ -56903,6 +58939,7 @@
         "type": "text",
         "name": "text_2",
         "value": "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -56936,6 +58973,7 @@
             "_cleaned": "changed | set_field: feature_input_tracker_2:@local.text_box_2"
           }
         ],
+        "exclude_from_translation": true,
         "_nested_name": "text_box_2",
         "_dynamicFields": {
           "value": [
@@ -56992,6 +59030,7 @@
         "type": "text",
         "name": "text_3",
         "value": "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -57034,6 +59073,7 @@
             "_cleaned": "changed | set_field: feature_input_tracker_3:@local.text_box_3"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "placeholder": "@local.placeholder"
         },
@@ -57118,6 +59158,7 @@
             "_cleaned": "changed | set_field: feature_input_tracker_4:@local.text_box_4"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "placeholder": "@local.placeholder",
           "prioritise_placeholder": "false"
@@ -57191,6 +59232,7 @@
         "type": "text",
         "name": "text_5",
         "value": "Text box 5: \nShows @local.placeholder before user input is given, and when user input is deleted.",
+        "exclude_from_translation": true,
         "_nested_name": "text_5",
         "_dynamicFields": {
           "value": [
@@ -57224,6 +59266,7 @@
             "_cleaned": "changed | set_field: feature_input_tracker_5:@local.text_box_5"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "placeholder": "@local.placeholder",
           "prioritise_placeholder": "true"
@@ -57308,12 +59351,14 @@
           "name: name_2 | text: This is text 2",
           "name: name_3 | text: This is text 3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
       {
         "name": "placeholder",
         "value": "placeholder",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "placeholder"
       },
@@ -57321,12 +59366,14 @@
         "type": "set_field",
         "name": "feature_default_choice",
         "value": "name_2",
+        "exclude_from_translation": true,
         "_nested_name": "feature_default_choice"
       },
       {
         "type": "text",
         "name": "text_1",
         "value": "Combo box 1: \nShows @local.placeholder when no user input is given and when user input is deleted.",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -57359,6 +59406,7 @@
             "_cleaned": "changed | set_field:feature_choice_tracker_1:@local.combo_box_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "@local.placeholder"
@@ -57432,6 +59480,7 @@
         "type": "text",
         "name": "text_2",
         "value": "Combo box 2: \nShows the text associated to @fields.feature_default_choice before user input is given. Is blank when user input is deleted.",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -57464,6 +59513,7 @@
             "_cleaned": "changed | set_field:feature_choice_tracker_2:@local.combo_box_2"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list"
         },
@@ -57525,6 +59575,7 @@
         "type": "text",
         "name": "text_3",
         "value": "Combo boxes 3 and 4: \nShows the text associated to @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -57567,6 +59618,7 @@
             "_cleaned": "changed | set_field:feature_choice_tracker_3:@local.combo_box_3"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "@local.placeholder"
@@ -57663,6 +59715,7 @@
             "_cleaned": "changed | set_field:feature_choice_tracker_4:@local.combo_box_4"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "@local.placeholder",
@@ -57748,6 +59801,7 @@
         "type": "text",
         "name": "text_5",
         "value": "Combo box 5: \nShows @local.placeholder when no user input is given and when user input is deleted.",
+        "exclude_from_translation": true,
         "_nested_name": "text_5",
         "_dynamicFields": {
           "value": [
@@ -57781,6 +59835,7 @@
             "_cleaned": "changed | set_field:feature_choice_tracker_5:@local.combo_box_5"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "@local.placeholder",
@@ -57873,6 +59928,7 @@
       {
         "type": "tile_component",
         "name": "tile_example_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "icon_src": "plh_images/icons/star.svg",
           "first_line_text": "First item text",
@@ -57883,27 +59939,32 @@
       },
       {
         "name": "icon_src",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "icon_src"
       },
       {
         "name": "first_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "first_line_text"
       },
       {
         "name": "second_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "second_line_text"
       },
       {
         "name": "style",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "style"
       },
       {
         "type": "tile_component",
         "name": "tile_example_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "first_line_text": "Second item text",
           "second_line_text": "Second item text",
@@ -57913,22 +59974,26 @@
       },
       {
         "name": "first_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "first_line_text"
       },
       {
         "name": "second_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "second_line_text"
       },
       {
         "name": "style",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "style"
       },
       {
         "type": "tile_component",
         "name": "tile_example_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "first_line_text": "Third item text",
           "second_line_text": "Third item text",
@@ -57938,22 +60003,26 @@
       },
       {
         "name": "first_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "first_line_text"
       },
       {
         "name": "second_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "second_line_text"
       },
       {
         "name": "style",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "style"
       },
       {
         "type": "tile_component",
         "name": "tile_example_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "first_line_text": "Fourth item text",
           "second_line_text": "Fourth item text",
@@ -57963,22 +60032,26 @@
       },
       {
         "name": "first_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "first_line_text"
       },
       {
         "name": "second_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "second_line_text"
       },
       {
         "name": "style",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "style"
       },
       {
         "type": "tile_component",
         "name": "tile_example_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "first_line_text": "With Others",
           "style": "workshop_page",
@@ -57988,22 +60061,26 @@
       },
       {
         "name": "first_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "first_line_text"
       },
       {
         "name": "second_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "second_line_text"
       },
       {
         "name": "style",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "style"
       },
       {
         "type": "tile_component",
         "name": "tile_example_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "first_line_text": "Alone",
           "style": "workshop_page",
@@ -58013,22 +60090,26 @@
       },
       {
         "name": "first_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "first_line_text"
       },
       {
         "name": "second_line_text",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "second_line_text"
       },
       {
         "name": "style",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "style"
       },
       {
         "type": "display_group",
         "name": "dg",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "parent_point"
         },
@@ -58036,6 +60117,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "plh_images/icons/star.svg",
               "first_line_text": "First itemt",
@@ -58047,6 +60129,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "plh_images/icons/star.svg",
               "first_line_text": "First item",
@@ -58058,6 +60141,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "plh_images/icons/star.svg",
               "first_line_text": "First itemt",
@@ -58069,6 +60153,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "plh_images/icons/star.svg",
               "first_line_text": "First",
@@ -58080,6 +60165,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "plh_images/icons/star.svg",
               "first_line_text": "First itemt",
@@ -58091,6 +60177,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "plh_images/icons/star.svg",
               "first_line_text": "First item",
@@ -58102,6 +60189,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "plh_images/icons/star.svg",
               "first_line_text": "First itemt",
@@ -58113,6 +60201,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "first_line_text": "First",
               "icon_src": "plh_images/icons/star.svg",
@@ -58124,6 +60213,7 @@
           {
             "type": "tile_component",
             "name": "tile_example_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "first_line_text": "First",
               "icon_src": "plh_images/icons/star.svg",
@@ -58146,12 +60236,14 @@
       {
         "name": "help_text",
         "value": "Click <img src=\"plh_images/icons/play_outline.svg\" width=\"30\" height=\"30\"> to start the timer",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "help_text"
       },
       {
         "type": "timer",
         "name": "timer_with_help",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "title": "with help"
@@ -58178,6 +60270,7 @@
       {
         "type": "timer",
         "name": "timer_is_editable_on_playing",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "title": "is editable on playing",
@@ -58205,6 +60298,7 @@
       {
         "type": "timer",
         "name": "timer_with_starting_minutes_5",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "title": "with starting minutes 5",
@@ -58232,6 +60326,7 @@
       {
         "type": "timer",
         "name": "timer_with_starting_seconds_20",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "title": "with starting seconds 20",
@@ -58259,6 +60354,7 @@
       {
         "type": "timer",
         "name": "timer_with_duration_extension_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "title": "with duration_extension 2",
@@ -58287,6 +60383,7 @@
         "type": "timer",
         "name": "timer_with_value",
         "value": 5,
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "title": "with value 5"
@@ -58321,9 +60418,10 @@
       {
         "type": "timer",
         "name": "ping_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "title": "Example 1",
-          "ping": "ping_1",
+          "ping": "plh_audio/timer/ping_1.wav",
           "starting_minutes": "0",
           "starting_seconds": "5"
         },
@@ -58332,9 +60430,10 @@
       {
         "type": "timer",
         "name": "ping_2",
+        "exclude_from_translation": true,
         "parameter_list": {
-          "title": "Exdample 2",
-          "ping": "ping_2",
+          "title": "Example 2",
+          "ping": "plh_audio/timer/ping_2.wav",
           "starting_minutes": "0",
           "starting_seconds": "5"
         },
@@ -58351,12 +60450,14 @@
       {
         "name": "help_text",
         "value": "some help",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "help_text"
       },
       {
         "type": "slider",
         "name": "slider_with_help",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "min": "0",
@@ -58389,6 +60490,7 @@
       {
         "type": "slider",
         "name": "slider_without_help",
+        "exclude_from_translation": true,
         "parameter_list": {
           "min": "0",
           "max": "7",
@@ -58404,6 +60506,7 @@
         "type": "slider",
         "name": "slider_with_value_2",
         "value": 2,
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "min": "0",
@@ -58436,6 +60539,7 @@
       {
         "type": "slider",
         "name": "slider_with_step_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "min": "0",
@@ -58469,6 +60573,7 @@
       {
         "type": "slider",
         "name": "slider_without_value",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "@local.help_text",
           "min": "0",
@@ -58501,6 +60606,7 @@
       {
         "type": "slider",
         "name": "slider_without_max_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "min": "0",
           "help": "@local.help_text",
@@ -58533,6 +60639,7 @@
       {
         "type": "slider",
         "name": "slider_without_value_labels",
+        "exclude_from_translation": true,
         "parameter_list": {
           "min": "0",
           "help": "@local.help_text",
@@ -58580,12 +60687,14 @@
           "71-80",
           "80+"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "category_list"
       },
       {
         "type": "number_selector",
         "name": "number_selector",
+        "exclude_from_translation": true,
         "parameter_list": {
           "category_list": "@local.category_list",
           "first_display_term": "4"
@@ -58620,6 +60729,7 @@
       {
         "name": "blank_display_text",
         "value": "Click here to answer",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "blank_display_text"
       },
@@ -58627,6 +60737,7 @@
         "type": "set_default",
         "name": "_value",
         "value": "@local.default_value",
+        "exclude_from_translation": true,
         "_nested_name": "_value",
         "_dynamicFields": {
           "value": [
@@ -58647,6 +60758,7 @@
       {
         "type": "text_box",
         "name": "text_box",
+        "exclude_from_translation": true,
         "parameter_list": {
           "blank_display_text": "@local.blank_display_text",
           "help": "some help text",
@@ -58675,6 +60787,7 @@
         "type": "text_box",
         "name": "text_box_1",
         "value": "Answer 1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "some help text",
           "text_align": "right",
@@ -58686,6 +60799,7 @@
         "type": "text_box",
         "name": "text_box_2",
         "value": "Answer 2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "some help text",
           "text_align": "left",
@@ -58697,6 +60811,7 @@
         "type": "text_box",
         "name": "text_box_3",
         "value": "Answer 3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "text_align": "center",
           "placeholder": "Add your answer 3"
@@ -58707,6 +60822,7 @@
         "type": "text_box",
         "name": "text_box_3",
         "value": "Number Input",
+        "exclude_from_translation": true,
         "parameter_list": {
           "text_align": "center",
           "placeholder": "Add your answer 3",
@@ -58726,6 +60842,7 @@
         "type": "dashed_box",
         "name": "dashed_box_passive",
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "alert",
           "icon_src": "plh_images/icons/star.svg",
@@ -58737,6 +60854,7 @@
         "type": "dashed_box",
         "name": "dashed_box_active",
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "default",
           "icon_src": "plh_images/icons/star.svg",
@@ -58748,6 +60866,7 @@
         "type": "dashed_box",
         "name": "dashed_box_passive",
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "alert",
           "icon_src": "plh_images/icons/star.svg",
@@ -58759,6 +60878,7 @@
         "type": "dashed_box",
         "name": "dashed_box_active",
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "default",
           "icon_src": "plh_images/icons/star.svg",
@@ -58770,6 +60890,7 @@
         "type": "dashed_box",
         "name": "dashed_box_active",
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "alert",
           "icon_src": "plh_images/icons/star.svg",
@@ -58789,12 +60910,14 @@
         "type": "dashed_box",
         "name": "dashed_box_passive",
         "value": "Every time you do a relax, mark your star.",
+        "exclude_from_translation": true,
         "_nested_name": "dashed_box_passive"
       },
       {
         "type": "dashed_box",
         "name": "dashed_box_active",
         "value": "Every time you do a relax, mark your star in ParentPoints to track your success. ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "alert",
           "icon_src": "plh_images/icons/star.svg",
@@ -58806,6 +60929,7 @@
         "type": "dashed_box",
         "name": "habit_text",
         "value": "Every time you do a relax, \nclick the @global.parent_point \nand celebrate your success",
+        "exclude_from_translation": true,
         "parameter_list": {
           "icon_src": "plh_images/icons/star_circle.svg",
           "icon_position": "top-left"
@@ -58831,6 +60955,7 @@
         "type": "dashed_box",
         "name": "habit_text_2",
         "value": "Every time you do a relax, click the @global.parent_point and celebrate your success",
+        "exclude_from_translation": true,
         "parameter_list": {
           "icon_src": "plh_images/icons/star_circle.svg",
           "icon_position": "top-left"
@@ -58876,6 +61001,7 @@
             "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label": "some text",
           "position": "right",
@@ -58939,6 +61065,7 @@
             "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label": "some text",
           "position": "center",
@@ -59001,6 +61128,7 @@
             "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label": "some text",
           "false_text": "false text"
@@ -59062,6 +61190,7 @@
             "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "label": "some text",
           "false_text": "false text"
@@ -59118,6 +61247,7 @@
       {
         "name": "label_text",
         "value": "Label text in local variable",
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "label_text"
       },
@@ -59137,8 +61267,10 @@
             "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
-          "label_text": "Example answer?"
+          "label_text": "Example answer?",
+          "reverse": "true"
         },
         "_nested_name": "checkbox_1",
         "_dynamicFields": {
@@ -59185,6 +61317,7 @@
         "type": "text",
         "name": "text_1",
         "value": "checkbox field: @field.demo_changed_field_checkbox",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -59206,6 +61339,7 @@
         "type": "text",
         "name": "text_2",
         "value": "checkbox local: @local.checkbox_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -59227,8 +61361,10 @@
         "type": "simple_checkbox",
         "name": "checkbox_2",
         "value": true,
+        "exclude_from_translation": true,
         "parameter_list": {
-          "label_text": "Example answer?"
+          "label_text": "Example answer?",
+          "align": "left"
         },
         "_nested_name": "checkbox_2"
       },
@@ -59236,6 +61372,7 @@
         "type": "text",
         "name": "text_3",
         "value": "checkbox local: @local.checkbox_2",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -59257,8 +61394,10 @@
         "type": "simple_checkbox",
         "name": "checkbox_3",
         "value": "@field.demo_changed_field_checkbox",
+        "exclude_from_translation": true,
         "parameter_list": {
-          "label_text": "Example answer?"
+          "label_text": "Example answer?",
+          "align": "center"
         },
         "_nested_name": "checkbox_3",
         "_dynamicFields": {
@@ -59281,18 +61420,21 @@
         "type": "simple_checkbox",
         "name": "checkbox_4",
         "value": false,
+        "exclude_from_translation": true,
         "_nested_name": "checkbox_4"
       },
       {
         "type": "simple_checkbox",
         "name": "checkbox_5",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "checkbox_5"
       },
       {
         "type": "simple_checkbox",
         "name": "checkbox_6",
         "value": "@local.checkbox_4",
+        "exclude_from_translation": true,
         "_nested_name": "checkbox_6",
         "_dynamicFields": {
           "value": [
@@ -59314,13 +61456,16 @@
         "type": "text",
         "name": "text_4",
         "value": "Checkbox with label_text set through local variable",
+        "exclude_from_translation": true,
         "_nested_name": "text_4"
       },
       {
         "type": "simple_checkbox",
         "name": "checkbox_7",
+        "exclude_from_translation": true,
         "parameter_list": {
-          "label_text": "@local.label_text"
+          "label_text": "@local.label_text",
+          "align": "right"
         },
         "_nested_name": "checkbox_7",
         "_dynamicFields": {
@@ -59352,6 +61497,7 @@
       {
         "type": "text_area",
         "name": "text_area",
+        "exclude_from_translation": true,
         "parameter_list": {
           "placeholder": "example placeholder"
         },
@@ -59361,6 +61507,7 @@
         "type": "text",
         "name": "text",
         "value": "the text entered is:\n\n@local.text_area",
+        "exclude_from_translation": true,
         "_nested_name": "text",
         "_dynamicFields": {
           "value": [
@@ -59400,6 +61547,7 @@
             "_cleaned": "click | go_to:weekly_workshops"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "home_screen light"
         },
@@ -59411,10 +61559,12 @@
             "type": "lottie_animation",
             "name": "lottie_src",
             "value": "lottie_animations/weekly_workshops.json",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_7.lottie_src"
           },
           {
             "type": "display_group",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "column"
             },
@@ -59426,6 +61576,7 @@
                 "type": "title",
                 "name": "title_ex_s",
                 "value": "@global.weekly_workshops",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "style": "alternative"
                 },
@@ -59456,6 +61607,7 @@
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "icon_src": "plh_images/icons/letter_outline.svg",
                   "text": "Message",
@@ -59487,6 +61639,7 @@
             "_cleaned": "click | go_to:parent_points"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "home_screen shade"
         },
@@ -59498,10 +61651,18 @@
             "type": "lottie_animation",
             "name": "lottie_src",
             "value": "lottie_animations/parent_points.json",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_7.lottie_src"
           },
           {
+            "exclude_from_translation": true,
+            "type": "set_variable",
+            "name": "set_variable",
+            "_nested_name": "dg_example_7.set_variable"
+          },
+          {
             "type": "display_group",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "column"
             },
@@ -59513,6 +61674,7 @@
                 "type": "title",
                 "name": "title_ex_s",
                 "value": "@global.parent_points",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "style": "alternative"
                 },
@@ -59542,6 +61704,7 @@
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "icon_src": "plh_images/icons/play_outline_white.svg",
                   "text": "Start",
@@ -59573,6 +61736,7 @@
             "_cleaned": "click | go_to:parent_centre"
           }
         ],
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "home_screen dark"
         },
@@ -59584,10 +61748,12 @@
             "type": "lottie_animation",
             "name": "lottie_src",
             "value": "lottie_animations/parent_centre.json",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_7.lottie_src"
           },
           {
             "type": "display_group",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "column"
             },
@@ -59599,6 +61765,7 @@
                 "type": "title",
                 "name": "title_ex_s",
                 "value": "@global.parent_centre",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "style": "alternative"
                 },
@@ -59628,6 +61795,7 @@
                 "type": "round_button",
                 "name": "round_button_1",
                 "value": "Value",
+                "exclude_from_translation": true,
                 "parameter_list": {
                   "icon_src": "plh_images/icons/play_outline_white.svg",
                   "style": "home_screen dark_orange"
@@ -59640,6 +61808,12 @@
             ],
             "name": "display_group",
             "_nested_name": "dg_example_7.display_group"
+          },
+          {
+            "exclude_from_translation": true,
+            "type": "set_variable",
+            "name": "set_variable",
+            "_nested_name": "dg_example_7.set_variable"
           }
         ],
         "_nested_name": "dg_example_7"
@@ -59656,6 +61830,7 @@
         "type": "lottie_animation",
         "name": "relax_anim",
         "value": "lottie_animations/relax1.json",
+        "exclude_from_translation": true,
         "_nested_name": "relax_anim"
       }
     ],
@@ -59670,30 +61845,35 @@
         "type": "title",
         "name": "title1",
         "value": "<span>This is a title where part of it is </span><span><i>italics</i></span>",
+        "exclude_from_translation": true,
         "_nested_name": "title1"
       },
       {
         "type": "text",
         "name": "text1",
         "value": "<span>This is text where part is </span><span><b>bold </b></span><span>part is in </span><span><i>italics</i></span><span><b><i> </b></i></span><span>and part is </span><span><b><i>both bold and italics (emphasised) </b></i></span>",
+        "exclude_from_translation": true,
         "_nested_name": "text1"
       },
       {
         "type": "dashed_box",
         "name": "box1",
         "value": "<span>This is a dashed box where some of the text is </span><span><b>bold</b></span><span> and </span><span><i>italics</i></span>",
+        "exclude_from_translation": true,
         "_nested_name": "box1"
       },
       {
         "type": "button",
         "name": "button1",
         "value": "<span>Some of this button is </span><span><b>bold. </b></span><span><i>WOAH!</i></span>",
+        "exclude_from_translation": true,
         "_nested_name": "button1"
       },
       {
         "type": "text",
         "name": "list1",
         "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n- List item 1\n- List item 2\n- List item 3",
+        "exclude_from_translation": true,
         "_nested_name": "list1"
       }
     ],
@@ -59707,6 +61887,7 @@
       {
         "type": "display_group",
         "name": "example_dp_gr",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_1"
         },
@@ -59719,6 +61900,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title light_orange",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -59731,6 +61913,7 @@
             "type": "text",
             "name": "text_ex_text",
             "value": "Text for display light_orange",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "center"
             },
@@ -59742,6 +61925,7 @@
       {
         "type": "display_group",
         "name": "dg_example_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_2"
         },
@@ -59754,6 +61938,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title orange",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -59766,6 +61951,7 @@
             "type": "text",
             "name": "text_ex_text",
             "value": "Text for display orange",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "right"
             },
@@ -59777,6 +61963,7 @@
       {
         "type": "display_group",
         "name": "dg_example_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_3"
         },
@@ -59789,6 +61976,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title light_blue",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -59801,6 +61989,7 @@
             "type": "text",
             "name": "text_ex_text",
             "value": "Text for display light_blue",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left"
             },
@@ -59812,6 +62001,7 @@
       {
         "type": "display_group",
         "name": "dg_example_4",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_4"
         },
@@ -59824,6 +62014,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title blue",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -59836,6 +62027,7 @@
             "type": "text",
             "name": "text_ex_text",
             "value": "Text for display blue",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "center"
             },
@@ -59847,6 +62039,7 @@
       {
         "type": "display_group",
         "name": "dg_example_6",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_5"
         },
@@ -59859,6 +62052,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title dark_blue",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "alternative"
             },
@@ -59871,6 +62065,7 @@
             "type": "text",
             "name": "text_ex_text",
             "value": "Text for display dark_blue",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "right"
             },
@@ -59882,6 +62077,7 @@
       {
         "type": "display_group",
         "name": "dg_example_7",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner_active",
           "offset": "30"
@@ -59895,6 +62091,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title with offset",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -59907,6 +62104,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/characters/group/talk_together.png",
+            "exclude_from_translation": true,
             "style_list": [
               "max-width: 250px"
             ],
@@ -59918,6 +62116,7 @@
       {
         "type": "display_group",
         "name": "dg_example_8",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "white_box"
         },
@@ -59930,6 +62129,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title white box",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -59942,6 +62142,7 @@
             "type": "text",
             "name": "text_ex_text",
             "value": "Text for display white box",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left"
             },
@@ -59953,6 +62154,7 @@
       {
         "type": "display_group",
         "name": "dg_example_8",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "white_box"
         },
@@ -59965,6 +62167,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title white box",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -59977,6 +62180,7 @@
             "type": "text",
             "name": "text_ex_text",
             "value": "Text for display white box",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left"
             },
@@ -59988,6 +62192,7 @@
       {
         "type": "display_group",
         "name": "dg_example_8",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "navigation"
         },
@@ -60000,6 +62205,7 @@
             "type": "button",
             "name": "btn_example",
             "value": "Continue",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "blue"
             },
@@ -60011,6 +62217,7 @@
       {
         "type": "display_group",
         "name": "dg_example_8",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner_welcome"
         },
@@ -60020,6 +62227,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/workshop_modes/guide_2/wave.svg",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_8.image"
           }
         ],
@@ -60028,6 +62236,7 @@
       {
         "type": "display_group",
         "name": "dg_example_7",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner_short"
         },
@@ -60037,6 +62246,7 @@
             "type": "subtitle",
             "name": "title_ex_s",
             "value": "Example short banner",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "small emphasised"
             },
@@ -60046,6 +62256,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/workshop_modes/guide_2/wave.svg",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_7.image"
           }
         ],
@@ -60054,6 +62265,7 @@
       {
         "type": "display_group",
         "name": "dg_example_7",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner_short"
         },
@@ -60062,6 +62274,7 @@
             "type": "subtitle",
             "name": "title_ex_s",
             "value": "Example short banner with more text",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "small emphasised"
             },
@@ -60071,6 +62284,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/workshop_modes/guide_2/wave.svg",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_7.image"
           }
         ],
@@ -60079,6 +62293,7 @@
       {
         "type": "display_group",
         "name": "dg_example_7",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner_welcome"
         },
@@ -60087,6 +62302,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/workshop_modes/guide_2/relax.svg",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_7.image"
           }
         ],
@@ -60095,6 +62311,7 @@
       {
         "type": "display_group",
         "name": "dg_example_dashed_box",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "dashed_box",
           "icon_src": "plh_images/icons/star.svg"
@@ -60103,6 +62320,7 @@
           {
             "type": "subtitle",
             "value": "survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "right"
             },
@@ -60113,6 +62331,7 @@
             "type": "parent_point_box",
             "name": "points_example_1",
             "value": 3,
+            "exclude_from_translation": true,
             "parameter_list": {
               "lottie_src": "lottie_animations/parent_centre.json",
               "text": "text two"
@@ -60123,23 +62342,33 @@
             "type": "button",
             "name": "btn_example",
             "value": "Continue",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_dashed_box.btn_example"
           }
         ],
         "_nested_name": "dg_example_dashed_box"
       },
       {
+        "type": "title",
+        "value": "form with 'go to'",
+        "name": "title",
+        "_nested_name": "title"
+      },
+      {
         "type": "display_group",
         "name": "dg_example_form",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "form",
           "get_device_info": "true",
-          "button_text": "Send"
+          "button_text": "Send",
+          "button_go_to": "feature_audio"
         },
         "rows": [
           {
             "type": "text_box",
             "name": "user_name",
+            "exclude_from_translation": true,
             "parameter_list": {
               "help": "some help text",
               "placeholder": "Add your name"
@@ -60149,6 +62378,7 @@
           {
             "type": "text_box",
             "name": "user_phone",
+            "exclude_from_translation": true,
             "parameter_list": {
               "help": "some help text",
               "placeholder": "Add your phone number"
@@ -60171,6 +62401,7 @@
                 "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "label_text": "Example answer?"
             },
@@ -60219,6 +62450,7 @@
             "type": "simple_checkbox",
             "name": "checkbox_2",
             "value": true,
+            "exclude_from_translation": true,
             "parameter_list": {
               "label_text": "Example answer?"
             },
@@ -60227,12 +62459,141 @@
           {
             "type": "title",
             "value": "Some text here",
+            "exclude_from_translation": true,
             "name": "title",
             "_nested_name": "dg_example_form.title"
           },
           {
             "type": "text_area",
             "name": "text_area",
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "placeholder": "example placeholder"
+            },
+            "_nested_name": "dg_example_form.text_area"
+          }
+        ],
+        "_nested_name": "dg_example_form"
+      },
+      {
+        "type": "title",
+        "value": "pop up form",
+        "name": "title",
+        "_nested_name": "title"
+      },
+      {
+        "type": "display_group",
+        "name": "dg_example_form",
+        "exclude_from_translation": true,
+        "parameter_list": {
+          "style": "form",
+          "get_device_info": "true",
+          "button_text": "Send",
+          "button_pop_up": "feature_audio"
+        },
+        "rows": [
+          {
+            "type": "text_box",
+            "name": "user_name",
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "help": "some help text",
+              "placeholder": "Add your name"
+            },
+            "_nested_name": "dg_example_form.user_name"
+          },
+          {
+            "type": "text_box",
+            "name": "user_phone",
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "help": "some help text",
+              "placeholder": "Add your phone number"
+            },
+            "_nested_name": "dg_example_form.user_phone"
+          },
+          {
+            "type": "simple_checkbox",
+            "name": "checkbox_1",
+            "value": false,
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "demo_changed_field_checkbox",
+                  "@local.checkbox_1"
+                ],
+                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
+              }
+            ],
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "label_text": "Example answer?"
+            },
+            "_nested_name": "dg_example_form.checkbox_1",
+            "_dynamicFields": {
+              "action_list": {
+                "0": {
+                  "args": {
+                    "1": [
+                      {
+                        "fullExpression": "@local.checkbox_1",
+                        "matchedExpression": "@local.checkbox_1",
+                        "type": "local",
+                        "fieldName": "checkbox_1"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      "matchedExpression": "@local.checkbox_1",
+                      "type": "local",
+                      "fieldName": "checkbox_1"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      "matchedExpression": "@local.checkbox_1",
+                      "type": "local",
+                      "fieldName": "checkbox_1"
+                    }
+                  ]
+                }
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.checkbox_1": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ]
+            }
+          },
+          {
+            "type": "simple_checkbox",
+            "name": "checkbox_2",
+            "value": true,
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "label_text": "Example answer?"
+            },
+            "_nested_name": "dg_example_form.checkbox_2"
+          },
+          {
+            "type": "title",
+            "value": "Some text here",
+            "exclude_from_translation": true,
+            "name": "title",
+            "_nested_name": "dg_example_form.title"
+          },
+          {
+            "type": "text_area",
+            "name": "text_area",
+            "exclude_from_translation": true,
             "parameter_list": {
               "placeholder": "example placeholder"
             },
@@ -60253,10 +62614,12 @@
         "type": "text",
         "name": "text_1",
         "value": "Display group with style column",
+        "exclude_from_translation": true,
         "_nested_name": "text_1"
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_1 column"
         },
@@ -60268,17 +62631,20 @@
             "type": "text",
             "name": "text",
             "value": "Text 1",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.text"
           },
           {
             "type": "title",
             "name": "title",
             "value": "title 1",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.title"
           },
           {
             "type": "button",
             "value": "Ok",
+            "exclude_from_translation": true,
             "name": "button",
             "_nested_name": "display_group.button"
           }
@@ -60290,10 +62656,12 @@
         "type": "text",
         "name": "text_2",
         "value": "Display group with style row",
+        "exclude_from_translation": true,
         "_nested_name": "text_2"
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_2 row"
         },
@@ -60305,17 +62673,20 @@
             "type": "text",
             "name": "text",
             "value": "Text 1",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.text"
           },
           {
             "type": "title",
             "name": "title",
             "value": "title 1",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.title"
           },
           {
             "type": "button",
             "value": "Ok",
+            "exclude_from_translation": true,
             "name": "button",
             "_nested_name": "display_group.button"
           }
@@ -60327,10 +62698,12 @@
         "type": "text",
         "name": "text_3",
         "value": "Display group with style banner and parameter offset: 50;",
+        "exclude_from_translation": true,
         "_nested_name": "text_3"
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_2 row",
           "offset": "50"
@@ -60342,6 +62715,7 @@
           {
             "type": "image",
             "value": "plh_images/home_page/home_page_workshops.svg",
+            "exclude_from_translation": true,
             "name": "image",
             "_nested_name": "display_group.image"
           }
@@ -60361,6 +62735,7 @@
         "type": "audio",
         "name": "audio_1",
         "value": "plh_audio/sample.mp3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "range_bar_disabled": "true",
           "time_to_rewind": "5",
@@ -60375,6 +62750,7 @@
         "type": "audio",
         "name": "audio_2",
         "value": "plh_audio/sample.mp3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "range_bar_disabled": "false",
           "time_to_rewind": "3",
@@ -60396,6 +62772,7 @@
     "rows": [
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_1"
         },
@@ -60407,6 +62784,7 @@
             "type": "title",
             "name": "ft",
             "value": "GET REAL",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60419,6 +62797,7 @@
             "type": "text",
             "name": "ftt",
             "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left",
               "style": "whiteText"
@@ -60433,6 +62812,7 @@
             "type": "button",
             "name": "bt_1",
             "value": "Button",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "nested_color full-width"
             },
@@ -60444,6 +62824,7 @@
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_2"
         },
@@ -60455,6 +62836,7 @@
             "type": "title",
             "name": "ft",
             "value": "GET REAL",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60467,6 +62849,7 @@
             "type": "subtitle",
             "name": "ss",
             "value": "Subtitle",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60479,6 +62862,7 @@
             "type": "text",
             "name": "ftt",
             "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left",
               "style": "whiteText"
@@ -60493,6 +62877,7 @@
             "type": "button",
             "name": "bt_2",
             "value": "Button",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "nested_color full-width"
             },
@@ -60504,6 +62889,7 @@
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_3"
         },
@@ -60515,6 +62901,7 @@
             "type": "title",
             "name": "ft",
             "value": "GET REAL",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60527,6 +62914,7 @@
             "type": "subtitle",
             "name": "ss",
             "value": "Subtitle",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60539,6 +62927,7 @@
             "type": "text",
             "name": "ftt",
             "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left",
               "style": "whiteText"
@@ -60553,6 +62942,7 @@
             "type": "button",
             "name": "bt_3",
             "value": "Button",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "nested_color  full-width"
             },
@@ -60563,7 +62953,14 @@
         "_nested_name": "display_group"
       },
       {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_4"
         },
@@ -60575,6 +62972,7 @@
             "type": "title",
             "name": "ft",
             "value": "GET REAL",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60587,6 +62985,7 @@
             "type": "subtitle",
             "name": "ss",
             "value": "Subtitle",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60599,6 +62998,7 @@
             "type": "text",
             "name": "ftt",
             "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left",
               "style": "whiteText"
@@ -60613,6 +63013,7 @@
             "type": "button",
             "name": "bt_3",
             "value": "Button",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "nested_color full-width"
             },
@@ -60624,6 +63025,7 @@
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_5"
         },
@@ -60635,6 +63037,7 @@
             "type": "title",
             "name": "ft",
             "value": "GET REAL",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60647,6 +63050,7 @@
             "type": "subtitle",
             "name": "ss",
             "value": "Subtitle",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60659,6 +63063,7 @@
             "type": "text",
             "name": "ftt",
             "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left",
               "style": "whiteText"
@@ -60673,6 +63078,7 @@
             "type": "button",
             "name": "bt_3",
             "value": "Button",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "nested_color full-width"
             },
@@ -60683,7 +63089,14 @@
         "_nested_name": "display_group"
       },
       {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
+      },
+      {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_5"
         },
@@ -60695,6 +63108,7 @@
             "type": "title",
             "name": "ft",
             "value": "GET REAL",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60707,6 +63121,7 @@
             "type": "subtitle",
             "name": "ss",
             "value": "Subtitle",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60719,6 +63134,7 @@
             "type": "text",
             "name": "ftt",
             "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left",
               "style": "whiteText"
@@ -60733,6 +63149,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/workshop_modes/group/relax.svg",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "corner"
             },
@@ -60744,6 +63161,7 @@
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_2"
         },
@@ -60755,6 +63173,7 @@
             "type": "title",
             "name": "ft",
             "value": "GET REAL",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60764,6 +63183,7 @@
             "type": "text",
             "name": "ftt",
             "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left",
               "style": "whiteText"
@@ -60777,6 +63197,7 @@
           {
             "type": "display_group",
             "name": "bgg_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "tool_1"
             },
@@ -60788,6 +63209,7 @@
                 "type": "image",
                 "name": "image",
                 "value": "plh_images/workshop_modes/group/relax.svg",
+                "exclude_from_translation": true,
                 "_nested_name": "display_group.bgg_1.image"
               }
             ],
@@ -60799,6 +63221,7 @@
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tool_3"
         },
@@ -60810,6 +63233,7 @@
             "type": "title",
             "name": "ft",
             "value": "GET REAL",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "white"
             },
@@ -60819,6 +63243,7 @@
             "type": "text",
             "name": "ftt",
             "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            "exclude_from_translation": true,
             "parameter_list": {
               "text_align": "left",
               "style": "whiteText"
@@ -60832,6 +63257,7 @@
           {
             "type": "display_group",
             "name": "bgg_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "tool_2"
             },
@@ -60843,6 +63269,7 @@
                 "type": "image",
                 "name": "image",
                 "value": "plh_images/workshop_modes/group/relax.svg",
+                "exclude_from_translation": true,
                 "_nested_name": "display_group.bgg_1.image"
               }
             ],
@@ -60864,6 +63291,7 @@
         "type": "text",
         "name": "text_1",
         "value": "value 1 is @fields.demo_changed_field_parent_point",
+        "exclude_from_translation": true,
         "_nested_name": "text_1",
         "_dynamicFields": {
           "value": [
@@ -60885,6 +63313,7 @@
         "type": "text",
         "name": "text_2",
         "value": "value 2 is @fields.demo_changed_field_parent_point_1",
+        "exclude_from_translation": true,
         "_nested_name": "text_2",
         "_dynamicFields": {
           "value": [
@@ -60906,6 +63335,7 @@
         "type": "text",
         "name": "text_3",
         "value": "value 3 is @fields.demo_changed_field_parent_point_2",
+        "exclude_from_translation": true,
         "_nested_name": "text_3",
         "_dynamicFields": {
           "value": [
@@ -60926,6 +63356,7 @@
       {
         "type": "display_group",
         "name": "dg",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "parent_point"
         },
@@ -60936,6 +63367,7 @@
           {
             "name": "init_value_1",
             "value": 2,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.init_value_1"
           },
@@ -60955,6 +63387,7 @@
                 "_cleaned": "changed | set_field: demo_changed_field_parent_point: @local.points_example"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "@local.icon_src1",
               "text": "@local.text1"
@@ -61038,12 +63471,14 @@
           {
             "name": "icon_src1",
             "value": "plh_images/habits/habit_money.svg",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.icon_src1"
           },
           {
             "name": "text",
             "value": "Good money choice",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.text"
           },
@@ -61063,6 +63498,7 @@
                 "_cleaned": "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "@local.icon_src1",
               "text": "@local.text1"
@@ -61135,12 +63571,14 @@
           {
             "name": "icon_src1",
             "value": "plh_images/habits/habit_money.svg",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.icon_src1"
           },
           {
             "name": "text1",
             "value": "Good money choice 1",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.text1"
           },
@@ -61160,6 +63598,7 @@
                 "_cleaned": "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "icon_src": "@local.icon_src1",
               "text": "@local.text1"
@@ -61232,6 +63671,7 @@
           {
             "name": "icon_src1",
             "value": "plh_images/habits/habit_money.svg",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.icon_src1"
           }
@@ -61241,12 +63681,14 @@
       {
         "type": "title",
         "value": "lottie",
+        "exclude_from_translation": true,
         "name": "title",
         "_nested_name": "title"
       },
       {
         "type": "display_group",
         "name": "dg",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "parent_point"
         },
@@ -61257,6 +63699,7 @@
           {
             "name": "init_value_1",
             "value": 2,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.init_value_1"
           },
@@ -61264,6 +63707,7 @@
             "type": "parent_point_box",
             "name": "points_example",
             "value": "@local.init_value_1",
+            "exclude_from_translation": true,
             "parameter_list": {
               "lottie_src": "lottie_animations/parent_points.json",
               "text": "text one"
@@ -61288,6 +63732,7 @@
           {
             "name": "text4",
             "value": "text one",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.text4"
           },
@@ -61295,6 +63740,7 @@
             "type": "parent_point_box",
             "name": "points_example_1",
             "value": 3,
+            "exclude_from_translation": true,
             "parameter_list": {
               "lottie_src": "lottie_animations/parent_centre.json",
               "text": "text two"
@@ -61304,6 +63750,7 @@
           {
             "name": "text5",
             "value": "text two",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.text5"
           },
@@ -61311,6 +63758,7 @@
             "type": "parent_point_box",
             "name": "points_example_2",
             "value": 3,
+            "exclude_from_translation": true,
             "parameter_list": {
               "lottie_src": "lottie_animations/parent_points.json",
               "text": "text three"
@@ -61320,6 +63768,7 @@
           {
             "name": "text6",
             "value": "text three",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "dg.text6"
           }
@@ -61340,12 +63789,14 @@
           "name:name_var_1 | text:Single",
           "name:name_var_2 | text:Pair"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer0_list"
       },
       {
         "name": "options_per_row",
         "value": 2,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "options_per_row"
       },
@@ -61353,6 +63804,7 @@
         "type": "radio_group",
         "name": "radio_group_square",
         "value": "Pair",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer0_list",
           "options_per_row": "@local.options_per_row"
@@ -61393,13 +63845,21 @@
           "name:name_var_1 | text:Woman | image:/plh_images/icons/heart.svg",
           "name:name_var_2 | text:Man | image:/plh_images/icons/heart.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer1_list"
+      },
+      {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
       },
       {
         "type": "radio_group",
         "name": "radio_group_square_ex1",
         "value": "Black",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer2_list",
           "options_per_row": "3"
@@ -61430,12 +63890,14 @@
           "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
           "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer2_list"
       },
       {
         "type": "radio_group",
         "name": "radio_group_square_ex2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer3_list",
           "options_per_row": "3"
@@ -61466,12 +63928,14 @@
           "name:name_var_2| image:/plh_images/icons/heart.svg",
           "name:name_var_3| image:/plh_images/icons/heart.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer3_list"
       },
       {
         "type": "radio_group",
         "name": "radio_group_square_ex2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer3_list",
           "options_per_row": "3",
@@ -61503,6 +63967,7 @@
           "name:name_var_2| image:/plh_images/icons/heart.svg",
           "name:name_var_3| image:/plh_images/icons/heart.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer3_list"
       }
@@ -61522,6 +63987,7 @@
           "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
           "name:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_1"
       },
@@ -61531,6 +63997,7 @@
           "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg",
           "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_2"
       },
@@ -61540,6 +64007,7 @@
           "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
           "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_3"
       },
@@ -61550,6 +64018,7 @@
           "name:name_var_2 | text:Second",
           "name:name_var_3 | text:Third"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_4"
       },
@@ -61560,6 +64029,7 @@
           "name:happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
           "name:happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_5"
       },
@@ -61570,6 +64040,7 @@
           "name:happier | image:plh_images/stickers/faces_yellow/happier.svg | image_checked:plh_images/stickers/faces_yellow/happier.svg",
           "name:happiest | image:plh_images/stickers/faces_yellow/happiest.svg | image_checked:plh_images/stickers/faces_yellow/happiest.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_6"
       },
@@ -61579,12 +64050,14 @@
           "name:happy | image:plh_images/stickers/faces_yellow/happy.svg | image_checked:plh_images/stickers/faces_yellow/happy.svg",
           "name:happier | image:plh_images/stickers/faces_yellow/happier.svg | image_checked:plh_images/stickers/faces_yellow/happier.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list_7"
       },
       {
         "type": "radio_group",
         "name": "radio_group_defaults",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_1"
         },
@@ -61610,6 +64083,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_four_per_row",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_1",
           "options_per_row": "4"
@@ -61636,6 +64110,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_two_per_row",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_1",
           "options_per_row": "2"
@@ -61662,6 +64137,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_two_options_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
@@ -61687,6 +64163,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_two_options_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2",
           "options_per_row": "2"
@@ -61713,6 +64190,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_with_tick",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_3"
         },
@@ -61739,6 +64217,7 @@
         "type": "radio_group",
         "name": "radio_group_text",
         "value": "name_var_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_4"
         },
@@ -61765,6 +64244,7 @@
         "type": "text",
         "name": "name_result_1",
         "value": "@local.radio_group_text",
+        "exclude_from_translation": true,
         "_nested_name": "name_result_1",
         "_dynamicFields": {
           "value": [
@@ -61786,6 +64266,7 @@
         "type": "radio_group",
         "name": "radio_group_image_1",
         "value": "happy",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_5"
         },
@@ -61812,6 +64293,7 @@
         "type": "text",
         "name": "name_result_2",
         "value": "@local.radio_group_image_1",
+        "exclude_from_translation": true,
         "_nested_name": "name_result_2",
         "_dynamicFields": {
           "value": [
@@ -61832,6 +64314,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_image_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_6"
         },
@@ -61858,6 +64341,7 @@
         "type": "radio_group",
         "name": "radio_group_image_3",
         "value": "happiest",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_5"
         },
@@ -61884,17 +64368,20 @@
         "type": "title",
         "name": "test",
         "value": "test",
+        "exclude_from_translation": true,
         "_nested_name": "test"
       },
       {
         "type": "text",
         "value": "without options",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text"
       },
       {
         "type": "radio_group",
         "name": "radio_group_two_options_3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2"
         },
@@ -61920,12 +64407,14 @@
       {
         "type": "text",
         "value": "with options",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text"
       },
       {
         "type": "radio_group",
         "name": "radio_group_two_options_4",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_2",
           "options_per_row": "2"
@@ -61952,12 +64441,14 @@
       {
         "type": "text",
         "value": "with options",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text"
       },
       {
         "type": "radio_group",
         "name": "radio_group_image_4",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_7",
           "options_per_row": "2"
@@ -61984,12 +64475,14 @@
       {
         "type": "text",
         "value": "without options",
+        "exclude_from_translation": true,
         "name": "text",
         "_nested_name": "text"
       },
       {
         "type": "radio_group",
         "name": "radio_group_image_5",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list_7"
         },
@@ -62026,17 +64519,20 @@
           "name:name_var_1 | text:Single",
           "name:name_var_2 | text:Pair"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer0_list"
       },
       {
         "name": "options_per_row",
         "value": 2,
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "options_per_row"
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "rows": [
           {
             "type": "button",
@@ -62053,6 +64549,7 @@
                 "_cleaned": "click | set_theme:active"
               }
             ],
+            "exclude_from_translation": true,
             "_nested_name": "display_group.active_theme_button"
           },
           {
@@ -62070,6 +64567,7 @@
                 "_cleaned": "click | set_theme:passive"
               }
             ],
+            "exclude_from_translation": true,
             "_nested_name": "display_group.passive_theme_button"
           }
         ],
@@ -62080,6 +64578,7 @@
         "type": "radio_group",
         "name": "radio_group_square",
         "value": "Pair",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer0_list",
           "options_per_row": "@local.options_per_row"
@@ -62120,13 +64619,21 @@
           "name:name_var_1 | text:Woman | image:/plh_images/icons/heart.svg",
           "name:name_var_2 | text:Man | image:/plh_images/icons/heart.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer1_list"
+      },
+      {
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "name": "set_variable",
+        "_nested_name": "set_variable"
       },
       {
         "type": "radio_group",
         "name": "radio_group_square_ex1",
         "value": "Black",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer2_list",
           "options_per_row": "3"
@@ -62157,12 +64664,14 @@
           "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
           "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer2_list"
       },
       {
         "type": "radio_group",
         "name": "radio_group_square_ex2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer3_list",
           "options_per_row": "3"
@@ -62193,6 +64702,7 @@
           "name:name_var_2| image:/plh_images/icons/heart.svg",
           "name:name_var_3| image:/plh_images/icons/heart.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer3_list"
       },
@@ -62203,6 +64713,7 @@
           "Second",
           "Third"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "combo_answer_list"
       },
@@ -62210,6 +64721,7 @@
         "type": "combo_box",
         "name": "combo_box_defaults",
         "value": "nothing",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.combo_answer_list"
         },
@@ -62235,6 +64747,7 @@
       {
         "type": "radio_group",
         "name": "radio_group_square_ex3",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer4_list",
           "options_per_row": "3",
@@ -62266,12 +64779,14 @@
           "name:name_var_2| image:/plh_images/icons/heart.svg",
           "name:name_var_3| image:/plh_images/icons/heart.svg"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer4_list"
       },
       {
         "type": "display_group",
         "name": "dg_example_7",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner_welcome"
         },
@@ -62284,6 +64799,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/characters/group/talk_together.png",
+            "exclude_from_translation": true,
             "style_list": [
               "max-width: 250px"
             ],
@@ -62295,6 +64811,7 @@
       {
         "type": "display_group",
         "name": "dg_example_7",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner_short"
         },
@@ -62303,6 +64820,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title banner title",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -62312,6 +64830,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/characters/group/talk_together.png",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_7.image"
           }
         ],
@@ -62320,6 +64839,7 @@
       {
         "type": "display_group",
         "name": "dg_example_7",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "banner"
         },
@@ -62328,6 +64848,7 @@
             "type": "title",
             "name": "title_ex_s",
             "value": "Example title banner title",
+            "exclude_from_translation": true,
             "parameter_list": {
               "style": "primary"
             },
@@ -62337,6 +64858,7 @@
             "type": "image",
             "name": "image",
             "value": "plh_images/characters/group/talk_together.png",
+            "exclude_from_translation": true,
             "_nested_name": "dg_example_7.image"
           }
         ],
@@ -62357,6 +64879,7 @@
           "name: name_2 | text: This is text 2",
           "name: name_3 | text: This is text 3"
         ],
+        "exclude_from_translation": true,
         "type": "set_variable",
         "_nested_name": "answer_list"
       },
@@ -62364,6 +64887,7 @@
         "type": "combo_box",
         "name": "combo_box_defaults",
         "value": "nothing",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "style": "active"
@@ -62391,6 +64915,7 @@
         "type": "text",
         "name": "text_result",
         "value": "You selected @local.combo_box_defaults",
+        "exclude_from_translation": true,
         "_nested_name": "text_result",
         "_dynamicFields": {
           "value": [
@@ -62411,6 +64936,7 @@
       {
         "type": "combo_box",
         "name": "combo_box_text_in_pop_up",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "text": "Text above the answers",
@@ -62439,6 +64965,7 @@
       {
         "type": "combo_box",
         "name": "combo_box_with_placeholder_1",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "Click here to answer"
@@ -62465,6 +64992,7 @@
       {
         "type": "combo_box",
         "name": "combo_box_with_placeholder_2",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "Click here to answer"
@@ -62492,6 +65020,7 @@
         "type": "text",
         "name": "text_result",
         "value": "You selected @local.combo_box_with_placeholder_2",
+        "exclude_from_translation": true,
         "_nested_name": "text_result",
         "_dynamicFields": {
           "value": [
@@ -62512,6 +65041,7 @@
       {
         "type": "combo_box",
         "name": "combo_box_allow_input",
+        "exclude_from_translation": true,
         "parameter_list": {
           "answer_list": "@local.answer_list",
           "placeholder": "Click here to answer",
@@ -62550,12 +65080,14 @@
         "type": "text",
         "name": "text",
         "value": "**This is bold text** and _italic text_ with markdown",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
         "type": "text",
         "name": "text",
         "value": "Font size medim and bold text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "medium emphasised center"
         },
@@ -62565,6 +65097,7 @@
         "type": "text",
         "name": "text",
         "value": "Italic right aligned large text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "large contextual right"
         },
@@ -62574,12 +65107,14 @@
         "type": "text",
         "name": "text",
         "value": "Standard text with default styles",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
         "type": "text",
         "name": "text",
         "value": "Italic center aligned large text and color white",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "large contextual center alternative center"
         },
@@ -62589,6 +65124,7 @@
         "type": "text",
         "name": "text",
         "value": "Font size large and bold text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "large emphasised right"
         },
@@ -62598,6 +65134,7 @@
         "type": "text",
         "name": "text",
         "value": "Tiny text",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "tiny center"
         },
@@ -62607,12 +65144,14 @@
         "type": "text",
         "name": "text",
         "value": "Left aligned",
+        "exclude_from_translation": true,
         "_nested_name": "text"
       },
       {
         "type": "text",
         "name": "text",
         "value": "Right aligned",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "right"
         },
@@ -62622,6 +65161,7 @@
         "type": "text",
         "name": "text",
         "value": "Center aligned",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center"
         },
@@ -62631,6 +65171,7 @@
         "type": "text",
         "name": "white color ",
         "value": "Center aligned",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "alternative"
         },
@@ -62639,11 +65180,13 @@
       {
         "type": "title",
         "value": "Display group",
+        "exclude_from_translation": true,
         "name": "title",
         "_nested_name": "title"
       },
       {
         "type": "display_group",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "two_columns"
         },
@@ -62652,30 +65195,35 @@
             "type": "text",
             "name": "text",
             "value": "some text",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.text"
           },
           {
             "type": "text",
             "name": "text",
             "value": "some text",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.text"
           },
           {
             "type": "text",
             "name": "text",
             "value": "some text",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.text"
           },
           {
             "type": "text",
             "name": "text",
             "value": "some text",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.text"
           },
           {
             "type": "text",
             "name": "white color ",
             "value": "some text",
+            "exclude_from_translation": true,
             "_nested_name": "display_group.white color "
           }
         ],
@@ -62694,6 +65242,7 @@
         "type": "title",
         "name": "title_debug_with_help_tooltip",
         "value": "tiny title left",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right",
@@ -62705,6 +65254,7 @@
         "type": "title",
         "name": "title_debug_without_help_tooltip",
         "value": "alternative center small",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center small alternative"
         },
@@ -62714,6 +65264,7 @@
         "type": "title",
         "name": "title_debug_text_aligh_center",
         "value": "medium right ",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right",
@@ -62725,6 +65276,7 @@
         "type": "title",
         "name": "title_debug_text_aligh_left",
         "value": "large alternative",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right",
@@ -62736,6 +65288,7 @@
         "type": "title",
         "name": "title_debug_text_aligh_right",
         "value": "huge center",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right",
@@ -62747,6 +65300,7 @@
         "type": "title",
         "name": "title_debug_text_aligh_right",
         "value": "Default title",
+        "exclude_from_translation": true,
         "parameter_list": {
           "help": "some help",
           "tooltip_position": "right"
@@ -62765,12 +65319,14 @@
         "type": "subtitle",
         "name": "subtitle_debug_style_primary",
         "value": "default",
+        "exclude_from_translation": true,
         "_nested_name": "subtitle_debug_style_primary"
       },
       {
         "type": "subtitle",
         "name": "subtitle_debug_style_active",
         "value": "alternative small",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "alternative small"
         },
@@ -62780,6 +65336,7 @@
         "type": "subtitle",
         "name": "subtitle_debug_text_align_left",
         "value": "medium right",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "medium right"
         },
@@ -62789,6 +65346,7 @@
         "type": "subtitle",
         "name": "subtitle_debug_text_align_center",
         "value": "large center",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "large center"
         },
@@ -62798,6 +65356,7 @@
         "type": "subtitle",
         "name": "subtitle_debug_text_right",
         "value": "center contextual",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "center contextual"
         },
@@ -62807,6 +65366,7 @@
         "type": "subtitle",
         "name": "subtitle_debug_text_right",
         "value": "emphasised alternative",
+        "exclude_from_translation": true,
         "parameter_list": {
           "style": "emphasised alternative"
         },
@@ -64771,6 +67331,7 @@
               "survey_welcome_q_9",
               "survey_welcome_outro"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "survey_stepper.nav_template_list"
           }
@@ -64809,6 +67370,7 @@
               "workshop_setup_q_2",
               "workshop_setup_q_3"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "survey_stepper.nav_template_list"
           }
@@ -64958,6 +67520,7 @@
               "survey_welcome_q_9",
               "survey_welcome_outro"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "survey_stepper.nav_template_list"
           }
@@ -65067,6 +67630,7 @@
           {
             "name": "slider_final",
             "value": "survey_welcome_a_1",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_slider.slider_final"
           },
@@ -65247,6 +67811,7 @@
           {
             "name": "slider_final",
             "value": "survey_welcome_a_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_slider.slider_final"
           },
@@ -65450,6 +68015,7 @@
           {
             "name": "less_includes_zero",
             "value": false,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_slider.less_includes_zero"
           },
@@ -65609,6 +68175,7 @@
           {
             "name": "slider_final",
             "value": "survey_welcome_a_4",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_slider.slider_final"
           },
@@ -65856,12 +68423,14 @@
           {
             "name": "slider_1_final",
             "value": "survey_welcome_a_5_part_1",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_multi_3_temp.slider_1_final"
           },
           {
             "name": "slider_2_final",
             "value": "survey_welcome_a_5_part_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_multi_3_temp.slider_2_final"
           },
@@ -66030,6 +68599,7 @@
           {
             "name": "slider_final",
             "value": "survey_welcome_a_6",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_slider.slider_final"
           },
@@ -66412,18 +68982,21 @@
           {
             "name": "slider_1_final",
             "value": "survey_welcome_a_7_part_1",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_multi_4_temp.slider_1_final"
           },
           {
             "name": "radio_group_final",
             "value": "survey_welcome_a_7_part_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_multi_4_temp.radio_group_final"
           },
           {
             "name": "slider_2_final",
             "value": "survey_welcome_a_7_part_3",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_multi_4_temp.slider_2_final"
           },
@@ -66649,6 +69222,7 @@
           {
             "name": "slider_final",
             "value": "survey_welcome_a_8",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_slider.slider_final"
           },
@@ -67042,6 +69616,7 @@
           {
             "name": "slider_final",
             "value": "survey_welcome_a_9",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_slider.slider_final"
           },
@@ -67616,6 +70191,7 @@
         "name": "w_1on1_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_1 < @global.survey_welcome_t_1",
+        "exclude_from_translation": true,
         "_nested_name": "w_1on1_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67647,6 +70223,7 @@
         "name": "w_praise_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_2 < @global.survey_welcome_t_2",
+        "exclude_from_translation": true,
         "_nested_name": "w_praise_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67678,6 +70255,7 @@
         "name": "w_stress_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_3 >= @global.survey_welcome_t_3",
+        "exclude_from_translation": true,
         "_nested_name": "w_stress_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67709,6 +70287,7 @@
         "name": "w_stress_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_4 >= @global.survey_welcome_t_4",
+        "exclude_from_translation": true,
         "_nested_name": "w_stress_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67740,6 +70319,7 @@
         "name": "w_money_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_5_part_1>=@global.survey_welcome_t_5",
+        "exclude_from_translation": true,
         "_nested_name": "w_money_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67771,6 +70351,7 @@
         "name": "w_money_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_5_part_2>=@global.survey_welcome_t_5",
+        "exclude_from_translation": true,
         "_nested_name": "w_money_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67802,6 +70383,7 @@
         "name": "w_stress_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_6 >= @global.survey_welcome_t_6",
+        "exclude_from_translation": true,
         "_nested_name": "w_stress_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67833,6 +70415,7 @@
         "name": "w_safe_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_7_part_1<@global.survey_welcome_t_7",
+        "exclude_from_translation": true,
         "_nested_name": "w_safe_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67864,6 +70447,7 @@
         "name": "w_safe_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_7_part_3<@global.survey_welcome_t_7",
+        "exclude_from_translation": true,
         "_nested_name": "w_safe_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67895,6 +70479,7 @@
         "name": "w_rules_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_8 <@global.survey_welcome_t_8",
+        "exclude_from_translation": true,
         "_nested_name": "w_rules_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67926,6 +70511,7 @@
         "name": "w_safe_tools_disabled",
         "value": false,
         "condition": "@field.survey_welcome_a_8 <@global.survey_welcome_t_8",
+        "exclude_from_translation": true,
         "_nested_name": "w_safe_tools_disabled",
         "_dynamicFields": {
           "condition": [
@@ -67956,6 +70542,7 @@
         "type": "set_field",
         "name": "no_mail",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "no_mail"
       }
     ],
@@ -67990,6 +70577,7 @@
               "workshop_setup_q_2",
               "workshop_setup_q_3"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "survey_stepper.nav_template_list"
           }
@@ -68449,6 +71037,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -68615,6 +71204,7 @@
                 "_cleaned": "changed | set_field:number_selector_adults_tracker:@local.number_selector_adults"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "min_value": "0",
               "max_value": "20",
@@ -68677,6 +71267,7 @@
                 "_cleaned": "changed | set_field:number_selector_teens_tracker:@local.number_selector_teens"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "min_value": "0",
               "max_value": "20",
@@ -68765,6 +71356,7 @@
                 "_cleaned": "changed | set_field:number_selector_children_tracker:@local.number_selector_children"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "min_value": "0",
               "max_value": "20",
@@ -68827,6 +71419,7 @@
                 "_cleaned": "changed | set_field:number_selector_babies_tracker:@local.number_selector_babies"
               }
             ],
+            "exclude_from_translation": true,
             "parameter_list": {
               "min_value": "0",
               "max_value": "20",
@@ -68945,6 +71538,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -69629,6 +72223,7 @@
           {
             "name": "use_completed_chevron",
             "value": true,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "nav_buttons.use_completed_chevron"
           }
@@ -69711,6 +72306,7 @@
         "type": "set_field",
         "name": "workshops_setup",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "workshops_setup"
       }
     ],
@@ -69726,6 +72322,7 @@
         "type": "set_field",
         "name": "w_1on1_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_1on1_started"
       },
       {
@@ -69776,6 +72373,7 @@
           {
             "name": "progress_field_name",
             "value": "w_1on1_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -69793,6 +72391,7 @@
               "w_1on1_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -69823,6 +72422,7 @@
               "w_1on1_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -70128,6 +72728,7 @@
           {
             "name": "relax",
             "value": "relax_2",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           },
@@ -70425,6 +73026,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "talk_together.workshop_activity.include_outro"
               },
@@ -70472,6 +73074,7 @@
               {
                 "name": "outro_habit",
                 "value": "spend_time",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "talk_together.workshop_activity.outro_habit"
               },
@@ -70662,6 +73265,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.include_outro"
               },
@@ -70839,6 +73443,7 @@
               {
                 "name": "outro_habit",
                 "value": "spend_time",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.outro_habit"
               },
@@ -71261,6 +73866,7 @@
         "type": "set_field",
         "name": "w_celebrate_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_celebrate_started"
       },
       {
@@ -71311,6 +73917,7 @@
           {
             "name": "progress_field_name",
             "value": "w_celebrate_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper_together.progress_field_name"
           },
@@ -71328,6 +73935,7 @@
               "w_celebrate_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper_together.nav_template_list",
             "_dynamicFields": {
@@ -71356,6 +73964,7 @@
               "w_celebrate_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper_together.nav_template_list",
             "_dynamicFields": {
@@ -71602,6 +74211,7 @@
           {
             "name": "relax",
             "value": "relax_14",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           },
@@ -72691,6 +75301,7 @@
         "type": "set_field",
         "name": "w_consequence_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_consequence_started"
       },
       {
@@ -72741,6 +75352,7 @@
           {
             "name": "progress_field_name",
             "value": "w_consequence_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -72763,6 +75375,7 @@
               "w_consequence_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -72798,6 +75411,7 @@
               "w_consequence_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -73009,6 +75623,7 @@
           {
             "name": "relax",
             "value": "relax_10",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           }
@@ -73767,6 +76382,7 @@
           {
             "name": "list_text",
             "value": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
@@ -74078,6 +76694,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn_temp.workshop_activity.include_outro"
               },
@@ -74133,6 +76750,7 @@
               {
                 "name": "outro_habit",
                 "value": "consequence",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn_temp.workshop_activity.outro_habit"
               },
@@ -74235,6 +76853,7 @@
           {
             "name": "input_allowed",
             "value": false,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_combo_box.input_allowed"
           },
@@ -74443,6 +77062,7 @@
           {
             "name": "list_text",
             "value": "- @global.negative_consequence_1\n- @global.negative_consequence_2\n- @global.negative_consequence_3\n- @global.negative_consequence_4\n- @global.negative_consequence_5",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
@@ -74581,6 +77201,7 @@
           {
             "name": "input_allowed",
             "value": false,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_combo_box.input_allowed"
           },
@@ -74853,6 +77474,7 @@
           {
             "name": "input_allowed",
             "value": false,
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "box_combo_box.input_allowed"
           },
@@ -76175,6 +78797,7 @@
           {
             "name": "list_text",
             "value": "- @local.idea_1\n- @local.idea_2\n- @local.idea_3\n- @local.idea_4\n- @local.idea_5",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
@@ -76929,6 +79552,7 @@
         "type": "set_field",
         "name": "w_crisis_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_crisis_started"
       },
       {
@@ -76979,6 +79603,7 @@
           {
             "name": "progress_field_name",
             "value": "w_crisis_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -76999,6 +79624,7 @@
               "w_crisis_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -77033,6 +79659,7 @@
               "w_crisis_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -77244,6 +79871,7 @@
           {
             "name": "relax",
             "value": "relax_13",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           }
@@ -78037,6 +80665,7 @@
           {
             "name": "list_text",
             "value": "- @global.crisis_skill_1\n- @global.crisis_skill_2\n- @global.crisis_skill_3\n- @global.crisis_skill_4\n- @global.crisis_skill_5",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
@@ -78270,6 +80899,7 @@
                   {
                     "name": "input_allowed",
                     "value": false,
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.input_allowed"
                   },
@@ -78950,6 +81580,7 @@
                   {
                     "name": "input_allowed",
                     "value": false,
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "question_time.workshop_activity.content_box.input_allowed"
                   },
@@ -79208,6 +81839,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.include_outro"
               },
@@ -79587,6 +82219,7 @@
               {
                 "name": "outro_habit",
                 "value": "breathe",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.outro_habit"
               },
@@ -79854,6 +82487,7 @@
         "type": "set_field",
         "name": "w_instruct_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_instruct_started"
       },
       {
@@ -79904,6 +82538,7 @@
           {
             "name": "progress_field_name",
             "value": "w_instruct_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -79925,6 +82560,7 @@
               "w_instruct_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -79959,6 +82595,7 @@
               "w_instruct_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -80268,6 +82905,7 @@
           {
             "name": "relax",
             "value": "relax_4",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           }
@@ -81224,6 +83862,7 @@
                       {
                         "name": "input_allowed",
                         "value": false,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.input_allowed"
                       },
@@ -81555,6 +84194,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "talk_together.workshop_activity.include_outro"
               },
@@ -81650,6 +84290,7 @@
               {
                 "name": "outro_habit",
                 "value": "instruct_positively",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "talk_together.workshop_activity.outro_habit"
               },
@@ -81808,6 +84449,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.include_outro"
               },
@@ -81970,6 +84612,7 @@
                       {
                         "name": "input_allowed",
                         "value": false,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.input_allowed"
                       },
@@ -81994,6 +84637,7 @@
               {
                 "name": "outro_habit",
                 "value": "instruct_positively",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.outro_habit"
               },
@@ -82492,6 +85136,7 @@
         "type": "set_field",
         "name": "w_money_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_money_started"
       },
       {
@@ -82542,6 +85187,7 @@
           {
             "name": "progress_field_name",
             "value": "w_money_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -82568,6 +85214,7 @@
               "w_money_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -82608,6 +85255,7 @@
               "w_money_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -82813,6 +85461,7 @@
           {
             "name": "relax",
             "value": "relax_8",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           }
@@ -83428,6 +86077,7 @@
                   {
                     "name": "options_per_row",
                     "value": 2,
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "learn.workshop_activity.content_box.options_per_row"
                   },
@@ -83443,12 +86093,14 @@
                   {
                     "name": "radio_group_tracker",
                     "value": "w_money_path",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "learn.workshop_activity.content_box.radio_group_tracker"
                   },
                   {
                     "name": "radio_button_type",
                     "value": "btn_text",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "learn.workshop_activity.content_box.radio_button_type"
                   },
@@ -83535,6 +86187,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.include_outro"
               },
@@ -84376,6 +87029,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "talk_group_family.workshop_activity.include_outro"
               },
@@ -84817,6 +87471,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "talk_group_family.workshop_activity.include_outro"
               },
@@ -85107,6 +87762,7 @@
           {
             "name": "list_text",
             "value": "- @global.financial_emergency_1\n- @global.financial_emergency_2\n- @global.financial_emergency_3\n- @global.financial_emergency_4\n- @global.financial_emergency_5\n- @global.financial_emergency_6",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
@@ -85439,6 +88095,7 @@
           {
             "name": "list_text",
             "value": "- @global.savings_option_1\n- @global.savings_option_2\n- @global.savings_option_3\n- @global.savings_option_4",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "suggestions.list_text",
             "_dynamicFields": {
@@ -85541,6 +88198,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn_group_family.workshop_activity.include_outro"
               },
@@ -85579,6 +88237,7 @@
               {
                 "name": "outro_habit",
                 "value": "money",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn_group_family.workshop_activity.outro_habit"
               },
@@ -85669,6 +88328,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn_alone.workshop_activity.include_outro"
               },
@@ -85707,6 +88367,7 @@
               {
                 "name": "outro_habit",
                 "value": "money",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn_alone.workshop_activity.outro_habit"
               },
@@ -86289,6 +88950,7 @@
         "type": "set_field",
         "name": "w_praise_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_praise_started"
       },
       {
@@ -86339,6 +89001,7 @@
           {
             "name": "progress_field_name",
             "value": "w_praise_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -86358,6 +89021,7 @@
               "w_praise_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -86390,6 +89054,7 @@
               "w_praise_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -86860,6 +89525,7 @@
           {
             "name": "relax",
             "value": "relax_3",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           },
@@ -87439,6 +90105,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "talk_together.workshop_activity.include_outro"
               },
@@ -87518,6 +90185,7 @@
               {
                 "name": "outro_habit",
                 "value": "praise_teen",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "talk_together.workshop_activity.outro_habit"
               },
@@ -87633,6 +90301,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.include_outro"
               },
@@ -87728,6 +90397,7 @@
                       {
                         "name": "input_allowed",
                         "value": false,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.input_allowed"
                       },
@@ -87767,6 +90437,7 @@
               {
                 "name": "outro_habit",
                 "value": "praise_teen",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "question_time.workshop_activity.outro_habit"
               },
@@ -88277,6 +90948,7 @@
         "type": "set_field",
         "name": "w_rules_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_rules_started"
       },
       {
@@ -88327,6 +90999,7 @@
           {
             "name": "progress_field_name",
             "value": "w_rules_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -88346,6 +91019,7 @@
               "w_rules_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -88379,6 +91053,7 @@
               "w_rules_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -88584,6 +91259,7 @@
           {
             "name": "relax",
             "value": "relax_9",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           }
@@ -89811,6 +92487,7 @@
                       {
                         "name": "input_allowed",
                         "value": false,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.input_allowed"
                       },
@@ -89882,6 +92559,7 @@
                       {
                         "name": "input_allowed",
                         "value": false,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.input_allowed"
                       },
@@ -90129,6 +92807,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "read.workshop_activity.include_outro"
               },
@@ -90432,6 +93111,7 @@
               {
                 "name": "outro_habit",
                 "value": "safe",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "read.workshop_activity.outro_habit"
               },
@@ -90839,6 +93519,7 @@
         "type": "set_field",
         "name": "w_safe_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_safe_started"
       },
       {
@@ -90889,6 +93570,7 @@
           {
             "name": "progress_field_name",
             "value": "w_safe_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -90909,6 +93591,7 @@
               "w_safe_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -90943,6 +93626,7 @@
               "w_safe_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -91148,6 +93832,7 @@
           {
             "name": "relax",
             "value": "relax_12",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           }
@@ -92604,6 +95289,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.include_outro"
               },
@@ -92776,6 +95462,7 @@
               {
                 "name": "outro_habit",
                 "value": "safe",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.outro_habit"
               },
@@ -92860,6 +95547,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.include_outro"
               },
@@ -92909,18 +95597,21 @@
                       {
                         "name": "options_per_row",
                         "value": 2,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "learn.workshop_activity.content_box.box_1.options_per_row"
                       },
                       {
                         "name": "radio_group_tracker",
                         "value": "w_safe_path",
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "learn.workshop_activity.content_box.box_1.radio_group_tracker"
                       },
                       {
                         "name": "radio_button_type",
                         "value": "btn_text",
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "learn.workshop_activity.content_box.box_1.radio_button_type"
                       },
@@ -93299,6 +95990,7 @@
               {
                 "name": "outro_habit",
                 "value": "safe",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.outro_habit"
               },
@@ -93784,6 +96476,7 @@
         "type": "set_field",
         "name": "w_self_care_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_self_care_started"
       },
       {
@@ -93834,6 +96527,7 @@
           {
             "name": "progress_field_name",
             "value": "w_self_care_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -93850,6 +96544,7 @@
               "w_self_care_home_practice",
               "w_self_care_ending"
             ],
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list"
           }
@@ -94121,6 +96816,7 @@
           {
             "name": "relax",
             "value": "relax_5",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           },
@@ -94209,6 +96905,7 @@
         "type": "set_field",
         "name": "daily_relax_done",
         "value": false,
+        "exclude_from_translation": true,
         "_nested_name": "daily_relax_done"
       }
     ],
@@ -94231,6 +96928,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.include_outro"
               },
@@ -94460,6 +97158,7 @@
               {
                 "name": "outro_habit",
                 "value": "praise_yourself",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_habit"
               },
@@ -94568,6 +97267,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.include_outro"
               },
@@ -94667,6 +97367,7 @@
                   {
                     "name": "combo_box_tracker",
                     "value": "w_self_care_reward",
+                    "exclude_from_translation": true,
                     "type": "set_variable",
                     "_nested_name": "think.workshop_activity.content_box.combo_box_tracker"
                   },
@@ -94869,6 +97570,7 @@
               {
                 "name": "outro_habit",
                 "value": "treat_yourself",
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "think.workshop_activity.outro_habit"
               },
@@ -95524,6 +98226,7 @@
         "type": "set_field",
         "name": "w_solve_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_solve_started"
       },
       {
@@ -95574,6 +98277,7 @@
           {
             "name": "progress_field_name",
             "value": "w_solve_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -95594,6 +98298,7 @@
               "w_solve_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -95627,6 +98332,7 @@
               "w_solve_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -95832,6 +98538,7 @@
           {
             "name": "relax",
             "value": "relax_11",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           }
@@ -97711,6 +100418,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "learn.workshop_activity.include_outro"
               },
@@ -98444,6 +101152,7 @@
         "type": "set_field",
         "name": "w_stress_started",
         "value": true,
+        "exclude_from_translation": true,
         "_nested_name": "w_stress_started"
       },
       {
@@ -98494,6 +101203,7 @@
           {
             "name": "progress_field_name",
             "value": "w_stress_completion_level",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.progress_field_name"
           },
@@ -98513,6 +101223,7 @@
               "w_stress_ending"
             ],
             "condition": "@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -98546,6 +101257,7 @@
               "w_stress_ending"
             ],
             "condition": "!@field.do_this_workshop_together",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "workshop_stepper.nav_template_list",
             "_dynamicFields": {
@@ -98882,6 +101594,7 @@
           {
             "name": "relax",
             "value": "relax_7",
+            "exclude_from_translation": true,
             "type": "set_variable",
             "_nested_name": "relax.relax"
           }
@@ -99614,6 +102327,7 @@
                       {
                         "name": "options_per_row",
                         "value": 4,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.options_per_row"
                       },
@@ -99671,6 +102385,7 @@
                       {
                         "name": "options_per_row",
                         "value": 4,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.options_per_row"
                       },
@@ -99728,6 +102443,7 @@
                       {
                         "name": "options_per_row",
                         "value": 4,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.options_per_row"
                       },
@@ -99824,6 +102540,7 @@
                       {
                         "name": "input_allowed",
                         "value": false,
+                        "exclude_from_translation": true,
                         "type": "set_variable",
                         "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.input_allowed"
                       },
@@ -99980,6 +102697,7 @@
               {
                 "name": "include_outro",
                 "value": true,
+                "exclude_from_translation": true,
                 "type": "set_variable",
                 "_nested_name": "read.workshop_activity.include_outro"
               },
