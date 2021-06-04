@@ -114,7 +114,9 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
           this.renderDisplayComponent(displayComponent, row);
         } else {
           // not all components have mapping, for now just log warning
-          console.warn(`[tmpl.component] - skipped [${row.type}:${row.name}]`, row);
+          if (displayComponent === undefined) {
+            console.warn(`[tmpl.component] - skipped [${row.type}:${row.name}]`, row);
+          }
         }
     }
   }
