@@ -5,6 +5,12 @@
   width: 100%;
   height: 100%;
   @include flex-centered;
+  &.left {
+    justify-content: start;
+  }
+  &.right {
+    justify-content: flex-end;
+  }
   ion-checkbox {
     --border-color: var(--ion-color-primary);
     --border-width: var(--checkbox-border-width);
