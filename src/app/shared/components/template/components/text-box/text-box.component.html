@@ -2,7 +2,7 @@
   <ion-input
     class="text-box-input"
     [inputmode]="isNumberInput ? 'tel' : 'text'"
-    [(ngModel)]="_row.value"
+    [(ngModel)]="prioritisePlaceholder ? '' : _row.value"
     [placeholder]="placeholder"
     [maxlength]="maxLength"
     [style.textAlign]="textAlign"

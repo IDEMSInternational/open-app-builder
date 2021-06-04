@@ -1,0 +1,9 @@
+<div class="wrapper margin-t-regular">
+  <ion-textarea
+    class="text_area"
+    [placeholder]="placeholder"
+    (ionBlur)="handleChange()"
+    [(ngModel)]="_row.value"
+    auto-grow="true"
+  ></ion-textarea>
+</div>

@@ -6,6 +6,6 @@
     {{ text }}
   </div>
   <div class="image" *ngIf="image_src">
-    <img [src]="getPathImg(image_src)" alt="" />
+    <img [src]="image_src | plhAsset" alt="" />
   </div>
 </div>

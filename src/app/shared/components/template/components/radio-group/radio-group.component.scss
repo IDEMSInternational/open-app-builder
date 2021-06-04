@@ -38,11 +38,26 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
           width: calc(115px * var(--scale-factor));
           height: calc(115px * var(--scale-factor));
           padding: calc(5px * var(--scale-factor));
+          max-width: calc(6rem * 0.9);
+          max-height: calc(115px * 0.9);
+          min-height: calc(115px * 0.9);
+          min-width: unset;
+          font-size: 4vw;
+          @media (max-width: 320px) {
+            max-height: calc(100px * 0.9);
+            max-width: calc(5rem * 0.9);
+            min-height: calc(115px * 0.8);
+          }
+          @media (max-width: 319px) {
+            max-height: 27vw;
+            max-width: 27vw;
+            min-height: unset;
+          }
 
           svg-icon {
             @include flex-centered;
-            min-width: 25px;
-            min-height: 22px;
+            max-width: calc(100% * 0.8);
+            min-width: calc(100% * 0.8);
             width: calc(100% * var(--scale-factor));
             height: calc(100% * var(--scale-factor));
             margin-bottom: calc(3px * var(--scale-factor));
@@ -63,7 +78,20 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
         label {
           width: calc(115px * var(--scale-factor));
           height: calc(115px * var(--scale-factor));
+          min-width: unset;
+          max-width: calc(6rem * 0.9);
+          max-height: calc(115px * 0.9);
           padding: calc(5px * var(--scale-factor));
+          @media (max-width: 320px) {
+            max-height: calc(100px * 0.9);
+            max-width: calc(5rem * 0.9);
+            min-height: calc(115px * 0.8);
+          }
+          @media (max-width: 319px) {
+            max-height: 27vw;
+            max-width: 27vw;
+            min-height: unset;
+          }
 
           svg-icon {
             @include flex-centered;

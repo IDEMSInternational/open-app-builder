@@ -1,14 +1,14 @@
 @import "../../../../../../theme/mixins.scss";
 .slider-wrapper {
   min-width: 100%;
-  padding: 20px 0 15px 20px;
+  padding: var(--regular-padding) 0 var(--regular-padding) var(--regular-padding);
   background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
   box-sizing: border-box;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-secondary);
   position: relative;
-  min-height: 139px;
+  min-height: var(--slider-wrapper-min-height);
   .help {
     color: var(--ion-color-help-tooltip);
     height: var(--help-icon-standard-size);
@@ -18,10 +18,10 @@
     top: 12px;
   }
   .title-slider {
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     font-size: var(--font-size-title-tiny);
     color: var(--ion-color-primary);
-    max-width: 258px !important;
+    max-width: var(--slider-title-max-width) !important;
     margin-bottom: var(--regular-margin);
   }
   .slider-container {
@@ -33,21 +33,20 @@
     }
     .checkbox-block {
       @include flex-centered;
-      margin-top: 6px;
-      padding-left: 11px;
-      margin-left: 7px;
-      width: 30px;
-      height: 30px;
+      @include tiny-square;
+      margin-top: var(--tiny-margin);
+      padding-left: var(--small-padding);
+      margin-left: var(--tiny-margin);
     }
   }
   .labels {
     @include flex-space-between;
-    max-width: 275px;
+    max-width: var(--slider-labels-max-width);
     margin-left: -5px;
-    margin-top: 25px;
+    margin-top: var(--large-margin);
     .min,
     .max {
-      font-size: 15px;
+      font-size: var(--font-size-text-tiny);
       color: var(--ion-color-slider);
     }
   }
@@ -61,7 +60,7 @@
   .noUi-connects {
     border: 1px solid var(--ion-color-slider);
     box-sizing: border-box;
-    border-radius: 20px;
+    border-radius: var(--ion-border-radius-secondary);
     height: 10px;
   }
   .noUi-handle::before,
@@ -69,9 +68,8 @@
     content: none;
   }
   .noUi-horizontal .noUi-handle {
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    @include tiny-square;
+    border-radius: var(--ion-border-radius-rounded);
     background: var(--ion-color-slider);
     border: none;
     box-shadow: none;
@@ -83,7 +81,7 @@
     top: 25%;
   }
   .noUi-value-horizontal {
-    font-size: 20px;
+    font-size: var(--font-size-text-large);
     color: var(--ion-color-slider);
   }
   .noUi-marker-horizontal {
@@ -94,22 +92,21 @@
   }
   .noUi-active .noUi-tooltip {
     @include flex-centered;
+    @include small-square;
     background: var(--ion-color-slider);
     color: var(--ion-color-primary-contrast);
     border: none;
-    width: 32px;
-    height: 32px;
     border-radius: var(--ion-border-radius-rounded);
   }
-  .custom-slider {
+  .hide-handle {
     .noUi-horizontal .noUi-handle {
       display: none;
     }
   }
 }
 .custom-checkbox {
-  --border-radius: 50%;
+  --border-radius: var(--ion-border-radius-rounded);
   --border-color: var(--ion-color-slider);
   --background: transparent;
-  --size: 16px;
+  --size: var(--font-size-text-small);
 }

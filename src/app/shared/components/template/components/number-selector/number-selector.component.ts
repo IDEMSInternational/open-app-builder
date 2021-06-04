@@ -22,18 +22,12 @@ interface ICategoryList {
 export class TmplNumberComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit {
-  _row: FlowTypes.TemplateRow;
-  @Input() set row(value: FlowTypes.TemplateRow) {
-    this._row = value;
-  }
-
   @Input() parent: TemplateContainerComponent;
 
   title: string | null;
   min_value: number | null = 0;
   displayValue: any = 0;
   max_value: number | null = 0;
-  value: any;
   category_list: string[];
   height: string;
   category_size: number;
@@ -47,7 +41,6 @@ export class TmplNumberComponent
   getParams() {
     this.category_list = getParamFromTemplateRow(this._row, "category_list", null);
     this.title = getStringParamFromTemplateRow(this._row, "title", null);
-    this.value = this._row.value;
     this.height = getStringParamFromTemplateRow(this._row, "height", "short");
     this.height = this.height === "short" || "normal" ? this.height : "short";
     if (this.category_list) {
@@ -55,13 +48,15 @@ export class TmplNumberComponent
       this.first_display_term =
         getNumberParamFromTemplateRow(this._row, "first_display_term", 1) - 1;
       this.displayValue = this.valuesFromCategoryList[this.first_display_term];
-      this._row.value = this.displayValue;
     } else {
       this.min_value = getNumberParamFromTemplateRow(this._row, "min_value", 0);
       this.max_value = getNumberParamFromTemplateRow(this._row, "max_value", 6);
       this.category_size = getNumberParamFromTemplateRow(this._row, "category_size", 1);
       this.displayValue = this.min_value;
-      this._row.value = this.displayValue;
+    }
+    // assign any previously saved value
+    if (this._row.value) {
+      this.displayValue = this._row.value;
     }
   }
 

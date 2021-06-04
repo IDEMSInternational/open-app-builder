@@ -1,4 +1,5 @@
 @import "../../../../../../theme/variables.scss";
+@import "../../../../../../theme/mixins.scss";
 .workshops-accordion {
   position: relative;
   margin-top: var(--large-margin);
@@ -10,43 +11,42 @@
     position: absolute;
     left: 21px;
     top: 0;
-    margin-top: 15px;
+    margin-top: var(--regular-margin);
   }
 }
 .accordion-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: var(--regular-margin);
   height: 100%;
   .accordion-status {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    padding: 6px;
+    @include medium-square;
+    border-radius: var(--ion-border-radius-rounded);
+    padding: var(--tiny-padding);
     display: flex;
     justify-content: center;
     background: var(--ion-color-primary-contrast);
     z-index: 2;
     &.inProgress {
-      background: var(--ion-accordion-bg);
+      background: var(--ion-accrodion-status-gradient);
     }
     &.disabled {
       background: var(--ion-color-primary-contrast);
     }
     &.completed {
-      background: var(--ion-accordion-bg);
+      background: var(--ion-accrodion-status-gradient);
     }
   }
   .accordion-section {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 85%;
-    border-radius: $border-radius-standard;
+    width: var(--accordion-section-width);
+    border-radius: var(--ion-border-radius-standard);
     overflow: hidden;
-    max-height: 43px;
-    padding: 0 10px 10px 10px;
-    border: 1px solid var(--ion-color-primary);
+    max-height: var(--accordion-section-max-height);
+    padding: var(--accordion-section-padding);
+    border: var(--ion-border-thin-standard);
     transition: max-height 0.4s;
     overflow-y: hidden;
     &.completed {
@@ -68,7 +68,7 @@
       color: var(--ion-color-primary);
     }
     &.openSection {
-      max-height: 600px !important;
+      max-height: var(--accordion-section-open-height) !important;
       background: var(--ion-accordion-bg);
       transition: max-height 0.4s;
       .progress {

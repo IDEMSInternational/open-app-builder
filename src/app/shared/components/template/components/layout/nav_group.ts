@@ -57,7 +57,7 @@ import { TemplateLayoutComponent } from "./layout";
         flex-direction: row;
         justify-content: space-evenly;
         gap: 5px;
-        padding: var(--large-padding) 0;
+        padding: var(--small-padding) 0;
       }
       .nav-section :nth-child(1) {
         height: 100%;
@@ -102,14 +102,13 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     // only allow actions to be processed by parent if last section
     if (action_id === "emit" && args[0] === "completed") {
       if (this.sectionIndex < this.templateNames.length - 1) {
-        this.sectionIndex++;
-        this.updateSectionProgress();
+        this.goToSection(this.sectionIndex + 1);
         return false;
       }
     }
     if (action_id === "emit" && args[0] === "uncompleted") {
       if (this.sectionIndex > 0) {
-        this.sectionIndex--;
+        this.goToSection(this.sectionIndex - 1);
         return false;
       }
     }
@@ -119,6 +118,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
 
   goToSection(index: number) {
     this.sectionIndex = index;
+    this.scrollToTop();
     this._row._debug_name = this.templateNames[index];
     this.updateSectionProgress();
   }

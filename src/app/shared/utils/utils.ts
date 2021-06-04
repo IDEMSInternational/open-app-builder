@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "../model";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -176,4 +176,32 @@ export function evaluateJSExpression(expression: string, context = {}): any {
   const funcString = `"use strict"; return (${expression});`;
   const func = new Function(funcString);
   return func.apply(context);
+}
+
+/**
+ * convert strings containing "TRUE", "true", "FALSE" or "false" to booleans
+ * TODO - combine with script util
+ */
+export function booleanStringToBoolean(str: string) {
+  if (typeof str === "string") {
+    if (str.match(/^true$/gi)) return true;
+    if (str.match(/^false$/gi)) return false;
+  }
+  return str;
+}
+
+/**
+ * Convert a string to an integer hashcode (note, may be positive or negative)
+ * https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
+ * https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
+ */
+export function stringToIntegerHash(str: string) {
+  let hash = 0;
+  let i = 0;
+  let len = str.length;
+  while (i < len) {
+    /* eslint-disable no-bitwise */
+    hash = ((hash << 5) - hash + str.charCodeAt(i++)) << 0;
+  }
+  return hash;
 }

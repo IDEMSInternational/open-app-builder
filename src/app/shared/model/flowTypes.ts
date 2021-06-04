@@ -21,7 +21,6 @@ export namespace FlowTypes {
     | "care_package_list"
     | "tour"
     | "habit_ideas"
-    | "reminder_list"
     | "template"
     | "component_defaults"
     // global data provides data to other modules, without namespacing (all top-level)
@@ -48,8 +47,7 @@ export namespace FlowTypes {
     module?: string;
     /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
     data_list_name?: string;
-    // debug info
-    _xlsxPath?: string;
+    _xlsxPath?: string; // debug info
   }
 
   /**
@@ -93,10 +91,6 @@ export namespace FlowTypes {
     flow_type: "care_package_list";
     rows: CarePackage[];
   }
-  export interface Reminder_list extends FlowTypeWithData {
-    flow_type: "reminder_list";
-    rows: Reminder_listRow[];
-  }
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
@@ -139,10 +133,7 @@ export namespace FlowTypes {
     rows?: Module_pageRow[];
   }
   /** all data_list type must provide a unique id for each row to allow */
-  interface Data_listRow {
-    id: string;
-    [key: string]: any;
-  }
+  export type Data_listRow<T = any> = { id: string } & T;
   export interface Habit_listRow extends Data_listRow {
     title: string;
     description: string;
@@ -167,7 +158,7 @@ export namespace FlowTypes {
     id: string;
     start_action?: Start_action;
     /** when tasks launch flows specify the type and name of flow. Only specific types are currently handled, as listed here */
-    flow_type?: "conversation" | "tips";
+    flow_type?: "template" | "conversation" | "tips";
     /** when tasks launch flows specify the type and name of flow */
     flow_name?: string;
     /** when tasks require additional paremeters, such as the name of a reward, provide here */
@@ -253,26 +244,39 @@ export namespace FlowTypes {
     habit_list: string[];
   }
 
-  export interface Reminder_listRow {
-    reminder_id: string;
-    /** start actions will be triggered in the task service so action types must match */
-    start_action: Start_action;
-    flow_type: Task_listRow["flow_type"];
-    /** args should match the name of the flow when being used with a start_new_flow task action */
-    start_action_args: string;
-    priority: number;
-    activation_condition_list: Reminder_conditionList[];
-    deactivation_condition_list: Reminder_conditionList[];
-    campaign_list: Reminder_campaign[];
+  export interface Campaign_listRow {
+    _id: string;
+    activation_condition_list: DataEvaluationCondition[];
+    deactivation_condition_list: DataEvaluationCondition[];
+    campaign_list: string[]; // ids of campaigns where to run
+    priority?: number; // higher numbers will be given more priority
+    notification_schedule?: NotificationSchedule;
+    _active?: boolean; // calculated from activation and deactivation conditions
+
+    // additional fields for current data_list but not required
+    click_action_list?: TemplateRowAction[];
+    icon?: string;
+    text?: string;
+
+    // placeholder for any extra fields to be added
+    [field: string]: any;
   }
-  export interface Reminder_conditionList {
+  export interface NotificationSchedule {
+    text?: string;
+    title?: string;
+    time?: { minute?: string; hour?: string }; // specified time for notification, e.g. 19:30
+    delay?: { days?: string; hours?: string; minutes?: string }; // delay until first notification, e.g. 7 day
+
+    _schedule_at?: Date; // calculated from above info
+  }
+  export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */
     condition_type: "field_evaluation" | "db_lookup";
     /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
     condition_args: {
       db_lookup?: {
         table_id: IDBTable;
-        filter: { field: string; value: string | number };
+        filter: { field: string; value: string }; // filter value is misleading, e.g. field:event_id, value:app_launch ;
         order?: "asc" | "desc";
         evaluate?: {
           operator: ">" | "<=";
@@ -291,7 +295,6 @@ export namespace FlowTypes {
     _cleaned?: string;
     _parsed?: string[][];
   }
-  type Reminder_campaign = "campaign_main" | "campaign_evening" | "campaign_morning";
 
   export interface Habit_ideas extends FlowTypeWithData {
     flow_type: "habit_ideas";
@@ -353,11 +356,15 @@ export namespace FlowTypes {
     | "text"
     | "animated_section"
     | "accordion_section"
+    | "advanced_dashed_box"
     | "workshops_accordion"
+    | "form"
+    | "toggle_bar"
     | "animated_section_group"
     | "display_group"
     | "set_variable"
     | "set_theme"
+    | "icon"
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
     | "set_global"
@@ -379,6 +386,7 @@ export namespace FlowTypes {
     | "simple_checkbox"
     | "set_default"
     | "text_box"
+    | "text_area"
     | "radio_group"
     | "tile_component"
     | "css_anim"
@@ -395,6 +403,7 @@ export namespace FlowTypes {
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
+    exclude_from_translation?: boolean | string;
     hidden?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     rows?: TemplateRow[];
     disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
@@ -410,8 +419,7 @@ export namespace FlowTypes {
     _dynamicFields?: IDynamicField;
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
-    /** excel sheets may supply empty columns on occasion */
-    __EMPTY?: any;
+    __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
@@ -419,7 +427,9 @@ export namespace FlowTypes {
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
-    type: "local" | "field" | "fields" | "global" | "data";
+    // TODO CC 2021-05-15 - 'campaign' should be handled as a special case of data in the parser
+    // i.e. @data.campaign_list | evaluate_conditions | first (or similar)
+    type: "local" | "field" | "fields" | "global" | "data" | "campaign";
     fieldName: string;
   }
 
@@ -451,8 +461,10 @@ export namespace FlowTypes {
       | "audio_play"
       | "style"
       | "close_pop_up"
-      | "set_theme";
-    args: string[];
+      | "set_theme"
+      | "start_tour"
+      | "trigger_actions";
+    args: any[]; // should be string | boolean, but breaks type-checking for templates;
     /** field populated for tracking the component that triggered the action */
     _triggeredBy?: TemplateRow;
     // debug info

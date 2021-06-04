@@ -1,6 +1,6 @@
 @import "../../../theme/variables.scss";
 ion-searchbar {
-  --background: #fff;
+  --background: var(--ion-color-primary-contrast);
 }
 
 plh-template-container {

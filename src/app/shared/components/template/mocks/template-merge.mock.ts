@@ -136,7 +136,7 @@ export class TestClass {
         return mergeNestedTemplates(override as any, originalRow) as any;
       }
       // merge and remove dynamic references
-      // TODO - also remove _dynamicFields references
+      // TODO - also remove _dynamicDependencies references
       else {
         Object.keys(mergeFields).forEach((field) => {
           overriddenRow[field] = override[field];
@@ -197,13 +197,26 @@ function mergeNestedTemplateRows(
   // make sure all secondary rows exist are overridden
   secondary.forEach((secondaryRow) => {
     const primaryRow = primaryHashmap[secondaryRow.name];
+    let mergedRow = { ...secondaryRow };
     if (primaryRow) {
-      secondaryRow = { ...secondaryRow, ...primaryRow };
+      // merge
+      mergedRow = { ...secondaryRow, ...primaryRow };
+      // remove overriden dynamic references
+      // TODO - also remove _dynamicDependencies references
+      // TODO - merge with processRowOverrideMethod
+      Object.keys(primaryRow).forEach((field) => {
+        if (mergedRow._dynamicFields?.[field]) {
+          delete mergedRow._dynamicFields[field];
+          if (Object.keys(mergedRow._dynamicFields).length === 0) {
+            delete mergedRow._dynamicFields;
+          }
+        }
+      });
     }
-    if (secondaryRow.rows) {
-      secondaryRow.rows = mergeNestedTemplateRows(primaryRow.rows, secondaryRow.rows);
+    if (mergedRow.rows) {
+      mergedRow.rows = mergeNestedTemplateRows(primaryRow?.rows, secondaryRow.rows);
     }
-    merged.push(secondaryRow);
+    merged.push(mergedRow);
   });
   // make sure all primary rows exist
   Object.keys(primaryHashmap).forEach((name) => {

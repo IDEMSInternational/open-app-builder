@@ -122,14 +122,14 @@ export class ComboBoxModalComponent implements OnInit {
         this.customAnswerSelected = true;
         this.closeModal({
           customAnswerSelected: this.customAnswerSelected,
-          answer: this.form.get("customAnswer").value,
+          answer: { text: this.form.get("customAnswer").value, name: "other" },
         });
       } else {
         this.form.get("answer").setValue(null);
         this.customAnswerSelected = true;
         this.closeModal({
           customAnswerSelected: this.customAnswerSelected,
-          answer: this.form.get("customAnswer").value,
+          answer: { text: this.form.get("customAnswer").value, name: "other" },
         });
       }
     }

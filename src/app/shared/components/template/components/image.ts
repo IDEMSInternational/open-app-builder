@@ -3,11 +3,12 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
 import { TemplateBaseComponent } from "./base";
 import { getStringParamFromTemplateRow } from "../../../utils";
+import { getImageAssetPath } from "../utils/template-utils";
 
 @Component({
   selector: "plh-tmpl-image",
   template: `
-    <div class="tmpl-image-container margin-t-regular" [class]="style">
+    <div class="tmpl-image-container" [class]="style">
       <img *ngIf="imageSrc" [src]="imageSrc" />
     </div>
   `,
@@ -21,8 +22,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   ],
 })
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
-  assetsPrefix = "/assets/plh_assets/";
-  style: string;
+  style = "";
 
   constructor(private http: HttpClient) {
     super();
@@ -32,14 +32,17 @@ export class TmplImageComponent extends TemplateBaseComponent implements OnInit 
 
   @Input() set row(r: FlowTypes.TemplateRow) {
     if (r.value) {
+      const imageSrc = getImageAssetPath(r.value);
       this.http
-        .get(this.assetsPrefix + r.value, { responseType: "arraybuffer" })
+        .get(imageSrc, { responseType: "arraybuffer" })
         .toPromise()
         .then(() => {
-          this.imageSrc = this.assetsPrefix + r.value;
+          this.imageSrc = imageSrc;
+          this.style += ` ${r.parameter_list?.style}`;
         })
         .catch(() => {
-          this.imageSrc = r.value.replace("//", "/");
+          console.error("image not found", r.value, imageSrc);
+          // could add fallback image here if desired
         });
     } else {
       console.warn("No image specified", { ...r });

@@ -1,8 +1,9 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil, takeWhile } from "rxjs/operators";
-import { BehaviorSubject, Subject } from "scripts/node_modules/rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
+import { TourService } from "../../services/tour/tour.service";
 import { mapToJson } from "../../utils";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateNavService } from "./services/template-nav.service";
@@ -56,7 +57,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   /** track path to template from top parent (not currently used) */
   templateBreadcrumbs: string[] = [];
-  componentDestroyed$ = new Subject();
+  componentDestroyed$ = new Subject<boolean>();
   debugMode: boolean;
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
@@ -64,6 +65,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   constructor(
     private templateService: TemplateService,
     private templateVariables: TemplateVariablesService,
+    private tourService: TourService,
     public router: Router,
     public route: ActivatedRoute,
     public elRef: ElementRef,
@@ -76,7 +78,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     if (this.debugMode) {
       this.setLogging(true);
     }
-    this.renderTemplate();
+    await this.renderTemplate();
   }
 
   ngOnDestroy(): void {
@@ -140,9 +142,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       const reprocessActions: FlowTypes.TemplateRowAction["action_id"][] = [
         "set_field",
         "set_local",
+        "trigger_actions",
       ];
       if (processedActions.find((a) => reprocessActions.includes(a.action_id))) {
-        this.processRowUpdates();
+        await this.processRowUpdates();
       }
     }
   }
@@ -166,6 +169,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         return this.templateService.setField(key, value);
       case "set_theme":
         return this.templateService.setTheme(this.template, "set_theme", action.args);
+      case "start_tour":
+        return this.tourService.startTour(key);
+      case "trigger_actions":
+        const triggeredActions: FlowTypes.TemplateRowAction[] = args[0] as any;
+        // add actions to end of existing action queue for processing after current queue complete
+        triggeredActions.forEach((a) =>
+          this.actionsQueue.push({ ...a, _triggeredBy: action._triggeredBy })
+        );
+        return;
       case "emit":
         const [emit_value, emit_from] = args;
         let container: TemplateContainerComponent = this;
@@ -181,6 +193,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         if (emit_value === "completed") {
           // write completions to the database for data tracking
           await this.templateService.recordEvent(template, "emit", emit_value);
+        }
+        // Handle a forced rerender
+        // TODO - CC 2021-06-01 merge with refactored code after nav-actions.service pr merge
+        if (emit_value === "force_rerender") {
+          await this.forceRerender(args[1] === "full");
         }
         if (parent) {
           // continue to emit any actions to parent where defined
@@ -213,7 +230,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * Update a local template row
    *
    */
-  public setLocalVariable(key: string, value: any) {
+  private setLocalVariable(key: string, value: any) {
     const row_name = key;
     // convert values likely intended as boolean
     if (value === "true") value = true;
@@ -252,18 +269,54 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * When actions have triggered updates this method is called to handle updating the current template
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
-  public processRowUpdates() {
-    console.group(`[Reprocess Template]`, this.name, { rowMap: mapToJson(this.templateRowMap) });
-    this.template.rows = this.processRows(this.template.rows, this.template);
-    this.renderedRows = this.template.rows.filter((r) => r.condition !== false);
-    console.groupEnd();
+  private async processRowUpdates() {
+    log_group(`[Reprocess Template]`, this.name, {
+      rowMap: mapToJson(this.templateRowMap),
+      rows: this.template.rows,
+      template: this.template,
+    });
+    this.template.rows = await this.processRows(this.template.rows, this.template);
+    this.renderedRows = this.filterConditionalTemplateRows(this.template.rows);
+    log("[Reprocess Complete]", this.renderedRows);
+    log_groupEnd();
+  }
+
+  /**
+   * Brute force method to force all parent and child templates to rerender
+   * e.g. in case where a nested child sets a field that needs to be shown on parent
+   * @param shouldProcess by default we only start processing after we have reached
+   * the top-most parent template, and then render down
+   * @param full specify whether to re-render fully as if template first load
+   * (including set_variable statements) or just to reprocess existing rows
+   */
+  public async forceRerender(full = false, shouldProcess = false) {
+    if (shouldProcess) {
+      console.log("[Force Rerender]", this.name, full);
+      if (full) {
+        this.renderedRows = [];
+        await this.renderTemplate();
+      } else {
+        await this.processRowUpdates();
+      }
+      for (const child of Object.values(this.children || {})) {
+        await child.forceRerender(full, shouldProcess);
+      }
+    } else {
+      // ensure we start from the top-most parent template for rendering
+      if (this.parent) {
+        return this.parent.forceRerender(full, shouldProcess);
+      } else {
+        shouldProcess = true;
+        return this.forceRerender(full, shouldProcess);
+      }
+    }
   }
 
   /***************************************************************************************
    *  Template Initialisation
    **************************************************************************************/
 
-  private renderTemplate() {
+  private async renderTemplate() {
     // Lookup template
     const foundTemplate: FlowTypes.Template = TEMPLATE.find(
       (t) => t.flow_name === this.templatename
@@ -279,12 +332,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       // try to restore previous state (WiP - TODO / Re-evaluate CC 2021-04-21)
       const cachedRender = this.parent?.children?.[this.name];
       log_group("[Template Render Start]", this.name);
-
       log("[Process Template]", { template: { ...template }, ctxt: { ...this } });
       const rowsWithOverrides = this.processParentOverrides(template.rows);
-      const processedRows = this.processRows(rowsWithOverrides, template);
+      const processedRows = await this.processRows(rowsWithOverrides, template);
       this.template = { ...template, rows: processedRows };
-      this.renderedRows = this.template.rows.filter((r) => r.condition !== false);
+      this.renderedRows = this.filterConditionalTemplateRows(this.template.rows);
       log("[Template] Render", {
         template,
         renderedRows: { ...this.renderedRows },
@@ -302,6 +354,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       console.error(`[Template] - Not Found -`, { ...this });
       this.template = NOT_FOUND_TEMPLATE(this.templatename);
     }
+  }
+  // recursively filter out any rows that have a false condition
+  private filterConditionalTemplateRows(rows: FlowTypes.TemplateRow[] = []) {
+    return rows
+      .filter((row) => row.condition !== false)
+      .map((row) => {
+        if (row.rows) {
+          row.rows = this.filterConditionalTemplateRows(row.rows);
+        }
+        return row;
+      });
   }
 
   /**
@@ -399,94 +462,103 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * to prevent the variables being processed within the current template
    *
    */
-  private processRows(
+  private async processRows(
     rows: FlowTypes.TemplateRow[],
     template: FlowTypes.Template,
     isNestedRows = false
   ) {
-    log("[Process Rows Start]", [...rows]);
+    log("[Process Rows Start]", { rows: [...rows], rowMap: mapToJson(this.templateRowMap) });
     const processedRows = [];
-    rows.forEach((preProcessedRow) => {
-      const { _nested_name } = preProcessedRow;
-      // TODO - CC 2021-04-26 - decide if required, seems to break
-      // if (this.localVariables[_nested_name]) {
-      // log("[Local Override]", this.localVariables[_nested_name]);
-      // preProcessedRow = this.localVariables[_nested_name];
-      // }
+    for (const preProcessedRow of rows) {
+      // call an anonymous function so that we can return/break the async for-of loop if required
+      // and still push to the processedRows variable
+      await (async () => {
+        const { _nested_name } = preProcessedRow;
 
-      log_group("[Row start]", preProcessedRow.name, { preProcessedRow });
+        log_group("[Row start]", preProcessedRow.name, { preProcessedRow });
 
-      // Evaluate row variables in context of current local state
-      const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
+        // Evaluate row variables in context of current local state
+        const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
 
-      // create a new object with data from evaluation
-      const parsedRow: FlowTypes.TemplateRow = this.templateVariables.evaluatePLHData(
-        preProcessedRow,
-        evalContext
-      );
-      const { name, value, condition, hidden, type } = parsedRow;
+        // create a new object with data from evaluation
+        const parsedRow: FlowTypes.TemplateRow = await this.templateVariables.evaluatePLHData(
+          preProcessedRow,
+          evalContext
+        );
+        const { name, value, hidden, type } = parsedRow;
 
-      log("parsedRow", { ...parsedRow });
+        log("parsedRow", name, { ...parsedRow });
 
-      // Filter out if specified by condition. This might be string or boolean
-      // depending on the parser and related calculations (so check for both)
-      // when dealing with nested rows we want to filter out to not pass to child,
-      // but if dealing with local rows we want to keep for future processing (will be filtered later)
-      if (condition === (false as any) || condition === "false") {
-        parsedRow.condition = false;
-        log("[Row end (condition)]", name);
-        log_groupEnd();
-        if (isNestedRows) {
-          return;
-        } else {
-          processedRows.push(parsedRow);
+        // Filter out if specified by condition. This might be string or boolean depending on the parser/calcs (check for both)
+        // when dealing with nested rows we want to filter out to not pass to child,
+        // but if dealing with local rows we want to keep for future processing (will be filtered later)
+        // TODO - CC 2021-05-15 ideally calc column should be processed before rest of parsed row in case filtered out
+        if (parsedRow.hasOwnProperty("condition")) {
+          const condition = parsedRow.condition as any;
+          // check for any falsy value (null, undefined, false) as well as 'false' string
+          if (!condition || condition === "false") {
+            parsedRow.condition = false;
+            log("[Row end (condition)]", name);
+            log_groupEnd();
+            if (isNestedRows) {
+              return;
+            } else {
+              processedRows.push(parsedRow);
+              return;
+            }
+          }
+        }
+
+        // Make type assigned to hidden consistent
+        if (hidden === (true as any) || hidden === "true") {
+          parsedRow.hidden = true;
+        }
+
+        // when processing a template's child rows skip setting variables on this template
+        // and let them be passed through rows to the child instead
+        if (type === "template") {
+          isNestedRows = true;
+        }
+
+        // store global reference for use in future initialisation logic
+        this.templateRowMap.set(_nested_name, parsedRow);
+
+        // once set_variable rows have been processed they can be removed from the row list
+        if (type === "set_variable" && !isNestedRows) {
+          log("[Row end (variable)]", name);
+          log_groupEnd();
           return;
         }
-      }
 
-      // Make type assigned to hidden consistent
-      if (hidden === (true as any) || hidden === "true") {
-        parsedRow.hidden = true;
-      }
+        // Handle rows that set external data and filter out
+        // TODO - confirm no other externally processed rows
+        if (type === "set_field") {
+          console.warn("[W] Setting fields from template rows is not advised", { ...parsedRow });
+          this.templateService.setField(name, value);
+          // stop processing and remove from future processing
+          log("[Row end]", name, "(set field)");
+          log_groupEnd();
+          return;
+        }
 
-      // when processing a template's child rows skip setting variables on this template
-      // and let them be passed through rows to the child instead
-      if (type === "template") {
-        isNestedRows = true;
-      }
+        // Process child rows, ignoring set_variable statement if row type
+        // will be used as part of child template overrides
+        if (parsedRow.hasOwnProperty("rows")) {
+          parsedRow.rows = await this.processRows(parsedRow.rows, template, isNestedRows);
+        }
 
-      // store global reference for use in future initialisation logic
-      this.templateRowMap.set(_nested_name, parsedRow);
+        // NOTE - parsedRow._dynamic fields will be ignored within child (retain here for updates)
+        // if (isNestedRows) {
+        //   delete parsedRow._dynamicDependencies;
+        //   delete parsedRow._dynamicFields;
+        // }
 
-      // once set_variable rows have been processed they can be removed from the row list
-      if (type === "set_variable" && !isNestedRows) {
-        log("[Row end (variable)]", name);
+        log("[Row end]", name, "(push)", { ...parsedRow });
         log_groupEnd();
-        return;
-      }
-
-      // Handle rows that set external data and filter out
-      // TODO - confirm no other externally processed rows
-      if (type === "set_field") {
-        console.warn("[W] Setting fields from template rows is not advised", { ...parsedRow });
-        this.templateService.setField(name, value);
-        // stop processing and remove from future processing
-        log("[Row end]", name, "(set field)");
-        log_groupEnd();
-        return;
-      }
-
-      // Process child rows, ignoring set_variable statement if row type
-      // will be used as part of child template overrides
-      if (parsedRow.hasOwnProperty("rows")) {
-        parsedRow.rows = this.processRows(parsedRow.rows, template, isNestedRows);
-      }
-
-      log("[Row end]", name, "(push)", { ...parsedRow });
-      log_groupEnd();
-      processedRows.push(parsedRow);
-    });
-    log("[Process Rows End]", [...processedRows], { map: mapToJson(this.templateRowMap) });
+        processedRows.push(parsedRow);
+      })();
+    }
+    log("[Process Rows End]", { rows: [...processedRows], rowMap: mapToJson(this.templateRowMap) });
     return processedRows;
   }
 

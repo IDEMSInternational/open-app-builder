@@ -6,11 +6,13 @@ import {
   Input,
   OnInit,
   ViewChild,
-  ViewEncapsulation,
 } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow } from "../../../../utils";
+import { AnimationOptions } from "ngx-lottie";
+import player from "lottie-web";
+import { getImageAssetPath } from "../../utils/template-utils";
 
 @Component({
   selector: "plh-points-item",
@@ -25,13 +27,13 @@ export class TmplParentPointBoxComponent
   @ViewChild("star", { static: false }) star: ElementRef;
   @ViewChild("item", { static: false }) item: ElementRef;
   icon_src: string | null;
+  lottie_src: string | null;
   windowWidth: number;
   scaleFactor: number = 1;
   text: string | null;
-  assetsPrefix = "/assets/plh_assets/";
-  icon_result: string;
   wasClicked: boolean = false;
   value: number | null = 0;
+  animOptions: AnimationOptions;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
     this.getScaleFactor();
@@ -47,21 +49,20 @@ export class TmplParentPointBoxComponent
   ngOnInit() {
     this.getParams();
     this.getScaleFactor();
+    if (this.lottie_src) {
+      this.lottie_src = getImageAssetPath(this.lottie_src);
+      this.animOptions = this.setAnimOptions(this.lottie_src, this.text, false);
+    }
   }
 
   getParams() {
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
+    this.lottie_src = getStringParamFromTemplateRow(this._row, "lottie_src", null);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
-    this.icon_result = this.getPathImg();
     this.windowWidth = window.innerWidth - 10;
     if (!this._row.value) {
       this._row.value = 0;
     }
-  }
-
-  getPathImg(): string {
-    const src = this.assetsPrefix + this.icon_src;
-    return src.replace("//", "/");
   }
 
   async clickPointItem() {
@@ -81,7 +82,16 @@ export class TmplParentPointBoxComponent
     await this.setValue(`${this.value}`);
     await this.triggerActions("click");
     await this.triggerActions("changed");
+    if (this.lottie_src) {
+      player.play(this.animOptions.name);
+    }
   }
+
+  private setAnimOptions(path: string, name: string, autoplay: boolean): AnimationOptions {
+    const animOptions = { path, name, autoplay };
+    return animOptions;
+  }
+
   getScaleFactor(): number {
     this.scaleFactor = this.windowWidth / 420 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
     return this.scaleFactor;

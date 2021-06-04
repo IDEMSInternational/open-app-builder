@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, OnInit } from "@angular/core";
+import { Component, ElementRef, HostBinding, HostListener, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow } from "../../../../utils";
@@ -14,7 +14,6 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   icon_src: string | null;
   value: any;
   style: string | null;
-  assetsPrefix = "/assets/plh_assets/";
   icon_result: string;
   is_play_icon: boolean;
   windowWidth: number;
@@ -26,7 +25,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   @HostBinding("style.--scale-factor-tile") get scale() {
     return this.scaleFactor;
   }
-  constructor() {
+  constructor(private elRef: ElementRef) {
     super();
   }
 
@@ -41,22 +40,31 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
     this.value = this._row.value;
     this.windowWidth = window.innerWidth;
-    this.style = getStringParamFromTemplateRow(this._row, "style", "quick_start");
-    this.icon_result = this.getPathImg();
+    this.style = `
+      ${getStringParamFromTemplateRow(this._row, "style", "quick_start")} 
+      ${this.isParentPoint() ? "parent_point" : ""}
+      `;
     this.is_play_icon = this.isPlayIcon(this.icon_src);
+  }
+
+  private isParentPoint(): boolean {
+    const displayGroupElement = this.elRef.nativeElement.closest(".display-group");
+    if (displayGroupElement) {
+      return displayGroupElement.classList.contains("parent_point");
+    } else {
+      return false;
+    }
   }
 
   isPlayIcon(iconSrc: string): boolean {
     if (iconSrc) return iconSrc.includes("play");
   }
 
-  getPathImg(): string {
-    const src = this.assetsPrefix + this.icon_src;
-    return src.replace("//", "/");
-  }
-
   getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / 400 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
+    this.scaleFactor =
+      this.windowWidth / (this.isParentPoint() ? 470 : 400) > 1
+        ? 1
+        : this.windowWidth / (((this.isParentPoint() ? 220 : 200) + 20) * 2);
     return this.scaleFactor;
   }
 }
