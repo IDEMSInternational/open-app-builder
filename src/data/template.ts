@@ -41861,6 +41861,586 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "hp_review_other_challenge",
+    "status": "released",
+    "rows": [
+      {
+        "name": "workshop_data",
+        "type": "set_variable",
+        "_nested_name": "workshop_data"
+      },
+      {
+        "name": "workshop",
+        "value": "@local.workshop_data.id",
+        "type": "set_variable",
+        "_nested_name": "workshop",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.workshop_data.id",
+              "matchedExpression": "@local.workshop_data.id",
+              "type": "local",
+              "fieldName": "workshop_data"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop_data.id": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "hp_review",
+        "value": "_hp_review",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "hp_review"
+      },
+      {
+        "name": "other_challenge",
+        "value": "_other_challenge",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "other_challenge"
+      },
+      {
+        "name": "text_box_tracker",
+        "value": "@fields.@local.workshop@local.hp_review@local.other_challenge",
+        "type": "set_variable",
+        "_nested_name": "text_box_tracker",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@fields.@local.workshop@local.hp_review@local.other_challenge",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            },
+            {
+              "fullExpression": "@fields.@local.workshop@local.hp_review@local.other_challenge",
+              "matchedExpression": "@local.hp_review",
+              "type": "local",
+              "fieldName": "hp_review"
+            },
+            {
+              "fullExpression": "@fields.@local.workshop@local.hp_review@local.other_challenge",
+              "matchedExpression": "@local.other_challenge",
+              "type": "local",
+              "fieldName": "other_challenge"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop": [
+            "value"
+          ],
+          "@local.hp_review": [
+            "value"
+          ],
+          "@local.other_challenge": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Sorry we missed this! ",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "question_text",
+        "value": "Do you want to share it with us? ",
+        "parameter_list": {
+          "style": "emphasised"
+        },
+        "_nested_name": "question_text"
+      },
+      {
+        "type": "text_box",
+        "name": "text_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.text_box_tracker",
+              "@local.text_box"
+            ],
+            "_raw": "changed | set_field: @local.text_box_tracker: @local.text_box",
+            "_cleaned": "changed | set_field: @local.text_box_tracker: @local.text_box"
+          }
+        ],
+        "parameter_list": {
+          "placeholder": "@global.tap_and_type"
+        },
+        "_nested_name": "text_box",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.text_box_tracker",
+                    "matchedExpression": "@local.text_box_tracker",
+                    "type": "local",
+                    "fieldName": "text_box_tracker"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "@local.text_box",
+                    "matchedExpression": "@local.text_box",
+                    "type": "local",
+                    "fieldName": "text_box"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box_tracker",
+                  "type": "local",
+                  "fieldName": "text_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box_tracker",
+                  "type": "local",
+                  "fieldName": "text_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "placeholder": [
+              {
+                "fullExpression": "@global.tap_and_type",
+                "matchedExpression": "@global.tap_and_type",
+                "type": "global",
+                "fieldName": "tap_and_type"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.text_box_tracker": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.text_box": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@global.tap_and_type": [
+            "parameter_list.placeholder"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply",
+        "value": "Thank you for sharing! You are an awesome parent for trying to spend time with your teen. It makes all the difference. Keep up the good work, and remember, I am always here to support! ",
+        "hidden": "\"@local.text_box\"==\"undefined\"",
+        "_nested_name": "reply",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.text_box\"==\"undefined\"",
+              "matchedExpression": "@local.text_box",
+              "type": "local",
+              "fieldName": "text_box"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.text_box": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/home_practice.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "hp_review_tips_feedback",
+    "status": "released",
+    "rows": [
+      {
+        "name": "workshop_data",
+        "value": "@data.workshop.w_1on1",
+        "type": "set_variable",
+        "_nested_name": "workshop_data",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.workshop.w_1on1",
+              "matchedExpression": "@data.workshop.w_1on1",
+              "type": "data",
+              "fieldName": "workshop"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.workshop.w_1on1": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "workshop",
+        "value": "@local.workshop_data.id",
+        "type": "set_variable",
+        "_nested_name": "workshop",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.workshop_data.id",
+              "matchedExpression": "@local.workshop_data.id",
+              "type": "local",
+              "fieldName": "workshop_data"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop_data.id": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "hp_review",
+        "value": "_hp_review",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "hp_review"
+      },
+      {
+        "name": "mood",
+        "value": "_mood",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "mood"
+      },
+      {
+        "name": "tips_feedback",
+        "value": "_tips_feedback",
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "tips_feedback"
+      },
+      {
+        "name": "current_mood_field",
+        "value": "@local.workshop@local.hp_review@local.mood",
+        "type": "set_variable",
+        "_nested_name": "current_mood_field",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.mood",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.mood",
+              "matchedExpression": "@local.hp_review",
+              "type": "local",
+              "fieldName": "hp_review"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.mood",
+              "matchedExpression": "@local.mood",
+              "type": "local",
+              "fieldName": "mood"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop": [
+            "value"
+          ],
+          "@local.hp_review": [
+            "value"
+          ],
+          "@local.mood": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "current_mood",
+        "value": "@fields.@local.current_mood_field",
+        "type": "set_variable",
+        "_nested_name": "current_mood",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@fields.@local.current_mood_field",
+              "matchedExpression": "@local.current_mood_field",
+              "type": "local",
+              "fieldName": "current_mood_field"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.current_mood_field": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "text_box_tracker",
+        "value": "@local.workshop@local.hp_review@local.tips_feedback",
+        "type": "set_variable",
+        "_nested_name": "text_box_tracker",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.tips_feedback",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.tips_feedback",
+              "matchedExpression": "@local.hp_review",
+              "type": "local",
+              "fieldName": "hp_review"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_review@local.tips_feedback",
+              "matchedExpression": "@local.tips_feedback",
+              "type": "local",
+              "fieldName": "tips_feedback"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.workshop": [
+            "value"
+          ],
+          "@local.hp_review": [
+            "value"
+          ],
+          "@local.tips_feedback": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "Sorry to hear my tips did not help you.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "question_text_1a",
+        "value": "Can you share with us your tip to other parents?",
+        "hidden": "\"@local.current_mood\" == \"ok\" || \"@local.current_mood\" == \"sad\"  || \"@local.current_mood\" == \"undefined\"",
+        "parameter_list": {
+          "style": "emphasised"
+        },
+        "_nested_name": "question_text_1a",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.current_mood\" == \"ok\" || \"@local.current_mood\" == \"sad\"  || \"@local.current_mood\" == \"undefined\"",
+              "matchedExpression": "@local.current_mood",
+              "type": "local",
+              "fieldName": "current_mood"
+            },
+            {
+              "fullExpression": "\"@local.current_mood\" == \"ok\" || \"@local.current_mood\" == \"sad\"  || \"@local.current_mood\" == \"undefined\"",
+              "matchedExpression": "@local.current_mood",
+              "type": "local",
+              "fieldName": "current_mood"
+            },
+            {
+              "fullExpression": "\"@local.current_mood\" == \"ok\" || \"@local.current_mood\" == \"sad\"  || \"@local.current_mood\" == \"undefined\"",
+              "matchedExpression": "@local.current_mood",
+              "type": "local",
+              "fieldName": "current_mood"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.current_mood": [
+            "hidden",
+            "hidden",
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "question_text_1b",
+        "value": "Do you want to share with us what you think would help you?",
+        "hidden": "\"@local.current_mood\" == \"happy\"",
+        "parameter_list": {
+          "style": "emphasised"
+        },
+        "_nested_name": "question_text_1b",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.current_mood\" == \"happy\"",
+              "matchedExpression": "@local.current_mood",
+              "type": "local",
+              "fieldName": "current_mood"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.current_mood": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text_box",
+        "name": "text_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.text_box_tracker",
+              "@local.text_box"
+            ],
+            "_raw": "changed | set_field: @local.text_box_tracker: @local.text_box",
+            "_cleaned": "changed | set_field: @local.text_box_tracker: @local.text_box"
+          }
+        ],
+        "parameter_list": {
+          "placeholder": "@global.tap_and_type"
+        },
+        "_nested_name": "text_box",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.text_box_tracker",
+                    "matchedExpression": "@local.text_box_tracker",
+                    "type": "local",
+                    "fieldName": "text_box_tracker"
+                  }
+                ],
+                "1": [
+                  {
+                    "fullExpression": "@local.text_box",
+                    "matchedExpression": "@local.text_box",
+                    "type": "local",
+                    "fieldName": "text_box"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box_tracker",
+                  "type": "local",
+                  "fieldName": "text_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box_tracker",
+                  "type": "local",
+                  "fieldName": "text_box_tracker"
+                },
+                {
+                  "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "placeholder": [
+              {
+                "fullExpression": "@global.tap_and_type",
+                "matchedExpression": "@global.tap_and_type",
+                "type": "global",
+                "fieldName": "tap_and_type"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.text_box_tracker": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.text_box": [
+            "action_list.0.args.1",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@global.tap_and_type": [
+            "parameter_list.placeholder"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "reply_text_box",
+        "value": "Thank you for sharing! You are an awesome parent for trying to spend time with your teen. It makes all the difference. Keep up the good work, and remember, I am always here to support! ",
+        "hidden": "\"@local.text_box\"==\"undefined\"",
+        "_nested_name": "reply_text_box",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "\"@local.text_box\"==\"undefined\"",
+              "matchedExpression": "@local.text_box",
+              "type": "local",
+              "fieldName": "text_box"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.text_box": [
+            "hidden"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/mode_templates/home_practice.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "listen",
     "status": "released",
     "rows": [
