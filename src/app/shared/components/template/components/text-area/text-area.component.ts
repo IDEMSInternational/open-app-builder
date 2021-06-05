@@ -25,8 +25,8 @@ export class TmplTextAreaComponent
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
   }
 
-  public async handleChange() {
-    await this.setValue(this._row.value);
+  public async handleChange(value: any) {
+    await this.setValue(value);
     this.triggerActions("changed");
   }
 }
