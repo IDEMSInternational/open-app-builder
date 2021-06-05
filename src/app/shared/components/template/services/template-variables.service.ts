@@ -130,7 +130,7 @@ export class TemplateVariablesService {
       // create a custom context with the correct variables assigned (e.g. this.local = {someVar:'value'}) and pseduo-methods
       // for eval which would have function notation (eval(some_value)=>some_value). Evaluate
       const contextExpression = matchedExpression.replace("@", "this.");
-      const evalContext = { [type]: { [fieldName]: parsedValue }, eval: (v: any) => v };
+      const evalContext = { [type]: { [fieldName]: parsedValue }, calc: (v: any) => v };
 
       try {
         const evaluatedExpression = evaluateJSExpression(contextExpression, evalContext);
