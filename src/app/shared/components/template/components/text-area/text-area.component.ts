@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "../../../../model";
+import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
@@ -26,8 +25,8 @@ export class TmplTextAreaComponent
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
   }
 
-  public handleChange(): void {
-    this.setValue(this._row.value);
+  public async handleChange() {
+    await this.setValue(this._row.value);
     this.triggerActions("changed");
   }
 }
