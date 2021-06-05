@@ -419,6 +419,11 @@
         "type": "declare_global_constant",
         "name": "data_warning_websites",
         "value": "Visiting these websites requires internet access. To limit data use, visit these websites when on WiFi."
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "data_warning_send_message",
+        "value": "Sending this message requires internet access. To limit data use, send this message when on WiFi."
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/localisation_globals.xlsx"
