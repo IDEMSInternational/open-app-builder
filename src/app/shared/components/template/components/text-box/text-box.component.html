@@ -2,14 +2,11 @@
   <ion-input
     class="text-box-input"
     [inputmode]="isNumberInput ? 'tel' : 'text'"
+    (ionBlur)="handleChange()"
     [(ngModel)]="prioritisePlaceholder ? '' : _row.value"
     [placeholder]="placeholder"
     [maxlength]="maxLength"
     [style.textAlign]="textAlign"
-    debounce="500"
-    (ionBlur)="triggerActions('changed')"
-    (ionChange)="setValue(_row.value)"
-    (keyup.enter)="triggerActions('changed')"
   ></ion-input>
 </div>
 
