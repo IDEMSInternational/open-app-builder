@@ -83,7 +83,6 @@ export class DefaultParser implements AbstractParser {
       }
       // parse action list
       if (field.endsWith("action_list")) {
-        console.log("map row action list", row, field);
         row[field] = row[field]
           .map((actionString) => parsePLHActionString(actionString))
           .filter((action) => action != null);
