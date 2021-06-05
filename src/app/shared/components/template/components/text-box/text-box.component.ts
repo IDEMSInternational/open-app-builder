@@ -22,8 +22,8 @@ export class TmplTextBoxComponent extends TemplateBaseComponent implements OnIni
   ngOnInit() {
     this.getParams();
   }
-  public async handleChange() {
-    await this.setValue(this._row.value);
+  public async handleChange(value: any) {
+    await this.setValue(value);
     this.triggerActions("changed");
   }
 
