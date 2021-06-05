@@ -122,8 +122,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         this.cdr.detectChanges();
         await this.renderTemplate();
       } else {
-        console.log("[Force Reprocess]", this.name);
         await this.templateRowService.processRowUpdates();
+        console.log("[Force Reprocess]", this.name, this.templateRowService.renderedRows);
         for (const child of Object.values(this.children || {})) {
           await child.forceRerender(full, shouldProcess);
         }
@@ -201,12 +201,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   /**
    * When using ngFor loop track by to ensure updates correctly propagated on change
-   * Most important is to keep track of row value as updates to this will want UI refresh
-   * Note - we do not track row value change as most likely any value change will come from within
-   * the component itself and will not require re-render
+   *
    */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
-    return `${row._nested_name}`;
+    let value = row.value;
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      value = row.value.id;
+    }
+    return `${row._nested_name}:${value}`;
   }
 
   /** Query params are used to track state across navigation events */
