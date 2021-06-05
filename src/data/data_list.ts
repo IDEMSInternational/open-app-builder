@@ -6803,7 +6803,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_self_care_continue",
@@ -6847,7 +6848,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_1on1_quick_start",
@@ -6901,7 +6903,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_1on1_continue",
@@ -6964,7 +6967,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_praise_quick_start",
@@ -7018,7 +7022,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_praise_continue",
@@ -7081,7 +7086,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_instruct_quick_start",
@@ -7135,7 +7141,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_instruct_continue",
@@ -7198,7 +7205,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_stress_quick_start",
@@ -7252,7 +7260,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_stress_continue",
@@ -7315,7 +7324,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_money_quick_start",
@@ -7369,7 +7379,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_money_continue",
@@ -7432,7 +7443,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_rules_quick_start",
@@ -7486,7 +7498,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_rules_continue",
@@ -7549,7 +7562,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_consequence_quick_start",
@@ -7603,7 +7617,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_consequence_continue",
@@ -7666,7 +7681,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_solve_quick_start",
@@ -7720,7 +7736,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_solve_continue",
@@ -7783,7 +7800,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_safe_quick_start",
@@ -7837,7 +7855,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_safe_continue",
@@ -7900,7 +7919,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_crisis_quick_start",
@@ -7954,7 +7974,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_crisis_continue",
@@ -8017,7 +8038,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_celebrate_quick_start",
@@ -8071,7 +8093,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_celebrate_continue",
@@ -8134,7 +8157,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx"
@@ -11175,43 +11199,74 @@
         "id": "hp_praise_message_1",
         "text": "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_2",
         "text": "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_3",
         "text": "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_4",
         "text": "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_5",
         "text": "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_6",
         "text": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
         "workshop": "w_1on1",
-        "mood": "ok"
+        "mood_list": [
+          "ok"
+        ]
       },
       {
         "id": "hp_praise_message_7",
         "text": "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
         "workshop": "w_1on1",
-        "mood": "sad"
+        "mood_list": [
+          "sad"
+        ]
+      },
+      {
+        "id": "hp_praise_message_8",
+        "text": "Great to hear it went well; you are a star!",
+        "workshop": "w_instruct",
+        "mood_list": [
+          "happy"
+        ]
+      },
+      {
+        "id": "hp_praise_message_9",
+        "text": "Sorry to hear it was difficult for you. Well done for trying!",
+        "workshop": "w_instruct",
+        "mood_list": [
+          "ok",
+          "sad"
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/praise_data_list.xlsx"
