@@ -127,9 +127,11 @@ export class TemplateVariablesService {
         return parsedValue;
       }
       // replace '@' with 'this.' so we can evaluate as a statement. E.g. @local.someVar => this.local.someVar
-      // create a custom context with the correct variables assigned (e.g. this.local = {someVar:'value'}) and evaluate
+      // create a custom context with the correct variables assigned (e.g. this.local = {someVar:'value'}) and pseduo-methods
+      // for eval which would have function notation (eval(some_value)=>some_value). Evaluate
       const contextExpression = matchedExpression.replace("@", "this.");
-      const evalContext = { [type]: { [fieldName]: parsedValue } };
+      const evalContext = { [type]: { [fieldName]: parsedValue }, eval: (v: any) => v };
+
       try {
         const evaluatedExpression = evaluateJSExpression(contextExpression, evalContext);
         // if we have an array, object, null or undefined no further processing required
@@ -145,7 +147,7 @@ export class TemplateVariablesService {
           return this.evaluatePLHString(dynamicNested, context);
         }
       } catch (error) {
-        console.error("failed to evaluate expression", { contextExpression, evalContext });
+        console.error("failed to evaluate expression", { contextExpression, evalContext, error });
       }
     }
 
@@ -225,6 +227,9 @@ export class TemplateVariablesService {
       // e.g. evaluate conditions, take first etc.
       case "campaign":
         parsedValue = await this.campaignService.getNextCampaignRow(fieldName);
+        break;
+      case "calc":
+        parsedValue = evaluateJSExpression(fieldName, {});
         break;
       default:
         parseSuccess = false;
