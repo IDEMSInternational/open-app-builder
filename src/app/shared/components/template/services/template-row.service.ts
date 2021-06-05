@@ -156,11 +156,11 @@ export class TemplateRowService {
         }
 
         // Continue processing full row
-        let parsedRow: FlowTypes.TemplateRow = await templateVariables.evaluatePLHData(
-          preProcessedRow,
+        const parsedRow: FlowTypes.TemplateRow = await templateVariables.evaluatePLHData(
+          { ...preProcessedRow },
           evalContext
         );
-        const { name, value, hidden, type } = parsedRow;
+        const { name, value, hidden, type, _dynamicFields } = parsedRow;
 
         // Make type assigned to hidden consistent
         if (hidden === "true") parsedRow.hidden = true;
@@ -181,9 +181,14 @@ export class TemplateRowService {
               this.container.templateService.setField(name, value);
               return;
             // ensure set_variables are recorded via their name (instead of default nested name)
+            // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
             case "set_variable":
               this.templateRowMap.set(name, parsedRow);
+              if (_dynamicFields) {
+                processedRows.push(preProcessedRow);
+              }
               return;
+
             default:
               // all other types should just set own value for use in future processing
               this.templateRowMap.set(_nested_name, parsedRow);
@@ -213,6 +218,7 @@ export class TemplateRowService {
     });
     this.container.template.rows = await this.processRows(this.container.template.rows);
     this.renderedRows = this.filterConditionalTemplateRows(this.container.template.rows);
+    this.container.cdr.detectChanges();
     log("[Reprocess Complete]", this.renderedRows);
     log_groupEnd();
   }
