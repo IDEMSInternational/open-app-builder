@@ -36,7 +36,6 @@ export class TmplParentPointBoxComponent
   value: number | null = 0;
   animOptions: AnimationOptions;
   animCelebrationOptions: AnimationOptions;
-  pointClicked = false;
   play_celebration: boolean;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
@@ -83,7 +82,7 @@ export class TmplParentPointBoxComponent
     this._row.value = parseInt(this._row.value) + 1;
     this.value = this._row.value;
     this.star.nativeElement.classList.add("on-add");
-    if (!this.pointClicked && this.play_celebration) {
+    if (this.play_celebration) {
       this.celebretionAnim.nativeElement.classList.add("play");
       player.play("celebration");
     }
@@ -99,7 +98,6 @@ export class TmplParentPointBoxComponent
     await this.setValue(`${this.value}`);
     await this.triggerActions("click");
     await this.triggerActions("changed");
-    this.pointClicked = true;
   }
 
   private setAnimOptions(
