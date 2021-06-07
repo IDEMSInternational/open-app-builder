@@ -10,6 +10,7 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { AudioService } from "src/app/shared/services/audio/audio.service";
 import { AudioPlayer } from "src/app/shared/services/audio/audio.player";
+import { getImageAssetPath } from "../../utils/template-utils";
 
 @Component({
   selector: "plh-timer",
@@ -80,9 +81,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   ngOnInit() {
     this.getParams();
     this.state.callOnInit();
-    this.player = this.ping
-      ? this.audioService.createPlayer(`/assets/audio/timer/${this.ping}.wav`)
-      : null;
+    this.player = this.ping ? this.audioService.createPlayer(getImageAssetPath(this.ping)) : null;
   }
 
   changeState(state: TimerState) {
