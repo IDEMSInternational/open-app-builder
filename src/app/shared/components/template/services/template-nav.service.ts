@@ -1,7 +1,7 @@
 import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray } from "src/app/shared/utils";
 import { TemplatePopupComponent } from "../components/layout/popup";
 import { ITemplateContainerProps } from "../models";
