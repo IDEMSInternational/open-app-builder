@@ -21830,351 +21830,1538 @@
                     "value"
                   ]
                 }
-              ],
-              "parameter_list": {
-                "count": [
+              },
+              {
+                "type": "display_group",
+                "name": "outro_habit_tracker",
+                "hidden": "\"@local.outro_habit\" == \"undefined\"",
+                "parameter_list": {
+                  "style": "parent_point"
+                },
+                "rows": [
                   {
-                    "fullExpression": "@fields.weekly_parent_point_relax",
-                    "matchedExpression": "@fields.weekly_parent_point_relax",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_relax"
+                    "type": "parent_point_box",
+                    "name": "parent_point_relax",
+                    "value": "@field.total_parent_point_relax",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_relax",
+                          "@field.total_parent_point_relax+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                        "_cleaned": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_relax",
+                          "@field.weekly_parent_point_relax+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"relax\"",
+                    "parameter_list": {
+                      "text": "@data.habit.relax.title",
+                      "icon_src": "plh_images/habits/habit_relax.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_relax",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_relax",
+                          "matchedExpression": "@field.total_parent_point_relax",
+                          "type": "field",
+                          "fieldName": "total_parent_point_relax"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_relax+1",
+                                "matchedExpression": "@field.total_parent_point_relax",
+                                "type": "field",
+                                "fieldName": "total_parent_point_relax"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                              "matchedExpression": "@field.total_parent_point_relax",
+                              "type": "field",
+                              "fieldName": "total_parent_point_relax"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_relax: @field.total_parent_point_relax+1",
+                              "matchedExpression": "@field.total_parent_point_relax",
+                              "type": "field",
+                              "fieldName": "total_parent_point_relax"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_relax+1",
+                                "matchedExpression": "@field.weekly_parent_point_relax",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_relax"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                              "matchedExpression": "@field.weekly_parent_point_relax",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_relax"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_relax: @field.weekly_parent_point_relax+1",
+                              "matchedExpression": "@field.weekly_parent_point_relax",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_relax"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"relax\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.relax.title",
+                            "matchedExpression": "@data.habit.relax.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_relax": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_relax": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.relax.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_treat_yourself",
+                    "value": "@field.total_parent_point_treat_yourself",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_treat_yourself",
+                          "@field.total_parent_point_treat_yourself+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_treat_yourself: @field.total_parent_point_treat_yourself+1",
+                        "_cleaned": "click | set_field: total_parent_point_treat_yourself: @field.total_parent_point_treat_yourself+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_treat_yourself",
+                          "@field.weekly_parent_point_treat_yourself+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_treat_yourself: @field.weekly_parent_point_treat_yourself+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_treat_yourself: @field.weekly_parent_point_treat_yourself+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"treat_yourself\"",
+                    "parameter_list": {
+                      "text": "@data.habit.treat_yourself.title",
+                      "icon_src": "plh_images/habits/habit_treat_yourself.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_treat_yourself",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_treat_yourself",
+                          "matchedExpression": "@field.total_parent_point_treat_yourself",
+                          "type": "field",
+                          "fieldName": "total_parent_point_treat_yourself"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_treat_yourself+1",
+                                "matchedExpression": "@field.total_parent_point_treat_yourself",
+                                "type": "field",
+                                "fieldName": "total_parent_point_treat_yourself"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_treat_yourself: @field.total_parent_point_treat_yourself+1",
+                              "matchedExpression": "@field.total_parent_point_treat_yourself",
+                              "type": "field",
+                              "fieldName": "total_parent_point_treat_yourself"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_treat_yourself: @field.total_parent_point_treat_yourself+1",
+                              "matchedExpression": "@field.total_parent_point_treat_yourself",
+                              "type": "field",
+                              "fieldName": "total_parent_point_treat_yourself"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_treat_yourself+1",
+                                "matchedExpression": "@field.weekly_parent_point_treat_yourself",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_treat_yourself"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_treat_yourself: @field.weekly_parent_point_treat_yourself+1",
+                              "matchedExpression": "@field.weekly_parent_point_treat_yourself",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_treat_yourself"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_treat_yourself: @field.weekly_parent_point_treat_yourself+1",
+                              "matchedExpression": "@field.weekly_parent_point_treat_yourself",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_treat_yourself"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"treat_yourself\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.treat_yourself.title",
+                            "matchedExpression": "@data.habit.treat_yourself.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_treat_yourself": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_treat_yourself": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.treat_yourself.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_praise_yourself",
+                    "value": "@field.total_parent_point_praise_yourself",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_praise_yourself",
+                          "@field.total_parent_point_praise_yourself+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                        "_cleaned": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_praise_yourself",
+                          "@field.weekly_parent_point_praise_yourself+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"praise_yourself\"",
+                    "parameter_list": {
+                      "text": "@data.habit.praise_yourself.title",
+                      "icon_src": "plh_images/habits/habit_praise_yourself.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_praise_yourself",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_praise_yourself",
+                          "matchedExpression": "@field.total_parent_point_praise_yourself",
+                          "type": "field",
+                          "fieldName": "total_parent_point_praise_yourself"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_praise_yourself+1",
+                                "matchedExpression": "@field.total_parent_point_praise_yourself",
+                                "type": "field",
+                                "fieldName": "total_parent_point_praise_yourself"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                              "matchedExpression": "@field.total_parent_point_praise_yourself",
+                              "type": "field",
+                              "fieldName": "total_parent_point_praise_yourself"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_praise_yourself: @field.total_parent_point_praise_yourself+1",
+                              "matchedExpression": "@field.total_parent_point_praise_yourself",
+                              "type": "field",
+                              "fieldName": "total_parent_point_praise_yourself"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_praise_yourself+1",
+                                "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_praise_yourself"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                              "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_praise_yourself"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_praise_yourself: @field.weekly_parent_point_praise_yourself+1",
+                              "matchedExpression": "@field.weekly_parent_point_praise_yourself",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_praise_yourself"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"praise_yourself\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.praise_yourself.title",
+                            "matchedExpression": "@data.habit.praise_yourself.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_praise_yourself": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_praise_yourself": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.praise_yourself.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_spend_time",
+                    "value": "@field.total_parent_point_spend_time",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_spend_time",
+                          "@field.total_parent_point_spend_time+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+                        "_cleaned": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_spend_time",
+                          "@field.weekly_parent_point_spend_time+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"spend_time\"",
+                    "parameter_list": {
+                      "text": "@data.habit.spend_time.title",
+                      "icon_src": "plh_images/habits/habit_spend_time.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_spend_time",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_spend_time",
+                          "matchedExpression": "@field.total_parent_point_spend_time",
+                          "type": "field",
+                          "fieldName": "total_parent_point_spend_time"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_spend_time+1",
+                                "matchedExpression": "@field.total_parent_point_spend_time",
+                                "type": "field",
+                                "fieldName": "total_parent_point_spend_time"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+                              "matchedExpression": "@field.total_parent_point_spend_time",
+                              "type": "field",
+                              "fieldName": "total_parent_point_spend_time"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_spend_time: @field.total_parent_point_spend_time+1",
+                              "matchedExpression": "@field.total_parent_point_spend_time",
+                              "type": "field",
+                              "fieldName": "total_parent_point_spend_time"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_spend_time+1",
+                                "matchedExpression": "@field.weekly_parent_point_spend_time",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_spend_time"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+                              "matchedExpression": "@field.weekly_parent_point_spend_time",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_spend_time"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_spend_time: @field.weekly_parent_point_spend_time+1",
+                              "matchedExpression": "@field.weekly_parent_point_spend_time",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_spend_time"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"spend_time\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.spend_time.title",
+                            "matchedExpression": "@data.habit.spend_time.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_spend_time": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_spend_time": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.spend_time.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_praise_teen",
+                    "value": "@field.total_parent_point_praise_teen",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_praise_teen",
+                          "@field.total_parent_point_praise_teen+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_praise_teen: @field.total_parent_point_praise_teen+1",
+                        "_cleaned": "click | set_field: total_parent_point_praise_teen: @field.total_parent_point_praise_teen+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_praise_teen",
+                          "@field.weekly_parent_point_praise_teen+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_praise_teen: @field.weekly_parent_point_praise_teen+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_praise_teen: @field.weekly_parent_point_praise_teen+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"praise_teen\"",
+                    "parameter_list": {
+                      "text": "@data.habit.praise_teen.title",
+                      "icon_src": "plh_images/habits/habit_praise_teen.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_praise_teen",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_praise_teen",
+                          "matchedExpression": "@field.total_parent_point_praise_teen",
+                          "type": "field",
+                          "fieldName": "total_parent_point_praise_teen"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_praise_teen+1",
+                                "matchedExpression": "@field.total_parent_point_praise_teen",
+                                "type": "field",
+                                "fieldName": "total_parent_point_praise_teen"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_praise_teen: @field.total_parent_point_praise_teen+1",
+                              "matchedExpression": "@field.total_parent_point_praise_teen",
+                              "type": "field",
+                              "fieldName": "total_parent_point_praise_teen"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_praise_teen: @field.total_parent_point_praise_teen+1",
+                              "matchedExpression": "@field.total_parent_point_praise_teen",
+                              "type": "field",
+                              "fieldName": "total_parent_point_praise_teen"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_praise_teen+1",
+                                "matchedExpression": "@field.weekly_parent_point_praise_teen",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_praise_teen"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_praise_teen: @field.weekly_parent_point_praise_teen+1",
+                              "matchedExpression": "@field.weekly_parent_point_praise_teen",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_praise_teen"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_praise_teen: @field.weekly_parent_point_praise_teen+1",
+                              "matchedExpression": "@field.weekly_parent_point_praise_teen",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_praise_teen"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"praise_teen\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.praise_teen.title",
+                            "matchedExpression": "@data.habit.praise_teen.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_praise_teen": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_praise_teen": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.praise_teen.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_instruct_positively",
+                    "value": "@field.total_parent_point_instruct_positively",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_instruct_positively",
+                          "@field.total_parent_point_instruct_positively+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_instruct_positively: @field.total_parent_point_instruct_positively+1",
+                        "_cleaned": "click | set_field: total_parent_point_instruct_positively: @field.total_parent_point_instruct_positively+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_instruct_positively",
+                          "@field.weekly_parent_point_instruct_positively+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_instruct_positively: @field.weekly_parent_point_instruct_positively+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_instruct_positively: @field.weekly_parent_point_instruct_positively+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"instruct_positively\"",
+                    "parameter_list": {
+                      "text": "@data.habit.instruct_positively.title",
+                      "icon_src": "plh_images/habits/habit_instruct_positively.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_instruct_positively",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_instruct_positively",
+                          "matchedExpression": "@field.total_parent_point_instruct_positively",
+                          "type": "field",
+                          "fieldName": "total_parent_point_instruct_positively"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_instruct_positively+1",
+                                "matchedExpression": "@field.total_parent_point_instruct_positively",
+                                "type": "field",
+                                "fieldName": "total_parent_point_instruct_positively"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_instruct_positively: @field.total_parent_point_instruct_positively+1",
+                              "matchedExpression": "@field.total_parent_point_instruct_positively",
+                              "type": "field",
+                              "fieldName": "total_parent_point_instruct_positively"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_instruct_positively: @field.total_parent_point_instruct_positively+1",
+                              "matchedExpression": "@field.total_parent_point_instruct_positively",
+                              "type": "field",
+                              "fieldName": "total_parent_point_instruct_positively"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_instruct_positively+1",
+                                "matchedExpression": "@field.weekly_parent_point_instruct_positively",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_instruct_positively"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_instruct_positively: @field.weekly_parent_point_instruct_positively+1",
+                              "matchedExpression": "@field.weekly_parent_point_instruct_positively",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_instruct_positively"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_instruct_positively: @field.weekly_parent_point_instruct_positively+1",
+                              "matchedExpression": "@field.weekly_parent_point_instruct_positively",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_instruct_positively"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"instruct_positively\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.instruct_positively.title",
+                            "matchedExpression": "@data.habit.instruct_positively.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_instruct_positively": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_instruct_positively": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.instruct_positively.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_breathe",
+                    "value": "@field.total_parent_point_breathe",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_breathe",
+                          "@field.total_parent_point_breathe+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_breathe: @field.total_parent_point_breathe+1",
+                        "_cleaned": "click | set_field: total_parent_point_breathe: @field.total_parent_point_breathe+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_breathe",
+                          "@field.weekly_parent_point_breathe+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_breathe: @field.weekly_parent_point_breathe+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_breathe: @field.weekly_parent_point_breathe+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"breathe\"",
+                    "parameter_list": {
+                      "text": "@data.habit.breathe.title",
+                      "icon_src": "plh_images/habits/habit_breathe.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_breathe",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_breathe",
+                          "matchedExpression": "@field.total_parent_point_breathe",
+                          "type": "field",
+                          "fieldName": "total_parent_point_breathe"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_breathe+1",
+                                "matchedExpression": "@field.total_parent_point_breathe",
+                                "type": "field",
+                                "fieldName": "total_parent_point_breathe"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_breathe: @field.total_parent_point_breathe+1",
+                              "matchedExpression": "@field.total_parent_point_breathe",
+                              "type": "field",
+                              "fieldName": "total_parent_point_breathe"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_breathe: @field.total_parent_point_breathe+1",
+                              "matchedExpression": "@field.total_parent_point_breathe",
+                              "type": "field",
+                              "fieldName": "total_parent_point_breathe"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_breathe+1",
+                                "matchedExpression": "@field.weekly_parent_point_breathe",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_breathe"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_breathe: @field.weekly_parent_point_breathe+1",
+                              "matchedExpression": "@field.weekly_parent_point_breathe",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_breathe"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_breathe: @field.weekly_parent_point_breathe+1",
+                              "matchedExpression": "@field.weekly_parent_point_breathe",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_breathe"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"breathe\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.breathe.title",
+                            "matchedExpression": "@data.habit.breathe.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_breathe": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_breathe": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.breathe.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_money",
+                    "value": "@field.total_parent_point_money",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_money",
+                          "@field.total_parent_point_money+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                        "_cleaned": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_money",
+                          "@field.weekly_parent_point_money+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_money+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_money+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"money\"",
+                    "parameter_list": {
+                      "text": "@data.habit.money.title",
+                      "icon_src": "plh_images/habits/habit_money.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_money",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_money",
+                          "matchedExpression": "@field.total_parent_point_money",
+                          "type": "field",
+                          "fieldName": "total_parent_point_money"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_money+1",
+                                "matchedExpression": "@field.total_parent_point_money",
+                                "type": "field",
+                                "fieldName": "total_parent_point_money"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                              "matchedExpression": "@field.total_parent_point_money",
+                              "type": "field",
+                              "fieldName": "total_parent_point_money"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_money: @field.total_parent_point_money+1",
+                              "matchedExpression": "@field.total_parent_point_money",
+                              "type": "field",
+                              "fieldName": "total_parent_point_money"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_money+1",
+                                "matchedExpression": "@field.weekly_parent_point_money",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_money"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_money+1",
+                              "matchedExpression": "@field.weekly_parent_point_money",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_money"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_money: @field.weekly_parent_point_money+1",
+                              "matchedExpression": "@field.weekly_parent_point_money",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_money"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"money\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.money.title",
+                            "matchedExpression": "@data.habit.money.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_money": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_money": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.money.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_consequence",
+                    "value": "@field.total_parent_point_consequence",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_consequence",
+                          "@field.total_parent_point_consequence+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_consequence: @field.total_parent_point_consequence+1",
+                        "_cleaned": "click | set_field: total_parent_point_consequence: @field.total_parent_point_consequence+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_consequence",
+                          "@field.weekly_parent_point_consequence+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_consequence: @field.weekly_parent_point_consequence+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_consequence: @field.weekly_parent_point_consequence+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"consequence\"",
+                    "parameter_list": {
+                      "text": "@data.habit.consequence.title",
+                      "icon_src": "plh_images/habits/habit_consequence.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_consequence",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_consequence",
+                          "matchedExpression": "@field.total_parent_point_consequence",
+                          "type": "field",
+                          "fieldName": "total_parent_point_consequence"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_consequence+1",
+                                "matchedExpression": "@field.total_parent_point_consequence",
+                                "type": "field",
+                                "fieldName": "total_parent_point_consequence"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_consequence: @field.total_parent_point_consequence+1",
+                              "matchedExpression": "@field.total_parent_point_consequence",
+                              "type": "field",
+                              "fieldName": "total_parent_point_consequence"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_consequence: @field.total_parent_point_consequence+1",
+                              "matchedExpression": "@field.total_parent_point_consequence",
+                              "type": "field",
+                              "fieldName": "total_parent_point_consequence"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_consequence+1",
+                                "matchedExpression": "@field.weekly_parent_point_consequence",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_consequence"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_consequence: @field.weekly_parent_point_consequence+1",
+                              "matchedExpression": "@field.weekly_parent_point_consequence",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_consequence"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_consequence: @field.weekly_parent_point_consequence+1",
+                              "matchedExpression": "@field.weekly_parent_point_consequence",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_consequence"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"consequence\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.consequence.title",
+                            "matchedExpression": "@data.habit.consequence.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_consequence": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_consequence": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.consequence.title": [
+                        "parameter_list.text"
+                      ]
+                    }
+                  },
+                  {
+                    "type": "parent_point_box",
+                    "name": "parent_point_safe",
+                    "value": "@field.total_parent_point_safe",
+                    "action_list": [
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "total_parent_point_safe",
+                          "@field.total_parent_point_safe+1"
+                        ],
+                        "_raw": "click | set_field: total_parent_point_safe: @field.total_parent_point_safe+1",
+                        "_cleaned": "click | set_field: total_parent_point_safe: @field.total_parent_point_safe+1"
+                      },
+                      {
+                        "trigger": "click",
+                        "action_id": "set_field",
+                        "args": [
+                          "weekly_parent_point_safe",
+                          "@field.weekly_parent_point_safe+1"
+                        ],
+                        "_raw": "click | set_field: weekly_parent_point_safe: @field.weekly_parent_point_safe+1",
+                        "_cleaned": "click | set_field: weekly_parent_point_safe: @field.weekly_parent_point_safe+1"
+                      }
+                    ],
+                    "hidden": "\"@local.outro_habit\" != \"safe\"",
+                    "parameter_list": {
+                      "text": "@data.habit.safe.title",
+                      "icon_src": "plh_images/habits/habit_safe.svg"
+                    },
+                    "_nested_name": "outro.outro_habit_box.outro_habit_tracker.parent_point_safe",
+                    "_dynamicFields": {
+                      "value": [
+                        {
+                          "fullExpression": "@field.total_parent_point_safe",
+                          "matchedExpression": "@field.total_parent_point_safe",
+                          "type": "field",
+                          "fieldName": "total_parent_point_safe"
+                        }
+                      ],
+                      "action_list": {
+                        "0": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.total_parent_point_safe+1",
+                                "matchedExpression": "@field.total_parent_point_safe",
+                                "type": "field",
+                                "fieldName": "total_parent_point_safe"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_safe: @field.total_parent_point_safe+1",
+                              "matchedExpression": "@field.total_parent_point_safe",
+                              "type": "field",
+                              "fieldName": "total_parent_point_safe"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: total_parent_point_safe: @field.total_parent_point_safe+1",
+                              "matchedExpression": "@field.total_parent_point_safe",
+                              "type": "field",
+                              "fieldName": "total_parent_point_safe"
+                            }
+                          ]
+                        },
+                        "1": {
+                          "args": {
+                            "1": [
+                              {
+                                "fullExpression": "@field.weekly_parent_point_safe+1",
+                                "matchedExpression": "@field.weekly_parent_point_safe",
+                                "type": "field",
+                                "fieldName": "weekly_parent_point_safe"
+                              }
+                            ]
+                          },
+                          "_raw": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_safe: @field.weekly_parent_point_safe+1",
+                              "matchedExpression": "@field.weekly_parent_point_safe",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_safe"
+                            }
+                          ],
+                          "_cleaned": [
+                            {
+                              "fullExpression": "click | set_field: weekly_parent_point_safe: @field.weekly_parent_point_safe+1",
+                              "matchedExpression": "@field.weekly_parent_point_safe",
+                              "type": "field",
+                              "fieldName": "weekly_parent_point_safe"
+                            }
+                          ]
+                        }
+                      },
+                      "hidden": [
+                        {
+                          "fullExpression": "\"@local.outro_habit\" != \"safe\"",
+                          "matchedExpression": "@local.outro_habit",
+                          "type": "local",
+                          "fieldName": "outro_habit"
+                        }
+                      ],
+                      "parameter_list": {
+                        "text": [
+                          {
+                            "fullExpression": "@data.habit.safe.title",
+                            "matchedExpression": "@data.habit.safe.title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      }
+                    },
+                    "_dynamicDependencies": {
+                      "@field.total_parent_point_safe": [
+                        "value",
+                        "action_list.0.args.1",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned"
+                      ],
+                      "@field.weekly_parent_point_safe": [
+                        "action_list.1.args.1",
+                        "action_list.1._raw",
+                        "action_list.1._cleaned"
+                      ],
+                      "@local.outro_habit": [
+                        "hidden"
+                      ],
+                      "@data.habit.safe.title": [
+                        "parameter_list.text"
+                      ]
+                    }
                   }
-                ]
+                ],
+                "_nested_name": "outro.outro_habit_box.outro_habit_tracker",
+                "_dynamicFields": {
+                  "hidden": [
+                    {
+                      "fullExpression": "\"@local.outro_habit\" == \"undefined\"",
+                      "matchedExpression": "@local.outro_habit",
+                      "type": "local",
+                      "fieldName": "outro_habit"
+                    }
+                  ]
+                },
+                "_dynamicDependencies": {
+                  "@local.outro_habit": [
+                    "hidden"
+                  ]
+                }
               }
+            ],
+            "_nested_name": "outro.outro_habit_box",
+            "_dynamicFields": {
+              "hidden": [
+                {
+                  "fullExpression": "\"@local.outro_habit_text\" == \"undefined\"",
+                  "matchedExpression": "@local.outro_habit_text",
+                  "type": "local",
+                  "fieldName": "outro_habit_text"
+                }
+              ]
             },
             "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
+              "@local.outro_habit_text": [
                 "hidden"
-              ],
-              "@fields.weekly_parent_point_relax": [
-                "parameter_list.count"
               ]
             }
           },
           {
-            "type": "parent_point_counter",
-            "name": "treat_yourself",
-            "value": "treat yourself ",
-            "hidden": "@fields.parent_point_relax_weekly_count == 0",
+            "name": "checkbox_text",
+            "type": "set_variable",
+            "_nested_name": "outro.checkbox_text"
+          },
+          {
+            "type": "simple_checkbox",
+            "name": "checkbox",
+            "action_list": [
+              {
+                "trigger": "changed",
+                "action_id": "set_field",
+                "args": [
+                  "@local.checkbox_field",
+                  "@local.checkbox"
+                ],
+                "_raw": "changed | set_field : @local.checkbox_field : @local.checkbox",
+                "_cleaned": "changed | set_field : @local.checkbox_field : @local.checkbox"
+              }
+            ],
+            "hidden": true,
             "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_treat_yourself"
+              "label_text": "@local.checkbox_text"
             },
-            "_nested_name": "display_group.treat_yourself",
+            "_nested_name": "outro.checkbox",
             "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "@fields.parent_point_relax_weekly_count == 0",
-                  "matchedExpression": "@fields.parent_point_relax_weekly_count",
-                  "type": "fields",
-                  "fieldName": "parent_point_relax_weekly_count"
+              "action_list": {
+                "0": {
+                  "args": {
+                    "0": [
+                      {
+                        "fullExpression": "@local.checkbox_field",
+                        "matchedExpression": "@local.checkbox_field",
+                        "type": "local",
+                        "fieldName": "checkbox_field"
+                      }
+                    ],
+                    "1": [
+                      {
+                        "fullExpression": "@local.checkbox",
+                        "matchedExpression": "@local.checkbox",
+                        "type": "local",
+                        "fieldName": "checkbox"
+                      }
+                    ]
+                  },
+                  "_raw": [
+                    {
+                      "fullExpression": "changed | set_field : @local.checkbox_field : @local.checkbox",
+                      "matchedExpression": "@local.checkbox_field",
+                      "type": "local",
+                      "fieldName": "checkbox_field"
+                    },
+                    {
+                      "fullExpression": "changed | set_field : @local.checkbox_field : @local.checkbox",
+                      "matchedExpression": "@local.checkbox",
+                      "type": "local",
+                      "fieldName": "checkbox"
+                    }
+                  ],
+                  "_cleaned": [
+                    {
+                      "fullExpression": "changed | set_field : @local.checkbox_field : @local.checkbox",
+                      "matchedExpression": "@local.checkbox_field",
+                      "type": "local",
+                      "fieldName": "checkbox_field"
+                    },
+                    {
+                      "fullExpression": "changed | set_field : @local.checkbox_field : @local.checkbox",
+                      "matchedExpression": "@local.checkbox",
+                      "type": "local",
+                      "fieldName": "checkbox"
+                    }
+                  ]
                 }
-              ],
+              },
               "parameter_list": {
-                "count": [
+                "label_text": [
                   {
-                    "fullExpression": "@fields.weekly_parent_point_treat_yourself",
-                    "matchedExpression": "@fields.weekly_parent_point_treat_yourself",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_treat_yourself"
+                    "fullExpression": "@local.checkbox_text",
+                    "matchedExpression": "@local.checkbox_text",
+                    "type": "local",
+                    "fieldName": "checkbox_text"
                   }
                 ]
               }
             },
             "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
-                "hidden"
+              "@local.checkbox_field": [
+                "action_list.0.args.0",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
               ],
-              "@fields.weekly_parent_point_treat_yourself": [
-                "parameter_list.count"
+              "@local.checkbox": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned"
+              ],
+              "@local.checkbox_text": [
+                "parameter_list.label_text"
               ]
             }
           },
-          {
-            "type": "parent_point_counter",
-            "name": "praise_yourself",
-            "value": "praise yourself",
-            "hidden": "@fields.parent_point_relax_weekly_count == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_praise_yourself"
-            },
-            "_nested_name": "display_group.praise_yourself",
-            "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "@fields.parent_point_relax_weekly_count == 0",
-                  "matchedExpression": "@fields.parent_point_relax_weekly_count",
-                  "type": "fields",
-                  "fieldName": "parent_point_relax_weekly_count"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_praise_yourself",
-                    "matchedExpression": "@fields.weekly_parent_point_praise_yourself",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_praise_yourself"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
-                "hidden"
-              ],
-              "@fields.weekly_parent_point_praise_yourself": [
-                "parameter_list.count"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_counter",
-            "name": "spend_time",
-            "value": "spend time",
-            "hidden": "@fields.parent_point_relax_weekly_count == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_spend_time"
-            },
-            "_nested_name": "display_group.spend_time",
-            "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "@fields.parent_point_relax_weekly_count == 0",
-                  "matchedExpression": "@fields.parent_point_relax_weekly_count",
-                  "type": "fields",
-                  "fieldName": "parent_point_relax_weekly_count"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_spend_time",
-                    "matchedExpression": "@fields.weekly_parent_point_spend_time",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_spend_time"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
-                "hidden"
-              ],
-              "@fields.weekly_parent_point_spend_time": [
-                "parameter_list.count"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_counter",
-            "name": "praise_teen",
-            "value": "praise teen",
-            "hidden": "@fields.parent_point_relax_weekly_count == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_praise_teen"
-            },
-            "_nested_name": "display_group.praise_teen",
-            "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "@fields.parent_point_relax_weekly_count == 0",
-                  "matchedExpression": "@fields.parent_point_relax_weekly_count",
-                  "type": "fields",
-                  "fieldName": "parent_point_relax_weekly_count"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_praise_teen",
-                    "matchedExpression": "@fields.weekly_parent_point_praise_teen",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_praise_teen"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
-                "hidden"
-              ],
-              "@fields.weekly_parent_point_praise_teen": [
-                "parameter_list.count"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_counter",
-            "name": "breathe",
-            "value": "breathe",
-            "hidden": "@fields.parent_point_relax_weekly_count == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_breathe"
-            },
-            "_nested_name": "display_group.breathe",
-            "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "@fields.parent_point_relax_weekly_count == 0",
-                  "matchedExpression": "@fields.parent_point_relax_weekly_count",
-                  "type": "fields",
-                  "fieldName": "parent_point_relax_weekly_count"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_breathe",
-                    "matchedExpression": "@fields.weekly_parent_point_breathe",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_breathe"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
-                "hidden"
-              ],
-              "@fields.weekly_parent_point_breathe": [
-                "parameter_list.count"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_counter",
-            "name": "money",
-            "value": "money",
-            "hidden": "@fields.parent_point_relax_weekly_count == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_money"
-            },
-            "_nested_name": "display_group.money",
-            "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "@fields.parent_point_relax_weekly_count == 0",
-                  "matchedExpression": "@fields.parent_point_relax_weekly_count",
-                  "type": "fields",
-                  "fieldName": "parent_point_relax_weekly_count"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_money",
-                    "matchedExpression": "@fields.weekly_parent_point_money",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_money"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
-                "hidden"
-              ],
-              "@fields.weekly_parent_point_money": [
-                "parameter_list.count"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_counter",
-            "name": "consequence",
-            "value": "consequence",
-            "hidden": "@fields.parent_point_relax_weekly_count == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_consequence"
-            },
-            "_nested_name": "display_group.consequence",
-            "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "@fields.parent_point_relax_weekly_count == 0",
-                  "matchedExpression": "@fields.parent_point_relax_weekly_count",
-                  "type": "fields",
-                  "fieldName": "parent_point_relax_weekly_count"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_consequence",
-                    "matchedExpression": "@fields.weekly_parent_point_consequence",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_consequence"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
-                "hidden"
-              ],
-              "@fields.weekly_parent_point_consequence": [
-                "parameter_list.count"
-              ]
-            }
-          },
-          {
-            "type": "parent_point_counter",
-            "name": "safe",
-            "value": "safe",
-            "hidden": "@fields.parent_point_relax_weekly_count == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_safe"
-            },
-            "_nested_name": "display_group.safe",
-            "_dynamicFields": {
-              "hidden": [
-                {
-                  "fullExpression": "@fields.parent_point_relax_weekly_count == 0",
-                  "matchedExpression": "@fields.parent_point_relax_weekly_count",
-                  "type": "fields",
-                  "fieldName": "parent_point_relax_weekly_count"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_safe",
-                    "matchedExpression": "@fields.weekly_parent_point_safe",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_safe"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@fields.parent_point_relax_weekly_count": [
-                "hidden"
-              ],
-              "@fields.weekly_parent_point_safe": [
-                "parameter_list.count"
-              ]
-            }
-          }
-        ],
-        "name": "display_group",
-        "_nested_name": "display_group"
-      },
-      {
-        "type": "animated_section",
-        "name": "animated_section_2",
-        "hidden": "@local.hide_animated_section_2",
-        "rows": [
           {
             "type": "template",
-            "name": "box_2",
+            "name": "outro_nav_buttons",
+            "value": "nav_buttons",
             "action_list": [
               {
                 "trigger": "completed",
@@ -22189,63 +23376,43 @@
                 "trigger": "uncompleted",
                 "action_id": "set_local",
                 "args": [
-                  "hide_animated_section_1",
+                  "hide_content",
                   false
                 ],
-                "_raw": "uncompleted | set_local:hide_animated_section_1:false",
-                "_cleaned": "uncompleted | set_local:hide_animated_section_1:false"
+                "_raw": "uncompleted | set_local:hide_content:false",
+                "_cleaned": "uncompleted | set_local:hide_content:false"
               },
               {
                 "trigger": "uncompleted",
                 "action_id": "set_local",
                 "args": [
-                  "hide_animated_section_2",
+                  "hide_outro",
                   true
                 ],
-                "_raw": "uncompleted  | set_local:hide_animated_section_2:true",
-                "_cleaned": "uncompleted  | set_local:hide_animated_section_2:true"
+                "_raw": "uncompleted | set_local:hide_outro:true",
+                "_cleaned": "uncompleted | set_local:hide_outro:true"
               }
             ],
             "rows": [],
-            "_nested_name": "animated_section_2.box_2"
+            "_nested_name": "outro.outro_nav_buttons"
           }
         ],
-        "_nested_name": "animated_section_2",
+        "_nested_name": "outro",
         "_dynamicFields": {
           "hidden": [
             {
-              "fullExpression": "@local.hide_animated_section_2",
-              "matchedExpression": "@local.hide_animated_section_2",
+              "fullExpression": "@local.hide_outro",
+              "matchedExpression": "@local.hide_outro",
               "type": "local",
-              "fieldName": "hide_animated_section_2"
+              "fieldName": "hide_outro"
             }
           ]
         },
         "_dynamicDependencies": {
-          "@local.hide_animated_section_2": [
+          "@local.hide_outro": [
             "hidden"
           ]
         }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "box_duo",
-    "status": "released",
-    "rows": [
-      {
-        "type": "template",
-        "name": "box_1",
-        "rows": [],
-        "_nested_name": "box_1"
-      },
-      {
-        "type": "template",
-        "name": "box_2",
-        "rows": [],
-        "_nested_name": "box_2"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshops.xlsx"
@@ -63930,523 +65097,6 @@
             "parameter_list.answer_list"
           ]
         }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "feature_form",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "value": "form with 'go to'",
-        "name": "title",
-        "_nested_name": "title"
-      },
-      {
-        "type": "display_group",
-        "name": "dg_example_form",
-        "exclude_from_translation": true,
-        "parameter_list": {
-          "style": "form",
-          "get_device_info": "true",
-          "button_text": "Send",
-          "button_go_to": "feature_audio"
-        },
-        "rows": [
-          {
-            "type": "text_box",
-            "name": "user_name",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your name"
-            },
-            "_nested_name": "dg_example_form.user_name"
-          },
-          {
-            "type": "text_box",
-            "name": "user_phone",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your phone number"
-            },
-            "_nested_name": "dg_example_form.user_phone"
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_1",
-            "value": false,
-            "action_list": [
-              {
-                "trigger": "changed",
-                "action_id": "set_field",
-                "args": [
-                  "demo_changed_field_checkbox",
-                  "@local.checkbox_1"
-                ],
-                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
-              }
-            ],
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_1",
-            "_dynamicFields": {
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@local.checkbox_1",
-                        "matchedExpression": "@local.checkbox_1",
-                        "type": "local",
-                        "fieldName": "checkbox_1"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ]
-                }
-              }
-            },
-            "_dynamicDependencies": {
-              "@local.checkbox_1": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ]
-            }
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_2",
-            "value": true,
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_2"
-          },
-          {
-            "type": "title",
-            "value": "Some text here",
-            "exclude_from_translation": true,
-            "name": "title",
-            "_nested_name": "dg_example_form.title"
-          },
-          {
-            "type": "text_area",
-            "name": "text_area",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "placeholder": "example placeholder"
-            },
-            "_nested_name": "dg_example_form.text_area"
-          }
-        ],
-        "_nested_name": "dg_example_form"
-      },
-      {
-        "type": "title",
-        "value": "pop up form",
-        "name": "title",
-        "_nested_name": "title"
-      },
-      {
-        "type": "display_group",
-        "name": "dg_example_form",
-        "exclude_from_translation": true,
-        "parameter_list": {
-          "style": "form",
-          "get_device_info": "true",
-          "button_text": "Send",
-          "button_pop_up": "feature_audio"
-        },
-        "rows": [
-          {
-            "type": "text_box",
-            "name": "user_name",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your name"
-            },
-            "_nested_name": "dg_example_form.user_name"
-          },
-          {
-            "type": "text_box",
-            "name": "user_phone",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your phone number"
-            },
-            "_nested_name": "dg_example_form.user_phone"
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_1",
-            "value": false,
-            "action_list": [
-              {
-                "trigger": "changed",
-                "action_id": "set_field",
-                "args": [
-                  "demo_changed_field_checkbox",
-                  "@local.checkbox_1"
-                ],
-                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
-              }
-            ],
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_1",
-            "_dynamicFields": {
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@local.checkbox_1",
-                        "matchedExpression": "@local.checkbox_1",
-                        "type": "local",
-                        "fieldName": "checkbox_1"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ]
-                }
-              }
-            },
-            "_dynamicDependencies": {
-              "@local.checkbox_1": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ]
-            }
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_2",
-            "value": true,
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_2"
-          },
-          {
-            "type": "title",
-            "value": "Some text here",
-            "exclude_from_translation": true,
-            "name": "title",
-            "_nested_name": "dg_example_form.title"
-          },
-          {
-            "type": "text_area",
-            "name": "text_area",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "placeholder": "example placeholder"
-            },
-            "_nested_name": "dg_example_form.text_area"
-          }
-        ],
-        "_nested_name": "dg_example_form"
-      },
-      {
-        "type": "title",
-        "value": "with both params",
-        "name": "title",
-        "_nested_name": "title"
-      },
-      {
-        "type": "display_group",
-        "name": "dg_example_form",
-        "exclude_from_translation": true,
-        "parameter_list": {
-          "style": "form",
-          "get_device_info": "true",
-          "button_text": "Send",
-          "button_pop_up": "feature_audio",
-          "button_go_to": "feature_audio"
-        },
-        "rows": [
-          {
-            "type": "text_box",
-            "name": "user_name",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your name"
-            },
-            "_nested_name": "dg_example_form.user_name"
-          },
-          {
-            "type": "text_box",
-            "name": "user_phone",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your phone number"
-            },
-            "_nested_name": "dg_example_form.user_phone"
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_1",
-            "value": false,
-            "action_list": [
-              {
-                "trigger": "changed",
-                "action_id": "set_field",
-                "args": [
-                  "demo_changed_field_checkbox",
-                  "@local.checkbox_1"
-                ],
-                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
-              }
-            ],
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_1",
-            "_dynamicFields": {
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@local.checkbox_1",
-                        "matchedExpression": "@local.checkbox_1",
-                        "type": "local",
-                        "fieldName": "checkbox_1"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ]
-                }
-              }
-            },
-            "_dynamicDependencies": {
-              "@local.checkbox_1": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ]
-            }
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_2",
-            "value": true,
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_2"
-          },
-          {
-            "type": "title",
-            "value": "Some text here",
-            "exclude_from_translation": true,
-            "name": "title",
-            "_nested_name": "dg_example_form.title"
-          },
-          {
-            "type": "text_area",
-            "name": "text_area",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "placeholder": "example placeholder"
-            },
-            "_nested_name": "dg_example_form.text_area"
-          }
-        ],
-        "_nested_name": "dg_example_form"
-      },
-      {
-        "type": "title",
-        "value": "outside display group",
-        "name": "title",
-        "_nested_name": "title"
-      },
-      {
-        "type": "form",
-        "name": "dg_example_form",
-        "exclude_from_translation": true,
-        "parameter_list": {
-          "get_device_info": "true",
-          "button_text": "Send",
-          "button_pop_up": "feature_audio",
-          "button_go_to": "feature_audio"
-        },
-        "rows": [
-          {
-            "type": "text_box",
-            "name": "user_name",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your name"
-            },
-            "_nested_name": "dg_example_form.user_name"
-          },
-          {
-            "type": "text_box",
-            "name": "user_phone",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your phone number"
-            },
-            "_nested_name": "dg_example_form.user_phone"
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_1",
-            "value": false,
-            "action_list": [
-              {
-                "trigger": "changed",
-                "action_id": "set_field",
-                "args": [
-                  "demo_changed_field_checkbox",
-                  "@local.checkbox_1"
-                ],
-                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
-              }
-            ],
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_1",
-            "_dynamicFields": {
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@local.checkbox_1",
-                        "matchedExpression": "@local.checkbox_1",
-                        "type": "local",
-                        "fieldName": "checkbox_1"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ]
-                }
-              }
-            },
-            "_dynamicDependencies": {
-              "@local.checkbox_1": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ]
-            }
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_2",
-            "value": true,
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_2"
-          },
-          {
-            "type": "title",
-            "value": "Some text here",
-            "exclude_from_translation": true,
-            "name": "title",
-            "_nested_name": "dg_example_form.title"
-          },
-          {
-            "type": "text_area",
-            "name": "text_area",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "placeholder": "example placeholder"
-            },
-            "_nested_name": "dg_example_form.text_area"
-          }
-        ],
-        "_nested_name": "dg_example_form"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
