@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
-import { getStringParamFromTemplateRow } from "../../../../utils";
+import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 import { AnimationOptions } from "ngx-lottie";
 import player from "lottie-web";
 import { getImageAssetPath } from "../../utils/template-utils";
@@ -25,6 +25,7 @@ export class TmplParentPointBoxComponent
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   @ViewChild("star", { static: false }) star: ElementRef;
+  @ViewChild("celebretionAnim", { static: false }) celebretionAnim: ElementRef;
   @ViewChild("item", { static: false }) item: ElementRef;
   icon_src: string | null;
   lottie_src: string | null;
@@ -34,6 +35,9 @@ export class TmplParentPointBoxComponent
   wasClicked: boolean = false;
   value: number | null = 0;
   animOptions: AnimationOptions;
+  animCelebrationOptions: AnimationOptions;
+  pointClicked = false;
+  play_celebration: boolean;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
     this.getScaleFactor();
@@ -51,13 +55,20 @@ export class TmplParentPointBoxComponent
     this.getScaleFactor();
     if (this.lottie_src) {
       this.lottie_src = getImageAssetPath(this.lottie_src);
-      this.animOptions = this.setAnimOptions(this.lottie_src, this.text, false);
+      this.animOptions = this.setAnimOptions(this.lottie_src, this.text, true);
     }
+    this.animCelebrationOptions = this.setAnimOptions(
+      getImageAssetPath("/lottie_animations/parent_points/cascading_stars.json"),
+      "celebration",
+      false,
+      false
+    );
   }
 
   getParams() {
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
     this.lottie_src = getStringParamFromTemplateRow(this._row, "lottie_src", null);
+    this.play_celebration = getBooleanParamFromTemplateRow(this._row, "play_celebration", true);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
     this.windowWidth = window.innerWidth - 10;
     if (!this._row.value) {
@@ -72,8 +83,14 @@ export class TmplParentPointBoxComponent
     this._row.value = parseInt(this._row.value) + 1;
     this.value = this._row.value;
     this.star.nativeElement.classList.add("on-add");
+    if (!this.pointClicked && this.play_celebration) {
+      this.celebretionAnim.nativeElement.classList.add("play");
+      player.play("celebration");
+    }
     setTimeout((_) => {
       this.star.nativeElement.classList.remove("on-add");
+      this.celebretionAnim.nativeElement.classList.remove("play");
+      player.stop("celebration");
     }, 1000);
     if (!this.wasClicked) {
       this.item.nativeElement.classList.add("complete");
@@ -82,12 +99,15 @@ export class TmplParentPointBoxComponent
     await this.setValue(`${this.value}`);
     await this.triggerActions("click");
     await this.triggerActions("changed");
-    if (this.lottie_src) {
-      player.play(this.animOptions.name);
-    }
+    this.pointClicked = true;
   }
 
-  private setAnimOptions(path: string, name: string, autoplay: boolean): AnimationOptions {
+  private setAnimOptions(
+    path: string,
+    name: string,
+    autoplay: boolean,
+    loop?: boolean | number
+  ): AnimationOptions {
     const animOptions = { path, name, autoplay };
     return animOptions;
   }
