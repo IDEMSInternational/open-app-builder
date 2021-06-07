@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { HABIT_LIST } from "src/app/shared/services/data/data.service";
 import { TaskActionService } from "src/app/shared/services/task/task-action.service";
 import { TaskService } from "src/app/shared/services/task/task.service";
@@ -87,7 +87,7 @@ export class HabitAddComponent implements OnInit {
     public modalCtrl: ModalController,
     private taskService: TaskService,
     private taskActionService: TaskActionService
-  ) { }
+  ) {}
 
   async ngOnInit() {
     await this.evaluateCompletedHabits();

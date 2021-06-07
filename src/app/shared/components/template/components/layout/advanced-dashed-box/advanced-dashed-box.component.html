@@ -1,10 +1,10 @@
 <div class="box-wrapper">
-  <div class="item margin-t-regular" [class]="style">
+  <div class="item margin-t-regular default" [class]="style">
     <div class="icon" [class]="icon_position" *ngIf="icon_src">
       <img [src]="icon_result" alt="" />
     </div>
     <plh-template-component
-      *ngFor="let childRow of inputRow ? inputRow.rows : _row.rows"
+      *ngFor="let childRow of _row.rows"
       [row]="childRow"
       [parent]="parent"
       style="width: 100%"

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { takeWhile } from "rxjs/operators";
-import { BehaviorSubject } from "scripts/node_modules/rxjs";
+import { BehaviorSubject } from "rxjs";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";

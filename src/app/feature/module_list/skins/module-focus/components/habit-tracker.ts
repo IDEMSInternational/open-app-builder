@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { HABIT_LIST } from "src/app/shared/services/data/data.service";
 import { TaskActionService } from "src/app/shared/services/task/task-action.service";
 import { arrayToHashmap } from "src/app/shared/utils";
