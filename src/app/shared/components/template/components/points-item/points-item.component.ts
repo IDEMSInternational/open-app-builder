@@ -109,20 +109,6 @@ export class TmplParentPointBoxComponent
     await this.triggerActions("changed");
   }
 
-  private setAnimOptions(path: string, name: string, autoplay: boolean, loop?: boolean | number) {
-    const animOptions: AnimationOptions = {
-      path,
-      name,
-      autoplay,
-      loop,
-      rendererSettings: {
-        // svg scaling options: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
-        preserveAspectRatio: "xMinYMin slice",
-      },
-    };
-    return animOptions;
-  }
-
   getScaleFactor(): number {
     this.scaleFactor = this.windowWidth / 420 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
     return this.scaleFactor;
