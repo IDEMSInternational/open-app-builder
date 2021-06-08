@@ -118,8 +118,14 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   }
 
   getActiveSectionIdx(progressField: string): number {
+    let result: number;
     const currentProgress = this.templateService.getField(progressField);
-    const result = Math.floor((currentProgress * this.templateNames.length) / 100 - 1);
+    if (+currentProgress === 100) {
+      result = 0;
+      this.templateService.setField(progressField, `${result}`);
+      return result;
+    }
+    result = Math.floor((currentProgress * this.templateNames.length) / 100 - 1);
     return result > 0 ? result : 0;
   }
 
