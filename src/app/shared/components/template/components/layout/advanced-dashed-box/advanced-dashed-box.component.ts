@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../../base";
 
@@ -21,26 +21,15 @@ export class TmplAdvancedDashedBoxComponent extends TemplateBaseComponent implem
   }
 
   ngOnInit() {
+    if (this.inputRow) this._row = this.inputRow;
     this.getParams();
   }
 
   getParams() {
-    this.icon_src = getStringParamFromTemplateRow(
-      this.inputRow ? this.inputRow : this._row,
-      "icon_src",
-      ""
-    );
-    this.style = getStringParamFromTemplateRow(
-      this.inputRow ? this.inputRow : this._row,
-      "style",
-      "default"
-    );
+    this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
     this.icon_result = this.getPathImg();
-    this.icon_position = getStringParamFromTemplateRow(
-      this.inputRow ? this.inputRow : this._row,
-      "icon_position",
-      "top-left"
-    );
+    this.icon_position = getStringParamFromTemplateRow(this._row, "icon_position", "top-left");
   }
 
   getPathImg(): string {
