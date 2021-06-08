@@ -6803,7 +6803,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_self_care_continue",
@@ -6847,7 +6848,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_1on1_quick_start",
@@ -6901,7 +6903,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_1on1_continue",
@@ -6964,7 +6967,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_praise_quick_start",
@@ -7018,7 +7022,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_praise_continue",
@@ -7081,7 +7086,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_instruct_quick_start",
@@ -7135,7 +7141,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_instruct_continue",
@@ -7198,7 +7205,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_stress_quick_start",
@@ -7252,7 +7260,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_stress_continue",
@@ -7315,7 +7324,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_money_quick_start",
@@ -7369,7 +7379,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_money_continue",
@@ -7432,7 +7443,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_rules_quick_start",
@@ -7486,7 +7498,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_rules_continue",
@@ -7549,7 +7562,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_consequence_quick_start",
@@ -7603,7 +7617,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_consequence_continue",
@@ -7666,7 +7681,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_solve_quick_start",
@@ -7720,7 +7736,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_solve_continue",
@@ -7783,7 +7800,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_safe_quick_start",
@@ -7837,7 +7855,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_safe_continue",
@@ -7900,7 +7919,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_crisis_quick_start",
@@ -7954,7 +7974,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_crisis_continue",
@@ -8017,7 +8038,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       },
       {
         "id": "w_celebrate_quick_start",
@@ -8071,7 +8093,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Start"
       },
       {
         "id": "w_celebrate_continue",
@@ -8134,7 +8157,8 @@
           "weekly_workshops",
           "workshop_quick_start"
         ],
-        "icon": "plh_images/icons/play_white.svg"
+        "icon": "plh_images/icons/play_white.svg",
+        "text": "Continue"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx"
@@ -9837,6 +9861,15 @@
               }
             },
             "_raw": "first_launch | before: 12 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_1on1_completed"
+              }
+            },
+            "_raw": "get_field | w_1on1_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -9898,6 +9931,15 @@
               }
             },
             "_raw": "first_launch | before: 19 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_praise_completed"
+              }
+            },
+            "_raw": "get_field | w_praise_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -9959,6 +10001,15 @@
               }
             },
             "_raw": "first_launch | before: 26 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_instruct_completed"
+              }
+            },
+            "_raw": "get_field | w_instruct_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -10020,6 +10071,15 @@
               }
             },
             "_raw": "first_launch | before: 33 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_stress_completed"
+              }
+            },
+            "_raw": "get_field | w_stress_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -10081,6 +10141,15 @@
               }
             },
             "_raw": "first_launch | before: 33 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_money_completed"
+              }
+            },
+            "_raw": "get_field | w_money_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -10142,6 +10211,15 @@
               }
             },
             "_raw": "first_launch | before: 33 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_rules_completed"
+              }
+            },
+            "_raw": "get_field | w_rules_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -10203,6 +10281,15 @@
               }
             },
             "_raw": "first_launch | before: 33 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_consequence_completed"
+              }
+            },
+            "_raw": "get_field | w_consequence_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -10264,6 +10351,15 @@
               }
             },
             "_raw": "first_launch | before: 33 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_solve_completed"
+              }
+            },
+            "_raw": "get_field | w_solve_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -10325,6 +10421,15 @@
               }
             },
             "_raw": "first_launch | before: 33 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_safe_completed"
+              }
+            },
+            "_raw": "get_field | w_safe_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -10386,6 +10491,15 @@
               }
             },
             "_raw": "first_launch | before: 33 : day"
+          },
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "w_crisis_completed"
+              }
+            },
+            "_raw": "get_field | w_crisis_completed : true"
           }
         ],
         "deactivation_condition_list": [
@@ -11175,43 +11289,159 @@
         "id": "hp_praise_message_1",
         "text": "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_2",
         "text": "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_3",
         "text": "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_4",
         "text": "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_5",
         "text": "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.",
         "workshop": "w_1on1",
-        "mood": "happy"
+        "mood_list": [
+          "happy"
+        ]
       },
       {
         "id": "hp_praise_message_6",
         "text": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
         "workshop": "w_1on1",
-        "mood": "ok"
+        "mood_list": [
+          "ok"
+        ]
       },
       {
         "id": "hp_praise_message_7",
         "text": "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
         "workshop": "w_1on1",
-        "mood": "sad"
+        "mood_list": [
+          "sad"
+        ]
+      },
+      {
+        "id": "hp_praise_message_8",
+        "text": "Great to hear it went well; you are a star!",
+        "workshop": "w_instruct",
+        "mood_list": [
+          "happy"
+        ]
+      },
+      {
+        "id": "hp_praise_message_9",
+        "text": "Sorry to hear it was difficult for you. Well done for trying!",
+        "workshop": "w_instruct",
+        "mood_list": [
+          "ok",
+          "sad"
+        ]
+      },
+      {
+        "id": "hp_praise_message_10",
+        "text": "Wonderful! You deserve all the happy times!",
+        "workshop": "w_stress",
+        "mood_list": [
+          "happy"
+        ]
+      },
+      {
+        "id": "hp_praise_message_11",
+        "text": "Sorry that this was difficult for you. You are a star for trying!",
+        "workshop": "w_stress",
+        "mood_list": [
+          "ok",
+          "sad"
+        ]
+      },
+      {
+        "id": "hp_praise_message_12",
+        "text": "Amazing to hear it made you feel good! Keep up the great work. Your teen is learning so much from you!",
+        "workshop": "w_stress",
+        "mood_list": [
+          "happy"
+        ]
+      },
+      {
+        "id": "hp_praise_message_13",
+        "text": "Talking about how we feel can be difficult at first, but you and your teen will get used to it. Keep trying, and you will see the positive results!",
+        "workshop": "w_stress",
+        "mood_list": [
+          "ok",
+          "sad"
+        ]
+      },
+      {
+        "id": "hp_praise_message_14",
+        "text": "Great to hear it went well. Talking about your finances together really makes your family stronger!",
+        "workshop": "w_money",
+        "mood_list": [
+          "happy"
+        ]
+      },
+      {
+        "id": "hp_praise_message_15",
+        "text": "Sorry to hear it was difficult for you. Well done for trying!",
+        "workshop": "w_money",
+        "mood_list": [
+          "ok",
+          "sad"
+        ]
+      },
+      {
+        "id": "hp_praise_message_16",
+        "text": "Great to hear it went well! Remember, the more we follow rules, the more our teens will do the same!",
+        "workshop": "w_rules",
+        "mood_list": [
+          "happy"
+        ]
+      },
+      {
+        "id": "hp_praise_message_17",
+        "text": "Sorry that this has been difficult. Could you try today, perhaps with something minor, and not a major rule?",
+        "workshop": "w_rules",
+        "mood_list": [
+          "ok",
+          "sad"
+        ]
+      },
+      {
+        "id": "hp_praise_message_18",
+        "text": "Great to hear it went well!",
+        "workshop": "w_consequence",
+        "mood_list": [
+          "happy"
+        ]
+      },
+      {
+        "id": "hp_praise_message_19",
+        "text": "Sorry that this was difficult. Could you sit down with your teen and try again today? Involving your teen in the discussion will make them want to follow the rules more often!",
+        "workshop": "w_consequence",
+        "mood_list": [
+          "ok",
+          "sad"
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/praise_data_list.xlsx"
