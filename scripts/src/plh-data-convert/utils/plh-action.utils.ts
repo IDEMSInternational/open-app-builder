@@ -28,6 +28,7 @@ export function parsePLHActionString(actionString: string): FlowTypes.TemplateRo
     click: true,
     completed: true,
     uncompleted: true,
+    nav_resume: true,
   };
   if (!Object.keys(actionTriggers).find((t) => actionString.startsWith(t))) {
     actionString = `click | ${actionString}`;

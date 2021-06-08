@@ -326,6 +326,7 @@ export namespace FlowTypes {
     template_component_name?: string;
     element?: string;
     route?: string;
+    exclude_from_translation?: boolean | string;
   }
 
   export interface Home_page extends FlowTypeBase {
@@ -370,6 +371,7 @@ export namespace FlowTypes {
     | "set_global"
     | "set_local"
     | "set_field"
+    | "update_action_list" // update own action list
     | "nested_properties"
     | "button"
     | "image"
@@ -441,7 +443,8 @@ export namespace FlowTypes {
     | "audio_play"
     | "audio_pause"
     | "audio_end"
-    | "audio_first_start";
+    | "audio_first_start"
+    | "nav_resume"; // return to template after navigation or popup close;
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
@@ -483,6 +486,7 @@ export namespace FlowTypes {
     value: any;
     comments?: string;
     __EMPTY?: string;
+    exclude_from_translation?: boolean | string;
   }
 
   /* Used for setting default parameters for template components */
