@@ -279,10 +279,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -938,10 +938,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -1579,10 +1579,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -2229,10 +2229,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -2879,10 +2879,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -3529,10 +3529,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -4161,10 +4161,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -4793,10 +4793,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -5425,10 +5425,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -6057,10 +6057,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -6689,10 +6689,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview"
+              "m_parent_points_overview_temp"
             ],
-            "_raw": "pop_up: m_parent_points_overview",
-            "_cleaned": "click | pop_up: m_parent_points_overview"
+            "_raw": "pop_up: m_parent_points_overview_temp",
+            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
           },
           {
             "trigger": "click",
@@ -11172,6 +11172,7 @@
         "description": "Doing a relaxation activity",
         "task_id": "task_habit_relax",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_relax.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_relax.json",
         "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11183,6 +11184,7 @@
         "description": "Doing something they like for themselves",
         "task_id": "task_habit_treat_yourself",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_treat_yourself.json",
         "mark_text": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11194,6 +11196,7 @@
         "description": "Praising themselves",
         "task_id": "task_habit_praise_yourself",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_praise_yourself.json",
         "mark_text": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11205,6 +11208,7 @@
         "description": "Spending time with their teen",
         "task_id": "task_habit_spend_time",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_spend_time.json",
         "mark_text": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11216,6 +11220,7 @@
         "description": "Praising their teen when they did positive thing",
         "task_id": "task_habit_praise_teen",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_praise_teen.json",
         "mark_text": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11227,6 +11232,7 @@
         "description": "Giving their teen a positive instruction",
         "task_id": "task_habit_instruct_positively",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_instruct_positively.json",
         "mark_text": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11238,6 +11244,7 @@
         "description": "Taking a pause before responding",
         "task_id": "task_habit_breathe",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_breathe.json",
         "mark_text": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11249,6 +11256,7 @@
         "description": "Keeping the budget",
         "task_id": "task_habit_money",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_money.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_money.json",
         "mark_text": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11260,6 +11268,7 @@
         "description": "Giving their teen a consequence in a calm way",
         "task_id": "task_habit_consequence",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_consequence.json",
         "mark_text": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
@@ -11271,6 +11280,7 @@
         "description": "Planning or keeping a family safety plan",
         "task_id": "task_habit_safe",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_safe.svg",
+        "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_safe.json",
         "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
         "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
