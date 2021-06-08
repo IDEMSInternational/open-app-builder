@@ -424,6 +424,18 @@
         "type": "declare_global_constant",
         "name": "data_warning_send_message",
         "value": "Sending this message requires internet access. To limit data use, send this message when on WiFi."
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "monthly_income_estimate",
+        "value": "R3000",
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "monthly_income_precise",
+        "value": "R3400",
+        "exclude_from_translation": true
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/localisation_globals.xlsx"
