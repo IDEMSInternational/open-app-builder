@@ -20,6 +20,7 @@ import { TmplButtonComponent } from "./button/button.component";
 import { TmplDisplayGroupComponent } from "./layout/display_group";
 import { TmplImageComponent } from "./image";
 import { TmplTextComponent } from "./text";
+import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplSubtitleComponent } from "./subtitle";
@@ -48,6 +49,7 @@ export const TEMPLATE_COMPONENTS = [
   TemplateDebuggerComponent,
   TemplatePopupComponent,
   TmplTextComponent,
+  TmplParentPointCounterComponent,
   AnimatedSectionGroupComponent,
   WorkshopsComponent,
   TmplTitleComponent,
@@ -105,6 +107,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   button: TmplButtonComponent,
   image: TmplImageComponent,
   icon: TmplIconComponent,
+  parent_point_counter: TmplParentPointCounterComponent,
   // set variable and nested properties are handled by parent
   set_variable: null as any,
   nested_properties: null as any,
@@ -114,6 +117,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   set_theme: null as any,
   combo_box: TmplComboBoxComponent,
   set_default: null as any,
+  update_action_list: null as any,
   text_box: TmplTextBoxComponent,
   text_area: TmplTextAreaComponent,
   // TODO - handle display_theme and other properties that should be inherited to child components

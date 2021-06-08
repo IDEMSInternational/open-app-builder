@@ -1073,7 +1073,7 @@
       },
       {
         "type": "display_group",
-        "name": "temp_name_1",
+        "name": "heading",
         "style_list": [
           "margin: 20px 0 10px 0"
         ],
@@ -1088,7 +1088,7 @@
             "style_list": [
               "flex: 2"
             ],
-            "_nested_name": "temp_name_1.temp_name_0",
+            "_nested_name": "heading.temp_name_0",
             "_dynamicFields": {
               "value": [
                 {
@@ -1126,10 +1126,10 @@
             "style_list": [
               "flex: 1"
             ],
-            "_nested_name": "temp_name_1.options_button"
+            "_nested_name": "heading.options_button"
           }
         ],
-        "_nested_name": "temp_name_1"
+        "_nested_name": "heading"
       },
       {
         "type": "tile_component",
@@ -5785,6 +5785,7 @@
     "rows": [
       {
         "type": "display_group",
+        "name": "heading",
         "rows": [
           {
             "type": "title",
@@ -5793,7 +5794,7 @@
             "parameter_list": {
               "style": "tiny"
             },
-            "_nested_name": "display_group.title",
+            "_nested_name": "heading.title",
             "_dynamicFields": {
               "value": [
                 {
@@ -5811,8 +5812,7 @@
             }
           }
         ],
-        "name": "display_group",
-        "_nested_name": "display_group"
+        "_nested_name": "heading"
       },
       {
         "type": "display_group",
@@ -7844,12 +7844,12 @@
       {
         "type": "text",
         "name": "text",
-        "value": "Are you experiencing any technical issues? Contact us and help to make @global.parent_app better! ",
+        "value": "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better! ",
         "_nested_name": "text",
         "_dynamicFields": {
           "value": [
             {
-              "fullExpression": "Are you experiencing any technical issues? Contact us and help to make @global.parent_app better! ",
+              "fullExpression": "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better! ",
               "matchedExpression": "@global.parent_app",
               "type": "global",
               "fieldName": "parent_app"
@@ -7882,7 +7882,8 @@
             "type": "text_box",
             "name": "name",
             "parameter_list": {
-              "placeholder": "@local.text_type_name"
+              "placeholder": "@local.text_type_name",
+              "text_align": "left"
             },
             "_nested_name": "form.name",
             "_dynamicFields": {
@@ -7925,8 +7926,7 @@
               }
             ],
             "parameter_list": {
-              "label_text": "@local.text_checkbox_text",
-              "position": "left"
+              "label_text": "@local.text_checkbox_text"
             },
             "_nested_name": "form.checkbox_text",
             "_dynamicFields": {
@@ -8004,8 +8004,7 @@
               }
             ],
             "parameter_list": {
-              "label_text": "@local.text_checkbox_whatsapp",
-              "position": "left"
+              "label_text": "@local.text_checkbox_whatsapp"
             },
             "_nested_name": "form.checkbox_whatsapp",
             "_dynamicFields": {
@@ -8083,8 +8082,7 @@
               }
             ],
             "parameter_list": {
-              "label_text": "@local.text_checkbox_email",
-              "position": "left"
+              "label_text": "@local.text_checkbox_email"
             },
             "_nested_name": "form.checkbox_email",
             "_dynamicFields": {
@@ -8278,7 +8276,7 @@
           },
           {
             "name": "text_issue",
-            "value": "Describe your issue",
+            "value": "Tell us about your issue",
             "type": "set_variable",
             "_nested_name": "form.text_issue"
           },
@@ -8306,30 +8304,30 @@
                 "parameter_list.placeholder"
               ]
             }
+          },
+          {
+            "type": "dashed_box",
+            "name": "warning",
+            "value": "@global.data_warning_send_message",
+            "_nested_name": "form.warning",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.data_warning_send_message",
+                  "matchedExpression": "@global.data_warning_send_message",
+                  "type": "global",
+                  "fieldName": "data_warning_send_message"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.data_warning_send_message": [
+                "value"
+              ]
+            }
           }
         ],
         "_nested_name": "form"
-      },
-      {
-        "type": "dashed_box",
-        "name": "warning",
-        "value": "@global.data_warning_send_message",
-        "_nested_name": "warning",
-        "_dynamicFields": {
-          "value": [
-            {
-              "fullExpression": "@global.data_warning_send_message",
-              "matchedExpression": "@global.data_warning_send_message",
-              "type": "global",
-              "fieldName": "data_warning_send_message"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@global.data_warning_send_message": [
-            "value"
-          ]
-        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_parent_centre.xlsx"
@@ -17203,10 +17201,10 @@
             "trigger": "changed",
             "action_id": "emit",
             "args": [
-              "force_rerender"
+              "force_reprocess"
             ],
-            "_raw": "changed | emit:force_rerender",
-            "_cleaned": "changed | emit:force_rerender"
+            "_raw": "changed | emit:force_reprocess",
+            "_cleaned": "changed | emit:force_reprocess"
           }
         ],
         "parameter_list": {
@@ -17853,10 +17851,10 @@
             "trigger": "changed",
             "action_id": "emit",
             "args": [
-              "force_rerender"
+              "force_reprocess"
             ],
-            "_raw": "changed | emit:force_rerender",
-            "_cleaned": "changed | emit:force_rerender"
+            "_raw": "changed | emit:force_reprocess",
+            "_cleaned": "changed | emit:force_reprocess"
           }
         ],
         "parameter_list": {
@@ -21155,6 +21153,475 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "box_parent_points",
+    "status": "released",
+    "rows": [
+      {
+        "type": "text",
+        "name": "top_text",
+        "_nested_name": "top_text"
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "column"
+        },
+        "rows": [
+          {
+            "type": "parent_point_counter",
+            "name": "relax",
+            "value": "@fields.weekly_parent_point_relax relax",
+            "hidden": "@fields.weekly_parent_point_relax == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_relax"
+            },
+            "_nested_name": "display_group.relax",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_relax relax",
+                  "matchedExpression": "@fields.weekly_parent_point_relax",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_relax"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_relax == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_relax",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_relax"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_relax",
+                    "matchedExpression": "@fields.weekly_parent_point_relax",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_relax"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_relax": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_counter",
+            "name": "treat_yourself",
+            "value": "@fields.weekly_parent_point_treat_yourself treat yourself ",
+            "hidden": "@fields.weekly_parent_point_treat_yourself == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_treat_yourself"
+            },
+            "_nested_name": "display_group.treat_yourself",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_treat_yourself treat yourself ",
+                  "matchedExpression": "@fields.weekly_parent_point_treat_yourself",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_treat_yourself"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_treat_yourself == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_treat_yourself",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_treat_yourself"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_treat_yourself",
+                    "matchedExpression": "@fields.weekly_parent_point_treat_yourself",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_treat_yourself"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_treat_yourself": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_counter",
+            "name": "praise_yourself",
+            "value": "@fields.weekly_parent_point_praise_yourself praise yourself",
+            "hidden": "@fields.weekly_parent_point_praise_yourself == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_praise_yourself"
+            },
+            "_nested_name": "display_group.praise_yourself",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_praise_yourself praise yourself",
+                  "matchedExpression": "@fields.weekly_parent_point_praise_yourself",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_praise_yourself"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_praise_yourself == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_praise_yourself",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_praise_yourself"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_praise_yourself",
+                    "matchedExpression": "@fields.weekly_parent_point_praise_yourself",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_praise_yourself"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_praise_yourself": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_counter",
+            "name": "spend_time",
+            "value": "@fields.weekly_parent_point_spend_time spend time",
+            "hidden": "@fields.weekly_parent_point_spend_time == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_spend_time"
+            },
+            "_nested_name": "display_group.spend_time",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_spend_time spend time",
+                  "matchedExpression": "@fields.weekly_parent_point_spend_time",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_spend_time"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_spend_time == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_spend_time",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_spend_time"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_spend_time",
+                    "matchedExpression": "@fields.weekly_parent_point_spend_time",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_spend_time"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_spend_time": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_counter",
+            "name": "praise_teen",
+            "value": "@fields.weekly_parent_point_praise_teen praise teen",
+            "hidden": "@fields.weekly_parent_point_praise_teen == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_praise_teen"
+            },
+            "_nested_name": "display_group.praise_teen",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_praise_teen praise teen",
+                  "matchedExpression": "@fields.weekly_parent_point_praise_teen",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_praise_teen"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_praise_teen == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_praise_teen",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_praise_teen"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_praise_teen",
+                    "matchedExpression": "@fields.weekly_parent_point_praise_teen",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_praise_teen"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_praise_teen": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_counter",
+            "name": "breathe",
+            "value": "@fields.weekly_parent_point_breathe breathe",
+            "hidden": "@fields.weekly_parent_point_breathe == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_breathe"
+            },
+            "_nested_name": "display_group.breathe",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_breathe breathe",
+                  "matchedExpression": "@fields.weekly_parent_point_breathe",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_breathe"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_breathe == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_breathe",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_breathe"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_breathe",
+                    "matchedExpression": "@fields.weekly_parent_point_breathe",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_breathe"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_breathe": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_counter",
+            "name": "money",
+            "value": "@fields.weekly_parent_point_money money",
+            "hidden": "@fields.weekly_parent_point_money == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_money"
+            },
+            "_nested_name": "display_group.money",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_money money",
+                  "matchedExpression": "@fields.weekly_parent_point_money",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_money"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_money == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_money",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_money"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_money",
+                    "matchedExpression": "@fields.weekly_parent_point_money",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_money"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_money": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_counter",
+            "name": "consequence",
+            "value": "@fields.weekly_parent_point_consequence consequence",
+            "hidden": "@fields.weekly_parent_point_consequence == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_consequence"
+            },
+            "_nested_name": "display_group.consequence",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_consequence consequence",
+                  "matchedExpression": "@fields.weekly_parent_point_consequence",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_consequence"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_consequence == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_consequence",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_consequence"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_consequence",
+                    "matchedExpression": "@fields.weekly_parent_point_consequence",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_consequence"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_consequence": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          },
+          {
+            "type": "parent_point_counter",
+            "name": "safe",
+            "value": "@fields.weekly_parent_point_safe safe",
+            "hidden": "@fields.weekly_parent_point_safe == 0",
+            "parameter_list": {
+              "icon_src": "plh_images/icons/star.svg",
+              "count": "@fields.weekly_parent_point_safe"
+            },
+            "_nested_name": "display_group.safe",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_safe safe",
+                  "matchedExpression": "@fields.weekly_parent_point_safe",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_safe"
+                }
+              ],
+              "hidden": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_safe == 0",
+                  "matchedExpression": "@fields.weekly_parent_point_safe",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_safe"
+                }
+              ],
+              "parameter_list": {
+                "count": [
+                  {
+                    "fullExpression": "@fields.weekly_parent_point_safe",
+                    "matchedExpression": "@fields.weekly_parent_point_safe",
+                    "type": "fields",
+                    "fieldName": "weekly_parent_point_safe"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@fields.weekly_parent_point_safe": [
+                "value",
+                "hidden",
+                "parameter_list.count"
+              ]
+            }
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
+      },
+      {
+        "type": "text",
+        "name": "bottom_text",
+        "_nested_name": "bottom_text"
+      },
+      {
+        "type": "template",
+        "name": "nav_buttons",
+        "value": "nav_buttons",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
+        "rows": [],
+        "_nested_name": "nav_buttons"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/core_templates/core_templates_workshop_boxes.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "box_parent_points_temp",
     "status": "released",
     "rows": [
@@ -23947,124 +24414,122 @@
                       {
                         "type": "nested_properties",
                         "name": "box_1",
-                        "value": "box_duo",
-                        "rows": [
-                          {
-                            "type": "nested_properties",
-                            "name": "box_1",
-                            "value": "w_1on1_hp_challenges",
-                            "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"happy\"",
-                            "rows": [],
-                            "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.box_1",
-                            "_dynamicFields": {
-                              "hidden": [
-                                {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\"",
-                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
-                                  "type": "fields",
-                                  "fieldName": "w_1on1_hp_review_mood"
-                                }
-                              ]
+                        "value": "w_1on1_hp_challenges",
+                        "condition": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                        "rows": [],
+                        "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1",
+                        "_dynamicFields": {
+                          "condition": [
+                            {
+                              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                              "type": "fields",
+                              "fieldName": "w_1on1_hp_review_mood"
                             },
-                            "_dynamicDependencies": {
-                              "@fields.w_1on1_hp_review_mood": [
-                                "hidden"
-                              ]
+                            {
+                              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                              "type": "fields",
+                              "fieldName": "w_1on1_hp_review_mood"
                             }
-                          },
-                          {
-                            "type": "nested_properties",
-                            "name": "box_2",
-                            "value": "w_1on1_hp_highlights",
-                            "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
-                            "rows": [],
-                            "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.box_2",
-                            "_dynamicFields": {
-                              "hidden": [
-                                {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
-                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
-                                  "type": "fields",
-                                  "fieldName": "w_1on1_hp_review_mood"
-                                },
-                                {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
-                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
-                                  "type": "fields",
-                                  "fieldName": "w_1on1_hp_review_mood"
-                                }
-                              ]
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@fields.w_1on1_hp_review_mood": [
+                            "condition",
+                            "condition"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_1",
+                        "value": "w_1on1_hp_highlights",
+                        "condition": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\"==\"undefined\"",
+                        "rows": [],
+                        "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1",
+                        "_dynamicFields": {
+                          "condition": [
+                            {
+                              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\"==\"undefined\"",
+                              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                              "type": "fields",
+                              "fieldName": "w_1on1_hp_review_mood"
                             },
-                            "_dynamicDependencies": {
-                              "@fields.w_1on1_hp_review_mood": [
-                                "hidden",
-                                "hidden"
-                              ]
+                            {
+                              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\"==\"undefined\"",
+                              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                              "type": "fields",
+                              "fieldName": "w_1on1_hp_review_mood"
                             }
-                          }
-                        ],
-                        "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1"
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@fields.w_1on1_hp_review_mood": [
+                            "condition",
+                            "condition"
+                          ]
+                        }
                       },
                       {
                         "type": "nested_properties",
                         "name": "box_2",
-                        "value": "box_duo",
-                        "rows": [
-                          {
-                            "type": "nested_properties",
-                            "name": "box_1",
-                            "value": "w_1on1_hp_highlights",
-                            "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"happy\"",
-                            "rows": [],
-                            "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2.box_1",
-                            "_dynamicFields": {
-                              "hidden": [
-                                {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\"",
-                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
-                                  "type": "fields",
-                                  "fieldName": "w_1on1_hp_review_mood"
-                                }
-                              ]
+                        "value": "w_1on1_hp_highlights",
+                        "condition": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                        "rows": [],
+                        "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2",
+                        "_dynamicFields": {
+                          "condition": [
+                            {
+                              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                              "type": "fields",
+                              "fieldName": "w_1on1_hp_review_mood"
                             },
-                            "_dynamicDependencies": {
-                              "@fields.w_1on1_hp_review_mood": [
-                                "hidden"
-                              ]
+                            {
+                              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
+                              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                              "type": "fields",
+                              "fieldName": "w_1on1_hp_review_mood"
                             }
-                          },
-                          {
-                            "type": "nested_properties",
-                            "name": "box_2",
-                            "value": "w_1on1_hp_challenges",
-                            "hidden": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
-                            "rows": [],
-                            "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2.box_2",
-                            "_dynamicFields": {
-                              "hidden": [
-                                {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
-                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
-                                  "type": "fields",
-                                  "fieldName": "w_1on1_hp_review_mood"
-                                },
-                                {
-                                  "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"sad\" || \n\"@fields.w_1on1_hp_review_mood\" == \"ok\" ",
-                                  "matchedExpression": "@fields.w_1on1_hp_review_mood",
-                                  "type": "fields",
-                                  "fieldName": "w_1on1_hp_review_mood"
-                                }
-                              ]
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@fields.w_1on1_hp_review_mood": [
+                            "condition",
+                            "condition"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "nested_properties",
+                        "name": "box_2",
+                        "value": "w_1on1_hp_challenges",
+                        "condition": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\"==\"undefined\"",
+                        "rows": [],
+                        "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2",
+                        "_dynamicFields": {
+                          "condition": [
+                            {
+                              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\"==\"undefined\"",
+                              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                              "type": "fields",
+                              "fieldName": "w_1on1_hp_review_mood"
                             },
-                            "_dynamicDependencies": {
-                              "@fields.w_1on1_hp_review_mood": [
-                                "hidden",
-                                "hidden"
-                              ]
+                            {
+                              "fullExpression": "\"@fields.w_1on1_hp_review_mood\" == \"happy\" || \"@fields.w_1on1_hp_review_mood\"==\"undefined\"",
+                              "matchedExpression": "@fields.w_1on1_hp_review_mood",
+                              "type": "fields",
+                              "fieldName": "w_1on1_hp_review_mood"
                             }
-                          }
-                        ],
-                        "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2"
+                          ]
+                        },
+                        "_dynamicDependencies": {
+                          "@fields.w_1on1_hp_review_mood": [
+                            "condition",
+                            "condition"
+                          ]
+                        }
                       }
                     ],
                     "_nested_name": "home_practice_review.workshop_activity.content_box.box_2"
@@ -24096,7 +24561,7 @@
       {
         "type": "text",
         "name": "question_text_1",
-        "value": "Which of the tips have helped you?",
+        "value": "Which of the tips helped you?",
         "parameter_list": {
           "style": "emphasised"
         },
@@ -24133,7 +24598,7 @@
           "name:choice_1 | text:@local.choice_1",
           "name:choice_2 | text:@local.choice_2",
           "name:choice_3 | text:@local.choice_3",
-          "name: choice_none | text:@local.choice_none"
+          "name:choice_none | text:@local.choice_none"
         ],
         "type": "set_variable",
         "_nested_name": "answer_list",
@@ -24165,7 +24630,7 @@
             ],
             "3": [
               {
-                "fullExpression": "name: choice_none | text:@local.choice_none",
+                "fullExpression": "name:choice_none | text:@local.choice_none",
                 "matchedExpression": "@local.choice_none",
                 "type": "local",
                 "fieldName": "choice_none"
@@ -24498,7 +24963,7 @@
           "name:choice_2_b | text:If my teen chooses, s/he is more likely to want to spend time together.",
           "name:choice_2_c | text:Letting my teen choose shows that I care about his/her interests.",
           "name:choice_2_d | text:By accepting my teen’s suggestions, I am showing that I listen to him/her.",
-          "name: choice_2_e | text:Saying something nice about my teen’s choice helps them feel valued."
+          "name:choice_2_e | text:Saying something nice about my teen’s choice helps them feel valued."
         ],
         "type": "set_variable",
         "_nested_name": "answer_list_choice_2"
@@ -44374,6 +44839,7 @@
     "flow_type": "template",
     "flow_name": "debug_advanced_dashed_box_1",
     "status": "released",
+    "flow_subtype": "debug",
     "rows": [
       {
         "type": "advanced_dashed_box",
@@ -44528,6 +44994,7 @@
     "flow_type": "template",
     "flow_name": "debug_advanced_dashed_box_2",
     "status": "released",
+    "flow_subtype": "debug",
     "rows": [
       {
         "type": "advanced_dashed_box",
@@ -44757,6 +45224,16 @@
             ],
             "_raw": "click | set_field : debug_reminder_3.sent : false",
             "_cleaned": "click | set_field : debug_reminder_3.sent : false"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "debug_reminder_number",
+              "1"
+            ],
+            "_raw": "click | set_field : debug_reminder_number: 1",
+            "_cleaned": "click | set_field : debug_reminder_number: 1"
           }
         ],
         "exclude_from_translation": true,
@@ -52405,7 +52882,7 @@
         "_nested_name": "debug_render_child"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild_2.xlsx"
   },
   {
     "flow_type": "template",
@@ -52611,7 +53088,7 @@
         "_nested_name": "debug_render_grandchild_4b"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild_2.xlsx"
   },
   {
     "flow_type": "template",
@@ -52654,10 +53131,10 @@
             "trigger": "changed",
             "action_id": "emit",
             "args": [
-              "force_rerender"
+              "force_reload"
             ],
-            "_raw": "changed | emit:force_rerender",
-            "_cleaned": "changed | emit:force_rerender"
+            "_raw": "changed | emit:force_reload",
+            "_cleaned": "changed | emit:force_reload"
           }
         ],
         "exclude_from_translation": true,
@@ -52763,7 +53240,7 @@
         }
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild_2.xlsx"
   },
   {
     "flow_type": "template",
@@ -52867,7 +53344,7 @@
         "_nested_name": "text_5"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild_2.xlsx"
   },
   {
     "flow_type": "template",
@@ -52889,7 +53366,7 @@
         "_nested_name": "text"
       }
     ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild.xlsx"
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_render_grandchild_2.xlsx"
   },
   {
     "flow_type": "template",
@@ -52982,10 +53459,10 @@
             "trigger": "changed",
             "action_id": "emit",
             "args": [
-              "force_rerender"
+              "force_reprocess"
             ],
-            "_raw": "changed | emit:force_rerender",
-            "_cleaned": "changed | emit:force_rerender"
+            "_raw": "changed | emit:force_reprocess",
+            "_cleaned": "changed | emit:force_reprocess"
           }
         ],
         "exclude_from_translation": true,
@@ -63740,7 +64217,8 @@
             "exclude_from_translation": true,
             "parameter_list": {
               "lottie_src": "lottie_animations/parent_points.json",
-              "text": "text one"
+              "text": "no celebration",
+              "play_celebration": "false"
             },
             "_nested_name": "dg.points_example",
             "_dynamicFields": {
@@ -65097,523 +65575,6 @@
             "parameter_list.answer_list"
           ]
         }
-      }
-    ],
-    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
-  },
-  {
-    "flow_type": "template",
-    "flow_name": "feature_form",
-    "status": "released",
-    "rows": [
-      {
-        "type": "title",
-        "value": "form with 'go to'",
-        "name": "title",
-        "_nested_name": "title"
-      },
-      {
-        "type": "display_group",
-        "name": "dg_example_form",
-        "exclude_from_translation": true,
-        "parameter_list": {
-          "style": "form",
-          "get_device_info": "true",
-          "button_text": "Send",
-          "button_go_to": "feature_audio"
-        },
-        "rows": [
-          {
-            "type": "text_box",
-            "name": "user_name",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your name"
-            },
-            "_nested_name": "dg_example_form.user_name"
-          },
-          {
-            "type": "text_box",
-            "name": "user_phone",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your phone number"
-            },
-            "_nested_name": "dg_example_form.user_phone"
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_1",
-            "value": false,
-            "action_list": [
-              {
-                "trigger": "changed",
-                "action_id": "set_field",
-                "args": [
-                  "demo_changed_field_checkbox",
-                  "@local.checkbox_1"
-                ],
-                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
-              }
-            ],
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_1",
-            "_dynamicFields": {
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@local.checkbox_1",
-                        "matchedExpression": "@local.checkbox_1",
-                        "type": "local",
-                        "fieldName": "checkbox_1"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ]
-                }
-              }
-            },
-            "_dynamicDependencies": {
-              "@local.checkbox_1": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ]
-            }
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_2",
-            "value": true,
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_2"
-          },
-          {
-            "type": "title",
-            "value": "Some text here",
-            "exclude_from_translation": true,
-            "name": "title",
-            "_nested_name": "dg_example_form.title"
-          },
-          {
-            "type": "text_area",
-            "name": "text_area",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "placeholder": "example placeholder"
-            },
-            "_nested_name": "dg_example_form.text_area"
-          }
-        ],
-        "_nested_name": "dg_example_form"
-      },
-      {
-        "type": "title",
-        "value": "pop up form",
-        "name": "title",
-        "_nested_name": "title"
-      },
-      {
-        "type": "display_group",
-        "name": "dg_example_form",
-        "exclude_from_translation": true,
-        "parameter_list": {
-          "style": "form",
-          "get_device_info": "true",
-          "button_text": "Send",
-          "button_pop_up": "feature_audio"
-        },
-        "rows": [
-          {
-            "type": "text_box",
-            "name": "user_name",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your name"
-            },
-            "_nested_name": "dg_example_form.user_name"
-          },
-          {
-            "type": "text_box",
-            "name": "user_phone",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your phone number"
-            },
-            "_nested_name": "dg_example_form.user_phone"
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_1",
-            "value": false,
-            "action_list": [
-              {
-                "trigger": "changed",
-                "action_id": "set_field",
-                "args": [
-                  "demo_changed_field_checkbox",
-                  "@local.checkbox_1"
-                ],
-                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
-              }
-            ],
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_1",
-            "_dynamicFields": {
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@local.checkbox_1",
-                        "matchedExpression": "@local.checkbox_1",
-                        "type": "local",
-                        "fieldName": "checkbox_1"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ]
-                }
-              }
-            },
-            "_dynamicDependencies": {
-              "@local.checkbox_1": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ]
-            }
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_2",
-            "value": true,
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_2"
-          },
-          {
-            "type": "title",
-            "value": "Some text here",
-            "exclude_from_translation": true,
-            "name": "title",
-            "_nested_name": "dg_example_form.title"
-          },
-          {
-            "type": "text_area",
-            "name": "text_area",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "placeholder": "example placeholder"
-            },
-            "_nested_name": "dg_example_form.text_area"
-          }
-        ],
-        "_nested_name": "dg_example_form"
-      },
-      {
-        "type": "title",
-        "value": "with both params",
-        "name": "title",
-        "_nested_name": "title"
-      },
-      {
-        "type": "display_group",
-        "name": "dg_example_form",
-        "exclude_from_translation": true,
-        "parameter_list": {
-          "style": "form",
-          "get_device_info": "true",
-          "button_text": "Send",
-          "button_pop_up": "feature_audio",
-          "button_go_to": "feature_audio"
-        },
-        "rows": [
-          {
-            "type": "text_box",
-            "name": "user_name",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your name"
-            },
-            "_nested_name": "dg_example_form.user_name"
-          },
-          {
-            "type": "text_box",
-            "name": "user_phone",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your phone number"
-            },
-            "_nested_name": "dg_example_form.user_phone"
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_1",
-            "value": false,
-            "action_list": [
-              {
-                "trigger": "changed",
-                "action_id": "set_field",
-                "args": [
-                  "demo_changed_field_checkbox",
-                  "@local.checkbox_1"
-                ],
-                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
-              }
-            ],
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_1",
-            "_dynamicFields": {
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@local.checkbox_1",
-                        "matchedExpression": "@local.checkbox_1",
-                        "type": "local",
-                        "fieldName": "checkbox_1"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ]
-                }
-              }
-            },
-            "_dynamicDependencies": {
-              "@local.checkbox_1": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ]
-            }
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_2",
-            "value": true,
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_2"
-          },
-          {
-            "type": "title",
-            "value": "Some text here",
-            "exclude_from_translation": true,
-            "name": "title",
-            "_nested_name": "dg_example_form.title"
-          },
-          {
-            "type": "text_area",
-            "name": "text_area",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "placeholder": "example placeholder"
-            },
-            "_nested_name": "dg_example_form.text_area"
-          }
-        ],
-        "_nested_name": "dg_example_form"
-      },
-      {
-        "type": "title",
-        "value": "outside display group",
-        "name": "title",
-        "_nested_name": "title"
-      },
-      {
-        "type": "form",
-        "name": "dg_example_form",
-        "exclude_from_translation": true,
-        "parameter_list": {
-          "get_device_info": "true",
-          "button_text": "Send",
-          "button_pop_up": "feature_audio",
-          "button_go_to": "feature_audio"
-        },
-        "rows": [
-          {
-            "type": "text_box",
-            "name": "user_name",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your name"
-            },
-            "_nested_name": "dg_example_form.user_name"
-          },
-          {
-            "type": "text_box",
-            "name": "user_phone",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "help": "some help text",
-              "placeholder": "Add your phone number"
-            },
-            "_nested_name": "dg_example_form.user_phone"
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_1",
-            "value": false,
-            "action_list": [
-              {
-                "trigger": "changed",
-                "action_id": "set_field",
-                "args": [
-                  "demo_changed_field_checkbox",
-                  "@local.checkbox_1"
-                ],
-                "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
-              }
-            ],
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_1",
-            "_dynamicFields": {
-              "action_list": {
-                "0": {
-                  "args": {
-                    "1": [
-                      {
-                        "fullExpression": "@local.checkbox_1",
-                        "matchedExpression": "@local.checkbox_1",
-                        "type": "local",
-                        "fieldName": "checkbox_1"
-                      }
-                    ]
-                  },
-                  "_raw": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ],
-                  "_cleaned": [
-                    {
-                      "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      "matchedExpression": "@local.checkbox_1",
-                      "type": "local",
-                      "fieldName": "checkbox_1"
-                    }
-                  ]
-                }
-              }
-            },
-            "_dynamicDependencies": {
-              "@local.checkbox_1": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned"
-              ]
-            }
-          },
-          {
-            "type": "simple_checkbox",
-            "name": "checkbox_2",
-            "value": true,
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "label_text": "Example answer?"
-            },
-            "_nested_name": "dg_example_form.checkbox_2"
-          },
-          {
-            "type": "title",
-            "value": "Some text here",
-            "exclude_from_translation": true,
-            "name": "title",
-            "_nested_name": "dg_example_form.title"
-          },
-          {
-            "type": "text_area",
-            "name": "text_area",
-            "exclude_from_translation": true,
-            "parameter_list": {
-              "placeholder": "example placeholder"
-            },
-            "_nested_name": "dg_example_form.text_area"
-          }
-        ],
-        "_nested_name": "dg_example_form"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
@@ -97467,6 +97428,26 @@
         "type": "template",
         "name": "think",
         "value": "think_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
         "rows": [
           {
             "type": "nested_properties",
@@ -97806,6 +97787,26 @@
         "type": "template",
         "name": "think",
         "value": "think_temp",
+        "action_list": [
+          {
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
+          },
+          {
+            "trigger": "uncompleted",
+            "action_id": "emit",
+            "args": [
+              "uncompleted"
+            ],
+            "_raw": "uncompleted | emit:uncompleted",
+            "_cleaned": "uncompleted | emit:uncompleted"
+          }
+        ],
         "rows": [
           {
             "type": "nested_properties",
