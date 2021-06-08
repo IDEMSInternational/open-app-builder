@@ -114,6 +114,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   set_theme: null as any,
   combo_box: TmplComboBoxComponent,
   set_default: null as any,
+  update_action_list: null as any,
   text_box: TmplTextBoxComponent,
   text_area: TmplTextAreaComponent,
   // TODO - handle display_theme and other properties that should be inherited to child components
