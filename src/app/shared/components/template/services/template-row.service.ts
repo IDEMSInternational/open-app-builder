@@ -188,7 +188,22 @@ export class TemplateRowService {
                 processedRows.push(preProcessedRow);
               }
               return;
-
+            // merge new actions with existing container action list
+            case "update_action_list":
+              // TODO - refactor to standalone array merge method
+              const existing_actions = this.container.row?.action_list || [];
+              // remove any actions previously added by the same update and then add newly processed actions
+              const base_actions = existing_actions.filter(
+                (a) => !a["_update_name"] || a["_update_name"] !== name
+              );
+              const new_actions = parsedRow.action_list.map((a) => ({
+                ...a,
+                _update_name: name, // keep track for future updates
+                _self_triggered: true, // by default actions are triggered from parent context, specify self
+              }));
+              const updated_actions = [...base_actions, ...new_actions];
+              this.container.row = { ...this.container.row, action_list: updated_actions };
+              break;
             default:
               // all other types should just set own value for use in future processing
               this.templateRowMap.set(_nested_name, parsedRow);
