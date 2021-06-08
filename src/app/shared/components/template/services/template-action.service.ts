@@ -23,7 +23,7 @@ export class TemplateActionService {
   /** Public method to add actions to processing queue and process */
   public async handleActions(
     actions: FlowTypes.TemplateRowAction[] = [],
-    _triggeredBy: FlowTypes.TemplateRow
+    _triggeredBy?: FlowTypes.TemplateRow
   ) {
     const unhandledActions = await this.handleActionsInterceptor(actions);
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
@@ -143,15 +143,18 @@ export class TemplateActionService {
             ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`,
             parent
           );
-          if (row && row.action_list) {
-            const actionsForEmittedEvent = row.action_list.filter((a) => a.trigger === emit_value);
-            log("Excuting actions matching event ", { emit_value, actionsForEmittedEvent });
-            // process in parallel, do not return/await
-
-            // TODO - check if should be parent row or current row
-            parent.templateActionService.handleActions(actionsForEmittedEvent, row);
-          } else {
-            log("No action list for row ", row, "on template name ", name);
+        }
+        // Process any actions specified when row defined by parent (triggered on parent)
+        // or from own update_action_list statement (triggered on self)
+        if (row && row.action_list) {
+          const actionsForEmittedEvent = row.action_list.filter((a) => a.trigger === emit_value);
+          log("Excuting actions matching event ", { emit_value, actionsForEmittedEvent });
+          const selfActions = actionsForEmittedEvent.filter((a) => a._self_triggered);
+          const parentActions = actionsForEmittedEvent.filter((a) => !a._self_triggered);
+          // process in parallel, do not return/await
+          selfActions.forEach((a) => this.actionsQueue.push(a));
+          if (parent && parentActions.length > 0) {
+            parent.templateActionService.handleActions(parentActions, row);
           }
         }
         break;
