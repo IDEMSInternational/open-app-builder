@@ -93,6 +93,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     if (Array.isArray(row?.value)) {
       this.templateNames = row.value;
       row._debug_name = this.templateNames[this.sectionIndex];
+      this.sectionIndex = this.getActiveSectionIdx(row.parameter_list.progress_field);
     }
     return row;
   }
@@ -114,6 +115,18 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     }
     // default process on parent
     return true;
+  }
+
+  getActiveSectionIdx(progressField: string): number {
+    let result: number;
+    const currentProgress = this.templateService.getField(progressField);
+    if (+currentProgress === 100) {
+      result = 0;
+      this.templateService.setField(progressField, `${result}`);
+      return result;
+    }
+    result = Math.floor((currentProgress * this.templateNames.length) / 100 - 1);
+    return result > 0 ? result : 0;
   }
 
   goToSection(index: number) {

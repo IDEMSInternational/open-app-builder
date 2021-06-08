@@ -53,6 +53,18 @@
     background: var(--ion-color-primary-contrast);
   }
 }
+.celebrationAnim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  &.play {
+    z-index: 1 !important;
+  }
+  width: 100%;
+}
 .on-add {
   animation: bounce;
   animation-duration: 1s;
