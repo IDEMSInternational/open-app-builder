@@ -54,14 +54,23 @@ export class TmplParentPointBoxComponent
     this.getScaleFactor();
     if (this.lottie_src) {
       this.lottie_src = getImageAssetPath(this.lottie_src);
-      this.animOptions = this.setAnimOptions(this.lottie_src, this.text, true);
+      this.animOptions = {
+        path: this.lottie_src,
+        name: this.text,
+        autoplay: true,
+        loop: true,
+      };
     }
-    this.animCelebrationOptions = this.setAnimOptions(
-      getImageAssetPath("/lottie_animations/parent_points/cascading_stars.json"),
-      "celebration",
-      false,
-      false
-    );
+    this.animCelebrationOptions = {
+      path: getImageAssetPath("/plh_lottie/habits/cascading_stars.json"),
+      name: "celebration",
+      autoplay: false,
+      loop: false,
+      rendererSettings: {
+        // svg scaling options: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+        preserveAspectRatio: "xMinYMin slice",
+      },
+    };
   }
 
   getParams() {
