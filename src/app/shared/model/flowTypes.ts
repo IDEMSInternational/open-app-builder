@@ -358,6 +358,7 @@ export namespace FlowTypes {
     | "animated_section"
     | "accordion_section"
     | "advanced_dashed_box"
+    | "parent_point_counter"
     | "workshops_accordion"
     | "form"
     | "toggle_bar"
@@ -371,6 +372,7 @@ export namespace FlowTypes {
     | "set_global"
     | "set_local"
     | "set_field"
+    | "update_action_list" // update own action list
     | "nested_properties"
     | "button"
     | "image"
@@ -442,7 +444,8 @@ export namespace FlowTypes {
     | "audio_play"
     | "audio_pause"
     | "audio_end"
-    | "audio_first_start";
+    | "audio_first_start"
+    | "nav_resume"; // return to template after navigation or popup close;
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
