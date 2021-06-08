@@ -1,4 +1,7 @@
 <div class="wrapper-point">
+  <div #celebretionAnim class="celebrationAnim">
+    <ng-lottie [options]="animCelebrationOptions"></ng-lottie>
+  </div>
   <div class="item" #item (click)="clickPointItem()">
     <div class="star" #star>
       <img [src]="'plh_images/icons/star.svg' | plhAsset" alt="" />
