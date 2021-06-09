@@ -147,17 +147,17 @@ export class DbService {
         switch (change.type) {
           case 1: // CREATED
             change = change as ICreateChange;
-            console.log("[DB CREATED]", change);
+            // console.log("[DB CREATED]", change);
             this.tableChanges$[change.table].next(change.obj);
             break;
           case 2: // UPDATED
             change = change as IUpdateChange;
-            console.log("[DB CHANGED]", change);
+            // console.log("[DB CHANGED]", change);
             this.tableChanges$[change.table].next(change.obj);
             break;
           case 3: // DELETED
             change = change as IDeleteChange;
-            console.log("[DB DELETED]", change);
+          // console.log("[DB DELETED]", change);
         }
       });
     });
