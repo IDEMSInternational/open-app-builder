@@ -75,27 +75,8 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
     return true;
   }
 
-  // CC - 2021-05-07 - Assumed legacy but to verify (?)
-  // private addRowDefaultActions(actions?: FlowTypes.TemplateRowAction[]) {
-  //   if (!actions) {
-  //     actions = [
-  //       {
-  //         trigger: "completed",
-  //         action_id: "emit",
-  //         args: ["completed"],
-  //       },
-  //       {
-  //         trigger: "uncompleted",
-  //         action_id: "emit",
-  //         args: ["uncompleted"],
-  //       },
-  //     ];
-  //     return actions;
-  //   }
-  // }
-
   private addParentActionsFilter() {
-    this.parent.handleActionsInterceptor = async (actions) => {
+    this.parent.templateActionService.handleActionsInterceptor = async (actions) => {
       return actions.filter((action) => {
         const shouldHandleByParent = this.interceptTemplateContainerAction(action);
         // continue to process on parent unless specific return says not to
