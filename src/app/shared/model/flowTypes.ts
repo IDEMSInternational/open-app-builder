@@ -469,8 +469,12 @@ export namespace FlowTypes {
       | "start_tour"
       | "trigger_actions";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
-    /** field populated for tracking the component that triggered the action */
-    _triggeredBy?: TemplateRow;
+    _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
+    /**
+     * most actions are specified from a parent template (begin_template statement) and are executed
+     * within parent context. However actions specified by own update_action_list statement require self handling
+     */
+    _self_triggered?: boolean;
     // debug info
     _raw?: string;
     _cleaned?: string;

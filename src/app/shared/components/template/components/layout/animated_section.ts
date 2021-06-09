@@ -30,7 +30,7 @@ export class AnimatedSectionComponent extends TemplateLayoutComponent implements
   }
 
   ngOnInit() {
-    this.parent.handleActionsCallback = async () => {
+    this.parent.templateActionService.handleActionsCallback = async () => {
       // Temporary workaround to always scroll to top after actions triggered within animated section (uncomment)
       // this.scrollToTop();
     };

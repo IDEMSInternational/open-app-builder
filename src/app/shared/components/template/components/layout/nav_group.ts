@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
 import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { hackAddRowWithDefaultActions } from "../../hacks";
 import { TemplateService } from "../../services/template.service";
 import { TemplateLayoutComponent } from "./layout";
 
@@ -23,6 +24,7 @@ import { TemplateLayoutComponent } from "./layout";
             [name]="templateName"
             [templatename]="templateName"
             [parent]="parent"
+            [row]="containerRow"
           >
           </plh-template-container>
         </div>
@@ -84,6 +86,8 @@ import { TemplateLayoutComponent } from "./layout";
 export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
   sectionIndex = 0;
+  /** Temp row to pass emit completed/uncompleted actions to parent */
+  containerRow = hackAddRowWithDefaultActions();
 
   constructor(private templateService: TemplateService) {
     super();

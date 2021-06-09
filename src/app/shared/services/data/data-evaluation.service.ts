@@ -146,7 +146,7 @@ export class DataEvaluationService {
   ) {
     log("field evaluate", args.evaluate);
     // TODO - ideally this should be a shared method, not related to template service
-    return this.templateService.getField(args.evaluate) || false;
+    return this.templateService.getField(args.evaluate, false) || false;
   }
 
   /** As comparison functions are generated as string parse the relevant cases and evaluate */
