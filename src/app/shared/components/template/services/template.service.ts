@@ -38,11 +38,12 @@ export class TemplateService {
   /**
    * Retrieve fields from localstorage. These are automatically prefixed with 'rp-contact-field'
    * and will be returned as string or boolean
+   * TODO - ideally showWarnings should be linked to some sort of debug mode
    */
-  getField(key: string) {
+  getField(key: string, showWarnings = true) {
     let val: any = this.localStorageService.getString("rp-contact-field." + key);
     // provide a fallback if the target variable does not exist in local storage
-    if (val === null) {
+    if (val === null && showWarnings) {
       console.warn("field value not found for key:", key);
       val = undefined;
     }
