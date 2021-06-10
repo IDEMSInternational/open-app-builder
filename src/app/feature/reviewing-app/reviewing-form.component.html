@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Leave your comment about page</h1>
+  <h3>Right click on a specific component to comment about it</h3>
+  <form *ngIf="isComment || isForm" [formGroup]="reviewingForm" action="">
+    <div *ngIf="isComment" class="comment">
+      <textarea
+        style="width: 200px; height: 100px"
+        placeholder="Leave a comment here"
+        formControlName="comment"
+      ></textarea>
+    </div>
+    <div *ngIf="isForm" class="form">
+      <div>
+        <input formControlName="anyField" type="text" />
+      </div>
+      <div>
+        <input formControlName="anyField2" type="text" />
+      </div>
+    </div>
+    <ion-button (click)="submit()" type="submit">Submit</ion-button>
+  </form>
+  <div #contextMenu class="contextMenu">
+    <div class="info">
+      <div class="value">{{ targetRow?.value }}</div>
+    </div>
+    <ion-button (click)="openComment()">Leave a comment</ion-button>
+    <ion-button (click)="openForm()">Suggest change</ion-button>
+    <div (click)="dismissContextMenu()" class="dismiss">X</div>
+  </div>
+</div>

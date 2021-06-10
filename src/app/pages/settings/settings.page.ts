@@ -10,6 +10,7 @@ import { SettingsService } from "./settings.service";
 import { OfflineChatService } from "src/app/feature/chat/services/offline/offline-chat.service";
 import { TIPS } from "src/app/shared/services/data/data.service";
 import { TourService } from "src/app/shared/services/tour/tour.service";
+import { ReviewingService } from "src/app/shared/services/reviewing/reviewing.service";
 
 @Component({
   selector: "plh-settings",
@@ -36,6 +37,7 @@ export class SettingsPage {
     private dbService: DbService,
     private settingsService: SettingsService,
     private offlineChatService: OfflineChatService,
+    private reviewingService: ReviewingService,
     private tourService: TourService
   ) {
     this.themeNames = this.themeService.getThemes().map((theme) => theme.name);
@@ -99,5 +101,10 @@ export class SettingsPage {
 
   openTours() {
     this.router.navigateByUrl("/tour");
+  }
+
+  toogleReviewingMode() {
+    let state = this.reviewingService.isReviewingMode$.value;
+    this.reviewingService.isReviewingMode$.next((state = !state));
   }
 }

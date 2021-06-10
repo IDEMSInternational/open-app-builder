@@ -28,11 +28,14 @@
     </ion-content>
   </ion-menu>
   <!-- Sit global header above main content view -->
-  <div style="display: flex; flex-direction: column; height: 100%">
-    <plh-main-header></plh-main-header>
-    <div class="route-container">
-      <ion-router-outlet id="main-content"></ion-router-outlet>
+  <div style="display: flex; height: 100%; width: 100%">
+    <div style="display: flex; flex-direction: column; height: 100%; flex: 1">
+      <plh-main-header></plh-main-header>
+      <div class="route-container">
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+      </div>
+      <!-- <plh-main-tabs></plh-main-tabs> -->
     </div>
-    <!-- <plh-main-tabs></plh-main-tabs> -->
+    <reviewing-form *ngIf="reviewingService.isReviewingMode$ | async"></reviewing-form>
   </div>
 </ion-app>
