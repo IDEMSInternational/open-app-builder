@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { fromEvent, merge, Subscription } from "rxjs";
 import { FlowTypes } from "../../shared/model/flowTypes";
 
@@ -14,22 +14,23 @@ export class ReviewingFormComponent implements OnInit, AfterViewInit, OnDestroy 
 
   public isComment = true;
   public isForm = false;
+  public isTextTypeRow = false;
   private contextMenuOpened = false;
   public targetRow: FlowTypes.TemplateRow;
   private subscription$: Subscription;
+
+  public reviewingForm = {
+    comment: "",
+    currentValue: "",
+    suggestChange: "",
+  };
 
   private subscribeDocumentEvents$ = merge(
     fromEvent(document, "contextmenu"),
     fromEvent(document, "click")
   );
 
-  public reviewingForm = new FormGroup({
-    comment: new FormControl(""),
-    anyField: new FormControl(""),
-    anyField2: new FormControl(""),
-  });
-
-  constructor(private router: Router) {}
+  constructor(public route: ActivatedRoute) {}
 
   ngOnInit() {}
 
@@ -54,14 +55,28 @@ export class ReviewingFormComponent implements OnInit, AfterViewInit, OnDestroy 
   private handleContextmenuEvent(e: Event) {
     e.preventDefault();
     this.targetRow = this.getTargetRow(e);
-    this.openContextMenu(e["pageX"], e["pageY"]);
+    this.isTextTypeRow = this.isTextType(this.targetRow);
+    if (this.targetRow) {
+      this.openContextMenu(e);
+    }
+    console.log(this.targetRow);
   }
 
-  private openContextMenu(x: number, y: number) {
+  private isTextType(row: FlowTypes.TemplateRow): boolean {
+    if (row && row.type) {
+      if (row.type === "title" || row.type === "subtitle" || row.type === "text") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  private openContextMenu(e: Event) {
     this.closeForm();
     this.contextMenuOpened = true;
-    this.contextMenu.nativeElement.style.top = `${y}px`;
-    this.contextMenu.nativeElement.style.left = `${x}px`;
+    this.contextMenu.nativeElement.style.top = `${e["pageY"]}px`;
+    this.contextMenu.nativeElement.style.left = `${e["pageX"]}px`;
     this.contextMenu.nativeElement.style.visibility = "visible";
   }
 
@@ -69,6 +84,7 @@ export class ReviewingFormComponent implements OnInit, AfterViewInit, OnDestroy 
     if (this.isComment) {
       this.isComment = false;
     }
+    this.reviewingForm.currentValue = this.targetRow.value;
     this.isForm = true;
     this.dismissContextMenu();
   }
@@ -82,7 +98,6 @@ export class ReviewingFormComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   private closeForm() {
-    this.isComment = false;
     this.isForm = false;
   }
 
