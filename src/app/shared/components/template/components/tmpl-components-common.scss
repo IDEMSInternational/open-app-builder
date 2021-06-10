@@ -269,7 +269,7 @@ p {
     plh-template-component:first-child {
       margin-bottom: var(--huge-margin);
       padding-left: var(--small-padding);
-      max-width: 15%;
+      max-width: 10rem;
       @media (max-width: 1024px) {
         max-width: 20%;
       }
