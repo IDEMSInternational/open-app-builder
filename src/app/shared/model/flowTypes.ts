@@ -434,6 +434,9 @@ export namespace FlowTypes {
     // i.e. @data.campaign_list | evaluate_conditions | first (or similar)
     type: "local" | "field" | "fields" | "global" | "data" | "campaign" | "calc";
     fieldName: string;
+    // computed properties
+    parsedValue?: any;
+    parsedExpression?: string;
   }
 
   export type TemplateRowActionTrigger =
