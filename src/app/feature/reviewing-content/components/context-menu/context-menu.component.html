@@ -1,0 +1,8 @@
+<div #contextMenu class="contextMenu" [style]="{ top: data.top, left: data.left }">
+  <div class="info">
+    <div *ngIf="data.isText" class="value">Text: {{ data.targetRow?.value }}</div>
+  </div>
+  <ion-button (click)="openComment()">Leave a comment</ion-button>
+  <ion-button *ngIf="data.isText" (click)="openSuggest()">Suggest change</ion-button>
+  <div (click)="dismissContextMenu()" class="dismiss">X</div>
+</div>

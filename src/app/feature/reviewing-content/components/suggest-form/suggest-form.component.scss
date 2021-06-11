@@ -1,0 +1,40 @@
+:host {
+  width: 80%;
+  flex: 1;
+}
+.formWrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 20px;
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    .input {
+      width: 80%;
+      align-self: center;
+    }
+    input {
+      margin-top: 15px;
+      width: 100%;
+      height: 35px;
+    }
+  }
+  .comment {
+    display: flex;
+    justify-content: center;
+  }
+  ion-button {
+    margin-top: 20px;
+    min-width: 80%;
+    align-self: center;
+  }
+}
