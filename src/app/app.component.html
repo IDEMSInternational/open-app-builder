@@ -36,6 +36,6 @@
       </div>
       <!-- <plh-main-tabs></plh-main-tabs> -->
     </div>
-    <reviewing-form *ngIf="reviewingService.isReviewingMode$ | async"></reviewing-form>
+    <plh-reviewing *ngIf="reviewingService.isReviewingMode$ | async"></plh-reviewing>
   </div>
 </ion-app>

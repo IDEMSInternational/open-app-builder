@@ -28,7 +28,7 @@ const introModules = [AppTermsPageModule, PrivacyPageModule];
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
 import { TourComponent } from "./feature/tour/tour.component";
-import { ReviewingFormComponent } from "./feature/reviewing-app/reviewing-form.component";
+import { ReviewingModule } from "./feature/reviewing-content/reviewing.module";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -37,7 +37,7 @@ export function lottiePlayerFactory() {
 }
 
 @NgModule({
-  declarations: [AppComponent, ThemeEditorComponent, TourComponent, ReviewingFormComponent],
+  declarations: [AppComponent, ThemeEditorComponent, TourComponent],
 
   entryComponents: [],
   imports: [
@@ -53,6 +53,7 @@ export function lottiePlayerFactory() {
     ReactiveFormsModule,
     ReactiveFormsModule,
     ColorSketchModule,
+    ReviewingModule,
     ...introModules,
     SurveyModule,
     LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),

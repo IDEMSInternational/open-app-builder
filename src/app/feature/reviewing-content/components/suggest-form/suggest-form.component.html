@@ -1,0 +1,16 @@
+<div class="formWrapper">
+  <form *ngIf="isSuggest || isComment" action="">
+    <div *ngIf="isComment" class="comment">
+      <textarea style="width: 80%; height: 200px" placeholder="Leave a comment here"></textarea>
+    </div>
+    <div *ngIf="isSuggest" class="form">
+      <div class="input">
+        <input [value]="targetRow.value" type="text" />
+      </div>
+      <div class="input">
+        <input placeholder="suggest change" type="text" />
+      </div>
+    </div>
+    <ion-button (click)="submit()" type="submit">Submit</ion-button>
+  </form>
+</div>
