@@ -4,8 +4,7 @@
  * @calc(pick_random(@local.list_to_pick_from))
  * ```
  */
-const CALC_FUNCTIONS: ((...args: any) => any)[] = [
-  function parse_value_list() {},
+const CALC_FUNCTIONS: ICalcFunction[] = [
   /**
    * Pick a random item from a list
    * @param arr array of items to pick from
@@ -29,8 +28,8 @@ const CALC_FUNCTIONS: ((...args: any) => any)[] = [
    * @param returnField specify a single field from the item to return, default: 'text'
    */
   function lookup_answer_list(list: string[] = [], name: string, returnField: string = "text") {
-    // Note - whilst this function is shared in template-utils we cannot import into this function
-    // as it is created dynamically
+    // Convert the list key-value pairs. Note - whilst this function is shared in template-utils
+    // we cannot import into this function as it is created dynamically
     const items = list.map((item) => {
       const props: any = {};
       item
@@ -57,9 +56,24 @@ const CALC_FUNCTIONS: ((...args: any) => any)[] = [
  *
  * NOTE - if useful entire libraries can also be included in functions or thisCtxt, e.g. lodash, date-fns or mathjs
  */
-export const CALC_CONTEXT = {
+export const CALC_CONTEXT: ICalcContext = {
   thisCtxt: {
-    calc: (v: any) => v, // include simple function so @calc(...) returns the calculated value
+    calc: (v: any) => v, // include simple function so @calc(...) returns the value already parsed inside
   },
   globalFunctions: CALC_FUNCTIONS, // include all calculations as above
 };
+
+/**
+ * When evaluating functions we have a custom context, so that variables can be specified to both 'this',
+ * as in `this.local.some_value` as well as global functions which can be accessed directly, e.g.
+ * `pick_random(this.local.some_list)`
+ */
+export interface ICalcContext {
+  thisCtxt: {
+    [name: string]: any;
+  };
+  globalFunctions: ICalcFunction[];
+}
+
+/** Calc functions are just simply functions, with unspecified args and return */
+type ICalcFunction = (...args: any) => any;
