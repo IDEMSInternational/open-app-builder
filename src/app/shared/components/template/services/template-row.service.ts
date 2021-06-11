@@ -57,10 +57,20 @@ export class TemplateRowService {
   private getParentOverridesHashmap(inheritedRows: FlowTypes.TemplateRow[] = []) {
     const overridesHashmap = {};
     for (const row of inheritedRows) {
-      const { _nested_name, _dynamicFields, _dynamicDependencies, type, ...overrideFields } = row;
-      overridesHashmap[row.name] = overrideFields;
+      overridesHashmap[row.name] = this.extractOverrideFields(row);
     }
     return overridesHashmap;
+  }
+  /**
+   * When overriding rows we don't want to include any dynamic references for the parent
+   * as these will not always update in the child. Remove these along with type and nested name
+   */
+  private extractOverrideFields(row: FlowTypes.TemplateRow) {
+    const { _nested_name, _dynamicFields, _dynamicDependencies, type, ...overrideFields } = row;
+    if (overrideFields.rows) {
+      overrideFields.rows = overrideFields.rows.map((r) => this.extractOverrideFields(r));
+    }
+    return overrideFields as FlowTypes.TemplateRow;
   }
 
   /**
