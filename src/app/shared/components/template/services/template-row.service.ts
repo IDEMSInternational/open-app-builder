@@ -188,7 +188,7 @@ export class TemplateRowService {
           switch (type) {
             case "set_field":
               console.warn("[W] Setting fields from template is not advised", parsedRow);
-              this.container.templateService.setField(name, value);
+              await this.container.templateService.setField(name, value);
               return;
             // ensure set_variables are recorded via their name (instead of default nested name)
             // if a variable is dynamic keep original for future re-evaluation (otherwise discard)

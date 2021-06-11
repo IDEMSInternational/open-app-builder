@@ -95,10 +95,7 @@ export class TemplateVariablesService {
         field
       ) as FlowTypes.TemplateRowDynamicEvaluator[];
       if (evaluators && evaluators.length > 0) {
-        log_group(evaluators[0].fullExpression);
         value = await this.evaluatePLHString(evaluators, context);
-        log("[evaluated]", evaluators[0].fullExpression, { value, evaluators, field, context });
-        log_groupEnd();
       }
     }
     return value;
@@ -125,6 +122,7 @@ export class TemplateVariablesService {
     context: IVariableContext
   ) {
     const fullExpression = evaluators[0].fullExpression;
+    log_group(fullExpression);
     // create a base context of variables and functions that will be available when evaluating javascript
     let calcContext = CALC_CONTEXT;
 
@@ -165,7 +163,11 @@ export class TemplateVariablesService {
     const sortedEvaluators = parsedEvaluators.sort(
       (a, b) => b.matchedExpression.length - a.matchedExpression.length
     );
-    return this.parseContextExpression(context, fullExpression, sortedEvaluators);
+
+    const evaluated = await this.parseContextExpression(context, fullExpression, sortedEvaluators);
+    log("[evaluated]", fullExpression, { evaluated, evaluators, context });
+    log_groupEnd();
+    return evaluated;
   }
 
   /**
@@ -197,7 +199,7 @@ export class TemplateVariablesService {
    * ```
    * @param evaluators
    */
-  private parseContextExpression(
+  private async parseContextExpression(
     context: IVariableContext,
     fullExpression: string,
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[]
