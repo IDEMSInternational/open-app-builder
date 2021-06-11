@@ -138,7 +138,7 @@ export class TemplateVariablesService {
 
       // process the main lookup, e.g. @local.some_val, @campaign.some_val
       // NOTE - if parse fail an empty string will be returned
-      const { parsedValue, parseSuccess } = await this.processDynamicEvaluator(evaluator, context);
+      let { parsedValue, parseSuccess } = await this.processDynamicEvaluator(evaluator, context);
 
       // update context for use in expression evaluation. Don't overwrite calc function
       if (type !== "calc") {
@@ -152,11 +152,11 @@ export class TemplateVariablesService {
       // The value parsed represents just top level @local.some_value. If the full expression contains
       // nested property (e.g. @local.some_value.nested_prop) extract. Add to list of processed evaluators
       if (parseSuccess && matchedExpression !== `@${type}.${fieldName}`) {
-        const nestedValue = getNestedProperty({ this: calcContext.thisCtxt }, parsedExpression);
-        parsedEvaluators.push({ ...evaluator, parsedExpression, parsedValue: nestedValue });
+        parsedValue = getNestedProperty({ this: calcContext.thisCtxt }, parsedExpression);
       } else {
-        parsedEvaluators.push({ ...evaluator, parsedExpression, parsedValue });
       }
+      log("parsed", { matchedExpression, parsedValue });
+      parsedEvaluators.push({ ...evaluator, parsedExpression, parsedValue });
     }
     log("parsedEvaluators", { parsedEvaluators, thisCtxt: calcContext.thisCtxt });
 
@@ -218,9 +218,9 @@ export class TemplateVariablesService {
       const lines = contextExpression.split("\n");
       evaluated =
         lines.length > 1
-          ? lines.map((s) => evaluateJSExpression(s, thisCtxt, globalFunctions)).join("")
+          ? lines.map((s) => evaluateJSExpression(s, thisCtxt, globalFunctions)).join("\n")
           : evaluateJSExpression(contextExpression, thisCtxt, globalFunctions);
-      log("[Success 1]", evaluated);
+      log("evaluated (JS)", evaluated);
     } catch (error) {
       // second pass - string replacement methods
       let replacedExpression = fullExpression;
@@ -229,6 +229,7 @@ export class TemplateVariablesService {
         replacedExpression = replacedExpression.replace(matchedExpression, parsedValue);
       });
       evaluated = replacedExpression;
+      log("evaluated (string replace)", evaluated);
     }
     // in case the replacement has introduced a new dynamic expression (e.g. @local.@local.some_var => @local.new_var)
     // check for new dynamic evaluators and reprocess
@@ -320,7 +321,6 @@ export class TemplateVariablesService {
         // This will be checked a second time and could cause an infinite loop
         parsedValue = "";
     }
-    log({ parsedValue, parseSuccess, evaluator, templateRowMap });
     return { parsedValue, parseSuccess };
   }
 }
