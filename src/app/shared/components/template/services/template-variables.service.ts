@@ -137,7 +137,8 @@ export class TemplateVariablesService {
       context.calcContext = calcContext;
 
       // process the main lookup, e.g. @local.some_val, @campaign.some_val
-      const { parsedValue } = await this.processDynamicEvaluator(evaluator, context);
+      // NOTE - if parse fail an empty string will be returned
+      const { parsedValue, parseSuccess } = await this.processDynamicEvaluator(evaluator, context);
 
       // update context for use in expression evaluation. Don't overwrite calc function
       if (type !== "calc") {
@@ -150,7 +151,7 @@ export class TemplateVariablesService {
 
       // The value parsed represents just top level @local.some_value. If the full expression contains
       // nested property (e.g. @local.some_value.nested_prop) extract. Add to list of processed evaluators
-      if (matchedExpression !== `@${type}.${fieldName}`) {
+      if (parseSuccess && matchedExpression !== `@${type}.${fieldName}`) {
         const nestedValue = getNestedProperty({ this: calcContext.thisCtxt }, parsedExpression);
         parsedEvaluators.push({ ...evaluator, parsedExpression, parsedValue: nestedValue });
       } else {
@@ -314,7 +315,10 @@ export class TemplateVariablesService {
       default:
         parseSuccess = false;
         console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
-        parsedValue = evaluator.matchedExpression;
+        // By default return an empty string if could not be evaluated successfully
+        // NOTE - any value is fine to return EXCEPT a dynamic expression (e.g. same @local.some_var)
+        // This will be checked a second time and could cause an infinite loop
+        parsedValue = "";
     }
     log({ parsedValue, parseSuccess, evaluator, templateRowMap });
     return { parsedValue, parseSuccess };
