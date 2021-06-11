@@ -19,9 +19,14 @@ export function mergeTemplateRows(
       delete dynamicFields[field];
     }
     // add any new dynamic references
-    if (primaryRow?._dynamicFields?.[field]) {
-      dynamicFields[field] = primaryRow._dynamicFields[field];
-    }
+    // NOTE - this will currently not work as parent dynamic could refer to parent template variables
+    // (e.g. @local) and not @global or @fields. Assume now static
+    // TODO - could try add @parent dynamic type to track parent local or try find way set_dynamic child on update
+
+    // if (primaryRow?._dynamicFields?.[field]) {
+    //   dynamicFields[field] = primaryRow._dynamicFields[field];
+    // }
+
     // assign back any dynamic references
     if (Object.keys(dynamicFields).length > 0) {
       mergedRow._dynamicFields = dynamicFields;
