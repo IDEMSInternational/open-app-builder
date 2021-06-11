@@ -37,6 +37,7 @@ const tests = [
   //   "hello: this.local.number_1",
   //   "hello: this.local.number_1 + this.local.number_2", // will not work
   //   "this.local.number_1 * this.local.number_2 > 5",
+  // TODO - "this.fields.non_existant_field"
   // TODO - include more values that fail to check fails gracefully (e.g. no accidental infinite loops or thrown errors)
 ];
 const thisCtxt = getCtxt();
