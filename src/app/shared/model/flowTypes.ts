@@ -432,8 +432,11 @@ export namespace FlowTypes {
     matchedExpression: string;
     // TODO CC 2021-05-15 - 'campaign' should be handled as a special case of data in the parser
     // i.e. @data.campaign_list | evaluate_conditions | first (or similar)
-    type: "local" | "field" | "fields" | "global" | "data" | "campaign";
+    type: "local" | "field" | "fields" | "global" | "data" | "campaign" | "calc";
     fieldName: string;
+    // computed properties
+    parsedValue?: any;
+    parsedExpression?: string;
   }
 
   export type TemplateRowActionTrigger =
