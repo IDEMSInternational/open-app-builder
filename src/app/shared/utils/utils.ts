@@ -93,16 +93,16 @@ export function getNestedProperty(obj: any, path: string) {
   }, obj);
 }
 
-export function setNestedProperty(path: string, value: any, obj = {}) {
+export function setNestedProperty<T>(path: string, value: any, obj: T = {} as any) {
   let childKeys = path.split(".");
   const currentKey = childKeys[0];
   if (childKeys.length > 1) {
     const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
-    obj[currentKey] = { ...obj[currentKey], ...nestedValue };
+    obj[currentKey] = { ...obj[currentKey], ...(nestedValue as any) };
   } else {
     obj[currentKey] = value;
   }
-  return obj;
+  return obj as T;
 }
 
 /**
@@ -169,13 +169,20 @@ export function getBooleanParamFromTemplateRow(
 /**
  * Evaluate a javascript expression in a safe context
  * @param expression string expression, e.g. "!true", "5 - 4"
- * @param context variables and methods that will be available in the function's `this.exampleVar` scope
+ * @param thisCtxt variables and methods that will be available in the function's `this.exampleVar` scope
+ * @param globalFunctions functions declared here will be bound to the global scope, so can be called directly
  * @throws Error if the expression is not valid within the context
  * */
-export function evaluateJSExpression(expression: string, context = {}): any {
-  const funcString = `"use strict"; return (${expression});`;
+export function evaluateJSExpression(
+  expression: string,
+  thisCtxt = {},
+  globalFunctions: ((...args: any) => any)[] = []
+): any {
+  const globalString = globalFunctions.map((fn) => fn.toString()).join(";");
+  const funcString = `"use strict"; ${globalString}; return (${expression});`;
   const func = new Function(funcString);
-  return func.apply(context);
+
+  return func.apply(thisCtxt);
 }
 
 /**

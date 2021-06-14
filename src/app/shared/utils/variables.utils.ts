@@ -45,26 +45,42 @@ export function extractDynamicFields(data: any) {
   }
 }
 
+/**
+ * Take a string and extract all text that requires dynamic evaluation in the app,
+ * such as `hello @local.some_value` or `calc(Math.min(@local.val_1,@local.val_2))`
+ *
+ * @param fullExpression
+ *
+ * TODO - longer term we probably need a better syntax system to distinguish dynamic
+ * from static text.
+ * e.g. `@local.val_1 - @local.val_2` could represent either subtraction or a string with dash
+ */
 export function extractDynamicEvaluators(
   fullExpression: string
 ): FlowTypes.TemplateRowDynamicEvaluator[] | null {
   // match fields such as @local.someField
   // deeper nesting will be need to be handled after evaluation as part of JSEvaluation
-  // (e.g. @local.somefield.nestedProperty or even @local.@local.dynamicNested)
+  // (e.g. @local.somefield.nestedProperty or even !@local.@local.dynamicNested)
   // group 1: @local, @fields etc.
   // group 2: property of group, e.g. @local.'someVar'
   // group 3: trailing evaluation, e.g. @local.someVar'.nestedvar.length'
-  const regex = /@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
   let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
   if (typeof fullExpression === "string") {
-    let match: RegExpExecArray;
-    // run recursive match for all dynamic expressions
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#finding_successive_matches
-    /* eslint-disable no-cond-assign */
-    while ((match = regex.exec(fullExpression)) !== null) {
-      const [matchedExpression, type, fieldName] = match as any[];
-      allMatches.push({ fullExpression, matchedExpression, type, fieldName });
-    }
+    const regex1 = /!?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
+    allMatches = _matchAll(regex1, fullExpression).map((m) => {
+      const [matchedExpression, type, fieldName] = m as any[];
+      return { fullExpression, matchedExpression, type, fieldName };
+    });
+    // provide a separate regex for @eval statements as they don't use dot notation
+    // i.e @calc(some JS expression) as opposed to @calc.(some expression)
+    const regex2 = /!?@(calc)\((.+)\)$/gim;
+    allMatches = [
+      ...allMatches,
+      ..._matchAll(regex2, fullExpression).map((m) => {
+        const [matchedExpression, type, fieldName] = m as any[];
+        return { fullExpression, matchedExpression, type, fieldName };
+      }),
+    ];
     // expect the number of match statements to match the total number of @ characters (replace all non-@)
     // provide a warning if this is not the case
     const expectedMatchLength = fullExpression.replace(/[^@]/g, "").length;
@@ -80,6 +96,20 @@ export function extractDynamicEvaluators(
     return allMatches;
   }
   return null;
+}
+
+/**
+ * run recursive match for all dynamic expressions
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#finding_successive_matches
+ */
+function _matchAll(regex: RegExp, fullExpression: string) {
+  let allMatches: RegExpExecArray[] = [];
+  let match: RegExpExecArray;
+  /* eslint-disable no-cond-assign */
+  while ((match = regex.exec(fullExpression)) !== null) {
+    allMatches.push(match);
+  }
+  return allMatches;
 }
 
 function _arrayToObject(arr: any[]) {
