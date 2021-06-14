@@ -170,7 +170,11 @@ export class TemplateRowService {
           { ...preProcessedRow },
           evalContext
         );
-        const { name, value, hidden, type, _dynamicFields } = parsedRow;
+        // assign translated values
+        const translatedRow = this.container.templateTranslateService.translateRow(parsedRow);
+
+        const row = translatedRow;
+        const { name, value, hidden, type, _dynamicFields } = row;
 
         // Make type assigned to hidden consistent
         if (hidden === "true") parsedRow.hidden = true;
@@ -178,8 +182,8 @@ export class TemplateRowService {
         if (type === "template") isNestedTemplate = true;
 
         // process any nested rows in same way
-        if (parsedRow.rows) {
-          parsedRow.rows = await this.processRows(parsedRow.rows, isNestedTemplate, _nested_name);
+        if (row.rows) {
+          row.rows = await this.processRows(row.rows, isNestedTemplate, _nested_name);
         }
 
         // Handle rows that should only be initialised once
@@ -187,13 +191,13 @@ export class TemplateRowService {
         if (!isNestedTemplate) {
           switch (type) {
             case "set_field":
-              console.warn("[W] Setting fields from template is not advised", parsedRow);
+              console.warn("[W] Setting fields from template is not advised", row);
               await this.container.templateService.setField(name, value);
               return;
             // ensure set_variables are recorded via their name (instead of default nested name)
             // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
             case "set_variable":
-              this.templateRowMap.set(name, parsedRow);
+              this.templateRowMap.set(name, row);
               if (_dynamicFields) {
                 processedRows.push(preProcessedRow);
               }
@@ -206,7 +210,7 @@ export class TemplateRowService {
               const base_actions = existing_actions.filter(
                 (a) => !a["_update_name"] || a["_update_name"] !== name
               );
-              const new_actions = parsedRow.action_list.map((a) => ({
+              const new_actions = row.action_list.map((a) => ({
                 ...a,
                 _update_name: name, // keep track for future updates
                 _self_triggered: true, // by default actions are triggered from parent context, specify self
@@ -216,11 +220,11 @@ export class TemplateRowService {
               break;
             default:
               // all other types should just set own value for use in future processing
-              this.templateRowMap.set(_nested_name, parsedRow);
+              this.templateRowMap.set(_nested_name, row);
               break;
           }
         }
-        processedRows.push(parsedRow);
+        processedRows.push(row);
       })();
     }
     log("[Rows Processed]", logName, {

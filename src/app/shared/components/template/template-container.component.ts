@@ -12,6 +12,7 @@ import { TemplateRowService } from "./services/template-row.service";
 import { TemplateVariablesService } from "./services/template-variables.service";
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
+import { TemplateTranslateService } from "./services/template-translate.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -58,6 +59,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   constructor(
     public templateService: TemplateService,
     public templateVariables: TemplateVariablesService,
+    public templateTranslateService: TemplateTranslateService,
     public tourService: TourService,
     public router: Router,
     public route: ActivatedRoute,
