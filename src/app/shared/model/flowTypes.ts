@@ -422,6 +422,7 @@ export namespace FlowTypes {
     _dynamicFields?: IDynamicField;
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
+    _translatedFields?: { [field: string]: any };
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
