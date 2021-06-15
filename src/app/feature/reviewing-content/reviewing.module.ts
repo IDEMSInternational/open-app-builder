@@ -5,9 +5,10 @@ import { IonicModule } from "@ionic/angular";
 import { ContextMenuComponent } from "./components/context-menu/context-menu.component";
 import { ReviewingComponent } from "./components/reviewing.component";
 import { SuggestFormComponent } from "./components/suggest-form/suggest-form.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonicModule, FormsModule],
   declarations: [
     ExistingCommentsComponent,
     SuggestFormComponent,

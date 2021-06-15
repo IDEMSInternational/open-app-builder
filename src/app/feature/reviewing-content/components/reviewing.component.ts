@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { fromEvent, merge, Subscription } from "scripts/node_modules/rxjs";
+import { ReviewingService } from "src/app/shared/services/reviewing/reviewing.service";
 import { FlowTypes } from "../../../shared/model/flowTypes";
 import { ContextMenuData } from "./context-menu/context-menu.component";
 
@@ -8,14 +9,8 @@ import { ContextMenuData } from "./context-menu/context-menu.component";
   template: `<div class="container">
     <h1>Leave your comment about page</h1>
     <h2>Right click on a specific component to comment about it</h2>
-    <div class="formWrapper">
-      <suggest-form
-        #form
-        *ngIf="isComment || isSuggest"
-        [isComment]="isComment"
-        [isSuggest]="isSuggest"
-        [targetRow]="targetRow"
-      >
+    <div class="formContainer">
+      <suggest-form [isComment]="isComment" [isSuggest]="isSuggest" [targetRow]="targetRow">
       </suggest-form>
     </div>
     <existing-comments></existing-comments>
@@ -47,7 +42,7 @@ import { ContextMenuData } from "./context-menu/context-menu.component";
         flex-direction: column;
         align-items: center;
       }
-      .formWrapper {
+      .formContainer {
         flex: 1;
         width: 100%;
       }
@@ -68,7 +63,7 @@ export class ReviewingComponent implements AfterViewInit, OnDestroy {
     fromEvent(document, "click")
   );
 
-  constructor() {}
+  constructor(private reviewingService: ReviewingService) {}
 
   ngAfterViewInit() {
     this.subscription$ = this.subscribeDocumentEvents$.subscribe((e: Event) => {
@@ -90,8 +85,8 @@ export class ReviewingComponent implements AfterViewInit, OnDestroy {
 
   private handleContextmenuEvent(e: Event) {
     e.preventDefault();
-    this.targetRow = this.getTargetRow(e);
-    this.isTypeTextRow = this.isText(this.targetRow);
+    this.targetRow = this.reviewingService.getTargetRow(e);
+    this.isTypeTextRow = this.reviewingService.isText(this.targetRow);
     if (this.targetRow) {
       this.openContextMenu(e);
     }
@@ -107,26 +102,6 @@ export class ReviewingComponent implements AfterViewInit, OnDestroy {
       targetRow: this.targetRow,
     };
     this.isContextMenu = true;
-  }
-
-  private getTargetRow(e: Event): FlowTypes.TemplateRow | null {
-    let result = null;
-    if (e["path"]) {
-      result = e["path"].find((c) => c.localName === "plh-template-component")?.__ngContext__[21];
-      return result;
-    } else {
-      return result;
-    }
-  }
-
-  private isText(row: FlowTypes.TemplateRow): boolean {
-    if (row && row.type) {
-      if (row.type === "title" || row.type === "subtitle" || row.type === "text") {
-        return true;
-      } else {
-        return false;
-      }
-    }
   }
 
   public openSuggest() {

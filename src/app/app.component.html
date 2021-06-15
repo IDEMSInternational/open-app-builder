@@ -36,6 +36,10 @@
       </div>
       <!-- <plh-main-tabs></plh-main-tabs> -->
     </div>
-    <plh-reviewing *ngIf="reviewingService.isReviewingMode$ | async"></plh-reviewing>
+    <plh-reviewing
+      *ngIf="
+        (reviewingService.isReviewingMode$ | async) && reviewingService.currentPlatform === 'web'
+      "
+    ></plh-reviewing>
   </div>
 </ion-app>

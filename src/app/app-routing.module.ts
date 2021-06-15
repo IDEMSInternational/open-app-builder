@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
 import { ParentPointsPage } from "./feature/parent-points/parent-points.page";
+import { ExistingCommentsComponent } from "./feature/reviewing-content/components/existing-comments/existing-comments.component";
 import { TourComponent } from "./feature/tour/tour.component";
 
 const FeatureRoutes: Routes = [
@@ -67,6 +68,10 @@ const FeatureRoutes: Routes = [
   {
     path: "tour/:tourName",
     component: TourComponent,
+  },
+  {
+    path: "existing-comments",
+    component: ExistingCommentsComponent,
   },
   {
     path: "parent_points",
