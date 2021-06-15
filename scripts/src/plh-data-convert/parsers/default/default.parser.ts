@@ -71,6 +71,22 @@ export class DefaultParser implements AbstractParser {
           row[field] = row[field].replace(expression, replaceValue);
         }
       }
+      // mark fields for translation, rename so can process regularly (add translation data at end)
+      // Note, cannot assume all :: statements translations as also used in fields, e.g. fields::favourite
+      // TODO - alter fields syntax to avoid potential conflict (e.g. fields::eng)
+      let isTranslateField = false;
+      if (field.endsWith("::eng")) {
+        // copy eng value to base column. Avoid replace if base column already exists with value
+        // (e.g. in case where value, value::eng only applies to some rows in template)
+        // (NOTE - could use the exclude_from_translation column, but may end up changing syntax)
+        isTranslateField = true;
+        const baseTranslation = row[field];
+        const baseField = field.replace("::eng", "");
+        if (row[baseField] === undefined || row[baseField] === "") {
+          row[baseField] = baseTranslation;
+        }
+        field = baseField;
+      }
       // handle other data structures
       if (field.endsWith("_asset")) {
         row[field] = this.handleAssetLinks(row[field], flow.flow_name);
@@ -86,6 +102,16 @@ export class DefaultParser implements AbstractParser {
         row[field] = row[field]
           .map((actionString) => parsePLHActionString(actionString))
           .filter((action) => action != null);
+      }
+      // assign default translation and track as metadata
+      if (isTranslateField) {
+        row["_translatedFields"] = {
+          ...row["_translatedFields"],
+          [field]: {
+            eng: row[field],
+          },
+        };
+        delete row[`${field}::eng`];
       }
     });
     // remove any comments

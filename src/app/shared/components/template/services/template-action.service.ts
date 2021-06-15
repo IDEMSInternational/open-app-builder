@@ -128,12 +128,18 @@ export class TemplateActionService {
           // write completions to the database for data tracking
           await this.container.templateService.recordEvent(template, "emit", emit_value);
         }
+        // TODO - trigger emit in shared service to allow individual services/components to subscribe
+        // themselves instead of relying on hardcoded calls here
+
         // Handle a forced rerender
         if (emit_value === "force_reload") {
           await this.container.forceRerender(true);
         }
         if (emit_value === "force_reprocess") {
           await this.container.forceRerender(false);
+        }
+        if (emit_value === "set_language") {
+          this.container.templateTranslateService.setLanguage(args[1]);
         }
         if (parent) {
           // continue to emit any actions to parent where defined
