@@ -9,6 +9,7 @@ import {
 } from "src/app/shared/utils";
 import { TemplateService } from "./template.service";
 import { CALC_CONTEXT, ICalcContext } from "./template-calc.service";
+import { TemplateTranslateService } from "./template-translate.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -37,7 +38,11 @@ export class TemplateVariablesService {
    * TODO - ideally this should be a more general data-lookup/query service, possibly communicating via events
    * to all campaign service or similar to return a response for @campaign or similar
    */
-  constructor(private templateService: TemplateService, private campaignService: CampaignService) {}
+  constructor(
+    private templateService: TemplateService,
+    private campaignService: CampaignService,
+    private templateTranslateService: TemplateTranslateService
+  ) {}
 
   /**
    * Data populated in PLH fields may contain references to specific helper or lookup functions,
@@ -302,6 +307,11 @@ export class TemplateVariablesService {
         break;
       case "data":
         parsedValue = this.templateService.getDataListByPath(fieldName);
+        // HACK - make sure data lists are translated (ideally should find way to handle alongside main translations)
+        // TODO - review if similar methods required for campaign, global etc.
+        Object.keys(parsedValue).forEach((k) => {
+          parsedValue[k] = this.templateTranslateService.translateRow(parsedValue[k]);
+        });
         break;
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
