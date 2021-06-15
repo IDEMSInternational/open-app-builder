@@ -105,11 +105,12 @@ export class DefaultParser implements AbstractParser {
       }
       // assign default translation and track as metadata
       if (isTranslateField) {
-        row[field] = {
-          _translate: true,
-          eng: row[field],
+        row["_translatedFields"] = {
+          ...row["_translatedFields"],
+          [field]: {
+            eng: row[field],
+          },
         };
-        row["_translatedFields"] = { ...row["_translatedFields"], [field]: true };
         delete row[`${field}::eng`];
       }
     });

@@ -42,32 +42,30 @@ export class TemplateTranslateService {
    * Note - for improved efficiency rows with translatable data will usually have
    * a `translatedFields` property that lists keys for translation
    */
-  translateRow(row: FlowTypes.TemplateRow) {
+  translateRow(row: FlowTypes.TemplateRow = {} as any) {
     const translated = { ...row };
     // Case 1 - row with translate fields identified (e.g. template row)
     if (row._translatedFields) {
       Object.keys(row._translatedFields).forEach((field) => {
-        translated[field] = this.translateValue(row[field]);
+        translated[field] = this.translateValue(row._translatedFields[field]);
       });
     }
     // Case 2 - row value assigned from data list with translate fields
     const { value } = row;
     if (value && value._translatedFields) {
       Object.keys(value._translatedFields).forEach((field) => {
-        translated.value[field] = this.translateValue(row.value[field]);
+        translated.value[field] = this.translateValue(row.value._translatedFields[field]);
       });
     }
-    // Case 3 - row value assigned from calculation (e.g. data list child field)
-    if (value && value._translate) {
-      translated.value = this.translateValue(value);
-    }
+    // Note - there is a third case when row value assigned from calculation (e.g. data list child field)
+    // but this is currently manually handled in the template-variables service as required
     return translated;
   }
 
-  private translateValue(value: { [language_code: string]: any } = {}) {
-    if (!value.hasOwnProperty(this.app_language)) {
-      console.warn("[Translation missing]", `[${this.app_language}] ${value.eng}`);
+  private translateValue(fieldTranslations: { [language_code: string]: any } = {}) {
+    if (!fieldTranslations.hasOwnProperty(this.app_language)) {
+      console.warn("[Translation missing]", `[${this.app_language}] ${fieldTranslations.eng}`);
     }
-    return value[this.app_language];
+    return fieldTranslations[this.app_language];
   }
 }
