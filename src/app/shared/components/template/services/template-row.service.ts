@@ -1,5 +1,4 @@
 import { FlowTypes } from "src/app/shared/model";
-import { mapToJson } from "src/app/shared/utils";
 import { TemplateContainerComponent } from "../template-container.component";
 import { mergeTemplateRows } from "../utils/template-utils";
 
@@ -23,7 +22,6 @@ export class TemplateRowService {
   };
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: Map<string, FlowTypes.TemplateRow> = new Map();
-  public processedRows: FlowTypes.TemplateRow[];
   public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
   constructor(public container: TemplateContainerComponent) {}
 
@@ -40,8 +38,7 @@ export class TemplateRowService {
     this.parentRowOverrides = this.getParentOverridesHashmap(this.container.row?.rows);
     const rowsWithOverrides = this.processParentOverrides(this.container.template?.rows);
     const rowWithAdditionalMissing = this.processMissingParentOverrides(rowsWithOverrides);
-    this.processedRows = await this.processRows(rowWithAdditionalMissing);
-    this.renderedRows = this.filterConditionalTemplateRows(this.processedRows);
+    await this.processRows(rowWithAdditionalMissing);
     log_groupEnd();
   }
 
@@ -142,97 +139,113 @@ export class TemplateRowService {
    * @param isNestedTemplate indicate if processing child rows of a template row to skip specific functions
    */
   private async processRows(rows: FlowTypes.TemplateRow[], isNestedTemplate = false, logName = "") {
+    rows = rows || this.container.template.rows;
     logName = logName || this.container.name;
     const processedRows = [];
     for (const preProcessedRow of rows) {
       // call an anonymous function so that we can return/break the async for-of loop if required
       // and still push to the processedRows variable
-      await (async () => {
-        const { _nested_name } = preProcessedRow;
-        // Evaluate row variables in context of current local state
-        const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
-        const { templateVariables } = this.container;
-
-        // First process any dynamic condition. If evaluates as false can stop processing any further
-        if (preProcessedRow.hasOwnProperty("condition")) {
-          const { condition } = await templateVariables.evaluatePLHData(
-            { condition: preProcessedRow.condition },
-            evalContext
-          );
-          if (!condition || condition === "false") {
-            processedRows.push({ ...preProcessedRow, condition: false });
-            return;
-          }
-        }
-
-        // Continue processing full row
-        const parsedRow: FlowTypes.TemplateRow = await templateVariables.evaluatePLHData(
-          { ...preProcessedRow },
-          evalContext
-        );
-        // assign translated values
-        const translatedRow = this.container.templateTranslateService.translateRow(parsedRow);
-
-        const row = translatedRow;
-        const { name, value, hidden, type, _dynamicFields } = row;
-
-        // Make type assigned to hidden consistent
-        if (hidden === "true") parsedRow.hidden = true;
-
-        if (type === "template") isNestedTemplate = true;
-
-        // process any nested rows in same way
-        if (row.rows) {
-          row.rows = await this.processRows(row.rows, isNestedTemplate, _nested_name);
-        }
-
-        // Handle rows that should only be initialised once
-        // Only process rows if not part of a nested template row (which will be handled in own template initialisation)
-        if (!isNestedTemplate) {
-          switch (type) {
-            case "set_field":
-              console.warn("[W] Setting fields from template is not advised", row);
-              await this.container.templateService.setField(name, value);
-              return;
-            // ensure set_variables are recorded via their name (instead of default nested name)
-            // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
-            case "set_variable":
-              this.templateRowMap.set(name, row);
-              if (_dynamicFields) {
-                processedRows.push(preProcessedRow);
-              }
-              return;
-            // merge new actions with existing container action list
-            case "update_action_list":
-              // TODO - refactor to standalone array merge method
-              const existing_actions = this.container.row?.action_list || [];
-              // remove any actions previously added by the same update and then add newly processed actions
-              const base_actions = existing_actions.filter(
-                (a) => !a["_update_name"] || a["_update_name"] !== name
-              );
-              const new_actions = row.action_list.map((a) => ({
-                ...a,
-                _update_name: name, // keep track for future updates
-                _self_triggered: true, // by default actions are triggered from parent context, specify self
-              }));
-              const updated_actions = [...base_actions, ...new_actions];
-              this.container.row = { ...this.container.row, action_list: updated_actions };
-              break;
-            default:
-              // all other types should just set own value for use in future processing
-              this.templateRowMap.set(_nested_name, row);
-              break;
-          }
-        }
-        processedRows.push(row);
-      })();
+      const processed = await this.processSingleRow(preProcessedRow, isNestedTemplate);
+      // only include rows that do not return undefined (e.g. set_variable)
+      if (processed) {
+        processedRows.push(processed);
+      }
     }
-    log("[Rows Processed]", logName, {
-      original: [...rows],
-      processed: [...processedRows],
-      rowMap: mapToJson(this.templateRowMap),
-    });
+    this.container.template.rows = processedRows;
+    // filtering can have impure results for deeply nested objects (e.g. changing original rows),
+    // so force new object first
+    const renderedRows = this.filterConditionalTemplateRows(
+      JSON.parse(JSON.stringify(processedRows))
+    );
+    this.renderedRows = renderedRows;
+    this.container.cdr.detectChanges();
+    log("[Rows Processed]", logName, { rows, processedRows, renderedRows });
     return processedRows;
+  }
+
+  private async processSingleRow(
+    preProcessedRow: FlowTypes.TemplateRow,
+    isNestedTemplate: boolean
+  ) {
+    const { _nested_name } = preProcessedRow;
+    // Evaluate row variables in context of current local state
+    const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
+    const { templateVariables } = this.container;
+
+    // First process any dynamic condition. If evaluates as false can stop processing any further
+    if (preProcessedRow.hasOwnProperty("condition")) {
+      const { condition } = await templateVariables.evaluatePLHData(
+        { condition: preProcessedRow.condition },
+        evalContext
+      );
+      if (!condition || condition === "false") {
+        return { ...preProcessedRow, condition: false };
+      }
+    }
+
+    // Continue processing full row
+    const parsedRow: FlowTypes.TemplateRow = await templateVariables.evaluatePLHData(
+      { ...preProcessedRow },
+      evalContext
+    );
+    // assign translated values
+    const translatedRow = this.container.templateTranslateService.translateRow(parsedRow);
+
+    const row = translatedRow;
+    const { name, value, hidden, type, _dynamicFields } = row;
+
+    // Make type assigned to hidden consistent
+    if (hidden === "true") row.hidden = true;
+
+    if (type === "template") isNestedTemplate = true;
+
+    // process any nested rows in same way
+    if (row.rows) {
+      log_group(row.name);
+      const childRows = await this.processRows(row.rows, isNestedTemplate, row.name);
+      row.rows = childRows;
+      log_groupEnd();
+    }
+
+    // Handle rows that should only be initialised once
+    // Only process rows if not part of a nested template row (which will be handled in own template initialisation)
+    if (!isNestedTemplate) {
+      switch (type) {
+        case "set_field":
+          console.warn("[W] Setting fields from template is not advised", row);
+          await this.container.templateService.setField(name, value);
+          return;
+        // ensure set_variables are recorded via their name (instead of default nested name)
+        // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
+        case "set_variable":
+          this.templateRowMap.set(name, row);
+          if (_dynamicFields) {
+            return preProcessedRow;
+          }
+          return;
+        // merge new actions with existing container action list
+        case "update_action_list":
+          // TODO - refactor to standalone array merge method
+          const existing_actions = this.container.row?.action_list || [];
+          // remove any actions previously added by the same update and then add newly processed actions
+          const base_actions = existing_actions.filter(
+            (a) => !a["_update_name"] || a["_update_name"] !== name
+          );
+          const new_actions = row.action_list.map((a) => ({
+            ...a,
+            _update_name: name, // keep track for future updates
+            _self_triggered: true, // by default actions are triggered from parent context, specify self
+          }));
+          const updated_actions = [...base_actions, ...new_actions];
+          this.container.row = { ...this.container.row, action_list: updated_actions };
+          break;
+        default:
+          // all other types should just set own value for use in future processing
+          this.templateRowMap.set(_nested_name, row);
+          break;
+      }
+    }
+    return row;
   }
 
   /**
@@ -240,16 +253,7 @@ export class TemplateRowService {
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
   public async processRowUpdates() {
-    log_group(`[Reprocess Template]`, this.container.name, {
-      rowMap: mapToJson(this.templateRowMap),
-      rows: this.container.template.rows,
-      template: this.container.template,
-    });
-    this.container.template.rows = await this.processRows(this.container.template.rows);
-    this.renderedRows = this.filterConditionalTemplateRows(this.container.template.rows);
-    this.container.cdr.detectChanges();
-    log("[Reprocess Complete]", this.renderedRows);
-    log_groupEnd();
+    return this.processRows(this.container.template.rows);
   }
 
   /***************************************************************************************
