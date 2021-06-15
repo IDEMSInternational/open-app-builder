@@ -45,7 +45,7 @@ export class TemplateTranslateService {
     const { value } = row;
     if (value && value.constructor === objectContructor && value._translate) {
       if (!value.hasOwnProperty(this.app_language)) {
-        console.warn("[Translation missing]", row);
+        console.warn("[Translation missing]", `[${this.app_language}] ${row.value.eng}`, row);
       }
       return { ...row, value: value[this.app_language] };
     }
