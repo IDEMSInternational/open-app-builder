@@ -103,12 +103,13 @@ export class DefaultParser implements AbstractParser {
           .map((actionString) => parsePLHActionString(actionString))
           .filter((action) => action != null);
       }
-      // assign default translation
+      // assign default translation and track as metadata
       if (isTranslateField) {
         row[field] = {
           _translate: true,
           eng: row[field],
         };
+        row["_translatedFields"] = { ...row["_translatedFields"], [field]: true };
         delete row[`${field}::eng`];
       }
     });
