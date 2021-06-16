@@ -11,6 +11,7 @@ import {
   AfterContentInit,
   ViewEncapsulation,
   HostBinding,
+  ComponentRef,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
@@ -43,15 +44,15 @@ export class TmplCompHostDirective {
   template: `
     <div
       class="plh-tmpl-comp"
-      [attr.data-hidden]="row.hidden"
+      [attr.data-hidden]="_row.hidden"
       [attr.data-debug]="parent.debugMode"
-      [ngClass]="{ disabled: row.disabled }"
-      [attr.data-rowname]="row.name"
+      [ngClass]="{ disabled: _row.disabled }"
+      [attr.data-rowname]="_row.name"
     >
       <!-- Template Debugger -->
       <plh-template-debugger
         *ngIf="parent.debugMode"
-        [row]="row"
+        [row]="_row"
         [parent]="parent"
       ></plh-template-debugger>
       <!-- Injected template component -->
@@ -73,17 +74,26 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
    * Specific data used in component rendering
    * when updated from parent changes will automatically propogate to child
    */
-  @Input() row: FlowTypes.TemplateRow;
+  // @Input()
+  _row: FlowTypes.TemplateRow;
+  @Input() set row(row: FlowTypes.TemplateRow) {
+    this._row = row;
+    if (this.componentRef) {
+      this.componentRef.instance.row = row;
+    }
+  }
 
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
 
   @HostBinding("attr.data-hidden") get getAttrHidden() {
-    return this.row && this.row.hidden;
+    return this._row && this._row.hidden;
   }
   @HostBinding("attr.data-debug-hidden") get getAttrDat() {
     return this.parent && this.parent.debugMode;
   }
+
+  private componentRef: ComponentRef<TemplateContainerComponent | ITemplateRowProps>;
 
   styles: { [name: string]: any } = {};
 
@@ -95,7 +105,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   ) {}
 
   ngOnInit() {
-    this.renderRow(this.row);
+    this.renderRow(this._row);
   }
 
   ngAfterContentInit() {
@@ -115,7 +125,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
         } else {
           // not all components have mapping, for now just log warning
           if (displayComponent === undefined) {
-            console.warn(`[tmpl.component] - skipped [${row.type}:${row.name}]`, row);
+            // console.warn(`[tmpl.component] - skipped [${row.type}:${row.name}]`, row);
           }
         }
     }
@@ -129,17 +139,18 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
    */
   private setStyleList() {
     const styles = {};
-    if (this.row.style_list) {
-      for (let i = 0; i < this.row.style_list.length; i++) {
-        let splited = this.row.style_list[i].split(":");
+    const row = this._row;
+    if (row.style_list) {
+      for (let i = 0; i < row.style_list.length; i++) {
+        let splited = row.style_list[i].split(":");
         styles[splited[0]] = splited[1];
         this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
       }
     }
     if (
-      this.row.parameter_list &&
-      this.row.parameter_list["style"] === "navigation" &&
-      this.row.type === "display_group"
+      row.parameter_list &&
+      row.parameter_list["style"] === "navigation" &&
+      row.type === "display_group"
     ) {
       this.elRef.nativeElement.style.setProperty("display", "flex");
       this.elRef.nativeElement.style.setProperty("height", "100%");
@@ -171,7 +182,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
         }
       }
     }
-    if (this.row.type === "button") {
+    if (row.type === "button") {
       this.elRef.nativeElement.style.setProperty("align-self", "normal");
     }
   }
@@ -189,6 +200,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     componentRef.instance.parent = this.parent;
     componentRef.instance.name = row.name;
     componentRef.instance.templatename = row.value;
+    this.componentRef = componentRef;
   }
 
   /** Create and render a common display component */
@@ -201,5 +213,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     // assign input variables
     componentRef.instance.parent = this.parent;
     componentRef.instance.row = row;
+    this.componentRef = componentRef;
   }
 }
