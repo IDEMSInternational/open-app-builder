@@ -48,4 +48,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     };
     return this.parent.handleActions([action], this._row);
   }
+
+  trackByRow = (index: number, row: FlowTypes.TemplateRow) => this.parent.trackByRow(index, row);
 }

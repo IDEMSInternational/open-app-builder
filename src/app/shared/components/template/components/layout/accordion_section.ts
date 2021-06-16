@@ -41,7 +41,7 @@ import { TemplateBaseComponent } from "../base";
       <h2 (click)="toggleOpen()">{{ title }}</h2>
       <plh-template-component
         style="z-index: 2"
-        *ngFor="let childRow of _row.rows"
+        *ngFor="let childRow of _row.rows; trackBy: trackByRow"
         [row]="childRow"
         [parent]="parent"
       >
