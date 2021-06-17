@@ -9,144 +9,40 @@ namespace FlowTypes {
 }
 
 const data = {
-  overrides: {
-    text_1: {
-      name: "text_1",
-      value: "Do not override the action list",
-    },
-    text_2: {
-      name: "text_2",
-      value: "Do not override the action list",
-    },
-  },
   originalRows: [
     {
-      name: "field_1",
-      value: "debug_actions_middle_1",
-      type: "set_variable",
-      _nested_name: "field_1",
-    },
-    {
-      name: "value_1",
-      value: "Value 1",
-      type: "set_variable",
-      _nested_name: "value_1",
-    },
-    {
-      type: "text",
-      name: "text_1",
-      value: "Set the field debug_actions_middle_1 through a local variable",
-      _nested_name: "text_1",
-    },
-    {
       type: "template",
-      name: "debug_actions_bottom_1",
-      value: "debug_actions_bottom",
-      action_list: [
-        {
-          trigger: "completed",
-          action_id: "set_field",
-          args: ["@local.field_1", "@local.value_1"],
-          _raw: "completed | set_field: @local.field_1 : @local.value_1",
-          _cleaned: "completed | set_field: @local.field_1 : @local.value_1",
-        },
-        {
-          trigger: "completed",
-          action_id: "emit",
-          args: ["completed"],
-          _raw: "completed | emit: completed",
-          _cleaned: "completed | emit: completed",
-        },
-      ],
+      name: "subtemplate_1",
       rows: [],
-      _nested_name: "debug_actions_bottom_1",
-      _dynamicFields: {
-        action_list: {
-          "0": {
-            args: {
-              "0": [
-                {
-                  fullExpression: "@local.field_1",
-                  matchedExpression: "@local.field_1",
-                  type: "local",
-                  fieldName: "field_1",
-                },
-              ],
-              "1": [
-                {
-                  fullExpression: "@local.value_1",
-                  matchedExpression: "@local.value_1",
-                  type: "local",
-                  fieldName: "value_1",
-                },
-              ],
-            },
-            _raw: [
-              {
-                fullExpression: "completed | set_field: @local.field_1 : @local.value_1",
-                matchedExpression: "@local.field_1",
-                type: "local",
-                fieldName: "field_1",
-              },
-              {
-                fullExpression: "completed | set_field: @local.field_1 : @local.value_1",
-                matchedExpression: "@local.value_1",
-                type: "local",
-                fieldName: "value_1",
-              },
-            ],
-            _cleaned: [
-              {
-                fullExpression: "completed | set_field: @local.field_1 : @local.value_1",
-                matchedExpression: "@local.field_1",
-                type: "local",
-                fieldName: "field_1",
-              },
-              {
-                fullExpression: "completed | set_field: @local.field_1 : @local.value_1",
-                matchedExpression: "@local.value_1",
-                type: "local",
-                fieldName: "value_1",
-              },
-            ],
-          },
-        },
-      },
-      _dynamicDependencies: {
-        "@local.field_1": ["action_list.0.args.0", "action_list.0._raw", "action_list.0._cleaned"],
-        "@local.value_1": ["action_list.0.args.1", "action_list.0._raw", "action_list.0._cleaned"],
-      },
-    },
-    {
-      type: "text",
-      name: "text_2",
-      value: "Set the field debug_actions_middle_2 directly",
-      _nested_name: "text_2",
-    },
-    {
-      type: "template",
-      name: "debug_actions_bottom_2",
-      value: "debug_actions_bottom",
-      action_list: [
-        {
-          trigger: "completed",
-          action_id: "set_field",
-          args: ["debug_actions_middle_2", "Value 2"],
-          _raw: "completed | set_field: debug_actions_middle_2 : Value 2",
-          _cleaned: "completed | set_field: debug_actions_middle_2 : Value 2",
-        },
-        {
-          trigger: "completed",
-          action_id: "emit",
-          args: ["completed"],
-          _raw: "completed | emit: completed",
-          _cleaned: "completed | emit: completed",
-        },
-      ],
-      rows: [],
-      _nested_name: "debug_actions_bottom_2",
+      _nested_name: "subtemplate_1",
     },
   ],
+  overrides: {
+    text: {
+      name: "text",
+      value: "New text",
+      _processed: true,
+    },
+    subtemplate_1: {
+      name: "subtemplate_1",
+      value: "debug_text_and_blank_child_1",
+      rows: [
+        {
+          name: "subtemplate_1",
+        },
+      ],
+      _processed: true,
+    },
+    "subtemplate_1.subtemplate_1": {
+      name: "subtemplate_1",
+      rows: [
+        {
+          name: "text_1",
+          value: "example_text",
+        },
+      ],
+    },
+  },
 };
 
 export class TestClass {
@@ -156,14 +52,25 @@ export class TestClass {
    * template-row.service methods
    ***************************************************************************/
 
-  public processParentOverrides(originalRows: FlowTypes.TemplateRow[]) {
+  public processParentOverrides(
+    originalRows: FlowTypes.TemplateRow[]
+    // isNested = false
+  ) {
     if (Object.keys(this.parentRowOverrides).length > 0) {
       const processedRows = originalRows.map((r) => {
         const processed = this.processRowOverride(r);
         // Note, whilst the main template merge function performs a recursive merge
         // we also want to process any nested overrides
-        if (processed.rows) {
-          processed.rows = this.processParentOverrides(processed.rows);
+        if (processed.rows && processed.rows.length > 0) {
+          const mapped = processed.rows.map((r) => {
+            r.name = `${processed.name}.${r.name}`;
+            return r;
+          });
+          const processedNested = this.processParentOverrides(mapped);
+          processed.rows = processedNested.map((r) => {
+            r.name = r.name.replace(`${processed.name}.`, "");
+            return r;
+          });
         }
         return processed;
       });
