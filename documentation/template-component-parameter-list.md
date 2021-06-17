@@ -757,6 +757,34 @@
       value_2: true 
       description: Submit with divice info
 
+# AdvancedDashedBoxComponent - TmplAdvancedDashedBoxComponent
+   ## Type 
+   type: advanced_dashed_box 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: empty string - (default) 
+      description: No icon 
+      value_2: strings 
+      description: Path to image
+   ### Parameter 2
+      Parameter Name: icon_position
+      #### Values and descriptions
+      description: Position of icon
+      value_1: top-left - (default) 
+      value_2: top-right 
+      value_3: bottom-left
+      value_4: bottom-right
+   ### Parameter 3
+      Parameter Name: style
+      #### Values and descriptions
+      description: Name of class
+      value_1: default - (default) 
+      description: Primary text and border color
+      value_2: alert 
+      description: Text color white and secodary border color
+
 
 ## Padding and Margins control:
 - no_margin_t - remove top margin;
