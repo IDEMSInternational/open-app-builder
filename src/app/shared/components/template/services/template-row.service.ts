@@ -83,6 +83,9 @@ export class TemplateRowService {
    */
   private extractOverrideFields(row: FlowTypes.TemplateRow) {
     const { _nested_name, _dynamicFields, _dynamicDependencies, type, ...overrideFields } = row;
+    if (overrideFields.rows) {
+      overrideFields.rows = overrideFields.rows.map((r) => this.extractOverrideFields(r));
+    }
     return overrideFields as FlowTypes.TemplateRow;
   }
 
