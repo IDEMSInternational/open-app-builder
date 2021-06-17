@@ -46,8 +46,11 @@ export class TemplateNavService {
     // TODO - merge with hacks folder on merge
     if (!popup_child && !popup_parent && container.template) {
       // TODO - this could also be handled by having a default nav_resume action that emits force_rerender
-      await container.forceRerender(false);
-      // trigger any actions defined for the nav_resume trigger
+      // force rerender on top-most template only
+      if (!parent) {
+        await container.forceRerender(false);
+      }
+      // trigger any actions defined for the nav_resume trigger on all templates
       await container.templateActionService.handleActions([
         { action_id: "emit", args: ["nav_resume"], trigger: "nav_resume" },
       ]);
