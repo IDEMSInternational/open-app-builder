@@ -8,6 +8,12 @@ let log = SHOW_DEBUG_LOGS ? console.log : () => null;
 let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
+type IRowOverridesHash = {
+  [row_name: string]: Partial<FlowTypes.TemplateRow> & { _processed?: boolean };
+};
+type ITemplateOverridesHash = {
+  [template_nested_name: string]: IRowOverridesHash;
+};
 /**
  * This service handles template row initialisation (with parent override merging)
  * and dynamic row processing.
@@ -17,9 +23,6 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  */
 export class TemplateRowService {
   /** List of overrides set by parent templates for access during parent processing */
-  private parentRowOverrides: {
-    [row_nested_name: string]: Partial<FlowTypes.TemplateRow> & { _processed?: boolean };
-  };
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: Map<string, FlowTypes.TemplateRow> = new Map();
   public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
@@ -34,11 +37,11 @@ export class TemplateRowService {
    * process dynamic variables and filter conditions
    */
   public async processInitialTemplateRows() {
-    log_group(this.container.name);
-    this.parentRowOverrides = this.getParentOverridesHashmap(this.container.row?.rows);
-    const rowsWithOverrides = this.processParentOverrides(this.container.template?.rows);
-    const rowWithAdditionalMissing = this.processMissingParentOverrides(rowsWithOverrides);
-    await this.processRows(rowWithAdditionalMissing);
+    const { name, template, row } = this.container;
+    log_group("[Rows Init]", name, row?.value || "");
+    const overrides = this.getParentOverridesHashmap(row?.rows, name);
+    const rowsWithOverrides = this.processParentOverrides(template?.rows, overrides, name);
+    await this.processRows(rowsWithOverrides);
     log_groupEnd();
   }
 
@@ -51,10 +54,26 @@ export class TemplateRowService {
    * store as this.parentRowOverrides property on class to more easily track which overrides have and haven't been used
    * @param inheritedRows list of rows passed from parent to current template
    */
-  private getParentOverridesHashmap(inheritedRows: FlowTypes.TemplateRow[] = []) {
-    const overridesHashmap = {};
+  private getParentOverridesHashmap(
+    inheritedRows: FlowTypes.TemplateRow[] = [],
+    templateNestedName: string
+  ) {
+    let overridesHashmap: ITemplateOverridesHash = { [templateNestedName]: {} };
     for (const row of inheritedRows) {
-      overridesHashmap[row.name] = this.extractOverrideFields(row);
+      // if an override has child rows it will be nested properties
+      // these will be processed on a second pass so store namespaced
+      const override = this.extractOverrideFields(row);
+      if (override.rows) {
+        const childNestedName = `${templateNestedName}.${row.name}`;
+        // only process the first level of child properties. The rest can be merged to handle on
+        // child template init
+        if (childNestedName.split(".").length < 2) {
+          const nestedHashmap = this.getParentOverridesHashmap(override.rows, childNestedName);
+          overridesHashmap = { ...overridesHashmap, ...nestedHashmap };
+          delete override.rows;
+        }
+      }
+      overridesHashmap[templateNestedName][row.name] = override;
     }
     return overridesHashmap;
   }
@@ -64,9 +83,6 @@ export class TemplateRowService {
    */
   private extractOverrideFields(row: FlowTypes.TemplateRow) {
     const { _nested_name, _dynamicFields, _dynamicDependencies, type, ...overrideFields } = row;
-    if (overrideFields.rows) {
-      overrideFields.rows = overrideFields.rows.map((r) => this.extractOverrideFields(r));
-    }
     return overrideFields as FlowTypes.TemplateRow;
   }
 
@@ -74,44 +90,56 @@ export class TemplateRowService {
    * Lookup list of template row overrides from parent and use to merge into existing rows,
    * logging any mismatches and adding as additional set_variable
    */
-  private processParentOverrides(originalRows: FlowTypes.TemplateRow[], logName = "") {
-    if (Object.keys(this.parentRowOverrides).length > 0) {
-      const processedRows = originalRows.map((r) => {
-        const processed = this.processRowOverride(r);
-        // Note, whilst the main template merge function performs a recursive merge
-        // we also want to process any nested overrides
-        if (processed.rows && processed.rows.length > 0) {
-          processed.rows = this.processParentOverrides(processed.rows, processed.name);
-        }
-        return processed;
-      });
-      const overrides = { ...this.parentRowOverrides };
-      log("[Overrides Processed]", logName, { originalRows, overrides, processedRows });
-      return processedRows;
-    } else {
-      log("[Overrides Skipped]", logName, { originalRows });
-      return originalRows;
-    }
-  }
+  private processParentOverrides(
+    originalRows: FlowTypes.TemplateRow[] = [],
+    overridesHashmap: ITemplateOverridesHash,
+    templateNestedName: string
+  ) {
+    let processedRows: FlowTypes.TemplateRow[];
+    const overrides = overridesHashmap[templateNestedName] || {};
 
-  /** Lookup any overrides for a row or a row's nested child rows and apply */
-  private processRowOverride(originalRow: FlowTypes.TemplateRow) {
-    const override = this.parentRowOverrides[originalRow.name];
-    if (override) {
-      this.parentRowOverrides[originalRow.name]._processed = true;
-      return mergeTemplateRows(override as any, originalRow);
+    if (Object.keys(overrides).length > 0) {
+      log("[Overrides Start]", templateNestedName, { originalRows, overrides });
     }
-    return originalRow;
+    // process main overrides
+    processedRows = originalRows.map((r) => {
+      const override = overrides[r.name];
+      let processed = r;
+      if (override) {
+        overrides[r.name]._processed = true;
+        processed = mergeTemplateRows(override as any, r);
+      }
+      // process and child row or nested template/properties
+      if (processed.rows) {
+        if (processed.type === "nested_properties" || processed.type === "template") {
+          templateNestedName = `${templateNestedName}.${processed.name}`;
+        }
+        processed.rows = this.processParentOverrides(
+          processed.rows,
+          overridesHashmap,
+          templateNestedName
+        );
+      }
+      return processed;
+    });
+    const rowWithAdditionalMissing = this.processMissingParentOverrides(processedRows, overrides);
+
+    if (Object.keys(overrides).length > 0) {
+      log("[Overrides End]", templateNestedName, { originalRows, overrides, processedRows });
+    }
+
+    return rowWithAdditionalMissing;
   }
 
   /**
    * Check for any unprocessed overrides (passed by parent, but do not exist on child)
    * assume intended as a set_variable statement pushed to the start of the template
    */
-  private processMissingParentOverrides(processedRows: FlowTypes.TemplateRow[]) {
-    const unprocessedOverrides = Object.values(this.parentRowOverrides).filter(
-      (o) => !o._processed
-    );
+  private processMissingParentOverrides(
+    processedRows: FlowTypes.TemplateRow[],
+    overrides: IRowOverridesHash = {}
+  ) {
+    const unprocessedOverrides = Object.values(overrides).filter((o) => !o._processed);
     if (unprocessedOverrides.length > 0) {
       const names = unprocessedOverrides.map((o) => o.name).join(",");
       console.warn(`[W] Overrides could not find [${names}]; \n Assuming set_variables`, {
@@ -201,7 +229,7 @@ export class TemplateRowService {
 
     // process any nested rows in same way
     if (row.rows) {
-      log_group(row.name);
+      log_group("[Rows Process]", row._nested_name);
       const childRows = await this.processRows(row.rows, isNestedTemplate, row.name);
       row.rows = childRows;
       log_groupEnd();
