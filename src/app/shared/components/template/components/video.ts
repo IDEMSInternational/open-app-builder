@@ -50,5 +50,4 @@ export class TmplVideoComponent extends TemplateBaseComponent implements OnInit 
     }
   }
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string };
 }

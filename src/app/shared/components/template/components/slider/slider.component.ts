@@ -19,7 +19,6 @@ export class TmplSliderComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit {
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string };
   @ViewChild("slider") slider: NouisliderComponent;
   help: string | null;
   no_value_text: string = "no_value";

@@ -22,7 +22,6 @@ interface AnswerBody {
 export class ComboBoxModalComponent implements OnInit {
   @Input() row: FlowTypes.TemplateRow;
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   @Input() selectedValue: string;
   @Input() customAnswerSelected: boolean;
   @Input() style: string;
