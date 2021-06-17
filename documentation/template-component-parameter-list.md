@@ -724,6 +724,40 @@
       value_2: right
       value_3: center 
 
+# FormComponent 
+   ## Type 
+   type: form 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: button_text
+      #### Values and descriptions
+      value_1: Submit - (default) 
+      description: default text for form button
+      value_2: string 
+      description: Any string name for form button
+   ### Parameter 2
+      Parameter Name: button_pop_up
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No pop_up action
+      value_2: template name 
+      description: pop_up with value_2 inside after click form button
+   ### Parameter 3
+      Parameter Name: button_go_to
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No go_to action
+      value_2: template name 
+      description: go_to value_2 after click form button
+   ### Parameter 4
+      Parameter Name: get_device_info
+      #### Values and descriptions
+      value_1: false - (default) 
+      description: Submit without divice info
+      value_2: true 
+      description: Submit with divice info
+
+
 ## Padding and Margins control:
 - no_margin_t - remove top margin;
 - no_margin_lr - remove left and right margin;
