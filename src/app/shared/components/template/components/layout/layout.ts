@@ -19,7 +19,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
  *
  * @example template (rendering child rows with reference to this parent container)
  * ```
- *  <plh-template-component *ngFor="let childRow of _row.rows" [row]="childRow" [parent]="parent"></plh-template-component>
+ *  <plh-template-component *ngFor="let childRow of _row.rows; trackBy: trackByRow" [row]="childRow" [parent]="parent"></plh-template-component>
  * ```
  */
 export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
@@ -74,6 +74,9 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   public interceptTemplateContainerAction(action: FlowTypes.TemplateRowAction) {
     return true;
   }
+
+  public trackByRow = (index: number, row: FlowTypes.TemplateRow) =>
+    this.parent.trackByRow(index, row);
 
   private addParentActionsFilter() {
     this.parent.templateActionService.handleActionsInterceptor = async (actions) => {

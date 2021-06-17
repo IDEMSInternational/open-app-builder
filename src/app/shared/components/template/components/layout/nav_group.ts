@@ -85,7 +85,7 @@ import { TemplateLayoutComponent } from "./layout";
 })
 export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
-  sectionIndex = 0;
+  sectionIndex: number;
   /** Temp row to pass emit completed/uncompleted actions to parent */
   containerRow = hackAddRowWithDefaultActions();
 
@@ -97,7 +97,12 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     if (Array.isArray(row?.value)) {
       this.templateNames = row.value;
       row._debug_name = this.templateNames[this.sectionIndex];
-      this.sectionIndex = this.getActiveSectionIdx(row.parameter_list.progress_field);
+      // only set the active section the first time value received
+      // (handle via goToSection method internally for other cases)
+      if (!this.sectionIndex) {
+        const defaultIndex = this.getActiveSectionIdx(row.parameter_list.progress_field);
+        this.sectionIndex = defaultIndex;
+      }
     }
     return row;
   }
@@ -133,14 +138,14 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     return result > 0 ? result : 0;
   }
 
-  goToSection(index: number) {
+  async goToSection(index: number) {
     this.sectionIndex = index;
     this.scrollToTop();
     this._row._debug_name = this.templateNames[index];
-    this.updateSectionProgress();
+    await this.updateSectionProgress();
   }
 
-  updateSectionProgress() {
+  async updateSectionProgress() {
     //update the field provided in progress_variable to be equal to the max of it's current value
     //and the percentage of this.sectionIndex from this.templateNames.length. the value should
     //be an integer between 0 and 100 inclusive.
@@ -154,7 +159,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       if (previousPercentDone && previousPercentDone != NaN) {
         percentDone = Math.max(currentPercentDone, previousPercentDone);
       }
-      this.parent.handleActions(
+      await this.parent.handleActions(
         [
           {
             action_id: "set_field",
