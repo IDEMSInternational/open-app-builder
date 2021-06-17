@@ -63,13 +63,6 @@
       },
       {
         "type": "step",
-        "title": "test",
-        "message_text": "<p>this is a test</p>",
-        "element": "#main-content > plh-template-testing > ion-content > plh-template-container > div > plh-template-component:nth-child(2) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(2) > div > plh-round-button > div > ion-tab-button",
-        "route": "template/home_screen"
-      },
-      {
-        "type": "step",
         "title": "@global.weekly_workshops",
         "message_text": "<p>This big button takes you to your @global.weekly_workshops </p>\n\n<p> Once per week a new workshop will be ready for you - every time focusing on a different a parenting skill. Press it to start your first workshop!</p>",
         "template_component_name": "tile_weekly_workshops",
