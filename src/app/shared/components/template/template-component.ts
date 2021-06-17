@@ -17,6 +17,12 @@ import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
 import { TemplateContainerComponent } from "./template-container.component";
 
+/** Logging Toggle - rewrite default functions to enable or disable inline logs */
+let SHOW_DEBUG_LOGS = false;
+let log = SHOW_DEBUG_LOGS ? console.log : () => null;
+let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
+let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
+
 /*********************************************************************
  *  Directive used as part of loading dynamic flow component elemnt
  *********************************************************************/
@@ -79,7 +85,10 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
     if (this.componentRef) {
+      log("[Component Update]", row.name, row);
       this.componentRef.instance.row = row;
+    } else {
+      log("[Component Create]", row.name, row);
     }
   }
 
