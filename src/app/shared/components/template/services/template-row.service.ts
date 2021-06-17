@@ -153,12 +153,12 @@ export class TemplateRowService {
     }
     this.container.template.rows = processedRows;
     // filtering can have impure results for deeply nested objects (e.g. changing original rows),
-    // so force new object first
+    // so force new object first (e.g. debug_combo_box_in_dg)
+    // NOTE - avoid any additional cdr detectChanges after (new object would always force full re-render)
     const renderedRows = this.filterConditionalTemplateRows(
       JSON.parse(JSON.stringify(processedRows))
     );
     this.renderedRows = renderedRows;
-    this.container.cdr.detectChanges();
     log("[Rows Processed]", logName, { rows, processedRows, renderedRows });
     return processedRows;
   }
