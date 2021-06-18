@@ -221,3 +221,55 @@
     }
   }
 }
+
+.button {
+  background: var(--tile-button-background);
+  overflow: hidden;
+  justify-content: space-between;
+  height: var(--tile-button-height);
+  &.default_style {
+    min-height: unset;
+    padding: var(--regular-padding);
+  }
+  .left-icon {
+    flex: 1;
+    height: 80%;
+    img {
+      height: 100%;
+    }
+  }
+  &.tile-wrapper {
+    margin-bottom: 0;
+    .text {
+      flex: 6;
+      div {
+        font-size: var(--font-size-text-medium);
+        line-height: var(--line-height-text-small);
+        font-weight: var(--font-weight-standard);
+        color: var(--ion-color-primary);
+      }
+    }
+    .button-wrapper {
+      width: 50px;
+      ion-button::part(native) {
+        padding-inline-end: 0;
+      }
+      .btn-tile {
+        border: none;
+        width: 100%;
+        margin-left: 10px;
+        img {
+          width: 100%;
+          margin-right: 10px;
+        }
+        ion-icon {
+          font-size: xxx-large;
+          color: var(--ion-color-primary);
+          .icon-inner {
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
+}
