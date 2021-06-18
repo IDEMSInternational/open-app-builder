@@ -81,9 +81,9 @@
    ### Parameter 3 
       Parameter Name: text_align 
       #### Values and descriptions 
-      value_1: center - (default) 
+      value_1: left - (default) 
       description: Text position inside
-      value_2: left 
+      value_2: center 
       description: Text position inside 
       value_3: right 
       description: Text position inside
