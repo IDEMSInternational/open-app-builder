@@ -454,6 +454,8 @@
       description: tile parent point
       value_7: image_text 
       description: tile image text
+      value_8: button 
+      description: tile button
 
 # DashedBox - TmplDashedBoxComponent 
    ## Type 
