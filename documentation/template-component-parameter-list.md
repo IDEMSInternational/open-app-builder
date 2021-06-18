@@ -452,6 +452,8 @@
       description: tile workshop
       value_6: parent_point 
       description: tile parent point
+      value_7: image_text 
+      description: tile image text
 
 # DashedBox - TmplDashedBoxComponent 
    ## Type 
