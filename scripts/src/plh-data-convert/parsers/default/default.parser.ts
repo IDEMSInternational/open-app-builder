@@ -62,9 +62,10 @@ export class DefaultParser implements AbstractParser {
       if (field.startsWith("__")) {
         delete row[field];
       }
-      // replace any self references, i.e "hello @row.id" => "hello someValue"
+      // replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
+      // TODO - should find better long term option that can update based on dynamic value and translations
       if (typeof row[field] === "string") {
-        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_]+)/gim)];
+        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_:]+)/gim)];
         for (const replacement of rowReplacements) {
           const [expression, replaceField] = replacement;
           const replaceValue = row[replaceField];
