@@ -1,6 +1,7 @@
 import * as fs from "fs-extra";
 import * as xlsx from "xlsx";
 import * as path from "path";
+import boxen from "boxen";
 import chalk from "chalk";
 import * as Parsers from "./parsers";
 import {
@@ -90,10 +91,14 @@ function applyDataParsers(
     fs.ensureDirSync(`${INTERMEDIATES_FOLDER}/${key}`);
     // parse all flows through the parser
     parsedData[key] = contentFlows.map((flow) => {
-      const parsed = parser.run(flow);
-      const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
-      fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
-      return parsed;
+      try {
+        const parsed = parser.run(flow);
+        const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
+        fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
+        return parsed;
+      } catch (error) {
+        throwTemplateParseError(error, flow);
+      }
     });
   });
   return parsedData;
@@ -196,4 +201,26 @@ function listFilesForConversion(folderPath: string) {
         .map((p) => p.toLowerCase())
         .includes("old")
   );
+}
+
+/**
+ * Debug info to log and exit when a template parsing error occurs
+ */
+function throwTemplateParseError(error: Error, flow: FlowTypes.FlowTypeWithData) {
+  console.log(
+    boxen(
+      `
+        ${chalk.red("Template Parse Error")}
+        
+        ${chalk.yellow(flow.flow_name)}
+        
+        ${flow._xlsxPath}
+
+        This is likely an authoring error, see full stacktrace below
+        `,
+      { padding: 1, borderColor: "red" }
+    )
+  );
+  console.error(error);
+  process.exit(1);
 }
