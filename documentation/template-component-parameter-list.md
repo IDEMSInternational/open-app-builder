@@ -796,6 +796,18 @@
       value_2: alert 
       description: Text color white and secodary border color
 
+# HelpIconComponent - TmplHelpIconComponent
+   ## Type 
+   type: help_icon 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: help-circle-outline - (default) 
+      description: No icon 
+      value_2: strings 
+      description: Path to icon
+
 
 ## Padding and Margins control:
 - no_margin_t - remove top margin;
