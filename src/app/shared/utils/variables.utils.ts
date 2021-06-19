@@ -68,8 +68,9 @@ export function extractDynamicEvaluators(
   if (typeof fullExpression === "string") {
     const regex1 = /!?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
     allMatches = _matchAll(regex1, fullExpression).map((m) => {
-      const [matchedExpression, type, fieldName] = m as any[];
+      let [matchedExpression, type, fieldName] = m as any[];
       let evaluator: FlowTypes.TemplateRowDynamicEvaluator;
+      if (matchedExpression.endsWith(".")) matchedExpression = matchedExpression.slice(0, -1);
       evaluator = { fullExpression, matchedExpression, type, fieldName };
       return evaluator;
     });
@@ -97,30 +98,9 @@ export function extractDynamicEvaluators(
     }
   }
   if (allMatches.length > 0) {
-    allMatches = processMatchModifiers(allMatches);
     return allMatches;
   }
   return null;
-}
-
-/**
- * Process match text for minor housekeeping/tidying before returning
- * expression and any modifiers for parsing.
- */
-function processMatchModifiers(matches: FlowTypes.TemplateRowDynamicEvaluator[]) {
-  return matches.map((match, i) => {
-    const isLastMatch = i === matches.length - 1;
-    if (isLastMatch) {
-      // if expression ends with a period this cannot be distinguished easily from
-      // nested properties (e.g. @local.some_value.@some_nested vs @local.some_value.)
-      // extract and save as future modifier
-      if (match.matchedExpression.endsWith(".")) {
-        match.matchedExpression = match.matchedExpression.slice(0, -1);
-        match.modifiers = { end_period: true };
-      }
-    }
-    return match;
-  });
 }
 
 /**
