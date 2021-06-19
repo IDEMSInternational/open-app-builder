@@ -70668,6 +70668,55 @@
   },
   {
     "flow_type": "template",
+    "flow_name": "feature_help_icon",
+    "status": "released",
+    "rows": [
+      {
+        "type": "help_icon",
+        "exclude_from_translation": true,
+        "name": "help_icon",
+        "_nested_name": "help_icon"
+      },
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "btn_example_1",
+            "value": "help icon with action ",
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "style": "navigation high",
+              "button_align": "right"
+            },
+            "_nested_name": "display_group.btn_example_1"
+          },
+          {
+            "type": "help_icon",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "weekly_workshops"
+                ],
+                "_raw": "click | go_to:weekly_workshops",
+                "_cleaned": "click | go_to:weekly_workshops"
+              }
+            ],
+            "exclude_from_translation": true,
+            "name": "help_icon",
+            "_nested_name": "display_group.help_icon"
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
     "flow_name": "feature_text",
     "status": "released",
     "rows": [
