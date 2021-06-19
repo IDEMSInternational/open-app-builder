@@ -69,10 +69,8 @@ export function extractDynamicEvaluators(
     const regex1 = /!?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
     allMatches = _matchAll(regex1, fullExpression).map((m) => {
       let [matchedExpression, type, fieldName] = m as any[];
-      let evaluator: FlowTypes.TemplateRowDynamicEvaluator;
       if (matchedExpression.endsWith(".")) matchedExpression = matchedExpression.slice(0, -1);
-      evaluator = { fullExpression, matchedExpression, type, fieldName };
-      return evaluator;
+      return { fullExpression, matchedExpression, type, fieldName };
     });
     // provide a separate regex for @eval statements as they don't use dot notation
     // i.e @calc(some JS expression) as opposed to @calc.(some expression)
@@ -81,9 +79,7 @@ export function extractDynamicEvaluators(
       ...allMatches,
       ..._matchAll(regex2, fullExpression).map((m) => {
         const [matchedExpression, type, fieldName] = m as any[];
-        let evaluator: FlowTypes.TemplateRowDynamicEvaluator;
-        evaluator = { fullExpression, matchedExpression, type, fieldName };
-        return evaluator;
+        return { fullExpression, matchedExpression, type, fieldName };
       }),
     ];
     // expect the number of match statements to match the total number of @ characters (replace all non-@)
