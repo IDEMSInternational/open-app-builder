@@ -397,7 +397,8 @@ export namespace FlowTypes {
     | "icon_banner"
     | "dashed_box"
     | "lottie_animation"
-    | "parent_point_box";
+    | "parent_point_box"
+    | "help_icon";
 
   export interface TemplateRow {
     type: TemplateRowType;
@@ -435,6 +436,10 @@ export namespace FlowTypes {
     // i.e. @data.campaign_list | evaluate_conditions | first (or similar)
     type: "local" | "field" | "fields" | "global" | "data" | "campaign" | "calc";
     fieldName: string;
+    /** additional text modifiers to be applied after parsing */
+    modifiers?: {
+      end_period?: true;
+    };
     // computed properties
     parsedValue?: any;
     parsedExpression?: string;

@@ -244,6 +244,7 @@ export class TemplateVariablesService {
     if (dynamicNested) {
       return this.evaluatePLHString(dynamicNested, context);
     }
+    evaluated = this.applyDynamicTextModifiers(evaluated, evaluators);
     return evaluated;
   }
 
@@ -334,6 +335,33 @@ export class TemplateVariablesService {
         parsedValue = "";
     }
     return { parsedValue, parseSuccess };
+  }
+
+  /**
+   * Text may have additonal modifiers included with evalutors to be applied
+   * after parsing (e.g. adding full-stop at end of text)
+   */
+  private applyDynamicTextModifiers(
+    text: string,
+    evaluators: FlowTypes.TemplateRowDynamicEvaluator[]
+  ) {
+    for (const evaluator of evaluators) {
+      if (evaluator.modifiers) {
+        const modifiers = Object.keys(
+          evaluator.modifiers
+        ) as (keyof FlowTypes.TemplateRowDynamicEvaluator["modifiers"])[];
+        modifiers.forEach((modifier) => {
+          switch (modifier) {
+            case "end_period":
+              if (!text.endsWith(".")) text = `${text}.`;
+              break;
+            default:
+              break;
+          }
+        });
+      }
+    }
+    return text;
   }
 }
 
