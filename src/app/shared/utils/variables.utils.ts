@@ -69,6 +69,7 @@ export function extractDynamicEvaluators(
     const regex1 = /!?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
     allMatches = _matchAll(regex1, fullExpression).map((m) => {
       let [matchedExpression, type, fieldName] = m as any[];
+      // if expression ends in period expect this is intended as a text full-stop (not nested property)
       if (matchedExpression.endsWith(".")) matchedExpression = matchedExpression.slice(0, -1);
       return { fullExpression, matchedExpression, type, fieldName };
     });
