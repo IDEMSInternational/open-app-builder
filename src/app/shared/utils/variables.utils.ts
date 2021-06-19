@@ -69,7 +69,9 @@ export function extractDynamicEvaluators(
     const regex1 = /!?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
     allMatches = _matchAll(regex1, fullExpression).map((m) => {
       const [matchedExpression, type, fieldName] = m as any[];
-      return { fullExpression, matchedExpression, type, fieldName };
+      let evaluator: FlowTypes.TemplateRowDynamicEvaluator;
+      evaluator = { fullExpression, matchedExpression, type, fieldName };
+      return evaluator;
     });
     // provide a separate regex for @eval statements as they don't use dot notation
     // i.e @calc(some JS expression) as opposed to @calc.(some expression)
@@ -78,7 +80,9 @@ export function extractDynamicEvaluators(
       ...allMatches,
       ..._matchAll(regex2, fullExpression).map((m) => {
         const [matchedExpression, type, fieldName] = m as any[];
-        return { fullExpression, matchedExpression, type, fieldName };
+        let evaluator: FlowTypes.TemplateRowDynamicEvaluator;
+        evaluator = { fullExpression, matchedExpression, type, fieldName };
+        return evaluator;
       }),
     ];
     // expect the number of match statements to match the total number of @ characters (replace all non-@)
@@ -93,9 +97,30 @@ export function extractDynamicEvaluators(
     }
   }
   if (allMatches.length > 0) {
+    allMatches = processMatchModifiers(allMatches);
     return allMatches;
   }
   return null;
+}
+
+/**
+ * Process match text for minor housekeeping/tidying before returning
+ * expression and any modifiers for parsing.
+ */
+function processMatchModifiers(matches: FlowTypes.TemplateRowDynamicEvaluator[]) {
+  return matches.map((match, i) => {
+    const isLastMatch = i === matches.length - 1;
+    if (isLastMatch) {
+      // if expression ends with a period this cannot be distinguished easily from
+      // nested properties (e.g. @local.some_value.@some_nested vs @local.some_value.)
+      // extract and save as future modifier
+      if (match.matchedExpression.endsWith(".")) {
+        match.matchedExpression = match.matchedExpression.slice(0, -1);
+        match.modifiers = { end_period: true };
+      }
+    }
+    return match;
+  });
 }
 
 /**
