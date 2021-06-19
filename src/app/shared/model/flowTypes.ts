@@ -397,8 +397,7 @@ export namespace FlowTypes {
     | "icon_banner"
     | "dashed_box"
     | "lottie_animation"
-    | "parent_point_box"
-    | "help_icon";
+    | "parent_point_box";
 
   export interface TemplateRow {
     type: TemplateRowType;
