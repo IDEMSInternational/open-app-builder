@@ -420,23 +420,30 @@
       #### Values and descriptions
       value_1: null - (default) 
       description: No text for first line 
-      value_2: strings 
+      value_2: string
       description: Any string as a text for first line
    ### Parameter 2
       Parameter Name: second_line_text
       #### Values and descriptions
       value_1: null - (default) 
       description: No text for second line 
-      value_2: strings 
+      value_2: string
       description: Any string as a text for second line
    ### Parameter 3
       Parameter Name: icon_src
       #### Values and descriptions
       value_1: null - (default) 
       description: No image 
-      value_2: strings 
+      value_2: string
       description: image file source link
    ### Parameter 4
+      Parameter Name: left_icon_src
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No image 
+      value_2: string
+      description: image file source link
+   ### Parameter 5
       Parameter Name: style
       #### Values and descriptions
       description: Name of css class 
