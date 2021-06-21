@@ -35,7 +35,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
         background: rgba(0, 0, 0, 0.6);
       }
       .popup-content {
-        width: 90%;
+        width: 85%;
         max-height: calc(100vh - 140px);
         background: white;
         border-radius: 30px;
