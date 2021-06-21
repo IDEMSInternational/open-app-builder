@@ -49,6 +49,8 @@ export class TemplateService {
     }
     // convert boolean strings if required
     val = booleanStringToBoolean(val);
+    // convert undefined string to undefined type
+    if (val === "undefined") val = undefined;
     // console.log("[Field Retrieved]", key, val);
     return val;
   }
