@@ -59145,31 +59145,30 @@
     "rows": [
       {
         "type": "title",
-        "name": "title",
-        "value": "Two paragraphs of text",
+        "name": "title_1",
+        "value": "Spacing between two paragraphs of text",
         "exclude_from_translation": true,
-        "_nested_name": "title"
+        "_nested_name": "title_1"
       },
       {
         "type": "text",
-        "name": "text",
-        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+        "name": "text_1_a",
+        "value": "This is the first line in the first paragraph\nThis is the second line in the first paragraph.\n\nThis is the first line in the second paragraph\nThis is the second line in the second paragraph.\n\nThis is the first line in the third paragraph",
         "exclude_from_translation": true,
-        "parameter_list": {
-          "style": "standart primary",
-          "text_align": "center"
-        },
-        "_nested_name": "text"
+        "_nested_name": "text_1_a"
+      },
+      {
+        "type": "title",
+        "name": "title_2",
+        "value": "Spacing in and around bulleted lists",
+        "exclude_from_translation": true,
+        "_nested_name": "title_2"
       },
       {
         "type": "text",
         "name": "text_2",
-        "value": "This is the first line in first 'paragraph'.\nThis is the second line in first 'paragraph'.\n",
+        "value": "This text is followed by a bulleted list. \n- First item\n- Second item\nSecond line of second item\n- Third item\n\nText below the bulleted list.",
         "exclude_from_translation": true,
-        "parameter_list": {
-          "style": "small",
-          "text_align": "left"
-        },
         "_nested_name": "text_2"
       }
     ],
@@ -60155,6 +60154,60 @@
         "name": "text",
         "value": "This is the example text template.",
         "exclude_from_translation": true,
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
+        "_nested_name": "text"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "value": "This is the example text template.",
         "_nested_name": "text"
       }
     ],
@@ -67490,7 +67543,7 @@
       {
         "type": "text",
         "name": "list1",
-        "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n- List item 1\n- List item 2\n- List item 3",
+        "value": "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n* List item 1\n* List item 2\n* List item 3",
         "exclude_from_translation": true,
         "_nested_name": "list1"
       }
@@ -70662,6 +70715,81 @@
             "parameter_list.answer_list"
           ]
         }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_help_icon",
+    "status": "released",
+    "rows": [
+      {
+        "type": "help_icon",
+        "exclude_from_translation": true,
+        "name": "help_icon",
+        "_nested_name": "help_icon"
+      },
+      {
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "button",
+            "name": "btn_example_1",
+            "value": "help icon with action ",
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "style": "navigation high",
+              "button_align": "right"
+            },
+            "_nested_name": "display_group.btn_example_1"
+          },
+          {
+            "type": "help_icon",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to",
+                "args": [
+                  "weekly_workshops"
+                ],
+                "_raw": "click | go_to:weekly_workshops",
+                "_cleaned": "click | go_to:weekly_workshops"
+              }
+            ],
+            "exclude_from_translation": true,
+            "name": "help_icon",
+            "_nested_name": "display_group.help_icon"
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "feature_pop_ups",
+    "status": "released",
+    "rows": [
+      {
+        "type": "button",
+        "name": "button_pop_up_1",
+        "value": "Button 1",
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "feature_tile"
+            ],
+            "_raw": "click | pop_up:feature_tile",
+            "_cleaned": "click | pop_up:feature_tile"
+          }
+        ],
+        "exclude_from_translation": true,
+        "_nested_name": "button_pop_up_1"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/feature_templates/feature_template_components.xlsx"

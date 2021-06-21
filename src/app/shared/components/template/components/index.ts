@@ -19,6 +19,7 @@ import { TemplateDebuggerComponent } from "./debugger";
 import { TmplButtonComponent } from "./button/button.component";
 import { TmplDisplayGroupComponent } from "./layout/display_group";
 import { TmplImageComponent } from "./image";
+import { TmplHelpIconComponent } from "./help-icon";
 import { TmplTextComponent } from "./text";
 import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { TmplTimerComponent } from "./timer/timer.component";
@@ -59,6 +60,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAudioComponent,
   TmplButtonComponent,
   TmplImageComponent,
+  TmplHelpIconComponent,
   TmplVideoComponent,
   AnimatedSectionComponent,
   AccordionSectionComponent,
@@ -106,6 +108,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   image: TmplImageComponent,
+  help_icon: TmplHelpIconComponent,
   icon: TmplIconComponent,
   parent_point_counter: TmplParentPointCounterComponent,
   // set variable and nested properties are handled by parent
