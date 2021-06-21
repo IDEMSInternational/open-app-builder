@@ -222,11 +222,11 @@
   }
 }
 
-.button {
+.button_tile {
   background: var(--tile-button-background);
   overflow: hidden;
   justify-content: space-between;
-  height: var(--tile-button-height);
+  height: var(--tile-button-style-height);
   &.default_style {
     min-height: unset;
     padding: var(--regular-padding);
