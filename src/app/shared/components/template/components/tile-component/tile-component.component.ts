@@ -43,6 +43,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
     this.style = `
       ${getStringParamFromTemplateRow(this._row, "style", "quick_start")} 
       ${this.isParentPoint() ? "parent_point" : ""}
+      ${this.isTwoColumns() ? "two_columns" : ""}
       `;
     this.is_play_icon = this.isPlayIcon(this.icon_src);
   }
@@ -51,6 +52,15 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
     const displayGroupElement = this.elRef.nativeElement.closest(".display-group");
     if (displayGroupElement) {
       return displayGroupElement.classList.contains("parent_point");
+    } else {
+      return false;
+    }
+  }
+
+  private isTwoColumns(): boolean {
+    const displayGroupElement = this.elRef.nativeElement.closest(".display-group");
+    if (displayGroupElement) {
+      return displayGroupElement.classList.contains("two_columns");
     } else {
       return false;
     }

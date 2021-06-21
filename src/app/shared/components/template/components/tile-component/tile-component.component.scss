@@ -129,3 +129,60 @@
 .parent_centre_4 {
   background: var(--parent-centre-primary-gradient);
 }
+
+.image_text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 auto;
+  padding: var(--small-padding);
+  width: 10rem;
+  margin-bottom: var(--regular-margin);
+  max-width: var(--tile-image-text-width);
+  background: var(--points-item-bg);
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-standard);
+  position: relative;
+  flex-direction: column;
+  .button-wrapper {
+    order: 1;
+    height: 50%;
+    width: 120%;
+    margin-bottom: calc(10px * var(--scale-factor-tile));
+    .btn-tile {
+      pointer-events: none;
+      border: 0;
+      --border-radius: unset;
+      border-radius: unset;
+      width: 100%;
+      height: 100%;
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+  .text {
+    order: 2;
+    div {
+      font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));
+      line-height: calc(var(--line-height-text-tiny) * var(--scale-factor-tile));
+      color: var(--ion-color-primary);
+      text-align: center;
+    }
+  }
+}
+
+.two_columns {
+  &.image_text {
+    min-height: 10rem;
+    @media (max-width: 375px) {
+      width: 9rem;
+      min-height: 9rem;
+    }
+    @media (max-width: 325px) {
+      width: 8rem;
+      min-height: 8rem;
+    }
+  }
+}
