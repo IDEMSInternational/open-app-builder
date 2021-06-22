@@ -244,6 +244,10 @@ $horizontal: 90deg;
   --round-button-font-size: 12px;
   --round-button-home-screen-font-size: 11px;
 
+  // Square button //
+  --square-button-navigation-min-height: 50px;
+  --square-button-min-width: 60px;
+
   //BANNER
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,

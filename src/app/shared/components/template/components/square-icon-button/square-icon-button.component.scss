@@ -1,0 +1,35 @@
+@import "../../../../../../theme/mixins.scss";
+
+.wrapper {
+  width: var(--square-button-min-width);
+  overflow: hidden;
+  border-radius: var(--ion-border-radius-standard);
+  display: flex;
+  justify-content: center;
+  margin-right: var(--tiny-margin);
+}
+ion-button {
+  margin: 0 auto;
+  padding-right: var(--tiny-padding);
+  ion-icon {
+    font-size: xxx-large;
+  }
+}
+
+ion-button::part(native) {
+  background: transparent;
+}
+
+ion-button:disabled,
+ion-button[disabled] {
+  filter: brightness(55%);
+}
+
+.navigation {
+  min-height: var(--square-button-navigation-min-height);
+  background: var(--ion-btn-secondary);
+}
+
+.information {
+  background: var(--ion-btn-primary);
+}
