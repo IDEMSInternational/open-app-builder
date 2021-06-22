@@ -29,6 +29,7 @@ import { TmplToggleBarComponent } from "./toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
+import { SquareIconButtonComponent } from "./square-icon-button/square-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
@@ -72,6 +73,7 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
+  SquareIconButtonComponent,
   TmplRadioGroupComponent,
   TmplIconComponent,
   TmplTileComponent,
@@ -133,6 +135,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
+  square_button: SquareIconButtonComponent,
   radio_group: TmplRadioGroupComponent,
   tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,

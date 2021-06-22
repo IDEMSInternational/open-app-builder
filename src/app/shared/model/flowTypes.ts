@@ -385,6 +385,7 @@ export namespace FlowTypes {
     | "slider"
     | "number_selector"
     | "round_button"
+    | "square_button"
     | "nav_group"
     | "nav_section"
     | "simple_checkbox"
