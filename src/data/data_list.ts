@@ -10888,8 +10888,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "Welcome to ParentApp. Click here to start your journey!",
           "time": {
             "hour": "19",
             "minute": "30"
@@ -10916,8 +10916,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
           "time": {
             "hour": "19",
             "minute": "30"
@@ -10944,8 +10944,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
           "time": {
             "hour": "19",
             "minute": "30"
@@ -10972,8 +10972,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
           "time": {
             "hour": "19",
             "minute": "30"
@@ -11000,8 +11000,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "ParentApp misses you! There is a lot to explore. We are still here to support you.",
           "time": {
             "hour": "19",
             "minute": "30"
@@ -11028,8 +11028,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
           "time": {
             "hour": "19",
             "minute": "30"
@@ -11056,8 +11056,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
           "time": {
             "hour": "19",
             "minute": "30"
@@ -11084,8 +11084,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
           "time": {
             "hour": "19",
             "minute": "30"
@@ -11112,8 +11112,8 @@
           "m_inactive_campaign"
         ],
         "notification_schedule": {
-          "title": "undefined",
-          "text": "undefined",
+          "title": "New message from PLH",
+          "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
           "time": {
             "hour": "19",
             "minute": "30"
