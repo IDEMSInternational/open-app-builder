@@ -97,6 +97,34 @@
       value_3: right 
       description: Button position   
 
+# SquareButton - SquareIconButtonComponent 
+   ## Type 
+   type: square_button 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: disabled
+      #### Values and descriptions
+      value_1: false (default) 
+      description: Available click event
+      value_2: true 
+      description: Disabled click event
+   ### Parameter 2
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: empty string (default) 
+      description: no icon
+      value_2: string 
+      description: path for icon
+   
+   ### Parameter 2 
+      Parameter Name: style 
+      #### Values and descriptions
+      description: String. Class name for button. 
+      value_1: information - (default) 
+      description: Primary background color. (--ion-btn-primary)
+      value_1: navigation 
+      description: Secondary background color. (--ion-btn-secondary)
+
 # Number Selector - TmplNumberComponent 
    ## Type 
    type: number_selector 
