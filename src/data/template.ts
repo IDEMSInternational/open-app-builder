@@ -20938,52 +20938,13 @@
         "value": "nav_buttons",
         "action_list": [
           {
-            "type": "parent_point_counter",
-            "name": "relax",
-            "value": "@data.habit.relax.title",
-            "hidden": "@fields.weekly_parent_point_relax == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_relax"
-            },
-            "_nested_name": "display_group.relax",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@data.habit.relax.title",
-                  "matchedExpression": "@data.habit.relax.title",
-                  "type": "data",
-                  "fieldName": "habit"
-                }
-              ],
-              "hidden": [
-                {
-                  "fullExpression": "@fields.weekly_parent_point_relax == 0",
-                  "matchedExpression": "@fields.weekly_parent_point_relax",
-                  "type": "fields",
-                  "fieldName": "weekly_parent_point_relax"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_relax",
-                    "matchedExpression": "@fields.weekly_parent_point_relax",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_relax"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@data.habit.relax.title": [
-                "value"
-              ],
-              "@fields.weekly_parent_point_relax": [
-                "hidden",
-                "parameter_list.count"
-              ]
-            }
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
           },
           {
             "trigger": "uncompleted",
@@ -21197,52 +21158,13 @@
         "value": "nav_buttons",
         "action_list": [
           {
-            "type": "parent_point_counter",
-            "name": "praise_teen",
-            "value": "@data.habit.praise_teen.title",
-            "hidden": "@fields.weekly_parent_point_praise_teen == 0",
-            "parameter_list": {
-              "icon_src": "plh_images/icons/star.svg",
-              "count": "@fields.weekly_parent_point_praise_teen"
-            },
-            "_nested_name": "display_group.praise_teen",
-            "_dynamicFields": {
-              "value": [
-                {
-                  "fullExpression": "@data.habit.praise_teen.title",
-                  "matchedExpression": "@data.habit.praise_teen.title",
-                  "type": "data",
-                  "fieldName": "habit"
-                }
-              ],
-              "hidden": [
-                {
-                  "fullExpression": "@fields.weekly_parent_point_praise_teen == 0",
-                  "matchedExpression": "@fields.weekly_parent_point_praise_teen",
-                  "type": "fields",
-                  "fieldName": "weekly_parent_point_praise_teen"
-                }
-              ],
-              "parameter_list": {
-                "count": [
-                  {
-                    "fullExpression": "@fields.weekly_parent_point_praise_teen",
-                    "matchedExpression": "@fields.weekly_parent_point_praise_teen",
-                    "type": "fields",
-                    "fieldName": "weekly_parent_point_praise_teen"
-                  }
-                ]
-              }
-            },
-            "_dynamicDependencies": {
-              "@data.habit.praise_teen.title": [
-                "value"
-              ],
-              "@fields.weekly_parent_point_praise_teen": [
-                "hidden",
-                "parameter_list.count"
-              ]
-            }
+            "trigger": "completed",
+            "action_id": "emit",
+            "args": [
+              "completed"
+            ],
+            "_raw": "completed | emit:completed",
+            "_cleaned": "completed | emit:completed"
           },
           {
             "trigger": "uncompleted",
@@ -22956,33 +22878,7 @@
                 "value"
               ]
             }
-          }
-        ],
-        "_nested_name": "content",
-        "_dynamicFields": {
-          "hidden": [
-            {
-              "fullExpression": "@local.hide_content",
-              "matchedExpression": "@local.hide_content",
-              "type": "local",
-              "fieldName": "hide_content"
-            }
-          ]
-        },
-        "_dynamicDependencies": {
-          "@local.hide_content": [
-            "hidden"
-          ]
-        }
-      },
-      {
-        "type": "animated_section",
-        "name": "outro",
-        "value": "fade_in_out",
-        "hidden": "@local.hide_outro",
-        "condition": "@local.include_outro",
-        "exclude_from_translation": true,
-        "rows": [
+          },
           {
             "type": "text",
             "name": "outro_text",
