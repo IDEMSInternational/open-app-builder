@@ -45,13 +45,18 @@ async function promptNewVersion(currentVersion: string) {
     {
       message: `Specify a version number (current: ${currentVersion})`,
       name: "version",
-      validate: (v) => (v > currentVersion ? true : "Version number must be increased"),
+      validate: (v) => {
+        const nextCode = Number(_generateVersionCode(v));
+        const currentCode = Number(_generateVersionCode(currentVersion));
+        return nextCode > currentCode ? true : "Version number must be increased";
+      },
     },
   ]);
   return version;
 }
 
-// 2.4.1 => 2004001
+// 2.4.1 =>   2004001
+// 2.40.1 =>  2040001
 function _generateVersionCode(versionName: string) {
   const v = versionName.split(".");
   return `${Number(v[0]) * 1000000 + Number(v[1]) * 1000 + Number(v[2])}`;
