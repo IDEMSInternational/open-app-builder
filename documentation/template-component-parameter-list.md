@@ -576,10 +576,10 @@
       description: Primary color (--ion-color-primary)
       value_2: medium
       description: Medium forn size (--font-size-text-medium)
-      value_3: small - (default)
-      description: Small font size (--font-size-text-small)
-      value_4: large 
-      description: Large font size (--font-size-text-large)
+      value_3: large - (default)
+      description: large font size (--font-size-text-small)
+      value_4: small 
+      description: small font size (--font-size-text-large)
       value_5: center
       description: Postition center
       value_6: left

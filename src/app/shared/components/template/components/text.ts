@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy } from "@angular/core";
   selector: "plh-tmpl-text",
   template: `<p
     *ngIf="_row.value"
-    class="small standard normal margin-t-large"
+    class="large standard normal margin-t-large"
     [class]="style"
     [innerHTML]="type === 'numbered' ? (_row.value | number) : (_row.value | markdown)"
     [style.textAlign]="textAlign"
@@ -19,16 +19,16 @@ import { ChangeDetectionStrategy } from "@angular/core";
         margin-bottom: -0.75em;
       }
       .small {
-        font-size: 16px;
+        font-size: var(--font-size-text-small);
       }
       .tiny {
-        font-size: 14px;
+        font-size: var(--font-size-text-tiny);
       }
       .medium {
-        font-size: 18px;
+        font-size: var(--font-size-text-medium);
       }
       .large {
-        font-size: 20px;
+        font-size: var(--font-size-text-large);
       }
       .right {
         text-align: right;
