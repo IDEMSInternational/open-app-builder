@@ -201,6 +201,11 @@
         "type": "declare_global_constant",
         "name": "try_this_hp_challenge",
         "value": "Do you want to try one of the following things?   "
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "challenge_not_here",
+        "value": "My challenge is not listed here."
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/in_week_message_globals.xlsx"
@@ -2117,13 +2122,23 @@
       },
       {
         "type": "declare_field_default",
+        "name": "user_name",
+        "value": "awesome parent"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "user_name_default",
+        "value": "awesome parent"
+      },
+      {
+        "type": "declare_field_default",
         "name": "group_name",
         "value": "friends"
       },
       {
-        "type": "declare_field_default",
-        "name": "user_name",
-        "value": "awesome parent"
+        "type": "declare_global_constant",
+        "name": "group_name_default",
+        "value": "friends"
       },
       {
         "type": "declare_field_default",
@@ -2162,6 +2177,26 @@
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx"
+  },
+  {
+    "flow_type": "global",
+    "flow_name": "debug_full_stop_golbals",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "global_full_stop",
+        "value": "Global with a full stop",
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "field_full_stop",
+        "value": "Field with a full stop",
+        "exclude_from_translation": true
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_full_stop_after_var.xlsx"
   },
   {
     "flow_type": "global",
