@@ -31,6 +31,11 @@
           [class]="customAnswerClass"
           (keyup.enter)="enterCustomAnswer()"
           [placeholder]="placeholder"
+          [ngClass]="{
+            active: style === 'active' && form.get('customAnswer').value === selectedValue,
+            passive: style === 'passive' && form.get('customAnswer').value === selectedValue
+          }"
+          [class.checked-radio]="form.get('customAnswer').value === selectedValue"
         >
         </ion-input>
       </div>
