@@ -110,6 +110,13 @@
 
 p {
   width: 100%;
+  white-space: pre-line;
+  display: table;
+  ul,
+  ol {
+    display: table;
+    margin: 0;
+  }
 }
 
 .title-wrapper {
