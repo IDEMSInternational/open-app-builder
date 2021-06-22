@@ -41,7 +41,6 @@ import { ChangeDetectionStrategy } from "@angular/core";
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   textAlign: string | null;
