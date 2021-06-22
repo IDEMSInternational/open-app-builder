@@ -68631,7 +68631,8 @@
           "label": "some text",
           "position": "right",
           "true_text": "some text for true value",
-          "false_text": "text for false"
+          "false_text": "text for false",
+          "show_tick_and_cross": "true"
         },
         "_nested_name": "toggle_1",
         "_dynamicFields": {

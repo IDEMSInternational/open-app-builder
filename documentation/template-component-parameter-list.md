@@ -762,6 +762,13 @@
       value_1: left - (default) 
       value_2: right
       value_3: center 
+   ### Parameter 4
+      Parameter Name: show_tick_and_cross
+      #### Values and descriptions
+      value_1: false - (default) 
+      description: no icons
+      value_2: true
+      description: icon tick and cross presented
 
 # FormComponent 
    ## Type 
