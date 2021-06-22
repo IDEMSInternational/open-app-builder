@@ -52,7 +52,6 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.defineBreakLines();
     this.getParams();
   }
 
@@ -60,22 +59,5 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null);
     this.type = this._row.parameter_list?.style?.includes("numbered") ? "numbered" : "marked";
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
-  }
-
-  defineBreakLines() {
-    if (this._row.value.includes("-")) {
-      const result = this._row.value
-        .split("\n-")
-        .map((stringRow) => {
-          if (!stringRow.includes("\n\n")) {
-            stringRow = stringRow.replaceAll("\n", "<br/>");
-          }
-          return stringRow;
-        })
-        .join("\n*");
-      this._row.value = result;
-    } else {
-      this._row.value = this._row.value.replaceAll("\n", "<br/>");
-    }
   }
 }
