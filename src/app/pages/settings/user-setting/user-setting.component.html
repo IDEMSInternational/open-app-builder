@@ -1,11 +1,20 @@
 <ion-item>
-  <ion-label>{{userSetting.name}}</ion-label>
-  <ion-toggle *ngIf="!userSetting.options && userSetting.type === 'boolean'" [checked]="userSetting.value === 'true'"
-    (ionChange)="toggleUserSetting(userSetting)"></ion-toggle>
-  <ion-select *ngIf="userSetting.options" [value]="userSetting.value" okText="Select" cancelText="Cancel"
-    (ionChange)="selectSettingOption(userSetting, $event.detail.value)">
+  <ion-label>{{ userSetting.name }}</ion-label>
+  <ion-toggle
+    *ngIf="!userSetting.options && userSetting.type === 'boolean'"
+    [checked]="userSetting.value === 'true'"
+    (ionChange)="toggleUserSetting(userSetting)"
+  ></ion-toggle>
+  <ion-select
+    #select
+    *ngIf="userSetting.options"
+    [value]="userSetting.value"
+    okText="Select"
+    cancelText="Cancel"
+    (ionChange)="selectSettingOption(userSetting, select.value)"
+  >
     <ion-select-option *ngFor="let option of userSetting.options" [value]="option.value">
-      {{option.name}}
+      {{ option.name }}
     </ion-select-option>
   </ion-select>
 </ion-item>
