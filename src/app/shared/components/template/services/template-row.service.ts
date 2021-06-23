@@ -226,7 +226,7 @@ export class TemplateRowService {
     const { name, value, hidden, type, _dynamicFields } = row;
 
     // Make type assigned to hidden consistent
-    if (hidden === "true") row.hidden = true;
+    row.hidden = ["true", true, "TRUE"].includes(hidden) ? true : false;
 
     if (type === "template") isNestedTemplate = true;
 
