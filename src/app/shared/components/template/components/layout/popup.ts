@@ -4,7 +4,7 @@ import { FlowTypes, ITemplateContainerProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 
 @Component({
-  template: `<div class="popup-backdrop" (click)="dismissOnBackdrop($event.target)">
+  template: `<div class="popup-backdrop" (click)="dismissOnBackdrop($event)">
     <div class="popup-content">
       <ion-button (click)="dismiss()" class="close-button" fill="clear">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -83,7 +83,8 @@ export class TemplatePopupComponent implements ITemplateContainerProps, OnInit {
 
   ngOnInit() {}
 
-  dismissOnBackdrop(el: HTMLElement) {
+  dismissOnBackdrop(e: MouseEvent) {
+    const el = e.target as HTMLElement;
     if (el.classList.contains("popup-backdrop")) {
       this.dismiss();
     }
