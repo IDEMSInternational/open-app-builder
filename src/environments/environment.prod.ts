@@ -1,9 +1,9 @@
 import { firebaseConfig } from "./firebaseConfig";
-import { version } from "../../package.json";
+import packageJson from "../../package.json";
 import { ENV_NAME } from "./env_name";
 
 export const environment = {
-  version,
+  version: packageJson.version,
   production: true,
   rapidPro: {
     receiveUrl:
