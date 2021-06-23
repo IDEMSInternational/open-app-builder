@@ -50,6 +50,6 @@ export class TmplToggleBarComponent
     this.false_text = getStringParamFromTemplateRow(this._row, "false_text", "");
     this.true_text = getStringParamFromTemplateRow(this._row, "true_text", "");
     this.position = getStringParamFromTemplateRow(this._row, "position", "left");
-    this.withIcons = getBooleanParamFromTemplateRow(this._row, "show_tick_and_cross", false);
+    this.withIcons = getBooleanParamFromTemplateRow(this._row, "show_tick_and_cross", true);
   }
 }
