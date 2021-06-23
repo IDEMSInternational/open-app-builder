@@ -90,6 +90,7 @@ export class AppComponent {
         ).toString()
       );
       if (Capacitor.isNative) {
+        this.removeConsoleLogs();
         SplashScreen.hide();
         this.notifications.init();
       }
@@ -119,6 +120,15 @@ export class AppComponent {
         inactiveNotification
       );
       console.log("scheduled notifications", notifications);
+    }
+  }
+
+  /** Rewrite default log functions for improved performance when running on device */
+  private removeConsoleLogs() {
+    if (window && window.console) {
+      window.console.log = function (...args: any) {};
+      window.console.warn = function (...args: any) {};
+      window.console.error = function (...args: any) {};
     }
   }
 }
