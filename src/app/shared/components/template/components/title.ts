@@ -8,7 +8,12 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
   selector: "plh-tmpl-title",
   template: `
     <div class="title-wrapper" [class]="style">
-      <h1 *ngIf="innerHTML" [class]="'tiny standard' + ' ' + style" [innerHTML]="innerHTML"></h1>
+      <h1
+        *ngIf="innerHTML"
+        [style.textAlign]="textAlign"
+        [class]="'tiny standard' + ' ' + style"
+        [innerHTML]="innerHTML"
+      ></h1>
       <ion-icon
         *ngIf="help"
         name="help-circle-outline"
@@ -41,5 +46,6 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
     this.tooltipPosition = getStringParamFromTemplateRow(this._row, "tooltip_position", "right");
     this.style = getStringParamFromTemplateRow(this._row, "style", "tiny standard");
+    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "left");
   }
 }
