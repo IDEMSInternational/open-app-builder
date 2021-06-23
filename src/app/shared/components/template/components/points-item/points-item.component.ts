@@ -19,6 +19,7 @@ import { getImageAssetPath } from "../../utils/template-utils";
   templateUrl: "./points-item.component.html",
   styleUrls: ["./points-item.component.scss"],
 })
+// TODO - why does the class name not match the file name??
 export class TmplParentPointBoxComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit {
@@ -104,7 +105,7 @@ export class TmplParentPointBoxComponent
       this.item.nativeElement.classList.add("complete");
     }
     this.wasClicked = true;
-    await this.setValue(`${this.value}`);
+    await this.setValue(this.value);
     await this.triggerActions("click");
     await this.triggerActions("changed");
   }

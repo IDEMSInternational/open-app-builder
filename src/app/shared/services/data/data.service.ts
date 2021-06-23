@@ -68,6 +68,7 @@ export class PLHDataService {
   public dataLists: { [key in FlowTypes.FlowType]?: { [row_id: string]: any } };
   constructor() {
     this.allFlowsByName = this.listAllFlowsByName();
+    // TODO - this could possibly be preprocessed in parser
     this.dataLists = this.processDataLists();
   }
 

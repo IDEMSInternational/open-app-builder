@@ -44,9 +44,16 @@ export class TemplateNavService {
     }
     // HACK - handle rerender on return
     // TODO - merge with hacks folder on merge
-    // TODO - CC 2021-06-01 this will require refactor after nav-actions.service merge
     if (!popup_child && !popup_parent && container.template) {
-      await container.forceRerender(true);
+      // TODO - this could also be handled by having a default nav_resume action that emits force_rerender
+      // force rerender on top-most template only
+      if (!parent) {
+        await container.forceRerender(false);
+      }
+      // trigger any actions defined for the nav_resume trigger on all templates
+      await container.templateActionService.handleActions([
+        { action_id: "emit", args: ["nav_resume"], trigger: "nav_resume" },
+      ]);
     }
   }
   /*****************************************************************************************************
@@ -100,7 +107,7 @@ export class TemplateNavService {
       if (triggerRow) {
         log("trigger row", triggerRow);
         const triggeredActions = triggerRow.action_list.filter((a) => a.trigger === nav_child_emit);
-        await container.handleActions(triggeredActions, triggerRow);
+        await container.templateActionService.handleActions(triggeredActions, triggerRow);
         // back history will have changed (2 duplicate pages), so nav back to restore correct back button
         history.back();
       } else {
@@ -204,7 +211,7 @@ export class TemplateNavService {
         // process any completed/uncompleted actions as specified
         const emittedActions = actionsByTrigger[nav_child_emit];
         if (emittedActions) {
-          await container.handleActions(emittedActions, triggerRow);
+          await container.templateActionService.handleActions(emittedActions, triggerRow);
           await this.modalCtrl.dismiss(nav_child_emit);
         }
         // if the popup does not have any actions triggered by the nav_emit, leave open if there

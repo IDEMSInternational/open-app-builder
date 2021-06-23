@@ -359,6 +359,7 @@ export namespace FlowTypes {
     | "accordion_section"
     | "advanced_dashed_box"
     | "parent_point_counter"
+    | "help_icon"
     | "workshops_accordion"
     | "form"
     | "toggle_bar"
@@ -384,6 +385,7 @@ export namespace FlowTypes {
     | "slider"
     | "number_selector"
     | "round_button"
+    | "square_button"
     | "nav_group"
     | "nav_section"
     | "simple_checkbox"
@@ -422,6 +424,7 @@ export namespace FlowTypes {
     _dynamicFields?: IDynamicField;
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
+    _translatedFields?: { [field: string]: any };
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
@@ -432,8 +435,11 @@ export namespace FlowTypes {
     matchedExpression: string;
     // TODO CC 2021-05-15 - 'campaign' should be handled as a special case of data in the parser
     // i.e. @data.campaign_list | evaluate_conditions | first (or similar)
-    type: "local" | "field" | "fields" | "global" | "data" | "campaign";
+    type: "local" | "field" | "fields" | "global" | "data" | "campaign" | "calc";
     fieldName: string;
+    // computed properties
+    parsedValue?: any;
+    parsedExpression?: string;
   }
 
   export type TemplateRowActionTrigger =
@@ -469,8 +475,12 @@ export namespace FlowTypes {
       | "start_tour"
       | "trigger_actions";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
-    /** field populated for tracking the component that triggered the action */
-    _triggeredBy?: TemplateRow;
+    _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
+    /**
+     * most actions are specified from a parent template (begin_template statement) and are executed
+     * within parent context. However actions specified by own update_action_list statement require self handling
+     */
+    _self_triggered?: boolean;
     // debug info
     _raw?: string;
     _cleaned?: string;

@@ -31,15 +31,19 @@ export class DefaultParser implements AbstractParser {
     const processedRows = [];
     while (this.queue.length > 0) {
       const row = this.queue[0];
-      const processed = this.processRow(row, flow);
-      // some rows may be omitted during processing so ignore
-      if (processed) {
-        const postProcessed = this.postProcess(processed);
-        if (postProcessed) {
-          processedRows.push(postProcessed);
+      try {
+        const processed = this.processRow(row, flow);
+        // some rows may be omitted during processing so ignore
+        if (processed) {
+          const postProcessed = this.postProcess(processed);
+          if (postProcessed) {
+            processedRows.push(postProcessed);
+          }
         }
+        this.queue.shift();
+      } catch (error) {
+        throwRowParseError(error, row);
       }
-      this.queue.shift();
     }
     if (this.summary.missingAssets.length > 0) {
       console.log(chalk.red("Missing Assets:"));
@@ -62,14 +66,31 @@ export class DefaultParser implements AbstractParser {
       if (field.startsWith("__")) {
         delete row[field];
       }
-      // replace any self references, i.e "hello @row.id" => "hello someValue"
+      // replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
+      // TODO - should find better long term option that can update based on dynamic value and translations
       if (typeof row[field] === "string") {
-        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_]+)/gim)];
+        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_:]+)/gim)];
         for (const replacement of rowReplacements) {
           const [expression, replaceField] = replacement;
           const replaceValue = row[replaceField];
           row[field] = row[field].replace(expression, replaceValue);
         }
+      }
+      // mark fields for translation, rename so can process regularly (add translation data at end)
+      // Note, cannot assume all :: statements translations as also used in fields, e.g. fields::favourite
+      // TODO - alter fields syntax to avoid potential conflict (e.g. fields::eng)
+      let isTranslateField = false;
+      if (field.endsWith("::eng")) {
+        // copy eng value to base column. Avoid replace if base column already exists with value
+        // (e.g. in case where value, value::eng only applies to some rows in template)
+        // (NOTE - could use the exclude_from_translation column, but may end up changing syntax)
+        isTranslateField = true;
+        const baseTranslation = row[field];
+        const baseField = field.replace("::eng", "");
+        if (row[baseField] === undefined || row[baseField] === "") {
+          row[baseField] = baseTranslation;
+        }
+        field = baseField;
       }
       // handle other data structures
       if (field.endsWith("_asset")) {
@@ -83,10 +104,19 @@ export class DefaultParser implements AbstractParser {
       }
       // parse action list
       if (field.endsWith("action_list")) {
-        console.log("map row action list", row, field);
         row[field] = row[field]
           .map((actionString) => parsePLHActionString(actionString))
           .filter((action) => action != null);
+      }
+      // assign default translation and track as metadata
+      if (isTranslateField) {
+        row["_translatedFields"] = {
+          ...row["_translatedFields"],
+          [field]: {
+            eng: row[field],
+          },
+        };
+        delete row[`${field}::eng`];
       }
     });
     // remove any comments
@@ -155,4 +185,16 @@ export class DefaultParser implements AbstractParser {
     const groupedRows = this.queue.splice(1, queueEndIndex - 1);
     return groupedRows;
   }
+}
+
+/**
+ * Add context information to errors originating from row parser.
+ * This will from the template error logging method
+ * */
+function throwRowParseError(error: Error, row: IRowData) {
+  error.message = `Error Parsing Row \n  ${chalk.yellow(
+    JSON.stringify(row, null, 2)
+  )} \n ${chalk.red(error.message)}`;
+  // add more context to error
+  throw error;
 }

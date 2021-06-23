@@ -1,4 +1,7 @@
 <div [class]="style" class="tile-wrapper default_style" (click)="triggerActions('click')">
+  <div *ngIf="left_icon_src" class="left-icon">
+    <img [src]="left_icon_src | plhAsset" />
+  </div>
   <div class="text">
     <div class="first" *ngIf="first_line_text">{{ first_line_text }}</div>
     <div class="second" *ngIf="second_line_text">{{ second_line_text }}</div>
@@ -6,11 +9,13 @@
   <div class="button-wrapper" *ngIf="icon_src">
     <ion-button class="btn-tile">
       <img
+        *ngIf="isCustomIcon"
         [style.max-width]="is_play_icon ? '' : 'initial'"
         [style.margin-left]="is_play_icon ? '5px' : '0'"
         [src]="icon_src | plhAsset"
         alt=""
       />
+      <ion-icon *ngIf="!isCustomIcon" [name]="icon_src"></ion-icon>
     </ion-button>
   </div>
 </div>

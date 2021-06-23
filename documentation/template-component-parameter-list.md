@@ -1,174 +1,841 @@
 # Template Components
 
-## Audio - TmplAudioComponent
-- type - audio.
-- value - link to file
-- src - string or null. Audio file source link if value is null try to find link in src parameter. 
-- title - string or null. Title. Default: "Title"
-- help - string or null. Help tooltip text.
-- range_bar_disabled - boolean. Disable select audio seconds on range bar. Default: false
-- time_to_rewind - number. Time to rewind in seconds. Default: 15 seconds
+# Audio - TmplAudioComponent 
+   ## Type 
+   type: audio 
+   ## Value
+   value: link to file
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: src
+      #### Values and descriptions
+      value_1: null (default) 
+      value_2: string 
+      description: Audio file source link if value is null try to find link in here
+   ### Parameter 2 
+      Parameter Name: title 
+      #### Values and descriptions 
+      value_1: 'Title' - (default) 
+      description: Defalut value if this parameter is null
+      value_2: string 
+      description: Any string as a title 
+   ### Parameter 3 
+      Parameter Name: help 
+      #### Values and descriptions 
+      value_1: null - (default) 
+      description: No help tooltip if value is null
+      value_2: string 
+      description: Any string for tooltip 
+   ### Parameter 4 
+      Parameter Name: range_bar_disabled 
+      #### Values and descriptions 
+      value_1: false - (default) 
+      description: Allows select audio seconds on range bar
+      value_2: true 
+      description: Disable select audio seconds on range bar
+   ### Parameter 5 
+      Parameter Name: time_to_rewind 
+      #### Values and descriptions
+      value_1: number (15) - (default) 
+      description: Time to rewind in seconds. Default: 15 seconds
+      value_2: number 
+      description: Any number as a time to rewind in seconds
 
-## Button - TmplButtonComponent
-- type - button.
-- value - text - button text
-- disabled - boolean. Default: false.
-- style - string. Class name for button. Default: "primary". Styles: orange, light_orange, light_blue, dark_blue, active, passive, make-me-smile, get-me-going.
-- text_align - string. Text align. Default 'center'.
-- button_align - string. Button position. Default 'center'.
+# Button - TmplButtonComponent 
+   ## Type 
+   type: button 
+   ## Value
+   value: text - button text
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: disabled
+      #### Values and descriptions
+      value_1: false (default) 
+      description: Available click event
+      value_2: true 
+      description: Disabled click event
+   ### Parameter 2 
+      Parameter Name: style 
+      #### Values and descriptions
+      description: String. Class name for button. 
+      value_1: information - (default) 
+      description: Primary background color. (--ion-btn-primary)
+      value_2: full - (default) 
+      description: Full width
+      value_3: standard - (default) 
+      description: Text color white (--ion-color-primary-contrast) 
+      value_4: medium - (default) 
+      description: Medium height (--buttons-medium-height)
+      value_5: short
+      description: Short height (--buttons-short-height)
+      value_6: tall
+      description: Tall height (--buttons-tall-height)
+      value_7: medium_round
+      description: Medium border radius (--ion-border-radius-secondary)
+      value_8: no_shadow
+      description: No box shadow
+      value_9: flexible
+      description: Button width equal to its content width
+      value_10: alternative
+      description: Text color primary  (--ion-color-primary)
+   ### Parameter 3 
+      Parameter Name: text_align 
+      #### Values and descriptions 
+      value_1: left - (default) 
+      description: Text position inside
+      value_2: center 
+      description: Text position inside 
+      value_3: right 
+      description: Text position inside
+   ### Parameter 4 
+      Parameter Name: button_align 
+      #### Values and descriptions 
+      value_1: center - (default) 
+      description: Button position
+      value_2: left 
+      description: Button position   
+      value_3: right 
+      description: Button position   
 
-## Number Selector - TmplNumberComponent
-- type - number_selector.
-- value - number or null. If null - don't display slider picker circle.
-- help - text or null. If null - don't display help icon.
-- min_value - number - minimum value of selector. Default - 0
-- max_value - number - maximum value of selector. Default - 6
-- title - text or null - Number Selector title text.
-- height - short or normal. Control style of number selector. 
-- category_list - list of text values for component. 
-- first_display_term - first display term (category list index, or generated list index)
-- category_size - step for generated list. Defalut - 1
+# SquareButton - SquareIconButtonComponent 
+   ## Type 
+   type: square_button 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: disabled
+      #### Values and descriptions
+      value_1: false (default) 
+      description: Available click event
+      value_2: true 
+      description: Disabled click event
+   ### Parameter 2
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: empty string (default) 
+      description: no icon
+      value_2: string 
+      description: path for icon
+   
+   ### Parameter 2 
+      Parameter Name: style 
+      #### Values and descriptions
+      description: String. Class name for button. 
+      value_1: information - (default) 
+      description: Primary background color. (--ion-btn-primary)
+      value_1: navigation 
+      description: Secondary background color. (--ion-btn-secondary)
 
-If category_list available we take list of values from it.
-If category_list is not available we generate list of values based on min_value, max_value, category_size
+# Number Selector - TmplNumberComponent 
+   ## Type 
+   type: number_selector 
+   ## Value
+   value: number or null. If null - don't display slider picker circle.
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: min_value
+      #### Values and descriptions
+      value_1: 0 - (default) 
+      description: min value of selector
+      value_2: number 
+      description: Any number as a min value of selector
+   ### Parameter 2 
+      Parameter Name: max_value 
+      #### Values and descriptions 
+      value_1: 6 - (default) 
+      description: Max value of selector
+      value_2: number 
+      description: Any number as a max value of selector 
+   ### Parameter 3 
+      Parameter Name: title 
+      #### Values and descriptions 
+      value_1: null - (default) 
+      description: No title for Number Selector
+      value_2: string 
+      description: Any string as a title for Number Selector
+   ### Parameter 4 
+      Parameter Name: height 
+      #### Values and descriptions 
+      value_1: short - (default) 
+      description: Short height
+      value_2: normal 
+      description: Normal height
+   ### Parameter 5 
+      Parameter Name: category_list 
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no list
+      value_2: strings array 
+      description: list of text values for component
+   ### Parameter 6 
+      Parameter Name: first_display_term 
+      description: category list index, or generated list index
+      #### Values and descriptions
+      value_1: 1 - (default) 
+      description: first display term
+      value_2: number 
+      description: category list index
+   ### Parameter 7 
+      Parameter Name: category_size 
+      #### Values and descriptions
+      value_1: 1 - (default) 
+      description: step for generated list
+      value_2: number 
+      description: step for generated list
+      If category_list available we take list of values from it.
+      If category_list is not available we generate list of values based on min_value, max_value, category_size
 
-## Checkbox - TmplSimpleCheckboxComponent
-- type - simple_checkbox.
-- value - boolean value of checkbox. If true - checked
-- position - checkbox position relative to label_text - left | right. Default - left
-- label_text - text label for checkbox.
-- style - string. Style name. Default ''.
+# Checkbox - TmplSimpleCheckboxComponent 
+   ## Type 
+   type: simple_checkbox 
+   ## Value
+   value: boolean value of checkbox. If true - checked
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: align
+      #### Values and descriptions
+      value_1: center - (default) 
+      value_2: left
+      value_3: right
+      description: checkbox position
+   ### Parameter 2 
+      Parameter Name: label_text
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no label for checkbox
+      value_2: string
+      description: label text
+   ### Parameter 3 
+      Parameter Name: style
+      #### Values and descriptions
+      description: string - class name.
+      value_1: '' - (default) 
 
-## Slider - TmplSliderComponent
-- type - slider.
-- value - select value on slider. Default - 0 
-- help - text or null. If null - don't display help icon.
-- min - minimum value on slider. Default - 0
-- max - maximum value on slider. Default - 7
-- title - text or null - Slider title text.
-- step - step for slider. Default - 1
-- min_value_label - select value on slider
-- max_value_label - select value on slider
-- labels_count - labels count for slider. Default - 8
-- no_value - boolean. Default - false. Control is no_value selected.
-- no_value_text - string. Default 'no_value'. If control is no_value selected.
+# Slider - TmplSliderComponent 
+   ## Type 
+   type: slider 
+   ## Value
+   value: select value on slide
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: help
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no help tooltip
+      value_2: string
+      description: any text for help tooltip
+   ### Parameter 2 
+      Parameter Name: min
+      #### Values and descriptions
+      value_1: 0 - (default) 
+      description: minimum value on slider
+      value_2: number
+      description: any number as min value
+   ### Parameter 3 
+      Parameter Name: max
+      #### Values and descriptions
+      value_1: 7 - (default) 
+      description: maximum value on slider
+      value_2: number
+      description: any number as max value
+   ### Parameter 4
+      Parameter Name: title
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no title
+      value_2: string
+      description: any text as a title
+   ### Parameter 5
+      Parameter Name: step
+      #### Values and descriptions
+      value_1: 1 - (default) 
+      description: step for slider
+      value_2: number
+      description: any number as a step for slider
+   ### Parameter 6
+      Parameter Name: min_value_label
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no select value on slider
+      value_2: string
+      description: select value on slider  
+   ### Parameter 7
+      Parameter Name: max_value_label
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no select value on slider
+      value_2: string
+      description: select value on slider 
+   ### Parameter 8
+      Parameter Name: labels_count
+      #### Values and descriptions
+      value_1: 8 - (default) 
+      description: labels count for slider
+      value_2: number
+      description: any number as labels count for slider 
+   ### Parameter 9
+      Parameter Name: no_value
+      #### Values and descriptions
+      value_1: false - (default) 
+      description: Control is no_value selected
+      value_2: true
+      description: Control is value selected
+   ### Parameter 10
+      Parameter Name: no_value_text
+      #### Values and descriptions
+      value_1: 'no_value' - (default) 
+      description: Control is no_value selected
+      value_2: string
+      description: any text for control is no_value selected
 
-## Timer - TmplTimerComponent
-- type - timer.
-- value - timer duration in minutes. Default - 10 minutes
-- title - text or null - Timer title text.
-- help - text or null. If null - don't display help icon.
-- is_editable_on_playing - boolean value, is it possible to change the values of the timer when it is running. Default - false
-- duration_extension - number. Value for increase the time on the timer. Default - 1 minute.
+# Timer - TmplTimerComponent 
+   ## Type 
+   type: timer 
+   ## Value
+   value: number - timer duration in minutes
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: title
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no title
+      value_2: string
+      description: any text as a title
+   ### Parameter 2
+      Parameter Name: help
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no help tooltip
+      value_2: string
+      description: any text for help tooltip
+   ### Parameter 3
+      Parameter Name: is_editable_on_playing
+      #### Values and descriptions
+      value_1: false - (default) 
+      description: Not possible to change the values of the timer when it is running
+      value_2: true
+      description: Possible to change the values of the timer when it is running
+   ### Parameter 4
+      Parameter Name: duration_extension
+      #### Values and descriptions
+      value_1: 1 - (default) 
+      description: Value for increase the time on the timer
+      value_2: number
+      description: any number as value for increase the time on the timer
 
-## Radio Buttons - TmplRadioGroupComponent
-- type - radio_group.
-- value - string or null. Result or selected by default.
-- answer_list - string or null. List of buttons with parameters. Default - undefined. (Supports only svg images).
-- radio_button_type - string or null. Type of radio buttons. Default - null
-- options_per_row - number. Count of radio button in one row. Default - 2
-- style - string. Name of class. Default 'passive'. Styles: 'active', 'passive'.
-- radio_button_type - type of radio button (btn_text | btn_square | btn_icon)
+# Radio Buttons - TmplRadioGroupComponent 
+   ## Type 
+   type: radio_group 
+   ## Value
+   value: string or null. Result or selected by default
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: answer_list
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No buttons presented  
+      value_2: strings array
+      description: List of buttons with parameters
+   ### Parameter 2
+      Parameter Name: radio_button_type
+      #### Values and descriptions
+      value_1: btn_text - (default) 
+      description: text button by default
+      value_2: btn_square
+      description: button with icon and text
+      value_2: btn_image
+      description: button image only
+   ### Parameter 3
+      Parameter Name: options_per_row
+      #### Values and descriptions
+      description: Count of radio button in one row
+      value_1: 2 - (default) 
+      description: by default two buttons in one row
+      value_2: number
+      description: any number for buttons in one row
 
+# ComboBox - TmplComboBoxComponent 
+   ## Type 
+   type: combo_box 
+   ## Value
+   value: string or null. Result or selected by default
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: answer_list
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No answers to be displayed 
+      value_2: strings array
+      description: List of the answers to be displayed
+   ### Parameter 2
+      Parameter Name: text
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No text above the questions
+      value_2: string
+      description: any text above the questions 
+   ### Parameter 3
+      Parameter Name: input_allowed
+      #### Values and descriptions
+      value_1: false - (default) 
+      description: user can not set a custom response
+      value_2: true
+      description: user can set a custom response
+   ### Parameter 4
+      Parameter Name: input_position
+      #### Values and descriptions
+      value_1: top - (default) 
+      description: Position of input element
+      value_2: bottom
+      description: Position of input element
+   ### Parameter 5
+      Parameter Name: answer_placeholder
+      #### Values and descriptions
+      value_1: empty string - (default) 
+      description: No input placeholder
+      value_2: string
+      description: Any input placeholder
+   ### Parameter 6
+      Parameter Name: placeholder
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No placeholder for button open pop_up window
+      value_2: string
+      description: Any placeholder for button open pop_up window
 
-## ComboBox - TmplComboBoxComponent
-- type - combo_box.
-- value - string or null. Result or selected by default.
-- answer_list - string or null. List of the answers to be displayed. Default - null
-- text - string or null. Text of question. Default - null
-- input_allowed - boolean. Can the user set a custom response. Default - false
-- input_position - string or null. Position of input element('top or bottom'). Default - top
-- answer_placeholder - string. Input placeholder. Default - empty string.
-- placeholder - string. Placeholder for button open pop_up window. Default - null.
-- style - string. Class names: active or passive. Default take style from main-theme-bg.
+# TextBox - TmplTextBoxComponent 
+   ## Type 
+   type: text 
+   ## Value
+   value: string or null. Input value
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: answer_list
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No answers to be displayed 
+      value_2: strings array
+      description: List of the answers to be displayed
+   ### Parameter 2
+      Parameter Name: max_length
+      #### Values and descriptions
+      value_1: 30 - (default) 
+      description: Max length input value 
+      value_2: number
+      description: Any number as a max length input value
+   ### Parameter 3
+      Parameter Name: placeholder
+      #### Values and descriptions
+      value_1: empty string - (default) 
+      description: No placeholder 
+      value_2: string
+      description: Any string input placeholder
+   ### Parameter 4
+      Parameter Name: text_align
+      #### Values and descriptions
+      description: Input position
+      value_1: center - (default) 
+      value_2: left
+      value_2: right
 
-## TextBox - TmplTextBoxComponent
-- type - text.
-- value - string or null. Input value. Default - undefined
-- max_length - number. Max length input value. Default - 30
-- placeholder - string or null. Input placeholder. Default - empty string
-- text_align - string. Default - center
+# TileComponent - TmplTileComponent 
+   ## Type 
+   type: tile_component 
+   ## Value
+   value: any. Default - undefined
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: first_line_tex
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No text for first line 
+      value_2: string
+      description: Any string as a text for first line
+   ### Parameter 2
+      Parameter Name: second_line_text
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No text for second line 
+      value_2: string
+      description: Any string as a text for second line
+   ### Parameter 3
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No image 
+      value_2: string
+      description: image file source link
+   ### Parameter 4
+      Parameter Name: left_icon_src
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No image 
+      value_2: string
+      description: image file source link
+   ### Parameter 5
+      Parameter Name: style
+      #### Values and descriptions
+      description: Name of css class 
+      value_1: quick_start - (default) 
+      description: light gradient color (--tile-secondary-light-gradient) 
+      value_2: quick_start_passive 
+      description: primary gradient color (--tile-primary-gradient)
+      value_3: quick_start_blue 
+      description: primary light gradient color (--tile-primary-light-gradient)
+      value_4: quick_start_dark 
+      description: secondary gradient color (--tile-secondary-gradient)
+      value_5: workshop_page 
+      description: tile workshop
+      value_6: parent_point 
+      description: tile parent point
+      value_7: image_text 
+      description: tile image text
+      value_8: button 
+      description: tile button
 
-## TileComponent - TmplTileComponent
-- type - tile_component.
-- value - any. Default - undefined
-- first_line_text - string or null. Text. Default - null
-- second_line_text string or null. Text. Default - null
-- icon_src - string or null. image file source link. Default - null
-- style - string. Name of default css class. Default 'quick_start'. Styles: 'quick_start', 'quick_start_passive', 'quick_start_blue', 'quick_start_red', 'workshop_page'.
+# DashedBox - TmplDashedBoxComponent 
+   ## Type 
+   type: dashed_box 
+   ## Value
+   value: any. Default - undefined
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: empty string - (default) 
+      description: No icon 
+      value_2: strings 
+      description: Path to image
+   ### Parameter 2
+      Parameter Name: icon_position
+      #### Values and descriptions
+      description: Position of icon
+      value_1: top-left - (default) 
+      value_2: top-right 
+      value_3: bottom-left
+      value_4: bottom-right
+   ### Parameter 3
+      Parameter Name: style
+      #### Values and descriptions
+      description: Name of class
+      value_1: default - (default) 
+      description: Primary text and border color
+      value_2: alert 
+      description: Text color white and secodary border color
 
-## DashedBox - TmplDashedBoxComponent
-- type - dashed_box.
-- value - any. Default - undefined.
-- icon_src - string. Path to image. Default empty.
-- icon_position - string. Position of icon. Default - top-left. Positions list: 'top-left', 'top-right', 'bottom-left', 'bottom-right'.
-- style - string. Name of class. Default - default. Styles: 'default', 'alert'.
+# Title - TmplTitleComponent 
+   ## Type 
+   type: title 
+   ## Value
+   value: Text of title
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: help
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No help tooltip
+      value_2: strings 
+      description: Any string for help tooltip
+   ### Parameter 2
+      Parameter Name: tooltip_position
+      #### Values and descriptions
+      description: Position of a tooltip
+      value_1: right - (default) 
+      value_2: left 
+   ### Parameter 3
+      Parameter Name: style
+      #### Values and descriptions
+      value_1: tiny - (default) 
+      description: Tiny font size (--font-size-title-tiny)
+      value_2: standard 
+      description: Primary color (--ion-color-primary)
+      value_3: center
+      description: Postition center
+      value_4: left - (default)
+      description: Postition left
+      value_5: right 
+      description: Postition right
+      value_6: alternative 
+      description: White text color
+      value_7: contextual 
+      description: Italic font style
+      value_7: emphasised 
+      description: Bold font style
 
-## Title - TmplTitleComponent
-- type - title.
-- value - any. Text of title. Default undefined.
-- help - string or null.
-- tooltip_position - string. Default - 'right' 
-- style - string or null. Class name.  Default - 'tiny standard'
-- Style list:
-   - Style font-size: 
-      'tiny' -> 24px (default)'
-      'small -> 26px', 
-      'medium -> 30px', 
-      'large -> 34px',
-      'huge -> 36px'
-   - Style colour: 'standard', 'alternative'. 
-   - Style format:  
-      'normal -> no italics, medium (default)',
-   - Style aligned:  
-      'left -> Left Aligned (default)', 
-      'right -> Right Aligned',
-      'center -> Centered'
+# SubtitleComponent - TmplSubtitleComponent 
+   ## Type 
+   type: subtitle 
+   ## Value
+   value: Text of title
+   ## Parameters 
+   ### Parameter 1
+      Parameter Name: style
+      #### Values and descriptions
+      value_1: standard - (default)
+      description: Primary color (--ion-color-primary)
+      value_2: medium - (default)
+      description: Medium forn size (--font-size-subtitle-medium)
+      value_3: small 
+      description: Small font size (--font-size-subtitle-small)
+      value_4: large 
+      description: Large font size (--font-size-subtitle-large)
+      value_5: center
+      description: Postition center
+      value_6: left
+      description: Postition left
+      value_7: right 
+      description: Postition right
+      value_8: alternative 
+      description: White text color
+      value_9: contextual 
+      description: Italic font style
+      value_10: emphasised 
+      description: Bold font style
 
-## DisplayGroupComponent - TmplDisplayGroupComponent
-- type - display_group.
-- offset - number. Offset to move abroad component. Default - 0.
-- style - string or null. Class name. Default - null.
-  Names of styles - 'tool_1', 'tool_2', 'tool_3', 'tool_4', 'tool_5', 'white_box', 'active_banner', 'passive_banner', 'navigation', 'banner', 'row, 'column'.
-  ####To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
-  #### If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
-## SubtitleComponent - TmplSubtitleComponent
-- type - subtitle.
-- style - string or null. Class name.  Default - 'standard medium'
-- Style list:
-   - Style font-size: 
-      'small -> 18px', 
-      'medium -> 20px (default)', 
-      'large -> 22px', .
-   - Style colour: 'standard', 'alternative'. 
-   - Style format:  
-      'normal -> no italics, medium (default)',
-      'contextual -> italics, medium',
-      'emphasised -> bold, no italics'.
-   - Style aligned:  
-      'left -> Left Aligned (default)', 
-      'right -> Right Aligned',
-      'center -> Centered'
-## PointBoxComponent - TmplPointBoxComponent
-- type - parent_point_box.
-- value - number. Default 0.
-- icon_src - string or null. Path to image. Default null.
-- text - string or null. Text component. Default null.
+# TextComponent - TmplTextComponent 
+   ## Type 
+   type: text 
+   ## Value
+   value: string. Text. Default null.
+   ## Parameters 
+   ### Parameter 1
+      Parameter Name: style
+      #### Values and descriptions
+      value_1: standard - (default)
+      description: Primary color (--ion-color-primary)
+      value_2: medium
+      description: Medium forn size (--font-size-text-medium)
+      value_3: large - (default)
+      description: large font size (--font-size-text-small)
+      value_4: small 
+      description: small font size (--font-size-text-large)
+      value_5: center
+      description: Postition center
+      value_6: left
+      description: Postition left
+      value_7: right 
+      description: Postition right
+      value_8: alternative 
+      description: White text color
+      value_9: contextual 
+      description: Italic font style
+      value_10: emphasised 
+      description: Bold font style
+   ### Parameter 2
+      Parameter Name: text_align
+      #### Values and descriptions
+      description: text align inside box
+      value_1: left - (default)
+      value_2: right
+      value_3: center
 
-## ImageComponent - TmplImageComponent
-- type - image.
-- value - string. Path to image. Default null.
-- style string. Classname. Default null. Style_list: 'rounded_corners'.
+# DisplayGroupComponent - TmplDisplayGroupComponent 
+   ## Type 
+   type: display_group 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: offset
+      #### Values and descriptions
+      description: Offset to move abroad component
+      value_1: 0 - (default) 
+      description: No offset
+      value_2: number 
+      description: Any number for offset
+   ### Parameter 2
+      Parameter Name: style
+      #### Values and descriptions
+      description: Class name
+      value_1: null - (default) 
+      description: default display group
+      value_2: tool_1 
+      description: essential tool style with (--tool-one-bg)
+      value_3: tool_2 
+      description: essential tool style with (--tool-two-bg)
+      value_4: tool_3 
+      description: essential tool style with (--tool-three-bg)
+      value_5: tool_4 
+      description: essential tool style with (--tool-four-bg)
+      value_6: tool_5 
+      description: essential tool style with (--tool-five-bg)
+      value_7: white_box 
+      description: essential tool style with white bg (--ion-color-primary-contrast)
+      value_8: active_banner 
+      description: banner style with secondary bg (--ion-banner-secondary)
+      value_9: passive_banner 
+      description: banner style with primary bg (--ion-banner-primary)
+      value_10: navigation 
+      description: used for buttons in order to get them beneath content
+      value_11: banner 
+      description: banner style with primary bg (--ion-dg-bg-default)
+      value_11: column 
+      description: column style
+      #### To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
+      #### If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
 
-## TextComponent - TmplTextComponent
-- type - text.
-- value - string. Text. Default null.
-- text_align - string. Text align. Default - left. Align_list: 'left', 'right', 'center'.
-- style - string. Style for component. Default - 'small standard normal'.
-- Style list:
-   - Style font-size: 'tiny', 'small', 'medium', 'large'.
-   - Style colour: 'standard', 'alternative'. 
-   - Style format: 'normal', 'contextual', 'emphasised'.
+# PointBoxComponent - TmplPointBoxComponent 
+   ## Type 
+   type: parent_point_box 
+   ## Value
+   value: number. Counter number
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no icon
+      value_2: string 
+      description: Path to icon
+   ### Parameter 2 
+      Parameter Name: text
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no text
+      value_2: string 
+      description: Any string as a text
+
+# ImageComponent - TmplImageComponent 
+   ## Type 
+   type: image 
+   ## Value
+   value: string. Path to image. Default null
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: style
+      #### Values and descriptions
+      description: Class name
+      value_1: null - (default) 
+      value_2: rounded_corners 
+      description: rounded image corners
+
+# ParentPointCounterComponent - TmplParentPointCounterComponent 
+   ## Type 
+   type: parent_point_counter 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No icon
+      value_2: string 
+      description: Path to icon
+   ### Parameter 1 
+      Parameter Name: count
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No completed Parent Points
+      value_2: number 
+      description: number of completed Parent Points
+
+# TextAreaComponent - TmplTextAreaComponent 
+   ## Type 
+   type: text_area 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: placeholder
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No placeholder
+      value_2: string 
+      description: Any string as a placeholder
+
+# ToggleBarComponent - TmplToggleBarComponent 
+   ## Type 
+   type: toggle-bar 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: false_text
+      #### Values and descriptions
+      value_1: empty string - (default) 
+      description: No text for false value
+      value_2: string 
+      description: Any string for false value
+   ### Parameter 2
+      Parameter Name: true_text
+      #### Values and descriptions
+      value_1: empty string - (default) 
+      description: No text for true value
+      value_2: string 
+      description: Any string for true value
+   ### Parameter 3
+      Parameter Name: position
+      #### Values and descriptions
+      description: Position of the toggle-bar
+      value_1: left - (default) 
+      value_2: right
+      value_3: center 
+
+# FormComponent 
+   ## Type 
+   type: form 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: button_text
+      #### Values and descriptions
+      value_1: Submit - (default) 
+      description: default text for form button
+      value_2: string 
+      description: Any string name for form button
+   ### Parameter 2
+      Parameter Name: button_pop_up
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No pop_up action
+      value_2: template name 
+      description: pop_up with value_2 inside after click form button
+   ### Parameter 3
+      Parameter Name: button_go_to
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No go_to action
+      value_2: template name 
+      description: go_to value_2 after click form button
+   ### Parameter 4
+      Parameter Name: get_device_info
+      #### Values and descriptions
+      value_1: false - (default) 
+      description: Submit without divice info
+      value_2: true 
+      description: Submit with divice info
+
+# AdvancedDashedBoxComponent - TmplAdvancedDashedBoxComponent
+   ## Type 
+   type: advanced_dashed_box 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: empty string - (default) 
+      description: No icon 
+      value_2: strings 
+      description: Path to image
+   ### Parameter 2
+      Parameter Name: icon_position
+      #### Values and descriptions
+      description: Position of icon
+      value_1: top-left - (default) 
+      value_2: top-right 
+      value_3: bottom-left
+      value_4: bottom-right
+   ### Parameter 3
+      Parameter Name: style
+      #### Values and descriptions
+      description: Name of class
+      value_1: default - (default) 
+      description: Primary text and border color
+      value_2: alert 
+      description: Text color white and secodary border color
+
+# HelpIconComponent - TmplHelpIconComponent
+   ## Type 
+   type: help_icon 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: help-circle-outline - (default) 
+      description: No icon 
+      value_2: strings 
+      description: Path to icon
+
 
 ## Padding and Margins control:
 - no_margin_t - remove top margin;

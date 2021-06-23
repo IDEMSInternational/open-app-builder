@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, ElementRef, HostBinding, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
@@ -13,7 +13,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     <div [style.marginBottom.px]="-offset" class="offset" [ngSwitch]="type">
       <ng-container *ngSwitchCase="'default'">
         <plh-template-component
-          *ngFor="let childRow of _row.rows"
+          *ngFor="let childRow of _row.rows; trackBy: trackByRow"
           [row]="childRow"
           [parent]="parent"
         ></plh-template-component>
@@ -82,7 +82,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     this.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
-    this.type = this.getTypeFromStyles(this.style);
+    this.type = this.getTypeFromStyles(this.style || "");
   }
 
   private getTypeFromStyles(styles: string): string {

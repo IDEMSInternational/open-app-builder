@@ -7,7 +7,7 @@
     content: "";
     width: 1px;
     height: calc(100% - 35px);
-    background: var(--ion-color-tertiary);
+    background: var(--ion-color-primary);
     position: absolute;
     left: 21px;
     top: 0;
@@ -22,19 +22,20 @@
   .accordion-status {
     @include medium-square;
     border-radius: var(--ion-border-radius-rounded);
+    border: var(--ion-border-thin-standard);
     padding: var(--tiny-padding);
+    background: var(--ion-color-primary-contrast);
     display: flex;
     justify-content: center;
-    background: var(--ion-color-primary-contrast);
     z-index: 2;
     &.inProgress {
-      background: var(--ion-accrodion-status-gradient);
+      background: var(--ion-accordion-bg);
     }
     &.disabled {
       background: var(--ion-color-primary-contrast);
     }
     &.completed {
-      background: var(--ion-accrodion-status-gradient);
+      background: var(--ion-accordion-bg);
     }
   }
   .accordion-section {

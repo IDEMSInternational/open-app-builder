@@ -54,6 +54,7 @@ $horizontal: 90deg;
   --ion-border-thin-standard: 1px solid #{$primary};
   --ion-border-standard: 2px solid #{$primary};
   --ion-border-light: 1px solid #{$light};
+  --ion-border-light-thicker: 2px solid #{$light};
   --border-dashed: 2px dashed $primary;
   // --- border-radiuses
   --ion-border-radius-small: 8px;
@@ -87,7 +88,7 @@ $horizontal: 90deg;
   --line-height-text-largest: 25px;
 
   // Font Weight //
-  --font-weight-standard: 500;
+  --font-weight-standard: 400;
   --font-weight-bold: 700;
 
   // Text box //
@@ -243,6 +244,10 @@ $horizontal: 90deg;
   --round-button-font-size: 12px;
   --round-button-home-screen-font-size: 11px;
 
+  // Square button //
+  --square-button-navigation-min-height: 50px;
+  --square-button-min-width: 60px;
+
   //BANNER
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,
@@ -378,12 +383,16 @@ $horizontal: 90deg;
   --tile-default-width: 371px;
   --tile-button-height: 73px;
   --tile-button-width: 73px;
-  --tile-workshop-page-height: 100px;
-  --tile-workshop-page-width: 132px;
+  --tile-workshop-page-height: 132px;
+  --tile-workshop-page-width: 111px;
   --tile-workshop-page-button-height: 55px;
   --tile-workshop-page-button-width: 100%;
   --tile-parent-point-width: 200px;
   --tile-parent-point-height: 104px;
+  --tile-image-text-width: 176px;
+  --tile-button-style-height: 60px;
+
+  --tile-button-background: #{color.adjust($primary, $saturation: 14%, $lightness: 60%)};
 
   --tile-primary-light-gradient-start: #{color.adjust(
       $quaternary,

@@ -19,6 +19,7 @@ import { TemplateDebuggerComponent } from "./debugger";
 import { TmplButtonComponent } from "./button/button.component";
 import { TmplDisplayGroupComponent } from "./layout/display_group";
 import { TmplImageComponent } from "./image";
+import { TmplHelpIconComponent } from "./help-icon";
 import { TmplTextComponent } from "./text";
 import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { TmplTimerComponent } from "./timer/timer.component";
@@ -28,6 +29,7 @@ import { TmplToggleBarComponent } from "./toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
+import { SquareIconButtonComponent } from "./square-icon-button/square-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
@@ -59,6 +61,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAudioComponent,
   TmplButtonComponent,
   TmplImageComponent,
+  TmplHelpIconComponent,
   TmplVideoComponent,
   AnimatedSectionComponent,
   AccordionSectionComponent,
@@ -70,6 +73,7 @@ export const TEMPLATE_COMPONENTS = [
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
+  SquareIconButtonComponent,
   TmplRadioGroupComponent,
   TmplIconComponent,
   TmplTileComponent,
@@ -106,6 +110,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   image: TmplImageComponent,
+  help_icon: TmplHelpIconComponent,
   icon: TmplIconComponent,
   parent_point_counter: TmplParentPointCounterComponent,
   // set variable and nested properties are handled by parent
@@ -130,6 +135,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
+  square_button: SquareIconButtonComponent,
   radio_group: TmplRadioGroupComponent,
   tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,

@@ -5,7 +5,7 @@ import { TemplateLayoutComponent } from "./layout";
   selector: "plh-tmpl-animated-section",
   template: `<div class="animated-section">
     <plh-template-component
-      *ngFor="let childRow of _row.rows"
+      *ngFor="let childRow of _row.rows; trackBy: trackByRow"
       [row]="childRow"
       [parent]="parent"
     ></plh-template-component>
@@ -30,7 +30,7 @@ export class AnimatedSectionComponent extends TemplateLayoutComponent implements
   }
 
   ngOnInit() {
-    this.parent.handleActionsCallback = async () => {
+    this.parent.templateActionService.handleActionsCallback = async () => {
       // Temporary workaround to always scroll to top after actions triggered within animated section (uncomment)
       // this.scrollToTop();
     };

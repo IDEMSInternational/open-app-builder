@@ -279,10 +279,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -938,10 +938,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -1579,10 +1579,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -2229,10 +2229,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -2879,10 +2879,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -3529,10 +3529,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -4161,10 +4161,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -4793,10 +4793,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -5425,10 +5425,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -6057,10 +6057,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -6689,10 +6689,10 @@
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_parent_points_overview_temp"
+              "m_parent_points_overview"
             ],
-            "_raw": "pop_up: m_parent_points_overview_temp",
-            "_cleaned": "click | pop_up: m_parent_points_overview_temp"
+            "_raw": "pop_up: m_parent_points_overview",
+            "_cleaned": "click | pop_up: m_parent_points_overview"
           },
           {
             "trigger": "click",
@@ -6804,7 +6804,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_self_care_continue",
@@ -6849,7 +6854,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_1on1_quick_start",
@@ -6904,7 +6914,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_1on1_continue",
@@ -6968,7 +6983,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_praise_quick_start",
@@ -7023,7 +7043,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_praise_continue",
@@ -7087,7 +7112,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_instruct_quick_start",
@@ -7142,7 +7172,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_instruct_continue",
@@ -7206,7 +7241,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_stress_quick_start",
@@ -7261,7 +7301,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_stress_continue",
@@ -7325,7 +7370,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_money_quick_start",
@@ -7380,7 +7430,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_money_continue",
@@ -7444,7 +7499,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_rules_quick_start",
@@ -7499,7 +7559,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_rules_continue",
@@ -7563,7 +7628,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_consequence_quick_start",
@@ -7618,7 +7688,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_consequence_continue",
@@ -7682,7 +7757,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_solve_quick_start",
@@ -7737,7 +7817,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_solve_continue",
@@ -7801,7 +7886,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_safe_quick_start",
@@ -7856,7 +7946,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_safe_continue",
@@ -7920,7 +8015,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_crisis_quick_start",
@@ -7975,7 +8075,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_crisis_continue",
@@ -8039,7 +8144,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       },
       {
         "id": "w_celebrate_quick_start",
@@ -8094,7 +8204,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Start"
+        "text": "Start",
+        "_translatedFields": {
+          "text": {
+            "eng": "Start"
+          }
+        }
       },
       {
         "id": "w_celebrate_continue",
@@ -8158,7 +8273,12 @@
           "workshop_quick_start"
         ],
         "icon": "plh_images/icons/play_white.svg",
-        "text": "Continue"
+        "text": "Continue",
+        "_translatedFields": {
+          "text": {
+            "eng": "Continue"
+          }
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx"
@@ -10779,6 +10899,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "Welcome to ParentApp. Click here to start your journey!"
+          }
+        },
         "text": "Welcome to ParentApp. Click here to start your journey!"
       },
       {
@@ -10799,6 +10927,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!"
+          }
+        },
         "text": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!"
       },
       {
@@ -10819,6 +10955,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you. "
+          }
+        },
         "text": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you. "
       },
       {
@@ -10839,6 +10983,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful."
+          }
+        },
         "text": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful."
       },
       {
@@ -10859,6 +11011,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "ParentApp misses you! There is a lot to explore. We are still here to support you. "
+          }
+        },
         "text": "ParentApp misses you! There is a lot to explore. We are still here to support you. "
       },
       {
@@ -10879,6 +11039,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress."
+          }
+        },
         "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress."
       },
       {
@@ -10899,6 +11067,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life."
+          }
+        },
         "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life."
       },
       {
@@ -10919,6 +11095,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour."
+          }
+        },
         "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour."
       },
       {
@@ -10939,6 +11123,14 @@
           }
         },
         "title": "New message from PLH",
+        "_translatedFields": {
+          "title": {
+            "eng": "New message from PLH"
+          },
+          "text": {
+            "eng": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!"
+          }
+        },
         "text": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!"
       }
     ],
@@ -10953,209 +11145,338 @@
       {
         "id": "reflect_positive",
         "workshop": "praise",
-        "title": "Reflect on the positive",
         "text_template": "activity_reflect_positive",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Reflect on the positive",
+        "_translatedFields": {
+          "title": {
+            "eng": "Reflect on the positive"
+          }
+        }
       },
       {
         "id": "check_in_chat",
         "workshop": "stress",
-        "title": "Check-in chat",
         "text_template": "activity_check_in_chat",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Check-in chat",
+        "_translatedFields": {
+          "title": {
+            "eng": "Check-in chat"
+          }
+        }
       },
       {
         "id": "dream_travel",
         "workshop": "money",
-        "title": "Dream Travel",
         "text_template": "activity_dream_travel",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Dream Travel",
+        "_translatedFields": {
+          "title": {
+            "eng": "Dream Travel"
+          }
+        }
       },
       {
         "id": "famous_party",
         "workshop": "rules",
-        "title": "Famous Party",
         "text_template": "activity_famous_party",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Famous Party",
+        "_translatedFields": {
+          "title": {
+            "eng": "Famous Party"
+          }
+        }
       },
       {
         "id": "two_truths",
         "workshop": "consequence",
-        "title": "Two truths, one lie",
         "text_template": "activity_two_truths",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Two truths, one lie",
+        "_translatedFields": {
+          "title": {
+            "eng": "Two truths, one lie"
+          }
+        }
       },
       {
         "id": "time_machine",
         "workshop": "safe",
-        "title": "Time Machine",
         "text_template": "activity_time_machine",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Time Machine",
+        "_translatedFields": {
+          "title": {
+            "eng": "Time Machine"
+          }
+        }
       },
       {
         "id": "superpowers",
         "workshop": "crisis",
-        "title": "Superpowers",
         "text_template": "activity_superpowers",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Superpowers",
+        "_translatedFields": {
+          "title": {
+            "eng": "Superpowers"
+          }
+        }
       },
       {
         "id": "friendly_chat",
-        "title": "Just a friendly chat",
         "text_template": "activity_friendly_chat",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Just a friendly chat",
+        "_translatedFields": {
+          "title": {
+            "eng": "Just a friendly chat"
+          }
+        }
       },
       {
         "id": "interrupter",
-        "title": "The Interrupter",
         "text_template": "activity_interrupter",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "The Interrupter",
+        "_translatedFields": {
+          "title": {
+            "eng": "The Interrupter"
+          }
+        }
       },
       {
         "id": "three_options",
-        "title": "Three options",
         "text_template": "activity_three_options",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Three options",
+        "_translatedFields": {
+          "title": {
+            "eng": "Three options"
+          }
+        }
       },
       {
         "id": "yes_no_maybe",
-        "title": "Yes, No or Maybe",
         "text_template": "activity_yes_no_maybe",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Yes, No or Maybe",
+        "_translatedFields": {
+          "title": {
+            "eng": "Yes, No or Maybe"
+          }
+        }
       },
       {
         "id": "memory_game",
-        "title": "Memory game - \"On Saturday...\"",
         "text_template": "activity_memory_game",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Memory game - \"On Saturday...\"",
+        "_translatedFields": {
+          "title": {
+            "eng": "Memory game - \"On Saturday...\""
+          }
+        }
       },
       {
         "id": "invent_story",
-        "title": "Make up a story",
         "text_template": "activity_invent_story",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "chat_together"
+        "type": "chat_together",
+        "title": "Make up a story",
+        "_translatedFields": {
+          "title": {
+            "eng": "Make up a story"
+          }
+        }
       },
       {
         "id": "co_chef",
         "workshop": "1on1",
-        "title": "Co-chef",
         "text_template": "activity_co_chef",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "do_together"
+        "type": "do_together",
+        "title": "Co-chef",
+        "_translatedFields": {
+          "title": {
+            "eng": "Co-chef"
+          }
+        }
       },
       {
         "id": "dance_moves",
         "workshop": "instruct",
-        "title": "Dance moves",
         "text_template": "activity_dance_moves",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "do_together"
+        "type": "do_together",
+        "title": "Dance moves",
+        "_translatedFields": {
+          "title": {
+            "eng": "Dance moves"
+          }
+        }
       },
       {
         "id": "mirror",
         "workshop": "solve",
-        "title": "Mirror",
         "text_template": "activity_mirror",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "do_together"
+        "type": "do_together",
+        "title": "Mirror",
+        "_translatedFields": {
+          "title": {
+            "eng": "Mirror"
+          }
+        }
       },
       {
         "id": "whats_new",
-        "title": "What's new?",
         "text_template": "activity_whats_new",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "do_together"
+        "type": "do_together",
+        "title": "What's new?",
+        "_translatedFields": {
+          "title": {
+            "eng": "What's new?"
+          }
+        }
       },
       {
         "id": "get_active",
-        "title": "Get active!",
         "text_template": "activity_get_active",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "do_together"
+        "type": "do_together",
+        "title": "Get active!",
+        "_translatedFields": {
+          "title": {
+            "eng": "Get active!"
+          }
+        }
       },
       {
         "id": "name_that_tune",
-        "title": "Name that tune",
         "text_template": "activity_name_that_tune",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "do_together"
+        "type": "do_together",
+        "title": "Name that tune",
+        "_translatedFields": {
+          "title": {
+            "eng": "Name that tune"
+          }
+        }
       },
       {
         "id": "pass_the_snap",
-        "title": "Pass the snap",
         "text_template": "activity_pass_the_snap",
         "fields::favourite": false,
         "spend_time": true,
         "type": "do_together",
+        "title": "Pass the snap",
+        "_translatedFields": {
+          "title": {
+            "eng": "Pass the snap"
+          },
+          "intro_text": {
+            "eng": "Here is a fun game you can do with your family!"
+          }
+        },
         "intro_text": "Here is a fun game you can do with your family!"
       },
       {
         "id": "family_workout",
-        "title": "Family workout",
         "text_template": "activity_family_workout",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "do_together"
+        "type": "do_together",
+        "title": "Family workout",
+        "_translatedFields": {
+          "title": {
+            "eng": "Family workout"
+          }
+        }
       },
       {
         "id": "housework",
-        "title": "Make housework fun",
         "text_template": "activity_housework",
         "fields::favourite": false,
         "spend_time": true,
         "has_recording": true,
         "type": "do_together",
+        "title": "Make housework fun",
+        "_translatedFields": {
+          "title": {
+            "eng": "Make housework fun"
+          },
+          "intro_text": {
+            "eng": "Household chores aren’t fun… or are they? You can make them into a game!"
+          }
+        },
         "intro_text": "Household chores aren’t fun… or are they? You can make them into a game!"
       },
       {
         "id": "doing_what",
-        "title": "What are you doing?",
         "text_template": "activity_doing_what",
         "fields::favourite": false,
         "spend_time": true,
         "has_recording": true,
         "type": "do_together",
+        "title": "What are you doing?",
+        "_translatedFields": {
+          "title": {
+            "eng": "What are you doing?"
+          },
+          "intro_text": {
+            "eng": "Here is a fun game you can do with your family!"
+          }
+        },
         "intro_text": "Here is a fun game you can do with your family!"
       },
       {
         "id": "crazy_chicken",
-        "title": "Crazy chicken",
         "text_template": "activity_crazy_chicken",
         "fields::favourite": false,
         "spend_time": true,
-        "type": "do_together"
+        "type": "do_together",
+        "title": "Crazy chicken",
+        "_translatedFields": {
+          "title": {
+            "eng": "Crazy chicken"
+          }
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/activity_data_list.xlsx"
@@ -11168,126 +11489,445 @@
     "rows": [
       {
         "id": "relax",
-        "title": "Relax",
-        "description": "Doing a relaxation activity",
         "task_id": "task_habit_relax",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_relax.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_relax.json",
-        "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Relax",
+        "_translatedFields": {
+          "title": {
+            "eng": "Relax"
+          },
+          "in_text_title": {
+            "eng": "\"Relax\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Doing a relaxation activity"
+          },
+          "mark_text": {
+            "eng": "Every time you do a relax, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Relax\" @global.parent_point",
+        "description": "Doing a relaxation activity",
+        "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "treat_yourself",
-        "title": "Treat yourself well",
-        "description": "Doing something they like for themselves",
         "task_id": "task_habit_treat_yourself",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_treat_yourself.json",
-        "mark_text": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Treat yourself well",
+        "_translatedFields": {
+          "title": {
+            "eng": "Treat yourself well"
+          },
+          "in_text_title": {
+            "eng": "\"Treat yourself well\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Doing something they like for themselves"
+          },
+          "mark_text": {
+            "eng": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Treat yourself well\" @global.parent_point",
+        "description": "Doing something they like for themselves",
+        "mark_text": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "praise_yourself",
-        "title": "Praise yourself",
-        "description": "Praising themselves",
         "task_id": "task_habit_praise_yourself",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_praise_yourself.json",
-        "mark_text": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Praise yourself",
+        "_translatedFields": {
+          "title": {
+            "eng": "Praise yourself"
+          },
+          "in_text_title": {
+            "eng": "\"Praise yourself\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Praising themselves"
+          },
+          "mark_text": {
+            "eng": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Praise yourself\" @global.parent_point",
+        "description": "Praising themselves",
+        "mark_text": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "spend_time",
-        "title": "One-on-one time",
-        "description": "Spending time with their teen",
         "task_id": "task_habit_spend_time",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_spend_time.json",
-        "mark_text": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "One-on-one time",
+        "_translatedFields": {
+          "title": {
+            "eng": "One-on-one time"
+          },
+          "in_text_title": {
+            "eng": "\"One-on-one time\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Spending time with their teen"
+          },
+          "mark_text": {
+            "eng": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"One-on-one time\" @global.parent_point",
+        "description": "Spending time with their teen",
+        "mark_text": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "praise_teen",
-        "title": "Praise your teen",
-        "description": "Praising their teen when they did positive thing",
         "task_id": "task_habit_praise_teen",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_teen.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_praise_teen.json",
-        "mark_text": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Praise your teen",
+        "_translatedFields": {
+          "title": {
+            "eng": "Praise your teen"
+          },
+          "in_text_title": {
+            "eng": "\"Praise your teen\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Praising their teen when they did positive thing"
+          },
+          "mark_text": {
+            "eng": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Praise your teen\" @global.parent_point",
+        "description": "Praising their teen when they did positive thing",
+        "mark_text": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "instruct_positively",
-        "title": "Get positive",
-        "description": "Giving their teen a positive instruction",
         "task_id": "task_habit_instruct_positively",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_instruct_positively.json",
-        "mark_text": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Get positive",
+        "_translatedFields": {
+          "title": {
+            "eng": "Get positive"
+          },
+          "in_text_title": {
+            "eng": "\"Get positive\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Giving their teen a positive instruction"
+          },
+          "mark_text": {
+            "eng": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Get positive\" @global.parent_point",
+        "description": "Giving their teen a positive instruction",
+        "mark_text": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "breathe",
-        "title": "Breathe not yell",
-        "description": "Taking a pause before responding",
         "task_id": "task_habit_breathe",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_breathe.json",
-        "mark_text": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Breathe not yell",
+        "_translatedFields": {
+          "title": {
+            "eng": "Breathe not yell"
+          },
+          "in_text_title": {
+            "eng": "\"Breathe not yell\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Taking a pause before responding"
+          },
+          "mark_text": {
+            "eng": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Breathe not yell\" @global.parent_point",
+        "description": "Taking a pause before responding",
+        "mark_text": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "money",
-        "title": "Good money choice",
-        "description": "Keeping the budget",
         "task_id": "task_habit_money",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_money.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_money.json",
-        "mark_text": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Good money choice",
+        "_translatedFields": {
+          "title": {
+            "eng": "Good money choice"
+          },
+          "in_text_title": {
+            "eng": "\"Good money choice\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Keeping the budget"
+          },
+          "mark_text": {
+            "eng": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Good money choice\" @global.parent_point",
+        "description": "Keeping the budget",
+        "mark_text": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "consequence",
-        "title": "Calm consequence",
-        "description": "Giving their teen a consequence in a calm way",
         "task_id": "task_habit_consequence",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_consequence.json",
-        "mark_text": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Calm consequence",
+        "_translatedFields": {
+          "title": {
+            "eng": "Calm consequence"
+          },
+          "in_text_title": {
+            "eng": "\"Calm consequence\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Giving their teen a consequence in a calm way"
+          },
+          "mark_text": {
+            "eng": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Calm consequence\" @global.parent_point",
+        "description": "Giving their teen a consequence in a calm way",
+        "mark_text": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       },
       {
         "id": "safe",
-        "title": "Safe",
-        "description": "Planning or keeping a family safety plan",
         "task_id": "task_habit_safe",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_safe.svg",
         "lottie_asset": "assets/plh_assets/plh_lottie/habits/habit_safe.json",
-        "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
-        "short_mark_text": "Did it? Tap it!",
         "fields::weekly_count": 0,
-        "fields::total_count": 0
+        "fields::total_count": 0,
+        "title": "Safe",
+        "_translatedFields": {
+          "title": {
+            "eng": "Safe"
+          },
+          "in_text_title": {
+            "eng": "\"Safe\" @global.parent_point"
+          },
+          "description": {
+            "eng": "Planning or keeping a family safety plan"
+          },
+          "mark_text": {
+            "eng": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!"
+          },
+          "short_mark_text": {
+            "eng": "Did it? Tap it!"
+          }
+        },
+        "in_text_title": "\"Safe\" @global.parent_point",
+        "description": "Planning or keeping a family safety plan",
+        "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
+        "short_mark_text": "Did it? Tap it!"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/habit_data_list.xlsx"
+  },
+  {
+    "flow_type": "data_list",
+    "flow_name": "parent_centre_data_list",
+    "status": "released",
+    "data_list_name": "parent_centre",
+    "rows": [
+      {
+        "id": "help",
+        "icon_asset": "assets/plh_assets/plh_images/icons/hug_heart_white.svg",
+        "title": "Help",
+        "_translatedFields": {
+          "title": {
+            "eng": "Help"
+          },
+          "location_text": {
+            "eng": "under \"Help\" in the @global.parent_centre"
+          }
+        },
+        "location_text": "under \"Help\" in the @global.parent_centre"
+      },
+      {
+        "id": "my_tips",
+        "icon_asset": "assets/plh_assets/plh_images/icons/light_bulb_heart_white.svg",
+        "title": "My Tips",
+        "_translatedFields": {
+          "title": {
+            "eng": "My Tips"
+          },
+          "location_text": {
+            "eng": "under \"My Tips\" in the @global.parent_centre"
+          }
+        },
+        "location_text": "under \"My Tips\" in the @global.parent_centre"
+      },
+      {
+        "id": "essential_tools",
+        "icon_asset": "assets/plh_assets/plh_images/icons/light_bulb_white.svg",
+        "title": "Essential Tools",
+        "_translatedFields": {
+          "title": {
+            "eng": "Essential Tools"
+          },
+          "location_text": {
+            "eng": "under \"Essential Tools\" in the @global.parent_centre"
+          }
+        },
+        "location_text": "under \"Essential Tools\" in the @global.parent_centre"
+      },
+      {
+        "id": "covid",
+        "icon_asset": "assets/plh_assets/plh_images/icons/ask_question_white.svg",
+        "title": "COVID",
+        "_translatedFields": {
+          "title": {
+            "eng": "COVID"
+          },
+          "location_text": {
+            "eng": "under \"COVID\" in the @global.parent_centre"
+          }
+        },
+        "location_text": "under \"COVID\" in the @global.parent_centre"
+      },
+      {
+        "id": "relax_and_activities",
+        "icon_asset": "assets/plh_assets/plh_images/icons/smile_eyes_up_white.svg",
+        "title": "Relax & Activities",
+        "_translatedFields": {
+          "title": {
+            "eng": "Relax & Activities"
+          },
+          "location_text": {
+            "eng": "under \"Relax & Activities\" in the @global.parent_centre"
+          }
+        },
+        "location_text": "under \"Relax & Activities\" in the @global.parent_centre"
+      },
+      {
+        "id": "customisation",
+        "icon_asset": "assets/plh_assets/plh_images/icons/phone_heart_white.svg",
+        "title": "Customise @global.parent_app",
+        "_translatedFields": {
+          "title": {
+            "eng": "Customise @global.parent_app"
+          },
+          "title_2": {
+            "eng": "Customise Again"
+          },
+          "location_text": {
+            "eng": "under \"Customise @global.parent_app\" in the @global.parent_centre"
+          }
+        },
+        "title_2": "Customise Again",
+        "location_text": "under \"Customise @global.parent_app\" in the @global.parent_centre"
+      },
+      {
+        "id": "support_contacts",
+        "icon_asset": "assets/plh_assets/plh_images/icons/hands_support_heart_white.svg",
+        "title": "Support Contacts",
+        "_translatedFields": {
+          "title": {
+            "eng": "Support Contacts"
+          },
+          "location_text": {
+            "eng": "under \"Support Contacts\" in the @global.parent_centre"
+          }
+        },
+        "location_text": "under \"Support Contacts\" in the @global.parent_centre"
+      },
+      {
+        "id": "evidence_base",
+        "icon_asset": "assets/plh_assets/plh_images/icons/documents_white.svg",
+        "title": "Evidence Base",
+        "_translatedFields": {
+          "title": {
+            "eng": "Evidence Base"
+          },
+          "location_text": {
+            "eng": "under \"Evidence Base\" in the @global.parent_centre"
+          }
+        },
+        "location_text": "under \"Evidence Base\" in the @global.parent_centre"
+      },
+      {
+        "id": "technical_support",
+        "icon_asset": "assets/plh_assets/plh_images/icons/info_phone_white.svg",
+        "title": "Technical Support",
+        "_translatedFields": {
+          "title": {
+            "eng": "Technical Support"
+          },
+          "location_text": {
+            "eng": "under \"Technical Support\" in the @global.parent_centre"
+          }
+        },
+        "location_text": "under \"Technical Support\" in the @global.parent_centre"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/data/parent_centre_data_list.xlsx"
   },
   {
     "flow_type": "data_list",
@@ -11297,161 +11937,373 @@
     "rows": [
       {
         "id": "hp_praise_message_1",
-        "text": "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
-        "workshop": "w_1on1",
+        "workshop_list": [
+          "w_1on1"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
+        "_translatedFields": {
+          "text": {
+            "eng": "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_2",
-        "text": "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!",
-        "workshop": "w_1on1",
+        "workshop_list": [
+          "w_1on1"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_3",
-        "text": "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!",
-        "workshop": "w_1on1",
+        "workshop_list": [
+          "w_1on1"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_4",
-        "text": "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!",
-        "workshop": "w_1on1",
+        "workshop_list": [
+          "w_1on1"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_5",
-        "text": "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.",
-        "workshop": "w_1on1",
+        "workshop_list": [
+          "w_1on1"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.",
+        "_translatedFields": {
+          "text": {
+            "eng": "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen."
+          }
+        }
       },
       {
         "id": "hp_praise_message_6",
-        "text": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
-        "workshop": "w_1on1",
+        "workshop_list": [
+          "w_1on1"
+        ],
         "mood_list": [
           "ok"
-        ]
+        ],
+        "text": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   "
+          }
+        }
       },
       {
         "id": "hp_praise_message_7",
-        "text": "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
-        "workshop": "w_1on1",
+        "workshop_list": [
+          "w_1on1"
+        ],
         "mood_list": [
           "sad"
-        ]
+        ],
+        "text": "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_8",
-        "text": "Great to hear it went well; you are a star!",
-        "workshop": "w_instruct",
+        "workshop_list": [
+          "w_instruct"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Great to hear it went well; you are a star!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Great to hear it went well; you are a star!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_9",
-        "text": "Sorry to hear it was difficult for you. Well done for trying!",
-        "workshop": "w_instruct",
+        "workshop_list": [
+          "w_instruct"
+        ],
         "mood_list": [
           "ok",
           "sad"
-        ]
+        ],
+        "text": "Sorry to hear it was difficult for you. Well done for trying!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry to hear it was difficult for you. Well done for trying!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_10",
-        "text": "Wonderful! You deserve all the happy times!",
-        "workshop": "w_stress",
+        "workshop_list": [
+          "w_stress"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Wonderful! You deserve all the happy times!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Wonderful! You deserve all the happy times!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_11",
-        "text": "Sorry that this was difficult for you. You are a star for trying!",
-        "workshop": "w_stress",
+        "workshop_list": [
+          "w_stress"
+        ],
         "mood_list": [
           "ok",
           "sad"
-        ]
+        ],
+        "text": "Sorry that this was difficult for you. You are a star for trying!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry that this was difficult for you. You are a star for trying!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_12",
-        "text": "Amazing to hear it made you feel good! Keep up the great work. Your teen is learning so much from you!",
-        "workshop": "w_stress",
+        "workshop_list": [
+          "w_stress"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Amazing to hear it made you feel good! Keep up the great work. Your teen is learning so much from you!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Amazing to hear it made you feel good! Keep up the great work. Your teen is learning so much from you!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_13",
-        "text": "Talking about how we feel can be difficult at first, but you and your teen will get used to it. Keep trying, and you will see the positive results!",
-        "workshop": "w_stress",
+        "workshop_list": [
+          "w_stress"
+        ],
         "mood_list": [
           "ok",
           "sad"
-        ]
+        ],
+        "text": "Talking about how we feel can be difficult at first, but you and your teen will get used to it. Keep trying, and you will see the positive results!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Talking about how we feel can be difficult at first, but you and your teen will get used to it. Keep trying, and you will see the positive results!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_14",
-        "text": "Great to hear it went well. Talking about your finances together really makes your family stronger!",
-        "workshop": "w_money",
+        "workshop_list": [
+          "w_money"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Great to hear it went well. Talking about your finances together really makes your family stronger!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Great to hear it went well. Talking about your finances together really makes your family stronger!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_15",
-        "text": "Sorry to hear it was difficult for you. Well done for trying!",
-        "workshop": "w_money",
+        "workshop_list": [
+          "w_money"
+        ],
         "mood_list": [
           "ok",
           "sad"
-        ]
+        ],
+        "text": "Sorry to hear it was difficult for you. Well done for trying!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry to hear it was difficult for you. Well done for trying!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_16",
-        "text": "Great to hear it went well! Remember, the more we follow rules, the more our teens will do the same!",
-        "workshop": "w_rules",
+        "workshop_list": [
+          "w_rules"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_17",
-        "text": "Sorry that this has been difficult. Could you try today, perhaps with something minor, and not a major rule?",
-        "workshop": "w_rules",
+        "workshop_list": [
+          "w_rules"
+        ],
         "mood_list": [
           "ok",
           "sad"
-        ]
+        ],
+        "text": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it! ",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it! "
+          }
+        }
       },
       {
         "id": "hp_praise_message_18",
-        "text": "Great to hear it went well!",
-        "workshop": "w_consequence",
+        "workshop_list": [
+          "w_solve",
+          "w_crisis"
+        ],
         "mood_list": [
           "happy"
-        ]
+        ],
+        "text": "Great to hear it went well!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Great to hear it went well!"
+          }
+        }
       },
       {
         "id": "hp_praise_message_19",
-        "text": "Sorry that this was difficult. Could you sit down with your teen and try again today? Involving your teen in the discussion will make them want to follow the rules more often!",
-        "workshop": "w_consequence",
+        "workshop_list": [
+          "w_consequence"
+        ],
         "mood_list": [
           "ok",
           "sad"
-        ]
+        ],
+        "text": "Sorry that this was difficult. Setting consequences together will make your teen want to follow the rules more often!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry that this was difficult. Setting consequences together will make your teen want to follow the rules more often!"
+          }
+        }
+      },
+      {
+        "id": "hp_praise_message_20",
+        "workshop_list": [
+          "w_solve"
+        ],
+        "mood_list": [
+          "ok",
+          "sad"
+        ],
+        "text": "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!"
+          }
+        }
+      },
+      {
+        "id": "hp_praise_message_21",
+        "workshop_list": [
+          "w_safe"
+        ],
+        "mood_list": [
+          "happy"
+        ],
+        "text": "Great to hear it went well! This can help keep your teen safe!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Great to hear it went well! This can help keep your teen safe!"
+          }
+        }
+      },
+      {
+        "id": "hp_praise_message_22",
+        "workshop_list": [
+          "w_safe"
+        ],
+        "mood_list": [
+          "ok",
+          "sad"
+        ],
+        "text": "Sorry that this has been hard. Try to do this with your teen again later, and maybe involve some other family members to help give ideas!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry that this has been hard. Try to do this with your teen again later, and maybe involve some other family members to help give ideas!"
+          }
+        }
+      },
+      {
+        "id": "hp_praise_message_23",
+        "workshop_list": [
+          "w_crisis"
+        ],
+        "mood_list": [
+          "ok",
+          "sad"
+        ],
+        "text": "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
+        "_translatedFields": {
+          "text": {
+            "eng": "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?"
+          }
+        }
+      },
+      {
+        "id": "hp_praise_message_24",
+        "workshop_list": [
+          "w_consequence"
+        ],
+        "mood_list": [
+          "happy"
+        ],
+        "text": "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer.",
+        "_translatedFields": {
+          "text": {
+            "eng": "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer."
+          }
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/praise_data_list.xlsx"
@@ -11464,234 +12316,351 @@
     "rows": [
       {
         "id": "relax_1",
-        "title": "Quick pause",
         "task_id": "task_relax",
         "text_template": "relax_1_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_1_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Quick pause",
+        "_translatedFields": {
+          "title": {
+            "eng": "Quick pause"
+          }
+        }
       },
       {
         "id": "relax_2",
-        "title": "Power of three",
         "workshop": "1on1",
         "task_id": "task_relax",
         "text_template": "relax_2_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_2_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Power of three",
+        "_translatedFields": {
+          "title": {
+            "eng": "Power of three"
+          }
+        }
       },
       {
         "id": "relax_3",
-        "title": "One thing today",
         "workshop": "praise",
         "task_id": "task_relax",
         "text_template": "relax_3_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_3_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "One thing today",
+        "_translatedFields": {
+          "title": {
+            "eng": "One thing today"
+          }
+        }
       },
       {
         "id": "relax_4",
-        "title": "Breathe to three",
         "workshop": "instruct",
         "task_id": "task_relax",
         "text_template": "relax_4_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_4_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Breathe to three",
+        "_translatedFields": {
+          "title": {
+            "eng": "Breathe to three"
+          }
+        }
       },
       {
         "id": "relax_5",
-        "title": "In and out",
         "workshop": "self_care",
         "task_id": "task_relax",
         "text_template": "relax_5_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_5_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "In and out",
+        "_translatedFields": {
+          "title": {
+            "eng": "In and out"
+          }
+        }
       },
       {
         "id": "relax_6",
-        "title": "Think about today",
         "task_id": "task_relax",
         "text_template": "relax_6_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_6_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Think about today",
+        "_translatedFields": {
+          "title": {
+            "eng": "Think about today"
+          }
+        }
       },
       {
         "id": "relax_7",
-        "title": "Pause to respond",
         "workshop": "stress",
         "task_id": "task_relax",
         "text_template": "relax_7_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_7_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Pause to respond",
+        "_translatedFields": {
+          "title": {
+            "eng": "Pause to respond"
+          }
+        }
       },
       {
         "id": "relax_8",
-        "title": "Small things",
         "workshop": "money",
         "task_id": "task_relax",
         "text_template": "relax_8_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_8_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Small things",
+        "_translatedFields": {
+          "title": {
+            "eng": "Small things"
+          }
+        }
       },
       {
         "id": "relax_9",
-        "title": "Body scan",
         "workshop": "rules",
         "task_id": "task_relax",
         "text_template": "relax_9_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_9_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Body scan",
+        "_translatedFields": {
+          "title": {
+            "eng": "Body scan"
+          }
+        }
       },
       {
         "id": "relax_10",
-        "title": "Feel the ground",
         "workshop": "consequence",
         "task_id": "task_relax",
         "text_template": "relax_10_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_10_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Feel the ground",
+        "_translatedFields": {
+          "title": {
+            "eng": "Feel the ground"
+          }
+        }
       },
       {
         "id": "relax_11",
-        "title": "Counting sounds",
         "workshop": "solve",
         "task_id": "task_relax",
         "text_template": "relax_11_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_11_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Counting sounds",
+        "_translatedFields": {
+          "title": {
+            "eng": "Counting sounds"
+          }
+        }
       },
       {
         "id": "relax_12",
-        "title": "Feel your feeling",
         "workshop": "safe",
         "task_id": "task_relax",
         "text_template": "relax_12_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_12_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Feel your feeling",
+        "_translatedFields": {
+          "title": {
+            "eng": "Feel your feeling"
+          }
+        }
       },
       {
         "id": "relax_13",
-        "title": "Your song",
         "workshop": "crisis",
         "task_id": "task_relax",
         "text_template": "relax_13_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_13_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_active"
+        "type": "relax_active",
+        "title": "Your song",
+        "_translatedFields": {
+          "title": {
+            "eng": "Your song"
+          }
+        }
       },
       {
         "id": "relax_14",
-        "title": "Ground & gratitude",
         "workshop": "celebrate",
         "task_id": "task_relax",
         "text_template": "relax_14_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_14_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Ground & gratitude",
+        "_translatedFields": {
+          "title": {
+            "eng": "Ground & gratitude"
+          }
+        }
       },
       {
         "id": "relax_15",
-        "title": "Notice how you feel",
         "task_id": "task_relax",
         "text_template": "relax_15_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_15_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Notice how you feel",
+        "_translatedFields": {
+          "title": {
+            "eng": "Notice how you feel"
+          }
+        }
       },
       {
         "id": "relax_16",
-        "title": "Pause power",
         "task_id": "task_relax",
         "text_template": "relax_16_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_16_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Pause power",
+        "_translatedFields": {
+          "title": {
+            "eng": "Pause power"
+          }
+        }
       },
       {
         "id": "relax_17",
-        "title": "Praise yourself",
         "task_id": "task_relax",
         "text_template": "relax_17_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_17_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_passive_short"
+        "type": "relax_passive_short",
+        "title": "Praise yourself",
+        "_translatedFields": {
+          "title": {
+            "eng": "Praise yourself"
+          }
+        }
       },
       {
         "id": "relax_18",
-        "title": "Taking care of yourself",
         "task_id": "task_relax",
         "text_template": "relax_18_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_18_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_long",
-        "intro_text": "Let’s do a short activity that can help when you are feeling you need some more support to get through the day."
+        "title": "Taking care of yourself",
+        "_translatedFields": {
+          "title": {
+            "eng": "Taking care of yourself"
+          }
+        }
       },
       {
         "id": "relax_19",
-        "title": "Take a pause",
         "task_id": "task_relax",
         "text_template": "relax_19_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_19_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_long",
-        "intro_text": "Let’s do a short activity that you can do whenever you are feeling stressed or worried."
+        "title": "Take a pause",
+        "_translatedFields": {
+          "title": {
+            "eng": "Take a pause"
+          }
+        }
       },
       {
         "id": "relax_20",
-        "title": "Physical activity",
         "task_id": "task_relax",
         "text_template": "relax_20_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_20_audio.mp3",
         "fields::favourite": false,
         "type": "relax_active",
-        "intro_text": "Let’s do a fun physical activity that can help release stress and keep healthy."
+        "title": "Physical activity",
+        "_translatedFields": {
+          "title": {
+            "eng": "Physical activity"
+          }
+        }
       },
       {
         "id": "relax_21",
-        "title": "List of things",
         "task_id": "task_relax",
         "text_template": "relax_21_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_21_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_active"
+        "type": "relax_active",
+        "title": "List of things",
+        "_translatedFields": {
+          "title": {
+            "eng": "List of things"
+          }
+        }
       },
       {
         "id": "relax_22",
-        "title": "Connect",
         "task_id": "task_relax",
         "text_template": "relax_22_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_22_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_active"
+        "type": "relax_active",
+        "title": "Connect",
+        "_translatedFields": {
+          "title": {
+            "eng": "Connect"
+          }
+        }
       },
       {
         "id": "relax_23",
-        "title": "Prevent anger",
         "task_id": "task_relax",
         "text_template": "relax_23_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_23_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_active"
+        "type": "relax_active",
+        "title": "Prevent anger",
+        "_translatedFields": {
+          "title": {
+            "eng": "Prevent anger"
+          }
+        }
       },
       {
         "id": "relax_24",
-        "title": "Angry? Take a break.",
         "task_id": "task_relax",
         "text_template": "relax_24_text",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_24_audio.mp3",
         "fields::favourite": false,
-        "type": "relax_active"
+        "type": "relax_active",
+        "title": "Angry? Take a break.",
+        "_translatedFields": {
+          "title": {
+            "eng": "Angry? Take a break."
+          }
+        }
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/relax_data_list.xlsx"
@@ -11705,165 +12674,300 @@
       {
         "id": "w_self_care",
         "number": 1,
-        "title": "Welcome and Self-Care",
-        "in_text_title": "\"Welcome and Self-Care\" workshop",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
-        "short_title": "Self-Care",
-        "tools": "How to add self-care",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": false,
-        "relax": "relax_5"
+        "relax": "relax_5",
+        "title": "Welcome and Self-Care",
+        "_translatedFields": {
+          "title": {
+            "eng": "Welcome and Self-Care"
+          },
+          "in_text_title": {
+            "eng": "\"Welcome and Self-Care\" workshop"
+          },
+          "short_title": {
+            "eng": "Self-Care"
+          },
+          "tools": {
+            "eng": "How to add self-care"
+          }
+        },
+        "in_text_title": "\"Welcome and Self-Care\" workshop",
+        "short_title": "Self-Care",
+        "tools": "How to add self-care"
       },
       {
         "id": "w_1on1",
         "number": 2,
-        "title": "One-on-One Time",
-        "in_text_title": "\"One-on-One Time\" workshop",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
-        "tools": "How to spend one-on-one time",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_2",
-        "something_fun": "co_chef"
+        "something_fun": "co_chef",
+        "title": "One-on-One Time",
+        "_translatedFields": {
+          "title": {
+            "eng": "One-on-One Time"
+          },
+          "in_text_title": {
+            "eng": "\"One-on-One Time\" workshop"
+          },
+          "tools": {
+            "eng": "How to spend one-on-one time"
+          }
+        },
+        "in_text_title": "\"One-on-One Time\" workshop",
+        "tools": "How to spend one-on-one time"
       },
       {
         "id": "w_praise",
         "number": 3,
-        "title": "Praise",
-        "in_text_title": "\"Praise\" workshop",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
-        "tools": "How to praise",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_3",
-        "something_fun": "reflect_positive"
+        "something_fun": "reflect_positive",
+        "title": "Praise",
+        "_translatedFields": {
+          "title": {
+            "eng": "Praise"
+          },
+          "in_text_title": {
+            "eng": "\"Praise\" workshop"
+          },
+          "tools": {
+            "eng": "How to praise"
+          }
+        },
+        "in_text_title": "\"Praise\" workshop",
+        "tools": "How to praise"
       },
       {
         "id": "w_instruct",
         "number": 4,
-        "title": "Positive Instructions",
-        "in_text_title": "\"Positive Instructions\" workshop",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
-        "tools": "How to give positive instructions",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_4",
-        "something_fun": "dance_moves"
+        "something_fun": "dance_moves",
+        "title": "Positive Instructions",
+        "_translatedFields": {
+          "title": {
+            "eng": "Positive Instructions"
+          },
+          "in_text_title": {
+            "eng": "\"Positive Instructions\" workshop"
+          },
+          "tools": {
+            "eng": "How to give positive instructions"
+          }
+        },
+        "in_text_title": "\"Positive Instructions\" workshop",
+        "tools": "How to give positive instructions"
       },
       {
         "id": "w_stress",
         "number": 5,
-        "title": "Managing Stress",
-        "in_text_title": "\"Managing Stress\" workshop",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe.svg",
-        "tools": "How to manage stress",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_7",
-        "something_fun": "check_in_chat"
+        "something_fun": "check_in_chat",
+        "title": "Managing Stress",
+        "_translatedFields": {
+          "title": {
+            "eng": "Managing Stress"
+          },
+          "in_text_title": {
+            "eng": "\"Managing Stress\" workshop"
+          },
+          "tools": {
+            "eng": "How to manage stress"
+          }
+        },
+        "in_text_title": "\"Managing Stress\" workshop",
+        "tools": "How to manage stress"
       },
       {
         "id": "w_money",
         "number": 6,
-        "title": "Family Budgets",
-        "in_text_title": "\"Family Budgets\" workshop",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_money.svg",
-        "tools": "How to budget & save",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_8",
-        "something_fun": "dream_travel"
+        "something_fun": "dream_travel",
+        "title": "Family Budgets",
+        "_translatedFields": {
+          "title": {
+            "eng": "Family Budgets"
+          },
+          "in_text_title": {
+            "eng": "\"Family Budgets\" workshop"
+          },
+          "tools": {
+            "eng": "How to budget & save"
+          }
+        },
+        "in_text_title": "\"Family Budgets\" workshop",
+        "tools": "How to budget & save"
       },
       {
         "id": "w_rules",
         "number": 7,
-        "title": "Rules",
-        "in_text_title": "\"Rules\" workshop",
-        "tools": "How to create rules",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_9",
-        "something_fun": "famous_party"
+        "something_fun": "famous_party",
+        "title": "Rules",
+        "_translatedFields": {
+          "title": {
+            "eng": "Rules"
+          },
+          "in_text_title": {
+            "eng": "\"Rules\" workshop"
+          },
+          "tools": {
+            "eng": "How to create rules"
+          }
+        },
+        "in_text_title": "\"Rules\" workshop",
+        "tools": "How to create rules"
       },
       {
         "id": "w_consequence",
         "number": 8,
-        "title": "Calm Consequences",
-        "in_text_title": "\"Calm Consequences\" workshop",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence.svg",
-        "tools": "How to give calm consequences",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_10",
-        "something_fun": "two_truths"
+        "something_fun": "two_truths",
+        "title": "Calm Consequences",
+        "_translatedFields": {
+          "title": {
+            "eng": "Calm Consequences"
+          },
+          "in_text_title": {
+            "eng": "\"Calm Consequences\" workshop"
+          },
+          "tools": {
+            "eng": "How to give calm consequences"
+          }
+        },
+        "in_text_title": "\"Calm Consequences\" workshop",
+        "tools": "How to give calm consequences"
       },
       {
         "id": "w_solve",
         "number": 9,
-        "title": "Problem Solving",
-        "in_text_title": "\"Problem Solving\" workshop",
-        "tools": "How to solve problems",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_11",
-        "something_fun": "mirror"
+        "something_fun": "mirror",
+        "title": "Problem Solving",
+        "_translatedFields": {
+          "title": {
+            "eng": "Problem Solving"
+          },
+          "in_text_title": {
+            "eng": "\"Problem Solving\" workshop"
+          },
+          "tools": {
+            "eng": "How to solve problems"
+          }
+        },
+        "in_text_title": "\"Problem Solving\" workshop",
+        "tools": "How to solve problems"
       },
       {
         "id": "w_safe",
         "number": 10,
-        "title": "Teen Safety",
-        "in_text_title": "\"Teen Safety\" workshop",
         "image_asset": "assets/plh_assets/plh_images/habits/habit_safe.svg",
-        "tools": "How to keep your teen safe",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_12",
-        "something_fun": "time_machine"
+        "something_fun": "time_machine",
+        "title": "Teen Safety",
+        "_translatedFields": {
+          "title": {
+            "eng": "Teen Safety"
+          },
+          "in_text_title": {
+            "eng": "\"Teen Safety\" workshop"
+          },
+          "tools": {
+            "eng": "How to keep your teen safe"
+          }
+        },
+        "in_text_title": "\"Teen Safety\" workshop",
+        "tools": "How to keep your teen safe"
       },
       {
         "id": "w_crisis",
         "number": 11,
-        "title": "Dealing with Crisis",
-        "in_text_title": "\"Dealing with Crisis\" workshop",
-        "tools": "How to deal with crisis",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         "relax": "relax_13",
-        "something_fun": "superpowers"
+        "something_fun": "superpowers",
+        "title": "Dealing with Crisis",
+        "_translatedFields": {
+          "title": {
+            "eng": "Dealing with Crisis"
+          },
+          "in_text_title": {
+            "eng": "\"Dealing with Crisis\" workshop"
+          },
+          "tools": {
+            "eng": "How to deal with crisis"
+          }
+        },
+        "in_text_title": "\"Dealing with Crisis\" workshop",
+        "tools": "How to deal with crisis"
       },
       {
         "id": "w_celebrate",
         "number": 12,
-        "title": "Celebration and Next Steps",
-        "in_text_title": "\"Celebration and Next Steps\" workshop",
-        "tools": "How to support each other",
         "completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_14"
+        "relax": "relax_14",
+        "title": "Celebration and Next Steps",
+        "_translatedFields": {
+          "title": {
+            "eng": "Celebration and Next Steps"
+          },
+          "in_text_title": {
+            "eng": "\"Celebration and Next Steps\" workshop"
+          },
+          "tools": {
+            "eng": "How to support each other"
+          }
+        },
+        "in_text_title": "\"Celebration and Next Steps\" workshop",
+        "tools": "How to support each other"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/workshop_data_list.xlsx"
