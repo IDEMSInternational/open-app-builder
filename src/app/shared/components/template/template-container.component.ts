@@ -4,7 +4,6 @@ import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { TourService } from "../../services/tour/tour.service";
-import { mapToJson } from "../../utils";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateActionService } from "./services/template-action.service";
 import { TemplateNavService } from "./services/template-nav.service";
@@ -174,7 +173,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         template,
         ctxt: { ...this },
         renderedRows: { ...this.templateRowService.renderedRows },
-        rowMap: mapToJson(this.templateRowService.templateRowMap),
+        rowMap: this.templateRowService.templateRowMap,
       });
       // if a parent exists also provide parent reference to this as a child
       if (this.parent) {
