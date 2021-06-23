@@ -176,14 +176,21 @@ export function getBooleanParamFromTemplateRow(
 export function evaluateJSExpression(
   expression: string,
   thisCtxt = {},
-  globalFunctions: ((...args: any) => any)[] = []
+  globalFunctions: IFunctionHashmap = {}
 ): any {
-  const globalString = globalFunctions.map((fn) => fn.toString()).join(";");
+  // convert global functions to variable strings. Note, cannot simply parse function.toString() as optimiser
+  // strips names and just leaves all as anonymous functions
+  const globalString = Object.entries(globalFunctions)
+    .map(([name, fn]) => `var ${name} = ${fn}`)
+    .join(";");
   const funcString = `"use strict"; ${globalString}; return (${expression});`;
   const func = new Function(funcString);
 
   return func.apply(thisCtxt);
 }
+
+/** Generic object containing list of functions */
+export type IFunctionHashmap = { [function_name: string]: (...args: any) => any };
 
 /**
  * convert strings containing "TRUE", "true", "FALSE" or "false" to booleans

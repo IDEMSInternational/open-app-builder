@@ -1,15 +1,17 @@
+import { IFunctionHashmap } from "src/app/shared/utils";
+
 /**
  * Declare any functions that can be called from within `@calc(....)` statements, e.g.
  * ```
  * @calc(pick_random(@local.list_to_pick_from))
  * ```
  */
-const CALC_FUNCTIONS: ICalcFunction[] = [
+const CALC_FUNCTIONS: IFunctionHashmap = {
   /**
    * Pick a random item from a list
    * @param arr array of items to pick from
    */
-  function pick_random(items: any[] = []) {
+  pick_random: (items: any[] = []) => {
     try {
       const randomItem = items[Math.floor(Math.random() * items.length)];
       return randomItem;
@@ -27,7 +29,7 @@ const CALC_FUNCTIONS: ICalcFunction[] = [
    * @param name the name to lookup from the list of items
    * @param returnField specify a single field from the item to return, default: 'text'
    */
-  function lookup_answer_list(list: string[] = [], name: string, returnField: string = "text") {
+  lookup_answer_list: (list: string[] = [], name: string, returnField: string = "text") => {
     // Convert the list key-value pairs. Note - whilst this function is shared in template-utils
     // we cannot import into this function as it is created dynamically
     const items = list.map((item) => {
@@ -48,7 +50,7 @@ const CALC_FUNCTIONS: ICalcFunction[] = [
       return name;
     }
   },
-];
+};
 
 /**
  * Main export for use in evaluation statements. Includes all above functions
@@ -60,7 +62,7 @@ export const CALC_CONTEXT: ICalcContext = {
   thisCtxt: {
     calc: (v: any) => v, // include simple function so @calc(...) returns the value already parsed inside
   },
-  globalFunctions: CALC_FUNCTIONS, // include all calculations as above
+  globalFunctions: CALC_FUNCTIONS,
 };
 
 /**
@@ -72,8 +74,5 @@ export interface ICalcContext {
   thisCtxt: {
     [name: string]: any;
   };
-  globalFunctions: ICalcFunction[];
+  globalFunctions: IFunctionHashmap;
 }
-
-/** Calc functions are just simply functions, with unspecified args and return */
-type ICalcFunction = (...args: any) => any;
