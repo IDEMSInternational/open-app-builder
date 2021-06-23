@@ -10,6 +10,7 @@ import {
 import { TemplateService } from "./template.service";
 import { CALC_CONTEXT, ICalcContext } from "./template-calc.service";
 import { TemplateTranslateService } from "./template-translate.service";
+import { ITemplateRowMap } from "./template-row.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -23,7 +24,7 @@ const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  * @param templateRowMap hashmap containing list of all template rows, keyed by their nested row name
  */
 interface IVariableContext {
-  templateRowMap: Map<string, FlowTypes.TemplateRow>;
+  templateRowMap: ITemplateRowMap;
   row: FlowTypes.TemplateRow;
   field?: string;
   calcContext?: ICalcContext;
@@ -236,7 +237,8 @@ export class TemplateVariablesService {
         replacedExpression = replacedExpression.replace(matchedExpression, parsedValue);
       });
       evaluated = replacedExpression;
-      log("evaluated (string replace)", evaluated);
+      log("fail to evaluate as JS", { error, fullExpression });
+      log("evaluated (string replace)", evaluated, error);
     }
     // in case the replacement has introduced a new dynamic expression (e.g. @local.@local.some_var => @local.new_var)
     // check for new dynamic evaluators and reprocess
@@ -266,7 +268,7 @@ export class TemplateVariablesService {
 
         // find any rows where nested path corresponds to match path
         let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
-        templateRowMap.forEach((row, nestedName) => {
+        Object.entries(templateRowMap).forEach(([nestedName, row]) => {
           if (nestedName === fieldName || nestedName.endsWith(`.${fieldName}`)) {
             matchedRows.push({ row, nestedName });
           }
@@ -279,7 +281,7 @@ export class TemplateVariablesService {
             parseSuccess = false;
             console.error(`@local.${fieldName} not found`, {
               evaluator,
-              rowMap: mapToJson(templateRowMap),
+              rowMap: templateRowMap,
             });
           }
         }
