@@ -1,0 +1,63 @@
+ion-toggle {
+  --background: #b4b7b7;
+  width: 55px;
+}
+
+.with_icons {
+  ion-toggle::before {
+    position: absolute;
+    height: 100%;
+    width: 14px;
+    top: 10px;
+    left: 7px;
+    content: "";
+    background: url("../../../../../../assets/plh_assets/plh_images/icons/tick_white.svg");
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+  ion-toggle::after {
+    position: absolute;
+    height: 100%;
+    width: 14px;
+    top: 1px;
+    right: 2px;
+    content: "+";
+    color: white;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform: rotate(135deg);
+    font-size: 30px;
+    font-weight: 300;
+  }
+}
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  margin-left: var(--small-margin);
+  margin-right: var(--small-margin);
+  text-align: right;
+  line-height: 27px;
+}
+.center {
+  justify-content: center;
+}
+.center .label {
+  position: absolute;
+  right: 0;
+  max-width: calc(50% - 45px);
+}
+.right .label {
+  order: 1;
+  text-align: left;
+}
+.toggle_wrapper {
+  align-self: baseline;
+  margin-top: 5px;
+}
+.right .toggle_wrapper {
+  order: 2;
+}
