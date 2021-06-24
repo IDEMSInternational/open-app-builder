@@ -612,6 +612,15 @@
       value_1: right - (default) 
       value_2: left 
    ### Parameter 3
+      Parameter Name: text_align
+      #### Values and descriptions
+      value_1: left - (default)
+      description: text left aligned 
+      value_2: center 
+      description: text center aligned
+      value_3: right 
+      description: text right aligned
+   ### Parameter 4
       Parameter Name: style
       #### Values and descriptions
       value_1: tiny - (default) 
@@ -738,6 +747,10 @@
       description: banner style with primary bg (--ion-dg-bg-default)
       value_11: column 
       description: column style
+      value_12: two_column 
+      description: two column style
+      value_13: two_column_images
+      description: two column for images (splash screen)
       #### To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
       #### If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
 
