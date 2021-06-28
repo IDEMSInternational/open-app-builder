@@ -236,7 +236,8 @@ export class TemplateVariablesService {
         replacedExpression = replacedExpression.replace(matchedExpression, parsedValue);
       });
       evaluated = replacedExpression;
-      log("evaluated (string replace)", evaluated);
+      log("fail to evaluate as JS", { error, fullExpression });
+      log("evaluated (string replace)", evaluated, error);
     }
     // in case the replacement has introduced a new dynamic expression (e.g. @local.@local.some_var => @local.new_var)
     // check for new dynamic evaluators and reprocess
