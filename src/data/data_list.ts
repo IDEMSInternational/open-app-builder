@@ -30,36 +30,26 @@
         "icon": "plh_images/icons/play_white.svg"
       },
       {
-        "id": "w_self_care_relax",
+        "id": "w_self_care_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_5"
-            ],
-            "_raw": "set_field: which_relax : relax_5",
-            "_cleaned": "click | set_field: which_relax : relax_5"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_self_care_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_self_care_m_relax",
+            "_cleaned": "click | pop_up: w_self_care_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_self_care_relax.sent",
+              "w_self_care_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_self_care_relax.sent : true",
-            "_cleaned": "click | set_field: w_self_care_relax.sent : true"
+            "_raw": "set_field: w_self_care_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_self_care_m_relax.sent : true"
           }
         ],
         "priority": 0.1,
@@ -79,10 +69,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_self_care_relax.sent"
+                "evaluate": "w_self_care_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_self_care_relax.sent : true | before : 1 : day"
+            "_raw": "get_field | w_self_care_m_relax.sent : true | before : 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -334,36 +324,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_1on1_relax",
+        "id": "w_1on1_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_2"
-            ],
-            "_raw": "set_field: which_relax : relax_2",
-            "_cleaned": "click | set_field: which_relax : relax_2"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_1on1_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_1on1_m_relax",
+            "_cleaned": "click | pop_up: w_1on1_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_1on1_relax.sent",
+              "w_1on1_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_1on1_relax.sent : true",
-            "_cleaned": "click | set_field: w_1on1_relax.sent : true"
+            "_raw": "set_field: w_1on1_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_1on1_m_relax.sent : true"
           }
         ],
         "priority": 1.1,
@@ -393,10 +373,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_1on1_relax.sent"
+                "evaluate": "w_1on1_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_1on1_relax.sent : true | before : 1 : day"
+            "_raw": "get_field | w_1on1_m_relax.sent : true | before : 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -993,36 +973,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_praise_relax",
+        "id": "w_praise_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_3"
-            ],
-            "_raw": "set_field: which_relax : relax_3",
-            "_cleaned": "click | set_field: which_relax : relax_3"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_praise_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_praise_m_relax",
+            "_cleaned": "click | pop_up: w_praise_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_praise_relax.sent",
+              "w_praise_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_praise_relax.sent : true",
-            "_cleaned": "click | set_field: w_praise_relax.sent : true"
+            "_raw": "set_field: w_praise_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_praise_m_relax.sent : true"
           }
         ],
         "priority": 2.1,
@@ -1052,10 +1022,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_praise_relax.sent"
+                "evaluate": "w_praise_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_praise_relax.sent : true | before : 1 : day"
+            "_raw": "get_field | w_praise_m_relax.sent : true | before : 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -1634,36 +1604,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_instruct_relax",
+        "id": "w_instruct_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_4"
-            ],
-            "_raw": "set_field: which_relax : relax_4",
-            "_cleaned": "click | set_field: which_relax : relax_4"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_instruct_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_instruct_m_relax",
+            "_cleaned": "click | pop_up: w_instruct_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_instruct_relax.sent",
+              "w_instruct_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_instruct_relax.sent : true",
-            "_cleaned": "click | set_field: w_instruct_relax.sent : true"
+            "_raw": "set_field: w_instruct_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_instruct_m_relax.sent : true"
           }
         ],
         "priority": 3.1,
@@ -1693,10 +1653,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_instruct_relax.sent"
+                "evaluate": "w_instruct_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_instruct_relax.sent : true | within: 1 : day"
+            "_raw": "get_field | w_instruct_m_relax.sent : true | within: 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -2284,36 +2244,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_stress_relax",
+        "id": "w_stress_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_7"
-            ],
-            "_raw": "set_field: which_relax : relax_7",
-            "_cleaned": "click | set_field: which_relax : relax_7"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_stress_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_stress_m_relax",
+            "_cleaned": "click | pop_up: w_stress_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_stress_relax.sent",
+              "w_stress_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_stress_relax.sent : true",
-            "_cleaned": "click | set_field: w_stress_relax.sent : true"
+            "_raw": "set_field: w_stress_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_stress_m_relax.sent : true"
           }
         ],
         "priority": 4.1,
@@ -2343,10 +2293,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_stress_relax.sent"
+                "evaluate": "w_stress_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_stress_relax.sent : true | within : 1 : day"
+            "_raw": "get_field | w_stress_m_relax.sent : true | within : 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -2934,36 +2884,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_money_relax",
+        "id": "w_money_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_8"
-            ],
-            "_raw": "set_field: which_relax : relax_8",
-            "_cleaned": "click | set_field: which_relax : relax_8"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_money_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_money_m_relax",
+            "_cleaned": "click | pop_up: w_money_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_money_relax.sent",
+              "w_money_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_money_relax.sent : true",
-            "_cleaned": "click | set_field: w_money_relax.sent : true"
+            "_raw": "set_field: w_money_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_money_m_relax.sent : true"
           }
         ],
         "priority": 5.1,
@@ -2993,10 +2933,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_money_relax.sent"
+                "evaluate": "w_money_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_money_relax.sent : true | within: 1 : day"
+            "_raw": "get_field | w_money_m_relax.sent : true | within: 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -3584,36 +3524,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_rules_relax",
+        "id": "w_rules_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_9"
-            ],
-            "_raw": "set_field: which_relax : relax_9",
-            "_cleaned": "click | set_field: which_relax : relax_9"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_rules_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_rules_m_relax",
+            "_cleaned": "click | pop_up: w_rules_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_rules_relax.sent",
+              "w_rules_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_rules_relax.sent : true",
-            "_cleaned": "click | set_field: w_rules_relax.sent : true"
+            "_raw": "set_field: w_rules_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_rules_m_relax.sent : true"
           }
         ],
         "priority": 6.1,
@@ -3643,10 +3573,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_rules_relax.sent"
+                "evaluate": "w_rules_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_rules_relax.sent : true | within: 1 : day"
+            "_raw": "get_field | w_rules_m_relax.sent : true | within: 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -4216,36 +4146,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_consequence_relax",
+        "id": "w_consequence_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_10"
-            ],
-            "_raw": "set_field: which_relax : relax_10",
-            "_cleaned": "click | set_field: which_relax : relax_10"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_consequence_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_consequence_m_relax",
+            "_cleaned": "click | pop_up: w_consequence_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_consequence_relax.sent",
+              "w_consequence_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_consequence_relax.sent : true",
-            "_cleaned": "click | set_field: w_consequence_relax.sent : true"
+            "_raw": "set_field: w_consequence_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_consequence_m_relax.sent : true"
           }
         ],
         "priority": 7.1,
@@ -4275,10 +4195,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_consequence_relax.sent"
+                "evaluate": "w_consequence_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_consequence_relax.sent : true | within: 1 : day"
+            "_raw": "get_field | w_consequence_m_relax.sent : true | within: 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -4848,36 +4768,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_solve_relax",
+        "id": "w_solve_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_11"
-            ],
-            "_raw": "set_field: which_relax : relax_11",
-            "_cleaned": "click | set_field: which_relax : relax_11"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_solve_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_solve_m_relax",
+            "_cleaned": "click | pop_up: w_solve_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_solve_relax.sent",
+              "w_solve_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_solve_relax.sent : true",
-            "_cleaned": "click | set_field: w_solve_relax.sent : true"
+            "_raw": "set_field: w_solve_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_solve_m_relax.sent : true"
           }
         ],
         "priority": 8.1,
@@ -4907,10 +4817,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_solve_relax.sent"
+                "evaluate": "w_solve_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_solve_relax.sent : true | within: 1 : day"
+            "_raw": "get_field | w_solve_m_relax.sent : true | within: 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -5480,36 +5390,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_safe_relax",
+        "id": "w_safe_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_12"
-            ],
-            "_raw": "set_field: which_relax : relax_12",
-            "_cleaned": "click | set_field: which_relax : relax_12"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_safe_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_safe_m_relax",
+            "_cleaned": "click | pop_up: w_safe_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_safe_relax.sent",
+              "w_safe_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_safe_relax.sent : true",
-            "_cleaned": "click | set_field: w_safe_relax.sent : true"
+            "_raw": "set_field: w_safe_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_safe_m_relax.sent : true"
           }
         ],
         "priority": 9.1,
@@ -5539,10 +5439,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_safe_relax.sent"
+                "evaluate": "w_safe_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_safe_relax.sent : true | within: 1 : day"
+            "_raw": "get_field | w_safe_m_relax.sent : true | within: 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -6112,36 +6012,26 @@
         "icon": "plh_images/icons/star_white.svg"
       },
       {
-        "id": "w_crisis_relax",
+        "id": "w_crisis_m_relax",
         "click_action_list": [
-          {
-            "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_13"
-            ],
-            "_raw": "set_field: which_relax : relax_13",
-            "_cleaned": "click | set_field: which_relax : relax_13"
-          },
           {
             "trigger": "click",
             "action_id": "pop_up",
             "args": [
-              "m_relax"
+              "w_crisis_m_relax"
             ],
-            "_raw": "pop_up: m_relax",
-            "_cleaned": "click | pop_up: m_relax"
+            "_raw": "pop_up: w_crisis_m_relax",
+            "_cleaned": "click | pop_up: w_crisis_m_relax"
           },
           {
             "trigger": "click",
             "action_id": "set_field",
             "args": [
-              "w_crisis_relax.sent",
+              "w_crisis_m_relax.sent",
               true
             ],
-            "_raw": "set_field: w_crisis_relax.sent : true",
-            "_cleaned": "click | set_field: w_crisis_relax.sent : true"
+            "_raw": "set_field: w_crisis_m_relax.sent : true",
+            "_cleaned": "click | set_field: w_crisis_m_relax.sent : true"
           }
         ],
         "priority": 10.1,
@@ -6171,10 +6061,10 @@
             "condition_type": "field_evaluation",
             "condition_args": {
               "field_evaluation": {
-                "evaluate": "w_crisis_relax.sent"
+                "evaluate": "w_crisis_m_relax.sent"
               }
             },
-            "_raw": "get_field | w_crisis_relax.sent : true | within: 1 : day"
+            "_raw": "get_field | w_crisis_m_relax.sent : true | within: 1 : day"
           },
           {
             "condition_type": "db_lookup",
@@ -8314,22 +8204,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_5"
-            ],
-            "_raw": "set_field: which_relax : relax_5",
-            "_cleaned": "click | set_field: which_relax : relax_5"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_self_care_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_self_care_relax",
+            "_cleaned": "click | go_to: w_self_care_relax"
           },
           {
             "trigger": "click",
@@ -8385,22 +8265,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_2"
-            ],
-            "_raw": "set_field: which_relax : relax_2",
-            "_cleaned": "click | set_field: which_relax : relax_2"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_1on1_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_1on1_relax",
+            "_cleaned": "click | go_to: w_1on1_relax"
           },
           {
             "trigger": "click",
@@ -8466,22 +8336,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_3"
-            ],
-            "_raw": "set_field: which_relax : relax_3",
-            "_cleaned": "click | set_field: which_relax : relax_3"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_praise_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_praise_relax",
+            "_cleaned": "click | go_to: w_praise_relax"
           },
           {
             "trigger": "click",
@@ -8547,22 +8407,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_4"
-            ],
-            "_raw": "set_field: which_relax : relax_4",
-            "_cleaned": "click | set_field: which_relax : relax_4"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_instruct_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_instruct_relax",
+            "_cleaned": "click | go_to: w_instruct_relax"
           },
           {
             "trigger": "click",
@@ -8628,22 +8478,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_7"
-            ],
-            "_raw": "set_field: which_relax : relax_7",
-            "_cleaned": "click | set_field: which_relax : relax_7"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_stress_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_stress_relax",
+            "_cleaned": "click | go_to: w_stress_relax"
           },
           {
             "trigger": "click",
@@ -8709,22 +8549,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_8"
-            ],
-            "_raw": "set_field: which_relax : relax_8",
-            "_cleaned": "click | set_field: which_relax : relax_8"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_money_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_money_relax",
+            "_cleaned": "click | go_to: w_money_relax"
           },
           {
             "trigger": "click",
@@ -8790,22 +8620,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_9"
-            ],
-            "_raw": "set_field: which_relax : relax_9",
-            "_cleaned": "click | set_field: which_relax : relax_9"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_rules_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_rules_relax",
+            "_cleaned": "click | go_to: w_rules_relax"
           },
           {
             "trigger": "click",
@@ -8871,22 +8691,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_10"
-            ],
-            "_raw": "set_field: which_relax : relax_10",
-            "_cleaned": "click | set_field: which_relax : relax_10"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_consequence_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_consequence_relax",
+            "_cleaned": "click | go_to: w_consequence_relax"
           },
           {
             "trigger": "click",
@@ -8952,22 +8762,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_11"
-            ],
-            "_raw": "set_field: which_relax : relax_11",
-            "_cleaned": "click | set_field: which_relax : relax_11"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_solve_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_solve_relax",
+            "_cleaned": "click | go_to: w_solve_relax"
           },
           {
             "trigger": "click",
@@ -9033,22 +8833,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_12"
-            ],
-            "_raw": "set_field: which_relax : relax_12",
-            "_cleaned": "click | set_field: which_relax : relax_12"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_safe_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_safe_relax",
+            "_cleaned": "click | go_to: w_safe_relax"
           },
           {
             "trigger": "click",
@@ -9114,22 +8904,12 @@
         "click_action_list": [
           {
             "trigger": "click",
-            "action_id": "set_field",
-            "args": [
-              "which_relax",
-              "relax_13"
-            ],
-            "_raw": "set_field: which_relax : relax_13",
-            "_cleaned": "click | set_field: which_relax : relax_13"
-          },
-          {
-            "trigger": "click",
             "action_id": "go_to",
             "args": [
-              "relax"
+              "w_crisis_relax"
             ],
-            "_raw": "go_to: relax",
-            "_cleaned": "click | go_to: relax"
+            "_raw": "go_to: w_crisis_relax",
+            "_cleaned": "click | go_to: w_crisis_relax"
           },
           {
             "trigger": "click",
@@ -12318,6 +12098,7 @@
         "id": "relax_1",
         "task_id": "task_relax",
         "text_template": "relax_1_text",
+        "activity_template": "activity_relax_1",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_1_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12333,6 +12114,7 @@
         "workshop": "1on1",
         "task_id": "task_relax",
         "text_template": "relax_2_text",
+        "activity_template": "activity_relax_2",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_2_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12348,6 +12130,7 @@
         "workshop": "praise",
         "task_id": "task_relax",
         "text_template": "relax_3_text",
+        "activity_template": "activity_relax_3",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_3_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12363,6 +12146,7 @@
         "workshop": "instruct",
         "task_id": "task_relax",
         "text_template": "relax_4_text",
+        "activity_template": "activity_relax_4",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_4_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12378,6 +12162,7 @@
         "workshop": "self_care",
         "task_id": "task_relax",
         "text_template": "relax_5_text",
+        "activity_template": "activity_relax_5",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_5_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12392,6 +12177,7 @@
         "id": "relax_6",
         "task_id": "task_relax",
         "text_template": "relax_6_text",
+        "activity_template": "activity_relax_6",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_6_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12407,6 +12193,7 @@
         "workshop": "stress",
         "task_id": "task_relax",
         "text_template": "relax_7_text",
+        "activity_template": "activity_relax_7",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_7_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12422,6 +12209,7 @@
         "workshop": "money",
         "task_id": "task_relax",
         "text_template": "relax_8_text",
+        "activity_template": "activity_relax_8",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_8_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12437,6 +12225,7 @@
         "workshop": "rules",
         "task_id": "task_relax",
         "text_template": "relax_9_text",
+        "activity_template": "activity_relax_9",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_9_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12452,6 +12241,7 @@
         "workshop": "consequence",
         "task_id": "task_relax",
         "text_template": "relax_10_text",
+        "activity_template": "activity_relax_10",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_10_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12467,6 +12257,7 @@
         "workshop": "solve",
         "task_id": "task_relax",
         "text_template": "relax_11_text",
+        "activity_template": "activity_relax_11",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_11_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12482,6 +12273,7 @@
         "workshop": "safe",
         "task_id": "task_relax",
         "text_template": "relax_12_text",
+        "activity_template": "activity_relax_12",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_12_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12497,6 +12289,7 @@
         "workshop": "crisis",
         "task_id": "task_relax",
         "text_template": "relax_13_text",
+        "activity_template": "activity_relax_13",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_13_audio.mp3",
         "fields::favourite": false,
         "type": "relax_active",
@@ -12512,6 +12305,7 @@
         "workshop": "celebrate",
         "task_id": "task_relax",
         "text_template": "relax_14_text",
+        "activity_template": "activity_relax_14",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_14_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12526,6 +12320,7 @@
         "id": "relax_15",
         "task_id": "task_relax",
         "text_template": "relax_15_text",
+        "activity_template": "activity_relax_15",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_15_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12540,6 +12335,7 @@
         "id": "relax_16",
         "task_id": "task_relax",
         "text_template": "relax_16_text",
+        "activity_template": "activity_relax_16",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_16_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12554,6 +12350,7 @@
         "id": "relax_17",
         "task_id": "task_relax",
         "text_template": "relax_17_text",
+        "activity_template": "activity_relax_17",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_17_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_short",
@@ -12568,6 +12365,7 @@
         "id": "relax_18",
         "task_id": "task_relax",
         "text_template": "relax_18_text",
+        "activity_template": "activity_relax_18",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_18_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_long",
@@ -12582,6 +12380,7 @@
         "id": "relax_19",
         "task_id": "task_relax",
         "text_template": "relax_19_text",
+        "activity_template": "activity_relax_19",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_19_audio.mp3",
         "fields::favourite": false,
         "type": "relax_passive_long",
@@ -12596,6 +12395,7 @@
         "id": "relax_20",
         "task_id": "task_relax",
         "text_template": "relax_20_text",
+        "activity_template": "activity_relax_20",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_20_audio.mp3",
         "fields::favourite": false,
         "type": "relax_active",
@@ -12610,6 +12410,7 @@
         "id": "relax_21",
         "task_id": "task_relax",
         "text_template": "relax_21_text",
+        "activity_template": "activity_relax_21",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_21_audio.mp3",
         "fields::favourite": false,
         "type": "relax_active",
@@ -12624,6 +12425,7 @@
         "id": "relax_22",
         "task_id": "task_relax",
         "text_template": "relax_22_text",
+        "activity_template": "activity_relax_22",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_22_audio.mp3",
         "fields::favourite": false,
         "type": "relax_active",
@@ -12638,6 +12440,7 @@
         "id": "relax_23",
         "task_id": "task_relax",
         "text_template": "relax_23_text",
+        "activity_template": "activity_relax_23",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_23_audio.mp3",
         "fields::favourite": false,
         "type": "relax_active",
@@ -12652,6 +12455,7 @@
         "id": "relax_24",
         "task_id": "task_relax",
         "text_template": "relax_24_text",
+        "activity_template": "activity_relax_24",
         "audio_asset": "assets/plh_assets/plh_audio/relax/relax_24_audio.mp3",
         "fields::favourite": false,
         "type": "relax_active",
@@ -12674,12 +12478,13 @@
       {
         "id": "w_self_care",
         "number": 1,
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_self_care/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": false,
-        "relax": "relax_5",
+        "relax_data": "@data.relax.relax_5",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_self_care.mp3",
         "title": "Welcome and Self-Care",
         "_translatedFields": {
           "title": {
@@ -12702,13 +12507,14 @@
       {
         "id": "w_1on1",
         "number": 2,
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_1on1/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_2",
-        "something_fun": "co_chef",
+        "relax_data": "@data.relax.relax_2",
+        "something_fun_data": "@data.something_fun.co_chef",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_1on1.mp3",
         "title": "One-on-One Time",
         "_translatedFields": {
           "title": {
@@ -12727,13 +12533,14 @@
       {
         "id": "w_praise",
         "number": 3,
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_praise/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_3",
-        "something_fun": "reflect_positive",
+        "relax_data": "@data.relax.relax_3",
+        "something_fun_data": "@data.something_fun.reflect_positive",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_praise.mp3",
         "title": "Praise",
         "_translatedFields": {
           "title": {
@@ -12752,13 +12559,14 @@
       {
         "id": "w_instruct",
         "number": 4,
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_instruct/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_4",
-        "something_fun": "dance_moves",
+        "relax_data": "@data.relax.relax_4",
+        "something_fun_data": "@data.something_fun.dance_moves",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_instruct.mp3",
         "title": "Positive Instructions",
         "_translatedFields": {
           "title": {
@@ -12777,13 +12585,14 @@
       {
         "id": "w_stress",
         "number": 5,
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_breathe.svg",
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_stress/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_7",
-        "something_fun": "check_in_chat",
+        "relax_data": "@data.relax.relax_7",
+        "something_fun_data": "@data.something_fun.check_in_chat",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_stress.mp3",
         "title": "Managing Stress",
         "_translatedFields": {
           "title": {
@@ -12802,13 +12611,14 @@
       {
         "id": "w_money",
         "number": 6,
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_money.svg",
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_money/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_8",
-        "something_fun": "dream_travel",
+        "relax_data": "@data.relax.relax_8",
+        "something_fun_data": "@data.something_fun.dream_travel",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_money.mp3",
         "title": "Family Budgets",
         "_translatedFields": {
           "title": {
@@ -12827,12 +12637,14 @@
       {
         "id": "w_rules",
         "number": 7,
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_rules/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_9",
-        "something_fun": "famous_party",
+        "relax_data": "@data.relax.relax_9",
+        "something_fun_data": "@data.something_fun.famous_party",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_rules.mp3",
         "title": "Rules",
         "_translatedFields": {
           "title": {
@@ -12851,13 +12663,14 @@
       {
         "id": "w_consequence",
         "number": 8,
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_consequence.svg",
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_consequence/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_10",
-        "something_fun": "two_truths",
+        "relax_data": "@data.relax.relax_10",
+        "something_fun_data": "@data.something_fun.two_truths",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_consequence.mp3",
         "title": "Calm Consequences",
         "_translatedFields": {
           "title": {
@@ -12876,12 +12689,14 @@
       {
         "id": "w_solve",
         "number": 9,
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_rules/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_11",
-        "something_fun": "mirror",
+        "relax_data": "@data.relax.relax_11",
+        "something_fun_data": "@data.something_fun.mirror",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_solve.mp3",
         "title": "Problem Solving",
         "_translatedFields": {
           "title": {
@@ -12900,13 +12715,14 @@
       {
         "id": "w_safe",
         "number": 10,
-        "image_asset": "assets/plh_assets/plh_images/habits/habit_safe.svg",
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_safe/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_12",
-        "something_fun": "time_machine",
+        "relax_data": "@data.relax.relax_12",
+        "something_fun_data": "@data.something_fun.time_machine",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_safe.mp3",
         "title": "Teen Safety",
         "_translatedFields": {
           "title": {
@@ -12925,12 +12741,14 @@
       {
         "id": "w_crisis",
         "number": 11,
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_crisis/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_13",
-        "something_fun": "superpowers",
+        "relax_data": "@data.relax.relax_13",
+        "something_fun_data": "@data.something_fun.superpowers",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_crisis.mp3",
         "title": "Dealing with Crisis",
         "_translatedFields": {
           "title": {
@@ -12949,11 +12767,13 @@
       {
         "id": "w_celebrate",
         "number": 12,
-        "completion_level": 0,
+        "image_asset": "assets/plh_assets/plh_images/workshops/w_celebrate/tools.svg",
+        "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
-        "relax": "relax_14",
+        "relax_data": "@data.relax.relax_14",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_celebrate.mp3",
         "title": "Celebration and Next Steps",
         "_translatedFields": {
           "title": {

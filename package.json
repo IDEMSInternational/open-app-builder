@@ -1,13 +1,13 @@
 {
   "name": "parenting-app-ui",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "author": "IDEMS International",
   "homepage": "https://idems.international/",
   "description": "",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build",
+    "build": "ng build --prod",
     "scripts": "cd scripts && npm run start --",
     "test": "ng test",
     "lint": "ng lint",
