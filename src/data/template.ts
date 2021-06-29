@@ -6179,6 +6179,18 @@
     "status": "released",
     "rows": [
       {
+        "name": "tile_1_text",
+        "value": "WHO Website",
+        "type": "set_variable",
+        "_nested_name": "tile_1_text"
+      },
+      {
+        "name": "tile_2_text",
+        "value": "UNICEF Website",
+        "type": "set_variable",
+        "_nested_name": "tile_2_text"
+      },
+      {
         "type": "title",
         "name": "title",
         "value": "@data.parent_centre.covid.title",
@@ -6209,18 +6221,138 @@
         "_nested_name": "text_1"
       },
       {
-        "type": "text",
-        "name": "text_2",
-        "value": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
-        "exclude_from_translation": true,
-        "_nested_name": "text_2"
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "tile_component",
+            "name": "tile_1",
+            "value": "tile_1",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to_url",
+                "args": [
+                  "https",
+                  "//www.who.int/emergencies/diseases/novel-coronavirus-2019"
+                ],
+                "_raw": "click | go_to_url:https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+                "_cleaned": "click | go_to_url:https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
+              }
+            ],
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "first_line_text": "@local.tile_1_text",
+              "left_icon_src": "globe-outline",
+              "style": "button_tile",
+              "icon_src": "chevron-forward-outline"
+            },
+            "_nested_name": "display_group.tile_1",
+            "_dynamicFields": {
+              "parameter_list": {
+                "first_line_text": [
+                  {
+                    "fullExpression": "@local.tile_1_text",
+                    "matchedExpression": "@local.tile_1_text",
+                    "type": "local",
+                    "fieldName": "tile_1_text"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.tile_1_text": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "help_icon",
+            "name": "help_1",
+            "value": "help_1",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "pop_up",
+                "args": [
+                  "parent_centre_covid_who_pop_up"
+                ],
+                "_raw": "click | pop_up:parent_centre_covid_who_pop_up",
+                "_cleaned": "click | pop_up:parent_centre_covid_who_pop_up"
+              }
+            ],
+            "exclude_from_translation": true,
+            "_nested_name": "display_group.help_1"
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
       },
       {
-        "type": "text",
-        "name": "text_3",
-        "value": "https://www.unicef.org/coronavirus/covid-19",
-        "exclude_from_translation": true,
-        "_nested_name": "text_3"
+        "type": "display_group",
+        "rows": [
+          {
+            "type": "tile_component",
+            "name": "tile_2",
+            "value": "tile_2",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "go_to_url",
+                "args": [
+                  "https",
+                  "//www.unicef.org/coronavirus/covid-19"
+                ],
+                "_raw": "click | go_to_url:https://www.unicef.org/coronavirus/covid-19",
+                "_cleaned": "click | go_to_url:https://www.unicef.org/coronavirus/covid-19"
+              }
+            ],
+            "exclude_from_translation": true,
+            "parameter_list": {
+              "first_line_text": "@local.tile_2_text",
+              "left_icon_src": "globe-outline",
+              "style": "button_tile",
+              "icon_src": "chevron-forward-outline"
+            },
+            "_nested_name": "display_group.tile_2",
+            "_dynamicFields": {
+              "parameter_list": {
+                "first_line_text": [
+                  {
+                    "fullExpression": "@local.tile_2_text",
+                    "matchedExpression": "@local.tile_2_text",
+                    "type": "local",
+                    "fieldName": "tile_2_text"
+                  }
+                ]
+              }
+            },
+            "_dynamicDependencies": {
+              "@local.tile_2_text": [
+                "parameter_list.first_line_text"
+              ]
+            }
+          },
+          {
+            "type": "help_icon",
+            "name": "help_2",
+            "value": "help_2",
+            "action_list": [
+              {
+                "trigger": "click",
+                "action_id": "pop_up",
+                "args": [
+                  "parent_centre_covid_uni_pop_up"
+                ],
+                "_raw": "click | pop_up:parent_centre_covid_uni_pop_up",
+                "_cleaned": "click | pop_up:parent_centre_covid_uni_pop_up"
+              }
+            ],
+            "exclude_from_translation": true,
+            "_nested_name": "display_group.help_2"
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
       },
       {
         "type": "dashed_box",

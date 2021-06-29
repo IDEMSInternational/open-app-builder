@@ -91,6 +91,8 @@ export class TemplateActionService {
         return this.container.templateService.setGlobal(key, value);
       case "go_to":
         return this.container.templateNavService.handleNavAction(action, this.container);
+      case "go_to_url":
+        return window.open(args[1], "_blank");
       case "pop_up":
         return this.container.templateNavService.handlePopupAction(action, this.container);
       case "set_field":
