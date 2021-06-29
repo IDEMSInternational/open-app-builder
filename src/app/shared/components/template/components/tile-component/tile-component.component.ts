@@ -50,6 +50,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
       `;
     this.is_play_icon = this.isPlayIcon(this.icon_src);
     this.isCustomIcon = this.icon_src.includes("/");
+    this.isCustomIcon = this.left_icon_src.includes("/");
   }
 
   private isParentPoint(): boolean {

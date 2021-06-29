@@ -237,6 +237,13 @@
     img {
       height: 100%;
     }
+    ion-icon {
+      font-size: x-large;
+      color: var(--ion-color-primary);
+      .icon-inner {
+        width: 60px;
+      }
+    }
   }
   &.tile-wrapper {
     margin-bottom: 0;
