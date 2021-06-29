@@ -12484,6 +12484,7 @@
         "fields::completed": false,
         "fields::disabled": false,
         "relax_data": "@data.relax.relax_5",
+        "intro_audio_asset": "assets/plh_assets/plh_audio/topic_intros/w_self_care.mp3",
         "title": "Welcome and Self-Care",
         "_translatedFields": {
           "title": {
