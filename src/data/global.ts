@@ -856,12 +856,6 @@
         "value": "This week's relax"
       },
       {
-        "type": "declare_field_default",
-        "name": "which_relax",
-        "value": "relax_1",
-        "exclude_from_translation": true
-      },
-      {
         "type": "declare_global_constant",
         "name": "relax_passive_short",
         "value": "Listen & relax (1-2 minutes)"
@@ -959,6 +953,66 @@
         "name": "relax_14_favourite",
         "value": false,
         "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_15_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_16_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_17_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_18_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_19_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_20_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_21_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_22_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_23_favourite",
+        "value": false,
+        "exclude_from_translation": true
+      },
+      {
+        "type": "declare_field_default",
+        "name": "relax_24_favourite",
+        "value": false,
+        "exclude_from_translation": true
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/parent_centre_globals.xlsx"
@@ -987,12 +1041,6 @@
         "type": "declare_global_constant",
         "name": "current_activity",
         "value": "This week's activity"
-      },
-      {
-        "type": "declare_field_default",
-        "name": "which_activity",
-        "value": "co_chef",
-        "exclude_from_translation": true
       },
       {
         "type": "declare_global_constant",
