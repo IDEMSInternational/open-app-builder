@@ -159,8 +159,8 @@ export class TemplateNavService {
     }
   }
 
-  public handleNavActionExternal(args) {
-    window.open(args[1], "_blank");
+  public handleNavActionExternal(url) {
+    window.open(url, "_blank");
   }
 
   /*****************************************************************************************************
