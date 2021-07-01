@@ -1,11 +1,8 @@
-const { Client } = require('pg');
+const { Client } = require("pg");
 
-const {
-  where,
-  updates,
-} = require('./database.utils');
+const { where, updates } = require("./database.utils");
 
-require('dotenv').config();
+require("dotenv").config();
 
 class PostgresDB {
   client;
@@ -14,22 +11,22 @@ class PostgresDB {
     this.client = new Client({
       host: process.env.HOST,
       port: process.env.PORT,
-      database: process.env.DATABASE ,
+      database: process.env.DATABASE,
       user: process.env.USER,
-      password: process.env.PASSWORD
+      password: process.env.PASSWORD,
     });
   }
-  
+
   connect() {
     this.client.connent();
   }
 
-  async query(sql, values){
-    const result =  await this.client.query(sql, values);
+  async query(sql, values) {
+    const result = await this.client.query(sql, values);
     if (result.rows) {
       result.rows = result.rows;
     }
-    
+
     return result;
   }
 
@@ -42,20 +39,20 @@ class PostgresDB {
       data[i] = record[key];
       nums[i] = `$${++i}`;
     }
-    const fields = keys.join(', ');
-    const params = nums.join(', ');
+    const fields = keys.join(", ");
+    const params = nums.join(", ");
     const sql = `INSERT INTO ${table} (${fields}) VALUES (${params})`;
     return this.query(sql, data);
   }
 
-  select(table, fields = ['*'], conditions = null) {
-    const keys = fields.join(', ');
+  select(table, fields = ["*"], conditions = null) {
+    const keys = fields.join(", ");
     const sql = `SELECT ${keys} FROM ${table}`;
-    let whereClause = '';
+    let whereClause = "";
     let args = [];
     if (conditions) {
       const whereData = where(conditions);
-      whereClause = ' WHERE ' + whereData.clause;
+      whereClause = " WHERE " + whereData.clause;
       args = whereData.args;
     }
 

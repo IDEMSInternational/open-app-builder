@@ -1,14 +1,14 @@
-const winston = require('winston');
+const winston = require("winston");
 
 const { format, transports, createLogger } = winston;
 
 const LoggerLevel = {
-  error: 'error',
-  warn: 'warn',
-  info: 'info',
-  verbose: 'verbose',
-  debug: 'debug',
-  silly: 'silly',
+  error: "error",
+  warn: "warn",
+  info: "info",
+  verbose: "verbose",
+  debug: "debug",
+  silly: "silly",
 };
 
 const defaultLevel = LoggerLevel.info;
