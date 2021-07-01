@@ -1,14 +1,9 @@
-const ws = require("nodejs-websocket");
+import ws from "nodejs-websocket";
 
-const baseRepo = require("../repositories/base");
-const changesRepo = require("../repositories/changes");
-const sessionActionsRepo = require("../repositories/session-actions");
-const {
-  TYPE,
-  reduceChanges,
-  resolveConflicts,
-  applyModifications,
-} = require("./sync-server.utils");
+import baseRepo from "../repositories/base";
+import changesRepo from "../repositories/changes";
+import sessionActionsRepo from "../repositories/session-actions";
+import { TYPE, reduceChanges, resolveConflicts, applyModifications } from "./sync-server.utils";
 
 function SyncServer(socketPort) {
   let db = {
@@ -16,13 +11,13 @@ function SyncServer(socketPort) {
     revision: 0, // Current revision of the database. // issue
     subscribers: [], // Subscribers to when database got changes. Used by server connections to be able to push out changes to their clients as they occur.
 
-    create: async function (table, key, obj, clientIdentity) {
+    async create(table, key, obj, clientIdentity) {
       await changesRepo.insert({
         rev: ++db.revision,
         source: clientIdentity,
         type: TYPE.CREATE,
         table_name: table,
-        key: key,
+        key,
         obj,
       });
 
@@ -31,7 +26,7 @@ function SyncServer(socketPort) {
       }
       db.trigger();
     },
-    update: async function (table, key, modifications, clientIdentity) {
+    async update(table, key, modifications, clientIdentity) {
       const obj = await baseRepo.getByKey(table, key);
       if (obj) {
         applyModifications(obj, modifications);
@@ -40,7 +35,7 @@ function SyncServer(socketPort) {
           source: clientIdentity,
           type: TYPE.UPDATE,
           table_name: table,
-          key: key,
+          key,
           mods: modifications,
         });
 
@@ -50,16 +45,16 @@ function SyncServer(socketPort) {
         db.trigger();
       }
     },
-    delete: async function (table, key, clientIdentity) {
-      const obj = await baseRepo.getByKey(key);
+    async delete(table, key, clientIdentity) {
+      const obj = await baseRepo.getByKey(table, key);
 
       if (obj) {
         await changesRepo.insert({
           rev: ++db.revision,
           source: clientIdentity,
           type: TYPE.DELETE,
-          table: table,
-          key: key,
+          table,
+          key,
         });
 
         if (table === "session_actions") {
@@ -68,25 +63,26 @@ function SyncServer(socketPort) {
         db.trigger();
       }
     },
-    trigger: function () {
+    trigger() {
       // research
-      if (!db.trigger.delayedHandle) {
-        // Delay the trigger so that it's only called once per bunch of changes instead of being called for each single change.
-        db.trigger.delayedHandle = setTimeout(function () {
-          delete db.trigger.delayedHandle;
-          db.subscribers.forEach(function (subscriber) {
-            try {
-              subscriber();
-            } catch (e) {}
-          });
-        }, 0);
-      }
+      // TODO CC 2021-07-01 - Figure out what this code was trying to achieve and re-implement/remove
+      // if (!db.trigger.delayedHandle) {
+      //   // Delay the trigger so that it's only called once per bunch of changes instead of being called for each single change.
+      //   db.trigger.delayedHandle = setTimeout(function () {
+      //     delete db.trigger.delayedHandle;
+      //     db.subscribers.forEach(function (subscriber) {
+      //       try {
+      //         subscriber();
+      //       } catch (e) {}
+      //     });
+      //   }, 0);
+      // }
     },
-    subscribe: function (fn) {
+    subscribe(fn) {
       // research
       db.subscribers.push(fn);
     },
-    unsubscribe: function (fn) {
+    unsubscribe(fn?) {
       // research
       db.subscribers.splice(db.subscribers.indexOf(fn), 1);
     },
@@ -102,7 +98,7 @@ function SyncServer(socketPort) {
       const changes = await changesRepo.getChanges(syncedRevision, conn.clientIdentity);
       // let changes = db.changes.filter(function (change) { return change.rev > syncedRevision && change.source !== conn.clientIdentity; });
       // Compact changes so that multiple changes on same object is merged into a single change.
-      let reducedSet = reduceChanges(changes, conn.clientIdentity);
+      let reducedSet = reduceChanges(changes);
       // Convert the reduced set into an array again.
       let reducedArray = Object.keys(reducedSet).map(function (key) {
         return reducedSet[key];
@@ -114,7 +110,7 @@ function SyncServer(socketPort) {
         JSON.stringify({
           type: "changes",
           changes: reducedArray,
-          currentRevision: currentRevision,
+          currentRevision,
           partial: false, // Tell client that these are the only changes we are aware of. Since our mem DB is syncronous, we got all changes in one chunk.
         })
       );
@@ -126,7 +122,7 @@ function SyncServer(socketPort) {
       console.log("Revision:", db.revision);
       let request = JSON.parse(message);
       let type = request.type;
-      if (type == "clientIdentity") {
+      if (type === "clientIdentity") {
         // Client Hello: Client says "Hello, My name is <clientIdentity>!" or "Hello, I'm newborn. Please give me a name!"
         // Client identity is used for the following purpose:
         //  * When client sends its changes, register the changes into server database and mark each change with the clientIdentity.
@@ -148,22 +144,22 @@ function SyncServer(socketPort) {
             })
           );
         }
-      } else if (type == "subscribe") {
+      } else if (type === "subscribe") {
         // Client wants to subscribe to server changes happened or happening after given syncedRevision
         syncedRevision = request.syncedRevision || 0;
         // Send any changes we have currently:
         await sendAnyChanges();
         // Start subscribing for additional changes:
         db.subscribe(sendAnyChanges);
-      } else if (type == "changes") {
+      } else if (type === "changes") {
         // Client sends its changes to us.
         let requestId = request.requestId;
         try {
-          if (!request.changes instanceof Array) {
-            throw "Property 'changes' must be provided and must be an array";
+          if (!(request.changes instanceof Array)) {
+            throw new Error("Property 'changes' must be provided and must be an array");
           }
           if (!("baseRevision" in request)) {
-            throw "Property 'baseRevision' missing";
+            throw new Error("Property 'baseRevision' missing");
           }
           // First, if sent change set is partial.
           if (request.partial) {
@@ -233,14 +229,14 @@ function SyncServer(socketPort) {
           conn.sendText(
             JSON.stringify({
               type: "ack",
-              requestId: requestId,
+              requestId,
             })
           );
         } catch (e) {
           conn.sendText(
             JSON.stringify({
               type: "error",
-              requestId: requestId,
+              requestId,
               message: e.toString(),
             })
           );
@@ -259,4 +255,4 @@ function SyncServer(socketPort) {
   }).listen(socketPort);
 }
 
-module.exports = SyncServer;
+export default SyncServer;

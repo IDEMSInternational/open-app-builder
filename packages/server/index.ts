@@ -1,8 +1,13 @@
-const logger = require("./src/helpers/logger");
-const db = require("./src/database/database.service");
-const SyncServer = require("./src/sync-server/sync-server.service");
+import logger from "./src/helpers/logger";
+import db from "./src/database/database.service";
+import SyncServer from "./src/sync-server/sync-server.service";
+import dotenv from "dotenv";
 
-require("dotenv").config();
+console.log("starting server");
+const { parsed, error } = dotenv.config();
+if (error) {
+  throw new Error(error.message);
+}
 
 const webSocketPort = process.env.WEBSOCKET_PORT;
 

@@ -63,7 +63,7 @@ function resolveConflicts(clientChanges, serverChangeSet) {
     if (!serverChange) {
       // No server change on same object. Totally conflict free!
       resolved.push(clientChange);
-    } else if (serverChange.type == TYPE.UPDATE) {
+    } else if ((serverChange.type = TYPE.UPDATE)) {
       // Server change overlaps. Only if server change is not CREATE or DELETE, we should consider merging in the client change.
       switch (clientChange.type) {
         case TYPE.CREATE:
@@ -78,7 +78,7 @@ function resolveConflicts(clientChanges, serverChangeSet) {
             delete clientChange.mods[keyPath];
             // Also, remote all changes to nestled objects under this keyPath from the client change:
             Object.keys(clientChange.mods).forEach(function (clientKeyPath) {
-              if (clientKeyPath.indexOf(keyPath + ".") == 0) {
+              if (clientKeyPath.indexOf(keyPath + ".") === 0) {
                 delete clientChange.mods[clientKeyPath];
               }
             });
@@ -167,9 +167,4 @@ function setByKeyPath(obj, keyPath, value) {
   }
 }
 
-module.exports = {
-  TYPE,
-  reduceChanges,
-  resolveConflicts,
-  applyModifications,
-};
+export { TYPE, reduceChanges, resolveConflicts, applyModifications };

@@ -1,6 +1,6 @@
 const OPERATORS = [">=", "<=", "<>", ">", "<"];
 
-function castToUnderline(obj) {
+export function castToUnderline(obj) {
   const result = {};
   for (const [key, value] of Object.entries(obj)) {
     const castedKey = key.replace(/.?([A-Z])/g, (x, y) => x[0] + "_" + y.toLowerCase());
@@ -9,7 +9,7 @@ function castToUnderline(obj) {
 
   return result;
 }
-function castToCamelCase(obj) {
+export function castToCamelCase(obj) {
   const result = {};
 
   for (const [key, value] of Object.entries(obj)) {
@@ -22,7 +22,7 @@ function castToCamelCase(obj) {
   return result;
 }
 
-const where = (conditions, firstArgIndex = 1) => {
+export const where = (conditions, firstArgIndex = 1) => {
   const clause = [];
   const args = [];
   let i = firstArgIndex;
@@ -49,7 +49,7 @@ const where = (conditions, firstArgIndex = 1) => {
   return { clause: clause.join(" AND "), args };
 };
 
-const updates = (delta, firstArgIndex = 1) => {
+export const updates = (delta, firstArgIndex = 1) => {
   const clause = [];
   const args = [];
   let i = firstArgIndex;
@@ -60,11 +60,4 @@ const updates = (delta, firstArgIndex = 1) => {
     args.push(value);
   }
   return { clause: clause.join(", "), args };
-};
-
-module.exports = {
-  where,
-  updates,
-  castToUnderline,
-  castToCamelCase,
 };
