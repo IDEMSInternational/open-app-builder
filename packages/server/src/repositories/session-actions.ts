@@ -1,4 +1,4 @@
-const database = require("../database/database.service");
+import database from "../database/database.service";
 
 const tableName = "session_actions";
 
@@ -11,14 +11,14 @@ function update(data) {
   const actions = data.actions
     .map((action, index) => (action && !action.id ? { id: index, ...action } : action))
     .filter((action) => action);
-  return database.update(tableName, { actions: actions }, { id: data.id });
+  return database.update(tableName, { actions }, { id: data.id });
 }
 
 function remove(id) {
   return database.delete(tableName, { id });
 }
 
-module.exports = {
+export default {
   insert,
   update,
   remove,

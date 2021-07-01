@@ -21,7 +21,7 @@ class PostgresDB {
     this.client.connent();
   }
 
-  async query(sql, values) {
+  async query(sql, values?) {
     const result = await this.client.query(sql, values);
     if (result.rows) {
       result.rows = result.rows;
@@ -78,4 +78,4 @@ class PostgresDB {
   }
 }
 
-module.exports = new PostgresDB();
+export default new PostgresDB();

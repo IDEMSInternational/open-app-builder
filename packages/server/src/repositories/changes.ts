@@ -1,4 +1,4 @@
-const database = require("../database/database.service");
+import database from "../database/database.service";
 
 const tableName = "changes";
 
@@ -34,7 +34,7 @@ async function getServerChanges(revision) {
     : [];
 }
 
-module.exports = {
+export default {
   insert,
   getChanges,
   getServerChanges,

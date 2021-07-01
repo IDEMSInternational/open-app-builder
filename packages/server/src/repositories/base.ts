@@ -1,4 +1,4 @@
-const database = require("../database/database.service");
+import database from "../database/database.service";
 
 async function getTables() {
   const response = await database.query(`SELECT table_name
@@ -29,7 +29,7 @@ async function getByKey(table, key) {
   return;
 }
 
-module.exports = {
+export default {
   getByKey,
   getTables,
   doesTableExist,

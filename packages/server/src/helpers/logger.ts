@@ -1,4 +1,4 @@
-const winston = require("winston");
+import winston from "winston";
 
 const { format, transports, createLogger } = winston;
 
@@ -13,7 +13,7 @@ const LoggerLevel = {
 
 const defaultLevel = LoggerLevel.info;
 
-module.exports = createLogger({
+export default createLogger({
   level: defaultLevel,
   transports: [new transports.Console()],
   format: format.combine(format.timestamp(), format.json()),
