@@ -1,6 +1,6 @@
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
-export { FlowTypes } from "scripts/types";
+export { FlowTypes } from "src/app/shared/model";
 
 /**
  * Properties passed to a template container instance

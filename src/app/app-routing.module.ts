@@ -53,13 +53,16 @@ const FeatureRoutes: Routes = [
       import("./feature/habit-ideas/habit-ideas.module").then((m) => m.HabitIdeasPageModule),
   },
   {
-    path: "reminders",
-    loadChildren: () =>
-      import("./feature/reminders/reminders.module").then((m) => m.RemindersModule),
+    path: "campaigns",
+    loadChildren: () => import("./feature/campaign/campaign.module").then((m) => m.CampaignModule),
   },
   {
     path: "theme-editor",
     component: ThemeEditorComponent,
+  },
+  {
+    path: "tour",
+    component: TourComponent,
   },
   {
     path: "tour/:tourName",
@@ -89,8 +92,11 @@ const FeatureRoutes: Routes = [
   },
   {
     path: "template",
-    loadChildren: () => import("./feature/template-testing/template-testing.module").then((m) => m.TemplateTestingPageModule)
-  }
+    loadChildren: () =>
+      import("./feature/template-testing/template-testing.module").then(
+        (m) => m.TemplateTestingPageModule
+      ),
+  },
 ];
 
 /** Hardcoded pages, not linked to any feature modules */

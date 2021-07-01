@@ -8,7 +8,9 @@ import { Type } from "@angular/core";
 
 import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AccordionSectionComponent } from "./layout/accordion_section";
+import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
+import { FormComponent } from "./layout/form";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { NavGroupComponent } from "./layout/nav_group";
 import { TmplAudioComponent } from "./audio/audio.component";
@@ -17,24 +19,31 @@ import { TemplateDebuggerComponent } from "./debugger";
 import { TmplButtonComponent } from "./button/button.component";
 import { TmplDisplayGroupComponent } from "./layout/display_group";
 import { TmplImageComponent } from "./image";
+import { TmplHelpIconComponent } from "./help-icon";
 import { TmplTextComponent } from "./text";
+import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplSubtitleComponent } from "./subtitle";
+import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
+import { SquareIconButtonComponent } from "./square-icon-button/square-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplAnimationComponent } from "./animation";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
+import { TmplTextAreaComponent } from "./text-area/text-area.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TemplatePopupComponent } from "./layout/popup";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
+import { TmplLottieAnimation } from "./lottie-animation";
+import { TmplIconComponent } from "./icon";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -42,32 +51,41 @@ export const TEMPLATE_COMPONENTS = [
   TemplateDebuggerComponent,
   TemplatePopupComponent,
   TmplTextComponent,
+  TmplParentPointCounterComponent,
   AnimatedSectionGroupComponent,
   WorkshopsComponent,
   TmplTitleComponent,
   TmplSubtitleComponent,
+  TmplToggleBarComponent,
   TmplDisplayGroupComponent,
   TmplAudioComponent,
   TmplButtonComponent,
   TmplImageComponent,
+  TmplHelpIconComponent,
   TmplVideoComponent,
   AnimatedSectionComponent,
   AccordionSectionComponent,
+  TmplAdvancedDashedBoxComponent,
+  FormComponent,
   TmplTimerComponent,
   TmplSliderComponent,
   TmplNumberComponent,
   NavGroupComponent,
   TmplButtonComponent,
   RoundIconButtonComponent,
+  SquareIconButtonComponent,
   TmplRadioGroupComponent,
+  TmplIconComponent,
   TmplTileComponent,
   TmplSimpleCheckboxComponent,
   TmplAnimationComponent,
   TmplTextBoxComponent,
+  TmplTextAreaComponent,
   TmplComboBoxComponent,
   TmplIconBannerComponent,
   TmplDashedBoxComponent,
   TmplParentPointBoxComponent,
+  TmplLottieAnimation,
 ];
 
 /***************************************************************************************
@@ -81,23 +99,32 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   text: TmplTextComponent,
   title: TmplTitleComponent,
   subtitle: TmplSubtitleComponent,
+  toggle_bar: TmplToggleBarComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   workshops_accordion: WorkshopsComponent,
   accordion_section: AccordionSectionComponent,
+  advanced_dashed_box: TmplAdvancedDashedBoxComponent,
+  form: FormComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   image: TmplImageComponent,
+  help_icon: TmplHelpIconComponent,
+  icon: TmplIconComponent,
+  parent_point_counter: TmplParentPointCounterComponent,
   // set variable and nested properties are handled by parent
   set_variable: null as any,
   nested_properties: null as any,
   set_global: null as any,
   set_field: null as any,
   set_local: null as any,
+  set_theme: null as any,
   combo_box: TmplComboBoxComponent,
   set_default: null as any,
+  update_action_list: null as any,
   text_box: TmplTextBoxComponent,
+  text_area: TmplTextAreaComponent,
   // TODO - handle display_theme and other properties that should be inherited to child components
   display_theme: null as any,
   template: TemplateContainerComponent as any,
@@ -108,6 +135,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nav_section: AnimatedSectionComponent,
   number_selector: TmplNumberComponent,
   round_button: RoundIconButtonComponent,
+  square_button: SquareIconButtonComponent,
   radio_group: TmplRadioGroupComponent,
   tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
@@ -115,4 +143,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   icon_banner: TmplIconBannerComponent,
   dashed_box: TmplDashedBoxComponent,
   parent_point_box: TmplParentPointBoxComponent,
+  lottie_animation: TmplLottieAnimation,
 };

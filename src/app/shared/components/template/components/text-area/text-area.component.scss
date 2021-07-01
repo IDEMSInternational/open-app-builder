@@ -1,0 +1,16 @@
+.wrapper {
+  .text_area {
+    background: var(--ion-color-primary-contrast);
+    border: var(--ion-border-standard);
+    font-size: var(--text-box-font-size);
+    color: var(--ion-color-primary);
+    font-weight: var(--font-weight-bold);
+    box-shadow: var(--ion-default-box-shadow);
+    border-radius: var(--ion-border-radius-standard);
+    --padding-end: var(--small-padding);
+    --padding-start: var(--small-padding);
+    min-height: 30vh;
+    max-height: 30vh;
+    overflow: hidden;
+  }
+}

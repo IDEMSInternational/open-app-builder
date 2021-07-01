@@ -1,20 +1,22 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { FlowTypes, ITemplateRowProps } from "../../models";
+import { ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
-
 
 @Component({
   selector: "plh-simple-checkbox",
   templateUrl: "./simple-checkbox.component.html",
-  styleUrls: ["./simple-checkbox.component.scss"]
+  styleUrls: ["./simple-checkbox.component.scss"],
 })
-
-export class TmplSimpleCheckboxComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplSimpleCheckboxComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit {
   @Input() parent: TemplateContainerComponent;
-  position: boolean;
+  position: string;
+  reverse: boolean;
   label_text: string | null;
+  style: string;
   constructor() {
     super();
   }
@@ -22,9 +24,15 @@ export class TmplSimpleCheckboxComponent extends TemplateBaseComponent implement
   ngOnInit() {
     this.getParams();
   }
+  public async handleChange(isChecked: boolean) {
+    await this.setValue(isChecked);
+    this.triggerActions("changed");
+  }
 
   getParams() {
-    this.position = getStringParamFromTemplateRow(this._row, 'position', 'left') != 'left';
-    this.label_text = getStringParamFromTemplateRow(this._row, 'label_text', null);
+    this.reverse = getBooleanParamFromTemplateRow(this._row, "reverse", false);
+    this.position = getStringParamFromTemplateRow(this._row, "align", "center");
+    this.label_text = getStringParamFromTemplateRow(this._row, "label_text", null);
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
   }
 }

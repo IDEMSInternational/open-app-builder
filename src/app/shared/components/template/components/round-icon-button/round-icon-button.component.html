@@ -1,5 +1,16 @@
-<ion-button (click)="onClick()" class="round-icon-button">
-    <ion-icon [name]="_row.value"></ion-icon>
-    <div class="round-icon-button__countdown-timer"></div>
-</ion-button>
-
+<div class="wrapper" [class.home_screen_wrapper]="isHomeScreen">
+  <ion-tab-button
+    [class]="style"
+    (click)="onClick($event)"
+    class="round-icon-button"
+    [disabled]="_row.disabled"
+  >
+    <ion-icon
+      [name]="icon_src"
+      [style.place-items]="text ? 'flex-end' : 'center'"
+      [style.margin-top]="text ? '5px' : '0'"
+      [src]="isCustomIcon ? (icon_src | plhAsset) : icon_src"
+    ></ion-icon>
+    <div *ngIf="text">{{ text }}</div>
+  </ion-tab-button>
+</div>

@@ -30,32 +30,133 @@
 @import "./theme/typography";
 @import "./theme/tooltip";
 .slide-up-modal {
-    .modal-wrapper {
-        max-width: 80%;
-        min-height: 200px;
-        height: auto;
-        display: flex;
-        margin: 40px;
-        border-radius: 40px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
-        animation-name: slide-up;
-        animation-iteration-count: 1;
-        animation-duration: 0.4s;
-        position: relative;
-        transform: rotate(-60deg);
-    }
+  .modal-wrapper {
+    max-width: 80%;
+    min-height: 200px;
+    height: auto;
+    display: flex;
+    margin: 40px;
+    border-radius: 40px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+    animation-name: slide-up;
+    animation-iteration-count: 1;
+    animation-duration: 0.4s;
+    position: relative;
+    transform: rotate(-60deg);
+  }
 
-    @keyframes slide-up {
-        from {
-            transform: rotate(-60deg);
-            bottom: -600px;
-        }
-        to {
-            transform: rotate(0deg);
-            bottom: 0px;
-        }
+  @keyframes slide-up {
+    from {
+      transform: rotate(-60deg);
+      bottom: -600px;
     }
+    to {
+      transform: rotate(0deg);
+      bottom: 0px;
+    }
+  }
+}
+// TODO - these need to be resolved with some of the hardcoded methods that set height:100% and display:flex
+plh-template-component[data-hidden="true"] {
+  display: none !important;
+}
+plh-template-component[data-debug-hidden="true"] {
+  display: flex !important;
+  flex: 1 !important;
+  height: unset !important;
+}
+.plh-tmpl-comp[data-debug="true"] {
+  height: unset;
+}
+.no_padding {
+  padding: 0 !important;
+}
+.picker {
+  padding: 0 50px;
+  .picker-col:nth-child(2) {
+    max-width: 30px;
+    margin-left: 50px;
+  }
+  .picker-col:nth-child(5) {
+    max-width: 30px;
+    margin-right: 50px;
+  }
+  .picker-col:nth-child(3)::after {
+    content: ":";
+    position: absolute;
+    display: flex;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    transform: translate(13px, -13px);
+  }
+}
+//TOUR STYLES
+.tooltipClass {
+  border-radius: var(--ion-border-radius-standard);
+  color: var(--ion-color-primary);
+  min-width: 90vw;
+  font-size: var(--font-size-text-medium);
+  right: 0;
+  @media (max-width: 320px) {
+    font-size: 16px;
+  }
+  .introjs-tooltip-header {
+    padding-top: var(--largest-padding);
+    .introjs-tooltip-title {
+      font-size: var(--font-size-title-tiny);
+      @media (max-width: 320px) {
+        font-size: 20px;
+      }
+    }
+  }
+  .introjs-skipbutton {
+    position: absolute;
+    top: 0;
+    right: 1px;
+    font-weight: 300;
+    font-size: 35px;
+    color: var(--ion-color-primary);
+  }
+  .introjs-tooltipbuttons {
+    border-top: none;
+    padding: 10px 10px 20px 10px;
+  }
+  .introjs-bullets {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, -5%);
+  }
+  .introjs-bullets ul li a {
+    border: var(--ion-border-thin-standard);
+    background: var(--ion-color-primary-contrast);
+  }
+  .introjs-bullets ul li a.active {
+    width: 6px;
+    background: var(--ion-color-primary);
+  }
+}
+.buttonClass {
+  border: var(--ion-border-thin-standard);
+  padding: 10px 15px;
+  border-radius: var(--ion-border-radius-small);
+  box-shadow: var(--ion-default-box-shadow);
+  outline: none;
+  color: var(--ion-color-primary);
+  font-weight: 500;
+  font-size: 20px;
+  @media (max-width: 320px) {
+    font-size: 16px;
+  }
+  &.introjs-nextbutton {
+    background: var(--ion-btn-secondary);
+    color: var(--ion-color-primary-contrast);
+    border: none;
+  }
 }
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~nouislider/distribute/nouislider.min.css";
-

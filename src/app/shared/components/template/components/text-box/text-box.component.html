@@ -1,9 +1,14 @@
-<div class="wrapper">
+<div class="wrapper margin-t-regular" [class]="style">
   <ion-input
-    [value]="value"
+    #input
     class="text-box-input"
+    [inputmode]="isNumberInput ? 'tel' : 'text'"
+    (ionBlur)="handleChange(input.value)"
+    [value]="prioritisePlaceholder ? '' : _row.value"
     [placeholder]="placeholder"
     [maxlength]="maxLength"
     [style.textAlign]="textAlign"
   ></ion-input>
 </div>
+
+<!--  -->

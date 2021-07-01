@@ -1,0 +1,10 @@
+<div class="wrapper margin-t-regular">
+  <ion-textarea
+    #input
+    class="text_area"
+    [placeholder]="placeholder"
+    (ionBlur)="handleChange(input.value)"
+    [value]="_row.value"
+    auto-grow="true"
+  ></ion-textarea>
+</div>

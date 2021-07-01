@@ -47,8 +47,7 @@
       },
       {
         "type": "text",
-        "message_text": "Tap your ParentPoints <icon>, <icon>, <icon>: see your success!",
-        "comment": "Requires icons"
+        "message_text": "Tap your ParentPoints <icon>, <icon>, <icon>: see your success!"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/ver_7_design/modules/tips.xlsx"
@@ -73,8 +72,7 @@
           },
           {
             "type": "list_item",
-            "message_text": "1. \"DAY\"- Try to do it every day!",
-            "comment": "long title? not sure if fits"
+            "message_text": "1. \"DAY\"- Try to do it every day!"
           },
           {
             "type": "text",
@@ -104,8 +102,7 @@
       },
       {
         "type": "text",
-        "message_text": "Tap your ParentPoint <icon>: see your success!",
-        "comment": "plh_images/habits/habit_spend_time_icon.svg"
+        "message_text": "Tap your ParentPoint <icon>: see your success!"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/ver_7_design/modules/tips.xlsx"
@@ -119,8 +116,7 @@
     "rows": [
       {
         "type": "title",
-        "message_text": "Essential Tools for Praise",
-        "comment": "Image of teen sweeping, parent encouraging them  \n(hand on shoulder/high five)"
+        "message_text": "Essential Tools for Praise"
       },
       {
         "type": "list_group",
@@ -157,8 +153,7 @@
       },
       {
         "type": "text",
-        "message_text": "Tap your ParentPoint <icon>: see your success!",
-        "comment": "plh_images/habits/habit_praise_teen_icon.svg"
+        "message_text": "Tap your ParentPoint <icon>: see your success!"
       }
     ],
     "_xlsxPath": "plh_sheets_beta/ver_7_design/modules/tips.xlsx"

@@ -1,4 +1,4 @@
-<div class="container-player">
+<div class="container-player margin-t-large">
   <div class="top-row">
     <div class="title_and_help">
       <h3 *ngIf="titleAudio">{{ titleAudio }}</h3>
@@ -33,7 +33,7 @@
   </div>
   <div class="time">
     <div class="time-value">
-      {{ currentTimeSong | date: "mm:ss" }}
+      {{ +currentTimeSong * 1000 | date: "mm:ss" }}
     </div>
     <div class="time-value">
       {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}
@@ -49,7 +49,10 @@
       <ion-button class="btn-play" (click)="togglePlayer()">
         <img
           [class.ml-5]="!isPlayed"
-          [src]="!isPlayed ? '/assets/icon/audio/play.svg' : '/assets/icon/audio/pause.svg'"
+          [src]="
+            (!isPlayed ? 'plh_images/icons/play_white.svg' : 'plh_images/icons/pause_white.svg')
+              | plhAsset
+          "
           alt=""
         />
       </ion-button>

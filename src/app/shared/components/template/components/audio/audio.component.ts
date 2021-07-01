@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import {
   getBooleanParamFromTemplateRow,
@@ -9,13 +9,16 @@ import { Howl } from "howler";
 import { IonRange } from "@ionic/angular";
 import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
+import { getImageAssetPath } from "../../utils/template-utils";
 
 @Component({
   selector: "plh-audio",
   templateUrl: "./audio.component.html",
   styleUrls: ["./audio.component.scss"],
 })
-export class TmplAudioComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplAudioComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit, OnDestroy {
   @Input() template: FlowTypes.Template;
   @Input() localVariables: { [name: string]: any };
   @ViewChild("range", { static: false }) range: IonRange;
@@ -31,6 +34,8 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
   rangeBarTouched: boolean = false;
   currentTimeSong: string = "0";
   rangeBarDisabled: boolean = false;
+  hasStarted: boolean = false;
+
   constructor() {
     super();
   }
@@ -41,9 +46,9 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
   }
 
   getParams() {
-    const audioPath = "assets/plh_assets/";
-    this.src =
-      audioPath + (this._row.value || getStringParamFromTemplateRow(this._row, "src", null));
+    this.src = getImageAssetPath(
+      this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
+    );
     this.titleAudio = getStringParamFromTemplateRow(this._row, "title", "Title");
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
     this.rangeBarDisabled = getBooleanParamFromTemplateRow(this._row, "range_bar_disabled", false);
@@ -57,16 +62,23 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
           onplay: () => {
             this.isPlayed = true;
             this.updateProgress();
+            if (!this.hasStarted) {
+              this.hasStarted = true;
+              this.triggerActions("audio_first_start");
+            }
+            this.triggerActions("audio_play");
           },
           onend: () => {
             this.isPlayed = false;
             this.range.value = 0;
             this.currentTimeSong = "0";
             this.updateProgress();
+            this.triggerActions("audio_end");
           },
           onpause: () => {
             this.isPlayed = false;
             this.updateProgress();
+            this.triggerActions("audio_pause");
           },
         }))
       : (this.errorTxt = "Src is undefined, player not initialized");
@@ -78,17 +90,17 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
   }
 
   rewindNext() {
-    return this.isPlayed ? this.player.seek((this.player.seek() as any) + this.timeToRewind) : null;
+    this.player.seek((this.player.seek() as any) + this.timeToRewind);
+    this.customUpdateWhenRewind();
   }
 
   rewindPrev() {
-    return this.isPlayed
-      ? this.player.seek(
-          (this.player.seek() as any) < this.timeToRewind
-            ? (this.player.seek(0) as any)
-            : (this.player.seek() as any) - this.timeToRewind
-        )
-      : null;
+    this.player.seek(
+      (this.player.seek() as any) < this.timeToRewind
+        ? (this.player.seek(0) as any)
+        : (this.player.seek() as any) - this.timeToRewind
+    );
+    this.customUpdateWhenRewind();
   }
 
   seek() {
@@ -112,9 +124,7 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
       }
       let seek: any = this.player.seek();
       this.progress = (seek / this.player.duration()) * 100 || 0;
-      this.currentTimeSong = this.player.seek()
-        ? ((this.player.seek() as any) * 1000).toString()
-        : "0";
+      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
     }, 1000);
   }
 
@@ -127,9 +137,19 @@ export class TmplAudioComponent extends TemplateBaseComponent implements ITempla
       let newValue = +this.range.value;
       let duration = this.player.duration();
       this.player.seek(duration * (newValue / 100));
-      this.currentTimeSong = this.player.seek()
-        ? ((this.player.seek() as any) * 1000).toString()
-        : "0";
+      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
     }
+  }
+
+  customUpdateWhenRewind() {
+    if (!this.isPlayed) {
+      let seek: any = this.player.seek();
+      this.progress = (seek / this.player.duration()) * 100 || 0;
+      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
+    }
+  }
+
+  ngOnDestroy() {
+    this.player.stop();
   }
 }

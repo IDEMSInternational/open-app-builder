@@ -1,8 +1,9 @@
 import * as fs from "fs-extra";
 import * as xlsx from "xlsx";
 import * as path from "path";
+import boxen from "boxen";
 import chalk from "chalk";
-import { ConversationParser, DefaultParser, TemplateParser } from "./parsers";
+import * as Parsers from "./parsers";
 import {
   groupJsonByKey,
   recursiveFindByExtension,
@@ -10,9 +11,6 @@ import {
   arrayToHashmap,
 } from "../utils";
 import { FlowTypes } from "../../types";
-import { AbstractParser } from "./parsers/abstract.parser";
-import { TaskListParser } from "./parsers/task_list/task_list.parser";
-import { ReminderListParser } from "./parsers/reminder_list/reminder_list.parser";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
@@ -80,23 +78,27 @@ function applyDataParsers(
     (dataByFlowType.task_list || []).reduce((a, b) => [...a, ...b.rows], []),
     "id"
   );
-  const customParsers: { [flowType in FlowTypes.FlowType]?: AbstractParser } = {
-    conversation: new ConversationParser(),
-    task_list: new TaskListParser(dataByFlowType, allTasksById),
-    reminder_list: new ReminderListParser(),
-    template: new TemplateParser(),
+  const customParsers: { [flowType in FlowTypes.FlowType]?: Parsers.AbstractParser } = {
+    conversation: new Parsers.ConversationParser(),
+    task_list: new Parsers.TaskListParser(dataByFlowType, allTasksById),
+    template: new Parsers.TemplateParser(),
+    data_list: new Parsers.DataListParser(),
   };
   const parsedData = {};
   Object.entries(dataByFlowType).forEach(([key, contentFlows]) => {
-    const parser = customParsers[key] ? customParsers[key] : new DefaultParser();
+    const parser = customParsers[key] ? customParsers[key] : new Parsers.DefaultParser();
     // add intermediate parsed flow for logging/debugging
     fs.ensureDirSync(`${INTERMEDIATES_FOLDER}/${key}`);
     // parse all flows through the parser
     parsedData[key] = contentFlows.map((flow) => {
-      const parsed = parser.run(flow);
-      const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
-      fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
-      return parsed;
+      try {
+        const parsed = parser.run(flow);
+        const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
+        fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
+        return parsed;
+      } catch (error) {
+        throwTemplateParseError(error, flow);
+      }
     });
   });
   return parsedData;
@@ -157,6 +159,19 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
   const workbook = xlsx.readFile(xlsxFilePath);
   const { Sheets } = workbook;
   Object.entries(Sheets).forEach(([sheet_name, worksheet]) => {
+    /* If bold or italics, include HTML in cell value */
+    Object.keys(worksheet).forEach((cellId) => {
+      let html = worksheet[cellId]?.h;
+      if (
+        html !== undefined &&
+        typeof html === "string" &&
+        (html.indexOf("<b>") > -1 || html.indexOf("<em>") > -1 || html.indexOf("<i>") > -1)
+      ) {
+        html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
+        worksheet[cellId].v = html;
+      }
+    });
+
     json[sheet_name] = xlsx.utils.sheet_to_json(worksheet);
   });
   return json;
@@ -186,4 +201,26 @@ function listFilesForConversion(folderPath: string) {
         .map((p) => p.toLowerCase())
         .includes("old")
   );
+}
+
+/**
+ * Debug info to log and exit when a template parsing error occurs
+ */
+function throwTemplateParseError(error: Error, flow: FlowTypes.FlowTypeWithData) {
+  console.log(
+    boxen(
+      `
+        ${chalk.red("Template Parse Error")}
+        
+        ${chalk.yellow(flow.flow_name)}
+        
+        ${flow._xlsxPath}
+
+        This is likely an authoring error, see full stacktrace below
+        `,
+      { padding: 1, borderColor: "red" }
+    )
+  );
+  console.error(error);
+  process.exit(1);
 }

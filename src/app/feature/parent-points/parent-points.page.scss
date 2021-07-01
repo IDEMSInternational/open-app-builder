@@ -1,117 +1,117 @@
 ion-content {
-    --background: #e3f4ff;
+  --background: #e3f4ff;
 }
 
 h1 {
-    color: var(--ion-color-primary);
-    width: 100%;
-    text-align: center;
+  color: var(--ion-color-primary);
+  width: 100%;
+  text-align: center;
 }
 
 .habit-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .habit-image-container {
-    flex: 1;
-    overflow: hidden;
-    text-align: center;
+  flex: 1;
+  overflow: hidden;
+  text-align: center;
 }
 
 .habit-image {
-    height: 100%;
+  height: 100%;
 }
 
 .habit-title {
-    color: var(--ion-color-primary);
-    font-weight: bold;
-    font-size: small;
-    text-align: center;
+  color: var(--ion-color-primary);
+  font-weight: bold;
+  font-size: small;
+  text-align: center;
 }
 
 .habit-card {
-    position: relative;
-    background-color: var(--ion-item-background, white);
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    padding: 5px 10px;
-    height: 110px;
-    width: 110px;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: background-color 0.5s ease;
+  position: relative;
+  background-color: var(--ion-item-background, white);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 5px 10px;
+  height: 110px;
+  width: 110px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.5s ease;
 }
 
 .habit-card.complete {
-    background: white;
-    opacity: 1;
+  background: white;
+  opacity: 1;
 }
 
 .habit-history-button {
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
 .habit-star {
+  position: absolute;
+  z-index: 20;
+  width: 35px;
+  height: 35px;
+  right: -10px;
+  top: -10px;
+
+  .star-icon {
+    width: 100%;
+    height: 100%;
+    color: gold;
+  }
+
+  .habit-star-count {
+    color: var(--ion-color-primary);
     position: absolute;
-    z-index: 20;
-    width: 35px;
-    height: 35px;
-    right: -10px;
-    top: -10px;
-
-    .star-icon {
-        width: 100%;
-        height: 100%;
-        color: gold;
-    }
-
-    .habit-star-count {
-        color: var(--ion-color-primary);
-        position: absolute;
-        left: 0px;
-        top: 8px;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-    }
+    left: 0px;
+    top: 8px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
 }
 
 .on-add {
-    animation: bounce;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
+  animation: bounce;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
 }
-  
+
 @keyframes bounce {
-    from,
-    20%,
-    53%,
-    to {
-      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-      transform: translate3d(0, 0, 0);
-    }
-  
-    40%,
-    43% {
-      animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-      transform: translate3d(0, -30px, 0) scaleY(1.1);
-    }
-  
-    70% {
-      animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-      transform: translate3d(0, -15px, 0) scaleY(1.05);
-    }
-  
-    80% {
-      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-      transform: translate3d(0, 0, 0) scaleY(0.95);
-    }
-  
-    90% {
-      transform: translate3d(0, -4px, 0) scaleY(1.02);
-    }
+  from,
+  20%,
+  53%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
   }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.95);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}

@@ -1,0 +1,32 @@
+.point_wrapper {
+  display: flex;
+  justify-content: center;
+  .container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .icon {
+    flex: 1;
+    max-width: 40px;
+    max-height: 40px;
+    position: relative;
+    margin-right: var(--regular-margin);
+    margin-left: var(--regular-margin);
+    img {
+      width: 100%;
+    }
+    .count {
+      position: absolute;
+      color: var(--ion-color-primary);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .text {
+    flex: 4;
+    font-size: var(--font-size-text-large);
+    color: var(--ion-color-primary);
+  }
+}
