@@ -4,6 +4,10 @@
   "author": "IDEMS International",
   "homepage": "https://idems.international/",
   "description": "",
+  "workspaces": [
+    "packages/*",
+    "scripts"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -12,7 +16,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "cd scripts && yarn install",
     "analyse": "npm run build -- --stats-json && npx webpack-bundle-analyzer www/stats.json"
   },
   "private": true,
