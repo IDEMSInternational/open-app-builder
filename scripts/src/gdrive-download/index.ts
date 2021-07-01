@@ -35,6 +35,11 @@ export async function main(onlyFileName?: string) {
       const matchingFilesFromCache = excelFilesFromCache.filter(
         (file) => file.name.toLowerCase().indexOf(onlyFileName.toLowerCase()) > -1
       );
+      if (matchingFilesFromCache.length === 0) {
+        // we've never downloaded this file before so don't know the location. Require sync all
+        console.log(chalk.red("File not found, full sync required"));
+        return main();
+      }
       console.log(
         chalk.green("Matching files\n", matchingFilesFromCache.map((file) => file.name).join("\n"))
       );
@@ -188,6 +193,8 @@ async function exportGdriveFile(localPath: string, file: IGDriveFileWithFolder) 
 
 /**
  * List all the files in a google drive folder recursively
+ * NOTE - seems inefficient, but likely best solution until google allows 'ancestor' query
+ * https://issuetracker.google.com/issues?q=status:open%20componentid:191650%2B%20ancestors
  * @param drive - google-api drive object
  * @param folderId google-api folder id
  * @param folderPath used to recursively track nested folder names

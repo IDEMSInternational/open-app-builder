@@ -1,4 +1,4 @@
-<div class="wrapper-radio-group">
+<div class="wrapper-radio-group margin-t-large">
   <div class="container" [ngSwitch]="radioButtonType">
     <div class="btn_triangle dse" *ngSwitchCase="'btn_text'">
       <div
@@ -7,61 +7,62 @@
         [class]="style"
         *ngFor="let item of arrayOfBtn"
       >
-        <label class="center standard-label" [class.checked]="el.checked">
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
           <input
             #el
             type="radio"
-            [value]="item.text"
-            [checked]="el.value === value"
-            [(ngModel)]="_row.value"
-            [name]="_row.name"
+            [value]="item.name"
+            [checked]="el.value === _row.value"
+            (click)="handleRadioButtonClick(el.value)"
+            [name]="groupName"
+            [disabled]="_row.disabled"
           />
           {{ item.text }}
         </label>
       </div>
     </div>
-    <div class="btn_square dse" *ngSwitchCase="'btn_square'">
+    <div class="btn_square dse" *ngSwitchCase="'btn_both'">
       <div
         class="btn_square_container center"
         [class]="style"
         *ngFor="let item of arrayOfBtn"
         [style.flex]="flexWidth"
       >
-        <label class="center standard-label" [class.checked]="el.checked">
-          <svg-icon
-            [src]="el.checked && item.image_checked ? item.image_checked : item.image"
-            [svgStyle]="{ fill: el.checked && !item.image_checked ? '#fff' : imageCheckedColor }"
-          >
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
+          <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
           </svg-icon>
           <input
             #el
             type="radio"
-            [value]="item.text"
-            [checked]="el.value === value"
-            [(ngModel)]="_row.value"
-            [name]="_row.name"
+            [value]="item.name"
+            [checked]="el.value === _row.value"
+            (click)="handleRadioButtonClick(el.value)"
+            [name]="groupName"
+            [disabled]="_row.disabled"
           />
           {{ item.text }}
         </label>
       </div>
     </div>
-    <div class="btn_image dse" *ngSwitchCase="'btn_icon'">
+    <div class="btn_image dse" *ngSwitchCase="'btn_image'">
       <div
         class="btn_image_container center"
         [class]="style"
         *ngFor="let item of arrayOfBtn"
         [style.flex]="flexWidth"
       >
-        <label class="center standard-label" [class.smile-checked]="el.checked">
-          <svg-icon [src]="el.checked && item.image_checked ? item.image_checked : item.image">
-          </svg-icon>
+        <label class="center standard-label" [class.checked]="item.name === _row.value">
+          <plh-tmpl-icon
+            [src]="el.checked && item.image_checked ? item.image_checked : item.image"
+          ></plh-tmpl-icon>
           <input
             #el
             type="radio"
-            [value]="item.text"
-            [checked]="el.value === value"
-            [(ngModel)]="_row.value"
-            [name]="_row.name"
+            [value]="item.name"
+            [checked]="el.value === _row.value"
+            (click)="handleRadioButtonClick(el.value)"
+            [name]="groupName"
+            [disabled]="_row.disabled"
           />
           <span> {{ item.text }} </span>
         </label>

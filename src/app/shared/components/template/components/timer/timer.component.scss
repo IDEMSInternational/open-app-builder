@@ -1,56 +1,73 @@
-:host {
-    width: 363px;
-    min-height: 183px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+@import "../../../../../../theme/mixins.scss";
+
 .timer-counter {
-    width: 200px;
-    height: 73px;
-    margin: 0 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    div{
-        font-weight: bold;
-        font-size: 40px;
-        color: #0D3F60;
+  @include flex-centered;
+  width: calc(100% - 10px);
+  height: var(--timer-counter-height);
+  margin: 0 var(--tiny-margin);
+  div {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--timer-counter-font-size);
+    color: var(--ion-color-primary);
+    @media (max-width: 320px) {
+      font-size: 30px;
     }
+  }
 }
 .timer-content {
-    display: flex;
-    margin-bottom: 22px;
-    justify-content: center;
+  @include flex-space-between;
 }
 .timer-title {
-   margin-left: 8px;
-    max-width: 298px;
-}   
+  margin-left: var(--tiny-margin);
+  max-width: var(--timer-title-width);
+  font-size: var(--timer-title-size);
+  color: var(--ion-color-primary);
+}
 
 .timer-help {
-    margin-top: 15px;
-    margin-left: 10px;
-    color: #0D3F60;
-    height: 32px;
-    width: 32px;
+  margin-top: var(--regular-margin);
+  margin-left: var(--small-margin);
+  color: var(--ion-color-primary);
+  height: var(--help-icon-standard-size);
+  width: var(--help-icon-standard-size);
 }
 
 .timer-row {
-    display: flex;
+  display: flex;
 }
-.add-min{
-    width: 64px;
-    height: 64px;
-    --background: #00A0CC;
-    --background-size: cover;
-    --border-radius: 50%;
-    --padding:0;
-    .right-icon{
-        max-width: none;
-        top: 0;
-    }
-    .left-icon{
-        margin-top: 8px;
-    }
+.add-min {
+  @include large-square;
+  min-width: var(--buttons-size);
+  position: relative;
+  --background: var(--timer-buttons-color);
+  --background-size: cover;
+  --border-radius: var(--ion-border-radius-rounded);
+  --padding: 0;
+  .right-icon {
+    max-width: none;
+    top: 0;
+  }
+  .time-rewind-value {
+    position: absolute;
+    font-size: var(--font-size-text-tiny);
+    font-weight: var(--font-weight-bold);
+  }
 }
 
+.round-container {
+  padding-left: var(--tiny-padding);
+  padding-right: var(--tiny-padding);
+  width: 100%;
+  background-color: var(--ion-color-primary-contrast);
+  box-sizing: border-box;
+  border: var(--ion-border-standard);
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-secondary);
+
+  &-br-15 {
+    border-radius: var(--ion-border-radius-standard);
+  }
+}
+ion-button {
+  margin: 0;
+}

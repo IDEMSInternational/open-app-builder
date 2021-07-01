@@ -1,9 +1,28 @@
+@import "./variables.scss";
 h3 {
   font-size: 1.3em;
   font-weight: bold;
 }
+
 p {
-  white-space: pre-line;
+  margin: 0.75em 0;
 }
 
-$color_passive: #0d4060;
+.standard {
+  color: var(--ion-color-primary);
+}
+.alternative {
+  color: var(--ion-color-primary-contrast);
+}
+.normal {
+  font-weight: var(--font-weight-standard);
+  font-style: normal;
+}
+.contextual {
+  font-weight: var(--font-weight-standard);
+  font-style: italic;
+}
+.emphasised {
+  font-weight: 700;
+  font-style: normal;
+}

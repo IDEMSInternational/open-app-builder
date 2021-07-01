@@ -19,7 +19,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
  *
  * @example template (rendering child rows with reference to this parent container)
  * ```
- *  <plh-template-component *ngFor="let childRow of _row.rows" [row]="childRow" [parent]="parent"></plh-template-component>
+ *  <plh-template-component *ngFor="let childRow of _row.rows; trackBy: trackByRow" [row]="childRow" [parent]="parent"></plh-template-component>
  * ```
  */
 export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
@@ -27,7 +27,7 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   /** specific data used in component rendering */
   @Input() set row(row: FlowTypes.TemplateRow) {
     row.rows = (row.rows || []).map((r) => {
-      r.action_list = this.addRowDefaultActions(r.action_list);
+      // r.action_list = this.addRowDefaultActions(r.action_list);
       return r;
     });
     row = this.modifyRowSetter(row);
@@ -39,6 +39,23 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
 
   ngOnInit() {
     this.addParentActionsFilter();
+  }
+
+  /**
+   * As content can be nested within containers or pages, a general
+   * method that scrolls everything scrollable (all parent containers and page content)
+   * to the top
+   */
+  public scrollToTop() {
+    let parent = this.parent;
+    while (parent) {
+      parent.elRef.nativeElement.scrollTop = 0;
+      parent = parent.parent;
+    }
+    const ionContentContainers = document.querySelectorAll("ion-content") || [];
+    ionContentContainers.forEach((el) => {
+      el.shadowRoot.querySelector(".inner-scroll").scrollTop = 0;
+    });
   }
 
   /**
@@ -58,26 +75,11 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
     return true;
   }
 
-  private addRowDefaultActions(actions?: FlowTypes.TemplateRowAction[]) {
-    if (!actions) {
-      actions = [
-        {
-          trigger: "completed",
-          action_id: "emit",
-          args: ["completed"],
-        },
-        {
-          trigger: "uncompleted",
-          action_id: "emit",
-          args: ["uncompleted"],
-        },
-      ];
-      return actions;
-    }
-  }
+  public trackByRow = (index: number, row: FlowTypes.TemplateRow) =>
+    this.parent.trackByRow(index, row);
 
   private addParentActionsFilter() {
-    this.parent.handleActionsInterceptor = async (actions) => {
+    this.parent.templateActionService.handleActionsInterceptor = async (actions) => {
       return actions.filter((action) => {
         const shouldHandleByParent = this.interceptTemplateContainerAction(action);
         // continue to process on parent unless specific return says not to

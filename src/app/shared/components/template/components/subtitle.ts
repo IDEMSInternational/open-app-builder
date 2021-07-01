@@ -6,8 +6,10 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-subtitle",
   template: `
-    <div class="subtitle-wrapper" [class]="textAlign">
-      <h2 [class]="style">{{ _row.value }}</h2>
+    <div class="subtitle-wrapper margin-t-regular" [class]="style">
+      <h2 [style.text-align]="textAlign" [class]="'standard normal' + ' ' + style">
+        {{ _row.value }}
+      </h2>
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
@@ -27,7 +29,7 @@ export class TmplSubtitleComponent
   }
 
   getParams() {
-    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "left");
-    this.style = getStringParamFromTemplateRow(this._row, "style", "passive");
+    this.style = getStringParamFromTemplateRow(this._row, "style", "standard medium");
+    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "");
   }
 }

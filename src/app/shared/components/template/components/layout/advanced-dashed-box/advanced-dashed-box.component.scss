@@ -1,0 +1,60 @@
+@import "../../../../../../../theme/mixins.scss";
+
+.box-wrapper {
+  padding: var(--large-padding) 0;
+  .item {
+    @include flex-centered;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    min-height: var(--dashed-box-item-min-height);
+    padding: var(--regular-padding) var(--largest-padding);
+    border: 1px dashed transparent;
+    border-radius: var(--ion-border-radius-secondary);
+    position: relative;
+    .text {
+      text-align: center;
+      font-size: var(--font-size-text-medium);
+      line-height: var(--line-height-text-largest);
+    }
+    .icon {
+      @include small-square;
+      position: absolute;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .top-left {
+      left: -8px;
+      top: -10px;
+    }
+    .top-right {
+      right: -8px;
+      top: -10px;
+    }
+    .bottom-left {
+      left: -8px;
+      bottom: -10px;
+    }
+    .bottom-right {
+      right: -8px;
+      bottom: -10px;
+    }
+  }
+  .default {
+    background: var(--ion-color-primary-contrast);
+    border-color: var(--ion-color-primary);
+    .text {
+      color: var(--ion-color-primary);
+    }
+  }
+  .alert {
+    background: var(--ion-color-primary-contrast);
+    border-color: var(--ion-color-secondary);
+    .text {
+      color: var(--ion-color-secondary);
+    }
+  }
+}

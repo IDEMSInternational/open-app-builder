@@ -1,14 +1,14 @@
-<div class="container" [class]="height">
+<div class="container margin-t-large" [class]="height">
   <div class="left">
     <ion-button (click)="increment('lt')">
       <div class="line"></div>
     </ion-button>
   </div>
   <div class="center">
-    <div class="title" *ngIf="title">{{title}}</div>
-    <div class="num" *ngIf="!category_list">{{displayValue}}</div>
+    <div class="title" *ngIf="title">{{ title }}</div>
+    <div class="num" *ngIf="!category_list">{{ displayValue }}</div>
     <div class="category" *ngIf="category_list">
-      <span>{{displayValue}}</span>
+      <span>{{ _row.value }}</span>
     </div>
   </div>
   <div class="right">

@@ -1,62 +1,60 @@
+@import "../../../../../../theme/mixins.scss";
 .container-player {
-  background: #fff;
-  border: 2px solid #0d3f60;
+  background: var(--ion-color-primary-contrast);
+  border: var(--ion-border-standard);
   box-sizing: border-box;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  min-width: 363px;
-  padding: 17px 14px 16px 20px;
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-standard);
+  padding: var(--regular-padding);
   display: flex;
   position: relative;
   flex-direction: column;
   .top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-space-between;
     .title_and_help {
+      width: 85%;
       display: flex;
       align-items: center;
-      min-height: 30px;
+      min-height: var(--audio-title-and-help-height);
       h3 {
         margin: 0;
-        margin-right: 11px;
-        color: #0d3f60;
-        max-width: 280px;
-        font-weight: bold;
-        font-size: 25px;
+        margin-right: var(--small-margin);
+        color: var(--ion-color-primary);
+        max-width: 85%;
+        font-weight: var(--font-weight-bold);
+        font-size: var(--audio-title-size);
       }
       .audio-help {
-        color: #0d3f60;
-        height: 32px;
-        width: 32px;
+        color: var(--ion-color-primary);
+        height: var(--help-icon-standard-size);
+        width: var(--help-icon-standard-size);
       }
     }
     .volume {
       position: absolute;
-      top: 17px;
-      right: 14px;
+      top: 15px;
+      right: 15px;
       .volume-icon {
-        color: #0d3f60;
-        height: 36px;
-        width: 36px;
+        color: var(--ion-color-primary);
+        @include small-square;
       }
     }
   }
   .progress-block {
     .audio-range {
-      padding-inline: 0;
-      --bar-background-active: #00a0cc;
+      --bar-background-active: var(--ion-btn-control-bg);
       --bar-background: transparent;
       --bar-height: 4px;
-      --bar-border-radius: 20px;
+      --bar-border-radius: var(--ion-border-radius-secondary);
       --knob-size: 0px;
-      --pin-background: #0d3f60;
-      --knob-background: #0d3f60;
+      --pin-background: var(--ion-color-primary);
+      --knob-background: var(--ion-color-primary);
+      padding-inline: 0;
     }
 
     ion-range::part(bar) {
-      border: 1px solid #0d3f60;
-      height: 10px;
+      border: var(--ion-border-thin-standard);
+      height: var(--audio-bar-height);
     }
 
     ion-range::part(bar-active) {
@@ -66,33 +64,28 @@
   }
   .time {
     margin-top: -12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-space-between;
     &-value {
-      font-size: 20px;
-      line-height: 20px;
-      color: #0d3f60;
+      font-size: var(--font-size-text-large);
+      line-height: var(--line-height-text-small);
+      color: var(--ion-color-primary);
     }
   }
   .controls {
-    display: flex;
-    min-width: 240px;
+    @include flex-space-between;
+    min-width: var(--audio-controls-width);
     align-self: center;
-    justify-content: space-between;
-    align-items: center;
     .rewind,
     .forward {
       ion-button {
-        width: 64px;
-        height: 64px;
+        @include large-square;
         --background: transparent;
         --padding: 0;
-        --border-radius: 50%;
+        --border-radius: var(--ion-border-radius-rounded);
         --box-shadow: transparent;
         img {
           position: absolute;
-          min-width: 48px;
+          min-width: var(--audio-controls-img-width);
         }
       }
     }
@@ -103,24 +96,21 @@
     }
     .play {
       .btn-play {
-        width: 64px;
-        height: 64px;
-        --background: #00a0cc;
-        --border-radius: 50%;
+        @include large-square;
+        --background: var(--ion-btn-control-bg);
+        --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
-        --box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.25);
+        --box-shadow: var(--ion-default-box-shadow);
         img {
           position: absolute;
-          width: 35px;
-        }
-        .ml-5 {
-          margin-left: 5px;
+          width: var(--audio-play-img-width);
+          margin-left: var(--tiny-margin);
         }
       }
     }
   }
   .error-text {
-    margin: 10px 0;
+    margin: var(--small-margin) 0;
     text-align: center;
   }
 }
