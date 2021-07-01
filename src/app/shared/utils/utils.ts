@@ -196,12 +196,12 @@ export type IFunctionHashmap = { [function_name: string]: (...args: any) => any 
  * convert strings containing "TRUE", "true", "FALSE" or "false" to booleans
  * TODO - combine with script util
  */
-export function booleanStringToBoolean(str: string) {
-  if (typeof str === "string") {
-    if (str.match(/^true$/gi)) return true;
-    if (str.match(/^false$/gi)) return false;
+export function booleanStringToBoolean(val: any) {
+  if (typeof val === "string") {
+    if (val.match(/^true$/gi)) return true;
+    if (val.match(/^false$/gi)) return false;
   }
-  return str;
+  return val;
 }
 
 /**
