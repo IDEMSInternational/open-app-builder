@@ -2,25 +2,32 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "ts-node-dev --respawn --watch src/**/*.ts index.ts --",
-    "migrate": "node db/migrations.js"
+    "start": "concurrently -k -n \"SERVER,CLIENT\" -c \"blue,magenta\" \"npm run start:db\" \"npm run start:client\"",
+    "start:db": "docker-compose --file ./docker/docker-compose.yml --project-name plh_docker up",
+    "start:client": "wait-on tcp:5432 && ts-node-dev --respawn src/index.ts",
+    "build": "yarn workspace client build"
   },
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "4.17.1",
-    "nodejs-websocket": "^1.7.2",
     "pg": "^8.6.0",
     "postgres-migrations": "^5.2.0",
-    "ts-node-dev": "^1.1.8",
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/pg": "^8.6.0",
+    "@types/ws": "^7.4.5",
+    "concurrently": "^6.2.0",
     "eslint": "^7.29.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.4"
+    "eslint-plugin-import": "^2.23.4",
+    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.1.8",
+    "wait-on": "^6.0.0",
+    "ws": "^7.5.1"
   }
 }
