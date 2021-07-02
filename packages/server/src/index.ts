@@ -1,7 +1,7 @@
 import { logger } from "./helpers/logger";
 import { DB } from "./database/database.service";
 import { StartSyncServer } from "./sync-server/sync-server.service";
-import { runMigrations } from "./migrations";
+import { runMigrations } from "./migrations_old";
 import { environment } from "./helpers/environment";
 
 const webSocketPort = environment.WEBSOCKET_PORT;
