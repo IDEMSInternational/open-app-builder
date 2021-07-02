@@ -1,15 +1,15 @@
-import database from "../database/database.service";
+import { DB } from "../database/database.service";
 
 async function getTables() {
-  const response = await database.query(`SELECT table_name
+  const response = await DB.query(`SELECT table_name
     FROM information_schema.tables
     WHERE table_schema = 'public'
     ORDER BY table_name;`);
   return response.rows;
 }
 
-async function doesTableExist(table) {
-  const response = await database.query(
+async function doesTableExist(table: string) {
+  const response = await DB.query(
     `SELECT table_name
     FROM information_schema.tables
     WHERE table_schema = 'public'
@@ -20,10 +20,10 @@ async function doesTableExist(table) {
   return !!response.rows.length;
 }
 
-async function getByKey(table, key) {
+async function getByKey(table: string, key: string) {
   const tableExist = await doesTableExist(table);
   if (tableExist) {
-    const response = await database.select(table, ["*"], { id: key });
+    const response = await DB.select(table, ["*"], { id: key });
     return response.rows[0];
   }
   return;

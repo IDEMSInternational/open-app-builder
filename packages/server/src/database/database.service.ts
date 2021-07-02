@@ -1,27 +1,29 @@
-const { Client } = require("pg");
+import { Client, ClientConfig } from "pg";
+import { where, updates } from "./database.utils";
+import { environment } from "../helpers/environment";
 
-const { where, updates } = require("./database.utils");
-
-require("dotenv").config();
+const CLIENT_CONFIG: ClientConfig = {
+  host: environment.POSTGRES_HOST,
+  port: Number(environment.POSTGRES_PORT),
+  database: environment.POSTGRES_DB,
+  user: environment.POSTGRES_USER,
+  password: environment.POSTGRES_PASSWORD,
+};
 
 class PostgresDB {
-  client;
+  client: Client;
 
   constructor() {
-    this.client = new Client({
-      host: process.env.HOST,
-      port: process.env.PORT,
-      database: process.env.DATABASE,
-      user: process.env.USER,
-      password: process.env.PASSWORD,
-    });
+    console.log("creating client", CLIENT_CONFIG);
+    this.client = new Client(CLIENT_CONFIG);
   }
 
-  connect() {
-    this.client.connent();
+  async connect() {
+    console.log("connecting", this.client);
+    return this.client.connect();
   }
 
-  async query(sql, values?) {
+  async query(sql: string, values?: string[]) {
     const result = await this.client.query(sql, values);
     if (result.rows) {
       result.rows = result.rows;
@@ -30,7 +32,7 @@ class PostgresDB {
     return result;
   }
 
-  insert(table, record) {
+  insert(table: string, record: any) {
     const keys = Object.keys(record);
     const nums = new Array(keys.length);
     const data = new Array(keys.length);
@@ -74,8 +76,8 @@ class PostgresDB {
   }
 
   close() {
-    this.client.end();
+    return this.client.end();
   }
 }
 
-export default new PostgresDB();
+export const DB = new PostgresDB();

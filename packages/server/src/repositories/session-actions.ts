@@ -1,9 +1,9 @@
-import database from "../database/database.service";
+import { DB } from "../database/database.service";
 
 const tableName = "session_actions";
 
 function insert(data) {
-  return database.insert(tableName, data);
+  return DB.insert(tableName, data);
 }
 
 function update(data) {
@@ -11,11 +11,11 @@ function update(data) {
   const actions = data.actions
     .map((action, index) => (action && !action.id ? { id: index, ...action } : action))
     .filter((action) => action);
-  return database.update(tableName, { actions }, { id: data.id });
+  return DB.update(tableName, { actions }, { id: data.id });
 }
 
 function remove(id) {
-  return database.delete(tableName, { id });
+  return DB.delete(tableName, { id });
 }
 
 export default {
