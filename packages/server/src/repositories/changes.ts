@@ -1,20 +1,18 @@
-import database from "../database/database.service";
+import { DB } from "../database/database.service";
 
 const tableName = "changes";
 
 function insert(data) {
-  return database.insert(tableName, data);
+  return DB.insert(tableName, data);
 }
 
 async function getLastRevision(clientIdentity) {
-  let response = await database.query("select MAX(rev) from changes where source = $1", [
-    clientIdentity,
-  ]);
+  let response = await DB.query("select MAX(rev) from changes where source = $1", [clientIdentity]);
   return response.rows[0];
 }
 
 async function getChanges(revision, clientIdentity) {
-  let reponse = await database.query("select * from changes where rev > $1 and source = $2", [
+  let reponse = await DB.query("select * from changes where rev > $1 and source = $2", [
     revision,
     clientIdentity,
   ]);
@@ -26,7 +24,7 @@ async function getChanges(revision, clientIdentity) {
 }
 
 async function getServerChanges(revision) {
-  let reponse = await database.query("select * from changes where rev > $1", [revision]);
+  let reponse = await DB.query("select * from changes where rev > $1", [revision]);
   return reponse.rows
     ? reponse.rows.map((item) => {
         return { ...item, table: item.table_name };
