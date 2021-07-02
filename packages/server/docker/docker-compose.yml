@@ -1,0 +1,25 @@
+# Use postgres/example user/password credentials
+version: "3.1"
+services:
+  db:
+    image: postgres
+    container_name: plh_db
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    volumes:
+      # store db data to volume
+      - db_data:/var/lib/postgresql
+      # bind db init scripts
+      - ./config/db:/docker-entrypoint-initdb.d/
+    ports:
+      - "${POSTGRES_PORT}:5432"
+
+  db_admin:
+    image: adminer
+    container_name: plh_db_admin
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+volumes:
+  db_data:
