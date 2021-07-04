@@ -7,7 +7,8 @@
     "start": "concurrently -k -n \"SERVER,CLIENT\" -c \"blue,magenta\" \"npm run start:db\" \"npm run start:client\"",
     "start:db": "docker-compose --file ./docker/docker-compose.yml --project-name plh_docker up",
     "start:client": "wait-on tcp:5432 && ts-node-dev --respawn src/index.ts",
-    "sequelize": "npx sequelize-cli"
+    "sequelize": "npx sequelize-cli",
+    "clear": "docker-compose --file ./docker/docker-compose.yml -p plh_docker rm --volumes --force && docker volume prune"
   },
   "license": "ISC",
   "dependencies": {
