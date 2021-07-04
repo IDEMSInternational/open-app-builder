@@ -1,6 +1,6 @@
 import { Client, ClientConfig } from "pg";
 import { where, updates } from "./database.utils";
-import { environment } from "../helpers/environment";
+import { environment } from "../environment";
 
 const CLIENT_CONFIG: ClientConfig = {
   host: environment.POSTGRES_HOST,

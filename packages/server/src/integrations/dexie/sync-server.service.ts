@@ -1,9 +1,9 @@
 import WebSocket from "ws";
-import { logger } from "../helpers/logger";
+import { logger } from "../../helpers/logger";
 
-import baseRepo from "../repositories/base";
-import changesRepo from "../repositories/changes";
-import sessionActionsRepo from "../repositories/session-actions";
+import baseRepo from "../../repositories/base";
+import changesRepo from "../../repositories/changes";
+import sessionActionsRepo from "../../repositories/session-actions";
 import { TYPE, applyModifications } from "./sync-server.utils";
 
 const db = {

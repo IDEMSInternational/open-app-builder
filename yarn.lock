@@ -3240,6 +3240,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/validator@npm:^13.6.1":
+  version: 13.6.1
+  resolution: "@types/validator@npm:13.6.1"
+  checksum: d591bcf3bcbd99aa5ddf4a17af300466fe8a9bf2ed4b73b7032f33c781717f2538990101fe2b3793555d2572f0cd85c87e9d18e75cf5036703a8627a9a86aa70
+  languageName: node
+  linkType: hard
+
 "@types/webpack-sources@npm:^0.1.5":
   version: 0.1.8
   resolution: "@types/webpack-sources@npm:0.1.8"
@@ -14333,6 +14340,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"pg-hstore@npm:^2.3.4":
+  version: 2.3.4
+  resolution: "pg-hstore@npm:2.3.4"
+  dependencies:
+    underscore: ^1.13.1
+  checksum: 336eef36269784876769ad60dd5d674baa7e6d06c4babd33a1abba4c46877b147c12f5a486b327cfbcf7cd2d1c75d74dee5e19c37f0d90ce8b909add8935b00d
+  languageName: node
+  linkType: hard
+
 "pg-int8@npm:1.0.1":
   version: 1.0.1
   resolution: "pg-int8@npm:1.0.1"
@@ -16532,6 +16548,7 @@ resolve@1.19.0:
   resolution: "server@workspace:packages/server"
   dependencies:
     "@types/pg": ^8.6.0
+    "@types/validator": ^13.6.1
     "@types/ws": ^7.4.5
     concurrently: ^6.2.0
     dotenv: ^10.0.0
@@ -16541,6 +16558,7 @@ resolve@1.19.0:
     eslint-plugin-import: ^2.23.4
     express: 4.17.1
     pg: ^8.6.0
+    pg-hstore: ^2.3.4
     postgres-migrations: ^5.2.0
     sequelize: ^6.6.4
     sequelize-cli: ^6.2.0
@@ -18522,6 +18540,13 @@ typescript@~4.0.3:
     has-symbols: ^1.0.2
     which-boxed-primitive: ^1.0.2
   checksum: aa944f1ecfec638b841b331383d0b80edc40855271ecc213c1aa736096d8d0b39ba25b64d102f56c597521db9cd3f0ddbcb97a0f760c240ab584e94e457518c1
+  languageName: node
+  linkType: hard
+
+"underscore@npm:^1.13.1":
+  version: 1.13.1
+  resolution: "underscore@npm:1.13.1"
+  checksum: 19527b2db3d34f783c3f2db9716a2c1221fef2958866925545697c46f430f59d1b384b8105cc7e7c809bdf0dc9075f2bfff90b8fb270b9d3a6c58347de2dd79d
   languageName: node
   linkType: hard
 
