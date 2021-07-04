@@ -14,12 +14,14 @@
     "dotenv": "^10.0.0",
     "express": "4.17.1",
     "pg": "^8.6.0",
+    "pg-hstore": "^2.3.4",
     "postgres-migrations": "^5.2.0",
     "sequelize": "^6.6.4",
     "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/pg": "^8.6.0",
+    "@types/validator": "^13.6.1",
     "@types/ws": "^7.4.5",
     "concurrently": "^6.2.0",
     "eslint": "^7.29.0",
