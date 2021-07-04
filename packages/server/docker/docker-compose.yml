@@ -14,12 +14,54 @@ services:
       - ./config/db:/docker-entrypoint-initdb.d/
     ports:
       - "${POSTGRES_PORT}:5432"
-
+    networks:
+      - db_network  
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  ####################################################################
+  #
+  ####################################################################
   db_admin:
     image: adminer
     container_name: plh_db_admin
     restart: unless-stopped
+    networks:
+      - db_network
+    environment: 
+      - ADMINER_DEFAULT_SERVER=db
+    networks: 
+      - db_network  
     ports:
       - 8080:8080
+
+  # Metabase: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-docker.html
+  db_dashboard:
+    image: metabase/metabase
+    container_name: plh_db_dashboard
+    # restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      # store db data to volume
+      - dashboard_data:/metabase-data
+    ports:
+      - 3000:3000
+      # https://www.metabase.com/docs/latest/operations-guide/environment-variables.html
+    networks:
+      - db_network
+    environment:
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=metabase
+      - MB_DB_PORT=5432
+      - MB_DB_USER=metabase # TODO - Add custom creds and table
+      - MB_DB_PASS=metabase # TODO - Make secure
+      - MB_DB_HOST=db # TODO - replace with db from network?
 volumes:
   db_data:
+  dashboard_data:
+# NOTE - networks aren't actually required unless we used multiple docker-compose files
+networks:
+  db_network:
