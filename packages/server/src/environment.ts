@@ -4,11 +4,11 @@ import { logger } from "./helpers/logger";
 /** Environment variables set from `.env` file */
 interface IParsedEnvironment {
   WEBSOCKET_PORT: string;
-  POSTGRES_HOST: string;
-  POSTGRES_PORT: string;
-  POSTGRES_USER: string;
-  POSTGRES_PASSWORD: string;
-  POSTGRES_DB: string;
+  DB_HOST: string;
+  DB_PORT: string;
+  DB_USER: string;
+  DB_PASSWORD: string;
+  DB_NAME: string;
   NODE_ENV?: "development" | "production" | "test";
 }
 interface IEnvironment extends IParsedEnvironment {

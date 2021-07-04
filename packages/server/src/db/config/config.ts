@@ -2,11 +2,11 @@ import { Options } from "sequelize";
 import { environment } from "../../environment";
 
 const defaultConfig: Options = {
-  username: environment.POSTGRES_USER,
-  password: environment.POSTGRES_PASSWORD,
-  database: environment.POSTGRES_DB,
-  host: environment.POSTGRES_HOST,
-  port: Number(environment.POSTGRES_PORT),
+  username: environment.DB_USER,
+  password: environment.DB_PASSWORD,
+  database: environment.DB_NAME,
+  host: environment.DB_HOST,
+  port: Number(environment.DB_PORT),
   dialect: "postgres",
   dialectOptions: {
     bigNumberStrings: true,

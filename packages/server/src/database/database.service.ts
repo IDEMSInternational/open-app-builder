@@ -3,11 +3,11 @@ import { where, updates } from "./database.utils";
 import { environment } from "../environment";
 
 const CLIENT_CONFIG: ClientConfig = {
-  host: environment.POSTGRES_HOST,
-  port: Number(environment.POSTGRES_PORT),
-  database: environment.POSTGRES_DB,
-  user: environment.POSTGRES_USER,
-  password: environment.POSTGRES_PASSWORD,
+  host: environment.DB_HOST,
+  port: Number(environment.DB_PORT),
+  database: environment.DB_NAME,
+  user: environment.DB_USER,
+  password: environment.DB_PASSWORD,
 };
 
 class PostgresDB {
