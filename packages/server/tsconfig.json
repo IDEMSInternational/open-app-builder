@@ -3,12 +3,12 @@
     "target": "es2015",
     "noEmit": true,
     "moduleResolution": "node",
-    "module": "ES6",
+    "module": "CommonJS",
     "esModuleInterop": true,
     "lib": ["ESNext"],
 
     // Global type definitions.
     "typeRoots": ["./node_modules/@types", "../../node_modules/@types"]
   },
-  "include": ["src/*", "src/database/models"]
+  "include": ["src/*"]
 }
