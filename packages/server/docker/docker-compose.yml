@@ -22,6 +22,7 @@ services:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       # - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./config/nginx/conf:/etc/nginx/conf
+      # NOTE - the bind volumes directly from motomo (could be another service)
   ####################################################################
   # Postgres DB
   ####################################################################
@@ -94,6 +95,7 @@ services:
   # NOTE - requires run after any clean install
   # ```docker exec plh_analytics_dashboard chown -R www-data:www-data /var/www/html```
   # alt matomo nginx: https://techroads.org/matomo-apache-killed-my-server-then-matomo-nginx-killed-my-server/
+  # TODO - overall build still problematic, might be better to try matomo:alpine again
   ####################################################################
   analytics_db:
     image: mariadb
@@ -114,12 +116,12 @@ services:
       timeout: 20s
       retries: 10
   analytics_dashboard:
-    image: matomo:apache
+    # image: matomo:apache
+    image: matomo:fpm-alpine
     container_name: plh_analytics_dashboard
     restart: unless-stopped
     depends_on:
       - analytics_db
-      - webserver_network
     volumes:
       # NOTE - binding config seems to break - could bind full folder path and edit global config file
       # but that would break matomo updates
@@ -128,14 +130,29 @@ services:
     environment:
       - MATOMO_DATABASE_HOST=analytics_db
       - MATOMO_DATABASE_ADAPTER=mysql
-    ports:
-      - 9000:80
     extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file:
       - ../.env
     networks:
       - analytics_network
+  analytics_webserver:
+    image: nginx:latest
+    container_name: analytics_webserver
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    ports:
+      - 9000:80
+      - 9001:443
+    networks:
+      - analytics_network
+      - webserver_network
+    volumes:
+      # NOTE - the bind volumes directly from motomo (could be another service)
+      - analytics_dashboard:/var/www/html:ro
+      - ./config/analytics_dashboard/matomo.conf:/etc/nginx/conf.d/default.conf:ro
+
 volumes:
   db_data:
   dashboard_data:
