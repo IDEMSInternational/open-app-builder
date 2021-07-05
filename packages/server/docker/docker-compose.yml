@@ -2,8 +2,8 @@
 version: "3.1"
 services:
   ####################################################################
-  # NGinx Webserver
-  # https://hub.docker.com/r/jonasal/nginx-certbot
+  # Primary Webserver (Nginx)
+  # Alt: https://hub.docker.com/r/jonasal/nginx-certbot
   ####################################################################
   nginx:
     # image: jonasal/nginx-certbot:latest
@@ -26,27 +26,27 @@ services:
   ####################################################################
   # Postgres DB
   ####################################################################
-  # db:
-  #   image: postgres
-  #   container_name: plh_db
-  #   restart: unless-stopped
-  #   env_file:
-  #     - ../.env
-  #   volumes:
-  #     # store db data to volume
-  #     - db_data:/var/lib/postgresql
-  #     # bind db init scripts
-  #     - ./config/db:/docker-entrypoint-initdb.d/
-  #   ports:
-  #     - 5432:5432
-  #     # - "${DB_PORT}:5432"  - requires additional env file to set (https://github.com/docker/compose/pull/1765)
-  #   networks:
-  #     - db_network
-  #   healthcheck:
-  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
-  #     interval: 10s
-  #     timeout: 5s
-  #     retries: 5
+  db:
+    image: postgres
+    container_name: plh_db
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    volumes:
+      # store db data to volume
+      - db_data:/var/lib/postgresql
+      # bind db init scripts
+      - ./config/db:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+      # - "${DB_PORT}:5432"  - requires additional env file to set (https://github.com/docker/compose/pull/1765)
+    networks:
+      - db_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   ####################################################################
   # Adminer DB Admin
   # Works with both Postgres and MariaDB
@@ -68,28 +68,28 @@ services:
   # https://www.metabase.com/docs/latest/operations-guide/environment-variables.html
   # TODO - Add custom env credentials
   ####################################################################
-  # db_dashboard:
-  #   image: metabase/metabase
-  #   container_name: plh_db_dashboard
-  #   restart: unless-stopped
-  #   depends_on:
-  #     - db
-  #   volumes:
-  #     - dashboard_data:/metabase-data
-  #   env_file:
-  #     - ../.env
-  #   ports:
-  #     - 3000:3000
-  #   networks:
-  #     - db_network
-  #     - webserver_network
-  #   environment:
-  #     - MB_DB_TYPE=postgres
-  #     - MB_DB_DBNAME=metabase
-  #     - MB_DB_PORT=5432
-  #     - MB_DB_HOST=db
+  db_dashboard:
+    image: metabase/metabase
+    container_name: plh_db_dashboard
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      - dashboard_data:/metabase-data
+    env_file:
+      - ../.env
+    # ports:
+    #   - 3000:3000
+    networks:
+      - db_network
+      - webserver_network
+    environment:
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=metabase
+      - MB_DB_PORT=5432
+      - MB_DB_HOST=db
   ####################################################################
-  # Analytics DB + Dashboard
+  # Analytics (DB, Matomo App, Webserver)
   # NOTE - requires run after any clean install (TBC - might not be needed anymore)
   # ```docker exec analytics_dashboard chown -R www-data:www-data /var/www/html```
   ####################################################################
@@ -140,8 +140,8 @@ services:
     networks:
       - analytics_network
       - webserver_network
-    ports:
-      - 9000:80
+    # ports:
+    #   - 9000:80
     volumes:
       - matomo_www:/var/www/html:ro
       - ./config/analytics_dashboard/matomo.conf:/etc/nginx/conf.d/default.conf:ro
