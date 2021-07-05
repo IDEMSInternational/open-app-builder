@@ -118,14 +118,14 @@ services:
   analytics_dashboard:
     # image: matomo:apache
     image: matomo:fpm-alpine
-    # container_name: plh_analytics_dashboard
+    container_name: analytics_dashboard
     restart: unless-stopped
     depends_on:
       - analytics_db
     volumes:
-      # NOTE - binding config seems to break - could bind full folder path and edit global config file
-      # but that would break matomo updates
-      #- ./config/analytics_dashboard/config.ini.php:/var/www/html/config/config.ini.php
+      # NOTE - the config file should first be written by the dashboard before being updated
+      # https://github.com/matomo-org/matomo/issues/12206 and ensure correct permissions
+      - ./config/analytics_dashboard/matomo_config:/var/www/html/config:rw
       - matomo_www:/var/www/html
     environment:
       - MATOMO_DATABASE_HOST=analytics_db
@@ -136,15 +136,15 @@ services:
       - analytics_network
   analytics_webserver:
     image: nginx:latest
-    # container_name: plh_analytics_webserver
+    container_name: analytics_webserver
     restart: unless-stopped
     env_file:
       - ../.env
     networks:
       - analytics_network
       - webserver_network
-    # ports:
-    #   - 9000:80
+    ports:
+      - 9000:80
     volumes:
       # NOTE - the bind volumes directly from motomo (could be another service)
       - matomo_www:/var/www/html:ro
