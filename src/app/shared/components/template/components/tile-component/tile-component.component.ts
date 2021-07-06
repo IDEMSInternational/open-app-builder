@@ -40,7 +40,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
     this.first_line_text = getStringParamFromTemplateRow(this._row, "first_line_text", null);
     this.second_line_text = getStringParamFromTemplateRow(this._row, "second_line_text", null);
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
-    this.left_icon_src = getStringParamFromTemplateRow(this._row, "left_icon_src", null);
+    this.left_icon_src = getStringParamFromTemplateRow(this._row, "left_icon_src", "");
     this.value = this._row.value;
     this.windowWidth = window.innerWidth;
     this.style = `
