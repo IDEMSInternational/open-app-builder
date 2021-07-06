@@ -147,7 +147,7 @@
       {
         "type": "declare_global_constant",
         "name": "m_workshop_tomorrow",
-        "value": "New @global.weekly_workshop ready tomorrow!"
+        "value": "New workshop ready tomorrow!"
       },
       {
         "type": "declare_global_constant",
@@ -1479,6 +1479,11 @@
         "type": "declare_global_constant",
         "name": "type_your_own",
         "value": "Type your own"
+      },
+      {
+        "type": "declare_global_constant",
+        "name": "dont_show_again",
+        "value": "I've understood this. Don't show me this message again."
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/data/survey_globals.xlsx"
