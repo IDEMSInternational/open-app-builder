@@ -4027,6 +4027,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"api@workspace:packages/api":
+  version: 0.0.0-use.local
+  resolution: "api@workspace:packages/api"
+  dependencies:
+    "@types/pg": ^8.6.0
+    "@types/validator": ^13.6.1
+    "@types/ws": ^7.4.5
+    concurrently: ^6.2.0
+    dotenv: ^10.0.0
+    eslint: ^7.29.0
+    eslint-config-airbnb: ^18.2.1
+    eslint-config-airbnb-base: ^14.2.1
+    eslint-plugin-import: ^2.23.4
+    express: 4.17.1
+    pg: ^8.6.0
+    pg-hstore: ^2.3.4
+    postgres-migrations: ^5.2.0
+    sequelize: ^6.6.4
+    sequelize-cli: ^6.2.0
+    ts-node: ^10.0.0
+    ts-node-dev: ^1.1.8
+    wait-on: ^6.0.0
+    winston: ^3.3.3
+    ws: ^7.5.1
+  languageName: unknown
+  linkType: soft
+
 "app-root-path@npm:^3.0.0":
   version: 3.0.0
   resolution: "app-root-path@npm:3.0.0"
@@ -16546,27 +16573,6 @@ resolve@1.19.0:
 "server@workspace:packages/server":
   version: 0.0.0-use.local
   resolution: "server@workspace:packages/server"
-  dependencies:
-    "@types/pg": ^8.6.0
-    "@types/validator": ^13.6.1
-    "@types/ws": ^7.4.5
-    concurrently: ^6.2.0
-    dotenv: ^10.0.0
-    eslint: ^7.29.0
-    eslint-config-airbnb: ^18.2.1
-    eslint-config-airbnb-base: ^14.2.1
-    eslint-plugin-import: ^2.23.4
-    express: 4.17.1
-    pg: ^8.6.0
-    pg-hstore: ^2.3.4
-    postgres-migrations: ^5.2.0
-    sequelize: ^6.6.4
-    sequelize-cli: ^6.2.0
-    ts-node: ^10.0.0
-    ts-node-dev: ^1.1.8
-    wait-on: ^6.0.0
-    winston: ^3.3.3
-    ws: ^7.5.1
   languageName: unknown
   linkType: soft
 
@@ -16644,6 +16650,14 @@ resolve@1.19.0:
   checksum: e329e054c286f0681fd8a9e5c353999519332f12510a99e189ea9cfa0337adb6f1414639d44493418ef6790a693b78c354525269f5db25a9feddd8b4d7891a62
   languageName: node
   linkType: hard
+
+"shared@workspace:packages/shared":
+  version: 0.0.0-use.local
+  resolution: "shared@workspace:packages/shared"
+  dependencies:
+    concurrently: ^6.2.0
+  languageName: unknown
+  linkType: soft
 
 "sharp@npm:0.28.3":
   version: 0.28.3

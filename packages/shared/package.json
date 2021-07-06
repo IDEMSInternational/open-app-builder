@@ -1,0 +1,15 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "concurrently -k -n \"SERVER,CLIENT\" -c \"blue,magenta\" \"npm run start:server\" \"npm run start:api\"",
+    "start:server": "yarn workspace server start",
+    "start:api": "wait-on tcp:5432 && yarn workspace api start"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
