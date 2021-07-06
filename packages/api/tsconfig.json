@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "noEmit": true,
-    "moduleResolution": "node",
-    "module": "CommonJS",
-    "esModuleInterop": true,
-    "lib": ["ESNext"],
-
-    // Global type definitions.
-    "typeRoots": ["./node_modules/@types", "../../node_modules/@types"]
-  },
-  "include": ["src/*"]
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true
+  }
 }
