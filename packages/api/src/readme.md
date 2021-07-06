@@ -52,3 +52,7 @@ Migrations will be performed in the order of the ids. **If ids are not consecuti
 
 Links for future reference:
 - https://sequelize.org/
+- https://swarmlet.dev/docs/
+
+TODO
+- Split docker server deployment from server app code
