@@ -1,5 +1,5 @@
 {
-  "name": "api-old",
+  "name": "dexie-sync",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -14,7 +14,6 @@
     "pg-hstore": "^2.3.4",
     "postgres-migrations": "^5.2.0",
     "sequelize": "^6.6.4",
-    "swagger-ui-express": "^4.1.6",
     "winston": "^3.3.3"
   },
   "devDependencies": {

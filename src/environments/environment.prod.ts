@@ -16,4 +16,5 @@ export const environment = {
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
+  apiEndpoint: "[TODO - add server api]",
 };
