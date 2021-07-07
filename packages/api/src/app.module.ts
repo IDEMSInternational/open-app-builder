@@ -1,8 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
 import { AppUsersModule } from "./app_users";
 
 @Module({
@@ -16,11 +14,15 @@ import { AppUsersModule } from "./app_users";
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadModels: true,
-      synchronize: true, // TODO - check whether safe to use in production
+      synchronize: true,
+      // TODO - expose env pooling options
+      pool: {
+        max: 50,
+        min: 0,
+        idle: 10000,
+      },
     }),
     AppUsersModule,
   ],
-  // controllers: [AppController],
-  // providers: [AppService],
 })
 export class AppModule {}
