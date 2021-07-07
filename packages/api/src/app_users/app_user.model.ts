@@ -1,13 +1,16 @@
-import { Column, Model, Table } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 @Table
-export class AppUser extends Model {
+export class AppUser extends Model<AppUser> {
+  @Column({ allowNull: false, unique: true })
+  app_user_id: string;
+
   @Column
   firstName: string;
 
   @Column
   lastName: string;
 
-  @Column({ defaultValue: true })
-  isActive: boolean;
+  @Column({ type: DataType.JSONB })
+  contact_fields: any;
 }
