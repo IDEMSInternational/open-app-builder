@@ -23,10 +23,6 @@ import { TemplateBaseComponent } from "./base";
             <td>{{ _row[key] | json }}</td>
           </tr>
         </div>
-        <!-- <tr *ngIf="_row._dynamicFields">
-          <td>@local</td>
-          <td>{{ parent.localVariables | json }}</td>
-        </tr> -->
       </table>
       <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log full details)</ion-button>
     </div>
@@ -84,7 +80,6 @@ export class TemplateDebuggerComponent extends TemplateBaseComponent {
     console.group(this._row.type, this._row.name);
     console.log("row", this._row);
     console.log("parent rows", mapToJson(this.parent.templateRowMap));
-    console.log("local overrides", this.parent.localVariables);
     console.log("fields", fields);
     console.log("globals", this.templateService.globals);
     console.log("parent", this.parent);
