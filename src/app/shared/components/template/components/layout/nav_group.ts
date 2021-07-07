@@ -58,7 +58,6 @@ import { TemplateLayoutComponent } from "./layout";
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        gap: 5px;
         padding: var(--small-padding) 0;
       }
       .nav-section :nth-child(1) {
@@ -67,6 +66,7 @@ import { TemplateLayoutComponent } from "./layout";
       .nav-progress-part {
         height: 7px;
         flex: 1;
+        margin: 0 2px;
         background-color: var(--ion-primary-color, #0d3f60);
         border-radius: var(--ion-border-radius-standard);
         max-width: 40px;
