@@ -10,8 +10,10 @@ export class AppUsersService {
     private readonly model: typeof AppUser
   ) {}
 
-  create(createUserDto: AppUserDto): Promise<AppUser> {
+  create(app_user_id: string, createUserDto: AppUserDto): Promise<AppUser> {
     const user = new AppUser();
+    user.app_user_id = app_user_id;
+    user.contact_fields = createUserDto.contact_fields;
 
     return user.save();
   }
