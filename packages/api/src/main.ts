@@ -4,8 +4,8 @@ import { AppModule } from "./app.module";
 import { setupDB } from "./db";
 
 async function bootstrap() {
+  // DB Bootstrap (could be managed outside repo)
   await setupDB();
-  return;
   // API Boostrap (auto connects to DB)
   const app = await NestFactory.create(AppModule);
   // OpenAPI/Swagger documentation bootstrap

@@ -1,15 +1,13 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
-@Table
+// NOTE - the table will not be created from this model, but instead via db migration scripts
+@Table({ tableName: "app_users" })
 export class AppUser extends Model<AppUser> {
   @Column({ allowNull: false, unique: true })
   app_user_id: string;
 
   @Column
-  firstName: string;
-
-  @Column
-  lastName: string;
+  app_version: string;
 
   @Column({ type: DataType.JSONB })
   contact_fields: any;
