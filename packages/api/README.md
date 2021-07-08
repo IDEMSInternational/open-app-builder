@@ -45,6 +45,6 @@ All changes to database structures are handled by migration scripts, found in [s
 The files must be named sequentially as that is the order they are applied in.
 
 ## Examples and References
-- https://github.com/nestjs/nest/blob/master/sample/07-sequelize/package.json
+- https://github.com/nestjs/nest/tree/master/sample/07-sequelize/src
 - https://docs.nestjs.com/recipes/sql-sequelize#sql-sequelize
 - https://github.com/sequelize/umzug/tree/master/examples/1.sequelize-typescript
