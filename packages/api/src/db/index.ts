@@ -7,8 +7,6 @@ import { environment } from "src/environment";
 import { Umzug, SequelizeStorage } from "umzug";
 import { ADMIN_CLIENT_CONFIG, USER_DB_CONFIG } from "./config";
 
-const sequelize = new Sequelize(USER_DB_CONFIG);
-
 const DB_DIR = path.resolve(process.cwd(), "src", "db");
 const APP_DB_NAME = environment.DB_NAME || "app";
 const APP_DB_PASSWORD = environment.DB_PASSWORD || "app";
@@ -62,6 +60,7 @@ async function setupUsers(client: Client) {
  * For more info see: https://github.com/sequelize/umzug
  */
 async function runMigrations() {
+  const sequelize = new Sequelize(USER_DB_CONFIG);
   const migrator = new Umzug({
     migrations: {
       glob: ["migrations/*.ts", { cwd: DB_DIR }],
@@ -71,4 +70,5 @@ async function runMigrations() {
     logger: console,
   });
   await migrator.up();
+  await sequelize.close();
 }

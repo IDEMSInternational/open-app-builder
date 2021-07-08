@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from "@nestjs/common";
-import { AppUserDto } from "./dto/create-app_user.dto";
+import { SetUserDataDto } from "./dto/set-user-data.dto";
 import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
 import { ApiBody, ApiOperation, ApiParam, ApiResponse } from "@nestjs/swagger";
@@ -39,13 +39,13 @@ export class AppUsersController {
   @Post(":app_user_id")
   @ApiParam({ name: "app_user_id", type: String })
   @ApiOperation({ summary: "Update user profile" })
-  @ApiBody({ type: AppUserDto })
+  @ApiBody({ type: SetUserDataDto })
   @ApiResponse({
     status: 200,
     description: "User Updated",
-    type: AppUserDto,
+    type: SetUserDataDto,
   })
-  setUserData(@Param() params: { app_user_id: string }, @Body() data: AppUserDto) {
+  setUserData(@Param() params: { app_user_id: string }, @Body() data: SetUserDataDto) {
     console.log("posting user", params, data);
     return this.appUsersService.setUserData(params.app_user_id, data);
   }
