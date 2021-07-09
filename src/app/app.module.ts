@@ -27,7 +27,9 @@ const introModules = [AppTermsPageModule, PrivacyPageModule];
 
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
+import { MatomoModule } from "ngx-matomo";
 import { TourComponent } from "./feature/tour/tour.component";
+import { httpInterceptorProviders } from "./shared/services/server/interceptors";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -53,8 +55,27 @@ export function lottiePlayerFactory() {
     ...introModules,
     SurveyModule,
     LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),
+    // TODO - use env (handle undefined case)
+    // TODO - handle breaking versions ng 10/11/12 matomo rc1,2
+    // MatomoModule.forRoot({
+    //   scriptUrl: "http://localhost/analytics/",
+    //   trackers: [
+    //     {
+    //       trackerUrl: "http://localhost/analytics/matomo.php",
+    //       siteId: 1,
+    //     },
+    //   ],
+    //   routeTracking: {
+    //     enable: true,
+    //   },
+    // }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, HTTP, Device],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    HTTP,
+    Device,
+    httpInterceptorProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
