@@ -3,7 +3,11 @@
 import Dexie from "dexie";
 import "dexie-syncable";
 
-(function () {
+/**
+ * Open a websocket connection with Dexie sync server for syncing tables
+ * NOTE CC 2021-07-09 - Currently deprecated but may want again in future
+ */
+function init() {
   // Constants:
   const RECONNECT_DELAY = 5000; // Reconnect delay in case of errors such as network down.
 
@@ -151,4 +155,4 @@ import "dexie-syncable";
       };
     },
   });
-})();
+}
