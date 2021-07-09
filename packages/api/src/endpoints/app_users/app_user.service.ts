@@ -37,11 +37,9 @@ export class AppUsersService {
     let user = await this.model.findOne({ where: { app_user_id } });
 
     if (!user) {
-      console.log("createing new user", app_user_id);
       user = new AppUser();
       user.app_user_id = app_user_id;
     }
-    console.log("user", user);
     return user.update({ ...data, app_user_id });
   }
 }
