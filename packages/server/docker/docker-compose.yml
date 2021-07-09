@@ -24,6 +24,34 @@ services:
       - ./config/nginx/conf:/etc/nginx/conf
       # NOTE - the bind volumes directly from motomo (could be another service)
   ####################################################################
+  # IDEMS Apps API
+  ####################################################################
+  api:
+    container_name: api
+    restart: unless-stopped
+    build:
+      context: ../../api
+      dockerfile: Dockerfile
+    image: idems/apps-api:latest
+    env_file:
+      - ../../api/.env
+      # target: production-env
+    environment:
+      DB_HOST: db
+      API_BASE_PATH: api
+    networks:
+      - db_network
+      - webserver_network
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: ["curl", "--fail http://localhost:3000 || exit 1 "]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  ####################################################################
   # Postgres DB
   ####################################################################
   db:
