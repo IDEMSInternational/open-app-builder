@@ -4,6 +4,7 @@ import * as dotenv from "dotenv";
 interface IParsedEnvironment {
   WEBSOCKET_PORT: string;
   API_PORT: string;
+  API_BASE_PATH: string;
   DB_HOST: string;
   DB_PORT: string;
   DB_ADMIN_NAME: string;
@@ -19,13 +20,23 @@ interface IEnvironment extends IParsedEnvironment {
   production: boolean;
 }
 
-const { error, parsed } = dotenv.config();
-if (error) {
-  // could not parse dotenv
-  throw new Error(error.message);
+let parsedEnv: IParsedEnvironment = {} as any;
+
+try {
+  const { error, parsed } = dotenv.config();
+  if (parsed) {
+    parsedEnv = parsed as any;
+  }
+  if (error) {
+    // could not parse dotenv - either not provided or running in production without file
+    console.error("dotenv parse fail");
+  }
+} catch (error) {
+  console.error("caught error from parsed");
 }
-const parsedEnv: IParsedEnvironment = parsed as any;
+
 const environment: IEnvironment = {
+  ...process.env,
   ...parsedEnv,
   production: parsedEnv.NODE_ENV !== "development",
 };

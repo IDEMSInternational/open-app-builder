@@ -26,7 +26,8 @@ export async function setupDB() {
     await runMigrations();
   } catch (error) {
     console.error(error);
-    throw new Error("Could not bootstrap DB");
+    console.error("Could not bootstrap DB");
+    process.exit(1);
   }
 }
 
