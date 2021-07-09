@@ -1,1 +1,2 @@
+# Do not include any local env variables in built docker image
 .env

@@ -5244,7 +5244,7 @@ __metadata:
     ts-node: 10.0.0
     tsconfig-paths: ^3.9.0
     typescript: 4.3.5
-    umzug: beta
+    umzug: 3.0.0-beta.16
   languageName: unknown
   linkType: soft
 
@@ -21511,16 +21511,7 @@ typescript@~4.0.3:
   languageName: node
   linkType: hard
 
-"umzug@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "umzug@npm:2.3.0"
-  dependencies:
-    bluebird: ^3.7.2
-  checksum: bab1ef758df57f0e3bcfa6108ea84c79d2fa7d30c08a2c8a2bf38025d944f3801d35c5c81ab510e5a27bf0ae475283fcd07bd9f6e77eb502982765e8fc6be778
-  languageName: node
-  linkType: hard
-
-"umzug@npm:beta":
+"umzug@npm:3.0.0-beta.16":
   version: 3.0.0-beta.16
   resolution: "umzug@npm:3.0.0-beta.16"
   dependencies:
@@ -21532,6 +21523,15 @@ typescript@~4.0.3:
     type-fest: ^1.0.0
     verror: ^1.10.0
   checksum: 2e4a9bc947cbd7d73a8bede6d6fe4e5b6cb70225dda5540bede71bfeb5e610f4c0ddaca52d65a7e7ea4e44d8b93aa1e14e183fd419fd6f4efd8d60dd294182c8
+  languageName: node
+  linkType: hard
+
+"umzug@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "umzug@npm:2.3.0"
+  dependencies:
+    bluebird: ^3.7.2
+  checksum: bab1ef758df57f0e3bcfa6108ea84c79d2fa7d30c08a2c8a2bf38025d944f3801d35c5c81ab510e5a27bf0ae475283fcd07bd9f6e77eb502982765e8fc6be778
   languageName: node
   linkType: hard
 
