@@ -580,6 +580,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/router@npm:>=9.0.0 <13.0.0":
+  version: 12.1.1
+  resolution: "@angular/router@npm:12.1.1"
+  dependencies:
+    tslib: ^2.2.0
+  peerDependencies:
+    "@angular/common": 12.1.1
+    "@angular/core": 12.1.1
+    "@angular/platform-browser": 12.1.1
+    rxjs: ^6.5.3
+  checksum: 6f2ae8058f70cf9cfda9a0387e0bd4be2db1cd14c27ea20e9dd8d4a2041bc72dd7a97d306bdc8e84aead4deee136a7acb88b23475b5b28fb381b89e9edf2eaca
+  languageName: node
+  linkType: hard
+
 "@angular/router@npm:~11.2.6":
   version: 11.2.14
   resolution: "@angular/router@npm:11.2.14"
@@ -10657,6 +10671,7 @@ __metadata:
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-lottie: ^6.4.0
+    ngx-matomo: 1.0.0-rc.0
     node-rsa: ^1.1.1
     nouislider: ^14.6.3
     prettier: 2.2.1
@@ -10667,7 +10682,7 @@ __metadata:
     tslib: ^2.0.0
     typescript: ~4.0.3
     uuid: ^8.3.0
-    zone.js: ~0.10.2
+    zone.js: ~0.11.4
   languageName: unknown
   linkType: soft
 
@@ -15581,6 +15596,25 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"ngx-matomo@npm:1.0.0-rc.0":
+  version: 1.0.0-rc.0
+  resolution: "ngx-matomo@npm:1.0.0-rc.0"
+  dependencies:
+    "@angular/router": ">=9.0.0 <13.0.0"
+    rxjs: ^6.5.0
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": ">=9.0.0 <13.0.0"
+    "@angular/core": ">=9.0.0 <13.0.0"
+  dependenciesMeta:
+    "@angular/router":
+      optional: true
+    rxjs:
+      optional: true
+  checksum: e008d2db743232e1967aca61921e3747163ccae7e9949c1e88be2bb38fd47d0ac0bace78e928df0c0f3896942d0b8df1c3b01f1b1958cc8a7346be13adb8c253
+  languageName: node
+  linkType: hard
+
 "nice-try@npm:^1.0.4":
   version: 1.0.5
   resolution: "nice-try@npm:1.0.5"
@@ -18786,7 +18820,7 @@ resolve@1.19.0:
   languageName: node
   linkType: hard
 
-"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
+"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
@@ -21200,7 +21234,7 @@ resolve@1.19.0:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.2.0":
   version: 2.3.0
   resolution: "tslib@npm:2.3.0"
   checksum: 7b4fc9feff0f704743c3760f5d8d708f6417fac6458159e63df3a6b1100f0736e3b99edb9fe370f274ad15160a1f49ff05cb49402534c818ff552c48e38c3e6e
@@ -22945,9 +22979,18 @@ typescript@~4.0.3:
   languageName: node
   linkType: hard
 
-"zone.js@npm:~0.10.2, zone.js@npm:~0.10.3":
+"zone.js@npm:~0.10.3":
   version: 0.10.3
   resolution: "zone.js@npm:0.10.3"
   checksum: 8b6ce7691c45fcdb55b8fd5adc6e1c7b0bd43895668c686ba9cb8f75b284cda5b3de578eb088d58db9cea452fbbaf6fc548582b49477347002588d857ecdb011
+  languageName: node
+  linkType: hard
+
+"zone.js@npm:~0.11.4":
+  version: 0.11.4
+  resolution: "zone.js@npm:0.11.4"
+  dependencies:
+    tslib: ^2.0.0
+  checksum: 737caa3bbc336d9fcc6a753659d79a6a99e67382fdaf95dfe366fcc0160a1508307caca1d0e0064760ef70bf15a2b9052c64e2ff3fe0a16b83ba95475cfe94cc
   languageName: node
   linkType: hard
