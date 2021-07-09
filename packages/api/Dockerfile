@@ -7,7 +7,7 @@
 # $docker run -p 80:80 --name apps-api --rm idems/apps-api
 
 ### STAGE 1: Build ###
-FROM node:12.13-alpine AS build-env
+FROM node:12.22-alpine AS build-env
 # Set working directory
 WORKDIR /usr/src/app
 # Add node_modules to path
@@ -18,28 +18,22 @@ COPY ./package.json ./
 # NOTE - not currently supported in as docker can't access top-level yarn lock for monorepo 
 # https://github.com/yarnpkg/yarn/issues/5428 and https://stackoverflow.com/questions/24537340/docker-adding-a-file-from-a-parent-directory
 # COPY ./yarn.lock ./
-# Install only deps required for build stage
-RUN yarn install --only=development --frozen-lockfile
+RUN yarn install --frozen-lockfile
 # Copy rest of app files
 COPY . .
-# Build
-RUN ["npm","run", "build"]
+# Build and remove dev deps
+RUN npm run build && npm prune --production
 
 ### STAGE 2: Serve Dashboard ###
-FROM node:12.13-alpine as prod-env
+FROM node:12.22-alpine as prod-env
 # Set working directory
 WORKDIR /usr/src/app
 # Set default production environment variable
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
-# Copy dependency files to allow caching
-COPY ./package.json ./
-# Install deps required for running
-RUN yarn install --only=production --frozen-lockfile
-# Copy installed modules
-COPY . .
-# Copy build dist files
+# Copy build dist files and runtime node_modules
 COPY --from=build-env /usr/src/app/dist ./dist
+COPY --from=build-env /usr/src/app/node_modules ./node_modules
 # Run the server
 EXPOSE 3000
 CMD ["node", "dist/main"]
