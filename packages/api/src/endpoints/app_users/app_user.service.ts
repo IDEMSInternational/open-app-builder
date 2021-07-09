@@ -22,10 +22,10 @@ export class AppUsersService {
     return this.model.findAll();
   }
 
-  findOne(id: string): Promise<AppUser> {
+  findOne(app_user_id: string): Promise<AppUser> {
     return this.model.findOne({
       where: {
-        id,
+        app_user_id,
       },
     });
   }
@@ -42,9 +42,6 @@ export class AppUsersService {
       user.app_user_id = app_user_id;
     }
     console.log("user", user);
-    user.contact_fields = data.contact_fields;
-    await user.save();
-
-    return { app_user_id, contact_fields: data };
+    return user.update({ ...data, app_user_id });
   }
 }

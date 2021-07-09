@@ -5,7 +5,7 @@ export const up = async (options: UmzugOptions<QueryInterface>) => {
   const queryInterface = options.context as QueryInterface;
   await queryInterface.createTable("app_users", {
     // Default columns populated by sequelize
-    id: { type: DataTypes.STRING },
+    id: { type: DataTypes.INTEGER, autoIncrement: true, unique: true },
     createdAt: { type: DataTypes.DATE },
     updatedAt: { type: DataTypes.DATE },
     deletedAt: { type: DataTypes.DATE },
