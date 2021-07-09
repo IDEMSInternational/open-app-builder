@@ -21,8 +21,10 @@ COPY ./package.json ./
 RUN yarn install --frozen-lockfile
 # Copy rest of app files
 COPY . .
-# Build and remove dev deps
-RUN npm run build && npm prune --production
+# Build
+RUN npm run build
+# TODO - reduce image size removing dev deps, e.g. `npm prune --production` (seems to be causing error)
+
 
 ### STAGE 2: Serve Dashboard ###
 FROM node:12.22-alpine as prod-env
