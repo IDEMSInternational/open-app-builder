@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
 import { SetUserDataDto } from "./dto/set-user-data.dto";
 import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
@@ -45,8 +45,13 @@ export class AppUsersController {
     description: "User Updated",
     type: SetUserDataDto,
   })
-  setUserData(@Param() params: { app_user_id: string }, @Body() data: SetUserDataDto) {
+  async setUserData(@Param() params: { app_user_id: string }, @Body() data: SetUserDataDto) {
     console.log("posting user", params, data);
-    return this.appUsersService.setUserData(params.app_user_id, data);
+    try {
+      const res = await this.appUsersService.setUserData(params.app_user_id, data);
+      return res;
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
   }
 }
