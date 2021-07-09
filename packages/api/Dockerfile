@@ -36,4 +36,8 @@ COPY --from=build-env /usr/src/app/dist ./dist
 COPY --from=build-env /usr/src/app/node_modules ./node_modules
 # Run the server
 EXPOSE 3000
+# Add custom healthcheck
+HEALTHCHECK --interval=12s --timeout=12s --start-period=30s \  
+    CMD node dist/healthcheck.js
+# Start server command 
 CMD ["node", "dist/main"]

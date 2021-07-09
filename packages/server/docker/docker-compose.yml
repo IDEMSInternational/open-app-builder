@@ -45,12 +45,7 @@ services:
     depends_on:
       - db
     # ports:
-    #   - 3001:3000
-    healthcheck:
-      test: ["curl", "--fail http://localhost:3001 || exit 1 "]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    #   - 3000:3000
   ####################################################################
   # Postgres DB
   ####################################################################
