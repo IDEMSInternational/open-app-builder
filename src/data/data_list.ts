@@ -10628,6 +10628,67 @@
         "campaign_list": [
           "unlock_workshops"
         ]
+      },
+      {
+        "id": "unlock_w_stress",
+        "click_action_list": [
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "w_stress_disabled",
+              false
+            ],
+            "_raw": "set_field: w_stress_disabled : FALSE",
+            "_cleaned": "click | set_field: w_stress_disabled : FALSE"
+          },
+          {
+            "trigger": "click",
+            "action_id": "set_field",
+            "args": [
+              "unlock_w_stress.sent",
+              true
+            ],
+            "_raw": "set_field: unlock_w_stress.sent : TRUE",
+            "_cleaned": "click | set_field: unlock_w_stress.sent : TRUE"
+          }
+        ],
+        "priority": 1,
+        "activation_condition_list": [
+          {
+            "condition_type": "db_lookup",
+            "condition_args": {
+              "db_lookup": {
+                "table_id": "app_events",
+                "filter": {
+                  "field": "event_id",
+                  "value": "app_launch"
+                },
+                "order": "asc",
+                "evaluate": {
+                  "operator": ">",
+                  "value": "27",
+                  "unit": "day"
+                }
+              }
+            },
+            "_raw": "first_launch | before: 27 : day"
+          }
+        ],
+        "deactivation_condition_list": [
+          {
+            "condition_type": "field_evaluation",
+            "condition_args": {
+              "field_evaluation": {
+                "evaluate": "unlock_w_stress.sent"
+              }
+            },
+            "_raw": "get_field | unlock_w_stress.sent : TRUE"
+          }
+        ],
+        "campaign_list": [
+          "unlock_workshops"
+        ]
       }
     ],
     "_xlsxPath": "plh_sheets_beta/plh_templating/campaigns/campaign_unlock_workshops.xlsx"
@@ -11978,7 +12039,6 @@
       {
         "id": "hp_praise_message_18",
         "workshop_list": [
-          "w_solve",
           "w_crisis"
         ],
         "mood_list": [
@@ -12031,10 +12091,10 @@
         "mood_list": [
           "happy"
         ],
-        "text": "Great to hear it went well! This can help keep your teen safe!",
+        "text": "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe.",
         "_translatedFields": {
           "text": {
-            "eng": "Great to hear it went well! This can help keep your teen safe!"
+            "eng": "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe."
           }
         }
       },
@@ -12047,10 +12107,10 @@
           "ok",
           "sad"
         ],
-        "text": "Sorry that this has been hard. Try to do this with your teen again later, and maybe involve some other family members to help give ideas!",
+        "text": "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!",
         "_translatedFields": {
           "text": {
-            "eng": "Sorry that this has been hard. Try to do this with your teen again later, and maybe involve some other family members to help give ideas!"
+            "eng": "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!"
           }
         }
       },
@@ -12082,6 +12142,21 @@
         "_translatedFields": {
           "text": {
             "eng": "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer."
+          }
+        }
+      },
+      {
+        "id": "hp_praise_message_25",
+        "workshop_list": [
+          "w_solve"
+        ],
+        "mood_list": [
+          "happy"
+        ],
+        "text": "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!",
+        "_translatedFields": {
+          "text": {
+            "eng": "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!"
           }
         }
       }

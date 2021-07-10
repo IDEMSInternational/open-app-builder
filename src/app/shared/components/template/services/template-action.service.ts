@@ -80,6 +80,13 @@ export class TemplateActionService {
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
     let { action_id, args } = action;
+    args = args.map((arg) => {
+      // HACK - update any self referenced values (see note from template.parser method)
+      if (arg === "this.value") {
+        arg = this.container.templateRowMap.get(action._triggeredBy?._nested_name)?.value;
+      }
+      return arg;
+    });
     let [key, value] = args;
 
     switch (action_id) {
@@ -201,7 +208,6 @@ export class TemplateActionService {
       }
       rowEntry.value = value;
       this.container.templateRowService.templateRowMap.set(rowEntry._nested_name, rowEntry);
-      this.container.localVariables[rowEntry._nested_name] = rowEntry;
     } else {
       // TODO
       console.warn("Setting local variable which does not exist", { key, value }, "TODO");
