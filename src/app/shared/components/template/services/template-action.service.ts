@@ -82,7 +82,7 @@ export class TemplateActionService {
     args = args.map((arg) => {
       // HACK - update any self referenced values (see note from template.parser method)
       if (arg === "this.value") {
-        arg = this.container.templateRowMap.get(action._triggeredBy?._nested_name)?.value;
+        arg = this.container.templateRowMap[action._triggeredBy?._nested_name]?.value;
       }
       return arg;
     });
@@ -207,7 +207,6 @@ export class TemplateActionService {
       }
       rowEntry.value = value;
       this.container.templateRowService.templateRowMap[rowEntry._nested_name] = rowEntry;
-      this.container.localVariables[rowEntry._nested_name] = rowEntry;
     } else {
       // TODO
       console.warn("Setting local variable which does not exist", { key, value }, "TODO");
