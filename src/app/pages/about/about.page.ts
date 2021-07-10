@@ -1,18 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { version } from '../../../../package.json';
+import { Component, OnInit } from "@angular/core";
+import packageJson from "../../../../package.json";
 
 @Component({
-  selector: 'plh-about',
-  templateUrl: './about.page.html',
-  styleUrls: ['./about.page.scss'],
+  selector: "plh-about",
+  templateUrl: "./about.page.html",
+  styleUrls: ["./about.page.scss"],
 })
 export class AboutPage implements OnInit {
+  appVersion = packageJson.version;
 
-  appVersion = version;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

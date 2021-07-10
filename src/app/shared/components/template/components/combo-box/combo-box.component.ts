@@ -20,7 +20,8 @@ import { takeUntil } from "rxjs/operators";
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy {
+  implements ITemplateRowProps, OnInit, OnDestroy
+{
   @Input() template: FlowTypes.Template;
   placeholder: string;
   prioritisePlaceholder: boolean;

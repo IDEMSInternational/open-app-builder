@@ -72,9 +72,6 @@
           }
         ],
         "@typescript-eslint/semi": ["off", null],
-
-        // CC - rule overrides
-        // (most naming convention handled by ng angular selectors above)
         "@typescript-eslint/naming-convention": ["off"],
         "@typescript-eslint/member-ordering": "off",
         "@typescript-eslint/prefer-for-of": "warn",

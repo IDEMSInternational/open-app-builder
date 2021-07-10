@@ -18,7 +18,8 @@ import { getImageAssetPath } from "../../utils/template-utils";
 })
 export class TmplAudioComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy {
+  implements ITemplateRowProps, OnInit, OnDestroy
+{
   @Input() template: FlowTypes.Template;
   @ViewChild("range", { static: false }) range: IonRange;
   src: string | null;
