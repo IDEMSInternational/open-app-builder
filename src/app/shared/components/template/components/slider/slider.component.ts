@@ -17,7 +17,8 @@ import { Options } from "nouislider";
 })
 export class TmplSliderComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   @Input() template: FlowTypes.Template;
   @ViewChild("slider") slider: NouisliderComponent;
   help: string | null;

@@ -1,7 +1,6 @@
 import { BehaviorSubject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
-import { mapToJson } from "src/app/shared/utils";
 import { TemplateContainerComponent } from "../template-container.component";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
@@ -207,13 +206,14 @@ export class TemplateActionService {
         delete rowEntry._dynamicFields.value;
       }
       rowEntry.value = value;
-      this.container.templateRowService.templateRowMap.set(rowEntry._nested_name, rowEntry);
+      this.container.templateRowService.templateRowMap[rowEntry._nested_name] = rowEntry;
+      this.container.localVariables[rowEntry._nested_name] = rowEntry;
     } else {
       // TODO
       console.warn("Setting local variable which does not exist", { key, value }, "TODO");
     }
     // TODO - prompt any rows to re-process if they depend on the value (and other @ types)
-    this.container.templateRowService.templateRowMap.forEach((r) => {
+    Object.values(this.container.templateRowService.templateRowMap).forEach((r) => {
       if (r._dynamicDependencies?.[`@local.${key}`]) {
         // console.warn("[Dynamic Deps] - TODO - handle single row update]", r);
       }
@@ -233,17 +233,16 @@ export class TemplateActionService {
   private getTemplateRowByName(name: string): FlowTypes.TemplateRow {
     // find any rows where nested path corresponds to match path
     let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
-    this.container.templateRowService.templateRowMap.forEach((row, nestedName) => {
-      if (nestedName === name || nestedName.endsWith(`.${name}`)) {
-        matchedRows.push({ row, nestedName });
+    Object.entries(this.container.templateRowService.templateRowMap).forEach(
+      ([nestedName, row]) => {
+        if (nestedName === name || nestedName.endsWith(`.${name}`)) {
+          matchedRows.push({ row, nestedName });
+        }
       }
-    });
+    );
     // no match found
     if (matchedRows.length === 0) {
-      console.error(
-        `row [${name}] not found`,
-        mapToJson(this.container.templateRowService.templateRowMap)
-      );
+      console.error(`row [${name}] not found`, this.container.templateRowService.templateRowMap);
       return null;
     }
     // match found - return least nested (in case of duplicates)

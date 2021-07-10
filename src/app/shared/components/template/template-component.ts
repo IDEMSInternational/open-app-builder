@@ -219,9 +219,8 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   /** Create and render a common display component */
   private renderDisplayComponent(component: Type<ITemplateRowProps>, row: FlowTypes.TemplateRow) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
-    const factory = this.componentFactoryResolver.resolveComponentFactory<ITemplateRowProps>(
-      component
-    );
+    const factory =
+      this.componentFactoryResolver.resolveComponentFactory<ITemplateRowProps>(component);
     const componentRef = viewContainerRef.createComponent(factory);
     // assign input variables
     componentRef.instance.parent = this.parent;
