@@ -35,7 +35,6 @@ export class AppUsersService {
   }
   async setUserData(app_user_id: string, data: SetUserDataDto) {
     let user = await this.model.findOne({ where: { app_user_id } });
-
     if (!user) {
       user = new AppUser();
       user.app_user_id = app_user_id;

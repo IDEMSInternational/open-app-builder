@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Plugins } from "@capacitor/core";
+import { DeviceInfo, Plugins } from "@capacitor/core";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
@@ -15,12 +15,14 @@ const SYNC_FREQUENCY_MS = 1000 * 60 * 15;
  * Connects to custom server running api endpoint, used to record specific user data
  *
  * NOTE - sync timers/methods all approximate, could be made more robust by subscribing
- * to connection status, handling retries etc.
+ * to connection status, handling retries etc. Also shared data-transfer-objects could
+ * help enforce type-check shape of data
  *
  **/
 @Injectable({ providedIn: "root" })
 export class ServerService {
   app_user_id: string;
+  device_info: DeviceInfo;
   syncSchedule = interval(SYNC_FREQUENCY_MS);
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
@@ -29,10 +31,8 @@ export class ServerService {
   }
 
   async init() {
-    const info = await Device.getInfo();
-    console.log("info", info);
-    const { uuid } = info;
-    this.app_user_id = uuid;
+    this.device_info = await Device.getInfo();
+    this.app_user_id = this.device_info.uuid;
     this.syncUserData();
     this.syncSchedule.subscribe(() => {
       this.syncUserData();
@@ -51,11 +51,13 @@ export class ServerService {
     console.log("[SERVER] sync data");
     const contact_fields = this.getUserStorageData();
     // TODO - get DTO from api (?)
+    const data = {
+      contact_fields,
+      app_version: environment.version,
+      device_info: this.device_info,
+    };
     return this.http
-      .post(`/app_users/${this.app_user_id}`, {
-        contact_fields,
-        app_version: environment.version,
-      })
+      .post(`/app_users/${this.app_user_id}`, data)
       .pipe(
         catchError(this.handleError)
         // retryWhen((errors) =>
@@ -68,7 +70,7 @@ export class ServerService {
       )
       .subscribe(
         (res) => {
-          console.log("res", res);
+          console.log("User data synced", res);
         },
         (err) => console.error(err)
       );
