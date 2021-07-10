@@ -4,7 +4,7 @@ import { FlowTypes, ITemplateContainerProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 
 @Component({
-  template: `<div class="popup-backdrop" (click)="dismissOnBackdrop($event.target)">
+  template: `<div class="popup-backdrop" (click)="dismissOnBackdrop($event)">
     <div class="popup-content">
       <ion-button (click)="dismiss()" class="close-button" fill="clear">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -26,29 +26,41 @@ import { TemplateContainerComponent } from "../../template-container.component";
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: relative;
       }
       .popup-backdrop {
         height: calc(100vh - 40px);
         width: 100%;
         margin-top: 40px;
+        background: rgba(0, 0, 0, 0.6);
       }
       .popup-content {
-        width: 80%;
+        width: 85%;
         max-height: calc(100vh - 140px);
         background: white;
-        border: 2px solid black;
-        border-radius: 40px;
-        padding: 20px;
+        border-radius: 30px;
+        padding: 0px 20px 20px 20px;
         overflow: auto;
       }
       .popup-content::-webkit-scrollbar {
         display: none;
       }
       .close-button {
-        margin-left: auto;
-        margin-top: -10px;
-        margin-right: -10px;
-        height: 36px;
+        position: sticky;
+        min-height: 40px;
+        width: 105%;
+        padding-top: 7px;
+        top: 0;
+        right: 0;
+        z-index: 3;
+      }
+      ion-button::part(native) {
+        font-size: 14px;
+        width: 30%;
+        height: 30px;
+        position: absolute;
+        right: -35px;
+        top: 15px;
       }
       .template-container {
         flex: 1;
@@ -71,7 +83,8 @@ export class TemplatePopupComponent implements ITemplateContainerProps, OnInit {
 
   ngOnInit() {}
 
-  dismissOnBackdrop(el: HTMLElement) {
+  dismissOnBackdrop(e: MouseEvent) {
+    const el = e.target as HTMLElement;
     if (el.classList.contains("popup-backdrop")) {
       this.dismiss();
     }

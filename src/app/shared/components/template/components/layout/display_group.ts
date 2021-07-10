@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, ElementRef, HostBinding, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
@@ -13,7 +13,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     <div [style.marginBottom.px]="-offset" class="offset" [ngSwitch]="type">
       <ng-container *ngSwitchCase="'default'">
         <plh-template-component
-          *ngFor="let childRow of _row.rows"
+          *ngFor="let childRow of _row.rows; trackBy: trackByRow"
           [row]="childRow"
           [parent]="parent"
         ></plh-template-component>
@@ -46,6 +46,18 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       }
       .parent_point > .offset > :nth-child(1n) {
         flex: 1 0 45%;
+      }
+      .two_columns_images .offset {
+        flex-wrap: wrap;
+        padding: 10px 0;
+      }
+      .two_columns_images > .offset > :nth-child(1n) {
+        flex: 1 0 45%;
+      }
+      .two_columns_images > .offset plh-template-component {
+        padding: 0 20px;
+        max-width: 10rem;
+        max-height: 9rem;
       }
       .two_columns .offset {
         flex-wrap: wrap;

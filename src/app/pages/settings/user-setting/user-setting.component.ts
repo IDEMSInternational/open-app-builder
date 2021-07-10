@@ -1,20 +1,19 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UserSetting } from '../user.settings.model';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { UserSetting } from "../user.settings.model";
 
 @Component({
-  selector: 'plh-user-setting',
-  templateUrl: './user-setting.component.html',
-  styleUrls: ['./user-setting.component.scss'],
+  selector: "plh-user-setting",
+  templateUrl: "./user-setting.component.html",
+  styleUrls: ["./user-setting.component.scss"],
 })
 export class UserSettingComponent {
-
   @Input()
   userSetting: UserSetting;
 
   @Output()
   onSettingChange: EventEmitter<UserSetting> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   toggleUserSetting(setting: UserSetting) {
     const bool = setting.value === "true";
@@ -26,5 +25,4 @@ export class UserSettingComponent {
     setting.value = value;
     this.onSettingChange.emit(setting);
   }
-
 }

@@ -32,11 +32,11 @@ export class CampaignService {
       const evaluatedRow = await this.evaluateCampaignRow(row);
       evaluatedRows.push(evaluatedRow);
       if (evaluatedRow._active) {
-        console.log("[Campaign] - next row", { campaign_id, evaluatedRow, evaluatedRows });
+        console.log("[Campaign Next]", campaign_id, { evaluatedRow, evaluatedRows });
         return evaluatedRow;
       }
     }
-    console.log("[Campaign] - none active", { campaign_id, evaluatedRows });
+    console.log("[Campaign Inactive]", campaign_id, { campaign_id, evaluatedRows });
     return null;
   }
 

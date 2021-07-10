@@ -13,7 +13,7 @@ import { TemplateContainerComponent } from "../template-container.component";
  * Other components can either extend this one, or implement ITemplateRowProps
  * in their own way.
  * Note, if extending the base component access to data is provided by the declared properties,
- * e.g. `_row`, `_localVariables`
+ * e.g. `_row`
  */
 export class TemplateBaseComponent implements ITemplateRowProps {
   _row: FlowTypes.TemplateRow;
@@ -41,6 +41,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   /** Update the current value of the row by setting a local variable that matches */
   setValue(value: any) {
+    console.log("setting value", value);
     const action: FlowTypes.TemplateRowAction = {
       action_id: "set_local",
       args: [this._row._nested_name, value],
@@ -48,4 +49,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     };
     return this.parent.handleActions([action], this._row);
   }
+
+  trackByRow = (index: number, row: FlowTypes.TemplateRow) => this.parent.trackByRow(index, row);
 }

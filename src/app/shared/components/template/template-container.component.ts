@@ -4,7 +4,6 @@ import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { TourService } from "../../services/tour/tour.service";
-import { mapToJson } from "../../utils";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateActionService } from "./services/template-action.service";
 import { TemplateNavService } from "./services/template-nav.service";
@@ -39,11 +38,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
   children: { [name: string]: TemplateContainerComponent } = {};
-
-  /** Local variables track specific updates that have been made via set_local in this template
-   *  The are used to help restore correct state if reprocessing rows after parent-triggered render
-   * (note, we can't use templateRowMap for this as duplicate named rows would override each other during init) */
-  localVariables: any = {};
 
   template: FlowTypes.Template;
 
@@ -120,8 +114,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       if (full) {
         console.log("[Force Reload]", this.name);
         // ensure angular destroys previous row components before rendering new
-        this.templateRowService.renderedRows = [];
-        this.cdr.detectChanges();
         await this.renderTemplate();
       } else {
         await this.templateRowService.processRowUpdates();
@@ -169,25 +161,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       const template = JSON.parse(JSON.stringify(foundTemplate));
       this.name = this.name || this.templatename;
       this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
-
       this.template = template;
-
-      // If the template has previously been rendered but forced to re-initialise from parent
-      // try to restore previous state (WiP - TODO / Re-evaluate CC 2021-04-21)
-      const cachedRender = this.parent?.children?.[this.name];
-
       log_group("[Template Render Start]", this.name);
-
       await this.templateRowService.processInitialTemplateRows();
-      this.template.rows = this.templateRowService.processedRows;
-
       log("[Template] Rendered", this.name, {
         template,
         ctxt: { ...this },
         renderedRows: { ...this.templateRowService.renderedRows },
-        rowMap: mapToJson(this.templateRowService.templateRowMap),
+        rowMap: this.templateRowService.templateRowMap,
       });
-
       // if a parent exists also provide parent reference to this as a child
       if (this.parent) {
         this.parent.children[this.name] = this;
@@ -204,13 +186,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   /**
    * When using ngFor loop track by to ensure updates correctly propagated on change
    *
+   * NOTE - if the rendered row contains a component that also renders child rows
+   * this method should be applied in the child ngFor statement also
    */
   public trackByRow(index: number, row: FlowTypes.TemplateRow) {
-    let value = row.value;
-    if (value && typeof value === "object" && !Array.isArray(value)) {
-      value = row.value.id;
-    }
-    return `${row._nested_name}:${value}`;
+    // let value = row.value;
+    // if (value && typeof value === "object" && !Array.isArray(value)) {
+    //   value = row.value.id;
+    // }
+    return `${row._nested_name}`;
   }
 
   /** Query params are used to track state across navigation events */

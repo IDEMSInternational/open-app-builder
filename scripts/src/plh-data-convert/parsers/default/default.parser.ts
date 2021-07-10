@@ -31,15 +31,19 @@ export class DefaultParser implements AbstractParser {
     const processedRows = [];
     while (this.queue.length > 0) {
       const row = this.queue[0];
-      const processed = this.processRow(row, flow);
-      // some rows may be omitted during processing so ignore
-      if (processed) {
-        const postProcessed = this.postProcess(processed);
-        if (postProcessed) {
-          processedRows.push(postProcessed);
+      try {
+        const processed = this.processRow(row, flow);
+        // some rows may be omitted during processing so ignore
+        if (processed) {
+          const postProcessed = this.postProcess(processed);
+          if (postProcessed) {
+            processedRows.push(postProcessed);
+          }
         }
+        this.queue.shift();
+      } catch (error) {
+        throwRowParseError(error, row);
       }
-      this.queue.shift();
     }
     if (this.summary.missingAssets.length > 0) {
       console.log(chalk.red("Missing Assets:"));
@@ -62,9 +66,10 @@ export class DefaultParser implements AbstractParser {
       if (field.startsWith("__")) {
         delete row[field];
       }
-      // replace any self references, i.e "hello @row.id" => "hello someValue"
+      // replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
+      // TODO - should find better long term option that can update based on dynamic value and translations
       if (typeof row[field] === "string") {
-        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_]+)/gim)];
+        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_:]+)/gim)];
         for (const replacement of rowReplacements) {
           const [expression, replaceField] = replacement;
           const replaceValue = row[replaceField];
@@ -180,4 +185,16 @@ export class DefaultParser implements AbstractParser {
     const groupedRows = this.queue.splice(1, queueEndIndex - 1);
     return groupedRows;
   }
+}
+
+/**
+ * Add context information to errors originating from row parser.
+ * This will from the template error logging method
+ * */
+function throwRowParseError(error: Error, row: IRowData) {
+  error.message = `Error Parsing Row \n  ${chalk.yellow(
+    JSON.stringify(row, null, 2)
+  )} \n ${chalk.red(error.message)}`;
+  // add more context to error
+  throw error;
 }
