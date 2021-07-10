@@ -13,7 +13,8 @@ import { TemplateBaseComponent } from "../base";
 })
 export class SquareIconButtonComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, AfterViewInit {
+  implements ITemplateRowProps, OnInit, AfterViewInit
+{
   icon_src: string;
   style: string;
   disabled: boolean = false;
