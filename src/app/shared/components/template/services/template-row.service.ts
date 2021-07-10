@@ -1,4 +1,5 @@
 import { FlowTypes } from "src/app/shared/model";
+import { booleanStringToBoolean } from "src/app/shared/utils";
 import { TemplateContainerComponent } from "../template-container.component";
 import { mergeTemplateRows } from "../utils/template-utils";
 
@@ -224,10 +225,12 @@ export class TemplateRowService {
     const translatedRow = this.container.templateTranslateService.translateRow(parsedRow);
 
     const row = translatedRow;
-    const { name, value, hidden, type, _dynamicFields } = row;
+    const { name, value, type, _dynamicFields } = row;
 
     // Make type assigned to hidden consistent
-    row.hidden = ["true", true, "TRUE"].includes(hidden) ? true : false;
+    if (row.hasOwnProperty("hidden")) {
+      row.hidden = booleanStringToBoolean(row.hidden);
+    }
 
     if (type === "template") isNestedTemplate = true;
 

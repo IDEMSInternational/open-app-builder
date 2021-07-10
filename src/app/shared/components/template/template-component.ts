@@ -163,6 +163,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     ) {
       this.elRef.nativeElement.style.setProperty("display", "flex");
       this.elRef.nativeElement.style.setProperty("height", "100%");
+      this.elRef.nativeElement.style.setProperty("min-height", "75px");
       this.elRef.nativeElement.style.setProperty("align-items", "flex-end");
       let el_component = this.elRef.nativeElement.parentElement.closest("plh-template-component");
       let el_container = this.elRef.nativeElement.parentElement.closest("plh-template-container");
@@ -218,9 +219,8 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   /** Create and render a common display component */
   private renderDisplayComponent(component: Type<ITemplateRowProps>, row: FlowTypes.TemplateRow) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
-    const factory = this.componentFactoryResolver.resolveComponentFactory<ITemplateRowProps>(
-      component
-    );
+    const factory =
+      this.componentFactoryResolver.resolveComponentFactory<ITemplateRowProps>(component);
     const componentRef = viewContainerRef.createComponent(factory);
     // assign input variables
     componentRef.instance.parent = this.parent;

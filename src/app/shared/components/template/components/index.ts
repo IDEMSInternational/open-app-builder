@@ -25,7 +25,7 @@ import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-p
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplTitleComponent } from "./title";
 import { TmplSubtitleComponent } from "./subtitle";
-import { TmplToggleBarComponent } from "./toggle-bar";
+import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";

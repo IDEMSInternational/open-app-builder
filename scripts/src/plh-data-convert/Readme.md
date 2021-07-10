@@ -38,5 +38,4 @@ To run unit tests for the conversion scripts
 
 ### Debugging the script
 
-To debug the script add the launch configuration in example_vscode to the launch configuration to your .vscode/launch.json file.
-If you don't have this file already simply copy in the launch.json file from example_vscode to a new folder called .vscode
+To debug the script add the launch configuration in .vscode/launch.json file.

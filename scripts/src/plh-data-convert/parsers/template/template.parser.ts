@@ -45,6 +45,9 @@ export class TemplateParser extends DefaultParser {
     if (row.parameter_list) {
       row.parameter_list = this.parseParameterList(row.parameter_list as any);
     }
+    if (row.action_list) {
+      row.action_list = this.hackUpdateActionSelfReferences(row.action_list, row.name);
+    }
     // extract dynamic fields for runtime evaluation
     const dynamicFields = extractDynamicFields(row);
     if (dynamicFields) {
@@ -93,5 +96,26 @@ export class TemplateParser extends DefaultParser {
       });
     });
     return dynamicDependencies;
+  }
+
+  /**
+   *  HACK - refactor self-referencing actions so that the dynamic value can be updated at runtime
+   *  TODO - will no longer be required if dynamic deps system updated to self populate in realtime (not template parser)
+   */
+  private hackUpdateActionSelfReferences(
+    action_list: FlowTypes.TemplateRow["action_list"],
+    rowName: string
+  ) {
+    return action_list.map((action) => {
+      if (rowName && Array.isArray(action.args)) {
+        action.args = action.args.map((arg) => {
+          if (arg === `@local.${rowName}`) {
+            arg = `this.value`;
+          }
+          return arg;
+        });
+      }
+      return action;
+    });
   }
 }

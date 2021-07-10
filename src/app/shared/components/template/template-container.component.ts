@@ -39,11 +39,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() row?: FlowTypes.TemplateRow;
   children: { [name: string]: TemplateContainerComponent } = {};
 
-  /** Local variables track specific updates that have been made via set_local in this template
-   *  The are used to help restore correct state if reprocessing rows after parent-triggered render
-   * (note, we can't use templateRowMap for this as duplicate named rows would override each other during init) */
-  localVariables: any = {};
-
   template: FlowTypes.Template;
 
   /** */

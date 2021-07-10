@@ -22,9 +22,9 @@ import { getImageAssetPath } from "../../utils/template-utils";
 // TODO - why does the class name not match the file name??
 export class TmplParentPointBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   @ViewChild("star", { static: false }) star: ElementRef;
   @ViewChild("celebretionAnim", { static: false }) celebretionAnim: ElementRef;
   @ViewChild("item", { static: false }) item: ElementRef;
