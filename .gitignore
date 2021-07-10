@@ -22,7 +22,8 @@ npm-debug.log*
 /.sass-cache
 /.sourcemaps
 /.versions
-/.vscode
+.vscode/*
+!.vscode/launch.json
 /coverage
 /dist
 node_modules
@@ -47,3 +48,14 @@ src/environments/firebaseConfig.ts
 .env
 scripts/config/token.json
 .eslintcache
+
+# Ignore yarn-v2 dependencies
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+node_modules

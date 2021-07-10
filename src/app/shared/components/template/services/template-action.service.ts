@@ -79,6 +79,13 @@ export class TemplateActionService {
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
     let { action_id, args } = action;
+    args = args.map((arg) => {
+      // HACK - update any self referenced values (see note from template.parser method)
+      if (arg === "this.value") {
+        arg = this.container.templateRowMap.get(action._triggeredBy?._nested_name)?.value;
+      }
+      return arg;
+    });
     let [key, value] = args;
 
     switch (action_id) {
@@ -90,6 +97,17 @@ export class TemplateActionService {
         return this.container.templateService.setGlobal(key, value);
       case "go_to":
         return this.container.templateNavService.handleNavAction(action, this.container);
+      case "go_to_url":
+        // because a normal url starts with https://, the ':' separates it into a key and a value and the value
+        // is sufficient for the url to launch.
+        console.log("[GO TO URL]", { key, value });
+        // if there is no http or https then there is no : to separate and we only have a key in the url. This
+        // case then adds '//' to the key so it recognises it as external and not local
+        // This removes the need to have http or https in the url.
+        if (!value) {
+          value = "//" + key;
+        }
+        return this.container.templateNavService.handleNavActionExternal(value);
       case "pop_up":
         return this.container.templateNavService.handlePopupAction(action, this.container);
       case "set_field":

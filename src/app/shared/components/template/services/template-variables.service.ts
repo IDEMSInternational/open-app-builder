@@ -338,7 +338,6 @@ export class TemplateVariablesService {
     return { parsedValue, parseSuccess };
   }
 }
-
 function _arrayToObject(arr: any[]) {
   const obj = {};
   arr.forEach((el, i) => (obj[i] = el));

@@ -1,18 +1,22 @@
 {
-  "name": "parenting-app-ui",
-  "version": "0.10.0",
+  "name": "frontend",
+  "version": "0.10.2",
   "author": "IDEMS International",
   "homepage": "https://idems.international/",
   "description": "",
+  "workspaces": [
+    "packages/*",
+    "scripts"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build --prod",
     "scripts": "cd scripts && npm run start --",
+    "server": "yarn workspace server",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "cd scripts && yarn install",
     "analyse": "npm run build -- --stats-json && npx webpack-bundle-analyzer www/stats.json"
   },
   "private": true,
@@ -48,6 +52,7 @@
     "date-fns": "^2.22.1",
     "dexie": "^3.0.3",
     "dexie-observable": "3.0.0-beta.11",
+    "dexie-syncable": "^3.0.0-beta.10",
     "firebase": "^8.6.8",
     "howler": "^2.2.1",
     "intro.js": "^3.2.1",
@@ -58,6 +63,7 @@
     "ng2-nouislider": "^1.8.3",
     "ngx-color": "^6.1.0",
     "ngx-lottie": "^6.4.0",
+    "ngx-matomo": "1.0.0-rc.0",
     "nouislider": "^14.6.3",
     "rxjs": "^6.6.7",
     "survey-angular": "^1.8.52",
