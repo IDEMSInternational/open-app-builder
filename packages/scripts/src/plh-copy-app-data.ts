@@ -6,8 +6,8 @@ import { capitalizeFirstLetter, recursiveFindByExtension } from "./utils";
 // Setup folders
 const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
 const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_assets");
-const APP_DATA_DIR = `../src/data`;
-const APP_PLH_ASSETS_DIR = "../src/assets/plh_assets";
+const APP_DATA_DIR = `../../src/data`;
+const APP_PLH_ASSETS_DIR = "../../src/assets/plh_assets";
 
 /** A simple script to copy data exported from gdrive and processed for plh into the app data folder */
 export function main(doAssetFolderCheck = true) {

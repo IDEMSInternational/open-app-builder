@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 
 import Dexie from "dexie";
-import "dexie-syncable";
+// import "dexie-syncable";
 
 /**
  * Open a websocket connection with Dexie sync server for syncing tables
  * NOTE CC 2021-07-09 - Currently deprecated but may want again in future
  */
 function init() {
+  return;
   // Constants:
   const RECONNECT_DELAY = 5000; // Reconnect delay in case of errors such as network down.
 
