@@ -14,6 +14,7 @@ import { AppEventService } from "./shared/services/app-events/app-events.service
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
 import { CampaignService } from "./feature/campaign/campaign.service";
+import { ServerService } from "./shared/services/server/server.service";
 
 @Component({
   selector: "app-root",
@@ -38,7 +39,8 @@ export class AppComponent {
     private appEventService: AppEventService,
     private campaignService: CampaignService,
     /** Inject in the main app component to start tracking actions immediately */
-    public taskActions: TaskActionService
+    public taskActions: TaskActionService,
+    public serverService: ServerService
   ) {
     this.initializeApp();
   }
