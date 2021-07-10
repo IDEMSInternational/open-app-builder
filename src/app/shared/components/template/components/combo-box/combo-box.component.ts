@@ -22,7 +22,6 @@ export class TmplComboBoxComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit, OnDestroy {
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   placeholder: string;
   prioritisePlaceholder: boolean;
   style: string;
@@ -81,7 +80,6 @@ export class TmplComboBoxComponent
       componentProps: {
         row: this._row,
         template: this.template,
-        localVariables: this.localVariables,
         selectedValue: this.customAnswerSelected ? this.text : this._row.value,
         customAnswerSelected: this.customAnswerSelected,
         style: this.style,

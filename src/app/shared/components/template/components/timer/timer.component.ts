@@ -23,7 +23,6 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this._row = value;
   }
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   @ViewChild("min", { static: false }) minInput: ElementRef;
   @ViewChild("sec", { static: false }) secInput: ElementRef;
   state: TimerState;
