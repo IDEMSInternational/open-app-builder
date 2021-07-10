@@ -16,7 +16,7 @@ type EntityType = "flow" | "node" | "action" | "router" | "case" | "category" | 
 
 export class ConversationParser implements AbstractParser {
   /** @param deployTarget uuids and media paths may be formatted differently depending on target */
-  constructor(private deployTarget: "app" | "rapidpro" = "app") { }
+  constructor(private deployTarget: "app" | "rapidpro" = "app") {}
   conversationSheet: FlowTypes.ConversationSheet;
 
   flowEntityIdCounterMap: { [flowName: string]: { [entityType: string]: number } } = {};
@@ -90,8 +90,8 @@ export class ConversationParser implements AbstractParser {
           if (row.message_text === undefined) {
             throw new Error(
               "On row " +
-              row.row_id.toString() +
-              ": Message text cannot be blank for Type = send_message."
+                row.row_id.toString() +
+                ": Message text cannot be blank for Type = send_message."
             );
           }
           let action_text = row.message_text;
@@ -120,7 +120,9 @@ export class ConversationParser implements AbstractParser {
             choiceMediaUrls.push(row["choice_" + i + "_media"]);
           }
           if (hasMediaUrls) {
-            add_texts.push("choiceMediaUrls=" + encodeURIComponent(JSON.stringify(choiceMediaUrls)));
+            add_texts.push(
+              "choiceMediaUrls=" + encodeURIComponent(JSON.stringify(choiceMediaUrls))
+            );
           }
 
           let isStory = false;
@@ -244,9 +246,9 @@ export class ConversationParser implements AbstractParser {
           }
         } else if (row.type === "mark_as_completed") {
           // If message_text is blank mark the flow as complete, otherwise mark the item in message_text as complete.
-          let flowOrTask: string
-          if (row.message_text) flowOrTask = row.message_text
-          else flowOrTask = flow.name
+          let flowOrTask: string;
+          if (row.message_text) flowOrTask = row.message_text;
+          else flowOrTask = flow.name;
           actionNode.actions.push(this.createSaveAction(flowOrTask + "__completed", "true"));
           row._rapidProNode = actionNode;
           nodesById[nodeId] = actionNode;
@@ -257,8 +259,8 @@ export class ConversationParser implements AbstractParser {
           actionNode.router = {
             type: "random",
             cases: [],
-            categories: []
-          }
+            categories: [],
+          };
           row._rapidProNode = actionNode;
           nodesById[nodeId] = actionNode;
         } else {
@@ -287,10 +289,10 @@ export class ConversationParser implements AbstractParser {
               } else {
                 throw new Error(
                   "On row " +
-                  row.row_id +
-                  ": Cannot find row with row_id = " +
-                  row.message_text +
-                  " from message_text column."
+                    row.row_id +
+                    ": Cannot find row with row_id = " +
+                    row.message_text +
+                    " from message_text column."
                 );
               }
             } else {
@@ -472,7 +474,7 @@ export class ConversationParser implements AbstractParser {
       router: {
         type: routerType,
         cases: [],
-        categories: []
+        categories: [],
       },
       exits: [],
     };
@@ -538,10 +540,10 @@ export class ConversationParser implements AbstractParser {
           } else {
             throw new Error(
               "On row " +
-              row.row_id +
-              ": Cannot find row with row_id = " +
-              row.message_text +
-              " from message_text column."
+                row.row_id +
+                ": Cannot find row with row_id = " +
+                row.message_text +
+                " from message_text column."
             );
           }
         } else {
@@ -550,19 +552,17 @@ export class ConversationParser implements AbstractParser {
         // "random" router should have one category for each item to ensure probabilities are as expected.
         if (routerNode.router.type === "random") {
           for (let con of conds) {
-            routerNode.router.categories.push(
-              {
-                exit_uuid: exit.uuid,
-                name: con,
-                uuid: this.deterministicUUID(this.conversationSheet.flow_name, "category")
-              }
-            );
+            routerNode.router.categories.push({
+              exit_uuid: exit.uuid,
+              name: con,
+              uuid: this.deterministicUUID(this.conversationSheet.flow_name, "category"),
+            });
           }
         } else {
           choiceCategory = {
             exit_uuid: exit.uuid,
             name: row.condition,
-            uuid: this.deterministicUUID(this.conversationSheet.flow_name, "category")
+            uuid: this.deterministicUUID(this.conversationSheet.flow_name, "category"),
           };
           routerNode.router.categories.push(choiceCategory);
         }
@@ -610,9 +610,7 @@ export class ConversationParser implements AbstractParser {
       }
     } else {
       if (routerNode.router.type === "random") {
-        throw new Error(
-          "Cannot have no row_condition for random type."
-        );
+        throw new Error("Cannot have no row_condition for random type.");
       }
       // If the row has no condition then update the default (other) exit.
       // Routers are always created with a default (empty) exit so this always exists.
@@ -760,11 +758,16 @@ export class ConversationParser implements AbstractParser {
         key: fieldKey,
         name: fieldKey,
       },
-      value: stringValue
+      value: stringValue,
     };
   }
 
-  private replaceImageTag(text: string, imageTag: string, className: string, urls: string[]): string {
+  private replaceImageTag(
+    text: string,
+    imageTag: string,
+    className: string,
+    urls: string[]
+  ): string {
     const regex = new RegExp(imageTag, "g");
     return text.replace(regex, () => {
       if (urls.length > 0) {
