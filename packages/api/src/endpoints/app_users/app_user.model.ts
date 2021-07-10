@@ -11,4 +11,7 @@ export class AppUser extends Model<AppUser> {
 
   @Column({ type: DataType.JSONB })
   contact_fields: any;
+
+  @Column({ type: DataType.JSONB })
+  device_info: any;
 }

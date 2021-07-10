@@ -14,6 +14,7 @@ interface IParsedEnvironment {
   DB_USER: string;
   DB_PASSWORD: string;
   NODE_ENV: string;
+  npm_package_version?: string;
 }
 
 interface IEnvironment extends IParsedEnvironment {

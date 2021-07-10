@@ -46,7 +46,6 @@ export class AppUsersController {
     type: SetUserDataDto,
   })
   async setUserData(@Param() params: { app_user_id: string }, @Body() data: SetUserDataDto) {
-    console.log("posting user", params, data);
     try {
       const res = await this.appUsersService.setUserData(params.app_user_id, data);
       return res;
