@@ -20,9 +20,9 @@ import { takeUntil } from "rxjs/operators";
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy {
+  implements ITemplateRowProps, OnInit, OnDestroy
+{
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   placeholder: string;
   prioritisePlaceholder: boolean;
   style: string;
@@ -63,6 +63,9 @@ export class TmplComboBoxComponent
 
   getText(aValue: string, listAnswers: string[]): string {
     if (aValue) {
+      if (aValue === "other") {
+        return this._row.parameter_list["customAnswer"];
+      }
       const textFromList = listAnswers
         .find((answer: string) => answer.includes(aValue))
         ?.match(/(?<=text:).+/)[0]
@@ -78,7 +81,6 @@ export class TmplComboBoxComponent
       componentProps: {
         row: this._row,
         template: this.template,
-        localVariables: this.localVariables,
         selectedValue: this.customAnswerSelected ? this.text : this._row.value,
         customAnswerSelected: this.customAnswerSelected,
         style: this.style,
@@ -91,6 +93,11 @@ export class TmplComboBoxComponent
       const value = data?.data?.answer?.name;
       this.text = data?.data?.answer?.text;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
+      if (this.customAnswerSelected) {
+        this._row.parameter_list["customAnswer"] = data?.data?.answer?.text;
+      } else {
+        this._row.parameter_list["customAnswer"] = null;
+      }
       await this.setValue(value);
       await this.triggerActions("changed");
     });

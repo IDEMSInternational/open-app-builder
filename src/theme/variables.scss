@@ -54,6 +54,7 @@ $horizontal: 90deg;
   --ion-border-thin-standard: 1px solid #{$primary};
   --ion-border-standard: 2px solid #{$primary};
   --ion-border-light: 1px solid #{$light};
+  --ion-border-light-thicker: 2px solid #{$light};
   --border-dashed: 2px dashed $primary;
   // --- border-radiuses
   --ion-border-radius-small: 8px;
@@ -87,7 +88,7 @@ $horizontal: 90deg;
   --line-height-text-largest: 25px;
 
   // Font Weight //
-  --font-weight-standard: 500;
+  --font-weight-standard: 400;
   --font-weight-bold: 700;
 
   // Text box //
@@ -146,8 +147,8 @@ $horizontal: 90deg;
   // Timer //
   --timer-counter-height: 73px;
   --timer-counter-font-size: 40px;
-  --timer-title-width: 298px;
-  --timer-buttons-color: #{color.adjust($primary, $hue: -10, $saturation: 14%, $lightness: 19%)};
+  --timer-title-width: 80%;
+  --timer-buttons-color: #{color.adjust($primary, $hue: 1, $saturation: 3, $lightness: 25%)};
 
   // Combo box //
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
@@ -202,7 +203,7 @@ $horizontal: 90deg;
   --buttons-font-size: 25px;
   --buttons-size: 64px;
   //primary-gradient
-  --ion-btn-control-bg: #{color.adjust($primary, $saturation: -3%, $lightness: 31%)}; //#2B99DE
+  --ion-btn-control-bg: #{color.adjust($primary, $hue: 1, $saturation: 3, $lightness: 25%)}; //#1989D4
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
   --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
   --ion-btn-primary: linear-gradient(
@@ -242,6 +243,10 @@ $horizontal: 90deg;
   --round-button-navigation-min-height: 50px;
   --round-button-font-size: 12px;
   --round-button-home-screen-font-size: 11px;
+
+  // Square button //
+  --square-button-navigation-min-height: 50px;
+  --square-button-min-width: 60px;
 
   //BANNER
   --ion-banner-gradient-secondary-start: #{color.adjust(
@@ -378,12 +383,16 @@ $horizontal: 90deg;
   --tile-default-width: 371px;
   --tile-button-height: 73px;
   --tile-button-width: 73px;
-  --tile-workshop-page-height: 100px;
-  --tile-workshop-page-width: 132px;
+  --tile-workshop-page-height: 132px;
+  --tile-workshop-page-width: 111px;
   --tile-workshop-page-button-height: 55px;
   --tile-workshop-page-button-width: 100%;
   --tile-parent-point-width: 200px;
   --tile-parent-point-height: 104px;
+  --tile-image-text-width: 176px;
+  --tile-button-style-height: 60px;
+
+  --tile-button-background: #{color.adjust($primary, $saturation: 14%, $lightness: 60%)};
 
   --tile-primary-light-gradient-start: #{color.adjust(
       $quaternary,

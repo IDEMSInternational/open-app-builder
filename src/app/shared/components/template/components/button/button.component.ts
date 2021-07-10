@@ -53,7 +53,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     if (this._row.disabled) {
       this.disabled = true;
     }
-    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "center");
+    this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "left");
     this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
     this.nestedStyle = this.style.includes(this.nestedStyleName);
   }
@@ -65,9 +65,10 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   }
 
   setNestedStyle() {
-    const color = this.elRef.nativeElement.parentElement.parentElement.parentElement.parentElement.parentElement.attributes[
-      "color"
-    ].value.trim();
+    const color =
+      this.elRef.nativeElement.parentElement.parentElement.parentElement.parentElement.parentElement.attributes[
+        "color"
+      ].value.trim();
     this.nestedProperty = `linear-gradient(${this.hexToRGB(color, "down", 2)} 0%, ${this.hexToRGB(
       color,
       "down",

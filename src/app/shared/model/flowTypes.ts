@@ -359,6 +359,7 @@ export namespace FlowTypes {
     | "accordion_section"
     | "advanced_dashed_box"
     | "parent_point_counter"
+    | "help_icon"
     | "workshops_accordion"
     | "form"
     | "toggle_bar"
@@ -384,6 +385,7 @@ export namespace FlowTypes {
     | "slider"
     | "number_selector"
     | "round_button"
+    | "square_button"
     | "nav_group"
     | "nav_section"
     | "simple_checkbox"
@@ -464,6 +466,7 @@ export namespace FlowTypes {
       | "changed"
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"
+      | "go_to_url"
       | "pop_up"
       | "audio_end"
       | "audio_play"

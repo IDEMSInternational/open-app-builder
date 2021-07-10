@@ -81,9 +81,9 @@
    ### Parameter 3 
       Parameter Name: text_align 
       #### Values and descriptions 
-      value_1: center - (default) 
+      value_1: left - (default) 
       description: Text position inside
-      value_2: left 
+      value_2: center 
       description: Text position inside 
       value_3: right 
       description: Text position inside
@@ -96,6 +96,83 @@
       description: Button position   
       value_3: right 
       description: Button position   
+
+# SquareButton - SquareIconButtonComponent 
+   ## Type 
+   type: square_button 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: disabled
+      #### Values and descriptions
+      value_1: false (default) 
+      description: Available click event
+      value_2: true 
+      description: Disabled click event
+   ### Parameter 2
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: empty string (default) 
+      description: no icon
+      value_2: string 
+      description: path for icon
+   ### Parameter 3 
+      Parameter Name: style 
+      #### Values and descriptions
+      description: String. Class name for button. 
+      value_1: information - (default) 
+      description: Primary background color. (--ion-btn-primary)
+      value_2: navigation 
+      description: Secondary background color. (--ion-btn-secondary)
+# RoundIconButton - RoundIconButtonComponent 
+   ## Type 
+   type: round_button 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: disabled
+      #### Values and descriptions
+      value_1: false (default) 
+      description: Available click event
+      value_2: true 
+      description: Disabled click event
+   ### Parameter 2
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: empty string (default) 
+      description: no icon
+      value_2: string 
+      description: path for icon
+   ### Parameter 3 
+      Parameter Name: style 
+      #### Values and descriptions
+      description: String. Class name for button. 
+      value_1: information - (default) 
+      description: Primary background color. (--ion-btn-primary)
+      value_2: navigation 
+      description: Secondary background color. (--ion-btn-secondary)
+      value_3: yellow 
+      description: yellow background (--round-icon-button-light)
+      value_4: orange 
+      description: orange background (--round-icon-button)
+      value_5: dark_orange 
+      description: dark_orange background (--round-icon-button-dark)
+      value_6: home_screen 
+      description: specific styles to place the button on home screen 
+   ### Parameter 4 
+      Parameter Name: button_align 
+      #### Values and descriptions 
+      value_1: center - (default) 
+      description: Button position
+      value_2: left 
+      description: Button position   
+      value_3: right 
+      description: Button position 
+   ### Parameter 5 
+      Parameter Name: text 
+      #### Values and descriptions 
+      value_1: empty string - (default) 
+      description: no text for the button
+      value_2: string 
+      description: any string as a button text   
 
 # Number Selector - TmplNumberComponent 
    ## Type 
@@ -181,6 +258,13 @@
       #### Values and descriptions
       description: string - class name.
       value_1: '' - (default) 
+   ### Parameter 4
+      Parameter Name: reverse
+      #### Values and descriptions
+      value_1: false - (default) 
+      description: default postion - (checkbox label).
+      value_1: true
+      description: reversed - (label checkbox).
 
 # Slider - TmplSliderComponent 
    ## Type 
@@ -293,6 +377,20 @@
       description: Value for increase the time on the timer
       value_2: number
       description: any number as value for increase the time on the timer
+   ### Parameter 5
+      Parameter Name: starting_minutes
+      #### Values and descriptions
+      value_1: 10 - (default) 
+      description: 10 minutes by default
+      value_2: number
+      description: any number as starting minutes
+   ### Parameter 6
+      Parameter Name: starting_seconds
+      #### Values and descriptions
+      value_1: 0 - (default) 
+      description: 0 seconds by default
+      value_2: number
+      description: any number as starting seconds
 
 # Radio Buttons - TmplRadioGroupComponent 
    ## Type 
@@ -339,34 +437,27 @@
       value_2: strings array
       description: List of the answers to be displayed
    ### Parameter 2
-      Parameter Name: text
-      #### Values and descriptions
-      value_1: null - (default) 
-      description: No text above the questions
-      value_2: string
-      description: any text above the questions 
-   ### Parameter 3
       Parameter Name: input_allowed
       #### Values and descriptions
       value_1: false - (default) 
       description: user can not set a custom response
       value_2: true
       description: user can set a custom response
-   ### Parameter 4
+   ### Parameter 3
       Parameter Name: input_position
       #### Values and descriptions
       value_1: top - (default) 
       description: Position of input element
       value_2: bottom
       description: Position of input element
-   ### Parameter 5
+   ### Parameter 4
       Parameter Name: answer_placeholder
       #### Values and descriptions
       value_1: empty string - (default) 
       description: No input placeholder
       value_2: string
       description: Any input placeholder
-   ### Parameter 6
+   ### Parameter 5
       Parameter Name: placeholder
       #### Values and descriptions
       value_1: null - (default) 
@@ -380,34 +471,41 @@
    ## Value
    value: string or null. Input value
    ## Parameters 
-   ### Parameter 1 
-      Parameter Name: answer_list
-      #### Values and descriptions
-      value_1: null - (default) 
-      description: No answers to be displayed 
-      value_2: strings array
-      description: List of the answers to be displayed
-   ### Parameter 2
+   ### Parameter 1
       Parameter Name: max_length
       #### Values and descriptions
       value_1: 30 - (default) 
       description: Max length input value 
       value_2: number
       description: Any number as a max length input value
-   ### Parameter 3
+   ### Parameter 2
       Parameter Name: placeholder
       #### Values and descriptions
       value_1: empty string - (default) 
       description: No placeholder 
       value_2: string
       description: Any string input placeholder
-   ### Parameter 4
+   ### Parameter 3
       Parameter Name: text_align
       #### Values and descriptions
       description: Input position
       value_1: center - (default) 
       value_2: left
       value_2: right
+   ### Parameter 4
+      Parameter Name: number_input
+      #### Values and descriptions
+      value_1: false - (default)
+      description: default text type input
+      value_2: true
+      description: number type input (allows only number)
+   ### Parameter 5
+      Parameter Name: prioritise_placeholder
+      #### Values and descriptions
+      value_1: false - (default)
+      description: placeholder is not prioritised
+      value_2: true
+      description: placeholder is prioritised
 
 # TileComponent - TmplTileComponent 
    ## Type 
@@ -420,23 +518,30 @@
       #### Values and descriptions
       value_1: null - (default) 
       description: No text for first line 
-      value_2: strings 
+      value_2: string
       description: Any string as a text for first line
    ### Parameter 2
       Parameter Name: second_line_text
       #### Values and descriptions
       value_1: null - (default) 
       description: No text for second line 
-      value_2: strings 
+      value_2: string
       description: Any string as a text for second line
    ### Parameter 3
       Parameter Name: icon_src
       #### Values and descriptions
       value_1: null - (default) 
       description: No image 
-      value_2: strings 
+      value_2: string
       description: image file source link
    ### Parameter 4
+      Parameter Name: left_icon_src
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: No image 
+      value_2: string
+      description: image file source link
+   ### Parameter 5
       Parameter Name: style
       #### Values and descriptions
       description: Name of css class 
@@ -452,6 +557,10 @@
       description: tile workshop
       value_6: parent_point 
       description: tile parent point
+      value_7: image_text 
+      description: tile image text
+      value_8: button 
+      description: tile button
 
 # DashedBox - TmplDashedBoxComponent 
    ## Type 
@@ -503,6 +612,15 @@
       value_1: right - (default) 
       value_2: left 
    ### Parameter 3
+      Parameter Name: text_align
+      #### Values and descriptions
+      value_1: left - (default)
+      description: text left aligned 
+      value_2: center 
+      description: text center aligned
+      value_3: right 
+      description: text right aligned
+   ### Parameter 4
       Parameter Name: style
       #### Values and descriptions
       value_1: tiny - (default) 
@@ -565,10 +683,10 @@
       description: Primary color (--ion-color-primary)
       value_2: medium
       description: Medium forn size (--font-size-text-medium)
-      value_3: small - (default)
-      description: Small font size (--font-size-text-small)
-      value_4: large 
-      description: Large font size (--font-size-text-large)
+      value_3: large - (default)
+      description: large font size (--font-size-text-small)
+      value_4: small 
+      description: small font size (--font-size-text-large)
       value_5: center
       description: Postition center
       value_6: left
@@ -629,6 +747,10 @@
       description: banner style with primary bg (--ion-dg-bg-default)
       value_11: column 
       description: column style
+      value_12: two_column 
+      description: two column style
+      value_13: two_column_images
+      description: two column for images (splash screen)
       #### To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
       #### If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
 
@@ -645,13 +767,27 @@
       description: no icon
       value_2: string 
       description: Path to icon
-   ### Parameter 2 
+   ### Parameter 2
+      Parameter Name: lottie_src
+      #### Values and descriptions
+      value_1: null - (default) 
+      description: no lottie animation
+      value_2: string 
+      description: Path to lottie animation
+   ### Parameter 3
       Parameter Name: text
       #### Values and descriptions
       value_1: null - (default) 
       description: no text
       value_2: string 
       description: Any string as a text
+   ### Parameter 4
+      Parameter Name: play_celebration
+      #### Values and descriptions
+      value_1: true - (default) 
+      description: show falling stars when item is clicked
+      value_2: false 
+      description: disable falling stars
 
 # ImageComponent - TmplImageComponent 
    ## Type 
@@ -670,6 +806,8 @@
 # ParentPointCounterComponent - TmplParentPointCounterComponent 
    ## Type 
    type: parent_point_counter 
+   ## Value
+   value: string. Counter text
    ## Parameters 
    ### Parameter 1 
       Parameter Name: icon_src
@@ -723,6 +861,13 @@
       value_1: left - (default) 
       value_2: right
       value_3: center 
+   ### Parameter 4
+      Parameter Name: show_tick_and_cross
+      #### Values and descriptions
+      value_1: true - (default) 
+      description: icon tick and cross presented no icons
+      value_2: false
+      description: no icons
 
 # FormComponent 
    ## Type 
@@ -784,6 +929,18 @@
       description: Primary text and border color
       value_2: alert 
       description: Text color white and secodary border color
+
+# HelpIconComponent - TmplHelpIconComponent
+   ## Type 
+   type: help_icon 
+   ## Parameters 
+   ### Parameter 1 
+      Parameter Name: icon_src
+      #### Values and descriptions
+      value_1: help-circle-outline - (default) 
+      description: No icon 
+      value_2: strings 
+      description: Path to icon
 
 
 ## Padding and Margins control:

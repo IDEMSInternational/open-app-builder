@@ -111,6 +111,12 @@
 p {
   width: 100%;
   white-space: pre-line;
+  display: table;
+  ul,
+  ol {
+    display: table;
+    margin: 0;
+  }
 }
 
 .title-wrapper {
@@ -168,22 +174,22 @@ p {
   h2 {
     line-height: var(--line-height-text);
     margin: 0;
-  }
-  .medium {
-    font-size: var(--font-size-subtitle-medium);
-  }
-  .small {
-    font-size: var(--font-size-subtitle-small);
-  }
-  .large {
-    font-size: var(--font-size-subtitle-large);
+    &.medium {
+      font-size: var(--font-size-subtitle-medium);
+    }
+    &.small {
+      font-size: var(--font-size-subtitle-small);
+    }
+    &.large {
+      font-size: var(--font-size-subtitle-large);
+    }
   }
 }
 
 .accordion-section {
   h2 {
     z-index: 2;
-    text-align: center;
+    text-align: left;
     margin: 0;
     font-size: var(--font-size-subtitle-small);
     font-weight: var(--font-weight-bold);

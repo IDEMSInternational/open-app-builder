@@ -1,13 +1,14 @@
 import * as fs from "fs-extra";
 import * as xlsx from "xlsx";
 import * as path from "path";
+import boxen from "boxen";
 import chalk from "chalk";
 import * as Parsers from "./parsers";
 import {
-  groupJsonByKey,
   recursiveFindByExtension,
   capitalizeFirstLetter,
   arrayToHashmap,
+  groupJsonByKey,
 } from "../utils";
 import { FlowTypes } from "../../types";
 
@@ -49,11 +50,19 @@ export async function main() {
     `${INTERMEDIATES_FOLDER}/convertedData.json`,
     JSON.stringify(convertedData, null, 2)
   );
-  // write to output files
+  // write to output files, named by flow_type and flow_subtype (if exists)
   Object.entries(convertedData).forEach(([key, value]) => {
-    const outputJson = JSON.stringify(value, null, 2);
-    const outputTs = generateLocalTsOutput(outputJson, key as any);
-    fs.writeFileSync(`${OUTPUT_FOLDER}/${key}.ts`, outputTs);
+    const convertedDataBySubtype = groupJsonByKey(value as any, "flow_subtype", "_default");
+    Object.entries(convertedDataBySubtype).forEach(([subkey, subvalue]) => {
+      const outputJson = JSON.stringify(subvalue, null, 2);
+      const outputTs = generateLocalTsOutput(outputJson, key);
+      let outputName = key;
+      if (subkey !== "_default") {
+        outputName = `${key}.${subkey}`;
+      }
+      fs.ensureDirSync(`${OUTPUT_FOLDER}/${key}`);
+      fs.writeFileSync(`${OUTPUT_FOLDER}/${key}/${outputName}.ts`, outputTs);
+    });
   });
   console.log(chalk.yellow("Conversion Complete"));
 }
@@ -90,10 +99,14 @@ function applyDataParsers(
     fs.ensureDirSync(`${INTERMEDIATES_FOLDER}/${key}`);
     // parse all flows through the parser
     parsedData[key] = contentFlows.map((flow) => {
-      const parsed = parser.run(flow);
-      const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
-      fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
-      return parsed;
+      try {
+        const parsed = parser.run(flow);
+        const INTERMEDIATE_PATH = `${INTERMEDIATES_FOLDER}/${key}/${flow.flow_name}.json`;
+        fs.writeFileSync(INTERMEDIATE_PATH, JSON.stringify(parsed, null, 2));
+        return parsed;
+      } catch (error) {
+        throwTemplateParseError(error, flow);
+      }
     });
   });
   return parsedData;
@@ -122,7 +135,6 @@ function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
             if (merged.hasOwnProperty(flow_name)) {
               console.log(chalk.yellow("duplicate flow:", flow_name));
             }
-            // console.log(chalk.green("+", flow_name));
             // Ensure all paths use / to match HTTP style paths
             const _xlsxPath = path.relative(INPUT_FOLDER, xlsxPath).replace(/\\/g, "/");
             merged[flow_name] = { ...contents, rows: json[flow_name], _xlsxPath };
@@ -176,11 +188,13 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
  * Create a ts file of json export, importing what would be the relevant local
  * typings to allow checking against data (and disabling unwanted additional linting)
  */
-function generateLocalTsOutput(json: any, flow_type: FlowTypes.FlowType) {
+function generateLocalTsOutput(json: any, flow_type: string) {
   const typeName = capitalizeFirstLetter(flow_type);
   return `/* eslint-disable */
-  import { FlowTypes } from "../../../types";
-  export const ${flow_type}: FlowTypes.${typeName}[] = ${json}`;
+  import { FlowTypes } from "../../../../types";
+  const ${flow_type}: FlowTypes.${typeName}[] = ${json};
+  export default ${flow_type}
+  `;
 }
 /**
  * Read all xlsx files in the function xlsx folder (ignoring temp files and anything in an 'old' directory)
@@ -196,4 +210,26 @@ function listFilesForConversion(folderPath: string) {
         .map((p) => p.toLowerCase())
         .includes("old")
   );
+}
+
+/**
+ * Debug info to log and exit when a template parsing error occurs
+ */
+function throwTemplateParseError(error: Error, flow: FlowTypes.FlowTypeWithData) {
+  console.log(
+    boxen(
+      `
+        ${chalk.red("Template Parse Error")}
+        
+        ${chalk.yellow(flow.flow_name)}
+        
+        ${flow._xlsxPath}
+
+        This is likely an authoring error, see full stacktrace below
+        `,
+      { padding: 1, borderColor: "red" }
+    )
+  );
+  console.error(error);
+  process.exit(1);
 }

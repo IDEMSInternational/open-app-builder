@@ -61,7 +61,7 @@ export function setElStyleAnimated(
     const animation = setInterval(() => {
       if (i === totalFrames) {
         clearInterval(animation);
-        resolve();
+        resolve(true);
       } else {
         i++;
         el.style.setProperty(property, `${initialVal + i * delta}`);
