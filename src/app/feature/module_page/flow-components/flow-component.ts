@@ -10,7 +10,7 @@ import {
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "plh-data/model/flowTypes";
 /*********************************************************************
  * Flow Components
  * These should also be included in module declarations at bottom

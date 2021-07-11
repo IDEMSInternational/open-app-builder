@@ -1,13 +1,10 @@
 import { of, BehaviorSubject } from "rxjs";
-import { HABIT_LIST } from "src/app/shared/services/data/data.service";
 import { HabitService } from "src/app/shared/services/habit/habit.service";
-import { ITaskEntry } from "src/app/shared/services/task/task-action.service";
-import { arrayToHashmap } from "src/app/shared/utils/utils";
 import { ChatMessage, IRapidProMessage } from "../../models";
 import { convertFromRapidProMsg } from "../../utils/message.converter";
 import { ContactFieldService } from "./contact-field.service";
 import { FlowStatusChange } from "./offline-chat.service";
-import { RapidProFlowExport } from "./rapid-pro-export.model";
+import { RapidProFlowExport } from "src/app/shared/model";
 import { matchesCase } from "./router-case-matchers";
 
 export class RapidProOfflineFlow {
@@ -256,7 +253,10 @@ export class RapidProOfflineFlow {
       switch (variableType) {
         case "contact":
         case "fields": {
-          output = output.replace(fullMatch, await this.contactFieldService.getContactField(fieldName));
+          output = output.replace(
+            fullMatch,
+            await this.contactFieldService.getContactField(fieldName)
+          );
           break;
         }
         case "results": {
@@ -265,7 +265,10 @@ export class RapidProOfflineFlow {
         }
         case "habit": {
           if (subfieldName === "weekly_count") {
-            output = output.replace(fullMatch, "" + await this.habitService.getHabitWeeklyCount(fieldName))
+            output = output.replace(
+              fullMatch,
+              "" + (await this.habitService.getHabitWeeklyCount(fieldName))
+            );
           }
           break;
         }

@@ -6,7 +6,7 @@ import { SettingsService } from "src/app/pages/settings/settings.service";
 import { ChatMessage, IChatService } from "../../models";
 import { RapidProOfflineFlow } from "./chat.flow";
 import { ContactFieldService } from "./contact-field.service";
-import { RapidProFlowExport } from "./rapid-pro-export.model";
+import { RapidProFlowExport } from "src/app/shared/model";
 import { CONVERSATION } from "src/app/shared/services/data/data.service";
 import { throwError } from "rxjs";
 import { ChatActionService } from "../common/chat-action.service";
