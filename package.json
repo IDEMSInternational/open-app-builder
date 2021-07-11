@@ -5,13 +5,14 @@
   "homepage": "https://idems.international/",
   "description": "",
   "workspaces": [
-    "packages/*",
-    "scripts"
+    "packages/*"
   ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
-    "build": "ng build --prod",
+    "start": "concurrently -r \"npm run data:serve\" \"ng serve --open\"",
+    "build": "npm run data:build && ng build --prod",
+    "data:build": "yarn workspace plh-data build",
+    "data:serve": "yarn workspace plh-data serve",
     "scripts": "cd packages/scripts && npm run start --",
     "server": "yarn workspace server",
     "test": "ng test",
@@ -66,6 +67,7 @@
     "ngx-lottie": "^6.4.0",
     "ngx-matomo": "1.0.0-rc.0",
     "nouislider": "^14.6.3",
+    "plh-data": "1.0.0",
     "rxjs": "^6.6.7",
     "survey-angular": "^1.8.52",
     "tslib": "^2.3.0",
@@ -99,6 +101,7 @@
     "@typescript-eslint/eslint-plugin-tslint": "^4.28.0",
     "@typescript-eslint/parser": "4.28.0",
     "codelyzer": "^6.0.2",
+    "concurrently": "^6.2.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "2.23.4",
