@@ -50,7 +50,6 @@ interface IUserMeta {
 }
 
 type isostring = string;
-
 const USER_DEFAULTS: IUserMeta = {
   // TODO - better to use different service to ensure UUID unique
   uuid: null,

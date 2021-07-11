@@ -6,8 +6,8 @@ import { capitalizeFirstLetter, recursiveFindByExtension } from "./utils";
 // Setup folders
 const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
 const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_assets");
-const APP_DATA_DIR = `../../src/data`;
-const APP_PLH_ASSETS_DIR = "../../src/assets/plh_assets";
+const APP_DATA_DIR = `../../packages/plh-data/data`;
+const APP_PLH_ASSETS_DIR = "../../packages/plh-data/assets/plh_assets";
 
 /** A simple script to copy data exported from gdrive and processed for plh into the app data folder */
 export function main(doAssetFolderCheck = true) {
@@ -43,7 +43,7 @@ if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
  * the path imported from within the app
  */
 function generateAppTsOutput(ts: string) {
-  return ts.replace("../../../../types", "src/app/shared/model/flowTypes");
+  return ts.replace("../../../../types", "../../model/flowTypes");
 }
 
 /**
@@ -68,10 +68,7 @@ function generateAppDataIndexFiles() {
     });
     const indexFilePath = `${dirPath}/index.ts`;
     fs.createFileSync(indexFilePath);
-    fs.appendFileSync(
-      indexFilePath,
-      `import { FlowTypes } from "src/app/shared/model/flowTypes";\r\n`
-    );
+    fs.appendFileSync(indexFilePath, `import { FlowTypes } from "../../model/flowTypes";\r\n`);
     fs.appendFileSync(indexFilePath, `${importStatements.join("\r\n")};\r\n`);
     fs.appendFileSync(
       indexFilePath,
