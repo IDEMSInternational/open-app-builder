@@ -16,7 +16,8 @@ export const environment = {
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
-  apiEndpoint: "http://localhost/api",
+  // apiEndpoint: "http://localhost/api",
+  apiEndpoint: "https://apps-server.idems.international/api",
 };
 
 // This file can be replaced during build by using the `fileReplacements` array.
