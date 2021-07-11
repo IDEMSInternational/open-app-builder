@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "plh-data/model/flowTypes";
 import { hackAddRowWithDefaultActions } from "../../hacks";
 import { TemplateService } from "../../services/template.service";
 import { TemplateLayoutComponent } from "./layout";

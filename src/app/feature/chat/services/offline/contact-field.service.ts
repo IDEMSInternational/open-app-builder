@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { generateTimestamp } from "src/app/shared/utils";
-import { conversation } from "src/data/conversation";
+import { CONVERSATION } from "src/app/shared/services/data/data.service";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -16,9 +15,9 @@ export class ContactFieldService {
 
   async setDefaultValues() {
     for (var flowName of environment.variableNameFlows) {
-      const flow = conversation
-        .map((rpExport) => rpExport.flows[0])
-        .find((flow) => flow.name === flowName);
+      const flow = CONVERSATION.map((rpExport) => rpExport.flows[0]).find(
+        (flow) => flow.name === flowName
+      );
       flow.nodes.forEach(async (node) => {
         const action = node.actions[0];
         if (action && action.field && action.field.key && action.value) {
