@@ -1,39 +1,24 @@
 import { Injectable } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "plh-data/model/flowTypes";
 
-import { completion_list } from "src/data/completion_list";
-import { conversation } from "src/data/conversation";
-import { goal_list } from "src/data/goal_list";
-import { habit_list } from "src/data/habit_list";
-import { task_list } from "src/data/task_list";
-import { tips } from "src/data/tips";
-import { module_list } from "src/data/module_list";
-import { module_page } from "src/data/module_page";
-import { care_package_list } from "src/data/care_package_list";
-import { habit_ideas } from "src/data/habit_ideas";
-import { tour } from "src/data/tour";
-import { home_page } from "src/data/home_page";
-import { template } from "src/data/template";
-import { component_defaults } from "src/data/component_defaults";
-import { global } from "src/data/global";
-import { data_list } from "src/data/data_list";
+import * as data from "plh-data";
 
-export const COMPLETION_LIST = completion_list;
-export const CONVERSATION = conversation;
-export const GOAL_LIST = goal_list;
-export const HABIT_LIST = habit_list;
-export const MODULE_LIST = module_list;
-export const MODULE_PAGE = module_page;
-export const TASK_LIST = task_list;
-export const TIPS = tips;
-export const CARE_PACKAGE_LIST = care_package_list;
-export const HABIT_IDEAS = habit_ideas;
-export const TOUR = tour;
-export const HOME_PAGE = home_page;
-export const TEMPLATE = template;
-export const COMPONENT_DEFAULTS = component_defaults;
-export const GLOBAL = global;
-export const DATA_LIST = data_list;
+export const COMPLETION_LIST = data.completion_list;
+export const CONVERSATION = data.conversation;
+export const GOAL_LIST = data.goal_list;
+export const HABIT_LIST = data.habit_list;
+export const MODULE_LIST = data.module_list;
+export const MODULE_PAGE = data.module_page;
+export const TASK_LIST = data.task_list;
+export const TIPS = data.tips;
+export const CARE_PACKAGE_LIST = data.care_package_list;
+export const HABIT_IDEAS = data.habit_ideas;
+export const TOUR = data.tour;
+export const HOME_PAGE = data.home_page;
+export const TEMPLATE = data.template;
+export const COMPONENT_DEFAULTS = data.component_defaults;
+export const GLOBAL = data.global;
+export const DATA_LIST = data.data_list;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
 const mapping: { [key in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
