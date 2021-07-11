@@ -1,4 +1,4 @@
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 
 /**
  * The hacks folder contains short term workarounds which should

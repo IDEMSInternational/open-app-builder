@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "plh-data/model/flowTypes";
 import { TemplateBaseComponent } from "./base";
 import { getStringParamFromTemplateRow } from "../../../utils";
 import { getImageAssetPath } from "../utils/template-utils";
