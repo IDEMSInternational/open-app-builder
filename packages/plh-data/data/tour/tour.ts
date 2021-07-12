@@ -3,6 +3,65 @@ import { FlowTypes } from "../../model/flowTypes";
 const tour: FlowTypes.Tour[] = [
   {
     flow_type: "tour",
+    flow_name: "demo_essential_tools_tour",
+    status: "released",
+    rows: [
+      {
+        type: "step",
+        title: "Essential Tools Overview",
+        message_text:
+          "<p>You can find all the  Essential Tools in the @global.parent_centre. This tutorial will show you how to do so.</p>",
+        route: "template/demo_navigation",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Going to the Home Screen",
+        message_text:
+          "<p>You can get to the home screen by selecting ParentApp on the top bar.</p>",
+        element: "body > app-root > ion-app > div > plh-main-header",
+        route: "template/demo_navigation",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Accessing the @global.parent_centre",
+        message_text: "<p>Select the @global.parent_centre tile.</p>",
+        element:
+          "#main-content > plh-home > ion-content > plh-template-container > div > plh-template-component:nth-child(9) > div > plh-tmpl-display-group > div",
+        route: "home",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Accessing the Essential Tools",
+        message_text: "<p>Select the Essential Tools tile to get to the full list of tools.</p>",
+        element:
+          "#main-content > plh-template-testing > ion-content > plh-template-container > div > plh-template-component:nth-child(3) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(3) > div > plh-tile-component > div",
+        route: "template/parent_centre",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Essential Tools List",
+        message_text: "<p>You can find all the Essential Tools here.</p>",
+        template_component_name: "parent_centre_essential_tools",
+        route: "template/parent_centre_essential_tools",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        message_text:
+          "<p>You can access the Essential tools in this way from anywhere in the app.</p>",
+        template_component_name: "demo_navigation",
+        route: "template/demo_navigation",
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/demo_templates/demo_navigation.xlsx",
+  },
+  {
+    flow_type: "tour",
     flow_name: "intro_tour",
     status: "released",
     rows: [
