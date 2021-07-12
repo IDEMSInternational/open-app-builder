@@ -146,22 +146,22 @@ const global: FlowTypes.Global[] = [
     rows: [
       {
         type: "declare_global_constant",
-        name: "m_workshop_tomorrow",
+        name: "m_w_tomorrow",
         value: "New workshop ready tomorrow!",
       },
       {
         type: "declare_global_constant",
-        name: "m_workshop_released",
-        value: "New @global.weekly_workshop!",
+        name: "m_w_released",
+        value: "New workshop!",
       },
       {
         type: "declare_global_constant",
-        name: "m_workshop_reminder",
-        value: "Workshop reminder",
+        name: "m_w_reminder",
+        value: "Workshop Reminder",
       },
       {
         type: "declare_global_constant",
-        name: "m_workshop_in_progress",
+        name: "m_w_in_progress",
         value: "Nice progress!",
       },
       {
@@ -172,7 +172,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "m_something_fun",
-        value: "Something fun",
+        value: "Something Fun",
       },
       {
         type: "declare_global_constant",
@@ -182,7 +182,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "m_hp_reminder",
-        value: "Home practice reminder",
+        value: "Home Practice Reminder",
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/in_week_message_globals.xlsx",
@@ -589,6 +589,11 @@ const global: FlowTypes.Global[] = [
         value: true,
         exclude_from_translation: true,
       },
+      {
+        type: "declare_global_constant",
+        name: "in_week_messages",
+        value: "In-Week Messages",
+      },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx",
   },
@@ -649,189 +654,6 @@ const global: FlowTypes.Global[] = [
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "parent_centre_variables",
-    status: "released",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "help",
-        value: "Help",
-      },
-      {
-        type: "declare_global_constant",
-        name: "help_icon",
-        value: "plh_images/icons/hug_heart_white.svg",
-      },
-      {
-        type: "declare_global_constant",
-        name: "my_tips",
-        value: "My Tips",
-      },
-      {
-        type: "declare_global_constant",
-        name: "my_tips_icon",
-        value: "plh_images/icons/light_bulb_heart_white.svg",
-      },
-      {
-        type: "declare_global_constant",
-        name: "essential_tools",
-        value: "Essential Tools",
-      },
-      {
-        type: "declare_global_constant",
-        name: "essential_tools_icon",
-        value: "plh_images/icons/light_bulb_white.svg",
-      },
-      {
-        type: "declare_global_constant",
-        name: "covid",
-        value: "COVID",
-      },
-      {
-        type: "declare_global_constant",
-        name: "covid_icon",
-        value: "plh_images/icons/ask_question_white.svg",
-      },
-      {
-        type: "declare_global_constant",
-        name: "relax_and_activities",
-        value: "Relax & Activities",
-      },
-      {
-        type: "declare_global_constant",
-        name: "relax_and_activities_icon",
-        value: "plh_images/icons/smile_eyes_up_white.svg",
-      },
-      {
-        type: "declare_global_constant",
-        name: "extra",
-        value: "Customise @global.parent_app",
-      },
-      {
-        type: "declare_global_constant",
-        name: "extra_if_survey_completed",
-        value: "Customise Again",
-      },
-      {
-        type: "declare_global_constant",
-        name: "extra_icon",
-        value: "plh_images/icons/info_white.svg",
-      },
-      {
-        type: "declare_global_constant",
-        name: "support_contacts",
-        value: "Support Contacts",
-      },
-      {
-        type: "declare_global_constant",
-        name: "support_contacts_icon",
-        value: "plh_images/icons/hands_support_heart_white.svg",
-      },
-      {
-        type: "declare_global_constant",
-        name: "evidence_base",
-        value: "Evidence Base",
-      },
-      {
-        type: "declare_global_constant",
-        name: "evidence_base_icon",
-        value: "plh_images/icons/documents_white.svg",
-      },
-      {
-        type: "declare_global_constant",
-        name: "technical_support",
-        value: "Technical Support",
-      },
-      {
-        type: "declare_global_constant",
-        name: "technical_support_icon",
-        value: "plh_images/icons/info_phone_white.svg",
-      },
-    ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/data/parent_centre_globals.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "tips_disabled",
-    status: "released",
-    rows: [
-      {
-        type: "declare_field_default",
-        name: "w_self_care_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_1on1_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_praise_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_instruct_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_stress_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_money_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_rules_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_consequence_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_solve_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_safe_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_crisis_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_celebrate_tools_disabled",
-        value: true,
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/data/parent_centre_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -2146,6 +1968,78 @@ const global: FlowTypes.Global[] = [
         value: false,
         exclude_from_translation: true,
       },
+      {
+        type: "declare_field_default",
+        name: "w_self_care_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_1on1_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_praise_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_instruct_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_stress_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_money_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_rules_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_consequence_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_solve_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_safe_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_crisis_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "w_celebrate_tools_disabled",
+        value: true,
+        exclude_from_translation: true,
+      },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx",
   },
@@ -2280,8 +2174,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_overriding_global.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_global.xlsx",
   },
   {
     flow_type: "global",
