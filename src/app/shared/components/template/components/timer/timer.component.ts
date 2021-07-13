@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "plh-data/model/flowTypes";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
@@ -23,7 +23,6 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this._row = value;
   }
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   @ViewChild("min", { static: false }) minInput: ElementRef;
   @ViewChild("sec", { static: false }) secInput: ElementRef;
   state: TimerState;

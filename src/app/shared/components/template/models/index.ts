@@ -19,7 +19,6 @@ export interface ITemplateContainerProps {
 /**
  * Properties passed to a template row instance
  * @param row specific data used in component rendering
- * @param localVariables compiled list of variables used across all template rows
  * @param parent reference to parent template container
  */
 export interface ITemplateRowProps {

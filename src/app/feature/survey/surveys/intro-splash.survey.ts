@@ -143,7 +143,7 @@ export class IntroSplashSurveyComponent implements OnInit {
   private _wait(ms: number) {
     return new Promise((resolve) =>
       setTimeout(() => {
-        resolve();
+        resolve(true);
       }, ms)
     );
   }

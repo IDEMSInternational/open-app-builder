@@ -15,6 +15,7 @@ type IRowOverridesHash = {
 type ITemplateOverridesHash = {
   [template_nested_name: string]: IRowOverridesHash;
 };
+export type ITemplateRowMap = { [row_nested_name: string]: FlowTypes.TemplateRow };
 /**
  * This service handles template row initialisation (with parent override merging)
  * and dynamic row processing.
@@ -25,7 +26,7 @@ type ITemplateOverridesHash = {
 export class TemplateRowService {
   /** List of overrides set by parent templates for access during parent processing */
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
-  public templateRowMap: Map<string, FlowTypes.TemplateRow> = new Map();
+  public templateRowMap: ITemplateRowMap = {};
   public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
   constructor(public container: TemplateContainerComponent) {}
 
@@ -252,7 +253,7 @@ export class TemplateRowService {
         // ensure set_variables are recorded via their name (instead of default nested name)
         // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
         case "set_variable":
-          this.templateRowMap.set(name, row);
+          this.templateRowMap[name] = row;
           if (_dynamicFields) {
             return preProcessedRow;
           }
@@ -275,7 +276,7 @@ export class TemplateRowService {
           break;
         default:
           // all other types should just set own value for use in future processing
-          this.templateRowMap.set(_nested_name, row);
+          this.templateRowMap[_nested_name] = row;
           break;
       }
     }

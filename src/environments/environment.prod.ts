@@ -1,9 +1,9 @@
 import { firebaseConfig } from "./firebaseConfig";
-import { version } from "../../package.json";
+import packageJson from "../../package.json";
 import { ENV_NAME } from "./env_name";
 
 export const environment = {
-  version,
+  version: packageJson.version,
   production: true,
   rapidPro: {
     receiveUrl:
@@ -16,4 +16,5 @@ export const environment = {
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
+  apiEndpoint: "https://apps-server.idems.international/api",
 };

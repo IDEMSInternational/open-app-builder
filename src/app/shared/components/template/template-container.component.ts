@@ -4,7 +4,6 @@ import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { TEMPLATE } from "../../services/data/data.service";
 import { TourService } from "../../services/tour/tour.service";
-import { mapToJson } from "../../utils";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateActionService } from "./services/template-action.service";
 import { TemplateNavService } from "./services/template-nav.service";
@@ -13,6 +12,7 @@ import { TemplateVariablesService } from "./services/template-variables.service"
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
 import { TemplateTranslateService } from "./services/template-translate.service";
+import { SettingsService } from "src/app/pages/settings/settings.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -40,11 +40,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() row?: FlowTypes.TemplateRow;
   children: { [name: string]: TemplateContainerComponent } = {};
 
-  /** Local variables track specific updates that have been made via set_local in this template
-   *  The are used to help restore correct state if reprocessing rows after parent-triggered render
-   * (note, we can't use templateRowMap for this as duplicate named rows would override each other during init) */
-  localVariables: any = {};
-
   template: FlowTypes.Template;
 
   /** */
@@ -65,9 +60,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public route: ActivatedRoute,
     public elRef: ElementRef,
     public templateNavService: TemplateNavService,
-    public cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef,
+    public settingsService: SettingsService
   ) {
-    this.templateActionService = new TemplateActionService(this);
+    this.templateActionService = new TemplateActionService(this, this.settingsService);
     this.templateRowService = new TemplateRowService(this);
   }
 
@@ -174,7 +170,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         template,
         ctxt: { ...this },
         renderedRows: { ...this.templateRowService.renderedRows },
-        rowMap: mapToJson(this.templateRowService.templateRowMap),
+        rowMap: this.templateRowService.templateRowMap,
       });
       // if a parent exists also provide parent reference to this as a child
       if (this.parent) {

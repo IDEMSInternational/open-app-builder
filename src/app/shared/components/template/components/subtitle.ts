@@ -16,7 +16,8 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 })
 export class TmplSubtitleComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   textAlign: string;
   style: string | null;
 

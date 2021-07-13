@@ -18,7 +18,7 @@
     "resolveJsonModule": true
   },
   "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
+    "strictTemplates": true,
     "strictInjectionParameters": true
   }
 }

@@ -24,7 +24,8 @@ import { Platform } from "@ionic/angular";
 })
 export class TmplToggleBarComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   public false_text: string;
   public true_text: string;
   public position: string;
