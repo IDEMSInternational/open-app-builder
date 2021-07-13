@@ -88,10 +88,7 @@ export class SettingsPage {
   }
 
   resetApp() {
-    this.localStorageService.clear();
-    this.dbService.deleteDatabase().then(() => {
-      location.reload();
-    });
+    this.settingsService.resetApp();
   }
 
   launchFlowByName(flowName: string) {

@@ -2,6 +2,7 @@ import { BehaviorSubject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
+import { SettingsService } from "src/app/pages/settings/settings.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -17,7 +18,10 @@ export class TemplateActionService {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(public container: TemplateContainerComponent) {}
+  constructor(
+    public container: TemplateContainerComponent,
+    private settingsService: SettingsService
+  ) {}
 
   /** Public method to add actions to processing queue and process */
   public async handleActions(
@@ -89,6 +93,8 @@ export class TemplateActionService {
     let [key, value] = args;
 
     switch (action_id) {
+      case "reset_app":
+        return this.settingsService.resetApp();
       case "set_local":
         console.log("[SET LOCAL]", { key, value });
         return this.setLocalVariable(key, value);
