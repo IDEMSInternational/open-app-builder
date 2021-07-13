@@ -652,6 +652,11 @@ const global: FlowTypes.Global[] = [
         name: "back_button",
         value: "Previous",
       },
+      {
+        type: "declare_global_constant",
+        name: "challenges_solutions_button",
+        value: "Challenges & solutions",
+      },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx",
   },
@@ -2093,6 +2098,21 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_field_default",
         name: "workshop_day",
+        value: "friday",
+      },
+      {
+        type: "declare_global_constant",
+        name: "current_workshop_default",
+        value: "w_self_care",
+      },
+      {
+        type: "declare_field_default",
+        name: "current_workshop",
+        value: "w_self_care",
+      },
+      {
+        type: "declare_global_constant",
+        name: "workshop_day_default",
         value: "friday",
       },
       {

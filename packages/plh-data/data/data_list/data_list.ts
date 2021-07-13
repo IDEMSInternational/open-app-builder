@@ -680,10 +680,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Help",
           },
           location_text: {
-            eng: 'under "Help" in the @global.parent_centre',
+            eng: '"Help" in the @global.parent_centre',
           },
         },
-        location_text: 'under "Help" in the @global.parent_centre',
+        location_text: '"Help" in the @global.parent_centre',
       },
       {
         id: "my_tips",
@@ -694,10 +694,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "My Tips",
           },
           location_text: {
-            eng: 'under "My Tips" in the @global.parent_centre',
+            eng: '"My Tips" in the @global.parent_centre',
           },
         },
-        location_text: 'under "My Tips" in the @global.parent_centre',
+        location_text: '"My Tips" in the @global.parent_centre',
       },
       {
         id: "essential_tools",
@@ -708,10 +708,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Essential Tools",
           },
           location_text: {
-            eng: 'under "Essential Tools" in the @global.parent_centre',
+            eng: '"Essential Tools" in the @global.parent_centre',
           },
         },
-        location_text: 'under "Essential Tools" in the @global.parent_centre',
+        location_text: '"Essential Tools" in the @global.parent_centre',
       },
       {
         id: "covid",
@@ -722,10 +722,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "COVID",
           },
           location_text: {
-            eng: 'under "COVID" in the @global.parent_centre',
+            eng: '"COVID" in the @global.parent_centre',
           },
         },
-        location_text: 'under "COVID" in the @global.parent_centre',
+        location_text: '"COVID" in the @global.parent_centre',
       },
       {
         id: "relax_and_activities",
@@ -753,11 +753,11 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Customise Again",
           },
           location_text: {
-            eng: 'under "Customise @global.parent_app" in the @global.parent_centre',
+            eng: '"Customise @global.parent_app" in the @global.parent_centre',
           },
         },
         title_2: "Customise Again",
-        location_text: 'under "Customise @global.parent_app" in the @global.parent_centre',
+        location_text: '"Customise @global.parent_app" in the @global.parent_centre',
       },
       {
         id: "support_contacts",
@@ -768,10 +768,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Support Contacts",
           },
           location_text: {
-            eng: 'under "Support Contacts" in the @global.parent_centre',
+            eng: '"Support Contacts" in the @global.parent_centre',
           },
         },
-        location_text: 'under "Support Contacts" in the @global.parent_centre',
+        location_text: '"Support Contacts" in the @global.parent_centre',
       },
       {
         id: "evidence_base",
@@ -782,10 +782,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Evidence Base",
           },
           location_text: {
-            eng: 'under "Evidence Base" in the @global.parent_centre',
+            eng: '"Evidence Base" in the @global.parent_centre',
           },
         },
-        location_text: 'under "Evidence Base" in the @global.parent_centre',
+        location_text: '"Evidence Base" in the @global.parent_centre',
       },
       {
         id: "technical_support",
@@ -796,10 +796,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Technical Support",
           },
           location_text: {
-            eng: 'under "Technical Support" in the @global.parent_centre',
+            eng: '"Technical Support" in the @global.parent_centre',
           },
         },
-        location_text: 'under "Technical Support" in the @global.parent_centre',
+        location_text: '"Technical Support" in the @global.parent_centre',
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/parent_centre_data_list.xlsx",
