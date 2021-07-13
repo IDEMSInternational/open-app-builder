@@ -460,6 +460,7 @@ export namespace FlowTypes {
     // TODO - 2021-03-11 - most of list needs reconsideration/implementation
     action_id:
       | "" // TODO document this property for stop propogation
+      | "reset_app"
       | "set_field"
       | "set_local"
       | "set_global"

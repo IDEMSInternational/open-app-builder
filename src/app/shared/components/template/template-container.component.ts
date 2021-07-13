@@ -12,6 +12,7 @@ import { TemplateVariablesService } from "./services/template-variables.service"
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
 import { TemplateTranslateService } from "./services/template-translate.service";
+import { SettingsService } from "src/app/pages/settings/settings.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -59,9 +60,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public route: ActivatedRoute,
     public elRef: ElementRef,
     public templateNavService: TemplateNavService,
-    public cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef,
+    public settingsService: SettingsService
   ) {
-    this.templateActionService = new TemplateActionService(this);
+    this.templateActionService = new TemplateActionService(this, this.settingsService);
     this.templateRowService = new TemplateRowService(this);
   }
 

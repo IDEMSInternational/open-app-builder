@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
-import { BASE_USER_SETTINGS, UserSetting, UserSettingId } from './user.settings.model';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable, of } from "rxjs";
+import { filter, map } from "rxjs/operators";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { BASE_USER_SETTINGS, UserSetting, UserSettingId } from "./user.settings.model";
+import { DbService } from "src/app/shared/services/db/db.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class SettingsService {
-
   private lsPrefix = "user_settings.";
 
   private userSettings$: BehaviorSubject<UserSetting[]>;
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(private localStorageService: LocalStorageService, private dbService: DbService) {
     const lsPopulatedSettings = BASE_USER_SETTINGS.map((setting) => {
       const lsValue = localStorageService.getString(this.lsPrefix + setting.id);
       return { ...setting, value: lsValue === null ? setting.value : lsValue };
@@ -45,5 +45,12 @@ export class SettingsService {
       return setting;
     });
     this.userSettings$.next(updatedSettings);
+  }
+
+  resetApp() {
+    this.localStorageService.clear();
+    this.dbService.deleteDatabase().then(() => {
+      location.reload();
+    });
   }
 }
