@@ -2,7 +2,7 @@ import * as fs from "fs-extra";
 import chalk from "chalk";
 import NodeRSA from "node-rsa";
 import { encryptFolder, promptOptions } from "./utils";
-const PUBLIC_KEY_PATH = "config/public.key";
+import { PUBLIC_KEY_PATH } from "./paths";
 
 async function main() {
   if (!fs.existsSync(PUBLIC_KEY_PATH)) {

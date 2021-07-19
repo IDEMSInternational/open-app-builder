@@ -1,5 +1,6 @@
 import * as path from "path";
 import sharp from "sharp";
+import { ANDROID_RES_PATH, RESOURCE_FOLDER_PATH } from "./paths";
 
 const iconSizeMap = {
   "mipmap-xxxhdpi": 192,
@@ -8,9 +9,6 @@ const iconSizeMap = {
   "mipmap-hdpi": 72,
   "mipmap-mdpi": 48,
 };
-
-const RESOURCE_FOLDER_PATH = "resources";
-const ANDROID_RES_PATH = "android/app/src/main/res";
 
 /**
  * Resize icons and splash screen assets for different android variants
