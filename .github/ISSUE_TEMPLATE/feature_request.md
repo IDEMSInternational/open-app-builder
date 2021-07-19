@@ -9,14 +9,14 @@ assignees: ''
 ---
 
 **What?**
-Describe what the feature is and what it should achieve.
+_Describe what the feature is and what it should achieve._
 
 **Why?**
-Describe why this feature would be useful and its intended purpose. 
-Does this feature solve an existing problem? If so, please add a description or link to a bug report.
+_Describe why this feature would be useful and its intended purpose._
+_Does this feature solve an existing problem? If so, please add a description or link to a bug report._
 
 **How?**
-Do you have an example template that demonstrates the desired behaviour or syntax? If so, specify its name and provide a link. 
+_Do you have an example template that demonstrates the desired behaviour or syntax? If so, specify its name and provide a link._
 
 **Other details**
-Add any extra details that you think may be useful.
+_Add any extra details that you think may be useful._

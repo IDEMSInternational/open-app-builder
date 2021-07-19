@@ -8,32 +8,22 @@ assignees: ''
 ---
 
 **Describe the bug**
-A clear and concise description of what the bug is.
-
+_Include a clear and concise description of what the bug is._
 
 **App version**
-Specify the version of the app where this bug was first identified.
-
-
-**Template Name**
-Specify the template name and include a link where the bug appears if appropriate.
-
-
-**Debug Template**
-If you have a debug template to show demonstrate the bug specify its name and provide a link.
-
-
-**Description**
-Describe the bug concisely.
-
+_Specify the version of the app where this bug was first identified._
 
 **To Reproduce**
-Describe the steps to reproduce this bug.
+_Describe the steps to reproduce this bug._
 
+**Template Name**
+_Specify the template name and include a link where the bug appears if appropriate._
+
+**Debug Template**
+_If you have a debug template to show demonstrate the bug specify its name and provide a link._
 
 **Screenshots and videos**
-If applicable, add screenshots or videos to help explain your problem.
-
+_If applicable, add screenshots or videos to help explain your problem._
 
 **Additional context**
-Add any other context about the problem here.
+_Add any other context about the problem here._

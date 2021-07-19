@@ -9,7 +9,7 @@ assignees: ''
 ---
 
 **Details**
-Please describe the issue below.
+_Please describe the issue below._
 
 **Screenshots and videos**
-If applicable, add screenshots or videos to help explain your problem.
+_If applicable, add screenshots or videos to help explain your issue._
