@@ -2,35 +2,37 @@ import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
 import { capitalizeFirstLetter, recursiveFindByExtension } from "./utils";
+import { spawnSync } from "child_process";
+import { PLH_ASSETS_PATH, PLH_DATA_PATH, ROOT_DIR } from "./paths";
 
 // Setup folders
 const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
 const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_assets");
-const APP_DATA_DIR = `../../packages/plh-data/data`;
-const APP_PLH_ASSETS_DIR = "../../packages/plh-data/assets/plh_assets";
 
 /** A simple script to copy data exported from gdrive and processed for plh into the app data folder */
 export function main(doAssetFolderCheck = true) {
-  fs.ensureDirSync(APP_DATA_DIR);
-  fs.emptyDirSync(APP_DATA_DIR);
+  fs.ensureDirSync(PLH_DATA_PATH);
+  fs.emptyDirSync(PLH_DATA_PATH);
   if (doAssetFolderCheck) {
-    fs.ensureDirSync(APP_PLH_ASSETS_DIR);
-    fs.emptyDirSync(APP_PLH_ASSETS_DIR);
+    fs.ensureDirSync(PLH_ASSETS_PATH);
+    fs.emptyDirSync(PLH_ASSETS_PATH);
   }
   console.log(chalk.yellow("Copying Data To App"));
   const localTsFiles = recursiveFindByExtension(DATA_INPUT_FOLDER, "ts");
   for (const filepath of localTsFiles) {
     const localTsFile = fs.readFileSync(filepath, { encoding: "utf8" });
-    const outputPath = path.join(APP_DATA_DIR, path.relative(DATA_INPUT_FOLDER, filepath));
+    const outputPath = path.join(PLH_DATA_PATH, path.relative(DATA_INPUT_FOLDER, filepath));
     const appOutputTs = generateAppTsOutput(localTsFile);
     const outputDir = path.dirname(outputPath);
     fs.ensureDirSync(outputDir);
     fs.writeFileSync(outputPath, appOutputTs);
   }
   if (fs.existsSync(ASSETS_INPUT_FOLDER)) {
-    fs.copySync(ASSETS_INPUT_FOLDER, APP_PLH_ASSETS_DIR);
+    fs.copySync(ASSETS_INPUT_FOLDER, PLH_ASSETS_PATH);
   }
   generateAppDataIndexFiles();
+  console.log(chalk.yellow("Cleaning Output Files"));
+  cleanAppTsOutput();
   console.log(chalk.green("Data Copied to App"));
 }
 
@@ -46,14 +48,19 @@ function generateAppTsOutput(ts: string) {
   return ts.replace("../../../../types", "../../model/flowTypes");
 }
 
+function cleanAppTsOutput() {
+  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${PLH_DATA_PATH}/**/*.ts --loglevel error`;
+  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+}
+
 /**
  * Create a default index.ts file in each data folder to export all other local
  * data files (and produce a singular import)
  */
 function generateAppDataIndexFiles() {
-  const dataDirs = fs.readdirSync(APP_DATA_DIR);
+  const dataDirs = fs.readdirSync(PLH_DATA_PATH);
   for (const folderName of dataDirs) {
-    const dirPath = `${APP_DATA_DIR}/${folderName}`;
+    const dirPath = `${PLH_DATA_PATH}/${folderName}`;
     const dataFiles = fs.readdirSync(dirPath);
     const importStatements = [];
     const exportStatements = [];
