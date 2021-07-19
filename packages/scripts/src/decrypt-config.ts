@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
 import chalk from "chalk";
 import { decryptFolder, encryptFolder } from "./utils";
-const PRIVATE_KEY_PATH = "config/private.key";
+import { PRIVATE_KEY_PATH } from "./paths";
 
 async function main() {
   const missingMsg =

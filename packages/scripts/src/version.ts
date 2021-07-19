@@ -1,8 +1,6 @@
 import * as fs from "fs-extra";
 import inquirer from "inquirer";
-
-const MAIN_PACKAGE_PATH = "../package.json";
-const APP_BUILD_GRADLE = "../android/app/build.gradle";
+import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "./paths";
 
 /**
  * Set a consistent version number by incrementing the current
@@ -22,7 +20,7 @@ main()
   });
 
 function updateGradleBuild(newVersionName: string) {
-  let gradleBuildFile = fs.readFileSync(APP_BUILD_GRADLE, {
+  let gradleBuildFile = fs.readFileSync(APP_BUILD_GRADLE_PATH, {
     encoding: "utf-8",
   });
   const newVersionCode = _generateVersionCode(newVersionName);
@@ -31,7 +29,7 @@ function updateGradleBuild(newVersionName: string) {
     /versionName "[0-9]+\.[0-9]+\.[0-9]+"/g,
     `versionName "${newVersionName}"`
   );
-  fs.writeFileSync(APP_BUILD_GRADLE, gradleBuildFile, { encoding: "utf-8" });
+  fs.writeFileSync(APP_BUILD_GRADLE_PATH, gradleBuildFile, { encoding: "utf-8" });
 }
 
 async function updatePackageJson(newVersion: string) {
