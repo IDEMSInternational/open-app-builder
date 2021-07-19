@@ -3,8 +3,8 @@ import path from "path";
 import readline from "readline";
 import { drive_v3, google } from "googleapis";
 import chalk from "chalk";
+import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../paths";
 require("dotenv").config();
-const CREDENTIALS_PATH = "config/credentials.json";
 
 // If modifying these scopes, delete token.json.
 const SCOPES = [
@@ -26,7 +26,6 @@ export function authorizeGDrive(options?: drive_v3.Options): Promise<drive_v3.Dr
       // The file token.json stores the user's access and refresh tokens, and is
       // created automatically when the authorization flow completes for the first
       // time.
-      const TOKEN_PATH = path.join(__dirname, "token.json");
 
       // Load client secrets from a local file or env variable
       if (!fs.existsSync(CREDENTIALS_PATH)) {
@@ -36,7 +35,7 @@ export function authorizeGDrive(options?: drive_v3.Options): Promise<drive_v3.Dr
       const creds = getJSONFromEnvOrFile("GDRIVE_CREDENTIALS", CREDENTIALS_PATH);
 
       // Authorize a client with credentials, then call the Google Drive API.
-      authorize(creds, TOKEN_PATH, SCOPES, (auth) => {
+      authorize(creds, AUTH_TOKEN_PATH, SCOPES, (auth) => {
         const drive = google.drive({ version: "v3", auth, ...options });
         resolve(drive);
       });

@@ -3,13 +3,14 @@ import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
 import { parsePLHListString, parsePLHCollectionString, parsePLHActionString } from "../../utils";
+import { SCRIPTS_WORKSPACE_PATH } from "../../../paths";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };
 
 /** Prefix for use with images in the app */
 const ASSETS_BASE = "assets/plh_assets";
 
-const ASSETS_CACHE_PATH = "src/gdrive-download/cache/plh_assets";
+const ASSETS_CACHE_PATH = `${SCRIPTS_WORKSPACE_PATH}/src/gdrive-download/cache/plh_assets`;
 
 /**
  * The default processor performs the following:
