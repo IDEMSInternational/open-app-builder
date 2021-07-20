@@ -728,20 +728,6 @@ const data_list: FlowTypes.Data_list[] = [
         location_text: '"COVID" in the @global.parent_centre',
       },
       {
-        id: "relax_and_activities",
-        icon_asset: "assets/plh_assets/plh_images/icons/smile_eyes_up_white.svg",
-        title: "Relax & Activities",
-        _translatedFields: {
-          title: {
-            eng: "Relax & Activities",
-          },
-          location_text: {
-            eng: 'under "Relax & Activities" in the @global.parent_centre',
-          },
-        },
-        location_text: 'under "Relax & Activities" in the @global.parent_centre',
-      },
-      {
         id: "customisation",
         icon_asset: "assets/plh_assets/plh_images/icons/phone_heart_white.svg",
         title: "Customise @global.parent_app",
@@ -758,6 +744,20 @@ const data_list: FlowTypes.Data_list[] = [
         },
         title_2: "Customise Again",
         location_text: '"Customise @global.parent_app" in the @global.parent_centre',
+      },
+      {
+        id: "relax_and_activities",
+        icon_asset: "assets/plh_assets/plh_images/icons/smile_eyes_up_white.svg",
+        title: "Relax & Activities",
+        _translatedFields: {
+          title: {
+            eng: "Relax & Activities",
+          },
+          location_text: {
+            eng: 'under "Relax & Activities" in the @global.parent_centre',
+          },
+        },
+        location_text: 'under "Relax & Activities" in the @global.parent_centre',
       },
       {
         id: "support_contacts",
@@ -800,6 +800,20 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: '"Technical Support" in the @global.parent_centre',
+      },
+      {
+        id: "message_archive",
+        icon_asset: "assets/plh_assets/plh_images/icons/letter_white.svg",
+        title: "Message Archive",
+        _translatedFields: {
+          title: {
+            eng: "Message Archive",
+          },
+          location_text: {
+            eng: '"Message Archive" in the @global.parent_centre',
+          },
+        },
+        location_text: '"Message Archive" in the @global.parent_centre',
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/parent_centre_data_list.xlsx",
@@ -1885,6 +1899,7 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "example1",
         value: "Success - Example 1",
+        text: "some text",
       },
       {
         id: "example3",

@@ -518,14 +518,25 @@ const global: FlowTypes.Global[] = [
       },
       {
         type: "declare_global_constant",
+        name: "currency",
+        value: "R",
+      },
+      {
+        type: "declare_global_constant",
         name: "monthly_income_estimate",
-        value: "R3000",
+        value: 3000,
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "monthly_income_precise",
-        value: "R3400",
+        value: 3400,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "number_of_beans",
+        value: 20,
         exclude_from_translation: true,
       },
     ],
@@ -645,6 +656,11 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "done_button",
+        value: "Done",
+      },
+      {
+        type: "declare_global_constant",
+        name: "next_button",
         value: "Next",
       },
       {
@@ -656,6 +672,11 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "challenges_solutions_button",
         value: "Challenges & solutions",
+      },
+      {
+        type: "declare_global_constant",
+        name: "save_button",
+        value: "Save",
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx",
@@ -2096,11 +2117,6 @@ const global: FlowTypes.Global[] = [
         value: "friends",
       },
       {
-        type: "declare_field_default",
-        name: "workshop_day",
-        value: "friday",
-      },
-      {
         type: "declare_global_constant",
         name: "current_workshop_default",
         value: "w_self_care",
@@ -2109,6 +2125,11 @@ const global: FlowTypes.Global[] = [
         type: "declare_field_default",
         name: "current_workshop",
         value: "w_self_care",
+      },
+      {
+        type: "declare_field_default",
+        name: "workshop_day",
+        value: "friday",
       },
       {
         type: "declare_global_constant",
