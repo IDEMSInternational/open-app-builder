@@ -83,6 +83,10 @@ export class SettingsPage {
     this.router.navigateByUrl("/template/demo_navigation");
   }
 
+  openOrganisationRegistration() {
+    this.router.navigateByUrl("/template/organisation_participant");
+  }
+
   navigateByUrl(url: string) {
     this.router.navigateByUrl(url);
   }
