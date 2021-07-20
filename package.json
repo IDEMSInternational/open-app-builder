@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "author": "IDEMS International",
   "homepage": "https://idems.international/",
   "description": "",
@@ -13,7 +13,7 @@
     "build": "npm run data:build && ng build --prod",
     "data:build": "yarn workspace plh-data build",
     "data:serve": "yarn workspace plh-data serve",
-    "scripts": "cd packages/scripts && npm run start --",
+    "scripts": "yarn workspace scripts",
     "server": "yarn workspace server",
     "test": "ng test",
     "lint": "ng lint",
