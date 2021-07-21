@@ -250,7 +250,9 @@ export namespace FlowTypes {
     campaign_list: string[]; // ids of campaigns where to run
     priority?: number; // higher numbers will be given more priority
     notification_schedule?: NotificationSchedule;
-    _active?: boolean; // calculated from activation and deactivation conditions
+    _activated?: boolean; // all activation criteria satisfied
+    _deactivated?: boolean; // any deactivation criteria satisfied
+    _active?: boolean; // activated and not deactivated
 
     // additional fields for current data_list but not required
     click_action_list?: TemplateRowAction[];
@@ -286,7 +288,8 @@ export namespace FlowTypes {
         };
       };
       field_evaluation?: {
-        evaluate: string;
+        field: string;
+        value: string;
       };
     };
     /** calculated after criteria has been evaluated */
