@@ -17,12 +17,14 @@
       (ionChange)="setDebugCampaign(campaignSelect.value)"
       [value]="debugCampaignId"
     >
-      <ion-select-option *ngFor="let campaign_id of campaignService.campaigns | objectKeys">
+      <ion-select-option
+        *ngFor="let campaign_id of campaignService.campaigns | objectKeys | arraySort"
+      >
         <span>{{campaign_id}}</span>
       </ion-select-option>
     </ion-select>
   </ion-item>
-  <h4>Rows</h4>
+  <h4 *ngIf="debugCampaignId">Rows</h4>
   <ion-list *ngIf="debugCampaignRows">
     <ion-list-header class="list-header activated">Activated</ion-list-header>
     <campaign-debug-row
