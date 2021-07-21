@@ -63,12 +63,12 @@ export class DataEvaluationService {
   public async evaluateReminderCondition(
     condition: FlowTypes.DataEvaluationCondition
   ): Promise<boolean> {
-    log_group("[Data Evaluation] start", condition._raw);
-    log(condition);
     if (!this.data) {
       // TODO - determine if using a cache-first approach is better or just to make the queries live
       await this.refreshDBCache();
     }
+    log_group("[Data Evaluation]", condition._raw);
+    log(condition);
     const { condition_type, condition_args } = condition;
     const evaluators: {
       [key in FlowTypes.DataEvaluationCondition["condition_type"]]: () => boolean | undefined;
@@ -98,7 +98,7 @@ export class DataEvaluationService {
     }
     let results = this.data.dbCache[table_id][filter.value];
     // TODO - assumes standard sort order fine, - may need in future (e.g. by _created)
-    if (order === "asc") {
+    if (order === "desc") {
       results = results.reverse();
     }
     // TODO - assumes filtering on 'value' field - may want way to specify which field to compare
@@ -123,18 +123,21 @@ export class DataEvaluationService {
     let result = false;
     switch (unit) {
       case "day":
-        const dayDiff = differenceInHours(new Date(), new Date(evaluateValue)) / 24;
+        const currentDate = new Date();
+        const compareDate = new Date(evaluateValue);
+        const dayDiff = differenceInHours(currentDate, compareDate) / 24;
         result = this._compare(dayDiff, operator, value);
+        log("db evaluate", { evaluate, dayDiff, evaluateValue, result });
         break;
       case "app_day":
         const appDayToday = this.data.app_day;
         const appDayDiff = appDayToday - (evaluateValue as number);
         result = this._compare(appDayDiff, operator, value);
+        log("db evaluate", { evaluate, appDayDiff, evaluateValue, result });
         break;
       default:
         console.error("No evaluation function for unit:", unit);
     }
-    log("evaluate", { evaluateValue, evaluate, result });
     return result;
   }
 
