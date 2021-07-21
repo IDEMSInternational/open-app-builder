@@ -56,11 +56,13 @@ export function extractConditionList(conditionText: string) {
 }
 
 function parseFieldEvaluationCondition(data: any[][]): ICondition {
-  const [[condition_type], [evaluate]] = data;
+  let [[condition_type], [field, value]] = data;
+  value = booleanStringToBoolean(value);
+  // assume default check is that a field exists
   return {
     condition_type,
     condition_args: {
-      field_evaluation: { evaluate },
+      field_evaluation: { field, value },
     },
   };
 }
