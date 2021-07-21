@@ -98,7 +98,17 @@ function parseDBLookupCondition(data: any[][]): ICondition {
  * replace these with full specifications
  */
 function _handleTextExceptions(text: string) {
-  // a maximum of 1 replacement will be made, so order in terms of specifivity
+  // handle some general string tidying, e.g. `get_field:first` vs `get_field : first`
+  const generalReplacements = {
+    ": ": ":",
+    " :": ":",
+  };
+  Object.entries(generalReplacements).forEach(([original, replacement]) => {
+    const regex = new RegExp(`${original}`);
+    text = text.replace(regex, replacement);
+  });
+
+  // Handle fixed replacements. Max 1 per string, so order in terms of specifivity
   // TODO CC 2021-05-17 - All needs review - ideally should just take a list of params as args,
   // e.g. table_id: 'app_events'; sort: 'asc', or perhaps where:{...}
   const shorthandReplacements = {
