@@ -33,7 +33,9 @@ export function main(doAssetFolderCheck = true) {
   generateAppDataIndexFiles();
   console.log(chalk.yellow("Cleaning Output Files"));
   cleanAppTsOutput();
-  console.log(chalk.green("Data Copied to App"));
+  console.log(chalk.yellow("Generating translation files"));
+  generateTranslationFiles();
+  console.log(chalk.green("Copy Complete"));
 }
 
 if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
@@ -50,6 +52,16 @@ function generateAppTsOutput(ts: string) {
 
 function cleanAppTsOutput() {
   const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${PLH_DATA_PATH}/**/*.ts --loglevel error`;
+  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+}
+
+/**
+ * Call translation scripts to also add a copy of files to translations
+ * TODO - ideally this and all above scripts should be called from within plh-data workspace instead
+ * TODO - could also install as node_module and run as bin
+ * */
+function generateTranslationFiles() {
+  const cmd = `yarn workspace translations start generate -i ../scripts/src/plh-data-convert/output -o ../plh-data/translations`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
