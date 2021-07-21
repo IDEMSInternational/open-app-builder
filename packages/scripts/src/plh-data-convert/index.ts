@@ -62,6 +62,7 @@ export async function main() {
       }
       fs.ensureDirSync(`${OUTPUT_FOLDER}/${key}`);
       fs.writeFileSync(`${OUTPUT_FOLDER}/${key}/${outputName}.ts`, outputTs);
+      fs.writeFileSync(`${OUTPUT_FOLDER}/${key}/${outputName}.json`, outputJson);
     });
   });
   console.log(chalk.yellow("Conversion Complete"));
