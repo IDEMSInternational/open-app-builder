@@ -1,15 +1,19 @@
-.row-header {
+.list-header {
   font-weight: 500;
 }
-.row-header[data-active="true"],
-.condition[data-satisfied="true"] {
-  color: green;
+.activated {
+  background: hsl(130, 40, 65);
 }
-.row-header[data-active="false"],
-.condition[data-satisfied="false"] {
-  color: #a30000;
+.pending {
+  background: hsl(40, 100, 75);
 }
-.divider {
-  margin: 1em 0;
-  border-top: 1px solid var(--ion-color-medium);
+.deactivated {
+  background: hsl(0, 100, 85);
+}
+ion-list {
+  --background: white;
+  padding-top: 0;
+}
+ion-item {
+  --background: white;
 }
