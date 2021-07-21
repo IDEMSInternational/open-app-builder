@@ -1,13 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ModalController } from "@ionic/angular";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";
-import {
-  DataEvaluationService,
-  IDataEvaluationCache,
-} from "src/app/shared/services/data/data-evaluation.service";
+import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
 import { CampaignService } from "../../campaign.service";
+import { CampaignDebugVariablesEditorComponent } from "./components/campaign-variables-editor";
+
+interface IDebugCampaignRows {
+  activated: FlowTypes.Campaign_listRow[];
+  pending: FlowTypes.Campaign_listRow[];
+  deactivated: FlowTypes.Campaign_listRow[];
+}
 
 @Component({
   templateUrl: "./campaign-debug.page.html",
@@ -15,8 +20,7 @@ import { CampaignService } from "../../campaign.service";
 })
 export class CampaignDebugPage implements OnInit {
   debugCampaignId: string;
-  debugCampaignRows: FlowTypes.Campaign_listRow[] = [];
-  debugData: IDataEvaluationCache = {} as any;
+  debugCampaignRows: IDebugCampaignRows;
 
   constructor(
     public campaignService: CampaignService,
@@ -24,12 +28,13 @@ export class CampaignDebugPage implements OnInit {
     private dataEvaluationService: DataEvaluationService,
     private templateService: TemplateService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalCtrl: ModalController
   ) {}
 
   async ngOnInit() {
     this.localNotificationService.loadNotifications();
-    this.debugData = await this.dataEvaluationService.refreshDBCache();
+    // this.debugData = await this.dataEvaluationService.refreshDBCache();
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {
       this.setDebugCampaign(campaign_id);
@@ -81,40 +86,46 @@ export class CampaignDebugPage implements OnInit {
   }
 
   private async processCampaign() {
-    this.debugCampaignRows = [];
+    const debugCampaignRows: IDebugCampaignRows = { activated: [], deactivated: [], pending: [] };
     const campaign_id = this.debugCampaignId;
     const campaignRows = this.campaignService.campaigns[campaign_id];
-    this.dataEvaluationService.setDBCache(this.debugData as any);
     const evaluated = await Promise.all(
       campaignRows.map(async (row) => {
         return await this.campaignService.evaluateCampaignRow(row);
       })
     );
-    this.debugCampaignRows = evaluated;
-    console.log("[Campaign] processed", { data: this.dataEvaluationService.data, evaluated });
+    evaluated.forEach((row) => {
+      if (row._deactivated) {
+        debugCampaignRows.deactivated.push(row);
+      } else {
+        if (row._activated) {
+          debugCampaignRows.activated.push(row);
+        } else {
+          debugCampaignRows.pending.push(row);
+        }
+      }
+    });
+    this.debugCampaignRows = debugCampaignRows;
+    console.log("[Campaign] processed", {
+      data: this.dataEvaluationService.data,
+      debugCampaignRows,
+    });
   }
 
   /***************************************************************************************
    *  Debug Methods
    **************************************************************************************/
 
-  public logDebugInfo(row: FlowTypes.Campaign_listRow) {
-    console.group(row.id);
-    console.log(row);
-    console.groupEnd();
-  }
-  public async setDebugFirstLaunch(value: any) {
-    if (value && value !== this.debugData.first_app_launch) {
-      this.debugData.first_app_launch = value;
-      this.debugData.dbCache.app_events = { app_launch: [{ _created: value }] };
-      await this.processCampaign();
-    }
-  }
-  public async setDebugAppDay(value: any) {
-    if (value && Number(value) !== this.debugData.app_day) {
-      console.log("set debug app day", value);
-      this.debugData.app_day = Number(value);
-      await this.processCampaign();
-    }
+  public async manageFieldVariables(row?: FlowTypes.Campaign_listRow) {
+    const modal = await this.modalCtrl.create({
+      component: CampaignDebugVariablesEditorComponent,
+      componentProps: {
+        campaignRows: row ? [row] : this.debugCampaignRows,
+        campaignId: row ? row._id : this.debugCampaignId,
+      },
+    });
+    await modal.present();
+    await modal.onDidDismiss();
+    await this.processCampaign();
   }
 }

@@ -44,7 +44,7 @@ export class TemplateService {
     let val: any = this.localStorageService.getString("rp-contact-field." + key);
     // provide a fallback if the target variable does not exist in local storage
     if (val === null && showWarnings) {
-      console.warn("field value not found for key:", key);
+      // console.warn("field value not found for key:", key);
       val = undefined;
     }
     // convert boolean strings if required
