@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
 import { addDays } from "@fullcalendar/common";
 import { ModalController } from "@ionic/angular";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
@@ -22,10 +22,15 @@ import { generateTimestamp } from "src/app/shared/utils";
         <ion-title>{{ campaignId }}</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding background-primary-lighter">
+    <ion-content class="ion-padding background-primary-lighter" *ngIf="dbData">
       <h4>App Settings</h4>
       <ion-item>
-        <ion-label>First Launch</ion-label>
+        <ion-label>
+          <span>First Launch</span>
+          <span style="margin-left:8px">
+            ({{ dbData.first_app_launch | calcDaysDiff }} days ago)
+          </span>
+        </ion-label>
         <ion-datetime
           #firstLaunch
           (ionChange)="setAppLaunchData(firstLaunch.value, appDay.value)"
@@ -43,26 +48,31 @@ import { generateTimestamp } from "src/app/shared/utils";
         ></ion-input>
       </ion-item>
       <h4>Field Variables</h4>
-      <ion-list>
-        <ion-item *ngFor="let row of editorRows">
-          <ion-label>{{ row.field }}</ion-label>
-          <ion-select
-            #select
-            [value]="row.value"
-            (ionBlur)="setFieldVariable(row.field, select.value)"
-            [compareWith]="compareFieldValue"
-          >
-            <ion-select-option *ngFor="let value of row.values_list">{{ value }}</ion-select-option>
-            <ion-select-option value="">(null)</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
+      <ion-item *ngFor="let row of editorRows">
+        <ion-label>{{ row.field }}</ion-label>
+        <ion-select
+          #select
+          [value]="row.value"
+          (ionChange)="setFieldVariable(row.field, select.value)"
+          [compareWith]="compareFieldValue"
+        >
+          <ion-select-option *ngFor="let value of row.values_list">{{ value }}</ion-select-option>
+          <ion-select-option value="">(null)</ion-select-option>
+        </ion-select>
+      </ion-item>
     </ion-content>`,
+  styles: [
+    `
+      ion-item {
+        --background: white;
+      }
+    `,
+  ],
 })
-export class CampaignDebugVariablesEditorComponent implements OnInit {
+export class CampaignDebugVariablesEditorComponent implements AfterViewInit {
   @Input() campaignId: string = "";
   @Input() campaignRows: FlowTypes.Campaign_listRow[] = [];
-  dbData: IDataEvaluationCache = {} as any;
+  dbData: IDataEvaluationCache;
   constructor(
     public modalCtrl: ModalController,
     private templateService: TemplateService,
@@ -72,7 +82,7 @@ export class CampaignDebugVariablesEditorComponent implements OnInit {
 
   editorRows: IEditorRow = [];
 
-  async ngOnInit() {
+  async ngAfterViewInit() {
     this.dbData = await this.dataEvaluationService.refreshDBCache();
     this.editorRows = this.generateVariablesList(this.campaignRows);
   }
@@ -105,10 +115,9 @@ export class CampaignDebugVariablesEditorComponent implements OnInit {
             _created: launchTimestamp,
           });
         }
+        this.dbData = await this.dataEvaluationService.refreshDBCache();
       }
     }
-
-    this.dbData = await this.dataEvaluationService.refreshDBCache();
   }
 
   /**
