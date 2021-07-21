@@ -144,9 +144,10 @@ export class DataEvaluationService {
   private processFieldEvaluationCondition(
     args: FlowTypes.DataEvaluationCondition["condition_args"]["field_evaluation"]
   ) {
-    log("field evaluate", args.evaluate);
+    log("field evaluate", args.field);
     // TODO - ideally this should be a shared method, not related to template service
-    return this.templateService.getField(args.evaluate, false) || false;
+    const fieldValue = this.templateService.getField(args.field);
+    return fieldValue === args.value;
   }
 
   /** As comparison functions are generated as string parse the relevant cases and evaluate */

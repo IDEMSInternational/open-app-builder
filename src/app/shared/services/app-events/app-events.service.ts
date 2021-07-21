@@ -50,6 +50,14 @@ export class AppEventService {
     this.calculateEventSummaries();
   }
 
+  public async deleteAppEvents(event_id: string) {
+    const events = this.db.table("app_events").where("event_id").equals(event_id);
+    await events.delete();
+    await this.loadAppEvents();
+    // recalculate any summary data that might have changed due ot this
+    this.calculateEventSummaries();
+  }
+
   private getDBAppEvents(event_id?: IAppEvent["event_id"]) {
     const table = this.db.table<IAppEvent>("app_events");
     const events = event_id
@@ -73,7 +81,6 @@ export class AppEventService {
 
   private calculateEventSummaries() {
     const appOpenEvents = this.appEventsById.app_launch;
-    console.log("app days", [...new Set(appOpenEvents.map((e) => e._created.substring(0, 10)))]);
     const app_day = [...new Set(appOpenEvents.map((e) => e._created.substring(0, 10)))].length;
     const first_app_launch = this.appEventsById.app_launch?.[0]?._created || generateTimestamp();
     return this.setSummaryValues({ app_day, first_app_launch });
