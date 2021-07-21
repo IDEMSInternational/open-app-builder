@@ -7,9 +7,7 @@ import { recursiveFindByExtension } from "./utils";
 let INPUT_DIR: string;
 let OUTPUT_DIR: string;
 
-/**
- *
- */
+/** Process files for translation from input folder and output to given directory **/
 export function generateTranslations(inDir: string, outDir: string) {
   INPUT_DIR = inDir;
   OUTPUT_DIR = outDir;
@@ -19,8 +17,9 @@ export function generateTranslations(inDir: string, outDir: string) {
 }
 
 /**
- *
- */
+ * Recursively copy all json files from translation directory to output folder,
+ * flattening folder paths
+ **/
 function copyTranslationFiles() {
   const inputFiles = recursiveFindByExtension(INPUT_DIR, "json");
   for (const filepath of inputFiles) {
