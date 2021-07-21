@@ -63,7 +63,9 @@ export class CampaignService {
     // merge all campaign_row data lists
     const allCampaignRows: FlowTypes.Campaign_listRow[] = [].concat.apply(
       [],
-      DATA_LIST.filter((list) => list.flow_subtype === "campaign_rows").map((list) => list.rows)
+      DATA_LIST.filter((list) =>
+        ["campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
+      ).map((list) => list.rows)
     );
     const allCampaignRowsByPriority = allCampaignRows.sort(
       (a, b) => (b.priority || 0) - (a.priority || 0)
