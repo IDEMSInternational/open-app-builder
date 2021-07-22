@@ -1,49 +1,27 @@
-import chalk from "chalk";
-import { FlowTypes } from "../../../types";
-import { booleanStringToBoolean } from "../../utils";
+/**********************************************************************************
+ *                      Test Scripts
+ **********************************************************************************/
+const tests = [
+  //   "get_field:first | debug_reminder_2.sent:TRUE | before : 2 : day",
+  "get_field | debug_reminder_default.sent:TRUE",
+  //"first_launch | before:7:day",
+];
 
-type ICondition = FlowTypes.DataEvaluationCondition;
+for (const test of tests) {
+  console.log("[Start]");
+  console.log(test);
+  const result = extractConditionList(test);
+  console.log(JSON.stringify(result, null, 2));
+  console.log("[End]");
+}
 
-/**
- * Take an activation or deactivation criteria and format for use
- * Note, as the data can vary greatly we try to break the main args into specific key-value pairs
- *
- * @example
- * ```
- * get_field:first | debug_reminder_2.sent:TRUE | before : 2 : day
- * ```
-  raw:     "get_field:first | debug_reminder_2.sent:TRUE | before : 2 : day"
-  parsed: {
-  condition_type:db_lookup, 
-  condition_args:{
-    db_lookup:{
-      order:asc, 
-      table_id:"data_events", 
-      where:{value:"TRUE",name:debug_reminder_2}
-      evaluate?: {
-        operator: ">";
-        value: 2;
-        unit: "day";
-      }
-    }
-  } 
- * raw:     'get_field | debug_reminder_default.sent:TRUE'
-  parsed: {
-  condition_type:field_evaluation, 
-  condition_args:{
-    field_evaluation:{
-      field:"debug_reminder_default.sent", 
-      value: true
-    }
-  } 
- *
- * TODO - CC 2021-05-15 ideally this should be refactored and combined with condition handling in templates
- */
+/**********************************************************************************
+ *                      plh-condition.utils.ts
+ **********************************************************************************/
+
 export function extractConditionList(conditionText: string) {
   const cleanedTxt = _handleTextExceptions(conditionText);
-  const condition = parseConditionList(cleanedTxt);
-  condition._raw = conditionText;
-  return condition;
+  return parseConditionList(cleanedTxt);
 }
 
 function parseConditionList(conditionText: string) {
@@ -51,7 +29,7 @@ function parseConditionList(conditionText: string) {
   let params: any = {};
   conditionText
     .split("|")
-    .map((c) => c.split(":").map((v) => v.trim()))
+    .map((condition) => condition.split(":").map((v) => v.trim()))
     .forEach(([key, ...args]) => {
       if (key && args) {
         if (params[key]) {
@@ -61,6 +39,8 @@ function parseConditionList(conditionText: string) {
         }
       }
     });
+  console.log(params);
+
   const condition_type = params.condition_type?.[0];
   if (condition_type) {
     condition.condition_type = params.condition_type?.[0];
@@ -69,11 +49,13 @@ function parseConditionList(conditionText: string) {
       case "db_lookup":
         condition.condition_args = { db_lookup: parseDBLookupParams(params) };
         break;
+
       case "field_evaluation":
         condition.condition_args = {
           field_evaluation: parseFieldEvaluationParams(params),
         };
         break;
+
       default:
         console.error("Could not extract condition type", params);
         process.exit(1);
@@ -153,6 +135,7 @@ function _handleTextExceptions(text: string) {
   });
 
   // Handle fixed replacements. Max 1 per string, so order in terms of specifivity
+  // e.g. table_id: 'app_events'; sort: 'asc', or perhaps where:{...}
   const shorthandReplacements = {
     first_launch:
       "condition_type:db_lookup | table_id:app_events | order:asc | where:event_id:app_launch",
@@ -191,4 +174,45 @@ function _extractComparator(text: string) {
       console.error(chalk.red(`Reminder timing comparison not defined: ${text}`));
       process.exit(1);
   }
+}
+
+/**********************************************************************************
+ *                      External Scripts
+ **********************************************************************************/
+import * as chalk from "chalk";
+
+interface ICondition {
+  /** specific defined actions that have individual methods to determine completion */
+  condition_type: "field_evaluation" | "db_lookup";
+  /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
+  condition_args: {
+    db_lookup?: {
+      // TODO CC 2021-07-09 - refactor to make type available
+      table_id: string;
+      where: { [field: string]: string | number | boolean }; //  e.g. {name:reminder_1.sent, value:true} ;
+      order?: "asc" | "desc";
+      evaluate?: {
+        operator: ">" | "<=";
+        value: string | number | boolean;
+        unit?: "day" | "app_day";
+      };
+    };
+    field_evaluation?: {
+      field: string;
+      value: string;
+    };
+  };
+  /** calculated after criteria has been evaluated */
+  _satisfied?: boolean;
+  /** debug info  */
+  _raw?: string;
+  _cleaned?: string;
+  _parsed?: string[][];
+}
+function booleanStringToBoolean(str: string) {
+  if (typeof str === "string") {
+    if (str.match(/^true$/gi)) return true;
+    if (str.match(/^false$/gi)) return false;
+  }
+  return str;
 }

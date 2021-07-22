@@ -278,8 +278,7 @@ export namespace FlowTypes {
       db_lookup?: {
         // TODO CC 2021-07-09 - refactor to make type available
         table_id: string;
-        // table_id: IDBTable;
-        filter: { field: string; value: string }; // filter value is misleading, e.g. field:event_id, value:app_launch ;
+        where: { [field: string]: string | number | boolean }; //  e.g. {name:reminder_1.sent, value:true} ;
         order?: "asc" | "desc";
         evaluate?: {
           operator: ">" | "<=";
