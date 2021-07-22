@@ -283,7 +283,7 @@ export namespace FlowTypes {
         order?: "asc" | "desc";
         evaluate?: {
           operator: ">" | "<=";
-          value: string | number;
+          value: string | number | boolean;
           unit?: "day" | "app_day";
         };
       };
