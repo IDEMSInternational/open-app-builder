@@ -70,7 +70,7 @@ function parseDBLookupCondition(data: any[][]): ICondition {
   const [typeData, tableData, valueData, evaulateData] = data;
   const [condition_type] = typeData;
   const [table_id, orderStr] = tableData;
-  const [filter_field, filter_value] = valueData;
+  let [filter_field, filter_value] = valueData;
 
   let evaluate = null;
   if (evaulateData) {
@@ -79,8 +79,8 @@ function parseDBLookupCondition(data: any[][]): ICondition {
     evaluate = { operator, value: quantity, unit };
   }
 
-  // // convert boolean value strings
-  // const value = stringToBoolean(filter_value);
+  // convert boolean value strings
+  filter_value = booleanStringToBoolean(filter_value);
 
   return {
     condition_type,

@@ -155,9 +155,9 @@ export class DataEvaluationService {
 
   /** As comparison functions are generated as string parse the relevant cases and evaluate */
   private _compare(
-    a: string | number,
+    a: string | number | boolean,
     operator: FlowTypes.DataEvaluationCondition["condition_args"]["db_lookup"]["evaluate"]["operator"],
-    b: string | number
+    b: string | number | boolean
   ) {
     switch (operator) {
       case ">":
