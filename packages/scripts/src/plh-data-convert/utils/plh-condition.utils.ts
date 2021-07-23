@@ -114,7 +114,10 @@ function parseDBLookupParams(params: {
         args.order = values[0] as any;
         break;
       case "where":
-        const [field, value] = values;
+        let [field, value] = values;
+        // NOTE - where queries only support text or number, so convert booleans
+        // see: https://github.com/dfahlander/Dexie.js/issues/427 (non-sparse indexes)
+        if (typeof value === "boolean") value = `${value}`;
         args.where = { ...args.where, [field]: value };
         break;
       case "evaluate":
@@ -127,7 +130,7 @@ function parseDBLookupParams(params: {
         args.where = {
           ...args.where,
           name: key,
-          value: booleanStringToBoolean(values[0]),
+          value: `${booleanStringToBoolean(values[0])}`, // we want a string value, but also convert TRUE -> "true"
         };
         break;
     }

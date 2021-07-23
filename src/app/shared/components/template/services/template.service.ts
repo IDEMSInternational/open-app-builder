@@ -70,10 +70,11 @@ export class TemplateService {
         console.warn("string conversion failed", error);
       }
     }
-    // write to local storage
+    // write to local storage - this will cast to string
     this.localStorageService.setString("rp-contact-field." + key, value);
 
-    // write to db
+    // write to db - note this can handle more data formats but only string/number will be available to queries
+    if (typeof value === "boolean") value = "value";
     const evt: IFlowEvent = {
       ...this.dbService.generateDBMeta(),
       event: "set",
