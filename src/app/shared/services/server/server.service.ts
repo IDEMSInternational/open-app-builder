@@ -27,7 +27,9 @@ export class ServerService {
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(private http: HttpClient) {
-    this.init();
+    if (environment.production) {
+      this.init();
+    }
   }
 
   async init() {
