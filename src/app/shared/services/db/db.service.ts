@@ -23,6 +23,8 @@ const FLOW_EVENT_INDEXES: (keyof IFlowEvent)[] = ["type", "name", "event", "_cre
  * All tables used must be defined with any indices required (other columns freely added)
  * Include auto-increment primary key via `++`
  * https://dexie.org/docs/API-Reference#quick-reference
+ *
+ * NOTE - tables that use compound queries should have indexes specified (as queries often fail otherwise)
  */
 const DB_TABLES = {
   /** Track template flow events such as completion emit **/
@@ -65,8 +67,9 @@ export interface IDBDoc {
  * breaking changes occurred (does not need to be updated every version)
  * e.g. v1.5.3 => 100500300
  * e.g. v0.1.0 => 000001000
+ * e.g. v0.10.4 => 000010004
  */
-const DB_VERSION = 9000;
+const DB_VERSION = 10005;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({

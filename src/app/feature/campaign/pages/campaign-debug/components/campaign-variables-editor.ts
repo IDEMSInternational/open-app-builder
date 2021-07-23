@@ -52,16 +52,16 @@ import { generateTimestamp } from "src/app/shared/utils";
       <ion-item *ngFor="let row of editorRows">
         <ion-label>{{ row.field }}</ion-label>
         <ion-datetime
-          *ngIf="row.condition_type === 'db_lookup'"
+          [style.display]="row.condition_type === 'db_lookup' ? 'initial' : 'none'"
           #fieldFirst
           placeholder="Set First"
           [value]="row.current_value_first"
-          (ionChange)="setFieldFirst(row.field, row.current_value, fieldFirst.value)"
+          (ionChange)="setField(row.field, select.value, fieldFirst.value)"
         ></ion-datetime>
         <ion-select
           #select
           [value]="row.current_value"
-          (ionChange)="setFieldVariable(row.field, select.value)"
+          (ionChange)="setField(row.field, select.value, fieldFirst.value)"
           [compareWith]="compareFieldValue"
           placeholder="Set Value"
         >
@@ -103,18 +103,24 @@ export class CampaignDebugVariablesEditorComponent implements AfterViewInit {
     this.dbData = await this.dataEvaluationService.refreshDBCache();
   }
 
-  public setFieldVariable(field: string, value: string) {
+  public async setField(field: string, value: any, firstDate?: string) {
     if (value === "") {
       value = null;
     }
-    this.templateService.setField(field, value);
-  }
+    // set contact field (make sure string as bool won't work for indexes in dexie)
+    await this.templateService.setField(field, value);
 
-  public async setFieldFirst(field: string, fieldValue: string, firstDate: string) {
-    // modify all db records so that first will have fixed timestamp
-    const dbRef = this.dbService.table("data_events").where("name").equals(field);
-    await dbRef.modify({ _created: generateTimestamp(firstDate) });
-    await this.loadDBData();
+    // If firstdate specified, db operation - remove existing entries, create new
+    // Note - value should not be cast to boolean as we want to query later and bools can't be used for indexes
+    if (firstDate) {
+      const dbRef = this.dbService.table("data_events").where({ name: field });
+      const existingEntries = await dbRef.toArray();
+      await dbRef.delete();
+      await this.dbService
+        .table("data_events")
+        .add({ ...existingEntries[0], _created: generateTimestamp(firstDate), value });
+      await this.loadDBData();
+    }
   }
 
   /**
@@ -172,8 +178,8 @@ export class CampaignDebugVariablesEditorComponent implements AfterViewInit {
           // extract data from db tables (currently data_events only)
           case "db_lookup":
             if (condition_args.db_lookup.table_id === "data_events") {
-              field = condition_args.db_lookup.filter.field;
-              condition_value = condition_args.db_lookup.filter.value;
+              field = condition_args.db_lookup.where.name as string;
+              condition_value = condition_args.db_lookup.where.value as string;
               let allResults = this.dataEvaluationService.data.dbCache.data_events[field] || [];
               if (condition_args.db_lookup.order === "desc") {
                 allResults = allResults.reverse();
