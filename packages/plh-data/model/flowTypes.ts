@@ -278,7 +278,10 @@ export namespace FlowTypes {
       db_lookup?: {
         // TODO CC 2021-07-09 - refactor to make type available
         table_id: string;
-        where: { [field: string]: string | number | boolean }; //  e.g. {name:reminder_1.sent, value:true} ;
+        // NOTE - where queries only support text or number
+        // see: https://github.com/dfahlander/Dexie.js/issues/427
+        // (non-sparse indexes)
+        where: { [field: string]: string | number }; //  e.g. {name:reminder_1.sent, value:'true'} ;
         order?: "asc" | "desc";
         evaluate?: {
           operator: ">" | "<=";
