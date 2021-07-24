@@ -46,7 +46,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_completed",
+                field: "w_self_care_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_completed : true",
@@ -57,7 +58,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_m_relax.sent",
+                field: "w_self_care_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_m_relax.sent : true | before : 1 : day",
@@ -109,7 +111,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_started",
+                field: "w_self_care_started",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_started : true",
@@ -120,7 +123,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "survey_completed",
+                field: "survey_completed",
+                value: true,
               },
             },
             _raw: "get_field | survey_completed : true",
@@ -174,7 +178,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_m_w_tomorrow.sent",
+                field: "w_self_care_m_w_tomorrow.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_m_w_tomorrow.sent : true",
@@ -228,7 +233,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_m_hp_reminder.sent",
+                field: "w_self_care_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_m_hp_reminder.sent : true",
@@ -280,7 +286,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -291,7 +298,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_m_parent_points_overview.sent",
+                field: "w_self_care_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_m_parent_points_overview.sent : true",
@@ -345,7 +353,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_relax.sent",
+                field: "w_1on1_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_relax.sent : true | before : 1 : day",
@@ -397,7 +406,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -425,7 +435,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "w_1on1_started",
+                value: false,
               },
             },
             _raw: "get_field | w_1on1_started : false",
@@ -436,7 +447,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_w_released.sent",
+                field: "w_1on1_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_w_released.sent : true",
@@ -469,7 +481,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -497,7 +510,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "w_1on1_started",
+                value: false,
               },
             },
             _raw: "get_field | w_1on1_started : false",
@@ -508,7 +522,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_w_released.sent",
+                field: "w_1on1_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_w_released.sent : true",
@@ -562,7 +577,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_something_fun.sent",
+                field: "w_1on1_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_something_fun.sent : true",
@@ -616,7 +632,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_praise.sent",
+                field: "w_1on1_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_praise.sent : true",
@@ -625,7 +642,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "w_1on1_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_completed : true",
@@ -677,7 +695,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "w_1on1_started",
+                value: false,
               },
             },
             _raw: "get_field | w_1on1_started : false",
@@ -688,7 +707,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_w_reminder.sent",
+                field: "w_1on1_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_w_reminder.sent : true",
@@ -742,7 +762,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_w_in_progress.sent",
+                field: "w_1on1_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_w_in_progress.sent : true",
@@ -751,7 +772,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "w_1on1_started",
+                value: false,
               },
             },
             _raw: "get_field | w_1on1_started : false",
@@ -760,7 +782,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "w_1on1_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_completed: true",
@@ -812,7 +835,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "w_1on1_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_completed: true",
@@ -823,7 +847,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_hp_reminder.sent",
+                field: "w_1on1_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_hp_reminder.sent : true",
@@ -875,7 +900,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -886,7 +912,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_parent_points_overview.sent",
+                field: "w_1on1_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_parent_points_overview.sent : true",
@@ -940,7 +967,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_relax.sent",
+                field: "w_praise_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_relax.sent : true | before : 1 : day",
@@ -992,7 +1020,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -1020,7 +1049,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_started",
+                field: "w_praise_started",
+                value: false,
               },
             },
             _raw: "get_field | w_praise_started : false",
@@ -1031,7 +1061,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_w_released.sent",
+                field: "w_praise_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_w_released.sent : true",
@@ -1064,7 +1095,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -1094,7 +1126,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_w_released.sent",
+                field: "w_praise_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_w_released.sent : true",
@@ -1148,7 +1181,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_something_fun.sent",
+                field: "w_praise_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_something_fun.sent : true",
@@ -1202,7 +1236,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_praise.sent",
+                field: "w_praise_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_praise.sent : true",
@@ -1254,7 +1289,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_started",
+                field: "w_praise_started",
+                value: false,
               },
             },
             _raw: "get_field | w_praise_started : false",
@@ -1265,7 +1301,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_w_reminder.sent",
+                field: "w_praise_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_w_reminder.sent : true | before : 1 : day",
@@ -1319,7 +1356,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_w_in_pro.sent",
+                field: "w_praise_m_w_in_pro.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_w_in_pro.sent : true",
@@ -1328,7 +1366,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_started",
+                field: "w_praise_started",
+                value: false,
               },
             },
             _raw: "get_field | w_praise_started : false",
@@ -1337,7 +1376,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_completed",
+                field: "w_praise_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_completed: true",
@@ -1389,7 +1429,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_completed",
+                field: "w_praise_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_completed: true",
@@ -1400,7 +1441,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_hp_reminder.sent",
+                field: "w_praise_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_hp_reminder.sent : true",
@@ -1452,7 +1494,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -1463,7 +1506,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_parent_points_overview.sent",
+                field: "w_praise_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_parent_points_overview.sent : true",
@@ -1517,7 +1561,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_relax.sent",
+                field: "w_instruct_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_relax.sent : true | within: 1 : day",
@@ -1569,7 +1614,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -1597,7 +1643,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "w_instruct_started",
+                value: false,
               },
             },
             _raw: "get_field | w_instruct_started : false",
@@ -1608,7 +1655,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_w_released.sent",
+                field: "w_instruct_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_w_released.sent : true",
@@ -1641,7 +1689,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -1669,7 +1718,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "w_instruct_started",
+                value: false,
               },
             },
             _raw: "get_field | w_instruct_started : false",
@@ -1680,7 +1730,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_w_released.sent",
+                field: "w_instruct_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_w_released.sent : true",
@@ -1734,7 +1785,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_something_fun.sent",
+                field: "w_instruct_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_something_fun.sent : true",
@@ -1788,7 +1840,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_praise.sent",
+                field: "w_instruct_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_praise.sent : true",
@@ -1840,7 +1893,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "w_instruct_started",
+                value: false,
               },
             },
             _raw: "get_field | w_instruct_started : false",
@@ -1851,7 +1905,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_w_reminder.sent",
+                field: "w_instruct_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_w_reminder.sent : true | before : 1 : day",
@@ -1905,7 +1960,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_w_in_pro.sent",
+                field: "w_instruct_m_w_in_pro.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_w_in_pro.sent : true",
@@ -1914,7 +1970,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "w_instruct_started",
+                value: false,
               },
             },
             _raw: "get_field | w_instruct_started : false",
@@ -1923,7 +1980,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_completed",
+                field: "w_instruct_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_completed: true",
@@ -1975,7 +2033,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_completed",
+                field: "w_instruct_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_completed: true",
@@ -1986,7 +2045,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_hp_reminder.sent",
+                field: "w_instruct_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_hp_reminder.sent : true",
@@ -2038,7 +2098,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -2049,7 +2110,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_parent_points_overview.sent",
+                field: "w_instruct_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_parent_points_overview.sent : true",
@@ -2103,7 +2165,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_relax.sent",
+                field: "w_stress_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_relax.sent : true | within : 1 : day",
@@ -2155,7 +2218,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -2183,7 +2247,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "w_stress_started",
+                value: false,
               },
             },
             _raw: "get_field | w_stress_started : false",
@@ -2194,7 +2259,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_w_released.sent",
+                field: "w_stress_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_w_released.sent : true",
@@ -2227,7 +2293,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -2255,7 +2322,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "w_stress_started",
+                value: false,
               },
             },
             _raw: "get_field | w_stress_started : false",
@@ -2266,7 +2334,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_w_released.sent",
+                field: "w_stress_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_w_released.sent : true",
@@ -2320,7 +2389,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_something_fun.sent",
+                field: "w_stress_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_something_fun.sent : true",
@@ -2374,7 +2444,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_praise.sent",
+                field: "w_stress_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_praise.sent : true",
@@ -2426,7 +2497,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "w_stress_started",
+                value: false,
               },
             },
             _raw: "get_field | w_stress_started : false",
@@ -2437,7 +2509,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_w_reminder.sent",
+                field: "w_stress_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_w_reminder.sent : true",
@@ -2491,7 +2564,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_w_in_progress.sent",
+                field: "w_stress_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_w_in_progress.sent : true",
@@ -2500,7 +2574,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "w_stress_started",
+                value: false,
               },
             },
             _raw: "get_field | w_stress_started : false",
@@ -2509,7 +2584,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_completed",
+                field: "w_stress_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_completed: true",
@@ -2561,7 +2637,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_completed",
+                field: "w_stress_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_completed: true",
@@ -2572,7 +2649,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_hp_reminder.sent",
+                field: "w_stress_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_hp_reminder.sent : true",
@@ -2624,7 +2702,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -2635,7 +2714,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_parent_points_overview.sent",
+                field: "w_stress_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_parent_points_overview.sent : true",
@@ -2689,7 +2769,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_relax.sent",
+                field: "w_money_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_relax.sent : true | within: 1 : day",
@@ -2741,7 +2822,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -2769,7 +2851,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "w_money_started",
+                value: false,
               },
             },
             _raw: "get_field | w_money_started : false",
@@ -2780,7 +2863,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_w_released.sent",
+                field: "w_money_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_w_released.sent : true",
@@ -2813,7 +2897,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -2841,7 +2926,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "w_money_started",
+                value: false,
               },
             },
             _raw: "get_field | w_money_started : false",
@@ -2852,7 +2938,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_w_released.sent",
+                field: "w_money_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_w_released.sent : true",
@@ -2906,7 +2993,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_something_fun.sent",
+                field: "w_money_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_something_fun.sent : true",
@@ -2960,7 +3048,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_praise.sent",
+                field: "w_money_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_praise.sent : true",
@@ -3012,7 +3101,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "w_money_started",
+                value: false,
               },
             },
             _raw: "get_field | w_money_started : false",
@@ -3023,7 +3113,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_w_reminder.sent",
+                field: "w_money_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_w_reminder.sent : true",
@@ -3077,7 +3168,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_w_in_progress.sent",
+                field: "w_money_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_w_in_progress.sent : true",
@@ -3086,7 +3178,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "w_money_started",
+                value: false,
               },
             },
             _raw: "get_field | w_money_started : false",
@@ -3095,7 +3188,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_completed",
+                field: "w_money_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_money_completed: true",
@@ -3147,7 +3241,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_completed",
+                field: "w_money_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_money_completed: true",
@@ -3158,7 +3253,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_hp_reminder.sent",
+                field: "w_money_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_hp_reminder.sent : true",
@@ -3210,7 +3306,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -3221,7 +3318,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_parent_points_overview.sent",
+                field: "w_money_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_parent_points_overview.sent : true",
@@ -3275,7 +3373,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_relax.sent",
+                field: "w_rules_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_relax.sent : true | within: 1 : day",
@@ -3327,7 +3426,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -3357,7 +3457,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_w_released.sent",
+                field: "w_rules_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_w_released.sent : true",
@@ -3390,7 +3491,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -3420,7 +3522,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_w_released.sent",
+                field: "w_rules_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_w_released.sent : true",
@@ -3474,7 +3577,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_something_fun.sent",
+                field: "w_rules_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_something_fun.sent : true",
@@ -3528,7 +3632,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_praise.sent",
+                field: "w_rules_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_praise.sent : true",
@@ -3580,7 +3685,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_started",
+                field: "w_rules_started",
+                value: false,
               },
             },
             _raw: "get_field | w_rules_started : false",
@@ -3591,7 +3697,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_w_reminder.sent",
+                field: "w_rules_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_w_reminder.sent : true",
@@ -3645,7 +3752,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_w_in_progress.sent",
+                field: "w_rules_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_w_in_progress.sent : true",
@@ -3654,7 +3762,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_started",
+                field: "w_rules_started",
+                value: false,
               },
             },
             _raw: "get_field | w_rules_started : false",
@@ -3663,7 +3772,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_completed",
+                field: "w_rules_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_completed: true",
@@ -3715,7 +3825,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_completed",
+                field: "w_rules_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_completed: true",
@@ -3726,7 +3837,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_hp_reminder.sent",
+                field: "w_rules_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_hp_reminder.sent : true",
@@ -3778,7 +3890,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -3789,7 +3902,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_parent_points_overview.sent",
+                field: "w_rules_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_parent_points_overview.sent : true",
@@ -3843,7 +3957,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_relax.sent",
+                field: "w_consequence_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_relax.sent : true | within: 1 : day",
@@ -3895,7 +4010,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -3925,7 +4041,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_w_rel.sent",
+                field: "w_consequence_m_w_rel.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_w_rel.sent : true",
@@ -3958,7 +4075,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -3988,7 +4106,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_w_rel.sent",
+                field: "w_consequence_m_w_rel.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_w_rel.sent : true",
@@ -4042,7 +4161,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_something_fun.sent",
+                field: "w_consequence_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_something_fun.sent : true",
@@ -4096,7 +4216,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_praise.sent",
+                field: "w_consequence_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_praise.sent : true",
@@ -4148,7 +4269,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_started",
+                field: "w_consequence_started",
+                value: false,
               },
             },
             _raw: "get_field | w_consequence_started : false",
@@ -4159,7 +4281,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_w_rem.sent",
+                field: "w_consequence_m_w_rem.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_w_rem.sent : true",
@@ -4213,7 +4336,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_w_in_pro.sent",
+                field: "w_consequence_m_w_in_pro.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_w_in_pro.sent : true",
@@ -4222,7 +4346,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_started",
+                field: "w_consequence_started",
+                value: false,
               },
             },
             _raw: "get_field | w_consequence_started : false",
@@ -4231,7 +4356,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_completed",
+                field: "w_consequence_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_completed: true",
@@ -4283,7 +4409,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_completed",
+                field: "w_consequence_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_completed: true",
@@ -4294,7 +4421,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_hp_reminder.sent",
+                field: "w_consequence_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_hp_reminder.sent : true",
@@ -4346,7 +4474,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -4357,7 +4486,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_parent_points_overview.sent",
+                field: "w_consequence_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_parent_points_overview.sent : true",
@@ -4411,7 +4541,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_relax.sent",
+                field: "w_solve_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_relax.sent : true | within: 1 : day",
@@ -4463,7 +4594,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -4493,7 +4625,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_w_released.sent",
+                field: "w_solve_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_w_released.sent : true",
@@ -4526,7 +4659,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -4556,7 +4690,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_w_released.sent",
+                field: "w_solve_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_w_released.sent : true",
@@ -4610,7 +4745,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_something_fun.sent",
+                field: "w_solve_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_something_fun.sent : true",
@@ -4664,7 +4800,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_praise.sent",
+                field: "w_solve_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_praise.sent : true",
@@ -4716,7 +4853,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_started",
+                field: "w_solve_started",
+                value: false,
               },
             },
             _raw: "get_field | w_solve_started : false",
@@ -4727,7 +4865,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_w_reminder.sent",
+                field: "w_solve_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_w_reminder.sent : true",
@@ -4781,7 +4920,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_w_in_progress.sent",
+                field: "w_solve_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_w_in_progress.sent : true",
@@ -4790,7 +4930,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_started",
+                field: "w_solve_started",
+                value: false,
               },
             },
             _raw: "get_field | w_solve_started : false",
@@ -4799,7 +4940,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_completed",
+                field: "w_solve_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_completed: true",
@@ -4851,7 +4993,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_completed",
+                field: "w_solve_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_completed: true",
@@ -4862,7 +5005,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_hp_reminder.sent",
+                field: "w_solve_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_hp_reminder.sent : true",
@@ -4914,7 +5058,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -4925,7 +5070,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_parent_points_overview.sent",
+                field: "w_solve_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_parent_points_overview.sent : true",
@@ -4979,7 +5125,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_relax.sent",
+                field: "w_safe_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_relax.sent : true | within: 1 : day",
@@ -5031,7 +5178,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -5061,7 +5209,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_w_released.sent",
+                field: "w_safe_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_w_released.sent : true",
@@ -5094,7 +5243,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -5124,7 +5274,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_w_released.sent",
+                field: "w_safe_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_w_released.sent : true",
@@ -5178,7 +5329,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_something_fun.sent",
+                field: "w_safe_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_something_fun.sent : true",
@@ -5232,7 +5384,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_praise.sent",
+                field: "w_safe_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_praise.sent : true",
@@ -5284,7 +5437,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_started",
+                field: "w_safe_started",
+                value: false,
               },
             },
             _raw: "get_field | w_safe_started : false",
@@ -5295,7 +5449,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_w_reminder.sent",
+                field: "w_safe_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_w_reminder.sent : true",
@@ -5349,7 +5504,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_w_in_progress.sent",
+                field: "w_safe_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_w_in_progress.sent : true",
@@ -5358,7 +5514,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_started",
+                field: "w_safe_started",
+                value: false,
               },
             },
             _raw: "get_field | w_safe_started : false",
@@ -5367,7 +5524,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_completed",
+                field: "w_safe_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_completed: true",
@@ -5419,7 +5577,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_completed",
+                field: "w_safe_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_completed: true",
@@ -5430,7 +5589,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_hp_reminder.sent",
+                field: "w_safe_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_hp_reminder.sent : true",
@@ -5482,7 +5642,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -5493,7 +5654,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_parent_points_overview.sent",
+                field: "w_safe_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_parent_points_overview.sent : true",
@@ -5547,7 +5709,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_relax.sent",
+                field: "w_crisis_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_relax.sent : true | within: 1 : day",
@@ -5599,7 +5762,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: false,
               },
             },
             _raw: "get_field | do_workshops_together: false",
@@ -5629,7 +5793,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_w_released.sent",
+                field: "w_crisis_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_w_released.sent : true",
@@ -5662,7 +5827,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "do_workshops_together",
+                field: "do_workshops_together",
+                value: true,
               },
             },
             _raw: "get_field | do_workshops_together: true",
@@ -5692,7 +5858,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_w_released.sent",
+                field: "w_crisis_m_w_released.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_w_released.sent : true",
@@ -5746,7 +5913,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_something_fun.sent",
+                field: "w_crisis_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_something_fun.sent : true",
@@ -5800,7 +5968,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_praise.sent",
+                field: "w_crisis_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_praise.sent : true",
@@ -5852,7 +6021,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_started",
+                field: "w_crisis_started",
+                value: false,
               },
             },
             _raw: "get_field | w_crisis_started : false",
@@ -5863,7 +6033,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_w_reminder.sent",
+                field: "w_crisis_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_w_reminder.sent : true",
@@ -5917,7 +6088,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_w_in_progress.sent",
+                field: "w_crisis_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_w_in_progress.sent : true",
@@ -5926,7 +6098,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_started",
+                field: "w_crisis_started",
+                value: false,
               },
             },
             _raw: "get_field | w_crisis_started : false",
@@ -5935,7 +6108,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_completed",
+                field: "w_crisis_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_completed: true",
@@ -5987,7 +6161,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_completed",
+                field: "w_crisis_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_completed: true",
@@ -5998,7 +6173,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_hp_reminder.sent",
+                field: "w_crisis_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_hp_reminder.sent : true",
@@ -6050,7 +6226,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "no_parent_points_this_week",
+                value: false,
               },
             },
             _raw: "get_field | no_parent_points_this_week : false",
@@ -6061,7 +6238,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_parent_points_overview.sent",
+                field: "w_crisis_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_parent_points_overview.sent : true",
@@ -6113,7 +6291,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_started",
+                field: "w_self_care_started",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_started : true",
@@ -6147,7 +6326,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_started",
+                field: "w_self_care_started",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_started : true",
@@ -6158,7 +6338,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_completed",
+                field: "w_self_care_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_completed: true",
@@ -6213,7 +6394,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "w_1on1_started",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_started : true",
@@ -6266,7 +6448,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "w_1on1_started",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_started : true",
@@ -6277,7 +6460,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "w_1on1_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_completed: true",
@@ -6332,7 +6516,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_started",
+                field: "w_praise_started",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_started : true",
@@ -6385,7 +6570,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_started",
+                field: "w_praise_started",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_started : true",
@@ -6396,7 +6582,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_completed",
+                field: "w_praise_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_completed: true",
@@ -6451,7 +6638,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "w_instruct_started",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_started : true",
@@ -6504,7 +6692,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "w_instruct_started",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_started : true",
@@ -6515,7 +6704,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_completed",
+                field: "w_instruct_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_completed: true",
@@ -6570,7 +6760,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "w_stress_started",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_started : true",
@@ -6623,7 +6814,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "w_stress_started",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_started : true",
@@ -6634,7 +6826,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_completed",
+                field: "w_stress_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_completed: true",
@@ -6689,7 +6882,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "w_money_started",
+                value: true,
               },
             },
             _raw: "get_field | w_money_started : true",
@@ -6742,7 +6936,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "w_money_started",
+                value: true,
               },
             },
             _raw: "get_field | w_money_started : true",
@@ -6753,7 +6948,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_completed",
+                field: "w_money_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_money_completed: true",
@@ -6808,7 +7004,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_started",
+                field: "w_rules_started",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_started : true",
@@ -6861,7 +7058,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_started",
+                field: "w_rules_started",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_started : true",
@@ -6872,7 +7070,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_completed",
+                field: "w_rules_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_completed: true",
@@ -6927,7 +7126,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_started",
+                field: "w_consequence_started",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_started : true",
@@ -6980,7 +7180,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_started",
+                field: "w_consequence_started",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_started : true",
@@ -6991,7 +7192,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_completed",
+                field: "w_consequence_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_completed: true",
@@ -7046,7 +7248,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_started",
+                field: "w_solve_started",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_started : true",
@@ -7099,7 +7302,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_started",
+                field: "w_solve_started",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_started : true",
@@ -7110,7 +7314,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_completed",
+                field: "w_solve_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_completed: true",
@@ -7165,7 +7370,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_started",
+                field: "w_safe_started",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_started : true",
@@ -7218,7 +7424,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_started",
+                field: "w_safe_started",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_started : true",
@@ -7229,7 +7436,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_completed",
+                field: "w_safe_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_completed: true",
@@ -7284,7 +7492,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_started",
+                field: "w_crisis_started",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_started : true",
@@ -7337,7 +7546,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_started",
+                field: "w_crisis_started",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_started : true",
@@ -7348,7 +7558,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_completed",
+                field: "w_crisis_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_completed: true",
@@ -7403,7 +7614,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_celebrate_started",
+                field: "w_celebrate_started",
+                value: true,
               },
             },
             _raw: "get_field | w_celebrate_started : true",
@@ -7456,7 +7668,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_celebrate_started",
+                field: "w_celebrate_started",
+                value: true,
               },
             },
             _raw: "get_field | w_celebrate_started : true",
@@ -7467,7 +7680,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_celebrate_completed",
+                field: "w_celebrate_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_celebrate_completed: true",
@@ -7530,7 +7744,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_completed",
+                field: "w_self_care_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_completed : true",
@@ -8916,7 +9131,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "w_1on1_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_completed : true",
@@ -8927,7 +9143,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_hp_review_completed",
+                field: "w_1on1_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_hp_review_completed : true",
@@ -8979,7 +9196,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_completed",
+                field: "w_praise_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_completed : true",
@@ -8990,7 +9208,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_hp_review_completed",
+                field: "w_praise_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_hp_review_completed : true",
@@ -9042,7 +9261,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_completed",
+                field: "w_instruct_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_completed : true",
@@ -9053,7 +9273,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_hp_review_completed",
+                field: "w_instruct_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_hp_review_completed : true",
@@ -9105,7 +9326,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_completed",
+                field: "w_stress_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_completed : true",
@@ -9116,7 +9338,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_hp_review_completed",
+                field: "w_stress_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_hp_review_completed : true",
@@ -9168,7 +9391,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_completed",
+                field: "w_money_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_money_completed : true",
@@ -9179,7 +9403,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_hp_review_completed",
+                field: "w_money_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_money_hp_review_completed : true",
@@ -9231,7 +9456,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_completed",
+                field: "w_rules_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_completed : true",
@@ -9242,7 +9468,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_hp_review_completed",
+                field: "w_rules_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_hp_review_completed : true",
@@ -9294,7 +9521,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_completed",
+                field: "w_consequence_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_completed : true",
@@ -9305,7 +9533,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_hp_review_completed",
+                field: "w_consequence_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_hp_review_completed : true",
@@ -9357,7 +9586,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_completed",
+                field: "w_solve_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_completed : true",
@@ -9368,7 +9598,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_hp_review_completed",
+                field: "w_solve_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_hp_review_completed : true",
@@ -9420,7 +9651,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_completed",
+                field: "w_safe_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_completed : true",
@@ -9431,7 +9663,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_hp_review_completed",
+                field: "w_safe_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_hp_review_completed : true",
@@ -9483,7 +9716,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_completed",
+                field: "w_crisis_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_completed : true",
@@ -9494,7 +9728,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_hp_review_completed",
+                field: "w_crisis_hp_review_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_hp_review_completed : true",
@@ -9571,7 +9806,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_disabled.sent",
+                field: "w_1on1_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_disabled.sent : TRUE",
@@ -9624,7 +9860,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_disabled.sent",
+                field: "w_praise_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_disabled.sent : TRUE",
@@ -9677,7 +9914,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_disabled.sent",
+                field: "w_instruct_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_disabled.sent : TRUE",
@@ -9730,7 +9968,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_disabled.sent",
+                field: "w_stress_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_disabled.sent : TRUE",
@@ -9783,7 +10022,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_disabled.sent",
+                field: "w_money_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_disabled.sent : TRUE",
@@ -9836,7 +10076,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_disabled.sent",
+                field: "w_rules_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_disabled.sent : TRUE",
@@ -9889,7 +10130,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_disabled.sent",
+                field: "w_consequence_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_disabled.sent : TRUE",
@@ -9942,7 +10184,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_disabled.sent",
+                field: "w_solve_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_disabled.sent : TRUE",
@@ -9995,7 +10238,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_disabled.sent",
+                field: "w_safe_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_disabled.sent : TRUE",
@@ -10048,7 +10292,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_disabled.sent",
+                field: "w_crisis_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_disabled.sent : TRUE",
@@ -10101,7 +10346,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_celebrate_disabled.sent",
+                field: "w_celebrate_disabled.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_celebrate_disabled.sent : TRUE",
@@ -10135,7 +10381,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "inactive_0.sent",
+                field: "inactive_0.sent",
+                value: true,
               },
             },
             _raw: "get_field | inactive_0.sent : true",
@@ -10442,7 +10689,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_default.sent",
+                field: "debug_reminder_default.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_default.sent:TRUE",
@@ -10453,7 +10701,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_1.sent",
+                field: "debug_reminder_1.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_1.sent : true",
@@ -10480,7 +10729,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_1.sent",
+                field: "debug_reminder_1.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_1.sent:TRUE",
@@ -10491,7 +10741,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_2.sent",
+                field: "debug_reminder_2.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_2.sent : true",
@@ -10539,7 +10790,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_3.sent",
+                field: "debug_reminder_3.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_3.sent : true",
@@ -10599,7 +10851,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_5.sent",
+                field: "debug_reminder_5.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_5.sent : true",
@@ -10633,7 +10886,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_5.sent",
+                field: "debug_reminder_5.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_5.sent:TRUE",
@@ -10644,7 +10898,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_6.sent",
+                field: "debug_reminder_6.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_6.sent : true",
@@ -10678,7 +10933,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_6.sent",
+                field: "debug_reminder_6.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_6.sent:TRUE",
@@ -10689,7 +10945,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "debug_reminder_7.sent",
+                field: "debug_reminder_7.sent",
+                value: true,
               },
             },
             _raw: "get_field | debug_reminder_7.sent : true",
@@ -10768,7 +11025,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "disabled_2.sent",
+                field: "disabled_2.sent",
+                value: true,
               },
             },
             _raw: "get_field | disabled_2.sent : TRUE",
@@ -10821,7 +11079,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "disabled_3.sent",
+                field: "disabled_3.sent",
+                value: true,
               },
             },
             _raw: "get_field | disabled_3.sent : TRUE",
@@ -10874,7 +11133,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "disabled_4.sent",
+                field: "disabled_4.sent",
+                value: true,
               },
             },
             _raw: "get_field | disabled_4.sent : TRUE",
@@ -10927,7 +11187,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "disabled_5.sent",
+                field: "disabled_5.sent",
+                value: true,
               },
             },
             _raw: "get_field | disabled_5.sent : TRUE",
@@ -10980,7 +11241,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "disabled_6.sent",
+                field: "disabled_6.sent",
+                value: true,
               },
             },
             _raw: "get_field | disabled_6.sent : TRUE",
@@ -11033,7 +11295,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "disabled_7.sent",
+                field: "disabled_7.sent",
+                value: true,
               },
             },
             _raw: "get_field | disabled_7.sent : TRUE",

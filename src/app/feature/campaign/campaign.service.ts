@@ -63,7 +63,9 @@ export class CampaignService {
     // merge all campaign_row data lists
     const allCampaignRows: FlowTypes.Campaign_listRow[] = [].concat.apply(
       [],
-      DATA_LIST.filter((list) => list.flow_subtype === "campaign_rows").map((list) => list.rows)
+      DATA_LIST.filter((list) =>
+        ["campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
+      ).map((list) => list.rows)
     );
     const allCampaignRowsByPriority = allCampaignRows.sort(
       (a, b) => (b.priority || 0) - (a.priority || 0)
@@ -99,10 +101,10 @@ export class CampaignService {
     if (row.notification_schedule) {
       row.notification_schedule = this.evaluateCampaignNotification(row.notification_schedule);
     }
+    row._activated = row.activation_condition_list.every((c) => c._satisfied === true);
+    row._deactivated = row.deactivation_condition_list.some((c) => c._satisfied === true);
     // assume active if all activation criteria met and no deactivation criteria satisfied
-    row._active =
-      row.activation_condition_list.every((c) => c._satisfied === true) &&
-      !row.deactivation_condition_list.find((c) => c._satisfied === true);
+    row._active = row._activated && !row._deactivated;
     return row;
   }
 
