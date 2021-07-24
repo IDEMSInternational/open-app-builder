@@ -41,7 +41,7 @@ interface IUserMetaEntry {
   value: any;
 }
 
-interface IUserMeta {
+export interface IUserMeta {
   uuid: string;
   first_app_open: isostring;
   current_date: isostring;

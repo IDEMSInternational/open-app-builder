@@ -44,7 +44,7 @@ export class TemplateService {
     let val: any = this.localStorageService.getString("rp-contact-field." + key);
     // provide a fallback if the target variable does not exist in local storage
     if (val === null && showWarnings) {
-      console.warn("field value not found for key:", key);
+      // console.warn("field value not found for key:", key);
       val = undefined;
     }
     // convert boolean strings if required
@@ -70,10 +70,11 @@ export class TemplateService {
         console.warn("string conversion failed", error);
       }
     }
-    // write to local storage
+    // write to local storage - this will cast to string
     this.localStorageService.setString("rp-contact-field." + key, value);
 
-    // write to db
+    // write to db - note this can handle more data formats but only string/number will be available to queries
+    if (typeof value === "boolean") value = "value";
     const evt: IFlowEvent = {
       ...this.dbService.generateDBMeta(),
       event: "set",
