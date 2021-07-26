@@ -9572,7 +9572,21 @@ const data_list: FlowTypes.Data_list[] = [
     status: "released",
     rows: [
       {
-        id: "w_self_care_disabled",
+        id: "default",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["default.sent", true],
+            _raw: "set_field: default.sent : TRUE",
+            _cleaned: "click | set_field: default.sent : TRUE",
+          },
+        ],
+        priority: -1,
+        campaign_list: ["unlock_workshops"],
+      },
+      {
+        id: "enable_up_to_w_self_care",
         click_action_list: [
           {
             trigger: "click",
@@ -9582,12 +9596,43 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_self_care_disabled : FALSE",
           },
         ],
-        priority: -1,
+        priority: 1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 1",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "enable_up_to_w_self_care.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | enable_up_to_w_self_care.sent : TRUE",
+          },
+        ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_1on1_disabled",
+        id: "enable_up_to_w_1on1",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9598,30 +9643,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_1on1_disabled.sent", true],
-            _raw: "set_field: w_1on1_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_1on1_disabled.sent : TRUE",
+            args: ["enable_up_to_w_1on1.sent", true],
+            _raw: "set_field: enable_up_to_w_1on1.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_1on1.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 2,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before : 6 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -9629,18 +9666,32 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_1on1_disabled.sent",
+                field: "enable_up_to_w_1on1.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_1on1_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_1on1.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_praise_disabled",
+        id: "enable_up_to_w_praise",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9651,30 +9702,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_praise_disabled.sent", true],
-            _raw: "set_field: w_praise_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_praise_disabled.sent : TRUE",
+            args: ["enable_up_to_w_praise.sent", true],
+            _raw: "set_field: enable_up_to_w_praise.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_praise.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 3,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before : 13 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -9682,18 +9725,39 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_praise_disabled.sent",
+                field: "enable_up_to_w_praise.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_praise_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_praise.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_instruct_disabled",
+        id: "enable_up_to_w_instruct",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9704,30 +9768,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_instruct_disabled.sent", true],
-            _raw: "set_field: w_instruct_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_instruct_disabled.sent : TRUE",
+            args: ["enable_up_to_w_instruct.sent", true],
+            _raw: "set_field: enable_up_to_w_instruct.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_instruct.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before : 20 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -9735,18 +9791,46 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_instruct_disabled.sent",
+                field: "enable_up_to_w_instruct.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_instruct_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_instruct.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_stress_disabled",
+        id: "enable_up_to_w_stress",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9757,30 +9841,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_stress_disabled.sent", true],
-            _raw: "set_field: w_stress_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_stress_disabled.sent : TRUE",
+            args: ["enable_up_to_w_stress.sent", true],
+            _raw: "set_field: enable_up_to_w_stress.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_stress.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before : 27 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -9788,18 +9864,53 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_stress_disabled.sent",
+                field: "enable_up_to_w_stress.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_stress_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_stress.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_money_disabled",
+        id: "enable_up_to_w_money",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9810,30 +9921,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_money_disabled.sent", true],
-            _raw: "set_field: w_money_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_money_disabled.sent : TRUE",
+            args: ["enable_up_to_w_money.sent", true],
+            _raw: "set_field: enable_up_to_w_money.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_money.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -9841,71 +9944,60 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_money_disabled.sent",
+                field: "enable_up_to_w_money.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_money_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_money.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_rules_disabled",
+        id: "enable_up_to_w_rules",
         click_action_list: [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_rules_disabled", false],
-            _raw: "set_field: w_rules_disabled : FALSE",
-            _cleaned: "click | set_field: w_rules_disabled : FALSE",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
           },
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_rules_disabled.sent", true],
-            _raw: "set_field: w_rules_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_rules_disabled.sent : TRUE",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
           },
-        ],
-        priority: 1,
-        activation_condition_list: [
           {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "41",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 41 : day",
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
           },
-        ],
-        deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_rules_disabled.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | w_rules_disabled.sent : TRUE",
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
           },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "w_consequence_disabled",
-        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9916,30 +10008,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_consequence_disabled.sent", true],
-            _raw: "set_field: w_consequence_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_consequence_disabled.sent : TRUE",
+            args: ["enable_up_to_w_rules.sent", true],
+            _raw: "set_field: enable_up_to_w_rules.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_rules.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "48",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before : 48 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -9947,18 +10031,154 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_consequence_disabled.sent",
+                field: "enable_up_to_w_rules.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_consequence_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_rules.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_solve_disabled",
+        id: "enable_up_to_w_consequence",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["enable_up_to_w_consequence.sent", true],
+            _raw: "set_field: enable_up_to_w_consequence.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_consequence.sent : TRUE",
+          },
+        ],
+        priority: 8,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 8",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "enable_up_to_w_consequence.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | enable_up_to_w_consequence.sent : TRUE",
+          },
+        ],
+        campaign_list: ["unlock_workshops"],
+      },
+      {
+        id: "enable_up_to_w_solve",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9969,30 +10189,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_solve_disabled.sent", true],
-            _raw: "set_field: w_solve_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_solve_disabled.sent : TRUE",
+            args: ["enable_up_to_w_solve.sent", true],
+            _raw: "set_field: enable_up_to_w_solve.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_solve.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "55",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before : 55 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -10000,18 +10212,74 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_solve_disabled.sent",
+                field: "enable_up_to_w_solve.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_solve_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_solve.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_safe_disabled",
+        id: "enable_up_to_w_safe",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_disabled", false],
+            _raw: "set_field: w_solve_disabled : FALSE",
+            _cleaned: "click | set_field: w_solve_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -10022,30 +10290,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_safe_disabled.sent", true],
-            _raw: "set_field: w_safe_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_safe_disabled.sent : TRUE",
+            args: ["enable_up_to_w_safe.sent", true],
+            _raw: "set_field: enable_up_to_w_safe.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_safe.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 10,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "62",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before : 62 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -10053,18 +10313,81 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_safe_disabled.sent",
+                field: "enable_up_to_w_safe.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_safe_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_safe.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_crisis_disabled",
+        id: "enable_up_to_w_crisis",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_disabled", false],
+            _raw: "set_field: w_solve_disabled : FALSE",
+            _cleaned: "click | set_field: w_solve_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_safe_disabled", false],
+            _raw: "set_field: w_safe_disabled : FALSE",
+            _cleaned: "click | set_field: w_safe_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -10075,30 +10398,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_crisis_disabled.sent", true],
-            _raw: "set_field: w_crisis_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_crisis_disabled.sent : TRUE",
+            args: ["enable_up_to_w_crisis.sent", true],
+            _raw: "set_field: enable_up_to_w_crisis.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_crisis.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 11,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "69",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before : 69 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -10106,18 +10421,88 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_crisis_disabled.sent",
+                field: "enable_up_to_w_crisis.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_crisis_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_crisis.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_celebrate_disabled",
+        id: "enable_up_to_w_celebrate",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_disabled", false],
+            _raw: "set_field: w_solve_disabled : FALSE",
+            _cleaned: "click | set_field: w_solve_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_safe_disabled", false],
+            _raw: "set_field: w_safe_disabled : FALSE",
+            _cleaned: "click | set_field: w_safe_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_crisis_disabled", false],
+            _raw: "set_field: w_crisis_disabled : FALSE",
+            _cleaned: "click | set_field: w_crisis_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -10128,30 +10513,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_celebrate_disabled.sent", true],
-            _raw: "set_field: w_celebrate_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_celebrate_disabled.sent : TRUE",
+            args: ["enable_up_to_w_celebrate.sent", true],
+            _raw: "set_field: enable_up_to_w_celebrate.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_celebrate.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 12,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                where: {
-                  event_id: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "76",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "12",
               },
             },
-            _raw: "first_launch | before : 76 : day",
+            _raw: "get_field | current_workshop_number : 12",
           },
         ],
         deactivation_condition_list: [
@@ -10159,11 +10536,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_celebrate_disabled.sent",
+                field: "enable_up_to_w_celebrate.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_celebrate_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_celebrate.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],

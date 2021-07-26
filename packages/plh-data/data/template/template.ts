@@ -3,6 +3,207 @@ import { FlowTypes } from "../../model/flowTypes";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
+    flow_name: "timing_calculations",
+    status: "released",
+    rows: [
+      {
+        name: "sunday",
+        value: 0,
+        type: "set_variable",
+        _nested_name: "sunday",
+      },
+      {
+        name: "monday",
+        value: 1,
+        type: "set_variable",
+        _nested_name: "monday",
+      },
+      {
+        name: "tuesday",
+        value: 2,
+        type: "set_variable",
+        _nested_name: "tuesday",
+      },
+      {
+        name: "wednesday",
+        value: 3,
+        type: "set_variable",
+        _nested_name: "wednesday",
+      },
+      {
+        name: "thursday",
+        value: 4,
+        type: "set_variable",
+        _nested_name: "thursday",
+      },
+      {
+        name: "friday",
+        value: 5,
+        type: "set_variable",
+        _nested_name: "friday",
+      },
+      {
+        name: "saturday",
+        value: 6,
+        type: "set_variable",
+        _nested_name: "saturday",
+      },
+      {
+        name: "workshop_day_number",
+        value: "+@local.@fields.workshop_day",
+        type: "set_variable",
+        _nested_name: "workshop_day_number",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "+@local.@fields.workshop_day",
+              matchedExpression: "@fields.workshop_day",
+              type: "fields",
+              fieldName: "workshop_day",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.workshop_day": ["value"],
+        },
+      },
+      {
+        name: "absolute_day_number",
+        value: "@calc((new Date()).getDay())",
+        type: "set_variable",
+        _nested_name: "absolute_day_number",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc((new Date()).getDay())",
+              matchedExpression: "@calc((new Date()).getDay())",
+              type: "calc",
+              fieldName: "(new Date()).getDay()",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc((new Date()).getDay())": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "relative_day_number",
+        value: "@calc( (@local.absolute_day_number - @local.workshop_day_number +7) % 7)",
+        _nested_name: "relative_day_number",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc( (@local.absolute_day_number - @local.workshop_day_number +7) % 7)",
+              matchedExpression: "@local.absolute_day_number",
+              type: "local",
+              fieldName: "absolute_day_number",
+            },
+            {
+              fullExpression:
+                "@calc( (@local.absolute_day_number - @local.workshop_day_number +7) % 7)",
+              matchedExpression: "@local.workshop_day_number",
+              type: "local",
+              fieldName: "workshop_day_number",
+            },
+            {
+              fullExpression:
+                "@calc( (@local.absolute_day_number - @local.workshop_day_number +7) % 7)",
+              matchedExpression:
+                "@calc( (@local.absolute_day_number - @local.workshop_day_number +7) % 7)",
+              type: "calc",
+              fieldName: " (@local.absolute_day_number - @local.workshop_day_number +7) % 7",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.absolute_day_number": ["value"],
+          "@local.workshop_day_number": ["value"],
+          "@calc( (@local.absolute_day_number - @local.workshop_day_number +7) % 7)": ["value"],
+        },
+      },
+      {
+        name: "current_workshop",
+        value: "@fields.current_workshop",
+        type: "set_variable",
+        _nested_name: "current_workshop",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.current_workshop",
+              matchedExpression: "@fields.current_workshop",
+              type: "fields",
+              fieldName: "current_workshop",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.current_workshop": ["value"],
+        },
+      },
+      {
+        name: "workshop_current_workshop",
+        value: "workshop.@local.current_workshop",
+        type: "set_variable",
+        _nested_name: "workshop_current_workshop",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "workshop.@local.current_workshop",
+              matchedExpression: "@local.current_workshop",
+              type: "local",
+              fieldName: "current_workshop",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.current_workshop": ["value"],
+        },
+      },
+      {
+        name: "current_workshop_data",
+        value: "@data.@local.workshop_current_workshop",
+        type: "set_variable",
+        _nested_name: "current_workshop_data",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.@local.workshop_current_workshop",
+              matchedExpression: "@local.workshop_current_workshop",
+              type: "local",
+              fieldName: "workshop_current_workshop",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.workshop_current_workshop": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "current_workshop_number",
+        value: "@local.current_workshop_data.number",
+        _nested_name: "current_workshop_number",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.current_workshop_data.number",
+              matchedExpression: "@local.current_workshop_data.number",
+              type: "local",
+              fieldName: "current_workshop_data",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.current_workshop_data.number": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_unlock_workshops.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "box_tools",
     status: "released",
     rows: [
@@ -1260,24 +1461,8 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         name: "text_13",
-        value:
-          "If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at apps@idems.international.",
         exclude_from_translation: true,
         _nested_name: "text_13",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at apps@idems.international.",
-              matchedExpression: "@idems.international",
-              type: "idems",
-              fieldName: "international",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@idems.international": ["value"],
-        },
       },
       {
         type: "text",
@@ -1633,24 +1818,8 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         name: "text_18",
-        value:
-          "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at apps@idems.international.",
         exclude_from_translation: true,
         _nested_name: "text_18",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at apps@idems.international.",
-              matchedExpression: "@idems.international",
-              type: "idems",
-              fieldName: "international",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@idems.international": ["value"],
-        },
       },
       {
         type: "text",
@@ -1886,6 +2055,13 @@ const template: FlowTypes.Template[] = [
     flow_name: "home_screen",
     status: "released",
     rows: [
+      {
+        type: "template",
+        name: "timing_calculations",
+        value: "timing_calculations",
+        rows: [],
+        _nested_name: "timing_calculations",
+      },
       {
         type: "set_field",
         name: "first_click_hs_weekly_workshops",
