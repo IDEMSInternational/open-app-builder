@@ -405,7 +405,8 @@ export namespace FlowTypes {
     | "icon_banner"
     | "dashed_box"
     | "lottie_animation"
-    | "parent_point_box";
+    | "parent_point_box"
+    | "debug_toggle";
 
   export interface TemplateRow {
     type: TemplateRowType;
