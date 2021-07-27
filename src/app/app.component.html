@@ -11,10 +11,12 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list style="height: 100%; display: flex; flex-direction: column" (click)="menu.close()">
+      <plh-template-container
+        class="main-layout-padding"
+        templatename="app_menu"
+      ></plh-template-container>
+      <!-- <ion-list style="height: 100%; display: flex; flex-direction: column" (click)="menu.close()">
         <ion-item routerLink="/">Home</ion-item>
-        <!-- <ion-item>Progress</ion-item> -->
-        <!-- <ion-item routerLink="family">My Family</ion-item> -->
         <ion-item routerLink="about">About PLH App</ion-item>
         <ion-item routerLink="settings">Settings</ion-item>
         <ion-item routerLink="template">Template</ion-item>
@@ -24,15 +26,13 @@
         <div style="flex: 1"></div>
         <ion-item routerLink="privacy">Privacy Policy</ion-item>
         <ion-item routerLink="app-terms">App Terms</ion-item>
-      </ion-list>
+      </ion-list> -->
     </ion-content>
   </ion-menu>
-  <!-- Sit global header above main content view -->
   <div style="display: flex; flex-direction: column; height: 100%">
     <plh-main-header></plh-main-header>
     <div class="route-container">
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </div>
-    <!-- <plh-main-tabs></plh-main-tabs> -->
   </div>
 </ion-app>
