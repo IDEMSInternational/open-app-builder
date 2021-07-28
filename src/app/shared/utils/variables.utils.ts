@@ -67,12 +67,18 @@ export function extractDynamicEvaluators(
   let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
   if (typeof fullExpression === "string") {
     const regex1 = /!?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
-    allMatches = _matchAll(regex1, fullExpression).map((m) => {
-      let [matchedExpression, type, fieldName] = m as any[];
-      // if expression ends in period expect this is intended as a text full-stop (not nested property)
-      if (matchedExpression.endsWith(".")) matchedExpression = matchedExpression.slice(0, -1);
-      return { fullExpression, matchedExpression, type, fieldName };
-    });
+    allMatches = _matchAll(regex1, fullExpression)
+      .map((m) => {
+        let [matchedExpression, type, fieldName] = m as any[];
+        // if expression ends in period expect this is intended as a text full-stop (not nested property)
+        if (matchedExpression.endsWith(".")) matchedExpression = matchedExpression.slice(0, -1);
+        // cross-check to ensure lookup matches one of the pre-defined dynamic field types (e.g. not email@domain.com)
+        if (!FlowTypes.DYNAMIC_PREFIXES.includes(type)) {
+          return undefined;
+        }
+        return { fullExpression, matchedExpression, type, fieldName };
+      })
+      .filter((v) => v !== undefined);
     // provide a separate regex for @eval statements as they don't use dot notation
     // i.e @calc(some JS expression) as opposed to @calc.(some expression)
     const regex2 = /!?@(calc)\((.+)\)$/gim;
