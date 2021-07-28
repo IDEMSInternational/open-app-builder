@@ -436,13 +436,24 @@ export namespace FlowTypes {
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
+  export const DYNAMIC_PREFIXES = [
+    "local",
+    "field",
+    "fields",
+    "global",
+    "data",
+    "campaign",
+    "calc",
+  ] as const;
+  type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
+
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
     // TODO CC 2021-05-15 - 'campaign' should be handled as a special case of data in the parser
     // i.e. @data.campaign_list | evaluate_conditions | first (or similar)
-    type: "local" | "field" | "fields" | "global" | "data" | "campaign" | "calc";
+    type: IDynamicPrefix;
     fieldName: string;
     // computed properties
     parsedValue?: any;
