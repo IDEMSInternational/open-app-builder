@@ -1,4 +1,6 @@
-import { FlowTypes, DYNAMIC_PREFIXES } from "../model";
+// import const from plh-data directly as typings can sometimes break otherwise
+import { DYNAMIC_PREFIXES } from "plh-data";
+import { FlowTypes } from "../model";
 
 /**
  * Process each column specified in VARIABLE_FIELDS, to check whether there are any references to
