@@ -68,7 +68,9 @@ export class TemplateNavService {
     const [templatename] = action.args;
     const nav_parent_triggered_by = action._triggeredBy.name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
-    return container.router.navigate(["template", templatename], {
+    // handle direct page or template navigation
+    const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
+    return container.router.navigate(navTarget, {
       queryParams,
       queryParamsHandling: "merge",
     });
