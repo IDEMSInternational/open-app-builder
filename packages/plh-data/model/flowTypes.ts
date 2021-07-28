@@ -4,6 +4,20 @@ import { TipRow } from "./tips.model";
 // import { IDBTable } from "../../../src/app/shared/services/db/db.service";
 
 /*********************************************************************************************
+ *  Constants used to generate types
+ ********************************************************************************************/
+
+export const DYNAMIC_PREFIXES = [
+  "local",
+  "field",
+  "fields",
+  "global",
+  "data",
+  "campaign",
+  "calc",
+] as const;
+
+/*********************************************************************************************
  *  Base flow types
  ********************************************************************************************/
 
@@ -436,15 +450,6 @@ export namespace FlowTypes {
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  export const DYNAMIC_PREFIXES = [
-    "local",
-    "field",
-    "fields",
-    "global",
-    "data",
-    "campaign",
-    "calc",
-  ] as const;
   type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
