@@ -1,4 +1,4 @@
-import { FlowTypes } from "../model";
+import { FlowTypes, DYNAMIC_PREFIXES } from "../model";
 
 /**
  * Process each column specified in VARIABLE_FIELDS, to check whether there are any references to
@@ -73,7 +73,7 @@ export function extractDynamicEvaluators(
         // if expression ends in period expect this is intended as a text full-stop (not nested property)
         if (matchedExpression.endsWith(".")) matchedExpression = matchedExpression.slice(0, -1);
         // cross-check to ensure lookup matches one of the pre-defined dynamic field types (e.g. not email@domain.com)
-        if (!FlowTypes.DYNAMIC_PREFIXES.includes(type)) {
+        if (!DYNAMIC_PREFIXES.includes(type)) {
           return undefined;
         }
         return { fullExpression, matchedExpression, type, fieldName };
